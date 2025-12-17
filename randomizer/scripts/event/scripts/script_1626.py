@@ -8,7 +8,7 @@ script = EventScript(
     [
         CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AE),
-        JmpIfBitSet(BUCKET_PRIZE_GRANT_NO_WARP, ["EVENT_1626_return_shiny_stone"]),
+        JmpIfBitSet(PURTEND_STORE_CHECK_DONE, ["EVENT_1626_return_shiny_stone"]),
         JmpIfBitSet(SHUFFLE_ONE_FIREWORKS_ENABLED, ["EVENT_1626_run_dialog_9"]),
         JmpIfBitClear(
             PROGRESSIVE_FIREWORKS_ENABLED, ["EVENT_1626_store_item_amount_7000_7"]

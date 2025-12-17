@@ -31,7 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(BUCKET_PRIZE_GRANT_NO_WARP, ["EVENT_1645_run_dialog_43"]),
 	CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AE),
 	StoreItemAmountTo7000(CarboCookieItem),
@@ -43,10 +42,8 @@ script = EventScript([
 	Pause(10),
 	SetAsyncActionScript(MARIO, A0670_NOD_YES),
 	RemoveOneOfItemFromInventory(CarboCookieItem),
-	JmpIfBitClear(BUCKET_WARP_ENABLED, ["EVENT_1645_jmp_if_bit_set_37"]),
-	JmpIfBitSet(FIRST_CARBO_COOKIE_GIVEN, ["EVENT_1645_run_dialog_27"], identifier="EVENT_1645_jmp_if_bit_set_13"),
 	RunDialog(dialog_id=DI1149_BUCKET_GIRL_LEAVES, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	SetBit(FIRST_CARBO_COOKIE_GIVEN),
+	SetBit(CARBO_COOKIE_GIVEN),
 	ActionQueueAsync(target=MEM_70A8, subscript=[
 		A_PlaySound(sound=SO004_JUMP, channel=4),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
@@ -55,41 +52,24 @@ script = EventScript([
 		A_FaceSoutheast(),
 		A_FixedFCoordOn(),
 		A_WalkSouthSteps(2),
-		A_JmpIfBitSet(BUCKET_GIRL_DIALOG, ["EVENT_1645_jmp_if_bit_set_17"]),
 		A_FixedFCoordOff(),
 		A_FaceMario(),
 		A_Pause(1)
 	]),
-	JmpIfBitSet(BUCKET_GIRL_DIALOG, ["EVENT_1645_action_queue_20"], identifier="EVENT_1645_jmp_if_bit_set_17"),
 	RunDialog(dialog_id=DI1232_DONT_TAKE_MY_BUCKET, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	SetBit(BUCKET_GIRL_DIALOG),
 	ActionQueueAsync(target=MEM_70A8, subscript=[
 		A_SetAllSpeeds(FAST),
 		A_WalkSoutheastSteps(9),
 		A_VisibilityOff()
 	], identifier="EVENT_1645_action_queue_20"),
-	JmpIfBitSet(PROGRESSIVE_FIREWORKS_ENABLED, ["EVENT_1645_remove_from_current_level_24"]),
-	JmpIfBitSet(SHUFFLE_ONE_FIREWORKS_ENABLED, ["EVENT_1645_remove_from_current_level_24"]),
-	Return(),
 	RemoveObjectFromCurrentLevel(MEM_70A8, identifier="EVENT_1645_remove_from_current_level_24"),
 	RemoveObjectFromSpecificLevel(MEM_70A8, R108_MOLEVILLE_OUTSIDE),
-	Return(),
-	RunDialog(dialog_id=DI1150_BUCKET_GIRL_GRANT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1645_run_dialog_27"),
-	PlaySound(sound=SO094_FROG_COIN, channel=6),
-	AddFrogCoins(1),
-	RunDialog(dialog_id=DI1176_RECEIVED_A_FROG_COIN, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
-	ClearBit(FIRST_CARBO_COOKIE_GIVEN),
-	Return(),
+    RemoveOneOfItemFromInventory(CarboCookieItem),
+	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+    Return(),
+    
 	Pause(10, identifier="EVENT_1645_pause_33"),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
 	RunDialog(dialog_id=DI1148_CARBO_COOKIE_DECLINE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return(),
-	JmpIfBitSet(PROGRESSIVE_FIREWORKS_ENABLED, ["EVENT_1645_run_event_as_subroutine_40"], identifier="EVENT_1645_jmp_if_bit_set_37"),
-	JmpIfBitSet(SHUFFLE_ONE_FIREWORKS_ENABLED, ["EVENT_1645_run_event_as_subroutine_40"]),
-	Jmp(["EVENT_1645_jmp_if_bit_set_13"]),
-	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER, identifier="EVENT_1645_run_event_as_subroutine_40"),
-	SetBit(BUCKET_PRIZE_GRANT_NO_WARP),
-	Return(),
-	RunDialog(dialog_id=DI1151_THANKS_HONORIFIC, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1645_run_dialog_43"),
-	Return()
 ])

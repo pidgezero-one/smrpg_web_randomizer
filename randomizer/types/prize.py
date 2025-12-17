@@ -256,10 +256,18 @@ class SlotsPrize(Prize):
 
 class CharacterPrize(Prize):
     _ally: Ally
+    _starting_level: int = 1
 
     @property
     def ally(self) -> Ally:
         return self._ally
+    
+    @property
+    def starting_level(self) -> int:
+        return self._starting_level
+    
+    def set_starting_level(self, level: int) -> None:
+        self._starting_level = level
 
 
 class SpellPrize(Prize):

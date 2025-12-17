@@ -6,7 +6,7 @@ from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        JmpIfBitSet(BUCKET_PRIZE_GRANT_NO_WARP, ["EVENT_1645_run_dialog_29_"]),
+        JmpIfBitSet(PURTEND_STORE_CHECK_DONE, ["EVENT_1645_run_dialog_29_"]),
         CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AE),
         StoreItemAmountTo7000(CarboCookie),
@@ -127,7 +127,7 @@ script = EventScript(
         RunEventAsSubroutine(
             E0178_NPC_QUEST_1_CONTAINER, identifier="EVENT_1645_bucket_grant"
         ),
-        SetBit(BUCKET_PRIZE_GRANT_NO_WARP),
+        SetBit(PURTEND_STORE_CHECK_DONE),
         Return(),
         RunDialog(
             dialog_id=DI1151_THANKS_HONORIFIC,

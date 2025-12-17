@@ -213,6 +213,9 @@ class ShuffleLocationSelector(CategorizationOption):
     MOLEVILLE_MINES_BOSS_FIGHT_3 = "Moleville Mines postgame boss fight"
     MOLEVILLE_MINES_BOSS_3 = "Moleville Mines postgame boss Star Piece"
     MOLEVILLE_MINES_POSTGAME_DROP = "Moleville Mines postgame prize"
+    FIREWORKS_STORE = "Fireworks Shop (only when fireworks are shuffled)"
+    PURTEND_STORE = "Pur-tend Store (only when progressive fireworks is enabled)"
+    COOKIE_TRADER = "Carbo Cookie Trader (only when progressive fireworks is enabled)"
     BUCKET_GIRL = "Moleville bucket girl"
     TREASURE_SELLER_1 = "Moleville first treasure shop item"
     TREASURE_SELLER_2 = "Moleville second treasure shop item"
@@ -694,7 +697,7 @@ class PrizeLocation:
     def originally_held(self) -> type[Prize] | None:
         return self._originally_held
 
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return not isinstance(prize, tuple(self._blacklist))
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -719,7 +722,7 @@ class FrogDiscipleLocation(PrizeLocation):
 class TreasureChestLocation(PrizeLocation):
     _npc_ids: list[AreaObject]
 
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return hasattr(prize, "chest_grant") and super().can_accept(prize)
 
     def grant(self) -> EventScript:
@@ -738,7 +741,7 @@ class TreasureChestLocation(PrizeLocation):
 class StandingLocation(PrizeLocation):
     _npc_ids: list[AreaObject]
 
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return hasattr(prize, "standing_grant") and super().can_accept(prize)
 
     def grant(self) -> EventScript:
@@ -750,7 +753,7 @@ class StandingLocation(PrizeLocation):
 
 
 class EventLocation(PrizeLocation):
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return hasattr(prize, "npc_grant") and super().can_accept(prize)
 
     def grant(self) -> EventScript:
@@ -762,7 +765,7 @@ class EventLocation(PrizeLocation):
 
 
 class RiverLocation(PrizeLocation):
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return hasattr(prize, "river_grant") and super().can_accept(prize)
 
     def grant(self) -> EventScript:
@@ -774,29 +777,29 @@ class RiverLocation(PrizeLocation):
 
 
 class BossFightLocation(PrizeLocation):
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return hasattr(prize, "boss_fight_grant") and super().can_accept(prize)
 
 
 class CharacterRecruitmentLocation(PrizeLocation):
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return hasattr(prize, "character_grant") and super().can_accept(prize)
 
 
 class StarPieceLocation(PrizeLocation):
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return hasattr(prize, "postfight_star_piece_grant") and super().can_accept(
             prize
         )
 
 
 class ShopLocation(PrizeLocation):
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return isinstance(prize, ItemPrize) and super().can_accept(prize)
 
 
 class SpellSlotLocation(PrizeLocation):
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return isinstance(prize, SpellPrize) and super().can_accept(prize)
 
 
@@ -1005,7 +1008,7 @@ class BoosterHillLocation(PrizeRow):
     _npc_id: AreaObject
     _container_event: int = E0219_HILL_GRANT_LOGIC
 
-    def can_accept(self, prize: Prize) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
         return hasattr(prize, "hill_grant") and super().can_accept(prize)
 
     def grant(self) -> EventScript:

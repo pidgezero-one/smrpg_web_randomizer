@@ -7,7 +7,7 @@ from randomizer.scripts.event.script_imports import *
 script = EventScript(
     [
         RemoveObjectFromCurrentLevel(MEM_70A8),
-        SetBit(UNUSED_704B_6),
+        SetBit(COOKIE_TRADER_CHECKED),
         RunEventAsSubroutine(E0241_FREESTANDING_1_GRANT),
         Return(),
     ]

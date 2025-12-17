@@ -1,3 +1,6 @@
+from ..types.gameworld import GameWorld
+from ..types.logic import Inventory
+from ..types.prize import Prize
 from ..types.prizelocation import (
     PrizeLocation,
     StandingLocation,
@@ -151,29 +154,117 @@ class StartingCharacter1(CharacterRecruitmentLocation):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_1
 
+    def set_prize(self, prize: Prize | None):
+        assert isinstance(prize, CharacterPrize) or prize is None
+        if isinstance(prize, CharacterPrize):
+            prize.set_starting_level(1)
+        return super().set_prize(prize)
+
 
 class MarioSpell1(SpellSlotLocation):
     _originally_held = JumpSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(MarioRecruitmentPrize)
 
 
 class MarioSpell2(SpellSlotLocation):
     _originally_held = FireOrbSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MarioRecruitmentPrize)
+        return inventory.has_item(MarioRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_mushroom_way_boss,
+                    can_defeat_bandits_way_boss,
+                    can_defeat_mushroom_kingdom_boss,
+                ],
+            )
+            or (isinstance(item, MarioRecruitmentPrize) and item.starting_level >= 3)
+        )
+
 
 class MarioSpell3(SpellSlotLocation):
     _originally_held = SuperJumpSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MarioRecruitmentPrize)
+        return inventory.has_item(MarioRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_sewer_boss,
+                    can_defeat_forest_boss,
+                    can_defeat_first_moleville_boss,
+                    can_defeat_second_moleville_boss,
+                    can_defeat_curtain_boss,
+                    can_defeat_balcony_boss,
+                    can_defeat_chapel_boss,
+                ],
+            )
+            or (isinstance(item, MarioRecruitmentPrize) and item.starting_level >= 6)
+        )
 
 
 class MarioSpell4(SpellSlotLocation):
     _originally_held = SuperFlameSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MarioRecruitmentPrize)
+        return inventory.has_item(MarioRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_ship_midboss,
+                    can_defeat_ship_boss,
+                    can_defeat_seaside_boss,
+                ],
+            )
+        )
+
 
 class MarioSpell5(SpellSlotLocation):
     _originally_held = UltraJumpSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MarioRecruitmentPrize)
+        return inventory.has_item(MarioRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_lands_end_cloud_boss,
+                    can_defeat_temple_boss,
+                    can_defeat_second_dojo_boss,
+                    can_defeat_valley_boss,
+                ],
+            )
+        )
+
 
 class MarioSpell6(SpellSlotLocation):
     _originally_held = UltraFlameSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MarioRecruitmentPrize)
+        return inventory.has_item(MarioRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_statue_boss,
+                    can_defeat_nimbus_boss,
+                    can_defeat_egg_boss,
+                    can_defeat_volcano_boss,
+                    can_defeat_volcano_midboss,
+                ],
+            )
+        )
 
 
 class StartingCharacter2(CharacterRecruitmentLocation):
@@ -181,11 +272,23 @@ class StartingCharacter2(CharacterRecruitmentLocation):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_2
 
+    def set_prize(self, prize: Prize | None):
+        assert isinstance(prize, CharacterPrize) or prize is None
+        if isinstance(prize, CharacterPrize):
+            prize.set_starting_level(1)
+        return super().set_prize(prize)
+
 
 class StartingCharacter3(CharacterRecruitmentLocation):
     _originally_held = None
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_3
+
+    def set_prize(self, prize: Prize | None):
+        assert isinstance(prize, CharacterPrize) or prize is None
+        if isinstance(prize, CharacterPrize):
+            prize.set_starting_level(1)
+        return super().set_prize(prize)
 
 
 class StartingCharacter4(CharacterRecruitmentLocation):
@@ -193,11 +296,23 @@ class StartingCharacter4(CharacterRecruitmentLocation):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_4
 
+    def set_prize(self, prize: Prize | None):
+        assert isinstance(prize, CharacterPrize) or prize is None
+        if isinstance(prize, CharacterPrize):
+            prize.set_starting_level(1)
+        return super().set_prize(prize)
+
 
 class StartingCharacter5(CharacterRecruitmentLocation):
     _originally_held = None
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_5
+
+    def set_prize(self, prize: Prize | None):
+        assert isinstance(prize, CharacterPrize) or prize is None
+        if isinstance(prize, CharacterPrize):
+            prize.set_starting_level(1)
+        return super().set_prize(prize)
 
 
 class PostgameVoucherLocation(NPCLocationRow6):
@@ -207,7 +322,19 @@ class PostgameVoucherLocation(NPCLocationRow6):
     _remake_only = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return world.settings.get_flag(Remake).enabled
+        return can_defeat_some_of(
+            world,
+            inventory,
+            [
+                can_defeat_second_moleville_boss,
+                can_defeat_curtain_boss,
+                can_defeat_chapel_boss,
+                can_defeat_ship_boss,
+                can_defeat_temple_boss,
+                can_defeat_fourth_dojo_boss,
+                can_defeat_sealed_door_boss,
+            ],
+        ) and world.settings.is_flag_value(Remake, True)
 
     # Flag as checked: VOUCHER_CHECK_DONE
 
@@ -267,6 +394,10 @@ class MushroomWayLeftItemRemake(StandingLocationRow1):
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.REMAKE_1
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return world.settings.is_flag_value(Remake, True)
+
     # Flag as checked: npc 10 in room 204 has been removed from the room.
     # TODO: Make sure starter event removes this if remake content is disabled.
 
@@ -277,6 +408,10 @@ class MushroomWayRightItemRemake(StandingLocationRow2):
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.REMAKE_2
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return world.settings.is_flag_value(Remake, True)
+
     # Flag as checked: npc 11 in room 204 has been removed from the room.
     # TODO: Make sure starter event removes this if remake content is disabled.
 
@@ -285,6 +420,13 @@ class MushrooomWayBossFight(BossFightLocation):
     _originally_held = HammerBrosFight
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
 
@@ -292,6 +434,10 @@ class MushroomWayStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_STAR_PIECE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_mushroom_way_boss(world, inventory)
+
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
 
@@ -299,37 +445,136 @@ class MushroomWayBossFightRewardItem(NPCLocationRow1):
     _originally_held = HammerPrize
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
     _id = ShuffleLocationSelector.HAMMER_BROS_REWARD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_mushroom_way_boss(world, inventory)
+
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
 
 class MushroomWayCharacter(CharacterRecruitmentLocation):
     _originally_held = MallowRecruitmentPrize
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_mushroom_way_boss(
+            world, inventory
+        ) and is_all_starting_chars_set(world)
+
+    def set_prize(self, prize: Prize | None):
+        assert isinstance(prize, CharacterPrize) or prize is None
+        if isinstance(prize, CharacterPrize):
+            prize.set_starting_level(2)
+        return super().set_prize(prize)
+
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
 
 class MallowSpell1(SpellSlotLocation):
     _originally_held = ThunderboltSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(MallowRecruitmentPrize)
 
+
+# TODO: Gate later spell slots behind can_defeat_some? Might be good idea?
 class MallowSpell2(SpellSlotLocation):
     _originally_held = HPRainSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MallowRecruitmentPrize)
+        return inventory.has_item(MallowRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_mushroom_way_boss,
+                    can_defeat_bandits_way_boss,
+                    can_defeat_mushroom_kingdom_boss,
+                ],
+            )
+            or (isinstance(item, MallowRecruitmentPrize) and item.starting_level >= 3)
+        )
 
 
 class MallowSpell3(SpellSlotLocation):
     _originally_held = PsychopathSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MallowRecruitmentPrize)
+        return inventory.has_item(MallowRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_sewer_boss,
+                    can_defeat_forest_boss,
+                    can_defeat_first_moleville_boss,
+                    can_defeat_second_moleville_boss,
+                    can_defeat_curtain_boss,
+                    can_defeat_balcony_boss,
+                    can_defeat_chapel_boss,
+                ],
+            )
+            or (isinstance(item, MallowRecruitmentPrize) and item.starting_level >= 6)
+        )
+
 
 class MallowSpell4(SpellSlotLocation):
     _originally_held = ShockerSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MallowRecruitmentPrize)
+        return inventory.has_item(MallowRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_ship_midboss,
+                    can_defeat_ship_boss,
+                    can_defeat_seaside_boss,
+                ],
+            )
+        )
 
 
 class MallowSpell5(SpellSlotLocation):
     _originally_held = SnowyPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MallowRecruitmentPrize)
+        return inventory.has_item(MallowRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_lands_end_cloud_boss,
+                    can_defeat_temple_boss,
+                    can_defeat_second_dojo_boss,
+                    can_defeat_valley_boss,
+                ],
+            )
+        )
+
 
 class MallowSpell6(SpellSlotLocation):
     _originally_held = StarRainSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(MallowRecruitmentPrize)
+        return inventory.has_item(MallowRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_statue_boss,
+                    can_defeat_nimbus_boss,
+                    can_defeat_egg_boss,
+                    can_defeat_volcano_boss,
+                    can_defeat_volcano_midboss,
+                ],
+            )
+        )
 
 
 ########## mushroom kingdom - available before and during invasion
@@ -432,6 +677,10 @@ class MushroomKingdomWalletGuySecondRewardLocation(NPCLocationRow3):
         R191_MUSHROOM_KINGDOM_OUTSIDE,
     ]
     _id = ShuffleLocationSelector.WALLET_GUY_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_chapel_boss(world, inventory)
+
     # Flag as checked: SECOND_WALLET_PRIZE_RECEIVED
 
 
@@ -442,6 +691,10 @@ class MushroomKingdomOccupiedOutdoorGuardLocation(NPCLocationRow1):
     _originally_held = Coins10Prize
     _rooms = [R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, R191_MUSHROOM_KINGDOM_OUTSIDE]
     _id = ShuffleLocationSelector.INVASION_EASTERN_GUARD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_invaded_kingdom(world, inventory)
+
     # Flag as checked: NPC 5 removed from room 190
     # Remember you need to define an additional henchman slot for the liberated room
 
@@ -452,6 +705,10 @@ class MushroomKingdomOccupiedCastleToadRescueLocation(NPCLocationRow2):
         R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM,
     ]
     _id = ShuffleLocationSelector.INVASION_TOAD_RESCUE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_invaded_kingdom(world, inventory)
+
     # Remember you need to define an additional henchman slot for the liberated room
     # Flag as checked: OCCUPIED_MUSHROOM_KINGDOM_TOAD_RESCUED
 
@@ -463,6 +720,10 @@ class MushroomKingdomOccupiedFamilyRescueLocation(NPCLocationRow1):
         R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F,
     ]
     _id = ShuffleLocationSelector.INVASION_FAMILY
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_invaded_kingdom(world, inventory)
+
     # Flag as checked: OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_1_DEFEATED and OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_2_DEFEATED must BOTH be set
 
 
@@ -470,6 +731,10 @@ class MushroomKingdomOccupiedGuestRoomLocation(NPCLocationRow1):
     _originally_held = WakeUpPinPrize
     _rooms = [R330_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_GUEST_ROOM]
     _id = ShuffleLocationSelector.INVASION_GUEST_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_invaded_kingdom(world, inventory)
+
     # Flag as checked: OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED
 
 
@@ -477,6 +742,16 @@ class MushroomKingdomBossFight(BossFightLocation):
     _originally_held = MackBossFight
     _rooms = [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM]
     _id = ShuffleLocationSelector.INVASION_BOSS_FIGHT
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_invaded_kingdom(world, inventory)
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
     # Flag as checked: MUSHROOM_KINGDOM_LIBERATED
 
 
@@ -484,6 +759,10 @@ class MushroomKingdomStarPiece(StarPieceLocation):
     _originally_held = StarPiece1
     _rooms = [R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM]
     _id = ShuffleLocationSelector.INVASION_STAR_PIECE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_mushroom_way_boss(world, inventory)
+
     # Flag as checked: MUSHROOM_KINGDOM_LIBERATED
 
 
@@ -497,6 +776,12 @@ class MushroomKingdomStoreExchangeLocation(NPCLocationRow2):
         R491_MUSHROOM_KINGDOM_ITEM_SHOP_TOP_FLOOR,
     ]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE_EXCHANGE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_mushroom_way_boss(world, inventory) and inventory.has_item(
+            RareFrogCoinPrize
+        )
+
     # Flag as checked: RARE_FROG_COIN_EXCHANGED
 
 
@@ -506,6 +791,10 @@ class MushroomKingdomInnPurchaseLocation(NPCLocationRow1):
         R493_MUSHROOM_KINGDOM_INN_1F,
     ]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_INN
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_mushroom_way_boss(world, inventory)
+
     # Flag as checked: GAMEBOY_KID_PURCHASE_COMPLETE
 
 
@@ -517,6 +806,10 @@ class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BANDITS_WAY_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_bandits_way(world, inventory)
+
     # Flag as checked: npc 9 in room 207 has its object trigger disabled.
 
 
@@ -525,6 +818,10 @@ class BanditsWayCoin1Location(StandingLocationRow3):
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BANDITS_WAY_COIN_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_bandits_way(world, inventory)
+
     # Flag as checked: npc 3 in room 207 has been removed from the room.
 
 
@@ -533,6 +830,10 @@ class BanditsWayCoin2Location(StandingLocationRow2):
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BANDITS_WAY_COIN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_bandits_way(world, inventory)
+
     # Flag as checked: npc 4 in room 207 has been removed from the room.
 
 
@@ -541,6 +842,10 @@ class BanditsWayCoin3Location(StandingLocationRow1):
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BANDITS_WAY_COIN_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_bandits_way(world, inventory)
+
     # Flag as checked: npc 5 in room 207 has been removed from the room.
 
 
@@ -549,6 +854,10 @@ class BanditsWayDogChestLocation(TreasureChestLocationRow1):
     _rooms = [R077_BANDITS_WAY_AREA_03]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_bandits_way(world, inventory)
+
     # Flag as checked: npc 0 in room 77 has its object trigger disabled.
 
 
@@ -557,6 +866,10 @@ class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R078_BANDITS_WAY_AREA_04]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_CHEST
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_bandits_way(world, inventory)
+
     # Flag as checked: npc 0 in room 78 has its object trigger disabled.
 
 
@@ -565,6 +878,10 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R078_BANDITS_WAY_AREA_04]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BANDITS_WAY_DOG_JUMP
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_bandits_way(world, inventory)
+
     # Flag as checked: npc 1 in room 78 has its object trigger disabled.
 
 
@@ -573,6 +890,10 @@ class BanditsWayDeadEndChestLocation(TreasureChestLocationRow1):
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_CROCO
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_bandits_way(world, inventory)
+
     # Flag as checked: npc 0 in room 206 has its object trigger disabled.
 
 
@@ -580,6 +901,16 @@ class BanditsWayBossFight(BossFightLocation):
     _originally_held = Croco1BossFight
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.BANDITS_WAY_BOSS_FIGHT
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_bandits_way(world, inventory)
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
     # Flag as checked: BANDITS_WAY_LIBERATED
 
 
@@ -587,6 +918,10 @@ class BanditsWayStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_PIECE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_bandits_way_boss(world, inventory)
+
     # Flag as checked: BANDITS_WAY_LIBERATED
 
 
@@ -594,6 +929,10 @@ class BanditsWayBossFirstItemDropLocation(NPCLocationRow1):
     _originally_held = RareFrogCoinPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.CROCO_1_REWARD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_bandits_way_boss(world, inventory)
+
     # Flag as checked: BANDITS_WAY_LIBERATED set
 
 
@@ -601,6 +940,10 @@ class BanditsWayBossSecondItemDropLocation(NPCLocationRow2):
     _originally_held = WalletPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.CROCO_1_REWARD_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_bandits_way_boss(world, inventory)
+
     # Flag as checked: BANDITS_WAY_LIBERATED set (checked at same time as BanditsWayBossSecondItemDropLocation)
 
 
@@ -612,6 +955,10 @@ class KeroSewersStairRoomLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_PANDORITE_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sewer(world, inventory)
+
     # flag as checked: npc 0 in room 60 has its object trigger disabled.
 
 
@@ -620,6 +967,10 @@ class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PANDORITE_CHEST
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sewer(world, inventory)
+
     # flag as checked: npc 1 in room 60 has its object trigger disabled.
 
 
@@ -628,6 +979,16 @@ class Mimic1BossFight(BossFightLocation):
     _rooms = [512]  # can be in any room.
     _override_id = 512
     _id = ShuffleLocationSelector.PANDORITE_BOSS_FIGHT
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_first_mimic(world, inventory)
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
     # Flag as checked: MIMIC_1_CLEARED
 
 
@@ -636,6 +997,10 @@ class Mimic1DropRewardLocation(NPCLocationRow1):
     _rooms = [512]  # can be in any room, custom id.
     _id = ShuffleLocationSelector.PANDORITE_REWARD_1
     _override_id = 512
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_mimic(world, inventory)
+
     # flag as checked: MIMIC_1_CLEARED
 
 
@@ -644,6 +1009,10 @@ class Mimic1StarPiece(StarPieceLocation):
     _rooms = [512]  # can be in any room.
     _override_id = 512
     _id = ShuffleLocationSelector.PANDORITE_BOSS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_mimic(world, inventory)
+
     # Flag as checked: MIMIC_1_CLEARED
 
 
@@ -652,6 +1021,10 @@ class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
     _rooms = [512]  # can be in any room.
     _id = ShuffleLocationSelector.PANDORITE_REWARD_2
     _override_id = 512
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_mimic(world, inventory)
+
     # flag as checked: the host chest for FirstMimicFightLauncher has its object trigger disabled
 
 
@@ -660,6 +1033,10 @@ class KeroSewersFourRatRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_STAR_CHEST
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sewer(world, inventory)
+
     # flag as checked: npc 0 in room 59 has its object trigger disabled.
 
 
@@ -668,6 +1045,10 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_LOWER
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sewer(world, inventory)
+
     # flag as checked: npc 0 in room 301 has its object trigger disabled.
 
 
@@ -676,6 +1057,10 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sewer(world, inventory)
+
     # flag as checked: SEWER_CHEST_FIRST_PRIZE_OBTAINED
 
 
@@ -684,6 +1069,10 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(TreasureChestLocationRow3):
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: SEWERS_FLIPPED_CHEST_OPENED
 
 
@@ -691,6 +1080,16 @@ class KeroSewersBossFight(BossFightLocation):
     _originally_held = Belome1BossFight
     _rooms = [R302_KERO_SEWERS_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.KERO_SEWERS_BOSS
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sewer_boss(world, inventory)
+
     # Flag as checked: SEWER_BOSS_DEFEATED
 
 
@@ -698,6 +1097,10 @@ class KeroSewersStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _id = ShuffleLocationSelector.KERO_SEWERS_STAR_PIECE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_sewer_boss(world, inventory)
+
     # Flag as checked: SEWER_BOSS_DEFEATED
 
 
@@ -734,13 +1137,23 @@ class TadpolePondCricketPieExchangeLocation(NPCLocationRow1):
     _originally_held = FroggiestickPrize
     _rooms = [R075_TADPOLE_POND_AREA_01]
     _id = ShuffleLocationSelector.CRICKET_PIE_REWARD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(CricketPiePrize)
+
     # Flag as checked: CRICKET_PIE_EXCHANGED
 
 
 class TadpolePondCricketJamExchangeLocation(NPCLocationRow2):
-    _originally_held = FrogCoin1Prize
+    _originally_held = FrogCoin10Prize
     _rooms = [R075_TADPOLE_POND_AREA_01]
     _id = ShuffleLocationSelector.CRICKET_JAM_REWARD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(CricketPiePrize) and inventory.has_item(
+            CricketJamPrize
+        )
+
     # Flag as checked: CRICKET_JAM_EXCHANGED
 
 
@@ -755,6 +1168,10 @@ class MelodyBaySecondRewardLocation(NPCLocationRow2):
     _originally_held = ProgressiveCardPrize
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_moleville_boss(world, inventory)
+
     # Flag as checked: MELODY_BAY_ITEM_2_GRANTED
 
 
@@ -762,6 +1179,12 @@ class MelodyBayThirdRewardLocation(NPCLocationRow3):
     _originally_held = ProgressiveCardPrize
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_moleville_boss(
+            world, inventory
+        ) and can_defeat_temple_boss(world, inventory)
+
     # Flag as checked: MELODY_BAY_ITEM_3_GRANTED
 
 
@@ -896,6 +1319,15 @@ class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):
     _rooms = [R419_LAZY_SHELL_CLOUD]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.GARDENER_CLOUD_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            inventory.has_item(SeedPrize)
+            and inventory.has_item(FertilizerPrize)
+            and can_defeat_forest_boss(world, inventory)
+            and can_defeat_chapel_boss(world, inventory)
+        )
+
     # Flag as checked: npc 0 in room 419 has its object trigger disabled.
 
 
@@ -904,6 +1336,15 @@ class RoseTownCloudLeftChestLocation(TreasureChestLocationRow2):
     _rooms = [R419_LAZY_SHELL_CLOUD]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.GARDENER_CLOUD_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            inventory.has_item(SeedPrize)
+            and inventory.has_item(FertilizerPrize)
+            and can_defeat_forest_boss(world, inventory)
+            and can_defeat_chapel_boss(world, inventory)
+        )
+
     # Flag as checked: npc 1 in room 419 has its object trigger disabled.
 
 
@@ -921,6 +1362,10 @@ class RoseTownInnGazPrizeLocation(NPCLocationRow1):
     _originally_held = FingerShotPrize
     _rooms = [R086_ROSE_TOWN_INN_1F]
     _id = ShuffleLocationSelector.GAZ
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_forest_boss(world, inventory)
+
     # Flag as checked: ROSE_TOWN_GAZ_ITEM_GRANTED
 
 
@@ -953,6 +1398,10 @@ class RoseTownTreasureHouseMazeRewardLocation(NPCLocationRow1):
         R094_ROSE_TOWN_TREASURE_HOUSE_1F,
     ]
     _id = ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_MAZE_REWARD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: TREASURE_HUNTER_HOUSE_PRIZE
 
 
@@ -967,11 +1416,18 @@ class RoseTownTreasureHouseUpperChestLocation(TreasureChestLocationRow1):
     # Flag as checked: npc 1 in room 97 or 98 has its object trigger disabled.
 
 
+########## forest maze
+
+
 class ForestMazeFirstRoomLocation(TreasureChestLocationRow1):
     _originally_held = KerokeroColaPrize
     _rooms = [R224_FOREST_MAZE_AREA_01]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 2 in room 224 has its object trigger disabled.
 
 
@@ -980,6 +1436,10 @@ class ForestMazeFirstUndergroundExitLocation(TreasureChestLocationRow1):
     _rooms = [R228_FOREST_MAZE_AREA_04]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 2 in room 228 has its object trigger disabled.
 
 
@@ -988,6 +1448,10 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
     _rooms = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 2 in room 242 has its object trigger disabled.
 
 
@@ -996,6 +1460,10 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
     _rooms = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 3 in room 242 has its object trigger disabled.
 
 
@@ -1004,6 +1472,10 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
     _rooms = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 4 in room 242 has its object trigger disabled.
 
 
@@ -1012,6 +1484,10 @@ class ForestMazeInnerMazeEntranceLocation(TreasureChestLocationRow1):
     _rooms = [R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.FOREST_MAZE_RED_ESSENCE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 4 in room 227 has its object trigger disabled.
 
 
@@ -1020,6 +1496,10 @@ class ForestMazeSecretTopRightChestLocation(TreasureChestLocationRow1):
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 1 in room 234 has its object trigger disabled.
 
 
@@ -1028,6 +1508,10 @@ class ForestMazeSecretBottomRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 2 in room 234 has its object trigger disabled.
 
 
@@ -1036,6 +1520,10 @@ class ForestMazeSecretTopMiddleChestLocation(TreasureChestLocationRow3):
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 3 in room 234 has its object trigger disabled.
 
 
@@ -1044,6 +1532,10 @@ class ForestMazeSecretBottomMiddleChestLocation(TreasureChestLocationRow4):
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 4 in room 234 has its object trigger disabled.
 
 
@@ -1052,6 +1544,10 @@ class ForestMazeSecretLeftChestLocation(TreasureChestLocationRow5):
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_5
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest(world, inventory)
+
     # Flag as checked: npc 5 in room 234 has its object trigger disabled.
 
 
@@ -1059,6 +1555,16 @@ class ForestMazeBossFight(BossFightLocation):
     _originally_held = BowyerBossFight
     _rooms = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
     _id = ShuffleLocationSelector.FOREST_MAZE_BOSS
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_forest_boss(world, inventory)
+
     # Flag as checked: FOREST_LIBERATED
 
 
@@ -1066,37 +1572,134 @@ class ForestMazeStarPiece(StarPieceLocation):
     _originally_held = StarPiece2
     _rooms = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
     _id = ShuffleLocationSelector.FOREST_MAZE_STAR_PIECE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_forest_boss(world, inventory)
+
     # Flag as checked: FOREST_LIBERATED
 
 
 class ForestMazeCharacter(CharacterRecruitmentLocation):
     _originally_held = GenoRecruitmentPrize
     _rooms = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
+
+    def set_prize(self, prize: Prize | None):
+        assert isinstance(prize, CharacterPrize) or prize is None
+        if isinstance(prize, CharacterPrize):
+            prize.set_starting_level(6)
+        return super().set_prize(prize)
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_forest_boss(world, inventory) and is_all_starting_chars_set(
+            world
+        )
+
     # Flag as checked: FOREST_LIBERATED
 
 
 class GenoSpell1(SpellSlotLocation):
     _originally_held = GenoBeamSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(GenoRecruitmentPrize)
+
 
 class GenoSpell2(SpellSlotLocation):
     _originally_held = GenoBoostSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(GenoRecruitmentPrize)
+        return inventory.has_item(GenoRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_mushroom_way_boss,
+                    can_defeat_bandits_way_boss,
+                    can_defeat_mushroom_kingdom_boss,
+                ],
+            )
+            or (isinstance(item, GenoRecruitmentPrize) and item.starting_level >= 8)
+        )
 
 
 class GenoSpell3(SpellSlotLocation):
     _originally_held = GenoWhirlSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(GenoRecruitmentPrize)
+        return inventory.has_item(GenoRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_sewer_boss,
+                    can_defeat_forest_boss,
+                    can_defeat_first_moleville_boss,
+                    can_defeat_second_moleville_boss,
+                    can_defeat_curtain_boss,
+                    can_defeat_balcony_boss,
+                    can_defeat_chapel_boss,
+                ],
+            )
+        )
+
 
 class GenoSpell4(SpellSlotLocation):
     _originally_held = GenoBlastSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(GenoRecruitmentPrize)
+        return inventory.has_item(GenoRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_ship_midboss,
+                    can_defeat_ship_boss,
+                    can_defeat_seaside_boss,
+                ],
+            )
+        )
 
 
 class GenoSpell5(SpellSlotLocation):
     _originally_held = GenoFlashSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(GenoRecruitmentPrize)
+        return inventory.has_item(GenoRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_lands_end_cloud_boss,
+                    can_defeat_temple_boss,
+                    can_defeat_second_dojo_boss,
+                    can_defeat_valley_boss,
+                ],
+            )
+        )
+
 
 class GenoSpell6(SpellSlotLocation):
     _originally_held = None
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(GenoRecruitmentPrize)
+        return inventory.has_item(GenoRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_statue_boss,
+                    can_defeat_nimbus_boss,
+                    can_defeat_egg_boss,
+                    can_defeat_volcano_boss,
+                    can_defeat_volcano_midboss,
+                ],
+            )
+        )
 
 
 ########## pipe vault
@@ -1107,6 +1710,10 @@ class PipeVaultSlidingCoinRoomBackChestLocation(TreasureChestLocationRow3):
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 8 in room 125 has its object trigger disabled.
 
 
@@ -1115,6 +1722,10 @@ class PipeVaultSlidingCoinRoomMiddleChestLocation(TreasureChestLocationRow2):
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 9 in room 125 has its object trigger disabled.
 
 
@@ -1123,6 +1734,10 @@ class PipeVaultSlidingCoinRoomFrontChestLocation(TreasureChestLocationRow1):
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 10 in room 125 has its object trigger disabled.
 
 
@@ -1131,6 +1746,10 @@ class PipeVaultSlidingCoinRoomCoin1Location(StandingLocationRow5):
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_1
 
 
@@ -1139,6 +1758,10 @@ class PipeVaultSlidingCoinRoomCoin2Location(StandingLocationRow4):
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 1 in room 125 has been removed from the room.
 
 
@@ -1147,6 +1770,10 @@ class PipeVaultSlidingCoinRoomCoin3Location(StandingLocationRow3):
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 2 in room 125 has been removed from the room
 
 
@@ -1155,6 +1782,10 @@ class PipeVaultSlidingCoinRoomCoin4Location(StandingLocationRow2):
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 3 in room 125 has been removed from the room
 
 
@@ -1163,6 +1794,10 @@ class PipeVaultSlidingCoinRoomCoin5Location(StandingLocationRow1):
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_5
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 4 in room 125 has been removed from the room
 
 
@@ -1171,6 +1806,10 @@ class PipeVaultSlidingCoinRoomCrouchItemLocation(StandingLocationRow6):
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_FROG_COIN
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 5 in room 125 has been removed from the room.
 
 
@@ -1178,6 +1817,10 @@ class PipeVaultGoombaThumpinFirstPrizeLocation(NPCLocationRow1):
     _originally_held = FlowerTabPrize
     _rooms = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
     _id = ShuffleLocationSelector.GOOMBA_THUMPING_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: GOOMBA_THUMPING_1
 
 
@@ -1185,6 +1828,10 @@ class PipeVaultGoombaThumpinSecondPrizeLocation(NPCLocationRow2):
     _originally_held = FlowerJarPrize
     _rooms = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
     _id = ShuffleLocationSelector.GOOMBA_THUMPING_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: GOOMBA_THUMPING_2
 
 
@@ -1193,6 +1840,10 @@ class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
     _rooms = [R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 0 in room 128 has its object trigger disabled.
 
 
@@ -1201,6 +1852,10 @@ class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
     _rooms = [R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # flag as checked: npc 1 in room 128 has its object trigger disabled.
 
 
@@ -1212,6 +1867,10 @@ class YosterEntranceChestLocation(TreasureChestLocationRow1):
     _rooms = [R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.YOSTER_ISLE_ENTRANCE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # Flag as checked: npc 1 in room 33 has its object trigger disabled.
 
 
@@ -1219,6 +1878,10 @@ class YosterRacePrize1Location(NPCLocationRow1):
     _originally_held = YoshiCookiePrize
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # Flag as checked: COMPLETED_MUSHROOM_DERBY
 
 
@@ -1226,6 +1889,10 @@ class YosterRacePrize2Location(NPCLocationRow3):
     _originally_held = YoshiCookiePrize
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # Flag as checked: COMPLETED_MUSHROOM_DERBY
 
 
@@ -1233,28 +1900,24 @@ class YosterRacePrize3Location(NPCLocationRow4):
     _originally_held = YoshiCookiePrize
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+
     # Flag as checked: COMPLETED_MUSHROOM_DERBY
 
 
 ########## moleville
 
 
-class BucketGirlRewardLocation(NPCLocationRow1):
-    _originally_held = FrogCoin1Prize
-    _rooms = [R108_MOLEVILLE_OUTSIDE]
-    _id = ShuffleLocationSelector.BUCKET_GIRL
-    # Flag as checked: BUCKET_PRIZE_GRANT_NO_WARP
-    # Not available if bucket warp is enabled
-    # TODO: make it available?
-
-
-# TODO: progressive fireworks checks
-
-
 class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
     _originally_held = LuckyJewelPrize
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.TREASURE_SELLER_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_moleville_boss(world, inventory)
+
     # Flag as checked: TREASURE_SHOP_ITEM_1_PURCHASED
 
 
@@ -1262,6 +1925,12 @@ class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
     _originally_held = ProgressiveEggPrize
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.TREASURE_SELLER_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_moleville_boss(
+            world, inventory
+        ) and can_defeat_seaside_boss(world, inventory)
+
     # Flag as checked: TREASURE_SHOP_ITEM_2_PURCHASED
 
 
@@ -1269,6 +1938,12 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
     _originally_held = FryingPanPrize
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.TREASURE_SELLER_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_moleville_boss(
+            world, inventory
+        ) and can_defeat_volcano_boss(world, inventory)
+
     # Flag as checked: TREASURE_SHOP_ITEM_3_PURCHASED
 
 
@@ -1276,8 +1951,64 @@ class FireworksShopItemLocation(NPCLocationRow1):
     _originally_held = RegularFireworksPrize
     _rooms = [R339_MOLEVILLE_FIREWORKS_SHOP]
     _id = ShuffleLocationSelector.FIREWORKS_SHOP
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return world.settings.is_flag_value(
+            FireworksSetting, FireworksOptions.PROGRESSIVE
+        ) and can_defeat_second_moleville_boss(world, inventory)
+
     # Flag as checked: FIREWORKS_HOUSE_ITEM_SOLD
     # not a check if progressive fireworks is turned off
+
+
+class PurtendStoreLocation(NPCLocationRow2):
+    _originally_held = ProgressiveFireworksPrize
+    _rooms = [R108_MOLEVILLE_OUTSIDE]
+    _id = ShuffleLocationSelector.PURTEND_STORE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE)
+            and can_defeat_second_moleville_boss(world, inventory)
+            and inventory.has_item_count(ProgressiveFireworksPrize, 1)
+        )
+
+    # flag as checked: PURTEND_STORE_CHECK_DONE
+    # not a check if progressive fireworks turned off
+
+
+class CookieTraderLocation(NPCLocationRow4):
+    _originally_held = ProgressiveFireworksPrize
+    _rooms = [R336_MOLEVILLE_ITEM_SHOP]
+    _id = ShuffleLocationSelector.COOKIE_TRADER
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE)
+            and can_defeat_second_moleville_boss(world, inventory)
+            and inventory.has_item_count(ProgressiveFireworksPrize, 2)
+        )
+
+    # flag as checked: COOKIE_TRADER_CHECKED
+    # not a check if progressive fireworks turned off
+
+
+class BucketGirlRewardLocation(NPCLocationRow1):
+    _originally_held = FrogCoin1Prize
+    _rooms = [R108_MOLEVILLE_OUTSIDE]
+    _id = ShuffleLocationSelector.BUCKET_GIRL
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        if not can_defeat_second_moleville_boss(world, inventory):
+            return False
+        if world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
+            return inventory.has_item_count(ProgressiveFireworksPrize, 3)
+        if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
+            return inventory.has_item(RegularFireworksPrize)
+        else:
+            return True
+
+    # Flag as checked: CARBO_COOKIE_GIVEN
 
 
 # TODO: Did I make these permanent already? Can't find the code that removes them indirectly
@@ -1287,6 +2018,10 @@ class OuterMinesTrampolineHenchmanLocation(NPCLocationRow2):
     _originally_held = FlowerTabPrize
     _rooms = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_moleville_entrance(world, inventory)
+
     # Flag as checked: NPC 1 invisible in room 273
 
 
@@ -1294,6 +2029,10 @@ class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
     _originally_held = FlowerTabPrize
     _rooms = [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_moleville_entrance(world, inventory)
+
     # Flag as checked: NPC 1 invisible in room 277
 
 
@@ -1301,7 +2040,41 @@ class OuterMinesRightHenchmanLocation(NPCLocationRow2):
     _originally_held = FlowerTabPrize
     _rooms = [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_moleville_entrance(world, inventory)
+
     # Flag as checked: NPC 1 invisible in room 283
+
+
+class OuterMinesBossFight(BossFightLocation):
+    _originally_held = Croco2BossFight
+    _rooms = [518]
+    _override_id = 518
+    _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_FIGHT_1
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_first_moleville_boss(world, inventory)
+
+    # Flag as checked: MINES_BOSS_1_DEFEATED
+
+
+class OuterMinesStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [518]
+    _override_id = 518
+    _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_moleville_boss(world, inventory)
+
+    # Flag as checked: MINES_BOSS_1_DEFEATED
 
 
 class OuterMinesBossPrizeLocation(NPCLocationRow1):
@@ -1315,23 +2088,11 @@ class OuterMinesBossPrizeLocation(NPCLocationRow1):
         R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM,
         R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
     ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_moleville_boss(world, inventory)
+
     # flag as checked: MINES_BOSS_1_DEFEATED
-
-
-class OuterMinesBossFight(BossFightLocation):
-    _originally_held = Croco2BossFight
-    _rooms = [518]
-    _override_id = 518
-    _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_FIGHT_1
-    # Flag as checked: MINES_BOSS_1_DEFEATED
-
-
-class OuterMinesStarPiece(StarPieceLocation):
-    _originally_held = None
-    _rooms = [518]
-    _override_id = 518
-    _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_1
-    # Flag as checked: MINES_BOSS_1_DEFEATED
 
 
 class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
@@ -1339,6 +2100,10 @@ class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
     _rooms = [R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_STAR_CHEST
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_mines(world, inventory)
+
     # Flag as checked: npc 0 in room 285 has its object trigger disabled.
 
 
@@ -1348,9 +2113,12 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
         R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM
     ]
     _npc_ids = [NPC_2]
-    _id = (
-        ShuffleLocationSelector.MOLEVILLE_MINES_SHY_GUY
-    )  # Flag as checked: RUNAWAY_MINECART_ITEM_OBTAINED
+    _id = ShuffleLocationSelector.MOLEVILLE_MINES_SHY_GUY
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_mines(world, inventory)
+
+    # Flag as checked: RUNAWAY_MINECART_ITEM_OBTAINED
 
 
 class InnerMinesBoxesChestLocation(TreasureChestLocationRow1):
@@ -1358,6 +2126,10 @@ class InnerMinesBoxesChestLocation(TreasureChestLocationRow1):
     _rooms = [R280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_COINS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_mines(world, inventory)
+
     # Flag as checked: npc 0 in room 280 has its object trigger disabled.
 
 
@@ -1366,6 +2138,10 @@ class InnerMinesSaveBlockChestLocation(TreasureChestLocationRow1):
     _rooms = [R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_mines(world, inventory)
+
     # Flag as checked: npc 0 in room 288 has its object trigger disabled.
 
 
@@ -1374,6 +2150,10 @@ class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
     _rooms = [R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_mines(world, inventory)
+
     # Flag as checked: npc 1 in room 288 has its object trigger disabled.
 
 
@@ -1381,6 +2161,16 @@ class InnerMinesBossFight(BossFightLocation):
     _originally_held = PunchinelloBossFight
     _rooms = [R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_moleville_boss(world, inventory)
+
     # Flag as checked: MINES_BOSS_2_DEFEATED
 
 
@@ -1390,35 +2180,129 @@ class InnerMinesStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_2
     # Flag as checked: MINES_BOSS_2_DEFEATED
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_moleville_boss(world, inventory)
+
 
 class InnerMinesCharacter(CharacterRecruitmentLocation):
     _originally_held = BowserRecruitmentPrize
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
+
+    def set_prize(self, prize: Prize | None):
+        assert isinstance(prize, CharacterPrize) or prize is None
+        if isinstance(prize, CharacterPrize):
+            prize.set_starting_level(8)
+        return super().set_prize(prize)
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        # starters need to be set first
+        return can_defeat_second_moleville_boss(world, inventory)
+
     # Flag as checked: MINES_BOSS_2_DEFEATED
 
 
 class BowserSpell1(SpellSlotLocation):
     _originally_held = TerrorizeSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(BowserRecruitmentPrize)
+
 
 class BowserSpell2(SpellSlotLocation):
     _originally_held = PoisonGasSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(BowserRecruitmentPrize)
+        return inventory.has_item(BowserRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_mushroom_way_boss,
+                    can_defeat_bandits_way_boss,
+                    can_defeat_mushroom_kingdom_boss,
+                ],
+            )
+        )
 
 
 class BowserSpell3(SpellSlotLocation):
     _originally_held = CrusherSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(BowserRecruitmentPrize)
+        return inventory.has_item(BowserRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_sewer_boss,
+                    can_defeat_forest_boss,
+                    can_defeat_first_moleville_boss,
+                    can_defeat_second_moleville_boss,
+                    can_defeat_curtain_boss,
+                    can_defeat_balcony_boss,
+                    can_defeat_chapel_boss,
+                ],
+            )
+        )
+
 
 class BowserSpell4(SpellSlotLocation):
     _originally_held = BowserCrushSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(BowserRecruitmentPrize)
+        return inventory.has_item(BowserRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_ship_midboss,
+                    can_defeat_ship_boss,
+                    can_defeat_seaside_boss,
+                ],
+            )
+        )
 
 
 class BowserSpell5(SpellSlotLocation):
     _originally_held = None
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(BowserRecruitmentPrize)
+        return inventory.has_item(BowserRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_lands_end_cloud_boss,
+                    can_defeat_temple_boss,
+                    can_defeat_second_dojo_boss,
+                    can_defeat_valley_boss,
+                ],
+            )
+        )
+
 
 class BowserSpell6(SpellSlotLocation):
     _originally_held = None
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(BowserRecruitmentPrize)
+        return inventory.has_item(BowserRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_statue_boss,
+                    can_defeat_nimbus_boss,
+                    can_defeat_egg_boss,
+                    can_defeat_volcano_boss,
+                    can_defeat_volcano_midboss,
+                ],
+            )
+        )
 
 
 class InnerMinesPostgameBossFight(BossFightLocation):
@@ -1427,6 +2311,16 @@ class InnerMinesPostgameBossFight(BossFightLocation):
     _override_id = 527
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_FIGHT_3
     _remake_only = True
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_moleville_postgame_boss(world, inventory)
+
     # Flag as checked: MINES_POSTGAME_COMPLETED
 
 
@@ -1436,6 +2330,10 @@ class InnerMinesPostgameStarPiece(StarPieceLocation):
     _override_id = 527
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_3
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_moleville_boss(world, inventory)
+
     # Flag as checked: MINES_POSTGAME_COMPLETED
 
 
@@ -1444,6 +2342,10 @@ class InnerMinesPostgameDrop(NPCLocationRow1):
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_POSTGAME_DROP
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_moleville_boss(world, inventory)
+
     # Flag as checked: MINES_POSTGAME_COMPLETED
 
 
@@ -1486,6 +2388,10 @@ class BoosterPassSecretMiddleChestLocation(TreasureChestLocationRow1):
     _rooms = [R405_BOOSTER_PASS_SECRET]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOOSTER_PASS_SECRET_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 10 in room 405 has its object trigger disabled.
 
 
@@ -1494,6 +2400,10 @@ class BoosterPassSecretRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R405_BOOSTER_PASS_SECRET]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOOSTER_PASS_SECRET_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 11 in room 405 has its object trigger disabled.
 
 
@@ -1502,6 +2412,10 @@ class BoosterPassSecretLeftChestLocation(TreasureChestLocationRow3):
     _rooms = [R405_BOOSTER_PASS_SECRET]
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOOSTER_PASS_SECRET_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 12 in room 405 has its object trigger disabled.
 
 
@@ -1513,6 +2427,10 @@ class BoosterTowerSpookumStairsLocation(TreasureChestLocationRow1):
     _rooms = [R196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_SPOOKUM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 6 in room 196 has its object trigger disabled.
 
 
@@ -1520,6 +2438,10 @@ class BoosterTowerTrainRoomCreviceLocation(NPCLocationRow1):
     _originally_held = FlowerTabPrize
     _rooms = [R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_RAILWAY
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: NPC 1 removed from room 194
 
 
@@ -1528,6 +2450,10 @@ class BoosterTowerChestNearThwompLocation(TreasureChestLocationRow1):
     _rooms = [R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_THWOMP
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 2 in room 36 has its object trigger disabled.
 
 
@@ -1539,6 +2465,10 @@ class BoosterTowerFallingChestLocation(
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_MASHER
     _container_event = E0253_NPC_QUEST_1_GRANT
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: TOWER_SEESAW_CHEST_OPENED
 
 
@@ -1546,6 +2476,10 @@ class BoosterTowerKnifeGuyPrizeLocation(NPCLocationRow1):
     _originally_held = BrightCardPrize
     _rooms = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: KNIFE_GUY_PRIZE_GRANTED
 
 
@@ -1554,6 +2488,10 @@ class BoosterTowerPortraitPrizeLocation(StandingLocationRow1):
     _rooms = [R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PORTRAITS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 7 in room 195 has been removed from the room
     # AND
     # PORTRAIT_GAME_COMPLETED is set
@@ -1564,6 +2502,10 @@ class BoosterTowerElderKeyItemLocation(StandingLocationRow1):
     _rooms = [R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_CHOMP
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory) and inventory.has_item(ElderKeyPrize)
+
     # flag as checked: npc 0 in room 200 has been removed from the room.
 
 
@@ -1572,6 +2514,10 @@ class BoosterTowerParachuteRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 9 in room 35 has its object trigger disabled.
 
 
@@ -1579,6 +2525,10 @@ class BoosterTowerParachuteRoomCreviceLocation(NPCLocationRow1):
     _originally_held = FrogCoin1Prize
     _rooms = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE_CREVICE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: NPC 8 removed from room 35
 
 
@@ -1589,6 +2539,10 @@ class BoosterTowerCheckerboardRightmostItemLocation(StandingLocationRow14):
     ]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_ROOM_KEY
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 5 in room 41 has been removed from the room.
 
 
@@ -1599,6 +2553,10 @@ class BoosterTowerCheckerboardTopItemLocation(StandingLocationRow1):
     ]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 0 in room 41 has been removed from the room.
 
 
@@ -1609,6 +2567,10 @@ class BoosterTowerCheckerboardLeftmostItemLocation(StandingLocationRow2):
     ]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 1 in room 41 has been removed from the room.
 
 
@@ -1619,6 +2581,10 @@ class BoosterTowerCheckerboardUpperRightItemLocation(StandingLocationRow3):
     ]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 2 in room 41 has been removed from the room.
 
 
@@ -1629,6 +2595,10 @@ class BoosterTowerCheckerboardBottomItemLocation(StandingLocationRow4):
     ]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 3 in room 41 has been removed from the room.
 
 
@@ -1639,6 +2609,10 @@ class BoosterTowerCheckerboardCoin1Location(StandingLocationRow5):
     ]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 7 in room 41 has been removed from the room.
 
 
@@ -1649,6 +2623,10 @@ class BoosterTowerCheckerboardCoin2Location(StandingLocationRow6):
     ]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 8 in room 41 has been removed from the room.
 
 
@@ -1659,6 +2637,10 @@ class BoosterTowerCheckerboardCoin3Location(StandingLocationRow7):
     ]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 9 in room 41 has been removed from the room.
 
 
@@ -1669,6 +2651,10 @@ class BoosterTowerCheckerboardCoin4Location(StandingLocationRow8):
     ]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 10 in room 41 has been removed from the room.
 
 
@@ -1679,6 +2665,10 @@ class BoosterTowerCheckerboardCoin5Location(StandingLocationRow9):
     ]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_5
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 11 in room 41 has been removed from the room.
 
 
@@ -1689,6 +2679,10 @@ class BoosterTowerCheckerboardCoin6Location(StandingLocationRow10):
     ]
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_6
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 12 in room 41 has been removed from the room.
 
 
@@ -1699,6 +2693,10 @@ class BoosterTowerCheckerboardCoin7Location(StandingLocationRow11):
     ]
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_7
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 13 in room 41 has been removed from the room.
 
 
@@ -1709,6 +2707,10 @@ class BoosterTowerCheckerboardCoin8Location(StandingLocationRow12):
     ]
     _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_8
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 14 in room 41 has been removed from the room.
 
 
@@ -1719,6 +2721,10 @@ class BoosterTowerCheckerboardCoin9Location(StandingLocationRow13):
     ]
     _npc_ids = [NPC_15]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_9
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 15 in room 41 has been removed from the room.
 
 
@@ -1727,6 +2733,10 @@ class BoosterTowerRoomKeyChestLocation(TreasureChestLocationRow1):
     _rooms = [R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_ZOOM_SHOES
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory) and inventory.has_item(RoomKeyPrize)
+
     # flag as checked: npc 0 in room 48 has its object trigger disabled.
 
 
@@ -1735,6 +2745,10 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
     _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 0 in room 199 has its object trigger disabled.
 
 
@@ -1743,6 +2757,10 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
     _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 1 in room 199 has its object trigger disabled.
 
 
@@ -1751,6 +2769,10 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
     _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: npc 9 in room 199 has its object trigger disabled.
 
 
@@ -1758,6 +2780,10 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     _originally_held = AmuletPrize
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory)
+
     # flag as checked: TOWER_BOSS_1_STAR_PIECE
     # will be granted regardless of whether they do curtain game or fight boss
 
@@ -1766,6 +2792,16 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
     _originally_held = BoosterBossFight
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_1
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_curtain_boss(world, inventory)
+
     # Flag as checked: TOWER_BOSS_1_STAR_PIECE
 
 
@@ -1773,6 +2809,10 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_curtain_boss(world, inventory)
+
     # Flag as checked: TOWER_BOSS_1_STAR_PIECE
 
 
@@ -1782,6 +2822,16 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     _override_id = 528
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_1
     _remake_only = True
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower_postgame_boss(world, inventory)
+
     # Flag as checked: POSTGAME_TOWER_COMPLETED
 
 
@@ -1791,6 +2841,10 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _override_id = 528
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_tower_boss(world, inventory)
+
     # Flag as checked: POSTGAME_TOWER_COMPLETED
 
 
@@ -1799,6 +2853,10 @@ class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow2):
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_POSTGAME_DROP
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_tower_boss(world, inventory)
+
     # Flag as checked: POSTGAME_TOWER_COMPLETED
 
 
@@ -1806,6 +2864,16 @@ class BoosterTowerBalconyBossFight(BossFightLocation):
     _originally_held = KnifeGuyGrateGuyBossFight
     _rooms = [R202_BOOSTER_TOWER_ENTRANCE]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_2
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_balcony_boss(world, inventory)
+
     # Flag as checked: TOWER_BOSS_2_DEFEATED
 
 
@@ -1813,6 +2881,10 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R202_BOOSTER_TOWER_ENTRANCE]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_balcony_boss(world, inventory)
+
     # Flag as checked: TOWER_BOSS_2_DEFEATED
 
 
@@ -1825,6 +2897,10 @@ class BoosterHillGuaranteedItem1(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_9, NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 0 to 1
 
 
@@ -1834,6 +2910,10 @@ class BoosterHillGuaranteedItem2(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_10, NPC_10]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 1 to 2
 
 
@@ -1843,6 +2923,10 @@ class BoosterHillGuaranteedItem3(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_11, NPC_11]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 2 to 3
 
 
@@ -1852,6 +2936,10 @@ class BoosterHillGuaranteedItem4(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_12, NPC_12]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 3 to 4
 
 
@@ -1861,6 +2949,10 @@ class BoosterHillGuaranteedItem5(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_13, NPC_13]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_5
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 4 to 5
 
 
@@ -1870,6 +2962,10 @@ class BoosterHillGuaranteedItem6(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_14, NPC_14]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_6
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 5 to 6
 
 
@@ -1879,6 +2975,10 @@ class BoosterHillGuaranteedItem7(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_15, NPC_15]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_7
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 6 to 7
 
 
@@ -1888,6 +2988,10 @@ class BoosterHillGuaranteedItem8(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_16, NPC_16]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_8
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 7 to 8
 
 
@@ -1897,6 +3001,10 @@ class BoosterHillGuaranteedItem9(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_17, NPC_17]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_9
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 8 to 9
 
 
@@ -1906,6 +3014,10 @@ class BoosterHillGuaranteedItem10(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_18, NPC_18]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_10
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 9 to 10
 
 
@@ -1915,6 +3027,10 @@ class BoosterHillGuaranteedItem11(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_19, NPC_19]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_11
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 10 to 11
 
 
@@ -1924,6 +3040,10 @@ class BoosterHillGuaranteedItem12(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_20, NPC_20]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_12
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 11 to 12
 
 
@@ -1933,6 +3053,10 @@ class BoosterHillGuaranteedItem13(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_21, NPC_21]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_13
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 12 to 13
 
 
@@ -1942,6 +3066,10 @@ class BoosterHillGuaranteedItem14(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_22, NPC_22]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_14
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 13 to 14
 
 
@@ -1951,6 +3079,10 @@ class BoosterHillGuaranteedItem15(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_23, NPC_23]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_15
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 14 to 15
 
 
@@ -1960,6 +3092,10 @@ class BoosterHillGuaranteedItem16(StandingLocation, BoosterHillLocation):
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
     _npc_ids = [NPC_24, NPC_24]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_16
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_hill(world, inventory)
+
     # flag as checked $70B1 goes from 15 to 16
 
 
@@ -2032,6 +3168,10 @@ class MarrymoreSnifit1Location(StandingLocationRow1):
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
     _container_event = E0253_NPC_QUEST_1_GRANT
     _npc_ids = [NPC_6]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_chapel(world, inventory)
+
     # flag as checked: CHAPEL_ITEM_1_RETRIEVED
 
 
@@ -2041,6 +3181,10 @@ class MarrymoreSnifit2Location(StandingLocationRow2):
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
     _container_event = E0252_NPC_QUEST_2_GRANT
     _npc_ids = [NPC_7]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_chapel(world, inventory)
+
     # flag as checked: CHAPEL_ITEM_2_RETRIEVED
 
 
@@ -2050,6 +3194,10 @@ class MarrymoreSnifit3Location(StandingLocationRow3):
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
     _container_event = E0251_NPC_QUEST_3_GRANT
     _npc_ids = [NPC_4]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_chapel(world, inventory)
+
     # flag as checked: CHAPEL_ITEM_3_RETRIEVED
 
 
@@ -2058,6 +3206,10 @@ class MarrymoreAltarHeadLocation(StandingLocationRow1):
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.MARRYMORE_ALTAR
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_chapel(world, inventory)
+
     # flag as checked: npc 5 in room 154 has been removed from the room.
 
 
@@ -2065,6 +3217,16 @@ class MarrymoreBossFight(BossFightLocation):
     _originally_held = BundtBossFight
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_chapel_boss(world, inventory)
+
     # Flag as checked: MARRYMORE_LIBERATED
 
 
@@ -2072,6 +3234,10 @@ class MarrymoreBossFightStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_STAR_PIECE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_chapel_boss(world, inventory)
+
     # Flag as checked: MARRYMORE_LIBERATED
 
 
@@ -2079,31 +3245,126 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
     _originally_held = ToadstoolRecruitmentPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_CHARACTER
+
+    def set_prize(self, prize: Prize | None):
+        assert isinstance(prize, CharacterPrize) or prize is None
+        if isinstance(prize, CharacterPrize):
+            prize.set_starting_level(9)
+        return super().set_prize(prize)
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_chapel_boss(world, inventory) and is_all_starting_chars_set(
+            world
+        )
+
     # Flag as checked: MARRYMORE_LIBERATED
 
 
 class ToadstoolSpell1(SpellSlotLocation):
     _originally_held = TherapySpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(ToadstoolRecruitmentPrize)
+
 
 class ToadstoolSpell2(SpellSlotLocation):
     _originally_held = GroupHugSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(ToadstoolRecruitmentPrize)
+        return inventory.has_item(ToadstoolRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_mushroom_way_boss,
+                    can_defeat_bandits_way_boss,
+                    can_defeat_mushroom_kingdom_boss,
+                ],
+            )
+            or (
+                isinstance(item, ToadstoolRecruitmentPrize) and item.starting_level >= 3
+            )
+        )
 
 
 class ToadstoolSpell3(SpellSlotLocation):
     _originally_held = SleepyTimeSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(ToadstoolRecruitmentPrize)
+        return inventory.has_item(ToadstoolRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_sewer_boss,
+                    can_defeat_forest_boss,
+                    can_defeat_first_moleville_boss,
+                    can_defeat_second_moleville_boss,
+                    can_defeat_curtain_boss,
+                    can_defeat_balcony_boss,
+                    can_defeat_chapel_boss,
+                ],
+            )
+        )
+
 
 class ToadstoolSpell4(SpellSlotLocation):
     _originally_held = ComeBackSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(ToadstoolRecruitmentPrize)
+        return inventory.has_item(ToadstoolRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_ship_midboss,
+                    can_defeat_ship_boss,
+                    can_defeat_seaside_boss,
+                ],
+            )
+        )
 
 
 class ToadstoolSpell5(SpellSlotLocation):
     _originally_held = MuteSpellPrize
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(ToadstoolRecruitmentPrize)
+        return inventory.has_item(ToadstoolRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_lands_end_cloud_boss,
+                    can_defeat_temple_boss,
+                    can_defeat_second_dojo_boss,
+                    can_defeat_valley_boss,
+                ],
+            )
+        )
+
 
 class ToadstoolSpell6(SpellSlotLocation):
     _originally_held = PsychBombSpellPrize
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        item = inventory.get_item(ToadstoolRecruitmentPrize)
+        return inventory.has_item(ToadstoolRecruitmentPrize) and (
+            can_defeat_some_of(
+                world,
+                inventory,
+                [
+                    can_defeat_statue_boss,
+                    can_defeat_nimbus_boss,
+                    can_defeat_egg_boss,
+                    can_defeat_volcano_boss,
+                    can_defeat_volcano_midboss,
+                ],
+            )
+        )
 
 
 class MarrymoreBossFightRemake(BossFightLocation):
@@ -2112,6 +3373,16 @@ class MarrymoreBossFightRemake(BossFightLocation):
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_BOSS_FIGHT
     _override_id = 529
     _remake_only = True
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_chapel_postgame_boss(world, inventory)
+
     # Flag as checked: POSTGAME_CHAPEL_COMPLETE
 
 
@@ -2121,6 +3392,10 @@ class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_STAR_PIECE
     _override_id = 529
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_chapel_boss(world, inventory)
+
     # Flag as checked: POSTGAME_CHAPEL_COMPLETE
 
 
@@ -2129,6 +3404,10 @@ class MarrymoreBossFightRemakeItemDrop(NPCLocationRow4):
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_ITEM_DROP
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_chapel_boss(world, inventory)
+
     # flag as checked: POSTGAME_CHAPEL_COMPLETE
 
 
@@ -2184,6 +3463,16 @@ class SeasideBeachBossFight(BossFightLocation):
     _originally_held = YaridovichBossFight
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_seaside_boss(world, inventory)
+
     # Flag as checked: SEASIDE_LIBERATED
 
 
@@ -2191,6 +3480,10 @@ class SeasideBeachStarPiece(StarPieceLocation):
     _originally_held = StarPiece5
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_seaside_boss(world, inventory)
+
     # Flag as checked: SEASIDE_LIBERATED
 
 
@@ -2199,6 +3492,10 @@ class SeasideTownBossPrizeLocation(StandingLocationRow1):
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS_PRIZE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_seaside_boss(world, inventory)
+
     # flag as checked: npc 0 in room 316 has been removed from the room.
     # TODO probably need a bit for this, item is absent by default and only summoned when boss defeated
 
@@ -2210,6 +3507,12 @@ class SeasideTownShedRescueLocation(NPCLocationRow1):
     _originally_held = FlowerBoxPrize
     _rooms = [R314_SEASIDE_TOWN_SHED]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_RESCUE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_seaside_boss(world, inventory) and inventory.has_item(
+            ShedKeyPrize
+        )
+
     # flag as checked: SEASIDE_SHED_EMPTIED
 
 
@@ -2221,6 +3524,10 @@ class SeaStarslapRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R134_SEA_AREA_03_SUPER_STAR_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEA_STAR_CHEST
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: npc 0 in room 134 has its object trigger disabled.
 
 
@@ -2229,6 +3536,10 @@ class SeaSaveRoomBackChestLocation(TreasureChestLocationRow3):
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: npc 0 in room 132 has its object trigger disabled.
 
 
@@ -2237,6 +3548,10 @@ class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: npc 1 in room 132 has its object trigger disabled.
 
 
@@ -2245,6 +3560,10 @@ class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow1):
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: npc 2 in room 132 has its object trigger disabled.
 
 
@@ -2253,6 +3572,10 @@ class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
     _rooms = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEA_WHIRLPOOL_CHEST
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: npc 0 in room 133 has its object trigger disabled.
 
 
@@ -2264,6 +3587,10 @@ class ShipRatStairsChestLocation(TreasureChestLocationRow1):
     _rooms = [R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: npc 0 in room 167 has its object trigger disabled.
 
 
@@ -2272,6 +3599,10 @@ class ShipRatStairsBoxesLocation(PacketLocationRow1):
     _replace = "spawn_ship_box_item"
     _rooms = [R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS]
     _packet_type = PacketType.CHEST
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: SHIP_STAIRWAY_FREESTANDING_ITEM_OBTAINED
 
 
@@ -2280,6 +3611,10 @@ class ShipTroopaPuzzleLocation(PacketLocationRow1):
     _replace = "spawn_ship_troopa_item"
     _rooms = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
     _packet_type = PacketType.FALLING
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: SHIP_TROOPA_PRIZE
 
 
@@ -2288,6 +3623,10 @@ class ShipTrampolinePuzzle(PacketLocationRow1):
     _replace = "spawn_ship_trampoline_item"
     _rooms = [R163_SUNKEN_SHIP_PUZZLE_ROOM_2]
     _packet_type = PacketType.FALLING
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: UNKNOWN_707D_1
 
 
@@ -2296,6 +3635,10 @@ class Ship3DMazePuzzle(PacketLocationRow1):
     _replace = "spawn_ship_3d_maze_item"
     _rooms = [R168_SUNKEN_SHIP_PUZZLE_ROOM_3]
     _packet_type = PacketType.FALLING
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: SHIP_MAZE_PRIZE
 
 
@@ -2304,6 +3647,10 @@ class ShipShopChestLocation(TreasureChestLocationRow1):
     _rooms = [R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_SHOP
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: npc 0 in room 169 has its object trigger disabled.
 
 
@@ -2348,6 +3695,10 @@ class ShipCoinSnakePuzzleLocation(StandingLocationRow1):
         NPC_16,
     ]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COIN_SNAKE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: SHIP_COIN_PRIZE
 
 
@@ -2356,6 +3707,10 @@ class ShipCannonballPuzzle(PacketLocationRow1):
     _replace = "spawn_ship_cannonball_item"
     _rooms = [R172_SUNKEN_SHIP_PUZZLE_ROOM_5]
     _packet_type = PacketType.FALLING
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: SHIP_CANNONBALL_PRIZE
 
 
@@ -2364,6 +3719,10 @@ class ShipBarrelPuzzle(PacketLocationRow1):
     _replace = "spawn_ship_barrel_item"
     _rooms = [R176_SUNKEN_SHIP_AREA_08_WSAVE_POINT_AND_GREEN_SWITCH_FOR_BARREL]
     _packet_type = PacketType.FALLING
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sea(world, inventory)
+
     # flag as checked: UNKNOWN_707D_5
 
 
@@ -2371,6 +3730,16 @@ class ShipPasswordBossFight(BossFightLocation):
     _originally_held = KingCalamariBossFight
     _rooms = [R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_ship_midboss(world, inventory)
+
     # Flag as checked: SHIP_MIDBOSS_COMPLETED
 
 
@@ -2378,6 +3747,10 @@ class ShipPasswordStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_ship_midboss(world, inventory)
+
     # Flag as checked: SHIP_MIDBOSS_COMPLETED
 
 
@@ -2386,6 +3759,10 @@ class EarlyInnerShipLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_ship_midboss(world, inventory)
+
     # flag as checked: npc 0 in room 175 has its object trigger disabled.
 
 
@@ -2394,6 +3771,10 @@ class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_ship_midboss(world, inventory)
+
     # flag as checked: npc 1 in room 175 has its object trigger disabled.
 
 
@@ -2402,6 +3783,10 @@ class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_CLONE_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_ship_midboss(world, inventory)
+
     # flag as checked: npc 2 in room 179 has its object trigger disabled.
 
 
@@ -2410,6 +3795,10 @@ class InnerShipBehindBoxesChestLocation(TreasureChestLocationRow1):
     _rooms = [R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_FROG_COIN_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_ship_midboss(world, inventory)
+
     # flag as checked: npc 0 in room 183 has its object trigger disabled.
 
 
@@ -2418,6 +3807,10 @@ class InnerShipSaveRoomLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_HIDON_MUSHROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_ship_midboss(world, inventory)
+
     # flag as checked: npc 1 in room 184 has its object trigger disabled.
 
 
@@ -2426,6 +3819,10 @@ class InnerShipSaveRoomRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.HIDON_CHEST
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_ship_midboss(world, inventory)
+
     # flag as checked: npc 2 in room 184 has its object trigger disabled.
 
 
@@ -2434,6 +3831,10 @@ class Mimic2DropRewardLocation(NPCLocationRow1):
     _rooms = [513]  # can be in any room, custom id.
     _id = ShuffleLocationSelector.HIDON_REWARD_1
     _override_id = 513
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_mimic(world, inventory)
+
     # flag as checked: MIMIC_2_CLEARED
 
 
@@ -2442,6 +3843,16 @@ class Mimic2BossFight(BossFightLocation):
     _rooms = [513]  # can be in any room.
     _override_id = 513
     _id = ShuffleLocationSelector.HIDON_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_mimic(world, inventory)
+
     # Flag as checked: MIMIC_2_CLEARED
 
 
@@ -2450,6 +3861,10 @@ class Mimic2StarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.HIDON_BOSS
     _rooms = [513]
     _override_id = 513
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_mimic(world, inventory)
+
     # Flag as checked: MIMIC_2_CLEARED
 
 
@@ -2458,6 +3873,10 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     _rooms = [513]  # can be in any room.
     _id = ShuffleLocationSelector.HIDON_REWARD_2
     _override_id = 513
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_mimic(world, inventory)
+
     # flag as checked: the host chest for SecondMimicFightLauncher has its object trigger disabled
 
 
@@ -2466,6 +3885,10 @@ class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_mimic(world, inventory)
+
     # flag as checked: npc 0 in room 187 has been removed from the room.
 
 
@@ -2474,6 +3897,10 @@ class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_mimic(world, inventory)
+
     # flag as checked: npc 1 in room 187 has been removed from the room.
 
 
@@ -2482,6 +3909,10 @@ class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_mimic(world, inventory)
+
     # flag as checked: npc 2 in room 187 has been removed from the room.
 
 
@@ -2490,6 +3921,10 @@ class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_mimic(world, inventory)
+
     # flag as checked: npc 3 in room 187 has been removed from the room.
 
 
@@ -2498,6 +3933,10 @@ class InnerShipSecretRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_SAFETY_RING
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_mimic(world, inventory)
+
     # flag as checked: npc 0 in room 185 has its object trigger disabled.
 
 
@@ -2506,6 +3945,10 @@ class InnerShipPoolRoomLocation(StandingLocationRow1):
     _rooms = [R027_SUNKEN_SHIP_POSTKC_AREA_13_LARGE_UNDERWATER_ROOM_WITH_A_BLOOBER]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BLOOBER_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_mimic(world, inventory)
+
     # flag as checked: npc 5 in room 27 has been removed from the room.
 
 
@@ -2514,6 +3957,10 @@ class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
     _rooms = [R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BANDANA_REDS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_mimic(world, inventory)
+
     # flag as checked: npc 4 in room 24 has its object trigger disabled.
 
 
@@ -2521,6 +3968,16 @@ class ShipFinalBossFight(BossFightLocation):
     _originally_held = JohnnyBossFight
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_ship_boss(world, inventory)
+
     # Flag as checked: SHIP_LIBERATED
 
 
@@ -2528,6 +3985,10 @@ class ShipFinalStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BOSS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_ship_boss(world, inventory)
+
     # Flag as checked: SHIP_LIBERATED
 
 
@@ -2537,6 +3998,16 @@ class ShipPostgameBossFight(BossFightLocation):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_BOSS_FIGHT
     _override_id = 526
     _remake_only = True
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_ship_postgame_boss(world, inventory)
+
     # Flag as checked: POSTGAME_SHIP_COMPLETED
 
 
@@ -2545,6 +4016,10 @@ class ShipPostgameFightItemDrop(NPCLocationRow1):
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_DROP
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_ship_boss(world, inventory)
+
     # flag as checked: POSTGAME_SHIP_COMPLETED
 
 
@@ -2554,6 +4029,10 @@ class ShipPostgameStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_BOSS
     _override_id = 526
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_ship_boss(world, inventory)
+
     # Flag as checked: POSTGAME_SHIP_COMPLETED
 
 
@@ -2565,6 +4044,10 @@ class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
     _rooms = [R137_LANDS_END_AREA_01]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.LANDS_END_RED_ESSENCE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 4 in room 137 has its object trigger disabled.
 
 
@@ -2573,6 +4056,10 @@ class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
     _rooms = [R138_LANDS_END_AREA_02]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 6 in room 138 has its object trigger disabled.
 
 
@@ -2581,6 +4068,10 @@ class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
     _rooms = [R138_LANDS_END_AREA_02]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 7 in room 138 has its object trigger disabled.
 
 
@@ -2589,6 +4080,10 @@ class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
     _rooms = [R141_LANDS_END_AREA_04_ROTATING_FLOWERS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LNDS_END_BEE_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 6 in room 141 has its object trigger disabled.
 
 
@@ -2597,6 +4092,12 @@ class LandsEndCaveSideRemake(TreasureChestLocationRow1):
     _rooms = [R142_LANDS_END_AREA_05_SKY_BRIDGE]
     _npc_ids = [NPC_19]
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and world.settings.is_flag_value(
+            Remake, True
+        )
+
     # Flag as checked: npc 19 in room 142 is removed.
     # TODO: Make sure starter event removes this if remake content is disabled.
 
@@ -2606,6 +4107,10 @@ class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
     _rooms = [R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 7 in room 270 has its object trigger disabled.
 
 
@@ -2614,6 +4119,10 @@ class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
     _rooms = [R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 6 in room 270 has its object trigger disabled.
 
 
@@ -2622,6 +4131,10 @@ class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
     _rooms = [R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_SHY_AWAY
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 6 in room 401 has its object trigger disabled.
 
 
@@ -2630,6 +4143,10 @@ class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
     _rooms = [R263_LANDS_END_UNDERGROUND_AREA_01]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 5 in room 263 has its object trigger disabled.
 
 
@@ -2638,6 +4155,10 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
     _rooms = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
     _npc_ids = [NPC_18]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 18 in room 262 has its object trigger disabled.
 
 
@@ -2646,6 +4167,10 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
     _rooms = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
     _npc_ids = [NPC_19]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 19 in room 262 has its object trigger disabled.
 
 
@@ -2653,6 +4178,13 @@ class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
     _originally_held = TroopaPinPrize
     _rooms = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _id = ShuffleLocationSelector.TROOPA_CLIMB
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and can_access_monstro_town(
+            world, inventory
+        )
+
+    # TODO need to modify lands end overworld marker to never take you to the back exit if you havent unlocked the area yet
     # flag as checked: TROOPA_CLIMB_COMPLETED
 
 
@@ -2661,6 +4193,16 @@ class LandsEndCloudBoss(BossFightLocation):
     _id = ShuffleLocationSelector.LANDS_END_CLOUD_BOSS_FIGHT
     _rooms = [519]
     _override_id = 519
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end_cloud(world, inventory)
+
     # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
 
 
@@ -2669,6 +4211,10 @@ class LandsEndCloudStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.LANDS_END_STAR_PIECE_1
     _rooms = [519]
     _override_id = 519
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_lands_end_cloud_boss(world, inventory)
+
     # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
 
 
@@ -2677,6 +4223,10 @@ class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
     _rooms = [R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_TELLER
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 5 in room 420 has its object trigger disabled.
 
 
@@ -2685,6 +4235,10 @@ class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 6 in room 421 has its object trigger disabled.
 
 
@@ -2693,6 +4247,10 @@ class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 7 in room 421 has its object trigger disabled.
 
 
@@ -2701,6 +4259,10 @@ class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 8 in room 421 has its object trigger disabled.
 
 
@@ -2709,6 +4271,10 @@ class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 9 in room 421 has its object trigger disabled.
 
 
@@ -2717,6 +4283,10 @@ class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 0 in room 425 has its object trigger disabled.
 
 
@@ -2725,6 +4295,10 @@ class BelomeBeforeBossLowerLeftChestLocation(TreasureChestLocationRow2):
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 1 in room 425 has its object trigger disabled.
 
 
@@ -2733,6 +4307,10 @@ class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 2 in room 425 has its object trigger disabled.
 
 
@@ -2741,6 +4319,10 @@ class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
     # flag as checked: npc 3 in room 425 has its object trigger disabled.
 
 
@@ -2749,6 +4331,12 @@ class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 0 in room 422 has been removed from the room.
 
 
@@ -2757,6 +4345,12 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 1 in room 422 has been removed from the room.
 
 
@@ -2765,6 +4359,12 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 2 in room 422 has been removed from the room.
 
 
@@ -2773,6 +4373,12 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 3 in room 422 has been removed from the room.
 
 
@@ -2781,6 +4387,12 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 4 in room 422 has been removed from the room.
 
 
@@ -2789,6 +4401,12 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 5 in room 422 has been removed from the room.
 
 
@@ -2797,6 +4415,12 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 6 in room 422 has been removed from the room.
 
 
@@ -2805,6 +4429,12 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 7 in room 422 has been removed from the room.
 
 
@@ -2813,6 +4443,12 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_5
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 8 in room 422 has been removed from the room.
 
 
@@ -2821,6 +4457,12 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_6
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 9 in room 422 has been removed from the room.
 
 
@@ -2829,6 +4471,12 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_7
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 10 in room 422 has been removed from the room.
 
 
@@ -2837,6 +4485,12 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_8
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 11 in room 422 has been removed from the room.
 
 
@@ -2845,6 +4499,12 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 13 in room 422 has been removed from the room.
 
 
@@ -2853,6 +4513,12 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 14 in room 422 has been removed from the room.
 
 
@@ -2861,6 +4527,12 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_15]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory) and inventory.has_item(
+            TempleKeyPrize
+        )
+
     # flag as checked: npc 15 in room 422 has been removed from the room.
 
 
@@ -2868,6 +4540,16 @@ class TempleBossFight(BossFightLocation):
     _originally_held = Belome2BossFight
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_temple_boss(world, inventory)
+
     # Flag as checked: TEMPLE_BOSS_DEFEATED
 
 
@@ -2875,6 +4557,10 @@ class TempleBossFightStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_temple_boss(world, inventory)
+
     # Flag as checked: TEMPLE_BOSS_DEFEATED
 
 
@@ -2884,6 +4570,16 @@ class TempleBossFightPostgame(BossFightLocation):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_FIGHT
     _override_id = 523
     _remake_only = True
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_temple_postgame_boss(world, inventory)
+
     # Flag as checked: TEMPLE_POSTGAME_BOSS_DEFEATED
 
 
@@ -2893,6 +4589,10 @@ class TempleBossFightStarPiecePostgame(StarPieceLocation):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME
     _override_id = 523
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_temple_boss(world, inventory)
+
     # Flag as checked: TEMPLE_POSTGAME_BOSS_DEFEATED
 
 
@@ -2901,6 +4601,10 @@ class TemplePostgameFightItemDrop(NPCLocationRow1):
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_DROP
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_postgame_temple_boss(world, inventory)
+
     # flag as checked: TEMPLE_POSTGAME_BOSS_DEFEATED
 
 
@@ -2912,6 +4616,10 @@ class MonstroEntranceLocation(TreasureChestLocationRow1):
     _rooms = [R267_MONSTRO_TOWN_ENTRANCE]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MONSTRO_TOWN_ENTRANCE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
     # flag as checked: npc 1 in room 267 has its object trigger disabled.
 
 
@@ -2920,6 +4628,10 @@ class MonstroThwompItemLocation(StandingLocationRow1):
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MONSTRO_TOWN_THWOMP
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
     # flag as checked: npc 0 in room 324 has been removed from the room.
 
 
@@ -2927,6 +4639,16 @@ class DojoFirstFight(BossFightLocation):
     _originally_held = JaggerBossFight
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_1
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_first_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_BOSS_1_DEFEATED
 
 
@@ -2936,12 +4658,25 @@ class DojoFirstFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_1
     # Flag as checked: DOJO_BOSS_1_DEFEATED
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_dojo_boss(world, inventory)
+
 
 class DojoSecondFight(BossFightLocation):
     _originally_held = Jinx1BossFight
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_2
     _override_id = 515
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_BOSS_2_DEFEATED
 
 
@@ -2950,6 +4685,10 @@ class DojoSecondFightStarPiece(StarPieceLocation):
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_2
     _override_id = 515
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_BOSS_2_DEFEATED
 
 
@@ -2958,6 +4697,16 @@ class DojoThirdFight(BossFightLocation):
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_3
     _override_id = 516
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_third_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_BOSS_3_DEFEATED
 
 
@@ -2966,6 +4715,10 @@ class DojoThirdFightStarPiece(StarPieceLocation):
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_3
     _override_id = 516
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_third_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_BOSS_3_DEFEATED
 
 
@@ -2974,6 +4727,16 @@ class DojoFourthFight(BossFightLocation):
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_4
     _override_id = 517
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_fourth_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_BOSS_4_DEFEATED
 
 
@@ -2982,6 +4745,10 @@ class DojoFourthFightStarPiece(StarPieceLocation):
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_4
     _override_id = 517
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_fourth_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_BOSS_4_DEFEATED
 
 
@@ -2989,6 +4756,10 @@ class MonstroDojoClearRewardLocation(NPCLocationRow1):
     _originally_held = JinxBeltPrize
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.JINX_DOJO_REWARD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_fourth_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_BOSS_4_DEFEATED
 
 
@@ -2998,6 +4769,16 @@ class DojoFifthFight(BossFightLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_POSTGAME
     _override_id = 525
     _remake_only = True
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_fifth_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_POSTGAME_COMPLETED
 
 
@@ -3007,6 +4788,10 @@ class DojoFifthFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_POSTGAME
     _override_id = 525
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_fifth_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_POSTGAME_COMPLETED
 
 
@@ -3015,6 +4800,10 @@ class MonstroDojoPostgameClearRewardLocation(NPCLocationRow2):
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_POSTGAME_REWARD
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_fifth_dojo_boss(world, inventory)
+
     # Flag as checked: DOJO_POSTGAME_COMPLETED
 
 
@@ -3022,6 +4811,16 @@ class MonstroSealedDoorBossFight(BossFightLocation):
     _originally_held = CulexBossFight
     _rooms = [R351_CULEXS_ROOM]
     _id = ShuffleLocationSelector.CULEX_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sealed_door_boss(world, inventory)
+
     # Flag as checked: MONSTRO_MIDDLE_DOOR_COMPLETED
 
 
@@ -3029,6 +4828,10 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _id = ShuffleLocationSelector.CULEX_BOSS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_sealed_door_boss(world, inventory)
+
     # Flag as checked: MONSTRO_MIDDLE_DOOR_COMPLETED
 
 
@@ -3036,6 +4839,10 @@ class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
     _originally_held = QuartzCharmPrize
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _id = ShuffleLocationSelector.CULEX_REWARD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_sealed_door_boss(world, inventory)
+
     # Flag as checked: MONSTRO_MIDDLE_DOOR_COMPLETED
 
 
@@ -3045,6 +4852,16 @@ class MonstroSealedDoorBossFightPostgame(BossFightLocation):
     _override_id = 524
     _id = ShuffleLocationSelector.CULEX_POSTGAME_BOSS_FIGHT
     _remake_only = True
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_sealed_postgame_boss(world, inventory)
+
     # Flag as checked: CULEX_POSTGAME_COMPLETED
 
 
@@ -3054,6 +4871,10 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _id = ShuffleLocationSelector.CULEX_POSTGAME_BOSS
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_sealed_postgame_boss(world, inventory)
+
     # Flag as checked: CULEX_POSTGAME_COMPLETED
 
 
@@ -3062,6 +4883,10 @@ class MonstroSealedDoorClearRewardLocationPostgame(NPCLocationRow2):
     _rooms = [R351_CULEXS_ROOM]
     _id = ShuffleLocationSelector.CULEX_POSTGAME_REWARD
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_sealed_postgame_boss(world, inventory)
+
     # Flag as checked: CULEX_POSTGAME_COMPLETED
 
 
@@ -3069,6 +4894,12 @@ class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
     _originally_held = AttackScarfPrize
     _rooms = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
     _id = ShuffleLocationSelector.SUPER_JUMPS_30
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and inventory.has_item(
+            SuperJumpSpellPrize
+        )
+
     # Flag as checked: SUPER_JUMP_PRIZE_1_GRANTED
 
 
@@ -3076,6 +4907,12 @@ class MonstroSecondSuperJumpRewardLocation(NPCLocationRow2):
     _originally_held = SuperSuitPrize
     _rooms = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
     _id = ShuffleLocationSelector.SUPER_JUMPS_100
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and inventory.has_item(
+            SuperJumpSpellPrize
+        )
+
     # Flag as checked: SUPER_JUMP_PRIZE_2_GRANTED
 
 
@@ -3083,6 +4920,18 @@ class MonstroFlagExchangeLocation(NPCLocationRow1):
     _originally_held = GhostMedalPrize
     _rooms = [R399_MONSTRO_TOWN_3_MUSTY_FEARS_INN]
     _id = ShuffleLocationSelector.THREE_MUSTY_FEARS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            (
+                can_access_monstro_town(world, inventory)
+                or world.settings.isflag_enabled(SkipMustyFearsSequence)
+            )
+            and inventory.has_item(DryBonesFlagPrize)
+            and inventory.has_item(GreaperFlagPrize)
+            and inventory.has_item(BigBooFlagPrize)
+        )
+
     # Flag as checked: INVISIBLE_FLAG_CHECK_DONE
 
 
@@ -3150,6 +4999,16 @@ class Mimic3BossFight(BossFightLocation):
     _rooms = [514]  # can be in any room.
     _override_id = 514
     _id = ShuffleLocationSelector.BOX_BOY_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_third_mimic(world, inventory)
+
     # Flag as checked: MIMIC_3_CLEARED
 
 
@@ -3158,6 +5017,10 @@ class Mimic3StarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BOX_BOY_BOSS
     _rooms = [514]
     _override_id = 514
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_third_mimic(world, inventory)
+
     # Flag as checked: MIMIC_3_CLEARED
 
 
@@ -3173,7 +5036,7 @@ class BeanValleyRightPipeUnderStairsLocation(NPCLocationRow1):
     _originally_held = FrogCoin1Prize
     _rooms = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_HIDDEN
-    # flag as checked: npc 8 in room 335 has its object trigger disabled.
+    # flag as checked: npc 9 in room 335 is removed.
 
 
 class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
@@ -3188,6 +5051,16 @@ class BeanValleyPlanterBossFight(BossFightLocation):
     _originally_held = MegasmilaxBossFight
     _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_valley_boss(world, inventory)
+
     # Flag as checked: BEAN_VALLEY_BOSS_DEFEATED
 
 
@@ -3195,6 +5068,10 @@ class BeanValleyPlanterStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOSS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_valley_boss(world, inventory)
+
     # Flag as checked: BEAN_VALLEY_BOSS_DEFEATED
 
 
@@ -3202,6 +5079,10 @@ class BeanValleyBossNoteLocation(NPCLocationRow1):
     _originally_held = SeedPrize
     _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
     _id = ShuffleLocationSelector.BEAN_VALLEY_MEGASMILAX_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_valley_boss(world, inventory)
+
     # flag as checked: SEED_CHECKED
 
 
@@ -3388,6 +5269,10 @@ class CasinoGrateGuyPrizeLocation(NPCLocationRow1):
     _originally_held = StarEggPrize
     _rooms = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
     _id = ShuffleLocationSelector.CASINO_GRATE_GUY_PRIZE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(BrightCardPrize)
+
     # flag as checked: CASINO_PRIZE_WON
 
 
@@ -3399,6 +5284,10 @@ class NimbusShopChestLocation(TreasureChestLocationRow1):
     _rooms = [R344_NIMBUS_LAND_ITEM_SHOP]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_LAND_SHOP
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_outer_nimbus(world, inventory)
+
     # flag as checked: npc 0 in room 344 has its object trigger disabled.
 
 
@@ -3406,6 +5295,10 @@ class NimbusInnDreamPrize1Location(NPCLocationRow1):
     _originally_held = RedEssencePrize
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_outer_nimbus(world, inventory)
+
     # flag as checked: NIMBUS_INN_PRIZE_GRANTED
 
 
@@ -3413,6 +5306,10 @@ class NimbusInnDreamPrize2Location(NPCLocationRow2):
     _originally_held = RedEssencePrize
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_outer_nimbus(world, inventory)
+
     # flag as checked: NIMBUS_INN_PRIZE_GRANTED
 
 
@@ -3421,6 +5318,10 @@ class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
     _rooms = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM]
     _override_id = 520
     _id = ShuffleLocationSelector.DODO_REWARD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_nimbus(world, inventory)
+
     # flag as checked: STATUE_GAME_DONE
 
 
@@ -3428,6 +5329,16 @@ class StatueRoomBossFight(BossFightLocation):
     _originally_held = DodoBossFight
     _override_id = 520
     _id = ShuffleLocationSelector.NIMBUS_LAND_STATUE_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_statue_boss(world, inventory)
+
     # Flag as checked: STATUE_KEEPER_STAR_PIECE
 
 
@@ -3435,6 +5346,10 @@ class StatueRoomStarPiece(StarPieceLocation):
     _originally_held = None
     _override_id = 520
     _id = ShuffleLocationSelector.NIMBUS_LAND_STAR_PIECE_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_statue_boss(world, inventory)
+
     # Flag as checked: STATUE_KEEPER_STAR_PIECE
 
 
@@ -3442,6 +5357,10 @@ class NimbusCastleOuterPrisonCellarRightNPCLocation(NPCLocationRow1):
     _originally_held = FlowerJarPrize
     _rooms = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_nimbus_castle(world, inventory)
+
     # flag as checked: BLUE_CELLAR_GUARD_ITEM_GRANTED
 
 
@@ -3449,6 +5368,10 @@ class NimbusCastleOuterPrisonCellarLeftNPCLocation(NPCLocationRow2):
     _originally_held = CastleKey1Prize
     _rooms = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_nimbus_castle(world, inventory)
+
     # flag as checked: RED_CELLAR_GUARD_ITEM_GRANTED
 
 
@@ -3457,6 +5380,10 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
     _rooms = [R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_nimbus_castle(world, inventory)
+
     # flag as checked: NIMBUS_MISSABLE_CHECK_CLEARED
     # (not really missable anymore. the chest that replaces this in the liberated castle will simply give you its item first if you didn't already get it)
 
@@ -3469,6 +5396,10 @@ class NimbusCastleCornerBridgeChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_2, NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_LAND_BEFORE_BIRDETTA_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_nimbus_castle(world, inventory)
+
     # flag as checked: npc 2 in room 111 has its object trigger disabled.
     # or npc 0 in room 500 has its object trigger disabled
 
@@ -3480,6 +5411,10 @@ class NimbusCastleOutOfBoundsChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_OUT_OF_BOUNDS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_nimbus_castle(world, inventory)
+
     # flag as checked: npc 0 in room 410 has its object trigger disabled
 
 
@@ -3490,6 +5425,10 @@ class NimbusCastleAboveJawfulChestLocation(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_OUT_OF_BOUNDS_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_nimbus_castle(world, inventory)
+
     # flag as checked: npc 1 in room 410 has its object trigger disabled
 
 
@@ -3500,6 +5439,10 @@ class NimbusCastleSingleGoldBirdChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_SINGLE_GOLD_BIRD
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_nimbus_castle(world, inventory)
+
     # flag as checked: npc 1 in room 113 has its object trigger disabled.
 
 
@@ -3511,6 +5454,10 @@ class NimbusCastleTwoLevelLowerChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_AFTER_EGG_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_nimbus_castle(world, inventory)
+
     # flag as checked: npc 0 in room 114 has its object trigger disabled.
 
 
@@ -3521,6 +5468,16 @@ class GiantEggBossFight(BossFightLocation):
     _originally_held = BirdettaBossFight
     _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_EGG_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_egg_boss(world, inventory)
+
     # Flag as checked: NIMBUS_MID_BOSS_COMPLETED
 
 
@@ -3528,6 +5485,10 @@ class GiantEggStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_egg_boss(world, inventory)
+
     # Flag as checked: NIMBUS_MID_BOSS_COMPLETED
 
 
@@ -3535,6 +5496,10 @@ class NimbusCastleGiantEggRewardLocation(NPCLocationRow1):
     _originally_held = CastleKey2Prize
     _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_BIRDETTA
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_egg_boss(world, inventory)
+
     # flag as checked: NIMBUS_MID_BOSS_COMPLETED
 
 
@@ -3549,6 +5514,10 @@ class NimbusCastleTwoLevelUpperChestLocation(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_1, NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_AFTER_EGG_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_late_nimbus(world, inventory)
+
     # flag as checked: npc 1 in room 114 has its object trigger disabled.
 
 
@@ -3557,6 +5526,10 @@ class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
     _rooms = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_CHEST
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_late_nimbus(world, inventory)
+
     # flag as checked: npc 0 in room 121 has its object trigger disabled.
 
 
@@ -3564,6 +5537,16 @@ class NimbusFinalBossFight(BossFightLocation):
     _originally_held = ValentinaBossFight
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_FINAL_BOSS_FIGHT
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_nimbus_boss(world, inventory)
+
     # Flag as checked: NIMBUS_LAND_LIBERATED
 
 
@@ -3571,6 +5554,10 @@ class NimbusFinalStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_nimbus_boss(world, inventory)
+
     # Flag as checked: NIMBUS_LAND_LIBERATED
 
 
@@ -3582,6 +5569,10 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
     _rooms = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_AFTER_VALENTINA
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_nimbus_boss(world, inventory)
+
     # flag as checked: npc 1 in room 121 has its object trigger disabled.
 
 
@@ -3590,6 +5581,10 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
     _rooms = [R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_nimbus_boss(world, inventory)
+
     # flag as checked: NIMBUS_MISSABLE_CHECK_CLEARED
 
 
@@ -3597,6 +5592,10 @@ class NimbusLandRightSideLocation(NPCLocationRow1):
     _originally_held = FertilizerPrize
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _id = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_nimbus_boss(world, inventory)
+
     # flag as checked: NPC 9 removed from room 438.
 
 
@@ -3605,6 +5604,10 @@ class NimbusLandCrocoItemLocation(StandingLocationRow1):
     _rooms = [R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.NIMBUS_LAND_SIGNAL_RING
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_nimbus_boss(world, inventory)
+
     # flag as checked: npc 5 in room 345 has been removed from the room.
 
 
@@ -3612,6 +5615,10 @@ class NimbusLandInnerCellarLocation(NPCLocationRow1):
     _originally_held = FlowerJarPrize
     _rooms = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
     _id = ShuffleLocationSelector.NIMBUS_LAND_CELLAR
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_nimbus_boss(world, inventory)
+
     # flag as checked: NIMBUS_CASTLE_LIBERATED_GUARD_ITEM_GRANTED
 
 
@@ -3623,6 +5630,10 @@ class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 1 in room 355 has its object trigger disabled.
 
 
@@ -3631,6 +5642,10 @@ class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 2 in room 355 has its object trigger disabled.
 
 
@@ -3639,6 +5654,10 @@ class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
     _rooms = [R384_VOLCANO_AREA_05]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 0 in room 384 has its object trigger disabled.
 
 
@@ -3647,6 +5666,10 @@ class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
     _rooms = [R384_VOLCANO_AREA_05]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 1 in room 384 has its object trigger disabled.
 
 
@@ -3655,6 +5678,10 @@ class VolcanoEarlyProgressThirdChestLocation(TreasureChestLocationRow1):
     _rooms = [R385_VOLCANO_AREA_06]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_STAR_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 0 in room 385 has its object trigger disabled.
 
 
@@ -3663,6 +5690,10 @@ class VolcanoLavaPoolLocation(StandingLocationRow1):
     _rooms = [R361_VOLCANO_AREA_09]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_LAVA_POOL
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 1 in room 361 has been removed from the room.
 
 
@@ -3671,6 +5702,10 @@ class VolcanoReverseRecoilItemLocation(StandingLocationRow1):
     _rooms = [R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_REVERSE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 4 in room 383 has been removed from the room.
 
 
@@ -3679,6 +5714,10 @@ class VolcanoRightDonutItemLocation(StandingLocationRow1):
     _rooms = [R358_VOLCANO_AREA_11]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 1 in room 358 has been removed from the room.
 
 
@@ -3687,6 +5726,10 @@ class VolcanoLeftDonutItemLocation(StandingLocationRow2):
     _rooms = [R358_VOLCANO_AREA_11]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 2 in room 358 has been removed from the room.
 
 
@@ -3695,6 +5738,10 @@ class VolcanoSaveRoomLowerChestLocation(TreasureChestLocationRow1):
     _rooms = [R366_VOLCANO_AREA_13_WSAVE_POINT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 0 in room 366 has its object trigger disabled.
 
 
@@ -3703,6 +5750,10 @@ class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
     _rooms = [R366_VOLCANO_AREA_13_WSAVE_POINT]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 1 in room 366 has its object trigger disabled.
 
 
@@ -3711,6 +5762,10 @@ class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
     _rooms = [R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_HINOPIO
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano(world, inventory)
+
     # flag as checked: npc 0 in room 367 has its object trigger disabled.
 
 
@@ -3718,6 +5773,16 @@ class VolcanoBridgeBossFight(BossFightLocation):
     _originally_held = CzarDragonBossFight
     _rooms = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_FIGHT_1
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano_midboss(world, inventory)
+
     # Flag as checked: VOLCANO_MIDBOSS_DEFEATED
 
 
@@ -3725,6 +5790,10 @@ class VolcanoBridgeStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_volcano_midboss(world, inventory)
+
     # Flag as checked: VOLCANO_MIDBOSS_DEFEATED
 
 
@@ -3732,6 +5801,16 @@ class VolcanoExitBossFight(BossFightLocation):
     _originally_held = AxemRangersBossFight
     _rooms = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_FIGHT_2
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_volcano_boss(world, inventory)
+
     # Flag as checked: VOLCANO_LIBERATED
 
 
@@ -3739,6 +5818,10 @@ class VolcanoExitStarPiece(StarPieceLocation):
     _originally_held = StarPiece6
     _rooms = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_volcano_boss(world, inventory)
+
     # Flag as checked: VOLCANO_LIBERATED
 
 
@@ -3750,6 +5833,10 @@ class KeepDarkRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DARK_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 0 in room 453 has its object trigger disabled.
 
 
@@ -3758,6 +5845,10 @@ class KeepFirstCrocoShopLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CROCO_SHOP_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 0 in room 451 has its object trigger disabled.
 
 
@@ -3766,6 +5857,10 @@ class KeepFirstCrocoShopRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CROCO_SHOP_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 1 in room 451 has its object trigger disabled.
 
 
@@ -3774,6 +5869,10 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 4 in room 322 has its object trigger disabled.
 
 
@@ -3782,6 +5881,10 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 5 in room 322 has its object trigger disabled.
 
 
@@ -3790,6 +5893,10 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 6 in room 322 has its object trigger disabled.
 
 
@@ -3798,6 +5905,10 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 7 in room 322 has its object trigger disabled.
 
 
@@ -3806,6 +5917,10 @@ class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 8 in room 322 has been removed from the room.
 
 
@@ -3814,6 +5929,10 @@ class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 9 in room 322 has been removed from the room.
 
 
@@ -3822,6 +5941,10 @@ class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 10 in room 322 has been removed from the room.
 
 
@@ -3830,6 +5953,10 @@ class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 11 in room 322 has been removed from the room.
 
 
@@ -3838,6 +5965,10 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 10 in room 458 has its object trigger disabled.
 
 
@@ -3846,6 +5977,10 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 11 in room 458 has its object trigger disabled.
 
 
@@ -3854,6 +5989,10 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 12 in room 458 has its object trigger disabled.
 
 
@@ -3862,6 +6001,10 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 13 in room 458 has its object trigger disabled.
 
 
@@ -3870,6 +6013,10 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ELEVATOR_PLATFORMS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 8 in room 321 has its object trigger disabled.
 
 
@@ -3878,6 +6025,10 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 3 in room 457 has its object trigger disabled.
 
 
@@ -3886,6 +6037,10 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 4 in room 457 has its object trigger disabled.
 
 
@@ -3894,6 +6049,10 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 5 in room 457 has its object trigger disabled.
 
 
@@ -3902,6 +6061,10 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 6 in room 457 has its object trigger disabled.
 
 
@@ -3910,6 +6073,10 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_5
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 7 in room 457 has its object trigger disabled.
 
 
@@ -3918,6 +6085,10 @@ class KeepCannonballCoin1Location(StandingLocationRow1):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 8 in room 457 has been removed from the room.
 
 
@@ -3926,6 +6097,10 @@ class KeepCannonballCoin2Location(StandingLocationRow2):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 9 in room 457 has been removed from the room.
 
 
@@ -3934,6 +6109,10 @@ class KeepCannonballCoin3Location(StandingLocationRow3):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 10 in room 457 has been removed from the room.
 
 
@@ -3942,6 +6121,10 @@ class KeepCannonballCoin4Location(StandingLocationRow4):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 11 in room 457 has been removed from the room.
 
 
@@ -3950,6 +6133,10 @@ class KeepCannonballCoin5Location(StandingLocationRow5):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_5
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 12 in room 457 has been removed from the room.
 
 
@@ -3958,6 +6145,10 @@ class KeepCannonballCoin6Location(StandingLocationRow6):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_6
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 13 in room 457 has been removed from the room.
 
 
@@ -3966,6 +6157,10 @@ class KeepCannonballCoin7Location(StandingLocationRow7):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_7
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 14 in room 457 has been removed from the room.
 
 
@@ -3974,6 +6169,10 @@ class KeepCannonballCoin8Location(StandingLocationRow8):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_15]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_8
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 15 in room 457 has been removed from the room.
 
 
@@ -3984,6 +6183,10 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 1 in room 455 has its object trigger disabled.
 
 
@@ -3994,6 +6197,10 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 2 in room 455 has its object trigger disabled.
 
 
@@ -4004,6 +6211,10 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
     ]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 3 in room 455 has its object trigger disabled.
 
 
@@ -4014,6 +6225,10 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
     ]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 4 in room 455 has its object trigger disabled.
 
 
@@ -4024,6 +6239,10 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
     ]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_5
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 5 in room 455 has its object trigger disabled.
 
 
@@ -4034,6 +6253,10 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
     ]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_6
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep(world, inventory)
+
     # flag as checked: npc 6 in room 455 has its object trigger disabled.
 
 
@@ -4041,6 +6264,16 @@ class ObstacleCourseFinalFight(BossFightLocation):
     _originally_held = ChesterBossFight
     _rooms = [R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_CHESTER
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_battle_door_boss(world, inventory)
+
     # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
 
@@ -4048,6 +6281,10 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_CHESTER
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_battle_door_boss(world, inventory)
+
     # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
 
@@ -4059,6 +6296,10 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_battle_door_boss(world, inventory)
+
     # flag as checked: BK_OBSTACLE_1_PRIZE_RETRIEVED
 
 
@@ -4070,6 +6311,10 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_battle_door_boss(world, inventory)
+
     # flag as checked: BK_OBSTACLE_2_PRIZE_RETRIEVED
 
 
@@ -4081,6 +6326,10 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_battle_door_boss(world, inventory)
+
     # flag as checked: BK_OBSTACLE_3_PRIZE_RETRIEVED
 
 
@@ -4092,6 +6341,10 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_battle_door_boss(world, inventory)
+
     # flag as checked: BK_OBSTACLE_4_PRIZE_RETRIEVED
 
 
@@ -4103,6 +6356,10 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_5
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_battle_door_boss(world, inventory)
+
     # flag as checked: BK_OBSTACLE_5_PRIZE_RETRIEVED
 
 
@@ -4114,6 +6371,10 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_6
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_battle_door_boss(world, inventory)
+
     # flag as checked: BK_OBSTACLE_6_PRIZE_RETRIEVED
 
 
@@ -4121,6 +6382,16 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
     _originally_held = KamekBossFight
     _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_1
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_post_obstacle_boss(world, inventory)
+
     # Flag as checked: KEEP_BOSS_1_DEFEATED
 
 
@@ -4128,6 +6399,10 @@ class KeepAfterObstaclesStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_post_obstacle_boss(world, inventory)
+
     # Flag as checked: KEEP_BOSS_1_DEFEATED
 
 
@@ -4136,6 +6411,10 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
     _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MAGIKOOPA
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_post_obstacle_boss(world, inventory)
+
     # flag as checked: npc 0 in room 266 has its object trigger disabled.
 
 
@@ -4144,6 +6423,16 @@ class KeepChandelierBossFight(BossFightLocation):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_2
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 521
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep_chandelier_boss(world, inventory)
+
     # Flag as checked: KEEP_BOSS_2_DEFEATED
 
 
@@ -4152,6 +6441,10 @@ class KeepChandelierStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_2
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 521
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_keep_chandelier_boss(world, inventory)
+
     # Flag as checked: KEEP_BOSS_2_DEFEATED
 
 
@@ -4160,6 +6453,16 @@ class KeepFinalBossFight(BossFightLocation):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_3
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 522
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_keep_exit_boss(world, inventory)
+
     # Flag as checked: KEEP_BOSS_3_DEFEATED
 
 
@@ -4168,6 +6471,10 @@ class KeepFinalStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_3
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 522
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_keep_exit_boss(world, inventory)
+
     # Flag as checked: KEEP_BOSS_3_DEFEATED
 
 
@@ -4179,6 +6486,10 @@ class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.FACTORY_SAVE_ROOM
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_factory(world, inventory)
+
     # flag as checked: npc 0 in room 237 has its object trigger disabled.
 
 
@@ -4187,6 +6498,10 @@ class FactoryBoltPlatformsChestLocation(TreasureChestLocationRow1):
     _rooms = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.FACTORY_BOLT_PLATFORMS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_factory(world, inventory)
+
     # flag as checked: npc 7 in room 239 has its object trigger disabled.
 
 
@@ -4194,6 +6509,16 @@ class FactoryEntranceBossFight(BossFightLocation):
     _originally_held = CountdownBossFight
     _rooms = [R433_SMITHY_FACTORY_AREA_01_DUMMY]
     _id = ShuffleLocationSelector.FACTORY_BOSS_FIGHT_1
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_first_factory_boss(world, inventory)
+
     # Flag as checked: ABYSS_BOSS_1_DEFEATED
 
 
@@ -4201,6 +6526,10 @@ class FactoryEntranceStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R433_SMITHY_FACTORY_AREA_01_DUMMY]
     _id = ShuffleLocationSelector.FACTORY_BOSS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_factory_boss(world, inventory)
+
     # Flag as checked: ABYSS_BOSS_1_DEFEATED
 
 
@@ -4209,6 +6538,10 @@ class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
     _rooms = [R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.FACTORY_FALLING_AXEMS
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_factory_boss(world, inventory)
+
     # flag as checked: npc 6 in room 434 has its object trigger disabled.
 
 
@@ -4219,6 +6552,10 @@ class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.FACTORY_TREASURE_PIT_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_factory_boss(world, inventory)
+
     # flag as checked: npc 0 in room 443 has its object trigger disabled.
 
 
@@ -4229,6 +6566,10 @@ class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
     ]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FACTORY_TREASURE_PIT_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_factory_boss(world, inventory)
+
     # flag as checked: npc 2 in room 443 has its object trigger disabled.
 
 
@@ -4239,6 +6580,10 @@ class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_factory_boss(world, inventory)
+
     # flag as checked: npc 8 in room 475 has its object trigger disabled.
 
 
@@ -4249,6 +6594,10 @@ class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_factory_boss(world, inventory)
+
     # flag as checked: npc 9 in room 475 has its object trigger disabled.
 
 
@@ -4259,6 +6608,10 @@ class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_factory_boss(world, inventory)
+
     # flag as checked: npc 1 in room 443 has its object trigger disabled.
 
 
@@ -4269,6 +6622,10 @@ class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
     ]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_first_factory_boss(world, inventory)
+
     # flag as checked: npc 3 in room 443 has its object trigger disabled.
 
 
@@ -4276,6 +6633,16 @@ class FactoryTransitionBossFight(BossFightLocation):
     _originally_held = CloakerDominoBossFight
     _rooms = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
     _id = ShuffleLocationSelector.FACTORY_BOSS_FIGHT_2
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_second_factory_boss(world, inventory)
+
     # Flag as checked: ABYSS_BOSS_2_DEFEATED
 
 
@@ -4283,6 +6650,10 @@ class FactoryTransitionStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
     _id = ShuffleLocationSelector.FACTORY_BOSS_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_second_factory_boss(world, inventory)
+
     # Flag as checked: ABYSS_BOSS_2_DEFEATED
 
 
@@ -4293,6 +6664,16 @@ class InnerFactoryFirstFight(BossFightLocation):
     _originally_held = ClerkBossFight
     _rooms = [R469_FACTORY_GROUNDS_AREA_01]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_1
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_factory_first_boss(world, inventory)
+
     # Flag as checked: INNER_FACTORY_ROOM_1_COMPLETED
 
 
@@ -4300,6 +6681,10 @@ class InnerFactoryFirstFightStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R469_FACTORY_GROUNDS_AREA_01]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_1
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_inner_factory_first_boss(world, inventory)
+
     # Flag as checked: INNER_FACTORY_ROOM_1_COMPLETED
 
 
@@ -4307,6 +6692,10 @@ class InnerFactoryToadGiftLocation(NPCLocationRow1):
     _originally_held = RockCandyPrize
     _rooms = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _id = ShuffleLocationSelector.FACTORY_TOAD_GIFT
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_inner_factory_first_boss(world, inventory)
+
     # flag as checked: TOAD_SHOP_FREEBIE_RECEIVED
 
 
@@ -4314,6 +6703,16 @@ class InnerFactorySecondFight(BossFightLocation):
     _originally_held = ManagerBossFight
     _rooms = [R471_FACTORY_GROUNDS_AREA_02]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_2
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_factory_second_boss(world, inventory)
+
     # Flag as checked: INNER_FACTORY_ROOM_2_COMPLETED
 
 
@@ -4321,6 +6720,10 @@ class InnerFactorySecondFightStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R471_FACTORY_GROUNDS_AREA_02]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_2
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_inner_factory_second_boss(world, inventory)
+
     # Flag as checked: INNER_FACTORY_ROOM_2_COMPLETED
 
 
@@ -4328,6 +6731,16 @@ class InnerFactoryThirdFight(BossFightLocation):
     _originally_held = DirectorBossFight
     _rooms = [R472_FACTORY_GROUNDS_AREA_03]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_3
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_factory_third_boss(world, inventory)
+
     # Flag as checked: npc 10 in room 472 removed
 
 
@@ -4335,6 +6748,10 @@ class InnerFactoryThirdFightStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R472_FACTORY_GROUNDS_AREA_03]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_inner_factory_third_boss(world, inventory)
+
     # Flag as checked: npc 10 in room 472 removed
 
 
@@ -4342,6 +6759,16 @@ class InnerFactoryFourthFight(BossFightLocation):
     _originally_held = GunyolkBossFight
     _rooms = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_4
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_factory_fourth_boss(world, inventory)
+
     # Flag as checked: INNER_FACTORY_ROOM_4_COMPLETED
 
 
@@ -4349,18 +6776,36 @@ class InnerFactoryFourthFightStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_4
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_inner_factory_fourth_boss(world, inventory)
+
     # Flag as checked: INNER_FACTORY_ROOM_4_COMPLETED
 
 
 class FinalBossFight(BossFightLocation):
     _originally_held = SmithyBossFight
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_FINAL
+
+    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+        return super().can_accept(prize, inventory) and (
+            can_damage_enemies_with_spells(inventory)
+            or not isinstance(prize, MokuraBossFight)
+        )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_inner_factory_final_boss(world, inventory)
+
     # Flag as checked: FACTORY_BOSS_DEFEATED
 
 
 class FinalBossFightStarPiece(StarPieceLocation):
     _originally_held = StarPiece7
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FINAL
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_defeat_inner_factory_final_boss(world, inventory)
+
     # Flag as checked: FACTORY_BOSS_DEFEATED
 
 
@@ -4377,6 +6822,11 @@ class MariosPadBedFlag(InvisibleFlagLocation):
     _y_coord = 11
     _clue_text = """\n My flag's underneath a green bed.[await]"""
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(
+            world, inventory
+        ) or world.settings.isflag_enabled(SkipMustyFearsSequence)
+
 
 class RoseTownSignFlag(InvisibleFlagLocation):
     _room_ids = [
@@ -4387,6 +6837,11 @@ class RoseTownSignFlag(InvisibleFlagLocation):
     _y_coord = 47
     _clue_text = """\n My flag's behind a wooden flower.[await]"""
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(
+            world, inventory
+        ) or world.settings.isflag_enabled(SkipMustyFearsSequence)
+
 
 class YosterIsleGoalFlag(InvisibleFlagLocation):
     _room_ids = [R034_YOSTER_ISLE]
@@ -4395,6 +6850,12 @@ class YosterIsleGoalFlag(InvisibleFlagLocation):
     _y_shift = -4
     _clue_text = """\n My flag's between "O" and "A".[await]"""
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory) and (
+            can_access_monstro_town(world, inventory)
+            or world.settings.isflag_enabled(SkipMustyFearsSequence)
+        )
+
 
 class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
     _room_ids = [R016_MARIOS_PAD]
@@ -4402,6 +6863,10 @@ class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
     _y_coord = 34
     _z_coord = 1
     _clue_text = "\n  Mine is underneath a steamwhistle.[await]"
+
+    # All other flag locations are in logic only after you can talk to the musty fears because otherwise how tf would you know where to look?
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class MariosPadLanternFlag(InvisibleFlagLocation):
@@ -4412,6 +6877,9 @@ class MariosPadLanternFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "\n    Mine is under a white lantern.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MariosPadHatFlag(InvisibleFlagLocation):
     _room_ids = [R189_MARIOS_PIPEHOUSE]
@@ -4419,6 +6887,9 @@ class MariosPadHatFlag(InvisibleFlagLocation):
     _y_coord = 13
     _z_coord = 1
     _clue_text = """\n      My flag's under a red hat.[await]"""
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class MushroomWayTreeFlag(InvisibleFlagLocation):
@@ -4428,6 +6899,9 @@ class MushroomWayTreeFlag(InvisibleFlagLocation):
     _z_coord = 3
     _x_shift = -16
     _clue_text = " Mine's under a tree, up on a ledge\n by itself.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class MushroomKingdomSignFlag(InvisibleFlagLocation):
@@ -4441,6 +6915,9 @@ class MushroomKingdomSignFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "\n  Mine's behind a wooden mushroom.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
     _room_ids = [
@@ -4451,6 +6928,9 @@ class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
     _y_coord = 61
     _y_shift = 8
     _clue_text = " Mine is under the bed in an empty\n house.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class ChancellorThroneFlag(InvisibleFlagLocation):
@@ -4463,6 +6943,9 @@ class ChancellorThroneFlag(InvisibleFlagLocation):
     _z_coord = 3
     _clue_text = "\n       Mine's under a blue chair.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class BanditsWayFlowerFlag(InvisibleFlagLocation):
     _room_ids = [R207_BANDITS_WAY_AREA_02]
@@ -4470,6 +6953,11 @@ class BanditsWayFlowerFlag(InvisibleFlagLocation):
     _y_coord = 89
     _x_shift = 16
     _clue_text = "\n      Mine's on a landing flower.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_bandits_way(
+            world, inventory
+        )
 
 
 class KeroStairsFlag(InvisibleFlagLocation):
@@ -4480,6 +6968,11 @@ class KeroStairsFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine's in a corner, nearby lots of\n dank stairs.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_sewer(
+            world, inventory
+        )
+
 
 class KeroGateFlag(InvisibleFlagLocation):
     _room_ids = [R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE]
@@ -4489,6 +6982,11 @@ class KeroGateFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = "\n Mine is by a lone metal spike fence.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_sewer(
+            world, inventory
+        )
+
 
 class MidasTreesFlag(InvisibleFlagLocation):
     _room_ids = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
@@ -4496,6 +6994,9 @@ class MidasTreesFlag(InvisibleFlagLocation):
     _y_coord = 26
     _x_shift = -8
     _clue_text = " Mine's between a lone pair of\n palm trees, near water.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class TadpoleCabinetFlag(InvisibleFlagLocation):
@@ -4507,12 +7008,18 @@ class TadpoleCabinetFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "\n       Mine is in a frog cabinet.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class RoseWayDirtPatchFlag(InvisibleFlagLocation):
     _room_ids = [R066_ROSE_WAY_EXIT_AREA_WHERE_BOWSERS_TROOPS_GATHERED]
     _x_coord = 25
     _y_coord = 88
     _clue_text = " Mine is in the middle of a HUGE\n patch of dirt.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class RoseTownHydrantFlag(InvisibleFlagLocation):
@@ -4525,6 +7032,9 @@ class RoseTownHydrantFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "\n  Mine is under a low steel hydrant.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class RoseTownSinkFlag(InvisibleFlagLocation):
     _room_ids = [
@@ -4536,6 +7046,9 @@ class RoseTownSinkFlag(InvisibleFlagLocation):
     _y_shift = 1
     _clue_text = "\n My flag is in a kitchen sink under\n some green curtains.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class RoseTownBowserFlag(InvisibleFlagLocation):
     _room_ids = [
@@ -4546,6 +7059,9 @@ class RoseTownBowserFlag(InvisibleFlagLocation):
     _y_coord = 21
     _clue_text = "\n   Mine's under a miniature turtle.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
     _room_ids = [R417_GARDENERS_HOUSE_OUTSIDE]
@@ -4554,12 +7070,28 @@ class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "\n   Mine is under a private hydrant.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            can_access_monstro_town(world, inventory)
+            and can_defeat_forest_boss(world, inventory)
+            and can_defeat_chapel_boss(world, inventory)
+        )
+
 
 class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
     _room_ids = [R417_GARDENERS_HOUSE_OUTSIDE]
     _x_coord = 5
     _y_coord = 87
     _clue_text = "\n   Mine is under a private bucket.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            can_access_monstro_town(world, inventory)
+            and can_defeat_forest_boss(world, inventory)
+            and can_defeat_chapel_boss(world, inventory)
+            and inventory.has_item(SeedPrize)
+            and inventory.has_item(FertilizerPrize)
+        )
 
 
 class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
@@ -4569,6 +7101,13 @@ class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
     _z_coord = 10
     _clue_text = "\n Mine's on a big leaf between\n two chests.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            can_access_monstro_town(world, inventory)
+            and can_defeat_forest_boss(world, inventory)
+            and can_defeat_chapel_boss(world, inventory)
+        )
+
 
 class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
     _room_ids = [R231_FOREST_MAZE_SECRET_ENTRANCE]
@@ -4576,6 +7115,11 @@ class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
     _y_coord = 72
     _x_shift = 16
     _clue_text = " Mine is behind a brightly\n illuminated tree stump.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_forest(
+            world, inventory
+        )
 
 
 class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
@@ -4586,12 +7130,22 @@ class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is on an illuminated pack of\n 5 mushrooms.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_forest(
+            world, inventory
+        )
+
 
 class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
     _room_ids = [R236_FOREST_MAZE_AREA_07_UNDERGROUND_WSLEEPING_WIGGLER]
     _x_coord = 2
     _y_coord = 39
     _clue_text = "\n        Mine is on a sleepy bug.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_forest(
+            world, inventory
+        )
 
 
 class PipeVaultExteriorFlag(InvisibleFlagLocation):
@@ -4602,6 +7156,11 @@ class PipeVaultExteriorFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is by a pipe in the middle of\n the road.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_pipe_vault(
+            world, inventory
+        )
+
 
 class PipeVaultRedPipeFlag(InvisibleFlagLocation):
     _room_ids = [R129_PIPE_VAULT_AREA_05]
@@ -4611,12 +7170,22 @@ class PipeVaultRedPipeFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "\n     Mine is behind a low red pipe.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_pipe_vault(
+            world, inventory
+        )
+
 
 class YosterIsleHutFlag(InvisibleFlagLocation):
     _room_ids = [R034_YOSTER_ISLE]
     _x_coord = 11
     _y_coord = 70
     _clue_text = "\n         Mine's in a fruity hut.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_pipe_vault(
+            world, inventory
+        )
 
 
 class MolevilleHydrantFlag(InvisibleFlagLocation):
@@ -4629,6 +7198,9 @@ class MolevilleHydrantFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "\n     Mine's under a gold hydrant.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MolevilleMountainBushFlag(InvisibleFlagLocation):
     _room_ids = [
@@ -4640,6 +7212,9 @@ class MolevilleMountainBushFlag(InvisibleFlagLocation):
     _z_coord = 12
     _clue_text = " Mine's in a bush at the top of\n a mountain.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MolevilleBedFlag(InvisibleFlagLocation):
     _room_ids = [R337_MOLEVILLE_INN]
@@ -4648,12 +7223,20 @@ class MolevilleBedFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = "\n       Mine's under a middle bed.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
     _room_ids = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
     _x_coord = 5
     _y_coord = 51
     _clue_text = " Mine's between two arrows,\n pointing away from each other.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(
+            world, inventory
+        ) and can_access_moleville_entrance(world, inventory)
 
 
 class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
@@ -4662,6 +7245,11 @@ class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
     _y_coord = 13
     _z_coord = 4
     _clue_text = " Mine's in a zig-zag room, up\n on the ceiling.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(
+            world, inventory
+        ) and can_access_moleville_entrance(world, inventory)
 
 
 class MolevilleMinesEntryFlag(InvisibleFlagLocation):
@@ -4672,6 +7260,11 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = '\n My flag?[delay]\n ...[delay]It\'s on the word "IN",\n [delay]above a big hole.[await]'
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(
+            world, inventory
+        ) and can_defeat_second_moleville_boss(world, inventory)
+
 
 class BoosterPassCornerBushFlag(InvisibleFlagLocation):
     _room_ids = [R101_BOOSTER_PASS_AREA_02]
@@ -4681,6 +7274,9 @@ class BoosterPassCornerBushFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "\n        Mine's in a corner bush.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
     _room_ids = [R202_BOOSTER_TOWER_ENTRANCE]
@@ -4688,6 +7284,9 @@ class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
     _y_coord = 110
     _x_shift = 16
     _clue_text = " Mine's behind a sign with Japanese\n letters.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class BoosterTowerDeskFlag(InvisibleFlagLocation):
@@ -4697,6 +7296,11 @@ class BoosterTowerDeskFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = '\n      Mine\'s under "B" and "K".[await]'
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_tower(
+            world, inventory
+        )
+
 
 class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
     _room_ids = [R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER]
@@ -4704,6 +7308,11 @@ class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
     _y_coord = 122
     _y_shift = 8
     _clue_text = "\n Mine's on a lightly-loaded see-saw.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_tower(
+            world, inventory
+        )
 
 
 class BoosterTowerCurtainFlag(InvisibleFlagLocation):
@@ -4714,6 +7323,11 @@ class BoosterTowerCurtainFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine's in a corner, between a\n window and a red curtain.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_tower(
+            world, inventory
+        )
+
 
 class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
     _room_ids = [R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER]
@@ -4721,6 +7335,11 @@ class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
     _y_coord = 114
     _z_coord = 12
     _clue_text = "\n     Mine is near a lonely thwomp.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_tower(
+            world, inventory
+        )
 
 
 class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
@@ -4731,12 +7350,22 @@ class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
     _y_shift = -9
     _clue_text = "\n       Mine is in a broken frame.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_tower(
+            world, inventory
+        )
+
 
 class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
     _room_ids = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _x_coord = 7
     _y_coord = 18
     _clue_text = "\n     Mine is on an insect cage.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_tower(
+            world, inventory
+        )
 
 
 class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
@@ -4745,6 +7374,11 @@ class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
     _y_coord = 24
     _x_shift = 16
     _clue_text = "\n       Mine is behind a toy box.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_tower(
+            world, inventory
+        )
 
 
 class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
@@ -4759,6 +7393,9 @@ class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "\n  Mine is under a lone backyard box.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MarrymoreHallwayFlag(InvisibleFlagLocation):
     _room_ids = [R011_MARRYMORE_INN_3F]
@@ -4766,6 +7403,9 @@ class MarrymoreHallwayFlag(InvisibleFlagLocation):
     _y_coord = 76
     _z_coord = 3
     _clue_text = " My flag is in a flower pot in a\n hallway.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
@@ -4776,6 +7416,9 @@ class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = " Mine's beneath two adjoined\n red beds.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MarrymoreKitchenFlag(InvisibleFlagLocation):
     _room_ids = [R155_MARRYMORE_CHAPEL_KITCHEN]
@@ -4785,6 +7428,9 @@ class MarrymoreKitchenFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is in a big cabinet full of\n dishes.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MarrymoreFireplaceFlag(InvisibleFlagLocation):
     _room_ids = [R152_MARRYMORE_CHAPEL_MAIN_HALL]
@@ -4793,6 +7439,9 @@ class MarrymoreFireplaceFlag(InvisibleFlagLocation):
     _z_coord = 2
     _y_shift = -8
     _clue_text = "\n    Mine is in an empty fireplace.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class MarrymoreOrganFlag(InvisibleFlagLocation):
@@ -4806,6 +7455,11 @@ class MarrymoreOrganFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = " Mine is behind a big musical\n instrument.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_chapel(
+            world, inventory
+        )
+
 
 class MarrymoreAltarFlag(InvisibleFlagLocation):
     _room_ids = [
@@ -4817,6 +7471,11 @@ class MarrymoreAltarFlag(InvisibleFlagLocation):
     _z_coord = 1
     _clue_text = "\n        Mine's behind a podium.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_chapel(
+            world, inventory
+        )
+
 
 class StarHillNorthStarFlag(InvisibleFlagLocation):
     _room_ids = [R158_STAR_HILL_AREA_02]
@@ -4826,6 +7485,9 @@ class StarHillNorthStarFlag(InvisibleFlagLocation):
     _x_shift = -10
     _clue_text = "\n     Mine is atop the North Star.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class SeasideTownAnchorFlag(InvisibleFlagLocation):
     _room_ids = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
@@ -4833,6 +7495,9 @@ class SeasideTownAnchorFlag(InvisibleFlagLocation):
     _y_coord = 57
     _x_shift = 16
     _clue_text = "\n       Mine is behind an anchor.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class SeasideTownHydrantFlag(InvisibleFlagLocation):
@@ -4844,6 +7509,9 @@ class SeasideTownHydrantFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "\n  Mine is under a high steel hydrant.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class SeasideTownBucketFlag(InvisibleFlagLocation):
     _room_ids = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
@@ -4851,6 +7519,9 @@ class SeasideTownBucketFlag(InvisibleFlagLocation):
     _y_coord = 31
     _z_coord = 3
     _clue_text = "\n Mine is in a bucket between two\n staircases.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class SeasideTownFlowersFlag(InvisibleFlagLocation):
@@ -4863,6 +7534,9 @@ class SeasideTownFlowersFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine's in the middle of three\n pink flowers.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class SeasideTownShedBoxFlag(InvisibleFlagLocation):
     _room_ids = [R314_SEASIDE_TOWN_SHED]
@@ -4870,6 +7544,13 @@ class SeasideTownShedBoxFlag(InvisibleFlagLocation):
     _y_coord = 23
     _y_shift = 8
     _clue_text = " Mine's under a lone crate in an\n empty house.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            can_access_monstro_town(world, inventory)
+            and can_defeat_seaside_boss(world, inventory)
+            and inventory.has_item(ShedKeyPrize)
+        )
 
 
 class SeaArrowFlag(InvisibleFlagLocation):
@@ -4880,6 +7561,11 @@ class SeaArrowFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "\n   Mine is beside a mossy up-arrow.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_sea(
+            world, inventory
+        )
+
 
 class SeaBoxesFlag(InvisibleFlagLocation):
     _room_ids = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
@@ -4887,6 +7573,11 @@ class SeaBoxesFlag(InvisibleFlagLocation):
     _y_coord = 36
     _y_shift = -8
     _clue_text = "\n    Mine's in some V-shaped boxes.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_sea(
+            world, inventory
+        )
 
 
 class SeaStalagnateFlag(InvisibleFlagLocation):
@@ -4898,12 +7589,22 @@ class SeaStalagnateFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine is behind a big gray\n stalagnate.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_sea(
+            world, inventory
+        )
+
 
 class SeaUnderwaterSailFlag(InvisibleFlagLocation):
     _room_ids = [R174_SEA_AREA_08_SHORE_WITH_SUNKEN_SHIP]
     _x_coord = 4
     _y_coord = 41
     _clue_text = "\n        Mine's behind a big sail.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_sea(
+            world, inventory
+        )
 
 
 class ShipBarrelPileFlag(InvisibleFlagLocation):
@@ -4912,6 +7613,11 @@ class ShipBarrelPileFlag(InvisibleFlagLocation):
     _y_coord = 66
     _z_coord = 3
     _clue_text = "\n  Mine is atop a big pile of barrels.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_sea(
+            world, inventory
+        )
 
 
 class ShipDoorMarkerFlag(InvisibleFlagLocation):
@@ -4922,6 +7628,11 @@ class ShipDoorMarkerFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = ' Mine is on a stack of boxes.[await][pause]\n[delay] Hm?[delay] Is that not specific enough?[await][page]\n Well,[delay] the boxes act as a door\n marker.[delay] They represent the\n number "4".[await]'
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_sea(
+            world, inventory
+        )
+
 
 class ShipButtonFlag(InvisibleFlagLocation):
     _room_ids = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
@@ -4929,12 +7640,24 @@ class ShipButtonFlag(InvisibleFlagLocation):
     _y_coord = 133
     _clue_text = "\n   Mine is under a floating button.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_sea(
+            world, inventory
+        )
+
 
 class ShipSwitchFlag(InvisibleFlagLocation):
     _room_ids = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
     _x_coord = 17
     _y_coord = 121
-    _clue_text = '\n  Mine is underneath a floating "J".[await]'
+    _clue_text = (
+        '\n Mine is underneath a floating "J"\n that is all on its lonesome.[await]'
+    )
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_defeat_ship_midboss(
+            world, inventory
+        )
 
 
 class LandsEndPlatformFlag(InvisibleFlagLocation):
@@ -4942,6 +7665,9 @@ class LandsEndPlatformFlag(InvisibleFlagLocation):
     _x_coord = 6
     _y_coord = 29
     _clue_text = "\n   Mine is under a rising platform.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class LandsEndCannonFlag(InvisibleFlagLocation):
@@ -4951,6 +7677,11 @@ class LandsEndCannonFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine's under a big and quiet\n cannon.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_lands_end(
+            world, inventory
+        )
+
 
 class LandsEndArrowFlag(InvisibleFlagLocation):
     _room_ids = [R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]
@@ -4958,6 +7689,11 @@ class LandsEndArrowFlag(InvisibleFlagLocation):
     _y_coord = 29
     _x_shift = 16
     _clue_text = "\n Mine is beside an orange up-arrow.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_lands_end(
+            world, inventory
+        )
 
 
 class LandsEndHillFlag(InvisibleFlagLocation):
@@ -4968,12 +7704,22 @@ class LandsEndHillFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is on a short, red hill in a\n remote area.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_lands_end(
+            world, inventory
+        )
+
 
 class LandsEndTwoHillFlag(InvisibleFlagLocation):
     _room_ids = [R319_LANDS_END_DESERT_AREA_06]
     _x_coord = 8
     _y_coord = 121
     _clue_text = "   My flag's between two red hills.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_lands_end(
+            world, inventory
+        )
 
 
 class LandsEndStalagmiteFlag(InvisibleFlagLocation):
@@ -4986,6 +7732,11 @@ class LandsEndStalagmiteFlag(InvisibleFlagLocation):
         " Mine's on a big stalagmite\n formation in an underground cave.[await]"
     )
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_lands_end(
+            world, inventory
+        )
+
 
 class LandsEndCliffBushFlag(InvisibleFlagLocation):
     _room_ids = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
@@ -4993,6 +7744,11 @@ class LandsEndCliffBushFlag(InvisibleFlagLocation):
     _y_coord = 103
     _z_coord = 22
     _clue_text = " Mine is on a bush, way up high on\n a cliff.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_lands_end(
+            world, inventory
+        )
 
 
 class LandsEndSignFlag(InvisibleFlagLocation):
@@ -5004,6 +7760,11 @@ class LandsEndSignFlag(InvisibleFlagLocation):
     _x_shift = 8
     _clue_text = "     My flag's on a yellow arrow.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_lands_end(
+            world, inventory
+        )
+
 
 class DojoBonsaiFlag(InvisibleFlagLocation):
     _room_ids = [R255_MONSTRO_TOWN_JINXS_DOJO]
@@ -5012,12 +7773,18 @@ class DojoBonsaiFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "\n   Mine's underneath a bonsai tree.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MonstroEntranceSignFlag(InvisibleFlagLocation):
     _room_ids = [R267_MONSTRO_TOWN_ENTRANCE]
     _x_coord = 9
     _y_coord = 102
     _clue_text = "\n     Mine's in a lone flowery bush.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class MonstroBatFlag(InvisibleFlagLocation):
@@ -5028,6 +7795,9 @@ class MonstroBatFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "\n     Mine's behind a wooden bat.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class MonstroFanFlag(InvisibleFlagLocation):
     _room_ids = [R395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F]
@@ -5036,6 +7806,9 @@ class MonstroFanFlag(InvisibleFlagLocation):
     _z_coord = 1
     _x_shift = -16
     _clue_text = "\n         Mine's beside a fan.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class MonstroShellFlag(InvisibleFlagLocation):
@@ -5046,6 +7819,9 @@ class MonstroShellFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "\n   Mine's beneath a spinning shell.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class BeanValleyPipeFlag(InvisibleFlagLocation):
     _room_ids = [R252_BEAN_VALLEY_MAIN_AREA]
@@ -5055,12 +7831,18 @@ class BeanValleyPipeFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = " Mine's on an isolated, dead-end\n pipe.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
 
 class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
     _room_ids = [R253_BEAN_VALLEY_MAGIC_BRICK_TO_BEANSTALK_AREA]
     _x_coord = 27
     _y_coord = 27
     _clue_text = "\n  Mine's underneath a big beanstalk.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
 
 
 class CasinoBellFlag(InvisibleFlagLocation):
@@ -5071,6 +7853,11 @@ class CasinoBellFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "\n       Mine is beside a tiny bell.[await][pause]\n I don't think it does anything.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and inventory.has_item(
+            BrightCardPrize
+        )
+
 
 class NimbusGoldGoombaFlag(InvisibleFlagLocation):
     _room_ids = [R341_NIMBUS_LAND_GARROS_HOUSE]
@@ -5078,6 +7865,11 @@ class NimbusGoldGoombaFlag(InvisibleFlagLocation):
     _y_coord = 14
     _z_coord = 1
     _clue_text = "\n     Mine is on a golden Goomba.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_outer_nimbus(
+            world, inventory
+        )
 
 
 class NimbusInnLobbyFlag(InvisibleFlagLocation):
@@ -5089,6 +7881,11 @@ class NimbusInnLobbyFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine is under a stove with two\n pots.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_outer_nimbus(
+            world, inventory
+        )
+
 
 class NimbusPlantFlag(InvisibleFlagLocation):
     _room_ids = [
@@ -5099,6 +7896,11 @@ class NimbusPlantFlag(InvisibleFlagLocation):
     _z_coord = 1
     _clue_text = " Mine is behind a big potted plant\n in a corner.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_nimbus_castle(
+            world, inventory
+        )
+
 
 class NimbusBirdFlag(InvisibleFlagLocation):
     _room_ids = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
@@ -5106,6 +7908,11 @@ class NimbusBirdFlag(InvisibleFlagLocation):
     _y_coord = 48
     _y_shift = -8
     _clue_text = " Mine is under a birdcage, in a\n restricted dead-end area.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_defeat_nimbus_boss(
+            world, inventory
+        )
 
 
 class NimbusHotSpringsFlag(InvisibleFlagLocation):
@@ -5115,6 +7922,11 @@ class NimbusHotSpringsFlag(InvisibleFlagLocation):
     _z_coord = 5
     _clue_text = " Mine's on the right side of a\n hot pool.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_defeat_nimbus_boss(
+            world, inventory
+        )
+
 
 class VolcanoShipsFlag(InvisibleFlagLocation):
     _room_ids = [R353_VOLCANO_AREA_18_HINO_MART]
@@ -5122,6 +7934,11 @@ class VolcanoShipsFlag(InvisibleFlagLocation):
     _y_coord = 61
     _z_coord = 2
     _clue_text = "\n    Mine is between two vehicles.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_volcano(
+            world, inventory
+        )
 
 
 class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
@@ -5132,12 +7949,22 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "\n  Mine is between two big red doors.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(
+            world, inventory
+        ) and can_defeat_post_obstacle_boss(world, inventory)
+
 
 class KeepThwompFlag(InvisibleFlagLocation):
     _room_ids = [R449_BOWSERS_KEEP_AREA_11_THWOMPBULLET_ROOM_AFTER_MAGIKOOPAS_ROOM]
     _x_coord = 19
     _y_coord = 47
     _clue_text = "\n      Mine is under a big thwomp.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(
+            world, inventory
+        ) and can_defeat_post_obstacle_boss(world, inventory)
 
 
 class FactoryCanopyFlag(InvisibleFlagLocation):
@@ -5148,6 +7975,11 @@ class FactoryCanopyFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "  My flag's under a bolted canopy.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_factory(
+            world, inventory
+        )
+
 
 class FactoryLugnutFlag(InvisibleFlagLocation):
     _room_ids = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
@@ -5155,6 +7987,11 @@ class FactoryLugnutFlag(InvisibleFlagLocation):
     _y_coord = 52
     _z_coord = 7
     _clue_text = "    My flag's underneath a lugnut.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_factory(
+            world, inventory
+        )
 
 
 class FactoryTrampolineFlag(InvisibleFlagLocation):
@@ -5164,6 +8001,11 @@ class FactoryTrampolineFlag(InvisibleFlagLocation):
     _y_shift = 16
     _clue_text = " My flag is under the world's\n loneliest trampoline.[await]"
 
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(
+            world, inventory
+        ) and can_defeat_first_factory_boss(world, inventory)
+
 
 class FactoryButtonFlag(InvisibleFlagLocation):
     _room_ids = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
@@ -5171,6 +8013,14 @@ class FactoryButtonFlag(InvisibleFlagLocation):
     _y_coord = 36
     _z_coord = 5
     _clue_text = " Mine is on a jammed machine\n button.[await]"
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(
+            world, inventory
+        ) and can_defeat_inner_factory_first_boss(world, inventory)
+
+
+########## Mixins
 
 
 def can_defeat_some_of(
@@ -5240,7 +8090,7 @@ def can_access_invaded_kingdom(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_defeat_mushroom_kingdom_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to defeat the boss at Mushroom Kingdom."""
-    return can_defeat_bandits_way_boss(world, inventory) and can_defeat_boss(
+    return can_access_invaded_kingdom(world, inventory) and can_defeat_boss(
         world, inventory, MushroomKingdomBossFight
     )
 
@@ -5278,21 +8128,28 @@ def can_defeat_first_mimic(world: GameWorld, inventory: Inventory) -> bool:
 def can_access_sewer(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Kero Sewers."""
     if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MALLOW):
-        return inventory.has_item(MallowRecruitmentPrize)
+        return inventory.has_item(MallowRecruitmentPrize) or can_access_lands_end(
+            world, inventory
+        )
     if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MACK):
-        return inventory.has_item(MackBossFight)
+        return inventory.has_item(MackBossFight) or can_access_lands_end(
+            world, inventory
+        )
     if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.KINGDOM):
-        return can_defeat_mushroom_kingdom_boss(world, inventory)
-    if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
         return can_defeat_mushroom_kingdom_boss(
             world, inventory
-        ) and inventory.has_item(RareFrogCoinPrize)
-    return True
+        ) or can_access_lands_end(world, inventory)
+    if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
+        return (
+            can_defeat_mushroom_kingdom_boss(world, inventory)
+            and inventory.has_item(RareFrogCoinPrize)
+        ) or can_access_lands_end(world, inventory)
+    return can_access_lands_end(world, inventory)
 
 
 def can_access_sewer_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the boss at Kero Sewers."""
-    return can_defeat_some_of(
+    return can_access_sewer(world, inventory) and can_defeat_some_of(
         world,
         inventory,
         [
@@ -5908,9 +8765,26 @@ def can_defeat_third_mimic(world: GameWorld, inventory: Inventory) -> bool:
     )
 
 
+def can_access_outer_nimbus(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to get to Nimbus Land."""
+    if world.settings.is_flag_value(NimbusGate, NimbusGating.VALLEY):
+        return can_defeat_valley_boss(world, inventory)
+    if world.settings.is_flag_value(NimbusGate, NimbusGating.MEGASMILAX):
+        return inventory.has_item(MegasmilaxBossFight)
+    return True
+
+
+def can_access_nimbus_castle(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Nimbus Castle."""
+    outer_access = can_access_outer_nimbus(world, inventory)
+    if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
+        return outer_access and inventory.has_item(GoldPaintPrize)
+    return outer_access
+
+
 def can_access_statue_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the 1st Nimbus boss."""
-    return can_defeat_some_of(
+    return can_access_nimbus_castle(world, inventory) and can_defeat_some_of(
         world,
         inventory,
         [
@@ -5935,26 +8809,11 @@ def can_defeat_statue_boss(world: GameWorld, inventory: Inventory) -> bool:
     )
 
 
-def can_access_outer_nimbus(world: GameWorld, inventory: Inventory) -> bool:
-    """If true, the player is expected to be able to get to Nimbus Land."""
-    if world.settings.is_flag_value(NimbusGate, NimbusGating.VALLEY):
-        return can_defeat_valley_boss(world, inventory)
-    if world.settings.is_flag_value(NimbusGate, NimbusGating.MEGASMILAX):
-        return inventory.has_item(MegasmilaxBossFight)
-    return True
-
-
-def can_access_nimbus_castle(world: GameWorld, inventory: Inventory) -> bool:
-    """If true, the player is expected to be able to access Nimbus Castle."""
-    outer_access = can_access_outer_nimbus(world, inventory)
-    if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
-        return outer_access and inventory.has_item(GoldPaintPrize)
-    return outer_access
-
-
 def can_access_inner_nimbus(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to get past the Castle Key 1 door."""
-    return can_access_nimbus_castle(world, inventory) and inventory.has_item(CastleKey1Prize)
+    return can_access_nimbus_castle(world, inventory) and inventory.has_item(
+        CastleKey1Prize
+    )
 
 
 def can_access_egg_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -5986,7 +8845,9 @@ def can_defeat_egg_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_access_late_nimbus(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to get past the Castle Key 2 door."""
-    return can_access_inner_nimbus(world, inventory) and inventory.has_item(CastleKey2Prize)
+    return can_access_inner_nimbus(world, inventory) and inventory.has_item(
+        CastleKey2Prize
+    )
 
 
 def can_access_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -6005,7 +8866,8 @@ def can_access_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_valley_boss,
             can_defeat_statue_boss,
             can_defeat_egg_boss,
-        ])
+        ],
+    )
 
 
 def can_defeat_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -6013,6 +8875,7 @@ def can_defeat_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
     return can_access_nimbus_boss(world, inventory) and can_defeat_boss(
         world, inventory, NimbusFinalBossFight
     )
+
 
 def can_access_volcano(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Barrel Volcano."""
@@ -6037,7 +8900,9 @@ def can_access_volcano_midboss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_statue_boss,
             can_defeat_egg_boss,
             can_defeat_nimbus_boss,
-        ])
+        ],
+    )
+
 
 def can_defeat_volcano_midboss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to defeat the 1st volcano boss."""
@@ -6058,8 +8923,6 @@ def can_defeat_volcano_boss(world: GameWorld, inventory: Inventory) -> bool:
     )
 
 
-
-
 def can_take_lategame_bosses(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to reasonably have progressed enough in the seed
     to fight lategame bosses."""
@@ -6074,7 +8937,6 @@ def can_take_lategame_bosses(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_volcano_boss,
         ],
     )
-
 
 
 def can_access_keep(world: GameWorld, inventory: Inventory) -> bool:
@@ -6151,17 +9013,15 @@ def can_defeat_keep_exit_boss(world: GameWorld, inventory: Inventory) -> bool:
 def can_access_factory(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the Outer Factory."""
     if world.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6):
-        return inventory.has_item_count(StarPiecePrize, 6) and can_defeat_keep_exit_boss(
-            world, inventory
-        )
+        return inventory.has_item_count(
+            StarPiecePrize, 6
+        ) and can_defeat_keep_exit_boss(world, inventory)
     if world.settings.is_flag_value(FactoryGate, FactoryGating.EXOR):
         return inventory.has_item(ExorBossFight) and can_defeat_keep_exit_boss(
             world, inventory
         )
     if world.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
-        return can_access_keep(
-            world, inventory
-        )
+        return can_access_keep(world, inventory)
     return can_defeat_keep_exit_boss(world, inventory)
 
 
@@ -6256,6 +9116,7 @@ def can_defeat_inner_factory_fourth_boss(
         world, inventory, InnerFactoryFourthFight
     )
 
+
 # TODO do we want bucket warp / casino warp to take us to the boss fight or to the inner factory?
 def can_access_inner_factory_final_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the final Factory boss."""
@@ -6291,7 +9152,6 @@ def can_defeat_inner_factory_final_boss(world: GameWorld, inventory: Inventory) 
     return can_access_inner_factory_final_boss(world, inventory) and can_defeat_boss(
         world, inventory, FinalBossFight
     )
-
 
 
 def can_access_sealed_door_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -6343,3 +9203,54 @@ def can_access_invisible_flags(world: GameWorld, inventory: Inventory) -> bool:
     ) or can_access_monstro_town(world, inventory)
 
     # mimic 3 and postgame temple
+
+
+def can_damage_enemies_with_spells(inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to damage enemies with spells."""
+    return (
+        inventory.has_item(JumpSpellPrize)
+        or inventory.has_item(FireOrbSpellPrize)
+        or inventory.has_item(SuperJumpSpellPrize)
+        or inventory.has_item(SuperFlameSpellPrize)
+        or inventory.has_item(UltraJumpSpellPrize)
+        or inventory.has_item(UltraFlameSpellPrize)
+        or inventory.has_item(ThunderboltSpellPrize)
+        or inventory.has_item(SnowyPrize)
+        or inventory.has_item(ShockerSpellPrize)
+        or inventory.has_item(StarRainSpellPrize)
+        or inventory.has_item(GenoBeamSpellPrize)
+        or inventory.has_item(GenoWhirlSpellPrize)
+        or inventory.has_item(GenoFlashSpellPrize)
+        or inventory.has_item(GenoBlastSpellPrize)
+        or inventory.has_item(TerrorizeSpellPrize)
+        or inventory.has_item(PoisonGasSpellPrize)
+        or inventory.has_item(CrusherSpellPrize)
+        or inventory.has_item(BowserCrushSpellPrize)
+        or inventory.has_item(PsychBombSpellPrize)
+    )
+
+
+def is_all_starting_chars_set(world: GameWorld):
+    strchars = world.settings.get_flag(StartingCharacters)
+    startmax = len(strchars.enabled)
+    if startmax >= 1:
+        chr1 = world.get_location(StartingCharacter1)
+        if chr1.prize is None:
+            return False
+    if startmax >= 2:
+        chr2 = world.get_location(StartingCharacter2)
+        if chr2.prize is None:
+            return False
+    if startmax >= 3:
+        chr3 = world.get_location(StartingCharacter3)
+        if chr3.prize is None:
+            return False
+    if startmax >= 4:
+        chr4 = world.get_location(StartingCharacter4)
+        if chr4.prize is None:
+            return False
+    if startmax >= 5:
+        chr5 = world.get_location(StartingCharacter5)
+        if chr5.prize is None:
+            return False
+    return True

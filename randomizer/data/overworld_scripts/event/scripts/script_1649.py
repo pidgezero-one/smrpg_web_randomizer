@@ -31,10 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(PROGRESSIVE_FIREWORKS_ENABLED, ["EVENT_1649_jmp_if_bit_clear_3"]),
-	JmpIfBitSet(SHUFFLE_ONE_FIREWORKS_ENABLED, ["EVENT_1649_jmp_if_bit_clear_3"]),
-	Jmp(["EVENT_1649_set_var_to_const_6"]),
-	JmpIfBitClear(FIRST_CARBO_COOKIE_GIVEN, ["EVENT_1649_set_var_to_const_6"], identifier="EVENT_1649_jmp_if_bit_clear_3"),
+	JmpIfBitClear(CARBO_COOKIE_GIVEN, ["EVENT_1649_set_var_to_const_6"]),
 	RemoveObjectFromCurrentLevel(NPC_7),
 	RemoveObjectFromSpecificLevel(NPC_7, R108_MOLEVILLE_OUTSIDE),
 	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 24, identifier="EVENT_1649_set_var_to_const_6"),

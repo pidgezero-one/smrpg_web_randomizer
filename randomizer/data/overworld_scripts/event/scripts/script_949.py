@@ -112,7 +112,7 @@ script = EventScript([
 	JmpIfBitClear(MOLEVILLE_MINES_ENTRANCE_GATING, ["EVENT_949_jmp_if_object_trigger_enabled_92"]),
 	JmpIfBitClear(MINECART_CLEARED, ["EVENT_949_jmp_if_bit_set_85"], identifier="EVENT_949_jmp_if_bit_clear_75"),
 	JmpIfBitSet(BUCKET_WARP_ENABLED, ["EVENT_949_jmp_if_bit_clear_79"]),
-	JmpIfBitSet(FIRST_CARBO_COOKIE_GIVEN, ["EVENT_949_jmp_if_bit_clear_79"]),
+	JmpIfBitSet(CARBO_COOKIE_GIVEN, ["EVENT_949_jmp_if_bit_clear_79"]),
 	RunEventAsSubroutine(E0982_FROGFUCIUS_HINT_OPTIONAL_2),
 	JmpIfBitClear(TREASURE_SHOP_ITEM_1_PURCHASED, ["EVENT_991_run_dialog_14"], identifier="EVENT_949_jmp_if_bit_clear_79"),
 	JmpIfBitClear(SEASIDE_LIBERATED, ["EVENT_949_jmp_if_bit_clear_82"]),

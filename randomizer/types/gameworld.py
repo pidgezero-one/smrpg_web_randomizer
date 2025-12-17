@@ -314,10 +314,6 @@ class GameWorld:
             StartingItem3Location: StartingItem3Location(),
             StartingItem4Location: StartingItem4Location(),
             StartingCharacter1: StartingCharacter1(),
-            StartingCharacter2: StartingCharacter2(),
-            StartingCharacter3: StartingCharacter3(),
-            StartingCharacter4: StartingCharacter4(),
-            StartingCharacter5: StartingCharacter5(),
             MushroomWay1LowerChest: MushroomWay1LowerChest(),
             MushroomWay1UpperChest: MushroomWay1UpperChest(),
             MushroomWay1ToadRescue: MushroomWay1ToadRescue(),
@@ -436,7 +432,6 @@ class GameWorld:
             TreasureShopItem1: TreasureShopItem1(),
             TreasureShopItem2: TreasureShopItem2(),
             TreasureShopItem3: TreasureShopItem3(),
-            FireworksShopItemLocation: FireworksShopItemLocation(),
             OuterMinesTrampolineHenchmanLocation: OuterMinesTrampolineHenchmanLocation(),
             OuterMinesLeftHenchmanLocation: OuterMinesLeftHenchmanLocation(),
             OuterMinesRightHenchmanLocation: OuterMinesRightHenchmanLocation(),
@@ -807,6 +802,45 @@ class GameWorld:
             ToadstoolSpell5: ToadstoolSpell5(),
             ToadstoolSpell6: ToadstoolSpell6(),
         }
+        if self.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE)
+            fwshop = FireworksShopItemLocation()
+            fwshop._originally_held = ProgressiveFireworksPrize
+            fwshop.set_prize(ProgressiveFireworksPrize())
+            self.locations = {
+                **self.locations,
+                FireworksShopItemLocation: fwshop,
+                PurtendStoreLocation: PurtendStoreLocation(),
+                CookieTraderLocation: CookieTraderLocation(),
+            }
+        if self.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE)
+            fwshop = FireworksShopItemLocation()
+            self.locations = {
+                **self.locations,
+                FireworksShopItemLocation: fwshop
+            }
+
+        strchars = self.settings.get_flag(StartingCharacters)
+        startmax = len(strchars.enabled)
+        if startmax >= 2:
+            self.locations = {
+                **self.locations,
+                StartingCharacter2: StartingCharacter2(),
+            }
+        if startmax >= 3:
+            self.locations = {
+                **self.locations,
+                StartingCharacter3: StartingCharacter3(),
+            }
+        if startmax >= 4:
+            self.locations = {
+                **self.locations,
+                StartingCharacter4: StartingCharacter4(),
+            }
+        if startmax >= 5:
+            self.locations = {
+                **self.locations,
+                StartingCharacter5: StartingCharacter5(),
+            }
 
         # Optionally include remake content.
         if self.settings.get_flag(Remake).enabled:

@@ -40,7 +40,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1872_jmp_if_bit_set_9"]),
 	RunDialog(dialog_id=DI1297_CANT_SELL_MORE_THAN_ONE_FIREWORKS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return(),
-	JmpIfBitSet(FIRST_CARBO_COOKIE_GIVEN, ["EVENT_1872_run_dialog_10"], identifier="EVENT_1872_jmp_if_bit_set_9"),
+	JmpIfBitSet(CARBO_COOKIE_GIVEN, ["EVENT_1872_run_dialog_10"], identifier="EVENT_1872_jmp_if_bit_set_9"),
 	RunDialog(dialog_id=DI1289_FIREWORKS_GUY_FIREWORKS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1872_run_dialog_10"),
 	JmpIfDialogOptionBSelected(["EVENT_1872_pause_28"]),
 	Pause(10),

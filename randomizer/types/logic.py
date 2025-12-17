@@ -24,3 +24,11 @@ class Inventory(list):
                     found = True
                     break
         return found
+    
+    def get_items_of_type(self, item_type: type[Prize]) -> list[Prize]:
+        """Returns a list of all items of the given type in the inventory."""
+        return [item for item in self if isinstance(item, item_type)]
+    
+    def get_item(self, item_type: type[Prize]) -> Prize | None:
+        """Returns the first item of the given type in the inventory, or None if not found."""
+        return next((item for item in self.get_items_of_type(item_type)), None)

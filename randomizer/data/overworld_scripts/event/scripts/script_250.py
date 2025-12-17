@@ -35,6 +35,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 34, ["EVENT_250_set_var_to_const_5"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 154, ["EVENT_250_set_var_to_const_7"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 189, ["EVENT_250_set_var_to_const_free3"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 336, ["EVENT_251_jmp_to_event_ss"]),
 	Return(),
 	SetVarToConst(PRIMARY_TEMP_7000, 10, identifier="EVENT_250_set_var_to_const_3"),
 	JmpToEvent(E0158_NPC_QUEST_GRANT_MULTI_FROG_COIN),
@@ -44,5 +45,6 @@ script = EventScript([
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
 	SetVarToConst(ITEM_ID, MushroomItem, identifier="EVENT_250_set_var_to_const_free3"),
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
+	JmpToEvent(E0185_NPC_QUEST_GRANT_PROGRESSIVE_FIREWORKS, identifier="EVENT_251_jmp_to_event_ss"),
 	Return()
 ])
