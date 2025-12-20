@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CompareVarToConst(PRIMARY_TEMP_7000, 30),
+	CompareVarToConst(PRIMARY_TEMP_7000, 30, identifier="sj_threshold_1"),
 	Return()
 ])

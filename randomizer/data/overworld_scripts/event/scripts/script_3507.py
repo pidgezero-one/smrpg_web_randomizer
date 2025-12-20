@@ -55,6 +55,9 @@ script = EventScript([
 		A_SetAllSpeeds(FAST),
 		A_WalkNorthwestSteps(8)
 	]),
+    RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
+	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3819_ret_27"]),
+	RunEventAsSubroutine(E3842_BOOSTER_HILL_STAR_PIECE_SIGNAL),
 	ActionQueueAsync(target=NPC_6, subscript=[
 		A_TransferToXYZF(x=11, y=67, z=0, direction=EAST),
 		A_SetPriority(3),
@@ -63,6 +66,7 @@ script = EventScript([
 		A_WalkNorthwestSteps(7),
 		A_JumpToHeight(64)
 	]),
+    
 	PlaySound(sound=SO087_CORRECT_SIGNAL, channel=6),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSoutheast()

@@ -699,7 +699,8 @@ class WorldAreaEnum(StrEnum):
     ROSE_WAY = "Rose Way"
     ROSE_TOWN = "Rose Town"
     FOREST_MAZE = "Forest Maze"
-    PIPE_VAULT_YOSTER_ISLE = "Pipe Vault/Yoster Isle"
+    PIPE_VAULT = "Pipe Vault"
+    YOSTER_ISLE = "Yoster Isle"
     MOLEVILLE = "Moleville"
     BOOSTER_PASS = "Booster Pass"
     BOOSTER_TOWER = "Booster Tower"
@@ -707,14 +708,52 @@ class WorldAreaEnum(StrEnum):
     MARRYMORE = "Marrymore"
     STAR_HILL = "Star Hill"
     SEASIDE_TOWN = "Seaside Town"
-    SEA_SUNKEN_SHIP = "Sea/Sunken Ship"
-    LANDS_END_TEMPLE = "Land's End/Belome Temple"
+    SEA = "Sea"
+    SUNKEN_SHIP = "Sunken Ship"
+    LANDS_END = "Land's End"
+    TEMPLE = "Belome Temple"
     MONSTRO_TOWN = "Monstro Town"
-    BEAN_VALLEY_CASINO = "Bean Valley/Grate Guy's Casino"
+    BEAN_VALLEY = "Bean Valley"
+    CASINO = "Grate Guy's Casino"
     NIMBUS_LAND = "Nimbus Land"
     BARREL_VOLCANO = "Barrel Volcano"
     BOWSERS_KEEP = "Bowser's Keep"
     FACTORY = "Factory"
+    INNER_FACTORY = "Inner Factory"
+
+SIGNAL_RING_EVENT_DICT: dict[WorldAreaEnum, int] = {
+    WorldAreaEnum.MARIOS_PAD: E3887_MARIOS_PAD_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.MUSHROOM_WAY: E3888_MUSHROOM_WAY_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.MUSHROOM_KINGDOM: E3889_MUSHROOM_KINGDOM_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.BANDITS_WAY: E3890_BANDITS_WAY_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.KERO_SEWERS: E3891_SEWERS_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.MIDAS_RIVER: E3892_MIDAS_RIVER_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.TADPOLE_POND: E3893_TADPOLE_POND_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.ROSE_WAY: E3894_ROSE_WAY_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.ROSE_TOWN: E3895_ROSE_TOWN_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.FOREST_MAZE: E3896_FOREST_MAZE_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.MOLEVILLE: E3897_MOLEVILLE_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.BOOSTER_PASS: E3898_BOOSTER_PASS_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.BOOSTER_TOWER: E3899_BOOSTER_TOWER_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.PIPE_VAULT: E3900_PIPE_VAULT_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.YOSTER_ISLE: E3901_YOSTER_ISLE_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.MARRYMORE: E3902_MARRYMORE_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.STAR_HILL: E3903_STAR_HILL_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.SEASIDE_TOWN: E3904_SEASIDE_TOWN_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.SEA: E3905_SEA_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.SUNKEN_SHIP: E3906_SHIP_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.LANDS_END: E3907_LANDS_END_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.TEMPLE: E3908_TEMPLE_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.MONSTRO_TOWN: E3909_MONSTRO_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.CASINO: E3910_CASINO_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.BEAN_VALLEY: E3911_BEAN_VALLEY_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.NIMBUS_LAND: E3912_NIMBUS_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.BARREL_VOLCANO: E3913_VOLCANO_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.BOWSERS_KEEP: E3914_KEEP_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.FACTORY: E3915_FACTORY_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.INNER_FACTORY: E3916_INNER_FACTORY_STAR_PIECE_SIGNAL,
+    WorldAreaEnum.BOOSTER_HILL: E3842_BOOSTER_HILL_STAR_PIECE_SIGNAL,
+}
 
 
 class OverworldMapRegion(StrEnum):
@@ -768,7 +807,8 @@ class PrizeLocation:
             WorldAreaEnum.ROSE_WAY,
             WorldAreaEnum.ROSE_TOWN,
             WorldAreaEnum.FOREST_MAZE,
-            WorldAreaEnum.PIPE_VAULT_YOSTER_ISLE,
+            WorldAreaEnum.PIPE_VAULT,
+            WorldAreaEnum.YOSTER_ISLE,
         ]:
             return OverworldMapRegion.WORLD_2
         elif self.world_area in [
@@ -782,13 +822,16 @@ class PrizeLocation:
         elif self.world_area in [
             WorldAreaEnum.STAR_HILL,
             WorldAreaEnum.SEASIDE_TOWN,
-            WorldAreaEnum.SEA_SUNKEN_SHIP,
+            WorldAreaEnum.SEA,
+            WorldAreaEnum.SUNKEN_SHIP,
         ]:
             return OverworldMapRegion.WORLD_4
         elif self.world_area in [
-            WorldAreaEnum.LANDS_END_TEMPLE,
+            WorldAreaEnum.LANDS_END,
+            WorldAreaEnum.TEMPLE,
             WorldAreaEnum.MONSTRO_TOWN,
-            WorldAreaEnum.BEAN_VALLEY_CASINO,
+            WorldAreaEnum.CASINO,
+            WorldAreaEnum.BEAN_VALLEY,
         ]:
             return OverworldMapRegion.WORLD_5
         elif self.world_area in [

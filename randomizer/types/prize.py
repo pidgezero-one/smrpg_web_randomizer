@@ -1,7 +1,7 @@
 from smrpgpatchbuilder.datatypes.items.classes import Item
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import JmpToEvent, SetVarToConst, PlaySound, Inc, Return
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import JmpToEvent, SetVarToConst, PlaySound, Inc, Return, SetBit
 from ..data.variables.event_script_names import E3092_STAR_PIECE_GRANT
 from ..data.variables.dialog_names import DI3074_GOT_BEETLEMANIA, DI1177_FOUND_A_70A7_AUTO_TERMINATE, DI1178_FOUND_AN_70A7_AUTO_TERMINATE, DI0065_GOT_AN_70A7_AWAIT_TERMINATE, DI0524_GOT_A_70A7_AWAIT_TERMINATE, DI0064_GOT_AN_70A7_AUTO_TERMINATE, DI0066_GOT_A_70A7_AUTO_TERMINATE
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import BOWSER, MARIO, MEM_70A8
@@ -180,24 +180,28 @@ class StarPiecePrize(StandardPrize):
     @property
     def chest_grant(self) -> EventScript:
         return EventScript([
+            SetBit(self._hint),
             JmpToEvent(E0163_CHEST_GRANT_STAR_PIECE)
         ])
 
     @property
     def npc_grant(self) -> EventScript:
         return EventScript([
+            SetBit(self._hint),
             JmpToEvent(E0164_NPC_QUEST_GRANT_STAR_PIECE)
         ])
 
     @property
     def standing_grant(self) -> EventScript:
         return EventScript([
+            SetBit(self._hint),
             JmpToEvent(E0166_FREESTANDING_GRANT_STAR_PIECE)
         ])
 
     @property
     def river_grant(self) -> EventScript:
         return EventScript([
+            SetBit(self._hint),
             JmpToEvent(E2821_ASYNC_NO_ANIMATION_STAR_PIECE)
         ])
     
@@ -205,6 +209,7 @@ class StarPiecePrize(StandardPrize):
     def hill_grant(self) -> EventScript:
         return EventScript([
             Inc(TEMP_7032),
+            SetBit(self._hint),
             PlaySound(sound=SO081_STAR, channel=4),
             Return(),
         ])

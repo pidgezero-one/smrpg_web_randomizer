@@ -49,25 +49,22 @@ Follow these guidelines when developing for this randomizer:
 
 The experience of playing SMRPG Randomizer should adhere to the experience of playing "the original game but shuffled" as much as possible, with some concessions in favour of scavenger hunt design. This means working with what the original game already offers us and avoiding adding things it never had. 
 
-These are examples of things that should not be done:
-* Inventing new spells that didn't exist originally, or replacing existing spells
+These are examples of things that generally should not be done:
+* Inventing new spells that didn't exist originally, especially if replacing existing spells
 * Adding prize checks to NPCs that never originally gave you anything
 * Adding new characters or new enemies (i.e. from Paper Mario or M+L games or other SMRPG romhacks)
-* Adding new items, unless it would make for a _really_ interesting progression feature (i.e. shuffling Garro's paint to unlock Nimbus Land)
+* Adding new items, unless it would make for a _really_ interesting progression feature (i.e. shuffling Garro's paint to unlock Nimbus Castle)
 
-Adding concepts from the 2023 Switch remake is an exception to all of the above.
+Adding concepts from the 2023 Switch remake is an exception to all of the above. References to other media in the form of character palettes or NPC dialogs are also completely fine.
+
+A good way to think about changing what's canon to the original game is to consider bringing some utility to things that would otherwise be underused or never used (think the Ice Arrows in OOT being modified to act like Blue Fire, or the Spoon in FFIV becoming a weapon for Edward) or to restore some importance to items that could become fairly useless in a randomizer setting. In SMRPG Randomizer, there are some examples of this:
+* A setting that infuses standard shop armors with certain immunities
+* A setting that gives poison mushrooms a 1/8 chance of acting as a Red Essence
+* A setting that turns two underserved locales into final boss warps
+* A setting that makes the trade quest for the Monstro Town sealed door join the shuffle (as opposed to Shiny Stones being infinitely purchaseable in shops)
+The important thing is to make sure these things are optional and disabled by default, so that players expecting the original game's experience will get that, but players who want to add some more depth to underused parts of the game have that choice.
 
 If you are adding new options for progression logic, try to keep the conditions as close to the logic of the original game as possible. i.e. you can choose to unlock Bandit's Way by recruiting Mallow, clearing Mushroom Way, or defeating the Hammer Bros (wherever they might be), because these are all things that happen in the original game just before you go to Bandit's Way. Something like "Defeat Culex to unlock Forest Maze" would not make sense.
-
-### Check-for-check
-
-All prizes that could only be obtained once in the original game are item checks (i.e. treasure chests, boss battle prizes, hotel rewards, etc). 
-
-Prizes that can be obtained infinitely are NOT item checks (i.e. Mushroom Boy's items, Marrymore tips besides the Flower Box).
-
-(Exception: All treasure chests are checks, even the few that could originally be opened infinitely.)
-
-However, a -sanity feature to add checks to these repeatable prize grants would probably not be rejected if designed well.
 
 ### Don't make the open world map annoying to use
 
@@ -78,6 +75,16 @@ If you want to gate an area that would break the overworld map loop, i.e. Land's
 Changing the shape of the level terrain (solidity mods) to accomplish this will usually not be approved unless it makes sense in-world. Example:
 * locking the door to the entrance of Mushroom Kingdom Castle = ✅
 * changing the height of the cliff in Land's End = ❌.
+
+### Check-for-check
+
+All prizes that could only be obtained once in the original game are item checks (i.e. treasure chests, boss battle prizes, hotel rewards, etc). 
+
+Prizes that can be obtained infinitely are NOT item checks (i.e. Mushroom Boy's items, Marrymore tips other than the Flower Box).
+
+(Exception: All treasure chests are checks, even the few that could originally be opened infinitely.)
+
+However, a -sanity feature to add checks to these repeatable prize grants would probably be approved if designed well.
 
 ## Will players like my idea?
 

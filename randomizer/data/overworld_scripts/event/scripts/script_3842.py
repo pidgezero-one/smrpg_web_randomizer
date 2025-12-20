@@ -1,4 +1,4 @@
-# E3842_EMPTY
+# E3842_BOOSTER_HILL_STAR_PIECE_SIGNAL
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,9 +31,9 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfVarEqualsConst(LAST_OVERWORLD_MARKER_ID, 10, ["EVENT_3842_enter_area_3"]),
-	EnterArea(room_id=R203_MUSHROOM_WAY_AREA_01, face_direction=SOUTHEAST, x=3, y=28, z=0, run_entrance_event=True),
+	ClearBit(SIGNAL_RING_BIT),
 	Return(),
-	EnterArea(room_id=R205_MUSHROOM_WAY_AREA_03, face_direction=SOUTHWEST, x=28, y=89, z=0, run_entrance_event=True, identifier="EVENT_3842_enter_area_3"),
+	PlaySound(sound=SO149_CASINO_SECRET_PASSAGE, channel=6, identifier="EVENT_3887_play_sound"),
+	ClearBit(SIGNAL_RING_BIT),
 	Return()
 ])

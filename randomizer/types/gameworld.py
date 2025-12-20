@@ -12,7 +12,7 @@ from smrpgpatchbuilder.datatypes.battles.battle_dialog_collection import (
 from smrpgpatchbuilder.datatypes.dialogs.classes import DialogCollection
 from smrpgpatchbuilder.datatypes.enemies.classes import EnemyCollection
 from smrpgpatchbuilder.datatypes.enemy_attacks.classes import EnemyAttackCollection
-from smrpgpatchbuilder.datatypes.items.classes import ItemCollection
+from smrpgpatchbuilder.datatypes.items.classes import ItemCollection, Equipment
 from smrpgpatchbuilder.datatypes.monster_scripts.types import (
     MonsterScriptBank,
     MonsterScript,
@@ -44,6 +44,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     RunEventAsSubroutine,
     SetBit,
     ClearBit,
+    JmpIfBitClear
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
@@ -51,6 +52,8 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
 )
 from smrpgpatchbuilder.datatypes.allies.ally_collection import AllyCollection
 from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Room
+from smrpgpatchbuilder.datatypes.spells.enums import Status
+from ..data.items.items import *
 from .item import Item
 from .enemy import Enemy
 from .patch import Patch
@@ -66,7 +69,7 @@ from .flags import (
     CosmeticCategory,
     CATEGORIES,
 )
-from .prizelocation import PrizeLocation
+from .prizelocation import SIGNAL_RING_EVENT_DICT, PrizeLocation
 from ..progression.prizelocations import *
 from ..data.variables.dialog_names import *
 
@@ -848,7 +851,7 @@ class GameWorld:
                 **self.locations,
                 StartingCharacter5: StartingCharacter5(),
             }
-        
+
         if self.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
             self.locations = {
                 **self.locations,
@@ -1033,6 +1036,21 @@ class GameWorld:
                     "THE BIG BOO:\n" + location.clue_text,
                 )
         self.locations = {**self.locations, **invisible_flag_locations}
+
+        # TODO: Before setting hints, find where the mimic chests are and reassign the world areas for their prize locations
+
+        # prize locations HAVE to all be defined by this point
+        # not shuffled, just determined if they exist in the seed or not
+
+        if self.settings.isflag_enabled(StarPieceHints):
+            for l in self.locations.values():
+                if not isinstance(l.prize, StarPiecePrize):
+                    continue
+                event = SIGNAL_RING_EVENT_DICT[l.world_area]
+                script = self.event_scripts.get_script_by_id(event)
+                script.insert_before_nth_command(0, JmpIfBitClear(l.prize._hint, [f"EVENT_{event}_play_sound"]))
+
+
         if self.settings.isflag_enabled(SkipMustyFearsSequence):
             event_2496_startup += [RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER)]
 
@@ -1054,6 +1072,14 @@ class GameWorld:
             event_2496_startup += [SetBit(BUCKET_WARP_ENABLED)]
         if self.settings.isflag_enabled(ShuffleWeddingGear):
             event_2496_startup += [SetBit(CHAPEL_ITEMS_ANYWHERE_ENABLED)]
+
+        if self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.STARS):
+            event_2496_startup += [SetBit(PROGRESSIVE_STAR_EXP_ENABLED)]
+        if self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.BOSSES):
+            event_2496_startup += [SetBit(PROGRESSIVE_BOSS_EXP_ENABLED)]
+
+        # TODO when assembling grant scripts, set all exp star 70A7 props to 0 if NONE is selected
+        # TODO verify that all bosses increase the counter, ie remake bosses
 
         # gates
         if self.settings.is_flag_value(BanditsWayGate, BanditsWayGating.OPEN):
@@ -1181,7 +1207,6 @@ class GameWorld:
                 SetBit(MAP_BARREL_VOLCANO),
             ]
 
-        # DI1166_TEMPLE_BLOCKED_PIPE_HINT
         if not self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.OPEN):
             event_2496_startup += [SetBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL)]
             if self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6):
@@ -1207,6 +1232,133 @@ class GameWorld:
         self.event_scripts.get_script_by_id(
             E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
         ).set_contents(event_2496_startup)
+
+        # threshold adjustments
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("suite_threshold_1"),
+        ).set_value(self.settings.get_flag(SuitePrize1Threshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("suite_threshold_2"),
+        ).set_value(self.settings.get_flag(SuitePrize2Threshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("suite_threshold_3"),
+        ).set_value(self.settings.get_flag(SuitePrize3Threshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("suite_threshold_4"),
+        ).set_value(self.settings.get_flag(SuitePrize4Threshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("suite_threshold_5"),
+        ).set_value(self.settings.get_flag(SuitePrize5Threshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("suite_threshold_6"),
+        ).set_value(self.settings.get_flag(SuitePrize6Threshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("sj_threshold_1"),
+        ).set_value(self.settings.get_flag(SuperJump1Threshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("sj_threshold_2"),
+        ).set_value(self.settings.get_flag(SuperJump2Threshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("tower_knife_guy_sidequest_completed"),
+        ).set_value(self.settings.get_flag(KnifeGuyPrizeThreshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("casino_grate_guy_sidequest_completed"),
+        ).set_value(self.settings.get_flag(GrateGuyPrizeThreshold).value)
+
+        # other stuff
+
+        if self.settings.isflag_enabled(PoisonMushroom):
+            self.items.get_by_type(MushroomItem2).set_status_immunities(random.sample([
+                Status.MUTE,
+                Status.SLEEP,
+                Status.POISON,
+                Status.FEAR,
+                Status.BERSERK,
+                Status.MUSHROOM,
+                Status.SCARECROW,
+                Status.INVINCIBLE
+            ], 1))
+        if self.settings.isflag_enabled(UncapSuperJumps):
+            self.battle_animations[0x35].delete_command_by_name("super_jump_cap_1")
+            self.battle_animations[0x35].delete_command_by_name("super_jump_cap_2")
+
+        # equips and things
+
+        if self.settings.isflag_enabled(InfuseSpellElements):
+            self.get_spell(GenoBeamSpell).set_element(Element.ICE)
+            self.get_spell(GenoFlashSpell).set_element(Element.FIRE)
+            self.get_spell(PsychBombSpell).set_element(Element.FIRE)
+            self.get_spell(CrusherSpell).set_element(Element.JUMP)
+            self.get_spell(BowserCrushSpell).set_element(Element.JUMP)
+        if self.settings.isflag_enabled(CharacterSpellElements):
+            spells_to_update = [s for s in self.spells.spells if s.element != Element.NONE]
+            for spell in spells_to_update:
+                spell.set_element(random.choice([Element.ICE, Element.FIRE, Element.JUMP, Element.THUNDER]))
+        
+
+        if self.settings.is_flag_value(EquipmentProperties, EquipmentPropertiesOptions.SOME):
+            self.items.get_by_type(ShirtItem).append_status_immunity(Status.MUSHROOM)
+            self.items.get_by_type(PantsItem).append_status_immunity(Status.MUSHROOM)
+            self.items.get_by_type(ThickShirtItem).append_temp_buff(TempStatBuff.DEFENSE)
+            self.items.get_by_type(ThickPantsItem).append_temp_buff(TempStatBuff.DEFENSE)
+            self.items.get_by_type(MegaShirtItem).append_temp_buff(TempStatBuff.MAGIC_DEFENSE)
+            self.items.get_by_type(MegaPantsItem).append_temp_buff(TempStatBuff.MAGIC_DEFENSE)
+            self.items.get_by_type(MegaCapeItem).append_temp_buff(TempStatBuff.MAGIC_DEFENSE)
+            self.items.get_by_type(HappyShirtItem).set_prevent_ko(True)
+            self.items.get_by_type(HappyPantsItem).set_prevent_ko(True)
+            self.items.get_by_type(HappyCapeItem).set_prevent_ko(True)
+            self.items.get_by_type(HappyShellItem).set_prevent_ko(True)
+            self.items.get_by_type(PolkaDressItem).set_prevent_ko(True)
+            self.items.get_by_type(CourageShellItem).append_status_immunity(Status.FEAR)
+            self.items.get_by_type(SailorShirtItem).append_elemental_immunity(Element.ICE)
+            self.items.get_by_type(SailorPantsItem).append_elemental_immunity(Element.ICE)
+            self.items.get_by_type(SailorCapeItem).append_elemental_immunity(Element.ICE)
+            self.items.get_by_type(NauticaDressItem).append_elemental_immunity(Element.ICE)
+            self.items.get_by_type(FuzzyShirtItem).append_elemental_immunity(Element.THUNDER)
+            self.items.get_by_type(FuzzyPantsItem).append_elemental_immunity(Element.THUNDER)
+            self.items.get_by_type(FuzzyCapeItem).append_elemental_immunity(Element.THUNDER)
+            self.items.get_by_type(FuzzyDressItem).append_elemental_immunity(Element.THUNDER)
+            self.items.get_by_type(FireShirtItem).append_elemental_immunity(Element.FIRE)
+            self.items.get_by_type(FirePantsItem).append_elemental_immunity(Element.FIRE)
+            self.items.get_by_type(FireCapeItem).append_elemental_immunity(Element.FIRE)
+            self.items.get_by_type(FireShellItem).append_elemental_immunity(Element.FIRE)
+            self.items.get_by_type(FireDressItem).append_elemental_immunity(Element.FIRE)
+            self.items.get_by_type(HeroShirtItem).append_status_immunity(Status.SCARECROW)
+            self.items.get_by_type(PrincePantsItem).append_status_immunity(Status.MUTE)
+            self.items.get_by_type(RoyalDressItem).append_status_immunity(Status.SLEEP)
+            self.items.get_by_type(HealShellItem).append_status_immunity(Status.POISON)
+            self.items.get_by_type(StarCapeItem).append_status_immunity(Status.BERSERK)
+            self.items.get_by_type(FroggieStickItem).set_magic_attack(self.items.get_by_type(FroggieStickItem).attack)
+            self.items.get_by_type(FroggieStickItem).set_attack(0)
+            self.items.get_by_type(RibbitStickItem).set_magic_attack(self.items.get_by_type(RibbitStickItem).attack)
+            self.items.get_by_type(RibbitStickItem).set_attack(0)
+            self.items.get_by_type(ParasolItem).set_magic_attack(self.items.get_by_type(ParasolItem).attack)
+            self.items.get_by_type(ParasolItem).set_attack(0)
+        elif self.settings.is_flag_value(EquipmentProperties, EquipmentPropertiesOptions.RANDOM):
+            pass 
+        if not self.settings.isflag_enabled(IgnoreNamesakeProperties):
+            self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.SLEEP)
+            self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.MUTE)
+            self.items.get_by_type(AntidotePinItem).append_status_immunity(Status.POISON)
+            self.items.get_by_type(TrueformPinItem).append_status_immunity(Status.MUSHROOM)
+            self.items.get_by_type(TrueformPinItem).append_status_immunity(Status.SCARECROW)
+            self.items.get_by_type(FearlessPinItem).append_status_immunity(Status.FEAR)
+            has_ko_protection = [i for i in self.items.items if isinstance(i, Equipment) and i.prevent_ko]
+            if len(has_ko_protection) < 4:
+                more_ko_protections = random.sample([i for i in self.items.items if isinstance(i, Equipment) and not i.prevent_ko], 4 - len(has_ko_protection))
+                for i in more_ko_protections:
+                    i.set_prevent_ko(True)
+
 
     def get_patch(self) -> Patch:
         patch = Patch()

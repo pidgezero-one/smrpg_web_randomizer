@@ -249,6 +249,9 @@ class RangeFlag(Flag):
             self.set_value(self.default)
 
 
+# ✅ = implemented
+
+
 # ******** Party
 
 
@@ -345,13 +348,13 @@ class EquipmentProperties(SelectOneFlag[EquipmentPropertiesOptions]):
     _default = EquipmentPropertiesOptions.VANILLA
     _id = "props"
 
-
+# ✅
 class IgnoreNamesakeProperties(BooleanFlag):
     _name = "No equipment property guarantees"
     _description = "Normally, certain namesake items retain their protections: <b>Fearless Pin</b>, <b>Antidote Pin</b>, <b>Trueform Pin</b>, and <b>Wakeup Pin</b>. In addition, at least four equips will have OHKO protection. This flag removes those guarantees."
     _id = "unsafe"
 
-
+# ✅
 class StarPieceHints(BooleanFlag):
     _name = "Signal Ring Star Piece hints"
     _description = """If enabled, the Signal Ring (if equipped to your active party) will play a sound when you enter a world area that contains a Star Piece.  
@@ -400,20 +403,21 @@ class CharacterSpellStats(BooleanFlag):
     _description = "The power and FP cost of character magic spells will be randomized."
     _id = "spellstats"
 
-
+# ✅
 class InfuseSpellElements(BooleanFlag):
     _name = "Infuse more spells with elements"
     _description = "Geno Beam becomes an ice spell, Geno Flash and Psych Bomb become fire spells, and Crusher and Bowser Crush become earth (jump) spells."
     _id = "infuse"
 
 
+# ✅
 class CharacterSpellElements(BooleanFlag):
     _name = "Randomize character spell elements"
     _description = "Character spells with elements will have their elements randomized. Non-elemental spells will remain non-elemental."
     _id = "spellelements"
 
 
-# TODO this needs testing
+# ✅
 class UncapSuperJumps(BooleanFlag):
     _name = "Uncap Super Jumps"
     _description = "If enabled, you can do more than 100 Super Jumps at once."
@@ -470,18 +474,16 @@ class TotalStarPieces(RangeFlag):
     _id = "avail"
 
 
-# TODO: location enum
-class EnabledBossChecks(CategorizationFlag):
-    pass
+# EnabledBossChecks and EnabledStarPieceChecks are defined after delayed imports below
 
-
+# ✅
 class ProgressionLogicDifficultyOptions(CategorizationOption):
     """Enumeration for progression logic difficulty levels"""
 
     NORMAL = "Default"
     HARD = "Hard"
 
-
+# ✅
 class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions]):
     _name = "Progression logic difficulty"
     _description = """<b>Normal</b> - The shuffler will take boss difficulty into account when placing progression items. Your expected early progression items are most likely to be found earlier in the game.
@@ -489,7 +491,7 @@ class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions
 <br><b>Hard</b> - The shuffler will not consider boss difficulty when placing progression items. Your progression items may be found late in the game among higher level boss battles."""
     _id = "restrict_map"
 
-
+# ✅
 class DisperseStarPieces(BooleanFlag):
     _name = "Disperse Star Pieces evenly across the map"
     _description = """If enabled, each of the seven overworld map areas may only contain up to one Star Piece each.
@@ -585,7 +587,7 @@ class ShuffleMagikoopaChest(BooleanFlag):
     _description = """If enabled, the chest in Magikoopa's room will contain a random item check. A random chest somewhere in the game will contain infinite coins, unless your item pool is set to "Completely Empty"."""
     _id = "kamek"
 
-
+# ✅
 class ShuffleWeddingGear(BooleanFlag):
     _name = "Shuffle Marrymore wedding gear"
     _description = """If enabled, the four pieces of wedding gear required to initiate the Marrymore boss fight will be located randomly within the world (not necessarily key item locations). Interacting with the four NPCs in the chapel will become random item checks.
@@ -643,7 +645,7 @@ class StarPieceAvailability(BooleanFlag):
     _id = "stars_anywhere"
     # change EVENT_947_jmp_to_event_107" to point to event 949
 
-
+# ✅
 class InvisibleFlagsSetting(BooleanFlag):
     _name = "Move invisible flag checks"
     _description = """Chooses where the invisible items placed by the Three Musty Fears are located.
@@ -665,20 +667,40 @@ class Remake(BooleanFlag):
     _remake = False
 
 
-# If false, set "postgame_progress_checker_2" and "postgame_progress_checker_1" to 8 instead of 7 to make them inaccessible
-# enable the three freestanding npc prizes too
-
-
 # Delayed import to avoid circular dependency
-from ..progression.prizelocations import CHECK_POOL
-from ..types.prizelocation import PrizeLocation, ShuffleLocationSelector
+from ..progression import prizelocations
+from ..types.prizelocation import PrizeLocation, BossFightLocation, StarPieceLocation, ShuffleLocationSelector
 
 _all_item_checks_list = [
-    location.id for location in CHECK_POOL if isinstance(location, PrizeLocation)
+    cls._id
+    for cls in vars(prizelocations).values()
+    if isinstance(cls, type)
+    and issubclass(cls, PrizeLocation)
+    and cls is not PrizeLocation
+    and not issubclass(cls, BossFightLocation)
+    and not issubclass(cls, StarPieceLocation)
+    and hasattr(cls, "_id")
+]
+
+_all_boss_fight_checks_list = [
+    cls._id
+    for cls in vars(prizelocations).values()
+    if isinstance(cls, type)
+    and issubclass(cls, BossFightLocation)
+    and cls is not BossFightLocation
+    and hasattr(cls, "_id")
+]
+
+_all_star_piece_checks_list = [
+    cls._id
+    for cls in vars(prizelocations).values()
+    if isinstance(cls, type)
+    and issubclass(cls, StarPieceLocation)
+    and cls is not StarPieceLocation
+    and hasattr(cls, "_id")
 ]
 
 
-# TODO: remake inclusion
 class EnabledRegularChecks(CategorizationFlag[ShuffleLocationSelector]):
     _name = "General item pool checks"
     _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
@@ -692,12 +714,35 @@ class EnabledRegularChecks(CategorizationFlag[ShuffleLocationSelector]):
     _default = {o: True for o in _all_item_checks_list}
 
 
+class EnabledBossChecks(CategorizationFlag[ShuffleLocationSelector]):
+    _name = "Boss fight checks"
+    _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
+<br>
+<br>If a check is not highlighted, its contents will still be shuffled, but it will not contain any items required to complete the seed.
+<br>
+<br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
+    _id = "bosses"
+    _default = {o: True for o in _all_boss_fight_checks_list}
+
+
+class EnabledStarPieceChecks(CategorizationFlag[ShuffleLocationSelector]):
+    _name = "Star Piece checks"
+    _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
+<br>
+<br>If a check is not highlighted, its contents will still be shuffled, but it will not contain any items required to complete the seed.
+<br>
+<br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
+    _id = "stars"
+    _default = {o: True for o in _all_star_piece_checks_list}
+
+
 class ReplaceItems(BooleanFlag):
     _name = "Replace some chest items with coins"
     _description = "If enabled, the worst items (Wilt Shrooms, etc) will sometimes be replaced with coins in chests."
     _id = "replace"
 
 
+# ✅
 class PoisonMushroom(BooleanFlag):
     _name = "Change Fake Mushroom's Effect"
     _description = (
@@ -707,33 +752,32 @@ class PoisonMushroom(BooleanFlag):
     _id = "fake"
 
 
+# ✅
 class EXPChallengeOptions(CategorizationOption):
     """Enumeration for exp star quality scaling option"""
 
     VANILLA = "Vanilla"
-    EASY_STARS = "Star Pieces (easy)"
-    HARD_STARS = "Star Pieces (hard)"
-    EASY_BOSSES = "Bosses (easy)"
-    HARD_BOSSES = "Bosses (hard)"
+    STARS = "Star Pieces"
+    BOSSES = "Bosses"
     NONE = "None"
 
 
+# ✅
 class EXPChallenge(SelectOneFlag[EXPChallengeOptions]):
     _name = "EXP Star Behaviour"
     _description = """<b>Default</b>: EXP stars can give you 1 to 11 EXP per hit as normal.
 <br>
-<br><b>Star Pieces (easy/hard)</b>: EXP per star increases with the number of Star Pieces collected. Note that if you decrease the # of star pieces in the seed, this does not adjust accordingly.
+<br><b>Star Pieces</b>: EXP per star increases with the number of Star Pieces collected.
 <br>
-<br><b>Bosses (easy/hard)</b>: EXP per star increases with the number of bosses you have defeated.
+<br><b>Bosses</b>: EXP per star increases with the number of bosses you have defeated.
 <br>
-<br><b>No EXP</b>: EXP stars give you 0 EXP.
-<br>
-<br>"Easy" settings grant 2, 4, 5, 6, 8, 9, or 11 EXP depending on your progress, and "Hard" settings grant 1, 2, 3, 5, 6, 7, or 11 EXP."""
+<br><b>No EXP</b>: EXP stars give you 0 EXP."""
     choices = [o for o in EXPChallengeOptions]
     _default = EXPChallengeOptions.VANILLA
     _id = "xpstar"
 
 
+# ✅
 class GrateGuyPrizeThreshold(RangeFlag):
     _name = 'Required "Look The Other Way" wins'
     _description = "The number of times required to win Grate Guy's casino minigame to receive its ultimate prize."
@@ -743,6 +787,7 @@ class GrateGuyPrizeThreshold(RangeFlag):
     _id = "gg"
 
 
+# ✅
 class KnifeGuyPrizeThreshold(RangeFlag):
     _name = "Required juggling wins"
     _description = "The number of wins minus losses required to win Knife Guy's ultimate juggling game prize."
@@ -752,6 +797,7 @@ class KnifeGuyPrizeThreshold(RangeFlag):
     _id = "kg"
 
 
+# ✅
 class SuitePrize1Threshold(RangeFlag):
     _name = "Required Suite prize #1 stays"
     _description = "The number of times required to stay in the Marrymore Suite to receive the first special gift"
@@ -761,6 +807,7 @@ class SuitePrize1Threshold(RangeFlag):
     _id = "s1"
 
 
+# ✅
 class SuitePrize2Threshold(RangeFlag):
     _name = "Required Suite prize #2 stays"
     _description = "The number of times required to stay in the Marrymore Suite to receive the second special gift"
@@ -770,6 +817,7 @@ class SuitePrize2Threshold(RangeFlag):
     _id = "s2"
 
 
+# ✅
 class SuitePrize3Threshold(RangeFlag):
     _name = "Required Suite prize #3 stays"
     _description = "The number of times required to stay in the Marrymore Suite to receive the third special gift"
@@ -779,6 +827,7 @@ class SuitePrize3Threshold(RangeFlag):
     _id = "s3"
 
 
+# ✅
 class SuitePrize4Threshold(RangeFlag):
     _name = "Required Suite prize #4 stays"
     _description = "The number of times required to stay in the Marrymore Suite to receive the fourth special gift"
@@ -788,6 +837,7 @@ class SuitePrize4Threshold(RangeFlag):
     _id = "s4"
 
 
+# ✅
 class SuitePrize5Threshold(RangeFlag):
     _name = "Required Suite prize #5 stays"
     _description = "The number of times required to stay in the Marrymore Suite to receive the fifth special gift"
@@ -797,6 +847,7 @@ class SuitePrize5Threshold(RangeFlag):
     _id = "s5"
 
 
+# ✅
 class SuitePrize6Threshold(RangeFlag):
     _name = "Required Suite prize #6 stays"
     _description = "The number of times required to stay in the Marrymore Suite to receive the sixth special gift"
@@ -806,6 +857,7 @@ class SuitePrize6Threshold(RangeFlag):
     _id = "s6"
 
 
+# ✅
 class SuperJump1Threshold(RangeFlag):
     _name = "Required Super Jumps for prize #1"
     _description = "The number of consecutive Super Jumps required for the first prize in Monstro Town"
@@ -815,6 +867,7 @@ class SuperJump1Threshold(RangeFlag):
     _id = "sj1"
 
 
+# ✅
 class SuperJump2Threshold(RangeFlag):
     _name = "Required Super Jumps for prize #2"
     _description = "The number of consecutive Super Jumps required for the second prize in Monstro Town"
@@ -1307,6 +1360,7 @@ class WinConditions(CategorizationOption):
     SMITHY = "Beat Smithy"
     STARS = "Collect required Star Pieces"
     SEALED = "Beat Monstro Town sealed door"
+
 
 # ✅
 class WinCondition(SelectOneFlag[WinConditions]):

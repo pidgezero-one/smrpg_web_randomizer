@@ -1647,7 +1647,7 @@ class CrownPrize(WeddingGearPrize):
 class GoldPaintPrize(ItemPrize):
     item = GoldPaintItem
     _nickname = TreasureHunterNickname(
-        nickname="Chrome Coating", description="It'll make you look shiny!"
+        nickname="Chrome Coat", description="It'll make you look shiny!"
     )
     # TODO events
 

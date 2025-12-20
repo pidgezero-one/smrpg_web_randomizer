@@ -31,12 +31,12 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_708_jmp_to_event_7"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_708_jmp_to_event_9"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_708_jmp_to_event_11"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 10, ["EVENT_708_jmp_to_event_13"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 15, ["EVENT_708_jmp_to_event_15"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 200, ["EVENT_708_jmp_to_event_17"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_708_jmp_to_event_7"], identifier="suite_threshold_1"),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_708_jmp_to_event_9"], identifier="suite_threshold_2"),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_708_jmp_to_event_11"], identifier="suite_threshold_3"),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 10, ["EVENT_708_jmp_to_event_13"], identifier="suite_threshold_4"),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 15, ["EVENT_708_jmp_to_event_15"], identifier="suite_threshold_5"),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 200, ["EVENT_708_jmp_to_event_17"], identifier="suite_threshold_6"),
 	Return(),
 	JmpToEvent(E0178_NPC_QUEST_1_CONTAINER, identifier="EVENT_708_jmp_to_event_7"),
 	Return(),

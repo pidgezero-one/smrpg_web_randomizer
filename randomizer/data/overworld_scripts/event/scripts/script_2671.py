@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CompareVarToConst(PRIMARY_TEMP_7000, 12),
+	CompareVarToConst(PRIMARY_TEMP_7000, 12, identifier="tower_knife_guy_sidequest_completed"),
 	Return()
 ])

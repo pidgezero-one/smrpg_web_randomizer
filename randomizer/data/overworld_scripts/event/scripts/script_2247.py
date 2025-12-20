@@ -92,6 +92,7 @@ script = EventScript([
 	JmpIfBitSet(RUN_AWAY, ["EVENT_2247_fade_in_from_black_async_26"]),
 	JmpIfBitSet(GAME_OVER, ["EVENT_2247_fade_in_from_black_async_26"]),
     SetBit(DOJO_POSTGAME_COMPLETED),
+    Inc(BOSS_VICTORY_COUNTER),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
 	FadeOutToBlack(sync=False, identifier="EVENT_167_ret_87_dojo_postgame"),
     RemoveObjectFromCurrentLevel(NPC_4),

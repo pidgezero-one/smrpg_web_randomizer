@@ -36,6 +36,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	RestoreAllHP(),
 	RestoreAllFP(),
+    Inc(BOSS_VICTORY_COUNTER),
 	RemoveObjectFromCurrentLevel(NPC_7),
     SummonObjectToCurrentLevel(NPC_0),
 	FadeInFromBlack(sync=False),
