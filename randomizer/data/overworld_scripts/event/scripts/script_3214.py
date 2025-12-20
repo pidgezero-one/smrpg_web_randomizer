@@ -46,6 +46,7 @@ script = EventScript([
 		A_JumpToHeight(height=0, silent=True)
 	]),
 	Pause(20),
+	RunEventAsSubroutine(E1207_SHIP_MID_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(),
 	FadeOutToBlack(sync=False, identifier="EVENT_3214_fade_out_to_black_async_15"),

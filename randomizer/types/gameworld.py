@@ -27,6 +27,9 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import 
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import (
     PacketCollection,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
+    AreaObject,
+)
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     PackCollection,
 )
@@ -35,13 +38,19 @@ from smrpgpatchbuilder.datatypes.shops.classes import ShopCollection
 from smrpgpatchbuilder.datatypes.spells.classes import SpellCollection
 from smrpgpatchbuilder.datatypes.graphics.classes import SpriteCollection
 from smrpgpatchbuilder.datatypes.scripts_common.classes import IdentifierException
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import CompareVarToConst
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    CompareVarToConst,
+    SummonObjectToSpecificLevel,
+    RunEventAsSubroutine,
+    SetBit,
+    ClearBit,
+)
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
     Formation,
 )
 from smrpgpatchbuilder.datatypes.allies.ally_collection import AllyCollection
-from smrpgpatchbuilder.datatypes.levels.classes import RoomObject
+from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Room
 from .item import Item
 from .enemy import Enemy
 from .patch import Patch
@@ -59,13 +68,13 @@ from .flags import (
 )
 from .prizelocation import PrizeLocation
 from ..progression.prizelocations import *
+from ..data.variables.dialog_names import *
 
 PrizeLocationT = TypeVar("PrizeLocationT", bound=PrizeLocation)
 from .settings import Settings
 
 if TYPE_CHECKING:
     from .flags import CategorizationOption as FlagOptions
-
 
 
 class RandomizerSettingsException(Exception):
@@ -306,7 +315,7 @@ class GameWorld:
 
         # todo: extra moleville trade checks
 
-        # establish all prize locations
+        # establish all functional prize locations
         # regardless if they will have their contents shuffled or not
         self.locations = {
             StartingItem1Location: StartingItem1Location(),
@@ -802,7 +811,8 @@ class GameWorld:
             ToadstoolSpell5: ToadstoolSpell5(),
             ToadstoolSpell6: ToadstoolSpell6(),
         }
-        if self.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE)
+
+        if self.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
             fwshop = FireworksShopItemLocation()
             fwshop._originally_held = ProgressiveFireworksPrize
             fwshop.set_prize(ProgressiveFireworksPrize())
@@ -812,12 +822,9 @@ class GameWorld:
                 PurtendStoreLocation: PurtendStoreLocation(),
                 CookieTraderLocation: CookieTraderLocation(),
             }
-        if self.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE)
+        if self.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
             fwshop = FireworksShopItemLocation()
-            self.locations = {
-                **self.locations,
-                FireworksShopItemLocation: fwshop
-            }
+            self.locations = {**self.locations, FireworksShopItemLocation: fwshop}
 
         strchars = self.settings.get_flag(StartingCharacters)
         startmax = len(strchars.enabled)
@@ -874,9 +881,19 @@ class GameWorld:
             }
             # Checks for postgame-unlocking bosses by default expect an impossible value.
             # Enabling the remake flag sets it to the correct value, 7.
-            cast(CompareVarToConst, self.event_scripts.get_script_by_id("postgame_progress_checker_1")).set_value(7)
-            cast(CompareVarToConst, self.event_scripts.get_script_by_id("postgame_progress_checker_2")).set_value(7)
-           
+            cast(
+                CompareVarToConst,
+                self.event_scripts.get_command_by_identifier(
+                    "postgame_progress_checker_1"
+                ),
+            ).set_value(7)
+            cast(
+                CompareVarToConst,
+                self.event_scripts.get_command_by_identifier(
+                    "postgame_progress_checker_2"
+                ),
+            ).set_value(7)
+
         invisible_item_pool = [
             MariosPadBedFlag,
             RoseTownSignFlag,
@@ -972,22 +989,210 @@ class GameWorld:
             FactoryButtonFlag,
         ]
 
-        for i in range (0, 3):
-            if not self.settings.invisible_flags_setting:
-                self.locations[invisible_item_pool[i]] = invisible_item_pool[i](i)
+        event_2496_startup: list[UsableEventScriptCommand] = []
+
+        invisible_flag_locations: dict[type[PrizeLocation], PrizeLocation] = {}
+        for i in range(0, 3):
+            # choose the three invisible item locations
+            if not self.settings.isflag_enabled(InvisibleFlagsSetting):
+                location_cls = invisible_item_pool[i]
             else:
-                c = random.choice(invisible_item_pool)
-                self.locations[c] = c(i)
+                location_cls = random.choice(invisible_item_pool)
+            location = cast(InvisibleFlagLocation, location_cls(i))
+            for r in location._rooms:
+                # place them in rooms and set visibility triggers
+                room = self.rooms._rooms[r]
+                assert room is not None
+                n = location.npc
+                n_id = AreaObject(len(room.objects) + 0x14)
+                n.set_visible(False)
+                self.event_scripts.get_script_by_id(
+                    E0091_INVISIBLE_ITEM_SUMMONER
+                ).insert_before_nth_command(0, SummonObjectToSpecificLevel(n_id, r))
+                room.add_object(location.npc)
+            # set hint text
+            if i == 0:
+                self.update_dialog(
+                    DI1108_RESERVED_FOR_DRYBONESFLAG_HINT,
+                    "DRY BONES:\n" + location.clue_text,
+                )
+            elif i == 1:
+                self.update_dialog(
+                    DI1109_RESERVED_FOR_GREAPERFLAG_HINT,
+                    "GREAPER:\n" + location.clue_text,
+                )
+            elif i == 2:
+                self.update_dialog(
+                    DI1107_RESERVED_FOR_BIGBOOFLAG_HINT,
+                    "THE BIG BOO:\n" + location.clue_text,
+                )
+        self.locations = {**self.locations, **invisible_flag_locations}
+        if self.settings.isflag_enabled(SkipMustyFearsSequence):
+            event_2496_startup += [RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER)]
 
-        
-        # Perform progression gating setup tasks here
+        ### Perform progression gating setup tasks here
 
-        if self.settings.get_flag(KeroSewersGating).value != KeroSewersGating.OPEN:
-            cast(RoomObject, self.rooms._rooms[R333_KERO_SEWERS_ENTRANCE].get_npc_by_target_id(NPC_0)).set_visible(True)
-            cast(RoomObject, self.rooms._rooms[R333_KERO_SEWERS_ENTRANCE].get_npc_by_target_id(NPC_1)).set_visible(True)
+        # settings
+        if self.settings.is_flag_value(WinCondition, WinConditions.SMITHY):
+            event_2496_startup += [SetBit(SMITHY_BOSS_HUNT_WIN_CONDITION)]
+        elif self.settings.is_flag_value(WinCondition, WinConditions.STARS):
+            event_2496_startup += [SetBit(WIN_CONDITION_STAR_PIECES)]
+        elif self.settings.is_flag_value(WinCondition, WinConditions.SEALED):
+            event_2496_startup += [SetBit(WIN_CONDITION_MONSTRO_DOOR)]
 
-        # todo: bake boss hunts into writing event 353
-            
+        if self.settings.isflag_enabled(FastTravel):
+            event_2496_startup += [SetBit(FAST_TRAVEL_ENABLED)]
+        if self.settings.isflag_enabled(CasinoWarp):
+            event_2496_startup += [SetBit(CASINO_WARP_ENABLED)]
+        if self.settings.isflag_enabled(BucketWarp):
+            event_2496_startup += [SetBit(BUCKET_WARP_ENABLED)]
+        if self.settings.isflag_enabled(ShuffleWeddingGear):
+            event_2496_startup += [SetBit(CHAPEL_ITEMS_ANYWHERE_ENABLED)]
+
+        # gates
+        if self.settings.is_flag_value(BanditsWayGate, BanditsWayGating.OPEN):
+            event_2496_startup += [
+                SetBit(MAP_BANDITS_WAY),
+                SetBit(MAP_DIRECTIONAL_MUSHROOM_KINGDOM_BANDITS_WAY),
+            ]
+        if not self.settings.is_flag_value(KeroSewersGate, KeroSewersGating.OPEN):
+            cast(
+                RoomObject,
+                cast(
+                    Room, self.rooms._rooms[R333_KERO_SEWERS_ENTRANCE]
+                ).get_npc_by_target_id(NPC_0),
+            ).set_visible(True)
+            cast(
+                RoomObject,
+                cast(
+                    Room, self.rooms._rooms[R333_KERO_SEWERS_ENTRANCE]
+                ).get_npc_by_target_id(NPC_1),
+            ).set_visible(True)
+            event_2496_startup += [SetBit(SEWERS_CLOSED)]
+
+            if self.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
+                self.event_scripts.get_script_by_id(
+                    E1254_UNLOCK_SEWER_BY_RFC
+                ).insert_before_nth_command(0, ClearBit(SEWERS_CLOSED))
+        else:
+            event_2496_startup += [ClearBit(SEWERS_CLOSED)]
+        if self.settings.is_flag_value(ForestMazeGate, ForestMazeGating.OPEN):
+            event_2496_startup += [
+                SetBit(MAP_FOREST_MAZE),
+                SetBit(MAP_DIRECTIONAL_ROSE_TOWN_FOREST_MAZE),
+            ]
+        elif self.settings.is_flag_value(ForestMazeGate, ForestMazeGating.PIE):
+            e = self.event_scripts.get_script_by_id(E1255_UNLOCK_FOREST_BY_PIE)
+            e.insert_before_nth_command(0, SetBit(MAP_FOREST_MAZE))
+            e.insert_before_nth_command(0, SetBit(MAP_FOREST_MAZE))
+        if not self.settings.is_flag_value(PipeVaultGate, PipeVaultGating.OPEN):
+            event_2496_startup += [
+                SetBit(PIPE_VAULT_GATED),
+            ]
+        if not self.settings.is_flag_value(Moleville1Gate, Moleville1Gating.OPEN):
+            event_2496_startup += [
+                SetBit(MOLEVILLE_MINES_ENTRANCE_GATING),
+            ]
+            if self.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOSHI):
+                self.event_scripts.get_script_by_id(
+                    E1256_UNLOCK_MOLEVILLE_IF_GATED_BY_BOSHI
+                ).insert_before_nth_command(
+                    0, ClearBit(MOLEVILLE_MINES_ENTRANCE_GATING)
+                )
+        if not self.settings.is_flag_value(BoosterHillGate, BoosterHillGating.OPEN):
+            event_2496_startup += [
+                SetBit(BOOSTER_HILL_CLOSED),
+            ]
+        if self.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.OPEN):
+            event_2496_startup += [
+                ApplySolidityModToLevel(
+                    permanent=True, room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=0
+                ),
+                ApplyTileModToLevel(
+                    use_alternate=True,
+                    room_id=R202_BOOSTER_TOWER_ENTRANCE,
+                    mod_id=32,
+                ),
+                SetBit(TOWER_OPENED),
+            ]
+        if self.settings.is_flag_value(MarrymoreGate, MarrymoreGating.OPEN):
+            event_2496_startup += [
+                SetBit(MARRYMORE_BACKDOOR_OPEN),
+            ]
+        elif self.settings.is_flag_value(MarrymoreGate, MarrymoreGating.HILL):
+            self.event_scripts.get_script_by_id(
+                E1329_HILL_UNLOCKS
+            ).insert_before_nth_command(0, SetBit(MARRYMORE_BACKDOOR_OPEN))
+        if self.settings.is_flag_value(SeaGate, SeaGating.STAR_4):
+            event_2496_startup += [SetBit(SEA_GATED_BY_STAR_PIECES)]
+        elif self.settings.is_flag_value(SeaGate, SeaGating.OPEN):
+            event_2496_startup += [
+                SetBit(MAP_SEA),
+                SetBit(MAP_DIRECTIONAL_SEA_SUNKEN_SHIP),
+                SetBit(MAP_SUNKEN_SHIP),
+                SetBit(MAP_DIRECTIONAL_SEASIDE_DOWN_SEA),
+            ]
+        if self.settings.is_flag_value(YaridovichGate, YaridovichGating.OPEN):
+            event_2496_startup += [SetBit(SEASIDE_BOSS_AVAILABLE)]
+        if not self.settings.is_flag_value(LandsEndGate, LandsEndGating.OPEN):
+            event_2496_startup += [SetBit(LANDS_END_GATED)]
+
+            if self.settings.is_flag_value(LandsEndGate, LandsEndGating.ELDER):
+                self.event_scripts.get_script_by_id(
+                    E1169_OPEN_LANDS_END_IF_GATED_BY_ELDER
+                ).insert_before_nth_command(0, ClearBit(LANDS_END_GATED))
+            if self.settings.is_flag_value(LandsEndGate, LandsEndGating.STAR_5):
+                event_2496_startup += [SetBit(LANDS_END_GATED_BY_STAR_PIECES)]
+
+        if self.settings.is_flag_value(BelomeTempleGate, BelomeTempleGating.KEY):
+            event_2496_startup += [SetBit(TEMPLE_BOSS_GATED)]
+        if self.settings.is_flag_value(MonstroTownGate, MonstroTownGating.BELOME_2):
+            event_2496_startup += [
+                SummonObjectToSpecificLevel(
+                    NPC_3, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN
+                )
+            ]
+        elif self.settings.is_flag_value(MonstroTownGate, MonstroTownGating.OPEN):
+            event_2496_startup += [
+                RemoveObjectFromSpecificLevel(
+                    NPC_3, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN
+                ),
+                SetBit(MAP_DIRECTIONAL_LANDS_END_MONSTRO_TOWN),
+                SetBit(MAP_MONSTRO_TOWN),
+            ]
+        if self.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.OPEN):
+            event_2496_startup += [
+                SetBit(MAP_DIRECTIONAL_NIMBUS_LAND_BARREL_VOLCANO),
+                SetBit(MAP_BARREL_VOLCANO),
+            ]
+
+        # DI1166_TEMPLE_BLOCKED_PIPE_HINT
+        if not self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.OPEN):
+            event_2496_startup += [SetBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL)]
+            if self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6):
+                event_2496_startup += [SetBit(KEEP_GATED_BY_STAR_PIECES)]
+                if self.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
+                    event_2496_startup += [
+                        SetBit(FACTORY_MATCHES_KEEP),
+                    ]
+        else:
+            event_2496_startup += [
+                SetBit(MAP_VISTA_HILL),
+                ClearBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL),
+            ]
+            if self.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
+                event_2496_startup += [
+                    SetBit(MAP_GATE),
+                    SetBit(MAP_DIRECTIONAL_BOWSERS_KEEP_GATE),
+                ]
+        if self.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6):
+            event_2496_startup += [SetBit(FACTORY_GATED_BY_STAR_PIECES)]
+
+        event_2496_startup += [Return()]
+        self.event_scripts.get_script_by_id(
+            E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
+        ).set_contents(event_2496_startup)
+
     def get_patch(self) -> Patch:
         patch = Patch()
 

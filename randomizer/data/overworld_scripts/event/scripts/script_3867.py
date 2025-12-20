@@ -31,6 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+	JmpIfBitSet(BOOSTER_HILL_CLOSED, ["EVENT_3867_enter_area_3"]),
 	JmpIfBitSet(BOOSTER_HILL_CLEARED, ["EVENT_3867_enter_area_3"]),
 	EnterArea(room_id=R054_BOOSTER_HILL_DUMMY, face_direction=NORTHWEST, x=7, y=57, z=0, run_entrance_event=True),
 	Return(),

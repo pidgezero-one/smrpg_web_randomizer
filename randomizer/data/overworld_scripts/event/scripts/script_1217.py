@@ -1,4 +1,4 @@
-# E1217_EMPTY
+# E1217_DOJO_5_BOSS_UNLOCKS
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	Return()
 ])

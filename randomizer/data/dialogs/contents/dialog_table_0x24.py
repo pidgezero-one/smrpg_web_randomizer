@@ -812,9 +812,12 @@ dialog_data[478] = ''' The world around us is always
  treasure.”[await][pause] If you find items in your
  journey that seem useless, someone
  may be seeking them in the future.[await]'''
-dialog_data[479] = '''[await]'''
-dialog_data[480] = '''[await]'''
-dialog_data[481] = '''[await]'''
+dialog_data[479] = '''GREAPER:
+       Nice, you found my item![await]'''
+dialog_data[480] = '''DRY BONES:
+       Cool, you found my item.[await]'''
+dialog_data[481] = '''THE BIG BOO:
+      'Grats, you found my item![await]'''
 dialog_data[482] = '''[await]'''
 dialog_data[483] = '''[await]'''
 dialog_data[484] = '''[await]'''

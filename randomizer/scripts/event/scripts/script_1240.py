@@ -1,6 +1,6 @@
 # pylint: disable=C0301
 
-"""E1240_EMPTY"""
+"""E1240_OUTER_FACTORY_2_BOSS_UNLOCKS"""
 
 from randomizer.scripts.event.script_imports import *
 

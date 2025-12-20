@@ -1,6 +1,6 @@
 # pylint: disable=C0301
 
-"""E1234_EMPTY"""
+"""E1234_VOLCANO_BOSS_UNLOCKS"""
 
 from randomizer.scripts.event.script_imports import *
 

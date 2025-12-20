@@ -1,4 +1,4 @@
-# E1227_EMPTY
+# E1223_MOLEVILLE_CHARACTER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	Return()
 ])

@@ -41,6 +41,7 @@ script = EventScript([
 	RestoreAllFP(),
 	FadeInFromBlack(sync=False),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E1231_EGG_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(),
 	RunDialog(dialog_id=DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=False, identifier="EVENT_3680_run_dialog_12"),

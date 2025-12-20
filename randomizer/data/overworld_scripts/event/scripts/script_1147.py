@@ -257,6 +257,7 @@ script = EventScript([
 	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	RestoreAllHP(),
 	RestoreAllFP(),
+	RunEventAsSubroutine(E1206_SEASIDE_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

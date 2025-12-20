@@ -1204,7 +1204,7 @@ from randomizer.types.dialogs.ids import (
     DI1194_EMPTY,
     DI1195_EMPTY,
     DI1196_EMPTY,
-    DI1197_EMPTY,
+    DI1197_BOOSTER_HILL_NOT_UNLOCKED_YET,
     DI1198_HILL_COMPLETED_WHEN_EMPTY,
     DI1199_TOAD_WARNS_YOU_TO_LEAVE_EMPTY_HILL,
     DI1200_TOAD_TAKES_YOU_OUT_OF_HILL,
@@ -1820,7 +1820,7 @@ from randomizer.types.dialogs.ids import (
     DI1810_EMPTY,
     DI1811_EMPTY,
     DI1812_EMPTY,
-    DI1813_EMPTY,
+    DI1813_OUT_OF_ORDER,
     DI1814_DUPLICATE,
     DI1815_EMPTY,
     DI1816_EMPTY,
@@ -5436,7 +5436,7 @@ pointers[DI1193_NO_FLOWER_HILL] = Dialog(bank=DIALOG_BANK_22, index=688, pos=0)
 pointers[DI1194_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=689, pos=0)
 pointers[DI1195_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=690, pos=0)
 pointers[DI1196_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=691, pos=0)
-pointers[DI1197_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=692, pos=0)
+pointers[DI1197_BOOSTER_HILL_NOT_UNLOCKED_YET] = Dialog(bank=DIALOG_BANK_22, index=692, pos=0)
 pointers[DI1198_HILL_COMPLETED_WHEN_EMPTY] = Dialog(
     bank=DIALOG_BANK_22, index=693, pos=0
 )
@@ -6150,7 +6150,7 @@ pointers[DI1809_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=1025, pos=0)
 pointers[DI1810_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=1026, pos=0)
 pointers[DI1811_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=1027, pos=0)
 pointers[DI1812_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=1028, pos=0)
-pointers[DI1813_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=1029, pos=0)
+pointers[DI1813_OUT_OF_ORDER] = Dialog(bank=DIALOG_BANK_22, index=1029, pos=0)
 pointers[DI1814_DUPLICATE] = Dialog(bank=DIALOG_BANK_22, index=1029, pos=0)
 pointers[DI1815_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=1030, pos=0)
 pointers[DI1816_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=1031, pos=0)

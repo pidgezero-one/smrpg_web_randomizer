@@ -84,6 +84,7 @@ script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 513),
 	SetVarToConst(PRIMARY_TEMP_7000, 513),
 	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),
+	RunEventAsSubroutine(E1250_MIMIC_2_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 513),
 	JmpToEvent(E0170_MIMIC_2_GRANT_STAR_PIECE_CONTAINER),
 	Return(),

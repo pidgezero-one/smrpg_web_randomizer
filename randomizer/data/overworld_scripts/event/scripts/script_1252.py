@@ -1,4 +1,4 @@
-# E1252_EMPTY
+# E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript

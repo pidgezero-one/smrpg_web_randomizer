@@ -88,7 +88,8 @@ script = EventScript([
 	DisableTriggerOfObjectAt70A8InCurrentLevel(),
 	StopEmbeddedActionScript(MEM_70A8),
 	SetAsyncActionScript(MEM_70A8, A0015_DO_NOTHING),
-	SetVarToConst(PRIMARY_TEMP_7000, 514),
+	RunEventAsSubroutine(E1251_MIMIC_3_BOSS_UNLOCKS),
+    SetVarToConst(PRIMARY_TEMP_7000, 514),
 	JmpToEvent(E0171_MIMIC_3_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_2493_ret_29"),
 	ResetAndChooseGame(identifier="EVENT_2493_reset_and_choose_game_30")

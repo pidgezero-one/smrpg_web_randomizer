@@ -422,6 +422,8 @@ script = EventScript([
 	Pause(10),
 	RunEventAsSubroutine(E0181_NPC_QUEST_4_CONTAINER),
 	Pause(10),
+	RunEventAsSubroutine(E1256_UNLOCK_MOLEVILLE_IF_GATED_BY_BOSHI),
+	Pause(10),
 	SetAsyncActionScript(MARIO, A0670_NOD_YES),
 	Pause(30),
 	ActionQueueAsync(target=NPC_9, subscript=[

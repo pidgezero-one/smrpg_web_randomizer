@@ -92,6 +92,7 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
+    RunEventAsSubroutine(E1195_BANDITS_WAY_BOSS_UNLOCKS),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(FAST),
 		A_WalkToXYCoords(x=6, y=88)

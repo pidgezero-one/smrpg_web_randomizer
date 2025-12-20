@@ -113,7 +113,7 @@ script = EventScript([
 	Return(),
 	StartBattleAtBattlefield(PACK180_SEASIDE_BOSS, BF37_SEASIDE_TOWN_BEACH, identifier="EVENT_353_start_battle_73"),
 	Return(),
-	StartBattleAtBattlefield(MUSHROOM_KINGDOM_BOSS, BF15_MUSHROOM_KINGDOM_CASTLE, identifier="EVENT_353_start_battle_75"),
+	StartBattleAtBattlefield(PACK179_MUSHROOM_KINGDOM_BOSS, BF15_MUSHROOM_KINGDOM_CASTLE, identifier="EVENT_353_start_battle_75"),
 	Return(),
 	StartBattleAtBattlefield(PACK216_MONSTRO_DOOR_BOSS, BF47_CULEX, identifier="EVENT_353_start_battle_77"),
 	Return(),

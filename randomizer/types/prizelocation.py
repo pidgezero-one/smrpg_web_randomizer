@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 from uuid import uuid4
+from enum import StrEnum
 
 from .prize import (
     Prize,
@@ -19,21 +20,34 @@ from .prize import (
 from ..progression.prizes import DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize
 from ..data.variables.event_script_names import *
 from ..data.variables.action_script_names import *
-from ..data.variables.variable_names import PRIMARY_TEMP_7000
+from ..data.variables.variable_names import BATTLE_PACK_ID, PRIMARY_TEMP_7000
+from ..data.variables.battlefield_names import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
     EventScript,
     UsableEventScriptCommand,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import ActionScript, UsableActionScriptCommand
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
+    ActionScript,
+    UsableActionScriptCommand,
+)
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     DisableObjectTriggerInSpecificLevel,
     Return,
     SetSyncActionScript,
     Jmp,
     JmpIfVarEqualsConst,
+    StartBattleAtBattlefield,
+    StartBattleWithPackAt700E,
+    SetVarToConst,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import A_WalkEastPixels, A_WalkWestPixels, A_WalkNorthPixels, A_WalkSouthPixels, A_ReturnQueue
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
+    A_WalkEastPixels,
+    A_WalkWestPixels,
+    A_WalkNorthPixels,
+    A_WalkSouthPixels,
+    A_ReturnQueue,
+)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
     AreaObject,
     Battlefield,
@@ -46,8 +60,14 @@ from smrpgpatchbuilder.datatypes.levels.classes import RegularNPC, EventInitiato
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHEAST
 from .base import CategorizationOption
 from .packet_type import PacketType
+from .flags import DisperseStarPieces
 from ..data.rooms.npcs import EMPTY_NPC_3
-from ..data.variables.variable_names import INVISIBLE_FLAG_1_FOUND, INVISIBLE_FLAG_2_FOUND, INVISIBLE_FLAG_3_FOUND
+from ..data.variables.room_names import *
+from ..data.variables.variable_names import (
+    INVISIBLE_FLAG_1_FOUND,
+    INVISIBLE_FLAG_2_FOUND,
+    INVISIBLE_FLAG_3_FOUND,
+)
 
 if TYPE_CHECKING:
     from ..types.logic import Inventory
@@ -667,6 +687,45 @@ class ShuffleLocationSelector(CategorizationOption):
     INNER_FACTORY_BOSS_FIGHT_FINAL = "Factory final boss fight"
 
 
+class WorldAreaEnum(StrEnum):
+    MARIOS_PAD = "Mario's Pad"
+    MUSHROOM_WAY = "Mushroom Way"
+    MUSHROOM_KINGDOM = "Mushroom Kingdom"
+    BANDITS_WAY = "Bandit's Way"
+    KERO_SEWERS = "Kero Sewers"
+    MIDAS_RIVER = "Midas River"
+    TADPOLE_POND = "Tadpole Pond"
+    ROSE_WAY = "Rose Way"
+    ROSE_TOWN = "Rose Town"
+    FOREST_MAZE = "Forest Maze"
+    PIPE_VAULT_YOSTER_ISLE = "Pipe Vault/Yoster Isle"
+    MOLEVILLE = "Moleville"
+    BOOSTER_PASS = "Booster Pass"
+    BOOSTER_TOWER = "Booster Tower"
+    BOOSTER_HILL = "Booster Hill"
+    MARRYMORE = "Marrymore"
+    STAR_HILL = "Star Hill"
+    SEASIDE_TOWN = "Seaside Town"
+    SEA_SUNKEN_SHIP = "Sea/Sunken Ship"
+    LANDS_END_TEMPLE = "Land's End/Belome Temple"
+    MONSTRO_TOWN = "Monstro Town"
+    BEAN_VALLEY_CASINO = "Bean Valley/Grate Guy's Casino"
+    NIMBUS_LAND = "Nimbus Land"
+    BARREL_VOLCANO = "Barrel Volcano"
+    BOWSERS_KEEP = "Bowser's Keep"
+    FACTORY = "Factory"
+
+
+class OverworldMapRegion(StrEnum):
+    WORLD_1 = "World 1"
+    WORLD_2 = "World 2"
+    WORLD_3 = "World 3"
+    WORLD_4 = "World 4"
+    WORLD_5 = "World 5"
+    WORLD_6 = "World 6"
+    WORLD_7 = "World 7"
+
+
 class PrizeLocation:
     _prize: Prize | None
     _originally_held: type[Prize] | None
@@ -677,6 +736,66 @@ class PrizeLocation:
     _remake_only: bool = False
     _blacklist: list[type[Prize]]
     _override_id: int | None = None
+
+    _world_area: WorldAreaEnum
+
+    @property
+    def battlefields(self) -> list[Battlefield]:
+        return [
+            ROOM_TO_BATTLEFIELD[room]
+            for room in self._rooms
+            if room in ROOM_TO_BATTLEFIELD
+        ]
+
+    @property
+    def world_area(self) -> WorldAreaEnum:
+        return self._world_area
+
+    @property
+    def overworld_map_region(self) -> OverworldMapRegion:
+        if self.world_area in [
+            WorldAreaEnum.MARIOS_PAD,
+            WorldAreaEnum.MUSHROOM_WAY,
+            WorldAreaEnum.MUSHROOM_KINGDOM,
+            WorldAreaEnum.BANDITS_WAY,
+        ]:
+            return OverworldMapRegion.WORLD_1
+        elif self.world_area in [
+            WorldAreaEnum.KERO_SEWERS,
+            WorldAreaEnum.MIDAS_RIVER,
+            WorldAreaEnum.TADPOLE_POND,
+            WorldAreaEnum.ROSE_WAY,
+            WorldAreaEnum.ROSE_TOWN,
+            WorldAreaEnum.FOREST_MAZE,
+            WorldAreaEnum.PIPE_VAULT_YOSTER_ISLE,
+        ]:
+            return OverworldMapRegion.WORLD_2
+        elif self.world_area in [
+            WorldAreaEnum.MOLEVILLE,
+            WorldAreaEnum.BOOSTER_PASS,
+            WorldAreaEnum.BOOSTER_TOWER,
+            WorldAreaEnum.BOOSTER_HILL,
+            WorldAreaEnum.MARRYMORE,
+        ]:
+            return OverworldMapRegion.WORLD_3
+        elif self.world_area in [
+            WorldAreaEnum.STAR_HILL,
+            WorldAreaEnum.SEASIDE_TOWN,
+            WorldAreaEnum.SEA_SUNKEN_SHIP,
+        ]:
+            return OverworldMapRegion.WORLD_4
+        elif self.world_area in [
+            WorldAreaEnum.LANDS_END_TEMPLE,
+            WorldAreaEnum.MONSTRO_TOWN,
+            WorldAreaEnum.BEAN_VALLEY_CASINO,
+        ]:
+            return OverworldMapRegion.WORLD_5
+        elif self.world_area in [
+            WorldAreaEnum.NIMBUS_LAND,
+            WorldAreaEnum.BARREL_VOLCANO,
+        ]:
+            return OverworldMapRegion.WORLD_6
+        return OverworldMapRegion.WORLD_7
 
     @property
     def override_id(self) -> int | None:
@@ -697,8 +816,32 @@ class PrizeLocation:
     def originally_held(self) -> type[Prize] | None:
         return self._originally_held
 
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return not isinstance(prize, tuple(self._blacklist))
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        if isinstance(prize, tuple(self._blacklist)):
+            return False
+        if isinstance(prize, StarPiecePrize) and world.settings.isflag_enabled(
+            DisperseStarPieces
+        ):
+            # one star piece per OW area
+            neighbours = [
+                l
+                for l in world.locations.values()
+                if l is not self
+                and l.overworld_map_region == self.overworld_map_region
+                and isinstance(l.prize, StarPiecePrize)
+            ]
+            return len(neighbours) == 0
+        if isinstance(prize, EXPStarPrize):
+            # one EXP star per locale
+            neighbours = [
+                l
+                for l in world.locations.values()
+                if l is not self
+                and l.world_area == self.world_area
+                and isinstance(l.prize, EXPStarPrize)
+            ]
+            return len(neighbours) == 0
+        return True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return True
@@ -711,7 +854,9 @@ class PrizeLocation:
         return self._remake_only
 
     def __init__(self):
-        self._prize = self.originally_held() if self.originally_held is not None else None
+        self._prize = (
+            self.originally_held() if self.originally_held is not None else None
+        )
 
 
 class FrogDiscipleLocation(PrizeLocation):
@@ -722,8 +867,10 @@ class FrogDiscipleLocation(PrizeLocation):
 class TreasureChestLocation(PrizeLocation):
     _npc_ids: list[AreaObject]
 
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return hasattr(prize, "chest_grant") and super().can_accept(prize)
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return hasattr(prize, "chest_grant") and super().can_accept(
+            prize, inventory, world
+        )
 
     def grant(self) -> EventScript:
         if self.prize is None:
@@ -741,8 +888,10 @@ class TreasureChestLocation(PrizeLocation):
 class StandingLocation(PrizeLocation):
     _npc_ids: list[AreaObject]
 
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return hasattr(prize, "standing_grant") and super().can_accept(prize)
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return hasattr(prize, "standing_grant") and super().can_accept(
+            prize, inventory, world
+        )
 
     def grant(self) -> EventScript:
         if self.prize is None:
@@ -753,8 +902,10 @@ class StandingLocation(PrizeLocation):
 
 
 class EventLocation(PrizeLocation):
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return hasattr(prize, "npc_grant") and super().can_accept(prize)
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return hasattr(prize, "npc_grant") and super().can_accept(
+            prize, inventory, world
+        )
 
     def grant(self) -> EventScript:
         if self.prize is None:
@@ -765,8 +916,10 @@ class EventLocation(PrizeLocation):
 
 
 class RiverLocation(PrizeLocation):
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return hasattr(prize, "river_grant") and super().can_accept(prize)
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return hasattr(prize, "river_grant") and super().can_accept(
+            prize, inventory, world
+        )
 
     def grant(self) -> EventScript:
         if self.prize is None:
@@ -777,30 +930,130 @@ class RiverLocation(PrizeLocation):
 
 
 class BossFightLocation(PrizeLocation):
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return hasattr(prize, "boss_fight_grant") and super().can_accept(prize)
+    _post_unlocks_event_id: int
+    _pack_id: int
+    _container_event: int = E0353_BOSS_BATTLE
+
+    @property
+    def pack_id(self) -> int:
+        return self._pack_id
+
+    def post_unlocks(self, world: GameWorld) -> EventScript:
+        output: list[UsableEventScriptCommand] = []
+        if self.prize is not None and isinstance(self.prize, BossFightPrize):
+            output = self.prize.boss_hunt_unlocks(world).contents
+        return EventScript([*output, Return()])
+
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return hasattr(prize, "boss_fight_grant") and super().can_accept(
+            prize, inventory, world
+        )
+
+    def render(
+        self, world: GameWorld
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+
+        # update the battle pack
+        # doing it this way means that you can still run away in the dojo, etc
+        assert isinstance(self.prize, BossFightPrize)
+        pack = world.battle_packs._packs[self._pack_id]
+        for f in pack.formations:
+            f.set_members(self.prize._members)  # pyright: ignore[reportArgumentType]
+            if self.prize.force_battlefield is not None:
+                f.set_battlefield(self.prize.force_battlefield)
+            if self.prize.force_start_event is not None:
+                f.set_run_event_at_load(self.prize.force_start_event)
+
+        # any gating tied to the location or its contained boss needs to be written
+        world.event_scripts.get_script_by_id(self._post_unlocks_event_id).set_contents(
+            self.post_unlocks(world).contents
+        )
+
+        # TODO model and henchmen replacements
+
+        # return the contents for event 353
+        # test this, not sure if this divide will work for mimics anywhere, esp if they end up in chests in rooms that normally dont have battles
+        if self.override_id is not None:
+            identifier = str(uuid4())
+            return (
+                [
+                    [
+                        JmpIfVarEqualsConst(
+                            PRIMARY_TEMP_7000, self.override_id, [identifier]
+                        )
+                    ]
+                ],
+                [
+                    SetVarToConst(BATTLE_PACK_ID, self._pack_id, identifier=identifier),
+                    StartBattleWithPackAt700E(),
+                    Return(),
+                ],
+            )
+        assert len(self._rooms) == len(
+            self.battlefields
+        ), "Rooms and battlefields length mismatch"
+        battles = list(
+            zip(
+                self._rooms,
+                self.battlefields,
+                (str(uuid4()) for _ in self.battlefields),
+            )
+        )
+
+        second_array: list[UsableEventScriptCommand] = [
+            cmd
+            for _, battlefield, i in battles
+            for cmd in (
+                StartBattleAtBattlefield(self._pack_id, battlefield, identifier=i),
+                Return(),
+            )
+        ]
+        return (
+            [
+                [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room, [battle_id])]
+                for room, _, battle_id in battles
+            ],
+            second_array,
+        )
 
 
 class CharacterRecruitmentLocation(PrizeLocation):
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return hasattr(prize, "character_grant") and super().can_accept(prize)
+    _show_dialog: bool
+    _container_event: int
+
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return hasattr(prize, "character_grant") and super().can_accept(
+            prize, inventory, world
+        )
+
+    def render(self, world: GameWorld):
+        if self.prize is None:
+            return
+        assert isinstance(self.prize, CharacterPrize)
+        e = world.event_scripts.get_script_by_id(self._container_event)
+        e.set_contents(self.prize.recruit(world, self._show_dialog).contents)
+        e.contents.append(Return())
 
 
 class StarPieceLocation(PrizeLocation):
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return hasattr(prize, "postfight_star_piece_grant") and super().can_accept(
-            prize
+            prize, inventory, world
         )
 
 
 class ShopLocation(PrizeLocation):
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return isinstance(prize, ItemPrize) and super().can_accept(prize)
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return isinstance(prize, ItemPrize) and super().can_accept(
+            prize, inventory, world
+        )
 
 
 class SpellSlotLocation(PrizeLocation):
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return isinstance(prize, SpellPrize) and super().can_accept(prize)
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return isinstance(prize, SpellPrize) and super().can_accept(
+            prize, inventory, world
+        )
 
 
 class PrizeRow(PrizeLocation):
@@ -1008,8 +1261,10 @@ class BoosterHillLocation(PrizeRow):
     _npc_id: AreaObject
     _container_event: int = E0219_HILL_GRANT_LOGIC
 
-    def can_accept(self, prize: Prize, inventory: Inventory) -> bool:
-        return hasattr(prize, "hill_grant") and super().can_accept(prize)
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return hasattr(prize, "hill_grant") and super().can_accept(
+            prize, inventory, world
+        )
 
     def grant(self) -> EventScript:
         if self.prize is None:
@@ -1046,7 +1301,7 @@ class InvisibleFlagLocation(NPCLocationRow1):
     _z_coord: int = 0
     _x_shift: int = 0
     _y_shift: int = 0
-    _clue_text: str 
+    _clue_text: str
 
     def which(self) -> int:
         return self._which
@@ -1088,7 +1343,7 @@ class InvisibleFlagLocation(NPCLocationRow1):
             cmds.append(A_WalkNorthPixels(-self._y_shift))
         cmds.append(A_ReturnQueue())
         return ActionScript(cmds)
-    
+
     @property
     def bit(self) -> Flag:
         if self._which == 0:
@@ -1118,7 +1373,7 @@ class InvisibleFlagLocation(NPCLocationRow1):
             event_script=ev,
             action_script=av,
             speed=3,
-            visible=True,
+            visible=False,
             x=self._x_coord,
             y=self._y_coord,
             z=self._z_coord,
@@ -1153,6 +1408,520 @@ class InvisibleFlagLocation(NPCLocationRow1):
         raise ValueError("which must be 0, 1, or 2")
 
     def __init__(self, which: int):
-        super().__init__(self.originally_held() if self.originally_held is not None else None)
         assert which in (0, 1, 2)
         self._which = which
+        super().__init__()
+
+
+ROOM_TO_BATTLEFIELD: dict[int, Battlefield] = {
+    R000_DEBUG_ROOM: BF09_GRASSLANDS,
+    R001_BLUE_BG_NOTHING_THERE: BF09_GRASSLANDS,
+    R002_BOWSERS_KEEP_OUTSIDE_MARIO_ENTERS_AT_BEGINNING_OF_GAME: BF10_MOUNTAINS,
+    R003_BOWSERS_KEEP_1ST_TIME_AREA_01: BF07_BOWSERS_KEEP,
+    R004_BOWSERS_KEEP_1ST_TIME_AREA_02: BF07_BOWSERS_KEEP,
+    R005_MARRYMORE_OUTSIDE_DURING_BOOSTER: BF28_MUSHROOM_KINGDOM,
+    R006_MARRYMORE_INN_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R007_MARRYMORE_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R008_BOWSERS_KEEP_AREA_09_TALL_ROOM_WO_SAVE_POINT_THIS_TIME: BF07_BOWSERS_KEEP,
+    R009_MARRYMORE_INN_REGULAR_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R010_BOWSERS_KEEP_1ST_TIME_AREA_04_THRONE_ROOM: BF07_BOWSERS_KEEP,
+    R011_MARRYMORE_INN_3F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R012_MARRYMORE_INN_SUITE_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R013_BARREL_VOLCANO_FALLING_INTO_VOLCANO: BF20_BARREL_VOLCANO,
+    R014_BOOSTER_HILL: BF10_MOUNTAINS,
+    R015_VISTA_HILL: BF10_MOUNTAINS,
+    R016_MARIOS_PAD: BF09_GRASSLANDS,
+    R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM: BF15_MUSHROOM_KINGDOM_CASTLE,
+    R019_MUSHROOM_KINGDOM_CASTLE_STAIR_ROOM_TO_TOADSTOOLS_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R021_MUSHROOM_KINGDOM_CASTLE_BRANCH_ROOM_TO_VAULTGUEST_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R022_MUSHROOM_KINGDOM_CASTLE_GUEST_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R023_MUSHROOM_KINGDOM_BEFORE_CROCO_OUTSIDE: BF28_MUSHROOM_KINGDOM,
+    R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL: BF04_SUNKEN_SHIP,
+    R025_SUNKEN_SHIP_POSTKC_AREA_16_ENTRANCE_TO_JOHNNYS_ROOM: BF04_SUNKEN_SHIP,
+    R026_SUNKEN_SHIP_POSTKC_AREA_12_UNDERWATER_ROOM_WSTAIRWELL_AND_ZEOSTARS: BF04_SUNKEN_SHIP,
+    R027_SUNKEN_SHIP_POSTKC_AREA_13_LARGE_UNDERWATER_ROOM_WITH_A_BLOOBER: BF04_SUNKEN_SHIP,
+    R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM: BF04_SUNKEN_SHIP,
+    R029_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM_TOADSTOOL_RETURNS: BF15_MUSHROOM_KINGDOM_CASTLE,
+    R030_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM_TOADSTOOL_RETURNS: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R031_MUSHROOM_KINGDOM_CASTLE_VAULT: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R032_MUSHROOM_KINGDOM_CASTLE_ENTRANCE_TO_TOADSTOOLS_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT: BF33_PLATEAUS,
+    R034_YOSTER_ISLE: BF33_PLATEAUS,
+    R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS: BF12_BOOSTER_TOWER,
+    R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER: BF12_BOOSTER_TOWER,
+    R037_BOOSTER_TOWER_4F_3LEVEL_ROOM_WJUMPING_SPOOKUMS: BF12_BOOSTER_TOWER,
+    R038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS: BF12_BOOSTER_TOWER,
+    R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM: BF12_BOOSTER_TOWER,
+    R040_BOOSTER_TOWER_8F_CHOMP_STAIRWAY: BF12_BOOSTER_TOWER,
+    R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS: BF12_BOOSTER_TOWER,
+    R042_BOOSTER_TOWER_3F_AREA_02_NES_MARIO_ROOM: BF12_BOOSTER_TOWER,
+    R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM: BF12_BOOSTER_TOWER,
+    R044_MUSHROOM_KINGDOM_BEFORE_CROCO_JUMPING_KIDS_HOUSE_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R045_MUSHROOM_KINGDOM_BEFORE_CROCO_JUMPING_KIDS_HOUSE_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R046_MUSHROOM_KINGDOM_BEFORE_CROCO_RAZ_AND_RAINIS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R047_MUSHROOM_KINGDOM_BEFORE_CROCO_ITEM_SHOP_TOP_FLOOR: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM: BF12_BOOSTER_TOWER,
+    R049_MUSHROOM_KINGDOM_BEFORE_CROCO_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R050_BLUE_BG_NOTHING_THERE: BF09_GRASSLANDS,
+    R051_MUSHROOM_KINGDOM_BEFORE_CROCO_RUNNING_KIDS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R052_MUSHROOM_KINGDOM_INN_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R053_MUSHROOM_KINGDOM_BEFORE_CROCO_ITEM_SHOP_BASEMENT: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R054_BOOSTER_HILL_DUMMY: BF10_MOUNTAINS,
+    R055_PIPE_VAULT_ENTRANCE: BF33_PLATEAUS,
+    R056_KERO_SEWERS_AREA_02_LONG_ROOM_WTHREE_PIPES: BF14_KERO_SEWERS_UNDERWATER,
+    R057_KERO_SEWERS_AREA_03_LARGE_WATER_ROOM_WPIPE_IN_CENTER: BF14_KERO_SEWERS_UNDERWATER,
+    R058_KERO_SEWERS_AREA_06_LONG_WATER_ROOM_WRAT_FUNKS_IN_A_LINE: BF14_KERO_SEWERS_UNDERWATER,
+    R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS: BF14_KERO_SEWERS_UNDERWATER,
+    R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS: BF14_KERO_SEWERS_UNDERWATER,
+    R061_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA_RIGHT_BEFORE_FIGHT: BF24_NIMBUS_LAND,
+    R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE: BF14_KERO_SEWERS_UNDERWATER,
+    R063_MARRYMORE_SCENE: BF35_MARRYMORE_CHAPEL_SANCTUARY,
+    R064_MARRYMORE_OUTSIDE: BF28_MUSHROOM_KINGDOM,
+    R065_MARRYMORE_CHAPEL_SANCTUARY: BF35_MARRYMORE_CHAPEL_SANCTUARY,
+    R066_ROSE_WAY_EXIT_AREA_WHERE_BOWSERS_TROOPS_GATHERED: BF33_PLATEAUS,
+    R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA: BF33_PLATEAUS,
+    R068_MIDAS_RIVER_BARREL_JUMPING_RIVER: BF34_SEA_ENCLAVE,
+    R069_MIDAS_RIVER_WATERFALL: BF34_SEA_ENCLAVE,
+    R070_MIDAS_RIVER_1ST_TUNNEL: BF34_SEA_ENCLAVE,
+    R071_MIDAS_RIVER_2ND_TUNNEL_BOTH_LEFT_AND_RIGHT: BF34_SEA_ENCLAVE,
+    R072_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT: BF34_SEA_ENCLAVE,
+    R073_MIDAS_RIVER_4TH_TUNNEL_ON_VERY_BOTTOM_RIGHT: BF34_SEA_ENCLAVE,
+    R074_TADPOLE_POND_AREA_02: BF33_PLATEAUS,
+    R075_TADPOLE_POND_AREA_01: BF33_PLATEAUS,
+    R076_BANDITS_WAY_AREA_01: BF09_GRASSLANDS,
+    R077_BANDITS_WAY_AREA_03: BF09_GRASSLANDS,
+    R078_BANDITS_WAY_AREA_04: BF09_GRASSLANDS,
+    R079_ROSE_WAY_MAIN_AREA: BF33_PLATEAUS,
+    R080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS: BF33_PLATEAUS,
+    R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA: BF33_PLATEAUS,
+    R082_ROSE_WAY_WINDING_PATH_WCROOKS: BF33_PLATEAUS,
+    R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE: BF28_MUSHROOM_KINGDOM,
+    R084_ROSE_TOWN_OUTSIDE: BF28_MUSHROOM_KINGDOM,
+    R085_ROSE_TOWN_DURING_BOWYER_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R086_ROSE_TOWN_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R087_ROSE_TOWN_ITEM_SHOP: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION: BF45_SMITHYS_FINAL_FORM,
+    R089_ROSE_TOWN_DURING_BOWYER_THREE_GRANDKIDS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R090_ROSE_TOWN_THREE_GRANDKIDS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R091_ROSE_TOWN_COUPLES_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R092_GRATE_GUYS_CASINO_INSIDE_CASINO: BF12_BOOSTER_TOWER,
+    R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R094_ROSE_TOWN_TREASURE_HOUSE_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R095_ROSE_TOWN_DURING_BOWYER_INN_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R096_ROSE_TOWN_INN_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R098_ROSE_TOWN_TREASURE_HOUSE_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R099_ROSE_TOWN_GENO_AWAKENS_IN_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R100_BOOSTER_PASS_AREA_01: BF10_MOUNTAINS,
+    R101_BOOSTER_PASS_AREA_02: BF10_MOUNTAINS,
+    R102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES: BF10_MOUNTAINS,
+    R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM: BF19_SMITHY_FACTORY,
+    R104_GRATE_GUYS_CASINO_FRONT_DOOR: BF12_BOOSTER_TOWER,
+    R105_MOLEVILLE_DYNA_AND_MITES_HOUSE_DUMMY: BF10_MOUNTAINS,
+    R106_GRATE_GUYS_CASINO_OUTSIDE: BF09_GRASSLANDS,
+    R107_NIMBUS_CASTLE_AREA_09_STATUE_ROOM_AFTER_VALENTINA: BF22_NIMBUS_CASTLE,
+    R108_MOLEVILLE_OUTSIDE: BF10_MOUNTAINS,
+    R109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL: BF22_NIMBUS_CASTLE,
+    R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM: BF22_NIMBUS_CASTLE,
+    R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE: BF22_NIMBUS_CASTLE,
+    R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT: BF22_NIMBUS_CASTLE,
+    R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15: BF22_NIMBUS_CASTLE,
+    R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM: BF22_NIMBUS_CASTLE,
+    R115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA: BF22_NIMBUS_CASTLE,
+    R116_NIMBUS_CASTLE_AREA_02_LEFT_OF_AREA_01: BF22_NIMBUS_CASTLE,
+    R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT: BF22_NIMBUS_CASTLE,
+    R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA: BF22_NIMBUS_CASTLE,
+    R119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05: BF22_NIMBUS_CASTLE,
+    R120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA: BF22_NIMBUS_CASTLE,
+    R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND: BF22_NIMBUS_CASTLE,
+    R122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM: BF22_NIMBUS_CASTLE,
+    R123_PIPE_VAULT_AREA_01: BF14_KERO_SEWERS_UNDERWATER,
+    R124_PIPE_VAULT_AREA_03_LINE_OF_PIPES: BF14_KERO_SEWERS_UNDERWATER,
+    R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES: BF14_KERO_SEWERS_UNDERWATER,
+    R126_PIPE_VAULT_AREA_06_LINE_OF_RED_PIPES: BF14_KERO_SEWERS_UNDERWATER,
+    R127_PIPE_VAULT_AREA_02: BF14_KERO_SEWERS_UNDERWATER,
+    R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS: BF14_KERO_SEWERS_UNDERWATER,
+    R129_PIPE_VAULT_AREA_05: BF14_KERO_SEWERS_UNDERWATER,
+    R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP: BF38_SEA,
+    R131_SEA_AREA_04_BUNCH_OF_ZEOSTARS: BF38_SEA,
+    R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT: BF38_SEA,
+    R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS: BF38_SEA,
+    R134_SEA_AREA_03_SUPER_STAR_ROOM: BF38_SEA,
+    R135_SEA_AREA_01_ENTRANCE: BF38_SEA,
+    R136_SEA_AREA_07_SMALL_UNDERWATER_ROOM: BF38_SEA,
+    R137_LANDS_END_AREA_01: BF10_MOUNTAINS,
+    R138_LANDS_END_AREA_02: BF10_MOUNTAINS,
+    R139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL: BF10_MOUNTAINS,
+    R140_LANDS_END_AREA_012_NOTHING_THERE_UNUSED: BF10_MOUNTAINS,
+    R141_LANDS_END_AREA_04_ROTATING_FLOWERS: BF33_PLATEAUS,
+    R142_LANDS_END_AREA_05_SKY_BRIDGE: BF33_PLATEAUS,
+    R143_PIPE_VAULT_GOOMBATHUMPING_ROOM: BF14_KERO_SEWERS_UNDERWATER,
+    R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM: BF07_BOWSERS_KEEP,
+    R145_STAR_HILL_AREA_01: BF36_STAR_HILL,
+    R146_PIPE_VAULT_AREA_02_DUMMY: BF14_KERO_SEWERS_UNDERWATER,
+    R147_GAME_INTRO_MIDAS_RIVER_WATER_TUNNEL: BF34_SEA_ENCLAVE,
+    R148_GAME_INTRO_BANDITS_WAY_AREA_04: BF09_GRASSLANDS,
+    R149_GAME_INTRO_MIDAS_RIVER_BARREL_JUMPING: BF34_SEA_ENCLAVE,
+    R150_GAME_INTRO_MOLEVILLE_OUTSIDE_DURING_BOWSERS_TROOP_SCENE: BF10_MOUNTAINS,
+    R151_GAME_INTRO_BOOSTER_HILL: BF10_MOUNTAINS,
+    R152_MARRYMORE_CHAPEL_MAIN_HALL: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY: BF35_MARRYMORE_CHAPEL_SANCTUARY,
+    R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER: BF35_MARRYMORE_CHAPEL_SANCTUARY,
+    R155_MARRYMORE_CHAPEL_KITCHEN: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R156_MARRYMORE_CHAPEL_KITCHEN_NO_SPRITESEXITS_UNUSED: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R157_STAR_HILL_AREA_03: BF36_STAR_HILL,
+    R158_STAR_HILL_AREA_02: BF36_STAR_HILL,
+    R159_STAR_HILL_AREA_04: BF36_STAR_HILL,
+    R160_SUNKEN_SHIP_AREA_01: BF04_SUNKEN_SHIP,
+    R161_SUNKEN_SHIP_AREA_03_GREAPERS: BF04_SUNKEN_SHIP,
+    R162_SUNKEN_SHIP_AREA_04_GREAPERS_DRY_BONES: BF04_SUNKEN_SHIP,
+    R163_SUNKEN_SHIP_PUZZLE_ROOM_2: BF04_SUNKEN_SHIP,
+    R164_SUNKEN_SHIP_AREA_02_FROM_ENTRANCE_WSAVE_POINT: BF04_SUNKEN_SHIP,
+    R165_SUNKEN_SHIP_AREA_06_PUZZLE_ROOM_PASSAGEWAY: BF04_SUNKEN_SHIP,
+    R166_SUNKEN_SHIP_PUZZLE_ROOM_1: BF04_SUNKEN_SHIP,
+    R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS: BF04_SUNKEN_SHIP,
+    R168_SUNKEN_SHIP_PUZZLE_ROOM_3: BF04_SUNKEN_SHIP,
+    R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN: BF04_SUNKEN_SHIP,
+    R170_SUNKEN_SHIP_AREA_14_DUMMY: BF04_SUNKEN_SHIP,
+    R171_SUNKEN_SHIP_PUZZLE_ROOM_4: BF04_SUNKEN_SHIP,
+    R172_SUNKEN_SHIP_PUZZLE_ROOM_5: BF04_SUNKEN_SHIP,
+    R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE: BF04_SUNKEN_SHIP,
+    R174_SEA_AREA_08_SHORE_WITH_SUNKEN_SHIP: BF34_SEA_ENCLAVE,
+    R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM: BF04_SUNKEN_SHIP,
+    R176_SUNKEN_SHIP_AREA_08_WSAVE_POINT_AND_GREEN_SWITCH_FOR_BARREL: BF04_SUNKEN_SHIP,
+    R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM: BF04_SUNKEN_SHIP,
+    R178_SUNKEN_SHIP_POSTKC_AREA_04_LONG_STAIRWELL_WRUNNING_ALLEY_RATS: BF04_SUNKEN_SHIP,
+    R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM: BF04_SUNKEN_SHIP,
+    R180_SUNKEN_SHIP_POSTKC_AREA_02_SMALL_2LEVEL_ROOM: BF04_SUNKEN_SHIP,
+    R181_SUNKEN_SHIP_POSTKC_AREA_03_ALLEY_RATS_ON_CANNONS: BF04_SUNKEN_SHIP,
+    R182_SUNKEN_SHIP_POSTKC_AREA_07_THREE_DRY_BONES: BF04_SUNKEN_SHIP,
+    R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN: BF04_SUNKEN_SHIP,
+    R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT: BF04_SUNKEN_SHIP,
+    R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING: BF04_SUNKEN_SHIP,
+    R186_SUNKEN_SHIP_POSTKC_AREA_18_WARP_ROOM_FROM_JOHNNYS_ROOM: BF04_SUNKEN_SHIP,
+    R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS: BF04_SUNKEN_SHIP,
+    R188_SUNKEN_SHIP_POSTKC_AREA_11_WATER_ROOM_WITH_WHIRLPOOL: BF04_SUNKEN_SHIP,
+    R189_MARIOS_PIPEHOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE: BF28_MUSHROOM_KINGDOM,
+    R191_MUSHROOM_KINGDOM_OUTSIDE: BF28_MUSHROOM_KINGDOM,
+    R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM: BF12_BOOSTER_TOWER,
+    R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS: BF12_BOOSTER_TOWER,
+    R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM: BF12_BOOSTER_TOWER,
+    R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM: BF12_BOOSTER_TOWER,
+    R196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS: BF12_BOOSTER_TOWER,
+    R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER: BF12_BOOSTER_TOWER,
+    R198_BOOSTER_TOWER_8F_AREA_03_3LEVEL_WONE_CHOMP: BF12_BOOSTER_TOWER,
+    R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT: BF12_BOOSTER_TOWER,
+    R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP: BF12_BOOSTER_TOWER,
+    R201_BOOSTER_TOWER_6F_AREA_01_SMALL_ROOM_WSAVE_POINT: BF12_BOOSTER_TOWER,
+    R202_BOOSTER_TOWER_ENTRANCE: BF09_GRASSLANDS,
+    R203_MUSHROOM_WAY_AREA_01: BF09_GRASSLANDS,
+    R204_MUSHROOM_WAY_AREA_02: BF09_GRASSLANDS,
+    R205_MUSHROOM_WAY_AREA_03: BF09_GRASSLANDS,
+    R206_BANDITS_WAY_AREA_05: BF09_GRASSLANDS,
+    R207_BANDITS_WAY_AREA_02: BF09_GRASSLANDS,
+    R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE: BF28_MUSHROOM_KINGDOM,
+    R209_SEASIDE_TOWN_DURING_YARIDOVICH_INN_1F: BF28_MUSHROOM_KINGDOM,
+    R210_SEASIDE_TOWN_DURING_YARIDOVICH_INN_2F: BF28_MUSHROOM_KINGDOM,
+    R211_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_1F: BF28_MUSHROOM_KINGDOM,
+    R212_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_2F: BF28_MUSHROOM_KINGDOM,
+    R213_SEASIDE_TOWN_DURING_YARIDOVICH_BEETLES_ARE_USBOMB_SHOP: BF28_MUSHROOM_KINGDOM,
+    R214_SEASIDE_TOWN_DURING_YARIDOVICH_WEAPONS_AND_ARMOR_SHOP: BF28_MUSHROOM_KINGDOM,
+    R215_SEASIDE_TOWN_DURING_YARIDOVICH_HEALTH_FOOD_STORE_LEFTMOST: BF28_MUSHROOM_KINGDOM,
+    R216_SEASIDE_TOWN_DURING_YARIDOVICH_MUSHROOM_BOY_SHOP_MIDDLE: BF28_MUSHROOM_KINGDOM,
+    R217_SEASIDE_TOWN_DURING_YARIDOVICH_ACCESSORY_SHOP_RIGHTMOST: BF28_MUSHROOM_KINGDOM,
+    R218_SEASIDE_TOWN_DURING_YARIDOVICH_SHED_UNUSED_BC_INACCESSIBLE: BF28_MUSHROOM_KINGDOM,
+    R219_GAME_INTRO_SEA_SHORE_WITH_SUNKEN_SHIP: BF34_SEA_ENCLAVE,
+    R220_SMITHY_FACTORY_AREA_02_WSAVE_POINT: BF19_SMITHY_FACTORY,
+    R221_SMITHY_FACTORY_AREA_04_GREEN_SWITCH_WAMEBOIDS: BF19_SMITHY_FACTORY,
+    R222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS: BF19_SMITHY_FACTORY,
+    R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM: BF19_SMITHY_FACTORY,
+    R224_FOREST_MAZE_AREA_01: BF00_FOREST_MAZE,
+    R225_FOREST_MAZE_AREA_05_TREE_TRUNK_AREA: BF00_FOREST_MAZE,
+    R226_FOREST_MAZE_AREA_02: BF00_FOREST_MAZE,
+    R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE: BF00_FOREST_MAZE,
+    R228_FOREST_MAZE_AREA_04: BF00_FOREST_MAZE,
+    R229_FOREST_MAZE_AREA_06: BF00_FOREST_MAZE,
+    R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09: BF00_FOREST_MAZE,
+    R231_FOREST_MAZE_SECRET_ENTRANCE: BF00_FOREST_MAZE,
+    R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD: BF01_FOREST_MAZE_BOWYERS_PAD,
+    R233_FOREST_MAZE_AREA_03_UNDERGROUND: BF25_UNDERGROUND,
+    R234_FOREST_MAZE_SECRET: BF25_UNDERGROUND,
+    R235_FOREST_MAZE_AREA_08_UNDERGROUND: BF25_UNDERGROUND,
+    R236_FOREST_MAZE_AREA_07_UNDERGROUND_WSLEEPING_WIGGLER: BF25_UNDERGROUND,
+    R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT: BF19_SMITHY_FACTORY,
+    R238_SMITHY_FACTORY_FALL_FROM_LUGNUT_ROOMS_AREA_06_PRIOR: BF19_SMITHY_FACTORY,
+    R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER: BF19_SMITHY_FACTORY,
+    R240_VOLCANO_AREA_21_DUMMY: BF20_BARREL_VOLCANO,
+    R241_VOLCANO_AREA_02_DUMMY: BF20_BARREL_VOLCANO,
+    R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS: BF25_UNDERGROUND,
+    R243_GAME_INTRO_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM: BF28_MUSHROOM_KINGDOM,
+    R244_GAME_INTRO_YOSTER_ISLE_TALK_TO_YOSHI_RUN_AROUND: BF33_PLATEAUS,
+    R245_GAME_INTRO_PIPE_VAULT_AREA_02_WTHWOMP: BF14_KERO_SEWERS_UNDERWATER,
+    R246_GAME_INTRO_KERO_SEWERS_ENTRANCE: BF33_PLATEAUS,
+    R247_GAME_INTRO_TADPOLE_POND_MARIO_SUMMONS_TADPOLES: BF33_PLATEAUS,
+    R248_GAME_INTRO_MUSHROOM_WAY_AREA_01: BF09_GRASSLANDS,
+    R249_GAME_INTRO_VISTA_HILL: BF10_MOUNTAINS,
+    R250_GAME_INTRO_BOOSTER_TOWER_BALCONY_WITH_TOADSTOOL_CRYING: BF17_BOOSTER_TOWER_BALCONY,
+    R251_BEAN_VALLEY_PIRANHA_PIPE_AREA: BF41_BEAN_VALLEY_GRASSLANDS,
+    R252_BEAN_VALLEY_MAIN_AREA: BF41_BEAN_VALLEY_GRASSLANDS,
+    R253_BEAN_VALLEY_MAGIC_BRICK_TO_BEANSTALK_AREA: BF41_BEAN_VALLEY_GRASSLANDS,
+    R254_BEAN_VALLEY_SMILAX_AREA: BF41_BEAN_VALLEY_GRASSLANDS,
+    R255_MONSTRO_TOWN_JINXS_DOJO: BF46_JINXS_DOJO,
+    R256_FOREST_MAZE_SMALL_AREA_WTREE_TRUNK_UNUSED: BF00_FOREST_MAZE,
+    R257_GAME_INTRO_FOREST_MAZE_FIGHTING_MAGIKOOPA_AT_BOWYERS_PAD: BF00_FOREST_MAZE,
+    R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR: BF17_BOOSTER_TOWER_BALCONY,
+    R259_BOOSTER_TOWER_3F_AREA_01_GREEN_SWITCH_FOR_BP_SECRET: BF12_BOOSTER_TOWER,
+    R260_GAME_INTRO_FOREST_MAZE_JUMPING_ON_WIGGLER: BF00_FOREST_MAZE,
+    R261_BOWSERS_KEEP_1ST_TIME_AREA_03_LAVA_ROOM_WBRIDGE: BF07_BOWSERS_KEEP,
+    R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS: BF25_UNDERGROUND,
+    R263_LANDS_END_UNDERGROUND_AREA_01: BF25_UNDERGROUND,
+    R264_LANDS_END_UNDERGROUND_AREA_02: BF25_UNDERGROUND,
+    R265_LANDS_END_UNDERGROUND_AREA_03: BF25_UNDERGROUND,
+    R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM: BF07_BOWSERS_KEEP,
+    R267_MONSTRO_TOWN_ENTRANCE: BF33_PLATEAUS,
+    R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM: BF42_BELOME_TEMPLE,
+    R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW: BF24_NIMBUS_LAND,
+    R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS: BF25_UNDERGROUND,
+    R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE: BF25_UNDERGROUND,
+    R272_MOLEVILLE_MINES_AREA_11_BOMBED_ROOM_WSINGING_MOLES: BF25_UNDERGROUND,
+    R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE: BF25_UNDERGROUND,
+    R274_MOLEVILLE_MINES_AREA_02: BF25_UNDERGROUND,
+    R275_MOLEVILLE_MINES_AREA_06_SMALL_ROOM_LEADING_TO_AREA_06: BF25_UNDERGROUND,
+    R276_MOLEVILLE_MINES_AREA_01_ENTRANCE: BF25_UNDERGROUND,
+    R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM: BF25_UNDERGROUND,
+    R278_MOLEVILLE_MINES_AREA_03_LEADS_BACK_TO_AREA_1: BF25_UNDERGROUND,
+    R279_MOLEVILLE_MINES_AREA_08_CROCOS_BOMBED_ROOM: BF25_UNDERGROUND,
+    R280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC: BF25_UNDERGROUND,
+    R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM: BF25_UNDERGROUND,
+    R282_MOLEVILLE_MINES_AREA_10_SMALL_ROOM_WMINECART_TRACKS: BF25_UNDERGROUND,
+    R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM: BF25_UNDERGROUND,
+    R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM: BF25_UNDERGROUND,
+    R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM: BF25_UNDERGROUND,
+    R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM: BF25_UNDERGROUND,
+    R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM: BF25_UNDERGROUND,
+    R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS: BF25_UNDERGROUND,
+    R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE: BF25_UNDERGROUND,
+    R290_MOLEVILLE_MINES_AREA_19_FROM_OUTSIDE_AFTER_PAYING: BF25_UNDERGROUND,
+    R291_GAME_INTRO_BOOSTER_TOWER_7F_PARACHUTING_SPOOKUMS: BF25_UNDERGROUND,
+    R292_UNMAPPED_HOUSE_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R293_UNMAPPED_HOUSE_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R294_UNMAPPED_HOUSE_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R295_UNMAPPED_HOUSE_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R296_UNMAPPED_HOUSE_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R297_UNMAPPED_OUTSIDE_TOWNPLACE_RESEMBLES_SEASIDE_TOWN: BF28_MUSHROOM_KINGDOM,
+    R298_UNMAPPED_HOUSE_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R299_UNMAPPED_HOUSE_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R300_UNMAPPED_HOUSE_ROOM: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS: BF14_KERO_SEWERS_UNDERWATER,
+    R302_KERO_SEWERS_AREA_08_BELOMES_ROOM: BF14_KERO_SEWERS_UNDERWATER,
+    R303_KERO_SEWERS_AREA_08_BELOMES_ROOM_AFTER_DEFEAT: BF14_KERO_SEWERS_UNDERWATER,
+    R304_SEASIDE_TOWN_OUTSIDE: BF28_MUSHROOM_KINGDOM,
+    R305_SEASIDE_TOWN_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R306_SEASIDE_TOWN_INN_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R307_SEASIDE_TOWN_ELDERS_HOUSE_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R308_SEASIDE_TOWN_ELDERS_HOUSE_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R309_SEASIDE_TOWN_BEETLES_ARE_US: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R310_SEASIDE_TOWN_WEAPON_AND_ARMOR_SHOP: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R311_SEASIDE_TOWN_HEALTH_FOOD_STORE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R312_SEASIDE_TOWN_MUSHROOM_BOYS_SHOP: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R313_SEASIDE_TOWN_ACCESSORY_SHOP: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R314_SEASIDE_TOWN_SHED: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH: BF37_SEASIDE_TOWN_BEACH,
+    R316_SEASIDE_TOWN_BEACH: BF37_SEASIDE_TOWN_BEACH,
+    R317_LANDS_END_DESERT_AREA_01: BF43_LANDS_END_DESERT,
+    R318_LANDS_END_DESERT_AREA_02: BF43_LANDS_END_DESERT,
+    R319_LANDS_END_DESERT_AREA_06: BF43_LANDS_END_DESERT,
+    R320_MUSHROOM_KINGDOM_CASTLE_ENTRANCE_TO_THRONE_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS: BF07_BOWSERS_KEEP,
+    R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN: BF07_BOWSERS_KEEP,
+    R323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R324_MONSTRO_TOWN_OUTSIDE: BF33_PLATEAUS,
+    R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM: BF15_MUSHROOM_KINGDOM_CASTLE,
+    R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R330_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_GUEST_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R333_KERO_SEWERS_ENTRANCE: BF33_PLATEAUS,
+    R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE: BF49_BEAN_VALLEY_PIPE_ROOM,
+    R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM: BF49_BEAN_VALLEY_PIPE_ROOM,
+    R336_MOLEVILLE_ITEM_SHOP: BF10_MOUNTAINS,
+    R337_MOLEVILLE_INN: BF10_MOUNTAINS,
+    R338_MOLEVILLE_DYNA_AND_MITES_HOUSE: BF10_MOUNTAINS,
+    R339_MOLEVILLE_FIREWORKS_SHOP: BF10_MOUNTAINS,
+    R340_MOLEVILLE_SPECIAL_ITEMTRADING_SHOP: BF10_MOUNTAINS,
+    R341_NIMBUS_LAND_GARROS_HOUSE: BF24_NIMBUS_LAND,
+    R342_NIMBUS_LAND_LOWER_HOUSE: BF24_NIMBUS_LAND,
+    R343_NIMBUS_LAND_INN: BF24_NIMBUS_LAND,
+    R344_NIMBUS_LAND_ITEM_SHOP: BF24_NIMBUS_LAND,
+    R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING: BF24_NIMBUS_LAND,
+    R346_NIMBUS_LAND_INN_BEDROOM: BF24_NIMBUS_LAND,
+    R347_BEAN_VALLEY_PIPE_ROOM_TOP_PIPE_LEADS_TO_GRATE_GUYS_CASINO: BF49_BEAN_VALLEY_PIPE_ROOM,
+    R348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT: BF49_BEAN_VALLEY_PIPE_ROOM,
+    R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT: BF49_BEAN_VALLEY_PIPE_ROOM,
+    R350_SMITHY_FACTORY_AREA_01: BF19_SMITHY_FACTORY,
+    R351_CULEXS_ROOM: BF47_CULEX,
+    R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM: BF20_BARREL_VOLCANO,
+    R353_VOLCANO_AREA_18_HINO_MART: BF20_BARREL_VOLCANO,
+    R354_VOLCANO_AREA_01: BF20_BARREL_VOLCANO,
+    R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS: BF20_BARREL_VOLCANO,
+    R356_VOLCANO_AREA_08: BF20_BARREL_VOLCANO,
+    R357_VOLCANO_POSTCD_AREA_01: BF20_BARREL_VOLCANO,
+    R358_VOLCANO_AREA_11: BF20_BARREL_VOLCANO,
+    R359_VOLCANO_AREA_02: BF20_BARREL_VOLCANO,
+    R360_VOLCANO_AREA_04_BUNCH_OF_STEPS: BF20_BARREL_VOLCANO,
+    R361_VOLCANO_AREA_09: BF20_BARREL_VOLCANO,
+    R362_VOLCANO_AREA_07_STOMPING_CORKPEDITE: BF20_BARREL_VOLCANO,
+    R363_VOLCANO_AREA_15_STOMPING_CORKPEDITE: BF20_BARREL_VOLCANO,
+    R364_VOLCANO_AREA_14: BF20_BARREL_VOLCANO,
+    R365_VOLCANO_POSTCD_AREA_03: BF20_BARREL_VOLCANO,
+    R366_VOLCANO_AREA_13_WSAVE_POINT: BF20_BARREL_VOLCANO,
+    R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP: BF20_BARREL_VOLCANO,
+    R368_NIMBUS_LAND_ROYAL_BUS_STATION: BF24_NIMBUS_LAND,
+    R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE: BF24_NIMBUS_LAND,
+    R370_NIMBUS_LAND_ENTRANCE_TO_HOT_SPRINGS: BF24_NIMBUS_LAND,
+    R371_NIMBUS_LAND_FALL_FROM_PLATFORM_1ST: BF24_NIMBUS_LAND,
+    R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND: BF24_NIMBUS_LAND,
+    R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD: BF24_NIMBUS_LAND,
+    R374_NIMBUS_LAND_FALL_FROM_PLATFORM_4TH: BF24_NIMBUS_LAND,
+    R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY: BF36_STAR_HILL,
+    R376_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2B_1ST_FIGHT_CHEWY: BF07_BOWSERS_KEEP,
+    R377_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2C_1ST_FIGHT_SPARKY: BF07_BOWSERS_KEEP,
+    R378_BEAN_VALLEY_BEANSTALKS_AREA_01: BF02_BEAN_VALLEY_BEANSTALKS,
+    R379_BEAN_VALLEY_BEANSTALKS_AREA_02: BF02_BEAN_VALLEY_BEANSTALKS,
+    R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02: BF02_BEAN_VALLEY_BEANSTALKS,
+    R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02: BF02_BEAN_VALLEY_BEANSTALKS,
+    R382_NIMBUS_LAND_ENTRANCE_NO_TRAMPOLINESEXITS: BF24_NIMBUS_LAND,
+    R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES: BF20_BARREL_VOLCANO,
+    R384_VOLCANO_AREA_05: BF20_BARREL_VOLCANO,
+    R385_VOLCANO_AREA_06: BF20_BARREL_VOLCANO,
+    R386_VOLCANO_AREA_12_ERUPTING_STUMPET: BF20_BARREL_VOLCANO,
+    R387_VOLCANO_AREA_19_FROM_HINO_MART_WSAVE_POINT: BF20_BARREL_VOLCANO,
+    R388_VOLCANO_POSTCD_AREA_02: BF20_BARREL_VOLCANO,
+    R389_VOLCANO_AREA_20_JUMPING_PYROSPHERES: BF20_BARREL_VOLCANO,
+    R390_VOLCANO_AREA_16_ERUPTING_STUMPET: BF20_BARREL_VOLCANO,
+    R391_VOLCANO_POSTCD_AREA_04: BF20_BARREL_VOLCANO,
+    R392_VOLCANO_POSTCD_AREA_06: BF20_BARREL_VOLCANO,
+    R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP: BF20_BARREL_VOLCANO,
+    R394_VOLCANO_POSTCD_AREA_05: BF20_BARREL_VOLCANO,
+    R395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F: BF33_PLATEAUS,
+    R396_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_2F: BF33_PLATEAUS,
+    R397_MONSTRO_TOWN_SUPERJUMPING_ROOM: BF33_PLATEAUS,
+    R398_MONSTRO_TOWN_WEAPON_AND_ARMOR_SHOP: BF33_PLATEAUS,
+    R399_MONSTRO_TOWN_3_MUSTY_FEARS_INN: BF33_PLATEAUS,
+    R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM: BF07_BOWSERS_KEEP,
+    R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS: BF25_UNDERGROUND,
+    R402_LANDS_END_DESERT_AREA_03: BF43_LANDS_END_DESERT,
+    R403_LANDS_END_DESERT_AREA_05: BF43_LANDS_END_DESERT,
+    R404_LANDS_END_DESERT_AREA_04: BF43_LANDS_END_DESERT,
+    R405_BOOSTER_PASS_SECRET: BF10_MOUNTAINS,
+    R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD: BF48_FACTORY_GROUNDS,
+    R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS: BF10_MOUNTAINS,
+    R408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM: BF22_NIMBUS_CASTLE,
+    R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM: BF22_NIMBUS_CASTLE,
+    R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE: BF22_NIMBUS_CASTLE,
+    R411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST: BF22_NIMBUS_CASTLE,
+    R412_NIMBUS_CASTLE_AREA_11_LONG_HALLWAY_DOOR_TO_KINGS_CELLAR: BF22_NIMBUS_CASTLE,
+    R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR: BF22_NIMBUS_CASTLE,
+    R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE: BF22_NIMBUS_CASTLE,
+    R415_NIMBUS_LAND_SMALL_PLATFORM_AFTER_NIMBUS_CASTLE_THRONE_PATHS: BF24_NIMBUS_LAND,
+    R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA: BF24_NIMBUS_LAND,
+    R417_GARDENERS_HOUSE_OUTSIDE: BF28_MUSHROOM_KINGDOM,
+    R418_GARDENERS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R419_LAZY_SHELL_CLOUD: BF02_BEAN_VALLEY_BEANSTALKS,
+    R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM: BF42_BELOME_TEMPLE,
+    R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE: BF42_BELOME_TEMPLE,
+    R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM: BF42_BELOME_TEMPLE,
+    R423_BELOME_TEMPLE_AREA_06_BELOMES_FORTUNE_ROOM_WELEVATING_PLATFORM: BF42_BELOME_TEMPLE,
+    R424_BELOME_TEMPLE_AREA_03_PIPE_TO_ROOM_DETERMINED_BY_FORTUNE: BF42_BELOME_TEMPLE,
+    R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM: BF42_BELOME_TEMPLE,
+    R426_BELOME_TEMPLE_AREA_07_PIPE_TO_BELOMES_ROOM: BF42_BELOME_TEMPLE,
+    R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN: BF42_BELOME_TEMPLE,
+    R428_BELOME_TEMPLE_AREA_01_WWARP_TRAMPOLINE: BF42_BELOME_TEMPLE,
+    R429_GAME_INTRO_NIMBUS_LAND_OUTSIDE_WITH_PATROLLING_BIRDIES: BF24_NIMBUS_LAND,
+    R430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA: BF24_NIMBUS_LAND,
+    R431_BOWSERS_KEEP_6DOOR_PUZZLE_ROOMS: BF07_BOWSERS_KEEP,
+    R432_ENDING_CREDITS_JOHNNY_LOOKING_OUT_AT_SUNSET_ON_BEACH_SHORE: BF37_SEASIDE_TOWN_BEACH,
+    R433_SMITHY_FACTORY_AREA_01_DUMMY: BF19_SMITHY_FACTORY,
+    R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS: BF19_SMITHY_FACTORY,
+    R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR: BF07_BOWSERS_KEEP,
+    R436_SMITHY_FACTORY_AREA_01_DUMMY: BF19_SMITHY_FACTORY,
+    R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD: BF22_NIMBUS_CASTLE,
+    R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA: BF24_NIMBUS_LAND,
+    R439_BOWSERS_KEEP_OUTSIDE_TALK_TO_EXOR: BF10_MOUNTAINS,
+    R440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA: BF22_NIMBUS_CASTLE,
+    R441_ENDING_CREDITS_TOADOFSKY_CONDUCTS_CHOIR: BF33_PLATEAUS,
+    R442_SMITHY_FACTORY_AREA_11_CONVEYOR_BELTS_SPAWNING_DRILL_BITS_AND_MACKS: BF19_SMITHY_FACTORY,
+    R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM: BF19_SMITHY_FACTORY,
+    R444_SMITHY_FACTORY_AREA_09_DUMMY: BF19_SMITHY_FACTORY,
+    R445_SMITHY_FACTORY_AREA_10_FALL_FROM_AREA_09: BF19_SMITHY_FACTORY,
+    R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS: BF07_BOWSERS_KEEP,
+    R447_NIMBUS_LAND_HOT_SPRINGS: BF24_NIMBUS_LAND,
+    R448_BOWSERS_KEEP_AREA_09_TALL_ROOM_WSAVE_POINT: BF07_BOWSERS_KEEP,
+    R449_BOWSERS_KEEP_AREA_11_THWOMPBULLET_ROOM_AFTER_MAGIKOOPAS_ROOM: BF07_BOWSERS_KEEP,
+    R450_BOWSERS_KEEP_AREA_12_CROCOS_SHOP_2_AFTER_MAGIKOOPAS_ROOM: BF07_BOWSERS_KEEP,
+    R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM: BF07_BOWSERS_KEEP,
+    R452_BOWSERS_KEEP_AREA_06_SAVE_POINT_WCROCO_SHOP: BF07_BOWSERS_KEEP,
+    R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM: BF07_BOWSERS_KEEP,
+    R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS: BF07_BOWSERS_KEEP,
+    R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS: BF07_BOWSERS_KEEP,
+    R456_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1C_GORILLA_THROWING_BARRELS: BF07_BOWSERS_KEEP,
+    R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING: BF07_BOWSERS_KEEP,
+    R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS: BF07_BOWSERS_KEEP,
+    R459_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1A_1ST_FIGHT_TERRA_COTTA: BF07_BOWSERS_KEEP,
+    R460_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1B_1ST_FIGHT_ALLEY_RAT: BF07_BOWSERS_KEEP,
+    R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB: BF07_BOWSERS_KEEP,
+    R462_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2A_1ST_FIGHT_GU_GOOMBA: BF07_BOWSERS_KEEP,
+    R463_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1B_BARRELCOUNTING: BF07_BOWSERS_KEEP,
+    R464_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1A_QUIZ: BF07_BOWSERS_KEEP,
+    R465_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2B_GREEN_SWITCHES: BF07_BOWSERS_KEEP,
+    R466_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1C_WORD_PROBLEM: BF07_BOWSERS_KEEP,
+    R467_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2A_COIN_COLLECTING: BF07_BOWSERS_KEEP,
+    R468_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2C_BALL_SOLITAIRE: BF07_BOWSERS_KEEP,
+    R469_FACTORY_GROUNDS_AREA_01: BF48_FACTORY_GROUNDS,
+    R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM: BF48_FACTORY_GROUNDS,
+    R471_FACTORY_GROUNDS_AREA_02: BF48_FACTORY_GROUNDS,
+    R472_FACTORY_GROUNDS_AREA_03: BF48_FACTORY_GROUNDS,
+    R473_SMITHY_FACTORY_AREA_13_BOWYERS_FALLING_DOWN_CONVEYOR_BELTS: BF19_SMITHY_FACTORY,
+    R474_SMITHY_FACTORY_AREA_15_FALLING_YARIDOVICHS: BF19_SMITHY_FACTORY,
+    R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS: BF19_SMITHY_FACTORY,
+    R476_BOWSERS_KEEP_2ND_TIME_AREA_01: BF07_BOWSERS_KEEP,
+    R477_BOWSERS_KEEP_2ND_TIME_AREA_02: BF07_BOWSERS_KEEP,
+    R478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE: BF07_BOWSERS_KEEP,
+    R479_BOWSERS_KEEP_2ND_TIME_AREA_04_THRONE_ROOM: BF07_BOWSERS_KEEP,
+    R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R482_MUSHROOM_KINGDOM_DURING_MACK_RAZ_AND_RAINIS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R483_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_TOP_FLOOR: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R484_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_BASEMENT: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R485_MUSHROOM_KINGDOM_DURING_MACK_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R486_ENDING_CREDITS_STAR_PIECES_ROSE_TOWN_LAST_STAR_PIECE_TO_THANK_YOU: BF28_MUSHROOM_KINGDOM,
+    R487_MUSHROOM_KINGDOM_DURING_MACK_RUNNING_KIDS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R488_MUSHROOM_KINGDOM_JUMPING_KIDS_HOUSE_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R489_MUSHROOM_KINGDOM_JUMPING_KIDS_HOUSE_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R490_MUSHROOM_KINGDOM_RAZ_AND_RAINIS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R491_MUSHROOM_KINGDOM_ITEM_SHOP_TOP_FLOOR: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R493_MUSHROOM_KINGDOM_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R494_MUSHROOM_KINGDOM_INN_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R495_MUSHROOM_KINGDOM_RUNNING_KIDS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
+    R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE: BF48_FACTORY_GROUNDS,
+    R497_NIMBUS_CASTLE_AREA_06_DUMMY: BF22_NIMBUS_CASTLE,
+    R498_NIMBUS_CASTLE_AREA_10_DUMMY: BF22_NIMBUS_CASTLE,
+    R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA: BF22_NIMBUS_CASTLE,
+    R500_NIMBUS_CASTLE_AREA_04_DUMMY: BF22_NIMBUS_CASTLE,
+    R501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA: BF22_NIMBUS_CASTLE,
+    R502_NIMBUS_LAND_DREAM_CUSHION_DREAM_SMALL_CLOUD_PERSON_CHEERS_ON_MARIOBED_FLOATS: BF24_NIMBUS_LAND,
+    R503_NIMBUS_LAND_DREAM_CUSHION_DREAM_HEAVY_TROOPA_LAYING_ON_MARIO: BF24_NIMBUS_LAND,
+    R504_NIMBUS_LAND_DREAM_CUSHION_DREAM_TORTES_ARE_SEASONING_MARIO: BF24_NIMBUS_LAND,
+    R505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI: BF33_PLATEAUS,
+    R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA: BF35_MARRYMORE_CHAPEL_SANCTUARY,
+    R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN: BF19_SMITHY_FACTORY,
+    R508_SMITHY_FACTORY_AREA_14_WSAVE_POINT: BF19_SMITHY_FACTORY,
+    R509_FACTORY_GROUNDS_SMITHYS_PAD: BF48_FACTORY_GROUNDS,
+}

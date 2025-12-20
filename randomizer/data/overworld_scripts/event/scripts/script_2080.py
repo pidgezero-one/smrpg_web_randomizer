@@ -31,23 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitClear(INVISIBLE_ITEMS_ANYWHERE, ["EVENT_2080_action_queue_6"]),
-	ActionQueueAsync(target=NPC_1, subscript=[
-		A_VisibilityOff()
-	]),
-	ActionQueueAsync(target=NPC_2, subscript=[
-		A_VisibilityOn(),
-		A_SequenceLoopingOn()
-	]),
-	ActionQueueAsync(target=NPC_3, subscript=[
-		A_VisibilityOn(),
-		A_SequenceLoopingOn()
-	]),
-	ActionQueueAsync(target=NPC_4, subscript=[
-		A_VisibilityOn(),
-		A_SequenceLoopingOn()
-	]),
-	Jmp(["EVENT_2080_fade_in_from_black_async_7"]),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_WalkNorthwestPixels(4),
 		A_WalkNorthPixels(9),
@@ -55,6 +38,5 @@ script = EventScript([
 		A_SetVRAMPriority(NORMAL_PRIORITY)
 	], identifier="EVENT_2080_action_queue_6"),
 	FadeInFromBlack(sync=False, identifier="EVENT_2080_fade_in_from_black_async_7"),
-	RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER),
 	Return()
 ])

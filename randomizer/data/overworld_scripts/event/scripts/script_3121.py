@@ -50,6 +50,7 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_JumpToHeight(height=144, silent=True)
 	]),
+    RunEventAsSubroutine(E1197_KERO_SEWER_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

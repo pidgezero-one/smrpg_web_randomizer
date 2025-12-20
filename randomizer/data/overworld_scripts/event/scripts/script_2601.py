@@ -76,6 +76,7 @@ script = EventScript([
 	FadeInFromBlack(sync=False, identifier="EVENT_2601_fade_in_from_black_async_16"),
 	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_2601_ret_20"]),
 	SetVarToConst(PRIMARY_TEMP_7000, 523),
+	RunEventAsSubroutine(E1245_INNER_FACTORY_5_BOSS_UNLOCKS),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Return(identifier="EVENT_2601_ret_20")
 ])

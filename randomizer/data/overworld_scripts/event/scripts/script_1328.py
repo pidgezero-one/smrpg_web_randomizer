@@ -57,6 +57,7 @@ script = EventScript([
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1328_jmp_if_bit_clear_16"]),
 	RunEventAsSubroutine(E3899_BOOSTER_TOWER_STAR_PIECE_SIGNAL),
 	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_1328_ret_18"], identifier="EVENT_1328_jmp_if_bit_clear_16"),
+	RunEventAsSubroutine(E1203_TOWER_BALCONY_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_1328_ret_18")
 ])

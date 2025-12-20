@@ -1,3 +1,6 @@
 {
-  "python.analysis.typeCheckingMode": "basic"
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.extraPaths": [
+      "/Users/stefkischak/code/smrpgpatchbuilder/src"
+  ]
 }

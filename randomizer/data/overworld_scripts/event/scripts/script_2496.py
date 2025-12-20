@@ -121,5 +121,17 @@ script = EventScript([
 	ClearBit(MINES_HENCHMAN_RIGHT_DEFEATED),
 	CharacterJoinsParty(DUMMY_0X05),
 	CharacterLeavesParty(MARIO),
-	JmpToEvent(E0192_GATING_AND_PARTY_JOIN_LOGIC)
+	RunEventAsSubroutine(E1220_STARTING_CHARACTER_1),
+	CharacterLeavesParty(DUMMY_0X05),
+	RunEventAsSubroutine(E1221_STARTING_CHARACTER_2),
+	RunEventAsSubroutine(E1222_STARTING_CHARACTER_3),
+	RunEventAsSubroutine(E1223_STARTING_CHARACTER_4),
+	RunEventAsSubroutine(E1224_STARTING_CHARACTER_5),
+    RunEventAsSubroutine(E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START),
+	Set7000ToPartySize(),
+	CompareVarToConst(PRIMARY_TEMP_7000, 4),
+	JmpIfComparisonResultIsLesser(["EVENT_2496_j"]),
+	SetBit(SWITCH_MENU_UNLOCKED),
+	EnterArea(room_id=R189_MARIOS_PIPEHOUSE, face_direction=SOUTHEAST, x=3, y=13, z=0, identifier="EVENT_2496_j"),
+	JmpToEvent(E2497_ADDITIONAL_GATING_LOGIC_START_PLAYING)
 ])

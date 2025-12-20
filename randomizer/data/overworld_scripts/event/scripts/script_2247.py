@@ -97,6 +97,7 @@ script = EventScript([
     RemoveObjectFromCurrentLevel(NPC_4),
     SummonObjectToCurrentLevel(NPC_3),
     EnterArea(R255_MONSTRO_TOWN_JINXS_DOJO, face_direction=NORTHEAST, x=5, y=16, z=0, run_entrance_event=True),
+	RunEventAsSubroutine(E1217_DOJO_5_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 525),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 ])

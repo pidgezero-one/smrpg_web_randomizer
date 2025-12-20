@@ -39,6 +39,7 @@ script = EventScript([
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3925_jmp_to_event_8"]),
 	RunEventAsSubroutine(E3915_FACTORY_STAR_PIECE_SIGNAL),
 	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_3925_ret_9"]),
+	RunEventAsSubroutine(E1239_OUTER_FACTORY_1_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER, identifier="EVENT_3925_jmp_to_event_8"),
 	Return(identifier="EVENT_3925_ret_9")
 ])

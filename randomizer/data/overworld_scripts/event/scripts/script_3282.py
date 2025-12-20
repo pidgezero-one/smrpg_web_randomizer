@@ -88,6 +88,7 @@ script = EventScript([
 		A_Pause(2)
 	]),
 	SetBit(JOHNNY_POSITION),
+	RunEventAsSubroutine(E1208_SHIP_END_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(),
 	JmpIfBitClear(JOHNNY_POSITION, ["ship_postgame_check"], identifier="EVENT_3282_jmp_if_bit_clear_27"),

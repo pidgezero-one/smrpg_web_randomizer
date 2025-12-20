@@ -40,6 +40,7 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	SetBit(TEMPLE_POSTGAME_BOSS_DEFEATED),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E1212_POSTGAME_TEMPLE_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 523),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
 ])

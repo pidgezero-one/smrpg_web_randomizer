@@ -40,6 +40,7 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	SetBit(POSTGAME_TOWER_COMPLETED),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
+	RunEventAsSubroutine(E1202_POSTGAME_TOWER_CURTAIN_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 528),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
 ])

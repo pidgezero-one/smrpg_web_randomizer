@@ -43,6 +43,7 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R423_BELOME_TEMPLE_AREA_06_BELOMES_FORTUNE_ROOM_WELEVATING_PLATFORM, mod_id=32),
 	Store00To0248(),
 	Pause(1),
+    JmpIfBitSet(TEMPLE_BOSS_GATED, ["EVENT_1693_clear_bit_18"]),
 	Inc(UNKNOWN_70AD),
 	CopyVarToVar(from_var=UNKNOWN_70AD, to_var=PRIMARY_TEMP_7000),
 	AddConstToVar(PRIMARY_TEMP_7000, 5),

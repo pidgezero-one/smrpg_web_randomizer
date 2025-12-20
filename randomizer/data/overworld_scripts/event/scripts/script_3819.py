@@ -31,7 +31,17 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunEventAsSubroutine(E1605_TOWER_EXTERIOR_CANCEL_EXP_STAR),
+    JmpIfBitClear(LANDS_END_GATED, ["EVENT_3819_event_precursor"]),
+    SummonObjectToCurrentLevel(NPC_5),
+	ActionQueueAsync(target=NPC_5, subscript=[
+		A_WalkEastPixels(11),
+		A_WalkNortheastPixels(4),
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
+		A_SetVRAMPriority(NORMAL_PRIORITY)
+	]),
+    Jmp(["event_3819_start"]),
+    RemoveObjectFromCurrentLevel(NPC_5, identifier="EVENT_3819_event_precursor"),
+	RunEventAsSubroutine(E1605_TOWER_EXTERIOR_CANCEL_EXP_STAR, identifier="event_3819_start"),
 	JmpIfBitSet(TEMP_7042_3, ["EVENT_3819_action_queue_15"]),
 	ClearBit(FLOWER_TOWER_ASCENDED),
 	ClearBit(SKY_BRIDGE_TUTORIAL_BIT),

@@ -90,6 +90,7 @@ script = EventScript([
 	SetSyncActionScript(MEM_70A8, A0015_DO_NOTHING),
 	SetVarToConst(PRIMARY_TEMP_7000, 512),
 	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),
+	RunEventAsSubroutine(E1249_MIMIC_1_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 512),
 	JmpToEvent(E0169_MIMIC_1_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_3124_ret_32"),

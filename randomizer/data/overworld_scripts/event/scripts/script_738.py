@@ -460,6 +460,7 @@ script = EventScript([
 	EnterArea(room_id=R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, face_direction=SOUTH, x=15, y=46, z=2, run_entrance_event=True, identifier="EVENT_738_enter_area_116"),
 	RunEventAsSubroutine(E3660_NIMBUS_REPOPULATE_CASTLE_UPON_LIBERATION),
 	FadeInFromBlack(sync=True),
+	RunEventAsSubroutine(E1232_NIMBUS_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

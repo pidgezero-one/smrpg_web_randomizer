@@ -1,6 +1,6 @@
 # pylint: disable=C0301
 
-"""E1227_EMPTY"""
+"""E1223_MOLEVILLE_CHARACTER"""
 
 from randomizer.scripts.event.script_imports import *
 

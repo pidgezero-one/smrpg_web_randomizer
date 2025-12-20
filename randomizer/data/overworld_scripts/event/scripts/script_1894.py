@@ -43,6 +43,7 @@ script = EventScript([
 	RestoreAllHP(),
 	RestoreAllFP(),
 	SetBit(ABYSS_BOSS_2_DEFEATED),
+	RunEventAsSubroutine(E1240_OUTER_FACTORY_2_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

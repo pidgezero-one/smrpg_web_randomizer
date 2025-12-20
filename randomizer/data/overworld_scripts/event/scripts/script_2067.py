@@ -178,6 +178,7 @@ script = EventScript([
 		A_Pause(10)
 	]),
 	SetBit(DOJO_BOSS_1_DEFEATED),
+	RunEventAsSubroutine(E1213_DOJO_1_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

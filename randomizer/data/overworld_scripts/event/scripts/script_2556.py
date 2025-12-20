@@ -67,6 +67,7 @@ script = EventScript([
 		A_WalkNorthwestSteps(16)
 	]),
 	SetSyncActionScript(NPC_3, A0689_BEAN_VALLEY_BOSS_PRIZE_DRIFTS_DOWN),
+	RunEventAsSubroutine(E1229_BEAN_VALLEY_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

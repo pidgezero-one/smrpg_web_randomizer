@@ -31,6 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+    RunEventAsSubroutine(E1169_OPEN_LANDS_END_IF_GATED_BY_ELDER),
 	RunDialog(dialog_id=DI2923_SEASIDE_ELDER_WELCOME, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return()
 ])

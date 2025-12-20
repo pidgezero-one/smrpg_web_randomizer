@@ -2066,12 +2066,34 @@ packs[PACK078_CHAPEL_POSTGAME] = FormationPack(
         unknown_bit=True)
 )
 #
-packs[PACK079_UNUSED] = FormationPack(
+packs[PACK079_MINES_HENCHMAN_RIGHT] =  FormationPack(
     Formation(
         members=[
+            FormationMember(CROOKEnemyStatic, 135, 119),
+            FormationMember(CROOKEnemyStatic, 199, 119),
+            FormationMember(CROOKEnemyStatic, 199, 151),
         ],
-        music=MidbossMusic(),
-        can_run_away=False,
+        music=NormalBattleMusic(),
+        unknown_bit=True)
+    ,
+    Formation(
+        members=[
+            FormationMember(CROOKEnemyStatic, 167, 103),
+            FormationMember(CROOKEnemyStatic, 135, 119),
+            FormationMember(CROOKEnemyStatic, 183, 127),
+            FormationMember(CROOKEnemyStatic, 199, 151),
+            FormationMember(CROOKEnemyStatic, 231, 135),
+        ],
+        music=NormalBattleMusic(),
+        unknown_bit=True)
+    ,
+    Formation(
+        members=[
+            FormationMember(CROOKEnemyStatic, 135, 119),
+            FormationMember(CROOKEnemyStatic, 199, 119),
+            FormationMember(CROOKEnemyStatic, 199, 151),
+        ],
+        music=NormalBattleMusic(),
         unknown_bit=True)
 )
 packs[PACK080_STINGER_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
@@ -4256,7 +4278,7 @@ packs[PACK178_DOJO_FIGHT_1] = FormationPack(
         music=MidbossMusic())
 )
 #
-packs[MUSHROOM_KINGDOM_BOSS] = FormationPack(
+packs[PACK179_MUSHROOM_KINGDOM_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(MACKEnemy, 199, 119),

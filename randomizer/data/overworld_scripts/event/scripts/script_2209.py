@@ -113,6 +113,7 @@ script = EventScript([
 	SetBit(KEEP_BOSS_1_DEFEATED),
 	RestoreAllHP(),
 	RestoreAllFP(),
+	RunEventAsSubroutine(E1236_KEEP_1_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

@@ -53,7 +53,8 @@ script = EventScript([
 	]),
 	ResumeActionScript(MEM_70A8),
 	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),
-	SetVarToConst(PRIMARY_TEMP_7000, 518),
+	RunEventAsSubroutine(E1199_OUTER_MNES_BOSS_UNLOCKS),
+    SetVarToConst(PRIMARY_TEMP_7000, 518),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Return(),
 	ResetAndChooseGame(identifier="EVENT_3201_reset_and_choose_game_27")

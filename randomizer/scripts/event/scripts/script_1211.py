@@ -1,6 +1,6 @@
 # pylint: disable=C0301
 
-"""E1211_EMPTY"""
+"""E1211_TEMPLE_BOSS_UNLOCKS"""
 
 from randomizer.scripts.event.script_imports import *
 

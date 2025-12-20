@@ -54,6 +54,7 @@ script = EventScript([
 	UnknownCommand(bytearray(b'\xfdD')),
 	ResetPrioritySet(),
 	FadeInFromBlack(sync=False),
+	RunEventAsSubroutine(E1233_VOLCANO_MID_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_3331_ret_24")
 ])

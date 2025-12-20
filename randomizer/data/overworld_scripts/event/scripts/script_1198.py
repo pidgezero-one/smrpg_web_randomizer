@@ -1,4 +1,4 @@
-# E1198_EMPTY
+# E1198_FOREST_MAZE_BOSS_UNLOCKS
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	Return()
 ])

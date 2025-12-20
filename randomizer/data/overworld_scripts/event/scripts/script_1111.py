@@ -39,7 +39,7 @@ script = EventScript([
 	Return(),
 	RemoveOneOfItemFromInventory(CricketPieItem, identifier="EVENT_1111_remove_one_from_inventory_6"),
 	SetBit(CRICKET_PIE_EXCHANGED),
-	RunEventAsSubroutine(E0203_UNLOCK_FOREST_IF_GATED_BY_CRICKET_PIE),
+	RunEventAsSubroutine(E1255_UNLOCK_FOREST_BY_PIE),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	StoreItemAmountTo7000(CricketJamItem),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1111_ret_15"]),

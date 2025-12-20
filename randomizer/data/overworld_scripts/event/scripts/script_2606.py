@@ -92,6 +92,7 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_8, R469_FACTORY_GROUNDS_AREA_01),
 	SetBit(INNER_FACTORY_ROOM_1_COMPLETED),
 	EnterArea(room_id=R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD, face_direction=NORTHWEST, x=9, y=43, z=5, run_entrance_event=True),
+	RunEventAsSubroutine(E1241_INNER_FACTORY_1_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

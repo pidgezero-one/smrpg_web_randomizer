@@ -536,7 +536,7 @@ script = EventScript(
         SetVarToConst(OLD_STAR_PIECE_ID, 0),
         SetVarToConst(OLD_STAR_PIECE_GRANTER, 0),
         Return(),
-        SetBit(INVISIBLE_FLAG_CHECK_DONE, identifier="EVENT_720_set_bit_264"),
+        SetBit(UNUSED_7093_5, identifier="EVENT_720_set_bit_264"),
         PlayMusicAtDefaultVolume(M51_MONSTRO_TOWN),
         JmpIfBitSet(MONSTRO_LEDGE_ITEM_KNOCKED_DOWN, ["EVENT_720_set_bit_275"]),
         CopyVarToVar(from_var=MONSTRO_THWOMP_COUNTER, to_var=PRIMARY_TEMP_7000),

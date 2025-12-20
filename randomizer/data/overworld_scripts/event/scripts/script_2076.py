@@ -109,6 +109,7 @@ script = EventScript([
 	UnfreezeCamera(),
 	JmpIfBitSet(RUN_AWAY, ["EVENT_2076_pause_33"]),
 	JmpIfBitSet(GAME_OVER, ["EVENT_2076_pause_33"]),
+	RunEventAsSubroutine(E1215_DOJO_3_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 516),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Pause(30, identifier="EVENT_2076_pause_33"),

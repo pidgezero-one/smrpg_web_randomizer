@@ -129,6 +129,7 @@ script = EventScript([
     Inc(POSTGAME_PROGRESS_COUNTER),
     JmpIfBitSet(CURTAIN_MINIGAME_COMPLETED, ["EVENT_1369_failed_spgrant"]),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E1201_TOWER_CURTAIN_BOSS_UNLOCKS),
     SetBit(TOWER_BOSS_1_STAR_PIECE, identifier="EVENT_1369_failed_spgrant"),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()

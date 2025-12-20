@@ -1,4 +1,4 @@
-# E1219_EMPTY
+# E1219_POSTGAME_MONSTRO_SEALED_BOSS_UNLOCKS
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	Return()
 ])

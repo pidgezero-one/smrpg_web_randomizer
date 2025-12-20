@@ -43,6 +43,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	JmpIfBitSet(LANDS_END_CLOUD_STAR_PIECE, ["EVENT_1845_ret_14"], identifier="EVENT_1845_jmp_if_bit_set_10"),
 	SetBit(LANDS_END_CLOUD_STAR_PIECE),
+	RunEventAsSubroutine(E1210_CLOUD_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 519),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Return(identifier="EVENT_1845_ret_14")

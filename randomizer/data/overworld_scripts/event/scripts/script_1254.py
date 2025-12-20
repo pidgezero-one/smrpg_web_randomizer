@@ -1,4 +1,4 @@
-# E1254_EMPTY
+# E1254_UNLOCK_SEWER_BY_RFC
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	Return()
 ])

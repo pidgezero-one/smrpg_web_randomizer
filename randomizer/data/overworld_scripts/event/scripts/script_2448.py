@@ -106,9 +106,7 @@ script = EventScript([
 		A_SetSequenceSpeed(FASTER),
 		A_SequenceLoopingOn()
 	]),
-	RunEventAsSubroutine(E0186_PARTY_JOIN_LOGIC),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
-	RunEventAsSubroutine(E0211_UNLOCK_PIPE_VAULT_IF_GATED_BY_FOREST_MAZE),
 	JmpIfBitClear(GAME_OVER, ["EVENT_2448_set_bit_43"]),
 	ResetAndChooseGame(),
 	SetBit(FOREST_LIBERATED, identifier="EVENT_2448_set_bit_43"),
@@ -147,6 +145,12 @@ script = EventScript([
 	RestoreAllFP(),
 	PlayMusicAtDefaultVolume(M0026_FORESTMAZE),
 	UnfreezeCamera(),
+	RunEventAsSubroutine(E1226_FOREST_MAZE_CHARACTER),
+	Set7000ToPartySize(),
+	CompareVarToConst(PRIMARY_TEMP_7000, 4),
+	JmpIfComparisonResultIsLesser(["EVENT_2448_j_24"]),
+	SetBit(SWITCH_MENU_UNLOCKED),
+    RunEventAsSubroutine(E1198_FOREST_MAZE_BOSS_UNLOCKS, identifier="EVENT_2448_j_24"),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_2448_ret_77")
 ])

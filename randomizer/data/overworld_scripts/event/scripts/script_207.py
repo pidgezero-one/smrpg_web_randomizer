@@ -33,9 +33,11 @@ from ....packets import *
 script = EventScript([
 	JmpIfBitClear(KEEP_GATED_BY_STAR_PIECES, ["EVENT_207_jmp_to_event_2"]),
 	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_207_clear_bit_3"]),
-	JmpToEvent(E3093_OPEN_ABYSS_IF_STAR_PIECE_THRESHOLD_MET, identifier="EVENT_207_jmp_to_event_2"),
+	JmpToEvent(E3090_OPEN_LANDS_END_IF_GATED_BY_STAR_PIECES, identifier="EVENT_207_jmp_to_event_2"),
 	ClearBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, identifier="EVENT_207_clear_bit_3"),
 	SetBit(MAP_VISTA_HILL),
-	RunDialog(dialog_id=DI2264_KEEP_OPEN, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
-	JmpToEvent(E3093_OPEN_ABYSS_IF_STAR_PIECE_THRESHOLD_MET)
+    JmpIfBitClear(FACTORY_MATCHES_KEEP, ["EVENT_207_end"]),
+	SetBit(MAP_GATE),
+	SetBit(MAP_DIRECTIONAL_BOWSERS_KEEP_GATE),
+	JmpToEvent(E3090_OPEN_LANDS_END_IF_GATED_BY_STAR_PIECES, identifier="EVENT_207_end")
 ])

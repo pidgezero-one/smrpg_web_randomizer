@@ -7,7 +7,7 @@ from randomizer.scripts.event.script_imports import *
 script = EventScript(
     [
         SetBit(SPOOKUM_DIRECTION),
-        JmpIfBitClear(UNUSED_708D_2, ["EVENT_2335_remove_from_level_3"]),
+        JmpIfBitClear(LANDS_END_GATED, ["EVENT_2335_remove_from_level_3"]),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[ASSetSpriteSequence(index=4, is_sequence=True, looping=True)]),

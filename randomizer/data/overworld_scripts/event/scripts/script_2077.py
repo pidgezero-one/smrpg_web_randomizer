@@ -151,6 +151,7 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=32),
 	SetBit(DOJO_BOSS_4_DEFEATED),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E1216_DOJO_4_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 517),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
     Inc(POSTGAME_PROGRESS_COUNTER),

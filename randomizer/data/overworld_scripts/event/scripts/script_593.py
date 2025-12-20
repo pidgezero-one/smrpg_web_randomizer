@@ -43,8 +43,6 @@ script = EventScript([
 	RestoreAllHP(),
 	RestoreAllFP(),
 	FadeInFromBlack(sync=False),
-	RunEventAsSubroutine(E0201_UNLOCK_FOREST_IF_GATED_BY_MOLEVILLE_CHARACTER),
-	RunEventAsSubroutine(E0198_UNLOCK_TOWER_IF_GATED_BY_MOLEVILLE),
 	ApplyTileModToLevel(use_alternate=True, room_id=R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE, mod_id=0),
 	Pause(1),
 	ApplyTileModToLevel(use_alternate=True, room_id=R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE, mod_id=1),

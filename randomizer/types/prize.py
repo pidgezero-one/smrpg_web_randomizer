@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.characters.classes import Character
 from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
 from ..types.ally import Ally
 from ..data.variables.overworld_sfx_names import SO081_STAR
+from .gameworld import GameWorld
 
 class TreasureHunterNickname:
     _nickname: str
@@ -269,6 +270,11 @@ class CharacterPrize(Prize):
     def set_starting_level(self, level: int) -> None:
         self._starting_level = level
 
+    def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
+        return EventScript([
+            Return()
+        ])
+
 
 class SpellPrize(Prize):
     _spell: type[CharacterSpell]
@@ -294,6 +300,16 @@ class BossFightPrize(Prize):
     @property
     def force_start_event(self) -> int | None:
         return self._force_start_event
+    
+    def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
+        return EventScript([
+            Return()
+        ])
+
+    def unlocks(self, world: GameWorld) -> EventScript:
+        return EventScript([
+            Return()
+        ])
 
 class MimicFightInitiatorPrize(Prize):
     pass

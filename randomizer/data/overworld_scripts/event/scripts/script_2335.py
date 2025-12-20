@@ -32,10 +32,6 @@ from ....packets import *
 
 script = EventScript([
 	SetBit(SPOOKUM_DIRECTION),
-	JmpIfBitClear(UNUSED_708D_2, ["EVENT_2335_remove_from_level_3"]),
-	ActionQueueAsync(target=NPC_6, subscript=[
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=True)
-	]),
 	RemoveObjectFromSpecificLevel(NPC_0, R196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS, identifier="EVENT_2335_remove_from_level_3"),
 	RemoveObjectFromSpecificLevel(NPC_1, R196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS),
 	RemoveObjectFromSpecificLevel(NPC_2, R196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS),

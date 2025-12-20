@@ -84,6 +84,7 @@ script = EventScript([
 	RestoreAllFP(),
 	SetBit(KEEP_BOSS_2_DEFEATED),
 	SetVarToConst(PRIMARY_TEMP_7000, 521),
+	RunEventAsSubroutine(E1237_KEEP_CHANDELIER_BOSS_UNLOCKS),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	JmpToEvent(E2226_KEEP_3RD_BOSS, identifier="EVENT_2225_jmp_to_event_19"),
 	Return(identifier="EVENT_2225_ret_20")

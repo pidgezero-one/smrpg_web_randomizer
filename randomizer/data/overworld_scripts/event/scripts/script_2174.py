@@ -74,6 +74,7 @@ script = EventScript([
 	CreatePacketAtObjectCoords(packet=P034_GREY_EXPLOSION_SFX, target_npc=NPC_4, destinations=["EVENT_2174_create_packet_at_npc_coords_23"]),
 	JmpIfBitSet(BATTLE_DOOR_BOSS_BIT, ["EVENT_2174_ret_28"]),
 	SetBit(BATTLE_DOOR_BOSS_BIT),
+	RunEventAsSubroutine(E1235_OBSTACLE_COURSE_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_2174_ret_28")
 ])

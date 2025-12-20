@@ -32,7 +32,8 @@ from ....packets import *
 
 script = EventScript([
 	RunDialogForDuration(dialog_id=DI1233_MONSTRO_TADPOLE_POND_HINT, duration=1, sync=False),
-	JmpIfBitSet(MAP_MONSTRO_TOWN, ["EVENT_1800_ret_3"]),
-	RunDialogForDuration(dialog_id=DI1166_TEMPLE_BLOCKED_PIPE_HINT, duration=1, sync=False),
-	Return(identifier="EVENT_1800_ret_3")
+	JmpIfObjectInCurrentLevel(NPC_3, ["EVENT_1800_ret_3"]),
+    Return(),
+	RunDialogForDuration(dialog_id=DI1166_TEMPLE_BLOCKED_PIPE_HINT, duration=1, sync=False, identifier="EVENT_1800_ret_3"),
+	Return()
 ])

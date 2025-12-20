@@ -43,5 +43,6 @@ script = EventScript([
 	RemoveOneOfItemFromInventory(RareFrogCoinItem, identifier="EVENT_290_remove_one_from_inventory_8"),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
     SetBit(RARE_FROG_COIN_EXCHANGED),
+    RunEventAsSubroutine(E1254_UNLOCK_SEWER_BY_RFC),
 	Return()
 ])

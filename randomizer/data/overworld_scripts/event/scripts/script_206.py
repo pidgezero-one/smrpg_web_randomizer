@@ -36,6 +36,5 @@ script = EventScript([
 	JmpToEvent(E0207_UNLOCK_KEEP_IF_GATED_BY_STAR_PIECES, identifier="EVENT_206_jmp_to_event_2"),
 	SetBit(MAP_SEA, identifier="EVENT_206_set_bit_3"),
 	SetBit(MAP_DIRECTIONAL_SEASIDE_DOWN_SEA),
-	RunDialog(dialog_id=DI2261_SEA_OPEN, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	JmpToEvent(E0207_UNLOCK_KEEP_IF_GATED_BY_STAR_PIECES)
 ])

@@ -42,6 +42,7 @@ script = EventScript([
 	ClearBit(STATUE_KEEPER_FIGHT_PRESENT),
 	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_2118_ret_13"]),
 	SetBit(STATUE_KEEPER_STAR_PIECE),
+	RunEventAsSubroutine(E1230_STATUE_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 520),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Return(identifier="EVENT_2118_ret_13")

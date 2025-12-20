@@ -1,4 +1,4 @@
-# E0094_EMPTY
+# E0094_OUT_OF_ORDER_NOTE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	RunDialog(dialog_id=DI1813_OUT_OF_ORDER, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	Return()
 ])
+

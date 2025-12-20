@@ -31,6 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+    JmpIfBitSet(LANDS_END_GATED, ["EVENT_1564_return_0"]),
 	SetBit(TEMP_7044_4),
 	Set7016701BToObjectXYZ(target=MEM_70A8, bit_7=True),
 	ActionQueueAsync(target=MARIO, subscript=[
@@ -136,5 +137,5 @@ script = EventScript([
 	], identifier="EVENT_1564_action_queue_44"),
 	ClearBit(TEMP_7043_0),
 	MoveScriptToMainThread(),
-	Return()
+	Return(identifier="EVENT_1564_return_0")
 ])

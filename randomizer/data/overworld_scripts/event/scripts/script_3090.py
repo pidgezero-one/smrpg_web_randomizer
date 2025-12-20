@@ -1,4 +1,4 @@
-# E3090_EMPTY
+# E3090_OPEN_LANDS_END_IF_GATED_BY_STAR_PIECES
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,9 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	JmpIfBitClear(LANDS_END_GATED_BY_STAR_PIECES, ["EVENT_3090_jmp_2"]),
+	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 5, ["EVENT_3090_set_bit_3"]),
+	JmpToEvent(E3093_OPEN_ABYSS_IF_STAR_PIECE_THRESHOLD_MET, identifier="EVENT_3090_jmp_2"),
+	ClearBit(LANDS_END_GATED, identifier="EVENT_3090_set_bit_3"),
+	JmpToEvent(E3093_OPEN_ABYSS_IF_STAR_PIECE_THRESHOLD_MET)
 ])

@@ -1025,19 +1025,12 @@ dialog_data[600] = ''' Let me tally up the numbers...
 dialog_data[601] = '''MA'MOLE: I wonder how those
  kids're doing?
  Sure wish they'd hurry home![await]'''
-dialog_data[602] = ''' Hey, `MAIN_CHARACTER_NAME`! We've got
- something fun for you today.[await][page]
- We've each hidden a random item
- somewhere in the world.[await][pause] It might
- be our flags, or it might be
- something completely different![await][page]
- We'll give you hints for the special
- items we hid. Whatever you find,
- you can keep for yourself.[await][page]
- But if you DO find our three flags,
- you can bring them back here. Show
- 'em to our assistant for a prize.[await][page]
-
+dialog_data[602] = '''GREAPER: Hey, `MAIN_CHARACTER_NAME`![await]
+ We don't remember where our flags
+ are, so we each hid a random prize
+ somewhere in the world.[await][page]
+ If you happen to find our flags,
+ could you bring them back here?[await][page]
    Anyway, about my secret item...[await]'''
 dialog_data[603] = '''   Invisible items have been placed.[await]'''
 dialog_data[604] = '''[await]'''
@@ -1273,7 +1266,13 @@ dialog_data[690] = '''      Didn't get any items.[await]'''
 dialog_data[691] = '''[await]'''
 dialog_data[692] = '''[await]'''
 dialog_data[693] = '''[await]'''
-dialog_data[694] = '''[await]'''
+dialog_data[694] = '''' Um••••••`MAIN_CHARACTER_NAME`?[await]
+ This is “Booster Hill”, where there
+ isn't anything to do yet.[await][page]
+ You'll need to come back later.[await]
+ So, please follow me to the exit.[await]
+  [select]  (Go with him)
+  [select]  (Don't go with him)[await]'''
 dialog_data[695] = ''' Gasp, gasp![await]
  Phew, what a workout.[await]'''
 dialog_data[696] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
@@ -1297,9 +1296,9 @@ dialog_data[702] = '''[await]'''
 dialog_data[703] = '''[await]'''
 dialog_data[704] = '''GRATE GUY: Whoa, hold on a sec,
  `MAIN_CHARACTER_NAME`![await]
- There's a pretty tough fight on the
- other side of that trampoline.[await][page]
- Are you SURE you wanna continue?
+ That trampoline will take you right
+ to the factory core.[await][page]
+ Are you SURE you wanna do that?
   [select] (Yes)
   [select] (No)[await]'''
 dialog_data[705] = '''[page]
@@ -1993,7 +1992,8 @@ dialog_data[1028] = '''[await]'''
 dialog_data[1029] = '''[await]'''
 dialog_data[1030] = '''[await]'''
 dialog_data[1031] = '''[await]'''
-dialog_data[1032] = '''[await]'''
+dialog_data[1032] = '''
+             OUT OF ORDER[await]'''
 dialog_data[1033] = '''[await]'''
 dialog_data[1034] = '''[await]'''
 dialog_data[1035] = '''[await]'''

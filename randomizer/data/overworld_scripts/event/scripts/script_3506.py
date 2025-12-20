@@ -102,7 +102,7 @@ script = EventScript([
 	SetSyncActionScript(NPC_24, A0716_BOOSTER_HILL_BUMP_FLOWER, identifier="summon_flower_16_"),
     RunEventAsSubroutine(E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT),
     
-	Inc(BOOSTER_HILL_70B1, identifier="increment_70B1_final_2"),
+	Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier="increment_70B1_final_2"),
 	Pause(8),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_SetWalkingSpeed(FAST),

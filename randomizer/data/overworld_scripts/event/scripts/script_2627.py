@@ -56,6 +56,7 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_10, R472_FACTORY_GROUNDS_AREA_03),
 	RemoveObjectFromCurrentLevel(NPC_10),
 	FadeInFromBlack(sync=False),
+	RunEventAsSubroutine(E1243_INNER_FACTORY_3_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_2627_ret_15")
 ])

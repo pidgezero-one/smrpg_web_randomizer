@@ -32,11 +32,10 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitClear(FACTORY_GATED_BY_STAR_PIECES, ["EVENT_3093_jmp_2"]),
-	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 7, ["EVENT_3093_set_bit_3"]),
+	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_3093_set_bit_3"]),
 	Jmp(["EVENT_3093_jmp_to_event_7"], identifier="EVENT_3093_jmp_2"),
 	SetBit(MAP_DIRECTIONAL_BOWSERS_KEEP_GATE, identifier="EVENT_3093_set_bit_3"),
 	SetBit(MAP_GATE),
 	JmpIfBitClear(KEEP_BOSS_3_DEFEATED, ["EVENT_3093_jmp_to_event_7"]),
-	RunDialog(dialog_id=DI2265_GATE_OPEN, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	JmpToEvent(E3400_RESTART_MUSIC_AFTER_STAR_PIECE_SEQUENCE, identifier="EVENT_3093_jmp_to_event_7")
 ])

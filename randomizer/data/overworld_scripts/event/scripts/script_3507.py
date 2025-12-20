@@ -67,7 +67,13 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSoutheast()
 	]),
-	RunDialog(dialog_id=DI1199_TOAD_WARNS_YOU_TO_LEAVE_EMPTY_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
+    
+	JmpIfBitClear(BOOSTER_HILL_CLOSED, ["booster_hill_already_done"]),
+	RunDialog(dialog_id=DI1197_BOOSTER_HILL_NOT_UNLOCKED_YET, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
+	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
+    Jmp(["EVENT_3507_pause_18"]),
+
+	RunDialog(dialog_id=DI1199_TOAD_WARNS_YOU_TO_LEAVE_EMPTY_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="booster_hill_already_done"),
 	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
 	Pause(10, identifier="EVENT_3507_pause_18"),
 	SetAsyncActionScript(MARIO, A0670_NOD_YES),
@@ -83,7 +89,8 @@ script = EventScript([
 	]),
 	RunEventAtReturn(E3510_BOOSTER_HILL_EXIT_TO_WORLD_MAP),
 	Return(),
-	CopyVarToVar(from_var=BOOSTER_HILL_70B1, to_var=PRIMARY_TEMP_7000, identifier="EVENT_3507_copy_var_to_var_26"),
+	JmpIfBitSet(BOOSTER_HILL_CLOSED, ["EVENT_3507_pause_38"], identifier="EVENT_3507_copy_var_to_var_26"),
+	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
 	CompareVarToConst(PRIMARY_TEMP_7000, 8),
 	JmpIfComparisonResultIsLesser(["EVENT_3507_pause_38"]),
 	Pause(10),

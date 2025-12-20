@@ -37,7 +37,7 @@ script = EventScript([
 	SetBit(TEMP_7042_0, identifier="EVENT_3184_set_bit_3"),
 	JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["EVENT_3184_remove_from_current_level_10"]),
 	PlayMusicAtDefaultVolume(M0027_DUNGEONISFULLOFMONSTERS),
-	JmpIfBitClear(MOLEVILLE_MINES_ENTRANCE_GATING, ["EVENT_3184_remove_from_current_level_10"]),
+	JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["EVENT_3184_remove_from_current_level_10"]),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetObjectMemoryBits(arg_1=0x0B, bits=[1]),
 		A_WalkToXYCoords(x=19, y=27),

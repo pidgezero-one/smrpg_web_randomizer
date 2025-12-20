@@ -926,7 +926,7 @@ class Moleville1Gating(CategorizationOption):
     GENO = "Recruit Geno"
     FOREST = "Finish Forest Maze"
     BOWYER = "Defeat Bowyer"
-    BOSHI = "Defeat Boshi"
+    BOSHI = "Overthrow Boshi"
     OPEN = "Always open"
 
 
@@ -1238,19 +1238,21 @@ class StarPiecesRequired(RangeFlag):
     _id = "endgame"
 
 
-# need to handle people attempting backtracking, expand event tile area
+# ✅
 class CasinoWarp(BooleanFlag):
     _name = "Casino Warp"
     _description = """If enabled, a trampoline warping directly to the final boss fight will become available in Grate Guy's Casino."""
     _id = "cwarp"
 
 
+# ✅
 class BucketWarp(BooleanFlag):
     _name = "Bucket Warp"
     _description = "If enabled, trading a Carbo Cookie to the bucket girl in Moleville will reveal a warp to the final boss fight."
     _id = "bwarp"
 
 
+# ✅
 class FastTravel(BooleanFlag):
     _name = "Fast travel"
     _description = """If enabled, the following features will be enabled:
@@ -1262,6 +1264,7 @@ class FastTravel(BooleanFlag):
     _id = "fasttravel"
 
 
+# ✅
 class WinConditions(CategorizationOption):
     """Enumeration for win condition options"""
 

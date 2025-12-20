@@ -108,7 +108,10 @@ script = EventScript([
 	StopEmbeddedActionScript(LAYER_1),
 	ResetCoords(NPC_7),
 	SetAsyncActionScript(NPC_7, A0160_SEQUENCE_LOOPING_ON),
-	CopyVarToVar(from_var=BOOSTER_HILL_70B1, to_var=PRIMARY_TEMP_7000),
+    
+	RunEventAsSubroutine(E1329_HILL_UNLOCKS),
+
+	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3502_run_dialog_61"]),
 	RunDialog(dialog_id=DI1189_FLOWER_SCORE_ON_HILL, above_object=TOADSTOOL, closable=True, sync=True, multiline=False, use_background=False),
 	Jmp(["EVENT_3502_action_queue_62"]),
@@ -182,7 +185,7 @@ script = EventScript([
 	]),
 	UnfreezeCamera(),
 	SetBit(MAP_BOOSTER_HILL),
-	CopyVarToVar(from_var=BOOSTER_HILL_70B1, to_var=PRIMARY_TEMP_7000),
+	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3502_run_dialog_61_2"]),
 	RunDialog(dialog_id=DI1189_FLOWER_SCORE_ON_HILL, above_object=TOADSTOOL, closable=True, sync=True, multiline=False, use_background=False),
 	Jmp(["EVENT_3502_hill_ends"]),

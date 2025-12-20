@@ -43,6 +43,7 @@ script = EventScript([
 	JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["EVENT_3820_ret_10"], identifier="EVENT_3820_sp_doublecheck"),
 	SetBit(TOWER_BOSS_1_STAR_PIECE),
     Inc(POSTGAME_PROGRESS_COUNTER),
+	RunEventAsSubroutine(E1201_TOWER_CURTAIN_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_3820_ret_10")
 ])

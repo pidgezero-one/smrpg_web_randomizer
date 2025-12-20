@@ -84,5 +84,6 @@ script = EventScript([
 	RemoveOneOfItemFromInventory(TempleKeyItem),
 	ApplySolidityModToLevel(permanent=True, room_id=R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, mod_id=0),
 	SetBit(TEMPLE_KEY_USED),
+    ClearBit(TEMPLE_BOSS_GATED),
 	Return()
 ])

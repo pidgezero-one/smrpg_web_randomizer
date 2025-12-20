@@ -1,4 +1,4 @@
-# E1256_EMPTY
+# E1256_UNLOCK_MOLEVILLE_IF_GATED_BY_BOSHI
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	Return()
 ])

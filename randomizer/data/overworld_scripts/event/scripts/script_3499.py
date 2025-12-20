@@ -39,7 +39,7 @@ script = EventScript([
 	SetVarToConst(SECONDARY_TEMP_7024, 0),
 	SetVarToConst(TEMP_7034, 16),
 	SetVarToConst(TEMP_7026, 1),
-	SetVarToConst(BOOSTER_HILL_70B1, 0),
+	SetVarToConst(BOOSTER_HILL_FLOWER_COUNTER, 0),
 	FreezeCamera(),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_TransferToXYZF(x=11, y=67, z=0, direction=EAST)

@@ -41,6 +41,7 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	SetBit(POSTGAME_SHIP_COMPLETED),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E1209_POSTGAME_SHIP_END_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 526),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
 ])

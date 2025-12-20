@@ -110,6 +110,7 @@ script = EventScript([
 	JmpIfBitSet(RUN_AWAY, ["EVENT_2068_pause_34"]),
 	JmpIfBitSet(GAME_OVER, ["EVENT_2068_pause_34"]),
 	SetVarToConst(PRIMARY_TEMP_7000, 515),
+	RunEventAsSubroutine(E1214_DOJO_2_BOSS_UNLOCKS),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Pause(30, identifier="EVENT_2068_pause_34"),
 	Return()
