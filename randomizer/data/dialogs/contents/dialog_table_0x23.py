@@ -713,8 +713,12 @@ dialog_data[411] = '''[await]'''
 dialog_data[412] = '''[await]'''
 dialog_data[413] = '''[await]'''
 dialog_data[414] = '''[await]'''
-dialog_data[415] = '''[await]'''
-dialog_data[416] = '''[await]'''
+dialog_data[415] = '''GARRO: I'd love to take you into
+ the castle, but I'm all out of paint.[await]
+ If you find any, could you bring it
+ to me?[await]'''
+dialog_data[416] = ''' Take this in the meantime, maybe
+ it'll help.[await]'''
 dialog_data[417] = ''' There's a heck of a lot going on in
  the castle.[await][pause] But Garro can show you
  secrets about it that you can't

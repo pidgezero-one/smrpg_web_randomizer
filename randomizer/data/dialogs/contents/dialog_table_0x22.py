@@ -1056,7 +1056,10 @@ dialog_data[615] = '''PA'MOLE: If you need anything,
  back and see us again, you hear?[await]'''
 dialog_data[616] = '''DYNA: That trolley ride was fun!
  Can we go again?[await]'''
-dialog_data[617] = '''[await]'''
+dialog_data[617] = ''' What's that? You want to go in the
+ castle?[await][pause] Ehhh...[delay] I'd have to move
+ out of the way, and I don't feel
+ like it.[await]'''
 dialog_data[618] = '''[await]'''
 dialog_data[619] = '''[await]'''
 dialog_data[620] = ''' You hear 'bout my husband?

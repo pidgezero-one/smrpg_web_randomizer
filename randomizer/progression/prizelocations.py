@@ -5335,6 +5335,20 @@ class BeanValleyPlanterBossFight(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_valley_boss(world, inventory)
 
+    def post_unlocks(self, world: GameWorld) -> EventScript:
+        content: list[UsableEventScriptCommand] = []
+        if world.settings.is_flag_value(NimbusGate, NimbusGating.VALLEY):
+            content.extend(
+                [
+                    SetBit(NIMBUS_MAINLAND_UNLOCKED),
+                    RemoveObjectFromSpecificLevel(
+                        NPC_2, R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE
+                    ),
+                ]
+            )
+        parent = super().post_unlocks(world)
+        return EventScript(content + parent.contents + [Return()])
+
     # Flag as checked: BEAN_VALLEY_BOSS_DEFEATED
 
 
@@ -5586,6 +5600,18 @@ class NimbusInnDreamPrize2Location(NPCLocationRow2):
         return can_access_outer_nimbus(world, inventory)
 
     # flag as checked: NIMBUS_INN_PRIZE_GRANTED
+
+
+# Only enabled with one specific setting
+class GarroFreeItem(NPCLocationRow2):
+    _originally_held = GoldPaintPrize
+    _rooms = [R341_NIMBUS_LAND_GARROS_HOUSE]
+    _id = ShuffleLocationSelector.NIMBUS_LAND_GARRO
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_outer_nimbus(world, inventory)
+
+    # flag as checked: GARRO_ITEM_GRANTED
 
 
 class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):

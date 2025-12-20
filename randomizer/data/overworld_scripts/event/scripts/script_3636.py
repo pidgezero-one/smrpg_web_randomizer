@@ -1,4 +1,4 @@
-# E3636_EMPTY
+# E3636_NIMBUS_BIRD_GUARD
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	RunDialog(dialog_id=DI1120_NIMBUS_BIRD_GUARD, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True),
+	Return()
 ])

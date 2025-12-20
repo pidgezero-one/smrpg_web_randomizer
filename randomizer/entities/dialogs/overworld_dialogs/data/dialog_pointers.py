@@ -1127,7 +1127,7 @@ from randomizer.types.dialogs.ids import (
     DI1117_MA_MOLE,
     DI1118_PA_MOLE,
     DI1119_DYNA,
-    DI1120_EMPTY,
+    DI1120_NIMBUS_BIRD_GUARD,
     DI1121_EMPTY,
     DI1122_EMPTY,
     DI1123_MINECART_HINT,
@@ -2472,8 +2472,8 @@ from randomizer.types.dialogs.ids import (
     DI2462_EMPTY,
     DI2463_EMPTY,
     DI2464_EMPTY,
-    DI2465_EMPTY,
-    DI2466_EMPTY,
+    DI2465_GARRO_GATE_1,
+    DI2466_GARRO_GATE_2,
     DI2467_GARRO_HINT,
     DI2468_BRIGHT_CARD_BUYER,
     DI2469_BRIGHT_CARD_BUYER,
@@ -5339,7 +5339,7 @@ pointers[DI1116_WON_AFTER_WAGER] = Dialog(bank=DIALOG_BANK_22, index=612, pos=0)
 pointers[DI1117_MA_MOLE] = Dialog(bank=DIALOG_BANK_22, index=613, pos=0)
 pointers[DI1118_PA_MOLE] = Dialog(bank=DIALOG_BANK_22, index=614, pos=0)
 pointers[DI1119_DYNA] = Dialog(bank=DIALOG_BANK_22, index=615, pos=0)
-pointers[DI1120_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=616, pos=0)
+pointers[DI1120_NIMBUS_BIRD_GUARD] = Dialog(bank=DIALOG_BANK_22, index=616, pos=0)
 pointers[DI1121_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=617, pos=0)
 pointers[DI1122_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=618, pos=0)
 pointers[DI1123_MINECART_HINT] = Dialog(bank=DIALOG_BANK_22, index=619, pos=0)
@@ -6850,8 +6850,8 @@ pointers[DI2461_EMPTY] = Dialog(bank=DIALOG_BANK_23, index=410, pos=0)
 pointers[DI2462_EMPTY] = Dialog(bank=DIALOG_BANK_23, index=411, pos=0)
 pointers[DI2463_EMPTY] = Dialog(bank=DIALOG_BANK_23, index=412, pos=0)
 pointers[DI2464_EMPTY] = Dialog(bank=DIALOG_BANK_23, index=413, pos=0)
-pointers[DI2465_EMPTY] = Dialog(bank=DIALOG_BANK_23, index=414, pos=0)
-pointers[DI2466_EMPTY] = Dialog(bank=DIALOG_BANK_23, index=415, pos=0)
+pointers[DI2465_GARRO_GATE_1] = Dialog(bank=DIALOG_BANK_23, index=414, pos=0)
+pointers[DI2466_GARRO_GATE_2] = Dialog(bank=DIALOG_BANK_23, index=415, pos=0)
 pointers[DI2467_GARRO_HINT] = Dialog(bank=DIALOG_BANK_23, index=416, pos=0)
 pointers[DI2468_BRIGHT_CARD_BUYER] = Dialog(bank=DIALOG_BANK_23, index=417, pos=0)
 pointers[DI2469_BRIGHT_CARD_BUYER] = Dialog(bank=DIALOG_BANK_23, index=418, pos=0)

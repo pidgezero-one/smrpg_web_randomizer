@@ -827,6 +827,7 @@ class SuperJump2Threshold(RangeFlag):
 # ******** Progression Gating
 
 
+# ✅
 class BanditsWayGating(CategorizationOption):
     """Enumeration for Bandit's Way gating flag option"""
 
@@ -836,6 +837,7 @@ class BanditsWayGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class BanditsWayGate(SelectOneFlag[BanditsWayGating]):
     _name = """Bandit's Way access"""
     _description = """<b>Recruit Mallow</b>: Bandit's Way will become available on the world map when Mallow joins the party.
@@ -851,6 +853,7 @@ class BanditsWayGate(SelectOneFlag[BanditsWayGating]):
     _id = "bw"
 
 
+# ✅
 class KeroSewersGating(CategorizationOption):
     """Enumeration for Bandit's Way gating flag option"""
 
@@ -861,6 +864,7 @@ class KeroSewersGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class KeroSewersGate(SelectOneFlag[KeroSewersGating]):
     _name = """Kero Sewers access"""
     _description = """<b>Recruit Mallow</b>: The entrance to Kero Sewers will open when Mallow joins the party.
@@ -880,6 +884,7 @@ class KeroSewersGate(SelectOneFlag[KeroSewersGating]):
     # SEWERS_CLOSED - set when game starts, cleared by condition. or just not set if always open
 
 
+# ✅
 class ForestMazeGating(CategorizationOption):
     """Enumeration for Forest Maze gating flag option"""
 
@@ -887,6 +892,7 @@ class ForestMazeGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class ForestMazeGate(SelectOneFlag[ForestMazeGating]):
     _name = """Forest Maze access"""
     _description = """<b>Exchange Cricket Pie</b>: Forest Maze will become available on the world map when you turn in the Cricket Pie to Frogfucius.
@@ -897,6 +903,7 @@ class ForestMazeGate(SelectOneFlag[ForestMazeGating]):
     _id = "fm"
 
 
+# ✅
 class PipeVaultGating(CategorizationOption):
     """Enumeration for Pipe Vault gating flag option"""
 
@@ -906,6 +913,7 @@ class PipeVaultGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class PipeVaultGate(SelectOneFlag[PipeVaultGating]):
     _name = """Pipe Vault access"""
     _description = """<b>Recruit Geno</b>: Pipe Vault will be unblocked when Geno joins the party.
@@ -920,6 +928,7 @@ class PipeVaultGate(SelectOneFlag[PipeVaultGating]):
     _id = "pv"
 
 
+# ✅
 class Moleville1Gating(CategorizationOption):
     """Enumeration for Pipe Vault gating flag option"""
 
@@ -930,6 +939,7 @@ class Moleville1Gating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class Moleville1Gate(SelectOneFlag[Moleville1Gating]):
     _name = """Moleville Mines entrance access"""
     _description = """<b>Recruit Geno</b>: The top door inside the Moleville Mines entrance will be accessible when Geno joins the party.
@@ -946,6 +956,7 @@ class Moleville1Gate(SelectOneFlag[Moleville1Gating]):
     _id = "me"
 
 
+# ✅
 class BoosterTowerGating(CategorizationOption):
     """Enumeration for Booster Tower gating flag option"""
 
@@ -959,6 +970,7 @@ class BoosterTowerGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class BoosterTowerGate(SelectOneFlag[BoosterTowerGating]):
     _name = """Booster Tower access"""
     _description = """<b>Recruit character</b>: Booster Tower's door can be unlocked when you recruit the selected character.
@@ -973,6 +985,7 @@ class BoosterTowerGate(SelectOneFlag[BoosterTowerGating]):
     _id = "bt"
 
 
+# ✅
 class BoosterHillGating(CategorizationOption):
     """Enumeration for Booster Hill gating flag option"""
 
@@ -981,6 +994,7 @@ class BoosterHillGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class BoosterHillGate(SelectOneFlag[BoosterHillGating]):
     _name = """Booster Hill access"""
     _description = """<b>Finish Booster Tower</b>: The Booster Hill chase sequence will be available when you defeat the balcony boss of Booster Tower.
@@ -993,6 +1007,7 @@ class BoosterHillGate(SelectOneFlag[BoosterHillGating]):
     _id = "bh"
 
 
+# ✅
 class MarrymoreGating(CategorizationOption):
     """Enumeration for Marrymore gating flag option"""
 
@@ -1002,6 +1017,7 @@ class MarrymoreGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class MarrymoreGate(SelectOneFlag[MarrymoreGating]):
     _name = """Marrymore back door access"""
     _description = """<b>Finish Booster Hill</b>: The chapel back door will open when you complete Booster Hill one time.
@@ -1017,6 +1033,7 @@ class MarrymoreGate(SelectOneFlag[MarrymoreGating]):
     _id = "mm"
 
 
+# ✅
 class YaridovichGating(CategorizationOption):
     """Enumeration for Seaside boss gating flag option"""
 
@@ -1025,6 +1042,7 @@ class YaridovichGating(CategorizationOption):
     OPEN = "Always available"
 
 
+# ✅
 class YaridovichGate(SelectOneFlag[YaridovichGating]):
     _name = """Seaside boss fight access"""
     _description = """<b>Finish Sunken Ship</b>: The Seaside boss fight will become available after you defeat the final boss of Sunken Ship.
@@ -1037,6 +1055,7 @@ class YaridovichGate(SelectOneFlag[YaridovichGating]):
     _id = "seaside"
 
 
+# ✅
 class SeaGating(CategorizationOption):
     """Enumeration for Sea & Sunken Ship gating flag option"""
 
@@ -1047,6 +1066,7 @@ class SeaGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class SeaGate(SelectOneFlag[SeaGating]):
     _name = """Sea & Sunken Ship access"""
     _description = """<b>Recruit Toadstool</b>: The Sea will become available on the world map when Toadstool joins the party.
@@ -1061,6 +1081,7 @@ class SeaGate(SelectOneFlag[SeaGating]):
     _id = "sea"
 
 
+# ✅
 class LandsEndGating(CategorizationOption):
     """Enumeration for Land's End gating flag option"""
 
@@ -1071,6 +1092,7 @@ class LandsEndGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class LandsEndGate(SelectOneFlag[LandsEndGating]):
     _name = """Land's End access"""
     _description = """<b>Collect 5 Star Pieces</b>: The cannon in Land's End will become usable when you collect 5 Star Pieces.
@@ -1083,6 +1105,7 @@ class LandsEndGate(SelectOneFlag[LandsEndGating]):
     _id = "land"
 
 
+# ✅
 class BelomeTempleGating(CategorizationOption):
     """Enumeration for Belome Temple gating flag option"""
 
@@ -1090,6 +1113,7 @@ class BelomeTempleGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 # no KI shuffle + closed monstro + use key = invalid, causes a softlock
 class BelomeTempleGate(SelectOneFlag[BelomeTempleGating]):
     _name = """Belome Temple boss access"""
@@ -1101,6 +1125,7 @@ class BelomeTempleGate(SelectOneFlag[BelomeTempleGating]):
     _id = "tmpl"
 
 
+# ✅
 class MonstroTownGating(CategorizationOption):
     """Enumeration for Monstro Town gating flag option"""
 
@@ -1109,6 +1134,7 @@ class MonstroTownGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class MonstroTownGate(SelectOneFlag[MonstroTownGating]):
     _name = """Monstro Town access"""
     _description = """<b>Finish Land's End</b>: Monstro Town will become available on the World Map once you take the pipe behind the boss of Belome Temple.
@@ -1121,6 +1147,7 @@ class MonstroTownGate(SelectOneFlag[MonstroTownGating]):
     _id = "mt"
 
 
+# ✅
 class SkipMustyFearsSequence(BooleanFlag):
     _name = "Skip 3 Musty Fears sequence"
     _description = """This flag affects the Musty Fears checks (normally Mario's Pad bed, Rose Town sign, and Yo'ster Isle goalpost; or whichever three locations are added to the seed when "Move invisible flag checks" is set).
@@ -1131,6 +1158,7 @@ class SkipMustyFearsSequence(BooleanFlag):
     _id = "skip_musty"
 
 
+# ✅
 class NimbusGating(CategorizationOption):
     """Enumeration for Nimbus Land gating flag option"""
 
@@ -1140,6 +1168,7 @@ class NimbusGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class NimbusGate(SelectOneFlag[NimbusGating]):
     _name = """Nimbus Land access"""
     _description = """<b>Finish Bean Valley</b>: The trampoline to Nimbus Land will be enabled once you defeat the boss of Bean Valley.
@@ -1154,6 +1183,7 @@ class NimbusGate(SelectOneFlag[NimbusGating]):
     _id = "nl"
 
 
+# ✅
 class BarrelVolcanoGating(CategorizationOption):
     """Enumeration for Barrel Volcano gating flag option"""
 
@@ -1162,6 +1192,7 @@ class BarrelVolcanoGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class BarrelVolcanoGate(SelectOneFlag[BarrelVolcanoGating]):
     _name = """Barrel Volcano access"""
     _description = """<b>Finish Nimbus Land</b>: Barrel Volcano will become available on the World Map once you defeat the final boss of Nimbus Castle.
@@ -1174,6 +1205,7 @@ class BarrelVolcanoGate(SelectOneFlag[BarrelVolcanoGating]):
     _id = "bv"
 
 
+# ✅
 class BowsersKeepGating(CategorizationOption):
     """Enumeration for Bowser's Keep gating flag option"""
 
@@ -1183,6 +1215,7 @@ class BowsersKeepGating(CategorizationOption):
     OPEN = "Always open"
 
 
+# ✅
 class BowsersKeepGate(SelectOneFlag[BowsersKeepGating]):
     _name = """Bowser's Keep access"""
     _description = """<b>Collect 6 Star Pieces</b>: Bowser's Keep will become available on the world map when you collect 6 Star Pieces.
@@ -1197,6 +1230,7 @@ class BowsersKeepGate(SelectOneFlag[BowsersKeepGating]):
     _id = "bk"
 
 
+# ✅
 class FactoryGating(CategorizationOption):
     """Enumeration for Factory gating flag option"""
 
@@ -1206,6 +1240,7 @@ class FactoryGating(CategorizationOption):
     EXOR = "Defeat Exor"
 
 
+# ✅
 class FactoryGate(SelectOneFlag[FactoryGating]):
     _name = """Factory access"""
     _description = """<b>Open when Bowser's Keep is opened</b>: When Bowser's Keep becomes available on the world map, Factory will also be immediately available on the world map.
@@ -1273,7 +1308,7 @@ class WinConditions(CategorizationOption):
     STARS = "Collect required Star Pieces"
     SEALED = "Beat Monstro Town sealed door"
 
-
+# ✅
 class WinCondition(SelectOneFlag[WinConditions]):
     _name = "Condition required to beat the game"
     _description = """<b>Beat the Factory</b>: When you collect the number of Star Pieces specified in your 'Star Pieces required to access the final Factory boss' setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.

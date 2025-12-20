@@ -31,9 +31,10 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+    JmpIfBitClear(STATUE_GAME_DONE, ["740_ret"]),
 	FadeOutMusicToVolume(duration=2, volume=0),
 	Pause(4),
 	EnterArea(room_id=R109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, face_direction=NORTHEAST, x=1, y=35, z=0, run_entrance_event=True),
 	PlayMusicAtDefaultVolume(M0061_VALENTINA),
-	Return()
+	Return(identifier="740_ret")
 ])

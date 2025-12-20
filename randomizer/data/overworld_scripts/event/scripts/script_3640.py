@@ -31,10 +31,30 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3640_run_dialog_308"]),
+    JmpIfBitClear(PAINT_GATING, ["EVENT_3640_start"]),
+    JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3640_run_dialog_308"], identifier="EVENT_3640_start"),
+    
+    JmpIfBitClear(GARRO_ITEM_GRANTED, ["EVENT_3640_run_dialog_308"], identifier="EVENT_3640_check_gold_paint_22"),
+    StoreItemAmountTo7000(GoldPaintItem),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3640_run_dialog_308"]),
+    RemoveOneOfItemFromInventory(GoldPaintItem),
+    Jmp(["EVENT_3640_start"]),
+
+	RunDialog(dialog_id=DI2465_GARRO_GATE_1, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_3640_run_dialog_308"),
+    JmpIfBitSet(GARRO_ITEM_GRANTED, ["EVENT_3640_end"]),
+    RunDialog(dialog_id=DI2466_GARRO_GATE_2, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True),
+    RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+    SetBit(GARRO_ITEM_GRANTED),
+	Return(),
+    
+
+
+	JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3640_run_dialog_308"], identifier="EVENT_3640_start"),
 	
 	FadeOutToBlack(sync=True, duration=60),
 	PauseScriptUntilEffectDone(),
+    RemoveObjectFromSpecificLevel(NPC_11, R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA),
+    RemoveObjectFromSpecificLevel(NPC_12, R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA),
 	ClearBit(TEMP_704C_0),
 	EnterArea(room_id=R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, face_direction=NORTHEAST, x=6, y=68, z=1),
 	PaletteSet(palette_set=111, row=1, bit_3=True),
@@ -595,5 +615,5 @@ script = EventScript([
 	], identifier="EVENT_3640_action_queue_306"),
 	Return(),
 	RunDialog(dialog_id=DI3787_DODO_MINIGAME_HINT, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_3640_run_dialog_308"),
-	Return()
+	Return(identifier="EVENT_3640_end")
 ])

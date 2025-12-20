@@ -1,3 +1,4 @@
+from randomizer.data.overworld_scripts.event.scripts.script_3645 import NPC_2
 from randomizer.data.variables.dialog_names import *
 from randomizer.types.prizelocation import GameWorld
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
@@ -2478,6 +2479,17 @@ class MegasmilaxBossFight(BossFightPrize):
         FormationMember(MEGASMILAXEnemy, 175, 111, hidden_at_start=True),
     ]
     _force_start_event = BE0058_THRAX_IS_THERE
+
+    def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
+        output: list[UsableEventScriptCommand] = []
+        if world.settings.is_flag_value(NimbusGate, NimbusGating.MEGASMILAX):
+            output.extend(
+                [
+                    SetBit(NIMBUS_MAINLAND_UNLOCKED),
+                    RemoveObjectFromSpecificLevel(NPC_2, R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE),
+                ]
+            )
+        return EventScript(output)
 
 
 class DodoBossFight(BossFightPrize):

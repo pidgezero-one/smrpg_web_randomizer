@@ -32,7 +32,16 @@ from ....packets import *
 
 script = EventScript([
 	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 49),
-	FadeInFromBlack(sync=False),
+    JmpIfBitSet(NIMBUS_MAINLAND_UNLOCKED, ["EVENT_3761_s"]),
+    SummonObjectToCurrentLevel(NPC_2),
+	ActionQueueAsync(target=NPC_2, subscript=[
+		A_WalkNortheastPixels(8),
+		A_ShiftZUpPixels(4),
+		A_FaceSouthwest()
+	]),
+    Jmp(["EVENT_3761_fade_in"]),
+    RemoveObjectFromCurrentLevel(NPC_2, identifier="EVENT_3761_s"),
+	FadeInFromBlack(sync=False, identifier="EVENT_3761_fade_in"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3761_ret_6"]),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3761_ret_6"]),

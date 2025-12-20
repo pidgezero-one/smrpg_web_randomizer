@@ -528,6 +528,7 @@ class ShuffleLocationSelector(CategorizationOption):
     NIMBUS_LAND_SHOP = "Nimbus Land shop chest"
     NIMBUS_LAND_INN = "Nimbus Land dream cushion 1st item"
     NIMBUS_LAND_INN_2 = "Nimbus Land dream cushion 2nd item"
+    NIMBUS_LAND_GARRO = "Nimbus Land Garro check (only if gold paint enabled)"
     NIMBUS_LAND_BEFORE_BIRDETTA_1 = "Nimbus Castle (occupied) 5-door room chest"
     NIMBUS_LAND_BEFORE_BIRDETTA_2 = "Nimbus Castle west two-level room chest"
     NIMBUS_CASTLE_EGG_BOSS_FIGHT = "Nimbus Land giant egg boss fight"

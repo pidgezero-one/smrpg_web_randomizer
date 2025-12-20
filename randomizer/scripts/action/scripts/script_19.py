@@ -1,4 +1,4 @@
-"""A0019_EMPTY"""
+"""A0019_NIMBUS_NOTE"""
 
 from randomizer.scripts.action.script_imports import *
 

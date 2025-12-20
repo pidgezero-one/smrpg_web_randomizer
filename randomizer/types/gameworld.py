@@ -848,6 +848,12 @@ class GameWorld:
                 **self.locations,
                 StartingCharacter5: StartingCharacter5(),
             }
+        
+        if self.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
+            self.locations = {
+                **self.locations,
+                GarroFreeItem: GarroFreeItem(),
+            }
 
         # Optionally include remake content.
         if self.settings.get_flag(Remake).enabled:
@@ -1159,6 +1165,15 @@ class GameWorld:
                 ),
                 SetBit(MAP_DIRECTIONAL_LANDS_END_MONSTRO_TOWN),
                 SetBit(MAP_MONSTRO_TOWN),
+            ]
+        if self.settings.is_flag_value(
+            NimbusGate, NimbusGating.OPEN
+        ) or self.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
+            event_2496_startup += [
+                SetBit(NIMBUS_MAINLAND_UNLOCKED),
+                RemoveObjectFromSpecificLevel(
+                    NPC_2, R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE
+                ),
             ]
         if self.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.OPEN):
             event_2496_startup += [
