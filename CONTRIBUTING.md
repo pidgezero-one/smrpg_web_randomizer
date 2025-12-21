@@ -62,6 +62,7 @@ A good way to think about changing what's canon to the original game is to consi
 * A setting that gives poison mushrooms a 1/8 chance of acting as a Red Essence
 * A setting that turns two underserved locales into final boss warps
 * A setting that makes the trade quest for the Monstro Town sealed door join the shuffle (as opposed to Shiny Stones being infinitely purchaseable in shops)
+
 The important thing is to make sure these things are optional and disabled by default, so that players expecting the original game's experience will get that, but players who want to add some more depth to underused parts of the game have that choice.
 
 If you are adding new options for progression logic, try to keep the conditions as close to the logic of the original game as possible. i.e. you can choose to unlock Bandit's Way by recruiting Mallow, clearing Mushroom Way, or defeating the Hammer Bros (wherever they might be), because these are all things that happen in the original game just before you go to Bandit's Way. Something like "Defeat Culex to unlock Forest Maze" would not make sense.

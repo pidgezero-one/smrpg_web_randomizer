@@ -1301,8 +1301,8 @@ script = AnimationScriptBlock(expected_size=4958, expected_beginning=0x35ECA2, s
 	SetAMEM8BitToOMEMMain(amem=0x6F, omem=0x6F),
 	IncAMEM8Bit(0x6F),
 	SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
-	ReturnObjectQueue()
-    PauseScriptUntil(condition=FRAMES_ELAPSED, frames=6, identifier="chomp_subroutine"),
+	ReturnObjectQueue(),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=6, identifier="chomp_subroutine"),
 	PlaySound(sound=S0123_CHOMP_BITE),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=12),
 	PlaySound(sound=S0123_CHOMP_BITE),

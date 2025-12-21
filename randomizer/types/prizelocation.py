@@ -721,6 +721,7 @@ class WorldAreaEnum(StrEnum):
     FACTORY = "Factory"
     INNER_FACTORY = "Inner Factory"
 
+
 SIGNAL_RING_EVENT_DICT: dict[WorldAreaEnum, int] = {
     WorldAreaEnum.MARIOS_PAD: E3887_MARIOS_PAD_STAR_PIECE_SIGNAL,
     WorldAreaEnum.MUSHROOM_WAY: E3888_MUSHROOM_WAY_STAR_PIECE_SIGNAL,
@@ -904,8 +905,12 @@ class PrizeLocation:
 
 
 class FrogDiscipleLocation(PrizeLocation):
-    pass
-    # TODO: these go directly into the shop
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        if prize is None:
+            return False
+        if not isinstance(prize, ItemPrize):
+            return False
+        return world.get_item(prize.item).price > 0 # type: ignore
 
 
 class TreasureChestLocation(PrizeLocation):

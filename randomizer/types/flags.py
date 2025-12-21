@@ -5,7 +5,7 @@ from ..data.spells.spells import ALL_SPELLS
 from ..types.spell import CharacterSpell
 from ..data.allies.allies import ally_collection
 from ..progression.prizes import ALL_BOSS_FIGHTS, BossFightPrize
-from .base import CategorizationOption
+from .base import CategorizationOption, ClassCategorizationOption
 from copy import deepcopy
 
 
@@ -53,7 +53,8 @@ class Flag:
 
 
 # TypeVars for generic flag classes
-T = TypeVar("T", bound=CategorizationOption)
+from enum import Enum
+T = TypeVar("T", bound=Enum)
 
 
 class CategorizationFlag(Flag, Generic[T]):
@@ -154,9 +155,9 @@ class CategorizationFlagWithOrdinance(Flag, Generic[T]):
     def __init__(self, options: dict[T, int | None] | None = None) -> None:
         self._options = self.default.copy()
         if options is not None:
-            for k, v in options.items():
+            for k in options.keys():
                 assert k in self._options
-            self.options = deepcopy(options)
+            self._options = deepcopy(options)
 
 
 class SelectOneFlag(Flag, Generic[T]):
@@ -272,15 +273,13 @@ class MaxCharacters(RangeFlag):
     _id = "max"
 
 
-class StartingCharacterEnum(CategorizationOption):
+class StartingCharacterEnum(ClassCategorizationOption):
     pass
 
 
-_all_chars_list = [char.name for char in ally_collection._allies]
-for char_name in _all_chars_list:
-    setattr(
-        StartingCharacterEnum, char_name.replace(" ", "_").replace("-", "_"), char_name
-    )
+for ally in ally_collection._allies:
+    attr_name = ally.name.replace(" ", "_").replace("-", "_")
+    setattr(StartingCharacterEnum, attr_name, type(ally))
 
 
 class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum]):
@@ -305,6 +304,7 @@ class PlayAsStarter(BooleanFlag):
 # ******** Equipment
 
 
+# ✅
 class EquipmentCharactersOptions(CategorizationOption):
     """Enumeration for character equipment guidelines"""
 
@@ -315,6 +315,7 @@ class EquipmentCharactersOptions(CategorizationOption):
     EQUIP_ALL = "Anyone can equip anything"
 
 
+# ✅
 class EquipmentCharacters(SelectOneFlag[EquipmentCharactersOptions]):
     _name = "Equipment permissions"
     _description = """<b>Vanilla</b>: The list of characters who are permitted to equip each item remains unchanged from the original game.
@@ -331,12 +332,14 @@ class EquipmentCharacters(SelectOneFlag[EquipmentCharactersOptions]):
     _id = "perms"
 
 
+# ✅
 class EquipmentPropertiesOptions(CategorizationOption):
     VANILLA = "Vanilla"
     SOME = "Some buffs added"
     RANDOM = "Completely random"
 
 
+# ✅
 class EquipmentProperties(SelectOneFlag[EquipmentPropertiesOptions]):
     _name = "Equipment stats & buffs"
     _description = """<b>Vanillat</b>: The stats and buffs on equipment are unchanged from the original game.
@@ -368,6 +371,7 @@ class StarPieceHints(BooleanFlag):
 # ******** Stats & Spells
 
 
+# ✅
 class EXPMultiplierOptions(CategorizationOption):
     """Enumeration for EXP scaling from enemy battles"""
 
@@ -376,6 +380,7 @@ class EXPMultiplierOptions(CategorizationOption):
     TRIPLE = "Triple"
 
 
+# ✅
 class EXPMultiplier(SelectOneFlag[EXPMultiplierOptions]):
     _name = "EXP multiplier"
     _description = (
@@ -386,6 +391,7 @@ class EXPMultiplier(SelectOneFlag[EXPMultiplierOptions]):
     _id = "exp"
 
 
+# ✅
 class CharacterStats(BooleanFlag):
     _name = "Randomize character stats"
     _description = """If enabled, stats and stat curves for each playable character will be randomized. This also randomizes the number of FP you start with.
@@ -400,6 +406,7 @@ class CharacterLearnedSpells(BooleanFlag):
     _id = "spells"
 
 
+# ✅
 class CharacterSpellStats(BooleanFlag):
     _name = "Randomize character spell stats"
     _description = "The power and FP cost of character magic spells will be randomized."
@@ -427,20 +434,17 @@ class UncapSuperJumps(BooleanFlag):
     _id = "uncap"
 
 
-class LearnableSpellEnum(CategorizationOption):
+class LearnableSpellEnum(ClassCategorizationOption):
     """Enumeration for all learnable spells"""
 
     pass
 
 
-# Populate the LearnableSpellEnum with spell names
-_all_spells_list = [
-    spell.title for spell in ALL_SPELLS.spells if isinstance(spell, CharacterSpell)
-]
-for spell_name in _all_spells_list:
-    setattr(
-        LearnableSpellEnum, spell_name.replace(" ", "_").replace("-", "_"), spell_name
-    )
+# Populate the LearnableSpellEnum with spell classes
+for spell in ALL_SPELLS.spells:
+    if isinstance(spell, CharacterSpell):
+        attr_name = spell.title.replace(" ", "_").replace("-", "_")
+        setattr(LearnableSpellEnum, attr_name, type(spell))
 
 
 class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
@@ -681,40 +685,47 @@ from ..types.prizelocation import (
     PrizeLocation,
     BossFightLocation,
     StarPieceLocation,
-    ShuffleLocationSelector,
 )
 
-_all_item_checks_list = [
-    cls._id
-    for cls in vars(prizelocations).values()
-    if isinstance(cls, type)
-    and issubclass(cls, PrizeLocation)
-    and cls is not PrizeLocation
-    and not issubclass(cls, BossFightLocation)
-    and not issubclass(cls, StarPieceLocation)
-    and hasattr(cls, "_id")
-]
 
-_all_boss_fight_checks_list = [
-    cls._id
-    for cls in vars(prizelocations).values()
-    if isinstance(cls, type)
-    and issubclass(cls, BossFightLocation)
-    and cls is not BossFightLocation
-    and hasattr(cls, "_id")
-]
-
-_all_star_piece_checks_list = [
-    cls._id
-    for cls in vars(prizelocations).values()
-    if isinstance(cls, type)
-    and issubclass(cls, StarPieceLocation)
-    and cls is not StarPieceLocation
-    and hasattr(cls, "_id")
-]
+def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
+    """Convert a PrizeLocation class to an attribute name for the enum."""
+    # Use the class name, converting CamelCase to Snake_Case
+    import re
+    name = cls.__name__
+    name = re.sub(r"([a-z])([A-Z])", r"\1_\2", name)
+    name = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", name)
+    return name
 
 
-class EnabledRegularChecks(CategorizationFlag[ShuffleLocationSelector]):
+class ItemCheckEnum(ClassCategorizationOption):
+    """Enumeration for regular item check locations."""
+    pass
+
+
+class BossFightCheckEnum(ClassCategorizationOption):
+    """Enumeration for boss fight check locations."""
+    pass
+
+
+class StarPieceCheckEnum(ClassCategorizationOption):
+    """Enumeration for star piece check locations."""
+    pass
+
+
+# Populate the enums with location class types
+for cls in vars(prizelocations).values():
+    if isinstance(cls, type) and issubclass(cls, PrizeLocation) and hasattr(cls, "_id"):
+        attr_name = _location_class_to_attr_name(cls)
+        if issubclass(cls, StarPieceLocation) and cls is not StarPieceLocation:
+            setattr(StarPieceCheckEnum, attr_name, cls)
+        elif issubclass(cls, BossFightLocation) and cls is not BossFightLocation:
+            setattr(BossFightCheckEnum, attr_name, cls)
+        elif cls is not PrizeLocation and not issubclass(cls, (BossFightLocation, StarPieceLocation)):
+            setattr(ItemCheckEnum, attr_name, cls)
+
+
+class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
     _name = "General item pool checks"
     _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
 <br>
@@ -724,10 +735,10 @@ class EnabledRegularChecks(CategorizationFlag[ShuffleLocationSelector]):
 <br>
 <br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
     _id = "chests"
-    _default = {o: True for o in _all_item_checks_list}
+    _default = {o: True for o in ItemCheckEnum.__members__.values()}
 
 
-class EnabledBossChecks(CategorizationFlag[ShuffleLocationSelector]):
+class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
     _name = "Boss fight checks"
     _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
 <br>
@@ -735,10 +746,10 @@ class EnabledBossChecks(CategorizationFlag[ShuffleLocationSelector]):
 <br>
 <br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
     _id = "bosses"
-    _default = {o: True for o in _all_boss_fight_checks_list}
+    _default = {o: True for o in BossFightCheckEnum.__members__.values()}
 
 
-class EnabledStarPieceChecks(CategorizationFlag[ShuffleLocationSelector]):
+class EnabledStarPieceChecks(CategorizationFlag[StarPieceCheckEnum]):
     _name = "Star Piece checks"
     _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
 <br>
@@ -746,7 +757,7 @@ class EnabledStarPieceChecks(CategorizationFlag[ShuffleLocationSelector]):
 <br>
 <br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
     _id = "stars"
-    _default = {o: True for o in _all_star_piece_checks_list}
+    _default = {o: True for o in StarPieceCheckEnum.__members__.values()}
 
 
 class ReplaceItems(BooleanFlag):
@@ -1458,12 +1469,16 @@ class BetterTips(BooleanFlag):
 
 
 # if this is disabled, no options in this category can be changed
+
+# TODO All frog disciple items should NOT be randomized if ShuffleShops is off.
+# ✅
 class ShuffleShops(BooleanFlag):
     _name = "Randomize the contents of shops"
     _description = """If enabled, the contents of all regular shops and Frog Coin shops (including the Moleville treasure shop, Marrymore Suite room service menu, and Moleville swap shop) will be randomized."""
     _id = "random"
 
 
+# ✅
 class ShopQualities(CategorizationOption):
     """Enumeration for shop shuffle quality option"""
 
@@ -1473,6 +1488,7 @@ class ShopQualities(CategorizationOption):
     EMPTY = "Completely empty"
 
 
+# ✅
 class ShopQuality(SelectOneFlag[ShopQualities]):
     _name = """Shop contents quality"""
     _description = """Restricts the incidence of certain items in shops. 
@@ -1486,6 +1502,7 @@ class ShopQuality(SelectOneFlag[ShopQualities]):
     _requires_all = [(ShuffleShops(), True)]
 
 
+# ✅
 class BiasShopShuffle(BooleanFlag):
     _name = "Bias better items to gated shops"
     _description = (
@@ -1498,12 +1515,14 @@ class BiasShopShuffle(BooleanFlag):
     ]
 
 
+# ✅
 class NoPickMeUps(BooleanFlag):
     _name = "Exclude Pick Me Ups"
     _description = """If enabled, Pick Me Ups will not be sold in any shops."""
     _id = "nolife"
 
 
+# ✅
 class ShowEquips(BooleanFlag):
     _name = "Always show all permitted characters on equips"
     _description = "Always show who can equip what in stores."
@@ -1511,6 +1530,7 @@ class ShowEquips(BooleanFlag):
     _default = True
 
 
+# ✅
 class FreeShops(BooleanFlag):
     _name = "'Free' Shops"
     _description = """If enabled, all shop items will cost 1 coin. You will start with 9999 coins and 999 frog coins."""
@@ -1578,20 +1598,20 @@ class IncludeHenchmen(BooleanFlag):
     _default = True
 
 
-class ShuffledBossEnum(CategorizationOption):
+class ShuffledBossEnum(ClassCategorizationOption):
     """Enumeration for all boss fights that can be shuffled"""
 
     pass
 
 
-# Populate ShuffledBossEnum with boss fight names from the class names
-def _boss_class_to_name(boss_class: type[BossFightPrize]) -> str:
-    """Convert boss class name to a display name.
+# Populate ShuffledBossEnum with boss fight class types
+def _boss_class_to_attr_name(boss_class: type[BossFightPrize]) -> str:
+    """Convert boss class name to an attribute name.
 
     Examples:
-        Croco1BossFight -> Croco 1
-        KnifeGuyGrateGuyBossFight -> Knife Guy Grate Guy
-        Culex3DBossFight -> Culex 3D
+        Croco1BossFight -> Croco_1
+        KnifeGuyGrateGuyBossFight -> Knife_Guy_Grate_Guy
+        Culex3DBossFight -> Culex_3D
     """
     import re
 
@@ -1602,15 +1622,14 @@ def _boss_class_to_name(boss_class: type[BossFightPrize]) -> str:
     name = re.sub(r"([a-z])([A-Z])", r"\1 \2", name)
     name = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", name)
     name = re.sub(r"(\d+)", r" \1", name)
-    # Clean up multiple spaces
+    # Clean up multiple spaces and convert to underscores
     name = re.sub(r"\s+", " ", name).strip()
-    return name
+    return name.replace(" ", "_").replace("-", "_")
 
 
 for boss_class in ALL_BOSS_FIGHTS:
-    boss_name = _boss_class_to_name(boss_class)
-    attr_name = boss_name.replace(" ", "_").replace("-", "_")
-    setattr(ShuffledBossEnum, attr_name, boss_name)
+    attr_name = _boss_class_to_attr_name(boss_class)
+    setattr(ShuffledBossEnum, attr_name, boss_class)
 
 
 class ShuffledBosses(CategorizationFlag[ShuffledBossEnum]):
@@ -1626,6 +1645,7 @@ class ShuffledBosses(CategorizationFlag[ShuffledBossEnum]):
     _default = {o: True for o in ShuffledBossEnum.__members__.values()}
 
 
+# ✅
 class EnemyStatsShuffleOptions(CategorizationOption):
     """Enumeration for enemy stat randomization option"""
 
@@ -1634,6 +1654,7 @@ class EnemyStatsShuffleOptions(CategorizationOption):
     FULL_RANDOM = "Everything"
 
 
+# ✅
 class EnemyStats(SelectOneFlag[EnemyStatsShuffleOptions]):
     _name = "Randomize enemy stats"
     _description = """Choose what should be randomized about enemy stats (includes normal mobs and bosses).
@@ -1648,12 +1669,14 @@ class EnemyStats(SelectOneFlag[EnemyStatsShuffleOptions]):
     _default = EnemyStatsShuffleOptions.DISABLED
 
 
+# ✅
 class EnemyDrops(BooleanFlag):
     _name = "Randomize enemy drops"
     _description = "If enabled, the EXP and in-battle items received from battles will be randomized."
     _id = "drops"
 
 
+# ✅
 class EnemyFormations(BooleanFlag):
     _name = "Randomize formations"
     _description = """If enabled, enemy encounters may contain random unexpected additional enemies and be laid out erratically. Boss formations are not affected.
@@ -1662,6 +1685,7 @@ class EnemyFormations(BooleanFlag):
     _id = "formations"
 
 
+# ✅
 class EnemyAttacks(BooleanFlag):
     _name = "Randomize attack stats and effects"
     _description = "If enabled, enemy spells and attacks will have their power randomized. Attacks which cast statuses will have the status effects randomized, and attacks which normally don't inflict statuses may inflict unexpected statuses."
@@ -1779,12 +1803,14 @@ class JapaneseABXY(BooleanFlag):
     _id = "abxy"
 
 
+# ✅
 class BossShuffleMusic(BooleanFlag):
     _name = "Randomize boss music"
     _description = "Battle music will be randomized for each boss fight."
     _id = "music"
 
 
+# ✅
 from smrpgpatchbuilder.datatypes.battles.music import (
     NormalBattleMusic,
     MidbossMusic,
@@ -1794,11 +1820,11 @@ from smrpgpatchbuilder.datatypes.battles.music import (
     BoosterHillMusic,
     VolcanoMusic,
     CulexMusic,
-    Music,
 )
 
 
-class ShuffledMusicEnum(CategorizationOption):
+# ✅
+class ShuffledMusicEnum(ClassCategorizationOption):
     """Enumeration for all battle music tracks that can be shuffled."""
 
     NORMAL_BATTLE = NormalBattleMusic
@@ -1811,11 +1837,14 @@ class ShuffledMusicEnum(CategorizationOption):
     CULEX = CulexMusic
 
 
+# ✅
 class ShuffledMusic(CategorizationFlag[ShuffledMusicEnum]):
     _name = "Allowable shuffled music"
     _description = """If a song is highlighted (white text over blue), it can appear in any boss fight.
 <br>
-<br>If a song is not highlighted, it will never appear in a boss fight."""
+<br>If a song is not highlighted, it will never appear in a boss fight.
+<br>
+<br>This setting does nothing if "Randomize boss music" is turned off."""
     _id = "avail"
     _default = {o: True for o in ShuffledMusicEnum.__members__.values()}
 
