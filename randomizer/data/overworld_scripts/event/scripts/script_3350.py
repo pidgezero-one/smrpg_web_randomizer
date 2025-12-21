@@ -72,7 +72,7 @@ script = EventScript([
 	DisableObjectTriggerInSpecificLevel(NPC_0, R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM),
 	DisableObjectTriggerInSpecificLevel(NPC_0, R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS),
 	Inc(KEEP_DOORS_EXIT_TYPE_1, identifier="EVENT_3350_inc_40"),
-	JmpIfVarEqualsConst(KEEP_DOORS_EXIT_TYPE_1, 4, ["EVENT_3350_enter_area_44"]),
+	JmpIfVarEqualsConst(KEEP_DOORS_EXIT_TYPE_1, 4, ["EVENT_3350_enter_area_44"],  identifier="check_doors_complete"),
 	EnterArea(room_id=R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM, face_direction=NORTHEAST, x=4, y=79, z=0, run_entrance_event=True),
 	Return(),
 	EnterArea(room_id=R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS, face_direction=NORTHEAST, x=16, y=79, z=0, run_entrance_event=True, identifier="EVENT_3350_enter_area_44"),

@@ -93,8 +93,6 @@ bank = AnimationScriptBank(
 		script_0x357FA0,
 		script_0x357FF8,
 		script_0x3580B4,
-		script_0x3581B7,
-		script_0x3582BB,
 		script_0x358916,
 		script_0x3589D5,
 		script_0x358AC6,

@@ -1074,7 +1074,7 @@ class CRUSTYEnemy(Enemy):
 class KAMEKEnemy(Enemy):
     """KAMEK enemy class"""
     _monster_id: int = 33
-    _name: str = "KAMEK"
+    _name: str = "MAGIKOOPA"
 
     _hp: int = 1600
     _fp: int = 250
@@ -6592,7 +6592,7 @@ class MEGASMILAXEnemy(Enemy):
 class BIRDETTAEnemy(Enemy):
     """BIRDETTA enemy class"""
     _monster_id: int = 205
-    _name: str = "BIRDETTA"
+    _name: str = "BIRDO"
 
     _hp: int = 777
     _fp: int = 100

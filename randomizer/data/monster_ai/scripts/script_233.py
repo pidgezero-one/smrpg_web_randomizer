@@ -18,7 +18,7 @@ script = MonsterScript([
 	IfTargetAlive(MONSTER_4_SET),
 	SetVarBits(BV7EE000, [2]),
 	RunBattleDialog(218),
-	MakeInvulnerable(MONSTER_1_SET),
+	MakeInvulnerable(MONSTER_1_SET, identifier="exor_vulnerability_3"),
 	Wait1TurnandRestartScript(),
 	StartCounterCommands(),
 	IfHPBelow(0),

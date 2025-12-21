@@ -12,4 +12,4 @@ class CharacterSpell(CharacterSpellBase, Spell):
 
 
 class EnemySpell(EnemySpellBase, Spell):
-    pass
+    _remake_only: bool = False

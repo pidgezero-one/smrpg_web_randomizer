@@ -37,7 +37,7 @@ script = EventScript([
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
 	]),
 	SetSyncActionScript(MEM_70A8, A1022_HIT_BY_EXP_STAR),
-	IncEXPByPacket(),
+	IncEXPByPacket(identifier="inc_exp_by_packet"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_255_ret_13"]),
 	SetBit(UNKNOWN_7064_4, identifier="EVENT_255_set_bit_5"),
 	SetBit(EXP_STAR_BIT_6),

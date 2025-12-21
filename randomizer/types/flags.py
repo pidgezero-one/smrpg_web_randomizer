@@ -348,11 +348,13 @@ class EquipmentProperties(SelectOneFlag[EquipmentPropertiesOptions]):
     _default = EquipmentPropertiesOptions.VANILLA
     _id = "props"
 
+
 # ✅
 class IgnoreNamesakeProperties(BooleanFlag):
     _name = "No equipment property guarantees"
     _description = "Normally, certain namesake items retain their protections: <b>Fearless Pin</b>, <b>Antidote Pin</b>, <b>Trueform Pin</b>, and <b>Wakeup Pin</b>. In addition, at least four equips will have OHKO protection. This flag removes those guarantees."
     _id = "unsafe"
+
 
 # ✅
 class StarPieceHints(BooleanFlag):
@@ -403,6 +405,7 @@ class CharacterSpellStats(BooleanFlag):
     _description = "The power and FP cost of character magic spells will be randomized."
     _id = "spellstats"
 
+
 # ✅
 class InfuseSpellElements(BooleanFlag):
     _name = "Infuse more spells with elements"
@@ -446,7 +449,7 @@ class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
 <br>
 <br>Excluded spells are not replaced in characters' learnsets by other spells, so some characters will learn less than six total.
 <br>
-<br>Note: Super Jump cannot be excluded since it would make some checks inaccessible, and you need at least one damage spell available to transform Mokura."""
+<br>Note: You need at least one damage spell available to transform Mokura. Spells required for checks (i.e. super jump) cannot be excluded."""
     _default = {o: True for o in LearnableSpellEnum.__members__.values()}
     _id = "avail"
 
@@ -476,12 +479,14 @@ class TotalStarPieces(RangeFlag):
 
 # EnabledBossChecks and EnabledStarPieceChecks are defined after delayed imports below
 
+
 # ✅
 class ProgressionLogicDifficultyOptions(CategorizationOption):
     """Enumeration for progression logic difficulty levels"""
 
     NORMAL = "Default"
     HARD = "Hard"
+
 
 # ✅
 class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions]):
@@ -490,6 +495,7 @@ class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions
 <br>
 <br><b>Hard</b> - The shuffler will not consider boss difficulty when placing progression items. Your progression items may be found late in the game among higher level boss battles."""
     _id = "restrict_map"
+
 
 # ✅
 class DisperseStarPieces(BooleanFlag):
@@ -587,6 +593,7 @@ class ShuffleMagikoopaChest(BooleanFlag):
     _description = """If enabled, the chest in Magikoopa's room will contain a random item check. A random chest somewhere in the game will contain infinite coins, unless your item pool is set to "Completely Empty"."""
     _id = "kamek"
 
+
 # ✅
 class ShuffleWeddingGear(BooleanFlag):
     _name = "Shuffle Marrymore wedding gear"
@@ -645,6 +652,7 @@ class StarPieceAvailability(BooleanFlag):
     _id = "stars_anywhere"
     # change EVENT_947_jmp_to_event_107" to point to event 949
 
+
 # ✅
 class InvisibleFlagsSetting(BooleanFlag):
     _name = "Move invisible flag checks"
@@ -669,7 +677,12 @@ class Remake(BooleanFlag):
 
 # Delayed import to avoid circular dependency
 from ..progression import prizelocations
-from ..types.prizelocation import PrizeLocation, BossFightLocation, StarPieceLocation, ShuffleLocationSelector
+from ..types.prizelocation import (
+    PrizeLocation,
+    BossFightLocation,
+    StarPieceLocation,
+    ShuffleLocationSelector,
+)
 
 _all_item_checks_list = [
     cls._id
@@ -1308,6 +1321,7 @@ class FactoryGate(SelectOneFlag[FactoryGating]):
     _id = "wf"
 
 
+# ✅
 class BowserDoorRequirements(RangeFlag):
     _name = "Required Bowser's Keep obstacle doors"
     _description = "The number of doors required to progress through Bowser's Keep."
@@ -1317,6 +1331,7 @@ class BowserDoorRequirements(RangeFlag):
     _id = "doors"
 
 
+# ✅
 class StarPiecesRequired(RangeFlag):
     _name = "Star Pieces required to access the final Factory boss"
     _description = "The total number of Star Pieces (0-7) that are required to access the final boss (enables the green button in Inner Factory). Cannot be higher than Total Star Pieces."
@@ -1653,24 +1668,28 @@ class EnemyAttacks(BooleanFlag):
     _id = "attacks"
 
 
+# ✅
 class EnemySpells(BooleanFlag):
     _name = "Randomize enemy spell assignments"
-    _description = "If enabled, enemies can cast random spells. I.E. Mack could cast Blast instead of Flame."
+    _description = "If enabled, enemies can cast random spells (excluding remake spells). I.E. Mack could cast Blast instead of Flame."
     _id = "spells"
 
 
+# ✅
 class ExperienceNoRegular(BooleanFlag):
     _name = "Remove EXP from regular enemy encounters"
     _description = "If enabled, regular enemy encounters will not give any EXP when defeated. Boss fights are not affected by this flag."
     _id = "noregexp"
 
 
+# ✅
 class ExperienceNoBosses(BooleanFlag):
     _name = "Remove EXP from boss encounters"
     _description = "If enabled, boss encounters will not give any EXP when defeated. Regular enemy encounters are not affected by this flag."
     _id = "nobossexp"
 
 
+# ✅
 class SkipBossFights(BooleanFlag):
     _name = "Allow alternate boss fight win conditions"
     _description = """If set, the following actions will allow you to skip a boss fight and still proceed as normal:
@@ -1684,6 +1703,7 @@ class SkipBossFights(BooleanFlag):
     _default = True
 
 
+# ✅
 class NoGenoWhirlExor(BooleanFlag):
     _name = "No Geno Whirl on Exor"
     _description = (
@@ -1692,6 +1712,7 @@ class NoGenoWhirlExor(BooleanFlag):
     _id = "nowhirl"
 
 
+# ✅
 class FixMagikoopa(BooleanFlag):
     _name = "Fix Magikoopa"
     _description = (
@@ -1700,6 +1721,7 @@ class FixMagikoopa(BooleanFlag):
     _id = "nobigbang"
 
 
+# ✅
 class NoOHKO(BooleanFlag):
     _name = "No instant KOs on boss allies"
     _description = (
@@ -1713,30 +1735,35 @@ class NoOHKO(BooleanFlag):
 # aka stuff that doesn't affect the seed
 
 
+# ✅
 class PaletteSwaps(BooleanFlag):
     _name = "Palette Swaps"
     _description = "Your party members get a change of wardrobe!"
     _id = "palette"
 
 
+# ✅
 class ChangeNames(BooleanFlag):  # not available unless PaletteSwaps enabled
     _name = "Change character names"
     _description = """Some palette swaps are references to other media. If this flag is enabled, the character's name will be changed to match the palette."""
     _id = "names"
 
 
+# ✅
 class RemakeNames(BooleanFlag):
     _name = "Use Remake Names"
     _description = "Spells, enemies, items, and attacks will use their names from the 2023 Switch remake (where space limits allow)."
     _id = "remake"
 
 
+# ✅
 class CanonNames(BooleanFlag):
     _name = "Use Canon Names"
     _description = "Magikoopa is renamed 'Kamek' and Birdo is renamed 'Birdetta'."
     _id = "canon"
 
 
+# ✅
 class Peach(BooleanFlag):
     _name = "Rename Peach"
     _description = (
@@ -1745,6 +1772,7 @@ class Peach(BooleanFlag):
     _id = "peach"
 
 
+# ✅
 class JapaneseABXY(BooleanFlag):
     _name = "Japanese ABXY buttons"
     _description = "If this flag is enabled, ABXY buttons will have the Super Famicom colours from the Japanese version of the game instead of the SNES purple."
@@ -1757,15 +1785,42 @@ class BossShuffleMusic(BooleanFlag):
     _id = "music"
 
 
-class ShuffledMusic(CategorizationFlag):
+from smrpgpatchbuilder.datatypes.battles.music import (
+    NormalBattleMusic,
+    MidbossMusic,
+    BossMusic,
+    Smithy1Music,
+    CorndillyMusic,
+    BoosterHillMusic,
+    VolcanoMusic,
+    CulexMusic,
+    Music,
+)
+
+
+class ShuffledMusicEnum(CategorizationOption):
+    """Enumeration for all battle music tracks that can be shuffled."""
+
+    NORMAL_BATTLE = NormalBattleMusic
+    MIDBOSS = MidbossMusic
+    BOSS = BossMusic
+    SMITHY_1 = Smithy1Music
+    CORNDILLY = CorndillyMusic
+    BOOSTER_HILL = BoosterHillMusic
+    VOLCANO = VolcanoMusic
+    CULEX = CulexMusic
+
+
+class ShuffledMusic(CategorizationFlag[ShuffledMusicEnum]):
     _name = "Allowable shuffled music"
     _description = """If a song is highlighted (white text over blue), it can appear in any boss fight.
 <br>
 <br>If a song is not highlighted, it will never appear in a boss fight."""
-    # TODO generate enum from music classes
     _id = "avail"
+    _default = {o: True for o in ShuffledMusicEnum.__members__.values()}
 
 
+# ✅
 class RemoveFlashes(BooleanFlag):
     _name = "Remove flashes"
     _description = """Removes some flashing animations (from spells, attacks, etc). 
@@ -1774,10 +1829,14 @@ class RemoveFlashes(BooleanFlag):
     _id = "noflash"
 
 
+# ✅
 class HoldB(BooleanFlag):
     _name = "Hold B to auto-advance text"
     _description = "Holding the B button will advance text boxes."
     _id = "holdb"
+
+
+#############
 
 
 class FlagCategory:

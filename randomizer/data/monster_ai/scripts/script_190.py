@@ -36,7 +36,7 @@ script = MonsterScript([
 	SetVarBits(BV7EE000, [0]),
 	ClearVarBits(BV7EE000, [2]),
 	SetUntargetable(SELF),
-	MakeVulnerable(MONSTER_1_SET),
+	MakeVulnerable(MONSTER_1_SET, identifier="exor_vulnerability_1"),
 	RunObjectSequence(11),
 	RunBattleDialog(219),
 	Wait1TurnandRestartScript()

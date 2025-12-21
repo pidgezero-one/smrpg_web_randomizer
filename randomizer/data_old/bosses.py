@@ -1242,7 +1242,7 @@ class MackBoss(Boss):
         (
             1780,
             """MACK: Hey `MAIN_CHARACTER_NAME`!\n Come back to crash our party?[await]"""),
-        (1781, """MACK: OK, I get it, you can bounce\n too.[await]"""),
+        (1781, """MACK: OK, OK, so you can bounce\n too![delay] Fine![await]"""),
         (
             1783,
             """ I don't care what kinda party it is![await]\n I drink Milk so I can be like Exor!![await]"""),

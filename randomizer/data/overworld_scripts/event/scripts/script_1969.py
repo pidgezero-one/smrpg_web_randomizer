@@ -32,6 +32,6 @@ from ....packets import *
 
 script = EventScript([
 	CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
-	CompareVarToConst(PRIMARY_TEMP_7000, 6),
+	CompareVarToConst(PRIMARY_TEMP_7000, 6, identifier="enable_boss_access_3"),
 	Return()
 ])

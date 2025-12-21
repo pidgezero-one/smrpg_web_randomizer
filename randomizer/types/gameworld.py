@@ -2,10 +2,13 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any, TYPE_CHECKING, TypeVar, cast
 import random
+import datetime
 
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
     AnimationScriptBank,
 )
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import *
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments import *
 from smrpgpatchbuilder.datatypes.battles.battle_dialog_collection import (
     BattleDialogCollection,
 )
@@ -13,9 +16,14 @@ from smrpgpatchbuilder.datatypes.dialogs.classes import DialogCollection
 from smrpgpatchbuilder.datatypes.enemies.classes import EnemyCollection
 from smrpgpatchbuilder.datatypes.enemy_attacks.classes import EnemyAttackCollection
 from smrpgpatchbuilder.datatypes.items.classes import ItemCollection, Equipment
+from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
+from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 from smrpgpatchbuilder.datatypes.monster_scripts.types import (
     MonsterScriptBank,
     MonsterScript,
+)
+from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import (
+    DoNothing,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
     ActionScriptBank,
@@ -44,7 +52,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     RunEventAsSubroutine,
     SetBit,
     ClearBit,
-    JmpIfBitClear
+    JmpIfBitClear,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
@@ -55,11 +63,11 @@ from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Room
 from smrpgpatchbuilder.datatypes.spells.enums import Status
 from ..data.items.items import *
 from .item import Item
-from .enemy import Enemy
 from .patch import Patch
-from .attack import EnemyAttack as Attack
+from .attack import EnemyAttack
 from .spell import Spell
 from .prize import Prize
+from .ally import Ally
 from .flags import (
     Flag,
     BooleanFlag,
@@ -72,6 +80,16 @@ from .flags import (
 from .prizelocation import SIGNAL_RING_EVENT_DICT, PrizeLocation
 from ..progression.prizelocations import *
 from ..data.variables.dialog_names import *
+from ..data.variables.battle_variable_names import *
+from ..data.variables.battle_effect_names import *
+from ..data.spells.spells import *
+from ..data.allies.palettes.types import MarioPalette, MallowPalette, GenoPalette, BowserPalette, ToadstoolPalette
+from ..data.allies.palettes.mario import all_palettes as MARIO_PALETTES
+from ..data.allies.palettes.mallow import all_palettes as MALLOW_PALETTES
+from ..data.allies.palettes.geno import all_palettes as GENO_PALETTES
+from ..data.allies.palettes.toadstool import all_palettes as TOADSTOOL_PALETTES
+from ..data.allies.palettes.bowser import all_palettes as BOWSER_PALETTES
+from .enemy import Enemy
 
 PrizeLocationT = TypeVar("PrizeLocationT", bound=PrizeLocation)
 from .settings import Settings
@@ -123,6 +141,12 @@ class GameWorld:
     shops: ShopCollection
     spells: SpellCollection
     sprites: SpriteCollection
+    mario_palette: MarioPalette
+    mallow_palette: MallowPalette
+    geno_palette: GenoPalette
+    bowser_palette: BowserPalette
+    toadstool_palette: ToadstoolPalette
+    main_character: Ally = MARIO_Ally
 
     locations: dict[type[PrizeLocation], PrizeLocation]
 
@@ -273,6 +297,13 @@ class GameWorld:
     def update_sprite(self, sprite_id: int, new_sprite):
         self.sprites.sprites[sprite_id] = new_sprite
 
+    def search_replace_dialog(self, search: str, replace: str):
+        for bank_id, dialog_bank in enumerate(self.overworld_dialogs.raw_data):
+            for index, dialog in enumerate(dialog_bank):
+                self.overworld_dialogs.raw_data[bank_id][index] = dialog.replace(
+                    search, replace
+                )
+
     # Logic
     # TODO
 
@@ -315,6 +346,8 @@ class GameWorld:
         self.shops = shops
         self.spells = spells
         self.sprites = sprites
+
+        random.seed(self.seed)
 
         # todo: extra moleville trade checks
 
@@ -1048,8 +1081,9 @@ class GameWorld:
                     continue
                 event = SIGNAL_RING_EVENT_DICT[l.world_area]
                 script = self.event_scripts.get_script_by_id(event)
-                script.insert_before_nth_command(0, JmpIfBitClear(l.prize._hint, [f"EVENT_{event}_play_sound"]))
-
+                script.insert_before_nth_command(
+                    0, JmpIfBitClear(l.prize._hint, [f"EVENT_{event}_play_sound"])
+                )
 
         if self.settings.isflag_enabled(SkipMustyFearsSequence):
             event_2496_startup += [RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER)]
@@ -1075,8 +1109,13 @@ class GameWorld:
 
         if self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.STARS):
             event_2496_startup += [SetBit(PROGRESSIVE_STAR_EXP_ENABLED)]
-        if self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.BOSSES):
+        elif self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.BOSSES):
             event_2496_startup += [SetBit(PROGRESSIVE_BOSS_EXP_ENABLED)]
+        elif self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE):
+            self.event_scripts.delete_command_by_identifier("inc_exp_by_packet")
+
+        if self.settings.isflag_enabled(SkipBossFights):
+            event_2496_startup += [SetBit(ALTERNATE_STAR_PIECE_WIN_CONDITION)]
 
         # TODO when assembling grant scripts, set all exp star 70A7 props to 0 if NONE is selected
         # TODO verify that all bosses increase the counter, ie remake bosses
@@ -1268,29 +1307,268 @@ class GameWorld:
         ).set_value(self.settings.get_flag(SuperJump2Threshold).value)
         cast(
             CompareVarToConst,
-            self.event_scripts.get_command_by_identifier("tower_knife_guy_sidequest_completed"),
+            self.event_scripts.get_command_by_identifier(
+                "tower_knife_guy_sidequest_completed"
+            ),
         ).set_value(self.settings.get_flag(KnifeGuyPrizeThreshold).value)
         cast(
             CompareVarToConst,
-            self.event_scripts.get_command_by_identifier("casino_grate_guy_sidequest_completed"),
+            self.event_scripts.get_command_by_identifier(
+                "casino_grate_guy_sidequest_completed"
+            ),
         ).set_value(self.settings.get_flag(GrateGuyPrizeThreshold).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("check_doors_complete"),
+        ).set_value(self.settings.get_flag(BowserDoorRequirements).value)
+
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("enable_boss_access_1"),
+        ).set_value(self.settings.get_flag(StarPiecesRequired).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("enable_boss_access_2"),
+        ).set_value(self.settings.get_flag(StarPiecesRequired).value)
+        cast(
+            CompareVarToConst,
+            self.event_scripts.get_command_by_identifier("enable_boss_access_3"),
+        ).set_value(self.settings.get_flag(StarPiecesRequired).value)
 
         # other stuff
 
         if self.settings.isflag_enabled(PoisonMushroom):
-            self.items.get_by_type(MushroomItem2).set_status_immunities(random.sample([
-                Status.MUTE,
-                Status.SLEEP,
-                Status.POISON,
-                Status.FEAR,
-                Status.BERSERK,
-                Status.MUSHROOM,
-                Status.SCARECROW,
-                Status.INVINCIBLE
-            ], 1))
+            self.items.get_by_type(MushroomItem2).set_status_immunities(
+                random.sample(
+                    [
+                        Status.MUTE,
+                        Status.SLEEP,
+                        Status.POISON,
+                        Status.FEAR,
+                        Status.BERSERK,
+                        Status.MUSHROOM,
+                        Status.SCARECROW,
+                        Status.INVINCIBLE,
+                    ],
+                    1,
+                )
+            )
         if self.settings.isflag_enabled(UncapSuperJumps):
             self.battle_animations[0x35].delete_command_by_name("super_jump_cap_1")
             self.battle_animations[0x35].delete_command_by_name("super_jump_cap_2")
+
+        if self.settings.isflag_enabled(NoGenoWhirlExor):
+            self.monster_scripts.replace_command_by_identifier(
+                "exor_vulnerability_1", [SetUntargetable(MONSTER_1_SET)]
+            )
+            self.monster_scripts.replace_command_by_identifier(
+                "exor_vulnerability_2", [SetUntargetable(MONSTER_1_SET)]
+            )
+            self.monster_scripts.replace_command_by_identifier(
+                "exor_vulnerability_2", [SetUntargetable(MONSTER_1_SET)]
+            )
+        if self.settings.isflag_enabled(FixMagikoopa):
+            self.monster_scripts.scripts[
+                KINGBOMBEnemy._monster_id
+            ].insert_after_nth_command(0, ClearVar(BV7EE000))
+        sidekicks = [
+            BODYGUARDEnemy,
+            GOOMBETTEEnemy,
+            FAUTSOEnemy,
+            BAHAMUTTEnemy,
+            BAHAMUTTEnemy2,
+            KINGBOMBEnemy,
+            JINXCLONEEnemy,
+            MARIOCLONEEnemy,
+            MARIOCLONESEnemy,
+            MALLOWCLONEEnemy,
+            MALLOWCOPYSEnemy,
+            GENOCLONEEnemy,
+            GENOCLONESEnemy,
+            BOWSERCLONEEnemy,
+            BOWSERCOPYSEnemy,
+            TOADSTOOL2Enemy,
+            TOADSTOOL3Enemy,
+            TENTACLESEnemy,
+            TENTACLESEnemy2,
+            BOBOMBEnemyHenchman,
+            MICROBOMBEnemy,
+            MEZZOBOMBEnemy,
+            STRONGBOBOMB1Enemy,
+            STRONGBOBOMB2Enemy,
+            STRONGBOBOMB3Enemy,
+            STRONGBOBOMB4Enemy,
+            SNIFITEnemyHenchman,
+            SNIFIT2Enemy,
+            BANDANABLUEEnemy,
+            TORTE2Enemy,
+            TORTEEnemy,
+            SMILAXEnemy,
+            EGGBERTEnemy,
+            DINGALINGEnemy,
+            FIRECRYS3DEnemy,
+            FIRECRYSTALEnemy,
+            WINDCRYS3DEnemy,
+            WINDCRYS3DEnemy,
+            WATERCRYS3DEnemy,
+            WATERCRYSTALEnemy,
+            EARTHCRYS3DEnemy,
+            EARTHCRYSTALEnemy,
+            MADMALLETEnemyHenchman,
+            POUNDEREnemyHenchman,
+            POUNDETTEEnemyHenchman,
+            HELIOEnemy,
+            SHYPEREnemy,
+        ]
+        bosses = [
+            HAMMERBROEnemy,
+            CROCO1Enemy,
+            MACKEnemy,
+            BELOME1Enemy,
+            BOWYEREnemy,
+            CROCO2Enemy,
+            PUNCHINELLOEnemy,
+            PUNCHINELLO2Enemy,
+            BOOSTEREnemy,
+            BOOSTEREnemy2,
+            KNIFEGUYEnemy,
+            GRATEGUYEnemy,
+            BUNDTEnemy,
+            BUNDT2Enemy,
+            PANDORITEEnemy,
+            HIDONEnemy,
+            BOXBOYEnemy,
+            CHESTEREnemy,
+            KINGCALAMARIEnemy,
+            JOHNNYEnemy,
+            JOHNNYEnemy2,
+            YARIDOVICHEnemy,
+            YARIDOVICHMirageEnemy,
+            BELOME2Enemy,
+            BELOMEEnemy3,
+            MOKURAEnemy,
+            FORMLESSEnemy,
+            JAGGEREnemy,
+            JINX1Enemy,
+            JINX2Enemy,
+            JINX3Enemy,
+            JINXEnemy4,
+            CULEXEnemy,
+            CULEX3DEnemy,
+            MEGASMILAXEnemy,
+            DODOEnemySolo,
+            BIRDETTAEnemy,
+            DODOEnemy,
+            VALENTINAEnemy,
+            CZARDRAGONEnemy,
+            ZOMBONEEnemy,
+            AXEMREDEnemy,
+            AXEMPINKEnemy,
+            AXEMBLACKEnemy,
+            AXEMYELLOWEnemy,
+            AXEMGREENEnemy,
+            AXEMRANGERSEnemy,
+            KAMEKEnemy,
+            BOOMEREnemy,
+            EXOREnemy,
+            RIGHTEYEEnemy,
+            LEFTEYEEnemy,
+            NEOSQUIDEnemy,
+            COUNTDOWNEnemy,
+            CLOAKEREnemy,
+            CLOAKEREnemy2,
+            MADADDEREnemy,
+            EARTHLINKEnemy,
+            CLERKEnemy,
+            MANAGEREnemy,
+            DIRECTOREnemy,
+            GUNYOLKEnemy,
+            FACTORYCHIEFEnemy,
+            SMITHY1Enemy,
+            SMITHY2Enemy,
+            SMITHYBodyEnemy,
+            SMITHYChestEnemy,
+            SMITHYMageEnemy,
+            SMITHYSafeEnemy2,
+            SMITHYTankEnemy,
+            SMELTEREnemy,
+        ]
+        if self.settings.isflag_enabled(NoOHKO):
+            for ennemytype in sidekicks:
+                enemy = self.enemies.get_by_type(ennemytype)
+                enemy.set_ohko_immune(True)
+                enemy.set_morph_chance(0)
+                for cmd in self.monster_scripts.scripts[enemy.monster_id].contents:
+                    if isinstance(cmd, IfTargetedByItem):
+                        cmd.set_commands([CarboCookieItem])
+        if self.settings.isflag_enabled(ExperienceNoBosses):
+            for ennemytype in bosses + sidekicks:
+                enemy = self.enemies.get_by_type(ennemytype)
+                enemy.set_xp(0)
+        if self.settings.isflag_enabled(ExperienceNoRegular):
+            for ennemytype in [
+                type(e)
+                for e in self.enemies.enemies
+                if type(e) not in bosses + sidekicks
+            ]:
+                self.enemies.get_by_type(ennemytype).set_xp(0)
+        if self.settings.isflag_enabled(EnemySpells):
+            spell_pool: list[type[EnemySpell]] = [
+                DrainSpell,
+                LightningOrbSpell,
+                FlameSpell,
+                BoltSpell,
+                CrystalSpell,
+                FlameStoneSpell,
+                MegaDrainSpell,
+                WillyWispSpell,
+                DiamondSawSpell,
+                ElectroshockSpell,
+                BlastSpell,
+                StormSpell,
+                IceRockSpell,
+                EscapeSpell,
+                DarkStarSpell,
+                RecoverSpell,
+                MegaRecoverSpell,
+                FlameWallSpell,
+                StaticESpell,
+                SandStormSpell,
+                BlizzardSpell,
+                DrainBeamSpell,
+                MeteorBlastSpell,
+                LightBeamSpell,
+                WaterBlastSpell,
+                SolidifySpell,
+                PetalBlastSpell,
+                AuroraFlashSpell,
+                BoulderSpell,
+                CoronaSpell,
+                MeteorSwarmSpell,
+                WeirdMushroomSpell,
+                BreakerBeamSpell,
+                ShredderSpell,
+                SledgeSpell,
+                SwordRainSpell,
+                SpearRainSpell,
+                ArrowRainSpell,
+                BigBangSpell,
+            ]
+            for script in self.monster_scripts.scripts:
+                for cmd in script.contents:
+                    if isinstance(cmd, CastSpell):
+                        if cmd.spell_1 is not None and not isinstance(
+                            cmd.spell_1, DoNothing
+                        ):
+                            cmd.set_spell_1(random.choice(spell_pool))
+                        if cmd.spell_2 is not None and not isinstance(
+                            cmd.spell_2, DoNothing
+                        ):
+                            cmd.set_spell_2(random.choice(spell_pool))
+                        if cmd.spell_3 is not None and not isinstance(
+                            cmd.spell_3, DoNothing
+                        ):
+                            cmd.set_spell_3(random.choice(spell_pool))
 
         # equips and things
 
@@ -1301,63 +1579,258 @@ class GameWorld:
             self.get_spell(CrusherSpell).set_element(Element.JUMP)
             self.get_spell(BowserCrushSpell).set_element(Element.JUMP)
         if self.settings.isflag_enabled(CharacterSpellElements):
-            spells_to_update = [s for s in self.spells.spells if s.element != Element.NONE]
+            spells_to_update = [
+                s for s in self.spells.spells if s.element != Element.NONE
+            ]
             for spell in spells_to_update:
-                spell.set_element(random.choice([Element.ICE, Element.FIRE, Element.JUMP, Element.THUNDER]))
-        
+                spell.set_element(
+                    random.choice(
+                        [Element.ICE, Element.FIRE, Element.JUMP, Element.THUNDER]
+                    )
+                )
 
-        if self.settings.is_flag_value(EquipmentProperties, EquipmentPropertiesOptions.SOME):
+        if self.settings.is_flag_value(
+            EquipmentProperties, EquipmentPropertiesOptions.SOME
+        ):
             self.items.get_by_type(ShirtItem).append_status_immunity(Status.MUSHROOM)
             self.items.get_by_type(PantsItem).append_status_immunity(Status.MUSHROOM)
-            self.items.get_by_type(ThickShirtItem).append_temp_buff(TempStatBuff.DEFENSE)
-            self.items.get_by_type(ThickPantsItem).append_temp_buff(TempStatBuff.DEFENSE)
-            self.items.get_by_type(MegaShirtItem).append_temp_buff(TempStatBuff.MAGIC_DEFENSE)
-            self.items.get_by_type(MegaPantsItem).append_temp_buff(TempStatBuff.MAGIC_DEFENSE)
-            self.items.get_by_type(MegaCapeItem).append_temp_buff(TempStatBuff.MAGIC_DEFENSE)
+            self.items.get_by_type(ThickShirtItem).append_temp_buff(
+                TempStatBuff.DEFENSE
+            )
+            self.items.get_by_type(ThickPantsItem).append_temp_buff(
+                TempStatBuff.DEFENSE
+            )
+            self.items.get_by_type(MegaShirtItem).append_temp_buff(
+                TempStatBuff.MAGIC_DEFENSE
+            )
+            self.items.get_by_type(MegaPantsItem).append_temp_buff(
+                TempStatBuff.MAGIC_DEFENSE
+            )
+            self.items.get_by_type(MegaCapeItem).append_temp_buff(
+                TempStatBuff.MAGIC_DEFENSE
+            )
             self.items.get_by_type(HappyShirtItem).set_prevent_ko(True)
             self.items.get_by_type(HappyPantsItem).set_prevent_ko(True)
             self.items.get_by_type(HappyCapeItem).set_prevent_ko(True)
             self.items.get_by_type(HappyShellItem).set_prevent_ko(True)
             self.items.get_by_type(PolkaDressItem).set_prevent_ko(True)
             self.items.get_by_type(CourageShellItem).append_status_immunity(Status.FEAR)
-            self.items.get_by_type(SailorShirtItem).append_elemental_immunity(Element.ICE)
-            self.items.get_by_type(SailorPantsItem).append_elemental_immunity(Element.ICE)
-            self.items.get_by_type(SailorCapeItem).append_elemental_immunity(Element.ICE)
-            self.items.get_by_type(NauticaDressItem).append_elemental_immunity(Element.ICE)
-            self.items.get_by_type(FuzzyShirtItem).append_elemental_immunity(Element.THUNDER)
-            self.items.get_by_type(FuzzyPantsItem).append_elemental_immunity(Element.THUNDER)
-            self.items.get_by_type(FuzzyCapeItem).append_elemental_immunity(Element.THUNDER)
-            self.items.get_by_type(FuzzyDressItem).append_elemental_immunity(Element.THUNDER)
-            self.items.get_by_type(FireShirtItem).append_elemental_immunity(Element.FIRE)
-            self.items.get_by_type(FirePantsItem).append_elemental_immunity(Element.FIRE)
+            self.items.get_by_type(SailorShirtItem).append_elemental_immunity(
+                Element.ICE
+            )
+            self.items.get_by_type(SailorPantsItem).append_elemental_immunity(
+                Element.ICE
+            )
+            self.items.get_by_type(SailorCapeItem).append_elemental_immunity(
+                Element.ICE
+            )
+            self.items.get_by_type(NauticaDressItem).append_elemental_immunity(
+                Element.ICE
+            )
+            self.items.get_by_type(FuzzyShirtItem).append_elemental_immunity(
+                Element.THUNDER
+            )
+            self.items.get_by_type(FuzzyPantsItem).append_elemental_immunity(
+                Element.THUNDER
+            )
+            self.items.get_by_type(FuzzyCapeItem).append_elemental_immunity(
+                Element.THUNDER
+            )
+            self.items.get_by_type(FuzzyDressItem).append_elemental_immunity(
+                Element.THUNDER
+            )
+            self.items.get_by_type(FireShirtItem).append_elemental_immunity(
+                Element.FIRE
+            )
+            self.items.get_by_type(FirePantsItem).append_elemental_immunity(
+                Element.FIRE
+            )
             self.items.get_by_type(FireCapeItem).append_elemental_immunity(Element.FIRE)
-            self.items.get_by_type(FireShellItem).append_elemental_immunity(Element.FIRE)
-            self.items.get_by_type(FireDressItem).append_elemental_immunity(Element.FIRE)
-            self.items.get_by_type(HeroShirtItem).append_status_immunity(Status.SCARECROW)
+            self.items.get_by_type(FireShellItem).append_elemental_immunity(
+                Element.FIRE
+            )
+            self.items.get_by_type(FireDressItem).append_elemental_immunity(
+                Element.FIRE
+            )
+            self.items.get_by_type(HeroShirtItem).append_status_immunity(
+                Status.SCARECROW
+            )
             self.items.get_by_type(PrincePantsItem).append_status_immunity(Status.MUTE)
             self.items.get_by_type(RoyalDressItem).append_status_immunity(Status.SLEEP)
             self.items.get_by_type(HealShellItem).append_status_immunity(Status.POISON)
             self.items.get_by_type(StarCapeItem).append_status_immunity(Status.BERSERK)
-            self.items.get_by_type(FroggieStickItem).set_magic_attack(self.items.get_by_type(FroggieStickItem).attack)
+            self.items.get_by_type(FroggieStickItem).set_magic_attack(
+                self.items.get_by_type(FroggieStickItem).attack
+            )
             self.items.get_by_type(FroggieStickItem).set_attack(0)
-            self.items.get_by_type(RibbitStickItem).set_magic_attack(self.items.get_by_type(RibbitStickItem).attack)
+            self.items.get_by_type(RibbitStickItem).set_magic_attack(
+                self.items.get_by_type(RibbitStickItem).attack
+            )
             self.items.get_by_type(RibbitStickItem).set_attack(0)
-            self.items.get_by_type(ParasolItem).set_magic_attack(self.items.get_by_type(ParasolItem).attack)
+            self.items.get_by_type(ParasolItem).set_magic_attack(
+                self.items.get_by_type(ParasolItem).attack
+            )
             self.items.get_by_type(ParasolItem).set_attack(0)
-        elif self.settings.is_flag_value(EquipmentProperties, EquipmentPropertiesOptions.RANDOM):
-            pass 
+        elif self.settings.is_flag_value(
+            EquipmentProperties, EquipmentPropertiesOptions.RANDOM
+        ):
+            pass
         if not self.settings.isflag_enabled(IgnoreNamesakeProperties):
             self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.SLEEP)
             self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.MUTE)
-            self.items.get_by_type(AntidotePinItem).append_status_immunity(Status.POISON)
-            self.items.get_by_type(TrueformPinItem).append_status_immunity(Status.MUSHROOM)
-            self.items.get_by_type(TrueformPinItem).append_status_immunity(Status.SCARECROW)
+            self.items.get_by_type(AntidotePinItem).append_status_immunity(
+                Status.POISON
+            )
+            self.items.get_by_type(TrueformPinItem).append_status_immunity(
+                Status.MUSHROOM
+            )
+            self.items.get_by_type(TrueformPinItem).append_status_immunity(
+                Status.SCARECROW
+            )
             self.items.get_by_type(FearlessPinItem).append_status_immunity(Status.FEAR)
-            has_ko_protection = [i for i in self.items.items if isinstance(i, Equipment) and i.prevent_ko]
+            has_ko_protection = [
+                i for i in self.items.items if isinstance(i, Equipment) and i.prevent_ko
+            ]
             if len(has_ko_protection) < 4:
-                more_ko_protections = random.sample([i for i in self.items.items if isinstance(i, Equipment) and not i.prevent_ko], 4 - len(has_ko_protection))
+                more_ko_protections = random.sample(
+                    [
+                        i
+                        for i in self.items.items
+                        if isinstance(i, Equipment) and not i.prevent_ko
+                    ],
+                    4 - len(has_ko_protection),
+                )
                 for i in more_ko_protections:
                     i.set_prevent_ko(True)
+
+        # Cosmetics have to go at the end and be re-seeded
+        random.seed(datetime.datetime.now().timestamp())
+
+        if self.settings.isflag_enabled(CanonNames):
+            self.enemies.get_by_type(KAMEKEnemy).set_name("KAMEK")
+            self.enemies.get_by_type(BIRDETTAEnemy).set_name("BIRDETTA")
+        else:
+            self.search_replace_dialog("KAMEK", "MAGIKOOPA")
+            self.search_replace_dialog("Kamek", "Magikoopa")
+            self.search_replace_dialog("BIRDETTA", "BIRDO")
+            self.search_replace_dialog("Birdetta", "Birdo")
+        if self.settings.isflag_enabled(Peach):
+            self.allies._allies[1].name = "Peach"
+        if self.settings.isflag_enabled(RemakeNames):
+            for enemy in self.enemies.enemies:
+                e = cast(Enemy, enemy)
+                if e.remake_name is not None:
+                    enemy.set_name(e.remake_name)
+            for item in self.items.items:
+                it = cast(Item, item)
+                if it.remake_name is not None:
+                    item.set_name(it.remake_name)
+            for spell in self.spells.spells:
+                sp = cast(Spell, spell)
+                if sp.remake_name is not None:
+                    spell._title = sp.remake_name
+            for attack in self.enemy_attacks.attacks:
+                at = cast(EnemyAttack, attack)
+                if at.remake_name is not None:
+                    attack.set_attack_name(at.remake_name)
+        if self.settings.isflag_enabled(RemoveFlashes):
+            screenflashes = [
+                "screen_flash_1",  # thunderbolt
+                "screen_flash_2",
+                "crusher_screenflash",  # crusher
+                "darkstar_flash",  # dark star
+                "spikedlink_flash_1",
+                "spikedlink_flash_2",
+                "spikedlink_flash_3"
+            ]
+            for identifier in screenflashes:
+                self.battle_animations[0x35].get_command_by_name(identifier).set_colour( # type: ignore
+                    NO_COLOUR
+                ) 
+            deletes = [
+                "command_0x35BE52",  # geno flash
+                "geno_blast_effect",  # geno blast
+                "corona_flash",
+                "shaker_delete_1", # shaker / silver bullet
+                "shaker_delete_2",
+                "shaker_delete_3",
+                "shaker_delete_4",
+                "shaker_delete_5",
+                "statice_delete_1",
+                "statice_delete_2",
+                "statice_delete_3",
+                "statice_delete_4",
+                "statice_delete_5",
+                "meteorswarm_delete_maybe"
+                "rockcandy_delete",
+                "rockcandy_delete_2"
+            ]
+            for identifier in deletes:
+                self.battle_animations[0x35].delete_command_by_name(identifier)
+            deletes_3A = [
+                "smithy_delete_1",
+                "smithy_delete_2"
+            ]
+            for identifier in deletes_3A:
+                self.battle_animations[0x3A].delete_command_by_name(identifier)
+            self.battle_animations[0x35].get_command_by_name(
+                "bigbang_flash"
+            ).set_effect(  # type: ignore
+                EF0025_PSYCH_BOMB_BG
+            )
+            self.battle_animations[0x35].get_command_by_name(
+                "firebomb_explosion"
+            ).set_effect(  # type: ignore
+                EF0025_PSYCH_BOMB_BG
+            )
+            self.battle_animations[0x35].replace_command_by_name(
+                "icebomb_explosion", ScreenFlashWithDuration(NO_COLOUR, 1)
+            )
+            self.battle_animations[0x35].replace_command_by_name(
+                "command_0x35358A", AttackTimerBegins(identifier="command_0x35358A") # shaker / silver bullet
+            )
+            self.battle_animations[0x35].replace_command_by_name(
+                "statice_flash", ScreenFlashWithDuration(NO_COLOUR, 44) # static e!
+            )
+            self.battle_animations[0x35].replace_command_by_name(
+                "meteorswarm_replace", ScreenFlashWithDuration(NO_COLOUR, 16) # meteor swarm
+            )
+            self.battle_animations[0x35].replace_command_by_name(
+                "rockcandy_replace", ScreenFlashWithDuration(NO_COLOUR, 20) # rock candy
+            )
+            self.battle_animations[0x35].replace_command_by_name(
+                "meteorblast_replace", ScreenFlashWithDuration(NO_COLOUR, 20) # meteor blast
+            )
+            
+            self.battle_animations[0x3A].replace_command_by_name(
+                "smithy_replace_1", ScreenFlashWithDuration(NO_COLOUR, 1)
+            )
+            self.battle_animations[0x3A].replace_command_by_name(
+                "smithy_replace_2", ScreenFlashWithDuration(NO_COLOUR, 1)
+            )
+        if self.settings.isflag_enabled(PaletteSwaps):
+            self.mario_palette = random.choice(MARIO_PALETTES)
+            self.mallow_palette = random.choice(MALLOW_PALETTES)
+            self.geno_palette = random.choice(GENO_PALETTES)
+            self.bowser_palette = random.choice(BOWSER_PALETTES)
+            self.toadstool_palette = random.choice(TOADSTOOL_PALETTES)
+
+            if self.settings.isflag_enabled(ChangeNames):
+                self.allies._allies[0].name = self.mario_palette.name
+                self.enemies.get_by_type(MARIOCLONEEnemy).set_name(self.mario_palette.clone_name)
+                self.enemies.get_by_type(MARIOCLONESEnemy).set_name(self.mario_palette.strong_clone_name)
+                self.allies._allies[1].name = self.toadstool_palette.name
+                self.enemies.get_by_type(TOADSTOOL2Enemy).set_name(self.toadstool_palette.clone_name)
+                self.enemies.get_by_type(TOADSTOOL3Enemy).set_name(self.toadstool_palette.strong_clone_name)
+                self.allies._allies[2].name = self.bowser_palette.name
+                self.enemies.get_by_type(BOWSERCLONEEnemy).set_name(self.bowser_palette.clone_name)
+                self.enemies.get_by_type(BOWSERCOPYSEnemy).set_name(self.bowser_palette.strong_clone_name)
+                self.allies._allies[3].name = self.geno_palette.name
+                self.enemies.get_by_type(GENOCLONEEnemy).set_name(self.geno_palette.clone_name)
+                self.enemies.get_by_type(GENOCLONESEnemy).set_name(self.geno_palette.strong_clone_name)
+                self.allies._allies[4].name = self.mallow_palette.name
+                self.enemies.get_by_type(MALLOWCLONEEnemy).set_name(self.mallow_palette.clone_name)
+                self.enemies.get_by_type(MALLOWCOPYSEnemy).set_name(self.mallow_palette.strong_clone_name)
 
 
     def get_patch(self) -> Patch:
@@ -1433,13 +1906,130 @@ class GameWorld:
             ),
         )
 
-        # TODO: make these conditional based on a flag
-        # hold B to advance
-        patch.add_data(0x5D5E, [0x20, 0x54, 0xF1])
-        patch.add_data(0x15627, [0x22, 0x90, 0xFE, 0xC2, 0x89, 0x80, 0x00])
-        patch.add_data(0xF154, [0x22, 0x90, 0xFE, 0xC2, 0x60])
-        patch.add_data(0x2FE90, [0xAF, 0x14, 0x30, 0x00, 0x0F, 0x11, 0x30, 0x00, 0x6B])
-        # faster text
-        # ?
+        if self.settings.isflag_enabled(HoldB):
+            # hold B to advance
+            patch.add_data(0x5D5E, [0x20, 0x54, 0xF1])
+            patch.add_data(0x15627, [0x22, 0x90, 0xFE, 0xC2, 0x89, 0x80, 0x00])
+            patch.add_data(0xF154, [0x22, 0x90, 0xFE, 0xC2, 0x60])
+            patch.add_data(
+                0x2FE90, [0xAF, 0x14, 0x30, 0x00, 0x0F, 0x11, 0x30, 0x00, 0x6B]
+            )
+
+        # Palettes
+
+        if self.main_character == MARIO_Ally:
+            for i, p in self.mario_palette.doll_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.mario_palette.minecart_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.mario_palette.classic_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.mario_palette.overworld_map_patch().items():
+                patch.add_data(i, p)
+        if self.main_character == MALLOW_Ally:
+            for i, p in self.mallow_palette.doll_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.mallow_palette.minecart_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.mallow_palette.classic_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.mallow_palette.overworld_map_patch().items():
+                patch.add_data(i, p)
+        if self.main_character == GENO_Ally:
+            for i, p in self.geno_palette.doll_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.geno_palette.minecart_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.geno_palette.classic_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.geno_palette.overworld_map_patch().items():
+                patch.add_data(i, p)
+        if self.main_character == BOWSER_Ally:
+            for i, p in self.bowser_palette.doll_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.bowser_palette.minecart_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.bowser_palette.classic_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.bowser_palette.overworld_map_patch().items():
+                patch.add_data(i, p)
+        if self.main_character == TOADSTOOL_Ally:
+            for i, p in self.toadstool_palette.doll_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.toadstool_palette.minecart_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.toadstool_palette.classic_patch().items():
+                patch.add_data(i, p)
+            for i, p in self.toadstool_palette.overworld_map_patch().items():
+                patch.add_data(i, p)
+        patch.add_dict(self.mario_palette.standard_patch())
+        patch.add_dict(self.mallow_palette.standard_patch())
+        patch.add_dict(self.geno_palette.standard_patch())
+        patch.add_dict(self.bowser_palette.standard_patch())
+        patch.add_dict(self.toadstool_palette.standard_patch())
+
+        if self.settings.isflag_enabled(JapaneseABXY):
+            patch.add_data(
+                0x255258,
+                bytearray(
+                    [
+                        0x0C,
+                        0x00,
+                        0x36,
+                        0x16,
+                        0x3A,
+                        0x27,
+                        0x48,
+                        0x26,
+                        0xE3,
+                        0x11,
+                        0x07,
+                        0x49,
+                        0x63,
+                        0x44,
+                        0x00,
+                        0x20,
+                        0x3F,
+                        0x29,
+                        0xDB,
+                        0x1C,
+                        0xA6,
+                        0x04,
+                        0xC1,
+                        0x08,
+                    ]
+                ),
+            )
+            patch.add_data(
+                0x255C6C,
+                bytearray(
+                    [
+                        0x0C,
+                        0x00,
+                        0x52,
+                        0x4A,
+                        0x29,
+                        0x25,
+                        0x48,
+                        0x26,
+                        0xE3,
+                        0x11,
+                        0x07,
+                        0x49,
+                        0x63,
+                        0x44,
+                        0x00,
+                        0x20,
+                        0x3F,
+                        0x29,
+                        0xDB,
+                        0x1C,
+                        0xD1,
+                        0x00,
+                        0xC1,
+                        0x08,
+                    ]
+                ),
+            )
 
         return patch
