@@ -864,6 +864,7 @@ class Remake(BooleanFlag):
 <br>The freestanding Flower Tab checks in Mushroom Way and Land's End will also be added.
 <br>
 <br>Boss fight locations will be available after you defeat the first iterations of those fights and also find the Stay Voucher. For example, you cannot do the postgame temple fight until after you have defeated the regular campaign temple fight, you can't use the Extra Shiny Stone until you've defeated the boss in the Monstro Town door the first time, etc."""
+    _id = "postgame"
     _remake = False
     _requires_all = [(ShuffleItems(), True)]
 
