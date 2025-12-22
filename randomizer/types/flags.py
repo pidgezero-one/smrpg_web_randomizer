@@ -2064,6 +2064,7 @@ class ShuffledMusic(CategorizationFlag[ShuffledMusicEnum]):
 <br>This setting does nothing if "Randomize boss music" is turned off."""
     _id = "avail"
     _default = {o: True for o in ShuffledMusicEnum.__members__.values()}
+    _requires_all = [(BossShuffleMusic(), True)]
 
 
 # ✅
