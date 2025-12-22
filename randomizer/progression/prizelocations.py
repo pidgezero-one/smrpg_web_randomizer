@@ -1,4 +1,5 @@
-from ..types.gameworld import GameWorld
+from __future__ import annotations
+
 from ..types.logic import Inventory
 from ..types.prize import Prize
 from ..types.prizelocation import (
@@ -7737,7 +7738,7 @@ class FinalBossFightStarPiece(StarPieceLocation):
 
 
 class MariosPadBedFlag(InvisibleFlagLocation):
-    _room_ids = [R189_MARIOS_PIPEHOUSE]
+    _rooms = [R189_MARIOS_PIPEHOUSE]
     _x_coord = 3
     _y_coord = 11
     _world_area = WorldAreaEnum.MARIOS_PAD
@@ -7750,7 +7751,7 @@ class MariosPadBedFlag(InvisibleFlagLocation):
 
 
 class RoseTownSignFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
         R084_ROSE_TOWN_OUTSIDE,
     ]
@@ -7766,7 +7767,7 @@ class RoseTownSignFlag(InvisibleFlagLocation):
 
 
 class YosterIsleGoalFlag(InvisibleFlagLocation):
-    _room_ids = [R034_YOSTER_ISLE]
+    _rooms = [R034_YOSTER_ISLE]
     _x_coord = 21
     _y_coord = 62
     _world_area = WorldAreaEnum.YOSTER_ISLE
@@ -7781,7 +7782,7 @@ class YosterIsleGoalFlag(InvisibleFlagLocation):
 
 
 class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
-    _room_ids = [R016_MARIOS_PAD]
+    _rooms = [R016_MARIOS_PAD]
     _x_coord = 11
     _y_coord = 34
     _world_area = WorldAreaEnum.MARIOS_PAD
@@ -7794,7 +7795,7 @@ class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
 
 
 class MariosPadLanternFlag(InvisibleFlagLocation):
-    _room_ids = [R016_MARIOS_PAD]
+    _rooms = [R016_MARIOS_PAD]
     _x_coord = 13
     _y_coord = 35
     _world_area = WorldAreaEnum.MARIOS_PAD
@@ -7807,7 +7808,7 @@ class MariosPadLanternFlag(InvisibleFlagLocation):
 
 
 class MariosPadHatFlag(InvisibleFlagLocation):
-    _room_ids = [R189_MARIOS_PIPEHOUSE]
+    _rooms = [R189_MARIOS_PIPEHOUSE]
     _x_coord = 3
     _y_coord = 13
     _world_area = WorldAreaEnum.MARIOS_PAD
@@ -7819,7 +7820,7 @@ class MariosPadHatFlag(InvisibleFlagLocation):
 
 
 class MushroomWayTreeFlag(InvisibleFlagLocation):
-    _room_ids = [R204_MUSHROOM_WAY_AREA_02]
+    _rooms = [R204_MUSHROOM_WAY_AREA_02]
     _x_coord = 11
     _y_coord = 16
     _world_area = WorldAreaEnum.MUSHROOM_WAY
@@ -7832,7 +7833,7 @@ class MushroomWayTreeFlag(InvisibleFlagLocation):
 
 
 class MushroomKingdomSignFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
         R191_MUSHROOM_KINGDOM_OUTSIDE,
     ]
@@ -7848,7 +7849,7 @@ class MushroomKingdomSignFlag(InvisibleFlagLocation):
 
 
 class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R482_MUSHROOM_KINGDOM_DURING_MACK_RAZ_AND_RAINIS_HOUSE,
         R490_MUSHROOM_KINGDOM_RAZ_AND_RAINIS_HOUSE,
     ]
@@ -7863,7 +7864,7 @@ class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
 
 
 class ChancellorThroneFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM,
         R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
     ]
@@ -7878,7 +7879,7 @@ class ChancellorThroneFlag(InvisibleFlagLocation):
 
 
 class BanditsWayFlowerFlag(InvisibleFlagLocation):
-    _room_ids = [R207_BANDITS_WAY_AREA_02]
+    _rooms = [R207_BANDITS_WAY_AREA_02]
     _x_coord = 25
     _y_coord = 89
     _world_area = WorldAreaEnum.BANDITS_WAY
@@ -7892,7 +7893,7 @@ class BanditsWayFlowerFlag(InvisibleFlagLocation):
 
 
 class KeroStairsFlag(InvisibleFlagLocation):
-    _room_ids = [R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS]
+    _rooms = [R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS]
     _x_coord = 5
     _y_coord = 41
     _world_area = WorldAreaEnum.KERO_SEWERS
@@ -7907,7 +7908,7 @@ class KeroStairsFlag(InvisibleFlagLocation):
 
 
 class KeroGateFlag(InvisibleFlagLocation):
-    _room_ids = [R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE]
+    _rooms = [R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE]
     _x_coord = 4
     _y_coord = 88
     _world_area = WorldAreaEnum.KERO_SEWERS
@@ -7922,7 +7923,7 @@ class KeroGateFlag(InvisibleFlagLocation):
 
 
 class MidasTreesFlag(InvisibleFlagLocation):
-    _room_ids = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
+    _rooms = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
     _x_coord = 24
     _y_coord = 26
     _world_area = WorldAreaEnum.MIDAS_RIVER
@@ -7934,7 +7935,7 @@ class MidasTreesFlag(InvisibleFlagLocation):
 
 
 class TadpoleCabinetFlag(InvisibleFlagLocation):
-    _room_ids = [R075_TADPOLE_POND_AREA_01]
+    _rooms = [R075_TADPOLE_POND_AREA_01]
     _x_coord = 25
     _y_coord = 29
     _world_area = WorldAreaEnum.TADPOLE_POND
@@ -7948,7 +7949,7 @@ class TadpoleCabinetFlag(InvisibleFlagLocation):
 
 
 class RoseWayDirtPatchFlag(InvisibleFlagLocation):
-    _room_ids = [R066_ROSE_WAY_EXIT_AREA_WHERE_BOWSERS_TROOPS_GATHERED]
+    _rooms = [R066_ROSE_WAY_EXIT_AREA_WHERE_BOWSERS_TROOPS_GATHERED]
     _x_coord = 25
     _y_coord = 88
     _world_area = WorldAreaEnum.ROSE_WAY
@@ -7959,7 +7960,7 @@ class RoseWayDirtPatchFlag(InvisibleFlagLocation):
 
 
 class RoseTownHydrantFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
         R084_ROSE_TOWN_OUTSIDE,
     ]
@@ -7974,7 +7975,7 @@ class RoseTownHydrantFlag(InvisibleFlagLocation):
 
 
 class RoseTownSinkFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R089_ROSE_TOWN_DURING_BOWYER_THREE_GRANDKIDS_HOUSE,
         R090_ROSE_TOWN_THREE_GRANDKIDS_HOUSE,
     ]
@@ -7989,7 +7990,7 @@ class RoseTownSinkFlag(InvisibleFlagLocation):
 
 
 class RoseTownBowserFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R085_ROSE_TOWN_DURING_BOWYER_INN_1F,
         R086_ROSE_TOWN_INN_1F,
     ]
@@ -8003,7 +8004,7 @@ class RoseTownBowserFlag(InvisibleFlagLocation):
 
 
 class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
-    _room_ids = [R417_GARDENERS_HOUSE_OUTSIDE]
+    _rooms = [R417_GARDENERS_HOUSE_OUTSIDE]
     _x_coord = 2
     _y_coord = 85
     _world_area = WorldAreaEnum.ROSE_TOWN
@@ -8019,7 +8020,7 @@ class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
 
 
 class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
-    _room_ids = [R417_GARDENERS_HOUSE_OUTSIDE]
+    _rooms = [R417_GARDENERS_HOUSE_OUTSIDE]
     _x_coord = 5
     _y_coord = 87
     _world_area = WorldAreaEnum.ROSE_TOWN
@@ -8036,7 +8037,7 @@ class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
 
 
 class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
-    _room_ids = [R419_LAZY_SHELL_CLOUD]
+    _rooms = [R419_LAZY_SHELL_CLOUD]
     _x_coord = 4
     _y_coord = 111
     _world_area = WorldAreaEnum.ROSE_TOWN
@@ -8052,7 +8053,7 @@ class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
 
 
 class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
-    _room_ids = [R231_FOREST_MAZE_SECRET_ENTRANCE]
+    _rooms = [R231_FOREST_MAZE_SECRET_ENTRANCE]
     _x_coord = 18
     _y_coord = 72
     _world_area = WorldAreaEnum.FOREST_MAZE
@@ -8066,7 +8067,7 @@ class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
 
 
 class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
-    _room_ids = [R235_FOREST_MAZE_AREA_08_UNDERGROUND]
+    _rooms = [R235_FOREST_MAZE_AREA_08_UNDERGROUND]
     _x_coord = 25
     _y_coord = 93
     _world_area = WorldAreaEnum.FOREST_MAZE
@@ -8081,7 +8082,7 @@ class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
 
 
 class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
-    _room_ids = [R236_FOREST_MAZE_AREA_07_UNDERGROUND_WSLEEPING_WIGGLER]
+    _rooms = [R236_FOREST_MAZE_AREA_07_UNDERGROUND_WSLEEPING_WIGGLER]
     _x_coord = 2
     _y_coord = 39
     _world_area = WorldAreaEnum.FOREST_MAZE
@@ -8094,7 +8095,7 @@ class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
 
 
 class PipeVaultExteriorFlag(InvisibleFlagLocation):
-    _room_ids = [R055_PIPE_VAULT_ENTRANCE]
+    _rooms = [R055_PIPE_VAULT_ENTRANCE]
     _x_coord = 17
     _y_coord = 19
     _world_area = WorldAreaEnum.PIPE_VAULT
@@ -8109,7 +8110,7 @@ class PipeVaultExteriorFlag(InvisibleFlagLocation):
 
 
 class PipeVaultRedPipeFlag(InvisibleFlagLocation):
-    _room_ids = [R129_PIPE_VAULT_AREA_05]
+    _rooms = [R129_PIPE_VAULT_AREA_05]
     _x_coord = 21
     _y_coord = 107
     _world_area = WorldAreaEnum.PIPE_VAULT
@@ -8124,7 +8125,7 @@ class PipeVaultRedPipeFlag(InvisibleFlagLocation):
 
 
 class YosterIsleHutFlag(InvisibleFlagLocation):
-    _room_ids = [R034_YOSTER_ISLE]
+    _rooms = [R034_YOSTER_ISLE]
     _x_coord = 11
     _y_coord = 70
     _world_area = WorldAreaEnum.YOSTER_ISLE
@@ -8137,7 +8138,7 @@ class YosterIsleHutFlag(InvisibleFlagLocation):
 
 
 class MolevilleHydrantFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES,
         R108_MOLEVILLE_OUTSIDE,
     ]
@@ -8152,7 +8153,7 @@ class MolevilleHydrantFlag(InvisibleFlagLocation):
 
 
 class MolevilleMountainBushFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES,
         R108_MOLEVILLE_OUTSIDE,
     ]
@@ -8167,7 +8168,7 @@ class MolevilleMountainBushFlag(InvisibleFlagLocation):
 
 
 class MolevilleBedFlag(InvisibleFlagLocation):
-    _room_ids = [R337_MOLEVILLE_INN]
+    _rooms = [R337_MOLEVILLE_INN]
     _x_coord = 6
     _y_coord = 12
     _world_area = WorldAreaEnum.MOLEVILLE
@@ -8179,7 +8180,7 @@ class MolevilleBedFlag(InvisibleFlagLocation):
 
 
 class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
-    _room_ids = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
+    _rooms = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
     _x_coord = 5
     _y_coord = 51
     _world_area = WorldAreaEnum.MOLEVILLE
@@ -8192,7 +8193,7 @@ class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
 
 
 class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
-    _room_ids = [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
+    _rooms = [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
     _x_coord = 8
     _y_coord = 13
     _world_area = WorldAreaEnum.MOLEVILLE
@@ -8206,7 +8207,7 @@ class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
 
 
 class MolevilleMinesEntryFlag(InvisibleFlagLocation):
-    _room_ids = [R290_MOLEVILLE_MINES_AREA_19_FROM_OUTSIDE_AFTER_PAYING]
+    _rooms = [R290_MOLEVILLE_MINES_AREA_19_FROM_OUTSIDE_AFTER_PAYING]
     _x_coord = 22
     _y_coord = 23
     _world_area = WorldAreaEnum.MOLEVILLE
@@ -8221,7 +8222,7 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
 
 
 class BoosterPassCornerBushFlag(InvisibleFlagLocation):
-    _room_ids = [R101_BOOSTER_PASS_AREA_02]
+    _rooms = [R101_BOOSTER_PASS_AREA_02]
     _x_coord = 17
     _y_coord = 112
     _world_area = WorldAreaEnum.BOOSTER_PASS
@@ -8234,7 +8235,7 @@ class BoosterPassCornerBushFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
-    _room_ids = [R202_BOOSTER_TOWER_ENTRANCE]
+    _rooms = [R202_BOOSTER_TOWER_ENTRANCE]
     _x_coord = 4
     _y_coord = 110
     _world_area = WorldAreaEnum.BOOSTER_TOWER
@@ -8246,7 +8247,7 @@ class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerDeskFlag(InvisibleFlagLocation):
-    _room_ids = [R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM]
+    _rooms = [R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM]
     _x_coord = 24
     _y_coord = 113
     _world_area = WorldAreaEnum.BOOSTER_TOWER
@@ -8260,7 +8261,7 @@ class BoosterTowerDeskFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
-    _room_ids = [R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER]
+    _rooms = [R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER]
     _x_coord = 19
     _y_coord = 122
     _world_area = WorldAreaEnum.BOOSTER_TOWER
@@ -8274,7 +8275,7 @@ class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerCurtainFlag(InvisibleFlagLocation):
-    _room_ids = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
+    _rooms = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
     _x_coord = 7
     _y_coord = 64
     _world_area = WorldAreaEnum.BOOSTER_TOWER
@@ -8289,7 +8290,7 @@ class BoosterTowerCurtainFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
-    _room_ids = [R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER]
+    _rooms = [R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER]
     _x_coord = 5
     _y_coord = 114
     _world_area = WorldAreaEnum.BOOSTER_TOWER
@@ -8303,7 +8304,7 @@ class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
-    _room_ids = [R038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
+    _rooms = [R038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     _x_coord = 15
     _y_coord = 83
     _world_area = WorldAreaEnum.BOOSTER_TOWER
@@ -8318,7 +8319,7 @@ class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
-    _room_ids = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _x_coord = 7
     _y_coord = 18
     _world_area = WorldAreaEnum.BOOSTER_TOWER
@@ -8331,7 +8332,7 @@ class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
-    _room_ids = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _x_coord = 7
     _y_coord = 24
     _world_area = WorldAreaEnum.BOOSTER_TOWER
@@ -8345,7 +8346,7 @@ class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
 
 
 class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R005_MARRYMORE_OUTSIDE_DURING_BOOSTER,
         R064_MARRYMORE_OUTSIDE,
     ]
@@ -8362,7 +8363,7 @@ class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
 
 
 class MarrymoreHallwayFlag(InvisibleFlagLocation):
-    _room_ids = [R011_MARRYMORE_INN_3F]
+    _rooms = [R011_MARRYMORE_INN_3F]
     _x_coord = 18
     _y_coord = 76
     _world_area = WorldAreaEnum.MARRYMORE
@@ -8374,7 +8375,7 @@ class MarrymoreHallwayFlag(InvisibleFlagLocation):
 
 
 class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
-    _room_ids = [R012_MARRYMORE_INN_SUITE_ROOM]
+    _rooms = [R012_MARRYMORE_INN_SUITE_ROOM]
     _x_coord = 7
     _y_coord = 13
     _world_area = WorldAreaEnum.MARRYMORE
@@ -8387,7 +8388,7 @@ class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
 
 
 class MarrymoreKitchenFlag(InvisibleFlagLocation):
-    _room_ids = [R155_MARRYMORE_CHAPEL_KITCHEN]
+    _rooms = [R155_MARRYMORE_CHAPEL_KITCHEN]
     _x_coord = 2
     _y_coord = 20
     _world_area = WorldAreaEnum.MARRYMORE
@@ -8400,7 +8401,7 @@ class MarrymoreKitchenFlag(InvisibleFlagLocation):
 
 
 class MarrymoreFireplaceFlag(InvisibleFlagLocation):
-    _room_ids = [R152_MARRYMORE_CHAPEL_MAIN_HALL]
+    _rooms = [R152_MARRYMORE_CHAPEL_MAIN_HALL]
     _x_coord = 9
     _y_coord = 33
     _world_area = WorldAreaEnum.MARRYMORE
@@ -8413,7 +8414,7 @@ class MarrymoreFireplaceFlag(InvisibleFlagLocation):
 
 
 class MarrymoreOrganFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R065_MARRYMORE_CHAPEL_SANCTUARY,
         R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
     ]
@@ -8431,7 +8432,7 @@ class MarrymoreOrganFlag(InvisibleFlagLocation):
 
 
 class MarrymoreAltarFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R065_MARRYMORE_CHAPEL_SANCTUARY,
         R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
     ]
@@ -8448,7 +8449,7 @@ class MarrymoreAltarFlag(InvisibleFlagLocation):
 
 
 class StarHillNorthStarFlag(InvisibleFlagLocation):
-    _room_ids = [R158_STAR_HILL_AREA_02]
+    _rooms = [R158_STAR_HILL_AREA_02]
     _x_coord = 8
     _y_coord = 69
     _world_area = WorldAreaEnum.STAR_HILL
@@ -8461,7 +8462,7 @@ class StarHillNorthStarFlag(InvisibleFlagLocation):
 
 
 class SeasideTownAnchorFlag(InvisibleFlagLocation):
-    _room_ids = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
+    _rooms = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     _x_coord = 14
     _y_coord = 57
     _world_area = WorldAreaEnum.SEASIDE_TOWN
@@ -8473,7 +8474,7 @@ class SeasideTownAnchorFlag(InvisibleFlagLocation):
 
 
 class SeasideTownHydrantFlag(InvisibleFlagLocation):
-    _room_ids = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
+    _rooms = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     _x_coord = 16
     _y_coord = 25
     _world_area = WorldAreaEnum.SEASIDE_TOWN
@@ -8487,7 +8488,7 @@ class SeasideTownHydrantFlag(InvisibleFlagLocation):
 
 
 class SeasideTownBucketFlag(InvisibleFlagLocation):
-    _room_ids = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
+    _rooms = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     _x_coord = 20
     _y_coord = 31
     _world_area = WorldAreaEnum.SEASIDE_TOWN
@@ -8499,7 +8500,7 @@ class SeasideTownBucketFlag(InvisibleFlagLocation):
 
 
 class SeasideTownFlowersFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R217_SEASIDE_TOWN_DURING_YARIDOVICH_ACCESSORY_SHOP_RIGHTMOST,
         R313_SEASIDE_TOWN_ACCESSORY_SHOP,
     ]
@@ -8514,7 +8515,7 @@ class SeasideTownFlowersFlag(InvisibleFlagLocation):
 
 
 class SeasideTownShedBoxFlag(InvisibleFlagLocation):
-    _room_ids = [R314_SEASIDE_TOWN_SHED]
+    _rooms = [R314_SEASIDE_TOWN_SHED]
     _x_coord = 5
     _y_coord = 23
     _world_area = WorldAreaEnum.SEASIDE_TOWN
@@ -8530,7 +8531,7 @@ class SeasideTownShedBoxFlag(InvisibleFlagLocation):
 
 
 class SeaArrowFlag(InvisibleFlagLocation):
-    _room_ids = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
+    _rooms = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
     _x_coord = 8
     _y_coord = 21
     _world_area = WorldAreaEnum.SEA
@@ -8545,7 +8546,7 @@ class SeaArrowFlag(InvisibleFlagLocation):
 
 
 class SeaBoxesFlag(InvisibleFlagLocation):
-    _room_ids = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
+    _rooms = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
     _x_coord = 9
     _y_coord = 36
     _world_area = WorldAreaEnum.SEA
@@ -8559,7 +8560,7 @@ class SeaBoxesFlag(InvisibleFlagLocation):
 
 
 class SeaStalagnateFlag(InvisibleFlagLocation):
-    _room_ids = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
+    _rooms = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
     _x_coord = 18
     _y_coord = 43
     _world_area = WorldAreaEnum.SEA
@@ -8575,7 +8576,7 @@ class SeaStalagnateFlag(InvisibleFlagLocation):
 
 
 class SeaUnderwaterSailFlag(InvisibleFlagLocation):
-    _room_ids = [R174_SEA_AREA_08_SHORE_WITH_SUNKEN_SHIP]
+    _rooms = [R174_SEA_AREA_08_SHORE_WITH_SUNKEN_SHIP]
     _x_coord = 4
     _y_coord = 41
     _world_area = WorldAreaEnum.SEA
@@ -8588,7 +8589,7 @@ class SeaUnderwaterSailFlag(InvisibleFlagLocation):
 
 
 class ShipBarrelPileFlag(InvisibleFlagLocation):
-    _room_ids = [R162_SUNKEN_SHIP_AREA_04_GREAPERS_DRY_BONES]
+    _rooms = [R162_SUNKEN_SHIP_AREA_04_GREAPERS_DRY_BONES]
     _x_coord = 7
     _y_coord = 66
     _world_area = WorldAreaEnum.SUNKEN_SHIP
@@ -8602,7 +8603,7 @@ class ShipBarrelPileFlag(InvisibleFlagLocation):
 
 
 class ShipDoorMarkerFlag(InvisibleFlagLocation):
-    _room_ids = [R165_SUNKEN_SHIP_AREA_06_PUZZLE_ROOM_PASSAGEWAY]
+    _rooms = [R165_SUNKEN_SHIP_AREA_06_PUZZLE_ROOM_PASSAGEWAY]
     _x_coord = 18
     _y_coord = 82
     _world_area = WorldAreaEnum.SUNKEN_SHIP
@@ -8617,7 +8618,7 @@ class ShipDoorMarkerFlag(InvisibleFlagLocation):
 
 
 class ShipButtonFlag(InvisibleFlagLocation):
-    _room_ids = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
+    _rooms = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
     _x_coord = 16
     _y_coord = 133
     _world_area = WorldAreaEnum.SUNKEN_SHIP
@@ -8630,7 +8631,7 @@ class ShipButtonFlag(InvisibleFlagLocation):
 
 
 class ShipSwitchFlag(InvisibleFlagLocation):
-    _room_ids = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
+    _rooms = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
     _x_coord = 17
     _y_coord = 121
     _world_area = WorldAreaEnum.SUNKEN_SHIP
@@ -8645,7 +8646,7 @@ class ShipSwitchFlag(InvisibleFlagLocation):
 
 
 class LandsEndPlatformFlag(InvisibleFlagLocation):
-    _room_ids = [R137_LANDS_END_AREA_01]
+    _rooms = [R137_LANDS_END_AREA_01]
     _x_coord = 6
     _y_coord = 29
     _world_area = WorldAreaEnum.LANDS_END
@@ -8656,7 +8657,7 @@ class LandsEndPlatformFlag(InvisibleFlagLocation):
 
 
 class LandsEndCannonFlag(InvisibleFlagLocation):
-    _room_ids = [R139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL]
+    _rooms = [R139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL]
     _x_coord = 11
     _y_coord = 115
     _world_area = WorldAreaEnum.LANDS_END
@@ -8670,7 +8671,7 @@ class LandsEndCannonFlag(InvisibleFlagLocation):
 
 
 class LandsEndArrowFlag(InvisibleFlagLocation):
-    _room_ids = [R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]
+    _rooms = [R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]
     _x_coord = 28
     _y_coord = 29
     _world_area = WorldAreaEnum.LANDS_END
@@ -8684,7 +8685,7 @@ class LandsEndArrowFlag(InvisibleFlagLocation):
 
 
 class LandsEndHillFlag(InvisibleFlagLocation):
-    _room_ids = [R404_LANDS_END_DESERT_AREA_04]
+    _rooms = [R404_LANDS_END_DESERT_AREA_04]
     _x_coord = 23
     _y_coord = 96
     _world_area = WorldAreaEnum.LANDS_END
@@ -8699,7 +8700,7 @@ class LandsEndHillFlag(InvisibleFlagLocation):
 
 
 class LandsEndTwoHillFlag(InvisibleFlagLocation):
-    _room_ids = [R319_LANDS_END_DESERT_AREA_06]
+    _rooms = [R319_LANDS_END_DESERT_AREA_06]
     _x_coord = 8
     _y_coord = 121
     _world_area = WorldAreaEnum.LANDS_END
@@ -8712,7 +8713,7 @@ class LandsEndTwoHillFlag(InvisibleFlagLocation):
 
 
 class LandsEndStalagmiteFlag(InvisibleFlagLocation):
-    _room_ids = [R265_LANDS_END_UNDERGROUND_AREA_03]
+    _rooms = [R265_LANDS_END_UNDERGROUND_AREA_03]
     _x_coord = 22
     _y_coord = 80
     _world_area = WorldAreaEnum.LANDS_END
@@ -8729,7 +8730,7 @@ class LandsEndStalagmiteFlag(InvisibleFlagLocation):
 
 
 class LandsEndCliffBushFlag(InvisibleFlagLocation):
-    _room_ids = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
+    _rooms = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _x_coord = 23
     _y_coord = 103
     _world_area = WorldAreaEnum.LANDS_END
@@ -8743,7 +8744,7 @@ class LandsEndCliffBushFlag(InvisibleFlagLocation):
 
 
 class LandsEndSignFlag(InvisibleFlagLocation):
-    _room_ids = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
+    _rooms = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _x_coord = 24
     _y_coord = 118
     _world_area = WorldAreaEnum.LANDS_END
@@ -8759,7 +8760,7 @@ class LandsEndSignFlag(InvisibleFlagLocation):
 
 
 class DojoBonsaiFlag(InvisibleFlagLocation):
-    _room_ids = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _x_coord = 6
     _y_coord = 9
     _world_area = WorldAreaEnum.MONSTRO_TOWN
@@ -8771,7 +8772,7 @@ class DojoBonsaiFlag(InvisibleFlagLocation):
 
 
 class MonstroEntranceSignFlag(InvisibleFlagLocation):
-    _room_ids = [R267_MONSTRO_TOWN_ENTRANCE]
+    _rooms = [R267_MONSTRO_TOWN_ENTRANCE]
     _x_coord = 9
     _y_coord = 102
     _world_area = WorldAreaEnum.MONSTRO_TOWN
@@ -8782,7 +8783,7 @@ class MonstroEntranceSignFlag(InvisibleFlagLocation):
 
 
 class MonstroBatFlag(InvisibleFlagLocation):
-    _room_ids = [R324_MONSTRO_TOWN_OUTSIDE]
+    _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _x_coord = 5
     _y_coord = 51
     _world_area = WorldAreaEnum.MONSTRO_TOWN
@@ -8795,7 +8796,7 @@ class MonstroBatFlag(InvisibleFlagLocation):
 
 
 class MonstroFanFlag(InvisibleFlagLocation):
-    _room_ids = [R395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F]
+    _rooms = [R395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F]
     _x_coord = 12
     _y_coord = 80
     _world_area = WorldAreaEnum.MONSTRO_TOWN
@@ -8808,7 +8809,7 @@ class MonstroFanFlag(InvisibleFlagLocation):
 
 
 class MonstroShellFlag(InvisibleFlagLocation):
-    _room_ids = [R398_MONSTRO_TOWN_WEAPON_AND_ARMOR_SHOP]
+    _rooms = [R398_MONSTRO_TOWN_WEAPON_AND_ARMOR_SHOP]
     _x_coord = 16
     _y_coord = 15
     _world_area = WorldAreaEnum.MONSTRO_TOWN
@@ -8821,7 +8822,7 @@ class MonstroShellFlag(InvisibleFlagLocation):
 
 
 class BeanValleyPipeFlag(InvisibleFlagLocation):
-    _room_ids = [R252_BEAN_VALLEY_MAIN_AREA]
+    _rooms = [R252_BEAN_VALLEY_MAIN_AREA]
     _x_coord = 17
     _y_coord = 85
     _world_area = WorldAreaEnum.BEAN_VALLEY
@@ -8834,7 +8835,7 @@ class BeanValleyPipeFlag(InvisibleFlagLocation):
 
 
 class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
-    _room_ids = [R253_BEAN_VALLEY_MAGIC_BRICK_TO_BEANSTALK_AREA]
+    _rooms = [R253_BEAN_VALLEY_MAGIC_BRICK_TO_BEANSTALK_AREA]
     _x_coord = 27
     _y_coord = 27
     _world_area = WorldAreaEnum.BEAN_VALLEY
@@ -8845,7 +8846,7 @@ class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
 
 
 class CasinoBellFlag(InvisibleFlagLocation):
-    _room_ids = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
+    _rooms = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
     _x_coord = 14
     _y_coord = 19
     _world_area = WorldAreaEnum.CASINO
@@ -8860,7 +8861,7 @@ class CasinoBellFlag(InvisibleFlagLocation):
 
 
 class NimbusGoldGoombaFlag(InvisibleFlagLocation):
-    _room_ids = [R341_NIMBUS_LAND_GARROS_HOUSE]
+    _rooms = [R341_NIMBUS_LAND_GARROS_HOUSE]
     _x_coord = 5
     _y_coord = 14
     _world_area = WorldAreaEnum.NIMBUS_LAND
@@ -8874,7 +8875,7 @@ class NimbusGoldGoombaFlag(InvisibleFlagLocation):
 
 
 class NimbusInnLobbyFlag(InvisibleFlagLocation):
-    _room_ids = [R343_NIMBUS_LAND_INN]
+    _rooms = [R343_NIMBUS_LAND_INN]
     _x_coord = 6
     _y_coord = 84
     _world_area = WorldAreaEnum.NIMBUS_LAND
@@ -8890,7 +8891,7 @@ class NimbusInnLobbyFlag(InvisibleFlagLocation):
 
 
 class NimbusPlantFlag(InvisibleFlagLocation):
-    _room_ids = [
+    _rooms = [
         R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT
     ]
     _x_coord = 27
@@ -8906,7 +8907,7 @@ class NimbusPlantFlag(InvisibleFlagLocation):
 
 
 class NimbusBirdFlag(InvisibleFlagLocation):
-    _room_ids = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
+    _rooms = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
     _x_coord = 28
     _y_coord = 48
     _world_area = WorldAreaEnum.NIMBUS_LAND
@@ -8920,7 +8921,7 @@ class NimbusBirdFlag(InvisibleFlagLocation):
 
 
 class NimbusHotSpringsFlag(InvisibleFlagLocation):
-    _room_ids = [R447_NIMBUS_LAND_HOT_SPRINGS]
+    _rooms = [R447_NIMBUS_LAND_HOT_SPRINGS]
     _x_coord = 19
     _y_coord = 114
     _world_area = WorldAreaEnum.NIMBUS_LAND
@@ -8934,7 +8935,7 @@ class NimbusHotSpringsFlag(InvisibleFlagLocation):
 
 
 class VolcanoShipsFlag(InvisibleFlagLocation):
-    _room_ids = [R353_VOLCANO_AREA_18_HINO_MART]
+    _rooms = [R353_VOLCANO_AREA_18_HINO_MART]
     _x_coord = 11
     _y_coord = 61
     _world_area = WorldAreaEnum.BARREL_VOLCANO
@@ -8948,7 +8949,7 @@ class VolcanoShipsFlag(InvisibleFlagLocation):
 
 
 class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
-    _room_ids = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
+    _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _x_coord = 26
     _y_coord = 97
     _world_area = WorldAreaEnum.BOWSERS_KEEP
@@ -8963,7 +8964,7 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
 
 
 class KeepThwompFlag(InvisibleFlagLocation):
-    _room_ids = [R449_BOWSERS_KEEP_AREA_11_THWOMPBULLET_ROOM_AFTER_MAGIKOOPAS_ROOM]
+    _rooms = [R449_BOWSERS_KEEP_AREA_11_THWOMPBULLET_ROOM_AFTER_MAGIKOOPAS_ROOM]
     _x_coord = 19
     _y_coord = 47
     _world_area = WorldAreaEnum.BOWSERS_KEEP
@@ -8976,7 +8977,7 @@ class KeepThwompFlag(InvisibleFlagLocation):
 
 
 class FactoryCanopyFlag(InvisibleFlagLocation):
-    _room_ids = [R220_SMITHY_FACTORY_AREA_02_WSAVE_POINT]
+    _rooms = [R220_SMITHY_FACTORY_AREA_02_WSAVE_POINT]
     _x_coord = 16
     _y_coord = 15
     _world_area = WorldAreaEnum.FACTORY
@@ -8991,7 +8992,7 @@ class FactoryCanopyFlag(InvisibleFlagLocation):
 
 
 class FactoryLugnutFlag(InvisibleFlagLocation):
-    _room_ids = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
+    _rooms = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
     _x_coord = 23
     _y_coord = 52
     _world_area = WorldAreaEnum.FACTORY
@@ -9005,7 +9006,7 @@ class FactoryLugnutFlag(InvisibleFlagLocation):
 
 
 class FactoryTrampolineFlag(InvisibleFlagLocation):
-    _room_ids = [R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN]
+    _rooms = [R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN]
     _x_coord = 14
     _y_coord = 9
     _world_area = WorldAreaEnum.FACTORY
@@ -9019,7 +9020,7 @@ class FactoryTrampolineFlag(InvisibleFlagLocation):
 
 
 class FactoryButtonFlag(InvisibleFlagLocation):
-    _room_ids = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
+    _rooms = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _x_coord = 4
     _y_coord = 36
     _world_area = WorldAreaEnum.INNER_FACTORY

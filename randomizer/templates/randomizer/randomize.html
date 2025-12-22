@@ -352,15 +352,39 @@
                                 $(box).prop("checked", exists_in_default)
                             })
                         }
+                        else if (flag.type == "categorization_with_ordinance") {
+                            idval = $.escapeSelector(`${flag.subcategory}.${flag.id}`)
+                            let container = $(`#${idval}`)
+                            // Reset all checkboxes and order attributes
+                            container.find('.ordinance-checkbox').each(function() {
+                                $(this).prop("checked", false)
+                                $(this).removeAttr('data-ordinance-order')
+                                $(this).siblings('label').find('.ordinance-order').text('')
+                            })
+                            // Set defaults based on flag.default (array of {id, order})
+                            if (flag.default) {
+                                let defaultsWithOrder = flag.default.filter(d => d.order !== null)
+                                    .sort((a, b) => a.order - b.order)
+                                defaultsWithOrder.forEach((d, index) => {
+                                    let checkbox = container.find(`.ordinance-checkbox[data-option-id="${d.id}"]`)
+                                    checkbox.prop("checked", true)
+                                    checkbox.attr('data-ordinance-order', index + 1)
+                                    checkbox.siblings('label').find('.ordinance-order').text((index + 1) + '.')
+                                })
+                            }
+                        }
                     }
                 })
                 // what to do about cosmetics? have its own reset button?
 
                 if (!!flags) {
                     // Parse flag string and set flags on the page.
-                    for (let word of flags.trim().split(/ +/g)) {
-                        subcategory = word[0]
-                        subcategory_flags = word.substring(1).split("|")
+                    // Format: X(flag_id|flag_id:value|...) where X is the subcategory letter
+                    const categoryPattern = /([A-Z])\(([^)]*)\)/g;
+                    let match;
+                    while ((match = categoryPattern.exec(flags)) !== null) {
+                        subcategory = match[1];
+                        subcategory_flags = match[2].split("|");
                         for (flag of subcategory_flags) {
                             flag_parsed = flag.split(":")
                             if (flag_parsed.length == 1) {
@@ -370,9 +394,38 @@
                             else {
                                 idval = `${subcategory}.${flag_parsed[0]}`
                                 obj = $(`#${$.escapeSelector(idval)}`)
+                                if (!obj.length || !obj[0]) continue;
                                 type = obj[0].type
-                                if (type == "number" || type == "select-one") {
+
+                                // Check if this is an ordinance container (div, not input)
+                                if (obj.hasClass('ordinance-option-container')) {
+                                    // Parse colon-separated indices (flag_parsed already split on colons)
+                                    // flag_parsed[0] is flag id, rest are indices
+                                    let orderedIndices = flag_parsed.slice(1)
+                                    let allCheckboxes = obj.find('.ordinance-checkbox').toArray()
+                                    // Uncheck all first
+                                    obj.find('.ordinance-checkbox').each(function() {
+                                        $(this).prop("checked", false)
+                                        $(this).removeAttr('data-ordinance-order')
+                                        $(this).siblings('label').find('.ordinance-order').text('')
+                                    })
+                                    // Check and set order based on indices
+                                    orderedIndices.forEach((indexStr, order) => {
+                                        let optIndex = parseInt(indexStr)
+                                        if (optIndex >= 0 && optIndex < allCheckboxes.length) {
+                                            let checkbox = $(allCheckboxes[optIndex])
+                                            checkbox.prop("checked", true)
+                                            checkbox.attr('data-ordinance-order', order + 1)
+                                            checkbox.siblings('label').find('.ordinance-order').text((order + 1) + '.')
+                                        }
+                                    })
+                                }
+                                else if (type == "number") {
                                     obj.val(flag_parsed[1])
+                                }
+                                else if (type == "select-one") {
+                                    // Select values are uppercase, flag string values are lowercase
+                                    obj.val(flag_parsed[1].toUpperCase())
                                 }
                                 else {
                                     // condensed checkbox data
@@ -402,6 +455,7 @@
             }
 
             // Helper function to build flag string part for a specific flag and recursively handle choices and suboptions.
+            // Flags that match their default values are excluded from the string.
             function buildFlagStringPart(flag, mode, flagStrings, parent_value = '') {
                 let idval = `#${flag.subcategory}\\.${flag.id}`;
 
@@ -410,18 +464,39 @@
                         if ($(idval).prop("disabled")) {
                             return null
                         }
-                        else if ($(idval).is(':checked')) {
+                        let isChecked = $(idval).is(':checked')
+                        // Exclude if matches default (default for boolean is typically false)
+                        if (isChecked === flag.default) {
+                            return null
+                        }
+                        else if (isChecked) {
                             return flag.id
                         }
                         else {
                             return null
                         }
                     }
-                    else if (flag.type == "select_one" || flag.type == "number") {
+                    else if (flag.type == "select_one") {
                         if ($(idval).prop("disabled")) {
                             return null
                         }
-                        return `${flag.id}:${$(idval).val()}`
+                        let currentVal = $(idval).val()
+                        // Exclude if matches default
+                        if (currentVal === flag.default.id) {
+                            return null
+                        }
+                        return `${flag.id}:${currentVal.toLowerCase()}`
+                    }
+                    else if (flag.type == "number") {
+                        if ($(idval).prop("disabled")) {
+                            return null
+                        }
+                        let currentVal = parseInt($(idval).val())
+                        // Exclude if matches default
+                        if (currentVal === flag.default) {
+                            return null
+                        }
+                        return `${flag.id}:${currentVal}`
                     }
                     else if (flag.type == "categorization") {
                         if ($(`${idval}\\.container`).hasClass("disabled")) {
@@ -432,7 +507,57 @@
                         for (box of checkboxes) {
                             checks.push($(box).prop("checked"))
                         }
+                        // Check if matches default - compare enabled options
+                        let defaultIds = flag.default.map(d => d.id)
+                        let currentIds = []
+                        checkboxes.each(function() {
+                            if ($(this).prop("checked")) {
+                                let idParts = $(this).prop("id").split(".")
+                                currentIds.push(idParts[idParts.length - 1])
+                            }
+                        })
+                        // Sort and compare
+                        if (JSON.stringify(defaultIds.sort()) === JSON.stringify(currentIds.sort())) {
+                            return null
+                        }
                         return `${flag.id}:${getBase64StringFromBoolean(checks)}`
+                    }
+                    else if (flag.type == "categorization_with_ordinance") {
+                        if ($(`${idval}\\.container`).hasClass("disabled")) {
+                            return null
+                        }
+                        // Get ordered list of checked option indices
+                        let container = $(idval)
+                        let allCheckboxes = container.find(".ordinance-checkbox").toArray()
+                        let orderedItems = []
+                        container.find(".ordinance-checkbox:checked").each(function() {
+                            let order = parseInt($(this).attr('data-ordinance-order') || '999')
+                            let optionId = $(this).attr('data-option-id')
+                            // Find index of this option in the options array
+                            let index = allCheckboxes.findIndex(cb => $(cb).attr('data-option-id') === optionId)
+                            orderedItems.push({order: order, index: index})
+                        })
+                        orderedItems.sort((a, b) => a.order - b.order)
+                        let selectedIndices = orderedItems.map(item => item.index)
+
+                        // Check if matches default
+                        let defaultIndices = flag.default.filter(d => d.order !== null)
+                            .sort((a, b) => a.order - b.order)
+                            .map(d => {
+                                // Find index by id in options array
+                                return flag.options.findIndex(opt => opt.id === d.id)
+                            })
+
+                        if (JSON.stringify(selectedIndices) === JSON.stringify(defaultIndices)) {
+                            return null
+                        }
+
+                        if (selectedIndices.length === 0) {
+                            return null
+                        }
+
+                        // Encode as colon-separated indices in order
+                        return `${flag.id}:${selectedIndices.join(":")}`
                     }
                 }
                 else {
@@ -442,17 +567,8 @@
 
             // Build flag string based on selected flags visible for this mode.
             function buildFlagString() {
-                
-
-                $('#all-flags-container').find('input[type="checkbox"]').toArray().forEach(c => {
-                    apply_dependencies($(c), 'checkbox')
-                })
-                $('#all-flags-container').find('select').toArray().forEach(c => {
-                    apply_dependencies($(c), 'select')
-                })
-                $('#all-flags-container').find('input[type="number"]').toArray().forEach(c => {
-                    apply_dependencies($(c), 'number')
-                })
+                // Apply flag requirements from requires_all/requires_any/disabled_if_all
+                applyFlagRequirements();
 
                 let mode = $('#mode').val();
 
@@ -468,10 +584,11 @@
                 cosmetic_chunks = []
 
                 // Check each flag if it's selected, and check choices and/or options for it.
+                // Format: X(flag_id|flag_id:value|...) where X is the subcategory letter
                 for (letter in flags_grouped) {
                     flag_strings = flags_grouped[letter].map(f => buildFlagStringPart(f, mode)).filter(f => !!f)
                     if (!!flag_strings.length) {
-                        word = `${letter}${flag_strings.join("|")}`
+                        word = `${letter}(${flag_strings.join("|")})`
                         if (letter == "R") {
                             cosmetic_chunks.push(word)
                         }
@@ -677,240 +794,171 @@
                 }
             })
 
-            // I really would have liked to auto generate this from the python definitions but couldnt figure out a nice way to do it
-            const apply_dependencies = (item, type) => {
-                id = item.prop("id")
-                if (type == "checkbox") {
-                    value = item.prop("checked")
-                    id_parts = id.split('.')
-                    if (id_parts.length == 3 && `${id_parts[0]}.${id_parts[1]}` == "P.avail") {
-                        if (value == false) {
-                            if ($('#P\\.start').val() == id_parts[2]) {
-                                $('#P\\.start').val('random')
-                            }
-                        }
-                        $(`#P\\.start option[value="${id_parts[2]}"]`).prop("disabled", !value)
-                    }
-                    else if (id == "P.random") {
-                        boxes = $(`#${$.escapeSelector('P.avail')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["P.size", "P.start", "P.max", "P.allsprites", ...(boxes.map(b => $(b).prop("id")))]
-                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
-                        $("#P\\.avail\\.container .multiselect-button-container button").prop("disabled", !value)
-                        $("#P\\.avail\\.container .multiselect-button-container .multiselect-filter").prop("disabled", !value)
-                        if (value == false) {
-                            $(`#${$.escapeSelector("P.avail.container")}`).addClass("disabled")
-                            $(`#${$.escapeSelector('P.start')}`).siblings("label").addClass("disabled")
-                            $(`#${$.escapeSelector('P.max')}`).siblings("label").addClass("disabled")
-                            $(`#${$.escapeSelector('P.size')}`).siblings("label").addClass("disabled")
-                            $(`#${$.escapeSelector('P.allsprites')}`).addClass("disabled")
-                        }
-                        else {
-                            $(`#${$.escapeSelector("P.avail.container")}`).removeClass("disabled")
-                            $(`#${$.escapeSelector('P.start')}`).siblings("label").removeClass("disabled")
-                            $(`#${$.escapeSelector('P.max')}`).siblings("label").removeClass("disabled")
-                            $(`#${$.escapeSelector('P.size')}`).siblings("label").removeClass("disabled")
-                            $(`#${$.escapeSelector('P.allsprites')}`).removeClass("disabled")
-                        }
-                    }
-                    else if (id == "X.random") {
-                        boxes = $(`#${$.escapeSelector('X.fights')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["X.avail", "X.restrict_map", ...(boxes.map(b => $(b).prop("id")))]
-                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
-                        $("#X\\.fights\\.container .multiselect-button-container button").prop("disabled", !value)
-                        $("#X\\.fights\\.container .multiselect-button-container .multiselect-filter").prop("disabled", !value)
-                        if (value == false) {
-                            $(`#${$.escapeSelector("X.fights.container")}`).addClass("disabled")
-                            $(`#${$.escapeSelector('X.avail')}`).siblings("label").addClass("disabled")
-                        }
-                        else {
-                            $(`#${$.escapeSelector("X.fights.container")}`).removeClass("disabled")
-                            $(`#${$.escapeSelector('X.avail')}`).siblings("label").removeClass("disabled")
-                        }
-                    }
-                    else if (id == "T.random") {
-                        boxes = $(`#${$.escapeSelector('L.chests')}, #${$.escapeSelector('L.coins')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["L.keys_anywhere", "L.stars_anywhere", "T.beetle", "T.kamek", "T.marry", "T.quality", "T.fireworks", "T.mimics", "T.xpstars", "T.slots"]
-                        if (!value || $(`#${$.escapeSelector('T.quality')}`).val() != "empty") {
-                            dependent_ids.push(...["T.bias", "T.restrict_monstro", "L.moveflags"])
-                        }
-                        if (!value || $(`#${$.escapeSelector('T.quality')}`).val() != "empty") {
-                            $(`#${$.escapeSelector('T.ym')}`).prop("disabled", true)
-                        }
-                        else {
-                            $(`#${$.escapeSelector('T.ym')}`).prop("disabled", false)
-                        }
+            // Handle ordinance checkbox clicks - track order of selection
+            $('body').on('change', '.ordinance-checkbox', function() {
+                let container = $(this).closest('.ordinance-option-container');
+                let maxSelections = 5;
 
-                        if (value && $(`#${$.escapeSelector('T.quality')}`).val() == "empty" && $(`#${$.escapeSelector('T.xpstars')}`).prop("checked")) {
-                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", true)
-                            $(`#I\\.xpstar`).siblings("label").addClass("disabled")
-                        }
-                        else {
-                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", false)
-                            $(`#I\\.xpstar`).siblings("label").removeClass("disabled")
-                        }
+                if ($(this).is(':checked')) {
+                    // Count currently checked items
+                    let checkedCount = container.find('.ordinance-checkbox:checked').length;
 
+                    if (checkedCount > maxSelections) {
+                        // Uncheck this one - already at max
+                        $(this).prop('checked', false);
+                        return;
+                    }
 
-                        if (!value || $(`#${$.escapeSelector('L.keys_anywhere')}`).prop("checked") || $(`#${$.escapeSelector('L.stars_anywhere')}`).prop("checked")) {
-                            $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container .multiselect-button-container button").prop("disabled", !value)
-                            $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container .multiselect-button-container .multiselect-filter").prop("disabled", !value)
-                            dependent_ids.push(...(boxes.map(b => $(b).prop("id"))))
-                            if (!value) {
-                                $(`#${$.escapeSelector("L.chests.container")}`).addClass("disabled")
-                                $(`#${$.escapeSelector("L.coins.container")}`).addClass("disabled")
-                            }
-                            else {
-                                $(`#${$.escapeSelector("L.chests.container")}`).removeClass("disabled")
-                                $(`#${$.escapeSelector("L.coins.container")}`).removeClass("disabled")
-                            }
-                        }
-                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
-                        if (!value) {
-                            $(`#T\\.quality, #T\\.fireworks`).siblings("label").addClass("disabled")
-                        }
-                        else {
-                            $(`#T\\.quality, #T\\.fireworks`).siblings("label").removeClass("disabled")
-                        }
-                    }
-                    /*else if (id == "T.restrict_monstro") {
-                        $("#T\\.hard").prop("disabled", !value)
-                    }*/
-                    else if (id == "L.keys_anywhere" || id == "L.stars_anywhere") {
-                        show_lists = $(`#${$.escapeSelector('T.random')}`).prop("checked") && ($(`#${$.escapeSelector('L.keys_anywhere')}`).prop("checked") || $(`#${$.escapeSelector('L.stars_anywhere')}`).prop("checked"))
-                        boxes = $(`#${$.escapeSelector('L.chests')}, #${$.escapeSelector('L.coins')}`).find("input[type='checkbox']").toArray()
-                        $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container button").prop("disabled", !show_lists)
-                        $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container .multiselect-button-container").prop("disabled", !show_lists)
-                        if (show_lists) {
-                            $(`#${$.escapeSelector("L.chests.container")}`).removeClass("disabled")
-                            $(`#${$.escapeSelector("L.coins.container")}`).removeClass("disabled")
-                        }
-                        else {
-                            $(`#${$.escapeSelector("L.chests.container")}`).addClass("disabled")
-                            $(`#${$.escapeSelector("L.coins.container")}`).addClass("disabled")
-                        }
-                    }
-                    else if (id == "S.random") {
-                        dependent_ids = ["S.quality", "S.nolife"]
-                        if (value == false || $(`#${$.escapeSelector('S.quality')}`).val() != "empty") {
-                            dependent_ids.push(...["S.bias"])
-                        }
-                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
-                        if (value == false) {
-                            $(`#S\\.quality`).siblings("label").addClass("disabled")
-                        }
-                        else {
-                            $(`#S\\.quality`).siblings("label").removeClass("disabled")
-                        }
-                    }
-                    else if (id == "B.random") {
-                        boxes = $(`#${$.escapeSelector('B.pool')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["B.scale", "B.allsprites", ...(boxes.map(b => $(b).prop("id")))]
-                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
-                        $("#B\\.pool\\.container .multiselect-button-container button").prop("disabled", !value)
-                        $("#B\\.pool\\.container .multiselect-button-container .multiselect-button-container").prop("disabled", !show_lists)
-                        if (value == false) {
-                            $(`#${$.escapeSelector("B.pool.container")}`).addClass("disabled")
-                        }
-                        else {
-                            $(`#${$.escapeSelector("B.pool.container")}`).removeClass("disabled")
-                        }
-                    }
-                    else if (id == "E.attacks") {
-                        $("#E\\.unsafe").prop("disabled", !value)
-                    }
-                    else if (id == "R.palette") {
-                        $("#R\\.names").prop("disabled", !value)
-                    }
-                    else if (id == "R.music") {
-                        boxes = $(`#${$.escapeSelector('R.avail')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = [...(boxes.map(b => $(b).prop("id")))]
-                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
-                        $("#R\\.avail\\.container .multiselect-button-container button").prop("disabled", !value)
-                        $("#R\\.avail\\.container .multiselect-button-container .multiselect-button-container").prop("disabled", !show_lists)
-                        if (value == false) {
-                            $(`#${$.escapeSelector("R.avail.container")}`).addClass("disabled")
-                        }
-                        else {
-                            $(`#${$.escapeSelector("R.avail.container")}`).removeClass("disabled")
-                        }
-                    }
-                    else if (id == "C.avail.SuperJump") {
-                        $("#I\\.sj1, #I\\.sj2").prop("disabled", !value)
-                        if (value == false) {
-                            $("#I\\.sj1, #I\\.sj2").siblings("label").addClass("disabled")
-                        }
-                        else {
-                            $("#I\\.sj1, #I\\.sj2").siblings("label").removeClass("disabled")
+                    // Assign the next order number
+                    let maxOrder = 0;
+                    container.find('.ordinance-checkbox:checked').each(function() {
+                        let order = parseInt($(this).attr('data-ordinance-order') || '0');
+                        if (order > maxOrder) maxOrder = order;
+                    });
+                    $(this).attr('data-ordinance-order', maxOrder + 1);
+                } else {
+                    // Remove order and recalculate
+                    $(this).removeAttr('data-ordinance-order');
+                }
+
+                // Update displayed order numbers
+                updateOrdinanceDisplay(container);
+                buildFlagString();
+            });
+
+            // Update the visual display of order numbers
+            function updateOrdinanceDisplay(container) {
+                // Get all checked boxes with their order
+                let items = [];
+                container.find('.ordinance-checkbox:checked').each(function() {
+                    items.push({
+                        elem: $(this),
+                        order: parseInt($(this).attr('data-ordinance-order') || '999')
+                    });
+                });
+
+                // Sort by order
+                items.sort((a, b) => a.order - b.order);
+
+                // Reassign sequential order numbers (1, 2, 3, ...)
+                items.forEach((item, index) => {
+                    item.elem.attr('data-ordinance-order', index + 1);
+                    item.elem.siblings('label').find('.ordinance-order').text((index + 1) + '.');
+                });
+
+                // Clear order display for unchecked boxes
+                container.find('.ordinance-checkbox:not(:checked)').each(function() {
+                    $(this).siblings('label').find('.ordinance-order').text('');
+                });
+            }
+
+            // Check if a single requirement is met
+            function checkRequirement(req) {
+                // Find the flag element - use subcategory if provided for unique identification
+                let flagElement = null;
+                if (req.subcategory) {
+                    // Direct lookup using subcategory.flag_id
+                    let selector = `#${$.escapeSelector(req.subcategory + '.' + req.flag_id)}`;
+                    flagElement = $(selector);
+                } else {
+                    // Fallback: search across all subcategories (may find wrong flag if id is not unique)
+                    for (let flag of FLAGS) {
+                        if (flag.id === req.flag_id) {
+                            let selector = `#${$.escapeSelector(flag.subcategory + '.' + flag.id)}`;
+                            flagElement = $(selector);
+                            break;
                         }
                     }
                 }
-                else if (type == "select") {
-                    value = item.val()
-                    if (id == "T.quality") {
-                        if (value == "empty" && $(`#${$.escapeSelector('T.random')}`).prop("checked") == true) {
-                            $(`#${$.escapeSelector("I.replace")}`).prop("disabled", true)
-                            $(`#${$.escapeSelector("I.quick")}`).prop("disabled", true)
-                        }
-                        else {
-                            $(`#${$.escapeSelector("I.replace")}`).prop("disabled", false)
-                            $(`#${$.escapeSelector("I.quick")}`).prop("disabled", false)
-                        }
-                        if (value == "empty" && !(!$(`#${$.escapeSelector('T.random')}`).prop("checked") || !$(`#${$.escapeSelector('T.xpstars')}`).prop("checked"))) {
-                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", true)
-                            $(`#I\\.xpstar`).siblings("label").addClass("disabled")
-                        }
-                        else {
-                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", false)
-                            $(`#I\\.xpstar`).siblings("label").removeClass("disabled")
-                        }
-                        if (value == "empty" || $(`#${$.escapeSelector('T.random')}`).prop("checked") == false) {
-                            $(`#${$.escapeSelector("T.bias")}`).prop("disabled", true)
-                            $(`#${$.escapeSelector("T.restrict_monstro")}`).prop("disabled", true)
-                            $(`#${$.escapeSelector("L.moveflags")}`).prop("disabled", true)
-                            $(`#${$.escapeSelector("T.hard")}`).prop("disabled", true)
-                            $(`#${$.escapeSelector("T.noegg")}`).prop("disabled", true)
-                        }
-                        else {
-                            $(`#${$.escapeSelector("T.bias")}`).prop("disabled", false)
-                            $(`#${$.escapeSelector("T.restrict_monstro")}`).prop("disabled", false)
-                            $(`#${$.escapeSelector("L.moveflags")}`).prop("disabled", false)
-                            $(`#${$.escapeSelector("T.noegg")}`).prop("disabled", false)
-                            if (value == "original" || $(`#${$.escapeSelector('T.restrict_monstro')}`).prop("checked") == false) {
-                                $(`#${$.escapeSelector("T.hard")}`).prop("disabled", true)
-                            }
-                            else {
-                                $(`#${$.escapeSelector("T.hard")}`).prop("disabled", false)
+
+                if (!flagElement || flagElement.length === 0) {
+                    return false;
+                }
+
+                if (req.type === "boolean") {
+                    return flagElement.is(':checked') === req.value;
+                } else if (req.type === "select_one") {
+                    let currentValue = flagElement.val();
+                    return req.values.includes(currentValue);
+                }
+
+                return true;
+            }
+
+            // Apply requires_all, requires_any, and disabled_if_all dependencies for all flags
+            function applyFlagRequirements() {
+                for (let flag of FLAGS) {
+                    let shouldBeEnabled = true;
+                    let idval = `#${$.escapeSelector(flag.subcategory + '.' + flag.id)}`;
+                    let elem = $(idval);
+
+                    // Check requires_all - ALL must be met for this flag to be enabled
+                    if (flag.requires_all && flag.requires_all.length > 0) {
+                        for (let req of flag.requires_all) {
+                            if (!checkRequirement(req)) {
+                                shouldBeEnabled = false;
+                                break;
                             }
                         }
-                        if (value != "empty" || $(`#${$.escapeSelector('T.random')}`).prop("checked") == false) {
-                            $(`#${$.escapeSelector("T.ym")}`).prop("disabled", true)
-                        }
-                        else {
-                            $(`#${$.escapeSelector("T.ym")}`).prop("disabled", false)
+                    }
+
+                    // Check requires_any - AT LEAST ONE must be met (only if requires_all passed)
+                    if (shouldBeEnabled && flag.requires_any && flag.requires_any.length > 0) {
+                        shouldBeEnabled = false;
+                        for (let req of flag.requires_any) {
+                            if (checkRequirement(req)) {
+                                shouldBeEnabled = true;
+                                break;
+                            }
                         }
                     }
-                    else if (id == "S.quality") {
-                        if (value == "empty" || $(`#${$.escapeSelector('S.random')}`).prop("checked") == false) {
-                            $(`#${$.escapeSelector("S.bias")}`).prop("disabled", true)
+
+                    // Check disabled_if_all - DISABLE if ALL of these are met
+                    if (shouldBeEnabled && flag.disabled_if_all && flag.disabled_if_all.length > 0) {
+                        let allMet = true;
+                        for (let req of flag.disabled_if_all) {
+                            if (!checkRequirement(req)) {
+                                allMet = false;
+                                break;
+                            }
                         }
-                        else {
-                            $(`#${$.escapeSelector("S.bias")}`).prop("disabled", false)
+                        if (allMet) {
+                            shouldBeEnabled = false;
                         }
                     }
-                    else if (id == "Q.stats") {
-                        $(`#${$.escapeSelector("Q.unsafe")}`).prop("disabled", value != "random")
+
+                    // Apply enabled/disabled state
+                    if (elem.length > 0) {
+                        elem.prop("disabled", !shouldBeEnabled);
+                        // Also update label styling
+                        let label = elem.siblings("label");
+                        let container = elem.closest(".flag-container");
+                        if (!shouldBeEnabled) {
+                            label.addClass("disabled");
+                            container.addClass("disabled");
+                        } else {
+                            label.removeClass("disabled");
+                            container.removeClass("disabled");
+                        }
+                    }
+
+                    // Handle categorization containers (their ID points to a div, not an input)
+                    if (flag.type === "categorization" || flag.type === "categorization_with_ordinance") {
+                        let containerIdval = `#${$.escapeSelector(flag.subcategory + '.' + flag.id)}`;
+                        let catContainer = $(containerIdval);
+                        if (catContainer.length > 0) {
+                            // Disable/enable all checkboxes inside
+                            catContainer.find('input[type="checkbox"]').prop("disabled", !shouldBeEnabled);
+                            let outerContainer = catContainer.closest(".flag-container");
+                            if (!shouldBeEnabled) {
+                                outerContainer.addClass("disabled");
+                            } else {
+                                outerContainer.removeClass("disabled");
+                            }
+                        }
                     }
                 }
             }
-
-            /*$('body').on('change', 'input[type="checkbox"]', function() {
-                apply_dependencies($(this), 'checkbox')
-            })
-            $('body').on('change', 'select', function() {
-                apply_dependencies($(this), 'select')
-            })
-            $('body').on('change', 'input[type="number"]', function() {
-                apply_dependencies($(this), "number")
-            })*/
 
         })
     </script>

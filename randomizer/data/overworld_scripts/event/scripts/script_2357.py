@@ -31,47 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnableControls([]),
-	ApplyTileModToLevel(use_alternate=True, room_id=R248_GAME_INTRO_MUSHROOM_WAY_AREA_01, mod_id=0),
-	ApplyTileModToLevel(use_alternate=True, room_id=R248_GAME_INTRO_MUSHROOM_WAY_AREA_01, mod_id=1),
-	Pause(1),
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_SetWalkingSpeed(FASTEST),
-		A_WalkToXYCoords(x=12, y=28)
-	]),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_TransferToXYZF(x=16, y=44, z=0, direction=EAST),
-		A_FaceNortheast()
-	]),
-	SetSyncActionScript(MARIO, A0838_EMPTY),
-	Pause(3),
-	FadeInFromBlack(sync=False),
-	Pause(1, identifier="EVENT_2357_pause_9"),
-	JmpIfBitSet(TEMP_7043_0, ["EVENT_2357_set_action_script_12"]),
-	Jmp(["EVENT_2357_pause_9"]),
-	SetSyncActionScript(NPC_7, A0839_EMPTY, identifier="EVENT_2357_set_action_script_12"),
-	Pause(16),
-	SetSyncActionScript(NPC_5, A0832_EMPTY),
-	Pause(96),
-	SetSyncActionScript(NPC_7, A0839_EMPTY),
-	Pause(16),
-	SetSyncActionScript(NPC_6, A0832_EMPTY),
-	Pause(1, identifier="EVENT_2357_pause_19"),
-	JmpIfBitSet(TEMP_7043_1, ["EVENT_2357_remove_from_current_level_22"]),
-	Jmp(["EVENT_2357_pause_19"]),
-	RemoveObjectFromCurrentLevel(NPC_0, identifier="EVENT_2357_remove_from_current_level_22"),
-	RemoveObjectFromCurrentLevel(NPC_1),
-	RemoveObjectFromCurrentLevel(NPC_2),
-	RemoveObjectFromCurrentLevel(NPC_3),
-	RemoveObjectFromCurrentLevel(NPC_4),
-	CircleMaskShrinkToObject(target=MARIO, width=24, speed=5, static=False),
-	Pause(80),
-	RemoveObjectFromCurrentLevel(NPC_5),
-	RemoveObjectFromCurrentLevel(NPC_6),
-	RemoveObjectFromCurrentLevel(NPC_7),
-	DisplayIntroTitleText(text=SUPER_MARIO, y=17),
-	Pause(150),
-	FadeOutToBlack(sync=False, duration=30),
-	JmpToEvent(E0129_EMPTY),
-	Return()
 ])

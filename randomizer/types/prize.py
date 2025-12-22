@@ -1,3 +1,6 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
 from smrpgpatchbuilder.datatypes.items.classes import Item
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
@@ -15,7 +18,9 @@ from smrpgpatchbuilder.datatypes.characters.classes import Character
 from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
 from ..types.ally import Ally
 from ..data.variables.overworld_sfx_names import SO081_STAR
-from .gameworld import GameWorld
+
+if TYPE_CHECKING:
+    from .gameworld import GameWorld
 
 class TreasureHunterNickname:
     _nickname: str
@@ -293,6 +298,7 @@ class BossFightPrize(Prize):
     _members: list[FormationMember]
     _force_battlefield: Battlefield | None
     _force_start_event: int | None
+    _text: str
 
     @property
     def formation(self) -> list[FormationMember]:
@@ -399,3 +405,10 @@ class FrogCoinPrize(StandardPrize):
     def __init__(self, amount: int):
         self._amount = amount
 
+class FrogCoinQuantityPrize(FrogCoinPrize):
+    def __init__(self):
+        super().__init__(self._amount)
+
+class CoinQuantityPrize(CoinPrize):
+    def __init__(self):
+        super().__init__(self._amount)

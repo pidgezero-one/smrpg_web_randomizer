@@ -3,6 +3,8 @@ from copy import deepcopy
 from typing import Any, TYPE_CHECKING, TypeVar, cast
 import random
 import datetime
+import hashlib
+import re
 
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
     AnimationScriptBank,
@@ -64,6 +66,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     SetBit,
     ClearBit,
     JmpIfBitClear,
+    JmpIfVarEqualsConst,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
@@ -72,6 +75,7 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
 from smrpgpatchbuilder.datatypes.allies.ally_collection import AllyCollection
 from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Room
 from smrpgpatchbuilder.datatypes.spells.enums import Status
+from smrpgpatchbuilder.datatypes.world_map_locations.classes import WorldMapLocationCollection
 from ..data.items.items import *
 from .item import Item
 from .patch import Patch
@@ -87,28 +91,118 @@ from .flags import (
     CategorizationFlag,
     CosmeticCategory,
     CATEGORIES,
+    # Cosmetic flags
     BossShuffleMusic,
     ShuffledMusic,
     PaletteSwaps,
     ChangeNames,
+    RemakeNames,
+    CanonNames,
+    Peach,
+    JapaneseABXY,
+    RemoveFlashes,
+    HoldB,
+    ShowEquips,
+    # Enemy flags
     EnemyAttacks,
     EnemyStats,
     EnemyStatsShuffleOptions,
     EnemyDrops,
     EnemyFormations,
+    EnemySpells,
+    # Equipment flags
     EquipmentCharacters,
     EquipmentCharactersOptions,
     EquipmentPropertiesOptions,
+    IgnoreNamesakeProperties,
+    # Shop flags
     ShuffleShops,
     ShopQuality,
     ShopQualities,
     BiasShopShuffle,
     NoPickMeUps,
     FreeShops,
+    # EXP flags
     EXPMultiplier,
     EXPMultiplierOptions,
+    EXPChallenge,
+    EXPChallengeOptions,
+    ExperienceNoBosses,
+    ExperienceNoRegular,
+    # Character flags
     CharacterStats,
     CharacterSpellStats,
+    CharacterSpellElements,
+    InfuseSpellElements,
+    AvailableSpells,
+    StartingCharacters,
+    UncapSuperJumps,
+    # Gating flags
+    BanditsWayGate,
+    BanditsWayGating,
+    KeroSewersGate,
+    KeroSewersGating,
+    ForestMazeGate,
+    ForestMazeGating,
+    PipeVaultGate,
+    PipeVaultGating,
+    Moleville1Gate,
+    Moleville1Gating,
+    BoosterTowerGate,
+    BoosterTowerGating,
+    BoosterHillGate,
+    BoosterHillGating,
+    MarrymoreGate,
+    MarrymoreGating,
+    SeaGate,
+    SeaGating,
+    YaridovichGate,
+    YaridovichGating,
+    LandsEndGate,
+    LandsEndGating,
+    BelomeTempleGate,
+    BelomeTempleGating,
+    MonstroTownGate,
+    MonstroTownGating,
+    NimbusGate,
+    NimbusGating,
+    BarrelVolcanoGate,
+    BarrelVolcanoGating,
+    BowsersKeepGate,
+    BowsersKeepGating,
+    FactoryGate,
+    FactoryGating,
+    BowserDoorRequirements,
+    StarPiecesRequired,
+    # Minigame thresholds
+    GrateGuyPrizeThreshold,
+    KnifeGuyPrizeThreshold,
+    SuitePrize1Threshold,
+    SuitePrize2Threshold,
+    SuitePrize3Threshold,
+    SuitePrize4Threshold,
+    SuitePrize5Threshold,
+    SuitePrize6Threshold,
+    SuperJump1Threshold,
+    SuperJump2Threshold,
+    # Misc flags
+    FireworksSetting,
+    FireworksOptions,
+    WinCondition,
+    WinConditions,
+    FastTravel,
+    CasinoWarp,
+    BucketWarp,
+    ShuffleWeddingGear,
+    SkipBossFights,
+    SkipMustyFearsSequence,
+    StarPieceHints,
+    InvisibleFlagsSetting,
+    Remake,
+    PoisonMushroom,
+    NoGenoWhirlExor,
+    FixMagikoopa,
+    NoOHKO,
 )
 from .prizelocation import SIGNAL_RING_EVENT_DICT, PrizeLocation
 from ..progression.prizelocations import *
@@ -116,7 +210,9 @@ from ..data.variables.dialog_names import *
 from ..data.variables.battle_variable_names import *
 from ..data.variables.battle_effect_names import *
 from ..data.variables.shop_names import *
+from ..data.variables.sprite_names import *
 from ..data.spells.spells import *
+
 from ..data.allies.palettes.types import (
     MarioPalette,
     MallowPalette,
@@ -158,10 +254,16 @@ class WorldBuildingException(Exception):
 
 
 class GameWorld:
-    seed: int = 0
+    seed: int | str = 0
     settings: Settings
-    file_select_hash: str = "MARIO1 / MARIO2 / MARIO3 / MARIO4"
+    file_select_names: list[str] = ["MARIO1", "MARIO2", "MARIO3", "MARIO4"]
+    
     version: str = "9.0.0"
+    hash: str = ""
+
+    @property
+    def file_select_hash(self) -> str:
+        return " / ".join(self.file_select_names).replace('}', '-')
 
     # Raw data types (basis of ROM patches)
 
@@ -187,6 +289,7 @@ class GameWorld:
     bowser_palette: BowserPalette
     toadstool_palette: ToadstoolPalette
     main_character: Ally = MARIO_Ally
+    world_map_locations: WorldMapLocationCollection
 
     locations: dict[type[PrizeLocation], PrizeLocation]
 
@@ -344,12 +447,68 @@ class GameWorld:
                     search, replace
                 )
 
+    def _get_locations_json(self) -> dict[str, str]:
+        """Return a JSON-serializable dict of all locations and their prizes.
+
+        Keys are location class names, values are prize class names or "None".
+        """
+        result: dict[str, str] = {}
+        for loc_type, loc in self.locations.items():
+            location_name = loc_type.__name__
+            if loc.prize is None:
+                prize_name = "None"
+            else:
+                prize_name = type(loc.prize).__name__
+            result[location_name] = prize_name
+        return result
+    
+    @property 
+    def spoiler(self) -> dict[str,str]:
+        return self._get_locations_json()
+
+    
+
+    def _rebuild_hash(self):
+        """Build hash value for choosing file select character and file name hash.
+        Use the same version, seed, mode, and flags used for the database hash.
+        """
+        final_seed = bytearray()
+        final_seed += self.version.encode('utf-8')
+        if isinstance(self.seed, int):
+            final_seed += self.seed.to_bytes(4, 'big')
+        else:
+            final_seed += str(self.seed).encode('utf-8')
+        final_seed += self.settings.flag_string.encode('utf-8')
+        self.hash = hashlib.md5(final_seed).hexdigest()
+
+        # Possible names we can use for the hash values on the file select screen.  Needs to be 6 characters or less.
+        file_entry_names = {
+            'MARIO',
+            'MALLOW',
+            'GENO',
+            'BOWSER',
+            'PEACH',
+        }
+        # Also use enemy names, if they're 6 characters or less.
+        e_choices = set([re.sub(r'[^A-Za-z9]', '', e.name.upper()) for e in self.enemies.enemies if len(re.sub(r'[^A-Za-z9]', '', e.name.upper())) <= 6])
+        file_entry_names = sorted(e_choices)
+
+        # Replace file select names with "hash" values for seed verification.
+        self.file_select_names = [
+            file_entry_names[int(self.hash[0:8], 16) % len(file_entry_names)],
+            file_entry_names[int(self.hash[8:16], 16) % len(file_entry_names)],
+            file_entry_names[int(self.hash[16:24], 16) % len(file_entry_names)],
+            file_entry_names[int(self.hash[24:32], 16) % len(file_entry_names)],
+        ]
+
+
     # Logic
     # TODO
 
     def __init__(
         self,
-        seed: int,
+        seed: int | str,
+        version: str,
         settings: Settings,
         allies: AllyCollection,
         battle_animations: dict[int, AnimationScriptBank],
@@ -367,9 +526,11 @@ class GameWorld:
         shops: ShopCollection,
         spells: SpellCollection,
         sprites: SpriteCollection,
+        world_map_locations: WorldMapLocationCollection
     ):
         self.allies = allies
         self.seed = seed
+        self.version = version
         self.settings = settings
         self.battle_animations = battle_animations
         self.battle_dialogs = battle_dialogs
@@ -386,6 +547,7 @@ class GameWorld:
         self.shops = shops
         self.spells = spells
         self.sprites = sprites
+        self.world_map_locations = world_map_locations
 
         random.seed(self.seed)
 
@@ -699,8 +861,6 @@ class GameWorld:
             MonstroSealedDoorBossFight: MonstroSealedDoorBossFight(),
             MonstroSealedDoorStarPiece: MonstroSealedDoorStarPiece(),
             MonstroSealedDoorClearRewardLocation: MonstroSealedDoorClearRewardLocation(),
-            MonstroFirstSuperJumpRewardLocation: MonstroFirstSuperJumpRewardLocation(),
-            MonstroSecondSuperJumpRewardLocation: MonstroSecondSuperJumpRewardLocation(),
             MonstroFlagExchangeLocation: MonstroFlagExchangeLocation(),
             BeanValleyFirstDeadEndLocation: BeanValleyFirstDeadEndLocation(),
             BeanValleyFirstProgressChestLocation: BeanValleyFirstProgressChestLocation(),
@@ -888,6 +1048,18 @@ class GameWorld:
             ToadstoolSpell6: ToadstoolSpell6(),
         }
 
+        # Only add Super Jump reward locations if Super Jump spell is enabled
+        available_spells = self.settings.get_flag(AvailableSpells)
+        super_jump_enabled = any(
+            spell_opt.value == SuperJumpSpell for spell_opt in available_spells.enabled
+        )
+        if super_jump_enabled:
+            self.locations = {
+                **self.locations,
+                MonstroFirstSuperJumpRewardLocation: MonstroFirstSuperJumpRewardLocation(),
+                MonstroSecondSuperJumpRewardLocation: MonstroSecondSuperJumpRewardLocation(),
+            }
+
         if self.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
             fwshop = FireworksShopItemLocation()
             fwshop._originally_held = ProgressiveFireworksPrize
@@ -924,6 +1096,32 @@ class GameWorld:
                 **self.locations,
                 StartingCharacter5: StartingCharacter5(),
             }
+
+        # Resolve starting character selections (handles "Random_X" values)
+        # and assign prizes to the starting character locations
+        resolved_allies = strchars.resolve_random_selections()  # Uses seeded global random
+        # Map allies by index to their prize classes (allies are all the same type)
+        ally_to_prize: dict[int, type] = {
+            MARIO_Ally.index: MarioRecruitmentPrize,
+            MALLOW_Ally.index: MallowRecruitmentPrize,
+            GENO_Ally.index: GenoRecruitmentPrize,
+            BOWSER_Ally.index: BowserRecruitmentPrize,
+            TOADSTOOL_Ally.index: ToadstoolRecruitmentPrize,
+        }
+        starting_char_locations = [
+            StartingCharacter1,
+            StartingCharacter2,
+            StartingCharacter3,
+            StartingCharacter4,
+            StartingCharacter5,
+        ]
+        for i, ally in enumerate(resolved_allies):
+            if i < len(starting_char_locations):
+                loc_type = starting_char_locations[i]
+                if loc_type in self.locations:
+                    prize_cls = ally_to_prize.get(ally.index)
+                    if prize_cls:
+                        self.locations[loc_type].set_prize(prize_cls())
 
         if self.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
             self.locations = {
@@ -1314,27 +1512,27 @@ class GameWorld:
 
         # threshold adjustments
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("suite_threshold_1"),
         ).set_value(self.settings.get_flag(SuitePrize1Threshold).value)
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("suite_threshold_2"),
         ).set_value(self.settings.get_flag(SuitePrize2Threshold).value)
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("suite_threshold_3"),
         ).set_value(self.settings.get_flag(SuitePrize3Threshold).value)
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("suite_threshold_4"),
         ).set_value(self.settings.get_flag(SuitePrize4Threshold).value)
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("suite_threshold_5"),
         ).set_value(self.settings.get_flag(SuitePrize5Threshold).value)
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("suite_threshold_6"),
         ).set_value(self.settings.get_flag(SuitePrize6Threshold).value)
         cast(
@@ -1358,20 +1556,20 @@ class GameWorld:
             ),
         ).set_value(self.settings.get_flag(GrateGuyPrizeThreshold).value)
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("check_doors_complete"),
         ).set_value(self.settings.get_flag(BowserDoorRequirements).value)
 
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("enable_boss_access_1"),
         ).set_value(self.settings.get_flag(StarPiecesRequired).value)
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("enable_boss_access_2"),
         ).set_value(self.settings.get_flag(StarPiecesRequired).value)
         cast(
-            CompareVarToConst,
+            JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("enable_boss_access_3"),
         ).set_value(self.settings.get_flag(StarPiecesRequired).value)
 
@@ -1758,6 +1956,7 @@ class GameWorld:
         # TODO: Room service menu
         # TODO: Open issue templat for submitting star hill text. note: uncredited
         # TODO: Open issue template for submitting quiz questions (uncredited)
+        # TODO: update spell names and palettes and sounds depending on element
         
         # Shop shuffling happens after equipment randomization so we can score equipment
         if self.settings.isflag_enabled(ShuffleShops):
@@ -1872,6 +2071,8 @@ class GameWorld:
         # TODO better tips (hotel, mushroom boy, KGGG, forest shrooms)
         # TODO differentiate bosses. not a cosmetic, reveals info
 
+        self._rebuild_hash()
+
 
         # Cosmetics have to go at the end and be re-seeded
         random.seed(datetime.datetime.now().timestamp())
@@ -1884,6 +2085,8 @@ class GameWorld:
             self.search_replace_dialog("Kamek", "Magikoopa")
             self.search_replace_dialog("BIRDETTA", "BIRDO")
             self.search_replace_dialog("Birdetta", "Birdo")
+        # todo: canon names should override remake
+        # todo: search and replace in dialogs for all remake names
         if self.settings.isflag_enabled(Peach):
             self.allies._allies[1].name = "Peach"
         if self.settings.isflag_enabled(RemakeNames):
@@ -2037,6 +2240,9 @@ class GameWorld:
                 pack = self.get_battle_pack(pack_id)
                 for f in pack.formations:
                     f.set_music(battle_music)
+        
+        # set random back to normal
+        random.seed(self.seed)
 
     def _mutate_normal(self, value: int, minimum: int = 0, maximum: int = 255) -> int:
         """Mutate a value simulating a normal distribution.
@@ -3523,5 +3729,39 @@ class GameWorld:
                     ]
                 ),
             )
+
+        
+        starter = cast(CharacterPrize, self.get_location(StartingCharacter1).prize).ally
+        i = starter.index
+        file_select_char_bytes = [SPR0000_MARIO_WALKING_DOWN_LEFT, SPR0007_TOADSTOOL_WALKING_DOWN_LEFT, SPR0013_BOWSER_WALKING_DOWN_LEFT, SPR0025_GENO_WALKING_DOWN_LEFT, SPR0019_MALLOW_WALKING_DOWN_LEFT]
+        self.file_select_character = starter.name
+
+        # Change file select character graphic, if not Mario.
+        if i != 0:
+            addresses = [0x34757, 0x3489a, 0x34ee7, 0x340aa, 0x3501e]
+            for addr, value in zip(addresses, [0, 1, 0, 0, 1]):
+                patch.add_data(addr, file_select_char_bytes[i] + value)
+
+        for i, name in enumerate(self.file_select_names):
+            addr = 0x3ef528 + (i * 7)
+            val = name.encode().ljust(7, b'\x00')
+            patch.add_data(addr, val)
+        
+        # Update ROM title and version.
+        title = 'SMRPG-R {}'.format(self.seed).ljust(20)
+        if len(title) > 20:
+            title = title[:19] + '?'
+
+        # Add version number on name entry screen.
+        version_text = ('v' + self.version).ljust(10)
+        if len(version_text) > 10:
+            raise ValueError("Version text is too long: {!r}".format(version_text))
+        patch.add_data(0x3ef140, version_text)
+
+        # Add title and major version number to SNES header data.
+        patch.add_data(0x7fc0, title)
+        v = self.version.split('.')
+        patch.add_data(0x7fdb, int(v[0]))
+        
 
         return patch

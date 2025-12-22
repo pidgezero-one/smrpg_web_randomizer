@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
-	JmpIfVarEqualsConst(ITEM_ID, DUMMYItem62, ["EVENT_3408_play_sound_3"]),
+	JmpIfVarEqualsConst(ITEM_ID, 240, ["EVENT_3408_play_sound_3"]),
 	DisableTriggerOfObjectAt70A8InCurrentLevel(),
 	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6, identifier="EVENT_3408_play_sound_3"),
 	CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),

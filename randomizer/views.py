@@ -8,6 +8,8 @@ import string
 import tempfile
 import shutil
 import time
+import Wii
+import nlzss
 
 from django.conf import settings
 from django.db import transaction
@@ -23,56 +25,102 @@ from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView
 
-from randomizer.types.world.flags.categories import CATEGORIES
-from randomizer.types.world.flags.presets import PRESETS
-from randomizer.types.world.flags.types import FlagError
+from randomizer.types.flags import CATEGORIES, PRESETS, FlagError
 from randomizer.types.patch import PatchJSONEncoder
 
 from .models import Seed, Patch
 from .forms import GenerateForm
+from .main import create, VERSION
+from .types.settings import Settings
+from .types.flags import Flag, CategorizationFlag, CategorizationFlagWithOrdinance, BooleanFlag, RangeFlag, SelectOneFlag
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
 
-def _build_flag_json_data(f, letter):
-    """
-
-    Args:
-        flag (randomizer.logic.flags.Flag): Flag class to build JSON data for.
-        parent_modes (list[str]): Modes of the parent flag to restrict the child to.
-
-    Returns:
-        dict: Flag data.
-
-    """
-    flag = f()  # man i dont know what im doing
-    modes = flag.modes.copy()
+def _build_flag_json_data(f: type[Flag], letter, flag_to_subcategory: dict[type[Flag], str] | None = None):
+    flag = f()
 
     d = {
         "subcategory": letter,
         "id": flag.id,
-        "modes": modes,
+        "modes": flag.modes.copy(),
         "type": flag.type,
     }
-    if flag.type == "categorization":
+    if isinstance(flag, (CategorizationFlag, CategorizationFlagWithOrdinance)):
         d["options"] = flag.options_dict
         d["default"] = flag.default_dict
-    elif flag.type == "select_one":
+    elif isinstance(flag, SelectOneFlag):
         d["choices"] = flag.choices_dict
         d["default"] = flag.default_dict
-    else:
+    elif isinstance(flag, RangeFlag):
         d["default"] = flag.default
+        d["min"] = flag.min_value
+        d["max"] = flag.max_value
+    elif isinstance(flag, BooleanFlag):
+        d["default"] = flag.default
+    else:
+        raise NotImplementedError("Unknown flag type: {}".format(type(flag)))
+
+    # Add dependency information
+    # requires_all: ALL of these conditions must be met for this flag to be enabled
+    # requires_any: AT LEAST ONE of these conditions must be met for this flag to be enabled
+    # disabled_if_all: DISABLE this flag if ALL of these conditions are met
+    if flag._requires_all:
+        d["requires_all"] = _serialize_requirements(flag._requires_all, flag_to_subcategory)
+    if flag._requires_any:
+        d["requires_any"] = _serialize_requirements(flag._requires_any, flag_to_subcategory)
+    if flag._disabled_if_all:
+        d["disabled_if_all"] = _serialize_requirements(flag._disabled_if_all, flag_to_subcategory)
 
     return d
 
+
+def _serialize_requirements(requirements: list, flag_to_subcategory: dict[type[Flag], str] | None = None) -> list:
+    """Serialize flag requirements to JSON-compatible format.
+
+    Requirements are tuples of (flag_instance, required_value) where:
+    - For BooleanFlag: required_value is True/False
+    - For SelectOneFlag: required_value is a list of valid enum values
+    """
+    result = []
+    for req in requirements:
+        flag_inst, required_value = req
+        req_data = {"flag_id": flag_inst.id}
+
+        # Include subcategory if available (needed for unique flag identification)
+        if flag_to_subcategory:
+            flag_class = type(flag_inst)
+            if flag_class in flag_to_subcategory:
+                req_data["subcategory"] = flag_to_subcategory[flag_class]
+
+        if isinstance(flag_inst, BooleanFlag):
+            req_data["type"] = "boolean"
+            req_data["value"] = required_value
+        elif isinstance(flag_inst, SelectOneFlag):
+            req_data["type"] = "select_one"
+            # required_value is a list of valid enum choices
+            req_data["values"] = [v.name for v in required_value] if isinstance(required_value, list) else [required_value.name]
+
+        result.append(req_data)
+    return result
+
+
+# Build mapping from flag class to subcategory ID (for requirement serialization)
+FLAG_TO_SUBCATEGORY: dict[type[Flag], str] = {}
+for category in CATEGORIES:
+    for subcategory in category().subcategories:
+        sub_inst = subcategory()
+        for flag in sub_inst.flags:
+            FLAG_TO_SUBCATEGORY[flag] = sub_inst.id
 
 # Build JSON representation of flag hierarchy.
 FLAGS = []
 for category in CATEGORIES:
     for subcategory in category().subcategories:
-        for flag in subcategory.flags:
-            FLAGS.append(_build_flag_json_data(flag, subcategory.id))
+        sub_inst = subcategory()
+        for flag in sub_inst.flags:
+            FLAGS.append(_build_flag_json_data(flag, sub_inst.id, FLAG_TO_SUBCATEGORY))
 
 
 class RandomizerView(TemplateView):
@@ -154,19 +202,21 @@ class GenerateView(FormView):
             seed = r.getrandbits(32)
             del r
 
-        mode = data["mode"] or "open"
         debug_mode = bool(data["debug_mode"])
         race_mode = bool(data["race_mode"])
 
         try:
             # Build game world, randomize it, and generate the patch.
-            world = GameWorld(
+            s = Settings()
+            s.set_from_flag_string(data["flags"] or "")
+            print(s.print_settings())
+
+            world = create(
                 seed,
-                Settings(
-                    mode, debug_mode, data["flags"] or "", data["cosmetics"] or ""
-                ))
-            world.randomize()
-            patches = {"US": world.build_patch()}
+                s,
+                )
+            # patches = {"US": world.get_patch()}
+            patches = {"US": {}}
         except FlagError as e:
             # Catch error with flags and return that error message instead.
             result = {
@@ -184,10 +234,9 @@ class GenerateView(FormView):
             "logic": VERSION,
             "seed": seed,
             "hash": world.hash,
-            "mode": mode,
             "debug_mode": debug_mode,
             "flag_string": world.settings.flag_string,
-            "file_select_character": world.file_select_character,
+            "file_select_character": world.main_character.name,
             "file_select_hash": world.file_select_hash,
             "permalink": reverse(
                 "randomizer:patch-from-hash", kwargs={"hash": world.hash}
@@ -210,10 +259,9 @@ class GenerateView(FormView):
                 hash=world.hash,
                 seed=seed,
                 version=VERSION,
-                mode=mode,
                 debug_mode=debug_mode,
                 flags=world.settings.flag_string,
-                file_select_char=world.file_select_character,
+                file_select_char=world.main_character.name,
                 file_select_hash=world.file_select_hash,
                 race_mode=race_mode,
                 spoiler=world.spoiler)
@@ -303,13 +351,13 @@ class PackingView(View):
                 rom_to_copy = romcompressed
 
             # Dump WAD file
-            wadf = Wii.WAD.load(request.FILES["wad"].read())
+            wadf = Wii.WAD.load(request.FILES["wad"].read()) # type: ignore
             wadf.dumpDir(dumpdir)
 
             # Dump U8 archive
             u8file = os.path.join(dumpdir, "00000005.app")
             u8unpackdir = u8file + "_unpacked"
-            u8archive = Wii.U8.loadFile(u8file)
+            u8archive = Wii.U8.loadFile(u8file) # type: ignore
             u8archive.dumpDir(u8unpackdir)
 
             # Copy randomized ROM over
@@ -320,12 +368,12 @@ class PackingView(View):
                     break
 
             # Put U8 archive back together
-            newu8 = Wii.U8.loadDir(u8unpackdir)
+            newu8 = Wii.U8.loadDir(u8unpackdir) # type: ignore
             newu8.dumpFile(u8file)
 
             # Build new WAD
             newwadfile = os.path.join(dumpdir, "smrpg_randomized.wad")
-            newwad = Wii.WAD.loadDir(dumpdir)
+            newwad = Wii.WAD.loadDir(dumpdir) # type: ignore
 
             # Make new channel title with seed (sync for all languages).
             # Read title from ROM and make sure it's in the correct spot.  If not, leave the title alone.
@@ -359,7 +407,7 @@ class PackingView(View):
             # Update MD5 hash for this content file.
             data = content[64:1584]
             data += b"\x00" * 16
-            md5 = Wii.Crypto.createMD5Hash(data)
+            md5 = Wii.Crypto.createMD5Hash(data) # type: ignore
             for i in range(16):
                 content[1584 + i] = md5[i]
 

@@ -33,7 +33,7 @@ from ....packets import *
 # todo: how to fix this and make it available to 6 chests? COIN_CHEST_1_COMPLETED never gets cleared...
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
-	JmpIfVarEqualsConst(ITEM_ID, int(b'11110000'), ["EVENT_3074_play_sound_3"]),
+	JmpIfVarEqualsConst(ITEM_ID, 0xF0, ["EVENT_3074_play_sound_3"]),
 	DisableTriggerOfObjectAt70A8InCurrentLevel(),
 	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6, identifier="EVENT_3074_play_sound_3"),
 	CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),

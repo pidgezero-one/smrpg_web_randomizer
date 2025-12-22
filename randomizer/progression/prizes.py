@@ -1,6 +1,8 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
 from randomizer.data.overworld_scripts.event.scripts.script_3645 import NPC_2
 from randomizer.data.variables.dialog_names import *
-from randomizer.types.prizelocation import GameWorld
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
     EventScript,
     UsableEventScriptCommand,
@@ -204,10 +206,10 @@ from ..data.allies.allies import (
     TOADSTOOL_Ally,
 )
 from ..types.prize import (
-    FrogCoinPrize,
+    FrogCoinQuantityPrize,
     EXPStarPrize,
     StandardPrize,
-    CoinPrize,
+    CoinQuantityPrize,
     SlotsPrize,
     BossFightPrize,
     CharacterPrize,
@@ -250,42 +252,101 @@ from ..data.spells.spells import (
     StarRainSpell,
 )
 from ..data.variables.overworld_sfx_names import *
-from ..types.flags import (
-    BanditsWayGating,
-    BanditsWayGate,
-    KeroSewersGate,
-    KeroSewersGating,
-    BoosterTowerGate,
-    BoosterTowerGating,
-    PipeVaultGate,
-    PipeVaultGating,
-    Moleville1Gate,
-    Moleville1Gating,
-    ForestMazeGate,
-    ForestMazeGating,
-    BoosterHillGate,
-    BoosterHillGating,
-    MarrymoreGate,
-    MarrymoreGating,
-    YaridovichGate,
-    YaridovichGating,
-    SeaGate,
-    SeaGating,
-    LandsEndGate,
-    LandsEndGating,
-    BelomeTempleGate,
-    BelomeTempleGating,
-    MonstroTownGate,
-    MonstroTownGating,
-    NimbusGate,
-    NimbusGating,
-    BarrelVolcanoGate,
-    BarrelVolcanoGating,
-    BowsersKeepGate,
-    BowsersKeepGating,
-    FactoryGate,
-    FactoryGating,
-)
+
+# Note: Gating flags are imported lazily in _get_gating_flags() to avoid circular import
+# (flags.py → prizelocations.py → prizes.py → flags.py)
+
+_gating_flags_cache: dict | None = None
+
+
+def _get_gating_flags():
+    """Lazily import and cache gating flags to avoid circular import."""
+    global _gating_flags_cache
+    if _gating_flags_cache is None:
+        from ..types.flags import (
+            BanditsWayGating,
+            BanditsWayGate,
+            KeroSewersGate,
+            KeroSewersGating,
+            BoosterTowerGate,
+            BoosterTowerGating,
+            PipeVaultGate,
+            PipeVaultGating,
+            Moleville1Gate,
+            Moleville1Gating,
+            ForestMazeGate,
+            ForestMazeGating,
+            BoosterHillGate,
+            BoosterHillGating,
+            MarrymoreGate,
+            MarrymoreGating,
+            YaridovichGate,
+            YaridovichGating,
+            SeaGate,
+            SeaGating,
+            LandsEndGate,
+            LandsEndGating,
+            BelomeTempleGate,
+            BelomeTempleGating,
+            MonstroTownGate,
+            MonstroTownGating,
+            NimbusGate,
+            NimbusGating,
+            BarrelVolcanoGate,
+            BarrelVolcanoGating,
+            BowsersKeepGate,
+            BowsersKeepGating,
+            FactoryGate,
+            FactoryGating,
+        )
+
+        _gating_flags_cache = {
+            "BanditsWayGating": BanditsWayGating,
+            "BanditsWayGate": BanditsWayGate,
+            "KeroSewersGate": KeroSewersGate,
+            "KeroSewersGating": KeroSewersGating,
+            "BoosterTowerGate": BoosterTowerGate,
+            "BoosterTowerGating": BoosterTowerGating,
+            "PipeVaultGate": PipeVaultGate,
+            "PipeVaultGating": PipeVaultGating,
+            "Moleville1Gate": Moleville1Gate,
+            "Moleville1Gating": Moleville1Gating,
+            "ForestMazeGate": ForestMazeGate,
+            "ForestMazeGating": ForestMazeGating,
+            "BoosterHillGate": BoosterHillGate,
+            "BoosterHillGating": BoosterHillGating,
+            "MarrymoreGate": MarrymoreGate,
+            "MarrymoreGating": MarrymoreGating,
+            "YaridovichGate": YaridovichGate,
+            "YaridovichGating": YaridovichGating,
+            "SeaGate": SeaGate,
+            "SeaGating": SeaGating,
+            "LandsEndGate": LandsEndGate,
+            "LandsEndGating": LandsEndGating,
+            "BelomeTempleGate": BelomeTempleGate,
+            "BelomeTempleGating": BelomeTempleGating,
+            "MonstroTownGate": MonstroTownGate,
+            "MonstroTownGating": MonstroTownGating,
+            "NimbusGate": NimbusGate,
+            "NimbusGating": NimbusGating,
+            "BarrelVolcanoGate": BarrelVolcanoGate,
+            "BarrelVolcanoGating": BarrelVolcanoGating,
+            "BowsersKeepGate": BowsersKeepGate,
+            "BowsersKeepGating": BowsersKeepGating,
+            "FactoryGate": FactoryGate,
+            "FactoryGating": FactoryGating,
+        }
+    return _gating_flags_cache
+
+
+# Convenience function to get a specific flag
+def _gf(name: str):
+    """Get a gating flag by name."""
+    return _get_gating_flags()[name]
+
+
+if TYPE_CHECKING:
+    from ..types.gameworld import GameWorld
 
 ### Real items ###
 
@@ -1691,68 +1752,44 @@ class InfiniteCoinsPrize(StandardPrize):
         )
 
 
-class Coins1Prize(CoinPrize):
+class Coins1Prize(CoinQuantityPrize):
     _amount: int = 1
 
     @property
     def standing_grant(self) -> EventScript:
         return EventScript([JmpToEvent(E1293_COLLECT_FREESTANDING_SMALL_COIN)])
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class Coins5Prize(CoinPrize):
+class Coins5Prize(CoinQuantityPrize):
     _amount = 5
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class Coins8Prize(CoinPrize):
+class Coins8Prize(CoinQuantityPrize):
     _amount = 8
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class Coins10Prize(CoinPrize):
+class Coins10Prize(CoinQuantityPrize):
     _amount: int = 10
 
     @property
     def standing_grant(self) -> EventScript:
         return EventScript([JmpToEvent(E3146_FREESTANDING_BIG_COIN)])
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class Coins20Prize(CoinPrize):
+class Coins20Prize(CoinQuantityPrize):
     _amount = 20
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class Coins50Prize(CoinPrize):
+class Coins50Prize(CoinQuantityPrize):
     _amount = 50
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class Coins100Prize(CoinPrize):
+class Coins100Prize(CoinQuantityPrize):
     _amount = 100
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class Coins150Prize(CoinPrize):
+class Coins150Prize(CoinQuantityPrize):
     _amount = 150
-
-    def __init__(self):
-        super().__init__(self.amount)
 
 
 class FirstMimicFightLauncher(MimicFightInitiatorPrize):
@@ -1773,7 +1810,7 @@ class ThirdMimicFightLauncher(MimicFightInitiatorPrize):
         return EventScript([JmpToEvent(E2493_MIMIC_3)])
 
 
-class FrogCoin1Prize(FrogCoinPrize):
+class FrogCoin1Prize(FrogCoinQuantityPrize):
     _amount = 1
 
     @property
@@ -1785,32 +1822,20 @@ class FrogCoin1Prize(FrogCoinPrize):
         return EventScript([JmpToEvent(E2816_ASYNC_NO_ANIMATION_FROG_COIN)])
 
 
-class FrogCoin2Prize(FrogCoinPrize):
+class FrogCoin2Prize(FrogCoinQuantityPrize):
     _amount = 2
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class FrogCoin3Prize(FrogCoinPrize):
+class FrogCoin3Prize(FrogCoinQuantityPrize):
     _amount = 3
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class FrogCoin10Prize(FrogCoinPrize):
+class FrogCoin10Prize(FrogCoinQuantityPrize):
     _amount = 10
 
-    def __init__(self):
-        super().__init__(self.amount)
 
-
-class FrogCoin20Prize(FrogCoinPrize):
+class FrogCoin20Prize(FrogCoinQuantityPrize):
     _amount = 20
-
-    def __init__(self):
-        super().__init__(self.amount)
 
 
 class BanditsWayStarPrize(EXPStarPrize):
@@ -2060,7 +2085,9 @@ class MarioRecruitmentPrize(CharacterPrize):
                     use_background=False,
                 )
             )
-        if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO):
+        if world.settings.is_flag_value(
+            _gf("BoosterTowerGate"), _gf("BoosterTowerGating").MARIO
+        ):
             output.append(SetBit(TOWER_CHARACTER_RECRUITED))
             # TODO: generate tower door animation
         output.append(Return())
@@ -2072,14 +2099,18 @@ class MallowRecruitmentPrize(CharacterPrize):
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(MALLOW)]
-        if world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MALLOW):
+        if world.settings.is_flag_value(
+            _gf("BanditsWayGate"), _gf("BanditsWayGating").MALLOW
+        ):
             output.extend(
                 [
                     SetBit(MAP_BANDITS_WAY),
                     SetBit(MAP_DIRECTIONAL_MUSHROOM_KINGDOM_BANDITS_WAY),
                 ]
             )
-        if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MALLOW):
+        if world.settings.is_flag_value(
+            _gf("KeroSewersGate"), _gf("KeroSewersGating").MALLOW
+        ):
             output.extend(
                 [
                     ClearBit(SEWERS_CLOSED),
@@ -2096,7 +2127,9 @@ class MallowRecruitmentPrize(CharacterPrize):
                     use_background=False,
                 )
             )
-        if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MALLOW):
+        if world.settings.is_flag_value(
+            _gf("BoosterTowerGate"), _gf("BoosterTowerGating").MALLOW
+        ):
             output.append(SetBit(TOWER_CHARACTER_RECRUITED))
         output.append(Return())
         return EventScript(output)
@@ -2107,13 +2140,17 @@ class GenoRecruitmentPrize(CharacterPrize):
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(GENO)]
-        if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.GENO):
+        if world.settings.is_flag_value(
+            _gf("PipeVaultGate"), _gf("PipeVaultGating").GENO
+        ):
             output.extend(
                 [
                     ClearBit(PIPE_VAULT_GATED),
                 ]
             )
-        if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.GENO):
+        if world.settings.is_flag_value(
+            _gf("Moleville1Gate"), _gf("Moleville1Gating").GENO
+        ):
             output.extend(
                 [
                     ClearBit(MOLEVILLE_MINES_ENTRANCE_GATING),
@@ -2130,7 +2167,9 @@ class GenoRecruitmentPrize(CharacterPrize):
                     use_background=False,
                 )
             )
-        if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
+        if world.settings.is_flag_value(
+            _gf("BoosterTowerGate"), _gf("BoosterTowerGating").GENO
+        ):
             output.append(SetBit(TOWER_CHARACTER_RECRUITED))
         output.append(Return())
         return EventScript(output)
@@ -2152,7 +2191,9 @@ class BowserRecruitmentPrize(CharacterPrize):
                     use_background=False,
                 )
             )
-        if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.BOWSER):
+        if world.settings.is_flag_value(
+            _gf("BoosterTowerGate"), _gf("BoosterTowerGating").BOWSER
+        ):
             output.append(SetBit(TOWER_CHARACTER_RECRUITED))
         output.append(Return())
         return EventScript(output)
@@ -2163,7 +2204,7 @@ class ToadstoolRecruitmentPrize(CharacterPrize):
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(TOADSTOOL)]
-        if world.settings.is_flag_value(SeaGate, SeaGating.TOADSTOOL):
+        if world.settings.is_flag_value(_gf("SeaGate"), _gf("SeaGating").TOADSTOOL):
             output.extend(
                 [
                     SetBit(MAP_SEA),
@@ -2181,7 +2222,9 @@ class ToadstoolRecruitmentPrize(CharacterPrize):
                     use_background=False,
                 )
             )
-        if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
+        if world.settings.is_flag_value(
+            _gf("BoosterTowerGate"), _gf("BoosterTowerGating").TOADSTOOL
+        ):
             output.append(SetBit(TOWER_CHARACTER_RECRUITED))
         output.append(Return())
         return EventScript(output)
@@ -2191,6 +2234,7 @@ class ToadstoolRecruitmentPrize(CharacterPrize):
 
 
 class HammerBrosFight(BossFightPrize):
+    _text = "Hammer Bros."
     _members = [
         FormationMember(HAMMERBROEnemy, 135, 127),
         FormationMember(HAMMERBROEnemy, 199, 143),
@@ -2198,7 +2242,9 @@ class HammerBrosFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.HAMMER_BRO):
+        if world.settings.is_flag_value(
+            _gf("BanditsWayGate"), _gf("BanditsWayGating").HAMMER_BRO
+        ):
             output.extend(
                 [
                     SetBit(MAP_BANDITS_WAY),
@@ -2209,36 +2255,43 @@ class HammerBrosFight(BossFightPrize):
 
 
 class Croco1BossFight(BossFightPrize):
+    _text = "Croco 1"
     _members = [
         FormationMember(CROCO1Enemy, 183, 127),
     ]
 
 
 class MackBossFight(BossFightPrize):
+    _text = "Mack"
     _members = [
         FormationMember(MACKEnemy, 183, 127),
     ]
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MACK):
+        if world.settings.is_flag_value(
+            _gf("KeroSewersGate"), _gf("KeroSewersGating").MACK
+        ):
             output.extend([ClearBit(SEWERS_CLOSED)])
         return EventScript(output)
 
 
 class PandoriteBossFight(BossFightPrize):
+    _text = "Pandorite"
     _members = [
         FormationMember(PANDORITEEnemy, 183, 127),
     ]
 
 
 class Belome1BossFight(BossFightPrize):
+    _text = "Belome 1"
     _members = [
         FormationMember(BELOME1Enemy, 183, 127),
     ]
 
 
 class BowyerBossFight(BossFightPrize):
+    _text = "Bowyer"
     _members = [
         FormationMember(BOWYEREnemy, 183, 127),
     ]
@@ -2246,13 +2299,17 @@ class BowyerBossFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.BOWYER):
+        if world.settings.is_flag_value(
+            _gf("PipeVaultGate"), _gf("PipeVaultGating").BOWYER
+        ):
             output.extend(
                 [
                     ClearBit(PIPE_VAULT_GATED),
                 ]
             )
-        if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOWYER):
+        if world.settings.is_flag_value(
+            _gf("Moleville1Gate"), _gf("Moleville1Gating").BOWYER
+        ):
             output.extend(
                 [
                     ClearBit(MOLEVILLE_MINES_ENTRANCE_GATING),
@@ -2262,12 +2319,14 @@ class BowyerBossFight(BossFightPrize):
 
 
 class Croco2BossFight(BossFightPrize):
+    _text = "Croco 2"
     _members = [
         FormationMember(CROCO2Enemy, 183, 127),
     ]
 
 
 class PunchinelloBossFight(BossFightPrize):
+    _text = "Punchinello 1"
     _members = [
         FormationMember(PUNCHINELLOEnemy, 199, 119),
         FormationMember(MICROBOMBEnemy, 135, 119, hidden_at_start=True),
@@ -2279,7 +2338,7 @@ class PunchinelloBossFight(BossFightPrize):
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
         if world.settings.is_flag_value(
-            BoosterTowerGate, BoosterTowerGating.PUNCHINELLO
+            _gf("BoosterTowerGate"), _gf("BoosterTowerGating").PUNCHINELLO
         ):
             output.extend(
                 [
@@ -2298,6 +2357,7 @@ class PunchinelloBossFight(BossFightPrize):
 
 
 class BoosterBossFight(BossFightPrize):
+    _text = "Booster 1"
     _force_start_event = BE0012_DIALOGUE_FROM_BOOSTER_FIGHT
     _members = [
         FormationMember(BOOSTEREnemy, 183, 127),
@@ -2308,6 +2368,7 @@ class BoosterBossFight(BossFightPrize):
 
 
 class KnifeGuyGrateGuyBossFight(BossFightPrize):
+    _text = "Knife Guy & Grate Guy"
     _members = [
         FormationMember(KNIFEGUYEnemy, 151, 119),
         FormationMember(GRATEGUYEnemy, 199, 143),
@@ -2315,14 +2376,19 @@ class KnifeGuyGrateGuyBossFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.KGGG):
+        if world.settings.is_flag_value(
+            _gf("BoosterHillGate"), _gf("BoosterHillGating").KGGG
+        ):
             output.extend([ClearBit(BOOSTER_HILL_CLOSED)])
-        if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.KGGG):
+        if world.settings.is_flag_value(
+            _gf("MarrymoreGate"), _gf("MarrymoreGating").KGGG
+        ):
             output.extend([SetBit(MARRYMORE_BACKDOOR_OPEN)])
         return EventScript(output)
 
 
 class BundtBossFight(BossFightPrize):
+    _text = "Bundt 1"
     _members = [
         FormationMember(BUNDTEnemy, 199, 127),
         FormationMember(RASPBERRYEnemy, 199, 119),
@@ -2332,7 +2398,7 @@ class BundtBossFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(SeaGate, SeaGating.BUNDT):
+        if world.settings.is_flag_value(_gf("SeaGate"), _gf("SeaGating").BUNDT):
             output.extend(
                 [
                     SetBit(MAP_SEA),
@@ -2343,6 +2409,7 @@ class BundtBossFight(BossFightPrize):
 
 
 class KingCalamariBossFight(BossFightPrize):
+    _text = "King Calamari"
     _members = [
         FormationMember(KINGCALAMARIEnemy, 222, 94, hidden_at_start=True),
         FormationMember(TENTACLESEnemy2, 136, 115, hidden_at_start=True),
@@ -2356,6 +2423,7 @@ class KingCalamariBossFight(BossFightPrize):
 
 
 class HidonBossFight(BossFightPrize):
+    _text = "Hidon"
     _members = [
         FormationMember(HIDONEnemy, 167, 119),
         FormationMember(GOOMBETTEEnemy, 135, 111, hidden_at_start=True),
@@ -2366,6 +2434,7 @@ class HidonBossFight(BossFightPrize):
 
 
 class JohnnyBossFight(BossFightPrize):
+    _text = "Johnny 1"
     _members = [
         FormationMember(JOHNNYEnemy, 183, 127),
         FormationMember(BANDANABLUEEnemy, 135, 111),
@@ -2378,12 +2447,15 @@ class JohnnyBossFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(YaridovichGate, YaridovichGating.JOHNNY):
+        if world.settings.is_flag_value(
+            _gf("YaridovichGate"), _gf("YaridovichGating").JOHNNY
+        ):
             output.extend([SetBit(SEASIDE_BOSS_AVAILABLE)])
         return EventScript(output)
 
 
 class YaridovichBossFight(BossFightPrize):
+    _text = "Yaridovich"
     _members = [
         FormationMember(YARIDOVICHEnemy, 183, 127),
         FormationMember(YARIDOVICHMirageEnemy, 183, 127, hidden_at_start=True),
@@ -2391,12 +2463,15 @@ class YaridovichBossFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(LandsEndGate, LandsEndGating.YARIDOVICH):
+        if world.settings.is_flag_value(
+            _gf("LandsEndGate"), _gf("LandsEndGating").YARIDOVICH
+        ):
             output.extend([ClearBit(LANDS_END_GATED)])
         return EventScript(output)
 
 
 class MokuraBossFight(BossFightPrize):
+    _text = "Mokura"
     _members = [
         FormationMember(FORMLESSEnemy, 167, 135),
         FormationMember(MOKURAEnemy, 167, 135, hidden_at_start=True),
@@ -2404,6 +2479,7 @@ class MokuraBossFight(BossFightPrize):
 
 
 class Belome2BossFight(BossFightPrize):
+    _text = "Belome 2"
     _members = [
         FormationMember(BELOME2Enemy, 183, 127),
         FormationMember(MARIOCLONEEnemy, 135, 119, hidden_at_start=True),
@@ -2412,7 +2488,9 @@ class Belome2BossFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.BELOME_2):
+        if world.settings.is_flag_value(
+            _gf("MonstroTownGate"), _gf("MonstroTownGating").BELOME_2
+        ):
             output.extend(
                 [
                     RemoveObjectFromSpecificLevel(
@@ -2426,12 +2504,14 @@ class Belome2BossFight(BossFightPrize):
 
 
 class JaggerBossFight(BossFightPrize):
+    _text = "Jagger"
     _members = [
         FormationMember(JAGGEREnemy, 183, 127),
     ]
 
 
 class Jinx1BossFight(BossFightPrize):
+    _text = "Jinx 1"
     _members = [
         FormationMember(JINX1Enemy, 183, 127),
     ]
@@ -2439,6 +2519,7 @@ class Jinx1BossFight(BossFightPrize):
 
 
 class Jinx2BossFight(BossFightPrize):
+    _text = "Jinx 2"
     _members = [
         FormationMember(JINX2Enemy, 183, 127),
     ]
@@ -2446,6 +2527,7 @@ class Jinx2BossFight(BossFightPrize):
 
 
 class Jinx3BossFight(BossFightPrize):
+    _text = "Jinx 3"
     _members = [
         FormationMember(JINX3Enemy, 183, 127),
     ]
@@ -2453,6 +2535,7 @@ class Jinx3BossFight(BossFightPrize):
 
 
 class CulexBossFight(BossFightPrize):
+    _text = "Culex 1"
     _members = [
         FormationMember(CULEXEnemy, 183, 103),
         FormationMember(FIRECRYSTALEnemy, 135, 103, hidden_at_start=True),
@@ -2463,6 +2546,7 @@ class CulexBossFight(BossFightPrize):
 
 
 class BoxBoyBossFight(BossFightPrize):
+    _text = "Box Boy"
     _members = [
         FormationMember(BOXBOYEnemy, 183, 127),
         FormationMember(FAUTSOEnemy, 151, 111, hidden_at_start=True),
@@ -2470,6 +2554,7 @@ class BoxBoyBossFight(BossFightPrize):
 
 
 class MegasmilaxBossFight(BossFightPrize):
+    _text = "Megasmilax"
     _members = [
         FormationMember(SMILAXEnemy, 180, 157),
         FormationMember(SMILAXEnemy, 164, 175, hidden_at_start=True),
@@ -2482,23 +2567,29 @@ class MegasmilaxBossFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(NimbusGate, NimbusGating.MEGASMILAX):
+        if world.settings.is_flag_value(
+            _gf("NimbusGate"), _gf("NimbusGating").MEGASMILAX
+        ):
             output.extend(
                 [
                     SetBit(NIMBUS_MAINLAND_UNLOCKED),
-                    RemoveObjectFromSpecificLevel(NPC_2, R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE),
+                    RemoveObjectFromSpecificLevel(
+                        NPC_2, R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE
+                    ),
                 ]
             )
         return EventScript(output)
 
 
 class DodoBossFight(BossFightPrize):
+    _text = "Dodo"
     _members = [
         FormationMember(DODOEnemySolo, 183, 127),
     ]
 
 
 class BirdettaBossFight(BossFightPrize):
+    _text = "Birdo"
     _members = [
         FormationMember(BIRDETTAEnemy, 167, 118, hidden_at_start=True),
         FormationMember(SHELLYEnemy, 171, 103),
@@ -2511,6 +2602,7 @@ class BirdettaBossFight(BossFightPrize):
 
 
 class ValentinaBossFight(BossFightPrize):
+    _text = "Valentina"
     _members = [
         FormationMember(VALENTINAEnemy, 183, 127),
         FormationMember(DODOEnemy, 199, 151, hidden_at_start=True),
@@ -2519,7 +2611,7 @@ class ValentinaBossFight(BossFightPrize):
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
         if world.settings.is_flag_value(
-            BarrelVolcanoGate, BarrelVolcanoGating.VALENTINA
+            _gf("BarrelVolcanoGate"), _gf("BarrelVolcanoGating").VALENTINA
         ):
             output.extend(
                 [
@@ -2531,6 +2623,7 @@ class ValentinaBossFight(BossFightPrize):
 
 
 class CzarDragonBossFight(BossFightPrize):
+    _text = "Czar Dragon"
     _members = [
         FormationMember(CZARDRAGONEnemy, 183, 143),
         FormationMember(ZOMBONEEnemy, 183, 143, hidden_at_start=True),
@@ -2542,6 +2635,7 @@ class CzarDragonBossFight(BossFightPrize):
 
 
 class AxemRangersBossFight(BossFightPrize):
+    _text = "Axem Rangers"
     _members = [
         FormationMember(AXEMRANGERSEnemy, 201, 79),
         FormationMember(AXEMREDEnemy, 135, 111, hidden_at_start=True),
@@ -2555,14 +2649,18 @@ class AxemRangersBossFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.AXEM):
+        if world.settings.is_flag_value(
+            _gf("BowsersKeepGate"), _gf("BowsersKeepGating").AXEM
+        ):
             output.extend(
                 [
                     SetBit(MAP_VISTA_HILL),
                     ClearBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL),
                 ]
             )
-            if world.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
+            if world.settings.is_flag_value(
+                _gf("FactoryGate"), _gf("FactoryGating").OPEN
+            ):
                 output.extend(
                     [
                         SetBit(MAP_GATE),
@@ -2573,6 +2671,7 @@ class AxemRangersBossFight(BossFightPrize):
 
 
 class ChesterBossFight(BossFightPrize):
+    _text = "Chester"
     _members = [
         FormationMember(CHESTEREnemy, 183, 127),
         FormationMember(BAHAMUTTEnemy, 135, 119, hidden_at_start=True),
@@ -2580,6 +2679,7 @@ class ChesterBossFight(BossFightPrize):
 
 
 class KamekBossFight(BossFightPrize):
+    _text = "Magikoopa"
     _members = [
         FormationMember(KAMEKEnemy, 215, 111),
         FormationMember(TERRAPINEnemy, 167, 135, hidden_at_start=True),
@@ -2588,6 +2688,7 @@ class KamekBossFight(BossFightPrize):
 
 
 class BoomerBossFight(BossFightPrize):
+    _text = "Boomer"
     _members = [
         FormationMember(BOOMEREnemy, 215, 143),
         FormationMember(HANGINSHYEnemy, 66, 115),
@@ -2597,6 +2698,7 @@ class BoomerBossFight(BossFightPrize):
 
 
 class ExorBossFight(BossFightPrize):
+    _text = "Exor"
     _members = [
         FormationMember(EXOREnemy, 193, 64),
         FormationMember(NEOSQUIDEnemy, 187, 136),
@@ -2608,7 +2710,7 @@ class ExorBossFight(BossFightPrize):
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(FactoryGate, FactoryGating.EXOR):
+        if world.settings.is_flag_value(_gf("FactoryGate"), _gf("FactoryGating").EXOR):
             output.extend(
                 [
                     SetBit(MAP_GATE),
@@ -2620,6 +2722,7 @@ class ExorBossFight(BossFightPrize):
 
 
 class CountdownBossFight(BossFightPrize):
+    _text = "Count Down"
     _members = [
         FormationMember(COUNTDOWNEnemy, 150, 93),
         FormationMember(DINGALINGEnemy, 158, 52),
@@ -2629,6 +2732,7 @@ class CountdownBossFight(BossFightPrize):
 
 
 class CloakerDominoBossFight(BossFightPrize):
+    _text = "Cloaker & Domino"
     _members = [
         FormationMember(CLOAKEREnemy, 151, 111),
         FormationMember(DOMINOEnemy, 215, 159),
@@ -2639,6 +2743,7 @@ class CloakerDominoBossFight(BossFightPrize):
 
 
 class ClerkBossFight(BossFightPrize):
+    _text = "Clerk"
     _members = [
         FormationMember(CLERKEnemy, 199, 119),
         FormationMember(MADMALLETEnemyHenchman, 135, 119),
@@ -2647,6 +2752,7 @@ class ClerkBossFight(BossFightPrize):
 
 
 class ManagerBossFight(BossFightPrize):
+    _text = "Manager"
     _members = [
         FormationMember(MANAGEREnemy, 199, 119),
         FormationMember(POUNDEREnemyHenchman, 151, 111),
@@ -2656,6 +2762,7 @@ class ManagerBossFight(BossFightPrize):
 
 
 class DirectorBossFight(BossFightPrize):
+    _text = "Director"
     _members = [
         FormationMember(DIRECTOREnemy, 183, 127),
         FormationMember(POUNDETTEEnemyHenchman, 135, 119),
@@ -2666,6 +2773,7 @@ class DirectorBossFight(BossFightPrize):
 
 
 class GunyolkBossFight(BossFightPrize):
+    _text = "Gunyolk"
     _members = [
         FormationMember(GUNYOLKEnemy, 199, 103),
         FormationMember(FACTORYCHIEFEnemy, 231, 151),
@@ -2673,6 +2781,7 @@ class GunyolkBossFight(BossFightPrize):
 
 
 class SmithyBossFight(BossFightPrize):
+    _text = "Smithy"
     _members = [
         FormationMember(SMITHY1Enemy, 199, 127),
         FormationMember(SMELTEREnemy, 87, 87),
@@ -2682,6 +2791,7 @@ class SmithyBossFight(BossFightPrize):
 
 
 class Punchinello2BossFight(BossFightPrize):
+    _text = "Punchinello 2"
     _members = [
         FormationMember(PUNCHINELLO2Enemy, 188, 116),
         FormationMember(STRONGBOBOMB3Enemy, 145, 103, hidden_at_start=True),
@@ -2692,6 +2802,7 @@ class Punchinello2BossFight(BossFightPrize):
 
 
 class Booster2BossFight(BossFightPrize):
+    _text = "Booster 2"
     _members = [
         FormationMember(BOOSTEREnemy2, 184, 116),
         FormationMember(SNIFIT2Enemy, 156, 132),
@@ -2702,6 +2813,7 @@ class Booster2BossFight(BossFightPrize):
 
 
 class Bundt2BossFight(BossFightPrize):
+    _text = "Bundt 2"
     _members = [
         FormationMember(BUNDT2Enemy, 199, 127),
         FormationMember(RASPBERRY2Enemy, 199, 119),
@@ -2713,12 +2825,14 @@ class Bundt2BossFight(BossFightPrize):
 
 
 class Johnny2Fight(BossFightPrize):
+    _text = "Johnny 2"
     _members = [
         FormationMember(JOHNNYEnemy2, 165, 121),
     ]
 
 
 class Belome3Dight(BossFightPrize):
+    _text = "Belome 3"
     _members = [
         FormationMember(BELOMEEnemy3, 183, 127),
         FormationMember(MARIOCLONESEnemy, 135, 119, hidden_at_start=True),
@@ -2727,6 +2841,7 @@ class Belome3Dight(BossFightPrize):
 
 
 class Jinx4BossFight(BossFightPrize):
+    _text = "Jinx 4"
     _members = [
         FormationMember(JINXEnemy4, 181, 122),
         FormationMember(TeamGaugeEnemy, 36, 200),
@@ -2734,6 +2849,7 @@ class Jinx4BossFight(BossFightPrize):
 
 
 class Culex3DBossFight(BossFightPrize):
+    _text = "Culex 2"
     _members = [
         FormationMember(CULEX3DEnemy, 183, 103),
         FormationMember(FIRECRYS3DEnemy, 135, 103, hidden_at_start=True),

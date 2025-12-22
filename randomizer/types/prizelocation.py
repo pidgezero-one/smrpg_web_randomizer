@@ -17,7 +17,8 @@ from .prize import (
     FPFlowerPrize,
     ArchipelagoPrize,
 )
-from ..progression.prizes import DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize
+# Note: DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize imported lazily
+# in InvisibleFlagLocation.originally_held to avoid circular import
 from ..data.variables.event_script_names import *
 from ..data.variables.action_script_names import *
 from ..data.variables.variable_names import BATTLE_PACK_ID, PRIMARY_TEMP_7000
@@ -60,7 +61,6 @@ from smrpgpatchbuilder.datatypes.levels.classes import RegularNPC, EventInitiato
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHEAST
 from .base import CategorizationOption
 from .packet_type import PacketType
-from .flags import DisperseStarPieces
 from ..data.rooms.npcs import EMPTY_NPC_3
 from ..data.variables.room_names import *
 from ..data.variables.variable_names import (
@@ -864,6 +864,8 @@ class PrizeLocation:
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         if isinstance(prize, tuple(self._blacklist)):
             return False
+        # Lazy import to avoid circular import
+        from .flags import DisperseStarPieces
         if isinstance(prize, StarPiecePrize) and world.settings.isflag_enabled(
             DisperseStarPieces
         ):
@@ -1448,6 +1450,8 @@ class InvisibleFlagLocation(NPCLocationRow1):
 
     @property
     def originally_held(self) -> type[Prize] | None:
+        # Lazy import to avoid circular import
+        from ..progression.prizes import DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize
         if self._which == 0:
             return DryBonesFlagPrize
         elif self._which == 1:

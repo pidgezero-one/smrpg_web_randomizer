@@ -1,3 +1,7 @@
+from typing import Any
+from django.core.serializers.json import DjangoJSONEncoder
+from smrpgpatchbuilder.datatypes.allies.ally import Ally
+
 
 class Patch:
     """Class representing a patch for a specific seed that can be added to as we build it."""
@@ -62,3 +66,17 @@ class Patch:
             patch.append({addr: self._data[addr]})
 
         return patch
+
+
+class PatchJSONEncoder(DjangoJSONEncoder):
+    """Extension of the Django JSON serializer to support randomizer patch data."""
+
+    def default(self, o: Any):
+        # Support bytes and bytearray objects, which are just lists of integers.
+        if isinstance(o, (bytearray, bytes)):
+            return list(o)
+        if isinstance(o, Patch):
+            return o.for_json()
+        if isinstance(o, Ally):
+            return o.name
+        return super().default(o)

@@ -1,5 +1,5 @@
 from .prize import Prize
-from .settings import Settings
+
 
 class Inventory(list):
     """A list of items, boss fights, spells, and characters the player is assumed

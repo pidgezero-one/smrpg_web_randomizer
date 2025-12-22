@@ -107,6 +107,6 @@ script = EventScript([
 	ReturnAll(),
 	RunDialog(dialog_id=DI2770_FROGFUCIUS_KEEP_OBSTACLE_PRIZE_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_991_run_dialog_74"),
 	ReturnAll(),
-	RunDialog(dialog_id=DI0023_INVISIBLE_ITEM_HINTT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_991_run_dialog_INVISIBLE"),
+	RunDialog(dialog_id=DI0023_INVISIBLE_ITEM_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_991_run_dialog_INVISIBLE"),
 	ReturnAll(),
 ])

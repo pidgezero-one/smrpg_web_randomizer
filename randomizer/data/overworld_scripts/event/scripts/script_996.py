@@ -31,15 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnterArea(room_id=R123_PIPE_VAULT_AREA_01, face_direction=SOUTH, x=12, y=83, z=0),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_VisibilityOff()
-	]),
-	DisplayIntroTitleText(text=IN, y=12),
-	FadeInFromBlack(sync=True, duration=30),
-	PauseScriptUntilEffectDone(),
-	Pause(120),
-	FadeOutToBlack(sync=True, duration=30),
-	PauseScriptUntilEffectDone(),
-	Return()
 ])

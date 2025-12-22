@@ -1,12 +1,17 @@
 from markdown import markdown
-from enum import StrEnum
-from typing import Generic, TypeVar
+from enum import StrEnum, Enum
+from typing import Generic, TypeVar, TYPE_CHECKING, Any
 from ..data.spells.spells import ALL_SPELLS
 from ..types.spell import CharacterSpell
 from ..data.allies.allies import ally_collection
-from ..progression.prizes import ALL_BOSS_FIGHTS, BossFightPrize
 from .base import CategorizationOption, ClassCategorizationOption
 from copy import deepcopy
+import random
+
+if TYPE_CHECKING:
+    ShuffledBossEnumType = Enum
+else:
+    ShuffledBossEnumType = Any
 
 
 class FlagError(ValueError):
@@ -17,7 +22,7 @@ class FlagType(StrEnum):
     BOOLEAN = "boolean"
     CATEGORIZATION = "categorization"
     CATEGORIZATION_WITH_ORDINANCE = "categorization_with_ordinance"
-    RANGE = "range"
+    RANGE = "number"  # Frontend expects "number" not "range"
     SELECT_ONE = "select_one"
 
 
@@ -30,7 +35,9 @@ class Flag:
     _id = ""
     _requires_all = []
     _requires_any = []
+    _disabled_if_all = []  # Disable this flag if ALL of these conditions are met
     type: FlagType
+    modes = ["open"]
 
     @property
     def description(self):
@@ -90,6 +97,57 @@ class CategorizationFlag(Flag, Generic[T]):
     def options(self) -> dict[T, bool]:
         return self._options or self.default.copy()
 
+    @staticmethod
+    def _get_option_text(value) -> str:
+        """Get a JSON-serializable text representation of an enum value.
+
+        Priority order for descriptive names:
+        1. _text (boss fights)
+        2. _name (battle music classes)
+        3. _title (spells)
+        4. _id.value (prize locations with ShuffleLocationSelector enum)
+        5. value (if string, for simple enums)
+        6. name attribute (allies)
+        7. __name__ (class types)
+        8. str() fallback
+        """
+        if isinstance(value, str):
+            return value
+        # Boss fights have _text
+        if hasattr(value, '_text'):
+            return value._text
+        # Battle music classes have _name
+        if hasattr(value, '_name') and isinstance(value._name, str):
+            return value._name
+        # Spells have _title
+        if hasattr(value, '_title'):
+            return value._title
+        # Prize locations have _id which is a ShuffleLocationSelector enum
+        if hasattr(value, '_id'):
+            id_val = value._id
+            if hasattr(id_val, 'value') and isinstance(id_val.value, str):
+                return id_val.value
+        # Simple enum with string value
+        if hasattr(value, 'value') and isinstance(value.value, str):
+            return value.value
+        # Allies have name attribute
+        if hasattr(value, 'name') and isinstance(value.name, str):
+            return value.name
+        # Class types have __name__
+        if hasattr(value, '__name__'):
+            return value.__name__
+        return str(value)
+
+    @property
+    def options_dict(self) -> list[dict[str, str]]:
+        """All options as a dict for JSON serialization."""
+        return [{"id": c.name, "text": self._get_option_text(c.value)} for c in self.options.keys()]
+
+    @property
+    def default_dict(self) -> list[dict[str, str]]:
+        """Enabled options as a dict for JSON serialization."""
+        return [{"id": c.name, "text": self._get_option_text(c.value)} for c in self.enabled]
+
     def reset(self) -> None:
         self._options = self.default.copy()
 
@@ -118,6 +176,63 @@ class CategorizationFlagWithOrdinance(Flag, Generic[T]):
     @property
     def options(self) -> dict[T, int | None]:
         return self._options or self.default.copy()
+
+    @staticmethod
+    def _get_option_text(value) -> str:
+        """Get a JSON-serializable text representation of an enum value.
+
+        Priority order for descriptive names:
+        1. _text (boss fights)
+        2. _name (battle music classes)
+        3. _title (spells)
+        4. _id.value (prize locations with ShuffleLocationSelector enum)
+        5. value (if string, for simple enums)
+        6. name attribute (allies)
+        7. __name__ (class types)
+        8. str() fallback
+        """
+        if isinstance(value, str):
+            return value
+        # Boss fights have _text
+        if hasattr(value, '_text'):
+            return value._text
+        # Battle music classes have _name
+        if hasattr(value, '_name') and isinstance(value._name, str):
+            return value._name
+        # Spells have _title
+        if hasattr(value, '_title'):
+            return value._title
+        # Prize locations have _id which is a ShuffleLocationSelector enum
+        if hasattr(value, '_id'):
+            id_val = value._id
+            if hasattr(id_val, 'value') and isinstance(id_val.value, str):
+                return id_val.value
+        # Simple enum with string value
+        if hasattr(value, 'value') and isinstance(value.value, str):
+            return value.value
+        # Allies have name attribute
+        if hasattr(value, 'name') and isinstance(value.name, str):
+            return value.name
+        # Class types have __name__
+        if hasattr(value, '__name__'):
+            return value.__name__
+        return str(value)
+
+    @property
+    def options_dict(self) -> list[dict[str, str | int | None]]:
+        """All options as a dict for JSON serialization, including order."""
+        return [
+            {"id": c.name, "text": self._get_option_text(c.value), "order": self.options.get(c)}
+            for c in self.options.keys()
+        ]
+
+    @property
+    def default_dict(self) -> list[dict[str, str | int | None]]:
+        """Default options as a dict for JSON serialization, including order."""
+        return [
+            {"id": c.name, "text": self._get_option_text(c.value), "order": self.default.get(c)}
+            for c in self.default.keys()
+        ]
 
     @property
     def enabled(self) -> list[T]:
@@ -180,6 +295,16 @@ class SelectOneFlag(Flag, Generic[T]):
     @property
     def default(self) -> T:
         return self._default
+
+    @property
+    def choices_dict(self) -> list[dict[str, str]]:
+        """All choices as a dict for JSON serialization."""
+        return [{"id": c.name, "text": c.value} for c in self.choices]
+
+    @property
+    def default_dict(self) -> dict[str, str]:
+        """Selected option as a dict for JSON serialization."""
+        return {"text": self.default.value, "id": self.default.name}
 
     def reset(self) -> None:
         self._selected = self.default
@@ -271,26 +396,70 @@ class MaxCharacters(RangeFlag):
     max_value = 5
     _default = 5
     _id = "max"
+    _requires_all = [(ShuffleCharacters(), True)]
 
 
-class StartingCharacterEnum(ClassCategorizationOption):
-    pass
-
-
+# Build StartingCharacterEnum dynamically - use ally instances as values (not class, to avoid aliases)
+_starting_char_members = {}
 for ally in ally_collection._allies:
     attr_name = ally.name.replace(" ", "_").replace("-", "_")
-    setattr(StartingCharacterEnum, attr_name, type(ally))
+    _starting_char_members[attr_name] = ally
+
+# Add 5 "Random" options - these are special markers, not actual allies
+# The Settings object will interpret these as "pick a random ally"
+for i in range(1, 6):
+    _starting_char_members[f"Random_{i}"] = f"Random_{i}"
+
+StartingCharacterEnum = ClassCategorizationOption("StartingCharacterEnum", _starting_char_members)
 
 
 class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum]):
     _name = "Starting Characters"
     _default: dict[StartingCharacterEnum, int | None] = {
-        o: True
+        o: (0 if i == 0 else None)
         for i, o in enumerate(StartingCharacterEnum.__members__.values())
-        if i == 0
     }
     _description = "The characters who will be in your party at the start of the game. Your first selection will be considered your starting character."
     _id = "starters"
+    _requires_all = [(ShuffleCharacters(), True)]
+
+    def resolve_random_selections(self, rng: "random.Random | None" = None) -> list:
+        """Resolve enabled selections, replacing Random_X with actual allies.
+
+        Args:
+            rng: Optional random.Random instance for reproducible randomization.
+                 If None, uses the global random module (which should be seeded).
+
+        Returns a list of Ally instances in the order they should be assigned.
+        """
+        from ..data.allies.allies import ally_collection
+
+        if rng is None:
+            rng = random
+
+        # Get all available allies
+        available_allies = list(ally_collection._allies)
+
+        # Track which allies have already been selected
+        used_allies: list = []
+        result: list = []
+
+        for option in self.enabled:
+            value = option.value
+            # Check if this is a "Random_X" string value
+            if isinstance(value, str) and value.startswith("Random_"):
+                # Pick a random ally from those not yet used
+                remaining = [a for a in available_allies if a not in used_allies]
+                if remaining:
+                    chosen = rng.choice(remaining)
+                    used_allies.append(chosen)
+                    result.append(chosen)
+            else:
+                # This is an actual ally instance
+                used_allies.append(value)
+                result.append(value)
+
+        return result
 
 
 class PlayAsStarter(BooleanFlag):
@@ -299,6 +468,7 @@ class PlayAsStarter(BooleanFlag):
 <br>
 <br>If disabled, you will always play as Mario outside of battle, regardless of whether or not he is in your party."""
     _id = "protag"
+    _requires_all = [(ShuffleCharacters(), True)]
 
 
 # ******** Equipment
@@ -357,6 +527,7 @@ class IgnoreNamesakeProperties(BooleanFlag):
     _name = "No equipment property guarantees"
     _description = "Normally, certain namesake items retain their protections: <b>Fearless Pin</b>, <b>Antidote Pin</b>, <b>Trueform Pin</b>, and <b>Wakeup Pin</b>. In addition, at least four equips will have OHKO protection. This flag removes those guarantees."
     _id = "unsafe"
+    _requires_all = [(EquipmentProperties(), [EquipmentPropertiesOptions.RANDOM])]
 
 
 # ✅
@@ -434,17 +605,14 @@ class UncapSuperJumps(BooleanFlag):
     _id = "uncap"
 
 
-class LearnableSpellEnum(ClassCategorizationOption):
-    """Enumeration for all learnable spells"""
-
-    pass
-
-
-# Populate the LearnableSpellEnum with spell classes
+# Build LearnableSpellEnum members dynamically
+_learnable_spell_members = {}
 for spell in ALL_SPELLS.spells:
     if isinstance(spell, CharacterSpell):
         attr_name = spell.title.replace(" ", "_").replace("-", "_")
-        setattr(LearnableSpellEnum, attr_name, type(spell))
+        _learnable_spell_members[attr_name] = type(spell)
+
+LearnableSpellEnum = ClassCategorizationOption("LearnableSpellEnum", _learnable_spell_members)
 
 
 class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
@@ -479,6 +647,7 @@ class TotalStarPieces(RangeFlag):
     min_value = 0
     max_value = 7
     _id = "avail"
+    _requires_all = [(ShuffleStarPieces(), True)]
 
 
 # EnabledBossChecks and EnabledStarPieceChecks are defined after delayed imports below
@@ -498,7 +667,10 @@ class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions
     _description = """<b>Normal</b> - The shuffler will take boss difficulty into account when placing progression items. Your expected early progression items are most likely to be found earlier in the game.
 <br>
 <br><b>Hard</b> - The shuffler will not consider boss difficulty when placing progression items. Your progression items may be found late in the game among higher level boss battles."""
+    choices = [o for o in ProgressionLogicDifficultyOptions]
     _id = "restrict_map"
+    _default = ProgressionLogicDifficultyOptions.NORMAL
+    _requires_all = [(ShuffleStarPieces(), True)]
 
 
 # ✅
@@ -508,6 +680,7 @@ class DisperseStarPieces(BooleanFlag):
 <br>
 <br>Note: This may not be respected if Bowser's Keep and Factory are both gated by 6 Star Pieces."""
     _id = "restrict_map"
+    _requires_all = [(ShuffleStarPieces(), True)]
 
 
 # ******** Item shuffle
@@ -537,6 +710,7 @@ class ItemQuality(SelectOneFlag[ItemQualityOptions]):
     choices = [o for o in ItemQualityOptions]
     _default = ItemQualityOptions.ORIGINAL_POOL
     _id = "quality"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class BiasItemShuffle(BooleanFlag):
@@ -545,12 +719,14 @@ class BiasItemShuffle(BooleanFlag):
         """If enabled, harder-to-reach areas will generally house better items."""
     )
     _id = "bias"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class NoStarEgg(BooleanFlag):
     _name = "No Star Egg"
     _description = """If enabled, you are guaranteed not to find the Star Egg via any chests, overworld items, NPC rewards, or shops."""
     _id = "noegg"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class RestrictSpecialEquips(BooleanFlag):
@@ -559,6 +735,7 @@ class RestrictSpecialEquips(BooleanFlag):
 <br>
 <br>If disabled, the ten locations will simply contain random items, like every other item location."""
     _id = "restrict_monstro"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class EXPStarsAnywhere(BooleanFlag):
@@ -567,6 +744,7 @@ class EXPStarsAnywhere(BooleanFlag):
 <br>
 <br>If disabled, EXP stars will be restricted to their original locations in Bandit's Way, Kero Sewers, Moleville Mines, Sea, Land's End, Nimbus Land, and Barrel Volcano."""
     _id = "xpstars"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class MimicsAnywhere(BooleanFlag):
@@ -576,6 +754,7 @@ class MimicsAnywhere(BooleanFlag):
 <br>If disabled, mimic chests will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley. You will not be able to run away from these fights."""
     _modes = ["open"]
     _id = "mimics"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class SlotsAnywhere(BooleanFlag):
@@ -584,18 +763,21 @@ class SlotsAnywhere(BooleanFlag):
 <br>
 <br>If disabled, the three original slot machines in Bean Valley will be unchanged."""
     _id = "slots"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class ShuffleBeetlemania(BooleanFlag):
     _name = "Shuffle Beetlemania"
     _description = """If enabled, the Mushroom Kingdom inn kid will give you a random item check for 500 coins. Beetlemania will appear in a random location, unless your item pool is set to "Completely Empty"."""
     _id = "beetle"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class ShuffleMagikoopaChest(BooleanFlag):
     _name = "Shuffle Magikoopa's coin chest"
     _description = """If enabled, the chest in Magikoopa's room will contain a random item check. A random chest somewhere in the game will contain infinite coins, unless your item pool is set to "Completely Empty"."""
     _id = "kamek"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 # ✅
@@ -605,12 +787,14 @@ class ShuffleWeddingGear(BooleanFlag):
 <br>
 <br>If disabled, the Marrymore chapel minigame will behave as normal."""
     _id = "marry"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class AnnoyingChests(BooleanFlag):
     _name = 'Empty chests should perform the "You Missed" animation'
     _description = """If disabled, empty chests will simply appear as pre-opened."""
     _id = "ym"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class FireworksOptions(CategorizationOption):
@@ -634,6 +818,7 @@ class FireworksSetting(SelectOneFlag[FireworksOptions]):
     choices = [o for o in FireworksOptions]
     _default = FireworksOptions.VANILLA
     _id = "fireworks"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 # ******** Progression availability
@@ -647,6 +832,7 @@ class KeyItemsAnywhere(BooleanFlag):
 <br>
 <br>The items targeted by this setting are the <b>Rare Frog Coin</b>, <b>Cricket Pie</b>, <b>Bambino Bomb</b>, <b>Castle Key 1</b>, <b>Castle Key 2</b>, <b>Alto Card</b>, <b>Tenor Card</b>, <b>Soprano Card</b>, <b>Greaper Flag</b>, <b>Dry Bones Flag</b>, <b>Big Boo Flag</b>, <b>Shed Key</b>, <b>Elder Key</b>, <b>Cricket Jam</b>, <b>Temple Key</b>, <b>Room Key</b>, <b>Seed</b>, <b>Fertilizer</b> (and sometimes <b>Bright Card</b> and <b>Fireworks</b>)."""
     _id = "keys_anywhere"
+    _requires_all = [(ShuffleItems(), True)]
     # change EVENT_947_jmp_to_event_107" to point to event 949
 
 
@@ -654,6 +840,7 @@ class StarPieceAvailability(BooleanFlag):
     _name = "Star Pieces can appear in the general item pool"
     _description = "If enabled, some Star Pieces may be shuffled in with items instead of being only granted by boss fights."
     _id = "stars_anywhere"
+    _requires_all = [(ShuffleItems(), True)]
     # change EVENT_947_jmp_to_event_107" to point to event 949
 
 
@@ -667,16 +854,18 @@ class InvisibleFlagsSetting(BooleanFlag):
 <br>
 <br>If enabled, the three checks will be located somewhere random in the world as an invisible item. The Three Musty Fears will give you hints as to their locations."""
     _id = "moveflags"
+    _requires_all = [(ShuffleItems(), True)]
 
 
 class Remake(BooleanFlag):
     _name = "Enable Remake content"
     _description = """If enabled, the seven postgame boss fights from the 2023 Switch remake and their rewards will be available in the game and included in all shuffle settings.
 <br>
-<br>The freestanding Flower Tab checks in Mushroo Way and Land's End will also be added.
+<br>The freestanding Flower Tab checks in Mushroom Way and Land's End will also be added.
 <br>
 <br>Boss fight locations will be available after you defeat the first iterations of those fights and also find the Stay Voucher. For example, you cannot do the postgame temple fight until after you have defeated the regular campaign temple fight, you can't use the Extra Shiny Stone until you've defeated the boss in the Monstro Town door the first time, etc."""
     _remake = False
+    _requires_all = [(ShuffleItems(), True)]
 
 
 # Delayed import to avoid circular dependency
@@ -685,6 +874,7 @@ from ..types.prizelocation import (
     PrizeLocation,
     BossFightLocation,
     StarPieceLocation,
+    CharacterRecruitmentLocation,
 )
 
 
@@ -698,31 +888,26 @@ def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
     return name
 
 
-class ItemCheckEnum(ClassCategorizationOption):
-    """Enumeration for regular item check locations."""
-    pass
+# Build enum members dynamically from prizelocations
+_item_check_members = {}
+_boss_fight_check_members = {}
+_star_piece_check_members = {}
 
-
-class BossFightCheckEnum(ClassCategorizationOption):
-    """Enumeration for boss fight check locations."""
-    pass
-
-
-class StarPieceCheckEnum(ClassCategorizationOption):
-    """Enumeration for star piece check locations."""
-    pass
-
-
-# Populate the enums with location class types
 for cls in vars(prizelocations).values():
     if isinstance(cls, type) and issubclass(cls, PrizeLocation) and hasattr(cls, "_id"):
         attr_name = _location_class_to_attr_name(cls)
         if issubclass(cls, StarPieceLocation) and cls is not StarPieceLocation:
-            setattr(StarPieceCheckEnum, attr_name, cls)
+            _star_piece_check_members[attr_name] = cls
         elif issubclass(cls, BossFightLocation) and cls is not BossFightLocation:
-            setattr(BossFightCheckEnum, attr_name, cls)
-        elif cls is not PrizeLocation and not issubclass(cls, (BossFightLocation, StarPieceLocation)):
-            setattr(ItemCheckEnum, attr_name, cls)
+            _boss_fight_check_members[attr_name] = cls
+        elif (cls is not PrizeLocation and
+              not issubclass(cls, (BossFightLocation, StarPieceLocation, CharacterRecruitmentLocation))):
+            _item_check_members[attr_name] = cls
+
+# Create enums dynamically using functional API
+ItemCheckEnum = ClassCategorizationOption("ItemCheckEnum", _item_check_members)
+BossFightCheckEnum = ClassCategorizationOption("BossFightCheckEnum", _boss_fight_check_members)
+StarPieceCheckEnum = ClassCategorizationOption("StarPieceCheckEnum", _star_piece_check_members)
 
 
 class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
@@ -736,6 +921,8 @@ class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
 <br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
     _id = "chests"
     _default = {o: True for o in ItemCheckEnum.__members__.values()}
+    _requires_all = [(ShuffleItems(), True)]
+    _requires_any = [(KeyItemsAnywhere(), True), (StarPieceAvailability(), True)]
 
 
 class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
@@ -747,6 +934,7 @@ class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
 <br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
     _id = "bosses"
     _default = {o: True for o in BossFightCheckEnum.__members__.values()}
+    _requires_all = [(ShuffleStarPieces(), True)]
 
 
 class EnabledStarPieceChecks(CategorizationFlag[StarPieceCheckEnum]):
@@ -824,7 +1012,7 @@ class KnifeGuyPrizeThreshold(RangeFlag):
 # ✅
 class SuitePrize1Threshold(RangeFlag):
     _name = "Required Suite prize #1 stays"
-    _description = "The number of times required to stay in the Marrymore Suite to receive the first special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the first special gift"
     _default = 1
     min_value = 1
     max_value = 249
@@ -834,7 +1022,7 @@ class SuitePrize1Threshold(RangeFlag):
 # ✅
 class SuitePrize2Threshold(RangeFlag):
     _name = "Required Suite prize #2 stays"
-    _description = "The number of times required to stay in the Marrymore Suite to receive the second special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the second special gift"
     _default = 3
     min_value = 2
     max_value = 250
@@ -844,7 +1032,7 @@ class SuitePrize2Threshold(RangeFlag):
 # ✅
 class SuitePrize3Threshold(RangeFlag):
     _name = "Required Suite prize #3 stays"
-    _description = "The number of times required to stay in the Marrymore Suite to receive the third special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the third special gift"
     _default = 5
     min_value = 3
     max_value = 251
@@ -854,7 +1042,7 @@ class SuitePrize3Threshold(RangeFlag):
 # ✅
 class SuitePrize4Threshold(RangeFlag):
     _name = "Required Suite prize #4 stays"
-    _description = "The number of times required to stay in the Marrymore Suite to receive the fourth special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fourth special gift"
     _default = 10
     min_value = 4
     max_value = 252
@@ -864,7 +1052,7 @@ class SuitePrize4Threshold(RangeFlag):
 # ✅
 class SuitePrize5Threshold(RangeFlag):
     _name = "Required Suite prize #5 stays"
-    _description = "The number of times required to stay in the Marrymore Suite to receive the fifth special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fifth special gift"
     _default = 15
     min_value = 5
     max_value = 253
@@ -874,7 +1062,7 @@ class SuitePrize5Threshold(RangeFlag):
 # ✅
 class SuitePrize6Threshold(RangeFlag):
     _name = "Required Suite prize #6 stays"
-    _description = "The number of times required to stay in the Marrymore Suite to receive the sixth special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the sixth special gift"
     _default = 200
     min_value = 6
     max_value = 254
@@ -1520,6 +1708,7 @@ class NoPickMeUps(BooleanFlag):
     _name = "Exclude Pick Me Ups"
     _description = """If enabled, Pick Me Ups will not be sold in any shops."""
     _id = "nolife"
+    _requires_all = [(ShuffleShops(), True)]
 
 
 # ✅
@@ -1565,6 +1754,7 @@ class BossShuffleScaleStats(SelectOneFlag[BossScaleOptions]):
     choices = [o for o in BossScaleOptions]
     _default = BossScaleOptions.VANILLA
     _id = "scale"
+    _requires_all = [(BossShuffle(), True)]
 
 
 class BossReplaceMinigameSprites(BooleanFlag):
@@ -1574,11 +1764,12 @@ class BossReplaceMinigameSprites(BooleanFlag):
 <br>If disabled: Some sprites will be left unchanged from the original game to accommodate visual cues (such as the Booster Hill snifits, or Dodo in his statue room) or progression knowledge on required sub-fights (such as the Bandana Reds in Sunken Ship)."""
     _id = "allsprites"
     _default = True
+    _requires_all = [(BossShuffle(), True)]
 
 
 class DifferentiateRepeatedBosses(BooleanFlag):
     _name = "Differentiate similar bosses"
-    _description = """If enabled, Croco, Jinx, Belome, and the four mimics (as well as Punchinello, Johnny, Bundt, Culex, and Booster if remake content is enabled) will look slightly different in the overworld depending on which version of the fight it is. 
+    _description = """If enabled, Croco, Jinx, Belome, and the four mimics (as well as Punchinello, Johnny, Bundt, Culex, and Booster if remake content is enabled) will look slightly different in the overworld depending on which version of the fight it is.
 <br>
 <br>Croco 2 will have a darker hat.
 <br>
@@ -1588,6 +1779,7 @@ class DifferentiateRepeatedBosses(BooleanFlag):
 <br>
 <br>Pandorite will be tinted orange, Hidon will be tinted green, and Chester will be tinted purple."""
     _id = "diff"
+    _requires_all = [(BossShuffle(), True)]
     # TODO: belome 3, punchinello 2, jinx 4, johnny 2, bundt 2, culex 3D, booster 2
 
 
@@ -1596,16 +1788,34 @@ class IncludeHenchmen(BooleanFlag):
     _description = """If enabled, the battles with Shysters in Mushroom Kingdom, Snifits in Booster Tower, Crooks in Moleville Mines, and Bandana Reds in the Sunken Ship may be replaced with other monsters depending on the corresponding boss location. For example, if Culex is the first tower boss, you might fight a Crystal on your way up the tower instead of a Snifit."""
     _id = "henchmen"
     _default = True
+    _requires_all = [(BossShuffle(), True)]
 
 
-class ShuffledBossEnum(ClassCategorizationOption):
-    """Enumeration for all boss fights that can be shuffled"""
+# ShuffledBossEnum is created lazily to avoid circular import with prizes module
+# Using ShuffledBossEnumType for type checking (defined as Enum in TYPE_CHECKING block)
+ShuffledBossEnum: type[ShuffledBossEnumType] | None = None
+_shuffled_boss_enum_populated = False
 
-    pass
+
+def _ensure_shuffled_boss_enum_populated() -> None:
+    """Create ShuffledBossEnum dynamically from ALL_BOSS_FIGHTS on first access."""
+    global ShuffledBossEnum, _shuffled_boss_enum_populated
+    if _shuffled_boss_enum_populated:
+        return
+    _shuffled_boss_enum_populated = True
+
+    from ..progression.prizes import ALL_BOSS_FIGHTS
+
+    members = {}
+    for boss_class in ALL_BOSS_FIGHTS:
+        attr_name = _boss_class_to_attr_name(boss_class)
+        members[attr_name] = boss_class
+
+    ShuffledBossEnum = ClassCategorizationOption("ShuffledBossEnum", members)
 
 
-# Populate ShuffledBossEnum with boss fight class types
-def _boss_class_to_attr_name(boss_class: type[BossFightPrize]) -> str:
+# Helper function for boss class name conversion
+def _boss_class_to_attr_name(boss_class: type) -> str:
     """Convert boss class name to an attribute name.
 
     Examples:
@@ -1627,12 +1837,7 @@ def _boss_class_to_attr_name(boss_class: type[BossFightPrize]) -> str:
     return name.replace(" ", "_").replace("-", "_")
 
 
-for boss_class in ALL_BOSS_FIGHTS:
-    attr_name = _boss_class_to_attr_name(boss_class)
-    setattr(ShuffledBossEnum, attr_name, boss_class)
-
-
-class ShuffledBosses(CategorizationFlag[ShuffledBossEnum]):
+class ShuffledBosses(CategorizationFlag[ShuffledBossEnumType]):  # type: ignore[type-arg]
     _name = "Shuffled boss fights"
     _description = """Each boss fight location below stats the enemy that originally inhabits it.
 <br>
@@ -1642,7 +1847,18 @@ class ShuffledBosses(CategorizationFlag[ShuffledBossEnum]):
 <br>
 <br>Selecting a remake-specific boss will do nothing if the remake flag is not enabled."""
     _id = "pool"
-    _default = {o: True for o in ShuffledBossEnum.__members__.values()}
+    _requires_all = [(BossShuffle(), True)]
+
+    @property
+    def default(self) -> dict:
+        """Lazy default that ensures ShuffledBossEnum is populated first."""
+        _ensure_shuffled_boss_enum_populated()
+        return {o: True for o in ShuffledBossEnum.__members__.values()}  # type: ignore[union-attr]
+
+    def __init__(self) -> None:
+        _ensure_shuffled_boss_enum_populated()
+        self._default = {o: True for o in ShuffledBossEnum.__members__.values()}  # type: ignore[union-attr]
+        super().__init__()
 
 
 # ✅
@@ -1794,6 +2010,7 @@ class Peach(BooleanFlag):
         "Toadstool is renamed 'Peach' (overridden by palette name swaps, if enabled)."
     )
     _id = "peach"
+    _disabled_if_all = [(PaletteSwaps(), True), (ChangeNames(), True)]
 
 
 # ✅
@@ -1942,6 +2159,7 @@ class CharacterStatsSpellsSubcategory(FlagCategory):
         UncapSuperJumps,
         AvailableSpells,
     ]
+    _id = "C"
 
 
 class PartyCategory(FlagCategory):
@@ -2219,7 +2437,7 @@ class NamesCategory(FlagCategory):
 class CosmeticCategory(FlagCategory):
     """Pan-collection of settings related to things that don't affect logic."""
 
-    _name: str = "Cosmetics"
+    _name: str = "Cosmetics & Accessibility"
     _subcategories: list[type[FlagCategory]] = [
         AccessibilitySubcategory,
         MusicSubcategory,
@@ -2263,3 +2481,49 @@ CATEGORIES = (
     BossCategory,
     CosmeticCategory,
 )
+
+#############
+
+"""Base classes for settings presets."""
+
+
+class Preset:
+    """A pre-created settings string"""
+
+    _name: str = ""
+    _description: str = ""
+    _flags: str = ""
+
+    @property
+    def name(self) -> str:
+        """The name of this preset as it appears on the site"""
+        return self._name
+
+    @property
+    def description(self) -> str:
+        """A brief description of who this preset is meant for and what it does"""
+        return self._description
+
+    @property
+    def flags(self) -> str:
+        """The string that corresponds to the desired settings"""
+        return self._flags
+
+    @classmethod
+    def id(cls):
+        """An identifier for this preset to use internally."""
+        return cls.__name__
+
+
+
+class TestPreset(Preset):
+    """test preset"""
+
+    _name: str = "test preset"
+    _description: str = "test"
+    _flags: str = (
+        "P(random|max:5)"
+    )
+
+
+PRESETS = [TestPreset]

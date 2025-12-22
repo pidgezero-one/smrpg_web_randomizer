@@ -55,10 +55,30 @@
                 {% else %}
                     <input type="checkbox" class="btn-check flag-form-input" autocomplete="off" id="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}" name="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}" value="{{ choice.text }}">
                 {% endif %}
-                
+
                 <label class="btn btn-outline-primary" for="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}">{{ choice.text }}</label>
             </div>
             {% endfor %}
         </div>
+    </div>
+{% elif flag.type == "categorization_with_ordinance" %}
+    <div class="flag-container flag-container-ordinance {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" id="{{ subcategory.id }}.{{ flag.id }}.container">
+        <label data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag.description }}">{{ flag.name }}</label>
+        <div class="ordinance-option-container" id="{{ subcategory.id }}.{{ flag.id }}">
+            {% for choice in flag.options_dict %}
+            <div class="ordinance-option form-check">
+                <input type="checkbox"
+                       class="form-check-input flag-form-input ordinance-checkbox"
+                       id="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}"
+                       name="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}"
+                       data-option-id="{{ choice.id }}"
+                       {% if choice in flag.default_dict %}checked{% endif %}>
+                <label class="form-check-label" for="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}">
+                    <span class="ordinance-order"></span> {{ choice.text }}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        <small class="text-muted">Check boxes in order to set party order. Maximum 5 allowed.</small>
     </div>
 {% endif %}
