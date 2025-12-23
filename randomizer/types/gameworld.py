@@ -5,6 +5,7 @@ import random
 import datetime
 import hashlib
 import re
+from concurrent.futures import ThreadPoolExecutor
 
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
     AnimationScriptBank,
@@ -482,8 +483,47 @@ class GameWorld:
         return result
 
     @property
-    def spoiler(self) -> dict[str, str]:
-        return self._get_locations_json()
+    def spoiler(self) -> dict[str, Any]:
+        return {
+            "settings": self._get_settings_json(),
+            "locations": self._get_locations_json(),
+        }
+
+    def _get_settings_json(self) -> dict[str, Any]:
+        """Get JSON representation of all settings with their names and values."""
+        result: dict[str, Any] = {}
+        for flag_class, flag in self.settings._flags.items():
+            flag_name = flag.name
+            if isinstance(flag, BooleanFlag):
+                result[flag_name] = flag.enabled
+            elif isinstance(flag, RangeFlag):
+                result[flag_name] = flag.value
+            elif isinstance(flag, SelectOneFlag):
+                # Get the selected option's display value
+                selected = flag.selected
+                if hasattr(selected, "value"):
+                    result[flag_name] = selected.value
+                else:
+                    result[flag_name] = str(selected)
+            elif isinstance(flag, CategorizationFlag):
+                # Get list of enabled options
+                enabled_names = []
+                for opt in flag.enabled:
+                    if hasattr(opt, "value"):
+                        if hasattr(opt.value, "name"):
+                            enabled_names.append(opt.value.name)
+                        elif hasattr(opt.value, "_name"):
+                            enabled_names.append(opt.value._name)
+                        else:
+                            enabled_names.append(str(opt.value))
+                    elif hasattr(opt, "name"):
+                        enabled_names.append(opt.name)
+                    else:
+                        enabled_names.append(str(opt))
+                result[flag_name] = enabled_names
+            else:
+                result[flag_name] = str(flag)
+        return result
 
     def _rebuild_hash(self):
         """Build hash value for choosing file select character and file name hash.
@@ -3787,18 +3827,35 @@ class GameWorld:
             patch.add_data(p[0], p[1])
 
         # Dialogs, enemies, items, action scripts, packets, battle packs, rooms, shops, spells
-        patch.add_dict(self.battle_dialogs.render())
-        patch.add_dict(self.overworld_dialogs.render())
-        patch.add_dict(self.enemies.render())
-        patch.add_dict(self.enemy_attacks.render())
-        patch.add_dict(self.items.render())
-        patch.add_data(self.action_scripts.start, self.action_scripts.render())
-        patch.add_dict(self.packets.render())
-        patch.add_dict(self.battle_packs.render())
-        patch.add_dict(self.rooms.render())
-        patch.add_dict(self.shops.render())
-        patch.add_dict(self.spells.render())
-        patch.add_dict(self.allies.render())
+        # Run all render() calls in parallel
+        with ThreadPoolExecutor() as executor:
+            futures = {
+                "battle_dialogs": executor.submit(self.battle_dialogs.render),
+                "overworld_dialogs": executor.submit(self.overworld_dialogs.render),
+                "enemies": executor.submit(self.enemies.render),
+                "enemy_attacks": executor.submit(self.enemy_attacks.render),
+                "items": executor.submit(self.items.render),
+                "action_scripts": executor.submit(self.action_scripts.render),
+                "packets": executor.submit(self.packets.render),
+                "battle_packs": executor.submit(self.battle_packs.render),
+                "rooms": executor.submit(self.rooms.render),
+                "shops": executor.submit(self.shops.render),
+                "spells": executor.submit(self.spells.render),
+                "allies": executor.submit(self.allies.render),
+            }
+            # Wait for all to complete and add results to patch
+            patch.add_dict(futures["battle_dialogs"].result())
+            patch.add_dict(futures["overworld_dialogs"].result())
+            patch.add_dict(futures["enemies"].result())
+            patch.add_dict(futures["enemy_attacks"].result())
+            patch.add_dict(futures["items"].result())
+            patch.add_data(self.action_scripts.start, futures["action_scripts"].result())
+            patch.add_dict(futures["packets"].result())
+            patch.add_dict(futures["battle_packs"].result())
+            patch.add_dict(futures["rooms"].result())
+            patch.add_dict(futures["shops"].result())
+            patch.add_dict(futures["spells"].result())
+            patch.add_dict(futures["allies"].result())
 
         # Misc
 
