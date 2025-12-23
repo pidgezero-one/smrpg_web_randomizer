@@ -14,19 +14,6 @@ body:
         This form is for bug reports only**.
 
   # ─────────────────────────────────────────────
-  # Required confirmation
-  # ─────────────────────────────────────────────
-  - type: checkboxes
-    id: confirmations
-    attributes:
-      label: Required confirmations
-      options:
-        - label: This issue occurs WITHOUT Crowd Control
-          required: true
-        - label: This is NOT about a ship password, melody bay tune, or invisible flag hint being difficult to solve (unless the hints, solution, or positioning is incorrect).
-          required: true
-
-  # ─────────────────────────────────────────────
   # Platform info
   # ─────────────────────────────────────────────
   - type: input
@@ -91,3 +78,16 @@ body:
       description: What happened? What did you expect to happen?
     validations:
       required: true
+
+  # ─────────────────────────────────────────────
+  # Required confirmation
+  # ─────────────────────────────────────────────
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Required confirmations
+      options:
+        - label: This issue occurs WITHOUT Crowd Control
+          required: true
+        - label: This is NOT about a ship password, melody bay tune, or invisible flag hint being difficult to solve (unless the hints, solution, or positioning is incorrect).
+          required: true
