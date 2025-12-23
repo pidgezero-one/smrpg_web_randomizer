@@ -15,7 +15,8 @@ body:
     attributes:
       label: Question text
       description: |
-        The dialog that Dr. Topper will say. It is recommended to use the Lazy Shell editor to preview your text and be sure that it can fit in a single dialog with no scrolling.
+        The dialog that Dr. Topper will say. 
+        It is recommended to use the Lazy Shell editor to preview your text and be sure that it can fit in a single dialog with no scrolling. 
     validations:
       required: true
 
