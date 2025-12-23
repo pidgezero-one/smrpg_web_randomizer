@@ -20,14 +20,14 @@ body:
     validations:
       required: true
 
-  - type: textarea
+  - type: input
     id: correct-answer
     attributes:
       label: Right answer
     validations:
       required: true
 
-  - type: textarea
+  - type: input
     id: incorrect-answers
     attributes:
       label: Two wrong answers
