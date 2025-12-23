@@ -58,9 +58,11 @@
             <a class="nav-link" href="{% url 'randomizer:randomize' %}">Generate Randomized Game</a>
         </li>
         <li class="nav-item {% if 'resources' in request.path %}active{% endif %}">
-            <a class="nav-link" href="{% url 'randomizer:resources' %}">Discord</a>
+            <a class="nav-link" href="{% url 'randomizer:resources' %}">Resources</a>
         </li>
-
+        <li class="nav-item {% if 'resources' in request.path %}active{% endif %}">
+            <a class="nav-link" href="{% url 'randomizer:contribute' %}">Contribute</a>
+        </li>
         <!-- Dropdown -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Help</a>
@@ -72,6 +74,7 @@
                 <a class="dropdown-item" href="https://github.com/DorkmasterFlek/smrpg_web_randomizer/issues/new" target="_blank">Report an Issue</a>
             </div>
         </li>
+
     </ul>
 </nav>
 <div class="clearfix mt-3"></div>

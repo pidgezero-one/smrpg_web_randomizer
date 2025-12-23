@@ -80,7 +80,7 @@ body:
       label: Hint 2 (mines)
       description: |
         The miners in Moleville should give a statement about the second of the three songs.  
-        You do not need to be as elaborate as the original game's _Moleville Blues_ lyrics (unless you want to, of course).  
+        You do not need to be as elaborate as the original game's _Moleville Blues_ lyrics (unless you want to, of course) but your text should be descriptive enough to give some idea of what the notes are, since unlike the first hint this one won't be just written out literally on Frogfucius' scroll.  
         You can instead opt to say something simple i.e. "The Moleville Blues? Oh, it's really just Zelda's Lullaby with different words."
     validations:
       required: true

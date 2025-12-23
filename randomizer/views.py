@@ -157,6 +157,10 @@ class ResourcesView(RandomizerView):
     template_name = "randomizer/resources.html"
 
 
+class ContributeView(RandomizerView):
+    template_name = "randomizer/contribute.html"
+
+
 class GuideView(RandomizerView):
     template_name = "randomizer/guide.html"
 

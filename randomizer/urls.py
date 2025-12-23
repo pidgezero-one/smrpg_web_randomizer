@@ -16,7 +16,8 @@ urlpatterns = [
     path('resources', views.ResourcesView.as_view(), name='resources'),
     path('guide', views.GuideView.as_view(), name='guide'),
     path('updates', views.UpdatesView.as_view(), name='updates'),
-
+    path('contribute', views.ContributeView.as_view(), name='contribute'),
+    
     # Generation
     path('seed', views.GenerateView.as_view(), name='generate'),
     path('h/<slug:hash>', views.HashView.as_view(), name='patch-from-hash'),
