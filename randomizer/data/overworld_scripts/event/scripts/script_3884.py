@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToConst(PRIMARY_TEMP_7000, 49151),
+	SetVarToConst(PRIMARY_TEMP_7000, 49151, identifier="ball_solitaire_puzzle_value"),
 	Return()
 ])

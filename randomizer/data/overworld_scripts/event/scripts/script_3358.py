@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToConst(ROSE_WAY_703E, 0),
+	SetVarToConst(ROSE_WAY_703E, 0, identifier="magic_buttons_puzzle_value"),
 	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_WalkToXYCoords(x=23, y=31),

@@ -61,6 +61,7 @@ class Flag:
 
 # TypeVars for generic flag classes
 from enum import Enum
+
 T = TypeVar("T", bound=Enum)
 
 
@@ -120,40 +121,45 @@ class CategorizationFlag(Flag, Generic[T]):
                 return value[1]
             return str(value)
         # Boss fights have _text
-        if hasattr(value, '_text'):
+        if hasattr(value, "_text"):
             return value._text  # type: ignore[union-attr]
         # Battle music classes have _name
-        if hasattr(value, '_name') and isinstance(value._name, str):  # type: ignore[union-attr]
+        if hasattr(value, "_name") and isinstance(value._name, str):  # type: ignore[union-attr]
             return value._name  # type: ignore[union-attr]
         # Spells have _title
-        if hasattr(value, '_title'):
+        if hasattr(value, "_title"):
             return value._title  # type: ignore[union-attr]
         # Prize locations have _id which is a ShuffleLocationSelector enum
-        if hasattr(value, '_id'):
+        if hasattr(value, "_id"):
             id_val = value._id  # type: ignore[union-attr]
-            if hasattr(id_val, 'value') and isinstance(id_val.value, str):
+            if hasattr(id_val, "value") and isinstance(id_val.value, str):
                 return id_val.value
         # Simple enum with string value
-        if hasattr(value, 'value') and isinstance(value.value, str):  # type: ignore[union-attr]
+        if hasattr(value, "value") and isinstance(value.value, str):  # type: ignore[union-attr]
             return value.value  # type: ignore[union-attr]
         # Allies have name attribute
-        if hasattr(value, 'name') and isinstance(value.name, str):  # type: ignore[union-attr]
+        if hasattr(value, "name") and isinstance(value.name, str):  # type: ignore[union-attr]
             return value.name  # type: ignore[union-attr]
         # Class types have __name__
-        if hasattr(value, '__name__'):
+        if hasattr(value, "__name__"):
             return value.__name__  # type: ignore[union-attr]
         return str(value)
 
     @property
     def options_dict(self) -> list[dict[str, str]]:
         """All options as a dict for JSON serialization, sorted alphabetically by text."""
-        options = [{"id": c.name, "text": self._get_option_text(c.value)} for c in self.options.keys()]
+        options = [
+            {"id": c.name, "text": self._get_option_text(c.value)}
+            for c in self.options.keys()
+        ]
         return sorted(options, key=lambda x: x["text"].lower())
 
     @property
     def default_dict(self) -> list[dict[str, str]]:
         """Enabled options as a dict for JSON serialization, sorted alphabetically by text."""
-        options = [{"id": c.name, "text": self._get_option_text(c.value)} for c in self.enabled]
+        options = [
+            {"id": c.name, "text": self._get_option_text(c.value)} for c in self.enabled
+        ]
         return sorted(options, key=lambda x: x["text"].lower())
 
     def reset(self) -> None:
@@ -208,27 +214,27 @@ class CategorizationFlagWithOrdinance(Flag, Generic[T]):
                 return value[1]
             return str(value)
         # Boss fights have _text
-        if hasattr(value, '_text'):
+        if hasattr(value, "_text"):
             return value._text  # type: ignore[union-attr]
         # Battle music classes have _name
-        if hasattr(value, '_name') and isinstance(value._name, str):  # type: ignore[union-attr]
+        if hasattr(value, "_name") and isinstance(value._name, str):  # type: ignore[union-attr]
             return value._name  # type: ignore[union-attr]
         # Spells have _title
-        if hasattr(value, '_title'):
+        if hasattr(value, "_title"):
             return value._title  # type: ignore[union-attr]
         # Prize locations have _id which is a ShuffleLocationSelector enum
-        if hasattr(value, '_id'):
+        if hasattr(value, "_id"):
             id_val = value._id  # type: ignore[union-attr]
-            if hasattr(id_val, 'value') and isinstance(id_val.value, str):
+            if hasattr(id_val, "value") and isinstance(id_val.value, str):
                 return id_val.value
         # Simple enum with string value
-        if hasattr(value, 'value') and isinstance(value.value, str):  # type: ignore[union-attr]
+        if hasattr(value, "value") and isinstance(value.value, str):  # type: ignore[union-attr]
             return value.value  # type: ignore[union-attr]
         # Allies have name attribute
-        if hasattr(value, 'name') and isinstance(value.name, str):  # type: ignore[union-attr]
+        if hasattr(value, "name") and isinstance(value.name, str):  # type: ignore[union-attr]
             return value.name  # type: ignore[union-attr]
         # Class types have __name__
-        if hasattr(value, '__name__'):
+        if hasattr(value, "__name__"):
             return value.__name__  # type: ignore[union-attr]
         return str(value)
 
@@ -236,7 +242,11 @@ class CategorizationFlagWithOrdinance(Flag, Generic[T]):
     def options_dict(self) -> list[dict[str, str | int | None]]:
         """All options as a dict for JSON serialization, sorted alphabetically by text."""
         options = [
-            {"id": c.name, "text": self._get_option_text(c.value), "order": self.options.get(c)}
+            {
+                "id": c.name,
+                "text": self._get_option_text(c.value),
+                "order": self.options.get(c),
+            }
             for c in self.options.keys()
         ]
         return sorted(options, key=lambda x: str(x["text"]).lower())
@@ -245,7 +255,11 @@ class CategorizationFlagWithOrdinance(Flag, Generic[T]):
     def default_dict(self) -> list[dict[str, str | int | None]]:
         """Default options as a dict for JSON serialization, sorted alphabetically by text."""
         options = [
-            {"id": c.name, "text": self._get_option_text(c.value), "order": self.default.get(c)}
+            {
+                "id": c.name,
+                "text": self._get_option_text(c.value),
+                "order": self.default.get(c),
+            }
             for c in self.default.keys()
         ]
         return sorted(options, key=lambda x: str(x["text"]).lower())
@@ -426,7 +440,9 @@ for ally in ally_collection._allies:
 for i in range(1, 6):
     _starting_char_members[f"Random_{i}"] = f"Random_{i}"
 
-StartingCharacterEnum = ClassCategorizationOption("StartingCharacterEnum", _starting_char_members)
+StartingCharacterEnum = ClassCategorizationOption(
+    "StartingCharacterEnum", _starting_char_members
+)
 
 
 class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum]):
@@ -625,7 +641,9 @@ for spell in ALL_SPELLS.spells:
         attr_name = spell.title.replace(" ", "_").replace("-", "_")
         _learnable_spell_members[attr_name] = type(spell)
 
-LearnableSpellEnum = ClassCategorizationOption("LearnableSpellEnum", _learnable_spell_members)
+LearnableSpellEnum = ClassCategorizationOption(
+    "LearnableSpellEnum", _learnable_spell_members
+)
 
 
 class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
@@ -896,6 +914,7 @@ def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
     """Convert a PrizeLocation class to an attribute name for the enum."""
     # Use the class name, converting CamelCase to Snake_Case
     import re
+
     name = cls.__name__
     name = re.sub(r"([a-z])([A-Z])", r"\1_\2", name)
     name = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", name)
@@ -914,14 +933,19 @@ for cls in vars(prizelocations).values():
             _star_piece_check_members[attr_name] = cls
         elif issubclass(cls, BossFightLocation) and cls is not BossFightLocation:
             _boss_fight_check_members[attr_name] = cls
-        elif (cls is not PrizeLocation and
-              not issubclass(cls, (BossFightLocation, StarPieceLocation, CharacterRecruitmentLocation))):
+        elif cls is not PrizeLocation and not issubclass(
+            cls, (BossFightLocation, StarPieceLocation, CharacterRecruitmentLocation)
+        ):
             _item_check_members[attr_name] = cls
 
 # Create enums dynamically using functional API
 ItemCheckEnum = ClassCategorizationOption("ItemCheckEnum", _item_check_members)
-BossFightCheckEnum = ClassCategorizationOption("BossFightCheckEnum", _boss_fight_check_members)
-StarPieceCheckEnum = ClassCategorizationOption("StarPieceCheckEnum", _star_piece_check_members)
+BossFightCheckEnum = ClassCategorizationOption(
+    "BossFightCheckEnum", _boss_fight_check_members
+)
+StarPieceCheckEnum = ClassCategorizationOption(
+    "StarPieceCheckEnum", _star_piece_check_members
+)
 
 
 class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
@@ -1608,18 +1632,21 @@ class WinCondition(SelectOneFlag[WinConditions]):
 # ******** Puzzles
 
 
+# ✅
 class BallSolitaireShuffle(BooleanFlag):
     _name = "Randomize Ball Solitaire"
     _description = "The layout for the Ball Solitaire minigame will be randomized."
     _id = "ball"
 
 
+# ✅
 class MagicButtonShuffle(BooleanFlag):
     _name = "Randomize Magic Buttons"
     _description = "The layout for the Magic Buttons minigame will be randomized."
     _id = "button"
 
 
+# ✅
 class QuizShuffle(BooleanFlag):
     _name = "Randomize Dr. Topper Quiz"
     _description = "The question pool for the Dr. Topper quiz will include new questions submitted by players."
@@ -1671,6 +1698,7 @@ class BetterTips(BooleanFlag):
 
 
 # if this is disabled, no options in this category can be changed
+
 
 # TODO All frog disciple items should NOT be randomized if ShuffleShops is off.
 # ✅
@@ -2425,7 +2453,7 @@ class NamesCategory(FlagCategory):
 class CosmeticCategory(FlagCategory):
     """Pan-collection of settings related to things that don't affect logic."""
 
-    _name: str = "Cosmetics & Accessibility"
+    _name: str = "Player Experience"
     _subcategories: list[type[FlagCategory]] = [
         AccessibilitySubcategory,
         MusicSubcategory,
@@ -2503,15 +2531,12 @@ class Preset:
         return cls.__name__
 
 
-
 class TestPreset(Preset):
     """test preset"""
 
     _name: str = "test preset"
     _description: str = "test"
-    _flags: str = (
-        "P(random|max:5)"
-    )
+    _flags: str = "P(random|max:5)"
 
 
 PRESETS = [TestPreset]

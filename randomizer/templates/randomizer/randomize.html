@@ -131,7 +131,12 @@
                                     <div class="tab-pane" id="tab-{{ category.id }}" role="tabpanel" aria-labelledby="{{ category.id }}-tab">
                                     {% endif %}
                                         <div class="card border-info my-2">
-                                            <div class="card-header"><h5>{{ category.name }}</h5></div>
+                                            <div class="card-header">
+                                                <h5>{{ category.name }}</h5>
+                                                {% if category.name == "Player Experience" %}
+                                                <p class="mb-0 text-muted"><small>These settings are just for you. They are not included in the flag string nor affected by the seed.</small></p>
+                                                {% endif %}
+                                            </div>
                                             <div class="card-body">
                                                 {# Show flags and options here. #}
                                                 {% for flag in category.flags %}

@@ -67,6 +67,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     ClearBit,
     JmpIfBitClear,
     JmpIfVarEqualsConst,
+    SetVarToConst,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
@@ -75,9 +76,23 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
 from smrpgpatchbuilder.datatypes.allies.ally_collection import AllyCollection
 from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Room
 from smrpgpatchbuilder.datatypes.spells.enums import Status
-from smrpgpatchbuilder.datatypes.world_map_locations.classes import WorldMapLocationCollection
+from smrpgpatchbuilder.datatypes.world_map_locations.classes import (
+    WorldMapLocationCollection,
+)
 from ..data.items.items import *
 from ..data.minigames.star_hill_wishes import WISH_POOL, WISH_DIALOG_IDS
+from ..data.minigames.puzzle_games import (
+    BallSolitaireGame,
+    MagicButtonsGame,
+    randomize_ball_solitaire,
+    randomize_magic_buttons,
+)
+from ..data.minigames.quiz_questions import (
+    get_quiz_questions,
+    option_1_correct,
+    option_2_correct,
+    option_3_correct,
+)
 from .item import Item
 from .patch import Patch
 from .attack import EnemyAttack
@@ -204,6 +219,9 @@ from .flags import (
     NoGenoWhirlExor,
     FixMagikoopa,
     NoOHKO,
+    QuizShuffle,
+    BallSolitaireShuffle,
+    MagicButtonShuffle,
 )
 from .prizelocation import SIGNAL_RING_EVENT_DICT, PrizeLocation
 from ..progression.prizelocations import *
@@ -258,13 +276,13 @@ class GameWorld:
     seed: int | str = 0
     settings: Settings
     file_select_names: list[str] = ["MARIO1", "MARIO2", "MARIO3", "MARIO4"]
-    
+
     version: str = "9.0.0"
     hash: str = ""
 
     @property
     def file_select_hash(self) -> str:
-        return " / ".join(self.file_select_names).replace('}', '-')
+        return " / ".join(self.file_select_names).replace("}", "-")
 
     # Raw data types (basis of ROM patches)
 
@@ -462,36 +480,40 @@ class GameWorld:
                 prize_name = type(loc.prize).__name__
             result[location_name] = prize_name
         return result
-    
-    @property 
-    def spoiler(self) -> dict[str,str]:
-        return self._get_locations_json()
 
-    
+    @property
+    def spoiler(self) -> dict[str, str]:
+        return self._get_locations_json()
 
     def _rebuild_hash(self):
         """Build hash value for choosing file select character and file name hash.
         Use the same version, seed, mode, and flags used for the database hash.
         """
         final_seed = bytearray()
-        final_seed += self.version.encode('utf-8')
+        final_seed += self.version.encode("utf-8")
         if isinstance(self.seed, int):
-            final_seed += self.seed.to_bytes(4, 'big')
+            final_seed += self.seed.to_bytes(4, "big")
         else:
-            final_seed += str(self.seed).encode('utf-8')
-        final_seed += self.settings.flag_string.encode('utf-8')
+            final_seed += str(self.seed).encode("utf-8")
+        final_seed += self.settings.flag_string.encode("utf-8")
         self.hash = hashlib.md5(final_seed).hexdigest()
 
         # Possible names we can use for the hash values on the file select screen.  Needs to be 6 characters or less.
         file_entry_names = {
-            'MARIO',
-            'MALLOW',
-            'GENO',
-            'BOWSER',
-            'PEACH',
+            "MARIO",
+            "MALLOW",
+            "GENO",
+            "BOWSER",
+            "PEACH",
         }
         # Also use enemy names, if they're 6 characters or less.
-        e_choices = set([re.sub(r'[^A-Za-z9]', '', e.name.upper()) for e in self.enemies.enemies if len(re.sub(r'[^A-Za-z9]', '', e.name.upper())) <= 6])
+        e_choices = set(
+            [
+                re.sub(r"[^A-Za-z9]", "", e.name.upper())
+                for e in self.enemies.enemies
+                if len(re.sub(r"[^A-Za-z9]", "", e.name.upper())) <= 6
+            ]
+        )
         file_entry_names = sorted(e_choices)
 
         # Replace file select names with "hash" values for seed verification.
@@ -501,7 +523,6 @@ class GameWorld:
             file_entry_names[int(self.hash[16:24], 16) % len(file_entry_names)],
             file_entry_names[int(self.hash[24:32], 16) % len(file_entry_names)],
         ]
-
 
     # Logic
     # TODO
@@ -527,7 +548,7 @@ class GameWorld:
         shops: ShopCollection,
         spells: SpellCollection,
         sprites: SpriteCollection,
-        world_map_locations: WorldMapLocationCollection
+        world_map_locations: WorldMapLocationCollection,
     ):
         self.allies = allies
         self.seed = seed
@@ -1101,7 +1122,9 @@ class GameWorld:
 
         # Resolve starting character selections (handles "Random_X" values)
         # and assign prizes to the starting character locations
-        resolved_allies = strchars.resolve_random_selections()  # Uses seeded global random
+        resolved_allies = (
+            strchars.resolve_random_selections()
+        )  # Uses seeded global random
         # Map allies by index to their prize classes (allies are all the same type)
         ally_to_prize: dict[int, type] = {
             MARIO_Ally.index: MarioRecruitmentPrize,
@@ -1921,7 +1944,6 @@ class GameWorld:
         if equip_chars_setting != EquipmentCharactersOptions.VANILLA:
             self._randomize_equipment_characters(equip_chars_setting)
 
-
         # SHUFFLE CHECKS HERE
         # TODO: exclude frog disciple if shuffle shops turned off
         # TODO: exclude character spells if that setting is turned off
@@ -1959,7 +1981,7 @@ class GameWorld:
         # TODO: Open issue templat for submitting star hill text. note: uncredited
         # TODO: Open issue template for submitting quiz questions (uncredited)
         # TODO: update spell names and palettes and sounds depending on element
-        
+
         # Shop shuffling happens after equipment randomization so we can score equipment
         if self.settings.isflag_enabled(ShuffleShops):
             self._shuffle_shops()
@@ -2062,9 +2084,34 @@ class GameWorld:
         self._apply_exp_multiplier()
 
         # Minigames
-        # TODO ball solitaire
-        # TODO quiz
-        # TODO magic buttons
+
+        if self.settings.isflag_enabled(QuizShuffle):
+            questions = get_quiz_questions()
+            for text, d_id in zip(
+                questions, option_1_correct + option_2_correct + option_3_correct
+            ):
+                self.overworld_dialogs.replace_dialog(d_id, text.get_string(d_id))
+
+        if self.settings.isflag_enabled(BallSolitaireShuffle):
+            ball_solitaire = BallSolitaireGame()
+            randomize_ball_solitaire(ball_solitaire)
+            cast(
+                SetVarToConst,
+                self.event_scripts.get_command_by_identifier(
+                    "ball_solitaire_puzzle_value"
+                ),
+            ).set_value_and_address(value=ball_solitaire.get_puzzle_value())
+
+        if self.settings.isflag_enabled(MagicButtonShuffle):
+            magic_buttons = MagicButtonsGame()
+            randomize_magic_buttons(magic_buttons)
+            cast(
+                SetVarToConst,
+                self.event_scripts.get_command_by_identifier(
+                    "magic_buttons_puzzle_value"
+                ),
+            ).set_value_and_address(value=magic_buttons.get_puzzle_value())
+
         # TODO tadpole pond
         # TODO ship password
         # TODO bowser door shuffle
@@ -2073,7 +2120,6 @@ class GameWorld:
         # TODO differentiate bosses. not a cosmetic, reveals info
 
         self._rebuild_hash()
-
 
         # Cosmetics have to go at the end and be re-seeded
         random.seed(datetime.datetime.now().timestamp())
@@ -2265,7 +2311,6 @@ class GameWorld:
         for dialog_id, wish in wishes:
             self.overworld_dialogs.replace_dialog(dialog_id, wish)
 
-        
         # set random back to normal
         random.seed(self.seed)
 
@@ -2604,7 +2649,9 @@ class GameWorld:
         """Randomize enemy drops (coins, XP, items)."""
         for enemy in self.enemies.enemies:
             # Mutate coins
-            enemy.set_coins(self._mutate_normal(int(enemy.coins), minimum=0, maximum=255))
+            enemy.set_coins(
+                self._mutate_normal(int(enemy.coins), minimum=0, maximum=255)
+            )
 
             # Mutate XP
             old_xp = int(enemy.xp)
@@ -2642,33 +2689,55 @@ class GameWorld:
 
         # Valid coordinates for enemy placement in formations
         VALID_COORDINATES = [
-            (119, 103), (135, 111), (151, 119), (167, 127),
-            (103, 111), (119, 119), (135, 127), (151, 135),
-            (87, 119), (103, 127), (119, 135), (135, 143),
-            (71, 127), (87, 135), (103, 143), (119, 151),
-            (55, 135), (71, 143), (87, 151), (103, 159),
-            (39, 143), (55, 151), (71, 159), (87, 167),
+            (119, 103),
+            (135, 111),
+            (151, 119),
+            (167, 127),
+            (103, 111),
+            (119, 119),
+            (135, 127),
+            (151, 135),
+            (87, 119),
+            (103, 127),
+            (119, 135),
+            (135, 143),
+            (71, 127),
+            (87, 135),
+            (103, 143),
+            (119, 151),
+            (55, 135),
+            (71, 143),
+            (87, 151),
+            (103, 159),
+            (39, 143),
+            (55, 151),
+            (71, 159),
+            (87, 167),
         ]
 
         def get_distance(x1: int, y1: int, x2: int, y2: int) -> float:
             return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
 
-        def get_collective_distance(x1: int, y1: int, points: list[tuple[int, int]]) -> float:
+        def get_collective_distance(
+            x1: int, y1: int, points: list[tuple[int, int]]
+        ) -> float:
             if not points:
                 return 1.0
             distances = [get_distance(x1, y1, x2, y2) for x2, y2 in points]
             return reduce(lambda a, b: a * b, distances, 1.0)
 
         def select_most_distance(
-            possible_points: list[tuple[int, int]],
-            used_points: list[tuple[int, int]]
+            possible_points: list[tuple[int, int]], used_points: list[tuple[int, int]]
         ) -> tuple[int, int]:
             # Filter out already-used coordinates to ensure no duplicates
             available = [p for p in possible_points if p not in used_points]
             if not available:
                 # Fallback: use all coordinates if somehow all are used
                 available = possible_points
-            return max(available, key=lambda c: get_collective_distance(c[0], c[1], used_points))
+            return max(
+                available,
+                key=lambda c: get_collective_distance(c[0], c[1], used_points),
+            )
 
         # Max enemies for a formation
         max_enemies = 6
@@ -2697,7 +2766,9 @@ class GameWorld:
                 candidates = list(current_enemy_types)
 
                 # Expand candidates to at least 3 by getting random enemies
-                all_enemy_types = [type(e) for e in self.enemies.enemies if not e.ohko_immune]
+                all_enemy_types = [
+                    type(e) for e in self.enemies.enemies if not e.ohko_immune
+                ]
                 while len(candidates) < 3 and all_enemy_types:
                     new_enemy = random.choice(all_enemy_types)
                     if new_enemy not in candidates:
@@ -2730,17 +2801,23 @@ class GameWorld:
                     else:
                         # Subsequent enemies: pick coordinate with most distance from others
                         # Also ensuring it's not already used
-                        sample_size = min(len(VALID_COORDINATES), len(chosen_enemies) * 2)
-                        candidates_coords = random.sample(VALID_COORDINATES, sample_size)
+                        sample_size = min(
+                            len(VALID_COORDINATES), len(chosen_enemies) * 2
+                        )
+                        candidates_coords = random.sample(
+                            VALID_COORDINATES, sample_size
+                        )
                         x, y = select_most_distance(candidates_coords, done_coordinates)
 
                     done_coordinates.append((x, y))
-                    new_members.append(FormationMember(
-                        enemy=enemy_type,
-                        x_pos=x,
-                        y_pos=y,
-                        hidden_at_start=False,
-                    ))
+                    new_members.append(
+                        FormationMember(
+                            enemy=enemy_type,
+                            x_pos=x,
+                            y_pos=y,
+                            hidden_at_start=False,
+                        )
+                    )
 
                 # Update formation with new members
                 formation.set_members(new_members)
@@ -2767,8 +2844,20 @@ class GameWorld:
         """Randomize character stats, level-up bonuses, and stat growths."""
         from smrpgpatchbuilder.datatypes.allies.ally import LevelUp
 
-        LEVEL_STATS = ['hp_plus', 'attack_plus', 'defense_plus', 'mg_attack_plus', 'mg_defense_plus']
-        BONUS_STATS = ['hp_plus_bonus', 'attack_plus_bonus', 'defense_plus_bonus', 'mg_attack_plus_bonus', 'mg_defense_plus_bonus']
+        LEVEL_STATS = [
+            "hp_plus",
+            "attack_plus",
+            "defense_plus",
+            "mg_attack_plus",
+            "mg_defense_plus",
+        ]
+        BONUS_STATS = [
+            "hp_plus_bonus",
+            "attack_plus_bonus",
+            "defense_plus_bonus",
+            "mg_attack_plus_bonus",
+            "mg_defense_plus_bonus",
+        ]
 
         # Randomize XP requirements for each level
         self._randomize_levelup_xps()
@@ -2780,9 +2869,9 @@ class GameWorld:
 
         # Inter-shuffle level up stat bonuses between all characters
         for attrs in (
-            ('hp_plus_bonus',),
-            ('attack_plus_bonus', 'defense_plus_bonus'),
-            ('mg_attack_plus_bonus', 'mg_defense_plus_bonus'),
+            ("hp_plus_bonus",),
+            ("attack_plus_bonus", "defense_plus_bonus"),
+            ("mg_attack_plus_bonus", "mg_defense_plus_bonus"),
         ):
             shuffled = all_bonuses[:]
             random.shuffle(shuffled)
@@ -2793,7 +2882,9 @@ class GameWorld:
                     setattr(bonus, attr, bval)
 
             # For any bonuses that are zero, pick a random non-zero one
-            non_zeros = [b for b in all_bonuses if all(getattr(b, attr) for attr in attrs)]
+            non_zeros = [
+                b for b in all_bonuses if all(getattr(b, attr) for attr in attrs)
+            ]
             for bonus in all_bonuses:
                 for attr in attrs:
                     while getattr(bonus, attr) == 0 and non_zeros:
@@ -2802,8 +2893,12 @@ class GameWorld:
         # Randomize each ally's stats
         for ally in self.allies._allies:
             # Mutate starting level and speed
-            ally.starting_level = self._mutate_normal(ally.starting_level, minimum=1, maximum=30)
-            ally.starting_speed = self._mutate_normal(ally.starting_speed, minimum=1, maximum=255)
+            ally.starting_level = self._mutate_normal(
+                ally.starting_level, minimum=1, maximum=30
+            )
+            ally.starting_speed = self._mutate_normal(
+                ally.starting_speed, minimum=1, maximum=255
+            )
 
             # Randomize level up stat bonuses
             for level_up in ally.levels:
@@ -2816,7 +2911,15 @@ class GameWorld:
             # Randomize level up stat growths for each stat
             for attr in LEVEL_STATS:
                 # Get current values at level 1 and level 20
-                value_lvl1 = getattr(ally, f'starting_{attr.replace("_plus", "")}' if attr == 'hp_plus' else f'starting_{attr.replace("_plus", "").replace("mg_", "mg_")}', 1)
+                value_lvl1 = getattr(
+                    ally,
+                    (
+                        f'starting_{attr.replace("_plus", "")}'
+                        if attr == "hp_plus"
+                        else f'starting_{attr.replace("_plus", "").replace("mg_", "mg_")}'
+                    ),
+                    1,
+                )
 
                 # For growths, work with levels 2-20 (first 19 entries)
                 growths = [getattr(level_up, attr) for level_up in ally.levels[:19]]
@@ -2881,11 +2984,11 @@ class GameWorld:
     def _finalize_character_stats(self, ally) -> None:
         """Finalize character starting stats based on starting level and optimal choices."""
         STAT_MAP = {
-            'starting_max_hp': ('hp_plus', 'hp_plus_bonus', 999),
-            'starting_attack': ('attack_plus', 'attack_plus_bonus', 255),
-            'starting_defense': ('defense_plus', 'defense_plus_bonus', 255),
-            'starting_mg_attack': ('mg_attack_plus', 'mg_attack_plus_bonus', 255),
-            'starting_mg_defense': ('mg_defense_plus', 'mg_defense_plus_bonus', 255),
+            "starting_max_hp": ("hp_plus", "hp_plus_bonus", 999),
+            "starting_attack": ("attack_plus", "attack_plus_bonus", 255),
+            "starting_defense": ("defense_plus", "defense_plus_bonus", 255),
+            "starting_mg_attack": ("mg_attack_plus", "mg_attack_plus_bonus", 255),
+            "starting_mg_defense": ("mg_defense_plus", "mg_defense_plus_bonus", 255),
         }
 
         for starting_attr, (growth_attr, bonus_attr, max_val) in STAT_MAP.items():
@@ -2893,7 +2996,7 @@ class GameWorld:
 
             # Calculate stat at starting level with optimal bonus choices
             total = base_value
-            for i, level_up in enumerate(ally.levels[:ally.starting_level - 1]):
+            for i, level_up in enumerate(ally.levels[: ally.starting_level - 1]):
                 growth = getattr(level_up, growth_attr)
                 bonus = getattr(level_up, bonus_attr)
                 total += growth + bonus
@@ -2915,15 +3018,26 @@ class GameWorld:
         """Randomize character spell stats (FP cost, power, hit rate)."""
         from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
         from ..data.spells.spells import (
-            GenoBoostSpell, TherapySpell, GroupHugSpell, HPRainSpell,
-            PsychopathSpell, SleepyTimeSpell, MuteSpell
+            GenoBoostSpell,
+            TherapySpell,
+            GroupHugSpell,
+            HPRainSpell,
+            PsychopathSpell,
+            SleepyTimeSpell,
+            MuteSpell,
         )
 
         # Spells that should not have their power randomized
         NO_POWER_SHUFFLE = (GenoBoostSpell, SleepyTimeSpell, MuteSpell, PsychopathSpell)
 
         # Spells that should not have their hit rate randomized
-        NO_HIT_RATE_SHUFFLE = (GenoBoostSpell, TherapySpell, GroupHugSpell, HPRainSpell, PsychopathSpell)
+        NO_HIT_RATE_SHUFFLE = (
+            GenoBoostSpell,
+            TherapySpell,
+            GroupHugSpell,
+            HPRainSpell,
+            PsychopathSpell,
+        )
 
         for spell in self.spells.spells:
             if not isinstance(spell, CharacterSpell):
@@ -2935,14 +3049,18 @@ class GameWorld:
 
             # Randomize power (except for certain spells)
             if not isinstance(spell, NO_POWER_SHUFFLE):
-                new_power = self._mutate_normal(int(spell.power), minimum=0, maximum=255)
+                new_power = self._mutate_normal(
+                    int(spell.power), minimum=0, maximum=255
+                )
                 spell.set_power(int(max(0, min(255, new_power))))
 
             # Randomize hit rate (except for certain spells)
             if not isinstance(spell, NO_HIT_RATE_SHUFFLE):
                 # Cap hit rate at 99 for instant KO spells so protection items work
                 max_hit_rate = 99 if spell.check_ohko else 100
-                new_hit_rate = self._mutate_normal(int(spell.hit_rate), minimum=1, maximum=max_hit_rate)
+                new_hit_rate = self._mutate_normal(
+                    int(spell.hit_rate), minimum=1, maximum=max_hit_rate
+                )
                 spell.set_hit_rate(new_hit_rate)
 
     def _randomize_equipment_properties(self) -> None:
@@ -2994,7 +3112,9 @@ class GameWorld:
             if random.randint(1, 3) == 1:
                 downs = [attr for attr in EQUIP_STATS if getattr(item, attr, 0) < 0]
             else:
-                num_down = random.choices([0, 1, 2, 3, 4, 5], weights=[1, 5, 10, 10, 5, 1])[0]
+                num_down = random.choices(
+                    [0, 1, 2, 3, 4, 5], weights=[1, 5, 10, 10, 5, 1]
+                )[0]
                 downs = random.sample(EQUIP_STATS, num_down)
 
             # Priority to going up
@@ -3010,7 +3130,9 @@ class GameWorld:
                 if score != 0:
                     down_points = random.randint(0, random.randint(0, score))
                 else:
-                    down_points = random.randint(0, random.randint(0, random.randint(0, 100)))
+                    down_points = random.randint(
+                        0, random.randint(0, random.randint(0, 100))
+                    )
                 score += down_points
                 for _ in range(down_points):
                     attr = random.choice(downs)
@@ -3044,7 +3166,9 @@ class GameWorld:
 
             # If weapon with variance, shuffle that too
             if isinstance(item, Weapon) and item.variance > 0:
-                new_variance = self._mutate_normal(int(item.variance), minimum=1, maximum=127)
+                new_variance = self._mutate_normal(
+                    int(item.variance), minimum=1, maximum=127
+                )
                 item.set_variance(new_variance)
 
             # Randomize special properties based on tier
@@ -3061,7 +3185,7 @@ class GameWorld:
             else:
                 tier = 5
 
-            odds_map = {1: 2/3, 2: 1/2, 3: 1/4, 4: 1/8, 5: 3/32}
+            odds_map = {1: 2 / 3, 2: 1 / 2, 3: 1 / 4, 4: 1 / 8, 5: 3 / 32}
             odds = odds_map.get(tier, 0) / 2  # Halved as per 7.1.3 update
 
             if odds > 0:
@@ -3090,8 +3214,14 @@ class GameWorld:
 
                 # Status immunities
                 item.set_status_immunities([])
-                status_list = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR,
-                               Status.MUSHROOM, Status.SCARECROW]
+                status_list = [
+                    Status.MUTE,
+                    Status.SLEEP,
+                    Status.POISON,
+                    Status.FEAR,
+                    Status.MUSHROOM,
+                    Status.SCARECROW,
+                ]
                 for status in status_list:
                     if random.random() < odds:
                         item.append_status_immunity(status)
@@ -3103,15 +3233,23 @@ class GameWorld:
                 elif isinstance(item, Armor):
                     buff_odds /= 5
                 item.set_temp_buffs([])
-                buffs = [TempStatBuff.ATTACK, TempStatBuff.DEFENSE,
-                         TempStatBuff.MAGIC_ATTACK, TempStatBuff.MAGIC_DEFENSE]
+                buffs = [
+                    TempStatBuff.ATTACK,
+                    TempStatBuff.DEFENSE,
+                    TempStatBuff.MAGIC_ATTACK,
+                    TempStatBuff.MAGIC_DEFENSE,
+                ]
                 for buff in buffs:
                     if random.random() < buff_odds:
                         item.append_temp_buff(buff)
 
-    def _randomize_equipment_characters(self, setting: EquipmentCharactersOptions) -> None:
+    def _randomize_equipment_characters(
+        self, setting: EquipmentCharactersOptions
+    ) -> None:
         """Randomize which characters can equip each piece of equipment."""
-        ALL_CHARS = [PartyCharacter(i) for i in range(5)]  # Mario=0, Mallow=1, Geno=2, Bowser=3, Peach=4
+        ALL_CHARS = [
+            PartyCharacter(i) for i in range(5)
+        ]  # Mario=0, Mallow=1, Geno=2, Bowser=3, Peach=4
 
         for item in self.items.items:
             if not isinstance(item, (Weapon, Armor, Accessory)):
@@ -3176,14 +3314,18 @@ class GameWorld:
         # Get the items from Frog Disciple prize locations (already shuffled)
         frog_disciple_items: list[type[BaseItem] | None] = []
         frog_disciple_locations = [
-            FrogDiscipleLocation1, FrogDiscipleLocation2, FrogDiscipleLocation3,
-            FrogDiscipleLocation4, FrogDiscipleLocation5
+            FrogDiscipleLocation1,
+            FrogDiscipleLocation2,
+            FrogDiscipleLocation3,
+            FrogDiscipleLocation4,
+            FrogDiscipleLocation5,
         ]
         for loc_type in frog_disciple_locations:
             loc = self.locations.get(loc_type)
             if loc and loc.prize:
                 # Get the item type from the prize
                 from .prize import ItemPrize
+
                 if isinstance(loc.prize, ItemPrize):
                     prize_item = loc.prize.item
                     if prize_item:
@@ -3203,7 +3345,7 @@ class GameWorld:
             SH15_SEASIDE_ACCESSORY,
             SH16_SEASIDE_HEALTH_FOOD,
             SH23_KEEP_2,
-            SH24_FACTORY_TOAD
+            SH24_FACTORY_TOAD,
         ]
         if not self.settings.is_flag_value(SeaGate, SeaGating.OPEN):
             should_get_better_items.append(SH07_SEA_AND_SHIP_SHAMAN)
@@ -3218,22 +3360,47 @@ class GameWorld:
 
         # Define consumable item pools
         low_impact_items: list[type[RegularItem]] = [
-            MushroomItem, HoneySyrupItem, AbleJuiceItem, BracerItem, EnergizerItem,
-            YoshiCookieItem, PureWaterItem, SleepyBombItem, BadMushroomItem,
-            FlowerTabItem, FroggieDrinkItem, MukuCookieItem, FreshenUpItem,
-            FrightBombItem, WiltShroomItem, RottenMushItem, MoldyMushItem, MushroomItem2,
+            MushroomItem,
+            HoneySyrupItem,
+            AbleJuiceItem,
+            BracerItem,
+            EnergizerItem,
+            YoshiCookieItem,
+            PureWaterItem,
+            SleepyBombItem,
+            BadMushroomItem,
+            FlowerTabItem,
+            FroggieDrinkItem,
+            MukuCookieItem,
+            FreshenUpItem,
+            FrightBombItem,
+            WiltShroomItem,
+            RottenMushItem,
+            MoldyMushItem,
+            MushroomItem2,
         ]
         if not no_pickmeups:
             low_impact_items.append(PickMeUpItem)
 
         high_impact_items: list[type[RegularItem]] = [
-            MidMushroomItem, MaxMushroomItem, MapleSyrupItem, RoyalSyrupItem,
-            YoshiAdeItem, FireBombItem, IceBombItem, YoshiCandyItem, ElixirItem,
-            MegalixirItem, CrystallineItem, PowerBlastItem,
+            MidMushroomItem,
+            MaxMushroomItem,
+            MapleSyrupItem,
+            RoyalSyrupItem,
+            YoshiAdeItem,
+            FireBombItem,
+            IceBombItem,
+            YoshiCandyItem,
+            ElixirItem,
+            MegalixirItem,
+            CrystallineItem,
+            PowerBlastItem,
         ]
 
         highest_impact_items: list[type[RegularItem]] = [
-            RedEssenceItem, KerokeroColaItem, RockCandyItem,
+            RedEssenceItem,
+            KerokeroColaItem,
+            RockCandyItem,
         ]
 
         # Calculate equipment rank values and categorize them
@@ -3241,24 +3408,31 @@ class GameWorld:
             variance = int(item.variance) if isinstance(item, Weapon) else 0
             attack = item.attack
             attack_base = attack - variance if attack - variance != 0 else 1
-            attack_variance_factor = min(2, (attack + variance) / attack_base) if attack > 0 else 0
+            attack_variance_factor = (
+                min(2, (attack + variance) / attack_base) if attack > 0 else 0
+            )
 
             rank = (
-                attack * max(0, attack_variance_factor) +
-                max(0, (item.magic_attack / (2 if item.magic_attack < 0 else 1)) +
-                    (item.magic_defense / (2 if item.magic_defense < 0 else 1)) +
-                    (item.defense / (2 if item.defense < 0 else 1)) +
-                    min(20, item.speed / 2)) +
-                10 * len(item.status_immunities) +
-                15 * len(item.elemental_immunities) +
-                7.5 * len(item.elemental_resistances) +
-                50 * (1 if item.prevent_ko else 0) +
-                30 * len(item.temp_buffs)
+                attack * max(0, attack_variance_factor)
+                + max(
+                    0,
+                    (item.magic_attack / (2 if item.magic_attack < 0 else 1))
+                    + (item.magic_defense / (2 if item.magic_defense < 0 else 1))
+                    + (item.defense / (2 if item.defense < 0 else 1))
+                    + min(20, item.speed / 2),
+                )
+                + 10 * len(item.status_immunities)
+                + 15 * len(item.elemental_immunities)
+                + 7.5 * len(item.elemental_resistances)
+                + 50 * (1 if item.prevent_ko else 0)
+                + 30 * len(item.temp_buffs)
             )
             return rank
 
         # Get all equipment and sort by rank
-        all_equipment = [i for i in self.items.items if isinstance(i, (Weapon, Armor, Accessory))]
+        all_equipment = [
+            i for i in self.items.items if isinstance(i, (Weapon, Armor, Accessory))
+        ]
         equipment_ranks = [(type(e), calc_equip_rank(e)) for e in all_equipment]
         equipment_ranks.sort(key=lambda x: x[1], reverse=True)
 
@@ -3278,12 +3452,14 @@ class GameWorld:
                 continue
             orig_items = [i for i in shop.items if i is not None]
             original_shop_data[shop.index] = {
-                'has_weapon': any(issubclass(i, Weapon) for i in orig_items),
-                'has_armor': any(issubclass(i, Armor) for i in orig_items),
-                'has_accessory': any(issubclass(i, Accessory) for i in orig_items),
-                'has_consumable': any(not issubclass(i, (Weapon, Armor, Accessory)) for i in orig_items),
-                'original_items': orig_items,
-                'original_count': len(orig_items),
+                "has_weapon": any(issubclass(i, Weapon) for i in orig_items),
+                "has_armor": any(issubclass(i, Armor) for i in orig_items),
+                "has_accessory": any(issubclass(i, Accessory) for i in orig_items),
+                "has_consumable": any(
+                    not issubclass(i, (Weapon, Armor, Accessory)) for i in orig_items
+                ),
+                "original_items": orig_items,
+                "original_count": len(orig_items),
             }
 
         # Handle EMPTY mode: only GoodieBag in every shop
@@ -3295,7 +3471,9 @@ class GameWorld:
             return
 
         # Build item pools based on quality setting
-        def get_item_pool(quality: ShopQualities, is_equipment: bool = False) -> tuple[list, list, list]:
+        def get_item_pool(
+            quality: ShopQualities, is_equipment: bool = False
+        ) -> tuple[list, list, list]:
             """Returns (low, high, highest) pools based on quality."""
             if is_equipment:
                 if quality == ShopQualities.ORIGINAL:
@@ -3310,7 +3488,7 @@ class GameWorld:
                     return (
                         [e for e in low_impact_equip if e in orig_equip_in_shops],
                         [e for e in high_impact_equip if e in orig_equip_in_shops],
-                        [e for e in highest_impact_equip if e in orig_equip_in_shops]
+                        [e for e in highest_impact_equip if e in orig_equip_in_shops],
                     )
                 elif quality == ShopQualities.MOSTLY_RANDOM:
                     return (low_impact_equip, high_impact_equip, [])
@@ -3324,19 +3502,23 @@ class GameWorld:
                         if shop is None or shop.index == FROG_DISCIPLE_SHOP:
                             continue
                         for item in shop.items:
-                            if item and not issubclass(item, (Weapon, Armor, Accessory)):
+                            if item and not issubclass(
+                                item, (Weapon, Armor, Accessory)
+                            ):
                                 orig_in_shops.add(item)
                     return (
                         [i for i in low_impact_items if i in orig_in_shops],
                         [i for i in high_impact_items if i in orig_in_shops],
-                        [i for i in highest_impact_items if i in orig_in_shops]
+                        [i for i in highest_impact_items if i in orig_in_shops],
                     )
                 elif quality == ShopQualities.MOSTLY_RANDOM:
                     return (low_impact_items, high_impact_items, [])
                 else:  # COMPLETELY_RANDOM
                     return (low_impact_items, high_impact_items, highest_impact_items)
 
-        low_consumables, high_consumables, highest_consumables = get_item_pool(quality, is_equipment=False)
+        low_consumables, high_consumables, highest_consumables = get_item_pool(
+            quality, is_equipment=False
+        )
         low_equip, high_equip, highest_equip = get_item_pool(quality, is_equipment=True)
 
         # Remove Pick Me Ups if setting enabled
@@ -3350,7 +3532,9 @@ class GameWorld:
         # Track items placed in Frog Disciple (can only also appear in Frog Coin Emporium)
         frog_disciple_set = set(frog_disciple_items)
 
-        def can_place_item(item_type: type[BaseItem] | None, shop_idx: int, current_items: list) -> bool:
+        def can_place_item(
+            item_type: type[BaseItem] | None, shop_idx: int, current_items: list
+        ) -> bool:
             """Check if an item can be placed in a shop."""
             if item_type is None:
                 return False
@@ -3361,21 +3545,30 @@ class GameWorld:
             if item_type in frog_emporium_items and shop_idx != FROG_COIN_EMPORIUM:
                 return False
             # Items in Frog Disciple can only also appear in Frog Coin Emporium
-            if item_type in frog_disciple_set and shop_idx not in [FROG_DISCIPLE_SHOP, FROG_COIN_EMPORIUM]:
+            if item_type in frog_disciple_set and shop_idx not in [
+                FROG_DISCIPLE_SHOP,
+                FROG_COIN_EMPORIUM,
+            ]:
                 return False
             # Check type restrictions
             shop_data = original_shop_data.get(shop_idx, {})
-            if issubclass(item_type, Weapon) and not shop_data.get('has_weapon', False):
+            if issubclass(item_type, Weapon) and not shop_data.get("has_weapon", False):
                 return False
-            if issubclass(item_type, Armor) and not shop_data.get('has_armor', False):
+            if issubclass(item_type, Armor) and not shop_data.get("has_armor", False):
                 return False
-            if issubclass(item_type, Accessory) and not shop_data.get('has_accessory', False):
+            if issubclass(item_type, Accessory) and not shop_data.get(
+                "has_accessory", False
+            ):
                 return False
-            if not issubclass(item_type, (Weapon, Armor, Accessory)) and not shop_data.get('has_consumable', False):
+            if not issubclass(
+                item_type, (Weapon, Armor, Accessory)
+            ) and not shop_data.get("has_consumable", False):
                 return False
             return True
 
-        def select_item(shop_idx: int, current_items: list, prefer_high: bool = False) -> type[BaseItem] | None:
+        def select_item(
+            shop_idx: int, current_items: list, prefer_high: bool = False
+        ) -> type[BaseItem] | None:
             """Select an item for a shop based on bias and availability."""
             is_better_shop = shop_idx in should_get_better_items
 
@@ -3432,7 +3625,8 @@ class GameWorld:
 
         # Process each shop (except Frog Disciple which is already set)
         shops_to_process = [
-            s for s in self.shops.shops
+            s
+            for s in self.shops.shops
             if s is not None and s.index != FROG_DISCIPLE_SHOP
         ]
 
@@ -3440,11 +3634,13 @@ class GameWorld:
         frog_emporium_shop = self.shops.shops[FROG_COIN_EMPORIUM]
         if frog_emporium_shop:
             shop_data = original_shop_data.get(FROG_COIN_EMPORIUM, {})
-            target_count = min(15, max(1, shop_data.get('original_count', 5)))
+            target_count = min(15, max(1, shop_data.get("original_count", 5)))
             emporium_new_items: list[type[BaseItem] | None] = []
 
             for _ in range(target_count):
-                item = select_item(FROG_COIN_EMPORIUM, emporium_new_items, prefer_high=True)
+                item = select_item(
+                    FROG_COIN_EMPORIUM, emporium_new_items, prefer_high=True
+                )
                 if item:
                     emporium_new_items.append(item)
                     frog_emporium_items.add(item)
@@ -3452,7 +3648,12 @@ class GameWorld:
             frog_emporium_shop.set_items(emporium_new_items)
 
         # Handle Juice Bar hierarchy (BASE < ALTO < TENOR < SOPRANO)
-        juice_bars = [JUICE_BAR_BASE, JUICE_BAR_ALTO, JUICE_BAR_TENOR, JUICE_BAR_SOPRANO]
+        juice_bars = [
+            JUICE_BAR_BASE,
+            JUICE_BAR_ALTO,
+            JUICE_BAR_TENOR,
+            JUICE_BAR_SOPRANO,
+        ]
         juice_bar_items: dict[int, list[type[BaseItem] | None]] = {}
 
         for i, bar_idx in enumerate(juice_bars):
@@ -3464,7 +3665,7 @@ class GameWorld:
 
             if i == 0:
                 # BASE: start fresh
-                target_count = max(1, shop_data.get('original_count', 1))
+                target_count = max(1, shop_data.get("original_count", 1))
                 bar_new_items: list[type[BaseItem] | None] = []
                 for _ in range(target_count):
                     item = select_item(bar_idx, bar_new_items)
@@ -3473,7 +3674,7 @@ class GameWorld:
                 juice_bar_items[bar_idx] = bar_new_items
             else:
                 # Must be superset of previous (but not same)
-                prev_items = list(juice_bar_items.get(juice_bars[i-1], []))
+                prev_items = list(juice_bar_items.get(juice_bars[i - 1], []))
                 bar_new_items = list(prev_items)  # Start with previous items
                 # Add at least one more item
                 added = 0
@@ -3485,7 +3686,11 @@ class GameWorld:
                         added += 1
                     attempts += 1
                 # Try to add more up to original count or 15
-                target_extra = min(15 - len(bar_new_items), shop_data.get('original_count', len(bar_new_items)) - len(prev_items))
+                target_extra = min(
+                    15 - len(bar_new_items),
+                    shop_data.get("original_count", len(bar_new_items))
+                    - len(prev_items),
+                )
                 for _ in range(max(0, target_extra - 1)):
                     item = select_item(bar_idx, bar_new_items)
                     if item and item not in bar_new_items:
@@ -3501,7 +3706,7 @@ class GameWorld:
                 continue
 
             shop_data = original_shop_data.get(shop.index, {})
-            target_count = min(15, max(1, shop_data.get('original_count', 5)))
+            target_count = min(15, max(1, shop_data.get("original_count", 5)))
             shop_new_items: list[type[BaseItem] | None] = []
 
             for _ in range(target_count):
@@ -3531,14 +3736,19 @@ class GameWorld:
                     if shop is None or shop.index == FROG_DISCIPLE_SHOP:
                         continue
                     shop_data = original_shop_data.get(shop.index, {})
-                    if shop_data.get('has_consumable', False):
+                    if shop_data.get("has_consumable", False):
                         current_items = shop.items or []
-                        if len(current_items) < 15 and PickMeUpItem not in current_items:
+                        if (
+                            len(current_items) < 15
+                            and PickMeUpItem not in current_items
+                        ):
                             eligible_shops.append(shop)
 
                 if eligible_shops:
                     target_shop = random.choice(eligible_shops)
-                    current_items: list[type[BaseItem] | None] = list(target_shop.items or [])
+                    current_items: list[type[BaseItem] | None] = list(
+                        target_shop.items or []
+                    )
                     current_items.append(PickMeUpItem)
                     target_shop.set_items(current_items)
 
@@ -3760,38 +3970,42 @@ class GameWorld:
                 ),
             )
 
-        
         starter = cast(CharacterPrize, self.get_location(StartingCharacter1).prize).ally
         i = starter.index
-        file_select_char_bytes = [SPR0000_MARIO_WALKING_DOWN_LEFT, SPR0007_TOADSTOOL_WALKING_DOWN_LEFT, SPR0013_BOWSER_WALKING_DOWN_LEFT, SPR0025_GENO_WALKING_DOWN_LEFT, SPR0019_MALLOW_WALKING_DOWN_LEFT]
+        file_select_char_bytes = [
+            SPR0000_MARIO_WALKING_DOWN_LEFT,
+            SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
+            SPR0013_BOWSER_WALKING_DOWN_LEFT,
+            SPR0025_GENO_WALKING_DOWN_LEFT,
+            SPR0019_MALLOW_WALKING_DOWN_LEFT,
+        ]
         self.file_select_character = starter.name
 
         # Change file select character graphic, if not Mario.
         if i != 0:
-            addresses = [0x34757, 0x3489a, 0x34ee7, 0x340aa, 0x3501e]
+            addresses = [0x34757, 0x3489A, 0x34EE7, 0x340AA, 0x3501E]
             for addr, value in zip(addresses, [0, 1, 0, 0, 1]):
                 patch.add_data(addr, file_select_char_bytes[i] + value)
 
         for i, name in enumerate(self.file_select_names):
-            addr = 0x3ef528 + (i * 7)
-            val = name.encode().ljust(7, b'\x00')
+            addr = 0x3EF528 + (i * 7)
+            val = name.encode().ljust(7, b"\x00")
             patch.add_data(addr, val)
-        
+
         # Update ROM title and version.
-        title = 'SMRPG-R {}'.format(self.seed).ljust(20)
+        title = "SMRPG-R {}".format(self.seed).ljust(20)
         if len(title) > 20:
-            title = title[:19] + '?'
+            title = title[:19] + "?"
 
         # Add version number on name entry screen.
-        version_text = ('v' + self.version).ljust(10)
+        version_text = ("v" + self.version).ljust(10)
         if len(version_text) > 10:
             raise ValueError("Version text is too long: {!r}".format(version_text))
-        patch.add_data(0x3ef140, version_text)
+        patch.add_data(0x3EF140, version_text)
 
         # Add title and major version number to SNES header data.
-        patch.add_data(0x7fc0, title)
-        v = self.version.split('.')
-        patch.add_data(0x7fdb, int(v[0]))
-        
+        patch.add_data(0x7FC0, title)
+        v = self.version.split(".")
+        patch.add_data(0x7FDB, int(v[0]))
 
         return patch

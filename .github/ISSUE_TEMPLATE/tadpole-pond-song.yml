@@ -55,7 +55,7 @@ body:
       required: true
 
   - type: textarea
-    id: hint2
+    id: hint2_pond
     attributes:
       label: Hint 2 (pond)
       description: |
@@ -65,7 +65,7 @@ body:
       required: true
 
   - type: textarea
-    id: hint2
+    id: hint2_mines
     attributes:
       label: Hint 2 (mines)
       description: |

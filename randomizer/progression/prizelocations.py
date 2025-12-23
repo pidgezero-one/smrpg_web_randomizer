@@ -3168,7 +3168,7 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     _originally_held = Booster2BossFight
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _override_id = 528
-    _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_1
+    _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _remake_only = True
     _pack_id = PACK070_TOWER_POSTGAME
