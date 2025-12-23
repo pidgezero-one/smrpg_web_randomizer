@@ -28,18 +28,6 @@ body:
       required: true
 
   # ─────────────────────────────────────────────
-  # Crowd Control clarification
-  # ─────────────────────────────────────────────
-  - type: markdown
-    attributes:
-      value: |
-        **Note:** Crowd Control is NOT officially supported for the randomizer.  
-        Please only report issues that occur without Crowd Control enabled.
-
-        More info:  
-        https://forum.warp.world/t/super-mario-rpg-legend-of-the-seven-stars-snes/14219
-
-  # ─────────────────────────────────────────────
   # Flags
   # ─────────────────────────────────────────────
   - type: textarea
@@ -87,7 +75,7 @@ body:
     attributes:
       label: Required confirmations
       options:
-        - label: This issue occurs WITHOUT Crowd Control
+        - label: This issue occurs WITHOUT Crowd Control, which is [not officially supported](https://forum.warp.world/t/super-mario-rpg-legend-of-the-seven-stars-snes/14219).
           required: true
         - label: This is NOT about a ship password, melody bay tune, or invisible flag hint being difficult to solve (unless the hints, solution, or positioning is incorrect).
           required: true
