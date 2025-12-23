@@ -208,7 +208,9 @@ class GenerateView(FormView):
         try:
             # Build game world, randomize it, and generate the patch.
             s = Settings()
-            s.set_from_flag_string(data["flags"] or "")
+            # Combine flags and cosmetics strings for parsing
+            full_flag_string = (data["flags"] or "") + "     " + (data["cosmetics"] or "")
+            s.set_from_flag_string(full_flag_string.strip())
             print(s.print_settings())
 
             world = create(

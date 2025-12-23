@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from .types.gameworld import GameWorld, Settings
 from .types.patch import Patch
 from .data.allies.allies import ally_collection
@@ -24,31 +26,35 @@ from .data.world_map_locations.world_map_locations import world_map_location_col
 VERSION = '9.0.0'
 
 def create(seed: int | str, settings: Settings ) -> GameWorld:
-    """Create a patch for the given seed."""
+    """Create a patch for the given seed.
+
+    Deep copies all mutable collections so modifications during randomization
+    don't affect subsequent seed generations.
+    """
     return GameWorld(
-        seed, 
+        seed,
         VERSION,
-        settings, 
-        ally_collection,
+        settings,
+        deepcopy(ally_collection),
         {
-            0x02: bank02,
-            0x35: bank35,
-            0x3A: bank3A,
+            0x02: deepcopy(bank02),
+            0x35: deepcopy(bank35),
+            0x3A: deepcopy(bank3A),
         },
-        battle_dialog_collection,
-        dialog_collection,
-        ENEMIES,
-        enemy_attack_collection,
-        ITEMS,
-        monster_scripts,
-        events,
-        actions,
-        ALL_PACKETS,
-        pack_collection,
-        room_collection,
-        shop_collection,
-        ALL_SPELLS,
-        sprites,
-        world_map_location_collection,
+        deepcopy(battle_dialog_collection),
+        deepcopy(dialog_collection),
+        deepcopy(ENEMIES),
+        deepcopy(enemy_attack_collection),
+        deepcopy(ITEMS),
+        deepcopy(monster_scripts),
+        deepcopy(events),
+        deepcopy(actions),
+        deepcopy(ALL_PACKETS),
+        deepcopy(pack_collection),
+        deepcopy(room_collection),
+        deepcopy(shop_collection),
+        deepcopy(ALL_SPELLS),
+        deepcopy(sprites),
+        deepcopy(world_map_location_collection),
     )
 

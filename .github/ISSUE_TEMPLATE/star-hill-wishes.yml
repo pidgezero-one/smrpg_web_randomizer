@@ -1,0 +1,21 @@
+name: Star Hill wish submission
+description: Submit a Star Hill wish
+title: "[Submission - Star Hill Wish]: "
+labels: [submission]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a wish to be added to the Star Hill wish star pool. 
+        Note: unlike ship passwords and tadpole pond songs, Star Hill wishes are not credited.
+
+  - type: textarea
+    id: wish
+    attributes:
+      label: Wish text
+      description: |
+        It is recommended to use the Lazy Shell editor to preview your text and be sure that it can fit in a single dialog with no scrolling.
+        If you want to make a longer wish, then it is recommended to use the editor to make sure that no more than three lines will render before awaiting the user to press A. Failure to do so might result in your text being modified so that it can fit.
+    validations:
+      required: true

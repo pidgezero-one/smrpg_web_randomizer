@@ -98,55 +98,63 @@ class CategorizationFlag(Flag, Generic[T]):
         return self._options or self.default.copy()
 
     @staticmethod
-    def _get_option_text(value) -> str:
+    def _get_option_text(value: Any) -> str:  # noqa: C901
         """Get a JSON-serializable text representation of an enum value.
 
         Priority order for descriptive names:
         1. _text (boss fights)
         2. _name (battle music classes)
         3. _title (spells)
-        4. _id.value (prize locations with ShuffleLocationSelector enum)
-        5. value (if string, for simple enums)
-        6. name attribute (allies)
-        7. __name__ (class types)
-        8. str() fallback
+        4. Tuple with string second element (e.g., MusicTrack)
+        5. _id.value (prize locations with ShuffleLocationSelector enum)
+        6. value (if string, for simple enums)
+        7. name attribute (allies)
+        8. __name__ (class types)
+        9. str() fallback
         """
         if isinstance(value, str):
             return value
+        # Tuple values where second element is the display name (e.g., MusicTrack)
+        if isinstance(value, tuple):
+            if len(value) >= 2 and isinstance(value[1], str):
+                return value[1]
+            return str(value)
         # Boss fights have _text
         if hasattr(value, '_text'):
-            return value._text
+            return value._text  # type: ignore[union-attr]
         # Battle music classes have _name
-        if hasattr(value, '_name') and isinstance(value._name, str):
-            return value._name
+        if hasattr(value, '_name') and isinstance(value._name, str):  # type: ignore[union-attr]
+            return value._name  # type: ignore[union-attr]
         # Spells have _title
         if hasattr(value, '_title'):
-            return value._title
+            return value._title  # type: ignore[union-attr]
         # Prize locations have _id which is a ShuffleLocationSelector enum
         if hasattr(value, '_id'):
-            id_val = value._id
+            id_val = value._id  # type: ignore[union-attr]
             if hasattr(id_val, 'value') and isinstance(id_val.value, str):
                 return id_val.value
         # Simple enum with string value
-        if hasattr(value, 'value') and isinstance(value.value, str):
-            return value.value
+        if hasattr(value, 'value') and isinstance(value.value, str):  # type: ignore[union-attr]
+            return value.value  # type: ignore[union-attr]
         # Allies have name attribute
-        if hasattr(value, 'name') and isinstance(value.name, str):
-            return value.name
+        if hasattr(value, 'name') and isinstance(value.name, str):  # type: ignore[union-attr]
+            return value.name  # type: ignore[union-attr]
         # Class types have __name__
         if hasattr(value, '__name__'):
-            return value.__name__
+            return value.__name__  # type: ignore[union-attr]
         return str(value)
 
     @property
     def options_dict(self) -> list[dict[str, str]]:
-        """All options as a dict for JSON serialization."""
-        return [{"id": c.name, "text": self._get_option_text(c.value)} for c in self.options.keys()]
+        """All options as a dict for JSON serialization, sorted alphabetically by text."""
+        options = [{"id": c.name, "text": self._get_option_text(c.value)} for c in self.options.keys()]
+        return sorted(options, key=lambda x: x["text"].lower())
 
     @property
     def default_dict(self) -> list[dict[str, str]]:
-        """Enabled options as a dict for JSON serialization."""
-        return [{"id": c.name, "text": self._get_option_text(c.value)} for c in self.enabled]
+        """Enabled options as a dict for JSON serialization, sorted alphabetically by text."""
+        options = [{"id": c.name, "text": self._get_option_text(c.value)} for c in self.enabled]
+        return sorted(options, key=lambda x: x["text"].lower())
 
     def reset(self) -> None:
         self._options = self.default.copy()
@@ -178,61 +186,69 @@ class CategorizationFlagWithOrdinance(Flag, Generic[T]):
         return self._options or self.default.copy()
 
     @staticmethod
-    def _get_option_text(value) -> str:
+    def _get_option_text(value: Any) -> str:  # noqa: C901
         """Get a JSON-serializable text representation of an enum value.
 
         Priority order for descriptive names:
         1. _text (boss fights)
         2. _name (battle music classes)
         3. _title (spells)
-        4. _id.value (prize locations with ShuffleLocationSelector enum)
-        5. value (if string, for simple enums)
-        6. name attribute (allies)
-        7. __name__ (class types)
-        8. str() fallback
+        4. Tuple with string second element (e.g., MusicTrack)
+        5. _id.value (prize locations with ShuffleLocationSelector enum)
+        6. value (if string, for simple enums)
+        7. name attribute (allies)
+        8. __name__ (class types)
+        9. str() fallback
         """
         if isinstance(value, str):
             return value
+        # Tuple values where second element is the display name (e.g., MusicTrack)
+        if isinstance(value, tuple):
+            if len(value) >= 2 and isinstance(value[1], str):
+                return value[1]
+            return str(value)
         # Boss fights have _text
         if hasattr(value, '_text'):
-            return value._text
+            return value._text  # type: ignore[union-attr]
         # Battle music classes have _name
-        if hasattr(value, '_name') and isinstance(value._name, str):
-            return value._name
+        if hasattr(value, '_name') and isinstance(value._name, str):  # type: ignore[union-attr]
+            return value._name  # type: ignore[union-attr]
         # Spells have _title
         if hasattr(value, '_title'):
-            return value._title
+            return value._title  # type: ignore[union-attr]
         # Prize locations have _id which is a ShuffleLocationSelector enum
         if hasattr(value, '_id'):
-            id_val = value._id
+            id_val = value._id  # type: ignore[union-attr]
             if hasattr(id_val, 'value') and isinstance(id_val.value, str):
                 return id_val.value
         # Simple enum with string value
-        if hasattr(value, 'value') and isinstance(value.value, str):
-            return value.value
+        if hasattr(value, 'value') and isinstance(value.value, str):  # type: ignore[union-attr]
+            return value.value  # type: ignore[union-attr]
         # Allies have name attribute
-        if hasattr(value, 'name') and isinstance(value.name, str):
-            return value.name
+        if hasattr(value, 'name') and isinstance(value.name, str):  # type: ignore[union-attr]
+            return value.name  # type: ignore[union-attr]
         # Class types have __name__
         if hasattr(value, '__name__'):
-            return value.__name__
+            return value.__name__  # type: ignore[union-attr]
         return str(value)
 
     @property
     def options_dict(self) -> list[dict[str, str | int | None]]:
-        """All options as a dict for JSON serialization, including order."""
-        return [
+        """All options as a dict for JSON serialization, sorted alphabetically by text."""
+        options = [
             {"id": c.name, "text": self._get_option_text(c.value), "order": self.options.get(c)}
             for c in self.options.keys()
         ]
+        return sorted(options, key=lambda x: str(x["text"]).lower())
 
     @property
     def default_dict(self) -> list[dict[str, str | int | None]]:
-        """Default options as a dict for JSON serialization, including order."""
-        return [
+        """Default options as a dict for JSON serialization, sorted alphabetically by text."""
+        options = [
             {"id": c.name, "text": self._get_option_text(c.value), "order": self.default.get(c)}
             for c in self.default.keys()
         ]
+        return sorted(options, key=lambda x: str(x["text"]).lower())
 
     @property
     def enabled(self) -> list[T]:
@@ -434,9 +450,6 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
         """
         from ..data.allies.allies import ally_collection
 
-        if rng is None:
-            rng = random
-
         # Get all available allies
         available_allies = list(ally_collection._allies)
 
@@ -451,7 +464,7 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
                 # Pick a random ally from those not yet used
                 remaining = [a for a in available_allies if a not in used_allies]
                 if remaining:
-                    chosen = rng.choice(remaining)
+                    chosen = rng.choice(remaining) if rng else random.choice(remaining)
                     used_allies.append(chosen)
                     result.append(chosen)
             else:
@@ -1717,7 +1730,6 @@ class ShowEquips(BooleanFlag):
     _name = "Always show all permitted characters on equips"
     _description = "Always show who can equip what in stores."
     _id = "showperms"
-    _default = True
 
 
 # ✅
@@ -1764,7 +1776,6 @@ class BossReplaceMinigameSprites(BooleanFlag):
 <br>
 <br>If disabled: Some sprites will be left unchanged from the original game to accommodate visual cues (such as the Booster Hill snifits, or Dodo in his statue room) or progression knowledge on required sub-fights (such as the Bandana Reds in Sunken Ship)."""
     _id = "allsprites"
-    _default = True
     _requires_all = [(BossShuffle(), True)]
 
 
@@ -1788,7 +1799,6 @@ class IncludeHenchmen(BooleanFlag):
     _name = "Change henchman battles to match boss fights"
     _description = """If enabled, the battles with Shysters in Mushroom Kingdom, Snifits in Booster Tower, Crooks in Moleville Mines, and Bandana Reds in the Sunken Ship may be replaced with other monsters depending on the corresponding boss location. For example, if Culex is the first tower boss, you might fight a Crystal on your way up the tower instead of a Snifit."""
     _id = "henchmen"
-    _default = True
     _requires_all = [(BossShuffle(), True)]
 
 
@@ -1941,7 +1951,6 @@ class SkipBossFights(BooleanFlag):
 </ul>
 <br/>If unset, you must still fight the associated boss to receive Star Pieces and other rewards."""
     _id = "skips"
-    _default = True
 
 
 # ✅
@@ -2011,7 +2020,6 @@ class Peach(BooleanFlag):
         "Toadstool is renamed 'Peach' (overridden by palette name swaps, if enabled)."
     )
     _id = "peach"
-    _disabled_if_all = [(PaletteSwaps(), True), (ChangeNames(), True)]
 
 
 # ✅
@@ -2029,42 +2037,20 @@ class BossShuffleMusic(BooleanFlag):
 
 
 # ✅
-from smrpgpatchbuilder.datatypes.battles.music import (
-    NormalBattleMusic,
-    MidbossMusic,
-    BossMusic,
-    Smithy1Music,
-    CorndillyMusic,
-    BoosterHillMusic,
-    VolcanoMusic,
-    CulexMusic,
-)
+from randomizer.data.variables.music_tracks import MusicTrack
 
 
 # ✅
-class ShuffledMusicEnum(ClassCategorizationOption):
-    """Enumeration for all battle music tracks that can be shuffled."""
-
-    NORMAL_BATTLE = NormalBattleMusic
-    MIDBOSS = MidbossMusic
-    BOSS = BossMusic
-    SMITHY_1 = Smithy1Music
-    CORNDILLY = CorndillyMusic
-    BOOSTER_HILL = BoosterHillMusic
-    VOLCANO = VolcanoMusic
-    CULEX = CulexMusic
+# Default music IDs: 0x06, 0x03, 0x19, 0x44, 0x23, 0x26, 0x3E, 0x3B
+_DEFAULT_MUSIC_IDS = {6, 3, 25, 68, 35, 38, 62, 59}
 
 
-# ✅
-class ShuffledMusic(CategorizationFlag[ShuffledMusicEnum]):
-    _name = "Allowable shuffled music"
-    _description = """If a song is highlighted (white text over blue), it can appear in any boss fight.
-<br>
-<br>If a song is not highlighted, it will never appear in a boss fight.
-<br>
-<br>This setting does nothing if "Randomize boss music" is turned off."""
+class ShuffledMusic(CategorizationFlag[MusicTrack]):
+    _name = "Battle music pool"
+    _description = """Eight tunes will be chosen at random for boss battles. Deselect any tracks you don't want to include in the pool.
+<br><br>This setting does nothing if "Randomize boss music" is turned off."""
     _id = "avail"
-    _default = {o: True for o in ShuffledMusicEnum.__members__.values()}
+    _default = {o: o.music_id in _DEFAULT_MUSIC_IDS for o in MusicTrack}
     _requires_all = [(BossShuffleMusic(), True)]
 
 

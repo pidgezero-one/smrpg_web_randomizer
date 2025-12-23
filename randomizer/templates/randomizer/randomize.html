@@ -104,7 +104,7 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <button id="reset-flags" type="button" class="btn btn-warning">Reset All Flags to Default</button>
+                        <button id="reset-flags" type="button" class="btn btn-warning">Reset All Settings</button>
                     </div>
                     <div class="row flag-nav-interface" id="all-flags-container">
                         {# Show categories and flag inputs. #}
@@ -327,10 +327,9 @@
             const applyFlags = (flags = null, initial_load = false) => {
 
                 FLAGS.forEach(flag => {
-                    if (flag.subcategory !== 'R') {
-                        $(".multiselect-option").show();
-                        $(".multiselect-button-container input[type='text']").val('');
-                        if (flag.type == "number") {
+                    $(".multiselect-option").show();
+                    $(".multiselect-button-container input[type='text']").val('');
+                    if (flag.type == "number") {
                             idval = $.escapeSelector(`${flag.subcategory}.${flag.id}`)
                             $(`#${idval}`).val(flag.default)
                         }
@@ -373,9 +372,7 @@
                                 })
                             }
                         }
-                    }
                 })
-                // what to do about cosmetics? have its own reset button?
 
                 if (!!flags) {
                     // Parse flag string and set flags on the page.

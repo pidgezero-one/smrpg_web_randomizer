@@ -1,0 +1,34 @@
+name: Dr. Topper quiz question submission
+description: Submit a Dr. Topper quiz question
+title: "[Submission - Dr. Topper Quiz Question]: "
+labels: [submission]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a question to be added to the Dr. Topper quiz pool.
+        Note: unlike ship passwords and tadpole pond songs, trivia questions are not credited.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question text
+      description: |
+        The dialog that Dr. Topper will say. It is recommended to use the Lazy Shell editor to preview your text and be sure that it can fit in a single dialog with no scrolling.
+    validations:
+      required: true
+
+  - type: textarea
+    id: correct-answer
+    attributes:
+      label: Right answer
+    validations:
+      required: true
+
+  - type: textarea
+    id: incorrect-answers
+    attributes:
+      label: Two wrong answers
+    validations:
+      required: true

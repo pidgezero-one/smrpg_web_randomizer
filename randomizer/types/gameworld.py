@@ -77,6 +77,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Room
 from smrpgpatchbuilder.datatypes.spells.enums import Status
 from smrpgpatchbuilder.datatypes.world_map_locations.classes import WorldMapLocationCollection
 from ..data.items.items import *
+from ..data.minigames.star_hill_wishes import WISH_POOL, WISH_DIALOG_IDS
 from .item import Item
 from .patch import Patch
 from .attack import EnemyAttack
@@ -550,6 +551,7 @@ class GameWorld:
         self.world_map_locations = world_map_locations
 
         random.seed(self.seed)
+        print(self.seed)
 
         # todo: extra moleville trade checks
 
@@ -1603,7 +1605,7 @@ class GameWorld:
                 "exor_vulnerability_2", [SetUntargetable(MONSTER_1_SET)]
             )
             self.monster_scripts.replace_command_by_identifier(
-                "exor_vulnerability_2", [SetUntargetable(MONSTER_1_SET)]
+                "exor_vulnerability_3", [SetUntargetable(MONSTER_1_SET)]
             )
         if self.settings.isflag_enabled(FixMagikoopa):
             self.monster_scripts.scripts[
@@ -2062,7 +2064,6 @@ class GameWorld:
         # Minigames
         # TODO ball solitaire
         # TODO quiz
-        # TODO star hill messages!
         # TODO magic buttons
         # TODO tadpole pond
         # TODO ship password
@@ -2134,7 +2135,8 @@ class GameWorld:
                 "statice_delete_3",
                 "statice_delete_4",
                 "statice_delete_5",
-                "meteorswarm_delete_maybe" "rockcandy_delete",
+                "meteorswarm_delete_maybe",
+                "rockcandy_delete",
                 "rockcandy_delete_2",
             ]
             for identifier in deletes:
@@ -2226,20 +2228,43 @@ class GameWorld:
                 self.enemies.get_by_type(MALLOWCOPYSEnemy).set_name(
                     self.mallow_palette.strong_clone_name
                 )
+        # Initialize selected music IDs (will be populated if BossShuffleMusic is enabled)
+        self.selected_music_ids: list[int] = []
+
         if self.settings.isflag_enabled(BossShuffleMusic):
             from smrpgpatchbuilder.datatypes.battles.enums import BattleMusic
 
-            music_pool = self.settings.get_flag(ShuffledMusic).enabled
+            # Get the enabled music tracks from user selection
+            enabled_tracks = self.settings.get_flag(ShuffledMusic).enabled
+
+            # Pick 8 random music IDs from the enabled tracks (with replacement if needed)
+            if len(enabled_tracks) >= 8:
+                selected_tracks = random.sample(enabled_tracks, 8)
+            else:
+                # If fewer than 8 tracks selected, sample with replacement
+                selected_tracks = random.choices(enabled_tracks, k=8)
+
+            # Store the music IDs for patching in get_patch
+            self.selected_music_ids = [track.music_id for track in selected_tracks]
+
+            # The 8 battle music classes (pointers to the IDs we'll write at 0x029F51)
+            music_classes = list(BattleMusic)
+
             for boss_fight in [
                 l for l in self.locations if isinstance(l, BossFightLocation)
             ]:
                 pack_id = cast(BossFightLocation, boss_fight).pack_id
-                tune = random.choice(music_pool)
-                # Convert ShuffledMusicEnum to BattleMusic by matching the class value
-                battle_music = next(bm for bm in BattleMusic if bm.value == tune.value)
+                # Assign a random battle music class (0-7) to each boss fight
+                battle_music = random.choice(music_classes)
                 pack = self.get_battle_pack(pack_id)
                 for f in pack.formations:
                     f.set_music(battle_music)
+
+        # Assign random Star Hill wishes. This doesn't need to be tied to the seed, so it's truly random!
+        wishes = zip(WISH_DIALOG_IDS, random.sample(WISH_POOL, len(WISH_DIALOG_IDS)))
+        for dialog_id, wish in wishes:
+            self.overworld_dialogs.replace_dialog(dialog_id, wish)
+
         
         # set random back to normal
         random.seed(self.seed)
@@ -2250,14 +2275,15 @@ class GameWorld:
         Roughly simulates a normal distribution with mean <value>,
         std deviation approximately 1/5 of value.
         """
-        value = max(minimum, min(value, maximum))
+        value = int(max(minimum, min(value, maximum)))
         if value == 0:
             return value
 
         # Use gaussian distribution centered on value with std dev = value / 5
         std_dev = max(1, value / 5)
         new_value = int(random.gauss(value, std_dev))
-        return max(minimum, min(new_value, maximum))
+        # Ensure result is always within bounds and is an integer
+        return int(max(minimum, min(new_value, maximum)))
 
     def _randomize_enemy_attacks_and_spells(self) -> None:
         """Randomize enemy spell and attack stats and effects."""
@@ -2293,7 +2319,7 @@ class GameWorld:
 
             # Mutate power
             new_power = self._mutate_normal(int(spell.power), minimum=0, maximum=255)
-            spell.set_power(new_power)
+            spell.set_power(int(max(0, min(255, new_power))))
 
             # Mutate hit rate (cap at 99 if it's an instant KO spell to allow protection items to work)
             max_hit = 99 if spell.check_ohko else 100
@@ -2909,8 +2935,8 @@ class GameWorld:
 
             # Randomize power (except for certain spells)
             if not isinstance(spell, NO_POWER_SHUFFLE):
-                new_power = self._mutate_normal(int(spell.power))
-                spell.set_power(new_power)
+                new_power = self._mutate_normal(int(spell.power), minimum=0, maximum=255)
+                spell.set_power(int(max(0, min(255, new_power))))
 
             # Randomize hit rate (except for certain spells)
             if not isinstance(spell, NO_HIT_RATE_SHUFFLE):
@@ -3583,6 +3609,10 @@ class GameWorld:
 
         if self.settings.isflag_enabled(ShowEquips):
             patch.add_data(0x033B6D, bytes([0x29, 0x1F, 0xEA]))
+
+        # Battle music IDs - write 8 selected music IDs to the music pointer table
+        if self.selected_music_ids:
+            patch.add_data(0x029F51, bytes(self.selected_music_ids))
 
         # Postgame weapon palettes
         patch.add_data(

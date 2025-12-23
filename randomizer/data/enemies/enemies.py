@@ -5154,7 +5154,7 @@ class STRONGBOBOMB3Enemy(Enemy):
 class HANGINSHYEnemy(Enemy):
     """HANGIN’ SHY enemy class"""
     _monster_id: int = 161
-    _name: str = "HANGIN’ SHY"
+    _name: str = "HANGIN' SHY"
 
     _hp: int = 10
     _fp: int = 100
@@ -7434,7 +7434,7 @@ class BOWYEREnemy(Enemy):
 class RASPBERRY2Enemy(Enemy):
     """RASPBERRY enemy class"""
     _monster_id: int = 231
-    _name: str = "FANCYRASPBERRY"
+    _name: str = "RASPBERRY 2"
 
     _hp: int = 600
     _fp: int = 100

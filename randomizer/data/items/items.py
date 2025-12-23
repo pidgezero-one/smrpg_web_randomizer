@@ -2727,6 +2727,7 @@ ITEMS = ItemCollection([
     ArmorItem(),  # item_id: 1
     AccessoryItem(),  # item_id: 2
     SpaceItem(),  # item_id: 3
+    SpaceItem2(),  # item_id: 4
     HammerItem(),  # item_id: 5
     FroggieStickItem(),  # item_id: 6
     NokNokShellItem(),  # item_id: 7
@@ -2794,6 +2795,7 @@ ITEMS = ItemCollection([
     HealShellItem(),  # item_id: 69
     RoyalDressItem(),  # item_id: 70
     SuperSuitItem(),  # item_id: 71
+    LazyShellItem2(),  # item_id: 72
     EnduringBroochItem(),  # item_id: 73
     ZoomShoesItem(),  # item_id: 74
     SafetyBadgeItem(),  # item_id: 75
@@ -2867,6 +2869,7 @@ ITEMS = ItemCollection([
     FrightBombItem(),  # item_id: 144
     MysteryEggItem(),  # item_id: 145
     BeetleBoxItem(),  # item_id: 146
+    BeetleBoxItem2(),  # item_id: 147
     LuckyJewelItem(),  # item_id: 148
     CrystalShardItem(),  # item_id: 149
     SopranoCardItem(),  # item_id: 150
@@ -2885,7 +2888,9 @@ ITEMS = ItemCollection([
     GreaperFlagItem(),  # item_id: 163
     CricketJamItem(),  # item_id: 166
     FireworksItem(),  # item_id: 172
+    StayVoucherItem(),  # item_id: 173
     BrightCardItem(),  # item_id: 174
+    MushroomItem2(),  # item_id: 175
     StarEggItem(),  # item_id: 176
     ShoesItem(),  # item_id: 230
     BroochItem(),  # item_id: 231
