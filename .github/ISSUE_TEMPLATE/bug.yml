@@ -34,7 +34,7 @@ body:
     attributes:
       label: Console or Emulator
       description: |
-        If emulator, state which emulator and version.
+        If emulator, state which emulator and version.<br>
         If console, state which flash cart firmware.
       placeholder: "e.g. bsnes 115, SNES EverDrive v2.6"
     validations:
@@ -71,8 +71,8 @@ body:
     attributes:
       label: Seed number / hash or permalink
       description: |
-        Provide ONE of the following:
-        • Seed number or hash (from filename or download page)
+        Provide ONE of the following:<br>
+        • Seed number or hash (from filename or download page)<br>
         • Permalink URL (from download page)
       placeholder: |
         Seed: 123456

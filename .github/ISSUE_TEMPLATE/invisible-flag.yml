@@ -16,9 +16,9 @@ body:
     attributes:
       label: Describe the location
       description: |
-        Give as much detail as possible.  
-        Your location should ideally be unique and not confusable with any other location in the world (i.e. "blue curtain" is not specific enough, there are at least 5 rooms with blue curtains).
-        If you can, use the Lazy Shell editor (https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to find the room number and xyz coordinates and include them here, it saves the devs a lot of time.
+        Give as much detail as possible.<br>
+        Your location should ideally be unique and not confusable with any other location in the world (i.e. "blue curtain" is not specific enough, there are at least 5 rooms with blue curtains).<br>
+        If you can, use the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to find the room number and xyz coordinates and include them here, it saves the devs a lot of time.
     validations:
       required: true
 
@@ -27,8 +27,10 @@ body:
     attributes:
       label: Hint text
       description: |
-        This will be what one of the Three Musty Fears says to give the player a hint about where the item is.  
-        This is required, for obvious reasons. The developers will not come up with hint text for you.  
-        Keep your hint brief and vague but helpful. i.e. "behind a wooden bat" = good, "in Monstro Town behind the welcome sign" = bad (too obvious).
+        This will be what one of the Three Musty Fears says to give the player a hint about where the item is.<br>
+        This is required, for obvious reasons. The developers will not come up with hint text for you.<br>
+        Keep your hint brief and vague but helpful. i.e. "behind a wooden bat" = good (player has to think about where they've seen that), "in Monstro Town behind the welcome sign" = bad (too direct).<br>
+        It is recommended to use the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to preview your text for run-on sentences. There should be a good spot to await the user to press A within every 3 lines or less to prevent forced scrolling. Failure to do so might result in your text being modified so that it can fit.<br>
+        Supported characters: A-Z, a-z, 0-9, and any of ♥♪•~©:;#×+%↑→←*&()-/?!.,
     validations:
       required: true

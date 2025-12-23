@@ -7,18 +7,26 @@ body:
   - type: markdown
     attributes:
       value: |
-        Submit a question to be added to the Dr. Topper quiz pool.
+        Submit a question to be added to the Dr. Topper quiz pool.  
         Note: unlike ship passwords and tadpole pond songs, trivia questions are not credited.
+        Supported characters:  
+        A-Z, a-z, 0-9, and any of `♥♪•~©:;#×+%↑→←*&()-/?!.,`
 
   - type: textarea
     id: question
     attributes:
       label: Question text
       description: |
-        The dialog that Dr. Topper will say. 
-        It is recommended to use the Lazy Shell editor to preview your text and be sure that it can fit in a single dialog with no scrolling. 
+        The dialog that Dr. Topper will say.<br>
+        It is recommended to use the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to preview your text and be sure that it can fit in a single three-line dialog with no scrolling (including the dialog starting with "DR. TOPPER:").<br>
+        Quiz questions that are longer than three lines may be rejected.
     validations:
       required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Answers must be short enough to fit on one line. Preview in Lazy Shell if you have to.
 
   - type: input
     id: correct-answer
@@ -28,8 +36,15 @@ body:
       required: true
 
   - type: input
-    id: incorrect-answers
+    id: wrong-answer-1
     attributes:
-      label: Two wrong answers
+      label: Wrong answer 1
+    validations:
+      required: true
+
+  - type: input
+    id: wrong-answer-2
+    attributes:
+      label: Wrong answer 2
     validations:
       required: true

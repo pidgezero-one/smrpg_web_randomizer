@@ -14,7 +14,7 @@ body:
     attributes:
       label: Tune notation
       description: |
-        Paste the output of the composer tool here.  
+        Paste the output of the composer tool here.<br>
         Tunes do not necessarily have to be come from Mario games. Other games and franchises are welcome.
     validations:
       required: true
@@ -33,24 +33,28 @@ body:
     attributes:
       label: Your name or handle
       description: |
-        If your song is randomly selected for the seed, this is the name that will appear in the game's ending sequence.  
-        Only capital letters A-Z, periods, spaces, and underscores are supported (no numbers or other characters).  
+        If your song is randomly selected for the seed, this is the name that will appear in the game's ending sequence.<br>
+        Only capital letters A-Z, periods, spaces, and underscores are supported (no numbers or other characters).<br>
         Leave this blank if you prefer to be anonymous.
 
   - type: markdown
     attributes:
       value: |
-        Your song may end up as the first, second, or third song in a seed, so the NPCs that give hints for the first two songs need to have dialog to match it.  
-        Players must have something to go off of so that they do not need to entirely bruteforce guess what your song is, so you must provide hint text for your creation. This is required, developers will not come up with hint text for you.  
-        (Note the first song's score will also be printed on Frogfucius' scroll, and the third song hints are audio only and do not need any text.)
+        Your song may end up as the first, second, or third song in a seed, so the NPCs that give hints for the first two songs need to have dialog to match it.<br>
+        Players must have something to go off of so that they do not need to entirely bruteforce guess what your song is, so you must provide hint text for your creation.<br>
+        This is required, developers will not come up with hint text for you.<br>
+        (Note the first song's score will also be printed on Frogfucius' scroll, and the third song hints are audio only and do not need any text.)<br><br>
+        It is recommended to use the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to preview your text for run-on sentences. There should be a good spot to await the user to press A within every 3 lines or less to prevent forced scrolling. Failure to do so might result in your text being modified so that it can fit.
+        Supported characters for all text fields:  
+        A-Z, a-z, 0-9, and any of `♥♪•~©:;#×+%↑→←*&()-/?!.,`
 
   - type: textarea
     id: hint1
     attributes:
       label: Hint 1
       description: |
-        The apprentice tadpole should give a statement about the first of the three songs.  
-        If you like, you can have them simply follow the original game's template: "It's <song name>. “<NOTES>”. Toadofsky's fond of it, too!"
+        The apprentice tadpole should give a statement about the first of the three songs.<br>
+        If you like, you can have them simply follow the original game's template: "It's <song name>. "<NOTES>". Toadofsky's fond of it, too!"
     validations:
       required: true
 
@@ -59,8 +63,8 @@ body:
     attributes:
       label: Hint 2 (pond)
       description: |
-        The apprentice tadpole should give a statement about the second of the three songs.  
-        If you like, you can have them simply follow the original game's template: "It's <song name>. “<NOTES>”. It's got soul!"
+        The apprentice tadpole should give a statement about the second of the three songs.<br>
+        If you like, you can have them simply follow the original game's template: "It's <song name>. "<NOTES>". It's got soul!"
     validations:
       required: true
 
@@ -69,7 +73,7 @@ body:
     attributes:
       label: Hint 2 (mines)
       description: |
-        The miners in Moleville should give a statement about the second of the three songs.  
+        The miners in Moleville should give a statement about the second of the three songs.<br>
         You do not need to be as elaborate as the original game's _Moleville Blues_ lyrics (unless you want to, of course). You can instead opt to say something simple i.e. "The Moleville Blues? Oh, it's really just Zelda's Lullaby with different words."
     validations:
       required: true
