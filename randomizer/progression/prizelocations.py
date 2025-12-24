@@ -2800,6 +2800,21 @@ class BoosterTowerKnifeGuyPrizeLocation(NPCLocationRow1):
     # flag as checked: KNIFE_GUY_PRIZE_GRANTED
 
 
+# this check does not exist if FixKnifeGuy is disabled
+class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
+    _originally_held = RedEssencePrize
+    _rooms = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
+    _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
+    _world_area = WorldAreaEnum.BOOSTER_TOWER
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_tower(world, inventory) and world.settings.isflag_enabled(
+            FixKnifeGuy
+        )
+
+    # flag as checked: KNIFE_GUY_SECOND_PRIZE_AWARDED
+
+
 class BoosterTowerPortraitPrizeLocation(StandingLocationRow1):
     _originally_held = ElderKeyPrize
     _rooms = [R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM]

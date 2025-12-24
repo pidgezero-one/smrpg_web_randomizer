@@ -236,6 +236,9 @@ from .flags import (
     BetterTips,
     RandomSunkenShipPassword,
     BowserDoorShuffle,
+    FixKnifeGuy,
+    KnifeGuyFixedPrizeThreshold,
+    SkipMinecart,
 )
 from .prizelocation import SIGNAL_RING_EVENT_DICT, PrizeLocation
 from ..progression.prizelocations import *
@@ -540,12 +543,22 @@ class GameWorld:
                 enabled_names = []
                 for opt in flag.enabled:
                     if hasattr(opt, "value"):
-                        if hasattr(opt.value, "name"):
-                            enabled_names.append(opt.value.name)
-                        elif hasattr(opt.value, "_name"):
-                            enabled_names.append(opt.value._name)
+                        val = opt.value
+                        # Check if val is a class type (for ClassCategorizationOption)
+                        if isinstance(val, type):
+                            # For class types, use _title (spell title) or __name__ (class name)
+                            if hasattr(val, "_title") and val._title:
+                                enabled_names.append(val._title)
+                            elif hasattr(val, "_name") and val._name:
+                                enabled_names.append(val._name)
+                            else:
+                                enabled_names.append(val.__name__)
+                        elif hasattr(val, "name") and isinstance(val.name, str):
+                            enabled_names.append(val.name)
+                        elif hasattr(val, "_name") and isinstance(val._name, str):
+                            enabled_names.append(val._name)
                         else:
-                            enabled_names.append(str(opt.value))
+                            enabled_names.append(str(val))
                     elif hasattr(opt, "name"):
                         enabled_names.append(opt.name)
                     else:
@@ -912,6 +925,14 @@ class GameWorld:
             JmpIfVarEqualsConst,
             self.event_scripts.get_command_by_identifier("enable_boss_access_3"),
         ).set_value(self.settings.get_flag(StarPiecesRequired).value)
+
+        if self.settings.isflag_enabled(FixKnifeGuy):
+            cast(
+                CompareVarToConst,
+                self.event_scripts.get_command_by_identifier(
+                    "tower_knife_guy_fixed_sidequest_completed"
+                )
+            ).set_value(self.settings.get_flag(KnifeGuyFixedPrizeThreshold).value)
 
         # other stuff
 
@@ -1445,9 +1466,7 @@ class GameWorld:
         if self.settings.isflag_enabled(BetterTips):
             cast(
                 SetVarToRandom,
-                self.event_scripts.get_script_by_id(
-                    E1972_MUSHROOM_BOY_ODDS
-                ).get_command_by_name("mushroom_boy_odds"),
+                self.event_scripts.get_command_by_identifier("mushroom_boy_odds")
             ).set_value(5000)
             self.event_scripts.get_script_by_id(
                 E0021_FOREST_MAZE_MUSHROOM_GRANT
@@ -2163,38 +2182,66 @@ class GameWorld:
             InnerFactoryFourthFight: InnerFactoryFourthFight(),
             InnerFactoryFourthFightStarPiece: InnerFactoryFourthFightStarPiece(),
             FinalBossFight: FinalBossFight(),
-            FinalBossFightStarPiece: FinalBossFightStarPiece(),
-            MarioSpell1: MarioSpell1(),
-            MarioSpell2: MarioSpell2(),
-            MarioSpell3: MarioSpell3(),
-            MarioSpell4: MarioSpell4(),
-            MarioSpell5: MarioSpell5(),
-            MarioSpell6: MarioSpell6(),
-            MallowSpell1: MallowSpell1(),
-            MallowSpell2: MallowSpell2(),
-            MallowSpell3: MallowSpell3(),
-            MallowSpell4: MallowSpell4(),
-            MallowSpell5: MallowSpell5(),
-            MallowSpell6: MallowSpell6(),
-            GenoSpell1: GenoSpell1(),
-            GenoSpell2: GenoSpell2(),
-            GenoSpell3: GenoSpell3(),
-            GenoSpell4: GenoSpell4(),
-            GenoSpell5: GenoSpell5(),
-            GenoSpell6: GenoSpell6(),
-            BowserSpell1: BowserSpell1(),
-            BowserSpell2: BowserSpell2(),
-            BowserSpell3: BowserSpell3(),
-            BowserSpell4: BowserSpell4(),
-            BowserSpell5: BowserSpell5(),
-            BowserSpell6: BowserSpell6(),
-            ToadstoolSpell1: ToadstoolSpell1(),
-            ToadstoolSpell2: ToadstoolSpell2(),
-            ToadstoolSpell3: ToadstoolSpell3(),
-            ToadstoolSpell4: ToadstoolSpell4(),
-            ToadstoolSpell5: ToadstoolSpell5(),
-            ToadstoolSpell6: ToadstoolSpell6(),
         }
+
+        # Only include FinalBossFightStarPiece if win condition is not FACTORY
+        # (when FACTORY is the win condition, defeating the final boss ends the game
+        # so there's no opportunity to collect the star piece)
+        if not self.settings.is_flag_value(WinCondition, WinConditions.FACTORY):
+            self.locations[FinalBossFightStarPiece] = FinalBossFightStarPiece()
+
+        included_charaters = self.settings.get_flag(AvailableCharacters).enabled
+        if MARIO_Ally in included_charaters:
+            self.locations = {
+                **self.locations,
+                MarioSpell1: MarioSpell1(),
+                MarioSpell2: MarioSpell2(),
+                MarioSpell3: MarioSpell3(),
+                MarioSpell4: MarioSpell4(),
+                MarioSpell5: MarioSpell5(),
+                MarioSpell6: MarioSpell6(),
+            }
+        if MALLOW_Ally in included_charaters:
+            self.locations = {
+                **self.locations,
+                MallowSpell1: MallowSpell1(),
+                MallowSpell2: MallowSpell2(),
+                MallowSpell3: MallowSpell3(),
+                MallowSpell4: MallowSpell4(),
+                MallowSpell5: MallowSpell5(),
+                MallowSpell6: MallowSpell6(),
+            }
+        if GENO_Ally in included_charaters:
+            self.locations = {
+                **self.locations,
+                GenoSpell1: GenoSpell1(),
+                GenoSpell2: GenoSpell2(),
+                GenoSpell3: GenoSpell3(),
+                GenoSpell4: GenoSpell4(),
+                GenoSpell5: GenoSpell5(),
+            }
+        if BOWSER_Ally in included_charaters:
+            self.locations = {
+                **self.locations,
+                BowserSpell1: BowserSpell1(),
+                BowserSpell2: BowserSpell2(),
+                BowserSpell3: BowserSpell3(),
+                BowserSpell4: BowserSpell4(),
+                BowserSpell5: BowserSpell5(),
+                BowserSpell6: BowserSpell6(),
+            }
+        if TOADSTOOL_Ally in included_charaters:
+            self.locations = {
+                **self.locations,
+                ToadstoolSpell1: ToadstoolSpell1(),
+                ToadstoolSpell2: ToadstoolSpell2(),
+                ToadstoolSpell3: ToadstoolSpell3(),
+                ToadstoolSpell4: ToadstoolSpell4(),
+                ToadstoolSpell5: ToadstoolSpell5(),
+                ToadstoolSpell6: ToadstoolSpell6(),
+            }
+
+        
 
         # Only add Super Jump reward locations if Super Jump spell is enabled
         available_spells = self.settings.get_flag(AvailableSpells)
@@ -2206,6 +2253,12 @@ class GameWorld:
                 **self.locations,
                 MonstroFirstSuperJumpRewardLocation: MonstroFirstSuperJumpRewardLocation(),
                 MonstroSecondSuperJumpRewardLocation: MonstroSecondSuperJumpRewardLocation(),
+            }
+
+        if self.settings.isflag_enabled(FixKnifeGuy):
+            self.locations = {
+                **self.locations,
+                BoosterTowerKnifeGuy2PrizeLocation: BoosterTowerKnifeGuy2PrizeLocation(),
             }
 
         if self.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
@@ -2309,11 +2362,15 @@ class GameWorld:
                 DojoFifthFight: DojoFifthFight(),
                 DojoFifthFightStarPiece: DojoFifthFightStarPiece(),
                 MonstroDojoPostgameClearRewardLocation: MonstroDojoPostgameClearRewardLocation(),
-                MonstroSealedDoorBossFightPostgame: MonstroSealedDoorBossFightPostgame(),
-                MonstroSealedDoorStarPiecePostgame: MonstroSealedDoorStarPiecePostgame(),
-                MonstroSealedDoorClearRewardLocationPostgame: MonstroSealedDoorClearRewardLocationPostgame(),
                 LandsEndCaveSideRemake: LandsEndCaveSideRemake(),
             }
+            # Only include Monstro sealed door postgame locations if win condition is not SEALED
+            # (when SEALED is the win condition, defeating the sealed door boss ends the game
+            # so there's no opportunity to collect postgame rewards)
+            if not self.settings.is_flag_value(WinCondition, WinConditions.SEALED):
+                self.locations[MonstroSealedDoorBossFightPostgame] = MonstroSealedDoorBossFightPostgame()
+                self.locations[MonstroSealedDoorStarPiecePostgame] = MonstroSealedDoorStarPiecePostgame()
+                self.locations[MonstroSealedDoorClearRewardLocationPostgame] = MonstroSealedDoorClearRewardLocationPostgame()
             # Checks for postgame-unlocking bosses by default expect an impossible value.
             # Enabling the remake flag sets it to the correct value, 7.
             cast(

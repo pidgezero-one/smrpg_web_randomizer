@@ -46,6 +46,7 @@ class Settings:
             CharacterSpellElements: CharacterSpellElements(),
             UncapSuperJumps: UncapSuperJumps(),
             AvailableSpells: AvailableSpells(),
+            AvailableCharacters: AvailableCharacters(),
             ShuffleStarPieces: ShuffleStarPieces(),
             TotalStarPieces: TotalStarPieces(),
             EnabledBossChecks: EnabledBossChecks(),
@@ -57,6 +58,7 @@ class Settings:
             NoStarEgg: NoStarEgg(),
             RestrictSpecialEquips: RestrictSpecialEquips(),
             EXPStarsAnywhere: EXPStarsAnywhere(),
+            ShuffleHillFlowers: ShuffleHillFlowers(),
             MimicsAnywhere: MimicsAnywhere(),
             SlotsAnywhere: SlotsAnywhere(),
             ShuffleBeetlemania: ShuffleBeetlemania(),
@@ -74,6 +76,8 @@ class Settings:
             EXPChallenge: EXPChallenge(),
             GrateGuyPrizeThreshold: GrateGuyPrizeThreshold(),
             KnifeGuyPrizeThreshold: KnifeGuyPrizeThreshold(),
+            FixKnifeGuy: FixKnifeGuy(),
+            KnifeGuyFixedPrizeThreshold: KnifeGuyFixedPrizeThreshold(),
             SuitePrize1Threshold: SuitePrize1Threshold(),
             SuitePrize2Threshold: SuitePrize2Threshold(),
             SuitePrize3Threshold: SuitePrize3Threshold(),
@@ -180,13 +184,38 @@ class Settings:
     # ==================== Flag String Encoding ====================
 
     @staticmethod
+    def _get_sorted_options_list(flag: CategorizationFlag) -> list:
+        """Get options sorted alphabetically by display text (matching frontend order)."""
+        def get_text(opt) -> str:
+            if hasattr(opt, 'value'):
+                val = opt.value
+                # Check if val is a class type (for ClassCategorizationOption)
+                if isinstance(val, type):
+                    # For class types, use _title (spell title) or _name or __name__
+                    if hasattr(val, '_title') and val._title:
+                        return val._title
+                    if hasattr(val, '_name') and val._name:
+                        return val._name
+                    return val.__name__
+                # For instances, check for string attributes
+                if hasattr(val, '_name') and isinstance(val._name, str):
+                    return val._name
+                if hasattr(val, 'name') and isinstance(val.name, str):
+                    return val.name
+            if hasattr(opt, 'name'):
+                return opt.name
+            return str(opt)
+        return sorted(flag.options.keys(), key=lambda x: get_text(x).lower())
+
+    @staticmethod
     def _encode_categorization_hash(flag: CategorizationFlag) -> str:
         """Encode a CategorizationFlag's enabled options as a compact hash.
 
         Uses base64-like encoding where each character represents 6 bits of
         enabled/disabled state for options in order.
+        Options are sorted alphabetically by display text to match frontend order.
         """
-        options_list = list(flag.options.keys())
+        options_list = Settings._get_sorted_options_list(flag)
         bitmask = 0
         for i, opt in enumerate(options_list):
             if flag.options[opt]:
@@ -204,8 +233,11 @@ class Settings:
 
     @staticmethod
     def _decode_categorization_hash(hash_str: str, flag: CategorizationFlag) -> dict:
-        """Decode a hash string back to option enabled states."""
-        options_list = list(flag.options.keys())
+        """Decode a hash string back to option enabled states.
+
+        Options are sorted alphabetically by display text to match frontend order.
+        """
+        options_list = Settings._get_sorted_options_list(flag)
         bitmask = 0
         for i, char in enumerate(hash_str):
             idx = B64_TABLE.index(char)

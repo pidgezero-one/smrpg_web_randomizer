@@ -442,7 +442,7 @@ class AvailableCharacters(CategorizationFlag[IncludedCharacterEnum]):
     _name = "Available Allies"
     _description = """Highlighted (white text over blue) allies are eligible to be the random ally that joins your party in starter/recruitment locations. Un-highlight any characters you want to exclude from the game entirely."""
     _default = {o: True for o in IncludedCharacterEnum.__members__.values()}
-    _id = "avail"
+    _id = "avail_chars"
 
 # Build StartingCharacterEnum dynamically - use ally instances as values (not class, to avoid aliases)
 _starting_char_members = {}
@@ -669,7 +669,7 @@ class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
 <br>
 <br>Note: You need at least one damage spell available to transform Mokura. Spells required for checks (i.e. super jump) cannot be excluded."""
     _default = {o: True for o in LearnableSpellEnum.__members__.values()}
-    _id = "avail"
+    _id = "avail_spells"
 
 
 # ******** Star Pieces and Bosses
@@ -692,7 +692,7 @@ class TotalStarPieces(RangeFlag):
     _default = 6
     min_value = 0
     max_value = 7
-    _id = "avail"
+    _id = "total_sp"
     _requires_all = [(ShuffleStarPieces(), True)]
 
 
@@ -799,7 +799,7 @@ class ShuffleHillFlowers(BooleanFlag):
     _description = """If enabled, all sixteen Booster Hill flowers will be item checks.
 <br>
 <br>There are no missable flowers on Booster Hill in the randomizer. You can return to the hill as many times as you like to collect any you missed the first time."""
-    _id = "marry"
+    _id = "hill"
     _requires_all = [(ShuffleItems(), True)]
 
 
@@ -2123,7 +2123,7 @@ class ShuffledMusic(CategorizationFlag[MusicTrack]):
     _name = "Battle music pool"
     _description = """Eight tunes will be chosen at random for boss battles. Deselect any tracks you don't want to include in the pool.
 <br><br>This setting does nothing if "Randomize boss music" is turned off."""
-    _id = "avail"
+    _id = "avail_music"
     _default = {o: o.music_id in _DEFAULT_MUSIC_IDS for o in MusicTrack}
     _requires_all = [(BossShuffleMusic(), True)]
 

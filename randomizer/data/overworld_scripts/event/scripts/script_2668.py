@@ -1,4 +1,4 @@
-# E2668_EMPTY
+# E2668_KNIFE_GUY_SECOND_GRANT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+    # impossible to reach if not changed
+	CompareVarToConst(PRIMARY_TEMP_7000, 256, identifier="tower_knife_guy_fixed_sidequest_completed"),
+	Return()
 ])

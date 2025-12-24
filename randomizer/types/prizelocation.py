@@ -251,6 +251,7 @@ class ShuffleLocationSelector(CategorizationOption):
     BOOSTER_TOWER_SPOOKUM = "Booster Tower first stairway chest"
     BOOSTER_TOWER_THWOMP = "Booster Tower upper thwomp room chest"
     BOOSTER_TOWER_KNIFE_GUY = "Booster Tower Knife Guy reward"
+    BOOSTER_TOWER_KNIFE_GUY_2 = "Booster Tower Knife Guy maxed out reward (if fixed)"
     BOOSTER_TOWER_ROOM_KEY = "Booster Tower checkerboard room item"
     BOOSTER_TOWER_FROG_COIN_1 = (
         "Booster Tower checkerboard room freestanding frog coin 1"
