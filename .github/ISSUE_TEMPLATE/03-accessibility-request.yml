@@ -9,6 +9,7 @@ body:
       value: |
         The "Remove flashes" flag removes sudden, brief full-screen white flashes or otherwise quick high-contrast flashing in the following areas:
         * Thunderbolt
+        * Corona
         * Crusher (timed hit)
         * Dark Star second bounce
         * Spiked Link (timed hit)
@@ -24,7 +25,7 @@ body:
         
         You can use this form to suggest additional animations for this flag to remove.
 
-        Disclaimer: While this feature is intended to promote accessibility, SMRPG Randomizer's developers are not accessibility experts and we may miss things. Players and viewers who experience photosensitivity should continue to engage with this randomizer at their own risk.
+        Disclaimer: While this feature is intended to promote accessibility, SMRPG Randomizer's developers are not accessibility experts and we may miss things or not get them totally right. Players and viewers who experience photosensitivity should continue to engage with this randomizer at their own risk. Developers who pick up photosensitivity request tickets will do their best to implement the change exactly as requested.
 
   - type: textarea
     id: idea

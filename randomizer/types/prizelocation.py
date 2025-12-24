@@ -72,6 +72,7 @@ from ..data.variables.variable_names import (
 if TYPE_CHECKING:
     from ..types.logic import Inventory
     from ..types.gameworld import GameWorld
+    from ..progression.prizes import SmithyBossFight
 
 
 class ShuffleLocationSelector(CategorizationOption):
@@ -771,15 +772,18 @@ class OverworldMapRegion(StrEnum):
 class PrizeLocation:
     _prize: Prize | None
     _originally_held: type[Prize] | None
-    _missable: bool = False
     _can_accept: list[type[Prize]]
     _rooms: list[int]
     _id: ShuffleLocationSelector
     _remake_only: bool = False
     _blacklist: list[type[Prize]]
     _override_id: int | None = None
+    _can_be_empty: bool = False
 
     _world_area: WorldAreaEnum
+
+    def can_be_empty(self, world: GameWorld) -> bool:
+        return self._can_be_empty
 
     @property
     def battlefields(self) -> list[Battlefield]:
@@ -937,6 +941,8 @@ class TreasureChestLocation(PrizeLocation):
         return EventScript(itemgrant)
 
 
+
+
 class StandingLocation(PrizeLocation):
     _npc_ids: list[AreaObject]
 
@@ -1072,6 +1078,7 @@ class BossFightLocation(PrizeLocation):
 class CharacterRecruitmentLocation(PrizeLocation):
     _show_dialog: bool
     _container_event: int
+    _can_be_empty: bool = True
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return hasattr(prize, "character_grant") and super().can_accept(
@@ -1088,10 +1095,22 @@ class CharacterRecruitmentLocation(PrizeLocation):
 
 
 class StarPieceLocation(PrizeLocation):
+    _parent: type[BossFightLocation]
+    _can_be_empty: bool = True
+
+    def can_be_empty(self, world: GameWorld) -> bool:
+        from .flags import WinCondition, WinConditions
+        return isinstance(world.get_location(self._parent).prize, SmithyBossFight) and world.settings.is_flag_value(WinCondition, WinConditions.SMITHY)
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        from .flags import WinCondition, WinConditions
+        return not (isinstance(world.get_location(self._parent).prize, SmithyBossFight) and world.settings.is_flag_value(WinCondition, WinConditions.SMITHY))
+    
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return hasattr(prize, "postfight_star_piece_grant") and super().can_accept(
             prize, inventory, world
         )
+    
 
 
 class ShopLocation(PrizeLocation):
@@ -1102,6 +1121,7 @@ class ShopLocation(PrizeLocation):
 
 
 class SpellSlotLocation(PrizeLocation):
+    _can_be_empty: bool = True
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return isinstance(prize, SpellPrize) and super().can_accept(
             prize, inventory, world
@@ -1345,7 +1365,12 @@ class TreasureShopLocation(PrizeLocation):
     pass
 
 
-class InvisibleFlagLocation(NPCLocationRow1):
+class KeyItemLocation(PrizeLocation):
+    def key(self, world: GameWorld) -> bool:
+        return True
+
+
+class InvisibleFlagLocation(NPCLocationRow1, KeyItemLocation):
 
     _which: int
     _x_coord: int = 0

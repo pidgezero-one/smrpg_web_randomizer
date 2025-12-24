@@ -113,6 +113,7 @@ class Settings:
             BallSolitaireShuffle: BallSolitaireShuffle(),
             MagicButtonShuffle: MagicButtonShuffle(),
             QuizShuffle: QuizShuffle(),
+            QuizIncludeNonSmrpg: QuizIncludeNonSmrpg(),
             RandomTadpolePondSong: RandomTadpolePondSong(),
             RandomSunkenShipPassword: RandomSunkenShipPassword(),
             BowserDoorShuffle: BowserDoorShuffle(),

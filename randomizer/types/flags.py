@@ -886,7 +886,9 @@ class KeyItemsAnywhere(BooleanFlag):
 <br>
 <br>If disabled, the "Special Items" will only be shuffled within each other's locations.
 <br>
-<br>The items targeted by this setting are the <b>Rare Frog Coin</b>, <b>Cricket Pie</b>, <b>Bambino Bomb</b>, <b>Castle Key 1</b>, <b>Castle Key 2</b>, <b>Alto Card</b>, <b>Tenor Card</b>, <b>Soprano Card</b>, <b>Greaper Flag</b>, <b>Dry Bones Flag</b>, <b>Big Boo Flag</b>, <b>Shed Key</b>, <b>Elder Key</b>, <b>Cricket Jam</b>, <b>Temple Key</b>, <b>Room Key</b>, <b>Seed</b>, <b>Fertilizer</b> (and sometimes <b>Bright Card</b> and <b>Fireworks</b>)."""
+<br>The items targeted by this setting are the <b>Rare Frog Coin</b>, <b>Wallet</b>, <b>Cricket Pie</b>, <b>Bambino Bomb</b>, <b>Castle Key 1</b>, <b>Castle Key 2</b>, <b>Alto Card</b>, <b>Tenor Card</b>, <b>Soprano Card</b>, <b>Greaper Flag</b>, <b>Dry Bones Flag</b>, <b>Big Boo Flag</b>, <b>Shed Key</b>, <b>Elder Key</b>, <b>Cricket Jam</b>, <b>Temple Key</b>, <b>Room Key</b>, <b>Seed</b>, <b>Fertilizer</b>, and <b>Bright Card</b>.
+<br><br>Certain settings can also add the <b>Extra Shiny Stone</b>, <b>Crystal Shard</b>, <b>Ring</b>, <b>Brooch</b>, <b>Shoes</b>, <b>Crown</b>, <b>Fireworks</b>, <b>Shiny Stone</b>, <b>Carbo Cookie</b>, and <b>Gold Paint</b>.
+"""
     _id = "keys_anywhere"
     _requires_all = [(ShuffleItems(), True)]
     # change EVENT_947_jmp_to_event_107" to point to event 949
@@ -1694,6 +1696,14 @@ class QuizShuffle(BooleanFlag):
 
 
 # ✅
+class QuizIncludeNonSmrpg(BooleanFlag):
+    _name = "Include non-SMRPG questions"
+    _description = "The question pool will also include questions that are not related to Super Mario RPG."
+    _id = "quizext"
+    _requires_all = [(QuizShuffle(), True)]
+
+
+# ✅
 class RandomTadpolePondSong(BooleanFlag):
     _name = "Randomize Tadpole Pond songs"
     _description = """If enabled, the songs required for the three Tadpole Pond songs will be selected from a pool (submitted by players). Hints will be available in their normal locations within Tadpole Pond, Moleville Mines, and Monstro Town."""
@@ -2373,6 +2383,7 @@ class PuzzleCategory(FlagCategory):
         BallSolitaireShuffle,
         MagicButtonShuffle,
         QuizShuffle,
+        QuizIncludeNonSmrpg,
         RandomTadpolePondSong,
         RandomSunkenShipPassword,
         BowserDoorShuffle,

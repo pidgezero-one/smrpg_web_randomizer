@@ -73,6 +73,7 @@ class Prize:
     _boss_fight_grant: EventScript | None = None
     _postfight_star_piece_grant: EventScript | None = None
     remake_only: bool = False
+    key: bool = False
 
     @property
     def important(self) -> bool:
@@ -117,6 +118,8 @@ class Prize:
     def set_important(self, important: bool) -> None:
         self._important = important
 
+class KeyPrize(Prize):
+    pass
 
 class StandardPrize(Prize):
     _grant: EventScript

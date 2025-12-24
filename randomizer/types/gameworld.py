@@ -229,6 +229,7 @@ from .flags import (
     FixMagikoopa,
     NoOHKO,
     QuizShuffle,
+    QuizIncludeNonSmrpg,
     BallSolitaireShuffle,
     MagicButtonShuffle,
     ShuffleHillFlowers,
@@ -1423,7 +1424,8 @@ class GameWorld:
         # Minigames
 
         if self.settings.isflag_enabled(QuizShuffle):
-            questions = get_quiz_questions()
+            include_non_smrpg = self.settings.isflag_enabled(QuizIncludeNonSmrpg)
+            questions = get_quiz_questions(include_non_smrpg)
             for text, d_id in zip(
                 questions, option_1_correct + option_2_correct + option_3_correct
             ):

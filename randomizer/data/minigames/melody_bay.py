@@ -942,4 +942,13 @@ all_songs = [
         hint_2=' My favorite song?[await][page]\n \u266a"Fa So Ti Re Ti Do".\n Most animals love that song.\n Especially birds.[await]',
         hint_3=' Don\'t ya wish sometimes that you\n could just fly anywhere ya wanted?[await]',
         scroll='\n            Fa So Ti Re Ti Do[await]'),
+    Song(
+        [(So, 20), (Re, 20), (Do, 20), (La, 20), (Ti, 30), (Ti, 30), (Do, 30)],
+        "UNDERTALE - His Theme",
+        submitter="Kim Delicious",
+        submitter_credits="KIM DELICIOUS",
+        hint_1=' Hey, Toby, I forget. Who\'s theme is\n this, again?[await]',
+        hint_2=' I heard that monsters that hear\n this song are filled with\n determination![await]',
+        hint_3=' Oh yeah, the Moleville Blues![await][page]\n Even if it\'s His Theme, those cute\n bells make me cry every time I listen\n to it.[await]',
+        scroll='\n          So Re Do La Ti Ti Do[await]'),
 ]

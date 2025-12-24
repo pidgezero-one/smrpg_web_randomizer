@@ -221,6 +221,7 @@ from ..types.prize import (
     ProgressiveItemPrize,
     WeddingGearPrize,
     SpecialItemPrizeType,
+    KeyPrize,
 )
 from ..data.spells.spells import (
     JumpSpell,
@@ -1211,7 +1212,7 @@ class SeeYaPrize(ItemPrize):
     )
 
 
-class TempleKeyPrize(ItemPrize):
+class TempleKeyPrize(ItemPrize, KeyPrize):
     item = TempleKeyItem
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
@@ -1239,21 +1240,21 @@ class FreshenUpPrize(ItemPrize):
     )
 
 
-class RareFrogCoinPrize(ItemPrize):
+class RareFrogCoinPrize(ItemPrize, KeyPrize):
     item = RareFrogCoinItem
     _nickname = TreasureHunterNickname(
         nickname="Green Coin", description="It looks different from most Frog \nCoins."
     )
 
 
-class WalletPrize(ItemPrize):
+class WalletPrize(ItemPrize, KeyPrize):
     item = WalletItem
     _nickname = TreasureHunterNickname(
         nickname="Coin Sack", description="It looks like it belongs to someone."
     )
 
 
-class CricketPiePrize(ItemPrize):
+class CricketPiePrize(ItemPrize, KeyPrize):
     item = CricketPieItem
     _nickname = TreasureHunterNickname(
         nickname="Baked Good", description="Looks tasty, doesn't it?"
@@ -1267,28 +1268,28 @@ class RockCandyPrize(ItemPrize):
     )
 
 
-class CastleKey1Prize(ItemPrize):
+class CastleKey1Prize(ItemPrize, KeyPrize):
     item = CastleKey1Item
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
 
 
-class CastleKey2Prize(ItemPrize):
+class CastleKey2Prize(ItemPrize, KeyPrize):
     item = CastleKey2Item
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
 
 
-class BambinoBombPrize(ItemPrize):
+class BambinoBombPrize(ItemPrize, KeyPrize):
     item = BambinoBombItem
     _nickname = TreasureHunterNickname(
         nickname="Explosive Device", description="Don't try this at home!"
     )
 
 
-class ProgressiveCardPrize(ProgressiveItemPrize):
+class ProgressiveCardPrize(ProgressiveItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Membership Card",
         description="It's sure to bring you an air of\n prestige.",
@@ -1342,7 +1343,7 @@ class ProgressiveEggPrize(ProgressiveItemPrize):
         return EventScript([JmpToEvent(E3114_HILL_PROGRESSIVE_EGG)])
 
 
-class ExtraShinyStonePrize(ItemPrize):
+class ExtraShinyStonePrize(ItemPrize, KeyPrize):
     item = ExtraShinyStoneItem
     _nickname = TreasureHunterNickname(
         nickname="Crystal",
@@ -1351,7 +1352,7 @@ class ExtraShinyStonePrize(ItemPrize):
     remake_only = True
 
 
-class CrystalShardPrize(ItemPrize):
+class CrystalShardPrize(ItemPrize, KeyPrize):
     item = CrystalShardItem
     _nickname = TreasureHunterNickname(
         nickname="Crystal",
@@ -1360,21 +1361,21 @@ class CrystalShardPrize(ItemPrize):
     remake_only = True
 
 
-class RoomKeyPrize(ItemPrize):
+class RoomKeyPrize(ItemPrize, KeyPrize):
     item = RoomKeyItem
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
 
 
-class ElderKeyPrize(ItemPrize):
+class ElderKeyPrize(ItemPrize, KeyPrize):
     item = ElderKeyItem
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
 
 
-class ShedKeyPrize(ItemPrize):
+class ShedKeyPrize(ItemPrize, KeyPrize):
     item = ShedKeyItem
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
@@ -1436,14 +1437,14 @@ class MoldyMushPrize(ItemPrize):
     )
 
 
-class SeedPrize(ItemPrize):
+class SeedPrize(ItemPrize, KeyPrize):
     item = SeedItem
     _nickname = TreasureHunterNickname(
         nickname="Mysterious Seed", description="I wonder what will grow from it?"
     )
 
 
-class FertilizerPrize(ItemPrize):
+class FertilizerPrize(ItemPrize, KeyPrize):
     item = FertilizerItem
     _nickname = TreasureHunterNickname(
         nickname="Bag of Dirt",
@@ -1451,7 +1452,7 @@ class FertilizerPrize(ItemPrize):
     )
 
 
-class BigBooFlagPrize(ItemPrize):
+class BigBooFlagPrize(ItemPrize, KeyPrize):
     item = BigBooFlagItem
     _nickname = TreasureHunterNickname(
         nickname="Invisible Flag",
@@ -1459,7 +1460,7 @@ class BigBooFlagPrize(ItemPrize):
     )
 
 
-class DryBonesFlagPrize(ItemPrize):
+class DryBonesFlagPrize(ItemPrize, KeyPrize):
     item = DryBonesFlagItem
     _nickname = TreasureHunterNickname(
         nickname="Invisible Flag",
@@ -1467,7 +1468,7 @@ class DryBonesFlagPrize(ItemPrize):
     )
 
 
-class GreaperFlagPrize(ItemPrize):
+class GreaperFlagPrize(ItemPrize, KeyPrize):
     item = GreaperFlagItem
     _nickname = TreasureHunterNickname(
         nickname="Invisible Flag",
@@ -1475,7 +1476,7 @@ class GreaperFlagPrize(ItemPrize):
     )
 
 
-class CricketJamPrize(ItemPrize):
+class CricketJamPrize(ItemPrize, KeyPrize):
     item = CricketJamItem
     _nickname = TreasureHunterNickname(
         nickname="Green Jelly", description="I wonder what flavor it is?"
@@ -1489,7 +1490,7 @@ class RegularFireworksPrize(ItemPrize):
     )
 
 
-class ProgressiveFireworksPrize(ProgressiveItemPrize):
+class ProgressiveFireworksPrize(ProgressiveItemPrize, KeyPrize):
     item = FireworksItem
     _nickname = TreasureHunterNickname(
         nickname="Explosive Device", description="Don't try this at home!"
@@ -1525,7 +1526,7 @@ class StayVoucherPrize(ItemPrize):
     remake_only = True
 
 
-class BrightCardPrize(ItemPrize):
+class BrightCardPrize(ItemPrize, KeyPrize):
     item = BrightCardItem
     _nickname = TreasureHunterNickname(
         nickname="Membership Card",
@@ -1573,7 +1574,7 @@ class BeetlemaniaPrize(StandardPrize):
         return EventScript([JmpToEvent(E0218_HILL_BEETLEMANIA)])
 
 
-class ShoesPrize(WeddingGearPrize):
+class ShoesPrize(WeddingGearPrize, KeyPrize):
     item = ShoesItem
     _nickname = TreasureHunterNickname(
         nickname="Ruby Slippers", description="Do you think they'll take you\n home?"
@@ -1606,7 +1607,7 @@ class ShoesPrize(WeddingGearPrize):
         )
 
 
-class BroochPrize(WeddingGearPrize):
+class BroochPrize(WeddingGearPrize, KeyPrize):
     item = BroochItem
     _nickname = TreasureHunterNickname(
         nickname="Shiny Brooch", description="It looks pretty stylish."
@@ -1639,7 +1640,7 @@ class BroochPrize(WeddingGearPrize):
         )
 
 
-class RingPrize(WeddingGearPrize):
+class RingPrize(WeddingGearPrize, KeyPrize):
     item = RingItem
     _nickname = TreasureHunterNickname(
         nickname="Wedding Ring", description="For that special someone!"
@@ -1672,7 +1673,7 @@ class RingPrize(WeddingGearPrize):
         )
 
 
-class CrownPrize(WeddingGearPrize):
+class CrownPrize(WeddingGearPrize, KeyPrize):
     item = CrownItem
     _nickname = TreasureHunterNickname(
         nickname="Gold Crown", description="It looks pretty important!"
@@ -1705,7 +1706,7 @@ class CrownPrize(WeddingGearPrize):
         )
 
 
-class GoldPaintPrize(ItemPrize):
+class GoldPaintPrize(ItemPrize, KeyPrize):
     item = GoldPaintItem
     _nickname = TreasureHunterNickname(
         nickname="Chrome Coat", description="It'll make you look shiny!"

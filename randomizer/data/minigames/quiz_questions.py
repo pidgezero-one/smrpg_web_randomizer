@@ -1,5 +1,5 @@
 from ..variables.dialog_names import *
-import random 
+import random
 
 option_1_correct = [
     DI1842_QUIZ_QUESTION_1,
@@ -71,24 +71,23 @@ class Question:
         else:
             raise ValueError(f"Dialog ID {dialog_id} is not a valid quiz question ID.")
         answers = [""] * 3
-        answers[correct_index] = " [select]  " + self.correct_answer + "\n"
+        answers[correct_index] = " [select]  (" + self.correct_answer + ")\n"
         index_1, index_2 = wrong_indexes[correct_index]
-        answers[index_1] = " [select]  " + self.wrong_answers[0] + "\n"
-        answers[index_2] = " [select]  " + self.wrong_answers[1] + "\n"
+        answers[index_1] = " [select]  (" + self.wrong_answers[0] + ")\n"
+        answers[index_2] = " [select]  (" + self.wrong_answers[1] + ")\n"
         final_string = self.question + "[await][page]\n" + "".join(answers)
         final_string = final_string[:-1]  # Remove trailing newline from final answer.
         return final_string
 
 
-def get_quiz_questions():
-    """Get new list of potential quiz questions for the randomizer.
+def get_smrpg_questions():
+    """Get SMRPG-related quiz questions.
 
     Returns:
-        list[Question]: List of questions.
+        list[Question]: List of SMRPG questions.
 
     """
-    # New static quiz questions we added.
-    acc = [
+    return [
         Question(
             "What game gives\nyou the Star Egg?",
             "Look The Other Way",
@@ -574,4 +573,35 @@ def get_quiz_questions():
         Question("What's the chef's\nname at Marrymore?", "Torte", "Blintz", "Gateau"),
     ]
 
-    return random.sample(acc, 40)
+
+def get_non_smrpg_questions():
+    """Get non-SMRPG-related quiz questions.
+
+    Returns:
+        list[Question]: List of non-SMRPG questions.
+
+    """
+    return [
+        Question(
+            "DR. TOPPER: Name That Move: The\n player jumps off a Switch Palace\n button in Super Mario World?",
+            "Yump!",
+            "Frame Perfect Button Bounce!",
+            "No name, it's just cool",
+        )
+    ]
+
+
+def get_quiz_questions(include_non_smrpg: bool = False):
+    """Get new list of potential quiz questions for the randomizer.
+
+    Args:
+        include_non_smrpg: If True, include non-SMRPG questions in the pool.
+
+    Returns:
+        list[Question]: List of questions.
+
+    """
+    questions = get_smrpg_questions()
+    if include_non_smrpg:
+        questions = questions + get_non_smrpg_questions()
+    return random.sample(questions, 40)

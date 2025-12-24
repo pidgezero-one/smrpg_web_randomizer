@@ -45,6 +45,7 @@ from ..types.prizelocation import (
     PacketLocationRow1,
     InvisibleFlagLocation,
     WorldAreaEnum,
+    KeyItemLocation,
 )
 from ..types.packet_type import PacketType
 from ..data.variables.room_names import *
@@ -482,9 +483,12 @@ class MushroomWayStarPiece(StarPieceLocation):
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_STAR_PIECE
     _world_area = WorldAreaEnum.MUSHROOM_WAY
+    _parent = MushrooomWayBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_mushroom_way_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_mushroom_way_boss(
+            world, inventory
+        )
 
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
@@ -843,9 +847,12 @@ class MushroomKingdomStarPiece(StarPieceLocation):
     _rooms = [R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM]
     _id = ShuffleLocationSelector.INVASION_STAR_PIECE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _parent = MushroomKingdomBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_mushroom_way_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_mushroom_way_boss(
+            world, inventory
+        )
 
     # Flag as checked: MUSHROOM_KINGDOM_LIBERATED
 
@@ -853,7 +860,7 @@ class MushroomKingdomStarPiece(StarPieceLocation):
 ########## mushroom kingdom: only available AFTER liberation
 
 
-class MushroomKingdomStoreExchangeLocation(NPCLocationRow2):
+class MushroomKingdomStoreExchangeLocation(NPCLocationRow2, KeyItemLocation):
     _originally_held = CricketPiePrize
     _rooms = [
         R483_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_TOP_FLOOR,
@@ -1019,14 +1026,17 @@ class BanditsWayStarPiece(StarPieceLocation):
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_PIECE
     _world_area = WorldAreaEnum.BANDITS_WAY
+    _parent = BanditsWayBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_bandits_way_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_bandits_way_boss(
+            world, inventory
+        )
 
     # Flag as checked: BANDITS_WAY_LIBERATED
 
 
-class BanditsWayBossFirstItemDropLocation(NPCLocationRow1):
+class BanditsWayBossFirstItemDropLocation(NPCLocationRow1, KeyItemLocation):
     _originally_held = RareFrogCoinPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.CROCO_1_REWARD
@@ -1038,7 +1048,7 @@ class BanditsWayBossFirstItemDropLocation(NPCLocationRow1):
     # Flag as checked: BANDITS_WAY_LIBERATED set
 
 
-class BanditsWayBossSecondItemDropLocation(NPCLocationRow2):
+class BanditsWayBossSecondItemDropLocation(NPCLocationRow2, KeyItemLocation):
     _originally_held = WalletPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.CROCO_1_REWARD_2
@@ -1121,9 +1131,12 @@ class Mimic1StarPiece(StarPieceLocation):
     _override_id = 512
     _id = ShuffleLocationSelector.PANDORITE_BOSS
     _world_area = WorldAreaEnum.KERO_SEWERS
+    _parent = Mimic1BossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_first_mimic(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_first_mimic(
+            world, inventory
+        )
 
     # Flag as checked: MIMIC_1_CLEARED
 
@@ -1183,7 +1196,9 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
     # flag as checked: SEWER_CHEST_FIRST_PRIZE_OBTAINED
 
 
-class KeroSewersBeforeBelomeUpperAfterFlipLocation(TreasureChestLocationRow3):
+class KeroSewersBeforeBelomeUpperAfterFlipLocation(
+    KeyItemLocation, TreasureChestLocationRow3
+):
     _originally_held = CricketJamPrize
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _npc_ids = [NPC_1]
@@ -1233,9 +1248,12 @@ class KeroSewersStarPiece(StarPieceLocation):
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _id = ShuffleLocationSelector.KERO_SEWERS_STAR_PIECE
     _world_area = WorldAreaEnum.KERO_SEWERS
+    _parent = KeroSewersBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_sewer_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_sewer_boss(
+            world, inventory
+        )
 
     # Flag as checked: SEWER_BOSS_DEFEATED
 
@@ -1298,7 +1316,7 @@ class TadpolePondCricketJamExchangeLocation(NPCLocationRow2):
     # Flag as checked: CRICKET_JAM_EXCHANGED
 
 
-class MelodyBayFirstRewardLocation(NPCLocationRow1):
+class MelodyBayFirstRewardLocation(NPCLocationRow1, KeyItemLocation):
     _originally_held = ProgressiveCardPrize
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_1
@@ -1306,7 +1324,7 @@ class MelodyBayFirstRewardLocation(NPCLocationRow1):
     # Flag as checked: MELODY_BAY_ITEM_1_GRANTED
 
 
-class MelodyBaySecondRewardLocation(NPCLocationRow2):
+class MelodyBaySecondRewardLocation(NPCLocationRow2, KeyItemLocation):
     _originally_held = ProgressiveCardPrize
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_2
@@ -1318,7 +1336,7 @@ class MelodyBaySecondRewardLocation(NPCLocationRow2):
     # Flag as checked: MELODY_BAY_ITEM_2_GRANTED
 
 
-class MelodyBayThirdRewardLocation(NPCLocationRow3):
+class MelodyBayThirdRewardLocation(NPCLocationRow3, KeyItemLocation):
     _originally_held = ProgressiveCardPrize
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_3
@@ -1784,9 +1802,12 @@ class ForestMazeStarPiece(StarPieceLocation):
     _rooms = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
     _id = ShuffleLocationSelector.FOREST_MAZE_STAR_PIECE
     _world_area = WorldAreaEnum.FOREST_MAZE
+    _parent = ForestMazeBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_forest_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_forest_boss(
+            world, inventory
+        )
 
     # Flag as checked: FOREST_LIBERATED
 
@@ -2189,11 +2210,16 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
     # Flag as checked: TREASURE_SHOP_ITEM_3_PURCHASED
 
 
-class FireworksShopItemLocation(NPCLocationRow1):
+class FireworksShopItemLocation(KeyItemLocation, NPCLocationRow1):
     _originally_held = RegularFireworksPrize
     _rooms = [R339_MOLEVILLE_FIREWORKS_SHOP]
     _id = ShuffleLocationSelector.FIREWORKS_SHOP
     _world_area = WorldAreaEnum.MOLEVILLE
+
+    def key(self, world: GameWorld) -> bool:
+        return not world.settings.is_flag_value(
+            FireworksSetting, FireworksOptions.VANILLA
+        )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return world.settings.is_flag_value(
@@ -2204,7 +2230,7 @@ class FireworksShopItemLocation(NPCLocationRow1):
     # not a check if progressive fireworks is turned off
 
 
-class PurtendStoreLocation(NPCLocationRow2):
+class PurtendStoreLocation(KeyItemLocation, NPCLocationRow2):
     _originally_held = ProgressiveFireworksPrize
     _rooms = [R108_MOLEVILLE_OUTSIDE]
     _id = ShuffleLocationSelector.PURTEND_STORE
@@ -2221,7 +2247,7 @@ class PurtendStoreLocation(NPCLocationRow2):
     # not a check if progressive fireworks turned off
 
 
-class CookieTraderLocation(NPCLocationRow4):
+class CookieTraderLocation(KeyItemLocation, NPCLocationRow4):
     _originally_held = ProgressiveFireworksPrize
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.COOKIE_TRADER
@@ -2330,14 +2356,17 @@ class OuterMinesStarPiece(StarPieceLocation):
     _override_id = 518
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_1
     _world_area = WorldAreaEnum.MOLEVILLE
+    _parent = OuterMinesBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_first_moleville_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_first_moleville_boss(
+            world, inventory
+        )
 
     # Flag as checked: MINES_BOSS_1_DEFEATED
 
 
-class OuterMinesBossPrizeLocation(NPCLocationRow1):
+class OuterMinesBossPrizeLocation(KeyItemLocation, NPCLocationRow1):
     _originally_held = BambinoBombPrize
     _id = ShuffleLocationSelector.CROCO_2_ITEM
     _world_area = WorldAreaEnum.MOLEVILLE
@@ -2469,10 +2498,13 @@ class InnerMinesStarPiece(StarPieceLocation):
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_2
     _world_area = WorldAreaEnum.MOLEVILLE
+    _parent = InnerMinesBossFight
     # Flag as checked: MINES_BOSS_2_DEFEATED
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_second_moleville_boss(world, inventory)
+        return super().can_access(
+            inventory, world
+        ) and can_defeat_second_moleville_boss(world, inventory)
 
 
 class InnerMinesCharacter(CharacterRecruitmentLocation):
@@ -2629,9 +2661,12 @@ class InnerMinesPostgameStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_3
     _world_area = WorldAreaEnum.MOLEVILLE
     _remake_only = True
+    _parent = InnerMinesPostgameBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_postgame_moleville_boss(world, inventory)
+        return super().can_access(
+            inventory, world
+        ) and can_defeat_postgame_moleville_boss(world, inventory)
 
     # Flag as checked: MINES_POSTGAME_COMPLETED
 
@@ -2788,7 +2823,7 @@ class BoosterTowerFallingChestLocation(
     # flag as checked: TOWER_SEESAW_CHEST_OPENED
 
 
-class BoosterTowerKnifeGuyPrizeLocation(NPCLocationRow1):
+class BoosterTowerKnifeGuyPrizeLocation(KeyItemLocation, NPCLocationRow1):
     _originally_held = BrightCardPrize
     _rooms = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
@@ -2815,7 +2850,7 @@ class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
     # flag as checked: KNIFE_GUY_SECOND_PRIZE_AWARDED
 
 
-class BoosterTowerPortraitPrizeLocation(StandingLocationRow1):
+class BoosterTowerPortraitPrizeLocation(KeyItemLocation, StandingLocationRow1):
     _originally_held = ElderKeyPrize
     _rooms = [R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM]
     _npc_ids = [NPC_7]
@@ -2868,7 +2903,9 @@ class BoosterTowerParachuteRoomCreviceLocation(NPCLocationRow1):
     # flag as checked: NPC 8 removed from room 35
 
 
-class BoosterTowerCheckerboardRightmostItemLocation(StandingLocationRow14):
+class BoosterTowerCheckerboardRightmostItemLocation(
+    KeyItemLocation, StandingLocationRow14
+):
     _originally_held = RoomKeyPrize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -3172,9 +3209,12 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _parent = BoosterTowerIndoorBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_curtain_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_curtain_boss(
+            world, inventory
+        )
 
     # Flag as checked: TOWER_BOSS_1_STAR_PIECE
 
@@ -3208,9 +3248,12 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _remake_only = True
+    _parent = BoosterTowerIndoorBossFightRemake
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_postgame_tower_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_postgame_tower_boss(
+            world, inventory
+        )
 
     # Flag as checked: POSTGAME_TOWER_COMPLETED
 
@@ -3262,9 +3305,12 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
     _rooms = [R202_BOOSTER_TOWER_ENTRANCE]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _parent = BoosterTowerBalconyBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_balcony_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_balcony_boss(
+            world, inventory
+        )
 
     # Flag as checked: TOWER_BOSS_2_DEFEATED
 
@@ -3568,7 +3614,7 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
 
 # These are really NPC grants but they need sprite replacements.
 # Override container event
-class MarrymoreSnifit1Location(StandingLocationRow1):
+class MarrymoreSnifit1Location(KeyItemLocation, StandingLocationRow1):
     _originally_held = BroochPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
@@ -3582,7 +3628,7 @@ class MarrymoreSnifit1Location(StandingLocationRow1):
     # flag as checked: CHAPEL_ITEM_1_RETRIEVED
 
 
-class MarrymoreSnifit2Location(StandingLocationRow2):
+class MarrymoreSnifit2Location(KeyItemLocation, StandingLocationRow2):
     _originally_held = RingPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
@@ -3596,7 +3642,7 @@ class MarrymoreSnifit2Location(StandingLocationRow2):
     # flag as checked: CHAPEL_ITEM_2_RETRIEVED
 
 
-class MarrymoreSnifit3Location(StandingLocationRow3):
+class MarrymoreSnifit3Location(KeyItemLocation, StandingLocationRow3):
     _originally_held = ShoesPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
@@ -3610,7 +3656,7 @@ class MarrymoreSnifit3Location(StandingLocationRow3):
     # flag as checked: CHAPEL_ITEM_3_RETRIEVED
 
 
-class MarrymoreAltarHeadLocation(StandingLocationRow1):
+class MarrymoreAltarHeadLocation(KeyItemLocation, StandingLocationRow1):
     _originally_held = CrownPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _npc_ids = [NPC_5]
@@ -3660,9 +3706,12 @@ class MarrymoreBossFightStarPiece(StarPieceLocation):
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_STAR_PIECE
     _world_area = WorldAreaEnum.MARRYMORE
+    _parent = MarrymoreBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_chapel_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_chapel_boss(
+            world, inventory
+        )
 
     # Flag as checked: MARRYMORE_LIBERATED
 
@@ -3825,9 +3874,12 @@ class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _override_id = 529
     _remake_only = True
+    _parent = MarrymoreBossFightRemake
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_postgame_chapel_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_postgame_chapel_boss(
+            world, inventory
+        )
 
     # Flag as checked: POSTGAME_CHAPEL_COMPLETE
 
@@ -3931,14 +3983,17 @@ class SeasideBeachStarPiece(StarPieceLocation):
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS
     _world_area = WorldAreaEnum.SEASIDE_TOWN
+    _parent = SeasideBeachBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_seaside_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_seaside_boss(
+            world, inventory
+        )
 
     # Flag as checked: SEASIDE_LIBERATED
 
 
-class SeasideTownBossPrizeLocation(StandingLocationRow1):
+class SeasideTownBossPrizeLocation(KeyItemLocation, StandingLocationRow1):
     _originally_held = ShedKeyPrize
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _npc_ids = [NPC_0]
@@ -4223,9 +4278,12 @@ class ShipPasswordStarPiece(StarPieceLocation):
     _rooms = [R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
+    _parent = ShipPasswordBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_ship_midboss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_ship_midboss(
+            world, inventory
+        )
 
     # Flag as checked: SHIP_MIDBOSS_COMPLETED
 
@@ -4352,9 +4410,12 @@ class Mimic2StarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _rooms = [513]
     _override_id = 513
+    _parent = Mimic2BossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_second_mimic(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_second_mimic(
+            world, inventory
+        )
 
     # Flag as checked: MIMIC_2_CLEARED
 
@@ -4498,9 +4559,12 @@ class ShipFinalStarPiece(StarPieceLocation):
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BOSS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
+    _parent = ShipFinalBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_ship_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_ship_boss(
+            world, inventory
+        )
 
     # Flag as checked: SHIP_LIBERATED
 
@@ -4527,7 +4591,7 @@ class ShipPostgameBossFight(BossFightLocation):
     # Flag as checked: POSTGAME_SHIP_COMPLETED
 
 
-class ShipPostgameFightItemDrop(NPCLocationRow1):
+class ShipPostgameFightItemDrop(KeyItemLocation, NPCLocationRow1):
     _originally_held = ExtraShinyStonePrize
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_DROP
@@ -4547,9 +4611,12 @@ class ShipPostgameStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 526
     _remake_only = True
+    _parent = ShipPostgameBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_postgame_ship_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_postgame_ship_boss(
+            world, inventory
+        )
 
     # Flag as checked: POSTGAME_SHIP_COMPLETED
 
@@ -4760,9 +4827,12 @@ class LandsEndCloudStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.LANDS_END
     _rooms = [519]
     _override_id = 519
+    _parent = LandsEndCloudBoss
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_lands_end_cloud_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_lands_end_cloud_boss(
+            world, inventory
+        )
 
     # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
 
@@ -5143,9 +5213,12 @@ class TempleBossFightStarPiece(StarPieceLocation):
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS
     _world_area = WorldAreaEnum.TEMPLE
+    _parent = TempleBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_temple_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_temple_boss(
+            world, inventory
+        )
 
     # Flag as checked: TEMPLE_BOSS_DEFEATED
 
@@ -5179,9 +5252,12 @@ class TempleBossFightStarPiecePostgame(StarPieceLocation):
     _world_area = WorldAreaEnum.TEMPLE
     _override_id = 523
     _remake_only = True
+    _parent = TempleBossFightPostgame
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_postgame_temple_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_postgame_temple_boss(
+            world, inventory
+        )
 
     # Flag as checked: TEMPLE_POSTGAME_BOSS_DEFEATED
 
@@ -5216,7 +5292,7 @@ class MonstroEntranceLocation(TreasureChestLocationRow1):
     # flag as checked: npc 1 in room 267 has its object trigger disabled.
 
 
-class MonstroThwompItemLocation(StandingLocationRow1):
+class MonstroThwompItemLocation(KeyItemLocation, StandingLocationRow1):
     _originally_held = TempleKeyPrize
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _npc_ids = [NPC_0]
@@ -5254,10 +5330,13 @@ class DojoFirstFightStarPiece(StarPieceLocation):
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_1
     _world_area = WorldAreaEnum.MONSTRO_TOWN
+    _parent = DojoFirstFight
     # Flag as checked: DOJO_BOSS_1_DEFEATED
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_first_dojo_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_first_dojo_boss(
+            world, inventory
+        )
 
 
 class DojoSecondFight(BossFightLocation):
@@ -5287,9 +5366,12 @@ class DojoSecondFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_2
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 515
+    _parent = DojoSecondFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_second_dojo_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_second_dojo_boss(
+            world, inventory
+        )
 
     # Flag as checked: DOJO_BOSS_2_DEFEATED
 
@@ -5321,9 +5403,12 @@ class DojoThirdFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_3
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 516
+    _parent = DojoThirdFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_third_dojo_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_third_dojo_boss(
+            world, inventory
+        )
 
     # Flag as checked: DOJO_BOSS_3_DEFEATED
 
@@ -5355,9 +5440,12 @@ class DojoFourthFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_4
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 517
+    _parent = DojoFourthFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_fourth_dojo_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_fourth_dojo_boss(
+            world, inventory
+        )
 
     # Flag as checked: DOJO_BOSS_4_DEFEATED
 
@@ -5403,9 +5491,12 @@ class DojoFifthFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 525
     _remake_only = True
+    _parent = DojoFifthFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_fifth_dojo_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_fifth_dojo_boss(
+            world, inventory
+        )
 
     # Flag as checked: DOJO_POSTGAME_COMPLETED
 
@@ -5448,9 +5539,12 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _id = ShuffleLocationSelector.CULEX_BOSS
     _world_area = WorldAreaEnum.MONSTRO_TOWN
+    _parent = MonstroSealedDoorBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_sealed_door_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_sealed_door_boss(
+            world, inventory
+        )
 
     # Flag as checked: MONSTRO_MIDDLE_DOOR_COMPLETED
 
@@ -5496,14 +5590,17 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
     _id = ShuffleLocationSelector.CULEX_POSTGAME_BOSS
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _remake_only = True
+    _parent = MonstroSealedDoorBossFightPostgame
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_sealed_postgame_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_sealed_postgame_boss(
+            world, inventory
+        )
 
     # Flag as checked: CULEX_POSTGAME_COMPLETED
 
 
-class MonstroSealedDoorClearRewardLocationPostgame(NPCLocationRow2):
+class MonstroSealedDoorClearRewardLocationPostgame(KeyItemLocation, NPCLocationRow2):
     _originally_held = CrystalShardPrize
     _rooms = [R351_CULEXS_ROOM]
     _id = ShuffleLocationSelector.CULEX_POSTGAME_REWARD
@@ -5657,9 +5754,12 @@ class Mimic3StarPiece(StarPieceLocation):
     _rooms = [514]
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _override_id = 514
+    _parent = Mimic3BossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_third_mimic(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_third_mimic(
+            world, inventory
+        )
 
     # Flag as checked: MIMIC_3_CLEARED
 
@@ -5729,14 +5829,17 @@ class BeanValleyPlanterStarPiece(StarPieceLocation):
     _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOSS
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _parent = BeanValleyPlanterBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_valley_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_valley_boss(
+            world, inventory
+        )
 
     # Flag as checked: BEAN_VALLEY_BOSS_DEFEATED
 
 
-class BeanValleyBossNoteLocation(NPCLocationRow1):
+class BeanValleyBossNoteLocation(KeyItemLocation, NPCLocationRow1):
     _originally_held = SeedPrize
     _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
     _id = ShuffleLocationSelector.BEAN_VALLEY_MEGASMILAX_ROOM
@@ -6003,7 +6106,7 @@ class NimbusInnDreamPrize2Location(NPCLocationRow2):
 
 
 # Only enabled with one specific setting
-class GarroFreeItem(NPCLocationRow1):
+class GarroFreeItem(KeyItemLocation, NPCLocationRow1):
     _originally_held = GoldPaintPrize
     _rooms = [R341_NIMBUS_LAND_GARROS_HOUSE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_GARRO
@@ -6053,9 +6156,12 @@ class StatueRoomStarPiece(StarPieceLocation):
     _override_id = 520
     _id = ShuffleLocationSelector.NIMBUS_LAND_STAR_PIECE_1
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _parent = StatueRoomBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_statue_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_statue_boss(
+            world, inventory
+        )
 
     # Flag as checked: STATUE_KEEPER_STAR_PIECE
 
@@ -6072,7 +6178,7 @@ class NimbusCastleOuterPrisonCellarRightNPCLocation(NPCLocationRow1):
     # flag as checked: BLUE_CELLAR_GUARD_ITEM_GRANTED
 
 
-class NimbusCastleOuterPrisonCellarLeftNPCLocation(NPCLocationRow2):
+class NimbusCastleOuterPrisonCellarLeftNPCLocation(KeyItemLocation, NPCLocationRow2):
     _originally_held = CastleKey1Prize
     _rooms = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS_2
@@ -6207,14 +6313,17 @@ class GiantEggStarPiece(StarPieceLocation):
     _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _parent = GiantEggBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_egg_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_egg_boss(
+            world, inventory
+        )
 
     # Flag as checked: NIMBUS_MID_BOSS_COMPLETED
 
 
-class NimbusCastleGiantEggRewardLocation(NPCLocationRow1):
+class NimbusCastleGiantEggRewardLocation(KeyItemLocation, NPCLocationRow1):
     _originally_held = CastleKey2Prize
     _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_BIRDETTA
@@ -6295,9 +6404,12 @@ class NimbusFinalStarPiece(StarPieceLocation):
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_3
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _parent = NimbusFinalBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_nimbus_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_nimbus_boss(
+            world, inventory
+        )
 
     # Flag as checked: NIMBUS_LAND_LIBERATED
 
@@ -6332,7 +6444,7 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
     # flag as checked: NIMBUS_MISSABLE_CHECK_CLEARED
 
 
-class NimbusLandRightSideLocation(NPCLocationRow1):
+class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
     _originally_held = FertilizerPrize
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _id = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE
@@ -6556,9 +6668,12 @@ class VolcanoBridgeStarPiece(StarPieceLocation):
     _rooms = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _parent = VolcanoBridgeBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_volcano_midboss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_volcano_midboss(
+            world, inventory
+        )
 
     # Flag as checked: VOLCANO_MIDBOSS_DEFEATED
 
@@ -6607,9 +6722,12 @@ class VolcanoExitStarPiece(StarPieceLocation):
     _rooms = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _parent = VolcanoExitBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_volcano_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_volcano_boss(
+            world, inventory
+        )
 
     # Flag as checked: VOLCANO_LIBERATED
 
@@ -7132,9 +7250,12 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
     _rooms = [R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_CHESTER
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _parent = ObstacleCourseFinalFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_battle_door_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_battle_door_boss(
+            world, inventory
+        )
 
     # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
@@ -7266,9 +7387,12 @@ class KeepAfterObstaclesStarPiece(StarPieceLocation):
     _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _parent = KeepAfterObstaclesBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_post_obstacle_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_post_obstacle_boss(
+            world, inventory
+        )
 
     # Flag as checked: KEEP_BOSS_1_DEFEATED
 
@@ -7314,9 +7438,12 @@ class KeepChandelierStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 521
+    _parent = KeepChandelierBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_keep_chandelier_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_keep_chandelier_boss(
+            world, inventory
+        )
 
     # Flag as checked: KEEP_BOSS_2_DEFEATED
 
@@ -7360,9 +7487,12 @@ class KeepFinalStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 522
+    _parent = KeepFinalBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_keep_exit_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_keep_exit_boss(
+            world, inventory
+        )
 
     # Flag as checked: KEEP_BOSS_3_DEFEATED
 
@@ -7423,9 +7553,12 @@ class FactoryEntranceStarPiece(StarPieceLocation):
     _rooms = [R433_SMITHY_FACTORY_AREA_01_DUMMY]
     _id = ShuffleLocationSelector.FACTORY_BOSS_1
     _world_area = WorldAreaEnum.FACTORY
+    _parent = FactoryEntranceBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_first_factory_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_first_factory_boss(
+            world, inventory
+        )
 
     # Flag as checked: ABYSS_BOSS_1_DEFEATED
 
@@ -7565,9 +7698,12 @@ class FactoryTransitionStarPiece(StarPieceLocation):
     _rooms = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
     _id = ShuffleLocationSelector.FACTORY_BOSS_2
     _world_area = WorldAreaEnum.FACTORY
+    _parent = FactoryTransitionBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_second_factory_boss(world, inventory)
+        return super().can_access(inventory, world) and can_defeat_second_factory_boss(
+            world, inventory
+        )
 
     # Flag as checked: ABYSS_BOSS_2_DEFEATED
 
@@ -7600,9 +7736,12 @@ class InnerFactoryFirstFightStarPiece(StarPieceLocation):
     _rooms = [R469_FACTORY_GROUNDS_AREA_01]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_1
     _world_area = WorldAreaEnum.INNER_FACTORY
+    _parent = InnerFactoryFirstFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_inner_factory_first_boss(world, inventory)
+        return super().can_access(
+            inventory, world
+        ) and can_defeat_inner_factory_first_boss(world, inventory)
 
     # Flag as checked: INNER_FACTORY_ROOM_1_COMPLETED
 
@@ -7644,9 +7783,12 @@ class InnerFactorySecondFightStarPiece(StarPieceLocation):
     _rooms = [R471_FACTORY_GROUNDS_AREA_02]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_2
     _world_area = WorldAreaEnum.INNER_FACTORY
+    _parent = InnerFactorySecondFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_inner_factory_second_boss(world, inventory)
+        return super().can_access(
+            inventory, world
+        ) and can_defeat_inner_factory_second_boss(world, inventory)
 
     # Flag as checked: INNER_FACTORY_ROOM_2_COMPLETED
 
@@ -7676,9 +7818,12 @@ class InnerFactoryThirdFightStarPiece(StarPieceLocation):
     _rooms = [R472_FACTORY_GROUNDS_AREA_03]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_3
     _world_area = WorldAreaEnum.INNER_FACTORY
+    _parent = InnerFactoryThirdFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_inner_factory_third_boss(world, inventory)
+        return super().can_access(
+            inventory, world
+        ) and can_defeat_inner_factory_third_boss(world, inventory)
 
     # Flag as checked: npc 10 in room 472 removed
 
@@ -7708,9 +7853,12 @@ class InnerFactoryFourthFightStarPiece(StarPieceLocation):
     _rooms = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_4
     _world_area = WorldAreaEnum.INNER_FACTORY
+    _parent = InnerFactoryFourthFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_inner_factory_fourth_boss(world, inventory)
+        return super().can_access(
+            inventory, world
+        ) and can_defeat_inner_factory_fourth_boss(world, inventory)
 
     # Flag as checked: INNER_FACTORY_ROOM_4_COMPLETED
 
@@ -7738,9 +7886,12 @@ class FinalBossFightStarPiece(StarPieceLocation):
     _originally_held = StarPiece7
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FINAL
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _parent = FinalBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_inner_factory_final_boss(world, inventory)
+        return super().can_access(
+            inventory, world
+        ) and can_defeat_inner_factory_final_boss(world, inventory)
 
     # Flag as checked: FACTORY_BOSS_DEFEATED
 

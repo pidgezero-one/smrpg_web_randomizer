@@ -50,6 +50,7 @@ WISH_POOL = wish_strings = [
     "\n\n    I wish Mario would stop\n    dropping me down pits.",
     "\n\n         I wish Link would find\n             my Varia Suit.",
     "\n\n       I wish Samus would find\n          my Cane of Somaria.",
+    "\n\nI wish you wouldn't read my mind..."
 ]
 WISH_DIALOG_IDS = [
     DI3111_WISH_7,
