@@ -21,9 +21,10 @@ body:
         * Big Bang and Fire Bomb
         * Ice Bomb and Solidify
         * Smithy 2 beginning animation
+        
         You can use this form to suggest additional animations for this flag to remove.
 
-        Disclaimer: While this feature is intended to promote accessibility, SMRPG Randomizer's developers are not accessibility experts and we may have missed some things. Players and viewers with photosensitivity should continue to engage with this randomizer at their own risk.
+        Disclaimer: While this feature is intended to promote accessibility, SMRPG Randomizer's developers are not accessibility experts and we may miss things. Players and viewers who experience photosensitivity should continue to engage with this randomizer at their own risk.
 
   - type: textarea
     id: idea

@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Compose your song [here](https://pidgezero.one/tadpole-pond-composer/index.html) before filling out any fields below.
+        ## Compose your song [here](https://pidgezero.one/tadpole-pond-composer/index.html) before filling out any fields below.
 
   - type: textarea
     id: submission
