@@ -1,6 +1,6 @@
 # pylint: disable=C0301
 
-"""E1972_CLONE_RESERVED"""
+"""E1972_MUSHROOM_BOY_ODDS"""
 
 from randomizer.scripts.event.script_imports import *
 

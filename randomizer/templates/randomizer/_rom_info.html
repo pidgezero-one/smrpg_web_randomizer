@@ -10,14 +10,14 @@
     {% if show_permalink %}
         <div class="text-info">Permalink: <a id="info-permalink" href="" target="_blank">Link</a></div>
     {% endif %}
-    <div id="spoiler-container">Spoiler:
-        <button class="btn btn-link p-0" type="button" data-toggle="collapse" data-target="#spoiler-collapse"
-                aria-expanded="false" aria-controls="spoiler-collapse">
-            Show/Hide Spoiler
+    <div id="spoiler-container">
+        <button class="btn btn-link p-0" type="button" id="btn-download-spoiler">
+            Download Spoiler Log
         </button>
-        <div class="collapse" id="spoiler-collapse">
-            <div class="card card-body" id="info-spoiler"></div>
-        </div>
+        <span id="spoiler-race-warning" class="text-muted ml-2" style="display:none;"
+              title="Spoiler logs are not available in Race mode">
+            (Disabled in Race mode)
+        </span>
     </div>
 
 </div>
@@ -31,7 +31,19 @@
 </div>
 
 <script>
+    // Store spoiler data for download
+    let currentSpoilerData = null;
+    let currentSeedInfo = null;
+
     function updateSeedDetailsFromPatch(patch) {
+        // Store spoiler and seed info for download
+        currentSpoilerData = patch.spoiler;
+        currentSeedInfo = {
+            seed: patch.seed || patch.hash,
+            version: patch.logic,
+            flags: patch.flag_string
+        };
+
         let seed = $('#info-seed');
         seed.text(patch.seed);
 
@@ -49,14 +61,15 @@
         $('#file-select-character').html(patch.file_select_character);
         $('#file-select-hash').html(patch.file_select_hash);
 
-        // Put spoiler info in JSON viewer.
-        // FIXME: Debug only for now...
-        {% if debug_enabled %}
-            $('#spoiler-collapse').collapse('hide');
-            $('#info-spoiler').jsonViewer(patch.spoiler);
-        {% else %}
-            $('#spoiler-container').hide();
-        {% endif %}
+        // Disable spoiler download in race mode
+        if (patch.mode === 'race') {
+            $('#btn-download-spoiler').prop('disabled', true).addClass('text-muted');
+            $('#spoiler-race-warning').show();
+            currentSpoilerData = null;
+        } else {
+            $('#btn-download-spoiler').prop('disabled', false).removeClass('text-muted');
+            $('#spoiler-race-warning').hide();
+        }
 
         // Debug mode seed?
         if (patch.debug_mode) {
@@ -103,5 +116,24 @@
         }
     }
 
+    // Download spoiler button handler
+    $(function() {
+        $('#btn-download-spoiler').click(function() {
+            if (!currentSpoilerData) {
+                alert('No spoiler data available yet.');
+                return;
+            }
+            const dataToDownload = {
+                seed: currentSeedInfo.seed,
+                version: currentSeedInfo.version,
+                flags: currentSeedInfo.flags,
+                ...currentSpoilerData
+            };
+            const jsonStr = JSON.stringify(dataToDownload, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const filename = 'spoiler_' + (currentSeedInfo.seed || 'unknown') + '.json';
+            saveAs(blob, filename);
+        });
+    });
 
 </script>

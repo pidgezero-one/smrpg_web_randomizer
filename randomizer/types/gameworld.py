@@ -69,6 +69,13 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     JmpIfBitClear,
     JmpIfVarEqualsConst,
     SetVarToConst,
+    ActionQueueAsync,
+    RunDialog,
+    JmpIfVarNotEqualsConst,
+    Inc,
+    SetVarToRandom,
+    JmpIfComparisonResultIsLesser,
+    JmpToEvent
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
@@ -94,6 +101,7 @@ from ..data.minigames.quiz_questions import (
     option_2_correct,
     option_3_correct,
 )
+from ..data.minigames.bowser_doors import randomize_bowser_doors
 from .item import Item
 from .patch import Patch
 from .attack import EnemyAttack
@@ -223,6 +231,11 @@ from .flags import (
     QuizShuffle,
     BallSolitaireShuffle,
     MagicButtonShuffle,
+    ShuffleHillFlowers,
+    RandomTadpolePondSong,
+    BetterTips,
+    RandomSunkenShipPassword,
+    BowserDoorShuffle,
 )
 from .prizelocation import SIGNAL_RING_EVENT_DICT, PrizeLocation
 from ..progression.prizelocations import *
@@ -232,6 +245,15 @@ from ..data.variables.battle_effect_names import *
 from ..data.variables.shop_names import *
 from ..data.variables.sprite_names import *
 from ..data.spells.spells import *
+from ..data.minigames.melody_bay import all_songs
+from ..data.minigames.ship_password import (
+    pool as password_pool,
+    suggest_letter_bank,
+    box_dialog_ids,
+    recitation_ids,
+    hint_authors,
+)
+from ..data.credits.credits import update_credits
 
 from ..data.allies.palettes.types import (
     MarioPalette,
@@ -310,6 +332,12 @@ class GameWorld:
     toadstool_palette: ToadstoolPalette
     main_character: Ally = MARIO_Ally
     world_map_locations: WorldMapLocationCollection
+    password: str = "pearls"
+    song_1: str = "So La Mi Re Do Re Do Re"
+    song_2: str = "Mi Do So Do Re La Ti Do"
+    song_3: str = "La Ti Do Re So Do Re Mi"
+    password_author: str = "ANONYMOUS"
+    song_authors: list[str] = ["ANONYMOUS"]
 
     locations: dict[type[PrizeLocation], PrizeLocation]
 
@@ -487,6 +515,8 @@ class GameWorld:
         return {
             "settings": self._get_settings_json(),
             "locations": self._get_locations_json(),
+            "password": self.password,
+            "songs": [self.song_1, self.song_2, self.song_3],
         }
 
     def _get_settings_json(self) -> dict[str, Any]:
@@ -795,22 +825,6 @@ class GameWorld:
             BoosterTowerIndoorStarPiece: BoosterTowerIndoorStarPiece(),
             BoosterTowerBalconyBossFight: BoosterTowerBalconyBossFight(),
             BoosterTowerBalconyStarPiece: BoosterTowerBalconyStarPiece(),
-            BoosterHillGuaranteedItem1: BoosterHillGuaranteedItem1(),
-            BoosterHillGuaranteedItem2: BoosterHillGuaranteedItem2(),
-            BoosterHillGuaranteedItem3: BoosterHillGuaranteedItem3(),
-            BoosterHillGuaranteedItem4: BoosterHillGuaranteedItem4(),
-            BoosterHillGuaranteedItem5: BoosterHillGuaranteedItem5(),
-            BoosterHillGuaranteedItem6: BoosterHillGuaranteedItem6(),
-            BoosterHillGuaranteedItem7: BoosterHillGuaranteedItem7(),
-            BoosterHillGuaranteedItem8: BoosterHillGuaranteedItem8(),
-            BoosterHillGuaranteedItem9: BoosterHillGuaranteedItem9(),
-            BoosterHillGuaranteedItem10: BoosterHillGuaranteedItem10(),
-            BoosterHillGuaranteedItem11: BoosterHillGuaranteedItem11(),
-            BoosterHillGuaranteedItem12: BoosterHillGuaranteedItem12(),
-            BoosterHillGuaranteedItem13: BoosterHillGuaranteedItem13(),
-            BoosterHillGuaranteedItem14: BoosterHillGuaranteedItem14(),
-            BoosterHillGuaranteedItem15: BoosterHillGuaranteedItem15(),
-            BoosterHillGuaranteedItem16: BoosterHillGuaranteedItem16(),
             MarrymoreFirstSuitePrizeLocation: MarrymoreFirstSuitePrizeLocation(),
             MarrymoreSecondSuitePrizeLocation: MarrymoreSecondSuitePrizeLocation(),
             MarrymoreThirdSuitePrizeLocation: MarrymoreThirdSuitePrizeLocation(),
@@ -1133,9 +1147,36 @@ class GameWorld:
                 PurtendStoreLocation: PurtendStoreLocation(),
                 CookieTraderLocation: CookieTraderLocation(),
             }
+            self.get_item(FireworksItem).set_price(0)
+            self.get_item(ShinyStoneItem).set_price(0)
+            self.get_item(CarboCookieItem).set_price(0)
         if self.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
             fwshop = FireworksShopItemLocation()
             self.locations = {**self.locations, FireworksShopItemLocation: fwshop}
+            self.get_item(FireworksItem).set_price(0)
+            self.get_item(ShinyStoneItem).set_price(0)
+            self.get_item(CarboCookieItem).set_price(0)
+
+        if self.settings.isflag_enabled(ShuffleHillFlowers):
+            self.locations = {
+                **self.locations,
+                BoosterHillGuaranteedItem1: BoosterHillGuaranteedItem1(),
+                BoosterHillGuaranteedItem2: BoosterHillGuaranteedItem2(),
+                BoosterHillGuaranteedItem3: BoosterHillGuaranteedItem3(),
+                BoosterHillGuaranteedItem4: BoosterHillGuaranteedItem4(),
+                BoosterHillGuaranteedItem5: BoosterHillGuaranteedItem5(),
+                BoosterHillGuaranteedItem6: BoosterHillGuaranteedItem6(),
+                BoosterHillGuaranteedItem7: BoosterHillGuaranteedItem7(),
+                BoosterHillGuaranteedItem8: BoosterHillGuaranteedItem8(),
+                BoosterHillGuaranteedItem9: BoosterHillGuaranteedItem9(),
+                BoosterHillGuaranteedItem10: BoosterHillGuaranteedItem10(),
+                BoosterHillGuaranteedItem11: BoosterHillGuaranteedItem11(),
+                BoosterHillGuaranteedItem12: BoosterHillGuaranteedItem12(),
+                BoosterHillGuaranteedItem13: BoosterHillGuaranteedItem13(),
+                BoosterHillGuaranteedItem14: BoosterHillGuaranteedItem14(),
+                BoosterHillGuaranteedItem15: BoosterHillGuaranteedItem15(),
+                BoosterHillGuaranteedItem16: BoosterHillGuaranteedItem16(),
+            }
 
         strchars = self.settings.get_flag(StartingCharacters)
         startmax = len(strchars.enabled)
@@ -1642,19 +1683,20 @@ class GameWorld:
 
         if self.settings.isflag_enabled(PoisonMushroom):
             self.items.get_by_type(MushroomItem2).set_status_immunities(
-                random.sample(
-                    [
-                        Status.MUTE,
-                        Status.SLEEP,
-                        Status.POISON,
-                        Status.FEAR,
-                        Status.BERSERK,
-                        Status.MUSHROOM,
-                        Status.SCARECROW,
-                        Status.INVINCIBLE,
-                    ],
-                    1,
-                )
+                [
+                    random.choice(
+                        [
+                            Status.MUTE,
+                            Status.SLEEP,
+                            Status.POISON,
+                            Status.FEAR,
+                            Status.BERSERK,
+                            Status.MUSHROOM,
+                            Status.SCARECROW,
+                            Status.INVINCIBLE,
+                        ]
+                    )
+                ]
             )
         if self.settings.isflag_enabled(UncapSuperJumps):
             self.battle_animations[0x35].delete_command_by_name("super_jump_cap_1")
@@ -2152,12 +2194,65 @@ class GameWorld:
                 ),
             ).set_value_and_address(value=magic_buttons.get_puzzle_value())
 
-        # TODO tadpole pond
-        # TODO ship password
-        # TODO bowser door shuffle
-        # TODO Skip minecart
-        # TODO better tips (hotel, mushroom boy, KGGG, forest shrooms)
+        if not self.settings.isflag_enabled(SkipMinecart):
+            self.event_scripts.delete_command_by_identifier(
+                "skip_moleville_minecart_sequence"
+            )
+
+        if self.settings.isflag_enabled(RandomTadpolePondSong):
+            self._randomize_tadpole_pond()
+
+        if self.settings.isflag_enabled(RandomSunkenShipPassword):
+            self._randomize_password()
+
+        if self.settings.isflag_enabled(BowserDoorShuffle):
+            randomize_bowser_doors(self)
+
+        if self.settings.isflag_enabled(BetterTips):
+            cast(
+                SetVarToRandom,
+                self.event_scripts.get_script_by_id(
+                    E1972_MUSHROOM_BOY_ODDS
+                ).get_command_by_name("mushroom_boy_odds"),
+            ).set_value(5000)
+            self.event_scripts.get_script_by_id(
+                E0021_FOREST_MAZE_MUSHROOM_GRANT
+            ).set_contents(
+                [
+                    JmpToEvent(E0023_MUSHROOM_SELECTION)
+                ]
+            )
+            self.event_scripts.get_script_by_id(
+                E0622_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_1
+            ).set_contents(
+                [
+                    JmpToEvent(E0022_BETTER_TIP_GRANTER)
+                ]
+            )
+            self.event_scripts.get_script_by_id(
+                E2649_CASINO_GRATE_GUY_RANDOM_PRIZE_GRANTER
+            ).set_contents(
+                [
+                    JmpToEvent(E0022_BETTER_TIP_GRANTER)
+                ]
+            )
+            self.event_scripts.get_script_by_id(
+                E2670_TOWER_KNIFE_GUY_CONSOLATION_PRIZE
+            ).set_contents(
+                [
+                    JmpToEvent(E0022_BETTER_TIP_GRANTER)
+                ]
+            )
+
         # TODO differentiate bosses. not a cosmetic, reveals info
+        # Need to find unused palettes for remake bosses
+        # move chocoalte cake to postgame bundt
+        # blue shirt booster (not purple-y)
+        # blue hat punchinello (not purple-y)
+        # invert johnny blue and red
+        # make culex purple lighter
+        # blue hair jinx
+        # silver belome
 
         self._rebuild_hash()
 
@@ -3804,6 +3899,305 @@ class GameWorld:
             if item and item.price > 0:
                 item.set_price(max(1, item.price // 5))
 
+    def _randomize_tadpole_pond(self) -> None:
+        selection = random.sample(all_songs, 3)
+        self.event_scripts.get_script_by_id(E1082_MELODY_BAY_SONG_1_INPUT).set_contents(
+            selection[0].generate_input_script(0)
+        )
+        self.event_scripts.get_script_by_id(
+            E1079_MELODY_BAY_SONG_1_VALIDATOR
+        ).set_contents(selection[0].generate_playback_script(0))
+        self.overworld_dialogs.replace_dialog(
+            DI2718_SONG_1_SCROLL_HINT, selection[0].scroll_text
+        )
+        self.overworld_dialogs.replace_dialog(
+            DI2664_TADPOLE_SONG_1_HINT, selection[0].apprentice_hint_1
+        )
+
+        self.event_scripts.get_script_by_id(E1083_MELODY_BAY_SONG_2_INPUT).set_contents(
+            selection[1].generate_input_script(1)
+        )
+        self.event_scripts.get_script_by_id(
+            E1080_MELODY_BAY_SONG_2_VALIDATOR
+        ).set_contents(selection[1].generate_playback_script(1))
+        self.overworld_dialogs.replace_dialog(
+            DI2665_TADPOLE_SONG_2_HINT, selection[1].apprentice_hint_2
+        )
+        self.overworld_dialogs.replace_dialog(
+            DI1615_MOLEVILLE_BLUES_8, selection[1].mole_hint
+        )
+        self.event_scripts.get_script_by_id(E3132_MOLEVILLE_MINERS_SONG).set_contents(
+            [
+                RunDialog(
+                    DI1615_MOLEVILLE_BLUES_8,
+                    NPC_0,
+                    closable=True,
+                    sync=False,
+                    multiline=True,
+                    use_background=True,
+                ),
+                Return(),
+            ]
+        )
+
+        self.event_scripts.get_script_by_id(E1084_MELODY_BAY_SONG_3_INPUT).set_contents(
+            selection[2].generate_input_script(2)
+        )
+        self.event_scripts.get_script_by_id(
+            E1081_MELODY_BAY_SONG_3_VALIDATOR
+        ).set_contents(selection[2].generate_playback_script(2))
+        cast(
+            ActionQueueAsync,
+            self.event_scripts.get_command_by_identifier("starfish_dance_hint"),
+        ).set_subscript(
+            selection[2].generate_starfish_hint(
+                cast(
+                    ActionQueueAsync,
+                    self.event_scripts.get_script_by_id(E2061_MONSTRO_TOWN_STAR),
+                ).subscript.contents
+            )
+        )
+        self.event_scripts.get_script_by_id(
+            E1088_MELODY_BAY_THIRD_SONG_HINT
+        ).set_contents(selection[2].generate_tadpole_hint())
+
+        self.song_1 = selection[0].scroll_text
+        self.song_2 = selection[1].scroll_text
+        self.song_3 = selection[2].scroll_text
+
+        self.song_authors = list(
+            set(
+                selection[0].submitter_credits
+                + selection[1].submitter_credits
+                + selection[2].submitter_credits
+            )
+        )
+
+    def _randomize_password(self) -> None:
+        password = random.choice(password_pool)
+        self.password = password.word
+        decoy_word = random.choice([p for p in password_pool if p != password])
+        correct_positions = []
+
+        # create password submission logic
+        for index, letter in enumerate(list(password.word)):
+            letters = suggest_letter_bank(password.word, index, decoy_word.word)
+            correct_position = letters.index(password.word[index])
+            correct_positions.append(correct_position)
+
+            # generate the dialogs that display your letter selection when you stand under the boxes
+            box_dialogs = []
+            box_dialogs.append(
+                """[page]\n Key letter%i  <%s> %s  %s  %s  %s[end]"""
+                % (
+                    index + 1,
+                    letters[0],
+                    letters[1],
+                    letters[2],
+                    letters[3],
+                    letters[4],
+                )
+            )
+            box_dialogs.append(
+                """[page]\n Key letter%i   %s <%s> %s  %s  %s[end]"""
+                % (
+                    index + 1,
+                    letters[0],
+                    letters[1],
+                    letters[2],
+                    letters[3],
+                    letters[4],
+                )
+            )
+            box_dialogs.append(
+                """[page]\n Key letter%i   %s  %s <%s> %s  %s[end]"""
+                % (
+                    index + 1,
+                    letters[0],
+                    letters[1],
+                    letters[2],
+                    letters[3],
+                    letters[4],
+                )
+            )
+            box_dialogs.append(
+                """[page]\n Key letter%i   %s  %s  %s <%s> %s[end]"""
+                % (
+                    index + 1,
+                    letters[0],
+                    letters[1],
+                    letters[2],
+                    letters[3],
+                    letters[4],
+                )
+            )
+            box_dialogs.append(
+                """[page]\n Key letter%i   %s  %s  %s  %s <%s>[end]"""
+                % (
+                    index + 1,
+                    letters[0],
+                    letters[1],
+                    letters[2],
+                    letters[3],
+                    letters[4],
+                )
+            )
+            box_dialog_pairs = zip(box_dialogs, box_dialog_ids[index])
+            for dialog_content, dialog_id in box_dialog_pairs:
+                self.overworld_dialogs.replace_dialog(dialog_id, dialog_content)
+            recitation_pairs = zip(letters, recitation_ids[index])
+            for letter, dialog_id in recitation_pairs:
+                self.overworld_dialogs.replace_dialog(dialog_id, """%s[end]""" % letter)
+
+        # calibrate correctness checker
+        self.event_scripts.get_script_by_id(
+            E3411_SHIP_PASSWORD_CORRECTNESS_CHECK
+        ).set_contents(
+            [
+                JmpIfVarNotEqualsConst(
+                    SECONDARY_TEMP_7024, correct_positions[0], ["ship_password_check_2"]
+                ),
+                Inc(TEMP_70AC),
+                JmpIfVarNotEqualsConst(
+                    TEMP_7026,
+                    correct_positions[1],
+                    ["ship_password_check_3"],
+                    identifier="ship_password_check_2",
+                ),
+                Inc(TEMP_70AC),
+                JmpIfVarNotEqualsConst(
+                    TEMP_7028,
+                    correct_positions[2],
+                    ["ship_password_check_4"],
+                    identifier="ship_password_check_3",
+                ),
+                Inc(TEMP_70AC),
+                JmpIfVarNotEqualsConst(
+                    TEMP_702A,
+                    correct_positions[3],
+                    ["ship_password_check_5"],
+                    identifier="ship_password_check_4",
+                ),
+                Inc(TEMP_70AC),
+                JmpIfVarNotEqualsConst(
+                    TEMP_702C,
+                    correct_positions[4],
+                    ["ship_password_check_6"],
+                    identifier="ship_password_check_5",
+                ),
+                Inc(TEMP_70AC),
+                JmpIfVarNotEqualsConst(
+                    TEMP_702E,
+                    correct_positions[5],
+                    ["ship_password_check_end"],
+                    identifier="ship_password_check_6",
+                ),
+                Inc(TEMP_70AC),
+                Return(identifier="ship_password_check_end"),
+            ]
+        )
+
+        # populate hint dialogs
+        random.shuffle(hint_authors)
+        # guarantee that the hint submitter will get their name on one of the hints
+        writers = [password.submitter_hint_prefix] + hint_authors
+        RWRITER = "%RANDOM_WRITER%"
+        number_of_writers = len(
+            [
+                h
+                for h in [
+                    password.troopa_hint,
+                    password.trampoline_hint,
+                    password.maze_hint,
+                    password.snake_hint,
+                    password.cannonball_hint,
+                    password.barrel_hint,
+                    password.entrance_hint,
+                    password.saveroom_hint,
+                    password.greaper_hint_2,
+                    password.greaper_hint,
+                    password.drybones_hint,
+                ]
+                if h is not None and RWRITER in h
+            ]
+        )
+        writers = writers[:number_of_writers]
+        random.shuffle(writers)
+        for s in writers:
+            if RWRITER in password.troopa_hint:
+                password.troopa_hint = password.troopa_hint.replace(RWRITER, s)
+                continue
+            if RWRITER in password.trampoline_hint:
+                password.trampoline_hint = password.trampoline_hint.replace(RWRITER, s)
+                continue
+            if RWRITER in password.maze_hint:
+                password.maze_hint = password.maze_hint.replace(RWRITER, s)
+                continue
+            if RWRITER in password.snake_hint:
+                password.snake_hint = password.snake_hint.replace(RWRITER, s)
+                continue
+            if RWRITER in password.cannonball_hint:
+                password.cannonball_hint = password.cannonball_hint.replace(RWRITER, s)
+                continue
+            if RWRITER in password.barrel_hint:
+                password.barrel_hint = password.barrel_hint.replace(RWRITER, s)
+                continue
+            if password.entrance_hint and RWRITER in password.entrance_hint:
+                password.entrance_hint = password.entrance_hint.replace(RWRITER, s)
+                continue
+            if password.saveroom_hint and RWRITER in password.saveroom_hint:
+                password.saveroom_hint = password.saveroom_hint.replace(RWRITER, s)
+                continue
+            if password.greaper_hint and RWRITER in password.greaper_hint:
+                password.greaper_hint = password.greaper_hint.replace(RWRITER, s)
+                continue
+            if password.greaper_hint_2 and RWRITER in password.greaper_hint_2:
+                password.greaper_hint_2 = password.greaper_hint_2.replace(RWRITER, s)
+                continue
+            if password.drybones_hint and RWRITER in password.drybones_hint:
+                password.drybones_hint = password.drybones_hint.replace(RWRITER, s)
+                continue
+        self.overworld_dialogs.replace_dialog(
+            DI1664_TROOPA_PUZZLE_HINT, password.troopa_hint
+        )
+        self.overworld_dialogs.replace_dialog(
+            DI1665_TRAMPOLINE_PUZZLE_HINT, password.trampoline_hint
+        )
+        self.overworld_dialogs.replace_dialog(
+            DI1666_MAZE_PUZZLE_HINT, password.maze_hint
+        )
+        self.overworld_dialogs.replace_dialog(
+            DI1667_SNAKE_PUZZLE_HINT, password.snake_hint
+        )
+        self.overworld_dialogs.replace_dialog(
+            DI1668_CANNONBALL_PUZZLE_HINT, password.cannonball_hint
+        )
+        self.overworld_dialogs.replace_dialog(
+            DI1669_BARREL_PUZZLE_HINT, password.barrel_hint
+        )
+        if password.entrance_hint is not None:
+            self.overworld_dialogs.replace_dialog(
+                DI1673_SHIP_ENTRANCE_NOTE, password.entrance_hint
+            )
+        if password.saveroom_hint is not None:
+            self.overworld_dialogs.replace_dialog(
+                DI1674_SHIP_SAVEROOM_NOTE, password.saveroom_hint
+            )
+        if password.greaper_hint is not None:
+            self.overworld_dialogs.replace_dialog(
+                DI1675_SHIP_GREAPER_1_NOTE, password.greaper_hint
+            )
+        if password.greaper_hint_2 is not None:
+            self.overworld_dialogs.replace_dialog(
+                DI1676_SHIP_GREAPER_2_NOTE, password.greaper_hint_2
+            )
+        if password.drybones_hint is not None:
+            self.overworld_dialogs.replace_dialog(
+                DI1656_SLEEPING_DRY_BONES, password.drybones_hint
+            )
+
+        self.password_author = password.submitter_credits
+
     def get_patch(self) -> Patch:
         patch = Patch()
 
@@ -3849,13 +4243,17 @@ class GameWorld:
             patch.add_dict(futures["enemies"].result())
             patch.add_dict(futures["enemy_attacks"].result())
             patch.add_dict(futures["items"].result())
-            patch.add_data(self.action_scripts.start, futures["action_scripts"].result())
+            patch.add_data(
+                self.action_scripts.start, futures["action_scripts"].result()
+            )
             patch.add_dict(futures["packets"].result())
             patch.add_dict(futures["battle_packs"].result())
             patch.add_dict(futures["rooms"].result())
             patch.add_dict(futures["shops"].result())
             patch.add_dict(futures["spells"].result())
             patch.add_dict(futures["allies"].result())
+
+        patch.add_dict(update_credits(self))
 
         # Misc
 

@@ -37,7 +37,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_0,
             subscript=[ASSequenceLoopingOff(), ASPause(85), ASSequenceLoopingOn()]),
-        RunEventAsSubroutine(E1972_CLONE_RESERVED),
+        RunEventAsSubroutine(E1972_MUSHROOM_BOY_ODDS),
         CompareVarToConst(PRIMARY_TEMP_7000, 400),
         JmpIfComparisonResultIsLesser(["EVENT_1172_run_dialog_19"]),
         CompareVarToConst(PRIMARY_TEMP_7000, 1000),

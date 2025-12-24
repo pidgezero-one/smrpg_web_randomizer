@@ -1,15 +1,14 @@
 import random
 
-from randomizer.logic import utils, flags
-from randomizer.logic.dialogs import allocate_string
-from randomizer.logic.patch import Patch
+from ...types.gameworld import GameWorld
+from ...types.flags import RandomTadpolePondSong, RandomSunkenShipPassword
 
 
 """
 IMPORTANT NOTES ABOUT MODIFYING:
 * The fontset is only UPPER CASE A-Z, space and period. Everything else looks like a space.
 * The font/color is dependant on the Y position. Dunno why.
-* We're basically out of credits space. Can't add more cards, but could add more titles to those cards.
+* Credits space is very limited. If we run out of cards, can't add more cards, but could add more titles to those cards.
 ** Changing this might be hard.
 ** Dunno if the length is hard coded in the code, or if moving the string table would solve the space problem.
 * Watch the whole credits! There's a chance it can freeze at the end or corrupt the firework screen if you do it wrong.
@@ -34,9 +33,28 @@ def to_str(string):
     )
 
 
-def inv_str(string):
+def inv_str(string: str) -> bytes:
+    """Convert a credits string to ROM bytes.
+
+    Format: length byte followed by encoded characters where A=1, B=2, etc.
+    Special characters: space='\\', period='[', underscore=']'
+    """
     string = string.replace(" ", "\\").replace(".", "[").replace("_", "]")
-    return chr(len(string)) + "".join([chr(ord(i) - ord("A") + 1) for i in string])
+    length_byte = bytes([len(string)])
+    char_bytes = bytes([ord(c) - ord("A") + 1 for c in string])
+    return length_byte + char_bytes
+
+# There's a way to do perfect allocations with DYNAMIC PROGRAMMING,
+# but I'm not doing that.
+def allocate_string(string_length: int, free_list: dict[int, int]) -> int | None:
+    for base in sorted(free_list, key=lambda x: free_list[x]):
+        if free_list[base] >= string_length:
+            size = free_list[base]
+            del free_list[base]
+            free_list[base + string_length] = size - string_length
+            return base
+    # If we get this far, we couldn't find space for the string.
+    return None
 
 
 class Credits(object):
@@ -158,7 +176,7 @@ class Credits(object):
     def empty_title(self):
         self.acc += [0xE3, 0, 0, 0, 0, 0, 0]
 
-    def finalize(self):
+    def finalize(self) -> dict[int, bytearray]:
         # Return a patch next time...
         credit_start = 0x3FDBB0
         credit_len = 3380
@@ -216,24 +234,24 @@ class Credits(object):
         # This is very important.
         self.acc += (credit_len - len(self.acc)) * [0]
 
-        free_list = {
+        free_list: dict[int, int] = {
             0x3F9C40: 952,
             credit_start + len(self.acc): credit_len - len(self.acc),
             string_table_start + string_table_size: 2080 - string_table_size,
         }
 
-        patch = Patch()
-        patch.add_data(credit_start, bytearray(self.acc))
+        patch: dict[int, bytearray] = {}
+        patch[credit_start] = bytearray(self.acc)
         for i in range(len(self.strings)):
-            string = inv_str(self.strings[i])
-            base = allocate_string(len(string), free_list)
-            patch.add_data(base, string)
-            patch.add_data(
-                string_table_start + i * 2,
-                utils.ByteField(base & 0xFFFF, num_bytes=2).as_bytes())
+            string_bytes = inv_str(self.strings[i])
+            base = allocate_string(len(string_bytes), free_list)
+            if base is None:
+                raise Exception("Ran out of space for credits strings!")
+            patch[base] = bytearray(string_bytes)
+            patch[string_table_start + i * 2] = bytearray((base & 0xFFFF).to_bytes(length=2, byteorder='little'))
 
         # Underscore
-        patch.add_data(0x3FFDDA, bytearray([0x3f, 0xc0, 0x7f, 0x80]))
+        patch[0x3FFDDA] =  bytearray(b"\x3f\xc0\x7f\x80")
         return patch
 
 
@@ -249,7 +267,7 @@ DEV_MESSAGES = [
 
 # Takes world because everything does.
 # If we every implement stats, we'll need it, probably.
-def update_credits(world):
+def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits = Credits()
 
     # Don't need this for the first title.
@@ -398,22 +416,14 @@ def update_credits(world):
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 29
-    if world.settings.is_flag_enabled(flags.RandomTadpolePondSong):
+    if world.settings.isflag_enabled(RandomTadpolePondSong):
 
         credits.begin_titles(BEGIN_TITLES_DELAY)
         credits.add_title(0x80, 0x00, 0x08, "SELECTED MELODY BAY TUNES")
         credits.end_titles(END_TITLES_DELAY)
 
         credits.begin_credits()
-        tadpole_submitters = list(
-            set(
-                [
-                    world.tadpole_songs[0].submitter_credits,
-                    world.tadpole_songs[1].submitter_credits,
-                    world.tadpole_songs[2].submitter_credits,
-                ]
-            )
-        )
+        tadpole_submitters = world.song_authors
         if len(tadpole_submitters) == 1:
             credits.add_credit(0x80, 0x80, 0xC0, EMPTY_STRING)
             credits.add_credit(0x80, 0x40, 0x81, tadpole_submitters[0])
@@ -429,14 +439,14 @@ def update_credits(world):
         credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 30
-    if world.settings.is_flag_enabled(flags.RandomSunkenShipPassword):
+    if world.settings.isflag_enabled(RandomSunkenShipPassword):
 
         credits.begin_titles(BEGIN_TITLES_DELAY)
         credits.add_title(0x80, 0x00, 0x08, "SELECTED SHIP PASSWORD")
         credits.end_titles(END_TITLES_DELAY)
 
         credits.begin_credits()
-        credits.add_credit(0x80, 0x40, 0x81, world.password.submitter_credits)
+        credits.add_credit(0x80, 0x40, 0x81, world.password_author)
         credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 31

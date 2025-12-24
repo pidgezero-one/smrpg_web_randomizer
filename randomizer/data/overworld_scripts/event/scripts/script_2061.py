@@ -82,7 +82,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=20, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_PlaySound(sound=SO042_TADPOLE_POND_STAFF_TI, channel=6),
 		A_Pause(30)
-	]),
+	], identifier="starfish_dance_hint"),
 	FadeOutMusicToVolume(duration=5, volume=100),
 	Return()
 ])

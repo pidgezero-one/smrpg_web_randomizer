@@ -1,4 +1,4 @@
-# E1972_CLONE_RESERVED
+# E1972_MUSHROOM_BOY_ODDS
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToRandom(PRIMARY_TEMP_7000, 10000),
+	SetVarToRandom(PRIMARY_TEMP_7000, 10000, identifier="mushroom_boy_odds"),
 	Return()
 ])

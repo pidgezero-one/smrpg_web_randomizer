@@ -1,4 +1,5 @@
 import random
+from ..variables.dialog_names import *
 
 hint_authors = [
     "       Memo left by AaronDobbe:",
@@ -14,12 +15,14 @@ hint_authors = [
     "        Memo left by Cavin856:",
     "       Memo left by cleartonic:",
     "          Memo left by Cynas:",
-    "        Memo left by Darkdata:",
+    "        Memo left by Darkkefka:",
     "         Memo left by Deviling:",
+    "     Memo left by Doomsday31415:",
     "    Memo left by Dorkmaster Flek:",
     "         Memo left by eggtalk:",
     "        Memo left by FlareRDB:",
     "        Memo left by Foralias:",
+    "      Memo left by giangurgolo:",
     "   Memo left by GoodMorningCrono:",
     "       Memo left by Gozengatta:",
     "      Memo left by GuntherRidel:",
@@ -32,9 +35,10 @@ hint_authors = [
     "        Memo left by Minamiyo:",
     "        Memo left by Mr. Dean:",
     "       Memo left by MyOhMyke:",
+    "          Memo left by Omega:",
     "         Memo left by patcdr:",
     "          Memo left by pidge:",
-    "         Memo left by Rosalie:"
+    "         Memo left by Rosalie:",
     "       Memo left by Saxxon Fox:",
     "        Memo left by SeanCass:",
     "    Memo left by Seraphin Eveles:",
@@ -43,8 +47,10 @@ hint_authors = [
     "     Memo left by Solidus Snake:",
     "       Memo left by Space Cow:",
     "         Memo left by swinch:",
+    "          Memo left by SysL:",
     "     Memo left by Tinywetblanket:",
     "       Memo left by WeffJebster:",
+    "          Memo left by Will319:",
     "        Memo left by WonderJ:",
     "         Memo left by Xelecium:",
     "           Memo left by Xirr:",
@@ -87,7 +93,8 @@ class Password:
         hint11=None,
         submitter="Anonymous",
         submitter_credits="ANONYMOUS",
-        submitter_hint_prefix="       Memo left by Anonymous:"):
+        submitter_hint_prefix="       Memo left by Anonymous:",
+    ):
         self.word = word
         self.trampoline_hint = hint1
         self.troopa_hint = hint2
@@ -106,7 +113,96 @@ class Password:
         self.submitter_hint_prefix = submitter_hint_prefix
 
 
-pool = (
+box_dialog_ids = [
+    [
+        DI1696_PASSWORD_BOX_1_1,
+        DI1697_PASSWORD_BOX_1_2,
+        DI1698_PASSWORD_BOX_1_3,
+        DI1699_PASSWORD_BOX_1_4,
+        DI1700_PASSWORD_BOX_1_5,
+    ],
+    [
+        DI1708_PASSWORD_BOX_2_1,
+        DI1709_PASSWORD_BOX_2_2,
+        DI1710_PASSWORD_BOX_2_3,
+        DI1711_PASSWORD_BOX_2_4,
+        DI1712_PASSWORD_BOX_2_5,
+    ],
+    [
+        DI1720_DUPLICATE,
+        DI1721_PASSWORD_BOX_3_2,
+        DI1722_PASSWORD_BOX_3_3,
+        DI1723_PASSWORD_BOX_3_4,
+        DI1724_PASSWORD_BOX_3_5,
+    ],
+    [
+        DI1732_DUPLICATE,
+        DI1733_PASSWORD_BOX_4_2,
+        DI1734_PASSWORD_BOX_4_3,
+        DI1735_PASSWORD_BOX_4_4,
+        DI1736_PASSWORD_BOX_4_5,
+    ],
+    [
+        DI1744_DUPLICATE,
+        DI1745_PASSWORD_BOX_5_2,
+        DI1746_PASSWORD_BOX_5_3,
+        DI1747_PASSWORD_BOX_5_4,
+        DI1748_PASSWORD_BOX_5_5,
+    ],
+    [
+        DI1756_DUPLICATE,
+        DI1757_PASSWORD_BOX_6_2,
+        DI1758_PASSWORD_BOX_6_3,
+        DI1759_PASSWORD_BOX_6_4,
+        DI1760_PASSWORD_BOX_6_5,
+    ],
+]
+recitation_ids = [
+    [
+        DI1701_PASSWORD_LETTER_1_1,
+        DI1702_PASSWORD_LETTER_1_2,
+        DI1703_PASSWORD_LETTER_1_3,
+        DI1704_PASSWORD_LETTER_1_4,
+        DI1705_PASSWORD_LETTER_1_5,
+    ],
+    [
+        DI1713_PASSWORD_LETTER_2_1,
+        DI1714_PASSWORD_LETTER_2_2,
+        DI1715_PASSWORD_LETTER_2_3,
+        DI1716_PASSWORD_LETTER_2_4,
+        DI1717_PASSWORD_LETTER_2_5,
+    ],
+    [
+        DI1725_PASSWORD_LETTER_3_1,
+        DI1726_PASSWORD_LETTER_3_2,
+        DI1727_PASSWORD_LETTER_3_3,
+        DI1728_PASSWORD_LETTER_3_4,
+        DI1729_PASSWORD_LETTER_3_5,
+    ],
+    [
+        DI1737_PASSWORD_LETTER_4_1,
+        DI1738_PASSWORD_LETTER_4_2,
+        DI1739_PASSWORD_LETTER_4_3,
+        DI1740_PASSWORD_LETTER_4_4,
+        DI1741_PASSWORD_LETTER_4_5,
+    ],
+    [
+        DI1749_PASSWORD_LETTER_5_1,
+        DI1750_PASSWORD_LETTER_5_2,
+        DI1751_PASSWORD_LETTER_5_3,
+        DI1752_PASSWORD_LETTER_5_4,
+        DI1753_PASSWORD_LETTER_5_5,
+    ],
+    [
+        DI1761_PASSWORD_LETTER_6_1,
+        DI1762_PASSWORD_LETTER_6_2,
+        DI1763_PASSWORD_LETTER_6_3,
+        DI1764_PASSWORD_LETTER_6_4,
+        DI1765_PASSWORD_LETTER_6_5,
+    ],
+]
+
+pool = [
     Password(
         "twoson",
         "%RANDOM_WRITER%\n\n         It is from Earthbound.[await]",
@@ -118,7 +214,8 @@ pool = (
         "           Memo left by Ness:\n\n      It's where I met Everdred.[await]",
         "           Memo left by Paula:\n\n           It is my home town.[await]",
         "           Memo left by Jeff:\n\nApple Kid is at least as good as me.[await]",
-        "           Memo left by Poo:\n             A quaint town,\n   Paula has told me much about it.[await]"),
+        "           Memo left by Poo:\n             A quaint town,\n   Paula has told me much about it.[await]",
+    ),
     Password(
         "↑←→↑←→",
         "%RANDOM_WRITER%\n\n        It is Epona's favourite.[await]",
@@ -130,7 +227,8 @@ pool = (
         " It was the weirdest thing, he pulled\n out his ocarina and the song just\n carried on the wind.[await][page]\n A horse came running up seconds\n later, but there's no way it could\n have been there.[await][pause]\n     -Kakariko village guards report[await]",
         " I'm gonna call you “grasshopper”!\n\n                                  -Romani[await]",
         "                  Neigh.\n\n                                    -Epona[await]",
-        " Is that Epona? How did you tame\n that wild horse right under my\n nose?![await][pause] I was going to present that\n horse to the great Ganondorf...\n                                      -Ingo[await]"),
+        " Is that Epona? How did you tame\n that wild horse right under my\n nose?![await][pause] I was going to present that\n horse to the great Ganondorf...\n                                      -Ingo[await]",
+    ),
     Password(
         "fzerox",
         "%RANDOM_WRITER%\n\n           It has two vowels.[await]",
@@ -143,7 +241,8 @@ pool = (
         "%RANDOM_WRITER%\n\n  Doing a side attack re-gains grip.[await]",
         "%RANDOM_WRITER%\n\n         Nobody likes Big Hand.[await]",
         "%RANDOM_WRITER%\n\n            Beware Fire Field.[await]",
-        "\nDRY BONES: No, I don't drive\n Sonic Phantom.[await]"),
+        "\nDRY BONES: No, I don't drive\n Sonic Phantom.[await]",
+    ),
     Password(
         "bowser",
         "%RANDOM_WRITER%\n\n           He has 8 children.[await]",
@@ -159,7 +258,8 @@ pool = (
         "DRY BONES: I was a Koopa, just\n like my boss... once.[await]",
         "Naegleria & Cynas",
         "NAEGLERIA",
-        "   Memo left by Naegleria & Cynas:"),
+        "   Memo left by Naegleria & Cynas:",
+    ),
     Password(
         "mallow",
         "%RANDOM_WRITER%\n\n     There is an “M” in the word.[await]",
@@ -175,7 +275,8 @@ pool = (
         "\nDRY BONES: The password is a\n name.[await]",
         "Naegleria",
         "NAEGLERIA        CYNAS",
-        "        Memo left by Naegleria:"),
+        "        Memo left by Naegleria:",
+    ),
     Password(
         "smithy",
         "%RANDOM_WRITER%\n\n          It has two vowels.[await]",
@@ -191,7 +292,8 @@ pool = (
         "\nDRY BONES: The password is a\n name.[await]",
         "Naegleria",
         "NAEGLERIA",
-        "        Memo left by Naegleria:"),
+        "        Memo left by Naegleria:",
+    ),
     Password(
         "flower",
         "%RANDOM_WRITER%\n\n          A pretty little thing.[await]",
@@ -207,7 +309,8 @@ pool = (
         "\n      DRY BONES: Leaf me alone.[await]",
         "HeroicReplicas",
         "HEROICREPLICAS",
-        "     Memo left by HeroicReplicas:"),
+        "     Memo left by HeroicReplicas:",
+    ),
     Password(
         "crafts",
         "%RANDOM_WRITER%\n\nBICOASTAL: Shipwreck + Letter #1.[await]",
@@ -223,7 +326,8 @@ pool = (
         "DRY BONES: The password's letters\n are hidden among six wrecked kinds\n of ship.[await]",
         "Projectyl",
         "PROJECTYL",
-        "        Memo left by Projectyl:"),
+        "        Memo left by Projectyl:",
+    ),
     Password(
         "ocelot",
         "%RANDOM_WRITER%\n\n  You might *spot* it in the jungle.[await]",
@@ -239,7 +343,8 @@ pool = (
         None,
         "TriumphantBass",
         "TRIUMPHANTBASS",
-        "    Memo left by TriumphantBass:"),
+        "    Memo left by TriumphantBass:",
+    ),
     Password(
         "wallet",
         "%RANDOM_WRITER%\n\n      It often has pictures in it.[await]",
@@ -255,7 +360,8 @@ pool = (
         "\n     DRY BONES: I may be sat on.[await]",
         "Aweglib",
         "AWEGLIB",
-        "         Memo left by Aweglib:"),
+        "         Memo left by Aweglib:",
+    ),
     Password(
         "stamos",
         "%RANDOM_WRITER%\n     It is the name of an actor on\n              “Full House”.[await]",
@@ -271,7 +377,8 @@ pool = (
         "DRY BONES: Have you been reading\n the notes posted around these\n rooms?[await]",
         "FedoraFriday",
         "FEDORAFRIDAY",
-        "      Memo left by FedoraFriday:"),
+        "      Memo left by FedoraFriday:",
+    ),
     Password(
         "boxboy",
         "%RANDOM_WRITER%\n\n   It is found in a treasure chest.[await]",
@@ -287,7 +394,8 @@ pool = (
         None,
         "Cynas",
         "CYNAS",
-        "          Memo left by Cynas:"),
+        "          Memo left by Cynas:",
+    ),
     Password(
         "catnip",
         "%RANDOM_WRITER%\n\n     It's a bite that doesn't hurt.[await]",
@@ -295,7 +403,8 @@ pool = (
         "%RANDOM_WRITER%\n\n           It has two vowels.[await]",
         "%RANDOM_WRITER%\n\n      Its consumer is consumed.[await]",
         "%RANDOM_WRITER%\n\n      It's named for its lovers.[await]",
-        "%RANDOM_WRITER%\n\n      It has no repeated letters.[await]"),
+        "%RANDOM_WRITER%\n\n      It has no repeated letters.[await]",
+    ),
     Password(
         "chess2",
         "%RANDOM_WRITER%\n\n          An infamous sequel.[await]",
@@ -303,7 +412,8 @@ pool = (
         "%RANDOM_WRITER%\n\n              David Sirlin?[await]",
         "%RANDOM_WRITER%\n\n          It contains two “S”.[await]",
         "%RANDOM_WRITER%\n\n          It contains a number.[await]",
-        "%RANDOM_WRITER%\n\n        It has four consonants.[await]"),
+        "%RANDOM_WRITER%\n\n        It has four consonants.[await]",
+    ),
     Password(
         "comedy",
         "%RANDOM_WRITER%\n\n             A theatre genre.[await]",
@@ -315,7 +425,8 @@ pool = (
         "%RANDOM_WRITER%\n           The sum of tragedy,\n   and something you cannot stop.[await]",
         "%RANDOM_WRITER%\n\n      The obverse of misfortune.[await]",
         "%RANDOM_WRITER%\n\n       Cooperate with Me or Dye.[await]",
-        " With adjective Divine, Featuring\n Dante from the “Devil May Cry”\n series.[await]"),
+        " With adjective Divine, Featuring\n Dante from the “Devil May Cry”\n series.[await]",
+    ),
     Password(
         "hamlet",
         "%RANDOM_WRITER%\n\n           A little bit of pig.[await]",
@@ -323,7 +434,8 @@ pool = (
         "%RANDOM_WRITER%\n\n       “Amleth” by another name.[await]",
         "%RANDOM_WRITER%\n\n           It has two vowels.[await]",
         "%RANDOM_WRITER%\n\n    The “M” comes before the “L”.[await]",
-        "%RANDOM_WRITER%\n\n          A prince and a play.[await]"),
+        "%RANDOM_WRITER%\n\n          A prince and a play.[await]",
+    ),
     Password(
         "aeneid",
         "%RANDOM_WRITER%\n\n     Fuel for “Homer” fanfiction.[await]",
@@ -331,7 +443,8 @@ pool = (
         "%RANDOM_WRITER%\n\n   Concerning a man and his arms.[await]",
         "%RANDOM_WRITER%\n\n     One letter is repeated twice.[await]",
         "%RANDOM_WRITER%\n\n        The word is its subject.[await]",
-        "%RANDOM_WRITER%\n      And life with a groan fled\n  indignant into the shadows below.[await]"),
+        "%RANDOM_WRITER%\n      And life with a groan fled\n  indignant into the shadows below.[await]",
+    ),
     Password(
         "wrppps",
         "          Memo left by Jolene:\n   They're modes of fast transport\n              for Gonzalez.[await]",
@@ -347,7 +460,8 @@ pool = (
         "\n   DRY BONES: Naps are the best.[await]",
         "Calereliya",
         "CALERELIYA",
-        "        Memo left by Calereliya:"),
+        "        Memo left by Calereliya:",
+    ),
     Password(
         "beetle",
         "          Memo left by Petuni:\n    Uh, I'm a PUNI. How DARE you\n        compare us to that bug?[await]",
@@ -363,7 +477,8 @@ pool = (
         None,
         "Calereliya",
         "CALERELIYA",
-        "        Memo left by Calereliya:"),
+        "        Memo left by Calereliya:",
+    ),
     Password(
         "♪♪♪♪♪♪",
         "        Memo left by Toadofsky:\n\n               BRILLIANT![await]",
@@ -379,7 +494,8 @@ pool = (
         None,
         "Calereliya",
         "CALERELIYA",
-        "        Memo left by Calereliya:"),
+        "        Memo left by Calereliya:",
+    ),
     Password(
         "shells",
         "%RANDOM_WRITER%\n\n It is found on the bed of the ocean.[await]",
@@ -395,7 +511,8 @@ pool = (
         "\n    DRY BONES: She sells them...[await]",
         "Naegleria",
         "NAEGLERIA",
-        "        Memo left by Naegleria:"),
+        "        Memo left by Naegleria:",
+    ),
     Password(
         "donkey",
         "       Memo left by Roland Yeep:\n\n      He rolls through the jungle.[await]",
@@ -411,7 +528,8 @@ pool = (
         "DRY BONES: He's the leader of the\n bunch, you know him well![await]",
         submitter="LimeFiasco",
         submitter_credits="LIMEFIASCO",
-        submitter_hint_prefix="       Memo left by LimeFiasco:"),
+        submitter_hint_prefix="       Memo left by LimeFiasco:",
+    ),
     Password(
         "weston",
         "           Memo left by Luigi:\n    It is the name of a ghost I've\n                 caught.[await]",
@@ -427,11 +545,30 @@ pool = (
         None,
         "Mr Dean",
         "MR DEAN",
-        "         Memo left by Mr Dean:"))
+        "         Memo left by Mr Dean:",
+    ),
+    Password(
+        "corals",
+        "%RANDOM_WRITER%\n\n It is found on the bed of the ocean.[await]",
+        "%RANDOM_WRITER%\n\n      There is an “s” in the word.[await]",
+        "%RANDOM_WRITER%\n\n          It has two vowels.[await]",
+        "%RANDOM_WRITER%\n\n        It has four consonants.[await]",
+        "%RANDOM_WRITER%\n\n    The “r” comes before the “l”.[await]",
+        "%RANDOM_WRITER%\n               At least...\n  two consonants are side by side.[await]",
+        "%RANDOM_WRITER%\n\n         It is used in jewelry.[await]",
+        "%RANDOM_WRITER%\n\n      There is an 'a' in the word.[await]",
+        "%RANDOM_WRITER%\n       The first and last letters\n             are consonants.[await]",
+        "%RANDOM_WRITER%\n\n    The second letter is a vowel.[await]",
+        "%RANDOM_WRITER%\n\n       The 'a' is next to the 'r'.[await]",
+        submitter="lwelyk",
+        submitter_credits="LWEKYK",
+        submitter_hint_prefix="         Memo left by lwelyk:",
+    ),
+]
 
 all_symbols = list("""0123456789♥♪•~©:;#×+%↑→←*&()-/?!.,\'""")
 vowels = list("aeiouy")
-uncommon_consonants = list("bcdfghjklmnpqrstvwxz")
+uncommon_consonants = list("jqvxzbcdfghklmnprstw")
 
 symbols = list("""0123456789♪•~©↑→←*&,\'""")
 common_consonants = list("bcdfghklmnprstw")

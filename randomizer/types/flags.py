@@ -778,6 +778,16 @@ class EXPStarsAnywhere(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
+class ShuffleHillFlowers(BooleanFlag):
+    _name = "Shuffle Booster Hill flowers"
+    _description = """If enabled, all sixteen Booster Hill flowers will be item checks.
+<br>
+<br>There are no missable flowers on Booster Hill in the randomizer. You can return to the hill as many times as you like to collect any you missed the first time."""
+    _id = "marry"
+    _requires_all = [(ShuffleItems(), True)]
+
+
 class MimicsAnywhere(BooleanFlag):
     _name = "Shuffle mimic chests"
     _description = """If enabled, any three chests in the world may be mimics. You will be able to run away from them.
@@ -1653,12 +1663,14 @@ class QuizShuffle(BooleanFlag):
     _id = "quiz"
 
 
+# ✅
 class RandomTadpolePondSong(BooleanFlag):
     _name = "Randomize Tadpole Pond songs"
     _description = """If enabled, the songs required for the three Tadpole Pond songs will be selected from a pool (submitted by players). Hints will be available in their normal locations within Tadpole Pond, Moleville Mines, and Monstro Town."""
     _id = "melody"
 
 
+# ✅
 class RandomSunkenShipPassword(BooleanFlag):
     _name = "Randomize Sunken Ship password"
     _description = """If enabled, the password for the Sunken Ship will be selected from a pool (submitted by players). Hints are available in the 6 ship puzzles, and occasionally on posted notes within the Sunken Ship.
@@ -1667,18 +1679,21 @@ class RandomSunkenShipPassword(BooleanFlag):
     _id = "pwd"
 
 
+# ✅
 class BowserDoorShuffle(BooleanFlag):
     _name = "Randomize Bowser's Keep room sequences"
     _description = """If enabled, the 18 rooms making up the six Bowser's Keep obstacle course doors will be shuffled into six random sequences of three rooms each."""
     _id = "doors"
 
 
+# ✅
 class SkipMinecart(BooleanFlag):
     _name = "Skip Minecart minigame"
     _description = """If enabled, boarding the minecart for the first time will teleport you back to Moleville. Subsequent visits to the minecart room will play the minigame as normal."""
     _id = "skipcart"
 
 
+# ✅
 class BetterTips(BooleanFlag):
     _name = "Better Event RNG"
     _description = """If enabled, the following changes will take effect:
@@ -2073,6 +2088,7 @@ from randomizer.data.variables.music_tracks import MusicTrack
 _DEFAULT_MUSIC_IDS = {6, 3, 25, 68, 35, 38, 62, 59}
 
 
+# ✅
 class ShuffledMusic(CategorizationFlag[MusicTrack]):
     _name = "Battle music pool"
     _description = """Eight tunes will be chosen at random for boss battles. Deselect any tracks you don't want to include in the pool.
@@ -2214,6 +2230,7 @@ class ItemShuffleSubcategory(FlagCategory):
         NoStarEgg,
         RestrictSpecialEquips,
         EXPStarsAnywhere,
+        ShuffleHillFlowers,
         MimicsAnywhere,
         SlotsAnywhere,
         ShuffleBeetlemania,

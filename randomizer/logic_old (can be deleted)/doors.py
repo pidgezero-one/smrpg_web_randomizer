@@ -24,12 +24,12 @@ class BowserDoorRoom:
     return_index = None
 
     def __init__(self, room, to_proceed, proceed_index, exit_type=ExitType.Tile, to_return=None, return_index=None):
-        self.room = room
-        self.to_proceed = to_proceed
-        self.to_return = to_return
-        self.exit_type = exit_type
-        self.proceed_index = proceed_index
-        self.return_index = return_index
+        self.room = room # room ID
+        self.to_proceed = to_proceed # event script ID
+        self.to_return = to_return # event script ID
+        self.exit_type = exit_type # ExitType enum
+        self.proceed_index = proceed_index # target index in room.events array
+        self.return_index = return_index # target index in room.events array
 
     def __str__(self):
         return '<{}: room {}>'.format(self.__class__.__name__, self.room)
