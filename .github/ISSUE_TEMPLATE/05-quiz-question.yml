@@ -1,5 +1,5 @@
 name: Dr. Topper quiz question submission
-description: Submit a Dr. Topper quiz question
+description: To be used when generating Dr. Topper's pool of 40 randomly chosen questions
 title: "[Submission - Dr. Topper Quiz Question]: "
 labels: [submission]
 

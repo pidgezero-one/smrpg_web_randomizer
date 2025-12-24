@@ -1,5 +1,5 @@
 name: Invisible item submission
-description: Submit invisible item location
+description: The "Move invisible flag checks" flag will change the position of the key item checks that originally contain the Three Musty Fears flag. They are placed at various distinct locations around the world selected at random from a large pool.
 title: "[Submission - Invisible Item]: "
 labels: [submission]
 

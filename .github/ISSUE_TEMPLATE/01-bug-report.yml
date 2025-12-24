@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a bug (not a feature request)
+description: Report something that is working incorrectly. Not to be used for issues unique to Crowd Control or for things that are not actually bugs.
 title: "[Bug]: "
 labels: [bug]
 

@@ -1,5 +1,5 @@
 name: Photosensitivity request
-description: Request a flashing animation to be optionally disabled
+description: Request a flashing animation to be optionally disabled with the "Remove flashes" flag
 title: "[Accessibility]: "
 labels: [accessibility]
 
