@@ -1,7 +1,11 @@
+from __future__ import annotations
 import random
+from typing import TYPE_CHECKING
 
-from ...types.gameworld import GameWorld
 from ...types.flags import RandomTadpolePondSong, RandomSunkenShipPassword
+
+if TYPE_CHECKING:
+    from ...types.gameworld import GameWorld
 
 
 """

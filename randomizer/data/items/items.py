@@ -2238,7 +2238,7 @@ class ShinyStoneItem(RegularItem):
 
     _item_id: int = 138
     _description: str = " A pretty stone!"
-    _price: int = 0
+    _price: int = 4
     _inflict_type = None
 
 

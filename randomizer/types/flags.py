@@ -420,7 +420,7 @@ class ShuffleCharacters(BooleanFlag):
 
 
 class MaxCharacters(RangeFlag):
-    _name = "Number of characters available"
+    _name = "Total playable allies"
     _description = "The total number of playable characters. Set this to 1 if you are attempting a solo challenge."
     min_value = 1
     max_value = 5
@@ -428,6 +428,21 @@ class MaxCharacters(RangeFlag):
     _id = "max"
     _requires_all = [(ShuffleCharacters(), True)]
 
+# Build StartingCharacterEnum dynamically - use ally instances as values (not class, to avoid aliases)
+_inclusion_members = {}
+for ally in ally_collection._allies:
+    attr_name = ally.name.replace(" ", "_").replace("-", "_")
+    _inclusion_members[attr_name] = ally
+
+IncludedCharacterEnum = ClassCategorizationOption(
+    "IncludedCharacterEnum", _inclusion_members
+)
+
+class AvailableCharacters(CategorizationFlag[IncludedCharacterEnum]):
+    _name = "Available Allies"
+    _description = """Highlighted (white text over blue) allies are eligible to be the random ally that joins your party in starter/recruitment locations. Un-highlight any characters you want to exclude from the game entirely."""
+    _default = {o: True for o in IncludedCharacterEnum.__members__.values()}
+    _id = "avail"
 
 # Build StartingCharacterEnum dynamically - use ally instances as values (not class, to avoid aliases)
 _starting_char_members = {}
@@ -1049,8 +1064,8 @@ class GrateGuyPrizeThreshold(RangeFlag):
 
 # ✅
 class KnifeGuyPrizeThreshold(RangeFlag):
-    _name = "Required juggling wins"
-    _description = "The number of wins minus losses required to win Knife Guy's ultimate juggling game prize."
+    _name = "Required Knife Guy wins (normal prize)"
+    _description = "The number of wins minus losses required to win Knife Guy's juggling game prize (normally the Bright Card)."
     _default = 12
     min_value = 1
     max_value = 254
@@ -1135,6 +1150,21 @@ class SuperJump2Threshold(RangeFlag):
     min_value = 2
     max_value = 100
     _id = "sj2"
+
+class FixKnifeGuy(BooleanFlag):
+    _name = "Fix Knife Guy max prize glitch"
+    _description = """In the original game, Knife Guy runs a dialog that suggests you get a Red Essence at 255 net wins. However, a command to actually add the item to your inventory is missing, so the item you get is just a random mushroom like normal. This flag fixes this and turns it into a check."""
+    _id = "fix_kg"
+
+class KnifeGuyFixedPrizeThreshold(RangeFlag):
+    _name = "Required Knife Guy wins (max prize)"
+    _description = "The number of wins minus losses required to win Knife Guy's maxed out game prize (originally intended to be a Red Essence). Must be higher than Knife Guy's other prize check."
+    _default = 255
+    min_value = 2
+    max_value = 255
+    _id = "kg2"
+    _requires_all = [(FixKnifeGuy(), True)]
+
 
 
 # ******** Progression Gating
@@ -2103,7 +2133,7 @@ class RemoveFlashes(BooleanFlag):
     _name = "Remove flashes"
     _description = """Removes some flashing animations (from spells, attacks, etc). 
 <br>
-<br>Disclaimer: While this feature is intended to promote accessibility, SMRPG Randomizer's developers are not accessibility experts and we may have missed some things. Players and viewers with photosensitivity should continue to engage with this randomizer at their own risk. If you would like to suggest an animation that should have flashes removed by this feature, please see the "Contributing" section and fill out the form."""
+<br>Disclaimer: While this feature is intended to promote accessibility, SMRPG Randomizer's developers are not accessibility experts and we may have missed some things. Players and viewers with photosensitivity should continue to engage with this randomizer at their own risk. If you would like to suggest an animation that should have flashes removed by this feature, please fill out the form on GitHub."""
     _id = "noflash"
 
 
@@ -2158,6 +2188,7 @@ class CharacterRecruitmentSubcategory(FlagCategory):
     _flags: list[type[Flag]] = [
         ShuffleCharacters,
         MaxCharacters,
+        AvailableCharacters,
         StartingCharacters,
         PlayAsStarter,
     ]
@@ -2191,6 +2222,7 @@ class CharacterStatsSpellsSubcategory(FlagCategory):
         UncapSuperJumps,
         AvailableSpells,
     ]
+    _size: int = 4
     _id = "C"
 
 
@@ -2264,6 +2296,8 @@ class BehaviourSubcategory(FlagCategory):
         EXPChallenge,
         GrateGuyPrizeThreshold,
         KnifeGuyPrizeThreshold,
+        FixKnifeGuy,
+        KnifeGuyFixedPrizeThreshold,
         SuitePrize1Threshold,
         SuitePrize2Threshold,
         SuitePrize3Threshold,

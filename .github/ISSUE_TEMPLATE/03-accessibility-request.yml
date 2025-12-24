@@ -1,0 +1,36 @@
+name: Photosensitivity request
+description: Request a flashing animation to be optionally disabled
+title: "[Accessibility]: "
+labels: [accessibility]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The "Remove flashes" flag removes sudden, brief full-screen white flashes or otherwise quick high-contrast flashing in the following areas:
+        * Thunderbolt
+        * Crusher (timed hit)
+        * Dark Star second bounce
+        * Spiked Link (timed hit)
+        * Geno Blast
+        * Geno Flash
+        * Shaker and Silver Bullet
+        * Static E!
+        * Meteor Swarm
+        * Rock Candy and Meteor Blast
+        * Big Bang and Fire Bomb
+        * Ice Bomb and Solidify
+        * Smithy 2 beginning animation
+        You can use this form to suggest additional animations for this flag to remove.
+
+        Disclaimer: While this feature is intended to promote accessibility, SMRPG Randomizer's developers are not accessibility experts and we may have missed some things. Players and viewers with photosensitivity should continue to engage with this randomizer at their own risk.
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: Issue
+      description: |
+        Describe in as much detail as you can where the animation happens.  
+        Normally the "Remove flashes" flag will simply remove the animation, but if you have another preferred resolution feel free to include it and we will do our best.
+    validations:
+      required: true
