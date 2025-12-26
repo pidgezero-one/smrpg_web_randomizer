@@ -1,7 +1,7 @@
 from .prize import Prize
 
 
-class Inventory(list):
+class Inventory(list[Prize]):
     """A list of items, boss fights, spells, and characters the player is assumed
     to have collected."""
 

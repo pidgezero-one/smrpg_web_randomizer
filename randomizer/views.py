@@ -123,6 +123,51 @@ for category in CATEGORIES:
             FLAGS.append(_build_flag_json_data(flag, sub_inst.id, FLAG_TO_SUBCATEGORY))
 
 
+def _build_categories_for_template() -> list[dict]:
+    """Build category data structure for the options template.
+
+    Django templates cannot access underscore-prefixed attributes,
+    so we convert the category/flag hierarchy to dictionaries with public keys.
+    """
+    result = []
+    for category_cls in CATEGORIES:
+        cat_inst = category_cls()
+        cat_data = {
+            "name": cat_inst.name,
+            "subcategories": [],
+            "flags": [],
+        }
+
+        # Process subcategories
+        for subcategory_cls in cat_inst.subcategories:
+            sub_inst = subcategory_cls()
+            sub_data = {
+                "name": sub_inst.name,
+                "flags": [],
+            }
+            for flag_cls in sub_inst.flags:
+                flag_inst = flag_cls()
+                sub_data["flags"].append({
+                    "name": flag_inst.name,
+                    "description": flag_inst.description,
+                })
+            cat_data["subcategories"].append(sub_data)
+
+        # Process direct flags (if any)
+        for flag_cls in cat_inst.flags:
+            flag_inst = flag_cls()
+            cat_data["flags"].append({
+                "name": flag_inst.name,
+                "description": flag_inst.description,
+            })
+
+        result.append(cat_data)
+    return result
+
+
+CATEGORIES_FOR_TEMPLATE = _build_categories_for_template()
+
+
 class RandomizerView(TemplateView):
     """
     Base class for views that generate a ROM, i.e. randomizer and patch-from-hash views.
@@ -152,6 +197,11 @@ class HowToPlayView(RandomizerView):
 class OptionsView(RandomizerView):
     template_name = "randomizer/options.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = CATEGORIES_FOR_TEMPLATE
+        return context
+
 
 class ResourcesView(RandomizerView):
     template_name = "randomizer/resources.html"
@@ -159,6 +209,14 @@ class ResourcesView(RandomizerView):
 
 class ContributeView(RandomizerView):
     template_name = "randomizer/contribute.html"
+
+
+class CommunityView(RandomizerView):
+    template_name = "randomizer/community.html"
+
+
+class RemakeView(RandomizerView):
+    template_name = "randomizer/_remake_rando.html"
 
 
 class GuideView(RandomizerView):

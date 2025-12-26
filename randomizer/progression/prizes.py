@@ -365,6 +365,7 @@ class FroggiestickPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Caster's Staff", description="It looks pretty good at bonking."
     )
+    _monstro_shuffle = True
 
 
 class NokNokShellPrize(ItemPrize):
@@ -401,6 +402,7 @@ class ChompPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Chain Chomp", description="It's hungry to stir up some trouble."
     )
+    _monstro_shuffle = True
 
 
 class MasherPrize(ItemPrize):
@@ -561,6 +563,7 @@ class LazyShellWeaponPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Shell", description="There's no turtle inside of it."
     )
+    _monstro_shuffle = True
 
 
 class FryingPanPrize(ItemPrize):
@@ -577,6 +580,7 @@ class WonderChompPrize(ItemPrize):
         description="It's hungry to stir up some BIG\n trouble.",
     )
     remake_only = True
+    _monstro_shuffle = True
 
 
 class Stella023Prize(ItemPrize):
@@ -585,6 +589,7 @@ class Stella023Prize(ItemPrize):
         nickname="Cool Gun", description="Why does it remind me of a train?"
     )
     remake_only = True
+    _monstro_shuffle = True
 
 
 class SageStickPrize(ItemPrize):
@@ -593,6 +598,7 @@ class SageStickPrize(ItemPrize):
         nickname="Caster's Staff", description="It looks pretty good at bonking."
     )
     remake_only = True
+    _monstro_shuffle = True
 
 
 class LuckyHammerPrize(ItemPrize):
@@ -834,6 +840,7 @@ class SuperSuitPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Jumpsuit", description="It looks pretty powerful, right?"
     )
+    _monstro_shuffle = True
 
 
 class LazyShellArmorPrize(ItemPrize):
@@ -842,6 +849,7 @@ class LazyShellArmorPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Shell", description="There's no turtle inside of it."
     )
+    _monstro_shuffle = True
 
 
 class ZoomShoesPrize(ItemPrize):
@@ -850,6 +858,7 @@ class ZoomShoesPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Vans", description="I bet you can run really fast in\n these."
     )
+    _monstro_shuffle = True
 
 
 class SafetyBadgePrize(ItemPrize):
@@ -901,6 +910,7 @@ class AttackScarfPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Starry Scarf", description="It could save your life!"
     )
+    _monstro_shuffle = True
 
 
 class RareScarfPrize(ItemPrize):
@@ -959,6 +969,7 @@ class GhostMedalPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Military Decoration", description="I wonder what powers it bestows?"
     )
+    _monstro_shuffle = True
 
 
 class JinxBeltPrize(ItemPrize):
@@ -967,6 +978,7 @@ class JinxBeltPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Black Sash", description="A true fighter would love this."
     )
+    _monstro_shuffle = True
 
 
 class FeatherPrize(ItemPrize):
@@ -997,6 +1009,7 @@ class QuartzCharmPrize(ItemPrize):
         nickname="Crystal",
         description="It might have special powers.\n Or it might not.",
     )
+    _monstro_shuffle = True
 
 
 class TeamworkBandPrize(ItemPrize):
@@ -1006,6 +1019,7 @@ class TeamworkBandPrize(ItemPrize):
         description="Maybe the real treasure is the\n friends we made along the way.",
     )
     remake_only = True
+    _monstro_shuffle = True
 
 
 class EnduringBroochPrize(ItemPrize):
@@ -1014,6 +1028,7 @@ class EnduringBroochPrize(ItemPrize):
         nickname="Shiny Brooch", description="It looks pretty stylish."
     )
     remake_only = True
+    _monstro_shuffle = True
 
 
 class MushroomPrize(ItemPrize):

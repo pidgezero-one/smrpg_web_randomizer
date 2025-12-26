@@ -173,6 +173,7 @@ class StartingCharacter1(CharacterRecruitmentLocation):
 
 
 class MarioSpell1(SpellSlotLocation):
+    _bias = True
     _originally_held = JumpSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -180,101 +181,130 @@ class MarioSpell1(SpellSlotLocation):
 
 
 class MarioSpell2(SpellSlotLocation):
+    _bias = True
     _originally_held = FireOrbSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MarioRecruitmentPrize)
-        return inventory.has_item(MarioRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_mushroom_way_boss,
-                    can_defeat_bandits_way_boss,
-                    can_defeat_mushroom_kingdom_boss,
-                ],
+        return (
+            inventory.has_item(MarioRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_mushroom_way_boss,
+                        can_defeat_bandits_way_boss,
+                        can_defeat_mushroom_kingdom_boss,
+                    ],
+                )
+                or (
+                    isinstance(item, MarioRecruitmentPrize) and item.starting_level >= 3
+                )
             )
-            or (isinstance(item, MarioRecruitmentPrize) and item.starting_level >= 3)
+            and has_learned_spell(world, inventory, MarioSpell1)
         )
 
 
 class MarioSpell3(SpellSlotLocation):
+    _bias = True
     _originally_held = SuperJumpSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MarioRecruitmentPrize)
-        return inventory.has_item(MarioRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_sewer_boss,
-                    can_defeat_forest_boss,
-                    can_defeat_first_moleville_boss,
-                    can_defeat_second_moleville_boss,
-                    can_defeat_curtain_boss,
-                    can_defeat_balcony_boss,
-                    can_defeat_chapel_boss,
-                ],
+        return (
+            inventory.has_item(MarioRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_sewer_boss,
+                        can_defeat_forest_boss,
+                        can_defeat_first_moleville_boss,
+                        can_defeat_second_moleville_boss,
+                        can_defeat_curtain_boss,
+                        can_defeat_balcony_boss,
+                        can_defeat_chapel_boss,
+                    ],
+                )
+                or (
+                    isinstance(item, MarioRecruitmentPrize) and item.starting_level >= 6
+                )
             )
-            or (isinstance(item, MarioRecruitmentPrize) and item.starting_level >= 6)
+            and has_learned_spell(world, inventory, MarioSpell2)
         )
 
 
 class MarioSpell4(SpellSlotLocation):
+    _bias = True
     _originally_held = SuperFlameSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MarioRecruitmentPrize)
-        return inventory.has_item(MarioRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_ship_midboss,
-                    can_defeat_ship_boss,
-                    can_defeat_seaside_boss,
-                ],
+        return (
+            inventory.has_item(MarioRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_ship_midboss,
+                        can_defeat_ship_boss,
+                        can_defeat_seaside_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, MarioSpell3)
         )
 
 
 class MarioSpell5(SpellSlotLocation):
+    _bias = True
     _originally_held = UltraJumpSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MarioRecruitmentPrize)
-        return inventory.has_item(MarioRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_lands_end_cloud_boss,
-                    can_defeat_temple_boss,
-                    can_defeat_second_dojo_boss,
-                    can_defeat_valley_boss,
-                ],
+        return (
+            inventory.has_item(MarioRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_lands_end_cloud_boss,
+                        can_defeat_temple_boss,
+                        can_defeat_second_dojo_boss,
+                        can_defeat_valley_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, MarioSpell4)
         )
 
 
 class MarioSpell6(SpellSlotLocation):
+    _bias = True
     _originally_held = UltraFlameSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MarioRecruitmentPrize)
-        return inventory.has_item(MarioRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_statue_boss,
-                    can_defeat_nimbus_boss,
-                    can_defeat_egg_boss,
-                    can_defeat_volcano_boss,
-                    can_defeat_volcano_midboss,
-                ],
+        return (
+            inventory.has_item(MarioRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_statue_boss,
+                        can_defeat_nimbus_boss,
+                        can_defeat_egg_boss,
+                        can_defeat_volcano_boss,
+                        can_defeat_volcano_midboss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, MarioSpell5)
         )
 
 
@@ -338,7 +368,8 @@ class StartingCharacter5(CharacterRecruitmentLocation):
         return super().set_prize(prize)
 
 
-class PostgameVoucherLocation(NPCLocationRow6):
+class PostgameVoucherLocation(NPCLocationRow6, KeyItemLocation):
+    _bias = True
     _originally_held = StayVoucherPrize
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.POSTGAME_VOUCHER
@@ -420,6 +451,7 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
 
 
 class MushroomWayLeftItemRemake(StandingLocationRow1):
+    _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R204_MUSHROOM_WAY_AREA_02]
     _npc_ids = [NPC_10]
@@ -435,6 +467,7 @@ class MushroomWayLeftItemRemake(StandingLocationRow1):
 
 
 class MushroomWayRightItemRemake(StandingLocationRow2):
+    _bias = True
     _originally_held = PickMeUpPrize
     _rooms = [R204_MUSHROOM_WAY_AREA_02]
     _npc_ids = [NPC_11]
@@ -459,7 +492,7 @@ class MushrooomWayBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -479,6 +512,7 @@ class MushrooomWayBossFight(BossFightLocation):
 
 
 class MushroomWayStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_STAR_PIECE
@@ -494,6 +528,7 @@ class MushroomWayStarPiece(StarPieceLocation):
 
 
 class MushroomWayBossFightRewardItem(NPCLocationRow1):
+    _bias = True
     _originally_held = HammerPrize
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
     _id = ShuffleLocationSelector.HAMMER_BROS_REWARD
@@ -506,6 +541,7 @@ class MushroomWayBossFightRewardItem(NPCLocationRow1):
 
 
 class MushroomWayCharacter(CharacterRecruitmentLocation):
+    _bias = True
     _originally_held = MallowRecruitmentPrize
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_CHARACTER
@@ -528,6 +564,7 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
 
 
 class MallowSpell1(SpellSlotLocation):
+    _bias = True
     _originally_held = ThunderboltSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -536,101 +573,132 @@ class MallowSpell1(SpellSlotLocation):
 
 # TODO: Gate later spell slots behind can_defeat_some? Might be good idea?
 class MallowSpell2(SpellSlotLocation):
+    _bias = True
     _originally_held = HPRainSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MallowRecruitmentPrize)
-        return inventory.has_item(MallowRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_mushroom_way_boss,
-                    can_defeat_bandits_way_boss,
-                    can_defeat_mushroom_kingdom_boss,
-                ],
+        return (
+            inventory.has_item(MallowRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_mushroom_way_boss,
+                        can_defeat_bandits_way_boss,
+                        can_defeat_mushroom_kingdom_boss,
+                    ],
+                )
+                or (
+                    isinstance(item, MallowRecruitmentPrize)
+                    and item.starting_level >= 3
+                )
             )
-            or (isinstance(item, MallowRecruitmentPrize) and item.starting_level >= 3)
+            and has_learned_spell(world, inventory, MallowSpell1)
         )
 
 
 class MallowSpell3(SpellSlotLocation):
+    _bias = True
     _originally_held = PsychopathSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MallowRecruitmentPrize)
-        return inventory.has_item(MallowRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_sewer_boss,
-                    can_defeat_forest_boss,
-                    can_defeat_first_moleville_boss,
-                    can_defeat_second_moleville_boss,
-                    can_defeat_curtain_boss,
-                    can_defeat_balcony_boss,
-                    can_defeat_chapel_boss,
-                ],
+        return (
+            inventory.has_item(MallowRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_sewer_boss,
+                        can_defeat_forest_boss,
+                        can_defeat_first_moleville_boss,
+                        can_defeat_second_moleville_boss,
+                        can_defeat_curtain_boss,
+                        can_defeat_balcony_boss,
+                        can_defeat_chapel_boss,
+                    ],
+                )
+                or (
+                    isinstance(item, MallowRecruitmentPrize)
+                    and item.starting_level >= 6
+                )
             )
-            or (isinstance(item, MallowRecruitmentPrize) and item.starting_level >= 6)
+            and has_learned_spell(world, inventory, MallowSpell2)
         )
 
 
 class MallowSpell4(SpellSlotLocation):
+    _bias = True
     _originally_held = ShockerSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MallowRecruitmentPrize)
-        return inventory.has_item(MallowRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_ship_midboss,
-                    can_defeat_ship_boss,
-                    can_defeat_seaside_boss,
-                ],
+        return (
+            inventory.has_item(MallowRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_ship_midboss,
+                        can_defeat_ship_boss,
+                        can_defeat_seaside_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, MallowSpell3)
         )
 
 
 class MallowSpell5(SpellSlotLocation):
+    _bias = True
     _originally_held = SnowyPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MallowRecruitmentPrize)
-        return inventory.has_item(MallowRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_lands_end_cloud_boss,
-                    can_defeat_temple_boss,
-                    can_defeat_second_dojo_boss,
-                    can_defeat_valley_boss,
-                ],
+        return (
+            inventory.has_item(MallowRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_lands_end_cloud_boss,
+                        can_defeat_temple_boss,
+                        can_defeat_second_dojo_boss,
+                        can_defeat_valley_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, MallowSpell4)
         )
 
 
 class MallowSpell6(SpellSlotLocation):
+    _bias = True
     _originally_held = StarRainSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(MallowRecruitmentPrize)
-        return inventory.has_item(MallowRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_statue_boss,
-                    can_defeat_nimbus_boss,
-                    can_defeat_egg_boss,
-                    can_defeat_volcano_boss,
-                    can_defeat_volcano_midboss,
-                ],
+        return (
+            inventory.has_item(MallowRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_statue_boss,
+                        can_defeat_nimbus_boss,
+                        can_defeat_egg_boss,
+                        can_defeat_volcano_boss,
+                        can_defeat_volcano_midboss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, MallowSpell5)
         )
 
 
@@ -743,6 +811,7 @@ class MushroomKingdomWalletGuyFirstRewardLocation(NPCLocationRow2):
 
 
 class MushroomKingdomWalletGuySecondRewardLocation(NPCLocationRow3):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
@@ -761,6 +830,7 @@ class MushroomKingdomWalletGuySecondRewardLocation(NPCLocationRow3):
 
 
 class MushroomKingdomOccupiedOutdoorGuardLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, R191_MUSHROOM_KINGDOM_OUTSIDE]
     _id = ShuffleLocationSelector.INVASION_EASTERN_GUARD
@@ -774,6 +844,7 @@ class MushroomKingdomOccupiedOutdoorGuardLocation(NPCLocationRow1):
 
 
 class MushroomKingdomOccupiedCastleToadRescueLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [
         R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM,
@@ -789,6 +860,7 @@ class MushroomKingdomOccupiedCastleToadRescueLocation(NPCLocationRow2):
 
 
 class MushroomKingdomOccupiedFamilyRescueLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [
         R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
@@ -804,6 +876,7 @@ class MushroomKingdomOccupiedFamilyRescueLocation(NPCLocationRow1):
 
 
 class MushroomKingdomOccupiedGuestRoomLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = WakeUpPinPrize
     _rooms = [R330_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_GUEST_ROOM]
     _id = ShuffleLocationSelector.INVASION_GUEST_ROOM
@@ -816,6 +889,7 @@ class MushroomKingdomOccupiedGuestRoomLocation(NPCLocationRow1):
 
 
 class MushroomKingdomBossFight(BossFightLocation):
+    _bias = True
     _originally_held = MackBossFight
     _rooms = [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM]
     _id = ShuffleLocationSelector.INVASION_BOSS_FIGHT
@@ -828,7 +902,7 @@ class MushroomKingdomBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -843,6 +917,7 @@ class MushroomKingdomBossFight(BossFightLocation):
 
 
 class MushroomKingdomStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = StarPiece1
     _rooms = [R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM]
     _id = ShuffleLocationSelector.INVASION_STAR_PIECE
@@ -861,6 +936,7 @@ class MushroomKingdomStarPiece(StarPieceLocation):
 
 
 class MushroomKingdomStoreExchangeLocation(NPCLocationRow2, KeyItemLocation):
+    _bias = True
     _originally_held = CricketPiePrize
     _rooms = [
         R483_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_TOP_FLOOR,
@@ -878,6 +954,7 @@ class MushroomKingdomStoreExchangeLocation(NPCLocationRow2, KeyItemLocation):
 
 
 class MushroomKingdomInnPurchaseLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = BeetlemaniaPrize
     _rooms = [
         R493_MUSHROOM_KINGDOM_INN_1F,
@@ -895,6 +972,7 @@ class MushroomKingdomInnPurchaseLocation(NPCLocationRow1):
 
 
 class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = KerokeroColaPrize
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_9]
@@ -909,6 +987,7 @@ class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
 
 
 class BanditsWayCoin1Location(StandingLocationRow3):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_3]
@@ -922,6 +1001,7 @@ class BanditsWayCoin1Location(StandingLocationRow3):
 
 
 class BanditsWayCoin2Location(StandingLocationRow2):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_4]
@@ -935,6 +1015,7 @@ class BanditsWayCoin2Location(StandingLocationRow2):
 
 
 class BanditsWayCoin3Location(StandingLocationRow1):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_5]
@@ -948,6 +1029,7 @@ class BanditsWayCoin3Location(StandingLocationRow1):
 
 
 class BanditsWayDogChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R077_BANDITS_WAY_AREA_03]
     _npc_ids = [NPC_0]
@@ -962,6 +1044,7 @@ class BanditsWayDogChestLocation(TreasureChestLocationRow1):
 
 
 class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = BanditsWayStarPrize
     _rooms = [R078_BANDITS_WAY_AREA_04]
     _npc_ids = [NPC_0]
@@ -975,6 +1058,7 @@ class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
 
 
 class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R078_BANDITS_WAY_AREA_04]
     _npc_ids = [NPC_1]
@@ -988,6 +1072,7 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
 
 
 class BanditsWayDeadEndChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _npc_ids = [NPC_0]
@@ -1002,6 +1087,7 @@ class BanditsWayDeadEndChestLocation(TreasureChestLocationRow1):
 
 
 class BanditsWayBossFight(BossFightLocation):
+    _bias = True
     _originally_held = Croco1BossFight
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.BANDITS_WAY_BOSS_FIGHT
@@ -1014,7 +1100,7 @@ class BanditsWayBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -1022,6 +1108,7 @@ class BanditsWayBossFight(BossFightLocation):
 
 
 class BanditsWayStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_PIECE
@@ -1037,6 +1124,7 @@ class BanditsWayStarPiece(StarPieceLocation):
 
 
 class BanditsWayBossFirstItemDropLocation(NPCLocationRow1, KeyItemLocation):
+    _bias = True
     _originally_held = RareFrogCoinPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.CROCO_1_REWARD
@@ -1049,6 +1137,7 @@ class BanditsWayBossFirstItemDropLocation(NPCLocationRow1, KeyItemLocation):
 
 
 class BanditsWayBossSecondItemDropLocation(NPCLocationRow2, KeyItemLocation):
+    _bias = True
     _originally_held = WalletPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.CROCO_1_REWARD_2
@@ -1064,6 +1153,7 @@ class BanditsWayBossSecondItemDropLocation(NPCLocationRow2, KeyItemLocation):
 
 
 class KeroSewersStairRoomLeftChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS]
     _npc_ids = [NPC_0]
@@ -1078,6 +1168,7 @@ class KeroSewersStairRoomLeftChestLocation(TreasureChestLocationRow1):
 
 
 class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FirstMimicFightLauncher
     _rooms = [R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS]
     _npc_ids = [NPC_1]
@@ -1092,6 +1183,7 @@ class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
 
 
 class Mimic1BossFight(BossFightLocation):
+    _bias = True
     _originally_held = PandoriteBossFight
     _rooms = [512]  # can be in any room.
     _override_id = 512
@@ -1105,7 +1197,7 @@ class Mimic1BossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -1113,6 +1205,7 @@ class Mimic1BossFight(BossFightLocation):
 
 
 class Mimic1DropRewardLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = TrueformPinPrize
     _rooms = [512]  # can be in any room, custom id.
     _id = ShuffleLocationSelector.PANDORITE_REWARD_1
@@ -1126,6 +1219,7 @@ class Mimic1DropRewardLocation(NPCLocationRow1):
 
 
 class Mimic1StarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [512]  # can be in any room.
     _override_id = 512
@@ -1142,6 +1236,7 @@ class Mimic1StarPiece(StarPieceLocation):
 
 
 class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = Coins50Prize
     _rooms = [512]  # can be in any room.
     _id = ShuffleLocationSelector.PANDORITE_REWARD_2
@@ -1156,6 +1251,7 @@ class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
 
 
 class KeroSewersFourRatRoomChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = KeroSewersStarPrize
     _rooms = [R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS]
     _npc_ids = [NPC_0]
@@ -1169,6 +1265,7 @@ class KeroSewersFourRatRoomChestLocation(TreasureChestLocationRow1):
 
 
 class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _npc_ids = [NPC_0]
@@ -1183,6 +1280,7 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
 
 
 class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _npc_ids = [NPC_1]
@@ -1213,6 +1311,7 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
 
 
 class KeroSewersBossFight(BossFightLocation):
+    _bias = True
     _originally_held = Belome1BossFight
     _rooms = [R302_KERO_SEWERS_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.KERO_SEWERS_BOSS
@@ -1222,7 +1321,7 @@ class KeroSewersBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -1244,6 +1343,7 @@ class KeroSewersBossFight(BossFightLocation):
 
 
 class KeroSewersStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _id = ShuffleLocationSelector.KERO_SEWERS_STAR_PIECE
@@ -1291,10 +1391,12 @@ class MidasRiverBottomRightCaveLocation(RiverLocationRow2):
 
 
 class TadpolePondCricketPieExchangeLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FroggiestickPrize
     _rooms = [R075_TADPOLE_POND_AREA_01]
     _id = ShuffleLocationSelector.CRICKET_PIE_REWARD
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(CricketPiePrize)
@@ -1303,6 +1405,7 @@ class TadpolePondCricketPieExchangeLocation(NPCLocationRow1):
 
 
 class TadpolePondCricketJamExchangeLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = FrogCoin10Prize
     _rooms = [R075_TADPOLE_POND_AREA_01]
     _id = ShuffleLocationSelector.CRICKET_JAM_REWARD
@@ -1325,6 +1428,7 @@ class MelodyBayFirstRewardLocation(NPCLocationRow1, KeyItemLocation):
 
 
 class MelodyBaySecondRewardLocation(NPCLocationRow2, KeyItemLocation):
+    _bias = True
     _originally_held = ProgressiveCardPrize
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_2
@@ -1337,6 +1441,7 @@ class MelodyBaySecondRewardLocation(NPCLocationRow2, KeyItemLocation):
 
 
 class MelodyBayThirdRewardLocation(NPCLocationRow3, KeyItemLocation):
+    _bias = True
     _originally_held = ProgressiveCardPrize
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_3
@@ -1495,12 +1600,14 @@ class RoseTownShopRightChestLocation(TreasureChestLocationRow2):
 
 
 class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = LazyShellArmorPrize
     _rooms = [R419_LAZY_SHELL_CLOUD]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.GARDENER_CLOUD_1
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize]
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -1514,12 +1621,14 @@ class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):
 
 
 class RoseTownCloudLeftChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = LazyShellWeaponPrize
     _rooms = [R419_LAZY_SHELL_CLOUD]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.GARDENER_CLOUD_2
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize]
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -1544,6 +1653,7 @@ class RoseTownInnToadPrizeLocation(NPCLocationRow1):
 
 
 class RoseTownInnGazPrizeLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FingerShotPrize
     _rooms = [R086_ROSE_TOWN_INN_1F]
     _id = ShuffleLocationSelector.GAZ
@@ -1582,6 +1692,7 @@ class RoseTownTreasureHouseRightChestLocation(TreasureChestLocationRow2):
 
 
 class RoseTownTreasureHouseMazeRewardLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F,
@@ -1614,6 +1725,7 @@ class RoseTownTreasureHouseUpperChestLocation(TreasureChestLocationRow1):
 
 
 class ForestMazeFirstRoomLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = KerokeroColaPrize
     _rooms = [R224_FOREST_MAZE_AREA_01]
     _npc_ids = [NPC_2]
@@ -1628,6 +1740,7 @@ class ForestMazeFirstRoomLocation(TreasureChestLocationRow1):
 
 
 class ForestMazeFirstUndergroundExitLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R228_FOREST_MAZE_AREA_04]
     _npc_ids = [NPC_2]
@@ -1642,6 +1755,7 @@ class ForestMazeFirstUndergroundExitLocation(TreasureChestLocationRow1):
 
 
 class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = KerokeroColaPrize
     _rooms = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
     _npc_ids = [NPC_2]
@@ -1656,6 +1770,7 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
 
 
 class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
     _npc_ids = [NPC_3]
@@ -1670,6 +1785,7 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
 
 
 class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = EmptyPrize
     _rooms = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
     _npc_ids = [NPC_4]
@@ -1684,6 +1800,7 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
 
 
 class ForestMazeInnerMazeEntranceLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RedEssencePrize
     _rooms = [R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE]
     _npc_ids = [NPC_4]
@@ -1697,6 +1814,7 @@ class ForestMazeInnerMazeEntranceLocation(TreasureChestLocationRow1):
 
 
 class ForestMazeSecretTopRightChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_1]
@@ -1711,6 +1829,7 @@ class ForestMazeSecretTopRightChestLocation(TreasureChestLocationRow1):
 
 
 class ForestMazeSecretBottomRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_2]
@@ -1725,6 +1844,7 @@ class ForestMazeSecretBottomRightChestLocation(TreasureChestLocationRow2):
 
 
 class ForestMazeSecretTopMiddleChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_3]
@@ -1739,6 +1859,7 @@ class ForestMazeSecretTopMiddleChestLocation(TreasureChestLocationRow3):
 
 
 class ForestMazeSecretBottomMiddleChestLocation(TreasureChestLocationRow4):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_4]
@@ -1753,6 +1874,7 @@ class ForestMazeSecretBottomMiddleChestLocation(TreasureChestLocationRow4):
 
 
 class ForestMazeSecretLeftChestLocation(TreasureChestLocationRow5):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R234_FOREST_MAZE_SECRET]
     _npc_ids = [NPC_5]
@@ -1767,6 +1889,7 @@ class ForestMazeSecretLeftChestLocation(TreasureChestLocationRow5):
 
 
 class ForestMazeBossFight(BossFightLocation):
+    _bias = True
     _originally_held = BowyerBossFight
     _rooms = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
     _id = ShuffleLocationSelector.FOREST_MAZE_BOSS
@@ -1776,7 +1899,7 @@ class ForestMazeBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -1798,6 +1921,7 @@ class ForestMazeBossFight(BossFightLocation):
 
 
 class ForestMazeStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = StarPiece2
     _rooms = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
     _id = ShuffleLocationSelector.FOREST_MAZE_STAR_PIECE
@@ -1813,6 +1937,7 @@ class ForestMazeStarPiece(StarPieceLocation):
 
 
 class ForestMazeCharacter(CharacterRecruitmentLocation):
+    _bias = True
     _originally_held = GenoRecruitmentPrize
     _rooms = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
     _id = ShuffleLocationSelector.FOREST_MAZE_CHARACTER
@@ -1835,6 +1960,7 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
 
 
 class GenoSpell1(SpellSlotLocation):
+    _bias = True
     _originally_held = GenoBeamSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1842,100 +1968,125 @@ class GenoSpell1(SpellSlotLocation):
 
 
 class GenoSpell2(SpellSlotLocation):
+    _bias = True
     _originally_held = GenoBoostSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(GenoRecruitmentPrize)
-        return inventory.has_item(GenoRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_mushroom_way_boss,
-                    can_defeat_bandits_way_boss,
-                    can_defeat_mushroom_kingdom_boss,
-                ],
+        return (
+            inventory.has_item(GenoRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_mushroom_way_boss,
+                        can_defeat_bandits_way_boss,
+                        can_defeat_mushroom_kingdom_boss,
+                    ],
+                )
+                or (isinstance(item, GenoRecruitmentPrize) and item.starting_level >= 8)
             )
-            or (isinstance(item, GenoRecruitmentPrize) and item.starting_level >= 8)
+            and has_learned_spell(world, inventory, GenoSpell1)
         )
 
 
 class GenoSpell3(SpellSlotLocation):
+    _bias = True
     _originally_held = GenoWhirlSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(GenoRecruitmentPrize)
-        return inventory.has_item(GenoRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_sewer_boss,
-                    can_defeat_forest_boss,
-                    can_defeat_first_moleville_boss,
-                    can_defeat_second_moleville_boss,
-                    can_defeat_curtain_boss,
-                    can_defeat_balcony_boss,
-                    can_defeat_chapel_boss,
-                ],
+        return (
+            inventory.has_item(GenoRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_sewer_boss,
+                        can_defeat_forest_boss,
+                        can_defeat_first_moleville_boss,
+                        can_defeat_second_moleville_boss,
+                        can_defeat_curtain_boss,
+                        can_defeat_balcony_boss,
+                        can_defeat_chapel_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, GenoSpell2)
         )
 
 
 class GenoSpell4(SpellSlotLocation):
+    _bias = True
     _originally_held = GenoBlastSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(GenoRecruitmentPrize)
-        return inventory.has_item(GenoRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_ship_midboss,
-                    can_defeat_ship_boss,
-                    can_defeat_seaside_boss,
-                ],
+        return (
+            inventory.has_item(GenoRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_ship_midboss,
+                        can_defeat_ship_boss,
+                        can_defeat_seaside_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, GenoSpell3)
         )
 
 
 class GenoSpell5(SpellSlotLocation):
+    _bias = True
     _originally_held = GenoFlashSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(GenoRecruitmentPrize)
-        return inventory.has_item(GenoRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_lands_end_cloud_boss,
-                    can_defeat_temple_boss,
-                    can_defeat_second_dojo_boss,
-                    can_defeat_valley_boss,
-                ],
+        return (
+            inventory.has_item(GenoRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_lands_end_cloud_boss,
+                        can_defeat_temple_boss,
+                        can_defeat_second_dojo_boss,
+                        can_defeat_valley_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, GenoSpell4)
         )
 
 
 class GenoSpell6(SpellSlotLocation):
+    _bias = True
     _originally_held = None
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(GenoRecruitmentPrize)
-        return inventory.has_item(GenoRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_statue_boss,
-                    can_defeat_nimbus_boss,
-                    can_defeat_egg_boss,
-                    can_defeat_volcano_boss,
-                    can_defeat_volcano_midboss,
-                ],
+        return (
+            inventory.has_item(GenoRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_statue_boss,
+                        can_defeat_nimbus_boss,
+                        can_defeat_egg_boss,
+                        can_defeat_volcano_boss,
+                        can_defeat_volcano_midboss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, GenoSpell5)
         )
 
 
@@ -1943,6 +2094,7 @@ class GenoSpell6(SpellSlotLocation):
 
 
 class PipeVaultSlidingCoinRoomBackChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_8]
@@ -1957,6 +2109,7 @@ class PipeVaultSlidingCoinRoomBackChestLocation(TreasureChestLocationRow3):
 
 
 class PipeVaultSlidingCoinRoomMiddleChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_9]
@@ -1971,6 +2124,7 @@ class PipeVaultSlidingCoinRoomMiddleChestLocation(TreasureChestLocationRow2):
 
 
 class PipeVaultSlidingCoinRoomFrontChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_10]
@@ -1985,6 +2139,7 @@ class PipeVaultSlidingCoinRoomFrontChestLocation(TreasureChestLocationRow1):
 
 
 class PipeVaultSlidingCoinRoomCoin1Location(StandingLocationRow5):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_0]
@@ -1998,6 +2153,7 @@ class PipeVaultSlidingCoinRoomCoin1Location(StandingLocationRow5):
 
 
 class PipeVaultSlidingCoinRoomCoin2Location(StandingLocationRow4):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_1]
@@ -2011,6 +2167,7 @@ class PipeVaultSlidingCoinRoomCoin2Location(StandingLocationRow4):
 
 
 class PipeVaultSlidingCoinRoomCoin3Location(StandingLocationRow3):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_2]
@@ -2024,6 +2181,7 @@ class PipeVaultSlidingCoinRoomCoin3Location(StandingLocationRow3):
 
 
 class PipeVaultSlidingCoinRoomCoin4Location(StandingLocationRow2):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_3]
@@ -2037,6 +2195,7 @@ class PipeVaultSlidingCoinRoomCoin4Location(StandingLocationRow2):
 
 
 class PipeVaultSlidingCoinRoomCoin5Location(StandingLocationRow1):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_4]
@@ -2050,6 +2209,7 @@ class PipeVaultSlidingCoinRoomCoin5Location(StandingLocationRow1):
 
 
 class PipeVaultSlidingCoinRoomCrouchItemLocation(StandingLocationRow6):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
     _npc_ids = [NPC_5]
@@ -2063,6 +2223,7 @@ class PipeVaultSlidingCoinRoomCrouchItemLocation(StandingLocationRow6):
 
 
 class PipeVaultGoombaThumpinFirstPrizeLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
     _id = ShuffleLocationSelector.GOOMBA_THUMPING_1
@@ -2075,6 +2236,7 @@ class PipeVaultGoombaThumpinFirstPrizeLocation(NPCLocationRow1):
 
 
 class PipeVaultGoombaThumpinSecondPrizeLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = FlowerJarPrize
     _rooms = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
     _id = ShuffleLocationSelector.GOOMBA_THUMPING_2
@@ -2087,6 +2249,7 @@ class PipeVaultGoombaThumpinSecondPrizeLocation(NPCLocationRow2):
 
 
 class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS]
     _npc_ids = [NPC_0]
@@ -2101,6 +2264,7 @@ class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
 
 
 class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = Coins20Prize
     _rooms = [R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS]
     _npc_ids = [NPC_1]
@@ -2118,6 +2282,7 @@ class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
 
 
 class YosterEntranceChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT]
     _npc_ids = [NPC_1]
@@ -2132,6 +2297,7 @@ class YosterEntranceChestLocation(TreasureChestLocationRow1):
 
 
 class YosterRacePrize1Location(NPCLocationRow1):
+    _bias = True
     _originally_held = YoshiCookiePrize
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_1
@@ -2144,6 +2310,7 @@ class YosterRacePrize1Location(NPCLocationRow1):
 
 
 class YosterRacePrize2Location(NPCLocationRow3):
+    _bias = True
     _originally_held = YoshiCookiePrize
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_2
@@ -2156,6 +2323,7 @@ class YosterRacePrize2Location(NPCLocationRow3):
 
 
 class YosterRacePrize3Location(NPCLocationRow4):
+    _bias = True
     _originally_held = YoshiCookiePrize
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_3
@@ -2171,6 +2339,7 @@ class YosterRacePrize3Location(NPCLocationRow4):
 
 
 class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
+    _bias = True
     _originally_held = LuckyJewelPrize
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.TREASURE_SELLER_1
@@ -2183,6 +2352,7 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
 
 
 class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
+    _bias = True
     _originally_held = ProgressiveEggPrize
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.TREASURE_SELLER_2
@@ -2197,6 +2367,7 @@ class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
 
 
 class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
+    _bias = True
     _originally_held = FryingPanPrize
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.TREASURE_SELLER_3
@@ -2211,6 +2382,7 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
 
 
 class FireworksShopItemLocation(KeyItemLocation, NPCLocationRow1):
+    _bias = True
     _originally_held = RegularFireworksPrize
     _rooms = [R339_MOLEVILLE_FIREWORKS_SHOP]
     _id = ShuffleLocationSelector.FIREWORKS_SHOP
@@ -2231,6 +2403,7 @@ class FireworksShopItemLocation(KeyItemLocation, NPCLocationRow1):
 
 
 class PurtendStoreLocation(KeyItemLocation, NPCLocationRow2):
+    _bias = True
     _originally_held = ProgressiveFireworksPrize
     _rooms = [R108_MOLEVILLE_OUTSIDE]
     _id = ShuffleLocationSelector.PURTEND_STORE
@@ -2248,6 +2421,7 @@ class PurtendStoreLocation(KeyItemLocation, NPCLocationRow2):
 
 
 class CookieTraderLocation(KeyItemLocation, NPCLocationRow4):
+    _bias = True
     _originally_held = ProgressiveFireworksPrize
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.COOKIE_TRADER
@@ -2265,6 +2439,7 @@ class CookieTraderLocation(KeyItemLocation, NPCLocationRow4):
 
 
 class BucketGirlRewardLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R108_MOLEVILLE_OUTSIDE]
     _id = ShuffleLocationSelector.BUCKET_GIRL
@@ -2287,6 +2462,7 @@ class BucketGirlRewardLocation(NPCLocationRow1):
 
 
 class OuterMinesTrampolineHenchmanLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_1
@@ -2299,6 +2475,7 @@ class OuterMinesTrampolineHenchmanLocation(NPCLocationRow2):
 
 
 class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_2
@@ -2311,6 +2488,7 @@ class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
 
 
 class OuterMinesRightHenchmanLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_3
@@ -2323,6 +2501,7 @@ class OuterMinesRightHenchmanLocation(NPCLocationRow2):
 
 
 class OuterMinesBossFight(BossFightLocation):
+    _bias = True
     _originally_held = Croco2BossFight
     _rooms = [
         R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE,
@@ -2340,7 +2519,7 @@ class OuterMinesBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -2351,6 +2530,7 @@ class OuterMinesBossFight(BossFightLocation):
 
 
 class OuterMinesStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [518]
     _override_id = 518
@@ -2367,6 +2547,7 @@ class OuterMinesStarPiece(StarPieceLocation):
 
 
 class OuterMinesBossPrizeLocation(KeyItemLocation, NPCLocationRow1):
+    _bias = True
     _originally_held = BambinoBombPrize
     _id = ShuffleLocationSelector.CROCO_2_ITEM
     _world_area = WorldAreaEnum.MOLEVILLE
@@ -2386,6 +2567,7 @@ class OuterMinesBossPrizeLocation(KeyItemLocation, NPCLocationRow1):
 
 
 class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = MolevilleMinesStarPrize
     _rooms = [R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM]
     _npc_ids = [NPC_0]
@@ -2399,6 +2581,7 @@ class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
 
 
 class InnerMinesShyguyCartLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM
@@ -2414,6 +2597,7 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
 
 
 class InnerMinesBoxesChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = Coins150Prize
     _rooms = [R280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC]
     _npc_ids = [NPC_0]
@@ -2427,6 +2611,7 @@ class InnerMinesBoxesChestLocation(TreasureChestLocationRow1):
 
 
 class InnerMinesSaveBlockChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS]
     _npc_ids = [NPC_0]
@@ -2441,6 +2626,7 @@ class InnerMinesSaveBlockChestLocation(TreasureChestLocationRow1):
 
 
 class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS]
     _npc_ids = [NPC_1]
@@ -2455,6 +2641,7 @@ class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
 
 
 class InnerMinesBossFight(BossFightLocation):
+    _bias = True
     _originally_held = PunchinelloBossFight
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_FIGHT
@@ -2464,7 +2651,7 @@ class InnerMinesBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -2494,6 +2681,7 @@ class InnerMinesBossFight(BossFightLocation):
 
 
 class InnerMinesStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = StarPiece3
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_2
@@ -2508,6 +2696,7 @@ class InnerMinesStarPiece(StarPieceLocation):
 
 
 class InnerMinesCharacter(CharacterRecruitmentLocation):
+    _bias = True
     _originally_held = BowserRecruitmentPrize
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_CHARACTER
@@ -2529,6 +2718,7 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
 
 
 class BowserSpell1(SpellSlotLocation):
+    _bias = True
     _originally_held = TerrorizeSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2536,103 +2726,129 @@ class BowserSpell1(SpellSlotLocation):
 
 
 class BowserSpell2(SpellSlotLocation):
+    _bias = True
     _originally_held = PoisonGasSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(BowserRecruitmentPrize)
-        return inventory.has_item(BowserRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_mushroom_way_boss,
-                    can_defeat_bandits_way_boss,
-                    can_defeat_mushroom_kingdom_boss,
-                ],
+        return (
+            inventory.has_item(BowserRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_mushroom_way_boss,
+                        can_defeat_bandits_way_boss,
+                        can_defeat_mushroom_kingdom_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, BowserSpell1)
         )
 
 
 class BowserSpell3(SpellSlotLocation):
+    _bias = True
     _originally_held = CrusherSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(BowserRecruitmentPrize)
-        return inventory.has_item(BowserRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_sewer_boss,
-                    can_defeat_forest_boss,
-                    can_defeat_first_moleville_boss,
-                    can_defeat_second_moleville_boss,
-                    can_defeat_curtain_boss,
-                    can_defeat_balcony_boss,
-                    can_defeat_chapel_boss,
-                ],
+        return (
+            inventory.has_item(BowserRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_sewer_boss,
+                        can_defeat_forest_boss,
+                        can_defeat_first_moleville_boss,
+                        can_defeat_second_moleville_boss,
+                        can_defeat_curtain_boss,
+                        can_defeat_balcony_boss,
+                        can_defeat_chapel_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, BowserSpell2)
         )
 
 
 class BowserSpell4(SpellSlotLocation):
+    _bias = True
     _originally_held = BowserCrushSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(BowserRecruitmentPrize)
-        return inventory.has_item(BowserRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_ship_midboss,
-                    can_defeat_ship_boss,
-                    can_defeat_seaside_boss,
-                ],
+        return (
+            inventory.has_item(BowserRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_ship_midboss,
+                        can_defeat_ship_boss,
+                        can_defeat_seaside_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, BowserSpell3)
         )
 
 
 class BowserSpell5(SpellSlotLocation):
+    _bias = True
     _originally_held = None
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(BowserRecruitmentPrize)
-        return inventory.has_item(BowserRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_lands_end_cloud_boss,
-                    can_defeat_temple_boss,
-                    can_defeat_second_dojo_boss,
-                    can_defeat_valley_boss,
-                ],
+        return (
+            inventory.has_item(BowserRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_lands_end_cloud_boss,
+                        can_defeat_temple_boss,
+                        can_defeat_second_dojo_boss,
+                        can_defeat_valley_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, BowserSpell4)
         )
 
 
 class BowserSpell6(SpellSlotLocation):
+    _bias = True
     _originally_held = None
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(BowserRecruitmentPrize)
-        return inventory.has_item(BowserRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_statue_boss,
-                    can_defeat_nimbus_boss,
-                    can_defeat_egg_boss,
-                    can_defeat_volcano_boss,
-                    can_defeat_volcano_midboss,
-                ],
+        return (
+            inventory.has_item(BowserRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_statue_boss,
+                        can_defeat_nimbus_boss,
+                        can_defeat_egg_boss,
+                        can_defeat_volcano_boss,
+                        can_defeat_volcano_midboss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, BowserSpell5)
         )
 
 
 class InnerMinesPostgameBossFight(BossFightLocation):
+    _bias = True
     _originally_held = Punchinello2BossFight
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _override_id = 527
@@ -2644,7 +2860,7 @@ class InnerMinesPostgameBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -2655,6 +2871,7 @@ class InnerMinesPostgameBossFight(BossFightLocation):
 
 
 class InnerMinesPostgameStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _override_id = 527
@@ -2672,11 +2889,13 @@ class InnerMinesPostgameStarPiece(StarPieceLocation):
 
 
 class InnerMinesPostgameDrop(NPCLocationRow1):
+    _bias = True
     _originally_held = WonderChompPrize
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_POSTGAME_DROP
     _world_area = WorldAreaEnum.MOLEVILLE
     _remake_only = True
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_postgame_moleville_boss(world, inventory)
@@ -2725,6 +2944,7 @@ class BoosterPassSecondRoomFlowerLocation(StandingLocationRow3):
 
 
 class BoosterPassSecretMiddleChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R405_BOOSTER_PASS_SECRET]
     _npc_ids = [NPC_10]
@@ -2739,6 +2959,7 @@ class BoosterPassSecretMiddleChestLocation(TreasureChestLocationRow1):
 
 
 class BoosterPassSecretRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R405_BOOSTER_PASS_SECRET]
     _npc_ids = [NPC_11]
@@ -2753,6 +2974,7 @@ class BoosterPassSecretRightChestLocation(TreasureChestLocationRow2):
 
 
 class BoosterPassSecretLeftChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = KerokeroColaPrize
     _rooms = [R405_BOOSTER_PASS_SECRET]
     _npc_ids = [NPC_12]
@@ -2770,6 +2992,7 @@ class BoosterPassSecretLeftChestLocation(TreasureChestLocationRow3):
 
 
 class BoosterTowerSpookumStairsLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS]
     _npc_ids = [NPC_6]
@@ -2783,6 +3006,7 @@ class BoosterTowerSpookumStairsLocation(TreasureChestLocationRow1):
 
 
 class BoosterTowerTrainRoomCreviceLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_RAILWAY
@@ -2795,6 +3019,7 @@ class BoosterTowerTrainRoomCreviceLocation(NPCLocationRow1):
 
 
 class BoosterTowerChestNearThwompLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER]
     _npc_ids = [NPC_2]
@@ -2824,6 +3049,7 @@ class BoosterTowerFallingChestLocation(
 
 
 class BoosterTowerKnifeGuyPrizeLocation(KeyItemLocation, NPCLocationRow1):
+    _bias = True
     _originally_held = BrightCardPrize
     _rooms = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
@@ -2837,12 +3063,14 @@ class BoosterTowerKnifeGuyPrizeLocation(KeyItemLocation, NPCLocationRow1):
 
 # this check does not exist if FixKnifeGuy is disabled
 class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = RedEssencePrize
     _rooms = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        from ..types.flags import FixKnifeGuy
         return can_access_tower(world, inventory) and world.settings.isflag_enabled(
             FixKnifeGuy
         )
@@ -2851,6 +3079,7 @@ class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
 
 
 class BoosterTowerPortraitPrizeLocation(KeyItemLocation, StandingLocationRow1):
+    _bias = True
     _originally_held = ElderKeyPrize
     _rooms = [R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM]
     _npc_ids = [NPC_7]
@@ -2866,11 +3095,13 @@ class BoosterTowerPortraitPrizeLocation(KeyItemLocation, StandingLocationRow1):
 
 
 class BoosterTowerElderKeyItemLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = ChompPrize
     _rooms = [R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_CHOMP
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory) and inventory.has_item(ElderKeyPrize)
@@ -2879,6 +3110,7 @@ class BoosterTowerElderKeyItemLocation(StandingLocationRow1):
 
 
 class BoosterTowerParachuteRoomChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
     _npc_ids = [NPC_9]
@@ -2892,6 +3124,7 @@ class BoosterTowerParachuteRoomChestLocation(TreasureChestLocationRow1):
 
 
 class BoosterTowerParachuteRoomCreviceLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE_CREVICE
@@ -2921,6 +3154,7 @@ class BoosterTowerCheckerboardRightmostItemLocation(
 
 
 class BoosterTowerCheckerboardTopItemLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -2936,6 +3170,7 @@ class BoosterTowerCheckerboardTopItemLocation(StandingLocationRow1):
 
 
 class BoosterTowerCheckerboardLeftmostItemLocation(StandingLocationRow2):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -2951,6 +3186,7 @@ class BoosterTowerCheckerboardLeftmostItemLocation(StandingLocationRow2):
 
 
 class BoosterTowerCheckerboardUpperRightItemLocation(StandingLocationRow3):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -2966,6 +3202,7 @@ class BoosterTowerCheckerboardUpperRightItemLocation(StandingLocationRow3):
 
 
 class BoosterTowerCheckerboardBottomItemLocation(StandingLocationRow4):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -2981,6 +3218,7 @@ class BoosterTowerCheckerboardBottomItemLocation(StandingLocationRow4):
 
 
 class BoosterTowerCheckerboardCoin1Location(StandingLocationRow5):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -2996,6 +3234,7 @@ class BoosterTowerCheckerboardCoin1Location(StandingLocationRow5):
 
 
 class BoosterTowerCheckerboardCoin2Location(StandingLocationRow6):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -3011,6 +3250,7 @@ class BoosterTowerCheckerboardCoin2Location(StandingLocationRow6):
 
 
 class BoosterTowerCheckerboardCoin3Location(StandingLocationRow7):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -3026,6 +3266,7 @@ class BoosterTowerCheckerboardCoin3Location(StandingLocationRow7):
 
 
 class BoosterTowerCheckerboardCoin4Location(StandingLocationRow8):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -3041,6 +3282,7 @@ class BoosterTowerCheckerboardCoin4Location(StandingLocationRow8):
 
 
 class BoosterTowerCheckerboardCoin5Location(StandingLocationRow9):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -3056,6 +3298,7 @@ class BoosterTowerCheckerboardCoin5Location(StandingLocationRow9):
 
 
 class BoosterTowerCheckerboardCoin6Location(StandingLocationRow10):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -3071,6 +3314,7 @@ class BoosterTowerCheckerboardCoin6Location(StandingLocationRow10):
 
 
 class BoosterTowerCheckerboardCoin7Location(StandingLocationRow11):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -3086,6 +3330,7 @@ class BoosterTowerCheckerboardCoin7Location(StandingLocationRow11):
 
 
 class BoosterTowerCheckerboardCoin8Location(StandingLocationRow12):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -3101,6 +3346,7 @@ class BoosterTowerCheckerboardCoin8Location(StandingLocationRow12):
 
 
 class BoosterTowerCheckerboardCoin9Location(StandingLocationRow13):
+    _bias = True
     _originally_held = Coins1Prize
     _rooms = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
@@ -3116,12 +3362,14 @@ class BoosterTowerCheckerboardCoin9Location(StandingLocationRow13):
 
 
 class BoosterTowerRoomKeyChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = ZoomShoesPrize
     _rooms = [R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_ZOOM_SHOES
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize]
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory) and inventory.has_item(RoomKeyPrize)
@@ -3130,6 +3378,7 @@ class BoosterTowerRoomKeyChestLocation(TreasureChestLocationRow1):
 
 
 class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     _npc_ids = [NPC_0]
@@ -3144,6 +3393,7 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
 
 
 class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = GoodieBagPrize
     _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     _npc_ids = [NPC_1]
@@ -3158,6 +3408,7 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
 
 
 class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     _npc_ids = [NPC_9]
@@ -3172,6 +3423,7 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
 
 
 class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = AmuletPrize
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
@@ -3185,6 +3437,7 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
 
 
 class BoosterTowerIndoorBossFight(BossFightLocation):
+    _bias = True
     _originally_held = BoosterBossFight
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_1
@@ -3194,7 +3447,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -3205,6 +3458,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
 
 
 class BoosterTowerIndoorStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
@@ -3220,6 +3474,7 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
 
 
 class BoosterTowerIndoorBossFightRemake(BossFightLocation):
+    _bias = True
     _originally_held = Booster2BossFight
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _override_id = 528
@@ -3231,7 +3486,7 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -3242,6 +3497,7 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
 
 
 class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _override_id = 528
@@ -3259,11 +3515,13 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
 
 
 class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = Stella023Prize
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_POSTGAME_DROP
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _remake_only = True
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_postgame_tower_boss(world, inventory)
@@ -3272,6 +3530,7 @@ class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow2):
 
 
 class BoosterTowerBalconyBossFight(BossFightLocation):
+    _bias = True
     _originally_held = KnifeGuyGrateGuyBossFight
     _rooms = [R202_BOOSTER_TOWER_ENTRANCE]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_2
@@ -3281,7 +3540,7 @@ class BoosterTowerBalconyBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -3301,6 +3560,7 @@ class BoosterTowerBalconyBossFight(BossFightLocation):
 
 
 class BoosterTowerBalconyStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R202_BOOSTER_TOWER_ENTRANCE]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_2
@@ -3319,6 +3579,7 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
 
 
 class BoosterHillGuaranteedItem1(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 0
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3333,6 +3594,7 @@ class BoosterHillGuaranteedItem1(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem2(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 1
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3347,6 +3609,7 @@ class BoosterHillGuaranteedItem2(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem3(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 2
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3361,6 +3624,7 @@ class BoosterHillGuaranteedItem3(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem4(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 3
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3375,6 +3639,7 @@ class BoosterHillGuaranteedItem4(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem5(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 4
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3389,6 +3654,7 @@ class BoosterHillGuaranteedItem5(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem6(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 5
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3403,6 +3669,7 @@ class BoosterHillGuaranteedItem6(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem7(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 6
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3417,6 +3684,7 @@ class BoosterHillGuaranteedItem7(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem8(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 7
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3431,6 +3699,7 @@ class BoosterHillGuaranteedItem8(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem9(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 8
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3445,6 +3714,7 @@ class BoosterHillGuaranteedItem9(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem10(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 9
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3459,6 +3729,7 @@ class BoosterHillGuaranteedItem10(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem11(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 10
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3473,6 +3744,7 @@ class BoosterHillGuaranteedItem11(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem12(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 11
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3487,6 +3759,7 @@ class BoosterHillGuaranteedItem12(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem13(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 12
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3501,6 +3774,7 @@ class BoosterHillGuaranteedItem13(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem14(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 13
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3515,6 +3789,7 @@ class BoosterHillGuaranteedItem14(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem15(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 14
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3529,6 +3804,7 @@ class BoosterHillGuaranteedItem15(StandingLocation, BoosterHillLocation):
 
 
 class BoosterHillGuaranteedItem16(StandingLocation, BoosterHillLocation):
+    _bias = True
     _70B1_id = 15
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -3615,6 +3891,7 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
 # These are really NPC grants but they need sprite replacements.
 # Override container event
 class MarrymoreSnifit1Location(KeyItemLocation, StandingLocationRow1):
+    _bias = True
     _originally_held = BroochPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
@@ -3629,6 +3906,7 @@ class MarrymoreSnifit1Location(KeyItemLocation, StandingLocationRow1):
 
 
 class MarrymoreSnifit2Location(KeyItemLocation, StandingLocationRow2):
+    _bias = True
     _originally_held = RingPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
@@ -3643,6 +3921,7 @@ class MarrymoreSnifit2Location(KeyItemLocation, StandingLocationRow2):
 
 
 class MarrymoreSnifit3Location(KeyItemLocation, StandingLocationRow3):
+    _bias = True
     _originally_held = ShoesPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
@@ -3657,6 +3936,7 @@ class MarrymoreSnifit3Location(KeyItemLocation, StandingLocationRow3):
 
 
 class MarrymoreAltarHeadLocation(KeyItemLocation, StandingLocationRow1):
+    _bias = True
     _originally_held = CrownPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _npc_ids = [NPC_5]
@@ -3670,6 +3950,7 @@ class MarrymoreAltarHeadLocation(KeyItemLocation, StandingLocationRow1):
 
 
 class MarrymoreBossFight(BossFightLocation):
+    _bias = True
     _originally_held = BundtBossFight
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_BOSS_FIGHT
@@ -3679,7 +3960,7 @@ class MarrymoreBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -3702,6 +3983,7 @@ class MarrymoreBossFight(BossFightLocation):
 
 
 class MarrymoreBossFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_STAR_PIECE
@@ -3717,6 +3999,7 @@ class MarrymoreBossFightStarPiece(StarPieceLocation):
 
 
 class MarrymoreCharacter(CharacterRecruitmentLocation):
+    _bias = True
     _originally_held = ToadstoolRecruitmentPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_CHARACTER
@@ -3739,6 +4022,7 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
 
 
 class ToadstoolSpell1(SpellSlotLocation):
+    _bias = True
     _originally_held = TherapySpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3746,106 +4030,133 @@ class ToadstoolSpell1(SpellSlotLocation):
 
 
 class ToadstoolSpell2(SpellSlotLocation):
+    _bias = True
     _originally_held = GroupHugSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(ToadstoolRecruitmentPrize)
-        return inventory.has_item(ToadstoolRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_mushroom_way_boss,
-                    can_defeat_bandits_way_boss,
-                    can_defeat_mushroom_kingdom_boss,
-                ],
+        return (
+            inventory.has_item(ToadstoolRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_mushroom_way_boss,
+                        can_defeat_bandits_way_boss,
+                        can_defeat_mushroom_kingdom_boss,
+                    ],
+                )
+                or (
+                    isinstance(item, ToadstoolRecruitmentPrize)
+                    and item.starting_level >= 3
+                )
             )
-            or (
-                isinstance(item, ToadstoolRecruitmentPrize) and item.starting_level >= 3
-            )
+            and has_learned_spell(world, inventory, ToadstoolSpell1)
         )
 
 
 class ToadstoolSpell3(SpellSlotLocation):
+    _bias = True
     _originally_held = SleepyTimeSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(ToadstoolRecruitmentPrize)
-        return inventory.has_item(ToadstoolRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_sewer_boss,
-                    can_defeat_forest_boss,
-                    can_defeat_first_moleville_boss,
-                    can_defeat_second_moleville_boss,
-                    can_defeat_curtain_boss,
-                    can_defeat_balcony_boss,
-                    can_defeat_chapel_boss,
-                ],
+        return (
+            inventory.has_item(ToadstoolRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_sewer_boss,
+                        can_defeat_forest_boss,
+                        can_defeat_first_moleville_boss,
+                        can_defeat_second_moleville_boss,
+                        can_defeat_curtain_boss,
+                        can_defeat_balcony_boss,
+                        can_defeat_chapel_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, ToadstoolSpell2)
         )
 
 
 class ToadstoolSpell4(SpellSlotLocation):
+    _bias = True
     _originally_held = ComeBackSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(ToadstoolRecruitmentPrize)
-        return inventory.has_item(ToadstoolRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_ship_midboss,
-                    can_defeat_ship_boss,
-                    can_defeat_seaside_boss,
-                ],
+        return (
+            inventory.has_item(ToadstoolRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_ship_midboss,
+                        can_defeat_ship_boss,
+                        can_defeat_seaside_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, ToadstoolSpell3)
         )
 
 
 class ToadstoolSpell5(SpellSlotLocation):
+    _bias = True
     _originally_held = MuteSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(ToadstoolRecruitmentPrize)
-        return inventory.has_item(ToadstoolRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_lands_end_cloud_boss,
-                    can_defeat_temple_boss,
-                    can_defeat_second_dojo_boss,
-                    can_defeat_valley_boss,
-                ],
+        return (
+            inventory.has_item(ToadstoolRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_lands_end_cloud_boss,
+                        can_defeat_temple_boss,
+                        can_defeat_second_dojo_boss,
+                        can_defeat_valley_boss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, ToadstoolSpell4)
         )
 
 
 class ToadstoolSpell6(SpellSlotLocation):
+    _bias = True
     _originally_held = PsychBombSpellPrize
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         item = inventory.get_item(ToadstoolRecruitmentPrize)
-        return inventory.has_item(ToadstoolRecruitmentPrize) and (
-            can_defeat_some_of(
-                world,
-                inventory,
-                [
-                    can_defeat_statue_boss,
-                    can_defeat_nimbus_boss,
-                    can_defeat_egg_boss,
-                    can_defeat_volcano_boss,
-                    can_defeat_volcano_midboss,
-                ],
+        return (
+            inventory.has_item(ToadstoolRecruitmentPrize)
+            and (
+                can_defeat_some_of(
+                    world,
+                    inventory,
+                    [
+                        can_defeat_statue_boss,
+                        can_defeat_nimbus_boss,
+                        can_defeat_egg_boss,
+                        can_defeat_volcano_boss,
+                        can_defeat_volcano_midboss,
+                    ],
+                )
             )
+            and has_learned_spell(world, inventory, ToadstoolSpell5)
         )
 
 
 class MarrymoreBossFightRemake(BossFightLocation):
+    _bias = True
     _originally_held = Bundt2BossFight
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_BOSS_FIGHT
@@ -3857,7 +4168,7 @@ class MarrymoreBossFightRemake(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -3868,6 +4179,7 @@ class MarrymoreBossFightRemake(BossFightLocation):
 
 
 class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_STAR_PIECE
@@ -3885,11 +4197,13 @@ class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
 
 
 class MarrymoreBossFightRemakeItemDrop(NPCLocationRow4):
+    _bias = True
     _originally_held = EnduringBroochPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_ITEM_DROP
     _world_area = WorldAreaEnum.MARRYMORE
     _remake_only = True
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_postgame_chapel_boss(world, inventory)
@@ -3952,6 +4266,7 @@ class FrogDiscipleLocation5(FrogDiscipleLocation):
 
 
 class SeasideBeachBossFight(BossFightLocation):
+    _bias = True
     _originally_held = YaridovichBossFight
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS_FIGHT
@@ -3961,7 +4276,7 @@ class SeasideBeachBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -3979,6 +4294,7 @@ class SeasideBeachBossFight(BossFightLocation):
 
 
 class SeasideBeachStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = StarPiece5
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS
@@ -3994,6 +4310,7 @@ class SeasideBeachStarPiece(StarPieceLocation):
 
 
 class SeasideTownBossPrizeLocation(KeyItemLocation, StandingLocationRow1):
+    _bias = True
     _originally_held = ShedKeyPrize
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _npc_ids = [NPC_0]
@@ -4011,6 +4328,7 @@ class SeasideTownBossPrizeLocation(KeyItemLocation, StandingLocationRow1):
 
 
 class SeasideTownShedRescueLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FlowerBoxPrize
     _rooms = [R314_SEASIDE_TOWN_SHED]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_RESCUE
@@ -4028,6 +4346,7 @@ class SeasideTownShedRescueLocation(NPCLocationRow1):
 
 
 class SeaStarslapRoomChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = SeaStarPrize
     _rooms = [R134_SEA_AREA_03_SUPER_STAR_ROOM]
     _npc_ids = [NPC_0]
@@ -4041,6 +4360,7 @@ class SeaStarslapRoomChestLocation(TreasureChestLocationRow1):
 
 
 class SeaSaveRoomBackChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
     _npc_ids = [NPC_0]
@@ -4055,6 +4375,7 @@ class SeaSaveRoomBackChestLocation(TreasureChestLocationRow3):
 
 
 class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
     _npc_ids = [NPC_1]
@@ -4069,6 +4390,7 @@ class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
 
 
 class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
     _npc_ids = [NPC_2]
@@ -4083,6 +4405,7 @@ class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow1):
 
 
 class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = MaxMushroomPrize
     _rooms = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
     _npc_ids = [NPC_0]
@@ -4100,6 +4423,7 @@ class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
 
 
 class ShipRatStairsChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = Coins100Prize
     _rooms = [R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS]
     _npc_ids = [NPC_0]
@@ -4113,6 +4437,7 @@ class ShipRatStairsChestLocation(TreasureChestLocationRow1):
 
 
 class ShipRatStairsBoxesLocation(PacketLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _replace = "spawn_ship_box_item"
     _rooms = [R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS]
@@ -4126,6 +4451,7 @@ class ShipRatStairsBoxesLocation(PacketLocationRow1):
 
 
 class ShipTroopaPuzzleLocation(PacketLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _replace = "spawn_ship_troopa_item"
     _rooms = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
@@ -4139,6 +4465,7 @@ class ShipTroopaPuzzleLocation(PacketLocationRow1):
 
 
 class ShipTrampolinePuzzle(PacketLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _replace = "spawn_ship_trampoline_item"
     _rooms = [R163_SUNKEN_SHIP_PUZZLE_ROOM_2]
@@ -4152,6 +4479,7 @@ class ShipTrampolinePuzzle(PacketLocationRow1):
 
 
 class Ship3DMazePuzzle(PacketLocationRow1):
+    _bias = True
     _originally_held = RoyalSyrupPrize
     _replace = "spawn_ship_3d_maze_item"
     _rooms = [R168_SUNKEN_SHIP_PUZZLE_ROOM_3]
@@ -4165,6 +4493,7 @@ class Ship3DMazePuzzle(PacketLocationRow1):
 
 
 class ShipShopChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = Coins100Prize
     _rooms = [R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN]
     _npc_ids = [NPC_0]
@@ -4179,6 +4508,7 @@ class ShipShopChestLocation(TreasureChestLocationRow1):
 
 
 class ShipCoinSnakePuzzleLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = Coins150Prize
     _rooms = [
         R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
@@ -4228,6 +4558,7 @@ class ShipCoinSnakePuzzleLocation(StandingLocationRow1):
 
 
 class ShipCannonballPuzzle(PacketLocationRow1):
+    _bias = True
     _originally_held = MushroomPrize
     _replace = "spawn_ship_cannonball_item"
     _rooms = [R172_SUNKEN_SHIP_PUZZLE_ROOM_5]
@@ -4241,6 +4572,7 @@ class ShipCannonballPuzzle(PacketLocationRow1):
 
 
 class ShipBarrelPuzzle(PacketLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _replace = "spawn_ship_barrel_item"
     _rooms = [R176_SUNKEN_SHIP_AREA_08_WSAVE_POINT_AND_GREEN_SWITCH_FOR_BARREL]
@@ -4254,6 +4586,7 @@ class ShipBarrelPuzzle(PacketLocationRow1):
 
 
 class ShipPasswordBossFight(BossFightLocation):
+    _bias = True
     _originally_held = KingCalamariBossFight
     _rooms = [R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS_BOSS_FIGHT
@@ -4263,7 +4596,7 @@ class ShipPasswordBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -4274,6 +4607,7 @@ class ShipPasswordBossFight(BossFightLocation):
 
 
 class ShipPasswordStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS
@@ -4289,6 +4623,7 @@ class ShipPasswordStarPiece(StarPieceLocation):
 
 
 class EarlyInnerShipLeftChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = Coins100Prize
     _rooms = [R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM]
     _npc_ids = [NPC_0]
@@ -4302,6 +4637,7 @@ class EarlyInnerShipLeftChestLocation(TreasureChestLocationRow1):
 
 
 class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = Coins100Prize
     _rooms = [R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM]
     _npc_ids = [NPC_1]
@@ -4315,6 +4651,7 @@ class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
 
 
 class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = KerokeroColaPrize
     _rooms = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
     _npc_ids = [NPC_2]
@@ -4329,6 +4666,7 @@ class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
 
 
 class InnerShipBehindBoxesChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN]
     _npc_ids = [NPC_0]
@@ -4343,6 +4681,7 @@ class InnerShipBehindBoxesChestLocation(TreasureChestLocationRow1):
 
 
 class InnerShipSaveRoomLeftChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
     _npc_ids = [NPC_1]
@@ -4357,6 +4696,7 @@ class InnerShipSaveRoomLeftChestLocation(TreasureChestLocationRow1):
 
 
 class InnerShipSaveRoomRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = SecondMimicFightLauncher
     _rooms = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
     _npc_ids = [NPC_2]
@@ -4371,6 +4711,7 @@ class InnerShipSaveRoomRightChestLocation(TreasureChestLocationRow2):
 
 
 class Mimic2DropRewardLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = SafetyBadgePrize
     _rooms = [513]  # can be in any room, custom id.
     _id = ShuffleLocationSelector.HIDON_REWARD_1
@@ -4384,6 +4725,7 @@ class Mimic2DropRewardLocation(NPCLocationRow1):
 
 
 class Mimic2BossFight(BossFightLocation):
+    _bias = True
     _originally_held = HidonBossFight
     _rooms = [513]  # can be in any room.
     _override_id = 513
@@ -4394,7 +4736,7 @@ class Mimic2BossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -4405,6 +4747,7 @@ class Mimic2BossFight(BossFightLocation):
 
 
 class Mimic2StarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _id = ShuffleLocationSelector.HIDON_BOSS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
@@ -4421,6 +4764,7 @@ class Mimic2StarPiece(StarPieceLocation):
 
 
 class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = Coins100Prize
     _rooms = [513]  # can be in any room.
     _id = ShuffleLocationSelector.HIDON_REWARD_2
@@ -4435,6 +4779,7 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
 
 
 class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_0]
@@ -4448,6 +4793,7 @@ class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
 
 
 class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_1]
@@ -4461,6 +4807,7 @@ class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
 
 
 class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_2]
@@ -4474,6 +4821,7 @@ class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
 
 
 class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_3]
@@ -4487,6 +4835,7 @@ class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
 
 
 class InnerShipSecretRoomChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = SafetyRingPrize
     _rooms = [R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING]
     _npc_ids = [NPC_0]
@@ -4501,6 +4850,7 @@ class InnerShipSecretRoomChestLocation(TreasureChestLocationRow1):
 
 
 class InnerShipPoolRoomLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R027_SUNKEN_SHIP_POSTKC_AREA_13_LARGE_UNDERWATER_ROOM_WITH_A_BLOOBER]
     _npc_ids = [NPC_5]
@@ -4514,6 +4864,7 @@ class InnerShipPoolRoomLocation(StandingLocationRow1):
 
 
 class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL]
     _npc_ids = [NPC_4]
@@ -4528,6 +4879,7 @@ class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
 
 
 class ShipFinalBossFight(BossFightLocation):
+    _bias = True
     _originally_held = JohnnyBossFight
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BOSS_FIGHT
@@ -4537,7 +4889,7 @@ class ShipFinalBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -4555,6 +4907,7 @@ class ShipFinalBossFight(BossFightLocation):
 
 
 class ShipFinalStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BOSS
@@ -4570,6 +4923,7 @@ class ShipFinalStarPiece(StarPieceLocation):
 
 
 class ShipPostgameBossFight(BossFightLocation):
+    _bias = True
     _originally_held = Johnny2Fight
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_BOSS_FIGHT
@@ -4581,7 +4935,7 @@ class ShipPostgameBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -4592,6 +4946,7 @@ class ShipPostgameBossFight(BossFightLocation):
 
 
 class ShipPostgameFightItemDrop(KeyItemLocation, NPCLocationRow1):
+    _bias = True
     _originally_held = ExtraShinyStonePrize
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_DROP
@@ -4605,6 +4960,7 @@ class ShipPostgameFightItemDrop(KeyItemLocation, NPCLocationRow1):
 
 
 class ShipPostgameStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_BOSS
@@ -4625,6 +4981,7 @@ class ShipPostgameStarPiece(StarPieceLocation):
 
 
 class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RedEssencePrize
     _rooms = [R137_LANDS_END_AREA_01]
     _npc_ids = [NPC_4]
@@ -4639,6 +4996,7 @@ class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
 
 
 class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = KerokeroColaPrize
     _rooms = [R138_LANDS_END_AREA_02]
     _npc_ids = [NPC_6]
@@ -4652,6 +5010,7 @@ class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
 
 
 class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R138_LANDS_END_AREA_02]
     _npc_ids = [NPC_7]
@@ -4665,6 +5024,7 @@ class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
 
 
 class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R141_LANDS_END_AREA_04_ROTATING_FLOWERS]
     _npc_ids = [NPC_6]
@@ -4678,6 +5038,7 @@ class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
 
 
 class LandsEndCaveSideRemake(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R142_LANDS_END_AREA_05_SKY_BRIDGE]
     _world_area = WorldAreaEnum.LANDS_END
@@ -4694,6 +5055,7 @@ class LandsEndCaveSideRemake(TreasureChestLocationRow1):
 
 
 class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS]
     _npc_ids = [NPC_7]
@@ -4708,6 +5070,7 @@ class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
 
 
 class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS]
     _npc_ids = [NPC_6]
@@ -4721,6 +5084,7 @@ class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
 
 
 class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]
     _npc_ids = [NPC_6]
@@ -4735,6 +5099,7 @@ class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
 
 
 class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = LandsEndVolcanoStarPrize
     _rooms = [R263_LANDS_END_UNDERGROUND_AREA_01]
     _npc_ids = [NPC_5]
@@ -4748,6 +5113,7 @@ class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
 
 
 class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = LandsEndStar2Prize
     _rooms = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
     _npc_ids = [NPC_18]
@@ -4761,6 +5127,7 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
 
 
 class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = LandsEndStar3Prize
     _rooms = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
     _npc_ids = [NPC_19]
@@ -4774,6 +5141,7 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
 
 
 class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = TroopaPinPrize
     _rooms = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _id = ShuffleLocationSelector.TROOPA_CLIMB
@@ -4789,6 +5157,7 @@ class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
 
 
 class LandsEndCloudBoss(BossFightLocation):
+    _bias = True
     _originally_held = MokuraBossFight
     _id = ShuffleLocationSelector.LANDS_END_CLOUD_BOSS_FIGHT
     _world_area = WorldAreaEnum.LANDS_END
@@ -4811,7 +5180,7 @@ class LandsEndCloudBoss(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -4822,6 +5191,7 @@ class LandsEndCloudBoss(BossFightLocation):
 
 
 class LandsEndCloudStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _id = ShuffleLocationSelector.LANDS_END_STAR_PIECE_1
     _world_area = WorldAreaEnum.LANDS_END
@@ -4838,6 +5208,7 @@ class LandsEndCloudStarPiece(StarPieceLocation):
 
 
 class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = Coins50Prize
     _rooms = [R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
     _npc_ids = [NPC_5]
@@ -4852,6 +5223,7 @@ class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
 
 
 class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_6]
@@ -4866,6 +5238,7 @@ class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
 
 
 class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = YoshiCookiePrize
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_7]
@@ -4880,6 +5253,7 @@ class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
 
 
 class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_8]
@@ -4894,6 +5268,7 @@ class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
 
 
 class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
+    _bias = True
     _originally_held = Coins100Prize
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_9]
@@ -4908,6 +5283,7 @@ class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
 
 
 class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_0]
@@ -4922,6 +5298,7 @@ class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
 
 
 class BelomeBeforeBossLowerLeftChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = Coins150Prize
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_1]
@@ -4936,6 +5313,7 @@ class BelomeBeforeBossLowerLeftChestLocation(TreasureChestLocationRow2):
 
 
 class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_2]
@@ -4950,6 +5328,7 @@ class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
 
 
 class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_3]
@@ -4964,6 +5343,7 @@ class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
 
 
 class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_0]
@@ -4979,6 +5359,7 @@ class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
 
 
 class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_1]
@@ -4994,6 +5375,7 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
 
 
 class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_2]
@@ -5009,6 +5391,7 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
 
 
 class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_3]
@@ -5024,6 +5407,7 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
 
 
 class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_4]
@@ -5039,6 +5423,7 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
 
 
 class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_5]
@@ -5054,6 +5439,7 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
 
 
 class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_6]
@@ -5069,6 +5455,7 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
 
 
 class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_7]
@@ -5084,6 +5471,7 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
 
 
 class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_8]
@@ -5099,6 +5487,7 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
 
 
 class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_9]
@@ -5114,6 +5503,7 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
 
 
 class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow11):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_10]
@@ -5129,6 +5519,7 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
 
 
 class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_11]
@@ -5144,6 +5535,7 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
 
 
 class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
+    _bias = True
     _originally_held = MaxMushroomPrize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_13]
@@ -5159,6 +5551,7 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
 
 
 class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
+    _bias = True
     _originally_held = RoyalSyrupPrize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_14]
@@ -5174,6 +5567,7 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
 
 
 class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow15):
+    _bias = True
     _originally_held = FireBombPrize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_15]
@@ -5189,6 +5583,7 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
 
 
 class TempleBossFight(BossFightLocation):
+    _bias = True
     _originally_held = Belome2BossFight
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_FIGHT
@@ -5198,7 +5593,7 @@ class TempleBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5209,6 +5604,7 @@ class TempleBossFight(BossFightLocation):
 
 
 class TempleBossFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS
@@ -5224,6 +5620,7 @@ class TempleBossFightStarPiece(StarPieceLocation):
 
 
 class TempleBossFightPostgame(BossFightLocation):
+    _bias = True
     _originally_held = Belome3Dight
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_FIGHT
@@ -5235,7 +5632,7 @@ class TempleBossFightPostgame(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5246,6 +5643,7 @@ class TempleBossFightPostgame(BossFightLocation):
 
 
 class TempleBossFightStarPiecePostgame(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME
@@ -5263,11 +5661,13 @@ class TempleBossFightStarPiecePostgame(StarPieceLocation):
 
 
 class TemplePostgameFightItemDrop(NPCLocationRow1):
+    _bias = True
     _originally_held = SageStickPrize
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_DROP
     _world_area = WorldAreaEnum.TEMPLE
     _remake_only = True
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_postgame_temple_boss(world, inventory)
@@ -5279,6 +5679,7 @@ class TemplePostgameFightItemDrop(NPCLocationRow1):
 
 
 class MonstroEntranceLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R267_MONSTRO_TOWN_ENTRANCE]
     _npc_ids = [NPC_1]
@@ -5293,6 +5694,7 @@ class MonstroEntranceLocation(TreasureChestLocationRow1):
 
 
 class MonstroThwompItemLocation(KeyItemLocation, StandingLocationRow1):
+    _bias = True
     _originally_held = TempleKeyPrize
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _npc_ids = [NPC_0]
@@ -5306,6 +5708,7 @@ class MonstroThwompItemLocation(KeyItemLocation, StandingLocationRow1):
 
 
 class DojoFirstFight(BossFightLocation):
+    _bias = True
     _originally_held = JaggerBossFight
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_1
@@ -5315,7 +5718,7 @@ class DojoFirstFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5326,6 +5729,7 @@ class DojoFirstFight(BossFightLocation):
 
 
 class DojoFirstFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_1
@@ -5340,6 +5744,7 @@ class DojoFirstFightStarPiece(StarPieceLocation):
 
 
 class DojoSecondFight(BossFightLocation):
+    _bias = True
     _originally_held = Jinx1BossFight
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_2
@@ -5350,7 +5755,7 @@ class DojoSecondFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5361,6 +5766,7 @@ class DojoSecondFight(BossFightLocation):
 
 
 class DojoSecondFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_2
@@ -5377,6 +5783,7 @@ class DojoSecondFightStarPiece(StarPieceLocation):
 
 
 class DojoThirdFight(BossFightLocation):
+    _bias = True
     _originally_held = Jinx2BossFight
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_3
@@ -5387,7 +5794,7 @@ class DojoThirdFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5398,6 +5805,7 @@ class DojoThirdFight(BossFightLocation):
 
 
 class DojoThirdFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_3
@@ -5414,6 +5822,7 @@ class DojoThirdFightStarPiece(StarPieceLocation):
 
 
 class DojoFourthFight(BossFightLocation):
+    _bias = True
     _originally_held = Jinx3BossFight
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_4
@@ -5424,7 +5833,7 @@ class DojoFourthFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5435,6 +5844,7 @@ class DojoFourthFight(BossFightLocation):
 
 
 class DojoFourthFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_4
@@ -5451,10 +5861,12 @@ class DojoFourthFightStarPiece(StarPieceLocation):
 
 
 class MonstroDojoClearRewardLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = JinxBeltPrize
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.JINX_DOJO_REWARD
     _world_area = WorldAreaEnum.MONSTRO_TOWN
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_fourth_dojo_boss(world, inventory)
@@ -5463,6 +5875,7 @@ class MonstroDojoClearRewardLocation(NPCLocationRow1):
 
 
 class DojoFifthFight(BossFightLocation):
+    _bias = True
     _originally_held = Jinx4BossFight
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_POSTGAME
@@ -5474,7 +5887,7 @@ class DojoFifthFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5485,6 +5898,7 @@ class DojoFifthFight(BossFightLocation):
 
 
 class DojoFifthFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_POSTGAME
@@ -5502,11 +5916,13 @@ class DojoFifthFightStarPiece(StarPieceLocation):
 
 
 class MonstroDojoPostgameClearRewardLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = TeamworkBandPrize
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.DOJO_BOSS_POSTGAME_REWARD
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _remake_only = True
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_fifth_dojo_boss(world, inventory)
@@ -5515,6 +5931,7 @@ class MonstroDojoPostgameClearRewardLocation(NPCLocationRow2):
 
 
 class MonstroSealedDoorBossFight(BossFightLocation):
+    _bias = True
     _originally_held = CulexBossFight
     _rooms = [R351_CULEXS_ROOM]
     _id = ShuffleLocationSelector.CULEX_BOSS_FIGHT
@@ -5524,7 +5941,7 @@ class MonstroSealedDoorBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5535,6 +5952,7 @@ class MonstroSealedDoorBossFight(BossFightLocation):
 
 
 class MonstroSealedDoorStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _id = ShuffleLocationSelector.CULEX_BOSS
@@ -5550,10 +5968,12 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
 
 
 class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = QuartzCharmPrize
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _id = ShuffleLocationSelector.CULEX_REWARD
     _world_area = WorldAreaEnum.MONSTRO_TOWN
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_sealed_door_boss(world, inventory)
@@ -5562,6 +5982,7 @@ class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
 
 
 class MonstroSealedDoorBossFightPostgame(BossFightLocation):
+    _bias = True
     _originally_held = Culex3DBossFight
     _rooms = [R351_CULEXS_ROOM]
     _override_id = 524
@@ -5573,7 +5994,7 @@ class MonstroSealedDoorBossFightPostgame(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5584,6 +6005,7 @@ class MonstroSealedDoorBossFightPostgame(BossFightLocation):
 
 
 class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _override_id = 524
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
@@ -5601,6 +6023,7 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
 
 
 class MonstroSealedDoorClearRewardLocationPostgame(KeyItemLocation, NPCLocationRow2):
+    _bias = True
     _originally_held = CrystalShardPrize
     _rooms = [R351_CULEXS_ROOM]
     _id = ShuffleLocationSelector.CULEX_POSTGAME_REWARD
@@ -5614,10 +6037,12 @@ class MonstroSealedDoorClearRewardLocationPostgame(KeyItemLocation, NPCLocationR
 
 
 class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = AttackScarfPrize
     _rooms = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
     _id = ShuffleLocationSelector.SUPER_JUMPS_30
     _world_area = WorldAreaEnum.MONSTRO_TOWN
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and inventory.has_item(
@@ -5628,10 +6053,12 @@ class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
 
 
 class MonstroSecondSuperJumpRewardLocation(NPCLocationRow2):
+    _bias = True
     _originally_held = SuperSuitPrize
     _rooms = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
     _id = ShuffleLocationSelector.SUPER_JUMPS_100
     _world_area = WorldAreaEnum.MONSTRO_TOWN
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and inventory.has_item(
@@ -5642,10 +6069,12 @@ class MonstroSecondSuperJumpRewardLocation(NPCLocationRow2):
 
 
 class MonstroFlagExchangeLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = GhostMedalPrize
     _rooms = [R399_MONSTRO_TOWN_3_MUSTY_FEARS_INN]
     _id = ShuffleLocationSelector.THREE_MUSTY_FEARS
     _world_area = WorldAreaEnum.MONSTRO_TOWN
+    _monstro_shuffle = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -5728,6 +6157,7 @@ class BeanValleyRightPipeLeftChestLocation(TreasureChestLocationRow1):
 
 
 class Mimic3BossFight(BossFightLocation):
+    _bias = True
     _originally_held = BoxBoyBossFight
     _rooms = [514]  # can be in any room.
     _override_id = 514
@@ -5738,7 +6168,7 @@ class Mimic3BossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5749,6 +6179,7 @@ class Mimic3BossFight(BossFightLocation):
 
 
 class Mimic3StarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _id = ShuffleLocationSelector.BOX_BOY_BOSS
     _rooms = [514]
@@ -5791,6 +6222,7 @@ class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
 
 
 class BeanValleyPlanterBossFight(BossFightLocation):
+    _bias = True
     _originally_held = MegasmilaxBossFight
     _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOSS_FIGHT
@@ -5800,7 +6232,7 @@ class BeanValleyPlanterBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -5825,6 +6257,7 @@ class BeanValleyPlanterBossFight(BossFightLocation):
 
 
 class BeanValleyPlanterStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOSS
@@ -5840,6 +6273,7 @@ class BeanValleyPlanterStarPiece(StarPieceLocation):
 
 
 class BeanValleyBossNoteLocation(KeyItemLocation, NPCLocationRow1):
+    _bias = True
     _originally_held = SeedPrize
     _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
     _id = ShuffleLocationSelector.BEAN_VALLEY_MEGASMILAX_ROOM
@@ -6053,6 +6487,7 @@ class BeanstalkLowerCloudRightChestLocation(TreasureChestLocationRow2):
 
 
 class CasinoGrateGuyPrizeLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = StarEggPrize
     _rooms = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
     _id = ShuffleLocationSelector.CASINO_GRATE_GUY_PRIZE
@@ -6068,6 +6503,7 @@ class CasinoGrateGuyPrizeLocation(NPCLocationRow1):
 
 
 class NimbusShopChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R344_NIMBUS_LAND_ITEM_SHOP]
     _npc_ids = [NPC_0]
@@ -6082,6 +6518,7 @@ class NimbusShopChestLocation(TreasureChestLocationRow1):
 
 
 class NimbusInnDreamPrize1Location(NPCLocationRow1):
+    _bias = True
     _originally_held = RedEssencePrize
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN
@@ -6094,6 +6531,7 @@ class NimbusInnDreamPrize1Location(NPCLocationRow1):
 
 
 class NimbusInnDreamPrize2Location(NPCLocationRow2):
+    _bias = True
     _originally_held = RedEssencePrize
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN_2
@@ -6107,6 +6545,7 @@ class NimbusInnDreamPrize2Location(NPCLocationRow2):
 
 # Only enabled with one specific setting
 class GarroFreeItem(KeyItemLocation, NPCLocationRow1):
+    _bias = True
     _originally_held = GoldPaintPrize
     _rooms = [R341_NIMBUS_LAND_GARROS_HOUSE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_GARRO
@@ -6119,6 +6558,7 @@ class GarroFreeItem(KeyItemLocation, NPCLocationRow1):
 
 
 class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FeatherPrize
     _rooms = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM]
     _override_id = 520
@@ -6132,6 +6572,7 @@ class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
 
 
 class StatueRoomBossFight(BossFightLocation):
+    _bias = True
     _originally_held = DodoBossFight
     _override_id = 520
     _id = ShuffleLocationSelector.NIMBUS_LAND_STATUE_BOSS_FIGHT
@@ -6141,7 +6582,7 @@ class StatueRoomBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -6152,6 +6593,7 @@ class StatueRoomBossFight(BossFightLocation):
 
 
 class StatueRoomStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _override_id = 520
     _id = ShuffleLocationSelector.NIMBUS_LAND_STAR_PIECE_1
@@ -6167,6 +6609,7 @@ class StatueRoomStarPiece(StarPieceLocation):
 
 
 class NimbusCastleOuterPrisonCellarRightNPCLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FlowerJarPrize
     _rooms = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS
@@ -6179,6 +6622,7 @@ class NimbusCastleOuterPrisonCellarRightNPCLocation(NPCLocationRow1):
 
 
 class NimbusCastleOuterPrisonCellarLeftNPCLocation(KeyItemLocation, NPCLocationRow2):
+    _bias = True
     _originally_held = CastleKey1Prize
     _rooms = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS_2
@@ -6191,6 +6635,7 @@ class NimbusCastleOuterPrisonCellarLeftNPCLocation(KeyItemLocation, NPCLocationR
 
 
 class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA]
     _npc_ids = [NPC_0]
@@ -6205,6 +6650,7 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
 
 
 class NimbusCastleCornerBridgeChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [
         R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE,
@@ -6222,6 +6668,7 @@ class NimbusCastleCornerBridgeChestLocation(TreasureChestLocationRow1):
 
 
 class NimbusCastleOutOfBoundsChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
@@ -6238,6 +6685,7 @@ class NimbusCastleOutOfBoundsChestLocation(TreasureChestLocationRow1):
 
 
 class NimbusCastleAboveJawfulChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
@@ -6254,6 +6702,7 @@ class NimbusCastleAboveJawfulChestLocation(TreasureChestLocationRow2):
 
 
 class NimbusCastleSingleGoldBirdChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [
         R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15,
@@ -6269,6 +6718,7 @@ class NimbusCastleSingleGoldBirdChestLocation(TreasureChestLocationRow1):
 
 
 class NimbusCastleTwoLevelLowerChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [
         R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
@@ -6289,6 +6739,7 @@ class NimbusCastleTwoLevelLowerChestLocation(TreasureChestLocationRow1):
 
 
 class GiantEggBossFight(BossFightLocation):
+    _bias = True
     _originally_held = BirdettaBossFight
     _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_EGG_BOSS_FIGHT
@@ -6298,7 +6749,7 @@ class GiantEggBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -6309,6 +6760,7 @@ class GiantEggBossFight(BossFightLocation):
 
 
 class GiantEggStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_2
@@ -6324,6 +6776,7 @@ class GiantEggStarPiece(StarPieceLocation):
 
 
 class NimbusCastleGiantEggRewardLocation(KeyItemLocation, NPCLocationRow1):
+    _bias = True
     _originally_held = CastleKey2Prize
     _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_BIRDETTA
@@ -6339,6 +6792,7 @@ class NimbusCastleGiantEggRewardLocation(KeyItemLocation, NPCLocationRow1):
 
 
 class NimbusCastleTwoLevelUpperChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [
         R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
@@ -6355,6 +6809,7 @@ class NimbusCastleTwoLevelUpperChestLocation(TreasureChestLocationRow2):
 
 
 class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = NimbusLandStarPrize
     _rooms = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
     _npc_ids = [NPC_0]
@@ -6368,6 +6823,7 @@ class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
 
 
 class NimbusFinalBossFight(BossFightLocation):
+    _bias = True
     _originally_held = ValentinaBossFight
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_FINAL_BOSS_FIGHT
@@ -6377,7 +6833,7 @@ class NimbusFinalBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -6400,6 +6856,7 @@ class NimbusFinalBossFight(BossFightLocation):
 
 
 class NimbusFinalStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_3
@@ -6418,6 +6875,7 @@ class NimbusFinalStarPiece(StarPieceLocation):
 
 
 class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
     _npc_ids = [NPC_1]
@@ -6432,6 +6890,7 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
 
 
 class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]
     _npc_ids = [NPC_0]
@@ -6445,6 +6904,7 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
 
 
 class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
+    _bias = True
     _originally_held = FertilizerPrize
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _id = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE
@@ -6457,6 +6917,7 @@ class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
 
 
 class NimbusLandCrocoItemLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = SignalRingPrize
     _rooms = [R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING]
     _npc_ids = [NPC_5]
@@ -6470,6 +6931,7 @@ class NimbusLandCrocoItemLocation(StandingLocationRow1):
 
 
 class NimbusLandInnerCellarLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = FlowerJarPrize
     _rooms = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
     _id = ShuffleLocationSelector.NIMBUS_LAND_CELLAR
@@ -6485,6 +6947,7 @@ class NimbusLandInnerCellarLocation(NPCLocationRow1):
 
 
 class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
     _npc_ids = [NPC_1]
@@ -6498,6 +6961,7 @@ class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
 
 
 class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
     _npc_ids = [NPC_2]
@@ -6511,6 +6975,7 @@ class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
 
 
 class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R384_VOLCANO_AREA_05]
     _npc_ids = [NPC_0]
@@ -6525,6 +6990,7 @@ class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
 
 
 class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = Coins100Prize
     _rooms = [R384_VOLCANO_AREA_05]
     _npc_ids = [NPC_1]
@@ -6539,6 +7005,7 @@ class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
 
 
 class VolcanoEarlyProgressThirdChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = LandsEndVolcanoStarPrize
     _rooms = [R385_VOLCANO_AREA_06]
     _npc_ids = [NPC_0]
@@ -6552,6 +7019,7 @@ class VolcanoEarlyProgressThirdChestLocation(TreasureChestLocationRow1):
 
 
 class VolcanoLavaPoolLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R361_VOLCANO_AREA_09]
     _npc_ids = [NPC_1]
@@ -6565,6 +7033,7 @@ class VolcanoLavaPoolLocation(StandingLocationRow1):
 
 
 class VolcanoReverseRecoilItemLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES]
     _npc_ids = [NPC_4]
@@ -6578,6 +7047,7 @@ class VolcanoReverseRecoilItemLocation(StandingLocationRow1):
 
 
 class VolcanoRightDonutItemLocation(StandingLocationRow1):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R358_VOLCANO_AREA_11]
     _npc_ids = [NPC_1]
@@ -6591,6 +7061,7 @@ class VolcanoRightDonutItemLocation(StandingLocationRow1):
 
 
 class VolcanoLeftDonutItemLocation(StandingLocationRow2):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R358_VOLCANO_AREA_11]
     _npc_ids = [NPC_2]
@@ -6604,6 +7075,7 @@ class VolcanoLeftDonutItemLocation(StandingLocationRow2):
 
 
 class VolcanoSaveRoomLowerChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R366_VOLCANO_AREA_13_WSAVE_POINT]
     _npc_ids = [NPC_0]
@@ -6617,6 +7089,7 @@ class VolcanoSaveRoomLowerChestLocation(TreasureChestLocationRow1):
 
 
 class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R366_VOLCANO_AREA_13_WSAVE_POINT]
     _npc_ids = [NPC_1]
@@ -6630,6 +7103,7 @@ class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
 
 
 class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = Coins100Prize
     _rooms = [R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP]
     _npc_ids = [NPC_0]
@@ -6644,6 +7118,7 @@ class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
 
 
 class VolcanoBridgeBossFight(BossFightLocation):
+    _bias = True
     _originally_held = CzarDragonBossFight
     _rooms = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_FIGHT_1
@@ -6653,7 +7128,7 @@ class VolcanoBridgeBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -6664,6 +7139,7 @@ class VolcanoBridgeBossFight(BossFightLocation):
 
 
 class VolcanoBridgeStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_1
@@ -6679,6 +7155,7 @@ class VolcanoBridgeStarPiece(StarPieceLocation):
 
 
 class VolcanoExitBossFight(BossFightLocation):
+    _bias = True
     _originally_held = AxemRangersBossFight
     _rooms = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_FIGHT_2
@@ -6688,7 +7165,7 @@ class VolcanoExitBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -6718,6 +7195,7 @@ class VolcanoExitBossFight(BossFightLocation):
 
 
 class VolcanoExitStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = StarPiece6
     _rooms = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_2
@@ -6736,6 +7214,7 @@ class VolcanoExitStarPiece(StarPieceLocation):
 
 
 class KeepDarkRoomChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM]
     _npc_ids = [NPC_0]
@@ -6750,6 +7229,7 @@ class KeepDarkRoomChestLocation(TreasureChestLocationRow1):
 
 
 class KeepFirstCrocoShopLeftChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = Coins150Prize
     _rooms = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
     _npc_ids = [NPC_0]
@@ -6764,6 +7244,7 @@ class KeepFirstCrocoShopLeftChestLocation(TreasureChestLocationRow1):
 
 
 class KeepFirstCrocoShopRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
     _npc_ids = [NPC_1]
@@ -6778,6 +7259,7 @@ class KeepFirstCrocoShopRightChestLocation(TreasureChestLocationRow2):
 
 
 class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FrightBombPrize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_4]
@@ -6792,6 +7274,7 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
 
 
 class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = RoyalSyrupPrize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_5]
@@ -6806,6 +7289,7 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
 
 
 class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = IceBombPrize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_6]
@@ -6820,6 +7304,7 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
 
 
 class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
+    _bias = True
     _originally_held = RockCandyPrize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_7]
@@ -6834,6 +7319,7 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
 
 
 class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_8]
@@ -6847,6 +7333,7 @@ class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
 
 
 class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_9]
@@ -6860,6 +7347,7 @@ class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
 
 
 class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_10]
@@ -6873,6 +7361,7 @@ class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
 
 
 class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_11]
@@ -6886,6 +7375,7 @@ class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
 
 
 class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_10]
@@ -6900,6 +7390,7 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
 
 
 class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = RedEssencePrize
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_11]
@@ -6914,6 +7405,7 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
 
 
 class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = MaxMushroomPrize
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_12]
@@ -6928,6 +7420,7 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
 
 
 class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
+    _bias = True
     _originally_held = FireBombPrize
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_13]
@@ -6942,6 +7435,7 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
 
 
 class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = KerokeroColaPrize
     _rooms = [R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS]
     _npc_ids = [NPC_8]
@@ -6956,6 +7450,7 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
 
 
 class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_3]
@@ -6970,6 +7465,7 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
 
 
 class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_4]
@@ -6984,6 +7480,7 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
 
 
 class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = PickMeUpPrize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_5]
@@ -6998,6 +7495,7 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
 
 
 class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
+    _bias = True
     _originally_held = RockCandyPrize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_6]
@@ -7012,6 +7510,7 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
 
 
 class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
+    _bias = True
     _originally_held = MaxMushroomPrize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_7]
@@ -7026,6 +7525,7 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
 
 
 class KeepCannonballCoin1Location(StandingLocationRow1):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_8]
@@ -7039,6 +7539,7 @@ class KeepCannonballCoin1Location(StandingLocationRow1):
 
 
 class KeepCannonballCoin2Location(StandingLocationRow2):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_9]
@@ -7052,6 +7553,7 @@ class KeepCannonballCoin2Location(StandingLocationRow2):
 
 
 class KeepCannonballCoin3Location(StandingLocationRow3):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_10]
@@ -7065,6 +7567,7 @@ class KeepCannonballCoin3Location(StandingLocationRow3):
 
 
 class KeepCannonballCoin4Location(StandingLocationRow4):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_11]
@@ -7078,6 +7581,7 @@ class KeepCannonballCoin4Location(StandingLocationRow4):
 
 
 class KeepCannonballCoin5Location(StandingLocationRow5):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_12]
@@ -7091,6 +7595,7 @@ class KeepCannonballCoin5Location(StandingLocationRow5):
 
 
 class KeepCannonballCoin6Location(StandingLocationRow6):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_13]
@@ -7104,6 +7609,7 @@ class KeepCannonballCoin6Location(StandingLocationRow6):
 
 
 class KeepCannonballCoin7Location(StandingLocationRow7):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_14]
@@ -7117,6 +7623,7 @@ class KeepCannonballCoin7Location(StandingLocationRow7):
 
 
 class KeepCannonballCoin8Location(StandingLocationRow8):
+    _bias = True
     _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_15]
@@ -7130,6 +7637,7 @@ class KeepCannonballCoin8Location(StandingLocationRow8):
 
 
 class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
@@ -7146,6 +7654,7 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
 
 
 class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
@@ -7162,6 +7671,7 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
 
 
 class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = FireBombPrize
     _rooms = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
@@ -7178,6 +7688,7 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
 
 
 class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4):
+    _bias = True
     _originally_held = RoyalSyrupPrize
     _rooms = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
@@ -7194,6 +7705,7 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
 
 
 class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
+    _bias = True
     _originally_held = PickMeUpPrize
     _rooms = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
@@ -7210,6 +7722,7 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
 
 
 class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
+    _bias = True
     _originally_held = KerokeroColaPrize
     _rooms = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
@@ -7226,6 +7739,7 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
 
 
 class ObstacleCourseFinalFight(BossFightLocation):
+    _bias = True
     _originally_held = ChesterBossFight
     _rooms = [R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_CHESTER
@@ -7235,7 +7749,7 @@ class ObstacleCourseFinalFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7246,6 +7760,7 @@ class ObstacleCourseFinalFight(BossFightLocation):
 
 
 class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_CHESTER
@@ -7261,6 +7776,7 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
 
 
 class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = SonicCymbalPrize
     _rooms = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
@@ -7278,6 +7794,7 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
 
 
 class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = SuperSlapPrize
     _rooms = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
@@ -7295,6 +7812,7 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
 
 
 class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = DrillClawPrize
     _rooms = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
@@ -7312,6 +7830,7 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
 
 
 class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
+    _bias = True
     _originally_held = StarGunPrize
     _rooms = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
@@ -7329,6 +7848,7 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
 
 
 class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
+    _bias = True
     _originally_held = RockCandyPrize
     _rooms = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
@@ -7346,6 +7866,7 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
 
 
 class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
+    _bias = True
     _originally_held = RockCandyPrize
     _rooms = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
@@ -7363,6 +7884,7 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
 
 
 class KeepAfterObstaclesBossFight(BossFightLocation):
+    _bias = True
     _originally_held = KamekBossFight
     _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_1
@@ -7372,7 +7894,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7383,6 +7905,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
 
 
 class KeepAfterObstaclesStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_1
@@ -7398,6 +7921,7 @@ class KeepAfterObstaclesStarPiece(StarPieceLocation):
 
 
 class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = InfiniteCoinsPrize
     _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _npc_ids = [NPC_0]
@@ -7412,6 +7936,7 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
 
 
 class KeepChandelierBossFight(BossFightLocation):
+    _bias = True
     _originally_held = BoomerBossFight
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
@@ -7422,7 +7947,7 @@ class KeepChandelierBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7433,6 +7958,7 @@ class KeepChandelierBossFight(BossFightLocation):
 
 
 class KeepChandelierStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
@@ -7449,6 +7975,7 @@ class KeepChandelierStarPiece(StarPieceLocation):
 
 
 class KeepFinalBossFight(BossFightLocation):
+    _bias = True
     _originally_held = ExorBossFight
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
@@ -7459,7 +7986,7 @@ class KeepFinalBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7482,6 +8009,7 @@ class KeepFinalBossFight(BossFightLocation):
 
 
 class KeepFinalStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
@@ -7501,6 +8029,7 @@ class KeepFinalStarPiece(StarPieceLocation):
 
 
 class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT]
     _npc_ids = [NPC_0]
@@ -7515,6 +8044,7 @@ class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
 
 
 class FactoryBoltPlatformsChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = UltraHammerPrize
     _rooms = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
     _npc_ids = [NPC_7]
@@ -7529,6 +8059,7 @@ class FactoryBoltPlatformsChestLocation(TreasureChestLocationRow1):
 
 
 class FactoryEntranceBossFight(BossFightLocation):
+    _bias = True
     _originally_held = CountdownBossFight
     _rooms = [R433_SMITHY_FACTORY_AREA_01_DUMMY]
     _id = ShuffleLocationSelector.FACTORY_BOSS_FIGHT_1
@@ -7538,7 +8069,7 @@ class FactoryEntranceBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7549,6 +8080,7 @@ class FactoryEntranceBossFight(BossFightLocation):
 
 
 class FactoryEntranceStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R433_SMITHY_FACTORY_AREA_01_DUMMY]
     _id = ShuffleLocationSelector.FACTORY_BOSS_1
@@ -7564,6 +8096,7 @@ class FactoryEntranceStarPiece(StarPieceLocation):
 
 
 class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS]
     _npc_ids = [NPC_6]
@@ -7578,6 +8111,7 @@ class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
 
 
 class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [
         R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM
@@ -7594,6 +8128,7 @@ class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
 
 
 class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [
         R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM
@@ -7610,6 +8145,7 @@ class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
 
 
 class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
+    _bias = True
     _originally_held = RoyalSyrupPrize
     _rooms = [
         R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS
@@ -7626,6 +8162,7 @@ class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
 
 
 class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = MaxMushroomPrize
     _rooms = [
         R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS
@@ -7642,6 +8179,7 @@ class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
 
 
 class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
+    _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [
         R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM
@@ -7658,6 +8196,7 @@ class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
 
 
 class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
+    _bias = True
     _originally_held = FPFlowerPrize
     _rooms = [
         R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM
@@ -7674,6 +8213,7 @@ class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
 
 
 class FactoryTransitionBossFight(BossFightLocation):
+    _bias = True
     _originally_held = CloakerDominoBossFight
     _rooms = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
     _id = ShuffleLocationSelector.FACTORY_BOSS_FIGHT_2
@@ -7683,7 +8223,7 @@ class FactoryTransitionBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7694,6 +8234,7 @@ class FactoryTransitionBossFight(BossFightLocation):
 
 
 class FactoryTransitionStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
     _id = ShuffleLocationSelector.FACTORY_BOSS_2
@@ -7712,6 +8253,7 @@ class FactoryTransitionStarPiece(StarPieceLocation):
 
 
 class InnerFactoryFirstFight(BossFightLocation):
+    _bias = True
     _originally_held = ClerkBossFight
     _rooms = [R469_FACTORY_GROUNDS_AREA_01]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_1
@@ -7721,7 +8263,7 @@ class InnerFactoryFirstFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7732,6 +8274,7 @@ class InnerFactoryFirstFight(BossFightLocation):
 
 
 class InnerFactoryFirstFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R469_FACTORY_GROUNDS_AREA_01]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_1
@@ -7747,6 +8290,7 @@ class InnerFactoryFirstFightStarPiece(StarPieceLocation):
 
 
 class InnerFactoryToadGiftLocation(NPCLocationRow1):
+    _bias = True
     _originally_held = RockCandyPrize
     _rooms = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _id = ShuffleLocationSelector.FACTORY_TOAD_GIFT
@@ -7759,6 +8303,7 @@ class InnerFactoryToadGiftLocation(NPCLocationRow1):
 
 
 class InnerFactorySecondFight(BossFightLocation):
+    _bias = True
     _originally_held = ManagerBossFight
     _rooms = [R471_FACTORY_GROUNDS_AREA_02]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_2
@@ -7768,7 +8313,7 @@ class InnerFactorySecondFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7779,6 +8324,7 @@ class InnerFactorySecondFight(BossFightLocation):
 
 
 class InnerFactorySecondFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R471_FACTORY_GROUNDS_AREA_02]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_2
@@ -7794,6 +8340,7 @@ class InnerFactorySecondFightStarPiece(StarPieceLocation):
 
 
 class InnerFactoryThirdFight(BossFightLocation):
+    _bias = True
     _originally_held = DirectorBossFight
     _rooms = [R472_FACTORY_GROUNDS_AREA_03]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_3
@@ -7803,7 +8350,7 @@ class InnerFactoryThirdFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7814,6 +8361,7 @@ class InnerFactoryThirdFight(BossFightLocation):
 
 
 class InnerFactoryThirdFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R472_FACTORY_GROUNDS_AREA_03]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_3
@@ -7829,6 +8377,7 @@ class InnerFactoryThirdFightStarPiece(StarPieceLocation):
 
 
 class InnerFactoryFourthFight(BossFightLocation):
+    _bias = True
     _originally_held = GunyolkBossFight
     _rooms = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_4
@@ -7838,7 +8387,7 @@ class InnerFactoryFourthFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7849,6 +8398,7 @@ class InnerFactoryFourthFight(BossFightLocation):
 
 
 class InnerFactoryFourthFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = None
     _rooms = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_4
@@ -7864,6 +8414,7 @@ class InnerFactoryFourthFightStarPiece(StarPieceLocation):
 
 
 class FinalBossFight(BossFightLocation):
+    _bias = True
     _originally_held = SmithyBossFight
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_FINAL
     _world_area = WorldAreaEnum.BOWSERS_KEEP
@@ -7872,7 +8423,7 @@ class FinalBossFight(BossFightLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
-            can_damage_enemies_with_spells(inventory)
+            can_damage_enemies_with_spells(world, inventory)
             or not isinstance(prize, MokuraBossFight)
         )
 
@@ -7883,6 +8434,7 @@ class FinalBossFight(BossFightLocation):
 
 
 class FinalBossFightStarPiece(StarPieceLocation):
+    _bias = True
     _originally_held = StarPiece7
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FINAL
     _world_area = WorldAreaEnum.BOWSERS_KEEP
@@ -7904,6 +8456,7 @@ class FinalBossFightStarPiece(StarPieceLocation):
 
 
 class MariosPadBedFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _x_coord = 3
     _y_coord = 11
@@ -7917,6 +8470,7 @@ class MariosPadBedFlag(InvisibleFlagLocation):
 
 
 class RoseTownSignFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
         R084_ROSE_TOWN_OUTSIDE,
@@ -7933,6 +8487,7 @@ class RoseTownSignFlag(InvisibleFlagLocation):
 
 
 class YosterIsleGoalFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R034_YOSTER_ISLE]
     _x_coord = 21
     _y_coord = 62
@@ -7948,6 +8503,7 @@ class YosterIsleGoalFlag(InvisibleFlagLocation):
 
 
 class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R016_MARIOS_PAD]
     _x_coord = 11
     _y_coord = 34
@@ -7961,6 +8517,7 @@ class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
 
 
 class MariosPadLanternFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R016_MARIOS_PAD]
     _x_coord = 13
     _y_coord = 35
@@ -7974,6 +8531,7 @@ class MariosPadLanternFlag(InvisibleFlagLocation):
 
 
 class MariosPadHatFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _x_coord = 3
     _y_coord = 13
@@ -7986,6 +8544,7 @@ class MariosPadHatFlag(InvisibleFlagLocation):
 
 
 class MushroomWayTreeFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R204_MUSHROOM_WAY_AREA_02]
     _x_coord = 11
     _y_coord = 16
@@ -7999,6 +8558,7 @@ class MushroomWayTreeFlag(InvisibleFlagLocation):
 
 
 class MushroomKingdomSignFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
         R191_MUSHROOM_KINGDOM_OUTSIDE,
@@ -8015,6 +8575,7 @@ class MushroomKingdomSignFlag(InvisibleFlagLocation):
 
 
 class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R482_MUSHROOM_KINGDOM_DURING_MACK_RAZ_AND_RAINIS_HOUSE,
         R490_MUSHROOM_KINGDOM_RAZ_AND_RAINIS_HOUSE,
@@ -8030,6 +8591,7 @@ class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
 
 
 class ChancellorThroneFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM,
         R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
@@ -8045,6 +8607,7 @@ class ChancellorThroneFlag(InvisibleFlagLocation):
 
 
 class BanditsWayFlowerFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _x_coord = 25
     _y_coord = 89
@@ -8059,6 +8622,7 @@ class BanditsWayFlowerFlag(InvisibleFlagLocation):
 
 
 class KeroStairsFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS]
     _x_coord = 5
     _y_coord = 41
@@ -8074,6 +8638,7 @@ class KeroStairsFlag(InvisibleFlagLocation):
 
 
 class KeroGateFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE]
     _x_coord = 4
     _y_coord = 88
@@ -8089,6 +8654,7 @@ class KeroGateFlag(InvisibleFlagLocation):
 
 
 class MidasTreesFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
     _x_coord = 24
     _y_coord = 26
@@ -8101,6 +8667,7 @@ class MidasTreesFlag(InvisibleFlagLocation):
 
 
 class TadpoleCabinetFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R075_TADPOLE_POND_AREA_01]
     _x_coord = 25
     _y_coord = 29
@@ -8115,6 +8682,7 @@ class TadpoleCabinetFlag(InvisibleFlagLocation):
 
 
 class RoseWayDirtPatchFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R066_ROSE_WAY_EXIT_AREA_WHERE_BOWSERS_TROOPS_GATHERED]
     _x_coord = 25
     _y_coord = 88
@@ -8126,6 +8694,7 @@ class RoseWayDirtPatchFlag(InvisibleFlagLocation):
 
 
 class RoseTownHydrantFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
         R084_ROSE_TOWN_OUTSIDE,
@@ -8141,6 +8710,7 @@ class RoseTownHydrantFlag(InvisibleFlagLocation):
 
 
 class RoseTownSinkFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R089_ROSE_TOWN_DURING_BOWYER_THREE_GRANDKIDS_HOUSE,
         R090_ROSE_TOWN_THREE_GRANDKIDS_HOUSE,
@@ -8156,6 +8726,7 @@ class RoseTownSinkFlag(InvisibleFlagLocation):
 
 
 class RoseTownBowserFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R085_ROSE_TOWN_DURING_BOWYER_INN_1F,
         R086_ROSE_TOWN_INN_1F,
@@ -8170,6 +8741,7 @@ class RoseTownBowserFlag(InvisibleFlagLocation):
 
 
 class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R417_GARDENERS_HOUSE_OUTSIDE]
     _x_coord = 2
     _y_coord = 85
@@ -8186,6 +8758,7 @@ class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
 
 
 class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R417_GARDENERS_HOUSE_OUTSIDE]
     _x_coord = 5
     _y_coord = 87
@@ -8203,6 +8776,7 @@ class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
 
 
 class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R419_LAZY_SHELL_CLOUD]
     _x_coord = 4
     _y_coord = 111
@@ -8219,6 +8793,7 @@ class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
 
 
 class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R231_FOREST_MAZE_SECRET_ENTRANCE]
     _x_coord = 18
     _y_coord = 72
@@ -8233,6 +8808,7 @@ class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
 
 
 class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R235_FOREST_MAZE_AREA_08_UNDERGROUND]
     _x_coord = 25
     _y_coord = 93
@@ -8248,6 +8824,7 @@ class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
 
 
 class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R236_FOREST_MAZE_AREA_07_UNDERGROUND_WSLEEPING_WIGGLER]
     _x_coord = 2
     _y_coord = 39
@@ -8261,6 +8838,7 @@ class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
 
 
 class PipeVaultExteriorFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R055_PIPE_VAULT_ENTRANCE]
     _x_coord = 17
     _y_coord = 19
@@ -8276,6 +8854,7 @@ class PipeVaultExteriorFlag(InvisibleFlagLocation):
 
 
 class PipeVaultRedPipeFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R129_PIPE_VAULT_AREA_05]
     _x_coord = 21
     _y_coord = 107
@@ -8291,6 +8870,7 @@ class PipeVaultRedPipeFlag(InvisibleFlagLocation):
 
 
 class YosterIsleHutFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R034_YOSTER_ISLE]
     _x_coord = 11
     _y_coord = 70
@@ -8304,6 +8884,7 @@ class YosterIsleHutFlag(InvisibleFlagLocation):
 
 
 class MolevilleHydrantFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES,
         R108_MOLEVILLE_OUTSIDE,
@@ -8319,6 +8900,7 @@ class MolevilleHydrantFlag(InvisibleFlagLocation):
 
 
 class MolevilleMountainBushFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES,
         R108_MOLEVILLE_OUTSIDE,
@@ -8334,6 +8916,7 @@ class MolevilleMountainBushFlag(InvisibleFlagLocation):
 
 
 class MolevilleBedFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R337_MOLEVILLE_INN]
     _x_coord = 6
     _y_coord = 12
@@ -8346,6 +8929,7 @@ class MolevilleBedFlag(InvisibleFlagLocation):
 
 
 class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
     _x_coord = 5
     _y_coord = 51
@@ -8359,6 +8943,7 @@ class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
 
 
 class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
     _x_coord = 8
     _y_coord = 13
@@ -8373,6 +8958,7 @@ class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
 
 
 class MolevilleMinesEntryFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R290_MOLEVILLE_MINES_AREA_19_FROM_OUTSIDE_AFTER_PAYING]
     _x_coord = 22
     _y_coord = 23
@@ -8388,6 +8974,7 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
 
 
 class BoosterPassCornerBushFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R101_BOOSTER_PASS_AREA_02]
     _x_coord = 17
     _y_coord = 112
@@ -8401,6 +8988,7 @@ class BoosterPassCornerBushFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R202_BOOSTER_TOWER_ENTRANCE]
     _x_coord = 4
     _y_coord = 110
@@ -8413,6 +9001,7 @@ class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerDeskFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM]
     _x_coord = 24
     _y_coord = 113
@@ -8427,6 +9016,7 @@ class BoosterTowerDeskFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER]
     _x_coord = 19
     _y_coord = 122
@@ -8441,6 +9031,7 @@ class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerCurtainFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
     _x_coord = 7
     _y_coord = 64
@@ -8456,6 +9047,7 @@ class BoosterTowerCurtainFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER]
     _x_coord = 5
     _y_coord = 114
@@ -8470,6 +9062,7 @@ class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     _x_coord = 15
     _y_coord = 83
@@ -8485,6 +9078,7 @@ class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _x_coord = 7
     _y_coord = 18
@@ -8498,6 +9092,7 @@ class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
 
 
 class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _x_coord = 7
     _y_coord = 24
@@ -8512,6 +9107,7 @@ class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
 
 
 class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R005_MARRYMORE_OUTSIDE_DURING_BOOSTER,
         R064_MARRYMORE_OUTSIDE,
@@ -8529,6 +9125,7 @@ class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
 
 
 class MarrymoreHallwayFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R011_MARRYMORE_INN_3F]
     _x_coord = 18
     _y_coord = 76
@@ -8541,6 +9138,7 @@ class MarrymoreHallwayFlag(InvisibleFlagLocation):
 
 
 class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R012_MARRYMORE_INN_SUITE_ROOM]
     _x_coord = 7
     _y_coord = 13
@@ -8554,6 +9152,7 @@ class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
 
 
 class MarrymoreKitchenFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R155_MARRYMORE_CHAPEL_KITCHEN]
     _x_coord = 2
     _y_coord = 20
@@ -8567,6 +9166,7 @@ class MarrymoreKitchenFlag(InvisibleFlagLocation):
 
 
 class MarrymoreFireplaceFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R152_MARRYMORE_CHAPEL_MAIN_HALL]
     _x_coord = 9
     _y_coord = 33
@@ -8580,6 +9180,7 @@ class MarrymoreFireplaceFlag(InvisibleFlagLocation):
 
 
 class MarrymoreOrganFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R065_MARRYMORE_CHAPEL_SANCTUARY,
         R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
@@ -8598,6 +9199,7 @@ class MarrymoreOrganFlag(InvisibleFlagLocation):
 
 
 class MarrymoreAltarFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R065_MARRYMORE_CHAPEL_SANCTUARY,
         R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
@@ -8615,6 +9217,7 @@ class MarrymoreAltarFlag(InvisibleFlagLocation):
 
 
 class StarHillNorthStarFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R158_STAR_HILL_AREA_02]
     _x_coord = 8
     _y_coord = 69
@@ -8628,6 +9231,7 @@ class StarHillNorthStarFlag(InvisibleFlagLocation):
 
 
 class SeasideTownAnchorFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     _x_coord = 14
     _y_coord = 57
@@ -8640,6 +9244,7 @@ class SeasideTownAnchorFlag(InvisibleFlagLocation):
 
 
 class SeasideTownHydrantFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     _x_coord = 16
     _y_coord = 25
@@ -8654,6 +9259,7 @@ class SeasideTownHydrantFlag(InvisibleFlagLocation):
 
 
 class SeasideTownBucketFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     _x_coord = 20
     _y_coord = 31
@@ -8666,6 +9272,7 @@ class SeasideTownBucketFlag(InvisibleFlagLocation):
 
 
 class SeasideTownFlowersFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R217_SEASIDE_TOWN_DURING_YARIDOVICH_ACCESSORY_SHOP_RIGHTMOST,
         R313_SEASIDE_TOWN_ACCESSORY_SHOP,
@@ -8681,6 +9288,7 @@ class SeasideTownFlowersFlag(InvisibleFlagLocation):
 
 
 class SeasideTownShedBoxFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R314_SEASIDE_TOWN_SHED]
     _x_coord = 5
     _y_coord = 23
@@ -8697,6 +9305,7 @@ class SeasideTownShedBoxFlag(InvisibleFlagLocation):
 
 
 class SeaArrowFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
     _x_coord = 8
     _y_coord = 21
@@ -8712,6 +9321,7 @@ class SeaArrowFlag(InvisibleFlagLocation):
 
 
 class SeaBoxesFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
     _x_coord = 9
     _y_coord = 36
@@ -8726,6 +9336,7 @@ class SeaBoxesFlag(InvisibleFlagLocation):
 
 
 class SeaStalagnateFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
     _x_coord = 18
     _y_coord = 43
@@ -8742,6 +9353,7 @@ class SeaStalagnateFlag(InvisibleFlagLocation):
 
 
 class SeaUnderwaterSailFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R174_SEA_AREA_08_SHORE_WITH_SUNKEN_SHIP]
     _x_coord = 4
     _y_coord = 41
@@ -8755,6 +9367,7 @@ class SeaUnderwaterSailFlag(InvisibleFlagLocation):
 
 
 class ShipBarrelPileFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R162_SUNKEN_SHIP_AREA_04_GREAPERS_DRY_BONES]
     _x_coord = 7
     _y_coord = 66
@@ -8769,6 +9382,7 @@ class ShipBarrelPileFlag(InvisibleFlagLocation):
 
 
 class ShipDoorMarkerFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R165_SUNKEN_SHIP_AREA_06_PUZZLE_ROOM_PASSAGEWAY]
     _x_coord = 18
     _y_coord = 82
@@ -8784,6 +9398,7 @@ class ShipDoorMarkerFlag(InvisibleFlagLocation):
 
 
 class ShipButtonFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
     _x_coord = 16
     _y_coord = 133
@@ -8797,6 +9412,7 @@ class ShipButtonFlag(InvisibleFlagLocation):
 
 
 class ShipSwitchFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
     _x_coord = 17
     _y_coord = 121
@@ -8812,6 +9428,7 @@ class ShipSwitchFlag(InvisibleFlagLocation):
 
 
 class LandsEndPlatformFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R137_LANDS_END_AREA_01]
     _x_coord = 6
     _y_coord = 29
@@ -8823,6 +9440,7 @@ class LandsEndPlatformFlag(InvisibleFlagLocation):
 
 
 class LandsEndCannonFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL]
     _x_coord = 11
     _y_coord = 115
@@ -8837,6 +9455,7 @@ class LandsEndCannonFlag(InvisibleFlagLocation):
 
 
 class LandsEndArrowFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]
     _x_coord = 28
     _y_coord = 29
@@ -8851,6 +9470,7 @@ class LandsEndArrowFlag(InvisibleFlagLocation):
 
 
 class LandsEndHillFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R404_LANDS_END_DESERT_AREA_04]
     _x_coord = 23
     _y_coord = 96
@@ -8866,6 +9486,7 @@ class LandsEndHillFlag(InvisibleFlagLocation):
 
 
 class LandsEndTwoHillFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R319_LANDS_END_DESERT_AREA_06]
     _x_coord = 8
     _y_coord = 121
@@ -8879,6 +9500,7 @@ class LandsEndTwoHillFlag(InvisibleFlagLocation):
 
 
 class LandsEndStalagmiteFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R265_LANDS_END_UNDERGROUND_AREA_03]
     _x_coord = 22
     _y_coord = 80
@@ -8896,6 +9518,7 @@ class LandsEndStalagmiteFlag(InvisibleFlagLocation):
 
 
 class LandsEndCliffBushFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _x_coord = 23
     _y_coord = 103
@@ -8910,6 +9533,7 @@ class LandsEndCliffBushFlag(InvisibleFlagLocation):
 
 
 class LandsEndSignFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _x_coord = 24
     _y_coord = 118
@@ -8926,6 +9550,7 @@ class LandsEndSignFlag(InvisibleFlagLocation):
 
 
 class DojoBonsaiFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _x_coord = 6
     _y_coord = 9
@@ -8938,6 +9563,7 @@ class DojoBonsaiFlag(InvisibleFlagLocation):
 
 
 class MonstroEntranceSignFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R267_MONSTRO_TOWN_ENTRANCE]
     _x_coord = 9
     _y_coord = 102
@@ -8949,6 +9575,7 @@ class MonstroEntranceSignFlag(InvisibleFlagLocation):
 
 
 class MonstroBatFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _x_coord = 5
     _y_coord = 51
@@ -8962,6 +9589,7 @@ class MonstroBatFlag(InvisibleFlagLocation):
 
 
 class MonstroFanFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F]
     _x_coord = 12
     _y_coord = 80
@@ -8975,6 +9603,7 @@ class MonstroFanFlag(InvisibleFlagLocation):
 
 
 class MonstroShellFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R398_MONSTRO_TOWN_WEAPON_AND_ARMOR_SHOP]
     _x_coord = 16
     _y_coord = 15
@@ -8988,6 +9617,7 @@ class MonstroShellFlag(InvisibleFlagLocation):
 
 
 class BeanValleyPipeFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R252_BEAN_VALLEY_MAIN_AREA]
     _x_coord = 17
     _y_coord = 85
@@ -9001,6 +9631,7 @@ class BeanValleyPipeFlag(InvisibleFlagLocation):
 
 
 class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R253_BEAN_VALLEY_MAGIC_BRICK_TO_BEANSTALK_AREA]
     _x_coord = 27
     _y_coord = 27
@@ -9012,6 +9643,7 @@ class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
 
 
 class CasinoBellFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
     _x_coord = 14
     _y_coord = 19
@@ -9027,6 +9659,7 @@ class CasinoBellFlag(InvisibleFlagLocation):
 
 
 class NimbusGoldGoombaFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R341_NIMBUS_LAND_GARROS_HOUSE]
     _x_coord = 5
     _y_coord = 14
@@ -9041,6 +9674,7 @@ class NimbusGoldGoombaFlag(InvisibleFlagLocation):
 
 
 class NimbusInnLobbyFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R343_NIMBUS_LAND_INN]
     _x_coord = 6
     _y_coord = 84
@@ -9057,6 +9691,7 @@ class NimbusInnLobbyFlag(InvisibleFlagLocation):
 
 
 class NimbusPlantFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [
         R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT
     ]
@@ -9073,6 +9708,7 @@ class NimbusPlantFlag(InvisibleFlagLocation):
 
 
 class NimbusBirdFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
     _x_coord = 28
     _y_coord = 48
@@ -9087,6 +9723,7 @@ class NimbusBirdFlag(InvisibleFlagLocation):
 
 
 class NimbusHotSpringsFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R447_NIMBUS_LAND_HOT_SPRINGS]
     _x_coord = 19
     _y_coord = 114
@@ -9101,6 +9738,7 @@ class NimbusHotSpringsFlag(InvisibleFlagLocation):
 
 
 class VolcanoShipsFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R353_VOLCANO_AREA_18_HINO_MART]
     _x_coord = 11
     _y_coord = 61
@@ -9115,6 +9753,7 @@ class VolcanoShipsFlag(InvisibleFlagLocation):
 
 
 class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _x_coord = 26
     _y_coord = 97
@@ -9130,6 +9769,7 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
 
 
 class KeepThwompFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R449_BOWSERS_KEEP_AREA_11_THWOMPBULLET_ROOM_AFTER_MAGIKOOPAS_ROOM]
     _x_coord = 19
     _y_coord = 47
@@ -9143,6 +9783,7 @@ class KeepThwompFlag(InvisibleFlagLocation):
 
 
 class FactoryCanopyFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R220_SMITHY_FACTORY_AREA_02_WSAVE_POINT]
     _x_coord = 16
     _y_coord = 15
@@ -9158,6 +9799,7 @@ class FactoryCanopyFlag(InvisibleFlagLocation):
 
 
 class FactoryLugnutFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
     _x_coord = 23
     _y_coord = 52
@@ -9172,6 +9814,7 @@ class FactoryLugnutFlag(InvisibleFlagLocation):
 
 
 class FactoryTrampolineFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN]
     _x_coord = 14
     _y_coord = 9
@@ -9186,6 +9829,7 @@ class FactoryTrampolineFlag(InvisibleFlagLocation):
 
 
 class FactoryButtonFlag(InvisibleFlagLocation):
+    _bias = True
     _rooms = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _x_coord = 4
     _y_coord = 36
@@ -9233,6 +9877,15 @@ def can_defeat_boss(
         == ProgressionLogicDifficultyOptions.HARD
     ):
         return True
+    location = world.get_location(location_type)
+    if location.prize is None:  # not assigned yet
+        return False
+    return inventory.has_item(type(location.prize))
+
+
+def has_learned_spell(
+    world: GameWorld, inventory: Inventory, location_type: type[SpellSlotLocation]
+) -> bool:
     location = world.get_location(location_type)
     if location.prize is None:  # not assigned yet
         return False
@@ -10299,6 +10952,7 @@ def can_defeat_inner_factory_fourth_boss(
 # TODO do we want bucket warp / casino warp to take us to the boss fight or to the inner factory?
 def can_access_inner_factory_final_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the final Factory boss."""
+    from ..types.flags import StarPiecesRequired, CasinoWarp, BucketWarp
     value = world.settings.get_flag(StarPiecesRequired).value
     has_stars = inventory.has_item_count(StarPiecePrize, value)
     if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
@@ -10384,29 +11038,26 @@ def can_access_invisible_flags(world: GameWorld, inventory: Inventory) -> bool:
     # mimic 3 and postgame temple
 
 
-def can_damage_enemies_with_spells(inventory: Inventory) -> bool:
-    """If true, the player is expected to be able to damage enemies with spells."""
-    return (
-        inventory.has_item(JumpSpellPrize)
-        or inventory.has_item(FireOrbSpellPrize)
-        or inventory.has_item(SuperJumpSpellPrize)
-        or inventory.has_item(SuperFlameSpellPrize)
-        or inventory.has_item(UltraJumpSpellPrize)
-        or inventory.has_item(UltraFlameSpellPrize)
-        or inventory.has_item(ThunderboltSpellPrize)
-        or inventory.has_item(SnowyPrize)
-        or inventory.has_item(ShockerSpellPrize)
-        or inventory.has_item(StarRainSpellPrize)
-        or inventory.has_item(GenoBeamSpellPrize)
-        or inventory.has_item(GenoWhirlSpellPrize)
-        or inventory.has_item(GenoFlashSpellPrize)
-        or inventory.has_item(GenoBlastSpellPrize)
-        or inventory.has_item(TerrorizeSpellPrize)
-        or inventory.has_item(PoisonGasSpellPrize)
-        or inventory.has_item(CrusherSpellPrize)
-        or inventory.has_item(BowserCrushSpellPrize)
-        or inventory.has_item(PsychBombSpellPrize)
-    )
+def can_damage_enemies_with_spells(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to damage enemies with a non-elemental spell."""
+    pool = [
+        StarRainSpellPrize,
+        GenoWhirlSpellPrize,
+        TerrorizeSpellPrize,
+        PoisonGasSpellPrize,
+    ]
+    if not world.settings.isflag_enabled(InfuseSpellElements):
+        pool.extend(
+            [
+                GenoBeamSpellPrize,
+                GenoFlashSpellPrize,
+                GenoBlastSpellPrize,
+                CrusherSpellPrize,
+                BowserCrushSpellPrize,
+                PsychBombSpellPrize,
+            ]
+        )
+    return inventory.has_one_of(pool)
 
 
 def is_all_starting_chars_set(world: GameWorld):

@@ -16,7 +16,9 @@ from .prize import (
     SpellPrize,
     FPFlowerPrize,
     ArchipelagoPrize,
+    KeyPrize,
 )
+
 # Note: DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize imported lazily
 # in InvisibleFlagLocation.originally_held to avoid circular import
 from ..data.variables.event_script_names import *
@@ -74,6 +76,7 @@ if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
     from ..progression.prizes import SmithyBossFight
 
+# RestrictSpecialEquips is imported lazily inside can_accept to avoid circular import
 
 class ShuffleLocationSelector(CategorizationOption):
     """Enumeration for enabling and disabling locations"""
@@ -776,9 +779,19 @@ class PrizeLocation:
     _rooms: list[int]
     _id: ShuffleLocationSelector
     _remake_only: bool = False
-    _blacklist: list[type[Prize]]
+    _blacklist: list[type[Prize]] | None = None
     _override_id: int | None = None
     _can_be_empty: bool = False
+    _bias: bool = False
+    _monstro_shuffle: bool = True
+
+    @property
+    def has_item(self) -> bool:
+        return self._prize is not None
+
+    @property
+    def monstro_shuffle(self) -> bool:
+        return self._monstro_shuffle
 
     _world_area: WorldAreaEnum
 
@@ -867,10 +880,11 @@ class PrizeLocation:
         return self._originally_held
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        if isinstance(prize, tuple(self._blacklist)):
+        if self._blacklist and isinstance(prize, tuple(self._blacklist)):
             return False
         # Lazy import to avoid circular import
-        from .flags import DisperseStarPieces
+        from .flags import DisperseStarPieces, RestrictSpecialEquips
+
         if isinstance(prize, StarPiecePrize) and world.settings.isflag_enabled(
             DisperseStarPieces
         ):
@@ -893,6 +907,11 @@ class PrizeLocation:
                 and isinstance(l.prize, EXPStarPrize)
             ]
             return len(neighbours) == 0
+        if world.settings.isflag_enabled(RestrictSpecialEquips):
+            if self.monstro_shuffle and isinstance(prize, ItemPrize) and prize._monstro_shuffle:
+                return True
+            else:
+                return False
         return True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -911,16 +930,45 @@ class PrizeLocation:
         )
 
 
+class StandardPrizeLocation(PrizeLocation):
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        from .flags import (
+            KeyItemsAnywhere,
+            StarPieceAvailability,
+            EnabledRegularChecks,
+        )
+
+        # Check if this location is disabled for key items / star pieces
+        if isinstance(prize, (KeyPrize, StarPiecePrize)):
+            enabled_check = world.settings.get_flag(EnabledRegularChecks)
+            enabled_classes = [m.value for m in enabled_check.enabled]
+            if self.__class__ not in enabled_classes:
+                return False
+
+        if isinstance(prize, KeyPrize) and not world.settings.isflag_enabled(
+            KeyItemsAnywhere
+        ):
+            return False
+        elif isinstance(prize, StarPiecePrize) and not world.settings.isflag_enabled(
+            StarPieceAvailability
+        ):
+            return False
+        else:
+            return super().can_accept(prize, inventory, world)
+
+
 class FrogDiscipleLocation(PrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         if prize is None:
             return False
         if not isinstance(prize, ItemPrize):
             return False
-        return world.get_item(prize.item).price > 0 # type: ignore
+        if not super().can_accept(prize, inventory, world):
+            return False
+        return world.get_item(prize.item).price > 0  # type: ignore
 
 
-class TreasureChestLocation(PrizeLocation):
+class TreasureChestLocation(StandardPrizeLocation):
     _npc_ids: list[AreaObject]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -941,9 +989,7 @@ class TreasureChestLocation(PrizeLocation):
         return EventScript(itemgrant)
 
 
-
-
-class StandingLocation(PrizeLocation):
+class StandingLocation(StandardPrizeLocation):
     _npc_ids: list[AreaObject]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -959,7 +1005,7 @@ class StandingLocation(PrizeLocation):
         return self.prize.standing_grant
 
 
-class EventLocation(PrizeLocation):
+class EventLocation(StandardPrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return hasattr(prize, "npc_grant") and super().can_accept(
             prize, inventory, world
@@ -973,7 +1019,7 @@ class EventLocation(PrizeLocation):
         return self.prize.npc_grant
 
 
-class RiverLocation(PrizeLocation):
+class RiverLocation(StandardPrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return hasattr(prize, "river_grant") and super().can_accept(
             prize, inventory, world
@@ -1003,9 +1049,94 @@ class BossFightLocation(PrizeLocation):
         return EventScript([*output, Return()])
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return hasattr(prize, "boss_fight_grant") and super().can_accept(
-            prize, inventory, world
+        if not hasattr(prize, "boss_fight_grant"):
+            return False
+
+        # Check if this location is disabled and the prize is a gating boss
+        from .flags import (
+            EnabledBossChecks,
+            BanditsWayGate,
+            BanditsWayGating,
+            KeroSewersGate,
+            KeroSewersGating,
+            PipeVaultGate,
+            PipeVaultGating,
+            Moleville1Gate,
+            Moleville1Gating,
+            BoosterTowerGate,
+            BoosterTowerGating,
+            BoosterHillGate,
+            BoosterHillGating,
+            MarrymoreGate,
+            MarrymoreGating,
+            SeaGate,
+            SeaGating,
+            YaridovichGate,
+            YaridovichGating,
+            LandsEndGate,
+            LandsEndGating,
+            MonstroTownGate,
+            MonstroTownGating,
+            NimbusGate,
+            NimbusGating,
+            BarrelVolcanoGate,
+            BarrelVolcanoGating,
+            BowsersKeepGate,
+            BowsersKeepGating,
+            FactoryGate,
+            FactoryGating,
         )
+        from ..progression.prizes import (
+            HammerBrosFight,
+            MackBossFight,
+            BowyerBossFight,
+            PunchinelloBossFight,
+            KnifeGuyGrateGuyBossFight,
+            BundtBossFight,
+            JohnnyBossFight,
+            YaridovichBossFight,
+            Belome2BossFight,
+            MegasmilaxBossFight,
+            ValentinaBossFight,
+            AxemRangersBossFight,
+            ExorBossFight,
+        )
+
+        enabled_check = world.settings.get_flag(EnabledBossChecks)
+        enabled_classes = [m.value for m in enabled_check.enabled]
+
+        # If this location is enabled, accept any boss fight
+        if self.__class__ in enabled_classes:
+            return super().can_accept(prize, inventory, world)
+
+        # Location is disabled - check if the prize is a gating boss
+        # Map gating options to boss fight classes
+        # (GateFlag class, gating option enum value, boss fight class)
+        gating_boss_mapping: list[tuple[type, object, type[BossFightPrize]]] = [
+            (BanditsWayGate, BanditsWayGating.HAMMER_BRO, HammerBrosFight),
+            (KeroSewersGate, KeroSewersGating.MACK, MackBossFight),
+            (PipeVaultGate, PipeVaultGating.BOWYER, BowyerBossFight),
+            (Moleville1Gate, Moleville1Gating.BOWYER, BowyerBossFight),
+            (BoosterTowerGate, BoosterTowerGating.PUNCHINELLO, PunchinelloBossFight),
+            (BoosterHillGate, BoosterHillGating.KGGG, KnifeGuyGrateGuyBossFight),
+            (MarrymoreGate, MarrymoreGating.KGGG, KnifeGuyGrateGuyBossFight),
+            (SeaGate, SeaGating.BUNDT, BundtBossFight),
+            (YaridovichGate, YaridovichGating.JOHNNY, JohnnyBossFight),
+            (LandsEndGate, LandsEndGating.YARIDOVICH, YaridovichBossFight),
+            (MonstroTownGate, MonstroTownGating.BELOME_2, Belome2BossFight),
+            (NimbusGate, NimbusGating.MEGASMILAX, MegasmilaxBossFight),
+            (BarrelVolcanoGate, BarrelVolcanoGating.VALENTINA, ValentinaBossFight),
+            (BowsersKeepGate, BowsersKeepGating.AXEM, AxemRangersBossFight),
+            (FactoryGate, FactoryGating.EXOR, ExorBossFight),
+        ]
+
+        # Check if this prize is currently being used for gating
+        for gate_flag, gating_option, boss_class in gating_boss_mapping:
+            if world.settings.is_flag_value(gate_flag, gating_option):
+                if isinstance(prize, boss_class):
+                    return False
+
+        return super().can_accept(prize, inventory, world)
 
     def render(
         self, world: GameWorld
@@ -1098,19 +1229,33 @@ class StarPieceLocation(PrizeLocation):
     _parent: type[BossFightLocation]
     _can_be_empty: bool = True
 
-    def can_be_empty(self, world: GameWorld) -> bool:
-        from .flags import WinCondition, WinConditions
-        return isinstance(world.get_location(self._parent).prize, SmithyBossFight) and world.settings.is_flag_value(WinCondition, WinConditions.SMITHY)
-
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         from .flags import WinCondition, WinConditions
-        return not (isinstance(world.get_location(self._parent).prize, SmithyBossFight) and world.settings.is_flag_value(WinCondition, WinConditions.SMITHY))
-    
+
+        if hasattr(self, "_parent"):
+            parent_location = world.get_location(self._parent)
+            if parent_location is None or parent_location.prize is None:
+                return False
+
+            return not (
+                isinstance(parent_location.prize, SmithyBossFight)
+                and world.settings.is_flag_value(WinCondition, WinConditions.SMITHY)
+            ) and super().can_access(inventory, world)
+        return super().can_access(inventory, world)
+
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return hasattr(prize, "postfight_star_piece_grant") and super().can_accept(
-            prize, inventory, world
-        )
-    
+        from .flags import EnabledStarPieceChecks
+
+        # Check if this location is disabled - if so, cannot accept any prize
+        enabled_check = world.settings.get_flag(EnabledStarPieceChecks)
+        enabled_classes = [m.value for m in enabled_check.enabled]
+        if self.__class__ not in enabled_classes:
+            return False
+
+        if not hasattr(prize, "postfight_star_piece_grant"):
+            return False
+
+        return super().can_accept(prize, inventory, world)
 
 
 class ShopLocation(PrizeLocation):
@@ -1122,6 +1267,7 @@ class ShopLocation(PrizeLocation):
 
 class SpellSlotLocation(PrizeLocation):
     _can_be_empty: bool = True
+
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return isinstance(prize, SpellPrize) and super().can_accept(
             prize, inventory, world
@@ -1369,6 +1515,16 @@ class KeyItemLocation(PrizeLocation):
     def key(self, world: GameWorld) -> bool:
         return True
 
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        from .flags import KeyItemsAnywhere
+
+        if not isinstance(prize, KeyPrize) and not world.settings.isflag_enabled(
+            KeyItemsAnywhere
+        ):
+            return False
+        else:
+            return super().can_accept(prize, inventory, world)
+
 
 class InvisibleFlagLocation(NPCLocationRow1, KeyItemLocation):
 
@@ -1477,7 +1633,12 @@ class InvisibleFlagLocation(NPCLocationRow1, KeyItemLocation):
     @property
     def originally_held(self) -> type[Prize] | None:
         # Lazy import to avoid circular import
-        from ..progression.prizes import DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize
+        from ..progression.prizes import (
+            DryBonesFlagPrize,
+            GreaperFlagPrize,
+            BigBooFlagPrize,
+        )
+
         if self._which == 0:
             return DryBonesFlagPrize
         elif self._which == 1:

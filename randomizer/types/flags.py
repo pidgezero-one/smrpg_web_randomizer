@@ -411,6 +411,7 @@ class RangeFlag(Flag):
 # ******** Party
 
 
+# ✅
 class ShuffleCharacters(BooleanFlag):
     _name = "Randomize party recruitment order"
     _description = """If enabled, your characters will join your party in a random order.
@@ -419,6 +420,7 @@ class ShuffleCharacters(BooleanFlag):
     _id = "random"
 
 
+# ✅
 class MaxCharacters(RangeFlag):
     _name = "Total playable allies"
     _description = "The total number of playable characters. Set this to 1 if you are attempting a solo challenge."
@@ -428,38 +430,36 @@ class MaxCharacters(RangeFlag):
     _id = "max"
     _requires_all = [(ShuffleCharacters(), True)]
 
+
+# ✅
 # Build StartingCharacterEnum dynamically - use ally instances as values (not class, to avoid aliases)
 _inclusion_members = {}
 for ally in ally_collection._allies:
     attr_name = ally.name.replace(" ", "_").replace("-", "_")
     _inclusion_members[attr_name] = ally
-
 IncludedCharacterEnum = ClassCategorizationOption(
     "IncludedCharacterEnum", _inclusion_members
 )
-
 class AvailableCharacters(CategorizationFlag[IncludedCharacterEnum]):
     _name = "Available Allies"
     _description = """Highlighted (white text over blue) allies are eligible to be the random ally that joins your party in starter/recruitment locations. Un-highlight any characters you want to exclude from the game entirely."""
     _default = {o: True for o in IncludedCharacterEnum.__members__.values()}
     _id = "avail_chars"
 
+
+# ✅
 # Build StartingCharacterEnum dynamically - use ally instances as values (not class, to avoid aliases)
 _starting_char_members = {}
 for ally in ally_collection._allies:
     attr_name = ally.name.replace(" ", "_").replace("-", "_")
     _starting_char_members[attr_name] = ally
-
 # Add 5 "Random" options - these are special markers, not actual allies
 # The Settings object will interpret these as "pick a random ally"
 for i in range(1, 6):
     _starting_char_members[f"Random_{i}"] = f"Random_{i}"
-
 StartingCharacterEnum = ClassCategorizationOption(
     "StartingCharacterEnum", _starting_char_members
 )
-
-
 class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum]):
     _name = "Starting Characters"
     _default: dict[StartingCharacterEnum, int | None] = {
@@ -615,6 +615,7 @@ class CharacterStats(BooleanFlag):
     _id = "stats"
 
 
+# ✅
 class CharacterLearnedSpells(BooleanFlag):
     _name = "Randomize character learned spells"
     _description = "The pool of spells learnable by each character will be randomized. This only covers spells originally learn-able by playable characters, and does not include enemy spells."
@@ -649,18 +650,16 @@ class UncapSuperJumps(BooleanFlag):
     _id = "uncap"
 
 
+# ✅
 # Build LearnableSpellEnum members dynamically
 _learnable_spell_members = {}
 for spell in ALL_SPELLS.spells:
     if isinstance(spell, CharacterSpell):
         attr_name = spell.title.replace(" ", "_").replace("-", "_")
         _learnable_spell_members[attr_name] = type(spell)
-
 LearnableSpellEnum = ClassCategorizationOption(
     "LearnableSpellEnum", _learnable_spell_members
 )
-
-
 class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
     _name = "Available Player Spells"
     _description = """Highlighted (white text over blue) spells will be learned by at least one character. Spells that are not highlighted will not be learned by any character.
@@ -675,7 +674,7 @@ class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
 # ******** Star Pieces and Bosses
 
 
-# if this is disabled, no other options in this category can be changed
+# ✅
 class ShuffleStarPieces(BooleanFlag):
     _name = "Randomize the locations of Star Pieces"
     _description = """If enabled, the Star Pieces may be found in places other than their original locations.
@@ -684,6 +683,7 @@ class ShuffleStarPieces(BooleanFlag):
     _id = "random"
 
 
+# ✅
 class TotalStarPieces(RangeFlag):
     _name = "Total Star Pieces available"
     _description = (
@@ -732,6 +732,7 @@ class DisperseStarPieces(BooleanFlag):
 # ******** Item shuffle
 
 
+# ✅
 # if this is disabled, no options in this category can be changed
 class ShuffleItems(BooleanFlag):
     _name = "Randomize item rewards"
@@ -741,6 +742,7 @@ class ShuffleItems(BooleanFlag):
     _id = "random"
 
 
+# ✅
 class ItemQualityOptions(CategorizationOption):
     """Enumeration for item quality options"""
 
@@ -750,6 +752,7 @@ class ItemQualityOptions(CategorizationOption):
     COMPLETELY_EMPTY = "Completely empty except for progress items"
 
 
+# ✅
 class ItemQuality(SelectOneFlag[ItemQualityOptions]):
     _name = """Item pool quality"""
     _description = """Determines how non-required items are distributed."""
@@ -759,6 +762,7 @@ class ItemQuality(SelectOneFlag[ItemQualityOptions]):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
 class BiasItemShuffle(BooleanFlag):
     _name = "Bias better items to gated locations"
     _description = (
@@ -768,6 +772,15 @@ class BiasItemShuffle(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
+class AnnoyingChests(BooleanFlag):
+    _name = 'Empty chests should perform the "You Missed" animation'
+    _description = """If disabled, empty chests will simply appear as pre-opened."""
+    _id = "ym"
+    _requires_all = [(ItemQuality(), ItemQualityOptions.COMPLETELY_EMPTY)]
+
+
+# ✅
 class NoStarEgg(BooleanFlag):
     _name = "No Star Egg"
     _description = """If enabled, you are guaranteed not to find the Star Egg via any chests, overworld items, NPC rewards, or shops."""
@@ -775,6 +788,7 @@ class NoStarEgg(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
 class RestrictSpecialEquips(BooleanFlag):
     _name = 'Shuffle "Special Item" exchange equips & Monstro Town reward equips'
     _description = """If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will be shuffled within each other's original locations, and will not be accessible anywhere else, regardless of your chosen Item Pool Quality setting.
@@ -784,6 +798,7 @@ class RestrictSpecialEquips(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
 class EXPStarsAnywhere(BooleanFlag):
     _name = "Shuffle EXP stars"
     _description = """If enabled, EXP stars may appear in chests that don't house them in the original game.
@@ -803,6 +818,7 @@ class ShuffleHillFlowers(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
 class MimicsAnywhere(BooleanFlag):
     _name = "Shuffle mimic chests"
     _description = """If enabled, any three chests in the world may be mimics. You will be able to run away from them.
@@ -813,6 +829,7 @@ class MimicsAnywhere(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
 class SlotsAnywhere(BooleanFlag):
     _name = "Shuffle slot machine chests"
     _description = """If enabled, the three slot machine chests in Bean Valley may be moved elsewhere.
@@ -822,6 +839,7 @@ class SlotsAnywhere(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
 class ShuffleBeetlemania(BooleanFlag):
     _name = "Shuffle Beetlemania"
     _description = """If enabled, the Mushroom Kingdom inn kid will give you a random item check for 500 coins. Beetlemania will appear in a random location, unless your item pool is set to "Completely Empty"."""
@@ -829,6 +847,7 @@ class ShuffleBeetlemania(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
 class ShuffleMagikoopaChest(BooleanFlag):
     _name = "Shuffle Magikoopa's coin chest"
     _description = """If enabled, the chest in Magikoopa's room will contain a random item check. A random chest somewhere in the game will contain infinite coins, unless your item pool is set to "Completely Empty"."""
@@ -846,13 +865,7 @@ class ShuffleWeddingGear(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
-class AnnoyingChests(BooleanFlag):
-    _name = 'Empty chests should perform the "You Missed" animation'
-    _description = """If disabled, empty chests will simply appear as pre-opened."""
-    _id = "ym"
-    _requires_all = [(ShuffleItems(), True)]
-
-
+# ✅
 class FireworksOptions(CategorizationOption):
     """Enumeration for Fireworks flag option"""
 
@@ -861,6 +874,7 @@ class FireworksOptions(CategorizationOption):
     PROGRESSIVE = "Shuffle Progressive Fireworks"
 
 
+# ✅
 class FireworksSetting(SelectOneFlag[FireworksOptions]):
     _name = """Fireworks trade sequence"""
     _description = """<b>Vanilla</b>: Unchanged from the original game.
@@ -880,6 +894,7 @@ class FireworksSetting(SelectOneFlag[FireworksOptions]):
 # ******** Progression availability
 
 
+# ✅
 class KeyItemsAnywhere(BooleanFlag):
     _name = '"Special Items" can appear in the general item pool'
     _description = """If enabled, items belonging to your "Special Items" pocket can appear in any item location.
@@ -894,6 +909,7 @@ class KeyItemsAnywhere(BooleanFlag):
     # change EVENT_947_jmp_to_event_107" to point to event 949
 
 
+# ✅
 class StarPieceAvailability(BooleanFlag):
     _name = "Star Pieces can appear in the general item pool"
     _description = "If enabled, some Star Pieces may be shuffled in with items instead of being only granted by boss fights."
@@ -915,6 +931,7 @@ class InvisibleFlagsSetting(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
 class Remake(BooleanFlag):
     _name = "Enable Remake content"
     _description = """If enabled, the seven postgame boss fights from the 2023 Switch remake and their rewards will be available in the game and included in all shuffle settings.
@@ -927,246 +944,8 @@ class Remake(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+# ✅
 # Delayed import to avoid circular dependency
-from ..progression import prizelocations
-from ..types.prizelocation import (
-    PrizeLocation,
-    BossFightLocation,
-    StarPieceLocation,
-    CharacterRecruitmentLocation,
-)
-
-
-def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
-    """Convert a PrizeLocation class to an attribute name for the enum."""
-    # Use the class name, converting CamelCase to Snake_Case
-    import re
-
-    name = cls.__name__
-    name = re.sub(r"([a-z])([A-Z])", r"\1_\2", name)
-    name = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", name)
-    return name
-
-
-# Build enum members dynamically from prizelocations
-_item_check_members = {}
-_boss_fight_check_members = {}
-_star_piece_check_members = {}
-
-for cls in vars(prizelocations).values():
-    if isinstance(cls, type) and issubclass(cls, PrizeLocation) and hasattr(cls, "_id"):
-        attr_name = _location_class_to_attr_name(cls)
-        if issubclass(cls, StarPieceLocation) and cls is not StarPieceLocation:
-            _star_piece_check_members[attr_name] = cls
-        elif issubclass(cls, BossFightLocation) and cls is not BossFightLocation:
-            _boss_fight_check_members[attr_name] = cls
-        elif cls is not PrizeLocation and not issubclass(
-            cls, (BossFightLocation, StarPieceLocation, CharacterRecruitmentLocation)
-        ):
-            _item_check_members[attr_name] = cls
-
-# Create enums dynamically using functional API
-ItemCheckEnum = ClassCategorizationOption("ItemCheckEnum", _item_check_members)
-BossFightCheckEnum = ClassCategorizationOption(
-    "BossFightCheckEnum", _boss_fight_check_members
-)
-StarPieceCheckEnum = ClassCategorizationOption(
-    "StarPieceCheckEnum", _star_piece_check_members
-)
-
-
-class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
-    _name = "General item pool checks"
-    _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
-<br>
-<br>If a check is not highlighted, its contents will still be shuffled, but it will not contain any items required to complete the seed.
-<br>
-<br>This setting only applies if you have "Special Items can appear in the general item pool" or "Star Pieces can appear in the general item pool" enabled.
-<br>
-<br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
-    _id = "chests"
-    _default = {o: True for o in ItemCheckEnum.__members__.values()}
-    _requires_all = [(ShuffleItems(), True)]
-    _requires_any = [(KeyItemsAnywhere(), True), (StarPieceAvailability(), True)]
-
-
-class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
-    _name = "Boss fight checks"
-    _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
-<br>
-<br>If a check is not highlighted, its contents will still be shuffled, but it will not contain any items required to complete the seed.
-<br>
-<br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
-    _id = "bosses"
-    _default = {o: True for o in BossFightCheckEnum.__members__.values()}
-    _requires_all = [(ShuffleStarPieces(), True)]
-
-
-class EnabledStarPieceChecks(CategorizationFlag[StarPieceCheckEnum]):
-    _name = "Star Piece checks"
-    _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
-<br>
-<br>If a check is not highlighted, its contents will still be shuffled, but it will not contain any items required to complete the seed.
-<br>
-<br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
-    _id = "stars"
-    _default = {o: True for o in StarPieceCheckEnum.__members__.values()}
-
-
-class ReplaceItems(BooleanFlag):
-    _name = "Replace some chest items with coins"
-    _description = "If enabled, the worst items (Wilt Shrooms, etc) will sometimes be replaced with coins in chests."
-    _id = "replace"
-
-
-# ✅
-class PoisonMushroom(BooleanFlag):
-    _name = "Change Fake Mushroom's Effect"
-    _description = (
-        "Randomize the status effect inflicted on a party member with the Fake Mushroom. It will only give "
-        "one status effect per seed, which has a 1/8 chance of being Invincibility."
-    )
-    _id = "fake"
-
-
-# ✅
-class EXPChallengeOptions(CategorizationOption):
-    """Enumeration for exp star quality scaling option"""
-
-    VANILLA = "Vanilla"
-    STARS = "Star Pieces"
-    BOSSES = "Bosses"
-    NONE = "None"
-
-
-# ✅
-class EXPChallenge(SelectOneFlag[EXPChallengeOptions]):
-    _name = "EXP Star Behaviour"
-    _description = """<b>Default</b>: EXP stars can give you 1 to 11 EXP per hit as normal.
-<br>
-<br><b>Star Pieces</b>: EXP per star increases with the number of Star Pieces collected.
-<br>
-<br><b>Bosses</b>: EXP per star increases with the number of bosses you have defeated.
-<br>
-<br><b>No EXP</b>: EXP stars give you 0 EXP."""
-    choices = [o for o in EXPChallengeOptions]
-    _default = EXPChallengeOptions.VANILLA
-    _id = "xpstar"
-
-
-# ✅
-class GrateGuyPrizeThreshold(RangeFlag):
-    _name = 'Required "Look The Other Way" wins'
-    _description = "The number of times required to win Grate Guy's casino minigame to receive its ultimate prize."
-    _default = 100
-    min_value = 1
-    max_value = 255
-    _id = "gg"
-
-
-# ✅
-class KnifeGuyPrizeThreshold(RangeFlag):
-    _name = "Required Knife Guy wins (normal prize)"
-    _description = "The number of wins minus losses required to win Knife Guy's juggling game prize (normally the Bright Card)."
-    _default = 12
-    min_value = 1
-    max_value = 254
-    _id = "kg"
-
-
-# ✅
-class SuitePrize1Threshold(RangeFlag):
-    _name = "Required Suite prize #1 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the first special gift"
-    _default = 1
-    min_value = 1
-    max_value = 249
-    _id = "s1"
-
-
-# ✅
-class SuitePrize2Threshold(RangeFlag):
-    _name = "Required Suite prize #2 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the second special gift"
-    _default = 3
-    min_value = 2
-    max_value = 250
-    _id = "s2"
-
-
-# ✅
-class SuitePrize3Threshold(RangeFlag):
-    _name = "Required Suite prize #3 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the third special gift"
-    _default = 5
-    min_value = 3
-    max_value = 251
-    _id = "s3"
-
-
-# ✅
-class SuitePrize4Threshold(RangeFlag):
-    _name = "Required Suite prize #4 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fourth special gift"
-    _default = 10
-    min_value = 4
-    max_value = 252
-    _id = "s4"
-
-
-# ✅
-class SuitePrize5Threshold(RangeFlag):
-    _name = "Required Suite prize #5 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fifth special gift"
-    _default = 15
-    min_value = 5
-    max_value = 253
-    _id = "s5"
-
-
-# ✅
-class SuitePrize6Threshold(RangeFlag):
-    _name = "Required Suite prize #6 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the sixth special gift"
-    _default = 200
-    min_value = 6
-    max_value = 254
-    _id = "s6"
-
-
-# ✅
-class SuperJump1Threshold(RangeFlag):
-    _name = "Required Super Jumps for prize #1"
-    _description = "The number of consecutive Super Jumps required for the first prize in Monstro Town"
-    _default = 30
-    min_value = 1
-    max_value = 99
-    _id = "sj1"
-
-
-# ✅
-class SuperJump2Threshold(RangeFlag):
-    _name = "Required Super Jumps for prize #2"
-    _description = "The number of consecutive Super Jumps required for the second prize in Monstro Town"
-    _default = 100
-    min_value = 2
-    max_value = 100
-    _id = "sj2"
-
-class FixKnifeGuy(BooleanFlag):
-    _name = "Fix Knife Guy max prize glitch"
-    _description = """In the original game, Knife Guy runs a dialog that suggests you get a Red Essence at 255 net wins. However, a command to actually add the item to your inventory is missing, so the item you get is just a random mushroom like normal. This flag fixes this and turns it into a check."""
-    _id = "fix_kg"
-
-class KnifeGuyFixedPrizeThreshold(RangeFlag):
-    _name = "Required Knife Guy wins (max prize)"
-    _description = "The number of wins minus losses required to win Knife Guy's maxed out game prize (originally intended to be a Red Essence). Must be higher than Knife Guy's other prize check."
-    _default = 255
-    min_value = 2
-    max_value = 255
-    _id = "kg2"
-    _requires_all = [(FixKnifeGuy(), True)]
-
 
 
 # ******** Progression Gating
@@ -1601,6 +1380,252 @@ class FactoryGate(SelectOneFlag[FactoryGating]):
 
 
 # ✅
+
+
+from ..progression import prizelocations
+from ..types.prizelocation import (
+    PrizeLocation,
+    BossFightLocation,
+    StarPieceLocation,
+    CharacterRecruitmentLocation,
+)
+def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
+    """Convert a PrizeLocation class to an attribute name for the enum."""
+    # Use the class name, converting CamelCase to Snake_Case
+    import re
+
+    name = cls.__name__
+    name = re.sub(r"([a-z])([A-Z])", r"\1_\2", name)
+    name = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", name)
+    return name
+# Build enum members dynamically from prizelocations
+_item_check_members = {}
+_boss_fight_check_members = {}
+_star_piece_check_members = {}
+for cls in vars(prizelocations).values():
+    if isinstance(cls, type) and issubclass(cls, PrizeLocation) and hasattr(cls, "_id"):
+        attr_name = _location_class_to_attr_name(cls)
+        if issubclass(cls, StarPieceLocation) and cls is not StarPieceLocation:
+            _star_piece_check_members[attr_name] = cls
+        elif issubclass(cls, BossFightLocation) and cls is not BossFightLocation:
+            _boss_fight_check_members[attr_name] = cls
+        elif cls is not PrizeLocation and not issubclass(
+            cls, (BossFightLocation, StarPieceLocation, CharacterRecruitmentLocation)
+        ):
+            _item_check_members[attr_name] = cls
+# Create enums dynamically using functional API
+ItemCheckEnum = ClassCategorizationOption("ItemCheckEnum", _item_check_members)
+BossFightCheckEnum = ClassCategorizationOption(
+    "BossFightCheckEnum", _boss_fight_check_members
+)
+StarPieceCheckEnum = ClassCategorizationOption(
+    "StarPieceCheckEnum", _star_piece_check_members
+)
+
+
+# ✅
+class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
+    _name = "General item pool checks"
+    _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
+<br>
+<br>If a check is not highlighted, its contents will still be shuffled, but it will not contain any items required to complete the seed.
+<br>
+<br>This setting only applies if you have "Special Items can appear in the general item pool" or "Star Pieces can appear in the general item pool" enabled.
+<br>
+<br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
+    _id = "chests"
+    _default = {o: True for o in ItemCheckEnum.__members__.values()}
+    _requires_all = [(ShuffleItems(), True)]
+    _requires_any = [(KeyItemsAnywhere(), True), (StarPieceAvailability(), True)]
+
+
+# ✅
+class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
+    _name = "Boss fight checks"
+    _description = """If a check is highlighted (white text over blue), it is eligible to contain a boss fight that un-gates an area.
+<br>
+<br>If a check is not highlighted, its contents can still be shuffled, but it will not contain a boss fight that un-gates an area.
+<br>
+<br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
+    _id = "bosses"
+    _default = {o: True for o in BossFightCheckEnum.__members__.values()}
+    _requires_all = [(ShuffleStarPieces(), True)]
+
+
+# ✅
+class EnabledStarPieceChecks(CategorizationFlag[StarPieceCheckEnum]):
+    _name = "Star Piece checks"
+    _description = """If a check is highlighted (white text over blue), it is eligible to have a Star Piece.
+<br>
+<br>If a check is not highlighted, it will never have a Star Piece.
+<br>
+<br>This only applies to star piece drops that apply to boss fights. Bosses with multiple drops (such as Bandit's Way dropping 2 key items) may still have a Star Piece if "Star Pieces Anywhere" is enabled.
+<br>
+<br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
+    _id = "stars"
+    _default = {o: True for o in StarPieceCheckEnum.__members__.values()}
+
+
+# ✅
+class ReplaceItems(BooleanFlag):
+    _name = "Replace some chest items with coins"
+    _description = "If enabled, the worst items (Wilt Shrooms, etc) will sometimes be replaced with coins in chests."
+    _id = "replace"
+
+
+# ✅
+class PoisonMushroom(BooleanFlag):
+    _name = "Change Fake Mushroom's Effect"
+    _description = (
+        "Randomize the status effect inflicted on a party member with the Fake Mushroom. It will only give "
+        "one status effect per seed, which has a 1/8 chance of being Invincibility."
+    )
+    _id = "fake"
+
+
+# ✅
+class EXPChallengeOptions(CategorizationOption):
+    """Enumeration for exp star quality scaling option"""
+
+    VANILLA = "Vanilla"
+    STARS = "Star Pieces"
+    BOSSES = "Bosses"
+    NONE = "None"
+
+
+# ✅
+class EXPChallenge(SelectOneFlag[EXPChallengeOptions]):
+    _name = "EXP Star Behaviour"
+    _description = """<b>Default</b>: EXP stars can give you 1 to 11 EXP per hit as normal.
+<br>
+<br><b>Star Pieces</b>: EXP per star increases with the number of Star Pieces collected.
+<br>
+<br><b>Bosses</b>: EXP per star increases with the number of bosses you have defeated.
+<br>
+<br><b>No EXP</b>: EXP stars give you 0 EXP."""
+    choices = [o for o in EXPChallengeOptions]
+    _default = EXPChallengeOptions.VANILLA
+    _id = "xpstar"
+
+
+# ✅
+class GrateGuyPrizeThreshold(RangeFlag):
+    _name = 'Required "Look The Other Way" wins'
+    _description = "The number of times required to win Grate Guy's casino minigame to receive its ultimate prize."
+    _default = 100
+    min_value = 1
+    max_value = 255
+    _id = "gg"
+
+
+# ✅
+class KnifeGuyPrizeThreshold(RangeFlag):
+    _name = "Required Knife Guy wins (normal prize)"
+    _description = "The number of wins minus losses required to win Knife Guy's juggling game prize (normally the Bright Card)."
+    _default = 12
+    min_value = 1
+    max_value = 254
+    _id = "kg"
+
+
+# ✅
+class SuitePrize1Threshold(RangeFlag):
+    _name = "Required Suite prize #1 stays"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the first special gift"
+    _default = 1
+    min_value = 1
+    max_value = 249
+    _id = "s1"
+
+
+# ✅
+class SuitePrize2Threshold(RangeFlag):
+    _name = "Required Suite prize #2 stays"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the second special gift"
+    _default = 3
+    min_value = 2
+    max_value = 250
+    _id = "s2"
+
+
+# ✅
+class SuitePrize3Threshold(RangeFlag):
+    _name = "Required Suite prize #3 stays"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the third special gift"
+    _default = 5
+    min_value = 3
+    max_value = 251
+    _id = "s3"
+
+
+# ✅
+class SuitePrize4Threshold(RangeFlag):
+    _name = "Required Suite prize #4 stays"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fourth special gift"
+    _default = 10
+    min_value = 4
+    max_value = 252
+    _id = "s4"
+
+
+# ✅
+class SuitePrize5Threshold(RangeFlag):
+    _name = "Required Suite prize #5 stays"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fifth special gift"
+    _default = 15
+    min_value = 5
+    max_value = 253
+    _id = "s5"
+
+
+# ✅
+class SuitePrize6Threshold(RangeFlag):
+    _name = "Required Suite prize #6 stays"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the sixth special gift"
+    _default = 200
+    min_value = 6
+    max_value = 254
+    _id = "s6"
+
+
+# ✅
+class SuperJump1Threshold(RangeFlag):
+    _name = "Required Super Jumps for prize #1"
+    _description = "The number of consecutive Super Jumps required for the first prize in Monstro Town"
+    _default = 30
+    min_value = 1
+    max_value = 99
+    _id = "sj1"
+
+
+# ✅
+class SuperJump2Threshold(RangeFlag):
+    _name = "Required Super Jumps for prize #2"
+    _description = "The number of consecutive Super Jumps required for the second prize in Monstro Town"
+    _default = 100
+    min_value = 2
+    max_value = 100
+    _id = "sj2"
+
+
+# ✅
+class FixKnifeGuy(BooleanFlag):
+    _name = "Fix Knife Guy max prize glitch"
+    _description = """In the original game, Knife Guy runs a dialog that suggests you get a Red Essence at 255 net wins. However, a command to actually add the item to your inventory is missing, so the item you get is just a random mushroom like normal. This flag fixes this and turns it into a check."""
+    _id = "fix_kg"
+
+
+# ✅
+class KnifeGuyFixedPrizeThreshold(RangeFlag):
+    _name = "Required Knife Guy wins (max prize)"
+    _description = "The number of wins minus losses required to win Knife Guy's maxed out game prize (originally intended to be a Red Essence). Must be higher than Knife Guy's other prize check."
+    _default = 255
+    min_value = 2
+    max_value = 255
+    _id = "kg2"
+    _requires_all = [(FixKnifeGuy(), True)]
+
+
 class BowserDoorRequirements(RangeFlag):
     _name = "Required Bowser's Keep obstacle doors"
     _description = "The number of doors required to progress through Bowser's Keep."
@@ -1755,7 +1780,6 @@ class BetterTips(BooleanFlag):
 # if this is disabled, no options in this category can be changed
 
 
-# TODO All frog disciple items should NOT be randomized if ShuffleShops is off.
 # ✅
 class ShuffleShops(BooleanFlag):
     _name = "Randomize the contents of shops"
@@ -1825,6 +1849,7 @@ class FreeShops(BooleanFlag):
 # ******** Enemies & Bosses
 
 
+# ✅
 class BossShuffle(BooleanFlag):
     _name = "Randomize boss fight locations"
     _description = "If enabled, the positions of bosses (plus Pandorite, Hidon, Box Boy, Chester, and Mokura) are shuffled."
@@ -1931,6 +1956,7 @@ def _boss_class_to_attr_name(boss_class: type) -> str:
     return name.replace(" ", "_").replace("-", "_")
 
 
+# ✅
 class ShuffledBosses(CategorizationFlag[ShuffledBossEnumType]):  # type: ignore[type-arg]
     _name = "Shuffled boss fights"
     _description = """Each boss fight location below stats the enemy that originally inhabits it.
@@ -2195,6 +2221,7 @@ class FlagCategory:
 class CharacterRecruitmentSubcategory(FlagCategory):
     """Collection of settings related to character recruitment."""
 
+    _name: str = "Character Recruitment"
     _flags: list[type[Flag]] = [
         ShuffleCharacters,
         MaxCharacters,
@@ -2209,6 +2236,7 @@ class CharacterRecruitmentSubcategory(FlagCategory):
 class CharacterEquipmentSubcategory(FlagCategory):
     """Collection of settings related to equipment properties."""
 
+    _name: str = "Character Equipment"
     _flags: list[type[Flag]] = [
         EquipmentCharacters,
         EquipmentProperties,
@@ -2222,6 +2250,7 @@ class CharacterEquipmentSubcategory(FlagCategory):
 class CharacterStatsSpellsSubcategory(FlagCategory):
     """Collection of settings related to learnable spells."""
 
+    _name: str = "Character Stats & Spells"
     _flags: list[type[Flag]] = [
         EXPMultiplier,
         CharacterStats,
@@ -2265,9 +2294,11 @@ class StarPiecesCategory(FlagCategory):
 class ItemShuffleSubcategory(FlagCategory):
     """Collection of settings related to item distribution."""
 
+    _name: str = "Item Shuffle"
     _flags: list[type[Flag]] = [
         ShuffleItems,
         ItemQuality,
+        AnnoyingChests,
         BiasItemShuffle,
         NoStarEgg,
         RestrictSpecialEquips,
@@ -2278,7 +2309,6 @@ class ItemShuffleSubcategory(FlagCategory):
         ShuffleBeetlemania,
         ShuffleMagikoopaChest,
         ShuffleWeddingGear,
-        AnnoyingChests,
         FireworksSetting,
     ]
     _id: str = "T"
@@ -2287,6 +2317,7 @@ class ItemShuffleSubcategory(FlagCategory):
 class ItemLocationSubcategory(FlagCategory):
     """Collection of settings related to item availability."""
 
+    _name: str = "Item Locations"
     _flags: list[type[Flag]] = [
         KeyItemsAnywhere,
         StarPieceAvailability,
@@ -2300,6 +2331,7 @@ class ItemLocationSubcategory(FlagCategory):
 class BehaviourSubcategory(FlagCategory):
     """Collection of settings related to item and minigame behaviour."""
 
+    _name: str = "Behaviour & Minigames"
     _flags: list[type[Flag]] = [
         ReplaceItems,
         PoisonMushroom,
@@ -2336,6 +2368,7 @@ class ItemsCategory(FlagCategory):
 class AreaAccessSubcategory(FlagCategory):
     """Collection of settings related to area gating logic."""
 
+    _name: str = "Area Access"
     _flags: list[type[Flag]] = [
         BanditsWayGate,
         KeroSewersGate,
@@ -2361,6 +2394,7 @@ class AreaAccessSubcategory(FlagCategory):
 class OtherAccessSubcategory(FlagCategory):
     """Collection of settings related to event gating logic."""
 
+    _name: str = "Other Access & Win Condition"
     _flags: list[type[Flag]] = [
         YaridovichGate,
         SkipMustyFearsSequence,
@@ -2397,6 +2431,7 @@ class PuzzleCategory(FlagCategory):
 class ShopsCategory(FlagCategory):
     """Collection of settings related to shops."""
 
+    _name: str = "Shops"
     _flags: list[type[Flag]] = [
         ShuffleShops,
         ShopQuality,
@@ -2425,6 +2460,7 @@ class AccessCategory(FlagCategory):
 class BossPositionSubcategory(FlagCategory):
     """Collection of settings related to boss placement."""
 
+    _name: str = "Boss Position"
     _flags: list[type[Flag]] = [
         BossShuffle,
         BossShuffleScaleStats,
@@ -2440,6 +2476,7 @@ class BossPositionSubcategory(FlagCategory):
 class BossStatSubcategory(FlagCategory):
     """Collection of settings related to enemy stats."""
 
+    _name: str = "Enemy Stats"
     _flags: list[type[Flag]] = [
         EnemyStats,
         EnemyDrops,
@@ -2456,6 +2493,7 @@ class BossStatSubcategory(FlagCategory):
 class BossCheeseSubcategory(FlagCategory):
     """Collection of settings related to boss exploits."""
 
+    _name: str = "Boss Exploits"
     _flags: list[type[Flag]] = [
         SkipBossFights,
         NoGenoWhirlExor,
@@ -2481,6 +2519,7 @@ class BossCategory(FlagCategory):
 class AccessibilitySubcategory(FlagCategory):
     """Collection of settings related to accessibility."""
 
+    _name: str = "Accessibility"
     _flags: list[type[Flag]] = [RemoveFlashes, HoldB]
     _size: int = 3
     _id: str = "R"
@@ -2489,6 +2528,7 @@ class AccessibilitySubcategory(FlagCategory):
 class MusicSubcategory(FlagCategory):
     """Collection of settings related to music cosmetics."""
 
+    _name: str = "Music"
     _flags: list[type[Flag]] = [BossShuffleMusic, ShuffledMusic]
     _size: int = 3
     _id: str = "R"
@@ -2497,6 +2537,7 @@ class MusicSubcategory(FlagCategory):
 class PaletteSubcategory(FlagCategory):
     """Collection of settings related to visual cosmetics."""
 
+    _name: str = "Visual Cosmetics"
     _flags: list[type[Flag]] = [
         PaletteSwaps,
         JapaneseABXY,
@@ -2507,6 +2548,7 @@ class PaletteSubcategory(FlagCategory):
 
 class NamesCategory(FlagCategory):
 
+    _name: str = "Names"
     _flags: list[type[Flag]] = [ChangeNames, RemakeNames, CanonNames, Peach]
     _size: int = 3
     _id: str = "R"

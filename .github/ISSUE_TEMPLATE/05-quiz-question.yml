@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Submit a question to be added to the Dr. Topper quiz pool.
+        Submit a question to be added to the Dr. Topper quiz pool. If the question is not SMRPG related, it will only be used if the extended quiz setting is enabled.
 
         Supported characters:  
         `A-Z`, `a-z`, `0-9`, and any of `♥♪•~©:;#×+%↑→←*&()-/?!.,`

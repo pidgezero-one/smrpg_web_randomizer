@@ -137,6 +137,7 @@ class SpecialItemPrizeType(StrEnum):
 class ItemPrize(StandardPrize):
     item: type[Item]
     _importance: SpecialItemPrizeType | None = None
+    _monstro_shuffle: bool = False
 
     @property
     def importance(self) -> SpecialItemPrizeType | None:

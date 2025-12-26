@@ -1,7 +1,0 @@
-# pylint: disable=C0301
-
-"""E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT"""
-
-from randomizer.scripts.event.script_imports import *
-
-script = EventScript([])

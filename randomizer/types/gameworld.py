@@ -5,8 +5,10 @@ import random
 import datetime
 import hashlib
 import re
+from copy import copy
 from concurrent.futures import ThreadPoolExecutor
 
+from .flags import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
     AnimationScriptBank,
 )
@@ -75,7 +77,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     Inc,
     SetVarToRandom,
     JmpIfComparisonResultIsLesser,
-    JmpToEvent
+    JmpToEvent,
+    DisableObjectTriggerInSpecificLevel,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
@@ -106,142 +109,23 @@ from .item import Item
 from .patch import Patch
 from .attack import EnemyAttack
 from .spell import Spell
-from .prize import Prize
-from .ally import Ally
-from .flags import (
-    Flag,
-    BooleanFlag,
-    RangeFlag,
-    SelectOneFlag,
-    CategorizationFlag,
-    CosmeticCategory,
-    CATEGORIES,
-    # Cosmetic flags
-    BossShuffleMusic,
-    ShuffledMusic,
-    PaletteSwaps,
-    ChangeNames,
-    RemakeNames,
-    CanonNames,
-    Peach,
-    JapaneseABXY,
-    RemoveFlashes,
-    HoldB,
-    ShowEquips,
-    # Enemy flags
-    EnemyAttacks,
-    EnemyStats,
-    EnemyStatsShuffleOptions,
-    EnemyDrops,
-    EnemyFormations,
-    EnemySpells,
-    # Equipment flags
-    EquipmentCharacters,
-    EquipmentCharactersOptions,
-    EquipmentPropertiesOptions,
-    IgnoreNamesakeProperties,
-    # Shop flags
-    ShuffleShops,
-    ShopQuality,
-    ShopQualities,
-    BiasShopShuffle,
-    NoPickMeUps,
-    FreeShops,
-    # EXP flags
-    EXPMultiplier,
-    EXPMultiplierOptions,
-    EXPChallenge,
-    EXPChallengeOptions,
-    ExperienceNoBosses,
-    ExperienceNoRegular,
-    # Character flags
-    CharacterStats,
-    CharacterSpellStats,
-    CharacterSpellElements,
-    InfuseSpellElements,
-    AvailableSpells,
-    StartingCharacters,
-    UncapSuperJumps,
-    # Gating flags
-    BanditsWayGate,
-    BanditsWayGating,
-    KeroSewersGate,
-    KeroSewersGating,
-    ForestMazeGate,
-    ForestMazeGating,
-    PipeVaultGate,
-    PipeVaultGating,
-    Moleville1Gate,
-    Moleville1Gating,
-    BoosterTowerGate,
-    BoosterTowerGating,
-    BoosterHillGate,
-    BoosterHillGating,
-    MarrymoreGate,
-    MarrymoreGating,
-    SeaGate,
-    SeaGating,
-    YaridovichGate,
-    YaridovichGating,
-    LandsEndGate,
-    LandsEndGating,
-    BelomeTempleGate,
-    BelomeTempleGating,
-    MonstroTownGate,
-    MonstroTownGating,
-    NimbusGate,
-    NimbusGating,
-    BarrelVolcanoGate,
-    BarrelVolcanoGating,
-    BowsersKeepGate,
-    BowsersKeepGating,
-    FactoryGate,
-    FactoryGating,
-    BowserDoorRequirements,
-    StarPiecesRequired,
-    # Minigame thresholds
-    GrateGuyPrizeThreshold,
-    KnifeGuyPrizeThreshold,
-    SuitePrize1Threshold,
-    SuitePrize2Threshold,
-    SuitePrize3Threshold,
-    SuitePrize4Threshold,
-    SuitePrize5Threshold,
-    SuitePrize6Threshold,
-    SuperJump1Threshold,
-    SuperJump2Threshold,
-    # Misc flags
-    FireworksSetting,
-    FireworksOptions,
-    WinCondition,
-    WinConditions,
-    FastTravel,
-    CasinoWarp,
-    BucketWarp,
-    ShuffleWeddingGear,
-    SkipBossFights,
-    SkipMustyFearsSequence,
-    StarPieceHints,
-    InvisibleFlagsSetting,
-    Remake,
-    PoisonMushroom,
-    NoGenoWhirlExor,
-    FixMagikoopa,
-    NoOHKO,
-    QuizShuffle,
-    QuizIncludeNonSmrpg,
-    BallSolitaireShuffle,
-    MagicButtonShuffle,
-    ShuffleHillFlowers,
-    RandomTadpolePondSong,
-    BetterTips,
-    RandomSunkenShipPassword,
-    BowserDoorShuffle,
-    FixKnifeGuy,
-    KnifeGuyFixedPrizeThreshold,
-    SkipMinecart,
+from .prize import (
+    Prize,
+    ItemPrize,
+    SpellPrize,
+    WeddingGearPrize,
+    MimicFightInitiatorPrize,
+    EXPStarPrize,
+    CoinPrize,
 )
-from .prizelocation import SIGNAL_RING_EVENT_DICT, PrizeLocation
+from .ally import Ally
+from .prizelocation import (
+    SIGNAL_RING_EVENT_DICT,
+    PrizeLocation,
+    TreasureChestLocation,
+    StandardPrizeLocation,
+    RiverLocation,
+)
 from ..progression.prizelocations import *
 from ..data.variables.dialog_names import *
 from ..data.variables.battle_variable_names import *
@@ -271,6 +155,7 @@ from ..data.allies.palettes.mallow import all_palettes as MALLOW_PALETTES
 from ..data.allies.palettes.geno import all_palettes as GENO_PALETTES
 from ..data.allies.palettes.toadstool import all_palettes as TOADSTOOL_PALETTES
 from ..data.allies.palettes.bowser import all_palettes as BOWSER_PALETTES
+from ..progression.prizes import *
 from .enemy import Enemy
 
 PrizeLocationT = TypeVar("PrizeLocationT", bound=PrizeLocation)
@@ -297,6 +182,82 @@ class NumberThresholdFlag(RangeFlag):
 
 class WorldBuildingException(Exception):
     pass
+
+
+# this gets placed in a location where item quality != original_pool and will be used to generate an item on the fly
+class RandomPrizeSubstitute(Prize):
+    def generate(self, world: GameWorld, location: PrizeLocation) -> Prize:
+        pool: list[type] = []
+        if world.settings.is_flag_value(
+            ItemQuality, ItemQualityOptions.COMPLETELY_RANDOM
+        ):
+            if world.settings.isflag_enabled(BiasItemShuffle):
+                if location._bias:
+                    pool = (
+                        world.high_impact_items
+                        + world.highest_impact_items
+                        + world.high_impact_equip
+                        + world.highest_impact_equip
+                    )
+                else:
+                    pool = (
+                        world.low_impact_items
+                        + world.high_impact_items
+                        + world.low_impact_equip
+                        + world.high_impact_equip
+                    )
+            else:
+                pool = (
+                    world.low_impact_items
+                    + world.high_impact_items
+                    + world.highest_impact_items
+                    + world.low_impact_equip
+                    + world.high_impact_equip
+                    + world.highest_impact_equip
+                )
+            chosen_item = random.choice(pool)
+            return world.item_to_prize.get(chosen_item)()  # type: ignore
+        elif world.settings.is_flag_value(
+            ItemQuality, ItemQualityOptions.MOSTLY_RANDOM
+        ):
+            roll = random.randint(1, 100)
+            if world.settings.isflag_enabled(BiasItemShuffle):
+                if location._bias:
+                    if roll <= 40:
+                        pool = world.high_impact_items + world.high_impact_equip
+                    elif roll <= 95:
+                        pool = world.low_impact_items + world.low_impact_equip
+                    else:
+                        pool = world.highest_impact_items + world.highest_impact_equip
+                else:
+                    if roll <= 75:
+                        pool = world.low_impact_items + world.low_impact_equip
+                    elif roll <= 99:
+                        pool = world.high_impact_items + world.high_impact_equip
+                    else:
+                        pool = world.highest_impact_items + world.highest_impact_equip
+            else:
+                if roll <= 65:
+                    pool = world.low_impact_items + world.low_impact_equip
+                elif roll <= 95:
+                    pool = world.high_impact_items + world.high_impact_equip
+                else:
+                    pool = world.highest_impact_items + world.highest_impact_equip
+            chosen_item = random.choice(pool)
+            return world.item_to_prize.get(chosen_item)()  # type: ignore
+        elif world.settings.is_flag_value(
+            ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY
+        ):
+            return EmptyPrize()
+        else:
+            return random.choice(
+                [
+                    FPFlowerPrize,
+                    RecoveryMushroomPrize,
+                    FrogCoin1Prize,
+                    Coins10Prize,
+                ]
+            )()
 
 
 class GameWorld:
@@ -345,7 +306,53 @@ class GameWorld:
 
     locations: dict[type[PrizeLocation], PrizeLocation]
 
-    def get_item(self, item: int | type[Item]):
+    # Item impact categories (built by _build_item_impact_categories)
+    low_impact_items: list[type[RegularItem]]
+    high_impact_items: list[type[RegularItem]]
+    highest_impact_items: list[type[RegularItem]]
+    low_impact_equip: list[type[Equipment]]
+    high_impact_equip: list[type[Equipment]]
+    highest_impact_equip: list[type[Equipment]]
+    equipment_ranks: list[tuple[type[Equipment], float]]
+
+    # Mapping from item class to prize class (built by _build_item_to_prize_mapping)
+    item_to_prize: dict[type[Item], type[ItemPrize]]
+
+    @classmethod
+    def is_monstro_item(cls, item_type: type) -> bool:
+        """Check if an item type is a special Monstro Town item."""
+        return item_type in (
+            ChompItem,
+            ZoomShoesItem,
+            FroggieStickItem,
+            LazyShellItem,
+            LazyShellItem2,
+            GhostMedalItem,
+            JinxBeltItem,
+            QuartzCharmItem,
+            AttackScarfItem,
+            SuperSuitItem,
+            WonderChompItem,
+            Stella023Item,
+            SageStickItem,
+            EnduringBroochItem,
+            TeamworkBandItem,
+        )
+
+    @classmethod
+    def is_remake_item(cls, item_type: type) -> bool:
+        """Check if an item type is a special Monstro Town item."""
+        return item_type in (
+            WonderChompItem,
+            Stella023Item,
+            SageStickItem,
+            EnduringBroochItem,
+            TeamworkBandItem,
+            ExtraShinyStoneItem,
+            CrystalShardItem,
+        )
+
+    def get_item(self, item: int | type):
         if isinstance(item, int):
             i = next((i for i in self.items.items if i.item_id == item), None)
         else:
@@ -514,6 +521,8 @@ class GameWorld:
             result[location_name] = prize_name
         return result
 
+    event_2496_startup = []
+
     @property
     def spoiler(self) -> dict[str, Any]:
         return {
@@ -608,9 +617,6 @@ class GameWorld:
             file_entry_names[int(self.hash[24:32], 16) % len(file_entry_names)],
         ]
 
-    # Logic
-    # TODO
-
     def __init__(
         self,
         seed: int | str,
@@ -658,14 +664,14 @@ class GameWorld:
         random.seed(self.seed)
         print(self.seed)
 
-        self._set_all_locations()
+        self.event_2496_startup: list[UsableEventScriptCommand] = []
+
+        self._shuffle_items()
 
         # TODO: Before setting hints, find where the mimic chests are and reassign the world areas for their prize locations
 
         # prize locations HAVE to all be defined by this point
         # not shuffled, just determined if they exist in the seed or not
-
-        event_2496_startup: list[UsableEventScriptCommand] = []
 
         if self.settings.isflag_enabled(StarPieceHints):
             for l in self.locations.values():
@@ -678,43 +684,45 @@ class GameWorld:
                 )
 
         if self.settings.isflag_enabled(SkipMustyFearsSequence):
-            event_2496_startup += [RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER)]
+            self.event_2496_startup += [
+                RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER)
+            ]
 
         ### Perform progression gating setup tasks here
 
         # settings
         if self.settings.is_flag_value(WinCondition, WinConditions.SMITHY):
-            event_2496_startup += [SetBit(SMITHY_BOSS_HUNT_WIN_CONDITION)]
+            self.event_2496_startup += [SetBit(SMITHY_BOSS_HUNT_WIN_CONDITION)]
         elif self.settings.is_flag_value(WinCondition, WinConditions.STARS):
-            event_2496_startup += [SetBit(WIN_CONDITION_STAR_PIECES)]
+            self.event_2496_startup += [SetBit(WIN_CONDITION_STAR_PIECES)]
         elif self.settings.is_flag_value(WinCondition, WinConditions.SEALED):
-            event_2496_startup += [SetBit(WIN_CONDITION_MONSTRO_DOOR)]
+            self.event_2496_startup += [SetBit(WIN_CONDITION_MONSTRO_DOOR)]
 
         if self.settings.isflag_enabled(FastTravel):
-            event_2496_startup += [SetBit(FAST_TRAVEL_ENABLED)]
+            self.event_2496_startup += [SetBit(FAST_TRAVEL_ENABLED)]
         if self.settings.isflag_enabled(CasinoWarp):
-            event_2496_startup += [SetBit(CASINO_WARP_ENABLED)]
+            self.event_2496_startup += [SetBit(CASINO_WARP_ENABLED)]
         if self.settings.isflag_enabled(BucketWarp):
-            event_2496_startup += [SetBit(BUCKET_WARP_ENABLED)]
+            self.event_2496_startup += [SetBit(BUCKET_WARP_ENABLED)]
         if self.settings.isflag_enabled(ShuffleWeddingGear):
-            event_2496_startup += [SetBit(CHAPEL_ITEMS_ANYWHERE_ENABLED)]
+            self.event_2496_startup += [SetBit(CHAPEL_ITEMS_ANYWHERE_ENABLED)]
 
         if self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.STARS):
-            event_2496_startup += [SetBit(PROGRESSIVE_STAR_EXP_ENABLED)]
+            self.event_2496_startup += [SetBit(PROGRESSIVE_STAR_EXP_ENABLED)]
         elif self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.BOSSES):
-            event_2496_startup += [SetBit(PROGRESSIVE_BOSS_EXP_ENABLED)]
+            self.event_2496_startup += [SetBit(PROGRESSIVE_BOSS_EXP_ENABLED)]
         elif self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE):
             self.event_scripts.delete_command_by_identifier("inc_exp_by_packet")
 
         if self.settings.isflag_enabled(SkipBossFights):
-            event_2496_startup += [SetBit(ALTERNATE_STAR_PIECE_WIN_CONDITION)]
+            self.event_2496_startup += [SetBit(ALTERNATE_STAR_PIECE_WIN_CONDITION)]
 
         # TODO when assembling grant scripts, set all exp star 70A7 props to 0 if NONE is selected
         # TODO verify that all bosses increase the counter, ie remake bosses
 
         # gates
         if self.settings.is_flag_value(BanditsWayGate, BanditsWayGating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(MAP_BANDITS_WAY),
                 SetBit(MAP_DIRECTIONAL_MUSHROOM_KINGDOM_BANDITS_WAY),
             ]
@@ -731,16 +739,16 @@ class GameWorld:
                     Room, self.rooms._rooms[R333_KERO_SEWERS_ENTRANCE]
                 ).get_npc_by_target_id(NPC_1),
             ).set_visible(True)
-            event_2496_startup += [SetBit(SEWERS_CLOSED)]
+            self.event_2496_startup += [SetBit(SEWERS_CLOSED)]
 
             if self.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
                 self.event_scripts.get_script_by_id(
                     E1254_UNLOCK_SEWER_BY_RFC
                 ).insert_before_nth_command(0, ClearBit(SEWERS_CLOSED))
         else:
-            event_2496_startup += [ClearBit(SEWERS_CLOSED)]
+            self.event_2496_startup += [ClearBit(SEWERS_CLOSED)]
         if self.settings.is_flag_value(ForestMazeGate, ForestMazeGating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(MAP_FOREST_MAZE),
                 SetBit(MAP_DIRECTIONAL_ROSE_TOWN_FOREST_MAZE),
             ]
@@ -749,11 +757,11 @@ class GameWorld:
             e.insert_before_nth_command(0, SetBit(MAP_FOREST_MAZE))
             e.insert_before_nth_command(0, SetBit(MAP_FOREST_MAZE))
         if not self.settings.is_flag_value(PipeVaultGate, PipeVaultGating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(PIPE_VAULT_GATED),
             ]
         if not self.settings.is_flag_value(Moleville1Gate, Moleville1Gating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(MOLEVILLE_MINES_ENTRANCE_GATING),
             ]
             if self.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOSHI):
@@ -763,11 +771,11 @@ class GameWorld:
                     0, ClearBit(MOLEVILLE_MINES_ENTRANCE_GATING)
                 )
         if not self.settings.is_flag_value(BoosterHillGate, BoosterHillGating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(BOOSTER_HILL_CLOSED),
             ]
         if self.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 ApplySolidityModToLevel(
                     permanent=True, room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=0
                 ),
@@ -779,7 +787,7 @@ class GameWorld:
                 SetBit(TOWER_OPENED),
             ]
         if self.settings.is_flag_value(MarrymoreGate, MarrymoreGating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(MARRYMORE_BACKDOOR_OPEN),
             ]
         elif self.settings.is_flag_value(MarrymoreGate, MarrymoreGating.HILL):
@@ -787,36 +795,36 @@ class GameWorld:
                 E1329_HILL_UNLOCKS
             ).insert_before_nth_command(0, SetBit(MARRYMORE_BACKDOOR_OPEN))
         if self.settings.is_flag_value(SeaGate, SeaGating.STAR_4):
-            event_2496_startup += [SetBit(SEA_GATED_BY_STAR_PIECES)]
+            self.event_2496_startup += [SetBit(SEA_GATED_BY_STAR_PIECES)]
         elif self.settings.is_flag_value(SeaGate, SeaGating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(MAP_SEA),
                 SetBit(MAP_DIRECTIONAL_SEA_SUNKEN_SHIP),
                 SetBit(MAP_SUNKEN_SHIP),
                 SetBit(MAP_DIRECTIONAL_SEASIDE_DOWN_SEA),
             ]
         if self.settings.is_flag_value(YaridovichGate, YaridovichGating.OPEN):
-            event_2496_startup += [SetBit(SEASIDE_BOSS_AVAILABLE)]
+            self.event_2496_startup += [SetBit(SEASIDE_BOSS_AVAILABLE)]
         if not self.settings.is_flag_value(LandsEndGate, LandsEndGating.OPEN):
-            event_2496_startup += [SetBit(LANDS_END_GATED)]
+            self.event_2496_startup += [SetBit(LANDS_END_GATED)]
 
             if self.settings.is_flag_value(LandsEndGate, LandsEndGating.ELDER):
                 self.event_scripts.get_script_by_id(
                     E1169_OPEN_LANDS_END_IF_GATED_BY_ELDER
                 ).insert_before_nth_command(0, ClearBit(LANDS_END_GATED))
             if self.settings.is_flag_value(LandsEndGate, LandsEndGating.STAR_5):
-                event_2496_startup += [SetBit(LANDS_END_GATED_BY_STAR_PIECES)]
+                self.event_2496_startup += [SetBit(LANDS_END_GATED_BY_STAR_PIECES)]
 
         if self.settings.is_flag_value(BelomeTempleGate, BelomeTempleGating.KEY):
-            event_2496_startup += [SetBit(TEMPLE_BOSS_GATED)]
+            self.event_2496_startup += [SetBit(TEMPLE_BOSS_GATED)]
         if self.settings.is_flag_value(MonstroTownGate, MonstroTownGating.BELOME_2):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SummonObjectToSpecificLevel(
                     NPC_3, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN
                 )
             ]
         elif self.settings.is_flag_value(MonstroTownGate, MonstroTownGating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 RemoveObjectFromSpecificLevel(
                     NPC_3, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN
                 ),
@@ -826,43 +834,43 @@ class GameWorld:
         if self.settings.is_flag_value(
             NimbusGate, NimbusGating.OPEN
         ) or self.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(NIMBUS_MAINLAND_UNLOCKED),
                 RemoveObjectFromSpecificLevel(
                     NPC_2, R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE
                 ),
             ]
         if self.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.OPEN):
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(MAP_DIRECTIONAL_NIMBUS_LAND_BARREL_VOLCANO),
                 SetBit(MAP_BARREL_VOLCANO),
             ]
 
         if not self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.OPEN):
-            event_2496_startup += [SetBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL)]
+            self.event_2496_startup += [SetBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL)]
             if self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6):
-                event_2496_startup += [SetBit(KEEP_GATED_BY_STAR_PIECES)]
+                self.event_2496_startup += [SetBit(KEEP_GATED_BY_STAR_PIECES)]
                 if self.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
-                    event_2496_startup += [
+                    self.event_2496_startup += [
                         SetBit(FACTORY_MATCHES_KEEP),
                     ]
         else:
-            event_2496_startup += [
+            self.event_2496_startup += [
                 SetBit(MAP_VISTA_HILL),
                 ClearBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL),
             ]
             if self.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
-                event_2496_startup += [
+                self.event_2496_startup += [
                     SetBit(MAP_GATE),
                     SetBit(MAP_DIRECTIONAL_BOWSERS_KEEP_GATE),
                 ]
         if self.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6):
-            event_2496_startup += [SetBit(FACTORY_GATED_BY_STAR_PIECES)]
+            self.event_2496_startup += [SetBit(FACTORY_GATED_BY_STAR_PIECES)]
 
-        event_2496_startup += [Return()]
+        self.event_2496_startup += [Return()]
         self.event_scripts.get_script_by_id(
             E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
-        ).set_contents(event_2496_startup)
+        ).set_contents(self.event_2496_startup)
 
         # threshold adjustments
         cast(
@@ -932,8 +940,16 @@ class GameWorld:
                 CompareVarToConst,
                 self.event_scripts.get_command_by_identifier(
                     "tower_knife_guy_fixed_sidequest_completed"
-                )
+                ),
             ).set_value(self.settings.get_flag(KnifeGuyFixedPrizeThreshold).value)
+            self.event_scripts.get_script_by_id(
+                E0949_FROGFUCIUS_HINT_TREASURE_CHESTS
+            ).insert_after_identifier(
+                "EVENT_949_knifeguy_insert",
+                JmpIfBitClear(
+                    KNIFE_GUY_SECOND_PRIZE_AWARDED, ["EVENT_991_run_dialog_18"]
+                ),
+            )
 
         # other stuff
 
@@ -1277,6 +1293,34 @@ class GameWorld:
         ):
             self._randomize_equipment_properties()
 
+        if not self.settings.isflag_enabled(IgnoreNamesakeProperties):
+            self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.SLEEP)
+            self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.MUTE)
+            self.items.get_by_type(AntidotePinItem).append_status_immunity(
+                Status.POISON
+            )
+            self.items.get_by_type(TrueformPinItem).append_status_immunity(
+                Status.MUSHROOM
+            )
+            self.items.get_by_type(TrueformPinItem).append_status_immunity(
+                Status.SCARECROW
+            )
+            self.items.get_by_type(FearlessPinItem).append_status_immunity(Status.FEAR)
+            has_ko_protection = [
+                i for i in self.items.items if isinstance(i, Equipment) and i.prevent_ko
+            ]
+            if len(has_ko_protection) < 4:
+                more_ko_protections = random.sample(
+                    [
+                        i
+                        for i in self.items.items
+                        if isinstance(i, Equipment) and not i.prevent_ko
+                    ],
+                    4 - len(has_ko_protection),
+                )
+                for i in more_ko_protections:
+                    i.set_prevent_ko(True)
+
         # Handle EquipmentCharacters options
         equip_chars_setting = self.settings.get_flag(EquipmentCharacters).selected
         if equip_chars_setting != EquipmentCharactersOptions.VANILLA:
@@ -1284,11 +1328,7 @@ class GameWorld:
 
         # SHUFFLE CHECKS HERE
         # TODO: exclude frog disciple if shuffle shops turned off
-        # TODO: exclude character spells if that setting is turned off
-        # TODO: exclude remake items if not enabled. don't have sage stick in the pool
-        # TODO: distinguish between "location does not exist" (remake, unused invisibles) and "location exists but is not shuffled" and "location exists and is shuffled but cannot be important"
         # TODO: A disabled boss fight check location = shuffled, but can't have a boss hunt. No guarantees that more progression won't be behind it, i.e. boss item drops. Disable those checks yourself.
-        # TODO: A disabled boss FIGHT = appears in their original check spot, forcibly.
         # TODO: A disabled star piece location = obvious
         # TODO: Don't let people be morons and try to exclude megasmilax while also choosing megasmilax as a gate
         # TODO: Regular checks disabled = still shuffle them, just no KIs or SPs. Good non-progress items are fair game, git gud.
@@ -1320,37 +1360,15 @@ class GameWorld:
         # TODO: Open issue template for submitting quiz questions (uncredited)
         # TODO: update spell names and palettes and sounds depending on element
 
+        # Build item impact categories (used for shop shuffling and other systems)
+        self._build_item_impact_categories()
+
+        # Build item to prize mapping (used for random prize substitution)
+        self._build_item_to_prize_mapping()
+
         # Shop shuffling happens after equipment randomization so we can score equipment
         if self.settings.isflag_enabled(ShuffleShops):
             self._shuffle_shops()
-
-        if not self.settings.isflag_enabled(IgnoreNamesakeProperties):
-            self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.SLEEP)
-            self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.MUTE)
-            self.items.get_by_type(AntidotePinItem).append_status_immunity(
-                Status.POISON
-            )
-            self.items.get_by_type(TrueformPinItem).append_status_immunity(
-                Status.MUSHROOM
-            )
-            self.items.get_by_type(TrueformPinItem).append_status_immunity(
-                Status.SCARECROW
-            )
-            self.items.get_by_type(FearlessPinItem).append_status_immunity(Status.FEAR)
-            has_ko_protection = [
-                i for i in self.items.items if isinstance(i, Equipment) and i.prevent_ko
-            ]
-            if len(has_ko_protection) < 4:
-                more_ko_protections = random.sample(
-                    [
-                        i
-                        for i in self.items.items
-                        if isinstance(i, Equipment) and not i.prevent_ko
-                    ],
-                    4 - len(has_ko_protection),
-                )
-                for i in more_ko_protections:
-                    i.set_prevent_ko(True)
 
         if self.settings.isflag_enabled(EnemyAttacks):
             self._randomize_enemy_attacks_and_spells()
@@ -1468,36 +1486,20 @@ class GameWorld:
         if self.settings.isflag_enabled(BetterTips):
             cast(
                 SetVarToRandom,
-                self.event_scripts.get_command_by_identifier("mushroom_boy_odds")
+                self.event_scripts.get_command_by_identifier("mushroom_boy_odds"),
             ).set_value(5000)
             self.event_scripts.get_script_by_id(
                 E0021_FOREST_MAZE_MUSHROOM_GRANT
-            ).set_contents(
-                [
-                    JmpToEvent(E0023_MUSHROOM_SELECTION)
-                ]
-            )
+            ).set_contents([JmpToEvent(E0023_MUSHROOM_SELECTION)])
             self.event_scripts.get_script_by_id(
                 E0622_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_1
-            ).set_contents(
-                [
-                    JmpToEvent(E0022_BETTER_TIP_GRANTER)
-                ]
-            )
+            ).set_contents([JmpToEvent(E0022_BETTER_TIP_GRANTER)])
             self.event_scripts.get_script_by_id(
                 E2649_CASINO_GRATE_GUY_RANDOM_PRIZE_GRANTER
-            ).set_contents(
-                [
-                    JmpToEvent(E0022_BETTER_TIP_GRANTER)
-                ]
-            )
+            ).set_contents([JmpToEvent(E0022_BETTER_TIP_GRANTER)])
             self.event_scripts.get_script_by_id(
                 E2670_TOWER_KNIFE_GUY_CONSOLATION_PRIZE
-            ).set_contents(
-                [
-                    JmpToEvent(E0022_BETTER_TIP_GRANTER)
-                ]
-            )
+            ).set_contents([JmpToEvent(E0022_BETTER_TIP_GRANTER)])
 
         # TODO differentiate bosses. not a cosmetic, reveals info
         # Need to find unused palettes for remake bosses
@@ -1720,7 +1722,7 @@ class GameWorld:
         # Ensure result is always within bounds and is an integer
         return int(max(minimum, min(new_value, maximum)))
 
-    def _set_all_locations(self):
+    def _shuffle_items(self):
         # establish all functional prize locations
         # regardless if they will have their contents shuffled or not
 
@@ -2243,8 +2245,6 @@ class GameWorld:
                 ToadstoolSpell6: ToadstoolSpell6(),
             }
 
-        
-
         # Only add Super Jump reward locations if Super Jump spell is enabled
         available_spells = self.settings.get_flag(AvailableSpells)
         super_jump_enabled = any(
@@ -2276,8 +2276,13 @@ class GameWorld:
             self.get_item(FireworksItem).set_price(0)
             self.get_item(ShinyStoneItem).set_price(0)
             self.get_item(CarboCookieItem).set_price(0)
-        elif self.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
-            self.locations = {**self.locations, FireworksShopItemLocation: FireworksShopItemLocation()}
+        elif self.settings.is_flag_value(
+            FireworksSetting, FireworksOptions.SHUFFLE_ONE
+        ):
+            self.locations = {
+                **self.locations,
+                FireworksShopItemLocation: FireworksShopItemLocation(),
+            }
             self.get_item(FireworksItem).set_price(0)
             self.get_item(ShinyStoneItem).set_price(0)
             self.get_item(CarboCookieItem).set_price(0)
@@ -2338,7 +2343,6 @@ class GameWorld:
                 GarroFreeItem: GarroFreeItem(),
             }
 
-
         # Optionally include remake content.
         if self.settings.get_flag(Remake).enabled:
             self.locations = {
@@ -2370,9 +2374,15 @@ class GameWorld:
             # (when SEALED is the win condition, defeating the sealed door boss ends the game
             # so there's no opportunity to collect postgame rewards)
             if not self.settings.is_flag_value(WinCondition, WinConditions.SEALED):
-                self.locations[MonstroSealedDoorBossFightPostgame] = MonstroSealedDoorBossFightPostgame()
-                self.locations[MonstroSealedDoorStarPiecePostgame] = MonstroSealedDoorStarPiecePostgame()
-                self.locations[MonstroSealedDoorClearRewardLocationPostgame] = MonstroSealedDoorClearRewardLocationPostgame()
+                self.locations[MonstroSealedDoorBossFightPostgame] = (
+                    MonstroSealedDoorBossFightPostgame()
+                )
+                self.locations[MonstroSealedDoorStarPiecePostgame] = (
+                    MonstroSealedDoorStarPiecePostgame()
+                )
+                self.locations[MonstroSealedDoorClearRewardLocationPostgame] = (
+                    MonstroSealedDoorClearRewardLocationPostgame()
+                )
             # Checks for postgame-unlocking bosses by default expect an impossible value.
             # Enabling the remake flag sets it to the correct value, 7.
             cast(
@@ -2520,9 +2530,552 @@ class GameWorld:
                 )
         self.locations = {**self.locations, **invisible_flag_locations}
 
+        def collect(collected: Inventory | None = None):
+            my_items = Inventory()
+            if collected is not None:
+                my_items.extend(collected)
 
+            available = [l for l in self.locations.values() if l.has_item]
 
+            # Search all locations and collect items until we can't get any more.
+            while True:
+                search_locations = [
+                    l for l in available if l.can_access(my_items, self)
+                ]
+                available = [l for l in available if l not in search_locations]
+                found = Inventory([l.prize for l in search_locations])  # type: ignore - can't be None bc of l.has_item
+                my_items.extend(found)
+                if len(found) == 0:
+                    break
 
+            return my_items
+
+        def place(
+            items: list[Prize],
+            locations: list[PrizeLocation],
+            can_overflow: bool = False,
+        ) -> None:
+            base_inventory = Inventory()
+
+            remaining_to_fill = Inventory(items)
+
+            if not can_overflow and len(remaining_to_fill) > len(
+                [l for l in locations if not l.has_item]
+            ):
+                raise ValueError("Trying to fill more items than available locations")
+
+            # For each required item, place it assuming we can get all other items.
+            for item in items:
+                # Get items we can get assuming we have everything but the one we're placing.
+                remaining_to_fill.remove(item)
+                assumed_items = collect(Inventory(remaining_to_fill + base_inventory))
+
+                fillable_locations = [
+                    l
+                    for l in locations
+                    if not l.has_item
+                    and l.can_access(assumed_items, self)
+                    and l.can_accept(item, assumed_items, self)
+                ]
+                if not fillable_locations:
+                    raise ValueError(
+                        "No available locations for {}, {}".format(
+                            item, remaining_to_fill
+                        )
+                    )
+
+                placed_location = fillable_locations[0]
+                placed_location.set_prize(item)
+
+                # Update Mimic location world areas to match where the launcher was placed
+                if isinstance(item, FirstMimicFightLauncher):
+                    world_area = placed_location._world_area
+                    self.locations[Mimic1BossFight]._world_area = world_area
+                    self.locations[Mimic1DropRewardLocation]._world_area = world_area
+                    self.locations[Mimic1StarPiece]._world_area = world_area
+                    self.locations[Mimic1ReloadRewardLocation]._world_area = world_area
+                elif isinstance(item, SecondMimicFightLauncher):
+                    world_area = placed_location._world_area
+                    self.locations[Mimic2BossFight]._world_area = world_area
+                    self.locations[Mimic2DropRewardLocation]._world_area = world_area
+                    self.locations[Mimic2StarPiece]._world_area = world_area
+                    self.locations[Mimic2ReloadRewardLocation]._world_area = world_area
+                elif isinstance(item, ThirdMimicFightLauncher):
+                    world_area = placed_location._world_area
+                    self.locations[Mimic3BossFight]._world_area = world_area
+                    self.locations[Mimic3StarPiece]._world_area = world_area
+
+        def shuffle():
+
+            # Start off emptying every location of every type
+            for loc in self.locations.values():
+                loc.set_prize(None)
+
+            must_include = []
+            less_important = []
+
+            # init population of must_include
+            if self.settings.isflag_enabled(ShuffleItems):
+                must_include.extend(
+                    [
+                        RareFrogCoinPrize(),
+                        WalletPrize(),
+                        CricketPiePrize(),
+                        BambinoBombPrize(),
+                        CastleKey1Prize(),
+                        CastleKey2Prize(),
+                        ProgressiveCardPrize(),
+                        ProgressiveCardPrize(),
+                        ProgressiveCardPrize(),
+                        GreaperFlagPrize(),
+                        DryBonesFlagPrize(),
+                        BigBooFlagPrize(),
+                        ShedKeyPrize(),
+                        ElderKeyPrize(),
+                        CricketJamPrize(),
+                        TempleKeyPrize(),
+                        RoomKeyPrize(),
+                        SeedPrize(),
+                        FertilizerPrize(),
+                        BrightCardPrize(),
+                        YouMissed(),
+                        ProgressiveEggPrize(),
+                        ProgressiveEggPrize(),
+                        ProgressiveEggPrize(),
+                        LuckyJewelPrize(),
+                        SignalRingPrize(),
+                        GoodieBagPrize(),
+                    ]
+                )
+                if self.settings.isflag_enabled(ShuffleShops):
+                    must_include.extend(
+                        [
+                            CoinTrickPrize(),
+                            ScroogeRingPrize(),
+                            ExpBoosterPrize(),
+                            SeeYaPrize(),
+                            EarlierTimesPrize(),
+                        ]
+                    )
+                if self.settings.isflag_enabled(Remake):
+                    must_include.extend(
+                        [
+                            CrystalShardPrize(),
+                            ExtraShinyStonePrize(),
+                            StayVoucherPrize(),
+                        ]
+                    )
+                if self.settings.isflag_enabled(RestrictSpecialEquips):
+                    must_include.extend(
+                        [
+                            FroggiestickPrize,
+                            ChompPrize,
+                            ZoomShoesPrize,
+                            LazyShellArmorPrize,
+                            LazyShellWeaponPrize,
+                            GhostMedalPrize,
+                            QuartzCharmPrize,
+                            JinxBeltPrize,
+                            AttackScarfPrize,
+                        ]
+                    )
+                    if self.settings.isflag_enabled(Remake):
+                        must_include.extend(
+                            [
+                                WonderChompPrize(),
+                                Stella023Prize(),
+                                SageStickPrize(),
+                                EnduringBroochPrize(),
+                                TeamworkBandPrize(),
+                            ]
+                        )
+                    if self.settings.is_flag_value(SuperJump2Threshold, 100):
+                        coinflip = random.randint(0, 1)
+                        if coinflip == 0:
+                            must_include.append(SuperSuitPrize())
+                        else:
+                            # 50% likely that you will get the super suit in the normal spot if you're good enough at the game to do 100
+                            self.get_location(
+                                MonstroSecondSuperJumpRewardLocation
+                            ).set_prize(SuperSuitPrize())
+                if self.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
+                    must_include.append(GoldPaintPrize())
+                if not self.settings.isflag_enabled(NoStarEgg):
+                    must_include.append(StarEggPrize())
+                # If not using original item pool, ensure that items with specific non-randomizable changes are included at least once
+                if not self.settings.is_flag_value(
+                    ItemQuality, ItemQualityOptions.ORIGINAL_POOL
+                ):
+                    must_include.extend(
+                        [
+                            JumpShoesPrize(),
+                            BtubRingPrize(),
+                        ]
+                    )
+                    if self.settings.isflag_enabled(Remake):
+                        must_include.extend(
+                            [
+                                EnduringBroochPrize(),
+                                StayVoucherPrize(),
+                            ]
+                        )
+
+                if self.settings.is_flag_value(
+                    FireworksSetting, FireworksOptions.SHUFFLE_ONE
+                ):
+                    must_include.append(RegularFireworksPrize())
+                if self.settings.is_flag_value(
+                    FireworksSetting, FireworksOptions.PROGRESSIVE
+                ):
+                    must_include.append(ProgressiveFireworksPrize())
+                    must_include.append(ProgressiveFireworksPrize())
+                    must_include.append(ProgressiveFireworksPrize())
+
+            if self.settings.isflag_enabled(ShuffleCharacters):
+                # Place starting characters based on StartingCharacters flag
+                # Map ally names to their recruitment prize classes
+                ally_name_to_prize: dict[str, type[CharacterPrize]] = {
+                    "Mario": MarioRecruitmentPrize,
+                    "Mallow": MallowRecruitmentPrize,
+                    "Geno": GenoRecruitmentPrize,
+                    "Bowser": BowserRecruitmentPrize,
+                    "Toadstool": ToadstoolRecruitmentPrize,
+                }
+
+                # Starting character locations in order
+                starting_locations = [
+                    StartingCharacter1,
+                    StartingCharacter2,
+                    StartingCharacter3,
+                    StartingCharacter4,
+                    StartingCharacter5,
+                ]
+
+                starting_chars_flag = self.settings.get_flag(StartingCharacters)
+                available_chars_flag = self.settings.get_flag(AvailableCharacters)
+                disabled_char_names = {
+                    m.value.name for m in available_chars_flag.disabled
+                }
+                max_char_count = self.settings.get_flag(MaxCharacters).value
+
+                # Track which characters have been explicitly placed
+                placed_characters: set[type[CharacterPrize]] = set()
+
+                # Place characters based on their ordinance position
+                for idx, option in enumerate(starting_chars_flag.enabled):
+                    if idx >= len(starting_locations) or idx >= max_char_count:
+                        break
+
+                    value = option.value
+                    # Check if this is a "Random_X" string value - skip, shuffler will handle it
+                    if isinstance(value, str):
+                        continue
+
+                    # This is an actual ally instance - place it using its name
+                    ally_name = value.name
+                    if ally_name and ally_name in ally_name_to_prize:
+                        prize_class = ally_name_to_prize[ally_name]
+                        loc = self.locations.get(starting_locations[idx])
+                        if loc is not None:
+                            loc.set_prize(prize_class())
+                            placed_characters.add(prize_class)
+
+                # Add unplaced characters to must_include (unless disabled in AvailableCharacters)
+                all_recruitment_prizes: dict[str, type[CharacterPrize]] = {
+                    "Mario": MarioRecruitmentPrize,
+                    "Mallow": MallowRecruitmentPrize,
+                    "Geno": GenoRecruitmentPrize,
+                    "Bowser": BowserRecruitmentPrize,
+                    "Toadstool": ToadstoolRecruitmentPrize,
+                }
+                for ally_name, prize_class in all_recruitment_prizes.items():
+                    if (
+                        prize_class not in placed_characters
+                        and ally_name not in disabled_char_names
+                        and len(placed_characters) < max_char_count
+                    ):
+                        must_include.append(prize_class())
+                        placed_characters.add(prize_class)
+
+            if self.settings.isflag_enabled(CharacterLearnedSpells):
+                # Build mapping from spell class -> spell prize class
+                spell_to_prize: dict[type, type[SpellPrize]] = {
+                    JumpSpell: JumpSpellPrize,
+                    FireOrbSpell: FireOrbSpellPrize,
+                    SuperJumpSpell: SuperJumpSpellPrize,
+                    SuperFlameSpell: SuperFlameSpellPrize,
+                    UltraJumpSpell: UltraJumpSpellPrize,
+                    UltraFlameSpell: UltraFlameSpellPrize,
+                    ThunderboltSpell: ThunderboltSpellPrize,
+                    HPRainSpell: HPRainSpellPrize,
+                    PsychopathSpell: PsychopathSpellPrize,
+                    ShockerSpell: ShockerSpellPrize,
+                    SnowySpell: SnowyPrize,
+                    StarRainSpell: StarRainSpellPrize,
+                    GenoBeamSpell: GenoBeamSpellPrize,
+                    GenoBoostSpell: GenoBoostSpellPrize,
+                    GenoWhirlSpell: GenoWhirlSpellPrize,
+                    GenoBlastSpell: GenoBlastSpellPrize,
+                    GenoFlashSpell: GenoFlashSpellPrize,
+                    TerrorizeSpell: TerrorizeSpellPrize,
+                    PoisonGasSpell: PoisonGasSpellPrize,
+                    CrusherSpell: CrusherSpellPrize,
+                    BowserCrushSpell: BowserCrushSpellPrize,
+                    TherapySpell: TherapySpellPrize,
+                    GroupHugSpell: GroupHugSpellPrize,
+                    MuteSpell: MuteSpellPrize,
+                    SleepyTimeSpell: SleepyTimeSpellPrize,
+                    ComeBackSpell: ComeBackSpellPrize,
+                    PsychBombSpell: PsychBombSpellPrize,
+                }
+
+                # Get disabled spell classes from AvailableSpells flag
+                available_spells_flag = self.settings.get_flag(AvailableSpells)
+                disabled_spell_classes = {
+                    m.value for m in available_spells_flag.disabled
+                }
+
+                # Get all enabled spell prize classes
+                enabled_spell_prizes: list[type[SpellPrize]] = [
+                    prize_class
+                    for spell_class, prize_class in spell_to_prize.items()
+                    if spell_class not in disabled_spell_classes
+                ]
+
+                # Check if all 5 characters are available
+                available_chars_flag = self.settings.get_flag(AvailableCharacters)
+                all_chars_available = len(available_chars_flag.disabled) == 0
+
+                # If all 5 characters are present, double 3 random spells
+                if all_chars_available and len(enabled_spell_prizes) >= 3:
+                    spells_to_double = random.sample(enabled_spell_prizes, 3)
+                    for spell_prize_class in spells_to_double:
+                        must_include.append(spell_prize_class())
+
+                # Add all enabled spells to the pool
+                # absolutely must have a non-elemental damaging spell
+                must_include.append(
+                    random.choice(
+                        [
+                            p()
+                            for p in enabled_spell_prizes
+                            if p
+                            in [
+                                StarRainSpellPrize,
+                                GenoWhirlSpellPrize,
+                                TerrorizeSpellPrize,
+                                PoisonGasSpellPrize,
+                            ]
+                        ]
+                    )
+                )
+                if SuperJumpSpell not in disabled_spell_classes:
+                    must_include.append(SuperJumpSpellPrize())
+
+                # add all other spells to the "optional" array so that shuffler doesn't throw an error if some of them can't be placed
+                # ie 4 or less characters available
+                less_important.extend(
+                    [
+                        p()
+                        for p in enabled_spell_prizes
+                        if p not in [type(q) for q in must_include]
+                    ]
+                )
+
+            if self.settings.isflag_enabled(ShuffleStarPieces):
+                sp_prizes = [
+                    StarPiece1,
+                    StarPiece2,
+                    StarPiece3,
+                    StarPiece4,
+                    StarPiece5,
+                    StarPiece6,
+                    StarPiece7,
+                ]
+                must_include.extend(
+                    [
+                        sp()
+                        for sp in sp_prizes[
+                            : self.settings.get_flag(TotalStarPieces).value
+                        ]
+                    ]
+                )
+                pass
+
+            if self.settings.isflag_enabled(BossShuffle):
+                # Place disabled bosses (those not enabled in ShuffledBosses)
+                shuffled_bosses_flag = self.settings.get_flag(ShuffledBosses)
+                disabled_boss_types = {m.value for m in shuffled_bosses_flag.disabled}
+                for loc in [
+                    l
+                    for l in self.locations.values()
+                    if isinstance(l, BossFightLocation)
+                    and l.originally_held is not None
+                ]:
+                    if loc.originally_held in disabled_boss_types:
+                        loc.set_prize(loc.originally_held())  # type: ignore
+                    else:
+                        must_include.append(loc.originally_held())  # type: ignore
+
+            # check-by-check set for disabled flags and pulling items into inclusion array
+            for loc in self.locations.values():
+                if loc.originally_held is None:
+                    continue
+                if isinstance(loc, CharacterRecruitmentLocation):
+                    if not self.settings.isflag_enabled(ShuffleCharacters):
+                        loc.set_prize(loc.originally_held())
+
+                elif isinstance(loc, StarPieceLocation):
+                    if not self.settings.isflag_enabled(ShuffleStarPieces):
+                        loc.set_prize(loc.originally_held())
+
+                elif isinstance(loc, BossFightLocation):
+                    if not self.settings.isflag_enabled(BossShuffle):
+                        loc.set_prize(loc.originally_held())
+
+                elif isinstance(loc, SpellSlotLocation):
+                    if not self.settings.isflag_enabled(CharacterLearnedSpells):
+                        loc.set_prize(loc.originally_held())
+
+                elif isinstance(loc, FrogDiscipleLocation):
+                    if not self.settings.isflag_enabled(ShuffleShops):
+                        loc.set_prize(loc.originally_held())
+
+                else:
+                    if not self.settings.isflag_enabled(ShuffleItems):
+                        loc.set_prize(loc.originally_held())
+                    else:
+                        if isinstance(loc.originally_held(), EXPStarPrize):
+                            if self.settings.isflag_enabled(EXPStarsAnywhere):
+                                must_include.append(loc.originally_held())
+                            else:
+                                loc.set_prize(loc.originally_held())
+                        if isinstance(loc.originally_held(), MimicFightInitiatorPrize):
+                            if self.settings.isflag_enabled(MimicsAnywhere):
+                                must_include.append(loc.originally_held())
+                            else:
+                                loc.set_prize(loc.originally_held())
+                        if isinstance(loc.originally_held(), SlotsPrize):
+                            if self.settings.isflag_enabled(SlotsAnywhere):
+                                must_include.append(loc.originally_held())
+                            else:
+                                loc.set_prize(loc.originally_held())
+                        if isinstance(loc.originally_held(), BeetlemaniaPrize):
+                            if self.settings.isflag_enabled(ShuffleBeetlemania):
+                                must_include.append(loc.originally_held())
+                            else:
+                                loc.set_prize(loc.originally_held())
+                        if isinstance(loc.originally_held(), InfiniteCoinsPrize):
+                            if self.settings.isflag_enabled(ShuffleMagikoopaChest):
+                                must_include.append(loc.originally_held())
+                            else:
+                                loc.set_prize(loc.originally_held())
+                        if isinstance(loc.originally_held(), WeddingGearPrize):
+                            if self.settings.isflag_enabled(ShuffleWeddingGear):
+                                must_include.append(loc.originally_held())
+                            else:
+                                loc.set_prize(loc.originally_held())
+                        if isinstance(loc.originally_held(), RegularFireworksPrize):
+                            if self.settings.is_flag_value(
+                                FireworksSetting, FireworksOptions.VANILLA
+                            ):
+                                loc.set_prize(loc.originally_held())
+                        # for every location whose prize isn't already in must_include, create a generic prize that could theoretically go in it
+                        elif (
+                            len(
+                                [
+                                    p
+                                    for p in must_include
+                                    if isinstance(p, loc.originally_held)
+                                ]
+                            )
+                            == 0
+                        ):
+                            if self.settings.is_flag_value(
+                                ItemQuality, ItemQualityOptions.ORIGINAL_POOL
+                            ):
+                                less_important.append(loc.originally_held())
+                            else:
+                                less_important.append(
+                                    RandomPrizeSubstitute().generate(self, loc)
+                                )
+
+            # shuffle!
+            to_fill = copy(list(self.locations.values()))
+
+            random.shuffle(must_include)
+            random.shuffle(to_fill)
+            place(must_include, to_fill)
+
+            random.shuffle(less_important)
+            random.shuffle(to_fill)
+            place(less_important, to_fill, can_overflow=True)
+
+            collected = set(collect())
+
+            # Verify all must_include prizes were placed
+            missing_prizes = [p for p in must_include if p not in collected]
+            if missing_prizes:
+                missing_names = [type(p).__name__ for p in missing_prizes]
+                raise WorldBuildingException(
+                    f"Failed to place required prizes: {', '.join(missing_names)}"
+                )
+
+        shuffle()
+
+        # replace as necessary
+        for loc in [
+            s for s in self.locations.values() if isinstance(s, TreasureChestLocation)
+        ]:
+            if not loc.has_item:
+                if self.settings.isflag_enabled(AnnoyingChests):
+                    loc.set_prize(YouMissed())
+                else:
+                    disable = zip(loc._rooms, loc._npc_ids)
+                    for room, npc in disable:
+                        self.event_2496_startup.append(
+                            DisableObjectTriggerInSpecificLevel(npc, room)
+                        )
+        for loc in [
+            s
+            for s in self.locations.values()
+            if s.has_item
+            and isinstance(s, StandardPrizeLocation)
+            and not isinstance(s, RiverLocation)
+        ]:
+            if isinstance(loc.prize, ItemPrize) and (
+                isinstance(
+                    loc.prize,
+                    (
+                        MushroomItem,
+                        HoneySyrupItem,
+                        AbleJuiceItem,
+                        YoshiCookieItem,
+                        PureWaterItem,
+                        FroggieDrinkItem,
+                        WiltShroomItem,
+                        RottenMushItem,
+                        MoldyMushItem,
+                        MushroomItem2,
+                    ),
+                )
+                or (
+                    not self.settings.is_flag_value(
+                        EquipmentProperties, EquipmentPropertiesOptions.SOME
+                    )
+                    and type(loc.prize) in self.low_impact_equip
+                )
+            ):
+                loc.set_prize(CoinPrize(self.get_item(loc.prize.item).price // 2))
+
+        # todo: loop until success
+        # after shuffle, go thru and fill empty chests with YouMissed and replace bad items with coins
+
+        # set
+        # after shuffle completes, render all the granter events
+        # place npcs in rooms
+        # update enemy stats and formations
+        # set ally spell learn levels, recruit levels, and stats at their recruit levels
 
     def _randomize_enemy_attacks_and_spells(self) -> None:
         """Randomize enemy spell and attack stats and effects."""
@@ -2834,6 +3387,12 @@ class GameWorld:
                 head.set_hp(int(main_head.hp))
         except (KeyError, StopIteration):
             pass  # Enemy types not found, skip
+
+        # Update psychopath messages based on new stats
+        from randomizer.types.enemy import Enemy as CustomEnemy
+        for enemy in all_enemies:
+            custom_enemy = cast(CustomEnemy, enemy)
+            custom_enemy.set_psychopath_message(custom_enemy.build_psychopath_text())
 
     def _randomize_enemy_drops(
         self,
@@ -3437,6 +3996,9 @@ class GameWorld:
                     if random.random() < buff_odds:
                         item.append_temp_buff(buff)
 
+            # Update description based on new stats
+            item.set_description(item.build_equipment_description())
+
     def _randomize_equipment_characters(
         self, setting: EquipmentCharactersOptions
     ) -> None:
@@ -3487,9 +4049,158 @@ class GameWorld:
 
         item.set_equip_chars(list(new_chars))
 
+    def _build_item_impact_categories(self) -> None:
+        """Build item impact categories for use in shop shuffling and other systems.
+
+        Categorizes consumables and equipment into low/high/highest impact tiers.
+        Equipment is ranked based on stats, immunities, and special properties.
+        """
+        from randomizer.data.items.items import PickMeUpItem
+
+        no_pickmeups = self.settings.isflag_enabled(NoPickMeUps)
+
+        # Define consumable item pools
+        self.low_impact_items = [
+            MushroomItem,
+            HoneySyrupItem,
+            AbleJuiceItem,
+            BracerItem,
+            EnergizerItem,
+            YoshiCookieItem,
+            PureWaterItem,
+            SleepyBombItem,
+            BadMushroomItem,
+            FlowerTabItem,
+            FroggieDrinkItem,
+            MukuCookieItem,
+            FreshenUpItem,
+            FrightBombItem,
+            WiltShroomItem,
+            RottenMushItem,
+            MoldyMushItem,
+            MushroomItem2,
+        ]
+        if not no_pickmeups:
+            self.low_impact_items.append(PickMeUpItem)
+
+        self.high_impact_items = [
+            MidMushroomItem,
+            MaxMushroomItem,
+            MapleSyrupItem,
+            RoyalSyrupItem,
+            YoshiAdeItem,
+            FireBombItem,
+            IceBombItem,
+            YoshiCandyItem,
+            ElixirItem,
+            MegalixirItem,
+            CrystallineItem,
+            PowerBlastItem,
+        ]
+
+        self.highest_impact_items = [
+            RedEssenceItem,
+            KerokeroColaItem,
+            RockCandyItem,
+        ]
+
+        # Calculate equipment rank values and categorize them
+        def calc_equip_rank(item: Equipment) -> float:
+            variance = int(item.variance) if isinstance(item, Weapon) else 0
+            attack = item.attack
+            attack_base = attack - variance if attack - variance != 0 else 1
+            attack_variance_factor = (
+                min(2, (attack + variance) / attack_base) if attack > 0 else 0
+            )
+
+            rank = (
+                attack * max(0, attack_variance_factor)
+                + max(
+                    0,
+                    (item.magic_attack / (2 if item.magic_attack < 0 else 1))
+                    + (item.magic_defense / (2 if item.magic_defense < 0 else 1))
+                    + (item.defense / (2 if item.defense < 0 else 1))
+                    + min(20, item.speed / 2),
+                )
+                + 10 * len(item.status_immunities)
+                + 15 * len(item.elemental_immunities)
+                + 7.5 * len(item.elemental_resistances)
+                + 50 * (1 if item.prevent_ko else 0)
+                + 30 * len(item.temp_buffs)
+            )
+            return rank
+
+        # Get all equipment and sort by rank
+        all_equipment = [
+            i for i in self.items.items if isinstance(i, (Weapon, Armor, Accessory))
+        ]
+        self.equipment_ranks = [(type(e), calc_equip_rank(e)) for e in all_equipment]
+        self.equipment_ranks.sort(key=lambda x: x[1], reverse=True)
+
+        # Categorize equipment: top 20% = highest, next 30% = high, bottom 50% = low
+        total_equip = len(self.equipment_ranks)
+        highest_cutoff = int(total_equip * 0.2)
+        high_cutoff = int(total_equip * 0.5)
+
+        self.highest_impact_equip = [
+            e[0]
+            for e in self.equipment_ranks[:highest_cutoff]
+            if not (
+                self.settings.isflag_enabled(RestrictSpecialEquips)
+                and GameWorld.is_monstro_item(e[0])
+            )
+            and not (
+                GameWorld.is_remake_item(e[0])
+                and not self.settings.isflag_enabled(Remake)
+            )
+        ]
+        self.high_impact_equip = [
+            e[0]
+            for e in self.equipment_ranks[highest_cutoff:high_cutoff]
+            if not (
+                self.settings.isflag_enabled(RestrictSpecialEquips)
+                and GameWorld.is_monstro_item(e[0])
+            )
+            and not (
+                GameWorld.is_remake_item(e[0])
+                and not self.settings.isflag_enabled(Remake)
+            )
+        ]
+        self.low_impact_equip = [
+            e[0]
+            for e in self.equipment_ranks[high_cutoff:]
+            if not (
+                self.settings.isflag_enabled(RestrictSpecialEquips)
+                and GameWorld.is_monstro_item(e[0])
+            )
+            and not (
+                GameWorld.is_remake_item(e[0])
+                and not self.settings.isflag_enabled(Remake)
+            )
+        ]
+
+    def _build_item_to_prize_mapping(self) -> None:
+        """Build a mapping from item classes to their corresponding prize classes.
+
+        Iterates through all ItemPrize subclasses and creates a reverse mapping
+        from their `item` attribute to the prize class itself.
+        """
+        self.item_to_prize = {}
+
+        def get_all_subclasses(cls: type) -> list[type]:
+            """Recursively get all subclasses of a class."""
+            subclasses = []
+            for subclass in cls.__subclasses__():
+                subclasses.append(subclass)
+                subclasses.extend(get_all_subclasses(subclass))
+            return subclasses
+
+        for prize_class in get_all_subclasses(ItemPrize):
+            if hasattr(prize_class, "item") and prize_class.item is not None:
+                self.item_to_prize[prize_class.item] = prize_class
+
     def _shuffle_shops(self) -> None:
         """Shuffle the contents of all shops based on settings."""
-        from smrpgpatchbuilder.datatypes.spells.enums import TempStatBuff
         from randomizer.data.items.items import GoodieBagItem, PickMeUpItem
 
         quality = self.settings.get_flag(ShopQuality).selected
@@ -3552,92 +4263,13 @@ class GameWorld:
         if not self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.OPEN):
             should_get_better_items.extend([SH22_KEEP_1])
 
-        # Define consumable item pools
-        low_impact_items: list[type[RegularItem]] = [
-            MushroomItem,
-            HoneySyrupItem,
-            AbleJuiceItem,
-            BracerItem,
-            EnergizerItem,
-            YoshiCookieItem,
-            PureWaterItem,
-            SleepyBombItem,
-            BadMushroomItem,
-            FlowerTabItem,
-            FroggieDrinkItem,
-            MukuCookieItem,
-            FreshenUpItem,
-            FrightBombItem,
-            WiltShroomItem,
-            RottenMushItem,
-            MoldyMushItem,
-            MushroomItem2,
-        ]
-        if not no_pickmeups:
-            low_impact_items.append(PickMeUpItem)
-
-        high_impact_items: list[type[RegularItem]] = [
-            MidMushroomItem,
-            MaxMushroomItem,
-            MapleSyrupItem,
-            RoyalSyrupItem,
-            YoshiAdeItem,
-            FireBombItem,
-            IceBombItem,
-            YoshiCandyItem,
-            ElixirItem,
-            MegalixirItem,
-            CrystallineItem,
-            PowerBlastItem,
-        ]
-
-        highest_impact_items: list[type[RegularItem]] = [
-            RedEssenceItem,
-            KerokeroColaItem,
-            RockCandyItem,
-        ]
-
-        # Calculate equipment rank values and categorize them
-        def calc_equip_rank(item: Equipment) -> float:
-            variance = int(item.variance) if isinstance(item, Weapon) else 0
-            attack = item.attack
-            attack_base = attack - variance if attack - variance != 0 else 1
-            attack_variance_factor = (
-                min(2, (attack + variance) / attack_base) if attack > 0 else 0
-            )
-
-            rank = (
-                attack * max(0, attack_variance_factor)
-                + max(
-                    0,
-                    (item.magic_attack / (2 if item.magic_attack < 0 else 1))
-                    + (item.magic_defense / (2 if item.magic_defense < 0 else 1))
-                    + (item.defense / (2 if item.defense < 0 else 1))
-                    + min(20, item.speed / 2),
-                )
-                + 10 * len(item.status_immunities)
-                + 15 * len(item.elemental_immunities)
-                + 7.5 * len(item.elemental_resistances)
-                + 50 * (1 if item.prevent_ko else 0)
-                + 30 * len(item.temp_buffs)
-            )
-            return rank
-
-        # Get all equipment and sort by rank
-        all_equipment = [
-            i for i in self.items.items if isinstance(i, (Weapon, Armor, Accessory))
-        ]
-        equipment_ranks = [(type(e), calc_equip_rank(e)) for e in all_equipment]
-        equipment_ranks.sort(key=lambda x: x[1], reverse=True)
-
-        # Categorize equipment: top 20% = highest, next 30% = high, bottom 50% = low
-        total_equip = len(equipment_ranks)
-        highest_cutoff = int(total_equip * 0.2)
-        high_cutoff = int(total_equip * 0.5)
-
-        highest_impact_equip = [e[0] for e in equipment_ranks[:highest_cutoff]]
-        high_impact_equip = [e[0] for e in equipment_ranks[highest_cutoff:high_cutoff]]
-        low_impact_equip = [e[0] for e in equipment_ranks[high_cutoff:]]
+        # Use class-level item impact categories (built by _build_item_impact_categories)
+        low_impact_items = self.low_impact_items
+        high_impact_items = self.high_impact_items
+        highest_impact_items = self.highest_impact_items
+        low_impact_equip = self.low_impact_equip
+        high_impact_equip = self.high_impact_equip
+        highest_impact_equip = self.highest_impact_equip
 
         # Get original shop item types for each shop (for type restrictions)
         original_shop_data: dict[int, dict] = {}

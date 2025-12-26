@@ -155,8 +155,12 @@ script = EventScript([
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_9, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["EVENT_991_run_dialog_18"]),
 	StoreItemAmountTo7000(ElderKeyItem),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_991_run_dialog_18"]),
-	JmpIfObjectInSpecificLevel(NPC_14, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, ["EVENT_949_run_event_as_subroutine_122"]),
+	JmpIfObjectInSpecificLevel(NPC_14, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, ["EVENT_949_knifeguy_insert"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP, ["EVENT_991_run_dialog_18"]),
+    
+
+	JmpIfBitClear(TOWER_BOSS_2_DEFEATED, ["EVENT_949_run_event_as_subroutine_122"], identifier="EVENT_949_knifeguy_insert"),
+    
 	RunEventAsSubroutine(E0980_FROGFUCIUS_HINT_MARRYMORE_SUITE, identifier="EVENT_949_run_event_as_subroutine_122"),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R009_MARRYMORE_INN_REGULAR_ROOM, ["EVENT_991_run_dialog_38"]),
 	JmpIfBitClear(FROG_DISCIPLE_ITEM_1_PURCHASED, ["EVENT_991_run_dialog_66"]),
