@@ -3,10 +3,12 @@ import hashlib
 import json
 import logging
 import os
+import queue
 import random
 import string
 import tempfile
 import shutil
+import threading
 import time
 import Wii
 import nlzss
@@ -18,7 +20,9 @@ from django.http import (
     HttpResponseBadRequest,
     HttpResponse,
     HttpResponseNotFound,
-    QueryDict)
+    QueryDict,
+    StreamingHttpResponse,
+)
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -150,6 +154,7 @@ def _build_categories_for_template() -> list[dict]:
                 sub_data["flags"].append({
                     "name": flag_inst.name,
                     "description": flag_inst.description,
+                    "id": flag_inst.id,
                 })
             cat_data["subcategories"].append(sub_data)
 
@@ -159,6 +164,7 @@ def _build_categories_for_template() -> list[dict]:
             cat_data["flags"].append({
                 "name": flag_inst.name,
                 "description": flag_inst.description,
+                "id": flag_inst.id,
             })
 
         result.append(cat_data)
@@ -352,6 +358,157 @@ class GenerateView(FormView):
     def get(self, request, *args, **kwargs):
         """Handle GET requests: return 400 error."""
         msg = "{} GET method not allowed".format(self.__class__.__name__)
+        logger.error(msg)
+        return HttpResponseBadRequest(msg.encode())
+
+
+class GenerateStreamView(View):
+    """Generate a seed with real-time progress updates via Server-Sent Events (SSE)."""
+
+    def post(self, request):
+        # Parse form data
+        form = GenerateForm(request.POST)
+        if not form.is_valid():
+            error_msg = "; ".join(form.errors)
+            return JsonResponse({"error": error_msg}, status=400)
+
+        data = form.cleaned_data
+
+        # Debug mode is only allowed if the server is running in debug mode.
+        if not settings.DEBUG:
+            data["debug_mode"] = False
+
+        # Process seed value
+        seed = data["seed"]
+        if seed:
+            if seed.isdigit():
+                seed = int(seed)
+                if seed < 1 or seed > 0xFFFFFFFF:
+                    seed = None
+            else:
+                seed = binascii.crc32(seed.encode())
+
+        if not seed:
+            r = random.SystemRandom()
+            seed = r.getrandbits(32)
+            del r
+
+        debug_mode = bool(data["debug_mode"])
+        race_mode = bool(data["race_mode"])
+
+        def generate_events():
+            progress_queue: queue.Queue = queue.Queue()
+            result_holder: dict = {}
+
+            def on_progress(message: str, percent: int):
+                progress_queue.put({"stage": message, "percent": percent})
+
+            def run_generation():
+                try:
+                    # Build settings
+                    s = Settings()
+                    full_flag_string = (data["flags"] or "") + "     " + (data["cosmetics"] or "")
+                    s.set_from_flag_string(full_flag_string.strip())
+
+                    # Create world with progress callback
+                    world = create(seed, s, progress_callback=on_progress)
+
+                    # Generate patch
+                    patch = world.get_patch()
+
+                    # Build result data
+                    result_holder["success"] = True
+                    result_holder["data"] = {
+                        "logic": VERSION,
+                        "seed": seed,
+                        "hash": world.hash,
+                        "debug_mode": debug_mode,
+                        "flag_string": world.settings.flag_string,
+                        "file_select_character": world.main_character.name,
+                        "file_select_hash": world.file_select_hash,
+                        "permalink": reverse(
+                            "randomizer:patch-from-hash", kwargs={"hash": world.hash}
+                        ),
+                        "race_mode": race_mode,
+                        "spoiler": world.spoiler if not race_mode else {},
+                        "patch": patch,
+                    }
+
+                    # Save to database
+                    with transaction.atomic():
+                        try:
+                            existing = Seed.objects.get(hash=world.hash)
+                            existing.delete()
+                        except Seed.DoesNotExist:
+                            pass
+
+                        seed_obj = Seed(
+                            hash=world.hash,
+                            seed=seed,
+                            version=VERSION,
+                            debug_mode=debug_mode,
+                            flags=world.settings.flag_string,
+                            file_select_char=world.main_character.name,
+                            file_select_hash=world.file_select_hash,
+                            race_mode=race_mode,
+                            spoiler=world.spoiler,
+                        )
+                        seed_obj.save()
+
+                        patch_dump = json.dumps({"US": {}}, cls=PatchJSONEncoder)
+                        h = hashlib.sha1()
+                        h.update(patch_dump.encode())
+                        p = Patch(
+                            seed=seed_obj,
+                            region="US",
+                            sha1=h.hexdigest(),
+                            patch=patch_dump,
+                        )
+                        p.save()
+
+                except FlagError as e:
+                    logger.error("Flag error during generation: %s", e.args[0])
+                    result_holder["error"] = e.args[0]
+                except Exception as e:
+                    logger.exception("Error during generation")
+                    result_holder["error"] = str(e)
+                finally:
+                    progress_queue.put({"done": True})
+
+            # Start generation in background thread
+            thread = threading.Thread(target=run_generation)
+            thread.start()
+
+            # Yield progress events as they arrive
+            while True:
+                try:
+                    event = progress_queue.get(timeout=30)
+                    if event.get("done"):
+                        break
+                    yield f"data: {json.dumps(event)}\n\n"
+                except queue.Empty:
+                    # Send keepalive
+                    yield ": keepalive\n\n"
+
+            # Final result
+            if result_holder.get("error"):
+                yield f"data: {json.dumps({'error': result_holder['error']})}\n\n"
+            else:
+                # Encode patch using PatchJSONEncoder
+                result_data = result_holder.get("data", {})
+                yield f"data: {json.dumps({'complete': True, 'data': result_data}, cls=PatchJSONEncoder)}\n\n"
+
+        response = StreamingHttpResponse(
+            generate_events(),
+            content_type="text/event-stream",
+        )
+        response["Cache-Control"] = "no-cache"
+        response["X-Accel-Buffering"] = "no"
+        return response
+
+    def get(self, request, *args, **kwargs):
+        """Handle GET requests: return 400 error."""
+        msg = "GenerateStreamView GET method not allowed"
         logger.error(msg)
         return HttpResponseBadRequest(msg.encode())
 

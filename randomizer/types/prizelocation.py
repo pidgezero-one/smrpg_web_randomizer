@@ -2,20 +2,16 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 from uuid import uuid4
 from enum import StrEnum
+from ..logic.utils import debug_time
 
 from .prize import (
     Prize,
-    StandardPrize,
-    CoinPrize,
     EXPStarPrize,
-    SlotsPrize,
     BossFightPrize,
     CharacterPrize,
     StarPiecePrize,
     ItemPrize,
     SpellPrize,
-    FPFlowerPrize,
-    ArchipelagoPrize,
     KeyPrize,
 )
 
@@ -55,10 +51,6 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
     AreaObject,
     Battlefield,
 )
-from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
-    Formation,
-    FormationMember,
-)
 from smrpgpatchbuilder.datatypes.levels.classes import RegularNPC, EventInitiator
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHEAST
 from .base import CategorizationOption
@@ -76,7 +68,256 @@ if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
     from ..progression.prizes import SmithyBossFight
 
-# RestrictSpecialEquips is imported lazily inside can_accept to avoid circular import
+# Module-level cache for lazy imports to avoid repeated import overhead in hot paths
+# These are populated on first access to avoid circular import issues
+_lazy_import_cache: dict[str, type] = {}
+
+
+def _get_cached_import(name: str) -> type:
+    """Get a lazily imported class from cache, importing it if not yet cached."""
+    if name not in _lazy_import_cache:
+        if name == "SmithyBossFight":
+            from ..progression.prizes import SmithyBossFight
+
+            _lazy_import_cache[name] = SmithyBossFight
+        elif name == "EnabledStarPieceChecks":
+            from .flags import EnabledStarPieceChecks
+
+            _lazy_import_cache[name] = EnabledStarPieceChecks
+        elif name == "EnabledBossChecks":
+            from .flags import EnabledBossChecks
+
+            _lazy_import_cache[name] = EnabledBossChecks
+        elif name == "EnabledRegularChecks":
+            from .flags import EnabledRegularChecks
+
+            _lazy_import_cache[name] = EnabledRegularChecks
+        elif name == "WinCondition":
+            from .flags import WinCondition
+
+            _lazy_import_cache[name] = WinCondition
+        elif name == "WinConditions":
+            from .flags import WinConditions
+
+            _lazy_import_cache[name] = WinConditions
+        elif name == "KeyItemsAnywhere":
+            from .flags import KeyItemsAnywhere
+
+            _lazy_import_cache[name] = KeyItemsAnywhere
+        elif name == "StarPieceAvailability":
+            from .flags import StarPieceAvailability
+
+            _lazy_import_cache[name] = StarPieceAvailability
+        elif name == "ShuffleItems":
+            from .flags import ShuffleItems
+
+            _lazy_import_cache[name] = ShuffleItems
+        elif name == "ShuffleHillFlowers":
+            from .flags import ShuffleHillFlowers
+
+            _lazy_import_cache[name] = ShuffleHillFlowers
+        elif name == "DisperseStarPieces":
+            from .flags import DisperseStarPieces
+
+            _lazy_import_cache[name] = DisperseStarPieces
+        elif name == "RestrictSpecialEquips":
+            from .flags import RestrictSpecialEquips
+
+            _lazy_import_cache[name] = RestrictSpecialEquips
+        elif name == "MimicFightInitiatorPrize":
+            from ..progression.prizes import MimicFightInitiatorPrize
+
+            _lazy_import_cache[name] = MimicFightInitiatorPrize
+        elif name == "FirstMimicFightLauncher":
+            from ..progression.prizes import FirstMimicFightLauncher
+
+            _lazy_import_cache[name] = FirstMimicFightLauncher
+        elif name == "SecondMimicFightLauncher":
+            from ..progression.prizes import SecondMimicFightLauncher
+
+            _lazy_import_cache[name] = SecondMimicFightLauncher
+        elif name == "ThirdMimicFightLauncher":
+            from ..progression.prizes import ThirdMimicFightLauncher
+
+            _lazy_import_cache[name] = ThirdMimicFightLauncher
+        # Gating flags for BossFightLocation.can_accept
+        elif name == "BanditsWayGate":
+            from .flags import BanditsWayGate
+
+            _lazy_import_cache[name] = BanditsWayGate
+        elif name == "BanditsWayGating":
+            from .flags import BanditsWayGating
+
+            _lazy_import_cache[name] = BanditsWayGating
+        elif name == "KeroSewersGate":
+            from .flags import KeroSewersGate
+
+            _lazy_import_cache[name] = KeroSewersGate
+        elif name == "KeroSewersGating":
+            from .flags import KeroSewersGating
+
+            _lazy_import_cache[name] = KeroSewersGating
+        elif name == "PipeVaultGate":
+            from .flags import PipeVaultGate
+
+            _lazy_import_cache[name] = PipeVaultGate
+        elif name == "PipeVaultGating":
+            from .flags import PipeVaultGating
+
+            _lazy_import_cache[name] = PipeVaultGating
+        elif name == "Moleville1Gate":
+            from .flags import Moleville1Gate
+
+            _lazy_import_cache[name] = Moleville1Gate
+        elif name == "Moleville1Gating":
+            from .flags import Moleville1Gating
+
+            _lazy_import_cache[name] = Moleville1Gating
+        elif name == "BoosterTowerGate":
+            from .flags import BoosterTowerGate
+
+            _lazy_import_cache[name] = BoosterTowerGate
+        elif name == "BoosterTowerGating":
+            from .flags import BoosterTowerGating
+
+            _lazy_import_cache[name] = BoosterTowerGating
+        elif name == "BoosterHillGate":
+            from .flags import BoosterHillGate
+
+            _lazy_import_cache[name] = BoosterHillGate
+        elif name == "BoosterHillGating":
+            from .flags import BoosterHillGating
+
+            _lazy_import_cache[name] = BoosterHillGating
+        elif name == "MarrymoreGate":
+            from .flags import MarrymoreGate
+
+            _lazy_import_cache[name] = MarrymoreGate
+        elif name == "MarrymoreGating":
+            from .flags import MarrymoreGating
+
+            _lazy_import_cache[name] = MarrymoreGating
+        elif name == "SeaGate":
+            from .flags import SeaGate
+
+            _lazy_import_cache[name] = SeaGate
+        elif name == "SeaGating":
+            from .flags import SeaGating
+
+            _lazy_import_cache[name] = SeaGating
+        elif name == "YaridovichGate":
+            from .flags import YaridovichGate
+
+            _lazy_import_cache[name] = YaridovichGate
+        elif name == "YaridovichGating":
+            from .flags import YaridovichGating
+
+            _lazy_import_cache[name] = YaridovichGating
+        elif name == "LandsEndGate":
+            from .flags import LandsEndGate
+
+            _lazy_import_cache[name] = LandsEndGate
+        elif name == "LandsEndGating":
+            from .flags import LandsEndGating
+
+            _lazy_import_cache[name] = LandsEndGating
+        elif name == "MonstroTownGate":
+            from .flags import MonstroTownGate
+
+            _lazy_import_cache[name] = MonstroTownGate
+        elif name == "MonstroTownGating":
+            from .flags import MonstroTownGating
+
+            _lazy_import_cache[name] = MonstroTownGating
+        elif name == "NimbusGate":
+            from .flags import NimbusGate
+
+            _lazy_import_cache[name] = NimbusGate
+        elif name == "NimbusGating":
+            from .flags import NimbusGating
+
+            _lazy_import_cache[name] = NimbusGating
+        elif name == "BarrelVolcanoGate":
+            from .flags import BarrelVolcanoGate
+
+            _lazy_import_cache[name] = BarrelVolcanoGate
+        elif name == "BarrelVolcanoGating":
+            from .flags import BarrelVolcanoGating
+
+            _lazy_import_cache[name] = BarrelVolcanoGating
+        elif name == "BowsersKeepGate":
+            from .flags import BowsersKeepGate
+
+            _lazy_import_cache[name] = BowsersKeepGate
+        elif name == "BowsersKeepGating":
+            from .flags import BowsersKeepGating
+
+            _lazy_import_cache[name] = BowsersKeepGating
+        elif name == "FactoryGate":
+            from .flags import FactoryGate
+
+            _lazy_import_cache[name] = FactoryGate
+        elif name == "FactoryGating":
+            from .flags import FactoryGating
+
+            _lazy_import_cache[name] = FactoryGating
+        # Boss fight classes for BossFightLocation.can_accept
+        elif name == "HammerBrosFight":
+            from ..progression.prizes import HammerBrosFight
+
+            _lazy_import_cache[name] = HammerBrosFight
+        elif name == "MackBossFight":
+            from ..progression.prizes import MackBossFight
+
+            _lazy_import_cache[name] = MackBossFight
+        elif name == "BowyerBossFight":
+            from ..progression.prizes import BowyerBossFight
+
+            _lazy_import_cache[name] = BowyerBossFight
+        elif name == "PunchinelloBossFight":
+            from ..progression.prizes import PunchinelloBossFight
+
+            _lazy_import_cache[name] = PunchinelloBossFight
+        elif name == "KnifeGuyGrateGuyBossFight":
+            from ..progression.prizes import KnifeGuyGrateGuyBossFight
+
+            _lazy_import_cache[name] = KnifeGuyGrateGuyBossFight
+        elif name == "BundtBossFight":
+            from ..progression.prizes import BundtBossFight
+
+            _lazy_import_cache[name] = BundtBossFight
+        elif name == "JohnnyBossFight":
+            from ..progression.prizes import JohnnyBossFight
+
+            _lazy_import_cache[name] = JohnnyBossFight
+        elif name == "YaridovichBossFight":
+            from ..progression.prizes import YaridovichBossFight
+
+            _lazy_import_cache[name] = YaridovichBossFight
+        elif name == "Belome2BossFight":
+            from ..progression.prizes import Belome2BossFight
+
+            _lazy_import_cache[name] = Belome2BossFight
+        elif name == "MegasmilaxBossFight":
+            from ..progression.prizes import MegasmilaxBossFight
+
+            _lazy_import_cache[name] = MegasmilaxBossFight
+        elif name == "ValentinaBossFight":
+            from ..progression.prizes import ValentinaBossFight
+
+            _lazy_import_cache[name] = ValentinaBossFight
+        elif name == "AxemRangersBossFight":
+            from ..progression.prizes import AxemRangersBossFight
+
+            _lazy_import_cache[name] = AxemRangersBossFight
+        elif name == "ExorBossFight":
+            from ..progression.prizes import ExorBossFight
+
+            _lazy_import_cache[name] = ExorBossFight
+        else:
+            raise ValueError(f"Unknown lazy import: {name}")
+    return _lazy_import_cache[name]
+
 
 class ShuffleLocationSelector(CategorizationOption):
     """Enumeration for enabling and disabling locations"""
@@ -783,7 +1024,11 @@ class PrizeLocation:
     _override_id: int | None = None
     _can_be_empty: bool = False
     _bias: bool = False
-    _monstro_shuffle: bool = True
+    _monstro_shuffle: bool = False
+
+    def __repr__(self) -> str:
+        prize_name = type(self._prize).__name__ if self._prize else "None"
+        return f"{self.__class__.__name__}(prize={prize_name})"
 
     @property
     def has_item(self) -> bool:
@@ -882,36 +1127,30 @@ class PrizeLocation:
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         if self._blacklist and isinstance(prize, tuple(self._blacklist)):
             return False
-        # Lazy import to avoid circular import
-        from .flags import DisperseStarPieces, RestrictSpecialEquips
+        DisperseStarPieces = _get_cached_import("DisperseStarPieces")
+        RestrictSpecialEquips = _get_cached_import("RestrictSpecialEquips")
 
         if isinstance(prize, StarPiecePrize) and world.settings.isflag_enabled(
             DisperseStarPieces
         ):
             # one star piece per OW area
-            neighbours = [
-                l
-                for l in world.locations.values()
-                if l is not self
-                and l.overworld_map_region == self.overworld_map_region
-                and isinstance(l.prize, StarPiecePrize)
-            ]
-            return len(neighbours) == 0
+            for l in world.star_piece_locations:
+                if l is not self and isinstance(l.prize, StarPiecePrize):
+                    if l.overworld_map_region == self.overworld_map_region:
+                        return False
+            return True
         if isinstance(prize, EXPStarPrize):
             # one EXP star per locale
-            neighbours = [
-                l
-                for l in world.locations.values()
-                if l is not self
-                and l.world_area == self.world_area
-                and isinstance(l.prize, EXPStarPrize)
-            ]
-            return len(neighbours) == 0
+            for l in world.chest_locations:
+                if l is not self and isinstance(l.prize, EXPStarPrize):
+                    if l.world_area == self.world_area:
+                        return False
+            return True
         if world.settings.isflag_enabled(RestrictSpecialEquips):
-            if self.monstro_shuffle and isinstance(prize, ItemPrize) and prize._monstro_shuffle:
-                return True
+            if self.monstro_shuffle:
+                return isinstance(prize, ItemPrize) and prize._monstro_shuffle
             else:
-                return False
+                return not (isinstance(prize, ItemPrize) and prize._monstro_shuffle)
         return True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -932,18 +1171,16 @@ class PrizeLocation:
 
 class StandardPrizeLocation(PrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        from .flags import (
-            KeyItemsAnywhere,
-            StarPieceAvailability,
-            EnabledRegularChecks,
-        )
+        KeyItemsAnywhere = _get_cached_import("KeyItemsAnywhere")
+        StarPieceAvailability = _get_cached_import("StarPieceAvailability")
+        EnabledRegularChecks = _get_cached_import("EnabledRegularChecks")
 
         # Check if this location is disabled for key items / star pieces
         if isinstance(prize, (KeyPrize, StarPiecePrize)):
             enabled_check = world.settings.get_flag(EnabledRegularChecks)
-            enabled_classes = [m.value for m in enabled_check.enabled]
-            if self.__class__ not in enabled_classes:
-                return False
+            for m in enabled_check.disabled:
+                if self.__class__ == m.value:
+                    return False
 
         if isinstance(prize, KeyPrize) and not world.settings.isflag_enabled(
             KeyItemsAnywhere
@@ -972,8 +1209,10 @@ class TreasureChestLocation(StandardPrizeLocation):
     _npc_ids: list[AreaObject]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return hasattr(prize, "chest_grant") and super().can_accept(
-            prize, inventory, world
+        return (
+            hasattr(prize, "chest_grant")
+            and prize.chest_grant is not None
+            and super().can_accept(prize, inventory, world)
         )
 
     def grant(self) -> EventScript:
@@ -993,8 +1232,10 @@ class StandingLocation(StandardPrizeLocation):
     _npc_ids: list[AreaObject]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return hasattr(prize, "standing_grant") and super().can_accept(
-            prize, inventory, world
+        return (
+            hasattr(prize, "standing_grant")
+            and prize.standing_grant is not None
+            and super().can_accept(prize, inventory, world)
         )
 
     def grant(self) -> EventScript:
@@ -1007,8 +1248,10 @@ class StandingLocation(StandardPrizeLocation):
 
 class EventLocation(StandardPrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return hasattr(prize, "npc_grant") and super().can_accept(
-            prize, inventory, world
+        return (
+            hasattr(prize, "npc_grant")
+            and prize.npc_grant is not None
+            and super().can_accept(prize, inventory, world)
         )
 
     def grant(self) -> EventScript:
@@ -1021,8 +1264,10 @@ class EventLocation(StandardPrizeLocation):
 
 class RiverLocation(StandardPrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return hasattr(prize, "river_grant") and super().can_accept(
-            prize, inventory, world
+        return (
+            hasattr(prize, "river_grant")
+            and prize.river_grant is not None
+            and super().can_accept(prize, inventory, world)
         )
 
     def grant(self) -> EventScript:
@@ -1049,67 +1294,65 @@ class BossFightLocation(PrizeLocation):
         return EventScript([*output, Return()])
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        if not hasattr(prize, "boss_fight_grant"):
+        if not hasattr(prize, "boss_fight_grant") or prize.boss_fight_grant is None:
             return False
 
-        # Check if this location is disabled and the prize is a gating boss
-        from .flags import (
-            EnabledBossChecks,
-            BanditsWayGate,
-            BanditsWayGating,
-            KeroSewersGate,
-            KeroSewersGating,
-            PipeVaultGate,
-            PipeVaultGating,
-            Moleville1Gate,
-            Moleville1Gating,
-            BoosterTowerGate,
-            BoosterTowerGating,
-            BoosterHillGate,
-            BoosterHillGating,
-            MarrymoreGate,
-            MarrymoreGating,
-            SeaGate,
-            SeaGating,
-            YaridovichGate,
-            YaridovichGating,
-            LandsEndGate,
-            LandsEndGating,
-            MonstroTownGate,
-            MonstroTownGating,
-            NimbusGate,
-            NimbusGating,
-            BarrelVolcanoGate,
-            BarrelVolcanoGating,
-            BowsersKeepGate,
-            BowsersKeepGating,
-            FactoryGate,
-            FactoryGating,
-        )
-        from ..progression.prizes import (
-            HammerBrosFight,
-            MackBossFight,
-            BowyerBossFight,
-            PunchinelloBossFight,
-            KnifeGuyGrateGuyBossFight,
-            BundtBossFight,
-            JohnnyBossFight,
-            YaridovichBossFight,
-            Belome2BossFight,
-            MegasmilaxBossFight,
-            ValentinaBossFight,
-            AxemRangersBossFight,
-            ExorBossFight,
-        )
+        # Use cached imports for performance (this method is called thousands of times)
+        EnabledBossChecks = _get_cached_import("EnabledBossChecks")
 
         enabled_check = world.settings.get_flag(EnabledBossChecks)
-        enabled_classes = [m.value for m in enabled_check.enabled]
-
-        # If this location is enabled, accept any boss fight
-        if self.__class__ in enabled_classes:
-            return super().can_accept(prize, inventory, world)
+        for m in enabled_check.enabled:
+            if self.__class__ == m.value:
+                # If this location is enabled, accept any boss fight
+                return super().can_accept(prize, inventory, world)
 
         # Location is disabled - check if the prize is a gating boss
+        # Get cached imports for gating checks
+        BanditsWayGate = _get_cached_import("BanditsWayGate")
+        BanditsWayGating = _get_cached_import("BanditsWayGating")
+        KeroSewersGate = _get_cached_import("KeroSewersGate")
+        KeroSewersGating = _get_cached_import("KeroSewersGating")
+        PipeVaultGate = _get_cached_import("PipeVaultGate")
+        PipeVaultGating = _get_cached_import("PipeVaultGating")
+        Moleville1Gate = _get_cached_import("Moleville1Gate")
+        Moleville1Gating = _get_cached_import("Moleville1Gating")
+        BoosterTowerGate = _get_cached_import("BoosterTowerGate")
+        BoosterTowerGating = _get_cached_import("BoosterTowerGating")
+        BoosterHillGate = _get_cached_import("BoosterHillGate")
+        BoosterHillGating = _get_cached_import("BoosterHillGating")
+        MarrymoreGate = _get_cached_import("MarrymoreGate")
+        MarrymoreGating = _get_cached_import("MarrymoreGating")
+        SeaGate = _get_cached_import("SeaGate")
+        SeaGating = _get_cached_import("SeaGating")
+        YaridovichGate = _get_cached_import("YaridovichGate")
+        YaridovichGating = _get_cached_import("YaridovichGating")
+        LandsEndGate = _get_cached_import("LandsEndGate")
+        LandsEndGating = _get_cached_import("LandsEndGating")
+        MonstroTownGate = _get_cached_import("MonstroTownGate")
+        MonstroTownGating = _get_cached_import("MonstroTownGating")
+        NimbusGate = _get_cached_import("NimbusGate")
+        NimbusGating = _get_cached_import("NimbusGating")
+        BarrelVolcanoGate = _get_cached_import("BarrelVolcanoGate")
+        BarrelVolcanoGating = _get_cached_import("BarrelVolcanoGating")
+        BowsersKeepGate = _get_cached_import("BowsersKeepGate")
+        BowsersKeepGating = _get_cached_import("BowsersKeepGating")
+        FactoryGate = _get_cached_import("FactoryGate")
+        FactoryGating = _get_cached_import("FactoryGating")
+
+        HammerBrosFight = _get_cached_import("HammerBrosFight")
+        MackBossFight = _get_cached_import("MackBossFight")
+        BowyerBossFight = _get_cached_import("BowyerBossFight")
+        PunchinelloBossFight = _get_cached_import("PunchinelloBossFight")
+        KnifeGuyGrateGuyBossFight = _get_cached_import("KnifeGuyGrateGuyBossFight")
+        BundtBossFight = _get_cached_import("BundtBossFight")
+        JohnnyBossFight = _get_cached_import("JohnnyBossFight")
+        YaridovichBossFight = _get_cached_import("YaridovichBossFight")
+        Belome2BossFight = _get_cached_import("Belome2BossFight")
+        MegasmilaxBossFight = _get_cached_import("MegasmilaxBossFight")
+        ValentinaBossFight = _get_cached_import("ValentinaBossFight")
+        AxemRangersBossFight = _get_cached_import("AxemRangersBossFight")
+        ExorBossFight = _get_cached_import("ExorBossFight")
+
         # Map gating options to boss fight classes
         # (GateFlag class, gating option enum value, boss fight class)
         gating_boss_mapping: list[tuple[type, object, type[BossFightPrize]]] = [
@@ -1212,8 +1455,10 @@ class CharacterRecruitmentLocation(PrizeLocation):
     _can_be_empty: bool = True
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return hasattr(prize, "character_grant") and super().can_accept(
-            prize, inventory, world
+        return (
+            hasattr(prize, "character_grant")
+            and prize.character_grant is not None
+            and super().can_accept(prize, inventory, world)
         )
 
     def render(self, world: GameWorld):
@@ -1230,7 +1475,9 @@ class StarPieceLocation(PrizeLocation):
     _can_be_empty: bool = True
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        from .flags import WinCondition, WinConditions
+        SmithyBossFight = _get_cached_import("SmithyBossFight")
+        WinCondition = _get_cached_import("WinCondition")
+        WinConditions = _get_cached_import("WinConditions")
 
         if hasattr(self, "_parent"):
             parent_location = world.get_location(self._parent)
@@ -1244,15 +1491,18 @@ class StarPieceLocation(PrizeLocation):
         return super().can_access(inventory, world)
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        from .flags import EnabledStarPieceChecks
+        EnabledStarPieceChecks = _get_cached_import("EnabledStarPieceChecks")
 
         # Check if this location is disabled - if so, cannot accept any prize
         enabled_check = world.settings.get_flag(EnabledStarPieceChecks)
-        enabled_classes = [m.value for m in enabled_check.enabled]
-        if self.__class__ not in enabled_classes:
-            return False
+        for m in enabled_check.disabled:
+            if self.__class__ == m.value:
+                return False
 
-        if not hasattr(prize, "postfight_star_piece_grant"):
+        if (
+            not hasattr(prize, "postfight_star_piece_grant")
+            or prize.postfight_star_piece_grant is None
+        ):
             return False
 
         return super().can_accept(prize, inventory, world)
@@ -1480,8 +1730,10 @@ class BoosterHillLocation(PrizeRow):
     _container_event: int = E0219_HILL_GRANT_LOGIC
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return hasattr(prize, "hill_grant") and super().can_accept(
-            prize, inventory, world
+        return (
+            hasattr(prize, "hill_grant")
+            and prize.hill_grant is not None
+            and super().can_accept(prize, inventory, world)
         )
 
     def grant(self) -> EventScript:
@@ -1516,7 +1768,7 @@ class KeyItemLocation(PrizeLocation):
         return True
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        from .flags import KeyItemsAnywhere
+        KeyItemsAnywhere = _get_cached_import("KeyItemsAnywhere")
 
         if not isinstance(prize, KeyPrize) and not world.settings.isflag_enabled(
             KeyItemsAnywhere

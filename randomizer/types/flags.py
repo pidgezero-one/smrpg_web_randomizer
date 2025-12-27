@@ -417,7 +417,7 @@ class ShuffleCharacters(BooleanFlag):
     _description = """If enabled, your characters will join your party in a random order.
 <br>
 <br>If disabled, you will start with Mario and recruit characters near their original locations."""
-    _id = "random"
+    _id = "rchars"
 
 
 # ✅
@@ -619,7 +619,7 @@ class CharacterStats(BooleanFlag):
 class CharacterLearnedSpells(BooleanFlag):
     _name = "Randomize character learned spells"
     _description = "The pool of spells learnable by each character will be randomized. This only covers spells originally learn-able by playable characters, and does not include enemy spells."
-    _id = "spells"
+    _id = "charspells"
 
 
 # ✅
@@ -680,7 +680,7 @@ class ShuffleStarPieces(BooleanFlag):
     _description = """If enabled, the Star Pieces may be found in places other than their original locations.
 <br>
 <br>If disabled, they will be rewarded by defeating the final bosses of Mushroom Kindom, Forest Maze, Moleville, Seaside Town, and Barrel Volcano, as well as a freestanding piece on Star Hill."""
-    _id = "random"
+    _id = "rstars"
 
 
 # ✅
@@ -714,7 +714,7 @@ class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions
 <br>
 <br><b>Hard</b> - The shuffler will not consider boss difficulty when placing progression items. Your progression items may be found late in the game among higher level boss battles."""
     choices = [o for o in ProgressionLogicDifficultyOptions]
-    _id = "restrict_map"
+    _id = "proglogic"
     _default = ProgressionLogicDifficultyOptions.NORMAL
     _requires_all = [(ShuffleStarPieces(), True)]
 
@@ -725,7 +725,7 @@ class DisperseStarPieces(BooleanFlag):
     _description = """If enabled, each of the seven overworld map areas may only contain up to one Star Piece each.
 <br>
 <br>Note: This may not be respected if Bowser's Keep and Factory are both gated by 6 Star Pieces."""
-    _id = "restrict_map"
+    _id = "disperse"
     _requires_all = [(ShuffleStarPieces(), True)]
 
 
@@ -739,7 +739,7 @@ class ShuffleItems(BooleanFlag):
     _description = """If enabled, the contents of treasure chests, quest rewards, and freestanding small items will be shuffled.
 <br>
 <br>If disabled, chests, quest rewards, and freestanding small items will remain unchanged from the original game."""
-    _id = "random"
+    _id = "ritems"
 
 
 # ✅
@@ -758,7 +758,7 @@ class ItemQuality(SelectOneFlag[ItemQualityOptions]):
     _description = """Determines how non-required items are distributed."""
     choices = [o for o in ItemQualityOptions]
     _default = ItemQualityOptions.ORIGINAL_POOL
-    _id = "quality"
+    _id = "itemqual"
     _requires_all = [(ShuffleItems(), True)]
 
 
@@ -768,7 +768,7 @@ class BiasItemShuffle(BooleanFlag):
     _description = (
         """If enabled, harder-to-reach areas will generally house better items."""
     )
-    _id = "bias"
+    _id = "biasitems"
     _requires_all = [(ShuffleItems(), True)]
 
 
@@ -815,6 +815,14 @@ class ShuffleHillFlowers(BooleanFlag):
 <br>
 <br>There are no missable flowers on Booster Hill in the randomizer. You can return to the hill as many times as you like to collect any you missed the first time."""
     _id = "hill"
+    _requires_all = [(ShuffleItems(), True)]
+
+
+# ✅
+class ShuffleCoins(BooleanFlag):
+    _name = "Shuffle regular coins"
+    _description = """If enabled, all freestanding gold coins will be item checks."""
+    _id = "coins"
     _requires_all = [(ShuffleItems(), True)]
 
 
@@ -1632,7 +1640,7 @@ class BowserDoorRequirements(RangeFlag):
     _default = 4
     min_value = 1
     max_value = 6
-    _id = "doors"
+    _id = "doorcount"
 
 
 # ✅
@@ -1748,7 +1756,7 @@ class RandomSunkenShipPassword(BooleanFlag):
 class BowserDoorShuffle(BooleanFlag):
     _name = "Randomize Bowser's Keep room sequences"
     _description = """If enabled, the 18 rooms making up the six Bowser's Keep obstacle course doors will be shuffled into six random sequences of three rooms each."""
-    _id = "doors"
+    _id = "doorshuffle"
 
 
 # ✅
@@ -1784,7 +1792,7 @@ class BetterTips(BooleanFlag):
 class ShuffleShops(BooleanFlag):
     _name = "Randomize the contents of shops"
     _description = """If enabled, the contents of all regular shops and Frog Coin shops (including the Moleville treasure shop, Marrymore Suite room service menu, and Moleville swap shop) will be randomized."""
-    _id = "random"
+    _id = "rshops"
 
 
 # ✅
@@ -1800,14 +1808,14 @@ class ShopQualities(CategorizationOption):
 # ✅
 class ShopQuality(SelectOneFlag[ShopQualities]):
     _name = """Shop contents quality"""
-    _description = """Restricts the incidence of certain items in shops. 
+    _description = """Restricts the incidence of certain items in shops.
 <br>
-<br>"Completely random" means that some items which originally did not appear in shops may now appear in shops, but only a small pool of items are guaranteed to appear. Some items will never appear in non-depletable shops. 
+<br>"Completely random" means that some items which originally did not appear in shops may now appear in shops, but only a small pool of items are guaranteed to appear. Some items will never appear in non-depletable shops.
 <br>
 <br>If "Completely empty" is selected, all shops will just sell the Goodie Bag."""
     choices = [o for o in ShopQualities]
     _default = ShopQualities.ORIGINAL
-    _id = "quality"
+    _id = "shopqual"
     _requires_all = [(ShuffleShops(), True)]
 
 
@@ -1817,7 +1825,7 @@ class BiasShopShuffle(BooleanFlag):
     _description = (
         """If enabled, harder-to-reach shops will generally sell better items."""
     )
-    _id = "bias"
+    _id = "biasshops"
     _requires_all = [
         (ShuffleShops(), True),
         (ShopQuality(), [o for o in ShopQualities if o != ShopQualities.ORIGINAL]),
@@ -1853,7 +1861,7 @@ class FreeShops(BooleanFlag):
 class BossShuffle(BooleanFlag):
     _name = "Randomize boss fight locations"
     _description = "If enabled, the positions of bosses (plus Pandorite, Hidon, Box Boy, Chester, and Mokura) are shuffled."
-    _id = "random"
+    _id = "rboss"
     # if false, disable stat scaling and mimics anywhere
 
 
@@ -1874,7 +1882,7 @@ class BossShuffleScaleStats(SelectOneFlag[BossScaleOptions]):
 <br><b>Completely random</b>: A boss fight will inherit the relative stats of a random other location, regardless of position. For example, Culex could be placed in Mushroom Way, but have 1200 HP because he's inherited Belome 2's original stats."""
     choices = [o for o in BossScaleOptions]
     _default = BossScaleOptions.VANILLA
-    _id = "scale"
+    _id = "bossscale"
     _requires_all = [(BossShuffle(), True)]
 
 
@@ -2000,7 +2008,7 @@ class EnemyStats(SelectOneFlag[EnemyStatsShuffleOptions]):
 <br><bold>Everything</bold>: Attack, defense, speed, and HP values are randomized. Elemental weaknesses/resistances and status immunities are also randomized.
 <br>
 <br><b>Original stats</b>: Enemy stats remain unchanged."""
-    _id = "scale"
+    _id = "enemystats"
     choices = [o for o in EnemyStatsShuffleOptions]
     _default = EnemyStatsShuffleOptions.DISABLED
 
@@ -2032,7 +2040,7 @@ class EnemyAttacks(BooleanFlag):
 class EnemySpells(BooleanFlag):
     _name = "Randomize enemy spell assignments"
     _description = "If enabled, enemies can cast random spells (excluding remake spells). I.E. Mack could cast Blast instead of Flame."
-    _id = "spells"
+    _id = "enemyspells"
 
 
 # ✅

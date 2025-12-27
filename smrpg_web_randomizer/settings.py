@@ -106,18 +106,31 @@ LOGGING = {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse',
         },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
     },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
             'filters': ['require_debug_false'],
         },
+        'console_debug': {
+            'class': 'logging.StreamHandler',
+            'filters': ['require_debug_true'],
+        },
     },
     'loggers': {
         # Log anything warning or higher in production to stdout/stderr for capture.
         '': {
             'level': 'WARNING',
-            'handlers': ['console'],
+            'handlers': ['console', 'console_debug'],
+        },
+        # Log randomizer errors at ERROR level in development
+        'randomizer': {
+            'level': 'ERROR',
+            'handlers': ['console_debug'],
+            'propagate': False,
         },
     },
 }

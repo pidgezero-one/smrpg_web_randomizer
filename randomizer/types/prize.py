@@ -1,4 +1,5 @@
 from __future__ import annotations
+import random
 from typing import TYPE_CHECKING
 
 from smrpgpatchbuilder.datatypes.items.classes import Item
@@ -21,6 +22,7 @@ from ..data.variables.overworld_sfx_names import SO081_STAR
 
 if TYPE_CHECKING:
     from .gameworld import GameWorld
+    from .prizelocation import PrizeLocation
 
 class TreasureHunterNickname:
     _nickname: str
@@ -222,6 +224,13 @@ class StarPiecePrize(StandardPrize):
             PlaySound(sound=SO081_STAR, channel=4),
             Return(),
         ])
+    
+    @property
+    def postfight_star_piece_grant(self) -> EventScript:
+        return EventScript([
+            SetBit(self._hint),
+            JmpToEvent(E3092_STAR_PIECE_GRANT)
+        ])
 
 
 class FPFlowerPrize(Prize):
@@ -266,6 +275,11 @@ class EXPStarPrize(Prize):
 
 class SlotsPrize(Prize):
     # TODO
+    @property
+    def chest_grant(self) -> EventScript:
+        return EventScript([
+            Return()
+        ])
     pass
 
 
@@ -288,6 +302,10 @@ class CharacterPrize(Prize):
         return EventScript([
             Return()
         ])
+
+    @property
+    def character_grant(self) -> EventScript:
+        return EventScript([])
 
 
 class SpellPrize(Prize):
@@ -315,6 +333,12 @@ class BossFightPrize(Prize):
     @property
     def force_start_event(self) -> int | None:
         return self._force_start_event
+    
+    @property
+    def boss_fight_grant(self) -> EventScript | None:
+        return EventScript([
+            Return()
+        ])
     
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         return EventScript([
@@ -416,3 +440,88 @@ class FrogCoinQuantityPrize(FrogCoinPrize):
 class CoinQuantityPrize(CoinPrize):
     def __init__(self):
         super().__init__(self._amount)
+
+
+# This gets placed in a location where item quality != original_pool
+# and will be used to generate an item on the fly
+class RandomPrizeSubstitute(Prize):
+    def generate(self, world: GameWorld, location: PrizeLocation) -> Prize:
+        # Lazy imports to avoid circular imports
+        from .flags import ItemQuality, ItemQualityOptions, BiasItemShuffle
+        from ..progression.prizes import (
+            RecoveryMushroomPrize,
+            FrogCoin1Prize,
+            Coins10Prize,
+        )
+
+        pool: list[type] = []
+        if world.settings.is_flag_value(
+            ItemQuality, ItemQualityOptions.COMPLETELY_RANDOM
+        ):
+            if world.settings.isflag_enabled(BiasItemShuffle):
+                if location._bias:
+                    pool = (
+                        world.high_impact_items
+                        + world.highest_impact_items
+                        + world.high_impact_equip
+                        + world.highest_impact_equip
+                    )
+                else:
+                    pool = (
+                        world.low_impact_items
+                        + world.high_impact_items
+                        + world.low_impact_equip
+                        + world.high_impact_equip
+                    )
+            else:
+                pool = (
+                    world.low_impact_items
+                    + world.high_impact_items
+                    + world.highest_impact_items
+                    + world.low_impact_equip
+                    + world.high_impact_equip
+                    + world.highest_impact_equip
+                )
+            chosen_item = random.choice(pool)
+            return world.item_to_prize.get(chosen_item)()  # type: ignore
+        elif world.settings.is_flag_value(
+            ItemQuality, ItemQualityOptions.MOSTLY_RANDOM
+        ):
+            roll = random.randint(1, 100)
+            if world.settings.isflag_enabled(BiasItemShuffle):
+                if location._bias:
+                    if roll <= 40:
+                        pool = world.high_impact_items + world.high_impact_equip
+                    elif roll <= 95:
+                        pool = world.low_impact_items + world.low_impact_equip
+                    else:
+                        pool = world.highest_impact_items + world.highest_impact_equip
+                else:
+                    if roll <= 75:
+                        pool = world.low_impact_items + world.low_impact_equip
+                    elif roll <= 99:
+                        pool = world.high_impact_items + world.high_impact_equip
+                    else:
+                        pool = world.highest_impact_items + world.highest_impact_equip
+            else:
+                if roll <= 65:
+                    pool = world.low_impact_items + world.low_impact_equip
+                elif roll <= 95:
+                    pool = world.high_impact_items + world.high_impact_equip
+                else:
+                    pool = world.highest_impact_items + world.highest_impact_equip
+            chosen_item = random.choice(pool)
+            return world.item_to_prize.get(chosen_item)()  # type: ignore
+        elif world.settings.is_flag_value(
+            ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY
+        ):
+            return EmptyPrize()
+        else:
+            return random.choice(
+                [
+                    FPFlowerPrize,
+                    RecoveryMushroomPrize,
+                    FrogCoin1Prize,
+                    Coins10Prize,
+                ]
+            )()

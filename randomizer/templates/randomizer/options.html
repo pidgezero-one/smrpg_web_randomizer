@@ -52,14 +52,14 @@
                 <h2>{{ category.name }}</h2>
                     {% if category.subcategories %}
                         {% for subcategory in category.subcategories %}
-                            <div class="card border-info my-2">
-                                <div class="card-header bg-info text-white">
+                            <div class="card border-secondary my-2">
+                                <div class="card-header bg-secondary text-white">
                                     <h5 class="card-title">{{ subcategory.name }}</h5>
                                 </div>
                                 <div class="card-body">
                                     {% for flag in subcategory.flags %}
                                         <div class="mb-3">
-                                            <h6 class="fw-bold">{{ flag.name }}</h6>
+                                            <h6 class="fw-bold">{{ flag.name }} (<code>{{ flag.id }}</code>)</h6>
                                             {% if flag.description %}
                                                 <div class="ms-3">{{ flag.description|safe }}</div>
                                             {% endif %}
@@ -73,7 +73,7 @@
                     {% if category.flags %}
                         {% for flag in category.flags %}
                             <div class="mb-3">
-                                <h6 class="fw-bold">{{ flag.name }}</h6>
+                                <h6 class="fw-bold">{{ flag.name }} <code>{{ flag.id }}</code></h6>
                                 {% if flag.description %}
                                     <div class="ms-3">{{ flag.description|safe }}</div>
                                 {% endif %}

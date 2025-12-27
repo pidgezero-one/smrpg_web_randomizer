@@ -1,8 +1,6 @@
 from __future__ import annotations
-from copy import deepcopy
-from typing import Any, TYPE_CHECKING, TypeVar, cast
+from typing import Any, Callable, TypeVar, cast
 import random
-import datetime
 import hashlib
 import re
 from copy import copy
@@ -38,21 +36,14 @@ from smrpgpatchbuilder.datatypes.monster_scripts.types import (
     MonsterScriptBank,
     MonsterScript,
 )
-from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import (
-    DoNothing,
-)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
     ActionScriptBank,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
     EventScriptController,
-    EventScriptBank,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import (
     PacketCollection,
-)
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
-    AreaObject,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     PackCollection,
@@ -63,22 +54,11 @@ from smrpgpatchbuilder.datatypes.spells.classes import SpellCollection
 from smrpgpatchbuilder.datatypes.graphics.classes import SpriteCollection
 from smrpgpatchbuilder.datatypes.scripts_common.classes import IdentifierException
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
-    CompareVarToConst,
-    SummonObjectToSpecificLevel,
     RunEventAsSubroutine,
-    SetBit,
-    ClearBit,
-    JmpIfBitClear,
-    JmpIfVarEqualsConst,
-    SetVarToConst,
     ActionQueueAsync,
     RunDialog,
     JmpIfVarNotEqualsConst,
     Inc,
-    SetVarToRandom,
-    JmpIfComparisonResultIsLesser,
-    JmpToEvent,
-    DisableObjectTriggerInSpecificLevel,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
@@ -91,40 +71,26 @@ from smrpgpatchbuilder.datatypes.world_map_locations.classes import (
     WorldMapLocationCollection,
 )
 from ..data.items.items import *
-from ..data.minigames.star_hill_wishes import WISH_POOL, WISH_DIALOG_IDS
-from ..data.minigames.puzzle_games import (
-    BallSolitaireGame,
-    MagicButtonsGame,
-    randomize_ball_solitaire,
-    randomize_magic_buttons,
-)
-from ..data.minigames.quiz_questions import (
-    get_quiz_questions,
-    option_1_correct,
-    option_2_correct,
-    option_3_correct,
-)
-from ..data.minigames.bowser_doors import randomize_bowser_doors
 from .item import Item
 from .patch import Patch
 from .attack import EnemyAttack
 from .spell import Spell
 from .prize import (
-    Prize,
     ItemPrize,
-    SpellPrize,
-    WeddingGearPrize,
-    MimicFightInitiatorPrize,
-    EXPStarPrize,
-    CoinPrize,
 )
 from .ally import Ally
 from .prizelocation import (
-    SIGNAL_RING_EVENT_DICT,
     PrizeLocation,
     TreasureChestLocation,
-    StandardPrizeLocation,
+    EventLocation,
+    StandingLocation,
     RiverLocation,
+    BoosterHillLocation,
+    SpellSlotLocation,
+    BossFightLocation,
+    StarPieceLocation,
+    CharacterRecruitmentLocation,
+    KeyItemLocation
 )
 from ..progression.prizelocations import *
 from ..data.variables.dialog_names import *
@@ -142,6 +108,14 @@ from ..data.minigames.ship_password import (
     hint_authors,
 )
 from ..data.credits.credits import update_credits
+from ..logic.setup.gating import apply_gating_settings
+from ..logic.setup.thresholds import apply_threshold_settings
+from ..logic.setup.enemy_tweaks import apply_enemy_tweaks
+from ..logic.setup.equipment_setup import apply_equipment_settings
+from ..logic.setup.minigames_setup import apply_minigame_settings
+from ..logic.setup.cosmetics import apply_cosmetic_settings
+from ..logic.setup.prize_locations import set_locations
+from ..logic.shufflers.items import shuffle_prizes, post_shuffle_cleanup
 
 from ..data.allies.palettes.types import (
     MarioPalette,
@@ -150,19 +124,10 @@ from ..data.allies.palettes.types import (
     BowserPalette,
     ToadstoolPalette,
 )
-from ..data.allies.palettes.mario import all_palettes as MARIO_PALETTES
-from ..data.allies.palettes.mallow import all_palettes as MALLOW_PALETTES
-from ..data.allies.palettes.geno import all_palettes as GENO_PALETTES
-from ..data.allies.palettes.toadstool import all_palettes as TOADSTOOL_PALETTES
-from ..data.allies.palettes.bowser import all_palettes as BOWSER_PALETTES
-from ..progression.prizes import *
 from .enemy import Enemy
 
 PrizeLocationT = TypeVar("PrizeLocationT", bound=PrizeLocation)
 from .settings import Settings
-
-if TYPE_CHECKING:
-    from .flags import CategorizationOption as FlagOptions
 
 
 class RandomizerSettingsException(Exception):
@@ -182,82 +147,6 @@ class NumberThresholdFlag(RangeFlag):
 
 class WorldBuildingException(Exception):
     pass
-
-
-# this gets placed in a location where item quality != original_pool and will be used to generate an item on the fly
-class RandomPrizeSubstitute(Prize):
-    def generate(self, world: GameWorld, location: PrizeLocation) -> Prize:
-        pool: list[type] = []
-        if world.settings.is_flag_value(
-            ItemQuality, ItemQualityOptions.COMPLETELY_RANDOM
-        ):
-            if world.settings.isflag_enabled(BiasItemShuffle):
-                if location._bias:
-                    pool = (
-                        world.high_impact_items
-                        + world.highest_impact_items
-                        + world.high_impact_equip
-                        + world.highest_impact_equip
-                    )
-                else:
-                    pool = (
-                        world.low_impact_items
-                        + world.high_impact_items
-                        + world.low_impact_equip
-                        + world.high_impact_equip
-                    )
-            else:
-                pool = (
-                    world.low_impact_items
-                    + world.high_impact_items
-                    + world.highest_impact_items
-                    + world.low_impact_equip
-                    + world.high_impact_equip
-                    + world.highest_impact_equip
-                )
-            chosen_item = random.choice(pool)
-            return world.item_to_prize.get(chosen_item)()  # type: ignore
-        elif world.settings.is_flag_value(
-            ItemQuality, ItemQualityOptions.MOSTLY_RANDOM
-        ):
-            roll = random.randint(1, 100)
-            if world.settings.isflag_enabled(BiasItemShuffle):
-                if location._bias:
-                    if roll <= 40:
-                        pool = world.high_impact_items + world.high_impact_equip
-                    elif roll <= 95:
-                        pool = world.low_impact_items + world.low_impact_equip
-                    else:
-                        pool = world.highest_impact_items + world.highest_impact_equip
-                else:
-                    if roll <= 75:
-                        pool = world.low_impact_items + world.low_impact_equip
-                    elif roll <= 99:
-                        pool = world.high_impact_items + world.high_impact_equip
-                    else:
-                        pool = world.highest_impact_items + world.highest_impact_equip
-            else:
-                if roll <= 65:
-                    pool = world.low_impact_items + world.low_impact_equip
-                elif roll <= 95:
-                    pool = world.high_impact_items + world.high_impact_equip
-                else:
-                    pool = world.highest_impact_items + world.highest_impact_equip
-            chosen_item = random.choice(pool)
-            return world.item_to_prize.get(chosen_item)()  # type: ignore
-        elif world.settings.is_flag_value(
-            ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY
-        ):
-            return EmptyPrize()
-        else:
-            return random.choice(
-                [
-                    FPFlowerPrize,
-                    RecoveryMushroomPrize,
-                    FrogCoin1Prize,
-                    Coins10Prize,
-                ]
-            )()
 
 
 class GameWorld:
@@ -305,6 +194,16 @@ class GameWorld:
     song_authors: list[str] = ["ANONYMOUS"]
 
     locations: dict[type[PrizeLocation], PrizeLocation]
+    chest_locations: list[PrizeLocation]
+    standard_locations: list[PrizeLocation]
+    coin_locations: list[PrizeLocation]
+    spell_locations: list[PrizeLocation]
+    boss_fight_locations: list[PrizeLocation]
+    star_piece_locations: list[PrizeLocation]
+    extra_star_piece_locations: list[PrizeLocation]
+    key_item_locations: list[PrizeLocation]
+    extra_key_item_locations: list[PrizeLocation]
+    character_recruitment_locations: list[PrizeLocation]
 
     # Item impact categories (built by _build_item_impact_categories)
     low_impact_items: list[type[RegularItem]]
@@ -317,6 +216,17 @@ class GameWorld:
 
     # Mapping from item class to prize class (built by _build_item_to_prize_mapping)
     item_to_prize: dict[type[Item], type[ItemPrize]]
+
+    # Music IDs for boss shuffle (built by apply_cosmetic_settings)
+    selected_music_ids: list[int]
+
+    # Progress callback for SSE streaming (set by __init__)
+    _progress_callback: Callable[[str, int], None] | None
+
+    def _report_progress(self, message: str, percent: int) -> None:
+        """Report progress to the callback if one is set."""
+        if self._progress_callback:
+            self._progress_callback(message, percent)
 
     @classmethod
     def is_monstro_item(cls, item_type: type) -> bool:
@@ -639,7 +549,12 @@ class GameWorld:
         spells: SpellCollection,
         sprites: SpriteCollection,
         world_map_locations: WorldMapLocationCollection,
+        progress_callback: Callable[[str, int], None] | None = None,
     ):
+        print(seed)
+        print(settings.flag_string)
+        self._progress_callback = progress_callback
+        self._report_progress("Importing game data", 1)
         self.allies = allies
         self.seed = seed
         self.version = version
@@ -662,669 +577,39 @@ class GameWorld:
         self.world_map_locations = world_map_locations
 
         random.seed(self.seed)
-        print(self.seed)
 
         self.event_2496_startup: list[UsableEventScriptCommand] = []
 
-        self._shuffle_items()
-
-        # TODO: Before setting hints, find where the mimic chests are and reassign the world areas for their prize locations
+        self._report_progress("Applying settings to game data", 3)
 
         # prize locations HAVE to all be defined by this point
         # not shuffled, just determined if they exist in the seed or not
 
-        if self.settings.isflag_enabled(StarPieceHints):
-            for l in self.locations.values():
-                if not isinstance(l.prize, StarPiecePrize):
-                    continue
-                event = SIGNAL_RING_EVENT_DICT[l.world_area]
-                script = self.event_scripts.get_script_by_id(event)
-                script.insert_before_nth_command(
-                    0, JmpIfBitClear(l.prize._hint, [f"EVENT_{event}_play_sound"])
-                )
 
         if self.settings.isflag_enabled(SkipMustyFearsSequence):
             self.event_2496_startup += [
                 RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER)
             ]
 
-        ### Perform progression gating setup tasks here
+        # Apply progression gating settings (win conditions, area gates, travel)
+        apply_gating_settings(self)
 
-        # settings
-        if self.settings.is_flag_value(WinCondition, WinConditions.SMITHY):
-            self.event_2496_startup += [SetBit(SMITHY_BOSS_HUNT_WIN_CONDITION)]
-        elif self.settings.is_flag_value(WinCondition, WinConditions.STARS):
-            self.event_2496_startup += [SetBit(WIN_CONDITION_STAR_PIECES)]
-        elif self.settings.is_flag_value(WinCondition, WinConditions.SEALED):
-            self.event_2496_startup += [SetBit(WIN_CONDITION_MONSTRO_DOOR)]
+        # Apply threshold adjustments
+        apply_threshold_settings(self)
 
-        if self.settings.isflag_enabled(FastTravel):
-            self.event_2496_startup += [SetBit(FAST_TRAVEL_ENABLED)]
-        if self.settings.isflag_enabled(CasinoWarp):
-            self.event_2496_startup += [SetBit(CASINO_WARP_ENABLED)]
-        if self.settings.isflag_enabled(BucketWarp):
-            self.event_2496_startup += [SetBit(BUCKET_WARP_ENABLED)]
-        if self.settings.isflag_enabled(ShuffleWeddingGear):
-            self.event_2496_startup += [SetBit(CHAPEL_ITEMS_ANYWHERE_ENABLED)]
+        # Apply enemy and combat tweaks
+        apply_enemy_tweaks(self)
 
-        if self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.STARS):
-            self.event_2496_startup += [SetBit(PROGRESSIVE_STAR_EXP_ENABLED)]
-        elif self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.BOSSES):
-            self.event_2496_startup += [SetBit(PROGRESSIVE_BOSS_EXP_ENABLED)]
-        elif self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE):
-            self.event_scripts.delete_command_by_identifier("inc_exp_by_packet")
+        # Apply equipment and spell element settings
+        apply_equipment_settings(self)
 
-        if self.settings.isflag_enabled(SkipBossFights):
-            self.event_2496_startup += [SetBit(ALTERNATE_STAR_PIECE_WIN_CONDITION)]
+        # Build item impact categories (used for shop shuffling and other systems)
+        self._build_item_impact_categories()
 
-        # TODO when assembling grant scripts, set all exp star 70A7 props to 0 if NONE is selected
-        # TODO verify that all bosses increase the counter, ie remake bosses
+        # Build item to prize mapping (used for random prize substitution)
+        self._build_item_to_prize_mapping()
 
-        # gates
-        if self.settings.is_flag_value(BanditsWayGate, BanditsWayGating.OPEN):
-            self.event_2496_startup += [
-                SetBit(MAP_BANDITS_WAY),
-                SetBit(MAP_DIRECTIONAL_MUSHROOM_KINGDOM_BANDITS_WAY),
-            ]
-        if not self.settings.is_flag_value(KeroSewersGate, KeroSewersGating.OPEN):
-            cast(
-                RoomObject,
-                cast(
-                    Room, self.rooms._rooms[R333_KERO_SEWERS_ENTRANCE]
-                ).get_npc_by_target_id(NPC_0),
-            ).set_visible(True)
-            cast(
-                RoomObject,
-                cast(
-                    Room, self.rooms._rooms[R333_KERO_SEWERS_ENTRANCE]
-                ).get_npc_by_target_id(NPC_1),
-            ).set_visible(True)
-            self.event_2496_startup += [SetBit(SEWERS_CLOSED)]
-
-            if self.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
-                self.event_scripts.get_script_by_id(
-                    E1254_UNLOCK_SEWER_BY_RFC
-                ).insert_before_nth_command(0, ClearBit(SEWERS_CLOSED))
-        else:
-            self.event_2496_startup += [ClearBit(SEWERS_CLOSED)]
-        if self.settings.is_flag_value(ForestMazeGate, ForestMazeGating.OPEN):
-            self.event_2496_startup += [
-                SetBit(MAP_FOREST_MAZE),
-                SetBit(MAP_DIRECTIONAL_ROSE_TOWN_FOREST_MAZE),
-            ]
-        elif self.settings.is_flag_value(ForestMazeGate, ForestMazeGating.PIE):
-            e = self.event_scripts.get_script_by_id(E1255_UNLOCK_FOREST_BY_PIE)
-            e.insert_before_nth_command(0, SetBit(MAP_FOREST_MAZE))
-            e.insert_before_nth_command(0, SetBit(MAP_FOREST_MAZE))
-        if not self.settings.is_flag_value(PipeVaultGate, PipeVaultGating.OPEN):
-            self.event_2496_startup += [
-                SetBit(PIPE_VAULT_GATED),
-            ]
-        if not self.settings.is_flag_value(Moleville1Gate, Moleville1Gating.OPEN):
-            self.event_2496_startup += [
-                SetBit(MOLEVILLE_MINES_ENTRANCE_GATING),
-            ]
-            if self.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOSHI):
-                self.event_scripts.get_script_by_id(
-                    E1256_UNLOCK_MOLEVILLE_IF_GATED_BY_BOSHI
-                ).insert_before_nth_command(
-                    0, ClearBit(MOLEVILLE_MINES_ENTRANCE_GATING)
-                )
-        if not self.settings.is_flag_value(BoosterHillGate, BoosterHillGating.OPEN):
-            self.event_2496_startup += [
-                SetBit(BOOSTER_HILL_CLOSED),
-            ]
-        if self.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.OPEN):
-            self.event_2496_startup += [
-                ApplySolidityModToLevel(
-                    permanent=True, room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=0
-                ),
-                ApplyTileModToLevel(
-                    use_alternate=True,
-                    room_id=R202_BOOSTER_TOWER_ENTRANCE,
-                    mod_id=32,
-                ),
-                SetBit(TOWER_OPENED),
-            ]
-        if self.settings.is_flag_value(MarrymoreGate, MarrymoreGating.OPEN):
-            self.event_2496_startup += [
-                SetBit(MARRYMORE_BACKDOOR_OPEN),
-            ]
-        elif self.settings.is_flag_value(MarrymoreGate, MarrymoreGating.HILL):
-            self.event_scripts.get_script_by_id(
-                E1329_HILL_UNLOCKS
-            ).insert_before_nth_command(0, SetBit(MARRYMORE_BACKDOOR_OPEN))
-        if self.settings.is_flag_value(SeaGate, SeaGating.STAR_4):
-            self.event_2496_startup += [SetBit(SEA_GATED_BY_STAR_PIECES)]
-        elif self.settings.is_flag_value(SeaGate, SeaGating.OPEN):
-            self.event_2496_startup += [
-                SetBit(MAP_SEA),
-                SetBit(MAP_DIRECTIONAL_SEA_SUNKEN_SHIP),
-                SetBit(MAP_SUNKEN_SHIP),
-                SetBit(MAP_DIRECTIONAL_SEASIDE_DOWN_SEA),
-            ]
-        if self.settings.is_flag_value(YaridovichGate, YaridovichGating.OPEN):
-            self.event_2496_startup += [SetBit(SEASIDE_BOSS_AVAILABLE)]
-        if not self.settings.is_flag_value(LandsEndGate, LandsEndGating.OPEN):
-            self.event_2496_startup += [SetBit(LANDS_END_GATED)]
-
-            if self.settings.is_flag_value(LandsEndGate, LandsEndGating.ELDER):
-                self.event_scripts.get_script_by_id(
-                    E1169_OPEN_LANDS_END_IF_GATED_BY_ELDER
-                ).insert_before_nth_command(0, ClearBit(LANDS_END_GATED))
-            if self.settings.is_flag_value(LandsEndGate, LandsEndGating.STAR_5):
-                self.event_2496_startup += [SetBit(LANDS_END_GATED_BY_STAR_PIECES)]
-
-        if self.settings.is_flag_value(BelomeTempleGate, BelomeTempleGating.KEY):
-            self.event_2496_startup += [SetBit(TEMPLE_BOSS_GATED)]
-        if self.settings.is_flag_value(MonstroTownGate, MonstroTownGating.BELOME_2):
-            self.event_2496_startup += [
-                SummonObjectToSpecificLevel(
-                    NPC_3, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN
-                )
-            ]
-        elif self.settings.is_flag_value(MonstroTownGate, MonstroTownGating.OPEN):
-            self.event_2496_startup += [
-                RemoveObjectFromSpecificLevel(
-                    NPC_3, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN
-                ),
-                SetBit(MAP_DIRECTIONAL_LANDS_END_MONSTRO_TOWN),
-                SetBit(MAP_MONSTRO_TOWN),
-            ]
-        if self.settings.is_flag_value(
-            NimbusGate, NimbusGating.OPEN
-        ) or self.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
-            self.event_2496_startup += [
-                SetBit(NIMBUS_MAINLAND_UNLOCKED),
-                RemoveObjectFromSpecificLevel(
-                    NPC_2, R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE
-                ),
-            ]
-        if self.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.OPEN):
-            self.event_2496_startup += [
-                SetBit(MAP_DIRECTIONAL_NIMBUS_LAND_BARREL_VOLCANO),
-                SetBit(MAP_BARREL_VOLCANO),
-            ]
-
-        if not self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.OPEN):
-            self.event_2496_startup += [SetBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL)]
-            if self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6):
-                self.event_2496_startup += [SetBit(KEEP_GATED_BY_STAR_PIECES)]
-                if self.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
-                    self.event_2496_startup += [
-                        SetBit(FACTORY_MATCHES_KEEP),
-                    ]
-        else:
-            self.event_2496_startup += [
-                SetBit(MAP_VISTA_HILL),
-                ClearBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL),
-            ]
-            if self.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
-                self.event_2496_startup += [
-                    SetBit(MAP_GATE),
-                    SetBit(MAP_DIRECTIONAL_BOWSERS_KEEP_GATE),
-                ]
-        if self.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6):
-            self.event_2496_startup += [SetBit(FACTORY_GATED_BY_STAR_PIECES)]
-
-        self.event_2496_startup += [Return()]
-        self.event_scripts.get_script_by_id(
-            E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
-        ).set_contents(self.event_2496_startup)
-
-        # threshold adjustments
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("suite_threshold_1"),
-        ).set_value(self.settings.get_flag(SuitePrize1Threshold).value)
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("suite_threshold_2"),
-        ).set_value(self.settings.get_flag(SuitePrize2Threshold).value)
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("suite_threshold_3"),
-        ).set_value(self.settings.get_flag(SuitePrize3Threshold).value)
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("suite_threshold_4"),
-        ).set_value(self.settings.get_flag(SuitePrize4Threshold).value)
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("suite_threshold_5"),
-        ).set_value(self.settings.get_flag(SuitePrize5Threshold).value)
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("suite_threshold_6"),
-        ).set_value(self.settings.get_flag(SuitePrize6Threshold).value)
-        cast(
-            CompareVarToConst,
-            self.event_scripts.get_command_by_identifier("sj_threshold_1"),
-        ).set_value(self.settings.get_flag(SuperJump1Threshold).value)
-        cast(
-            CompareVarToConst,
-            self.event_scripts.get_command_by_identifier("sj_threshold_2"),
-        ).set_value(self.settings.get_flag(SuperJump2Threshold).value)
-        cast(
-            CompareVarToConst,
-            self.event_scripts.get_command_by_identifier(
-                "tower_knife_guy_sidequest_completed"
-            ),
-        ).set_value(self.settings.get_flag(KnifeGuyPrizeThreshold).value)
-        cast(
-            CompareVarToConst,
-            self.event_scripts.get_command_by_identifier(
-                "casino_grate_guy_sidequest_completed"
-            ),
-        ).set_value(self.settings.get_flag(GrateGuyPrizeThreshold).value)
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("check_doors_complete"),
-        ).set_value(self.settings.get_flag(BowserDoorRequirements).value)
-
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("enable_boss_access_1"),
-        ).set_value(self.settings.get_flag(StarPiecesRequired).value)
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("enable_boss_access_2"),
-        ).set_value(self.settings.get_flag(StarPiecesRequired).value)
-        cast(
-            JmpIfVarEqualsConst,
-            self.event_scripts.get_command_by_identifier("enable_boss_access_3"),
-        ).set_value(self.settings.get_flag(StarPiecesRequired).value)
-
-        if self.settings.isflag_enabled(FixKnifeGuy):
-            cast(
-                CompareVarToConst,
-                self.event_scripts.get_command_by_identifier(
-                    "tower_knife_guy_fixed_sidequest_completed"
-                ),
-            ).set_value(self.settings.get_flag(KnifeGuyFixedPrizeThreshold).value)
-            self.event_scripts.get_script_by_id(
-                E0949_FROGFUCIUS_HINT_TREASURE_CHESTS
-            ).insert_after_identifier(
-                "EVENT_949_knifeguy_insert",
-                JmpIfBitClear(
-                    KNIFE_GUY_SECOND_PRIZE_AWARDED, ["EVENT_991_run_dialog_18"]
-                ),
-            )
-
-        # other stuff
-
-        if self.settings.isflag_enabled(PoisonMushroom):
-            self.items.get_by_type(MushroomItem2).set_status_immunities(
-                [
-                    random.choice(
-                        [
-                            Status.MUTE,
-                            Status.SLEEP,
-                            Status.POISON,
-                            Status.FEAR,
-                            Status.BERSERK,
-                            Status.MUSHROOM,
-                            Status.SCARECROW,
-                            Status.INVINCIBLE,
-                        ]
-                    )
-                ]
-            )
-        if self.settings.isflag_enabled(UncapSuperJumps):
-            self.battle_animations[0x35].delete_command_by_name("super_jump_cap_1")
-            self.battle_animations[0x35].delete_command_by_name("super_jump_cap_2")
-
-        if self.settings.isflag_enabled(NoGenoWhirlExor):
-            self.monster_scripts.replace_command_by_identifier(
-                "exor_vulnerability_1", [SetUntargetable(MONSTER_1_SET)]
-            )
-            self.monster_scripts.replace_command_by_identifier(
-                "exor_vulnerability_2", [SetUntargetable(MONSTER_1_SET)]
-            )
-            self.monster_scripts.replace_command_by_identifier(
-                "exor_vulnerability_3", [SetUntargetable(MONSTER_1_SET)]
-            )
-        if self.settings.isflag_enabled(FixMagikoopa):
-            self.monster_scripts.scripts[
-                KINGBOMBEnemy._monster_id
-            ].insert_after_nth_command(0, ClearVar(BV7EE000))
-        sidekicks = [
-            BODYGUARDEnemy,
-            GOOMBETTEEnemy,
-            FAUTSOEnemy,
-            BAHAMUTTEnemy,
-            BAHAMUTTEnemy2,
-            KINGBOMBEnemy,
-            JINXCLONEEnemy,
-            MARIOCLONEEnemy,
-            MARIOCLONESEnemy,
-            MALLOWCLONEEnemy,
-            MALLOWCOPYSEnemy,
-            GENOCLONEEnemy,
-            GENOCLONESEnemy,
-            BOWSERCLONEEnemy,
-            BOWSERCOPYSEnemy,
-            TOADSTOOL2Enemy,
-            TOADSTOOL3Enemy,
-            TENTACLESEnemy,
-            TENTACLESEnemy2,
-            BOBOMBEnemyHenchman,
-            MICROBOMBEnemy,
-            MEZZOBOMBEnemy,
-            STRONGBOBOMB1Enemy,
-            STRONGBOBOMB2Enemy,
-            STRONGBOBOMB3Enemy,
-            STRONGBOBOMB4Enemy,
-            SNIFITEnemyHenchman,
-            SNIFIT2Enemy,
-            BANDANABLUEEnemy,
-            TORTE2Enemy,
-            TORTEEnemy,
-            SMILAXEnemy,
-            EGGBERTEnemy,
-            DINGALINGEnemy,
-            FIRECRYS3DEnemy,
-            FIRECRYSTALEnemy,
-            WINDCRYS3DEnemy,
-            WINDCRYS3DEnemy,
-            WATERCRYS3DEnemy,
-            WATERCRYSTALEnemy,
-            EARTHCRYS3DEnemy,
-            EARTHCRYSTALEnemy,
-            MADMALLETEnemyHenchman,
-            POUNDEREnemyHenchman,
-            POUNDETTEEnemyHenchman,
-            HELIOEnemy,
-            SHYPEREnemy,
-        ]
-        bosses = [
-            HAMMERBROEnemy,
-            CROCO1Enemy,
-            MACKEnemy,
-            BELOME1Enemy,
-            BOWYEREnemy,
-            CROCO2Enemy,
-            PUNCHINELLOEnemy,
-            PUNCHINELLO2Enemy,
-            BOOSTEREnemy,
-            BOOSTEREnemy2,
-            KNIFEGUYEnemy,
-            GRATEGUYEnemy,
-            BUNDTEnemy,
-            BUNDT2Enemy,
-            PANDORITEEnemy,
-            HIDONEnemy,
-            BOXBOYEnemy,
-            CHESTEREnemy,
-            KINGCALAMARIEnemy,
-            JOHNNYEnemy,
-            JOHNNYEnemy2,
-            YARIDOVICHEnemy,
-            YARIDOVICHMirageEnemy,
-            BELOME2Enemy,
-            BELOMEEnemy3,
-            MOKURAEnemy,
-            FORMLESSEnemy,
-            JAGGEREnemy,
-            JINX1Enemy,
-            JINX2Enemy,
-            JINX3Enemy,
-            JINXEnemy4,
-            CULEXEnemy,
-            CULEX3DEnemy,
-            MEGASMILAXEnemy,
-            DODOEnemySolo,
-            BIRDETTAEnemy,
-            DODOEnemy,
-            VALENTINAEnemy,
-            CZARDRAGONEnemy,
-            ZOMBONEEnemy,
-            AXEMREDEnemy,
-            AXEMPINKEnemy,
-            AXEMBLACKEnemy,
-            AXEMYELLOWEnemy,
-            AXEMGREENEnemy,
-            AXEMRANGERSEnemy,
-            KAMEKEnemy,
-            BOOMEREnemy,
-            EXOREnemy,
-            RIGHTEYEEnemy,
-            LEFTEYEEnemy,
-            NEOSQUIDEnemy,
-            COUNTDOWNEnemy,
-            CLOAKEREnemy,
-            CLOAKEREnemy2,
-            MADADDEREnemy,
-            EARTHLINKEnemy,
-            CLERKEnemy,
-            MANAGEREnemy,
-            DIRECTOREnemy,
-            GUNYOLKEnemy,
-            FACTORYCHIEFEnemy,
-            SMITHY1Enemy,
-            SMITHY2Enemy,
-            SMITHYBodyEnemy,
-            SMITHYChestEnemy,
-            SMITHYMageEnemy,
-            SMITHYSafeEnemy2,
-            SMITHYTankEnemy,
-            SMELTEREnemy,
-        ]
-        if self.settings.isflag_enabled(NoOHKO):
-            for ennemytype in sidekicks:
-                enemy = self.enemies.get_by_type(ennemytype)
-                enemy.set_ohko_immune(True)
-                enemy.set_morph_chance(0)
-                for cmd in self.monster_scripts.scripts[enemy.monster_id].contents:
-                    if isinstance(cmd, IfTargetedByItem):
-                        cmd.set_commands([CarboCookieItem])
-        if self.settings.isflag_enabled(ExperienceNoBosses):
-            for ennemytype in bosses + sidekicks:
-                enemy = self.enemies.get_by_type(ennemytype)
-                enemy.set_xp(0)
-        if self.settings.isflag_enabled(ExperienceNoRegular):
-            for ennemytype in [
-                type(e)
-                for e in self.enemies.enemies
-                if type(e) not in bosses + sidekicks
-            ]:
-                self.enemies.get_by_type(ennemytype).set_xp(0)
-        if self.settings.isflag_enabled(EnemySpells):
-            spell_pool: list[type[EnemySpell]] = [
-                DrainSpell,
-                LightningOrbSpell,
-                FlameSpell,
-                BoltSpell,
-                CrystalSpell,
-                FlameStoneSpell,
-                MegaDrainSpell,
-                WillyWispSpell,
-                DiamondSawSpell,
-                ElectroshockSpell,
-                BlastSpell,
-                StormSpell,
-                IceRockSpell,
-                EscapeSpell,
-                DarkStarSpell,
-                RecoverSpell,
-                MegaRecoverSpell,
-                FlameWallSpell,
-                StaticESpell,
-                SandStormSpell,
-                BlizzardSpell,
-                DrainBeamSpell,
-                MeteorBlastSpell,
-                LightBeamSpell,
-                WaterBlastSpell,
-                SolidifySpell,
-                PetalBlastSpell,
-                AuroraFlashSpell,
-                BoulderSpell,
-                CoronaSpell,
-                MeteorSwarmSpell,
-                WeirdMushroomSpell,
-                BreakerBeamSpell,
-                ShredderSpell,
-                SledgeSpell,
-                SwordRainSpell,
-                SpearRainSpell,
-                ArrowRainSpell,
-                BigBangSpell,
-            ]
-            for script in self.monster_scripts.scripts:
-                for cmd in script.contents:
-                    if isinstance(cmd, CastSpell):
-                        if cmd.spell_1 is not None and not isinstance(
-                            cmd.spell_1, DoNothing
-                        ):
-                            cmd.set_spell_1(random.choice(spell_pool))
-                        if cmd.spell_2 is not None and not isinstance(
-                            cmd.spell_2, DoNothing
-                        ):
-                            cmd.set_spell_2(random.choice(spell_pool))
-                        if cmd.spell_3 is not None and not isinstance(
-                            cmd.spell_3, DoNothing
-                        ):
-                            cmd.set_spell_3(random.choice(spell_pool))
-
-        # equips and things
-
-        if self.settings.isflag_enabled(InfuseSpellElements):
-            self.get_spell(GenoBeamSpell).set_element(Element.ICE)
-            self.get_spell(GenoFlashSpell).set_element(Element.FIRE)
-            self.get_spell(PsychBombSpell).set_element(Element.FIRE)
-            self.get_spell(CrusherSpell).set_element(Element.JUMP)
-            self.get_spell(BowserCrushSpell).set_element(Element.JUMP)
-        if self.settings.isflag_enabled(CharacterSpellElements):
-            spells_to_update = [
-                s for s in self.spells.spells if s.element != Element.NONE
-            ]
-            for spell in spells_to_update:
-                spell.set_element(
-                    random.choice(
-                        [Element.ICE, Element.FIRE, Element.JUMP, Element.THUNDER]
-                    )
-                )
-
-        if self.settings.is_flag_value(
-            EquipmentProperties, EquipmentPropertiesOptions.SOME
-        ):
-            self.items.get_by_type(ShirtItem).append_status_immunity(Status.MUSHROOM)
-            self.items.get_by_type(PantsItem).append_status_immunity(Status.MUSHROOM)
-            self.items.get_by_type(ThickShirtItem).append_temp_buff(
-                TempStatBuff.DEFENSE
-            )
-            self.items.get_by_type(ThickPantsItem).append_temp_buff(
-                TempStatBuff.DEFENSE
-            )
-            self.items.get_by_type(MegaShirtItem).append_temp_buff(
-                TempStatBuff.MAGIC_DEFENSE
-            )
-            self.items.get_by_type(MegaPantsItem).append_temp_buff(
-                TempStatBuff.MAGIC_DEFENSE
-            )
-            self.items.get_by_type(MegaCapeItem).append_temp_buff(
-                TempStatBuff.MAGIC_DEFENSE
-            )
-            self.items.get_by_type(HappyShirtItem).set_prevent_ko(True)
-            self.items.get_by_type(HappyPantsItem).set_prevent_ko(True)
-            self.items.get_by_type(HappyCapeItem).set_prevent_ko(True)
-            self.items.get_by_type(HappyShellItem).set_prevent_ko(True)
-            self.items.get_by_type(PolkaDressItem).set_prevent_ko(True)
-            self.items.get_by_type(CourageShellItem).append_status_immunity(Status.FEAR)
-            self.items.get_by_type(SailorShirtItem).append_elemental_immunity(
-                Element.ICE
-            )
-            self.items.get_by_type(SailorPantsItem).append_elemental_immunity(
-                Element.ICE
-            )
-            self.items.get_by_type(SailorCapeItem).append_elemental_immunity(
-                Element.ICE
-            )
-            self.items.get_by_type(NauticaDressItem).append_elemental_immunity(
-                Element.ICE
-            )
-            self.items.get_by_type(FuzzyShirtItem).append_elemental_immunity(
-                Element.THUNDER
-            )
-            self.items.get_by_type(FuzzyPantsItem).append_elemental_immunity(
-                Element.THUNDER
-            )
-            self.items.get_by_type(FuzzyCapeItem).append_elemental_immunity(
-                Element.THUNDER
-            )
-            self.items.get_by_type(FuzzyDressItem).append_elemental_immunity(
-                Element.THUNDER
-            )
-            self.items.get_by_type(FireShirtItem).append_elemental_immunity(
-                Element.FIRE
-            )
-            self.items.get_by_type(FirePantsItem).append_elemental_immunity(
-                Element.FIRE
-            )
-            self.items.get_by_type(FireCapeItem).append_elemental_immunity(Element.FIRE)
-            self.items.get_by_type(FireShellItem).append_elemental_immunity(
-                Element.FIRE
-            )
-            self.items.get_by_type(FireDressItem).append_elemental_immunity(
-                Element.FIRE
-            )
-            self.items.get_by_type(HeroShirtItem).append_status_immunity(
-                Status.SCARECROW
-            )
-            self.items.get_by_type(PrincePantsItem).append_status_immunity(Status.MUTE)
-            self.items.get_by_type(RoyalDressItem).append_status_immunity(Status.SLEEP)
-            self.items.get_by_type(HealShellItem).append_status_immunity(Status.POISON)
-            self.items.get_by_type(StarCapeItem).append_status_immunity(Status.BERSERK)
-            self.items.get_by_type(FroggieStickItem).set_magic_attack(
-                self.items.get_by_type(FroggieStickItem).attack
-            )
-            self.items.get_by_type(FroggieStickItem).set_attack(0)
-            self.items.get_by_type(RibbitStickItem).set_magic_attack(
-                self.items.get_by_type(RibbitStickItem).attack
-            )
-            self.items.get_by_type(RibbitStickItem).set_attack(0)
-            self.items.get_by_type(ParasolItem).set_magic_attack(
-                self.items.get_by_type(ParasolItem).attack
-            )
-            self.items.get_by_type(ParasolItem).set_attack(0)
-        elif self.settings.is_flag_value(
-            EquipmentProperties, EquipmentPropertiesOptions.RANDOM
-        ):
-            self._randomize_equipment_properties()
-
-        if not self.settings.isflag_enabled(IgnoreNamesakeProperties):
-            self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.SLEEP)
-            self.items.get_by_type(WakeUpPinItem).append_status_immunity(Status.MUTE)
-            self.items.get_by_type(AntidotePinItem).append_status_immunity(
-                Status.POISON
-            )
-            self.items.get_by_type(TrueformPinItem).append_status_immunity(
-                Status.MUSHROOM
-            )
-            self.items.get_by_type(TrueformPinItem).append_status_immunity(
-                Status.SCARECROW
-            )
-            self.items.get_by_type(FearlessPinItem).append_status_immunity(Status.FEAR)
-            has_ko_protection = [
-                i for i in self.items.items if isinstance(i, Equipment) and i.prevent_ko
-            ]
-            if len(has_ko_protection) < 4:
-                more_ko_protections = random.sample(
-                    [
-                        i
-                        for i in self.items.items
-                        if isinstance(i, Equipment) and not i.prevent_ko
-                    ],
-                    4 - len(has_ko_protection),
-                )
-                for i in more_ko_protections:
-                    i.set_prevent_ko(True)
-
-        # Handle EquipmentCharacters options
-        equip_chars_setting = self.settings.get_flag(EquipmentCharacters).selected
-        if equip_chars_setting != EquipmentCharactersOptions.VANILLA:
-            self._randomize_equipment_characters(equip_chars_setting)
+        self._shuffle_items()
 
         # SHUFFLE CHECKS HERE
         # TODO: exclude frog disciple if shuffle shops turned off
@@ -1360,16 +645,13 @@ class GameWorld:
         # TODO: Open issue template for submitting quiz questions (uncredited)
         # TODO: update spell names and palettes and sounds depending on element
 
-        # Build item impact categories (used for shop shuffling and other systems)
-        self._build_item_impact_categories()
-
-        # Build item to prize mapping (used for random prize substitution)
-        self._build_item_to_prize_mapping()
+        self._report_progress("Randomizing shops", 45)
 
         # Shop shuffling happens after equipment randomization so we can score equipment
         if self.settings.isflag_enabled(ShuffleShops):
             self._shuffle_shops()
 
+        self._report_progress("Randomizing enemies", 50)
         if self.settings.isflag_enabled(EnemyAttacks):
             self._randomize_enemy_attacks_and_spells()
 
@@ -1427,6 +709,7 @@ class GameWorld:
 
         if self.settings.isflag_enabled(EnemyFormations):
             self._randomize_enemy_formations()
+        self._report_progress("Randomizing characters", 55)
 
         # Randomize character stats
         if self.settings.isflag_enabled(CharacterStats):
@@ -1438,68 +721,10 @@ class GameWorld:
 
         # Apply EXP multiplier
         self._apply_exp_multiplier()
+        self._report_progress("Applying minigame settings", 60)
 
-        # Minigames
-
-        if self.settings.isflag_enabled(QuizShuffle):
-            include_non_smrpg = self.settings.isflag_enabled(QuizIncludeNonSmrpg)
-            questions = get_quiz_questions(include_non_smrpg)
-            for text, d_id in zip(
-                questions, option_1_correct + option_2_correct + option_3_correct
-            ):
-                self.overworld_dialogs.replace_dialog(d_id, text.get_string(d_id))
-
-        if self.settings.isflag_enabled(BallSolitaireShuffle):
-            ball_solitaire = BallSolitaireGame()
-            randomize_ball_solitaire(ball_solitaire)
-            cast(
-                SetVarToConst,
-                self.event_scripts.get_command_by_identifier(
-                    "ball_solitaire_puzzle_value"
-                ),
-            ).set_value_and_address(value=ball_solitaire.get_puzzle_value())
-
-        if self.settings.isflag_enabled(MagicButtonShuffle):
-            magic_buttons = MagicButtonsGame()
-            randomize_magic_buttons(magic_buttons)
-            cast(
-                SetVarToConst,
-                self.event_scripts.get_command_by_identifier(
-                    "magic_buttons_puzzle_value"
-                ),
-            ).set_value_and_address(value=magic_buttons.get_puzzle_value())
-
-        if not self.settings.isflag_enabled(SkipMinecart):
-            self.event_scripts.delete_command_by_identifier(
-                "skip_moleville_minecart_sequence"
-            )
-
-        if self.settings.isflag_enabled(RandomTadpolePondSong):
-            self._randomize_tadpole_pond()
-
-        if self.settings.isflag_enabled(RandomSunkenShipPassword):
-            self._randomize_password()
-
-        if self.settings.isflag_enabled(BowserDoorShuffle):
-            randomize_bowser_doors(self)
-
-        if self.settings.isflag_enabled(BetterTips):
-            cast(
-                SetVarToRandom,
-                self.event_scripts.get_command_by_identifier("mushroom_boy_odds"),
-            ).set_value(5000)
-            self.event_scripts.get_script_by_id(
-                E0021_FOREST_MAZE_MUSHROOM_GRANT
-            ).set_contents([JmpToEvent(E0023_MUSHROOM_SELECTION)])
-            self.event_scripts.get_script_by_id(
-                E0622_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_1
-            ).set_contents([JmpToEvent(E0022_BETTER_TIP_GRANTER)])
-            self.event_scripts.get_script_by_id(
-                E2649_CASINO_GRATE_GUY_RANDOM_PRIZE_GRANTER
-            ).set_contents([JmpToEvent(E0022_BETTER_TIP_GRANTER)])
-            self.event_scripts.get_script_by_id(
-                E2670_TOWER_KNIFE_GUY_CONSOLATION_PRIZE
-            ).set_contents([JmpToEvent(E0022_BETTER_TIP_GRANTER)])
+        # Apply minigame settings
+        apply_minigame_settings(self)
 
         # TODO differentiate bosses. not a cosmetic, reveals info
         # Need to find unused palettes for remake bosses
@@ -1512,199 +737,10 @@ class GameWorld:
         # silver belome
 
         self._rebuild_hash()
+        self._report_progress("Applying cosmetics", 70)
 
-        # Cosmetics have to go at the end and be re-seeded
-        random.seed(datetime.datetime.now().timestamp())
-
-        if self.settings.isflag_enabled(CanonNames):
-            self.enemies.get_by_type(KAMEKEnemy).set_name("KAMEK")
-            self.enemies.get_by_type(BIRDETTAEnemy).set_name("BIRDETTA")
-        else:
-            self.search_replace_dialog("KAMEK", "MAGIKOOPA")
-            self.search_replace_dialog("Kamek", "Magikoopa")
-            self.search_replace_dialog("BIRDETTA", "BIRDO")
-            self.search_replace_dialog("Birdetta", "Birdo")
-        # todo: canon names should override remake
-        # todo: search and replace in dialogs for all remake names
-        if self.settings.isflag_enabled(Peach):
-            self.allies._allies[1].name = "Peach"
-        if self.settings.isflag_enabled(RemakeNames):
-            for enemy in self.enemies.enemies:
-                e = cast(Enemy, enemy)
-                if e.remake_name is not None:
-                    enemy.set_name(e.remake_name)
-            for item in self.items.items:
-                it = cast(Item, item)
-                if it.remake_name is not None:
-                    item.set_name(it.remake_name)
-            for spell in self.spells.spells:
-                sp = cast(Spell, spell)
-                if sp.remake_name is not None:
-                    spell._title = sp.remake_name
-            for attack in self.enemy_attacks.attacks:
-                at = cast(EnemyAttack, attack)
-                if at.remake_name is not None:
-                    attack.set_attack_name(at.remake_name)
-        if self.settings.isflag_enabled(RemoveFlashes):
-            screenflashes = [
-                "screen_flash_1",  # thunderbolt
-                "screen_flash_2",
-                "crusher_screenflash",  # crusher
-                "darkstar_flash",  # dark star
-                "spikedlink_flash_1",
-                "spikedlink_flash_2",
-                "spikedlink_flash_3",
-            ]
-            for identifier in screenflashes:
-                self.battle_animations[0x35].get_command_by_name(identifier).set_colour(  # type: ignore
-                    NO_COLOUR
-                )
-            deletes = [
-                "command_0x35BE52",  # geno flash
-                "geno_blast_effect",  # geno blast
-                "corona_flash",
-                "shaker_delete_1",  # shaker / silver bullet
-                "shaker_delete_2",
-                "shaker_delete_3",
-                "shaker_delete_4",
-                "shaker_delete_5",
-                "statice_delete_1",
-                "statice_delete_2",
-                "statice_delete_3",
-                "statice_delete_4",
-                "statice_delete_5",
-                "meteorswarm_delete_maybe",
-                "rockcandy_delete",
-                "rockcandy_delete_2",
-            ]
-            for identifier in deletes:
-                self.battle_animations[0x35].delete_command_by_name(identifier)
-            deletes_3A = ["smithy_delete_1", "smithy_delete_2"]
-            for identifier in deletes_3A:
-                self.battle_animations[0x3A].delete_command_by_name(identifier)
-            self.battle_animations[0x35].get_command_by_name(
-                "bigbang_flash"
-            ).set_effect(  # type: ignore
-                EF0025_PSYCH_BOMB_BG
-            )
-            self.battle_animations[0x35].get_command_by_name(
-                "firebomb_explosion"
-            ).set_effect(  # type: ignore
-                EF0025_PSYCH_BOMB_BG
-            )
-            self.battle_animations[0x35].replace_command_by_name(
-                "icebomb_explosion", ScreenFlashWithDuration(NO_COLOUR, 1)
-            )
-            self.battle_animations[0x35].replace_command_by_name(
-                "command_0x35358A",
-                AttackTimerBegins(
-                    identifier="command_0x35358A"
-                ),  # shaker / silver bullet
-            )
-            self.battle_animations[0x35].replace_command_by_name(
-                "statice_flash", ScreenFlashWithDuration(NO_COLOUR, 44)  # static e!
-            )
-            self.battle_animations[0x35].replace_command_by_name(
-                "meteorswarm_replace",
-                ScreenFlashWithDuration(NO_COLOUR, 16),  # meteor swarm
-            )
-            self.battle_animations[0x35].replace_command_by_name(
-                "rockcandy_replace",
-                ScreenFlashWithDuration(NO_COLOUR, 20),  # rock candy
-            )
-            self.battle_animations[0x35].replace_command_by_name(
-                "meteorblast_replace",
-                ScreenFlashWithDuration(NO_COLOUR, 20),  # meteor blast
-            )
-
-            self.battle_animations[0x3A].replace_command_by_name(
-                "smithy_replace_1", ScreenFlashWithDuration(NO_COLOUR, 1)
-            )
-            self.battle_animations[0x3A].replace_command_by_name(
-                "smithy_replace_2", ScreenFlashWithDuration(NO_COLOUR, 1)
-            )
-        if self.settings.isflag_enabled(PaletteSwaps):
-            self.mario_palette = random.choice(MARIO_PALETTES)
-            self.mallow_palette = random.choice(MALLOW_PALETTES)
-            self.geno_palette = random.choice(GENO_PALETTES)
-            self.bowser_palette = random.choice(BOWSER_PALETTES)
-            self.toadstool_palette = random.choice(TOADSTOOL_PALETTES)
-
-            if self.settings.isflag_enabled(ChangeNames):
-                self.allies._allies[0].name = self.mario_palette.name
-                self.enemies.get_by_type(MARIOCLONEEnemy).set_name(
-                    self.mario_palette.clone_name
-                )
-                self.enemies.get_by_type(MARIOCLONESEnemy).set_name(
-                    self.mario_palette.strong_clone_name
-                )
-                self.allies._allies[1].name = self.toadstool_palette.name
-                self.enemies.get_by_type(TOADSTOOL2Enemy).set_name(
-                    self.toadstool_palette.clone_name
-                )
-                self.enemies.get_by_type(TOADSTOOL3Enemy).set_name(
-                    self.toadstool_palette.strong_clone_name
-                )
-                self.allies._allies[2].name = self.bowser_palette.name
-                self.enemies.get_by_type(BOWSERCLONEEnemy).set_name(
-                    self.bowser_palette.clone_name
-                )
-                self.enemies.get_by_type(BOWSERCOPYSEnemy).set_name(
-                    self.bowser_palette.strong_clone_name
-                )
-                self.allies._allies[3].name = self.geno_palette.name
-                self.enemies.get_by_type(GENOCLONEEnemy).set_name(
-                    self.geno_palette.clone_name
-                )
-                self.enemies.get_by_type(GENOCLONESEnemy).set_name(
-                    self.geno_palette.strong_clone_name
-                )
-                self.allies._allies[4].name = self.mallow_palette.name
-                self.enemies.get_by_type(MALLOWCLONEEnemy).set_name(
-                    self.mallow_palette.clone_name
-                )
-                self.enemies.get_by_type(MALLOWCOPYSEnemy).set_name(
-                    self.mallow_palette.strong_clone_name
-                )
-        # Initialize selected music IDs (will be populated if BossShuffleMusic is enabled)
-        self.selected_music_ids: list[int] = []
-
-        if self.settings.isflag_enabled(BossShuffleMusic):
-            from smrpgpatchbuilder.datatypes.battles.enums import BattleMusic
-
-            # Get the enabled music tracks from user selection
-            enabled_tracks = self.settings.get_flag(ShuffledMusic).enabled
-
-            # Pick 8 random music IDs from the enabled tracks (with replacement if needed)
-            if len(enabled_tracks) >= 8:
-                selected_tracks = random.sample(enabled_tracks, 8)
-            else:
-                # If fewer than 8 tracks selected, sample with replacement
-                selected_tracks = random.choices(enabled_tracks, k=8)
-
-            # Store the music IDs for patching in get_patch
-            self.selected_music_ids = [track.music_id for track in selected_tracks]
-
-            # The 8 battle music classes (pointers to the IDs we'll write at 0x029F51)
-            music_classes = list(BattleMusic)
-
-            for boss_fight in [
-                l for l in self.locations if isinstance(l, BossFightLocation)
-            ]:
-                pack_id = cast(BossFightLocation, boss_fight).pack_id
-                # Assign a random battle music class (0-7) to each boss fight
-                battle_music = random.choice(music_classes)
-                pack = self.get_battle_pack(pack_id)
-                for f in pack.formations:
-                    f.set_music(battle_music)
-
-        # Assign random Star Hill wishes. This doesn't need to be tied to the seed, so it's truly random!
-        wishes = zip(WISH_DIALOG_IDS, random.sample(WISH_POOL, len(WISH_DIALOG_IDS)))
-        for dialog_id, wish in wishes:
-            self.overworld_dialogs.replace_dialog(dialog_id, wish)
-
-        # set random back to normal
-        random.seed(self.seed)
+        # Apply cosmetic settings (re-seeded for variation between generations)
+        apply_cosmetic_settings(self)
 
     def _mutate_normal(self, value: int, minimum: int = 0, maximum: int = 255) -> int:
         """Mutate a value simulating a normal distribution.
@@ -1723,1354 +759,24 @@ class GameWorld:
         return int(max(minimum, min(new_value, maximum)))
 
     def _shuffle_items(self):
-        # establish all functional prize locations
-        # regardless if they will have their contents shuffled or not
 
-        self.locations = {
-            StartingItem1Location: StartingItem1Location(),
-            StartingItem2Location: StartingItem2Location(),
-            StartingItem3Location: StartingItem3Location(),
-            StartingItem4Location: StartingItem4Location(),
-            StartingCharacter1: StartingCharacter1(),
-            MushroomWay1LowerChest: MushroomWay1LowerChest(),
-            MushroomWay1UpperChest: MushroomWay1UpperChest(),
-            MushroomWay1ToadRescue: MushroomWay1ToadRescue(),
-            MushroomWay2LedgeChest: MushroomWay2LedgeChest(),
-            MushroomWay2ToadRescue: MushroomWay2ToadRescue(),
-            MushroomWayRightGoomba: MushroomWayRightGoomba(),
-            MushrooomWayBossFight: MushrooomWayBossFight(),
-            MushroomWayStarPiece: MushroomWayStarPiece(),
-            MushroomWayBossFightRewardItem: MushroomWayBossFightRewardItem(),
-            MushroomWayCharacter: MushroomWayCharacter(),
-            MushroomKingdomMainHall: MushroomKingdomMainHall(),
-            MushroomKingdomLiberatedVaultLeft: MushroomKingdomLiberatedVaultLeft(),
-            MushroomKingdomLiberatedVaultRight: MushroomKingdomLiberatedVaultRight(),
-            MushroomKingdomLiberatedVaultMiddle: MushroomKingdomLiberatedVaultMiddle(),
-            MushroomKingdomChair: MushroomKingdomChair(),
-            MushroomKingdomFreeShopItem: MushroomKingdomFreeShopItem(),
-            MushroomKingdomShopBasementLeft: MushroomKingdomShopBasementLeft(),
-            MushroomKingdomShopBasementRight: MushroomKingdomShopBasementRight(),
-            MushroomKingdomWalletGuyFirstRewardLocation: MushroomKingdomWalletGuyFirstRewardLocation(),
-            MushroomKingdomWalletGuySecondRewardLocation: MushroomKingdomWalletGuySecondRewardLocation(),
-            MushroomKingdomOccupiedOutdoorGuardLocation: MushroomKingdomOccupiedOutdoorGuardLocation(),
-            MushroomKingdomOccupiedCastleToadRescueLocation: MushroomKingdomOccupiedCastleToadRescueLocation(),
-            MushroomKingdomOccupiedFamilyRescueLocation: MushroomKingdomOccupiedFamilyRescueLocation(),
-            MushroomKingdomOccupiedGuestRoomLocation: MushroomKingdomOccupiedGuestRoomLocation(),
-            MushroomKingdomBossFight: MushroomKingdomBossFight(),
-            MushroomKingdomStarPiece: MushroomKingdomStarPiece(),
-            MushroomKingdomStoreExchangeLocation: MushroomKingdomStoreExchangeLocation(),
-            MushroomKingdomInnPurchaseLocation: MushroomKingdomInnPurchaseLocation(),
-            BanditsWayFlowerJumpLocation: BanditsWayFlowerJumpLocation(),
-            BanditsWayCoin1Location: BanditsWayCoin1Location(),
-            BanditsWayCoin2Location: BanditsWayCoin2Location(),
-            BanditsWayCoin3Location: BanditsWayCoin3Location(),
-            BanditsWayDogChestLocation: BanditsWayDogChestLocation(),
-            BanditsWayPlatformsLeftChestLocation: BanditsWayPlatformsLeftChestLocation(),
-            BanditsWayPlatformsRightChestLocation: BanditsWayPlatformsRightChestLocation(),
-            BanditsWayDeadEndChestLocation: BanditsWayDeadEndChestLocation(),
-            BanditsWayBossFight: BanditsWayBossFight(),
-            BanditsWayStarPiece: BanditsWayStarPiece(),
-            BanditsWayBossFirstItemDropLocation: BanditsWayBossFirstItemDropLocation(),
-            BanditsWayBossSecondItemDropLocation: BanditsWayBossSecondItemDropLocation(),
-            KeroSewersStairRoomLeftChestLocation: KeroSewersStairRoomLeftChestLocation(),
-            KeroSewersStairRoomRightChestLocation: KeroSewersStairRoomRightChestLocation(),
-            Mimic1BossFight: Mimic1BossFight(),
-            Mimic1DropRewardLocation: Mimic1DropRewardLocation(),
-            Mimic1StarPiece: Mimic1StarPiece(),
-            Mimic1ReloadRewardLocation: Mimic1ReloadRewardLocation(),
-            KeroSewersFourRatRoomChestLocation: KeroSewersFourRatRoomChestLocation(),
-            KeroSewersBeforeBelomeLowerLocation: KeroSewersBeforeBelomeLowerLocation(),
-            KeroSewersBeforeBelomeUpperBeforeFlipLocation: KeroSewersBeforeBelomeUpperBeforeFlipLocation(),
-            KeroSewersBeforeBelomeUpperAfterFlipLocation: KeroSewersBeforeBelomeUpperAfterFlipLocation(),
-            KeroSewersBossFight: KeroSewersBossFight(),
-            KeroSewersStarPiece: KeroSewersStarPiece(),
-            MidasRiverFirstCompletionRewardLocation: MidasRiverFirstCompletionRewardLocation(),
-            MidasRiverBottomLeftCaveLocation: MidasRiverBottomLeftCaveLocation(),
-            MidasRiverBottomRightCaveLocation: MidasRiverBottomRightCaveLocation(),
-            TadpolePondCricketPieExchangeLocation: TadpolePondCricketPieExchangeLocation(),
-            TadpolePondCricketJamExchangeLocation: TadpolePondCricketJamExchangeLocation(),
-            MelodyBayFirstRewardLocation: MelodyBayFirstRewardLocation(),
-            MelodyBaySecondRewardLocation: MelodyBaySecondRewardLocation(),
-            MelodyBayThirdRewardLocation: MelodyBayThirdRewardLocation(),
-            RoseWaySwingingPlatformRoomLocation: RoseWaySwingingPlatformRoomLocation(),
-            RoseWayLeftIslandLocation: RoseWayLeftIslandLocation(),
-            RoseWayMiddleIslandLocation: RoseWayMiddleIslandLocation(),
-            RoseWayCoin1Location: RoseWayCoin1Location(),
-            RoseWayCoin2Location: RoseWayCoin2Location(),
-            RoseWayCoin3Location: RoseWayCoin3Location(),
-            RoseWayCoin4Location: RoseWayCoin4Location(),
-            RoseWayCoin5Location: RoseWayCoin5Location(),
-            RoseWayFiveChestRoomTopLocation: RoseWayFiveChestRoomTopLocation(),
-            RoseWayFiveChestRoomBottomLeftLocation: RoseWayFiveChestRoomBottomLeftLocation(),
-            RoseWayFiveChestRoomRightLocation: RoseWayFiveChestRoomRightLocation(),
-            RoseWayFiveChestRoomLeftLocation: RoseWayFiveChestRoomLeftLocation(),
-            RoseWayFiveChestRoomBottomRightLocation: RoseWayFiveChestRoomBottomRightLocation(),
-            RoseTownShopLeftChestLocation: RoseTownShopLeftChestLocation(),
-            RoseTownShopRightChestLocation: RoseTownShopRightChestLocation(),
-            RoseTownCloudRightChestLocation: RoseTownCloudRightChestLocation(),
-            RoseTownCloudLeftChestLocation: RoseTownCloudLeftChestLocation(),
-            RoseTownInnToadPrizeLocation: RoseTownInnToadPrizeLocation(),
-            RoseTownInnGazPrizeLocation: RoseTownInnGazPrizeLocation(),
-            RoseTownTreasureHouseLeftChestLocation: RoseTownTreasureHouseLeftChestLocation(),
-            RoseTownTreasureHouseRightChestLocation: RoseTownTreasureHouseRightChestLocation(),
-            RoseTownTreasureHouseMazeRewardLocation: RoseTownTreasureHouseMazeRewardLocation(),
-            RoseTownTreasureHouseUpperChestLocation: RoseTownTreasureHouseUpperChestLocation(),
-            ForestMazeFirstRoomLocation: ForestMazeFirstRoomLocation(),
-            ForestMazeFirstUndergroundExitLocation: ForestMazeFirstUndergroundExitLocation(),
-            ForestMazeUndergroundWigglerChestLocation: ForestMazeUndergroundWigglerChestLocation(),
-            ForestMazeUndergroundBottomRightTrunkChestLocation: ForestMazeUndergroundBottomRightTrunkChestLocation(),
-            ForestMazeUndergroundMiddleLeftChestLocation: ForestMazeUndergroundMiddleLeftChestLocation(),
-            ForestMazeInnerMazeEntranceLocation: ForestMazeInnerMazeEntranceLocation(),
-            ForestMazeSecretTopRightChestLocation: ForestMazeSecretTopRightChestLocation(),
-            ForestMazeSecretBottomRightChestLocation: ForestMazeSecretBottomRightChestLocation(),
-            ForestMazeSecretTopMiddleChestLocation: ForestMazeSecretTopMiddleChestLocation(),
-            ForestMazeSecretBottomMiddleChestLocation: ForestMazeSecretBottomMiddleChestLocation(),
-            ForestMazeSecretLeftChestLocation: ForestMazeSecretLeftChestLocation(),
-            ForestMazeBossFight: ForestMazeBossFight(),
-            ForestMazeStarPiece: ForestMazeStarPiece(),
-            ForestMazeCharacter: ForestMazeCharacter(),
-            PipeVaultSlidingCoinRoomBackChestLocation: PipeVaultSlidingCoinRoomBackChestLocation(),
-            PipeVaultSlidingCoinRoomMiddleChestLocation: PipeVaultSlidingCoinRoomMiddleChestLocation(),
-            PipeVaultSlidingCoinRoomFrontChestLocation: PipeVaultSlidingCoinRoomFrontChestLocation(),
-            PipeVaultSlidingCoinRoomCoin1Location: PipeVaultSlidingCoinRoomCoin1Location(),
-            PipeVaultSlidingCoinRoomCoin2Location: PipeVaultSlidingCoinRoomCoin2Location(),
-            PipeVaultSlidingCoinRoomCoin3Location: PipeVaultSlidingCoinRoomCoin3Location(),
-            PipeVaultSlidingCoinRoomCoin4Location: PipeVaultSlidingCoinRoomCoin4Location(),
-            PipeVaultSlidingCoinRoomCoin5Location: PipeVaultSlidingCoinRoomCoin5Location(),
-            PipeVaultSlidingCoinRoomCrouchItemLocation: PipeVaultSlidingCoinRoomCrouchItemLocation(),
-            PipeVaultGoombaThumpinFirstPrizeLocation: PipeVaultGoombaThumpinFirstPrizeLocation(),
-            PipeVaultGoombaThumpinSecondPrizeLocation: PipeVaultGoombaThumpinSecondPrizeLocation(),
-            PipeVaultRisingPlatformChestLocation: PipeVaultRisingPlatformChestLocation(),
-            PipeVaultChompweedChestLocation: PipeVaultChompweedChestLocation(),
-            YosterEntranceChestLocation: YosterEntranceChestLocation(),
-            YosterRacePrize1Location: YosterRacePrize1Location(),
-            YosterRacePrize2Location: YosterRacePrize2Location(),
-            YosterRacePrize3Location: YosterRacePrize3Location(),
-            BucketGirlRewardLocation: BucketGirlRewardLocation(),
-            TreasureShopItem1: TreasureShopItem1(),
-            TreasureShopItem2: TreasureShopItem2(),
-            TreasureShopItem3: TreasureShopItem3(),
-            OuterMinesTrampolineHenchmanLocation: OuterMinesTrampolineHenchmanLocation(),
-            OuterMinesLeftHenchmanLocation: OuterMinesLeftHenchmanLocation(),
-            OuterMinesRightHenchmanLocation: OuterMinesRightHenchmanLocation(),
-            OuterMinesBossPrizeLocation: OuterMinesBossPrizeLocation(),
-            OuterMinesBossFight: OuterMinesBossFight(),
-            OuterMinesStarPiece: OuterMinesStarPiece(),
-            InnerMinesTracksChestLocation: InnerMinesTracksChestLocation(),
-            InnerMinesShyguyCartLocation: InnerMinesShyguyCartLocation(),
-            InnerMinesBoxesChestLocation: InnerMinesBoxesChestLocation(),
-            InnerMinesSaveBlockChestLocation: InnerMinesSaveBlockChestLocation(),
-            InnerMinesHighUpChestLocation: InnerMinesHighUpChestLocation(),
-            InnerMinesBossFight: InnerMinesBossFight(),
-            InnerMinesStarPiece: InnerMinesStarPiece(),
-            InnerMinesCharacter: InnerMinesCharacter(),
-            BoosterPassBushLocation: BoosterPassBushLocation(),
-            BoosterPassFirstRoomLeftChestLocation: BoosterPassFirstRoomLeftChestLocation(),
-            BoosterPassFirstRoomRightChestLocation: BoosterPassFirstRoomRightChestLocation(),
-            BoosterPassSecondRoomFlowerLocation: BoosterPassSecondRoomFlowerLocation(),
-            BoosterPassSecretMiddleChestLocation: BoosterPassSecretMiddleChestLocation(),
-            BoosterPassSecretRightChestLocation: BoosterPassSecretRightChestLocation(),
-            BoosterPassSecretLeftChestLocation: BoosterPassSecretLeftChestLocation(),
-            BoosterTowerSpookumStairsLocation: BoosterTowerSpookumStairsLocation(),
-            BoosterTowerTrainRoomCreviceLocation: BoosterTowerTrainRoomCreviceLocation(),
-            BoosterTowerChestNearThwompLocation: BoosterTowerChestNearThwompLocation(),
-            BoosterTowerFallingChestLocation: BoosterTowerFallingChestLocation(),
-            BoosterTowerKnifeGuyPrizeLocation: BoosterTowerKnifeGuyPrizeLocation(),
-            BoosterTowerPortraitPrizeLocation: BoosterTowerPortraitPrizeLocation(),
-            BoosterTowerElderKeyItemLocation: BoosterTowerElderKeyItemLocation(),
-            BoosterTowerParachuteRoomChestLocation: BoosterTowerParachuteRoomChestLocation(),
-            BoosterTowerParachuteRoomCreviceLocation: BoosterTowerParachuteRoomCreviceLocation(),
-            BoosterTowerCheckerboardRightmostItemLocation: BoosterTowerCheckerboardRightmostItemLocation(),
-            BoosterTowerCheckerboardTopItemLocation: BoosterTowerCheckerboardTopItemLocation(),
-            BoosterTowerCheckerboardLeftmostItemLocation: BoosterTowerCheckerboardLeftmostItemLocation(),
-            BoosterTowerCheckerboardUpperRightItemLocation: BoosterTowerCheckerboardUpperRightItemLocation(),
-            BoosterTowerCheckerboardBottomItemLocation: BoosterTowerCheckerboardBottomItemLocation(),
-            BoosterTowerCheckerboardCoin1Location: BoosterTowerCheckerboardCoin1Location(),
-            BoosterTowerCheckerboardCoin2Location: BoosterTowerCheckerboardCoin2Location(),
-            BoosterTowerCheckerboardCoin3Location: BoosterTowerCheckerboardCoin3Location(),
-            BoosterTowerCheckerboardCoin4Location: BoosterTowerCheckerboardCoin4Location(),
-            BoosterTowerCheckerboardCoin5Location: BoosterTowerCheckerboardCoin5Location(),
-            BoosterTowerCheckerboardCoin6Location: BoosterTowerCheckerboardCoin6Location(),
-            BoosterTowerCheckerboardCoin7Location: BoosterTowerCheckerboardCoin7Location(),
-            BoosterTowerCheckerboardCoin8Location: BoosterTowerCheckerboardCoin8Location(),
-            BoosterTowerCheckerboardCoin9Location: BoosterTowerCheckerboardCoin9Location(),
-            BoosterTowerRoomKeyChestLocation: BoosterTowerRoomKeyChestLocation(),
-            BoosterTowerTopFloorLowerChestLocation: BoosterTowerTopFloorLowerChestLocation(),
-            BoosterTowerTopFloorUpperChestLocation: BoosterTowerTopFloorUpperChestLocation(),
-            BoosterTowerTopFloorCornerChestLocation: BoosterTowerTopFloorCornerChestLocation(),
-            BoosterTowerCurtainGamePrizeLocation: BoosterTowerCurtainGamePrizeLocation(),
-            BoosterTowerIndoorBossFight: BoosterTowerIndoorBossFight(),
-            BoosterTowerIndoorStarPiece: BoosterTowerIndoorStarPiece(),
-            BoosterTowerBalconyBossFight: BoosterTowerBalconyBossFight(),
-            BoosterTowerBalconyStarPiece: BoosterTowerBalconyStarPiece(),
-            BoosterHillGuaranteedItem1: BoosterHillGuaranteedItem1(),
-            BoosterHillGuaranteedItem2: BoosterHillGuaranteedItem2(),
-            BoosterHillGuaranteedItem3: BoosterHillGuaranteedItem3(),
-            BoosterHillGuaranteedItem4: BoosterHillGuaranteedItem4(),
-            BoosterHillGuaranteedItem5: BoosterHillGuaranteedItem5(),
-            BoosterHillGuaranteedItem6: BoosterHillGuaranteedItem6(),
-            BoosterHillGuaranteedItem7: BoosterHillGuaranteedItem7(),
-            BoosterHillGuaranteedItem8: BoosterHillGuaranteedItem8(),
-            BoosterHillGuaranteedItem9: BoosterHillGuaranteedItem9(),
-            BoosterHillGuaranteedItem10: BoosterHillGuaranteedItem10(),
-            BoosterHillGuaranteedItem11: BoosterHillGuaranteedItem11(),
-            BoosterHillGuaranteedItem12: BoosterHillGuaranteedItem12(),
-            BoosterHillGuaranteedItem13: BoosterHillGuaranteedItem13(),
-            BoosterHillGuaranteedItem14: BoosterHillGuaranteedItem14(),
-            BoosterHillGuaranteedItem15: BoosterHillGuaranteedItem15(),
-            BoosterHillGuaranteedItem16: BoosterHillGuaranteedItem16(),
-            MarrymoreFirstSuitePrizeLocation: MarrymoreFirstSuitePrizeLocation(),
-            MarrymoreSecondSuitePrizeLocation: MarrymoreSecondSuitePrizeLocation(),
-            MarrymoreThirdSuitePrizeLocation: MarrymoreThirdSuitePrizeLocation(),
-            MarrymoreFourthSuitePrizeLocation: MarrymoreFourthSuitePrizeLocation(),
-            MarrymoreFifthSuitePrizeLocation: MarrymoreFifthSuitePrizeLocation(),
-            MarrymoreSixthSuitePrizeLocation: MarrymoreSixthSuitePrizeLocation(),
-            MarrymoreBigTipLocation: MarrymoreBigTipLocation(),
-            MarrymoreHotelChestLocation: MarrymoreHotelChestLocation(),
-            MarrymoreSnifit1Location: MarrymoreSnifit1Location(),
-            MarrymoreSnifit2Location: MarrymoreSnifit2Location(),
-            MarrymoreSnifit3Location: MarrymoreSnifit3Location(),
-            MarrymoreAltarHeadLocation: MarrymoreAltarHeadLocation(),
-            MarrymoreBossFight: MarrymoreBossFight(),
-            MarrymoreBossFightStarPiece: MarrymoreBossFightStarPiece(),
-            MarrymoreCharacter: MarrymoreCharacter(),
-            StarHillStarPiece: StarHillStarPiece(),
-            FrogDiscipleLocation1: FrogDiscipleLocation1(),
-            FrogDiscipleLocation2: FrogDiscipleLocation2(),
-            FrogDiscipleLocation3: FrogDiscipleLocation3(),
-            FrogDiscipleLocation4: FrogDiscipleLocation4(),
-            FrogDiscipleLocation5: FrogDiscipleLocation5(),
-            SeasideBeachBossFight: SeasideBeachBossFight(),
-            SeasideBeachStarPiece: SeasideBeachStarPiece(),
-            SeasideTownBossPrizeLocation: SeasideTownBossPrizeLocation(),
-            SeasideTownShedRescueLocation: SeasideTownShedRescueLocation(),
-            SeaStarslapRoomChestLocation: SeaStarslapRoomChestLocation(),
-            SeaSaveRoomBackChestLocation: SeaSaveRoomBackChestLocation(),
-            SeaSaveRoomMiddleChestLocation: SeaSaveRoomMiddleChestLocation(),
-            SeaSaveRoomFrontChestLocation: SeaSaveRoomFrontChestLocation(),
-            SeaWhirlpoolChestLocation: SeaWhirlpoolChestLocation(),
-            ShipRatStairsChestLocation: ShipRatStairsChestLocation(),
-            ShipRatStairsBoxesLocation: ShipRatStairsBoxesLocation(),
-            ShipTroopaPuzzleLocation: ShipTroopaPuzzleLocation(),
-            ShipTrampolinePuzzle: ShipTrampolinePuzzle(),
-            Ship3DMazePuzzle: Ship3DMazePuzzle(),
-            ShipShopChestLocation: ShipShopChestLocation(),
-            ShipCoinSnakePuzzleLocation: ShipCoinSnakePuzzleLocation(),
-            ShipCannonballPuzzle: ShipCannonballPuzzle(),
-            ShipBarrelPuzzle: ShipBarrelPuzzle(),
-            ShipPasswordBossFight: ShipPasswordBossFight(),
-            ShipPasswordStarPiece: ShipPasswordStarPiece(),
-            EarlyInnerShipLeftChestLocation: EarlyInnerShipLeftChestLocation(),
-            EarlyInnerShipRightChestLocation: EarlyInnerShipRightChestLocation(),
-            InnerShipCloneRoomChestLocation: InnerShipCloneRoomChestLocation(),
-            InnerShipBehindBoxesChestLocation: InnerShipBehindBoxesChestLocation(),
-            InnerShipSaveRoomLeftChestLocation: InnerShipSaveRoomLeftChestLocation(),
-            InnerShipSaveRoomRightChestLocation: InnerShipSaveRoomRightChestLocation(),
-            Mimic2DropRewardLocation: Mimic2DropRewardLocation(),
-            Mimic2BossFight: Mimic2BossFight(),
-            Mimic2StarPiece: Mimic2StarPiece(),
-            Mimic2ReloadRewardLocation: Mimic2ReloadRewardLocation(),
-            InnerShipFirstUnderwaterRoomBottomItemLocation: InnerShipFirstUnderwaterRoomBottomItemLocation(),
-            InnerShipFirstUnderwaterRoomTopItemLocation: InnerShipFirstUnderwaterRoomTopItemLocation(),
-            InnerShipFirstUnderwaterRoomLeftItemLocation: InnerShipFirstUnderwaterRoomLeftItemLocation(),
-            InnerShipFirstUnderwaterRoomMiddleItemLocation: InnerShipFirstUnderwaterRoomMiddleItemLocation(),
-            InnerShipSecretRoomChestLocation: InnerShipSecretRoomChestLocation(),
-            InnerShipPoolRoomLocation: InnerShipPoolRoomLocation(),
-            InnerShipBeforeBossChestLocation: InnerShipBeforeBossChestLocation(),
-            ShipFinalBossFight: ShipFinalBossFight(),
-            ShipFinalStarPiece: ShipFinalStarPiece(),
-            LandsEndRisingPlatformChestLocation: LandsEndRisingPlatformChestLocation(),
-            LandsEndChowPitStaticChestLocation: LandsEndChowPitStaticChestLocation(),
-            LandsEndChowPitMovingChestLocation: LandsEndChowPitMovingChestLocation(),
-            LandsEndBeeTowerChestLocation: LandsEndBeeTowerChestLocation(),
-            LandsEndGrottoEntranceChestLocation: LandsEndGrottoEntranceChestLocation(),
-            LandsEndGrottoCornerChestLocation: LandsEndGrottoCornerChestLocation(),
-            LandsEndGrottoEndChestLocation: LandsEndGrottoEndChestLocation(),
-            LandsEndUndergroundSaveBoxChestLocation: LandsEndUndergroundSaveBoxChestLocation(),
-            LandsEndFirstPurchasableChestLocation: LandsEndFirstPurchasableChestLocation(),
-            LandsEndSecondPurchasableChestLocation: LandsEndSecondPurchasableChestLocation(),
-            TroopaClimbSub12PrizeLocation: TroopaClimbSub12PrizeLocation(),
-            LandsEndCloudBoss: LandsEndCloudBoss(),
-            LandsEndCloudStarPiece: LandsEndCloudStarPiece(),
-            BelomeTempleFortuneTellerLocation: BelomeTempleFortuneTellerLocation(),
-            BelomeTempleLMRChestLocation: BelomeTempleLMRChestLocation(),
-            BelomeTempleLRMChestLocation: BelomeTempleLRMChestLocation(),
-            BelomeTempleRLMChestLocation: BelomeTempleRLMChestLocation(),
-            BelomeTempleRMLChestLocation: BelomeTempleRMLChestLocation(),
-            BelomeBeforeBossRightChestLocation: BelomeBeforeBossRightChestLocation(),
-            BelomeBeforeBossLowerLeftChestLocation: BelomeBeforeBossLowerLeftChestLocation(),
-            BelomeBeforeBossMiddleChestLocation: BelomeBeforeBossMiddleChestLocation(),
-            BelomeBeforeBossUpperLeftChestLocation: BelomeBeforeBossUpperLeftChestLocation(),
-            BelomeTempleTreasuryUpperCornerLeftItemLocation: BelomeTempleTreasuryUpperCornerLeftItemLocation(),
-            BelomeTempleTreasuryUpperCornerLowerLeftItemLocation: BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(),
-            BelomeTempleTreasuryUpperCornerTopItemLocation: BelomeTempleTreasuryUpperCornerTopItemLocation(),
-            BelomeTempleTreasuryTopmostItemLocation: BelomeTempleTreasuryTopmostItemLocation(),
-            BelomeTempleTreasuryMidLeftItemLocation: BelomeTempleTreasuryMidLeftItemLocation(),
-            BelomeTempleTreasuryAlmostTopItemLocation: BelomeTempleTreasuryAlmostTopItemLocation(),
-            BelomeTempleTreasuryAlmostLeftmostItemLocation: BelomeTempleTreasuryAlmostLeftmostItemLocation(),
-            BelomeTempleTreasuryOuterUpperRightItemLocation: BelomeTempleTreasuryOuterUpperRightItemLocation(),
-            BelomeTempleTreasuryInnerUpperRightItemLocation: BelomeTempleTreasuryInnerUpperRightItemLocation(),
-            BelomeTempleTreasuryLowestItemsRightLocation: BelomeTempleTreasuryLowestItemsRightLocation(),
-            BelomeTempleTreasuryLowerOuterBottomRightItemLocation: BelomeTempleTreasuryLowerOuterBottomRightItemLocation(),
-            BelomeTempleTreasuryRightmostItemLocation: BelomeTempleTreasuryRightmostItemLocation(),
-            BelomeTempleTreasuryBottomLeftCornerItemLocation: BelomeTempleTreasuryBottomLeftCornerItemLocation(),
-            BelomeTempleTreasuryLowestItemsLeftLocation: BelomeTempleTreasuryLowestItemsLeftLocation(),
-            BelomeTempleTreasuryUpperOuterBottomRightItemLocation: BelomeTempleTreasuryUpperOuterBottomRightItemLocation(),
-            TempleBossFight: TempleBossFight(),
-            TempleBossFightStarPiece: TempleBossFightStarPiece(),
-            MonstroEntranceLocation: MonstroEntranceLocation(),
-            MonstroThwompItemLocation: MonstroThwompItemLocation(),
-            DojoFirstFight: DojoFirstFight(),
-            DojoFirstFightStarPiece: DojoFirstFightStarPiece(),
-            DojoSecondFight: DojoSecondFight(),
-            DojoSecondFightStarPiece: DojoSecondFightStarPiece(),
-            DojoThirdFight: DojoThirdFight(),
-            DojoThirdFightStarPiece: DojoThirdFightStarPiece(),
-            DojoFourthFight: DojoFourthFight(),
-            DojoFourthFightStarPiece: DojoFourthFightStarPiece(),
-            MonstroDojoClearRewardLocation: MonstroDojoClearRewardLocation(),
-            MonstroSealedDoorBossFight: MonstroSealedDoorBossFight(),
-            MonstroSealedDoorStarPiece: MonstroSealedDoorStarPiece(),
-            MonstroSealedDoorClearRewardLocation: MonstroSealedDoorClearRewardLocation(),
-            MonstroFlagExchangeLocation: MonstroFlagExchangeLocation(),
-            BeanValleyFirstDeadEndLocation: BeanValleyFirstDeadEndLocation(),
-            BeanValleyFirstProgressChestLocation: BeanValleyFirstProgressChestLocation(),
-            BeanValleyLeftPiranhaPipeLocation: BeanValleyLeftPiranhaPipeLocation(),
-            BeanValleyBottomLeftPiranhaPipeLocation: BeanValleyBottomLeftPiranhaPipeLocation(),
-            BeanValleyBottomRightPiranhaPipeUpperLocation: BeanValleyBottomRightPiranhaPipeUpperLocation(),
-            BeanValleyBottomRightPiranhaPipeLowerLocation: BeanValleyBottomRightPiranhaPipeLowerLocation(),
-            BeanValleyRightPipeLeftChestLocation: BeanValleyRightPipeLeftChestLocation(),
-            Mimic3BossFight: Mimic3BossFight(),
-            Mimic3StarPiece: Mimic3StarPiece(),
-            BeanValleyRightPipeRightChestLocation: BeanValleyRightPipeRightChestLocation(),
-            BeanValleyRightPipeUnderStairsLocation: BeanValleyRightPipeUnderStairsLocation(),
-            BeanValleyRightPipeAboveGroundLocation: BeanValleyRightPipeAboveGroundLocation(),
-            BeanValleyPlanterBossFight: BeanValleyPlanterBossFight(),
-            BeanValleyPlanterStarPiece: BeanValleyPlanterStarPiece(),
-            BeanValleyBossNoteLocation: BeanValleyBossNoteLocation(),
-            BeanstalkLowestChestLocation: BeanstalkLowestChestLocation(),
-            BeanValley1stRoomFloatingItemLocation: BeanValley1stRoomFloatingItemLocation(),
-            BeanValley1stRoomMiddleCoinLocation: BeanValley1stRoomMiddleCoinLocation(),
-            BeanValley1stRoomUpperCoinLocation: BeanValley1stRoomUpperCoinLocation(),
-            BeanValley1stRoomLowerCoinLocation: BeanValley1stRoomLowerCoinLocation(),
-            Beanstalk2ndRoomFloatingItemLocation: Beanstalk2ndRoomFloatingItemLocation(),
-            Beanstalk2ndRoomCoin1Location: Beanstalk2ndRoomCoin1Location(),
-            Beanstalk2ndRoomCoin2Location: Beanstalk2ndRoomCoin2Location(),
-            Beanstalk2ndRoomCoin3Location: Beanstalk2ndRoomCoin3Location(),
-            BeanValleyEastBeanstalkCoin1Location: BeanValleyEastBeanstalkCoin1Location(),
-            BeanValleyEastBeanstalkCoin2Location: BeanValleyEastBeanstalkCoin2Location(),
-            BeanValleyEastBeanstalkCoin3Location: BeanValleyEastBeanstalkCoin3Location(),
-            BeanValleyEastBeanstalkCoin4Location: BeanValleyEastBeanstalkCoin4Location(),
-            BeanValleyEastBeanstalkCoin5Location: BeanValleyEastBeanstalkCoin5Location(),
-            BeanValleyWestBeanstalkCoin1Location: BeanValleyWestBeanstalkCoin1Location(),
-            BeanValleyWestBeanstalkCoin2Location: BeanValleyWestBeanstalkCoin2Location(),
-            BeanValleyWestBeanstalkCoin3Location: BeanValleyWestBeanstalkCoin3Location(),
-            BeanValleyWestBeanstalkFloatingItemLocation: BeanValleyWestBeanstalkFloatingItemLocation(),
-            BeanstalkUpperCloudLeftChestLocation: BeanstalkUpperCloudLeftChestLocation(),
-            BeanstalkUpperCloudRightChestLocation: BeanstalkUpperCloudRightChestLocation(),
-            BeanstalkLowerCloudLeftChestLocation: BeanstalkLowerCloudLeftChestLocation(),
-            BeanstalkLowerCloudRightChestLocation: BeanstalkLowerCloudRightChestLocation(),
-            CasinoGrateGuyPrizeLocation: CasinoGrateGuyPrizeLocation(),
-            NimbusShopChestLocation: NimbusShopChestLocation(),
-            NimbusInnDreamPrize1Location: NimbusInnDreamPrize1Location(),
-            NimbusInnDreamPrize2Location: NimbusInnDreamPrize2Location(),
-            NimbusCastleStatueGamePrizeLocation: NimbusCastleStatueGamePrizeLocation(),
-            StatueRoomBossFight: StatueRoomBossFight(),
-            StatueRoomStarPiece: StatueRoomStarPiece(),
-            NimbusCastleOuterPrisonCellarRightNPCLocation: NimbusCastleOuterPrisonCellarRightNPCLocation(),
-            NimbusCastleOuterPrisonCellarLeftNPCLocation: NimbusCastleOuterPrisonCellarLeftNPCLocation(),
-            NimbusCastleBusinessCentreOccupiedChestLocation: NimbusCastleBusinessCentreOccupiedChestLocation(),
-            NimbusCastleCornerBridgeChestLocation: NimbusCastleCornerBridgeChestLocation(),
-            NimbusCastleOutOfBoundsChestLocation: NimbusCastleOutOfBoundsChestLocation(),
-            NimbusCastleAboveJawfulChestLocation: NimbusCastleAboveJawfulChestLocation(),
-            NimbusCastleSingleGoldBirdChestLocation: NimbusCastleSingleGoldBirdChestLocation(),
-            NimbusCastleTwoLevelLowerChestLocation: NimbusCastleTwoLevelLowerChestLocation(),
-            GiantEggBossFight: GiantEggBossFight(),
-            GiantEggStarPiece: GiantEggStarPiece(),
-            NimbusCastleGiantEggRewardLocation: NimbusCastleGiantEggRewardLocation(),
-            NimbusCastleTwoLevelUpperChestLocation: NimbusCastleTwoLevelUpperChestLocation(),
-            NimbusCastleBackHallwayOccupiedChestLocation: NimbusCastleBackHallwayOccupiedChestLocation(),
-            NimbusFinalBossFight: NimbusFinalBossFight(),
-            NimbusFinalStarPiece: NimbusFinalStarPiece(),
-            NimbusCastleBackHallwayLiberatedChestLocation: NimbusCastleBackHallwayLiberatedChestLocation(),
-            NimbusCastleBusinessCentreLiberatedChestLocation: NimbusCastleBusinessCentreLiberatedChestLocation(),
-            NimbusLandRightSideLocation: NimbusLandRightSideLocation(),
-            NimbusLandCrocoItemLocation: NimbusLandCrocoItemLocation(),
-            NimbusLandInnerCellarLocation: NimbusLandInnerCellarLocation(),
-            VolcanoLavaCoveLeftChestLocation: VolcanoLavaCoveLeftChestLocation(),
-            VolcanoLavaCoveRightChestLocation: VolcanoLavaCoveRightChestLocation(),
-            VolcanoEarlyProgressChestLeftLocation: VolcanoEarlyProgressChestLeftLocation(),
-            VolcanoEarlyProgressChestRightLocation: VolcanoEarlyProgressChestRightLocation(),
-            VolcanoEarlyProgressThirdChestLocation: VolcanoEarlyProgressThirdChestLocation(),
-            VolcanoLavaPoolLocation: VolcanoLavaPoolLocation(),
-            VolcanoReverseRecoilItemLocation: VolcanoReverseRecoilItemLocation(),
-            VolcanoRightDonutItemLocation: VolcanoRightDonutItemLocation(),
-            VolcanoLeftDonutItemLocation: VolcanoLeftDonutItemLocation(),
-            VolcanoSaveRoomLowerChestLocation: VolcanoSaveRoomLowerChestLocation(),
-            VolcanoSaveRoomUpperChestLocation: VolcanoSaveRoomUpperChestLocation(),
-            VolcanoShopEntranceChestLocation: VolcanoShopEntranceChestLocation(),
-            VolcanoBridgeBossFight: VolcanoBridgeBossFight(),
-            VolcanoBridgeStarPiece: VolcanoBridgeStarPiece(),
-            VolcanoExitBossFight: VolcanoExitBossFight(),
-            VolcanoExitStarPiece: VolcanoExitStarPiece(),
-            KeepDarkRoomChestLocation: KeepDarkRoomChestLocation(),
-            KeepFirstCrocoShopLeftChestLocation: KeepFirstCrocoShopLeftChestLocation(),
-            KeepFirstCrocoShopRightChestLocation: KeepFirstCrocoShopRightChestLocation(),
-            KeepInvisibleBridgeFrontChestLocation: KeepInvisibleBridgeFrontChestLocation(),
-            KeepInvisibleBridgeRightChestLocation: KeepInvisibleBridgeRightChestLocation(),
-            KeepInvisibleBridgeLeftChestLocation: KeepInvisibleBridgeLeftChestLocation(),
-            KeepInvisibleBridgeBackChestLocation: KeepInvisibleBridgeBackChestLocation(),
-            KeepInvisibleBridgeCoin1Location: KeepInvisibleBridgeCoin1Location(),
-            KeepInvisibleBridgeCoin2Location: KeepInvisibleBridgeCoin2Location(),
-            KeepInvisibleBridgeCoin3Location: KeepInvisibleBridgeCoin3Location(),
-            KeepInvisibleBridgeCoin4Location: KeepInvisibleBridgeCoin4Location(),
-            KeepXYPlatformsBackLeftChestLocation: KeepXYPlatformsBackLeftChestLocation(),
-            KeepXYPlatformsFrontLeftChestLocation: KeepXYPlatformsFrontLeftChestLocation(),
-            KeepXYPlatformsFrontRightChestLocation: KeepXYPlatformsFrontRightChestLocation(),
-            KeepXYPlatformsBackRightChestLocation: KeepXYPlatformsBackRightChestLocation(),
-            KeepElevatorRoomChestLocation: KeepElevatorRoomChestLocation(),
-            KeepCannonballRoomFrontRightChestLocation: KeepCannonballRoomFrontRightChestLocation(),
-            KeepCannonballRoomBackChestLocation: KeepCannonballRoomBackChestLocation(),
-            KeepCannonballFrontLeftChestLocation: KeepCannonballFrontLeftChestLocation(),
-            KeepCannonballMidRightChestLocation: KeepCannonballMidRightChestLocation(),
-            KeepCannonballMidLeftChestLocation: KeepCannonballMidLeftChestLocation(),
-            KeepCannonballCoin1Location: KeepCannonballCoin1Location(),
-            KeepCannonballCoin2Location: KeepCannonballCoin2Location(),
-            KeepCannonballCoin3Location: KeepCannonballCoin3Location(),
-            KeepCannonballCoin4Location: KeepCannonballCoin4Location(),
-            KeepCannonballCoin5Location: KeepCannonballCoin5Location(),
-            KeepCannonballCoin6Location: KeepCannonballCoin6Location(),
-            KeepCannonballCoin7Location: KeepCannonballCoin7Location(),
-            KeepCannonballCoin8Location: KeepCannonballCoin8Location(),
-            KeepRotatingPlatformsFrontChestLocation: KeepRotatingPlatformsFrontChestLocation(),
-            KeepRotatingPlatformsFrontMidLeftChestLocation: KeepRotatingPlatformsFrontMidLeftChestLocation(),
-            KeepRotatingPlatformsBackMidRightChestLocation: KeepRotatingPlatformsBackMidRightChestLocation(),
-            KeepRotatingPlatformsFrontMidRightChestLocation: KeepRotatingPlatformsFrontMidRightChestLocation(),
-            KeepRotatingPlatformsBackMidLeftChestLocation: KeepRotatingPlatformsBackMidLeftChestLocation(),
-            KeepRotatingPlatformsBackChestLocation: KeepRotatingPlatformsBackChestLocation(),
-            ObstacleCourseFinalFight: ObstacleCourseFinalFight(),
-            ObstacleCourseFinalFightStarPiece: ObstacleCourseFinalFightStarPiece(),
-            KeepDoorRewardChest1Location: KeepDoorRewardChest1Location(),
-            KeepDoorRewardChest2Location: KeepDoorRewardChest2Location(),
-            KeepDoorRewardChest3Location: KeepDoorRewardChest3Location(),
-            KeepDoorRewardChest4Location: KeepDoorRewardChest4Location(),
-            KeepDoorRewardChest5Location: KeepDoorRewardChest5Location(),
-            KeepDoorRewardChest6Location: KeepDoorRewardChest6Location(),
-            KeepAfterObstaclesBossFight: KeepAfterObstaclesBossFight(),
-            KeepAfterObstaclesStarPiece: KeepAfterObstaclesStarPiece(),
-            KeepAfterObstaclesBossChestLocation: KeepAfterObstaclesBossChestLocation(),
-            KeepChandelierBossFight: KeepChandelierBossFight(),
-            KeepChandelierStarPiece: KeepChandelierStarPiece(),
-            KeepFinalBossFight: KeepFinalBossFight(),
-            KeepFinalStarPiece: KeepFinalStarPiece(),
-            OuterFactorySaveRoomChestLocation: OuterFactorySaveRoomChestLocation(),
-            FactoryBoltPlatformsChestLocation: FactoryBoltPlatformsChestLocation(),
-            FactoryEntranceBossFight: FactoryEntranceBossFight(),
-            FactoryEntranceStarPiece: FactoryEntranceStarPiece(),
-            FactoryAxemConveyorsChestLocation: FactoryAxemConveyorsChestLocation(),
-            FactoryTreasurePitBackChestLocation: FactoryTreasurePitBackChestLocation(),
-            FactoryTreasurePitFrontChestLocation: FactoryTreasurePitFrontChestLocation(),
-            FactoryBigConveyorRoomFirstChestLocation: FactoryBigConveyorRoomFirstChestLocation(),
-            FactoryBigConveyorRoomSecondChestLocation: FactoryBigConveyorRoomSecondChestLocation(),
-            FactoryBehindNinjasRightChestLocation: FactoryBehindNinjasRightChestLocation(),
-            FactoryBehindNinjasLeftChestLocation: FactoryBehindNinjasLeftChestLocation(),
-            FactoryTransitionBossFight: FactoryTransitionBossFight(),
-            FactoryTransitionStarPiece: FactoryTransitionStarPiece(),
-            InnerFactoryFirstFight: InnerFactoryFirstFight(),
-            InnerFactoryFirstFightStarPiece: InnerFactoryFirstFightStarPiece(),
-            InnerFactoryToadGiftLocation: InnerFactoryToadGiftLocation(),
-            InnerFactorySecondFight: InnerFactorySecondFight(),
-            InnerFactorySecondFightStarPiece: InnerFactorySecondFightStarPiece(),
-            InnerFactoryThirdFight: InnerFactoryThirdFight(),
-            InnerFactoryThirdFightStarPiece: InnerFactoryThirdFightStarPiece(),
-            InnerFactoryFourthFight: InnerFactoryFourthFight(),
-            InnerFactoryFourthFightStarPiece: InnerFactoryFourthFightStarPiece(),
-            FinalBossFight: FinalBossFight(),
-        }
+        # determine which checks exist in this seed
 
-        # Only include FinalBossFightStarPiece if win condition is not FACTORY
-        # (when FACTORY is the win condition, defeating the final boss ends the game
-        # so there's no opportunity to collect the star piece)
-        if not self.settings.is_flag_value(WinCondition, WinConditions.FACTORY):
-            self.locations[FinalBossFightStarPiece] = FinalBossFightStarPiece()
+        self._report_progress("Building check list", 5)
+        # this doesn't mean which ones are shuffled, it means which ones can be accessed at all
+        # exclusions would be things like remake checks, surplus invisible item checks, super jump prizes when super jump not usable
+        set_locations(self)
 
-        included_charaters = self.settings.get_flag(AvailableCharacters).enabled
-        if MARIO_Ally in included_charaters:
-            self.locations = {
-                **self.locations,
-                MarioSpell1: MarioSpell1(),
-                MarioSpell2: MarioSpell2(),
-                MarioSpell3: MarioSpell3(),
-                MarioSpell4: MarioSpell4(),
-                MarioSpell5: MarioSpell5(),
-                MarioSpell6: MarioSpell6(),
-            }
-        if MALLOW_Ally in included_charaters:
-            self.locations = {
-                **self.locations,
-                MallowSpell1: MallowSpell1(),
-                MallowSpell2: MallowSpell2(),
-                MallowSpell3: MallowSpell3(),
-                MallowSpell4: MallowSpell4(),
-                MallowSpell5: MallowSpell5(),
-                MallowSpell6: MallowSpell6(),
-            }
-        if GENO_Ally in included_charaters:
-            self.locations = {
-                **self.locations,
-                GenoSpell1: GenoSpell1(),
-                GenoSpell2: GenoSpell2(),
-                GenoSpell3: GenoSpell3(),
-                GenoSpell4: GenoSpell4(),
-                GenoSpell5: GenoSpell5(),
-            }
-        if BOWSER_Ally in included_charaters:
-            self.locations = {
-                **self.locations,
-                BowserSpell1: BowserSpell1(),
-                BowserSpell2: BowserSpell2(),
-                BowserSpell3: BowserSpell3(),
-                BowserSpell4: BowserSpell4(),
-                BowserSpell5: BowserSpell5(),
-                BowserSpell6: BowserSpell6(),
-            }
-        if TOADSTOOL_Ally in included_charaters:
-            self.locations = {
-                **self.locations,
-                ToadstoolSpell1: ToadstoolSpell1(),
-                ToadstoolSpell2: ToadstoolSpell2(),
-                ToadstoolSpell3: ToadstoolSpell3(),
-                ToadstoolSpell4: ToadstoolSpell4(),
-                ToadstoolSpell5: ToadstoolSpell5(),
-                ToadstoolSpell6: ToadstoolSpell6(),
-            }
+        self._report_progress("Placing items", 7)
+        # shuffle according to settings
+        shuffle_prizes(self)
 
-        # Only add Super Jump reward locations if Super Jump spell is enabled
-        available_spells = self.settings.get_flag(AvailableSpells)
-        super_jump_enabled = any(
-            spell_opt.value == SuperJumpSpell for spell_opt in available_spells.enabled
-        )
-        if super_jump_enabled:
-            self.locations = {
-                **self.locations,
-                MonstroFirstSuperJumpRewardLocation: MonstroFirstSuperJumpRewardLocation(),
-                MonstroSecondSuperJumpRewardLocation: MonstroSecondSuperJumpRewardLocation(),
-            }
+        self._report_progress("Applying cleanup settings", 39)
+        # replace bad items with coins, supplant YouMissed, etc
+        post_shuffle_cleanup(self)
 
-        if self.settings.isflag_enabled(FixKnifeGuy):
-            self.locations = {
-                **self.locations,
-                BoosterTowerKnifeGuy2PrizeLocation: BoosterTowerKnifeGuy2PrizeLocation(),
-            }
-
-        if self.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
-            fwshop = FireworksShopItemLocation()
-            fwshop._originally_held = ProgressiveFireworksPrize
-            fwshop.set_prize(ProgressiveFireworksPrize())
-            self.locations = {
-                **self.locations,
-                FireworksShopItemLocation: fwshop,
-                PurtendStoreLocation: PurtendStoreLocation(),
-                CookieTraderLocation: CookieTraderLocation(),
-            }
-            self.get_item(FireworksItem).set_price(0)
-            self.get_item(ShinyStoneItem).set_price(0)
-            self.get_item(CarboCookieItem).set_price(0)
-        elif self.settings.is_flag_value(
-            FireworksSetting, FireworksOptions.SHUFFLE_ONE
-        ):
-            self.locations = {
-                **self.locations,
-                FireworksShopItemLocation: FireworksShopItemLocation(),
-            }
-            self.get_item(FireworksItem).set_price(0)
-            self.get_item(ShinyStoneItem).set_price(0)
-            self.get_item(CarboCookieItem).set_price(0)
-
-        strchars = self.settings.get_flag(StartingCharacters)
-        startmax = len(strchars.enabled)
-        if startmax >= 2:
-            self.locations = {
-                **self.locations,
-                StartingCharacter2: StartingCharacter2(),
-            }
-        if startmax >= 3:
-            self.locations = {
-                **self.locations,
-                StartingCharacter3: StartingCharacter3(),
-            }
-        if startmax >= 4:
-            self.locations = {
-                **self.locations,
-                StartingCharacter4: StartingCharacter4(),
-            }
-        if startmax >= 5:
-            self.locations = {
-                **self.locations,
-                StartingCharacter5: StartingCharacter5(),
-            }
-        # Resolve starting character selections (handles "Random_X" values)
-        # and assign prizes to the starting character locations
-        resolved_allies = (
-            strchars.resolve_random_selections()
-        )  # Uses seeded global random
-        # Map allies by index to their prize classes (allies are all the same type)
-        ally_to_prize: dict[int, type] = {
-            MARIO_Ally.index: MarioRecruitmentPrize,
-            MALLOW_Ally.index: MallowRecruitmentPrize,
-            GENO_Ally.index: GenoRecruitmentPrize,
-            BOWSER_Ally.index: BowserRecruitmentPrize,
-            TOADSTOOL_Ally.index: ToadstoolRecruitmentPrize,
-        }
-        starting_char_locations = [
-            StartingCharacter1,
-            StartingCharacter2,
-            StartingCharacter3,
-            StartingCharacter4,
-            StartingCharacter5,
-        ]
-        for i, ally in enumerate(resolved_allies):
-            if i < len(starting_char_locations):
-                loc_type = starting_char_locations[i]
-                if loc_type in self.locations:
-                    prize_cls = ally_to_prize.get(ally.index)
-                    if prize_cls:
-                        self.locations[loc_type].set_prize(prize_cls())
-
-        if self.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
-            self.locations = {
-                **self.locations,
-                GarroFreeItem: GarroFreeItem(),
-            }
-
-        # Optionally include remake content.
-        if self.settings.get_flag(Remake).enabled:
-            self.locations = {
-                **self.locations,
-                PostgameVoucherLocation: PostgameVoucherLocation(),
-                MushroomWayLeftItemRemake: MushroomWayLeftItemRemake(),
-                MushroomWayRightItemRemake: MushroomWayRightItemRemake(),
-                InnerMinesPostgameBossFight: InnerMinesPostgameBossFight(),
-                InnerMinesPostgameStarPiece: InnerMinesPostgameStarPiece(),
-                InnerMinesPostgameDrop: InnerMinesPostgameDrop(),
-                BoosterTowerIndoorBossFightRemake: BoosterTowerIndoorBossFightRemake(),
-                BoosterTowerIndoorStarPieceRemake: BoosterTowerIndoorStarPieceRemake(),
-                BoosterTowerRemakeBossFightPrizeLocation: BoosterTowerRemakeBossFightPrizeLocation(),
-                MarrymoreBossFightRemake: MarrymoreBossFightRemake(),
-                MarrymoreBossFightStarPieceRemake: MarrymoreBossFightStarPieceRemake(),
-                MarrymoreBossFightRemakeItemDrop: MarrymoreBossFightRemakeItemDrop(),
-                ShipPostgameBossFight: ShipPostgameBossFight(),
-                ShipPostgameFightItemDrop: ShipPostgameFightItemDrop(),
-                ShipPostgameStarPiece: ShipPostgameStarPiece(),
-                TempleBossFightPostgame: TempleBossFightPostgame(),
-                TempleBossFightStarPiecePostgame: TempleBossFightStarPiecePostgame(),
-                TemplePostgameFightItemDrop: TemplePostgameFightItemDrop(),
-                DojoFifthFight: DojoFifthFight(),
-                DojoFifthFightStarPiece: DojoFifthFightStarPiece(),
-                MonstroDojoPostgameClearRewardLocation: MonstroDojoPostgameClearRewardLocation(),
-                LandsEndCaveSideRemake: LandsEndCaveSideRemake(),
-            }
-            # Only include Monstro sealed door postgame locations if win condition is not SEALED
-            # (when SEALED is the win condition, defeating the sealed door boss ends the game
-            # so there's no opportunity to collect postgame rewards)
-            if not self.settings.is_flag_value(WinCondition, WinConditions.SEALED):
-                self.locations[MonstroSealedDoorBossFightPostgame] = (
-                    MonstroSealedDoorBossFightPostgame()
-                )
-                self.locations[MonstroSealedDoorStarPiecePostgame] = (
-                    MonstroSealedDoorStarPiecePostgame()
-                )
-                self.locations[MonstroSealedDoorClearRewardLocationPostgame] = (
-                    MonstroSealedDoorClearRewardLocationPostgame()
-                )
-            # Checks for postgame-unlocking bosses by default expect an impossible value.
-            # Enabling the remake flag sets it to the correct value, 7.
-            cast(
-                CompareVarToConst,
-                self.event_scripts.get_command_by_identifier(
-                    "postgame_progress_checker_1"
-                ),
-            ).set_value(7)
-            cast(
-                CompareVarToConst,
-                self.event_scripts.get_command_by_identifier(
-                    "postgame_progress_checker_2"
-                ),
-            ).set_value(7)
-
-        invisible_item_pool = [
-            MariosPadBedFlag,
-            RoseTownSignFlag,
-            YosterIsleGoalFlag,
-            MariosPadSteamwhistleFlag,
-            MariosPadLanternFlag,
-            MariosPadHatFlag,
-            MushroomWayTreeFlag,
-            MushroomKingdomSignFlag,
-            MushroomKingdomEmptyHouseFlag,
-            ChancellorThroneFlag,
-            BanditsWayFlowerFlag,
-            KeroStairsFlag,
-            KeroGateFlag,
-            MidasTreesFlag,
-            TadpoleCabinetFlag,
-            RoseWayDirtPatchFlag,
-            RoseTownHydrantFlag,
-            RoseTownSinkFlag,
-            RoseTownBowserFlag,
-            RoseTownGardenerHydrantFlag,
-            RoseTownGardenerBucketFlag,
-            RoseTownGardenerLeafFlag,
-            ForestMazeSecretStumpFlag,
-            ForestMazeSecretMushroomsFlag,
-            ForestMazeSecretWigglerFlag,
-            PipeVaultExteriorFlag,
-            PipeVaultRedPipeFlag,
-            YosterIsleHutFlag,
-            MolevilleHydrantFlag,
-            MolevilleMountainBushFlag,
-            MolevilleBedFlag,
-            MolevilleMinesArrowsFlag,
-            MolevilleMinesCeilingFlag,
-            MolevilleMinesEntryFlag,
-            BoosterPassCornerBushFlag,
-            BoosterTowerExteriorSignFlag,
-            BoosterTowerDeskFlag,
-            BoosterTowerMasherRoomFlag,
-            BoosterTowerCurtainFlag,
-            BoosterTowerThwompInvisibleFlag,
-            BoosterTowerBrokenFrameFlag,
-            BoosterTowerBeetleCageFlag,
-            BoosterTowerToyBoxFlag,
-            MarrymoreOutsideCrateFlag,
-            MarrymoreHallwayFlag,
-            MarrymoreSuiteBedFlag,
-            MarrymoreKitchenFlag,
-            MarrymoreFireplaceFlag,
-            MarrymoreOrganFlag,
-            MarrymoreAltarFlag,
-            StarHillNorthStarFlag,
-            SeasideTownAnchorFlag,
-            SeasideTownHydrantFlag,
-            SeasideTownBucketFlag,
-            SeasideTownFlowersFlag,
-            SeasideTownShedBoxFlag,
-            SeaArrowFlag,
-            SeaBoxesFlag,
-            SeaStalagnateFlag,
-            SeaUnderwaterSailFlag,
-            ShipBarrelPileFlag,
-            ShipDoorMarkerFlag,
-            ShipButtonFlag,
-            ShipSwitchFlag,
-            LandsEndPlatformFlag,
-            LandsEndCannonFlag,
-            LandsEndArrowFlag,
-            LandsEndHillFlag,
-            LandsEndTwoHillFlag,
-            LandsEndStalagmiteFlag,
-            LandsEndCliffBushFlag,
-            LandsEndSignFlag,
-            DojoBonsaiFlag,
-            MonstroEntranceSignFlag,
-            MonstroBatFlag,
-            MonstroFanFlag,
-            MonstroShellFlag,
-            BeanValleyPipeFlag,
-            BeanValleyBeanstalkBlockFlag,
-            CasinoBellFlag,
-            NimbusGoldGoombaFlag,
-            NimbusInnLobbyFlag,
-            NimbusPlantFlag,
-            NimbusBirdFlag,
-            NimbusHotSpringsFlag,
-            VolcanoShipsFlag,
-            KeepPostObstacleBossRoomFlag,
-            KeepThwompFlag,
-            FactoryCanopyFlag,
-            FactoryLugnutFlag,
-            FactoryTrampolineFlag,
-            FactoryButtonFlag,
-        ]
-
-        invisible_flag_locations: dict[type[PrizeLocation], PrizeLocation] = {}
-        for i in range(0, 3):
-            # choose the three invisible item locations
-            if not self.settings.isflag_enabled(InvisibleFlagsSetting):
-                location_cls = invisible_item_pool[i]
-            else:
-                location_cls = random.choice(invisible_item_pool)
-            location = cast(InvisibleFlagLocation, location_cls(i))
-            for r in location._rooms:
-                # place them in rooms and set visibility triggers
-                room = self.rooms._rooms[r]
-                assert room is not None
-                n = location.npc
-                n_id = AreaObject(len(room.objects) + 0x14)
-                n.set_visible(False)
-                self.event_scripts.get_script_by_id(
-                    E0091_INVISIBLE_ITEM_SUMMONER
-                ).insert_before_nth_command(0, SummonObjectToSpecificLevel(n_id, r))
-                room.add_object(location.npc)
-            # set hint text
-            if i == 0:
-                self.update_dialog(
-                    DI1108_RESERVED_FOR_DRYBONESFLAG_HINT,
-                    "DRY BONES:\n" + location.clue_text,
-                )
-            elif i == 1:
-                self.update_dialog(
-                    DI1109_RESERVED_FOR_GREAPERFLAG_HINT,
-                    "GREAPER:\n" + location.clue_text,
-                )
-            elif i == 2:
-                self.update_dialog(
-                    DI1107_RESERVED_FOR_BIGBOOFLAG_HINT,
-                    "THE BIG BOO:\n" + location.clue_text,
-                )
-        self.locations = {**self.locations, **invisible_flag_locations}
-
-        def collect(collected: Inventory | None = None):
-            my_items = Inventory()
-            if collected is not None:
-                my_items.extend(collected)
-
-            available = [l for l in self.locations.values() if l.has_item]
-
-            # Search all locations and collect items until we can't get any more.
-            while True:
-                search_locations = [
-                    l for l in available if l.can_access(my_items, self)
-                ]
-                available = [l for l in available if l not in search_locations]
-                found = Inventory([l.prize for l in search_locations])  # type: ignore - can't be None bc of l.has_item
-                my_items.extend(found)
-                if len(found) == 0:
-                    break
-
-            return my_items
-
-        def place(
-            items: list[Prize],
-            locations: list[PrizeLocation],
-            can_overflow: bool = False,
-        ) -> None:
-            base_inventory = Inventory()
-
-            remaining_to_fill = Inventory(items)
-
-            if not can_overflow and len(remaining_to_fill) > len(
-                [l for l in locations if not l.has_item]
-            ):
-                raise ValueError("Trying to fill more items than available locations")
-
-            # For each required item, place it assuming we can get all other items.
-            for item in items:
-                # Get items we can get assuming we have everything but the one we're placing.
-                remaining_to_fill.remove(item)
-                assumed_items = collect(Inventory(remaining_to_fill + base_inventory))
-
-                fillable_locations = [
-                    l
-                    for l in locations
-                    if not l.has_item
-                    and l.can_access(assumed_items, self)
-                    and l.can_accept(item, assumed_items, self)
-                ]
-                if not fillable_locations:
-                    raise ValueError(
-                        "No available locations for {}, {}".format(
-                            item, remaining_to_fill
-                        )
-                    )
-
-                placed_location = fillable_locations[0]
-                placed_location.set_prize(item)
-
-                # Update Mimic location world areas to match where the launcher was placed
-                if isinstance(item, FirstMimicFightLauncher):
-                    world_area = placed_location._world_area
-                    self.locations[Mimic1BossFight]._world_area = world_area
-                    self.locations[Mimic1DropRewardLocation]._world_area = world_area
-                    self.locations[Mimic1StarPiece]._world_area = world_area
-                    self.locations[Mimic1ReloadRewardLocation]._world_area = world_area
-                elif isinstance(item, SecondMimicFightLauncher):
-                    world_area = placed_location._world_area
-                    self.locations[Mimic2BossFight]._world_area = world_area
-                    self.locations[Mimic2DropRewardLocation]._world_area = world_area
-                    self.locations[Mimic2StarPiece]._world_area = world_area
-                    self.locations[Mimic2ReloadRewardLocation]._world_area = world_area
-                elif isinstance(item, ThirdMimicFightLauncher):
-                    world_area = placed_location._world_area
-                    self.locations[Mimic3BossFight]._world_area = world_area
-                    self.locations[Mimic3StarPiece]._world_area = world_area
-
-        def shuffle():
-
-            # Start off emptying every location of every type
-            for loc in self.locations.values():
-                loc.set_prize(None)
-
-            must_include = []
-            less_important = []
-
-            # init population of must_include
-            if self.settings.isflag_enabled(ShuffleItems):
-                must_include.extend(
-                    [
-                        RareFrogCoinPrize(),
-                        WalletPrize(),
-                        CricketPiePrize(),
-                        BambinoBombPrize(),
-                        CastleKey1Prize(),
-                        CastleKey2Prize(),
-                        ProgressiveCardPrize(),
-                        ProgressiveCardPrize(),
-                        ProgressiveCardPrize(),
-                        GreaperFlagPrize(),
-                        DryBonesFlagPrize(),
-                        BigBooFlagPrize(),
-                        ShedKeyPrize(),
-                        ElderKeyPrize(),
-                        CricketJamPrize(),
-                        TempleKeyPrize(),
-                        RoomKeyPrize(),
-                        SeedPrize(),
-                        FertilizerPrize(),
-                        BrightCardPrize(),
-                        YouMissed(),
-                        ProgressiveEggPrize(),
-                        ProgressiveEggPrize(),
-                        ProgressiveEggPrize(),
-                        LuckyJewelPrize(),
-                        SignalRingPrize(),
-                        GoodieBagPrize(),
-                    ]
-                )
-                if self.settings.isflag_enabled(ShuffleShops):
-                    must_include.extend(
-                        [
-                            CoinTrickPrize(),
-                            ScroogeRingPrize(),
-                            ExpBoosterPrize(),
-                            SeeYaPrize(),
-                            EarlierTimesPrize(),
-                        ]
-                    )
-                if self.settings.isflag_enabled(Remake):
-                    must_include.extend(
-                        [
-                            CrystalShardPrize(),
-                            ExtraShinyStonePrize(),
-                            StayVoucherPrize(),
-                        ]
-                    )
-                if self.settings.isflag_enabled(RestrictSpecialEquips):
-                    must_include.extend(
-                        [
-                            FroggiestickPrize,
-                            ChompPrize,
-                            ZoomShoesPrize,
-                            LazyShellArmorPrize,
-                            LazyShellWeaponPrize,
-                            GhostMedalPrize,
-                            QuartzCharmPrize,
-                            JinxBeltPrize,
-                            AttackScarfPrize,
-                        ]
-                    )
-                    if self.settings.isflag_enabled(Remake):
-                        must_include.extend(
-                            [
-                                WonderChompPrize(),
-                                Stella023Prize(),
-                                SageStickPrize(),
-                                EnduringBroochPrize(),
-                                TeamworkBandPrize(),
-                            ]
-                        )
-                    if self.settings.is_flag_value(SuperJump2Threshold, 100):
-                        coinflip = random.randint(0, 1)
-                        if coinflip == 0:
-                            must_include.append(SuperSuitPrize())
-                        else:
-                            # 50% likely that you will get the super suit in the normal spot if you're good enough at the game to do 100
-                            self.get_location(
-                                MonstroSecondSuperJumpRewardLocation
-                            ).set_prize(SuperSuitPrize())
-                if self.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
-                    must_include.append(GoldPaintPrize())
-                if not self.settings.isflag_enabled(NoStarEgg):
-                    must_include.append(StarEggPrize())
-                # If not using original item pool, ensure that items with specific non-randomizable changes are included at least once
-                if not self.settings.is_flag_value(
-                    ItemQuality, ItemQualityOptions.ORIGINAL_POOL
-                ):
-                    must_include.extend(
-                        [
-                            JumpShoesPrize(),
-                            BtubRingPrize(),
-                        ]
-                    )
-                    if self.settings.isflag_enabled(Remake):
-                        must_include.extend(
-                            [
-                                EnduringBroochPrize(),
-                                StayVoucherPrize(),
-                            ]
-                        )
-
-                if self.settings.is_flag_value(
-                    FireworksSetting, FireworksOptions.SHUFFLE_ONE
-                ):
-                    must_include.append(RegularFireworksPrize())
-                if self.settings.is_flag_value(
-                    FireworksSetting, FireworksOptions.PROGRESSIVE
-                ):
-                    must_include.append(ProgressiveFireworksPrize())
-                    must_include.append(ProgressiveFireworksPrize())
-                    must_include.append(ProgressiveFireworksPrize())
-
-            if self.settings.isflag_enabled(ShuffleCharacters):
-                # Place starting characters based on StartingCharacters flag
-                # Map ally names to their recruitment prize classes
-                ally_name_to_prize: dict[str, type[CharacterPrize]] = {
-                    "Mario": MarioRecruitmentPrize,
-                    "Mallow": MallowRecruitmentPrize,
-                    "Geno": GenoRecruitmentPrize,
-                    "Bowser": BowserRecruitmentPrize,
-                    "Toadstool": ToadstoolRecruitmentPrize,
-                }
-
-                # Starting character locations in order
-                starting_locations = [
-                    StartingCharacter1,
-                    StartingCharacter2,
-                    StartingCharacter3,
-                    StartingCharacter4,
-                    StartingCharacter5,
-                ]
-
-                starting_chars_flag = self.settings.get_flag(StartingCharacters)
-                available_chars_flag = self.settings.get_flag(AvailableCharacters)
-                disabled_char_names = {
-                    m.value.name for m in available_chars_flag.disabled
-                }
-                max_char_count = self.settings.get_flag(MaxCharacters).value
-
-                # Track which characters have been explicitly placed
-                placed_characters: set[type[CharacterPrize]] = set()
-
-                # Place characters based on their ordinance position
-                for idx, option in enumerate(starting_chars_flag.enabled):
-                    if idx >= len(starting_locations) or idx >= max_char_count:
-                        break
-
-                    value = option.value
-                    # Check if this is a "Random_X" string value - skip, shuffler will handle it
-                    if isinstance(value, str):
-                        continue
-
-                    # This is an actual ally instance - place it using its name
-                    ally_name = value.name
-                    if ally_name and ally_name in ally_name_to_prize:
-                        prize_class = ally_name_to_prize[ally_name]
-                        loc = self.locations.get(starting_locations[idx])
-                        if loc is not None:
-                            loc.set_prize(prize_class())
-                            placed_characters.add(prize_class)
-
-                # Add unplaced characters to must_include (unless disabled in AvailableCharacters)
-                all_recruitment_prizes: dict[str, type[CharacterPrize]] = {
-                    "Mario": MarioRecruitmentPrize,
-                    "Mallow": MallowRecruitmentPrize,
-                    "Geno": GenoRecruitmentPrize,
-                    "Bowser": BowserRecruitmentPrize,
-                    "Toadstool": ToadstoolRecruitmentPrize,
-                }
-                for ally_name, prize_class in all_recruitment_prizes.items():
-                    if (
-                        prize_class not in placed_characters
-                        and ally_name not in disabled_char_names
-                        and len(placed_characters) < max_char_count
-                    ):
-                        must_include.append(prize_class())
-                        placed_characters.add(prize_class)
-
-            if self.settings.isflag_enabled(CharacterLearnedSpells):
-                # Build mapping from spell class -> spell prize class
-                spell_to_prize: dict[type, type[SpellPrize]] = {
-                    JumpSpell: JumpSpellPrize,
-                    FireOrbSpell: FireOrbSpellPrize,
-                    SuperJumpSpell: SuperJumpSpellPrize,
-                    SuperFlameSpell: SuperFlameSpellPrize,
-                    UltraJumpSpell: UltraJumpSpellPrize,
-                    UltraFlameSpell: UltraFlameSpellPrize,
-                    ThunderboltSpell: ThunderboltSpellPrize,
-                    HPRainSpell: HPRainSpellPrize,
-                    PsychopathSpell: PsychopathSpellPrize,
-                    ShockerSpell: ShockerSpellPrize,
-                    SnowySpell: SnowyPrize,
-                    StarRainSpell: StarRainSpellPrize,
-                    GenoBeamSpell: GenoBeamSpellPrize,
-                    GenoBoostSpell: GenoBoostSpellPrize,
-                    GenoWhirlSpell: GenoWhirlSpellPrize,
-                    GenoBlastSpell: GenoBlastSpellPrize,
-                    GenoFlashSpell: GenoFlashSpellPrize,
-                    TerrorizeSpell: TerrorizeSpellPrize,
-                    PoisonGasSpell: PoisonGasSpellPrize,
-                    CrusherSpell: CrusherSpellPrize,
-                    BowserCrushSpell: BowserCrushSpellPrize,
-                    TherapySpell: TherapySpellPrize,
-                    GroupHugSpell: GroupHugSpellPrize,
-                    MuteSpell: MuteSpellPrize,
-                    SleepyTimeSpell: SleepyTimeSpellPrize,
-                    ComeBackSpell: ComeBackSpellPrize,
-                    PsychBombSpell: PsychBombSpellPrize,
-                }
-
-                # Get disabled spell classes from AvailableSpells flag
-                available_spells_flag = self.settings.get_flag(AvailableSpells)
-                disabled_spell_classes = {
-                    m.value for m in available_spells_flag.disabled
-                }
-
-                # Get all enabled spell prize classes
-                enabled_spell_prizes: list[type[SpellPrize]] = [
-                    prize_class
-                    for spell_class, prize_class in spell_to_prize.items()
-                    if spell_class not in disabled_spell_classes
-                ]
-
-                # Check if all 5 characters are available
-                available_chars_flag = self.settings.get_flag(AvailableCharacters)
-                all_chars_available = len(available_chars_flag.disabled) == 0
-
-                # If all 5 characters are present, double 3 random spells
-                if all_chars_available and len(enabled_spell_prizes) >= 3:
-                    spells_to_double = random.sample(enabled_spell_prizes, 3)
-                    for spell_prize_class in spells_to_double:
-                        must_include.append(spell_prize_class())
-
-                # Add all enabled spells to the pool
-                # absolutely must have a non-elemental damaging spell
-                must_include.append(
-                    random.choice(
-                        [
-                            p()
-                            for p in enabled_spell_prizes
-                            if p
-                            in [
-                                StarRainSpellPrize,
-                                GenoWhirlSpellPrize,
-                                TerrorizeSpellPrize,
-                                PoisonGasSpellPrize,
-                            ]
-                        ]
-                    )
-                )
-                if SuperJumpSpell not in disabled_spell_classes:
-                    must_include.append(SuperJumpSpellPrize())
-
-                # add all other spells to the "optional" array so that shuffler doesn't throw an error if some of them can't be placed
-                # ie 4 or less characters available
-                less_important.extend(
-                    [
-                        p()
-                        for p in enabled_spell_prizes
-                        if p not in [type(q) for q in must_include]
-                    ]
-                )
-
-            if self.settings.isflag_enabled(ShuffleStarPieces):
-                sp_prizes = [
-                    StarPiece1,
-                    StarPiece2,
-                    StarPiece3,
-                    StarPiece4,
-                    StarPiece5,
-                    StarPiece6,
-                    StarPiece7,
-                ]
-                must_include.extend(
-                    [
-                        sp()
-                        for sp in sp_prizes[
-                            : self.settings.get_flag(TotalStarPieces).value
-                        ]
-                    ]
-                )
-                pass
-
-            if self.settings.isflag_enabled(BossShuffle):
-                # Place disabled bosses (those not enabled in ShuffledBosses)
-                shuffled_bosses_flag = self.settings.get_flag(ShuffledBosses)
-                disabled_boss_types = {m.value for m in shuffled_bosses_flag.disabled}
-                for loc in [
-                    l
-                    for l in self.locations.values()
-                    if isinstance(l, BossFightLocation)
-                    and l.originally_held is not None
-                ]:
-                    if loc.originally_held in disabled_boss_types:
-                        loc.set_prize(loc.originally_held())  # type: ignore
-                    else:
-                        must_include.append(loc.originally_held())  # type: ignore
-
-            # check-by-check set for disabled flags and pulling items into inclusion array
-            for loc in self.locations.values():
-                if loc.originally_held is None:
-                    continue
-                if isinstance(loc, CharacterRecruitmentLocation):
-                    if not self.settings.isflag_enabled(ShuffleCharacters):
-                        loc.set_prize(loc.originally_held())
-
-                elif isinstance(loc, StarPieceLocation):
-                    if not self.settings.isflag_enabled(ShuffleStarPieces):
-                        loc.set_prize(loc.originally_held())
-
-                elif isinstance(loc, BossFightLocation):
-                    if not self.settings.isflag_enabled(BossShuffle):
-                        loc.set_prize(loc.originally_held())
-
-                elif isinstance(loc, SpellSlotLocation):
-                    if not self.settings.isflag_enabled(CharacterLearnedSpells):
-                        loc.set_prize(loc.originally_held())
-
-                elif isinstance(loc, FrogDiscipleLocation):
-                    if not self.settings.isflag_enabled(ShuffleShops):
-                        loc.set_prize(loc.originally_held())
-
-                else:
-                    if not self.settings.isflag_enabled(ShuffleItems):
-                        loc.set_prize(loc.originally_held())
-                    else:
-                        if isinstance(loc.originally_held(), EXPStarPrize):
-                            if self.settings.isflag_enabled(EXPStarsAnywhere):
-                                must_include.append(loc.originally_held())
-                            else:
-                                loc.set_prize(loc.originally_held())
-                        if isinstance(loc.originally_held(), MimicFightInitiatorPrize):
-                            if self.settings.isflag_enabled(MimicsAnywhere):
-                                must_include.append(loc.originally_held())
-                            else:
-                                loc.set_prize(loc.originally_held())
-                        if isinstance(loc.originally_held(), SlotsPrize):
-                            if self.settings.isflag_enabled(SlotsAnywhere):
-                                must_include.append(loc.originally_held())
-                            else:
-                                loc.set_prize(loc.originally_held())
-                        if isinstance(loc.originally_held(), BeetlemaniaPrize):
-                            if self.settings.isflag_enabled(ShuffleBeetlemania):
-                                must_include.append(loc.originally_held())
-                            else:
-                                loc.set_prize(loc.originally_held())
-                        if isinstance(loc.originally_held(), InfiniteCoinsPrize):
-                            if self.settings.isflag_enabled(ShuffleMagikoopaChest):
-                                must_include.append(loc.originally_held())
-                            else:
-                                loc.set_prize(loc.originally_held())
-                        if isinstance(loc.originally_held(), WeddingGearPrize):
-                            if self.settings.isflag_enabled(ShuffleWeddingGear):
-                                must_include.append(loc.originally_held())
-                            else:
-                                loc.set_prize(loc.originally_held())
-                        if isinstance(loc.originally_held(), RegularFireworksPrize):
-                            if self.settings.is_flag_value(
-                                FireworksSetting, FireworksOptions.VANILLA
-                            ):
-                                loc.set_prize(loc.originally_held())
-                        # for every location whose prize isn't already in must_include, create a generic prize that could theoretically go in it
-                        elif (
-                            len(
-                                [
-                                    p
-                                    for p in must_include
-                                    if isinstance(p, loc.originally_held)
-                                ]
-                            )
-                            == 0
-                        ):
-                            if self.settings.is_flag_value(
-                                ItemQuality, ItemQualityOptions.ORIGINAL_POOL
-                            ):
-                                less_important.append(loc.originally_held())
-                            else:
-                                less_important.append(
-                                    RandomPrizeSubstitute().generate(self, loc)
-                                )
-
-            # shuffle!
-            to_fill = copy(list(self.locations.values()))
-
-            random.shuffle(must_include)
-            random.shuffle(to_fill)
-            place(must_include, to_fill)
-
-            random.shuffle(less_important)
-            random.shuffle(to_fill)
-            place(less_important, to_fill, can_overflow=True)
-
-            collected = set(collect())
-
-            # Verify all must_include prizes were placed
-            missing_prizes = [p for p in must_include if p not in collected]
-            if missing_prizes:
-                missing_names = [type(p).__name__ for p in missing_prizes]
-                raise WorldBuildingException(
-                    f"Failed to place required prizes: {', '.join(missing_names)}"
-                )
-
-        shuffle()
-
-        # replace as necessary
-        for loc in [
-            s for s in self.locations.values() if isinstance(s, TreasureChestLocation)
-        ]:
-            if not loc.has_item:
-                if self.settings.isflag_enabled(AnnoyingChests):
-                    loc.set_prize(YouMissed())
-                else:
-                    disable = zip(loc._rooms, loc._npc_ids)
-                    for room, npc in disable:
-                        self.event_2496_startup.append(
-                            DisableObjectTriggerInSpecificLevel(npc, room)
-                        )
-        for loc in [
-            s
-            for s in self.locations.values()
-            if s.has_item
-            and isinstance(s, StandardPrizeLocation)
-            and not isinstance(s, RiverLocation)
-        ]:
-            if isinstance(loc.prize, ItemPrize) and (
-                isinstance(
-                    loc.prize,
-                    (
-                        MushroomItem,
-                        HoneySyrupItem,
-                        AbleJuiceItem,
-                        YoshiCookieItem,
-                        PureWaterItem,
-                        FroggieDrinkItem,
-                        WiltShroomItem,
-                        RottenMushItem,
-                        MoldyMushItem,
-                        MushroomItem2,
-                    ),
-                )
-                or (
-                    not self.settings.is_flag_value(
-                        EquipmentProperties, EquipmentPropertiesOptions.SOME
-                    )
-                    and type(loc.prize) in self.low_impact_equip
-                )
-            ):
-                loc.set_prize(CoinPrize(self.get_item(loc.prize.item).price // 2))
-
-        # todo: loop until success
-        # after shuffle, go thru and fill empty chests with YouMissed and replace bad items with coins
-
+        print(self.spoiler)
+        
         # set
         # after shuffle completes, render all the granter events
         # place npcs in rooms
@@ -4890,6 +2596,7 @@ class GameWorld:
         self.password_author = password.submitter_credits
 
     def get_patch(self) -> Patch:
+        self._report_progress("Rendering game data", 75)
         patch = Patch()
 
         # Battle animations patch
@@ -4913,6 +2620,7 @@ class GameWorld:
 
         # Dialogs, enemies, items, action scripts, packets, battle packs, rooms, shops, spells
         # Run all render() calls in parallel
+        self._report_progress("Rendering (parallel)", 85)
         with ThreadPoolExecutor() as executor:
             futures = {
                 "battle_dialogs": executor.submit(self.battle_dialogs.render),
@@ -5000,6 +2708,7 @@ class GameWorld:
             )
 
         # Palettes
+        self._report_progress("Rendering palettes", 95)
 
         if self.main_character == MARIO_Ally:
             for i, p in self.mario_palette.doll_patch().items():
@@ -5154,4 +2863,5 @@ class GameWorld:
         v = self.version.split(".")
         patch.add_data(0x7FDB, int(v[0]))
 
+        self._report_progress("Complete", 100)
         return patch

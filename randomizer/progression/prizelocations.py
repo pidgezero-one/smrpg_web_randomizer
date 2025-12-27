@@ -130,6 +130,7 @@ class StartingItem1Location(NPCLocationRow2):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_1
     _world_area = WorldAreaEnum.MARIOS_PAD
+    _blacklist = [StarPiecePrize]
     # this is granted at the start of the game by default
 
 
@@ -138,6 +139,7 @@ class StartingItem2Location(NPCLocationRow3):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_2
     _world_area = WorldAreaEnum.MARIOS_PAD
+    _blacklist = [StarPiecePrize]
     # this is granted at the start of the game by default
 
 
@@ -146,6 +148,7 @@ class StartingItem3Location(NPCLocationRow4):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_3
     _world_area = WorldAreaEnum.MARIOS_PAD
+    _blacklist = [StarPiecePrize]
     # this is granted at the start of the game by default
 
 
@@ -154,6 +157,7 @@ class StartingItem4Location(NPCLocationRow5):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_4
     _world_area = WorldAreaEnum.MARIOS_PAD
+    _blacklist = [StarPiecePrize]
     # this is granted at the start of the game by default
 
 
@@ -3041,6 +3045,7 @@ class BoosterTowerFallingChestLocation(
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_MASHER
     _container_event = E0253_NPC_QUEST_1_GRANT
+    _world_area = WorldAreaEnum.BOOSTER_TOWER
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -9854,9 +9859,14 @@ def can_defeat_some_of(
 ) -> bool:
     """If true, the player is expected to be able to defeat at least some of
     the provided bosses."""
-    bosses: list[bool] = [cond(world, inventory) for cond in conditions]
-    completable: list[bool] = [cond for cond in bosses if cond]
-    return len(completable) >= amount
+    # Short-circuit: return True as soon as we've met the required amount
+    count = 0
+    for cond in conditions:
+        if cond(world, inventory):
+            count += 1
+            if count >= amount:
+                return True
+    return False
 
 
 def can_defeat_all_of(

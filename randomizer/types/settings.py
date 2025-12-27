@@ -16,6 +16,7 @@ class Settings:
     _debug_mode: bool = False
     _flags: dict[type[Flag], Flag]
     _override: dict = {}
+    _is_flag_value_cache: dict[tuple[type[Flag], Any], bool]
 
     @property
     def override(self) -> dict:
@@ -28,6 +29,7 @@ class Settings:
         return self.get_flag_string_without_cosmetics()
 
     def __init__(self) -> None:
+        self._is_flag_value_cache = {}
         # todo: get setting params in here
         self._flags = {
             ShuffleCharacters: ShuffleCharacters(),
@@ -50,6 +52,7 @@ class Settings:
             ShuffleStarPieces: ShuffleStarPieces(),
             TotalStarPieces: TotalStarPieces(),
             EnabledBossChecks: EnabledBossChecks(),
+            EnabledStarPieceChecks: EnabledStarPieceChecks(),
             ProgressionLogicDifficulty: ProgressionLogicDifficulty(),
             DisperseStarPieces: DisperseStarPieces(),
             ShuffleItems: ShuffleItems(),
@@ -59,6 +62,7 @@ class Settings:
             RestrictSpecialEquips: RestrictSpecialEquips(),
             EXPStarsAnywhere: EXPStarsAnywhere(),
             ShuffleHillFlowers: ShuffleHillFlowers(),
+            ShuffleCoins: ShuffleCoins(),
             MimicsAnywhere: MimicsAnywhere(),
             SlotsAnywhere: SlotsAnywhere(),
             ShuffleBeetlemania: ShuffleBeetlemania(),
@@ -164,19 +168,27 @@ class Settings:
         return cast(FlagT, self._flags[flag_type])
     
     def is_flag_value(self, flag_class: type[FlagT], value: Any) -> bool:
-        """Check if a setting is set to the given value."""
+        """Check if a setting is set to the given value. Results are cached."""
+        cache_key = (flag_class, value)
+        if cache_key in self._is_flag_value_cache:
+            return self._is_flag_value_cache[cache_key]
+
         flag = self.get_flag(flag_class)
         if isinstance(flag, BooleanFlag):
-            return flag.enabled == value
-        if isinstance(flag, SelectOneFlag):
-            return flag.selected == value
-        if isinstance(flag, RangeFlag):
-            return flag.value == value
-        if isinstance(flag, CategorizationFlag):
-            return value in flag.enabled
-        raise RandomizerSettingsException(
-            f"is_flag_value unknown flag type {type(flag)}"
-        )
+            result = flag.enabled == value
+        elif isinstance(flag, SelectOneFlag):
+            result = flag.selected == value
+        elif isinstance(flag, RangeFlag):
+            result = flag.value == value
+        elif isinstance(flag, CategorizationFlag):
+            result = value in flag.enabled
+        else:
+            raise RandomizerSettingsException(
+                f"is_flag_value unknown flag type {type(flag)}"
+            )
+
+        self._is_flag_value_cache[cache_key] = result
+        return result
     
     def isflag_enabled(self, flag_class: type[BooleanFlag]) -> bool:
         """Check if a boolean flag is on or not."""
@@ -186,26 +198,50 @@ class Settings:
 
     @staticmethod
     def _get_sorted_options_list(flag: CategorizationFlag) -> list:
-        """Get options sorted alphabetically by display text (matching frontend order)."""
+        """Get options sorted alphabetically by display text (matching frontend order).
+
+        IMPORTANT: This must exactly match _get_option_text() in flags.py!
+        """
         def get_text(opt) -> str:
             if hasattr(opt, 'value'):
                 val = opt.value
-                # Check if val is a class type (for ClassCategorizationOption)
-                if isinstance(val, type):
-                    # For class types, use _title (spell title) or _name or __name__
-                    if hasattr(val, '_title') and val._title:
-                        return val._title
-                    if hasattr(val, '_name') and val._name:
-                        return val._name
-                    return val.__name__
-                # For instances, check for string attributes
-                if hasattr(val, '_name') and isinstance(val._name, str):
-                    return val._name
-                if hasattr(val, 'name') and isinstance(val.name, str):
-                    return val.name
-            if hasattr(opt, 'name'):
-                return opt.name
-            return str(opt)
+            else:
+                val = opt
+
+            # Must match priority order in flags.py _get_option_text():
+            # 1. string check
+            if isinstance(val, str):
+                return val
+            # 2. tuple check
+            if isinstance(val, tuple):
+                if len(val) >= 2 and isinstance(val[1], str):
+                    return val[1]
+                return str(val)
+            # 3. _text (boss fights)
+            if hasattr(val, '_text'):
+                return val._text
+            # 4. _name (battle music classes) - must be string
+            if hasattr(val, '_name') and isinstance(val._name, str):
+                return val._name
+            # 5. _title (spells)
+            if hasattr(val, '_title'):
+                return val._title
+            # 6. _id.value (prize locations with ShuffleLocationSelector enum)
+            if hasattr(val, '_id'):
+                id_val = val._id
+                if hasattr(id_val, 'value') and isinstance(id_val.value, str):
+                    return id_val.value
+            # 7. value (if string, for simple enums)
+            if hasattr(val, 'value') and isinstance(val.value, str):
+                return val.value
+            # 8. name attribute (allies)
+            if hasattr(val, 'name') and isinstance(val.name, str):
+                return val.name
+            # 9. __name__ (class types)
+            if hasattr(val, '__name__'):
+                return val.__name__
+            # 10. str() fallback
+            return str(val)
         return sorted(flag.options.keys(), key=lambda x: get_text(x).lower())
 
     @staticmethod

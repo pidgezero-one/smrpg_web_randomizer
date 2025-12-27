@@ -1,4 +1,5 @@
 from copy import deepcopy
+from typing import Callable
 
 from .types.gameworld import GameWorld, Settings
 from .types.patch import Patch
@@ -25,11 +26,21 @@ from .data.world_map_locations.world_map_locations import world_map_location_col
 # Current version number
 VERSION = '9.0.0'
 
-def create(seed: int | str, settings: Settings ) -> GameWorld:
+def create(
+    seed: int | str,
+    settings: Settings,
+    progress_callback: Callable[[str, int], None] | None = None,
+) -> GameWorld:
     """Create a patch for the given seed.
 
     Deep copies all mutable collections so modifications during randomization
     don't affect subsequent seed generations.
+
+    Args:
+        seed: The randomizer seed value.
+        settings: The randomizer settings/flags.
+        progress_callback: Optional callback for progress updates. Called with
+            (message: str, percent: int) during generation.
     """
     return GameWorld(
         seed,
@@ -56,5 +67,6 @@ def create(seed: int | str, settings: Settings ) -> GameWorld:
         deepcopy(ALL_SPELLS),
         deepcopy(sprites),
         deepcopy(world_map_location_collection),
+        progress_callback=progress_callback,
     )
 
