@@ -10242,14 +10242,12 @@ def can_access_chapel(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_access_chapel_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the boss of Marrymore."""
-    has_gear = True
-    if world.settings.isflag_enabled(ShuffleWeddingGear):
-        has_gear = (
-            inventory.has_item(ShoesPrize)
-            and inventory.has_item(RingPrize)
-            and inventory.has_item(BroochPrize)
-            and inventory.has_item(CrownPrize)
-        )
+    has_gear = (
+        inventory.has_item(ShoesPrize)
+        and inventory.has_item(RingPrize)
+        and inventory.has_item(BroochPrize)
+        and inventory.has_item(CrownPrize)
+    ) 
     return (
         has_gear
         and can_access_chapel(world, inventory)

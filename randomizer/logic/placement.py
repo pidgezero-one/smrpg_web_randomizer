@@ -68,11 +68,15 @@ def place(
     locations: list[PrizeLocation],
     can_overflow: bool = False,
     on_placed: Callable[[Prize, PrizeLocation], None] | None = None,
-) -> None:
-    """Place items at locations using assumed-reachability algorithm.
+) -> list[Prize]:
+    """Place items at locations using assumed-reachability algorithm with retry.
 
     For each item, assumes all other items are collected and finds
     a location where this item can be placed while remaining reachable.
+
+    If an item can't be placed (e.g., due to location dependencies), it's
+    deferred and retried after other items are placed. This continues until
+    either all items are placed or no progress can be made.
 
     Args:
         world: The game world containing locations and settings
@@ -81,21 +85,44 @@ def place(
         can_overflow: If True, allows more items than locations
         on_placed: Optional callback(item, location) called after each placement
 
+    Returns:
+        List of items that could not be placed (empty if all succeeded)
+
     Raises:
         ValueError: If there are more items than locations (when can_overflow=False)
-        ValueError: If no valid location can be found for an item
     """
-    print("place begins", debug_time())
     from ..types.logic import Inventory as Inv
 
-    remaining_to_fill = Inv(items)
-
-    if not can_overflow and len(remaining_to_fill) > len(
+    if not can_overflow and len(items) > len(
         [l for l in locations if not l.has_item]
     ):
         raise ValueError("Trying to fill more items than available locations")
-    
+
+    def get_filtered_locations(item: Prize) -> list[PrizeLocation]:
+        """Get the appropriate location list for an item type."""
+        if isinstance(item, KeyPrize):
+            return list(world.extra_key_item_locations)
+        elif isinstance(item, StarPiecePrize):
+            threshold = random.randint(0, 10)
+            if threshold < 3:
+                return list(world.star_piece_locations)
+            else:
+                return list(world.extra_star_piece_locations)
+        elif isinstance(item, CharacterPrize):
+            return list(world.character_recruitment_locations)
+        elif isinstance(item, (SlotsPrize, EXPStarPrize, MimicFightInitiatorPrize)):
+            return list(world.chest_locations)
+        elif isinstance(item, (CoinPrize, FrogCoinPrize)):
+            return list(world.coin_locations)
+        elif isinstance(item, SpellPrize):
+            return list(world.spell_locations)
+        elif isinstance(item, BossFightPrize):
+            return list(world.boss_fight_locations)
+        else:
+            return list(world.standard_locations)
+
     def attempt_place(item: Prize, fl: list[PrizeLocation], assumed: Inventory) -> bool:
+        """Try to place an item at any valid location."""
         for l in fl:
             if l.has_item:
                 continue
@@ -106,53 +133,61 @@ def place(
             l.set_prize(item)
             if on_placed:
                 on_placed(item, l)
-            print(debug_time(), "placed", type(item), "at", type(l))
+            print(debug_time(), "placed", type(item).__name__, "at", type(l).__name__)
             return True
         return False
 
+    # Items waiting to be placed
+    pending = list(items)
+    random.shuffle(pending)
 
-    # For each required item, place it assuming we can get all other items.
-    for item in items:
-        # Get items we can get assuming we have everything but the one we're placing.
-        remaining_to_fill.remove(item)
-        assumed_items = collect(world, remaining_to_fill)
+    # Track items that couldn't be placed in the current pass
+    failed_items: list[Prize] = []
 
-        filtered_locations = locations
-        if isinstance(item, KeyPrize):
-            filtered_locations = world.extra_key_item_locations
-        elif isinstance(item, StarPiecePrize):
-            threshold = random.randint(0, 10)
-            if threshold < 3:
-                filtered_locations = world.star_piece_locations
+    while pending:
+        made_progress = False
+        deferred: list[Prize] = []
+
+        # Build assumed inventory from all pending items
+        remaining_to_fill = Inv(pending)
+
+        for item in pending:
+            # Assume we have everything except the item we're placing
+            remaining_to_fill.remove(item)
+            assumed_items = collect(world, remaining_to_fill)
+
+            filtered_locations = get_filtered_locations(item)
+            placed = attempt_place(item, filtered_locations, assumed_items)
+
+            if placed:
+                made_progress = True
             else:
-                filtered_locations = world.extra_star_piece_locations
-        elif isinstance(item, CharacterPrize):
-            filtered_locations = world.character_recruitment_locations
-        elif isinstance(item, (SlotsPrize, EXPStarPrize, MimicFightInitiatorPrize)):
-            filtered_locations = world.chest_locations
-        elif isinstance(item, (CoinPrize, FrogCoinPrize)):
-            filtered_locations = world.coin_locations
-        elif isinstance(item, SpellPrize):
-            filtered_locations = world.spell_locations
-        elif isinstance(item, BossFightPrize):
-            filtered_locations = world.boss_fight_locations
-        else:
-            filtered_locations = world.standard_locations
-        placed = attempt_place(item, filtered_locations, assumed_items)
+                # Couldn't place - defer for retry
+                deferred.append(item)
+                # Add back to remaining for next item's assumed inventory
+                remaining_to_fill.append(item)
 
-        if not placed:
-            # Debug: show why placement failed
-            empty_locs = [l for l in filtered_locations if not l.has_item]
-            accessible_locs = [l for l in empty_locs if l.can_access(assumed_items, world)]
-            acceptable_locs = [l for l in accessible_locs if l.can_accept(item, assumed_items, world)]
-            print(f"FAILED to place {type(item).__name__}:")
-            print(f"  filtered_locations: {len(list(filtered_locations))}")
-            print(f"  empty: {empty_locs}")
-            print(f"  accessible: {accessible_locs}")
-            print(f"  acceptable: {acceptable_locs}")
-            print(f"  inaccessible:{[l for l in empty_locs if l not in accessible_locs]}")
-            print(f"  assumed_items: {assumed_items}")
-            print(f"  set: {world.locations.values()}")
+        if not made_progress:
+            # No progress in this pass - these items truly can't be placed
+            failed_items = deferred
+            for item in failed_items:
+                filtered_locations = get_filtered_locations(item)
+                empty_locs = [l for l in filtered_locations if not l.has_item]
+                print(f"FAILED to place {type(item).__name__}:")
+                print(f"  filtered_locations: {len(filtered_locations)}")
+                print(f"  empty: {len(empty_locs)}")
+            break
+
+        # Retry deferred items in next pass (shuffle for variety)
+        pending = deferred
+        if pending:
+            random.shuffle(pending)
+            print(f"Retrying {len(pending)} deferred items...")
+
+    if failed_items:
+        print(f"WARNING: {len(failed_items)} items could not be placed")
+
+    return failed_items
 
 
 def fill_remaining(

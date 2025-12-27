@@ -67,7 +67,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     3. Places prizes using assumed-reachability algorithm
     4. Verifies all required prizes were placed
     """
-    print("starting shuffle_prizes at", debug_time())
     from ...types.flags import (
         ShuffleItems,
         ShuffleShops,
@@ -252,12 +251,10 @@ def shuffle_prizes(world: GameWorld) -> None:
     )
     from ...types.gameworld import WorldBuildingException
 
-    print("imports done", debug_time())
 
     # Start off emptying every location of every type
     for loc in world.locations.values():
         loc.set_prize(None)
-    print("set all to none", debug_time())
 
     must_include: list[Prize] = []
     less_important: list[Prize] = []
@@ -347,6 +344,8 @@ def shuffle_prizes(world: GameWorld) -> None:
                     world.get_location(MonstroSecondSuperJumpRewardLocation).set_prize(
                         SuperSuitPrize()
                     )
+            else:
+                must_include.append(SuperSuitPrize())
         if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
             must_include.append(GoldPaintPrize())
         if not world.settings.isflag_enabled(NoStarEgg):
@@ -376,7 +375,6 @@ def shuffle_prizes(world: GameWorld) -> None:
             must_include.append(ProgressiveFireworksPrize())
             must_include.append(ProgressiveFireworksPrize())
             must_include.append(ProgressiveFireworksPrize())
-    print("must_include items filled", debug_time())
 
     if world.settings.isflag_enabled(ShuffleCharacters):
         # Place starting characters based on StartingCharacters flag
@@ -432,7 +430,9 @@ def shuffle_prizes(world: GameWorld) -> None:
             "Bowser": BowserRecruitmentPrize,
             "Toadstool": ToadstoolRecruitmentPrize,
         }
-        for ally_name, prize_class in all_recruitment_prizes.items():
+        shuffled_chars = list(all_recruitment_prizes.items())
+        random.shuffle(shuffled_chars)
+        for ally_name, prize_class in shuffled_chars:
             if (
                 prize_class not in placed_characters
                 and ally_name not in disabled_char_names
@@ -440,7 +440,6 @@ def shuffle_prizes(world: GameWorld) -> None:
             ):
                 must_include.append(prize_class())
                 placed_characters.add(prize_class)
-    print("must_include characters filled", debug_time())
 
     if world.settings.isflag_enabled(CharacterLearnedSpells):
         # Build mapping from spell class -> spell prize class
@@ -477,7 +476,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         # Get disabled spell classes from AvailableSpells flag
         available_spells_flag = world.settings.get_flag(AvailableSpells)
         disabled_spell_classes = {m.value for m in available_spells_flag.disabled}
-
+        
         # Get all enabled spell prize classes
         enabled_spell_prizes: list[type[SpellPrize]] = [
             prize_class
@@ -540,8 +539,6 @@ def shuffle_prizes(world: GameWorld) -> None:
             )
         )
 
-    print("must_include spells filled", debug_time())
-
     if world.settings.isflag_enabled(ShuffleStarPieces):
         sp_prizes = [
             StarPiece1,
@@ -555,7 +552,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         must_include.extend(
             [sp() for sp in sp_prizes[: world.settings.get_flag(TotalStarPieces).value]]
         )
-    print("must_include stars filled", debug_time())
 
     if world.settings.isflag_enabled(BossShuffle):
         # Place disabled bosses (those not enabled in ShuffledBosses)
@@ -570,7 +566,7 @@ def shuffle_prizes(world: GameWorld) -> None:
                 loc.set_prize(loc.originally_held())  # type: ignore
             else:
                 must_include.append(loc.originally_held())  # type: ignore
-
+    
     if not world.settings.isflag_enabled(ShuffleCoins):
         # Add all shuffled coins to must_include
         coin_locations = [
@@ -582,7 +578,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         ]
         for loc in coin_locations:
             loc.set_prize(loc.originally_held())  # type: ignore
-    print("must_include bosses filled", debug_time())
 
     # Check-by-check set for disabled flags and pulling items into inclusion array
     for loc in world.locations.values():
@@ -661,7 +656,6 @@ def shuffle_prizes(world: GameWorld) -> None:
                         less_important.append(
                             RandomPrizeSubstitute().generate(world, loc)
                         )
-    print("set unshuffled locations", debug_time())
 
     # Shuffle!
     to_fill = copy(list(world.locations.values()))

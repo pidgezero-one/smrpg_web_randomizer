@@ -291,8 +291,9 @@ class Settings:
 
         Format: colon-separated indices in selection order
         Example: "0:1:2" means options at indices 0, 1, 2 in that order
+        Options are sorted alphabetically by display text to match frontend order.
         """
-        options_list = list(flag.options.keys())
+        options_list = Settings._get_sorted_options_list(flag)
 
         # Get enabled options sorted by their order value
         enabled_with_order = [
@@ -314,8 +315,9 @@ class Settings:
 
         Format: colon-separated indices in selection order
         Example: "0:1:2" means options at indices 0, 1, 2 in that order
+        Options are sorted alphabetically by display text to match frontend order.
         """
-        options_list = list(flag.options.keys())
+        options_list = Settings._get_sorted_options_list(flag)
         result: dict = {opt: None for opt in options_list}
 
         if not hash_str:
