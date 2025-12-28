@@ -135,18 +135,19 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
 
     # Poison Mushroom random status effect
     if world.settings.isflag_enabled(PoisonMushroom):
-        world.items.get_by_type(MushroomItem2).set_status_immunities([
-            random.choice([
-                Status.MUTE,
-                Status.SLEEP,
-                Status.POISON,
-                Status.FEAR,
-                Status.BERSERK,
-                Status.MUSHROOM,
-                Status.SCARECROW,
-                Status.INVINCIBLE,
-            ])
+        chosen_status = random.choice([
+            Status.MUTE,
+            Status.SLEEP,
+            Status.POISON,
+            Status.FEAR,
+            Status.BERSERK,
+            Status.MUSHROOM,
+            Status.SCARECROW,
+            Status.INVINCIBLE,
         ])
+        print(chosen_status)
+        world.items.get_by_type(MushroomItem2).set_status_immunities([chosen_status])
+        world.poison_mushroom_status = chosen_status.name
 
     # Uncap super jumps
     if world.settings.isflag_enabled(UncapSuperJumps):

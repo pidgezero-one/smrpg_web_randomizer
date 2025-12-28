@@ -14,8 +14,10 @@ from ..types.prize import (
     CoinPrize,
     FrogCoinPrize,
     SpellPrize,
-    BossFightPrize,
+    BossFightPrize, 
+    ItemPrize
 )
+from ..types.prizelocation import FrogDiscipleLocation
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -98,13 +100,13 @@ def place(
     ):
         raise ValueError("Trying to fill more items than available locations")
 
-    def get_filtered_locations(item: Prize) -> list[PrizeLocation]:
+    def get_filtered_locations(item: Prize, assumed_items: Inventory) -> list[PrizeLocation]:
         """Get the appropriate location list for an item type."""
         if isinstance(item, KeyPrize):
             return list(world.extra_key_item_locations)
         elif isinstance(item, StarPiecePrize):
             threshold = random.randint(0, 10)
-            if threshold < 3:
+            if threshold < 6:
                 return list(world.star_piece_locations)
             else:
                 return list(world.extra_star_piece_locations)
@@ -119,6 +121,11 @@ def place(
         elif isinstance(item, BossFightPrize):
             return list(world.boss_fight_locations)
         else:
+            frog = random.randint(0, 10)
+            if frog < 3:
+                for l in world.standard_locations:
+                    if isinstance(l, FrogDiscipleLocation) and not l.has_item and l.can_access(assumed_items, world) and l.can_accept(item, assumed_items, world):
+                        return [l]
             return list(world.standard_locations)
 
     def attempt_place(item: Prize, fl: list[PrizeLocation], assumed: Inventory) -> bool:
@@ -131,9 +138,10 @@ def place(
             if not l.can_accept(item, assumed, world):
                 continue
             l.set_prize(item)
+            world.notify_prize_placed(l, item)  # Update caches
             if on_placed:
                 on_placed(item, l)
-            print(debug_time(), "placed", type(item).__name__, "at", type(l).__name__)
+            print(debug_time(), "placed", type(item).__name__, "*" if (isinstance(item, ItemPrize) and item._monstro_shuffle) else "", "at", type(l).__name__, "*" if l.monstro_shuffle else "")
             return True
         return False
 
@@ -156,7 +164,8 @@ def place(
             remaining_to_fill.remove(item)
             assumed_items = collect(world, remaining_to_fill)
 
-            filtered_locations = get_filtered_locations(item)
+            filtered_locations = get_filtered_locations(item, assumed_items)
+            random.shuffle(filtered_locations)
             placed = attempt_place(item, filtered_locations, assumed_items)
 
             if placed:
@@ -171,11 +180,7 @@ def place(
             # No progress in this pass - these items truly can't be placed
             failed_items = deferred
             for item in failed_items:
-                filtered_locations = get_filtered_locations(item)
-                empty_locs = [l for l in filtered_locations if not l.has_item]
-                print(f"FAILED to place {type(item).__name__}:")
-                print(f"  filtered_locations: {len(filtered_locations)}")
-                print(f"  empty: {len(empty_locs)}")
+                print(f"FAILED to place {type(item).__name__}")
             break
 
         # Retry deferred items in next pass (shuffle for variety)
@@ -218,5 +223,6 @@ def fill_remaining(
         for loc in empty_locations:
             if loc.can_accept(item, empty_inv, world):
                 loc.set_prize(item)
+                world.notify_prize_placed(loc, item)  # Update caches
                 empty_locations.remove(loc)
                 break

@@ -17,7 +17,7 @@ script = AnimationScriptBlock(expected_size=260, expected_beginning=0x35816D, sc
                     "armoraccessorybase_misssound", 
                     "armoraccessorybase_misssound", 
                     "space1_misssound", 
-                    "space2_misssound", 
+                    "command_0x3581C1", 
                     "hammer_misssound", 
                     "froggiestick_misssound", 
                     "noknokshell_misssound", 

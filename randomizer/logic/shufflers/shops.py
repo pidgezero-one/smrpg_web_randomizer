@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
-    from smrpgpatchbuilder.datatypes.items.classes import BaseItem
+    from smrpgpatchbuilder.datatypes.items.classes import Item as BaseItem
 
 
 def shuffle_shops(world: GameWorld) -> None:
@@ -330,56 +330,59 @@ def shuffle_shops(world: GameWorld) -> None:
         frog_emporium_shop.set_items(emporium_new_items)
 
     # Handle Juice Bar hierarchy (BASE < ALTO < TENOR < SOPRANO)
+    # Items cascade upward: BASE items appear in all, ALTO items appear in ALTO+TENOR+SOPRANO, etc.
     juice_bars = [
         JUICE_BAR_BASE,
         JUICE_BAR_ALTO,
         JUICE_BAR_TENOR,
         JUICE_BAR_SOPRANO,
     ]
-    juice_bar_items: dict[int, list[type[BaseItem] | None]] = {}
+    juice_bar_max_items = {
+        JUICE_BAR_BASE: 12,
+        JUICE_BAR_ALTO: 13,
+        JUICE_BAR_TENOR: 14,
+        JUICE_BAR_SOPRANO: 15,
+    }
+    juice_bar_items: dict[int, list[type[BaseItem] | None]] = {
+        bar: [] for bar in juice_bars
+    }
 
-    for i, bar_idx in enumerate(juice_bars):
+    def add_to_juice_bar_cascade(item: type[BaseItem], starting_tier: int) -> bool:
+        """Add item to starting_tier and all higher tiers (if they have room).
+        Returns True if item was added to at least the starting tier."""
+        added_to_start = False
+        for i in range(starting_tier, len(juice_bars)):
+            bar_idx = juice_bars[i]
+            max_items = juice_bar_max_items[bar_idx]
+            items_list = juice_bar_items[bar_idx]
+            if len(items_list) < max_items and item not in items_list:
+                items_list.append(item)
+                if i == starting_tier:
+                    added_to_start = True
+        return added_to_start
+
+    # Fill each tier, cascading items to higher tiers
+    for tier_idx, bar_idx in enumerate(juice_bars):
         shop = world.shops.shops[bar_idx]
         if shop is None:
             continue
 
-        shop_data = original_shop_data.get(bar_idx, {})
+        max_items = juice_bar_max_items[bar_idx]
+        current_items = juice_bar_items[bar_idx]
 
-        if i == 0:
-            # BASE: start fresh
-            target_count = max(1, shop_data.get("original_count", 1))
-            bar_new_items: list[type[BaseItem] | None] = []
-            for _ in range(target_count):
-                item = select_item(bar_idx, bar_new_items)
-                if item:
-                    bar_new_items.append(item)
-            juice_bar_items[bar_idx] = bar_new_items
-        else:
-            # Must be superset of previous (but not same)
-            prev_items = list(juice_bar_items.get(juice_bars[i - 1], []))
-            bar_new_items = list(prev_items)  # Start with previous items
-            # Add at least one more item
-            added = 0
-            attempts = 0
-            while added < 1 and attempts < 50:
-                item = select_item(bar_idx, bar_new_items)
-                if item and item not in bar_new_items:
-                    bar_new_items.append(item)
-                    added += 1
-                attempts += 1
-            # Try to add more up to original count or 15
-            target_extra = min(
-                15 - len(bar_new_items),
-                shop_data.get("original_count", len(bar_new_items))
-                - len(prev_items),
-            )
-            for _ in range(max(0, target_extra - 1)):
-                item = select_item(bar_idx, bar_new_items)
-                if item and item not in bar_new_items:
-                    bar_new_items.append(item)
-            juice_bar_items[bar_idx] = bar_new_items
+        # Try to add items until we reach max capacity for this tier
+        attempts = 0
+        while len(current_items) < max_items and attempts < 100:
+            item = select_item(bar_idx, current_items)
+            if item and item not in current_items:
+                add_to_juice_bar_cascade(item, tier_idx)
+            attempts += 1
 
-        shop.set_items(juice_bar_items[bar_idx])
+    # Set items for each juice bar shop
+    for bar_idx in juice_bars:
+        shop = world.shops.shops[bar_idx]
+        if shop is not None:
+            shop.set_items(juice_bar_items[bar_idx])
 
     # Process remaining shops
     processed = {FROG_DISCIPLE_SHOP, FROG_COIN_EMPORIUM} | set(juice_bars)

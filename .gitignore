@@ -116,3 +116,7 @@ smrpgr.code-workspace
 patchvenv
 
 **/.DS_Store
+
+spoiler.json
+placement.py
+spoiler_after_replacements.json

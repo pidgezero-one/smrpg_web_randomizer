@@ -8,8 +8,10 @@ from typing import TYPE_CHECKING
 from randomizer.types.prizelocation import StandingLocation
 
 from ..placement import collect, place, fill_remaining
-from ...types.prize import RandomPrizeSubstitute, CoinPrize
+from ...types.prize import RandomPrizeSubstitute, CoinPrize, FPFlowerPrize
 from ..utils import debug_time
+from ...progression.prizes import RecoveryMushroomPrize, FrogCoin1Prize
+from ...progression.prizelocations import MushroomKingdomInnPurchaseLocation
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -97,6 +99,19 @@ def shuffle_prizes(world: GameWorld) -> None:
         ShuffleMagikoopaChest,
         ShuffleWeddingGear,
         ShuffleCoins,
+        # Gating flags for character requirement validation
+        BanditsWayGate,
+        BanditsWayGating,
+        KeroSewersGate,
+        KeroSewersGating,
+        PipeVaultGate,
+        PipeVaultGating,
+        Moleville1Gate,
+        Moleville1Gating,
+        BoosterTowerGate,
+        BoosterTowerGating,
+        SeaGate,
+        SeaGating,
     )
     from ...types.prizelocation import (
         CharacterRecruitmentLocation,
@@ -139,11 +154,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         LuckyJewelPrize,
         SignalRingPrize,
         GoodieBagPrize,
-        CoinTrickPrize,
-        ScroogeRingPrize,
-        ExpBoosterPrize,
-        SeeYaPrize,
-        EarlierTimesPrize,
         CrystalShardPrize,
         ExtraShinyStonePrize,
         StayVoucherPrize,
@@ -251,6 +261,8 @@ def shuffle_prizes(world: GameWorld) -> None:
     )
     from ...types.gameworld import WorldBuildingException
 
+    expected_surplus = 0
+
 
     # Start off emptying every location of every type
     for loc in world.locations.values():
@@ -258,6 +270,7 @@ def shuffle_prizes(world: GameWorld) -> None:
 
     must_include: list[Prize] = []
     less_important: list[Prize] = []
+    not_important: list[Prize] = []
 
     # Init population of must_include
     if world.settings.isflag_enabled(ShuffleItems):
@@ -292,16 +305,6 @@ def shuffle_prizes(world: GameWorld) -> None:
                 GoodieBagPrize(),
             ]
         )
-        if world.settings.isflag_enabled(ShuffleShops):
-            must_include.extend(
-                [
-                    CoinTrickPrize(),
-                    ScroogeRingPrize(),
-                    ExpBoosterPrize(),
-                    SeeYaPrize(),
-                    EarlierTimesPrize(),
-                ]
-            )
         if world.settings.isflag_enabled(Remake):
             must_include.extend(
                 [
@@ -375,6 +378,7 @@ def shuffle_prizes(world: GameWorld) -> None:
             must_include.append(ProgressiveFireworksPrize())
             must_include.append(ProgressiveFireworksPrize())
             must_include.append(ProgressiveFireworksPrize())
+            expected_surplus += 2
 
     if world.settings.isflag_enabled(ShuffleCharacters):
         # Place starting characters based on StartingCharacters flag
@@ -386,6 +390,63 @@ def shuffle_prizes(world: GameWorld) -> None:
             "Toadstool": ToadstoolRecruitmentPrize,
         }
 
+        # Collect characters required by gating settings
+        gating_required_characters: set[str] = set()
+        gating_checks: list[tuple[type, object, str]] = [
+            (BanditsWayGate, BanditsWayGating.MALLOW, "Mallow"),
+            (KeroSewersGate, KeroSewersGating.MALLOW, "Mallow"),
+            (PipeVaultGate, PipeVaultGating.GENO, "Geno"),
+            (Moleville1Gate, Moleville1Gating.GENO, "Geno"),
+            (BoosterTowerGate, BoosterTowerGating.MARIO, "Mario"),
+            (BoosterTowerGate, BoosterTowerGating.MALLOW, "Mallow"),
+            (BoosterTowerGate, BoosterTowerGating.GENO, "Geno"),
+            (BoosterTowerGate, BoosterTowerGating.BOWSER, "Bowser"),
+            (BoosterTowerGate, BoosterTowerGating.TOADSTOOL, "Toadstool"),
+            (SeaGate, SeaGating.TOADSTOOL, "Toadstool"),
+        ]
+        for flag_class, gating_value, char_name in gating_checks:
+            if world.settings.is_flag_value(flag_class, gating_value):
+                gating_required_characters.add(char_name)
+
+        # Collect explicitly set starting characters (non-random)
+        starting_chars_flag = world.settings.get_flag(StartingCharacters)
+        explicitly_set_starting_chars: set[str] = set()
+        for option in starting_chars_flag.enabled:
+            value = option.value
+            # Check if this is a "Random_X" string value - skip, those aren't explicit
+            if isinstance(value, str):
+                continue
+            # This is an actual ally instance
+            ally_name = value.name
+            if ally_name:
+                explicitly_set_starting_chars.add(ally_name)
+
+        # Validate requirements against available characters and max count
+        available_chars_flag = world.settings.get_flag(AvailableCharacters)
+        disabled_char_names = {m.value.name for m in available_chars_flag.disabled}
+        max_char_count = world.settings.get_flag(MaxCharacters).value
+
+        # Combine gating-required and explicitly set starting characters
+        all_required_characters = gating_required_characters | explicitly_set_starting_chars
+
+        # Check for disabled required characters
+        disabled_required = all_required_characters & disabled_char_names
+        if disabled_required:
+            raise WorldBuildingException(
+                f"Settings require characters that are disabled: "
+                f"{', '.join(sorted(disabled_required))}. "
+                f"Either change the gating/starting settings or enable these characters."
+            )
+
+        # Check for max characters constraint
+        if len(all_required_characters) > max_char_count:
+            raise WorldBuildingException(
+                f"Settings require {len(all_required_characters)} characters "
+                f"({', '.join(sorted(all_required_characters))}), "
+                f"but max characters is set to {max_char_count}. "
+                f"Either reduce character requirements or increase max characters."
+            )
+
         # Starting character locations in order
         starting_locations = [
             StartingCharacter1,
@@ -394,11 +455,6 @@ def shuffle_prizes(world: GameWorld) -> None:
             StartingCharacter4,
             StartingCharacter5,
         ]
-
-        starting_chars_flag = world.settings.get_flag(StartingCharacters)
-        available_chars_flag = world.settings.get_flag(AvailableCharacters)
-        disabled_char_names = {m.value.name for m in available_chars_flag.disabled}
-        max_char_count = world.settings.get_flag(MaxCharacters).value
 
         # Track which characters have been explicitly placed
         placed_characters: set[type[CharacterPrize]] = set()
@@ -430,16 +486,25 @@ def shuffle_prizes(world: GameWorld) -> None:
             "Bowser": BowserRecruitmentPrize,
             "Toadstool": ToadstoolRecruitmentPrize,
         }
-        shuffled_chars = list(all_recruitment_prizes.items())
-        random.shuffle(shuffled_chars)
-        for ally_name, prize_class in shuffled_chars:
-            if (
-                prize_class not in placed_characters
-                and ally_name not in disabled_char_names
-                and len(placed_characters) < max_char_count
-            ):
+
+        # First, add gating-required characters that haven't been placed yet
+        for char_name in gating_required_characters:
+            prize_class = all_recruitment_prizes[char_name]
+            if prize_class not in placed_characters:
                 must_include.append(prize_class())
                 placed_characters.add(prize_class)
+
+        # Then add random unplaced characters up to max count
+        remaining_chars = [
+            (name, cls) for name, cls in all_recruitment_prizes.items()
+            if cls not in placed_characters and name not in disabled_char_names
+        ]
+        random.shuffle(remaining_chars)
+        for ally_name, prize_class in remaining_chars:
+            if len(placed_characters) >= max_char_count:
+                break
+            must_include.append(prize_class())
+            placed_characters.add(prize_class)
 
     if world.settings.isflag_enabled(CharacterLearnedSpells):
         # Build mapping from spell class -> spell prize class
@@ -534,11 +599,13 @@ def shuffle_prizes(world: GameWorld) -> None:
                 remaining_spell_pool,
                 min(
                     len(remaining_spell_pool),
-                    (5 - charcount) * 6 - spell_count,
+                    (charcount) * 6 - spell_count,
                 ),
             )
         )
 
+        print([s for s in must_include if isinstance(s, SpellPrize)], len([s for s in must_include if isinstance(s, SpellPrize)]))
+        
     if world.settings.isflag_enabled(ShuffleStarPieces):
         sp_prizes = [
             StarPiece1,
@@ -583,6 +650,8 @@ def shuffle_prizes(world: GameWorld) -> None:
     for loc in world.locations.values():
         if loc.originally_held is None:
             continue
+        if loc.has_item:
+            continue
         if isinstance(loc, CharacterRecruitmentLocation):
             if not world.settings.isflag_enabled(ShuffleCharacters):
                 loc.set_prize(loc.originally_held())
@@ -602,7 +671,8 @@ def shuffle_prizes(world: GameWorld) -> None:
         elif isinstance(loc, FrogDiscipleLocation):
             if not world.settings.isflag_enabled(ShuffleShops):
                 loc.set_prize(loc.originally_held())
-
+            else: # five original items must always be accessible in the game since they all have unique effects
+                must_include.append(loc.originally_held())
         else:
             if not world.settings.isflag_enabled(ShuffleItems):
                 loc.set_prize(loc.originally_held())
@@ -642,27 +712,51 @@ def shuffle_prizes(world: GameWorld) -> None:
                         FireworksSetting, FireworksOptions.VANILLA
                     ):
                         loc.set_prize(loc.originally_held())
-                # For every location whose prize isn't already in must_include,
-                # create a generic prize that could theoretically go in it
-                elif (
-                    len([p for p in must_include if isinstance(p, loc.originally_held)])
-                    == 0
-                ):
-                    if world.settings.is_flag_value(
-                        ItemQuality, ItemQualityOptions.ORIGINAL_POOL
-                    ):
-                        less_important.append(loc.originally_held())
-                    else:
-                        less_important.append(
-                            RandomPrizeSubstitute().generate(world, loc)
-                        )
-
+    for loc in world.locations.values():
+        if loc.originally_held is None:
+            continue
+        if loc.has_item:
+            continue
+        # already checked
+        if isinstance(loc, (CharacterRecruitmentLocation, StarPieceLocation, BossFightLocation, SpellSlotLocation, FrogDiscipleLocation)):
+            continue
+        # item already included in must_include
+        if len([p for p in must_include if isinstance(p, loc.originally_held)]) > 0:
+            continue
+        if world.settings.is_flag_value(
+            ItemQuality, ItemQualityOptions.ORIGINAL_POOL
+        ):
+            if isinstance(loc.originally_held(), (RecoveryMushroomPrize, FPFlowerPrize, FrogCoin1Prize)):
+                not_important.append(loc.originally_held())
+            else:
+                less_important.append(loc.originally_held())
+        else:
+            not_important.append(
+                RandomPrizeSubstitute().generate(world, loc)
+            )
+    print(f"Must include items: {[type(p).__name__ for p in must_include]}")
     # Shuffle!
+    # Place critical/progress items first
+    # or items that likely can't appear in shops and do something unique
     to_fill = copy(list(world.locations.values()))
 
-    random.shuffle(must_include)
+    # Sort must_include so characters are placed first (they have fewer valid locations)
+    # Boss fights placed next (many locations, complex dependencies on chars)
+    # Then everything else
+    from ...types.prize import CharacterPrize, BossFightPrize, SpellPrize
+
+    def placement_priority(item: Prize) -> int:
+        if isinstance(item, CharacterPrize):
+            return 0  # Characters first
+        if isinstance(item, BossFightPrize):
+            return 1  # Boss fights second
+        if isinstance(item, SpellPrize):
+            return 2  # Spells third
+        return 3  # Everything else
+
+    random.shuffle(must_include)  # Randomize within priority groups
+    must_include.sort(key=placement_priority)  # Stable sort preserves random order within groups
     random.shuffle(to_fill)
-    # Critical items use assumed-reachability to ensure game is completable
     place(
         world,
         must_include,
@@ -670,17 +764,29 @@ def shuffle_prizes(world: GameWorld) -> None:
         on_placed=lambda i, l: _on_item_placed(world, i, l),
     )
 
+    # Place less-important-but-should-still-be-included items next
     to_fill = [l for l in to_fill if not l.has_item]
-
     random.shuffle(less_important)
-    to_fill.reverse()
+    random.shuffle(to_fill)
     place(
         world,
         less_important,
         to_fill,
+        True,  # Allow overflow - these items are not critical
+        on_placed=lambda i, l: _on_item_placed(world, i, l),
+    )
+
+    to_fill = [l for l in to_fill if not l.has_item]
+    random.shuffle(not_important)
+    random.shuffle(to_fill)
+    place(
+        world,
+        not_important,
+        to_fill,
         True,
         on_placed=lambda i, l: _on_item_placed(world, i, l),
     )
+
 
     collected = set(collect(world))
 

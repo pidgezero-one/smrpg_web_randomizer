@@ -193,7 +193,6 @@ script = AnimationScriptBlock(expected_size=617, expected_beginning=0x357D0B, sc
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=14),
 	ResetObjectMappingMemory(),
 	ReturnSubroutine(),
-	ReturnSubroutine(identifier="command_0x357F07"),
 	ResetTargetMappingMemory(identifier="command_0x357F08"),
 	SetAMEM60ToCurrentTarget(),
 	SetAMEM40ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=96, y=-8, z=0, set_x=True, set_y=True, set_z=True),

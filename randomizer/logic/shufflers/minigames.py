@@ -99,7 +99,7 @@ def randomize_tadpole_pond(world: GameWorld) -> None:
         selection[2].generate_starfish_hint(
             cast(
                 ActionQueueAsync,
-                world.event_scripts.get_script_by_id(E2061_MONSTRO_TOWN_STAR),
+                world.event_scripts.get_command_by_identifier("starfish_dance_hint"),
             ).subscript.contents
         )
     )

@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 
 def randomize_equipment_properties(world: GameWorld) -> None:
     """Randomize equipment stats and buffs (excluding character allowances)."""
-    from smrpgpatchbuilder.datatypes.items.classes import Weapon, Armor, Accessory
+    from ...types.item import Weapon, Armor, Accessory
 
     EQUIP_STATS = ["speed", "attack", "defense", "magic_attack", "magic_defense"]
     PRIMARY_STATS_BY_TYPE = {

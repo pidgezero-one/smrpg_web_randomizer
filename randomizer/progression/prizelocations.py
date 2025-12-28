@@ -556,7 +556,7 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_mushroom_way_boss(
             world, inventory
-        ) and is_all_starting_chars_set(world)
+        ) and is_all_starting_chars_set(world, inventory)
 
     def set_prize(self, prize: Prize | None):
         assert isinstance(prize, CharacterPrize) or prize is None
@@ -950,7 +950,7 @@ class MushroomKingdomStoreExchangeLocation(NPCLocationRow2, KeyItemLocation):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_mushroom_way_boss(world, inventory) and inventory.has_item(
+        return can_defeat_mushroom_kingdom_boss(world, inventory) and inventory.has_item(
             RareFrogCoinPrize
         )
 
@@ -967,7 +967,7 @@ class MushroomKingdomInnPurchaseLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_defeat_mushroom_way_boss(world, inventory)
+        return can_defeat_mushroom_kingdom_boss(world, inventory)
 
     # Flag as checked: GAMEBOY_KID_PURCHASE_COMPLETE
 
@@ -1957,7 +1957,7 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_forest_boss(world, inventory) and is_all_starting_chars_set(
-            world
+            world, inventory
         )
 
     # Flag as checked: FOREST_LIBERATED
@@ -4020,7 +4020,7 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_chapel_boss(world, inventory) and is_all_starting_chars_set(
-            world
+            world, inventory
         )
 
     # Flag as checked: MARRYMORE_LIBERATED
@@ -9882,24 +9882,50 @@ def can_defeat_all_of(
 def can_defeat_boss(
     world: GameWorld, inventory: Inventory, location_type: type[BossFightLocation]
 ) -> bool:
+    from ..types.prize import BossFightPrize
+
     if (
         world.settings.get_flag(ProgressionLogicDifficulty).selected
         == ProgressionLogicDifficultyOptions.HARD
     ):
         return True
     location = world.get_location(location_type)
-    if location.prize is None:  # not assigned yet
-        return False
-    return inventory.has_item(type(location.prize))
+    if location.prize is not None:
+        # Prize is placed at this location - player can collect it, so boss is defeatable
+        # Check if player has it in inventory OR it's placed (and thus collectible)
+        return True
+    # Location doesn't have a prize yet (during placement)
+    # Check if inventory has enough boss fight prizes to fill unfilled locations
+    # For assumed-reachability, if we have enough prizes in inventory to fill
+    # all unfilled boss locations, we can assume this one is "effectively defeated"
+    unfilled_boss_locations = sum(
+        1 for loc in world.boss_fight_locations if loc.prize is None
+    )
+    boss_prizes_in_inventory = sum(
+        1 for item in inventory if isinstance(item, BossFightPrize)
+    )
+    return boss_prizes_in_inventory >= unfilled_boss_locations
 
 
 def has_learned_spell(
     world: GameWorld, inventory: Inventory, location_type: type[SpellSlotLocation]
 ) -> bool:
+    from ..types.prize import SpellPrize
+
     location = world.get_location(location_type)
-    if location.prize is None:  # not assigned yet
-        return False
-    return inventory.has_item(type(location.prize))
+    if location.prize is not None:
+        # Spell is placed at this location - player can learn it
+        return True
+    # Location doesn't have a prize yet (during placement)
+    # For assumed-reachability, if we have enough spell prizes in inventory to fill
+    # all unfilled spell locations, we can assume this one is "effectively learned"
+    unfilled_spell_locations = sum(
+        1 for loc in world.spell_locations if loc.prize is None
+    )
+    spell_prizes_in_inventory = sum(
+        1 for item in inventory if isinstance(item, SpellPrize)
+    )
+    return spell_prizes_in_inventory >= unfilled_spell_locations
 
 
 def can_defeat_mushroom_way_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -9941,9 +9967,8 @@ def can_defeat_mimic(
     world: GameWorld, inventory: Inventory, mimic: type[MimicFightInitiatorPrize]
 ) -> bool:
     """If true, the player is expected to be able to defeat the specified mimic chest fight."""
-    location = next(
-        (v for (_, v) in world.locations.items() if isinstance(v.prize, mimic)), None
-    )
+    # Use O(1) lookup instead of iterating through all locations
+    location = world.get_location_by_prize_type(mimic)
     if location is None:
         return False
     return location.can_access(inventory, world)
@@ -11068,27 +11093,35 @@ def can_damage_enemies_with_spells(world: GameWorld, inventory: Inventory) -> bo
     return inventory.has_one_of(pool)
 
 
-def is_all_starting_chars_set(world: GameWorld):
+def is_all_starting_chars_set(world: GameWorld, inventory: Inventory | None = None):
+    """Check if all starting character slots are filled.
+
+    If inventory is provided, also counts character prizes in the inventory
+    as "effectively set" for assumed-reachability placement.
+    """
+    from ..types.prize import CharacterPrize
+
     strchars = world.settings.get_flag(StartingCharacters)
     startmax = len(strchars.enabled)
-    if startmax >= 1:
-        chr1 = world.get_location(StartingCharacter1)
-        if chr1.prize is None:
-            return False
-    if startmax >= 2:
-        chr2 = world.get_location(StartingCharacter2)
-        if chr2.prize is None:
-            return False
-    if startmax >= 3:
-        chr3 = world.get_location(StartingCharacter3)
-        if chr3.prize is None:
-            return False
-    if startmax >= 4:
-        chr4 = world.get_location(StartingCharacter4)
-        if chr4.prize is None:
-            return False
-    if startmax >= 5:
-        chr5 = world.get_location(StartingCharacter5)
-        if chr5.prize is None:
-            return False
-    return True
+
+    # Count how many character prizes are in the assumed inventory
+    chars_in_inventory = 0
+    if inventory is not None:
+        chars_in_inventory = sum(
+            1 for item in inventory if isinstance(item, CharacterPrize)
+        )
+
+    # Count how many starting slots are unfilled
+    unfilled_slots = 0
+    starting_locations = [
+        StartingCharacter1, StartingCharacter2, StartingCharacter3,
+        StartingCharacter4, StartingCharacter5
+    ]
+    for i in range(startmax):
+        loc = world.get_location(starting_locations[i])
+        if loc.prize is None:
+            unfilled_slots += 1
+
+    # All starting chars are "effectively set" if the inventory has enough
+    # character prizes to fill the unfilled slots
+    return chars_in_inventory >= unfilled_slots

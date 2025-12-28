@@ -22,6 +22,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object i
     AreaObject,
 )
 from typing import cast, TYPE_CHECKING
+from copy import copy
 
 from ...types.prizelocation import (
     PrizeLocation,
@@ -544,6 +545,7 @@ def set_locations(world: GameWorld) -> None:
             GenoSpell3: GenoSpell3(),
             GenoSpell4: GenoSpell4(),
             GenoSpell5: GenoSpell5(),
+            GenoSpell6: GenoSpell6(),
         }
     if BOWSER_Ally in included_charaters:
         world.locations = {
@@ -845,13 +847,14 @@ def set_locations(world: GameWorld) -> None:
                 DI1107_RESERVED_FOR_BIGBOOFLAG_HINT,
                 "THE BIG BOO:\n" + location.clue_text,
             )
+        invisible_flag_locations[location_cls] = location
     world.locations = {**world.locations, **invisible_flag_locations}
-
+    
     world.chest_locations = [
         loc for loc in world.locations.values() if isinstance(loc, TreasureChestLocation)
     ]
     world.standard_locations = [
-        loc for loc in world.locations.values() if isinstance(loc, (TreasureChestLocation, EventLocation, StandingLocation, RiverLocation, BoosterHillLocation))
+        loc for loc in world.locations.values() if isinstance(loc, (TreasureChestLocation, EventLocation, StandingLocation, RiverLocation, BoosterHillLocation, FrogDiscipleLocation))
     ]
     world.coin_locations = [
         loc for loc in world.locations.values() if isinstance(loc, (TreasureChestLocation, EventLocation, StandingLocation))
@@ -865,17 +868,13 @@ def set_locations(world: GameWorld) -> None:
     world.star_piece_locations = [
         loc for loc in world.locations.values() if isinstance(loc, StarPieceLocation)
     ]
-    world.extra_star_piece_locations = [
-        loc for loc in world.locations.values() if isinstance(loc, StarPieceLocation)
-    ]
+    world.extra_star_piece_locations = copy(world.star_piece_locations)
     if world.settings.isflag_enabled(StarPieceAvailability):
         world.extra_star_piece_locations.extend(world.standard_locations)
     world.key_item_locations = [
         loc for loc in world.locations.values() if isinstance(loc, KeyItemLocation)
     ]
-    world.extra_key_item_locations = [
-        loc for loc in world.locations.values() if isinstance(loc, KeyItemLocation)
-    ]
+    world.extra_key_item_locations = copy(world.key_item_locations)
     if world.settings.isflag_enabled(KeyItemsAnywhere):
         world.extra_key_item_locations.extend(world.standard_locations)
     world.character_recruitment_locations = [

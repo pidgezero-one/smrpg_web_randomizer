@@ -1138,14 +1138,12 @@ class PrizeLocation:
                 if l is not self and isinstance(l.prize, StarPiecePrize):
                     if l.overworld_map_region == self.overworld_map_region:
                         return False
-            return True
         if isinstance(prize, EXPStarPrize):
             # one EXP star per locale
             for l in world.chest_locations:
                 if l is not self and isinstance(l.prize, EXPStarPrize):
                     if l.world_area == self.world_area:
                         return False
-            return True
         if world.settings.isflag_enabled(RestrictSpecialEquips):
             if self.monstro_shuffle:
                 return isinstance(prize, ItemPrize) and prize._monstro_shuffle
@@ -1506,13 +1504,6 @@ class StarPieceLocation(PrizeLocation):
             return False
 
         return super().can_accept(prize, inventory, world)
-
-
-class ShopLocation(PrizeLocation):
-    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return isinstance(prize, ItemPrize) and super().can_accept(
-            prize, inventory, world
-        )
 
 
 class SpellSlotLocation(PrizeLocation):

@@ -1520,7 +1520,7 @@ class EXPChallenge(SelectOneFlag[EXPChallengeOptions]):
 class GrateGuyPrizeThreshold(RangeFlag):
     _name = 'Required "Look The Other Way" wins'
     _description = "The number of times required to win Grate Guy's casino minigame to receive its ultimate prize."
-    _default = 100
+    _default = 1
     min_value = 1
     max_value = 255
     _id = "gg"
@@ -1530,7 +1530,7 @@ class GrateGuyPrizeThreshold(RangeFlag):
 class KnifeGuyPrizeThreshold(RangeFlag):
     _name = "Required Knife Guy wins (normal prize)"
     _description = "The number of wins minus losses required to win Knife Guy's juggling game prize (normally the Bright Card)."
-    _default = 12
+    _default = 1
     min_value = 1
     max_value = 254
     _id = "kg"
@@ -1550,7 +1550,7 @@ class SuitePrize1Threshold(RangeFlag):
 class SuitePrize2Threshold(RangeFlag):
     _name = "Required Suite prize #2 stays"
     _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the second special gift"
-    _default = 3
+    _default = 2
     min_value = 2
     max_value = 250
     _id = "s2"
@@ -1560,7 +1560,7 @@ class SuitePrize2Threshold(RangeFlag):
 class SuitePrize3Threshold(RangeFlag):
     _name = "Required Suite prize #3 stays"
     _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the third special gift"
-    _default = 5
+    _default = 3
     min_value = 3
     max_value = 251
     _id = "s3"
@@ -1570,7 +1570,7 @@ class SuitePrize3Threshold(RangeFlag):
 class SuitePrize4Threshold(RangeFlag):
     _name = "Required Suite prize #4 stays"
     _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fourth special gift"
-    _default = 10
+    _default = 4
     min_value = 4
     max_value = 252
     _id = "s4"
@@ -1580,7 +1580,7 @@ class SuitePrize4Threshold(RangeFlag):
 class SuitePrize5Threshold(RangeFlag):
     _name = "Required Suite prize #5 stays"
     _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fifth special gift"
-    _default = 15
+    _default = 5
     min_value = 5
     max_value = 253
     _id = "s5"
@@ -1590,7 +1590,7 @@ class SuitePrize5Threshold(RangeFlag):
 class SuitePrize6Threshold(RangeFlag):
     _name = "Required Suite prize #6 stays"
     _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the sixth special gift"
-    _default = 200
+    _default = 6
     min_value = 6
     max_value = 254
     _id = "s6"
@@ -1627,7 +1627,7 @@ class FixKnifeGuy(BooleanFlag):
 class KnifeGuyFixedPrizeThreshold(RangeFlag):
     _name = "Required Knife Guy wins (max prize)"
     _description = "The number of wins minus losses required to win Knife Guy's maxed out game prize (originally intended to be a Red Essence). Must be higher than Knife Guy's other prize check."
-    _default = 255
+    _default = 2
     min_value = 2
     max_value = 255
     _id = "kg2"
@@ -1828,7 +1828,7 @@ class BiasShopShuffle(BooleanFlag):
     _id = "biasshops"
     _requires_all = [
         (ShuffleShops(), True),
-        (ShopQuality(), [o for o in ShopQualities if o != ShopQualities.ORIGINAL]),
+        (ShopQuality(), [o for o in ShopQualities if o != ShopQualities.EMPTY]),
     ]
 
 

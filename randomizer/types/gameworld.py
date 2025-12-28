@@ -81,16 +81,6 @@ from .prize import (
 from .ally import Ally
 from .prizelocation import (
     PrizeLocation,
-    TreasureChestLocation,
-    EventLocation,
-    StandingLocation,
-    RiverLocation,
-    BoosterHillLocation,
-    SpellSlotLocation,
-    BossFightLocation,
-    StarPieceLocation,
-    CharacterRecruitmentLocation,
-    KeyItemLocation
 )
 from ..progression.prizelocations import *
 from ..data.variables.dialog_names import *
@@ -99,14 +89,6 @@ from ..data.variables.battle_effect_names import *
 from ..data.variables.shop_names import *
 from ..data.variables.sprite_names import *
 from ..data.spells.spells import *
-from ..data.minigames.melody_bay import all_songs
-from ..data.minigames.ship_password import (
-    pool as password_pool,
-    suggest_letter_bank,
-    box_dialog_ids,
-    recitation_ids,
-    hint_authors,
-)
 from ..data.credits.credits import update_credits
 from ..logic.setup.gating import apply_gating_settings
 from ..logic.setup.thresholds import apply_threshold_settings
@@ -116,6 +98,25 @@ from ..logic.setup.minigames_setup import apply_minigame_settings
 from ..logic.setup.cosmetics import apply_cosmetic_settings
 from ..logic.setup.prize_locations import set_locations
 from ..logic.shufflers.items import shuffle_prizes, post_shuffle_cleanup
+from ..logic.shufflers.shops import shuffle_shops
+from ..logic.shufflers.equipment import (
+    build_item_to_prize_mapping,
+    randomize_equipment_properties,
+    randomize_equipment_characters,
+    build_item_impact_categories,
+)
+from ..logic.shufflers.enemies import (
+    randomize_enemy_attacks_and_spells,
+    randomize_enemy_stats,
+    randomize_enemy_drops,
+    randomize_enemy_formations,
+    apply_exp_multiplier,
+)
+from ..logic.shufflers.characters import (
+    randomize_character_stats,
+    randomize_levelup_xps,
+    randomize_character_spell_stats,
+)
 
 from ..data.allies.palettes.types import (
     MarioPalette,
@@ -187,6 +188,7 @@ class GameWorld:
     main_character: Ally = MARIO_Ally
     world_map_locations: WorldMapLocationCollection
     password: str = "pearls"
+    poison_mushroom_status: str | None = None
     song_1: str = "So La Mi Re Do Re Do Re"
     song_2: str = "Mi Do So Do Re La Ti Do"
     song_3: str = "La Ti Do Re So Do Re Mi"
@@ -204,6 +206,12 @@ class GameWorld:
     key_item_locations: list[PrizeLocation]
     extra_key_item_locations: list[PrizeLocation]
     character_recruitment_locations: list[PrizeLocation]
+
+    # Prize lookup cache: maps prize type -> location holding that prize
+    # Updated via notify_prize_placed() when prizes are assigned
+    _prize_type_to_location: dict[type, PrizeLocation]
+    # Cache version - incremented when any prize is placed, used to invalidate caches
+    _placement_version: int
 
     # Item impact categories (built by _build_item_impact_categories)
     low_impact_items: list[type[RegularItem]]
@@ -322,6 +330,31 @@ class GameWorld:
         """Get a location instance with proper typing."""
         return cast(PrizeLocationT, self.locations[location_type])
 
+    def notify_prize_placed(self, location: PrizeLocation, prize) -> None:
+        """Notify that a prize was placed - updates caches.
+
+        Call this after setting a prize on a location to keep caches in sync.
+        """
+        if prize is not None:
+            # Index by prize's exact type (not parent classes) for precise lookup
+            self._prize_type_to_location[type(prize)] = location
+        self._placement_version += 1
+
+    def get_location_by_prize_type(self, prize_type: type) -> PrizeLocation | None:
+        """Get the location containing a prize of the exact given type (O(1) lookup).
+
+        Returns None if no location has a prize of that exact type.
+        """
+        return self._prize_type_to_location.get(prize_type)
+
+    @property
+    def placement_version(self) -> int:
+        """Current placement version - changes whenever a prize is placed.
+
+        Use this to invalidate caches that depend on prize placements.
+        """
+        return self._placement_version
+
     def update_battle_dialog(self, dialog_id: int, new_dialog: str):
         self.battle_dialogs.battle_dialogs[dialog_id] = new_dialog
 
@@ -435,12 +468,74 @@ class GameWorld:
 
     @property
     def spoiler(self) -> dict[str, Any]:
-        return {
+        result = {
             "settings": self._get_settings_json(),
             "locations": self._get_locations_json(),
+            "shops": self._get_shops_json(),
             "password": self.password,
             "songs": [self.song_1, self.song_2, self.song_3],
         }
+        if self.poison_mushroom_status:
+            result["poison_mushroom_status"] = self.poison_mushroom_status
+        return result
+
+    def _get_shops_json(self) -> dict[str, list[str]]:
+        """Get JSON representation of all shops with their item names."""
+        from ..data.variables.shop_names import (
+            SH00_MUSHROOM_KINGDOM, SH01_ROSE_TOWN_ITEM, SH02_ROSE_TOWN_ARMOR,
+            SH03_FROG_DISCIPLE, SH04_MOLEVILLE, SH05_MARRYMORE,
+            SH06_FROG_COIN_EMPORIUM, SH07_SEA_AND_SHIP_SHAMAN,
+            SH08_SEASIDE_TOWN_MINION, SH09_JUICE_BAR_BASE, SH10_JUICE_BAR_ALTO,
+            SH11_JUICE_BAR_TENOR, SH12_JUICE_BAR_SOPRANO, SH13_SEASIDE_WEAPON,
+            SH14_SEASIDE_ARMOR, SH15_SEASIDE_ACCESSORY, SH16_SEASIDE_HEALTH_FOOD,
+            SH17_MONSTRO, SH18_VOLCANO_ITEM, SH19_VOLCANO_ARMOR, SH20_GOOMBETTE,
+            SH21_NIMBUS_LAND, SH22_KEEP_1, SH23_KEEP_2, SH24_FACTORY_TOAD,
+        )
+
+        shop_names = {
+            SH00_MUSHROOM_KINGDOM: "Mushroom Kingdom",
+            SH01_ROSE_TOWN_ITEM: "Rose Town Item",
+            SH02_ROSE_TOWN_ARMOR: "Rose Town Armor",
+            SH03_FROG_DISCIPLE: "Frog Disciple",
+            SH04_MOLEVILLE: "Moleville",
+            SH05_MARRYMORE: "Marrymore",
+            SH06_FROG_COIN_EMPORIUM: "Frog Coin Emporium",
+            SH07_SEA_AND_SHIP_SHAMAN: "Sea/Ship Shaman",
+            SH08_SEASIDE_TOWN_MINION: "Seaside Town (Minion)",
+            SH09_JUICE_BAR_BASE: "Juice Bar (Base)",
+            SH10_JUICE_BAR_ALTO: "Juice Bar (Alto)",
+            SH11_JUICE_BAR_TENOR: "Juice Bar (Tenor)",
+            SH12_JUICE_BAR_SOPRANO: "Juice Bar (Soprano)",
+            SH13_SEASIDE_WEAPON: "Seaside Weapon",
+            SH14_SEASIDE_ARMOR: "Seaside Armor",
+            SH15_SEASIDE_ACCESSORY: "Seaside Accessory",
+            SH16_SEASIDE_HEALTH_FOOD: "Seaside Health Food",
+            SH17_MONSTRO: "Monstro Town",
+            SH18_VOLCANO_ITEM: "Barrel Volcano Item",
+            SH19_VOLCANO_ARMOR: "Barrel Volcano Armor",
+            SH20_GOOMBETTE: "Goombette",
+            SH21_NIMBUS_LAND: "Nimbus Land",
+            SH22_KEEP_1: "Bowser's Keep 1",
+            SH23_KEEP_2: "Bowser's Keep 2",
+            SH24_FACTORY_TOAD: "Factory Toad",
+        }
+
+        result: dict[str, list[str]] = {}
+        for shop in self.shops.shops:
+            if shop is None:
+                continue
+            shop_name = shop_names.get(shop.index, f"Shop {shop.index}")
+            item_names = []
+            for item in shop.items:
+                if item is None:
+                    continue
+                # item is a class type, get its _name attribute
+                if hasattr(item, "_name") and item._name:
+                    item_names.append(item._name)
+                else:
+                    item_names.append(item.__name__)
+            result[shop_name] = item_names
+        return result
 
     def _get_settings_json(self) -> dict[str, Any]:
         """Get JSON representation of all settings with their names and values."""
@@ -559,6 +654,8 @@ class GameWorld:
         self.seed = seed
         self.version = version
         self.settings = settings
+        self._prize_type_to_location = {}
+        self._placement_version = 0
         self.battle_animations = battle_animations
         self.battle_dialogs = battle_dialogs
         self.overworld_dialogs = overworld_dialogs
@@ -584,7 +681,6 @@ class GameWorld:
 
         # prize locations HAVE to all be defined by this point
         # not shuffled, just determined if they exist in the seed or not
-
 
         if self.settings.isflag_enabled(SkipMustyFearsSequence):
             self.event_2496_startup += [
@@ -640,7 +736,7 @@ class GameWorld:
         # TODO NPCs and packets for all item types. Gold paint can be royal syrup
         # TODO: Apply hint text to blue toad in moleville
         # TODO: Do search-and-replace for all pronouns, names, etc related to main characters, positioned bosses, etc
-        # TODO: Room service menu
+        # TODO: Room service menu and bomb trade shop
         # TODO: Open issue templat for submitting star hill text. note: uncredited
         # TODO: Open issue template for submitting quiz questions (uncredited)
         # TODO: update spell names and palettes and sounds depending on element
@@ -714,6 +810,7 @@ class GameWorld:
         # Randomize character stats
         if self.settings.isflag_enabled(CharacterStats):
             self._randomize_character_stats()
+            self._randomize_levelup_xps()
 
         # Randomize character spell stats
         if self.settings.isflag_enabled(CharacterSpellStats):
@@ -742,21 +839,9 @@ class GameWorld:
         # Apply cosmetic settings (re-seeded for variation between generations)
         apply_cosmetic_settings(self)
 
-    def _mutate_normal(self, value: int, minimum: int = 0, maximum: int = 255) -> int:
-        """Mutate a value simulating a normal distribution.
-
-        Roughly simulates a normal distribution with mean <value>,
-        std deviation approximately 1/5 of value.
-        """
-        value = int(max(minimum, min(value, maximum)))
-        if value == 0:
-            return value
-
-        # Use gaussian distribution centered on value with std dev = value / 5
-        std_dev = max(1, value / 5)
-        new_value = int(random.gauss(value, std_dev))
-        # Ensure result is always within bounds and is an integer
-        return int(max(minimum, min(new_value, maximum)))
+        import json
+        with open("spoiler_after_replacements.json", "w") as f:
+            json.dump(self.spoiler, f, indent=2, default=str)
 
     def _shuffle_items(self):
 
@@ -773,10 +858,13 @@ class GameWorld:
 
         self._report_progress("Applying cleanup settings", 39)
         # replace bad items with coins, supplant YouMissed, etc
-        post_shuffle_cleanup(self)
 
-        print(self.spoiler)
-        
+        # Write spoiler to JSON file
+        import json
+        with open("spoiler.json", "w") as f:
+            json.dump(self.spoiler, f, indent=2, default=str)
+
+        post_shuffle_cleanup(self)
         # set
         # after shuffle completes, render all the granter events
         # place npcs in rooms
@@ -785,320 +873,11 @@ class GameWorld:
 
     def _randomize_enemy_attacks_and_spells(self) -> None:
         """Randomize enemy spell and attack stats and effects."""
-        from randomizer.types.spell import EnemySpell
-
-        # Status effects that can be randomly assigned (excluding berserk for safety)
-        # Indices: 0=Mute, 1=Sleep, 2=Poison, 3=Fear, 5=Mushroom, 6=Scarecrow
-        safe_statuses = [
-            Status.MUTE,
-            Status.SLEEP,
-            Status.POISON,
-            Status.FEAR,
-            Status.MUSHROOM,
-            Status.SCARECROW,
-        ]
-
-        # Randomize enemy spells
-        for spell in self.spells.spells:
-            if not isinstance(spell, EnemySpell):
-                continue
-
-            # Mutate FP cost
-            new_fp = self._mutate_normal(int(spell.fp), minimum=1, maximum=99)
-            spell.set_fp(new_fp)
-
-            # Shuffle status effects if the spell has any
-            if spell.status_effects:
-                num_effects = len(spell.status_effects)
-                new_effects = random.sample(
-                    safe_statuses, min(num_effects, len(safe_statuses))
-                )
-                spell.set_status_effects(new_effects)
-
-            # Mutate power
-            new_power = self._mutate_normal(int(spell.power), minimum=0, maximum=255)
-            spell.set_power(int(max(0, min(255, new_power))))
-
-            # Mutate hit rate (cap at 99 if it's an instant KO spell to allow protection items to work)
-            max_hit = 99 if spell.check_ohko else 100
-            new_hit_rate = self._mutate_normal(
-                int(spell.hit_rate), minimum=1, maximum=max_hit
-            )
-            spell.set_hit_rate(new_hit_rate)
-
-        # Randomize enemy attacks
-        for attack in self.enemy_attacks.attacks:
-            # Mutate attack level (0-7 range)
-            new_level = self._mutate_normal(
-                int(attack.attack_level), minimum=0, maximum=7
-            )
-            attack.set_attack_level(new_level)
-
-            # Shuffle status effects if the attack has any
-            if attack.status_effects:
-                num_effects = len(attack.status_effects)
-                new_effects = random.sample(
-                    safe_statuses, min(num_effects, len(safe_statuses))
-                )
-                attack.set_status_effects(new_effects)
-
-            # Mutate hit rate (cap at 99 if OHKO to allow protection to work)
-            max_hit = 99 if attack.ohko else 255
-            new_hit_rate = self._mutate_normal(
-                int(attack.hit_rate), minimum=1, maximum=max_hit
-            )
-            attack.set_hit_rate(new_hit_rate)
+        randomize_enemy_attacks_and_spells(self)
 
     def _randomize_enemy_stats(self) -> None:
         """Randomize enemy stats based on EnemyStats flag setting."""
-        from smrpgpatchbuilder.datatypes.spells.enums import Element, Status
-        from smrpgpatchbuilder.datatypes.enemies.enums import FlowerBonusType
-        from randomizer.data.enemies.enemies import (
-            SMITHY2Enemy,
-            SMITHYTankEnemy,
-            SMITHYSafeEnemy2,
-            SMITHYMageEnemy,
-            SMITHYChestEnemy,
-        )
-
-        full_random = (
-            self.settings.get_flag(EnemyStats).selected
-            == EnemyStatsShuffleOptions.FULL_RANDOM
-        )
-
-        # Get list of non-boss enemies for inter-shuffling
-        # Use ohko_immune as indicator of boss status
-        non_boss_enemies = [e for e in self.enemies.enemies if not e.ohko_immune]
-        all_enemies = list(self.enemies.enemies)
-
-        # NUMBERS_ONLY and FULL_RANDOM: Inter-shuffle stats between similar-ranked enemies
-        # Since we don't have a ranking system, shuffle among all non-boss enemies
-        if full_random:
-            # Inter-shuffle these attributes among non-boss enemies
-            shuffle_attrs = [
-                "hp",
-                "speed",
-                "defense",
-                "magic_defense",
-                "evade",
-                "magic_evade",
-                "resistances",
-                "weaknesses",
-                "status_immunities",
-            ]
-        else:
-            # NUMBERS_ONLY: only shuffle numeric stats
-            shuffle_attrs = [
-                "hp",
-                "speed",
-                "defense",
-                "magic_defense",
-                "evade",
-                "magic_evade",
-            ]
-
-        for attr in shuffle_attrs:
-            # Create a shuffled version with probabilistic swapping
-            shuffled = list(non_boss_enemies)
-            max_index = len(non_boss_enemies) - 1
-            done: set = set()
-
-            for i in range(len(non_boss_enemies)):
-                if shuffled[i] in done:
-                    continue
-                new_index = i
-                # 50/50 chance to swap with next enemy
-                while random.randint(0, 1) == 1:
-                    new_index += 1
-                new_index = min(new_index, max_index)
-                a, b = shuffled[i], shuffled[new_index]
-                done.add(a)
-                shuffled[i] = b
-                shuffled[new_index] = a
-
-            # Swap attribute values
-            swaps = [getattr(s, attr) for s in shuffled]
-            for enemy, swapped_val in zip(non_boss_enemies, swaps):
-                # Get the setter method
-                setter_name = f"set_{attr}"
-                if hasattr(enemy, setter_name):
-                    setter = getattr(enemy, setter_name)
-                    if isinstance(swapped_val, list):
-                        setter(list(swapped_val))
-                    else:
-                        setter(int(swapped_val))
-
-        # Inter-shuffle morph chances randomly (for non-boss enemies)
-        if full_random:
-            morph_chances = [e.morph_chance for e in non_boss_enemies]
-            random.shuffle(morph_chances)
-            for chance, enemy in zip(morph_chances, non_boss_enemies):
-                enemy.set_morph_chance(chance)
-
-        # Now mutate individual enemy stats
-        for enemy in all_enemies:
-            # Store old stats for bosses
-            old_stats = {
-                "hp": int(enemy.hp),
-                "speed": int(enemy.speed),
-                "attack": int(enemy.attack),
-                "defense": int(enemy.defense),
-                "magic_attack": int(enemy.magic_attack),
-                "magic_defense": int(enemy.magic_defense),
-                "fp": int(enemy.fp),
-                "evade": int(enemy.evade),
-                "magic_evade": int(enemy.magic_evade),
-            }
-
-            # Mutate numeric stats
-            enemy.set_hp(self._mutate_normal(int(enemy.hp), minimum=1, maximum=32000))
-            enemy.set_speed(
-                self._mutate_normal(int(enemy.speed), minimum=0, maximum=255)
-            )
-            enemy.set_attack(
-                self._mutate_normal(int(enemy.attack), minimum=1, maximum=255)
-            )
-            enemy.set_defense(
-                self._mutate_normal(int(enemy.defense), minimum=1, maximum=255)
-            )
-            enemy.set_magic_attack(
-                self._mutate_normal(int(enemy.magic_attack), minimum=1, maximum=255)
-            )
-            enemy.set_magic_defense(
-                self._mutate_normal(int(enemy.magic_defense), minimum=1, maximum=255)
-            )
-            enemy.set_fp(self._mutate_normal(int(enemy.fp), minimum=1, maximum=255))
-            enemy.set_evade(
-                self._mutate_normal(int(enemy.evade), minimum=0, maximum=100)
-            )
-            enemy.set_magic_evade(
-                self._mutate_normal(int(enemy.magic_evade), minimum=0, maximum=100)
-            )
-
-            # For bosses (identified by ohko_immune), don't let stats go below vanilla values
-            if enemy.ohko_immune:
-                for attr, old_val in old_stats.items():
-                    current_val = int(getattr(enemy, attr))
-                    if current_val < old_val:
-                        setter = getattr(enemy, f"set_{attr}")
-                        setter(old_val)
-
-                # Small 1/255 chance for boss to be vulnerable to Geno Whirl
-                if random.randint(1, 255) == 1:
-                    enemy.set_ohko_immune(False)
-            else:
-                # For non-bosses: 1/3 chance to reverse OHKO immunity
-                if random.randint(1, 3) == 3:
-                    enemy.set_ohko_immune(not enemy.ohko_immune)
-
-                # Randomize morph chance (only in FULL_RANDOM mode)
-                if full_random:
-                    morph_options = [0, 25, 75, 100]
-                    enemy.set_morph_chance(random.choice(morph_options))
-
-            # FULL_RANDOM: also shuffle elemental resistances/weaknesses and status immunities
-            if full_random:
-                # Mix status immunities and resistances together
-                total_immunities = len(enemy.status_immunities) + len(enemy.resistances)
-                new_status_immunities = random.randint(
-                    max(0, total_immunities - 4), min(total_immunities, 4)
-                )
-                new_resistances = total_immunities - new_status_immunities
-
-                # Limit to valid ranges
-                new_status_immunities = max(0, min(4, new_status_immunities))
-                new_resistances = max(0, min(4, new_resistances))
-
-                # Available status effects for immunity (excluding Berserk and Invincible for balance)
-                available_statuses = [
-                    Status.MUTE,
-                    Status.SLEEP,
-                    Status.POISON,
-                    Status.FEAR,
-                ]
-                enemy.set_status_immunities(
-                    random.sample(
-                        available_statuses,
-                        min(new_status_immunities, len(available_statuses)),
-                    )
-                )
-
-                # Available elements for resistance/weakness
-                available_elements = [
-                    Element.ICE,
-                    Element.THUNDER,
-                    Element.FIRE,
-                    Element.JUMP,
-                ]
-
-                # 50/50 chance to prioritize immunities over weaknesses or vice versa
-                if random.randint(0, 1) == 0:
-                    # Prioritize resistances
-                    new_res = random.sample(
-                        available_elements,
-                        min(new_resistances, len(available_elements)),
-                    )
-                    enemy.set_resistances(new_res)
-                    # Weaknesses from remaining elements (allow JUMP to be both)
-                    potential_weak = list(set(available_elements) - set(new_res))
-                    potential_weak.append(Element.JUMP)  # Jump can be both
-                    potential_weak = list(set(potential_weak))
-                    current_weak_count = len(enemy.weaknesses)
-                    enemy.set_weaknesses(
-                        random.sample(
-                            potential_weak, min(current_weak_count, len(potential_weak))
-                        )
-                    )
-                else:
-                    # Prioritize weaknesses
-                    current_weak_count = len(enemy.weaknesses)
-                    new_weak = random.sample(
-                        available_elements,
-                        min(current_weak_count, len(available_elements)),
-                    )
-                    enemy.set_weaknesses(new_weak)
-                    # Resistances from remaining (allow JUMP to be both)
-                    potential_res = list(set(available_elements) - set(new_weak))
-                    potential_res.append(Element.JUMP)
-                    potential_res = list(set(potential_res))
-                    enemy.set_resistances(
-                        random.sample(
-                            potential_res, min(new_resistances, len(potential_res))
-                        )
-                    )
-
-                # Randomize flower bonus type and chance
-                flower_types = [
-                    FlowerBonusType.ATTACK_UP,
-                    FlowerBonusType.DEFENSE_UP,
-                    FlowerBonusType.HP_MAX,
-                    FlowerBonusType.ONCE_AGAIN,
-                    FlowerBonusType.LUCKY,
-                ]
-                enemy.set_flower_bonus_type(random.choice(flower_types))
-                # Chance is 0-100 in increments of 10
-                chance = (random.randint(0, 5) + random.randint(0, 5)) * 10
-                enemy.set_flower_bonus_chance(chance)
-
-        # Special logic for Smithy 2: All heads must have the same HP
-        try:
-            main_head = self.enemies.get_by_type(SMITHY2Enemy)
-            for head_type in [
-                SMITHYTankEnemy,
-                SMITHYSafeEnemy2,
-                SMITHYMageEnemy,
-                SMITHYChestEnemy,
-            ]:
-                head = self.enemies.get_by_type(head_type)
-                head.set_hp(int(main_head.hp))
-        except (KeyError, StopIteration):
-            pass  # Enemy types not found, skip
-
-        # Update psychopath messages based on new stats
-        from randomizer.types.enemy import Enemy as CustomEnemy
-        for enemy in all_enemies:
-            custom_enemy = cast(CustomEnemy, enemy)
-            custom_enemy.set_psychopath_message(custom_enemy.build_psychopath_text())
+        randomize_enemy_stats(self)
 
     def _randomize_enemy_drops(
         self,
@@ -1106,1494 +885,42 @@ class GameWorld:
         consumables_group_2: list[type[RegularItem]],
     ) -> None:
         """Randomize enemy drops (coins, XP, items)."""
-        for enemy in self.enemies.enemies:
-            # Mutate coins
-            enemy.set_coins(
-                self._mutate_normal(int(enemy.coins), minimum=0, maximum=255)
-            )
-
-            # Mutate XP
-            old_xp = int(enemy.xp)
-            new_xp = self._mutate_normal(old_xp, minimum=1, maximum=0xFFFF)
-
-            # For bosses (ohko_immune), don't let XP go above vanilla
-            # For normal enemies, don't let XP go below vanilla
-            if enemy.ohko_immune:
-                enemy.set_xp(min(old_xp, new_xp))
-            else:
-                enemy.set_xp(max(old_xp, new_xp))
-
-            # Shuffle reward items with consumable items
-            # Check if normal and rare items are linked (same item)
-            linked = enemy.common_item_drop == enemy.rare_item_drop
-
-            # Shuffle common item drop using group 1 (more common items)
-            if enemy.common_item_drop is not None:
-                enemy.set_common_item_drop(random.choice(consumables_group_1))
-
-            # If linked, set rare to match common. Otherwise shuffle rare from group 2
-            if linked:
-                enemy.set_rare_item_drop(enemy.common_item_drop)
-            elif enemy.rare_item_drop is not None:
-                enemy.set_rare_item_drop(random.choice(consumables_group_2))
-
-            # Randomize Yoshi Cookie item if enemy has morph chance
-            if enemy.morph_chance > 0:
-                # Use group 2 for Yoshi Cookie items (better rewards)
-                enemy.set_yoshi_cookie_item(random.choice(consumables_group_2))
+        randomize_enemy_drops(self, consumables_group_1, consumables_group_2)
 
     def _randomize_enemy_formations(self) -> None:
         """Randomize enemy formations."""
-        from functools import reduce
-
-        # Valid coordinates for enemy placement in formations
-        VALID_COORDINATES = [
-            (119, 103),
-            (135, 111),
-            (151, 119),
-            (167, 127),
-            (103, 111),
-            (119, 119),
-            (135, 127),
-            (151, 135),
-            (87, 119),
-            (103, 127),
-            (119, 135),
-            (135, 143),
-            (71, 127),
-            (87, 135),
-            (103, 143),
-            (119, 151),
-            (55, 135),
-            (71, 143),
-            (87, 151),
-            (103, 159),
-            (39, 143),
-            (55, 151),
-            (71, 159),
-            (87, 167),
-        ]
-
-        def get_distance(x1: int, y1: int, x2: int, y2: int) -> float:
-            return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
-
-        def get_collective_distance(
-            x1: int, y1: int, points: list[tuple[int, int]]
-        ) -> float:
-            if not points:
-                return 1.0
-            distances = [get_distance(x1, y1, x2, y2) for x2, y2 in points]
-            return reduce(lambda a, b: a * b, distances, 1.0)
-
-        def select_most_distance(
-            possible_points: list[tuple[int, int]], used_points: list[tuple[int, int]]
-        ) -> tuple[int, int]:
-            # Filter out already-used coordinates to ensure no duplicates
-            available = [p for p in possible_points if p not in used_points]
-            if not available:
-                # Fallback: use all coordinates if somehow all are used
-                available = possible_points
-            return max(
-                available,
-                key=lambda c: get_collective_distance(c[0], c[1], used_points),
-            )
-
-        # Max enemies for a formation
-        max_enemies = 6
-
-        for pack in self.battle_packs.packs:
-            for formation in pack.formations:
-                # Get current members (filter out None)
-                current_members = [m for m in formation.members if m is not None]
-
-                # Skip empty formations
-                if not current_members:
-                    continue
-
-                # Skip formations with hidden enemies (special battle events)
-                if any(m.hidden_at_start for m in current_members):
-                    continue
-
-                # Skip formations where we can't run away (usually boss fights)
-                if not formation.can_run_away:
-                    continue
-
-                # Get unique enemy types from current formation
-                current_enemy_types = list(set(m.enemy for m in current_members))
-
-                # Build candidates list - start with current enemy types
-                candidates = list(current_enemy_types)
-
-                # Expand candidates to at least 3 by getting random enemies
-                all_enemy_types = [
-                    type(e) for e in self.enemies.enemies if not e.ohko_immune
-                ]
-                while len(candidates) < 3 and all_enemy_types:
-                    new_enemy = random.choice(all_enemy_types)
-                    if new_enemy not in candidates:
-                        candidates.append(new_enemy)
-
-                # Pick random number of enemies, weighted slightly lower
-                num_enemies = random.randint(1, random.randint(3, max_enemies))
-                num_enemies = max(num_enemies, len(current_enemy_types))
-
-                # Start with at least one of each original enemy type
-                chosen_enemies: list[type] = list(current_enemy_types)
-
-                # Fill out the rest
-                while len(chosen_enemies) < num_enemies:
-                    sub_candidates = candidates + chosen_enemies
-                    if not sub_candidates:
-                        break
-                    chosen_enemies.append(random.choice(sub_candidates))
-
-                random.shuffle(chosen_enemies)
-
-                # Assign coordinates - ensure no duplicates
-                new_members: list[FormationMember | None] = []
-                done_coordinates: list[tuple[int, int]] = []
-
-                for enemy_type in chosen_enemies:
-                    if not done_coordinates:
-                        # First enemy: pick random coordinate
-                        x, y = random.choice(VALID_COORDINATES)
-                    else:
-                        # Subsequent enemies: pick coordinate with most distance from others
-                        # Also ensuring it's not already used
-                        sample_size = min(
-                            len(VALID_COORDINATES), len(chosen_enemies) * 2
-                        )
-                        candidates_coords = random.sample(
-                            VALID_COORDINATES, sample_size
-                        )
-                        x, y = select_most_distance(candidates_coords, done_coordinates)
-
-                    done_coordinates.append((x, y))
-                    new_members.append(
-                        FormationMember(
-                            enemy=enemy_type,
-                            x_pos=x,
-                            y_pos=y,
-                            hidden_at_start=False,
-                        )
-                    )
-
-                # Update formation with new members
-                formation.set_members(new_members)
+        randomize_enemy_formations(self)
 
     def _apply_exp_multiplier(self) -> None:
         """Apply EXP multiplier to all enemies based on settings."""
-        exp_setting = self.settings.get_flag(EXPMultiplier).selected
-
-        if exp_setting == EXPMultiplierOptions.VANILLA:
-            return
-
-        multiplier = 1
-        if exp_setting == EXPMultiplierOptions.DOUBLE:
-            multiplier = 2
-        elif exp_setting == EXPMultiplierOptions.TRIPLE:
-            multiplier = 3
-
-        for enemy in self.enemies.enemies:
-            current_xp = enemy.xp
-            new_xp = min(9999, current_xp * multiplier)
-            enemy.set_xp(new_xp)
+        apply_exp_multiplier(self)
 
     def _randomize_character_stats(self) -> None:
         """Randomize character stats, level-up bonuses, and stat growths."""
-        from smrpgpatchbuilder.datatypes.allies.ally import LevelUp
-
-        LEVEL_STATS = [
-            "hp_plus",
-            "attack_plus",
-            "defense_plus",
-            "mg_attack_plus",
-            "mg_defense_plus",
-        ]
-        BONUS_STATS = [
-            "hp_plus_bonus",
-            "attack_plus_bonus",
-            "defense_plus_bonus",
-            "mg_attack_plus_bonus",
-            "mg_defense_plus_bonus",
-        ]
-
-        # Randomize XP requirements for each level
-        self._randomize_levelup_xps()
-
-        # Collect all bonuses from all allies for inter-shuffling (first 19 levels)
-        all_bonuses: list[LevelUp] = []
-        for ally in self.allies._allies:
-            all_bonuses.extend(ally.levels[:19])
-
-        # Inter-shuffle level up stat bonuses between all characters
-        for attrs in (
-            ("hp_plus_bonus",),
-            ("attack_plus_bonus", "defense_plus_bonus"),
-            ("mg_attack_plus_bonus", "mg_defense_plus_bonus"),
-        ):
-            shuffled = all_bonuses[:]
-            random.shuffle(shuffled)
-
-            for attr in attrs:
-                swaps = [getattr(s, attr) for s in shuffled]
-                for bonus, bval in zip(all_bonuses, swaps):
-                    setattr(bonus, attr, bval)
-
-            # For any bonuses that are zero, pick a random non-zero one
-            non_zeros = [
-                b for b in all_bonuses if all(getattr(b, attr) for attr in attrs)
-            ]
-            for bonus in all_bonuses:
-                for attr in attrs:
-                    while getattr(bonus, attr) == 0 and non_zeros:
-                        setattr(bonus, attr, getattr(random.choice(non_zeros), attr))
-
-        # Randomize each ally's stats
-        for ally in self.allies._allies:
-            # Mutate starting level and speed
-            ally.starting_level = self._mutate_normal(
-                ally.starting_level, minimum=1, maximum=30
-            )
-            ally.starting_speed = self._mutate_normal(
-                ally.starting_speed, minimum=1, maximum=255
-            )
-
-            # Randomize level up stat bonuses
-            for level_up in ally.levels:
-                for attr in BONUS_STATS:
-                    value = getattr(level_up, attr)
-                    # Make each bonus at least 1
-                    new_value = max(self._mutate_normal(value, maximum=15), 1)
-                    setattr(level_up, attr, new_value)
-
-            # Randomize level up stat growths for each stat
-            for attr in LEVEL_STATS:
-                # Get current values at level 1 and level 20
-                value_lvl1 = getattr(
-                    ally,
-                    (
-                        f'starting_{attr.replace("_plus", "")}'
-                        if attr == "hp_plus"
-                        else f'starting_{attr.replace("_plus", "").replace("mg_", "mg_")}'
-                    ),
-                    1,
-                )
-
-                # For growths, work with levels 2-20 (first 19 entries)
-                growths = [getattr(level_up, attr) for level_up in ally.levels[:19]]
-
-                # Mutate each growth value
-                for i, level_up in enumerate(ally.levels[:19]):
-                    value = getattr(level_up, attr)
-                    new_value = max(self._mutate_normal(value, maximum=15), 1)
-                    setattr(level_up, attr, new_value)
-
-                # Beyond level 20, give smaller increases (1-2)
-                for level_up in ally.levels[19:]:
-                    setattr(level_up, attr, random.choices([1, 2], weights=[2, 1])[0])
-
-            # Set starting stats based on starting level and optimal bonuses
-            self._finalize_character_stats(ally)
+        randomize_character_stats(self)
 
     def _randomize_levelup_xps(self) -> None:
         """Randomize the XP requirements for each level by shuffling the gaps."""
-        # Get current XP values from first ally (they share the same XP table)
-        if not self.allies._allies:
-            return
-
-        ally = self.allies._allies[0]
-        if not ally.levels:
-            return
-
-        # Build gaps between levels
-        gaps = []
-        prev_xp = 0
-        for level_up in ally.levels:
-            gap = level_up.exp_needed - prev_xp
-            gaps.append(self._mutate_normal(gap, minimum=1, maximum=9999))
-            prev_xp = level_up.exp_needed
-
-        gaps.sort()
-
-        # Make sure we total 9999 at level 30
-        total = sum(gaps)
-        if total != 9999:
-            diff = 9999 - total
-            piece = diff / sum(range(1, len(gaps) + 1))
-            for i in range(len(gaps)):
-                gaps[i] += round(piece * (i + 1))
-
-        # Check total again for rounding
-        total = sum(gaps)
-        if total != 9999:
-            diff = 9999 - total
-            gaps[-1] += diff
-            gaps.sort()
-
-        # Apply new XP values to all allies
-        for ally in self.allies._allies:
-            prev = 0
-            for i, level_up in enumerate(ally.levels):
-                if i < len(gaps):
-                    new_val = prev + gaps[i]
-                    level_up.exp_needed = new_val
-                    prev = new_val
+        randomize_levelup_xps(self)
 
     def _finalize_character_stats(self, ally) -> None:
         """Finalize character starting stats based on starting level and optimal choices."""
-        STAT_MAP = {
-            "starting_max_hp": ("hp_plus", "hp_plus_bonus", 999),
-            "starting_attack": ("attack_plus", "attack_plus_bonus", 255),
-            "starting_defense": ("defense_plus", "defense_plus_bonus", 255),
-            "starting_mg_attack": ("mg_attack_plus", "mg_attack_plus_bonus", 255),
-            "starting_mg_defense": ("mg_defense_plus", "mg_defense_plus_bonus", 255),
-        }
-
-        for starting_attr, (growth_attr, bonus_attr, max_val) in STAT_MAP.items():
-            base_value = getattr(ally, starting_attr)
-
-            # Calculate stat at starting level with optimal bonus choices
-            total = base_value
-            for i, level_up in enumerate(ally.levels[: ally.starting_level - 1]):
-                growth = getattr(level_up, growth_attr)
-                bonus = getattr(level_up, bonus_attr)
-                total += growth + bonus
-
-            # Ensure we don't exceed maximum
-            total = min(total, max_val)
-            setattr(ally, starting_attr, total)
-
-        # Set starting current HP to max HP
-        ally.starting_current_hp = ally.starting_max_hp
-
-        # Set starting experience based on starting level
-        if ally.starting_level > 1 and ally.levels:
-            ally.starting_experience = ally.levels[ally.starting_level - 2].exp_needed
-        else:
-            ally.starting_experience = 0
+        pass
 
     def _randomize_character_spell_stats(self) -> None:
         """Randomize character spell stats (FP cost, power, hit rate)."""
-        from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
-        from ..data.spells.spells import (
-            GenoBoostSpell,
-            TherapySpell,
-            GroupHugSpell,
-            HPRainSpell,
-            PsychopathSpell,
-            SleepyTimeSpell,
-            MuteSpell,
-        )
-
-        # Spells that should not have their power randomized
-        NO_POWER_SHUFFLE = (GenoBoostSpell, SleepyTimeSpell, MuteSpell, PsychopathSpell)
-
-        # Spells that should not have their hit rate randomized
-        NO_HIT_RATE_SHUFFLE = (
-            GenoBoostSpell,
-            TherapySpell,
-            GroupHugSpell,
-            HPRainSpell,
-            PsychopathSpell,
-        )
-
-        for spell in self.spells.spells:
-            if not isinstance(spell, CharacterSpell):
-                continue
-
-            # Randomize FP cost (1-31, capped by set_fp assertion)
-            new_fp = self._mutate_normal(int(spell.fp), minimum=1, maximum=31)
-            spell.set_fp(new_fp)
-
-            # Randomize power (except for certain spells)
-            if not isinstance(spell, NO_POWER_SHUFFLE):
-                new_power = self._mutate_normal(
-                    int(spell.power), minimum=0, maximum=255
-                )
-                spell.set_power(int(max(0, min(255, new_power))))
-
-            # Randomize hit rate (except for certain spells)
-            if not isinstance(spell, NO_HIT_RATE_SHUFFLE):
-                # Cap hit rate at 99 for instant KO spells so protection items work
-                max_hit_rate = 99 if spell.check_ohko else 100
-                new_hit_rate = self._mutate_normal(
-                    int(spell.hit_rate), minimum=1, maximum=max_hit_rate
-                )
-                spell.set_hit_rate(new_hit_rate)
-
-    def _randomize_equipment_properties(self) -> None:
-        """Randomize equipment stats and buffs (excluding character allowances)."""
-        from smrpgpatchbuilder.datatypes.spells.enums import TempStatBuff
-
-        EQUIP_STATS = ["speed", "attack", "defense", "magic_attack", "magic_defense"]
-        PRIMARY_STATS_BY_TYPE = {
-            Weapon: ["attack"],
-            Armor: ["defense", "magic_defense"],
-            Accessory: ["speed"],
-        }
-
-        for item in self.items.items:
-            if not isinstance(item, (Weapon, Armor, Accessory)):
-                continue
-
-            # Get primary stats for this item type
-            primary_stats = []
-            for item_type, stats in PRIMARY_STATS_BY_TYPE.items():
-                if isinstance(item, item_type):
-                    primary_stats = stats
-                    break
-
-            # Calculate stat point value (similar to old logic)
-            stat_point_value = 0
-            for attr in EQUIP_STATS:
-                val = getattr(item, attr, 0)
-                if val > 0:
-                    if attr in primary_stats:
-                        stat_point_value += val
-                    else:
-                        stat_point_value += val * 2
-
-            # Randomize number of attributes to go up or down
-            # 1/3 chance all non-zero stats go up
-            ups: list[str] = []
-            if random.randint(1, 3) == 1:
-                ups = [attr for attr in EQUIP_STATS if getattr(item, attr, 0) > 0]
-
-            if not ups:
-                num_up = random.choices([1, 2, 3, 4, 5], weights=[5, 10, 10, 5, 1])[0]
-                while True:
-                    ups = random.sample(EQUIP_STATS, num_up)
-                    if set(ups) & set(primary_stats):
-                        break
-
-            # Attributes going down (1/3 chance all negative stats go down)
-            if random.randint(1, 3) == 1:
-                downs = [attr for attr in EQUIP_STATS if getattr(item, attr, 0) < 0]
-            else:
-                num_down = random.choices(
-                    [0, 1, 2, 3, 4, 5], weights=[1, 5, 10, 10, 5, 1]
-                )[0]
-                downs = random.sample(EQUIP_STATS, num_down)
-
-            # Priority to going up
-            downs = [d for d in downs if d not in ups]
-
-            # Track increases and decreases
-            score = stat_point_value
-            up_vals = {u: 0 for u in ups}
-            down_vals = {d: 0 for d in downs}
-
-            # Distribute down points
-            if downs:
-                if score != 0:
-                    down_points = random.randint(0, random.randint(0, score))
-                else:
-                    down_points = random.randint(
-                        0, random.randint(0, random.randint(0, 100))
-                    )
-                score += down_points
-                for _ in range(down_points):
-                    attr = random.choice(downs)
-                    down_vals[attr] += 1
-
-            # Distribute up points
-            while score > 0:
-                attr = random.choice(ups)
-                up_vals[attr] += 1
-                if attr in primary_stats:
-                    score -= 1
-                else:
-                    score -= 2
-
-            # Zero all stats
-            for attr in EQUIP_STATS:
-                setter = getattr(item, f"set_{attr}")
-                setter(0)
-
-            # Set new positive stats with mutation
-            for attr in up_vals:
-                val = self._mutate_normal(up_vals[attr], minimum=1, maximum=127)
-                setter = getattr(item, f"set_{attr}")
-                setter(val)
-
-            # Set new negative stats with mutation
-            for attr in down_vals:
-                val = self._mutate_normal(down_vals[attr], minimum=1, maximum=127)
-                setter = getattr(item, f"set_{attr}")
-                setter(-val)
-
-            # If weapon with variance, shuffle that too
-            if isinstance(item, Weapon) and item.variance > 0:
-                new_variance = self._mutate_normal(
-                    int(item.variance), minimum=1, maximum=127
-                )
-                item.set_variance(new_variance)
-
-            # Randomize special properties based on tier
-            # Determine tier based on item price (rough approximation)
-            price = item.price
-            if price <= 50:
-                tier = 1
-            elif price <= 150:
-                tier = 2
-            elif price <= 400:
-                tier = 3
-            elif price <= 1000:
-                tier = 4
-            else:
-                tier = 5
-
-            odds_map = {1: 2 / 3, 2: 1 / 2, 3: 1 / 4, 4: 1 / 8, 5: 3 / 32}
-            odds = odds_map.get(tier, 0) / 2  # Halved as per 7.1.3 update
-
-            if odds > 0:
-                # Instant KO protection
-                ko_odds = odds
-                if isinstance(item, Weapon):
-                    ko_odds /= 2
-                item.set_prevent_ko(random.random() < ko_odds)
-
-                # Elemental immunities/resistances
-                item.set_elemental_immunities([])
-                item.set_elemental_resistances([])
-                elements = [Element.ICE, Element.FIRE, Element.THUNDER]
-                if random.randint(1, 2) == 1:
-                    for elem in elements:
-                        if random.random() < odds:
-                            item.append_elemental_immunity(elem)
-                        elif random.random() < odds:
-                            item.append_elemental_resistance(elem)
-                else:
-                    for elem in elements:
-                        if random.random() < odds:
-                            item.append_elemental_resistance(elem)
-                        elif random.random() < odds:
-                            item.append_elemental_immunity(elem)
-
-                # Status immunities
-                item.set_status_immunities([])
-                status_list = [
-                    Status.MUTE,
-                    Status.SLEEP,
-                    Status.POISON,
-                    Status.FEAR,
-                    Status.MUSHROOM,
-                    Status.SCARECROW,
-                ]
-                for status in status_list:
-                    if random.random() < odds:
-                        item.append_status_immunity(status)
-
-                # Temp buffs (weighted toward accessories/armor)
-                buff_odds = odds
-                if isinstance(item, Weapon):
-                    buff_odds /= 2
-                elif isinstance(item, Armor):
-                    buff_odds /= 5
-                item.set_temp_buffs([])
-                buffs = [
-                    TempStatBuff.ATTACK,
-                    TempStatBuff.DEFENSE,
-                    TempStatBuff.MAGIC_ATTACK,
-                    TempStatBuff.MAGIC_DEFENSE,
-                ]
-                for buff in buffs:
-                    if random.random() < buff_odds:
-                        item.append_temp_buff(buff)
-
-            # Update description based on new stats
-            item.set_description(item.build_equipment_description())
-
-    def _randomize_equipment_characters(
-        self, setting: EquipmentCharactersOptions
-    ) -> None:
-        """Randomize which characters can equip each piece of equipment."""
-        ALL_CHARS = [
-            PartyCharacter(i) for i in range(5)
-        ]  # Mario=0, Mallow=1, Geno=2, Bowser=3, Peach=4
-
-        for item in self.items.items:
-            if not isinstance(item, (Weapon, Armor, Accessory)):
-                continue
-
-            if setting == EquipmentCharactersOptions.EQUIP_ALL:
-                # Anyone can equip anything
-                item.set_equip_chars(list(ALL_CHARS))
-
-            elif setting == EquipmentCharactersOptions.VANILLA_ACCESSORIES_ALL:
-                # Only accessories get all chars
-                if isinstance(item, Accessory):
-                    item.set_equip_chars(list(ALL_CHARS))
-                # Weapons and armor keep vanilla (no change needed)
-
-            elif setting == EquipmentCharactersOptions.RANDOM_ACCESSORIES_ALL:
-                if isinstance(item, Accessory):
-                    # All accessories can be equipped by anyone
-                    item.set_equip_chars(list(ALL_CHARS))
-                else:
-                    # Weapons and armor get randomized
-                    self._randomize_single_equip_chars(item, ALL_CHARS)
-
-            elif setting == EquipmentCharactersOptions.RANDOM:
-                # Everything gets randomized
-                self._randomize_single_equip_chars(item, ALL_CHARS)
-
-    def _randomize_single_equip_chars(
-        self, item: Equipment, all_chars: list[PartyCharacter]
-    ) -> None:
-        """Randomize equippable characters for a single item."""
-        # Pick random number of characters with lower numbers weighted heavier
-        num_equippable = random.randint(1, random.randint(1, 5))
-        new_chars: set[PartyCharacter] = set()
-
-        for _ in range(num_equippable):
-            char_choices = set(all_chars) - new_chars
-            if not char_choices:
-                break
-            new_chars.add(random.choice(list(char_choices)))
-
-        item.set_equip_chars(list(new_chars))
+        randomize_character_spell_stats(self)
 
     def _build_item_impact_categories(self) -> None:
-        """Build item impact categories for use in shop shuffling and other systems.
-
-        Categorizes consumables and equipment into low/high/highest impact tiers.
-        Equipment is ranked based on stats, immunities, and special properties.
-        """
-        from randomizer.data.items.items import PickMeUpItem
-
-        no_pickmeups = self.settings.isflag_enabled(NoPickMeUps)
-
-        # Define consumable item pools
-        self.low_impact_items = [
-            MushroomItem,
-            HoneySyrupItem,
-            AbleJuiceItem,
-            BracerItem,
-            EnergizerItem,
-            YoshiCookieItem,
-            PureWaterItem,
-            SleepyBombItem,
-            BadMushroomItem,
-            FlowerTabItem,
-            FroggieDrinkItem,
-            MukuCookieItem,
-            FreshenUpItem,
-            FrightBombItem,
-            WiltShroomItem,
-            RottenMushItem,
-            MoldyMushItem,
-            MushroomItem2,
-        ]
-        if not no_pickmeups:
-            self.low_impact_items.append(PickMeUpItem)
-
-        self.high_impact_items = [
-            MidMushroomItem,
-            MaxMushroomItem,
-            MapleSyrupItem,
-            RoyalSyrupItem,
-            YoshiAdeItem,
-            FireBombItem,
-            IceBombItem,
-            YoshiCandyItem,
-            ElixirItem,
-            MegalixirItem,
-            CrystallineItem,
-            PowerBlastItem,
-        ]
-
-        self.highest_impact_items = [
-            RedEssenceItem,
-            KerokeroColaItem,
-            RockCandyItem,
-        ]
-
-        # Calculate equipment rank values and categorize them
-        def calc_equip_rank(item: Equipment) -> float:
-            variance = int(item.variance) if isinstance(item, Weapon) else 0
-            attack = item.attack
-            attack_base = attack - variance if attack - variance != 0 else 1
-            attack_variance_factor = (
-                min(2, (attack + variance) / attack_base) if attack > 0 else 0
-            )
-
-            rank = (
-                attack * max(0, attack_variance_factor)
-                + max(
-                    0,
-                    (item.magic_attack / (2 if item.magic_attack < 0 else 1))
-                    + (item.magic_defense / (2 if item.magic_defense < 0 else 1))
-                    + (item.defense / (2 if item.defense < 0 else 1))
-                    + min(20, item.speed / 2),
-                )
-                + 10 * len(item.status_immunities)
-                + 15 * len(item.elemental_immunities)
-                + 7.5 * len(item.elemental_resistances)
-                + 50 * (1 if item.prevent_ko else 0)
-                + 30 * len(item.temp_buffs)
-            )
-            return rank
-
-        # Get all equipment and sort by rank
-        all_equipment = [
-            i for i in self.items.items if isinstance(i, (Weapon, Armor, Accessory))
-        ]
-        self.equipment_ranks = [(type(e), calc_equip_rank(e)) for e in all_equipment]
-        self.equipment_ranks.sort(key=lambda x: x[1], reverse=True)
-
-        # Categorize equipment: top 20% = highest, next 30% = high, bottom 50% = low
-        total_equip = len(self.equipment_ranks)
-        highest_cutoff = int(total_equip * 0.2)
-        high_cutoff = int(total_equip * 0.5)
-
-        self.highest_impact_equip = [
-            e[0]
-            for e in self.equipment_ranks[:highest_cutoff]
-            if not (
-                self.settings.isflag_enabled(RestrictSpecialEquips)
-                and GameWorld.is_monstro_item(e[0])
-            )
-            and not (
-                GameWorld.is_remake_item(e[0])
-                and not self.settings.isflag_enabled(Remake)
-            )
-        ]
-        self.high_impact_equip = [
-            e[0]
-            for e in self.equipment_ranks[highest_cutoff:high_cutoff]
-            if not (
-                self.settings.isflag_enabled(RestrictSpecialEquips)
-                and GameWorld.is_monstro_item(e[0])
-            )
-            and not (
-                GameWorld.is_remake_item(e[0])
-                and not self.settings.isflag_enabled(Remake)
-            )
-        ]
-        self.low_impact_equip = [
-            e[0]
-            for e in self.equipment_ranks[high_cutoff:]
-            if not (
-                self.settings.isflag_enabled(RestrictSpecialEquips)
-                and GameWorld.is_monstro_item(e[0])
-            )
-            and not (
-                GameWorld.is_remake_item(e[0])
-                and not self.settings.isflag_enabled(Remake)
-            )
-        ]
+        """Build item impact categories for use in shop shuffling and other systems."""
+        build_item_impact_categories(self)
 
     def _build_item_to_prize_mapping(self) -> None:
-        """Build a mapping from item classes to their corresponding prize classes.
-
-        Iterates through all ItemPrize subclasses and creates a reverse mapping
-        from their `item` attribute to the prize class itself.
-        """
-        self.item_to_prize = {}
-
-        def get_all_subclasses(cls: type) -> list[type]:
-            """Recursively get all subclasses of a class."""
-            subclasses = []
-            for subclass in cls.__subclasses__():
-                subclasses.append(subclass)
-                subclasses.extend(get_all_subclasses(subclass))
-            return subclasses
-
-        for prize_class in get_all_subclasses(ItemPrize):
-            if hasattr(prize_class, "item") and prize_class.item is not None:
-                self.item_to_prize[prize_class.item] = prize_class
+        build_item_to_prize_mapping(self)
 
     def _shuffle_shops(self) -> None:
         """Shuffle the contents of all shops based on settings."""
-        from randomizer.data.items.items import GoodieBagItem, PickMeUpItem
-
-        quality = self.settings.get_flag(ShopQuality).selected
-        bias_enabled = self.settings.isflag_enabled(BiasShopShuffle)
-        no_pickmeups = self.settings.isflag_enabled(NoPickMeUps)
-        free_shops = self.settings.isflag_enabled(FreeShops)
-
-        # Define shop indices for special handling
-        FROG_DISCIPLE_SHOP = SH03_FROG_DISCIPLE
-        FROG_COIN_EMPORIUM = SH06_FROG_COIN_EMPORIUM
-        JUICE_BAR_BASE = SH09_JUICE_BAR_BASE
-        JUICE_BAR_ALTO = SH10_JUICE_BAR_ALTO
-        JUICE_BAR_TENOR = SH11_JUICE_BAR_TENOR
-        JUICE_BAR_SOPRANO = SH12_JUICE_BAR_SOPRANO
-
-        # Get the items from Frog Disciple prize locations (already shuffled)
-        frog_disciple_items: list[type[BaseItem] | None] = []
-        frog_disciple_locations = [
-            FrogDiscipleLocation1,
-            FrogDiscipleLocation2,
-            FrogDiscipleLocation3,
-            FrogDiscipleLocation4,
-            FrogDiscipleLocation5,
-        ]
-        for loc_type in frog_disciple_locations:
-            loc = self.locations.get(loc_type)
-            if loc and loc.prize:
-                # Get the item type from the prize
-                from .prize import ItemPrize
-
-                if isinstance(loc.prize, ItemPrize):
-                    prize_item = loc.prize.item
-                    if prize_item:
-                        frog_disciple_items.append(prize_item)
-
-        # Set Frog Disciple shop contents (don't shuffle into it)
-        self.shops.shops[FROG_DISCIPLE_SHOP].set_items(frog_disciple_items)
-
-        # Define should_get_better_items shops
-        should_get_better_items = [
-            SH06_FROG_COIN_EMPORIUM,
-            SH08_SEASIDE_TOWN_MINION,
-            SH11_JUICE_BAR_TENOR,
-            SH12_JUICE_BAR_SOPRANO,
-            SH13_SEASIDE_WEAPON,
-            SH14_SEASIDE_ARMOR,
-            SH15_SEASIDE_ACCESSORY,
-            SH16_SEASIDE_HEALTH_FOOD,
-            SH23_KEEP_2,
-            SH24_FACTORY_TOAD,
-        ]
-        if not self.settings.is_flag_value(SeaGate, SeaGating.OPEN):
-            should_get_better_items.append(SH07_SEA_AND_SHIP_SHAMAN)
-        if not self.settings.is_flag_value(MonstroTownGate, MonstroTownGating.OPEN):
-            should_get_better_items.extend([SH17_MONSTRO, SH20_GOOMBETTE])
-        if not self.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.OPEN):
-            should_get_better_items.extend([SH18_VOLCANO_ITEM, SH19_VOLCANO_ARMOR])
-        if self.settings.is_flag_value(NimbusGate, NimbusGating.MEGASMILAX):
-            should_get_better_items.append(SH21_NIMBUS_LAND)
-        if not self.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.OPEN):
-            should_get_better_items.extend([SH22_KEEP_1])
-
-        # Use class-level item impact categories (built by _build_item_impact_categories)
-        low_impact_items = self.low_impact_items
-        high_impact_items = self.high_impact_items
-        highest_impact_items = self.highest_impact_items
-        low_impact_equip = self.low_impact_equip
-        high_impact_equip = self.high_impact_equip
-        highest_impact_equip = self.highest_impact_equip
-
-        # Get original shop item types for each shop (for type restrictions)
-        original_shop_data: dict[int, dict] = {}
-        for shop in self.shops.shops:
-            if shop is None:
-                continue
-            orig_items = [i for i in shop.items if i is not None]
-            original_shop_data[shop.index] = {
-                "has_weapon": any(issubclass(i, Weapon) for i in orig_items),
-                "has_armor": any(issubclass(i, Armor) for i in orig_items),
-                "has_accessory": any(issubclass(i, Accessory) for i in orig_items),
-                "has_consumable": any(
-                    not issubclass(i, (Weapon, Armor, Accessory)) for i in orig_items
-                ),
-                "original_items": orig_items,
-                "original_count": len(orig_items),
-            }
-
-        # Handle EMPTY mode: only GoodieBag in every shop
-        if quality == ShopQualities.EMPTY:
-            for shop in self.shops.shops:
-                if shop is None:
-                    continue
-                shop.set_items([GoodieBagItem])
-            return
-
-        # Build item pools based on quality setting
-        def get_item_pool(
-            quality: ShopQualities, is_equipment: bool = False
-        ) -> tuple[list, list, list]:
-            """Returns (low, high, highest) pools based on quality."""
-            if is_equipment:
-                if quality == ShopQualities.ORIGINAL:
-                    # Only equipment that was originally in shops
-                    orig_equip_in_shops: set = set()
-                    for shop in self.shops.shops:
-                        if shop is None or shop.index == FROG_DISCIPLE_SHOP:
-                            continue
-                        for item in shop.items:
-                            if item and issubclass(item, (Weapon, Armor, Accessory)):
-                                orig_equip_in_shops.add(item)
-                    return (
-                        [e for e in low_impact_equip if e in orig_equip_in_shops],
-                        [e for e in high_impact_equip if e in orig_equip_in_shops],
-                        [e for e in highest_impact_equip if e in orig_equip_in_shops],
-                    )
-                elif quality == ShopQualities.MOSTLY_RANDOM:
-                    return (low_impact_equip, high_impact_equip, [])
-                else:  # COMPLETELY_RANDOM
-                    return (low_impact_equip, high_impact_equip, highest_impact_equip)
-            else:
-                if quality == ShopQualities.ORIGINAL:
-                    # Only consumables that were originally in shops
-                    orig_in_shops: set = set()
-                    for shop in self.shops.shops:
-                        if shop is None or shop.index == FROG_DISCIPLE_SHOP:
-                            continue
-                        for item in shop.items:
-                            if item and not issubclass(
-                                item, (Weapon, Armor, Accessory)
-                            ):
-                                orig_in_shops.add(item)
-                    return (
-                        [i for i in low_impact_items if i in orig_in_shops],
-                        [i for i in high_impact_items if i in orig_in_shops],
-                        [i for i in highest_impact_items if i in orig_in_shops],
-                    )
-                elif quality == ShopQualities.MOSTLY_RANDOM:
-                    return (low_impact_items, high_impact_items, [])
-                else:  # COMPLETELY_RANDOM
-                    return (low_impact_items, high_impact_items, highest_impact_items)
-
-        low_consumables, high_consumables, highest_consumables = get_item_pool(
-            quality, is_equipment=False
-        )
-        low_equip, high_equip, highest_equip = get_item_pool(quality, is_equipment=True)
-
-        # Remove Pick Me Ups if setting enabled
-        if no_pickmeups:
-            low_consumables = [i for i in low_consumables if i != PickMeUpItem]
-            high_consumables = [i for i in high_consumables if i != PickMeUpItem]
-            highest_consumables = [i for i in highest_consumables if i != PickMeUpItem]
-
-        # Track items placed in Frog Coin Emporium (cannot appear elsewhere)
-        frog_emporium_items: set = set()
-        # Track items placed in Frog Disciple (can only also appear in Frog Coin Emporium)
-        frog_disciple_set = set(frog_disciple_items)
-
-        def can_place_item(
-            item_type: type[BaseItem] | None, shop_idx: int, current_items: list
-        ) -> bool:
-            """Check if an item can be placed in a shop."""
-            if item_type is None:
-                return False
-            # No duplicates in same shop
-            if item_type in current_items:
-                return False
-            # Items in Frog Coin Emporium can't appear elsewhere
-            if item_type in frog_emporium_items and shop_idx != FROG_COIN_EMPORIUM:
-                return False
-            # Items in Frog Disciple can only also appear in Frog Coin Emporium
-            if item_type in frog_disciple_set and shop_idx not in [
-                FROG_DISCIPLE_SHOP,
-                FROG_COIN_EMPORIUM,
-            ]:
-                return False
-            # Check type restrictions
-            shop_data = original_shop_data.get(shop_idx, {})
-            if issubclass(item_type, Weapon) and not shop_data.get("has_weapon", False):
-                return False
-            if issubclass(item_type, Armor) and not shop_data.get("has_armor", False):
-                return False
-            if issubclass(item_type, Accessory) and not shop_data.get(
-                "has_accessory", False
-            ):
-                return False
-            if not issubclass(
-                item_type, (Weapon, Armor, Accessory)
-            ) and not shop_data.get("has_consumable", False):
-                return False
-            return True
-
-        def select_item(
-            shop_idx: int, current_items: list, prefer_high: bool = False
-        ) -> type[BaseItem] | None:
-            """Select an item for a shop based on bias and availability."""
-            is_better_shop = shop_idx in should_get_better_items
-
-            # Build weighted pool
-            candidates = []
-            weights = []
-
-            # Combine consumables and equipment pools
-            all_low = low_consumables + low_equip
-            all_high = high_consumables + high_equip
-            all_highest = highest_consumables + highest_equip
-
-            if bias_enabled:
-                if is_better_shop:
-                    # Better shops: favor high/highest impact
-                    for item in all_highest:
-                        if can_place_item(item, shop_idx, current_items):
-                            candidates.append(item)
-                            weights.append(5)
-                    for item in all_high:
-                        if can_place_item(item, shop_idx, current_items):
-                            candidates.append(item)
-                            weights.append(3)
-                    for item in all_low:
-                        if can_place_item(item, shop_idx, current_items):
-                            candidates.append(item)
-                            weights.append(1)
-                else:
-                    # Other shops: favor low impact
-                    for item in all_low:
-                        if can_place_item(item, shop_idx, current_items):
-                            candidates.append(item)
-                            weights.append(5)
-                    for item in all_high:
-                        if can_place_item(item, shop_idx, current_items):
-                            candidates.append(item)
-                            weights.append(1)
-                    # Significantly less likely for highest
-                    for item in all_highest:
-                        if can_place_item(item, shop_idx, current_items):
-                            candidates.append(item)
-                            weights.append(0.2)
-            else:
-                # No bias: equal weights
-                for item in all_low + all_high + all_highest:
-                    if can_place_item(item, shop_idx, current_items):
-                        candidates.append(item)
-                        weights.append(1)
-
-            if not candidates:
-                return None
-
-            return random.choices(candidates, weights=weights, k=1)[0]
-
-        # Process each shop (except Frog Disciple which is already set)
-        shops_to_process = [
-            s
-            for s in self.shops.shops
-            if s is not None and s.index != FROG_DISCIPLE_SHOP
-        ]
-
-        # Process Frog Coin Emporium first (its items are exclusive)
-        frog_emporium_shop = self.shops.shops[FROG_COIN_EMPORIUM]
-        if frog_emporium_shop:
-            shop_data = original_shop_data.get(FROG_COIN_EMPORIUM, {})
-            target_count = min(15, max(1, shop_data.get("original_count", 5)))
-            emporium_new_items: list[type[BaseItem] | None] = []
-
-            for _ in range(target_count):
-                item = select_item(
-                    FROG_COIN_EMPORIUM, emporium_new_items, prefer_high=True
-                )
-                if item:
-                    emporium_new_items.append(item)
-                    frog_emporium_items.add(item)
-
-            frog_emporium_shop.set_items(emporium_new_items)
-
-        # Handle Juice Bar hierarchy (BASE < ALTO < TENOR < SOPRANO)
-        juice_bars = [
-            JUICE_BAR_BASE,
-            JUICE_BAR_ALTO,
-            JUICE_BAR_TENOR,
-            JUICE_BAR_SOPRANO,
-        ]
-        juice_bar_items: dict[int, list[type[BaseItem] | None]] = {}
-
-        for i, bar_idx in enumerate(juice_bars):
-            shop = self.shops.shops[bar_idx]
-            if shop is None:
-                continue
-
-            shop_data = original_shop_data.get(bar_idx, {})
-
-            if i == 0:
-                # BASE: start fresh
-                target_count = max(1, shop_data.get("original_count", 1))
-                bar_new_items: list[type[BaseItem] | None] = []
-                for _ in range(target_count):
-                    item = select_item(bar_idx, bar_new_items)
-                    if item:
-                        bar_new_items.append(item)
-                juice_bar_items[bar_idx] = bar_new_items
-            else:
-                # Must be superset of previous (but not same)
-                prev_items = list(juice_bar_items.get(juice_bars[i - 1], []))
-                bar_new_items = list(prev_items)  # Start with previous items
-                # Add at least one more item
-                added = 0
-                attempts = 0
-                while added < 1 and attempts < 50:
-                    item = select_item(bar_idx, bar_new_items)
-                    if item and item not in bar_new_items:
-                        bar_new_items.append(item)
-                        added += 1
-                    attempts += 1
-                # Try to add more up to original count or 15
-                target_extra = min(
-                    15 - len(bar_new_items),
-                    shop_data.get("original_count", len(bar_new_items))
-                    - len(prev_items),
-                )
-                for _ in range(max(0, target_extra - 1)):
-                    item = select_item(bar_idx, bar_new_items)
-                    if item and item not in bar_new_items:
-                        bar_new_items.append(item)
-                juice_bar_items[bar_idx] = bar_new_items
-
-            shop.set_items(juice_bar_items[bar_idx])
-
-        # Process remaining shops
-        processed = {FROG_DISCIPLE_SHOP, FROG_COIN_EMPORIUM} | set(juice_bars)
-        for shop in shops_to_process:
-            if shop.index in processed:
-                continue
-
-            shop_data = original_shop_data.get(shop.index, {})
-            target_count = min(15, max(1, shop_data.get("original_count", 5)))
-            shop_new_items: list[type[BaseItem] | None] = []
-
-            for _ in range(target_count):
-                item = select_item(shop.index, shop_new_items)
-                if item:
-                    shop_new_items.append(item)
-
-            if shop_new_items:
-                shop.set_items(shop_new_items)
-            elif quality == ShopQualities.ORIGINAL:
-                # If no items could be placed in ORIGINAL mode, discard
-                shop.set_items([])
-
-        # Guarantee Pick Me Ups appear in at least one shop if not disabled
-        if not no_pickmeups:
-            # Check if any shop contains Pick Me Up
-            has_pickmeup = False
-            for shop in self.shops.shops:
-                if shop is not None and PickMeUpItem in (shop.items or []):
-                    has_pickmeup = True
-                    break
-
-            if not has_pickmeup:
-                # Find shops that can have consumables and have room
-                eligible_shops = []
-                for shop in self.shops.shops:
-                    if shop is None or shop.index == FROG_DISCIPLE_SHOP:
-                        continue
-                    shop_data = original_shop_data.get(shop.index, {})
-                    if shop_data.get("has_consumable", False):
-                        current_items = shop.items or []
-                        if (
-                            len(current_items) < 15
-                            and PickMeUpItem not in current_items
-                        ):
-                            eligible_shops.append(shop)
-
-                if eligible_shops:
-                    target_shop = random.choice(eligible_shops)
-                    current_items: list[type[BaseItem] | None] = list(
-                        target_shop.items or []
-                    )
-                    current_items.append(PickMeUpItem)
-                    target_shop.set_items(current_items)
-
-        # Apply FreeShops: set all non-zero prices to 1
-        if free_shops:
-            for item in self.items.items:
-                if item.price > 0:
-                    item.set_price(1)
-
-        # Apply Frog Coin Emporium price reduction (divide by 5)
-        for item_type in frog_emporium_items:
-            item = self.items.get_by_type(item_type)
-            if item and item.price > 0:
-                item.set_price(max(1, item.price // 5))
-
-    def _randomize_tadpole_pond(self) -> None:
-        selection = random.sample(all_songs, 3)
-        self.event_scripts.get_script_by_id(E1082_MELODY_BAY_SONG_1_INPUT).set_contents(
-            selection[0].generate_input_script(0)
-        )
-        self.event_scripts.get_script_by_id(
-            E1079_MELODY_BAY_SONG_1_VALIDATOR
-        ).set_contents(selection[0].generate_playback_script(0))
-        self.overworld_dialogs.replace_dialog(
-            DI2718_SONG_1_SCROLL_HINT, selection[0].scroll_text
-        )
-        self.overworld_dialogs.replace_dialog(
-            DI2664_TADPOLE_SONG_1_HINT, selection[0].apprentice_hint_1
-        )
-
-        self.event_scripts.get_script_by_id(E1083_MELODY_BAY_SONG_2_INPUT).set_contents(
-            selection[1].generate_input_script(1)
-        )
-        self.event_scripts.get_script_by_id(
-            E1080_MELODY_BAY_SONG_2_VALIDATOR
-        ).set_contents(selection[1].generate_playback_script(1))
-        self.overworld_dialogs.replace_dialog(
-            DI2665_TADPOLE_SONG_2_HINT, selection[1].apprentice_hint_2
-        )
-        self.overworld_dialogs.replace_dialog(
-            DI1615_MOLEVILLE_BLUES_8, selection[1].mole_hint
-        )
-        self.event_scripts.get_script_by_id(E3132_MOLEVILLE_MINERS_SONG).set_contents(
-            [
-                RunDialog(
-                    DI1615_MOLEVILLE_BLUES_8,
-                    NPC_0,
-                    closable=True,
-                    sync=False,
-                    multiline=True,
-                    use_background=True,
-                ),
-                Return(),
-            ]
-        )
-
-        self.event_scripts.get_script_by_id(E1084_MELODY_BAY_SONG_3_INPUT).set_contents(
-            selection[2].generate_input_script(2)
-        )
-        self.event_scripts.get_script_by_id(
-            E1081_MELODY_BAY_SONG_3_VALIDATOR
-        ).set_contents(selection[2].generate_playback_script(2))
-        cast(
-            ActionQueueAsync,
-            self.event_scripts.get_command_by_identifier("starfish_dance_hint"),
-        ).set_subscript(
-            selection[2].generate_starfish_hint(
-                cast(
-                    ActionQueueAsync,
-                    self.event_scripts.get_script_by_id(E2061_MONSTRO_TOWN_STAR),
-                ).subscript.contents
-            )
-        )
-        self.event_scripts.get_script_by_id(
-            E1088_MELODY_BAY_THIRD_SONG_HINT
-        ).set_contents(selection[2].generate_tadpole_hint())
-
-        self.song_1 = selection[0].scroll_text
-        self.song_2 = selection[1].scroll_text
-        self.song_3 = selection[2].scroll_text
-
-        self.song_authors = list(
-            set(
-                selection[0].submitter_credits
-                + selection[1].submitter_credits
-                + selection[2].submitter_credits
-            )
-        )
-
-    def _randomize_password(self) -> None:
-        password = random.choice(password_pool)
-        self.password = password.word
-        decoy_word = random.choice([p for p in password_pool if p != password])
-        correct_positions = []
-
-        # create password submission logic
-        for index, letter in enumerate(list(password.word)):
-            letters = suggest_letter_bank(password.word, index, decoy_word.word)
-            correct_position = letters.index(password.word[index])
-            correct_positions.append(correct_position)
-
-            # generate the dialogs that display your letter selection when you stand under the boxes
-            box_dialogs = []
-            box_dialogs.append(
-                """[page]\n Key letter%i  <%s> %s  %s  %s  %s[end]"""
-                % (
-                    index + 1,
-                    letters[0],
-                    letters[1],
-                    letters[2],
-                    letters[3],
-                    letters[4],
-                )
-            )
-            box_dialogs.append(
-                """[page]\n Key letter%i   %s <%s> %s  %s  %s[end]"""
-                % (
-                    index + 1,
-                    letters[0],
-                    letters[1],
-                    letters[2],
-                    letters[3],
-                    letters[4],
-                )
-            )
-            box_dialogs.append(
-                """[page]\n Key letter%i   %s  %s <%s> %s  %s[end]"""
-                % (
-                    index + 1,
-                    letters[0],
-                    letters[1],
-                    letters[2],
-                    letters[3],
-                    letters[4],
-                )
-            )
-            box_dialogs.append(
-                """[page]\n Key letter%i   %s  %s  %s <%s> %s[end]"""
-                % (
-                    index + 1,
-                    letters[0],
-                    letters[1],
-                    letters[2],
-                    letters[3],
-                    letters[4],
-                )
-            )
-            box_dialogs.append(
-                """[page]\n Key letter%i   %s  %s  %s  %s <%s>[end]"""
-                % (
-                    index + 1,
-                    letters[0],
-                    letters[1],
-                    letters[2],
-                    letters[3],
-                    letters[4],
-                )
-            )
-            box_dialog_pairs = zip(box_dialogs, box_dialog_ids[index])
-            for dialog_content, dialog_id in box_dialog_pairs:
-                self.overworld_dialogs.replace_dialog(dialog_id, dialog_content)
-            recitation_pairs = zip(letters, recitation_ids[index])
-            for letter, dialog_id in recitation_pairs:
-                self.overworld_dialogs.replace_dialog(dialog_id, """%s[end]""" % letter)
-
-        # calibrate correctness checker
-        self.event_scripts.get_script_by_id(
-            E3411_SHIP_PASSWORD_CORRECTNESS_CHECK
-        ).set_contents(
-            [
-                JmpIfVarNotEqualsConst(
-                    SECONDARY_TEMP_7024, correct_positions[0], ["ship_password_check_2"]
-                ),
-                Inc(TEMP_70AC),
-                JmpIfVarNotEqualsConst(
-                    TEMP_7026,
-                    correct_positions[1],
-                    ["ship_password_check_3"],
-                    identifier="ship_password_check_2",
-                ),
-                Inc(TEMP_70AC),
-                JmpIfVarNotEqualsConst(
-                    TEMP_7028,
-                    correct_positions[2],
-                    ["ship_password_check_4"],
-                    identifier="ship_password_check_3",
-                ),
-                Inc(TEMP_70AC),
-                JmpIfVarNotEqualsConst(
-                    TEMP_702A,
-                    correct_positions[3],
-                    ["ship_password_check_5"],
-                    identifier="ship_password_check_4",
-                ),
-                Inc(TEMP_70AC),
-                JmpIfVarNotEqualsConst(
-                    TEMP_702C,
-                    correct_positions[4],
-                    ["ship_password_check_6"],
-                    identifier="ship_password_check_5",
-                ),
-                Inc(TEMP_70AC),
-                JmpIfVarNotEqualsConst(
-                    TEMP_702E,
-                    correct_positions[5],
-                    ["ship_password_check_end"],
-                    identifier="ship_password_check_6",
-                ),
-                Inc(TEMP_70AC),
-                Return(identifier="ship_password_check_end"),
-            ]
-        )
-
-        # populate hint dialogs
-        random.shuffle(hint_authors)
-        # guarantee that the hint submitter will get their name on one of the hints
-        writers = [password.submitter_hint_prefix] + hint_authors
-        RWRITER = "%RANDOM_WRITER%"
-        number_of_writers = len(
-            [
-                h
-                for h in [
-                    password.troopa_hint,
-                    password.trampoline_hint,
-                    password.maze_hint,
-                    password.snake_hint,
-                    password.cannonball_hint,
-                    password.barrel_hint,
-                    password.entrance_hint,
-                    password.saveroom_hint,
-                    password.greaper_hint_2,
-                    password.greaper_hint,
-                    password.drybones_hint,
-                ]
-                if h is not None and RWRITER in h
-            ]
-        )
-        writers = writers[:number_of_writers]
-        random.shuffle(writers)
-        for s in writers:
-            if RWRITER in password.troopa_hint:
-                password.troopa_hint = password.troopa_hint.replace(RWRITER, s)
-                continue
-            if RWRITER in password.trampoline_hint:
-                password.trampoline_hint = password.trampoline_hint.replace(RWRITER, s)
-                continue
-            if RWRITER in password.maze_hint:
-                password.maze_hint = password.maze_hint.replace(RWRITER, s)
-                continue
-            if RWRITER in password.snake_hint:
-                password.snake_hint = password.snake_hint.replace(RWRITER, s)
-                continue
-            if RWRITER in password.cannonball_hint:
-                password.cannonball_hint = password.cannonball_hint.replace(RWRITER, s)
-                continue
-            if RWRITER in password.barrel_hint:
-                password.barrel_hint = password.barrel_hint.replace(RWRITER, s)
-                continue
-            if password.entrance_hint and RWRITER in password.entrance_hint:
-                password.entrance_hint = password.entrance_hint.replace(RWRITER, s)
-                continue
-            if password.saveroom_hint and RWRITER in password.saveroom_hint:
-                password.saveroom_hint = password.saveroom_hint.replace(RWRITER, s)
-                continue
-            if password.greaper_hint and RWRITER in password.greaper_hint:
-                password.greaper_hint = password.greaper_hint.replace(RWRITER, s)
-                continue
-            if password.greaper_hint_2 and RWRITER in password.greaper_hint_2:
-                password.greaper_hint_2 = password.greaper_hint_2.replace(RWRITER, s)
-                continue
-            if password.drybones_hint and RWRITER in password.drybones_hint:
-                password.drybones_hint = password.drybones_hint.replace(RWRITER, s)
-                continue
-        self.overworld_dialogs.replace_dialog(
-            DI1664_TROOPA_PUZZLE_HINT, password.troopa_hint
-        )
-        self.overworld_dialogs.replace_dialog(
-            DI1665_TRAMPOLINE_PUZZLE_HINT, password.trampoline_hint
-        )
-        self.overworld_dialogs.replace_dialog(
-            DI1666_MAZE_PUZZLE_HINT, password.maze_hint
-        )
-        self.overworld_dialogs.replace_dialog(
-            DI1667_SNAKE_PUZZLE_HINT, password.snake_hint
-        )
-        self.overworld_dialogs.replace_dialog(
-            DI1668_CANNONBALL_PUZZLE_HINT, password.cannonball_hint
-        )
-        self.overworld_dialogs.replace_dialog(
-            DI1669_BARREL_PUZZLE_HINT, password.barrel_hint
-        )
-        if password.entrance_hint is not None:
-            self.overworld_dialogs.replace_dialog(
-                DI1673_SHIP_ENTRANCE_NOTE, password.entrance_hint
-            )
-        if password.saveroom_hint is not None:
-            self.overworld_dialogs.replace_dialog(
-                DI1674_SHIP_SAVEROOM_NOTE, password.saveroom_hint
-            )
-        if password.greaper_hint is not None:
-            self.overworld_dialogs.replace_dialog(
-                DI1675_SHIP_GREAPER_1_NOTE, password.greaper_hint
-            )
-        if password.greaper_hint_2 is not None:
-            self.overworld_dialogs.replace_dialog(
-                DI1676_SHIP_GREAPER_2_NOTE, password.greaper_hint_2
-            )
-        if password.drybones_hint is not None:
-            self.overworld_dialogs.replace_dialog(
-                DI1656_SLEEPING_DRY_BONES, password.drybones_hint
-            )
-
-        self.password_author = password.submitter_credits
+        shuffle_shops(self)
 
     def get_patch(self) -> Patch:
         self._report_progress("Rendering game data", 75)

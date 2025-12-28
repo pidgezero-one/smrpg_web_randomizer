@@ -89,9 +89,6 @@ def randomize_character_stats(world: GameWorld) -> None:
             for level_up in ally.levels[19:]:
                 setattr(level_up, attr, random.choices([1, 2], weights=[2, 1])[0])
 
-        # Set starting stats based on starting level and optimal bonuses
-        finalize_character_stats(ally)
-
 
 def randomize_levelup_xps(world: GameWorld) -> None:
     """Randomize the XP requirements for each level by shuffling the gaps."""
@@ -136,40 +133,6 @@ def randomize_levelup_xps(world: GameWorld) -> None:
                 new_val = prev + gaps[i]
                 level_up.exp_needed = new_val
                 prev = new_val
-
-
-def finalize_character_stats(ally) -> None:
-    """Finalize character starting stats based on starting level and optimal choices."""
-    STAT_MAP = {
-        "starting_max_hp": ("hp_plus", "hp_plus_bonus", 999),
-        "starting_attack": ("attack_plus", "attack_plus_bonus", 255),
-        "starting_defense": ("defense_plus", "defense_plus_bonus", 255),
-        "starting_mg_attack": ("mg_attack_plus", "mg_attack_plus_bonus", 255),
-        "starting_mg_defense": ("mg_defense_plus", "mg_defense_plus_bonus", 255),
-    }
-
-    for starting_attr, (growth_attr, bonus_attr, max_val) in STAT_MAP.items():
-        base_value = getattr(ally, starting_attr)
-
-        # Calculate stat at starting level with optimal bonus choices
-        total = base_value
-        for i, level_up in enumerate(ally.levels[: ally.starting_level - 1]):
-            growth = getattr(level_up, growth_attr)
-            bonus = getattr(level_up, bonus_attr)
-            total += growth + bonus
-
-        # Ensure we don't exceed maximum
-        total = min(total, max_val)
-        setattr(ally, starting_attr, total)
-
-    # Set starting current HP to max HP
-    ally.starting_current_hp = ally.starting_max_hp
-
-    # Set starting experience based on starting level
-    if ally.starting_level > 1 and ally.levels:
-        ally.starting_experience = ally.levels[ally.starting_level - 2].exp_needed
-    else:
-        ally.starting_experience = 0
 
 
 def randomize_character_spell_stats(world: GameWorld) -> None:
