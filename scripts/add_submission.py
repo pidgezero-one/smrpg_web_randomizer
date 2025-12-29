@@ -119,6 +119,17 @@ def add_wish(fields: dict[str, str]) -> None:
     print(f"Added wish: {wish_text[:50]}...")
 
 
+def clean_quiz_answer(answer: str) -> str:
+    """Clean quiz answer: strip parentheses and trailing periods."""
+    answer = answer.strip()
+    # Strip surrounding parentheses
+    if answer.startswith("(") and answer.endswith(")"):
+        answer = answer[1:-1].strip()
+    # Strip trailing period
+    answer = answer.rstrip(".")
+    return answer
+
+
 def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
     """Add a quiz question to the question pool."""
     question = fields.get("Question text", "")
@@ -129,6 +140,11 @@ def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
     if not all([question, correct, wrong1, wrong2]):
         print("Error: Missing required fields (question, correct answer, wrong answers)")
         sys.exit(1)
+
+    # Clean answers
+    correct = clean_quiz_answer(correct)
+    wrong1 = clean_quiz_answer(wrong1)
+    wrong2 = clean_quiz_answer(wrong2)
 
     # Escape strings
     question = escape_string(question)
