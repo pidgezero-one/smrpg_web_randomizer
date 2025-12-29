@@ -93,6 +93,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         TotalStarPieces,
         BossShuffle,
         ShuffledBosses,
+        EnabledBossChecks,
         EXPStarsAnywhere,
         MimicsAnywhere,
         SlotsAnywhere,
@@ -665,7 +666,13 @@ def shuffle_prizes(world: GameWorld) -> None:
             if not world.settings.isflag_enabled(BossShuffle):
                 loc.set_prize(loc.originally_held())
             else:
-                continue
+                # Check if this location's boss is disabled in ShuffledBosses
+                shuffled_bosses_flag = world.settings.get_flag(ShuffledBosses)
+                disabled_boss_types = {m.value for m in shuffled_bosses_flag.disabled}
+                if loc.originally_held in disabled_boss_types:
+                    loc.set_prize(loc.originally_held())
+                else:
+                    continue
         if isinstance(loc, SpellSlotLocation):
             if not world.settings.isflag_enabled(CharacterLearnedSpells):
                 loc.set_prize(loc.originally_held())
@@ -874,12 +881,12 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
             else:
                 loc.set_prize(CoinPrize(world.get_item(loc.prize.item).price // 2))
 
-        if world.settings.isflag_enabled(StarPieceHints):
-            for l in world.locations.values():
-                if not isinstance(l.prize, StarPiecePrize):
-                    continue
-                event = SIGNAL_RING_EVENT_DICT[l.world_area]
-                script = world.event_scripts.get_script_by_id(event)
-                script.insert_before_nth_command(
-                    0, JmpIfBitClear(l.prize._hint, [f"EVENT_{event}_play_sound"])
+    if world.settings.isflag_enabled(StarPieceHints):
+        for l in world.locations.values():
+            if not isinstance(l.prize, StarPiecePrize):
+                continue
+            event = SIGNAL_RING_EVENT_DICT[l.world_area]
+            script = world.event_scripts.get_script_by_id(event)
+            script.insert_before_nth_command(
+                0, JmpIfBitClear(l.prize._hint, [f"EVENT_{event}_play_sound"])
                 )

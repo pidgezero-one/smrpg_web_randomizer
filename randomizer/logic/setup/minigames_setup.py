@@ -121,3 +121,9 @@ def apply_minigame_settings(world: GameWorld) -> None:
         world.event_scripts.get_script_by_id(
             E2670_TOWER_KNIFE_GUY_CONSOLATION_PRIZE
         ).set_contents([JmpToEvent(E0022_BETTER_TIP_GRANTER)])
+        cast(
+            SetVarToRandom,
+            world.event_scripts.get_command_by_identifier("cloud_spawn_rate"),
+        ).set_value(2)
+        
+        

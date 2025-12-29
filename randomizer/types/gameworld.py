@@ -710,6 +710,13 @@ class GameWorld:
         # This catches invalid combinations early with clear error messages
         validate_settings(self.settings)
 
+        from ..logic.placement import PlacementException
+
+        # Track failure counts to detect unsolvable settings
+        # Key = number of unplaced items, Value = count of times this failure occurred
+        failure_counts: dict[int, int] = {}
+        MAX_FAILURES_PER_COUNT = 5
+
         success = False
         while not success:
             try:
@@ -717,47 +724,35 @@ class GameWorld:
                 self._shuffle_items()
                 print("success!")
                 success = True
+            except PlacementException as e:
+                # Track this failure count
+                count = e.unplaced_count
+                failure_counts[count] = failure_counts.get(count, 0) + 1
+                print(f"Placement failed with {count} unplaced items (attempt #{failure_counts[count]} for this count)")
+
+                # Check if all failure counts have reached the threshold
+                if failure_counts and all(v >= MAX_FAILURES_PER_COUNT for v in failure_counts.values()):
+                    raise WorldBuildingException(
+                        f"Item placement appears unsolvable. "
+                        f"Repeated failures with the same unplaced item counts: {failure_counts}. "
+                        f"The chosen settings with excluded locations may be impossible to solve. "
+                        f"Unplaced items on last attempt: {e.unplaced_items}"
+                    )
             except Exception as e:
-                pass
-            
-        print("success!")
+                # Re-raise unexpected exceptions
+                raise
 
         # SHUFFLE CHECKS HERE
-        # TODO: exclude frog disciple if shuffle shops turned off
-        # TODO: A disabled boss fight check location = shuffled, but can't have a boss hunt. No guarantees that more progression won't be behind it, i.e. boss item drops. Disable those checks yourself.
-        # TODO: A disabled star piece location = obvious
-        # TODO: Don't let people be morons and try to exclude megasmilax while also choosing megasmilax as a gate
-        # TODO: Regular checks disabled = still shuffle them, just no KIs or SPs. Good non-progress items are fair game, git gud.
-        # TODO: KIs anywhere vs not
-        # TODO: SPs anywhere vs not
-        # TODO: EXP stars anywhere (disabled: chests are NOT shuffled, no exp stars in pool)
-        # TODO: Slots anywhere ("" "" "")
-        # TODO: Mimics anywhere ("" "" "")
-        # TODO: Beetlemania ("" "" "")
-        # TODO: Magikoopa chest ("" "" "")
-        # TODO: Monstro shuffle
-        # TODO: Fireworks settings. Change default item of fireworks guy if you didn't do that already
-        # TODO: No Star Egg setting
-        # TODO: Annoying/empty chests
-        # TODO: Replace bad items with coins
-        # TODO: Available spells
-        # TODO: Bias item shuffle (still want to keep?)
-        # TODO: Option to not even shuffle items at all, or star pieces, or boss fights
         # TODO Stat scaling for boss shuffle
         # TODO: Henchmen vs no henchmen, hill/statue or not
         # TODO: NPCs, dialogs for bosses and henchmen
         # TODO: Don't forget to apply spells and starting levels to recruited allies
-        # TODO: starting party, overworld characters, sprite injections. Needs a Random option for starting char
+        # TODO: starting party, overworld characters, sprite injections.
         # TODO NPCs and packets for all item types. Gold paint can be royal syrup
         # TODO: Apply hint text to blue toad in moleville
         # TODO: Do search-and-replace for all pronouns, names, etc related to main characters, positioned bosses, etc
         # TODO: Room service menu and bomb trade shop
-        # TODO: Open issue templat for submitting star hill text. note: uncredited
-        # TODO: Open issue template for submitting quiz questions (uncredited)
         # TODO: update spell names and palettes and sounds depending on element
-        # TODO: allow escaping shuffled mimic fights
-        # TODO: mimic fights should respect area
-        # TODO: make mokura appear more often
 
         self._report_progress("Randomizing shops", 45)
 

@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToRandom(PRIMARY_TEMP_7000, 10),
+	SetVarToRandom(PRIMARY_TEMP_7000, 10, identifier="cloud_spawn_rate"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1844_pause_3"]),
 	Return(),
 	Pause(1, identifier="EVENT_1844_pause_3"),

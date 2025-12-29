@@ -128,6 +128,10 @@ def _get_cached_import(name: str) -> type:
             from ..progression.prizes import MimicFightInitiatorPrize
 
             _lazy_import_cache[name] = MimicFightInitiatorPrize
+        elif name == "RegularFireworksPrize":
+            from ..progression.prizes import RegularFireworksPrize
+
+            _lazy_import_cache[name] = RegularFireworksPrize
         elif name == "FirstMimicFightLauncher":
             from ..progression.prizes import FirstMimicFightLauncher
 
@@ -1172,9 +1176,12 @@ class StandardPrizeLocation(PrizeLocation):
         KeyItemsAnywhere = _get_cached_import("KeyItemsAnywhere")
         StarPieceAvailability = _get_cached_import("StarPieceAvailability")
         EnabledRegularChecks = _get_cached_import("EnabledRegularChecks")
+        MimicFightInitiatorPrize = _get_cached_import("MimicFightInitiatorPrize")
+        RegularFireworksPrize = _get_cached_import("RegularFireworksPrize")
 
-        # Check if this location is disabled for key items / star pieces
-        if isinstance(prize, (KeyPrize, StarPiecePrize)):
+        # Check if this location is disabled for progression items
+        # This includes key items, star pieces, mimic launchers, and fireworks
+        if isinstance(prize, (KeyPrize, StarPiecePrize, MimicFightInitiatorPrize, RegularFireworksPrize)):
             enabled_check = world.settings.get_flag(EnabledRegularChecks)
             for m in enabled_check.disabled:
                 if self.__class__ == m.value:
@@ -1490,12 +1497,21 @@ class StarPieceLocation(PrizeLocation):
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         EnabledStarPieceChecks = _get_cached_import("EnabledStarPieceChecks")
+        EnabledBossChecks = _get_cached_import("EnabledBossChecks")
 
         # Check if this location is disabled - if so, cannot accept any prize
         enabled_check = world.settings.get_flag(EnabledStarPieceChecks)
         for m in enabled_check.disabled:
             if self.__class__ == m.value:
                 return False
+
+        # Check if the parent boss fight location is disabled in EnabledBossChecks
+        # If so, this star piece location cannot have a star piece
+        if hasattr(self, "_parent"):
+            enabled_boss_check = world.settings.get_flag(EnabledBossChecks)
+            for m in enabled_boss_check.disabled:
+                if self._parent == m.value:
+                    return False
 
         if (
             not hasattr(prize, "postfight_star_piece_grant")

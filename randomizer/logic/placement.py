@@ -4,27 +4,22 @@ from typing import TYPE_CHECKING, Callable
 import random
 from copy import copy
 
-from .utils import debug_time
-from ..types.prize import (
-    KeyPrize,
-    StarPiecePrize,
-    CharacterPrize,
-    SlotsPrize,
-    EXPStarPrize,
-    MimicFightInitiatorPrize,
-    CoinPrize,
-    FrogCoinPrize,
-    SpellPrize,
-    BossFightPrize, 
-    ItemPrize
-)
-from ..types.prizelocation import FrogDiscipleLocation
+from ..types.prizelocation import FrogDiscipleLocation, StarPieceLocation
 from ..types.logic import Inventory
+from ..types.prize import StarPiecePrize
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
     from ..types.prizelocation import PrizeLocation
     from ..types.prize import Prize
+
+
+class PlacementException(Exception):
+    """Raised when placement fails with unplaced items."""
+    def __init__(self, unplaced_count: int, unplaced_items: list):
+        self.unplaced_count = unplaced_count
+        self.unplaced_items = unplaced_items
+        super().__init__(f"No progress made in placement; {unplaced_count} items could not be placed: {unplaced_items}")
 
 
 def collect_accessible_items(world: GameWorld) -> Inventory:
@@ -81,6 +76,14 @@ def place(
                 ]
                 if len(frog_locations) > 0:
                     accessible_locations = frog_locations
+            if isinstance(item, StarPiecePrize):
+                star_locations = [
+                    l for l in accessible_locations
+                    if isinstance(l, StarPieceLocation)
+                ]
+                reduce = random.randint(0, 10)
+                if reduce < 4:
+                    accessible_locations = star_locations
             random.shuffle(accessible_locations)
             accessible_locations[0].set_prize(item)
             pending.remove(item)
@@ -109,7 +112,7 @@ def place(
                 for l in world.locations.values():
                     access_string = f", can_access={l.can_access(collect_accessible_items(world), world)}, can_accept={[l.can_accept(item, inv, world) for item in pending if l.can_accept(item, inv, world)]}"
                     print(f"{type(l).__name__}: has_item={type(l.prize).__name__ if l.prize is not None else False}{access_string if l.prize is None else ''}") """
-                raise Exception(f"No progress made in placement; cannot place {pending}.")
+                raise PlacementException(len(pending), [type(p).__name__ for p in pending])
             else:
                 print(f"{len([type(p).__name__ for p in pending])} unplaced, but overflow allowed")
                 break

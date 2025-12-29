@@ -129,6 +129,8 @@ def shuffle_shops(world: GameWorld) -> None:
 
     # Get original shop item types for each shop (for type restrictions)
     original_shop_data: dict[int, dict] = {}
+    # Track how many shops each item originally appeared in (for ORIGINAL mode)
+    original_item_shop_count: dict[type[BaseItem], int] = {}
     for shop in world.shops.shops:
         if shop is None:
             continue
@@ -143,6 +145,13 @@ def shuffle_shops(world: GameWorld) -> None:
             "original_items": orig_items,
             "original_count": len(orig_items),
         }
+        # Count shops per item (excluding Frog Disciple as those are handled separately)
+        if shop.index != FROG_DISCIPLE_SHOP:
+            for item in orig_items:
+                original_item_shop_count[item] = original_item_shop_count.get(item, 0) + 1
+
+    # Track how many shops each item has been placed in during shuffling
+    current_item_shop_count: dict[type[BaseItem], int] = {}
 
     # Handle EMPTY mode: only GoodieBag in every shop
     if quality == ShopQualities.EMPTY:
@@ -232,6 +241,12 @@ def shuffle_shops(world: GameWorld) -> None:
             FROG_COIN_EMPORIUM,
         ]:
             return False
+        # In ORIGINAL mode, items can't appear in more shops than they originally did
+        if quality == ShopQualities.ORIGINAL:
+            max_shops = original_item_shop_count.get(item_type, 0)
+            current_shops = current_item_shop_count.get(item_type, 0)
+            if current_shops >= max_shops:
+                return False
         # Check type restrictions
         shop_data = original_shop_data.get(shop_idx, {})
         if issubclass(item_type, Weapon) and not shop_data.get("has_weapon", False):
@@ -326,6 +341,8 @@ def shuffle_shops(world: GameWorld) -> None:
             if item:
                 emporium_new_items.append(item)
                 frog_emporium_items.add(item)
+                # Track shop count for ORIGINAL mode
+                current_item_shop_count[item] = current_item_shop_count.get(item, 0) + 1
 
         frog_emporium_shop.set_items(emporium_new_items)
 
@@ -350,15 +367,39 @@ def shuffle_shops(world: GameWorld) -> None:
     def add_to_juice_bar_cascade(item: type[BaseItem], starting_tier: int) -> bool:
         """Add item to starting_tier and all higher tiers (if they have room).
         Returns True if item was added to at least the starting tier."""
+        # In ORIGINAL mode, check if adding to cascade would exceed the limit
+        if quality == ShopQualities.ORIGINAL:
+            # Count how many juice bar tiers we would add this item to
+            shops_to_add = 0
+            for i in range(starting_tier, len(juice_bars)):
+                bar_idx = juice_bars[i]
+                max_items = juice_bar_max_items[bar_idx]
+                items_list = juice_bar_items[bar_idx]
+                if len(items_list) < max_items and item not in items_list:
+                    shops_to_add += 1
+
+            # Check if adding would exceed the original limit
+            max_shops = original_item_shop_count.get(item, 0)
+            current_shops = current_item_shop_count.get(item, 0)
+            if current_shops + shops_to_add > max_shops:
+                return False
+
         added_to_start = False
+        shops_added = 0
         for i in range(starting_tier, len(juice_bars)):
             bar_idx = juice_bars[i]
             max_items = juice_bar_max_items[bar_idx]
             items_list = juice_bar_items[bar_idx]
             if len(items_list) < max_items and item not in items_list:
                 items_list.append(item)
+                shops_added += 1
                 if i == starting_tier:
                     added_to_start = True
+
+        # Track shop count for ORIGINAL mode
+        if shops_added > 0:
+            current_item_shop_count[item] = current_item_shop_count.get(item, 0) + shops_added
+
         return added_to_start
 
     # Fill each tier, cascading items to higher tiers
@@ -398,6 +439,8 @@ def shuffle_shops(world: GameWorld) -> None:
             item = select_item(shop.index, shop_new_items)
             if item:
                 shop_new_items.append(item)
+                # Track shop count for ORIGINAL mode
+                current_item_shop_count[item] = current_item_shop_count.get(item, 0) + 1
 
         if shop_new_items:
             shop.set_items(shop_new_items)
@@ -406,7 +449,16 @@ def shuffle_shops(world: GameWorld) -> None:
             shop.set_items([])
 
     # Guarantee Pick Me Ups appear in at least one shop if not disabled
-    if not no_pickmeups:
+    # In ORIGINAL mode, only guarantee if Pick Me Up was originally in at least one shop
+    # and we haven't exceeded the original shop count
+    can_guarantee_pickmeup = not no_pickmeups
+    if can_guarantee_pickmeup and quality == ShopQualities.ORIGINAL:
+        original_pickmeup_shops = original_item_shop_count.get(PickMeUpItem, 0)
+        current_pickmeup_shops = current_item_shop_count.get(PickMeUpItem, 0)
+        if original_pickmeup_shops == 0 or current_pickmeup_shops >= original_pickmeup_shops:
+            can_guarantee_pickmeup = False
+
+    if can_guarantee_pickmeup:
         # Check if any shop contains Pick Me Up
         has_pickmeup = False
         for shop in world.shops.shops:
