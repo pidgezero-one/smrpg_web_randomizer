@@ -37,3 +37,40 @@ I would recommend making a virtual environment using something like virtualenv, 
 1. Set up your Django web server however you prefer.  There are plenty of resources out there on this topic for production, but for a local development environment you can just run the local test server as normal:
 
    ```> python manage.py runserver```
+
+## Adding user submissions
+
+Make sure you've installed the GitHub CLI and authed to it.
+
+### Wish Text
+
+```bash
+python scripts/add_submission.py --type wish --issue GITHUB_ISSUE_ID
+```
+
+### Quiz questions (SMRPG-related)
+
+```bash
+python scripts/add_submission.py --type quiz --issue GITHUB_ISSUE_ID
+```
+
+### Quiz questions (non-SMRPG, extended pool only)
+
+```bash
+python scripts/add_submission.py --type quiz --issue GITHUB_ISSUE_ID --non-smrpg
+```
+
+### Ship passwords
+```bash
+python scripts/add_submission.py --type password --issue GITHUB_ISSUE_ID
+```
+
+### Melody Bay songs
+```bash
+python scripts/add_submission.py --type song --issue GITHUB_ISSUE_ID
+```
+
+### Dry run (parse only, don't modify files)
+```bash
+python scripts/add_submission.py --type TYPE --issue GITHUB_ISSUE_ID --dry-run
+```

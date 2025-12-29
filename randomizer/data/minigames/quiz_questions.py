@@ -571,6 +571,18 @@ def get_smrpg_questions():
         ),
         Question("What color is the\nend of Dodo's beak?", "Red", "Yellow", "Orange"),
         Question("What's the chef's\nname at Marrymore?", "Torte", "Blintz", "Gateau"),
+        Question(
+            "DR. TOPPER: What status\n condition can BOWYER give you?",
+            "(Sleep)",
+            "(Mute)",
+            "(Fear)",
+        ),
+        Question(
+            "DR. TOPPER: The mitochondria is...",
+            "(The powerhouse of the cell)",
+            "(A rare species of insect)",
+            "(An iconic Italian pasta)",
+        ),
     ]
 
 
