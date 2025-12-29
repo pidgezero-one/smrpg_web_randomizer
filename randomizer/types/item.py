@@ -29,6 +29,27 @@ def _add_desc_fields(fields: list[tuple[str, object, list | bool]]) -> str:
 
 class Item(ItemBase):
     _remake_name: str | None = None
+    _text_shop_menu: str | None = None
+    _remake_text_shop_menu: str | None = None
+    
+    @property
+    def room_service_price(self) -> int:
+        return max(2, int(self.price // 2 * 0.75))
+
+    def text_shop_menu(self, use_remake: bool = False) -> str:
+        if self._text_shop_menu is None:
+            raise ValueError("not a valid shop choice")
+        string: str = ""
+        if use_remake and self._remake_text_shop_menu is not None:
+            string = self._remake_text_shop_menu
+        else:
+            string = self._text_shop_menu
+        if self.price < 100:
+            string += "."
+        if self.price < 10:
+            string += "."
+
+        return f"({string}{self.room_service_price} Coins)"
 
     @property
     def remake_name(self) -> str:

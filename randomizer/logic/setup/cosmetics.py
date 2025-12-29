@@ -250,5 +250,50 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     for dialog_id, wish in wishes:
         world.overworld_dialogs.replace_dialog(dialog_id, wish)
 
+    # Room service and bomb shop dialog text (depends on RemakeNames setting)
+    from ...data.variables.dialog_names import (
+        DI3847_ROOM_SERVICE_MENU,
+        DI1217_SWAP_SHOP_OVER_100_POINTS,
+        DI1175_SWAP_SHOP_INSTRUCTIONS,
+    )
+
+    use_remake = world.settings.isflag_enabled(RemakeNames)
+
+    # Room service menu dialog
+    if world.room_service_items:
+        low_item = cast(Item, world.get_item(world.room_service_items[0]))
+        high_item = cast(Item, world.get_item(world.room_service_items[1]))
+        world.overworld_dialogs.replace_dialog(
+            DI3847_ROOM_SERVICE_MENU,
+            f"[page]\n Here is the menu.[await]\n"
+            f" [select]  {low_item.text_shop_menu(use_remake)}\n"
+            f" [select]  {high_item.text_shop_menu(use_remake)})\n"
+            f" [select]  (No thanks)[await]"
+        )
+
+    # Bomb trade shop dialogs
+    if world.bomb_shop_items:
+        bomb_items = [cast(Item, world.get_item(b)) for b in world.bomb_shop_items]
+        bombs = [b.name for b in bomb_items]
+        world.overworld_dialogs.replace_dialog(
+            DI1217_SWAP_SHOP_OVER_100_POINTS,
+            f" If we total that up, you've got\n [0x7000] points![await][page]\n"
+            f" You have more than 100 points,\n so go ahead and choose an item.[await][page]\n"
+            f"  [select]  ({bombs[0]})\n"
+            f"  [select]  ({bombs[1]})\n"
+            f"  [select]  ({bombs[2]})[await]"
+        )
+        world.overworld_dialogs.replace_dialog(
+            DI1175_SWAP_SHOP_INSTRUCTIONS,
+            f"\n  Bring your unwanted items here![await][page]\n"
+            f"  We'll exchange your Mushrooms\n       and Syrups for points.[await]\n"
+            f"        For every 100 points\n    you'll get an item in return![await][page]\n"
+            f"           You can choose\n     one of the following gifts\n"
+            f"       to take away with you.[await][page]\n"
+            f"  1)\"{bombs[0]}\"\n"
+            f"  2)\"{bombs[1]}\"\n"
+            f"  3)\"{bombs[2]}\"[await]"
+        )
+
     # Restore seed for any further operations
     random.seed(world.seed)

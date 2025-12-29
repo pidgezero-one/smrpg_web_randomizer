@@ -196,6 +196,10 @@ class GameWorld:
     password_author: str = "ANONYMOUS"
     song_authors: list[str] = ["ANONYMOUS"]
 
+    # Text-based shop items (set by shuffle_shops)
+    room_service_items: list[type] = [PickMeUpItem, KerokeroColaItem]
+    bomb_shop_items: list[type] = [FrightBombItem, FireBombItem, IceBombItem]
+
     locations: dict[type[PrizeLocation], PrizeLocation]
     chest_locations: list[PrizeLocation]
     standard_locations: list[PrizeLocation]
@@ -531,11 +535,25 @@ class GameWorld:
                 if item is None:
                     continue
                 # item is a class type, get its _name attribute
-                if hasattr(item, "_name") and item._name:
-                    item_names.append(item._name)
+                item_name = getattr(item, "_name", None)
+                if item_name:
+                    item_names.append(item_name)
                 else:
                     item_names.append(item.__name__)
             result[shop_name] = item_names
+
+        # Add text-based shops
+        def get_item_name(item_type: type) -> str:
+            name = getattr(item_type, "_name", None)
+            if name:
+                return name
+            return item_type.__name__
+
+        if self.room_service_items:
+            result["Room Service (Marrymore)"] = [get_item_name(i) for i in self.room_service_items]
+        if self.bomb_shop_items:
+            result["Swap Shop (Seaside)"] = [get_item_name(i) for i in self.bomb_shop_items]
+
         return result
 
     def _get_settings_json(self) -> dict[str, Any]:
@@ -752,7 +770,6 @@ class GameWorld:
         # TODO: Apply hint text to blue toad in moleville
         # TODO: Do search-and-replace for all pronouns, names, etc related to main characters, positioned bosses, etc
         # TODO: Room service menu and bomb trade shop
-        # TODO: update spell names and palettes and sounds depending on element
 
         self._report_progress("Randomizing shops", 45)
 

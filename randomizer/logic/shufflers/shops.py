@@ -1,7 +1,12 @@
 """Shop shuffling logic."""
+
 from __future__ import annotations
 import random
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
+
+from ...data.variables.dialog_names import *
+from ...types.item import Item
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import SetVarToConst
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -11,7 +16,40 @@ if TYPE_CHECKING:
 def shuffle_shops(world: GameWorld) -> None:
     """Shuffle the contents of all shops based on settings."""
     from smrpgpatchbuilder.datatypes.items.classes import Weapon, Armor, Accessory
-    from ...data.items.items import GoodieBagItem, PickMeUpItem
+    from ...data.items.items import (
+        GoodieBagItem,
+        PickMeUpItem,
+        MushroomItem,
+        MidMushroomItem,
+        MaxMushroomItem,
+        HoneySyrupItem,
+        MapleSyrupItem,
+        RoyalDressItem,
+        AbleJuiceItem,
+        BracerItem,
+        EnergizerItem,
+        YoshiCookieItem,
+        PureWaterItem,
+        YoshiCandyItem,
+        FroggieDrinkItem,
+        MukuCookieItem,
+        ElixirItem,
+        FreshenUpItem,
+        MushroomItem2,
+        YoshiAdeItem,
+        RedEssenceItem,
+        KerokeroColaItem,
+        MegalixirItem,
+        RockCandyItem,
+        CrystallineItem,
+        PowerBlastItem,
+        RoyalSyrupItem,
+        IceBombItem,
+        FireBombItem,
+        SleepyBombItem,
+        FrightBombItem,
+        BadMushroomItem,
+    )
     from ...types.flags import (
         ShopQuality,
         ShopQualities,
@@ -148,7 +186,9 @@ def shuffle_shops(world: GameWorld) -> None:
         # Count shops per item (excluding Frog Disciple as those are handled separately)
         if shop.index != FROG_DISCIPLE_SHOP:
             for item in orig_items:
-                original_item_shop_count[item] = original_item_shop_count.get(item, 0) + 1
+                original_item_shop_count[item] = (
+                    original_item_shop_count.get(item, 0) + 1
+                )
 
     # Track how many shops each item has been placed in during shuffling
     current_item_shop_count: dict[type[BaseItem], int] = {}
@@ -193,9 +233,7 @@ def shuffle_shops(world: GameWorld) -> None:
                     if shop is None or shop.index == FROG_DISCIPLE_SHOP:
                         continue
                     for item in shop.items:
-                        if item and not issubclass(
-                            item, (Weapon, Armor, Accessory)
-                        ):
+                        if item and not issubclass(item, (Weapon, Armor, Accessory)):
                             orig_in_shops.add(item)
                 return (
                     [i for i in low_impact_items if i in orig_in_shops],
@@ -257,9 +295,9 @@ def shuffle_shops(world: GameWorld) -> None:
             "has_accessory", False
         ):
             return False
-        if not issubclass(
-            item_type, (Weapon, Armor, Accessory)
-        ) and not shop_data.get("has_consumable", False):
+        if not issubclass(item_type, (Weapon, Armor, Accessory)) and not shop_data.get(
+            "has_consumable", False
+        ):
             return False
         return True
 
@@ -322,9 +360,7 @@ def shuffle_shops(world: GameWorld) -> None:
 
     # Process each shop (except Frog Disciple which is already set)
     shops_to_process = [
-        s
-        for s in world.shops.shops
-        if s is not None and s.index != FROG_DISCIPLE_SHOP
+        s for s in world.shops.shops if s is not None and s.index != FROG_DISCIPLE_SHOP
     ]
 
     # Process Frog Coin Emporium first (its items are exclusive)
@@ -335,9 +371,7 @@ def shuffle_shops(world: GameWorld) -> None:
         emporium_new_items: list[type[BaseItem] | None] = []
 
         for _ in range(target_count):
-            item = select_item(
-                FROG_COIN_EMPORIUM, emporium_new_items, prefer_high=True
-            )
+            item = select_item(FROG_COIN_EMPORIUM, emporium_new_items, prefer_high=True)
             if item:
                 emporium_new_items.append(item)
                 frog_emporium_items.add(item)
@@ -398,7 +432,9 @@ def shuffle_shops(world: GameWorld) -> None:
 
         # Track shop count for ORIGINAL mode
         if shops_added > 0:
-            current_item_shop_count[item] = current_item_shop_count.get(item, 0) + shops_added
+            current_item_shop_count[item] = (
+                current_item_shop_count.get(item, 0) + shops_added
+            )
 
         return added_to_start
 
@@ -455,7 +491,10 @@ def shuffle_shops(world: GameWorld) -> None:
     if can_guarantee_pickmeup and quality == ShopQualities.ORIGINAL:
         original_pickmeup_shops = original_item_shop_count.get(PickMeUpItem, 0)
         current_pickmeup_shops = current_item_shop_count.get(PickMeUpItem, 0)
-        if original_pickmeup_shops == 0 or current_pickmeup_shops >= original_pickmeup_shops:
+        if (
+            original_pickmeup_shops == 0
+            or current_pickmeup_shops >= original_pickmeup_shops
+        ):
             can_guarantee_pickmeup = False
 
     if can_guarantee_pickmeup:
@@ -475,10 +514,7 @@ def shuffle_shops(world: GameWorld) -> None:
                 shop_data = original_shop_data.get(shop.index, {})
                 if shop_data.get("has_consumable", False):
                     current_items = shop.items or []
-                    if (
-                        len(current_items) < 15
-                        and PickMeUpItem not in current_items
-                    ):
+                    if len(current_items) < 15 and PickMeUpItem not in current_items:
                         eligible_shops.append(shop)
 
             if eligible_shops:
@@ -500,3 +536,80 @@ def shuffle_shops(world: GameWorld) -> None:
         item = world.items.get_by_type(item_type)
         if item and item.price > 0:
             item.set_price(max(1, item.price // 5))
+
+    # Room service menu
+    lower_tier_items = [
+        MushroomItem,
+        MidMushroomItem,
+        HoneySyrupItem,
+        MapleSyrupItem,
+        AbleJuiceItem,
+        BracerItem,
+        EnergizerItem,
+        YoshiCookieItem,
+        PureWaterItem,
+        YoshiCandyItem,
+        FroggieDrinkItem,
+        MukuCookieItem,
+        ElixirItem,
+        FreshenUpItem,
+        MushroomItem2,
+    ]
+    if not no_pickmeups:
+        lower_tier_items.append(PickMeUpItem)
+    higher_tier_items = [
+        MaxMushroomItem,
+        RoyalSyrupItem,
+        YoshiAdeItem,
+        RedEssenceItem,
+        KerokeroColaItem,
+        MegalixirItem,
+        RockCandyItem,
+        CrystallineItem,
+        PowerBlastItem,
+    ]
+
+    low_item = cast(Item, world.get_item(random.choice(lower_tier_items)))
+    high_item = cast(Item, world.get_item(random.choice(higher_tier_items)))
+
+    # Store for spoiler log and cosmetic dialog updates
+    world.room_service_items = [type(low_item), type(high_item)]
+
+    # Update event script variables for room service prices and item IDs
+    updates = zip(
+        ["room_service_price_1_a", "room_service_price_1_b", "room_service_item_id_1",
+         "room_service_price_2_a", "room_service_price_2_b", "room_service_item_id_2"],
+        [low_item.room_service_price, low_item.room_service_price, type(low_item),
+         high_item.room_service_price, high_item.room_service_price, type(high_item)]
+    )
+    for id, val in updates:
+        cmd = cast(SetVarToConst, world.event_scripts.get_command_by_identifier(id))
+        var = cmd.address
+        cmd.set_value_and_address(var, val)
+
+    # Bomb trade shop
+    bomb_pool = [
+        IceBombItem,
+        FireBombItem,
+        SleepyBombItem,
+        FrightBombItem,
+        RockCandyItem,
+        BadMushroomItem
+    ]
+
+    bi = [cast(Item, world.get_item(b)) for b in random.sample(bomb_pool, 3)]
+
+    # Store for spoiler log and cosmetic dialog updates
+    world.bomb_shop_items = [type(b) for b in bi]
+
+    # Update event script variables for bomb shop item IDs
+    bomb_updates = zip(
+        ["bomb_shop_item_1", "bomb_shop_item_2", "bomb_shop_item_3"],
+        [type(b) for b in bi]
+    )
+    for id, val in bomb_updates:
+        cmd = cast(SetVarToConst, world.event_scripts.get_command_by_identifier(id))
+        var = cmd.address
+        cmd.set_value_and_address(var, val)
+    
+    

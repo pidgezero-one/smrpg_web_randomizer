@@ -1575,6 +1575,8 @@ class MushroomItem(RegularItem):
     _item_name: str = "Mushroom"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Mushroom........"
+
     _item_id: int = 96
     _description: str = " Recovers 30 HP"
     _inflict: int = 30
@@ -1591,6 +1593,8 @@ class MidMushroomItem(RegularItem):
     """Mid Mushroom item class"""
     _item_name: str = "Mid Mushroom"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Mid Mushroom...."
 
     _item_id: int = 97
     _description: str = " Recovers 80 HP"
@@ -1609,6 +1613,8 @@ class MaxMushroomItem(RegularItem):
     _item_name: str = "Max Mushroom"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Max Mushroom...."
+
     _item_id: int = 98
     _description: str = "Recovers all HP"
     _inflict: int = 255
@@ -1625,6 +1631,8 @@ class HoneySyrupItem(RegularItem):
     """Honey Syrup item class"""
     _item_name: str = "Honey Syrup"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Honey Syrup......"
 
     _item_id: int = 99
     _description: str = " Recovers 10\n Flower Pts."
@@ -1643,6 +1651,8 @@ class MapleSyrupItem(RegularItem):
     _item_name: str = "Maple Syrup"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Maple Syrup......"
+
     _item_id: int = 100
     _description: str = " Recovers 40\n Flower Pts."
     _inflict: int = 40
@@ -1659,6 +1669,8 @@ class RoyalSyrupItem(RegularItem):
     """Royal Syrup item class"""
     _item_name: str = "Royal Syrup"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Royal Syrup......"
 
     _item_id: int = 101
     _description: str = " Recovers all\n Flower Pts."
@@ -1677,6 +1689,8 @@ class PickMeUpItem(RegularItem):
     _item_name: str = "Pick Me Up"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Pick Me Up......."
+
     _item_id: int = 102
     _description: str = " Revives downed\n allies"
     _price: int = 5
@@ -1692,6 +1706,9 @@ class AbleJuiceItem(RegularItem):
     """Able Juice item class"""
     _item_name: str = "Able Juice"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Able Juice........"
+    _remake_text_shop_menu = "Cleansing Juice.."
 
     _item_id: int = 103
     _description: str = " Heals status\n problems\n during battle"
@@ -1711,6 +1728,8 @@ class BracerItem(RegularItem):
     _item_name: str = "Bracer"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Bracer..........."
+
     _item_id: int = 104
     _description: str = " Raises ally's\n def. in battle"
     _price: int = 2
@@ -1727,6 +1746,8 @@ class EnergizerItem(RegularItem):
     """Energizer item class"""
     _item_name: str = "Energizer"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Energizer........"
 
     _item_id: int = 105
     _description: str = " Raises ally's\n battle power\n during battle"
@@ -1745,6 +1766,8 @@ class YoshiAdeItem(RegularItem):
     _item_name: str = "Yoshi-Ade"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Yoshi-Ade........"
+
     _item_id: int = 106
     _description: str = " Power raised\n during battle"
     _price: int = 200
@@ -1762,6 +1785,8 @@ class RedEssenceItem(RegularItem):
     _item_name: str = "Red Essence"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Red Essence......"
+
     _item_id: int = 107
     _description: str = " You won't be\n attacked for\n 3 turns\n during battle"
     _price: int = 400
@@ -1778,6 +1803,9 @@ class KerokeroColaItem(RegularItem):
     """KerokeroCola item class"""
     _item_name: str = "KerokeroCola"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Kerokero Cola...."
+    _remake_text_shop_menu = "Croaka Cola......"
 
     _item_id: int = 108
     _description: str = " All members\n recover fully"
@@ -1798,6 +1826,8 @@ class YoshiCookieItem(RegularItem):
     _item_name: str = "Yoshi Cookie"
     _prefix = ItemPrefix.DOT
 
+    _text_shop_menu = "Yoshi Cookie......"
+
     _item_id: int = 109
     _description: str = " Summons Yoshi\n during battle"
     _price: int = 2
@@ -1812,6 +1842,8 @@ class PureWaterItem(RegularItem):
     """Pure Water item class"""
     _item_name: str = "Pure Water"
     _prefix = ItemPrefix.BOMB
+
+    _text_shop_menu = "Pure Water......."
 
     _item_id: int = 110
     _description: str = " Defeats ghosts\n in a wink"
@@ -1828,6 +1860,8 @@ class SleepyBombItem(RegularItem):
     """Sleepy Bomb item class"""
     _item_name: str = "Sleepy Bomb"
     _prefix = ItemPrefix.BOMB
+
+    _text_shop_menu = "Sleepy Bomb......"
 
     _item_id: int = 111
     _description: str = " Puts enemies\n to sleep"
@@ -1846,6 +1880,9 @@ class BadMushroomItem(RegularItem):
     """Bad Mushroom item class"""
     _item_name: str = "Bad Mushroom"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Bad Mushroom...."
+    _remake_text_shop_menu = "PoisonMushroom.."
 
     _item_id: int = 112
     _description: str = " Poisons\n an enemy"
@@ -1867,6 +1904,8 @@ class FireBombItem(RegularItem):
     _item_name: str = "Fire Bomb"
     _prefix = ItemPrefix.BOMB
 
+    _text_shop_menu = "Fire Bomb........."
+
     _item_id: int = 113
     _description: str = " Hit all\n enemies w/fire"
     _inflict: int = 120
@@ -1883,6 +1922,8 @@ class IceBombItem(RegularItem):
     """Ice Bomb item class"""
     _item_name: str = "Ice Bomb"
     _prefix = ItemPrefix.BOMB
+
+    _text_shop_menu = "Ice Bomb.........."
 
     _item_id: int = 114
     _description: str = " Hit all\n enemies w/ice"
@@ -1901,6 +1942,8 @@ class FlowerTabItem(RegularItem):
     _item_name: str = "Flower Tab"
     _prefix = ItemPrefix.EMPTY_SPACE
 
+    _text_shop_menu = "Flower Tab......."
+
     _item_id: int = 115
     _description: str = " Raises Flower\n Pts. by 1"
     _inflict: int = 1
@@ -1916,6 +1959,8 @@ class FlowerJarItem(RegularItem):
     """Flower Jar item class"""
     _item_name: str = "Flower Jar"
     _prefix = ItemPrefix.EMPTY_SPACE
+
+    _text_shop_menu = "Flower Jar......."
 
     _item_id: int = 116
     _description: str = " Raises Flower\n Pts. by 3"
@@ -1933,6 +1978,8 @@ class FlowerBoxItem(RegularItem):
     _item_name: str = "Flower Box"
     _prefix = ItemPrefix.EMPTY_SPACE
 
+    _text_shop_menu = "Flower Box......."
+
     _item_id: int = 117
     _description: str = " Raises Flower\n Pts. by 5"
     _inflict: int = 5
@@ -1948,6 +1995,8 @@ class YoshiCandyItem(RegularItem):
     """Yoshi Candy item class"""
     _item_name: str = "Yoshi Candy"
     _prefix = ItemPrefix.DOT
+
+    _text_shop_menu = "Yoshi Candy......"
 
     _item_id: int = 118
     _description: str = "Recovers 100 HP"
@@ -1965,6 +2014,9 @@ class FroggieDrinkItem(RegularItem):
     """FroggieDrink item class"""
     _item_name: str = "FroggieDrink"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "FroggieDrink......"
+    _remake_text_shop_menu = "Tadpola Cola......"
 
     _item_id: int = 119
     _description: str = " Party recovers\n 30 HP"
@@ -1984,6 +2036,9 @@ class MukuCookieItem(RegularItem):
     """Muku Cookie item class"""
     _item_name: str = "Muku Cookie"
     _prefix = ItemPrefix.DOT
+
+    _text_shop_menu = "Muku Cookie......"
+    _remake_text_shop_menu = "ThropherCookie..."
 
     _item_id: int = 120
     _description: str = " Muku! Muku-\n muku! Muka?"
@@ -2005,6 +2060,9 @@ class ElixirItem(RegularItem):
     _item_name: str = "Elixir"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Elixir............."
+    _remake_text_shop_menu = "Frogleg Cola......"
+
     _item_id: int = 121
     _description: str = " Party recovers\n 80 HP"
     _inflict: int = 80
@@ -2023,6 +2081,9 @@ class MegalixirItem(RegularItem):
     """Megalixir item class"""
     _item_name: str = "Megalixir"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Megalixir.........."
+    _remake_text_shop_menu = "Finless Cola......."
 
     _item_id: int = 122
     _description: str = " Party recovers\n 150 HP"
@@ -2103,6 +2164,9 @@ class FreshenUpItem(RegularItem):
     _item_name: str = "Freshen Up"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Freshen Up........"
+    _remake_text_shop_menu = "Party Cleanse....."
+
     _item_id: int = 127
     _description: str = " Party is\n refreshed\n during battle"
     _price: int = 50
@@ -2156,6 +2220,8 @@ class RockCandyItem(RegularItem):
     """Rock Candy item class"""
     _item_name: str = "Rock Candy"
     _prefix = ItemPrefix.BOMB
+
+    _text_shop_menu = "Rock Candy......."
 
     _item_id: int = 131
     _description: str = " Attack all\n enemies"
@@ -2308,6 +2374,8 @@ class FrightBombItem(RegularItem):
     _item_name: str = "Fright Bomb"
     _prefix = ItemPrefix.BOMB
 
+    _text_shop_menu = "Fright Bomb......"
+
     _item_id: int = 144
     _description: str = " Fear Attack on\n all enemies"
     _inflict: int = 100
@@ -2422,6 +2490,9 @@ class CrystallineItem(RegularItem):
     _item_name: str = "Crystalline"
     _prefix = ItemPrefix.CONSUMABLE
 
+    _text_shop_menu = "Crystalline......."
+    _remake_text_shop_menu = "Party Bracer...."
+
     _item_id: int = 153
     _description: str = " Raises party's\n Defense in\n battle"
     _price: int = 5
@@ -2440,6 +2511,9 @@ class PowerBlastItem(RegularItem):
     """Power Blast item class"""
     _item_name: str = "Power Blast"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Power Blast......"
+    _remake_text_shop_menu = "Party Energizer.."
 
     _item_id: int = 154
     _description: str = " Raises party's\n Attack Power\n in battle"
@@ -2621,6 +2695,8 @@ class MushroomItem2(RegularItem):
     """Mushroom item class"""
     _item_name: str = "Mushroom"
     _prefix = ItemPrefix.CONSUMABLE
+
+    _text_shop_menu = "Mushroom........"
 
     _item_id: int = 175
     _description: str = " Recoers 30 HP,\n but..."
