@@ -1,10 +1,13 @@
 """Equipment and spell element setup."""
 from __future__ import annotations
 import random
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
 from smrpgpatchbuilder.datatypes.items.classes import Equipment
+
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands import ScreenFlash
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.flash_colours import WHITE, RED, AQUA, YELLOW
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -66,6 +69,12 @@ def apply_equipment_settings(world: GameWorld) -> None:
             spell.set_element(
                 random.choice([Element.ICE, Element.FIRE, Element.JUMP, Element.THUNDER])
             )
+            if isinstance(spell, BowserCrushSpell):
+                cast(ScreenFlash, world.battle_animations[0x35].get_command_by_name("bowser_crush_colour")).set_colour(
+                    AQUA if spell.element == Element.ICE else
+                    RED if spell.element == Element.FIRE else
+                    WHITE if spell.element == Element.THUNDER else YELLOW
+                )
 
     # Equipment properties - SOME mode (specific enhancements)
     if world.settings.is_flag_value(

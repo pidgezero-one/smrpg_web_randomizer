@@ -1,14 +1,41 @@
 from smrpgpatchbuilder.datatypes.spells.classes import SpellCollection
-from smrpgpatchbuilder.datatypes.spells.enums import SpellType, EffectType, Element, Status, InflictFunction, TempStatBuff
+from smrpgpatchbuilder.datatypes.spells.enums import (
+    SpellType,
+    EffectType,
+    Element,
+    Status,
+    InflictFunction,
+    TempStatBuff,
+)
 from smrpgpatchbuilder.datatypes.items.enums import ItemPrefix
-from smrpgpatchbuilder.datatypes.spells.arguments.timing_properties import BUTTON_MASH, CHARGE_ONLY, MULTIPLE_BUTTON_PRESSES, ONE_PLUS_MORE_TARGETS_WITH_PRESSES, ONE_TIMING_FOR_125_DMG_ONLY, ONE_TIMING_FOR_125_OR_15X_DMG, ROTATE_1_TARGET_IF_TIMED_ALL, ROTATE_ONLY, TIMED_FOR_9999_SET_ENEMY_HP_0, TIMED_GIVES_TARGET_DEFENSE_UP_BUFF, TIMED_HEALS_ALL_HP_TO_FIRST_TARGET, TIMED_JUMPS, TIME_TO_ACTIVATE_HP_READ
-from smrpgpatchbuilder.datatypes.spells.arguments.damage_modifiers import NO_MODIFIERS, X00625_MODIFIER, X00625_MODIFIER_WITH_MULTI_TARGETING, X0125_MODIFIER_WITH_MULTI_TARGETING, X05_MODIFIER
-from ...types.spell import CharacterSpell, EnemySpell
+from smrpgpatchbuilder.datatypes.spells.arguments.timing_properties import (
+    BUTTON_MASH,
+    CHARGE_ONLY,
+    MULTIPLE_BUTTON_PRESSES,
+    ONE_PLUS_MORE_TARGETS_WITH_PRESSES,
+    ONE_TIMING_FOR_125_DMG_ONLY,
+    ONE_TIMING_FOR_125_OR_15X_DMG,
+    ROTATE_1_TARGET_IF_TIMED_ALL,
+    ROTATE_ONLY,
+    TIMED_FOR_9999_SET_ENEMY_HP_0,
+    TIMED_GIVES_TARGET_DEFENSE_UP_BUFF,
+    TIMED_HEALS_ALL_HP_TO_FIRST_TARGET,
+    TIMED_JUMPS,
+    TIME_TO_ACTIVATE_HP_READ,
+)
+from smrpgpatchbuilder.datatypes.spells.arguments.damage_modifiers import (
+    NO_MODIFIERS,
+    X00625_MODIFIER,
+    X00625_MODIFIER_WITH_MULTI_TARGETING,
+    X0125_MODIFIER_WITH_MULTI_TARGETING,
+    X05_MODIFIER,
+)
+from ...types.spell import CharacterSpell, EnemySpell, palette_to_bytes
 
 
 class JumpSpell(CharacterSpell):
     _index = 0
-    _title = 'Jump'
+    _title = "Jump"
     _prefix = ItemPrefix.STAR
     _fp = 3
     _power = 25
@@ -30,12 +57,23 @@ class JumpSpell(CharacterSpell):
     _target_not_self = False
     _timing_modifiers = ONE_TIMING_FOR_125_OR_15X_DMG
     _damage_modifiers = NO_MODIFIERS
-    _description = ''
+    _description = ""
+
+    @property
+    def title(self) -> str:
+        if self.element == Element.FIRE:
+            return "Fire Jump"
+        elif self.element == Element.ICE:
+            return "Ice Jump"
+        elif self.element == Element.THUNDER:
+            return "Thunder Jump"
+        else:
+            return self._title
 
 
 class FireOrbSpell(CharacterSpell):
     _index = 1
-    _title = 'Fire Orb'
+    _title = "Fire Orb"
     _prefix = ItemPrefix.STAR
     _fp = 5
     _power = 20
@@ -60,10 +98,156 @@ class FireOrbSpell(CharacterSpell):
 
     _remake_name = "Fireball"
 
+    @property
+    def title(self) -> str:
+        if self.element == Element.JUMP:
+            return "Earth Orb"
+        elif self.element == Element.ICE:
+            return "Ice Orb"
+        elif self.element == Element.THUNDER:
+            return "Thunder Orb"
+        else:
+            return self._title
+
+    @property
+    def remake_name(self) -> str:
+        if self.element == Element.JUMP:
+            return "Earth Ball"
+        elif self.element == Element.ICE:
+            return "Ice Ball"
+        elif self.element == Element.THUNDER:
+            return "Thunder Ball"
+        else:
+            return self._remake_name or self.title
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        active = 0x253000 + 30 * 408
+        fade = 0x253000 + 30 * 392
+        d = {}
+        if self.element == Element.JUMP:
+            d[active] = palette_to_bytes(
+                [
+                    0x80F800,
+                    0x78F800,
+                    0x30D800,
+                    0x38C800,
+                    0x18B000,
+                    0x008000,
+                    0x78F800,
+                    0xA8F800,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                ]
+            )
+            d[fade] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xB8F800,
+                    0x78F800,
+                    0x30D800,
+                    0x38C800,
+                    0x18B000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                ]
+            )
+        elif self.element == Element.ICE:
+            d[active] = palette_to_bytes(
+                [
+                    0xF8F8D0,
+                    0x00F8F8,
+                    0x00D0F8,
+                    0x00A8F8,
+                    0x0080F8,
+                    0x0058F8,
+                    0x0028F8,
+                    0x0028F8,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                ]
+            )
+            d[fade] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xA0F8F8,
+                    0x40F8F8,
+                    0x38D0F8,
+                    0x30A8F8,
+                    0x1850F8,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                ]
+            )
+        elif self.element == Element.THUNDER:
+            d[active] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                ]
+            )
+            d[fade] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xB8F0F8,
+                    0xB8E0F8,
+                    0xB0E0F8,
+                    0xA0D0F8,
+                    0x80D0F8,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                ]
+            )
+        return d
+
 
 class SuperJumpSpell(CharacterSpell):
     _index = 2
-    _title = 'Super Jump'
+    _title = "Super Jump"
     _prefix = ItemPrefix.STAR
     _fp = 7
     _power = 45
@@ -86,10 +270,21 @@ class SuperJumpSpell(CharacterSpell):
     _damage_modifiers = X05_MODIFIER
     _description = ' Push "Y"\n prior to hit\n for DAMAGE!'
 
+    @property
+    def title(self) -> str:
+        if self.element == Element.FIRE:
+            return "Fire S.Jump"
+        elif self.element == Element.ICE:
+            return "Ice S.Jump"
+        elif self.element == Element.THUNDER:
+            return "Thndr S.Jump"
+        else:
+            return self._title
+
 
 class SuperFlameSpell(CharacterSpell):
     _index = 3
-    _title = 'Super Flame'
+    _title = "Super Flame"
     _prefix = ItemPrefix.STAR
     _fp = 9
     _power = 40
@@ -112,12 +307,158 @@ class SuperFlameSpell(CharacterSpell):
     _damage_modifiers = X00625_MODIFIER
     _description = ' Fire blast!\n Push "Y"\n repeatedly!'
 
-    _remake_name = "Super Fireball"
+    _remake_name = "SuperFireball"
+
+    @property
+    def title(self) -> str:
+        if self.element == Element.JUMP:
+            return "Super Earth"
+        elif self.element == Element.ICE:
+            return "Super Ice"
+        elif self.element == Element.THUNDER:
+            return "Super Thunder"
+        else:
+            return self._title
+
+    @property
+    def remake_name(self) -> str:
+        if self.element == Element.JUMP:
+            return "S. Earth Ball"
+        elif self.element == Element.ICE:
+            return "S. Ice Ball"
+        elif self.element == Element.THUNDER:
+            return "S. Thndr Ball"
+        else:
+            return self._remake_name or self.title
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        active = 0x253000 + 30 * 817
+        fade = 0x253000 + 30 * 815
+        d = {}
+        if self.element == Element.JUMP:
+            d[active] = palette_to_bytes(
+                [
+                    0x80F800,
+                    0x78F800,
+                    0x30D800,
+                    0x38C800,
+                    0x18B000,
+                    0x008000,
+                    0x78F800,
+                    0xA8F800,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                ]
+            )
+            d[fade] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xB8F800,
+                    0x78F800,
+                    0x30D800,
+                    0x38C800,
+                    0x18B000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                ]
+            )
+        elif self.element == Element.ICE:
+            d[active] = palette_to_bytes(
+                [
+                    0xF8F8D0,
+                    0x00F8F8,
+                    0x00D0F8,
+                    0x00A8F8,
+                    0x0080F8,
+                    0x0058F8,
+                    0x0028F8,
+                    0x0028F8,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                ]
+            )
+            d[fade] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xA0F8F8,
+                    0x40F8F8,
+                    0x38D0F8,
+                    0x30A8F8,
+                    0x1850F8,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                ]
+            )
+        elif self.element == Element.THUNDER:
+            d[active] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                ]
+            )
+            d[fade] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xB8F0F8,
+                    0xB8E0F8,
+                    0xB0E0F8,
+                    0xA0D0F8,
+                    0x80D0F8,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                ]
+            )
+        return d
 
 
 class UltraJumpSpell(CharacterSpell):
     _index = 4
-    _title = 'Ultra Jump'
+    _title = "Ultra Jump"
     _prefix = ItemPrefix.STAR
     _fp = 11
     _power = 65
@@ -140,10 +481,21 @@ class UltraJumpSpell(CharacterSpell):
     _damage_modifiers = X0125_MODIFIER_WITH_MULTI_TARGETING
     _description = ' Push "Y"\n prior to hit\n for DAMAGE!'
 
+    @property
+    def title(self) -> str:
+        if self.element == Element.FIRE:
+            return "Fire U.Jump"
+        elif self.element == Element.ICE:
+            return "Ice U.Jump"
+        elif self.element == Element.THUNDER:
+            return "Thndr U.Jump"
+        else:
+            return self._title
+
 
 class UltraFlameSpell(CharacterSpell):
     _index = 5
-    _title = 'Ultra Flame'
+    _title = "Ultra Flame"
     _prefix = ItemPrefix.STAR
     _fp = 14
     _power = 60
@@ -166,12 +518,158 @@ class UltraFlameSpell(CharacterSpell):
     _damage_modifiers = X00625_MODIFIER_WITH_MULTI_TARGETING
     _description = ' Fire orbs!\n Push "Y"\n repeatedly!'
 
-    _remake_name = "Ultra Fireball"
+    _remake_name = "UltraFireball"
+
+    @property
+    def title(self) -> str:
+        if self.element == Element.JUMP:
+            return "Ultra Earth"
+        elif self.element == Element.ICE:
+            return "Ultra Ice"
+        elif self.element == Element.THUNDER:
+            return "Ultra Thunder"
+        else:
+            return self._title
+
+    @property
+    def remake_name(self) -> str:
+        if self.element == Element.JUMP:
+            return "U. Earth Ball"
+        elif self.element == Element.ICE:
+            return "U. Ice Ball"
+        elif self.element == Element.THUNDER:
+            return "U. Thndr Ball"
+        else:
+            return self._remake_name or self.title
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        active = 0x253000 + 30 * 818
+        fade = 0x253000 + 30 * 816
+        d = {}
+        if self.element == Element.JUMP:
+            d[active] = palette_to_bytes(
+                [
+                    0x80F800,
+                    0x78F800,
+                    0x30D800,
+                    0x38C800,
+                    0x18B000,
+                    0x008000,
+                    0x78F800,
+                    0xA8F800,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                ]
+            )
+            d[fade] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xB8F800,
+                    0x78F800,
+                    0x30D800,
+                    0x38C800,
+                    0x18B000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                ]
+            )
+        elif self.element == Element.ICE:
+            d[active] = palette_to_bytes(
+                [
+                    0xF8F8D0,
+                    0x00F8F8,
+                    0x00D0F8,
+                    0x00A8F8,
+                    0x0080F8,
+                    0x0058F8,
+                    0x0028F8,
+                    0x0028F8,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                ]
+            )
+            d[fade] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xA0F8F8,
+                    0x40F8F8,
+                    0x38D0F8,
+                    0x30A8F8,
+                    0x1850F8,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                ]
+            )
+        elif self.element == Element.THUNDER:
+            d[active] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0xF8F8F8,
+                    0xB8F8F8,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                    0x0000D0,
+                ]
+            )
+            d[fade] = palette_to_bytes(
+                [
+                    0xF8F8F8,
+                    0xB8F0F8,
+                    0xB8E0F8,
+                    0xB0E0F8,
+                    0xA0D0F8,
+                    0x80D0F8,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                    0x000000,
+                ]
+            )
+        return d
 
 
 class TherapySpell(CharacterSpell):
     _index = 6
-    _title = 'Therapy'
+    _title = "Therapy"
     _prefix = ItemPrefix.STAR
     _fp = 2
     _power = 40
@@ -191,15 +689,23 @@ class TherapySpell(CharacterSpell):
     _target_wounded = False
     _target_one_party = True
     _target_not_self = False
-    _status_effects = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
+    _status_effects = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
+        Status.BERSERK,
+        Status.MUSHROOM,
+        Status.SCARECROW,
+    ]
     _timing_modifiers = ONE_TIMING_FOR_125_OR_15X_DMG
     _damage_modifiers = NO_MODIFIERS
-    _description = ' Heal\n HP & status$'
+    _description = " Heal\n HP & status$"
 
 
 class GroupHugSpell(CharacterSpell):
     _index = 7
-    _title = 'Group Hug'
+    _title = "Group Hug"
     _prefix = ItemPrefix.STAR
     _fp = 4
     _power = 30
@@ -219,15 +725,23 @@ class GroupHugSpell(CharacterSpell):
     _target_wounded = False
     _target_one_party = True
     _target_not_self = False
-    _status_effects = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
+    _status_effects = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
+        Status.BERSERK,
+        Status.MUSHROOM,
+        Status.SCARECROW,
+    ]
     _timing_modifiers = ONE_TIMING_FOR_125_DMG_ONLY
     _damage_modifiers = NO_MODIFIERS
-    _description = ' Heal group!\n HP/status$'
+    _description = " Heal group!\n HP/status$"
 
 
 class SleepyTimeSpell(CharacterSpell):
     _index = 8
-    _title = 'Sleepy Time'
+    _title = "Sleepy Time"
     _prefix = ItemPrefix.STAR
     _fp = 4
     _power = 0
@@ -250,12 +764,12 @@ class SleepyTimeSpell(CharacterSpell):
     _status_effects = [Status.SLEEP]
     _timing_modifiers = ROTATE_1_TARGET_IF_TIMED_ALL
     _damage_modifiers = NO_MODIFIERS
-    _description = ' Zonk 1 or\n more foes!'
+    _description = " Zonk 1 or\n more foes!"
 
 
 class ComeBackSpell(CharacterSpell):
     _index = 9
-    _title = 'Come Back'
+    _title = "Come Back"
     _prefix = ItemPrefix.STAR
     _fp = 2
     _power = 0
@@ -277,12 +791,12 @@ class ComeBackSpell(CharacterSpell):
     _target_not_self = False
     _timing_modifiers = TIMED_HEALS_ALL_HP_TO_FIRST_TARGET
     _damage_modifiers = NO_MODIFIERS
-    _description = ' Revive one...\n or more pals!'
+    _description = " Revive one...\n or more pals!"
 
 
 class MuteSpell(CharacterSpell):
     _index = 10
-    _title = 'Mute'
+    _title = "Mute"
     _prefix = ItemPrefix.STAR
     _fp = 3
     _power = 0
@@ -305,12 +819,12 @@ class MuteSpell(CharacterSpell):
     _status_effects = [Status.MUTE]
     _timing_modifiers = ROTATE_1_TARGET_IF_TIMED_ALL
     _damage_modifiers = NO_MODIFIERS
-    _description = ' Halt magic\n attack(s)!'
+    _description = " Halt magic\n attack(s)!"
 
 
 class PsychBombSpell(CharacterSpell):
     _index = 11
-    _title = 'Psych Bomb'
+    _title = "Psych Bomb"
     _prefix = ItemPrefix.STAR
     _fp = 15
     _power = 60
@@ -331,12 +845,34 @@ class PsychBombSpell(CharacterSpell):
     _target_not_self = False
     _timing_modifiers = BUTTON_MASH
     _damage_modifiers = X00625_MODIFIER
-    _description = ' Make me mad\n and...BOOM!'
+    _description = " Make me mad\n and...BOOM!"
+
+    @property
+    def title(self) -> str:
+        if self.element == Element.JUMP:
+            return "Earth Bomb"
+        elif self.element == Element.ICE:
+            return "Ice Bomb"
+        elif self.element == Element.THUNDER:
+            return "Thunder Bomb"
+        else:
+            return self._title
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        d = {}
+        if self.element == Element.JUMP:
+            d[0x3350EC] = bytearray([0x80, 0x05, 0xA0, 0x05, 0x40, 0x06, 0xC0, 0x06, 0x60, 0x07, 0xE0, 0x07, 0x60, 0x07, 0xC0, 0x06, 0x40, 0x06, 0xA0, 0x05, 0x80, 0x05, 0x40, 0x01])
+        elif self.element == Element.ICE:
+            d[0x3350EA] = bytearray([0xE1, 0x7F, 0x01, 0x30, 0x01, 0x34, 0x01, 0x48, 0x01, 0x58, 0x01, 0x6C, 0x01, 0x7C, 0x01, 0x6C, 0x01, 0x58, 0x01, 0x48, 0x01, 0x34, 0x01, 0x30, 0x00, 0x28, 0xE1, 0x7F, 0xE1, 0x7F, 0xE1, 0x7F])
+        elif self.element == Element.FIRE:
+            d[0x3350EC] = bytearray([0x8C, 0x05, 0xAD, 0x05, 0x52, 0x06, 0xD6, 0x06, 0x7B, 0x07, 0xFF, 0x07, 0x7B, 0x07, 0xD6, 0x06, 0x52, 0x06, 0xAD, 0x05, 0x8C, 0x05, 0x4A, 0x01])
+        return d
 
 
 class TerrorizeSpell(CharacterSpell):
     _index = 12
-    _title = 'Terrorize'
+    _title = "Terrorize"
     _prefix = ItemPrefix.STAR
     _fp = 6
     _power = 10
@@ -364,7 +900,7 @@ class TerrorizeSpell(CharacterSpell):
 
 class PoisonGasSpell(CharacterSpell):
     _index = 13
-    _title = 'Poison Gas'
+    _title = "Poison Gas"
     _prefix = ItemPrefix.STAR
     _fp = 10
     _power = 20
@@ -387,12 +923,12 @@ class PoisonGasSpell(CharacterSpell):
     _status_effects = [Status.POISON]
     _timing_modifiers = ROTATE_ONLY
     _damage_modifiers = X00625_MODIFIER
-    _description = ' Poison foes!'
+    _description = " Poison foes!"
 
 
 class CrusherSpell(CharacterSpell):
     _index = 14
-    _title = 'Crusher'
+    _title = "Crusher"
     _prefix = ItemPrefix.STAR
     _fp = 12
     _power = 60
@@ -415,10 +951,32 @@ class CrusherSpell(CharacterSpell):
     _damage_modifiers = NO_MODIFIERS
     _description = ' Rock slide!\n Hit "Y" prior\n to contact!'
 
+    @property
+    def title(self) -> str:
+        if self.element == Element.FIRE:
+            return "Fire Crusher"
+        elif self.element == Element.ICE:
+            return "Ice Crusher"
+        elif self.element == Element.THUNDER:
+            return "Thndr Crusher"
+        else:
+            return self._title
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        d = {}
+        if self.element == Element.JUMP:
+            d[0x3350EC] = bytearray([0x80, 0x05, 0xA0, 0x05, 0x40, 0x06, 0xC0, 0x06, 0x60, 0x07, 0xE0, 0x07, 0x60, 0x07, 0xC0, 0x06, 0x40, 0x06, 0xA0, 0x05, 0x80, 0x05, 0x40, 0x01])
+        elif self.element == Element.ICE:
+            d[0x3350EA] = bytearray([0xE1, 0x7F, 0x01, 0x30, 0x01, 0x34, 0x01, 0x48, 0x01, 0x58, 0x01, 0x6C, 0x01, 0x7C, 0x01, 0x6C, 0x01, 0x58, 0x01, 0x48, 0x01, 0x34, 0x01, 0x30, 0x00, 0x28, 0xE1, 0x7F, 0xE1, 0x7F, 0xE1, 0x7F])
+        elif self.element == Element.FIRE:
+            d[0x3350EC] = bytearray([0x8C, 0x05, 0xAD, 0x05, 0x52, 0x06, 0xD6, 0x06, 0x7B, 0x07, 0xFF, 0x07, 0x7B, 0x07, 0xD6, 0x06, 0x52, 0x06, 0xAD, 0x05, 0x8C, 0x05, 0x4A, 0x01])
+        return d
+
 
 class BowserCrushSpell(CharacterSpell):
     _index = 15
-    _title = 'Bowser Crush'
+    _title = "Bowser Crush"
     _prefix = ItemPrefix.STAR
     _fp = 16
     _power = 58
@@ -443,10 +1001,34 @@ class BowserCrushSpell(CharacterSpell):
 
     _remake_name = "Mecha Stomp"
 
+    @property
+    def title(self) -> str:
+        if self.element == Element.FIRE:
+            return "Fire Crush"
+        elif self.element == Element.ICE:
+            return "Ice Crush"
+        elif self.element == Element.THUNDER:
+            return "Thunder Crush"
+        else:
+            return self._title
+
+    @property
+    def remake_name(self) -> str:
+        if self.element == Element.FIRE:
+            return "Fire Stomp"
+        elif self.element == Element.ICE:
+            return "Ice Stomp"
+        elif self.element == Element.THUNDER:
+            return "Thunder Stomp"
+        else:
+            return self._remake_name or self.title
+        
+    # honestly cant figure out where the colour is here
+
 
 class GenoBeamSpell(CharacterSpell):
     _index = 16
-    _title = 'Geno Beam'
+    _title = "Geno Beam"
     _prefix = ItemPrefix.STAR
     _fp = 3
     _power = 40
@@ -469,10 +1051,34 @@ class GenoBeamSpell(CharacterSpell):
     _damage_modifiers = NO_MODIFIERS
     _description = ' Hold "Y" until\n just before\n discharge!'
 
+    @property
+    def title(self) -> str:
+        if self.element == Element.FIRE:
+            return "Fire Beam"
+        elif self.element == Element.THUNDER:
+            return "Thunder Beam"
+        elif self.element == Element.JUMP:
+            return "Earth Beam"
+        else:
+            return self._title
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        # not sure if this will actually work...
+        offset = 0x251158
+        d = {}
+        if self.element == Element.JUMP:
+            d[offset] = bytearray([0x04])
+        elif self.element == Element.THUNDER:
+            d[offset] = bytearray([0x03])
+        elif self.element == Element.FIRE:
+            d[offset] = bytearray([0x01])
+        return d
+
 
 class GenoBoostSpell(CharacterSpell):
     _index = 17
-    _title = 'Geno Boost'
+    _title = "Geno Boost"
     _prefix = ItemPrefix.STAR
     _fp = 4
     _power = 0
@@ -500,7 +1106,7 @@ class GenoBoostSpell(CharacterSpell):
 
 class GenoWhirlSpell(CharacterSpell):
     _index = 18
-    _title = 'Geno Whirl'
+    _title = "Geno Whirl"
     _prefix = ItemPrefix.STAR
     _fp = 8
     _power = 45
@@ -526,7 +1132,7 @@ class GenoWhirlSpell(CharacterSpell):
 
 class GenoBlastSpell(CharacterSpell):
     _index = 19
-    _title = 'Geno Blast'
+    _title = "Geno Blast"
     _prefix = ItemPrefix.STAR
     _fp = 12
     _power = 50
@@ -547,12 +1153,12 @@ class GenoBlastSpell(CharacterSpell):
     _target_not_self = False
     _timing_modifiers = CHARGE_ONLY
     _damage_modifiers = NO_MODIFIERS
-    _description = ' Beam hits\n all foes!\n Energize!'
+    _description = " Beam hits\n all foes!\n Energize!"
 
 
 class GenoFlashSpell(CharacterSpell):
     _index = 20
-    _title = 'Geno Flash'
+    _title = "Geno Flash"
     _prefix = ItemPrefix.STAR
     _fp = 16
     _power = 60
@@ -573,12 +1179,23 @@ class GenoFlashSpell(CharacterSpell):
     _target_not_self = False
     _timing_modifiers = CHARGE_ONLY
     _damage_modifiers = NO_MODIFIERS
-    _description = ' Build power!\n Beam hits\n all foes!'
+    _description = " Build power!\n Beam hits\n all foes!"
+
+    @property
+    def title(self) -> str:
+        if self.element == Element.JUMP:
+            return "Earth Flash"
+        elif self.element == Element.ICE:
+            return "Ice Flash"
+        elif self.element == Element.THUNDER:
+            return "Thunder Flash"
+        else:
+            return self._title
 
 
 class ThunderboltSpell(CharacterSpell):
     _index = 21
-    _title = 'Thunderbolt'
+    _title = "Thunderbolt"
     _prefix = ItemPrefix.STAR
     _fp = 2
     _power = 15
@@ -601,10 +1218,33 @@ class ThunderboltSpell(CharacterSpell):
     _damage_modifiers = NO_MODIFIERS
     _description = ' Hit "Y" just\n before bolt\n ends!'
 
+    @property
+    def title(self) -> str:
+        if self.element == Element.FIRE:
+            return "Fire Bolt"
+        elif self.element == Element.ICE:
+            return "Ice Bolt"
+        elif self.element == Element.JUMP:
+            return "Earth Bolt"
+        else:
+            return self._title
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        active = 0x33CB1F
+        d = {}
+        if self.element == Element.JUMP:
+            d[active] = palette_to_bytes([0xF01880, 0x008008, 0x00C820, 0xC0F800])
+        elif self.element == Element.ICE:
+            d[active] = palette_to_bytes([0xF01880, 0x0070A0, 0x00C8C8, 0x98F8F8])
+        elif self.element == Element.FIRE:
+            d[active] = palette_to_bytes([0xF01880, 0x880000, 0xC86000, 0xF8B800])
+        return d
+
 
 class HPRainSpell(CharacterSpell):
     _index = 22
-    _title = 'HP Rain'
+    _title = "HP Rain"
     _prefix = ItemPrefix.STAR
     _fp = 2
     _power = 10
@@ -630,7 +1270,7 @@ class HPRainSpell(CharacterSpell):
 
 class PsychopathSpell(CharacterSpell):
     _index = 23
-    _title = 'Psychopath'
+    _title = "Psychopath"
     _prefix = ItemPrefix.STAR
     _fp = 1
     _power = 0
@@ -659,7 +1299,7 @@ class PsychopathSpell(CharacterSpell):
 
 class ShockerSpell(CharacterSpell):
     _index = 24
-    _title = 'Shocker'
+    _title = "Shocker"
     _prefix = ItemPrefix.STAR
     _fp = 8
     _power = 60
@@ -682,10 +1322,84 @@ class ShockerSpell(CharacterSpell):
     _damage_modifiers = NO_MODIFIERS
     _description = ' Hit "Y" just\n before bolt\n ends!'
 
+    @property
+    def title(self) -> str:
+        if self.element == Element.FIRE:
+            return "Fire Shocker"
+        elif self.element == Element.ICE:
+            return "Ice Shocker"
+        elif self.element == Element.JUMP:
+            return "Earth Shocker"
+        else:
+            return self._title
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        active = 0x330BB8
+        d = {}
+        if self.element == Element.JUMP:
+            d[active] = palette_to_bytes(
+                [
+                    0x000000,
+                    0xA0F8A0,
+                    0x50F850,
+                    0x00F800,
+                    0x00F800,
+                    0x00E800,
+                    0x00C800,
+                    0x00A800,
+                    0x008000,
+                    0x007800,
+                    0x004000,
+                    0x004800,
+                    0x002000,
+                    0x001010,
+                ]
+            )
+        elif self.element == Element.ICE:
+            d[active] = palette_to_bytes(
+                [
+                    0x000000,
+                    0xF8E0E0,
+                    0xC0F8F8,
+                    0xA0F8F8,
+                    0x80F8F8,
+                    0x60F8F8,
+                    0x48F8F8,
+                    0x00B0B0,
+                    0x008080,
+                    0x007878,
+                    0x004040,
+                    0x004848,
+                    0x002020,
+                    0x001010,
+                ]
+            )
+        elif self.element == Element.FIRE:
+            d[active] = palette_to_bytes(
+                [
+                    0x000000,
+                    0xF8E0E0,
+                    0xF8C0C0,
+                    0xF8A0A0,
+                    0xF88080,
+                    0xF86060,
+                    0xF84848,
+                    0xB00000,
+                    0x800000,
+                    0x780000,
+                    0x400000,
+                    0x480000,
+                    0x200000,
+                    0x100000,
+                ]
+            )
+        return d
+
 
 class SnowySpell(CharacterSpell):
     _index = 25
-    _title = 'Snowy'
+    _title = "Snowy"
     _prefix = ItemPrefix.STAR
     _fp = 12
     _power = 40
@@ -706,12 +1420,39 @@ class SnowySpell(CharacterSpell):
     _target_not_self = False
     _timing_modifiers = ROTATE_ONLY
     _damage_modifiers = X00625_MODIFIER
-    _description = ' Snowman\n fells foes!'
+    _description = " Snowman\n fells foes!"
+
+    @property
+    def title(self) -> str:
+        if self.element == Element.FIRE:
+            return "Firey"
+        elif self.element == Element.THUNDER:
+            return "Thundery"
+        elif self.element == Element.JUMP:
+            return "Earthy"
+        else:
+            return self._title
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        upper = 0x33C141
+        lower = 0x33C400
+        d = {}
+        if self.element == Element.JUMP:
+            d[upper] = palette_to_bytes([0x28A000, 0x00D000, 0x00A800, 0x008000])
+            d[lower] = palette_to_bytes([0x000000, 0x00D000])
+        elif self.element == Element.THUNDER:
+            d[upper] = palette_to_bytes([0x28A000, 0xF8F8F8, 0xC0F8F8, 0x68F8F8])
+            d[lower] = palette_to_bytes([0x000000, 0xF8F8F8])
+        elif self.element == Element.FIRE:
+            d[upper] = palette_to_bytes([0x28A000, 0xD8B000, 0xB86000, 0x980000])
+            d[lower] = palette_to_bytes([0x000000, 0xD8B000])
+        return d
 
 
 class StarRainSpell(CharacterSpell):
     _index = 26
-    _title = 'Star Rain'
+    _title = "Star Rain"
     _prefix = ItemPrefix.STAR
     _fp = 14
     _power = 55
@@ -737,7 +1478,7 @@ class StarRainSpell(CharacterSpell):
 
 class DummySpell1(EnemySpell):
     _index = 27
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -760,7 +1501,7 @@ class DummySpell1(EnemySpell):
 
 class DummySpell2(EnemySpell):
     _index = 28
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 0
@@ -786,7 +1527,7 @@ class DummySpell2(EnemySpell):
 
 class DummySpell3(EnemySpell):
     _index = 29
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -809,7 +1550,7 @@ class DummySpell3(EnemySpell):
 
 class DummySpell4(EnemySpell):
     _index = 30
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -832,7 +1573,7 @@ class DummySpell4(EnemySpell):
 
 class DummySpell5(EnemySpell):
     _index = 31
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -855,7 +1596,7 @@ class DummySpell5(EnemySpell):
 
 class DummySpell6(EnemySpell):
     _index = 32
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -878,7 +1619,7 @@ class DummySpell6(EnemySpell):
 
 class DummySpell7(EnemySpell):
     _index = 33
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 15
     _power = 60
@@ -901,7 +1642,7 @@ class DummySpell7(EnemySpell):
 
 class DummySpell8(EnemySpell):
     _index = 34
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -924,7 +1665,7 @@ class DummySpell8(EnemySpell):
 
 class DummySpell9(EnemySpell):
     _index = 35
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -947,7 +1688,7 @@ class DummySpell9(EnemySpell):
 
 class DummySpell10(EnemySpell):
     _index = 36
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -970,7 +1711,7 @@ class DummySpell10(EnemySpell):
 
 class DummySpell11(EnemySpell):
     _index = 37
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -993,7 +1734,7 @@ class DummySpell11(EnemySpell):
 
 class DummySpell12(EnemySpell):
     _index = 38
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1016,7 +1757,7 @@ class DummySpell12(EnemySpell):
 
 class DummySpell13(EnemySpell):
     _index = 39
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1039,7 +1780,7 @@ class DummySpell13(EnemySpell):
 
 class DummySpell14(EnemySpell):
     _index = 40
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1062,7 +1803,7 @@ class DummySpell14(EnemySpell):
 
 class DummySpell15(EnemySpell):
     _index = 41
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1085,7 +1826,7 @@ class DummySpell15(EnemySpell):
 
 class DummySpell16(EnemySpell):
     _index = 42
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1108,7 +1849,7 @@ class DummySpell16(EnemySpell):
 
 class DummySpell17(EnemySpell):
     _index = 43
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1131,7 +1872,7 @@ class DummySpell17(EnemySpell):
 
 class DummySpell18(EnemySpell):
     _index = 44
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1154,7 +1895,7 @@ class DummySpell18(EnemySpell):
 
 class DummySpell19(EnemySpell):
     _index = 45
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1177,7 +1918,7 @@ class DummySpell19(EnemySpell):
 
 class DummySpell20(EnemySpell):
     _index = 46
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1200,7 +1941,7 @@ class DummySpell20(EnemySpell):
 
 class DummySpell21(EnemySpell):
     _index = 47
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1223,7 +1964,7 @@ class DummySpell21(EnemySpell):
 
 class DummySpell22(EnemySpell):
     _index = 48
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1246,7 +1987,7 @@ class DummySpell22(EnemySpell):
 
 class DummySpell23(EnemySpell):
     _index = 49
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1269,7 +2010,7 @@ class DummySpell23(EnemySpell):
 
 class DummySpell24(EnemySpell):
     _index = 50
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1292,7 +2033,7 @@ class DummySpell24(EnemySpell):
 
 class DummySpell25(EnemySpell):
     _index = 51
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1315,7 +2056,7 @@ class DummySpell25(EnemySpell):
 
 class DummySpell26(EnemySpell):
     _index = 52
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1338,7 +2079,7 @@ class DummySpell26(EnemySpell):
 
 class DummySpell27(EnemySpell):
     _index = 53
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1361,7 +2102,7 @@ class DummySpell27(EnemySpell):
 
 class DummySpell28(EnemySpell):
     _index = 54
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1384,7 +2125,7 @@ class DummySpell28(EnemySpell):
 
 class DummySpell29(EnemySpell):
     _index = 55
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1407,7 +2148,7 @@ class DummySpell29(EnemySpell):
 
 class DummySpell30(EnemySpell):
     _index = 56
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1430,7 +2171,7 @@ class DummySpell30(EnemySpell):
 
 class DummySpell31(EnemySpell):
     _index = 57
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1453,7 +2194,7 @@ class DummySpell31(EnemySpell):
 
 class DummySpell32(EnemySpell):
     _index = 58
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1476,7 +2217,7 @@ class DummySpell32(EnemySpell):
 
 class DummySpell33(EnemySpell):
     _index = 59
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1499,7 +2240,7 @@ class DummySpell33(EnemySpell):
 
 class DummySpell34(EnemySpell):
     _index = 60
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1522,7 +2263,7 @@ class DummySpell34(EnemySpell):
 
 class DummySpell35(EnemySpell):
     _index = 61
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1545,7 +2286,7 @@ class DummySpell35(EnemySpell):
 
 class DummySpell36(EnemySpell):
     _index = 62
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1568,7 +2309,7 @@ class DummySpell36(EnemySpell):
 
 class DummySpell37(EnemySpell):
     _index = 63
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -1591,7 +2332,7 @@ class DummySpell37(EnemySpell):
 
 class DrainSpell(EnemySpell):
     _index = 64
-    _title = ' Drain'
+    _title = " Drain"
     _fp = 1
     _power = 4
     _hit_rate = 90
@@ -1615,7 +2356,7 @@ class DrainSpell(EnemySpell):
 
 class LightningOrbSpell(EnemySpell):
     _index = 65
-    _title = ' Lightning Orb'
+    _title = " Lightning Orb"
     _fp = 2
     _power = 8
     _hit_rate = 90
@@ -1637,7 +2378,7 @@ class LightningOrbSpell(EnemySpell):
 
 class FlameSpell(EnemySpell):
     _index = 66
-    _title = ' Flame'
+    _title = " Flame"
     _fp = 3
     _power = 12
     _hit_rate = 90
@@ -1659,7 +2400,7 @@ class FlameSpell(EnemySpell):
 
 class BoltSpell(EnemySpell):
     _index = 67
-    _title = ' Bolt'
+    _title = " Bolt"
     _fp = 4
     _power = 20
     _hit_rate = 90
@@ -1681,7 +2422,7 @@ class BoltSpell(EnemySpell):
 
 class CrystalSpell(EnemySpell):
     _index = 68
-    _title = ' Crystal'
+    _title = " Crystal"
     _fp = 5
     _power = 25
     _hit_rate = 90
@@ -1703,7 +2444,7 @@ class CrystalSpell(EnemySpell):
 
 class FlameStoneSpell(EnemySpell):
     _index = 69
-    _title = ' Flame Stone'
+    _title = " Flame Stone"
     _fp = 6
     _power = 32
     _hit_rate = 90
@@ -1725,7 +2466,7 @@ class FlameStoneSpell(EnemySpell):
 
 class MegaDrainSpell(EnemySpell):
     _index = 70
-    _title = ' Mega Drain'
+    _title = " Mega Drain"
     _fp = 7
     _power = 40
     _hit_rate = 90
@@ -1749,7 +2490,7 @@ class MegaDrainSpell(EnemySpell):
 
 class WillyWispSpell(EnemySpell):
     _index = 71
-    _title = ' Willy Wisp'
+    _title = " Willy Wisp"
     _fp = 8
     _power = 48
     _hit_rate = 90
@@ -1773,7 +2514,7 @@ class WillyWispSpell(EnemySpell):
 
 class DiamondSawSpell(EnemySpell):
     _index = 72
-    _title = ' Diamond Saw'
+    _title = " Diamond Saw"
     _fp = 9
     _power = 60
     _hit_rate = 90
@@ -1795,7 +2536,7 @@ class DiamondSawSpell(EnemySpell):
 
 class ElectroshockSpell(EnemySpell):
     _index = 73
-    _title = ' Electroshock'
+    _title = " Electroshock"
     _fp = 10
     _power = 72
     _hit_rate = 90
@@ -1817,7 +2558,7 @@ class ElectroshockSpell(EnemySpell):
 
 class BlastSpell(EnemySpell):
     _index = 74
-    _title = ' Blast'
+    _title = " Blast"
     _fp = 11
     _power = 89
     _hit_rate = 90
@@ -1839,7 +2580,7 @@ class BlastSpell(EnemySpell):
 
 class StormSpell(EnemySpell):
     _index = 75
-    _title = ' Storm'
+    _title = " Storm"
     _fp = 12
     _power = 108
     _hit_rate = 90
@@ -1861,7 +2602,7 @@ class StormSpell(EnemySpell):
 
 class IceRockSpell(EnemySpell):
     _index = 76
-    _title = ' Ice Rock'
+    _title = " Ice Rock"
     _fp = 13
     _power = 130
     _hit_rate = 90
@@ -1883,7 +2624,7 @@ class IceRockSpell(EnemySpell):
 
 class EscapeSpell(EnemySpell):
     _index = 77
-    _title = ' Escape'
+    _title = " Escape"
     _fp = 0
     _power = 0
     _hit_rate = 100
@@ -1906,7 +2647,7 @@ class EscapeSpell(EnemySpell):
 
 class DarkStarSpell(EnemySpell):
     _index = 78
-    _title = ' Dark Star'
+    _title = " Dark Star"
     _fp = 20
     _power = 160
     _hit_rate = 90
@@ -1928,7 +2669,7 @@ class DarkStarSpell(EnemySpell):
 
 class RecoverSpell(EnemySpell):
     _index = 79
-    _title = ' Recover'
+    _title = " Recover"
     _fp = 3
     _power = 50
     _hit_rate = 100
@@ -1950,7 +2691,7 @@ class RecoverSpell(EnemySpell):
 
 class MegaRecoverSpell(EnemySpell):
     _index = 80
-    _title = ' Mega Recover'
+    _title = " Mega Recover"
     _fp = 9
     _power = 200
     _hit_rate = 100
@@ -1972,7 +2713,7 @@ class MegaRecoverSpell(EnemySpell):
 
 class FlameWallSpell(EnemySpell):
     _index = 81
-    _title = ' Flame Wall'
+    _title = " Flame Wall"
     _fp = 2
     _power = 8
     _hit_rate = 90
@@ -1994,7 +2735,7 @@ class FlameWallSpell(EnemySpell):
 
 class StaticESpell(EnemySpell):
     _index = 82
-    _title = ' Static E!'
+    _title = " Static E!"
     _fp = 4
     _power = 12
     _hit_rate = 90
@@ -2018,7 +2759,7 @@ class StaticESpell(EnemySpell):
 
 class SandStormSpell(EnemySpell):
     _index = 83
-    _title = ' Sand Storm'
+    _title = " Sand Storm"
     _fp = 6
     _power = 16
     _hit_rate = 90
@@ -2042,7 +2783,7 @@ class SandStormSpell(EnemySpell):
 
 class BlizzardSpell(EnemySpell):
     _index = 84
-    _title = ' Blizzard'
+    _title = " Blizzard"
     _fp = 8
     _power = 22
     _hit_rate = 90
@@ -2064,7 +2805,7 @@ class BlizzardSpell(EnemySpell):
 
 class DrainBeamSpell(EnemySpell):
     _index = 85
-    _title = ' Drain Beam'
+    _title = " Drain Beam"
     _fp = 10
     _power = 26
     _hit_rate = 90
@@ -2088,7 +2829,7 @@ class DrainBeamSpell(EnemySpell):
 
 class MeteorBlastSpell(EnemySpell):
     _index = 86
-    _title = ' Meteor Blast'
+    _title = " Meteor Blast"
     _fp = 12
     _power = 30
     _hit_rate = 90
@@ -2110,7 +2851,7 @@ class MeteorBlastSpell(EnemySpell):
 
 class LightBeamSpell(EnemySpell):
     _index = 87
-    _title = ' Light Beam'
+    _title = " Light Beam"
     _fp = 13
     _power = 34
     _hit_rate = 90
@@ -2134,7 +2875,7 @@ class LightBeamSpell(EnemySpell):
 
 class WaterBlastSpell(EnemySpell):
     _index = 88
-    _title = ' Water Blast'
+    _title = " Water Blast"
     _fp = 14
     _power = 39
     _hit_rate = 90
@@ -2156,7 +2897,7 @@ class WaterBlastSpell(EnemySpell):
 
 class SolidifySpell(EnemySpell):
     _index = 89
-    _title = ' Solidify'
+    _title = " Solidify"
     _fp = 15
     _power = 47
     _hit_rate = 90
@@ -2178,7 +2919,7 @@ class SolidifySpell(EnemySpell):
 
 class PetalBlastSpell(EnemySpell):
     _index = 90
-    _title = ' Petal Blast'
+    _title = " Petal Blast"
     _fp = 16
     _power = 40
     _hit_rate = 85
@@ -2202,7 +2943,7 @@ class PetalBlastSpell(EnemySpell):
 
 class AuroraFlashSpell(EnemySpell):
     _index = 91
-    _title = ' Aurora Flash'
+    _title = " Aurora Flash"
     _fp = 17
     _power = 50
     _hit_rate = 85
@@ -2226,7 +2967,7 @@ class AuroraFlashSpell(EnemySpell):
 
 class BoulderSpell(EnemySpell):
     _index = 92
-    _title = ' Boulder'
+    _title = " Boulder"
     _fp = 18
     _power = 72
     _hit_rate = 90
@@ -2248,7 +2989,7 @@ class BoulderSpell(EnemySpell):
 
 class CoronaSpell(EnemySpell):
     _index = 93
-    _title = ' Corona'
+    _title = " Corona"
     _fp = 19
     _power = 88
     _hit_rate = 90
@@ -2272,7 +3013,7 @@ class CoronaSpell(EnemySpell):
 
 class MeteorSwarmSpell(EnemySpell):
     _index = 94
-    _title = ' Meteor Swarm'
+    _title = " Meteor Swarm"
     _fp = 20
     _power = 100
     _hit_rate = 90
@@ -2294,7 +3035,7 @@ class MeteorSwarmSpell(EnemySpell):
 
 class Engine023Spell(EnemySpell):
     _index = 95
-    _title = 'Engine 023'
+    _title = "Engine 023"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -2317,7 +3058,7 @@ class Engine023Spell(EnemySpell):
 
 class WeirdMushroomSpell(EnemySpell):
     _index = 96
-    _title = ' Weird Mushroom'
+    _title = " Weird Mushroom"
     _fp = 0
     _power = 30
     _hit_rate = 100
@@ -2339,7 +3080,7 @@ class WeirdMushroomSpell(EnemySpell):
 
 class BreakerBeamSpell(EnemySpell):
     _index = 97
-    _title = ' Breaker Beam'
+    _title = " Breaker Beam"
     _fp = 15
     _power = 80
     _hit_rate = 90
@@ -2361,7 +3102,7 @@ class BreakerBeamSpell(EnemySpell):
 
 class ShredderSpell(EnemySpell):
     _index = 98
-    _title = ' Shredder'
+    _title = " Shredder"
     _fp = 8
     _power = 0
     _hit_rate = 100
@@ -2385,7 +3126,7 @@ class ShredderSpell(EnemySpell):
 
 class SledgeSpell(EnemySpell):
     _index = 99
-    _title = ' Sledge'
+    _title = " Sledge"
     _fp = 6
     _power = 50
     _hit_rate = 99
@@ -2407,7 +3148,7 @@ class SledgeSpell(EnemySpell):
 
 class SwordRainSpell(EnemySpell):
     _index = 100
-    _title = ' Sword Rain'
+    _title = " Sword Rain"
     _fp = 8
     _power = 80
     _hit_rate = 99
@@ -2429,7 +3170,7 @@ class SwordRainSpell(EnemySpell):
 
 class SpearRainSpell(EnemySpell):
     _index = 101
-    _title = ' Spear Rain'
+    _title = " Spear Rain"
     _fp = 5
     _power = 60
     _hit_rate = 99
@@ -2451,7 +3192,7 @@ class SpearRainSpell(EnemySpell):
 
 class ArrowRainSpell(EnemySpell):
     _index = 102
-    _title = ' Arrow Rain'
+    _title = " Arrow Rain"
     _fp = 2
     _power = 40
     _hit_rate = 99
@@ -2473,7 +3214,7 @@ class ArrowRainSpell(EnemySpell):
 
 class BigBangSpell(EnemySpell):
     _index = 103
-    _title = ' Big Bang'
+    _title = " Big Bang"
     _fp = 0
     _power = 100
     _hit_rate = 100
@@ -2495,7 +3236,7 @@ class BigBangSpell(EnemySpell):
 
 class DummySpell38(EnemySpell):
     _index = 104
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 10
@@ -2520,7 +3261,7 @@ class DummySpell38(EnemySpell):
 
 class DummySpell39(EnemySpell):
     _index = 105
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -2545,7 +3286,7 @@ class DummySpell39(EnemySpell):
 
 class DummySpell40(EnemySpell):
     _index = 106
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -2570,7 +3311,7 @@ class DummySpell40(EnemySpell):
 
 class DummySpell41(EnemySpell):
     _index = 107
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 0
@@ -2595,7 +3336,7 @@ class DummySpell41(EnemySpell):
 
 class CakerBeamSpell(EnemySpell):
     _index = 108
-    _title = 'Caker Beam'
+    _title = "Caker Beam"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 50
@@ -2618,7 +3359,7 @@ class CakerBeamSpell(EnemySpell):
 
 class DummySpell42(EnemySpell):
     _index = 109
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2641,7 +3382,7 @@ class DummySpell42(EnemySpell):
 
 class DummySpell43(EnemySpell):
     _index = 110
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2664,7 +3405,7 @@ class DummySpell43(EnemySpell):
 
 class DummySpell44(EnemySpell):
     _index = 111
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2687,7 +3428,7 @@ class DummySpell44(EnemySpell):
 
 class DummySpell45(EnemySpell):
     _index = 112
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2710,7 +3451,7 @@ class DummySpell45(EnemySpell):
 
 class DummySpell46(EnemySpell):
     _index = 113
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2733,7 +3474,7 @@ class DummySpell46(EnemySpell):
 
 class DummySpell47(EnemySpell):
     _index = 114
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2756,7 +3497,7 @@ class DummySpell47(EnemySpell):
 
 class DummySpell48(EnemySpell):
     _index = 115
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2779,7 +3520,7 @@ class DummySpell48(EnemySpell):
 
 class DummySpell49(EnemySpell):
     _index = 116
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2802,7 +3543,7 @@ class DummySpell49(EnemySpell):
 
 class DummySpell50(EnemySpell):
     _index = 117
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2825,7 +3566,7 @@ class DummySpell50(EnemySpell):
 
 class DummySpell51(EnemySpell):
     _index = 118
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2848,7 +3589,7 @@ class DummySpell51(EnemySpell):
 
 class DummySpell52(EnemySpell):
     _index = 119
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2871,7 +3612,7 @@ class DummySpell52(EnemySpell):
 
 class DummySpell53(EnemySpell):
     _index = 120
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2894,7 +3635,7 @@ class DummySpell53(EnemySpell):
 
 class DummySpell54(EnemySpell):
     _index = 121
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2917,7 +3658,7 @@ class DummySpell54(EnemySpell):
 
 class DummySpell55(EnemySpell):
     _index = 122
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2940,7 +3681,7 @@ class DummySpell55(EnemySpell):
 
 class DummySpell56(EnemySpell):
     _index = 123
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2963,7 +3704,7 @@ class DummySpell56(EnemySpell):
 
 class DummySpell57(EnemySpell):
     _index = 124
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -2986,7 +3727,7 @@ class DummySpell57(EnemySpell):
 
 class DummySpell58(EnemySpell):
     _index = 125
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -3009,7 +3750,7 @@ class DummySpell58(EnemySpell):
 
 class DummySpell59(EnemySpell):
     _index = 126
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -3032,7 +3773,7 @@ class DummySpell59(EnemySpell):
 
 class DummySpell60(EnemySpell):
     _index = 127
-    _title = 'Dummy'
+    _title = "Dummy"
     _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 3
     _power = 10
@@ -3053,73 +3794,75 @@ class DummySpell60(EnemySpell):
     _target_not_self = False
 
 
-ALL_SPELLS = SpellCollection([
-    JumpSpell(),  # index: 0
-    FireOrbSpell(),  # index: 1
-    SuperJumpSpell(),  # index: 2
-    SuperFlameSpell(),  # index: 3
-    UltraJumpSpell(),  # index: 4
-    UltraFlameSpell(),  # index: 5
-    TherapySpell(),  # index: 6
-    GroupHugSpell(),  # index: 7
-    SleepyTimeSpell(),  # index: 8
-    ComeBackSpell(),  # index: 9
-    MuteSpell(),  # index: 10
-    PsychBombSpell(),  # index: 11
-    TerrorizeSpell(),  # index: 12
-    PoisonGasSpell(),  # index: 13
-    CrusherSpell(),  # index: 14
-    BowserCrushSpell(),  # index: 15
-    GenoBeamSpell(),  # index: 16
-    GenoBoostSpell(),  # index: 17
-    GenoWhirlSpell(),  # index: 18
-    GenoBlastSpell(),  # index: 19
-    GenoFlashSpell(),  # index: 20
-    ThunderboltSpell(),  # index: 21
-    HPRainSpell(),  # index: 22
-    PsychopathSpell(),  # index: 23
-    ShockerSpell(),  # index: 24
-    SnowySpell(),  # index: 25
-    StarRainSpell(),  # index: 26
-    DrainSpell(),  # index: 64
-    LightningOrbSpell(),  # index: 65
-    FlameSpell(),  # index: 66
-    BoltSpell(),  # index: 67
-    CrystalSpell(),  # index: 68
-    FlameStoneSpell(),  # index: 69
-    MegaDrainSpell(),  # index: 70
-    WillyWispSpell(),  # index: 71
-    DiamondSawSpell(),  # index: 72
-    ElectroshockSpell(),  # index: 73
-    BlastSpell(),  # index: 74
-    StormSpell(),  # index: 75
-    IceRockSpell(),  # index: 76
-    EscapeSpell(),  # index: 77
-    DarkStarSpell(),  # index: 78
-    RecoverSpell(),  # index: 79
-    MegaRecoverSpell(),  # index: 80
-    FlameWallSpell(),  # index: 81
-    StaticESpell(),  # index: 82
-    SandStormSpell(),  # index: 83
-    BlizzardSpell(),  # index: 84
-    DrainBeamSpell(),  # index: 85
-    MeteorBlastSpell(),  # index: 86
-    LightBeamSpell(),  # index: 87
-    WaterBlastSpell(),  # index: 88
-    SolidifySpell(),  # index: 89
-    PetalBlastSpell(),  # index: 90
-    AuroraFlashSpell(),  # index: 91
-    BoulderSpell(),  # index: 92
-    CoronaSpell(),  # index: 93
-    MeteorSwarmSpell(),  # index: 94
-    Engine023Spell(),  # index: 95
-    WeirdMushroomSpell(),  # index: 96
-    BreakerBeamSpell(),  # index: 97
-    ShredderSpell(),  # index: 98
-    SledgeSpell(),  # index: 99
-    SwordRainSpell(),  # index: 100
-    SpearRainSpell(),  # index: 101
-    ArrowRainSpell(),  # index: 102
-    BigBangSpell(),  # index: 103
-    CakerBeamSpell(),  # index: 108
-])
+ALL_SPELLS = SpellCollection(
+    [
+        JumpSpell(),  # index: 0
+        FireOrbSpell(),  # index: 1
+        SuperJumpSpell(),  # index: 2
+        SuperFlameSpell(),  # index: 3
+        UltraJumpSpell(),  # index: 4
+        UltraFlameSpell(),  # index: 5
+        TherapySpell(),  # index: 6
+        GroupHugSpell(),  # index: 7
+        SleepyTimeSpell(),  # index: 8
+        ComeBackSpell(),  # index: 9
+        MuteSpell(),  # index: 10
+        PsychBombSpell(),  # index: 11
+        TerrorizeSpell(),  # index: 12
+        PoisonGasSpell(),  # index: 13
+        CrusherSpell(),  # index: 14
+        BowserCrushSpell(),  # index: 15
+        GenoBeamSpell(),  # index: 16
+        GenoBoostSpell(),  # index: 17
+        GenoWhirlSpell(),  # index: 18
+        GenoBlastSpell(),  # index: 19
+        GenoFlashSpell(),  # index: 20
+        ThunderboltSpell(),  # index: 21
+        HPRainSpell(),  # index: 22
+        PsychopathSpell(),  # index: 23
+        ShockerSpell(),  # index: 24
+        SnowySpell(),  # index: 25
+        StarRainSpell(),  # index: 26
+        DrainSpell(),  # index: 64
+        LightningOrbSpell(),  # index: 65
+        FlameSpell(),  # index: 66
+        BoltSpell(),  # index: 67
+        CrystalSpell(),  # index: 68
+        FlameStoneSpell(),  # index: 69
+        MegaDrainSpell(),  # index: 70
+        WillyWispSpell(),  # index: 71
+        DiamondSawSpell(),  # index: 72
+        ElectroshockSpell(),  # index: 73
+        BlastSpell(),  # index: 74
+        StormSpell(),  # index: 75
+        IceRockSpell(),  # index: 76
+        EscapeSpell(),  # index: 77
+        DarkStarSpell(),  # index: 78
+        RecoverSpell(),  # index: 79
+        MegaRecoverSpell(),  # index: 80
+        FlameWallSpell(),  # index: 81
+        StaticESpell(),  # index: 82
+        SandStormSpell(),  # index: 83
+        BlizzardSpell(),  # index: 84
+        DrainBeamSpell(),  # index: 85
+        MeteorBlastSpell(),  # index: 86
+        LightBeamSpell(),  # index: 87
+        WaterBlastSpell(),  # index: 88
+        SolidifySpell(),  # index: 89
+        PetalBlastSpell(),  # index: 90
+        AuroraFlashSpell(),  # index: 91
+        BoulderSpell(),  # index: 92
+        CoronaSpell(),  # index: 93
+        MeteorSwarmSpell(),  # index: 94
+        Engine023Spell(),  # index: 95
+        WeirdMushroomSpell(),  # index: 96
+        BreakerBeamSpell(),  # index: 97
+        ShredderSpell(),  # index: 98
+        SledgeSpell(),  # index: 99
+        SwordRainSpell(),  # index: 100
+        SpearRainSpell(),  # index: 101
+        ArrowRainSpell(),  # index: 102
+        BigBangSpell(),  # index: 103
+        CakerBeamSpell(),  # index: 108
+    ]
+)
