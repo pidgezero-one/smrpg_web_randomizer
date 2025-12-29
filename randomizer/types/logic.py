@@ -6,7 +6,12 @@ class Inventory(list[Prize]):
     to have collected."""
 
     # Lazy type cache - built on demand, invalidated when inventory changes
-    _type_cache: set[type] | None = None
+    _type_cache: set[type] | None
+
+    def __init__(self, items=None):
+        """Initialize inventory with optional items."""
+        super().__init__(items or [])
+        self._type_cache = None  # Instance-level cache
 
     def _get_type_cache(self) -> set[type]:
         """Get or build the type cache for O(1) has_item checks."""

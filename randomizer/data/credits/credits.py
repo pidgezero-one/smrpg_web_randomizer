@@ -470,9 +470,9 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "ALTTP RANDOMIZER")
-    credits.add_credit(0x80, 0x40, 0x81, "OOT RANDOMIZER")
-    credits.add_credit(0x80, 0x00, 0xC2, "FFIV FREE ENTERPRISE")
+    credits.add_credit(0x80, 0x80, 0xC0, "ALTTP AND OOT RANDOMIZER")
+    credits.add_credit(0x80, 0x40, 0x81, "FFIV FREE ENTERPRISE")
+    credits.add_credit(0x80, 0x00, 0xC2, "GOOD QUOTATIONS")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # new

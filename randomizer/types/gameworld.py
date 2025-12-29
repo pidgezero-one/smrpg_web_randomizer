@@ -98,6 +98,7 @@ from ..logic.setup.minigames_setup import apply_minigame_settings
 from ..logic.setup.cosmetics import apply_cosmetic_settings
 from ..logic.setup.prize_locations import set_locations
 from ..logic.shufflers.items import shuffle_prizes, post_shuffle_cleanup
+from ..logic.validation import validate_settings, SettingsValidationError
 from ..logic.shufflers.shops import shuffle_shops
 from ..logic.shufflers.equipment import (
     build_item_to_prize_mapping,
@@ -705,7 +706,21 @@ class GameWorld:
         # Build item to prize mapping (used for random prize substitution)
         self._build_item_to_prize_mapping()
 
-        self._shuffle_items()
+        # Validate settings combinations before shuffling
+        # This catches invalid combinations early with clear error messages
+        validate_settings(self.settings)
+
+        success = False
+        while not success:
+            try:
+                print("retrying...")
+                self._shuffle_items()
+                print("success!")
+                success = True
+            except Exception as e:
+                pass
+            
+        print("success!")
 
         # SHUFFLE CHECKS HERE
         # TODO: exclude frog disciple if shuffle shops turned off
@@ -740,6 +755,9 @@ class GameWorld:
         # TODO: Open issue templat for submitting star hill text. note: uncredited
         # TODO: Open issue template for submitting quiz questions (uncredited)
         # TODO: update spell names and palettes and sounds depending on element
+        # TODO: allow escaping shuffled mimic fights
+        # TODO: mimic fights should respect area
+        # TODO: make mokura appear more often
 
         self._report_progress("Randomizing shops", 45)
 

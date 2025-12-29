@@ -1715,7 +1715,7 @@ class RiverLocationRow2(RiverLocationRow):
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
-class BoosterHillLocation(PrizeRow):
+class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
     _70B1_id: int
     _npc_id: AreaObject
     _container_event: int = E0219_HILL_GRANT_LOGIC

@@ -11,6 +11,7 @@ from smrpgpatchbuilder.datatypes.monster_scripts.commands import (
 )
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import MONSTER_1_SET
 from smrpgpatchbuilder.datatypes.spells.enums import Status
+from ...data.variables.pack_names import *
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -111,6 +112,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
     from ...types.flags import (
         PoisonMushroom, UncapSuperJumps, NoGenoWhirlExor, FixMagikoopa,
         NoOHKO, ExperienceNoBosses, ExperienceNoRegular, EnemySpells,
+        MimicsAnywhere
     )
     from ...data.items.items import MushroomItem2, CarboCookieItem
     from ...data.enemies.enemies import KINGBOMBEnemy
@@ -218,3 +220,10 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
                         cmd.set_spell_2(random.choice(spell_pool))
                     if cmd.spell_3 is not None and not isinstance(cmd.spell_3, DoNothing):
                         cmd.set_spell_3(random.choice(spell_pool))
+
+    # Allow running away from mimics if MimicsAnywhere is enabled
+    if world.settings.isflag_enabled(MimicsAnywhere):
+        for id in [PACK156_SEWER_CHEST_FIGHT, PACK157_SHIP_CHEST_FIGHT, PACK158_VALLEY_CHEST_FIGHT]:
+            pack = world.get_battle_pack(id)
+            for formation in pack.formations:
+                formation.set_can_run_away(True)

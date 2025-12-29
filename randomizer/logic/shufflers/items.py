@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 
 from randomizer.types.prizelocation import StandingLocation
 
-from ..placement import collect, place, fill_remaining
+from ..placement import place
 from ...types.prize import RandomPrizeSubstitute, CoinPrize, FPFlowerPrize
 from ..utils import debug_time
 from ...progression.prizes import RecoveryMushroomPrize, FrogCoin1Prize
@@ -40,6 +40,7 @@ def _on_item_placed(
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
     )
+    #print(f"Placed {type(item).__name__} at {type(placed_location).__name__}")
 
     # Update Mimic location world areas to match where the launcher was placed
     if isinstance(item, FirstMimicFightLauncher):
@@ -112,6 +113,23 @@ def shuffle_prizes(world: GameWorld) -> None:
         BoosterTowerGating,
         SeaGate,
         SeaGating,
+        BoosterHillGate,
+        BoosterHillGating,
+        MarrymoreGate,
+        MarrymoreGating,
+        YaridovichGate,
+        YaridovichGating,
+        LandsEndGate,
+        LandsEndGating,
+        MonstroTownGate,
+        MonstroTownGating,
+        BarrelVolcanoGate,
+        BarrelVolcanoGating,
+        BowsersKeepGate,
+        BowsersKeepGating,
+        FactoryGate,
+        FactoryGating,
+        StarPiecesRequired,
     )
     from ...types.prizelocation import (
         CharacterRecruitmentLocation,
@@ -120,7 +138,12 @@ def shuffle_prizes(world: GameWorld) -> None:
         SpellSlotLocation,
         FrogDiscipleLocation,
     )
-    from ...types.prize import CharacterPrize, SpellPrize
+    from ...types.prize import (
+        CharacterPrize,
+        SpellPrize,
+        StarPiecePrize,
+        BossFightPrize,
+    )
     from ...progression.prizelocations import (
         StartingCharacter1,
         StartingCharacter2,
@@ -229,6 +252,12 @@ def shuffle_prizes(world: GameWorld) -> None:
         BeetlemaniaPrize,
         InfiniteCoinsPrize,
         WeddingGearPrize,
+        # bosses
+        SeeYaPrize,
+        EarlierTimesPrize,
+        CoinTrickPrize,
+        ExpBoosterPrize,
+        ScroogeRingPrize,
     )
     from ...data.spells.spells import (
         JumpSpell,
@@ -261,124 +290,112 @@ def shuffle_prizes(world: GameWorld) -> None:
     )
     from ...types.gameworld import WorldBuildingException
 
-    expected_surplus = 0
-
-
     # Start off emptying every location of every type
     for loc in world.locations.values():
         loc.set_prize(None)
 
-    must_include: list[Prize] = []
-    less_important: list[Prize] = []
-    not_important: list[Prize] = []
-
-    # Init population of must_include
-    if world.settings.isflag_enabled(ShuffleItems):
-        must_include.extend(
+    # Define which items should be considered highest priority to place
+    unlocks_other_checks: list[type[Prize]] = [
+        RareFrogCoinPrize,
+        WalletPrize,
+        CricketPiePrize,
+        BambinoBombPrize,
+        CastleKey1Prize,
+        CastleKey2Prize,
+        GreaperFlagPrize,
+        DryBonesFlagPrize,
+        BigBooFlagPrize,
+        ShedKeyPrize,
+        ElderKeyPrize,
+        CricketJamPrize,
+        TempleKeyPrize,
+        RoomKeyPrize,
+        SeedPrize,
+        FertilizerPrize,
+        BrightCardPrize,
+        RegularFireworksPrize,
+        ProgressiveFireworksPrize,
+        WeddingGearPrize,
+        MimicFightInitiatorPrize,
+    ]
+    # Items that absolutely must be included, but aren't important for progress, can be second priority
+    should_otherwise_include = [
+        ProgressiveCardPrize,
+        YouMissed,
+        ProgressiveEggPrize,
+        LuckyJewelPrize,
+        SignalRingPrize,
+        GoodieBagPrize,
+        StarEggPrize,
+    ]
+    progress_stars = 0
+    if world.settings.isflag_enabled(Remake):
+        unlocks_other_checks.extend([ExtraShinyStonePrize, StayVoucherPrize])
+        should_otherwise_include.extend([CrystalShardPrize])
+    if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
+        unlocks_other_checks.append(RegularFireworksPrize)
+    elif world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
+        unlocks_other_checks.append(ProgressiveFireworksPrize)
+    if world.settings.is_flag_value(SeaGate, SeaGating.STAR_4):
+        progress_stars = 4
+    elif world.settings.is_flag_value(LandsEndGate, LandsEndGating.STAR_5):
+        progress_stars = 4
+    elif world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6):
+        progress_stars = 6
+    elif world.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6):
+        progress_stars = 6
+    if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
+        unlocks_other_checks.append(GoldPaintPrize)
+    if world.settings.isflag_enabled(ShuffleShops):
+        should_otherwise_include.extend([
+            SeeYaPrize,
+            EarlierTimesPrize,
+            CoinTrickPrize,
+            ExpBoosterPrize,
+            ScroogeRingPrize,
+        ])
+    mxstars = world.settings.get_flag(StarPiecesRequired).value
+    if mxstars > progress_stars:
+        progress_stars = mxstars
+    if not world.settings.is_flag_value(
+        ItemQuality, ItemQualityOptions.ORIGINAL_POOL
+    ):
+        should_otherwise_include.extend(
             [
-                RareFrogCoinPrize(),
-                WalletPrize(),
-                CricketPiePrize(),
-                BambinoBombPrize(),
-                CastleKey1Prize(),
-                CastleKey2Prize(),
-                ProgressiveCardPrize(),
-                ProgressiveCardPrize(),
-                ProgressiveCardPrize(),
-                GreaperFlagPrize(),
-                DryBonesFlagPrize(),
-                BigBooFlagPrize(),
-                ShedKeyPrize(),
-                ElderKeyPrize(),
-                CricketJamPrize(),
-                TempleKeyPrize(),
-                RoomKeyPrize(),
-                SeedPrize(),
-                FertilizerPrize(),
-                BrightCardPrize(),
-                YouMissed(),
-                ProgressiveEggPrize(),
-                ProgressiveEggPrize(),
-                ProgressiveEggPrize(),
-                LuckyJewelPrize(),
-                SignalRingPrize(),
-                GoodieBagPrize(),
+                JumpShoesPrize,
+                BtubRingPrize,
+            ]
+        )
+    if world.settings.isflag_enabled(RestrictSpecialEquips):
+        should_otherwise_include.extend(
+            [
+                FroggiestickPrize,
+                ChompPrize,
+                ZoomShoesPrize,
+                LazyShellArmorPrize,
+                LazyShellWeaponPrize,
+                GhostMedalPrize,
+                QuartzCharmPrize,
+                JinxBeltPrize,
+                AttackScarfPrize,
+                SuperSuitPrize,
+                EXPStarPrize,
             ]
         )
         if world.settings.isflag_enabled(Remake):
-            must_include.extend(
+            should_otherwise_include.extend(
                 [
-                    CrystalShardPrize(),
-                    ExtraShinyStonePrize(),
-                    StayVoucherPrize(),
+                    WonderChompPrize,
+                    Stella023Prize,
+                    SageStickPrize,
+                    EnduringBroochPrize,
+                    TeamworkBandPrize,
                 ]
             )
-        if world.settings.isflag_enabled(RestrictSpecialEquips):
-            must_include.extend(
-                [
-                    FroggiestickPrize(),
-                    ChompPrize(),
-                    ZoomShoesPrize(),
-                    LazyShellArmorPrize(),
-                    LazyShellWeaponPrize(),
-                    GhostMedalPrize(),
-                    QuartzCharmPrize(),
-                    JinxBeltPrize(),
-                    AttackScarfPrize(),
-                ]
-            )
-            if world.settings.isflag_enabled(Remake):
-                must_include.extend(
-                    [
-                        WonderChompPrize(),
-                        Stella023Prize(),
-                        SageStickPrize(),
-                        EnduringBroochPrize(),
-                        TeamworkBandPrize(),
-                    ]
-                )
-            if world.settings.is_flag_value(SuperJump2Threshold, 100):
-                coinflip = random.randint(0, 1)
-                if coinflip == 0:
-                    must_include.append(SuperSuitPrize())
-                else:
-                    # 50% likely that you will get the super suit in the normal spot
-                    # if you're good enough at the game to do 100
-                    world.get_location(MonstroSecondSuperJumpRewardLocation).set_prize(
-                        SuperSuitPrize()
-                    )
-            else:
-                must_include.append(SuperSuitPrize())
-        if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
-            must_include.append(GoldPaintPrize())
-        if not world.settings.isflag_enabled(NoStarEgg):
-            must_include.append(StarEggPrize())
-        # If not using original item pool, ensure that items with specific
-        # non-randomizable changes are included at least once
-        if not world.settings.is_flag_value(
-            ItemQuality, ItemQualityOptions.ORIGINAL_POOL
-        ):
-            must_include.extend(
-                [
-                    JumpShoesPrize(),
-                    BtubRingPrize(),
-                ]
-            )
-            if world.settings.isflag_enabled(Remake):
-                must_include.extend(
-                    [
-                        EnduringBroochPrize(),
-                        StayVoucherPrize(),
-                    ]
-                )
 
-        if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
-            must_include.append(RegularFireworksPrize())
-        if world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
-            must_include.append(ProgressiveFireworksPrize())
-            must_include.append(ProgressiveFireworksPrize())
-            must_include.append(ProgressiveFireworksPrize())
-            expected_surplus += 2
+    progression_prizes: list[Prize] = []
+    must_include: list[Prize] = [ProgressiveEggPrize(), ProgressiveEggPrize()]
+    not_important: list[Prize] = []
 
     if world.settings.isflag_enabled(ShuffleCharacters):
         # Place starting characters based on StartingCharacters flag
@@ -426,26 +443,9 @@ def shuffle_prizes(world: GameWorld) -> None:
         disabled_char_names = {m.value.name for m in available_chars_flag.disabled}
         max_char_count = world.settings.get_flag(MaxCharacters).value
 
-        # Combine gating-required and explicitly set starting characters
-        all_required_characters = gating_required_characters | explicitly_set_starting_chars
-
-        # Check for disabled required characters
-        disabled_required = all_required_characters & disabled_char_names
-        if disabled_required:
-            raise WorldBuildingException(
-                f"Settings require characters that are disabled: "
-                f"{', '.join(sorted(disabled_required))}. "
-                f"Either change the gating/starting settings or enable these characters."
-            )
-
-        # Check for max characters constraint
-        if len(all_required_characters) > max_char_count:
-            raise WorldBuildingException(
-                f"Settings require {len(all_required_characters)} characters "
-                f"({', '.join(sorted(all_required_characters))}), "
-                f"but max characters is set to {max_char_count}. "
-                f"Either reduce character requirements or increase max characters."
-            )
+        # Note: Character/gating validation is now done earlier in validate_settings()
+        # The variables collected above (gating_required_characters, disabled_char_names,
+        # max_char_count) are still needed for the actual placement logic below.
 
         # Starting character locations in order
         starting_locations = [
@@ -478,7 +478,7 @@ def shuffle_prizes(world: GameWorld) -> None:
                     loc.set_prize(prize_class())
                     placed_characters.add(prize_class)
 
-        # Add unplaced characters to must_include (unless disabled in AvailableCharacters)
+        # Add unplaced characters to progression_prizes (unless disabled in AvailableCharacters)
         all_recruitment_prizes: dict[str, type[CharacterPrize]] = {
             "Mario": MarioRecruitmentPrize,
             "Mallow": MallowRecruitmentPrize,
@@ -488,22 +488,24 @@ def shuffle_prizes(world: GameWorld) -> None:
         }
 
         # First, add gating-required characters that haven't been placed yet
-        for char_name in gating_required_characters:
+        # Sort to ensure deterministic order (sets have non-deterministic iteration due to hash randomization)
+        for char_name in sorted(gating_required_characters):
             prize_class = all_recruitment_prizes[char_name]
             if prize_class not in placed_characters:
-                must_include.append(prize_class())
+                progression_prizes.append(prize_class())
                 placed_characters.add(prize_class)
 
         # Then add random unplaced characters up to max count
         remaining_chars = [
-            (name, cls) for name, cls in all_recruitment_prizes.items()
+            (name, cls)
+            for name, cls in all_recruitment_prizes.items()
             if cls not in placed_characters and name not in disabled_char_names
         ]
         random.shuffle(remaining_chars)
         for ally_name, prize_class in remaining_chars:
             if len(placed_characters) >= max_char_count:
                 break
-            must_include.append(prize_class())
+            progression_prizes.append(prize_class())
             placed_characters.add(prize_class)
 
     if world.settings.isflag_enabled(CharacterLearnedSpells):
@@ -541,7 +543,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         # Get disabled spell classes from AvailableSpells flag
         available_spells_flag = world.settings.get_flag(AvailableSpells)
         disabled_spell_classes = {m.value for m in available_spells_flag.disabled}
-        
+
         # Get all enabled spell prize classes
         enabled_spell_prizes: list[type[SpellPrize]] = [
             prize_class
@@ -565,7 +567,7 @@ def shuffle_prizes(world: GameWorld) -> None:
 
         # Add all enabled spells to the pool
         # absolutely must have a spell that can always damage mokura
-        must_include.append(
+        progression_prizes.append(
             random.choice(
                 [
                     p()
@@ -582,7 +584,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         )
         spell_count = 1
         if SuperJumpSpell not in disabled_spell_classes:
-            must_include.append(SuperJumpSpellPrize())
+            progression_prizes.append(SuperJumpSpellPrize())
             spell_count += 1
 
         remaining_spell_pool = [
@@ -604,8 +606,6 @@ def shuffle_prizes(world: GameWorld) -> None:
             )
         )
 
-        print([s for s in must_include if isinstance(s, SpellPrize)], len([s for s in must_include if isinstance(s, SpellPrize)]))
-        
     if world.settings.isflag_enabled(ShuffleStarPieces):
         sp_prizes = [
             StarPiece1,
@@ -616,9 +616,8 @@ def shuffle_prizes(world: GameWorld) -> None:
             StarPiece6,
             StarPiece7,
         ]
-        must_include.extend(
-            [sp() for sp in sp_prizes[: world.settings.get_flag(TotalStarPieces).value]]
-        )
+        progression_prizes.extend([sp() for sp in sp_prizes[: progress_stars]])
+        must_include.extend([sp() for sp in sp_prizes[progress_stars:world.settings.get_flag(TotalStarPieces).value]])
 
     if world.settings.isflag_enabled(BossShuffle):
         # Place disabled bosses (those not enabled in ShuffledBosses)
@@ -632,10 +631,9 @@ def shuffle_prizes(world: GameWorld) -> None:
             if loc.originally_held in disabled_boss_types:
                 loc.set_prize(loc.originally_held())  # type: ignore
             else:
-                must_include.append(loc.originally_held())  # type: ignore
-    
+                progression_prizes.append(loc.originally_held())  # type: ignore
+
     if not world.settings.isflag_enabled(ShuffleCoins):
-        # Add all shuffled coins to must_include
         coin_locations = [
             l
             for l in world.locations.values()
@@ -646,157 +644,146 @@ def shuffle_prizes(world: GameWorld) -> None:
         for loc in coin_locations:
             loc.set_prize(loc.originally_held())  # type: ignore
 
-    # Check-by-check set for disabled flags and pulling items into inclusion array
+    # Collect item pool, or set excluded items
     for loc in world.locations.values():
         if loc.originally_held is None:
             continue
         if loc.has_item:
             continue
+        # all of these are already in the pool
         if isinstance(loc, CharacterRecruitmentLocation):
             if not world.settings.isflag_enabled(ShuffleCharacters):
                 loc.set_prize(loc.originally_held())
-
-        elif isinstance(loc, StarPieceLocation):
+            else:
+                continue
+        if isinstance(loc, StarPieceLocation):
             if not world.settings.isflag_enabled(ShuffleStarPieces):
                 loc.set_prize(loc.originally_held())
-
-        elif isinstance(loc, BossFightLocation):
+            else:
+                continue
+        if isinstance(loc, BossFightLocation):
             if not world.settings.isflag_enabled(BossShuffle):
                 loc.set_prize(loc.originally_held())
-
-        elif isinstance(loc, SpellSlotLocation):
+            else:
+                continue
+        if isinstance(loc, SpellSlotLocation):
             if not world.settings.isflag_enabled(CharacterLearnedSpells):
                 loc.set_prize(loc.originally_held())
-
-        elif isinstance(loc, FrogDiscipleLocation):
-            if not world.settings.isflag_enabled(ShuffleShops):
-                loc.set_prize(loc.originally_held())
-            else: # five original items must always be accessible in the game since they all have unique effects
-                must_include.append(loc.originally_held())
-        else:
-            if not world.settings.isflag_enabled(ShuffleItems):
-                loc.set_prize(loc.originally_held())
             else:
-                if isinstance(loc.originally_held(), EXPStarPrize):
-                    if world.settings.isflag_enabled(EXPStarsAnywhere):
-                        must_include.append(loc.originally_held())
-                    else:
-                        loc.set_prize(loc.originally_held())
-                if isinstance(loc.originally_held(), MimicFightInitiatorPrize):
-                    if world.settings.isflag_enabled(MimicsAnywhere):
-                        must_include.append(loc.originally_held())
-                    else:
-                        loc.set_prize(loc.originally_held())
-                if isinstance(loc.originally_held(), SlotsPrize):
-                    if world.settings.isflag_enabled(SlotsAnywhere):
-                        must_include.append(loc.originally_held())
-                    else:
-                        loc.set_prize(loc.originally_held())
-                if isinstance(loc.originally_held(), BeetlemaniaPrize):
-                    if world.settings.isflag_enabled(ShuffleBeetlemania):
-                        must_include.append(loc.originally_held())
-                    else:
-                        loc.set_prize(loc.originally_held())
-                if isinstance(loc.originally_held(), InfiniteCoinsPrize):
-                    if world.settings.isflag_enabled(ShuffleMagikoopaChest):
-                        must_include.append(loc.originally_held())
-                    else:
-                        loc.set_prize(loc.originally_held())
-                if isinstance(loc.originally_held(), WeddingGearPrize):
-                    if world.settings.isflag_enabled(ShuffleWeddingGear):
-                        must_include.append(loc.originally_held())
-                    else:
-                        loc.set_prize(loc.originally_held())
-                if isinstance(loc.originally_held(), RegularFireworksPrize):
-                    if world.settings.is_flag_value(
-                        FireworksSetting, FireworksOptions.VANILLA
-                    ):
-                        loc.set_prize(loc.originally_held())
-    for loc in world.locations.values():
-        if loc.originally_held is None:
+                continue
+        # special exclusions
+        if isinstance(loc, FrogDiscipleLocation):
+            # nowhere to put it if shuffle shops is on but item shuffle is off
+            if not world.settings.isflag_enabled(ShuffleShops) or not world.settings.isflag_enabled(ShuffleItems):
+                loc.set_prize(loc.originally_held())
+                continue
+        # made it this far? start setting
+        if not world.settings.isflag_enabled(ShuffleItems):
+            loc.set_prize(loc.originally_held())
             continue
-        if loc.has_item:
+        if isinstance(loc.originally_held(), StarEggPrize):
+            if world.settings.isflag_enabled(NoStarEgg):
+                continue
+        if isinstance(loc.originally_held(), EXPStarPrize):
+            if not world.settings.isflag_enabled(EXPStarsAnywhere):
+                loc.set_prize(loc.originally_held())
+                continue
+        if isinstance(loc.originally_held(), MimicFightInitiatorPrize):
+            if not world.settings.isflag_enabled(MimicsAnywhere):
+                loc.set_prize(loc.originally_held())
+                continue
+        if isinstance(loc.originally_held(), SlotsPrize):
+            if not world.settings.isflag_enabled(SlotsAnywhere):
+                loc.set_prize(loc.originally_held())
+                continue
+        if isinstance(loc.originally_held(), BeetlemaniaPrize):
+            if not world.settings.isflag_enabled(ShuffleBeetlemania):
+                loc.set_prize(loc.originally_held())
+                continue
+        if isinstance(loc.originally_held(), InfiniteCoinsPrize):
+            if not world.settings.isflag_enabled(ShuffleMagikoopaChest):
+                loc.set_prize(loc.originally_held())
+                continue
+        if isinstance(loc.originally_held(), WeddingGearPrize):
+            if not world.settings.isflag_enabled(ShuffleWeddingGear):
+                loc.set_prize(loc.originally_held())
+                continue
+        if isinstance(loc.originally_held(), SuperSuitPrize) and world.settings.isflag_enabled(RestrictSpecialEquips):
+            # 50% chance of keeping super suit in its original location if threshold is 100
+            if world.settings.is_flag_value(
+                SuperJump2Threshold, 100
+            ):
+                roll = random.randint(0, 1)
+                if roll:
+                    loc.set_prize(loc.originally_held())
+                    continue
+        if isinstance(loc.originally_held(), RegularFireworksPrize):
+            if world.settings.is_flag_value(
+                FireworksSetting, FireworksOptions.VANILLA
+            ):
+                loc.set_prize(loc.originally_held())
+                continue
+        is_progress_item = [p for p in unlocks_other_checks if isinstance(loc.originally_held(), p)]
+        if len(is_progress_item) > 0:
+            progression_prizes.append(loc.originally_held())
             continue
-        # already checked
-        if isinstance(loc, (CharacterRecruitmentLocation, StarPieceLocation, BossFightLocation, SpellSlotLocation, FrogDiscipleLocation)):
+        is_important_item = [p for p in should_otherwise_include if isinstance(loc.originally_held(), p)]
+        if len(is_important_item) > 0:
+            must_include.append(loc.originally_held())
             continue
-        # item already included in must_include
-        if len([p for p in must_include if isinstance(p, loc.originally_held)]) > 0:
-            continue
-        if world.settings.is_flag_value(
-            ItemQuality, ItemQualityOptions.ORIGINAL_POOL
-        ):
-            if isinstance(loc.originally_held(), (RecoveryMushroomPrize, FPFlowerPrize, FrogCoin1Prize)):
+        elif world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
+            if isinstance(
+                loc.originally_held(),
+                (RecoveryMushroomPrize, FPFlowerPrize, FrogCoin1Prize),
+            ):
                 not_important.append(loc.originally_held())
             else:
-                less_important.append(loc.originally_held())
+                must_include.append(loc.originally_held())
+            continue
+        if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
+            not_important.append(loc.originally_held())
         else:
-            not_important.append(
-                RandomPrizeSubstitute().generate(world, loc)
-            )
-    print(f"Must include items: {[type(p).__name__ for p in must_include]}")
+            not_important.append(RandomPrizeSubstitute().generate(world, loc))
+            
+    """     print(f"Priority 1:")
+    for p in progression_prizes:
+        print(f"  {type(p).__name__}")
+    print(f"Priority 2:")
+    for p in must_include:
+        print(f"  {type(p).__name__}")
+    print(f"Priority 3:")
+    for p in not_important:
+        print(f"  {type(p).__name__}") """
+
     # Shuffle!
     # Place critical/progress items first
     # or items that likely can't appear in shops and do something unique
-    to_fill = copy(list(world.locations.values()))
+    print("placing keys")
+    random.shuffle(progression_prizes)
+    place(
+        world,
+        progression_prizes,
+        on_placed=lambda i, l: _on_item_placed(world, i, l),
+    )
 
-    # Sort must_include so characters are placed first (they have fewer valid locations)
-    # Boss fights placed next (many locations, complex dependencies on chars)
-    # Then everything else
-    from ...types.prize import CharacterPrize, BossFightPrize, SpellPrize
-
-    def placement_priority(item: Prize) -> int:
-        if isinstance(item, CharacterPrize):
-            return 0  # Characters first
-        if isinstance(item, BossFightPrize):
-            return 1  # Boss fights second
-        if isinstance(item, SpellPrize):
-            return 2  # Spells third
-        return 3  # Everything else
-
-    random.shuffle(must_include)  # Randomize within priority groups
-    must_include.sort(key=placement_priority)  # Stable sort preserves random order within groups
-    random.shuffle(to_fill)
+    print("placing important items")
+    random.shuffle(must_include)
     place(
         world,
         must_include,
-        to_fill,
         on_placed=lambda i, l: _on_item_placed(world, i, l),
+        force_frog_disciple=True
     )
 
-    # Place less-important-but-should-still-be-included items next
-    to_fill = [l for l in to_fill if not l.has_item]
-    random.shuffle(less_important)
-    random.shuffle(to_fill)
-    place(
-        world,
-        less_important,
-        to_fill,
-        True,  # Allow overflow - these items are not critical
-        on_placed=lambda i, l: _on_item_placed(world, i, l),
-    )
-
-    to_fill = [l for l in to_fill if not l.has_item]
+    print("filling remaining")
     random.shuffle(not_important)
-    random.shuffle(to_fill)
     place(
         world,
         not_important,
-        to_fill,
         True,
         on_placed=lambda i, l: _on_item_placed(world, i, l),
+        force_frog_disciple=True
     )
-
-
-    collected = set(collect(world))
-
-    # Verify all must_include prizes were placed
-    missing_prizes = [p for p in must_include if p not in collected]
-    if missing_prizes:
-        missing_names = [type(p).__name__ for p in missing_prizes]
-        raise WorldBuildingException(
-            f"Failed to place required prizes: {', '.join(missing_names)}"
-        )
 
 
 def post_shuffle_cleanup(world: GameWorld) -> None:

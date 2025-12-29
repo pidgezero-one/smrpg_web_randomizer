@@ -414,7 +414,7 @@ class RangeFlag(Flag):
 # ✅
 class ShuffleCharacters(BooleanFlag):
     _name = "Randomize party recruitment order"
-    _description = """If enabled, your characters will join your party in a random order.
+    _description = """If enabled, the order in which each ally joins your party will change.
 <br>
 <br>If disabled, you will start with Mario and recruit characters near their original locations."""
     _id = "rchars"
@@ -423,7 +423,7 @@ class ShuffleCharacters(BooleanFlag):
 # ✅
 class MaxCharacters(RangeFlag):
     _name = "Total playable allies"
-    _description = "The total number of playable characters. Set this to 1 if you are attempting a solo challenge."
+    _description = "The number of allies that can appear in the seed (including starting characters). Set this to 1 if you are attempting a solo challenge."
     min_value = 1
     max_value = 5
     _default = 5
@@ -440,9 +440,11 @@ for ally in ally_collection._allies:
 IncludedCharacterEnum = ClassCategorizationOption(
     "IncludedCharacterEnum", _inclusion_members
 )
+
+
 class AvailableCharacters(CategorizationFlag[IncludedCharacterEnum]):
     _name = "Available Allies"
-    _description = """Highlighted (white text over blue) allies are eligible to be the random ally that joins your party in starter/recruitment locations. Un-highlight any characters you want to exclude from the game entirely."""
+    _description = """Highlighted (white text over blue) allies are eligible to be one of your "Total playable allies". Un-highlight any characters you wish to exclude from the game entirely."""
     _default = {o: True for o in IncludedCharacterEnum.__members__.values()}
     _id = "avail_chars"
 
@@ -460,13 +462,15 @@ for i in range(1, 6):
 StartingCharacterEnum = ClassCategorizationOption(
     "StartingCharacterEnum", _starting_char_members
 )
+
+
 class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum]):
     _name = "Starting Characters"
     _default: dict[StartingCharacterEnum, int | None] = {
         o: (0 if i == 0 else None)
         for i, o in enumerate(StartingCharacterEnum.__members__.values())
     }
-    _description = "The characters who will be in your party at the start of the game. Your first selection will be considered your starting character."
+    _description = "The allies who will be in your party at the start of the game. Your first pick is your <b>starter ally.</b>"
     _id = "starters"
     _requires_all = [(ShuffleCharacters(), True)]
 
@@ -507,8 +511,8 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
 
 
 class PlayAsStarter(BooleanFlag):
-    _name = "Play as starting character everywhere"
-    _description = """If enabled, the character on your file select menu (also the character in your default 1st party position) will also be the character you play as outside of battle.
+    _name = "Play as starter ally everywhere"
+    _description = """If enabled, your starter ally will also be the protagonist outside of battle.
 <br>
 <br>If disabled, you will always play as Mario outside of battle, regardless of whether or not he is in your party."""
     _id = "protag"
@@ -522,8 +526,8 @@ class PlayAsStarter(BooleanFlag):
 class EquipmentCharactersOptions(CategorizationOption):
     """Enumeration for character equipment guidelines"""
 
-    VANILLA = "Vanilla"
-    VANILLA_ACCESSORIES_ALL = "Vanilla, except anyone can wear any accessory"
+    VANILLA = "Default"
+    VANILLA_ACCESSORIES_ALL = "Default, except anyone can wear any accessory"
     RANDOM_ACCESSORIES_ALL = "Random, except anyone can wear any accessory"
     RANDOM = "Completely random"
     EQUIP_ALL = "Anyone can equip anything"
@@ -532,15 +536,15 @@ class EquipmentCharactersOptions(CategorizationOption):
 # ✅
 class EquipmentCharacters(SelectOneFlag[EquipmentCharactersOptions]):
     _name = "Equipment permissions"
-    _description = """<b>Vanilla</b>: The list of characters who are permitted to equip each item remains unchanged from the original game.
+    _description = """<b>Default</b>: The list of allies who are permitted to equip each item remains unchanged from the original game.
 <br>
-<br><b>Vanilla, except anyone can wear any accessory</b>: Armor and weapon permissions are unchanged from the original game, but all accessories can be equipped by anyone.
+<br><b>Default, except anyone can wear any accessory</b>: Armor and weapon permissions are unchanged from the original game, but all accessories can be equipped by anyone.
 <br>
 <br><b>Random, except anyone can wear any accessory</b>: Armor and weapon permissions are randomized, but all accessories can be equipped by anyone.
 <br>
 <br><b>Completely random</b>: All equips' permissions are randomized.
 <br>
-<br><b>Anyone can equip anything</b>: No equips are character-restricted."""
+<br><b>Anyone can equip anything</b>: No equips are restricted by ally at all."""
     choices = [o for o in EquipmentCharactersOptions]
     _default = EquipmentCharactersOptions.VANILLA
     _id = "perms"
@@ -548,7 +552,7 @@ class EquipmentCharacters(SelectOneFlag[EquipmentCharactersOptions]):
 
 # ✅
 class EquipmentPropertiesOptions(CategorizationOption):
-    VANILLA = "Vanilla"
+    VANILLA = "Default"
     SOME = "Some buffs added"
     RANDOM = "Completely random"
 
@@ -556,7 +560,7 @@ class EquipmentPropertiesOptions(CategorizationOption):
 # ✅
 class EquipmentProperties(SelectOneFlag[EquipmentPropertiesOptions]):
     _name = "Equipment stats & buffs"
-    _description = """<b>Vanillat</b>: The stats and buffs on equipment are unchanged from the original game.
+    _description = """<b>Default</b>: The stats and buffs on equipment are unchanged from the original game.
 <br>
 <br><b>Some buffs added</b>: The stats and buffs on equipment are mostly unchanged from the original game, except most armors are given one additional property (e.g. Fire Shirt nullifies damage from fire attacks). Additionally, some weapons will boost magic attack instead of physical attack.
 <br>
@@ -579,7 +583,7 @@ class StarPieceHints(BooleanFlag):
     _name = "Signal Ring Star Piece hints"
     _description = """If enabled, the Signal Ring (if equipped to your active party) will play a sound when you enter a world area that contains a Star Piece.  
 <br>
-<br>The Signal Ring will only sound off when you enter an area from the World Map, from loading a save, or from an area warp (ex: the Kero Sewers - Land's End pipe). Therefore, the chime does not necessarily indicate that your current room contains a Star Piece, but rather that at least one room in the area does."""
+<br>The Signal Ring will only sound off when you enter an area from the World Map, from loading a save, or from an area warp (ex: the Kero Sewers - Land's End pipe). Therefore, the chime does not necessarily indicate that your current room contains a Star Piece, but rather that at least one room in the area does. (Note: Belome Temple and Land's End are considered different areas.)"""
     _id = "hints"
 
 
@@ -608,24 +612,24 @@ class EXPMultiplier(SelectOneFlag[EXPMultiplierOptions]):
 
 # ✅
 class CharacterStats(BooleanFlag):
-    _name = "Randomize character stats"
-    _description = """If enabled, stats and stat curves for each playable character will be randomized. This also randomizes the number of FP you start with.
+    _name = "Randomize ally stats"
+    _description = """If enabled, stats and stat curves for each ally will be randomized. This also randomizes the max FP you start with.
 <br>
-<br>If disabled, playable characters retain their original stats and stat curves."""
+<br>If disabled, allies retain their original stats and stat curves."""
     _id = "stats"
 
 
 # ✅
 class CharacterLearnedSpells(BooleanFlag):
-    _name = "Randomize character learned spells"
-    _description = "The pool of spells learnable by each character will be randomized. This only covers spells originally learn-able by playable characters, and does not include enemy spells."
+    _name = "Randomize ally learned spells"
+    _description = "The pool of spells that each ally can learn will be randomized. This does not include enemy spells."
     _id = "charspells"
 
 
 # ✅
 class CharacterSpellStats(BooleanFlag):
-    _name = "Randomize character spell stats"
-    _description = "The power and FP cost of character magic spells will be randomized."
+    _name = "Randomize ally spell stats"
+    _description = "The power and FP cost of ally magic spells will be randomized."
     _id = "spellstats"
 
 
@@ -638,15 +642,15 @@ class InfuseSpellElements(BooleanFlag):
 
 # ✅
 class CharacterSpellElements(BooleanFlag):
-    _name = "Randomize character spell elements"
-    _description = "Character spells with elements will have their elements randomized. Non-elemental spells will remain non-elemental."
+    _name = "Randomize ally spell elements"
+    _description = "Ally spells with elements will have their elements randomized. Non-elemental spells will remain non-elemental."
     _id = "spellelements"
 
 
 # ✅
 class UncapSuperJumps(BooleanFlag):
     _name = "Uncap Super Jumps"
-    _description = "If enabled, you can do more than 100 Super Jumps at once."
+    _description = "If enabled, you can do more than 100 Super Jumps per turn."
     _id = "uncap"
 
 
@@ -660,13 +664,15 @@ for spell in ALL_SPELLS.spells:
 LearnableSpellEnum = ClassCategorizationOption(
     "LearnableSpellEnum", _learnable_spell_members
 )
+
+
 class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
-    _name = "Available Player Spells"
-    _description = """Highlighted (white text over blue) spells will be learned by at least one character. Spells that are not highlighted will not be learned by any character.
+    _name = "Available Ally Spells"
+    _description = """Highlighted (white text over blue) spells will be learned by at least one ally. Spells that are not highlighted will not be learned by any ally.
 <br>
-<br>Excluded spells are not replaced in characters' learnsets by other spells, so some characters will learn less than six total.
+<br>Excluded spells are not replaced in allies' learnsets by other spells, so some allies will learn less than six total.
 <br>
-<br>Note: You need at least one damage spell available to transform Mokura. Spells required for checks (i.e. super jump) cannot be excluded."""
+<br>Note: You must include at least one of Geno Whirl, Star Rain, Terrorize, or Poison Gas to ensure you can transform Mokura regardless of your other settings."""
     _default = {o: True for o in LearnableSpellEnum.__members__.values()}
     _id = "avail_spells"
 
@@ -679,7 +685,7 @@ class ShuffleStarPieces(BooleanFlag):
     _name = "Randomize the locations of Star Pieces"
     _description = """If enabled, the Star Pieces may be found in places other than their original locations.
 <br>
-<br>If disabled, they will be rewarded by defeating the final bosses of Mushroom Kindom, Forest Maze, Moleville, Seaside Town, and Barrel Volcano, as well as a freestanding piece on Star Hill."""
+<br>If disabled, they will be rewarded by defeating the final bosses of Mushroom Kingdom, Forest Maze, Moleville, Seaside Town, and Barrel Volcano, as well as a freestanding piece on Star Hill."""
     _id = "rstars"
 
 
@@ -710,9 +716,11 @@ class ProgressionLogicDifficultyOptions(CategorizationOption):
 # ✅
 class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions]):
     _name = "Progression logic difficulty"
-    _description = """<b>Normal</b> - The shuffler will take boss difficulty into account when placing progression items. Your expected early progression items are most likely to be found earlier in the game.
+    _description = """<b>Normal</b> - Your expected early progression items are most likely to be found earlier in the game.
 <br>
-<br><b>Hard</b> - The shuffler will not consider boss difficulty when placing progression items. Your progression items may be found late in the game among higher level boss battles."""
+<br><b>Hard</b> - Your early progression items may be found in lategame areas.
+<br>
+<br>This setting assumes you are scaling boss fights according to their location. It is effectively useless if you don't."""
     choices = [o for o in ProgressionLogicDifficultyOptions]
     _id = "proglogic"
     _default = ProgressionLogicDifficultyOptions.NORMAL
@@ -722,9 +730,7 @@ class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions
 # ✅
 class DisperseStarPieces(BooleanFlag):
     _name = "Disperse Star Pieces evenly across the map"
-    _description = """If enabled, each of the seven overworld map areas may only contain up to one Star Piece each.
-<br>
-<br>Note: This may not be respected if Bowser's Keep and Factory are both gated by 6 Star Pieces."""
+    _description = """If enabled, each of the seven overworld map areas (Mario's Pad - Bandit's Way, Kero Sewers - Pipe Vault + Yo'ster Isle, Moleville - Marrymore, Star Hill - Sunken Ship, Land's End - Grate Guy's Casino, Nimbus Land - Barrel Volcano, and Bowser's Keep - Factory) may only contain up to one Star Piece each."""
     _id = "disperse"
     _requires_all = [(ShuffleStarPieces(), True)]
 
@@ -736,7 +742,7 @@ class DisperseStarPieces(BooleanFlag):
 # if this is disabled, no options in this category can be changed
 class ShuffleItems(BooleanFlag):
     _name = "Randomize item rewards"
-    _description = """If enabled, the contents of treasure chests, quest rewards, and freestanding small items will be shuffled.
+    _description = """If enabled, the contents of treasure chests, quest rewards, and freestanding small items (including Midas River cave items) will be shuffled.
 <br>
 <br>If disabled, chests, quest rewards, and freestanding small items will remain unchanged from the original game."""
     _id = "ritems"
@@ -766,7 +772,7 @@ class ItemQuality(SelectOneFlag[ItemQualityOptions]):
 class BiasItemShuffle(BooleanFlag):
     _name = "Bias better items to gated locations"
     _description = (
-        """If enabled, harder-to-reach areas will generally house better items."""
+        """If enabled, gated areas will be more likely to house better items."""
     )
     _id = "biasitems"
     _requires_all = [(ShuffleItems(), True)]
@@ -775,7 +781,7 @@ class BiasItemShuffle(BooleanFlag):
 # ✅
 class AnnoyingChests(BooleanFlag):
     _name = 'Empty chests should perform the "You Missed" animation'
-    _description = """If disabled, empty chests will simply appear as pre-opened."""
+    _description = """If disabled, empty chests will simply appear as pre-opened. Only relevant if your Item Pool Quality is set to "Completely empty." """
     _id = "ym"
     _requires_all = [(ItemQuality(), ItemQualityOptions.COMPLETELY_EMPTY)]
 
@@ -783,7 +789,7 @@ class AnnoyingChests(BooleanFlag):
 # ✅
 class NoStarEgg(BooleanFlag):
     _name = "No Star Egg"
-    _description = """If enabled, you are guaranteed not to find the Star Egg via any chests, overworld items, NPC rewards, or shops."""
+    _description = """If enabled, no check will grant the Star Egg."""
     _id = "noegg"
     _requires_all = [(ShuffleItems(), True)]
 
@@ -793,7 +799,9 @@ class RestrictSpecialEquips(BooleanFlag):
     _name = 'Shuffle "Special Item" exchange equips & Monstro Town reward equips'
     _description = """If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will be shuffled within each other's original locations, and will not be accessible anywhere else, regardless of your chosen Item Pool Quality setting.
 <br>
-<br>If disabled, the ten locations will simply contain random items, like every other item location."""
+<br>If remake content is enabled, the Wonder Chomp, Stella 023, Sage Stick, Enduring Brooch, and Teamwork Band and their respective original locations are included in this pool.
+<br>
+<br>If disabled, all ten or fifteen locations will simply contain random items, like every other item location."""
     _id = "restrict_monstro"
     _requires_all = [(ShuffleItems(), True)]
 
@@ -801,7 +809,7 @@ class RestrictSpecialEquips(BooleanFlag):
 # ✅
 class EXPStarsAnywhere(BooleanFlag):
     _name = "Shuffle EXP stars"
-    _description = """If enabled, EXP stars may appear in chests that don't house them in the original game.
+    _description = """If enabled, EXP stars may appear in chests that don't house them in the original game. Only one EXP star can appear per world area.
 <br>
 <br>If disabled, EXP stars will be restricted to their original locations in Bandit's Way, Kero Sewers, Moleville Mines, Sea, Land's End, Nimbus Land, and Barrel Volcano."""
     _id = "xpstars"
@@ -829,7 +837,7 @@ class ShuffleCoins(BooleanFlag):
 # ✅
 class MimicsAnywhere(BooleanFlag):
     _name = "Shuffle mimic chests"
-    _description = """If enabled, any three chests in the world may be mimics. You will be able to run away from them.
+    _description = """If enabled, any three chests in the world may be mimics. You will be able to run away from them. The Bean Valley mimic and Sunken Ship mimic will not appear before Land's End and Moleville respectively (except in the Rose Town Lazy Shell chests).
 <br>
 <br>If disabled, mimic chests will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley. You will not be able to run away from these fights."""
     _modes = ["open"]
@@ -850,7 +858,7 @@ class SlotsAnywhere(BooleanFlag):
 # ✅
 class ShuffleBeetlemania(BooleanFlag):
     _name = "Shuffle Beetlemania"
-    _description = """If enabled, the Mushroom Kingdom inn kid will give you a random item check for 500 coins. Beetlemania will appear in a random location, unless your item pool is set to "Completely Empty"."""
+    _description = """If enabled, the Mushroom Kingdom inn kid will give you a random item check for 500 coins. Beetlemania will appear in a random location."""
     _id = "beetle"
     _requires_all = [(ShuffleItems(), True)]
 
@@ -858,7 +866,7 @@ class ShuffleBeetlemania(BooleanFlag):
 # ✅
 class ShuffleMagikoopaChest(BooleanFlag):
     _name = "Shuffle Magikoopa's coin chest"
-    _description = """If enabled, the chest in Magikoopa's room will contain a random item check. A random chest somewhere in the game will contain infinite coins, unless your item pool is set to "Completely Empty"."""
+    _description = """If enabled, the chest in Magikoopa's room will contain a random item check. A random chest somewhere in the game will contain infinite coins."""
     _id = "kamek"
     _requires_all = [(ShuffleItems(), True)]
 
@@ -866,7 +874,7 @@ class ShuffleMagikoopaChest(BooleanFlag):
 # ✅
 class ShuffleWeddingGear(BooleanFlag):
     _name = "Shuffle Marrymore wedding gear"
-    _description = """If enabled, the four pieces of wedding gear required to initiate the Marrymore boss fight will be located randomly within the world (not necessarily key item locations). Interacting with the four NPCs in the chapel will become random item checks.
+    _description = """If enabled, the four pieces of wedding gear required to initiate the Marrymore boss fight will be located randomly within the world (not necessarily key item locations). The four NPCs in the chapel become item checks.
 <br>
 <br>If disabled, the Marrymore chapel minigame will behave as normal."""
     _id = "marry"
@@ -877,7 +885,7 @@ class ShuffleWeddingGear(BooleanFlag):
 class FireworksOptions(CategorizationOption):
     """Enumeration for Fireworks flag option"""
 
-    VANILLA = "Vanilla"
+    VANILLA = "Default"
     SHUFFLE_ONE = "Shuffle Fireworks"
     PROGRESSIVE = "Shuffle Progressive Fireworks"
 
@@ -885,14 +893,11 @@ class FireworksOptions(CategorizationOption):
 # ✅
 class FireworksSetting(SelectOneFlag[FireworksOptions]):
     _name = """Fireworks trade sequence"""
-    _description = """<b>Vanilla</b>: Unchanged from the original game.
+    _description = """<b>Default</b>: Unchanged from the original game. Buy from fireworks guy's house, trade for Shiny Stone, etc.
 <br>
-<br><b>Shuffle Fireworks</b>: Fireworks is added to the "Special Item" pool, and the Fireworks shop becomes a "Special Item" location. The trading sequence is otherwise unchanged. If needed, you may get your Shiny Stone back from the shop girl after you have completed the trade sequence.
+<br><b>Shuffle Fireworks</b>: One Fireworks is added to the "Special Item" pool, and the Fireworks shop becomes a "Special Item" location. The trading sequence is otherwise unchanged. The Monstro Town sealed door opens automatically if you trade away the Shiny Stone before using it.
 <br>
-<br><b>Shuffle Progressive Fireworks</b>: One Fireworks, Shiny Stone, and Carbo Cookie are each shuffled somewhere completely random in the game, and you will always receive them in order. The fireworks shop, Pur-Tend store, and cookie girl become item checks. The Monstro Town sealed door is unlocked when you find the Shiny Stone.
-<br>
-<br>Note: If you do not have Bucket Warp enabled, completing the Carbo Cookie trade sequence will give you a random item if "Shuffle Fireworks" or "Shuffle Progressive Fireworks" is selected.
-"""
+<br><b>Shuffle Progressive Fireworks</b>: One Fireworks, Shiny Stone, and Carbo Cookie are each shuffled somewhere completely random in the game, and you will always receive them in order. The fireworks shop, Pur-Tend store, and cookie girl become key item checks. The Monstro Town sealed door opens automatically if you trade away the Shiny Stone before using it."""
     choices = [o for o in FireworksOptions]
     _default = FireworksOptions.VANILLA
     _id = "fireworks"
@@ -929,12 +934,13 @@ class StarPieceAvailability(BooleanFlag):
 # ✅
 class InvisibleFlagsSetting(BooleanFlag):
     _name = "Move invisible flag checks"
-    _description = """Chooses where the invisible items placed by the Three Musty Fears are located.
-<br>This setting will put your attention to detail and your knowledge of the world of SMRPG to the test.
+    _description = """Chooses where the invisible items placed by the Three Musty Fears are located. This setting will put your attention to detail and your knowledge of the world of SMRPG to the test!
 <br>
 <br>If "Default locations" is selected, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
 <br>
-<br>If enabled, the three checks will be located somewhere random in the world as an invisible item. The Three Musty Fears will give you hints as to their locations."""
+<br>If enabled, the three checks will be located somewhere random in the world as an invisible item. The Three Musty Fears will give you hints as to their locations.
+<br>
+<br>See the "Contribute" tab if you have a great idea for a potential place to move these checks to!"""
     _id = "moveflags"
     _requires_all = [(ShuffleItems(), True)]
 
@@ -946,14 +952,12 @@ class Remake(BooleanFlag):
 <br>
 <br>The freestanding Flower Tab checks in Mushroom Way and Land's End will also be added.
 <br>
-<br>Boss fight locations will be available after you defeat the first iterations of those fights and also find the Stay Voucher. For example, you cannot do the postgame temple fight until after you have defeated the regular campaign temple fight, you can't use the Extra Shiny Stone until you've defeated the boss in the Monstro Town door the first time, etc."""
+<br>Boss fight locations will be available after you defeat the first iterations of those fights and also find the Stay Voucher. For example, you cannot do the postgame temple fight until after you have defeated the regular campaign temple fight, you can't use the Extra Shiny Stone until you've defeated the boss in the Monstro Town door the first time, etc.
+<br>
+<br>Defeating all seven bosses that have a postgame re-fight will unlock a check in Mario's Pad that normally contains the Stay Voucher (shuffled as a key item check)."""
     _id = "postgame"
     _remake = False
     _requires_all = [(ShuffleItems(), True)]
-
-
-# ✅
-# Delayed import to avoid circular dependency
 
 
 # ******** Progression Gating
@@ -1009,7 +1013,7 @@ class KeroSewersGate(SelectOneFlag[KeroSewersGating]):
 <br>
 <br><b>Always Open</b>: The entrance to Kero Sewers is open from the start of the game.
 <br>
-<br>This setting does not affect your ability to enter via Land's End."""
+<br>This setting does not affect your ability to enter the sewer via Land's End."""
     choices = [o for o in KeroSewersGating]
     _default = KeroSewersGating.OPEN
     _id = "ks"
@@ -1397,6 +1401,8 @@ from ..types.prizelocation import (
     StarPieceLocation,
     CharacterRecruitmentLocation,
 )
+
+
 def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
     """Convert a PrizeLocation class to an attribute name for the enum."""
     # Use the class name, converting CamelCase to Snake_Case
@@ -1406,6 +1412,8 @@ def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
     name = re.sub(r"([a-z])([A-Z])", r"\1_\2", name)
     name = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", name)
     return name
+
+
 # Build enum members dynamically from prizelocations
 _item_check_members = {}
 _boss_fight_check_members = {}
@@ -1495,7 +1503,7 @@ class PoisonMushroom(BooleanFlag):
 class EXPChallengeOptions(CategorizationOption):
     """Enumeration for exp star quality scaling option"""
 
-    VANILLA = "Vanilla"
+    VANILLA = "Default"
     STARS = "Star Pieces"
     BOSSES = "Bosses"
     NONE = "None"
@@ -1519,7 +1527,7 @@ class EXPChallenge(SelectOneFlag[EXPChallengeOptions]):
 # ✅
 class GrateGuyPrizeThreshold(RangeFlag):
     _name = 'Required "Look The Other Way" wins'
-    _description = "The number of times required to win Grate Guy's casino minigame to receive its ultimate prize."
+    _description = "The number of times required to win Grate Guy's casino minigame to receive its ultimate prize (normally the Star Egg after 100 wins)."
     _default = 1
     min_value = 1
     max_value = 255
@@ -1529,7 +1537,7 @@ class GrateGuyPrizeThreshold(RangeFlag):
 # ✅
 class KnifeGuyPrizeThreshold(RangeFlag):
     _name = "Required Knife Guy wins (normal prize)"
-    _description = "The number of wins minus losses required to win Knife Guy's juggling game prize (normally the Bright Card)."
+    _description = "The number of wins minus losses required to win Knife Guy's juggling game prize (normally the Bright Card after 12 wins)."
     _default = 1
     min_value = 1
     max_value = 254
@@ -1539,7 +1547,7 @@ class KnifeGuyPrizeThreshold(RangeFlag):
 # ✅
 class SuitePrize1Threshold(RangeFlag):
     _name = "Required Suite prize #1 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the first special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the first special gift (normally a Flower Tab after 1 stay)."
     _default = 1
     min_value = 1
     max_value = 249
@@ -1549,7 +1557,7 @@ class SuitePrize1Threshold(RangeFlag):
 # ✅
 class SuitePrize2Threshold(RangeFlag):
     _name = "Required Suite prize #2 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the second special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the second special gift (normally a Flower Jar after 3 stays)."
     _default = 2
     min_value = 2
     max_value = 250
@@ -1559,7 +1567,7 @@ class SuitePrize2Threshold(RangeFlag):
 # ✅
 class SuitePrize3Threshold(RangeFlag):
     _name = "Required Suite prize #3 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the third special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the third special gift (normally a Frog Coin after 5 stays)."
     _default = 3
     min_value = 3
     max_value = 251
@@ -1569,7 +1577,7 @@ class SuitePrize3Threshold(RangeFlag):
 # ✅
 class SuitePrize4Threshold(RangeFlag):
     _name = "Required Suite prize #4 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fourth special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fourth special gift (normally 2 Frog Coins after 10 stays)."
     _default = 4
     min_value = 4
     max_value = 252
@@ -1579,7 +1587,7 @@ class SuitePrize4Threshold(RangeFlag):
 # ✅
 class SuitePrize5Threshold(RangeFlag):
     _name = "Required Suite prize #5 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fifth special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fifth special gift (normally 3 Frog Coins after 15 stays)."
     _default = 5
     min_value = 5
     max_value = 253
@@ -1589,7 +1597,7 @@ class SuitePrize5Threshold(RangeFlag):
 # ✅
 class SuitePrize6Threshold(RangeFlag):
     _name = "Required Suite prize #6 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the sixth special gift"
+    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the sixth special gift (normally 20 Frog Coins after 200 stays)."
     _default = 6
     min_value = 6
     max_value = 254
@@ -1599,7 +1607,7 @@ class SuitePrize6Threshold(RangeFlag):
 # ✅
 class SuperJump1Threshold(RangeFlag):
     _name = "Required Super Jumps for prize #1"
-    _description = "The number of consecutive Super Jumps required for the first prize in Monstro Town"
+    _description = "The number of consecutive Super Jumps required for the first prize in Monstro Town (normally an Attack Scarf at 30)."
     _default = 30
     min_value = 1
     max_value = 99
@@ -1609,7 +1617,9 @@ class SuperJump1Threshold(RangeFlag):
 # ✅
 class SuperJump2Threshold(RangeFlag):
     _name = "Required Super Jumps for prize #2"
-    _description = "The number of consecutive Super Jumps required for the second prize in Monstro Town"
+    _description = """The number of consecutive Super Jumps required for the second prize in Monstro Town (normally a Super Suit at 100).
+<br>
+<br>A Super Suit is more likely to be here if you keep the threshold at 100 and don't decrease it."""
     _default = 100
     min_value = 2
     max_value = 100
@@ -1626,7 +1636,7 @@ class FixKnifeGuy(BooleanFlag):
 # ✅
 class KnifeGuyFixedPrizeThreshold(RangeFlag):
     _name = "Required Knife Guy wins (max prize)"
-    _description = "The number of wins minus losses required to win Knife Guy's maxed out game prize (originally intended to be a Red Essence). Must be higher than Knife Guy's other prize check."
+    _description = "The number of wins minus losses required to win Knife Guy's maxed out game prize (originally intended to be a Red Essence at 255). Must be higher than Knife Guy's other prize check."
     _default = 2
     min_value = 2
     max_value = 255
@@ -1674,7 +1684,7 @@ class FastTravel(BooleanFlag):
 <ol>
 <li>The Booster Tower balcony (after defeating the boss) will always return you to the ground level.</li>
 <li>Inner Factory has a trampoline that exits to the world map.</li>
-<li>When you first reach the Inner Factory from the Outer Factory, the Inner Factory will get an entrance dot on the world map.</li>
+<li>When you first reach the Inner Factory from the Outer Factory, the Inner Factory will get its own dot on the world map.</li>
 </ol>"""
     _id = "fasttravel"
 
@@ -1692,7 +1702,7 @@ class WinConditions(CategorizationOption):
 # ✅
 class WinCondition(SelectOneFlag[WinConditions]):
     _name = "Condition required to beat the game"
-    _description = """<b>Beat the Factory</b>: When you collect the number of Star Pieces specified in your 'Star Pieces required to access the final Factory boss' setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.
+    _description = """<b>Beat the Factory</b> (default): When you collect the number of Star Pieces specified in your 'Star Pieces required to access the final Factory boss' setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.
 <br>
 <br><b>Beat Smithy</b>: The game is over as soon as you find Smithy and defeat him. (If you don't have him shuffled into the boss pool, this is the same thing as "Beat the Factory".)
 <br>
@@ -1967,7 +1977,7 @@ def _boss_class_to_attr_name(boss_class: type) -> str:
 # ✅
 class ShuffledBosses(CategorizationFlag[ShuffledBossEnumType]):  # type: ignore[type-arg]
     _name = "Shuffled boss fights"
-    _description = """Each boss fight location below stats the enemy that originally inhabits it.
+    _description = """Each boss fight location below states the enemy that originally inhabits it.
 <br>
 <br>If a location is highlighted (white text over blue), there will instead be a random different boss inhabiting that location.
 <br>
@@ -2023,9 +2033,7 @@ class EnemyDrops(BooleanFlag):
 # ✅
 class EnemyFormations(BooleanFlag):
     _name = "Randomize formations"
-    _description = """If enabled, enemy encounters may contain random unexpected additional enemies and be laid out erratically. Boss formations are not affected.
-<br>
-<br>Note: If you've chosen to enable shuffled henchman battles, those formations are always randomized independent of this setting."""
+    _description = """If enabled, enemy encounters may contain random unexpected additional enemies and be laid out erratically. Boss formations are not affected."""
     _id = "formations"
 
 
