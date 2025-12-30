@@ -613,7 +613,7 @@ class EXPMultiplier(SelectOneFlag[EXPMultiplierOptions]):
 # ✅
 class CharacterStats(BooleanFlag):
     _name = "Randomize ally stats"
-    _description = """If enabled, stats and stat curves for each ally will be randomized. This also randomizes the max FP you start with.
+    _description = """If enabled, stats and stat curves for each ally will be randomized, as well as the levels at which they learn their spells. This also randomizes the max FP you start with.
 <br>
 <br>If disabled, allies retain their original stats and stat curves."""
     _id = "stats"

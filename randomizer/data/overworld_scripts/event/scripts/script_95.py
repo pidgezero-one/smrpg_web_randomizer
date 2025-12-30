@@ -1,4 +1,4 @@
-# E0095_EMPTY
+# E0095_REVERT_ALL_CLONE_CHESTS_MIMIC_1
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+    EnableObjectTriggerInSpecificLevel(NPC_1, R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS),
+    Return()
 ])

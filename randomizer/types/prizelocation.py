@@ -38,6 +38,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     StartBattleAtBattlefield,
     StartBattleWithPackAt700E,
     SetVarToConst,
+    JmpToEvent
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
@@ -62,7 +63,7 @@ from ..data.variables.variable_names import (
     INVISIBLE_FLAG_2_FOUND,
     INVISIBLE_FLAG_3_FOUND,
 )
-
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import Packet
 if TYPE_CHECKING:
     from ..types.logic import Inventory
     from ..types.gameworld import GameWorld
@@ -1520,15 +1521,45 @@ class StarPieceLocation(PrizeLocation):
             return False
 
         return super().can_accept(prize, inventory, world)
+    
+    _container_event: int = E0167_BOSS_GRANT_STAR_PIECE
+
+    def render(
+        self,
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        identifier = str(uuid4())
+        grant = EventScript([JmpToEvent(E3092_STAR_PIECE_GRANT, identifier=identifier) if self.prize is not None else Return(identifier=identifier)])
+        if self.override_id is not None:
+            return (
+                [
+                    [
+                        JmpIfVarEqualsConst(
+                            PRIMARY_TEMP_7000, self.override_id, [identifier]
+                        )
+                    ]
+                ],
+                grant.contents,
+            )
+        return (
+            [
+                [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, r, [identifier])]
+                for r in self._rooms
+            ],
+            grant.contents,
+        )
 
 
 class SpellSlotLocation(PrizeLocation):
     _can_be_empty: bool = True
+    _level: int
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return isinstance(prize, SpellPrize) and super().can_accept(
             prize, inventory, world
         )
+
+    def set_level(self, level: int):
+        self._level = level
 
 
 class PrizeRow(PrizeLocation):
@@ -1567,7 +1598,6 @@ class TreasureChestLocationRow(PrizeRow, TreasureChestLocation):
     def render(
         self,
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        # TODO set 70A7 on NPCs
         return super().render()
 
 
@@ -1599,7 +1629,6 @@ class NPCLocationRow(PrizeRow, EventLocation):
     def render(
         self,
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        # TODO set NPCs
         return super().render()
 
 
@@ -1635,7 +1664,6 @@ class StandingLocationRow(PrizeRow, StandingLocation):
     def render(
         self,
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        # TODO set NPCs
         return super().render()
 
 
@@ -1708,11 +1736,22 @@ class PacketLocation(StandingLocationRow):
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         return super().render()
 
-    def packet(self):
-        pass
-        # TODO: return prize model packet matching self.packet_type
-
-    # TODO: find command with identifier _replace and set packet type
+    def get_packet_id(self) -> int:
+        if self.prize is None:
+            raise ValueError("No prize assigned to this location")
+        if self.prize.model is None:
+            raise ValueError("Prize has no model to create packet from")
+        model = self.prize.model()
+        if self._packet_type == PacketType.CHEST:
+            return model._chest_packet_id
+        elif self._packet_type == PacketType.FALLING:
+            return model._falling_packet_id
+        return model._static_packet_id
+    
+    def get_packet(self, world:GameWorld) -> Packet:
+        p = world.packets.packets[self.get_packet_id()]
+        assert p is not None, "Packet ID does not exist in world packets"
+        return p
 
 
 class PacketLocationRow1(StandingLocationRow1, PacketLocation):
@@ -1763,7 +1802,6 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
             [[JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self._70B1_id, [identifier])]],
             grant.contents,
         )
-        # TODO set NPCs
 
 
 class TreasureShopLocation(PrizeLocation):

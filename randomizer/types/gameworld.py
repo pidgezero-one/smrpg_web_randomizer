@@ -22,10 +22,6 @@ from smrpgpatchbuilder.datatypes.items.classes import (
     ItemCollection,
     Equipment,
     RegularItem,
-    Weapon,
-    Armor,
-    Accessory,
-    Item as BaseItem,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.party_character import (
     PartyCharacter,
@@ -55,25 +51,18 @@ from smrpgpatchbuilder.datatypes.graphics.classes import SpriteCollection
 from smrpgpatchbuilder.datatypes.scripts_common.classes import IdentifierException
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     RunEventAsSubroutine,
-    ActionQueueAsync,
-    RunDialog,
-    JmpIfVarNotEqualsConst,
-    Inc,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
     Formation,
 )
 from smrpgpatchbuilder.datatypes.allies.ally_collection import AllyCollection
-from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Room
-from smrpgpatchbuilder.datatypes.spells.enums import Status
 from smrpgpatchbuilder.datatypes.world_map_locations.classes import (
     WorldMapLocationCollection,
 )
 from ..data.items.items import *
 from .item import Item
 from .patch import Patch
-from .attack import EnemyAttack
 from .spell import Spell
 from .prize import (
     ItemPrize,
@@ -98,12 +87,10 @@ from ..logic.setup.minigames_setup import apply_minigame_settings
 from ..logic.setup.cosmetics import apply_cosmetic_settings
 from ..logic.setup.prize_locations import set_locations
 from ..logic.shufflers.items import shuffle_prizes, post_shuffle_cleanup
-from ..logic.validation import validate_settings, SettingsValidationError
+from ..logic.validation import validate_settings
 from ..logic.shufflers.shops import shuffle_shops
 from ..logic.shufflers.equipment import (
     build_item_to_prize_mapping,
-    randomize_equipment_properties,
-    randomize_equipment_characters,
     build_item_impact_categories,
 )
 from ..logic.shufflers.enemies import (
@@ -118,6 +105,7 @@ from ..logic.shufflers.characters import (
     randomize_levelup_xps,
     randomize_character_spell_stats,
 )
+from ..logic.apply import apply_shuffler_results
 
 from ..data.allies.palettes.types import (
     MarioPalette,
@@ -487,14 +475,31 @@ class GameWorld:
     def _get_shops_json(self) -> dict[str, list[str]]:
         """Get JSON representation of all shops with their item names."""
         from ..data.variables.shop_names import (
-            SH00_MUSHROOM_KINGDOM, SH01_ROSE_TOWN_ITEM, SH02_ROSE_TOWN_ARMOR,
-            SH03_FROG_DISCIPLE, SH04_MOLEVILLE, SH05_MARRYMORE,
-            SH06_FROG_COIN_EMPORIUM, SH07_SEA_AND_SHIP_SHAMAN,
-            SH08_SEASIDE_TOWN_MINION, SH09_JUICE_BAR_BASE, SH10_JUICE_BAR_ALTO,
-            SH11_JUICE_BAR_TENOR, SH12_JUICE_BAR_SOPRANO, SH13_SEASIDE_WEAPON,
-            SH14_SEASIDE_ARMOR, SH15_SEASIDE_ACCESSORY, SH16_SEASIDE_HEALTH_FOOD,
-            SH17_MONSTRO, SH18_VOLCANO_ITEM, SH19_VOLCANO_ARMOR, SH20_GOOMBETTE,
-            SH21_NIMBUS_LAND, SH22_KEEP_1, SH23_KEEP_2, SH24_FACTORY_TOAD,
+            SH00_MUSHROOM_KINGDOM,
+            SH01_ROSE_TOWN_ITEM,
+            SH02_ROSE_TOWN_ARMOR,
+            SH03_FROG_DISCIPLE,
+            SH04_MOLEVILLE,
+            SH05_MARRYMORE,
+            SH06_FROG_COIN_EMPORIUM,
+            SH07_SEA_AND_SHIP_SHAMAN,
+            SH08_SEASIDE_TOWN_MINION,
+            SH09_JUICE_BAR_BASE,
+            SH10_JUICE_BAR_ALTO,
+            SH11_JUICE_BAR_TENOR,
+            SH12_JUICE_BAR_SOPRANO,
+            SH13_SEASIDE_WEAPON,
+            SH14_SEASIDE_ARMOR,
+            SH15_SEASIDE_ACCESSORY,
+            SH16_SEASIDE_HEALTH_FOOD,
+            SH17_MONSTRO,
+            SH18_VOLCANO_ITEM,
+            SH19_VOLCANO_ARMOR,
+            SH20_GOOMBETTE,
+            SH21_NIMBUS_LAND,
+            SH22_KEEP_1,
+            SH23_KEEP_2,
+            SH24_FACTORY_TOAD,
         )
 
         shop_names = {
@@ -550,9 +555,13 @@ class GameWorld:
             return item_type.__name__
 
         if self.room_service_items:
-            result["Room Service (Marrymore)"] = [get_item_name(i) for i in self.room_service_items]
+            result["Room Service (Marrymore)"] = [
+                get_item_name(i) for i in self.room_service_items
+            ]
         if self.bomb_shop_items:
-            result["Swap Shop (Seaside)"] = [get_item_name(i) for i in self.bomb_shop_items]
+            result["Swap Shop (Seaside)"] = [
+                get_item_name(i) for i in self.bomb_shop_items
+            ]
 
         return result
 
@@ -746,10 +755,14 @@ class GameWorld:
                 # Track this failure count
                 count = e.unplaced_count
                 failure_counts[count] = failure_counts.get(count, 0) + 1
-                print(f"Placement failed with {count} unplaced items (attempt #{failure_counts[count]} for this count)")
+                print(
+                    f"Placement failed with {count} unplaced items (attempt #{failure_counts[count]} for this count)"
+                )
 
                 # Check if all failure counts have reached the threshold
-                if failure_counts and all(v >= MAX_FAILURES_PER_COUNT for v in failure_counts.values()):
+                if failure_counts and all(
+                    v >= MAX_FAILURES_PER_COUNT for v in failure_counts.values()
+                ):
                     raise WorldBuildingException(
                         f"Item placement appears unsolvable. "
                         f"Repeated failures with the same unplaced item counts: {failure_counts}. "
@@ -763,11 +776,12 @@ class GameWorld:
         # TODO Stat scaling for boss shuffle
         # TODO: Henchmen vs no henchmen, hill/statue or not
         # TODO: NPCs, dialogs for bosses and henchmen
-        # TODO: Don't forget to apply spells and starting levels to recruited allies
-        # TODO: starting party, overworld characters, sprite injections.
-        # TODO NPCs and packets for all item types. Gold paint can be royal syrup
-        # TODO: Apply hint text to blue toad in moleville
         # TODO: Do search-and-replace for all pronouns, names, etc related to main characters, positioned bosses, etc
+        # TODO: slot machines
+        # TODO: booster tower animations
+        # TODO: copy sprites over and update menu pointers and set to 8-d in vram
+        # TODO: look at 0x35xxxx report and free up data
+        # TODO: message tonic
 
         self._report_progress("Randomizing shops", 45)
 
@@ -868,6 +882,7 @@ class GameWorld:
         apply_cosmetic_settings(self)
 
         import json
+
         with open("spoiler_after_replacements.json", "w") as f:
             json.dump(self.spoiler, f, indent=2, default=str)
 
@@ -888,15 +903,12 @@ class GameWorld:
 
         # Write spoiler to JSON file
         import json
+
         with open("spoiler.json", "w") as f:
             json.dump(self.spoiler, f, indent=2, default=str)
 
         post_shuffle_cleanup(self)
-        # set
-        # after shuffle completes, render all the granter events
-        # place npcs in rooms
-        # update enemy stats and formations
-        # set ally spell learn levels, recruit levels, and stats at their recruit levels
+        apply_shuffler_results(self)
 
     def _randomize_enemy_attacks_and_spells(self) -> None:
         """Randomize enemy spell and attack stats and effects."""

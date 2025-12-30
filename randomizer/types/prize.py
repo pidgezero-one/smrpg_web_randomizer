@@ -155,6 +155,11 @@ class ItemPrize(StandardPrize):
 
     @property
     def chest_grant(self) -> EventScript:
+        if self.model is not None:
+            return EventScript([
+                SetVarToConst(ITEM_ID, self.item().item_id),
+                JmpToEvent(self.model._chest_event_id)
+            ])
         return EventScript([
             SetVarToConst(ITEM_ID, self.item().item_id),
             JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST)

@@ -39,7 +39,6 @@ script = EventScript([
 	RemoveObjectFromCurrentLevel(NPC_0),
 	FadeInFromBlack(sync=False),
 	SetBit(MINES_POSTGAME_COMPLETED),
-    Inc(BOSS_VICTORY_COUNTER),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	RunEventAsSubroutine(E1253_POSTGAME_MINES_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 527),

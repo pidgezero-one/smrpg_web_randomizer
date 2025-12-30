@@ -33,6 +33,7 @@ from ....packets import *
 script = EventScript([
 	JmpIfBitSet(TEMP_7076_0, ["EVENT_3124_ret_32"]),
 	JmpIfBitSet(MIMIC_1_CLEARED, ["EVENT_3124_set_var_to_const_33"]),
+	RunEventAsSubroutine(E0095_REVERT_ALL_CLONE_CHESTS_MIMIC_1),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(FAST),
 		A_ShiftZUpSteps(2),
@@ -57,7 +58,6 @@ script = EventScript([
 	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
 	AddConstToVar(PRIMARY_TEMP_7000, 608),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
-	ClearBit(MIMIC_3_CLEARED),
 	PlaySound(sound=SO014_FLOWER, channel=6),
 	CreatePacketAt7010(packet=P004_MIMIC_POOF_ON_DEFEAT, destinations=["EVENT_3124_pause_14"]),
 	Pause(8, identifier="EVENT_3124_pause_14"),
@@ -67,7 +67,6 @@ script = EventScript([
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	JmpIfBitSet(GAME_OVER, ["EVENT_3124_reset_and_choose_game_36"]),
 	FadeInFromBlack(sync=False),
-	SetBit(MIMIC_3_CLEARED),
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_UnknownCommand(bytearray(b' \x04')),
 		A_UnknownCommand(bytearray(b'%@\x00\x80\xff')),

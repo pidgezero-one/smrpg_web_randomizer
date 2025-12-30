@@ -222,6 +222,7 @@ class StartingCharacter1(CharacterRecruitmentLocation):
 class MarioSpell1(SpellSlotLocation):
     _bias = True
     _originally_held = JumpSpellPrize
+    _level = 1
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(MarioRecruitmentPrize)
@@ -230,17 +231,27 @@ class MarioSpell1(SpellSlotLocation):
 class MarioSpell2(SpellSlotLocation):
     _bias = True
     _originally_held = FireOrbSpellPrize
+    _level=3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(MarioRecruitmentPrize)
+    
 
 
 class MarioSpell3(SpellSlotLocation):
     _bias = True
     _originally_held = SuperJumpSpellPrize
+    _level = 6
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(MarioRecruitmentPrize)
 
 
 
 class MarioSpell4(SpellSlotLocation):
     _bias = True
     _originally_held = SuperFlameSpellPrize
+    _level = 10
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return not_earlygame(world, inventory) and inventory.has_item(
@@ -251,6 +262,7 @@ class MarioSpell4(SpellSlotLocation):
 class MarioSpell5(SpellSlotLocation):
     _bias = True
     _originally_held = UltraJumpSpellPrize
+    _level = 14
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return not_earlygame(world, inventory) and inventory.has_item(
@@ -261,6 +273,7 @@ class MarioSpell5(SpellSlotLocation):
 class MarioSpell6(SpellSlotLocation):
     _bias = True
     _originally_held = UltraFlameSpellPrize
+    _level = 18
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return not_earlygame(world, inventory) and inventory.has_item(
@@ -505,6 +518,7 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
 class MallowSpell1(SpellSlotLocation):
     _bias = True
     _originally_held = ThunderboltSpellPrize
+    _level = 1
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(MallowRecruitmentPrize)
@@ -514,16 +528,25 @@ class MallowSpell1(SpellSlotLocation):
 class MallowSpell2(SpellSlotLocation):
     _bias = True
     _originally_held = HPRainSpellPrize
+    _level = 3
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(MallowRecruitmentPrize)
 
 
 class MallowSpell3(SpellSlotLocation):
     _bias = True
     _originally_held = PsychopathSpellPrize
+    _level = 6
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return inventory.has_item(MallowRecruitmentPrize)
 
 
 class MallowSpell4(SpellSlotLocation):
     _bias = True
     _originally_held = ShockerSpellPrize
+    _level = 10
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return not_earlygame(world, inventory) and inventory.has_item(
@@ -534,6 +557,7 @@ class MallowSpell4(SpellSlotLocation):
 class MallowSpell5(SpellSlotLocation):
     _bias = True
     _originally_held = SnowyPrize
+    _level = 14
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return not_earlygame(world, inventory) and inventory.has_item(
@@ -544,6 +568,7 @@ class MallowSpell5(SpellSlotLocation):
 class MallowSpell6(SpellSlotLocation):
     _bias = True
     _originally_held = StarRainSpellPrize
+    _level = 18
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return not_earlygame(world, inventory) and inventory.has_item(
@@ -1836,6 +1861,7 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
 class GenoSpell1(SpellSlotLocation):
     _bias = True
     _originally_held = GenoBeamSpellPrize
+    _level = 1
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(GenoRecruitmentPrize)
@@ -1844,6 +1870,7 @@ class GenoSpell1(SpellSlotLocation):
 class GenoSpell2(SpellSlotLocation):
     _bias = True
     _originally_held = GenoBoostSpellPrize
+    _level = 8
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(GenoRecruitmentPrize) 
@@ -1852,6 +1879,7 @@ class GenoSpell2(SpellSlotLocation):
 class GenoSpell3(SpellSlotLocation):
     _bias = True
     _originally_held = GenoWhirlSpellPrize
+    _level = 11
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(GenoRecruitmentPrize) 
@@ -1860,6 +1888,7 @@ class GenoSpell3(SpellSlotLocation):
 class GenoSpell4(SpellSlotLocation):
     _bias = True
     _originally_held = GenoBlastSpellPrize
+    _level = 14
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(GenoRecruitmentPrize) and not_earlygame(
@@ -1870,6 +1899,7 @@ class GenoSpell4(SpellSlotLocation):
 class GenoSpell5(SpellSlotLocation):
     _bias = True
     _originally_held = GenoFlashSpellPrize
+    _level = 17
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(GenoRecruitmentPrize) and not_earlygame(
@@ -1880,6 +1910,7 @@ class GenoSpell5(SpellSlotLocation):
 class GenoSpell6(SpellSlotLocation):
     _bias = True
     _originally_held = None
+    _level = 19
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(GenoRecruitmentPrize) and not_earlygame(
@@ -2518,6 +2549,7 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
 class BowserSpell1(SpellSlotLocation):
     _bias = True
     _originally_held = TerrorizeSpellPrize
+    _level = 1
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(BowserRecruitmentPrize)
@@ -2526,6 +2558,7 @@ class BowserSpell1(SpellSlotLocation):
 class BowserSpell2(SpellSlotLocation):
     _bias = True
     _originally_held = PoisonGasSpellPrize
+    _level = 12
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(BowserRecruitmentPrize) 
@@ -2534,6 +2567,7 @@ class BowserSpell2(SpellSlotLocation):
 class BowserSpell3(SpellSlotLocation):
     _bias = True
     _originally_held = CrusherSpellPrize
+    _level =15
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(BowserRecruitmentPrize) 
@@ -2542,6 +2576,7 @@ class BowserSpell3(SpellSlotLocation):
 class BowserSpell4(SpellSlotLocation):
     _bias = True
     _originally_held = BowserCrushSpellPrize
+    _level = 18
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(BowserRecruitmentPrize) and not_earlygame(
@@ -2552,6 +2587,7 @@ class BowserSpell4(SpellSlotLocation):
 class BowserSpell5(SpellSlotLocation):
     _bias = True
     _originally_held = None
+    _level = 20
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(BowserRecruitmentPrize) and not_earlygame(
@@ -2562,6 +2598,7 @@ class BowserSpell5(SpellSlotLocation):
 class BowserSpell6(SpellSlotLocation):
     _bias = True
     _originally_held = None
+    _level = 22
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(BowserRecruitmentPrize) and not_earlygame(
@@ -3748,6 +3785,7 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
 class ToadstoolSpell1(SpellSlotLocation):
     _bias = True
     _originally_held = TherapySpellPrize
+    _level = 1
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(ToadstoolRecruitmentPrize)
@@ -3756,6 +3794,7 @@ class ToadstoolSpell1(SpellSlotLocation):
 class ToadstoolSpell2(SpellSlotLocation):
     _bias = True
     _originally_held = GroupHugSpellPrize
+    _level = 6
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(ToadstoolRecruitmentPrize) 
@@ -3764,6 +3803,7 @@ class ToadstoolSpell2(SpellSlotLocation):
 class ToadstoolSpell3(SpellSlotLocation):
     _bias = True
     _originally_held = SleepyTimeSpellPrize
+    _level = 11
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(
@@ -3774,6 +3814,7 @@ class ToadstoolSpell3(SpellSlotLocation):
 class ToadstoolSpell4(SpellSlotLocation):
     _bias = True
     _originally_held = ComeBackSpellPrize
+    _level = 13
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(ToadstoolRecruitmentPrize) and not_earlygame(
@@ -3784,6 +3825,7 @@ class ToadstoolSpell4(SpellSlotLocation):
 class ToadstoolSpell5(SpellSlotLocation):
     _bias = True
     _originally_held = MuteSpellPrize
+    _level = 15
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(ToadstoolRecruitmentPrize) and not_earlygame(
@@ -3794,6 +3836,7 @@ class ToadstoolSpell5(SpellSlotLocation):
 class ToadstoolSpell6(SpellSlotLocation):
     _bias = True
     _originally_held = PsychBombSpellPrize
+    _level = 18
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(ToadstoolRecruitmentPrize) and not_earlygame(

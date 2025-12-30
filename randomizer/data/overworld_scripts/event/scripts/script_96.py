@@ -1,4 +1,4 @@
-# E0096_EMPTY
+# E0096_REVERT_ALL_CLONE_CHESTS_MIMIC_2
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+    EnableObjectTriggerInSpecificLevel(NPC_2, R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT),
+    Return()
 ])
