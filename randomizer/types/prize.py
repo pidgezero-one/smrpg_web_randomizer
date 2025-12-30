@@ -1,6 +1,8 @@
 from __future__ import annotations
 import random
 from typing import TYPE_CHECKING
+from .physical_objects import ItemNPC
+from ..data.physical_objects.items import DefaultItem
 
 from smrpgpatchbuilder.datatypes.items.classes import Item
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -19,6 +21,7 @@ from smrpgpatchbuilder.datatypes.characters.classes import Character
 from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
 from ..types.ally import Ally
 from ..data.variables.overworld_sfx_names import SO081_STAR
+from ..data.physical_objects.items import *
 
 if TYPE_CHECKING:
     from .gameworld import GameWorld
@@ -76,6 +79,11 @@ class Prize:
     _postfight_star_piece_grant: EventScript | None = None
     remake_only: bool = False
     key: bool = False
+    _model: type[ItemNPC] | None = DefaultItem
+
+    @property
+    def model(self) -> type[ItemNPC] | None:
+        return self._model
 
     @property
     def important(self) -> bool:
@@ -187,6 +195,7 @@ class StarPiecePrize(StandardPrize):
         description="It's sure to make all your wishes\n come true."
     )
     _hint: Flag
+    _model = TinyStarObject
 
     @property
     def chest_grant(self) -> EventScript:
@@ -234,6 +243,7 @@ class StarPiecePrize(StandardPrize):
 
 
 class FPFlowerPrize(Prize):
+    _model = FlowerObject
     @property
     def chest_grant(self) -> EventScript:
         return EventScript([
@@ -371,6 +381,7 @@ class ArchipelagoPrize(StandardPrize):
 
 
 class CoinPrize(Prize):
+    _model = BigCoinObject
     _amount: int
     _nickname = TreasureHunterNickname(
         nickname="Gold Coin",
@@ -398,6 +409,7 @@ class CoinPrize(Prize):
 
 
 class FrogCoinPrize(StandardPrize):
+    _model = FrogCoinObject
     _amount: int
     _nickname = TreasureHunterNickname(
         nickname="Green Coin",

@@ -1,4 +1,4 @@
-# SPR0029_GENO_FINGER_SHOT
+# SPR0033_GENO_FINGER_SHOT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(

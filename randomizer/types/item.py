@@ -5,6 +5,7 @@ from smrpgpatchbuilder.datatypes.items.classes import (
     Armor as ArmorBase,
     Accessory as AccessoryBase)
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
+from .physical_objects import ItemNPC
 
 
 def _add_desc_fields(fields: list[tuple[str, object, list | bool]]) -> str:

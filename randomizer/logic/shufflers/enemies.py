@@ -36,8 +36,8 @@ def randomize_enemy_attacks_and_spells(world: GameWorld) -> None:
         if not isinstance(spell, EnemySpell):
             continue
 
-        # Mutate FP cost
-        new_fp = mutate_normal(int(spell.fp), minimum=1, maximum=99)
+        # Mutate FP cost (max 31 due to game limitation)
+        new_fp = mutate_normal(int(spell.fp), minimum=1, maximum=31)
         spell.set_fp(new_fp)
 
         # Shuffle status effects if the spell has any
@@ -166,7 +166,7 @@ def randomize_enemy_stats(world: GameWorld) -> None:
         enemy.set_defense(mutate_normal(int(enemy.defense), minimum=1, maximum=255))
         enemy.set_magic_attack(mutate_normal(int(enemy.magic_attack), minimum=1, maximum=255))
         enemy.set_magic_defense(mutate_normal(int(enemy.magic_defense), minimum=1, maximum=255))
-        enemy.set_fp(mutate_normal(int(enemy.fp), minimum=1, maximum=255))
+        enemy.set_fp(mutate_normal(int(enemy.fp), minimum=1, maximum=31))
         enemy.set_evade(mutate_normal(int(enemy.evade), minimum=0, maximum=100))
         enemy.set_magic_evade(mutate_normal(int(enemy.magic_evade), minimum=0, maximum=100))
 

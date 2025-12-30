@@ -1,5 +1,77 @@
 from smrpgpatchbuilder.datatypes.levels.classes import NPC, ShadowSize, VramStore
+from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt16, UInt4, UInt8, Int8
 from ..variables.sprite_names import *
+
+
+class _item_npc_base(NPC):
+    def __init__(self, sprite_id: int, acute_axis: int = 1, obtuse_axis: int = 1, height: int = 7, y_shift: int = 0, min_vram_size: int = 0) -> None:
+        return super().__init__(
+            sprite_id=sprite_id,
+            show_shadow=False,
+            shadow_size=ShadowSize.OVAL_SMALL,
+            acute_axis=acute_axis,
+            obtuse_axis=obtuse_axis,
+            height=height,
+            y_shift=y_shift,
+            min_vram_size=min_vram_size,
+        )
+
+HAMMER_BASE = _item_npc_base(SPR0208_HAMMER_PACKET)
+FROGGIE_STICK_BASE = _item_npc_base(SPR0209_STICK_PACKET)
+GREEN_SHELL_BASE = _item_npc_base(SPR0250_GREEN_SHELL, acute_axis=4, obtuse_axis=7, height=5)
+MUSIC_BASE = _item_npc_base(SPR0640_MUSIC_NOTE_STANDALONE)
+CHOMP_BASE = _item_npc_base(SPR0210_CHOMP_PACKET, acute_axis=3, obtuse_axis=3, height=1)
+RED_SHELL_BASE = _item_npc_base(SPR0249_RED_SHELL, acute_axis=4, obtuse_axis=7, height=5)
+PARASOL_BASE = _item_npc_base(SPR0251_PARASOL_PACKET)
+FAN_BASE = _item_npc_base(SPR0211_FAN_PACKET)
+TINY_STAR_BASE = _item_npc_base(SPR0226_TINY_STAR)
+PAN_BASE = _item_npc_base(SPR0199_FRYING_PAN_PACKET)
+CROWN_BASE = _item_npc_base(SPR0216_CROWN)
+SHOES_BASE = _item_npc_base(SPR0202_SHOES)
+BROOCH_BASE = _item_npc_base(SPR0207_BROOCH)
+RING_BASE = _item_npc_base(SPR0196_RING)
+FEATHER_BASE = _item_npc_base(SPR0252_FEATHER)
+RED_MUSHROOM_BASE = _item_npc_base(SPR0212_RED_MUSHROOM_ITEM)
+GREEN_MUSHROOM_BASE = _item_npc_base(SPR0214_GREEN_MUSHROOM_ITEM)
+YELLOW_MUSHROOM_BASE = _item_npc_base(SPR0215_YELLOW_MUSHROOM_ITEM)
+RED_SYRUP_BASE = _item_npc_base(SPR0219_RED_SYRUP)
+GREEN_SYRUP_BASE = _item_npc_base(SPR0220_GREEN_SYRUP)
+YELLOW_SYRUP_BASE = _item_npc_base(SPR0221_YELLOW_SYRUP)
+STAR_DRINK_BASE = _item_npc_base(SPR0248_RED_STAR_DRINK)
+R_DRINK_BASE = _item_npc_base(SPR0239_BLUE_R_DRINK)
+D_DRINK_BASE = _item_npc_base(SPR0240_YELLOW_D_DRINK)
+P_DRINK_BASE = _item_npc_base(SPR0241_GREEN_P_DRINK)
+GREEN_JUICE_BASE = _item_npc_base(SPR0236_GREEN_JUICE)
+RED_JUICE_BASE = _item_npc_base(SPR0238_RED_JUICE)
+YELLOW_JUICE_BASE = _item_npc_base(SPR0047_YELLOW_JUICE)
+FROG_DRINK_BASE = _item_npc_base(SPR0244_GREEN_FROG_DRINK)
+COOKIE_BASE = _item_npc_base(SPR0254_YOSHI_COOKIE)
+BLUE_SYRUP_BASE = _item_npc_base(SPR0223_BLUE_SYRUP)
+YELLOW_BOMB_BASE = _item_npc_base(SPR0234_YELLOW_BOMB)
+RED_BOMB_BASE = _item_npc_base(SPR0224_RED_BOMB)
+BLUE_BOMB_BASE = _item_npc_base(SPR0235_BLUE_BOMB)
+GREEN_CANDY_BASE = _item_npc_base(SPR0217_GREEN_CANDY)
+YELLOW_MUSIC_DRINK_BASE = _item_npc_base(SPR0245_YELLOW_MUSIC_DRINK)
+BLUE_MUSIC_DRINK_BASE = _item_npc_base(SPR0246_BLUE_MUSIC_DRINK)
+RED_MUSIC_DRINK_BASE = _item_npc_base(SPR0247_RED_MUSIC_DRINK)
+KEY_BASE = _item_npc_base(SPR0638_KEY_STANDALONE, y_shift=1)
+SMALL_COIN_BASE = _item_npc_base(SPR0193_SMALL_COIN, height=1, y_shift=1, min_vram_size=1)
+SMALL_FROG_COIN_BASE = _item_npc_base(SPR0606_SMALL_FROG_COIN, height=3, y_shift=1, min_vram_size=1, acute_axis=2, obtuse_axis=2)
+BLUE_CANDY_BASE = _item_npc_base(SPR0218_BLUE_CANDY)
+MICROBOMB_BASE = _item_npc_base(SPR0205_MICROBOMB_PACKET, y_shift=1)
+EGG_BASE = _item_npc_base(SPR0237_EGG)
+GREEN_BOMB_BASE = _item_npc_base(SPR0233_GREEN_BOMB)
+CARD_BASE = _item_npc_base(SPR0206_CARD)
+BANANA_BASE = _item_npc_base(SPR0222_BANANA_PEEL)
+BERRY_BASE = _item_npc_base(SPR0253_BERRY, y_shift=1)
+BIG_COIN_BASE = _item_npc_base(SPR0192_COIN, height=6, y_shift=5, min_vram_size=1)
+BEETLE_BASE = _item_npc_base(SPR0255_BEETLE, y_shift=1)
+FLOWER_BASE = _item_npc_base(SPR0636_SMALL_FLOWER_STANDALONE, y_shift=1)
+RECOVERY_MUSHROOM_BASE = _item_npc_base(SPR0637_RECOVERY_MUSHROOM_STANDALONE, y_shift=1)
+FROG_COIN_BASE = _item_npc_base(SPR0194_FROG_COIN, height=6, y_shift=5, min_vram_size=1)
+GLOVE_BASE = _item_npc_base(SPR0045_GLOVE)
+CRYSTAL_BASE = _item_npc_base(SPR0046_SHINY_STONE)
+
 
 MARIO_WALKING_DOWN_LEFT_NPC = NPC(
     sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
@@ -48,7 +120,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC = NPC(
     byte6_bit2=False)
 
 BOWSER_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0013_BOWSER_WALKING_DOWN_LEFT,
+    sprite_id=SPR0014_BOWSER_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,
@@ -71,7 +143,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC = NPC(
     byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
+    sprite_id=SPR0021_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -94,7 +166,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC = NPC(
     byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
+    sprite_id=SPR0028_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -186,7 +258,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte6_bit2=False)
 
 BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=SPR0013_BOWSER_WALKING_DOWN_LEFT,
+    sprite_id=SPR0014_BOWSER_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,
@@ -209,7 +281,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
     byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
+    sprite_id=SPR0021_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -255,7 +327,7 @@ FEATHER_NPC = NPC(
     byte6_bit2=False)
 
 HAMMER_NPC = NPC(
-    sprite_id=SPR0031_HAMMER,
+    sprite_id=SPR0730_HAMMER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=4,
@@ -301,7 +373,7 @@ OLD_CLASSIC_MARIO_NPC = NPC(
     byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
+    sprite_id=SPR0028_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -393,7 +465,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_4 = NPC(
     byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
+    sprite_id=SPR0021_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -416,7 +488,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
+    sprite_id=SPR0028_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -531,7 +603,7 @@ NIMBUSITE_RED_NPC = NPC(
     byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_4 = NPC(
-    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
+    sprite_id=SPR0021_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -692,7 +764,7 @@ GREEN_YOSHI_NPC = NPC(
     byte6_bit2=False)
 
 CHOMP_NPC = NPC(
-    sprite_id=SPR0034_CHOMP,
+    sprite_id=SPR0733_CHOMP,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -715,7 +787,7 @@ CHOMP_NPC = NPC(
     byte6_bit2=False)
 
 HAMMER_NPC_2 = NPC(
-    sprite_id=SPR0031_HAMMER,
+    sprite_id=SPR0730_HAMMER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -738,7 +810,7 @@ HAMMER_NPC_2 = NPC(
     byte6_bit2=False)
 
 FROGGIE_STICK_NPC = NPC(
-    sprite_id=SPR0032_FROGGIE_STICK,
+    sprite_id=SPR0731_FROGGIE_STICK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -1037,7 +1109,7 @@ WAR_FAN_NPC = NPC(
     byte6_bit2=False)
 
 YELLOW_YOSHI_NPC = NPC(
-    sprite_id=SPR0045_YELLOW_YOSHI,
+    sprite_id=SPR0734_YELLOW_YOSHI,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1060,7 +1132,7 @@ YELLOW_YOSHI_NPC = NPC(
     byte6_bit2=False)
 
 PINK_YOSHI_NPC = NPC(
-    sprite_id=SPR0046_PINK_YOSHI,
+    sprite_id=SPR0735_PINK_YOSHI,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1083,7 +1155,7 @@ PINK_YOSHI_NPC = NPC(
     byte6_bit2=False)
 
 BOSHI_NPC = NPC(
-    sprite_id=SPR0047_BOSHI,
+    sprite_id=SPR0729_BOSHI,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -10905,7 +10977,7 @@ CHOMP_FRONT_NPC = NPC(
     byte6_bit2=False)
 
 FROGGIE_STICK_NPC_2 = NPC(
-    sprite_id=SPR0032_FROGGIE_STICK,
+    sprite_id=SPR0731_FROGGIE_STICK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -16377,7 +16449,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_7 = NPC(
     byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
+    sprite_id=SPR0021_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16400,7 +16472,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_5 = NPC(
     byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
+    sprite_id=SPR0021_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16423,7 +16495,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_6 = NPC(
     byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_7 = NPC(
-    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
+    sprite_id=SPR0021_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16446,7 +16518,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_7 = NPC(
     byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_4 = NPC(
-    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
+    sprite_id=SPR0028_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16469,7 +16541,7 @@ GENO_WALKING_DOWN_LEFT_NPC_4 = NPC(
     byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
+    sprite_id=SPR0028_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16492,7 +16564,7 @@ GENO_WALKING_DOWN_LEFT_NPC_5 = NPC(
     byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
+    sprite_id=SPR0028_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16515,7 +16587,7 @@ GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
     byte6_bit2=False)
 
 BOWSER_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=SPR0013_BOWSER_WALKING_DOWN_LEFT,
+    sprite_id=SPR0014_BOWSER_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,

@@ -253,6 +253,7 @@ from ..data.spells.spells import (
     StarRainSpell,
 )
 from ..data.variables.overworld_sfx_names import *
+from ..data.physical_objects.items import *
 
 # Note: Gating flags are imported lazily in _get_gating_flags() to avoid circular import
 # (flags.py → prizelocations.py → prizes.py → flags.py)
@@ -357,6 +358,7 @@ class HammerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
+    _model = HammerObject
 
 
 class FroggiestickPrize(ItemPrize):
@@ -366,6 +368,7 @@ class FroggiestickPrize(ItemPrize):
         nickname="Caster's Staff", description="It looks pretty good at bonking."
     )
     _monstro_shuffle = True
+    _model = StickObject
 
 
 class NokNokShellPrize(ItemPrize):
@@ -373,6 +376,7 @@ class NokNokShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Shell", description="There's no turtle inside of it."
     )
+    _model = GreenShellObject
 
 
 class PunchGlovePrize(ItemPrize):
@@ -380,6 +384,7 @@ class PunchGlovePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Glove", description="You don't drink water out of it."
     )
+    _model = GloveObject
 
 
 class FingerShotPrize(ItemPrize):
@@ -394,6 +399,7 @@ class CymbalsPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Percussion Plate", description="I bet it could get pretty loud."
     )
+    _model = MusicObject
 
 
 class ChompPrize(ItemPrize):
@@ -403,6 +409,7 @@ class ChompPrize(ItemPrize):
         nickname="Chain Chomp", description="It's hungry to stir up some trouble."
     )
     _monstro_shuffle = True
+    _model = ChompObject
 
 
 class MasherPrize(ItemPrize):
@@ -410,6 +417,7 @@ class MasherPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
+    _model = HammerObject
 
 
 class ChompShellPrize(ItemPrize):
@@ -418,6 +426,7 @@ class ChompShellPrize(ItemPrize):
         nickname="Chomp Exoskeleton",
         description="I didn't even know those things\n could shed their skin.",
     )
+    _model = ChompObject
 
 
 class SuperHammerPrize(ItemPrize):
@@ -425,6 +434,7 @@ class SuperHammerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
+    _model = HammerObject
 
 
 class HandGunPrize(ItemPrize):
@@ -439,6 +449,7 @@ class WhompGlovePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Glove", description="You don't drink water out of it."
     )
+    _model = GloveObject
 
 
 class SlapGlovePrize(ItemPrize):
@@ -446,6 +457,7 @@ class SlapGlovePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Glove", description="You don't drink water out of it."
     )
+    _model = GloveObject
 
 
 class TroopaShellPrize(ItemPrize):
@@ -453,6 +465,7 @@ class TroopaShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Shell", description="There's no turtle inside of it."
     )
+    _model = RedShellObject
 
 
 class ParasolPrize(ItemPrize):
@@ -460,6 +473,7 @@ class ParasolPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Umbrella", description="There's no turtle inside of it."
     )
+    _model = ParasolObject
 
 
 class HurlyGlovesPrize(ItemPrize):
@@ -467,6 +481,7 @@ class HurlyGlovesPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Glove", description="You don't drink water out of it."
     )
+    _model = GloveObject
 
 
 class DoublePunchPrize(ItemPrize):
@@ -475,6 +490,7 @@ class DoublePunchPrize(ItemPrize):
         nickname="Rocket Launcher",
         description="Be careful, it could take your\n hands clean off.",
     )
+    _model = GloveObject
 
 
 class RibbitStickPrize(ItemPrize):
@@ -482,6 +498,7 @@ class RibbitStickPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Caster's Staff", description="It looks pretty good at bonking."
     )
+    _model = StickObject
 
 
 class SpikedLinkPrize(ItemPrize):
@@ -489,6 +506,7 @@ class SpikedLinkPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Chain Chomp", description="This one's got thorns on it."
     )
+    _model = ChompObject
 
 
 class MegaGlovePrize(ItemPrize):
@@ -496,6 +514,7 @@ class MegaGlovePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Glove", description="You don't drink water out of it."
     )
+    _model = GloveObject
 
 
 class WarFanPrize(ItemPrize):
@@ -503,6 +522,7 @@ class WarFanPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Spiked Fan", description="Pretty, but deadly!"
     )
+    _model = FanObject
 
 
 class HandCannonPrize(ItemPrize):
@@ -517,6 +537,7 @@ class StickyGlovePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Glove", description="You don't drink water out of it."
     )
+    _model = GloveObject
 
 
 class UltraHammerPrize(ItemPrize):
@@ -524,6 +545,7 @@ class UltraHammerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
+    _model = HammerObject
 
 
 class SuperSlapPrize(ItemPrize):
@@ -531,6 +553,7 @@ class SuperSlapPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Glove", description="You don't drink water out of it."
     )
+    _model = GloveObject
 
 
 class DrillClawPrize(ItemPrize):
@@ -539,6 +562,7 @@ class DrillClawPrize(ItemPrize):
         nickname="Drilling Appendage",
         description="I bet you could do some real damage\n with this.",
     )
+    _model = GloveObject
 
 
 class StarGunPrize(ItemPrize):
@@ -547,6 +571,7 @@ class StarGunPrize(ItemPrize):
         nickname="Celestial Launcher",
         description="I bet you could do some real damage\n with this.",
     )
+    _model = TinyStarObject
 
 
 class SonicCymbalPrize(ItemPrize):
@@ -555,6 +580,7 @@ class SonicCymbalPrize(ItemPrize):
         nickname="Psych Percussion",
         description="This could catch monsters\n off-guard.",
     )
+    _model = MusicObject
 
 
 class LazyShellWeaponPrize(ItemPrize):
@@ -564,6 +590,7 @@ class LazyShellWeaponPrize(ItemPrize):
         nickname="Red Shell", description="There's no turtle inside of it."
     )
     _monstro_shuffle = True
+    _model = RedShellObject
 
 
 class FryingPanPrize(ItemPrize):
@@ -571,6 +598,7 @@ class FryingPanPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Metal Plate", description="Don't know what it’s used for."
     )
+    _model = FryingPanObject
 
 
 class WonderChompPrize(ItemPrize):
@@ -581,6 +609,7 @@ class WonderChompPrize(ItemPrize):
     )
     remake_only = True
     _monstro_shuffle = True
+    _model = ChompObject
 
 
 class Stella023Prize(ItemPrize):
@@ -590,6 +619,7 @@ class Stella023Prize(ItemPrize):
     )
     remake_only = True
     _monstro_shuffle = True
+    _model = TinyStarObject
 
 
 class SageStickPrize(ItemPrize):
@@ -599,6 +629,7 @@ class SageStickPrize(ItemPrize):
     )
     remake_only = True
     _monstro_shuffle = True
+    _model = StickObject
 
 
 class LuckyHammerPrize(ItemPrize):
@@ -606,6 +637,7 @@ class LuckyHammerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
+    _model = HammerObject
 
 
 class ShirtPrize(ItemPrize):
@@ -691,6 +723,7 @@ class HappyShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Shell", description="There's no turtle inside of it."
     )
+    _model = GreenShellObject
 
 
 class PolkaDressPrize(ItemPrize):
@@ -733,6 +766,7 @@ class CourageShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Shell", description="There's no turtle inside of it."
     )
+    _model = GreenShellObject
 
 
 class FuzzyShirtPrize(ItemPrize):
@@ -790,6 +824,7 @@ class FireShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Shell", description="There's no turtle inside of it."
     )
+    _model = RedShellObject
 
 
 class FireDressPrize(ItemPrize):
@@ -811,6 +846,7 @@ class PrincePantsPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Flash Pants", description="You'll look like a superhero in\n these!"
     )
+    _model = CrownObject
 
 
 class StarCapePrize(ItemPrize):
@@ -818,6 +854,7 @@ class StarCapePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Freedom Cape", description="It's red, white, and blue."
     )
+    _model = TinyStarObject
 
 
 class HealShellPrize(ItemPrize):
@@ -825,6 +862,7 @@ class HealShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Shell", description="There's no turtle inside of it."
     )
+    _model = GreenShellObject
 
 
 class RoyalDressPrize(ItemPrize):
@@ -832,6 +870,7 @@ class RoyalDressPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Fancy Dress", description="Check out the gold trim!"
     )
+    _model = CrownObject
 
 
 class SuperSuitPrize(ItemPrize):
@@ -850,6 +889,7 @@ class LazyShellArmorPrize(ItemPrize):
         nickname="Red Shell", description="There's no turtle inside of it."
     )
     _monstro_shuffle = True
+    _model = RedShellObject
 
 
 class ZoomShoesPrize(ItemPrize):
@@ -859,6 +899,7 @@ class ZoomShoesPrize(ItemPrize):
         nickname="Red Vans", description="I bet you can run really fast in\n these."
     )
     _monstro_shuffle = True
+    _model = ShoesObject
 
 
 class SafetyBadgePrize(ItemPrize):
@@ -867,6 +908,7 @@ class SafetyBadgePrize(ItemPrize):
         nickname="Rainbow Button",
         description="I don't really follow politics, but\n this button looks like it's against\n a lot of things.",
     )
+    _model = BroochObject
 
 
 class JumpShoesPrize(ItemPrize):
@@ -874,6 +916,7 @@ class JumpShoesPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Brown Clogs", description="Check out the thick soles!"
     )
+    _model = ShoesObject
 
 
 class SafetyRingPrize(ItemPrize):
@@ -881,6 +924,7 @@ class SafetyRingPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Protective Charm", description="Never go into battle without it."
     )
+    _model = RingObject
 
 
 class AmuletPrize(ItemPrize):
@@ -888,6 +932,7 @@ class AmuletPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Stinky Charm", description="It'll help you weather the elements."
     )
+    _model = CardObject
 
 
 class ScroogeRingPrize(ItemPrize):
@@ -895,6 +940,7 @@ class ScroogeRingPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Mage Totem", description="It might help with spellcasting."
     )
+    _model = RingObject
 
 
 class ExpBoosterPrize(ItemPrize):
@@ -925,6 +971,7 @@ class BtubRingPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Wedding Ring", description="For that special someone!"
     )
+    _model = RingObject
 
 
 class AntidotePinPrize(ItemPrize):
@@ -932,6 +979,7 @@ class AntidotePinPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Button", description="Looks like an environmentalist\n thing."
     )
+    _model = BroochObject
 
 
 class WakeUpPinPrize(ItemPrize):
@@ -939,6 +987,7 @@ class WakeUpPinPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Blue Button", description="Looks like an anti-fur thing."
     )
+    _model = BroochObject
 
 
 class FearlessPinPrize(ItemPrize):
@@ -946,6 +995,7 @@ class FearlessPinPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Yellow Button", description="Who you gonna call?\n GHOSTBUSTERS!"
     )
+    _model = BroochObject
 
 
 class TrueformPinPrize(ItemPrize):
@@ -954,6 +1004,7 @@ class TrueformPinPrize(ItemPrize):
         nickname="Orange Button",
         description="For someone who doesn't like\n scarecrows.",
     )
+    _model = BroochObject
 
 
 class CoinTrickPrize(ItemPrize):
@@ -986,6 +1037,7 @@ class FeatherPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Fluttering Quill", description="It's pretty exotic, isn't it?"
     )
+    _model = FeatherObject
 
 
 class TroopaPinPrize(ItemPrize):
@@ -993,6 +1045,7 @@ class TroopaPinPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Military Decoration", description="I wonder what powers it bestows?"
     )
+    _model = BroochObject
 
 
 class SignalRingPrize(ItemPrize):
@@ -1000,6 +1053,7 @@ class SignalRingPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Bell Charm", description="I wonder what it can help you find?"
     )
+    _model = RingObject
 
 
 class QuartzCharmPrize(ItemPrize):
@@ -1010,6 +1064,7 @@ class QuartzCharmPrize(ItemPrize):
         description="It might have special powers.\n Or it might not.",
     )
     _monstro_shuffle = True
+    _model = CrystalObject
 
 
 class TeamworkBandPrize(ItemPrize):
@@ -1029,6 +1084,7 @@ class EnduringBroochPrize(ItemPrize):
     )
     remake_only = True
     _monstro_shuffle = True
+    _model = BroochObject
 
 
 class MushroomPrize(ItemPrize):
@@ -1036,6 +1092,7 @@ class MushroomPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Mushroom", description="It's just food, right?"
     )
+    _model = RedMushroomObject
 
 
 class MidMushroomPrize(ItemPrize):
@@ -1043,6 +1100,7 @@ class MidMushroomPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Mushroom", description="It's just food, right?"
     )
+    _model = GreenMushroomObject
 
 
 class MaxMushroomPrize(ItemPrize):
@@ -1050,6 +1108,7 @@ class MaxMushroomPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Yellow Mushroom", description="It's just food, right?"
     )
+    _model = YellowMushroomObject
 
 
 class HoneySyrupPrize(ItemPrize):
@@ -1057,6 +1116,7 @@ class HoneySyrupPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Drink", description="I wonder what flavor it is?"
     )
+    _model = RedSyrupObject
 
 
 class MapleSyrupPrize(ItemPrize):
@@ -1064,6 +1124,7 @@ class MapleSyrupPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
+    _model = GreenSyrupObject
 
 
 class RoyalSyrupPrize(ItemPrize):
@@ -1071,6 +1132,7 @@ class RoyalSyrupPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Yellow Drink", description="I wonder what flavor it is?"
     )
+    _model = YellowSyrupObject
 
 
 class PickMeUpPrize(ItemPrize):
@@ -1078,6 +1140,7 @@ class PickMeUpPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Drink", description="I wonder what flavor it is?"
     )
+    _model = StarDrinkObject
 
 
 class AbleJuicePrize(ItemPrize):
@@ -1085,6 +1148,7 @@ class AbleJuicePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Blue Drink", description="I wonder what flavor it is?"
     )
+    _model = RDrinkObject
 
 
 class BracerPrize(ItemPrize):
@@ -1092,6 +1156,7 @@ class BracerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Yellow Drink", description="I wonder what flavor it is?"
     )
+    _model = DDrinkObject
 
 
 class EnergizerPrize(ItemPrize):
@@ -1099,6 +1164,7 @@ class EnergizerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
+    _model = PDrinkObject
 
 
 class YoshiAdePrize(ItemPrize):
@@ -1106,6 +1172,7 @@ class YoshiAdePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
+    _model = GreenJuiceObject
 
 
 class RedEssencePrize(ItemPrize):
@@ -1113,6 +1180,7 @@ class RedEssencePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Drink", description="I wonder what flavor it is?"
     )
+    _model = RedJuiceObject
 
 
 class KerokeroColaPrize(ItemPrize):
@@ -1120,6 +1188,7 @@ class KerokeroColaPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
+    _model = FrogDrinkObject
 
 
 class YoshiCookiePrize(ItemPrize):
@@ -1127,6 +1196,7 @@ class YoshiCookiePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Baked Good", description="Looks tasty, doesn't it?"
     )
+    _model = CookieObject
 
 
 class PureWaterPrize(ItemPrize):
@@ -1134,6 +1204,7 @@ class PureWaterPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Blue Drink", description="I wonder what flavor it is?"
     )
+    _model = BlueSyrupObject
 
 
 class SleepyBombPrize(ItemPrize):
@@ -1141,6 +1212,7 @@ class SleepyBombPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Explosive Device", description="Don't try this at home!"
     )
+    _model = YellowBombObject
 
 
 class BadMushroomPrize(ItemPrize):
@@ -1148,6 +1220,7 @@ class BadMushroomPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Mushroom", description="It's just food, right?"
     )
+    _model = RedMushroomObject
 
 
 class FireBombPrize(ItemPrize):
@@ -1155,6 +1228,7 @@ class FireBombPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Explosive Device", description="Don't try this at home!"
     )
+    _model = RedBombObject
 
 
 class IceBombPrize(ItemPrize):
@@ -1162,6 +1236,7 @@ class IceBombPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Explosive Device", description="Don't try this at home!"
     )
+    _model = BlueBombObject
 
 
 class FlowerTabPrize(ItemPrize):
@@ -1190,6 +1265,7 @@ class YoshiCandyPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Candy Piece", description="I wonder what flavor it is?"
     )
+    _model = GreenCandyObject
 
 
 class FroggieDrinkPrize(ItemPrize):
@@ -1197,6 +1273,7 @@ class FroggieDrinkPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Yellow Drink", description="I wonder what flavor it is?"
     )
+    _model = YellowMusicDrinkObject
 
 
 class MukuCookiePrize(ItemPrize):
@@ -1204,6 +1281,7 @@ class MukuCookiePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Baked Good", description="Looks tasty, doesn't it?"
     )
+    _model = CookieObject
 
 
 class ElixirPrize(ItemPrize):
@@ -1211,6 +1289,7 @@ class ElixirPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Blue Drink", description="I wonder what flavor it is?"
     )
+    _model = BlueMusicDrinkObject
 
 
 class MegalixirPrize(ItemPrize):
@@ -1218,6 +1297,7 @@ class MegalixirPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Drink", description="I wonder what flavor it is?"
     )
+    _model = RedMusicDrinkObject
 
 
 class SeeYaPrize(ItemPrize):
@@ -1232,6 +1312,7 @@ class TempleKeyPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
+    _model = KeyObject
 
 
 class GoodieBagPrize(ItemPrize):
@@ -1241,11 +1322,13 @@ class GoodieBagPrize(ItemPrize):
     )
 
 
+
 class EarlierTimesPrize(ItemPrize):
     item = EarlierTimesItem
     _nickname = TreasureHunterNickname(
         nickname="Reset Button", description="Sounds useful in a pinch, doesn't\n it?"
     )
+    
 
 
 class FreshenUpPrize(ItemPrize):
@@ -1253,6 +1336,7 @@ class FreshenUpPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Blue Drink", description="I wonder what flavor it is?"
     )
+    _model = RDrinkObject
 
 
 class RareFrogCoinPrize(ItemPrize, KeyPrize):
@@ -1260,6 +1344,7 @@ class RareFrogCoinPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Coin", description="It looks different from most Frog \nCoins."
     )
+    _model = SmallFrogCoinObject
 
 
 class WalletPrize(ItemPrize, KeyPrize):
@@ -1267,6 +1352,7 @@ class WalletPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Coin Sack", description="It looks like it belongs to someone."
     )
+    
 
 
 class CricketPiePrize(ItemPrize, KeyPrize):
@@ -1274,6 +1360,7 @@ class CricketPiePrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Baked Good", description="Looks tasty, doesn't it?"
     )
+    _model = CookieObject
 
 
 class RockCandyPrize(ItemPrize):
@@ -1281,6 +1368,7 @@ class RockCandyPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Candy Piece", description="I wonder what flavor it is?"
     )
+    _model = BlueCandyObject
 
 
 class CastleKey1Prize(ItemPrize, KeyPrize):
@@ -1288,6 +1376,7 @@ class CastleKey1Prize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
+    _model = KeyObject
 
 
 class CastleKey2Prize(ItemPrize, KeyPrize):
@@ -1295,6 +1384,7 @@ class CastleKey2Prize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
+    _model = KeyObject
 
 
 class BambinoBombPrize(ItemPrize, KeyPrize):
@@ -1302,6 +1392,7 @@ class BambinoBombPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Explosive Device", description="Don't try this at home!"
     )
+    _model = MicrobombObject
 
 
 class ProgressiveCardPrize(ProgressiveItemPrize, KeyPrize):
@@ -1309,6 +1400,7 @@ class ProgressiveCardPrize(ProgressiveItemPrize, KeyPrize):
         nickname="Membership Card",
         description="It's sure to bring you an air of\n prestige.",
     )
+    _model = CardObject
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1336,6 +1428,7 @@ class ProgressiveEggPrize(ProgressiveItemPrize):
         nickname="Mystery Egg",
         description="I have no idea what it does!\n It sort of grows on ya, huh?",
     )
+    _model = EggObject
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1365,6 +1458,7 @@ class ExtraShinyStonePrize(ItemPrize, KeyPrize):
         description="It might have special powers.\n Or it might not.",
     )
     remake_only = True
+    _model = CrystalObject
 
 
 class CrystalShardPrize(ItemPrize, KeyPrize):
@@ -1374,6 +1468,7 @@ class CrystalShardPrize(ItemPrize, KeyPrize):
         description="It might have special powers.\n Or it might not.",
     )
     remake_only = True
+    _model = CrystalObject
 
 
 class RoomKeyPrize(ItemPrize, KeyPrize):
@@ -1381,6 +1476,7 @@ class RoomKeyPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
+    _model = KeyObject  
 
 
 class ElderKeyPrize(ItemPrize, KeyPrize):
@@ -1388,6 +1484,7 @@ class ElderKeyPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
+    _model = KeyObject
 
 
 class ShedKeyPrize(ItemPrize, KeyPrize):
@@ -1395,6 +1492,7 @@ class ShedKeyPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
+    _model = KeyObject
 
 
 class FrightBombPrize(ItemPrize):
@@ -1402,10 +1500,12 @@ class FrightBombPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Explosive Device", description="Don't try this at home!"
     )
+    _model = GreenBombObject
 
 
 class BeetleBoxPrize(ItemPrize):
     item = BeetleBoxItem
+    _model = BeetleObject
     # TODO: Could not find dialog_replacements for BeetleBox
 
 
@@ -1415,6 +1515,7 @@ class LuckyJewelPrize(ItemPrize):
         nickname="Lucky Jewel",
         description="It’s sure to bring you plenty of\n good luck.",
     )
+    _model = CrystalObject
 
 
 class CrystallinePrize(ItemPrize):
@@ -1422,6 +1523,7 @@ class CrystallinePrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Yellow Drink", description="I wonder what flavor it is?"
     )
+    _model = DDrinkObject
 
 
 class PowerBlastPrize(ItemPrize):
@@ -1429,6 +1531,7 @@ class PowerBlastPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
+    _model = PDrinkObject
 
 
 class WiltShroomPrize(ItemPrize):
@@ -1436,6 +1539,7 @@ class WiltShroomPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Mushroom", description="It's just food, right?"
     )
+    _model = BananaObject
 
 
 class RottenMushPrize(ItemPrize):
@@ -1443,6 +1547,7 @@ class RottenMushPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Mushroom", description="It's just food, right?"
     )
+    _model = BananaObject
 
 
 class MoldyMushPrize(ItemPrize):
@@ -1450,6 +1555,7 @@ class MoldyMushPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Mushroom", description="It's just food, right?"
     )
+    _model = BananaObject
 
 
 class SeedPrize(ItemPrize, KeyPrize):
@@ -1457,6 +1563,7 @@ class SeedPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Mysterious Seed", description="I wonder what will grow from it?"
     )
+    _model = BerryObject
 
 
 class FertilizerPrize(ItemPrize, KeyPrize):
@@ -1473,6 +1580,7 @@ class BigBooFlagPrize(ItemPrize, KeyPrize):
         nickname="Invisible Flag",
         description="I wonder if someone is looking for\n this?",
     )
+    _model = CardObject
 
 
 class DryBonesFlagPrize(ItemPrize, KeyPrize):
@@ -1481,6 +1589,7 @@ class DryBonesFlagPrize(ItemPrize, KeyPrize):
         nickname="Invisible Flag",
         description="I wonder if someone is looking fon\n this?",
     )
+    _model = CardObject
 
 
 class GreaperFlagPrize(ItemPrize, KeyPrize):
@@ -1489,6 +1598,7 @@ class GreaperFlagPrize(ItemPrize, KeyPrize):
         nickname="Invisible Flag",
         description="I wonder if someone is looking for\n this?",
     )
+    _model = CardObject
 
 
 class CricketJamPrize(ItemPrize, KeyPrize):
@@ -1496,6 +1606,7 @@ class CricketJamPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Jelly", description="I wonder what flavor it is?"
     )
+    _model = GreenJuiceObject
 
 
 class RegularFireworksPrize(ItemPrize):
@@ -1510,6 +1621,7 @@ class ProgressiveFireworksPrize(ProgressiveItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Explosive Device", description="Don't try this at home!"
     )
+    _model = ProgressiveFireworksObject
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1539,6 +1651,7 @@ class StayVoucherPrize(ItemPrize):
         description="You can probably redeem it at a\n fancy hotel.",
     )
     remake_only = True
+    _model = CardObject
 
 
 class BrightCardPrize(ItemPrize, KeyPrize):
@@ -1547,6 +1660,7 @@ class BrightCardPrize(ItemPrize, KeyPrize):
         nickname="Membership Card",
         description="It's sure to bring you an air of\n prestige.",
     )
+    _model = CardObject
 
 
 class PoisonMushroomPrize(ItemPrize):
@@ -1554,6 +1668,7 @@ class PoisonMushroomPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Mushroom", description="It's just food, right?"
     )
+    _model = RedMushroomObject
 
 
 class StarEggPrize(ItemPrize):
@@ -1562,12 +1677,19 @@ class StarEggPrize(ItemPrize):
         nickname="Mystery Egg",
         description="I have no idea what it does!\n It sort of grows on ya, huh?",
     )
+    _model = EggObject
 
 
 ### Other kinds of prizes ###
 
 
 class BeetlemaniaPrize(StandardPrize):
+    _nickname = TreasureHunterNickname(
+        nickname="Video Game",
+        description="It's pretty addictive.",
+    )
+    _model = BeetleObject
+
     @property
     def chest_grant(self) -> EventScript:
         return EventScript([JmpToEvent(E0162_CHEST_GRANT_BEETLEMANIA)])
@@ -1594,6 +1716,7 @@ class ShoesPrize(WeddingGearPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Ruby Slippers", description="Do you think they'll take you\n home?"
     )
+    _model = ShoesObject
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1627,6 +1750,7 @@ class BroochPrize(WeddingGearPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Shiny Brooch", description="It looks pretty stylish."
     )
+    _model = BroochObject
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1660,6 +1784,7 @@ class RingPrize(WeddingGearPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Wedding Ring", description="For that special someone!"
     )
+    _model = RingObject
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1693,6 +1818,7 @@ class CrownPrize(WeddingGearPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Gold Crown", description="It looks pretty important!"
     )
+    _model = CrownObject
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1726,10 +1852,11 @@ class GoldPaintPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Chrome Coat", description="It'll make you look shiny!"
     )
-    # TODO events
+    _model = YellowJuiceObject
 
 
 class RecoveryMushroomPrize(StandardPrize):
+    _model = RecoveryMushroomObject
     @property
     def chest_grant(self) -> EventScript:
         return EventScript(

@@ -366,11 +366,11 @@ from randomizer.types.palettes import Palette
 from randomizer.types.sprites.ids import (
     SPR0000_MARIO_WALKING_DOWN_LEFT,
     SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
-    SPR0013_BOWSER_WALKING_DOWN_LEFT,
-    SPR0019_MALLOW_WALKING_DOWN_LEFT,
-    SPR0025_GENO_WALKING_DOWN_LEFT,
-    SPR0045_YELLOW_YOSHI,
-    SPR0046_PINK_YOSHI,
+    SPR0014_BOWSER_WALKING_DOWN_LEFT,
+    SPR0021_MALLOW_WALKING_DOWN_LEFT,
+    SPR0028_GENO_WALKING_DOWN_LEFT,
+    SPR0734_YELLOW_YOSHI,
+    SPR0735_PINK_YOSHI,
     SPR0047_BOSHI,
     SPR0048_CROCO,
     SPR0050_BOOSTER,
@@ -803,7 +803,7 @@ class Toadstool(PartyNPC):
 class Bowser(PartyNPC):
     """Occupant NPC definition for Bowser"""
 
-    _sprite_id: int = SPR0013_BOWSER_WALKING_DOWN_LEFT
+    _sprite_id: int = SPR0014_BOWSER_WALKING_DOWN_LEFT
     _shadow_size = ShadowSize.OVAL_BIG
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -815,7 +815,7 @@ class Bowser(PartyNPC):
 class Mallow(PartyNPC):
     """Occupant NPC definition for Mallow"""
 
-    _sprite_id: int = SPR0019_MALLOW_WALKING_DOWN_LEFT
+    _sprite_id: int = SPR0021_MALLOW_WALKING_DOWN_LEFT
     _height: int = 8
     _directions = VramStore.DIR0_SWSE_NWNE
     _minecart_shift: int = 4
@@ -824,7 +824,7 @@ class Mallow(PartyNPC):
 class Geno(PartyNPC):
     """Occupant NPC definition for Geno"""
 
-    _sprite_id: int = SPR0025_GENO_WALKING_DOWN_LEFT
+    _sprite_id: int = SPR0028_GENO_WALKING_DOWN_LEFT
     _y_shift: int = 1
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -835,7 +835,7 @@ class Geno(PartyNPC):
 class YellowYoshi(YoshiNPC):
     """Occupant NPC definition for Yellow  Yoshi"""
 
-    _sprite_id: int = SPR0045_YELLOW_YOSHI
+    _sprite_id: int = SPR0734_YELLOW_YOSHI
     _byte2_bit0: bool = True
     _byte2_bit3: bool = True
 
@@ -843,7 +843,7 @@ class YellowYoshi(YoshiNPC):
 class PinkYoshi(YoshiNPC):
     """Occupant NPC definition for Pink  Yoshi"""
 
-    _sprite_id: int = SPR0046_PINK_YOSHI
+    _sprite_id: int = SPR0735_PINK_YOSHI
 
 
 class Boshi(YoshiNPC):

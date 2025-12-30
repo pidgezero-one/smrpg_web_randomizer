@@ -760,7 +760,6 @@ class GameWorld:
                 # Re-raise unexpected exceptions
                 raise
 
-        # SHUFFLE CHECKS HERE
         # TODO Stat scaling for boss shuffle
         # TODO: Henchmen vs no henchmen, hill/statue or not
         # TODO: NPCs, dialogs for bosses and henchmen
@@ -769,7 +768,6 @@ class GameWorld:
         # TODO NPCs and packets for all item types. Gold paint can be royal syrup
         # TODO: Apply hint text to blue toad in moleville
         # TODO: Do search-and-replace for all pronouns, names, etc related to main characters, positioned bosses, etc
-        # TODO: Room service menu and bomb trade shop
 
         self._report_progress("Randomizing shops", 45)
 
@@ -882,7 +880,6 @@ class GameWorld:
         # exclusions would be things like remake checks, surplus invisible item checks, super jump prizes when super jump not usable
         set_locations(self)
 
-        self._report_progress("Placing items", 7)
         # shuffle according to settings
         shuffle_prizes(self)
 
@@ -1187,9 +1184,9 @@ class GameWorld:
         file_select_char_bytes = [
             SPR0000_MARIO_WALKING_DOWN_LEFT,
             SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
-            SPR0013_BOWSER_WALKING_DOWN_LEFT,
-            SPR0025_GENO_WALKING_DOWN_LEFT,
-            SPR0019_MALLOW_WALKING_DOWN_LEFT,
+            SPR0014_BOWSER_WALKING_DOWN_LEFT,
+            SPR0028_GENO_WALKING_DOWN_LEFT,
+            SPR0021_MALLOW_WALKING_DOWN_LEFT,
         ]
         self.file_select_character = starter.name
 

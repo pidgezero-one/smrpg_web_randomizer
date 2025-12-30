@@ -1,4 +1,4 @@
-# E0950_EMPTY
+# E0950_CHEST_GLOVE_PACKET
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
+	CreatePacketAt7010(packet=P229_YELLOW_JUICE_CHEST, destinations=["EVENT_900_ret_3"]),
+	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST),
+	Return(identifier="EVENT_900_ret_3")
 ])

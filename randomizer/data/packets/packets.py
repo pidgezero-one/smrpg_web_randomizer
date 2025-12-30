@@ -1819,23 +1819,81 @@ P226_PARASOL_CHEST = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]))
 
-P227_UNUSED = None
+P227_YELLOW_JUICE_STATIC = Packet(
+    packet_id=227,
+    sprite_id=SPR0047_YELLOW_JUICE,
+    shadow=False,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]))
 
-P228_UNUSED = None
+P228_YELLOW_JUICE_FALL = Packet(
+    packet_id=228,
+    sprite_id=SPR0047_YELLOW_JUICE,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]))
 
-P229_UNUSED = None
+P229_YELLOW_JUICE_CHEST = Packet(
+    packet_id=229,
+    sprite_id=SPR0047_YELLOW_JUICE,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]))
 
-P230_UNUSED = None
+P230_GLOVE_STATIC = Packet(
+    packet_id=230,
+    sprite_id=SPR0045_GLOVE,
+    shadow=False,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]))
 
-P231_UNUSED = None
 
-P232_UNUSED = None
+P231_GLOVE_FALL = Packet(
+    packet_id=231,
+    sprite_id=SPR0045_GLOVE,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]))
 
-P233_UNUSED = None
 
-P234_UNUSED = None
+P232_GLOVE_CHEST = Packet(
+    packet_id=232,
+    sprite_id=SPR0045_GLOVE,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]))
 
-P235_UNUSED = None
+P233_CRYSTAL_CHEST= Packet(
+    packet_id=233,
+    sprite_id=SPR0046_SHINY_STONE,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]))
+
+P234_CRYSTAL_FALL = Packet(
+    packet_id=234,
+    sprite_id=SPR0046_SHINY_STONE,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]))
+
+
+P235_CRYSTAL_STATIC = Packet(
+    packet_id=235,
+    sprite_id=SPR0046_SHINY_STONE,
+    shadow=False,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]))
+
 
 P236_UNUSED = None
 
@@ -2107,15 +2165,15 @@ ALL_PACKETS = PacketCollection([
     P224_PARASOL_STATIC,
     P225_PARASOL_FALL,
     P226_PARASOL_CHEST,
-    P227_UNUSED,
-    P228_UNUSED,
-    P229_UNUSED,
-    P230_UNUSED,
-    P231_UNUSED,
-    P232_UNUSED,
-    P233_UNUSED,
-    P234_UNUSED,
-    P235_UNUSED,
+    P227_YELLOW_JUICE_STATIC,
+    P228_YELLOW_JUICE_FALL,
+    P229_YELLOW_JUICE_CHEST,
+    P230_GLOVE_STATIC,
+    P231_GLOVE_FALL,
+    P232_GLOVE_CHEST,
+    P233_CRYSTAL_CHEST,
+    P234_CRYSTAL_FALL,
+    P235_CRYSTAL_STATIC,
     P236_UNUSED,
     P237_UNUSED,
     P238_UNUSED,

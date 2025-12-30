@@ -289,7 +289,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         ComeBackSpell,
         PsychBombSpell,
     )
-    from ...types.gameworld import WorldBuildingException
+    world._report_progress("Placing items", 6)
 
     # Start off emptying every location of every type
     for loc in world.locations.values():
@@ -772,6 +772,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         progression_prizes,
         on_placed=lambda i, l: _on_item_placed(world, i, l),
     )
+    world._report_progress("Placing items", 19)
 
     print("placing important items")
     random.shuffle(must_include)
@@ -781,6 +782,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         on_placed=lambda i, l: _on_item_placed(world, i, l),
         force_frog_disciple=True
     )
+    world._report_progress("Placing items", 32)
 
     print("filling remaining")
     random.shuffle(not_important)

@@ -1,4 +1,4 @@
-# E0934_EMPTY
+# E0934_PROGRESSIVE_FIREWORK_CHEST_PACKET
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,16 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
+    StoreItemAmountTo7000(ShinyStoneItem),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["chest_carbo_cookie"]),
+    StoreItemAmountTo7000(FireworksItem),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["chest_shiny_stone"]),
+	CreatePacketAt7010(packet=P005_BRIEF_POOF_BAG, destinations=["EVENT_900_ret_3"]),
+    JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST),
+	CreatePacketAt7010(packet=P233_CRYSTAL_CHEST, destinations=["EVENT_900_ret_3"], identifier="chest_shiny_stone"),
+    JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST),
+	CreatePacketAt7010(packet=P120_COOKIE_CHEST, destinations=["EVENT_900_ret_3"], identifier="chest_carbo_cookie"),
+	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST),
+	Return(identifier="EVENT_900_ret_3")
 ])
