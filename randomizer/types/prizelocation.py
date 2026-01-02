@@ -1412,7 +1412,7 @@ class BossFightLocation(PrizeLocation):
     @property
     def mook_henchman_slots(self) -> list[BossFightLocationHenchmanNPC] | None:
         return self._mook_henchman_slots
-    
+
     @property
     def tiny_henchman_slots(self) -> list[BossFightLocationHenchmanNPC] | None:
         return self._tiny_henchman_slots

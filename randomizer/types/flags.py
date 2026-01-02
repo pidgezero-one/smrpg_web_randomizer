@@ -1875,6 +1875,7 @@ class BossShuffle(BooleanFlag):
     # if false, disable stat scaling and mimics anywhere
 
 
+# ✅
 class BossScaleOptions(CategorizationOption):
     """Enumeration for shuffled boss stat scaling"""
 
@@ -1883,19 +1884,21 @@ class BossScaleOptions(CategorizationOption):
     RANDOM = "Completely random"
 
 
+# ✅
 class BossShuffleScaleStats(SelectOneFlag[BossScaleOptions]):
     _name = "Scale boss stats"
     _description = """<b>Do not scale</b>: Boss fights retain their relative original stats, regardless of where they are placed. For example, Culex would still have around 4000 HP, even if he's in Mushroom Way.
 <br>
 <br><b>Match to area</b>: A boss fight that has been shuffled into a different area will have its stats scaled to match the area's original boss. For example, Culex would have about 100 HP if he's in Mushroom Way.
 <br>
-<br><b>Completely random</b>: A boss fight will inherit the relative stats of a random other location, regardless of position. For example, Culex could be placed in Mushroom Way, but have 1200 HP because he's inherited Belome 2's original stats."""
+<br><b>Completely random</b>: A boss fight will inherit the relative stats of a random other location, regardless of position. For example, Culex could be placed in Mushroom Way, but have 1200 HP because he's inherited Belome 2's original stats. Only use this option if you have a reasonable expectation that the seed may not be feasible to complete."""
     choices = [o for o in BossScaleOptions]
     _default = BossScaleOptions.VANILLA
     _id = "bossscale"
     _requires_all = [(BossShuffle(), True)]
 
 
+# ✅
 class KeepMinigameSpritesIntact(BooleanFlag):
     _name = "Keep some shuffled NPCs intact"
     _description = """If disabled: All sprites related to an area boss and their corresponding battles will be changed to match the shuffled positions of bosses. Note that sprite replacements will not affect gameplay, i.e. hitboxes stay the same for the Booster Hill henchmen, the Mack Skip NPCs, etc.
@@ -1925,13 +1928,6 @@ class DifferentiateRepeatedBosses(BooleanFlag):
     _id = "diff"
     _requires_all = [(BossShuffle(), True)]
     # TODO: belome 3, punchinello 2, jinx 4, johnny 2, bundt 2, culex 3D, booster 2
-
-
-class IncludeHenchmen(BooleanFlag):
-    _name = "Change henchman battles to match boss fights"
-    _description = """If enabled, the battles with Shysters in Mushroom Kingdom, Snifits in Booster Tower, Crooks in Moleville Mines, and Bandana Reds in the Sunken Ship may be replaced with other monsters depending on the corresponding boss location. For example, if Culex is the first tower boss, you might fight a Crystal on your way up the tower instead of a Snifit."""
-    _id = "henchmen"
-    _requires_all = [(BossShuffle(), True)]
 
 
 # ShuffledBossEnum is created lazily to avoid circular import with prizes module
@@ -2488,7 +2484,6 @@ class BossPositionSubcategory(FlagCategory):
         BossShuffleScaleStats,
         KeepMinigameSpritesIntact,
         DifferentiateRepeatedBosses,
-        IncludeHenchmen,
         ShuffledBosses,
     ]
     _size: int = 4

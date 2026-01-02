@@ -22,7 +22,7 @@ script = MonsterScript([
 	Attack(Attack1, MultistrikeAttack, FlutterHushAttack),
 	Wait1TurnandRestartScript(),
 	StartCounterCommands(),
-	IfHPBelow(600),
+	IfHPBelow(600, identifier="dodo_low_hp_check"),
 	IfVarBitsSet(BV7EE003, [6]),
 	IfVarBitsClear(BV7EE003, [3]),
 	IfVarBitsClear(BV7EE003, [5]),

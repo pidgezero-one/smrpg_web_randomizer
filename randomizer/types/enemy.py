@@ -5,6 +5,44 @@ from smrpgpatchbuilder.datatypes.spells.enums import Element, Status
 class Enemy(EnemyBase):
     _remake_name: str | None = None
 
+    # Stat scaling ratios - define what percentage of the stat pool this enemy should receive
+    # These can be overridden in subclasses for bosses with specific scaling needs
+    _ratio_hp: float = 1.0
+    _ratio_attack: float = 1.0
+    _ratio_defense: float = 1.0
+    _ratio_magic_attack: float = 1.0
+    _ratio_magic_defense: float = 1.0
+    _ratio_evade: float = 1.0
+    _ratio_magic_evade: float = 1.0
+
+    @property
+    def ratio_hp(self) -> float:
+        return self._ratio_hp
+
+    @property
+    def ratio_attack(self) -> float:
+        return self._ratio_attack
+
+    @property
+    def ratio_defense(self) -> float:
+        return self._ratio_defense
+
+    @property
+    def ratio_magic_attack(self) -> float:
+        return self._ratio_magic_attack
+
+    @property
+    def ratio_magic_defense(self) -> float:
+        return self._ratio_magic_defense
+
+    @property
+    def ratio_evade(self) -> float:
+        return self._ratio_evade
+
+    @property
+    def ratio_magic_evade(self) -> float:
+        return self._ratio_magic_evade
+
     @property
     def remake_name(self) -> str:
         return self._remake_name or self._name

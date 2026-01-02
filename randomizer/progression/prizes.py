@@ -1,4 +1,5 @@
 from __future__ import annotations
+from re import M
 from typing import TYPE_CHECKING
 
 from randomizer.data.overworld_scripts.event.scripts.script_3645 import NPC_2
@@ -1325,13 +1326,11 @@ class GoodieBagPrize(ItemPrize):
     )
 
 
-
 class EarlierTimesPrize(ItemPrize):
     item = EarlierTimesItem
     _nickname = TreasureHunterNickname(
         nickname="Reset Button", description="Sounds useful in a pinch, doesn't\n it?"
     )
-    
 
 
 class FreshenUpPrize(ItemPrize):
@@ -1355,7 +1354,6 @@ class WalletPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Coin Sack", description="It looks like it belongs to someone."
     )
-    
 
 
 class CricketPiePrize(ItemPrize, KeyPrize):
@@ -1479,7 +1477,7 @@ class RoomKeyPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Golden Key", description="I wonder what it opens?"
     )
-    _model = KeyObject  
+    _model = KeyObject
 
 
 class ElderKeyPrize(ItemPrize, KeyPrize):
@@ -1860,6 +1858,7 @@ class GoldPaintPrize(ItemPrize, KeyPrize):
 
 class RecoveryMushroomPrize(StandardPrize):
     _model = RecoveryMushroomObject
+
     @property
     def chest_grant(self) -> EventScript:
         return EventScript(
@@ -2398,7 +2397,7 @@ class HammerBrosFight(BossFightPrize):
                 ]
             )
         return EventScript(output)
-    
+
     _big_npc = HammerBroLargeObject
     _small_npc = HammerBroSmallObject
     _statue_npc = HammerBroStatueObject
@@ -2433,8 +2432,6 @@ class HammerBrosFight(BossFightPrize):
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """HAMMER BRO: I guess you were\n tougher than I thought![await]""",
     }
 
-    
-
 
 class Croco1BossFight(BossFightPrize):
     _text = "Croco 1"
@@ -2447,7 +2444,7 @@ class Croco1BossFight(BossFightPrize):
 
     _small_npc = Croco1Object
     _statue_npc = CrocoStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n CROCO: Get the heck outta here![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Alright, alright, so ya figured out\n my password! But I ain't goin'\n down without a fight![await]""",
@@ -2479,26 +2476,27 @@ class Croco1BossFight(BossFightPrize):
 class MackBossFight(BossFightPrize):
     _text = "Mack"
     _members = [
-        FormationMember(MACKEnemy, 183, 127),
+        FormationMember(MACKEnemy, 199, 119),
+        FormationMember(BODYGUARDEnemy, 135, 111),
+        FormationMember(BODYGUARDEnemy, 151, 127),
+        FormationMember(BODYGUARDEnemy, 183, 143),
+        FormationMember(BODYGUARDEnemy, 215, 151),
     ]
+    _anchor_enemy = MACKEnemy
+
     _seaside_letter_name_if_volcano_boss = "a small sword jumping"
     _seaside_letter_name_if_final_boss = "Mack's shysters."
     _seaside_letter_name_if_final_boss_remake = "Claymorton's guys."
 
     _remake_name = "Claymorton"
-    
+
     _small_npc = MackSmallObject
     _big_npc = MackMediumObject
     _battle_npc = MackLargeObject
     _statue_npc = MackStatueObject
 
-    _mook_henchmen = [
-        BossFightHenchman(
-            monster=BODYGUARDEnemy,
-            model=SHYSTER_NPC
-        )
-    ]
-    
+    _mook_henchmen = [BossFightHenchman(monster=BODYGUARDEnemy, model=SHYSTER_NPC)]
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MACK: Party's over. I'm going to\n sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Listen, bub![await]\n You may have figured out my\n password, but you still gotta get\n past me if you want through![await]""",
@@ -2606,7 +2604,7 @@ class Belome1BossFight(BossFightPrize):
     _small_npc = Belome1SmallObject
     _big_npc = Belome1LargeObject
     _statue_npc = BelomeSmallStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n        BELOME: Good night~![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, is it dinner time already?\n Come on in...[delay_60] if you dare~![await]""",
@@ -2641,7 +2639,8 @@ class BowyerBossFight(BossFightPrize):
         FormationMember(BOWYEREnemy, 183, 127),
     ]
     _force_start_event = BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
-    
+    _additional_enemies_to_scale = [AEROEnemy]
+
     _seaside_letter_name_if_volcano_boss = "a longbow loosing arrows at"
     _seaside_letter_name_if_final_boss = "Bowyer's lackeys."
 
@@ -2650,13 +2649,8 @@ class BowyerBossFight(BossFightPrize):
     _big_npc = BowyerOverworldObject
     _battle_npc = BowyerLargeObject
 
-    _mook_henchmen = [
-        BossFightHenchman(
-            monster=AEROEnemy,
-            model=AERO_UPRIGHT_NPC
-        )
-    ]
-    
+    _mook_henchmen = [BossFightHenchman(monster=AEROEnemy, model=AERO_UPRIGHT_NPC)]
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOWYER: Disturb me you must not,\n nya!""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Nya, NYA?![delay_30] Cracked the code, you\n did! But fight you, I will, nya![await]""",
@@ -2730,26 +2724,18 @@ class Croco2BossFight(BossFightPrize):
     ]
     _seaside_letter_name_if_volcano_boss = "a thieving dinosaur dashing"
     _seaside_letter_name_if_final_boss = "Croco's accomplices."
-    _name ="Croco"
+    _name = "Croco"
+    _additional_enemies_to_scale = [CROOKEnemyHenchman]
 
     _small_npc = Croco2Object
     _statue_npc = CrocoStatueObject
 
     _character_henchmen = [
-        BossFightHenchman(
-            monster=CROOKEnemyHenchman,
-            model=CROOK_NPC
-        ),
-        BossFightHenchman(
-            monster=CROOKEnemyHenchman,
-            model=CROOK_NPC
-        ),
-        BossFightHenchman(
-            monster=CROOKEnemyHenchman,
-            model=CROOK_NPC
-        ),
+        BossFightHenchman(monster=CROOKEnemyHenchman, model=CROOK_NPC),
+        BossFightHenchman(monster=CROOKEnemyHenchman, model=CROOK_NPC),
+        BossFightHenchman(monster=CROOKEnemyHenchman, model=CROOK_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n CROCO: Get the heck outta here![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Alright, alright, so ya figured out\n my password! But I ain't goin'\n down without a fight![await]""",
@@ -2804,6 +2790,9 @@ class PunchinelloBossFight(BossFightPrize):
         FormationMember(MICROBOMBEnemy, 183, 151, hidden_at_start=True),
         FormationMember(MICROBOMBEnemy, 215, 159, hidden_at_start=True),
     ]
+    _anchor_enemy = PUNCHINELLOEnemy
+    _hp_slice_excluded_enemies = [MICROBOMBEnemy]
+    _additional_enemies_to_scale = [BOBOMBEnemyHenchman, MEZZOBOMBEnemy]
 
     _name = "Punchinello"
     _seaside_letter_name_if_seaside_boss = "Hothead"
@@ -2815,18 +2804,12 @@ class PunchinelloBossFight(BossFightPrize):
     _statue_npc = PunchinelloStatueObject
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=BOBOMBEnemyHenchman,
-            model=BOB_OMB_NPC
-        ),
+        BossFightHenchman(monster=BOBOMBEnemyHenchman, model=BOB_OMB_NPC),
     ]
     _tiny_henchmen = [
-        BossFightHenchman(
-            monster=BOBOMBEnemyHenchman,
-            model=MICROBOMB_NPC
-        ),
+        BossFightHenchman(monster=BOBOMBEnemyHenchman, model=MICROBOMB_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """PUNCHINELLO: Grrr... Leave me\n alone![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So... You figured out my\n password.[await]\n If you're not here for an\n autograph, I'll have to test you\n once more to let you through![await]""",
@@ -2902,6 +2885,8 @@ class BoosterBossFight(BossFightPrize):
         FormationMember(SNIFITEnemyHenchman, 151, 143),
         FormationMember(SNIFITEnemyHenchman, 199, 151),
     ]
+    _anchor_enemy = BOOSTEREnemy
+    _additional_enemies_to_scale = [APPRENTICEEnemyHenchman]
     _seaside_letter_name_if_volcano_boss = "a viking riding trains"
     _seaside_letter_name_if_final_boss = "Booster's frenemies."
     _name = "Booster"
@@ -2909,28 +2894,15 @@ class BoosterBossFight(BossFightPrize):
     _small_npc = BoosterObject
     _statue_npc = BoosterStatueObject
 
-
     _character_henchmen = [
-        BossFightHenchman(
-            monster=SNIFITEnemyHenchman,
-            model=SPOOKUM_NPC
-        ),
-        BossFightHenchman(
-            monster=SNIFITEnemyHenchman,
-            model=SPOOKUM_NPC
-        ),
-        BossFightHenchman(
-            monster=SNIFITEnemyHenchman,
-            model=SPOOKUM_NPC
-        ),
+        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SPOOKUM_NPC),
+        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SPOOKUM_NPC),
+        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SPOOKUM_NPC),
     ]
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=APPRENTICEEnemyHenchman,
-            model=SPOOKUM_NPC
-        ),
+        BossFightHenchman(monster=APPRENTICEEnemyHenchman, model=SPOOKUM_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOOSTER: It's pretty cozy in here.[await][pause]\n No, you can't come in![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Eh?[delay_30] THAT was my password?![delay_30]\n I'd better fight you, just to be\n sure.[await]""",
@@ -3030,6 +3002,8 @@ class BundtBossFight(BossFightPrize):
         FormationMember(TORTEEnemy, 199, 151),
         FormationMember(TORTEEnemy, 135, 119),
     ]
+    _anchor_enemy = BUNDTEnemy
+    _hp_slice_excluded_enemies = [TORTEEnemy, TORTEEnemy]
     _seaside_letter_name_if_seaside_boss = "the Cake"
     _seaside_letter_name_if_volcano_boss = "a possessed cake walking"
     _seaside_letter_name_if_final_boss = "Bundt's dinner guests."
@@ -3038,14 +3012,11 @@ class BundtBossFight(BossFightPrize):
     _small_npc = BundtSmallObject
     _statue_npc = BundtStatueObject
     _big_npc = BundtLargeObject
-    
+
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=TORTEEnemy,
-            model=TORTE_NPC
-        ),
+        BossFightHenchman(monster=TORTEEnemy, model=TORTE_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BUNDT: La la la la la la la la la~[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ What a surprise! [delay_30]Welcome![await]\n Let me warm up for the feast![await]""",
@@ -3096,6 +3067,10 @@ class KingCalamariBossFight(BossFightPrize):
         FormationMember(TENTACLESEnemy, 168, 156, hidden_at_start=True),
         FormationMember(TENTACLESEnemy, 135, 143, hidden_at_start=True),
     ]
+    _extra_hp_enemies = [TENTACLESEnemy2, TENTACLESEnemy2, TENTACLESEnemy]
+    _anchor_enemy = KINGCALAMARIEnemy
+    _additional_enemies_to_scale = [BLOOBEREnemyHenchman]
+
     _force_start_event = BE0026_INTRO_SCENE_TENTACLES_RISE_FROM_HOLES
     _force_battlefield = BF03_SUNKEN_SHIP_KING_CALAMARIS_CELLAR
     _seaside_letter_name_if_seaside_boss = "the Squid"
@@ -3104,18 +3079,12 @@ class KingCalamariBossFight(BossFightPrize):
 
     _small_npc = BlooberObject
     _statue_npc = BlooberStatueObject
-    
+
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=BLOOBEREnemyHenchman,
-            model=BLOOBER_NPC
-        ),
+        BossFightHenchman(monster=BLOOBEREnemyHenchman, model=BLOOBER_NPC),
     ]
     _tiny_henchmen = [
-        BossFightHenchman(
-            monster=BLOOBEREnemyHenchman,
-            model=TINY_BLOOBER
-        ),
+        BossFightHenchman(monster=BLOOBEREnemyHenchman, model=TINY_BLOOBER),
     ]
 
     _dialog_replacements = {
@@ -3156,6 +3125,14 @@ class HidonBossFight(BossFightPrize):
         FormationMember(GOOMBETTEEnemy, 167, 151, hidden_at_start=True),
         FormationMember(GOOMBETTEEnemy, 215, 151, hidden_at_start=True),
     ]
+    _anchor_enemy = HIDONEnemy
+    _hp_slice_excluded_enemies = [
+        GOOMBETTEEnemy,
+        GOOMBETTEEnemy,
+        GOOMBETTEEnemy,
+        GOOMBETTEEnemy,
+    ]
+
     _seaside_letter_name_if_volcano_boss = "a green box sliding about"
     _seaside_letter_name_if_final_boss = "Hidon's monsters."
     _seaside_letter_name_if_final_boss_remake = "Whuhoh's Goombas."
@@ -3164,18 +3141,12 @@ class HidonBossFight(BossFightPrize):
     _small_npc = HidonSmallObject
     _statue_npc = MimicStatueObject
     _big_npc = HidonLargeObject
-    
+
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=GOOMBETTEEnemy,
-            model=GOOMBETTE_LOWER_NPC
-        ),
+        BossFightHenchman(monster=GOOMBETTEEnemy, model=GOOMBETTE_LOWER_NPC),
     ]
     _tiny_henchmen = [
-        BossFightHenchman(
-            monster=GOOMBETTEEnemy,
-            model=GOOMBETTE_LOWER_NPC
-        ),
+        BossFightHenchman(monster=GOOMBETTEEnemy, model=GOOMBETTE_LOWER_NPC),
     ]
 
     _dialog_replacements = {
@@ -3239,36 +3210,31 @@ class JohnnyBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a shark prowling around"
     _seaside_letter_name_if_final_boss = "Johnny's crew."
     _seaside_letter_name_if_sunken_ship_boss = "Jonathan “Johnny” Jones"
+    _anchor_enemy = JOHNNYEnemy
+    _hp_slice_excluded_enemies = [
+        BANDANABLUEEnemy,
+        BANDANABLUEEnemy,
+        BANDANABLUEEnemy,
+        BANDANABLUEEnemy,
+        WATERCRYSTALEnemy,
+        WATERCRYSTALEnemy,
+    ]
+    _scaling_excluded_enemies = [WATERCRYSTALEnemy, WATERCRYSTALEnemy]
 
     _small_npc = JohnnySmallObject
     _statue_npc = JohnnyStatueObject
     _big_npc = JohnnyLargeObject
-    
+
     _character_henchmen = [
-        BossFightHenchman(
-            monster=BANDANABLUEEnemy,
-            model=BANDANA_BLUE_NPC
-        ),
-        BossFightHenchman(
-            monster=BANDANABLUEEnemy,
-            model=BANDANA_BLUE_NPC
-        ),
-        BossFightHenchman(
-            monster=BANDANABLUEEnemy,
-            model=BANDANA_BLUE_NPC
-        ),
-        BossFightHenchman(
-            monster=BANDANABLUEEnemy,
-            model=BANDANA_BLUE_NPC
-        ),
+        BossFightHenchman(monster=BANDANABLUEEnemy, model=BANDANA_BLUE_NPC),
+        BossFightHenchman(monster=BANDANABLUEEnemy, model=BANDANA_BLUE_NPC),
+        BossFightHenchman(monster=BANDANABLUEEnemy, model=BANDANA_BLUE_NPC),
+        BossFightHenchman(monster=BANDANABLUEEnemy, model=BANDANA_BLUE_NPC),
     ]
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=BANDANAREDEnemyHenchman,
-            model=BANDANA_RED_NPC
-        ),
+        BossFightHenchman(monster=BANDANAREDEnemyHenchman, model=BANDANA_RED_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JOHNNY: Matey, it'd be mighty fun\n to spar again, but I'm tryin' to\n sleep now.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Good job, matey... But ye gotta\n fight me first if ye wanna be let\n through![await]""",
@@ -3315,6 +3281,10 @@ class YaridovichBossFight(BossFightPrize):
         FormationMember(YARIDOVICHEnemy, 183, 127),
         FormationMember(YARIDOVICHMirageEnemy, 183, 127, hidden_at_start=True),
     ]
+    _anchor_enemy = YARIDOVICHEnemy
+    _hp_slice_excluded_enemies = [YARIDOVICHMirageEnemy]
+    _additional_enemies_to_scale = [DRILLBITEnemy]
+
     _seaside_letter_name_if_seaside_boss = "Yarid"
     _seaside_letter_name_if_seaside_boss_remake = "Speary"
     _seaside_letter_name_if_volcano_boss = "some conspicuous toads circling"
@@ -3326,14 +3296,11 @@ class YaridovichBossFight(BossFightPrize):
     _big_npc = YaridOverworldObject
     _battle_npc = YaridovichLargeObject
     _statue_npc = YaridovichStatueObject
-    
+
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=DRILLBITEnemy,
-            model=SEASIDE_TOWN_FAKE_GREEN_NPC
-        ),
+        BossFightHenchman(monster=DRILLBITEnemy, model=SEASIDE_TOWN_FAKE_GREEN_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """YARIDOVICH: How could I lose to\n those...[delay] Huh? Hey, get lost![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Eee hee hee! So, you've cracked the\n code... Now, it's time for the\n REAL test![await]""",
@@ -3385,16 +3352,15 @@ class MokuraBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Mokura's collective."
     _seaside_letter_name_if_final_boss_remake = "Gassox' collective."
     _remake_name = "Gassox"
+    _anchor_enemy = MOKURAEnemy
+    _hp_slice_excluded_enemies = [FORMLESSEnemy]
 
     _small_npc = MokuraSmallObject
     _big_npc = MokuraLargeObject
     _statue_npc = MokuraStatueObject
 
     _tiny_henchmen = [
-        BossFightHenchman(
-            monster=MOKURAEnemy,
-            model=MOKURA_S_CLOUD_BLUE_NPC_2
-        ),
+        BossFightHenchman(monster=MOKURAEnemy, model=MOKURA_S_CLOUD_BLUE_NPC_2),
     ]
 
     _dialog_replacements = {
@@ -3436,33 +3402,28 @@ class Belome2BossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Belome's clones."
     _name = "Belome"
 
+    _anchor_enemy = BELOME2Enemy
+    _hp_slice_excluded_enemies = [MARIOCLONEEnemy, TOADSTOOL2Enemy]
+    _additional_enemies_to_scale = [MALLOWCLONEEnemy, GENOCLONEEnemy, BOWSERCLONEEnemy]
+
     _mook_henchmen = [
         BossFightHenchman(
-            monster=MARIOCLONEEnemy,
-            model=MARIO_CLONE_WALKING_DOWN_LEFT_NPC
+            monster=MARIOCLONEEnemy, model=MARIO_CLONE_WALKING_DOWN_LEFT_NPC
+        ),
+        BossFightHenchman(monster=MALLOWCLONEEnemy, model=MALLOW_WALKING_DOWN_LEFT_NPC),
+        BossFightHenchman(monster=GENOCLONEEnemy, model=GENO_WALKING_DOWN_LEFT_NPC),
+        BossFightHenchman(
+            monster=BOWSERCLONEEnemy, model=BOWSER_WALKING_DOWN_LEFT_NPC_2
         ),
         BossFightHenchman(
-            monster=MALLOWCLONEEnemy,
-            model=MALLOW_WALKING_DOWN_LEFT_NPC
-        ),
-        BossFightHenchman(
-            monster=GENOCLONEEnemy,
-            model=GENO_WALKING_DOWN_LEFT_NPC
-        ),
-        BossFightHenchman(
-            monster=BOWSERCLONEEnemy,
-            model=BOWSER_WALKING_DOWN_LEFT_NPC_2
-        ),
-        BossFightHenchman(
-            monster=TOADSTOOL2Enemy,
-            model=TOADSTOOL_WALKING_DOWN_LEFT_NPC_4
+            monster=TOADSTOOL2Enemy, model=TOADSTOOL_WALKING_DOWN_LEFT_NPC_4
         ),
     ]
 
     _small_npc = Belome2SmallObject
     _big_npc = Belome2LargeObject
     _statue_npc = BelomeSmallStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n        BELOME: Good night~![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, is it dinner time already?\n Come on in...[delay_60] if you dare~![await]""",
@@ -3517,7 +3478,7 @@ class JaggerBossFight(BossFightPrize):
 
     _small_npc = TerrapinObject
     _statue_npc = TerrapinStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JAGGER: It'd be fun to fight\n again, but I need a nap.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Wow, you figured out the\n password! Come on in and let's\n have a spar![await]""",
@@ -3556,7 +3517,7 @@ class Jinx1BossFight(BossFightPrize):
 
     _small_npc = Jinx1SmallObject
     _statue_npc = JinxStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JINX: Please do not disturb me.\n I am training in here.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]""",
@@ -3596,7 +3557,7 @@ class Jinx2BossFight(BossFightPrize):
 
     _small_npc = Jinx2SmallObject
     _statue_npc = JinxStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JINX: Please do not disturb me.\n I am training in here.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]""",
@@ -3636,7 +3597,7 @@ class Jinx3BossFight(BossFightPrize):
 
     _small_npc = Jinx3SmallObject
     _statue_npc = JinxStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JINX: Please do not disturb me.\n I am training in here.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]""",
@@ -3677,29 +3638,25 @@ class CulexBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Culex's travelers."
     _name = "Culex"
 
+    _anchor_enemy = CULEXEnemy
+    _hp_slice_excluded_enemies = [
+        FIRECRYSTALEnemy,
+        WATERCRYSTALEnemy,
+        EARTHCRYSTALEnemy,
+        WINDCRYSTALEnemy,
+    ]
+
     _small_npc = CulexSmallObject
     _statue_npc = CulexStatueObject
     _battle_npc = CulexLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=FIRECRYSTALEnemy,
-            model=FIRE_CRYSTAL_GRIDPLANE_NPC
-        ),
-        BossFightHenchman(
-            monster=WATERCRYSTALEnemy,
-            model=WATER_CRYSTAL_GRIDPLANE_NPC
-        ),
-        BossFightHenchman(
-            monster=EARTHCRYSTALEnemy,
-            model=EARTH_CRYSTAL_GRIDPLANE_NPC
-        ),
-        BossFightHenchman(
-            monster=WINDCRYSTALEnemy,
-            model=WIND_CRYSTAL_GRIDPLANE_NPC
-        ),
+        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FIRE_CRYSTAL_GRIDPLANE_NPC),
+        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WATER_CRYSTAL_GRIDPLANE_NPC),
+        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EARTH_CRYSTAL_GRIDPLANE_NPC),
+        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WIND_CRYSTAL_GRIDPLANE_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It will not give you thousands of\n experience points.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ You have passed the first test.\n But you're not finished yet!\n Please enter.[await]""",
@@ -3752,11 +3709,13 @@ class BoxBoyBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Box Boy's monsters."
     _seaside_letter_name_if_final_boss_remake = "Pleaseno's monsters"
     _remake_name = "Pleaseno"
+    _hp_slice_excluded_enemies = [FAUTSOEnemy]
+    _anchor_enemy = BOXBOYEnemy
 
     _small_npc = BoxBoySmallObject
     _statue_npc = MimicStatueObject
     _big_npc = BoxBoyLargeObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOX BOY: How many times are you\n gonna wake me up? Get lost![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, you're gonna PAY for waking\n me up like this![await]""",
@@ -3799,18 +3758,18 @@ class MegasmilaxBossFight(BossFightPrize):
     _seaside_letter_name_if_seaside_boss = "the Plant"
     _seaside_letter_name_if_volcano_boss = "an invasive plant spreading"
     _seaside_letter_name_if_final_boss = "Megasmilax's seedlings."
+    _anchor_enemy = MEGASMILAXEnemy
+    _extra_hp_enemies = [SMILAXEnemy, SMILAXEnemy, SMILAXEnemy]
+    _additional_enemies_to_scale = [PIRANHAPLANTEnemyHenchman]
 
     _small_npc = PiranhaPlantObject
     _statue_npc = PiranhaPlantStatueObject
     _big_npc = MegasmilaxLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=PIRANHAPLANTEnemyHenchman,
-            model=PIRANHA_PLANT_NPC
-        ),
+        BossFightHenchman(monster=PIRANHAPLANTEnemyHenchman, model=PIRANHA_PLANT_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MEGASMILAX: I'm thirsty.[await][pause] Can you\n ask Shy Away to come back here,[delay]\n please?[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Hm?[delay_30] Not often we get visitors\n down here.[delay_30] Come in...[delay_60]\n at your own risk, that is![await]""",
@@ -3885,12 +3844,9 @@ class DodoBossFight(BossFightPrize):
     _big_npc = DodoLargeObject
 
     _tiny_henchmen = [
-        BossFightHenchman(
-            monster=DODOEnemy,
-            model=FEATHER_NPC
-        ),
+        BossFightHenchman(monster=DODOEnemy, model=FEATHER_NPC),
     ]
-    
+
     _dialog_replacements = {
         # actually, don't use dialogs for dodo, just play sfx... how to handle this?
         # time this according to how long the feather sound effect is
@@ -3932,6 +3888,13 @@ class BirdettaBossFight(BossFightPrize):
         FormationMember(EGGBERTEnemy, 167, 151, hidden_at_start=True),
         FormationMember(EGGBERTEnemy, 199, 151, hidden_at_start=True),
     ]
+    _anchor_enemy = BIRDETTAEnemy
+    _hp_slice_excluded_enemies = [
+        EGGBERTEnemy,
+        EGGBERTEnemy,
+        EGGBERTEnemy,
+        EGGBERTEnemy,
+    ]
     _force_battlefield = BF23_NIMBUS_CASTLE_BIRDOS_ROOM
     _seaside_letter_name_if_volcano_boss = "a giant egg rolling"
     _seaside_letter_name_if_final_boss = "Birdo's bad eggs."
@@ -3941,19 +3904,13 @@ class BirdettaBossFight(BossFightPrize):
     _battle_npc = BirdettaLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=EGGBERTEnemy,
-            model=EGGBERT_GRIDPLANE_NPC
-        ),
+        BossFightHenchman(monster=EGGBERTEnemy, model=EGGBERT_GRIDPLANE_NPC),
     ]
 
     _tiny_henchmen = [
-        BossFightHenchman(
-            monster=EGGBERTEnemy,
-            model=EGGBERT_GRIDPLANE_NPC
-        ),
+        BossFightHenchman(monster=EGGBERTEnemy, model=EGGBERT_GRIDPLANE_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, yay, you've come to play!\n Come on in~![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Birdo's place.[await]""",
@@ -4007,11 +3964,21 @@ class ValentinaBossFight(BossFightPrize):
     ]
     _seaside_letter_name_if_volcano_boss = "a bossy lady being carried"
     _seaside_letter_name_if_final_boss = "Valentina's little birds."
+    _anchor_enemy = VALENTINAEnemy
+    _additional_enemies_to_scale = [BLUEBIRDEnemyHenchman, BIRDYEnemyHenchman]
+    # Dodo contributes 40% of his HP to the pie total, but gets 2.5x his calculated slice
+    _hp_pie_contribution_multipliers = {DODOEnemy: 0.4}
+    _hp_slice_multipliers = {DODOEnemy: 2.5}
 
     _small_npc = ValentinaSmallObject
     _statue_npc = NimbusLandStatueObject
     _battle_npc = ValentinaLargeObject
-    
+
+    _mook_henchmen = [
+        BossFightHenchman(monster=BLUEBIRDEnemyHenchman, model=BLUEBIRD_NPC),
+        BossFightHenchman(monster=BIRDYEnemyHenchman, model=BIRDY_NPC),
+    ]
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """VALENTINA: ...What? You're STILL\n here?! Go AWAY!!![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ ALRIGHT, already![delay_30] If you're going\n to annoy me like this, get in here\n and finish the job![await]""",
@@ -4081,6 +4048,11 @@ class CzarDragonBossFight(BossFightPrize):
         FormationMember(HELIOEnemy, 199, 167, hidden_at_start=True),
         FormationMember(HELIOEnemy, 231, 151, hidden_at_start=True),
     ]
+    # Anchor is the average of Czar Dragon and Zombone (excluding Helios)
+    _anchor_enemy = [CZARDRAGONEnemy, ZOMBONEEnemy]
+    _scaling_excluded_enemies = [HELIOEnemy, HELIOEnemy, HELIOEnemy, HELIOEnemy]
+    _additional_enemies_to_scale = [PYROSPHEREEnemyHenchman]
+
     _seaside_letter_name_if_seaside_boss = "the Dragon"
     _seaside_letter_name_if_volcano_boss = "a huge dragon blazing"
     _seaside_letter_name_if_final_boss = "the Czar Dragon's spawn."
@@ -4091,22 +4063,13 @@ class CzarDragonBossFight(BossFightPrize):
     _battle_npc = CzarDragonLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=HELIOEnemy,
-            model=HELIO_NPC
-        ),
-        BossFightHenchman(
-            monster=PYROSPHEREEnemyHenchman,
-            model=SPARKY_NPC
-        ),
+        BossFightHenchman(monster=HELIOEnemy, model=HELIO_NPC),
+        BossFightHenchman(monster=PYROSPHEREEnemyHenchman, model=SPARKY_NPC),
     ]
     _tiny_henchmen = [
-        BossFightHenchman(
-            monster=HELIOEnemy,
-            model=HELIO_NPC
-        ),
+        BossFightHenchman(monster=HELIOEnemy, model=HELIO_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n    CZAR DRAGON: BLARRGGGG[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ BLARRGGGG[await]""",
@@ -4163,36 +4126,30 @@ class AxemRangersBossFight(BossFightPrize):
         FormationMember(AXEMGREENEnemy, 183, 151, hidden_at_start=True),
         FormationMember(AXEMYELLOWEnemy, 215, 151, hidden_at_start=True),
     ]
+    _anchor_enemy = [
+        AXEMREDEnemy,
+        AXEMYELLOWEnemy,
+        AXEMBLACKEnemy,
+        AXEMPINKEnemy,
+        AXEMGREENEnemy,
+    ]
     _force_start_event = BE0061_ONLY_MARIO_IS_THERE
     _force_battlefield = BF39_BLADE_AXEM_RANGERS
     _seaside_letter_name_if_seaside_boss = "the Axems"
     _seaside_letter_name_if_volcano_boss = "a huge AX flying around"
     _seaside_letter_name_if_final_boss = "the Axem Rangers' stooges."
     _seaside_letter_name_if_sunken_ship_boss = "ya boi red"
-    
 
     _character_henchmen = [
-        BossFightHenchman(
-            monster=AXEMBLACKEnemy,
-            model=AXEM_BLACK_NPC 
-        ),
-        BossFightHenchman(
-            monster=AXEMYELLOWEnemy,
-            model=AXEM_YELLOW_NPC 
-        ),
-        BossFightHenchman(
-            monster=AXEMPINKEnemy,
-            model=AXEM_PINK_NPC 
-        ),
-        BossFightHenchman(
-            monster=AXEMGREENEnemy,
-            model=AXEM_GREEN_NPC 
-        ),
+        BossFightHenchman(monster=AXEMBLACKEnemy, model=AXEM_BLACK_NPC),
+        BossFightHenchman(monster=AXEMYELLOWEnemy, model=AXEM_YELLOW_NPC),
+        BossFightHenchman(monster=AXEMPINKEnemy, model=AXEM_PINK_NPC),
+        BossFightHenchman(monster=AXEMGREENEnemy, model=AXEM_GREEN_NPC),
     ]
 
     _small_npc = AxemRedObject
     _statue_npc = AxemRedStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """AXEM RED: We're busy playing Uno\n in here. Go bother someone else![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Listen up, nerd![delay_30] You may have\n figured out our password, but\n we're not going down without\n a fight![await]""",
@@ -4271,7 +4228,10 @@ class ChesterBossFight(BossFightPrize):
     _small_npc = ChesterSmallObject
     _statue_npc = MimicStatueObject
     _big_npc = ChesterLargeObject
-    
+
+    _anchor_enemy = CHESTEREnemy
+    _hp_slice_excluded_enemies = [BAHAMUTTEnemy]
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CHESTER: Go on, take it. Just let\n me go back to sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Quit draggin' your feet! Get in\n here and let's fight![await]""",
@@ -4306,6 +4266,11 @@ class KamekBossFight(BossFightPrize):
         FormationMember(KAMEKEnemy, 215, 111),
         FormationMember(TERRAPINEnemy, 167, 135, hidden_at_start=True),
     ]
+    _anchor_enemy = KAMEKEnemy
+    _scaling_excluded_enemies = [TERRAPINEnemy]
+    _hp_slice_excluded_enemies = [TERRAPINEnemy]
+    _additional_enemies_to_scale = [JINXCLONEEnemy, KINGBOMBEnemy, BAHAMUTTEnemy2]
+
     _force_start_event = BE0101_MAGIKOOPA_IS_THERE
     _seaside_letter_name_if_volcano_boss = "a hooded sorceror flying"
     _seaside_letter_name_if_final_boss = "Magikoopa's guys."
@@ -4313,30 +4278,18 @@ class KamekBossFight(BossFightPrize):
     _remake_name = "Wizakoopa"
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=JINXCLONEEnemy,
-            model=JINX_1 
-        ),
-        BossFightHenchman(
-            monster=KINGBOMBEnemy,
-            model=BOB_OMB_NPC 
-        ),
+        BossFightHenchman(monster=JINXCLONEEnemy, model=JINX_1),
+        BossFightHenchman(monster=KINGBOMBEnemy, model=BOB_OMB_NPC),
     ]
     _tiny_henchmen = [
-        BossFightHenchman(
-            monster=JINXCLONEEnemy,
-            model=JINX_1 
-        ),
-        BossFightHenchman(
-            monster=BOBOMBEnemyHenchman,
-            model=MICROBOMB_NPC
-        ),
+        BossFightHenchman(monster=JINXCLONEEnemy, model=JINX_1),
+        BossFightHenchman(monster=BOBOMBEnemyHenchman, model=MICROBOMB_NPC),
     ]
 
     _small_npc = MagikoopaSmallObject
     _statue_npc = MagikoopaStatueObject
     _big_npc = MagikoopaLargeObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MAGIKOOPA: Normally,[delay] when I\n summon an egg,[delay] it doesn't\n encapsulate me...[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ This..is..my ship!\n Come in..if you dare![await]""",
@@ -4374,12 +4327,13 @@ class BoomerBossFight(BossFightPrize):
     _force_battlefield = BF29_BOWSERS_KEEP_CHANDELIERS
     _seaside_letter_name_if_volcano_boss = "a noble soldier marching"
     _seaside_letter_name_if_final_boss = "Boomer's soldiers."
+    _hp_slice_excluded_enemies = [HANGINSHYEnemy, HANGINSHYEnemy]
 
     _small_npc = BoomerSmallObject
     _statue_npc = BoomerStatueObject
     _big_npc = BoomerOverworldObject
     _battle_npc = BoomerLargeObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOOMER: I lost fair and square.[await]\n Now it is time for me to sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Ahhhhh... So, it's YOU who solved\n my riddle![delay_30] Now, you've got to deal\n with ME![await]""",
@@ -4438,10 +4392,15 @@ class ExorBossFight(BossFightPrize):
     _force_battlefield = BF16_BOWSERS_KEEP_TURRET_EXOR
     _seaside_letter_name_if_volcano_boss = "a massive sword falling"
     _seaside_letter_name_if_final_boss = "Exor's sellswords."
+    _hp_slice_excluded_enemies = [
+        RIGHTEYEEnemy,
+        NEOSQUIDEnemy,
+    ]  # exor and left eye are minimum required to defeat so only they count
+    _anchor_enemy = [RIGHTEYEEnemy, LEFTEYEEnemy, NEOSQUIDEnemy]
 
     _small_npc = ExorSmallObject
     _statue_npc = ExorStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """  EXOR: What do you want? Get\n lost![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Halt! This ship belongs to ME!\n If you want to get through...\n bring it on![await]""",
@@ -4490,7 +4449,8 @@ class CountdownBossFight(BossFightPrize):
         FormationMember(DINGALINGEnemy, 194, 67),
     ]
     _force_battlefield = BF18_SMITHY_FACTORY_COUNT_DOWNS_PAD
-    
+    _anchor = COUNTDOWNEnemy
+
     _seaside_letter_name_if_seaside_boss = "the Clock"
     _seaside_letter_name_if_volcano_boss = "a noisy clock winding"
     _seaside_letter_name_if_final_boss = "Count Down's friends."
@@ -4499,12 +4459,9 @@ class CountdownBossFight(BossFightPrize):
     _statue_npc = CountDownStatueObject
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=DINGALINGEnemy,
-            model=DINGALING_GRIDPLANE_NPC
-        ),
+        BossFightHenchman(monster=DINGALINGEnemy, model=DINGALING_GRIDPLANE_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """COUNT DOWN: Sometimes, even an\n alarm clock needs to sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ This is not good![delay_30]\n He figured out the password![delay_30]\n ...We better do something![await]""",
@@ -4554,6 +4511,12 @@ class CloakerDominoBossFight(BossFightPrize):
         FormationMember(DOMINOEnemy, 215, 159),
         FormationMember(MADADDEREnemy, 167, 135, hidden_at_start=True),
     ]
+    _anchor_enemy = [CLOAKEREnemy, DOMINOEnemy]
+    _additional_enemies_to_scale = [EARTHLINKEnemy, CLOAKEREnemy2, DOMINOEnemy2]
+    _extra_hp_enemies = [EARTHLINKEnemy]
+    # You only fight 2 of the 4 enemies (Cloaker+EarthLink OR Domino+MadAdder)
+    _location_hp_multiplier = 0.5
+
     _force_battlefield = BF40_SMITHY_FACTORY_DOMINO_CLOAKERS_PAD
     _force_start_event = BE0052_INTRO_SCENE_DOMINO_CLOAKER_S_INTRODUCTION
     _seaside_letter_name_if_seaside_boss = "the Snake"
@@ -4563,7 +4526,7 @@ class CloakerDominoBossFight(BossFightPrize):
     _small_npc = DominoSmallObject
     _big_npc = DominoLargeObject
     _statue_npc = DominoStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """DOMINO: I'm busy wallowing in\n misery at my defeat here.[await][pause] Get lost![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Uh oh, you cracked the code...\n I don't like where this is going...[await]""",
@@ -4609,12 +4572,9 @@ class ClerkBossFight(BossFightPrize):
     _battle_npc = ClerkBattleObject
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=MADMALLETEnemyHenchman,
-            model=MAD_MALLET_NPC
-        ),
+        BossFightHenchman(monster=MADMALLETEnemyHenchman, model=MAD_MALLET_NPC),
     ]
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CLERK: I'm going to sleep for 10\n years.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Sorry, you may have figured out the\n password, but I can't allow you\n through without a fight.[await]""",
@@ -4672,17 +4632,14 @@ class ManagerBossFight(BossFightPrize):
     _seaside_letter_name_if_seaside_boss = "the Manager"
     _seaside_letter_name_if_volcano_boss = "a blue-clad smith trudging"
     _seaside_letter_name_if_final_boss = "the Manager's minions."
-    
+
     _statue_npc = ShovelKnightStatueObject
     _small_npc = ManagerSmallObject
     _big_npc = ManagerLargeObject
     _battle_npc = ManagerBattleObject
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=POUNDEREnemyHenchman,
-            model=POUNDER_NPC
-        ),
+        BossFightHenchman(monster=POUNDEREnemyHenchman, model=POUNDER_NPC),
     ]
 
     _dialog_replacements = {
@@ -4743,17 +4700,14 @@ class DirectorBossFight(BossFightPrize):
     _seaside_letter_name_if_seaside_boss = "the Director"
     _seaside_letter_name_if_volcano_boss = "a red-clad smith trudging"
     _seaside_letter_name_if_final_boss = "the Director's minions."
-    
+
     _statue_npc = ShovelKnightStatueObject
     _small_npc = DirectorSmallObject
     _big_npc = DirectorLargeObject
     _battle_npc = DirectorBattleObject
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=POUNDETTEEnemyHenchman,
-            model=POUNDETTE_NPC
-        ),
+        BossFightHenchman(monster=POUNDETTEEnemyHenchman, model=POUNDETTE_NPC),
     ]
 
     _dialog_replacements = {
@@ -4814,7 +4768,7 @@ class GunyolkBossFight(BossFightPrize):
 
     _small_npc = FactoryChiefObject
     _statue_npc = FactoryChiefStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """FACTORY CHIEF: Grrr... Leave me\n alone![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you solved it?[delay_30]\n Too bad, this is the end of the line\n for you! I won't let you through![await]""",
@@ -4853,12 +4807,26 @@ class SmithyBossFight(BossFightPrize):
     ]
     _seaside_letter_name_if_volcano_boss = "a furious weaponsmith thundering"
     _seaside_letter_name_if_final_boss = "Smithy's gang."
+    _hp_slice_excluded_enemies = [
+        MACHINEMADEBodyguardEnemy,
+        MACHINEMADEBodyguardEnemy,
+        SMELTEREnemy,
+    ]
+    _extra_hp_enemies = [SMITHY2Enemy]
+    _additional_enemies_to_scale = [
+        SMITHY2Enemy,
+        SMITHYBodyEnemy,
+        SMITHYChestEnemy,
+        SMITHYMageEnemy,
+        SMITHYSafeEnemy2,
+        SMITHYTankEnemy,
+    ]
 
     _small_npc = SmithySmallObject
     _statue_npc = SmithyStatueObject
     _big_npc = SmithyBodyOverworldObject
     _battle_npc = SmithyLargeObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """SMITHY: How utterly annoying!\n Leave me alone![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Gufaw, haw, haw![delay_30] You really think\n I'm going to let you through with\n just a password?![await]""",
@@ -4914,6 +4882,13 @@ class Punchinello2BossFight(BossFightPrize):
         FormationMember(STRONGBOBOMB4Enemy, 182, 142, hidden_at_start=True),
         FormationMember(STRONGBOBOMB2Enemy, 223, 142, hidden_at_start=True),
     ]
+    _anchor_enemy = PUNCHINELLO2Enemy
+    _hp_slice_excluded_enemies = [
+        STRONGBOBOMB3Enemy,
+        STRONGBOBOMB1Enemy,
+        STRONGBOBOMB4Enemy,
+        STRONGBOBOMB2Enemy,
+    ]
 
     _name = "Punchinello"
     _seaside_letter_name_if_seaside_boss = "Hothead"
@@ -4923,7 +4898,7 @@ class Punchinello2BossFight(BossFightPrize):
     _small_npc = Punchinello2SmallObject
     _big_npc = Punchinello2LargeObject
     _statue_npc = PunchinelloStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """PUNCHINELLO: Grrr... Leave me\n alone![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So... You figured out my\n password.[await]\n If you're not here for an\n autograph, I'll have to test you\n once more to let you through![await]""",
@@ -4983,10 +4958,11 @@ class Booster2BossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a viking riding trains"
     _seaside_letter_name_if_final_boss = "Booster's frenemies."
     _name = "Booster"
+    _hp_slice_excluded_enemies = [BOOSTERDUMMY]
 
     _small_npc = Booster2SmallObject
     _statue_npc = BoosterStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOOSTER: It's pretty cozy in here.[await][pause]\n No, you can't come in![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Eh?[delay_30] THAT was my password?![delay_30]\n I'd better fight you, just to be\n sure.[await]""",
@@ -5046,7 +5022,7 @@ class Bundt2BossFight(BossFightPrize):
     _small_npc = Bundt2SmallObject
     _statue_npc = BundtStatueObject
     _big_npc = Bundt2LargeObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BUNDT: La la la la la la la la la~[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ What a surprise! [delay_30]Welcome![await]\n Let me warm up for the feast![await]""",
@@ -5089,7 +5065,7 @@ class Johnny2Fight(BossFightPrize):
     _small_npc = Johnny2SmallObject
     _statue_npc = JohnnyStatueObject
     _big_npc = Johnny2LargeObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JOHNNY: Matey, it'd be mighty fun\n to spar again, but I'm tryin' to\n sleep now.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Good job, matey... But ye gotta\n fight me first if ye wanna be let\n through![await]""",
@@ -5122,7 +5098,6 @@ class Johnny2Fight(BossFightPrize):
     }
 
 
-
 class Belome3Fight(BossFightPrize):
     _text = "Belome 3"
     _members = [
@@ -5130,6 +5105,9 @@ class Belome3Fight(BossFightPrize):
         FormationMember(MARIOCLONESEnemy, 135, 119, hidden_at_start=True),
         FormationMember(TOADSTOOL3Enemy, 215, 159, hidden_at_start=True),
     ]
+    _additional_enemies_to_scale = [BOWSERCOPYSEnemy, GENOCLONESEnemy, MALLOWCOPYSEnemy]
+    _anchor_enemy = BELOMEEnemy3
+    _hp_slice_excluded_enemies = [MARIOCLONESEnemy, TOADSTOOL3Enemy]
 
     _seaside_letter_name_if_volcano_boss = "a hungry dog walking"
     _seaside_letter_name_if_final_boss = "Belome's clones."
@@ -5138,7 +5116,7 @@ class Belome3Fight(BossFightPrize):
     _small_npc = Belome3SmallObject
     _big_npc = Belome3LargeObject
     _statue_npc = BelomeSmallStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n        BELOME: Good night~![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, is it dinner time already?\n Come on in...[delay_60] if you dare~![await]""",
@@ -5167,13 +5145,14 @@ class Belome3Fight(BossFightPrize):
     }
 
 
-
 class Jinx4BossFight(BossFightPrize):
     _text = "Jinx 4"
     _members = [
         FormationMember(JINXEnemy4, 181, 122),
         FormationMember(TeamGaugeEnemy, 36, 200),
     ]
+    _scaling_excluded_enemies = [TeamGaugeEnemy]
+    _hp_slice_excluded_enemies = [TeamGaugeEnemy]
 
     _seaside_letter_name_if_volcano_boss = "a small figure blinking"
     _seaside_letter_name_if_final_boss = "Jinx's kouhai."
@@ -5181,7 +5160,7 @@ class Jinx4BossFight(BossFightPrize):
 
     _small_npc = Jinx4SmallObject
     _statue_npc = JinxStatueObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JINX: Please do not disturb me.\n I am training in here.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]""",
@@ -5219,6 +5198,7 @@ class Culex3DBossFight(BossFightPrize):
         FormationMember(FIRECRYS3DEnemy, 215, 143, hidden_at_start=True),
     ]
     _force_start_event = BE0077_CULEX_3D
+    _anchor_enemy = CULEX3DEnemy
 
     _seaside_letter_name_if_volcano_boss = "an ethereal knight gliding"
     _seaside_letter_name_if_final_boss = "Culex's travelers."
@@ -5227,7 +5207,7 @@ class Culex3DBossFight(BossFightPrize):
     _small_npc = CulexSmallObject
     _statue_npc = CulexStatueObject
     _battle_npc = CulexLargeObject
-    
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It will not give you thousands of\n experience points.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ You have passed the first test.\n But you're not finished yet!\n Please enter.[await]""",

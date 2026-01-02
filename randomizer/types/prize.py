@@ -389,6 +389,35 @@ class BossFightPrize(Prize):
     _mook_henchmen: list[BossFightHenchman] | None = None
     _tiny_henchmen: list[BossFightHenchman] | None = None
 
+    # Stat scaling configuration
+    # Enemies whose HP can be scaled proportionally but should NOT receive a slice of the HP "pie"
+    # (e.g., Culex's crystals, Johnny's bandana blues - the main boss gets all the HP)
+    _hp_slice_excluded_enemies: list[type[Enemy]] = []
+    # Additional enemies outside the formation that should also receive stat scaling
+    _additional_enemies_to_scale: list[type[Enemy]] = []
+    # The anchor enemy(s) for stat ratio calculations - other enemies' stats scale relative to this
+    # If None, uses the average of all formation members as the reference
+    # If a single enemy class, uses that enemy's stats as reference
+    # If a list of enemy classes, uses the average of those specific enemies as reference
+    _anchor_enemy: type[Enemy] | list[type[Enemy]] | None = None
+    # Extra enemies to include in HP slicing beyond what's in the formation
+    # (e.g., King Calamari has more tentacles in battle than formation can hold)
+    # Each entry represents one enemy instance
+    _extra_hp_enemies: list[type[Enemy]] = []
+    # Enemies to completely exclude from scaling for this prize
+    # (e.g., WaterCrystal in Johnny's formation is only there for graphical fix, not actual combat)
+    # These enemies won't be scaled and won't count toward HP slicing or reference calculations
+    _scaling_excluded_enemies: list[type[Enemy]] = []
+    # Multiplier applied to the location's HP total when this prize is the original
+    # (e.g., Cloaker/Domino fight has 4 enemies but you only fight 2, so multiply by 0.5)
+    _location_hp_multiplier: float = 1.0
+    # Multipliers for how much an enemy counts toward the pie total when dividing HP
+    # (e.g., Dodo in Valentina fight counts as 40% of his HP when dividing the pie)
+    _hp_pie_contribution_multipliers: dict[type[Enemy], float] = {}
+    # Multipliers applied to an enemy's HP slice after calculation
+    # (e.g., Dodo in Valentina fight gets 2.5x his calculated HP slice)
+    _hp_slice_multipliers: dict[type[Enemy], float] = {}
+
     _name: str = ""
     _remake_name: str = ""
     _canon_name: str = ""
@@ -427,6 +456,45 @@ class BossFightPrize(Prize):
     def tiny_henchmen(self) -> list[BossFightHenchman] | None:
         return self._tiny_henchmen
 
+    @property
+    def hp_slice_excluded_enemies(self) -> list[type[Enemy]]:
+        """Enemies whose HP can be scaled proportionally but should NOT receive a slice of the HP pie."""
+        return self._hp_slice_excluded_enemies
+
+    @property
+    def additional_enemies_to_scale(self) -> list[type[Enemy]]:
+        """Additional enemies outside the formation that should also receive stat scaling."""
+        return self._additional_enemies_to_scale
+
+    @property
+    def anchor_enemy(self) -> type[Enemy] | list[type[Enemy]] | None:
+        """The anchor enemy(s) for stat ratio calculations. Other enemies' stats scale relative to this."""
+        return self._anchor_enemy
+
+    @property
+    def extra_hp_enemies(self) -> list[type[Enemy]]:
+        """Extra enemies to include in HP slicing beyond what's in the formation."""
+        return self._extra_hp_enemies
+
+    @property
+    def scaling_excluded_enemies(self) -> list[type[Enemy]]:
+        """Enemies to completely exclude from scaling for this prize."""
+        return self._scaling_excluded_enemies
+
+    @property
+    def location_hp_multiplier(self) -> float:
+        """Multiplier applied to the location's HP total when this prize is the original."""
+        return self._location_hp_multiplier
+
+    @property
+    def hp_pie_contribution_multipliers(self) -> dict[type[Enemy], float]:
+        """Multipliers for how much an enemy counts toward the pie total when dividing HP."""
+        return self._hp_pie_contribution_multipliers
+
+    @property
+    def hp_slice_multipliers(self) -> dict[type[Enemy], float]:
+        """Multipliers applied to an enemy's HP slice after calculation."""
+        return self._hp_slice_multipliers
 
     @property
     def battle_npc(self) -> type[BossNPC] | None:

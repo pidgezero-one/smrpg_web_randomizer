@@ -115,6 +115,7 @@ from ..data.allies.palettes.types import (
     ToadstoolPalette,
 )
 from .enemy import Enemy
+from ..data.enemies.enemies import DODOEnemy, SHELLYEnemy, RIGHTEYEEnemy
 
 PrizeLocationT = TypeVar("PrizeLocationT", bound=PrizeLocation)
 from .settings import Settings
@@ -800,6 +801,9 @@ class GameWorld:
         ):
             self._randomize_enemy_stats()
 
+        # Update HP-based AI thresholds after all stat mutations are complete
+        self._update_enemy_hp_thresholds()
+
         # Define consumable groups for enemy drops
         consumables_group_1 = [
             MushroomItem,
@@ -963,6 +967,33 @@ class GameWorld:
     def _shuffle_shops(self) -> None:
         """Shuffle the contents of all shops based on settings."""
         shuffle_shops(self)
+
+    def _update_enemy_hp_thresholds(self) -> None:
+        """Update HP-based AI script thresholds for specific enemies.
+
+        This must be called AFTER both boss stat scaling and enemy stat mutations
+        are complete, so the thresholds reflect the final HP values.
+        """
+        # Update Dodo's AI script HP threshold (60% of HP triggers flee behavior)
+        dodo = self.get_enemy(DODOEnemy)
+        _, _, dodo_hp_check = self.monster_scripts.get_command_by_identifier("dodo_low_hp_check")
+        cast(IfHPBelow, dodo_hp_check).set_threshold(round(dodo.hp * 0.6))
+
+        # Update Shelly's AI script HP thresholds (80%, 60%, 40%, 20% triggers phase changes)
+        shelly = self.get_enemy(SHELLYEnemy)
+        for identifier, percent in [
+            ("shelly_low_hp_check_80_percent", 0.8),
+            ("shelly_low_hp_check_60_percent", 0.6),
+            ("shelly_low_hp_check_40_percent", 0.4),
+            ("shelly_low_hp_check_20_percent", 0.2),
+        ]:
+            _, _, shelly_hp_check = self.monster_scripts.get_command_by_identifier(identifier)
+            cast(IfHPBelow, shelly_hp_check).set_threshold(round(shelly.hp * percent))
+
+        # Update Right Eye's revival HP in battle animation scripts (120% of HP)
+        right_eye = self.get_enemy(RIGHTEYEEnemy)
+        right_eye_revival_cmd = self.get_battle_animation_command_by_name("right_eye_revival_hp")
+        cast(SetAMEM16BitToConst, right_eye_revival_cmd).set_value(round(right_eye.hp * 1.2))
 
     def get_patch(self) -> Patch:
         self._report_progress("Rendering game data", 75)

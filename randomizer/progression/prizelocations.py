@@ -6,7 +6,6 @@ from ..types.prizelocation import (
     BossFightLocationHenchmanNPC,
     BossFightLocationNPC,
     BossSpriteSize,
-    PrizeLocation,
     StandingLocation,
     TreasureChestLocationRow1,
     TreasureChestLocationRow2,
