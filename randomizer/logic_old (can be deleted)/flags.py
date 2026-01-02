@@ -1262,7 +1262,7 @@ class BossShuffleScaleStats(SelectOneFlag):
     id = "scale"
 
 
-class BossReplaceMinigameSprites(BooleanFlag):
+class KeepMinigameSpritesIntact(BooleanFlag):
     name = "Replace important NPCs to match shuffled bosses"
     description = """If enabled: All sprites related to an area boss will be changed to match the shuffled positions of bosses.
 <br>
@@ -1664,7 +1664,7 @@ class BossPositionSubcategory(FlagCategory):
     flags = [
         BossShuffle,
         BossShuffleScaleStats,
-        BossReplaceMinigameSprites,
+        KeepMinigameSpritesIntact,
         DifferentiateRepeatedBosses,
         ShuffledBosses,
     ]

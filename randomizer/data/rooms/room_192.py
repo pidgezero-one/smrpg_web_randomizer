@@ -369,8 +369,8 @@ room = Room(
             direction=SOUTHWEST),
         RegularNPC( # 10
             npc=npcs.BOOSTER_NPC_3,
-            initiator=EventInitiator.NONE,
-            event_script=E1360_CURTAIN_1,
+            initiator=EventInitiator.DO_ANYTHING,
+            event_script=E1925_POSTGAME_TOWER_FIGHT,
             action_script=A0000_DO_NOTHING,
             visible=False,
             x=5,

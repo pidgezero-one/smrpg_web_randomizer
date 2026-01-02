@@ -1546,8 +1546,8 @@ class KnifeGuyPrizeThreshold(RangeFlag):
 
 # ✅
 class SuitePrize1Threshold(RangeFlag):
-    _name = "Required Suite prize #1 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the first special gift (normally a Flower Tab after 1 stay)."
+    _name = "Required Suite prize #1 check-ins"
+    _description = "The number of times required to stay (paid check-ins, overstays don't count) in the Marrymore Suite to receive the first special gift (normally a Flower Tab after 1 stay)."
     _default = 1
     min_value = 1
     max_value = 249
@@ -1556,8 +1556,8 @@ class SuitePrize1Threshold(RangeFlag):
 
 # ✅
 class SuitePrize2Threshold(RangeFlag):
-    _name = "Required Suite prize #2 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the second special gift (normally a Flower Jar after 3 stays)."
+    _name = "Required Suite prize #2 check-ins"
+    _description = "The number of times required to stay (paid check-ins, overstays don't count) in the Marrymore Suite to receive the second special gift (normally a Flower Jar after 3 stays)."
     _default = 2
     min_value = 2
     max_value = 250
@@ -1566,8 +1566,8 @@ class SuitePrize2Threshold(RangeFlag):
 
 # ✅
 class SuitePrize3Threshold(RangeFlag):
-    _name = "Required Suite prize #3 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the third special gift (normally a Frog Coin after 5 stays)."
+    _name = "Required Suite prize #3 check-ins"
+    _description = "The number of times required to stay (paid check-ins, overstays don't count) in the Marrymore Suite to receive the third special gift (normally a Frog Coin after 5 stays)."
     _default = 3
     min_value = 3
     max_value = 251
@@ -1576,8 +1576,8 @@ class SuitePrize3Threshold(RangeFlag):
 
 # ✅
 class SuitePrize4Threshold(RangeFlag):
-    _name = "Required Suite prize #4 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fourth special gift (normally 2 Frog Coins after 10 stays)."
+    _name = "Required Suite prize #4 check-ins"
+    _description = "The number of times required to stay (paid check-ins, overstays don't count) in the Marrymore Suite to receive the fourth special gift (normally 2 Frog Coins after 10 stays)."
     _default = 4
     min_value = 4
     max_value = 252
@@ -1586,8 +1586,8 @@ class SuitePrize4Threshold(RangeFlag):
 
 # ✅
 class SuitePrize5Threshold(RangeFlag):
-    _name = "Required Suite prize #5 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the fifth special gift (normally 3 Frog Coins after 15 stays)."
+    _name = "Required Suite prize #5 check-ins"
+    _description = "The number of times required to stay (paid check-ins, overstays don't count) in the Marrymore Suite to receive the fifth special gift (normally 3 Frog Coins after 15 stays)."
     _default = 5
     min_value = 5
     max_value = 253
@@ -1596,8 +1596,8 @@ class SuitePrize5Threshold(RangeFlag):
 
 # ✅
 class SuitePrize6Threshold(RangeFlag):
-    _name = "Required Suite prize #6 stays"
-    _description = "The number of times required to stay (paid, overstays don't count) in the Marrymore Suite to receive the sixth special gift (normally 20 Frog Coins after 200 stays)."
+    _name = "Required Suite prize #6 check-ins"
+    _description = "The number of times required to stay (paid check-ins, overstays don't count) in the Marrymore Suite to receive the sixth special gift (normally 20 Frog Coins after 200 stays)."
     _default = 6
     min_value = 6
     max_value = 254
@@ -1619,7 +1619,7 @@ class SuperJump2Threshold(RangeFlag):
     _name = "Required Super Jumps for prize #2"
     _description = """The number of consecutive Super Jumps required for the second prize in Monstro Town (normally a Super Suit at 100).
 <br>
-<br>A Super Suit is more likely to be here if you keep the threshold at 100 and don't decrease it."""
+<br>A Super Suit is more likely to be here if you keep the threshold at 100 and don't lower it."""
     _default = 100
     min_value = 2
     max_value = 100
@@ -1896,11 +1896,17 @@ class BossShuffleScaleStats(SelectOneFlag[BossScaleOptions]):
     _requires_all = [(BossShuffle(), True)]
 
 
-class BossReplaceMinigameSprites(BooleanFlag):
-    _name = "Replace important NPCs to match shuffled bosses"
-    _description = """If enabled: All sprites related to an area boss will be changed to match the shuffled positions of bosses.
+class KeepMinigameSpritesIntact(BooleanFlag):
+    _name = "Keep some shuffled NPCs intact"
+    _description = """If disabled: All sprites related to an area boss and their corresponding battles will be changed to match the shuffled positions of bosses. Note that sprite replacements will not affect gameplay, i.e. hitboxes stay the same for the Booster Hill henchmen, the Mack Skip NPCs, etc.
 <br>
-<br>If disabled: Some sprites will be left unchanged from the original game to accommodate visual cues (such as the Booster Hill snifits, or Dodo in his statue room) or progression knowledge on required sub-fights (such as the Bandana Reds in Sunken Ship)."""
+<br>If enabled:
+<ul>
+<li>Dodo will always peck the statues even if he is not the statue room boss fight.</li>
+<li>The snifits on Booster Hill will not be replaced by any henchmen belonging to the first tower boss.</li>
+<li>The shy guys in the Mushroom Kingdom throne room will not be swapped out for other sprites.</li>
+<li>All Mushroom Kingdom shy guys, Moleville crooks and bob-ombs, Booster Pass apprentice, Booster Tower snifits, Bandana Reds, and inner factory Mad Mallets battles will not receive new enemies.</li>
+</ul>."""
     _id = "allsprites"
     _requires_all = [(BossShuffle(), True)]
 
@@ -2480,7 +2486,7 @@ class BossPositionSubcategory(FlagCategory):
     _flags: list[type[Flag]] = [
         BossShuffle,
         BossShuffleScaleStats,
-        BossReplaceMinigameSprites,
+        KeepMinigameSpritesIntact,
         DifferentiateRepeatedBosses,
         IncludeHenchmen,
         ShuffledBosses,

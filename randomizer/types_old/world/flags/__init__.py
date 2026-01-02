@@ -122,7 +122,7 @@ from .flags import (
     BossShuffle,
     BossShuffleScaleStats,
     SafeLogicProgression,
-    BossReplaceMinigameSprites,
+    KeepMinigameSpritesIntact,
     DifferentiateRepeatedBosses,
     ShuffledBosses,
     EnemyStats,

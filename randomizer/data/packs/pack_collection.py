@@ -3961,12 +3961,29 @@ packs[PACK151_UNUSED] = FormationPack(
         can_run_away=False)
 )
 #
-packs[PACK152_UNUSED] = FormationPack(
+packs[PACK152_MINES_BOSS_ROOM_HENCHMAN] = FormationPack(
     Formation(
         members=[
-            FormationMember(MACHINEMADEBodyguardEnemy, 199, 119),
-            FormationMember(MACHINEMADEBodyguardEnemy, 135, 119),
-            FormationMember(MACHINEMADEBodyguardEnemy, 199, 151),
+            FormationMember(BOBOMBEnemyStatic, 183, 127),
+        ],
+        music=NormalBattleMusic(),
+        unknown_bit=True)
+    ,
+    Formation(
+        members=[
+            FormationMember(BOBOMBEnemyStatic, 135, 119),
+            FormationMember(BOBOMBEnemyStatic, 199, 151),
+            FormationMember(CLUSTEREnemy, 199, 119),
+        ],
+        music=NormalBattleMusic(),
+        unknown_bit=True)
+    ,
+    Formation(
+        members=[
+            FormationMember(BOBOMBEnemyStatic, 151, 127),
+            FormationMember(BOBOMBEnemyStatic, 167, 103),
+            FormationMember(BOBOMBEnemyStatic, 199, 151),
+            FormationMember(BOBOMBEnemyStatic, 215, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True)

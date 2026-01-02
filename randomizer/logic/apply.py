@@ -1,6 +1,7 @@
 """Apply the results of the shuffler"""
 
 from typing import cast
+from uuid import uuid4
 import random
 
 from randomizer.data.variables.dialog_names import DI2908_TREASURE_SELLER_ITEM_2, DI2911_TREASURE_SELLER_ITEM_1, DI2914_TREASURE_SELLER_ITEM_3
@@ -28,6 +29,9 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     CreatePacketAt7010WithEvent,
     SummonObjectToSpecificLevel,
     EnableObjectTriggerInSpecificLevel,
+    JmpIfVarEqualsConst,
+    SetVarToConst,
+    StartBattleWithPackAt700E,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
     AreaObject,
@@ -35,14 +39,16 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object i
 from smrpgpatchbuilder.datatypes.levels.classes import BaseRoomObject
 from ..data.variables.event_script_names import *
 from ..data.variables.variable_names import (
+    PRIMARY_TEMP_7000,
     STAR_PIECE_GRANT_DIRECTIONAL_BIT,
     STAR_PIECE_GRANT_DIRECTIONAL_BIT_2,
     BOSS_VICTORY_COUNTER,
+    BATTLE_PACK_ID,
 )
 from ..data.variables.room_names import *
 from ..data.rooms.npcs import EMPTY_NPC
 from ..types.flags import CharacterStats
-from ..types.prize import SpellPrize, CharacterPrize, StandardPrize
+from ..types.prize import BossFightPrize, SpellPrize, CharacterPrize, StandardPrize
 from ..progression.prizelocations import (
     StarHillStarPiece,
     MarioSpell1,
@@ -93,7 +99,6 @@ from ..progression.prizes import FirstMimicFightLauncher, SecondMimicFightLaunch
 
 
 def apply_shuffler_results(world: GameWorld) -> None:
-
     # set spells and the levels at which they are learned
     for a in world.allies._allies:
         for l in a.levels:
@@ -211,6 +216,8 @@ def apply_shuffler_results(world: GameWorld) -> None:
     builders: dict[
         int, tuple[list[UsableEventScriptCommand], list[UsableEventScriptCommand]]
     ] = {}
+    # Initialize henchman battle pack selector
+    builders[E1189_HENCHMAN_BATTLE_PACK_SELECTOR] = ([], [])
     for place in world.locations.values():
         # Construct prize granter hub events
         # skip frog disciple locations, they're set in shop shuffler
@@ -219,13 +226,24 @@ def apply_shuffler_results(world: GameWorld) -> None:
             if ctr not in builders:
                 builders[ctr] = ([], [])
             if isinstance(place, BossFightLocation):
-                decision, execution = place.render(world)
+                decision, execution, henchmen_packs = place.render(world)
+                # Add henchmen event script battle packs
+                for room_id, pack_id in henchmen_packs:
+                    identifier = str(uuid4())
+                    builders[E1189_HENCHMAN_BATTLE_PACK_SELECTOR][0].append(
+                        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room_id, [identifier])
+                    )
+                    builders[E1189_HENCHMAN_BATTLE_PACK_SELECTOR][1].extend([
+                        SetVarToConst(BATTLE_PACK_ID, pack_id, identifier=identifier),
+                        StartBattleWithPackAt700E(),
+                        Return(),
+                    ])
             else:
                 decision, execution = place.render()
             d_flat = [cmd for l in decision for cmd in l]
             builders[ctr][0].extend(d_flat)
             builders[ctr][1].extend(execution)
-
+            
             if isinstance(place, PacketLocation):
                 # set the packet graphic that will load for this prize location type
                 cast(
@@ -248,13 +266,13 @@ def apply_shuffler_results(world: GameWorld) -> None:
                     )
                 for n, room_id in npcs:
                     npc = cast(AreaObject, n)
-                    room = world.rooms._rooms[room_id]
-                    assert room is not None
+                    room_id = world.rooms._rooms[room_id]
+                    assert room_id is not None
                     if place.prize is not None and place.prize.model is not None:
                         model = place.prize.model().base
                     else:
                         model = EMPTY_NPC
-                    cast(BaseRoomObject, room.get_npc_by_target_id(npc))._npc = model
+                    cast(BaseRoomObject, room_id.get_npc_by_target_id(npc))._npc = model
             elif isinstance(place, BossFightLocation):
                 # TODO: boss shuffler happens here
                 # see if we can defer dialog setters until cosmetics section, or at least the parts that search/replace names (remake might affect stuff)

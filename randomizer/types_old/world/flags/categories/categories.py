@@ -16,7 +16,7 @@ from randomizer.types.world.flags import (
     BiasItemShuffle,
     BiasShopShuffle,
     BoosterTowerGate,
-    BossReplaceMinigameSprites,
+    KeepMinigameSpritesIntact,
     BossShuffle,
     BossShuffleMusic,
     BossShuffleScaleStats,
@@ -352,7 +352,7 @@ class BossPositionSubcategory(FlagCategory):
         BossShuffle,
         BossShuffleScaleStats,
         SafeLogicProgression,
-        BossReplaceMinigameSprites,
+        KeepMinigameSpritesIntact,
         DifferentiateRepeatedBosses,
         ShuffledBosses,
     ]

@@ -1262,7 +1262,7 @@ class SafeLogicProgression(BooleanFlag):
 <br>This check is redundant if "Scale boss stats" is not set to "Match to area"."""
 
 
-class BossReplaceMinigameSprites(BooleanFlag):
+class KeepMinigameSpritesIntact(BooleanFlag):
     """Setting to include Dodo minigame, booster hill, and ship pirate battles to be affected by boss shuffle"""
 
     _id: str = "allsprites"

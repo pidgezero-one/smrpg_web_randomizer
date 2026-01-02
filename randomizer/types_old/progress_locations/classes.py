@@ -147,7 +147,7 @@ from randomizer.types.world.flags import (
     FireworksOptions,
     ShuffleLocationSelector,
     AvailableSpells,
-    BossReplaceMinigameSprites,
+    KeepMinigameSpritesIntact,
     EXPStarsAnywhere,
     EnabledBossChecks,
     EnabledRegularChecks,
@@ -585,7 +585,7 @@ class BossFightLocation(ProgressLocation):
         fill: BossModelFill | UniqueHenchmanFill | RepeatableHenchmanFill,
         new_occupant: Boss | Henchman | None):
         if fill.minigames_only and not self.world.settings.is_boolean_flag_enabled(
-            BossReplaceMinigameSprites
+            KeepMinigameSpritesIntact
         ):
             return
         if fill.occupant is None:
@@ -721,7 +721,7 @@ class BossFightLocation(ProgressLocation):
                 dialog_id
                 in self.contents.dialog_replacements_if_mandatory_fights_changed
                 and self.world.settings.is_boolean_flag_enabled(
-                    BossReplaceMinigameSprites
+                    KeepMinigameSpritesIntact
                 )
             ):
                 self.world.dialogs.replace_dialog(

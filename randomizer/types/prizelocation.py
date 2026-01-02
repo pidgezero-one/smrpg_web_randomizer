@@ -2,18 +2,24 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 from uuid import uuid4
 from enum import StrEnum
+import random
 from ..logic.utils import debug_time
 
 from .prize import (
     Prize,
     EXPStarPrize,
     BossFightPrize,
+    BossFightHenchman,
     CharacterPrize,
     StarPiecePrize,
     ItemPrize,
     SpellPrize,
     KeyPrize,
 )
+from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
+    FormationMember,
+)
+from ..logic.shufflers.enemies import generate_formation_coordinates
 
 # Note: DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize imported lazily
 # in InvisibleFlagLocation.originally_held to avoid circular import
@@ -38,7 +44,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     StartBattleAtBattlefield,
     StartBattleWithPackAt700E,
     SetVarToConst,
-    JmpToEvent
+    JmpToEvent,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
@@ -52,8 +58,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
     AreaObject,
     Battlefield,
 )
-from smrpgpatchbuilder.datatypes.levels.classes import RegularNPC, EventInitiator
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHEAST
+from smrpgpatchbuilder.datatypes.levels.classes import RegularNPC, EventInitiator, VramStore
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHEAST, SOUTHWEST
 from .base import CategorizationOption
 from .packet_type import PacketType
 from ..data.rooms.npcs import EMPTY_NPC_3
@@ -64,10 +70,12 @@ from ..data.variables.variable_names import (
     INVISIBLE_FLAG_3_FOUND,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import Packet
+
 if TYPE_CHECKING:
     from ..types.logic import Inventory
     from ..types.gameworld import GameWorld
     from ..progression.prizes import SmithyBossFight
+    from ..types.enemy import Enemy
 
 # Module-level cache for lazy imports to avoid repeated import overhead in hot paths
 # These are populated on first access to avoid circular import issues
@@ -1182,7 +1190,10 @@ class StandardPrizeLocation(PrizeLocation):
 
         # Check if this location is disabled for progression items
         # This includes key items, star pieces, mimic launchers, and fireworks
-        if isinstance(prize, (KeyPrize, StarPiecePrize, MimicFightInitiatorPrize, RegularFireworksPrize)):
+        if isinstance(
+            prize,
+            (KeyPrize, StarPiecePrize, MimicFightInitiatorPrize, RegularFireworksPrize),
+        ):
             enabled_check = world.settings.get_flag(EnabledRegularChecks)
             for m in enabled_check.disabled:
                 if self.__class__ == m.value:
@@ -1284,14 +1295,135 @@ class RiverLocation(StandardPrizeLocation):
         return self.prize.river_grant
 
 
+class BossFightLocationHenchmanNPC:
+    _pack_id: int | None = None
+    _room_ids: list[int]
+    _npc_ids: list[AreaObject]
+    _skip_swap_if_flag: list[type] | None = None
+
+    @property
+    def room_ids(self) -> list[int]:
+        return self._room_ids
+
+    @property
+    def npc_ids(self) -> list[AreaObject]:
+        return self._npc_ids
+
+    @property
+    def pack_id(self) -> int | None:
+        return self._pack_id
+
+    @property
+    def skip_swap_if_flag(self) -> list[type] | None:
+        return self._skip_swap_if_flag
+
+    def __init__(
+        self,
+        room_ids: list[int],
+        npc_ids: list[AreaObject],
+        pack_id: int | None = None,
+        skip_swap_if_flag: type | list[type] | None = None,
+    ):
+        self._room_ids = room_ids
+        self._npc_ids = npc_ids
+        self._pack_id = pack_id
+        if skip_swap_if_flag is None:
+            self._skip_swap_if_flag = None
+        elif isinstance(skip_swap_if_flag, list):
+            self._skip_swap_if_flag = skip_swap_if_flag
+        else:
+            self._skip_swap_if_flag = [skip_swap_if_flag]
+
+    def should_skip_swap(self, world: GameWorld) -> bool:
+        """Check if this slot should skip NPC/pack swapping based on enabled flags."""
+        if self._skip_swap_if_flag is None:
+            return False
+        return any(world.settings.isflag_enabled(flag) for flag in self._skip_swap_if_flag)
+
+
+class BossSpriteSize(StrEnum):
+    SMALL = "Small"
+    LARGE = "Medium"
+    BATTLE = "Large"
+    STATUE = "Statue"
+
+
+class BossFightLocationNPC:
+    _room_id: int
+    _npc_id: AreaObject
+    _max_sprite_size: BossSpriteSize = BossSpriteSize.SMALL
+    _sequence_setter_event_id: int | None = None
+
+    @property
+    def room_id(self) -> int:
+        return self._room_id
+
+    @property
+    def npc_id(self) -> AreaObject:
+        return self._npc_id
+
+    @property
+    def max_sprite_size(self) -> BossSpriteSize:
+        return self._max_sprite_size
+
+    @property
+    def sequence_setter_event_id(self) -> int | None:
+        return self._sequence_setter_event_id
+
+    def __init__(
+        self,
+        room_id: int,
+        npc_id: AreaObject,
+        max_sprite_size: BossSpriteSize = BossSpriteSize.SMALL,
+        sequence_setter_event_id: int | None = None,
+    ):
+        self._room_id = room_id
+        self._npc_id = npc_id
+        self._max_sprite_size = max_sprite_size
+        self._sequence_setter_event_id = sequence_setter_event_id
+
+
 class BossFightLocation(PrizeLocation):
-    _post_unlocks_event_id: int
-    _pack_id: int
     _container_event: int = E0353_BOSS_BATTLE
+
+    _pack_id: int
+    _post_unlocks_event_id: int
+
+    _henchman_packs: list[int] | None = None
+
+    _dialogs_expecting_replacement: list[int] = []
+
+    _npc_slots: list[BossFightLocationNPC] | None = None
+    _character_henchman_slots: list[BossFightLocationHenchmanNPC] | None = None
+    _mook_henchman_slots: list[BossFightLocationHenchmanNPC] | None = None
+    _tiny_henchman_slots: list[BossFightLocationHenchmanNPC] | None = None
+    _statue_slots: list[BossFightLocationNPC] | None = None
+
+    @property
+    def statue_slots(self) -> list[BossFightLocationNPC] | None:
+        return self._statue_slots
+
+    @property
+    def npc_slots(self) -> list[BossFightLocationNPC] | None:
+        return self._npc_slots
+    @property
+    def character_henchman_slots(self) -> list[BossFightLocationHenchmanNPC] | None:
+        return self._character_henchman_slots
+    @property
+    def mook_henchman_slots(self) -> list[BossFightLocationHenchmanNPC] | None:
+        return self._mook_henchman_slots
+    
+    @property
+    def tiny_henchman_slots(self) -> list[BossFightLocationHenchmanNPC] | None:
+        return self._tiny_henchman_slots
 
     @property
     def pack_id(self) -> int:
         return self._pack_id
+
+    @property
+    def henchman_packs(self) -> list[int] | None:
+        return self._henchman_packs
 
     def post_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
@@ -1387,9 +1519,128 @@ class BossFightLocation(PrizeLocation):
 
         return super().can_accept(prize, inventory, world)
 
+    def _apply_henchmen(self, world: GameWorld) -> list[tuple[int, int]]:
+        """Assign henchmen to slots and set their NPC models and battle packs.
+
+        Returns a list of (room_id, pack_id) tuples for henchmen that need
+        event script battle pack selectors (non-BattlePackNPC objects).
+        """
+        from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC
+
+        assert isinstance(self.prize, BossFightPrize)
+
+        # Get lazy imports for special boss handling
+        KamekBossFight = _get_cached_import("KamekBossFight")
+        CountdownBossFight = _get_cached_import("CountdownBossFight")
+        BundtBossFight = _get_cached_import("BundtBossFight")
+
+        henchmen_assignments: list[tuple[BossFightLocationHenchmanNPC, BossFightHenchman]] = []
+        event_script_battle_packs: list[tuple[int, int]] = []
+
+        # Assign mook henchmen
+        if self.mook_henchman_slots and self.prize.mook_henchmen:
+            # Filter out slots that should skip swapping
+            active_mook_slots = [s for s in self.mook_henchman_slots if not s.should_skip_swap(world)]
+            if active_mook_slots:
+                mooks = random.choices(self.prize.mook_henchmen, k=len(active_mook_slots))
+                henchmen_assignments.extend(zip(active_mook_slots, mooks))
+                for slot, henchman in zip(active_mook_slots, mooks):
+                    if slot.pack_id is None:
+                        continue
+                    formation_size = random.triangular(0, 5, 2)
+                    if isinstance(self.prize, (KamekBossFight, CountdownBossFight)):
+                        formation_size = 1
+                    members: list[type[Enemy]] = [
+                        h.monster for h in random.choices(self.prize.mook_henchmen, k=int(formation_size))
+                        if h.monster is not None
+                    ]
+                    if henchman.monster is not None:
+                        members.append(henchman.monster)
+                    coords = generate_formation_coordinates(len(members))
+                    formation_members: list[FormationMember | None] = [
+                        FormationMember(m, c[0], c[1]) for m, c in zip(members, coords)
+                    ]
+                    # Set the formation on the henchman pack
+                    henchman_pack = world.battle_packs._packs[slot.pack_id]
+                    for f in henchman_pack.formations:
+                        f.set_members(formation_members)  # pyright: ignore[reportArgumentType]
+
+        # Assign character henchmen
+        if self.character_henchman_slots:
+            # Filter out slots that should skip swapping
+            active_char_slots = [s for s in self.character_henchman_slots if not s.should_skip_swap(world)]
+
+            chars: list[BossFightHenchman] = []
+            if self.prize.character_henchmen is not None and len(self.prize.character_henchmen) >= len(active_char_slots):
+                chars.extend(self.prize.character_henchmen[:len(active_char_slots)])
+            elif self.prize.character_henchmen is not None:
+                chars.extend(self.prize.character_henchmen)
+
+            for slot, henchman in zip(active_char_slots[:len(chars)], chars):
+                if slot.pack_id is not None and henchman.monster is not None:
+                    fr: FormationMember = FormationMember(henchman.monster, 183, 127)
+                    henchman_pack = world.battle_packs._packs[slot.pack_id]
+                    for f in henchman_pack.formations:
+                        f.set_members([fr])  # pyright: ignore[reportArgumentType]
+            henchmen_assignments.extend(zip(active_char_slots[:len(chars)], chars))
+
+            # Fill remaining character slots with mooks if needed
+            if len(chars) < len(active_char_slots) and self.prize.mook_henchmen is not None:
+                mooks = random.choices(self.prize.mook_henchmen, k=len(active_char_slots) - len(chars))
+                for slot, henchman in zip(active_char_slots[len(chars):], mooks):
+                    if slot.pack_id is None:
+                        continue
+                    formation_size = random.triangular(0, 5, 2)
+                    if isinstance(self.prize, (KamekBossFight, CountdownBossFight)):
+                        formation_size = 1
+                    members: list[type[Enemy]] = [
+                        h.monster for h in random.choices(self.prize.mook_henchmen, k=int(formation_size))
+                        if h.monster is not None
+                    ]
+                    if henchman.monster is not None:
+                        members.append(henchman.monster)
+                    coords = generate_formation_coordinates(len(members))
+                    formation_members: list[FormationMember | None] = [
+                        FormationMember(m, c[0], c[1]) for m, c in zip(members, coords)
+                    ]
+                    if isinstance(self.prize, BundtBossFight):
+                        for _ in range(4):
+                            formation_members.insert(0, None)
+                    # Set the formation on the henchman pack
+                    henchman_pack = world.battle_packs._packs[slot.pack_id]
+                    for f in henchman_pack.formations:
+                        f.set_members(formation_members)  # pyright: ignore[reportArgumentType]
+                henchmen_assignments.extend(zip(active_char_slots[len(chars):], mooks))
+
+        # Assign tiny henchmen
+        if self.tiny_henchman_slots and self.prize.tiny_henchmen:
+            # Filter out slots that should skip swapping
+            active_tiny_slots = [s for s in self.tiny_henchman_slots if not s.should_skip_swap(world)]
+            if active_tiny_slots:
+                blobs = random.choices(self.prize.tiny_henchmen, k=len(active_tiny_slots))
+                henchmen_assignments.extend(zip(active_tiny_slots, blobs))
+
+        # Set NPC models and battle packs for all assigned henchmen
+        for slot, henchman in henchmen_assignments:
+            for room_id, room_target in zip(slot.room_ids, slot.npc_ids):
+                room = world.rooms._rooms[room_id]
+                assert room is not None
+                obj = room.get_npc_by_target_id(room_target)
+                assert obj is not None
+                assert henchman.model is not None
+                obj._npc = henchman.model
+                if slot.pack_id is not None:
+                    if isinstance(obj, BattlePackNPC):
+                        obj.set_battle_pack(slot.pack_id)
+                    else:
+                        # Need event script for battle pack selection
+                        event_script_battle_packs.append((room_id, slot.pack_id))
+
+        return event_script_battle_packs
+
     def render(
         self, world: GameWorld
-    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
 
         # update the battle pack
         # doing it this way means that you can still run away in the dojo, etc
@@ -1402,12 +1653,45 @@ class BossFightLocation(PrizeLocation):
             if self.prize.force_start_event is not None:
                 f.set_run_event_at_load(self.prize.force_start_event)
 
+        # Set NPC slots with boss models
+        if self.npc_slots is not None:
+            for slot in self.npc_slots:
+                room = world.rooms._rooms[slot.room_id]
+                assert room is not None
+                obj = room.get_npc_by_target_id(slot.npc_id)
+                assert obj is not None
+                if slot.max_sprite_size == BossSpriteSize.BATTLE:
+                    m = self.prize.battle_npc
+                elif slot.max_sprite_size == BossSpriteSize.LARGE:
+                    m = self.prize.large_npc
+                elif slot.max_sprite_size == BossSpriteSize.STATUE:
+                    m = self.prize.statue_npc
+                else:
+                    m = self.prize.small_npc
+                assert m is not None
+                obj._npc = m().base
+
+        # Set statue slots with statue models
+        if self.statue_slots is not None:
+            for slot in self.statue_slots:
+                room = world.rooms._rooms[slot.room_id]
+                assert room is not None
+                obj = room.get_npc_by_target_id(slot.npc_id)
+                assert obj is not None
+                m = self.prize.statue_npc
+                assert m is not None
+                base = m().base
+                obj._npc = base
+                if base.directions == VramStore.DIR2_SWSE:
+                    obj.direction = SOUTHWEST
+
+        # Assign and set henchmen
+        henchmen_event_packs = self._apply_henchmen(world)
+
         # any gating tied to the location or its contained boss needs to be written
         world.event_scripts.get_script_by_id(self._post_unlocks_event_id).set_contents(
             self.post_unlocks(world).contents
         )
-
-        # TODO model and henchmen replacements
 
         # return the contents for event 353
         # test this, not sure if this divide will work for mimics anywhere, esp if they end up in chests in rooms that normally dont have battles
@@ -1426,6 +1710,7 @@ class BossFightLocation(PrizeLocation):
                     StartBattleWithPackAt700E(),
                     Return(),
                 ],
+                henchmen_event_packs,
             )
         assert len(self._rooms) == len(
             self.battlefields
@@ -1452,6 +1737,7 @@ class BossFightLocation(PrizeLocation):
                 for room, _, battle_id in battles
             ],
             second_array,
+            henchmen_event_packs,
         )
 
 
@@ -1521,14 +1807,22 @@ class StarPieceLocation(PrizeLocation):
             return False
 
         return super().can_accept(prize, inventory, world)
-    
+
     _container_event: int = E0167_BOSS_GRANT_STAR_PIECE
 
     def render(
         self,
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         identifier = str(uuid4())
-        grant = EventScript([JmpToEvent(E3092_STAR_PIECE_GRANT, identifier=identifier) if self.prize is not None else Return(identifier=identifier)])
+        grant = EventScript(
+            [
+                (
+                    JmpToEvent(E3092_STAR_PIECE_GRANT, identifier=identifier)
+                    if self.prize is not None
+                    else Return(identifier=identifier)
+                )
+            ]
+        )
         if self.override_id is not None:
             return (
                 [
@@ -1747,8 +2041,8 @@ class PacketLocation(StandingLocationRow):
         elif self._packet_type == PacketType.FALLING:
             return model._falling_packet_id
         return model._static_packet_id
-    
-    def get_packet(self, world:GameWorld) -> Packet:
+
+    def get_packet(self, world: GameWorld) -> Packet:
         p = world.packets.packets[self.get_packet_id()]
         assert p is not None, "Packet ID does not exist in world packets"
         return p

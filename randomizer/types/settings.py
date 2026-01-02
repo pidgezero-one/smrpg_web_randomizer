@@ -131,7 +131,7 @@ class Settings:
             FreeShops: FreeShops(),
             BossShuffle: BossShuffle(),
             BossShuffleScaleStats: BossShuffleScaleStats(),
-            BossReplaceMinigameSprites: BossReplaceMinigameSprites(),
+            KeepMinigameSpritesIntact: KeepMinigameSpritesIntact(),
             DifferentiateRepeatedBosses: DifferentiateRepeatedBosses(),
             IncludeHenchmen: IncludeHenchmen(),
             ShuffledBosses: ShuffledBosses(),

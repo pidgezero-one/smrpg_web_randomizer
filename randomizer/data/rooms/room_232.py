@@ -374,7 +374,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 11
-            npc=npcs.BOWYER_NPC,
+            npc=npcs.BOWYER_NPC_BATTLE,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0400_SEQUENCE_LOOPING_ON,

@@ -295,34 +295,79 @@ def randomize_enemy_drops(
             enemy.set_yoshi_cookie_item(random.choice(consumables_group_2))
 
 
+VALID_FORMATION_COORDINATES = [
+    (119, 103), (135, 111), (151, 119), (167, 127),
+    (103, 111), (119, 119), (135, 127), (151, 135),
+    (87, 119), (103, 127), (119, 135), (135, 143),
+    (71, 127), (87, 135), (103, 143), (119, 151),
+    (55, 135), (71, 143), (87, 151), (103, 159),
+    (39, 143), (55, 151), (71, 159), (87, 167),
+]
+
+
+def _get_distance(x1: int, y1: int, x2: int, y2: int) -> float:
+    """Calculate Euclidean distance between two points."""
+    return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+
+
+def _get_collective_distance(x1: int, y1: int, points: list[tuple[int, int]]) -> float:
+    """Calculate the product of distances from a point to all other points."""
+    if not points:
+        return 1.0
+    distances = [_get_distance(x1, y1, x2, y2) for x2, y2 in points]
+    return reduce(lambda a, b: a * b, distances, 1.0)
+
+
+def _select_most_distant(
+    possible_points: list[tuple[int, int]], used_points: list[tuple[int, int]]
+) -> tuple[int, int]:
+    """Select the point from possible_points that is most distant from used_points."""
+    available = [p for p in possible_points if p not in used_points]
+    if not available:
+        available = possible_points
+    return max(available, key=lambda c: _get_collective_distance(c[0], c[1], used_points))
+
+
+def generate_formation_coordinates(
+    count: int,
+    valid_coordinates: list[tuple[int, int]] | None = None,
+) -> list[tuple[int, int]]:
+    """
+    Generate a list of formation coordinates that are well-spaced from each other.
+
+    Args:
+        count: The number of coordinates to generate.
+        valid_coordinates: Optional list of valid coordinate positions to choose from.
+                          Defaults to VALID_FORMATION_COORDINATES.
+
+    Returns:
+        A list of (x, y) coordinate tuples.
+    """
+    if valid_coordinates is None:
+        valid_coordinates = VALID_FORMATION_COORDINATES
+
+    if count <= 0:
+        return []
+
+    result: list[tuple[int, int]] = []
+
+    for i in range(count):
+        if not result:
+            # First coordinate: pick randomly
+            x, y = random.choice(valid_coordinates)
+        else:
+            # Subsequent coordinates: maximize distance from already-chosen ones
+            sample_size = min(len(valid_coordinates), count * 2)
+            candidate_coords = random.sample(valid_coordinates, sample_size)
+            x, y = _select_most_distant(candidate_coords, result)
+
+        result.append((x, y))
+
+    return result
+
+
 def randomize_enemy_formations(world: GameWorld) -> None:
     """Randomize enemy formations."""
-    VALID_COORDINATES = [
-        (119, 103), (135, 111), (151, 119), (167, 127),
-        (103, 111), (119, 119), (135, 127), (151, 135),
-        (87, 119), (103, 127), (119, 135), (135, 143),
-        (71, 127), (87, 135), (103, 143), (119, 151),
-        (55, 135), (71, 143), (87, 151), (103, 159),
-        (39, 143), (55, 151), (71, 159), (87, 167),
-    ]
-
-    def get_distance(x1: int, y1: int, x2: int, y2: int) -> float:
-        return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
-
-    def get_collective_distance(x1: int, y1: int, points: list[tuple[int, int]]) -> float:
-        if not points:
-            return 1.0
-        distances = [get_distance(x1, y1, x2, y2) for x2, y2 in points]
-        return reduce(lambda a, b: a * b, distances, 1.0)
-
-    def select_most_distance(
-        possible_points: list[tuple[int, int]], used_points: list[tuple[int, int]]
-    ) -> tuple[int, int]:
-        available = [p for p in possible_points if p not in used_points]
-        if not available:
-            available = possible_points
-        return max(available, key=lambda c: get_collective_distance(c[0], c[1], used_points))
-
     max_enemies = 6
 
     for pack in world.battle_packs.packs:
@@ -356,18 +401,10 @@ def randomize_enemy_formations(world: GameWorld) -> None:
 
             random.shuffle(chosen_enemies)
 
+            coordinates = generate_formation_coordinates(len(chosen_enemies))
+
             new_members: list[FormationMember | None] = []
-            done_coordinates: list[tuple[int, int]] = []
-
-            for enemy_type in chosen_enemies:
-                if not done_coordinates:
-                    x, y = random.choice(VALID_COORDINATES)
-                else:
-                    sample_size = min(len(VALID_COORDINATES), len(chosen_enemies) * 2)
-                    candidates_coords = random.sample(VALID_COORDINATES, sample_size)
-                    x, y = select_most_distance(candidates_coords, done_coordinates)
-
-                done_coordinates.append((x, y))
+            for enemy_type, (x, y) in zip(chosen_enemies, coordinates):
                 new_members.append(
                     FormationMember(enemy=enemy_type, x_pos=x, y_pos=y, hidden_at_start=False)
                 )

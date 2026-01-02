@@ -3,6 +3,9 @@ from __future__ import annotations
 from ..types.logic import Inventory
 from ..types.prize import Prize
 from ..types.prizelocation import (
+    BossFightLocationHenchmanNPC,
+    BossFightLocationNPC,
+    BossSpriteSize,
     PrizeLocation,
     StandingLocation,
     TreasureChestLocationRow1,
@@ -95,6 +98,7 @@ if TYPE_CHECKING:
     from ..types.logic import Inventory
     from ..types.gameworld import GameWorld
 
+
 # Lazy imports for flags defined after the circular import point in flags.py
 # These flags are defined after flags.py imports prizelocations, so they're not
 # available via "from ..types.flags import *" at module load time.
@@ -114,22 +118,25 @@ def _get_late_flags():
         SuitePrize5Threshold,
         SuitePrize6Threshold,
     )
+
     return {
-        'BowserDoorShuffle': BowserDoorShuffle,
-        'BucketWarp': BucketWarp,
-        'CasinoWarp': CasinoWarp,
-        'FixKnifeGuy': FixKnifeGuy,
-        'SkipBossFights': SkipBossFights,
-        'StarPiecesRequired': StarPiecesRequired,
-        'SuitePrize1Threshold': SuitePrize1Threshold,
-        'SuitePrize2Threshold': SuitePrize2Threshold,
-        'SuitePrize3Threshold': SuitePrize3Threshold,
-        'SuitePrize4Threshold': SuitePrize4Threshold,
-        'SuitePrize5Threshold': SuitePrize5Threshold,
-        'SuitePrize6Threshold': SuitePrize6Threshold,
+        "BowserDoorShuffle": BowserDoorShuffle,
+        "BucketWarp": BucketWarp,
+        "CasinoWarp": CasinoWarp,
+        "FixKnifeGuy": FixKnifeGuy,
+        "SkipBossFights": SkipBossFights,
+        "StarPiecesRequired": StarPiecesRequired,
+        "SuitePrize1Threshold": SuitePrize1Threshold,
+        "SuitePrize2Threshold": SuitePrize2Threshold,
+        "SuitePrize3Threshold": SuitePrize3Threshold,
+        "SuitePrize4Threshold": SuitePrize4Threshold,
+        "SuitePrize5Threshold": SuitePrize5Threshold,
+        "SuitePrize6Threshold": SuitePrize6Threshold,
     }
 
+
 _late_flags_cache = None
+
 
 def _get_flag(name: str):
     """Get a late-defined flag by name."""
@@ -137,6 +144,7 @@ def _get_flag(name: str):
     if _late_flags_cache is None:
         _late_flags_cache = _get_late_flags()
     return _late_flags_cache[name]
+
 
 # Comments are included here to document what condition is met for a location to be considered checked.
 # Anything that takes a flag has a variable name listed, ie TOAD_IN_MUSHROOM_WAY_1.
@@ -231,11 +239,10 @@ class MarioSpell1(SpellSlotLocation):
 class MarioSpell2(SpellSlotLocation):
     _bias = True
     _originally_held = FireOrbSpellPrize
-    _level=3
+    _level = 3
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(MarioRecruitmentPrize)
-    
 
 
 class MarioSpell3(SpellSlotLocation):
@@ -245,7 +252,6 @@ class MarioSpell3(SpellSlotLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(MarioRecruitmentPrize)
-
 
 
 class MarioSpell4(SpellSlotLocation):
@@ -453,6 +459,14 @@ class MushrooomWayBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _pack_id = PACK183_MUSHROOM_WAY_BOSS
     _post_unlocks_event_id = E1194_MUSHROOM_WAY_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R205_MUSHROOM_WAY_AREA_03,
+            NPC_7,
+            BossSpriteSize.LARGE,
+            E0755_MUSHROOM_WAY_AREA_03_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -775,6 +789,113 @@ class MushroomKingdomBossFight(BossFightLocation):
     _pack_id = PACK179_MUSHROOM_KINGDOM_BOSS
     _post_unlocks_event_id = E1195_BANDITS_WAY_BOSS_UNLOCKS
 
+    _npc_slots = [
+        BossFightLocationNPC(
+            R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
+            NPC_3,
+            BossSpriteSize.LARGE,
+            E0761_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
+            [NPC_4],
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
+            [NPC_5],
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
+            [NPC_6],
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
+            [NPC_7],
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
+            [NPC_8],
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
+            [NPC_9],
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
+                R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
+                R323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM,
+                R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
+                R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
+                R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
+                R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
+                R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
+                R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
+                R329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM,
+                R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
+                R191_MUSHROOM_KINGDOM_OUTSIDE,
+            ],
+            [
+                NPC_3,
+                NPC_5,
+                NPC_0,
+                NPC_0,
+                NPC_1,
+                NPC_2,
+                NPC_3,
+                NPC_4,
+                NPC_0,
+                NPC_1,
+                NPC_4,
+                NPC_10,
+            ],
+            pack_id=PACK010_KINGDOM_HENCHMEN_1,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
+                R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
+                R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
+                R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
+                R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
+                R323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM,
+                R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
+                R329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM,
+                R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
+                R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
+                R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
+                R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F,
+            ],
+            [
+                NPC_0,
+                NPC_1,
+                NPC_2,
+                NPC_4,
+                NPC_6,
+                NPC_1,
+                NPC_1,
+                NPC_0,
+                NPC_0,
+                NPC_1,
+                NPC_3,
+                NPC_1,
+            ],
+            pack_id=PACK011_KINGDOM_HENCHMEN_2,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+    ]
+
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
 
@@ -979,6 +1100,39 @@ class BanditsWayBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _pack_id = PACK163_BANDITS_WAY_BOSS
     _post_unlocks_event_id = E1196_MUSHROOM_KINGDOM_BOSS_UNLOCKS
+
+    _npc_slots = [
+        BossFightLocationNPC(
+            R076_BANDITS_WAY_AREA_01,
+            NPC_5,
+            sequence_setter_event_id=E0757_BANDITS_WAY_AREA_01_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R207_BANDITS_WAY_AREA_02,
+            NPC_8,
+            sequence_setter_event_id=E0756_BANDITS_WAY_AREA_02_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R077_BANDITS_WAY_AREA_03,
+            NPC_8,
+            sequence_setter_event_id=E0758_BANDITS_WAY_AREA_03_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R078_BANDITS_WAY_AREA_04,
+            NPC_12,
+            sequence_setter_event_id=E0759_BANDITS_WAY_AREA_04_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R206_BANDITS_WAY_AREA_05,
+            NPC_8,
+            sequence_setter_event_id=E0760_BANDITS_WAY_AREA_05_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI,
+            NPC_10,
+            sequence_setter_event_id=E1193_ENDING_CREDITS_YOSTER_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1208,6 +1362,14 @@ class KeroSewersBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.KERO_SEWERS
     _pack_id = PACK168_SEWER_BOSS
     _post_unlocks_event_id = E1197_KERO_SEWER_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R302_KERO_SEWERS_AREA_08_BELOMES_ROOM,
+            NPC_1,
+            BossSpriteSize.BATTLE,
+            E0772_KERO_SEWERS_BELOME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -1216,7 +1378,7 @@ class KeroSewersBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_sewer(world, inventory) 
+        return can_access_sewer(world, inventory)
 
     def post_unlocks(self, world: GameWorld) -> EventScript:
         content: list[UsableEventScriptCommand] = []
@@ -1241,9 +1403,8 @@ class KeroSewersStarPiece(StarPieceLocation):
     _parent = KeroSewersBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return (
-            super().can_access(inventory, world)
-            and can_access_sewer(world, inventory)
+        return super().can_access(inventory, world) and can_access_sewer(
+            world, inventory
         )
 
     # Flag as checked: SEWER_BOSS_DEFEATED
@@ -1795,6 +1956,26 @@ class ForestMazeBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _pack_id = PACK181_FOREST_BOSS
     _post_unlocks_event_id = E1198_FOREST_MAZE_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
+            NPC_11,
+            BossSpriteSize.LARGE,
+            E0775_FOREST_MAZE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_1]),
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_7]),
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_3]),
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_9]),
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_4]),
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_5]),
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_2]),
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_8]),
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_0]),
+        BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_6]),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -1873,7 +2054,7 @@ class GenoSpell2(SpellSlotLocation):
     _level = 8
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(GenoRecruitmentPrize) 
+        return inventory.has_item(GenoRecruitmentPrize)
 
 
 class GenoSpell3(SpellSlotLocation):
@@ -1882,7 +2063,7 @@ class GenoSpell3(SpellSlotLocation):
     _level = 11
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(GenoRecruitmentPrize) 
+        return inventory.has_item(GenoRecruitmentPrize)
 
 
 class GenoSpell4(SpellSlotLocation):
@@ -2336,6 +2517,58 @@ class OuterMinesBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _pack_id = PACK164_MINES_FIRST_BOSS
     _post_unlocks_event_id = E1199_OUTER_MNES_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE,
+            NPC_0,
+            sequence_setter_event_id=E0777_MINES_TRAMPOLINE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0779_MINES_LEFT_OF_TRAMPOLINE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R275_MOLEVILLE_MINES_AREA_06_SMALL_ROOM_LEADING_TO_AREA_06,
+            NPC_0,
+            sequence_setter_event_id=E0781_MINES_TINY_ROOM_2_LEFT_OF_TRAMPOLINE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0783_MINES_ROOM_THAT_SPLITS_TO_PA_MOLE_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R279_MOLEVILLE_MINES_AREA_08_CROCOS_BOMBED_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0785_MINES_SMALL_NORTH_ROOM_IN_MINIBOSS_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0787_MINES_LONG_ROOM_IN_MINIBOSS_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE],
+            [NPC_1],
+            PACK142_MINES_HENCHMAN_MIDDLE,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM],
+            [NPC_1],
+            PACK141_MINES_HENCHMAN_LEFT,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM],
+            [NPC_1],
+            PACK079_MINES_HENCHMAN_RIGHT,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -2344,9 +2577,7 @@ class OuterMinesBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_moleville_entrance(
-            world, inventory
-        )
+        return can_access_moleville_entrance(world, inventory)
 
     # Flag as checked: MINES_BOSS_1_DEFEATED
 
@@ -2361,9 +2592,8 @@ class OuterMinesStarPiece(StarPieceLocation):
     _parent = OuterMinesBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return (
-            super().can_access(inventory, world)
-            and can_access_moleville_entrance(world, inventory)
+        return super().can_access(inventory, world) and can_access_moleville_entrance(
+            world, inventory
         )
 
     # Flag as checked: MINES_BOSS_1_DEFEATED
@@ -2384,9 +2614,7 @@ class OuterMinesBossPrizeLocation(KeyItemLocation, NPCLocationRow1):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_moleville_entrance(
-            world, inventory
-        )
+        return can_access_moleville_entrance(world, inventory)
 
     # flag as checked: MINES_BOSS_1_DEFEATED
 
@@ -2475,6 +2703,35 @@ class InnerMinesBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _pack_id = PACK140_MINES_BOSS_2
     _post_unlocks_event_id = E1200_INNER_MINES_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
+            NPC_0,
+            BossSpriteSize.BATTLE,
+            E0788_MINES_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
+                R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
+            ],
+            [NPC_4, NPC_5, NPC_6],
+            PACK152_MINES_BOSS_ROOM_HENCHMAN,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+    ]
+    _tiny_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
+                R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
+                R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
+            ],
+            [NPC_1, NPC_2, NPC_3],
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -2561,16 +2818,16 @@ class BowserSpell2(SpellSlotLocation):
     _level = 12
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(BowserRecruitmentPrize) 
+        return inventory.has_item(BowserRecruitmentPrize)
 
 
 class BowserSpell3(SpellSlotLocation):
     _bias = True
     _originally_held = CrusherSpellPrize
-    _level =15
+    _level = 15
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(BowserRecruitmentPrize) 
+        return inventory.has_item(BowserRecruitmentPrize)
 
 
 class BowserSpell4(SpellSlotLocation):
@@ -2616,6 +2873,13 @@ class InnerMinesPostgameBossFight(BossFightLocation):
     _remake_only = True
     _pack_id = PACK071_MINES_POSTGAME
     _post_unlocks_event_id = E1253_POSTGAME_MINES_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE,
+            NPC_0,
+            BossSpriteSize.BATTLE,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -2832,7 +3096,7 @@ class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory) and world.settings.isflag_enabled(
-            _get_flag('FixKnifeGuy')
+            _get_flag("FixKnifeGuy")
         )
 
     # flag as checked: KNIFE_GUY_SECOND_PRIZE_AWARDED
@@ -3205,6 +3469,116 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _pack_id = PACK161_TOWER_FIRST_FIGHT
     _post_unlocks_event_id = E1201_TOWER_CURTAIN_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0789_TOWER_CURTAIN_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+            NPC_7,
+            sequence_setter_event_id=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
+            NPC_6,
+            sequence_setter_event_id=E0791_TOWER_ANCESTOR_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS,
+            NPC_6,
+            sequence_setter_event_id=E0792_TOWER_FIRST_BOBOMB_STAIRCASE_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R054_BOOSTER_HILL_DUMMY,
+            NPC_7,
+        ),
+        BossFightLocationNPC(
+            R202_BOOSTER_TOWER_ENTRANCE,
+            NPC_1,
+            sequence_setter_event_id=E0878_TOWER_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM,
+            NPC_3,
+            sequence_setter_event_id=E0797_TOWER_LOBBY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
+            NPC_3,
+            sequence_setter_event_id=E0794_TOWER_BALCONY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+            NPC_10,
+            sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM,
+                R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+                R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+                R054_BOOSTER_HILL_DUMMY,
+                R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
+                R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+            ],
+            [NPC_4, NPC_1, NPC_0, NPC_3, NPC_0, NPC_2],
+            PACK000_TOWER_HENCHMAN_1,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM,
+                R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+                R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+                R054_BOOSTER_HILL_DUMMY,
+                R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
+                R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+            ],
+            [NPC_0, NPC_2, NPC_1, NPC_4, NPC_1, NPC_1],
+            PACK001_TOWER_HENCHMAN_2,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R037_BOOSTER_TOWER_4F_3LEVEL_ROOM_WJUMPING_SPOOKUMS,
+                R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+                R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+                R054_BOOSTER_HILL_DUMMY,
+                R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
+                R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+            ],
+            [NPC_8, NPC_3, NPC_2, NPC_5, NPC_2, NPC_3],
+            PACK054_TOWER_HENCHMAN_3,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA], [NPC_4]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA], [NPC_5]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA], [NPC_6]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA], [NPC_7]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA], [NPC_8]
+        ),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R405_BOOSTER_PASS_SECRET],
+            [NPC_9],
+            PACK032_TOWER_PASS_HENCHMAN,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        )
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -3213,9 +3587,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_tower(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: TOWER_BOSS_1_STAR_PIECE
 
@@ -3229,9 +3601,7 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     _parent = BoosterTowerIndoorBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_tower(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: TOWER_BOSS_1_STAR_PIECE
 
@@ -3246,6 +3616,12 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     _remake_only = True
     _pack_id = PACK070_TOWER_POSTGAME
     _post_unlocks_event_id = E1202_POSTGAME_TOWER_CURTAIN_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+            NPC_10,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -3306,9 +3682,7 @@ class BoosterTowerBalconyBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_tower(world, inventory) and not_earlygame(world, inventory)
 
     def post_unlocks(self, world: GameWorld) -> EventScript:
         content: list[UsableEventScriptCommand] = []
@@ -3331,9 +3705,7 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
     _parent = BoosterTowerBalconyBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_tower(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: TOWER_BOSS_2_DEFEATED
 
@@ -3720,6 +4092,34 @@ class MarrymoreBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _pack_id = PACK176_CHAPEL_BOSS
     _post_unlocks_event_id = E1204_CHAPEL_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R155_MARRYMORE_CHAPEL_KITCHEN,
+            NPC_0,
+            sequence_setter_event_id=E0796_MARRYMORE_KITCHEN_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+            NPC_11,
+            sequence_setter_event_id=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R155_MARRYMORE_CHAPEL_KITCHEN,
+                R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+            ],
+            [NPC_1, NPC_9],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R155_MARRYMORE_CHAPEL_KITCHEN,
+                R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+            ],
+            [NPC_2, NPC_10],
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -3797,7 +4197,7 @@ class ToadstoolSpell2(SpellSlotLocation):
     _level = 6
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(ToadstoolRecruitmentPrize) 
+        return inventory.has_item(ToadstoolRecruitmentPrize)
 
 
 class ToadstoolSpell3(SpellSlotLocation):
@@ -3806,9 +4206,7 @@ class ToadstoolSpell3(SpellSlotLocation):
     _level = 11
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(
-            ToadstoolRecruitmentPrize
-        ) 
+        return inventory.has_item(ToadstoolRecruitmentPrize)
 
 
 class ToadstoolSpell4(SpellSlotLocation):
@@ -3854,6 +4252,13 @@ class MarrymoreBossFightRemake(BossFightLocation):
     _remake_only = True
     _pack_id = PACK078_CHAPEL_POSTGAME
     _post_unlocks_event_id = E1204_CHAPEL_BOSS_UNLOCKS
+
+    _npc_slots = [
+        BossFightLocationNPC(
+            R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+            NPC_12,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -3910,7 +4315,6 @@ class StarHillStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.STAR_HILL
     # Flag as checked (send item, which i guess we can't do yet with SP checks):  NPC 9 removed from room and STAR_HILL_CHECKED
     # Flag as checked (tracker): STAR_HILL_CHECKED
-    # TODO this is a special case where the star is a npc
 
 
 ########### seaside town pre-liberation
@@ -3962,6 +4366,85 @@ class SeasideBeachBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _pack_id = PACK180_SEASIDE_BOSS
     _post_unlocks_event_id = E1206_SEASIDE_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R211_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_1F,
+            NPC_0,
+            sequence_setter_event_id=E0805_SEASIDE_OCCUPIED_ELDER_HOUSE_1F_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
+            NPC_0,
+            sequence_setter_event_id=E0805_SEASIDE_OCCUPIED_ELDER_HOUSE_1F_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            NPC_6,
+            sequence_setter_event_id=E0802_SEASIDE_OCCUPIED_BEACH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            NPC_7,
+            BossSpriteSize.LARGE,
+            E0802_SEASIDE_OCCUPIED_BEACH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
+                R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            ],
+            [NPC_0, NPC_0],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
+                R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            ],
+            [NPC_1, NPC_1],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
+                R209_SEASIDE_TOWN_DURING_YARIDOVICH_INN_1F,
+                R210_SEASIDE_TOWN_DURING_YARIDOVICH_INN_2F,
+                R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            ],
+            [NPC_2, NPC_0, NPC_0, NPC_2],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
+                R213_SEASIDE_TOWN_DURING_YARIDOVICH_BEETLES_ARE_USBOMB_SHOP,
+                R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            ],
+            [NPC_3, NPC_0, NPC_3],
+        ),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R213_SEASIDE_TOWN_DURING_YARIDOVICH_BEETLES_ARE_USBOMB_SHOP], [NPC_1]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R214_SEASIDE_TOWN_DURING_YARIDOVICH_WEAPONS_AND_ARMOR_SHOP], [NPC_0]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R214_SEASIDE_TOWN_DURING_YARIDOVICH_WEAPONS_AND_ARMOR_SHOP], [NPC_1]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R215_SEASIDE_TOWN_DURING_YARIDOVICH_HEALTH_FOOD_STORE_LEFTMOST], [NPC_0]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R216_SEASIDE_TOWN_DURING_YARIDOVICH_MUSHROOM_BOY_SHOP_MIDDLE], [NPC_0]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R216_SEASIDE_TOWN_DURING_YARIDOVICH_MUSHROOM_BOY_SHOP_MIDDLE], [NPC_1]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R217_SEASIDE_TOWN_DURING_YARIDOVICH_ACCESSORY_SHOP_RIGHTMOST], [NPC_0]
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -4284,6 +4767,13 @@ class ShipPasswordBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _pack_id = PACK167_SHIP_FIRST_BOSS
     _post_unlocks_event_id = E1207_SHIP_MID_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM,
+            NPC_7,
+            sequence_setter_event_id=E0800_SHIP_PASSWORD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -4410,9 +4900,7 @@ class Mimic2DropRewardLocation(NPCLocationRow1):
     _override_id = 513
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(
-            SecondMimicFightLauncher
-        )
+        return inventory.has_item(SecondMimicFightLauncher)
 
     # flag as checked: MIMIC_2_CLEARED
 
@@ -4434,9 +4922,7 @@ class Mimic2BossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(
-            SecondMimicFightLauncher
-        ) 
+        return inventory.has_item(SecondMimicFightLauncher)
 
     # Flag as checked: MIMIC_2_CLEARED
 
@@ -4451,9 +4937,7 @@ class Mimic2StarPiece(StarPieceLocation):
     _parent = Mimic2BossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(
-            SecondMimicFightLauncher
-        ) 
+        return inventory.has_item(SecondMimicFightLauncher)
 
     # Flag as checked: MIMIC_2_CLEARED
 
@@ -4472,9 +4956,7 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     _blacklist = [SlotsPrize, MimicFightInitiatorPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(
-            SecondMimicFightLauncher
-        )
+        return inventory.has_item(SecondMimicFightLauncher)
 
     # flag as checked: the host chest for SecondMimicFightLauncher has its object trigger disabled
 
@@ -4587,6 +5069,67 @@ class ShipFinalBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _pack_id = PACK166_SHIP_SECOND_BOSS
     _post_unlocks_event_id = E1208_SHIP_END_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            NPC_8,
+            sequence_setter_event_id=E0802_SEASIDE_OCCUPIED_BEACH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R432_ENDING_CREDITS_JOHNNY_LOOKING_OUT_AT_SUNSET_ON_BEACH_SHORE,
+            NPC_0,
+            sequence_setter_event_id=E1191_ENDING_CREDITS_CLIFF_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
+                R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            ],
+            [NPC_1, NPC_4],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
+                R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            ],
+            [NPC_2, NPC_5],
+        ),
+        BossFightLocationHenchmanNPC(
+            [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM], [NPC_3]
+        ),
+        BossFightLocationHenchmanNPC(
+            [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM], [NPC_4]
+        ),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
+                R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
+                R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
+                R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
+            ],
+            [NPC_0, NPC_1, NPC_2, NPC_3],
+            PACK068_SHIP_HENCHMAN_1,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R025_SUNKEN_SHIP_POSTKC_AREA_16_ENTRANCE_TO_JOHNNYS_ROOM,
+                R025_SUNKEN_SHIP_POSTKC_AREA_16_ENTRANCE_TO_JOHNNYS_ROOM,
+            ],
+            [NPC_0, NPC_1],
+            PACK069_SHIP_HENCHMAN_2,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -4631,6 +5174,14 @@ class ShipPostgameBossFight(BossFightLocation):
     _remake_only = True
     _pack_id = PACK118_SHIP_POSTGAME
     _post_unlocks_event_id = E1209_POSTGAME_SHIP_END_BOSS_UNLOCKS
+
+    _npc_slots = [
+        BossFightLocationNPC(
+            R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
+            NPC_7,
+            sequence_setter_event_id=E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -4897,9 +5448,7 @@ class LandsEndCloudStarPiece(StarPieceLocation):
     _parent = LandsEndCloudBoss
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return super().can_access(inventory, world) and not_earlygame(
-            world, inventory
-        )
+        return super().can_access(inventory, world) and not_earlygame(world, inventory)
 
     # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
 
@@ -5287,6 +5836,14 @@ class TempleBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.TEMPLE
     _pack_id = PACK169_TEMPLE_BOSS
     _post_unlocks_event_id = E1211_TEMPLE_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
+            NPC_4,
+            BossSpriteSize.LARGE,
+            E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5318,7 +5875,7 @@ class TempleBossFightStarPiece(StarPieceLocation):
 
 class TempleBossFightPostgame(BossFightLocation):
     _bias = True
-    _originally_held = Belome3Dight
+    _originally_held = Belome3Fight
     _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_FIGHT
     _world_area = WorldAreaEnum.TEMPLE
@@ -5326,6 +5883,14 @@ class TempleBossFightPostgame(BossFightLocation):
     _remake_only = True
     _pack_id = PACK033_POSTGAME_TEMPLE
     _post_unlocks_event_id = E1212_POSTGAME_TEMPLE_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
+            NPC_5,
+            BossSpriteSize.LARGE,
+            E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5413,6 +5978,14 @@ class DojoFirstFight(BossFightLocation):
     _pack_id = PACK189_DOJO_PREFIGHT
     _post_unlocks_event_id = E1213_DOJO_1_BOSS_UNLOCKS
 
+    _npc_slots = [
+        BossFightLocationNPC(
+            R255_MONSTRO_TOWN_JINXS_DOJO,
+            NPC_1,
+            sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
             can_damage_enemies_with_spells(world, inventory)
@@ -5435,9 +6008,8 @@ class DojoFirstFightStarPiece(StarPieceLocation):
     # Flag as checked: DOJO_BOSS_1_DEFEATED
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return (
-            super().can_access(inventory, world)
-            and can_access_monstro_town(world, inventory)
+        return super().can_access(inventory, world) and can_access_monstro_town(
+            world, inventory
         )
 
 
@@ -5450,6 +6022,13 @@ class DojoSecondFight(BossFightLocation):
     _override_id = 515
     _pack_id = PACK178_DOJO_FIGHT_1
     _post_unlocks_event_id = E1214_DOJO_2_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R255_MONSTRO_TOWN_JINXS_DOJO,
+            NPC_0,
+            sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5493,6 +6072,13 @@ class DojoThirdFight(BossFightLocation):
     _override_id = 516
     _pack_id = PACK187_DOJO_SECOND_BOSS
     _post_unlocks_event_id = E1215_DOJO_3_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R255_MONSTRO_TOWN_JINXS_DOJO,
+            NPC_2,
+            sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5534,6 +6120,13 @@ class DojoFourthFight(BossFightLocation):
     _override_id = 517
     _pack_id = PACK188_DOJO_THIRD_BOSS
     _post_unlocks_event_id = E1216_DOJO_4_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R255_MONSTRO_TOWN_JINXS_DOJO,
+            NPC_3,
+            sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5592,6 +6185,13 @@ class DojoFifthFight(BossFightLocation):
     _remake_only = True
     _pack_id = PACK189_DOJO_PREFIGHT
     _post_unlocks_event_id = E1217_DOJO_5_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R255_MONSTRO_TOWN_JINXS_DOJO,
+            NPC_4,
+            sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5646,6 +6246,13 @@ class MonstroSealedDoorBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _pack_id = PACK216_MONSTRO_DOOR_BOSS
     _post_unlocks_event_id = E1218_MONSTRO_SEALED_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R351_CULEXS_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0816_MONSTRO_SUPERBOSS_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5666,6 +6273,13 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.CULEX_BOSS
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _parent = MonstroSealedDoorBossFight
+    _npc_slots = [
+        BossFightLocationNPC(
+            R351_CULEXS_ROOM,
+            NPC_1,
+            sequence_setter_event_id=E0816_MONSTRO_SUPERBOSS_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_sealed_door_boss(
@@ -5699,6 +6313,14 @@ class MonstroSealedDoorBossFightPostgame(BossFightLocation):
     _remake_only = True
     _pack_id = PACK055_MONSTRO_DOOR_POSTGAME
     _post_unlocks_event_id = E1219_POSTGAME_MONSTRO_SEALED_BOSS_UNLOCKS
+
+    _npc_slots = [
+        BossFightLocationNPC(
+            R351_CULEXS_ROOM,
+            NPC_1,
+            sequence_setter_event_id=E0816_MONSTRO_SUPERBOSS_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5938,6 +6560,13 @@ class BeanValleyPlanterBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _pack_id = PACK173_VALLEY_BOSS
     _post_unlocks_event_id = E1229_BEAN_VALLEY_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R254_BEAN_VALLEY_SMILAX_AREA,
+            NPC_1,
+            sequence_setter_event_id=E0817_BEAN_VALLEY_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5974,9 +6603,7 @@ class BeanValleyPlanterStarPiece(StarPieceLocation):
     _parent = BeanValleyPlanterBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return super().can_access(inventory, world) and not_earlygame(
-            world, inventory
-        )
+        return super().can_access(inventory, world) and not_earlygame(world, inventory)
 
     # Flag as checked: BEAN_VALLEY_BOSS_DEFEATED
 
@@ -6288,6 +6915,32 @@ class StatueRoomBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _pack_id = PACK208_NIMBUS_CASTLE_FIRST_BOSS
     _post_unlocks_event_id = E1230_STATUE_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
+            NPC_1,
+            BossSpriteSize.LARGE,
+            E0818_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+            NPC_0,
+            BossSpriteSize.LARGE,
+            E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
+            NPC_3,
+            BossSpriteSize.LARGE,
+            E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
+            NPC_0,
+            BossSpriteSize.LARGE,
+            E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -6313,7 +6966,7 @@ class StatueRoomStarPiece(StarPieceLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = world.settings.isflag_enabled(
-            _get_flag('SkipBossFights')
+            _get_flag("SkipBossFights")
         ) or not_earlygame(world, inventory)
         return (
             super().can_access(inventory, world)
@@ -6552,6 +7205,246 @@ class NimbusFinalBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _pack_id = PACK171_NIMBUS_CASTLE_THIRD_BOSS
     _post_unlocks_event_id = E1232_NIMBUS_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA,
+            NPC_9,
+            sequence_setter_event_id=E0822_NIMBUS_LAND_OCCUPIED_EXTERIOR_FINAL_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
+            NPC_4,
+            sequence_setter_event_id=E0794_TOWER_BALCONY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+            NPC_9,
+            sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST], [NPC_0]
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST,
+                R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
+            ],
+            [NPC_1, NPC_2],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
+                R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
+                R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
+                R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
+                R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
+            ],
+            [NPC_3, NPC_4, NPC_5, NPC_1, NPC_2],
+        ),
+    ]
+    _statue_slots = [
+        # Garro's house
+        BossFightLocationNPC(
+            R341_NIMBUS_LAND_GARROS_HOUSE,
+            NPC_1,
+            sequence_setter_event_id=E0821_GARROS_HOUSE_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R341_NIMBUS_LAND_GARROS_HOUSE,
+            NPC_2,
+            sequence_setter_event_id=E0821_GARROS_HOUSE_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R341_NIMBUS_LAND_GARROS_HOUSE,
+            NPC_3,
+            sequence_setter_event_id=E0821_GARROS_HOUSE_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Main hall
+        BossFightLocationNPC(
+            R109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL,
+            NPC_0,
+            sequence_setter_event_id=E0823_NIMBUS_CASTLE_MAIN_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL,
+            NPC_1,
+            sequence_setter_event_id=E0823_NIMBUS_CASTLE_MAIN_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL,
+            NPC_2,
+            sequence_setter_event_id=E0823_NIMBUS_CASTLE_MAIN_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL,
+            NPC_3,
+            sequence_setter_event_id=E0823_NIMBUS_CASTLE_MAIN_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL,
+            NPC_4,
+            sequence_setter_event_id=E0823_NIMBUS_CASTLE_MAIN_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL,
+            NPC_5,
+            sequence_setter_event_id=E0823_NIMBUS_CASTLE_MAIN_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Occupied 4-way path
+        BossFightLocationNPC(
+            R115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA,
+            NPC_0,
+            sequence_setter_event_id=E0824_NIMBUS_CASTLE_OCCUPIED_4WAY_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA,
+            NPC_1,
+            sequence_setter_event_id=E0824_NIMBUS_CASTLE_OCCUPIED_4WAY_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Antechamber
+        BossFightLocationNPC(
+            R122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0825_NIMBUS_CASTLE_THRONE_ROOM_ANTECHAMBER_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM,
+            NPC_1,
+            sequence_setter_event_id=E0825_NIMBUS_CASTLE_THRONE_ROOM_ANTECHAMBER_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Occupied throne room
+        BossFightLocationNPC(
+            R120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA,
+            NPC_0,
+            sequence_setter_event_id=E0826_NIMBUS_CASTLE_OCCUPIED_THRONE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA,
+            NPC_1,
+            sequence_setter_event_id=E0826_NIMBUS_CASTLE_OCCUPIED_THRONE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Polishing room
+        BossFightLocationNPC(
+            R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0819_NIMBUS_CASTLE_STATUE_POLISHING_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
+            NPC_1,
+            sequence_setter_event_id=E0819_NIMBUS_CASTLE_STATUE_POLISHING_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
+            NPC_2,
+            sequence_setter_event_id=E0819_NIMBUS_CASTLE_STATUE_POLISHING_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Lone statue room
+        BossFightLocationNPC(
+            R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15,
+            NPC_3,
+            sequence_setter_event_id=E0827_NIMBUS_CASTLE_SINGLE_BIRD_STATUE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Left shaman hall
+        BossFightLocationNPC(
+            R119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05,
+            NPC_6,
+            sequence_setter_event_id=E0829_NIMBUS_CASTLE_EARLY_WEST_SHAMAN_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05,
+            NPC_7,
+            sequence_setter_event_id=E0829_NIMBUS_CASTLE_EARLY_WEST_SHAMAN_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Right shaman hall
+        BossFightLocationNPC(
+            R408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM,
+            NPC_6,
+            sequence_setter_event_id=E0830_NIMBUS_CASTLE_EARLY_EAST_SHAMAN_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM,
+            NPC_7,
+            sequence_setter_event_id=E0830_NIMBUS_CASTLE_EARLY_EAST_SHAMAN_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Liberated throne room
+        BossFightLocationNPC(
+            R440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA,
+            NPC_0,
+            sequence_setter_event_id=E0831_NIMBUS_CASTLE_LIBERATED_THRONE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA,
+            NPC_1,
+            sequence_setter_event_id=E0831_NIMBUS_CASTLE_LIBERATED_THRONE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Hot springs
+        BossFightLocationNPC(
+            R447_NIMBUS_LAND_HOT_SPRINGS,
+            NPC_1,
+            sequence_setter_event_id=E0832_NIMBUS_LAND_HOT_SPRINGS_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R447_NIMBUS_LAND_HOT_SPRINGS,
+            NPC_2,
+            sequence_setter_event_id=E0832_NIMBUS_LAND_HOT_SPRINGS_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R447_NIMBUS_LAND_HOT_SPRINGS,
+            NPC_3,
+            sequence_setter_event_id=E0832_NIMBUS_LAND_HOT_SPRINGS_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R447_NIMBUS_LAND_HOT_SPRINGS,
+            NPC_4,
+            sequence_setter_event_id=E0832_NIMBUS_LAND_HOT_SPRINGS_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Cellar hallway
+        BossFightLocationNPC(
+            R497_NIMBUS_CASTLE_AREA_06_DUMMY,
+            NPC_0,
+            sequence_setter_event_id=E0834_NIMBUS_CASTLE_LIBERATED_INNER_CELLAR_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R497_NIMBUS_CASTLE_AREA_06_DUMMY,
+            NPC_1,
+            sequence_setter_event_id=E0834_NIMBUS_CASTLE_LIBERATED_INNER_CELLAR_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Five-door hallway
+        BossFightLocationNPC(
+            R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
+            NPC_1,
+            sequence_setter_event_id=E0835_NIMBUS_CASTLE_LIBERATED_5_DOOR_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
+            NPC_2,
+            sequence_setter_event_id=E0835_NIMBUS_CASTLE_LIBERATED_5_DOOR_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
+            NPC_3,
+            sequence_setter_event_id=E0835_NIMBUS_CASTLE_LIBERATED_5_DOOR_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
+            NPC_4,
+            sequence_setter_event_id=E0835_NIMBUS_CASTLE_LIBERATED_5_DOOR_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        # Liberated 4-way path
+        BossFightLocationNPC(
+            R501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA,
+            NPC_0,
+            sequence_setter_event_id=E0836_NIMBUS_CASTLE_LIBERATED_4WAY_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA,
+            NPC_1,
+            sequence_setter_event_id=E0836_NIMBUS_CASTLE_LIBERATED_4WAY_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -6847,6 +7740,29 @@ class VolcanoBridgeBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _pack_id = PACK172_VOLCANO_FIRST_BOSS
     _post_unlocks_event_id = E1233_VOLCANO_MID_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+            NPC_1,
+            BossSpriteSize.LARGE,
+            E0840_VOLCANO_FIRST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+                R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+                R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+                R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+                R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+                R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+                R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+                R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+            ],
+            [NPC_2, NPC_3, NPC_4, NPC_5, NPC_6, NPC_7, NPC_8, NPC_9],
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -6884,6 +7800,56 @@ class VolcanoExitBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _pack_id = PACK182_VOLCANO_BOSS
     _post_unlocks_event_id = E1234_VOLCANO_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R392_VOLCANO_POSTCD_AREA_06,
+            NPC_0,
+            sequence_setter_event_id=E0842_VOLCANO_FINAL_PRE_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R394_VOLCANO_POSTCD_AREA_05,
+            NPC_2,
+            sequence_setter_event_id=E0843_VOLCANO_POST_BOSS_ROOM_WITH_ENEMY_WARPS_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+            NPC_1,
+            sequence_setter_event_id=E0844_VOLCANO_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R392_VOLCANO_POSTCD_AREA_06,
+                R391_VOLCANO_POSTCD_AREA_04,
+                R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+            ],
+            [NPC_1, NPC_0, NPC_2],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R392_VOLCANO_POSTCD_AREA_06,
+                R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+            ],
+            [NPC_2, NPC_3],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R392_VOLCANO_POSTCD_AREA_06,
+                R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+                R394_VOLCANO_POSTCD_AREA_05,
+            ],
+            [NPC_3, NPC_4, NPC_1],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R392_VOLCANO_POSTCD_AREA_06,
+                R394_VOLCANO_POSTCD_AREA_05,
+                R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+            ],
+            [NPC_4, NPC_0, NPC_5],
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -7468,6 +8434,13 @@ class ObstacleCourseFinalFight(BossFightLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _pack_id = PACK159_SIX_DOOR_RUSH_FIGHT
     _post_unlocks_event_id = E1235_OBSTACLE_COURSE_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
+            NPC_4,
+            sequence_setter_event_id=E0845_VOLCANO_BRIEF_HENCHMAN_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        )
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -7476,9 +8449,7 @@ class ObstacleCourseFinalFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
@@ -7492,9 +8463,7 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
     _parent = ObstacleCourseFinalFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
@@ -7514,7 +8483,7 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
             not_earlygame(world, inventory)
-            if world.settings.isflag_enabled(_get_flag('BowserDoorShuffle'))
+            if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
         return can_access_keep(world, inventory) and boss_condition
@@ -7537,7 +8506,7 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
             not_earlygame(world, inventory)
-            if world.settings.isflag_enabled(_get_flag('BowserDoorShuffle'))
+            if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
         return can_access_keep(world, inventory) and boss_condition
@@ -7560,7 +8529,7 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
             not_earlygame(world, inventory)
-            if world.settings.isflag_enabled(_get_flag('BowserDoorShuffle'))
+            if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
         return can_access_keep(world, inventory) and boss_condition
@@ -7602,7 +8571,7 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
             not_earlygame(world, inventory)
-            if world.settings.isflag_enabled(_get_flag('BowserDoorShuffle'))
+            if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
         return can_access_keep(world, inventory) and boss_condition
@@ -7625,7 +8594,7 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
             not_earlygame(world, inventory)
-            if world.settings.isflag_enabled(_get_flag('BowserDoorShuffle'))
+            if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
         return can_access_keep(world, inventory) and boss_condition
@@ -7641,6 +8610,48 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _pack_id = PACK209_KEEP_FIRST_BOSS
     _post_unlocks_event_id = E1236_KEEP_1_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM,
+            NPC_1,
+            sequence_setter_event_id=E0847_KEEP_FIRST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R376_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2B_1ST_FIGHT_CHEWY,
+            NPC_0,
+            sequence_setter_event_id=E0848_KEEP_BATTLE_DOOR_2B_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R377_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2C_1ST_FIGHT_SPARKY,
+            NPC_0,
+            sequence_setter_event_id=E0849_KEEP_BATTLE_DOOR_2C_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R459_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1A_1ST_FIGHT_TERRA_COTTA,
+            NPC_0,
+            sequence_setter_event_id=E0850_KEEP_BATTLE_DOOR_1A_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R460_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1B_1ST_FIGHT_ALLEY_RAT,
+            NPC_0,
+            sequence_setter_event_id=E0851_KEEP_BATTLE_DOOR_1B_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
+            NPC_0,
+            sequence_setter_event_id=E0846_KEEP_BATTLE_DOOR_1C_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R462_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2A_1ST_FIGHT_GU_GOOMBA,
+            NPC_0,
+            sequence_setter_event_id=E0852_KEEP_BATTLE_DOOR_2A_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+        BossFightLocationNPC(
+            R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR,
+            NPC_6,
+            sequence_setter_event_id=E1192_ENDING_CREDITS_KEEP_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -7692,6 +8703,14 @@ class KeepChandelierBossFight(BossFightLocation):
     _override_id = 521
     _pack_id = PACK210_KEEP_SECOND_BOSS
     _post_unlocks_event_id = E1237_KEEP_CHANDELIER_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM,
+            NPC_0,
+            BossSpriteSize.LARGE,
+            E0853_KEEP_FINAL_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -7810,6 +8829,23 @@ class FactoryEntranceBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.FACTORY
     _pack_id = PACK174_FACTORY_FIRST_BOSS
     _post_unlocks_event_id = E1239_OUTER_FACTORY_1_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM,
+            NPC_0,
+            sequence_setter_event_id=E0854_ABYSS_1ST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM],
+            [NPC_1],
+        ),
+        BossFightLocationHenchmanNPC(
+            [R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM],
+            [NPC_2],
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -7818,9 +8854,7 @@ class FactoryEntranceBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: ABYSS_BOSS_1_DEFEATED
 
@@ -7853,9 +8887,7 @@ class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # flag as checked: npc 6 in room 434 has its object trigger disabled.
 
@@ -7872,9 +8904,7 @@ class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # flag as checked: npc 0 in room 443 has its object trigger disabled.
 
@@ -7891,9 +8921,7 @@ class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # flag as checked: npc 2 in room 443 has its object trigger disabled.
 
@@ -7910,9 +8938,7 @@ class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # flag as checked: npc 8 in room 475 has its object trigger disabled.
 
@@ -7929,9 +8955,7 @@ class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # flag as checked: npc 9 in room 475 has its object trigger disabled.
 
@@ -7948,9 +8972,7 @@ class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # flag as checked: npc 1 in room 443 has its object trigger disabled.
 
@@ -7967,9 +8989,7 @@ class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # flag as checked: npc 3 in room 443 has its object trigger disabled.
 
@@ -7990,9 +9010,7 @@ class FactoryTransitionBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: ABYSS_BOSS_2_DEFEATED
 
@@ -8026,6 +9044,27 @@ class InnerFactoryFirstFight(BossFightLocation):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _pack_id = PACK146_FACTORY_BOSS_RUSH_1
     _post_unlocks_event_id = E1241_INNER_FACTORY_1_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R469_FACTORY_GROUNDS_AREA_01,
+            NPC_8,
+            sequence_setter_event_id=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R469_FACTORY_GROUNDS_AREA_01],
+            [NPC_7],
+            PACK150_FACTORY_BOSS_RUSH_HENCHMAN,
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R469_FACTORY_GROUNDS_AREA_01],
+            [NPC_6],
+            skip_swap_if_flag=KeepMinigameSpritesIntact,
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -8034,9 +9073,7 @@ class InnerFactoryFirstFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: INNER_FACTORY_ROOM_1_COMPLETED
 
@@ -8067,9 +9104,7 @@ class InnerFactoryToadGiftLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.INNER_FACTORY
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # flag as checked: TOAD_SHOP_FREEBIE_RECEIVED
 
@@ -8082,6 +9117,18 @@ class InnerFactorySecondFight(BossFightLocation):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _pack_id = PACK147_FACTORY_BOSS_RUSH_2
     _post_unlocks_event_id = E1242_INNER_FACTORY_2_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R471_FACTORY_GROUNDS_AREA_02,
+            NPC_15,
+            sequence_setter_event_id=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_12]),
+        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_13]),
+        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_14]),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -8090,9 +9137,7 @@ class InnerFactorySecondFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: INNER_FACTORY_ROOM_2_COMPLETED
 
@@ -8123,6 +9168,18 @@ class InnerFactoryThirdFight(BossFightLocation):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _pack_id = PACK148_FACTORY_BOSS_RUSH_3
     _post_unlocks_event_id = E1243_INNER_FACTORY_3_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R472_FACTORY_GROUNDS_AREA_03,
+            NPC_10,
+            sequence_setter_event_id=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC([R472_FACTORY_GROUNDS_AREA_03], [NPC_7]),
+        BossFightLocationHenchmanNPC([R472_FACTORY_GROUNDS_AREA_03], [NPC_8]),
+        BossFightLocationHenchmanNPC([R472_FACTORY_GROUNDS_AREA_03], [NPC_9]),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -8131,9 +9188,7 @@ class InnerFactoryThirdFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: npc 10 in room 472 removed
 
@@ -8164,6 +9219,31 @@ class InnerFactoryFourthFight(BossFightLocation):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _pack_id = PACK149_FACTORY_BOSS_RUSH_4
     _post_unlocks_event_id = E1244_INNER_FACTORY_4_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+            NPC_12,
+            sequence_setter_event_id=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM], [NPC_0]
+        ),
+    ]
+
+    def render(
+        self, world: GameWorld
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+        # If the prize is not the original GunyolkBossFight, hide NPCs 0-6 in room 470
+        if not isinstance(self.prize, GunyolkBossFight):
+            room = world.rooms._rooms[R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
+            assert room is not None
+            for npc_id in [NPC_0, NPC_1, NPC_2, NPC_3, NPC_4, NPC_5, NPC_6]:
+                obj = room.get_npc_by_target_id(npc_id)
+                if obj is not None:
+                    obj.set_visible(False)
+        return super().render(world)
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -8172,9 +9252,7 @@ class InnerFactoryFourthFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: INNER_FACTORY_ROOM_4_COMPLETED
 
@@ -8204,6 +9282,94 @@ class FinalBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _pack_id = PACK185_FINAL_BOSS
     _post_unlocks_event_id = E1245_INNER_FACTORY_5_BOSS_UNLOCKS
+    _npc_slots = [
+        BossFightLocationNPC(
+            R509_FACTORY_GROUNDS_SMITHYS_PAD,
+            NPC_4,
+            BossSpriteSize.LARGE,
+            E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
+                R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
+                R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
+                R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
+                R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
+                R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
+                R469_FACTORY_GROUNDS_AREA_01,
+                R469_FACTORY_GROUNDS_AREA_01,
+                R469_FACTORY_GROUNDS_AREA_01,
+                R469_FACTORY_GROUNDS_AREA_01,
+                R469_FACTORY_GROUNDS_AREA_01,
+                R469_FACTORY_GROUNDS_AREA_01,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R471_FACTORY_GROUNDS_AREA_02,
+                R472_FACTORY_GROUNDS_AREA_03,
+                R472_FACTORY_GROUNDS_AREA_03,
+                R472_FACTORY_GROUNDS_AREA_03,
+                R472_FACTORY_GROUNDS_AREA_03,
+                R472_FACTORY_GROUNDS_AREA_03,
+                R472_FACTORY_GROUNDS_AREA_03,
+            ],
+            [
+                NPC_1,
+                NPC_2,
+                NPC_3,
+                NPC_4,
+                NPC_5,
+                NPC_6,
+                NPC_0,
+                NPC_1,
+                NPC_2,
+                NPC_3,
+                NPC_4,
+                NPC_5,
+                NPC_7,
+                NPC_8,
+                NPC_9,
+                NPC_10,
+                NPC_11,
+                NPC_15,
+                NPC_0,
+                NPC_1,
+                NPC_2,
+                NPC_3,
+                NPC_4,
+                NPC_5,
+                NPC_6,
+                NPC_7,
+                NPC_8,
+                NPC_9,
+                NPC_10,
+                NPC_11,
+                NPC_1,
+                NPC_2,
+                NPC_3,
+                NPC_4,
+                NPC_5,
+                NPC_6,
+            ],
+        ),
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -9648,11 +10814,10 @@ def can_defeat_bosses(world: GameWorld, inventory: Inventory, count: int) -> boo
     return inventory.has_item_count(BossFightPrize, count)
 
 
-
-
-
 def not_earlygame(world: GameWorld, inventory: Inventory) -> bool:
     return can_defeat_bosses(world, inventory, 5)
+
+
 #    return can_defeat_bosses(world, inventory, 0)
 # setting to 0 as a test
 # having this restriction makes it difficult for seeds to succeed with highly restrictive logic
@@ -9701,7 +10866,7 @@ def can_access_forest(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_clear_forest(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear Forest Maze."""
-    return can_access_forest(world, inventory) 
+    return can_access_forest(world, inventory)
 
 
 def can_access_pipe_vault(world: GameWorld, inventory: Inventory) -> bool:
@@ -9720,7 +10885,7 @@ def can_access_moleville_entrance(world: GameWorld, inventory: Inventory) -> boo
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.GENO):
         return inventory.has_item(GenoRecruitmentPrize)
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.FOREST):
-        return can_access_forest(world, inventory) 
+        return can_access_forest(world, inventory)
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOWYER):
         return inventory.has_item(BowyerBossFight)
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOSHI):
@@ -9738,7 +10903,7 @@ def can_access_inner_mines(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_clear_mines(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear Moleville Mines."""
-    return can_access_inner_mines(world, inventory) 
+    return can_access_inner_mines(world, inventory)
 
 
 def can_access_moleville_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -9781,7 +10946,7 @@ def can_access_tower_postgame_boss(world: GameWorld, inventory: Inventory) -> bo
 def can_access_hill(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Booster Hill."""
     if world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.TOWER):
-        return can_access_tower(world, inventory) 
+        return can_access_tower(world, inventory)
     if world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.KGGG):
         return inventory.has_item(KnifeGuyGrateGuyBossFight)
     return True
@@ -9790,7 +10955,7 @@ def can_access_hill(world: GameWorld, inventory: Inventory) -> bool:
 def can_access_chapel(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to enter the Marrymore chapel."""
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.TOWER):
-        return can_access_tower(world, inventory) 
+        return can_access_tower(world, inventory)
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.KGGG):
         return inventory.has_item(KnifeGuyGrateGuyBossFight)
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.HILL):
@@ -9828,9 +10993,7 @@ def can_access_sea(world: GameWorld, inventory: Inventory) -> bool:
     if world.settings.is_flag_value(SeaGate, SeaGating.BUNDT):
         return inventory.has_item(BundtBossFight)
     if world.settings.is_flag_value(SeaGate, SeaGating.MARRYMORE):
-        return can_access_chapel(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_chapel(world, inventory) and not_earlygame(world, inventory)
     return True
 
 
@@ -9858,9 +11021,7 @@ def can_access_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_clear_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
-    return can_access_seaside_boss(world, inventory) and not_earlygame(
-        world, inventory
-    )
+    return can_access_seaside_boss(world, inventory) and not_earlygame(world, inventory)
 
 
 def can_access_lands_end(world: GameWorld, inventory: Inventory) -> bool:
@@ -9889,9 +11050,7 @@ def can_access_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_clear_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear Belome Temple."""
-    return can_access_temple_boss(world, inventory) and not_earlygame(
-        world, inventory
-    )
+    return can_access_temple_boss(world, inventory) and not_earlygame(world, inventory)
 
 
 def can_access_temple_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -9956,9 +11115,7 @@ def can_access_late_nimbus(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_clear_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear the Nimbus Land boss."""
-    return can_access_late_nimbus(world, inventory) and not_earlygame(
-        world, inventory
-    )
+    return can_access_late_nimbus(world, inventory) and not_earlygame(world, inventory)
 
 
 def can_access_volcano(world: GameWorld, inventory: Inventory) -> bool:
@@ -10009,7 +11166,7 @@ def can_access_factory(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_access_inner_factory_final_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the final Factory boss."""
-    value = world.settings.get_flag(_get_flag('StarPiecesRequired')).value
+    value = world.settings.get_flag(_get_flag("StarPiecesRequired")).value
     has_stars = inventory.has_item_count(StarPiecePrize, value)
     if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
         fireworks_access = inventory.has_item(RegularFireworksPrize)
@@ -10020,10 +11177,10 @@ def can_access_inner_factory_final_boss(world: GameWorld, inventory: Inventory) 
     can_access_bucket = (
         fireworks_access
         and can_clear_mines(world, inventory)
-        and world.settings.isflag_enabled(_get_flag('BucketWarp'))
+        and world.settings.isflag_enabled(_get_flag("BucketWarp"))
     )
     can_access_casino = world.settings.isflag_enabled(
-        _get_flag('CasinoWarp')
+        _get_flag("CasinoWarp")
     ) and inventory.has_item(BrightCardPrize)
     return (
         has_stars

@@ -717,7 +717,7 @@ def randomize_all(world):
                     for index, model in enumerate(location.boss_locations):
                         if (
                             world.settings.is_flag_value(
-                                flags.BossReplaceMinigameSprites, True
+                                flags.KeepMinigameSpritesIntact, True
                             )
                             or not model.minigames_only
                         ):
@@ -728,7 +728,7 @@ def randomize_all(world):
                         for index2, model in enumerate(henchman):
                             if (
                                 world.settings.is_flag_value(
-                                    flags.BossReplaceMinigameSprites, True
+                                    flags.KeepMinigameSpritesIntact, True
                                 )
                                 or not model.minigames_only
                             ):
@@ -812,7 +812,7 @@ def randomize_all(world):
                         for index2, model in enumerate(henchman):
                             if (
                                 world.settings.is_flag_value(
-                                    flags.BossReplaceMinigameSprites, True
+                                    flags.KeepMinigameSpritesIntact, True
                                 )
                                 or not model.minigames_only
                             ):
@@ -2954,7 +2954,7 @@ def randomize_all(world):
                         for item in sublist
                     ]
                     if not world.settings.is_flag_enabled(
-                        flags.BossReplaceMinigameSprites
+                        flags.KeepMinigameSpritesIntact
                     ):
                         uniq = [u for u in uniq if not u.minigames_only]
                     else:

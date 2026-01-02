@@ -782,6 +782,7 @@ class GameWorld:
         # TODO: copy sprites over and update menu pointers and set to 8-d in vram
         # TODO: look at 0x35xxxx report and free up data
         # TODO: message tonic
+        # TODO: apply npc changes for ally shuffle
 
         self._report_progress("Randomizing shops", 45)
 
@@ -874,6 +875,8 @@ class GameWorld:
         # make culex purple lighter
         # blue hair jinx
         # silver belome
+
+        # todo: replace all dialogs of Birdo or Magikoopa if canon names enabled
 
         self._rebuild_hash()
         self._report_progress("Applying cosmetics", 70)

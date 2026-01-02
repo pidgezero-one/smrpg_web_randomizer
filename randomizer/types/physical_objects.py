@@ -409,8 +409,6 @@ class NPC:
     _eye_height: int = 17
     _tower_entrance_horizontal_shift: int = 0
 
-    _animations: SpriteAnimationCollection = SpriteAnimationCollection()
-
     @property
     def base(self) -> NPCBase:
         """The underlying NPC object from the patch builder."""
@@ -430,11 +428,6 @@ class NPC:
     def tower_entrance_horizontal_shift(self) -> int:
         """The horizontal shift to apply to this NPC to complement the eye_height offset."""
         return self._tower_entrance_horizontal_shift
-
-    @property
-    def animations(self) -> SpriteAnimationCollection:
-        """The collection of specially flagged sprite animations for this NPC."""
-        return self._animations
 
     @property
     def min_vram_size(self) -> int:
@@ -525,6 +518,20 @@ class NPC:
             and self.base.byte5_bit7 == npc.base.byte5_bit7
             and self.base.byte6_bit2 == npc.base.byte6_bit2
         )
+
+
+class BossNPC(NPC):
+
+    _animations: SpriteAnimationCollection = SpriteAnimationCollection()
+
+    @property
+    def animations(self) -> SpriteAnimationCollection:
+        """The collection of specially flagged sprite animations for this NPC."""
+        return self._animations
+
+
+class HenchmanNPC(NPC):
+    pass
 
 
 class ItemNPC(NPC):
