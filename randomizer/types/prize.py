@@ -444,6 +444,9 @@ class BossFightPrize(Prize):
     _dialog_replacements_if_mandatory_fights_changed_canon: dict[int, str] | None = (
         None
     )
+    _dialog_replacements_peach: dict[int, str] | None = None
+    _dialog_replacements_if_mandatory_fights_changed_peach: dict[int, str] | None = None
+    _dialog_replacements_canon_and_remake: dict[int, str] | None = None
 
     @property
     def character_henchmen(self) -> list[BossFightHenchman] | None:
@@ -519,68 +522,52 @@ class BossFightPrize(Prize):
         return self._statue_npc
 
     def get_dialog_replacements(
-        self, remake: bool = False, canon: bool = False, mandatory_fights_changed: bool = False
+        self, remake: bool = False, canon: bool = False, mandatory_fights_changed: bool = False, peach: bool = False
     ) -> dict[int, str] | None:
         if self._dialog_replacements is None:
             return {}
-        if canon:
-            dialog_replacements = {**self._dialog_replacements}
-            if self._dialog_replacements_remake is not None:
-                dialog_replacements = {
-                    **dialog_replacements,
-                    **self._dialog_replacements_remake,
-                }
-            if self._dialog_replacements_canon is not None:
-                dialog_replacements = {
-                    **dialog_replacements,
-                    **self._dialog_replacements_canon,
-                }
-            if (
-                mandatory_fights_changed
-                and self._dialog_replacements_if_mandatory_fights_changed_remake
-                is not None
-            ):
-                dialog_replacements = {
-                    **dialog_replacements,
-                    **self._dialog_replacements_if_mandatory_fights_changed_remake,
-                }
-            if (
-                mandatory_fights_changed
-                and self._dialog_replacements_if_mandatory_fights_changed_canon
-                is not None
-            ):
-                dialog_replacements = {
-                    **dialog_replacements,
-                    **self._dialog_replacements_if_mandatory_fights_changed_canon,
-                }
-            return dialog_replacements
+        dialog_replacements = {**self._dialog_replacements}
         if remake:
-            dialog_replacements = {**self._dialog_replacements}
-            if self._dialog_replacements_remake is not None:
-                dialog_replacements = {
+            dialog_replacements =  {
                     **dialog_replacements,
-                    **self._dialog_replacements_remake,
+                    **(self._dialog_replacements_remake or {}),
                 }
-            if (
-                mandatory_fights_changed
-                and self._dialog_replacements_if_mandatory_fights_changed_remake
-                is not None
-            ):
-                dialog_replacements = {
+        if canon:
+            dialog_replacements =  {
                     **dialog_replacements,
-                    **self._dialog_replacements_if_mandatory_fights_changed_remake,
+                    **(self._dialog_replacements_canon or {}),
                 }
-            return dialog_replacements
-        if (
-            mandatory_fights_changed
-            and self._dialog_replacements_if_mandatory_fights_changed is not None
-        ):
-            dialog_replacements = {
-                **self._dialog_replacements,
-                **self._dialog_replacements_if_mandatory_fights_changed,
-            }
-            return dialog_replacements
-        return self._dialog_replacements
+        if canon and remake:
+            dialog_replacements =  {
+                    **dialog_replacements,
+                    **(self._dialog_replacements_canon_and_remake or {}),
+                }
+        if peach:
+            dialog_replacements =  {
+                    **dialog_replacements,
+                    **(self._dialog_replacements_peach or {}),
+                }
+        if mandatory_fights_changed:
+            dialog_replacements =  {
+                    **dialog_replacements,
+                    **(self._dialog_replacements_if_mandatory_fights_changed or {}),
+                }
+            if remake:
+                dialog_replacements =  {
+                        **dialog_replacements,
+                        **(self._dialog_replacements_if_mandatory_fights_changed_remake or {}),
+                    }
+            if canon:
+                dialog_replacements =  {
+                        **dialog_replacements,
+                        **(self._dialog_replacements_if_mandatory_fights_changed_canon or {}),
+                    }
+            if peach:
+                dialog_replacements =  {
+                        **dialog_replacements,
+                        **(self._dialog_replacements_if_mandatory_fights_changed_peach or {}),
+                    }
+        return dialog_replacements
 
     def seaside_letter_name_if_sunken_ship_boss(self, remake: bool = False, canon: bool = False) -> str:
         if canon:

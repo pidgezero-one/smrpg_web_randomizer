@@ -291,11 +291,11 @@ def apply_shuffler_results(world: GameWorld) -> None:
                 if hasattr(place.prize, "_nickname"):
                     nn = place.prize.nickname
                     if isinstance(place, TreasureShopItem1):
-                        world.overworld_dialogs.replace_dialog(DI2911_TREASURE_SELLER_ITEM_1, nn.get_slot_1_dialog())
+                        world.update_dialog(DI2911_TREASURE_SELLER_ITEM_1, nn.get_slot_1_dialog())
                     elif isinstance(place, TreasureShopItem2):
-                        world.overworld_dialogs.replace_dialog(DI2908_TREASURE_SELLER_ITEM_2, nn.get_slot_2_dialog())
+                        world.update_dialog(DI2908_TREASURE_SELLER_ITEM_2, nn.get_slot_2_dialog())
                     elif isinstance(place, TreasureShopItem3):
-                        world.overworld_dialogs.replace_dialog(DI2914_TREASURE_SELLER_ITEM_3, nn.get_slot_3_dialog())
+                        world.update_dialog(DI2914_TREASURE_SELLER_ITEM_3, nn.get_slot_3_dialog())
 
             if isinstance(
                 place.prize, (FirstMimicFightLauncher, SecondMimicFightLauncher)

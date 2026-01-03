@@ -1908,26 +1908,37 @@ class KeepMinigameSpritesIntact(BooleanFlag):
 <li>Dodo will always peck the statues even if he is not the statue room boss fight.</li>
 <li>The snifits on Booster Hill will not be replaced by any henchmen belonging to the first tower boss.</li>
 <li>The shy guys in the Mushroom Kingdom throne room will not be swapped out for other sprites.</li>
-<li>All Mushroom Kingdom shy guys, Moleville crooks and bob-ombs, Booster Pass apprentice, Booster Tower snifits, Bandana Reds, and inner factory Mad Mallets battles will not receive new enemies.</li>
+<li>All Mushroom Kingdom shy guys, Moleville crooks and bob-ombs, Booster Pass apprentice, Booster Tower snifits, Bandana Reds, and inner factory Mad Mallets battles will not be replaced.</li>
 </ul>."""
     _id = "allsprites"
     _requires_all = [(BossShuffle(), True)]
 
 
-class DifferentiateRepeatedBosses(BooleanFlag):
-    _name = "Differentiate similar bosses"
-    _description = """If enabled, Croco, Jinx, Belome, and the four mimics (as well as Punchinello, Johnny, Bundt, Culex, and Booster if remake content is enabled) will look slightly different in the overworld depending on which version of the fight it is.
-<br>
-<br>Croco 2 will have a darker hat.
-<br>
-<br>Jinx 2/3's hair will be black/white respectively.
-<br>
-<br>Belome 2 will be more subdued, and coloured like the golden Belome statue.
-<br>
-<br>Pandorite will be tinted orange, Hidon will be tinted green, and Chester will be tinted purple."""
-    _id = "diff"
-    _requires_all = [(BossShuffle(), True)]
-    # TODO: belome 3, punchinello 2, jinx 4, johnny 2, bundt 2, culex 3D, booster 2
+# Leaving this out of 9.0.0 because not sure what palettes we have available to us that might be unused in order to expand it to remake bosses.
+# Probably a good dedicated project for someone who wants to develop for this.
+# class DifferentiateRepeatedBosses(BooleanFlag):
+#     _name = "Differentiate similar bosses"
+#     _description = """If enabled, Croco, Jinx, Belome, and the four mimics (as well as Punchinello, Johnny, Bundt, Culex, and Booster if remake content is enabled) will look slightly different in the overworld depending on which version of the fight it is.
+# <br>
+# <br>Croco 2 will have a darker hat.
+# <br>
+# <br>Jinx 2/3's hair will be black/white respectively.
+# <br>
+# <br>Belome 2 will be more subdued, and coloured like the golden Belome statue.
+# <br>
+# <br>Pandorite will be tinted orange, Hidon will be tinted green, and Chester will be tinted purple."""
+#     _id = "diff"
+#     _requires_all = [(BossShuffle(), True)]
+# This is NOT considered a cosmetic because it reveals information that otherwise would only be seen in batte.
+# Ideas:
+# move chocolate cake palette to postgame bundt
+# blue shirt booster (not purple-y)
+# blue hat punchinello (not purple-y)
+# invert johnny blue and red
+# make culex purple lighter
+# blue hair jinx
+# silver belome
+# ^ The above were all suggested based on accessibility for colour-blind players.
 
 
 # ShuffledBossEnum is created lazily to avoid circular import with prizes module
@@ -2483,7 +2494,7 @@ class BossPositionSubcategory(FlagCategory):
         BossShuffle,
         BossShuffleScaleStats,
         KeepMinigameSpritesIntact,
-        DifferentiateRepeatedBosses,
+        # DifferentiateRepeatedBosses,
         ShuffledBosses,
     ]
     _size: int = 4

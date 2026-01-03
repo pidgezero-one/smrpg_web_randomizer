@@ -53,10 +53,10 @@ def randomize_tadpole_pond(world: GameWorld) -> None:
     world.event_scripts.get_script_by_id(
         E1079_MELODY_BAY_SONG_1_VALIDATOR
     ).set_contents(selection[0].generate_playback_script(0))
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI2718_SONG_1_SCROLL_HINT, selection[0].scroll_text
     )
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI2664_TADPOLE_SONG_1_HINT, selection[0].apprentice_hint_1
     )
 
@@ -66,10 +66,10 @@ def randomize_tadpole_pond(world: GameWorld) -> None:
     world.event_scripts.get_script_by_id(
         E1080_MELODY_BAY_SONG_2_VALIDATOR
     ).set_contents(selection[1].generate_playback_script(1))
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI2665_TADPOLE_SONG_2_HINT, selection[1].apprentice_hint_2
     )
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI1615_MOLEVILLE_BLUES_8, selection[1].mole_hint
     )
     world.event_scripts.get_script_by_id(E3132_MOLEVILLE_MINERS_SONG).set_contents(
@@ -214,10 +214,10 @@ def randomize_password(world: GameWorld) -> None:
         )
         box_dialog_pairs = zip(box_dialogs, box_dialog_ids[index])
         for dialog_content, dialog_id in box_dialog_pairs:
-            world.overworld_dialogs.replace_dialog(dialog_id, dialog_content)
+            world.update_dialog(dialog_id, dialog_content)
         recitation_pairs = zip(letters, recitation_ids[index])
         for letter, dialog_id in recitation_pairs:
-            world.overworld_dialogs.replace_dialog(dialog_id, """%s[end]""" % letter)
+            world.update_dialog(dialog_id, """%s[end]""" % letter)
 
     # calibrate correctness checker
     world.event_scripts.get_script_by_id(
@@ -328,42 +328,42 @@ def randomize_password(world: GameWorld) -> None:
         if password.drybones_hint and RWRITER in password.drybones_hint:
             password.drybones_hint = password.drybones_hint.replace(RWRITER, s)
             continue
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI1664_TROOPA_PUZZLE_HINT, password.troopa_hint
     )
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI1665_TRAMPOLINE_PUZZLE_HINT, password.trampoline_hint
     )
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI1666_MAZE_PUZZLE_HINT, password.maze_hint
     )
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI1667_SNAKE_PUZZLE_HINT, password.snake_hint
     )
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI1668_CANNONBALL_PUZZLE_HINT, password.cannonball_hint
     )
-    world.overworld_dialogs.replace_dialog(
+    world.update_dialog(
         DI1669_BARREL_PUZZLE_HINT, password.barrel_hint
     )
     if password.entrance_hint is not None:
-        world.overworld_dialogs.replace_dialog(
+        world.update_dialog(
             DI1673_SHIP_ENTRANCE_NOTE, password.entrance_hint
         )
     if password.saveroom_hint is not None:
-        world.overworld_dialogs.replace_dialog(
+        world.update_dialog(
             DI1674_SHIP_SAVEROOM_NOTE, password.saveroom_hint
         )
     if password.greaper_hint is not None:
-        world.overworld_dialogs.replace_dialog(
+        world.update_dialog(
             DI1675_SHIP_GREAPER_1_NOTE, password.greaper_hint
         )
     if password.greaper_hint_2 is not None:
-        world.overworld_dialogs.replace_dialog(
+        world.update_dialog(
             DI1676_SHIP_GREAPER_2_NOTE, password.greaper_hint_2
         )
     if password.drybones_hint is not None:
-        world.overworld_dialogs.replace_dialog(
+        world.update_dialog(
             DI1656_SLEEPING_DRY_BONES, password.drybones_hint
         )
 

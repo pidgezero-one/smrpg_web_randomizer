@@ -4,6 +4,11 @@ import random
 import datetime
 from typing import TYPE_CHECKING, cast
 
+from django.contrib.gis.measure import D
+
+from randomizer.data.variables.dialog_names import DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
+from randomizer.types.flags import KeepMinigameSpritesIntact
+from randomizer.types.prize import BossFightPrize
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import (
     ScreenFlashWithDuration,
     AttackTimerBegins,
@@ -61,15 +66,12 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     if world.settings.isflag_enabled(CanonNames):
         world.enemies.get_by_type(KAMEKEnemy).set_name("KAMEK")
         world.enemies.get_by_type(BIRDETTAEnemy).set_name("BIRDETTA")
-    else:
-        world.search_replace_dialog("KAMEK", "MAGIKOOPA")
-        world.search_replace_dialog("Kamek", "Magikoopa")
-        world.search_replace_dialog("BIRDETTA", "BIRDO")
-        world.search_replace_dialog("Birdetta", "Birdo")
 
     # Peach name
     if world.settings.isflag_enabled(Peach):
         world.allies._allies[1].name = "Peach"
+        world.enemies.get_by_type(TOADSTOOL2Enemy).set_name("PEACH CLONE")
+        world.enemies.get_by_type(TOADSTOOL3Enemy).set_name("PEACH CLONE S")
 
     # Remake names
     if world.settings.isflag_enabled(RemakeNames):
@@ -89,6 +91,22 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             at = cast(EnemyAttack, attack)
             if at.remake_name is not None:
                 attack.set_attack_name(at.remake_name)
+        world.update_dialog(DI3072_TOWER_HENCHMAN_3_WINDOW, """SNIFSTER 3: Um...\n Nice weather we're having.[await]""")
+        world.update_dialog(DI3073_TOWER_HENCHMAN_3, '''SNIFSTER 3: You wanna fight?[await]''')
+
+    for location in world.locations:
+        if isinstance(location, BossFightLocation) and isinstance(location.prize, BossFightPrize):
+            dialogs = location.prize.get_dialog_replacements(
+                remake=world.settings.isflag_enabled(RemakeNames),
+                canon=world.settings.isflag_enabled(CanonNames),
+                mandatory_fights_changed=not world.settings.isflag_enabled(KeepMinigameSpritesIntact),
+                peach=world.settings.isflag_enabled(Peach)
+                )
+            if dialogs:
+                for dialog_id in location._dialogs_expecting_replacement:
+                    if dialog_id in dialogs:
+                        world.update_dialog(dialog_id, dialogs[dialog_id])
+                        
 
     # Remove screen flashes (accessibility)
     if world.settings.isflag_enabled(RemoveFlashes):
@@ -212,6 +230,18 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             world.enemies.get_by_type(MALLOWCOPYSEnemy).set_name(
                 world.mallow_palette.strong_clone_name
             )
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("TOADSTOOL 2", world.toadstool_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("PEACH CLONE", world.toadstool_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("MALLOW CLONE", world.mallow_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("MARIO CLONE", world.mario_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("GENO CLONE", world.geno_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("BOWSER CLONE", world.bowser_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("TOADSTOOL 3", world.toadstool_palette.strong_clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("S PEACH CLONE", world.toadstool_palette.strong_clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("MALLOW COPY S", world.mallow_palette.strong_clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("BOWSER COPY S", world.bowser_palette.strong_clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("GENO CLONE S", world.geno_palette.strong_clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("MARIO CLONE S", world.mario_palette.strong_clone_name)
 
     # Initialize selected music IDs
     world.selected_music_ids = []
@@ -248,7 +278,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     # Random Star Hill wishes (truly random, not tied to seed)
     wishes = zip(WISH_DIALOG_IDS, random.sample(WISH_POOL, len(WISH_DIALOG_IDS)))
     for dialog_id, wish in wishes:
-        world.overworld_dialogs.replace_dialog(dialog_id, wish)
+        world.update_dialog(dialog_id, wish)
 
     # Room service and bomb shop dialog text (depends on RemakeNames setting)
     from ...data.variables.dialog_names import (
@@ -263,7 +293,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     if world.room_service_items:
         low_item = cast(Item, world.get_item(world.room_service_items[0]))
         high_item = cast(Item, world.get_item(world.room_service_items[1]))
-        world.overworld_dialogs.replace_dialog(
+        world.update_dialog(
             DI3847_ROOM_SERVICE_MENU,
             f"[page]\n Here is the menu.[await]\n"
             f" [select]  {low_item.text_shop_menu(use_remake)}\n"
@@ -275,7 +305,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     if world.bomb_shop_items:
         bomb_items = [cast(Item, world.get_item(b)) for b in world.bomb_shop_items]
         bombs = [b.name for b in bomb_items]
-        world.overworld_dialogs.replace_dialog(
+        world.update_dialog(
             DI1217_SWAP_SHOP_OVER_100_POINTS,
             f" If we total that up, you've got\n [0x7000] points![await][page]\n"
             f" You have more than 100 points,\n so go ahead and choose an item.[await][page]\n"
@@ -283,7 +313,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             f"  [select]  ({bombs[1]})\n"
             f"  [select]  ({bombs[2]})[await]"
         )
-        world.overworld_dialogs.replace_dialog(
+        world.update_dialog(
             DI1175_SWAP_SHOP_INSTRUCTIONS,
             f"\n  Bring your unwanted items here![await][page]\n"
             f"  We'll exchange your Mushrooms\n       and Syrups for points.[await]\n"

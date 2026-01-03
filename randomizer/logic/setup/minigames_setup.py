@@ -61,7 +61,7 @@ def apply_minigame_settings(world: GameWorld) -> None:
         for text, d_id in zip(
             questions, option_1_correct + option_2_correct + option_3_correct
         ):
-            world.overworld_dialogs.replace_dialog(d_id, text.get_string(d_id))
+            world.update_dialog(d_id, text.get_string(d_id))
 
     # Ball solitaire puzzle shuffle
     if world.settings.isflag_enabled(BallSolitaireShuffle):

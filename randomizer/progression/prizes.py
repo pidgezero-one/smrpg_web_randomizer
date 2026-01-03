@@ -2409,9 +2409,7 @@ class HammerBrosFight(BossFightPrize):
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """HAMMER BRO: Alright already,\n you won, now go away![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you figured it out... But you\n gotta get past my hammer to get\n through![await]""",
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Hammer Bros' place.[await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n the HAMMER BROS!![await]""",
-        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """HAMMER BRO: ...grumble...\n My hammer's embarrassed about\n losing...[await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """HAMMER BRO: ...grumble...[delay]\n My hammer's embarrassed about\n losing...[await]""",
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """HAMMER BRO: What're YOU lookin' at?[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """HAMMER BRO: Look buddy, you\n already won, you can stop\n taunting my hammer now.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ After getting hammered, [await]\n I always drink Carrot Juice.[await]""",
@@ -2422,14 +2420,20 @@ class HammerBrosFight(BossFightPrize):
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big hammer! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """HAMMER BRO: You better find [0x7024]\n more of `MARRYMORE_CHARACTER`'s things,\n or my hammer'll be angry![await]""",
-        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n The Hammer Bros are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
-        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering the Hammer Bros.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """HAMMER BRO: What're YOU lookin'\n at?[await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find the Hammer Bro...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """HAMMER BRO: The dojo master\n takes on 3 different forms.\n Me, though? I'm just a hammer.[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Hammer-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """HAMMER BRO: I guess you were\n tougher than I thought![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """HAMMER BRO: I guess you were\n tougher than I thought![await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Hammer Bros' place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n the HAMMER BROS!![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n The Hammer Bros are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering the Hammer Bros.[await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Hammer Bros are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering the Hammer Bros.[await]""",
     }
 
 
@@ -2448,8 +2452,6 @@ class Croco1BossFight(BossFightPrize):
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n CROCO: Get the heck outta here![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Alright, alright, so ya figured out\n my password! But I ain't goin'\n down without a fight![await]""",
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Croco's place.[await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped CROCO!![await]""",
         DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """CROCO: Enough already, get outta\n here![await]""",
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """CROCO: Back already? How 'bout a\n drink?[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """\n    CROCO: 'Dis some kinda joke?[await]""",
@@ -2460,9 +2462,7 @@ class Croco1BossFight(BossFightPrize):
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big reptile! It is...\n masterpiece![await]""",
-        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """CROCO: What's dis?[await][pause] You fools're\n gonna take another 100 years to\n find the last [0x7024] item(s)![await]""",
-        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Croco's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
-        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Croco.[await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """CROCO: What's this?[await][pause] You fools're\n gonna take another 100 years to\n find the last [0x7024] item(s)![await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """CROCO: Whaddya doin' hangin\n 'round here?[await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Croco...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CROCO: Think ya can beat the dojo\n master, chump? I'd like to see ya\n try![await]""",
@@ -2470,6 +2470,14 @@ class Croco1BossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Wallet-this and Coin-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Croco's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped CROCO!![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Croco's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Croco.[await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Croco's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Croco.[await]""",
     }
 
 
@@ -2514,9 +2522,9 @@ class MackBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """BODYGUARD: Doesn't this cake\n look just like Mack?[await]""",
         DI2062_APPRENTICE_CHEF: """BODYGUARD: We've gotten REAL\n good with fondant![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """MACK: I'm not happy to delay the\n party, but we can't get started\n until you find [0x7024] more item(s)![await]""",
-        DI2560_TOWER_HENCHMAN_1: """BODYGUARD: Welcome![await][pause]\n Our party is invitation-only, so\n please come back another time.[await][page]\n[delay] ...You're here to crash it anyway?[delay]\n Alright, wise guy, let's go![await]""",
-        DI2572_TOWER_HENCHMAN_2: """\n   BODYGUARD: Oh, no you don't![await]""",
-        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n   MACK: What are you doing here?[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Mack's busy right now, so he can't\n play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Mack.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n   MACK: What're YOU doing here?[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Yo! You look tired.[delay] How 'bout a\n night on the house?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
         DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: """ If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]""",
@@ -2531,15 +2539,41 @@ class MackBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n               Beat it, bub![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """MACK: Think you're gonna beat the\n dojo master today?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You come to crash my party?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """BODYGUARD: I almost feel bad\n for all those fools out there,\n who can't even bounce...[await]""",
-        DI3073_TOWER_HENCHMAN_3: """BODYGUARD: How 'bout a fat lip to\n go with that ugly moustache?[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bouncing-this and Party-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MACK: I guess you CAN bounce\n after all.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MACK: I guess you CAN bounce\n after all.[await]""",
     }
+    _dialog_replacements_remake = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CLAYMORTON: Party's over. I'm\n going to sleep.[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Claymorton's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n CLAYMORTON!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """CLAYMORTON:\n        Guess the party's over.[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """CLAYMORTON: Hey `MAIN_CHARACTER_NAME`!\n Come back to crash our party?[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """CLAYMORTON: OK, I get it, you can\n bounce too.[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n Yo `MAIN_CHARACTER_NAME`!\n[await][page]\n I heard you left and threw down\n with `SEASIDE_BOSS`![await]\n\n The shymores on lookout saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n They got the good stuff from \n `FINAL_BOSS_NAME`[await]\n We'd better get back aboard before\n any other Shyster party fouls.\n I heard Exor might even show up![await][page]\n\n                             Hang loose!\n                               Claymorton[await]""",
+        DI2061_HEAD_CHEF: """BODYGUARD: Doesn't this cake\n look just like Claymorton?[await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """CLAYMORTON: I'm not happy to\n delay the party, but we can't get\n started until you get 4 more items![0]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Claymorton's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Claymorton.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """CLAYMORTON:\n        What're YOU doing here?[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Claymorton's\n house up on the hill yet?[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CLAYMORTON: Think you're gonna\n beat the dojo master today?[await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CLAYMORTON: I guess you CAN\n bounce after all.[await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CLAYMORTON: I guess you CAN\n bounce after all.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """BODYGUARD: Think you're tough,\n pal?[await][delay] March that ugly mustache into\n Mack's room, and see what\n happens![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """BODYGUARD: You beat Mack?[await]\n This is not good![delay_30]\n I guess you can bounce after all.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """BODYGUARD: Welcome![await][pause]\n Our party is invitation-only, so\n please come back another time.[await][page]\n[delay] ...You're here to crash it anyway?[delay]\n Alright, wise guy, let's go![await]""",
+        DI2572_TOWER_HENCHMAN_2: """\n   BODYGUARD: Oh, no you don't![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """BODYGUARD: I almost feel bad\n for all those fools out there,\n who can't even bounce...[await]""",
+        DI3073_TOWER_HENCHMAN_3: """BODYGUARD: How 'bout a fat lip to\n go with that ugly moustache?[await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed_remake = {
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """BODYGUARD: Think you're tough,\n pal?[await][delay] March that ugly mustache into\n Claymorton's room, and see what\n happens![await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """BODYGUARD: You beat Claymorton?[await]\n This is not good![delay_30]\n I guess you can bounce after all.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Mack's busy right now, so he can't\n play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Mack.[await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -2590,6 +2624,24 @@ class PandoriteBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """PANDORITE: ...I'm not sure how\n I'm accomplishing this.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """PANDORITE: ...I'm not sure how\n I'm accomplishing this.[await]""",
     }
+    _dialog_replacements_remake = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """HUHWHAT: That thing was making\n me sick...[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Huhwhat's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped \nHUHWHAT!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """HUHWHAT: Whatever... Leave me\n alone so I can go back to sleep.[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """HUHWHAT: I think I like this place\n more than the sewers. It smells\n marginally better.[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """HUHWHAT: I can't tell if this is\n better or worse without the\n protection of my box.[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n Dear `MAIN_CHARACTER_NAME`,\n[await][page]\n Someone closed my box, and I\n floated up here to see your battle[await]\n with `SEASIDE_BOSS`.\n While looking for rocks, I saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n I think it might be one of \n `FINAL_BOSS_NAME`[await]\n I've got all the rocks in my box\n so I should sink near the ship.\n Drop by to see if I made it later.[await][page]\n\n                         Warm Regards,\n                                  Huhwhat[await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """HUHWHAT: Sorry, you can't skip\n getting the last [0x7024] item(s).[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n PHuhwhat's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Huhwhat.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """HUHWHAT: There's not much to do\n around here.[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Huhwhat...\n in his house. He is...the most\n respected person here.[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """HUHWHAT: Now this should be\n interesting. Can you beat THE\n master, `MAIN_CHARACTER_NAME`?[await]""",
+        DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Ghost-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """HUHWHAT: ...I'm not sure how\n I'm accomplishing this.[await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """HUHWHAT: ...I'm not sure how\n I'm accomplishing this.[await]""",
+    }
 
 
 class Belome1BossFight(BossFightPrize):
@@ -2616,7 +2668,7 @@ class Belome1BossFight(BossFightPrize):
         DI1782_SHIP_BOSS_DRINK: """ I'm always STARVING~![await]\n...but I hydrate with Filtered Water.[await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """It's a damp, slimy, looking note (did `SEASIDE_BOSS` LICK this?).\n[await][page]\nA paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION`\nis etched on the paper.\nThis is probably one of \n`FINAL_BOSS_NAME`'s henchmen!\n`SEASIDE_BOSS` likely headed down to\nfind more snacks,\nso it's time to move on.[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """ It's a damp, slimy, looking note\n (did `SEASIDE_BOSS` LICK this?).\n[await][page]\nA paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION`\nis etched on the paper.\nThis is probably one of \n`FINAL_BOSS_NAME`'s henchmen!\n`SEASIDE_BOSS` likely headed down to\nfind more snacks,\nso it's time to move on.[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big dog! It is...\n masterpiece![await]""",
@@ -2630,6 +2682,10 @@ class Belome1BossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Belome.[await]""",
     }
 
 
@@ -2668,8 +2724,8 @@ class BowyerBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """FLUNKIE: Doesn't this cake\n look just like Bowyer?[await]""",
         DI2062_APPRENTICE_CHEF: """FLUNKIE: We've gotten REAL\n good with fondant![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BOWYER: Nya, NYA!?[await][pause] Disturb me\n you must not, until [0x7024] more item(s)\n you find, nya![await]""",
-        DI2560_TOWER_HENCHMAN_1: """FLUNKIE: Hello.[await][pause] Bowyer is busy\n now, and he really hates to be\n interrupted.[await][page]\n[delay] ...If you're not going to leave,\n I'll have to kick you out myself![await]""",
-        DI2572_TOWER_HENCHMAN_2: """FLUNKIE: I'm gonna have to ask you\n not to interrupt Bowyer's target\n practice.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Bowyer's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Bowyer.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\nBOWYER: Nya! Boring here, it is...[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Since I'm having a good day, you\n can stay here free of charge.\n [delay]How's that sound?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -2685,8 +2741,6 @@ class BowyerBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ What's going on in here?[await][pause] None of\n your business, that's what![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n BOWYER: Interesting, this will be![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Fight me, you will, nya?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """FLUNKIE: ...sigh... [delay]Bowyer scolded\n me for interrupting his shooting\n practice.[await][pause] I was just trying to warn\n him that `MAIN_CHARACTER_NAME` is here![await]""",
-        DI3073_TOWER_HENCHMAN_3: """FLUNKIE: You look like you'd make\n for a good statue![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arrow-this and Target-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOWYER: 1000 jumps I must do,\n nya![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOWYER: 1000 jumps I must do,\n nya![await]""",
@@ -2694,6 +2748,14 @@ class BowyerBossFight(BossFightPrize):
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """FLUNKIE: Whoa! You sure showed\n us! Go on ahead to Bowyer's\n place![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """FLUNKIE: Come back and visit\n us sometime. Bowyer won't stay\n mad forever![await]""",
+        DI2560_TOWER_HENCHMAN_1: """FLUNKIE: Hello.[await][pause] Bowyer is busy\n now, and he really hates to be\n interrupted.[await][page]\n[delay] ...If you're not going to leave,\n I'll have to kick you out myself![await]""",
+        DI2572_TOWER_HENCHMAN_2: """FLUNKIE: I'm gonna have to ask you\n not to interrupt Bowyer's target\n practice.[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """FLUNKIE: ...sigh... [delay]Bowyer scolded\n me for interrupting his shooting\n practice.[await][pause] I was just trying to warn\n him that `MAIN_CHARACTER_NAME` is here![await]""",
+        DI3073_TOWER_HENCHMAN_3: """FLUNKIE: You look like you'd make\n for a good statue![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Bowyer's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Bowyer.[await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -2752,8 +2814,9 @@ class Croco2BossFight(BossFightPrize):
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """FLUNKIE: To be honest, Croco's not\n really a bad guy.[await][pause] I guess that's why\n we follow him.[await]""",
         DI2061_HEAD_CHEF: """FLUNKIE: Doesn't this cake\n look just like Croco?[await]""",
         DI2062_APPRENTICE_CHEF: """FLUNKIE: We've gotten REAL\n good with fondant![await]""",
-        DI2560_TOWER_HENCHMAN_1: """FLUNKIE: Croco's busy! Scram![await]\n[delay_60] ...Not leaving, huh?\n[delay] Alright buddy, you asked for it![await]""",
-        DI2572_TOWER_HENCHMAN_2: """FLUNKIE: Where d'ya think YOU'RE\n going?![await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """CROCO: What's this?[await][pause] You fools're\n gonna take another 100 years to\n find the last [0x7024] item(s)![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Croco's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Croco.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """CROCO: Whaddya doin' hangin\n 'round here?[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ You tired? You can stay here\n for free.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -2769,8 +2832,6 @@ class Croco2BossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ Nope, nothing suspicious going on\n in this house![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CROCO: Think ya can beat the dojo\n master, chump? I'd like to see ya\n try![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Whaddya want, bub?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """\n  FLUNKIE: I could use a stepstool.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """\n      FLUNKIE: A tough guy, eh?[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Wallet-this and Coin-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
@@ -2778,6 +2839,14 @@ class Croco2BossFight(BossFightPrize):
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """FLUNKIE: (Sob, sob...)[delay_30]\n You're pretty tough. I guess I'll let\n you through to Croco's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """FLUNKIE: You beat Croco!?[delay_30]\n We'll getcha for this![await][page]\n Maybe not today, maybe not\n tomorrow, but someday...[await]""",
+        DI2560_TOWER_HENCHMAN_1: """FLUNKIE: Croco's busy! Scram![await]\n[delay_60] ...Not leaving, huh?\n[delay] Alright buddy, you asked for it![await]""",
+        DI2572_TOWER_HENCHMAN_2: """FLUNKIE: Where d'ya think YOU'RE\n going?![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """\n  FLUNKIE: I could use a stepstool.[await]""",
+        DI3073_TOWER_HENCHMAN_3: """\n      FLUNKIE: A tough guy, eh?[await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Croco's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Croco.[await]""",
     }
 
 
@@ -2827,8 +2896,8 @@ class PunchinelloBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """BOB-OMB: Doesn't this cake\n look just like Punchinello?[await]""",
         DI2062_APPRENTICE_CHEF: """BOB-OMB: We've gotten quite\n good with fondant.[await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """PUNCHINELLO: Huh?[delay_30] What the hay?[await]\n Where are the other [0x7024] item(s)?[await]""",
-        DI2560_TOWER_HENCHMAN_1: """BOB-OMB: Hello there.[await][pause] If you've\n come for Punchinello's autograph,\n please allow me to buzz you up...[await][page]\n [delay]...You're not here for that?[await]\n [delay]Uh oh, he'll be pretty mad!\n [delay]I'd better do something![await]""",
-        DI2572_TOWER_HENCHMAN_2: """BOB-OMB: There's nothing to see\n back here...[await][pause] I mean that.[await]\n You don't believe me?[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Punchinello's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Punchinello.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """PUNCHINELLO: Hmmm... [delay]Huh?\n [delay]A visitor? [delay]Well, there's not much\n to do around here.[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Hello there.[await][pause] Today, we've got an\n explosively good deal for you![delay] All\n inn expenses are free of charge.[await]\n Would you like to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -2844,15 +2913,21 @@ class PunchinelloBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ You wouldn't wanna enter this\n house, oh no.[delay] We'll make sure you\n don't enter by accident.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """PUNCHINELLO: A challenge from\n the dojo master, eh? Let's see\n where this goes.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hello. Are you with the press?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong number)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """BOB-OMB: I don't look like the\n other bob-ombs here. [delay]That's weird.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """BOB-OMB: You don't think it makes\n sense for a bob-omb to be shooting\n bullets?[await][pause] ...Fight me about it![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bomb-this and Famous-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Punchinello's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Punchinello.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """BOB-OMB: I guess I was a little\n hot-headed, thinking I could win.\n Go on in to Punchinello's room.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """BOB-OMB: Wow, you beat\n Punchinello! He's not very happy\n about that.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """BOB-OMB: Hello there.[await][pause] If you've\n come for Punchinello's autograph,\n please allow me to buzz you up...[await][page]\n [delay]...You're not here for that?[await]\n [delay]Uh oh, he'll be pretty mad!\n [delay]I'd better do something![await]""",
+        DI2572_TOWER_HENCHMAN_2: """BOB-OMB: There's nothing to see\n back here...[await][pause] I mean that.[await]\n You don't believe me?[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """BOB-OMB: I don't look like the\n other bob-ombs here. [delay]That's weird.[await]""",
+        DI3073_TOWER_HENCHMAN_3: """BOB-OMB: You don't think it makes\n sense for a bob-omb to be shooting\n bullets?[await][pause] ...Fight me about it![await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -2937,6 +3012,10 @@ class BoosterBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Booster's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Booster.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """APPRENTICE: Oh, dear![delay] We've\n failed to keep the intruder away\n from Booster![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """APPRENTICE: Booster's not happy\n about losing. Please do not jump\n on his head.[await]""",
@@ -2979,6 +3058,10 @@ class KnifeGuyGrateGuyBossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Knife-this and Casino-that.[await][page]\n Sometimes I'd like to ask them what\n they're babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """GRATE GUY: Look, `MAIN_CHARACTER_NAME`!\n I've been training so hard, that my\n ball jumps with me![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """GRATE GUY: Look, `MAIN_CHARACTER_NAME`!\n I've been training so hard, that my\n ball jumps with me![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Knife Guy and Grate Guy are busy\n right now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Knife Guy and\n Grate Guy.[await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -3044,6 +3127,18 @@ class BundtBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Bundt is busy right now, so it\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Bundt.[await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed = {
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """APPRENTICE: Fine, go on ahead.\n I'll warn you, though, some idiot\n stepped on the cake, so be careful.await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """APPRENTICE: Wow, you ate the\n whole thing? [delay_30]...[delay_30]How was it?[await]""",
+        DI2560_TOWER_HENCHMAN_1: """CHEF TORTE: 'Allo. Ze dessert ees\n not ready yet. Please come back\n later, yes?[await][page]\n [delay]...[delay]Escuse me, sir, I said to please\n come back... LATER![await][page]\n[delay]\n   (He von't leave... [delay]Vat to do?)[await][page]\n                YOU FOOLS!![await]""",
+        DI2572_TOWER_HENCHMAN_2: """APPRENTICE: Hey, genius, this way\n is the kitchen. Stay out![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """APPRENTICE: Why did Chef Torte\n tell me to stay up here? This is\n nowhere near the kitchen...[await]""",
+        DI3073_TOWER_HENCHMAN_3: """APPRENTICE: I'm so bored! The\n other chefs won't let me into the\n kitchen![await]""",
+    }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
@@ -3102,17 +3197,27 @@ class KingCalamariBossFight(BossFightPrize):
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big squid! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """KING CALAMARI: Sorry, I don't\n have any hint memos for where you\n can find the last [0x7024] item(s).[await]""",
-        DI2560_TOWER_HENCHMAN_1: """ Hello there. Welcome to our\n first-ever above-ground treasure\n hoard.[await][page]\n [delay].[delay].[delay].[delay]You're not here to see that?[delay_30]\n Well,[delay] then you must be an intruder!""",
-        DI2572_TOWER_HENCHMAN_2: """ There's nothing back here!\n I mean it![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n King Calamari is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering King Calamari.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """KING CALAMARI: It's not so weird\n for a squid to run a town.[await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find King Calamari...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """KING CALAMARI: Think you can beat\n the dojo master?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ What do you want?[await]\n  [select] (Let's fight)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """ I'd just like to go back to\n shooting ink, not bullets...[await]""",
-        DI3073_TOWER_HENCHMAN_3: """\n       You looking for a fight?[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Ship-this and Tentacle-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """KING CALAMARI: My tentacles\n shouldn't be able to do this.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """KING CALAMARI: My tentacles\n shouldn't be able to do this.[await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed = {
+        DI2560_TOWER_HENCHMAN_1: """ Hello there. Welcome to our\n first-ever above-ground treasure\n hoard.[await][page]\n [delay].[delay].[delay].[delay]You're not here to see that?[delay_30]\n Well,[delay] then you must be an intruder!""",
+        DI2572_TOWER_HENCHMAN_2: """ There's nothing back here!\n I mean it![await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """ You've made your point, we'll step\n aside. But you haven't seen\n anything yet![await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """ You beat King Calamari?[await][pause] I guess\n that's why this is a Mario game and\n not a Squid Game.[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """ I'd just like to go back to\n shooting ink, not bullets...[await]""",
+        DI3073_TOWER_HENCHMAN_3: """\n       You looking for a fight?[await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n King Calamari is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering King Calamari.[await]""",
     }
 
 
@@ -3166,8 +3271,8 @@ class HidonBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """GOOMBETTE: Doesn't this cake\n look just like Hidon?[await]""",
         DI2062_APPRENTICE_CHEF: """GOOMBETTE: We've gotten REAL\n good with fondant![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """HIDON: ...I don't know where the\n last [0x7024] item(s) are. Ask the\n Goombettes.[await]""",
-        DI2560_TOWER_HENCHMAN_1: """GOOMBETTE: I need a pen, but I\n can't reach the top drawer of this\n desk. Can you help me out?[await][page]\n [delay]...What?[delay] "How are you going to\n use a pen when you don't have any\n arms"?[await][pause] You makin' fun of me?!\n [delay]That's IT, buddy! Get down here![await]""",
-        DI2572_TOWER_HENCHMAN_2: """GOOMBETTE: Hey! Hidon's trying to\n stay in hidin' over here![delay] Get lost![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Hidon is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Hidon.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n          HIDON: Oh, it's you.[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Hey! Why don't you crash here for\n the night? It's free! FREE![await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -3183,15 +3288,49 @@ class HidonBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ Hey, buster![delay] You think you're some\n kinda tough guy, tryin' to step\n over us guards?![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """HIDON: The dojo master's pretty\n tough.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Ugh... What'd you wake me up for?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """GOOMBETTE: (I'm too short to see\n out this window.)[await]""",
-        DI3073_TOWER_HENCHMAN_3: """GOOMBETTE: Put up your dukes,\n tough guy![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Piranha-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """HIDON: I bet this would be even\n harder to do in my box.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """HIDON: I bet this would be even\n harder to do in my box.[await]""",
     }
+    _dialog_replacements_remake = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """WHUHOH: No, I'm not gonna puke up\n another item for you! Go away![await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Whuhoh's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped WHUHOH!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """WHUHOH: Guess I'll have to train\n the Mini Goombas harder.[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """WHUHOH: This is definitely an\n upgrade from my old post.[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """WHUHOH: Oh come on, you know I'm\n weak to jumps![await]""",
+        DI1782_SHIP_BOSS_DRINK: """ Mini Goombas! They're after my[await]\n 1947 Phateu Cetrus Merlot!![await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """MINI GOOMBA: Besides when he\n haphazardly throws us at enemies,\n Whuhoh is very good to us.[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n Listen up interloper!\n[await][page]\n Good job getting rid of\n `SEASIDE_BOSS`! Now[await]\n my naval dominance is complete!\n The goombette's nest reported[await]\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n They sail under the flag of \n `FINAL_BOSS_NAME`[await]\n If you ever touch my box again,\n I'm taking a finger... at least.[await][page]\n\n                  Lots of Carni-kisses,\n                                    Whuhoh[await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """MINI GOOMBA: Hop on the\n trampoline in the next room. It'll\n take you outside. Go on, try it![await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """MINI GOOMBA: Besides when he\n haphazardly throws us at enemies,\n Whuhoh is very good to us.[await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """MINI GOOMBA: Besides when he\n haphazardly throws us at enemies,\n Whuhoh is very good to us.[await]""",
+        DI2061_HEAD_CHEF: """MINI GOOMBA: Doesn't this cake\n look just like Whuhoh?[await]""",
+        DI2062_APPRENTICE_CHEF: """MINI GOOMBA: We've gotten REAL\n good with fondant![await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """WHUHOH: ...I don't know where the\n last [0x7024] item(s) are. Ask the\n Mini Goombas.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Whuhoh is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Whuhoh.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n        WHUHOH: Oh, it's you.[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Whuhoh's\n house up on the hill yet?[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """WHUHOH: The dojo master's pretty\n tough.[await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """WHUHOH: I bet this would be even\n harder to do in my box.[await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """WHUHOH: I bet this would be even\n harder to do in my box.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """GOOMBETTE: You mighta' won\n against us, but Hidon's gonna\n beat you up![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """GOOMBETTE: You beat Hidon?![await]\n Oh, man...[await]""",
+        DI2560_TOWER_HENCHMAN_1: """GOOMBETTE: I need a pen, but I\n can't reach the top drawer of this\n desk. Can you help me out?[await][page]\n [delay]...What?[delay] "How are you going to\n use a pen when you don't have any\n arms"?[await][pause] You makin' fun of me?!\n [delay]That's IT, buddy! Get down here![await]""",
+        DI2572_TOWER_HENCHMAN_2: """GOOMBETTE: Hey! Hidon's trying to\n stay in hidin' over here![delay] Get lost![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """GOOMBETTE: (I'm too short to see\n out this window.)[await]""",
+        DI3073_TOWER_HENCHMAN_3: """GOOMBETTE: Put up your dukes,\n tough guy![await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed_remake = {
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """MINI GOOMBA: You mighta' won\n against us, but Whuhoh's gonna\n beat you up![await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """MINI GOOMBA: You beat Whuhoh?![await]\n Oh, man...[await]""",
+        DI2560_TOWER_HENCHMAN_1: """MINI GOOMBA: I need a pen, but I\n can't reach the top drawer of this\n desk. Can you help me out?[await][page]\n [delay]...What?[delay] "How are you going to\n use a pen when you don't have any\n arms"?[await][pause] You makin' fun of me?!\n [delay]That's IT, buddy! Get down here![await]""",
+        DI2572_TOWER_HENCHMAN_2: """MINI GOOMBA: Hey! Whuhoh's trying\n to stay in hidin' over here![delay_30]\n Get lost![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """MINI GOOMBA: (I'm too short to\n see out this window.)[await]""",
+        DI3073_TOWER_HENCHMAN_3: """MINI GOOMBA: Put up your dukes,\n tough guy![await]""",
     }
 
 
@@ -3242,8 +3381,8 @@ class JohnnyBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """PIRATE: Y'arr, don't ye think\n this cake here be lookin' just like\n Johnny?[await]""",
         DI2062_APPRENTICE_CHEF: """PIRATE: Us pirates are pretty\n good with food, arr harr![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """JOHNNY: Found [0x7000] item(s, eh? Arr,\n harr, harr...! You gotta find [0x7024]\n more, matey![await]""",
-        DI2560_TOWER_HENCHMAN_1: """PIRATE: Welcome, matey![await][pause] Here to\n spar with Johnny, are ye?[await][page]\n Arr, good fun! Let's have a\n warm-up round![await]""",
-        DI2572_TOWER_HENCHMAN_2: """PIRATE: This ain't the corner you\n want, matey![await][pause] But while you're here,\n let's have a spar, arr harr![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Johnny is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Johnny.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n        JOHNNY: Ahoy, matey![await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Welcome, matey! How'd ya like to\n stay here tonight, on the house?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two fellas o'er in the left\n building have been actin' weird.[await]""",
@@ -3259,11 +3398,19 @@ class JohnnyBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n You ain't gettin in here! It's ours![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """JOHNNY: Good luck, matey. The dojo\n master's mighty tough.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Arr, what brings ye here?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """PIRATE: I know there be some fine\n loot in this tower, but it's too far\n 'bove sea level for my liking![await]""",
-        DI3073_TOWER_HENCHMAN_3: """PIRATE: I'll make ya see stars,\n arr harr![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arr-this and Matey-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Johnny is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Johnny.[await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed = {
+        DI2560_TOWER_HENCHMAN_1: """PIRATE: Welcome, matey![await][pause] Here to\n spar with Johnny, are ye?[await][page]\n Arr, good fun! Let's have a\n warm-up round![await]""",
+        DI2572_TOWER_HENCHMAN_2: """PIRATE: This ain't the corner you\n want, matey![await][pause] But while you're here,\n let's have a spar, arr harr![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """PIRATE: I know there be some fine\n loot in this tower, but it's too far\n 'bove sea level for my liking![await]""",
+        DI3073_TOWER_HENCHMAN_3: """PIRATE: I'll make ya see stars,\n arr harr![await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -3306,31 +3453,53 @@ class YaridovichBossFight(BossFightPrize):
         DI1660_SHIP_PASSWORD_COMPLETE: """ Eee hee hee! So, you've cracked the\n code... Now, it's time for the\n REAL test![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Yaridovich's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n YARIDOVICH!![await]""",
-        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """YARIDOVICH: Ridiculous! How could a\n genius like me lose to them...?[await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """YARIDOVICH: Ridiculous! How could\n a genius like me lose to them...?[await]""",
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """YARIDOVICH: I'm thinking it might\n be time for me to switch careers.[await][page]\n Say, do you happen to know anyone\n who's looking to hire a\n hydrodemolitions expert?[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """YARIDOVICH: This is just adding\n insult to injury![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n To `MAIN_CHARACTER_NAME`,\n[await][page]\n By now, you've certainly defeated\n `SEASIDE_BOSS`, I think!\n[await]\n My "Toad" spies tell me they saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n I suspect they're one of \n `FINAL_BOSS_NAME`\n Give'em "the Tickler" from me![await]\n My joints are starting to rust,\n so I'll be headin' back down.\n Stop by whenever you need[await]\n something unsavory, okay?[await][page]\n\n                   Your confidant,\n                         Yaridovich[await]""",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """TOWNSPERSON: Hop on... then trampoline... in the next room.\n It'll take you... outside.[await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """TOWNSPERSON: Hop on... the\n trampoline... in the next room.\n It'll take you... outside.[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ My disguise was as see-through[await]\n as this glass of Motor Oil!![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]""",
         DI2061_HEAD_CHEF: """TOWNSPERSON: We must... make\n this cake... look exactly...\n like Yaridovich.[await]""",
         DI2062_APPRENTICE_CHEF: """TOWNSPERSON: We need... more\n fondant.[await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """YARIDOVICH: Eee hee...! You're\n still missing [0x7024] item(s)! Isn't that\n a shame?[await]""",
-        DI2560_TOWER_HENCHMAN_1: """TOWNSPERSON: I'm just... a\n secretary. Don't bother...\n Yaridovich.[await]""",
-        DI2572_TOWER_HENCHMAN_2: """TOWNSPERSON: This is...not...\n the right...way.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Yaridovich is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Yaridovich.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """YARIDOVICH: A challenge from the\n dojo master? [delay]Eee hee hee, this\n ought to be interesting![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Eee hee...! You want to fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """TOWNSPERSON: It's nice...\n outside.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """TOWNSPERSON: You want...to\n fight?[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Brownie-this and Tickle-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """YARIDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """YARIDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
     }
+    _dialog_replacements_remake = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """SPEARDOVICH: How could I lose to\n those...[delay] Huh? Hey, get lost![await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Speardovich's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n SPEARDOVICH!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """SPEARDOVICH: Ridiculous! How\n could a genius like me lose to\n them...?[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """SPEARDOVICH: I'm thinking it might\n be time for me to switch careers.[await][page]\n Say, do you happen to know anyone\n who's looking to hire a\n hydrodemolitions expert?[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """SPEARDOVICH: This is just adding\n insult to injury![await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n To `MAIN_CHARACTER_NAME`,\n[await][page]\n By now, you've certainly defeated\n `SEASIDE_BOSS`, I think!\n[await]\n My "Toad" spies tell me they saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n I suspect they're one of \n `FINAL_BOSS_NAME`\n Give'em "the Tickler" from me![await]\n My joints are starting to rust,\n so I'll be headin' back down.\n Stop by whenever you need[await]\n something unsavory, okay?[await][page]\n\n                   Your confidant,\n                         Speardovich[await]""",
+        DI2061_HEAD_CHEF: """TOWNSPERSON: We must... make\n this cake... look exactly...\n like Speardovich.[await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """SPEARDOVICH: Eee hee...! You're\n still missing [0x7024] item(s)! Isn't that\n a shame?[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Speardovich is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Speardovich.[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """SPEARDOVICH: A challenge from the\n dojo master? [delay]Eee hee hee, this\n ought to be interesting![await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """SPEARDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """SPEARDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """TOWNSPERSON: Well done...\n You may go on... to Yaridovich.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """TOWNSPERSON: You won...\n Well done...[await]""",
+        DI2560_TOWER_HENCHMAN_1: """TOWNSPERSON: I'm just... a\n secretary. Don't bother...\n Yaridovich.[await]""",
+        DI2572_TOWER_HENCHMAN_2: """TOWNSPERSON: This is...not...\n the right way.[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """TOWNSPERSON: It's nice...\n outside.[await]""",
+        DI3073_TOWER_HENCHMAN_3: """TOWNSPERSON: You want...to\n fight?[await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed_remake = {
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """TOWNSPERSON: Well done...\n You may go on... to Speardovich.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """TOWNSPERSON: I'm just... a\n secretary. Don't bother...\n Speardovich.[await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -3379,7 +3548,7 @@ class MokuraBossFight(BossFightPrize):
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big cloud! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """MOKURA: Uhh... You need [0x7024] more\n item(s)...[await]""",
-        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Mokura's busy right now, so he[1] can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Mokura's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Mokura.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n       MOKURA: Mwa, ha, ha![await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Mokura...\n in his house. He is...the most\n respected person here.[await]""",
@@ -3388,6 +3557,23 @@ class MokuraBossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Secret-this and Gas-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n    MOKURA: Clouds can't jump...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n    MOKURA: Clouds can't jump...[await]""",
+    }
+    _dialog_replacements_remake = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n      GASSOX: Uhh... Go away![await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Gassox' place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped GASSOX!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n           GASSOX: Hmm...[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """GASSOX: What're you doing in my\n secret lair?[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """GASSOX: I oughta go back to\n being invisible...[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n ...Is this invisible ink?\n[await][page]\n \n (Defeated `SEASIDE_BOSS`.  Good.)[await]\n\n (Sensed...\n `VOLCANO_BOSS_DESCRIPTION`\n near volcano...)[await]\n (Ethereal bond with\n `FINAL_BOSS_NAME`).[await]\n\n This last part just reeks of\n flatulence... [await][page]\n\n           \n                                (Gassox)[await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """GASSOX: Uhh... You need [0x7024] more\n item(s)...[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Gassox is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Gassox.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n        GASSOX: Mwa, ha, ha![await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Gassox...\n in his house. He is...the most\n respected person here.[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """GASSOX: Uhh... Are you... gonna\n beat the Dojo Master?[await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n     GASSOX: Clouds can't jump...[await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n     GASSOX: Clouds can't jump...[await]""",
     }
 
 
@@ -3405,18 +3591,28 @@ class Belome2BossFight(BossFightPrize):
     _anchor_enemy = BELOME2Enemy
     _hp_slice_excluded_enemies = [MARIOCLONEEnemy, TOADSTOOL2Enemy]
     _additional_enemies_to_scale = [MALLOWCLONEEnemy, GENOCLONEEnemy, BOWSERCLONEEnemy]
-
-    _mook_henchmen = [
+    _character_henchmen = [
         BossFightHenchman(
             monster=MARIOCLONEEnemy, model=MARIO_CLONE_WALKING_DOWN_LEFT_NPC
         ),
         BossFightHenchman(monster=MALLOWCLONEEnemy, model=MALLOW_WALKING_DOWN_LEFT_NPC),
         BossFightHenchman(monster=GENOCLONEEnemy, model=GENO_WALKING_DOWN_LEFT_NPC),
         BossFightHenchman(
-            monster=BOWSERCLONEEnemy, model=BOWSER_WALKING_DOWN_LEFT_NPC_2
+            monster=TOADSTOOL2Enemy, model=TOADSTOOL_WALKING_DOWN_LEFT_NPC_4
+        ),
+    ]
+
+    _mook_henchmen = [
+        BossFightHenchman(
+            monster=MARIOCLONEEnemy, model=MARIO_CLONE_WALKING_DOWN_LEFT_NPC
         ),
         BossFightHenchman(
             monster=TOADSTOOL2Enemy, model=TOADSTOOL_WALKING_DOWN_LEFT_NPC_4
+        ),
+        BossFightHenchman(monster=GENOCLONEEnemy, model=GENO_WALKING_DOWN_LEFT_NPC),
+        BossFightHenchman(monster=MALLOWCLONEEnemy, model=MALLOW_WALKING_DOWN_LEFT_NPC),
+        BossFightHenchman(
+            monster=BOWSERCLONEEnemy, model=BOWSER_WALKING_DOWN_LEFT_NPC_2
         ),
     ]
 
@@ -3433,22 +3629,44 @@ class Belome2BossFight(BossFightPrize):
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """BELOME: Oh, you're back![await]\n Did you bring any food?[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """BELOME: Say, it's past my bedtime.\n Can you get off of my head?[await]""",
         DI1782_SHIP_BOSS_DRINK: """ Woof, I ate too many Mallows~![await]\n I should wash it down with Tonic~![await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """It's a damp, slimy, looking note (did `SEASIDE_BOSS` LICK this?).\n[await][page]\nA paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION`\nis etched on the paper.\nThis is probably one of \n`FINAL_BOSS_NAME`'s henchmen!\n`SEASIDE_BOSS` likely headed down to\nfind more snacks,\nso it's time to move on.[await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big dog! It is...\n masterpiece![await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: "\n                    ••••••[await]",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """MALLOW CLONE: Hey `MAIN_CHARACTER_TITLE`, have\n you seen my parents?[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """ It's a damp, slimy, looking note\n (did `SEASIDE_BOSS` LICK this?).\n[await][page]\nA paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION`\nis etched on the paper.\nThis is probably one of \n`FINAL_BOSS_NAME`'s henchmen!\n`SEASIDE_BOSS` likely headed down to\nfind more snacks,\nso it's time to move on.[await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """GENO CLONE: If you find any Star\n Pieces, think you could hand them\n over?[await][page]\n No? [delay]...Oh well, I tried.[await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """TOADSTOOL 2: Take the trampoline\n in the next room. Go on, get outta\n here![await]""",
+        DI2061_HEAD_CHEF: "\n                    ••••••[await]",
+        DI2062_APPRENTICE_CHEF: "PEACH CLONE: I've baked a cake\n for you.[await][pause] It just happens to look\n like a dog.[await]",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BELOME: Oh, no, you're still\n missing [0x7024] item(s).[await][pause] I can't wait any\n longer to see what today's cake\n will be.[await][pause] I'm STARVING![await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Belome.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """BELOME: It's dreadfully boring\n around here~![await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Belome...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BELOME: Ooh, how exciting~!\n [delay]The dojo master has challenged\n you![await]""",
-        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Are you the pizza delivery person?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Are you the pizza delivery `MAIN_CHARACTER_GENDER_CASUAL_CAP`?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
+        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "\n                    ••••••[await]",
+        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """TOADSTOOL 2: Yuck, I don't want\n to play ANYTHING with you![await]""",
+        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """GENO CLONE: Need a nap? You can\n stay here for free.[await][pause] No dolls will\n wander around overnight, I swear.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Belome.[await]""",
+    }
+    _dialog_replacements_peach = {
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """PEACH CLONE: Take the trampoline\n in the next room. Go on, get outta\n here![await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed = {
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: "\n                    ••••••[await]",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: "\n                    ••••••[await]",
+        DI2560_TOWER_HENCHMAN_1: "\n                    ••••••[await]",
+        DI2572_TOWER_HENCHMAN_2: """TOADSTOOL 2: If you aren't here to\n tell us about a really great cake\n recipe, then shoo![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """GENO CLONE: (What do Star Pieces\n even look like...?[await])""",
+        DI3073_TOWER_HENCHMAN_3: """GENO CLONE: I serve...a higher\n authority...[await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed_peach = {
+        DI2572_TOWER_HENCHMAN_2: """PEACH CLONE: If you aren't here to\n tell us about a really great cake\n recipe, then shoo![await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -3503,6 +3721,10 @@ class JaggerBossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Sensei-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """JAGGER: Sensei, the new regimen\n will strengthen us, right?[await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Jagger's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Jagger.[await]""",
+    }
 
 
 class Jinx1BossFight(BossFightPrize):
@@ -3542,6 +3764,10 @@ class Jinx1BossFight(BossFightPrize):
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Jinx is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Jinx.[await]""",
     }
 
 
@@ -3583,6 +3809,10 @@ class Jinx2BossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Jinx is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Jinx.[await]""",
+    }
 
 
 class Jinx3BossFight(BossFightPrize):
@@ -3623,6 +3853,10 @@ class Jinx3BossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Jinx is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Jinx.[await]""",
+    }
 
 
 class CulexBossFight(BossFightPrize):
@@ -3650,6 +3884,12 @@ class CulexBossFight(BossFightPrize):
     _statue_npc = CulexStatueObject
     _battle_npc = CulexLargeObject
 
+    _character_henchmen = [
+        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FIRE_CRYSTAL_GRIDPLANE_NPC),
+        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WATER_CRYSTAL_GRIDPLANE_NPC),
+        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EARTH_CRYSTAL_GRIDPLANE_NPC),
+        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WIND_CRYSTAL_GRIDPLANE_NPC),
+    ]
     _mook_henchmen = [
         BossFightHenchman(monster=FIRECRYSTALEnemy, model=FIRE_CRYSTAL_GRIDPLANE_NPC),
         BossFightHenchman(monster=WATERCRYSTALEnemy, model=WATER_CRYSTAL_GRIDPLANE_NPC),
@@ -3674,8 +3914,8 @@ class CulexBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """FIRE CRYSTAL: We needed a lot of\n heat to bake a cake of this size.[await]""",
         DI2062_APPRENTICE_CHEF: """WATER CRYSTAL: We must shape\n this confection to resemble Culex.[await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """CULEX: You must retrieve [0x7024] more\n item(s) before we may proceed.[await]\n Godspeed, champion knight![await]""",
-        DI2560_TOWER_HENCHMAN_1: """FIRE CRYSTAL: Greetings.[await][pause] Culex\n is making preparations to head\n back to his home world.[await][pause] He's\n busy right now.[await][page]\n Please come back later...\n [delay]unless you want to get hurt![await]""",
-        DI2572_TOWER_HENCHMAN_2: """WIND CRYSTAL: You are not going\n to find what you're seeking back\n here.[delay] Stay out.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Culex is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Culex.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n           CULEX: Good day.[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Welcome to our inn.[await]\n We are offering a competitive price\n of zero coins per night.[await]\n Will you be staying tonight?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -3688,14 +3928,20 @@ class CulexBossFight(BossFightPrize):
         DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """FIRE CRYSTAL: This area is\n off-limits.[await]""",
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """WATER CRYSTAL: This door is a...\n uh... portal to another dimension!\n We can't let you fall into it.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CULEX: It will be quite difficult to\n claim victory over the dojo master.\n I wish you luck.[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """EARTH CRYSTAL: Wind Crystal\n really should have been the one\n standing guard all the way up here.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """EARTH CRYSTAL: Stand back!\n I might know Sandstorm![await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """CRYSTAL: Proceed forth. Culex\n awaits you.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """CRYSTAL: Well met! You have\n satisfied Culex's hunger for a\n true challenge.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """FIRE CRYSTAL: Greetings.[await][pause] Culex\n is making preparations to head\n back to his home world.[await][pause] He's\n busy right now.[await][page]\n Please come back later...\n [delay]unless you want to get hurt![await]""",
+        DI2572_TOWER_HENCHMAN_2: """WATER CRYSTAL: You are not going\n to find what you're seeking back\n here.[delay] Stay out.[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """EARTH CRYSTAL: Wind Crystal\n really should have been the one\n standing guard all the way up here.[await]""",
+        DI3073_TOWER_HENCHMAN_3: """EARTH CRYSTAL: Stand back!\n I might know Sandstorm![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Culex is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Culex.[await]""",
     }
 
 
@@ -3734,13 +3980,30 @@ class BoxBoyBossFight(BossFightPrize):
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BOX BOY: Still missing [0x7024] item(s)?\n Pathetic![await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Box Boy's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Box Boy.[await]""",
-        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """BOX BOY: What'd you come here\n for?[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """BOX BOY       What'd you come here for?[await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Box Boy...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BOX BOY: The dojo master's gonna\n kick your butt![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ This'd BETTER be important![await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Ghost-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
-        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOX BOY: Ahh, you're not so\n tough![await]""",
-        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOX BOY: Ahh, you're not so\n tough![await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOX BOY:\n      Ahh, you're not so tough![await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOX BOY:\n      Ahh, you're not so tough![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """PLEASENO: How many times are you\n gonna wake me up? Get lost![await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Pleaseno's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped PLEASENO!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n   PLEASENO: You just got lucky![await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """\n   PLEASENO: This place is boring.[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """PLEASENO: You sure you wanna\n jump on me? I counter special\n attacks.[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n Trespassers BEWARE:\n[await][page]\n Loitering Prohibited (yes, you too\n `SEASIDE_BOSS`!)\n[await]\n Don't think I didn't see\n `VOLCANO_BOSS_DESCRIPTION`\n either, keep to your volcano.[await]\n We all know what happened to\n `FINAL_BOSS_NAME`\n the last time they showed up here.\n Also, I expect SILENCE.  No spells.\n Casting a spell is a good way to\n get blasted.  You've been warned.[await][page]\n\n             Now, GET OFF MY LAWN!!\n                                  Pleaseno[await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """PLEASENO: Still missing [0x7024] item(s)?\n Pathetic![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Pleaseno's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Pleaseno.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """PLEASENO:       What'd you come here for?[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Pleaseno...\n in his house. He is...the most\n respected person here.[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """PLEASENO: The dojo master's gonna\n kick your butt![await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """PLEASENO:\n      Ahh, you're not so tough![await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """PLEASENO:\n      Ahh, you're not so tough![await]""",
     }
 
 
@@ -3776,7 +4039,7 @@ class MegasmilaxBossFight(BossFightPrize):
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Megasmilax's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n MEGASMILAX!![await]""",
         DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n      MEGASMILAX: I'm thirsty.[await]""",
-        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """MEGASMILAX: You'd think it\n wouldn't be so difficult to get\n watered around here, when we're\n literally underwater.[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """MEGASMILAX: You'd think it\n wouldn't be so difficult to get\n watered around here.[await][pause] We're\n literally underwater.[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """MEGASMILAX: Careful. I have sharp\n teeth.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ Go ahead, just add Water![await]\n Cha-Cha-Cha-Chia!  La Dee Dah~![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """SMILAX: I guess salt water\n wouldn't be very good for us.[await]""",
@@ -3786,9 +4049,9 @@ class MegasmilaxBossFight(BossFightPrize):
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """SMILAX: I guess salt water\n wouldn't be very good for us.[await]""",
         DI2061_HEAD_CHEF: """SMILAX: We're making this cake\n in honour of Megasmilax.[await]""",
         DI2062_APPRENTICE_CHEF: """SMILAX: I hope the wedding party\n likes it. If they don't...[delay] well,[delay]\n they DID hire plants to bake a cake.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Megasmilax is busy right now, so\n she can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Megasmilax.[await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """MEGASMILAX: Hm?[await]\n [0x7024] more item(s)?[await]\n Don't ask me.[delay] I'm just a plant.[await]""",
-        DI2560_TOWER_HENCHMAN_1: """SMILAX: Hello there. Are you the\n gardener?[await][page]\n No?[await][pause] Well, [delay]we didn't call for a\n plumber today... [await][pause]]I better get you\n outta here![await]""",
-        DI2572_TOWER_HENCHMAN_2: """SMILAX: If you didn't come back\n here to water us, you'd better get\n outta here.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n         MEGASMILAX: Hmm...[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Hello there. Are you tired?\n We don't charge any fees here,\n if you'd like to stay.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -3804,15 +4067,21 @@ class MegasmilaxBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ We're just two plants growing in\n front of an abandoned door. ...But\n we're not letting you in.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """MEGASMILAX: I would love to\n watch your match with the dojo\n master.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You don't look like the gardener...[await]\n  [select] (I'm here to fight you)\n  [select] (Oops, my mistake)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """\n          SMILAX: I'm thirsty.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """\n       SMILAX: Careful, I bite.[await]""",
-        DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Water-this and Fertilizer-that.[await]\n ...[delay]Actually, [delay]that doesn't sound\n so bad![await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
+        DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the lady next door.[await][page]\n She's always mumbling about\n Water-this and Fertilizer-that.[await]\n ...[delay]Actually, [delay]that doesn't sound\n so bad![await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MEGASMILAX: This is harder than it\n looks. I'm a plant.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MEGASMILAX: This is harder than it\n looks. I'm a plant.[await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Megasmilax is busy right now, so\n she can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Megasmilax.[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """SMILAX: Go on ahead to visit\n Megasmilax. But be warned, he's\n pretty tough when he's hydrated.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """SMILAX: Wow, you won![await][pause] Shy Away\n must have watered you more than\n he watered Megasmilax.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SMILAX: Hello there. Are you the\n gardener?[await][page]\n No?[await][pause] Well, [delay]we didn't call for a\n plumber today... [await][pause]]I better get you\n outta here![await]""",
+        DI2572_TOWER_HENCHMAN_2: """SMILAX: If you didn't come back\n here to water us, you'd better get\n outta here.[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """\n          SMILAX: I'm thirsty.[await]""",
+        DI3073_TOWER_HENCHMAN_3: """\n       SMILAX: Careful, I bite.[await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -3860,6 +4129,7 @@ class DodoBossFight(BossFightPrize):
         DI1782_SHIP_BOSS_DRINK: """ (Dodo stares at a Hot Chocolate)[await]\n ...Please don't tell Valentina.[await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n Dear `MAIN_CHARACTER_NAME`,\n[await][page]\n I saw your incredible battle with\n `SEASIDE_BOSS`!\n[await]\n At the "Tanning Salon", I saw \n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano. [await]\n Valentina referred to them as\n `FINAL_BOSS_NAME`\n Look, I actually think you're cool,\n and I'm learning my Multistrike\n timing from our battles... But...\n I can't leave her. She needs me. I\n hope you understand.[await][page]\n\n                       Your biggest fan,\n                                      Dodo[await]""",
         DI1790_EMPTY: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
@@ -3874,6 +4144,10 @@ class DodoBossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n I never hear the guy next door.[await]\n Maybe he can't talk.[await][page]\n I'd like to go over and introduce\n myself sometime, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: "\n                    ••••••[await]",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: "\n                    ••••••[await]",
+    }
+    _dialog_replacements_if_mandatory_fights_changed_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Dodo's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Dodo.[await]""",
     }
 
 
@@ -3921,17 +4195,17 @@ class BirdettaBossFight(BossFightPrize):
         DI1782_SHIP_BOSS_DRINK: """ Thanks for playing with me~![await]\n I lost, but I made Yoshi's Eggnog![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """EGGBERT: You visiting us has\n really made Birdo happy.\n Thank you![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """EGGBERT: You visiting us has\n really made Birdo happy.\n Thank you![await]""",
-        DI1790_EMPTY: """EGGBERT: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n HI `MAIN_CHARACTER_NAME`♥!\n[await][page]\n Did `SEASIDE_BOSS` submit to\n the power of HUGS?!♥\n[await]\n While doing some incubating, I saw \n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n My eggies♥ think they scramble with\n `FINAL_BOSS_NAME`\n My lovelies♪ and I have to get back[await]\n to the ship, and the bouyant forces\n of seawater aren't helping.\n Stop by again soon♥! [await][page]\n\n                           ♥XO♥XO♥XO♥\n                                     Birdo[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """EGGBERT: You visiting us has\n really made Birdo happy.\n Thank you![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """EGGBERT: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """EGGBERT: We're making this cake\n look just like Birdo![await]""",
         DI2062_APPRENTICE_CHEF: """EGGBERT: No eggs were harmed\n in the making of this cake.[await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BIRDO: Hello![await]\n ...Oh, no, you're still missing\n [0x7024] item(s)![await]""",
-        DI2560_TOWER_HENCHMAN_1: """EGGBERT: Birdo's feeling lonely\n today, so feel free to pay her a\n visit upstairs.[await][pause] I'm sure she'd love\n the company.[await][page]\n Just, let me make sure you'll be\n nice, first![await]""",
-        DI2572_TOWER_HENCHMAN_2: """EGGBERT: Pardon me, Birdo's\n not back here. Please refrain from\n snooping around.[await]""",
-        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n          BIRDO: Hello![await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n              BIRDO: Hello![await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Hello! You've been chosen to stay\n here in our lovely inn for FREE!\n Aren't you lucky?[await]\n Will you stay with us?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Birdo's busy right now, so she\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Birdo.[await]""",
         DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: """ If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Birdo's\n house up on the hill yet?[await]""",
         DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED: """ Hi![delay] Welcome to our town![delay]\n Stay away from our shed, OK~?[await]""",
@@ -3944,15 +4218,55 @@ class BirdettaBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ There's nothing weird going on\n here![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BIRDO: Ooh, are you gonna play\n with the dojo master?![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hello! Did you come to play?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """EGGBERT: What did Birdo want\n me to do here, again? I'm just an\n egg![await]""",
-        DI3073_TOWER_HENCHMAN_3: """EGGBERT: You're making me so\n mad, I could explode![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BIRDO: Thanks for playing with\n me~![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BIRDO: Thanks for playing with\n me~![await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Birdo's busy right now, so she\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Birdo.[await]""",
+    }
+    _dialog_replacements_canon = {
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Birdetta's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n BIRDETTA!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """BIRDETTA: Tee hee! Let's play\n again sometime![await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """BIRDETTA: Oh, you didn't forget\n about me! You're so sweet![await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """BIRDETTA: This isn't what I had in\n mind when I said I wanted to play![await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """EGGBERT: You visiting us has\n really made Birdetta happy.\n Thank you![await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """EGGBERT: You visiting us has\n really made Birdetta happy.\n Thank you![await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n HI `MAIN_CHARACTER_NAME`♥!\n[await][page]\n Did `SEASIDE_BOSS` submit to\n the power of HUGS?!♥\n[await]\n While doing some incubating, I saw \n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n My eggies♥ think they scramble with\n `FINAL_BOSS_NAME`\n My lovelies♪ and I have to get back[await]\n to the ship, and the bouyant forces\n of seawater aren't helping.\n Stop by again soon♥! [await][page]\n\n                           ♥XO♥XO♥XO♥\n                                  Birdetta[await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """EGGBERT: You visiting us has\n really made Birdetta happy.\n Thank you![await]""",
+        DI2061_HEAD_CHEF: """EGGBERT: We're making this cake\n look just like Birdetta![await]""",
+        DI2062_APPRENTICE_CHEF: """EGGBERT: No eggs were harmed\n in the making of this cake.[await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BIRDETTA: Hello![await]\n ...Oh, no, you're still missing\n [0x7024] item(s)![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Birdetta's busy right now, so she\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Birdetta.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n          BIRDETTA: Hello![await]""",
+        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Birdetta's\n house up on the hill yet?[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BIRDETTA: Ooh, are you gonna play\n with the dojo master?![await]""",
+        DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BIRDETTA: Thanks for playing with\n me~![await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BIRDETTA: Thanks for playing with\n me~![await]""",
+    }
+    _dialog_replacements_canon_and_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Birdetta's busy right now, so she\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Birdetta.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """EGGBERT: Wow, you sure showed\n us! Don't disappoint Birdo![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """EGGBERT: Thanks for playing\n with us today![await]""",
+        DI2560_TOWER_HENCHMAN_1: """EGGBERT: Birdo's feeling lonely\n today, so feel free to pay her a\n visit upstairs.[await][pause] I'm sure she'd love\n the company.[await][page]\n Just, let me make sure you'll be\n nice, first![await]""",
+        DI2572_TOWER_HENCHMAN_2: """EGGBERT: Pardon me, Birdo's\n not back here. Please refrain from\n snooping around.[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """EGGBERT: What did Birdo want\n me to do here, again? I'm just an\n egg![await]""",
+        DI3073_TOWER_HENCHMAN_3: """EGGBERT: You're making me so\n mad, I could explode![await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed_canon = {
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """EGGBERT: Wow, you sure showed\n us! Don't disappoint Birdetta![await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """EGGBERT: Thanks for playing\n with us today![await]""",
+        DI2560_TOWER_HENCHMAN_1: """EGGBERT: Birdetta's feeling lonely\n today, so feel free to pay her a\n visit upstairs.[await][pause] I'm sure she'd love\n the company.[await][page]\n Just, let me make sure you'll be\n nice, first![await]""",
+        DI2572_TOWER_HENCHMAN_2: """EGGBERT: Pardon me, Birdetta's\n not back here. Please refrain from\n snooping around.[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """EGGBERT: What did Birdetta want\n me to do here, again? I'm just an\n egg![await]""",
     }
 
 
@@ -3988,16 +4302,16 @@ class ValentinaBossFight(BossFightPrize):
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """VALENTINA: YOU again?! You better\n have brought some margaritas![await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """VALENTINA: Get OFF of my head\n before I take your shoes and throw\n them in the ocean!!![await]""",
         DI1782_SHIP_BOSS_DRINK: """ Pfffft!  You call THIS a Martini?[await]\n MAKE IT AGAIN, and I MIGHT tip!![await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """BLUEBIRD: Valentina's grumpy.\n Booster got her a gold beetle for\n their anniversary.[await][pause] She wanted a\n ladybug.[await][page]\n Married life sounds truly weird.[await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """BLUEBIRD: Valentina's grumpy.\n Booster got her a gold beetle for\n their anniversary.[await][pause] She wanted a\n ladybug.[await][page]\n Married life sounds truly weird.[await]""",
-        DI1790_EMPTY: """BLUEBIRD: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """BLUEBIRD: Valentina's grumpy.\n Booster got her a gold beetle for\n their anniversary.[await][pause] She wanted a\n ladybug.[await][page]\n Married life sounds truly weird.[await]""",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """BLUEBIRD: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Valentina's grumpy. Booster got\n her a gold beetle for their\n anniversary.[await][pause] She wanted a ladybug.[await][page]\n Married life sounds truly weird.[await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Valentina's grumpy. Booster got\n her a gold beetle for their\n anniversary.[await][pause] She wanted a ladybug.[await][page]\n Married life sounds truly weird.[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n To whom it may concern,\n[await][page]\n Make sure that pesky\n `SEASIDE_BOSS`, is gone\n by the time I get back.[await]\n\n A little birdy told me they saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.  Gross.[await]\n I cannot abide any more of \n `FINAL_BOSS_NAME`\n They're all beneath me.  Literally.[await]\n Well, I've got a ship full of idiots\n to command.  Don't call, I have a\n boyfriend.  His name is...Booster.[await][page]\n\n                       NOT yours,\n                         Valentina[await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Valentina's grumpy. Booster got\n her a gold beetle for their\n anniversary.[await][pause] She wanted a ladybug.[await][page]\n Married life sounds truly weird.[await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """ Why are we making a cake that\n looks like Valentina, again?[await]""",
-        DI2062_APPRENTICE_CHEF: """ We're making a cake that looks like\n Valentina.[await][pause] What else are we gonna\n do on our day off?[await]""",
+        DI2062_APPRENTICE_CHEF: """ We're making a cake that looks like\n Valentina.[await][pause] What else would we\n do on our day off?[await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """VALENTINA: STOP BOTHERING ME![await]\n If you need something to do, go\n look for [0x7024] more item(s)![await]""",
-        DI2560_TOWER_HENCHMAN_1: """BLUEBIRD: I hate being a secretary!\n And... [delay_30]I'm going to make this\n your problem![await]""",
-        DI2572_TOWER_HENCHMAN_2: """BLUEBIRD: Whaddya want?[await][pause] You\n better not be trying to bother\n Valentina, [delay]or I'll be in trouble![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Valentina's busy right now, so she\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Valentina.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n   VALENTINA: I'm SO frustrated![await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Welcome![delay] I'll let you stay here for\n free, but don't tell Valentina.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -4013,15 +4327,21 @@ class ValentinaBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n         Hey! Who're YOU?!...[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """VALENTINA: You? Fighting the dojo\n master? Good luck, chump![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ What? What do you want?![await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """BLUEBIRD: Valentina only gives us\n the most boring jobs to do...[await]""",
-        DI3073_TOWER_HENCHMAN_3: """\nBLUEBIRD: I'm bored. Entertain me![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]""",
     }
+    _dialog_replacements_canon_and_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Valentina's busy right now, so she\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Valentina.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """BLUEBIRD: Whatever, go on and\n fight Valentina. She doesn't pay\n us enough to keep you out.[await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """BLUEBIRD: Oh, you won?[await]\n [delay_30](...[delay_30]It's about time!)[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """ Whatever, go on and fight\n Valentina. She doesn't pay us\n enough to keep you out.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """ Oh, you won?[await]\n [delay_30](...[delay_30]It's about time!)[await]""",
+        DI2560_TOWER_HENCHMAN_1: """ I hate being a secretary! And...\n [delay_30]I'm going to make this your\n problem![await]""",
+        DI2572_TOWER_HENCHMAN_2: """Whaddya want?[await][pause] You better not be\n trying to bother Valentina, [delay]or I'll\n be in trouble![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """Valentina only gives us the most\n boring jobs to do...[await]""",
+        DI3073_TOWER_HENCHMAN_3: """\n       I'm bored. Entertain me![await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -4086,9 +4406,9 @@ class CzarDragonBossFight(BossFightPrize):
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: "\n                    ••••••[await]",
         DI2061_HEAD_CHEF: "\n                    ••••••[await]",
         DI2062_APPRENTICE_CHEF: "\n                    ••••••[await]",
-        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """CZAR DRAGON: BLARRGGGG[await]""",  # can we make him say BLARG as many times as you have items remaining?
-        DI2560_TOWER_HENCHMAN_1: "\n                    ••••••[await]",
-        DI2572_TOWER_HENCHMAN_2: "\n                    ••••••[await]",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """\n    CZAR DRAGON: BLARRGGGG[await]""",  # can we make him say BLARG as many times as you have items remaining?
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n The Czar Dragon is busy right now,\n so he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering the Czar Dragon.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ (Stay in the inn for free?)[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: "\n                    ••••••[await]",
@@ -4103,16 +4423,22 @@ class CzarDragonBossFight(BossFightPrize):
         DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "\n                    ••••••[await]",
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "\n                    ••••••[await]",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
-        DI3057_MONSTRO_SUPERBOSS_PROMPT: """[delay_60][await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: "\n                    ••••••[await]",
-        DI3073_TOWER_HENCHMAN_3: "\n                    ••••••[await]",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: """CZAR DRAGON: BLAAARRRGGGG\n  [select] (I agree, let's fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always yelling about\n BLARRRRG-this and\n BLAHGAHRGGH-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Czar Dragon is busy right now,\n so he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering the Czar Dragon.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
+        DI2560_TOWER_HENCHMAN_1: "\n                    ••••••[await]",
+        DI2572_TOWER_HENCHMAN_2: "\n                    ••••••[await]",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: "\n                    ••••••[await]",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: "\n                    ••••••[await]",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: "\n                    ••••••[await]",
+        DI3073_TOWER_HENCHMAN_3: "\n                    ••••••[await]",
     }
 
 
@@ -4142,8 +4468,8 @@ class AxemRangersBossFight(BossFightPrize):
 
     _character_henchmen = [
         BossFightHenchman(monster=AXEMBLACKEnemy, model=AXEM_BLACK_NPC),
-        BossFightHenchman(monster=AXEMYELLOWEnemy, model=AXEM_YELLOW_NPC),
         BossFightHenchman(monster=AXEMPINKEnemy, model=AXEM_PINK_NPC),
+        BossFightHenchman(monster=AXEMYELLOWEnemy, model=AXEM_YELLOW_NPC),
         BossFightHenchman(monster=AXEMGREENEnemy, model=AXEM_GREEN_NPC),
     ]
 
@@ -4167,28 +4493,28 @@ class AxemRangersBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """AXEM YELLOW: Why the heck do\n I have to bake a cake that I'm\n not going to get to eat?![await]""",
         DI2062_APPRENTICE_CHEF: """AXEM GREEN: Not EVERYTHING\n we do is evil. Today we're baking a\n cake that looks like Axem Red.[await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """AXEM RED: Listen! You're not\n going anywhere until you find [0x7024]\n more of `MARRYMORE_CHARACTER`'s item(s)![await]""",
-        DI2560_TOWER_HENCHMAN_1: """AXEM BLACK: Green hasn't shown\n up to cover me for lunch yet![await][pause] I'm\n so mad, I could fight somebody![await]""",
-        DI2572_TOWER_HENCHMAN_2: """AXEM PINK: Where do you clods\n think you're going?![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n The Axem Rangers are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering the Axem Rangers.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """AXEM RED: Listen up![await]\n Quit snooping around town![await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """AXEM YELLOW: You tired?[await]\n I'm feeling nice today, so you can\n stay for free.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
-        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
-        DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: """ If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]""",
-        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Axem Red's\n house up on the hill yet?[await]""",
-        DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED: """ They won't give me a better job\n in this town! I wanted to be one\n of the shed guards![await]\n ...What are they guarding?\n [delay]N-nothing![await]""",
-        DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Have you found the Sunken Ship\n yet? There's something about it I\n was supposed to tell you...[await]""",
-        DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Oh, yeah, there's a wall of boxes\n hiding a treasure chest. It's pretty\n easy to miss it.[await]""",
-        DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Once you get through the Sunken\n Ship, you can... er...[await]""",
-        DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ You can come back here. We'll have\n something good waiting for you...\n heh heh...[await]""",
-        DI2845_OCCUPIED_SEASIDE_HENCHMAN_CUSTOMER: """ Why does HE get to be the\n shopkeeper?[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Axem Red...\n in his house. He is...the most\n respected person here.[await]""",
         DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n     AXEM BLACK: Beat it, clod![await]""",
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """AXEM PINK: Get lost, mustache!\n [delay]This shed belongs to the Axem\n Rangers![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """AXEM RED: Yo! It won't be enough\n to win just once. The dojo master\n has three forms.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Yo! What do you want?![await]\n  [select] (A fight)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """AXEM YELLOW: Man...[delay] I wish\n someone would bring me some food\n up here![await]""",
-        DI3073_TOWER_HENCHMAN_3: """\n    AXEM YELLOW: Get lost, bub![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Shades-this and Makeup-that.[await][page]\n Sometimes I'd like to ask them what\n they're babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  AXEM RED: I'm way outta shape![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  AXEM RED: I'm way outta shape![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Axem Rangers are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering the Axem Rangers.[await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed = {
+        DI2560_TOWER_HENCHMAN_1: """AXEM BLACK: Green hasn't shown\n up to cover me for lunch yet![await][pause] I'm\n so mad, I could fight somebody![await]""",
+        DI2572_TOWER_HENCHMAN_2: """AXEM PINK: Where do you clods\n think you're going?![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """AXEM YELLOW: Man...[delay] I wish\n someone would bring me some food\n up here![await]""",
+        DI3073_TOWER_HENCHMAN_3: """\n    AXEM YELLOW: Get lost, bub![await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -4236,8 +4562,10 @@ class ChesterBossFight(BossFightPrize):
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CHESTER: Go on, take it. Just let\n me go back to sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Quit draggin' your feet! Get in\n here and let's fight![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Chester's place.[await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped \nCHESTER!![await]""",
-        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """CHESTER: (How embarrassing...)[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: "\n"
+        "PIRATE: That's AMAZING!\n No one's EVER whipped \nCHESTER!![await]"
+        "",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """   CHESTER: (How embarrassing...)[await]""",
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """CHESTER: You know, I'm kind of a\n big deal over in Bowser's Keep.[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """CHESTER: This is unnecessary. Get\n off me![await]""",
         DI1782_SHIP_BOSS_DRINK: """ Leave me alone with my precious[await]\n '92 Napper Cabernet Sauivignon.[await]""",
@@ -4250,13 +4578,29 @@ class ChesterBossFight(BossFightPrize):
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """CHESTER: Don't bother me unless\n you have found [0x7024] more item(s).[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Chester's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Chester.[await]""",
-        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """CHESTER: This town is pretty\n quiet.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """CHESTER:\n       This town is pretty quiet.[await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Chester...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n   CHESTER: Now THIS I gotta see.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You're interrupting my sleep.[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Dragon-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  CHESTER: I don't even have legs![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  CHESTER: I don't even have legs![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """COMEON: Go on, take it. Just let\n me go back to sleep.[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Comeon's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped \nCOMEON!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n  COMEON: (How embarrassing...)[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """COMEON: You know, I'm kind of a\n big deal over in Bowser's Keep.[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n `MAIN_CHARACTER_NAME`:\n[await][page]\n I'm too old for this nonsense with\n `SEASIDE_BOSS`, good luck.\n[await]\n Just to see if I could, I summoned\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n It seems they're associated with\n `FINAL_BOSS_NAME`\n I've been belching up monsters for\n a LONG time, and I've never seen\n anything this rude. Fix it, and\n I MIGHT forget you opened my box.[await][page]\n\n    Go do something useful for once.\n                                    Comeon[await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """COMEON: Don't bother me unless\n you have found [0x7024] more item(s).[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Comeon's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Comeon.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """COMEON:\n       This town is pretty quiet.[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Comeon...\n in his house. He is...the most\n respected person here.[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n   COMEON: Now THIS I gotta see.[await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  COMEON: I don't even have legs![await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  COMEON: I don't even have legs![await]""",
     }
 
 
@@ -4277,10 +4621,10 @@ class KamekBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss_remake = "Wizakoopa's guys."
     _remake_name = "Wizakoopa"
 
-    _mook_henchmen = [
-        BossFightHenchman(monster=JINXCLONEEnemy, model=JINX_1),
-        BossFightHenchman(monster=KINGBOMBEnemy, model=BOB_OMB_NPC),
-    ]
+    # _mook_henchmen = [
+    #     BossFightHenchman(monster=JINXCLONEEnemy, model=JINX_1),
+    #     BossFightHenchman(monster=KINGBOMBEnemy, model=BOB_OMB_NPC),
+    # ]
     _tiny_henchmen = [
         BossFightHenchman(monster=JINXCLONEEnemy, model=JINX_1),
         BossFightHenchman(monster=BOBOMBEnemyHenchman, model=MICROBOMB_NPC),
@@ -4296,24 +4640,62 @@ class KamekBossFight(BossFightPrize):
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Magikoopa's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n MAGIKOOPA!![await]""",
         DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n  MAGIKOOPA: Huh? ...Where am I?[await]""",
-        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """MAGIKOOPA: Oh, yes, I have seen\n `MARIO_NAME`'s twin brother before.\n I can't recall where, though...[await]""",
-        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """MAGIKOOPA: `MAIN_CHARACTER_NAME`, why did you do\n this???[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """MAGIKOOPA: Oh, yes, I have seen\n `MARIO_NAME`'s brother before.\n I can't recall where, though...[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """MAGIKOOPA: `MAIN_CHARACTER_NAME`,\n why did you do this???[await]""",
         DI1782_SHIP_BOSS_DRINK: """ There's Magic Hat in my magic hat,[await]\n but we're not handing it over to[await]\n the likes of you![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """\n `MAIN_CHARACTER_NAME`!\n[await][page]\n Before I could cast a spell, you\n defeated `SEASIDE_BOSS`![await]\n\n Earlier while flying around seeking \n sweet yoshi vengeance, I saw[await]\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n I remember them being one of \n `FINAL_BOSS_NAME`[await]\n I'd better get back to the ship in\n case Yoshi falls into one the pits.[await][page]\n\n     Now you see me, now you don't![await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n `MAIN_CHARACTER_NAME`!\n[await][page]\n Before I could cast a spell, you\n defeated `SEASIDE_BOSS`![await]\n\n Earlier while flying around seeking \n sweet yoshi vengeance, I saw[await]\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n I remember them being one of \n `FINAL_BOSS_NAME`[await]\n I'd better get back to the ship in\n case Yoshi falls into one the pits.[await][page]\n\n     Now you see me, now you don't![await]                               Magikoopa""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big wizard! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """MAGIKOOPA: You..need..[0x7024] more\n item(s)![await]""",
-        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Magikoopa's busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Magikoopa's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Magikoopa.[await]""",
-        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """MAGIKOOPA: There's nothing..to\n see..here![await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """MAGIKOOPA:\n    There's nothing..to see..here![await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Magikoopa...\n in his house. He is...the most\n respected person here.[await]""",
-        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n            MAGIKOOPA: OH, MY!! [await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n        MAGIKOOPA: OH, MY!![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Yoshi-this and Bowser-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
-        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n MAGIKOOPA: Oh, dear... What to do...[await]""",
-        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n MAGIKOOPA: Oh, dear... What to do...[await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n MAGIKOOPA:\n       Oh, dear... What to do...[await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n MAGIKOOPA:\n       Oh, dear... What to do...[await]""",
+    }
+    _dialog_replacements_remake = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """WIZAKOOPA: Normally,[delay] when I\n summon an egg,[delay] it doesn't\n encapsulate me...[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Wizakoopa's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n WIZAKOOPA!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n  WIZAKOOPA: Huh? ...Where am I?[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """WIZAKOOPA: Oh, yes, I have seen\n `MARIO_NAME`'s brother before.\n I can't recall where, though...[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """WIZAKOOPA: `MAIN_CHARACTER_NAME`,\n why did you do this???[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n `MAIN_CHARACTER_NAME`!\n[await][page]\n Before I could cast a spell, you\n defeated `SEASIDE_BOSS`![await]\n\n Earlier while flying around seeking \n sweet yoshi vengeance, I saw[await]\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n I remember them being one of \n `FINAL_BOSS_NAME`[await]\n I'd better get back to the ship in\n case Yoshi falls into one the pits.[await][page]\n\n     Now you see me, now you don't![await]                               Wizakoopa""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """WIZAKOOPA: You..need..[0x7024] more\n item(s)![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Wizakoopa's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Wizakoopa.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """WIZAKOOPA:\n    There's nothing..to see..here![await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Wizakoopa...\n in his house. He is...the most\n respected person here.[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n        WIZAKOOPA: OH, MY!![await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n WIZAKOOPA:\n       Oh, dear... What to do...[await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n WIZAKOOPA:\n       Oh, dear... What to do...[await]""",
+    }
+    _dialog_replacements_canon = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """KAMEK: Normally,[delay] when I\n summon an egg,[delay] it doesn't\n encapsulate me...[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Kamek's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n KAMEK!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n    KAMEK: Huh? ...Where am I?[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """KAMEK: Oh, yes, I have seen\n `MARIO_NAME`'s brother before.\n I can't recall where, though...[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """KAMEK: `MAIN_CHARACTER_NAME`,\n why did you do this???[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n `MAIN_CHARACTER_NAME`!\n[await][page]\n Before I could cast a spell, you\n defeated `SEASIDE_BOSS`![await]\n\n Earlier while flying around seeking \n sweet yoshi vengeance, I saw[await]\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n I remember them being one of \n `FINAL_BOSS_NAME`[await]\n I'd better get back to the ship in\n case Yoshi falls into one the pits.[await][page]\n\n     Now you see me, now you don't![await]                                     Kamek""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """KAMEK: You..need..[0x7024] more\n item(s)![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Kamek's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Kamek.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """KAMEK:\n    There's nothing..to see..here![await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Kamek... in his house.\n He is...the most respected person\n here.[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n           KAMEK: OH, MY!![await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n KAMEK: Oh, dear... What to do...[await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n KAMEK:\n       Oh, dear... What to do...[await]""",
+    }
+    _dialog_replacements_canon_and_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Kamek's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Kamek.[await]""",
     }
 
 
@@ -4343,40 +4725,26 @@ class BoomerBossFight(BossFightPrize):
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """BOOMER: A true soldier knows\n when to accept defeat. You earned\n your victory.[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """BOOMER: This is absurd! Get off\n of my head.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ Great battle deserves great Sake![await]\n Join me, `MAIN_CHARACTER_NAME`.  Kampai![await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """CHANDELI-HO: There's nowhere for\n Boomer to crash down onto in here!\n Thank goodness![await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """CHANDELI-HO: There's nowhere for\n Boomer to crash down onto in here!\n Thank goodness![await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """Origami figures sit in silent tableau:\n[await][page]\nOne figure resembles `VOLCANO_BOSS_DESCRIPTION`\nwhile the others appear to be\n`FINAL_BOSS_NAME`\n[await]\nA haiku lays near the figures:\n\nStay strong `MAIN_CHARACTER_NAME`\n[await]\nShow them what discipline means\n[await]\nShred them throughly[await][page]\n\n                   Go in peace,\n                         Boomer[await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """CHANDELI-HO: There's nowhere for\n Boomer to crash down onto in here!\n Thank goodness![await]""",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """CHANDELI-HO: Hop on the\n trampoline in the next room. It'll\n take you outside.[await]""",
-        DI2061_HEAD_CHEF: """CHANDELI-HO: We're making a cake\n to look just like Boomer![await]""",
-        DI2062_APPRENTICE_CHEF: """CHANDELI-HO: We've gotten REAL\n good with fondant![await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like samurai! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BOOMER: Ha ha ha![delay_30] So, you found\n [0x7000] item(s) already. Impressive.[await][pause] But\n now you've got to find [0x7024] more![await]""",
-        DI2560_TOWER_HENCHMAN_1: """CHANDELI-HO: Welcome! Have you\n come to install the chandelier?[await][page]\n ...No?[delay] Well, you'd better leave\n Boomer alone![await]""",
-        DI2572_TOWER_HENCHMAN_2: """CHANDELI-HO: I won't let you\n bother Boomer![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Boomer's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Boomer.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """BOOMER: Ha ha ha![await][pause] So, you've\n found our village![await]""",
-        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Hi! Are you tired? You can rest\n up here, and you don't have to\n pay me anything.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
-        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
-        DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: """ If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]""",
-        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Boomer's house\n up on the hill yet?[await]""",
-        DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED: """ ...Stay away from the shed, OK?\n It's scary![await]""",
-        DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Have you found the Sunken Ship\n yet? There's something about it I\n was supposed to tell you...[await]""",
-        DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Oh, yeah, there's a wall of boxes\n hiding a treasure chest. It's pretty\n easy to miss it.[await]""",
-        DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Once you get through the Sunken\n Ship, you can... er...[await]""",
-        DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ You can come back here. We'll have\n something good waiting for you...\n heh heh...[await]""",
-        DI2845_OCCUPIED_SEASIDE_HENCHMAN_CUSTOMER: """ I'm upset. There's no candles on\n sale here.[await]""",
-        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n      Sorry, we can't let you in![await]""",
-        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ This is Boomer's top-secret shed![await]\n ...Oh no, was I supposed to tell\n you it's top secret?[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Boomere...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BOOMER: Ha ha ha! A match\n against the dojo master?!\n This ought to be fun![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Gahahaha! Is it a fight you seek?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """CHANDELI-HO: Whew...[delay] It's weird\n for me to say,[delay] but I think I might\n be afraid of heights.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """CHANDELI-HO: I won't let anything\n bad happen to Boomer![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Soldier-this and Honor-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOOMER: You won fair and square!\n But I won't make it so easy for you\n next time![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOOMER: You won fair and square!\n But I won't make it so easy for you\n next time![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """CHANDELI-HO: Oh, no, I lost!\n Good luck, Boomer![await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """CHANDELI-HO: I hope you didn't\n hurt Boomer too bad![await]""",
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Boomer's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Boomer.[await]""",
     }
 
 
@@ -4415,7 +4783,7 @@ class ExorBossFight(BossFightPrize):
         DI1786_LETTER_FROM_SHIP_BOSS: """\n HEY!\n[await][page]\n What did you do to\n `SEASIDE_BOSS`?!\n[await]\n Let's see you deal with \n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano![await]\n You are no match for us,\n `FINAL_BOSS_NAME`\n Trespass on my chip at your own\n peril!  I will devour you and expel\n your corporeal form in the\n dimmension of bombs and sledges!\n Mind your place, Tiny.[await][page]\n\n    Turn the "Ge" flag on, weakling.\n                                      Exor[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big sword man! It is...\n masterpiece![await]""",
+        DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big sword! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """EXOR: Halt![await][pause] What do you have\n here?[delay] [0x7000] item(s)?[await]\n No, this won't do.[await][pause] Find [0x7024] more,\n[delay] or I won't let you through![await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Exor's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Exor.[await]""",
@@ -4426,6 +4794,10 @@ class ExorBossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Nosey-this and Trespasser-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n        EXOR: How humiliating![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n        EXOR: How humiliating![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Exor's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Exor.[await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -4473,12 +4845,12 @@ class CountdownBossFight(BossFightPrize):
         DI1782_SHIP_BOSS_DRINK: """ Ahh, fresh squeezed Orange Juice-[await]\n The second best way to wake up![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """DING-A-LING: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """DING-A-LING: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """ WAKE UP CALL FOR\n `MAIN_CHARACTER_NAME`!!\n[await][page]\n YOU'RE LATE DEFEATING\n `SEASIDE_BOSS`!!\n[await]\n NEWSFLASH:\n `VOLCANO_BOSS_DESCRIPTION`\n SPOTTED NEAR THE VOLCANO!![await]\n DING-A-LING SOURCES LINK TO \n `FINAL_BOSS_NAME`\n TIME WAITS FOR NO ONE!! \n BETTER NAIL THAT MACK SKIP, \n ROCK CANDY MANIP, BLOCK CLIP\n BACK TO SUNKEN SHIP, YIP!![await][page]\n\n Alarm off  <<<        >>>  Snooze\n                 Countdown[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """ WAKE UP CALL FOR\n `MAIN_CHARACTER_NAME`!!\n[await][page]\n YOU'RE LATE DEFEATING\n `SEASIDE_BOSS`!!\n[await]\n NEWSFLASH:\n `VOLCANO_BOSS_DESCRIPTION`\n SPOTTED NEAR THE VOLCANO!![await]\n DING-A-LING SOURCES LINK TO \n `FINAL_BOSS_NAME`\n TIME WAITS FOR NO ONE!! \n BETTER NAIL THAT MACK SKIP, \n ROCK CANDY MANIP, BLOCK CLIP\n BACK TO SUNKEN SHIP, YIP!![await][page]\n\n Alarm off  <<<        >>>  Snooze\n                              Count Down[await]""",
         DI2061_HEAD_CHEF: """DING-A-LING: I guess it is a little\n weird to make a cake that looks\n like a clock with no body.[await]""",
         DI2062_APPRENTICE_CHEF: """DING-A-LING: Are you impressed by\n how well we can bake without\n having any hands?[await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """COUNT DOWN: You've only got\n [0x7000] item(s)! You're missing [0x7024]![await]\n You better do something![await]""",
-        DI2560_TOWER_HENCHMAN_1: """DING-A-LING: `MAIN_CHARACTER_NAME`'s HERE![await][pause][delay_30]\n I'd better do something![await]""",
-        DI2572_TOWER_HENCHMAN_2: """DING-A-LING: You won't find\n Count Down back here![await]\n Leave us alone![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Count Down's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Count Down.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """COUNT DOWN: There's nothing to\n do here![await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Our inn is free![await][pause] Why?[delay_30] Uh...[delay]\n I'm not sure.[delay_30] Anyway,[delay] do you\n want to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -4492,15 +4864,34 @@ class CountdownBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n       Get outta here! Beat it![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """COUNT DOWN: The dojo master will\n be tough to beat![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Uh-oh! Are you looking for\n trouble?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """DING-A-LING: Man...[delay_15] I'm tired.[await]\n Even alarm bells get tired\n sometimes.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """DING-A-LING: Back off![delay_15] I know\n Fear Roulette and I'm not afraid\n to use it![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n The guy next door never seems\n to shut his alarm clock off.[await][page]\n I'd like to go over and give him a\n piece of my mind, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """COUNT DOWN: This is a weird\n training regimen for an alarm\n clock![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """COUNT DOWN: This is a weird\n training regimen for an alarm\n clock![await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Count Down's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Count Down.[await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """RING-A-DING: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """RING-A-DING: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """ WAKE UP CALL FOR\n `MAIN_CHARACTER_NAME`!!\n[await][page]\n YOU'RE LATE DEFEATING\n `SEASIDE_BOSS`!!\n[await]\n NEWSFLASH:\n `VOLCANO_BOSS_DESCRIPTION`\n SPOTTED NEAR THE VOLCANO!![await]\n RING-A-DING SOURCES LINK TO \n `FINAL_BOSS_NAME`\n TIME WAITS FOR NO ONE!! \n BETTER NAIL THAT MACK SKIP, \n ROCK CANDY MANIP, BLOCK CLIP\n BACK TO SUNKEN SHIP, YIP!![await][page]\n\n Alarm off  <<<        >>>  Snooze\n                              Count Down[await]""",
+        DI2061_HEAD_CHEF: """RING-A-DING: I guess it is a little\n weird to make a cake that looks\n like a clock with no body.[await]""",
+        DI2062_APPRENTICE_CHEF: """RING-A-DING: Are you impressed by\n how well we can bake without\n having any hands?[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """DING-A-LING: We failed to stop\n you. Go ahead into Count Down's\n room![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """DING-A-LING: You beat Count Down!\n We didn't see that coming![await]""",
+        DI2560_TOWER_HENCHMAN_1: """DING-A-LING: `MAIN_CHARACTER_NAME`'s HERE![await][pause][delay_30]\n I'd better do something![await]""",
+        DI2572_TOWER_HENCHMAN_2: """DING-A-LING: You won't find\n Count Down back here![await]\n Leave us alone![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """DING-A-LING: Man...[delay_15] I'm tired.[await]\n Even alarm bells get tired\n sometimes.[await]""",
+        DI3073_TOWER_HENCHMAN_3: """DING-A-LING: Back off![delay_15] I know\n Fear Roulette and I'm not afraid\n to use it![await]""",
+    }
+    _dialog_replacements_if_mandatory_fights_changed_remake = {
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """RING-A-DING: We failed to stop\n you. Go ahead into Count Down's\n room![await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """RING-A-DING: You beat Count Down!\n We didn't see that coming![await]""",
+        DI2560_TOWER_HENCHMAN_1: """RING-A-DING: `MAIN_CHARACTER_NAME`'s HERE![await][pause][delay_30]\n I'd better do something![await]""",
+        DI2572_TOWER_HENCHMAN_2: """RING-A-DING: You won't find\n Count Down back here![await]\n Leave us alone![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """RING-A-DING: Man...[delay_15] I'm tired.[await]\n Even alarm bells get tired\n sometimes.[await]""",
+        DI3073_TOWER_HENCHMAN_3: """RING-A-DING: Back off![delay_15] I know\n Fear Roulette and I'm not afraid\n to use it![await]""",
     }
 
 
@@ -4553,6 +4944,10 @@ class CloakerDominoBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """DOMINO: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """DOMINO: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Cloaker and Domino are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Cloaker and Domino.[await]""",
+    }
 
 
 class ClerkBossFight(BossFightPrize):
@@ -4592,8 +4987,8 @@ class ClerkBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """MAD MALLET: We're making a cake\n to look just like the Clerk![await]""",
         DI2062_APPRENTICE_CHEF: """MAD MALLET: We've gotten REAL\n good with fondant![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """CLERK: Whatcha got? [0x7000] item(s)?\n At this rate, you should find the\n last [0x7024] in no time![await]""",
-        DI2560_TOWER_HENCHMAN_1: """MAD MALLET: Welcome.[await][pause] It's the\n Clerk's day off, so he's not taking\n visitors today.[await][page]\n ...But if you insist, I'll have to\n keep you out myself![await]""",
-        DI2572_TOWER_HENCHMAN_2: """MAD MALLET: Listen, the Clerk\n doesn't get paid enough to deal\n with you.[await][page]\n  I certainly don't either, but I'm\n having a bad day![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n The Clerk is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering the Clerk.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """CLERK: Not much happens in this\n quiet and completely unsuspicious\n town.[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Welcome.[delay] Would you like to stay\n here for free?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -4609,15 +5004,21 @@ class ClerkBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ Hey buddy, why don't you go snoop\n around some other houses instead?[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CLERK: Now this should be\n interesting. Can you beat THE\n master, `MAIN_CHARACTER_NAME`?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Are you here for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """MAD MALLET: Wow! I can see\n Nimbus Land from here![await]""",
-        DI3073_TOWER_HENCHMAN_3: """MAD MALLET: I'm gonna THRASH\n ya![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Puffball-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CLERK: If anyone asks, I'm on\n break![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CLERK: If anyone asks, I'm on\n break![await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Clerk is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering the Clerk.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """MAD MALLET: You trashed us!\n Go on to the Clerk's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """MAD MALLET: Whoa... No one's\n beaten the Clerk in 10 years![await]""",
+        DI2560_TOWER_HENCHMAN_1: """MAD MALLET: Welcome.[await][pause] It's the\n Clerk's day off, so he's not taking\n visitors today.[await][page]\n ...But if you insist, I'll have to\n keep you out myself![await]""",
+        DI2572_TOWER_HENCHMAN_2: """MAD MALLET: Listen, the Clerk\n doesn't get paid enough to deal\n with you.[await][page]\n  I certainly don't either, but I'm\n having a bad day![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """MAD MALLET: Wow! I can see\n Nimbus Land from here![await]""",
+        DI3073_TOWER_HENCHMAN_3: """MAD MALLET: I'm gonna THRASH\n ya![await]""",
     }
 
 
@@ -4659,8 +5060,8 @@ class ManagerBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """POUNDER: We're making a cake\n to look just like the Manager![await]""",
         DI2062_APPRENTICE_CHEF: """POUNDER: We've gotten REAL\n good with fondant![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """MANAGER: Heh heh heh.[delay] Good work.[await]\n You just need [0x7024] more item(s).[await]""",
-        DI2560_TOWER_HENCHMAN_1: """POUNDER: Good day.[await][pause] The Manager\n is busy today and will not be\n seeing any guests.[await][pause]\n If you try to force your way in,\n I'll have to deal with you![await]""",
-        DI2572_TOWER_HENCHMAN_2: """POUNDER: Stay outta our hair![await]\n [delay]...Huh? [delay]"You don't have hair"?[await][pause]\n That's it, you're asking for it![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n The Manager is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering the Manager.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """MANAGER: Come to invade our\n town, have you?[await][pause] No need, there's\n nothing of interest here, I swear![await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Good day.[delay] We're offering free\n reservations today. Would you like\n to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -4676,15 +5077,21 @@ class ManagerBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n      Can't you see we're busy?[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """MANAGER: You think you can beat\n the dojo master?![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Yes?[await][pause] What do you want?[await]\n  [select] (Fight me!)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """POUNDER: Man, I need a break. This\n job is tiring.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """POUNDER: Bullet Bill production is\n on schedule! Don't get in my way![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Schedule-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MANAGER: Don't interrupt me while\n I'm training![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MANAGER: Don't interrupt me while\n I'm training![await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Manager is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering the Manager.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """POUNDER: We lost, but we made\n the Manager proud![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """POUNDER: Wow! The Manager's\n been here 25 years, and you just\n dethroned him![await]""",
+        DI2560_TOWER_HENCHMAN_1: """POUNDER: Good day.[await][pause] The Manager\n is busy today and will not be\n seeing any guests.[await][pause]\n If you try to force your way in,\n I'll have to deal with you![await]""",
+        DI2572_TOWER_HENCHMAN_2: """POUNDER: Stay outta our hair![await]\n [delay]...Huh? [delay]"You don't have hair"?[await][pause]\n That's it, you're asking for it![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """POUNDER: Man, I need a break. This\n job is tiring.[await]""",
+        DI3073_TOWER_HENCHMAN_3: """POUNDER: Bullet Bill production is\n on schedule! Don't get in my way![await]""",
     }
 
 
@@ -4727,8 +5134,8 @@ class DirectorBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """POUNDETTE: We're making a cake\n to look just like the Director![await]""",
         DI2062_APPRENTICE_CHEF: """POUNDETTE: We've gotten REAL\n good with fondant![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """DIRECTOR: I'm afraid you must\n continue searching.[delay] There are\n [0x7024] item(s) remaining.[await]""",
-        DI2560_TOWER_HENCHMAN_1: """POUNDETTE: Salutations.[await][pause] Would you\n like to book an appointment with\n the Director?[await][pause]\n ...You want to just barge right\n in?![delay] No way![await]\n Time to teach you some manners![await]""",
-        DI2572_TOWER_HENCHMAN_2: """POUNDETTE: The Director doesn't\n want anyone coming back here.[await]\n So I'm going to have to ask you\n to leave.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n The Director is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering the Director.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """DIRECTOR: I'm afraid there is\n nothing of concern to you in\n this town.[await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Salutations. How would you like to\n stay in our inn for free today?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
@@ -4744,15 +5151,21 @@ class DirectorBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ There's some important business\n happening in this shed, so get lost\n and quit trying to interrupt us![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """DIRECTOR: I'm afraid the dojo\n master will be quite a challenge for\n you to beat.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ State your business.[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """POUNDETTE: Finally, some time to\n rest![await]""",
-        DI3073_TOWER_HENCHMAN_3: """\nPOUNDETTE: Let's see whatcha got![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Meltdown-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """DIRECTOR: This is quite the\n difficult regimen for a white-collar\n fellow like me.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """DIRECTOR: This is quite the\n difficult regimen for a white-collar\n fellow like me.[await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Director is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering the Director.[await]""",
+    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """POUNDETTE: Well, we lost.\n Time for a break.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """POUNDETTE: You beat the Director!\n Impressive![await]""",
+        DI2560_TOWER_HENCHMAN_1: """POUNDETTE: Salutations.[await][pause] Would you\n like to book an appointment with\n the Director?[await][pause]\n ...You want to just barge right\n in?![delay] No way![await]\n Time to teach you some manners![await]""",
+        DI2572_TOWER_HENCHMAN_2: """POUNDETTE: The Director doesn't\n want anyone coming back here.[await]\n So I'm going to have to ask you\n to leave.[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """POUNDETTE: Finally, some time to\n rest![await]""",
+        DI3073_TOWER_HENCHMAN_3: """\nPOUNDETTE: Let's see whatcha got![await]""",
     }
 
 
@@ -4795,6 +5208,10 @@ class GunyolkBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """FACTORY CHIEF: I'll out-jump you\n if it's the last thing I do![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """FACTORY CHIEF: I'll out-jump you\n if it's the last thing I do![await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Gunyolk is busy right now, so\n it can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering the Gunyolk.[await]""",
+    }
 
 
 class SmithyBossFight(BossFightPrize):
@@ -4836,40 +5253,26 @@ class SmithyBossFight(BossFightPrize):
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """SMITHY: Gufaw, haw, haw...\n Not quite as impressive as my\n factory, eh?[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """SMITHY: Never have I been so\n wronged![await]""",
         DI1782_SHIP_BOSS_DRINK: """ This isn't even my final form![await]\n Barkeep!  Bring me more Ale!![await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ The foundation in this old haunted\n ship looks pretty weak. So we try\n not to make Smithy too mad.[await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ The foundation in this old haunted\n ship looks pretty weak. So we try\n not to make Smithy too mad.[await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n Weakling,\n[await][page]\n I'll bet you had trouble with\n `SEASIDE_BOSS`. Pathetic.[await]\n\n A Drill Bit screamed about\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano when I smashed it.[await]\n I expected better from \n `FINAL_BOSS_NAME`[await]\n The Shyster is complaining about\n my blood pressure again.  I have\n a sledge for problems like these.[await][page]\n\n You haven't seen my final form yet,\n                                    Smithy[await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ The foundation in this old haunted\n ship looks pretty weak. So we try\n not to make Smithy too mad.[await]""",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take you outside.[await]""",
-        DI2061_HEAD_CHEF: """MACHINE MADE: We're making a cake\n to look just like Smithy![await]""",
-        DI2062_APPRENTICE_CHEF: """MACHINE MADE: We've gotten REAL\n good with fondant![await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like blacksmith! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """SMITHY: How utterly annoying![await]\n Give me [0x7024] more item(s)![await]""",
-        DI2560_TOWER_HENCHMAN_1: """MACHINE MADE: Yo![await][pause] Smithy's busy,\n so come back another time! [await][page]\n [delay]...You sure you wanna just barge\n in like that?[await][pause] Alright buddy, don't\n say I didn't warn you![await]""",
-        DI2572_TOWER_HENCHMAN_2: """MACHINE MADE: Man, what's your\n deal?[await][pause] Quit snooping around!\n Smithy'll have a fit![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Smithy's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Smithy.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """SMITHY: So, it's YOU![await]\n Unfortunately for you, there's\n nothing evil in this town that\n demands your attention.[await]""",
-        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Yo. This inn doesn't charge\n anything for our services.\n Wanna stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
-        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
-        DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: """ If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]""",
-        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Smithy's house\n up on the hill yet?[await]""",
-        DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED: """ The shed...?[delay] No, there's nothing in\n there! Take my word for it.[await]""",
-        DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Have you found the Sunken Ship\n yet? There's something about it I\n was supposed to tell you...[await]""",
-        DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Oh, yeah, there's a wall of boxes\n hiding a treasure chest. It's pretty\n easy to miss it.[await]""",
-        DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Once you get through the Sunken\n Ship, you can... er...[await]""",
-        DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ You can come back here. We'll have\n something good waiting for you...\n heh heh...[await]""",
-        DI2845_OCCUPIED_SEASIDE_HENCHMAN_CUSTOMER: """ What am I doing with this stuff?\n ...None of your business![await]""",
-        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n             Get out of here![await]""",
-        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ No visitors allowed in the shed!\n Scram![await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Smithy...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n   SMITHY: Grr... Leave me alone![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Grr... What do you want?[await]\n  [select] (Fight me!)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """MACHINE MADE: It's pretty drafty\n in here![await]""",
-        DI3073_TOWER_HENCHMAN_3: """\n MACHINE MADE: Oh, no you don't![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Factory-this and Weapon-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """SMITHY: Grr... [delay]You're stronger\n than I thought...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """SMITHY: Grr... [delay]You're stronger\n than I thought...[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """ You're pretty tough, but are you\n ready to fight Smithy?[await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """ Oh, wow, you did it![delay] No wonder we\n lost to you...[await]""",
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Smithy's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Smithy.[await]""",
     }
 
 
@@ -4908,40 +5311,26 @@ class Punchinello2BossFight(BossFightPrize):
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """PUNCHINELLO: You've come back to\n visit? I truly must be famous![await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """PUNCHINELLO: They say I'm a hot\n head, so it's a bad idea to stand\n on my head.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ WATCH ME DRINK THIS TOBASCO![await]\n I'm gonna be youtube-famous![await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """\n      BOB-OMB: I need a break.[await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n WHAT'S UP FANS?!\n[await][page]\n I just watched a HYPE fight versus\n `SEASIDE_BOSS`.  Oh.  Em.  Gee.[await]\n\n My Bob-omb army told me about\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.  Fuse is LIT!![await]\n I smell a collab video with \n `FINAL_BOSS_NAME`[await]\n Don't forget to tune in for my 100k\n follower special, where I'll play\n Bob-omb roulette with watermelons![await][page]\n\n           Like, Share, and Subscribe!\n                              Punchinello[await]""",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """BOB-OMB: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """\n      BOB-OMB: I need a break.[await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """\n      BOB-OMB: I need a break.[await]""",
-        DI2061_HEAD_CHEF: """BOB-OMB: Doesn't this cake\n look just like Punchinello?[await]""",
-        DI2062_APPRENTICE_CHEF: """BOB-OMB: We've gotten quite\n good with fondant.[await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like celebrity! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """PUNCHINELLO: Huh?[delay_30] What the hay?[await]\n Where are the other [0x7024] item(s)?[await]""",
-        DI2560_TOWER_HENCHMAN_1: """BOB-OMB: Hello there.[await][pause] If you've\n come for Punchinello's autograph,\n please allow me to buzz you up...[await][page]\n [delay]...You're not here for that?[await]\n [delay]Uh oh, he'll be pretty mad!\n [delay]I'd better do something![await]""",
-        DI2572_TOWER_HENCHMAN_2: """BOB-OMB: There's nothing to see\n back here...[await][pause] I mean that.[await]\n You don't believe me?[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Punchinello's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Punchinello.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """PUNCHINELLO: Hmmm... [delay]Huh?\n [delay]A visitor? [delay]Well, there's not much\n to do around here.[await]""",
-        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Hello there.[await][pause] Today, we've got an\n explosively good deal for you![delay] All\n inn expenses are free of charge.[await]\n Would you like to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
-        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
-        DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: """ If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]""",
-        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Punchinello's\n house up on the hill yet?[await]""",
-        DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED: """ Hello there.[delay] Welcome to our humble\n town. We have the least suspicious\n shed in all the land.[await]""",
-        DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Have you found the Sunken Ship\n yet? There's something about it I\n was supposed to tell you...[await]""",
-        DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Oh, yeah, there's a wall of boxes\n hiding a treasure chest. It's pretty\n easy to miss it.[await]""",
-        DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Once you get through the Sunken\n Ship, you can... er...[await]""",
-        DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ You can come back here. We'll have\n something good waiting for you...\n heh heh...[await]""",
-        DI2845_OCCUPIED_SEASIDE_HENCHMAN_CUSTOMER: """ I know how this must look, but I'm\n just here to browse the perfectly\n legal goods they're selling.[await]""",
-        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ Hello there.[delay] Sorry, but I can't let\n you through this door today.[await]""",
-        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ You wouldn't wanna enter this\n house, oh no.[delay] We'll make sure you\n don't enter by accident.[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Punchinello...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """PUNCHINELLO: A challenge from\n the dojo master, eh? Let's see\n where this goes.[await]""",
-        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hello. Are you with the press?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong number)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """BOB-OMB: I don't look like the\n other bob-ombs here. [delay]That's weird.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """BOB-OMB: You don't think it makes\n sense for a bob-omb to be shooting\n bullets?[await][pause] ...Fight me about it![await]""",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hello. Are you with the press?[await]\n  [select] (I'm here to fight)\n  [select] (Sorry, wrong number)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bomb-this and Famous-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """BOB-OMB: I guess I was a little\n hot-headed, thinking I could win.\n Go on in to Punchinello's room.[await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """BOB-OMB: Wow, you beat\n Punchinello! He's not very happy\n about that.[await]""",
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Punchinello's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Punchinello.[await]""",
     }
 
 
@@ -4972,34 +5361,23 @@ class Booster2BossFight(BossFightPrize):
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """BOOSTER: Eh...? My! It's you\n again![await][page]\n  We're having a heated debate over\n what a "party" is, so you can stay\n if you'd like to contribute.[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """BOOSTER: Hm? How's the view up there?[await]""",
         DI1782_SHIP_BOSS_DRINK: """ This Dish Detergent is DELICIOUS![await]\n Number 2, (belch) MORE SOAP!!![await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """SNIFIT 1: There's a 70% chance the\n drink on the table is actually\n punch.[await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """SNIFIT 2: Booster can't find any\n beetles underwater, but he still\n enjoys watching the fish.[await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n Attention `MAIN_CHARACTER_NAME`,\n[await][page]\n We had an urgent engagement, and\n regret that we couldn't stay and\n play with `SEASIDE_BOSS`.\n[await]\n While on beetle patrol, #2 saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n Snifit three suggested they might be\n `FINAL_BOSS_NAME`\n We're riding the Loco Express to\n the lake of wedding tears.  Also, \n Number 1 says there's no money \n in the budget for new doors.[await][page]\n\n                                   Booster\n                  Dictated but not read[await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """SNIFIT 3: Uh... Do you know where\n we could get some cake down here?[await]""",
-        DI2061_HEAD_CHEF: """SNIFIT 2: Doesn't this cake\n look just like Booster?[await]""",
-        DI2062_APPRENTICE_CHEF: """SNIFIT 3: Uh... I think we should\n have made his mustache bigger.[await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like stinky man! It is...\n masterpiece![await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n   BOOSTER: Found our town, eh?[await]""",
-        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """SNIFIT 1: Welcome![delay] How would you\n like to stay in our fabulous inn\n for free today?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
-        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
-        DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: """ If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]""",
-        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Booster's\n house up on the hill yet?[await]""",
-        DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED: """\n You'd better not go near our shed![await]""",
-        DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Have you found the Sunken Ship\n yet? There's something about it I\n was supposed to tell you...[await]""",
-        DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Oh, yeah, there's a wall of boxes\n hiding a treasure chest. It's pretty\n easy to miss it.[await]""",
-        DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Once you get through the Sunken\n Ship, you can... er...[await]""",
-        DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ You can come back here. We'll have\n something good waiting for you...\n heh heh...[await]""",
-        DI2845_OCCUPIED_SEASIDE_HENCHMAN_CUSTOMER: """ I'm facing a promotion. Do they sell\n anything here that'll make me look\n more professional?[await]""",
-        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """SNIFIT 3: Uh... Don't look in the\n window. [delay]Pretty please.[await]""",
-        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """SNIFIT 2: There is nothing of\n interest to you in here.[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Booster...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BOOSTER: I wonder if the dojo\n master can shape-shift into a\n Mario doll.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Eh? What'd you come here for?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Beetle-this and Train-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """APPRENTICE: Oh, dear![delay] We've\n failed to keep the intruder away\n from Booster![await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """APPRENTICE: Booster's not happy\n about losing. Please do not jump\n on his head.[await]""",
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Booster's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Booster.[await]""",
     }
 
 
@@ -5043,12 +5421,16 @@ class Bundt2BossFight(BossFightPrize):
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Bundt is busy right now, so it\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Bundt.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """BUNDT: Greetings and salutations!\n Welcome to our quiet little town![await]""",
-        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Bundt...\n in his house. He is...the most\n respected person here.[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Bundt...\n in his house. He is...the most\n respected dessert here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BUNDT: What a fierce battle![await][pause] That\n was nothing compared to the dojo\n master, you know.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ What's this?[await][pause] Looking for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Candle-this and Frosting-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Bundt is busy right now, so it\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Bundt.[await]""",
     }
 
 
@@ -5070,28 +5452,14 @@ class Johnny2Fight(BossFightPrize):
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JOHNNY: Matey, it'd be mighty fun\n to spar again, but I'm tryin' to\n sleep now.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Good job, matey... But ye gotta\n fight me first if ye wanna be let\n through![await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n To `MAIN_CHARACTER_NAME`,\n[await][page]\n Knowin' you, knocking down\n `SEASIDE_BOSS` was a breeze.[await]\n\n By the way, my pirates saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n It's probably one of \n `FINAL_BOSS_NAME`[await]\n Well, my gills are failing on me,\n so I'll be heading back down.\n Drop in when you have time, okay?[await][page]\n\n                         Your true mate,\n             Jonathan "Johnny" Jones[await]""",
-        DI2061_HEAD_CHEF: """PIRATE: Y'arr, don't ye think\n this cake here be lookin' just like\n Johnny?[await]""",
-        DI2062_APPRENTICE_CHEF: """PIRATE: Us pirates are pretty\n good with food, arr harr![await]""",
+        DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like shark! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """JOHNNY: Found [0x7000] item(s, eh? Arr,\n harr, harr...! You gotta find [0x7024]\n more, matey![await]""",
-        DI2560_TOWER_HENCHMAN_1: """PIRATE: Welcome, matey![await][pause] Here to\n spar with Johnny, are ye?[await][page]\n Arr, good fun! Let's have a\n warm-up round![await]""",
-        DI2572_TOWER_HENCHMAN_2: """PIRATE: This ain't the corner you\n want, matey![await][pause] But while you're here,\n let's have a spar, arr harr![await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Johnny is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Johnny.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n        JOHNNY: Ahoy, matey![await]""",
-        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Welcome, matey! How'd ya like to\n stay here tonight, on the house?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
-        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two fellas o'er in the left\n building have been actin' weird.[await]""",
-        DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: """ It ain't always easy gettin' into\n the Sea.[await][pause] Ya might need to do\n somethin' else, first![await]""",
-        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have ye been to visit Johnny up\n on the hill yet, matey?[await]""",
-        DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED: """ Arr, what ye be doin' in our town?\n Just stay away from the shed,\n ya hear?[await]""",
-        DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Out in yonder Sunken Ship, there\n be a... er...[await]""",
-        DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ A treasure chest, behind a big\n stack o' boxes! Don't forget about\n it, matey![await]""",
-        DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ If ye can tough it out through the\n ship, you can come back here for\n some... er...[await]""",
-        DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Come back here for some FUN,\n arr harr! Ya got that, matey?![await]""",
-        DI2845_OCCUPIED_SEASIDE_HENCHMAN_CUSTOMER: """\n       I just be shoppin', matey.[await]""",
-        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ Read my lips... WE AIN'T LETTIN'\n YA THROUGH![await]""",
-        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n You ain't gettin in here! It's ours![await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Johnny...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """JOHNNY: Good luck, matey. The dojo\n master's mighty tough.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Arr, what brings ye here?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """PIRATE: I know there be some fine\n loot in this tower, but it's too far\n 'bove sea level for my liking![await]""",
-        DI3073_TOWER_HENCHMAN_3: """PIRATE: I'll make ya see stars,\n arr harr![await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arr-this and Matey-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
@@ -5128,7 +5496,7 @@ class Belome3Fight(BossFightPrize):
         DI1782_SHIP_BOSS_DRINK: """ Woof, I ate too many Mallows~![await]\n I should wash it down with Tonic~![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """It's a damp, slimy, looking note (did `SEASIDE_BOSS` LICK this?).\n[await][page]\nA paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION`\nis etched on the paper.\nThis is probably one of \n`FINAL_BOSS_NAME`'s henchmen!\n`SEASIDE_BOSS` likely headed down to\nfind more snacks,\nso it's time to move on.[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """ It's a damp, slimy, looking note\n (did `SEASIDE_BOSS` LICK this?).\n[await][page]\nA paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION`\nis etched on the paper.\nThis is probably one of \n`FINAL_BOSS_NAME`'s henchmen!\n`SEASIDE_BOSS` likely headed down to\nfind more snacks,\nso it's time to move on.[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big dog! It is...\n masterpiece![await]""",
@@ -5142,6 +5510,10 @@ class Belome3Fight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
+    }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Belome.[await]""",
     }
 
 
@@ -5186,6 +5558,10 @@ class Jinx4BossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Jinx is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Jinx.[await]""",
+    }
 
 
 class Culex3DBossFight(BossFightPrize):
@@ -5209,7 +5585,7 @@ class Culex3DBossFight(BossFightPrize):
     _battle_npc = CulexLargeObject
 
     _dialog_replacements = {
-        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It will not give you thousands of\n experience points.[await]""",
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It is not an effective way to\n grind experience points.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ You have passed the first test.\n But you're not finished yet!\n Please enter.[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Culex's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped CULEX!![await]""",
@@ -5217,36 +5593,22 @@ class Culex3DBossFight(BossFightPrize):
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """CULEX: Greetings. It is good to\n make your acquaintance once\n again.[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """CULEX: This is not the encounter In expected when I came to visit this\n world.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ How droll, my crystals shattered.[await]\n I've only Bacchus Wine remaining.[await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """WATER CRYSTAL: I guess this is as\n close as I'll get to being returned\n to Mysidia.[await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n Greetings, honored Warrior.\n[await][page]\n I have witnessed you do battle with\n `SEASIDE_BOSS`. \n I am impressed, but not surprised.[await]\n In my travels of your world, I saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n The crystals revealed they are \n `FINAL_BOSS_NAME`\n I know not your path to victory, \n but challenge awaits you there. \n I must return to the sea, lest the\n fragile water crystal shatter.[await][page]\n\n                       Fight with honor,\n                                     Culex[await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """EARTH CRYSTAL: I thought the\n Dark Elf was a bit strange, until\n we came to this world.[await]\n You truly have some characters\n here![await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """FIRE CRYSTAL: Of course I'm\n miserable! We're UNDERWATER![await]""",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """WIND CRYSTAL: Culex is nice and\n all, but I miss Yang sometimes.[await]""",
-        DI2061_HEAD_CHEF: """FIRE CRYSTAL: We needed a lot of\n heat to bake a cake of this size.[await]""",
-        DI2062_APPRENTICE_CHEF: """WATER CRYSTAL: We must shape\n this confection to resemble Culex.[await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
+        DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like demon! It is...\n masterpiece![await]""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """CULEX: You must retrieve [0x7024] more\n item(s) before we may proceed.[await]\n Godspeed, champion knight![await]""",
-        DI2560_TOWER_HENCHMAN_1: """FIRE CRYSTAL: Greetings.[await][pause] Culex\n is making preparations to head\n back to his home world.[await][pause] He's\n busy right now.[await][page]\n Please come back later...\n [delay]unless you want to get hurt![await]""",
-        DI2572_TOWER_HENCHMAN_2: """WIND CRYSTAL: You are not going\n to find what you're seeking back\n here.[delay] Stay out.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\n           CULEX: Good day.[await]""",
-        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Welcome to our inn.[await]\n We are offering a competitive price\n of zero coins per night.[await]\n Will you be staying tonight?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
-        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: """ The two guys in the left building\n have been acting suspicious.[await]""",
-        DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: """ If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]""",
-        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ Have you been to Culex's\n house up on the hill yet?[await]""",
-        DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Have you found the Sunken Ship\n yet? There's something about it I\n was supposed to tell you...[await]""",
-        DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Oh, yeah, there's a wall of boxes\n hiding a treasure chest. It's pretty\n easy to miss it.[await]""",
-        DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Once you get through the Sunken\n Ship, you can... er...[await]""",
-        DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ You can come back here. We'll have\n something good waiting for you...\n heh heh...[await]""",
-        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """FIRE CRYSTAL: This area is\n off-limits.[await]""",
-        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """WATER CRYSTAL: This door is a...\n uh... portal to another dimension!\n We can't let you fall into it.[await]""",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Culex...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CULEX: It will be quite difficult to\n claim victory over the dojo master.\n I wish you luck.[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """EARTH CRYSTAL: Wind Crystal\n really should have been the one\n standing guard all the way up here.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """EARTH CRYSTAL: Stand back!\n I might know Sandstorm![await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """CRYSTAL: Proceed forth. Culex\n awaits you.[await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """CRYSTAL: Well met! You have\n satisfied Culex's hunger for a\n true challenge.[await]""",
+    _dialog_replacements_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Culex is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Culex.[await]""",
     }
 
 

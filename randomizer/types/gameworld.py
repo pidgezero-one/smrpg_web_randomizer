@@ -311,7 +311,7 @@ class GameWorld:
         return d
 
     def update_dialog(self, dialog_id: int, new_dialog: str):
-        self.overworld_dialogs.replace_dialog(dialog_id, new_dialog)
+        self.update_dialog(dialog_id, new_dialog)
 
     def get_battle_dialog(self, dialog_id: int):
         d = self.battle_dialogs.battle_dialogs[dialog_id]

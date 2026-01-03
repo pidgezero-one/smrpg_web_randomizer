@@ -1653,8 +1653,14 @@ class BossFightLocation(PrizeLocation):
             if self.prize.force_start_event is not None:
                 f.set_run_event_at_load(self.prize.force_start_event)
 
+        # Skip NPC replacements if the prize matches the original (no shuffle occurred)
+        prize_matches_original = (
+            self._originally_held is not None
+            and isinstance(self.prize, self._originally_held)
+        )
+
         # Set NPC slots with boss models
-        if self.npc_slots is not None:
+        if self.npc_slots is not None and not prize_matches_original:
             for slot in self.npc_slots:
                 room = world.rooms._rooms[slot.room_id]
                 assert room is not None
@@ -1672,7 +1678,7 @@ class BossFightLocation(PrizeLocation):
                 obj._npc = m().base
 
         # Set statue slots with statue models
-        if self.statue_slots is not None:
+        if self.statue_slots is not None and not prize_matches_original:
             for slot in self.statue_slots:
                 room = world.rooms._rooms[slot.room_id]
                 assert room is not None
@@ -1686,7 +1692,7 @@ class BossFightLocation(PrizeLocation):
                     obj.direction = SOUTHWEST
 
         # Assign and set henchmen
-        henchmen_event_packs = self._apply_henchmen(world)
+        henchmen_event_packs = self._apply_henchmen(world) if not prize_matches_original else []
 
         # any gating tied to the location or its contained boss needs to be written
         world.event_scripts.get_script_by_id(self._post_unlocks_event_id).set_contents(
