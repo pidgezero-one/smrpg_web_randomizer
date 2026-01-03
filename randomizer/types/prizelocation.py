@@ -3,7 +3,8 @@ from typing import TYPE_CHECKING
 from uuid import uuid4
 from enum import StrEnum
 import random
-from ..logic.utils import debug_time
+
+from randomizer.data.rooms.room_348 import NORTHWEST
 
 from .prize import (
     Prize,
@@ -11,6 +12,7 @@ from .prize import (
     BossFightPrize,
     BossFightHenchman,
     CharacterPrize,
+    SlotsPrize,
     StarPiecePrize,
     ItemPrize,
     SpellPrize,
@@ -19,6 +21,7 @@ from .prize import (
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
 )
+from ..utils.snippets.es_slot_machine import create_slot_machine_script
 from ..logic.shufflers.enemies import generate_formation_coordinates
 
 # Note: DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize imported lazily
@@ -58,11 +61,19 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
     AreaObject,
     Battlefield,
 )
-from smrpgpatchbuilder.datatypes.levels.classes import RegularNPC, EventInitiator, VramStore
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHEAST, SOUTHWEST
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    RegularNPC,
+    EventInitiator,
+    VramStore,
+    RegularClone,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
+    SOUTHEAST,
+    SOUTHWEST,
+)
 from .base import CategorizationOption
 from .packet_type import PacketType
-from ..data.rooms.npcs import EMPTY_NPC_3
+from ..data.rooms.npcs import EMPTY_NPC_3, EXPLOSION_NPC, FLOWER_NPC_2, FROG_COIN_NPC
 from ..data.variables.room_names import *
 from ..data.variables.variable_names import (
     INVISIBLE_FLAG_1_FOUND,
@@ -1157,6 +1168,12 @@ class PrizeLocation:
                 if l is not self and isinstance(l.prize, EXPStarPrize):
                     if l.world_area == self.world_area:
                         return False
+        if isinstance(prize, SlotsPrize):
+            # same with slots
+            for l in world.chest_locations:
+                if l is not self and isinstance(l.prize, SlotsPrize):
+                    if l.world_area == self.world_area:
+                        return False
         if world.settings.isflag_enabled(RestrictSpecialEquips):
             if self.monstro_shuffle:
                 return isinstance(prize, ItemPrize) and prize._monstro_shuffle
@@ -1243,6 +1260,129 @@ class TreasureChestLocation(StandardPrizeLocation):
                 DisableObjectTriggerInSpecificLevel(AreaObject(npc + 14), room)
             )
         return EventScript(itemgrant)
+
+    def render(self, world: GameWorld) -> None:
+        if isinstance(self.prize, SlotsPrize):
+            world.event_scripts.get_script_by_id(self.prize.logic_event).set_contents(
+                create_slot_machine_script(self, world)
+            )
+            for r in self._rooms:
+                room = world.rooms._rooms[r]
+                if room is None:
+                    raise ValueError(
+                        f"Room ID {r} not found in world while creating slot machine script."
+                    )
+                room._objects.extend(
+                    [
+                        RegularNPC(  # 2
+                            npc=FLOWER_NPC_2,
+                            initiator=EventInitiator.NONE,
+                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                            action_script=A0015_DO_NOTHING,
+                            visible=False,
+                            x=26,
+                            y=108,
+                            z=5,
+                            z_half=False,
+                            direction=SOUTHWEST,
+                            face_on_trigger=False,
+                            cant_enter_doors=False,
+                            byte2_bit5=False,
+                            set_sequence_playback=True,
+                            cant_float=False,
+                            cant_walk_up_stairs=False,
+                            cant_walk_under=False,
+                            cant_pass_walls=False,
+                            cant_jump_through=False,
+                            cant_pass_npcs=False,
+                            byte3_bit5=False,
+                            cant_walk_through=False,
+                            byte3_bit7=False,
+                            slidable_along_walls=True,
+                            cant_move_if_in_air=True,
+                            byte7_upper2=3,
+                        ),
+                        RegularClone(  # 3
+                            npc=FLOWER_NPC_2,
+                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                            action_script=A0015_DO_NOTHING,
+                            visible=False,
+                            x=26,
+                            y=108,
+                            z=5,
+                            z_half=False,
+                            direction=SOUTHWEST,
+                        ),
+                        RegularClone(  # 4
+                            npc=FLOWER_NPC_2,
+                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                            action_script=A0015_DO_NOTHING,
+                            visible=False,
+                            x=26,
+                            y=108,
+                            z=5,
+                            z_half=False,
+                            direction=SOUTHWEST,
+                        ),
+                        RegularNPC(  # 5
+                            npc=FROG_COIN_NPC,
+                            initiator=EventInitiator.NONE,
+                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                            action_script=A0015_DO_NOTHING,
+                            visible=False,
+                            x=26,
+                            y=108,
+                            z=5,
+                            z_half=False,
+                            direction=NORTHWEST,
+                            face_on_trigger=False,
+                            cant_enter_doors=False,
+                            byte2_bit5=False,
+                            set_sequence_playback=True,
+                            cant_float=False,
+                            cant_walk_up_stairs=False,
+                            cant_walk_under=False,
+                            cant_pass_walls=False,
+                            cant_jump_through=False,
+                            cant_pass_npcs=False,
+                            byte3_bit5=False,
+                            cant_walk_through=False,
+                            byte3_bit7=False,
+                            slidable_along_walls=True,
+                            cant_move_if_in_air=True,
+                            byte7_upper2=3,
+                        ),
+                        RegularNPC(  # 6
+                            npc=EXPLOSION_NPC,
+                            initiator=EventInitiator.NONE,
+                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                            action_script=A0400_SEQUENCE_LOOPING_ON,
+                            speed=5,
+                            visible=False,
+                            x=26,
+                            y=108,
+                            z=5,
+                            z_half=False,
+                            direction=NORTHWEST,
+                            face_on_trigger=False,
+                            cant_enter_doors=False,
+                            byte2_bit5=False,
+                            set_sequence_playback=True,
+                            cant_float=False,
+                            cant_walk_up_stairs=False,
+                            cant_walk_under=False,
+                            cant_pass_walls=False,
+                            cant_jump_through=False,
+                            cant_pass_npcs=False,
+                            byte3_bit5=False,
+                            cant_walk_through=False,
+                            byte3_bit7=False,
+                            slidable_along_walls=True,
+                            cant_move_if_in_air=True,
+                            byte7_upper2=3,
+                        ),
+                    ]
+                )
 
 
 class StandingLocation(StandardPrizeLocation):
@@ -1338,7 +1478,9 @@ class BossFightLocationHenchmanNPC:
         """Check if this slot should skip NPC/pack swapping based on enabled flags."""
         if self._skip_swap_if_flag is None:
             return False
-        return any(world.settings.isflag_enabled(flag) for flag in self._skip_swap_if_flag)
+        return any(
+            world.settings.isflag_enabled(flag) for flag in self._skip_swap_if_flag
+        )
 
 
 class BossSpriteSize(StrEnum):
@@ -1406,9 +1548,11 @@ class BossFightLocation(PrizeLocation):
     @property
     def npc_slots(self) -> list[BossFightLocationNPC] | None:
         return self._npc_slots
+
     @property
     def character_henchman_slots(self) -> list[BossFightLocationHenchmanNPC] | None:
         return self._character_henchman_slots
+
     @property
     def mook_henchman_slots(self) -> list[BossFightLocationHenchmanNPC] | None:
         return self._mook_henchman_slots
@@ -1534,15 +1678,21 @@ class BossFightLocation(PrizeLocation):
         CountdownBossFight = _get_cached_import("CountdownBossFight")
         BundtBossFight = _get_cached_import("BundtBossFight")
 
-        henchmen_assignments: list[tuple[BossFightLocationHenchmanNPC, BossFightHenchman]] = []
+        henchmen_assignments: list[
+            tuple[BossFightLocationHenchmanNPC, BossFightHenchman]
+        ] = []
         event_script_battle_packs: list[tuple[int, int]] = []
 
         # Assign mook henchmen
         if self.mook_henchman_slots and self.prize.mook_henchmen:
             # Filter out slots that should skip swapping
-            active_mook_slots = [s for s in self.mook_henchman_slots if not s.should_skip_swap(world)]
+            active_mook_slots = [
+                s for s in self.mook_henchman_slots if not s.should_skip_swap(world)
+            ]
             if active_mook_slots:
-                mooks = random.choices(self.prize.mook_henchmen, k=len(active_mook_slots))
+                mooks = random.choices(
+                    self.prize.mook_henchmen, k=len(active_mook_slots)
+                )
                 henchmen_assignments.extend(zip(active_mook_slots, mooks))
                 for slot, henchman in zip(active_mook_slots, mooks):
                     if slot.pack_id is None:
@@ -1551,7 +1701,10 @@ class BossFightLocation(PrizeLocation):
                     if isinstance(self.prize, (KamekBossFight, CountdownBossFight)):
                         formation_size = 1
                     members: list[type[Enemy]] = [
-                        h.monster for h in random.choices(self.prize.mook_henchmen, k=int(formation_size))
+                        h.monster
+                        for h in random.choices(
+                            self.prize.mook_henchmen, k=int(formation_size)
+                        )
                         if h.monster is not None
                     ]
                     if henchman.monster is not None:
@@ -1563,38 +1716,54 @@ class BossFightLocation(PrizeLocation):
                     # Set the formation on the henchman pack
                     henchman_pack = world.battle_packs._packs[slot.pack_id]
                     for f in henchman_pack.formations:
-                        f.set_members(formation_members)  # pyright: ignore[reportArgumentType]
+                        f.set_members(
+                            formation_members
+                        )  # pyright: ignore[reportArgumentType]
 
         # Assign character henchmen
         if self.character_henchman_slots:
             # Filter out slots that should skip swapping
-            active_char_slots = [s for s in self.character_henchman_slots if not s.should_skip_swap(world)]
+            active_char_slots = [
+                s
+                for s in self.character_henchman_slots
+                if not s.should_skip_swap(world)
+            ]
 
             chars: list[BossFightHenchman] = []
-            if self.prize.character_henchmen is not None and len(self.prize.character_henchmen) >= len(active_char_slots):
-                chars.extend(self.prize.character_henchmen[:len(active_char_slots)])
+            if self.prize.character_henchmen is not None and len(
+                self.prize.character_henchmen
+            ) >= len(active_char_slots):
+                chars.extend(self.prize.character_henchmen[: len(active_char_slots)])
             elif self.prize.character_henchmen is not None:
                 chars.extend(self.prize.character_henchmen)
 
-            for slot, henchman in zip(active_char_slots[:len(chars)], chars):
+            for slot, henchman in zip(active_char_slots[: len(chars)], chars):
                 if slot.pack_id is not None and henchman.monster is not None:
                     fr: FormationMember = FormationMember(henchman.monster, 183, 127)
                     henchman_pack = world.battle_packs._packs[slot.pack_id]
                     for f in henchman_pack.formations:
                         f.set_members([fr])  # pyright: ignore[reportArgumentType]
-            henchmen_assignments.extend(zip(active_char_slots[:len(chars)], chars))
+            henchmen_assignments.extend(zip(active_char_slots[: len(chars)], chars))
 
             # Fill remaining character slots with mooks if needed
-            if len(chars) < len(active_char_slots) and self.prize.mook_henchmen is not None:
-                mooks = random.choices(self.prize.mook_henchmen, k=len(active_char_slots) - len(chars))
-                for slot, henchman in zip(active_char_slots[len(chars):], mooks):
+            if (
+                len(chars) < len(active_char_slots)
+                and self.prize.mook_henchmen is not None
+            ):
+                mooks = random.choices(
+                    self.prize.mook_henchmen, k=len(active_char_slots) - len(chars)
+                )
+                for slot, henchman in zip(active_char_slots[len(chars) :], mooks):
                     if slot.pack_id is None:
                         continue
                     formation_size = random.triangular(0, 5, 2)
                     if isinstance(self.prize, (KamekBossFight, CountdownBossFight)):
                         formation_size = 1
                     members: list[type[Enemy]] = [
-                        h.monster for h in random.choices(self.prize.mook_henchmen, k=int(formation_size))
+                        h.monster
+                        for h in random.choices(
+                            self.prize.mook_henchmen, k=int(formation_size)
+                        )
                         if h.monster is not None
                     ]
                     if henchman.monster is not None:
@@ -1609,15 +1778,21 @@ class BossFightLocation(PrizeLocation):
                     # Set the formation on the henchman pack
                     henchman_pack = world.battle_packs._packs[slot.pack_id]
                     for f in henchman_pack.formations:
-                        f.set_members(formation_members)  # pyright: ignore[reportArgumentType]
-                henchmen_assignments.extend(zip(active_char_slots[len(chars):], mooks))
+                        f.set_members(
+                            formation_members
+                        )  # pyright: ignore[reportArgumentType]
+                henchmen_assignments.extend(zip(active_char_slots[len(chars) :], mooks))
 
         # Assign tiny henchmen
         if self.tiny_henchman_slots and self.prize.tiny_henchmen:
             # Filter out slots that should skip swapping
-            active_tiny_slots = [s for s in self.tiny_henchman_slots if not s.should_skip_swap(world)]
+            active_tiny_slots = [
+                s for s in self.tiny_henchman_slots if not s.should_skip_swap(world)
+            ]
             if active_tiny_slots:
-                blobs = random.choices(self.prize.tiny_henchmen, k=len(active_tiny_slots))
+                blobs = random.choices(
+                    self.prize.tiny_henchmen, k=len(active_tiny_slots)
+                )
                 henchmen_assignments.extend(zip(active_tiny_slots, blobs))
 
         # Set NPC models and battle packs for all assigned henchmen
@@ -1638,9 +1813,11 @@ class BossFightLocation(PrizeLocation):
 
         return event_script_battle_packs
 
-    def render(
-        self, world: GameWorld
-    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
 
         # update the battle pack
         # doing it this way means that you can still run away in the dojo, etc
@@ -1654,9 +1831,8 @@ class BossFightLocation(PrizeLocation):
                 f.set_run_event_at_load(self.prize.force_start_event)
 
         # Skip NPC replacements if the prize matches the original (no shuffle occurred)
-        prize_matches_original = (
-            self._originally_held is not None
-            and isinstance(self.prize, self._originally_held)
+        prize_matches_original = self._originally_held is not None and isinstance(
+            self.prize, self._originally_held
         )
 
         # Set NPC slots with boss models
@@ -1692,7 +1868,9 @@ class BossFightLocation(PrizeLocation):
                     obj.direction = SOUTHWEST
 
         # Assign and set henchmen
-        henchmen_event_packs = self._apply_henchmen(world) if not prize_matches_original else []
+        henchmen_event_packs = (
+            self._apply_henchmen(world) if not prize_matches_original else []
+        )
 
         # any gating tied to the location or its contained boss needs to be written
         world.event_scripts.get_script_by_id(self._post_unlocks_event_id).set_contents(
@@ -1895,10 +2073,12 @@ class PrizeRow(PrizeLocation):
 
 
 class TreasureChestLocationRow(PrizeRow, TreasureChestLocation):
-    def render(
-        self,
+    def render(  # type: ignore[override]
+        self, world: GameWorld | None = None
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        return super().render()
+        if world is not None:
+            TreasureChestLocation.render(self, world)
+        return PrizeRow.render(self)
 
 
 class TreasureChestLocationRow1(TreasureChestLocationRow):

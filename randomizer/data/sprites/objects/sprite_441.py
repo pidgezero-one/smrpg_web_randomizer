@@ -1,4 +1,4 @@
-# SPR0441_ water crystal 3d
+# SPR0441_WATER_CRYSTAL_3D
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(

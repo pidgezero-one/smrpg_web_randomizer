@@ -1,4 +1,4 @@
-# SPR0503_BOOSTER_2
+# SPR0503_BOOSTER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(

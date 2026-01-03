@@ -7,8 +7,9 @@ from typing import TYPE_CHECKING, cast
 from django.contrib.gis.measure import D
 
 from randomizer.data.variables.dialog_names import DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
-from randomizer.types.flags import KeepMinigameSpritesIntact
-from randomizer.types.prize import BossFightPrize
+from randomizer.progression.prizelocations import BoosterTowerIndoorBossFight, FinalBossFight, MarrymoreCharacter, SeasideBeachBossFight, VolcanoExitBossFight
+from randomizer.types.flags import BowsersKeepGate, BowsersKeepGating, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
+from randomizer.types.prize import BossFightPrize, CharacterPrize
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import (
     ScreenFlashWithDuration,
     AttackTimerBegins,
@@ -324,6 +325,98 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             f"  2)\"{bombs[1]}\"\n"
             f"  3)\"{bombs[2]}\"[await]"
         )
+
+    # Replace dialog placeholders
+    # Character names and parts of speech
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MARIO_NAME`", world.allies._allies[0].name)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`PEACH_NAME`", world.allies._allies[1].name)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_NAME`", world.allies._allies[2].name)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`GENO_NAME`", world.allies._allies[3].name)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MALLOW_NAME`", world.allies._allies[4].name)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`PEACH_ARTICLE`", "n" if world.allies._allies[1].name[0].lower() in "aeiou" else "")
+    oc = world.overworld_character.ally
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_NAME`", world.allies._allies[oc.index].name)
+    nm = world.overworld_character.name_props
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_GENDER`", nm.gender)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_GENDER_CASUAL_CAP`", nm.gender_casual)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_HONORIFIC`", nm.honorific)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_TITLE`", nm.title)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_TITLE_SHORT`", nm.title_short)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_MOLE_GREETING`", nm.mole_greeting)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_MBOY_GREETING`", nm.mboy_greeting)
+    
+    # Wedding courtyard dialogue
+    towerboss = world.get_location(BoosterTowerIndoorBossFight).prize
+    assert isinstance(towerboss, BossFightPrize)
+    towerboss_name = towerboss.name(
+        world.settings.isflag_enabled(RemakeNames),
+        world.settings.isflag_enabled(CanonNames),
+    )
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1`", towerboss_name)
+    chapelchar = world.get_location(MarrymoreCharacter).prize
+    cc_name = world.allies._allies[chapelchar._ally.index].name if isinstance(chapelchar, CharacterPrize) else "Toad"
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MARRYMORE_CHARACTER`", cc_name)
+    cc_name_pool = [n for n in 
+                    [*[world.allies._allies[i].name for i in range(len(world.allies._allies))], "Toad"]
+        if n != cc_name
+    ]
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_CHARACTER_NAME`", random.choice(cc_name_pool))
+    bossfight_pool = [cast(BossFightPrize, l.prize) for l in world.locations.values() if isinstance(l, BossFightLocation) and isinstance(l.prize, BossFightPrize)]
+    boss_pool = [x.name(
+        world.settings.isflag_enabled(RemakeNames),
+        world.settings.isflag_enabled(CanonNames),
+    ) for x in bossfight_pool]
+    random_boss_names = random.sample([n for n in boss_pool  if n != towerboss_name], k=3)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_1`", random_boss_names[0])
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_2`", random_boss_names[1])
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_3`", random_boss_names[2])
+
+    # Other settings
+    sjc1 = cast(RangeFlag, world.settings.get_flag(SuperJump1Threshold)).value
+    sjc2 = cast(RangeFlag, world.settings.get_flag(SuperJump2Threshold)).value
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`SUPER_JUMP_PRIZE_1_CAP`", str(sjc1))
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`SUPER_JUMP_PRIZE_2_CAP`", str(sjc2))
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`FIREWORKS_CLAUSE`", "Aren't those in Moleville?" if world.settings.is_flag_value(FireworksSetting, FireworksOptions.VANILLA) else "I wonder where you could find one?")
+
+    # Bowser's Keep access
+    keep_cond = world.settings.get_flag(BowsersKeepGate).selected
+    if keep_cond == BowsersKeepGating.AXEM:
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_KEEP_CONDITION`", "with the Axem Rangers' permission.")
+    elif keep_cond == BowsersKeepGating.OPEN:
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_KEEP_CONDITION`", "on foot.")
+    elif keep_cond == BowsersKeepGating.STAR_6:
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_KEEP_CONDITION`", "with six Star Pieces.")
+    else:
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_KEEP_CONDITION`", "through the volcano.")
+
+    # Seaside letter
+    seasideboss = world.get_location(SeasideBeachBossFight).prize
+    assert isinstance(seasideboss, BossFightPrize)
+    seasideboss_name = seasideboss.seaside_letter_name_if_seaside_boss(
+        world.settings.isflag_enabled(RemakeNames),
+        world.settings.isflag_enabled(CanonNames),
+    )
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`SEASIDE_BOSS`", seasideboss_name)
+
+    volcanoboss = world.get_location(VolcanoExitBossFight).prize
+    assert isinstance(volcanoboss, BossFightPrize)
+    volcanoboss_name = volcanoboss.seaside_letter_name_if_seaside_boss(
+        world.settings.isflag_enabled(RemakeNames),
+        world.settings.isflag_enabled(CanonNames),
+    )
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`VOLCANO_BOSS_DESCRIPTION`", volcanoboss_name)
+
+    finalboss = world.get_location(FinalBossFight).prize
+    assert isinstance(finalboss, BossFightPrize)
+    finalboss_name = finalboss.seaside_letter_name_if_seaside_boss(
+        world.settings.isflag_enabled(RemakeNames),
+        world.settings.isflag_enabled(CanonNames),
+    )
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`FINAL_BOSS_NAME`", finalboss_name)
+
+
+
+    
 
     # Restore seed for any further operations
     random.seed(world.seed)

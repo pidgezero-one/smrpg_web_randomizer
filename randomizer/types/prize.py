@@ -314,21 +314,61 @@ class EXPStarPrize(Prize):
 
 
 class SlotsPrize(Prize):
-    # TODO
+    _logic_event: int
+
+    @property
+    def logic_event(self) -> int:
+        return self._logic_event
+
     @property
     def chest_grant(self) -> EventScript:
-        return EventScript([Return()])
+        return EventScript([JmpToEvent(self.logic_event)])
 
-    pass
+
+
+class CharacterName:
+    placeholder: str = "`NAME`"
+    gender: str = "man"
+    gender_casual: str = "guy"
+    honorific: str = "sir"
+    title: str = "mister"
+    title_short: str = "Mr"
+    mole_greeting: str = "mate"
+    mboy_greeting: str = ", man"
+
+    def __init__(
+        self,
+        placeholder: str = "`NAME`",
+        gender: str = "man",
+        gender_casual: str = "guy",
+        honorific: str = "sir",
+        title: str = "mister",
+        title_short: str = "Mr",
+        mole_greeting: str = "mate",
+        mboy_greeting: str = ", man",
+    ) -> None:
+        self.placeholder = placeholder
+        self.gender = gender
+        self.gender_casual = gender_casual
+        self.honorific = honorific
+        self.title = title
+        self.title_short = title_short
+        self.mole_greeting = mole_greeting
+        self.mboy_greeting = mboy_greeting
 
 
 class CharacterPrize(Prize):
     _ally: Ally
     _starting_level: int = 1
+    _name_props: CharacterName
 
     @property
     def ally(self) -> Ally:
         return self._ally
+
+    @property
+    def name_props(self) -> CharacterName:
+        return self._name_props
 
     @property
     def starting_level(self) -> int:
@@ -354,7 +394,7 @@ class SpellPrize(Prize):
 
 
 class BossFightHenchman:
-    _monster: type[Enemy] 
+    _monster: type[Enemy]
     _model: NPC | None = None
 
     @property
@@ -364,7 +404,7 @@ class BossFightHenchman:
     @property
     def model(self) -> NPC | None:
         return self._model
-    
+
     def __init__(
         self,
         monster: type[Enemy],
@@ -441,9 +481,7 @@ class BossFightPrize(Prize):
     _dialog_replacements_if_mandatory_fights_changed_remake: dict[int, str] | None = (
         None
     )
-    _dialog_replacements_if_mandatory_fights_changed_canon: dict[int, str] | None = (
-        None
-    )
+    _dialog_replacements_if_mandatory_fights_changed_canon: dict[int, str] | None = None
     _dialog_replacements_peach: dict[int, str] | None = None
     _dialog_replacements_if_mandatory_fights_changed_peach: dict[int, str] | None = None
     _dialog_replacements_canon_and_remake: dict[int, str] | None = None
@@ -451,6 +489,7 @@ class BossFightPrize(Prize):
     @property
     def character_henchmen(self) -> list[BossFightHenchman] | None:
         return self._character_henchmen
+
     @property
     def mook_henchmen(self) -> list[BossFightHenchman] | None:
         return self._mook_henchmen
@@ -522,79 +561,142 @@ class BossFightPrize(Prize):
         return self._statue_npc
 
     def get_dialog_replacements(
-        self, remake: bool = False, canon: bool = False, mandatory_fights_changed: bool = False, peach: bool = False
+        self,
+        remake: bool = False,
+        canon: bool = False,
+        mandatory_fights_changed: bool = False,
+        peach: bool = False,
     ) -> dict[int, str] | None:
         if self._dialog_replacements is None:
             return {}
         dialog_replacements = {**self._dialog_replacements}
         if remake:
-            dialog_replacements =  {
-                    **dialog_replacements,
-                    **(self._dialog_replacements_remake or {}),
-                }
+            dialog_replacements = {
+                **dialog_replacements,
+                **(self._dialog_replacements_remake or {}),
+            }
         if canon:
-            dialog_replacements =  {
-                    **dialog_replacements,
-                    **(self._dialog_replacements_canon or {}),
-                }
+            dialog_replacements = {
+                **dialog_replacements,
+                **(self._dialog_replacements_canon or {}),
+            }
         if canon and remake:
-            dialog_replacements =  {
-                    **dialog_replacements,
-                    **(self._dialog_replacements_canon_and_remake or {}),
-                }
+            dialog_replacements = {
+                **dialog_replacements,
+                **(self._dialog_replacements_canon_and_remake or {}),
+            }
         if peach:
-            dialog_replacements =  {
-                    **dialog_replacements,
-                    **(self._dialog_replacements_peach or {}),
-                }
+            dialog_replacements = {
+                **dialog_replacements,
+                **(self._dialog_replacements_peach or {}),
+            }
         if mandatory_fights_changed:
-            dialog_replacements =  {
-                    **dialog_replacements,
-                    **(self._dialog_replacements_if_mandatory_fights_changed or {}),
-                }
+            dialog_replacements = {
+                **dialog_replacements,
+                **(self._dialog_replacements_if_mandatory_fights_changed or {}),
+            }
             if remake:
-                dialog_replacements =  {
-                        **dialog_replacements,
-                        **(self._dialog_replacements_if_mandatory_fights_changed_remake or {}),
-                    }
+                dialog_replacements = {
+                    **dialog_replacements,
+                    **(
+                        self._dialog_replacements_if_mandatory_fights_changed_remake
+                        or {}
+                    ),
+                }
             if canon:
-                dialog_replacements =  {
-                        **dialog_replacements,
-                        **(self._dialog_replacements_if_mandatory_fights_changed_canon or {}),
-                    }
+                dialog_replacements = {
+                    **dialog_replacements,
+                    **(
+                        self._dialog_replacements_if_mandatory_fights_changed_canon
+                        or {}
+                    ),
+                }
             if peach:
-                dialog_replacements =  {
-                        **dialog_replacements,
-                        **(self._dialog_replacements_if_mandatory_fights_changed_peach or {}),
-                    }
+                dialog_replacements = {
+                    **dialog_replacements,
+                    **(
+                        self._dialog_replacements_if_mandatory_fights_changed_peach
+                        or {}
+                    ),
+                }
         return dialog_replacements
 
-    def seaside_letter_name_if_sunken_ship_boss(self, remake: bool = False, canon: bool = False) -> str:
+    def seaside_letter_name_if_sunken_ship_boss(
+        self, remake: bool = False, canon: bool = False
+    ) -> str:
         if canon:
-            return self._seaside_letter_name_if_sunken_ship_boss_canon or self._seaside_letter_name_if_sunken_ship_boss_remake or self._seaside_letter_name_if_sunken_ship_boss or self._canon_name or self._remake_name or self._name or self._text
+            return (
+                self._seaside_letter_name_if_sunken_ship_boss_canon
+                or self._seaside_letter_name_if_sunken_ship_boss_remake
+                or self._seaside_letter_name_if_sunken_ship_boss
+                or self._canon_name
+                or self._remake_name
+                or self._name
+                or self._text
+            )
         if remake:
-            return self._seaside_letter_name_if_sunken_ship_boss_remake or self._seaside_letter_name_if_sunken_ship_boss or self._remake_name or self._name or self._text
+            return (
+                self._seaside_letter_name_if_sunken_ship_boss_remake
+                or self._seaside_letter_name_if_sunken_ship_boss
+                or self._remake_name
+                or self._name
+                or self._text
+            )
         return self._seaside_letter_name_if_sunken_ship_boss or self._name or self._text
 
-    def seaside_letter_name_if_volcano_boss(self, remake: bool = False, canon: bool = False) -> str:
+    def seaside_letter_name_if_volcano_boss(
+        self, remake: bool = False, canon: bool = False
+    ) -> str:
         if canon:
-            return self._seaside_letter_name_if_volcano_boss_canon or self._seaside_letter_name_if_volcano_boss_remake or self._seaside_letter_name_if_volcano_boss
+            return (
+                self._seaside_letter_name_if_volcano_boss_canon
+                or self._seaside_letter_name_if_volcano_boss_remake
+                or self._seaside_letter_name_if_volcano_boss
+            )
         if remake:
-            return self._seaside_letter_name_if_volcano_boss_remake or self._seaside_letter_name_if_volcano_boss
+            return (
+                self._seaside_letter_name_if_volcano_boss_remake
+                or self._seaside_letter_name_if_volcano_boss
+            )
         return self._seaside_letter_name_if_volcano_boss
 
-    def seaside_letter_name_if_final_boss(self, remake: bool = False, canon: bool = False) -> str:
+    def seaside_letter_name_if_final_boss(
+        self, remake: bool = False, canon: bool = False
+    ) -> str:
         if canon:
-            return self._seaside_letter_name_if_final_boss_canon or self._seaside_letter_name_if_final_boss_remake or self._seaside_letter_name_if_final_boss
+            return (
+                self._seaside_letter_name_if_final_boss_canon
+                or self._seaside_letter_name_if_final_boss_remake
+                or self._seaside_letter_name_if_final_boss
+            )
         if remake:
-            return self._seaside_letter_name_if_final_boss_remake or self._seaside_letter_name_if_final_boss
+            return (
+                self._seaside_letter_name_if_final_boss_remake
+                or self._seaside_letter_name_if_final_boss
+            )
         return self._seaside_letter_name_if_final_boss
-    
-    def seaside_letter_name_if_seaside_boss(self, remake: bool = False, canon: bool = False) -> str:
+
+    def seaside_letter_name_if_seaside_boss(
+        self, remake: bool = False, canon: bool = False
+    ) -> str:
         if canon:
-            return self._seaside_letter_name_if_seaside_boss_canon or self._seaside_letter_name_if_seaside_boss_remake or self._seaside_letter_name_if_seaside_boss or self._canon_name or self._remake_name or self._name or self._text
+            return (
+                self._seaside_letter_name_if_seaside_boss_canon
+                or self._seaside_letter_name_if_seaside_boss_remake
+                or self._seaside_letter_name_if_seaside_boss
+                or self._canon_name
+                or self._remake_name
+                or self._name
+                or self._text
+            )
         if remake:
-            return self._seaside_letter_name_if_seaside_boss_remake or self._seaside_letter_name_if_seaside_boss or self._remake_name or self._name or self._text
+            return (
+                self._seaside_letter_name_if_seaside_boss_remake
+                or self._seaside_letter_name_if_seaside_boss
+                or self._remake_name
+                or self._name
+                or self._text
+            )
         return self._seaside_letter_name_if_seaside_boss or self._name or self._text
 
     def name(self, remake: bool = False, canon: bool = False) -> str:

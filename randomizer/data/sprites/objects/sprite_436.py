@@ -1,4 +1,4 @@
-# SPR0334_NOTHING
+# SPR0436_JINX_4
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(

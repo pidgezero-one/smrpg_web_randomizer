@@ -210,6 +210,7 @@ from ..data.allies.allies import (
 )
 from ..types.prize import (
     BossFightHenchman,
+    CharacterName,
     FrogCoinQuantityPrize,
     EXPStarPrize,
     StandardPrize,
@@ -2216,6 +2217,16 @@ class PsychBombSpellPrize(SpellPrize):
 # Characters
 class MarioRecruitmentPrize(CharacterPrize):
     _ally = MARIO_Ally
+    _name_props = CharacterName(
+        "`MARIO_NAME`",
+        "man",
+        "guy",
+        "sir",
+        "mister",
+        "Mr",
+        "mate",
+        ", man"
+    )
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(MARIO)]
@@ -2241,6 +2252,16 @@ class MarioRecruitmentPrize(CharacterPrize):
 
 class MallowRecruitmentPrize(CharacterPrize):
     _ally = MALLOW_Ally
+    _name_props = CharacterName(
+        "`MALLOW_NAME`",
+        "boy",
+        "guy",
+        "sir",
+        "mister",
+        "Mr",
+        "kid",
+        ", kid"
+    )
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(MALLOW)]
@@ -2282,6 +2303,16 @@ class MallowRecruitmentPrize(CharacterPrize):
 
 class GenoRecruitmentPrize(CharacterPrize):
     _ally = GENO_Ally
+    _name_props = CharacterName(
+        "`GENO_NAME`",
+        "man",
+        "guy",
+        "sir",
+        "mister",
+        "Mr",
+        "mate",
+        ", man"
+    )
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(GENO)]
@@ -2322,6 +2353,16 @@ class GenoRecruitmentPrize(CharacterPrize):
 
 class BowserRecruitmentPrize(CharacterPrize):
     _ally = BOWSER_Ally
+    _name_props = CharacterName(
+        "`BOWSER_NAME`",
+        "man",
+        "guy",
+        "sir",
+        "mister",
+        "Mr",
+        "mate",
+        ", man"
+    )
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(BOWSER)]
@@ -2346,6 +2387,16 @@ class BowserRecruitmentPrize(CharacterPrize):
 
 class ToadstoolRecruitmentPrize(CharacterPrize):
     _ally = TOADSTOOL_Ally
+    _name_props = CharacterName(
+        "`PEACH_NAME`",
+        "woman",
+        "gal",
+        "ma'am",
+        "miss",
+        "Ms",
+        "lass",
+        ""
+    )
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(TOADSTOOL)]
@@ -5610,6 +5661,22 @@ class Culex3DBossFight(BossFightPrize):
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Culex is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Culex.[await]""",
     }
+
+class SlotsPrize1(SlotsPrize):
+    @property
+    def chest_grant(self) -> EventScript:
+        return EventScript([JmpToEvent(E2490_BEAN_VALLEY_LEFTMOST_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE)])
+
+class SlotsPrize2(SlotsPrize):
+    @property
+    def chest_grant(self) -> EventScript:
+        return EventScript([JmpToEvent(E2491_BEAN_VALLEY_BOTTOM_LEFT_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE)])
+    
+class SlotsPrize3(SlotsPrize):
+    @property
+    def chest_grant(self) -> EventScript:
+        return EventScript([JmpToEvent(E2492_BEAN_VALLEY_BOTTOM_RIGHT_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE)])
+
 
 
 # Collection of all BossFightPrize subclasses for the ShuffledBosses flag

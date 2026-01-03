@@ -6,6 +6,7 @@ import random
 import statistics
 
 from randomizer.data.variables.dialog_names import DI2908_TREASURE_SELLER_ITEM_2, DI2911_TREASURE_SELLER_ITEM_1, DI2914_TREASURE_SELLER_ITEM_3
+from randomizer.data.variables.sprite_names import SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO
 from ..types.gameworld import GameWorld
 from ..types.prizelocation import (
     BossFightLocation,
@@ -16,6 +17,7 @@ from ..types.prizelocation import (
     StandingLocation,
     EventLocation,
     TreasureChestLocation,
+    TreasureChestLocationRow,
     BoosterHillLocation,
     CharacterRecruitmentLocation,
     TreasureShopLocation
@@ -48,7 +50,7 @@ from ..data.variables.variable_names import (
     BATTLE_PACK_ID,
 )
 from ..data.variables.room_names import *
-from ..data.rooms.npcs import EMPTY_NPC
+from ..data.rooms.npcs import BOWSER_WALKING_DOWN_LEFT_NPC, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC, MALLOW_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_NPC
 from ..types.flags import CharacterStats
 from ..types.prize import BossFightPrize, SpellPrize, CharacterPrize, StandardPrize
 from ..types.enemy import Enemy
@@ -97,8 +99,30 @@ from ..progression.prizelocations import (
     TreasureShopItem2,
     TreasureShopItem3,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_9
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_9, NPC_0
 from ..progression.prizes import FirstMimicFightLauncher, SecondMimicFightLauncher
+
+from ..data.sprites.subs.bowser.sprite_96 import sprite as BOWSER_96
+from ..data.sprites.subs.bowser.sprite_132 import sprite as BOWSER_132
+from ..data.sprites.subs.bowser.sprite_135 import sprite as BOWSER_135
+from ..data.sprites.subs.bowser.sprite_136 import sprite as BOWSER_136
+from ..data.sprites.subs.bowser.sprite_621 import sprite as BOWSER_621
+from ..data.sprites.subs.mallow.sprite_96 import sprite as MALLOW_96
+from ..data.sprites.subs.mallow.sprite_132 import sprite as MALLOW_132
+from ..data.sprites.subs.mallow.sprite_135 import sprite as MALLOW_135
+from ..data.sprites.subs.mallow.sprite_136 import sprite as MALLOW_136
+from ..data.sprites.subs.mallow.sprite_621 import sprite as MALLOW_621
+from ..data.sprites.subs.geno.sprite_96 import sprite as GENO_96
+from ..data.sprites.subs.geno.sprite_132 import sprite as GENO_132
+from ..data.sprites.subs.geno.sprite_135 import sprite as GENO_135
+from ..data.sprites.subs.geno.sprite_136 import sprite as GENO_136
+from ..data.sprites.subs.geno.sprite_621 import sprite as GENO_621
+from ..data.sprites.subs.peach.sprite_96 import sprite as TOADSTOOL_96
+from ..data.sprites.subs.peach.sprite_132 import sprite as TOADSTOOL_132
+from ..data.sprites.subs.peach.sprite_135 import sprite as TOADSTOOL_135
+from ..data.sprites.subs.peach.sprite_136 import sprite as TOADSTOOL_136
+from ..data.sprites.subs.peach.sprite_621 import sprite as TOADSTOOL_621
+
 
 
 def apply_shuffler_results(world: GameWorld) -> None:
@@ -241,6 +265,8 @@ def apply_shuffler_results(world: GameWorld) -> None:
                         StartBattleWithPackAt700E(),
                         Return(),
                     ])
+            elif isinstance(place, TreasureChestLocationRow):
+                decision, execution = place.render(world)
             else:
                 decision, execution = place.render()
             d_flat = [cmd for l in decision for cmd in l]
@@ -335,6 +361,39 @@ def apply_shuffler_results(world: GameWorld) -> None:
 
     # Apply boss stat scaling after all prizes are set
     apply_boss_stat_scaling(world)
+
+    # put the right character clone in the sunken ship mirror room
+    # and also sub character sprites in overworld where appropriate
+    clone_room = world.rooms._rooms[R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
+    assert clone_room is not None
+    if world.overworld_character.ally.index == 1:
+        clone_room.get_npc_by_target_id(NPC_0)._npc = TOADSTOOL_WALKING_DOWN_LEFT_NPC
+        world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = TOADSTOOL_96
+        world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = TOADSTOOL_132
+        world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = TOADSTOOL_135
+        world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = TOADSTOOL_136
+        world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = TOADSTOOL_621
+    elif world.overworld_character.ally.index == 2:
+        clone_room.get_npc_by_target_id(NPC_0)._npc = BOWSER_WALKING_DOWN_LEFT_NPC
+        world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = BOWSER_96
+        world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = BOWSER_132
+        world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = BOWSER_135
+        world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = BOWSER_136
+        world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = BOWSER_621
+    elif world.overworld_character.ally.index == 3:
+        clone_room.get_npc_by_target_id(NPC_0)._npc = GENO_WALKING_DOWN_LEFT_NPC
+        world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
+        world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = GENO_132
+        world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = GENO_135
+        world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = GENO_136
+        world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = GENO_621
+    elif world.overworld_character.ally.index == 4:
+        clone_room.get_npc_by_target_id(NPC_0)._npc = MALLOW_WALKING_DOWN_LEFT_NPC
+        world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = MALLOW_96
+        world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = MALLOW_132
+        world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = MALLOW_135
+        world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = MALLOW_136
+        world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = MALLOW_621
 
     # events
 

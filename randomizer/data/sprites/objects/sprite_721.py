@@ -1,4 +1,4 @@
-# SPR0470_BUNDT_OBJECT
+# SPR0721_BUNDT_OBJECT_MAYBE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(

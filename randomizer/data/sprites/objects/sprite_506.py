@@ -1,4 +1,4 @@
-# SPR0506_snifit
+# SPR0506_STRONG_SNIFIT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(

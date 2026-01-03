@@ -2,7 +2,7 @@
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(10, length=819, unknown=0x0002,
+    animation=AnimationPack(4, length=829, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -564,7 +564,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80@\xc0\x00\xc0 \xe0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\xc0 \xc0\x00`'),
                             bytearray(b'\x00\xff\x80\xff\xc0\xffs\x7f\x1f\x1f\x1c\x1f\xf0\xff\xe0\xff\x00\xe0\x00\xe0\x00\xf1\x80\x7f\xe0\x1f\xe0\x1f\x00\xfe\x00\xfc'),
                             bytearray(b' \xe0@\xc0\x80\x80\xc0\xc0\x80\x80\x00\x80@\xc0@\xc0\x00`\x00\xc0@\x80\x00\xc0@\x80\x00\x80@\x00@ '),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=100),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=380, y=100),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
                             bytearray(b'\x00.$\x1a4K5K}K}K\xfc#\xfc#..>>oonn&&&&\xc7\xc7\x87\x87'),
                             None,

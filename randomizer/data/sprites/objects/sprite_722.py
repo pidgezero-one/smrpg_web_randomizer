@@ -1,4 +1,4 @@
-# SPR0722_JOHNNY
+# SPR0722_JOHNNY_PASTEOVER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(

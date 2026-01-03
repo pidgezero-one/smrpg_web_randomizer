@@ -1,3 +1,4 @@
+# SPR0439_FIRE_CRYSTAL_3D
 # fire crystal 3d
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone

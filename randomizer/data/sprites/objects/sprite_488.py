@@ -1,4 +1,4 @@
-# SPR0488_ torte 2
+# SPR0488_EXHAUSTED_TORTE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(

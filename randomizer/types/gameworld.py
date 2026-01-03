@@ -6,6 +6,8 @@ import re
 from copy import copy
 from concurrent.futures import ThreadPoolExecutor
 
+from randomizer.data.sprites.overworld_map import BOWSER_OVERWORLD, GENO_OVERWORLD, MALLOW_OVERWORLD, TOADSTOOL_OVERWORLD
+
 from .flags import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
     AnimationScriptBank,
@@ -224,6 +226,15 @@ class GameWorld:
 
     # Progress callback for SSE streaming (set by __init__)
     _progress_callback: Callable[[str, int], None] | None
+
+    @property
+    def overworld_character(self) -> CharacterPrize:
+        if not self.settings.isflag_enabled(PlayAsStarter):
+            return MarioRecruitmentPrize()
+        s = self.get_location(StartingCharacter1)
+        assert s is not None
+        assert isinstance(s.prize, CharacterPrize)
+        return s.prize
 
     def _report_progress(self, message: str, percent: int) -> None:
         """Report progress to the callback if one is set."""
@@ -702,6 +713,10 @@ class GameWorld:
         self.sprites = sprites
         self.world_map_locations = world_map_locations
 
+        # Validate settings combinations before doing anything else
+        # This catches invalid combinations early with clear error messages
+        validate_settings(self.settings)
+
         random.seed(self.seed)
 
         self.event_2496_startup: list[UsableEventScriptCommand] = []
@@ -733,11 +748,6 @@ class GameWorld:
 
         # Build item to prize mapping (used for random prize substitution)
         self._build_item_to_prize_mapping()
-
-        # Validate settings combinations before shuffling
-        # This catches invalid combinations early with clear error messages
-        validate_settings(self.settings)
-
         from ..logic.placement import PlacementException
 
         # Track failure counts to detect unsolvable settings
@@ -773,16 +783,10 @@ class GameWorld:
             except Exception as e:
                 # Re-raise unexpected exceptions
                 raise
-
-        # TODO Stat scaling for boss shuffle
-        # TODO: Henchmen vs no henchmen, hill/statue or not
-        # TODO: NPCs, dialogs for bosses and henchmen
-        # TODO: Do search-and-replace for all pronouns, names, etc related to main characters, positioned bosses, etc
         # TODO: slot machines
         # TODO: booster tower animations
         # TODO: copy sprites over and update menu pointers and set to 8-d in vram
         # TODO: look at 0x35xxxx report and free up data
-        # TODO: message tonic
         # TODO: apply npc changes for ally shuffle
 
         self._report_progress("Randomizing shops", 45)
@@ -870,15 +874,6 @@ class GameWorld:
         # Apply minigame settings
         apply_minigame_settings(self)
 
-        # TODO differentiate bosses. not a cosmetic, reveals info
-        # Need to find unused palettes for remake bosses
-        # move chocoalte cake to postgame bundt
-        # blue shirt booster (not purple-y)
-        # blue hat punchinello (not purple-y)
-        # invert johnny blue and red
-        # make culex purple lighter
-        # blue hair jinx
-        # silver belome
 
         # todo: replace all dialogs of Birdo or Magikoopa if canon names enabled
 
@@ -1018,6 +1013,16 @@ class GameWorld:
         for p in self.sprites.render():
             patch.add_data(p[0], p[1])
 
+        # World map
+        if self.overworld_character.ally.index == 1:
+            patch.add_data(0x3E90AA, TOADSTOOL_OVERWORLD)
+        elif self.overworld_character.ally.index == 2:
+            patch.add_data(0x3E90AA, BOWSER_OVERWORLD)
+        elif self.overworld_character.ally.index == 3:
+            patch.add_data(0x3E90AA, GENO_OVERWORLD)
+        elif self.overworld_character.ally.index == 4:
+            patch.add_data(0x3E90AA, MALLOW_OVERWORLD)
+
         # Dialogs, enemies, items, action scripts, packets, battle packs, rooms, shops, spells
         # Run all render() calls in parallel
         self._report_progress("Rendering (parallel)", 85)
@@ -1047,7 +1052,7 @@ class GameWorld:
             )
             patch.add_dict(futures["packets"].result())
             patch.add_dict(futures["battle_packs"].result())
-            patch.add_dict(futures["rooms"].result())
+            patch.add_dict(futures["rooms"].result()) 
             patch.add_dict(futures["shops"].result())
             patch.add_dict(futures["spells"].result())
             patch.add_dict(futures["allies"].result())
