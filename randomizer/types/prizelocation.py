@@ -1925,10 +1925,26 @@ class BossFightLocation(PrizeLocation):
         )
 
 
+class AllyNPCSub:
+    _room_id: int
+    _npc_id: AreaObject
+
+    @property
+    def room_id(self) -> int:
+        return self._room_id
+    @property
+    def npc_id(self) -> AreaObject:
+        return self._npc_id
+
+    def __init__(self, room_id: int, npc_id: AreaObject):
+        self._room_id = room_id
+        self._npc_id = npc_id
+
 class CharacterRecruitmentLocation(PrizeLocation):
     _show_dialog: bool
     _container_event: int
     _can_be_empty: bool = True
+    _npc_fills: list[AllyNPCSub]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -1944,6 +1960,25 @@ class CharacterRecruitmentLocation(PrizeLocation):
         e = world.event_scripts.get_script_by_id(self._container_event)
         e.set_contents(self.prize.recruit(world, self._show_dialog).contents)
         e.contents.append(Return())
+
+        if not isinstance(self, StartingCharacterLocation) and isinstance(self.prize, CharacterPrize):
+            for npc_sub in self._npc_fills:
+                room = world.rooms._rooms[npc_sub.room_id]
+                if room is None:
+                    raise ValueError(
+                        f"Room ID {npc_sub.room_id} not found in world while creating character recruitment script."
+                    )
+                obj = room.get_npc_by_target_id(npc_sub.npc_id)
+                if obj is None:
+                    raise ValueError(
+                        f"NPC ID {npc_sub.npc_id} not found in room {npc_sub.room_id} while creating character recruitment script."
+                    )
+                obj._npc = self.prize.character_model
+
+
+class StartingCharacterLocation(CharacterRecruitmentLocation):
+    pass
+        
 
 
 class StarPieceLocation(PrizeLocation):

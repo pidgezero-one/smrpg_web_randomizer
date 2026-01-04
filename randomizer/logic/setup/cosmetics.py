@@ -338,8 +338,9 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_NAME`", world.allies._allies[oc.index].name)
     nm = world.overworld_character.name_props
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_GENDER`", nm.gender)
-    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_GENDER_CASUAL_CAP`", nm.gender_casual)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_GENDER_CASUAL`", nm.gender_casual)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_HONORIFIC`", nm.honorific)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_HONORIFIC_CAP`", nm.honorific.capitalize())
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_TITLE`", nm.title)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_TITLE_SHORT`", nm.title_short)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_MOLE_GREETING`", nm.mole_greeting)

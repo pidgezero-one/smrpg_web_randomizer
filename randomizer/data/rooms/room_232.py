@@ -347,7 +347,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 10
-            npc=npcs.GENO_WALKING_DOWN_LEFT_NPC,
+            npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,

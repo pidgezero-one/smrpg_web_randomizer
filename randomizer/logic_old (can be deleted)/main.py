@@ -975,7 +975,7 @@ class GameWorld:
                             "`MAIN_CHARACTER_TITLE_SHORT`", c.item.title_short
                         )
                         self.search_replace_dialog(
-                            "`MAIN_CHARACTER_GENDER_CASUAL_CAP`",
+                            "`MAIN_CHARACTER_GENDER_CASUAL`",
                             c.item.gender_casual.capitalize())
                         self.search_replace_dialog(
                             "`MAIN_CHARACTER_MOLE_GREETING`", c.item.mole_greeting
@@ -1002,7 +1002,7 @@ class GameWorld:
                         self.search_replace_dialog("`MAIN_CHARACTER_TITLE`", "mister")
                         self.search_replace_dialog("`MAIN_CHARACTER_TITLE_SHORT`", "Mr")
                         self.search_replace_dialog(
-                            "`MAIN_CHARACTER_GENDER_CASUAL_CAP`", "Guy"
+                            "`MAIN_CHARACTER_GENDER_CASUAL`", "Guy"
                         )
                         self.search_replace_dialog(
                             "`MAIN_CHARACTER_MOLE_GREETING`", "mate"

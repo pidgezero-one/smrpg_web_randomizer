@@ -3,6 +3,7 @@ from __future__ import annotations
 from ..types.logic import Inventory
 from ..types.prize import Prize
 from ..types.prizelocation import (
+    AllyNPCSub,
     BossFightLocationHenchmanNPC,
     BossFightLocationNPC,
     BossSpriteSize,
@@ -515,6 +516,18 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _container_event = E1225_MUSHROOM_WAY_CHARACTER
     _show_dialog: bool = True
+
+    _npc_fills = [
+        AllyNPCSub(
+            R203_MUSHROOM_WAY_AREA_01, NPC_8
+        ),
+        AllyNPCSub(
+            R204_MUSHROOM_WAY_AREA_02, NPC_7
+        ),
+        AllyNPCSub(
+            R205_MUSHROOM_WAY_AREA_03, NPC_5
+        ),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return is_all_starting_chars_set(world, inventory)
@@ -2024,6 +2037,21 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
     _container_event = E1226_FOREST_MAZE_CHARACTER
     _show_dialog: bool = True
 
+    _npc_fills = [
+        AllyNPCSub(
+            R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09,
+            NPC_11,
+        ),
+        AllyNPCSub(
+            R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09,
+            NPC_12,
+        ),
+        AllyNPCSub(
+            R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
+            NPC_10,
+        ),
+    ]
+
     def set_prize(self, prize: Prize | None):
         assert isinstance(prize, CharacterPrize) or prize is None
         if isinstance(prize, CharacterPrize):
@@ -2787,6 +2815,13 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
     _container_event = E1227_MOLEVILLE_CHARACTER
     _show_dialog: bool = True
 
+    _npc_fills = [
+        AllyNPCSub(
+            R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM,
+            NPC_1,
+        ),
+    ]
+
     def set_prize(self, prize: Prize | None):
         assert isinstance(prize, CharacterPrize) or prize is None
         if isinstance(prize, CharacterPrize):
@@ -2798,6 +2833,21 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
         return can_clear_mines(world, inventory) and is_all_starting_chars_set(
             world, inventory
         )
+
+    _npc_fills = [
+        AllyNPCSub(
+            R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09,
+            NPC_11,
+        ),
+        AllyNPCSub(
+            R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09,
+            NPC_12,
+        ),
+        AllyNPCSub(
+            R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
+            NPC_10,
+        ),
+    ]
 
     # Flag as checked: MINES_BOSS_2_DEFEATED
 
@@ -4166,6 +4216,17 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E1228_MARRYMORE_CHARACTER
     _show_dialog: bool = True
+
+    _npc_fills = [
+        AllyNPCSub(
+            R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+            NPC_8,
+        ),
+        AllyNPCSub(
+            R054_BOOSTER_HILL_DUMMY,
+            NPC_8,
+        ),
+    ]
 
     def set_prize(self, prize: Prize | None):
         assert isinstance(prize, CharacterPrize) or prize is None

@@ -361,6 +361,11 @@ class CharacterPrize(Prize):
     _ally: Ally
     _starting_level: int = 1
     _name_props: CharacterName
+    _character_model: NPC
+
+    @property
+    def character_model(self) -> NPC:
+        return self._character_model
 
     @property
     def ally(self) -> Ally:

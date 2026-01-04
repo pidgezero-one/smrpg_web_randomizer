@@ -219,7 +219,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 8
-            npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC_2,
+            npc=npcs.TOAD_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E3506_BOOSTER_HILL_GET_FLOWER,
             action_script=A0160_SEQUENCE_LOOPING_ON,

@@ -301,7 +301,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularNPC(  # 8
-            npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC,
+            npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0663_INITIATE_MARRYMORE_BOSS_FIGHT_IF_ALL_GEAR_COLLECTED,
             action_script=A0015_DO_NOTHING,

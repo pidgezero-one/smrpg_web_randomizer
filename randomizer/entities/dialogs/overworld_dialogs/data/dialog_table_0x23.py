@@ -541,7 +541,7 @@ dialog_data[
 dialog_data[
     259
 ] = """[page]
- Ho ho!...`MAIN_CHARACTER_TITLE_SHORT`. Wise `MAIN_CHARACTER_GENDER_CASUAL_CAP` doesn't
+ Ho ho!...`MAIN_CHARACTER_TITLE_SHORT`. Wise `MAIN_CHARACTER_GENDER_CASUAL` doesn't
  think 10 Frog Coins is enough![await]
  You don't know what you're
  missing, but...OH, WELL...[await]"""

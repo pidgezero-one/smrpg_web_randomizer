@@ -744,7 +744,7 @@ class RecruitedCharacter(Item):
 
     @property
     def gender_casual(self) -> str:
-        """Replaces `MAIN_CHARACTER_GENDER_CASUAL_CAP` in dialogs,
+        """Replaces `MAIN_CHARACTER_GENDER_CASUAL` in dialogs,
         if this character is your starter."""
         return self._gender_casual
 

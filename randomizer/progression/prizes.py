@@ -2218,15 +2218,9 @@ class PsychBombSpellPrize(SpellPrize):
 class MarioRecruitmentPrize(CharacterPrize):
     _ally = MARIO_Ally
     _name_props = CharacterName(
-        "`MARIO_NAME`",
-        "man",
-        "guy",
-        "sir",
-        "mister",
-        "Mr",
-        "mate",
-        ", man"
+        "`MARIO_NAME`", "man", "guy", "sir", "mister", "Mr", "mate", ", man"
     )
+    _character_model = MARIO_WALKING_DOWN_LEFT_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(MARIO)]
@@ -2253,15 +2247,9 @@ class MarioRecruitmentPrize(CharacterPrize):
 class MallowRecruitmentPrize(CharacterPrize):
     _ally = MALLOW_Ally
     _name_props = CharacterName(
-        "`MALLOW_NAME`",
-        "boy",
-        "guy",
-        "sir",
-        "mister",
-        "Mr",
-        "kid",
-        ", kid"
+        "`MALLOW_NAME`", "boy", "guy", "sir", "mister", "Mr", "kid", ", kid"
     )
+    _character_model = MALLOW_WALKING_DOWN_LEFT_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(MALLOW)]
@@ -2304,15 +2292,9 @@ class MallowRecruitmentPrize(CharacterPrize):
 class GenoRecruitmentPrize(CharacterPrize):
     _ally = GENO_Ally
     _name_props = CharacterName(
-        "`GENO_NAME`",
-        "man",
-        "guy",
-        "sir",
-        "mister",
-        "Mr",
-        "mate",
-        ", man"
+        "`GENO_NAME`", "man", "guy", "sir", "mister", "Mr", "mate", ", man"
     )
+    _character_model = GENO_WALKING_DOWN_LEFT_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(GENO)]
@@ -2354,15 +2336,9 @@ class GenoRecruitmentPrize(CharacterPrize):
 class BowserRecruitmentPrize(CharacterPrize):
     _ally = BOWSER_Ally
     _name_props = CharacterName(
-        "`BOWSER_NAME`",
-        "man",
-        "guy",
-        "sir",
-        "mister",
-        "Mr",
-        "mate",
-        ", man"
+        "`BOWSER_NAME`", "man", "guy", "sir", "mister", "Mr", "mate", ", man"
     )
+    _character_model = BOWSER_WALKING_DOWN_LEFT_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(BOWSER)]
@@ -2388,15 +2364,9 @@ class BowserRecruitmentPrize(CharacterPrize):
 class ToadstoolRecruitmentPrize(CharacterPrize):
     _ally = TOADSTOOL_Ally
     _name_props = CharacterName(
-        "`PEACH_NAME`",
-        "woman",
-        "gal",
-        "ma'am",
-        "miss",
-        "Ms",
-        "lass",
-        ""
+        "`PEACH_NAME`", "woman", "gal", "ma'am", "miss", "Ms", "lass", ""
     )
+    _character_model = TOADSTOOL_WALKING_DOWN_LEFT_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(TOADSTOOL)]
@@ -3693,7 +3663,7 @@ class Belome2BossFight(BossFightPrize):
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """BELOME: It's dreadfully boring\n around here~![await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Belome...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BELOME: Ooh, how exciting~!\n [delay]The dojo master has challenged\n you![await]""",
-        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Are you the pizza delivery `MAIN_CHARACTER_GENDER_CASUAL_CAP`?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Are you the pizza delivery `MAIN_CHARACTER_GENDER_CASUAL`?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
@@ -5662,21 +5632,37 @@ class Culex3DBossFight(BossFightPrize):
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Culex.[await]""",
     }
 
+
 class SlotsPrize1(SlotsPrize):
     @property
     def chest_grant(self) -> EventScript:
-        return EventScript([JmpToEvent(E2490_BEAN_VALLEY_LEFTMOST_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE)])
+        return EventScript(
+            [JmpToEvent(E2490_BEAN_VALLEY_LEFTMOST_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE)]
+        )
+
 
 class SlotsPrize2(SlotsPrize):
     @property
     def chest_grant(self) -> EventScript:
-        return EventScript([JmpToEvent(E2491_BEAN_VALLEY_BOTTOM_LEFT_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE)])
-    
+        return EventScript(
+            [
+                JmpToEvent(
+                    E2491_BEAN_VALLEY_BOTTOM_LEFT_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE
+                )
+            ]
+        )
+
+
 class SlotsPrize3(SlotsPrize):
     @property
     def chest_grant(self) -> EventScript:
-        return EventScript([JmpToEvent(E2492_BEAN_VALLEY_BOTTOM_RIGHT_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE)])
-
+        return EventScript(
+            [
+                JmpToEvent(
+                    E2492_BEAN_VALLEY_BOTTOM_RIGHT_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE
+                )
+            ]
+        )
 
 
 # Collection of all BossFightPrize subclasses for the ShuffledBosses flag
