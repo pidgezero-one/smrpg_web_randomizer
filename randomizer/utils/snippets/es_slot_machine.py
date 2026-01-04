@@ -36,7 +36,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import Room
 
     
 
-def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld) -> list[UsableEventScriptCommand]
+def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld) -> list[UsableEventScriptCommand]:
     output: list[UsableEventScriptCommand] = [Return()]
 
     for room_id in location._rooms:

@@ -2,6 +2,23 @@ from .types import GenoPalette
 
 
 class GenoDefault(GenoPalette):
+    colours = [
+        "F8F8F8",
+        "F0D860",
+        "C08030",
+        "804818",
+        "402810",
+        "00C0F8",
+        "0090E0",
+        "0070D0",
+        "004878",
+        "F8C000",
+        "F85000",
+        "682018",
+        "B0A090",
+        "686070",
+        "181818"
+    ]
     classic_colours = [
         "804818",
         "0090E0",

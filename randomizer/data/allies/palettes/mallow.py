@@ -2,6 +2,23 @@ from .types import MallowPalette
 
 
 class MallowDefault(MallowPalette):
+    colours = [
+        "F8F8F8",
+        "F0F090",
+        "D8D878",
+        "A0A058",
+        "403828",
+        "F868D0",
+        "902848",
+        "582038",
+        "300810",
+        "28E8F8",
+        "1890B8",
+        "105060",
+        "A08888",
+        "686848",
+        "181818",
+    ]
     overworld_map_colours = [
         "F8F8F8",
         "F0F090",

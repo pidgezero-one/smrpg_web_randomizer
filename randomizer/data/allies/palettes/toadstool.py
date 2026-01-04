@@ -2,6 +2,23 @@ from .types import ToadstoolPalette
 
 
 class ToadstoolDefault(ToadstoolPalette):
+    colours = [
+        "F8F8F8",
+        "F8E8B0",
+        "E09870",
+        "985010",
+        "502818",
+        "F898F8",
+        "E848B0",
+        "B02080",
+        "700000",
+        "F8D038",
+        "F88820",
+        "3838D0",
+        "D0C8C8",
+        "786860",
+        "181818",
+    ]
     classic_colours = [
         "E050E0",
         "A82828",

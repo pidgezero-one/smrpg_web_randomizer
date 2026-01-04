@@ -3,6 +3,23 @@ from .types import BowserPalette
 
 # bowser palettes
 class BowserDefault(BowserPalette):
+    colours = [
+        "F8F0F0",
+        "F8F850",
+        "F0C830",
+        "B83810",
+        "503818",
+        "38A830",
+        "207820",
+        "184810",
+        "202818",
+        "C88020",
+        "884820",
+        "201008",
+        "909080",
+        "606040",
+        "181818"
+    ]
     overworld_map_colours = [
         "F8F8F8",
         "F8F850",

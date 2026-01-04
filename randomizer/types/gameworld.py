@@ -25,9 +25,6 @@ from smrpgpatchbuilder.datatypes.items.classes import (
     Equipment,
     RegularItem,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.party_character import (
-    PartyCharacter,
-)
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 from smrpgpatchbuilder.datatypes.monster_scripts.types import (
@@ -53,6 +50,7 @@ from smrpgpatchbuilder.datatypes.graphics.classes import SpriteCollection
 from smrpgpatchbuilder.datatypes.scripts_common.classes import IdentifierException
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     RunEventAsSubroutine,
+    PaletteSet,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
@@ -783,9 +781,9 @@ class GameWorld:
             except Exception as e:
                 # Re-raise unexpected exceptions
                 raise
-        # TODO: slot machines
+            
         # TODO: booster tower animations
-        # TODO: copy sprites over and update menu pointers and set to 8-d in vram
+        # TODO: update sprite pointers for new ally IDs
         # TODO: look at 0x35xxxx report and free up data
         # TODO: apply npc changes for ally shuffle
 
@@ -1115,7 +1113,7 @@ class GameWorld:
         # Palettes
         self._report_progress("Rendering palettes", 95)
 
-        if self.main_character == MARIO_Ally:
+        if self.overworld_character.ally.index == MARIO_Ally.index:
             for i, p in self.mario_palette.doll_patch().items():
                 patch.add_data(i, p)
             for i, p in self.mario_palette.minecart_patch().items():
@@ -1124,7 +1122,12 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.mario_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
-        if self.main_character == MALLOW_Ally:
+            for i, p in self.mario_palette.heated_sprite().items():
+                patch.add_data(i, p)
+            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+                self.mario_palette.hot_spring_reset_row
+            )
+        if self.overworld_character.ally.index == MALLOW_Ally.index:
             for i, p in self.mallow_palette.doll_patch().items():
                 patch.add_data(i, p)
             for i, p in self.mallow_palette.minecart_patch().items():
@@ -1133,7 +1136,12 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.mallow_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
-        if self.main_character == GENO_Ally:
+            for i, p in self.mallow_palette.heated_sprite().items():
+                patch.add_data(i, p)
+            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+                self.mallow_palette.hot_spring_reset_row
+            )
+        if self.overworld_character.ally.index == GENO_Ally.index:
             for i, p in self.geno_palette.doll_patch().items():
                 patch.add_data(i, p)
             for i, p in self.geno_palette.minecart_patch().items():
@@ -1142,7 +1150,12 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.geno_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
-        if self.main_character == BOWSER_Ally:
+            for i, p in self.geno_palette.heated_sprite().items():
+                patch.add_data(i, p)
+            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+                self.geno_palette.hot_spring_reset_row
+            )
+        if self.overworld_character.ally.index == BOWSER_Ally.index:
             for i, p in self.bowser_palette.doll_patch().items():
                 patch.add_data(i, p)
             for i, p in self.bowser_palette.minecart_patch().items():
@@ -1151,7 +1164,12 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.bowser_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
-        if self.main_character == TOADSTOOL_Ally:
+            for i, p in self.bowser_palette.heated_sprite().items():
+                patch.add_data(i, p)
+            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+                self.bowser_palette.hot_spring_reset_row
+            )
+        if self.overworld_character.ally.index == TOADSTOOL_Ally.index:
             for i, p in self.toadstool_palette.doll_patch().items():
                 patch.add_data(i, p)
             for i, p in self.toadstool_palette.minecart_patch().items():
@@ -1160,6 +1178,11 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.toadstool_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
+            for i, p in self.toadstool_palette.heated_sprite().items():
+                patch.add_data(i, p)
+            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+                self.toadstool_palette.hot_spring_reset_row
+            )
         patch.add_dict(self.mario_palette.standard_patch())
         patch.add_dict(self.mallow_palette.standard_patch())
         patch.add_dict(self.geno_palette.standard_patch())

@@ -1,4 +1,4 @@
-def color_to_bytes(color):
+def color_to_bytes(color) -> list[int]:
     color_int = int(color, 16)
     r = color_int >> 19
     g = (color_int >> 10) & 0x3E
@@ -9,7 +9,7 @@ def color_to_bytes(color):
     return [byte_1, byte_2]
 
 
-def palette_to_bytes(colors):
+def palette_to_bytes(colors) -> list[int]:
     ret = []
     for color in colors:
         ret += color_to_bytes(color)
@@ -19,6 +19,7 @@ def palette_to_bytes(colors):
 classic_palette_offset = 0x2567E6
 minecart_palette_offset = 0x256DFE
 map_palette_offset = 0x3E99C1
+hotspring_palette_offset = 0x37B0A4
 
 
 class Palette:
@@ -45,7 +46,7 @@ class Palette:
     rename_character = True
 
     @property
-    def clone_name(self, rename_character = None) -> str:
+    def clone_name(self, rename_character=None) -> str:
         rename = self.rename_character if rename_character is None else rename_character
         name = (self.name if rename else self.original_name).upper()
         if len(name) <= 7:
@@ -57,7 +58,7 @@ class Palette:
         return f"{name[0:10]}. 2"
 
     @property
-    def strong_clone_name(self, rename_character = None) -> str:
+    def strong_clone_name(self, rename_character=None) -> str:
         rename = self.rename_character if rename_character is None else rename_character
         name = (self.name if rename else self.original_name).upper()
         if len(name) <= 5:
@@ -103,6 +104,7 @@ class Palette:
 
 
 class MarioPalette(Palette):
+    hot_spring_reset_row = (0x37A9D8 - 0x37A000) // 30
     starting_addresses = [
         # overworld
         0x257998,
@@ -116,8 +118,8 @@ class MarioPalette(Palette):
         0x256AF2,
         # ?
         0x257AE2,
-        # ?
-        # 0x37A9D8,
+        # ending
+        0x37A9D8,
         # ?
         0x3EDFFD,
         # ?
@@ -136,7 +138,7 @@ class MarioPalette(Palette):
         0x257722,
     ]
     # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses: list[int] = [0x257A10, 0x257BF0]
+    underwater_addresses: list[int] = [0x257A10, 0x257BF0, 0x37B31A]
     name_address = 0x3A134D
     clone_name_address = 0x399A96
     # poison - 646
@@ -192,9 +194,20 @@ class MarioPalette(Palette):
             [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
             map_palette_offset,
         )
+    
+    def heated_sprite(self) -> dict[int, bytearray]:
+        if self.colours is None:
+            return {}
+        colours = [*self.colours]
+        colours[1] = "F85030"
+        b = palette_to_bytes(colours)
+        return {
+            hotspring_palette_offset: bytearray(b[0:4])
+        }
 
 
 class MallowPalette(Palette):
+    hot_spring_reset_row = (0x37A9F6 - 0x37A000) // 30
     starting_addresses = [
         # overworld
         0x2581AE,
@@ -207,12 +220,12 @@ class MallowPalette(Palette):
         # 0x2583CA,
         # scarecrow/mushroom
         # 0x256B4C
-        # ?
-        # 0x37A9F6
+        # ending
+        0x37A9F6
     ]
     poison_addresses = [0x2581EA, 0x258280]
     # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses = [0x258226, 0x2582BC]
+    underwater_addresses = [0x258226, 0x2582BC, 0x37B374]
     name_address = 0x3A1375
     clone_name_address = 0x399ACA
     # poison - 704
@@ -245,9 +258,21 @@ class MallowPalette(Palette):
         if self.colours is not None:
             return self.palette_override(self.colours, map_palette_offset)
         return {}
+    
+    def heated_sprite(self) -> dict[int, bytearray]:
+        if self.colours is None:
+            return {}
+        colours = [*self.colours]
+        colours[0] = "F85030"
+        colours[1] = "F85030"
+        b = palette_to_bytes(colours)
+        return {
+            hotspring_palette_offset: bytearray(b[0:4])
+        }
 
 
 class GenoPalette(Palette):
+    hot_spring_reset_row = (0x37AA14 - 0x37A000) // 30
     starting_addresses = [
         # overworld
         0x258046,
@@ -259,12 +284,12 @@ class GenoPalette(Palette):
         0x257A88,
         # scarecrow/mushroom
         # 0x256B6A,
-        # ?
-        # 0x37AA14
+        # ending
+        0x37AA14
     ]
     poison_addresses = [0x258082, 0x258136]
     # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses = [0x2580BE, 0x258172]
+    underwater_addresses = [0x2580BE, 0x258172, 0x37B392]
     name_address = 0x3A136B
     clone_name_address = 0x399ABD
     # poison - 693
@@ -314,9 +339,20 @@ class GenoPalette(Palette):
         if self.colours is not None:
             return self.palette_override(self.colours, map_palette_offset)
         return {}
+    
+    def heated_sprite(self) -> dict[int, bytearray]:
+        if self.colours is None:
+            return {}
+        colours = [*self.colours]
+        colours[1] = "F85030"
+        b = palette_to_bytes(colours)
+        return {
+            hotspring_palette_offset: bytearray(b[0:4])
+        }
 
 
 class BowserPalette(Palette):
+    hot_spring_reset_row = (0x37B068 - 0x37A000) // 30
     starting_addresses = [
         # overworld
         0x257DD0,
@@ -326,18 +362,18 @@ class BowserPalette(Palette):
         0x256B2E,
         # doll 1
         0x257AA6,
-        # scarecrow/mushroom
+        # scarecrow/mushroom0x37AA14
         # 0x256B2E,
         # ending credits
         # 0x2585AA,
-        # ?
-        # 0x37B068
+        # ending
+        0x37B068
     ]
     name_address = 0x3A1361
     clone_name_address = 0x399AB0
     poison_addresses = [0x257E0C, 0x257EA2]
     # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses = [0x257E48, 0x257EDE]
+    underwater_addresses = [0x257E48, 0x257EDE, 0x37B356]
     # poison - 671
     # underwater - 673
     name = "Bowser"
@@ -368,9 +404,18 @@ class BowserPalette(Palette):
         if self.colours is not None:
             return self.palette_override(self.colours, map_palette_offset)
         return {}
+    
+    def heated_sprite(self) -> dict[int, bytearray]:
+        if self.colours is None:
+            return {}
+        b = palette_to_bytes(self.colours) # no change bc main skin tone is past first 2 bytes. not sure how to change
+        return {
+            hotspring_palette_offset: bytearray(b[0:4])
+        }
 
 
 class ToadstoolPalette(Palette):
+    hot_spring_reset_row = (0x37B086 - 0x37A000) // 30
     starting_addresses = [
         # overworld
         0x257CA4,
@@ -382,14 +427,14 @@ class ToadstoolPalette(Palette):
         0x257AC4,
         # scarecrow/mushroom
         # 0x256B10,
-        # ?
-        # 0x37B086
+        # ending
+        0x37B086
     ]
     name_address = 0x3A1357
     clone_name_address = 0x399AA3
     poison_addresses = [0x257CE0, 0x257D76]
     # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses = [0x257D1C, 0x257DB2]
+    underwater_addresses = [0x257D1C, 0x257DB2, 0x37B338]
     # poison - 656
     # underwater - 658
     name = "Toadstool"
@@ -437,3 +482,13 @@ class ToadstoolPalette(Palette):
         if self.colours is not None:
             return self.palette_override(self.colours, map_palette_offset)
         return {}
+    
+    def heated_sprite(self) -> dict[int, bytearray]:
+        if self.colours is None:
+            return {}
+        colours = [*self.colours]
+        colours[1] = "F85030"
+        b = palette_to_bytes(colours)
+        return {
+            hotspring_palette_offset: bytearray(b[0:4])
+        }
