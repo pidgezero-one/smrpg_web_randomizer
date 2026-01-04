@@ -105,7 +105,7 @@ from ..logic.shufflers.characters import (
     randomize_levelup_xps,
     randomize_character_spell_stats,
 )
-from ..logic.apply import apply_shuffler_results
+from ..logic.apply import apply_shuffler_results_to_game_data
 
 from ..data.allies.palettes.types import (
     MarioPalette,
@@ -719,7 +719,7 @@ class GameWorld:
 
         self.event_2496_startup: list[UsableEventScriptCommand] = []
 
-        self._report_progress("Applying settings to game data", 3)
+        self._report_progress("Applying settings", 3)
 
         # prize locations HAVE to all be defined by this point
         # not shuffled, just determined if they exist in the seed or not
@@ -782,10 +782,10 @@ class GameWorld:
                 # Re-raise unexpected exceptions
                 raise
             
-        # TODO: booster tower animations
         # TODO: update sprite pointers for new ally IDs
         # TODO: look at 0x35xxxx report and free up data
         # TODO: apply npc changes for ally shuffle
+        # TODO: apply boss animations to overworld and minigames
 
         self._report_progress("Randomizing shops", 45)
 
@@ -908,7 +908,7 @@ class GameWorld:
             json.dump(self.spoiler, f, indent=2, default=str)
 
         post_shuffle_cleanup(self)
-        apply_shuffler_results(self)
+        apply_shuffler_results_to_game_data(self)
 
     def _randomize_enemy_attacks_and_spells(self) -> None:
         """Randomize enemy spell and attack stats and effects."""
@@ -989,7 +989,7 @@ class GameWorld:
         cast(SetAMEM16BitToConst, right_eye_revival_cmd).set_value(round(right_eye.hp * 1.2))
 
     def get_patch(self) -> Patch:
-        self._report_progress("Rendering game data", 75)
+        self._report_progress("Rewriting game data", 75)
         patch = Patch()
 
         # Battle animations patch
@@ -1023,7 +1023,6 @@ class GameWorld:
 
         # Dialogs, enemies, items, action scripts, packets, battle packs, rooms, shops, spells
         # Run all render() calls in parallel
-        self._report_progress("Rendering (parallel)", 85)
         with ThreadPoolExecutor() as executor:
             futures = {
                 "battle_dialogs": executor.submit(self.battle_dialogs.render),
