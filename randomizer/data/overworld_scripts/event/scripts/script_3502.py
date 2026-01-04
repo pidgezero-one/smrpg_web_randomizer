@@ -125,11 +125,11 @@ script = EventScript([
 	], identifier="EVENT_3502_action_queue_62"),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_WalkNorthPixels(4),
-		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=4, sprite_offset=3, is_sequence=True, looping=True, identifier="chapel_character_animation_17"),
 		A_WalkNorthPixels(4),
 		A_Pause(64),
 		A_VisibilityOff()
-	]),
+	], identifier="chapel_character_queue_10"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_ClearSolidityBits(cant_pass_walls=True),

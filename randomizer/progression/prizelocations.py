@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from randomizer.types.gameworld import GameWorld
+
 from ..types.logic import Inventory
 from ..types.prize import Prize
 from ..types.prizelocation import (
@@ -91,8 +93,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_26,
     NPC_27,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import ActionQueueAsync
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import A_SetSpriteSequence
 from collections.abc import Callable
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 if TYPE_CHECKING:
     from ..types.logic import Inventory
@@ -2062,6 +2066,31 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
         return can_clear_forest(world, inventory) and is_all_starting_chars_set(
             world, inventory
         )
+
+    def render(self, world: GameWorld):
+        if self.prize is None:
+            # Remove all character sprite animation if Toad substitute remains in place
+            deletions = [
+                "forest_character_animation_1",
+                "forest_character_animation_2",
+                "forest_character_animation_3",
+                "forest_character_animation_4",
+                "forest_character_animation_5",
+                "forest_character_animation_6",
+                "forest_character_animation_7",
+                "forest_character_animation_8",
+                "forest_character_animation_9",
+                "forest_character_animation_10",
+                "forest_character_animation_11",
+                "forest_character_animation_12",
+            ]
+            for d in deletions:
+                world.action_scripts.delete_command_by_identifier(d)
+            e = cast(ActionQueueAsync, world.event_scripts.get_command_by_identifier("forest_character_animation_14"))
+            ss = e.subscript
+            cast(A_SetSpriteSequence, ss.get_command_by_name("forest_character_animation_13")).set_index(6)
+            e.set_subscript(ss.contents)
+        super().render(world)
 
     # Flag as checked: FOREST_LIBERATED
 
@@ -4238,6 +4267,37 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
         return can_clear_chapel(world, inventory) and is_all_starting_chars_set(
             world, inventory
         )
+    
+    def render(self, world: GameWorld):
+        if self.prize is None:
+            # Remove all character sprite animation if Toad substitute remains in place
+            deletions: list[tuple[str, list[str]]] = [
+                ("chapel_character_queue_1", ["chapel_character_animation_1", "chapel_character_animation_2"]),
+                ("chapel_character_queue_2", ["chapel_character_animation_3"]),
+                ("chapel_character_queue_3", []),
+                ("chapel_character_queue_4", ["chapel_character_animation_4", "chapel_character_animation_5"]),
+                ("chapel_character_queue_5", ["chapel_character_animation_6"]),
+                ("chapel_character_queue_6", ["chapel_character_animation_7"]),
+                ("chapel_character_queue_7", ["chapel_character_animation_8", "chapel_character_animation_9"]),
+                ("chapel_character_queue_8", ["chapel_character_animation_10", "chapel_character_animation_11"]),
+                ("chapel_character_queue_9", ["chapel_character_animation_12"]),
+                ("EVENT_3499_action_queue_42", ["chapel_character_animation_13", "chapel_character_animation_14"]), 
+                ("EVENT_3499_action_queue_45", ["chapel_character_animation_15", "chapel_character_animation_16"]),
+                ("chapel_character_queue_10", ["chapel_character_animation_17"]),
+                ("chapel_character_queue_11", ["chapel_character_animation_18", "chapel_character_animation_19"]),
+                ("chapel_character_queue_12", ["chapel_character_animation_20", "chapel_character_animation_21"])
+            ]
+            for queue, actions in deletions:
+                if len(actions) == 0:
+                    world.event_scripts.delete_command_by_identifier(queue)
+                else:
+                    e = cast(ActionQueueAsync, world.event_scripts.get_command_by_identifier(queue))
+                    ss = e.subscript
+                    for a in actions:
+                        idx = ss.get_index_of_identifier(a)
+                        ss.delete_at_index(idx)
+                    e.set_subscript(ss.contents)
+        super().render(world)
 
     # Flag as checked: MARRYMORE_LIBERATED
 

@@ -66,7 +66,7 @@ script = EventScript([
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_VisibilityOn(),
 		A_TransferXYZFPixels(x=8, y=4, z=6, direction=EAST),
-		A_SetSpriteSequence(index=3, sprite_offset=2, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, identifier="chapel_character_animation_1"),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0]),
 		A_Pause(96),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[]),
@@ -76,8 +76,8 @@ script = EventScript([
 		A_FloatingOn(),
 		A_WalkSouthwestSteps(2),
 		A_WalkSouthwestPixels(12),
-		A_SetSpriteSequence(index=1, sprite_offset=2, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=1, sprite_offset=3, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_2")
+	], identifier="chapel_character_queue_1"),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_VisibilityOn(),
 		A_TransferXYZFPixels(x=8, y=4, z=0, direction=EAST),
@@ -170,26 +170,26 @@ script = EventScript([
 	RememberLastObject(),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_Pause(60),
-		A_SetSpriteSequence(index=0, sprite_offset=5, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=0, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_3")
+	], identifier="chapel_character_queue_2"),
 	Pause(20),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True)
-	]),
+	], identifier="chapel_character_queue_3"),
 	Pause(10),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_SetSequenceSpeed(FAST),
-		A_SetSpriteSequence(index=8, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=8, is_sequence=True, looping=True, identifier="chapel_character_animation_4"),
 		A_Pause(40),
 		A_ResetProperties(),
 		A_Pause(8),
-		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_5"),
 		A_FaceSouthwest()
-	]),
+	], identifier="chapel_character_queue_4"),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_SetSequenceSpeed(FAST),
-		A_SetSpriteSequence(index=13, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=13, is_sequence=True, looping=True, identifier="chapel_character_animation_6")
+	], identifier="chapel_character_queue_5"),
 	Pause(30),
 	UnfreezeCamera(),
 	ActionQueueSync(target=NPC_0, subscript=[
@@ -210,14 +210,14 @@ script = EventScript([
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_Pause(44),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=3, sprite_offset=2, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, identifier="chapel_character_animation_7"),
 		A_SetWalkingSpeed(FAST),
 		A_ShadowOn(),
 		A_AddZCoord1Step(),
 		A_Pause(20),
 		A_SetWalkingSpeed(VERY_FAST),
 		A_WalkNortheastSteps(1)
-	]),
+	], identifier="chapel_character_queue_6"),
 	RememberLastObject(),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_Pause(30),
@@ -251,11 +251,11 @@ script = EventScript([
 		A_Pause(14),
 		A_BPL262728(),
 		A_Pause(30),
-		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_9"),
 		A_Pause(60),
 		A_SetSequenceSpeed(FAST),
-		A_SetSpriteSequence(index=13, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=13, is_sequence=True, looping=True, identifier="chapel_character_animation_8")
+	], identifier="chapel_character_queue_7"),
 	RememberLastObject(),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_SetWalkingSpeed(NORMAL),
@@ -381,14 +381,14 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_Pause(50),
-		A_SetSpriteSequence(index=3, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_10"),
 		A_SetWalkingSpeed(SLOW),
 		A_FloatingOff(),
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_Walk1StepNorthwest(),
 		A_FaceNortheast(),
-		A_SetSpriteSequence(index=14, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+		A_SetSpriteSequence(index=14, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_11")
+	], identifier="chapel_character_queue_8"),
 	RememberLastObject(),
 	Pause(30),
 	ActionQueueAsync(target=NPC_2, subscript=[

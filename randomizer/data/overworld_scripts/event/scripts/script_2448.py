@@ -88,7 +88,7 @@ script = EventScript([
 		A_SequencePlaybackOff(),
 		A_FloatingOn(),
 		A_JumpToHeight(height=1, silent=True),
-		A_SetSpriteSequence(index=20, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=20, is_mold=True, is_sequence=True, looping=True, identifier="forest_character_animation_13"),
 		A_Pause(1, identifier="EVENT_2448_action_queue_35_SUBSCRIPT_pause_6"),
 		A_JmpIfObjectInAir(NPC_10, ["EVENT_2448_action_queue_35_SUBSCRIPT_pause_6"]),
 		A_PlaySound(sound=SO058_INSERT, channel=6),
@@ -96,16 +96,13 @@ script = EventScript([
 		A_SequencePlaybackOn(),
 		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
 		A_Pause(16),
-		A_SetSpriteSequence(index=17, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
-	ActionQueueSync(target=NPC_10, subscript=[
-		A_Pause(16),
-		A_SetSpriteSequence(index=17, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+		A_SetSpriteSequence(index=17, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="forest_character_animation_11")
+	], identifier="forest_character_animation_14"),
 	ActionQueueSync(target=NPC_11, subscript=[
 		A_SetSequenceSpeed(FASTER),
 		A_SequenceLoopingOn()
 	]),
+    Pause(90),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	JmpIfBitClear(GAME_OVER, ["EVENT_2448_set_bit_43"]),
 	ResetAndChooseGame(),

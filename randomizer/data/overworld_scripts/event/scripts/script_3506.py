@@ -107,12 +107,12 @@ script = EventScript([
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_SetWalkingSpeed(FAST),
 		A_WalkNorthPixels(4),
-		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=4, sprite_offset=3, is_sequence=True, looping=True, identifier="chapel_character_animation_18"),
 		A_WalkNorthPixels(4),
 		A_WalkWestPixels(8),
-		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=4, sprite_offset=3, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_19"),
 		A_WalkWestPixels(8)
-	]),
+	], identifier="chapel_character_queue_11"),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_FixedFCoordOff(),
 		A_Pause(4),
@@ -122,11 +122,11 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_WalkEastPixels(8),
-		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=4, sprite_offset=3, is_sequence=True, looping=True, identifier="chapel_character_animation_20"),
 		A_WalkEastPixels(8),
-		A_SetSpriteSequence(index=3, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_21"),
 		A_WalkSouthPixels(8)
-	]),
+	], identifier="chapel_character_queue_12"),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_Pause(4),
 		A_FaceSouthwest(),

@@ -56,10 +56,10 @@ script = EventScript([
 		A_SequenceLoopingOn(),
 		A_SetWalkingSpeed(FAST),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=3, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=3, sprite_offset=4, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_12"),
 		A_ShiftZUpPixels(9),
 		A_WalkSoutheastPixels(8)
-	]),
+	], identifier="chapel_character_queue_9"),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_WalkNorthwestSteps(11)
 	]),
@@ -114,10 +114,10 @@ script = EventScript([
 	Return(),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_WalkNorthPixels(4),
-		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=4, sprite_offset=3, is_sequence=True, looping=True, identifier="chapel_character_animation_13"),
 		A_WalkNorthPixels(4),
 		A_WalkWestPixels(8),
-		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=4, sprite_offset=3, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_14"),
 		A_WalkWestPixels(8),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0])
 	], identifier="EVENT_3499_action_queue_42"),
@@ -130,9 +130,9 @@ script = EventScript([
 	Return(),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_WalkEastPixels(8),
-		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True, identifier="chapel_character_animation_15"),
 		A_WalkEastPixels(8),
-		A_SetSpriteSequence(index=3, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=3, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_16"),
 		A_WalkSouthPixels(8),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0])
 	], identifier="EVENT_3499_action_queue_45"),
