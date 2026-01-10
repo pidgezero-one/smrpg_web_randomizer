@@ -42,10 +42,10 @@ script = EventScript([
 	FadeInFromBlack(sync=True),
 	ActionQueueAsync(target=NPC_5, subscript=[
 		A_VisibilityOn(),
-		A_SetSpriteSequence(index=5, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=5, is_sequence=True, looping=True, mirror_sprite=True, identifier="bway_distracted_1"),
 		A_Pause(135),
 		A_ResetProperties()
-	]),
+	], identifier="bway_aqueue_1"),
 	ActionQueueAsync(target=NPC_5, subscript=[
 		A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
 		A_JumpToHeight(96),

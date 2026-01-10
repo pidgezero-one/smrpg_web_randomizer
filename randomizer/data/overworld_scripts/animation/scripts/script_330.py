@@ -20,7 +20,7 @@ script = ActionScript([
 	A_SetSequenceSpeed(FAST),
 	A_WalkSoutheastSteps(3),
 	A_FaceSouthwest(),
-	A_SetSpriteSequence(index=3, is_sequence=True, looping=True),
+	A_SetSpriteSequence(index=3, is_sequence=True, looping=True, identifier="kitchen_chef_seq_1"),
 	A_Pause(20),
 	A_ResetProperties(),
 	A_WalkNorthwestSteps(3),

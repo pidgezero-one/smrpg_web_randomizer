@@ -17,7 +17,6 @@ from ....items import *
 
 script = ActionScript([
 	A_JmpIfBitSet(MINES_HENCHMAN_LEFT_DEFEATED, ["ACTION_617_visibility_off_3"]),
-	A_JmpIfBitSet(MINES_BOSS_1_DEFEATED, ["ACTION_617_visibility_off_3"]),
 	A_ReturnQueue(),
 	A_VisibilityOff(identifier="ACTION_617_visibility_off_3"),
 	A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),

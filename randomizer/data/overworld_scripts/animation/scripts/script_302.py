@@ -19,7 +19,7 @@ script = ActionScript([
 	A_Pause(10, identifier="ACTION_302_pause_0"),
 	A_SetSolidityBits(cant_walk_through=True),
 	A_SetSolidityBits(bit_4=True),
-	A_SetSpriteSequence(index=2, is_sequence=True, looping=False),
+	A_SetSpriteSequence(index=2, is_sequence=True, looping=False, identifier="microbomb_spark"),
 	A_PlaySound(sound=SO089_LIT_FUSE, channel=4),
 	A_Pause(16),
 	A_StopSound(),

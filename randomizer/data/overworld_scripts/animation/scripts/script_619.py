@@ -17,6 +17,5 @@ from ....items import *
 
 script = ActionScript([
 	A_JmpIfBitSet(MINES_HENCHMAN_MIDDLE_DEFEATED, ["ACTION_617_visibility_off_3"]),
-	A_JmpIfBitSet(MINES_BOSS_1_DEFEATED, ["ACTION_617_visibility_off_3"]),
 	A_ReturnQueue()
 ])

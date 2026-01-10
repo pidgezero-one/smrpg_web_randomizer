@@ -63,7 +63,7 @@ script = EventScript([
 		A_Walk1StepSouthwest(),
 		A_WalkSouthwestPixels(8),
 		A_SetSpriteSequence(index=5, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+	], identifier="bway_aqueue_5"),
 	Pause(60),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_ResetProperties(),

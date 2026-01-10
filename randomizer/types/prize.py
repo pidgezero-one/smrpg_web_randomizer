@@ -1,7 +1,7 @@
 from __future__ import annotations
 import random
 from tkinter import dialog
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, TypeVar
 from .physical_objects import BossNPC, ItemNPC, HenchmanNPC
 from ..data.physical_objects.items import DefaultItem
 
@@ -82,7 +82,6 @@ class TreasureHunterNickname:
             self._starts_with_vowel = nickname[0].lower() in ["a", "e", "i", "o", "u"]
 
 
-# TODO: packets/models
 class Prize:
     _important: bool = False
     _npc_grant: EventScript | None = None
@@ -145,6 +144,8 @@ class Prize:
     def set_important(self, important: bool) -> None:
         self._important = important
 
+
+TOriginallyHeld = TypeVar("TOriginallyHeld", bound=type[Prize] | None)
 
 class KeyPrize(Prize):
     pass
@@ -400,20 +401,20 @@ class SpellPrize(Prize):
 
 class BossFightHenchman:
     _monster: type[Enemy]
-    _model: NPC | None = None
+    _model: type[HenchmanNPC] | None = None
 
     @property
     def monster(self) -> type[Enemy]:
         return self._monster
 
     @property
-    def model(self) -> NPC | None:
+    def model(self) -> type[HenchmanNPC] | None:
         return self._model
 
     def __init__(
         self,
         monster: type[Enemy],
-        model: NPC | None = None,
+        model: type[HenchmanNPC] | None = None,
     ):
         self._monster = monster
         self._model = model
@@ -427,7 +428,7 @@ class BossFightPrize(Prize):
 
     _big_npc: type[BossNPC] | None = None
     _battle_npc: type[BossNPC] | None = None
-    _small_npc: type[BossNPC] | None = None
+    _small_npc: type[BossNPC] 
     _statue_npc: type[BossNPC] | None = None
 
     _character_henchmen: list[BossFightHenchman] | None = None
@@ -558,7 +559,7 @@ class BossFightPrize(Prize):
         return self._small_npc
 
     @property
-    def small_npc(self) -> type[BossNPC] | None:
+    def small_npc(self) -> type[BossNPC]:
         return self._small_npc
 
     @property
@@ -764,7 +765,7 @@ class CoinPrize(Prize):
         return EventScript(
             [
                 SetVarToConst(PRIMARY_TEMP_7000, self.amount),
-                JmpToEvent(E3080_COIN_CHEST_QUICK_HIT),  # TODO: this is wrong
+                JmpToEvent(E3080_COIN_CHEST_QUICK_HIT), 
             ]
         )
 

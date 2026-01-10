@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunDialog(dialog_id=DI2235_NO_ADVICE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI1055_SEWER_GATING_TEXT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return()
 ])

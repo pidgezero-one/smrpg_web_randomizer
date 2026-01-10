@@ -1,10 +1,8 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Generic, cast
 from uuid import uuid4
 from enum import StrEnum
 import random
-
-from randomizer.data.rooms.room_348 import NORTHWEST
 
 from .prize import (
     Prize,
@@ -22,6 +20,7 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
 )
 from ..utils.snippets.es_slot_machine import create_slot_machine_script
+from ..utils.npcs import set_npc_direction_if_swse_only
 from ..logic.shufflers.enemies import generate_formation_coordinates
 
 # Note: DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize imported lazily
@@ -48,6 +47,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     StartBattleWithPackAt700E,
     SetVarToConst,
     JmpToEvent,
+    ActionQueueAsync,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
@@ -56,6 +56,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
     A_WalkNorthPixels,
     A_WalkSouthPixels,
     A_ReturnQueue,
+    A_ShiftXYPixels,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
     AreaObject,
@@ -70,6 +71,8 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
     SOUTHEAST,
     SOUTHWEST,
+    NORTHEAST,
+    NORTHWEST,
 )
 from .base import CategorizationOption
 from .packet_type import PacketType
@@ -81,6 +84,7 @@ from ..data.variables.variable_names import (
     INVISIBLE_FLAG_3_FOUND,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import Packet
+from ..types.prize import TOriginallyHeld
 
 if TYPE_CHECKING:
     from ..types.logic import Inventory
@@ -1037,9 +1041,9 @@ class OverworldMapRegion(StrEnum):
     WORLD_7 = "World 7"
 
 
-class PrizeLocation:
+class PrizeLocation(Generic[TOriginallyHeld]):
     _prize: Prize | None
-    _originally_held: type[Prize] | None
+    _originally_held: TOriginallyHeld
     _can_accept: list[type[Prize]]
     _rooms: list[int]
     _id: ShuffleLocationSelector
@@ -1383,6 +1387,18 @@ class TreasureChestLocation(StandardPrizeLocation):
                         ),
                     ]
                 )
+        elif isinstance(self.prize, EXPStarPrize):
+            for r in self._rooms:
+                room = world.rooms._rooms[r]
+                if room is None:
+                    raise ValueError(
+                        f"Room ID {r} not found in world while creating EXP star prize script."
+                    )
+                p = room.partition
+                assert p is not None
+                # Increase packet buffer for rooms where EXP star sparkles are expected.
+                p.set_extra_sprite_buffer_size(p.extra_sprite_buffer_size + 1)
+                room.set_partition(p)
 
 
 class StandingLocation(StandardPrizeLocation):
@@ -1541,6 +1557,12 @@ class BossFightLocation(PrizeLocation):
     _tiny_henchman_slots: list[BossFightLocationHenchmanNPC] | None = None
     _statue_slots: list[BossFightLocationNPC] | None = None
 
+    _originally_held: type[BossFightPrize]
+
+    @property
+    def originally_held(self) -> type[BossFightPrize]:
+        return self._originally_held
+
     @property
     def statue_slots(self) -> list[BossFightLocationNPC] | None:
         return self._statue_slots
@@ -1570,6 +1592,7 @@ class BossFightLocation(PrizeLocation):
         return self._henchman_packs
 
     def post_unlocks(self, world: GameWorld) -> EventScript:
+        """Script commands that should run when this boss location is cleared. Depends on settings."""
         output: list[UsableEventScriptCommand] = []
         if self.prize is not None and isinstance(self.prize, BossFightPrize):
             output = self.prize.boss_hunt_unlocks(world).contents
@@ -1663,11 +1686,16 @@ class BossFightLocation(PrizeLocation):
 
         return super().can_accept(prize, inventory, world)
 
-    def _apply_henchmen(self, world: GameWorld) -> list[tuple[int, int]]:
+    def _apply_henchmen(self, world: GameWorld) -> tuple[
+        list[tuple[int, int]],
+        list[tuple[BossFightLocationHenchmanNPC, BossFightHenchman]],
+    ]:
         """Assign henchmen to slots and set their NPC models and battle packs.
 
-        Returns a list of (room_id, pack_id) tuples for henchmen that need
-        event script battle pack selectors (non-BattlePackNPC objects).
+        Returns a tuple containing:
+        - list of (room_id, pack_id) tuples for henchmen that need
+          event script battle pack selectors (non-BattlePackNPC objects).
+        - list of (slot, henchman) tuples for all assigned henchmen.
         """
         from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC
 
@@ -1803,7 +1831,7 @@ class BossFightLocation(PrizeLocation):
                 obj = room.get_npc_by_target_id(room_target)
                 assert obj is not None
                 assert henchman.model is not None
-                obj._npc = henchman.model
+                obj._npc = henchman.model().base
                 if slot.pack_id is not None:
                     if isinstance(obj, BattlePackNPC):
                         obj.set_battle_pack(slot.pack_id)
@@ -1811,7 +1839,25 @@ class BossFightLocation(PrizeLocation):
                         # Need event script for battle pack selection
                         event_script_battle_packs.append((room_id, slot.pack_id))
 
-        return event_script_battle_packs
+        return event_script_battle_packs, henchmen_assignments
+
+    def _on_henchmen_assigned(
+        self,
+        world: GameWorld,
+        henchmen_assignments: list[
+            tuple[BossFightLocationHenchmanNPC, BossFightHenchman]
+        ],
+    ) -> None:
+        """Hook method called after henchmen are assigned.
+
+        Subclasses can override this to perform additional logic based on which
+        henchmen were randomly chosen.
+
+        Args:
+            world: The game world instance.
+            henchmen_assignments: List of (slot, henchman) tuples for all assigned henchmen.
+        """
+        pass
 
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
@@ -1831,9 +1877,7 @@ class BossFightLocation(PrizeLocation):
                 f.set_run_event_at_load(self.prize.force_start_event)
 
         # Skip NPC replacements if the prize matches the original (no shuffle occurred)
-        prize_matches_original = self._originally_held is not None and isinstance(
-            self.prize, self._originally_held
-        )
+        prize_matches_original = isinstance(self.prize, self._originally_held)
 
         # Set NPC slots with boss models
         if self.npc_slots is not None and not prize_matches_original:
@@ -1862,15 +1906,72 @@ class BossFightLocation(PrizeLocation):
                 assert obj is not None
                 m = self.prize.statue_npc
                 assert m is not None
-                base = m().base
+                model = m()
+                base = model.base
                 obj._npc = base
-                if base.directions == VramStore.DIR2_SWSE:
-                    obj.direction = SOUTHWEST
+                set_npc_direction_if_swse_only(world, slot.room_id, slot.npc_id, base)
+                # Adjust statue sprite positioning
+                if (
+                    obj.direction in [SOUTHWEST, SOUTHEAST]
+                    and slot.sequence_setter_event_id is not None
+                ):
+                    ev = world.event_scripts.get_script_by_id(
+                        slot.sequence_setter_event_id
+                    )
+                    if (
+                        model.horizontal_pixel_shift != 0
+                        or model.vertical_pixel_shift != 0
+                    ):
+                        ev.set_contents(
+                            [
+                                ActionQueueAsync(
+                                    slot.npc_id,
+                                    [
+                                        A_ShiftXYPixels(
+                                            model.horizontal_pixel_shift,
+                                            model.vertical_pixel_shift,
+                                        )
+                                    ],
+                                ),
+                                *ev.contents,
+                            ]
+                        )
+                elif (
+                    obj.direction in [NORTHEAST, NORTHWEST]
+                    and slot.sequence_setter_event_id is not None
+                ):
+                    ev = world.event_scripts.get_script_by_id(
+                        slot.sequence_setter_event_id
+                    )
+                    if (
+                        model.horizontal_pixel_shift != 0
+                        or model.vertical_pixel_shift != 0
+                    ):
+                        ev.set_contents(
+                            [
+                                ActionQueueAsync(
+                                    slot.npc_id,
+                                    [
+                                        A_ShiftXYPixels(
+                                            (
+                                                model.horizontal_pixel_shift * -1
+                                                if obj.direction == NORTHEAST
+                                                else model.horizontal_pixel_shift
+                                            ),
+                                            model.vertical_pixel_shift,
+                                        )
+                                    ],
+                                ),
+                                *ev.contents,
+                            ]
+                        )
 
         # Assign and set henchmen
-        henchmen_event_packs = (
-            self._apply_henchmen(world) if not prize_matches_original else []
-        )
+        if not prize_matches_original:
+            henchmen_event_packs, henchmen_assignments = self._apply_henchmen(world)
+            self._on_henchmen_assigned(world, henchmen_assignments)
+        else:
+            henchmen_event_packs = []
 
         # any gating tied to the location or its contained boss needs to be written
         world.event_scripts.get_script_by_id(self._post_unlocks_event_id).set_contents(
@@ -1932,6 +2033,7 @@ class AllyNPCSub:
     @property
     def room_id(self) -> int:
         return self._room_id
+
     @property
     def npc_id(self) -> AreaObject:
         return self._npc_id
@@ -1939,6 +2041,7 @@ class AllyNPCSub:
     def __init__(self, room_id: int, npc_id: AreaObject):
         self._room_id = room_id
         self._npc_id = npc_id
+
 
 class CharacterRecruitmentLocation(PrizeLocation):
     _show_dialog: bool
@@ -1961,7 +2064,9 @@ class CharacterRecruitmentLocation(PrizeLocation):
         e.set_contents(self.prize.recruit(world, self._show_dialog).contents)
         e.contents.append(Return())
 
-        if not isinstance(self, StartingCharacterLocation) and isinstance(self.prize, CharacterPrize):
+        if not isinstance(self, StartingCharacterLocation) and isinstance(
+            self.prize, CharacterPrize
+        ):
             for npc_sub in self._npc_fills:
                 room = world.rooms._rooms[npc_sub.room_id]
                 if room is None:
@@ -1978,7 +2083,6 @@ class CharacterRecruitmentLocation(PrizeLocation):
 
 class StartingCharacterLocation(CharacterRecruitmentLocation):
     pass
-        
 
 
 class StarPieceLocation(PrizeLocation):

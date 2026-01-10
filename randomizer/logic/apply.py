@@ -5,7 +5,7 @@ from uuid import uuid4
 import random
 import statistics
 
-from randomizer.data.variables.dialog_names import DI1163_BOOSTER_TOWER_DOOR_OPEN, DI2908_TREASURE_SELLER_ITEM_2, DI2911_TREASURE_SELLER_ITEM_1, DI2914_TREASURE_SELLER_ITEM_3
+from randomizer.data.variables.dialog_names import DI1163_BOOSTER_TOWER_DOOR_OPEN, DI2320_TOADSTOOL_ROOM_HINT, DI2908_TREASURE_SELLER_ITEM_2, DI2911_TREASURE_SELLER_ITEM_1, DI2914_TREASURE_SELLER_ITEM_3
 from randomizer.data.variables.sprite_names import SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO
 from ..types.gameworld import GameWorld
 from ..types.prizelocation import (
@@ -286,9 +286,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             elif isinstance(
                 place, (StandingLocation, EventLocation, BoosterHillLocation)
             ):
-                # set NPCs for non-packets
-                # TODO: need to seriously revisit vram stuff here
-                # old code might have been mostly working?
                 npcs = []
                 if hasattr(place, "_npc_ids") and hasattr(place, "_rooms"):
                     npcs = zip(place._npc_ids, place._rooms)  # type: ignore
@@ -306,10 +303,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     else:
                         model = EMPTY_NPC
                     cast(BaseRoomObject, room_id.get_npc_by_target_id(npc))._npc = model
-            elif isinstance(place, BossFightLocation):
-                # TODO: boss shuffler happens here
-                # see if we can defer dialog setters until cosmetics section, or at least the parts that search/replace names (remake might affect stuff)
-                pass
 
             if isinstance(place, StarHillStarPiece):
                 # Show the star piece on Star Hill if it's set
@@ -439,6 +432,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
 
     # put the right character clone in the sunken ship mirror room
     # and also sub character sprites in overworld where appropriate
+    # some other edge case logic for character-specific stuff could go here too
     clone_room = world.rooms._rooms[R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
     assert clone_room is not None
     if world.overworld_character.ally.index == 1:
@@ -448,6 +442,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = TOADSTOOL_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = TOADSTOOL_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = TOADSTOOL_621
+        world.update_dialog(DI2320_TOADSTOOL_ROOM_HINT, " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
     elif world.overworld_character.ally.index == 2:
         clone_room.get_npc_by_target_id(NPC_0)._npc = BOWSER_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = BOWSER_96
@@ -757,12 +752,9 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
     boss_locations: list[BossFightLocation] = []
     for location in world.locations.values():
         if isinstance(location, BossFightLocation):
-            if location.prize is not None and isinstance(location.prize, BossFightPrize):
-                # Skip if prize matches originally held (no scaling needed)
-                if location._originally_held is not None:
-                    if isinstance(location.prize, location._originally_held):
-                        continue
-                boss_locations.append(location)
+            if isinstance(location.prize, location._originally_held):
+                continue
+            boss_locations.append(location)
 
     if not boss_locations:
         return

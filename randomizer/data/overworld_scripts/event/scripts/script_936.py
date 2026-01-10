@@ -35,7 +35,7 @@ script = EventScript([
 		A_SequencePlaybackOn(),
 		A_SetAllSpeeds(NORMAL),
 		A_Pause(3),
-		A_FaceSouthwest(),
+		A_FaceSouthwest(),#
 		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(15),
 		A_SequenceLoopingOn(),

@@ -131,6 +131,9 @@ class SpriteAnimationCollection:
     _chandelier_challenge: SpriteAnimation | None
     _factory_pierce: SpriteAnimation | None
     _endgame_challenge: SpriteAnimation | None
+    _look_at_ceiling_mold_id: int | None
+    _tpose_mold_id: int | None
+    _tower_toss: SpriteAnimation | None
 
     @property
     def recoil(self) -> SpriteAnimation | None:
@@ -362,6 +365,34 @@ class SpriteAnimationCollection:
     def animation_prop_names(self) -> list[str]:
         """Returns the property names of all animations as strings"""
         return [prop for prop in dir(self) if re.search("^_+", prop) is None]
+    
+    @property
+    def look_at_ceiling_mold_id(self) -> int | None:
+        """The mold ID to use when the NPC is looking at the ceiling."""
+        return self._look_at_ceiling_mold_id
+    def set_look_at_ceiling_mold_id(self, mold_id: int | None = None) -> None:
+        """Set the mold ID to use when the NPC is looking at the ceiling."""
+        self._look_at_ceiling_mold_id = mold_id
+
+    @property
+    def tpose_mold_id(self) -> int | None:
+        """The mold ID to use when the NPC is in a T-pose."""
+        return self._tpose_mold_id
+    def set_tpose_mold_id(self, mold_id: int | None = None) -> None:
+        """Set the mold ID to use when the NPC is in a T-pose."""
+        self._tpose_mold_id = mold_id
+
+    @property
+    def tower_toss(self) -> SpriteAnimation | None:
+        """Henchman animation.
+        The animation to use when tossing objects in the second tower henchman room.
+        """
+        return self._tower_toss
+    def set_tower_toss(self, tower_toss: SpriteAnimation | None = None) -> None:
+        """Henchman animation.
+        Set the animation to use when tossing objects in the second tower henchman room.
+        """
+        self._tower_toss = tower_toss
 
     def __init__(
         self,
@@ -369,6 +400,7 @@ class SpriteAnimationCollection:
         bandits_way_distracted: SpriteAnimation | None = None,
         mines_punch: SpriteAnimation | None = None,
         tower_bullet: SpriteAnimation | None = None,
+        tower_toss: SpriteAnimation | None = None,
         chapel_laugh: SpriteAnimation | None = None,
         kitchen_prep: SpriteAnimation | None = None,
         ship_beckon: SpriteAnimation | None = None,
@@ -382,6 +414,8 @@ class SpriteAnimationCollection:
         chandelier_challenge: SpriteAnimation | None = None,
         factory_pierce: SpriteAnimation | None = None,
         endgame_challenge: SpriteAnimation | None = None,
+        look_at_ceiling_mold_id: int | None = None,
+        tpose_mold_id: int | None = None,
     ):
         self.set_recoil(recoil)
         self.set_bandits_way_distracted(bandits_way_distracted)
@@ -400,6 +434,9 @@ class SpriteAnimationCollection:
         self.set_chandelier_challenge(chandelier_challenge)
         self.set_factory_pierce(factory_pierce)
         self.set_endgame_challenge(endgame_challenge)
+        self.set_look_at_ceiling_mold_id(look_at_ceiling_mold_id)
+        self.set_tpose_mold_id(tpose_mold_id)
+        self.set_tower_toss(tower_toss)
 
 
 class NPC:
@@ -524,14 +561,40 @@ class BossNPC(NPC):
 
     _animations: SpriteAnimationCollection = SpriteAnimationCollection()
 
+    # Statue pixel shift attributes (for statues to align properly when spawned)
+    _horizontal_pixel_shift: int = 0
+    _vertical_pixel_shift: int = 0
+    _north_facing_horizontal_pixel_shift: int = 0
+    _north_facing_vertical_pixel_shift: int = 0
+
     @property
     def animations(self) -> SpriteAnimationCollection:
         """The collection of specially flagged sprite animations for this NPC."""
         return self._animations
 
+    @property
+    def horizontal_pixel_shift(self) -> int:
+        """The horizontal pixel shift to apply to this statue when spawned."""
+        return self._horizontal_pixel_shift
+
+    @property
+    def vertical_pixel_shift(self) -> int:
+        """The vertical pixel shift to apply to this statue when spawned."""
+        return self._vertical_pixel_shift
+
+    @property
+    def north_facing_horizontal_pixel_shift(self) -> int:
+        """The horizontal pixel shift to apply to this statue when spawned facing north."""
+        return self._north_facing_horizontal_pixel_shift
+
+    @property
+    def north_facing_vertical_pixel_shift(self) -> int:
+        """The vertical pixel shift to apply to this statue when spawned facing north."""
+        return self._north_facing_vertical_pixel_shift
+
 
 class HenchmanNPC(NPC):
-    pass
+    _animations: SpriteAnimationCollection = SpriteAnimationCollection()
 
 
 class ItemNPC(NPC):

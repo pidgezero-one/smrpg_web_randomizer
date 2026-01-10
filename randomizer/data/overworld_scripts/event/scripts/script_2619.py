@@ -38,8 +38,8 @@ script = EventScript([
 	]),
 	RunEventAsSubroutine(E1191_ENDING_CREDITS_CLIFF_SHUFFLED_NPC_ANIMATION_LOADER),
 	ActionQueueAsync(target=NPC_0, subscript=[
-		A_SetSpriteSequence(index=11, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=11, is_sequence=True, looping=True, identifier="ending_credits_sunset_npc_0_sequence"),
+	], identifier="ending_credits_sunset_npc_0_sequence_setup"),
 	RemoveObjectFromCurrentLevel(MARIO),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(SLOW),

@@ -784,7 +784,6 @@ class GameWorld:
             
         # TODO: update sprite pointers for new ally IDs
         # TODO: look at 0x35xxxx report and free up data
-        # TODO: apply npc changes for ally shuffle
         # TODO: apply boss animations to overworld and minigames
 
         self._report_progress("Randomizing shops", 45)
@@ -871,9 +870,6 @@ class GameWorld:
 
         # Apply minigame settings
         apply_minigame_settings(self)
-
-
-        # todo: replace all dialogs of Birdo or Magikoopa if canon names enabled
 
         self._rebuild_hash()
         self._report_progress("Applying cosmetics", 70)

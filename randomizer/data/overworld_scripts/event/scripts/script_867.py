@@ -40,8 +40,8 @@ script = EventScript([
 		A_FixedFCoordOff(),
 		A_FaceSouthwest(),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=3, is_sequence=True, looping=False),
-		A_Pause(45)
-	]),
+		A_SetSpriteSequence(index=3, is_sequence=True, looping=False, identifier="dojo_boss_5_initiate"),
+		A_Pause(45, identifier="dojo_boss_5_pause")
+	], identifier="dojo_boss_5_initiate_aq"),
 	Return()
 ])

@@ -42,8 +42,8 @@ script = EventScript([
 		A_WalkNorthwestSteps(1),
 		A_FaceNorthwest(),
 		A_Pause(30),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_1")
+	], identifier="tower_henchman_curtain_aqueue_1"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	PlaySound(sound=SO090_CURTAIN, channel=4),
@@ -75,8 +75,8 @@ script = EventScript([
 		A_Pause(20),
 		A_FaceNorthwest(),
 		A_Pause(30),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_2")
+	], identifier="tower_henchman_curtain_aqueue_2"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	PlaySound(sound=SO090_CURTAIN, channel=4),
@@ -106,8 +106,8 @@ script = EventScript([
 		A_WalkSouthwestSteps(4),
 		A_FaceNorthwest(),
 		A_Pause(25),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_3")
+	], identifier="tower_henchman_curtain_aqueue_3"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	PlaySound(sound=SO090_CURTAIN, channel=4),
@@ -137,8 +137,8 @@ script = EventScript([
 		A_WalkSouthwestSteps(2),
 		A_FaceNorthwest(),
 		A_Pause(30),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_4")
+	], identifier="tower_henchman_curtain_aqueue_4"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	PlaySound(sound=SO090_CURTAIN, channel=4),
@@ -169,8 +169,8 @@ script = EventScript([
 		A_WalkNortheastSteps(6),
 		A_FaceNorthwest(),
 		A_Pause(20),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_5")
+	], identifier="tower_henchman_curtain_aqueue_5"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	PlaySound(sound=SO090_CURTAIN, channel=4),

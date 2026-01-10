@@ -183,10 +183,10 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_SetAllSpeeds(NORMAL),
 		A_Pause(30),
-		A_SetSpriteSequence(index=2, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=2, is_sequence=True, looping=True, mirror_sprite=True, identifier="tower_boss_laughing_seq_2"),
 		A_Pause(30),
 		A_ResetProperties()
-	]),
+	], identifier="tower_boss_laughing_aqueue_2"),
 	ActionQueueAsync(target=NPC_2, subscript=[
 		A_WalkNortheastPixels(6),
 		A_WalkSoutheastSteps(2),
@@ -196,8 +196,8 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_Pause(60),
 		A_SetSequenceSpeed(VERY_FAST),
-		A_SetSpriteSequence(index=13, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+		A_SetSpriteSequence(index=13, is_sequence=True, looping=True, mirror_sprite=True, identifier="tower_boss_crying_1")
+	], identifier="tower_boss_crying_aq_1"),
 	SetSyncActionScript(NPC_1, A0579_CURTAIN_GAME_HENCHMAN_SPIN),
 	SetSyncActionScript(NPC_2, A0580_CURTAIN_GAME_HENCHMAN_SPIN),
 	SetSyncActionScript(NPC_3, A0578_CURTAIN_GAME_HENCHMAN_SPIN),

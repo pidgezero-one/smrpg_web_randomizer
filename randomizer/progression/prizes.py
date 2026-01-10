@@ -1508,7 +1508,6 @@ class FrightBombPrize(ItemPrize):
 class BeetleBoxPrize(ItemPrize):
     item = BeetleBoxItem
     _model = BeetleObject
-    # TODO: Could not find dialog_replacements for BeetleBox
 
 
 class LuckyJewelPrize(ItemPrize):
@@ -2239,7 +2238,6 @@ class MarioRecruitmentPrize(CharacterPrize):
             _gf("BoosterTowerGate"), _gf("BoosterTowerGating").MARIO
         ):
             output.append(SetBit(TOWER_CHARACTER_RECRUITED))
-            # TODO: generate tower door animation
         output.append(Return())
         return EventScript(output)
 
@@ -2524,7 +2522,7 @@ class MackBossFight(BossFightPrize):
     _battle_npc = MackLargeObject
     _statue_npc = MackStatueObject
 
-    _mook_henchmen = [BossFightHenchman(monster=BODYGUARDEnemy, model=SHYSTER_NPC)]
+    _mook_henchmen = [BossFightHenchman(monster=BODYGUARDEnemy, model=ShysterHenchman)]
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MACK: Party's over. I'm going to\n sleep.[await]""",
@@ -2726,7 +2724,7 @@ class BowyerBossFight(BossFightPrize):
     _big_npc = BowyerOverworldObject
     _battle_npc = BowyerLargeObject
 
-    _mook_henchmen = [BossFightHenchman(monster=AEROEnemy, model=AERO_UPRIGHT_NPC)]
+    _mook_henchmen = [BossFightHenchman(monster=AEROEnemy, model=AeroHenchman)]
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOWYER: Disturb me you must not,\n nya!""",
@@ -2814,9 +2812,9 @@ class Croco2BossFight(BossFightPrize):
     _statue_npc = CrocoStatueObject
 
     _character_henchmen = [
-        BossFightHenchman(monster=CROOKEnemyHenchman, model=CROOK_NPC),
-        BossFightHenchman(monster=CROOKEnemyHenchman, model=CROOK_NPC),
-        BossFightHenchman(monster=CROOKEnemyHenchman, model=CROOK_NPC),
+        BossFightHenchman(monster=CROOKEnemyHenchman, model=CrookHenchman),
+        BossFightHenchman(monster=CROOKEnemyHenchman, model=CrookHenchman),
+        BossFightHenchman(monster=CROOKEnemyHenchman, model=CrookHenchman),
     ]
 
     _dialog_replacements = {
@@ -2894,10 +2892,10 @@ class PunchinelloBossFight(BossFightPrize):
     _statue_npc = PunchinelloStatueObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=BOBOMBEnemyHenchman, model=BOB_OMB_NPC),
+        BossFightHenchman(monster=BOBOMBEnemyHenchman, model=BobOmbHenchman),
     ]
     _tiny_henchmen = [
-        BossFightHenchman(monster=BOBOMBEnemyHenchman, model=MICROBOMB_NPC),
+        BossFightHenchman(monster=BOBOMBEnemyHenchman, model=MicrobombHenchman),
     ]
 
     _dialog_replacements = {
@@ -2991,12 +2989,12 @@ class BoosterBossFight(BossFightPrize):
     _statue_npc = BoosterStatueObject
 
     _character_henchmen = [
-        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SPOOKUM_NPC),
-        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SPOOKUM_NPC),
-        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SPOOKUM_NPC),
+        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SpookumHenchman),
+        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SpookumHenchman),
+        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SpookumHenchman),
     ]
     _mook_henchmen = [
-        BossFightHenchman(monster=APPRENTICEEnemyHenchman, model=SPOOKUM_NPC),
+        BossFightHenchman(monster=APPRENTICEEnemyHenchman, model=SpookumHenchman),
     ]
 
     _dialog_replacements = {
@@ -3118,7 +3116,7 @@ class BundtBossFight(BossFightPrize):
     _big_npc = BundtLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=TORTEEnemy, model=TORTE_NPC),
+        BossFightHenchman(monster=TORTEEnemy, model=TorteHenchman),
     ]
 
     _dialog_replacements = {
@@ -3197,10 +3195,10 @@ class KingCalamariBossFight(BossFightPrize):
     _statue_npc = BlooberStatueObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=BLOOBEREnemyHenchman, model=BLOOBER_NPC),
+        BossFightHenchman(monster=BLOOBEREnemyHenchman, model=BlooberHenchman),
     ]
     _tiny_henchmen = [
-        BossFightHenchman(monster=BLOOBEREnemyHenchman, model=TINY_BLOOBER),
+        BossFightHenchman(monster=BLOOBEREnemyHenchman, model=TinyBlooberHenchman),
     ]
 
     _dialog_replacements = {
@@ -3269,10 +3267,10 @@ class HidonBossFight(BossFightPrize):
     _big_npc = HidonLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=GOOMBETTEEnemy, model=GOOMBETTE_LOWER_NPC),
+        BossFightHenchman(monster=GOOMBETTEEnemy, model=GoombetteLowerHenchman),
     ]
     _tiny_henchmen = [
-        BossFightHenchman(monster=GOOMBETTEEnemy, model=GOOMBETTE_LOWER_NPC),
+        BossFightHenchman(monster=GOOMBETTEEnemy, model=GoombetteLowerHenchman),
     ]
 
     _dialog_replacements = {
@@ -3386,13 +3384,13 @@ class JohnnyBossFight(BossFightPrize):
     _big_npc = JohnnyLargeObject
 
     _character_henchmen = [
-        BossFightHenchman(monster=BANDANABLUEEnemy, model=BANDANA_BLUE_NPC),
-        BossFightHenchman(monster=BANDANABLUEEnemy, model=BANDANA_BLUE_NPC),
-        BossFightHenchman(monster=BANDANABLUEEnemy, model=BANDANA_BLUE_NPC),
-        BossFightHenchman(monster=BANDANABLUEEnemy, model=BANDANA_BLUE_NPC),
+        BossFightHenchman(monster=BANDANABLUEEnemy, model=BandanaBlueHenchman),
+        BossFightHenchman(monster=BANDANABLUEEnemy, model=BandanaBlueHenchman),
+        BossFightHenchman(monster=BANDANABLUEEnemy, model=BandanaBlueHenchman),
+        BossFightHenchman(monster=BANDANABLUEEnemy, model=BandanaBlueHenchman),
     ]
     _mook_henchmen = [
-        BossFightHenchman(monster=BANDANAREDEnemyHenchman, model=BANDANA_RED_NPC),
+        BossFightHenchman(monster=BANDANAREDEnemyHenchman, model=BandanaRedHenchman),
     ]
 
     _dialog_replacements = {
@@ -3466,7 +3464,7 @@ class YaridovichBossFight(BossFightPrize):
     _statue_npc = YaridovichStatueObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=DRILLBITEnemy, model=SEASIDE_TOWN_FAKE_GREEN_NPC),
+        BossFightHenchman(monster=DRILLBITEnemy, model=DrillbitHenchman),
     ]
 
     _dialog_replacements = {
@@ -3550,7 +3548,7 @@ class MokuraBossFight(BossFightPrize):
     _statue_npc = MokuraStatueObject
 
     _tiny_henchmen = [
-        BossFightHenchman(monster=MOKURAEnemy, model=MOKURA_S_CLOUD_BLUE_NPC_2),
+        BossFightHenchman(monster=MOKURAEnemy, model=MokuraHenchman),
     ]
 
     _dialog_replacements = {
@@ -3614,26 +3612,26 @@ class Belome2BossFight(BossFightPrize):
     _additional_enemies_to_scale = [MALLOWCLONEEnemy, GENOCLONEEnemy, BOWSERCLONEEnemy]
     _character_henchmen = [
         BossFightHenchman(
-            monster=MARIOCLONEEnemy, model=MARIO_CLONE_WALKING_DOWN_LEFT_NPC
+            monster=MARIOCLONEEnemy, model=MariocloneHenchman
         ),
-        BossFightHenchman(monster=MALLOWCLONEEnemy, model=MALLOW_WALKING_DOWN_LEFT_NPC),
-        BossFightHenchman(monster=GENOCLONEEnemy, model=GENO_WALKING_DOWN_LEFT_NPC),
+        BossFightHenchman(monster=MALLOWCLONEEnemy, model=MallowcloneHenchman),
+        BossFightHenchman(monster=GENOCLONEEnemy, model=GenocloneHenchman),
         BossFightHenchman(
-            monster=TOADSTOOL2Enemy, model=TOADSTOOL_WALKING_DOWN_LEFT_NPC_4
+            monster=TOADSTOOL2Enemy, model=PeachcloneHenchman
         ),
     ]
 
     _mook_henchmen = [
         BossFightHenchman(
-            monster=MARIOCLONEEnemy, model=MARIO_CLONE_WALKING_DOWN_LEFT_NPC
+            monster=MARIOCLONEEnemy, model=MariocloneHenchman
         ),
         BossFightHenchman(
-            monster=TOADSTOOL2Enemy, model=TOADSTOOL_WALKING_DOWN_LEFT_NPC_4
+            monster=TOADSTOOL2Enemy, model=PeachcloneHenchman
         ),
-        BossFightHenchman(monster=GENOCLONEEnemy, model=GENO_WALKING_DOWN_LEFT_NPC),
-        BossFightHenchman(monster=MALLOWCLONEEnemy, model=MALLOW_WALKING_DOWN_LEFT_NPC),
+        BossFightHenchman(monster=GENOCLONEEnemy, model=GenocloneHenchman),
+        BossFightHenchman(monster=MALLOWCLONEEnemy, model=MallowcloneHenchman),
         BossFightHenchman(
-            monster=BOWSERCLONEEnemy, model=BOWSER_WALKING_DOWN_LEFT_NPC_2
+            monster=BOWSERCLONEEnemy, model=BowsercloneHenchman_2
         ),
     ]
 
@@ -3906,16 +3904,16 @@ class CulexBossFight(BossFightPrize):
     _battle_npc = CulexLargeObject
 
     _character_henchmen = [
-        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FIRE_CRYSTAL_GRIDPLANE_NPC),
-        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WATER_CRYSTAL_GRIDPLANE_NPC),
-        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EARTH_CRYSTAL_GRIDPLANE_NPC),
-        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WIND_CRYSTAL_GRIDPLANE_NPC),
+        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FireCrystalHenchman),
+        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WaterCrystalHenchman),
+        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EarthCrystalHenchman),
+        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WindCrystalHenchman),
     ]
     _mook_henchmen = [
-        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FIRE_CRYSTAL_GRIDPLANE_NPC),
-        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WATER_CRYSTAL_GRIDPLANE_NPC),
-        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EARTH_CRYSTAL_GRIDPLANE_NPC),
-        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WIND_CRYSTAL_GRIDPLANE_NPC),
+        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FireCrystalHenchman),
+        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WaterCrystalHenchman),
+        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EarthCrystalHenchman),
+        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WindCrystalHenchman),
     ]
 
     _dialog_replacements = {
@@ -4051,7 +4049,7 @@ class MegasmilaxBossFight(BossFightPrize):
     _big_npc = MegasmilaxLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=PIRANHAPLANTEnemyHenchman, model=PIRANHA_PLANT_NPC),
+        BossFightHenchman(monster=PIRANHAPLANTEnemyHenchman, model=PiranhaPlantHenchman),
     ]
 
     _dialog_replacements = {
@@ -4134,7 +4132,7 @@ class DodoBossFight(BossFightPrize):
     _big_npc = DodoLargeObject
 
     _tiny_henchmen = [
-        BossFightHenchman(monster=DODOEnemy, model=FEATHER_NPC),
+        BossFightHenchman(monster=DODOEnemy, model=FeatherHenchman),
     ]
 
     _dialog_replacements = {
@@ -4199,11 +4197,11 @@ class BirdettaBossFight(BossFightPrize):
     _battle_npc = BirdettaLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=EGGBERTEnemy, model=EGGBERT_GRIDPLANE_NPC),
+        BossFightHenchman(monster=EGGBERTEnemy, model=EggbertHenchman),
     ]
 
     _tiny_henchmen = [
-        BossFightHenchman(monster=EGGBERTEnemy, model=EGGBERT_GRIDPLANE_NPC),
+        BossFightHenchman(monster=EGGBERTEnemy, model=EggbertHenchman),
     ]
 
     _dialog_replacements = {
@@ -4310,8 +4308,8 @@ class ValentinaBossFight(BossFightPrize):
     _battle_npc = ValentinaLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=BLUEBIRDEnemyHenchman, model=BLUEBIRD_NPC),
-        BossFightHenchman(monster=BIRDYEnemyHenchman, model=BIRDY_NPC),
+        BossFightHenchman(monster=BLUEBIRDEnemyHenchman, model=BluebirdHenchman),
+        BossFightHenchman(monster=BIRDYEnemyHenchman, model=BirdyHenchman),
     ]
 
     _dialog_replacements = {
@@ -4404,11 +4402,11 @@ class CzarDragonBossFight(BossFightPrize):
     _battle_npc = CzarDragonLargeObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=HELIOEnemy, model=HELIO_NPC),
-        BossFightHenchman(monster=PYROSPHEREEnemyHenchman, model=SPARKY_NPC),
+        BossFightHenchman(monster=HELIOEnemy, model=HelioHenchman),
+        BossFightHenchman(monster=PYROSPHEREEnemyHenchman, model=SparkyHenchman),
     ]
     _tiny_henchmen = [
-        BossFightHenchman(monster=HELIOEnemy, model=HELIO_NPC),
+        BossFightHenchman(monster=HELIOEnemy, model=HelioHenchman),
     ]
 
     _dialog_replacements = {
@@ -4488,10 +4486,10 @@ class AxemRangersBossFight(BossFightPrize):
     _seaside_letter_name_if_sunken_ship_boss = "ya boi red"
 
     _character_henchmen = [
-        BossFightHenchman(monster=AXEMBLACKEnemy, model=AXEM_BLACK_NPC),
-        BossFightHenchman(monster=AXEMPINKEnemy, model=AXEM_PINK_NPC),
-        BossFightHenchman(monster=AXEMYELLOWEnemy, model=AXEM_YELLOW_NPC),
-        BossFightHenchman(monster=AXEMGREENEnemy, model=AXEM_GREEN_NPC),
+        BossFightHenchman(monster=AXEMBLACKEnemy, model=AxemBlackHenchman),
+        BossFightHenchman(monster=AXEMPINKEnemy, model=AxemPinkHenchman),
+        BossFightHenchman(monster=AXEMYELLOWEnemy, model=AxemYellowHenchman),
+        BossFightHenchman(monster=AXEMGREENEnemy, model=AxemGreenHenchman),
     ]
 
     _small_npc = AxemRedObject
@@ -4643,12 +4641,12 @@ class KamekBossFight(BossFightPrize):
     _remake_name = "Wizakoopa"
 
     # _mook_henchmen = [
-    #     BossFightHenchman(monster=JINXCLONEEnemy, model=JINX_1),
-    #     BossFightHenchman(monster=KINGBOMBEnemy, model=BOB_OMB_NPC),
+    #     BossFightHenchman(monster=JINXCLONEEnemy, model=JinxCloneHenchman),
+    #     BossFightHenchman(monster=KINGBOMBEnemy, model=BobOmbHenchman),
     # ]
     _tiny_henchmen = [
-        BossFightHenchman(monster=JINXCLONEEnemy, model=JINX_1),
-        BossFightHenchman(monster=BOBOMBEnemyHenchman, model=MICROBOMB_NPC),
+        BossFightHenchman(monster=JINXCLONEEnemy, model=JinxCloneHenchman),
+        BossFightHenchman(monster=BOBOMBEnemyHenchman, model=MicrobombHenchman),
     ]
 
     _small_npc = MagikoopaSmallObject
@@ -4852,7 +4850,7 @@ class CountdownBossFight(BossFightPrize):
     _statue_npc = CountDownStatueObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=DINGALINGEnemy, model=DINGALING_GRIDPLANE_NPC),
+        BossFightHenchman(monster=DINGALINGEnemy, model=DingalingHenchman),
     ]
 
     _dialog_replacements = {
@@ -4988,7 +4986,7 @@ class ClerkBossFight(BossFightPrize):
     _battle_npc = ClerkBattleObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=MADMALLETEnemyHenchman, model=MAD_MALLET_NPC),
+        BossFightHenchman(monster=MADMALLETEnemyHenchman, model=MadMalletHenchman),
     ]
 
     _dialog_replacements = {
@@ -5061,7 +5059,7 @@ class ManagerBossFight(BossFightPrize):
     _battle_npc = ManagerBattleObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=POUNDEREnemyHenchman, model=POUNDER_NPC),
+        BossFightHenchman(monster=POUNDEREnemyHenchman, model=PounderHenchman),
     ]
 
     _dialog_replacements = {
@@ -5135,7 +5133,7 @@ class DirectorBossFight(BossFightPrize):
     _battle_npc = DirectorBattleObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=POUNDETTEEnemyHenchman, model=POUNDETTE_NPC),
+        BossFightHenchman(monster=POUNDETTEEnemyHenchman, model=PoundetteHenchman),
     ]
 
     _dialog_replacements = {

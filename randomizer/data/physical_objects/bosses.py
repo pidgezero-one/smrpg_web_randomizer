@@ -1,5 +1,84 @@
-from ...types.physical_objects import BossNPC
+from typing import Sequence
+from ...types.physical_objects import (
+    BossNPC,
+    SpriteAnimation,
+    SpriteAnimationCollection,
+)
 from ..rooms.npcs import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import (
+    FAST,
+)
+
+croco_bag_loop = SpriteAnimation(sequence_id=5, total_duration=104)
+croco_bag_hit = SpriteAnimation(sequence_id=4, contact_frame=152, total_duration=158)
+croco_bag_summon = SpriteAnimation(sequence_id=6, total_duration=136)
+croco_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
+mack_hit = SpriteAnimation(sequence_id=4, contact_frame=22, total_duration=28)
+mack_hit_fast = SpriteAnimation(
+    sequence_id=4, contact_frame=13, total_duration=16, speed=FAST
+)
+mack_challenge = SpriteAnimation(sequence_id=2, total_duration=12)
+
+# Booster animations
+booster_laugh = SpriteAnimation(sequence_id=2)
+booster_punch = SpriteAnimation(
+    sequence_id=3, contact_frame=74, total_duration=92, new_sprite_id=502
+)
+booster_jump = SpriteAnimation(sequence_id=4)
+booster_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
+
+# Johnny animations
+small_johnny_sit = SpriteAnimation(sequence_id=10)
+
+# Valentina animations
+valentina_stand = SpriteAnimation(sequence_id=10)
+valentina_laugh = SpriteAnimation(sequence_id=2)
+valentina_hit = SpriteAnimation(sequence_id=3, contact_frame=18, total_duration=28)
+valentina_taunt = SpriteAnimation(sequence_id=4, total_duration=58)
+valentina_recoil = SpriteAnimation(sequence_id=2, total_duration=34)
+
+# Magikoopa animations
+small_magikoopa_hit = SpriteAnimation(
+    sequence_id=10, contact_frame=44, total_duration=72
+)
+
+# Shovel Knight animations
+shovelknight_tile = SpriteAnimation(sequence_id=2)
+
+# Belome animations
+belome_attack = SpriteAnimation(sequence_id=3, contact_frame=36, total_duration=48)
+belome_attack_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=18, total_duration=24, speed=FAST
+)
+belome_wiggle = SpriteAnimation(sequence_id=4, total_duration=66)
+belome_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
+
+# Boomer animations
+boomer_alt_taunt = SpriteAnimation(sequence_id=1, total_duration=16)
+
+# Terrapin animations
+jagger_recoil = SpriteAnimation(sequence_id=2, total_duration=18)
+jagger_look = SpriteAnimation(sequence_id=8)
+jagger_punch = SpriteAnimation(sequence_id=4, contact_frame=54, total_duration=74)
+jagger_taunt = SpriteAnimation(sequence_id=3, contact_frame=18, total_duration=38)
+
+# Piranha Plant animations
+piranha_taunt = SpriteAnimation(sequence_id=4, total_duration=16)
+piranha_bite = SpriteAnimation(sequence_id=3, contact_frame=20, total_duration=52)
+piranha_recoil = SpriteAnimation(sequence_id=2, total_duration=20)
+piranha_chillin = SpriteAnimation(sequence_id=7, total_duration=16)
+
+# Bloober animations
+squid_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
+squid_hit = SpriteAnimation(sequence_id=3, contact_frame=36, total_duration=48)
+squid_hit_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=18, total_duration=24, speed=FAST
+)
+squid_default = SpriteAnimation(sequence_id=0, total_duration=36)
+
+# Jinx animations
+jinx_punch = SpriteAnimation(sequence_id=3, contact_frame=10, total_duration=18)
+jinx_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class HammerBroLargeObject(BossNPC):
@@ -24,24 +103,55 @@ class Croco1Object(BossNPC):
     """Croco 1 object in Mushroom Way Area 03."""
 
     _base = CROCO_1_NPC
+    _eye_height = 16
+    _tower_entrance_horizontal_shift = 9
+    _animations = SpriteAnimationCollection(
+        recoil=croco_recoil,
+        bandits_way_distracted=croco_bag_loop,
+        mines_punch=croco_bag_hit,
+        chapel_laugh=croco_bag_loop,
+        dojo_challenge=croco_bag_summon,
+        statue_flustered=croco_recoil,
+        keep_challenge=croco_bag_summon,
+        keep_summon=croco_bag_hit,
+        chandelier_challenge=croco_bag_summon,
+        endgame_challenge=croco_bag_summon,
+        tower_toss=croco_bag_hit
+    )
 
 
 class Croco2Object(BossNPC):
     """Croco 2 object in Mushroom Way Area 03."""
 
     _base = CROCO_2_NPC
+    _eye_height = 16
+    _animations = SpriteAnimationCollection(
+        recoil=croco_recoil,
+        bandits_way_distracted=croco_bag_loop,
+        mines_punch=croco_bag_hit,
+        chapel_laugh=croco_bag_loop,
+        dojo_challenge=croco_bag_summon,
+        statue_flustered=croco_recoil,
+        keep_challenge=croco_bag_summon,
+        keep_summon=croco_bag_hit,
+        chandelier_challenge=croco_bag_summon,
+        endgame_challenge=croco_bag_summon,
+        tower_toss=croco_bag_hit
+    )
 
 
 class CrocoStatueObject(BossNPC):
     """Croco statue object in Mushroom Way Area 03."""
 
     _base = CROCO_STATUE_NPC
+    _horizontal_pixel_shift = -3
 
 
 class MackSmallObject(BossNPC):
     """Small Mack object in Mushroom Way Area 03."""
 
     _base = MACK_SMALL_NPC
+    _eye_height = 19
 
 
 class MackMediumObject(BossNPC):
@@ -54,6 +164,13 @@ class MackBattleObject(BossNPC):
     """Battle Mack object in Mushroom Way Area 03."""
 
     _base = MACK_NPC
+    _animations = SpriteAnimationCollection(
+        mines_punch=mack_hit,
+        statue_peck=mack_hit_fast,
+        statue_flustered=mack_challenge,
+        chandelier_challenge=mack_challenge,
+        endgame_challenge=mack_hit,
+    )
 
 
 class MackStatueObject(BossNPC):
@@ -78,6 +195,8 @@ class MimicStatueObject(BossNPC):
     """Mimic statue object in Mushroom Way Area 03."""
 
     _base = MIMIC_STATUEL_NPC
+    _eye_height = 4
+    _crown_height = 1
 
 
 class Belome1SmallObject(BossNPC):
@@ -86,10 +205,21 @@ class Belome1SmallObject(BossNPC):
     _base = BELOME_SMALL_NPC
 
 
+belome_animations = SpriteAnimationCollection(
+    mines_punch=belome_attack,
+    statue_intro=belome_wiggle,
+    statue_flustered=belome_recoil,
+    statue_peck=belome_attack_fast,
+    chandelier_challenge=belome_attack,
+    endgame_challenge=belome_attack,
+)
+
+
 class Belome1LargeObject(BossNPC):
     """Large Belome 1 object in Mushroom Way Area 03."""
 
     _base = BELOME_ST_TIME_NPC
+    _animations = belome_animations
 
 
 class Belome2SmallObject(BossNPC):
@@ -102,6 +232,7 @@ class Belome2LargeObject(BossNPC):
     """Large Belome 2 object in Mushroom Way Area 03."""
 
     _base = GOLDEN_BELOME_NPC
+    _animations = belome_animations
 
 
 class Belome3SmallObject(BossNPC):
@@ -114,6 +245,7 @@ class Belome3LargeObject(BossNPC):
     """Large Belome 3 object in Mushroom Way Area 03."""
 
     _base = BELOME_3_NPC
+    _animations = belome_animations
 
 
 class BelomeSmallStatueObject(BossNPC):
@@ -126,6 +258,7 @@ class BowyerSmallObject(BossNPC):
     """Small Bowyer object in Mushroom Way Area 03."""
 
     _base = BOWYER_SMALL_NPC
+    _eye_height = 16
 
 
 class BowyerStatueObject(BossNPC):
@@ -164,6 +297,7 @@ class DodoSmallObject(BossNPC):
     """Small Dodo object."""
 
     _base = DODO_SMALL_NPC
+    _eye_height = 16
 
 
 class DodoLargeObject(BossNPC):
@@ -177,6 +311,7 @@ class BirdettaSmallObject(BossNPC):
     """Small Birdetta object."""
 
     _base = BIRDETTA_SMALL_NPC
+    _eye_height = 6
 
 
 class BirdettaLargeObject(BossNPC):
@@ -190,6 +325,7 @@ class CzarDragonSmallObject(BossNPC):
     """Small Czar Dragon object."""
 
     _base = CZAR_DRAGON_SMALL_NPC
+    _eye_height = 3
 
 
 class CzarDragonMediumObject(BossNPC):
@@ -229,6 +365,7 @@ class DominoSmallObject(BossNPC):
     """Small Domino object."""
 
     _base = DOMINO_SMALL_NPC
+    _eye_height = 12
 
 
 # Cloaker
@@ -269,6 +406,7 @@ class BundtSmallObject(BossNPC):
     """Small Bundt object."""
 
     _base = BUNDT_OBJECT_NPC
+    _eye_height = 8
 
 
 class BundtLargeObject(BossNPC):
@@ -288,6 +426,18 @@ class JohnnySmallObject(BossNPC):
     """Small Johnny object."""
 
     _base = JONATHAN_JONES_NPC
+    _eye_height = 20
+    _animations = SpriteAnimationCollection(
+        bandits_way_distracted=small_johnny_sit,
+        chapel_laugh=small_johnny_sit,
+        ship_beckon=small_johnny_sit,
+        ship_chair=small_johnny_sit,
+        statue_intro=small_johnny_sit,
+        dojo_challenge=small_johnny_sit,
+        keep_challenge=small_johnny_sit,
+        chandelier_challenge=small_johnny_sit,
+        endgame_challenge=small_johnny_sit,
+    )
 
 
 class JohnnyLargeObject(BossNPC):
@@ -307,6 +457,20 @@ class ValentinaSmallObject(BossNPC):
     """Small Valentina object."""
 
     _base = VALENTINA_NPC_2
+    _eye_height = 16
+    _animations = SpriteAnimationCollection(
+        bandits_way_distracted=valentina_stand,
+        chapel_laugh=valentina_laugh,
+        ship_beckon=valentina_laugh,
+        ship_chair=valentina_stand,
+        dojo_challenge=valentina_laugh,
+        statue_intro=valentina_laugh,
+        keep_challenge=valentina_laugh,
+        keep_summon=valentina_laugh,
+        chandelier_challenge=valentina_laugh,
+        endgame_challenge=valentina_laugh,
+        look_at_ceiling_mold_id=8,
+    )
 
 
 class ValentinaLargeObject(BossNPC):
@@ -333,6 +497,7 @@ class GrateGuySmallObject(BossNPC):
     """Small Grate Guy object."""
 
     _base = GRATE_GUY_FROM_CASINO_NPC
+    _eye_height = 16
 
 
 class GrateGuyLargeObject(BossNPC):
@@ -352,6 +517,8 @@ class MokuraSmallObject(BossNPC):
     """Small Mokura object."""
 
     _base = MOKURA_S_CLOUD_BLUE_NPC_2
+    _eye_height = 4
+    _crown_height = 1
 
 
 # Yaridovich
@@ -368,24 +535,73 @@ class MagikoopaSmallObject(BossNPC):
     """Small Magikoopa object."""
 
     _base = MAGIKOOPA_NPC
+    _animations = SpriteAnimationCollection(
+        mines_punch=small_magikoopa_hit,
+        ship_beckon=small_magikoopa_hit,
+        dojo_challenge=small_magikoopa_hit,
+        keep_challenge=small_magikoopa_hit,
+        keep_summon=small_magikoopa_hit,
+        chandelier_challenge=small_magikoopa_hit,
+        endgame_challenge=small_magikoopa_hit,
+        tower_toss=small_magikoopa_hit
+    )
 
 
 class ClerkSmallObject(BossNPC):
     """Small Clerk object."""
 
     _base = FACTORY_CLERK_GREEN_NPC
+    _eye_height = 10
+    _animations = SpriteAnimationCollection(
+        bandits_way_distracted=shovelknight_tile,
+        chapel_laugh=shovelknight_tile,
+        ship_chair=shovelknight_tile,
+        dojo_challenge=shovelknight_tile,
+        keep_challenge=shovelknight_tile,
+        keep_summon=shovelknight_tile,
+        chandelier_challenge=shovelknight_tile,
+        endgame_challenge=shovelknight_tile,
+        look_at_ceiling_mold_id=1,
+        tower_toss=shovelknight_tile
+    )
 
 
 class ManagerSmallObject(BossNPC):
     """Small Manager object."""
 
     _base = FACTORY_MANAGER_BLUE_NPC
+    _eye_height = 10
+    _animations = SpriteAnimationCollection(
+        bandits_way_distracted=shovelknight_tile,
+        chapel_laugh=shovelknight_tile,
+        ship_chair=shovelknight_tile,
+        dojo_challenge=shovelknight_tile,
+        keep_challenge=shovelknight_tile,
+        keep_summon=shovelknight_tile,
+        chandelier_challenge=shovelknight_tile,
+        endgame_challenge=shovelknight_tile,
+        look_at_ceiling_mold_id=1,
+        tower_toss=shovelknight_tile
+    )
 
 
 class DirectorSmallObject(BossNPC):
     """Small Director object."""
 
     _base = FACTORY_DIRECTOR_RED_NPC
+    _eye_height = 10
+    _animations = SpriteAnimationCollection(
+        bandits_way_distracted=shovelknight_tile,
+        chapel_laugh=shovelknight_tile,
+        ship_chair=shovelknight_tile,
+        dojo_challenge=shovelknight_tile,
+        keep_challenge=shovelknight_tile,
+        keep_summon=shovelknight_tile,
+        chandelier_challenge=shovelknight_tile,
+        endgame_challenge=shovelknight_tile,
+        look_at_ceiling_mold_id=1,
+        tower_toss=shovelknight_tile
+    )
 
 
 class HidonSmallObject(BossNPC):
@@ -500,6 +716,23 @@ class BoosterObject(BossNPC):
     """Booster object."""
 
     _base = BOOSTER_NPC
+    _animations = SpriteAnimationCollection(
+        recoil=booster_recoil,
+        bandits_way_distracted=booster_laugh,
+        mines_punch=booster_punch,
+        chapel_laugh=booster_laugh,
+        ship_beckon=booster_laugh,
+        ship_chair=booster_laugh,
+        dojo_challenge=booster_jump,
+        statue_intro=booster_laugh,
+        statue_flustered=booster_jump,
+        keep_challenge=booster_jump,
+        keep_summon=booster_laugh,
+        chandelier_challenge=booster_punch,
+        endgame_challenge=booster_punch,
+        tpose_mold_id=12,
+        tower_toss=booster_laugh
+    )
 
 
 class BoosterStatueObject(BossNPC):
@@ -518,6 +751,9 @@ class MagikoopaStatueObject(BossNPC):
     """Magikoopa statue object."""
 
     _base = MAGIKOOPA_STATUE_NPC
+    _horizontal_pixel_shift = 2
+    _north_facing_horizontal_pixel_shift = -4
+    _north_facing_vertical_pixel_shift = -1
 
 
 class ValentinaStatueObject(BossNPC):
@@ -530,6 +766,8 @@ class ShovelKnightStatueObject(BossNPC):
     """Shovel Knight statue object (Clerk/Manager/Director)."""
 
     _base = SHOVEL_KNIGHT_STATUE_NPC
+    _horizontal_pixel_shift = -3
+    _north_facing_horizontal_pixel_shift = -5
 
 
 class YaridovichStatueObject(BossNPC):
@@ -542,6 +780,8 @@ class GrateGuyStatueObject(BossNPC):
     """Grate Guy statue object."""
 
     _base = GRATE_GUY_STATUE_NPC
+    _horizontal_pixel_shift = -3
+    _north_facing_horizontal_pixel_shift = -2
 
 
 class JinxStatueObject(BossNPC):
@@ -560,6 +800,22 @@ class TerrapinObject(BossNPC):
     """Terrapin object."""
 
     _base = TERRAPIN_NPC
+    _animations = SpriteAnimationCollection(
+        bandits_way_distracted=jagger_look,
+        mines_punch=jagger_punch,
+        chapel_laugh=jagger_look,
+        ship_beckon=jagger_taunt,
+        dojo_challenge=jagger_punch,
+        statue_intro=jagger_look,
+        statue_peck=jagger_taunt,
+        statue_flustered=jagger_recoil,
+        keep_challenge=jagger_punch,
+        keep_summon=jagger_punch,
+        chandelier_challenge=jagger_punch,
+        endgame_challenge=jagger_punch,
+        look_at_ceiling_mold_id=6,
+        tower_toss=jagger_punch
+    )
 
 
 class TerrapinStatueObject(BossNPC):
@@ -572,6 +828,24 @@ class PiranhaPlantObject(BossNPC):
     """Piranha Plant object."""
 
     _base = PIRANHA_PLANT_NPC_3
+    _eye_height = 14
+    _animations = SpriteAnimationCollection(
+        recoil=piranha_recoil,
+        bandits_way_distracted=piranha_taunt,
+        mines_punch=piranha_bite,
+        chapel_laugh=piranha_chillin,
+        ship_beckon=piranha_taunt,
+        dojo_challenge=piranha_bite,
+        statue_intro=piranha_bite,
+        statue_peck=piranha_bite,
+        statue_flustered=piranha_recoil,
+        keep_challenge=piranha_bite,
+        keep_summon=piranha_bite,
+        chandelier_challenge=piranha_bite,
+        endgame_challenge=piranha_bite,
+        tpose_mold_id=3,
+        tower_toss=piranha_bite
+    )
 
 
 class PiranhaPlantStatueObject(BossNPC):
@@ -590,6 +864,23 @@ class BlooberObject(BossNPC):
     """Bloober object."""
 
     _base = BLOOBER_NPC
+    _eye_height = 10
+    _animations = SpriteAnimationCollection(
+        tower_bullet=squid_hit,
+        recoil=squid_recoil,
+        mines_punch=squid_hit,
+        dojo_challenge=squid_hit,
+        statue_peck=squid_hit_fast,
+        statue_flustered=squid_recoil,
+        keep_challenge=squid_hit,
+        keep_summon=squid_hit,
+        chandelier_challenge=squid_hit,
+        endgame_challenge=squid_hit,
+        chapel_laugh=squid_default, 
+        look_at_ceiling_mold_id=1,
+        tpose_mold_id=2,
+        tower_toss=squid_hit
+    )
 
 
 class BlooberStatueObject(BossNPC):
@@ -602,42 +893,71 @@ class FactoryChiefStatueObject(BossNPC):
     """Factory Chief statue object."""
 
     _base = FACTORY_CHIEF_STATUE_NPC
+    _horizontal_pixel_shift = -1
 
+
+chief_stab = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=38)
+chief_stab_fast = SpriteAnimation(sequence_id=3, contact_frame=13, total_duration=19, speed=FAST)
+chief_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
+chief_cast = SpriteAnimation(sequence_id=4, total_duration=52, contact_frame=32)
 
 class FactoryChiefObject(BossNPC):
     """Factory Chief object."""
 
     _base = FACTORY_CHIEF_NPC
+    _animations = SpriteAnimationCollection(
+        recoil=chief_recoil,
+        bandits_way_distracted=chief_cast,
+        mines_punch=chief_stab,
+        chapel_laugh=chief_cast,
+        ship_beckon=chief_cast,
+        dojo_challenge=chief_stab,
+        statue_intro=chief_cast,
+        statue_peck=chief_stab_fast,
+        statue_flustered=chief_recoil,
+        keep_challenge=chief_stab,
+        keep_summon=chief_cast,
+        chandelier_challenge=chief_stab,
+        endgame_challenge=chief_stab,
+        look_at_ceiling_mold_id=17,
+        tower_toss=chief_cast
+    )
 
 
 class AxemRedObject(BossNPC):
     """Axem Red object."""
 
     _base = AXEM_RED_NPC_2
+    _eye_height = 15
 
 
 class AxemRedStatueObject(BossNPC):
     """Axem Red statue object."""
 
     _base = AXEM_RED_STATUE_NPC
+    _horizontal_pixel_shift = -6
 
 
 class BundtStatueObject(BossNPC):
     """Bundt statue object."""
 
     _base = BUNDT_STATUE_NPC
+    _horizontal_pixel_shift = -3
 
 
 class CountDownGridplaneObject(BossNPC):
     """Count Down gridplane object."""
 
     _base = COUNT_DOWN_GRIDPLANE_NPC
+    _eye_height = 6
 
 
 class CountDownStatueObject(BossNPC):
     """Count Down statue object."""
 
     _base = COUNT_DOWN_STATUE_NPC
+    _horizontal_pixel_shift = 4
+    _vertical_pixel_shift = -1
 
 
 class PunchinelloStatueObject(BossNPC):
@@ -719,12 +1039,16 @@ class BoomerOverworldObject(BossNPC):
     """Boomer overworld object."""
 
     _base = BOOMER_RED_NPC
+    _animations = SpriteAnimationCollection(
+        chandelier_challenge=boomer_alt_taunt, endgame_challenge=boomer_alt_taunt
+    )
 
 
 class YaridovichSmallObject(BossNPC):
     """Small Yaridovich object."""
 
     _base = SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC
+    _eye_height = 10
 
 
 class YaridOverworldObject(BossNPC):
@@ -764,28 +1088,55 @@ class Johnny2SmallObject(BossNPC):
     _base = JOHNNY_2_SMALL_NPC
 
 
+jinx_animations = SpriteAnimationCollection(
+    recoil=jinx_recoil,
+    mines_punch=jinx_punch,
+    ship_beckon=jinx_punch,
+    dojo_challenge=jinx_punch,
+    statue_intro=jinx_punch,
+    statue_peck=jinx_punch,
+    keep_challenge=jinx_punch,
+    keep_summon=jinx_punch,
+    chandelier_challenge=jinx_punch,
+    endgame_challenge=jinx_punch,
+    tower_toss=jinx_punch
+)
+
+
 class Jinx1SmallObject(BossNPC):
     """Small Jinx 1 object."""
 
     _base = JINX_1
+    _eye_height = 4
+    _crown_height = 1
+    _animations = jinx_animations
 
 
 class Jinx2SmallObject(BossNPC):
     """Small Jinx 2 object."""
 
     _base = JINX_2
+    _eye_height = 4
+    _crown_height = 1
+    _animations = jinx_animations
 
 
 class Jinx3SmallObject(BossNPC):
     """Small Jinx 3 object."""
 
     _base = JINX_3
+    _eye_height = 4
+    _crown_height = 1
+    _animations = jinx_animations
 
 
 class Jinx4SmallObject(BossNPC):
     """Small Jinx 4 object."""
 
     _base = JINX_4
+    _eye_height = 4
+    _crown_height = 1
+    _animations = jinx_animations
 
 
 class Culex3DSmallObject(BossNPC):

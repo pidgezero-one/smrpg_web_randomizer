@@ -1,37 +1,64 @@
 # R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    ObjectType,
+    EventInitiator,
+    PostBattleBehaviour,
+    Direction,
+    EdgeDirection,
+    ExitType,
+    BufferType,
+    BufferSpace,
+    VramStore,
+    ShadowSize,
+)
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    Buffer,
+    Partition,
+    DestinationProps,
+    RoomExit,
+    MapExit,
+    Event,
+    BattlePackNPC,
+    RegularNPC,
+    ChestNPC,
+    BattlePackClone,
+    RegularClone,
+    ChestClone,
+    Room,
+)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *
 from ..variables.music_names import *
 from ..variables.event_script_names import *
 from ..variables.action_script_names import *
+
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
-        buffers = [
+        buffers=[
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
-            )
+                index_in_main_buffer=True,
+            ),
         ],
-        full_palette_buffer=True
+        full_palette_buffer=True,
     ),
     music=M0015_HERE_SSOMEWEAPONS,
     entrance_event=E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER,
@@ -46,7 +73,8 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E0372_MUSHROOM_KINGDOM_BOSS_FIGHT_CUTSCENE,
             x=15,
@@ -57,7 +85,8 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E0373_MUSHROOM_KINGDOM_BOSS_FIGHT,
             x=14,
@@ -68,7 +97,8 @@ room = Room(
             length=9,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E0373_MUSHROOM_KINGDOM_BOSS_FIGHT,
             x=14,
@@ -79,7 +109,8 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E0373_MUSHROOM_KINGDOM_BOSS_FIGHT,
             x=17,
@@ -90,7 +121,8 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E0413_CLEAR_TEMP_7044_0,
             x=16,
@@ -101,7 +133,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E0413_CLEAR_TEMP_7044_0,
             x=17,
@@ -112,7 +145,8 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E0414_SET_TEMP_7044_0,
             x=16,
@@ -123,10 +157,11 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
     ],
     objects=[
-        RegularNPC( # 0
+        RegularNPC(  # 0
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
@@ -152,8 +187,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 1
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 1
             npc=npcs.BLUE_STAR_PIECE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -179,8 +215,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 2
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 2
             npc=npcs.SPARKLE_DOWNWARDS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -206,8 +243,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 3
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 3
             npc=npcs.MACK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0373_MUSHROOM_KINGDOM_BOSS_FIGHT,
@@ -233,8 +271,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 4
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 4
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0366_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_FORCED_OFF_MINION,
@@ -260,8 +299,12 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 5
+            byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
+        ),
+        RegularNPC(  # 5
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0366_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_FORCED_OFF_MINION,
@@ -287,8 +330,12 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 6
+            byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
+        ),
+        RegularNPC(  # 6
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0367_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_FORCED_OFF_MINION,
@@ -314,8 +361,12 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 7
+            byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
+        ),
+        RegularNPC(  # 7
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0367_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_FORCED_OFF_MINION,
@@ -341,8 +392,12 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 8
+            byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
+        ),
+        RegularNPC(  # 8
             npc=npcs.SHYSTER_NPC_5,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0366_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_FORCED_OFF_MINION,
@@ -368,8 +423,12 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 9
+            byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
+        ),
+        RegularNPC(  # 9
             npc=npcs.SHYSTER_NPC_5,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0367_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_FORCED_OFF_MINION,
@@ -395,8 +454,12 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 10
+            byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
+        ),
+        RegularNPC(  # 10
             npc=npcs.CHANCELLOR_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E1930_MACKSKIP_MAYBE,
@@ -422,6 +485,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-    ]
+            byte7_upper2=3,
+        ),
+    ],
 )

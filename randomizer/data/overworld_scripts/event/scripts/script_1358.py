@@ -103,10 +103,10 @@ script = EventScript([
 		A_WalkNorthwestSteps(1),
 		A_SetAllSpeeds(NORMAL),
 		A_Pause(30),
-		A_SetSpriteSequence(index=2, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=2, is_sequence=True, looping=True, identifier="tower_boss_laughing_seq_1"),
 		A_Pause(30),
 		A_ResetProperties()
-	]),
+	], identifier="tower_boss_laughing_aqueue_1"),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_FixedFCoordOff(),
 		A_FaceNorthwest()

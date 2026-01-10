@@ -147,16 +147,16 @@ script = EventScript([
 		A_Pause(36),
 		A_SequenceLoopingOn(),
 		A_StartLoopNTimes(8),
-		A_SetSpriteSequence(index=5, looping=False),
+		A_SetSpriteSequence(index=5, looping=False, identifier="dodo_shake_head_1"),
 		A_Pause(2),
 		A_SetSpriteSequence(index=0, looping=False),
 		A_Pause(2),
 		A_EndLoop(),
-		A_SetSpriteSequence(index=5, is_sequence=True, looping=False),
+		A_SetSpriteSequence(index=5, is_sequence=True, looping=False, identifier="dodo_shake_head_2"),
 		A_Pause(50),
 		A_SetSpriteSequence(index=0, is_mold=True, looping=True),
 		A_SequenceLoopingOff()
-	]),
+	], identifier="dodo_shake_head_aq"),
 	Pause(5),
 	SetVarToConst(SECONDARY_TEMP_7024, 0),
 	SetVarToConst(PRIMARY_TEMP_7000, 0, identifier="EVENT_3640_set_var_to_const_79"),
@@ -269,13 +269,13 @@ script = EventScript([
 		A_Pause(16),
 		A_SequenceLoopingOn(),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=3, is_sequence=True, looping=False),
+		A_SetSpriteSequence(index=3, is_sequence=True, looping=False, identifier="dodo_fakeout_1"),
 		A_Pause(9),
 		A_SequencePlaybackOff(),
 		A_Pause(8),
 		A_SequenceLoopingOff(),
 		A_FaceNorthwest(),
-		A_SetSpriteSequence(index=4, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=4, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="dodo_fakeout_2"),
 		A_Pause(45),
 		A_SetWalkingSpeed(NORMAL),
 		A_SetSequenceSpeed(NORMAL),
@@ -306,7 +306,7 @@ script = EventScript([
 		A_FaceSouthwest(),
 		A_SetSpriteSequence(index=0, looping=True),
 		A_SequenceLoopingOff()
-	]),
+	], identifier="final_statue_peck_aq"),
 	Pause(25),
 	RunEventAsSubroutine(E0937_PECK_SUBROUTINE_MIDDLE_STATUE),
 	ClearBit(UNKNOWN_708A_7),
@@ -325,10 +325,10 @@ script = EventScript([
 	ClearBit(TEMP_7043_1),
 	ActionQueueAsync(target=NPC_3, subscript=[
 		A_SetSequenceSpeed(SLOW),
-		A_SetSpriteSequence(index=6, is_sequence=True, looping=False),
+		A_SetSpriteSequence(index=6, is_sequence=True, looping=False, identifier="dodo_finished_1"),
 		A_Pause(90),
 		A_SequenceLoopingOff()
-	]),
+	], identifier="dodo_finished_aq"),
 	Pause(20),
 	ActionQueueAsync(target=NPC_3, subscript=[
 		A_FixedFCoordOff(),
@@ -413,9 +413,9 @@ script = EventScript([
 		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(30),
 		A_SetSequenceSpeed(SLOW),
-		A_SetSpriteSequence(index=6, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="dodo_finished_2"),
 		A_Pause(120)
-	]),
+	], identifier="dodo_finished_aq_2"),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_SetSpriteSequence(index=9, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(40),
@@ -425,7 +425,7 @@ script = EventScript([
 		A_Pause(40),
 		A_SetSpriteSequence(index=12, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(40)
-	]),
+	], identifier="dodo_starts_battle"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_Pause(40),
 		A_Pause(40),
@@ -442,8 +442,8 @@ script = EventScript([
 	PaletteSet(palette_set=84, row=1, bit_3=True),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_SetSequenceSpeed(FAST),
-		A_SetSpriteSequence(index=6, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="dodo_finished_3")
+	], identifier="dodo_finished_aq_3"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ResetProperties(),
 		A_FaceNortheast()
@@ -500,7 +500,7 @@ script = EventScript([
 		A_SetSequenceSpeed(SLOW),
 		A_SetSpriteSequence(index=0, is_sequence=True, looping=False, mirror_sprite=True),
 		A_Pause(12),
-		A_SetSpriteSequence(index=8, is_sequence=True, looping=False, mirror_sprite=True),
+		A_SetSpriteSequence(index=8, is_sequence=True, looping=False, mirror_sprite=True, identifier="dodo_extra_sprite_1"),
 		A_Walk1StepSoutheast()
 	], identifier="EVENT_3640_action_queue_271"),
 	Return(),
@@ -512,7 +512,7 @@ script = EventScript([
 		A_SetSequenceSpeed(SLOW),
 		A_SetSpriteSequence(index=0, is_sequence=True, looping=False, mirror_sprite=True),
 		A_Pause(12),
-		A_SetSpriteSequence(index=9, is_sequence=True, looping=False, mirror_sprite=True),
+		A_SetSpriteSequence(index=9, is_sequence=True, looping=False, mirror_sprite=True, identifier="dodo_extra_sprite_2"),
 		A_Walk1StepSoutheast()
 	], identifier="EVENT_3640_action_queue_273"),
 	Return(),
@@ -563,9 +563,9 @@ script = EventScript([
 	Pause(40),
 	ActionQueueAsync(target=NPC_3, subscript=[
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=7, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=7, is_sequence=True, looping=True, identifier="dodo_possibly_unused"),
 		A_Pause(60)
-	]),
+	], identifier="dodo_possibly_unused_aq"),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_SetAllSpeeds(VERY_FAST),
 		A_ResetProperties(),
@@ -599,7 +599,7 @@ script = EventScript([
 		A_ResetProperties(),
 		A_FaceNorthwest(),
 		A_Pause(12),
-		A_SetSpriteSequence(index=10, is_sequence=True, looping=False, mirror_sprite=True),
+		A_SetSpriteSequence(index=10, is_sequence=True, looping=False, mirror_sprite=True, identifier="dodo_left_forward"),
 		A_Walk1StepNorthwest()
 	], identifier="EVENT_3640_action_queue_304"),
 	Return(),
@@ -610,7 +610,7 @@ script = EventScript([
 		A_ResetProperties(),
 		A_FaceNorthwest(),
 		A_Pause(12),
-		A_SetSpriteSequence(index=11, is_sequence=True, looping=False, mirror_sprite=True),
+		A_SetSpriteSequence(index=11, is_sequence=True, looping=False, mirror_sprite=True, identifier="dodo_right_forward"),
 		A_Walk1StepNorthwest()
 	], identifier="EVENT_3640_action_queue_306"),
 	Return(),

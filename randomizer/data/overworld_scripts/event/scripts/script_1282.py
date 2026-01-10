@@ -69,8 +69,8 @@ script = EventScript([
 		A_TransferToXYZF(x=4, y=21, z=0, direction=EAST),
 		A_VisibilityOn(),
 		A_FaceSouthwest(),
-		A_SetSpriteSequence(index=6, is_mold=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, looping=True, identifier="chapel_stare_up_4"),
+	], identifier="chapel_stare_up_queue_4"),
 	RunEventAsSubroutine(E0794_TOWER_BALCONY_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False),
 	JmpToEvent(E1927_TOWER_BALCONY_JUMP_OFF),

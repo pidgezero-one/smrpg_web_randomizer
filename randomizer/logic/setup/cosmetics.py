@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, cast
 
 from django.contrib.gis.measure import D
 
-from randomizer.data.variables.dialog_names import DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
+from randomizer.data.variables.dialog_names import DI1055_SEWER_GATING_TEXT, DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
 from randomizer.progression.prizelocations import BoosterTowerIndoorBossFight, FinalBossFight, MarrymoreCharacter, SeasideBeachBossFight, VolcanoExitBossFight
 from randomizer.types.flags import BowsersKeepGate, BowsersKeepGating, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
 from randomizer.types.prize import BossFightPrize, CharacterPrize
@@ -94,6 +94,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
                 attack.set_attack_name(at.remake_name)
         world.update_dialog(DI3072_TOWER_HENCHMAN_3_WINDOW, """SNIFSTER 3: Um...\n Nice weather we're having.[await]""")
         world.update_dialog(DI3073_TOWER_HENCHMAN_3, '''SNIFSTER 3: You wanna fight?[await]''')
+        world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got\n distracted again when he heard\n Claymorton was around.[await]")
 
     for location in world.locations:
         if isinstance(location, BossFightLocation) and isinstance(location.prize, BossFightPrize):
@@ -186,6 +187,10 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.battle_animations[0x3A].replace_command_by_name(
             "smithy_replace_2", ScreenFlashWithDuration(NO_COLOUR, 1)
         )
+
+        for i in range(1, 11):
+            flash_id = f"screenflash_{i}"
+            world.event_scripts.delete_command_by_identifier(flash_id)
 
     # Palette swaps
     if world.settings.isflag_enabled(PaletteSwaps):
@@ -345,7 +350,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_TITLE_SHORT`", nm.title_short)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_MOLE_GREETING`", nm.mole_greeting)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_MBOY_GREETING`", nm.mboy_greeting)
-    
+
     # Wedding courtyard dialogue
     towerboss = world.get_location(BoosterTowerIndoorBossFight).prize
     assert isinstance(towerboss, BossFightPrize)

@@ -66,9 +66,9 @@ script = EventScript([
 		A_FaceSouthwest(),
 		A_Pause(30),
 		A_SetSequenceSpeed(SLOW),
-		A_SetSpriteSequence(index=6, is_mold=True, looping=True)
-	]),
-	Pause(10),
+		A_SetSpriteSequence(index=6, is_mold=True, looping=True, identifier="tower_toss")
+	], identifier="tower_toss_aqueue"),
+	Pause(10, identifier="tower_toss_contact_Frame"),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_VisibilityOn(),
 		A_PlaySound(sound=SO078_CLICK, channel=6),

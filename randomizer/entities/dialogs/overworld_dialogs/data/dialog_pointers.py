@@ -1060,9 +1060,9 @@ from randomizer.types.dialogs.ids import (
     DI1050_I_WISH_YOU_LUCK_ON_YOUR_QUEST,
     DI1051_MOLEVILLE_CLOSED,
     DI1052_PIPE_VAULT_HINT,
-    DI1053_EMPTY,
+    DI1053_BANDITS_WAY_HINT,
     DI1054_SUNKEN_SHIP_HINT,
-    DI1055_EMPTY,
+    DI1055_SEWER_GATING_TEXT,
     DI1056_EMPTY,
     DI1057_EMPTY,
     DI1058_EMPTY,
@@ -5260,9 +5260,9 @@ pointers[DI1050_I_WISH_YOU_LUCK_ON_YOUR_QUEST] = Dialog(
 )
 pointers[DI1051_MOLEVILLE_CLOSED] = Dialog(bank=DIALOG_BANK_22, index=547, pos=0)
 pointers[DI1052_PIPE_VAULT_HINT] = Dialog(bank=DIALOG_BANK_22, index=548, pos=0)
-pointers[DI1053_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=549, pos=0)
+pointers[DI1053_BANDITS_WAY_HINT] = Dialog(bank=DIALOG_BANK_22, index=549, pos=0)
 pointers[DI1054_SUNKEN_SHIP_HINT] = Dialog(bank=DIALOG_BANK_22, index=550, pos=0)
-pointers[DI1055_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=551, pos=0)
+pointers[DI1055_SEWER_GATING_TEXT] = Dialog(bank=DIALOG_BANK_22, index=551, pos=0)
 pointers[DI1056_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=552, pos=0)
 pointers[DI1057_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=553, pos=0)
 pointers[DI1058_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=554, pos=0)

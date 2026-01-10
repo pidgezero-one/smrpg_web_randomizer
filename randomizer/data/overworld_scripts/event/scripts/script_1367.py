@@ -55,16 +55,16 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_Pause(20),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_21")
+	], identifier="tower_henchman_curtain_aqueue_21"),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_Pause(20),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_22")
+	], identifier="tower_henchman_curtain_aqueue_22"),
 	ActionQueueAsync(target=NPC_3, subscript=[
 		A_Pause(20),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_23")
+	], identifier="tower_henchman_curtain_aqueue_23"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -114,8 +114,8 @@ script = EventScript([
 		A_WalkNortheastSteps(2),
 		A_FaceNorthwest(),
 		A_Pause(20),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_24")
+	], identifier="tower_henchman_curtain_aqueue_24"),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
@@ -124,8 +124,8 @@ script = EventScript([
 		A_WalkNortheastSteps(2),
 		A_FaceNorthwest(),
 		A_Pause(20),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_25")
+	], identifier="tower_henchman_curtain_aqueue_25"),
 	ActionQueueAsync(target=NPC_3, subscript=[
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
@@ -134,8 +134,8 @@ script = EventScript([
 		A_WalkNortheastSteps(2),
 		A_FaceNorthwest(),
 		A_Pause(20),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_26")
+	], identifier="tower_henchman_curtain_aqueue_26"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -197,14 +197,14 @@ script = EventScript([
 		A_FaceNorthwest()
 	]),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_27")
+	], identifier="tower_henchman_curtain_aqueue_27"),
 	ActionQueueSync(target=NPC_2, subscript=[
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_28")
+	], identifier="tower_henchman_curtain_aqueue_28"),
 	ActionQueueAsync(target=NPC_3, subscript=[
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_29")
+	], identifier="tower_henchman_curtain_aqueue_29"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -266,14 +266,14 @@ script = EventScript([
 		A_FaceNorthwest()
 	]),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_30")
+	], identifier="tower_henchman_curtain_aqueue_30"),
 	ActionQueueSync(target=NPC_2, subscript=[
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_31")
+	], identifier="tower_henchman_curtain_aqueue_31"),
 	ActionQueueAsync(target=NPC_3, subscript=[
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_32")
+	], identifier="tower_henchman_curtain_aqueue_32"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -343,8 +343,8 @@ script = EventScript([
 		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
 		A_WalkNortheastSteps(2),
 		A_Pause(5),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_33")
+	], identifier="tower_henchman_curtain_aqueue_33"),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(30),
@@ -353,8 +353,8 @@ script = EventScript([
 		A_FixedFCoordOn(),
 		A_WalkNortheastSteps(2),
 		A_Pause(5),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_34")
+	], identifier="tower_henchman_curtain_aqueue_34"),
 	ActionQueueAsync(target=NPC_3, subscript=[
 		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(30),
@@ -363,8 +363,8 @@ script = EventScript([
 		A_FixedFCoordOn(),
 		A_WalkNortheastSteps(2),
 		A_Pause(5),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_35")
+	], identifier="tower_henchman_curtain_aqueue_35"),
 	Pause(20),
 	SetSyncActionScript(NPC_3, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	PlaySound(sound=SO090_CURTAIN, channel=4),
@@ -434,8 +434,8 @@ script = EventScript([
 		A_WalkNorthwestSteps(1),
 		A_FaceNorthwest(),
 		A_Pause(30),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_36")
+	], identifier="tower_henchman_curtain_aqueue_36"),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_ResetProperties(),
 		A_Pause(40),
@@ -452,8 +452,8 @@ script = EventScript([
 		A_FaceNorthwest(),
 		A_FixedFCoordOff(),
 		A_Pause(30),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_37")
+	], identifier="tower_henchman_curtain_aqueue_37"),
 	ActionQueueAsync(target=NPC_3, subscript=[
 		A_ResetProperties(),
 		A_Pause(40),
@@ -466,8 +466,8 @@ script = EventScript([
 		A_WalkNorthwestSteps(3),
 		A_FaceNorthwest(),
 		A_Pause(30),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_38")
+	], identifier="tower_henchman_curtain_aqueue_38"),
 	Pause(20),
 	SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
 	SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),

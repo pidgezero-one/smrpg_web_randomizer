@@ -197,7 +197,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 7
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.KEY_BASE,
             initiator=EventInitiator.NONE,
             event_script=E1394_FOUR_DIGIT_COIN_VALUE_HANDLER,
             action_script=A0830_EMPTY,

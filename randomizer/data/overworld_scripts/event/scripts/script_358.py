@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitSet(MAP_BANDITS_WAY, ["EVENT_358_run_dialog_3"]),
-	RunDialog(dialog_id=DI1053_EMPTY, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI1053_BANDITS_WAY_HINT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return(),
 	RunDialog(dialog_id=DI1050_I_WISH_YOU_LUCK_ON_YOUR_QUEST, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_358_run_dialog_3"),
 	Return()

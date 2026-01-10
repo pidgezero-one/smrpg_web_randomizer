@@ -33,7 +33,7 @@ from ....packets import *
 script = EventScript([
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_SetSequenceSpeed(FAST),
-		A_SetSpriteSequence(index=9, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=9, is_sequence=True, looping=True, identifier="jagger_looks_around"),
 		A_Pause(45),
 		A_ResetProperties(),
 		A_FaceNortheast(),

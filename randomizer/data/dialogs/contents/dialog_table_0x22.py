@@ -94,8 +94,7 @@ dialog_data[59] = ''' Our economy is booming now that
  we can have up to 9999 coins at a
  time.[await][page]
  People have been more generous
- lately with tips, and rewards, and
- the like.[await]'''
+ lately.[await]'''
 dialog_data[60] = '''          Received “[0x70A7]”[await]'''
 dialog_data[61] = '''[await]'''
 dialog_data[62] = ''' Some of the monsters out there are
@@ -923,10 +922,16 @@ dialog_data[548] = ''' The menfolk'll help you get inside
 dialog_data[549] = ''' There's a pipe in the road a bit
  west of here. I wonder what's
  down there?[await]'''
-dialog_data[550] = '''[await]'''
+dialog_data[550] = ''' Have you been to Bandit's Way?[await]
+ I stay away from there, personally.
+ We're seeing enough wallets go
+ missing around here as is.[await]'''
 dialog_data[551] = ''' Did you know there's a shipwreck
  off the beach to the south?[await]'''
-dialog_data[552] = '''[await]'''
+dialog_data[552] = ''' Have you been to the sewers yet?[await]
+ ...[delay_30]You know, I'm not sure why I
+ asked that. Why would anyone visit
+ a sewer?[await]'''
 dialog_data[553] = '''[await]'''
 dialog_data[554] = '''[await]'''
 dialog_data[555] = '''[await]'''

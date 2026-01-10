@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_SetSpriteSequence(index=2, is_sequence=True, looping=True),
+	A_SetSpriteSequence(index=2, is_sequence=True, looping=True, identifier="bandits_way_ascript_recoil"),
 	A_Pause(18),
 	A_ResetProperties(),
 	A_Pause(10),

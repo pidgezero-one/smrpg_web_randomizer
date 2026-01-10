@@ -2,6 +2,17 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, cast
 
+from randomizer.data.variables.dialog_names import (
+    DI1051_MOLEVILLE_CLOSED,
+    DI1052_PIPE_VAULT_HINT,
+    DI1053_BANDITS_WAY_HINT,
+    DI1054_SUNKEN_SHIP_HINT,
+    DI1055_SEWER_GATING_TEXT,
+    DI1163_BOOSTER_TOWER_DOOR_OPEN,
+    DI2474_NIMBUS_NPC,
+    DI3726_KEEP_ACCESS_HINT,
+)
+from randomizer.data.variables.event_script_names import E1055_EMPTY
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     SetBit,
     ClearBit,
@@ -144,6 +155,12 @@ def apply_gating_settings(world: GameWorld) -> None:
             SetBit(MAP_BANDITS_WAY),
             SetBit(MAP_DIRECTIONAL_MUSHROOM_KINGDOM_BANDITS_WAY),
         ]
+    elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.HAMMER_BRO):
+        world.update_dialog(DI1053_BANDITS_WAY_HINT, """ Have you been to Bandit's Way?[await]\n I got lost on my way over there.\n I heard only the Hammer Bros know\n where the entrance is.[await]""")
+    elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MALLOW):
+        world.update_dialog(DI1053_BANDITS_WAY_HINT, """ Have you been to Bandit's Way?[await]\n I got lost on my way over there.\n I heard only `MALLOW_NAME`\n knows where the entrance is.[await]""")
+    elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MUSHROOM_WAY):
+        world.update_dialog(DI1053_BANDITS_WAY_HINT, """ Have you been to Bandit's Way?[await]\n I couldn't figure out how to get in.\n I heard you need to go through\n Mushroom Way. Is that true?[await]""")
 
     # Kero Sewers
     if not world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.OPEN):
@@ -167,6 +184,14 @@ def apply_gating_settings(world: GameWorld) -> None:
             ).insert_before_nth_command(0, ClearBit(SEWERS_CLOSED))
     else:
         world.event_2496_startup += [ClearBit(SEWERS_CLOSED)]
+        if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
+            world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on\n it is waiting for payment, but our\n shop guy is out of RareFrogCoins.[await]")
+        if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MALLOW):
+            world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on\n it needs help from `MALLOW_NAME`,\n but nobody knows where he is.[await]")
+        if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.KINGDOM):
+            world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet some bigger changes will\n happen to this town before that\n ever gets finished.[await]")
+        if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MACK):
+            world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got\n distracted again when he heard\n Mack was around.[await]")
 
     # Forest Maze
     if world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.OPEN):
@@ -182,6 +207,12 @@ def apply_gating_settings(world: GameWorld) -> None:
     # Pipe Vault
     if not world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.OPEN):
         world.event_2496_startup += [SetBit(PIPE_VAULT_GATED)]
+        if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.BOWYER):
+           world.update_dialog(DI1052_PIPE_VAULT_HINT, """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it was mumbling\n something about the jerk who was\n shooting arrows into town.[await]""")
+        if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.GENO):
+           world.update_dialog(DI1052_PIPE_VAULT_HINT, """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it was talking\n to someone named `GENO_NAME`.[await]\n If you find him, he might know how\n to get in.[await]""")
+        if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.FOREST):
+           world.update_dialog(DI1052_PIPE_VAULT_HINT, """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it ran off to\n get something from the forest.[await]""")
 
     # Moleville Mines
     if not world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.OPEN):
@@ -190,6 +221,13 @@ def apply_gating_settings(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(
                 E1256_UNLOCK_MOLEVILLE_IF_GATED_BY_BOSHI
             ).insert_before_nth_command(0, ClearBit(MOLEVILLE_MINES_ENTRANCE_GATING))
+            world.update_dialog(DI1051_MOLEVILLE_CLOSED, """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n went off to the racetrack.[await]""")
+        elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOWYER):
+            world.update_dialog(DI1051_MOLEVILLE_CLOSED, """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to go hunt down some fella\n named “Bowyer”, or somethin'.[await]""")
+        elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.FOREST):
+            world.update_dialog(DI1051_MOLEVILLE_CLOSED, """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to go get firewood from\n the forest.[await]""")
+        elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.GENO):
+            world.update_dialog(DI1051_MOLEVILLE_CLOSED, """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n went lookin' for some fella\n named `GENO_NAME`.[await]""")
 
     # Booster Hill
     if not world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.OPEN):
@@ -208,7 +246,7 @@ def apply_gating_settings(world: GameWorld) -> None:
             ),
             SetBit(TOWER_OPENED),
         ]
-
+        
     # Marrymore
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.OPEN):
         world.event_2496_startup += [SetBit(MARRYMORE_BACKDOOR_OPEN)]
@@ -220,6 +258,9 @@ def apply_gating_settings(world: GameWorld) -> None:
     # Sea
     if world.settings.is_flag_value(SeaGate, SeaGating.STAR_4):
         world.event_2496_startup += [SetBit(SEA_GATED_BY_STAR_PIECES)]
+        world.update_dialog(
+            DI1054_SUNKEN_SHIP_HINT,
+            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n It will be pretty easy to find if you\n have four stars to guide you.[await]""")
     elif world.settings.is_flag_value(SeaGate, SeaGating.OPEN):
         world.event_2496_startup += [
             SetBit(MAP_SEA),
@@ -227,6 +268,18 @@ def apply_gating_settings(world: GameWorld) -> None:
             SetBit(MAP_SUNKEN_SHIP),
             SetBit(MAP_DIRECTIONAL_SEASIDE_DOWN_SEA),
         ]
+    elif world.settings.is_flag_value(SeaGate, SeaGating.TOADSTOOL):
+        world.update_dialog(
+            DI1054_SUNKEN_SHIP_HINT,
+            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n `PEACH_NAME` can help you\n get there.[await]""")
+    elif world.settings.is_flag_value(SeaGate, SeaGating.BUNDT):
+        world.update_dialog(
+            DI1054_SUNKEN_SHIP_HINT,
+            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n You'll need to vanquish a large\n cake in order to make it more\n visible.[await]""")
+    elif world.settings.is_flag_value(SeaGate, SeaGating.MARRYMORE):
+        world.update_dialog(
+            DI1054_SUNKEN_SHIP_HINT,
+            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n I heard you can only get there\n through Marrymore, somehow.[await]""")
 
     # Yaridovich
     if world.settings.is_flag_value(YaridovichGate, YaridovichGating.OPEN):
@@ -280,6 +333,14 @@ def apply_gating_settings(world: GameWorld) -> None:
             SetBit(MAP_DIRECTIONAL_NIMBUS_LAND_BARREL_VOLCANO),
             SetBit(MAP_BARREL_VOLCANO),
         ]
+    elif world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.NIMBUS):
+        world.update_dialog(
+            DI2474_NIMBUS_NPC,
+            """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need to clear\n out the castle first, though.[await]""")
+    elif world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.VALENTINA):
+        world.update_dialog(
+            DI2474_NIMBUS_NPC,
+            """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need\n Valentina's permission to enter,\n though.[await]""")
 
     # Bowser's Keep
     if not world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.OPEN):
@@ -302,6 +363,13 @@ def apply_gating_settings(world: GameWorld) -> None:
     # Factory
     if world.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6):
         world.event_2496_startup += [SetBit(FACTORY_GATED_BY_STAR_PIECES)]
+        world.update_dialog(
+            DI3726_KEEP_ACCESS_HINT,
+            """ I heard there was a big factory\n behind it. Is that true?[await][pause] I wish I had\n 6 Star Pieces, so I could find out.[await]""")
+    elif world.settings.is_flag_value(FactoryGate, FactoryGating.EXOR):
+        world.update_dialog(
+            DI3726_KEEP_ACCESS_HINT,
+            """ I heard there was a big factory\n behind it. Is that true?[await][pause] I bet Exor\n would know, if you run into him![await]""")
 
     # Finalize startup script
     world.event_2496_startup += [Return()]

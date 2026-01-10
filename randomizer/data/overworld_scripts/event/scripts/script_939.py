@@ -39,16 +39,16 @@ script = EventScript([
 		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True),
 		A_VisibilityOn(),
 		A_Pause(31),
-		A_SetSpriteSequence(index=5, is_mold=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=5, is_mold=True, looping=True, mirror_sprite=True, identifier="statue_keeper_introduced_1"),
 		A_Pause(31),
 		A_SetSequenceSpeed(SLOW),
 		A_SequencePlaybackOn(),
 		A_SequenceLoopingOn(),
-		A_SetSpriteSequence(index=4, looping=False, mirror_sprite=True),
+		A_SetSpriteSequence(index=4, looping=False, mirror_sprite=True, identifier="statue_keeper_introduced_2"),
 		A_Pause(66),
 		A_SequenceLoopingOff(),
 		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_Pause(17)
-	]),
+	], identifier="statue_keeper_introduced_aq"),
 	Return()
 ])

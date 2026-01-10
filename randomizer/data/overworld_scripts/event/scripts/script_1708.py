@@ -62,8 +62,8 @@ script = EventScript([
 	RunEventAsSubroutine(E0014_STANDARD_ROOM_LOADER),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_VisibilityOn(),
-		A_SetSpriteSequence(index=5, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+		A_SetSpriteSequence(index=5, is_sequence=True, looping=True, mirror_sprite=True, identifier="bway_distracted_4")
+	], identifier="bway_aqueue_4"),
 	Pause(60),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),

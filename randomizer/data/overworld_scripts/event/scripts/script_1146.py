@@ -111,7 +111,7 @@ script = EventScript([
 		A_JumpToHeight(128),
 		A_WalkSoutheastSteps(2),
 		A_SetSequenceSpeed(NORMAL)
-	]),
+	], identifier="ship_henchman_1_beach_1"),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_VisibilityOff(),
 		A_ClearSolidityBits(cant_pass_walls=True),
@@ -134,7 +134,7 @@ script = EventScript([
 		A_JumpToHeight(128),
 		A_WalkSoutheastSteps(2),
 		A_SetSequenceSpeed(NORMAL)
-	]),
+	], identifier="ship_henchman_2_beach_1"),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_VisibilityOff(),
 		A_ClearSolidityBits(cant_pass_walls=True),
@@ -181,7 +181,7 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_4, subscript=[
 		A_WalkSoutheastSteps(1),
 		A_FaceNortheast()
-	]),
+	], identifier="ship_henchman_1_beach_2"),
 	Pause(5),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_SequenceLoopingOff()
@@ -189,7 +189,7 @@ script = EventScript([
 	ActionQueueSync(target=NPC_4, subscript=[
 		A_WalkNorthwestSteps(1),
 		A_FaceSoutheast()
-	]),
+	], identifier="ship_henchman_1_beach_3"),
 	ActionQueueAsync(target=NPC_6, subscript=[
 		A_FixedFCoordOff(),
 		A_WalkSoutheastSteps(3)

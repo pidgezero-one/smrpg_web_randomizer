@@ -26,7 +26,7 @@ script = ActionScript([
 	A_FaceSoutheast(),
 	A_Pause(30),
 	A_JmpIfRandom1of2(["ACTION_331_set_animation_speed_0"]),
-	A_SetSpriteSequence(index=3, is_sequence=True, looping=True, mirror_sprite=True),
+	A_SetSpriteSequence(index=3, is_sequence=True, looping=True, mirror_sprite=True, identifier="kitchen_chef_seq_2"),
 	A_Pause(20),
 	A_ResetProperties(),
 	A_JmpIfRandom1of2(["ACTION_331_set_animation_speed_0"]),
@@ -35,7 +35,7 @@ script = ActionScript([
 	A_WalkSoutheastSteps(2),
 	A_Pause(60),
 	A_JmpIfRandom1of2(["ACTION_331_shift_northwest_steps_14"]),
-	A_SetSpriteSequence(index=3, is_sequence=True, looping=True, mirror_sprite=True),
+	A_SetSpriteSequence(index=3, is_sequence=True, looping=True, mirror_sprite=True, identifier="kitchen_chef_seq_3"),
 	A_Pause(20),
 	A_ResetProperties(),
 	A_Jmp(["ACTION_331_set_animation_speed_0"])

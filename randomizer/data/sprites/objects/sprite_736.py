@@ -41,4 +41,3 @@ sprite = CompleteSprite(
     palette_offset=0,
     unknown_num=0
 )
-# TODO: PALETTE

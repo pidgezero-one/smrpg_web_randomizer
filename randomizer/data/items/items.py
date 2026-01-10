@@ -1223,13 +1223,6 @@ class EnduringBroochItem(Accessory):
     _inflict_type = None
     _prevent_ko: bool = True
 
-    # TODO: Possible to make this work?
-    # If target not alive,
-    # SetAMEM8BitToUnknownShort(amem=0x69, type=0x8, value=0x001E, identifier="check_reres"),
-    # JmpIfAMEM8BitEqualsConst(0x69, EnduringBroochItem().item_id, ["command_0x3592D5"]),
-    # ReturnSubroutine(),
-    # How to revive target with 1 hp?
-
 
 
 class ZoomShoesItem(Accessory):

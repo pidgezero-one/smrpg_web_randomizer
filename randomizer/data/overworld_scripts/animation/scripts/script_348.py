@@ -17,8 +17,8 @@ from ....items import *
 
 script = ActionScript([
 	A_SetPriority(3),
-	A_SetSpriteSequence(index=10, is_sequence=True, looping=True),
-	A_SequenceLoopingOn(),
+	A_SetSpriteSequence(index=10, is_sequence=True, looping=True, identifier="ship_boss_idle_sequence"),
+	A_SequenceLoopingOn(identifier="ship_boss_idle_sequence_loop"),
 	A_Pause(1, identifier="ACTION_348_pause_3"),
 	A_JmpIfBitClear(TEMP_7044_7, ["ACTION_348_pause_3"]),
 	A_ResetProperties(),

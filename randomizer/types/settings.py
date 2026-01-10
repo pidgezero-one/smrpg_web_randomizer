@@ -30,7 +30,6 @@ class Settings:
 
     def __init__(self) -> None:
         self._is_flag_value_cache = {}
-        # todo: get setting params in here
         self._flags = {
             ShuffleCharacters: ShuffleCharacters(),
             MaxCharacters: MaxCharacters(),
@@ -533,8 +532,6 @@ class Settings:
         Format: CategoryId(flag_id|flag_id:value|...) CategoryId(...)
         """
         import re
-
-        # todo: raise FlagError for illegal combos
 
         # Reset all flags to defaults first
         for flag in self._flags.values():
