@@ -42,21 +42,21 @@ script = EventScript([
 		A_UnknownCommand(bytearray(b'\xfd\xf2')),
 		A_WalkSouthwestSteps(2),
 		A_VisibilityOff()
-	]),
+	], identifier="axem_henchman_1_aq_2"),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_UnknownCommand(bytearray(b'\xfd\xf2')),
 		A_WalkSouthwestSteps(3),
 		A_VisibilityOff()
-	]),
+	], identifier="axem_henchman_2_aq_2"),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_UnknownCommand(bytearray(b'\xfd\xf2')),
 		A_WalkSouthwestSteps(4),
 		A_VisibilityOff()
-	]),
+	], identifier="axem_henchman_3_aq_2"),
 	ActionQueueSync(target=NPC_4, subscript=[
 		A_UnknownCommand(bytearray(b'\xfd\xf2')),
 		A_WalkSouthwestSteps(5),
 		A_VisibilityOff()
-	]),
+	], identifier="axem_henchman_4_aq_2"),
 	Return(identifier="EVENT_3343_ret_7")
 ])

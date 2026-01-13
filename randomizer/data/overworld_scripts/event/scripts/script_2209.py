@@ -64,20 +64,20 @@ script = EventScript([
 	Pause(15),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=10, is_sequence=True, looping=False)
-	]),
-	Pause(80),
+		A_SetSpriteSequence(index=10, is_sequence=True, looping=False, identifier="keep_boss_1_animation")
+	], identifier="keep_boss_1_animation_aq"),
+	Pause(80, identifier="keep_boss_1_animation_pause"),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	JmpIfBitClear(GAME_OVER, ["EVENT_2209_fade_in_from_black_async_10"]),
 	ResetAndChooseGame(),
 	FadeInFromBlack(sync=False, identifier="EVENT_2209_fade_in_from_black_async_10"),
 	PlayMusicAtDefaultVolume(M0051_MONSTROTOWN),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=138, row=11),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=138, row=11, identifier="kamek_palette"),
 	RunEventAsSubroutine(E0942_KEEP_FIRST_BOSS_SUMMON_CHEST),
-	PaletteSet(palette_set=139, row=1, bit_0=True, bit_3=True),
+	PaletteSet(palette_set=139, row=1, bit_0=True, bit_3=True, identifier="infinite_coin_chest_palette"),
 	SetSyncActionScript(NPC_0, A0014_FLOATING_CHEST),
 	ActionQueueAsync(target=NPC_0, subscript=[
-		A_PlaySound(sound=SO055_LOSE_COINS_COIN_FOUNTAIN, channel=6),
+		A_PlaySound(sound=SO055_LOSE_COINS_COIN_FOUNTAIN, channel=6, identifier="infinite_coin_chest_sfx"),
 		A_StartLoopNTimes(1),
 		A_VisibilityOn(),
 		A_Pause(2),
@@ -97,7 +97,7 @@ script = EventScript([
 		A_Pause(1),
 		A_EndLoop(),
 		A_VisibilityOn()
-	]),
+	], identifier="infinite_coin_chest_aq"),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_ResetProperties(),
 		A_FaceSouthwest(),

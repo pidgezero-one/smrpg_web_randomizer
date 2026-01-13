@@ -36,8 +36,8 @@ script = EventScript([
 		A_FixedFCoordOn(),
 		A_Pause(20),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=1, is_sequence=True, looping=False),
-		A_Pause(45)
-	]),
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=False, identifier="chandelier_challenge"),
+		A_Pause(45, identifier="chandelier_challenge_pause_45"),
+	], identifier="chandelier_challenge_action_queue_0"),
 	Return()
 ])

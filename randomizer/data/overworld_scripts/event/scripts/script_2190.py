@@ -45,6 +45,6 @@ script = EventScript([
 		A_ShiftZDownPixels(2),
 		A_ShiftZUpPixels(2),
 		A_Pause(20)
-	]),
+	], identifier="keep_obstacle_boss_intro"),
 	Return()
 ])

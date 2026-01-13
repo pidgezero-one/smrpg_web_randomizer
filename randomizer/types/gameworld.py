@@ -785,6 +785,7 @@ class GameWorld:
         # TODO: update sprite pointers for new ally IDs
         # TODO: look at 0x35xxxx report and free up data
         # TODO: apply boss animations to overworld and minigames
+        # TODO: mimic_rise in dojo and bowsers keep
 
         self._report_progress("Randomizing shops", 45)
 

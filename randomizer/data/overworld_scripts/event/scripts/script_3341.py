@@ -39,7 +39,7 @@ script = EventScript([
 		A_UnknownCommand(bytearray(b'\xfd\xf2')),
 		A_WalkNortheastSteps(2),
 		A_VisibilityOff()
-	]),
+	], identifier="axem_henchman_1_aq_3"),
 	Return(),
 	JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_3341_jmp_to_event_6")
 ])

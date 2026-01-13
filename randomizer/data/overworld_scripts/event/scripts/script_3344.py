@@ -85,7 +85,7 @@ script = EventScript([
 		A_FloatingOff(),
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
-	]),
+	], identifier="axem_henchman_1_aq"),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_ShiftXYPixels(x=252, y=254),
 		A_Pause(60),
@@ -109,7 +109,7 @@ script = EventScript([
 		A_FloatingOff(),
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
-	]),
+	], identifier="axem_henchman_2_aq"),
 	ActionQueueSync(target=NPC_4, subscript=[
 		A_ShiftXYPixels(x=252, y=254),
 		A_Pause(90),
@@ -133,7 +133,7 @@ script = EventScript([
 		A_FloatingOff(),
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
-	]),
+	], identifier="axem_henchman_3_aq"),
 	ActionQueueSync(target=NPC_5, subscript=[
 		A_ShiftXYPixels(x=252, y=254),
 		A_Pause(120),
@@ -157,9 +157,9 @@ script = EventScript([
 		A_FloatingOff(),
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
-	]),
+	], identifier="axem_henchman_4_aq"),
 	ActionQueueAsync(target=NPC_0, subscript=[
-		A_StartLoopNTimes(4),
+		A_StartLoopNTimes(4, identifier="axem_trampoline_loop"),
 		A_Pause(1, identifier="EVENT_3344_action_queue_9_SUBSCRIPT_pause_1"),
 		A_JmpIfBitClear(TEMP_7043_0, ["EVENT_3344_action_queue_9_SUBSCRIPT_pause_1"]),
 		A_SetSequenceSpeed(FASTEST),
@@ -168,7 +168,7 @@ script = EventScript([
 		A_Pause(4),
 		A_ClearBit(TEMP_7043_0),
 		A_EndLoop()
-	]),
+	], identifier="axem_trampoline_aqueue"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetWalkingSpeed(NORMAL),
 		A_VisibilityOn(),

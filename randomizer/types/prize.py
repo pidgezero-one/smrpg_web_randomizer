@@ -35,6 +35,7 @@ from ..types.ally import Ally
 from ..data.variables.overworld_sfx_names import SO081_STAR
 from ..data.physical_objects.items import *
 from ..types.enemy import Enemy
+from ..data.variables.overworld_sfx_names import *
 
 if TYPE_CHECKING:
     from .gameworld import GameWorld
@@ -96,7 +97,12 @@ class Prize:
     remake_only: bool = False
     key: bool = False
     _model: type[ItemNPC] | None = DefaultItem
+    _sound_effect: int = SO014_FLOWER
 
+    @property
+    def sound_effect(self) -> int:
+        return self._sound_effect
+    
     @property
     def model(self) -> type[ItemNPC] | None:
         return self._model
@@ -401,20 +407,20 @@ class SpellPrize(Prize):
 
 class BossFightHenchman:
     _monster: type[Enemy]
-    _model: type[HenchmanNPC] | None = None
+    _model: type[HenchmanNPC]
 
     @property
     def monster(self) -> type[Enemy]:
         return self._monster
 
     @property
-    def model(self) -> type[HenchmanNPC] | None:
+    def model(self) -> type[HenchmanNPC]:
         return self._model
 
     def __init__(
         self,
         monster: type[Enemy],
-        model: type[HenchmanNPC] | None = None,
+        model: type[HenchmanNPC],
     ):
         self._monster = monster
         self._model = model
@@ -545,7 +551,7 @@ class BossFightPrize(Prize):
         return self._hp_slice_multipliers
 
     @property
-    def battle_npc(self) -> type[BossNPC] | None:
+    def battle_npc(self) -> type[BossNPC]:
         if self._battle_npc is not None:
             return self._battle_npc
         if self._big_npc is not None:
@@ -553,7 +559,7 @@ class BossFightPrize(Prize):
         return self._small_npc
 
     @property
-    def large_npc(self) -> type[BossNPC] | None:
+    def large_npc(self) -> type[BossNPC]:
         if self._big_npc is not None:
             return self._big_npc
         return self._small_npc

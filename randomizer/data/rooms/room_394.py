@@ -102,7 +102,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 1
-            npc=npcs.AXEM_YELLOW_NPC,
+            npc=npcs.AXEM_PINK_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0003_SEQUENCE_LOOPING_ON,
@@ -129,7 +129,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 2
-            npc=npcs.AXEM_BLACK_NPC,
+            npc=npcs.AXEM_RED_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0003_SEQUENCE_LOOPING_ON,

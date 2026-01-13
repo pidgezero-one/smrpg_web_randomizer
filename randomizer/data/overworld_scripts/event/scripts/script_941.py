@@ -32,6 +32,6 @@ from ....packets import *
 
 script = EventScript([
 	SetAsyncActionScript(NPC_0, A1004_KEEP_1ST_BOSS_SUMMON_ANIMATION),
-	Pause(60),
+	Pause(60, identifier="EVENT_941_pause_0"),
 	Return()
 ])

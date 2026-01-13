@@ -17,6 +17,7 @@ from ..types.prizelocation import (
     BossFightLocationHenchmanNPC,
     BossFightLocationNPC,
     BossSpriteSize,
+    RemoveIfNotFilled,
     StandingLocation,
     TreasureChestLocationRow1,
     TreasureChestLocationRow2,
@@ -63,6 +64,7 @@ from ..types.prizelocation import (
 from ..types.packet_type import PacketType
 from ..data.variables.room_names import *
 from ..data.variables.event_script_names import *
+from ..data.variables.action_script_names import *
 from ..data.variables.pack_names import *
 from .prizes import *
 from ..types.prize import (
@@ -71,7 +73,12 @@ from ..types.prize import (
     EmptyPrize,
 )
 from ..types.flags import *
-from ..utils.npcs import set_npc_direction_if_swse_only, set_mines_punch_command, is_swse_only
+from ..utils.npcs import (
+    set_npc_direction_if_swse_only,
+    set_mines_punch_command,
+    is_swse_only,
+)
+from ..utils.snippets.es_mimic_rise import get_mimic_rise_dojo, get_mimic_rise_kamek
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     NPC_0,
     NPC_1,
@@ -128,6 +135,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
     A_ReturnQueue,
     A_SetBit,
     A_Jmp,
+    A_StartLoopNTimes,
+    A_VisibilityOn,
+    A_PlaySound,
+    A_SetSequenceSpeed
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
     ActionScript,
@@ -136,7 +147,12 @@ from typing import TYPE_CHECKING, cast
 
 from ..utils.snippets.es_castle_statue_room_bonk import script as bonk
 from ..utils.snippets.es_castle_statue_room_bonk_mario import script as bonk_mario
-from ..utils.snippets.create_peck_subroutine import gen_peck_left_subroutine, gen_peck_middle_subroutine, gen_start_battle
+from ..utils.snippets.create_peck_subroutine import (
+    gen_peck_left_subroutine,
+    gen_peck_middle_subroutine,
+    gen_start_battle,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import *
 
 if TYPE_CHECKING:
     from ..types.logic import Inventory
@@ -2118,8 +2134,8 @@ class ForestMazeBossFight(BossFightLocation):
         for slot in self._character_henchman_slots:
             henchman = assignment_map.get(slot)
             for npc_id, room_id in zip(slot.npc_ids, slot.room_ids):
-                # Check if this slot was assigned and has a model
-                if henchman is not None and henchman.model is not None:
+                # Check if this slot was assigned
+                if henchman is not None:
                     npc_base = henchman.model().base
                     set_npc_direction_if_swse_only(
                         world, room_id, npc_id, npc_base, SOUTHEAST
@@ -4051,89 +4067,88 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
                 # Get animations from third character henchman slot
                 assert self.prize.character_henchmen is not None
                 third_henchman = self.prize.character_henchmen[2]
-                if third_henchman.model is not None:
-                    third_henchman_animations = third_henchman.model()._animations
-                    b = third_henchman_animations.tower_bullet
+                third_henchman_animations = third_henchman.model()._animations
+                b = third_henchman_animations.tower_bullet
+                if b is not None and b.total_duration is not None:
+                    pelim_pause = 0
+                    contact_frame = b.contact_frame
+                    if contact_frame is None:
+                        contact_frame = b.total_duration // 2
+                    if contact_frame < 56:
+                        pelim_pause = 56 - contact_frame
+                    interval_after_shot = min(40, b.total_duration - contact_frame)
+                    final_interval = max(0, 96 - b.total_duration - pelim_pause)
+
+                    world.action_scripts.replace_script(
+                        A0386_TOWER_SHOOT_BULLET_BILLS,
+                        script=ActionScript(
+                            [
+                                A_FaceSoutheast(),
+                                A_Pause(18),
+                                A_FaceSouthwest(),
+                                A_Pause(18),
+                                *(
+                                    [
+                                        A_Pause(
+                                            pelim_pause,
+                                            identifier="ACTION_386_set_sprite_sequence_4",
+                                        ),
+                                        A_SetSpriteSequence(
+                                            index=b.sequence_id,
+                                            is_sequence=True,
+                                            looping=False,
+                                        ),
+                                    ]
+                                    if pelim_pause > 0
+                                    else [
+                                        A_SetSpriteSequence(
+                                            index=b.sequence_id,
+                                            is_sequence=True,
+                                            looping=False,
+                                            identifier="ACTION_386_set_sprite_sequence_4",
+                                        )
+                                    ]
+                                ),
+                                A_Pause(contact_frame),
+                                A_SetBit(TEMP_7043_3),
+                                *(
+                                    [A_Pause(interval_after_shot)]
+                                    if interval_after_shot > 0
+                                    else []
+                                ),
+                                A_SetSpriteSequence(
+                                    index=0,
+                                    is_sequence=True,
+                                    looping=True,
+                                ),
+                                A_Pause(final_interval),
+                                A_Jmp(["ACTION_386_set_sprite_sequence_4"]),
+                            ]
+                        ),
+                    )
+                else:
+                    pelim_pause = 0
                     if b is not None and b.total_duration is not None:
-                        pelim_pause = 0
-                        contact_frame = b.contact_frame
-                        if contact_frame is None:
-                            contact_frame = b.total_duration // 2
-                        if contact_frame < 56:
-                            pelim_pause = 56 - contact_frame
-                        interval_after_shot = min(40, b.total_duration - contact_frame)
-                        final_interval = max(0, 96 - b.total_duration - pelim_pause)
+                        pelim_pause = 56 - (b.total_duration / 2)
 
-                        world.action_scripts.replace_script(
-                            A0386_TOWER_SHOOT_BULLET_BILLS,
-                            script=ActionScript(
-                                [
-                                    A_FaceSoutheast(),
-                                    A_Pause(18),
-                                    A_FaceSouthwest(),
-                                    A_Pause(18),
-                                    *(
-                                        [
-                                            A_Pause(
-                                                pelim_pause,
-                                                identifier="ACTION_386_set_sprite_sequence_4",
-                                            ),
-                                            A_SetSpriteSequence(
-                                                index=b.sequence_id,
-                                                is_sequence=True,
-                                                looping=False,
-                                            ),
-                                        ]
-                                        if pelim_pause > 0
-                                        else [
-                                            A_SetSpriteSequence(
-                                                index=b.sequence_id,
-                                                is_sequence=True,
-                                                looping=False,
-                                                identifier="ACTION_386_set_sprite_sequence_4",
-                                            )
-                                        ]
-                                    ),
-                                    A_Pause(contact_frame),
-                                    A_SetBit(TEMP_7043_3),
-                                    *(
-                                        [A_Pause(interval_after_shot)]
-                                        if interval_after_shot > 0
-                                        else []
-                                    ),
-                                    A_SetSpriteSequence(
-                                        index=0,
-                                        is_sequence=True,
-                                        looping=True,
-                                    ),
-                                    A_Pause(final_interval),
-                                    A_Jmp(["ACTION_386_set_sprite_sequence_4"]),
-                                ]
-                            ),
-                        )
-                    else:
-                        pelim_pause = 0
-                        if b is not None and b.total_duration is not None:
-                            pelim_pause = 56 - (b.total_duration / 2)
-
-                        world.action_scripts.replace_script(
-                            A0386_TOWER_SHOOT_BULLET_BILLS,
-                            script=ActionScript(
-                                [
-                                    A_FaceSoutheast(),
-                                    A_Pause(18),
-                                    A_FaceSouthwest(),
-                                    A_Pause(18),
-                                    A_Pause(
-                                        56,
-                                        identifier="ACTION_386_set_sprite_sequence_4",
-                                    ),
-                                    A_SetBit(TEMP_7043_3),
-                                    A_Pause(40),
-                                    A_Jmp(["ACTION_386_set_sprite_sequence_4"]),
-                                ]
-                            ),
-                        )
+                    world.action_scripts.replace_script(
+                        A0386_TOWER_SHOOT_BULLET_BILLS,
+                        script=ActionScript(
+                            [
+                                A_FaceSoutheast(),
+                                A_Pause(18),
+                                A_FaceSouthwest(),
+                                A_Pause(18),
+                                A_Pause(
+                                    56,
+                                    identifier="ACTION_386_set_sprite_sequence_4",
+                                ),
+                                A_SetBit(TEMP_7043_3),
+                                A_Pause(40),
+                                A_Jmp(["ACTION_386_set_sprite_sequence_4"]),
+                            ]
+                        ),
+                    )
 
             # Only if mook henchman slot is assigned
             mook_henchmen_assigned = (
@@ -4698,7 +4713,7 @@ class MarrymoreBossFight(BossFightLocation):
             )
         parent = super().post_unlocks(world)
         return EventScript(content + parent.contents + [Return()])
-    
+
     def render(self, world: GameWorld):
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -4709,24 +4724,22 @@ class MarrymoreBossFight(BossFightLocation):
         if character_henchmen_assigned:
             assert self.prize.character_henchmen is not None
             first_henchman = self.prize.character_henchmen[0]
-            if first_henchman.model is not None:
-                henchman_animations = first_henchman.model()._animations
-                if henchman_animations.kitchen_prep is not None:
-                    cmd = world.action_scripts.get_command_by_identifier(
-                        "kitchen_chef_seq_1", A_SetSpriteSequence
-                    )
-                    cmd.set_index(henchman_animations.kitchen_prep.sequence_id)
+            henchman_animations = first_henchman.model()._animations
+            if henchman_animations.kitchen_prep is not None:
+                cmd = world.action_scripts.get_command_by_identifier(
+                    "kitchen_chef_seq_1", A_SetSpriteSequence
+                )
+                cmd.set_index(henchman_animations.kitchen_prep.sequence_id)
 
             if len(self.prize.character_henchmen) >= 2:
                 second_henchman = self.prize.character_henchmen[1]
-                if second_henchman.model is not None:
-                    henchman_animations = second_henchman.model()._animations
-                    if henchman_animations.kitchen_prep is not None:
-                        for cmd_id in ["kitchen_chef_seq_2", "kitchen_chef_seq_3"]:
-                            cmd = world.action_scripts.get_command_by_identifier(
-                                cmd_id, A_SetSpriteSequence
-                            )
-                            cmd.set_index(henchman_animations.kitchen_prep.sequence_id)
+                henchman_animations = second_henchman.model()._animations
+                if henchman_animations.kitchen_prep is not None:
+                    for cmd_id in ["kitchen_chef_seq_2", "kitchen_chef_seq_3"]:
+                        cmd = world.action_scripts.get_command_by_identifier(
+                            cmd_id, A_SetSpriteSequence
+                        )
+                        cmd.set_index(henchman_animations.kitchen_prep.sequence_id)
 
         return op
 
@@ -5118,19 +5131,29 @@ class SeasideBeachBossFight(BossFightLocation):
             content.extend([ClearBit(LANDS_END_GATED)])
         parent = super().post_unlocks(world)
         return EventScript(content + parent.contents + [Return()])
-    
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, YaridovichBossFight):
             m = self.prize.small_npc()
             # boss room on revisit
             if m.animations.ship_chair is not None:
-                c = world.action_scripts.get_command_by_identifier("ship_boss_idle_sequence", A_SetSpriteSequence)
+                c = world.action_scripts.get_command_by_identifier(
+                    "ship_boss_idle_sequence", A_SetSpriteSequence
+                )
                 c.set_index(m.animations.ship_chair.sequence_id)
             else:
-                world.action_scripts.replace_command_by_identifier("ship_boss_idle_sequence", A_FaceSouthwest())
-                world.action_scripts.delete_command_by_identifier("ship_boss_idle_sequence_loop")
+                world.action_scripts.replace_command_by_identifier(
+                    "ship_boss_idle_sequence", A_FaceSouthwest()
+                )
+                world.action_scripts.delete_command_by_identifier(
+                    "ship_boss_idle_sequence_loop"
+                )
             # ending credits
             if m.animations.tpose_mold_id is not None:
                 world.event_scripts.replace_subscript_command_by_identifier(
@@ -5142,7 +5165,7 @@ class SeasideBeachBossFight(BossFightLocation):
                 world.event_scripts.replace_subscript_command_by_identifier(
                     "ending_credits_sunset_npc_0_sequence_setup",
                     "ending_credits_sunset_npc_0_sequence",
-                    A_FaceNorthwest()
+                    A_FaceNorthwest(),
                 )
             # Hide NPCs for unassigned character henchman slots
             if (
@@ -5161,16 +5184,17 @@ class SeasideBeachBossFight(BossFightLocation):
                             deletions = [
                                 "ship_henchman_1_beach_1",
                                 "ship_henchman_1_beach_2",
-                                "ship_henchman_1_beach_3"
+                                "ship_henchman_1_beach_3",
                             ]
                             for d in deletions:
                                 world.event_scripts.delete_command_by_identifier(d)
                         if slot_index == 1:
-                            world.event_scripts.delete_command_by_identifier("ship_henchman_2_beach_1")
+                            world.event_scripts.delete_command_by_identifier(
+                                "ship_henchman_2_beach_1"
+                            )
             # large boss sprite
             world.event_scripts.delete_subscript_command_by_identifier(
-                "seaside_boss_reveal_sequence",
-                "seaside_boss_reveal_sequence_1"
+                "seaside_boss_reveal_sequence", "seaside_boss_reveal_sequence_1"
             )
 
         return op
@@ -5497,7 +5521,11 @@ class ShipPasswordBossFight(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
 
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, KingCalamariBossFight):
@@ -5505,10 +5533,14 @@ class ShipPasswordBossFight(BossFightLocation):
             world.action_scripts.delete_command_by_identifier("password_boss_vanilla_2")
             m = self.prize.small_npc()
             if m.animations.ship_beckon is not None:
-                c = world.action_scripts.get_command_by_identifier("password_boss_reveal_sequence", A_SetSpriteSequence)
+                c = world.action_scripts.get_command_by_identifier(
+                    "password_boss_reveal_sequence", A_SetSpriteSequence
+                )
                 c.set_index(m.animations.ship_beckon.sequence_id)
             else:
-                world.action_scripts.delete_command_by_identifier("password_boss_reveal_sequence")
+                world.action_scripts.delete_command_by_identifier(
+                    "password_boss_reveal_sequence"
+                )
         return op
 
     # Flag as checked: SHIP_MIDBOSS_COMPLETED
@@ -5820,6 +5852,7 @@ class ShipFinalBossFight(BossFightLocation):
                 R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
             ],
             [NPC_1, NPC_4],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -5827,12 +5860,17 @@ class ShipFinalBossFight(BossFightLocation):
                 R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
             ],
             [NPC_2, NPC_5],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
-            [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM], [NPC_3]
+            [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM],
+            [NPC_3],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
-            [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM], [NPC_4]
+            [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM],
+            [NPC_4],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
     ]
     _mook_henchman_slots = [
@@ -5873,19 +5911,29 @@ class ShipFinalBossFight(BossFightLocation):
             content.extend([ClearBit(SEASIDE_BOSS_AVAILABLE)])
         parent = super().post_unlocks(world)
         return EventScript(content + parent.contents + [Return()])
-    
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, (JohnnyBossFight, Johnny2Fight)):
             m = self.prize.small_npc()
             # boss room on revisit
             if m.animations.ship_chair is not None:
-                c = world.action_scripts.get_command_by_identifier("ship_boss_idle_sequence", A_SetSpriteSequence)
+                c = world.action_scripts.get_command_by_identifier(
+                    "ship_boss_idle_sequence", A_SetSpriteSequence
+                )
                 c.set_index(m.animations.ship_chair.sequence_id)
             else:
-                world.action_scripts.replace_command_by_identifier("ship_boss_idle_sequence", A_FaceSouthwest())
-                world.action_scripts.delete_command_by_identifier("ship_boss_idle_sequence_loop")
+                world.action_scripts.replace_command_by_identifier(
+                    "ship_boss_idle_sequence", A_FaceSouthwest()
+                )
+                world.action_scripts.delete_command_by_identifier(
+                    "ship_boss_idle_sequence_loop"
+                )
             # ending credits
             if m.animations.tpose_mold_id is not None:
                 world.event_scripts.replace_subscript_command_by_identifier(
@@ -5897,35 +5945,25 @@ class ShipFinalBossFight(BossFightLocation):
                 world.event_scripts.replace_subscript_command_by_identifier(
                     "ending_credits_sunset_npc_0_sequence_setup",
                     "ending_credits_sunset_npc_0_sequence",
-                    A_FaceNorthwest()
+                    A_FaceNorthwest(),
                 )
-            # Hide NPCs for unassigned character henchman slots
-            if (
-                self._character_henchman_slots is not None
-                and self.prize.character_henchmen is not None
-                and len(self.prize.character_henchmen) > 0
-            ):
-                assigned_count = len(self.prize.character_henchmen)
-                for slot_index, slot in enumerate(self._character_henchman_slots):
-                    if slot_index >= assigned_count:
-                        for room_id, npc_id in zip(slot.room_ids, slot.npc_ids):
-                            rm = world.rooms._rooms[room_id]
-                            assert rm is not None
-                            rm.get_npc_by_target_id(npc_id).set_visible(False)
-                        if slot_index == 0:
-                            deletions = [
-                                "ship_henchman_1_beach_1",
-                                "ship_henchman_1_beach_2",
-                                "ship_henchman_1_beach_3"
-                            ]
-                            for d in deletions:
-                                world.event_scripts.delete_command_by_identifier(d)
-                        if slot_index == 1:
-                            world.event_scripts.delete_command_by_identifier("ship_henchman_2_beach_1")
+            # Delete event script commands for unfilled character henchman slots
+            # (NPC hiding is handled by base class via remove_if_not_filled)
+            assigned_count = (
+                len(self.prize.character_henchmen)
+                if self.prize.character_henchmen is not None
+                else 0
+            )
+            if assigned_count > 0 and assigned_count < 2:
+                # Slot 0 unfilled
+                if assigned_count < 1:
+                    for d in ["ship_henchman_1_beach_1", "ship_henchman_1_beach_2", "ship_henchman_1_beach_3"]:
+                        world.event_scripts.delete_command_by_identifier(d)
+                # Slot 1 unfilled
+                if assigned_count < 2:
+                    world.event_scripts.delete_command_by_identifier("ship_henchman_2_beach_1")
 
         return op
-        
-        
 
     # Flag as checked: SHIP_LIBERATED
 
@@ -6773,31 +6811,44 @@ class DojoFirstFight(BossFightLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
-    
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, JaggerBossFight):
             m = self.prize.small_npc()
-            # boss room on revisit
-            if m.animations.dojo_challenge is not None:
+            if isinstance(
+                self.prize,
+                (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
+            ):
+                cast(
+                    ActionQueueAsync,
+                    world.event_scripts.get_command_by_identifier(
+                        "dojo_boss_1_initiate_aq"
+                    ),
+                ).set_subscript(get_mimic_rise_dojo())
+
+            elif m.animations.dojo_challenge is not None:
                 world.event_scripts.get_subscript_command_by_identifier(
-                    "dojo_boss_1_initiate_aq", 
+                    "dojo_boss_1_initiate_aq",
                     "dojo_boss_1_initiate",
-                    A_SetSpriteSequence
+                    A_SetSpriteSequence,
                 ).set_index(m.animations.dojo_challenge.sequence_id)
                 if m.animations.dojo_challenge.contact_frame is not None:
                     world.event_scripts.get_subscript_command_by_identifier(
-                        "dojo_boss_1_initiate_aq", 
-                        "dojo_boss_1_pause",
-                        A_Pause
+                        "dojo_boss_1_initiate_aq", "dojo_boss_1_pause", A_Pause
                     ).set_length(m.animations.dojo_challenge.contact_frame)
             else:
                 world.event_scripts.delete_subscript_command_by_identifier(
-                    "dojo_boss_1_initiate_aq", 
-                    "dojo_boss_1_initiate"
+                    "dojo_boss_1_initiate_aq", "dojo_boss_1_initiate"
                 )
-            world.event_scripts.replace_subscript_command_by_identifier("EVENT_2067_action_queue_0", "jagger_looks_around", A_FaceNorthwest())
+            world.event_scripts.replace_subscript_command_by_identifier(
+                "EVENT_2067_action_queue_0", "jagger_looks_around", A_FaceNorthwest()
+            )
         return op
 
     # Flag as checked: DOJO_BOSS_1_DEFEATED
@@ -6845,29 +6896,42 @@ class DojoSecondFight(BossFightLocation):
         return can_access_monstro_town(world, inventory) and not_earlygame(
             world, inventory
         )
-    
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if not isinstance(self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)):
+        if not isinstance(
+            self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
+        ):
             m = self.prize.small_npc()
-            # boss room on revisit
-            if m.animations.dojo_challenge is not None:
+            if isinstance(
+                self.prize,
+                (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
+            ):
+                cast(
+                    ActionQueueAsync,
+                    world.event_scripts.get_command_by_identifier(
+                        "dojo_boss_2_initiate_aq"
+                    ),
+                ).set_subscript(get_mimic_rise_dojo())
+
+            elif m.animations.dojo_challenge is not None:
                 world.event_scripts.get_subscript_command_by_identifier(
-                    "dojo_boss_2_initiate_aq", 
+                    "dojo_boss_2_initiate_aq",
                     "dojo_boss_2_initiate",
-                    A_SetSpriteSequence
+                    A_SetSpriteSequence,
                 ).set_index(m.animations.dojo_challenge.sequence_id)
                 if m.animations.dojo_challenge.contact_frame is not None:
                     world.event_scripts.get_subscript_command_by_identifier(
-                        "dojo_boss_2_initiate_aq", 
-                        "dojo_boss_2_pause",
-                        A_Pause
+                        "dojo_boss_2_initiate_aq", "dojo_boss_2_pause", A_Pause
                     ).set_length(m.animations.dojo_challenge.contact_frame)
             else:
                 world.event_scripts.delete_subscript_command_by_identifier(
-                    "dojo_boss_2_initiate_aq", 
-                    "dojo_boss_2_initiate"
+                    "dojo_boss_2_initiate_aq", "dojo_boss_2_initiate"
                 )
         return op
 
@@ -6920,29 +6984,42 @@ class DojoThirdFight(BossFightLocation):
         return can_access_monstro_town(world, inventory) and not_earlygame(
             world, inventory
         )
-    
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if not isinstance(self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)):
+        if not isinstance(
+            self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
+        ):
             m = self.prize.small_npc()
-            # boss room on revisit
-            if m.animations.dojo_challenge is not None:
+            if isinstance(
+                self.prize,
+                (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
+            ):
+                cast(
+                    ActionQueueAsync,
+                    world.event_scripts.get_command_by_identifier(
+                        "dojo_boss_3_initiate_aq"
+                    ),
+                ).set_subscript(get_mimic_rise_dojo())
+
+            elif m.animations.dojo_challenge is not None:
                 world.event_scripts.get_subscript_command_by_identifier(
-                    "dojo_boss_3_initiate_aq", 
+                    "dojo_boss_3_initiate_aq",
                     "dojo_boss_3_initiate",
-                    A_SetSpriteSequence
+                    A_SetSpriteSequence,
                 ).set_index(m.animations.dojo_challenge.sequence_id)
                 if m.animations.dojo_challenge.contact_frame is not None:
                     world.event_scripts.get_subscript_command_by_identifier(
-                        "dojo_boss_3_initiate_aq", 
-                        "dojo_boss_3_pause",
-                        A_Pause
+                        "dojo_boss_3_initiate_aq", "dojo_boss_3_pause", A_Pause
                     ).set_length(m.animations.dojo_challenge.contact_frame)
             else:
                 world.event_scripts.delete_subscript_command_by_identifier(
-                    "dojo_boss_3_initiate_aq", 
-                    "dojo_boss_3_initiate"
+                    "dojo_boss_3_initiate_aq", "dojo_boss_3_initiate"
                 )
         return op
 
@@ -6993,29 +7070,42 @@ class DojoFourthFight(BossFightLocation):
         return can_access_monstro_town(world, inventory) and not_earlygame(
             world, inventory
         )
-    
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if not isinstance(self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)):
+        if not isinstance(
+            self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
+        ):
             m = self.prize.small_npc()
-            # boss room on revisit
-            if m.animations.dojo_challenge is not None:
+            if isinstance(
+                self.prize,
+                (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
+            ):
+                cast(
+                    ActionQueueAsync,
+                    world.event_scripts.get_command_by_identifier(
+                        "dojo_boss_4_initiate_aq"
+                    ),
+                ).set_subscript(get_mimic_rise_dojo())
+
+            elif m.animations.dojo_challenge is not None:
                 world.event_scripts.get_subscript_command_by_identifier(
-                    "dojo_boss_4_initiate_aq", 
+                    "dojo_boss_4_initiate_aq",
                     "dojo_boss_4_initiate",
-                    A_SetSpriteSequence
+                    A_SetSpriteSequence,
                 ).set_index(m.animations.dojo_challenge.sequence_id)
                 if m.animations.dojo_challenge.contact_frame is not None:
                     world.event_scripts.get_subscript_command_by_identifier(
-                        "dojo_boss_4_initiate_aq", 
-                        "dojo_boss_4_pause",
-                        A_Pause
+                        "dojo_boss_4_initiate_aq", "dojo_boss_4_pause", A_Pause
                     ).set_length(m.animations.dojo_challenge.contact_frame)
             else:
                 world.event_scripts.delete_subscript_command_by_identifier(
-                    "dojo_boss_4_initiate_aq", 
-                    "dojo_boss_4_initiate"
+                    "dojo_boss_4_initiate_aq", "dojo_boss_4_initiate"
                 )
         return op
 
@@ -7081,29 +7171,42 @@ class DojoFifthFight(BossFightLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_fifth_dojo_boss(world, inventory)
-    
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if not isinstance(self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)):
+        if not isinstance(
+            self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
+        ):
             m = self.prize.small_npc()
-            # boss room on revisit
-            if m.animations.dojo_challenge is not None:
+            if isinstance(
+                self.prize,
+                (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
+            ):
+                cast(
+                    ActionQueueAsync,
+                    world.event_scripts.get_command_by_identifier(
+                        "dojo_boss_5_initiate_aq"
+                    ),
+                ).set_subscript(get_mimic_rise_dojo())
+
+            elif m.animations.dojo_challenge is not None:
                 world.event_scripts.get_subscript_command_by_identifier(
-                    "dojo_boss_5_initiate_aq", 
+                    "dojo_boss_5_initiate_aq",
                     "dojo_boss_5_initiate",
-                    A_SetSpriteSequence
+                    A_SetSpriteSequence,
                 ).set_index(m.animations.dojo_challenge.sequence_id)
                 if m.animations.dojo_challenge.contact_frame is not None:
                     world.event_scripts.get_subscript_command_by_identifier(
-                        "dojo_boss_5_initiate_aq", 
-                        "dojo_boss_5_pause",
-                        A_Pause
+                        "dojo_boss_5_initiate_aq", "dojo_boss_5_pause", A_Pause
                     ).set_length(m.animations.dojo_challenge.contact_frame)
             else:
                 world.event_scripts.delete_subscript_command_by_identifier(
-                    "dojo_boss_5_initiate_aq", 
-                    "dojo_boss_5_initiate"
+                    "dojo_boss_5_initiate_aq", "dojo_boss_5_initiate"
                 )
         return op
 
@@ -7495,8 +7598,12 @@ class BeanValleyPlanterBossFight(BossFightLocation):
             )
         parent = super().post_unlocks(world)
         return EventScript(content + parent.contents + [Return()])
-    
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, (MegasmilaxBossFight)):
@@ -7509,9 +7616,12 @@ class BeanValleyPlanterBossFight(BossFightLocation):
             boss.set_y(thrax.y)
             boss.set_z(thrax.z)
 
-            world.event_scripts.get_script_by_id(E0817_BEAN_VALLEY_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER).insert_before_nth_command(0, RemoveObjectFromSpecificLevel(NPC_0, R254_BEAN_VALLEY_SMILAX_AREA))
+            world.event_scripts.get_script_by_id(
+                E0817_BEAN_VALLEY_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
+            ).insert_before_nth_command(
+                0, RemoveObjectFromSpecificLevel(NPC_0, R254_BEAN_VALLEY_SMILAX_AREA)
+            )
         return op
-
 
     # Flag as checked: BEAN_VALLEY_BOSS_DEFEATED
 
@@ -7875,12 +7985,18 @@ class StatueRoomBossFight(BossFightLocation):
             world, inventory
         )
 
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand], list[tuple[int, int]]]:
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, (DodoBossFight)):
             # wedding ending
-            world.event_scripts.delete_subscript_command_by_identifier("wedding_ending_aq", "wedding_ending_shift")
+            world.event_scripts.delete_subscript_command_by_identifier(
+                "wedding_ending_aq", "wedding_ending_shift"
+            )
 
             # statue game
             if not world.settings.isflag_enabled(KeepMinigameSpritesIntact):
@@ -7888,71 +8004,161 @@ class StatueRoomBossFight(BossFightLocation):
                 assert mo is not None
                 m = mo()
                 if m.animations.statue_peck is None:
-                    world.event_scripts.get_script_by_id(E0936_PECK_SUBROUTINE_LEFT_STATUE).set_contents(bonk.contents)
-                    world.event_scripts.get_script_by_id(E0937_PECK_SUBROUTINE_MIDDLE_STATUE).set_contents(bonk_mario.contents)
-                    cast(ActionQueueSync, world.event_scripts.get_command_by_identifier("dodo_starts_battle")).set_subscript([
-                        A_FaceSouthwest(),
-                        A_Pause(160),
-                    ])
+                    world.event_scripts.get_script_by_id(
+                        E0936_PECK_SUBROUTINE_LEFT_STATUE
+                    ).set_contents(bonk.contents)
+                    world.event_scripts.get_script_by_id(
+                        E0937_PECK_SUBROUTINE_MIDDLE_STATUE
+                    ).set_contents(bonk_mario.contents)
+                    cast(
+                        ActionQueueSync,
+                        world.event_scripts.get_command_by_identifier(
+                            "dodo_starts_battle"
+                        ),
+                    ).set_subscript(
+                        [
+                            A_FaceSouthwest(),
+                            A_Pause(160),
+                        ]
+                    )
                 else:
-                    world.event_scripts.get_script_by_id(E0936_PECK_SUBROUTINE_LEFT_STATUE).set_contents(gen_peck_left_subroutine(m.animations.statue_peck).contents)
-                    world.event_scripts.get_script_by_id(E0937_PECK_SUBROUTINE_MIDDLE_STATUE).set_contents(gen_peck_middle_subroutine(m.animations.statue_peck).contents)
-                    cast(ActionQueueSync, world.event_scripts.get_command_by_identifier("dodo_starts_battle")).set_subscript(gen_start_battle(world.get_sprite(m.base.sprite_id), m.animations.statue_peck))
+                    world.event_scripts.get_script_by_id(
+                        E0936_PECK_SUBROUTINE_LEFT_STATUE
+                    ).set_contents(
+                        gen_peck_left_subroutine(m.animations.statue_peck).contents
+                    )
+                    world.event_scripts.get_script_by_id(
+                        E0937_PECK_SUBROUTINE_MIDDLE_STATUE
+                    ).set_contents(
+                        gen_peck_middle_subroutine(m.animations.statue_peck).contents
+                    )
+                    cast(
+                        ActionQueueSync,
+                        world.event_scripts.get_command_by_identifier(
+                            "dodo_starts_battle"
+                        ),
+                    ).set_subscript(
+                        gen_start_battle(
+                            world.get_sprite(m.base.sprite_id), m.animations.statue_peck
+                        )
+                    )
                 if m.animations.look_at_ceiling_mold_id is not None:
-                    world.event_scripts.get_subscript_command_by_identifier("statue_keeper_introduced_aq", "statue_keeper_introduced_1", A_SetSpriteSequence).set_index(m.animations.look_at_ceiling_mold_id)
+                    world.event_scripts.get_subscript_command_by_identifier(
+                        "statue_keeper_introduced_aq",
+                        "statue_keeper_introduced_1",
+                        A_SetSpriteSequence,
+                    ).set_index(m.animations.look_at_ceiling_mold_id)
                 else:
-                    world.event_scripts.delete_subscript_command_by_identifier("statue_keeper_introduced_aq", "statue_keeper_introduced_1")
+                    world.event_scripts.delete_subscript_command_by_identifier(
+                        "statue_keeper_introduced_aq", "statue_keeper_introduced_1"
+                    )
                 if m.animations.statue_flustered is not None:
-                    world.event_scripts.get_subscript_command_by_identifier("statue_keeper_flustered_aq", "statue_keeper_flustered_1", A_SetSpriteSequence).set_index(m.animations.statue_flustered.sequence_id)
+                    world.event_scripts.get_subscript_command_by_identifier(
+                        "statue_keeper_flustered_aq",
+                        "statue_keeper_flustered_1",
+                        A_SetSpriteSequence,
+                    ).set_index(m.animations.statue_flustered.sequence_id)
                 else:
-                    world.event_scripts.delete_subscript_command_by_identifier("statue_keeper_flustered_aq", "statue_keeper_flustered_1")
-                spr =  world.sprites.sprites[m.base.sprite_id]
+                    world.event_scripts.delete_subscript_command_by_identifier(
+                        "statue_keeper_flustered_aq", "statue_keeper_flustered_1"
+                    )
+                spr = world.sprites.sprites[m.base.sprite_id]
                 assert spr is not None
-                has_walking_sequence = len(spr.animation.properties.sequences[0].frames) >= 2
-                has_back_walking_sequence = len(spr.animation.properties.sequences[1].frames) >= 2 and not is_swse_only(spr)
+                has_walking_sequence = (
+                    len(spr.animation.properties.sequences[0].frames) >= 2
+                )
+                has_back_walking_sequence = len(
+                    spr.animation.properties.sequences[1].frames
+                ) >= 2 and not is_swse_only(spr)
                 # walking from statue to statue
                 for aq, id in [
                     ("EVENT_3640_action_queue_271", "dodo_extra_sprite_1"),
                 ]:
                     if has_walking_sequence:
-                        world.event_scripts.replace_subscript_command_by_identifier(aq, id, A_SetSpriteSequence(index=2, is_sequence=True, looping=False, mirror_sprite=True))
+                        world.event_scripts.replace_subscript_command_by_identifier(
+                            aq,
+                            id,
+                            A_SetSpriteSequence(
+                                index=2,
+                                is_sequence=True,
+                                looping=False,
+                                mirror_sprite=True,
+                            ),
+                        )
                     else:
-                        world.event_scripts.delete_subscript_command_by_identifier(aq, id)
+                        world.event_scripts.delete_subscript_command_by_identifier(
+                            aq, id
+                        )
                 for aq, id in [
                     ("EVENT_3640_action_queue_273", "dodo_extra_sprite_2"),
                 ]:
                     if has_walking_sequence:
-                        world.event_scripts.replace_subscript_command_by_identifier(aq, id, A_SetSpriteSequence(index=1, is_sequence=True, looping=False, mirror_sprite=True))
+                        world.event_scripts.replace_subscript_command_by_identifier(
+                            aq,
+                            id,
+                            A_SetSpriteSequence(
+                                index=1,
+                                is_sequence=True,
+                                looping=False,
+                                mirror_sprite=True,
+                            ),
+                        )
                     else:
-                        world.event_scripts.delete_subscript_command_by_identifier(aq, id)
+                        world.event_scripts.delete_subscript_command_by_identifier(
+                            aq, id
+                        )
                 for aq, id in [
                     ("EVENT_3640_action_queue_304", "dodo_left_forward"),
                 ]:
                     if has_back_walking_sequence:
-                        world.event_scripts.replace_subscript_command_by_identifier(aq, id, A_SetSpriteSequence(index=4, is_mold=True))
+                        world.event_scripts.replace_subscript_command_by_identifier(
+                            aq, id, A_SetSpriteSequence(index=4, is_mold=True)
+                        )
                     else:
-                        world.event_scripts.delete_subscript_command_by_identifier(aq, id)
+                        world.event_scripts.delete_subscript_command_by_identifier(
+                            aq, id
+                        )
                 for aq, id in [
                     ("EVENT_3640_action_queue_306", "dodo_right_forward"),
                 ]:
                     if has_back_walking_sequence:
-                        world.event_scripts.replace_subscript_command_by_identifier(aq, id, A_SetSpriteSequence(index=5, is_mold=True))
+                        world.event_scripts.replace_subscript_command_by_identifier(
+                            aq, id, A_SetSpriteSequence(index=5, is_mold=True)
+                        )
                     else:
-                        world.event_scripts.delete_subscript_command_by_identifier(aq, id)
+                        world.event_scripts.delete_subscript_command_by_identifier(
+                            aq, id
+                        )
                 # head-shake
                 for aq, id in [
                     ("dodo_shake_head_aq", "dodo_shake_head_1"),
                     ("dodo_shake_head_aq", "dodo_shake_head_2"),
                 ]:
-                    world.event_scripts.replace_subscript_command_by_identifier(aq, id, A_SetSpriteSequence(index=0, is_mold=True, mirror_sprite=True))
+                    world.event_scripts.replace_subscript_command_by_identifier(
+                        aq,
+                        id,
+                        A_SetSpriteSequence(index=0, is_mold=True, mirror_sprite=True),
+                    )
                 # finished
-                world.event_scripts.delete_subscript_command_by_identifier("dodo_finished_aq", "dodo_finished_1")
-                world.event_scripts.delete_subscript_command_by_identifier("dodo_finished_aq_2", "dodo_finished_2")
-                world.event_scripts.delete_subscript_command_by_identifier("dodo_finished_aq_3", "dodo_finished_3")
-                world.event_scripts.delete_subscript_command_by_identifier("dodo_possibly_unused_aq", "dodo_possibly_unused")
-                world.event_scripts.delete_subscript_command_by_identifier("final_statue_peck_aq", "dodo_fakeout_1")
-                world.event_scripts.delete_subscript_command_by_identifier("final_statue_peck_aq", "dodo_fakeout_2")
-                
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "dodo_finished_aq", "dodo_finished_1"
+                )
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "dodo_finished_aq_2", "dodo_finished_2"
+                )
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "dodo_finished_aq_3", "dodo_finished_3"
+                )
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "dodo_possibly_unused_aq", "dodo_possibly_unused"
+                )
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "final_statue_peck_aq", "dodo_fakeout_1"
+                )
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "final_statue_peck_aq", "dodo_fakeout_2"
+                )
+
         return op
 
     # Flag as checked: STATUE_KEEPER_STAR_PIECE
@@ -8222,28 +8428,6 @@ class NimbusFinalBossFight(BossFightLocation):
             R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
             NPC_9,
             sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
-        ),
-    ]
-    _mook_henchman_slots = [
-        BossFightLocationHenchmanNPC(
-            [R411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST], [NPC_0]
-        ),
-        BossFightLocationHenchmanNPC(
-            [
-                R411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST,
-                R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
-            ],
-            [NPC_1, NPC_2],
-        ),
-        BossFightLocationHenchmanNPC(
-            [
-                R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
-                R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
-                R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
-                R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
-                R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
-            ],
-            [NPC_3, NPC_4, NPC_5, NPC_1, NPC_2],
         ),
     ]
     _statue_slots = [
@@ -8827,6 +9011,7 @@ class VolcanoExitBossFight(BossFightLocation):
                 R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
             ],
             [NPC_1, NPC_0, NPC_2],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -8834,6 +9019,7 @@ class VolcanoExitBossFight(BossFightLocation):
                 R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
             ],
             [NPC_2, NPC_3],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -8842,6 +9028,7 @@ class VolcanoExitBossFight(BossFightLocation):
                 R394_VOLCANO_POSTCD_AREA_05,
             ],
             [NPC_3, NPC_4, NPC_1],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -8850,6 +9037,7 @@ class VolcanoExitBossFight(BossFightLocation):
                 R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
             ],
             [NPC_4, NPC_0, NPC_5],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
     ]
 
@@ -8880,6 +9068,67 @@ class VolcanoExitBossFight(BossFightLocation):
                 )
         parent = super().post_unlocks(world)
         return EventScript(content + parent.contents + [Return()])
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
+        op = super().render(world)
+        if isinstance(self.prize, AxemRangersBossFight):
+            return op
+        assert isinstance(self.prize, BossFightPrize)
+        prize = self.prize
+
+        def slot_has_henchman(slot_index: int) -> bool:
+            return (
+                prize.character_henchmen is not None
+                and len(prize.character_henchmen) > slot_index
+            )
+
+        loops = 0
+
+        # Slot 0
+        if not slot_has_henchman(0):
+            world.event_scripts.delete_command_by_identifier("axem_henchman_1_aq")
+            world.event_scripts.delete_command_by_identifier("axem_henchman_1_aq_2")
+            world.event_scripts.delete_command_by_identifier("axem_henchman_1_aq_3")
+        else:
+            loops += 1
+
+        # Slot 1
+        if not slot_has_henchman(1):
+            world.event_scripts.delete_command_by_identifier("axem_henchman_2_aq")
+            world.event_scripts.delete_command_by_identifier("axem_henchman_2_aq_2")
+        else:
+            loops += 1
+
+        # Slot 2
+        if not slot_has_henchman(2):
+            world.event_scripts.delete_command_by_identifier("axem_henchman_3_aq")
+            world.event_scripts.delete_command_by_identifier("axem_henchman_3_aq_2")
+        else:
+            loops += 1
+
+        # Slot 3
+        if not slot_has_henchman(3):
+            world.event_scripts.delete_command_by_identifier("axem_henchman_4_aq")
+            world.event_scripts.delete_command_by_identifier("axem_henchman_4_aq_2")
+        else:
+            loops += 1
+
+        if loops == 0:
+            world.event_scripts.delete_command_by_identifier("axem_trampoline_aqueue")
+        else:
+            cast(
+                A_StartLoopNTimes,
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "axem_trampoline_aqueue",
+                    "axem_trampoline_loop",
+                ),
+            ).set_count(loops)
+
+        return op
 
     # Flag as checked: VOLCANO_LIBERATED
 
@@ -9453,6 +9702,41 @@ class ObstacleCourseFinalFight(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_keep(world, inventory) and not_earlygame(world, inventory)
 
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
+        op = super().render(world)
+        assert isinstance(self.prize, BossFightPrize)
+        if not isinstance(
+            self.prize,
+            (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
+        ):
+            m = self.prize.small_npc()
+            if m.animations.dojo_challenge is not None:
+                a = m.animations.dojo_challenge
+                cast(
+                    ActionQueueAsync,
+                    world.event_scripts.get_command_by_identifier(
+                        "keep_obstacle_boss_intro",
+                    ),
+                ).set_subscript(
+                    [
+                        A_FaceSouthwest(),
+                        A_VisibilityOn(),
+                        A_Pause(35),
+                        A_SetSpriteSequence(
+                            index=a.sequence_id, looping=False, is_sequence=True
+                        ),
+                    ]
+                )
+            else:
+                world.event_scripts.delete_command_by_identifier(
+                    "keep_obstacle_boss_intro"
+                )
+        return op
+
     # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
 
@@ -9664,6 +9948,88 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_keep(world, inventory) and not_earlygame(world, inventory)
 
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
+        op = super().render(world)
+        assert isinstance(self.prize, BossFightPrize)
+        if not isinstance(self.prize, KamekBossFight):
+            world.event_scripts.delete_command_by_identifier("kamek_palette")
+            m = self.prize.small_npc()
+            if isinstance(
+                self.prize,
+                (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
+            ):
+                cast(
+                    ActionQueueAsync,
+                    world.event_scripts.get_command_by_identifier(
+                        "keep_boss_1_animation_aq"
+                    ),
+                ).set_subscript(get_mimic_rise_kamek())
+                world.event_scripts.delete_command_by_identifier(
+                    "keep_boss_1_animation_pause"
+                )
+
+            elif (
+                m.animations.keep_challenge is not None
+                and m.animations.keep_challenge.total_duration is not None
+            ):
+                world.event_scripts.get_subscript_command_by_identifier(
+                    "keep_boss_1_animation_aq",
+                    "keep_boss_1_animation",
+                    A_SetSpriteSequence,
+                ).set_index(m.animations.keep_challenge.sequence_id)
+                cast(
+                    Pause,
+                    world.event_scripts.get_command_by_identifier(
+                        "keep_boss_1_animation_pause",
+                    ),
+                ).set_length(m.animations.keep_challenge.total_duration)
+            else:
+                world.event_scripts.delete_command_by_identifier(
+                    "keep_boss_1_animation_aq"
+                )
+
+            # rise script not used for box summon or battle halls, so have a separate if block
+            if (
+                m.animations.keep_summon is not None
+                and m.animations.keep_summon.total_duration is not None
+            ):
+                world.action_scripts.get_command_by_identifier("keep_battle_room_summon", A_SetSpriteSequence).set_index(m.animations.keep_summon.sequence_id)
+                cast(Pause, world.event_scripts.get_command_by_identifier("EVENT_941_pause_0")).set_length(m.animations.keep_summon.total_duration)
+                world.event_scripts.get_script_by_id(
+                    E2209_KEEP_1ST_BOSS_FIGHT
+                ).set_contents(
+                    [
+                        ActionQueueAsync(
+                            NPC_1,
+                            [
+                                A_FaceSoutheast(),
+                                A_SetSpriteSequence(
+                                    index=m.animations.keep_summon.sequence_id,
+                                    is_sequence=True,
+                                    looping=False,
+                                    mirror_sprite=True,
+                                ),
+                                A_Pause(m.animations.keep_summon.total_duration),
+                            ],
+                        ),
+                        Return(),
+                    ]
+                )
+            else:
+                world.event_scripts.get_script_by_id(
+                    E2209_KEEP_1ST_BOSS_FIGHT
+                ).set_contents(
+                    [
+                        ActionQueueAsync(NPC_1, [A_FaceSoutheast(), A_Pause(60)]),
+                        Return(),
+                    ]
+                )
+        return op
+
     # Flag as checked: KEEP_BOSS_1_DEFEATED
 
 
@@ -9692,6 +10058,17 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+
+    def render(self, world: GameWorld | None = None) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        assert world is not None
+
+        if not isinstance(self.prize, self._originally_held):
+            # only colour the chest gold if it's vanilla
+            world.event_scripts.delete_command_by_identifier("infinite_coin_chest_palette")
+            # give it a random sound effect
+            world.event_scripts.get_subscript_command_by_identifier("infinite_coin_chest_aq", "infinite_coin_chest_sfx", A_PlaySound).set_sound(random.randint(1, 162))
+        return op
 
     # flag as checked: npc 0 in room 266 has its object trigger disabled.
 
@@ -9722,6 +10099,38 @@ class KeepChandelierBossFight(BossFightLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
+        op = super().render(world)
+        assert isinstance(self.prize, BossFightPrize)
+        if not isinstance(self.prize, BoomerBossFight):
+            world.event_scripts.delete_command_by_identifier("kamek_palette")
+            m = self.prize.large_npc()
+            if (
+                m.animations.chandelier_challenge is not None
+                and m.animations.chandelier_challenge.total_duration is not None
+            ):
+                world.event_scripts.get_subscript_command_by_identifier(
+                    "chandelier_challenge_action_queue_0",
+                    "chandelier_challenge",
+                    A_SetSpriteSequence,
+                ).set_index(m.animations.chandelier_challenge.sequence_id)
+                world.event_scripts.get_subscript_command_by_identifier(
+                    "chandelier_challenge_action_queue_0",
+                    "chandelier_challenge_pause_45",
+                    A_Pause,
+                ).set_length(m.animations.chandelier_challenge.total_duration)
+            else:
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "chandelier_challenge_action_queue_0",
+                    "chandelier_challenge",
+                )
+        return op
+
 
     # Flag as checked: KEEP_BOSS_2_DEFEATED
 
@@ -9842,10 +10251,12 @@ class FactoryEntranceBossFight(BossFightLocation):
         BossFightLocationHenchmanNPC(
             [R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM],
             [NPC_1],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
             [R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM],
             [NPC_2],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
     ]
 
@@ -10060,11 +10471,13 @@ class InnerFactoryFirstFight(BossFightLocation):
             [NPC_7],
             PACK150_FACTORY_BOSS_RUSH_HENCHMAN,
             skip_swap_if_flag=KeepMinigameSpritesIntact,
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
             [R469_FACTORY_GROUNDS_AREA_01],
             [NPC_6],
             skip_swap_if_flag=KeepMinigameSpritesIntact,
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
     ]
 
@@ -10127,9 +10540,9 @@ class InnerFactorySecondFight(BossFightLocation):
         ),
     ]
     _character_henchman_slots = [
-        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_12]),
-        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_13]),
-        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_14]),
+        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_12], remove_if_not_filled=RemoveIfNotFilled.ALWAYS),
+        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_13], remove_if_not_filled=RemoveIfNotFilled.ALWAYS),
+        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_14], remove_if_not_filled=RemoveIfNotFilled.ALWAYS),
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -10140,6 +10553,30 @@ class InnerFactorySecondFight(BossFightLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
+        op = super().render(world)
+        if isinstance(self.prize, self._originally_held):
+            return op
+        assert isinstance(self.prize, BossFightPrize)
+        m = self.prize.small_npc()
+        look_up_replacements = [
+            ("factory_2nd_boss_look_up_aq_1", "factory_2nd_boss_look_up_1"),
+            ("factory_2nd_boss_look_up_aq_2", "factory_2nd_boss_look_up_2"),
+            ("factory_2nd_boss_look_up_aq_3", "factory_2nd_boss_look_up_3"),
+        ]
+        for eid, aid in look_up_replacements:
+            if m.animations.look_at_ceiling_mold_id is not None:
+                world.event_scripts.get_subscript_command_by_identifier(
+                    eid, aid, A_SetSpriteSequence
+                ).set_index(m.animations.look_at_ceiling_mold_id)
+            else:
+                world.event_scripts.delete_subscript_command_by_identifier(eid, aid)
+        return op
 
     # Flag as checked: INNER_FACTORY_ROOM_2_COMPLETED
 
@@ -10191,6 +10628,68 @@ class InnerFactoryThirdFight(BossFightLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int]],
+    ]:
+        op = super().render(world)
+        assert isinstance(self.prize, BossFightPrize)
+        prize = self.prize
+
+        def slot_has_henchman(slot_index: int) -> bool:
+            return (
+                prize.character_henchmen is not None
+                and len(prize.character_henchmen) > slot_index
+            )
+
+        # Slot 0
+        if slot_has_henchman(0):
+            assert prize.character_henchmen is not None
+            henchman = prize.character_henchmen[0]
+            anim = henchman.model()._animations.factory_pierce
+            if anim is not None and anim.total_duration is not None and anim.contact_frame is not None:
+                prepause = 32 - anim.total_duration
+                world.action_scripts.get_command_by_identifier("factory_3rd_boss_left_hammer_attack", A_SetSpriteSequence).set_index(anim.sequence_id)
+                world.action_scripts.get_command_by_identifier("factory_3rd_boss_left_hammer_attack_pause_32", A_Pause).set_length(anim.contact_frame)
+                if anim.speed is not NORMAL:
+                    world.action_scripts.scripts[A0962_FACTORY_3RD_BOSS_LEFT_HAMMER].insert_before_identifier("factory_3rd_boss_left_hammer_attack", A_SetSequenceSpeed(anim.speed))
+                world.action_scripts.scripts[A0962_FACTORY_3RD_BOSS_LEFT_HAMMER].insert_before_identifier("factory_3rd_boss_left_hammer_attack", A_Pause(prepause))
+            else:
+                pass
+
+        # Slot 1
+        if slot_has_henchman(1):
+            assert prize.character_henchmen is not None
+            henchman = prize.character_henchmen[1]
+            anim = henchman.model()._animations.factory_pierce
+            if anim is not None and anim.total_duration is not None and anim.contact_frame is not None:
+                prepause = 32 - anim.total_duration
+                world.action_scripts.get_command_by_identifier("factory_3rd_boss_mid_hammer_attack", A_SetSpriteSequence).set_index(anim.sequence_id)
+                world.action_scripts.get_command_by_identifier("factory_3rd_boss_mid_hammer_attack_pause_32", A_Pause).set_length(anim.contact_frame)
+                if anim.speed is not NORMAL:
+                    world.action_scripts.scripts[A0963_FACTORY_3RD_BOSS_MID_HAMMER].insert_before_identifier("factory_3rd_boss_mid_hammer_attack", A_SetSequenceSpeed(anim.speed))
+                world.action_scripts.scripts[A0963_FACTORY_3RD_BOSS_MID_HAMMER].insert_before_identifier("factory_3rd_boss_mid_hammer_attack", A_Pause(prepause))
+            else:
+                pass
+
+        # Slot 2
+        if slot_has_henchman(2):
+            assert prize.character_henchmen is not None
+            henchman = prize.character_henchmen[2]
+            anim = henchman.model()._animations.factory_pierce
+            if anim is not None and anim.total_duration is not None and anim.contact_frame is not None:
+                prepause = 32 - anim.total_duration
+                world.action_scripts.get_command_by_identifier("factory_3rd_boss_right_hammer_attack", A_SetSpriteSequence).set_index(anim.sequence_id)
+                world.action_scripts.get_command_by_identifier("factory_3rd_boss_right_hammer_attack_pause_32", A_Pause).set_length(anim.contact_frame)
+                if anim.speed is not NORMAL:
+                    world.action_scripts.scripts[A0964_FACTORY_3RD_BOSS_RIGHT_HAMMER].insert_before_identifier("factory_3rd_boss_right_hammer_attack", A_SetSequenceSpeed(anim.speed))
+                world.action_scripts.scripts[A0964_FACTORY_3RD_BOSS_RIGHT_HAMMER].insert_before_identifier("factory_3rd_boss_right_hammer_attack", A_Pause(prepause))
+            else:
+                pass
+
+        return op
 
     # Flag as checked: npc 10 in room 472 removed
 

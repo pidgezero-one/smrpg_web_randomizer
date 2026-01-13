@@ -23,6 +23,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_3
 from ..data.variables.variable_names import *
+from ..data.variables.overworld_sfx_names import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     MARIO,
     MALLOW,

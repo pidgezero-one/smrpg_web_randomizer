@@ -1451,11 +1451,19 @@ class RiverLocation(StandardPrizeLocation):
         return self.prize.river_grant
 
 
+class RemoveIfNotFilled(StrEnum):
+    """Controls whether unfilled henchman slot NPCs should be hidden."""
+    NEVER = "never"  # Never hide unfilled slots (default)
+    ALWAYS = "always"  # Always hide unfilled slots
+    IF_ANY_FILLED = "if_any_filled"  # Only hide if at least one slot of this type is filled
+
+
 class BossFightLocationHenchmanNPC:
     _pack_id: int | None = None
     _room_ids: list[int]
     _npc_ids: list[AreaObject]
     _skip_swap_if_flag: list[type] | None = None
+    _remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER
 
     @property
     def room_ids(self) -> list[int]:
@@ -1473,16 +1481,22 @@ class BossFightLocationHenchmanNPC:
     def skip_swap_if_flag(self) -> list[type] | None:
         return self._skip_swap_if_flag
 
+    @property
+    def remove_if_not_filled(self) -> RemoveIfNotFilled:
+        return self._remove_if_not_filled
+
     def __init__(
         self,
         room_ids: list[int],
         npc_ids: list[AreaObject],
         pack_id: int | None = None,
         skip_swap_if_flag: type | list[type] | None = None,
+        remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER,
     ):
         self._room_ids = room_ids
         self._npc_ids = npc_ids
         self._pack_id = pack_id
+        self._remove_if_not_filled = remove_if_not_filled
         if skip_swap_if_flag is None:
             self._skip_swap_if_flag = None
         elif isinstance(skip_swap_if_flag, list):
@@ -1830,7 +1844,6 @@ class BossFightLocation(PrizeLocation):
                 assert room is not None
                 obj = room.get_npc_by_target_id(room_target)
                 assert obj is not None
-                assert henchman.model is not None
                 obj._npc = henchman.model().base
                 if slot.pack_id is not None:
                     if isinstance(obj, BattlePackNPC):
@@ -1858,6 +1871,51 @@ class BossFightLocation(PrizeLocation):
             henchmen_assignments: List of (slot, henchman) tuples for all assigned henchmen.
         """
         pass
+
+    def _hide_unfilled_henchman_slots(
+        self,
+        world: GameWorld,
+        henchmen_assignments: list[
+            tuple[BossFightLocationHenchmanNPC, BossFightHenchman]
+        ],
+    ) -> None:
+        """Hide NPCs for unfilled henchman slots based on their remove_if_not_filled setting.
+
+        Args:
+            world: The game world instance.
+            henchmen_assignments: List of (slot, henchman) tuples for assigned henchmen.
+        """
+        assigned_slots = {slot for slot, _ in henchmen_assignments}
+
+        def process_slot_list(
+            slots: list[BossFightLocationHenchmanNPC] | None,
+        ) -> None:
+            if slots is None:
+                return
+            # Count how many slots of this type were filled (excluding skipped slots)
+            active_slots = [s for s in slots if not s.should_skip_swap(world)]
+            filled_count = sum(1 for s in active_slots if s in assigned_slots)
+
+            for slot in slots:
+                # Skip if slot was assigned or should skip swap
+                if slot in assigned_slots or slot.should_skip_swap(world):
+                    continue
+
+                should_hide = False
+                if slot.remove_if_not_filled == RemoveIfNotFilled.ALWAYS:
+                    should_hide = True
+                elif slot.remove_if_not_filled == RemoveIfNotFilled.IF_ANY_FILLED:
+                    should_hide = filled_count > 0
+
+                if should_hide:
+                    for room_id, npc_id in zip(slot.room_ids, slot.npc_ids):
+                        rm = world.rooms._rooms[room_id]
+                        assert rm is not None
+                        rm.get_npc_by_target_id(npc_id).set_visible(False)
+
+        process_slot_list(self._character_henchman_slots)
+        process_slot_list(self._mook_henchman_slots)
+        process_slot_list(self._tiny_henchman_slots)
 
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
@@ -1970,6 +2028,8 @@ class BossFightLocation(PrizeLocation):
         if not prize_matches_original:
             henchmen_event_packs, henchmen_assignments = self._apply_henchmen(world)
             self._on_henchmen_assigned(world, henchmen_assignments)
+            # Hide NPCs for unfilled henchman slots
+            self._hide_unfilled_henchman_slots(world, henchmen_assignments)
         else:
             henchmen_event_packs = []
 
