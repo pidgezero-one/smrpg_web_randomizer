@@ -1,4 +1,4 @@
-# E3840_EMPTY
+# E3840_STARTER_DEBUG_ITEMS
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,6 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnterArea(room_id=R439_BOWSERS_KEEP_OUTSIDE_TALK_TO_EXOR, face_direction=NORTHEAST, x=4, y=39, z=0, run_entrance_event=True),
 	Return()
 ])

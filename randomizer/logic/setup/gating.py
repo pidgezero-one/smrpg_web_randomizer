@@ -376,3 +376,7 @@ def apply_gating_settings(world: GameWorld) -> None:
     world.event_scripts.get_script_by_id(
         E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
     ).set_contents(world.event_2496_startup)
+
+    # Apply debug starting items if debug mode is enabled
+    from .debug import apply_debug_start_items
+    apply_debug_start_items(world)

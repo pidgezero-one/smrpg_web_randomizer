@@ -1397,7 +1397,9 @@ from ..types.prizelocation import (
     BossFightLocation,
     StarPieceLocation,
     CharacterRecruitmentLocation,
+    StandingLocation,
 )
+from ..types.prize import CoinPrize, FrogCoinPrize
 
 
 def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
@@ -1411,12 +1413,26 @@ def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
     return name
 
 
+def _is_freestanding_coin_location(cls: type[PrizeLocation]) -> bool:
+    """Check if a location is a freestanding item that originally held coins (not frog coins)."""
+    if not issubclass(cls, StandingLocation):
+        return False
+    originally_held = getattr(cls, "_originally_held", None)
+    if originally_held is None:
+        return False
+    # Check if it's a CoinPrize but not a FrogCoinPrize
+    return issubclass(originally_held, CoinPrize) and not issubclass(originally_held, FrogCoinPrize)
+
+
 # Build enum members dynamically from prizelocations
 _item_check_members = {}
 _boss_fight_check_members = {}
 _star_piece_check_members = {}
 for cls in vars(prizelocations).values():
     if isinstance(cls, type) and issubclass(cls, PrizeLocation) and hasattr(cls, "_id"):
+        # Skip freestanding coin locations - they always get their original items
+        if _is_freestanding_coin_location(cls):
+            continue
         attr_name = _location_class_to_attr_name(cls)
         if issubclass(cls, StarPieceLocation) and cls is not StarPieceLocation:
             _star_piece_check_members[attr_name] = cls

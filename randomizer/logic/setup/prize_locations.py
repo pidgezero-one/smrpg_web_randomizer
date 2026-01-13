@@ -813,9 +813,28 @@ def set_locations(world: GameWorld) -> None:
     ]
 
     invisible_flag_locations: dict[type[PrizeLocation], PrizeLocation] = {}
+
+    # Check for debug override of invisible flags
+    debug_invisible_flags: list[type] | None = None
+    if world.settings.debug_mode:
+        from randomizer.debug import load_debug_config, get_location_class
+        config = load_debug_config()
+        flag_names = config.get("invisible_flags", [])
+        if len(flag_names) == 3:
+            debug_invisible_flags = []
+            for name in flag_names:
+                cls = get_location_class(name)
+                if cls is not None:
+                    debug_invisible_flags.append(cls)
+                else:
+                    debug_invisible_flags = None
+                    break
+
     for i in range(0, 3):
         # choose the three invisible item locations
-        if not world.settings.isflag_enabled(InvisibleFlagsSetting):
+        if debug_invisible_flags is not None:
+            location_cls = debug_invisible_flags[i]
+        elif not world.settings.isflag_enabled(InvisibleFlagsSetting):
             location_cls = invisible_item_pool[i]
         else:
             location_cls = random.choice(invisible_item_pool)

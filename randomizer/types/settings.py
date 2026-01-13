@@ -19,6 +19,15 @@ class Settings:
     _is_flag_value_cache: dict[tuple[type[Flag], Any], bool]
 
     @property
+    def debug_mode(self) -> bool:
+        """Whether debug mode is enabled."""
+        return self._debug_mode
+
+    @debug_mode.setter
+    def debug_mode(self, value: bool) -> None:
+        self._debug_mode = value
+
+    @property
     def override(self) -> dict:
         """Override certain settings (developer mode)"""
         return self._override

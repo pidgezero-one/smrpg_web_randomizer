@@ -892,7 +892,7 @@ world_map_locations[OW54_COAL_MINES_BOWSERS_KEEP] = WorldMapLocation(
     y=0,
     show_check_flag=MAP_UNUSED_DOTS,
     go_location=False,
-    run_event=E3840_EMPTY)
+    run_event=E3840_STARTER_DEBUG_ITEMS)
 
 world_map_locations[OW55_FACTORY_BOWSERS_KEEP] = WorldMapLocation(
     index=55,
@@ -900,7 +900,7 @@ world_map_locations[OW55_FACTORY_BOWSERS_KEEP] = WorldMapLocation(
     y=0,
     show_check_flag=MAP_UNUSED_DOTS,
     go_location=False,
-    run_event=E3840_EMPTY)
+    run_event=E3840_STARTER_DEBUG_ITEMS)
 
 
 # World Map Location Collection

@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING
 from randomizer.types.prizelocation import StandingLocation
 
 from ..placement import place
-from ...types.prize import RandomPrizeSubstitute, CoinPrize, FPFlowerPrize
+from ...types.prize import RandomPrizeSubstitute, CoinPrize, FPFlowerPrize, FrogCoinPrize
 from ..utils import debug_time
 from ...progression.prizes import RecoveryMushroomPrize, FrogCoin1Prize
 from ...progression.prizelocations import MushroomKingdomInnPurchaseLocation
@@ -292,6 +292,37 @@ def shuffle_prizes(world: GameWorld) -> None:
     # Start off emptying every location of every type
     for loc in world.locations.values():
         loc.set_prize(None)
+
+    # Apply debug overrides first (hard-set locations before shuffle)
+    debug_prizes_to_remove: dict[type, int] = {}
+    if world.settings.debug_mode:
+        from randomizer.debug import load_debug_config, get_prize_class, get_location_class
+        config = load_debug_config()
+        overrides = config.get("items", {}).get("override", {})
+
+        for location_name, prize_name in overrides.items():
+            location_cls = get_location_class(location_name)
+            prize_cls = get_prize_class(prize_name)
+
+            if location_cls is None or prize_cls is None:
+                continue
+            if location_cls not in world.locations:
+                print(f"Warning: Location '{location_name}' not in world.locations")
+                continue
+
+            location = world.locations[location_cls]
+            location.set_prize(prize_cls())
+
+            # Track prize to remove from pool (one instance per override)
+            debug_prizes_to_remove[prize_cls] = debug_prizes_to_remove.get(prize_cls, 0) + 1
+
+    # Helper to check if prize should be skipped for debug override
+    def should_skip_for_debug(prize_cls: type) -> bool:
+        if prize_cls in debug_prizes_to_remove and debug_prizes_to_remove[prize_cls] > 0:
+            debug_prizes_to_remove[prize_cls] -= 1
+            print(f"Debug: Removed one {prize_cls.__name__} from pool")
+            return True
+        return False
 
     # Define which items should be considered highest priority to place
     unlocks_other_checks: list[type[Prize]] = [
@@ -639,6 +670,18 @@ def shuffle_prizes(world: GameWorld) -> None:
             else:
                 progression_prizes.append(loc.originally_held())  # type: ignore
 
+    # Always exclude freestanding coin locations (not frog coins) from shuffling
+    freestanding_coin_locations = [
+        l
+        for l in world.locations.values()
+        if isinstance(l, StandingLocation)
+        and l.originally_held is not None
+        and isinstance(l.originally_held(), CoinPrize)
+        and not isinstance(l.originally_held(), FrogCoinPrize)
+    ]
+    for loc in freestanding_coin_locations:
+        loc.set_prize(loc.originally_held())  # type: ignore
+
     if not world.settings.isflag_enabled(ShuffleCoins):
         coin_locations = [
             l
@@ -742,23 +785,28 @@ def shuffle_prizes(world: GameWorld) -> None:
                 continue
         is_progress_item = [p for p in unlocks_other_checks if isinstance(loc.originally_held(), p)]
         if len(is_progress_item) > 0:
-            progression_prizes.append(loc.originally_held())
+            if not should_skip_for_debug(type(loc.originally_held())):
+                progression_prizes.append(loc.originally_held())
             continue
         is_important_item = [p for p in should_otherwise_include if isinstance(loc.originally_held(), p)]
         if len(is_important_item) > 0:
-            must_include.append(loc.originally_held())
+            if not should_skip_for_debug(type(loc.originally_held())):
+                must_include.append(loc.originally_held())
             continue
         elif world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
             if isinstance(
                 loc.originally_held(),
                 (RecoveryMushroomPrize, FPFlowerPrize, FrogCoin1Prize),
             ):
-                not_important.append(loc.originally_held())
+                if not should_skip_for_debug(type(loc.originally_held())):
+                    not_important.append(loc.originally_held())
             else:
-                must_include.append(loc.originally_held())
+                if not should_skip_for_debug(type(loc.originally_held())):
+                    must_include.append(loc.originally_held())
             continue
         if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
-            not_important.append(loc.originally_held())
+            if not should_skip_for_debug(type(loc.originally_held())):
+                not_important.append(loc.originally_held())
         else:
             not_important.append(RandomPrizeSubstitute().generate(world, loc))
             

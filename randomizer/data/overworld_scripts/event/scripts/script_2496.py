@@ -127,6 +127,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1222_STARTING_CHARACTER_3),
 	RunEventAsSubroutine(E1223_STARTING_CHARACTER_4),
 	RunEventAsSubroutine(E1224_STARTING_CHARACTER_5),
+    RunEventAsSubroutine(E3840_STARTER_DEBUG_ITEMS),
     RunEventAsSubroutine(E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START),
 	Set7000ToPartySize(),
 	CompareVarToConst(PRIMARY_TEMP_7000, 4),
