@@ -583,7 +583,7 @@ def shuffle_shops(world: GameWorld) -> None:
          high_item.room_service_price, high_item.room_service_price, type(high_item)]
     )
     for id, val in updates:
-        cmd = cast(SetVarToConst, world.event_scripts.get_command_by_identifier(id))
+        cmd = world.event_scripts.get_command_by_identifier(id, SetVarToConst)
         var = cmd.address
         cmd.set_value_and_address(var, val)
 
@@ -608,7 +608,7 @@ def shuffle_shops(world: GameWorld) -> None:
         [type(b) for b in bi]
     )
     for id, val in bomb_updates:
-        cmd = cast(SetVarToConst, world.event_scripts.get_command_by_identifier(id))
+        cmd = world.event_scripts.get_command_by_identifier(id, SetVarToConst)
         var = cmd.address
         cmd.set_value_and_address(var, val)
     

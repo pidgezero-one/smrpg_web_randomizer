@@ -1892,7 +1892,7 @@ class BossShuffleScaleStats(SelectOneFlag[BossScaleOptions]):
 <br>
 <br><b>Completely random</b>: A boss fight will inherit the relative stats of a random other location, regardless of position. For example, Culex could be placed in Mushroom Way, but have 1200 HP because he's inherited Belome 2's original stats. Only use this option if you have a reasonable expectation that the seed may not be feasible to complete."""
     choices = [o for o in BossScaleOptions]
-    _default = BossScaleOptions.VANILLA
+    _default = BossScaleOptions.MATCH
     _id = "bossscale"
     _requires_all = [(BossShuffle(), True)]
 

@@ -9218,7 +9218,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                 and m.animations.keep_summon.total_duration is not None
             ):
                 world.action_scripts.get_command_by_identifier("keep_battle_room_summon", A_SetSpriteSequence).set_index(m.animations.keep_summon.sequence_id)
-                cast(Pause, world.event_scripts.get_command_by_identifier("EVENT_941_pause_0")).set_length(m.animations.keep_summon.total_duration)
+                world.event_scripts.get_command_by_identifier("EVENT_941_pause_0", Pause).set_length(m.animations.keep_summon.total_duration)
                 world.event_scripts.get_script_by_id(
                     E0942_KEEP_FIRST_BOSS_SUMMON_CHEST
                 ).set_contents(

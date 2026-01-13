@@ -13,6 +13,7 @@ from randomizer.types.prize import BossFightPrize, CharacterPrize
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import (
     ScreenFlashWithDuration,
     AttackTimerBegins,
+    DefineObjectQueue,
 )
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments import NO_COLOUR
 
@@ -128,7 +129,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
                 NO_COLOUR
             )
 
-        # Delete flash commands
+        # Delete flash commands # 
         deletes = [
             "command_0x35BE52",  # geno flash
             "geno_blast_effect",  # geno blast
@@ -149,6 +150,14 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         ]
         for identifier in deletes:
             world.battle_animations[0x35].delete_command_by_name(identifier)
+        # geno flash is a queue entry, move ptr to the command that comes after it
+        doq = world.battle_animations[0x35].get_command_by_name("command_0x35BE06", DefineObjectQueue)
+        doq.set_destinations([
+            doq.destinations[0].label,
+            "geno_flash_begins_if_accessibility_enabled",
+            *[d.label for d in doq.destinations[2:]]
+        ])
+
         deletes_3A = ["smithy_delete_1", "smithy_delete_2"]
         for identifier in deletes_3A:
             world.battle_animations[0x3A].delete_command_by_name(identifier)

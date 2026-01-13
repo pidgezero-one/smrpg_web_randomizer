@@ -579,7 +579,7 @@
                 // Apply flag requirements from requires_all/requires_any/disabled_if_all
                 applyFlagRequirements();
 
-                let mode = $('#mode').val();
+                let mode = 'open';  // Linear mode is obsolete, always use open
 
                 flags_grouped = {}
                 for (let flag of FLAGS) {
@@ -626,65 +626,21 @@
                     $("#seed").val("");
                 });
 
-                // Randomization mode
-                $("#mode").change((event) => {
-                    let mode = $(event.target).val();
-                    localforage.setItem("rom.mode", mode);
-
-                    // Show description for the selected mode.
-                    $('.mode-description').hide();
-                    $(`#mode-description-${mode}`).show();
-
-                    // Show flags that are for this mode only.
-                    let flags = $('.flag-container');
-                    flags.not(`.flag-${mode}`).hide();
-                    flags.filter(`.flag-${mode}`).show();
-
-                    // Hide categories that have no visible flags for this mode.
-                    $(".category-container").show().each((index, elem) => {
-                        if ($(elem).find(`.card > .card-body > .flag-${mode}`).length === 0 && $(elem).find(`.card > .card-body > .subcategory`).length === 0) {
-                            $(elem).hide();
-                        } else {
-                            $(elem).show();
-                        }
-                    });
-
-                    // Rebuild flag string for new flags.
-                    buildFlagString();
-                });
-
-                stored_flag_string = ""
+                // Show all open mode flags (linear mode is obsolete)
+                let flags = $('.flag-container');
+                flags.filter('.flag-open').show();
 
                 // Apply stored flags, if any.
                 localforage.getItem("rom.flags").then((value_flags) => {
                     localforage.getItem("rom.cosmetics").then((value_cosmetics) => {
-                        value = `${value_flags}     ${value_cosmetics}`
-                        if (value) {
-                            stored_flag_string = value
+                        let stored_flag_string = `${value_flags || ''}     ${value_cosmetics || ''}`.trim();
+
+                        // Build initial flag string
+                        buildFlagString();
+
+                        if (stored_flag_string) {
+                            applyFlags(stored_flag_string, true);
                         }
-                        
-
-                        localforage.getItem("rom.mode").then((value) => {
-                            let elem = $("#mode");
-                            if (value === null) {
-                                value = 'open';
-                            }
-
-                            // If they had an old mode value cached, default to open mode.
-                            if (elem.prop('selectedIndex') === -1) {
-                                elem.val('open');
-                            }
-
-                            elem.change();
-
-                            
-
-                            if (!!stored_flag_string) {
-                                applyFlags(stored_flag_string, true);
-                            }
-                        });
-
-
                     });
                 });
 

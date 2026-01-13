@@ -779,6 +779,11 @@ class GameWorld:
             except Exception as e:
                 # Re-raise unexpected exceptions
                 raise
+
+        # Apply shuffle results to game data AFTER successful placement
+        # This must be outside the retry loop because it modifies event scripts
+        # which can't be undone on retry
+        self._apply_shuffle_results()
             
         # TODO: update sprite pointers for new ally IDs
         # TODO: look at 0x35xxxx report and free up data
@@ -896,10 +901,13 @@ class GameWorld:
             json.dump(self.spoiler, f, indent=2, default=str)
 
         post_shuffle_cleanup(self)
+
+    def _apply_shuffle_results(self):
+        """Apply shuffle results to game data. Called after successful shuffle."""
         apply_shuffler_results_to_game_data(self)
         # Note:
         # apply_shuffler_results_to_game_data is meant to look at the shuffler results and materialize them
-        # by changing the NPC models in rooms, updating event scripts with boss animation replacements, 
+        # by changing the NPC models in rooms, updating event scripts with boss animation replacements,
         # build the events that control which chest grants you which item, etc.
         # Most logic for an individual check should go in that check's render(world) method.
         # Business logic in apply_shuffler_results_to_game_data is meant for materializing things that
@@ -1169,7 +1177,7 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.mario_palette.heated_sprite().items():
                 patch.add_data(i, p)
-            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.mario_palette.hot_spring_reset_row
             )
         if self.overworld_character.ally.index == MALLOW_Ally.index:
@@ -1183,7 +1191,7 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.mallow_palette.heated_sprite().items():
                 patch.add_data(i, p)
-            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.mallow_palette.hot_spring_reset_row
             )
         if self.overworld_character.ally.index == GENO_Ally.index:
@@ -1197,7 +1205,7 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.geno_palette.heated_sprite().items():
                 patch.add_data(i, p)
-            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.geno_palette.hot_spring_reset_row
             )
         if self.overworld_character.ally.index == BOWSER_Ally.index:
@@ -1211,7 +1219,7 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.bowser_palette.heated_sprite().items():
                 patch.add_data(i, p)
-            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.bowser_palette.hot_spring_reset_row
             )
         if self.overworld_character.ally.index == TOADSTOOL_Ally.index:
@@ -1225,7 +1233,7 @@ class GameWorld:
                 patch.add_data(i, p)
             for i, p in self.toadstool_palette.heated_sprite().items():
                 patch.add_data(i, p)
-            cast(PaletteSet, self.event_scripts.get_command_by_identifier("hot_spring_reset_palette")).set_palette_set(
+            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.toadstool_palette.hot_spring_reset_row
             )
         patch.add_dict(self.mario_palette.standard_patch())

@@ -890,7 +890,7 @@ def set_locations(world: GameWorld) -> None:
     world.extra_star_piece_locations = copy(world.star_piece_locations)
     if world.settings.isflag_enabled(StarPieceAvailability):
         world.extra_star_piece_locations.extend(world.standard_locations)
-        cast(JmpToEvent, world.event_scripts.get_command_by_identifier("EVENT_947_jmp_to_event_107")).set_destination(E0949_FROGFUCIUS_HINT_TREASURE_CHESTS)
+        world.event_scripts.get_command_by_identifier("EVENT_947_jmp_to_event_107", JmpToEvent).set_destination(E0949_FROGFUCIUS_HINT_TREASURE_CHESTS)
     world.key_item_locations = [
         loc for loc in world.locations.values() if isinstance(loc, KeyItemLocation)
     ]

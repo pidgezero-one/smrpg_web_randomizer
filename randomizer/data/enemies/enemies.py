@@ -8359,6 +8359,7 @@ ENEMIES = EnemyCollection([
     BANDANAREDEnemyHenchman(),  # monster_id: 124
     BOWSERCOPYSEnemy(),  # monster_id: 125
     BLOOBEREnemyHenchman(),  # monster_id: 126
+    BOOSTERDUMMY(),  # monster_id: 127
     APPRENTICEEnemyStatic(),  # monster_id: 128
     TOADSTOOL3Enemy(),  # monster_id: 129
     PIRANHAPLANTEnemyHenchman(),  # monster_id: 130

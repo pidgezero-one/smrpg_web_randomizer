@@ -70,7 +70,7 @@ def apply_equipment_settings(world: GameWorld) -> None:
                 random.choice([Element.ICE, Element.FIRE, Element.JUMP, Element.THUNDER])
             )
             if isinstance(spell, BowserCrushSpell):
-                cast(ScreenFlash, world.battle_animations[0x35].get_command_by_name("bowser_crush_colour")).set_colour(
+                world.battle_animations[0x35].get_command_by_name("bowser_crush_colour", ScreenFlash).set_colour(
                     AQUA if spell.element == Element.ICE else
                     RED if spell.element == Element.FIRE else
                     WHITE if spell.element == Element.THUNDER else YELLOW
