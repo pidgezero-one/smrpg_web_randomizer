@@ -702,9 +702,6 @@ class TotalStarPieces(RangeFlag):
     _requires_all = [(ShuffleStarPieces(), True)]
 
 
-# EnabledBossChecks and EnabledStarPieceChecks are defined after delayed imports below
-
-
 # ✅
 class ProgressionLogicDifficultyOptions(CategorizationOption):
     """Enumeration for progression logic difficulty levels"""
@@ -1457,7 +1454,7 @@ class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
 
 # ✅
 class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
-    _name = "Boss fight checks"
+    _name = "Boss location star pieces"
     _description = """If a check is highlighted (white text over blue), it is eligible to contain a boss fight that un-gates an area.
 <br>
 <br>If a check is not highlighted, its contents can still be shuffled, but it will not contain a boss fight that un-gates an area.
@@ -1466,20 +1463,6 @@ class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
     _id = "bosses"
     _default = {o: True for o in BossFightCheckEnum.__members__.values()}
     _requires_all = [(ShuffleStarPieces(), True)]
-
-
-# ✅
-class EnabledStarPieceChecks(CategorizationFlag[StarPieceCheckEnum]):
-    _name = "Star Piece checks"
-    _description = """If a check is highlighted (white text over blue), it is eligible to have a Star Piece.
-<br>
-<br>If a check is not highlighted, it will never have a Star Piece.
-<br>
-<br>This only applies to star piece drops that apply to boss fights. Bosses with multiple drops (such as Bandit's Way dropping 2 key items) may still have a Star Piece if "Star Pieces Anywhere" is enabled.
-<br>
-<br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
-    _id = "stars"
-    _default = {o: True for o in StarPieceCheckEnum.__members__.values()}
 
 
 # ✅

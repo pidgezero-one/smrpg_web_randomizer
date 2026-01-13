@@ -1,13 +1,16 @@
 """Apply the results of the shuffler"""
 
-from typing import cast
+from __future__ import annotations
+from typing import cast, TYPE_CHECKING
 from uuid import uuid4
 import random
 import statistics
 
+if TYPE_CHECKING:
+    from ..types.gameworld import GameWorld
+
 from randomizer.data.variables.dialog_names import DI1163_BOOSTER_TOWER_DOOR_OPEN, DI2320_TOADSTOOL_ROOM_HINT, DI2908_TREASURE_SELLER_ITEM_2, DI2911_TREASURE_SELLER_ITEM_1, DI2914_TREASURE_SELLER_ITEM_3
 from randomizer.data.variables.sprite_names import SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO
-from ..types.gameworld import GameWorld
 from ..types.prizelocation import (
     BossFightLocation,
     PrizeRow,

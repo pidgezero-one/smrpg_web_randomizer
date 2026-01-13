@@ -320,7 +320,7 @@ class GameWorld:
         return d
 
     def update_dialog(self, dialog_id: int, new_dialog: str):
-        self.update_dialog(dialog_id, new_dialog)
+        self.overworld_dialogs.replace_dialog(dialog_id, new_dialog)
 
     def get_battle_dialog(self, dialog_id: int):
         d = self.battle_dialogs.battle_dialogs[dialog_id]
@@ -687,7 +687,7 @@ class GameWorld:
         print(seed)
         print(settings.flag_string)
         self._progress_callback = progress_callback
-        self._report_progress("Importing game data", 1)
+        self._report_progress("Parsing settings...", 0)
         self.allies = allies
         self.seed = seed
         self.version = version
@@ -718,8 +718,6 @@ class GameWorld:
         random.seed(self.seed)
 
         self.event_2496_startup: list[UsableEventScriptCommand] = []
-
-        self._report_progress("Applying settings", 3)
 
         # prize locations HAVE to all be defined by this point
         # not shuffled, just determined if they exist in the seed or not
@@ -785,13 +783,10 @@ class GameWorld:
         # TODO: update sprite pointers for new ally IDs
         # TODO: look at 0x35xxxx report and free up data
 
-        self._report_progress("Randomizing shops", 45)
-
         # Shop shuffling happens after equipment randomization so we can score equipment
         if self.settings.isflag_enabled(ShuffleShops):
             self._shuffle_shops()
 
-        self._report_progress("Randomizing enemies", 50)
         if self.settings.isflag_enabled(EnemyAttacks):
             self._randomize_enemy_attacks_and_spells()
 
@@ -852,7 +847,6 @@ class GameWorld:
 
         if self.settings.isflag_enabled(EnemyFormations):
             self._randomize_enemy_formations()
-        self._report_progress("Randomizing characters", 55)
 
         # Randomize character stats
         if self.settings.isflag_enabled(CharacterStats):
@@ -865,13 +859,12 @@ class GameWorld:
 
         # Apply EXP multiplier
         self._apply_exp_multiplier()
-        self._report_progress("Applying minigame settings", 60)
 
         # Apply minigame settings
         apply_minigame_settings(self)
 
         self._rebuild_hash()
-        self._report_progress("Applying cosmetics", 70)
+        self._report_progress("Applying cosmetics...", 40)
 
         # Apply cosmetic settings (re-seeded for variation between generations)
         apply_cosmetic_settings(self)
@@ -882,10 +875,9 @@ class GameWorld:
             json.dump(self.spoiler, f, indent=2, default=str)
 
     def _shuffle_items(self):
+        self._report_progress("Shuffling checks...", 10)
 
         # determine which checks exist in this seed
-
-        self._report_progress("Building check list", 5)
         # this doesn't mean which ones are shuffled, it means which ones can be accessed at all
         # exclusions would be things like remake checks, surplus invisible item checks, super jump prizes when super jump not usable
         set_locations(self)
@@ -893,7 +885,6 @@ class GameWorld:
         # shuffle according to settings
         shuffle_prizes(self)
 
-        self._report_progress("Applying cleanup settings", 39)
         # replace bad items with coins, supplant YouMissed, etc
 
         # Write spoiler to JSON file
@@ -984,14 +975,17 @@ class GameWorld:
         cast(SetAMEM16BitToConst, right_eye_revival_cmd).set_value(round(right_eye.hp * 1.2))
 
     def get_patch(self) -> Patch:
-        self._report_progress("Rewriting game data", 75)
+        self._report_progress("Calculating patch...", 45)
         patch = Patch()
+        progress = 45
 
         # Battle animations patch
         for animation_bank in self.battle_animations.values():
             patches = animation_bank.render()
             for p in patches:
                 patch.add_data(p[0], p[1])
+        progress += 3
+        self._report_progress("Calculating patch...", progress)
 
         # ========================================================================
         # Render scripts and dialogs FIRST to reclaim unused space for animations
@@ -1000,15 +994,21 @@ class GameWorld:
         # Event scripts patch
         for event_script_bank in self.event_scripts.banks:
             patch.add_data(event_script_bank.start, event_script_bank.render())
+            progress += 3
+            self._report_progress("Calculating patch...", progress)
 
         # Overworld dialogs (rendered before sprites to reclaim unused space)
         dialog_data = self.overworld_dialogs.render()
         for addr, data in dialog_data.items():
             patch.add_data(addr, data)
+        progress += 3
+        self._report_progress("Calculating patch...", progress)
 
         # Action scripts (rendered before sprites to reclaim unused space)
         action_data = self.action_scripts.render()
         patch.add_data(self.action_scripts.start, action_data)
+        progress += 3
+        self._report_progress("Calculating patch...", progress)
 
         # Collect unused ranges and add as AnimationBanks
         from smrpgpatchbuilder.datatypes.graphics.classes import AnimationBank
@@ -1038,10 +1038,14 @@ class GameWorld:
         monster_scripts = self.monster_scripts.render()
         patch.add_data(self.monster_scripts.pointer_table_start, monster_scripts[0])
         patch.add_data(self.monster_scripts.range_2_start, monster_scripts[1])
+        progress += 3
+        self._report_progress("Calculating patch...", progress)
 
         # Sprite graphics patch (now has access to reclaimed animation banks)
         for p in self.sprites.render():
             patch.add_data(p[0], p[1])
+        progress += 3
+        self._report_progress("Calculating patch...", progress)
 
         # World map
         if self.overworld_character.ally.index == 1:
@@ -1070,16 +1074,21 @@ class GameWorld:
                 "allies": executor.submit(self.allies.render),
             }
             # Wait for all to complete and add results to patch
-            patch.add_dict(futures["battle_dialogs"].result())
-            patch.add_dict(futures["enemies"].result())
-            patch.add_dict(futures["enemy_attacks"].result())
-            patch.add_dict(futures["items"].result())
-            patch.add_dict(futures["packets"].result())
-            patch.add_dict(futures["battle_packs"].result())
-            patch.add_dict(futures["rooms"].result())
-            patch.add_dict(futures["shops"].result())
-            patch.add_dict(futures["spells"].result())
-            patch.add_dict(futures["allies"].result())
+            for key in [
+                "battle_dialogs",
+                "enemies",
+                "enemy_attacks",
+                "items",
+                "packets",
+                "battle_packs",
+                "rooms",
+                "shops",
+                "spells",
+                "allies",
+            ]:
+                patch.add_dict(futures[key].result())
+                progress += 2
+                self._report_progress("Calculating patch...", progress)
 
         patch.add_dict(update_credits(self))
 
@@ -1137,7 +1146,7 @@ class GameWorld:
             )
 
         # Palettes
-        self._report_progress("Rendering palettes", 95)
+        self._report_progress("Applying patch...", 95)
 
         if self.overworld_character.ally.index == MARIO_Ally.index:
             for i, p in self.mario_palette.doll_patch().items():

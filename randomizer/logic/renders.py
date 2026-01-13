@@ -78,7 +78,6 @@ from ..data.variables.room_names import (
     R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
 )
 from ..data.variables.variable_names import TEMP_7043_3
-from ..types.flags import KeepMinigameSpritesIntact
 from ..types.physical_objects import BossNPC, SpriteAnimation
 from ..types.prize import BossFightHenchman, BossFightPrize
 from ..types.prizelocation import BossFightLocationNPC

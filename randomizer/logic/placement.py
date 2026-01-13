@@ -65,10 +65,6 @@ def place(
                 and l.can_accept(item, player_has, world)
                 and not l.has_item
             ]
-            #print(f"  Accessible locations for {type(item).__name__}: {[type(l).__name__ for l in accessible_locations]}")
-            if len(accessible_locations) == 0:
-                # Move onto the next item to see if it can be placed
-                continue
             if force_frog_disciple: 
                 frog_locations = [
                     l for l in accessible_locations
@@ -84,6 +80,10 @@ def place(
                 reduce = random.randint(0, 10)
                 if reduce < 4:
                     accessible_locations = star_locations
+            #print(f"  Accessible locations for {type(item).__name__}: {[type(l).__name__ for l in accessible_locations]}")
+            if len(accessible_locations) == 0:
+                # Move onto the next item to see if it can be placed
+                continue
             random.shuffle(accessible_locations)
             accessible_locations[0].set_prize(item)
             pending.remove(item)

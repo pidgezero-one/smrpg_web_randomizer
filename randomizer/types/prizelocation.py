@@ -104,10 +104,6 @@ def _get_cached_import(name: str) -> type:
             from ..progression.prizes import SmithyBossFight
 
             _lazy_import_cache[name] = SmithyBossFight
-        elif name == "EnabledStarPieceChecks":
-            from .flags import EnabledStarPieceChecks
-
-            _lazy_import_cache[name] = EnabledStarPieceChecks
         elif name == "EnabledBossChecks":
             from .flags import EnabledBossChecks
 
@@ -1462,7 +1458,7 @@ class BossFightLocationHenchmanNPC:
     _pack_id: int | None = None
     _room_ids: list[int]
     _npc_ids: list[AreaObject]
-    _skip_swap_if_flag: list[type] | None = None
+    _skip_swap_if_flag: list[type | str] | None = None
     _remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER
 
     @property
@@ -1478,7 +1474,7 @@ class BossFightLocationHenchmanNPC:
         return self._pack_id
 
     @property
-    def skip_swap_if_flag(self) -> list[type] | None:
+    def skip_swap_if_flag(self) -> list[type | str] | None:
         return self._skip_swap_if_flag
 
     @property
@@ -1490,7 +1486,7 @@ class BossFightLocationHenchmanNPC:
         room_ids: list[int],
         npc_ids: list[AreaObject],
         pack_id: int | None = None,
-        skip_swap_if_flag: type | list[type] | None = None,
+        skip_swap_if_flag: type | str | list[type | str] | None = None,
         remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER,
     ):
         self._room_ids = room_ids
@@ -1504,12 +1500,20 @@ class BossFightLocationHenchmanNPC:
         else:
             self._skip_swap_if_flag = [skip_swap_if_flag]
 
+    def _resolve_flag(self, flag: type | str) -> type:
+        """Resolve a flag class or string name to the actual flag class."""
+        if isinstance(flag, str):
+            from ..types import flags
+            return getattr(flags, flag)
+        return flag
+
     def should_skip_swap(self, world: GameWorld) -> bool:
         """Check if this slot should skip NPC/pack swapping based on enabled flags."""
         if self._skip_swap_if_flag is None:
             return False
         return any(
-            world.settings.isflag_enabled(flag) for flag in self._skip_swap_if_flag
+            world.settings.isflag_enabled(self._resolve_flag(flag))
+            for flag in self._skip_swap_if_flag
         )
 
 
@@ -2166,14 +2170,7 @@ class StarPieceLocation(PrizeLocation):
         return super().can_access(inventory, world)
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        EnabledStarPieceChecks = _get_cached_import("EnabledStarPieceChecks")
         EnabledBossChecks = _get_cached_import("EnabledBossChecks")
-
-        # Check if this location is disabled - if so, cannot accept any prize
-        enabled_check = world.settings.get_flag(EnabledStarPieceChecks)
-        for m in enabled_check.disabled:
-            if self.__class__ == m.value:
-                return False
 
         # Check if the parent boss fight location is disabled in EnabledBossChecks
         # If so, this star piece location cannot have a star piece

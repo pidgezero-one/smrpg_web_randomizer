@@ -1,5 +1,9 @@
-from randomizer.types.gameworld import GameWorld
-from randomizer.types.prizelocation import TreasureChestLocation
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from randomizer.types.gameworld import GameWorld
+    from randomizer.types.prizelocation import TreasureChestLocation
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *

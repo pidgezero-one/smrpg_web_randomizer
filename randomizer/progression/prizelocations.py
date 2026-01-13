@@ -1,11 +1,14 @@
 from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from randomizer.types.gameworld import GameWorld
 
 from randomizer.data.variables.action_script_names import (
     A0386_TOWER_SHOOT_BULLET_BILLS,
     A0576_CURTAIN_GAME_OPEN_CURTAIN,
     A0577_CURTAIN_GAME_OPEN_CURTAIN,
 )
-from randomizer.types.gameworld import GameWorld
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
     UsableEventScriptCommand,
 )
@@ -886,32 +889,32 @@ class MushroomKingdomBossFight(BossFightLocation):
         BossFightLocationHenchmanNPC(
             [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
             [NPC_4],
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
             [NPC_5],
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
             [NPC_6],
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
             [NPC_7],
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
             [NPC_8],
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM],
             [NPC_9],
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
     ]
     _mook_henchman_slots = [
@@ -945,7 +948,7 @@ class MushroomKingdomBossFight(BossFightLocation):
                 NPC_10,
             ],
             pack_id=PACK010_KINGDOM_HENCHMEN_1,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -977,7 +980,7 @@ class MushroomKingdomBossFight(BossFightLocation):
                 NPC_1,
             ],
             pack_id=PACK011_KINGDOM_HENCHMEN_2,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
     ]
 
@@ -2722,19 +2725,19 @@ class OuterMinesBossFight(BossFightLocation):
             [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE],
             [NPC_1],
             PACK142_MINES_HENCHMAN_MIDDLE,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM],
             [NPC_1],
             PACK141_MINES_HENCHMAN_LEFT,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM],
             [NPC_1],
             PACK079_MINES_HENCHMAN_RIGHT,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
     ]
 
@@ -2887,7 +2890,7 @@ class InnerMinesBossFight(BossFightLocation):
             ],
             [NPC_4, NPC_5, NPC_6],
             PACK152_MINES_BOSS_ROOM_HENCHMAN,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -3750,7 +3753,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             ],
             [NPC_4, NPC_1, NPC_0, NPC_3, NPC_0, NPC_2],
             PACK000_TOWER_HENCHMAN_1,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -3763,7 +3766,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             ],
             [NPC_0, NPC_2, NPC_1, NPC_4, NPC_1, NPC_1],
             PACK001_TOWER_HENCHMAN_2,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -3776,7 +3779,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             ],
             [NPC_8, NPC_3, NPC_2, NPC_5, NPC_2, NPC_3],
             PACK054_TOWER_HENCHMAN_3,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA], [NPC_4]
@@ -3799,7 +3802,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             [R405_BOOSTER_PASS_SECRET],
             [NPC_9],
             PACK032_TOWER_PASS_HENCHMAN,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         )
     ]
 
@@ -3823,6 +3826,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
 
             # Remove special snifit sprites that other henchmen don't have
             # Only if character henchman slots are assigned (KeepMinigameSpritesIntact not set)
+            from ..types.flags import KeepMinigameSpritesIntact
             character_henchmen_assigned = (
                 not world.settings.isflag_enabled(KeepMinigameSpritesIntact)
                 and self.prize.character_henchmen is not None
@@ -5456,7 +5460,7 @@ class ShipFinalBossFight(BossFightLocation):
             ],
             [NPC_0, NPC_1, NPC_2, NPC_3],
             PACK068_SHIP_HENCHMAN_1,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -5465,7 +5469,7 @@ class ShipFinalBossFight(BossFightLocation):
             ],
             [NPC_0, NPC_1],
             PACK069_SHIP_HENCHMAN_2,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
     ]
 
@@ -7396,6 +7400,7 @@ class StatueRoomBossFight(BossFightLocation):
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, (DodoBossFight)):
+            from ..types.flags import KeepMinigameSpritesIntact
             render_statue_room_boss(
                 world,
                 self.prize,
@@ -9663,13 +9668,13 @@ class InnerFactoryFirstFight(BossFightLocation):
             [R469_FACTORY_GROUNDS_AREA_01],
             [NPC_7],
             PACK150_FACTORY_BOSS_RUSH_HENCHMAN,
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
             remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
             [R469_FACTORY_GROUNDS_AREA_01],
             [NPC_6],
-            skip_swap_if_flag=KeepMinigameSpritesIntact,
+            skip_swap_if_flag="KeepMinigameSpritesIntact",
             remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
     ]
