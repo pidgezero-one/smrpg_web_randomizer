@@ -784,6 +784,7 @@ class GameWorld:
         # TODO: look at 0x35xxxx report and free up data
         # TODO: Exclude treasure chest shop and its three items from the shuffler if shuffle shops is disabled
         # TODO: Nimbus castle guards should be mook henchmen
+        # TODO: merge in docker containerization
 
         # Shop shuffling happens after equipment randomization so we can score equipment
         if self.settings.isflag_enabled(ShuffleShops):
