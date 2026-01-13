@@ -345,12 +345,6 @@ class HelioHenchman(HenchmanNPC):
     """Helio henchman NPC for boss fights."""
 
     _base = HELIO_NPC
-    _animations = SpriteAnimationCollection(
-        recoil=fireball_recoil,
-        tower_bullet=fireball_spin,
-        kitchen_prep=fireball_spin,
-        factory_pierce=fireball_spin_fast,
-    )
 
 
 class SparkyHenchman(HenchmanNPC):

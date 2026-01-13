@@ -42,6 +42,6 @@ script = EventScript([
 		A_WalkNortheastSteps(2),
 		A_FloatingOff(),
 		A_SetSpriteSequence(index=9, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+	], identifier="final_boss_mario_rise"),
 	Return()
 ])

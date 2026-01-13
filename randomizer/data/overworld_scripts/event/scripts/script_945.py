@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Pause(55),
+	Pause(55, identifier="final_boss_pause"),
 	Return()
 ])
