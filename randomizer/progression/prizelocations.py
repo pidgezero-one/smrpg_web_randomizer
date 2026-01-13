@@ -10,8 +10,13 @@ from randomizer.data.variables.action_script_names import (
     A0577_CURTAIN_GAME_OPEN_CURTAIN,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
+    EventScript,
     UsableEventScriptCommand,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    Return,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
 
 from ..types.logic import Inventory
 from ..types.prize import Prize
@@ -53,6 +58,7 @@ from ..types.prizelocation import (
     RiverLocationRow2,
     BossFightLocation,
     CharacterRecruitmentLocation,
+    StartingCharacterLocation,
     StarPieceLocation,
     SpellSlotLocation,
     ShuffleLocationSelector,
@@ -295,7 +301,7 @@ class StartingItem4Location(NPCLocationRow5):
     # this is granted at the start of the game by default
 
 
-class StartingCharacter1(CharacterRecruitmentLocation):
+class StartingCharacter1(StartingCharacterLocation):
     _originally_held = MarioRecruitmentPrize
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_1
@@ -370,7 +376,7 @@ class MarioSpell6(SpellSlotLocation):
         )
 
 
-class StartingCharacter2(CharacterRecruitmentLocation):
+class StartingCharacter2(StartingCharacterLocation):
     _originally_held = None
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_2
@@ -385,7 +391,7 @@ class StartingCharacter2(CharacterRecruitmentLocation):
         return super().set_prize(prize)
 
 
-class StartingCharacter3(CharacterRecruitmentLocation):
+class StartingCharacter3(StartingCharacterLocation):
     _originally_held = None
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_3
@@ -400,7 +406,7 @@ class StartingCharacter3(CharacterRecruitmentLocation):
         return super().set_prize(prize)
 
 
-class StartingCharacter4(CharacterRecruitmentLocation):
+class StartingCharacter4(StartingCharacterLocation):
     _originally_held = None
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_4
@@ -415,7 +421,7 @@ class StartingCharacter4(CharacterRecruitmentLocation):
         return super().set_prize(prize)
 
 
-class StartingCharacter5(CharacterRecruitmentLocation):
+class StartingCharacter5(StartingCharacterLocation):
     _originally_held = None
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_5
@@ -1386,8 +1392,8 @@ class Mimic1StarPiece(StarPieceLocation):
 class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
     _bias = True
     _originally_held = Coins50Prize
-    _rooms = [512]  # can be in any room.
-    _npc_ids = [NPC_0]  # Required for chest location
+    _rooms: list[int] = []  # Dynamic room, handled by mimic system
+    _npc_ids: list[AreaObject] = []  # No specific NPC
     _id = ShuffleLocationSelector.PANDORITE_REWARD_2
     _world_area = WorldAreaEnum.KERO_SEWERS
     _override_id = 512
@@ -1398,6 +1404,14 @@ class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(FirstMimicFightLauncher)
+
+    def grant(self) -> EventScript:
+        # Mimic rewards don't need room-specific chest disable commands
+        if self.prize is None:
+            return EventScript([Return()])
+        return EventScript(
+            [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
+        )
 
     # flag as checked: the host chest for FirstMimicFightLauncher has its object trigger disabled
 
@@ -5281,8 +5295,8 @@ class Mimic2StarPiece(StarPieceLocation):
 class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     _bias = True
     _originally_held = Coins100Prize
-    _rooms = [513]  # can be in any room.
-    _npc_ids = [NPC_0]  # Required for chest location
+    _rooms: list[int] = []  # Dynamic room, handled by mimic system
+    _npc_ids: list[AreaObject] = []  # No specific NPC
     _id = ShuffleLocationSelector.HIDON_REWARD_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 513
@@ -5293,6 +5307,14 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)
+
+    def grant(self) -> EventScript:
+        # Mimic rewards don't need room-specific chest disable commands
+        if self.prize is None:
+            return EventScript([Return()])
+        return EventScript(
+            [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
+        )
 
     # flag as checked: the host chest for SecondMimicFightLauncher has its object trigger disabled
 
@@ -6867,7 +6889,7 @@ class BeanValleyFirstProgressChestLocation(TreasureChestLocationRow2):
 
 
 class BeanValleyLeftPiranhaPipeLocation(TreasureChestLocationRow1):
-    _originally_held = SlotsPrize
+    _originally_held = SlotsPrize1
     _rooms = [R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_LEFT_PIRANHA_PIPE
@@ -6876,7 +6898,7 @@ class BeanValleyLeftPiranhaPipeLocation(TreasureChestLocationRow1):
 
 
 class BeanValleyBottomLeftPiranhaPipeLocation(TreasureChestLocationRow1):
-    _originally_held = SlotsPrize
+    _originally_held = SlotsPrize2
     _rooms = [R348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_LEFT_PIRANHA_PIPE
@@ -6885,7 +6907,7 @@ class BeanValleyBottomLeftPiranhaPipeLocation(TreasureChestLocationRow1):
 
 
 class BeanValleyBottomRightPiranhaPipeUpperLocation(TreasureChestLocationRow1):
-    _originally_held = SlotsPrize
+    _originally_held = SlotsPrize3
     _rooms = [R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA_PIPE_UPPER
@@ -9198,7 +9220,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                 world.action_scripts.get_command_by_identifier("keep_battle_room_summon", A_SetSpriteSequence).set_index(m.animations.keep_summon.sequence_id)
                 cast(Pause, world.event_scripts.get_command_by_identifier("EVENT_941_pause_0")).set_length(m.animations.keep_summon.total_duration)
                 world.event_scripts.get_script_by_id(
-                    E2209_KEEP_1ST_BOSS_FIGHT
+                    E0942_KEEP_FIRST_BOSS_SUMMON_CHEST
                 ).set_contents(
                     [
                         ActionQueueAsync(
@@ -9219,7 +9241,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                 )
             else:
                 world.event_scripts.get_script_by_id(
-                    E2209_KEEP_1ST_BOSS_FIGHT
+                    E0942_KEEP_FIRST_BOSS_SUMMON_CHEST
                 ).set_contents(
                     [
                         ActionQueueAsync(NPC_1, [A_FaceSoutheast(), A_Pause(60)]),
@@ -9306,7 +9328,6 @@ class KeepChandelierBossFight(BossFightLocation):
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, BoomerBossFight):
-            world.event_scripts.delete_command_by_identifier("kamek_palette")
             m = self.prize.large_npc()
             if (
                 m.animations.chandelier_challenge is not None
@@ -9923,6 +9944,7 @@ class FinalBossFight(BossFightLocation):
     _originally_held = SmithyBossFight
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_FINAL
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _rooms = [R509_FACTORY_GROUNDS_SMITHYS_PAD]
     _pack_id = PACK185_FINAL_BOSS
     _post_unlocks_event_id = E1245_INNER_FACTORY_5_BOSS_UNLOCKS
     _npc_slots = [

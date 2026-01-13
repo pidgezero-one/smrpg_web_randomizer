@@ -2,14 +2,6 @@
   "venvPath": ".",
   "venv": "patchvenv",
   "exclude": [
-    "randomizer/data_old",
-    "randomizer/data_old_2",
-    "randomizer/entities",
-    "randomizer/helpers (can be deleted)",
-    "randomizer/logic_old",
     "randomizer/management",
-    "randomizer/scripts",
-    "randomizer/types_old",
-    "randomizer/utils"
   ]
 }

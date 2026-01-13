@@ -96,22 +96,6 @@ def place(
             break
         if len(pending) == length_at_start:
             if not can_overflow:
-                print(f"{len(pending)} unplaced")
-                """ print("")
-                print("")
-                print("")
-                print("inventory:")
-                inv = collect_accessible_items(world)
-                for i in inv:
-                    print(f"  - {type(i).__name__}")
-                print("")
-                print("unplaced:")
-                for i in pending:
-                    print(f"  - {type(i).__name__}")
-                print("")
-                for l in world.locations.values():
-                    access_string = f", can_access={l.can_access(collect_accessible_items(world), world)}, can_accept={[l.can_accept(item, inv, world) for item in pending if l.can_accept(item, inv, world)]}"
-                    print(f"{type(l).__name__}: has_item={type(l.prize).__name__ if l.prize is not None else False}{access_string if l.prize is None else ''}") """
                 raise PlacementException(len(pending), [type(p).__name__ for p in pending])
             else:
                 print(f"{len([type(p).__name__ for p in pending])} unplaced, but overflow allowed")

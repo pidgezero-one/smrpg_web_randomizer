@@ -782,6 +782,8 @@ class GameWorld:
             
         # TODO: update sprite pointers for new ally IDs
         # TODO: look at 0x35xxxx report and free up data
+        # TODO: Exclude treasure chest shop and its three items from the shuffler if shuffle shops is disabled
+        # TODO: Nimbus castle guards should be mook henchmen
 
         # Shop shuffling happens after equipment randomization so we can score equipment
         if self.settings.isflag_enabled(ShuffleShops):
@@ -895,6 +897,14 @@ class GameWorld:
 
         post_shuffle_cleanup(self)
         apply_shuffler_results_to_game_data(self)
+        # Note:
+        # apply_shuffler_results_to_game_data is meant to look at the shuffler results and materialize them
+        # by changing the NPC models in rooms, updating event scripts with boss animation replacements, 
+        # build the events that control which chest grants you which item, etc.
+        # Most logic for an individual check should go in that check's render(world) method.
+        # Business logic in apply_shuffler_results_to_game_data is meant for materializing things that
+        # need to either loop through a list of checks or do something with a set of locations, i.e. building the item granter events.
+        # If you are going to modify these, follow this pattern.
 
     def _randomize_enemy_attacks_and_spells(self) -> None:
         """Randomize enemy spell and attack stats and effects."""

@@ -327,6 +327,10 @@ def shuffle_prizes(world: GameWorld) -> None:
         GoodieBagPrize,
         StarEggPrize,
     ]
+    # Items with very restricted placement options (can only go in certain chest locations
+    # with additional room constraints) should be placed first to ensure they have valid spots
+    restricted_placement_items: list[type[Prize]] = [SlotsPrize]
+
     progress_stars = 0
     if world.settings.isflag_enabled(Remake):
         unlocks_other_checks.extend([ExtraShinyStonePrize, StayVoucherPrize])
@@ -395,6 +399,9 @@ def shuffle_prizes(world: GameWorld) -> None:
     progression_prizes: list[Prize] = []
     must_include: list[Prize] = [ProgressiveEggPrize(), ProgressiveEggPrize()]
     not_important: list[Prize] = []
+    # Items with very restricted placement options (e.g., SlotsPrize which can only go
+    # in chest locations with enough room for 5 extra NPCs) - placed first
+    restricted_prizes: list[Prize] = []
 
     if world.settings.isflag_enabled(ShuffleCharacters):
         # Place starting characters based on StartingCharacters flag
@@ -701,6 +708,11 @@ def shuffle_prizes(world: GameWorld) -> None:
             if not world.settings.isflag_enabled(SlotsAnywhere):
                 loc.set_prize(loc.originally_held())
                 continue
+            else:
+                # SlotsPrize has restricted placement (needs room with space for 5 NPCs)
+                # so it must be placed before other items fill up eligible locations
+                restricted_prizes.append(loc.originally_held())
+                continue
         if isinstance(loc.originally_held(), BeetlemaniaPrize):
             if not world.settings.isflag_enabled(ShuffleBeetlemania):
                 loc.set_prize(loc.originally_held())
@@ -761,6 +773,17 @@ def shuffle_prizes(world: GameWorld) -> None:
         print(f"  {type(p).__name__}") """
 
     # Shuffle!
+    # Place items with restricted placement options first (e.g., SlotsPrize)
+    # These must be placed before other items fill up their limited eligible locations
+    if restricted_prizes:
+        print("placing restricted items (slots)")
+        random.shuffle(restricted_prizes)
+        place(
+            world,
+            restricted_prizes,
+            on_placed=lambda i, l: _on_item_placed(world, i, l),
+        )
+
     # Place critical/progress items first
     # or items that likely can't appear in shops and do something unique
     print("placing keys")

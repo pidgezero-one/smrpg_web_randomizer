@@ -58,6 +58,8 @@ from ..types.flags import CharacterStats
 from ..types.prize import BossFightPrize, SpellPrize, CharacterPrize, StandardPrize
 from ..types.enemy import Enemy
 from ..progression.prizelocations import (
+    Mimic1ReloadRewardLocation,
+    Mimic2ReloadRewardLocation,
     StarHillStarPiece,
     MarioSpell1,
     MarioSpell2,
@@ -199,6 +201,9 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         for level_num, spell_location in zip(levels, locations):
             if level_num is None:
                 continue
+            # Spell locations are only added when character spells are shuffled
+            if spell_location not in world.locations:
+                continue
             level = ally.levels[level_num - 2]
             assert level is not None
             spell_loc = world.get_location(spell_location)
@@ -217,8 +222,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         InnerMinesCharacter,
         MarrymoreCharacter,
     ]:
+        # StartingCharacter2-5 are only added when multiple starting characters are enabled
+        if l not in world.locations:
+            continue
         loc = cast(CharacterRecruitmentLocation, world.get_location(l))
-        assert loc is not None
         if loc.prize is not None:
             charp = cast(CharacterPrize, loc.prize)
             level = charp.starting_level
@@ -335,13 +342,25 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     contents.append(EnableObjectTriggerInSpecificLevel(n, r))
                 contents.append(Return())
                 if isinstance(place.prize, FirstMimicFightLauncher):
-                    world.event_scripts.get_script_by_id(
-                        E0095_REVERT_ALL_CLONE_CHESTS_MIMIC_1
-                    ).set_contents(contents)
+                    if world.get_location(Mimic1ReloadRewardLocation).prize is None:
+                        # do not re-enable object trigger if the reload location is empty
+                        # should only happen if empty chests is enabled
+                        world.event_scripts.get_script_by_id(
+                            E0095_REVERT_ALL_CLONE_CHESTS_MIMIC_1
+                        ).set_contents([Return()])
+                    else:
+                        world.event_scripts.get_script_by_id(
+                            E0095_REVERT_ALL_CLONE_CHESTS_MIMIC_1
+                        ).set_contents(contents)
                 elif isinstance(place.prize, SecondMimicFightLauncher):
-                    world.event_scripts.get_script_by_id(
-                        E0096_REVERT_ALL_CLONE_CHESTS_MIMIC_2
-                    ).set_contents(contents)
+                    if world.get_location(Mimic2ReloadRewardLocation).prize is None:
+                        world.event_scripts.get_script_by_id(
+                            E0096_REVERT_ALL_CLONE_CHESTS_MIMIC_2
+                        ).set_contents([Return()])
+                    else:
+                        world.event_scripts.get_script_by_id(
+                            E0096_REVERT_ALL_CLONE_CHESTS_MIMIC_2
+                        ).set_contents(contents)
         elif isinstance(place, CharacterRecruitmentLocation):
             # this takes care of everything for character gating and recruitment
             place.render(world)

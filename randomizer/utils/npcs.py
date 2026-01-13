@@ -58,16 +58,16 @@ def set_npc_direction_if_swse_only(
     if obj is not None:
         sprite = world.sprites.sprites[npc_base.sprite_id]
         if npc_base.directions == VramStore.DIR2_SWSE or is_swse_only(sprite):
-            obj.direction = direction
+            obj.set_direction(direction)
 
 
 def set_mines_punch_command(world: GameWorld, boss: BossNPC):
-    contact_frame = 0
+    contact_frame = 1  # Default to 1 (minimum valid pause duration)
     if boss.animations is None or boss.animations.mines_punch is None:
         world.event_scripts.delete_command_by_identifier("inner_mines_boss_shove_animation")
     else:
         collection = boss.animations.mines_punch
-        contact_frame = collection.contact_frame or 0
+        contact_frame = max(1, collection.contact_frame or 1)  # Ensure at least 1
         sequence_id = collection.sequence_id
         sprite_id = boss.base.sprite_id
         sprite = world.sprites.sprites[sprite_id]

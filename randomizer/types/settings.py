@@ -193,7 +193,7 @@ class Settings:
     # ==================== Flag String Encoding ====================
 
     @staticmethod
-    def _get_sorted_options_list(flag: CategorizationFlag) -> list:
+    def _get_sorted_options_list(flag: CategorizationFlag | CategorizationFlagWithOrdinance) -> list:
         """Get options sorted alphabetically by display text (matching frontend order).
 
         IMPORTANT: This must exactly match _get_option_text() in flags.py!

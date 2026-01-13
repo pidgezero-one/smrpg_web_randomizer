@@ -591,33 +591,6 @@ def render_marrymore_character_empty(world: GameWorld) -> None:
 def render_seaside_beach_boss(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply animation changes for Seaside Beach boss fight."""
     m = prize.small_npc()
-    # boss room on revisit
-    if m.animations.ship_chair is not None:
-        c = world.action_scripts.get_command_by_identifier(
-            "ship_boss_idle_sequence", A_SetSpriteSequence
-        )
-        c.set_index(m.animations.ship_chair.sequence_id)
-    else:
-        world.action_scripts.replace_command_by_identifier(
-            "ship_boss_idle_sequence", A_FaceSouthwest()
-        )
-        world.action_scripts.delete_command_by_identifier(
-            "ship_boss_idle_sequence_loop"
-        )
-
-    # ending credits
-    if m.animations.tpose_mold_id is not None:
-        world.event_scripts.replace_subscript_command_by_identifier(
-            "ending_credits_sunset_npc_0_sequence_setup",
-            "ending_credits_sunset_npc_0_sequence",
-            A_SetSpriteSequence(index=m.animations.tpose_mold_id, is_mold=True),
-        )
-    else:
-        world.event_scripts.replace_subscript_command_by_identifier(
-            "ending_credits_sunset_npc_0_sequence_setup",
-            "ending_credits_sunset_npc_0_sequence",
-            A_FaceNorthwest(),
-        )
 
     # large boss sprite
     world.event_scripts.delete_subscript_command_by_identifier(

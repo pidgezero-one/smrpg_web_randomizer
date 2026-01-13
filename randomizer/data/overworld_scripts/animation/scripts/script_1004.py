@@ -40,4 +40,4 @@ script = ActionScript([
 	A_SetSequenceSpeed(NORMAL),
 	A_SetSpriteSequence(index=10, is_sequence=True, looping=False, identifier="keep_battle_room_summon"),
 	A_ReturnQueue()
-]),
+])

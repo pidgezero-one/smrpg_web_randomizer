@@ -95,6 +95,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.update_dialog(DI3072_TOWER_HENCHMAN_3_WINDOW, """SNIFSTER 3: Um...\n Nice weather we're having.[await]""")
         world.update_dialog(DI3073_TOWER_HENCHMAN_3, '''SNIFSTER 3: You wanna fight?[await]''')
         world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got\n distracted again when he heard\n Claymorton was around.[await]")
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("FROGFUCIUS", "FROG SAGE")
 
     for location in world.locations:
         if isinstance(location, BossFightLocation) and isinstance(location.prize, BossFightPrize):

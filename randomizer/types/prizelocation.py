@@ -338,6 +338,14 @@ def _get_cached_import(name: str) -> type:
             from ..progression.prizes import ExorBossFight
 
             _lazy_import_cache[name] = ExorBossFight
+        elif name == "KamekBossFight":
+            from ..progression.prizes import KamekBossFight
+
+            _lazy_import_cache[name] = KamekBossFight
+        elif name == "CountdownBossFight":
+            from ..progression.prizes import CountdownBossFight
+
+            _lazy_import_cache[name] = CountdownBossFight
         else:
             raise ValueError(f"Unknown lazy import: {name}")
     return _lazy_import_cache[name]
@@ -1170,10 +1178,18 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                         return False
         if isinstance(prize, SlotsPrize):
             # same with slots
+            for r in self._rooms:
+                room = world.rooms._rooms[r]
+                assert room is not None
+                # Can't accept a slot machine if there is not enough room for its npcs
+                if 0x14 + len(room.objects) + 5 > 0x2F:
+                    return False
             for l in world.chest_locations:
                 if l is not self and isinstance(l.prize, SlotsPrize):
-                    if l.world_area == self.world_area:
-                        return False
+                    # Never have two slot machines in the same room
+                    for r in l._rooms:
+                        if r in self._rooms:
+                            return False
         if world.settings.isflag_enabled(RestrictSpecialEquips):
             if self.monstro_shuffle:
                 return isinstance(prize, ItemPrize) and prize._monstro_shuffle
@@ -1256,9 +1272,9 @@ class TreasureChestLocation(StandardPrizeLocation):
             [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
         )
         for npc, room in zip(self._npc_ids, self._rooms):
-            itemgrant.append(
-                DisableObjectTriggerInSpecificLevel(AreaObject(npc + 14), room)
-            )
+            # If npc is already an AreaObject, use it directly; otherwise convert from raw index
+            ao = npc if isinstance(npc, AreaObject) else AreaObject(npc + 14)
+            itemgrant.append(DisableObjectTriggerInSpecificLevel(ao, room))
         return EventScript(itemgrant)
 
     def render(self, world: GameWorld) -> None:
@@ -2146,7 +2162,8 @@ class CharacterRecruitmentLocation(PrizeLocation):
 
 
 class StartingCharacterLocation(CharacterRecruitmentLocation):
-    pass
+    # Starting characters don't have NPC fills since they're assigned at game start
+    _npc_fills: list[AllyNPCSub] = []
 
 
 class StarPieceLocation(PrizeLocation):

@@ -428,8 +428,8 @@ class BossFightHenchman:
 
 class BossFightPrize(Prize):
     _members: list[FormationMember]
-    _force_battlefield: Battlefield | None
-    _force_start_event: int | None
+    _force_battlefield: Battlefield | None = None
+    _force_start_event: int | None = None
     _text: str
 
     _big_npc: type[BossNPC] | None = None
