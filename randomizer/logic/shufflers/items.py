@@ -5,12 +5,12 @@ import random
 from copy import copy
 from typing import TYPE_CHECKING
 
-from randomizer.types.prizelocation import StandingLocation
+from randomizer.types.prizelocation import StandingLocation, TreasureShopLocation
 
 from ..placement import place
 from ...types.prize import RandomPrizeSubstitute, CoinPrize, FPFlowerPrize, FrogCoinPrize
 from ..utils import debug_time
-from ...progression.prizes import RecoveryMushroomPrize, FrogCoin1Prize
+from ...progression.prizes import FryingPanPrize, RecoveryMushroomPrize, FrogCoin1Prize
 from ...progression.prizelocations import MushroomKingdomInnPurchaseLocation
 
 if TYPE_CHECKING:
@@ -352,7 +352,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     should_otherwise_include = [
         ProgressiveCardPrize,
         YouMissed,
-        ProgressiveEggPrize,
         LuckyJewelPrize,
         SignalRingPrize,
         GoodieBagPrize,
@@ -387,6 +386,9 @@ def shuffle_prizes(world: GameWorld) -> None:
             CoinTrickPrize,
             ExpBoosterPrize,
             ScroogeRingPrize,
+            LuckyJewelPrize,
+            ProgressiveEggPrize,
+            FryingPanPrize,
         ])
     mxstars = world.settings.get_flag(StarPiecesRequired).value
     if mxstars > progress_stars:
@@ -728,6 +730,11 @@ def shuffle_prizes(world: GameWorld) -> None:
                 continue
         # special exclusions
         if isinstance(loc, FrogDiscipleLocation):
+            # nowhere to put it if shuffle shops is on but item shuffle is off
+            if not world.settings.isflag_enabled(ShuffleShops) or not world.settings.isflag_enabled(ShuffleItems):
+                loc.set_prize(loc.originally_held())
+                continue
+        if isinstance(loc, TreasureShopLocation):
             # nowhere to put it if shuffle shops is on but item shuffle is off
             if not world.settings.isflag_enabled(ShuffleShops) or not world.settings.isflag_enabled(ShuffleItems):
                 loc.set_prize(loc.originally_held())

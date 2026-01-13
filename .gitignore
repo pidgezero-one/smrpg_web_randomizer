@@ -104,12 +104,13 @@ ENV/
 .idea
 db.sqlite*
 /static
+/staticfiles
 dump*.py
 sample*
 randomizer/management/commands/output/disassembler
 *.img
 
-# VSCode
+# VSCode and debug outputs
 smrpgr.code-workspace
 .vscode
 .claude
@@ -123,3 +124,6 @@ spoiler_after_replacements.json
 repeated_sequences_report.txt
 
 .vscode
+
+# Environment files with secrets
+.env.prod*

@@ -1800,7 +1800,7 @@ class BetterTips(BooleanFlag):
 # ✅
 class ShuffleShops(BooleanFlag):
     _name = "Randomize the contents of shops"
-    _description = """If enabled, the contents of all regular shops and Frog Coin shops (including the Moleville treasure shop, Marrymore Suite room service menu, and Moleville swap shop) will be randomized."""
+    _description = """If enabled, the contents of all regular shops and Frog Coin shops will be randomized. This includes the Marrymore suite room service menu, the Moleville bomb shop, and the blue toad treasure shop in Moleville."""
     _id = "rshops"
 
 

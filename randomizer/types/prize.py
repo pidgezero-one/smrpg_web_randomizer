@@ -1,6 +1,5 @@
 from __future__ import annotations
 import random
-from tkinter import dialog
 from typing import TYPE_CHECKING, TypeVar
 from .physical_objects import BossNPC, ItemNPC, HenchmanNPC
 from ..data.physical_objects.items import DefaultItem

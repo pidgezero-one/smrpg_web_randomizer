@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+# Support environment variables (Docker) or local_settings.py (local dev)
 try:
     import local_settings as local
 except ImportError:
-    import example_local as local
+    local = None
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,12 +25,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = local.SECRET_KEY
+SECRET_KEY = os.environ.get("SECRET_KEY", getattr(local, "SECRET_KEY", "change-me"))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = local.DEBUG
+DEBUG = int(os.environ.get("DEBUG", getattr(local, "DEBUG", 0)))
 
-ALLOWED_HOSTS = local.ALLOWED_HOSTS
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "").split() or getattr(local, "ALLOWED_HOSTS", [])
+
+# CSRF trusted origins for production behind reverse proxy
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split() or getattr(local, "CSRF_TRUSTED_ORIGINS", [])
+
+# Trust X-Forwarded-Proto header for HTTPS detection behind proxy
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Application definition
 
@@ -77,7 +84,27 @@ WSGI_APPLICATION = 'smrpg_web_randomizer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = local.DATABASES
+# Database configuration - use environment variables (Docker) or local_settings
+if os.environ.get("SQL_ENGINE") == "postgresql":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.environ.get("SQL_DATABASE", "smrpg"),
+            "USER": os.environ.get("SQL_USER", "smrpg"),
+            "PASSWORD": os.environ.get("SQL_PASSWORD", "smrpg"),
+            "HOST": os.environ.get("SQL_HOST", "localhost"),
+            "PORT": os.environ.get("SQL_PORT", "5432"),
+        }
+    }
+elif local is not None:
+    DATABASES = local.DATABASES
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -140,7 +167,7 @@ LOGGING = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = local.TIME_ZONE
+TIME_ZONE = os.environ.get("TIME_ZONE", getattr(local, "TIME_ZONE", "UTC"))
 
 USE_I18N = True
 
@@ -151,11 +178,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = local.STATIC_URL
-STATIC_ROOT = local.STATIC_ROOT
+STATIC_URL = os.environ.get("STATIC_URL", getattr(local, "STATIC_URL", "/static/"))
+STATIC_ROOT = os.environ.get("STATIC_ROOT", getattr(local, "STATIC_ROOT", os.path.join(BASE_DIR, "staticfiles")))
 
 # Allow larger max upload size for packing WAD file.
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 25  # 25 MB
 
 # Beta site flag.
-BETA = local.BETA
+BETA = int(os.environ.get("BETA", getattr(local, "BETA", 0)))
