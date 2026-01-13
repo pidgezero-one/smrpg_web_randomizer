@@ -993,16 +993,53 @@ class GameWorld:
             for p in patches:
                 patch.add_data(p[0], p[1])
 
+        # ========================================================================
+        # Render scripts and dialogs FIRST to reclaim unused space for animations
+        # ========================================================================
+
         # Event scripts patch
         for event_script_bank in self.event_scripts.banks:
             patch.add_data(event_script_bank.start, event_script_bank.render())
+
+        # Overworld dialogs (rendered before sprites to reclaim unused space)
+        dialog_data = self.overworld_dialogs.render()
+        for addr, data in dialog_data.items():
+            patch.add_data(addr, data)
+
+        # Action scripts (rendered before sprites to reclaim unused space)
+        action_data = self.action_scripts.render()
+        patch.add_data(self.action_scripts.start, action_data)
+
+        # Collect unused ranges and add as AnimationBanks
+        from smrpgpatchbuilder.datatypes.graphics.classes import AnimationBank
+
+        # From overworld dialogs
+        for start, end in self.overworld_dialogs.get_unused_ranges():
+            self.sprites.animation_data_banks.append(AnimationBank(start, end))
+
+        # From event scripts
+        for bank in self.event_scripts.banks:
+            unused = bank.get_unused_range()
+            if unused:
+                self.sprites.animation_data_banks.append(
+                    AnimationBank(unused[0], unused[1])
+                )
+
+        # From action scripts
+        unused = self.action_scripts.get_unused_range()
+        if unused:
+            self.sprites.animation_data_banks.append(
+                AnimationBank(unused[0], unused[1])
+            )
+
+        # ========================================================================
 
         # Monster AI scripts patch
         monster_scripts = self.monster_scripts.render()
         patch.add_data(self.monster_scripts.pointer_table_start, monster_scripts[0])
         patch.add_data(self.monster_scripts.range_2_start, monster_scripts[1])
 
-        # Sprite graphics patch
+        # Sprite graphics patch (now has access to reclaimed animation banks)
         for p in self.sprites.render():
             patch.add_data(p[0], p[1])
 
@@ -1016,16 +1053,15 @@ class GameWorld:
         elif self.overworld_character.ally.index == 4:
             patch.add_data(0x3E90AA, MALLOW_OVERWORLD)
 
-        # Dialogs, enemies, items, action scripts, packets, battle packs, rooms, shops, spells
+        # Dialogs, enemies, items, packets, battle packs, rooms, shops, spells
+        # (Note: overworld_dialogs and action_scripts are rendered earlier for space reclamation)
         # Run all render() calls in parallel
         with ThreadPoolExecutor() as executor:
             futures = {
                 "battle_dialogs": executor.submit(self.battle_dialogs.render),
-                "overworld_dialogs": executor.submit(self.overworld_dialogs.render),
                 "enemies": executor.submit(self.enemies.render),
                 "enemy_attacks": executor.submit(self.enemy_attacks.render),
                 "items": executor.submit(self.items.render),
-                "action_scripts": executor.submit(self.action_scripts.render),
                 "packets": executor.submit(self.packets.render),
                 "battle_packs": executor.submit(self.battle_packs.render),
                 "rooms": executor.submit(self.rooms.render),
@@ -1035,16 +1071,12 @@ class GameWorld:
             }
             # Wait for all to complete and add results to patch
             patch.add_dict(futures["battle_dialogs"].result())
-            patch.add_dict(futures["overworld_dialogs"].result())
             patch.add_dict(futures["enemies"].result())
             patch.add_dict(futures["enemy_attacks"].result())
             patch.add_dict(futures["items"].result())
-            patch.add_data(
-                self.action_scripts.start, futures["action_scripts"].result()
-            )
             patch.add_dict(futures["packets"].result())
             patch.add_dict(futures["battle_packs"].result())
-            patch.add_dict(futures["rooms"].result()) 
+            patch.add_dict(futures["rooms"].result())
             patch.add_dict(futures["shops"].result())
             patch.add_dict(futures["spells"].result())
             patch.add_dict(futures["allies"].result())

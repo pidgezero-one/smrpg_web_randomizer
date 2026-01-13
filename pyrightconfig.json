@@ -1,9 +1,6 @@
 {
   "venvPath": ".",
   "venv": "patchvenv",
-  "extraPaths": [
-    "/Users/stefkischak/code/smrpgpatchbuilder/src"
-  ],
   "exclude": [
     "randomizer/data_old",
     "randomizer/data_old_2",
