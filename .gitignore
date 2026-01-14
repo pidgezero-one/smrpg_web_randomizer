@@ -122,8 +122,9 @@ spoiler.json
 placement.py
 spoiler_after_replacements.json
 repeated_sequences_report.txt
+unreferenced_dialogs.txt
 
 .vscode
 
 # Environment files with secrets
-.env.prod*
+.env.prod*unreferenced_dialogs.txt
