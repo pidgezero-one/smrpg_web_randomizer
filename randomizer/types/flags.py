@@ -2256,7 +2256,6 @@ class CharacterRecruitmentSubcategory(FlagCategory):
         MaxCharacters,
         AvailableCharacters,
         StartingCharacters,
-        PlayAsStarter,
     ]
     _size: int = 4
     _id: str = "P"
@@ -2549,7 +2548,7 @@ class AccessibilitySubcategory(FlagCategory):
 
     _name: str = "Accessibility"
     _flags: list[type[Flag]] = [RemoveFlashes, HoldB]
-    _size: int = 3
+    _size: int = 2
     _id: str = "R"
 
 
@@ -2577,8 +2576,8 @@ class PaletteSubcategory(FlagCategory):
 class NamesCategory(FlagCategory):
 
     _name: str = "Names"
-    _flags: list[type[Flag]] = [ChangeNames, RemakeNames, CanonNames, Peach]
-    _size: int = 3
+    _flags: list[type[Flag]] = [PlayAsStarter, ChangeNames, RemakeNames, CanonNames, Peach]
+    _size: int = 5
     _id: str = "R"
 
 

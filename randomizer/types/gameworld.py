@@ -176,6 +176,7 @@ class GameWorld:
     bowser_palette: BowserPalette
     toadstool_palette: ToadstoolPalette
     main_character: Ally = MARIO_Ally
+    file_select_character: str = "MARIO"
     world_map_locations: WorldMapLocationCollection
     password: str = "pearls"
     poison_mushroom_status: str | None = None

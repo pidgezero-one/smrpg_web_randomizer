@@ -307,7 +307,7 @@ class GenerateView(FormView):
             "hash": world.hash,
             "debug_mode": debug_mode,
             "flag_string": world.settings.flag_string,
-            "file_select_character": world.main_character.name,
+            "file_select_character": world.file_select_character,
             "file_select_hash": world.file_select_hash,
             "permalink": reverse(
                 "randomizer:patch-from-hash", kwargs={"hash": world.hash}
@@ -332,7 +332,7 @@ class GenerateView(FormView):
                 version=VERSION,
                 debug_mode=debug_mode,
                 flags=world.settings.flag_string,
-                file_select_char=world.main_character.name,
+                file_select_char=world.file_select_character,
                 file_select_hash=world.file_select_hash,
                 race_mode=race_mode,
                 spoiler=world.spoiler)
@@ -428,7 +428,7 @@ class GenerateStreamView(View):
                         "hash": world.hash,
                         "debug_mode": debug_mode,
                         "flag_string": world.settings.flag_string,
-                        "file_select_character": world.main_character.name,
+                        "file_select_character": world.file_select_character,
                         "file_select_hash": world.file_select_hash,
                         "permalink": reverse(
                             "randomizer:patch-from-hash", kwargs={"hash": world.hash}
@@ -452,7 +452,7 @@ class GenerateStreamView(View):
                             version=VERSION,
                             debug_mode=debug_mode,
                             flags=world.settings.flag_string,
-                            file_select_char=world.main_character.name,
+                            file_select_char=world.file_select_character,
                             file_select_hash=world.file_select_hash,
                             race_mode=race_mode,
                             spoiler=world.spoiler,
