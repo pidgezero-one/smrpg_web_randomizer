@@ -2577,7 +2577,7 @@ class NamesCategory(FlagCategory):
 
     _name: str = "Names"
     _flags: list[type[Flag]] = [PlayAsStarter, ChangeNames, RemakeNames, CanonNames, Peach]
-    _size: int = 5
+    _size: int = 3
     _id: str = "R"
 
 
