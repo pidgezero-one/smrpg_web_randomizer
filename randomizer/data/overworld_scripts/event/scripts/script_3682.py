@@ -31,14 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_SetWalkingSpeed(FAST),
-		A_ShiftZUpSteps(2),
-		A_Pause(30),
-		A_SetWalkingSpeed(NORMAL),
-		A_ShiftZDownSteps(2)
-	]),
-	SetVarToConst(ITEM_ID, SonicCymbalItem),
-	RunEventAsSubroutine(E0032_NON_COIN_CHEST_CONTAINER),
-	Return()
+
 ])

@@ -31,27 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
-	JmpIfBitClear(UNUSED_7091_2, ["EVENT_2428_jmp_if_bit_clear_3"]),
-	SetSyncActionScript(NPC_2, A0690_OPENING_CHEST),
-	JmpIfBitClear(DIRECTIONAL_7047_0, ["EVENT_2428_fade_in_from_black_async_14"], identifier="EVENT_2428_jmp_if_bit_clear_3"),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_VisibilityOff()
-	]),
-	FadeInFromBlack(sync=False),
-	FreezeCamera(),
-	SetAsyncActionScript(MARIO, A0482_FOREST_PLAYER_FALLS_TO_UNDERGROUND),
-	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2428_unfreeze_camera_12"]),
-	JmpIfBitSet(UNUSED_7091_2, ["EVENT_2428_unfreeze_camera_12"]),
-	Pause(24),
-	UnfreezeCamera(identifier="EVENT_2428_unfreeze_camera_12"),
-	Jmp(["EVENT_2428_jmp_if_bit_clear_15"]),
-	FadeInFromBlack(sync=False, identifier="EVENT_2428_fade_in_from_black_async_14"),
-	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2428_clear_bit_19"], identifier="EVENT_2428_jmp_if_bit_clear_15"),
-	JmpIfBitSet(UNUSED_7091_2, ["EVENT_2428_clear_bit_19"]),
-	ClearBit(SIGNAL_RING_BIT),
-	PlaySound(sound=SO149_CASINO_SECRET_PASSAGE, channel=6),
-	ClearBit(SIGNAL_RING_BIT, identifier="EVENT_2428_clear_bit_19"),
-	Return()
+
 ])

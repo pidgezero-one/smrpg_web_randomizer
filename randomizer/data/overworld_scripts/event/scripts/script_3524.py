@@ -31,15 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfVarEqualsConst(ACTIVE_NPC, 22, ["EVENT_3524_jmp_to_event_6"]),
-	JmpIfVarEqualsConst(ACTIVE_NPC, 23, ["EVENT_3524_jmp_to_event_7"]),
-	JmpIfVarEqualsConst(ACTIVE_NPC, 24, ["EVENT_3524_jmp_to_event_8"]),
-	JmpIfVarEqualsConst(ACTIVE_NPC, 25, ["EVENT_3524_jmp_to_event_9"]),
-	JmpIfVarEqualsConst(ACTIVE_NPC, 26, ["EVENT_3524_jmp_to_event_10"]),
-	JmpToEvent(E1936_KEEP_ROTATING_ROOM_CHEST_1),
-	JmpToEvent(E1937_KEEP_ROTATING_ROOM_CHEST_2, identifier="EVENT_3524_jmp_to_event_6"),
-	JmpToEvent(E1938_KEEP_ROTATING_ROOM_CHEST_3, identifier="EVENT_3524_jmp_to_event_7"),
-	JmpToEvent(E1939_KEEP_ROTATING_ROOM_CHEST_4, identifier="EVENT_3524_jmp_to_event_8"),
-	JmpToEvent(E1940_KEEP_ROTATING_ROOM_CHEST_5, identifier="EVENT_3524_jmp_to_event_9"),
-	JmpToEvent(E1941_KEEP_ROTATING_ROOM_CHEST_6, identifier="EVENT_3524_jmp_to_event_10")
+
 ])

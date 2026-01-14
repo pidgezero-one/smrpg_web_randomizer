@@ -31,10 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_TransferToXYZF(x=12, y=34, z=2, direction=EAST),
-		A_ReturnQueue()
-	]),
-	JmpToEvent(E1537_SPINNING_FLOWER_CORE_LOGIC),
-	Return()
+
 ])

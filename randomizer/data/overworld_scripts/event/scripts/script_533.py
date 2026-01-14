@@ -31,12 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitClear(TEMP_7043_0, ["EVENT_256_ret_0"]),
-	ClearBit(TEMP_7043_0),
-	ActionQueueSync(target=MEM_70A9, subscript=[
-		A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
-		A_SetVRAMPriority(NORMAL_PRIORITY),
-		A_SetSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True)
-	]),
-	Return()
+
 ])

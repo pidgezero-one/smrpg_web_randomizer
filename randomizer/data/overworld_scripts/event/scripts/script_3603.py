@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	OpenShop(SH00_MUSHROOM_KINGDOM),
-	FadeInFromBlack(sync=False),
-	Return()
+
 ])

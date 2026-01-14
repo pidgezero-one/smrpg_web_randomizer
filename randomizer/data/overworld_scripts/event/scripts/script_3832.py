@@ -31,20 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfObjectInCurrentLevel(NPC_0, ["EVENT_3832_play_sound_7"]),
-	SetVarToConst(ITEM_ID, SonicCymbalItem),
-	RunEventAsSubroutine(E0032_NON_COIN_CHEST_CONTAINER),
-	Inc(HIDDEN_CHEST_COUNTER),
-	DisableObjectTriggerInSpecificLevel(NPC_0, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT),
-	DisableObjectTriggerInSpecificLevel(NPC_0, R484_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_BASEMENT),
-	JmpToEvent(E3837_EMPTY),
-	PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_3832_play_sound_7"),
-	SummonObjectToCurrentLevel(NPC_0),
-	Set7000ToCurrentLevel(),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 492, ["EVENT_3832_apply_tile_mod_13"]),
-	ApplyTileModToLevel(use_alternate=True, room_id=R484_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_BASEMENT, mod_id=0),
-	Jmp(["EVENT_3832_set_action_script_14"]),
-	ApplyTileModToLevel(use_alternate=True, room_id=R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, mod_id=0, identifier="EVENT_3832_apply_tile_mod_13"),
-	SetSyncActionScript(NPC_0, A0014_FLOATING_CHEST, identifier="EVENT_3832_set_action_script_14"),
-	Return()
+
 ])

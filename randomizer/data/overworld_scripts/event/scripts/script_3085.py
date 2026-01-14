@@ -31,20 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToConst(PRIMARY_TEMP_7000, 296),
-	StartLoopNTimes(135),
-	SetMem704XAt7000Bit(),
-	Inc(PRIMARY_TEMP_7000),
-	EndLoop(),
-	PauseActionScript(MEM_70A8),
-	EnableObjectTrigger(MEM_70A8),
-	Return(),
-	SetVarToConst(PRIMARY_TEMP_7000, 296),
-	StartLoopNTimes(135),
-	ClearMem704XAt7000Bit(),
-	Inc(PRIMARY_TEMP_7000),
-	EndLoop(),
-	PauseActionScript(MEM_70A8),
-	EnableObjectTrigger(MEM_70A8),
-	Return()
+
 ])

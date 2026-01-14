@@ -31,12 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ActionQueueAsync(target=NPC_3, subscript=[
-		A_SetAllSpeeds(FAST),
-		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=3, is_sequence=True, looping=False),
-		A_Pause(10),
-		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True)
-	]),
-	Return()
+
 ])

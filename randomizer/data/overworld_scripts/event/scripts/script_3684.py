@@ -31,10 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToConst(ITEM_ID, CastleKey2Item),
-	RemoveObjectFromCurrentLevel(MEM_70A8),
-	SetVarToConst(PRIMARY_TEMP_7000, 3824),
-	RunEventAsSubroutine(E3828_GRANT_ITEM_FLOWER_SOUND),
-	RemoveObjectFromSpecificLevel(NPC_0, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM),
-	Return()
+
 ])

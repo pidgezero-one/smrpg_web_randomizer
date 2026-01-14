@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitClear(TEMP_7043_7, ["EVENT_256_ret_0"]),
-	ClearBit(TEMP_7043_7),
-	Return()
+
 ])

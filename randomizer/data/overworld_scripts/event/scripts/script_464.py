@@ -31,12 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	PlaySound(sound=SO063_YOSHI_TALK, channel=6),
-	JmpIfBitClear(TEMP_7044_5, ["EVENT_464_enable_controls_until_return_5"]),
-	EnableControlsUntilReturn([]),
-	RunDialog(dialog_id=DI0763_EMPTY, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	Return(),
-	EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, A, Y, B], identifier="EVENT_464_enable_controls_until_return_5"),
-	Pause(32),
-	Return()
+
 ])

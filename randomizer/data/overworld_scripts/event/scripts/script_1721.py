@@ -31,9 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Pause(1, identifier="EVENT_1721_pause_0"),
-	JmpIfBitClear(TEMP_7044_6, ["EVENT_1721_pause_0"]),
-	PauseScriptUntilEffectDone(),
-	RunEventAtReturn(E1726_EMPTY),
-	Return()
+
 ])

@@ -31,6 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunDialog(dialog_id=DI2560_TOWER_HENCHMAN_1, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	Return()
+
 ])

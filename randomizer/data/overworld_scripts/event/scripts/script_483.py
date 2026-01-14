@@ -31,15 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(TEMP_7044_5, ["EVENT_483_run_event_as_subroutine_7"]),
-	StoreItemAmountTo7000(BrightCardItem),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_483_run_dialog_5"]),
-	RunDialog(dialog_id=DI2376_EMPTY, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	Return(),
-	RunDialog(dialog_id=DI2377_EMPTY, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_483_run_dialog_5"),
-	Return(),
-	RunEventAsSubroutine(E0456_YOSHI_TALKS_TO_OTHER_YOSHI, identifier="EVENT_483_run_event_as_subroutine_7"),
-	RunDialog(dialog_id=DI2379_EMPTY, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	RunBackgroundEvent(event_id=E0469_YOSTER_ISLE_BACKGROUND, return_on_level_exit=True, run_as_second_script=True),
-	Return()
+
 ])

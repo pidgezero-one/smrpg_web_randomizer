@@ -31,9 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	DisableObjectTrigger(MEM_70A8),
-	SetSyncActionScript(MEM_70A8, A0719_MIDAS_RIVER_FROG_COIN),
-	SetVarToConst(PRIMARY_TEMP_7000, 1),
-	AddFrogCoins(PRIMARY_TEMP_7000),
-	Return()
+
 ])

@@ -31,11 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RemoveObjectFromCurrentLevel(NPC_2),
-	SetVarToConst(ITEM_ID, FeatherItem),
-	SetVarToConst(PRIMARY_TEMP_7000, 3351),
-	RunEventAsSubroutine(E3829_EMPTY),
-	RemoveObjectFromSpecificLevel(NPC_2, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT),
-	SetBit(STATUE_KEEPER_FIGHT_COMPLETED),
-	Return()
+
 ])

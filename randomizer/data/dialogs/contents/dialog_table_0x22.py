@@ -34,14 +34,8 @@ dialog_data[20] = ''' Now that our kingdom isn't in peril
  How exciting![await]'''
 dialog_data[21] = '''Whoa, you won [0x7000] time(s)!
  Here's a special prize for you![await]'''
-dialog_data[22] = '''FROGFUCIUS: Grasshopper, if your
- travels yield any cricket-related
- food, please bring it to me.[await]
- (...But bring me the Cricket Pie
- first.)[await]'''
-dialog_data[23] = ''' Grasshopper, have you heard of
- “Invisible Items”?[await] You may learn
- about them in Monstro Town.[await]'''
+dialog_data[22] = '''[await]'''
+dialog_data[23] = '''[await]'''
 dialog_data[24] = '''[await]'''
 dialog_data[25] = '''
  BIRDETTA: Don't forget about me![await]'''
@@ -63,12 +57,11 @@ dialog_data[39] = '''          Got an “[0x70A7]”![end]'''
 dialog_data[40] = '''          Got an “[0x70A7]”![await]'''
 dialog_data[41] = '''          Got a “[0x70A7]”![end]'''
 dialog_data[42] = '''          Got a “[0x70A7]”![await]'''
-dialog_data[43] = '''
-          Get down from there![await]'''
+dialog_data[43] = '''[await]'''
 dialog_data[44] = '''              Got [0x7000] coin(s)![await]'''
-dialog_data[45] = '''          Found a “[0x70A7]”![await]'''
-dialog_data[46] = '''      You win[delay_4][end]'''
-dialog_data[47] = '''      You lose[delay_4][end]'''
+dialog_data[45] = '''[await]'''
+dialog_data[46] = '''[await]'''
+dialog_data[47] = '''[await]'''
 dialog_data[48] = ''' Why don't you crash for a while?[await]
  It'll only cost you [0x7024] coins!
  [select]  (Okay!)
@@ -88,14 +81,13 @@ dialog_data[55] = '''            Got a Frog Coin![await]'''
 dialog_data[56] = '''[page]
         [0x7024] Cookie(s)[await]'''
 dialog_data[57] = '''[await]'''
-dialog_data[58] = ''' `MAIN_CHARACTER_NAME`! Please, you've GOT
- to save the kingdom![await]'''
+dialog_data[58] = '''[await]'''
 dialog_data[59] = ''' Our economy is booming now that
  we can have up to 9999 coins at a
  time.[await][page]
  People have been more generous
  lately.[await]'''
-dialog_data[60] = '''          Received “[0x70A7]”[await]'''
+dialog_data[60] = '''[await]'''
 dialog_data[61] = '''[await]'''
 dialog_data[62] = ''' Some of the monsters out there are
  pretty scary. Be sure to learn your
@@ -311,8 +303,7 @@ dialog_data[197] = '''[page]
 dialog_data[198] = ''' Hey, give me back my wallet![await]
  [select]  (All right, quit whining)
  [select]  (NO WAY, Jose!)[await]'''
-dialog_data[199] = ''' There's a lot of noise out there
- today.[await]'''
+dialog_data[199] = '''[await]'''
 dialog_data[200] = '''
                Oh, wow...![await]'''
 dialog_data[201] = '''
@@ -353,7 +344,7 @@ dialog_data[219] = ''' This guy can do more Super Jumps
  than me![await]'''
 dialog_data[220] = '''
          I'll get the 100 soon![await]'''
-dialog_data[221] = ''' So, what did you find?[await]'''
+dialog_data[221] = '''[await]'''
 dialog_data[222] = '''[await]'''
 dialog_data[223] = '''
      Hope my little brother is OK.[await]'''
@@ -462,10 +453,8 @@ dialog_data[306] = '''[await]'''
 dialog_data[307] = '''[await]'''
 dialog_data[308] = '''[await]'''
 dialog_data[309] = '''[await]'''
-dialog_data[310] = '''
-                  OUCH![await]'''
-dialog_data[311] = '''
-                 Be quiet![await]'''
+dialog_data[310] = '''[await]'''
+dialog_data[311] = '''[await]'''
 dialog_data[312] = ''' See, arrows come flying out
  from the forest...and when you're
  hit, you can't move! See, look![await]
@@ -477,8 +466,7 @@ dialog_data[313] = ''' Some jerk waltzed into the forest
  showering all over our town![await]'''
 dialog_data[314] = ''' I tell you, it's scary out here, but
  someone's got to pump the water.[await]'''
-dialog_data[315] = ''' My husband still hasn't come back!
- I wonder what's keeping him?[await]'''
+dialog_data[315] = '''[await]'''
 dialog_data[316] = '''[await]'''
 dialog_data[317] = '''[await]'''
 dialog_data[318] = '''[await]'''
@@ -496,8 +484,7 @@ dialog_data[322] = ''' There may be some places you can
  after completing something else.[await][page]
  It's a good idea to revisit some
  areas from time to time.[await]'''
-dialog_data[323] = ''' Sorry, I don't have any advice
- today.[await]'''
+dialog_data[323] = '''[await]'''
 dialog_data[324] = '''[await]'''
 dialog_data[325] = '''[await]'''
 dialog_data[326] = '''[await]'''
@@ -519,7 +506,7 @@ dialog_data[333] = '''
 dialog_data[334] = ''' Oh, this is NOT GOOD...
  Now I can't go to the forest to
  chop up any wood.[await]'''
-dialog_data[335] = ''' Just you wait...[await]'''
+dialog_data[335] = '''[await]'''
 dialog_data[336] = ''' We're told not to go outside
  'cuz it's too dangerous.[await]'''
 dialog_data[337] = ''' Grandpa's pumping some water for
@@ -644,19 +631,15 @@ dialog_data[403] = '''[await]'''
 dialog_data[404] = '''[await]'''
 dialog_data[405] = '''[await]'''
 dialog_data[406] = '''[await]'''
-dialog_data[407] = ''' Hey![delay][delay]...[delay][delay]You gave it to someone![await]
- You're gonna get it![await]'''
-dialog_data[408] = '''YOSHI: (Looks like I need a little
- more practice. Oh, well...
- let's try it again sometime.)[await]'''
+dialog_data[407] = '''[await]'''
+dialog_data[408] = '''[await]'''
 dialog_data[409] = ''' (Oh, you were SO close!
   Too bad Yoshi lost...
   Let's race again, sometime.)[await]'''
 dialog_data[410] = ''' (Sorry.
   Yoshi lost...
   Better luck next time.)[await]'''
-dialog_data[411] = '''
-                  GOAL![delay_48][end]'''
+dialog_data[411] = '''[await]'''
 dialog_data[412] = '''[await]'''
 dialog_data[413] = '''[await]'''
 dialog_data[414] = '''[await]'''
@@ -693,14 +676,12 @@ dialog_data[430] = '''[await]'''
 dialog_data[431] = '''[await]'''
 dialog_data[432] = '''[await]'''
 dialog_data[433] = '''[await]'''
-dialog_data[434] = '''            Found a Cookie![end]'''
+dialog_data[434] = '''[await]'''
 dialog_data[435] = ''' (Baby Yoshies are known for
   their voracious appetites, but
   also for their generosity.)[await]'''
 dialog_data[436] = '''[await]'''
-dialog_data[437] = '''[page]
-
-           (See you around!)[await]'''
+dialog_data[437] = '''[await]'''
 dialog_data[438] = '''[await]'''
 dialog_data[439] = '''[await]'''
 dialog_data[440] = '''[await]'''
@@ -718,9 +699,7 @@ dialog_data[449] = '''[page]
 dialog_data[450] = '''[await]'''
 dialog_data[451] = '''[await]'''
 dialog_data[452] = '''[await]'''
-dialog_data[453] = '''[page]
- (Remember, you need Cookies
- if you want to race!)[await]'''
+dialog_data[453] = '''[await]'''
 dialog_data[454] = '''            Got [0x7000] Cookie(s)![await]'''
 dialog_data[455] = '''[page]
 YOSHI:
@@ -731,9 +710,7 @@ BOSHI: (Let's race again
  sometime, all right?)[await]'''
 dialog_data[458] = '''[await]'''
 dialog_data[459] = '''[await]'''
-dialog_data[460] = '''[page]
- (Okay, now. Line up beside me
-   and we'll get this race going!)[await]'''
+dialog_data[460] = '''[await]'''
 dialog_data[461] = ''' (You're carrying a lot of things!
   I'll store these [0x7000] for you.
   Don't worry...I won't eat them.[await]
@@ -741,11 +718,8 @@ dialog_data[461] = ''' (You're carrying a lot of things!
 dialog_data[462] = ''' (That was mighty tasty.
   So now we're back to 200![await]
   Thanks for the snack!)[await]'''
-dialog_data[463] = ''' (You're carrying too many things
-  and storing too many at the same
-  time. It'd be a shame to waste[await]
-  them, so I'll grab a few to eat.)[await]'''
-dialog_data[464] = '''[await][pause][end]'''
+dialog_data[463] = '''[await]'''
+dialog_data[464] = '''[await]'''
 dialog_data[465] = '''[await]'''
 dialog_data[466] = '''[await]'''
 dialog_data[467] = '''[await]'''
@@ -765,9 +739,7 @@ dialog_data[477] = '''
 dialog_data[478] = '''[page]
 
              Enjoy your stay.[await]'''
-dialog_data[479] = '''[page]
-
-            Please come again.[await]'''
+dialog_data[479] = '''[await]'''
 dialog_data[480] = '''[await]'''
 dialog_data[481] = '''[await]'''
 dialog_data[482] = '''
@@ -816,12 +788,10 @@ dialog_data[503] = ''' Bellhop! Escort this guest
  over to our suite![await]'''
 dialog_data[504] = '''
       Remember to do a good job.[await]'''
-dialog_data[505] = '''
-        Please escort our guest![await]'''
+dialog_data[505] = '''[await]'''
 dialog_data[506] = '''
             Please calm down.[await]'''
-dialog_data[507] = '''
-  Please take care of these things.[await]'''
+dialog_data[507] = '''[await]'''
 dialog_data[508] = ''' Please escort our guest
  immediately![await]'''
 dialog_data[509] = '''[await]'''
@@ -841,42 +811,20 @@ dialog_data[518] = ''' Good job.
 dialog_data[519] = ''' You are not a guest, now.
  Please come here and we shall
  discuss this matter.[await]'''
-dialog_data[520] = ''' Here you go.[await]'''
-dialog_data[521] = ''' End[await]'''
-dialog_data[522] = ''' [select] Next
- [select]
- [select] [await]'''
-dialog_data[523] = ''' [select] Next
- [select]
- [select] [await]'''
-dialog_data[524] = ''' [select] Next
- [select]
- [select] [await]'''
-dialog_data[525] = ''' [select] Next
- [select] 
- [select] Option[await]'''
-dialog_data[526] = ''' [select] Next
- [select] 500 coins
- [select] 1 level up[await]'''
-dialog_data[527] = ''' [select] Next
- [select]
- [select] [await]'''
-dialog_data[528] = ''' [select] Next
- [select]
- [select] [await]'''
-dialog_data[529] = ''' [select] Next
- [select]
- [select] [await]'''
-dialog_data[530] = ''' [select] Next
- [select]
- [select] [await]'''
-dialog_data[531] = ''' [select] Next
- [select]
- [select] [await]'''
-dialog_data[532] = ''' [select] Next
- [select] 99 flowers
- [select] Max level up[await]'''
-dialog_data[533] = ''' Use A to level up, B to cancel.[end]'''
+dialog_data[520] = '''[await]'''
+dialog_data[521] = '''[await]'''
+dialog_data[522] = '''[await]'''
+dialog_data[523] = '''[await]'''
+dialog_data[524] = '''[await]'''
+dialog_data[525] = '''[await]'''
+dialog_data[526] = '''[await]'''
+dialog_data[527] = '''[await]'''
+dialog_data[528] = '''[await]'''
+dialog_data[529] = '''[await]'''
+dialog_data[530] = '''[await]'''
+dialog_data[531] = '''[await]'''
+dialog_data[532] = '''[await]'''
+dialog_data[533] = '''[await]'''
 dialog_data[534] = ''' Trade the coins you got from
  “Midas River” for “Frog Coins”.[await][page]
  As a first time only bonus, I'll
@@ -895,7 +843,7 @@ dialog_data[536] = ''' On top of that...
 dialog_data[537] = ''' Use the coins I'm holding for you?[await]
   [select]  (Yes)
   [select]  (No)[await]'''
-dialog_data[538] = ''' I'll hold your [0x7000] extra coin(s).[await]'''
+dialog_data[538] = '''[await]'''
 dialog_data[539] = ''' You got [0x7000] coin(s).
  But that's not enough to cash in,
  so I'll hold them for you, okay?[await]
@@ -981,12 +929,9 @@ dialog_data[583] = ''' Oh, bummer!
 dialog_data[584] = ''' Wow, you just broke the record!
  You made the highest score![await][pause][page]
 [end]'''
-dialog_data[585] = ''' It's [0x7024] coins for a night.[await]
-[end]'''
-dialog_data[586] = ''' Ya'll staying the night?
-  [select]  (Yes)
-  [select]  (No)[await]'''
-dialog_data[587] = ''' You need more coinage![await]'''
+dialog_data[585] = '''[await]'''
+dialog_data[586] = '''[await]'''
+dialog_data[587] = '''[await]'''
 dialog_data[588] = ''' A fella named “Toad” something or
  other came by, mumbling about
  music.[await][page]
@@ -1037,7 +982,7 @@ dialog_data[602] = '''GREAPER: Hey, `MAIN_CHARACTER_NAME`![await]
  If you happen to find our flags,
  could you bring them back here?[await][page]
    Anyway, about my secret item...[await]'''
-dialog_data[603] = '''   Invisible items have been placed.[await]'''
+dialog_data[603] = '''[await]'''
 dialog_data[604] = '''[await]'''
 dialog_data[605] = '''[await]'''
 dialog_data[606] = '''[await]'''
@@ -1077,12 +1022,7 @@ dialog_data[621] = ''' Welcome to my pur-tend store![await]
  Would you like a “Shiny Stone”?
   [select]  (Sure)
   [select]  (Nope)[await]'''
-dialog_data[622] = ''' This hole my wife dug is a shortcut
- to the trolley![await]
- It's an amusement ride and I named
- it “Moleville Mountain”!
- Ain't that nifty?[await][pause]
-[end]'''
+dialog_data[622] = '''[await]'''
 dialog_data[623] = ''' Drop in here, and you'll be right at
  the trolley tracks.
  It'll only cost ya 10 coins.[await][pause][page]
@@ -1169,16 +1109,13 @@ dialog_data[647] = ''' Wow, thanks a lot!
  Here you can take this ...[await][page]
  Oops! I must have dropped it.
  I'll go find another one.[await]'''
-dialog_data[648] = ''' Ooh, thanks!
- Since you're so nice, I'll give you
- this green coin.[await]'''
-dialog_data[649] = '''
-             Thanks, `MAIN_CHARACTER_TITLE`![await]'''
+dialog_data[648] = '''[await]'''
+dialog_data[649] = '''[await]'''
 dialog_data[650] = '''[await]'''
 dialog_data[651] = ''' Sorry, curatives are all gone.
 [end]'''
 dialog_data[652] = ''' Tank you, pweese come again![await]'''
-dialog_data[653] = '''      Received a “Shiny Stone”[await]'''
+dialog_data[653] = '''[await]'''
 dialog_data[654] = ''' I'm reading a picture book about
  Bean Valley![await][pause][delay_30] ...How the heck is
  anyone supposed to jump to that
@@ -1193,9 +1130,7 @@ dialog_data[655] = ''' Hey `MAIN_CHARACTER_TITLE`! Have ya been to
  Try lookin' around there, maybe
  you'll find a way to avoid jumpin'
  into it![await]'''
-dialog_data[656] = ''' You want your “Shiny Stone” back?[await]
-  [select]  (Yes please)
-  [select]  (No thanks)[await]'''
+dialog_data[656] = '''[await]'''
 dialog_data[657] = ''' What a nice “Shiny Stone”.
  I'll trade you my “Carbo Cookie”![await]
   [select]  (Okay)
@@ -1203,15 +1138,12 @@ dialog_data[657] = ''' What a nice “Shiny Stone”.
 dialog_data[658] = ''' Sowwy, my pur-tend store is closed
  today![await][pause] If ya want a “Shiny Stone”,
  you can prolly find one somewhere![await]'''
-dialog_data[659] = '''     Received a “Carbo Cookie”[await]'''
+dialog_data[659] = '''[await]'''
 dialog_data[660] = '''[await]'''
 dialog_data[661] = ''' Booster's a pretty absent-minded
  fella. He just leaves the door to
  his tower open all the time.[await]'''
-dialog_data[662] = '''MA'MOLE: Seen our roof yet?[await]
- Pa fixed it up and now he's back
- to work at the mountain.[await]
- He's singin' and workin' hard.[await]'''
+dialog_data[662] = '''[await]'''
 dialog_data[663] = ''' Oh, the pipe?[delay_30]
  I think Belome 2 might know
  something about it.[await]'''
@@ -1248,7 +1180,7 @@ dialog_data[672] = '''
      attack against all enemies.[await][page]
    They're all quite rare and hard
                to come by.[await]'''
-dialog_data[673] = '''        Received a Frog Coin![await]'''
+dialog_data[673] = '''[await]'''
 dialog_data[674] = '''   Found a “[0x70A7]”![end]'''
 dialog_data[675] = '''   Found an “[0x70A7]”![end]'''
 dialog_data[676] = '''
@@ -1281,8 +1213,7 @@ dialog_data[694] = '''' Um••••••`MAIN_CHARACTER_NAME`?[await]
  So, please follow me to the exit.[await]
   [select]  (Go with him)
   [select]  (Don't go with him)[await]'''
-dialog_data[695] = ''' Gasp, gasp![await]
- Phew, what a workout.[await]'''
+dialog_data[695] = '''[await]'''
 dialog_data[696] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
  This is “Booster Hill”, where there
  isn't much besides barrels.[await][page]
@@ -1405,12 +1336,8 @@ dialog_data[731] = ''' The Sky Troopas aren't here yet.[await][page]
  there myself. See ya![await]'''
 dialog_data[732] = ''' Give me the Temple Key, and I'll let
  you pass through.[await]'''
-dialog_data[733] = ''' That key you have there looks
- pretty tasty.[await]
-  [select] (Give him the key)
-  [select] (Keep the key)[await]'''
-dialog_data[734] = ''' Eww, a mouthful of rust.
- Thanks anyway.[await]'''
+dialog_data[733] = '''[await]'''
+dialog_data[734] = '''[await]'''
 dialog_data[735] = ''' Sorry, I'm not accepting visitors
  past my bedtime.[await]'''
 dialog_data[736] = ''' I'll tell your fortune for 50 coins.[await]'''
@@ -1599,48 +1526,20 @@ dialog_data[819] = '''  40 points[end]'''
 dialog_data[820] = '''[end]'''
 dialog_data[821] = '''    25 points[end]'''
 dialog_data[822] = '''     9 points[end]'''
-dialog_data[823] = ''' [select]  Next Page
- [select]  Treasure Seeker
- [select]  999 Coins[await]'''
-dialog_data[824] = ''' [select]  Next Page
- [select]  Mallow joins party
- [select]  Geno joins party[await]'''
-dialog_data[825] = ''' [select]  Next Page
- [select]  Princess joins party
- [select]  Bowser joins party[await]'''
-dialog_data[826] = ''' [select]  Next Page
- [select]  Member 1 will drop out
- [select]  Member 2 will drop out[await]'''
-dialog_data[827] = ''' [select]  Next Page
- [select]  Save
- [select]  Oops, talked to him![await]'''
-dialog_data[828] = ''' [select]  Next Page
- [select]  World Map “ON”
- [select]  World Map “OFF”[await]'''
-dialog_data[829] = ''' [select]  End
- [select]  Star Menu Test
- [select]  Ending[await]'''
-dialog_data[830] = '''    The World Map
-   Talk to the person of the place
-           you wish to go to.[await]'''
-dialog_data[831] = '''Select your destination point
- [select]  I'll go to Barrel Volcano
- [select]  Forget it[await]'''
-dialog_data[832] = '''Select your destination point
- [select]  I'll go to Land's End
- [select]  Forget it[await]'''
-dialog_data[833] = '''Select your destination point
- [select]  I'll go to Monstro Town
- [select]  Forget it[await]'''
-dialog_data[834] = '''Select your destination point
- [select]  I'll go to Bowser's Keep
- [select]  Forget it[await]'''
-dialog_data[835] = '''Select your destination point
- [select]  I'll go to Bean Valley
- [select]  Forget it[await]'''
-dialog_data[836] = '''Select your destination point
-[select]  I'll go to Nimbus Land
-[select]  Forget it[await]'''
+dialog_data[823] = '''[await]'''
+dialog_data[824] = '''[await]'''
+dialog_data[825] = '''[await]'''
+dialog_data[826] = '''[await]'''
+dialog_data[827] = '''[await]'''
+dialog_data[828] = '''[await]'''
+dialog_data[829] = '''[await]'''
+dialog_data[830] = '''[await]'''
+dialog_data[831] = '''[await]'''
+dialog_data[832] = '''[await]'''
+dialog_data[833] = '''[await]'''
+dialog_data[834] = '''[await]'''
+dialog_data[835] = '''[await]'''
+dialog_data[836] = '''[await]'''
 dialog_data[837] = ''' There is a chest in the sewers that
  will have its contents change if
  you enter from Land's End.[await][page]
@@ -2296,8 +2195,7 @@ dialog_data[1103] = '''DR. TOPPER: Heh...you got the
 dialog_data[1104] = '''[await]'''
 dialog_data[1105] = '''[await]'''
 dialog_data[1106] = '''[await]'''
-dialog_data[1107] = '''DR. TOPPER: Heh...Congrats!
- Plain sailing, eh?![await]'''
+dialog_data[1107] = '''[await]'''
 dialog_data[1108] = '''[await]'''
 dialog_data[1109] = '''[await]'''
 dialog_data[1110] = '''[await]'''

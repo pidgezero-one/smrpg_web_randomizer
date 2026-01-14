@@ -31,41 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToConst(GAME_OVER_COUNTER_MAYBE, 2),
-	ActionQueueSync(target=NPC_0, subscript=[
-		A_ShadowOn(),
-		A_WalkSoutheastPixels(6),
-		A_FaceSouthwest(),
-		A_SetPriority(3)
-	]),
-	ActionQueueSync(target=NPC_2, subscript=[
-		A_ShadowOn(),
-		A_SetPriority(3)
-	]),
-	ActionQueueSync(target=NPC_4, subscript=[
-		A_ShadowOn(),
-		A_WalkNorthwestPixels(5),
-		A_FaceSoutheast()
-	]),
-	ActionQueueSync(target=NPC_5, subscript=[
-		A_ShadowOn(),
-		A_WalkSoutheastPixels(5),
-		A_FaceNorthwest()
-	]),
-	ActionQueueSync(target=NPC_6, subscript=[
-		A_ShadowOn(),
-		A_WalkSoutheastPixels(5),
-		A_FaceNorthwest()
-	]),
-	ActionQueueAsync(target=NPC_7, subscript=[
-		A_ShadowOn(),
-		A_WalkNorthwestPixels(5),
-		A_FaceSoutheast()
-	]),
-	SetSyncActionScript(NPC_4, A0547_KEEP_CROSSING_TERRA_COTTAS),
-	SetSyncActionScript(NPC_5, A0548_KEEP_CROSSING_TERRA_COTTAS),
-	SetSyncActionScript(NPC_6, A0548_KEEP_CROSSING_TERRA_COTTAS),
-	SetSyncActionScript(NPC_7, A0547_KEEP_CROSSING_TERRA_COTTAS),
-	FadeInFromBlack(sync=False),
-	Return()
+
 ])

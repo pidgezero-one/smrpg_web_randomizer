@@ -31,15 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Pause(1, identifier="EVENT_342_pause_0"),
-	JmpIfBitSet(TEMP_7044_5, ["EVENT_342_set_var_to_const_3"]),
-	Jmp(["EVENT_342_pause_0"]),
-	SetVarToConst(X_COORD_1, 29, identifier="EVENT_342_set_var_to_const_3"),
-	SetVarToConst(Y_COORD_1, 92),
-	UnknownCommand(bytearray(b'\xfd\xc9')),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 352, ["EVENT_342_ret_10"]),
-	PlaySound(sound=SO016_OPEN_DOOR, channel=6),
-	ApplyTileModToLevel(use_alternate=True, room_id=R320_MUSHROOM_KINGDOM_CASTLE_ENTRANCE_TO_THRONE_ROOM, mod_id=0),
-	ApplySolidityModToLevel(permanent=True, room_id=R320_MUSHROOM_KINGDOM_CASTLE_ENTRANCE_TO_THRONE_ROOM, mod_id=0),
-	Return(identifier="EVENT_342_ret_10")
+
 ])

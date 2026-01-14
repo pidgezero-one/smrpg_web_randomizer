@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnterArea(room_id=R323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM, face_direction=SOUTH, x=26, y=93, z=0),
-	FadeInFromBlack(sync=False),
-	Return()
+
 ])

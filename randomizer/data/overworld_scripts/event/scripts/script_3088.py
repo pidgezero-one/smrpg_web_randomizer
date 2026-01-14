@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	PauseActionScript(MEM_70A8),
-	EnableObjectTrigger(MEM_70A8),
-	Return()
+
 ])

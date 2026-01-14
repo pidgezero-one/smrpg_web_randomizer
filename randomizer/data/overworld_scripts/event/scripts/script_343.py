@@ -31,9 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(TEMP_7044_5, ["EVENT_343_ret_4"]),
-	PlaySound(sound=SO016_OPEN_DOOR, channel=6),
-	ApplyTileModToLevel(use_alternate=True, room_id=R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, mod_id=0),
-	SetBit(TEMP_7044_5),
-	Return(identifier="EVENT_343_ret_4")
+
 ])

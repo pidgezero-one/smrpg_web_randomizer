@@ -31,13 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(UNIVERSAL_CHEST_ANIMATION_BIT, ["EVENT_2306_set_action_script_3"]),
-	SetBit(UNIVERSAL_CHEST_ANIMATION_BIT),
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_SetWalkingSpeed(FAST),
-		A_WalkNorthSteps(3),
-		A_ClearBit(UNIVERSAL_CHEST_ANIMATION_BIT)
-	]),
-	SetSyncActionScript(NPC_8, A0007_HIT_TREASURE_CHEST_CONTENTS_DEPLETED, identifier="EVENT_2306_set_action_script_3"),
-	JmpToEvent(E0172_CHEST_1_CONTAINER)
+
 ])

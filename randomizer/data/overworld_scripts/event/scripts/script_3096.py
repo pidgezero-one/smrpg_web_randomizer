@@ -31,13 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
-	PlaySound(sound=SO014_FLOWER, channel=6),
-	RunDialog(dialog_id=DI1177_FOUND_A_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
-	SetVarToConst(TEMP_70B8, 3),
-	Dec(TEMP_70B8, identifier="EVENT_3096_dec_4"),
-	AddToInventory(ITEM_ID),
-	JmpIfVarEqualsConst(TEMP_70B8, 0, ["EVENT_3096_ret_8"]),
-	Jmp(["EVENT_3096_dec_4"]),
-	Return(identifier="EVENT_3096_ret_8")
+
 ])

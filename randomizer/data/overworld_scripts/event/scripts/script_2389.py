@@ -31,6 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ClearBit(TEMP_7043_1),
-	Return()
+
 ])

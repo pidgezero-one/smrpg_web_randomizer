@@ -31,11 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(TEMP_7044_5, ["EVENT_484_run_event_as_subroutine_3"]),
-	RunDialog(dialog_id=DI2378_EMPTY, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	Return(),
-	RunEventAsSubroutine(E0456_YOSHI_TALKS_TO_OTHER_YOSHI, identifier="EVENT_484_run_event_as_subroutine_3"),
-	RunDialog(dialog_id=DI2378_EMPTY, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	RunBackgroundEvent(event_id=E0469_YOSTER_ISLE_BACKGROUND, return_on_level_exit=True, run_as_second_script=True),
-	Return()
+
 ])

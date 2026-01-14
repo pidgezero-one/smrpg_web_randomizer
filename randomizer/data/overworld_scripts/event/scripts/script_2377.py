@@ -31,5 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Return(identifier="EVENT_2377_ret_0")
+
 ])

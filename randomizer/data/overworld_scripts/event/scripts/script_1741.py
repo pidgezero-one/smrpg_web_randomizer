@@ -31,11 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToConst(TEMP_70AE, 3),
-	SetBit(TEMP_7044_4, identifier="EVENT_1741_set_bit_1"),
-	SetSyncActionScript(NPC_0, A0708_BOOSTER_HILL_BARREL),
-	SetSyncActionScript(NPC_1, A0774_EMPTY),
-	SetSyncActionScript(NPC_2, A0710_BOOSTER_HILL_BARREL),
-	Pause(170),
-	Jmp(["EVENT_1741_set_bit_1"])
+
 ])

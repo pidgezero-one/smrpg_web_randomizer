@@ -31,55 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnterArea(room_id=R244_GAME_INTRO_YOSTER_ISLE_TALK_TO_YOSHI_RUN_AROUND, face_direction=SOUTHWEST, x=16, y=64, z=0),
-	FadeInFromBlack(sync=True),
-	SetBit(TEMP_7044_4),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True)
-	]),
-	SetAsyncActionScript(MARIO, A0670_NOD_YES),
-	Pause(10),
-	ActionQueueAsync(target=NPC_12, subscript=[
-		A_FaceSouthwest()
-	]),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_JumpToHeight(height=110, silent=True),
-		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
-		A_SetWalkingSpeed(SLOW),
-		A_WalkSouthwestPixels(13),
-		A_FloatingOff(),
-		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-		A_WalkSouthwestPixels(3),
-		A_SetSpriteSequence(index=5, sprite_offset=6, is_sequence=True, looping=True),
-		A_SetWalkingSpeed(FASTEST),
-		A_DecZCoord1Step(),
-		A_Pause(30)
-	]),
-	MoveScriptToMainThread(),
-	UnknownCommand(bytearray(b'\xfdE')),
-	PauseActionScript(NPC_12),
-	ActionQueueSync(target=MARIO, subscript=[
-		A_SetWalkingSpeed(FAST),
-		A_SetSpriteSequence(index=2, sprite_offset=6, is_sequence=True, looping=True),
-		A_WalkSouthSteps(2),
-		A_SetSpriteSequence(index=5, sprite_offset=6, is_sequence=True, looping=True),
-		A_WalkSouthwestSteps(9),
-		A_SetSpriteSequence(index=5, sprite_offset=6, is_sequence=True, looping=True, mirror_sprite=True),
-		A_WalkSoutheastSteps(5),
-		A_SetSpriteSequence(index=6, sprite_offset=6, is_sequence=True, looping=True, mirror_sprite=True),
-		A_WalkNortheastSteps(12)
-	]),
-	ActionQueueSync(target=NPC_12, subscript=[
-		A_FixedFCoordOff(),
-		A_SetObjectMemoryBits(arg_1=0x0E, bits=[]),
-		A_SetAllSpeeds(FAST),
-		A_WalkSouthSteps(2),
-		A_WalkSouthwestSteps(9),
-		A_WalkSoutheastSteps(5),
-		A_WalkNortheastSteps(12)
-	]),
-	Pause(190),
-	FadeOutToBlack(sync=True, duration=30),
-	PauseScriptUntilEffectDone(),
-	JmpToEvent(E0139_EMPTY)
+
 ])

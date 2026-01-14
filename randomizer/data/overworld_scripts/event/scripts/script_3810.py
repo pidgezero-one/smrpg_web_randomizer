@@ -31,9 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Pause(1),
-	JmpIfBitSet(TEMP_7043_0, ["EVENT_3810_remove_from_current_level_3"]),
-	JmpToEvent(E3810_EMPTY),
-	RemoveObjectFromCurrentLevel(NPC_8, identifier="EVENT_3810_remove_from_current_level_3"),
-	Return()
+
 ])

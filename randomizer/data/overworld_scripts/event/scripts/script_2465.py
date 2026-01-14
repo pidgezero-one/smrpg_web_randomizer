@@ -31,8 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	PlaySound(sound=SO096_SWINGING_FIST, channel=6, identifier="EVENT_2465_play_sound_0"),
-	Pause(26),
-	JmpIfBitClear(DIRECTIONAL_7045_0, ["EVENT_2465_play_sound_0"]),
-	Return()
+
 ])

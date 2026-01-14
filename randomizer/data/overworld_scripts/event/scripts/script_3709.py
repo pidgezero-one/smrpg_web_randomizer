@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfObjectInCurrentLevel(NPC_0, ["EVENT_3625_play_sound_21"]),
-	DisableObjectTriggerInSpecificLevel(NPC_0, R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE),
-	Jmp(["EVENT_3710_set_var_to_const_2"])
+
 ])

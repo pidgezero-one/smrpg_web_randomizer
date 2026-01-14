@@ -31,11 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RemoveObjectFromCurrentLevel(NPC_2),
-	SetVarToConst(ITEM_ID, RoomKeyItem),
-	SetVarToConst(PRIMARY_TEMP_7000, 2802),
-	RunEventAsSubroutine(E3828_GRANT_ITEM_FLOWER_SOUND),
-	RemoveObjectFromSpecificLevel(NPC_2, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS),
-	SetBit(KEEP_BOSS_2_DEFEATED),
-	Return()
+
 ])

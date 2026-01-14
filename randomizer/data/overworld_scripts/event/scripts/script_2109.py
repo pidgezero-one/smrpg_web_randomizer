@@ -30,4 +30,6 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 
-script = EventScript([])
+script = EventScript([
+
+])

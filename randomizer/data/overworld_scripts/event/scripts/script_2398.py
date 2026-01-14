@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnterArea(room_id=R291_GAME_INTRO_BOOSTER_TOWER_7F_PARACHUTING_SPOOKUMS, face_direction=NORTHEAST, x=5, y=53, z=0),
-	JmpToEvent(E2365_EMPTY),
-	Return()
+
 ])

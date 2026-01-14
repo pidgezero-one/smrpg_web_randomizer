@@ -31,10 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfObjectInCurrentLevel(NPC_1, ["EVENT_3625_play_sound_21"]),
-	DisableObjectTriggerInSpecificLevel(NPC_1, R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE),
-	SetVarToConst(ITEM_ID, HappyShellItem, identifier="EVENT_3710_set_var_to_const_2"),
-	Inc(HIDDEN_CHEST_COUNTER),
-	RunEventAsSubroutine(E0032_NON_COIN_CHEST_CONTAINER),
-	Return()
+
 ])

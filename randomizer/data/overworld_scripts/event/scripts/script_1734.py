@@ -31,16 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Pause(1, identifier="EVENT_1734_pause_0"),
-	JmpIfBitClear(TEMP_7076_0, ["EVENT_1734_pause_0"]),
-	SetVarToConst(TEMP_70AB, 22, identifier="EVENT_1734_set_var_to_const_2"),
-	StartLoopNTimes(3),
-	JmpIfObjectInCurrentLevel(MEM_70AB, ["EVENT_1734_set_action_script_7"]),
-	ResumeActionScript(MEM_70AB),
-	Jmp(["EVENT_1734_inc_8"]),
-	SetSyncActionScript(MEM_70AB, A0770_EMPTY, identifier="EVENT_1734_set_action_script_7"),
-	Inc(TEMP_70AB, identifier="EVENT_1734_inc_8"),
-	EndLoop(),
-	Pause(4),
-	Jmp(["EVENT_1734_set_var_to_const_2"])
+
 ])

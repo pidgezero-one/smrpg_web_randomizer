@@ -31,13 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_StartLoopNTimes(7),
-		A_SetWalkingSpeed(FASTEST),
-		A_WalkNorthPixels(4),
-		A_WalkSouthPixels(8),
-		A_WalkNorthPixels(4),
-		A_EndLoop()
-	]),
-	Return()
+
 ])

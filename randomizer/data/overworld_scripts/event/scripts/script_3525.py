@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfVarEqualsConst(ACTIVE_NPC, 21, ["EVENT_3525_jmp_to_event_2"]),
-	JmpToEvent(E0172_CHEST_1_CONTAINER),
-	JmpToEvent(E3145_SEWERS_FLIPPABLE_CHEST, identifier="EVENT_3525_jmp_to_event_2")
+
 ])

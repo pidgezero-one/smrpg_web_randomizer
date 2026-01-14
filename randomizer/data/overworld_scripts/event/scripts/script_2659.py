@@ -31,13 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(DIRECTIONAL_7046_4, ["EVENT_2659_ret_8"]),
-	RunEventAsSubroutine(E2644_EMPTY),
-	SetBit(DIRECTIONAL_7046_4),
-	SummonObjectToSpecificLevel(NPC_2, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS),
-	RemoveObjectFromSpecificLevel(NPC_5, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS),
-	RunDialog(dialog_id=DI3155_EMPTY, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
-	AddToInventory(KerokeroColaItem),
-	Inc(HIDDEN_CHEST_COUNTER),
-	Return(identifier="EVENT_2659_ret_8")
+
 ])

@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(UNKNOWN_704E_3, ["EVENT_1727_jmp_to_event_2"]),
-	JmpToEvent(E0132_EMPTY),
-	JmpToEvent(E1733_EMPTY, identifier="EVENT_1727_jmp_to_event_2")
+
 ])

@@ -31,47 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	FadeInFromBlack(sync=True, duration=60),
-	ActionQueueSync(target=NPC_3, subscript=[
-		A_SetWalkingSpeed(VERY_SLOW),
-		A_StartLoopNTimes(4),
-		A_WalkSouthwestPixels(1),
-		A_Pause(20),
-		A_EndLoop()
-	]),
-	ActionQueueAsync(target=NPC_2, subscript=[
-		A_FixedFCoordOn(),
-		A_SetWalkingSpeed(VERY_SLOW),
-		A_StartLoopNTimes(4),
-		A_WalkSouthwestPixels(1),
-		A_Pause(20),
-		A_EndLoop()
-	]),
-	ActionQueueAsync(target=NPC_3, subscript=[
-		A_SequenceLoopingOff(),
-		A_FixedFCoordOn(),
-		A_Pause(30),
-		A_SetSequenceSpeed(FAST),
-		A_SetWalkingSpeed(SLOW),
-		A_WalkNortheastSteps(1),
-		A_Pause(20),
-		A_SetSequenceSpeed(SLOW),
-		A_SetSpriteSequence(index=6, is_sequence=True, looping=False),
-		A_Pause(90),
-		A_FixedFCoordOff(),
-		A_SequenceLoopingOff(),
-		A_ResetProperties(),
-		A_SetWalkingSpeed(FAST),
-		A_SetSequenceSpeed(FAST),
-		A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-		A_Pause(30),
-		A_SetSpriteSequence(index=1, is_sequence=True, looping=True, mirror_sprite=True),
-		A_WalkNorthwestSteps(15),
-		A_VisibilityOff()
-	]),
-	Pause(60),
-	PlaySound(sound=SO016_OPEN_DOOR, channel=6),
-	Pause(30),
-	SetBit(UNKNOWN_STATUE_ROOM_7092_3),
-	Return()
+
 ])

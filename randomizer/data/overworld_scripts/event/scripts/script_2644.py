@@ -31,14 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	DisableObjectTrigger(MEM_70A8),
-	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6),
-	SetSyncActionScript(MEM_70A8, A0007_HIT_TREASURE_CHEST_CONTENTS_DEPLETED),
-	Set70107015ToObjectXYZ(target=MEM_70A8),
-	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
-	AddConstToVar(PRIMARY_TEMP_7000, 512),
-	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
-	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6),
-	CreatePacketAt7010(packet=P005_BRIEF_POOF_BAG, destinations=["EVENT_2644_ret_9"]),
-	Return(identifier="EVENT_2644_ret_9")
+
 ])

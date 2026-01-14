@@ -31,16 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnterArea(room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, face_direction=SOUTHWEST, x=7, y=33, z=0),
-	CopyVarToVar(from_var=KEEP_DOORS_EXIT_TYPE_2, to_var=PRIMARY_TEMP_7000),
-	VarShiftLeft(PRIMARY_TEMP_7000, 4),
-	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=X_COORD_2),
-	AddConstToVar(X_COORD_2, 3),
-	VarShiftLeft(PRIMARY_TEMP_7000, 255),
-	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Y_COORD_2),
-	AddConstToVar(Y_COORD_2, 25),
-	ActionQueueSync(target=MARIO, subscript=[
-		A_RunAwayShift()
-	]),
-	JmpToEvent(E3376_KEEP_6_DOOR_LOBBY_LOADER)
+
 ])

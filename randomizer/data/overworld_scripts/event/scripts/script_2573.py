@@ -31,11 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	PlaySound(sound=SO014_FLOWER, channel=6),
-	RemoveObjectFromCurrentLevel(NPC_7),
-	SummonObjectToCurrentLevel(NPC_6),
-	SetSyncActionScript(NPC_6, A0014_FLOATING_CHEST),
-	SummonObjectToCurrentLevel(NPC_8),
-	SetSyncActionScript(NPC_8, A0398_BLOCK_SHADOW),
-	Return()
+
 ])

@@ -31,18 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Pause(1, identifier="EVENT_3837_pause_0"),
-	JmpIfMarioInAir(["EVENT_3837_pause_0"]),
-	SetBit(BUCKET_WARP_ENABLED),
-	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
-	ClearBit(TEMP_7043_2),
-	SetSyncActionScript(NPC_2, A0128_WALK_RANDOM_DIRECTIONS),
-	Return(),
-	Return(),
-	Return(),
-	Return(),
-	Return(),
-	Return(),
-	Return()
+
 ])

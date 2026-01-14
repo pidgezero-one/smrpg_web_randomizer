@@ -31,14 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfObjectInCurrentLevel(NPC_9, ["EVENT_3625_play_sound_21"]),
-	JmpToSubroutine(["EVENT_3625_freeze_camera_137"]),
-	SetVarToConst(ITEM_ID, HappyShellItem),
-	Inc(HIDDEN_CHEST_COUNTER),
-	Inc(PRIMARY_TEMP_7000),
-	RunEventAsSubroutine(E0032_NON_COIN_CHEST_CONTAINER),
-	DisableObjectTriggerInSpecificLevel(NPC_9, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES),
-	RememberLastObject(),
-	UnfreezeCamera(),
-	Return()
+
 ])

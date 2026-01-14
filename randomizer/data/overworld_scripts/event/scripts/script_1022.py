@@ -31,10 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnterArea(room_id=R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, face_direction=SOUTH, x=8, y=120, z=0),
-	RemoveObjectFromCurrentLevel(MARIO),
-	FadeInFromBlack(sync=False),
-	RunDialog(dialog_id=DI2555_EMPTY, above_object=TOADSTOOL, closable=True, sync=False, multiline=True, use_background=False),
-	ExitToWorldMap(area=OW28_MARRYMORE, bit_6=True, bit_7=True),
-	Return()
+
 ])

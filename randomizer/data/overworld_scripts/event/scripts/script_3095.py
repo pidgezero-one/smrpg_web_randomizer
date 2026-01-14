@@ -31,12 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6),
-	RunDialog(dialog_id=DI0524_GOT_A_70A7_AWAIT_TERMINATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
-	SetVarToConst(TEMP_70B8, 3),
-	Dec(TEMP_70B8, identifier="EVENT_3095_dec_3"),
-	AddToInventory(ITEM_ID),
-	JmpIfVarEqualsConst(TEMP_70B8, 0, ["EVENT_3095_ret_7"]),
-	Jmp(["EVENT_3095_dec_3"]),
-	Return(identifier="EVENT_3095_ret_7")
+
 ])

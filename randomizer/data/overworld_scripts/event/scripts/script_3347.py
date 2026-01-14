@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	UnknownCommand(bytearray(b'\xfd\x8f\x02')),
-	PrioritySet(mainscreen=[LAYER_L3], subscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES], colour_math=[BACKGROUND, HALF_INTENSITY]),
-	JmpToEvent(E0015_STANDARD_ROOM_LOADER)
+
 ])

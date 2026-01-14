@@ -31,21 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StopSound(identifier="EVENT_2123_stop_sound_0"),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound(),
-	StopSound()
+
 ])

@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnterArea(room_id=R257_GAME_INTRO_FOREST_MAZE_FIGHTING_MAGIKOOPA_AT_BOWYERS_PAD, face_direction=NORTHWEST, x=13, y=34, z=0),
-	JmpToEvent(E2366_EMPTY),
-	Return()
+
 ])

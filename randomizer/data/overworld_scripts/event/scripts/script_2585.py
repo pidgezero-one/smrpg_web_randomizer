@@ -31,9 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	DisableTriggerOfObjectAt70A8InCurrentLevel(),
-	RunEventAsSubroutine(E2644_EMPTY),
-	RunDialog(dialog_id=DI3155_EMPTY, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
-	AddToInventory(KerokeroColaItem),
-	Return()
+
 ])

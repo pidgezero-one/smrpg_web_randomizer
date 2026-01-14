@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ApplyTileModToLevel(use_alternate=True, room_id=R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, mod_id=0),
-	ApplySolidityModToLevel(permanent=True, room_id=R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, mod_id=0),
-	Return()
+
 ])

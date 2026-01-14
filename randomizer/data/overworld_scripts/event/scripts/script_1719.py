@@ -31,13 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToConst(TEMP_70AB, 24),
-	SetVarToConst(TEMP_70A9, 20),
-	StartLoopNTimes(3),
-	SummonObjectToCurrentLevel(MEM_70A9),
-	SetSyncActionScript(MEM_70A9, A0366_EMPTY),
-	Inc(TEMP_70A9),
-	EndLoop(),
-	RunBackgroundEvent(event_id=E1721_EMPTY, return_on_level_exit=True),
-	Return()
+
 ])

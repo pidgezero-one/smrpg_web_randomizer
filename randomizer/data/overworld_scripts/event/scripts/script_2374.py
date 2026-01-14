@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RemoveObjectFromCurrentLevel(NPC_1),
-	RemoveObjectFromCurrentLevel(NPC_5),
-	Jmp(["EVENT_2377_ret_0"])
+
 ])

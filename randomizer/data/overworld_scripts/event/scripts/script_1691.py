@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitClear(TRAMPOLINE_SHAMAN_PAID, ["EVENT_1691_ret_2"]),
-	RemoveObjectFromCurrentLevel(NPC_0),
-	Return(identifier="EVENT_1691_ret_2")
+
 ])

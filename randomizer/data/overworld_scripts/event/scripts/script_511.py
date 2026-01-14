@@ -31,22 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Set7000ToCurrentLevel(),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 128, ["EVENT_511_action_queue_7"]),
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_SetWalkingSpeed(FAST),
-		A_ShiftZUpSteps(2)
-	]),
-	RunEventAsSubroutine(E0032_NON_COIN_CHEST_CONTAINER),
-	DisableObjectTriggerInSpecificLevel(NPC_8, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES),
-	RememberLastObject(),
-	Return(),
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_SetWalkingSpeed(FAST),
-		A_ShiftZUpSteps(2)
-	], identifier="EVENT_511_action_queue_7"),
-	RunEventAsSubroutine(E0032_NON_COIN_CHEST_CONTAINER),
-	DisableObjectTriggerInSpecificLevel(NPC_0, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS),
-	RememberLastObject(),
-	Return()
+
 ])

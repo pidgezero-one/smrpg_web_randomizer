@@ -31,8 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	DisableObjectTrigger(MEM_70A8),
-	SetSyncActionScript(MEM_70A8, A0470_COLLECT_MIDAS_COIN),
-	AddCoins(10),
-	Return()
+
 ])

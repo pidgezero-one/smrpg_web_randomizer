@@ -31,30 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnableControls([]),
-	FreezeCamera(),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_FloatingOff(),
-		A_SequencePlaybackOff(),
-		A_SetPriority(3),
-		A_SetWalkingSpeed(FASTEST)
-	]),
-	FadeInFromBlack(sync=False),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_SetSpriteSequence(index=0, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
-		A_FloatingOn(),
-		A_JumpToHeight(0),
-		A_Pause(1, identifier="EVENT_2562_action_queue_4_SUBSCRIPT_pause_3"),
-		A_JmpIfMarioInAir(["EVENT_2562_action_queue_4_SUBSCRIPT_pause_3"]),
-		A_JumpToHeight(108),
-		A_Walk1StepSouth(),
-		A_Pause(1, identifier="EVENT_2562_action_queue_4_SUBSCRIPT_pause_7"),
-		A_JmpIfMarioInAir(["EVENT_2562_action_queue_4_SUBSCRIPT_pause_7"]),
-		A_SetSpriteSequence(index=12, is_mold=True, is_sequence=True, looping=True)
-	]),
-	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	UnfreezeCamera(),
-	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
-	ClearBit(TEMP_7044_7),
-	Return()
+
 ])

@@ -31,7 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ClearBit(TEMP_7042_0),
-	Set0158Bit7Offset(0x0158),
-	JmpToEvent(E0262_FADE_MUSIC_ROOM_LOADER)
+
 ])

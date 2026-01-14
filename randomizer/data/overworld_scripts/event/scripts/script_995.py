@@ -31,6 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunMolevilleMountainIntroSequence(),
-	JmpToEvent(E1738_EMPTY)
+
 ])

@@ -31,6 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnterArea(room_id=R057_KERO_SEWERS_AREA_03_LARGE_WATER_ROOM_WPIPE_IN_CENTER, face_direction=SOUTHWEST, x=12, y=103, z=2, run_entrance_event=True),
-	Return()
+
 ])

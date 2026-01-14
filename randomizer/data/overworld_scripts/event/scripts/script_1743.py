@@ -31,26 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Pause(1, identifier="EVENT_1743_pause_0"),
-	JmpIfBitClear(TEMP_7043_0, ["EVENT_1743_jmp_if_bit_clear_4"]),
-	ActionQueueSync(target=NPC_3, subscript=[
-		A_JumpToHeight(104)
-	]),
-	ClearBit(TEMP_7043_0),
-	JmpIfBitClear(TEMP_7043_1, ["EVENT_1743_jmp_if_bit_clear_7"], identifier="EVENT_1743_jmp_if_bit_clear_4"),
-	ActionQueueSync(target=NPC_4, subscript=[
-		A_JumpToHeight(104)
-	]),
-	ClearBit(TEMP_7043_1),
-	JmpIfBitClear(TEMP_7043_2, ["EVENT_1743_jmp_if_bit_clear_10"], identifier="EVENT_1743_jmp_if_bit_clear_7"),
-	ActionQueueSync(target=NPC_5, subscript=[
-		A_JumpToHeight(104)
-	]),
-	ClearBit(TEMP_7043_2),
-	JmpIfBitClear(TEMP_7044_3, ["EVENT_1743_pause_0"], identifier="EVENT_1743_jmp_if_bit_clear_10"),
-	ActionQueueSync(target=MARIO, subscript=[
-		A_JumpToHeight(height=108, silent=True)
-	]),
-	ClearBit(TEMP_7044_3),
-	Jmp(["EVENT_1743_pause_0"])
+
 ])

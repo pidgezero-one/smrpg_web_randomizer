@@ -31,15 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitClear(TEMP_704C_0, ["EVENT_256_ret_0"]),
-	JmpIfBitSet(TEMP_7043_7, ["EVENT_256_ret_0"]),
-	SetBit(TEMP_7043_7),
-	ActionQueueAsync(target=NPC_1, subscript=[
-		A_FaceNortheast()
-	]),
-	RunDialog(dialog_id=DI2538_MARRYMORE_INNKEEPER_WHILE_WORKING, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_Walk1StepSouth()
-	]),
-	Return()
+
 ])

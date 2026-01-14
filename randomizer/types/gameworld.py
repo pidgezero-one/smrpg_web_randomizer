@@ -1033,6 +1033,13 @@ class GameWorld:
         progress += 3
         self._report_progress("Calculating patch...", progress)
 
+        # Monster AI scripts (rendered before sprites to reclaim unused space)
+        monster_scripts = self.monster_scripts.render()
+        patch.add_data(self.monster_scripts.pointer_table_start, monster_scripts[0])
+        patch.add_data(self.monster_scripts.range_2_start, monster_scripts[1])
+        progress += 3
+        self._report_progress("Calculating patch...", progress)
+
         # Collect unused ranges and add as AnimationBanks
         from smrpgpatchbuilder.datatypes.graphics.classes import AnimationBank
 
@@ -1055,14 +1062,26 @@ class GameWorld:
                 AnimationBank(unused[0], unused[1])
             )
 
-        # ========================================================================
+        # From battle animation scripts (0x3A bank)
+        if 0x3A in self.battle_animations:
+            self.battle_animations[0x3A].set_bank_end(0x3B0000)
+            unused = self.battle_animations[0x3A].get_unused_range()
+            if unused:
+                self.sprites.animation_data_banks.append(
+                    AnimationBank(unused[0], unused[1])
+                )
 
-        # Monster AI scripts patch
-        monster_scripts = self.monster_scripts.render()
-        patch.add_data(self.monster_scripts.pointer_table_start, monster_scripts[0])
-        patch.add_data(self.monster_scripts.range_2_start, monster_scripts[1])
-        progress += 3
-        self._report_progress("Calculating patch...", progress)
+        # From monster AI scripts
+        for start, end in self.monster_scripts.get_unused_ranges():
+            self.sprites.animation_data_banks.append(AnimationBank(start, end))
+
+        # Debug: print all animation banks
+        print(f"Sprite collection animation banks ({len(self.sprites.animation_data_banks)} total):")
+        for bank in self.sprites.animation_data_banks:
+            size = bank.end - bank.start
+            print(f"  0x{bank.start:06X} - 0x{bank.end:06X} ({size:,} bytes)")
+
+        # ========================================================================
 
         # Sprite graphics patch (now has access to reclaimed animation banks)
         for p in self.sprites.render():

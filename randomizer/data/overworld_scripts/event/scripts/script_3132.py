@@ -51,6 +51,6 @@ script = EventScript([
 	]),
 	Inc(PRIMARY_TEMP_7000),
 	EndLoop(),
-	RunDialog(dialog_id=DI1615_MOLEVILLE_BLUES_8, above_object=NPC_14, closable=True, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI1607_MOLEVILLE_BLUES_START, above_object=NPC_14, closable=True, sync=False, multiline=True, use_background=False),
 	Return()
 ])

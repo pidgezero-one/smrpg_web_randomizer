@@ -31,8 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(MARRYMORE_LIBERATED, ["EVENT_256_ret_0"]),
-	JmpIfBitSet(TEMP_7043_3, ["EVENT_256_ret_0"]),
-	SetBit(TEMP_7043_3),
-	Return()
+
 ])

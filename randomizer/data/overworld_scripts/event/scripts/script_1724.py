@@ -31,11 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Pause(1, identifier="EVENT_1724_pause_0"),
-	JmpIfBitClear(TEMP_7043_1, ["EVENT_1724_pause_0"]),
-	FadeOutToBlack(sync=True, duration=30),
-	PauseScriptUntilEffectDone(),
-	UnknownCommand(bytearray(b'\xfdG')),
-	RunEventAtReturn(E1727_EMPTY),
-	Return()
+
 ])

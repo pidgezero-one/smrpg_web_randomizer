@@ -31,6 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunDialog(dialog_id=DI3212_EMPTY, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	Return()
+
 ])

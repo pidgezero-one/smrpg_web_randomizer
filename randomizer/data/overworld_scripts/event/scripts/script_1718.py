@@ -31,13 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	FadeInFromBlack(sync=True),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_TransferToXYZF(x=6, y=32, z=22, direction=EAST),
-		A_JumpToHeight(height=0, silent=True),
-		A_ObjectMemorySetBit(arg_1=0x0B, bits=[3]),
-		A_SetPriority(3)
-	]),
-	RunEventAtReturn(E1719_EMPTY),
-	Return()
+
 ])

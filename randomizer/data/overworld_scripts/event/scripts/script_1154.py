@@ -31,6 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	FadeInFromBlack(sync=False),
-	Return()
+
 ])

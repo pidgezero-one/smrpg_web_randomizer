@@ -1,8 +1,7 @@
 dialog_data = [""]*922
 dialog_data[0] = ''' I slept like a baby.
  Thanks![await]'''
-dialog_data[1] = ''' Super Jump?[await]
- Oh, no, not today.[delay] It's my day off.[await]'''
+dialog_data[1] = '''[await]'''
 dialog_data[2] = '''[await]'''
 dialog_data[3] = '''[await]'''
 dialog_data[4] = '''[await]'''
@@ -186,10 +185,7 @@ dialog_data[111] = ''' Welcome to Marrymore![await]
  Have you visited our hotel?[await]
  Our Suite's room service menu has
  some new and exciting items.[await]'''
-dialog_data[112] = ''' I have no idea what on earth is
- going on in that chapel kitchen.[await]
- Everything they make turns out
- evil.[await]'''
+dialog_data[112] = '''[await]'''
 dialog_data[113] = '''[await]'''
 dialog_data[114] = '''[await]'''
 dialog_data[115] = ''' I'm just glad it's not Sunday.
@@ -268,7 +264,7 @@ dialog_data[152] = '''[await]'''
 dialog_data[153] = ''' All right,[await]
  on the count of 3, say
  “Ahhhhhhhhhhhhhhhhhhhhhhhhhh!”[await]'''
-dialog_data[154] = ''''[await]'''
+dialog_data[154] = '''[await]'''
 dialog_data[155] = '''[await]'''
 dialog_data[156] = '''[await]'''
 dialog_data[157] = '''[await]'''
@@ -301,28 +297,21 @@ dialog_data[181] = ''' Good afternoon, `MAIN_CHARACTER_NAME`![await]
  Our Vault Guard is taking the day
  off today, so feel free to help
  yourself to the treasury.[await]'''
-dialog_data[182] = ''' Oooh! It's good to see you back.
- Look what I found in the wallet
- you returned to me.[await][page]
- It's yours, isn't it?[await]'''
+dialog_data[182] = '''[await]'''
 dialog_data[183] = '''GREAPER: Oh hey, you found our 
  flags! Thanks![await][page]
  Here, you can have this.'''
 dialog_data[184] = '''[await]'''
 dialog_data[185] = '''[await]'''
-dialog_data[186] = ''' Sorry, I don't have any advice
- today.[await]'''
+dialog_data[186] = '''[await]'''
 dialog_data[187] = '''[await]'''
 dialog_data[188] = '''[await]'''
 dialog_data[189] = '''[await]'''
 dialog_data[190] = '''[await]'''
 dialog_data[191] = '''[await]'''
 dialog_data[192] = '''[await]'''
-dialog_data[193] = ''' If you want more Frog Coins, you
- can get some from scaling the
- Land's End cliff under 11 seconds.[await]'''
-dialog_data[194] = '''
-            Got a Frog Coin![await]'''
+dialog_data[193] = '''[await]'''
+dialog_data[194] = '''[await]'''
 dialog_data[195] = '''[await]'''
 dialog_data[196] = '''[await]'''
 dialog_data[197] = '''[await]'''
@@ -334,33 +323,21 @@ dialog_data[202] = '''[await]'''
 dialog_data[203] = '''[await]'''
 dialog_data[204] = '''[await]'''
 dialog_data[205] = '''[await]'''
-dialog_data[206] = ''' HA![delay] `MARRYMORE_CHARACTER` and `TOWER_BOSS_1`
- are getting married![delay] Pa' Mole owes
- me 100 coins![await]'''
-dialog_data[207] = '''
-     “Bandit's Way” is now open[await]'''
-dialog_data[208] = '''
-      “Forest Maze” is now open[await]'''
-dialog_data[209] = '''
-       “Pipe Vault” is now open[await]'''
-dialog_data[210] = '''
-     Check out “Booster Tower”![await]'''
-dialog_data[211] = '''
-   “Marrymore Chapel” is now open[await]'''
-dialog_data[212] = '''
-            “Sea” is now open[await]'''
-dialog_data[213] = '''
-      Check out “Seaside Town”![await]'''
-dialog_data[214] = '''
-      Check out “Belome Temple”![await]'''
-dialog_data[215] = '''
-     “Bowser's Keep” is now open[await]'''
-dialog_data[216] = '''
-           “Gate” is now open[await]'''
+dialog_data[206] = '''[await]'''
+dialog_data[207] = '''[await]'''
+dialog_data[208] = '''[await]'''
+dialog_data[209] = '''[await]'''
+dialog_data[210] = '''[await]'''
+dialog_data[211] = '''[await]'''
+dialog_data[212] = '''[await]'''
+dialog_data[213] = '''[await]'''
+dialog_data[214] = '''[await]'''
+dialog_data[215] = '''[await]'''
+dialog_data[216] = '''[await]'''
 dialog_data[217] = '''[await]'''
-dialog_data[218] = '''     “Monstro Town” is now open[await]'''
-dialog_data[219] = '''    “Barrel Volcano” is now open[await]'''
-dialog_data[220] = '''    “Moleville Mines” is now open[await]'''
+dialog_data[218] = '''[await]'''
+dialog_data[219] = '''[await]'''
+dialog_data[220] = '''[await]'''
 dialog_data[221] = '''[await]'''
 dialog_data[222] = '''[await]'''
 dialog_data[223] = '''[await]'''
@@ -569,8 +546,7 @@ dialog_data[322] = '''[page]
  [select]  (No way)[await]'''
 dialog_data[323] = '''[await]'''
 dialog_data[324] = '''[await]'''
-dialog_data[325] = ''' (Phew! Now that's what I
-   call generous!)[await]'''
+dialog_data[325] = '''[await]'''
 dialog_data[326] = '''[await]'''
 dialog_data[327] = '''[await]'''
 dialog_data[328] = '''[await]'''
@@ -730,21 +706,8 @@ dialog_data[420] = ''' Hello.
  [select]  (I'd like to buy some things)
  [select]  (I'd like to rest awhile)
  [select]  (I'm fine, thank you)[await]'''
-dialog_data[421] = '''[page]
- Yes, I see.[await]
- We here at the Marrymore Hotel
- are offering a very special
- deal for a limited time only.[await][page]
- If you choose to stay in our lovely
- deluxe suite, you shall receive a
- once in a lifetime gift![await][page]
- Now which room will you choose?[await]
- [select]  (The regular room)  10 coins
- [select]  (The SUITE!)       200 coins
- [select]  (Oh wait, forget it)[await]'''
-dialog_data[422] = '''[page]
- Oh, EXCELLENT CHOICE, `MAIN_CHARACTER_HONORIFIC`![await]
- We shall attend to you in a minute.[await]'''
+dialog_data[421] = '''[await]'''
+dialog_data[422] = '''[await]'''
 dialog_data[423] = '''[page]
  We thank you very much!
  You have stayed with us [0x7000]
@@ -764,13 +727,7 @@ dialog_data[425] = '''[page]
  You seem to be a day late and
  a few coins short! BYE![await]'''
 dialog_data[426] = '''[await]'''
-dialog_data[427] = '''[page]
- CONGRATULATIONS!!  You, `MAIN_CHARACTER_HONORIFIC`,
- have checked in our lovely suite,
- a grand total of [0x7000] times![await][page]
- In order to show our appreciation,
- we are proud to present you with
- this special commemorator's gift![await]'''
+dialog_data[427] = '''[await]'''
 dialog_data[428] = '''All the coins, even the Frog Coins,
             have been taken![await]'''
 dialog_data[429] = ''' `MAIN_CHARACTER_HONORIFIC_CAP`![await]
@@ -851,17 +808,12 @@ dialog_data[476] = '''[await]'''
 dialog_data[477] = '''[await]'''
 dialog_data[478] = '''[await]'''
 dialog_data[479] = '''[await]'''
-dialog_data[480] = '''
-        He's holding a leaflet...[await]'''
-dialog_data[481] = '''      Come to Grate Guy Casino!
-    Find us a quick turn down the
-  north pipe of central Bean Valley.[await]
-   Don't forget your Bright Card![await]'''
+dialog_data[480] = '''[await]'''
+dialog_data[481] = '''[await]'''
 dialog_data[482] = '''[await]'''
 dialog_data[483] = '''[await]'''
 dialog_data[484] = '''[await]'''
-dialog_data[485] = ''' Keep working!
- You're not getting any breaks.[await]'''
+dialog_data[485] = '''[await]'''
 dialog_data[486] = '''[await]'''
 dialog_data[487] = ''' Hey `MAIN_CHARACTER_MOLE_GREETING`, step right up!
  10 coins to do some Goomba
@@ -919,8 +871,7 @@ dialog_data[513] = '''[await]'''
 dialog_data[514] = '''[await]'''
 dialog_data[515] = '''[await]'''
 dialog_data[516] = '''[await]'''
-dialog_data[517] = ''' I wonder when my next spouse will
- fall from the sky?[await]'''
+dialog_data[517] = '''[await]'''
 dialog_data[518] = '''SNIFIT 2: Please refrain
  from bothering Booster.[await]'''
 dialog_data[519] = '''[await]'''
@@ -936,15 +887,7 @@ dialog_data[523] = ''' You don't have enough coins.[await]
 dialog_data[524] = '''[await]'''
 dialog_data[525] = '''[await]'''
 dialog_data[526] = '''[await]'''
-dialog_data[527] = '''TOADOFSKY: Finally!
- My song is nearly complete.[await][page]
- But I must confess that you
- contributed a lot to it.[await][page]
- We can all take credit for it![await][page]
- Now you must think of a final
- phrase that will wrap it all up.[await][page]
- Let your creative juices flow and
- show me whatcha got![await]'''
+dialog_data[527] = '''[await]'''
 dialog_data[528] = '''[await]'''
 dialog_data[529] = '''[await]'''
 dialog_data[530] = '''[await]'''
@@ -1234,8 +1177,7 @@ dialog_data[708] = ''' The workers...in the left
  building...they're acting...
  quite strange.[await]'''
 dialog_data[709] = '''[await]'''
-dialog_data[710] = ''' If you...want to enter the ocean,
- jump into...the whirlpools.[await]'''
+dialog_data[710] = '''[await]'''
 dialog_data[711] = ''' If you cannot...enter the ocean,
  you may have to...do something
  else first.[await]'''
@@ -1372,9 +1314,7 @@ dialog_data[793] = '''ELDER: Hello, `MAIN_CHARACTER_NAME`![await][pause]
  my second floor?[await]'''
 dialog_data[794] = '''[await]'''
 dialog_data[795] = '''[await]'''
-dialog_data[796] = ''' Speaking of items, it looks like
- you've got too many and can't
- carry them all.[await]'''
+dialog_data[796] = '''[await]'''
 dialog_data[797] = ''' Oops, sorry I'm all out of items.[await][page]
  In other words,
           “Come back later!”[await]
@@ -1399,20 +1339,9 @@ dialog_data[800] = ''' Hey, far out!
  Munch munch munch.[await]'''
 dialog_data[801] = ''' That was just a regular mushroom!
  Thanks for the snack.[await]'''
-dialog_data[802] = ''' Ooh![await]
- This one's a “Berry Mushroom”![await][page]
- I'll give you a “Maple Syrup”.
- Oh boy, I'm stuffed.[await]'''
-dialog_data[803] = ''' All right![await]
- Like, this is unreal!
- It's a “Rippin Mushroom”.[await][page]
- So I'll give you a “Rock Candy”.
- Hey thanks a lot![await]'''
-dialog_data[804] = ''' Whooeee![await]
- This is most excellent!
- It's a “Flower Mushroom”.[await][page]
- I'll give you a “Flower Tab” for it.
- Hey, thanks, dude.[await]'''
+dialog_data[802] = '''[await]'''
+dialog_data[803] = '''[await]'''
+dialog_data[804] = '''[await]'''
 dialog_data[805] = ''' See you around`MAIN_CHARACTER_MBOY_GREETING`.
  Come again, all right?[await]'''
 dialog_data[806] = ''' Hey you don't have any mushrooms.[await]'''
@@ -1580,13 +1509,7 @@ dialog_data[914] = '''  You will enter combat against me\n
 dialog_data[915] = '''[await]'''
 dialog_data[916] = '''[await]'''
 dialog_data[917] = '''[await]'''
-dialog_data[918] = '''TOADOFSKY: 
-           Okay, here we go![await][page]
- Listen to this, it's our song![await]'''
-dialog_data[919] = '''TOADOFSKY: So what do you think?[await]
-  [select] (Let's hear it again)
-  [select] (I want to recompose it)
-  [select] (Never mind)[await]'''
-dialog_data[920] = ''' All right, let's hear it again.[await]'''
-dialog_data[921] = ''' To recompose the song, just jump
- on the froggies.[await]'''
+dialog_data[918] = '''[await]'''
+dialog_data[919] = '''[await]'''
+dialog_data[920] = '''[await]'''
+dialog_data[921] = '''[await]'''
