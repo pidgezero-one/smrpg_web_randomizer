@@ -53,6 +53,7 @@ Some helpful scripts you can run (in the `scripts` folder):
 - `find_unreferenced_dialogs_with_content.py` - This will find dialogs that are not used anywhere but have non-empty content, and do not share data with dialogs that are used somewhere. Produces `unreferenced_dialogs.txt`
 - `empty_dialog.py` - Run this against a dialog ID that you know is not used anywhere (usually the results of `find_unreferenced_dialogs_with_content.py`). It will empty the dialog's data and replace it with `[await]`. Be careful not to run it against unused dialogs that share data with used dialogs. Be careful not to delete any dialogs that are referenced by `RunDialog(dialog_id=PRIMARY_TEMP_7000)` (these are denoted by comments in `dialog_pointers.py`).
 - `compress_dialogs.py --apply` - Removes every empty `[await]` dialog in your dialog table data files and shifts dialog pointers accordingly. Each `[await]` is a single byte, and this adds up when there are a lot of them, so this will condense your dialog data such that it leaves a large contiguous empty block at the end to be repurposed for sprite code. Run without `--apply` for a preview that does not change the files.
+- `fix_dialog_order.py` - Dialog IDs should have their data index pointer higher or equal to the previous dialog ID. If you want to add dialogs, run this after making your additions to make sure the data stays in order.
 
 
 ## Adding user submissions

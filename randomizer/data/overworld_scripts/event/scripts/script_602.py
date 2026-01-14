@@ -68,7 +68,7 @@ script = EventScript([
 	CopyVarToVar(from_var=MARRYMORE_SUITE_LEGAL_COUNT, to_var=PRIMARY_TEMP_7000),
     
 	RunDialog(dialog_id=DI2122_STAY_VOUCHER_DIALOG, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="run_stay_voucher_dialog"),
-    RunDialog(dialog_id=DI2122_STAY_VOUCHER_USE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+    RunDialog(dialog_id=DI2123_STAY_VOUCHER_USE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
     RemoveOneOfItemFromInventory(StayVoucherItem),
 	SetBit(STAY_VOUCHER_USED),
     # put culex's door back
