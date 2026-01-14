@@ -710,6 +710,7 @@ class GameWorld:
         self.spells = spells
         self.sprites = sprites
         self.world_map_locations = world_map_locations
+        self._cached_patch: Patch | None = None
 
         # Validate settings combinations before doing anything else
         # This catches invalid combinations early with clear error messages
@@ -993,6 +994,10 @@ class GameWorld:
         cast(SetAMEM16BitToConst, right_eye_revival_cmd).set_value(round(right_eye.hp * 1.2))
 
     def get_patch(self) -> Patch:
+        # Return cached patch if already generated
+        if self._cached_patch is not None:
+            return self._cached_patch
+
         self._report_progress("Calculating patch...", 45)
         patch = Patch()
         progress = 45
@@ -1345,4 +1350,7 @@ class GameWorld:
         patch.add_data(0x7FDB, int(v[0]))
 
         self._report_progress("Complete", 100)
+
+        # Cache the patch for subsequent calls
+        self._cached_patch = patch
         return patch

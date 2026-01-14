@@ -28,7 +28,7 @@ script = AnimationScriptBlock(expected_size=62, expected_beginning=0x3A711F, scr
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=6, destinations=["command_0x3A8AC0"]),
 	VisibilityOn(unknown_byte=0x01),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=2),
-	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
+	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE, identifier="shift_sprite_and_remap"),
 	ResetObjectMappingMemory(),
 	ReturnSubroutine()
 ])

@@ -115,7 +115,7 @@ script = AnimationScriptBlock(expected_size=441, expected_beginning=0x350A55, sc
 	PlaySound(sound=S0013_COIN, identifier="command_0x350B89"),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0193_SMALL_COIN, sequence=2, store_to_vram=True, store_palette=True, behind_all_sprites=True, overlap_all_sprites=True),
 	ResetTargetMappingMemory(),
-	MoveObject(speed=17, start_position=-513, end_position=0, apply_to_z=True, should_set_start_position=True, should_set_end_position=True, should_set_speed=True),
+	MoveObject(speed=17, start_position=-513, end_position=0, apply_to_z=True, should_set_start_position=True, should_set_end_position=True, should_set_speed=True, identifier="coin_subroutine_repeated"),
 	UnknownCommand(bytearray(b'\x12\x81')),
 	PauseScriptUntilSpriteSequenceDone(),
 	ResetTargetMappingMemory(),

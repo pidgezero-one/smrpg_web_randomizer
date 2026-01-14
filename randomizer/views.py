@@ -10,6 +10,8 @@ import tempfile
 import shutil
 import threading
 import time
+from collections.abc import Iterator
+
 import Wii
 import nlzss
 
@@ -285,8 +287,7 @@ class GenerateView(FormView):
                 seed,
                 s,
                 )
-            # patches = {"US": world.get_patch()}
-            patches = {"US": {}}
+            patches = {"US": world.get_patch()}
         except FlagError as e:
             # Catch error with flags and return that error message instead.
             result = {
@@ -369,7 +370,10 @@ class GenerateStreamView(View):
         # Parse form data
         form = GenerateForm(request.POST)
         if not form.is_valid():
-            error_msg = "; ".join(form.errors)
+            error_msg = "; ".join(
+                f"{k}: {', '.join(str(e) for e in v)}"
+                for k, v in form.errors.items()
+            ) if form.errors else "Validation failed"
             return JsonResponse({"error": error_msg}, status=400)
 
         data = form.cleaned_data
@@ -396,7 +400,7 @@ class GenerateStreamView(View):
         debug_mode = bool(data["debug_mode"])
         race_mode = bool(data["race_mode"])
 
-        def generate_events():
+        def generate_events() -> Iterator[bytes]:
             progress_queue: queue.Queue = queue.Queue()
             result_holder: dict = {}
 
@@ -485,18 +489,18 @@ class GenerateStreamView(View):
                     event = progress_queue.get(timeout=30)
                     if event.get("done"):
                         break
-                    yield f"data: {json.dumps(event)}\n\n"
+                    yield f"data: {json.dumps(event)}\n\n".encode()
                 except queue.Empty:
                     # Send keepalive
-                    yield ": keepalive\n\n"
+                    yield b": keepalive\n\n"
 
             # Final result
             if result_holder.get("error"):
-                yield f"data: {json.dumps({'error': result_holder['error']})}\n\n"
+                yield f"data: {json.dumps({'error': result_holder['error']})}\n\n".encode()
             else:
                 # Encode patch using PatchJSONEncoder
                 result_data = result_holder.get("data", {})
-                yield f"data: {json.dumps({'complete': True, 'data': result_data}, cls=PatchJSONEncoder)}\n\n"
+                yield f"data: {json.dumps({'complete': True, 'data': result_data}, cls=PatchJSONEncoder)}\n\n".encode()
 
         response = StreamingHttpResponse(
             generate_events(),

@@ -346,11 +346,12 @@ def render_booster_tower_indoor_boss(
             world.event_scripts.get_command_by_identifier("tower_toss_contact_frame"),
         ).set_length(pause_length + 30)
         world.event_scripts.replace_command_by_identifier(
-            "tower_boss_aqueue",
+            "tower_toss_aqueue",
             ActionQueueSync(
                 target=NPC_6,
                 subscript=[
                     A_FaceSouthwest(),
+                    A_Pause(30),
                     A_SetSpriteSequence(index=tower_toss.sequence_id, is_sequence=True),
                 ],
                 identifier="tower_toss_aqueue",

@@ -455,18 +455,7 @@ script = AnimationScriptBlock(expected_size=1133, expected_beginning=0x351026, s
 	SetAMEM8BitToConst(0x6E, 3),
 	SetAMEM16BitToConst(0x60, 0),
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=0, destinations=["command_0x35C686"]),
-	PauseScriptUntilAMEMBitsSet(0x6F, [0]),
-	UnknownCommand(bytearray(b'\x8c')),
-	ResetSpriteSequence(),
-	ReturnSubroutine(),
+    Jmp(["moved_poison_code"]),
 	RunSubroutine(["command_0x3536F8"], identifier="caker_beam_spell"),
-    RunSubroutine(["command_0x35252B"]),
-	SpriteSequence(sequence=3),
-    PauseScriptUntilSpriteSequenceDone(),
-	ClearAMEM8Bit(0x6F),
-	SetAMEM16BitToConst(0x60, 28),
-	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=6, destinations=["command_0x353706"]),
-    PauseScriptUntilAMEMBitsSet(0x6F, [0]),
-	RunSubroutine(["command_0x3536FF"]),
-	ReturnSubroutine()
+    Jmp(["moved_spell_code"])
 ])
