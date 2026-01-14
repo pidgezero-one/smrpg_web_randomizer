@@ -1,4 +1,4 @@
-# E0052_GRANT_ANY_EQUIP_EXCLUDE_WORST_CUSTOM_CAP
+# E0052_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,13 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CopyVarToVar(from_var=FLAG_COLLECTION_7088, to_var=PRIMARY_TEMP_7000),
-	Mem7000AndConst(0x0018),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_52_jmp_to_event_8"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 8, ["EVENT_52_jmp_to_event_7"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 16, ["EVENT_52_jmp_to_event_6"]),
-	JmpToEvent(E0009_SET_70A7_TO_RANDOM_TIER_1_EQUIP),
-	JmpToEvent(E0010_SET_70A7_TO_RANDOM_TIER_2_EQUIP, identifier="EVENT_52_jmp_to_event_6"),
-	JmpToEvent(E0049_GRANT_ANY_EQUIP_EXCLUDE_WORST_TIER_3_CAP, identifier="EVENT_52_jmp_to_event_7"),
-	JmpToEvent(E0046_GRANT_ANY_EQUIP_EXCLUDE_WORST, identifier="EVENT_52_jmp_to_event_8")
+	Return()
 ])

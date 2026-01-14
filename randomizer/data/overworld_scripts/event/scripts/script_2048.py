@@ -57,6 +57,6 @@ script = EventScript([
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER, identifier="EVENT_2048_jmp_to_event_18"),
 	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT_2, ["EVENT_2048_ret_19"], identifier="attempt_postgame_door_starpiece"),
     SetVarToConst(PRIMARY_TEMP_7000, 524),
-	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER, identifier="EVENT_2048_jmp_to_event_18"),
+	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_2048_ret_19")
 ])

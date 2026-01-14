@@ -1,4 +1,4 @@
-# E0059_GRANT_ANY_EQUIP_OR_CONSUMABLE_CUSTOM_CAP
+# E0059_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,13 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CopyVarToVar(from_var=FLAG_COLLECTION_7088, to_var=PRIMARY_TEMP_7000),
-	Mem7000AndConst(0x0018),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_59_jmp_to_event_8"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 8, ["EVENT_59_jmp_to_event_7"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 16, ["EVENT_59_jmp_to_event_6"]),
-	JmpToEvent(E0026_GRANT_TIER_1_CONSUMABLE_OR_EQUIP),
-	JmpToEvent(E0044_GRANT_ANY_CONSUMABLE_OR_EQUIP_TIER_2_CAP, identifier="EVENT_59_jmp_to_event_6"),
-	JmpToEvent(E0039_GRANT_ANY_CONSUMABLE_OR_EQUIP_TIER_3_CAP, identifier="EVENT_59_jmp_to_event_7"),
-	JmpToEvent(E0038_GRANT_ANY_CONSUMABLE_OR_EQUIP, identifier="EVENT_59_jmp_to_event_8")
+	Return()
 ])

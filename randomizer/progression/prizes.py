@@ -4173,7 +4173,6 @@ class DodoBossFight(BossFightPrize):
 
 class BirdettaBossFight(BossFightPrize):
     _text = "Birdo"
-    # TODO canon names
     _members = [
         FormationMember(BIRDETTAEnemy, 167, 118, hidden_at_start=True),
         FormationMember(SHELLYEnemy, 171, 103),

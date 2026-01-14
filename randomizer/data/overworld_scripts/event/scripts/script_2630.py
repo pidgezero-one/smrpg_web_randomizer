@@ -652,7 +652,7 @@ script = EventScript([
 	Return(),
 	Pause(10, identifier="EVENT_2630_pause_524"),
 	SetAsyncActionScript(MARIO, A0670_NOD_YES),
-	RunDialog(dialog_id=DI3297_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI2958_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	JmpIfDialogOptionBSelected(["EVENT_2631_pause_23"]),
 	Pause(10),
 	SetAsyncActionScript(MARIO, A0670_NOD_YES),

@@ -31,8 +31,9 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_253_set_var_to_const_61"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["jmp_to_granter"]),
 	Return(identifier="default_packet_exit"),
     CreatePacketAt7010WithEvent(packet=P111_FROG_COIN_STATIC, event_id=E3199_SHYGUY_CART_PRIZE_GRANT, destinations=["default_packet_exit"]),
     Return(),
+    JmpToEvent(E0253_NPC_QUEST_1_GRANT, identifier="jmp_to_granter"),
 ])

@@ -32,9 +32,8 @@ from ....packets import *
 
 script = EventScript([
 	Pause(1, identifier="EVENT_3413_pause_0"),
-	JmpIfBitSet(TEMP_7043_0, ["EVENT_3413_set_7010_to_object_xyz_3"]),
+	JmpIfBitSet(TEMP_7043_0, ["EVENT_3413_action_queue_5"]),
 	Jmp(["EVENT_3413_pause_0"]),
-	JmpToEvent(E3412_EMPTY),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_FixedFCoordOn(),
 		A_TransferToObjectXY(NPC_0),

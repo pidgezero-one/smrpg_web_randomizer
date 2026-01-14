@@ -31,14 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToConst(PRIMARY_TEMP_7000, 0),
-	ClearBit(UNKNOWN_708A_7),
-	StartLoopNTimes(19),
-	Pause(1),
-	Set7000ToTappedButton(),
-	JmpIf7000AllBitsClear(bits=[7], destinations=["EVENT_2119_end_loop_7"]),
-	SetBit(UNKNOWN_708A_7),
-	EndLoop(identifier="EVENT_2119_end_loop_7"),
-	JmpIfBitSet(UNKNOWN_708A_7, ["EVENT_2120_stop_music_0"]),
-	Return()
 ])

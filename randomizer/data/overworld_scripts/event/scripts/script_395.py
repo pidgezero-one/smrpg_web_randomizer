@@ -73,8 +73,6 @@ script = EventScript([
 	Jmp(["EVENT_395_jmp_if_dialog_option_b_7"]),
 	RunDialog(dialog_id=DI0668_THAT_WAS_TOO_DARN_CLOSE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_395_run_dialog_30"),
 	Return(),
-	SetBit(TEMP_7043_6),
-	Jmp(["EVENT_293_pause_action_script_4"]),
     
 
 

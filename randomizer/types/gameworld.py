@@ -788,7 +788,6 @@ class GameWorld:
         self._apply_shuffle_results()
             
         # TODO: update sprite pointers for new ally IDs
-        # TODO: look at 0x35xxxx report and free up data
         # TODO: Nimbus castle guards should be mook henchmen
         # TODO: make up some presets
 

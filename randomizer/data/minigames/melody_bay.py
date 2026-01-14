@@ -130,15 +130,15 @@ class Note:
 
 # Original Toadofsky confirmation labels (jump targets for correctness checking)
 ORIGINAL_TOADOFSKY_CONFIRMATIONS = [
-    "EVENT_1074_pause_107",
-    "EVENT_1074_pause_113",
-    "EVENT_1074_pause_113",
-    "EVENT_1074_pause_121",
-    "EVENT_1074_pause_121",
-    "EVENT_1074_pause_129",
-    "EVENT_1074_pause_129",
-    "EVENT_1074_pause_137",
-    "EVENT_1074_pause_145",
+    "EVENT_1074_pause_59",
+    "EVENT_1074_pause_64",
+    "EVENT_1074_pause_64",
+    "EVENT_1074_pause_71",
+    "EVENT_1074_pause_71",
+    "EVENT_1074_pause_78",
+    "EVENT_1074_pause_78",
+    "EVENT_1074_pause_85",
+    "EVENT_1074_pause_92",
 ]
 
 
@@ -292,7 +292,7 @@ class Song:
                     identifier=p(f"set_7000_to_7000_short_mem_{index}"),
                 ),
                 JmpToSubroutine(
-                    destinations=["EVENT_1074_jmp_if_7000_equals_short_369"],
+                    destinations=["EVENT_1074_jmp_if_var_equals_const_123"],
                     identifier=p(f"jmp_to_subroutine_{index}"),
                 ),
                 DecVarFrom7000(
@@ -490,7 +490,7 @@ class Song:
                     identifier=p(f"set_7000_to_7000_short_mem_notecheck_{index}"),
                 ),
                 JmpToSubroutine(
-                    destinations=["EVENT_1074_jmp_if_7000_equals_short_369"],
+                    destinations=["EVENT_1074_jmp_if_var_equals_const_123"],
                     identifier=p(f"jmp_to_subroutine_notecheck_{index}"),
                 ),
                 JmpIfVarNotEqualsConst(

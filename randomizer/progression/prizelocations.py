@@ -3861,8 +3861,6 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
                 and self.prize.mook_henchmen is not None
                 and len(self.prize.mook_henchmen) > 0
             )
-            if mook_henchmen_assigned:
-                pass  # TODO: Add mook henchman logic here
 
         return op
 

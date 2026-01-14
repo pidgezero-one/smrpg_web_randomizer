@@ -1431,13 +1431,33 @@ dialog_data[818] = '''[await]'''
 dialog_data[819] = '''[await]'''
 dialog_data[820] = '''         Attention, Civilians![await]
          Short on Frog Coins?[await]
- Climb our cliff in under 11 seconds,
+ Climb the cliff in under 11 seconds,
       and win FIVE Frog Coins![await][page]
   Claim as many times as you like!
             Stop on by soon.
                       ~The Sky Troopas[await]'''
-dialog_data[821] = '''
-            See you around.[await]'''
+dialog_data[821] = '''DEALER: In Blackjack, whomever
+ comes the closest to 21 points,
+ without going over, wins.[await][page]
+ I will first deal 2 cards, then we
+ will each draw as many cards as
+ we wish.[await][page]
+ Once we stop drawing cards, we
+ both show our hand, and whomever
+ has the higher total wins.[await][page]
+ But if your hand exceeds 21, your
+ opponent wins, regardless of how
+ many points they have.[await][page]
+ So if you exceed 21, you'll lose.[await][page]
+ If I go over 21, you'll win.[await][page]
+ To play, you'll need 1 Frog Coin.[await][page]
+ If you win, you'll get 1 Frog Coin,
+ but if it's a tie or you lose, I'll
+ keep it.[await][page]
+ So how about it?[await]
+ Would you like to play Blackjack?
+  [select] (Yes)
+  [select] (No)[await]'''
 dialog_data[822] = '''[await]'''
 dialog_data[823] = '''[await]'''
 dialog_data[824] = '''[await]'''
@@ -1479,7 +1499,17 @@ dialog_data[852] = '''[await]'''
 dialog_data[853] = '''[await]'''
 dialog_data[854] = '''[await]'''
 dialog_data[855] = '''[await]'''
-dialog_data[856] = '''[await]'''
+dialog_data[856] = '''GARDENER: This is unreal! This is
+ just like winning the lottery, only
+ without the taxes! I mean, this is
+ like falling out of an airplane
+ without a parachute, and hitting
+ a gaggle of geese in mid-air who
+ break your fall. Wait until my
+ buddies over at Happy Gardener's
+ Monthly hear about this. I'm going
+ to be famous! Maybe even get my
+ picture in the next issue.[delay_24][end]'''
 dialog_data[857] = '''[await]'''
 dialog_data[858] = '''[await]'''
 dialog_data[859] = '''[await]'''

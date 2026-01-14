@@ -31,7 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(MINES_BOSS_1_DEFEATED, ["EVENT_3201_set_var_to_const_21"]),
 	SetBit(TEMP_7043_0),
 	SetVarToConst(PRIMARY_TEMP_7000, 518),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),

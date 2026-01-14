@@ -110,7 +110,7 @@ script = EventScript([
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2081_set_7000_to_tapped_button_98"]),
 	StoreItemAmountTo7000(BigBooFlagItem),
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2081_set_7000_to_tapped_button_98"]),
-	RunDialog(dialog_id=DI2232_FLAGS_FOUND, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=False, identifier="EVENT_2081_dialog_100"),
+	RunDialog(dialog_id=DI2232_FLAGS_FOUND, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=False),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
     RemoveOneOfItemFromInventory(DryBonesFlagItem),
 	RemoveOneOfItemFromInventory(GreaperFlagItem),
@@ -134,11 +134,11 @@ script = EventScript([
 		A_SetSequenceSpeed(NORMAL)
 	]),
 	FadeOutMusicToVolume(duration=6, volume=100),
-	Set7000ToTappedButton(identifier="EVENT_2081_set_7000_to_tapped_button_98"),
+	Set7000ToTappedButton(identifier="EVENT_2081_set_7000_to_tapped_button_99"),
 	Pause(1),
 	Mem7000AndConst(0x0080),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 128, ["EVENT_2081_apply_tile_mod_103"]),
-	Jmp(["EVENT_2081_set_7000_to_tapped_button_98"]),
+	Jmp(["EVENT_2081_set_7000_to_tapped_button_99"]),
 	ApplyTileModToLevel(use_alternate=False, room_id=R399_MONSTRO_TOWN_3_MUSTY_FEARS_INN, mod_id=32, identifier="EVENT_2081_apply_tile_mod_103"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ResetProperties(),

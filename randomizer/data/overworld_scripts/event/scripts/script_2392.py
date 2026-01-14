@@ -379,7 +379,7 @@ script = EventScript([
 	SetSyncActionScript(NPC_3, A0856_GARDENER_RUNS_IN_CIRCLES),
 	SlowDownMusicTempoBy(duration=0, change=32),
 	Pause(2),
-	RunDialog(dialog_id=DI3100_GARDENER_CUTSCENE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI2993_GARDENER_CUTSCENE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	SetBit(TEMP_7043_0),
 	Pause(1, identifier="EVENT_2392_pause_236"),
 	JmpIfBitSet(TEMP_7043_1, ["EVENT_2392_pause_239"]),

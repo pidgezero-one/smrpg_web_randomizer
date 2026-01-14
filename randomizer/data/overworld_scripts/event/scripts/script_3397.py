@@ -32,19 +32,19 @@ from ....packets import *
 
 script = EventScript([
 	StoreItemAmountTo7000(MysteryEggItem),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3087_set_var_to_const_15"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3397_set_var_to_const_15"]),
 	StoreItemAmountTo7000(LambsLureItem),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3087_set_var_to_const_12"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3397_set_var_to_const_12"]),
 	StoreItemAmountTo7000(SheepAttackItem),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3087_set_var_to_const_8"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3397_set_var_to_const_8"]),
 	SetVarToConst(ITEM_ID, MysteryEggItem),
 	JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM),
-	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3087_set_var_to_const_8"),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3397_set_var_to_const_8"),
 	JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM),
-	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3087_set_var_to_const_12"),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3397_set_var_to_const_12"),
 	RemoveOneOfItemFromInventory(LambsLureItem),
 	JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM),
-	SetVarToConst(ITEM_ID, LambsLureItem, identifier="EVENT_3087_set_var_to_const_15"),
+	SetVarToConst(ITEM_ID, LambsLureItem, identifier="EVENT_3397_set_var_to_const_15"),
 	RemoveOneOfItemFromInventory(MysteryEggItem),
 	JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM)
 ])

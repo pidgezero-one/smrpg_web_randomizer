@@ -88,7 +88,6 @@ class Palette:
             patch[address + j * 2] = bytearray(color_to_bytes(colours[j]))
         return patch
 
-    # TODO poison palettes, underwater palettes
     def standard_patch(self) -> dict[int, bytearray]:
         patch: dict[int, bytearray] = {}
         if self.colours is not None:

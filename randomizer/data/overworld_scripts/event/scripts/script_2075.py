@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-    JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, []),
+    JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["EVENT_2075_ess"]),
 	SetVarToConst(ITEM_ID, ShinyStoneItem),
 	StoreItemAt70A7QuantityTo7000(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2075_run_dialog_10"]),
@@ -44,7 +44,7 @@ script = EventScript([
 	Return(),
 	RunDialog(dialog_id=DI3335_DUPLICATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_2075_run_dialog_10"),
 	Return(),
-	SetVarToConst(ITEM_ID, ExtraShinyStoneItem),
+	SetVarToConst(ITEM_ID, ExtraShinyStoneItem, identifier="EVENT_2075_ess"),
 	StoreItemAt70A7QuantityTo7000(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2075_run_dialog_10"]),
     Jmp(["open_monstro_town_door"]),

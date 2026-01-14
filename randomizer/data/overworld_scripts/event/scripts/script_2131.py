@@ -30,15 +30,4 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 
-script = EventScript([
-	Pause(10, identifier="EVENT_2131_pause_0"),
-	PlaySound(sound=SO016_OPEN_DOOR, channel=6),
-	Pause(60),
-	EnableControlsUntilReturn([B]),
-	Pause(1),
-	PlayMusicAtDefaultVolume(M0001_DODO_SCOMING),
-	Pause(143),
-	Pause(235),
-	Pause(131),
-	Jmp(["EVENT_2114_action_queue_16"])
-])
+script = EventScript([])

@@ -100,4 +100,6 @@ script = EventScript([
 	RunEventAsSubroutine(E1217_DOJO_5_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 525),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
+	Pause(30, identifier="EVENT_2247_fade_in_from_black_async_26"),
+	Return()
 ])

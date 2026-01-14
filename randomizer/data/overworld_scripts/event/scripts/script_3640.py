@@ -32,15 +32,14 @@ from ....packets import *
 
 script = EventScript([
     JmpIfBitClear(PAINT_GATING, ["EVENT_3640_start"]),
-    JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3640_run_dialog_308"], identifier="EVENT_3640_start"),
     
-    JmpIfBitClear(GARRO_ITEM_GRANTED, ["EVENT_3640_run_dialog_308"], identifier="EVENT_3640_check_gold_paint_22"),
+    JmpIfBitSet(GARRO_ITEM_GRANTED, ["EVENT_3640_start"]),
     StoreItemAmountTo7000(GoldPaintItem),
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3640_run_dialog_308"]),
     RemoveOneOfItemFromInventory(GoldPaintItem),
     Jmp(["EVENT_3640_start"]),
 
-	RunDialog(dialog_id=DI2465_GARRO_GATE_1, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_3640_run_dialog_308"),
+	RunDialog(dialog_id=DI2465_GARRO_GATE_1, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True, identifier=f"EVENT_3640_run_dialog_308"),
     JmpIfBitSet(GARRO_ITEM_GRANTED, ["EVENT_3640_end"]),
     RunDialog(dialog_id=DI2466_GARRO_GATE_2, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True),
     RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
@@ -49,7 +48,7 @@ script = EventScript([
     
 
 
-	JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3640_run_dialog_308"], identifier="EVENT_3640_start"),
+	JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3640_over"], identifier="EVENT_3640_start"),
 	
 	FadeOutToBlack(sync=True, duration=60),
 	PauseScriptUntilEffectDone(),
@@ -614,6 +613,6 @@ script = EventScript([
 		A_Walk1StepNorthwest()
 	], identifier="EVENT_3640_action_queue_306"),
 	Return(),
-	RunDialog(dialog_id=DI3787_DODO_MINIGAME_HINT, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_3640_run_dialog_308"),
+	RunDialog(dialog_id=DI3787_DODO_MINIGAME_HINT, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_3640_over"),
 	Return(identifier="EVENT_3640_end")
 ])

@@ -100,7 +100,7 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	Return(),
     
-	JmpIfBitClear(STAY_VOUCHER_USED, ["EVENT_2064_action_queue_30_2"]),
+	JmpIfBitClear(STAY_VOUCHER_USED, ["EVENT_2064_action_queue_30_2"], identifier="EVENT_2064_action_queue_30"),
     RemoveObjectFromCurrentLevel(NPC_3),
     SummonObjectToCurrentLevel(NPC_4),
 	ActionQueueSync(target=NPC_1, subscript=[

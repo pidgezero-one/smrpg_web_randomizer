@@ -50,17 +50,7 @@ dialog_data[25] = '''APPRENTICE: Harrumph!
  I'm off to the arcade![await]'''
 dialog_data[26] = '''GARDENER: W••[delay]••[delay]wow![await]'''
 dialog_data[27] = '''GARDENER: This is amazing![await]'''
-dialog_data[28] = '''GARDENER: This is unreal! This is
- just like winning the lottery, only
- without the taxes! I mean, this is
- like falling out of an airplane
- without a parachute, and hitting
- a gaggle of geese in mid-air who
- break your fall. Wait until my
- buddies over at Happy Gardener's
- Monthly hear about this. I'm going
- to be famous! Maybe even get my
- picture in the next issue.[delay_24][end]'''
+dialog_data[28] = '''[await]'''
 dialog_data[29] = '''GARDENER: You think it could use
  a little more fertilizer?[await]'''
 dialog_data[30] = '''GARDENER: Oops, maybe not, huh?[await]'''
@@ -380,28 +370,7 @@ dialog_data[223] = '''[await]'''
 dialog_data[224] = '''DEALER: If you would like to play,
  please go to the other side of
  the table.[await]'''
-dialog_data[225] = '''DEALER: In Blackjack, whomever
- comes the closest to 21 points,
- without going over, wins.[await][page]
- I will first deal 2 cards, then we
- will each draw as many cards as
- we wish.[await][page]
- Once we stop drawing cards, we
- both show our hand, and whomever
- has the higher total wins.[await][page]
- But if your hand exceeds 21, your
- opponent wins, regardless of how
- many points they have.[await][page]
- So if you exceed 21, you'll lose.[await][page]
- If I go over 21, you'll win.[await][page]
- To play, you'll need 1 Frog Coin.[await][page]
- If you win, you'll get 1 Frog Coin,
- but if it's a tie or you lose, I'll
- keep it.[await][page]
- So how about it?[await]
- Would you like to play Blackjack?
-  [select] (Yes)
-  [select] (No)[await]'''
+dialog_data[225] = '''[await]'''
 dialog_data[226] = '''DOORMAN: Sorry, this casino is
  for members only.[await]'''
 dialog_data[227] = '''DOORMAN: You don't have a

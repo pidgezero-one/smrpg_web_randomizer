@@ -37,6 +37,7 @@ from ...data.items import *
 from ...data.packets import *
 
 from smrpgpatchbuilder.datatypes.levels.classes import Room
+from uuid import uuid4
 
     
 
@@ -49,7 +50,7 @@ def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld
             raise ValueError(f"Room ID {room_id} not found in world while creating slot machine script.")
 
         slot_machine_script_commands = create_slot_machine_script_for_one_room(room)
-        identifier = slot_machine_script_commands[0]._generate_identifier()
+        identifier = slot_machine_script_commands[0].identifier.label
         output.insert(0, JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room_id, [identifier]))
         output.extend(slot_machine_script_commands)
     output.insert(0, Set7000ToCurrentLevel())
@@ -61,9 +62,10 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
     npcs = [
         AreaObject(0x14 + npc_count + x) for x in range(5)
     ]
+    uniq = str(uuid4())
 
     return [
-        JmpIfBitSet(TEMP_7044_2, ["EVENT_2491_jmp_if_bit_set_22"]),
+        JmpIfBitSet(TEMP_7044_2, [f"gen_{uniq}_jmp_if_bit_set_22"]),
         SetBit(TEMP_7044_2),
         PauseActionScript(MEM_70A8),
         Set7016701BToObjectXYZ(target=MEM_70A8),
@@ -106,15 +108,15 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
         SetSyncActionScript(npcs[1], A0186_CHEST_SLOT_MACHINE_ROLLER),
         SetSyncActionScript(npcs[2], A0184_CHEST_SLOT_MACHINE_ROLLER),
         Return(),
-        JmpIfBitSet(TEMP_7044_3, ["EVENT_2491_jmp_if_bit_set_26"], identifier="EVENT_2491_jmp_if_bit_set_22"),
+        JmpIfBitSet(TEMP_7044_3, [f"gen_{uniq}_jmp_if_bit_set_26"], identifier=f"gen_{uniq}_jmp_if_bit_set_22"),
         SetBit(TEMP_7044_3),
         PauseActionScript(npcs[2]),
         Return(),
-        JmpIfBitSet(TEMP_7044_4, ["EVENT_2491_disable_trigger_30"], identifier="EVENT_2491_jmp_if_bit_set_26"),
+        JmpIfBitSet(TEMP_7044_4, [f"gen_{uniq}_disable_trigger_30"], identifier=f"gen_{uniq}_jmp_if_bit_set_26"),
         SetBit(TEMP_7044_4),
         PauseActionScript(npcs[0]),
         Return(),
-        DisableObjectTrigger(MEM_70A8, identifier="EVENT_2491_disable_trigger_30"),
+        DisableObjectTrigger(MEM_70A8, identifier=f"gen_{uniq}_disable_trigger_30"),
         PauseActionScript(npcs[1]),
         Pause(16),
         ActionQueueSync(target=npcs[2], subscript=[
@@ -137,43 +139,43 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
             A_Pause(16),
             A_VisibilityOff()
         ]),
-        JmpIfVarEqualsConst(FACTORY_FALL_1, 0, ["EVENT_2491_jmp_if_var_equals_const_45"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_1, 1, ["EVENT_2491_jmp_if_var_equals_const_48"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_1, 2, ["EVENT_2491_jmp_if_var_equals_const_51"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_2, 0, ["EVENT_2491_jmp_if_var_equals_const_54"], identifier="EVENT_2491_jmp_if_var_equals_const_45"),
-        JmpIfVarEqualsConst(FACTORY_FALL_2, 1, ["EVENT_2491_jmp_if_var_equals_const_56"]),
-        Jmp(["EVENT_2491_jmp_if_var_equals_const_59"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_2, 0, ["EVENT_2491_jmp_if_var_equals_const_62"], identifier="EVENT_2491_jmp_if_var_equals_const_48"),
-        JmpIfVarEqualsConst(FACTORY_FALL_2, 1, ["EVENT_2491_jmp_if_var_equals_const_65"]),
-        Jmp(["EVENT_2491_jmp_if_var_equals_const_67"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_2, 0, ["EVENT_2491_jmp_if_var_equals_const_70"], identifier="EVENT_2491_jmp_if_var_equals_const_51"),
-        JmpIfVarEqualsConst(FACTORY_FALL_2, 1, ["EVENT_2491_jmp_if_var_equals_const_73"]),
-        Jmp(["EVENT_2491_jmp_if_var_equals_const_76"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, ["EVENT_2491_summon_to_current_level_78"], identifier="EVENT_2491_jmp_if_var_equals_const_54"),
-        Jmp(["EVENT_2491_play_sound_83"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, ["EVENT_2491_play_sound_83"], identifier="EVENT_2491_jmp_if_var_equals_const_56"),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, ["EVENT_2491_play_sound_88"]),
-        Jmp(["EVENT_2491_action_queue_99"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, ["EVENT_2491_play_sound_83"], identifier="EVENT_2491_jmp_if_var_equals_const_59"),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, ["EVENT_2491_action_queue_99"]),
-        Jmp(["EVENT_2491_play_sound_95"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, ["EVENT_2491_play_sound_83"], identifier="EVENT_2491_jmp_if_var_equals_const_62"),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, ["EVENT_2491_play_sound_88"]),
-        Jmp(["EVENT_2491_action_queue_99"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, ["EVENT_2491_summon_to_current_level_78"], identifier="EVENT_2491_jmp_if_var_equals_const_65"),
-        Jmp(["EVENT_2491_play_sound_88"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, ["EVENT_2491_action_queue_99"], identifier="EVENT_2491_jmp_if_var_equals_const_67"),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, ["EVENT_2491_play_sound_88"]),
-        Jmp(["EVENT_2491_play_sound_95"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, ["EVENT_2491_play_sound_83"], identifier="EVENT_2491_jmp_if_var_equals_const_70"),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, ["EVENT_2491_action_queue_99"]),
-        Jmp(["EVENT_2491_play_sound_95"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, ["EVENT_2491_action_queue_99"], identifier="EVENT_2491_jmp_if_var_equals_const_73"),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, ["EVENT_2491_play_sound_88"]),
-        Jmp(["EVENT_2491_play_sound_95"]),
-        JmpIfVarEqualsConst(FACTORY_FALL_3, 2, ["EVENT_2491_summon_to_current_level_78"], identifier="EVENT_2491_jmp_if_var_equals_const_76"),
-        Jmp(["EVENT_2491_play_sound_95"]),
-        SummonObjectToCurrentLevel(npcs[3], identifier="EVENT_2491_summon_to_current_level_78"),
+        JmpIfVarEqualsConst(FACTORY_FALL_1, 0, [f"gen_{uniq}_jmp_if_var_equals_const_45"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_1, 1, [f"gen_{uniq}_jmp_if_var_equals_const_48"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_1, 2, [f"gen_{uniq}_jmp_if_var_equals_const_51"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_2, 0, [f"gen_{uniq}_jmp_if_var_equals_const_54"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_45"),
+        JmpIfVarEqualsConst(FACTORY_FALL_2, 1, [f"gen_{uniq}_jmp_if_var_equals_const_56"]),
+        Jmp([f"gen_{uniq}_jmp_if_var_equals_const_59"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_2, 0, [f"gen_{uniq}_jmp_if_var_equals_const_62"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_48"),
+        JmpIfVarEqualsConst(FACTORY_FALL_2, 1, [f"gen_{uniq}_jmp_if_var_equals_const_65"]),
+        Jmp([f"gen_{uniq}_jmp_if_var_equals_const_67"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_2, 0, [f"gen_{uniq}_jmp_if_var_equals_const_70"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_51"),
+        JmpIfVarEqualsConst(FACTORY_FALL_2, 1, [f"gen_{uniq}_jmp_if_var_equals_const_73"]),
+        Jmp([f"gen_{uniq}_jmp_if_var_equals_const_76"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, [f"gen_{uniq}_summon_to_current_level_78"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_54"),
+        Jmp([f"gen_{uniq}_play_sound_83"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, [f"gen_{uniq}_play_sound_83"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_56"),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, [f"gen_{uniq}_play_sound_88"]),
+        Jmp([f"gen_{uniq}_action_queue_99"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, [f"gen_{uniq}_play_sound_83"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_59"),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, [f"gen_{uniq}_action_queue_99"]),
+        Jmp([f"gen_{uniq}_play_sound_95"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, [f"gen_{uniq}_play_sound_83"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_62"),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, [f"gen_{uniq}_play_sound_88"]),
+        Jmp([f"gen_{uniq}_action_queue_99"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, [f"gen_{uniq}_summon_to_current_level_78"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_65"),
+        Jmp([f"gen_{uniq}_play_sound_88"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, [f"gen_{uniq}_action_queue_99"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_67"),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, [f"gen_{uniq}_play_sound_88"]),
+        Jmp([f"gen_{uniq}_play_sound_95"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, [f"gen_{uniq}_play_sound_83"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_70"),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, [f"gen_{uniq}_action_queue_99"]),
+        Jmp([f"gen_{uniq}_play_sound_95"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 0, [f"gen_{uniq}_action_queue_99"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_73"),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 1, [f"gen_{uniq}_play_sound_88"]),
+        Jmp([f"gen_{uniq}_play_sound_95"]),
+        JmpIfVarEqualsConst(FACTORY_FALL_3, 2, [f"gen_{uniq}_summon_to_current_level_78"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_76"),
+        Jmp([f"gen_{uniq}_play_sound_95"]),
+        SummonObjectToCurrentLevel(npcs[3], identifier=f"gen_{uniq}_summon_to_current_level_78"),
         PlaySound(sound=SO094_FROG_COIN, channel=6),
         ActionQueueSync(target=npcs[3], subscript=[
             A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
@@ -183,8 +185,8 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
             A_VisibilityOff()
         ]),
         AddFrogCoins(1),
-        Jmp(["EVENT_2491_action_queue_109"]),
-        PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_2491_play_sound_83"),
+        Jmp([f"gen_{uniq}_action_queue_109"]),
+        PlaySound(sound=SO014_FLOWER, channel=6, identifier=f"gen_{uniq}_play_sound_83"),
         ActionQueueSync(target=npcs[0], subscript=[
             A_VisibilityOn(),
             A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
@@ -193,8 +195,8 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
         ]),
         SetVarToConst(PRIMARY_TEMP_7000, 1),
         Add7000ToMaxFP(),
-        Jmp(["EVENT_2491_action_queue_109"]),
-        PlaySound(sound=SO071_MUSHROOM_CURE, channel=6, identifier="EVENT_2491_play_sound_88"),
+        Jmp([f"gen_{uniq}_action_queue_109"]),
+        PlaySound(sound=SO071_MUSHROOM_CURE, channel=6, identifier=f"gen_{uniq}_play_sound_88"),
         ActionQueueSync(target=npcs[0], subscript=[
             A_VisibilityOn(),
             A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
@@ -205,8 +207,8 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
         RestoreAllFP(),
         TintLayers(layers=[LAYER_L1, LAYER_L2, LAYER_L3, LAYER_L4, NPC_SPRITES, BACKGROUND], red=64, green=160, blue=64, speed=3, bit_15=True),
         TintLayers(layers=[LAYER_L1, LAYER_L2, LAYER_L3, LAYER_L4, NPC_SPRITES, BACKGROUND], red=0, green=0, blue=0, speed=3, bit_15=True),
-        Jmp(["EVENT_2491_action_queue_109"]),
-        PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6, identifier="EVENT_2491_play_sound_95"),
+        Jmp([f"gen_{uniq}_action_queue_109"]),
+        PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6, identifier=f"gen_{uniq}_play_sound_95"),
         ActionQueueSync(target=npcs[0], subscript=[
             A_VisibilityOn(),
             A_SetSpriteSequence(index=3, is_sequence=True, looping=True),
@@ -214,18 +216,18 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
             A_VisibilityOff()
         ]),
         AddToInventory(RockCandyItem),
-        Jmp(["EVENT_2491_action_queue_109"]),
+        Jmp([f"gen_{uniq}_action_queue_109"]),
         ActionQueueAsync(target=npcs[0], subscript=[
             A_VisibilityOn(),
             A_SetSpriteSequence(index=4, is_sequence=True, looping=True)
-        ], identifier="EVENT_2491_action_queue_99"),
+        ], identifier=f"gen_{uniq}_action_queue_99"),
         Pause(32),
-        JmpIfBitSet(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_2491_set_var_to_const_104"]),
+        JmpIfBitSet(ALTERNATE_STAR_PIECE_WIN_CONDITION, [f"gen_{uniq}_set_var_to_const_104"]),
         RunEventAsSubroutine(E1931_TREASURE_CHEST_FAILURE_MIMIC_FIGHT),
-        Jmp(["EVENT_2491_remove_from_current_level_107"]),
-        SetVarToConst(PRIMARY_TEMP_7000, 514, identifier="EVENT_2491_set_var_to_const_104"),
+        Jmp([f"gen_{uniq}_remove_from_current_level_107"]),
+        SetVarToConst(PRIMARY_TEMP_7000, 514, identifier=f"gen_{uniq}_set_var_to_const_104"),
         RunEventAsSubroutine(E0353_BOSS_BATTLE),
-        RemoveObjectFromCurrentLevel(npcs[0], identifier="EVENT_2491_remove_from_current_level_107"),
+        RemoveObjectFromCurrentLevel(npcs[0], identifier=f"gen_{uniq}_remove_from_current_level_107"),
         FadeInFromBlack(sync=False),
         ActionQueueSync(target=MEM_70A8, subscript=[
             A_Pause(32),
@@ -233,7 +235,7 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
             A_SetSpriteSequence(index=3, looping=False),
             A_Pause(10),
             A_SetSpriteSequence(index=4, is_sequence=True, looping=True)
-        ], identifier="EVENT_2491_action_queue_109"),
+        ], identifier=f"gen_{uniq}_action_queue_109"),
         DisableObjectTrigger(MEM_70A8),
         ClearBit(TEMP_7044_2),
         ClearBit(TEMP_7044_3),
