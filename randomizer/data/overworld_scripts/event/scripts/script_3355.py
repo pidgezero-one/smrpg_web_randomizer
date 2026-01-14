@@ -234,7 +234,7 @@ script = EventScript([
 	RunDialog(dialog_id=DI1893_DUPLICATE, above_object=NPC_14, closable=False, sync=False, multiline=True, use_background=False),
 	Inc(PRIMARY_TEMP_7000),
 	RunDialog(dialog_id=DI1893_DUPLICATE, above_object=NPC_14, closable=False, sync=False, multiline=True, use_background=False),
-	RunDialog(dialog_id=DI1894_EMPTY, above_object=NPC_14, closable=True, sync=True, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI1894_DUPLICATE, above_object=NPC_14, closable=True, sync=True, multiline=True, use_background=False),
 	ClearBit(TEMP_7044_6),
 	SetVarToConst(TEMP_7028, 30),
 	StartLoopNFrames(299),

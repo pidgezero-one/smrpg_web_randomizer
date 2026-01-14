@@ -68,7 +68,7 @@ script = EventScript([
 	], identifier="EVENT_3388_action_queue_14"),
 	RemoveObjectFromCurrentLevel(MARIO, identifier="EVENT_3388_remove_from_current_level_15"),
 	CircleMaskShrinkToObject(target=MARIO, width=96, speed=8, static=True),
-	RunDialog(dialog_id=DI2266_EMPTY, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI2266_DUPLICATE, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False),
 	Pause(180),
 	Pause(180),
 	CircleMaskShrinkToObject(target=MARIO, width=0, speed=8, static=True),
