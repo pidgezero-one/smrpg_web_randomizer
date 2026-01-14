@@ -33,6 +33,6 @@ from ....packets import *
 script = EventScript([
 	PlaySound(sound=SO094_FROG_COIN, channel=6),
 	AddFrogCoins(1),
-	RunDialog(dialog_id=DI2243_DUPLICATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI0526_GOT_A_FROG_COIN, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	Return()
 ])

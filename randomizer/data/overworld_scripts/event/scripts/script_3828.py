@@ -1,4 +1,4 @@
-# E3828_GRANT_ITEM_FLOWER_SOUND
+# E3828_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,8 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	PlaySound(sound=SO085_FLOWER, channel=6),
-	RunDialog(dialog_id=PRIMARY_TEMP_7000, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
-	AddToInventory(ITEM_ID),
-	Return()
 ])

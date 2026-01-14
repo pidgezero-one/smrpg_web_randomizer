@@ -39,7 +39,6 @@ script = EventScript([
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_7026),
 	RunDialog(dialog_id=DI2372_PROMPT_TO_FEED_BABY_YOSHI, above_object=MEM_70A8, closable=False, sync=False, multiline=True, use_background=True),
 	JmpIfDialogOptionBSelected(["EVENT_933_close_dialog_55"]),
-	RunDialog(dialog_id=DI2373_DUPLICATE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	SetBit(TEMP_7042_0),
 	JmpToSubroutine(["EVENT_930_enable_controls_until_return_85"]),
 	ClearBit(TEMP_7043_4),

@@ -1,4 +1,4 @@
-dialog_data = [""]*167 # Increase to add more data
+dialog_data = [""]*168 # Increase to add more data
 dialog_data[0] = '''SNIFIT 3: Um...
  Nice weather we're having.[await]'''
 dialog_data[1] = '''SNIFIT 3: You wanna fight?[await]'''
@@ -513,3 +513,4 @@ dialog_data[165] = ''' Our guest is resting.
  Please be quiet.[await]'''
 dialog_data[166] = ''' If you see Link, tell him I need him
  to find my Gravity Suit.[await]'''
+dialog_data[167] = '''      Bought a “[0x70A7]”![await]'''

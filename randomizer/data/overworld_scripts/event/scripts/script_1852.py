@@ -152,11 +152,10 @@ script = EventScript([
 	Pause(10, identifier="EVENT_1852_pause_80"),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
 	ClearBit(TEMP_7044_7),
-	RunDialog(dialog_id=DI1309_DUPLICATE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1852_run_dialog_83"),
 	ActionQueueAsync(target=NPC_17, subscript=[
 		A_SetSpriteSequence(index=4, looping=False),
 		A_Pause(40)
-	]),
+	], identifier="EVENT_1852_run_dialog_83"),
 	JmpIfBitSet(SKY_BRIDGE_COURSE_CHOICE, ["EVENT_1852_play_sound_91"]),
 	PlaySound(sound=SO094_FROG_COIN, channel=6),
 	CopyVarToVar(from_var=TEMP_7026, to_var=PRIMARY_TEMP_7000),

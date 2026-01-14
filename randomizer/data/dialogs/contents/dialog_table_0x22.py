@@ -1,4 +1,4 @@
-dialog_data = [""]*570 # Increase to add more data
+dialog_data = [""]*560
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -1664,27 +1664,13 @@ dialog_data[552] = '''DR. TOPPER: Wrong! TOO BAD!
  [end]'''
 dialog_data[553] = '''
  And that's the way it was![await]'''
-dialog_data[554] = '''[await]'''
-dialog_data[555] = '''[await]'''
-dialog_data[556] = '''[page]
-     <1>   2   3   4   5   6   7   [end]'''
-dialog_data[557] = '''[page]
-     1   <2>   3   4   5   6   7   [end]'''
-dialog_data[558] = '''[page]
-     1   2   <3>   4   5   6   7   [end]'''
-dialog_data[559] = '''[page]
-     1   2   3   <4>   5   6   7   [end]'''
-dialog_data[560] = '''[page]
-     1   2   3   4   <5>   6   7   [end]'''
-dialog_data[561] = '''[page]
-     1   2   3   4   5   <6>   7   [end]'''
-dialog_data[562] = '''[page]
-     1   2   3   4   5   6   <7>   [end]'''
-dialog_data[563] = '''3   4   5   6   <7>   [end]'''
-dialog_data[564] = '''   6   <7>   [end]'''
-dialog_data[565] = '''5   6   <7>   [end]'''
-dialog_data[566] = '''[end]'''
-dialog_data[567] = '''   5   6   <7>   [end]'''
-dialog_data[568] = '''[await][pause]1   2   3   4   5   6   <7>   [end]'''
-dialog_data[569] = ''' The friendly folks in Monstro Town
+dialog_data[554] = ''' The friendly folks in Monstro Town
  may have some advice for you.[await]'''
+dialog_data[555] = '''[await]'''
+dialog_data[556] = ''' It's [0x7024] coins for a night.[await]
+[end]'''
+dialog_data[557] = ''' Ya'll staying the night?
+  [select]  (Yes)
+  [select]  (No)[await]'''
+dialog_data[558] = ''' You need more coinage![await]'''
+dialog_data[559] = '''      Received a “Shiny Stone”[await]'''

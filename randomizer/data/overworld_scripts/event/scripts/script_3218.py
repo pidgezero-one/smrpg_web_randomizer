@@ -59,7 +59,7 @@ script = EventScript([
 	CopyVarToVar(from_var=TEMP_702E, to_var=PRIMARY_TEMP_7000),
 	AddConstToVar(PRIMARY_TEMP_7000, 1761),
 	RunDialog(dialog_id=PRIMARY_TEMP_7000, above_object=NPC_12, closable=False, sync=False, multiline=True, use_background=False),
-	RunDialog(dialog_id=DI1707_EMPTY, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI1707_PASSWORD_CLOSING_BRACE, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	SetVarToConst(TEMP_70AC, 0),
 	SetBit(TEMP_7042_2),
 	RunEventAsSubroutine(E3411_SHIP_PASSWORD_CORRECTNESS_CHECK),

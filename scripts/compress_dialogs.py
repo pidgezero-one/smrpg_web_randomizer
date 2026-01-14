@@ -266,7 +266,9 @@ def update_dialog_table(
         entries.append((new_index, dialog_content))
 
     # Rebuild file preserving the format
-    lines = ['dialog_data = [""]*29540']
+    # Use new compressed size (max index + 1)
+    new_size = max(idx for idx, _ in entries) + 1 if entries else 0
+    lines = [f'dialog_data = [""]*{new_size}']
     for new_index, dialog_content in sorted(entries):
         lines.append(f"dialog_data[{new_index}] = '''{dialog_content}'''")
 
