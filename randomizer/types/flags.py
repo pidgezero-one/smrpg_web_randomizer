@@ -2548,7 +2548,7 @@ class AccessibilitySubcategory(FlagCategory):
 
     _name: str = "Accessibility"
     _flags: list[type[Flag]] = [RemoveFlashes, HoldB]
-    _size: int = 2
+    _size: int = 3
     _id: str = "R"
 
 
