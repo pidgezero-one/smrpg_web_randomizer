@@ -60,7 +60,7 @@ script = EventScript([
 		A_Pause(50),
 		A_ResetProperties()
 	]),
-	PaletteSet(palette_set=84, row=1, bit_3=True),
+	PaletteSet(palette_set=84, row=1, bit_3=True, identifier="hot_spring_reset_palette"),
 	UnfreezeCamera(),
 	Return()
 ])

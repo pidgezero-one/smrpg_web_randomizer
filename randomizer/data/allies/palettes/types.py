@@ -146,7 +146,7 @@ class MarioPalette(Palette):
     _original_name = "Mario"
 
     def doll_patch(self) -> dict[int, bytearray]:
-        if self.colours is None:
+        if not self.colours:
             return {}
         return self.special_palette(
             [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14], self.doll_addresses[0]
@@ -155,7 +155,7 @@ class MarioPalette(Palette):
     def classic_patch(self) -> dict[int, bytearray]:
         if self.classic_colours is not None:
             return self.palette_override(self.classic_colours, classic_palette_offset)
-        if self.colours is None:
+        if not self.colours:
             return {}
         return self.special_palette(
             [
@@ -179,7 +179,7 @@ class MarioPalette(Palette):
         )
 
     def minecart_patch(self) -> dict[int, bytearray]:
-        if self.colours is None:
+        if not self.colours:
             return {}
         return self.special_palette(
             [None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11],
@@ -187,7 +187,7 @@ class MarioPalette(Palette):
         )
 
     def overworld_map_patch(self) -> dict[int, bytearray]:
-        if self.colours is None:
+        if not self.colours:
             return {}
         return self.special_palette(
             [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
@@ -195,7 +195,7 @@ class MarioPalette(Palette):
         )
     
     def heated_sprite(self) -> dict[int, bytearray]:
-        if self.colours is None:
+        if not self.colours:
             return {}
         colours = [*self.colours]
         colours[1] = "F85030"
@@ -259,7 +259,7 @@ class MallowPalette(Palette):
         return {}
     
     def heated_sprite(self) -> dict[int, bytearray]:
-        if self.colours is None:
+        if not self.colours:
             return {}
         colours = [*self.colours]
         colours[0] = "F85030"
@@ -340,7 +340,7 @@ class GenoPalette(Palette):
         return {}
     
     def heated_sprite(self) -> dict[int, bytearray]:
-        if self.colours is None:
+        if not self.colours:
             return {}
         colours = [*self.colours]
         colours[1] = "F85030"
@@ -405,7 +405,7 @@ class BowserPalette(Palette):
         return {}
     
     def heated_sprite(self) -> dict[int, bytearray]:
-        if self.colours is None:
+        if not self.colours:
             return {}
         b = palette_to_bytes(self.colours) # no change bc main skin tone is past first 2 bytes. not sure how to change
         return {
@@ -483,7 +483,7 @@ class ToadstoolPalette(Palette):
         return {}
     
     def heated_sprite(self) -> dict[int, bytearray]:
-        if self.colours is None:
+        if not self.colours:
             return {}
         colours = [*self.colours]
         colours[1] = "F85030"
