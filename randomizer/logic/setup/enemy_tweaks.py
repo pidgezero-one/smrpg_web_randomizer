@@ -120,7 +120,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
     from ...data.spells.spells import (
         DrainSpell, LightningOrbSpell, FlameSpell, BoltSpell, CrystalSpell,
         FlameStoneSpell, MegaDrainSpell, WillyWispSpell, DiamondSawSpell,
-        ElectroshockSpell, BlastSpell, StormSpell, IceRockSpell, EscapeSpell,
+        ElectroshockSpell, BlastSpell, StormSpell, IceRockSpell,
         DarkStarSpell, RecoverSpell, MegaRecoverSpell, FlameWallSpell,
         StaticESpell, SandStormSpell, BlizzardSpell, DrainBeamSpell,
         MeteorBlastSpell, LightBeamSpell, WaterBlastSpell, SolidifySpell,
@@ -200,10 +200,11 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
 
     # Enemy spell randomization
     if world.settings.isflag_enabled(EnemySpells):
+        # Note: EscapeSpell is excluded because it causes enemies to flee the battle
         spell_pool: list[type[EnemySpell]] = [
             DrainSpell, LightningOrbSpell, FlameSpell, BoltSpell, CrystalSpell,
             FlameStoneSpell, MegaDrainSpell, WillyWispSpell, DiamondSawSpell,
-            ElectroshockSpell, BlastSpell, StormSpell, IceRockSpell, EscapeSpell,
+            ElectroshockSpell, BlastSpell, StormSpell, IceRockSpell,
             DarkStarSpell, RecoverSpell, MegaRecoverSpell, FlameWallSpell,
             StaticESpell, SandStormSpell, BlizzardSpell, DrainBeamSpell,
             MeteorBlastSpell, LightBeamSpell, WaterBlastSpell, SolidifySpell,

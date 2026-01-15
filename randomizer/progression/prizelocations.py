@@ -7472,6 +7472,9 @@ class StatueRoomBossFight(BossFightLocation):
             E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
+    _dialogs_expecting_replacement = [
+        DI2180_CHAPEL_NPC
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (

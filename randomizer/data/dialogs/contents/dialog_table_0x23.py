@@ -96,7 +96,7 @@ dialog_data[28] = ''' The chapel kitchen has been making
 dialog_data[29] = ''' I see you have a Stay Voucher.[await]
  You're going to love our hotel's
  fine suite![await]'''
-dialog_data[30] = '''    Unlocked "Postgame" battles[await]'''
+dialog_data[30] = '''    Unlocked “Postgame” battles[await]'''
 dialog_data[31] = ''' Have you been to the hotel? I heard
  the SUITE has a new gift item and
  room service menu.[await]'''
@@ -119,7 +119,7 @@ dialog_data[37] = ''' These massage chairs they installed
 dialog_data[38] = '''
                    I do.[await]'''
 dialog_data[39] = ''' I came here to watch “Maria and
- Draco”. I think I'm lost.[await]'''
+ Draco.” I think I'm lost.[await]'''
 dialog_data[40] = ''' I wasn't invited to this wedding,
  but it's not exactly like they have
  bouncers here.[await]'''

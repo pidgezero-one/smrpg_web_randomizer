@@ -808,7 +808,7 @@ dialog_data[281] = ''' There's nothing left to win here.
   [select]  (All right)
   [select]  (No)[await]'''
 dialog_data[282] = '''GRATE GUY: Whoa, hold on a sec,
- `MAIN_CHARACTER_NAME`![await]
+ `MAIN_CHARACTER_NAME`![await][page]
  That trampoline will take you right
  to the factory core.[await][page]
  Are you SURE you wanna do that?

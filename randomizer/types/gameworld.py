@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Any, Callable, TypeVar, cast
+from typing import Any, Callable, Mapping, TypeVar, cast
 import random
 import hashlib
 import re
@@ -114,6 +114,11 @@ from ..data.allies.palettes.types import (
     BowserPalette,
     ToadstoolPalette,
 )
+from ..data.allies.palettes.mario import MarioDefault
+from ..data.allies.palettes.mallow import MallowDefault
+from ..data.allies.palettes.geno import GenoDefault
+from ..data.allies.palettes.bowser import BowserDefault
+from ..data.allies.palettes.toadstool import ToadstoolDefault
 from .enemy import Enemy
 from ..data.enemies.enemies import DODOEnemy, SHELLYEnemy, RIGHTEYEEnemy
 
@@ -170,11 +175,11 @@ class GameWorld:
     shops: ShopCollection
     spells: SpellCollection
     sprites: SpriteCollection
-    mario_palette: MarioPalette
-    mallow_palette: MallowPalette
-    geno_palette: GenoPalette
-    bowser_palette: BowserPalette
-    toadstool_palette: ToadstoolPalette
+    mario_palette: MarioPalette = MarioDefault()
+    mallow_palette: MallowPalette = MallowDefault()
+    geno_palette: GenoPalette = GenoDefault()
+    bowser_palette: BowserPalette = BowserDefault()
+    toadstool_palette: ToadstoolPalette = ToadstoolDefault()
     main_character: Ally = MARIO_Ally
     file_select_character: str = "MARIO"
     world_map_locations: WorldMapLocationCollection
@@ -1021,7 +1026,7 @@ class GameWorld:
                 print(f"DEBUG: Vanilla ROM not found at {VANILLA_ROM_PATH}, skipping debug patches")
                 DEBUG_PATCHES = False
 
-        def save_debug_bps(name: str, patch_data: dict[int, bytearray | bytes | list[int]]) -> None:
+        def save_debug_bps(name: str, patch_data: Mapping[int, bytearray | bytes | list[int]]) -> None:
             """Create a BPS patch from just this render's data and save it."""
             if not DEBUG_PATCHES or vanilla_rom is None:
                 return
@@ -1381,13 +1386,12 @@ class GameWorld:
         # palettes cont'd
         debug_palettes_contd: dict[int, bytearray] = dict()
         pd = [
+            self.mario_palette.standard_patch(),
             self.mallow_palette.standard_patch(),
             self.geno_palette.standard_patch(),
             self.bowser_palette.standard_patch(),
             self.toadstool_palette.standard_patch()
         ]
-        if self.hasattr("mario_palette"):
-            pd.append(self.mario_palette.standard_patch())
         for p_data in pd:
             patch.add_dict(p_data)
             debug_palettes_contd.update(p_data)

@@ -20,6 +20,7 @@ from ...data.variables.variable_names import (
     TEMP_702E,
     TEMP_70AC,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_14
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -83,6 +84,12 @@ def randomize_tadpole_pond(world: GameWorld) -> None:
                 use_background=True,
             ),
             Return(),
+        ]
+    )
+    world.event_scripts.get_script_by_id(E3132_MOLEVILLE_MINERS_SONG).set_contents(
+        [
+            RunDialog(dialog_id=DI1615_MOLEVILLE_BLUES_8, above_object=NPC_14, closable=True, sync=False, multiline=True, use_background=False),
+	        Return()
         ]
     )
 

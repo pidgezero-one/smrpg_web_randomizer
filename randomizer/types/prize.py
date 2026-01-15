@@ -577,8 +577,8 @@ class BossFightPrize(Prize):
         canon: bool = False,
         mandatory_fights_changed: bool = False,
         peach: bool = False,
-    ) -> dict[int, str] | None:
-        if self._dialog_replacements is None:
+    ) -> dict[int, str]:
+        if not self._dialog_replacements:
             return {}
         dialog_replacements = {**self._dialog_replacements}
         if remake:

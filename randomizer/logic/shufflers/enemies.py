@@ -71,8 +71,8 @@ def randomize_enemy_attacks_and_spells(world: GameWorld) -> None:
             )
             attack.set_status_effects(new_effects)
 
-        # Mutate hit rate (cap at 99 if OHKO to allow protection to work)
-        max_hit = 99 if attack.ohko else 255
+        # Mutate hit rate (cap at 99 if OHKO to allow protection to work, 100 otherwise)
+        max_hit = 99 if attack.ohko else 100
         new_hit_rate = mutate_normal(int(attack.hit_rate), minimum=1, maximum=max_hit)
         attack.set_hit_rate(new_hit_rate)
 

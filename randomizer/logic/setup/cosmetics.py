@@ -6,9 +6,9 @@ from typing import TYPE_CHECKING, cast
 
 from django.contrib.gis.measure import D
 
-from randomizer.data.variables.dialog_names import DI1055_SEWER_GATING_TEXT, DI2109_RAZ_OUTSIDE, DI2112_RAZ_OCCUPIED, DI2114_MARRYMORE_BOSS_NAMES, DI2115_MARRYMORE_SHITPOST, DI2117_MARRYMORE_SHITPOST, DI2119_MARRYMORE_SHITPOST, DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
+from randomizer.data.variables.dialog_names import DI1055_SEWER_GATING_TEXT, DI1222_SHAMAN_SALESMAN_NOT_ENOUGH_COINS, DI1223_SHAMAN_SALESMAN_400_COINS, DI1224_SHAMAN_SALESMAN_2ND_PROMPT, DI1227_SHAMAN_SALESMAN_800_COINS, DI2109_RAZ_OUTSIDE, DI2112_RAZ_OCCUPIED, DI2114_MARRYMORE_BOSS_NAMES, DI2115_MARRYMORE_SHITPOST, DI2117_MARRYMORE_SHITPOST, DI2119_MARRYMORE_SHITPOST, DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
 from randomizer.progression.prizelocations import BoosterTowerIndoorBossFight, FinalBossFight, MarrymoreCharacter, SeasideBeachBossFight, VolcanoExitBossFight
-from randomizer.types.flags import BowsersKeepGate, BowsersKeepGating, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
+from randomizer.types.flags import BowsersKeepGate, BowsersKeepGating, EXPStarsAnywhere, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
 from randomizer.types.prize import BossFightPrize, CharacterPrize
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import (
     ScreenFlashWithDuration,
@@ -106,10 +106,11 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
                 mandatory_fights_changed=not world.settings.isflag_enabled(KeepMinigameSpritesIntact),
                 peach=world.settings.isflag_enabled(Peach)
                 )
-            if dialogs:
-                for dialog_id in location._dialogs_expecting_replacement:
-                    if dialog_id in dialogs:
-                        world.update_dialog(dialog_id, dialogs[dialog_id])
+            print(location._dialogs_expecting_replacement)
+            print(dialogs)
+            for dialog_id in location._dialogs_expecting_replacement:
+                if dialog_id in dialogs:
+                    world.update_dialog(dialog_id, dialogs[dialog_id])
                         
 
     # Remove screen flashes (accessibility)
@@ -442,6 +443,22 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     )
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`FINAL_BOSS_NAME`", finalboss_name)
 
+    if world.settings.isflag_enabled(EXPStarsAnywhere):
+        world.update_dialog(DI1222_SHAMAN_SALESMAN_NOT_ENOUGH_COINS, ''' I have an item to sell, but you
+ don't have enough coins.[await]''')
+        world.update_dialog(DI1223_SHAMAN_SALESMAN_400_COINS, ''' You're looking for items?
+ I'll sell one for 400 coins.
+ Are you interested?[await]
+  [select] (Yes)
+  [select] (No)[await]''')
+        world.update_dialog(DI1224_SHAMAN_SALESMAN_2ND_PROMPT, ''' You want a better item?[await]
+  [select] (Yes)
+  [select] (No)[await]''')
+        world.update_dialog(
+DI1227_SHAMAN_SALESMAN_800_COINS, ''' I found an incredible item.
+ I'll sell it for 800 coins.[await]
+  [select] (Buy it)
+  [select] (Pass)[await]''')
 
 
     
