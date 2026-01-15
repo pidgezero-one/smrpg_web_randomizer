@@ -305,6 +305,7 @@ class GenerateView(FormView):
             "logic": VERSION,
             "seed": seed,
             "hash": world.hash,
+            "mode": "open",  # Deprecated but required by frontend
             "debug_mode": debug_mode,
             "flag_string": world.settings.flag_string,
             "file_select_character": world.file_select_character,
@@ -330,6 +331,7 @@ class GenerateView(FormView):
                 hash=world.hash,
                 seed=seed,
                 version=VERSION,
+                mode="open",  # Deprecated but required by model
                 debug_mode=debug_mode,
                 flags=world.settings.flag_string,
                 file_select_char=world.file_select_character,
@@ -426,6 +428,7 @@ class GenerateStreamView(View):
                         "logic": VERSION,
                         "seed": seed,
                         "hash": world.hash,
+                        "mode": "open",  # Deprecated but required by frontend
                         "debug_mode": debug_mode,
                         "flag_string": world.settings.flag_string,
                         "file_select_character": world.file_select_character,
@@ -450,6 +453,7 @@ class GenerateStreamView(View):
                             hash=world.hash,
                             seed=seed,
                             version=VERSION,
+                            mode="open",  # Deprecated but required by model
                             debug_mode=debug_mode,
                             flags=world.settings.flag_string,
                             file_select_char=world.file_select_character,
