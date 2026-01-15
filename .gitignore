@@ -128,3 +128,7 @@ unreferenced_dialogs.txt
 
 # Environment files with secrets
 .env.prod*unreferenced_dialogs.txt
+
+# Debug. Do not commit any roms
+smrpg.sfc
+debug_patches/*

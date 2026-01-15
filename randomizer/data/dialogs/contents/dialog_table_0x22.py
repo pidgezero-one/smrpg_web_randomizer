@@ -1,4 +1,4 @@
-dialog_data = [""]*556
+dialog_data = [""]*557
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -790,7 +790,7 @@ dialog_data[274] = '''
             Toadstool joins![await]'''
 dialog_data[275] = '''             Got [0x7000]/16 items[await]'''
 dialog_data[276] = '''      Didn't get any items.[await]'''
-dialog_data[277] = '''' Um••••••`MAIN_CHARACTER_NAME`?[await]
+dialog_data[277] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
  This is “Booster Hill”, where there
  isn't anything to do yet.[await][page]
  You'll need to come back later.[await]
@@ -1661,4 +1661,5 @@ dialog_data[553] = '''DR. TOPPER: Wrong! TOO BAD!
  [end]'''
 dialog_data[554] = '''
  And that's the way it was![await]'''
+dialog_data[556] = ''' Try coming back when we're on our\n lunch break.[await] ...[delay]That is, if we ever\n get one.[await]'''
 dialog_data[555] = '''[await]'''

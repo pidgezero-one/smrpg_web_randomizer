@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, cast
 
 from django.contrib.gis.measure import D
 
-from randomizer.data.variables.dialog_names import DI1055_SEWER_GATING_TEXT, DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
+from randomizer.data.variables.dialog_names import DI1055_SEWER_GATING_TEXT, DI2109_RAZ_OUTSIDE, DI2112_RAZ_OCCUPIED, DI2114_MARRYMORE_BOSS_NAMES, DI2115_MARRYMORE_SHITPOST, DI2117_MARRYMORE_SHITPOST, DI2119_MARRYMORE_SHITPOST, DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
 from randomizer.progression.prizelocations import BoosterTowerIndoorBossFight, FinalBossFight, MarrymoreCharacter, SeasideBeachBossFight, VolcanoExitBossFight
 from randomizer.types.flags import BowsersKeepGate, BowsersKeepGating, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
 from randomizer.types.prize import BossFightPrize, CharacterPrize
@@ -368,15 +368,27 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.settings.isflag_enabled(RemakeNames),
         world.settings.isflag_enabled(CanonNames),
     )
-    world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1`", towerboss_name)
+    # Special dialog replacements if Mallow is the Marrymore character
+    # we're not including any randomized ship dialogs when the recruited character is canonically a kid
     chapelchar = world.get_location(MarrymoreCharacter).prize
+    if isinstance(chapelchar, CharacterPrize) and chapelchar._ally.index == 4:
+        world.update_dialog(DI2112_RAZ_OCCUPIED, "RAZ: If there's one thing I know\n about `MARRYMORE_CHARACTER`, it's that he\n just HATES wedding rehearsals.[await]")
+        world.update_dialog(DI2114_MARRYMORE_BOSS_NAMES, " `TOWER_BOSS_1`'s fiance is busy today.[await] It was nice of `MARRYMORE_CHARACTER`\n to offer to step in and help with\n the rehearsal.[await]")
+        world.update_dialog(DI2115_MARRYMORE_SHITPOST, " Does anyone here even know who\n `TOWER_BOSS_1`'s fiance is?\n Is it `RANDOM_BOSS_NAME_1`?[await]")
+        world.update_dialog(DI2117_MARRYMORE_SHITPOST, " I'm not even invited to a wedding.\n I just needed to go for a walk.[await]\n My Discord has been full of drama\n since one guy posted ship art of\n `RANDOM_CHARACTER_NAME` and `TOWER_BOSS_1`.[await]")
+        world.update_dialog(DI2119_MARRYMORE_SHITPOST, " I heard that `TOWER_BOSS_1`\n proposed at a gas station.\n Who DOES that?[await]")
+         
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1`", towerboss_name)
     cc_name = world.allies._allies[chapelchar._ally.index].name if isinstance(chapelchar, CharacterPrize) else "Toad"
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MARRYMORE_CHARACTER`", cc_name)
-    cc_name_pool = [n for n in 
+    mallow_name = world.allies._allies[4].name  # Mallow is always index 4
+    cc_name_pool = [n for n in
                     [*[world.allies._allies[i].name for i in range(len(world.allies._allies))], "Toad"]
-        if n != cc_name
+        if n != cc_name and n != mallow_name
     ]
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_CHARACTER_NAME`", random.choice(cc_name_pool))
+
+
     bossfight_pool = [cast(BossFightPrize, l.prize) for l in world.locations.values() if isinstance(l, BossFightLocation) and isinstance(l.prize, BossFightPrize)]
     boss_pool = [x.name(
         world.settings.isflag_enabled(RemakeNames),

@@ -458,7 +458,7 @@ class GameWorld:
 
         Keys are location class names, values are prize class names or "None".
         """
-        result: dict[str, str] = {}
+        result: dict[str, str] = dict()
         for loc_type, loc in self.locations.items():
             location_name = loc_type.__name__
             if loc.prize is None:
@@ -541,7 +541,7 @@ class GameWorld:
             SH24_FACTORY_TOAD: "Factory Toad",
         }
 
-        result: dict[str, list[str]] = {}
+        result: dict[str, list[str]] = dict()
         for shop in self.shops.shops:
             if shop is None:
                 continue
@@ -578,7 +578,7 @@ class GameWorld:
 
     def _get_settings_json(self) -> dict[str, Any]:
         """Get JSON representation of all settings with their names and values."""
-        result: dict[str, Any] = {}
+        result: dict[str, Any] = dict()
         for flag_class, flag in self.settings._flags.items():
             flag_name = flag.name
             if isinstance(flag, BooleanFlag):
@@ -693,7 +693,7 @@ class GameWorld:
         self.seed = seed
         self.version = version
         self.settings = settings
-        self._prize_type_to_location = {}
+        self._prize_type_to_location = dict()
         self._placement_version = 0
         self.battle_animations = battle_animations
         self.battle_dialogs = battle_dialogs
@@ -750,7 +750,7 @@ class GameWorld:
 
         # Track failure counts to detect unsolvable settings
         # Key = number of unplaced items, Value = count of times this failure occurred
-        failure_counts: dict[int, int] = {}
+        failure_counts: dict[int, int] = dict()
         MAX_FAILURES_PER_COUNT = 5
 
         success = False
@@ -789,7 +789,6 @@ class GameWorld:
         self._apply_shuffle_results()
             
         # TODO: update sprite pointers for new ally IDs
-        # TODO: Nimbus castle guards should be mook henchmen
         # TODO: make up some presets
 
         # Shop shuffling happens after equipment randomization so we can score equipment
@@ -999,112 +998,202 @@ class GameWorld:
         if self._cached_patch is not None:
             return self._cached_patch
 
+        # ========================================================================
+        # DEBUG: Create separate BPS patches for each render function
+        # ========================================================================
+        import os
+        from bps.diff import diff_bytearrays
+        from bps.io import write_bps
+
+        DEBUG_PATCHES = True  # Set to False to disable debug patches
+        PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        DEBUG_DIR = os.path.join(PROJECT_ROOT, "debug_patches")
+        VANILLA_ROM_PATH = os.environ.get("VANILLA_ROM_PATH", os.path.join(PROJECT_ROOT, "smrpg.sfc"))
+
+        vanilla_rom: bytearray | None = None
+        if DEBUG_PATCHES:
+            os.makedirs(DEBUG_DIR, exist_ok=True)
+            if os.path.exists(VANILLA_ROM_PATH):
+                with open(VANILLA_ROM_PATH, "rb") as f:
+                    vanilla_rom = bytearray(f.read())
+                print(f"DEBUG: Loaded vanilla ROM ({len(vanilla_rom):,} bytes) for debug patches")
+            else:
+                print(f"DEBUG: Vanilla ROM not found at {VANILLA_ROM_PATH}, skipping debug patches")
+                DEBUG_PATCHES = False
+
+        def save_debug_bps(name: str, patch_data: dict[int, bytearray | bytes | list[int]]) -> None:
+            """Create a BPS patch from just this render's data and save it."""
+            if not DEBUG_PATCHES or vanilla_rom is None:
+                return
+            try:
+                # Create a patched ROM with just this data
+                patched = bytearray(vanilla_rom)
+                for addr, data in patch_data.items():
+                    if isinstance(data, list):
+                        data = bytes(data)
+                    elif isinstance(data, bytearray):
+                        data = bytes(data)
+                    patched[addr:addr + len(data)] = data
+
+                # Create BPS diff using correct bps library API
+                blocksize = (len(vanilla_rom) + len(patched)) // 1000000 + 1
+                bps_iterable = diff_bytearrays(blocksize, bytes(vanilla_rom), bytes(patched))
+
+                # Save to file using write_bps
+                bps_path = os.path.join(DEBUG_DIR, f"{name}.bps")
+                with open(bps_path, "wb") as f:
+                    write_bps(bps_iterable, f)
+                print(f"DEBUG: Saved {bps_path} ({len(patch_data)} entries)")
+            except Exception as e:
+                print(f"DEBUG: Failed to save {name}.bps: {e}")
+        # ========================================================================
+
         patch = Patch()
         progress = 45
 
         # Battle animations patch
         self._report_progress("Assembling battle animations...", progress)
+        debug_battle_anims: dict[int, bytearray] = dict()
         for animation_bank in self.battle_animations.values():
             patches = animation_bank.render()
             for p in patches:
                 patch.add_data(p[0], p[1])
+                debug_battle_anims[p[0]] = p[1]
+        save_debug_bps("01_battle_animations", debug_battle_anims)
         progress += 3
 
 
         # Palettes - do this first before attempting to render scripts
+        debug_palettes: dict[int, bytearray] = dict()
 
-        if self.overworld_character.ally.index == MARIO_Ally.index:
+        if self.overworld_character.ally.index == MARIO_Ally.index and hasattr(self, "mario_palette"):
             for i, p in self.mario_palette.doll_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.mario_palette.minecart_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.mario_palette.classic_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.mario_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.mario_palette.heated_sprite().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.mario_palette.hot_spring_reset_row
             )
         if self.overworld_character.ally.index == MALLOW_Ally.index:
             for i, p in self.mallow_palette.doll_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.mallow_palette.minecart_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.mallow_palette.classic_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.mallow_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.mallow_palette.heated_sprite().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.mallow_palette.hot_spring_reset_row
             )
         if self.overworld_character.ally.index == GENO_Ally.index:
             for i, p in self.geno_palette.doll_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.geno_palette.minecart_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.geno_palette.classic_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.geno_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.geno_palette.heated_sprite().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.geno_palette.hot_spring_reset_row
             )
         if self.overworld_character.ally.index == BOWSER_Ally.index:
             for i, p in self.bowser_palette.doll_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.bowser_palette.minecart_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.bowser_palette.classic_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.bowser_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.bowser_palette.heated_sprite().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.bowser_palette.hot_spring_reset_row
             )
         if self.overworld_character.ally.index == TOADSTOOL_Ally.index:
             for i, p in self.toadstool_palette.doll_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.toadstool_palette.minecart_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.toadstool_palette.classic_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.toadstool_palette.overworld_map_patch().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             for i, p in self.toadstool_palette.heated_sprite().items():
                 patch.add_data(i, p)
+                debug_palettes[i] = p
             self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
                 self.toadstool_palette.hot_spring_reset_row
             )
+        save_debug_bps("02_palettes", debug_palettes)
 
         # ========================================================================
         # Render scripts and dialogs FIRST to reclaim unused space for animations
         # ========================================================================
 
         # Event scripts patch
+        # NOTE: render() returns pointer_table + script_content combined,
+        # so we must write to pointer_table_start, not start
+        debug_event_scripts: dict[int, bytearray] = dict()
         for event_script_bank in self.event_scripts.banks:
             self._report_progress("Assembling event scripts...", progress)
-            patch.add_data(event_script_bank.start, event_script_bank.render())
+            rendered = event_script_bank.render()
+            patch.add_data(event_script_bank.pointer_table_start, rendered)
+            debug_event_scripts[event_script_bank.pointer_table_start] = rendered
             progress += 3
+        save_debug_bps("03_event_scripts", debug_event_scripts)
 
         # Overworld dialogs (rendered before sprites to reclaim unused space)
         self._report_progress("Assembling dialogs...", progress)
         dialog_data = self.overworld_dialogs.render()
         for addr, data in dialog_data.items():
             patch.add_data(addr, data)
+        save_debug_bps("04_overworld_dialogs", dialog_data)
         progress += 3
 
         # Action scripts (rendered before sprites to reclaim unused space)
+        # NOTE: render() returns pointer_table + script_content combined,
+        # so we must write to pointer_table_start, not start
         self._report_progress("Assembling action scripts...", progress)
         action_data = self.action_scripts.render()
-        patch.add_data(self.action_scripts.start, action_data)
+        patch.add_data(self.action_scripts.pointer_table_start, action_data)
+        save_debug_bps("05_action_scripts", {self.action_scripts.pointer_table_start: action_data})
         progress += 3
 
         # Monster AI scripts (rendered before sprites to reclaim unused space)
@@ -1112,6 +1201,10 @@ class GameWorld:
         monster_scripts = self.monster_scripts.render()
         patch.add_data(self.monster_scripts.pointer_table_start, monster_scripts[0])
         patch.add_data(self.monster_scripts.range_2_start, monster_scripts[1])
+        save_debug_bps("06_monster_scripts", {
+            self.monster_scripts.pointer_table_start: monster_scripts[0],
+            self.monster_scripts.range_2_start: monster_scripts[1]
+        })
         progress += 3
 
         # Collect unused ranges and add as AnimationBanks
@@ -1122,12 +1215,12 @@ class GameWorld:
             self.sprites.animation_data_banks.append(AnimationBank(start, end))
 
         # From event scripts
-        for bank in self.event_scripts.banks:
-            unused = bank.get_unused_range()
-            if unused:
-                self.sprites.animation_data_banks.append(
-                    AnimationBank(unused[0], unused[1])
-                )
+        # for bank in self.event_scripts.banks:
+        #     unused = bank.get_unused_range()
+        #     if unused:
+        #         self.sprites.animation_data_banks.append(
+        #             AnimationBank(unused[0], unused[1])
+        #         )
 
         # From action scripts
         unused = self.action_scripts.get_unused_range()
@@ -1171,8 +1264,11 @@ class GameWorld:
 
         # Sprite graphics patch (now has access to reclaimed animation banks)
         self._report_progress("Assembling graphics...", progress)
+        debug_sprites: dict[int, bytearray] = dict()
         for p in self.sprites.render():
             patch.add_data(p[0], p[1])
+            debug_sprites[p[0]] = p[1]
+        save_debug_bps("07_sprites", debug_sprites)
         progress += 3
 
         # World map
@@ -1204,6 +1300,7 @@ class GameWorld:
                 "allies": executor.submit(self.allies.render),
             }
             # Wait for all to complete and add results to patch
+            debug_counter = 8
             for key in [
                 "battle_dialogs",
                 "enemies",
@@ -1216,12 +1313,17 @@ class GameWorld:
                 "spells",
                 "allies",
             ]:
-                patch.add_dict(futures[key].result())
+                result = futures[key].result()
+                patch.add_dict(result)
+                save_debug_bps(f"{debug_counter:02d}_{key}", result)
+                debug_counter += 1
                 progress += 2
                 self._report_progress("Assembling object data...", progress)
 
         self._report_progress("Writing patch...", 95)
-        patch.add_dict(update_credits(self))
+        credits_data = update_credits(self)
+        patch.add_dict(credits_data)
+        save_debug_bps("18_credits", credits_data)
 
         # Misc
 
@@ -1277,11 +1379,19 @@ class GameWorld:
             )
 
         # palettes cont'd
-        patch.add_dict(self.mario_palette.standard_patch())
-        patch.add_dict(self.mallow_palette.standard_patch())
-        patch.add_dict(self.geno_palette.standard_patch())
-        patch.add_dict(self.bowser_palette.standard_patch())
-        patch.add_dict(self.toadstool_palette.standard_patch())
+        debug_palettes_contd: dict[int, bytearray] = dict()
+        pd = [
+            self.mallow_palette.standard_patch(),
+            self.geno_palette.standard_patch(),
+            self.bowser_palette.standard_patch(),
+            self.toadstool_palette.standard_patch()
+        ]
+        if self.hasattr("mario_palette"):
+            pd.append(self.mario_palette.standard_patch())
+        for p_data in pd:
+            patch.add_dict(p_data)
+            debug_palettes_contd.update(p_data)
+        save_debug_bps("19_palettes_standard", debug_palettes_contd)
 
         if self.settings.isflag_enabled(JapaneseABXY):
             patch.add_data(
@@ -1387,5 +1497,10 @@ class GameWorld:
 
         # Cache the patch for subsequent calls
         self._cached_patch = patch
+
+        # Final combined debug patch
+        save_debug_bps("99_FINAL_COMBINED", patch._data)
+        if DEBUG_PATCHES:
+            print(f"DEBUG: All debug patches saved to {DEBUG_DIR}")
 
         return patch

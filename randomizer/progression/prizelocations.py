@@ -147,7 +147,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
     A_StartLoopNTimes,
     A_VisibilityOn,
     A_PlaySound,
-    A_SetSequenceSpeed
+    A_SetSequenceSpeed,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
     ActionScript,
@@ -3819,6 +3819,13 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             skip_swap_if_flag="KeepMinigameSpritesIntact",
         )
     ]
+    _dialogs_expecting_replacement = [
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE,
+        DI2560_TOWER_HENCHMAN_1,
+        DI2572_TOWER_HENCHMAN_2,
+        DI3072_TOWER_HENCHMAN_3_WINDOW,
+        DI3073_TOWER_HENCHMAN_3
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -3833,7 +3840,9 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         op = super().render(world)
         if self.npc_slots and self.prize and self.prize.model:
             assert isinstance(self.prize, BossFightPrize)
-            is_vanilla = isinstance(self.prize, (self._originally_held, Booster2BossFight))
+            is_vanilla = isinstance(
+                self.prize, (self._originally_held, Booster2BossFight)
+            )
             render_booster_tower_indoor_boss(
                 world, self.prize, self.npc_slots, is_vanilla
             )
@@ -3841,6 +3850,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             # Remove special snifit sprites that other henchmen don't have
             # Only if character henchman slots are assigned (KeepMinigameSpritesIntact not set)
             from ..types.flags import KeepMinigameSpritesIntact
+
             character_henchmen_assigned = (
                 not world.settings.isflag_enabled(KeepMinigameSpritesIntact)
                 and self.prize.character_henchmen is not None
@@ -3850,9 +3860,11 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
                 render_booster_tower_henchman_scripts(
                     world,
                     self.prize,
-                    len(self.prize.character_henchmen)
-                    if self.prize.character_henchmen
-                    else 0,
+                    (
+                        len(self.prize.character_henchmen)
+                        if self.prize.character_henchmen
+                        else 0
+                    ),
                 )
 
             # Only if mook henchman slot is assigned
@@ -4395,6 +4407,10 @@ class MarrymoreBossFight(BossFightLocation):
             [NPC_2, NPC_10],
         ),
     ]
+    _dialogs_expecting_replacement = [
+        DI2061_HEAD_CHEF,
+        DI2062_APPRENTICE_CHEF
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -4420,7 +4436,10 @@ class MarrymoreBossFight(BossFightLocation):
     def render(self, world: GameWorld):
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if self.prize.character_henchmen is not None and len(self.prize.character_henchmen) >= 1:
+        if (
+            self.prize.character_henchmen is not None
+            and len(self.prize.character_henchmen) >= 1
+        ):
             render_marrymore_boss_henchmen(world, self.prize.character_henchmen)
         return op
 
@@ -4743,6 +4762,22 @@ class SeasideBeachBossFight(BossFightLocation):
         BossFightLocationHenchmanNPC(
             [R217_SEASIDE_TOWN_DURING_YARIDOVICH_ACCESSORY_SHOP_RIGHTMOST], [NPC_0]
         ),
+    ]
+    _dialogs_expecting_replacement = [
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU,
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME,
+        DI2832_OCCUPIED_SEASIDE_INNKEEPER,
+        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING,
+        DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED,
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME,
+        DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED,
+        DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT,
+        DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT,
+        DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT,
+        DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT,
+        DI2845_OCCUPIED_SEASIDE_HENCHMAN_CUSTOMER,
+        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD,
+        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD,
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -5111,6 +5146,7 @@ class ShipPasswordBossFight(BossFightLocation):
             sequence_setter_event_id=E0800_SHIP_PASSWORD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
+    _dialogs_expecting_replacement = [DI1660_SHIP_PASSWORD_COMPLETE]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -5491,6 +5527,19 @@ class ShipFinalBossFight(BossFightLocation):
             PACK069_SHIP_HENCHMAN_2,
             skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
+    ]
+    _dialogs_expecting_replacement = [
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING,
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER,
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD,
+        DI1782_SHIP_BOSS_DRINK,
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2,
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1,
+        DI1786_LETTER_FROM_SHIP_BOSS,
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3,
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4,
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED,
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED,
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -6358,6 +6407,10 @@ class DojoFirstFight(BossFightLocation):
             sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
+    _dialogs_expecting_replacement = [
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT,
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED,
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -6436,8 +6489,11 @@ class DojoSecondFight(BossFightLocation):
             self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
         ):
             render_dojo_fight(
-                world, self.prize,
-                "dojo_boss_2_initiate_aq", "dojo_boss_2_initiate", "dojo_boss_2_pause"
+                world,
+                self.prize,
+                "dojo_boss_2_initiate_aq",
+                "dojo_boss_2_initiate",
+                "dojo_boss_2_pause",
             )
         return op
 
@@ -6502,8 +6558,11 @@ class DojoThirdFight(BossFightLocation):
             self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
         ):
             render_dojo_fight(
-                world, self.prize,
-                "dojo_boss_3_initiate_aq", "dojo_boss_3_initiate", "dojo_boss_3_pause"
+                world,
+                self.prize,
+                "dojo_boss_3_initiate_aq",
+                "dojo_boss_3_initiate",
+                "dojo_boss_3_pause",
             )
         return op
 
@@ -6543,6 +6602,7 @@ class DojoFourthFight(BossFightLocation):
             sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
+    _dialogs_expecting_replacement = [DI3353_DOJO_BOSS_2_FULLY_DEFEATED]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -6566,8 +6626,11 @@ class DojoFourthFight(BossFightLocation):
             self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
         ):
             render_dojo_fight(
-                world, self.prize,
-                "dojo_boss_4_initiate_aq", "dojo_boss_4_initiate", "dojo_boss_4_pause"
+                world,
+                self.prize,
+                "dojo_boss_4_initiate_aq",
+                "dojo_boss_4_initiate",
+                "dojo_boss_4_pause",
             )
         return op
 
@@ -6645,8 +6708,11 @@ class DojoFifthFight(BossFightLocation):
             self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
         ):
             render_dojo_fight(
-                world, self.prize,
-                "dojo_boss_5_initiate_aq", "dojo_boss_5_initiate", "dojo_boss_5_pause"
+                world,
+                self.prize,
+                "dojo_boss_5_initiate_aq",
+                "dojo_boss_5_initiate",
+                "dojo_boss_5_pause",
             )
         return op
 
@@ -6700,6 +6766,10 @@ class MonstroSealedDoorBossFight(BossFightLocation):
             NPC_0,
             sequence_setter_event_id=E0816_MONSTRO_SUPERBOSS_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
+    ]
+    _dialogs_expecting_replacement = [
+        DI3338_MONSTRO_SUPERBOSS_HINT,
+        DI3057_MONSTRO_SUPERBOSS_PROMPT,
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -6778,6 +6848,8 @@ class MonstroSealedDoorBossFightPostgame(BossFightLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sealed_postgame_boss(world, inventory)
+
+    _dialogs_expecting_replacement = [DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT]
 
     # Flag as checked: CULEX_POSTGAME_COMPLETED
 
@@ -7421,6 +7493,7 @@ class StatueRoomBossFight(BossFightLocation):
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, (DodoBossFight)):
             from ..types.flags import KeepMinigameSpritesIntact
+
             render_statue_room_boss(
                 world,
                 self.prize,
@@ -7590,6 +7663,7 @@ class GiantEggBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _pack_id = PACK175_NIMBUS_CASTLE_SECOND_BOSS
     _post_unlocks_event_id = E1231_EGG_BOSS_UNLOCKS
+    _dialogs_expecting_replacement = [DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -7695,6 +7769,20 @@ class NimbusFinalBossFight(BossFightLocation):
             R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
             NPC_9,
             sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+        ),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [
+                R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA,
+            ],
+            [NPC_11],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
+                R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA,
+            ],
+            [NPC_12],
         ),
     ]
     _statue_slots = [
@@ -7897,6 +7985,10 @@ class NimbusFinalBossFight(BossFightLocation):
             NPC_1,
             sequence_setter_event_id=E0836_NIMBUS_CASTLE_LIBERATED_4WAY_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
+    ]
+    _dialogs_expecting_replacement = [
+        DI1120_NIMBUS_BIRD_GUARD,
+        DI1945_NIMBUS_GUARD,
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -9215,8 +9307,12 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                 m.animations.keep_summon is not None
                 and m.animations.keep_summon.total_duration is not None
             ):
-                world.action_scripts.get_command_by_identifier("keep_battle_room_summon", A_SetSpriteSequence).set_index(m.animations.keep_summon.sequence_id)
-                world.event_scripts.get_command_by_identifier("EVENT_941_pause_0", Pause).set_length(m.animations.keep_summon.total_duration)
+                world.action_scripts.get_command_by_identifier(
+                    "keep_battle_room_summon", A_SetSpriteSequence
+                ).set_index(m.animations.keep_summon.sequence_id)
+                world.event_scripts.get_command_by_identifier(
+                    "EVENT_941_pause_0", Pause
+                ).set_length(m.animations.keep_summon.total_duration)
                 world.event_scripts.get_script_by_id(
                     E0942_KEEP_FIRST_BOSS_SUMMON_CHEST
                 ).set_contents(
@@ -9277,15 +9373,21 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_keep(world, inventory) and not_earlygame(world, inventory)
 
-    def render(self, world: GameWorld | None = None) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+    def render(
+        self, world: GameWorld | None = None
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         op = super().render(world)
         assert world is not None
 
         if not isinstance(self.prize, self._originally_held):
             # only colour the chest gold if it's vanilla
-            world.event_scripts.delete_command_by_identifier("infinite_coin_chest_palette")
+            world.event_scripts.delete_command_by_identifier(
+                "infinite_coin_chest_palette"
+            )
             # give it a random sound effect
-            world.event_scripts.get_subscript_command_by_identifier("infinite_coin_chest_aq", "infinite_coin_chest_sfx", A_PlaySound).set_sound(random.randint(1, 162))
+            world.event_scripts.get_subscript_command_by_identifier(
+                "infinite_coin_chest_aq", "infinite_coin_chest_sfx", A_PlaySound
+            ).set_sound(random.randint(1, 162))
         return op
 
     # flag as checked: npc 0 in room 266 has its object trigger disabled.
@@ -9347,7 +9449,6 @@ class KeepChandelierBossFight(BossFightLocation):
                     "chandelier_challenge",
                 )
         return op
-
 
     # Flag as checked: KEEP_BOSS_2_DEFEATED
 
@@ -9757,9 +9858,21 @@ class InnerFactorySecondFight(BossFightLocation):
         ),
     ]
     _character_henchman_slots = [
-        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_12], remove_if_not_filled=RemoveIfNotFilled.ALWAYS),
-        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_13], remove_if_not_filled=RemoveIfNotFilled.ALWAYS),
-        BossFightLocationHenchmanNPC([R471_FACTORY_GROUNDS_AREA_02], [NPC_14], remove_if_not_filled=RemoveIfNotFilled.ALWAYS),
+        BossFightLocationHenchmanNPC(
+            [R471_FACTORY_GROUNDS_AREA_02],
+            [NPC_12],
+            remove_if_not_filled=RemoveIfNotFilled.ALWAYS,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R471_FACTORY_GROUNDS_AREA_02],
+            [NPC_13],
+            remove_if_not_filled=RemoveIfNotFilled.ALWAYS,
+        ),
+        BossFightLocationHenchmanNPC(
+            [R471_FACTORY_GROUNDS_AREA_02],
+            [NPC_14],
+            remove_if_not_filled=RemoveIfNotFilled.ALWAYS,
+        ),
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:

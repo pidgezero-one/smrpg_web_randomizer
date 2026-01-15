@@ -67,8 +67,8 @@ dialog_data[20] = '''RAINI: I think the back door to the
  is afraid of getting caught
  sneaking in.[await]'''
 dialog_data[21] = ''' `TOWER_BOSS_1` and `MARRYMORE_CHARACTER`
- getting married sounds like an
- obscure fanfic.[await]
+ getting married sounds like a crack
+ ship fanfic.[await]
  Even so, invites to this wedding
  are highly exclusive.[await]'''
 dialog_data[22] = ''' Don't listen to that guy,
@@ -85,7 +85,7 @@ dialog_data[25] = ''' I was hoping for this seed to solve
  `RANDOM_BOSS_NAME_2` and `RANDOM_BOSS_NAME_3`.[await]
  Oh well, can't win 'em all.[await]'''
 dialog_data[26] = ''' Really? `MARRYMORE_CHARACTER` and `TOWER_BOSS_1`
- getting married?[delay_30] Are these devs
+ getting married?[delay_30] Are these writers
  even trying anymore?[await]'''
 dialog_data[27] = ''' Huh?[delay_30] A bathroom?[delay_30] No, I'm just
  cold![await]'''

@@ -2443,6 +2443,8 @@ class HammerBrosFight(BossFightPrize):
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """HAMMER BRO: What're YOU lookin'\n at?[await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find the Hammer Bro...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """HAMMER BRO: The dojo master\n takes on 3 different forms.\n Me, though? I'm just a hammer.[await]""",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ This'd BETTER be important!?[await]\n  [select] (Nice hammer. Fight me)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ This'd BETTER be important!?[await]\n  [select] (Nice hammer. Fight me)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Hammer-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """HAMMER BRO: I guess you were\n tougher than I thought![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """HAMMER BRO: I guess you were\n tougher than I thought![await]""",
@@ -2487,6 +2489,7 @@ class Croco1BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Croco...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CROCO: Think ya can beat the dojo\n master, chump? I'd like to see ya\n try![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Whaddya want, bub?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Whaddya want, bub?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Wallet-this and Coin-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
@@ -2559,6 +2562,7 @@ class MackBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n               Beat it, bub![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """MACK: Think you're gonna beat the\n dojo master today?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You come to crash my party?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ You come to crash my party?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bouncing-this and Party-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MACK: I guess you CAN bounce\n after all.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MACK: I guess you CAN bounce\n after all.[await]""",
@@ -2699,6 +2703,7 @@ class Belome1BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Belome...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BELOME: Ooh, how exciting~!\n [delay]The dojo master has challenged\n you![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Are you the pizza delivery person?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Are you the pizza delivery person?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
@@ -2761,6 +2766,7 @@ class BowyerBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ What's going on in here?[await][pause] None of\n your business, that's what![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n BOWYER: Interesting, this will be![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Fight me, you will, nya?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Fight me, you will, nya?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arrow-this and Target-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOWYER: 1000 jumps I must do,\n nya![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOWYER: 1000 jumps I must do,\n nya![await]""",
@@ -2852,6 +2858,7 @@ class Croco2BossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ Nope, nothing suspicious going on\n in this house![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CROCO: Think ya can beat the dojo\n master, chump? I'd like to see ya\n try![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Whaddya want, bub?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Whaddya want, bub?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Wallet-this and Coin-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
@@ -2933,6 +2940,7 @@ class PunchinelloBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ You wouldn't wanna enter this\n house, oh no.[delay] We'll make sure you\n don't enter by accident.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """PUNCHINELLO: A challenge from\n the dojo master, eh? Let's see\n where this goes.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hello. Are you with the press?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong number)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Hello. Are you with the press?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong number)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bomb-this and Famous-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
@@ -3028,13 +3036,18 @@ class BoosterBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """SNIFIT 2: There is nothing of\n interest to you in here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BOOSTER: I wonder if the dojo\n master can shape-shift into a\n Mario doll.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Eh? What'd you come here for?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Eh? What'd you come here for?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Beetle-this and Train-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """SNIFIT 1: Hello there.[await]\n Booster's busy right now, so we\n can't let you in.[await]""",
+        DI1945_NIMBUS_GUARD: """SNIFIT 2: Please refrain\n from bothering Booster.[await]"""
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Booster's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Booster.[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """SNIFSTER 1: Hello there.[await]\n Booster's busy right now, so we\n can't let you in.[await]""",
+        DI1945_NIMBUS_GUARD: """SNIFSTER 2: Please refrain\n from bothering Booster.[await]"""
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """APPRENTICE: Oh, dear![delay] We've\n failed to keep the intruder away\n from Booster![await]""",
@@ -3075,6 +3088,7 @@ class KnifeGuyGrateGuyBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Grate Guy...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """GRATE GUY: The dojo master's\n much tougher than I am. Think you\n can win?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Welcome! What brings you here?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Welcome! What brings you here?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Knife-this and Casino-that.[await][page]\n Sometimes I'd like to ask them what\n they're babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """GRATE GUY: Look, `MAIN_CHARACTER_NAME`!\n I've been training so hard, that my\n ball jumps with me![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """GRATE GUY: Look, `MAIN_CHARACTER_NAME`!\n I've been training so hard, that my\n ball jumps with me![await]""",
@@ -3143,9 +3157,12 @@ class BundtBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Bundt...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BUNDT: What a fierce battle![await][pause] That\n was nothing compared to the dojo\n master, you know.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ What's this?[await][pause] Looking for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ What's this?[await][pause] Looking for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Candle-this and Frosting-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """CHEF TORTE: Is dinner time.[await]\n Ze guests are enjoyeeng zeir\n dinner, so ve cannot let you in.[await]""",
+        DI1945_NIMBUS_GUARD: """APPRENTICE: Oh, yeah, I'm sure\n they're loving the food. Nice of\n them to invite us in for some...[await]"""
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Bundt is busy right now, so it\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
@@ -3223,6 +3240,7 @@ class KingCalamariBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find King Calamari...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """KING CALAMARI: Think you can beat\n the dojo master?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ What do you want?[await]\n  [select] (Let's fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ What do you want?[await]\n  [select] (Let's fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Ship-this and Tentacle-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """KING CALAMARI: My tentacles\n shouldn't be able to do this.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """KING CALAMARI: My tentacles\n shouldn't be able to do this.[await]""",
@@ -3308,6 +3326,7 @@ class HidonBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ Hey, buster![delay] You think you're some\n kinda tough guy, tryin' to step\n over us guards?![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """HIDON: The dojo master's pretty\n tough.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Ugh... What'd you wake me up for?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Ugh... What'd you wake me up for?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Piranha-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """HIDON: I bet this would be even\n harder to do in my box.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """HIDON: I bet this would be even\n harder to do in my box.[await]""",
@@ -3335,6 +3354,8 @@ class HidonBossFight(BossFightPrize):
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """WHUHOH: The dojo master's pretty\n tough.[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """WHUHOH: I bet this would be even\n harder to do in my box.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """WHUHOH: I bet this would be even\n harder to do in my box.[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """GOOMBETTE: Oh yeah? Think you're\n tough, just 'cause you're bigger\n than me?![await]""",
+        DI1945_NIMBUS_GUARD: """GOOMBETTE: I heard you laughing!\n Go on, laugh it up! At least I'm\n allowed in the castle![await]"""
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """GOOMBETTE: You mighta' won\n against us, but Hidon's gonna\n beat you up![await]""",
@@ -3352,6 +3373,9 @@ class HidonBossFight(BossFightPrize):
         DI3072_TOWER_HENCHMAN_3_WINDOW: """MINI GOOMBA: (I'm too short to\n see out this window.)[await]""",
         DI3073_TOWER_HENCHMAN_3: """MINI GOOMBA: Put up your dukes,\n tough guy![await]""",
     }
+    _dialog_replacements_remake = {
+        DI1120_NIMBUS_BIRD_GUARD: """MINI GOOMBAE: Oh yeah? Think\n you're tough, just 'cause you're\n bigger than me?![await]""",
+        DI1945_NIMBUS_GUARD: """MINI GOOMBA: I heard you laughing!\n Go on, laugh it up! At least I'm\n allowed in the castle![await]"""}
 
 
 class JohnnyBossFight(BossFightPrize):
@@ -3418,9 +3442,12 @@ class JohnnyBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n You ain't gettin in here! It's ours![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """JOHNNY: Good luck, matey. The dojo\n master's mighty tough.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Arr, what brings ye here?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Arr, what brings ye here?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arr-this and Matey-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """ Read my lips... WE AIN'T LETTIN'\n YA THROUGH![await]""",
+        DI1945_NIMBUS_GUARD: """ Arr, they won't even let us go for\n a dip in the springs! We're FISH![await]\n ...Time to unionize, arr harr![await]"""
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Johnny is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
@@ -3489,9 +3516,12 @@ class YaridovichBossFight(BossFightPrize):
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Yaridovich.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """YARIDOVICH: A challenge from the\n dojo master? [delay]Eee hee hee, this\n ought to be interesting![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Eee hee...! You want to fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Eee hee...! You want to fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Brownie-this and Tickle-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """YARIDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """YARIDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """\n There's nothing...to see...in here.[await]""",
+        DI1945_NIMBUS_GUARD: """ If you have...no business...please\n leave.[await]"""
     }
     _dialog_replacements_remake = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """SPEARDOVICH: How could I lose to\n those...[delay] Huh? Hey, get lost![await]""",
@@ -3574,6 +3604,7 @@ class MokuraBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Mokura...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """MOKURA: Uhh... Are you... gonna\n beat the Dojo Master?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Uhh... Hi there.[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Uhh... Hi there.[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Secret-this and Gas-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n    MOKURA: Clouds can't jump...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n    MOKURA: Clouds can't jump...[await]""",
@@ -3650,12 +3681,12 @@ class Belome2BossFight(BossFightPrize):
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """BELOME: Say, it's past my bedtime.\n Can you get off of my head?[await]""",
         DI1782_SHIP_BOSS_DRINK: """ Woof, I ate too many Mallows~![await]\n I should wash it down with Tonic~![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: "\n                    ••••••[await]",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """MALLOW CLONE: Hey `MAIN_CHARACTER_TITLE`, have\n you seen my parents?[await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hey `MAIN_CHARACTER_TITLE`, have\n you seen my parents?[await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """ It's a damp, slimy, looking note\n (did `SEASIDE_BOSS` LICK this?).\n[await][page]\nA paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION`\nis etched on the paper.\nThis is probably one of \n`FINAL_BOSS_NAME`'s henchmen!\n`SEASIDE_BOSS` likely headed down to\nfind more snacks,\nso it's time to move on.[await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """GENO CLONE: If you find any Star\n Pieces, think you could hand them\n over?[await][page]\n No? [delay]...Oh well, I tried.[await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """TOADSTOOL 2: Take the trampoline\n in the next room. Go on, get outta\n here![await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ If you find any Star\n Pieces, think you could hand them\n over?[await][page]\n No? [delay]...Oh well, I tried.[await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Take the trampoline in the next\n room. Go on, get outta here![await]""",
         DI2061_HEAD_CHEF: "\n                    ••••••[await]",
-        DI2062_APPRENTICE_CHEF: "PEACH CLONE: I've baked a cake\n for you.[await][pause] It just happens to look\n like a dog.[await]",
+        DI2062_APPRENTICE_CHEF: " I've baked a cake for you.[await][pause]\n It just happens to look\n like a dog.[await]",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BELOME: Oh, no, you're still\n missing [0x7024] item(s).[await][pause] I can't wait any\n longer to see what today's cake\n will be.[await][pause] I'm STARVING![await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Belome.[await]""",
@@ -3663,30 +3694,27 @@ class Belome2BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Belome...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BELOME: Ooh, how exciting~!\n [delay]The dojo master has challenged\n you![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Are you the pizza delivery `MAIN_CHARACTER_GENDER_CASUAL`?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Are you the pizza delivery `MAIN_CHARACTER_GENDER_CASUAL`?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "\n                    ••••••[await]",
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """TOADSTOOL 2: Yuck, I don't want\n to play ANYTHING with you![await]""",
-        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """GENO CLONE: Need a nap? You can\n stay here for free.[await][pause] No dolls will\n wander around overnight, I swear.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
+        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Need a nap?\n You can stay here for free.[await][pause] No dolls will\n wander around overnight, I swear.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """\n                    ••••••[await]""",
+        DI1945_NIMBUS_GUARD: """ There's nothing unusual about\n someone as pretty as me being a\n security guard![await]"""
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Belome.[await]""",
     }
-    _dialog_replacements_peach = {
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """PEACH CLONE: Take the trampoline\n in the next room. Go on, get outta\n here![await]""",
-    }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: "\n                    ••••••[await]",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: "\n                    ••••••[await]",
         DI2560_TOWER_HENCHMAN_1: "\n                    ••••••[await]",
-        DI2572_TOWER_HENCHMAN_2: """TOADSTOOL 2: If you aren't here to\n tell us about a really great cake\n recipe, then shoo![await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """GENO CLONE: (What do Star Pieces\n even look like...?[await])""",
-        DI3073_TOWER_HENCHMAN_3: """GENO CLONE: I serve...a higher\n authority...[await]""",
-    }
-    _dialog_replacements_if_mandatory_fights_changed_peach = {
-        DI2572_TOWER_HENCHMAN_2: """PEACH CLONE: If you aren't here to\n tell us about a really great cake\n recipe, then shoo![await]""",
+        DI2572_TOWER_HENCHMAN_2: """ If you aren't here to tell us about\n a really great cake recipe, then\n shoo![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """(What do Star Pieces even look\n like...?)[await]""",
+        DI3073_TOWER_HENCHMAN_3: """\n    I serve...a higher authority...[await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
@@ -3738,6 +3766,7 @@ class JaggerBossFight(BossFightPrize):
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\nJAGGER: Hi, `MAIN_CHARACTER_NAME`![await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Jagger...\n in his house. He is...the most\n respected person here.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hello. May I help you?[await]\n  [select] (Let's fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Hello. May I help you?[await]\n  [select] (Let's fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Sensei-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """JAGGER: Sensei, the new regimen\n will strengthen us, right?[await]""",
     }
@@ -3782,6 +3811,7 @@ class Jinx1BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Jinx...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """JINX: The dojo master is quite\n disciplined. Good luck on your\n challenge.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
@@ -3826,6 +3856,7 @@ class Jinx2BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Jinx...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """JINX: The dojo master is quite\n disciplined. Good luck on your\n challenge.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
@@ -3870,6 +3901,7 @@ class Jinx3BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Jinx...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """JINX: The dojo master is quite\n disciplined. Good luck on your\n challenge.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
@@ -3950,6 +3982,8 @@ class CulexBossFight(BossFightPrize):
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CULEX: It will be quite difficult to\n claim victory over the dojo master.\n I wish you luck.[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """FIRE CRYSTAL: This area is\n off-limits.[await]""",
+        DI1945_NIMBUS_GUARD: """WIBD CRYSTAL: Are you sure you\n want to mess with a water crystal\n in a cloud kingdom?[await]"""
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """CRYSTAL: Proceed forth. Culex\n awaits you.[await]""",
@@ -4004,6 +4038,7 @@ class BoxBoyBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Box Boy...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BOX BOY: The dojo master's gonna\n kick your butt![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ This'd BETTER be important![await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ This'd BETTER be important![await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Ghost-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOX BOY:\n      Ahh, you're not so tough![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOX BOY:\n      Ahh, you're not so tough![await]""",
@@ -4087,6 +4122,7 @@ class MegasmilaxBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ We're just two plants growing in\n front of an abandoned door. ...But\n we're not letting you in.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """MEGASMILAX: I would love to\n watch your match with the dojo\n master.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You don't look like the gardener...[await]\n  [select] (I'm here to fight you)\n  [select] (Oops, my mistake)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ You don't look like the gardener...[await]\n  [select] (I'm here to fight you)\n  [select] (Oops, my mistake)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the lady next door.[await][page]\n She's always mumbling about\n Water-this and Fertilizer-that.[await]\n ...[delay]Actually, [delay]that doesn't sound\n so bad![await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MEGASMILAX: This is harder than it\n looks. I'm a plant.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MEGASMILAX: This is harder than it\n looks. I'm a plant.[await]""",
@@ -4160,6 +4196,7 @@ class DodoBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Dodo...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: "\n                    ••••••[await]",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """[delay_60][await]\n  [select] (I'm here for a fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """[delay_60][await]\n  [select] (I'm here for a fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n I never hear the guy next door.[await]\n Maybe he can't talk.[await][page]\n I'd like to go over and introduce\n myself sometime, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: "\n                    ••••••[await]",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: "\n                    ••••••[await]",
@@ -4236,6 +4273,7 @@ class BirdettaBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ There's nothing weird going on\n here![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BIRDO: Ooh, are you gonna play\n with the dojo master?![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hello! Did you come to play?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Hello! Did you come to play?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BIRDO: Thanks for playing with\n me~![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BIRDO: Thanks for playing with\n me~![await]""",
@@ -4345,6 +4383,7 @@ class ValentinaBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n         Hey! Who're YOU?!...[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """VALENTINA: You? Fighting the dojo\n master? Good luck, chump![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ What? What do you want?![await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ What? What do you want?![await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]""",
@@ -4441,9 +4480,12 @@ class CzarDragonBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "\n                    ••••••[await]",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """CZAR DRAGON: BLAAARRRGGGG\n  [select] (I agree, let's fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """CZAR DRAGON: BLAAARRRGGGG\n  [select] (I agree, let's fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always yelling about\n BLARRRRG-this and\n BLAHGAHRGGH-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """\n                    ••••••[await]""",
+        DI1945_NIMBUS_GUARD: """\n                    ••••••[await]"""
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Czar Dragon is busy right now,\n so he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
@@ -4519,9 +4561,12 @@ class AxemRangersBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """AXEM PINK: Get lost, mustache!\n [delay]This shed belongs to the Axem\n Rangers![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """AXEM RED: Yo! It won't be enough\n to win just once. The dojo master\n has three forms.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Yo! What do you want?![await]\n  [select] (A fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Yo! What do you want?![await]\n  [select] (A fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Shades-this and Makeup-that.[await][page]\n Sometimes I'd like to ask them what\n they're babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  AXEM RED: I'm way outta shape![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  AXEM RED: I'm way outta shape![await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """AXEM BLACK:\n              Beat it, clod![await]""",
+        DI1945_NIMBUS_GUARD: """AXEM PINK:\n              Get lost, jerk![await]"""
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Axem Rangers are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
@@ -4599,6 +4644,7 @@ class ChesterBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Chester...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n   CHESTER: Now THIS I gotta see.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You're interrupting my sleep.[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ You're interrupting my sleep.[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Dragon-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  CHESTER: I don't even have legs![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  CHESTER: I don't even have legs![await]""",
@@ -4755,6 +4801,7 @@ class BoomerBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Boomere...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BOOMER: Ha ha ha! A match\n against the dojo master?!\n This ought to be fun![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Gahahaha! Is it a fight you seek?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Gahahaha! Is it a fight you seek?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Soldier-this and Honor-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOOMER: You won fair and square!\n But I won't make it so easy for you\n next time![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOOMER: You won fair and square!\n But I won't make it so easy for you\n next time![await]""",
@@ -4808,6 +4855,7 @@ class ExorBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Exor...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """EXOR: Think you're gonna beat the\n dojo master? Now this I GOTTA\n see![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Halt! What do you want?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Halt! What do you want?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Nosey-this and Trespasser-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n        EXOR: How humiliating![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n        EXOR: How humiliating![await]""",
@@ -4881,6 +4929,7 @@ class CountdownBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n       Get outta here! Beat it![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """COUNT DOWN: The dojo master will\n be tough to beat![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Uh-oh! Are you looking for\n trouble?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Uh-oh! Are you looking for\n trouble?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n The guy next door never seems\n to shut his alarm clock off.[await][page]\n I'd like to go over and give him a\n piece of my mind, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """COUNT DOWN: This is a weird\n training regimen for an alarm\n clock![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """COUNT DOWN: This is a weird\n training regimen for an alarm\n clock![await]""",
@@ -4957,6 +5006,7 @@ class CloakerDominoBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Domino...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """DOMINO: Hee hee hee... So you're\n challenging the dojo master?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hee hee hee... Wanna fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Hee hee hee... Wanna fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Weaklings-this and Snake-that.[await][page]\n Sometimes I'd like to ask them what\n they're babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """DOMINO: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """DOMINO: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]""",
@@ -5021,6 +5071,7 @@ class ClerkBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ Hey buddy, why don't you go snoop\n around some other houses instead?[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CLERK: Now this should be\n interesting. Can you beat THE\n master, `MAIN_CHARACTER_NAME`?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Are you here for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Are you here for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Puffball-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CLERK: If anyone asks, I'm on\n break![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CLERK: If anyone asks, I'm on\n break![await]""",
@@ -5094,6 +5145,7 @@ class ManagerBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n      Can't you see we're busy?[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """MANAGER: You think you can beat\n the dojo master?![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Yes?[await][pause] What do you want?[await]\n  [select] (Fight me!)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Yes?[await][pause] What do you want?[await]\n  [select] (Fight me!)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Schedule-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MANAGER: Don't interrupt me while\n I'm training![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MANAGER: Don't interrupt me while\n I'm training![await]""",
@@ -5168,6 +5220,7 @@ class DirectorBossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ There's some important business\n happening in this shed, so get lost\n and quit trying to interrupt us![await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """DIRECTOR: I'm afraid the dojo\n master will be quite a challenge for\n you to beat.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ State your business.[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ State your business.[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Meltdown-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """DIRECTOR: This is quite the\n difficult regimen for a white-collar\n fellow like me.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """DIRECTOR: This is quite the\n difficult regimen for a white-collar\n fellow like me.[await]""",
@@ -5221,6 +5274,7 @@ class GunyolkBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find the Factory Chief...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """FACTORY CHIEF: Harrumph! Just\n because you beat me, doesn't mean\n you can beat the dojo master![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Did you come here to fight me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Did you come here to fight me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Ninja-this and Invention-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """FACTORY CHIEF: I'll out-jump you\n if it's the last thing I do![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """FACTORY CHIEF: I'll out-jump you\n if it's the last thing I do![await]""",
@@ -5283,6 +5337,7 @@ class SmithyBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Smithy...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """\n   SMITHY: Grr... Leave me alone![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Grr... What do you want?[await]\n  [select] (Fight me!)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Grr... What do you want?[await]\n  [select] (Fight me!)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Factory-this and Weapon-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """SMITHY: Grr... [delay]You're stronger\n than I thought...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """SMITHY: Grr... [delay]You're stronger\n than I thought...[await]""",
@@ -5341,6 +5396,7 @@ class Punchinello2BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Punchinello...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """PUNCHINELLO: A challenge from\n the dojo master, eh? Let's see\n where this goes.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hello. Are you with the press?[await]\n  [select] (I'm here to fight)\n  [select] (Sorry, wrong number)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Hello. Are you with the press?[await]\n  [select] (I'm here to fight)\n  [select] (Sorry, wrong number)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bomb-this and Famous-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
@@ -5388,6 +5444,7 @@ class Booster2BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Booster...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BOOSTER: I wonder if the dojo\n master can shape-shift into a\n Mario doll.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Eh? What'd you come here for?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Eh? What'd you come here for?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Beetle-this and Train-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
@@ -5441,6 +5498,7 @@ class Bundt2BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Bundt...\n in his house. He is...the most\n respected dessert here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BUNDT: What a fierce battle![await][pause] That\n was nothing compared to the dojo\n master, you know.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ What's this?[await][pause] Looking for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ What's this?[await][pause] Looking for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Candle-this and Frosting-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
@@ -5477,6 +5535,7 @@ class Johnny2Fight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Johnny...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """JOHNNY: Good luck, matey. The dojo\n master's mighty tough.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Arr, what brings ye here?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Arr, what brings ye here?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arr-this and Matey-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
@@ -5524,6 +5583,7 @@ class Belome3Fight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Belome...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """BELOME: Ooh, how exciting~!\n [delay]The dojo master has challenged\n you![await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Are you the pizza delivery person?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Are you the pizza delivery person?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
@@ -5572,6 +5632,7 @@ class Jinx4BossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Jinx...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """JINX: The dojo master is quite\n disciplined. Good luck on your\n challenge.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
