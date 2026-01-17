@@ -11,4 +11,5 @@ class GenerateForm(forms.Form):
     flags = forms.Field(required=False, initial='')
     cosmetics = forms.Field(required=False, initial='')
     debug_mode = forms.BooleanField(required=False, initial=False)
+    debug_bps_patches = forms.BooleanField(required=False, initial=False)
     race_mode = forms.BooleanField(required=False, initial=False)

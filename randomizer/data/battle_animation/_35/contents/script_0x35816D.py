@@ -12,7 +12,7 @@ from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 # This might fail, move some pointers out if necessary.
-script = AnimationScriptBlock(expected_size=260, expected_beginning=0x35816D, script=[
+script = AnimationScriptBlock(expected_size=258, expected_beginning=0x35816D, script=[
 	DefineObjectQueue(["weaponbase_misssound", 
                     "armoraccessorybase_misssound", 
                     "armoraccessorybase_misssound", 

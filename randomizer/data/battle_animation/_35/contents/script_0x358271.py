@@ -11,8 +11,9 @@ from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
-# This might fail, move some pointers out if necessary.
-script = AnimationScriptBlock(expected_size=74+184+76+74+1627-260, expected_beginning=0x358271, script=[
+# Content needs ~1772 bytes but gap to next script at 0x358916 is only 1701 bytes
+# This intentionally overflows into the next script's space
+script = AnimationScriptBlock(expected_size=1701, expected_beginning=0x358271, script=[
     DefineObjectQueue(["baseweaponarmoraccessory_sound", 
                        "baseweaponarmoraccessory_sound", 
                        "baseweaponarmoraccessory_sound", 

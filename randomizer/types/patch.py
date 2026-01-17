@@ -36,7 +36,7 @@ class Patch:
         return self._data.get(addr, bytes())
 
     def add_data(
-        self, addr: int, data: bytearray | bytes | list[int] | int | str
+        self, addr: int, data: bytearray | bytes | list[int] | int | str, source: str = ""
     ) -> None:
         """Add data to the patch."""
         # For integers and strings, convert them to byte representations.
@@ -44,12 +44,24 @@ class Patch:
             data = data.to_bytes(1, "little")
         elif isinstance(data, str):
             data = data.encode("latin1")
+
+        # Check for overlaps with existing data
+        new_start = addr
+        new_end = addr + len(data)
+        for existing_addr, existing_data in self._data.items():
+            existing_end = existing_addr + len(existing_data)
+            # Check if ranges overlap
+            if new_start < existing_end and existing_addr < new_end:
+                print(f"⚠️  OVERLAP DETECTED!")
+                print(f"    New data: 0x{new_start:06X}-0x{new_end:06X} ({len(data)} bytes) {source}")
+                print(f"    Existing: 0x{existing_addr:06X}-0x{existing_end:06X} ({len(existing_data)} bytes)")
+
         self._data[addr] = data
 
-    def add_dict(self, data: dict[int, bytearray]) -> None:
+    def add_dict(self, data: dict[int, bytearray], source: str = "") -> None:
         """Add data to the patch in `{0x123456: bytearray([0x00])}` format."""
         for addr, b in data.items():
-            self.add_data(addr, b)
+            self.add_data(addr, b, source)
 
     def remove_data(self, addr: int) -> None:
         """Remove data from the patch."""

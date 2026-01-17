@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-12">
     <div>Mode: <span id="info-mode"></span></div>
     <div id="info-debug-mode" class="bg-info text-white">Debug Test Mode: <span>Yes</span></div>
     <div>Version: <span id="info-version"></span></div>
@@ -21,7 +21,7 @@
     </div>
 
 </div>
-<div class="col-md-6">
+<div class="col-md-12">
 {% for category in categories %}
     {% for flag in category.flags %}
         {% include 'randomizer/_show_flag_info.html' with flag=flag %}

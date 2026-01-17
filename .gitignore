@@ -131,4 +131,6 @@ unreferenced_dialogs.txt
 
 # Debug. Do not commit any roms
 smrpg.sfc
+*.sfc
+*.smc
 debug_patches/*

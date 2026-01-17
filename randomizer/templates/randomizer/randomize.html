@@ -190,15 +190,11 @@
             </div>
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div role="group" class="btn-group btn-flex mr-3 mb-3">
-                        <button name="save_rom" class="btn btn-success" id="btn-save-rom" disabled>Save Rom</button>
-                    </div>
-                    <div role="group" class="btn-group btn-flex mr-3 mb-3">
-                        <button name="save_wad" class="btn btn-success" id="btn-save-wad" disabled>Save Wad</button>
-                    </div>
-                </div>
+            <div role="group" class="btn-group btn-flex mr-3 mb-3">
+                <button name="save_rom" class="btn btn-success" id="btn-save-rom" disabled>Save Rom</button>
+            </div>
+            <div role="group" class="btn-group btn-flex mr-3 mb-3">
+                <button name="save_wad" class="btn btn-success" id="btn-save-wad" disabled>Save Wad</button>
             </div>
             {% include 'randomizer/_rom_info.html' with show_permalink=True %}
         </div>
@@ -232,14 +228,32 @@
         $(document).ready(function() {
             const FLAGS = JSON.parse(document.getElementById('flags_json').textContent);
 
-            function applySeed(rom) {
+            // Helper function to disable/enable all form controls during generation
+            function setFormControlsDisabled(disabled) {
+                const form = $('#config');
+                // Disable all inputs, selects, buttons (except generate button and hidden inputs needed for submission)
+                form.find('input, select, textarea').not('#generate-btn, [type="hidden"]').prop('disabled', disabled);
+                form.find('button').not('#generate-btn').prop('disabled', disabled);
+                // Also disable the preset dropdown and apply button
+                $('#preset').prop('disabled', disabled);
+                $('#apply-flags').prop('disabled', disabled);
+                $('#reset-flags').prop('disabled', disabled);
+                $('#seed-clear').prop('disabled', disabled);
+                // Add/remove visual indicator class
+                if (disabled) {
+                    form.addClass('generating');
+                } else {
+                    form.removeClass('generating');
+                }
+            }
+
+            function applySeed(rom, formData) {
                 return new Promise((resolve, reject) => {
-                    $("#region").val(rom.region);
+                    // Set region in the already-captured formData
+                    formData.set("region", rom.region);
                     $("#progress-box").show();
                     $("#progress-bar").css("width", "0%");
                     $("#progress-message").text("Starting generation...");
-
-                    const formData = new FormData(document.getElementById('config'));
 
                     fetch("{% url 'randomizer:generate_stream' %}", {
                         method: 'POST',
@@ -300,6 +314,9 @@
                 }
 
                 $("#generate-btn").html("Generate ROM").prop("disabled", false);
+                setFormControlsDisabled(false);
+                // Re-apply flag requirements to properly set disabled states
+                applyFlagRequirements();
                 $("#generate-error-message").html(errmsg);
                 $("#generate-error-box").show().delay(20000).fadeOut("slow");
             }
@@ -307,6 +324,9 @@
             function seedApplied(patch) {
                 return new Promise((resolve) => {
                     $("#generate-btn").html("Generate").prop("disabled", false);
+                    setFormControlsDisabled(false);
+                    // Re-apply flag requirements to properly set disabled states
+                    applyFlagRequirements();
                     $("#btn-save-rom").prop("disabled", false);
                     if (wad.valid) {
                         $("#btn-save-wad").prop("disabled", false);
@@ -315,6 +335,9 @@
                     }
                     updateSeedDetailsFromPatch(patch);
                     rom.parseInfoFromPatch(patch);
+                    // Hide generator form and show seed details
+                    $("#generate-container").hide();
+                    $("#seed-details").show();
                     // Scroll back to the top after generation is done.
                     $('html').animate({scrollTop: 0}, 500);
                     resolve(rom);
@@ -663,9 +686,12 @@
                 // Generate button
                 $("#generate-btn").click((event) => {
                     $("#seed-details").hide();
+                    // Capture form data BEFORE disabling inputs (disabled inputs aren't included in FormData)
+                    const formData = new FormData(document.getElementById('config'));
                     $(event.target).html("Generating... (this may take a few minutes)").prop("disabled", true);
+                    setFormControlsDisabled(true);
                     resetRom().then((rom) => {
-                        applySeed(rom).then(seedApplied, seedFailed);
+                        applySeed(rom, formData).then(seedApplied, seedFailed);
                     });
                 });
 

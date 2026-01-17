@@ -274,6 +274,8 @@ class GenerateView(FormView):
 
         debug_mode = bool(data["debug_mode"])
         race_mode = bool(data["race_mode"])
+        # Debug BPS patches only work in development mode
+        debug_bps_patches = bool(data.get("debug_bps_patches", False)) and settings.DEBUG
 
         try:
             # Build game world, randomize it, and generate the patch.
@@ -286,6 +288,7 @@ class GenerateView(FormView):
             world = create(
                 seed,
                 s,
+                debug_bps_patches=debug_bps_patches,
                 )
             patches = {"US": world.get_patch()}
         except FlagError as e:
@@ -401,6 +404,8 @@ class GenerateStreamView(View):
 
         debug_mode = bool(data["debug_mode"])
         race_mode = bool(data["race_mode"])
+        # Debug BPS patches only work in development mode
+        debug_bps_patches = bool(data.get("debug_bps_patches", False)) and settings.DEBUG
 
         def generate_events() -> Iterator[bytes]:
             progress_queue: queue.Queue = queue.Queue()
@@ -417,7 +422,7 @@ class GenerateStreamView(View):
                     s.set_from_flag_string(full_flag_string.strip())
 
                     # Create world with progress callback
-                    world = create(seed, s, progress_callback=on_progress)
+                    world = create(seed, s, progress_callback=on_progress, debug_bps_patches=debug_bps_patches)
 
                     # Generate patch
                     patch = world.get_patch()

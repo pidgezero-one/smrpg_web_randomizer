@@ -18,6 +18,18 @@ Once you've installed Docker (either the desktop client or command line interfac
 
 The development environment files are `.env.dev` and `.env.dev.db`.  These are set up to use testing values and run the Django development server on localhost port 8000.  You can change these as needed.
 
+## Debugging
+
+- The "Debug Mode" checkbox maxes out your party stats.
+- The "Generate Debug BPS Patches" checkbox creates indivudual patches of different data types (one for event scripts, one for spells, one for palettes, one for sprites, etc). Use these to help isolate the root cause of a broken ROM, but be warned it makes seed generation much slower.
+  - Patches will go in the ./debug_patches folder, which is gitignored.
+  - You must have a vanilla SMRPG rom named "smrpg.sfc" in the root directory of the randomizer, which is also gitignored. **DO NOT EVER** git commit a rom file!
+- You can pre-assign certain items to certain locations, or put items in your starting inventory, using randomizer/debug/config.yml. This will only work if "Debug Mode" is enabled.
+  - For starting inventory items, use the item class name in randomizer/data/items.py.
+  - For pre-assigning prizes to checks, use the location and prize names from randomizer/progression/prizelocations.py and randomizer/progression/prizes.py
+- You can use [Lazy Shell](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) and [FlexHEX](https://www.heaventools.com/download-hex-editor.htm) to debug your randomized/patched ROM. Both are compatible with Wine with a little finagling.
+  - You won't be able to view battle events in Lazy Shell. This is normal, unfortunately.
+
 ## Deploying to production
 
 1. Make a copy of the example production environment files:

@@ -481,12 +481,33 @@ class GameWorld:
             "settings": self._get_settings_json(),
             "locations": self._get_locations_json(),
             "shops": self._get_shops_json(),
+            "palettes": self._get_palettes_json(),
             "password": self.password,
             "songs": [self.song_1, self.song_2, self.song_3],
         }
         if self.poison_mushroom_status:
             result["poison_mushroom_status"] = self.poison_mushroom_status
         return result
+
+    def _get_palettes_json(self) -> dict[str, str]:
+        """Get JSON representation of character palette names.
+
+        Uses the palette's custom name if set, otherwise falls back to the class name.
+        """
+        def get_palette_name(palette: Any, original_name: str) -> str:
+            # If palette has a custom name different from original, use it
+            if hasattr(palette, 'name') and palette.name != original_name:
+                return palette.name
+            # Otherwise use the class name
+            return type(palette).__name__
+
+        return {
+            "Mario": get_palette_name(self.mario_palette, "Mario"),
+            "Mallow": get_palette_name(self.mallow_palette, "Mallow"),
+            "Geno": get_palette_name(self.geno_palette, "Geno"),
+            "Bowser": get_palette_name(self.bowser_palette, "Bowser"),
+            "Toadstool": get_palette_name(self.toadstool_palette, "Toadstool"),
+        }
 
     def _get_shops_json(self) -> dict[str, list[str]]:
         """Get JSON representation of all shops with their item names."""
@@ -583,6 +604,35 @@ class GameWorld:
 
     def _get_settings_json(self) -> dict[str, Any]:
         """Get JSON representation of all settings with their names and values."""
+        from .flags import CategorizationFlagWithOrdinance
+
+        def get_option_display_name(opt: Any) -> str:
+            """Get a human-readable display name for an option."""
+            if hasattr(opt, "value"):
+                val = opt.value
+                # Check if val is a string (e.g., "Random_1", "Random_2")
+                if isinstance(val, str):
+                    return val
+                # Check if val is a class type (for ClassCategorizationOption)
+                if isinstance(val, type):
+                    # For class types, use _title (spell title) or __name__ (class name)
+                    if hasattr(val, "_title") and val._title:
+                        return val._title
+                    elif hasattr(val, "_name") and val._name:
+                        return val._name
+                    else:
+                        return val.__name__
+                elif hasattr(val, "name") and isinstance(val.name, str):
+                    return val.name
+                elif hasattr(val, "_name") and isinstance(val._name, str):
+                    return val._name
+                else:
+                    return str(val)
+            elif hasattr(opt, "name"):
+                return opt.name
+            else:
+                return str(opt)
+
         result: dict[str, Any] = dict()
         for flag_class, flag in self.settings._flags.items():
             flag_name = flag.name
@@ -597,32 +647,19 @@ class GameWorld:
                     result[flag_name] = selected.value
                 else:
                     result[flag_name] = str(selected)
+            elif isinstance(flag, CategorizationFlagWithOrdinance):
+                # Get list of selected options sorted by their order
+                selected_with_order = [
+                    (opt, order) for opt, order in flag.options.items()
+                    if order is not None
+                ]
+                # Sort by order value
+                selected_with_order.sort(key=lambda x: x[1])
+                # Get display names in order
+                result[flag_name] = [get_option_display_name(opt) for opt, _ in selected_with_order]
             elif isinstance(flag, CategorizationFlag):
                 # Get list of enabled options
-                enabled_names = []
-                for opt in flag.enabled:
-                    if hasattr(opt, "value"):
-                        val = opt.value
-                        # Check if val is a class type (for ClassCategorizationOption)
-                        if isinstance(val, type):
-                            # For class types, use _title (spell title) or __name__ (class name)
-                            if hasattr(val, "_title") and val._title:
-                                enabled_names.append(val._title)
-                            elif hasattr(val, "_name") and val._name:
-                                enabled_names.append(val._name)
-                            else:
-                                enabled_names.append(val.__name__)
-                        elif hasattr(val, "name") and isinstance(val.name, str):
-                            enabled_names.append(val.name)
-                        elif hasattr(val, "_name") and isinstance(val._name, str):
-                            enabled_names.append(val._name)
-                        else:
-                            enabled_names.append(str(val))
-                    elif hasattr(opt, "name"):
-                        enabled_names.append(opt.name)
-                    else:
-                        enabled_names.append(str(opt))
-                result[flag_name] = enabled_names
+                result[flag_name] = [get_option_display_name(opt) for opt in flag.enabled]
             else:
                 result[flag_name] = str(flag)
         return result
@@ -689,6 +726,7 @@ class GameWorld:
         sprites: SpriteCollection,
         world_map_locations: WorldMapLocationCollection,
         progress_callback: Callable[[str, int], None] | None = None,
+        debug_bps_patches: bool = False,
     ):
         print(seed)
         print(settings.flag_string)
@@ -717,6 +755,7 @@ class GameWorld:
         self.sprites = sprites
         self.world_map_locations = world_map_locations
         self._cached_patch: Patch | None = None
+        self._debug_bps_patches = debug_bps_patches
 
         # Validate settings combinations before doing anything else
         # This catches invalid combinations early with clear error messages
@@ -1010,7 +1049,7 @@ class GameWorld:
         from bps.diff import diff_bytearrays
         from bps.io import write_bps
 
-        DEBUG_PATCHES = True  # Set to False to disable debug patches
+        DEBUG_PATCHES = self._debug_bps_patches  # Controlled by debug_bps_patches setting
         PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         DEBUG_DIR = os.path.join(PROJECT_ROOT, "debug_patches")
         VANILLA_ROM_PATH = os.environ.get("VANILLA_ROM_PATH", os.path.join(PROJECT_ROOT, "smrpg.sfc"))
@@ -1049,6 +1088,9 @@ class GameWorld:
                 with open(bps_path, "wb") as f:
                     write_bps(bps_iterable, f)
                 print(f"DEBUG: Saved {bps_path} ({len(patch_data)} entries)")
+                if patch_data:
+                    addrs = sorted(patch_data.keys())
+                    print(f"DEBUG:   Address range: 0x{addrs[0]:X} - 0x{addrs[-1]:X}")
             except Exception as e:
                 print(f"DEBUG: Failed to save {name}.bps: {e}")
         # ========================================================================
@@ -1062,7 +1104,7 @@ class GameWorld:
         for animation_bank in self.battle_animations.values():
             patches = animation_bank.render()
             for p in patches:
-                patch.add_data(p[0], p[1])
+                patch.add_data(p[0], p[1], source="battle_animations")
                 debug_battle_anims[p[0]] = p[1]
         save_debug_bps("01_battle_animations", debug_battle_anims)
         progress += 3
@@ -1179,7 +1221,7 @@ class GameWorld:
         for event_script_bank in self.event_scripts.banks:
             self._report_progress("Assembling event scripts...", progress)
             rendered = event_script_bank.render()
-            patch.add_data(event_script_bank.pointer_table_start, rendered)
+            patch.add_data(event_script_bank.pointer_table_start, rendered, source="event_scripts")
             debug_event_scripts[event_script_bank.pointer_table_start] = rendered
             progress += 3
         save_debug_bps("03_event_scripts", debug_event_scripts)
@@ -1188,7 +1230,7 @@ class GameWorld:
         self._report_progress("Assembling dialogs...", progress)
         dialog_data = self.overworld_dialogs.render()
         for addr, data in dialog_data.items():
-            patch.add_data(addr, data)
+            patch.add_data(addr, data, source="overworld_dialogs")
         save_debug_bps("04_overworld_dialogs", dialog_data)
         progress += 3
 
@@ -1197,15 +1239,15 @@ class GameWorld:
         # so we must write to pointer_table_start, not start
         self._report_progress("Assembling action scripts...", progress)
         action_data = self.action_scripts.render()
-        patch.add_data(self.action_scripts.pointer_table_start, action_data)
+        patch.add_data(self.action_scripts.pointer_table_start, action_data, source="action_scripts")
         save_debug_bps("05_action_scripts", {self.action_scripts.pointer_table_start: action_data})
         progress += 3
 
         # Monster AI scripts (rendered before sprites to reclaim unused space)
         self._report_progress("Assembling monster AI scripts...", progress)
         monster_scripts = self.monster_scripts.render()
-        patch.add_data(self.monster_scripts.pointer_table_start, monster_scripts[0])
-        patch.add_data(self.monster_scripts.range_2_start, monster_scripts[1])
+        patch.add_data(self.monster_scripts.pointer_table_start, monster_scripts[0], source="monster_scripts")
+        patch.add_data(self.monster_scripts.range_2_start, monster_scripts[1], source="monster_scripts")
         save_debug_bps("06_monster_scripts", {
             self.monster_scripts.pointer_table_start: monster_scripts[0],
             self.monster_scripts.range_2_start: monster_scripts[1]
@@ -1271,7 +1313,7 @@ class GameWorld:
         self._report_progress("Assembling graphics...", progress)
         debug_sprites: dict[int, bytearray] = dict()
         for p in self.sprites.render():
-            patch.add_data(p[0], p[1])
+            patch.add_data(p[0], p[1], source="sprites")
             debug_sprites[p[0]] = p[1]
         save_debug_bps("07_sprites", debug_sprites)
         progress += 3
@@ -1319,7 +1361,7 @@ class GameWorld:
                 "allies",
             ]:
                 result = futures[key].result()
-                patch.add_dict(result)
+                patch.add_dict(result, source=key)
                 save_debug_bps(f"{debug_counter:02d}_{key}", result)
                 debug_counter += 1
                 progress += 2

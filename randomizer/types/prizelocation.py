@@ -2513,6 +2513,8 @@ class KeyItemLocation(PrizeLocation):
         ):
             return False
         else:
+            if not hasattr(prize, "_nickname") or (hasattr(prize, "_nickname") and prize._nickname is None): # type: ignore[attr-defined]
+                return False
             return super().can_accept(prize, inventory, world)
 
 

@@ -30,6 +30,7 @@ def create(
     seed: int | str,
     settings: Settings,
     progress_callback: Callable[[str, int], None] | None = None,
+    debug_bps_patches: bool = False,
 ) -> GameWorld:
     """Create a patch for the given seed.
 
@@ -41,6 +42,8 @@ def create(
         settings: The randomizer settings/flags.
         progress_callback: Optional callback for progress updates. Called with
             (message: str, percent: int) during generation.
+        debug_bps_patches: If True, generate separate BPS patches for each render
+            stage (only works in debug/development environment).
     """
     return GameWorld(
         seed,
@@ -68,5 +71,6 @@ def create(
         deepcopy(sprites),
         deepcopy(world_map_location_collection),
         progress_callback=progress_callback,
+        debug_bps_patches=debug_bps_patches,
     )
 
