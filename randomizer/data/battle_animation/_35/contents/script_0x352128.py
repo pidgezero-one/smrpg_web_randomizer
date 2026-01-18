@@ -181,7 +181,7 @@ script = AnimationScriptBlock(expected_size=725, expected_beginning=0x352128, sc
 	ClearAMEM8Bit(0x6F, identifier="command_0x3523D1"),
 	SetAMEM16BitToConst(0x60, 13),
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=0, destinations=["command_0x355F1D"]),
-	PauseScriptUntilAMEMBitsSet(0x6F, [0]),
+	PauseScriptUntilAMEMBitsSet(0x6F, [0], identifier="pause_until_6F.0_set"),
 	ReturnSubroutine(),
 	ClearAMEM8Bit(0x6F, identifier="command_0x3523DF"),
 	SetAMEM16BitToConst(0x60, 14),

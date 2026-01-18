@@ -1701,7 +1701,7 @@ class AbleJuiceItem(RegularItem):
     _prefix = ItemPrefix.CONSUMABLE
 
     _text_shop_menu = "Able Juice........"
-    _remake_text_shop_menu = "Cleansing Juice.."
+    _remake_text_shop_menu = "CleanseJuice...."
 
     _item_id: int = 103
     _description: str = " Heals status\n problems\n during battle"
@@ -1714,7 +1714,7 @@ class AbleJuiceItem(RegularItem):
     _one_side_only: bool = True
     _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
-    _remake_name = "CleansingJuice"
+    _remake_name = "CleanseJuice"
 
 class BracerItem(RegularItem):
     """Bracer item class"""
@@ -2031,7 +2031,7 @@ class MukuCookieItem(RegularItem):
     _prefix = ItemPrefix.DOT
 
     _text_shop_menu = "Muku Cookie......"
-    _remake_text_shop_menu = "ThropherCookie..."
+    _remake_text_shop_menu = "ThropherBite....."
 
     _item_id: int = 120
     _description: str = " Muku! Muku-\n muku! Muka?"
@@ -2045,7 +2045,7 @@ class MukuCookieItem(RegularItem):
     _one_side_only: bool = True
     _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
-    _remake_name = "ThropherCookie"
+    _remake_name = "ThropherBite"
 
 
 class ElixirItem(RegularItem):
@@ -2158,7 +2158,7 @@ class FreshenUpItem(RegularItem):
     _prefix = ItemPrefix.CONSUMABLE
 
     _text_shop_menu = "Freshen Up........"
-    _remake_text_shop_menu = "Party Cleanse....."
+    _remake_text_shop_menu = "PartyCleanse......"
 
     _item_id: int = 127
     _description: str = " Party is\n refreshed\n during battle"
@@ -2171,7 +2171,7 @@ class FreshenUpItem(RegularItem):
     _one_side_only: bool = True
     _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
-    _remake_name = "Party Cleanse"
+    _remake_name = "PartyCleanse"
 
 
 class RareFrogCoinItem(RegularItem):

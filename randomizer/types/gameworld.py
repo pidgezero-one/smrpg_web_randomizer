@@ -1387,7 +1387,7 @@ class GameWorld:
         patch.add_data(0x2BC95, [0xF0, 0xF8, 0x7F])
         patch.add_data(0x2BCA1, [0xF0, 0xF8, 0x7F])
         patch.add_data(0x2BCB6, [0xF0, 0xF8, 0x7F])
-        patch.add_data(0x353080, [0xF0, 0xF8, 0x7F])
+        patch.add_data(0x35308, [0xF0, 0xF8, 0x7F])
 
         if self.settings.isflag_enabled(ShowEquips):
             patch.add_data(0x033B6D, bytes([0x29, 0x1F, 0xEA]))
@@ -1410,7 +1410,7 @@ class GameWorld:
             ),
         )
         patch.add_data(
-            0x25DEE4,
+            0x258898,
             bytes.fromhex(
                 "FF 7F F5 7F EA 7F E0 7F 40 7F 80 7E E0 7D 20 7D 00 69 C0 58 A0 44 60 30 40 20 00 0C 00 00"
             ),

@@ -266,7 +266,7 @@ dialog_data[105] = ''' There may be some places you can
  after completing something else.[await][page]
  It's a good idea to revisit some
  areas from time to time.[await]'''
-dialog_data[106] = '''  The forest?[await][pause] Nah, that's more my
+dialog_data[106] = ''' The forest?[await][pause] Nah, that's more my
  dad's thing. I'm more of a volcano
  guy.[await][page]
  Did you know there's some sort-of
