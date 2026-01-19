@@ -71,6 +71,7 @@ from .ally import Ally
 from .prizelocation import (
     PrizeLocation,
 )
+from ..logic.partition_calculator import set_partitions
 from ..progression.prizelocations import *
 from ..data.variables.dialog_names import *
 from ..data.variables.battle_variable_names import *
@@ -1337,6 +1338,8 @@ class GameWorld:
             patch.add_data(0x3E90AA, GENO_OVERWORLD)
         elif self.overworld_character.ally.index == 4:
             patch.add_data(0x3E90AA, MALLOW_OVERWORLD)
+
+        set_partitions(self)
 
 
 
