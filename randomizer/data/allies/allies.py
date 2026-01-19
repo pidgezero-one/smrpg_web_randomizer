@@ -5,6 +5,7 @@ from smrpgpatchbuilder.datatypes.allies.ally_collection import AllyCollection
 from ..spells.spells import *
 from ..items.items import *
 from ...types.ally import Ally
+from ...types.room import ExtraSpriteActions
 
 MARIO_Ally = Ally(
     index=0,
@@ -438,7 +439,12 @@ MARIO_Ally = Ally(
         sprite_abxy_y=191,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192))
+        sprite_abxy_y_scarecrow=192),
+    _sprites_primary={
+        ExtraSpriteActions.DEFEND: (2, 16, True),
+        ExtraSpriteActions.SALUTE: (2, 9, False),
+        ExtraSpriteActions.CHALLENGE: (4, 2, False),
+    })
 
 TOADSTOOL_Ally = Ally(
     index=1,
@@ -870,7 +876,12 @@ TOADSTOOL_Ally = Ally(
         sprite_abxy_y=190,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192))
+        sprite_abxy_y_scarecrow=192),
+    _sprites_primary={
+        ExtraSpriteActions.DEFEND: (2, 15, True),
+        ExtraSpriteActions.SALUTE: (2, 9, False),
+        ExtraSpriteActions.CHALLENGE: (4, 5, False),
+    })
 
 BOWSER_Ally = Ally(
     index=2,
@@ -1304,7 +1315,12 @@ BOWSER_Ally = Ally(
         sprite_abxy_y=186,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192))
+        sprite_abxy_y_scarecrow=192),
+    _sprites_primary={
+        ExtraSpriteActions.DEFEND: (2, 17, True),
+        ExtraSpriteActions.SALUTE: (2, 9, False),
+        ExtraSpriteActions.CHALLENGE: (4, 4, False),
+    })
 
 GENO_Ally = Ally(
     index=3,
@@ -1738,7 +1754,12 @@ GENO_Ally = Ally(
         sprite_abxy_y=192,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192))
+        sprite_abxy_y_scarecrow=192),
+    _sprites_primary={
+        ExtraSpriteActions.DEFEND: (2, 16, True),
+        ExtraSpriteActions.SALUTE: (2, 9, False),
+        ExtraSpriteActions.CHALLENGE: (4, 0, False),
+    })
 
 MALLOW_Ally = Ally(
     index=4,
@@ -2172,7 +2193,12 @@ MALLOW_Ally = Ally(
         sprite_abxy_y=196,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192))
+        sprite_abxy_y_scarecrow=192),
+    _sprites_primary={
+        ExtraSpriteActions.DEFEND: (2, 15, True),
+        ExtraSpriteActions.SALUTE: (2, 9, False),
+        ExtraSpriteActions.CHALLENGE: (4, 5, False),
+    })
 
 ally_collection = AllyCollection(
     allies=[
