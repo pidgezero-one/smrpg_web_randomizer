@@ -12,8 +12,8 @@ class _item_npc_base(NPC):
     def __init__(
         self,
         sprite_id: int,
-        acute_axis: int = 1,
-        obtuse_axis: int = 1,
+        acute_axis: int = 3,
+        obtuse_axis: int = 3,
         height: int = 7,
         y_shift: int = 0,
         min_vram_size: int = 0,
@@ -36,7 +36,7 @@ GREEN_SHELL_BASE = _item_npc_base(
     SPR0250_GREEN_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
 MUSIC_BASE = _item_npc_base(SPR0640_MUSIC_NOTE_STANDALONE)
-CHOMP_BASE = _item_npc_base(SPR0210_CHOMP_PACKET, acute_axis=3, obtuse_axis=3, height=1)
+CHOMP_BASE = _item_npc_base(SPR0210_CHOMP_PACKET, acute_axis=3, obtuse_axis=3, height=3)
 RED_SHELL_BASE = _item_npc_base(
     SPR0249_RED_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
@@ -74,15 +74,15 @@ BLUE_MUSIC_DRINK_BASE = _item_npc_base(SPR0246_BLUE_MUSIC_DRINK)
 RED_MUSIC_DRINK_BASE = _item_npc_base(SPR0247_RED_MUSIC_DRINK)
 KEY_BASE = _item_npc_base(SPR0638_KEY_STANDALONE, y_shift=1)
 SMALL_COIN_BASE = _item_npc_base(
-    SPR0193_SMALL_COIN, height=1, y_shift=1, min_vram_size=1
+    SPR0193_SMALL_COIN, height=3, y_shift=1, min_vram_size=1
 )
 SMALL_FROG_COIN_BASE = _item_npc_base(
     SPR0606_SMALL_FROG_COIN,
     height=3,
     y_shift=1,
     min_vram_size=1,
-    acute_axis=2,
-    obtuse_axis=2,
+    acute_axis=3,
+    obtuse_axis=3,
 )
 BLUE_CANDY_BASE = _item_npc_base(SPR0218_BLUE_CANDY)
 MICROBOMB_BASE = _item_npc_base(SPR0205_MICROBOMB_PACKET, y_shift=1)
