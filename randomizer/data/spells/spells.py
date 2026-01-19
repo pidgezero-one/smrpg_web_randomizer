@@ -3035,8 +3035,7 @@ class MeteorSwarmSpell(EnemySpell):
 
 class Engine023Spell(EnemySpell):
     _index = 95
-    _title = "Engine 023"
-    _prefix = ItemPrefix.EMPTY_SPACE
+    _title = " Engine 023"
     _fp = 0
     _power = 0
     _hit_rate = 100
@@ -3336,8 +3335,7 @@ class DummySpell41(EnemySpell):
 
 class CakerBeamSpell(EnemySpell):
     _index = 108
-    _title = "Caker Beam"
-    _prefix = ItemPrefix.EMPTY_SPACE
+    _title = " Caker Beam"
     _fp = 0
     _power = 50
     _hit_rate = 100

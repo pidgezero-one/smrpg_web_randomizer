@@ -23,7 +23,7 @@ script = ActionScript([
 	A_Jmp(["ACTION_216_set_var_to_const_6"]),
 	A_SetWalkingSpeed(FAST),
 	A_SetVarToConst(PRIMARY_TEMP_700C, 3, identifier="ACTION_216_set_var_to_const_6"),
-	A_ShiftZUp20Steps(),
+	A_WalkF20Steps(),
 	A_JmpIfRandom1of2(["ACTION_216_jmp_if_bit_set_21"]),
 	A_JmpIfBitSet(TEMP_7043_0, ["ACTION_216_turn_clockwise_45_degrees_n_times_12"]),
 	A_TurnClockwise45DegreesNTimes(2),

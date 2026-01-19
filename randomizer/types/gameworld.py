@@ -909,6 +909,11 @@ class GameWorld:
         if self.settings.isflag_enabled(CharacterSpellStats):
             self._randomize_character_spell_stats()
 
+        # Apply debug mode max stats again after all character randomization
+        # (ensures debug stats override everything)
+        from ..logic.setup.debug import apply_debug_max_stats
+        apply_debug_max_stats(self)
+
         # Apply EXP multiplier
         self._apply_exp_multiplier()
 
@@ -950,6 +955,11 @@ class GameWorld:
     def _apply_shuffle_results(self):
         """Apply shuffle results to game data. Called after successful shuffle."""
         apply_shuffler_results_to_game_data(self)
+
+        # Apply debug mode overrides (must be after apply_shuffler_results_to_game_data)
+        from ..logic.setup.debug import apply_debug_max_stats
+        apply_debug_max_stats(self)
+
         # Note:
         # apply_shuffler_results_to_game_data is meant to look at the shuffler results and materialize them
         # by changing the NPC models in rooms, updating event scripts with boss animation replacements,

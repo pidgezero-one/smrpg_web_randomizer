@@ -23,6 +23,6 @@ script = ActionScript([
 	A_Pause(8),
 	A_SetVarToRandom(PRIMARY_TEMP_700C, 2, identifier="ACTION_402_set_var_to_random_5"),
 	A_Inc(PRIMARY_TEMP_700C),
-	A_ShiftZUp20Steps(),
+	A_WalkF20Steps(),
 	A_Jmp(["ACTION_402_jmp_if_random_above_128_2"])
 ])

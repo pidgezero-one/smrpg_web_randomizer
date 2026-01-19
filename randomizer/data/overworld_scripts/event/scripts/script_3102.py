@@ -32,6 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitSet(MUSHROOM_KINGDOM_LIBERATED, ["3102_normal_exit"]),
+    JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["3102_normal_exit"]),
     EnterArea(R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, SOUTHEAST, 5, 92, 4, False, False, True),
     Return(),
     EnterArea(R191_MUSHROOM_KINGDOM_OUTSIDE, SOUTHEAST, 5, 92, 4, False, False, True, identifier="3102_normal_exit"),

@@ -98,7 +98,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got\n distracted again when he heard\n Claymorton was around.[await]")
         world.overworld_dialogs.search_and_replace_in_all_dialogs("FROGFUCIUS", "FROG SAGE")
 
-    for location in world.locations:
+    for location in world.locations.values():
         if isinstance(location, BossFightLocation) and isinstance(location.prize, BossFightPrize):
             dialogs = location.prize.get_dialog_replacements(
                 remake=world.settings.isflag_enabled(RemakeNames),
@@ -106,8 +106,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
                 mandatory_fights_changed=not world.settings.isflag_enabled(KeepMinigameSpritesIntact),
                 peach=world.settings.isflag_enabled(Peach)
                 )
-            print(location._dialogs_expecting_replacement)
-            print(dialogs)
             for dialog_id in location._dialogs_expecting_replacement:
                 if dialog_id in dialogs:
                     world.update_dialog(dialog_id, dialogs[dialog_id])

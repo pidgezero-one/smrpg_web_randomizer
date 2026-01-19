@@ -34,7 +34,7 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0002_MUSHROOMKINGDOM,
-    entrance_event=E0341_EMPTY,
+    entrance_event=E0257_FADE_IN_ASYNC,
     events=[
         Event(
             event=E0349_MUSHROOM_KINGDOM_ANTECHAMBER_EXIT,

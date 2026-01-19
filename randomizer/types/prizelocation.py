@@ -1274,7 +1274,7 @@ class TreasureChestLocation(StandardPrizeLocation):
         for npc, room in zip(self._npc_ids, self._rooms):
             # If npc is already an AreaObject, use it directly; otherwise convert from raw index
             ao = npc if isinstance(npc, AreaObject) else AreaObject(npc + 14)
-            itemgrant.append(DisableObjectTriggerInSpecificLevel(ao, room))
+            itemgrant.insert(0, DisableObjectTriggerInSpecificLevel(ao, room))
         return EventScript(itemgrant)
 
     def render(self, world: GameWorld) -> None:

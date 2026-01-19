@@ -236,7 +236,7 @@ room = Room(
         RegularNPC( # 3
             npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
-            event_script=E0293_UNUSED,
+            event_script=E0395_WALLET_TOAD_2,
             action_script=A0021_STAND_STILL_AND_MOVE_RANDOM_DIRECTIONS,
             visible=True,
             x=9,

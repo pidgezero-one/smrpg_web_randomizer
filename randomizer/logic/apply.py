@@ -364,21 +364,29 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         elif isinstance(place, CharacterRecruitmentLocation):
             # this takes care of everything for character gating and recruitment
             place.render(world)
-        for key, (decision, execution) in builders.items():
-            event_script = world.event_scripts.get_script_by_id(key)
-            contents: list[UsableEventScriptCommand] = []
-            if key == E0167_BOSS_GRANT_STAR_PIECE:
-                contents.extend(
-                    [
-                        ClearBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
-                        ClearBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT_2),
-                        Inc(BOSS_VICTORY_COUNTER),
-                    ]
-                )
-            contents.extend([*decision, Return(), *execution])
-            event_script.set_contents(contents)
 
-    
+    # Sort builders by room_id of the first JmpIfVarEqualsConst in decision list
+    def get_sort_key(item):
+        key, (decision, execution) = item
+        if decision and isinstance(decision[0], JmpIfVarEqualsConst):
+            return int(decision[0].value)
+        return 0  # Default for items without JmpIfVarEqualsConst
+
+    for key, (decision, execution) in sorted(builders.items(), key=get_sort_key):
+        event_script = world.event_scripts.get_script_by_id(key)
+        contents: list[UsableEventScriptCommand] = []
+        if key == E0167_BOSS_GRANT_STAR_PIECE:
+            contents.extend(
+                [
+                    ClearBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
+                    ClearBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT_2),
+                    Inc(BOSS_VICTORY_COUNTER),
+                ]
+            )
+        contents.extend([*decision, Return(), *execution])
+        event_script.set_contents(contents)
+
+
 
     # Booster Tower gating animation
     # On paper this could go into setup/gating.py, but script insertion depends on who the starting character is, which can be random
@@ -451,6 +459,22 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
 
     # Apply boss stat scaling after all prizes are set
     apply_boss_stat_scaling(world)
+
+    # Add formation check to Torte's AI script for Bundt fight
+    from ..progression.prizes import BundtBossFight
+    from smrpgpatchbuilder.datatypes.monster_scripts.commands import IfCurrentlyInFormationID
+
+    # Find where BundtBossFight has been shuffled to
+    bundt_formation_id = None
+    for location in world.locations.values():
+        if isinstance(location, BossFightLocation) and isinstance(location.prize, BundtBossFight):
+            bundt_formation_id = location.pack_id
+            break
+
+    # If BundtBossFight is placed, add formation check to Torte's AI (monster ID 142)
+    if bundt_formation_id is not None:
+        torte_script = world.monster_scripts.scripts[142]
+        torte_script.insert_before_nth_command(0, IfCurrentlyInFormationID(bundt_formation_id))
 
     # put the right character clone in the sunken ship mirror room
     # and also sub character sprites in overworld where appropriate

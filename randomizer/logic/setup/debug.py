@@ -36,3 +36,19 @@ def apply_debug_start_items(world: GameWorld) -> None:
 
     script = world.event_scripts.get_script_by_id(E3840_STARTER_DEBUG_ITEMS)
     script.set_contents(commands)
+
+
+def apply_debug_max_stats(world: GameWorld) -> None:
+    """Max out all character starting stats if debug mode is enabled."""
+    if not world.settings.debug_mode:
+        return
+
+    # Max out starting stats for all allies
+    for ally in world.allies._allies:
+        ally.starting_max_hp = 999
+        ally.starting_current_hp = 999
+        ally.starting_attack = 255
+        ally.starting_defense = 255
+        ally.starting_mg_attack = 255
+        ally.starting_mg_defense = 255
+        ally.starting_speed = 255

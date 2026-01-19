@@ -33,7 +33,7 @@ from ....packets import *
 script = EventScript([
 	PauseActionScript(NPC_0),
 	RunDialog(dialog_id=DI1095_MOLEVILLE_NPC_BEFORE_CLEAR, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["EVENT_1619_jmp_if_bit_set_4"]),
+	JmpIfBitClear(MOLEVILLE_MINES_ENTRANCE_GATING, ["EVENT_1619_jmp_if_bit_set_4"]),
 	RunDialog(dialog_id=DI1051_MOLEVILLE_CLOSED, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	JmpIfBitSet(MOLE_DESCENDED, ["EVENT_1619_resume_action_script_17"], identifier="EVENT_1619_jmp_if_bit_set_4"),
 	ActionQueueSync(target=NPC_1, subscript=[

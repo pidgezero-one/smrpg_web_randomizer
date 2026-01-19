@@ -37,17 +37,6 @@ room = Room(
     entrance_event=E0320_MUSHROOM_KINGDOM_MAIN_HALL_LOADER,
     events=[
         Event(
-            event=E0343_EMPTY,
-            x=10,
-            y=18,
-            z=2,
-            f=EdgeDirection.SOUTHWEST,
-            height=0,
-            length=2,
-            nw_se_edge_active=True,
-            ne_sw_edge_active=True,
-            byte_8_bit_4=False),
-        Event(
             event=E3105_ENTER_MK_STAIRCASE,
             x=3,
             y=22,

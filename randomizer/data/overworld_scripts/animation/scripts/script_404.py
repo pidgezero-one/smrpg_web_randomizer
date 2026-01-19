@@ -24,7 +24,7 @@ script = ActionScript([
 	A_Pause(8),
 	A_SetVarToRandom(PRIMARY_TEMP_700C, 2),
 	A_Inc(PRIMARY_TEMP_700C),
-	A_ShiftZUp20Steps(),
+	A_WalkF20Steps(),
 	A_Jmp(["ACTION_404_jmp_if_random_above_66_2"]),
 	A_JmpIfRandom1of2(["ACTION_404_set_animation_speed_13"], identifier="ACTION_404_jmp_if_random_above_128_10"),
 	A_TurnRandomDirection(),
@@ -32,6 +32,6 @@ script = ActionScript([
 	A_SetWalkingSpeed(SLOW, identifier="ACTION_404_set_animation_speed_13"),
 	A_SetVarToRandom(PRIMARY_TEMP_700C, 2),
 	A_Inc(PRIMARY_TEMP_700C),
-	A_ShiftZUp20Steps(),
+	A_WalkF20Steps(),
 	A_Jmp(["ACTION_404_jmp_if_random_above_66_2"])
 ])

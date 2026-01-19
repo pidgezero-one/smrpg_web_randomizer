@@ -2,19 +2,19 @@
   "version": "9.0.0",
   "flags": "A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:yaridovich|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor) B(rboss) C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap) E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp) F(skips|nowhirl|nobigbang|noko) G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng) I(replace|fake|xpstar:bosses|fix_kg) L(keys_anywhere|stars_anywhere|moveflags|postgame) O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel) P(rchars) Q(perms:vanilla_accessories_all|props:some|hints) S(rshops|biasshops|showperms) T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|fireworks:progressive) X(rstars|proglogic:hard|disperse)",
   
-  - blue toad in inn and outside have same dialog. Does not initiate wallet guy dialog
+- shyster in mushroom kingdom castle is there before its been occupied, also isn’t the right enemy (should be a torte). Engaging in battle skips the battle completely
+- torte is untargetable in battle
+
+- pickable items need to be 3x3 x y minimum
+- door under chest is broken in mushroom kingdom main hall
 - progressive egg in shop basement doesn’t work
 - sprites are broken, mallow crashes game
 - note in raz/rainis house does not show up
-- exiting toad family house converts mk into occupied
-- shyster in mushroom kingdom castle is there before its been occupied, also isn’t the right enemy (should be a torte). Engaging in battle skips the battle completely
-- torte is untargetable in battle
 - battle crashes when you attack carroboscis
-    - mario doesnt move back to his spot. crash is probably related to torte
+  - mario doesnt move back to his spot. crash is probably related to torte
 - slot graphics don’t work
 - fireworks is not a key item when it should be
 - mushroom kingdom door under the treasure chest is broken, forces toad to start moving
-- one of the toads in front of the throne room is animated incorrectly
 - kero sewers is not blocked
 - rose way block palettes are wrong
 - can’t pick up the prizes in rose way, positioned incorrectly
@@ -28,9 +28,7 @@
 - sotrt items by id
 - male mole sprite broken
 - pa mole in house and mines?
-- there’s no moleville entrance hint
 - booster hill is a softlock
-- booster pass spineys do not work, movement broken, same with birds in bean valley, same with one nimbus house guy and one in the exterior
 - item pickups dont work in general. booster pass flower
 - mack in seaside: shysters sdon’t have new dalogs?
 - seaside frog placement not working, everything is still full prize
