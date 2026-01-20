@@ -22,7 +22,6 @@ Buffer types:
 from __future__ import annotations
 
 import copy
-from enum import auto
 from math import ceil
 from typing import TYPE_CHECKING
 from ..data.variables.sprite_names import *
@@ -36,6 +35,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     RegularNPC,
     ChestNPC,
     RegularClone,
+    ChestClone,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (
     A_SetSpriteSequence as SetSpriteSequence,
@@ -48,7 +48,7 @@ from ..types.ally import SpriteAnimationState, Ally
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
-    from smrpgpatchbuilder.datatypes.levels.classes import BaseRoomObject
+    from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Clone
     from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite
 
 
@@ -125,13 +125,6 @@ DEFAULT_ANIMATION_STATES = [
 ]
 
 
-class AmbiguousCoin:
-    """Enum-like class for tracking coin chest states."""
-    none = auto()
-    one = auto()
-    multi = auto()
-
-
 def list_unique(arr: list) -> list:
     """Return list with duplicates removed while preserving order."""
     seen = set()
@@ -157,9 +150,6 @@ SPECIAL_CASE_ROOMS = [37, 57, 70, 71, 72, 73, 79, 205, 230, 232, 233, 236, 463, 
 # 205 - complicated spiney sequence
 # 463, 466 - barrel count room and logic problem room need this for some reason
 
-REQUIRES_COIN_BUFFER = [242]
-# 301 - breaks chest sprites if you use extra sprite buffer for coins
-
 ALWAYS_REQUIRES_COIN_BUFFER = [71, 72, 73]
 
 # Rooms that always need triple empty + extra sprite buffer size 1
@@ -167,6 +157,13 @@ TRIPLE_EMPTY_EX1_ROOMS = [376, 377, 459, 460, 461, 462, 202]
 
 # Rooms that always need triple empty + extra sprite buffer size 0
 TRIPLE_EMPTY_EX0_ROOMS = [192]
+
+# Rooms where chests are close enough together that extra_sprite_buffer_size needs to be 2+
+# (player can open multiple chests before packet sprites despawn)
+CLOSE_CHEST_ROOMS = {
+    234: 2,  # Forest Maze Secret - 5 floating chests in tight cluster
+    453: 2,  # Bowser's Keep - chests close together
+}
 
 
 def _create_empty_partition(ally_buffer: int, allow_extra: bool = True, extra_size: int = 1) -> Partition:
@@ -196,14 +193,14 @@ def _get_complete_sprite(world: GameWorld, sprite_id: int):
         return None
 
 
-def _get_npc_sprite_id(obj: BaseRoomObject) -> int:
+def _get_npc_sprite_id(obj: RoomObject | Clone) -> int:
     """Extract sprite ID from a room object."""
-    return int(obj.npc.sprite_id)
+    return int(obj._npc.sprite_id)
 
 
-def _npc_cannot_clone(obj: BaseRoomObject) -> bool:
+def _npc_cannot_clone(obj: RoomObject | Clone) -> bool:
     """Check if an NPC cannot be cloned."""
-    return bool(obj.npc.cannot_clone)
+    return bool(obj._npc.cannot_clone)
 
 
 def _get_room_objects_with_clones(room) -> list:
@@ -350,7 +347,7 @@ def _min_vram_from_event_script(
 
 def _calculate_npc_min_vram(
     world: GameWorld,
-    obj: BaseRoomObject,
+    obj: RoomObject | Clone,
     obj_index: int
 ) -> int:
     """Calculate the min VRAM size an NPC needs based on its scripts.
@@ -360,7 +357,7 @@ def _calculate_npc_min_vram(
     the NPC is expected to perform.
     """
     sprite_id = _get_npc_sprite_id(obj)
-    min_vram = int(obj.npc.min_vram_size)
+    min_vram = int(obj._npc.min_vram_size)
 
     # Check action script
     action_script_id = int(obj.action_script)
@@ -398,11 +395,11 @@ def update_npc_vram_sizes(world: GameWorld) -> None:
 
         for obj_index, obj in enumerate(room.objects):
             calculated_vram = _calculate_npc_min_vram(world, obj, obj_index)
-            current_vram = int(obj.npc.min_vram_size)
+            current_vram = int(obj._npc.min_vram_size)
 
             if calculated_vram > current_vram:
                 # Update the NPC's min_vram_size
-                obj.npc._min_vram_size = calculated_vram
+                obj._npc._min_vram_size = calculated_vram
 
 
 # =============================================================================
@@ -485,28 +482,10 @@ def set_partitions(world: GameWorld) -> None:
     # First, update NPC VRAM sizes based on their expected animations
     update_npc_vram_sizes(world)
 
-    # Identify rooms with special item types
-    pandorite_rooms = []
-    hidon_rooms = []
-
-    # Check chest locations for special boss fights
-    from ..data.items.items import PandoriteFight, HidonFight
-
-    for loc in world.chest_locations:
-        if loc.prize is not None:
-            prize_type = type(loc.prize)
-            # Check if prize item is a special fight
-            if hasattr(loc.prize, 'item') and loc.prize.item is not None:
-                item_type = type(loc.prize.item) if not isinstance(loc.prize.item, type) else loc.prize.item
-                if item_type == PandoriteFight:
-                    pandorite_rooms.extend(getattr(loc, 'rooms', []))
-                elif item_type == HidonFight:
-                    hidon_rooms.extend(getattr(loc, 'rooms', []))
-
     # Get the overworld character for ally buffer calculation
     # The ally buffer is calculated per-room based on what animations
     # the character might need to perform (from room's extra_sprite_actions)
-    overworld_ally = world.overworld_character
+    overworld_ally = world.overworld_character.ally
 
     # Process each room
     for room_index in range(512):
@@ -570,31 +549,26 @@ def set_partitions(world: GameWorld) -> None:
             if room_index in SPECIAL_CASE_ROOMS:
                 priority_buffers.append(BufferType.EMPTY_3)
 
-            ambiguous_coin_chest = AmbiguousCoin.none
-            has_conundrum_clones = False
-
-            # Check for un-cloneable NPCs with clones
+            # Count non-coin ChestNPC objects in the room
+            # When items pop out of chests (mushrooms, flowers, etc.), they need extra sprite buffer
+            # Coin-only chests don't need this as coins use a different buffer type
+            has_non_coin_chest = False
             for obj in room.objects:
-                if _npc_cannot_clone(obj) and hasattr(obj, 'clones') and obj.clones:
-                    has_conundrum_clones = True
+                if isinstance(obj, (ChestNPC, ChestClone)):
+                    sprite_id = _get_npc_sprite_id(obj)
+                    # If the chest sprite is the regular treasure chest (not a coin), count it
+                    if sprite_id == SPR0094_TREASURE_CHEST:
+                        has_non_coin_chest = True
+                        break
 
-            # Consider chest contents and packets
-            for loc in world.chest_locations:
-                loc_rooms = getattr(loc, 'rooms', [])
-                # Check if this location applies to the current room
-                if room_index in loc_rooms or (512 in loc_rooms and room_index in pandorite_rooms) or (513 in loc_rooms and room_index in hidon_rooms):
-                    # Check if location uses packets
-                    if hasattr(loc, 'uses_packet') and loc.uses_packet:
-                        packet_size += 1
-
-                    # Check prize type for coin handling
-                    if loc.prize is not None:
-                        prize = loc.prize
-                        # Determine if this is a coin-type reward that needs special buffer
-                        # This is a simplified check - the full logic would need to match
-                        # the complex item type checking from the old code
-                        if hasattr(prize, 'is_coin_type') and prize.is_coin_type:
-                            ambiguous_coin_chest = AmbiguousCoin.multi
+            # Set extra sprite buffer for chest items
+            # Most rooms only need buffer=1 for chest packet sprites
+            # Specific rooms with closely-spaced chests need higher values (defined in CLOSE_CHEST_ROOMS)
+            if has_non_coin_chest:
+                if room_index in CLOSE_CHEST_ROOMS:
+                    packet_size = max(packet_size, CLOSE_CHEST_ROOMS[room_index])
+                else:
+                    packet_size = max(packet_size, 1)
 
             # Process NPCs for buffer requirements
             last_sprite = -1
@@ -636,8 +610,11 @@ def set_partitions(world: GameWorld) -> None:
                             priority_buffers.append(BufferType.EMPTY_3)
                         elif mold.tiles and len(mold.tiles) > 0:
                             tile = mold.tiles[0]
-                            if hasattr(tile, 'format'):
-                                if tile.format <= 1:
+                            # Tile has format attribute, Clone does not
+                            # Use getattr to safely access format (returns -1 for Clone)
+                            tile_format = getattr(tile, 'format', -1)
+                            if tile_format >= 0:
+                                if tile_format <= 1:
                                     buf = BufferType.FOUR_SPRITES_PER_ROW
                                 else:
                                     buf = BufferType.THREE_SPRITES_PER_ROW
@@ -667,13 +644,6 @@ def set_partitions(world: GameWorld) -> None:
             if room_index in ALWAYS_REQUIRES_COIN_BUFFER:
                 if BufferType.COINS not in packet_buffers:
                     packet_buffers.append(BufferType.COINS)
-            elif ambiguous_coin_chest != AmbiguousCoin.none:
-                if has_conundrum_clones or room_index in REQUIRES_COIN_BUFFER:
-                    packet_buffers.append(BufferType.COINS)
-                elif ambiguous_coin_chest == AmbiguousCoin.multi:
-                    packet_size = max(4, packet_size)
-                elif ambiguous_coin_chest == AmbiguousCoin.one:
-                    packet_size = max(2, packet_size)
 
             # Avoid duplicate coin buffers
             if BufferType.COINS in priority_buffers and BufferType.COINS in packet_buffers:
@@ -712,6 +682,7 @@ def set_partitions(world: GameWorld) -> None:
             partition_buffers = partition.buffers
             found = False
             for i, buf_type in enumerate(final_buffers):
+                assert buf_type is not None  # Guaranteed by the None-filling loop above
                 partition_buffers[i].set_buffer_type(buf_type)
                 # Try to preserve original buffer space settings if they match
                 if original_partition_copy is not None and not found:
