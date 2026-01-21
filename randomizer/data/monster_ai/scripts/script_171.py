@@ -21,13 +21,6 @@ script = MonsterScript([
 	Attack(Attack3, IronMaidenAttack, Attack27),
 	StartCounterCommands(),
 	IfHPBelow(0),
-	IfCurrentlyInFormationID(357),
-	ClearVar(BV7EE000),
-	SetTargetable(MONSTER_1_SET),
-	RunObjectSequence(3),
-	RemoveTarget(SELF),
-	Wait1TurnandRestartScript(),
-	IfHPBelow(0),
 	RunObjectSequence(3),
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript()

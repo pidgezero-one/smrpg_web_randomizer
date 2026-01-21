@@ -15,7 +15,7 @@ from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 script = MonsterScript([
 	Attack(Attack1, SkewerAttack, Attack1),
 	StartCounterCommands(),
-	IfCurrentlyInFormationID(361),
+	IfCurrentlyInFormationID(320),
 	IfTargetKOed(AT_LEAST_ONE_ALLY),
 	IncreaseVarBy1(BV7EE007),
 	IfVarEqualOrGreaterThan(BV7EE007, 4),

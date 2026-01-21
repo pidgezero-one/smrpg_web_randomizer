@@ -15,7 +15,6 @@ from ..types.prizelocation import (
     BossFightLocation,
     PrizeRow,
     StarPieceLocation,
-    SpellSlotLocation,
     PacketLocation,
     StandingLocation,
     EventLocation,
@@ -23,7 +22,8 @@ from ..types.prizelocation import (
     TreasureChestLocationRow,
     BoosterHillLocation,
     CharacterRecruitmentLocation,
-    TreasureShopLocation
+    TreasureShopLocation,
+    ROOM_TO_BATTLEFIELD
 )
 from ..types.flags import BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
@@ -39,6 +39,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     JmpIfVarEqualsConst,
     SetVarToConst,
     StartBattleWithPackAt700E,
+    StartBattleAtBattlefield,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
     AreaObject,
@@ -275,8 +276,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room_id, [identifier])
                     )
                     builders[E1189_HENCHMAN_BATTLE_PACK_SELECTOR][1].extend([
-                        SetVarToConst(BATTLE_PACK_ID, pack_id, identifier=identifier),
-                        StartBattleWithPackAt700E(),
+                        StartBattleAtBattlefield(pack_id, ROOM_TO_BATTLEFIELD[room_id], identifier=identifier),
                         Return(),
                     ])
             elif isinstance(place, TreasureChestLocationRow):
@@ -459,22 +459,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
 
     # Apply boss stat scaling after all prizes are set
     apply_boss_stat_scaling(world)
-
-    # Add formation check to Torte's AI script for Bundt fight
-    from ..progression.prizes import BundtBossFight
-    from smrpgpatchbuilder.datatypes.monster_scripts.commands import IfCurrentlyInFormationID
-
-    # Find where BundtBossFight has been shuffled to
-    bundt_formation_id = None
-    for location in world.locations.values():
-        if isinstance(location, BossFightLocation) and isinstance(location.prize, BundtBossFight):
-            bundt_formation_id = location.pack_id
-            break
-
-    # If BundtBossFight is placed, add formation check to Torte's AI (monster ID 142)
-    if bundt_formation_id is not None:
-        torte_script = world.monster_scripts.scripts[142]
-        torte_script.insert_before_nth_command(0, IfCurrentlyInFormationID(bundt_formation_id))
 
     # put the right character clone in the sunken ship mirror room
     # and also sub character sprites in overworld where appropriate

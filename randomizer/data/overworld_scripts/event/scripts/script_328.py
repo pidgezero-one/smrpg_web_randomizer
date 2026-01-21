@@ -1,4 +1,4 @@
-# E0328_EMPTY
+# E0328_DETECT_MAIN_HALL_DOOR_OPENED
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,10 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-
+    JmpIfBitSet(TEMP_7042_6, ["script_325_clear"]),
+    SetBit(TEMP_7042_6),
+    JmpIfBitClear(TEMP_7042_7, ["script_325_clear"]),
+    ApplyTileModToLevel(use_alternate=True, room_id=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, mod_id=0),
+    PlaySound(SO016_OPEN_DOOR, channel=6),
+	Return(identifier="script_325_clear")
 ])

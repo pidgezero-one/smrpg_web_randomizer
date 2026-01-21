@@ -1223,6 +1223,13 @@ class GameWorld:
             )
         save_debug_bps("02_palettes", debug_palettes)
 
+
+        # Finalize startup script
+        world.event_2496_startup += [Return()]
+        world.event_scripts.get_script_by_id(
+            E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
+        ).set_contents(world.event_2496_startup)
+
         # ========================================================================
         # Render scripts and dialogs FIRST to reclaim unused space for animations
         # ========================================================================

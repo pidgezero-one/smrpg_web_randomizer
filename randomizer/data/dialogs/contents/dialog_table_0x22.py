@@ -1661,5 +1661,6 @@ dialog_data[553] = '''DR. TOPPER: Wrong! TOO BAD!
  [end]'''
 dialog_data[554] = '''
  And that's the way it was![await]'''
-dialog_data[556] = ''' Try coming back when we're on our\n lunch break.[await] ...[delay]That is, if we ever\n get one.[await]'''
-dialog_data[555] = '''[await]'''
+dialog_data[555] = ''' Try coming back when we're on our\n lunch break.[await] ...[delay]That is, if we ever\n get one.[await]'''
+dialog_data[556] = '''\n   Don't bother me! I'm on a break.[await]'''
+dialog_data[557] = '''[await]'''

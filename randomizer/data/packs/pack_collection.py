@@ -3864,8 +3864,6 @@ FORM0341 = Formation(
 FORM0342 = Formation(
     id=342,
     members=[
-        FormationMember(CHESTEREnemy, 183, 127),
-        FormationMember(BAHAMUTTEnemy, 135, 119, hidden_at_start=True),
     ],
     music=NormalBattleMusic(),
     can_run_away=False,

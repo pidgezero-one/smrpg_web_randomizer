@@ -1,4 +1,4 @@
-# E0324_EMPTY
+# E0324_KINGDOM_MAIN_HALL_FLIP_VERANDA
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,10 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-
+    Pause(1, identifier="loop_mk_hall_mod"),
+    JmpIfMarioOnObject(NPC_0, ["enable_upper_level"]),
+    Jmp(["loop_mk_hall_mod"]),
+    SetBit(TEMP_7042_7, identifier="enable_upper_level"),
+	ApplySolidityModToLevel(permanent=True, room_id=R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, mod_id=0),
+    Jmp(["loop_mk_hall_mod"]),
 ])

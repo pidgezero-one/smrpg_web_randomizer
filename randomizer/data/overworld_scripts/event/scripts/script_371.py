@@ -34,7 +34,10 @@ script = EventScript([
 	Set0158Bit7Offset(0x015C),
 	Set0158Bit7Offset(0x015E),
 	RunBackgroundEvent(event_id=E0377_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_REPEATING_SHYSTERS_POSITION, return_on_level_exit=True, bit_6=True),
+    RunBackgroundEvent(event_id=E0329_KINGDOM_MAIN_HALL_FLIP_UPPER, return_on_level_exit=True),
 	RunEventAsSubroutine(E0765_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHUFFLED_NPC_ANIMATION_LOADER),
+	ClearBit(TEMP_7042_7),
+	ClearBit(TEMP_7042_6),
 	FadeInFromBlack(sync=False),
 	Return()
 ])

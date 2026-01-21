@@ -13,6 +13,7 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
+    IfCurrentlyInFormationID(286),
 	IfVarBitsClear(BV7EE001, [0]),
 	SetVarBits(BV7EE001, [0]),
 	IfTargetAlive(MONSTER_2_SET),

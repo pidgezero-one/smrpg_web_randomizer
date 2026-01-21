@@ -926,6 +926,14 @@ class MushroomKingdomBossFight(BossFightLocation):
         ),
         BossFightLocationHenchmanNPC(
             [
+                R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
+            ],
+            [
+                NPC_3,
+            ],
+        ),
+        BossFightLocationHenchmanNPC(
+            [
                 R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
                 R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
                 R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,

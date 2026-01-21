@@ -4,17 +4,16 @@
   
 - shyster in mushroom kingdom castle is there before its been occupied, also isn’t the right enemy (should be a torte). Engaging in battle skips the battle completely
 - torte is untargetable in battle
-
 - pickable items need to be 3x3 x y minimum
-- door under chest is broken in mushroom kingdom main hall
 - progressive egg in shop basement doesn’t work
-- sprites are broken, mallow crashes game
-- note in raz/rainis house does not show up
+- door under chest is broken in mushroom kingdom main hall
 - battle crashes when you attack carroboscis
   - mario doesnt move back to his spot. crash is probably related to torte
 - slot graphics don’t work
 - fireworks is not a key item when it should be
 - mushroom kingdom door under the treasure chest is broken, forces toad to start moving
+
+- note in raz/rainis house does not show up
 - kero sewers is not blocked
 - rose way block palettes are wrong
 - can’t pick up the prizes in rose way, positioned incorrectly

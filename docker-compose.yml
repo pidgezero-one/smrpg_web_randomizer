@@ -5,7 +5,6 @@ services:
     volumes:
       - ./:/usr/src/app/
       - /etc/localtime:/etc/localtime:ro
-      - /home/pidge/code/smrpgpatchbuilder:/usr/src/smrpgpatchbuilder
     ports:
       - 8000:8000
     env_file:

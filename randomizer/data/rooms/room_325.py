@@ -1,41 +1,81 @@
 # R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    ObjectType,
+    EventInitiator,
+    PostBattleBehaviour,
+    Direction,
+    EdgeDirection,
+    ExitType,
+    BufferType,
+    BufferSpace,
+    VramStore,
+    ShadowSize,
+)
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    Buffer,
+    Partition,
+    DestinationProps,
+    RoomExit,
+    MapExit,
+    Event,
+    BattlePackNPC,
+    RegularNPC,
+    ChestNPC,
+    BattlePackClone,
+    RegularClone,
+    ChestClone,
+)
 from ...types.room import Room, ExtraSpriteActions
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *
 from ..variables.music_names import *
 from ..variables.event_script_names import *
 from ..variables.action_script_names import *
+
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
-        buffers = [
+        buffers=[
             Buffer(
                 buffer_type=BufferType.TREASURE_CHEST,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.COINS,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
-            )
+                index_in_main_buffer=True,
+            ),
         ],
-        full_palette_buffer=True
+        full_palette_buffer=True,
     ),
     music=M0015_HERE_SSOMEWEAPONS,
     entrance_event=E0371_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_LOADER,
+    events=[
+        Event(
+            event=E0328_DETECT_MAIN_HALL_DOOR_OPENED,
+            x=10,
+            y=18,
+            z=2,
+            f=EdgeDirection.SOUTHWEST,
+            length=2,
+            height=2,
+            nw_se_edge_active=True,
+            ne_sw_edge_active=True,
+            byte_8_bit_4=False,
+        ),
+    ],
     exits=[
         RoomExit(
             x=1,
@@ -54,7 +94,8 @@ room = Room(
             dst_z=9,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=10,
             y=17,
@@ -72,7 +113,8 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=3,
             y=22,
@@ -90,7 +132,8 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=8,
             y=32,
@@ -108,10 +151,11 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
     ],
     objects=[
-        RegularNPC( # 0
+        RegularNPC(  # 0
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0412_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_REPEATING_SHYSTERS,
@@ -137,8 +181,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 1
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 1
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E1276_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_HENCHMAN,
@@ -164,8 +209,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 2
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 2
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E1275_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_HENCHMAN,
@@ -191,13 +237,13 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        BattlePackNPC( # 3
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 3
             npc=npcs.SHYSTER_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            after_battle=PostBattleBehaviour.REMOVE_PERMANENTLY,
-            battle_pack=10,
-            action_script=A0109_MK_HALL_REPEATING_HENCHMEN_STARTING,
+            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            event_script=E0350_KINGDOM_HALLWAY_SHYGUY,
+            action_script=A0015_DO_NOTHING,
             visible=True,
             x=9,
             y=19,
@@ -219,8 +265,12 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 4
+            byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
+        ),
+        RegularNPC(  # 4
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0378_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHYSTER_CHASING_TOAD,
@@ -246,8 +296,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 5
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 5
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0318_MUSHROOM_KINGDOM_OCCUPIED_CASTLE_TOAD,
@@ -273,8 +324,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        ChestNPC( # 6
+            byte7_upper2=3,
+        ),
+        ChestNPC(  # 6
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
             event_script=E3477_KINGDOM_HALLWAY_CHEST,
@@ -302,6 +354,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-    ]
+            byte7_upper2=3,
+        ),
+    ],
 )

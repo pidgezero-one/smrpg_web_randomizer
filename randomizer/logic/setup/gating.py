@@ -371,11 +371,6 @@ def apply_gating_settings(world: GameWorld) -> None:
             DI3726_KEEP_ACCESS_HINT,
             """ I heard there was a big factory\n behind it. Is that true?[await][pause] I bet Exor\n would know, if you run into him![await]""")
 
-    # Finalize startup script
-    world.event_2496_startup += [Return()]
-    world.event_scripts.get_script_by_id(
-        E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
-    ).set_contents(world.event_2496_startup)
 
     # Apply debug starting items if debug mode is enabled
     from .debug import apply_debug_start_items

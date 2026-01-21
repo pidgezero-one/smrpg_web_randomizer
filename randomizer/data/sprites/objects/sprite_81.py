@@ -15,64 +15,11 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
                     ]
                 ),
-                Mold(1, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(3, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(4, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(5, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(6, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(7, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(8, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(9, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(10, gridplane=False,
-                    tiles=[]
-                ),
-                Mold(11, gridplane=True,
-                    tiles=[]
-                ),
             ],
             sequences=[
                 AnimationSequence(
                     frames=[
                         AnimationSequenceFrame(duration=2, mold_id=0),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[]
-                ),
-                AnimationSequence(
-                    frames=[]
-                ),
-                AnimationSequence(
-                    frames=[]
-                ),
-                AnimationSequence(
-                    frames=[]
-                ),
-                AnimationSequence(
-                    frames=[]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=11),
                     ]
                 ),
             ]
