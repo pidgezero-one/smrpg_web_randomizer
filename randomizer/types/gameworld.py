@@ -6,6 +6,8 @@ import re
 from copy import copy
 from concurrent.futures import ThreadPoolExecutor
 
+#
+
 from randomizer.data.sprites.overworld_map import BOWSER_OVERWORLD, GENO_OVERWORLD, MALLOW_OVERWORLD, TOADSTOOL_OVERWORLD
 
 from .flags import *
@@ -1322,6 +1324,7 @@ class GameWorld:
 
         # Sprite graphics patch (now has access to reclaimed animation banks)
         self._report_progress("Assembling graphics...", progress)
+
         debug_sprites: dict[int, bytearray] = dict()
         for p in self.sprites.render():
             patch.add_data(p[0], p[1], source="sprites")

@@ -39,12 +39,12 @@ script = EventScript([
 	SetVarToConst(ITEM_ID, FireworksItem),
 	JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM),
 	SetVarToConst(ITEM_ID, CarboCookieItem, identifier="EVENT_3399_set_var_to_const_7"),
-	RemoveOneOfItemFromInventory(ShinyStoneItem),
-	JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM),
-	SetVarToConst(ITEM_ID, ShinyStoneItem, identifier="EVENT_3399_set_var_to_const_10"),
 	# open culex door automatically
 	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),
 	RemoveObjectFromSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
+	RemoveOneOfItemFromInventory(ShinyStoneItem),
+	JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM),
+	SetVarToConst(ITEM_ID, ShinyStoneItem, identifier="EVENT_3399_set_var_to_const_10"),
 	RemoveOneOfItemFromInventory(FireworksItem),
 	JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM)
 ])

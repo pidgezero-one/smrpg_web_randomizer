@@ -100,7 +100,7 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC_2,
+            npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,

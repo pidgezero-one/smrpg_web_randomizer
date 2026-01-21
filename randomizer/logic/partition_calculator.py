@@ -15,7 +15,7 @@ Buffer types:
 - THREE_SPRITES_PER_ROW: For format >= 2 gridplane sprites
 - FOUR_SPRITES_PER_ROW: For format <= 1 gridplane sprites
 - TREASURE_CHEST: For chest sprite (sprite 94)
-- COINS: For coin sprites (192, 193, 194, 202)
+- COINS: For coin sprites
 - EMPTY_*: No specific sprite requirements
 """
 
@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import copy
 from math import ceil
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 from ..data.variables.sprite_names import *
 from ..data.variables.room_names import *
 
@@ -34,6 +34,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     Partition,
     RegularNPC,
     ChestNPC,
+    BattlePackClone,
     RegularClone,
     ChestClone,
 )
@@ -43,8 +44,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
     ActionSubcriptCommandPrototype,
 )
-from ..types.room import ExtraSpriteActions
+from ..types.room import ExtraSpriteActions, Room
 from ..types.ally import SpriteAnimationState, Ally
+from ..types.prize import FrogCoinPrize
+from ..types.prizelocation import TreasureChestLocation
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -57,13 +60,14 @@ if TYPE_CHECKING:
 # Used to determine which ally animation states are needed for each room action
 # =============================================================================
 
-EXTRA_ACTION_TO_ANIMATION_STATE: dict[ExtraSpriteActions, list[SpriteAnimationState]] = {
+EXTRA_ACTION_TO_ANIMATION_STATE: dict[
+    ExtraSpriteActions, list[SpriteAnimationState]
+] = {
     # Direct matches
     ExtraSpriteActions.DEFEND: [SpriteAnimationState.DEFEND],
     ExtraSpriteActions.SALUTE: [SpriteAnimationState.SALUTE],
     ExtraSpriteActions.CHALLENGE: [SpriteAnimationState.CHALLENGE],
     ExtraSpriteActions.SLEEP: [SpriteAnimationState.SLEEPING],
-
     # Surprise/shock animations
     ExtraSpriteActions.SURPRISE_FRAME: [
         SpriteAnimationState.SHOCKED_LOOP,
@@ -74,36 +78,41 @@ EXTRA_ACTION_TO_ANIMATION_STATE: dict[ExtraSpriteActions, list[SpriteAnimationSt
         SpriteAnimationState.SHOCKED_SHADOW_BACKWARDS,
         SpriteAnimationState.SHOCKED_BACKWARDS_SEQUENCE,
     ],
-
     # Standing/leaning animations
     ExtraSpriteActions.STANDING_SLEEP: [SpriteAnimationState.SLEEPING],
     ExtraSpriteActions.LEAN_BACK: [SpriteAnimationState.LOOKING_DOWN],
     ExtraSpriteActions.LEAN_BACK_2: [SpriteAnimationState.LOOKING_DOWN_AWAY],
     ExtraSpriteActions.LEAN_FORWARD: [SpriteAnimationState.LOOKING_DOWN_STATIC],
-
     # Displeased animations
     ExtraSpriteActions.DISPLEASED_FRONT: [SpriteAnimationState.DISPLEASED],
     ExtraSpriteActions.DISPLEASED_BACK: [SpriteAnimationState.DISPLEASED],
-
     # Praise/joy animations
-    ExtraSpriteActions.PRAISE_FRONT: [SpriteAnimationState.JOY, SpriteAnimationState.JOY_JUMP],
+    ExtraSpriteActions.PRAISE_FRONT: [
+        SpriteAnimationState.JOY,
+        SpriteAnimationState.JOY_JUMP,
+    ],
     ExtraSpriteActions.PRAISE_BACK: [SpriteAnimationState.JOY_BEHIND],
-
     # Tumble/hurt animations
-    ExtraSpriteActions.TUMBLE_FRONT: [SpriteAnimationState.FLOORED, SpriteAnimationState.HURT],
-    ExtraSpriteActions.TUMBLE_BACK: [SpriteAnimationState.FLOORED, SpriteAnimationState.HURT],
+    ExtraSpriteActions.TUMBLE_FRONT: [
+        SpriteAnimationState.FLOORED,
+        SpriteAnimationState.HURT,
+    ],
+    ExtraSpriteActions.TUMBLE_BACK: [
+        SpriteAnimationState.FLOORED,
+        SpriteAnimationState.HURT,
+    ],
     ExtraSpriteActions.RECOIL: [SpriteAnimationState.HURT],
     ExtraSpriteActions.FLOP: [SpriteAnimationState.FLOORED],
     ExtraSpriteActions.DIZZY: [SpriteAnimationState.SHAKING_HEAD],
     ExtraSpriteActions.WOBBLE: [SpriteAnimationState.SHAKING_HEAD],
-
     # Looking animations
-    ExtraSpriteActions.LOOK_AT_DOLL: [SpriteAnimationState.LOOK_TO_SIDE, SpriteAnimationState.LOOK_TO_DOWN],
+    ExtraSpriteActions.LOOK_AT_DOLL: [
+        SpriteAnimationState.LOOK_TO_SIDE,
+        SpriteAnimationState.LOOK_TO_DOWN,
+    ],
     ExtraSpriteActions.EXOR: [SpriteAnimationState.LOOK_WAY_UP],
-
     # Challenge variants
     ExtraSpriteActions.CHALLENGE_NIMBUS: [SpriteAnimationState.CHALLENGE],
-
     # Special animations - map to base states as fallback
     ExtraSpriteActions.SWIM: [SpriteAnimationState.SOUTH],
     ExtraSpriteActions.WHIRL: [SpriteAnimationState.SOUTH],
@@ -123,6 +132,8 @@ DEFAULT_ANIMATION_STATES = [
     SpriteAnimationState.FACE_NORTH,
     SpriteAnimationState.FACE_SOUTH,
 ]
+
+# TODO: inc packet size by 1 for rooms with exp stars
 
 
 def list_unique(arr: list) -> list:
@@ -146,27 +157,57 @@ PARTITION_PRIORITY = [
 ]
 
 # Rooms that need special handling
-SPECIAL_CASE_ROOMS = [37, 57, 70, 71, 72, 73, 79, 205, 230, 232, 233, 236, 463, 466, 477]
+SPECIAL_CASE_ROOMS = [
+    R037_BOOSTER_TOWER_4F_3LEVEL_ROOM_WJUMPING_SPOOKUMS,
+    R057_KERO_SEWERS_AREA_03_LARGE_WATER_ROOM_WPIPE_IN_CENTER,
+    R070_MIDAS_RIVER_1ST_TUNNEL,
+    R071_MIDAS_RIVER_2ND_TUNNEL_BOTH_LEFT_AND_RIGHT,
+    R072_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT,
+    R073_MIDAS_RIVER_4TH_TUNNEL_ON_VERY_BOTTOM_RIGHT,
+    R079_ROSE_WAY_MAIN_AREA,
+    R205_MUSHROOM_WAY_AREA_03,
+    R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09,
+    R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
+    R233_FOREST_MAZE_AREA_03_UNDERGROUND,
+    R236_FOREST_MAZE_AREA_07_UNDERGROUND_WSLEEPING_WIGGLER,
+    R463_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1B_BARRELCOUNTING,
+    R466_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1C_WORD_PROBLEM,
+    R477_BOWSERS_KEEP_2ND_TIME_AREA_02,
+]
 # 205 - complicated spiney sequence
 # 463, 466 - barrel count room and logic problem room need this for some reason
 
-ALWAYS_REQUIRES_COIN_BUFFER = [71, 72, 73]
+ALWAYS_REQUIRES_COIN_BUFFER = [
+    R071_MIDAS_RIVER_2ND_TUNNEL_BOTH_LEFT_AND_RIGHT,
+    R072_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT,
+    R073_MIDAS_RIVER_4TH_TUNNEL_ON_VERY_BOTTOM_RIGHT,
+]
 
 # Rooms that always need triple empty + extra sprite buffer size 1
-TRIPLE_EMPTY_EX1_ROOMS = [376, 377, 459, 460, 461, 462, 202]
+TRIPLE_EMPTY_EX1_ROOMS = [
+    R376_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2B_1ST_FIGHT_CHEWY,
+    R377_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2C_1ST_FIGHT_SPARKY,
+    R459_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1A_1ST_FIGHT_TERRA_COTTA,
+    R460_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1B_1ST_FIGHT_ALLEY_RAT,
+    R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
+    R462_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2A_1ST_FIGHT_GU_GOOMBA,
+    R202_BOOSTER_TOWER_ENTRANCE,
+]
 
 # Rooms that always need triple empty + extra sprite buffer size 0
-TRIPLE_EMPTY_EX0_ROOMS = [192]
+TRIPLE_EMPTY_EX0_ROOMS = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
 
 # Rooms where chests are close enough together that extra_sprite_buffer_size needs to be 2+
 # (player can open multiple chests before packet sprites despawn)
 CLOSE_CHEST_ROOMS = {
-    234: 2,  # Forest Maze Secret - 5 floating chests in tight cluster
-    453: 2,  # Bowser's Keep - chests close together
+    R234_FOREST_MAZE_SECRET: 2,  # Forest Maze Secret - 5 floating chests in tight cluster
+    R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM: 2,  # Bowser's Keep - chests close together
 }
 
 
-def _create_empty_partition(ally_buffer: int, allow_extra: bool = True, extra_size: int = 1) -> Partition:
+def _create_empty_partition(
+    ally_buffer: int, allow_extra: bool = True, extra_size: int = 1
+) -> Partition:
     """Create a partition with all empty buffers."""
     return Partition(
         ally_sprite_buffer_size=ally_buffer,
@@ -181,7 +222,7 @@ def _create_empty_partition(ally_buffer: int, allow_extra: bool = True, extra_si
     )
 
 
-def _get_complete_sprite(world: GameWorld, sprite_id: int):
+def _get_complete_sprite(world: GameWorld, sprite_id: int) -> CompleteSprite | None:
     """Get CompleteSprite object for a given sprite ID.
 
     Uses world.get_sprite() pattern from physical_objects.py which provides
@@ -203,20 +244,33 @@ def _npc_cannot_clone(obj: RoomObject | Clone) -> bool:
     return bool(obj._npc.cannot_clone)
 
 
-def _get_room_objects_with_clones(room) -> list:
-    """Get all objects including expanded clones from a room."""
-    decloned = []
-    for obj in room.objects:
-        decloned.append(obj)
-        if hasattr(obj, 'clones') and obj.clones:
-            for clone in obj.clones:
-                # Create a copy-like representation for the clone
-                # Clones may have npc_id_offset that modifies the sprite
-                clone_obj = copy.copy(obj)
-                # For now, treat clones as having the same base NPC
-                # The actual sprite may differ based on offsets
-                decloned.append(clone_obj)
-    return decloned
+def _get_room_objects_with_clones(room: Room) -> list:  # type: ignore[type-arg]
+    """Get all objects including expanded clones from a room.
+
+    Note: Clone objects appear directly in room.objects as separate
+    BattlePackClone, RegularClone, or ChestClone instances, not as
+    an attribute on parent NPCs.
+    """
+    # Simply return all objects - clones are already in the list
+    return list(room.objects)
+
+
+def _room_contains_frog_coin_chests(world: GameWorld, room_index: int) -> bool:
+    """Check if a room contains treasure chest locations with frog coin prizes.
+
+    Args:
+        world: The GameWorld instance containing locations
+        room_index: The room index to check
+
+    Returns:
+        True if the room has any TreasureChestLocation with a FrogCoinPrize
+    """
+    for location in world.locations.values():
+        if isinstance(location, TreasureChestLocation):
+            if room_index in location._rooms:
+                if location.prize is not None and isinstance(location.prize, FrogCoinPrize):
+                    return True
+    return False
 
 
 # =============================================================================
@@ -257,9 +311,7 @@ def _min_vram_from_sequence(complete_sprite: CompleteSprite, sequence_id: int) -
 
 
 def _min_vram_from_script_contents(
-    world: GameWorld,
-    base_sprite_id: int,
-    script_contents: list
+    world: GameWorld, base_sprite_id: int, script_contents: list
 ) -> int:
     """Calculate min VRAM size from action script contents.
 
@@ -285,15 +337,15 @@ def _min_vram_from_script_contents(
             if cmd.is_mold:
                 min_vram = max(min_vram, _min_vram_from_mold(offset_sprite, prop_id))
             else:
-                min_vram = max(min_vram, _min_vram_from_sequence(offset_sprite, prop_id))
+                min_vram = max(
+                    min_vram, _min_vram_from_sequence(offset_sprite, prop_id)
+                )
 
     return min_vram
 
 
 def _min_vram_from_action_script(
-    world: GameWorld,
-    base_sprite_id: int,
-    script_id: int
+    world: GameWorld, base_sprite_id: int, script_id: int
 ) -> int:
     """Calculate min VRAM size from an action script.
 
@@ -310,10 +362,7 @@ def _min_vram_from_action_script(
 
 
 def _min_vram_from_event_script(
-    world: GameWorld,
-    base_sprite_id: int,
-    target: int,
-    script_id: int
+    world: GameWorld, base_sprite_id: int, target: int, script_id: int
 ) -> int:
     """Calculate min VRAM size from event script subscripts targeting this NPC.
 
@@ -339,16 +388,16 @@ def _min_vram_from_event_script(
         if isinstance(cmd, ActionSubcriptCommandPrototype) and cmd.target == target:
             min_vram = max(
                 min_vram,
-                _min_vram_from_script_contents(world, base_sprite_id, cmd.subscript.contents)
+                _min_vram_from_script_contents(
+                    world, base_sprite_id, cmd.subscript.contents
+                ),
             )
 
     return min_vram
 
 
 def _calculate_npc_min_vram(
-    world: GameWorld,
-    obj: RoomObject | Clone,
-    obj_index: int
+    world: GameWorld, obj: RoomObject | Clone, obj_index: int
 ) -> int:
     """Calculate the min VRAM size an NPC needs based on its scripts.
 
@@ -370,9 +419,14 @@ def _calculate_npc_min_vram(
         event_script_id = int(obj.event_script)
         if event_script_id > 0:
             # Target is the NPC's index in the room (plus NPC_0 offset)
-            from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_0
+            from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
+                NPC_0,
+            )
+
             target = NPC_0 + obj_index
-            event_vram = _min_vram_from_event_script(world, sprite_id, target, event_script_id)
+            event_vram = _min_vram_from_event_script(
+                world, sprite_id, target, event_script_id
+            )
             min_vram = max(min_vram, event_vram)
 
     return min(min_vram, 7)  # Cap at 7 (max allowed value)
@@ -416,10 +470,7 @@ def _calculate_ally_buffer_from_tile_count(tile_count: int) -> int:
     return min(3, ceil(max(0, tile_count - 4) / 4))
 
 
-def _get_ally_tile_count_for_state(
-    ally: Ally,
-    state: SpriteAnimationState
-) -> int:
+def _get_ally_tile_count_for_state(ally: Ally, state: SpriteAnimationState) -> int:
     """Get the tile count for a specific animation state from the ally's sprite data.
 
     Checks _sprites_primary first, falls back to _sprites_secondary.
@@ -428,12 +479,10 @@ def _get_ally_tile_count_for_state(
     # Tuple format: (mold_id, tile_count, is_primary)
     if state in ally._sprites_primary:
         return ally._sprites_primary[state][1]
-    if state in ally._sprites_secondary:
-        return ally._sprites_secondary[state][1]
     return 0
 
 
-def calculate_ally_buffer_for_room(ally: Ally, room) -> int:
+def calculate_ally_buffer_for_room(ally: Ally, room: Room, room_index: int | None = None) -> int:  # type: ignore[type-arg]
     """Calculate the ally buffer size needed for a specific room.
 
     Based on the room's extra_sprite_actions, determines which animation
@@ -443,6 +492,7 @@ def calculate_ally_buffer_for_room(ally: Ally, room) -> int:
     Args:
         ally: The overworld character (Ally instance with _sprites_primary/_sprites_secondary)
         room: The room to calculate for (with extra_sprite_actions list)
+        room_index: Optional room index for debug output
 
     Returns:
         Ally buffer size (0-3)
@@ -451,18 +501,22 @@ def calculate_ally_buffer_for_room(ally: Ally, room) -> int:
     states_to_check: set[SpriteAnimationState] = set(DEFAULT_ANIMATION_STATES)
 
     # Add states required by room's extra_sprite_actions
-    extra_actions = getattr(room, 'extra_sprite_actions', []) or []
-    for action in extra_actions:
+    for action in room.extra_sprite_actions:
         if action in EXTRA_ACTION_TO_ANIMATION_STATE:
             states_to_check.update(EXTRA_ACTION_TO_ANIMATION_STATE[action])
 
     # Find max tile count across all required states
     max_tile_count = 0
+    max_state = None
     for state in states_to_check:
         tile_count = _get_ally_tile_count_for_state(ally, state)
-        max_tile_count = max(max_tile_count, tile_count)
+        if tile_count > max_tile_count:
+            max_tile_count = tile_count
+            max_state = state
 
-    return _calculate_ally_buffer_from_tile_count(max_tile_count)
+    buffer_size = _calculate_ally_buffer_from_tile_count(max_tile_count)
+
+    return buffer_size
 
 
 def set_partitions(world: GameWorld) -> None:
@@ -495,11 +549,11 @@ def set_partitions(world: GameWorld) -> None:
             continue
 
         # Skip room 68 (special case)
-        if room_index == 68:
+        if room_index == R068_MIDAS_RIVER_BARREL_JUMPING_RIVER:
             continue
 
         # Calculate ally buffer for this specific room
-        ally_buffer = calculate_ally_buffer_for_room(overworld_ally, room)
+        ally_buffer = calculate_ally_buffer_for_room(overworld_ally, room, room_index)  # type: ignore[arg-type]
 
         # Rooms that always need triple empty + extra 1
         if room_index in TRIPLE_EMPTY_EX1_ROOMS or len(room.objects) == 0:
@@ -534,9 +588,15 @@ def set_partitions(world: GameWorld) -> None:
 
             # Preserve some original partition settings if available
             if original_partition_copy is not None:
-                partition.set_extra_sprite_buffer_size(int(original_partition_copy.extra_sprite_buffer_size))
-                partition.set_allow_extra_sprite_buffer(original_partition_copy.allow_extra_sprite_buffer)
-                partition.set_full_palette_buffer(original_partition_copy.full_palette_buffer)
+                partition.set_extra_sprite_buffer_size(
+                    int(original_partition_copy.extra_sprite_buffer_size)
+                )
+                partition.set_allow_extra_sprite_buffer(
+                    original_partition_copy.allow_extra_sprite_buffer
+                )
+                partition.set_full_palette_buffer(
+                    original_partition_copy.full_palette_buffer
+                )
 
             packet_size = int(partition.extra_sprite_buffer_size)
             if partition.allow_extra_sprite_buffer:
@@ -573,7 +633,7 @@ def set_partitions(world: GameWorld) -> None:
             # Process NPCs for buffer requirements
             last_sprite = -1
             existing_formats_in_room = []
-            decloned = _get_room_objects_with_clones(room)
+            decloned = _get_room_objects_with_clones(room)  # type: ignore[arg-type]
 
             for obj in decloned:
                 sprite_id = _get_npc_sprite_id(obj)
@@ -586,7 +646,11 @@ def set_partitions(world: GameWorld) -> None:
 
                     # Handle ally sprites (0-30)
                     if sprite_id <= SPR0034_GENO_MORPH_INTO_CANNON:
-                        if room_index in [R203_MUSHROOM_WAY_AREA_01, R204_MUSHROOM_WAY_AREA_02, R205_MUSHROOM_WAY_AREA_03]:
+                        if room_index in [
+                            R203_MUSHROOM_WAY_AREA_01,
+                            R204_MUSHROOM_WAY_AREA_02,
+                            R205_MUSHROOM_WAY_AREA_03,
+                        ]:
                             # Skip for these rooms
                             continue
                         elif room_index == R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09:
@@ -598,7 +662,12 @@ def set_partitions(world: GameWorld) -> None:
                     # Check for special sprite types
                     if sprite_id == SPR0094_TREASURE_CHEST:
                         priority_buffers.append(BufferType.TREASURE_CHEST)
-                    elif sprite_id in [SPR0192_COIN, SPR0193_SMALL_COIN, SPR0194_FROG_COIN, SPR0606_SMALL_FROG_COIN]:
+                    elif sprite_id in [
+                        SPR0192_COIN,
+                        SPR0193_SMALL_COIN,
+                        SPR0194_FROG_COIN,
+                        SPR0606_SMALL_FROG_COIN,
+                    ]:
                         priority_buffers.append(BufferType.COINS)
 
                     # Determine buffer type based on animation properties
@@ -610,23 +679,22 @@ def set_partitions(world: GameWorld) -> None:
                             priority_buffers.append(BufferType.EMPTY_3)
                         elif mold.tiles and len(mold.tiles) > 0:
                             tile = mold.tiles[0]
-                            # Tile has format attribute, Clone does not
-                            # Use getattr to safely access format (returns -1 for Clone)
-                            tile_format = getattr(tile, 'format', -1)
-                            if tile_format >= 0:
-                                if tile_format <= 1:
-                                    buf = BufferType.FOUR_SPRITES_PER_ROW
-                                else:
-                                    buf = BufferType.THREE_SPRITES_PER_ROW
+                            # All Tile types (Tile, GridplaneArrangement, NonGridplaneArrangement) have format
+                            tile_format = tile.format  # type: ignore[attr-defined]
+                            if tile_format <= 1:
+                                buf = BufferType.FOUR_SPRITES_PER_ROW
+                            else:
+                                buf = BufferType.THREE_SPRITES_PER_ROW
 
-                                if buf not in existing_formats_in_room:
-                                    existing_formats_in_room.append(buf)
-                                    if hasattr(obj, 'clones') and obj.clones:
-                                        npc_buffers.append(buf)
-                                elif sprite_id != last_sprite:
+                            if buf not in existing_formats_in_room:
+                                existing_formats_in_room.append(buf)
+                                # Clone objects are separate instances in room.objects, not attributes
+                                if isinstance(obj, (BattlePackClone, RegularClone, ChestClone)):
                                     npc_buffers.append(buf)
-                                elif len(npc_buffers) == 0 or npc_buffers[-1] != buf:
-                                    npc_buffers.append(buf)
+                            elif sprite_id != last_sprite:
+                                npc_buffers.append(buf)
+                            elif len(npc_buffers) == 0 or npc_buffers[-1] != buf:
+                                npc_buffers.append(buf)
 
                     last_sprite = sprite_id
 
@@ -645,8 +713,16 @@ def set_partitions(world: GameWorld) -> None:
                 if BufferType.COINS not in packet_buffers:
                     packet_buffers.append(BufferType.COINS)
 
+            # Check if room contains frog coin chests (need COINS buffer for frog coin sprites)
+            if _room_contains_frog_coin_chests(world, room_index):
+                if BufferType.COINS not in packet_buffers:
+                    packet_buffers.append(BufferType.COINS)
+
             # Avoid duplicate coin buffers
-            if BufferType.COINS in priority_buffers and BufferType.COINS in packet_buffers:
+            if (
+                BufferType.COINS in priority_buffers
+                and BufferType.COINS in packet_buffers
+            ):
                 priority_buffers.remove(BufferType.COINS)
 
             # Assign final buffer configuration
@@ -687,9 +763,15 @@ def set_partitions(world: GameWorld) -> None:
                 # Try to preserve original buffer space settings if they match
                 if original_partition_copy is not None and not found:
                     for orig_buf in original_partition_copy.buffers:
-                        if orig_buf.buffer_type == buf_type and int(orig_buf.main_buffer_space) > int(partition_buffers[i].main_buffer_space):
-                            partition_buffers[i].set_main_buffer_space(orig_buf.main_buffer_space)
-                            partition_buffers[i].set_index_in_main_buffer(orig_buf.index_in_main_buffer)
+                        if orig_buf.buffer_type == buf_type and int(
+                            orig_buf.main_buffer_space
+                        ) > int(partition_buffers[i].main_buffer_space):
+                            partition_buffers[i].set_main_buffer_space(
+                                orig_buf.main_buffer_space
+                            )
+                            partition_buffers[i].set_index_in_main_buffer(
+                                orig_buf.index_in_main_buffer
+                            )
                             found = True
                             break
 

@@ -79,7 +79,7 @@ from ..data.variables.room_names import (
 )
 from ..data.variables.variable_names import TEMP_7043_3
 from ..types.physical_objects import BossNPC, SpriteAnimation
-from ..types.prize import BossFightHenchman, BossFightPrize
+from ..types.prize import BossFightHenchman, BossFightPrize, CharacterPrize
 from ..types.prizelocation import BossFightLocationNPC
 from ..utils.npcs import is_swse_only
 from ..utils.snippets.es_castle_statue_room_bonk import script as bonk
@@ -94,9 +94,21 @@ from ..utils.snippets.es_non_smithy_final_boss import (
     es_non_smithy_3792,
     es_non_smithy_3794,
 )
+from ..types.ally import Ally, SpriteAnimationState
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
+
+def update_ally_animation(seq: A_SetSpriteSequence, ally: Ally, anim: SpriteAnimationState) -> None:
+    """Update an ally animation sequence command with the given animation.
+
+    If no animation is provided, replace the command with a face direction
+    command instead.
+    """
+    data = ally._sprites_primary[anim]
+    seq.set_is_mold(data[2])
+    seq.set_index(data[1])
+    seq.set_sprite_offset(data[0])
 
 
 # =============================================================================
@@ -157,7 +169,6 @@ def render_forest_maze_character_empty(world: GameWorld) -> None:
         "forest_character_animation_9",
         "forest_character_animation_10",
         "forest_character_animation_11",
-        "forest_character_animation_12",
     ]
     for d in deletions:
         world.action_scripts.delete_command_by_identifier(d)
@@ -170,7 +181,32 @@ def render_forest_maze_character_empty(world: GameWorld) -> None:
         A_SetSpriteSequence,
         ss.get_command_by_name("forest_character_animation_13"),
     ).set_index(6)
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "forest_character_animation_14", "forest_character_animation_11"
+    )
     e.set_subscript(ss.contents)
+
+def render_forest_maze_character(world: GameWorld, prize: CharacterPrize) -> None:
+    ally = prize.ally
+    a1 = world.action_scripts.get_command_by_identifier("forest_character_animation_1", A_SetSpriteSequence)
+    update_ally_animation(a1, ally, SpriteAnimationState.SHAKING_HEAD)
+    a3 = world.action_scripts.get_command_by_identifier("forest_character_animation_3", A_SetSpriteSequence)
+    update_ally_animation(a3, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD)
+    a5 = world.action_scripts.get_command_by_identifier("forest_character_animation_5", A_SetSpriteSequence)
+    update_ally_animation(a5, ally, SpriteAnimationState.LOOKING_DOWN)
+    a7 = world.action_scripts.get_command_by_identifier("forest_character_animation_7", A_SetSpriteSequence)
+    update_ally_animation(a7, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD)
+    a8 = world.action_scripts.get_command_by_identifier("forest_character_animation_8", A_SetSpriteSequence)
+    update_ally_animation(a8, ally, SpriteAnimationState.SLEEPING)
+    a9 = world.action_scripts.get_command_by_identifier("forest_character_animation_9", A_SetSpriteSequence)
+    update_ally_animation(a9, ally, SpriteAnimationState.SHOCKED_BACKWARDS_SEQUENCE)
+
+    e1 = world.event_scripts.get_subscript_command_by_identifier("forest_character_animation_14", "forest_character_animation_13", A_SetSpriteSequence)
+    update_ally_animation(e1, ally, SpriteAnimationState.SOUTH)
+    e2 = world.event_scripts.get_subscript_command_by_identifier("forest_character_animation_14", "forest_character_animation_11", A_SetSpriteSequence)
+    update_ally_animation(e2, ally, SpriteAnimationState.DEFEND)
+    
+
 
 
 # =============================================================================
@@ -582,6 +618,55 @@ def render_marrymore_character_empty(world: GameWorld) -> None:
                 idx = ss.get_index_of_identifier(action)
                 ss.delete_at_index(idx)
             e.set_subscript(ss.contents)
+            
+def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
+    ally = prize.ally
+
+    a1 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_1", "chapel_character_animation_1", A_SetSpriteSequence)
+    update_ally_animation(a1, ally, SpriteAnimationState.SHOCKED_LOOP)
+    a2 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_1", "chapel_character_animation_2", A_SetSpriteSequence)
+    update_ally_animation(a2, ally, SpriteAnimationState.FLOORED)
+    a3 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_2", "chapel_character_animation_3", A_SetSpriteSequence)
+    update_ally_animation(a3, ally, SpriteAnimationState.HURT)
+    a4 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_3", "chapel_character_animation_3_", A_SetSpriteSequence)
+    update_ally_animation(a4, ally, SpriteAnimationState.LOOKING_DOWN_STATIC)
+    a5 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_4", "chapel_character_animation_4", A_SetSpriteSequence)
+    update_ally_animation(a5, ally, SpriteAnimationState.SHAKING_HEAD)
+    a6 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_4", "chapel_character_animation_5", A_SetSpriteSequence)
+    update_ally_animation(a6, ally, SpriteAnimationState.LOOKING_DOWN_STATIC)
+    a7 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_5", "chapel_character_animation_6", A_SetSpriteSequence)
+    update_ally_animation(a7, ally, SpriteAnimationState.CRYING)
+    a8 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_6", "chapel_character_animation_7", A_SetSpriteSequence)
+    update_ally_animation(a8, ally, SpriteAnimationState.SHOCKED_LOOP)
+    a9 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_7", "chapel_character_animation_9", A_SetSpriteSequence)
+    update_ally_animation(a9, ally, SpriteAnimationState.LOOKING_DOWN_STATIC)
+    a10 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_7", "chapel_character_animation_8", A_SetSpriteSequence)
+    update_ally_animation(a10, ally, SpriteAnimationState.CRYING)
+    a11 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_8", "chapel_character_animation_10", A_SetSpriteSequence)
+    update_ally_animation(a11, ally, SpriteAnimationState.SHOCKED_LOOP)
+    a12 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_8", "chapel_character_animation_11", A_SetSpriteSequence)
+    update_ally_animation(a12, ally, SpriteAnimationState.CRYING_BACKWARDS)
+    a13 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_9", "chapel_character_animation_12", A_SetSpriteSequence)
+    update_ally_animation(a13, ally, SpriteAnimationState.SHOCKED_LOOP)
+    a14 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_42", "chapel_character_animation_13", A_SetSpriteSequence)
+    update_ally_animation(a14, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    a15 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_42", "chapel_character_animation_14", A_SetSpriteSequence)
+    update_ally_animation(a15, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    a16 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_45", "chapel_character_animation_15", A_SetSpriteSequence)
+    update_ally_animation(a16, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    a17 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_45", "chapel_character_animation_16", A_SetSpriteSequence)
+    update_ally_animation(a17, ally, SpriteAnimationState.SHOCKED_LOOP)
+    a18 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_10", "chapel_character_animation_17", A_SetSpriteSequence)
+    update_ally_animation(a18, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    a19 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_11", "chapel_character_animation_18", A_SetSpriteSequence)
+    update_ally_animation(a19, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    a20 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_11", "chapel_character_animation_19", A_SetSpriteSequence)
+    update_ally_animation(a20, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    a21 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_12", "chapel_character_animation_20", A_SetSpriteSequence)
+    update_ally_animation(a21, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    a22 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_12", "chapel_character_animation_21", A_SetSpriteSequence)
+    update_ally_animation(a22, ally, SpriteAnimationState.SHOCKED_LOOP)
+    
 
 
 # =============================================================================

@@ -25,8 +25,8 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
 )
+from ...types.room import Room, ExtraSpriteActions
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 from . import npcs

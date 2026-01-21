@@ -40,13 +40,13 @@ script = EventScript([
 	JmpToEvent(E0883_CHEST_ITEM_BAG_PACKET),
 	Return(),
 	SetVarToConst(ITEM_ID, CarboCookieItem, identifier="EVENT_3100_set_var_to_const_8"),
-	RemoveOneOfItemFromInventory(ShinyStoneItem),
-	JmpToEvent(E0883_CHEST_ITEM_BAG_PACKET),
-	Return(),
-	SetVarToConst(ITEM_ID, ShinyStoneItem, identifier="EVENT_3100_set_var_to_const_12"),
 	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),
 	RemoveObjectFromSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
+	RemoveOneOfItemFromInventory(ShinyStoneItem),
+	JmpToEvent(E0893_CHEST_COOKIE_PACKET),
+	Return(),
+	SetVarToConst(ITEM_ID, ShinyStoneItem, identifier="EVENT_3100_set_var_to_const_12"),
 	RemoveOneOfItemFromInventory(FireworksItem),
-	JmpToEvent(E0883_CHEST_ITEM_BAG_PACKET),
+	JmpToEvent(E0951_CRYSTAL_CHEST_PACKET),
 	Return()
 ])

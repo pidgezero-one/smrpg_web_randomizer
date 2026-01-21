@@ -114,6 +114,7 @@ randomizer/management/commands/output/disassembler
 smrpgr.code-workspace
 .vscode
 .claude
+CLAUDE.md
 patchvenv
 
 **/.DS_Store

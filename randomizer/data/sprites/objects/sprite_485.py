@@ -2,7 +2,7 @@
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(144, length=810, unknown=0x0002,
+    animation=AnimationPack(285, length=781, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=True,
@@ -58,7 +58,7 @@ sprite = CompleteSprite(
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=122),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
-                            bytearray(b'\x8d\x94\x0c\x0f\x12)\x05$\x1c|\x7f?\xff\xbf\x7f{\x00\x03\x00?\x00>\x00?\x04\xff|\xff?\xff?'),
+                            bytearray(b'\x8d\x94\x0c\x0f\x12,)\x05$\x1c|\x7f?\xff\xbf\x7f{\x00\x03\x00?\x00>\x00?\x04\xff|\xff?\xff?'),
                             bytearray(b'\xbe\x7f~\xff\xbe~<|\xa0``\xe0\xc0\xc0\x00\x00\xff>\xff~\xfe>\xfc<\xe0 \xe0`\xc0\xc0\x00\x00'),
                             bytearray(b"\'g\xafoK\xcf\x85\x8b\x03\t\x05\x0b\x0f\x0f\x06\x06\xe7\'\xef/\xcfK\x8f\x81\x0f\x01\x0f\x01\x0f\x0f\x06\x06"),
                             None,
@@ -92,7 +92,7 @@ sprite = CompleteSprite(
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=369),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
-                            bytearray(b'\x8d\x94\x0c\x0f\x12)\x05$\x1c|\x7f?\xff\xbf\x7f{\x00\x03\x00?\x00>\x00?\x04\xff|\xff?\xff?'),
+                            bytearray(b'\x8d\x94\x0c\x0f\x12,)\x05$\x1c|\x7f?\xff\xbf\x7f{\x00\x03\x00?\x00>\x00?\x04\xff|\xff?\xff?'),
                             bytearray(b'\xbe\x7f~\xff\xbe~<|\xa0``\xe0\xc0\xc0\x00\x00\xff>\xff~\xfe>\xfc<\xe0 \xe0`\xc0\xc0\x00\x00'),
                             bytearray(b"\'g\xafoK\xcf\x85\x8b\x03\t\x05\x0b\x0f\x0f\x06\x06\xe7\'\xef/\xcfK\x8f\x81\x0f\x01\x0f\x01\x0f\x0f\x06\x06"),
                             None,
@@ -126,7 +126,7 @@ sprite = CompleteSprite(
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=126, y=365),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
-                            bytearray(b'\x8d\x94\x0c\x0f\x12)\x05$\x1c|\x7f?\xff\xbf\x7f{\x00\x03\x00?\x00>\x00?\x04\xff|\xff?\xff?'),
+                            bytearray(b'\x8d\x94\x0c\x0f\x12,)\x05$\x1c|\x7f?\xff\xbf\x7f{\x00\x03\x00?\x00>\x00?\x04\xff|\xff?\xff?'),
                             bytearray(b'\xbe\x7f~\xff\xbe~<|\xa0``\xe0\xc0\xc0\x00\x00\xff>\xff~\xfe>\xfc<\xe0 \xe0`\xc0\xc0\x00\x00'),
                             bytearray(b"\'g\xafoK\xcf\x85\x8b\x03\t\x05\x0b\x0f\x0f\x06\x06\xe7\'\xef/\xcfK\x8f\x81\x0f\x01\x0f\x01\x0f\x0f\x06\x06"),
                             None,
@@ -160,7 +160,7 @@ sprite = CompleteSprite(
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=127, y=365),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
-                            bytearray(b'\x8d\x94\x0c\x0f\x12)\x05$\x1c|\x7f?\xff\xbf\x7f{\x00\x03\x00?\x00>\x00?\x04\xff|\xff?\xff?'),
+                            bytearray(b'\x8d\x94\x0c\x0f\x12,)\x05$\x1c|\x7f?\xff\xbf\x7f{\x00\x03\x00?\x00>\x00?\x04\xff|\xff?\xff?'),
                             bytearray(b'\xbe\x7f~\xff\xbe~<|\xa0``\xe0\xc0\xc0\x00\x00\xff>\xff~\xfe>\xfc<\xe0 \xe0`\xc0\xc0\x00\x00'),
                             bytearray(b"\'g\xafoK\xcf\x85\x8b\x03\t\x05\x0b\x0f\x0f\x06\x06\xe7\'\xef/\xcfK\x8f\x81\x0f\x01\x0f\x01\x0f\x0f\x06\x06"),
                             None,

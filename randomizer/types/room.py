@@ -46,6 +46,8 @@ class ExtraSpriteActions(str, Enum):
 class Room(RoomBase):
     """Extended Room class with extra_sprite_actions support."""
 
+    extra_sprite_actions: list[ExtraSpriteActions]
+
     def __init__(
         self,
         *args,

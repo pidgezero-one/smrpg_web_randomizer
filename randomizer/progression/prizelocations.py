@@ -4,11 +4,6 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 
-from randomizer.data.variables.action_script_names import (
-    A0386_TOWER_SHOOT_BULLET_BILLS,
-    A0576_CURTAIN_GAME_OPEN_CURTAIN,
-    A0577_CURTAIN_GAME_OPEN_CURTAIN,
-)
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
     EventScript,
     UsableEventScriptCommand,
@@ -85,9 +80,8 @@ from ..types.flags import *
 from ..utils.npcs import (
     set_npc_direction_if_swse_only,
     set_mines_punch_command,
-    is_swse_only,
 )
-from ..utils.snippets.es_mimic_rise import get_mimic_rise_dojo, get_mimic_rise_kamek
+from ..utils.snippets.es_mimic_rise import get_mimic_rise_kamek
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     NPC_0,
     NPC_1,
@@ -114,57 +108,29 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_22,
     NPC_23,
     NPC_24,
-    NPC_25,
-    NPC_26,
-    NPC_27,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
     SOUTHEAST,
-    SOUTHWEST,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import (
     ActionQueueAsync,
-    ActionQueueSync,
     Pause,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (
     A_SetSpriteSequence,
-    UsableActionScriptCommand,
-    A_ShiftXYPixels,
-    A_ShiftZUpPixels,
     A_FaceSoutheast,
     A_FaceSouthwest,
-    A_ShiftZUpSteps,
-    A_FaceNortheast,
-    A_FaceNorthwest,
-    A_WalkNorthPixels,
-    A_WalkSouthPixels,
     A_Pause,
-    A_ResetProperties,
-    A_ReturnQueue,
-    A_SetBit,
-    A_Jmp,
-    A_StartLoopNTimes,
     A_VisibilityOn,
     A_PlaySound,
-    A_SetSequenceSpeed,
-)
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
-    ActionScript,
 )
 from typing import TYPE_CHECKING, cast
 
-from ..utils.snippets.es_castle_statue_room_bonk import script as bonk
-from ..utils.snippets.es_castle_statue_room_bonk_mario import script as bonk_mario
-from ..utils.snippets.create_peck_subroutine import (
-    gen_peck_left_subroutine,
-    gen_peck_middle_subroutine,
-    gen_start_battle,
-)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import *
 from ..logic.renders import (
     render_bandits_way_boss,
     render_forest_maze_character_empty,
+    render_forest_maze_character,
     render_booster_tower_indoor_boss,
     render_booster_tower_henchman_scripts,
     render_marrymore_boss_henchmen,
@@ -2224,6 +2190,8 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
         op = super().render(world)
         if self.prize is None:
             render_forest_maze_character_empty(world)
+        else:
+            render_forest_maze_character(world, cast(CharacterPrize, self.prize))
         return op
 
     # Flag as checked: FOREST_LIBERATED

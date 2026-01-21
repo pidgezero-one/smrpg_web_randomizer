@@ -174,7 +174,7 @@ script = EventScript([
 	], identifier="chapel_character_queue_2"),
 	Pause(20),
 	ActionQueueAsync(target=NPC_8, subscript=[
-		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True)
+		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_queue_3_")
 	], identifier="chapel_character_queue_3"),
 	Pause(10),
 	ActionQueueAsync(target=NPC_8, subscript=[

@@ -2051,7 +2051,7 @@ sprites = SpriteCollection(
         sprite_1023,
     ],
     animation_data_banks=[AnimationBank(0x259000, 0x260000), AnimationBank(0x260000, 0x270000), AnimationBank(0x270000, 0x280000), AnimationBank(0x379a00, 0x37a000), AnimationBank(0x387cc0, 0x388000), AnimationBank(0x3db5e0, 0x3dc000), AnimationBank(0x3dd800, 0x3df000)],
-    uncompressed_tile_banks=[AnimationBank(0x280000, 0x290000), AnimationBank(0x290000, 0x2a0000), AnimationBank(0x2a0000, 0x2b0000), AnimationBank(0x2b0000, 0x2c0000), AnimationBank(0x2c0000, 0x2d0000), AnimationBank(0x2d0000, 0x2e0000), AnimationBank(0x2e0000, 0x2f0000), AnimationBank(0x2f0000, 0x300000), AnimationBank(0x300000, 0x310000), AnimationBank(0x310000, 0x320000), AnimationBank(0x320000, 0x330000), AnimationBank(0x360000, 0x370000), AnimationBank(0x370A00, 0x374580)],
+    uncompressed_tile_banks=[AnimationBank(0x280000, 0x290000), AnimationBank(0x290000, 0x2a0000), AnimationBank(0x2a0000, 0x2b0000), AnimationBank(0x2b0000, 0x2c0000), AnimationBank(0x2c0000, 0x2d0000), AnimationBank(0x2d0000, 0x2e0000), AnimationBank(0x2e0000, 0x2f0000), AnimationBank(0x2f0000, 0x300000), AnimationBank(0x300000, 0x310000), AnimationBank(0x310000, 0x320000), AnimationBank(0x320000, 0x330000), AnimationBank(0x360000, 0x370000), AnimationBank(0x370A00, 0x374580), AnimationBank(0x374660, 0x3787C0)],
     sprite_data_begins=0x250000,
     image_and_animation_data_begins=0x251800
 )

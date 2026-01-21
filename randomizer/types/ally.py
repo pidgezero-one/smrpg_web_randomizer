@@ -32,6 +32,9 @@ class SpriteAnimationState(str, Enum):
     JOY = "joy"
     JOY_BEHIND = "joy_behind"
     JOY_JUMP = "joy_jump"
+    JOY_JUMP_BEHIND = "joy_jump_behind"
+    LAUGHING = "laughing"
+    LAUGHING_BACKWARDS = "laughing_backwards"
     DISTRACTED = "distracted"
     DISPLEASED = "displeased"
     CHALLENGE = "challenge"
@@ -45,9 +48,11 @@ class SpriteAnimationState(str, Enum):
     LOOK_UP_SLIGHTLY = "look_up_slightly"
     LOOK_WAY_UP = "look_way_up"
     VICTORY_POSE = "victory_pose"
+    VICTORY_STATIC = "victory_static"
     PRINCE_NEUTRAL = "prince_neutral"
     PRINCE_DOWN = "prince_down"
     PRINCE_LEFT = "prince_left"
+    PRINCE_JOY = "prince_joy"
     HAMMER = "hammer"
     HAMMER_STATIC = "hammer_static"
 
@@ -59,9 +64,7 @@ class Ally(AllyBase):
         self,
         *args,
         _sprites_primary: dict[SpriteAnimationState, tuple[int, int, bool]] | None = None,
-        _sprites_secondary: dict[SpriteAnimationState, tuple[int, int, bool]] | None = None,
         **kwargs,
     ):
         super().__init__(*args, **kwargs)
         self._sprites_primary = _sprites_primary or {}
-        self._sprites_secondary = _sprites_secondary or {}

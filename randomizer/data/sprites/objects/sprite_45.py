@@ -25,7 +25,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=0,
+    palette_id=644,
     palette_offset=0,
-    unknown_num=8
+    unknown_num=0
 )

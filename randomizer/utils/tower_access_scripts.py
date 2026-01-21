@@ -26,13 +26,14 @@ from randomizer.data.variables.variable_names import (
 )
 
 
-# Mario opens tower when a partner (non-Mario) breaks open the door
+# Mario opens tower as not main character
 mario_script = EventScript([
     # Tower's already been opened
     JmpIfBitSet(TOWER_OPENED, ["tower_ret"]),
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueAsync(target=MARIO, subscript=[
         A_ClearSolidityBits(cant_pass_walls=True),
@@ -114,13 +115,14 @@ mario_script = EventScript([
 ])
 
 
-# Mario opens tower by himself (when playing as Mario solo or Mario starts)
+# Mario opens tower as main character
 mario_self_script = EventScript([
     # Tower's already been opened
     JmpIfBitSet(TOWER_OPENED, ["tower_ret"]),
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueSync(target=MARIO, subscript=[
         A_SetWalkingSpeed(NORMAL),
@@ -181,13 +183,14 @@ mario_self_script = EventScript([
 ])
 
 
-# Geno opens tower when Mario is the one who triggers the door
+# Geno opens tower as not main character
 geno_script = EventScript([
     # Tower's already been opened
     JmpIfBitSet(TOWER_OPENED, ["tower_ret"]),
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueAsync(target=MARIO, subscript=[
         A_ClearSolidityBits(cant_pass_walls=True),
@@ -204,16 +207,15 @@ geno_script = EventScript([
     ]),
     ActionQueueAsync(target=NPC_0, subscript=[
         A_Pause(31),
-        A_VisibilityOff(),
     ]),
     Pause(30),
-    ActionQueueSync(target=NPC_3, subscript=[
-        A_SetSpriteSequence(index=2, is_sequence=True, looping=False),
+    ActionQueueSync(target=NPC_0, subscript=[
+        A_SetSpriteSequence(index=2, sprite_offset=4, is_sequence=True, looping=False),
         A_VisibilityOn(),
     ]),
     Pause(21),
     PlaySound(sound=SO075_ROCKETING_BLAST, channel=6),
-    ActionQueueAsync(target=NPC_4, subscript=[
+    ActionQueueAsync(target=NPC_3, subscript=[
         A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
         A_WalkNorthPixels(7),
         A_WalkWestPixels(6),
@@ -228,10 +230,8 @@ geno_script = EventScript([
     ApplyTileModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=32, use_alternate=True),
     RemoveObjectFromCurrentLevel(NPC_2),
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
-    RemoveObjectFromCurrentLevel(NPC_3),
-    SummonObjectToCurrentLevel(NPC_0),
     Pause(60),
-    RemoveObjectFromCurrentLevel(NPC_4),
+    RemoveObjectFromCurrentLevel(NPC_3),
     ActionQueueSync(target=NPC_0, subscript=[
         A_SetSequenceSpeed(NORMAL),
         A_SetSpriteSequence(index=10, sprite_offset=2, is_sequence=True, looping=False),
@@ -260,6 +260,8 @@ geno_self_script = EventScript([
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
+
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueSync(target=MARIO, subscript=[
         A_SetWalkingSpeed(NORMAL),
@@ -268,16 +270,15 @@ geno_self_script = EventScript([
     ]),
     ActionQueueAsync(target=MARIO, subscript=[
         A_Pause(31),
-        A_VisibilityOff(),
     ]),
     Pause(30),
-    ActionQueueSync(target=NPC_3, subscript=[
+    ActionQueueAsync(target=MARIO, subscript=[
         A_SetSpriteSequence(index=2, is_sequence=True, looping=False),
         A_VisibilityOn(),
     ]),
     Pause(21),
     PlaySound(sound=SO075_ROCKETING_BLAST, channel=6),
-    ActionQueueAsync(target=NPC_4, subscript=[
+    ActionQueueAsync(target=NPC_3, subscript=[
         A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
         A_WalkNorthPixels(7),
         A_WalkWestPixels(6),
@@ -292,10 +293,8 @@ geno_self_script = EventScript([
     ApplyTileModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=32, use_alternate=True),
     RemoveObjectFromCurrentLevel(NPC_2),
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
-    RemoveObjectFromCurrentLevel(NPC_3),
-    SummonObjectToCurrentLevel(MARIO),
     Pause(60),
-    RemoveObjectFromCurrentLevel(NPC_4),
+    RemoveObjectFromCurrentLevel(NPC_3),
     ActionQueueSync(target=MARIO, subscript=[
         A_SetSequenceSpeed(NORMAL),
         A_SetSpriteSequence(index=10, sprite_offset=2, is_sequence=True, looping=False),
@@ -316,6 +315,7 @@ bowser_script = EventScript([
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueAsync(target=MARIO, subscript=[
         A_ClearSolidityBits(cant_pass_walls=True),
@@ -396,6 +396,7 @@ bowser_self_script = EventScript([
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueSync(target=MARIO, subscript=[
         A_SetWalkingSpeed(NORMAL),
@@ -454,6 +455,7 @@ mallow_script = EventScript([
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueAsync(target=MARIO, subscript=[
         A_ClearSolidityBits(cant_pass_walls=True),
@@ -468,7 +470,7 @@ mallow_script = EventScript([
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
         A_Pause(30),
-        A_SetSpriteSequence(index=12, is_sequence=True, mirror_sprite=True),
+        A_SetSpriteSequence(index=8, sprite_offset=5, is_sequence=True, mirror_sprite=True),
         A_FaceNortheast(),
         A_PlaySound(sound=SO068_MALLOW_YELLING_AT_CROCO, channel=4),
         A_Pause(60),
@@ -478,7 +480,7 @@ mallow_script = EventScript([
         A_Pause(90),
         A_StopSound(),
         A_SequenceLoopingOff(),
-        A_SetSpriteSequence(index=12, is_mold=True, is_sequence=True, mirror_sprite=True),
+        A_SetSpriteSequence(index=30, sprite_offset=5, is_mold=True, is_sequence=True, mirror_sprite=True),
     ]),
     Pause(10),
     PlaySound(sound=SO016_OPEN_DOOR, channel=6),
@@ -488,10 +490,17 @@ mallow_script = EventScript([
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
     ActionQueueSync(target=NPC_0, subscript=[
         A_Pause(90),
-        A_ResetProperties(),
+        A_SetSpriteSequence(index=3, is_mold=True, mirror_sprite=True, is_sequence=True),
+        A_Pause(2),
+        A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True),
+        A_Pause(2),
+        A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True),
+        A_Pause(2),
+        A_SetSpriteSequence(index=18, is_mold=True, is_sequence=True),
+        A_Pause(2),
         A_FaceSouthwest(),
         A_Pause(90),
-        A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True),
+        A_SetSpriteSequence(index=19, sprite_offset=5, is_mold=True, is_sequence=True),
         A_Pause(30),
         A_ResetProperties(),
     ]),
@@ -521,13 +530,14 @@ mallow_self_script = EventScript([
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueSync(target=MARIO, subscript=[
         A_SetWalkingSpeed(NORMAL),
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
         A_Pause(30),
-        A_SetSpriteSequence(index=12, is_sequence=True, mirror_sprite=True),
+        A_SetSpriteSequence(index=8, sprite_offset=5, is_sequence=True, mirror_sprite=True),
         A_FaceNortheast(),
         A_PlaySound(sound=SO068_MALLOW_YELLING_AT_CROCO, channel=4),
         A_Pause(60),
@@ -537,7 +547,7 @@ mallow_self_script = EventScript([
         A_Pause(90),
         A_StopSound(),
         A_SequenceLoopingOff(),
-        A_SetSpriteSequence(index=12, is_mold=True, is_sequence=True, mirror_sprite=True),
+        A_SetSpriteSequence(index=30, sprite_offset=5, is_mold=True, is_sequence=True, mirror_sprite=True),
     ]),
     Pause(10),
     PlaySound(sound=SO016_OPEN_DOOR, channel=6),
@@ -547,11 +557,10 @@ mallow_self_script = EventScript([
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
     ActionQueueSync(target=MARIO, subscript=[
         A_Pause(90),
-        A_ResetProperties(),
-        A_FaceSouthwest(),
-        A_Pause(90),
-        A_SetSpriteSequence(index=25, sprite_offset=2, is_mold=True, is_sequence=True),
-        A_Pause(30),
+        A_FaceNorthwest(),
+        A_Pause(10),
+        A_SetSpriteSequence(index=7, mirror_sprite=True, is_mold=True, is_sequence=True),
+        A_Pause(60),
         A_ResetProperties(),
     ]),
     Pause(10),
@@ -567,6 +576,7 @@ toadstool_script = EventScript([
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueAsync(target=MARIO, subscript=[
         A_ClearSolidityBits(cant_pass_walls=True),
@@ -603,7 +613,7 @@ toadstool_script = EventScript([
         A_ResetProperties(),
         A_FaceSouthwest(),
         A_Pause(40),
-        A_SetSpriteSequence(index=2, is_sequence=True),
+        A_SetSpriteSequence(index=5, sprite_offset=5, is_sequence=True),
         A_Pause(40),
         A_SetSequenceSpeed(NORMAL),
         A_ResetProperties(),
@@ -635,6 +645,7 @@ toadstool_self_script = EventScript([
     # Don't have the right character yet
     JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["tower_ret"]),
     # Do have the right character
+    EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
     ActionQueueSync(target=MARIO, subscript=[
         A_SetWalkingSpeed(NORMAL),
@@ -643,7 +654,7 @@ toadstool_self_script = EventScript([
         A_Pause(30),
         A_WalkNortheastSteps(4),
         A_Pause(20),
-        A_SetSpriteSequence(index=4, is_sequence=True, mirror_sprite=True),
+        A_SetSpriteSequence(index=12, sprite_offset=2, is_sequence=True),
         A_Pause(30),
         A_ResetProperties(),
         A_FaceNortheast(),
@@ -662,7 +673,7 @@ toadstool_self_script = EventScript([
     ActionQueueSync(target=MARIO, subscript=[
         A_Pause(40),
         A_SetSequenceSpeed(NORMAL),
-        A_SetSpriteSequence(index=10, sprite_offset=2, is_sequence=True, looping=False),
+        A_SetSpriteSequence(index=6, sprite_offset=5, is_sequence=True, looping=False),
         A_Pause(70),
         A_SetSequenceSpeed(NORMAL),
         A_ResetProperties(),

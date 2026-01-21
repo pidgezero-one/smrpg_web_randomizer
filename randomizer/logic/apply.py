@@ -393,9 +393,9 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     tower_door_room = world.rooms._rooms[R202_BOOSTER_TOWER_ENTRANCE]
     assert tower_door_room is not None
     if not world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
-        tower_door_room.get_npc_by_target_id(NPC_4)._npc = EMPTY_NPC
+        tower_door_room.get_npc_by_target_id(NPC_3)._npc = EMPTY_NPC
     if not world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
-        tower_door_room.get_npc_by_target_id(NPC_5)._npc = EMPTY_NPC
+        tower_door_room.get_npc_by_target_id(NPC_4)._npc = EMPTY_NPC
     
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN, """ You can't get inside Booster's\n Tower very easily. You'll need\n a pretty good jumper for that.[await]""")
@@ -407,7 +407,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 mario_script.contents
             )
-            tower_door_room.get_npc_by_target_id(NPC_4)._npc = MARIO_WALKING_DOWN_LEFT_NPC
+            tower_door_room.get_npc_by_target_id(NPC_0)._npc = MARIO_WALKING_DOWN_LEFT_NPC
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MALLOW):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN, """ You can't get inside Booster's\n Tower very easily. You'll need\n some pretty magical fluff for that.[await]""")
         if world.overworld_character.ally.index == 4:
@@ -418,7 +418,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 mallow_script.contents
             )
-            tower_door_room.get_npc_by_target_id(NPC_4)._npc = MALLOW_WALKING_DOWN_LEFT_NPC
+            tower_door_room.get_npc_by_target_id(NPC_0)._npc = MALLOW_WALKING_DOWN_LEFT_NPC
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a pretty strong gun for that.[await]""")
         if world.overworld_character.ally.index == 3:
@@ -439,7 +439,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 bowser_script.contents
             )
-            tower_door_room.get_npc_by_target_id(NPC_4)._npc = BOWSER_WALKING_DOWN_LEFT_NPC
+            tower_door_room.get_npc_by_target_id(NPC_0)._npc = BOWSER_WALKING_DOWN_LEFT_NPC
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a pyrotechnician for that.[await]""")
         if world.overworld_character.ally.index == 1:
@@ -450,7 +450,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 toadstool_script.contents
             )
-            tower_door_room.get_npc_by_target_id(NPC_4)._npc = TOADSTOOL_WALKING_DOWN_LEFT_NPC
+            tower_door_room.get_npc_by_target_id(NPC_0)._npc = TOADSTOOL_WALKING_DOWN_LEFT_NPC
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.PUNCHINELLO):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n to track down a hot-head for that.[await]""")
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MINES):
@@ -511,19 +511,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = MALLOW_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = MALLOW_621
 
-    # events
-
-    # treasure chests
-    # npcs
-    # freestanding
-    # boss fights
-    # star pieces
-
-    # disable empty chests
-
-    # change room contents
-
-    # inc packet size in any room that has an exp star
 
 
 def _calculate_location_stats(
