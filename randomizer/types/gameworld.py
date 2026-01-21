@@ -1225,10 +1225,10 @@ class GameWorld:
 
 
         # Finalize startup script
-        world.event_2496_startup += [Return()]
-        world.event_scripts.get_script_by_id(
+        self.event_2496_startup += [Return()]
+        self.event_scripts.get_script_by_id(
             E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
-        ).set_contents(world.event_2496_startup)
+        ).set_contents(self.event_2496_startup)
 
         # ========================================================================
         # Render scripts and dialogs FIRST to reclaim unused space for animations

@@ -12,24 +12,22 @@
 - slot graphics don’t work
 - fireworks is not a key item when it should be
 - mushroom kingdom door under the treasure chest is broken, forces toad to start moving
+- can’t pick up the prizes in rose way, positioned incorrectly
+- item pickups dont work in general. booster pass flower
+- mack in seaside: shysters sdon’t have new dalogs?
 
 - note in raz/rainis house does not show up
 - kero sewers is not blocked
 - rose way block palettes are wrong
-- can’t pick up the prizes in rose way, positioned incorrectly
 - lakitu and shy guy palettes broken
 - debug mode doesn’t max out stats
-- starting item grants should come after you jump off wall
-- overworked map is broken at bowsers keep, tries to take you to inner factory. only if you go from marios pad though, from nimbus land it works fine
-- Mario doll broken
+- overworld map is broken at bowsers keep, tries to take you to inner factory. only if you go from marios pad though, from nimbus land it works fine
 - flower chest no sprite
 - star chest no sprite
 - sotrt items by id
 - male mole sprite broken
 - pa mole in house and mines?
 - booster hill is a softlock
-- item pickups dont work in general. booster pass flower
-- mack in seaside: shysters sdon’t have new dalogs?
 - seaside frog placement not working, everything is still full prize
 - mokura cloud broken
 - bean valley FC chest crashes game (supposed to just be a frog coin)
