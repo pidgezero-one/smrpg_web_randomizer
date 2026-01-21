@@ -3175,7 +3175,7 @@ class BoosterPassFirstRoomRightChestLocation(TreasureChestLocationRow2):
     # flag as checked: npc 9 in room 100 has its object trigger disabled.
 
 
-class BoosterPassSecondRoomFlowerLocation(StandingLocationRow3):
+class BoosterPassSecondRoomFlowerLocation(StandingLocationRow1):
     _originally_held = FPFlowerPrize
     _rooms = [R101_BOOSTER_PASS_AREA_02]
     _npc_ids = [NPC_6]

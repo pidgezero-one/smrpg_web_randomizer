@@ -368,14 +368,9 @@ def generate_formation_coordinates(
 
 def randomize_enemy_formations(world: GameWorld) -> None:
     """Randomize enemy formations."""
-    print("DEBUG: Inside randomize_enemy_formations")
     max_enemies = 6
 
-    pack_count = 0
     for pack in world.battle_packs.packs:
-        pack_count += 1
-        if pack_count % 10 == 0:
-            print(f"DEBUG: Processing pack {pack_count}/{len(world.battle_packs.packs)}")
         for formation in pack.formations:
             current_members = [m for m in formation.members if m is not None]
             if not current_members:
@@ -451,8 +446,6 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                 )
 
             formation.set_members(new_members)
-
-    print(f"DEBUG: Completed randomize_enemy_formations, processed {pack_count} packs")
 
 
 def apply_exp_multiplier(world: GameWorld) -> None:

@@ -539,7 +539,7 @@ def shuffle_shops(world: GameWorld) -> None:
             continue
         item = world.items.get_by_type(item_type)
         if item and item.price > 0:
-            item.set_price(max(1, item.price // 5))
+            item.set_price(max(1, item.price // 10))
 
     # Room service menu
     lower_tier_items = [

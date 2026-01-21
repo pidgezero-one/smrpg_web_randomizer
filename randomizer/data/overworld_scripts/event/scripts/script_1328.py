@@ -43,7 +43,7 @@ script = EventScript([
 		A_SetPriority(0),
 		A_SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES)
 	]),
-	ActionQueueAsync(target=NPC_5, subscript=[
+	ActionQueueAsync(target=NPC_4, subscript=[
 		A_WalkNortheastPixels(8)
 	]),
 	Jmp(["EVENT_1328_fade_in_from_black_async_11"]),

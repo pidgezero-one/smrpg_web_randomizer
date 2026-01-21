@@ -312,7 +312,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             DI3847_ROOM_SERVICE_MENU,
             f"[page]\n Here is the menu.[await]\n"
             f" [select]  {low_item.text_shop_menu(use_remake)}\n"
-            f" [select]  {high_item.text_shop_menu(use_remake)})\n"
+            f" [select]  {high_item.text_shop_menu(use_remake)}\n"
             f" [select]  (No thanks)[await]"
         )
 

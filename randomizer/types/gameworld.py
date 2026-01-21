@@ -858,36 +858,26 @@ class GameWorld:
         # Apply shuffle results to game data AFTER successful placement
         # This must be outside the retry loop because it modifies event scripts
         # which can't be undone on retry
-        print("DEBUG: Applying shuffle results...")
         self._apply_shuffle_results()
-        print("DEBUG: Shuffle results applied")
 
         # TODO: update sprite pointers for new ally IDs
         # TODO: make up some presets
 
         # Shop shuffling happens after equipment randomization so we can score equipment
         if self.settings.isflag_enabled(ShuffleShops):
-            print("DEBUG: Shuffling shops...")
             self._shuffle_shops()
-            print("DEBUG: Shops shuffled")
 
         if self.settings.isflag_enabled(EnemyAttacks):
-            print("DEBUG: Randomizing enemy attacks...")
             self._randomize_enemy_attacks_and_spells()
-            print("DEBUG: Enemy attacks randomized")
 
         if (
             self.settings.get_flag(EnemyStats).selected
             != EnemyStatsShuffleOptions.DISABLED
         ):
-            print("DEBUG: Randomizing enemy stats...")
             self._randomize_enemy_stats()
-            print("DEBUG: Enemy stats randomized")
 
         # Update HP-based AI thresholds after all stat mutations are complete
-        print("DEBUG: Updating enemy HP thresholds...")
         self._update_enemy_hp_thresholds()
-        print("DEBUG: Enemy HP thresholds updated")
 
         # Define consumable groups for enemy drops
         consumables_group_1 = [
@@ -933,49 +923,32 @@ class GameWorld:
         ]
 
         if self.settings.isflag_enabled(EnemyDrops):
-            print("DEBUG: Randomizing enemy drops...")
             self._randomize_enemy_drops(consumables_group_1, consumables_group_2)
-            print("DEBUG: Enemy drops randomized")
 
         if self.settings.isflag_enabled(EnemyFormations):
-            print("DEBUG: Randomizing enemy formations...")
             self._randomize_enemy_formations()
-            print("DEBUG: Enemy formations randomized")
 
         # Randomize character stats
         if self.settings.isflag_enabled(CharacterStats):
-            print("DEBUG: Randomizing character stats...")
             self._randomize_character_stats()
-            print("DEBUG: Randomizing levelup XPs...")
             self._randomize_levelup_xps()
-            print("DEBUG: Character stats randomized")
 
         # Randomize character spell stats
         if self.settings.isflag_enabled(CharacterSpellStats):
-            print("DEBUG: Randomizing character spell stats...")
             self._randomize_character_spell_stats()
-            print("DEBUG: Character spell stats randomized")
 
         # Apply debug mode max stats again after all character randomization
         # (ensures debug stats override everything)
-        print("DEBUG: Applying debug max stats...")
         from ..logic.setup.debug import apply_debug_max_stats
         apply_debug_max_stats(self)
-        print("DEBUG: Debug max stats applied")
 
         # Apply EXP multiplier
-        print("DEBUG: Applying EXP multiplier...")
         self._apply_exp_multiplier()
-        print("DEBUG: EXP multiplier applied")
 
         # Apply minigame settings
-        print("DEBUG: Applying minigame settings...")
         apply_minigame_settings(self)
-        print("DEBUG: Minigame settings applied")
 
-        print("DEBUG: Rebuilding hash...")
         self._rebuild_hash()
-        print("DEBUG: Hash rebuilt")
         self._report_progress("Applying cosmetics...", 40)
 
         # Apply cosmetic settings (re-seeded for variation between generations)

@@ -6,7 +6,7 @@ from copy import copy
 
 from ..types.prizelocation import FrogDiscipleLocation, StarPieceLocation
 from ..types.logic import Inventory
-from ..types.prize import StarPiecePrize
+from ..types.prize import StarPiecePrize, CharacterPrize
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -55,6 +55,39 @@ def place(
         length_at_start = len(pending)
         #print(length_at_start, "items to place...")
         #print([type(i).__name__ for i in pending])
+
+        # Check if there's a character in the pending list
+        character_items = [item for item in pending if isinstance(item, CharacterPrize)]
+
+        # If there's a character, try to place it first
+        if character_items:
+            character = character_items[0]
+            player_has = collect_accessible_items(world)
+            accessible_locations = [
+                l for l in world.locations.values()
+                if l.can_access(player_has, world)
+                and l.can_accept(character, player_has, world)
+                and not l.has_item
+            ]
+            if force_frog_disciple:
+                frog_locations = [
+                    l for l in accessible_locations
+                    if isinstance(l, FrogDiscipleLocation)
+                ]
+                if len(frog_locations) > 0:
+                    accessible_locations = frog_locations
+
+            # If the character can be placed, place it
+            if len(accessible_locations) > 0:
+                random.shuffle(accessible_locations)
+                accessible_locations[0].set_prize(character)
+                pending.remove(character)
+                if on_placed:
+                    on_placed(character, accessible_locations[0])
+                continue  # Go back to the start of the loop
+            # If character can't be placed yet, fall through to place other items
+
+        # Standard placement algorithm for all items (including character if it couldn't be placed)
         random.shuffle(pending)
         for _, item in enumerate(pending):
             player_has = collect_accessible_items(world)
@@ -65,7 +98,7 @@ def place(
                 and l.can_accept(item, player_has, world)
                 and not l.has_item
             ]
-            if force_frog_disciple: 
+            if force_frog_disciple:
                 frog_locations = [
                     l for l in accessible_locations
                     if isinstance(l, FrogDiscipleLocation)

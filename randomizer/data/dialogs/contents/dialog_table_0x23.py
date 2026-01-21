@@ -93,7 +93,8 @@ dialog_data[28] = ''' The chapel kitchen has been making
  some pretty weird cakes lately.[await]
  I'm not sure if all of them are even
  really cakes.[await]'''
-dialog_data[29] = ''' I see you have a Stay Voucher.[await]
+dialog_data[29] = '''[await][page]
+ I see you have a Stay Voucher.[await]
  You're going to love our hotel's
  fine suite![await]'''
 dialog_data[30] = '''    Unlocked “Postgame” battles[await]'''

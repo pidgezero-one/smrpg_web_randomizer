@@ -132,8 +132,6 @@ class FroggieStickItem(Weapon):
     _perfect_window_ends = UInt8(24)
     _half_time_window_ends = UInt8(36)
 
-    _remake_name = "Froggie Stick"
-
 
 class NokNokShellItem(Weapon):
     """NokNok Shell item class"""
@@ -1368,7 +1366,7 @@ class RareScarfItem(Accessory):
     _price: int = 150
     _inflict_type = None
 
-    _remake_name = "Defense Scarf"
+    _remake_name = "DefenseScarf"
 
 
 class BtubRingItem(Accessory):
@@ -1889,7 +1887,7 @@ class BadMushroomItem(RegularItem):
     _one_side_only: bool = True
     _status_immunities: list[Status] = [Status.POISON]
 
-    _remake_name = "PoisonMushroom"
+    _remake_name = "PoisonShroom"
 
 
 class FireBombItem(RegularItem):
@@ -2149,8 +2147,6 @@ class EarlierTimesItem(RegularItem):
     _target_all: bool = True
     _one_side_only: bool = True
 
-    _remake_name = "Earlier Times"
-
 
 class FreshenUpItem(RegularItem):
     """Freshen Up item class"""
@@ -2184,7 +2180,7 @@ class RareFrogCoinItem(RegularItem):
     _price: int = 0
     _inflict_type = None
 
-    _remake_name = "Spec. FrogCoin"
+    _remake_name = "Special Coin"
 
 
 class WalletItem(RegularItem):
@@ -2436,7 +2432,7 @@ class LuckyJewelItem(RegularItem):
 
 class CrystalShardItem(RegularItem):
     """Crystal Shard item class"""
-    _item_name: str = "Crystal Shard"
+    _item_name: str = "CrystalShard"
     _prefix = ItemPrefix.EMPTY_SPACE
 
     _item_id: int = 149
@@ -2519,7 +2515,7 @@ class PowerBlastItem(RegularItem):
     _one_side_only: bool = True
     _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
 
-    _remake_name = "PartyEnergizer"
+    _remake_name = "PartyEnergzr"
 
 
 class WiltShroomItem(RegularItem):

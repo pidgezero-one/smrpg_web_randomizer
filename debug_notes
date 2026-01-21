@@ -10,14 +10,19 @@
 - bean valley FC chest crashes game (supposed to just be a frog coin)
 - nimbus guards dont have different dialogs
 - gold paint logic not working
-- debug mode doesn’t max out stats
 - booster hill is a softlock
-- remake items not showing
 - dying to failed slots does not game over
 - seaside frog placement not working, everything is still full price
 - boss formation randomizer seems broken overall, strong enemies in mushroom way
 - verify if boss music is actually being randomized or not, 2 in a row had same songPlease 
 
+- mushroom way always granting toad prizes even if you already got them
+- booster tower does not load
+- lakitu and shy guy in rose way broken
+- palettes in rose way still broken
+- toad shadow broken
+- save boxes broken in nimbus inn, marrymore inn
+- mario doesnt m ove to the right spot when attacking enemies
 - kero sewers is not blocked
 - rose way block palettes are wrong
 - lakitu and shy guy palettes broken
