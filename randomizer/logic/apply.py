@@ -136,8 +136,10 @@ from ..utils.tower_access_scripts import mario_script, mario_self_script, mallow
 
 def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # This takes the results of the shuffler and uses them to write the event scripts that grant prizes and launch boss fights, scale boss fight stats, put allies and enemies in the overworld where they've been shuffled to, etc
+    print("DEBUG: Starting apply_shuffler_results_to_game_data")
 
     # set spells and the levels at which they are learned
+    print("DEBUG: Setting spell levels...")
     for a in world.allies._allies:
         for l in a.levels:
             l.spell_learned = None
@@ -212,6 +214,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             assert spell_loc is not None
             if spell_loc.prize is not None:
                 level.spell_learned = cast(SpellPrize, spell_loc.prize)._spell
+    print("DEBUG: Spell levels set, setting starting stats...")
     # set starting stats based on where the character is recruited
     for l in [
         StartingCharacter1,
@@ -256,6 +259,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     char.starting_mg_attack += lvlup.mg_attack_plus_bonus
                     char.starting_mg_defense += lvlup.mg_defense_plus_bonus
 
+    print("DEBUG: Starting stats set, building prize events...")
     builders: dict[
         int, tuple[list[UsableEventScriptCommand], list[UsableEventScriptCommand]]
     ] = {}
@@ -384,6 +388,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
 
 
 
+    print("DEBUG: Prize events built, setting up Booster Tower gating...")
     # Booster Tower gating animation
     # On paper this could go into setup/gating.py, but script insertion depends on who the starting character is, which can be random
     tower_door_room = world.rooms._rooms[R202_BOOSTER_TOWER_ENTRANCE]
@@ -453,8 +458,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n to get there via minecart.[await]""")
 
 
+    print("DEBUG: Booster Tower gating set, applying boss stat scaling...")
     # Apply boss stat scaling after all prizes are set
     apply_boss_stat_scaling(world)
+    print("DEBUG: Boss stat scaling applied")
 
     # put the right character clone in the sunken ship mirror room
     # and also sub character sprites in overworld where appropriate
@@ -490,6 +497,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = MALLOW_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = MALLOW_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = MALLOW_621
+    print("DEBUG: apply_shuffler_results_to_game_data complete")
 
 
 
@@ -758,9 +766,12 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
     - MATCH: Each location's original stats apply to its current prize
     - RANDOM: Location stats are randomly assigned to prizes (one-to-one)
     """
+    print("DEBUG: Inside apply_boss_stat_scaling")
     if world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.VANILLA):
+        print("DEBUG: Boss stat scaling mode is VANILLA, skipping")
         return  # No scaling needed
 
+    print("DEBUG: Collecting boss fight locations...")
     # Collect all boss fight locations with valid prizes
     boss_locations: list[BossFightLocation] = []
     for location in world.locations.values():
@@ -769,23 +780,29 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
                 continue
             boss_locations.append(location)
 
+    print(f"DEBUG: Found {len(boss_locations)} boss locations")
     if not boss_locations:
         return
 
+    print("DEBUG: Calculating stats for boss locations...")
     # Calculate stats for all locations
     location_stats: list[tuple[BossFightLocation, tuple[int, int, int, int, int, int, int, int, int]]] = []
     for location in boss_locations:
         stats = _calculate_location_stats(location, world)
         if stats[0] > 0:  # Only include if valid stats (HP > 0)
             location_stats.append((location, stats))
+    print(f"DEBUG: Calculated stats for {len(location_stats)} locations")
 
     if world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.MATCH):
+        print("DEBUG: Applying MATCH mode boss stat scaling...")
         # Apply each location's stats to its own prize
         for location, stats in location_stats:
             assert isinstance(location.prize, BossFightPrize)
             _apply_stats_to_prize(location.prize, stats, world)
+        print("DEBUG: MATCH mode boss stat scaling complete")
 
     elif world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.RANDOM):
+        print("DEBUG: Applying RANDOM mode boss stat scaling...")
         # Create random one-to-one mapping between location stats and prizes
         prizes = [loc.prize for loc, _ in location_stats]
         stats_list = [stats for _, stats in location_stats]
@@ -797,3 +814,4 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
         for prize, stats in zip(prizes, stats_list):
             assert isinstance(prize, BossFightPrize)
             _apply_stats_to_prize(prize, stats, world)
+        print("DEBUG: RANDOM mode boss stat scaling complete")

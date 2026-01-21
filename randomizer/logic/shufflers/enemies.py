@@ -368,9 +368,14 @@ def generate_formation_coordinates(
 
 def randomize_enemy_formations(world: GameWorld) -> None:
     """Randomize enemy formations."""
+    print("DEBUG: Inside randomize_enemy_formations")
     max_enemies = 6
 
+    pack_count = 0
     for pack in world.battle_packs.packs:
+        pack_count += 1
+        if pack_count % 10 == 0:
+            print(f"DEBUG: Processing pack {pack_count}/{len(world.battle_packs.packs)}")
         for formation in pack.formations:
             current_members = [m for m in formation.members if m is not None]
             if not current_members:
@@ -417,10 +422,13 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             # If we have similar enemies, use them; otherwise fall back to all enemies
             candidate_pool = similar_enemies if similar_enemies else all_enemy_types
 
+            # Add unique candidates up to 3, but avoid infinite loop if not enough unique enemies exist
             while len(candidates) < 3 and candidate_pool:
-                new_enemy = random.choice(candidate_pool)
-                if new_enemy not in candidates:
-                    candidates.append(new_enemy)
+                # Find enemies not yet in candidates
+                remaining_unique = [e for e in candidate_pool if e not in candidates]
+                if not remaining_unique:
+                    break  # No more unique enemies available
+                candidates.append(random.choice(remaining_unique))
 
             num_enemies = random.randint(1, random.randint(3, max_enemies))
             num_enemies = max(num_enemies, len(current_enemy_types))
@@ -443,6 +451,8 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                 )
 
             formation.set_members(new_members)
+
+    print(f"DEBUG: Completed randomize_enemy_formations, processed {pack_count} packs")
 
 
 def apply_exp_multiplier(world: GameWorld) -> None:

@@ -44,15 +44,18 @@ class ExtraSpriteActions(str, Enum):
 
 
 class Room(RoomBase):
-    """Extended Room class with extra_sprite_actions support."""
+    """Extended Room class with extra_sprite_actions and adjacent_rooms support."""
 
     extra_sprite_actions: list[ExtraSpriteActions]
+    adjacent_rooms: list[int]  # List of adjacent room indices for EXP star buffer propagation
 
     def __init__(
         self,
         *args,
         extra_sprite_actions: list[ExtraSpriteActions] | None = None,
+        adjacent_rooms: list[int] | None = None,
         **kwargs,
     ):
         super().__init__(*args, **kwargs)
         self.extra_sprite_actions = extra_sprite_actions or []
+        self.adjacent_rooms = adjacent_rooms or []

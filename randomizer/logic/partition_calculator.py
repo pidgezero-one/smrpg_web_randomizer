@@ -24,6 +24,7 @@ from __future__ import annotations
 import copy
 from math import ceil
 from typing import TYPE_CHECKING, Any
+from dataclasses import dataclass
 from ..data.variables.sprite_names import *
 from ..data.variables.room_names import *
 
@@ -46,13 +47,45 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.
 )
 from ..types.room import ExtraSpriteActions, Room
 from ..types.ally import SpriteAnimationState, Ally
-from ..types.prize import FrogCoinPrize
+from ..types.prize import FrogCoinPrize, EXPStarPrize, CoinPrize
 from ..types.prizelocation import TreasureChestLocation
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
     from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Clone
     from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite
+
+
+# =============================================================================
+# Vanilla room state tracking for change detection
+# =============================================================================
+
+@dataclass
+class VanillaNPCState:
+    """Stores vanilla state of an NPC for change detection."""
+    sprite_id: int
+    is_gridplane: bool
+    gridplane_format: int | None  # 0-1 = 4 sprites/row, 2-3 = 3 sprites/row, None = non-gridplane
+    is_coin: bool  # True if sprite is a coin (regular, small, frog, small frog)
+
+
+@dataclass
+class VanillaChestState:
+    """Stores vanilla state of a chest for change detection."""
+    had_coins: bool
+    had_exp_star: bool
+    had_slots: bool
+
+
+@dataclass
+class VanillaRoomState:
+    """Stores vanilla state of a room for change detection."""
+    npcs: list[VanillaNPCState]
+    chests: list[VanillaChestState]
+
+
+# Global storage for vanilla room states (populated before randomization)
+_vanilla_room_states: dict[int, VanillaRoomState] = {}
 
 
 # =============================================================================
@@ -456,41 +489,223 @@ def update_npc_vram_sizes(world: GameWorld) -> None:
                 obj._npc._min_vram_size = calculated_vram
 
 
+def _is_coin_sprite(sprite_id: int) -> bool:
+    """Check if a sprite ID represents a coin."""
+    return sprite_id in [
+        SPR0192_COIN,
+        SPR0193_SMALL_COIN,
+        SPR0194_FROG_COIN,
+        SPR0606_SMALL_FROG_COIN,
+    ]
+
+
+def _get_npc_gridplane_info(world: GameWorld, sprite_id: int) -> tuple[bool, int | None]:
+    """Get gridplane information for an NPC sprite.
+
+    Returns:
+        (is_gridplane, format) where format is 0-3 for gridplanes, None for non-gridplanes
+    """
+    complete_sprite = _get_complete_sprite(world, sprite_id)
+    if complete_sprite is None:
+        return (False, None)
+
+    molds = complete_sprite.animation.properties.molds
+    if not molds or len(molds) == 0:
+        return (False, None)
+
+    mold = molds[0]
+    if not mold.gridplane:
+        return (False, None)
+
+    if not mold.tiles or len(mold.tiles) == 0:
+        return (True, None)
+
+    tile = mold.tiles[0]
+    tile_format = tile.format  # type: ignore[attr-defined]
+    return (True, tile_format)
+
+
+def capture_vanilla_room_states(world: GameWorld) -> None:
+    """Capture vanilla room states before randomization for change detection.
+
+    This should be called early in the randomization process, before any
+    modifications to rooms, NPCs, or prize locations.
+    """
+    global _vanilla_room_states
+    _vanilla_room_states.clear()
+
+    for room_index in range(512):
+        room = world.rooms._rooms[room_index]
+        if room is None:
+            continue
+
+        # Capture NPC states
+        vanilla_npcs: list[VanillaNPCState] = []
+        for obj in room.objects:
+            sprite_id = _get_npc_sprite_id(obj)
+            is_coin = _is_coin_sprite(sprite_id)
+            is_gridplane, gridplane_format = _get_npc_gridplane_info(world, sprite_id)
+
+            vanilla_npcs.append(VanillaNPCState(
+                sprite_id=sprite_id,
+                is_gridplane=is_gridplane,
+                gridplane_format=gridplane_format,
+                is_coin=is_coin,
+            ))
+
+        # Capture chest states by checking locations
+        vanilla_chests: list[VanillaChestState] = []
+        for location in world.locations.values():
+            if isinstance(location, TreasureChestLocation):
+                if room_index in location._rooms:
+                    had_coins = False
+                    had_exp_star = False
+                    had_slots = False
+
+                    if location.prize is not None:
+                        had_coins = isinstance(location.prize, (CoinPrize, FrogCoinPrize))
+                        had_exp_star = isinstance(location.prize, EXPStarPrize)
+                        from ..types.prize import SlotsPrize
+                        had_slots = isinstance(location.prize, SlotsPrize)
+
+                    vanilla_chests.append(VanillaChestState(
+                        had_coins=had_coins,
+                        had_exp_star=had_exp_star,
+                        had_slots=had_slots,
+                    ))
+
+        _vanilla_room_states[room_index] = VanillaRoomState(
+            npcs=vanilla_npcs,
+            chests=vanilla_chests,
+        )
+
+
+def _room_has_changes(world: GameWorld, room_index: int) -> bool:
+    """Check if a room has changes compared to vanilla state.
+
+    Changes include:
+    - Chest that originally held coins and no longer holds coins, or vice versa
+    - NPC receives different model with different sprite format
+    - NPC becomes a coin that was not a coin before
+    - Chest has EXP star that did not before, or vice versa
+    - Chest has slots that did not before, or vice versa
+    """
+    room = world.rooms._rooms[room_index]
+    if room is None:
+        return False
+
+    if room_index not in _vanilla_room_states:
+        # No vanilla data - treat as changed to be safe
+        return True
+
+    vanilla = _vanilla_room_states[room_index]
+
+    # Check NPC changes
+    current_npcs = list(room.objects)
+    if len(current_npcs) != len(vanilla.npcs):
+        return True  # Number of NPCs changed
+
+    for i, obj in enumerate(current_npcs):
+        if i >= len(vanilla.npcs):
+            return True
+
+        vanilla_npc = vanilla.npcs[i]
+        current_sprite_id = _get_npc_sprite_id(obj)
+        current_is_coin = _is_coin_sprite(current_sprite_id)
+
+        # Check if became/un-became a coin
+        if current_is_coin != vanilla_npc.is_coin:
+            return True
+
+        # Check if sprite format changed
+        if current_sprite_id != vanilla_npc.sprite_id:
+            current_is_gridplane, current_format = _get_npc_gridplane_info(world, current_sprite_id)
+
+            # Check if gridplane status changed
+            if current_is_gridplane != vanilla_npc.is_gridplane:
+                return True
+
+            # Check if gridplane format changed (4 sprites/row vs 3 sprites/row)
+            if current_is_gridplane and vanilla_npc.is_gridplane:
+                # 0-1 = 4 sprites/row, 2-3 = 3 sprites/row
+                vanilla_row_type = "4row" if vanilla_npc.gridplane_format in [0, 1] else "3row"
+                current_row_type = "4row" if current_format in [0, 1] else "3row"
+                if vanilla_row_type != current_row_type:
+                    return True
+
+    # Check chest changes
+    current_chest_idx = 0
+    for location in world.locations.values():
+        if isinstance(location, TreasureChestLocation):
+            if room_index in location._rooms:
+                if current_chest_idx >= len(vanilla.chests):
+                    return True  # More chests than vanilla
+
+                vanilla_chest = vanilla.chests[current_chest_idx]
+                current_chest_idx += 1
+
+                # Check coin change
+                current_has_coins = isinstance(location.prize, (CoinPrize, FrogCoinPrize)) if location.prize else False
+                if current_has_coins != vanilla_chest.had_coins:
+                    return True
+
+                # Check EXP star change
+                current_has_exp_star = isinstance(location.prize, EXPStarPrize) if location.prize else False
+                if current_has_exp_star != vanilla_chest.had_exp_star:
+                    return True
+
+                # Check slots change
+                from ..types.prize import SlotsPrize
+                current_has_slots = isinstance(location.prize, SlotsPrize) if location.prize else False
+                if current_has_slots != vanilla_chest.had_slots:
+                    return True
+
+    if current_chest_idx != len(vanilla.chests):
+        return True  # Fewer chests than vanilla
+
+    return False
+
+
+def _room_has_exp_stars(world: GameWorld, room_index: int) -> bool:
+    """Check if a room contains any EXP star prizes in treasure chests."""
+    for location in world.locations.values():
+        if isinstance(location, TreasureChestLocation):
+            if room_index in location._rooms:
+                if location.prize is not None and isinstance(location.prize, EXPStarPrize):
+                    return True
+    return False
+
+
 # =============================================================================
 # Ally Buffer Calculation
 # Determines VRAM needed for player character based on room's extra_sprite_actions
 # =============================================================================
 
-
-def _calculate_ally_buffer_from_tile_count(tile_count: int) -> int:
-    """Calculate ally buffer size from tile count.
-
-    Formula: ceil(max(0, tile_count - 4) / 4), capped at 3.
-    """
-    return min(3, ceil(max(0, tile_count - 4) / 4))
-
-
-def _get_ally_tile_count_for_state(ally: Ally, state: SpriteAnimationState) -> int:
-    """Get the tile count for a specific animation state from the ally's sprite data.
-
-    Checks _sprites_primary first, falls back to _sprites_secondary.
-    Returns 0 if the state is not found.
-    """
-    # Tuple format: (mold_id, tile_count, is_primary)
-    if state in ally._sprites_primary:
-        return ally._sprites_primary[state][1]
-    return 0
+# Mapping from ally index to base sprite ID
+ALLY_INDEX_TO_BASE_SPRITE = {
+    0: 0,   # Mario
+    1: 21,  # Mallow
+    2: 28,  # Geno
+    3: 14,  # Bowser
+    4: 7,   # Peach/Toadstool
+}
 
 
-def calculate_ally_buffer_for_room(ally: Ally, room: Room, room_index: int | None = None) -> int:  # type: ignore[type-arg]
+def calculate_ally_buffer_for_room(
+    world: GameWorld,
+    ally: Ally,
+    room: Room,  # type: ignore[type-arg]
+    room_index: int | None = None
+) -> int:
     """Calculate the ally buffer size needed for a specific room.
 
     Based on the room's extra_sprite_actions, determines which animation
     states the ally might need to perform, then calculates the maximum
-    VRAM requirement across all those states.
+    VRAM requirement across all those states using the ally's _sprites_primary dict.
 
     Args:
-        ally: The overworld character (Ally instance with _sprites_primary/_sprites_secondary)
+        world: The GameWorld instance (for accessing sprites)
+        ally: The overworld character (Ally instance with _sprites_primary)
         room: The room to calculate for (with extra_sprite_actions list)
         room_index: Optional room index for debug output
 
@@ -505,34 +720,64 @@ def calculate_ally_buffer_for_room(ally: Ally, room: Room, room_index: int | Non
         if action in EXTRA_ACTION_TO_ANIMATION_STATE:
             states_to_check.update(EXTRA_ACTION_TO_ANIMATION_STATE[action])
 
-    # Find max tile count across all required states
-    max_tile_count = 0
-    max_state = None
-    for state in states_to_check:
-        tile_count = _get_ally_tile_count_for_state(ally, state)
-        if tile_count > max_tile_count:
-            max_tile_count = tile_count
-            max_state = state
+    # Get base sprite ID for this ally
+    ally_index = int(ally.index)
+    if ally_index not in ALLY_INDEX_TO_BASE_SPRITE:
+        return 1  # Default to 1 if unknown ally
 
-    buffer_size = _calculate_ally_buffer_from_tile_count(max_tile_count)
+    base_sprite_id = ALLY_INDEX_TO_BASE_SPRITE[ally_index]
+
+    # Find max VRAM requirement across all required states
+    max_vram = 0
+    for state in states_to_check:
+        if state not in ally._sprites_primary:
+            continue
+
+        # _sprites_primary tuple format: (sequence_or_mold_id, sprite_offset, is_mold)
+        seq_or_mold_id, sprite_offset, is_mold = ally._sprites_primary[state]
+
+        # Calculate absolute sprite ID
+        absolute_sprite_id = base_sprite_id + sprite_offset
+
+        # Get the complete sprite
+        complete_sprite = _get_complete_sprite(world, absolute_sprite_id)
+        if complete_sprite is None:
+            continue
+
+        # Calculate VRAM based on whether it's a mold or sequence
+        if is_mold:
+            vram = _min_vram_from_mold(complete_sprite, seq_or_mold_id)
+        else:
+            vram = _min_vram_from_sequence(complete_sprite, seq_or_mold_id)
+
+        max_vram = max(max_vram, vram)
+
+    # Buffer size is max_vram + 1, capped at 3
+    buffer_size = min(3, max_vram + 1)
 
     return buffer_size
 
 
 def set_partitions(world: GameWorld) -> None:
-    """Calculate and set optimal partitions for all rooms in the world.
+    """Calculate and set optimal partitions for rooms that have changed.
 
     This should be called after the shuffler has run, so that chest contents
     and NPC models are finalized.
 
     This function:
-    1. Updates NPC min_vram_size values based on their action/event scripts
-    2. Calculates optimal partition buffer configurations for each room
-    3. Sets partition properties (ally buffer, extra sprite buffer, etc.)
+    1. Captures vanilla room states for comparison (if not already captured)
+    2. Updates NPC min_vram_size values based on their action/event scripts
+    3. Calculates optimal partition buffer configurations for each changed room
+    4. Sets partition properties (ally buffer, extra sprite buffer, etc.)
+    5. Applies EXP star buffer logic to rooms and their adjacent rooms
 
     Args:
         world: The GameWorld instance containing rooms, sprites, and locations
     """
+    # Capture vanilla room states if not already captured
+    if not _vanilla_room_states:
+        capture_vanilla_room_states(world)
+
     # First, update NPC VRAM sizes based on their expected animations
     update_npc_vram_sizes(world)
 
@@ -540,6 +785,16 @@ def set_partitions(world: GameWorld) -> None:
     # The ally buffer is calculated per-room based on what animations
     # the character might need to perform (from room's extra_sprite_actions)
     overworld_ally = world.overworld_character.ally
+
+    # Track rooms that need EXP star buffer adjustments
+    rooms_with_exp_stars: set[int] = set()
+    for room_index in range(512):
+        if _room_has_exp_stars(world, room_index):
+            rooms_with_exp_stars.add(room_index)
+            # Also add adjacent rooms
+            room = world.rooms._rooms[room_index]
+            if room is not None and isinstance(room, Room):
+                rooms_with_exp_stars.update(room.adjacent_rooms)
 
     # Process each room
     for room_index in range(512):
@@ -552,8 +807,20 @@ def set_partitions(world: GameWorld) -> None:
         if room_index == R068_MIDAS_RIVER_BARREL_JUMPING_RIVER:
             continue
 
+        # Check if room has changes or needs EXP star buffer
+        has_changes = _room_has_changes(world, room_index)
+        needs_exp_star_buffer = room_index in rooms_with_exp_stars
+        is_special_room = (room_index in TRIPLE_EMPTY_EX1_ROOMS or
+                          room_index in TRIPLE_EMPTY_EX0_ROOMS or
+                          room_index in SPECIAL_CASE_ROOMS or
+                          len(room.objects) == 0)
+
+        # Skip partition modification if room hasn't changed and doesn't need special handling
+        if not has_changes and not needs_exp_star_buffer and not is_special_room:
+            continue
+
         # Calculate ally buffer for this specific room
-        ally_buffer = calculate_ally_buffer_for_room(overworld_ally, room, room_index)  # type: ignore[arg-type]
+        ally_buffer = calculate_ally_buffer_for_room(world, overworld_ally, room, room_index)  # type: ignore[arg-type]
 
         # Rooms that always need triple empty + extra 1
         if room_index in TRIPLE_EMPTY_EX1_ROOMS or len(room.objects) == 0:
@@ -629,6 +896,14 @@ def set_partitions(world: GameWorld) -> None:
                     packet_size = max(packet_size, CLOSE_CHEST_ROOMS[room_index])
                 else:
                     packet_size = max(packet_size, 1)
+
+            # Apply EXP star buffer logic
+            # Rooms with EXP stars (or adjacent to rooms with EXP stars) need +2 extra sprite buffer
+            if needs_exp_star_buffer:
+                packet_size += 2
+                # Ensure allow_extra_sprite_buffer is enabled
+                if not partition.allow_extra_sprite_buffer:
+                    partition.set_allow_extra_sprite_buffer(True)
 
             # Process NPCs for buffer requirements
             last_sprite = -1
