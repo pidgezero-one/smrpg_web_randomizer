@@ -34,6 +34,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     ClearBit,
     Inc,
     CreatePacketAt7010WithEvent,
+    Set7000ToCurrentLevel,
     SummonObjectToSpecificLevel,
     EnableObjectTriggerInSpecificLevel,
     JmpIfVarEqualsConst,
@@ -365,14 +366,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             # this takes care of everything for character gating and recruitment
             place.render(world)
 
-    # Sort builders by room_id of the first JmpIfVarEqualsConst in decision list
-    def get_sort_key(item):
-        key, (decision, execution) = item
-        if decision and isinstance(decision[0], JmpIfVarEqualsConst):
-            return int(decision[0].value)
-        return 0  # Default for items without JmpIfVarEqualsConst
-
-    for key, (decision, execution) in sorted(builders.items(), key=get_sort_key):
+    for key, (decision, execution) in builders.items():
         event_script = world.event_scripts.get_script_by_id(key)
         contents: list[UsableEventScriptCommand] = []
         if key == E0167_BOSS_GRANT_STAR_PIECE:
@@ -383,6 +377,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     Inc(BOSS_VICTORY_COUNTER),
                 ]
             )
+        if E0241_FREESTANDING_1_GRANT >= key >= E0227_FREESTANDING_15_GRANT:
+            contents.insert(0, Set7000ToCurrentLevel())
         contents.extend([*decision, Return(), *execution])
         event_script.set_contents(contents)
 

@@ -283,6 +283,7 @@ class GenerateView(FormView):
             # Combine flags and cosmetics strings for parsing
             full_flag_string = (data["flags"] or "") + "     " + (data["cosmetics"] or "")
             s.set_from_flag_string(full_flag_string.strip())
+            s.debug_mode = debug_mode
             print(s.print_settings())
 
             world = create(
@@ -420,6 +421,7 @@ class GenerateStreamView(View):
                     s = Settings()
                     full_flag_string = (data["flags"] or "") + "     " + (data["cosmetics"] or "")
                     s.set_from_flag_string(full_flag_string.strip())
+                    s.debug_mode = debug_mode
 
                     # Create world with progress callback
                     world = create(seed, s, progress_callback=on_progress, debug_bps_patches=debug_bps_patches)

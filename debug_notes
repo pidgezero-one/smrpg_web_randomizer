@@ -2,46 +2,30 @@
   "version": "9.0.0",
   "flags": "A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:yaridovich|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor) B(rboss) C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap) E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp) F(skips|nowhirl|nobigbang|noko) G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng) I(replace|fake|xpstar:bosses|fix_kg) L(keys_anywhere|stars_anywhere|moveflags|postgame) O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel) P(rchars) Q(perms:vanilla_accessories_all|props:some|hints) S(rshops|biasshops|showperms) T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|fireworks:progressive) X(rstars|proglogic:hard|disperse)",
   
-- shyster in mushroom kingdom castle is there before its been occupied, also isn’t the right enemy (should be a torte). Engaging in battle skips the battle completely
 - torte is untargetable in battle
-- pickable items need to be 3x3 x y minimum
-- progressive egg in shop basement doesn’t work
-- door under chest is broken in mushroom kingdom main hall
 - battle crashes when you attack carroboscis
-  - mario doesnt move back to his spot. crash is probably related to torte
-- slot graphics don’t work
-- fireworks is not a key item when it should be
-- mushroom kingdom door under the treasure chest is broken, forces toad to start moving
-- can’t pick up the prizes in rose way, positioned incorrectly
-- item pickups dont work in general. booster pass flower
-- mack in seaside: shysters sdon’t have new dalogs?
+  - probably related to torte
+- pa mole in house and mines?
+- mokura cloud broken
+- bean valley FC chest crashes game (supposed to just be a frog coin)
+- nimbus guards dont have different dialogs
+- gold paint logic not working
+- debug mode doesn’t max out stats
+- booster hill is a softlock
+- remake items not showing
+- dying to failed slots does not game over
+- seaside frog placement not working, everything is still full price
+- boss formation randomizer seems broken overall, strong enemies in mushroom way
+- verify if boss music is actually being randomized or not, 2 in a row had same song
 
-- note in raz/rainis house does not show up
 - kero sewers is not blocked
 - rose way block palettes are wrong
 - lakitu and shy guy palettes broken
-- debug mode doesn’t max out stats
-- overworld map is broken at bowsers keep, tries to take you to inner factory. only if you go from marios pad though, from nimbus land it works fine
-- flower chest no sprite
-- star chest no sprite
-- sotrt items by id
-- male mole sprite broken
-- pa mole in house and mines?
-- booster hill is a softlock
-- seaside frog placement not working, everything is still full prize
-- mokura cloud broken
-- bean valley FC chest crashes game (supposed to just be a frog coin)
 - trampoline in nimbus land broken sprite
-- nimbus guards dont have different dialogs
 - mallow statue palette in garros house is wrong and partially cut off
 - hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
 - did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings
-- verify if boss music is actually being randomized or not, 2 in a row had same song
-- gold paint logic not working
 - mallow in mushoom way also rendered as an exp star for some reason (probably because theres an exp star in a chest and the partition is not right for him to be 8-dimensional, so bing overwritten)
 - mushroom way fight to rescue mallow is VERY broken 
-- boss formation randomizer seems broken overall, strong enemies in mushroom way
-- remake items not showing
 - mushroom way lakitu spiney toss broken
 - palette is wrong if you get into calamari fight in mushroom kingdom (failed slots)
-- dying to failed slots does not game over

@@ -102,6 +102,7 @@ def apply_gating_settings(world: GameWorld) -> None:
         MAP_GATE,
         MAP_DIRECTIONAL_BOWSERS_KEEP_GATE,
         FACTORY_GATED_BY_STAR_PIECES,
+        PAINT_GATING,
     )
     from ...data.variables.room_names import (
         R333_KERO_SEWERS_ENTRANCE,
@@ -325,6 +326,10 @@ def apply_gating_settings(world: GameWorld) -> None:
             RemoveObjectFromSpecificLevel(
                 NPC_2, R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE
             ),
+        ]
+    if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
+        world.event_2496_startup += [
+            SetBit(PAINT_GATING),
         ]
 
     # Barrel Volcano

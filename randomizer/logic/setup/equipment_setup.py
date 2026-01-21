@@ -177,3 +177,9 @@ def apply_equipment_settings(world: GameWorld) -> None:
     equip_chars_setting = world.settings.get_flag(EquipmentCharacters).selected
     if equip_chars_setting != EquipmentCharactersOptions.VANILLA:
         randomize_equipment_characters(world, equip_chars_setting)
+
+    # Update all equipment descriptions to reflect any property changes
+    # This ensures SOME mode, namesake properties, and other modifications are reflected
+    for item in world.items.items:
+        if isinstance(item, Equipment):
+            item.set_description(item.build_equipment_description())

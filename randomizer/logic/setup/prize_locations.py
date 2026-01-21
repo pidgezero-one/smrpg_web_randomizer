@@ -716,6 +716,14 @@ def set_locations(world: GameWorld) -> None:
                 "postgame_progress_checker_2"
             ),
         ).set_value(7)
+        room = world.rooms._rooms[R204_MUSHROOM_WAY_AREA_02]
+        assert room is not None
+        room.get_npc_by_target_id(NPC_10).set_visible(True)
+        room.get_npc_by_target_id(NPC_11).set_visible(True)
+        room = world.rooms._rooms[R142_LANDS_END_AREA_05_SKY_BRIDGE]
+        assert room is not None
+        room.get_npc_by_target_id(NPC_19).set_visible(True)
+
 
     invisible_item_pool = [
         MariosPadBedFlag,

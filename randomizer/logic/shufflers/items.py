@@ -11,7 +11,7 @@ from ..placement import place
 from ...types.prize import RandomPrizeSubstitute, CoinPrize, FPFlowerPrize, FrogCoinPrize
 from ..utils import debug_time
 from ...progression.prizes import FryingPanPrize, RecoveryMushroomPrize, FrogCoin1Prize
-from ...progression.prizelocations import MushroomKingdomInnPurchaseLocation
+from ...progression.prizelocations import MushroomKingdomInnPurchaseLocation, ShipCoinSnakePuzzleLocation
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -673,10 +673,12 @@ def shuffle_prizes(world: GameWorld) -> None:
                 progression_prizes.append(loc.originally_held())  # type: ignore
 
     # Always exclude freestanding coin locations (not frog coins) from shuffling
+    # except coin snake
     freestanding_coin_locations = [
         l
         for l in world.locations.values()
         if isinstance(l, StandingLocation)
+        and not isinstance(l, ShipCoinSnakePuzzleLocation)
         and l.originally_held is not None
         and isinstance(l.originally_held(), CoinPrize)
         and not isinstance(l.originally_held(), FrogCoinPrize)

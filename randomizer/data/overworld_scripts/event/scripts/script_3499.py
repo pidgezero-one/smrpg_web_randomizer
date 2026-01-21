@@ -82,7 +82,10 @@ script = EventScript([
 		A_FixedFCoordOn(),
 		A_SetWalkingSpeed(NORMAL)
 	]),
-	JmpToSubroutine(["EVENT_3499_action_queue_42"]),
+    RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
+	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3499_no_star"]),
+	RunEventAsSubroutine(E3842_BOOSTER_HILL_STAR_PIECE_SIGNAL),
+	JmpToSubroutine(["EVENT_3499_action_queue_42"], identifier="EVENT_3499_no_star"),
 	JmpToSubroutine(["EVENT_3499_action_queue_45"]),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_SetSequenceSpeed(VERY_FAST),

@@ -22,9 +22,13 @@ def _add_desc_fields(fields: list[tuple[str, object, list | bool]]) -> str:
         if isinstance(attr, bool):
             if attr:
                 result += chars
+            else:
+                result += "\x99" * len(chars)
         elif isinstance(attr, (list, tuple)):
             if check_value in attr:
                 result += chars
+            else:
+                result += "\x99" * len(chars)
     return result
 
 

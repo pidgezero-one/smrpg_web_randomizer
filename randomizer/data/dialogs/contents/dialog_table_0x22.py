@@ -1,4 +1,4 @@
-dialog_data = [""]*557
+dialog_data = [""]*558
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''

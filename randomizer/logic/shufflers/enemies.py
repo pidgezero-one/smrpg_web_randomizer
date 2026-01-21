@@ -383,9 +383,42 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             current_enemy_types = list(set(m.enemy for m in current_members))
             candidates = list(current_enemy_types)
 
+            # Calculate average stats of current formation
+            current_enemies_objs = [world.enemies.get_by_type(e) for e in current_enemy_types]
+            avg_hp = sum(e.hp for e in current_enemies_objs) / len(current_enemies_objs)
+            avg_attack = sum(e.attack for e in current_enemies_objs) / len(current_enemies_objs)
+            avg_defense = sum(e.defense for e in current_enemies_objs) / len(current_enemies_objs)
+            avg_magic_attack = sum(e.magic_attack for e in current_enemies_objs) / len(current_enemies_objs)
+            avg_magic_defense = sum(e.magic_defense for e in current_enemies_objs) / len(current_enemies_objs)
+            avg_speed = sum(e.speed for e in current_enemies_objs) / len(current_enemies_objs)
+
+            # Find enemies with similar stats (within 50% of average)
             all_enemy_types = [type(e) for e in world.enemies.enemies if not e.ohko_immune]
-            while len(candidates) < 3 and all_enemy_types:
-                new_enemy = random.choice(all_enemy_types)
+            similar_enemies = []
+            for enemy_type in all_enemy_types:
+                enemy = world.enemies.get_by_type(enemy_type)
+                # Check if stats are within reasonable range (0.5x to 2x)
+                hp_ratio = enemy.hp / avg_hp if avg_hp > 0 else 1
+                attack_ratio = enemy.attack / avg_attack if avg_attack > 0 else 1
+                defense_ratio = enemy.defense / avg_defense if avg_defense > 0 else 1
+                magic_attack_ratio = enemy.magic_attack / avg_magic_attack if avg_magic_attack > 0 else 1
+                magic_defense_ratio = enemy.magic_defense / avg_magic_defense if avg_magic_defense > 0 else 1
+                speed_ratio = enemy.speed / avg_speed if avg_speed > 0 else 1
+
+                # All stats should be within 0.5x to 2x of average
+                if (0.5 <= hp_ratio <= 2.0 and
+                    0.5 <= attack_ratio <= 2.0 and
+                    0.5 <= defense_ratio <= 2.0 and
+                    0.5 <= magic_attack_ratio <= 2.0 and
+                    0.5 <= magic_defense_ratio <= 2.0 and
+                    0.5 <= speed_ratio <= 2.0):
+                    similar_enemies.append(enemy_type)
+
+            # If we have similar enemies, use them; otherwise fall back to all enemies
+            candidate_pool = similar_enemies if similar_enemies else all_enemy_types
+
+            while len(candidates) < 3 and candidate_pool:
+                new_enemy = random.choice(candidate_pool)
                 if new_enemy not in candidates:
                     candidates.append(new_enemy)
 

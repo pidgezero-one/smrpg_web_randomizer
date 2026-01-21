@@ -238,7 +238,7 @@ room = Room(
         ChestNPC( # 4
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E2582_EMPTY,
+            event_script=E0173_CHEST_2_CONTAINER,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=3,
             upper_70a7=0,

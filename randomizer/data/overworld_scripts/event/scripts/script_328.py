@@ -31,10 +31,10 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-    JmpIfBitSet(TEMP_7042_6, ["script_325_clear"]),
+    JmpIfBitSet(TEMP_7042_6, ["script_328_clear"]),
     SetBit(TEMP_7042_6),
-    JmpIfBitClear(TEMP_7042_7, ["script_325_clear"]),
+    JmpIfBitClear(TEMP_7042_7, ["script_328_clear"]),
     ApplyTileModToLevel(use_alternate=True, room_id=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, mod_id=0),
     PlaySound(SO016_OPEN_DOOR, channel=6),
-	Return(identifier="script_325_clear")
+	Return(identifier="script_328_clear")
 ])

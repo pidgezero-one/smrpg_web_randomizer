@@ -2194,7 +2194,7 @@ class WalletItem(RegularItem):
 
     _item_id: int = 129
     _description: str = " A fat wallet"
-    _price: int = 246
+    _price: int = 0
     _inflict_type = None
 
 
@@ -2790,6 +2790,19 @@ class MarioDollItem(RegularItem):
     _inflict_type = None
 
 
+class DummyItem(RegularItem):
+    """Placeholder item for unused item IDs"""
+    _item_name: str = "--------"
+    _prefix = ItemPrefix.EMPTY_SPACE
+    _description: str = ""
+    _price: int = 0
+    _inflict_type = None
+
+    def __init__(self, item_id: int):
+        self._item_id = item_id
+        super().__init__()
+
+
 # Item collection with all items instantiated in order of item_id
 ITEMS = ItemCollection([
     WeaponItem(),  # item_id: 0
@@ -2925,6 +2938,7 @@ ITEMS = ItemCollection([
     CricketPieItem(),  # item_id: 130
     RockCandyItem(),  # item_id: 131
     CastleKey1Item(),  # item_id: 132
+    DummyItem(133),  # item_id: 133
     CastleKey2Item(),  # item_id: 134
     BambinoBombItem(),  # item_id: 135
     SheepAttackItem(),  # item_id: 136
@@ -2955,12 +2969,72 @@ ITEMS = ItemCollection([
     BigBooFlagItem(),  # item_id: 161
     DryBonesFlagItem(),  # item_id: 162
     GreaperFlagItem(),  # item_id: 163
+    DummyItem(164),  # item_id: 164
+    DummyItem(165),  # item_id: 165
     CricketJamItem(),  # item_id: 166
+    DummyItem(167),  # item_id: 167
+    DummyItem(168),  # item_id: 168
+    DummyItem(169),  # item_id: 169
+    DummyItem(170),  # item_id: 170
+    DummyItem(171),  # item_id: 171
     FireworksItem(),  # item_id: 172
     StayVoucherItem(),  # item_id: 173
     BrightCardItem(),  # item_id: 174
     MushroomItem2(),  # item_id: 175
     StarEggItem(),  # item_id: 176
+    DummyItem(177),  # item_id: 177
+    DummyItem(178),  # item_id: 178
+    DummyItem(179),  # item_id: 179
+    DummyItem(180),  # item_id: 180
+    DummyItem(181),  # item_id: 181
+    DummyItem(182),  # item_id: 182
+    DummyItem(183),  # item_id: 183
+    DummyItem(184),  # item_id: 184
+    DummyItem(185),  # item_id: 185
+    DummyItem(186),  # item_id: 186
+    DummyItem(187),  # item_id: 187
+    DummyItem(188),  # item_id: 188
+    DummyItem(189),  # item_id: 189
+    DummyItem(190),  # item_id: 190
+    DummyItem(191),  # item_id: 191
+    DummyItem(192),  # item_id: 192
+    DummyItem(193),  # item_id: 193
+    DummyItem(194),  # item_id: 194
+    DummyItem(195),  # item_id: 195
+    DummyItem(196),  # item_id: 196
+    DummyItem(197),  # item_id: 197
+    DummyItem(198),  # item_id: 198
+    DummyItem(199),  # item_id: 199
+    DummyItem(200),  # item_id: 200
+    DummyItem(201),  # item_id: 201
+    DummyItem(202),  # item_id: 202
+    DummyItem(203),  # item_id: 203
+    DummyItem(204),  # item_id: 204
+    DummyItem(205),  # item_id: 205
+    DummyItem(206),  # item_id: 206
+    DummyItem(207),  # item_id: 207
+    DummyItem(208),  # item_id: 208
+    DummyItem(209),  # item_id: 209
+    DummyItem(210),  # item_id: 210
+    DummyItem(211),  # item_id: 211
+    DummyItem(212),  # item_id: 212
+    DummyItem(213),  # item_id: 213
+    DummyItem(214),  # item_id: 214
+    DummyItem(215),  # item_id: 215
+    DummyItem(216),  # item_id: 216
+    DummyItem(217),  # item_id: 217
+    DummyItem(218),  # item_id: 218
+    DummyItem(219),  # item_id: 219
+    DummyItem(220),  # item_id: 220
+    DummyItem(221),  # item_id: 221
+    DummyItem(222),  # item_id: 222
+    DummyItem(223),  # item_id: 223
+    DummyItem(224),  # item_id: 224
+    DummyItem(225),  # item_id: 225
+    DummyItem(226),  # item_id: 226
+    DummyItem(227),  # item_id: 227
+    DummyItem(228),  # item_id: 228
+    DummyItem(229),  # item_id: 229
     ShoesItem(),  # item_id: 230
     BroochItem(),  # item_id: 231
     RingItem(),  # item_id: 232

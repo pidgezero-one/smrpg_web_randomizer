@@ -193,6 +193,8 @@ script = EventScript([
 	Jmp(["EVENT_2490_remove_from_current_level_107"]),
 	SetVarToConst(PRIMARY_TEMP_7000, 514, identifier="EVENT_2490_set_var_to_const_104"),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
+	JmpIfBitClear(GAME_OVER, ["EVENT_2490_remove_from_current_level_107"]),
+	ResetAndChooseGame(),
 	RemoveObjectFromCurrentLevel(NPC_2, identifier="EVENT_2490_remove_from_current_level_107"),
 	FadeInFromBlack(sync=False),
 	ActionQueueSync(target=MEM_70A8, subscript=[

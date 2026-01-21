@@ -485,6 +485,7 @@ class GameWorld:
             "locations": self._get_locations_json(),
             "shops": self._get_shops_json(),
             "palettes": self._get_palettes_json(),
+            "spell_learning_levels": self._get_spell_learning_levels_json(),
             "password": self.password,
             "songs": [self.song_1, self.song_2, self.song_3],
         }
@@ -602,6 +603,30 @@ class GameWorld:
             result["Swap Shop (Seaside)"] = [
                 get_item_name(i) for i in self.bomb_shop_items
             ]
+
+        return result
+
+    def _get_spell_learning_levels_json(self) -> dict[str, dict[str, int]]:
+        """Get JSON representation of which spells are learned at which levels for each character."""
+        result: dict[str, dict[str, int]] = {}
+
+        for ally in self.allies._allies:
+            character_name = ally.name
+            spells_by_level: dict[str, int] = {}
+
+            # Check starting spells (learned at level 1)
+            for spell_type in ally.starting_magic:
+                spell_name = spell_type.__name__
+                spells_by_level[spell_name] = 1
+
+            # Check level-up spells
+            for level_up in ally.levels:
+                if level_up.spell_learned:
+                    spell_name = level_up.spell_learned.__name__
+                    spells_by_level[spell_name] = level_up.level
+
+            if spells_by_level:
+                result[character_name] = spells_by_level
 
         return result
 
@@ -1368,6 +1393,7 @@ class GameWorld:
                 "shops": executor.submit(self.shops.render),
                 "spells": executor.submit(self.spells.render),
                 "allies": executor.submit(self.allies.render),
+                "world_map_locations": executor.submit(self.world_map_locations.render),
             }
             # Wait for all to complete and add results to patch
             debug_counter = 8
@@ -1382,6 +1408,7 @@ class GameWorld:
                 "shops",
                 "spells",
                 "allies",
+                "world_map_locations",
             ]:
                 result = futures[key].result()
                 patch.add_dict(result, source=key)

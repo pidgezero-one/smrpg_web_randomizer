@@ -531,8 +531,12 @@ def shuffle_shops(world: GameWorld) -> None:
             if item.price > 0:
                 item.set_price(1)
 
-    # Apply Frog Coin Emporium price reduction (divide by 5)
-    for item_type in frog_emporium_items:
+    # Apply Frog Coin shop price reduction (divide by 5)
+    # This applies to both Frog Disciple and Frog Coin Emporium
+    frog_coin_items = frog_disciple_set | frog_emporium_items
+    for item_type in frog_coin_items:
+        if item_type is None:
+            continue
         item = world.items.get_by_type(item_type)
         if item and item.price > 0:
             item.set_price(max(1, item.price // 5))
