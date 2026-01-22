@@ -680,9 +680,6 @@
                     }
                 }).change();
 
-                // unfocus tooltips on setting flag
-                $(".flag-form-input").change(() => {buildFlagString(); $(':focus').blur()});
-
                 // Generate button
                 $("#generate-btn").click((event) => {
                     $("#seed-details").hide();
@@ -842,6 +839,10 @@
                     $(this).siblings('label').find('.ordinance-order').text('');
                 });
             }
+
+            $('.body').on('change', '.flag-form-input:not(".ordinance-checkbox")', function() {
+                buildFlagString();
+            })
 
             // Check if a single requirement is met
             function checkRequirement(req) {
