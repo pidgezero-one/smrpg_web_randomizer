@@ -446,7 +446,7 @@ class ProgressiveFireworksObject(ItemNPC):
     _chest_packet_id = P233_CRYSTAL_CHEST
     _static_packet_id = P090_BAG_STATIC
     _falling_packet_id = P037_ITEM_BAG_FALL
-    _chest_event_id = E0934_PROGRESSIVE_FIREWORK_CHEST_PACKET
+    _chest_event_id = E3100_PROGRESSIVE_FIREWORKS_CHEST_GRANT
 
 class CrystalObject(ItemNPC):
     _base = CRYSTAL_BASE

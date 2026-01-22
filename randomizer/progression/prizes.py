@@ -2220,7 +2220,7 @@ class MarioRecruitmentPrize(CharacterPrize):
     _name_props = CharacterName(
         "`MARIO_NAME`", "man", "guy", "sir", "mister", "Mr", "mate", ", man"
     )
-    _character_model = MARIO_WALKING_DOWN_LEFT_NPC
+    _character_model = MARIO_CLONE_WALKING_DOWN_LEFT_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(MARIO)]
@@ -2248,7 +2248,7 @@ class MallowRecruitmentPrize(CharacterPrize):
     _name_props = CharacterName(
         "`MALLOW_NAME`", "boy", "guy", "sir", "mister", "Mr", "kid", ", kid"
     )
-    _character_model = MALLOW_WALKING_DOWN_LEFT_NPC
+    _character_model = MALLOW_CLONE_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(MALLOW)]
@@ -2293,7 +2293,7 @@ class GenoRecruitmentPrize(CharacterPrize):
     _name_props = CharacterName(
         "`GENO_NAME`", "man", "guy", "sir", "mister", "Mr", "mate", ", man"
     )
-    _character_model = GENO_WALKING_DOWN_LEFT_NPC
+    _character_model = GENO_CLONE_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(GENO)]
@@ -2337,7 +2337,7 @@ class BowserRecruitmentPrize(CharacterPrize):
     _name_props = CharacterName(
         "`BOWSER_NAME`", "man", "guy", "sir", "mister", "Mr", "mate", ", man"
     )
-    _character_model = BOWSER_WALKING_DOWN_LEFT_NPC
+    _character_model = BOWSER_CLONE_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(BOWSER)]
@@ -2365,7 +2365,7 @@ class ToadstoolRecruitmentPrize(CharacterPrize):
     _name_props = CharacterName(
         "`PEACH_NAME`", "woman", "gal", "ma'am", "miss", "Ms", "lass", ""
     )
-    _character_model = TOADSTOOL_WALKING_DOWN_LEFT_NPC
+    _character_model = TOADSTOOL_NPC
 
     def recruit(self, world: GameWorld, show_dialog: bool = False) -> EventScript:
         output: list[UsableEventScriptCommand] = [CharacterJoinsParty(TOADSTOOL)]
