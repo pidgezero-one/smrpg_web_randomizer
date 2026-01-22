@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CreatePacketAt7010WithEvent(packet=P086_FLOWER_STATIC, event_id=E0240_FREESTANDING_2_GRANT, destinations=["EVENT_3414_ret_1"]),
+	CreatePacketAt7010WithEvent(packet=P012_FLOWER_STATIC, event_id=E0240_FREESTANDING_2_GRANT, destinations=["EVENT_3414_ret_1"]),
 	Return(identifier="EVENT_3414_ret_1")
 ])

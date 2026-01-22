@@ -76,7 +76,7 @@ dialog_data[41] = '''
               Gotta go fast![await]'''
 dialog_data[42] = '''Got an “[0x70A7]”![end]'''
 dialog_data[43] = '''Got a “[0x70A7]”![end]'''
-dialog_data[44] = '''             Got a "Flower"[await]'''
+dialog_data[44] = '''             Got a “Flower”[await]'''
 dialog_data[45] = ''' My son did 30 super jumps the
  other day! I'm so proud of him.[await][page]
  A nice fellow from Monstro Town

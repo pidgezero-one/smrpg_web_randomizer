@@ -1564,7 +1564,7 @@ JONATHAN_JONES_NPC_2 = NPC(
 )
 
 VALENTINA_NPC = NPC(
-    sprite_id=SPR0056_VALENTINA,
+    sprite_id=SPR0623_VALENTINA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -2140,7 +2140,7 @@ NIMBUS_GUARD_NPC = NPC(
 )
 
 SPLASH_WATER_DROPLETS_NPC = NPC(
-    sprite_id=SPR0623_SPLASH_WATER_DROPLETS,
+    sprite_id=SPR0056_SPLASH_WATER_DROPLETS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -6028,7 +6028,7 @@ TERRAPIN_NPC_2 = NPC(
 )
 
 SPLASH_WATER_DROPLETS_NPC_2 = NPC(
-    sprite_id=SPR0623_SPLASH_WATER_DROPLETS,
+    sprite_id=SPR0056_SPLASH_WATER_DROPLETS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -14592,7 +14592,7 @@ BIRDY_NPC_6 = NPC(
 )
 
 VALENTINA_NPC_2 = NPC(
-    sprite_id=SPR0056_VALENTINA,
+    sprite_id=SPR0623_VALENTINA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -14616,7 +14616,7 @@ VALENTINA_NPC_2 = NPC(
 )
 
 VALENTINA_NPC_3 = NPC(
-    sprite_id=SPR0056_VALENTINA,
+    sprite_id=SPR0623_VALENTINA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -14640,7 +14640,7 @@ VALENTINA_NPC_3 = NPC(
 )
 
 VALENTINA_NPC_4 = NPC(
-    sprite_id=SPR0056_VALENTINA,
+    sprite_id=SPR0623_VALENTINA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,

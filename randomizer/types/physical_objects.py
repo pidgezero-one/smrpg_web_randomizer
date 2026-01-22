@@ -601,7 +601,7 @@ class ItemNPC(NPC):
     _chest_packet_id: int = P005_BRIEF_POOF_BAG
     _chest_event_id: int = E0883_CHEST_ITEM_BAG_PACKET
     _static_packet_id: int = P037_ITEM_BAG_FALL
-    _falling_packet_id: int = P090_BAG_STATIC
+    _falling_packet_id: int = P020_BAG_STATIC
     _chest_70a7_upper: int = 0
     _hover: bool = False
 

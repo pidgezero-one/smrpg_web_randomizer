@@ -38,9 +38,9 @@ script = EventScript([
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["chest_shiny_stone"]),
 	CreatePacketAt7010(packet=P005_BRIEF_POOF_BAG, destinations=["EVENT_943_ret_3"]),
     JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_943_ret_3"),
-	CreatePacketAt7010(packet=P233_CRYSTAL_CHEST, destinations=["EVENT_943_ret_4"], identifier="chest_shiny_stone"),
+	CreatePacketAt7010(packet=P115_CRYSTAL_CHEST, destinations=["EVENT_943_ret_4"], identifier="chest_shiny_stone"),
     JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_943_ret_4"),
-	CreatePacketAt7010(packet=P120_COOKIE_CHEST, destinations=["EVENT_943_ret_5"], identifier="chest_carbo_cookie"),
+	CreatePacketAt7010(packet=P073_COOKIE_CHEST, destinations=["EVENT_943_ret_5"], identifier="chest_carbo_cookie"),
 	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_943_ret_5"),
 	Return()
 ])

@@ -14,7 +14,6 @@ P000_FLASHING_POOF_FLOWER = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P001_FLASHING_POOF_MUSHROOM = Packet(
     packet_id=1,
     sprite_id=SPR0195_FLOWER,
@@ -23,7 +22,6 @@ P001_FLASHING_POOF_MUSHROOM = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P002_BRIEF_KEY = Packet(
     packet_id=2,
     sprite_id=SPR0195_FLOWER,
@@ -32,7 +30,6 @@ P002_BRIEF_KEY = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P003_BRIEF_STAR = Packet(
     packet_id=3,
     sprite_id=SPR0195_FLOWER,
@@ -41,7 +38,6 @@ P003_BRIEF_STAR = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x02, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P004_MIMIC_POOF_ON_DEFEAT = Packet(
     packet_id=4,
     sprite_id=SPR0195_FLOWER,
@@ -50,7 +46,6 @@ P004_MIMIC_POOF_ON_DEFEAT = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x02, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P005_BRIEF_POOF_BAG = Packet(
     packet_id=5,
     sprite_id=SPR0195_FLOWER,
@@ -59,97 +54,86 @@ P005_BRIEF_POOF_BAG = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P006_STATIC_SIDEWAYS_SPARKLE = Packet(
+P006_FEATHER_CHEST = Packet(
     packet_id=6,
-    sprite_id=SPR0197_SPARKLE_SIDEWAYS,
+    sprite_id=SPR0252_FEATHER,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P007_STATIC_SIDEWAYS_SPARKLE = Packet(
+P007_STAR_PIECE_CHEST = Packet(
     packet_id=7,
-    sprite_id=SPR0197_SPARKLE_SIDEWAYS,
+    sprite_id=SPR0226_TINY_STAR,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P008_STATIC_EXPLOSION = Packet(
+P008_FEATHER_FALL = Packet(
     packet_id=8,
-    sprite_id=SPR0200_EXPLOSION,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0252_FEATHER,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P009_STATIC_BLUE_CLOUD = Packet(
+P009_STAR_PIECE_FALL = Packet(
     packet_id=9,
-    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0226_TINY_STAR,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P010_STATIC_SMALL_FROG_COIN = Packet(
+P010_FEATHER_STATIC = Packet(
     packet_id=10,
-    sprite_id=SPR0202_SHOES,
+    sprite_id=SPR0252_FEATHER,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P011_STATIC_LEVELUP_TEXT = Packet(
+P011_STAR_PIECE_STATIC = Packet(
     packet_id=11,
-    sprite_id=SPR0203_LEVEL_UP_TEXT_FROM_INVINCIBLE_STAR,
+    sprite_id=SPR0226_TINY_STAR,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P012_STATIC_GREY_EXPLOSION = Packet(
+P012_FLOWER_STATIC = Packet(
     packet_id=12,
-    sprite_id=SPR0204_GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS,
+    sprite_id=SPR0195_FLOWER,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P013_STATIC_MICROBOMB = Packet(
+P013_MUSHROOM_STATIC = Packet(
     packet_id=13,
-    sprite_id=SPR0205_MICROBOMB_PACKET,
+    sprite_id=SPR0195_FLOWER,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0581_SEQUENCE_1_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P014_UNUSED = Packet(
+P014_KEY_STATIC = Packet(
     packet_id=14,
-    sprite_id=SPR0255_BEETLE,
+    sprite_id=SPR0195_FLOWER,
     shadow=False,
-    action_script_id=A0914_EMPTY,
+    action_script_id=A0721_SEQUENCE_2_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x03, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P015_UNUSED = Packet(
+P015_KEY_FALLING = Packet(
     packet_id=15,
-    sprite_id=SPR0255_BEETLE,
-    shadow=False,
-    action_script_id=A0915_EMPTY,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x03, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    sprite_id=SPR0195_FLOWER,
+    shadow=True,
+    action_script_id=A0204_SEQUENCE_2_FALL,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P016_BIG_COIN_BEING_COLLECTED = Packet(
     packet_id=16,
     sprite_id=SPR0192_COIN,
@@ -158,7 +142,6 @@ P016_BIG_COIN_BEING_COLLECTED = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x05, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P017_SMALL_MINIGAME_COIN = Packet(
     packet_id=17,
     sprite_id=SPR0193_SMALL_COIN,
@@ -167,7 +150,6 @@ P017_SMALL_MINIGAME_COIN = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x05, 0x03, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P018_SMALL_COIN_BEING_COLLECTED = Packet(
     packet_id=18,
     sprite_id=SPR0193_SMALL_COIN,
@@ -176,7 +158,6 @@ P018_SMALL_COIN_BEING_COLLECTED = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x05, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P019_FROG_COIN_BEING_COLLECTED = Packet(
     packet_id=19,
     sprite_id=SPR0194_FROG_COIN,
@@ -185,16 +166,14 @@ P019_FROG_COIN_BEING_COLLECTED = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x05, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P020_WATER_DROPLETS_USE_7016_701A = Packet(
+P020_BAG_STATIC = Packet(
     packet_id=20,
-    sprite_id=SPR0238_RED_JUICE,
+    sprite_id=SPR0195_FLOWER,
     shadow=False,
-    action_script_id=A0167_SPAWN_AT_7016_701A_CALCULATED,
+    action_script_id=A0545_SEQUENCE_5_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P021_FLASHING_SMALL_EXPLOSION = Packet(
     packet_id=21,
     sprite_id=SPR0200_EXPLOSION,
@@ -203,7 +182,6 @@ P021_FLASHING_SMALL_EXPLOSION = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P022_RECURSIVE_SPARKLES = Packet(
     packet_id=22,
     sprite_id=SPR0197_SPARKLE_SIDEWAYS,
@@ -212,7 +190,6 @@ P022_RECURSIVE_SPARKLES = Packet(
     unknown_bits=[True, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x03, 0x00, 0x00]),
 )
-
 P023_LOOPING_SINGLE_SPARKLE = Packet(
     packet_id=23,
     sprite_id=SPR0197_SPARKLE_SIDEWAYS,
@@ -221,7 +198,6 @@ P023_LOOPING_SINGLE_SPARKLE = Packet(
     unknown_bits=[True, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x03, 0x00, 0x00]),
 )
-
 P024_REGULAR_SOUND_EXPLOSION = Packet(
     packet_id=24,
     sprite_id=SPR0200_EXPLOSION,
@@ -230,34 +206,30 @@ P024_REGULAR_SOUND_EXPLOSION = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x03, 0x02, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P025_UNUSED = Packet(
+P025_RING_CHEST = Packet(
     packet_id=25,
-    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
+    sprite_id=SPR0196_RING,
     shadow=False,
-    action_script_id=A0063_EXPLOSION_WITH_SOUND,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P026_RING_FALL = Packet(
+    packet_id=26,
+    sprite_id=SPR0196_RING,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P026_UNUSED = Packet(
-    packet_id=26,
-    sprite_id=SPR0236_GREEN_JUICE,
-    shadow=False,
-    action_script_id=A0621_SEQ_10_STORE_BUTTON_INPUT_AND_MAKE_SOUND,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x06, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P027_UNUSED = Packet(
+P027_RING_STATIC = Packet(
     packet_id=27,
-    sprite_id=SPR0237_EGG,
+    sprite_id=SPR0196_RING,
     shadow=False,
-    action_script_id=A0622_EMPTY,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x04, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P028_MUSHROOM_THROWN_SOUTHWEST = Packet(
     packet_id=28,
     sprite_id=SPR0195_FLOWER,
@@ -266,25 +238,22 @@ P028_MUSHROOM_THROWN_SOUTHWEST = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P029_SPARKLE_LINE_LOOPED = Packet(
+P029_BROOCH_STATIC = Packet(
     packet_id=29,
-    sprite_id=SPR0198_SPARKLE_DOWNWARDS,
+    sprite_id=SPR0207_BROOCH,
     shadow=False,
-    action_script_id=A0507_SPARKLE_LINE_LOOPED,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P030_WATER_SPLASH_DROPS_SFX = Packet(
     packet_id=30,
-    sprite_id=SPR0238_RED_JUICE,
+    sprite_id=SPR0056_SPLASH_WATER_DROPLETS,
     shadow=False,
     action_script_id=A0720_WATER_SPLASH_DROPS_SFX,
     unknown_bits=[True, False, False],
     unknown_bytes=bytearray([0x00, 0x03, 0x02, 0x03, 0x03, 0x00, 0x00]),
 )
-
 P031_LEVELUP_TEXT = Packet(
     packet_id=31,
     sprite_id=SPR0203_LEVEL_UP_TEXT_FROM_INVINCIBLE_STAR,
@@ -293,7 +262,6 @@ P031_LEVELUP_TEXT = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P032_BLUE_CLOUD = Packet(
     packet_id=32,
     sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
@@ -302,7 +270,6 @@ P032_BLUE_CLOUD = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P033_BOMB_EXPLOSION = Packet(
     packet_id=33,
     sprite_id=SPR0200_EXPLOSION,
@@ -311,7 +278,6 @@ P033_BOMB_EXPLOSION = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P034_GREY_EXPLOSION_SFX = Packet(
     packet_id=34,
     sprite_id=SPR0204_GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS,
@@ -320,7 +286,6 @@ P034_GREY_EXPLOSION_SFX = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x03, 0x02, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P035_FLOWER_FALL = Packet(
     packet_id=35,
     sprite_id=SPR0195_FLOWER,
@@ -329,7 +294,6 @@ P035_FLOWER_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P036_MUSHROOM_FALL = Packet(
     packet_id=36,
     sprite_id=SPR0195_FLOWER,
@@ -338,7 +302,6 @@ P036_MUSHROOM_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P037_ITEM_BAG_FALL = Packet(
     packet_id=37,
     sprite_id=SPR0195_FLOWER,
@@ -347,7 +310,6 @@ P037_ITEM_BAG_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P038_MUSHROOM_FALL_DEFAULT_PRIORITY = Packet(
     packet_id=38,
     sprite_id=SPR0195_FLOWER,
@@ -356,61 +318,54 @@ P038_MUSHROOM_FALL_DEFAULT_PRIORITY = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P039_UNUSED = Packet(
+P039_BROOCH_FALL = Packet(
     packet_id=39,
-    sprite_id=SPR0192_COIN,
-    shadow=False,
-    action_script_id=A0915_EMPTY,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x01, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    sprite_id=SPR0207_BROOCH,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P040_UNUSED = Packet(
+P040_BROOCH_CHEST = Packet(
     packet_id=40,
-    sprite_id=SPR0208_HAMMER_PACKET,
+    sprite_id=SPR0207_BROOCH,
     shadow=False,
-    action_script_id=A0929_EMPTY,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P041_UNUSED = Packet(
+P041_SHOES_STATIC = Packet(
     packet_id=41,
-    sprite_id=SPR0209_STICK_PACKET,
+    sprite_id=SPR0202_SHOES,
     shadow=False,
-    action_script_id=A0929_EMPTY,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P042_UNUSED = Packet(
+P042_SHOES_FALL = Packet(
     packet_id=42,
-    sprite_id=SPR0210_CHOMP_PACKET,
-    shadow=False,
-    action_script_id=A0929_EMPTY,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0202_SHOES,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P043_UNUSED = Packet(
+P043_SHOES_CHEST = Packet(
     packet_id=43,
-    sprite_id=SPR0211_FAN_PACKET,
+    sprite_id=SPR0202_SHOES,
     shadow=False,
-    action_script_id=A0929_EMPTY,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P044_UNUSED = Packet(
+P044_BANANA_STATIC = Packet(
     packet_id=44,
-    sprite_id=SPR0212_RED_MUSHROOM_ITEM,
+    sprite_id=SPR0222_BANANA_PEEL,
     shadow=False,
-    action_script_id=A0929_EMPTY,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P045_TELEPORTATION_SHINE = Packet(
     packet_id=45,
     sprite_id=SPR0213_AXEM_RED_TELEPORT,
@@ -419,16 +374,14 @@ P045_TELEPORTATION_SHINE = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x00, 0x00, 0x00]),
 )
-
-P046_UNUSED = Packet(
+P046_BANANA_FALL = Packet(
     packet_id=46,
-    sprite_id=SPR0205_MICROBOMB_PACKET,
-    shadow=False,
-    action_script_id=A0939_EMPTY,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x01, 0x00, 0x01, 0x03, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0222_BANANA_PEEL,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P047_BLUE_FIRE_TRAIL = Packet(
     packet_id=47,
     sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
@@ -437,16 +390,14 @@ P047_BLUE_FIRE_TRAIL = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x02, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P048_UNUSED = Packet(
+P048_BANANA_CHEST = Packet(
     packet_id=48,
-    sprite_id=SPR0198_SPARKLE_DOWNWARDS,
+    sprite_id=SPR0222_BANANA_PEEL,
     shadow=False,
-    action_script_id=A0938_UNUSED,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P049_HAMMER_SPARKS_SFX = Packet(
     packet_id=49,
     sprite_id=SPR0198_SPARKLE_DOWNWARDS,
@@ -455,7 +406,6 @@ P049_HAMMER_SPARKS_SFX = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P050_WATER_BLAST_SFX = Packet(
     packet_id=50,
     sprite_id=SPR0242_WHITE_GAS_CLOUD,
@@ -464,7 +414,6 @@ P050_WATER_BLAST_SFX = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P051_DRILL_BIT = Packet(
     packet_id=51,
     sprite_id=SPR0243_MACHINE_MADE_DRILL_BIT,
@@ -473,7 +422,6 @@ P051_DRILL_BIT = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x02, 0x00, 0x00]),
 )
-
 P052_BOMB_EXPLOSION_FASTER = Packet(
     packet_id=52,
     sprite_id=SPR0200_EXPLOSION,
@@ -482,16 +430,14 @@ P052_BOMB_EXPLOSION_FASTER = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P053_UNUSED = Packet(
+P053_CROWN_CHEST = Packet(
     packet_id=53,
-    sprite_id=SPR0194_FROG_COIN,
+    sprite_id=SPR0216_CROWN,
     shadow=False,
-    action_script_id=A0196_EMPTY,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x05, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P054_LEVELUP_BONUS_POW = Packet(
     packet_id=54,
     sprite_id=SPR0230_LEVEL_UP_BONUS_POW_POWER,
@@ -500,7 +446,6 @@ P054_LEVELUP_BONUS_POW = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P055_LEVELUP_BONUS_S = Packet(
     packet_id=55,
     sprite_id=SPR0231_LEVEL_UP_BONUS_STAR_MAGIC,
@@ -509,7 +454,6 @@ P055_LEVELUP_BONUS_S = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P056_LEVELUP_BONUS_HP = Packet(
     packet_id=56,
     sprite_id=SPR0232_LEVEL_UP_BONUS_HP,
@@ -518,637 +462,566 @@ P056_LEVELUP_BONUS_HP = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
-P057_UNUSED = Packet(
+P057_CROWN_FALL = Packet(
     packet_id=57,
-    sprite_id=SPR0233_GREEN_BOMB,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0216_CROWN,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P058_UNUSED = Packet(
+P058_CROWN_STATIC = Packet(
     packet_id=58,
-    sprite_id=SPR0234_YELLOW_BOMB,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    sprite_id=SPR0216_CROWN,
+    shadow=True,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P059_UNUSED = Packet(
+P059_COIN_FALL = Packet(
     packet_id=59,
-    sprite_id=SPR0235_BLUE_BOMB,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0192_COIN,
+    shadow=True,
+    action_script_id=A0916_SEQ_1_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P060_UNUSED = Packet(
+P060_SMALL_COIN_FALL = Packet(
     packet_id=60,
-    sprite_id=SPR0236_GREEN_JUICE,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0193_SMALL_COIN,
+    shadow=True,
+    action_script_id=A0916_SEQ_1_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P061_UNUSED = Packet(
+P061_FROG_COIN_FALL = Packet(
     packet_id=61,
-    sprite_id=SPR0237_EGG,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0194_FROG_COIN,
+    shadow=True,
+    action_script_id=A0916_SEQ_1_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P062_UNUSED = Packet(
+P062_COIN_STILL = Packet(
     packet_id=62,
-    sprite_id=SPR0238_RED_JUICE,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0925_SPINNING_STATIC_COIN,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P063_UNUSED = Packet(
+P063_SMALL_COIN_STATIC = Packet(
     packet_id=63,
-    sprite_id=SPR0239_BLUE_R_DRINK,
+    sprite_id=SPR0193_SMALL_COIN,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0925_SPINNING_STATIC_COIN,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P064_COIN_SHOWER_E = Packet(
+P064_FROG_COIN_STATIC = Packet(
     packet_id=64,
-    sprite_id=SPR0192_COIN,
+    sprite_id=SPR0194_FROG_COIN,
     shadow=False,
-    action_script_id=A0896_COIN_SHOWER_E,
-    unknown_bits=[False, True, True],
-    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    action_script_id=A0925_SPINNING_STATIC_COIN,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P065_COIN_SHOWER_SE = Packet(
+P065_BOMB_STATIC = Packet(
     packet_id=65,
-    sprite_id=SPR0192_COIN,
+    sprite_id=SPR0205_MICROBOMB_PACKET,
     shadow=False,
-    action_script_id=A0897_COIN_SHOWER_SE,
-    unknown_bits=[False, True, True],
-    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P066_COIN_SHOWER_S = Packet(
+P066_BOMB_FALL = Packet(
     packet_id=66,
-    sprite_id=SPR0192_COIN,
-    shadow=False,
-    action_script_id=A0898_COIN_SHOWER_S,
-    unknown_bits=[False, True, True],
-    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    sprite_id=SPR0205_MICROBOMB_PACKET,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P067_COIN_SHOWER_SW = Packet(
+P067_BOMB_CHEST = Packet(
     packet_id=67,
-    sprite_id=SPR0192_COIN,
+    sprite_id=SPR0205_MICROBOMB_PACKET,
     shadow=False,
-    action_script_id=A0899_COIN_SHOWER_SW,
-    unknown_bits=[False, True, True],
-    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P068_COIN_SHOWER_W = Packet(
+P068_EGG_STATIC = Packet(
     packet_id=68,
-    sprite_id=SPR0192_COIN,
+    sprite_id=SPR0237_EGG,
     shadow=False,
-    action_script_id=A0900_COIN_SHOWER_W,
-    unknown_bits=[False, True, True],
-    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P069_COIN_SHOWER_NW = Packet(
+P069_EGG_FALLING = Packet(
     packet_id=69,
-    sprite_id=SPR0192_COIN,
-    shadow=False,
-    action_script_id=A0901_COIN_SHOWER_NW,
-    unknown_bits=[False, True, True],
-    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    sprite_id=SPR0237_EGG,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P070_COIN_SHOWER_N = Packet(
+P070_EGG_CHEST = Packet(
     packet_id=70,
-    sprite_id=SPR0192_COIN,
+    sprite_id=SPR0237_EGG,
     shadow=False,
-    action_script_id=A0902_COIN_SHOWER_N,
-    unknown_bits=[False, True, True],
-    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P071_COIN_SHOWER_NE = Packet(
+P071_COOKIE_STATIC = Packet(
     packet_id=71,
-    sprite_id=SPR0192_COIN,
+    sprite_id=SPR0254_YOSHI_COOKIE,
     shadow=False,
-    action_script_id=A0903_COIN_SHOWER_NE,
-    unknown_bits=[False, True, True],
-    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P072_COIN_SHOWER_E_DB = Packet(
+P072_COOKIE_FALL = Packet(
     packet_id=72,
-    sprite_id=SPR0192_COIN,
-    shadow=False,
-    action_script_id=A0905_COIN_SHOWER_E_DB,
-    unknown_bits=[False, True, True],
-    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
+    sprite_id=SPR0254_YOSHI_COOKIE,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P073_UNUSED = Packet(
+P073_COOKIE_CHEST = Packet(
     packet_id=73,
-    sprite_id=SPR0249_RED_SHELL,
+    sprite_id=SPR0254_YOSHI_COOKIE,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P074_UNUSED = Packet(
+P074_BERRY_STATIC = Packet(
     packet_id=74,
-    sprite_id=SPR0250_GREEN_SHELL,
+    sprite_id=SPR0253_BERRY,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P075_UNUSED = Packet(
+P075_BERRY_FALL = Packet(
     packet_id=75,
-    sprite_id=SPR0251_PARASOL_PACKET,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0253_BERRY,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P076_UNUSED = Packet(
+P076_BERRY_CHEST = Packet(
     packet_id=76,
-    sprite_id=SPR0252_FEATHER,
+    sprite_id=SPR0253_BERRY,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P077_UNUSED = Packet(
+P077_CARD_STATIC = Packet(
     packet_id=77,
-    sprite_id=SPR0253_BERRY,
+    sprite_id=SPR0206_CARD,
     shadow=False,
-    action_script_id=A0000_DO_NOTHING,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P078_UNUSED = Packet(
+P078_CARD_FALL = Packet(
     packet_id=78,
-    sprite_id=SPR0254_YOSHI_COOKIE,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+    sprite_id=SPR0206_CARD,
+    shadow=True,
+    action_script_id=A0917_SEQ_0_FALLING,
+    unknown_bits=[False, True, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P079_UNUSED = Packet(
+P079_CARD_CHEST = Packet(
     packet_id=79,
-    sprite_id=SPR0255_BEETLE,
-    shadow=False,
-    action_script_id=A0000_DO_NOTHING,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
-)
-
-P080_FEATHER_CHEST = Packet(
-    packet_id=80,
-    sprite_id=SPR0252_FEATHER,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P081_STAR_PIECE_CHEST = Packet(
-    packet_id=81,
-    sprite_id=SPR0226_TINY_STAR,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P082_FEATHER_FALL = Packet(
-    packet_id=82,
-    sprite_id=SPR0252_FEATHER,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P083_STAR_PIECE_FALL = Packet(
-    packet_id=83,
-    sprite_id=SPR0226_TINY_STAR,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P084_FEATHER_STATIC = Packet(
-    packet_id=84,
-    sprite_id=SPR0252_FEATHER,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P085_STAR_PIECE_STATIC = Packet(
-    packet_id=85,
-    sprite_id=SPR0226_TINY_STAR,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P086_FLOWER_STATIC = Packet(
-    packet_id=86,
-    sprite_id=SPR0195_FLOWER,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P087_MUSHROOM_STATIC = Packet(
-    packet_id=87,
-    sprite_id=SPR0195_FLOWER,
-    shadow=False,
-    action_script_id=A0581_SEQUENCE_1_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P088_KEY_STATIC = Packet(
-    packet_id=88,
-    sprite_id=SPR0195_FLOWER,
-    shadow=False,
-    action_script_id=A0721_SEQUENCE_2_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P089_KEY_FALLING = Packet(
-    packet_id=89,
-    sprite_id=SPR0195_FLOWER,
-    shadow=True,
-    action_script_id=A0204_SEQUENCE_2_FALL,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P090_BAG_STATIC = Packet(
-    packet_id=90,
-    sprite_id=SPR0195_FLOWER,
-    shadow=False,
-    action_script_id=A0545_SEQUENCE_5_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P091_RING_CHEST = Packet(
-    packet_id=91,
-    sprite_id=SPR0196_RING,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P092_RING_FALL = Packet(
-    packet_id=92,
-    sprite_id=SPR0196_RING,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P093_RING_STATIC = Packet(
-    packet_id=93,
-    sprite_id=SPR0196_RING,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P094_BROOCH_STATIC = Packet(
-    packet_id=94,
-    sprite_id=SPR0207_BROOCH,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P095_BROOCH_FALL = Packet(
-    packet_id=95,
-    sprite_id=SPR0207_BROOCH,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P096_BROOCH_CHEST = Packet(
-    packet_id=96,
-    sprite_id=SPR0207_BROOCH,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P097_SHOES_STATIC = Packet(
-    packet_id=97,
-    sprite_id=SPR0202_SHOES,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P098_SHOES_FALL = Packet(
-    packet_id=98,
-    sprite_id=SPR0202_SHOES,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P099_SHOES_CHEST = Packet(
-    packet_id=99,
-    sprite_id=SPR0202_SHOES,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P100_BANANA_STATIC = Packet(
-    packet_id=100,
-    sprite_id=SPR0222_BANANA_PEEL,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P101_BANANA_FALL = Packet(
-    packet_id=101,
-    sprite_id=SPR0222_BANANA_PEEL,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P102_BANANA_CHEST = Packet(
-    packet_id=102,
-    sprite_id=SPR0222_BANANA_PEEL,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P103_CROWN_CHEST = Packet(
-    packet_id=103,
-    sprite_id=SPR0216_CROWN,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P104_CROWN_FALL = Packet(
-    packet_id=104,
-    sprite_id=SPR0216_CROWN,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P105_CROWN_STATIC = Packet(
-    packet_id=105,
-    sprite_id=SPR0216_CROWN,
-    shadow=True,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P106_COIN_FALL = Packet(
-    packet_id=106,
-    sprite_id=SPR0192_COIN,
-    shadow=True,
-    action_script_id=A0916_SEQ_1_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P107_SMALL_COIN_FALL = Packet(
-    packet_id=107,
-    sprite_id=SPR0193_SMALL_COIN,
-    shadow=True,
-    action_script_id=A0916_SEQ_1_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P108_FROG_COIN_FALL = Packet(
-    packet_id=108,
-    sprite_id=SPR0194_FROG_COIN,
-    shadow=True,
-    action_script_id=A0916_SEQ_1_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P109_COIN_STATIC = Packet(
-    packet_id=109,
-    sprite_id=SPR0192_COIN,
-    shadow=False,
-    action_script_id=A0925_SPINNING_STATIC_COIN,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P110_SMALL_COIN_STATIC = Packet(
-    packet_id=110,
-    sprite_id=SPR0193_SMALL_COIN,
-    shadow=False,
-    action_script_id=A0925_SPINNING_STATIC_COIN,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P111_FROG_COIN_STATIC = Packet(
-    packet_id=111,
-    sprite_id=SPR0194_FROG_COIN,
-    shadow=False,
-    action_script_id=A0925_SPINNING_STATIC_COIN,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P112_BOMB_STATIC = Packet(
-    packet_id=112,
-    sprite_id=SPR0205_MICROBOMB_PACKET,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P113_BOMB_FALL = Packet(
-    packet_id=113,
-    sprite_id=SPR0205_MICROBOMB_PACKET,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P114_BOMB_CHEST = Packet(
-    packet_id=114,
-    sprite_id=SPR0205_MICROBOMB_PACKET,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P115_EGG_STATIC = Packet(
-    packet_id=115,
-    sprite_id=SPR0237_EGG,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P116_EGG_FALLING = Packet(
-    packet_id=116,
-    sprite_id=SPR0237_EGG,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P117_EGG_CHEST = Packet(
-    packet_id=117,
-    sprite_id=SPR0237_EGG,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P118_COOKIE_STATIC = Packet(
-    packet_id=118,
-    sprite_id=SPR0254_YOSHI_COOKIE,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P119_COOKIE_FALL = Packet(
-    packet_id=119,
-    sprite_id=SPR0254_YOSHI_COOKIE,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P120_COOKIE_CHEST = Packet(
-    packet_id=120,
-    sprite_id=SPR0254_YOSHI_COOKIE,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P121_BERRY_STATIC = Packet(
-    packet_id=121,
-    sprite_id=SPR0253_BERRY,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P122_BERRY_FALL = Packet(
-    packet_id=122,
-    sprite_id=SPR0253_BERRY,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P123_BERRY_CHEST = Packet(
-    packet_id=123,
-    sprite_id=SPR0253_BERRY,
-    shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P124_CARD_STATIC = Packet(
-    packet_id=124,
-    sprite_id=SPR0206_CARD,
-    shadow=False,
-    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
-)
-
-P125_CARD_FALL = Packet(
-    packet_id=125,
-    sprite_id=SPR0206_CARD,
-    shadow=True,
-    action_script_id=A0917_SEQ_0_FALLING,
-    unknown_bits=[False, True, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
-)
-
-P126_CARD_CHEST = Packet(
-    packet_id=126,
     sprite_id=SPR0206_CARD,
     shadow=False,
     action_script_id=A0525_SPINNING_CARD,
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
+P080_GREEN_SYRUP_CHEST = Packet(
+    packet_id=80,
+    sprite_id=SPR0220_GREEN_SYRUP,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P081_RED_SYRUP_CHEST = Packet(
+    packet_id=81,
+    sprite_id=SPR0219_RED_SYRUP,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P082_BLUE_SYRUP_CHEST = Packet(
+    packet_id=82,
+    sprite_id=SPR0223_BLUE_SYRUP,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P083_YELLOW_SYRUP_CHEST = Packet(
+    packet_id=83,
+    sprite_id=SPR0221_YELLOW_SYRUP,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P084_GREEN_JUICE_CHEST = Packet(
+    packet_id=84,
+    sprite_id=SPR0236_GREEN_JUICE,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P085_RED_JUICE_CHEST = Packet(
+    packet_id=85,
+    sprite_id=SPR0238_RED_JUICE,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P086_P_DRINK_CHEST = Packet(
+    packet_id=86,
+    sprite_id=SPR0241_GREEN_P_DRINK,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P087_D_DRINK_CHEST = Packet(
+    packet_id=87,
+    sprite_id=SPR0240_YELLOW_D_DRINK,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P088_YELLOW_MUSIC_DRINK_CHEST = Packet(
+    packet_id=88,
+    sprite_id=SPR0245_YELLOW_MUSIC_DRINK,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P089_BLUE_MUSIC_DRINK_CHEST = Packet(
+    packet_id=89,
+    sprite_id=SPR0246_BLUE_MUSIC_DRINK,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P090_FROG_DRINK_CHEST = Packet(
+    packet_id=90,
+    sprite_id=SPR0244_GREEN_FROG_DRINK,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P091_RED_MUSIC_DRINK_CHEST = Packet(
+    packet_id=91,
+    sprite_id=SPR0247_RED_MUSIC_DRINK,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P092_R_DRINK_CHEST = Packet(
+    packet_id=92,
+    sprite_id=SPR0239_BLUE_R_DRINK,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P093_MUSIC_NOTE_CHEST = Packet(
+    packet_id=93,
+    sprite_id=SPR0195_FLOWER,
+    shadow=False,
+    action_script_id=A0687_EMPTY,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P094_STAR_DRINK_CHEST = Packet(
+    packet_id=94,
+    sprite_id=SPR0248_RED_STAR_DRINK,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P095_GREEN_CANDY_CHEST = Packet(
+    packet_id=95,
+    sprite_id=SPR0217_GREEN_CANDY,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P096_BLUE_CANDY_CHEST = Packet(
+    packet_id=96,
+    sprite_id=SPR0218_BLUE_CANDY,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P097_GREEN_BOMB_CHEST = Packet(
+    packet_id=97,
+    sprite_id=SPR0233_GREEN_BOMB,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P098_RED_BOMB_CHEST = Packet(
+    packet_id=98,
+    sprite_id=SPR0224_RED_BOMB,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P099_BLUE_BOMB_CHEST = Packet(
+    packet_id=99,
+    sprite_id=SPR0235_BLUE_BOMB,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P100_YELLOW_BOMB_CHEST = Packet(
+    packet_id=100,
+    sprite_id=SPR0234_YELLOW_BOMB,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P101_BEETLE_CHEST = Packet(
+    packet_id=101,
+    sprite_id=SPR0255_BEETLE,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P102_RED_MUSHROOM_CHEST = Packet(
+    packet_id=102,
+    sprite_id=SPR0212_RED_MUSHROOM_ITEM,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P103_GREEN_MUSHROOM_CHEST = Packet(
+    packet_id=103,
+    sprite_id=SPR0214_GREEN_MUSHROOM_ITEM,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P104_YELLOW_MUSHROOM_CHEST = Packet(
+    packet_id=104,
+    sprite_id=SPR0215_YELLOW_MUSHROOM_ITEM,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P105_FRYING_PAN_CHEST = Packet(
+    packet_id=105,
+    sprite_id=SPR0199_FRYING_PAN_PACKET,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P106_HAMMER_CHEST = Packet(
+    packet_id=106,
+    sprite_id=SPR0208_HAMMER_PACKET,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P107_STICK_CHEST = Packet(
+    packet_id=107,
+    sprite_id=SPR0209_STICK_PACKET,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P108_CHOMP_CHEST = Packet(
+    packet_id=108,
+    sprite_id=SPR0210_CHOMP_PACKET,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P109_FAN_CHEST = Packet(
+    packet_id=109,
+    sprite_id=SPR0211_FAN_PACKET,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P110_RED_SHELL_CHEST = Packet(
+    packet_id=110,
+    sprite_id=SPR0249_RED_SHELL,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P111_GREEN_SHELL_CHEST = Packet(
+    packet_id=111,
+    sprite_id=SPR0250_GREEN_SHELL,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P112_PARASOL_CHEST = Packet(
+    packet_id=112,
+    sprite_id=SPR0251_PARASOL_PACKET,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P113_YELLOW_JUICE_CHEST = Packet(
+    packet_id=113,
+    sprite_id=SPR0047_YELLOW_JUICE,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P114_GLOVE_CHEST = Packet(
+    packet_id=114,
+    sprite_id=SPR0045_GLOVE,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P115_CRYSTAL_CHEST = Packet(
+    packet_id=115,
+    sprite_id=SPR0046_SHINY_STONE,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P116_MARIODOLL_CHEST = Packet(
+    packet_id=116,
+    sprite_id=SPR0091_MARIO_DOLL,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P117_MALLOWDOLL_CHEST = Packet(
+    packet_id=117,
+    sprite_id=SPR0081_MALLOW_DOLL,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P118_GENODOLL_CHEST = Packet(
+    packet_id=118,
+    sprite_id=SPR0089_GENO_DOLL,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P119_BOWSERDOLL_CHEST = Packet(
+    packet_id=119,
+    sprite_id=SPR0090_BOWSER_DOLL,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P120_PEACHDOLL_CHEST = Packet(
+    packet_id=120,
+    sprite_id=SPR0092_TOADSTOOL_DOLL,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P121_COIN_CHEST_STILL = Packet(
+    packet_id=121,
+    sprite_id=SPR0192_COIN,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P122_FROG_COIN_STILL = Packet(
+    packet_id=122,
+    sprite_id=SPR0194_FROG_COIN,
+    shadow=False,
+    action_script_id=A0925_SPINNING_STATIC_COIN,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
+)
+P123_SMALL_COIN_STILL = Packet(
+    packet_id=123,
+    sprite_id=SPR0193_SMALL_COIN,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P124_SMALL_FROG_COIN_STILL = Packet(
+    packet_id=124,
+    sprite_id=SPR0606_SMALL_FROG_COIN,
+    shadow=False,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P125_UNUSED = Packet(
+    packet_id=125,
+    sprite_id=SPR0254_YOSHI_COOKIE,
+    shadow=False,
+    action_script_id=A0000_DO_NOTHING,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+)
+P126_UNUSED = Packet(
+    packet_id=126,
+    sprite_id=SPR0255_BEETLE,
+    shadow=False,
+    action_script_id=A0000_DO_NOTHING,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
+)
 P127_GREEN_SYRUP_STATIC = Packet(
     packet_id=127,
     sprite_id=SPR0220_GREEN_SYRUP,
@@ -1157,7 +1030,6 @@ P127_GREEN_SYRUP_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P128_GREEN_SYRUP_FALL = Packet(
     packet_id=128,
     sprite_id=SPR0220_GREEN_SYRUP,
@@ -1166,16 +1038,14 @@ P128_GREEN_SYRUP_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P129_GREEN_SYRUP_CHEST = Packet(
+P129_UNUSED = Packet(
     packet_id=129,
-    sprite_id=SPR0220_GREEN_SYRUP,
+    sprite_id=SPR0197_SPARKLE_SIDEWAYS,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P130_RED_SYRUP_STATIC = Packet(
     packet_id=130,
     sprite_id=SPR0219_RED_SYRUP,
@@ -1184,7 +1054,6 @@ P130_RED_SYRUP_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P131_RED_SYRUP_FALL = Packet(
     packet_id=131,
     sprite_id=SPR0219_RED_SYRUP,
@@ -1193,16 +1062,14 @@ P131_RED_SYRUP_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P132_RED_SYRUP_CHEST = Packet(
+P132_UNUSED = Packet(
     packet_id=132,
-    sprite_id=SPR0219_RED_SYRUP,
+    sprite_id=SPR0197_SPARKLE_SIDEWAYS,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P133_BLUE_SYRUP_STATIC = Packet(
     packet_id=133,
     sprite_id=SPR0223_BLUE_SYRUP,
@@ -1211,7 +1078,6 @@ P133_BLUE_SYRUP_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P134_BLUE_SYRUP_FALL = Packet(
     packet_id=134,
     sprite_id=SPR0223_BLUE_SYRUP,
@@ -1220,16 +1086,14 @@ P134_BLUE_SYRUP_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P135_BLUE_SYRUP_CHEST = Packet(
+P135_UNUSED = Packet(
     packet_id=135,
-    sprite_id=SPR0223_BLUE_SYRUP,
+    sprite_id=SPR0200_EXPLOSION,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P136_YELLOW_SYRUP_STATIC = Packet(
     packet_id=136,
     sprite_id=SPR0221_YELLOW_SYRUP,
@@ -1238,7 +1102,6 @@ P136_YELLOW_SYRUP_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P137_YELLOW_SYRUP_FALL = Packet(
     packet_id=137,
     sprite_id=SPR0221_YELLOW_SYRUP,
@@ -1247,16 +1110,14 @@ P137_YELLOW_SYRUP_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P138_YELLOW_SYRUP_CHEST = Packet(
+P138_UNUSED = Packet(
     packet_id=138,
-    sprite_id=SPR0221_YELLOW_SYRUP,
+    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P139_GREEN_JUICE_STATIC = Packet(
     packet_id=139,
     sprite_id=SPR0236_GREEN_JUICE,
@@ -1265,7 +1126,6 @@ P139_GREEN_JUICE_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P140_GREEN_JUICE_FALL = Packet(
     packet_id=140,
     sprite_id=SPR0236_GREEN_JUICE,
@@ -1274,16 +1134,14 @@ P140_GREEN_JUICE_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P141_GREEN_JUICE_CHEST = Packet(
+P141_UNUSED = Packet(
     packet_id=141,
-    sprite_id=SPR0236_GREEN_JUICE,
+    sprite_id=SPR0202_SHOES,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P142_RED_JUICE_STATIC = Packet(
     packet_id=142,
     sprite_id=SPR0238_RED_JUICE,
@@ -1292,7 +1150,6 @@ P142_RED_JUICE_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P143_RED_JUICE_FALL = Packet(
     packet_id=143,
     sprite_id=SPR0238_RED_JUICE,
@@ -1301,16 +1158,14 @@ P143_RED_JUICE_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P144_RED_JUICE_CHEST = Packet(
+P144_UNUSED = Packet(
     packet_id=144,
-    sprite_id=SPR0238_RED_JUICE,
+    sprite_id=SPR0203_LEVEL_UP_TEXT_FROM_INVINCIBLE_STAR,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P145_P_DRINK_STATIC = Packet(
     packet_id=145,
     sprite_id=SPR0241_GREEN_P_DRINK,
@@ -1319,7 +1174,6 @@ P145_P_DRINK_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P146_P_DRINK_FALL = Packet(
     packet_id=146,
     sprite_id=SPR0241_GREEN_P_DRINK,
@@ -1328,25 +1182,22 @@ P146_P_DRINK_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P147_P_DRINK_CHEST = Packet(
+P147_UNUSED = Packet(
     packet_id=147,
-    sprite_id=SPR0241_GREEN_P_DRINK,
+    sprite_id=SPR0204_GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
-P148_D_DRINK_CHEST = Packet(
+P148_UNUSED = Packet(
     packet_id=148,
-    sprite_id=SPR0240_YELLOW_D_DRINK,
+    sprite_id=SPR0205_MICROBOMB_PACKET,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P149_D_DRINK_FALL = Packet(
     packet_id=149,
     sprite_id=SPR0240_YELLOW_D_DRINK,
@@ -1355,7 +1206,6 @@ P149_D_DRINK_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P150_D_DRINK_STATIC = Packet(
     packet_id=150,
     sprite_id=SPR0240_YELLOW_D_DRINK,
@@ -1364,16 +1214,14 @@ P150_D_DRINK_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P151_YELLOW_MUSIC_DRINK_CHEST = Packet(
+P151_UNUSED = Packet(
     packet_id=151,
-    sprite_id=SPR0245_YELLOW_MUSIC_DRINK,
+    sprite_id=SPR0255_BEETLE,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0914_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x03, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P152_YELLOW_MUSIC_DRINK_FALL = Packet(
     packet_id=152,
     sprite_id=SPR0245_YELLOW_MUSIC_DRINK,
@@ -1382,7 +1230,6 @@ P152_YELLOW_MUSIC_DRINK_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P153_YELLOW_MUSIC_DRINK_STATIC = Packet(
     packet_id=153,
     sprite_id=SPR0245_YELLOW_MUSIC_DRINK,
@@ -1391,16 +1238,14 @@ P153_YELLOW_MUSIC_DRINK_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P154_BLUE_MUSIC_DRINK_CHEST = Packet(
+P154_UNUSED = Packet(
     packet_id=154,
-    sprite_id=SPR0246_BLUE_MUSIC_DRINK,
+    sprite_id=SPR0255_BEETLE,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0915_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x03, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P155_BLUE_MUSIC_DRINK_FALL = Packet(
     packet_id=155,
     sprite_id=SPR0246_BLUE_MUSIC_DRINK,
@@ -1409,7 +1254,6 @@ P155_BLUE_MUSIC_DRINK_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P156_BLUE_MUSIC_DRINK_STATIC = Packet(
     packet_id=156,
     sprite_id=SPR0246_BLUE_MUSIC_DRINK,
@@ -1418,16 +1262,14 @@ P156_BLUE_MUSIC_DRINK_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P157_FROG_DRINK_CHEST = Packet(
+P157_UNUSED = Packet(
     packet_id=157,
-    sprite_id=SPR0244_GREEN_FROG_DRINK,
+    sprite_id=SPR0089_GENO_DOLL,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0167_SPAWN_AT_7016_701A_CALCULATED,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P158_FROG_DRINK_FALL = Packet(
     packet_id=158,
     sprite_id=SPR0244_GREEN_FROG_DRINK,
@@ -1436,7 +1278,6 @@ P158_FROG_DRINK_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P159_FROG_DRINK_STATIC = Packet(
     packet_id=159,
     sprite_id=SPR0244_GREEN_FROG_DRINK,
@@ -1445,16 +1286,14 @@ P159_FROG_DRINK_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P160_RED_MUSIC_DRINK_CHEST = Packet(
+P160_UNUSED = Packet(
     packet_id=160,
-    sprite_id=SPR0247_RED_MUSIC_DRINK,
+    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0063_EXPLOSION_WITH_SOUND,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P161_RED_MUSIC_DRINK_FALL = Packet(
     packet_id=161,
     sprite_id=SPR0247_RED_MUSIC_DRINK,
@@ -1463,7 +1302,6 @@ P161_RED_MUSIC_DRINK_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P162_RED_MUSIC_DRINK_STATIC = Packet(
     packet_id=162,
     sprite_id=SPR0247_RED_MUSIC_DRINK,
@@ -1472,7 +1310,6 @@ P162_RED_MUSIC_DRINK_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P163_R_DRINK_STATIC = Packet(
     packet_id=163,
     sprite_id=SPR0239_BLUE_R_DRINK,
@@ -1481,7 +1318,6 @@ P163_R_DRINK_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P164_R_DRINK_FALL = Packet(
     packet_id=164,
     sprite_id=SPR0239_BLUE_R_DRINK,
@@ -1490,16 +1326,14 @@ P164_R_DRINK_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P165_R_DRINK_CHEST = Packet(
+P165_UNUSED = Packet(
     packet_id=165,
-    sprite_id=SPR0239_BLUE_R_DRINK,
+    sprite_id=SPR0236_GREEN_JUICE,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0621_SEQ_10_STORE_BUTTON_INPUT_AND_MAKE_SOUND,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x06, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P166_MUSIC_NOTE_STATIC = Packet(
     packet_id=166,
     sprite_id=SPR0195_FLOWER,
@@ -1508,7 +1342,6 @@ P166_MUSIC_NOTE_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P167_MUSIC_NOTE_FALL = Packet(
     packet_id=167,
     sprite_id=SPR0195_FLOWER,
@@ -1517,16 +1350,14 @@ P167_MUSIC_NOTE_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P168_MUSIC_NOTE_CHEST = Packet(
+P168_UNUSED = Packet(
     packet_id=168,
-    sprite_id=SPR0195_FLOWER,
+    sprite_id=SPR0237_EGG,
     shadow=False,
-    action_script_id=A0687_EMPTY,
+    action_script_id=A0622_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x04, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P169_STAR_DRINK_STATIC = Packet(
     packet_id=169,
     sprite_id=SPR0248_RED_STAR_DRINK,
@@ -1535,7 +1366,6 @@ P169_STAR_DRINK_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P170_STAR_DRINK_FALL = Packet(
     packet_id=170,
     sprite_id=SPR0248_RED_STAR_DRINK,
@@ -1544,16 +1374,14 @@ P170_STAR_DRINK_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P171_STAR_DRINK_CHEST = Packet(
+P171_UNUSED = Packet(
     packet_id=171,
-    sprite_id=SPR0248_RED_STAR_DRINK,
+    sprite_id=SPR0198_SPARKLE_DOWNWARDS,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0507_SPARKLE_LINE_LOOPED,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P172_UNUSED = Packet(
     packet_id=172,
     sprite_id=SPR0209_STICK_PACKET,
@@ -1562,7 +1390,6 @@ P172_UNUSED = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P173_GREEN_CANDY_STATIC = Packet(
     packet_id=173,
     sprite_id=SPR0217_GREEN_CANDY,
@@ -1571,7 +1398,6 @@ P173_GREEN_CANDY_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P174_GREEN_CANDY_FALL = Packet(
     packet_id=174,
     sprite_id=SPR0217_GREEN_CANDY,
@@ -1580,16 +1406,14 @@ P174_GREEN_CANDY_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P175_GREEN_CANDY_CHEST = Packet(
+P175_UNUSED = Packet(
     packet_id=175,
-    sprite_id=SPR0217_GREEN_CANDY,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0915_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x01, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P176_BLUE_CANDY_STATIC = Packet(
     packet_id=176,
     sprite_id=SPR0218_BLUE_CANDY,
@@ -1598,7 +1422,6 @@ P176_BLUE_CANDY_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P177_BLUE_CANDY_FALL = Packet(
     packet_id=177,
     sprite_id=SPR0218_BLUE_CANDY,
@@ -1607,16 +1430,14 @@ P177_BLUE_CANDY_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P178_BLUE_CANDY_CHEST = Packet(
+P178_UNUSED = Packet(
     packet_id=178,
-    sprite_id=SPR0218_BLUE_CANDY,
+    sprite_id=SPR0208_HAMMER_PACKET,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0929_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
 )
-
 P179_GREEN_BOMB_STATIC = Packet(
     packet_id=179,
     sprite_id=SPR0233_GREEN_BOMB,
@@ -1625,7 +1446,6 @@ P179_GREEN_BOMB_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P180_GREEN_BOMB_FALL = Packet(
     packet_id=180,
     sprite_id=SPR0233_GREEN_BOMB,
@@ -1634,16 +1454,14 @@ P180_GREEN_BOMB_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P181_GREEN_BOMB_CHEST = Packet(
+P181_UNUSED = Packet(
     packet_id=181,
-    sprite_id=SPR0233_GREEN_BOMB,
+    sprite_id=SPR0209_STICK_PACKET,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0929_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
 )
-
 P182_RED_BOMB_STATIC = Packet(
     packet_id=182,
     sprite_id=SPR0224_RED_BOMB,
@@ -1652,7 +1470,6 @@ P182_RED_BOMB_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P183_RED_BOMB_FALL = Packet(
     packet_id=183,
     sprite_id=SPR0224_RED_BOMB,
@@ -1661,16 +1478,14 @@ P183_RED_BOMB_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P184_RED_BOMB_CHEST = Packet(
+P184_UNUSED = Packet(
     packet_id=184,
-    sprite_id=SPR0224_RED_BOMB,
+    sprite_id=SPR0210_CHOMP_PACKET,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0929_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
 )
-
 P185_BLUE_BOMB_STATIC = Packet(
     packet_id=185,
     sprite_id=SPR0235_BLUE_BOMB,
@@ -1679,7 +1494,6 @@ P185_BLUE_BOMB_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P186_BLUE_BOMB_FALL = Packet(
     packet_id=186,
     sprite_id=SPR0235_BLUE_BOMB,
@@ -1688,16 +1502,14 @@ P186_BLUE_BOMB_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P187_BLUE_BOMB_CHEST = Packet(
+P187_UNUSED = Packet(
     packet_id=187,
-    sprite_id=SPR0235_BLUE_BOMB,
+    sprite_id=SPR0211_FAN_PACKET,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0929_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
 )
-
 P188_YELLOW_BOMB_STATIC = Packet(
     packet_id=188,
     sprite_id=SPR0234_YELLOW_BOMB,
@@ -1706,7 +1518,6 @@ P188_YELLOW_BOMB_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P189_YELLOW_BOMB_FALL = Packet(
     packet_id=189,
     sprite_id=SPR0234_YELLOW_BOMB,
@@ -1715,16 +1526,14 @@ P189_YELLOW_BOMB_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P190_YELLOW_BOMB_CHEST = Packet(
+P190_UNUSED = Packet(
     packet_id=190,
-    sprite_id=SPR0234_YELLOW_BOMB,
+    sprite_id=SPR0212_RED_MUSHROOM_ITEM,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0929_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x07, 0x01, 0x04, 0x00, 0x00, 0x00]),
 )
-
 P191_BEETLE_STATIC = Packet(
     packet_id=191,
     sprite_id=SPR0255_BEETLE,
@@ -1733,7 +1542,6 @@ P191_BEETLE_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P192_BEETLE_FALL = Packet(
     packet_id=192,
     sprite_id=SPR0255_BEETLE,
@@ -1742,16 +1550,14 @@ P192_BEETLE_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P193_BEETLE_CHEST = Packet(
+P193_UNUSED = Packet(
     packet_id=193,
-    sprite_id=SPR0255_BEETLE,
+    sprite_id=SPR0205_MICROBOMB_PACKET,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0939_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x01, 0x00, 0x01, 0x03, 0x00, 0x00, 0x00]),
 )
-
 P194_RED_MUSHROOM_STATIC = Packet(
     packet_id=194,
     sprite_id=SPR0212_RED_MUSHROOM_ITEM,
@@ -1760,7 +1566,6 @@ P194_RED_MUSHROOM_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P195_RED_MUSHROOM_FALL = Packet(
     packet_id=195,
     sprite_id=SPR0212_RED_MUSHROOM_ITEM,
@@ -1769,16 +1574,14 @@ P195_RED_MUSHROOM_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P196_RED_MUSHROOM_CHEST = Packet(
+P196_UNUSED = Packet(
     packet_id=196,
-    sprite_id=SPR0212_RED_MUSHROOM_ITEM,
+    sprite_id=SPR0198_SPARKLE_DOWNWARDS,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0938_UNUSED,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x03, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P197_GREEN_MUSHROOM_STATIC = Packet(
     packet_id=197,
     sprite_id=SPR0214_GREEN_MUSHROOM_ITEM,
@@ -1787,7 +1590,6 @@ P197_GREEN_MUSHROOM_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P198_GREEN_MUSHROOM_FALL = Packet(
     packet_id=198,
     sprite_id=SPR0214_GREEN_MUSHROOM_ITEM,
@@ -1796,16 +1598,14 @@ P198_GREEN_MUSHROOM_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P199_GREEN_MUSHROOM_CHEST = Packet(
+P199_UNUSED = Packet(
     packet_id=199,
-    sprite_id=SPR0214_GREEN_MUSHROOM_ITEM,
+    sprite_id=SPR0194_FROG_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0196_EMPTY,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x05, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P200_YELLOW_MUSHROOM_STATIC = Packet(
     packet_id=200,
     sprite_id=SPR0215_YELLOW_MUSHROOM_ITEM,
@@ -1814,7 +1614,6 @@ P200_YELLOW_MUSHROOM_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P201_YELLOW_MUSHROOM_FALL = Packet(
     packet_id=201,
     sprite_id=SPR0215_YELLOW_MUSHROOM_ITEM,
@@ -1823,16 +1622,14 @@ P201_YELLOW_MUSHROOM_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P202_YELLOW_MUSHROOM_CHEST = Packet(
+P202_UNUSED = Packet(
     packet_id=202,
-    sprite_id=SPR0215_YELLOW_MUSHROOM_ITEM,
+    sprite_id=SPR0233_GREEN_BOMB,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P203_FRYING_PAN_STATIC = Packet(
     packet_id=203,
     sprite_id=SPR0199_FRYING_PAN_PACKET,
@@ -1841,7 +1638,6 @@ P203_FRYING_PAN_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P204_FRYING_PAN_FALL = Packet(
     packet_id=204,
     sprite_id=SPR0199_FRYING_PAN_PACKET,
@@ -1850,16 +1646,14 @@ P204_FRYING_PAN_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P205_FRYING_PAN_CHEST = Packet(
+P205_UNUSED = Packet(
     packet_id=205,
-    sprite_id=SPR0199_FRYING_PAN_PACKET,
+    sprite_id=SPR0234_YELLOW_BOMB,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P206_HAMMER_STATIC = Packet(
     packet_id=206,
     sprite_id=SPR0208_HAMMER_PACKET,
@@ -1868,7 +1662,6 @@ P206_HAMMER_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P207_HAMMER_FALL = Packet(
     packet_id=207,
     sprite_id=SPR0208_HAMMER_PACKET,
@@ -1877,16 +1670,14 @@ P207_HAMMER_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P208_HAMMER_CHEST = Packet(
+P208_UNUSED = Packet(
     packet_id=208,
-    sprite_id=SPR0208_HAMMER_PACKET,
+    sprite_id=SPR0235_BLUE_BOMB,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P209_STICK_STATIC = Packet(
     packet_id=209,
     sprite_id=SPR0209_STICK_PACKET,
@@ -1895,7 +1686,6 @@ P209_STICK_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P210_STICK_FALL = Packet(
     packet_id=210,
     sprite_id=SPR0209_STICK_PACKET,
@@ -1904,16 +1694,14 @@ P210_STICK_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P211_STICK_CHEST = Packet(
+P211_UNUSED = Packet(
     packet_id=211,
-    sprite_id=SPR0209_STICK_PACKET,
+    sprite_id=SPR0236_GREEN_JUICE,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P212_CHOMP_STATIC = Packet(
     packet_id=212,
     sprite_id=SPR0210_CHOMP_PACKET,
@@ -1922,7 +1710,6 @@ P212_CHOMP_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P213_CHOMP_FALL = Packet(
     packet_id=213,
     sprite_id=SPR0210_CHOMP_PACKET,
@@ -1931,16 +1718,14 @@ P213_CHOMP_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P214_CHOMP_CHEST = Packet(
+P214_UNUSED = Packet(
     packet_id=214,
-    sprite_id=SPR0210_CHOMP_PACKET,
+    sprite_id=SPR0237_EGG,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P215_FAN_STATIC = Packet(
     packet_id=215,
     sprite_id=SPR0211_FAN_PACKET,
@@ -1949,7 +1734,6 @@ P215_FAN_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P216_FAN_FALL = Packet(
     packet_id=216,
     sprite_id=SPR0211_FAN_PACKET,
@@ -1958,16 +1742,14 @@ P216_FAN_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P217_FAN_CHEST = Packet(
+P217_UNUSED = Packet(
     packet_id=217,
-    sprite_id=SPR0211_FAN_PACKET,
+    sprite_id=SPR0092_TOADSTOOL_DOLL,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P218_RED_SHELL_STATIC = Packet(
     packet_id=218,
     sprite_id=SPR0249_RED_SHELL,
@@ -1976,7 +1758,6 @@ P218_RED_SHELL_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P219_RED_SHELL_FALL = Packet(
     packet_id=219,
     sprite_id=SPR0249_RED_SHELL,
@@ -1985,16 +1766,14 @@ P219_RED_SHELL_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P220_RED_SHELL_CHEST = Packet(
+P220_UNUSED = Packet(
     packet_id=220,
-    sprite_id=SPR0249_RED_SHELL,
+    sprite_id=SPR0239_BLUE_R_DRINK,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P221_GREEN_SHELL_STATIC = Packet(
     packet_id=221,
     sprite_id=SPR0250_GREEN_SHELL,
@@ -2003,7 +1782,6 @@ P221_GREEN_SHELL_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P222_GREEN_SHELL_FALL = Packet(
     packet_id=222,
     sprite_id=SPR0250_GREEN_SHELL,
@@ -2012,16 +1790,14 @@ P222_GREEN_SHELL_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P223_GREEN_SHELL_CHEST = Packet(
+P223_UNUSED = Packet(
     packet_id=223,
-    sprite_id=SPR0250_GREEN_SHELL,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    action_script_id=A0896_COIN_SHOWER_E,
+    unknown_bits=[False, True, True],
+    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P224_PARASOL_STATIC = Packet(
     packet_id=224,
     sprite_id=SPR0251_PARASOL_PACKET,
@@ -2030,7 +1806,6 @@ P224_PARASOL_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P225_PARASOL_FALL = Packet(
     packet_id=225,
     sprite_id=SPR0251_PARASOL_PACKET,
@@ -2039,16 +1814,14 @@ P225_PARASOL_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P226_PARASOL_CHEST = Packet(
+P226_UNUSED = Packet(
     packet_id=226,
-    sprite_id=SPR0251_PARASOL_PACKET,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    action_script_id=A0897_COIN_SHOWER_SE,
+    unknown_bits=[False, True, True],
+    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P227_YELLOW_JUICE_STATIC = Packet(
     packet_id=227,
     sprite_id=SPR0047_YELLOW_JUICE,
@@ -2057,7 +1830,6 @@ P227_YELLOW_JUICE_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P228_YELLOW_JUICE_FALL = Packet(
     packet_id=228,
     sprite_id=SPR0047_YELLOW_JUICE,
@@ -2066,16 +1838,14 @@ P228_YELLOW_JUICE_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P229_YELLOW_JUICE_CHEST = Packet(
+P229_UNUSED = Packet(
     packet_id=229,
-    sprite_id=SPR0047_YELLOW_JUICE,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    action_script_id=A0898_COIN_SHOWER_S,
+    unknown_bits=[False, True, True],
+    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P230_GLOVE_STATIC = Packet(
     packet_id=230,
     sprite_id=SPR0045_GLOVE,
@@ -2084,8 +1854,6 @@ P230_GLOVE_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-
 P231_GLOVE_FALL = Packet(
     packet_id=231,
     sprite_id=SPR0045_GLOVE,
@@ -2094,26 +1862,22 @@ P231_GLOVE_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-
-P232_GLOVE_CHEST = Packet(
+P232_UNUSED = Packet(
     packet_id=232,
-    sprite_id=SPR0045_GLOVE,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    action_script_id=A0899_COIN_SHOWER_SW,
+    unknown_bits=[False, True, True],
+    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-P233_CRYSTAL_CHEST = Packet(
+P233_UNUSED = Packet(
     packet_id=233,
-    sprite_id=SPR0046_SHINY_STONE,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    action_script_id=A0900_COIN_SHOWER_W,
+    unknown_bits=[False, True, True],
+    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P234_CRYSTAL_FALL = Packet(
     packet_id=234,
     sprite_id=SPR0046_SHINY_STONE,
@@ -2122,8 +1886,6 @@ P234_CRYSTAL_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-
 P235_CRYSTAL_STATIC = Packet(
     packet_id=235,
     sprite_id=SPR0046_SHINY_STONE,
@@ -2132,18 +1894,14 @@ P235_CRYSTAL_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-
-P236_MARIODOLL_CHEST = Packet(
+P236_UNUSED = Packet(
     packet_id=236,
-    sprite_id=SPR0091_MARIO_DOLL,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    action_script_id=A0901_COIN_SHOWER_NW,
+    unknown_bits=[False, True, True],
+    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-
 P237_MARIODOLL_FALL = Packet(
     packet_id=237,
     sprite_id=SPR0091_MARIO_DOLL,
@@ -2152,8 +1910,6 @@ P237_MARIODOLL_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-
 P238_MARIODOLL_STATIC = Packet(
     packet_id=238,
     sprite_id=SPR0091_MARIO_DOLL,
@@ -2162,18 +1918,14 @@ P238_MARIODOLL_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-
-P239_MALLOWDOLL_CHEST = Packet(
+P239_UNUSED = Packet(
     packet_id=239,
-    sprite_id=SPR0081_MALLOW_DOLL,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    action_script_id=A0902_COIN_SHOWER_N,
+    unknown_bits=[False, True, True],
+    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-
 P240_MALLOWDOLL_FALL = Packet(
     packet_id=240,
     sprite_id=SPR0081_MALLOW_DOLL,
@@ -2182,8 +1934,6 @@ P240_MALLOWDOLL_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-
 P241_MALLOWDOLL_STATIC = Packet(
     packet_id=241,
     sprite_id=SPR0081_MALLOW_DOLL,
@@ -2192,18 +1942,14 @@ P241_MALLOWDOLL_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-
-P242_GENODOLL_CHEST = Packet(
+P242_UNUSED = Packet(
     packet_id=242,
-    sprite_id=SPR0089_GENO_DOLL,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    action_script_id=A0903_COIN_SHOWER_NE,
+    unknown_bits=[False, True, True],
+    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-
 P243_GENODOLL_FALL = Packet(
     packet_id=243,
     sprite_id=SPR0089_GENO_DOLL,
@@ -2212,7 +1958,6 @@ P243_GENODOLL_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P244_GENODOLL_STATIC = Packet(
     packet_id=244,
     sprite_id=SPR0089_GENO_DOLL,
@@ -2221,17 +1966,14 @@ P244_GENODOLL_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P245_BOWSERDOLL_CHEST = Packet(
+P245_UNUSED = Packet(
     packet_id=245,
-    sprite_id=SPR0090_BOWSER_DOLL,
+    sprite_id=SPR0192_COIN,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
-    unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    action_script_id=A0905_COIN_SHOWER_E_DB,
+    unknown_bits=[False, True, True],
+    unknown_bytes=bytearray([0x00, 0x03, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
-
 P246_BOWSERDOLL_FALL = Packet(
     packet_id=246,
     sprite_id=SPR0090_BOWSER_DOLL,
@@ -2240,7 +1982,6 @@ P246_BOWSERDOLL_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P247_BOWSERDOLL_STATIC = Packet(
     packet_id=247,
     sprite_id=SPR0090_BOWSER_DOLL,
@@ -2249,16 +1990,14 @@ P247_BOWSERDOLL_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
-P248_PEACHDOLL_CHEST = Packet(
+P248_UNUSED = Packet(
     packet_id=248,
-    sprite_id=SPR0092_TOADSTOOL_DOLL,
+    sprite_id=SPR0249_RED_SHELL,
     shadow=False,
-    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
+    action_script_id=A0000_DO_NOTHING,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]),
 )
-
 P249_PEACHDOLL_FALL = Packet(
     packet_id=249,
     sprite_id=SPR0092_TOADSTOOL_DOLL,
@@ -2267,7 +2006,6 @@ P249_PEACHDOLL_FALL = Packet(
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
-
 P250_PEACHDOLL_STATIC = Packet(
     packet_id=250,
     sprite_id=SPR0092_TOADSTOOL_DOLL,
@@ -2276,51 +2014,47 @@ P250_PEACHDOLL_STATIC = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
-
 P251_UNUSED = None
-
 P252_UNUSED = None
-
 P253_UNUSED = None
-
 P254_UNUSED = None
-
 P255_UNUSED = None
-
 
 # Packet Collection
 ALL_PACKETS = PacketCollection(
     [
+        
+        
         P000_FLASHING_POOF_FLOWER,
         P001_FLASHING_POOF_MUSHROOM,
         P002_BRIEF_KEY,
         P003_BRIEF_STAR,
         P004_MIMIC_POOF_ON_DEFEAT,
         P005_BRIEF_POOF_BAG,
-        P006_STATIC_SIDEWAYS_SPARKLE,
-        P007_STATIC_SIDEWAYS_SPARKLE,
-        P008_STATIC_EXPLOSION,
-        P009_STATIC_BLUE_CLOUD,
-        P010_STATIC_SMALL_FROG_COIN,
-        P011_STATIC_LEVELUP_TEXT,
-        P012_STATIC_GREY_EXPLOSION,
-        P013_STATIC_MICROBOMB,
-        P014_UNUSED,
-        P015_UNUSED,
+        P006_FEATHER_CHEST,
+        P007_STAR_PIECE_CHEST,
+        P008_FEATHER_FALL,
+        P009_STAR_PIECE_FALL,
+        P010_FEATHER_STATIC,
+        P011_STAR_PIECE_STATIC,
+        P012_FLOWER_STATIC,
+        P013_MUSHROOM_STATIC,
+        P014_KEY_STATIC,
+        P015_KEY_FALLING,
         P016_BIG_COIN_BEING_COLLECTED,
         P017_SMALL_MINIGAME_COIN,
         P018_SMALL_COIN_BEING_COLLECTED,
         P019_FROG_COIN_BEING_COLLECTED,
-        P020_WATER_DROPLETS_USE_7016_701A,
+        P020_BAG_STATIC,
         P021_FLASHING_SMALL_EXPLOSION,
         P022_RECURSIVE_SPARKLES,
         P023_LOOPING_SINGLE_SPARKLE,
         P024_REGULAR_SOUND_EXPLOSION,
-        P025_UNUSED,
-        P026_UNUSED,
-        P027_UNUSED,
+        P025_RING_CHEST,
+        P026_RING_FALL,
+        P027_RING_STATIC,
         P028_MUSHROOM_THROWN_SOUTHWEST,
-        P029_SPARKLE_LINE_LOOPED,
+        P029_BROOCH_STATIC,
         P030_WATER_SPLASH_DROPS_SFX,
         P031_LEVELUP_TEXT,
         P032_BLUE_CLOUD,
@@ -2330,216 +2064,216 @@ ALL_PACKETS = PacketCollection(
         P036_MUSHROOM_FALL,
         P037_ITEM_BAG_FALL,
         P038_MUSHROOM_FALL_DEFAULT_PRIORITY,
-        P039_UNUSED,
-        P040_UNUSED,
-        P041_UNUSED,
-        P042_UNUSED,
-        P043_UNUSED,
-        P044_UNUSED,
+        P039_BROOCH_FALL,
+        P040_BROOCH_CHEST,
+        P041_SHOES_STATIC,
+        P042_SHOES_FALL,
+        P043_SHOES_CHEST,
+        P044_BANANA_STATIC,
         P045_TELEPORTATION_SHINE,
-        P046_UNUSED,
+        P046_BANANA_FALL,
         P047_BLUE_FIRE_TRAIL,
-        P048_UNUSED,
+        P048_BANANA_CHEST,
         P049_HAMMER_SPARKS_SFX,
         P050_WATER_BLAST_SFX,
         P051_DRILL_BIT,
         P052_BOMB_EXPLOSION_FASTER,
-        P053_UNUSED,
+        P053_CROWN_CHEST,
         P054_LEVELUP_BONUS_POW,
         P055_LEVELUP_BONUS_S,
         P056_LEVELUP_BONUS_HP,
-        P057_UNUSED,
-        P058_UNUSED,
-        P059_UNUSED,
-        P060_UNUSED,
-        P061_UNUSED,
-        P062_UNUSED,
-        P063_UNUSED,
-        P064_COIN_SHOWER_E,
-        P065_COIN_SHOWER_SE,
-        P066_COIN_SHOWER_S,
-        P067_COIN_SHOWER_SW,
-        P068_COIN_SHOWER_W,
-        P069_COIN_SHOWER_NW,
-        P070_COIN_SHOWER_N,
-        P071_COIN_SHOWER_NE,
-        P072_COIN_SHOWER_E_DB,
-        P073_UNUSED,
-        P074_UNUSED,
-        P075_UNUSED,
-        P076_UNUSED,
-        P077_UNUSED,
-        P078_UNUSED,
-        P079_UNUSED,
-        P080_FEATHER_CHEST,
-        P081_STAR_PIECE_CHEST,
-        P082_FEATHER_FALL,
-        P083_STAR_PIECE_FALL,
-        P084_FEATHER_STATIC,
-        P085_STAR_PIECE_STATIC,
-        P086_FLOWER_STATIC,
-        P087_MUSHROOM_STATIC,
-        P088_KEY_STATIC,
-        P089_KEY_FALLING,
-        P090_BAG_STATIC,
-        P091_RING_CHEST,
-        P092_RING_FALL,
-        P093_RING_STATIC,
-        P094_BROOCH_STATIC,
-        P095_BROOCH_FALL,
-        P096_BROOCH_CHEST,
-        P097_SHOES_STATIC,
-        P098_SHOES_FALL,
-        P099_SHOES_CHEST,
-        P100_BANANA_STATIC,
-        P101_BANANA_FALL,
-        P102_BANANA_CHEST,
-        P103_CROWN_CHEST,
-        P104_CROWN_FALL,
-        P105_CROWN_STATIC,
-        P106_COIN_FALL,
-        P107_SMALL_COIN_FALL,
-        P108_FROG_COIN_FALL,
-        P109_COIN_STATIC,
-        P110_SMALL_COIN_STATIC,
-        P111_FROG_COIN_STATIC,
-        P112_BOMB_STATIC,
-        P113_BOMB_FALL,
-        P114_BOMB_CHEST,
-        P115_EGG_STATIC,
-        P116_EGG_FALLING,
-        P117_EGG_CHEST,
-        P118_COOKIE_STATIC,
-        P119_COOKIE_FALL,
-        P120_COOKIE_CHEST,
-        P121_BERRY_STATIC,
-        P122_BERRY_FALL,
-        P123_BERRY_CHEST,
-        P124_CARD_STATIC,
-        P125_CARD_FALL,
-        P126_CARD_CHEST,
+        P057_CROWN_FALL,
+        P058_CROWN_STATIC,
+        P059_COIN_FALL,
+        P060_SMALL_COIN_FALL,
+        P061_FROG_COIN_FALL,
+        P062_COIN_STILL,
+        P063_SMALL_COIN_STATIC,
+        P064_FROG_COIN_STATIC,
+        P065_BOMB_STATIC,
+        P066_BOMB_FALL,
+        P067_BOMB_CHEST,
+        P068_EGG_STATIC,
+        P069_EGG_FALLING,
+        P070_EGG_CHEST,
+        P071_COOKIE_STATIC,
+        P072_COOKIE_FALL,
+        P073_COOKIE_CHEST,
+        P074_BERRY_STATIC,
+        P075_BERRY_FALL,
+        P076_BERRY_CHEST,
+        P077_CARD_STATIC,
+        P078_CARD_FALL,
+        P079_CARD_CHEST,
+        P080_GREEN_SYRUP_CHEST,
+        P081_RED_SYRUP_CHEST,
+        P082_BLUE_SYRUP_CHEST,
+        P083_YELLOW_SYRUP_CHEST,
+        P084_GREEN_JUICE_CHEST,
+        P085_RED_JUICE_CHEST,
+        P086_P_DRINK_CHEST,
+        P087_D_DRINK_CHEST,
+        P088_YELLOW_MUSIC_DRINK_CHEST,
+        P089_BLUE_MUSIC_DRINK_CHEST,
+        P090_FROG_DRINK_CHEST,
+        P091_RED_MUSIC_DRINK_CHEST,
+        P092_R_DRINK_CHEST,
+        P093_MUSIC_NOTE_CHEST,
+        P094_STAR_DRINK_CHEST,
+        P095_GREEN_CANDY_CHEST,
+        P096_BLUE_CANDY_CHEST,
+        P097_GREEN_BOMB_CHEST,
+        P098_RED_BOMB_CHEST,
+        P099_BLUE_BOMB_CHEST,
+        P100_YELLOW_BOMB_CHEST,
+        P101_BEETLE_CHEST,
+        P102_RED_MUSHROOM_CHEST,
+        P103_GREEN_MUSHROOM_CHEST,
+        P104_YELLOW_MUSHROOM_CHEST,
+        P105_FRYING_PAN_CHEST,
+        P106_HAMMER_CHEST,
+        P107_STICK_CHEST,
+        P108_CHOMP_CHEST,
+        P109_FAN_CHEST,
+        P110_RED_SHELL_CHEST,
+        P111_GREEN_SHELL_CHEST,
+        P112_PARASOL_CHEST,
+        P113_YELLOW_JUICE_CHEST,
+        P114_GLOVE_CHEST,
+        P115_CRYSTAL_CHEST,
+        P116_MARIODOLL_CHEST,
+        P117_MALLOWDOLL_CHEST,
+        P118_GENODOLL_CHEST,
+        P119_BOWSERDOLL_CHEST,
+        P120_PEACHDOLL_CHEST,
+        P121_COIN_CHEST_STILL,
+        P122_FROG_COIN_STILL,
+        P123_SMALL_COIN_STILL,
+        P124_SMALL_FROG_COIN_STILL,
+        P125_UNUSED,
+        P126_UNUSED,
         P127_GREEN_SYRUP_STATIC,
         P128_GREEN_SYRUP_FALL,
-        P129_GREEN_SYRUP_CHEST,
+        P129_UNUSED,
         P130_RED_SYRUP_STATIC,
         P131_RED_SYRUP_FALL,
-        P132_RED_SYRUP_CHEST,
+        P132_UNUSED,
         P133_BLUE_SYRUP_STATIC,
         P134_BLUE_SYRUP_FALL,
-        P135_BLUE_SYRUP_CHEST,
+        P135_UNUSED,
         P136_YELLOW_SYRUP_STATIC,
         P137_YELLOW_SYRUP_FALL,
-        P138_YELLOW_SYRUP_CHEST,
+        P138_UNUSED,
         P139_GREEN_JUICE_STATIC,
         P140_GREEN_JUICE_FALL,
-        P141_GREEN_JUICE_CHEST,
+        P141_UNUSED,
         P142_RED_JUICE_STATIC,
         P143_RED_JUICE_FALL,
-        P144_RED_JUICE_CHEST,
+        P144_UNUSED,
         P145_P_DRINK_STATIC,
         P146_P_DRINK_FALL,
-        P147_P_DRINK_CHEST,
-        P148_D_DRINK_CHEST,
+        P147_UNUSED,
+        P148_UNUSED,
         P149_D_DRINK_FALL,
         P150_D_DRINK_STATIC,
-        P151_YELLOW_MUSIC_DRINK_CHEST,
+        P151_UNUSED,
         P152_YELLOW_MUSIC_DRINK_FALL,
         P153_YELLOW_MUSIC_DRINK_STATIC,
-        P154_BLUE_MUSIC_DRINK_CHEST,
+        P154_UNUSED,
         P155_BLUE_MUSIC_DRINK_FALL,
         P156_BLUE_MUSIC_DRINK_STATIC,
-        P157_FROG_DRINK_CHEST,
+        P157_UNUSED,
         P158_FROG_DRINK_FALL,
         P159_FROG_DRINK_STATIC,
-        P160_RED_MUSIC_DRINK_CHEST,
+        P160_UNUSED,
         P161_RED_MUSIC_DRINK_FALL,
         P162_RED_MUSIC_DRINK_STATIC,
         P163_R_DRINK_STATIC,
         P164_R_DRINK_FALL,
-        P165_R_DRINK_CHEST,
+        P165_UNUSED,
         P166_MUSIC_NOTE_STATIC,
         P167_MUSIC_NOTE_FALL,
-        P168_MUSIC_NOTE_CHEST,
+        P168_UNUSED,
         P169_STAR_DRINK_STATIC,
         P170_STAR_DRINK_FALL,
-        P171_STAR_DRINK_CHEST,
+        P171_UNUSED,
         P172_UNUSED,
         P173_GREEN_CANDY_STATIC,
         P174_GREEN_CANDY_FALL,
-        P175_GREEN_CANDY_CHEST,
+        P175_UNUSED,
         P176_BLUE_CANDY_STATIC,
         P177_BLUE_CANDY_FALL,
-        P178_BLUE_CANDY_CHEST,
+        P178_UNUSED,
         P179_GREEN_BOMB_STATIC,
         P180_GREEN_BOMB_FALL,
-        P181_GREEN_BOMB_CHEST,
+        P181_UNUSED,
         P182_RED_BOMB_STATIC,
         P183_RED_BOMB_FALL,
-        P184_RED_BOMB_CHEST,
+        P184_UNUSED,
         P185_BLUE_BOMB_STATIC,
         P186_BLUE_BOMB_FALL,
-        P187_BLUE_BOMB_CHEST,
+        P187_UNUSED,
         P188_YELLOW_BOMB_STATIC,
         P189_YELLOW_BOMB_FALL,
-        P190_YELLOW_BOMB_CHEST,
+        P190_UNUSED,
         P191_BEETLE_STATIC,
         P192_BEETLE_FALL,
-        P193_BEETLE_CHEST,
+        P193_UNUSED,
         P194_RED_MUSHROOM_STATIC,
         P195_RED_MUSHROOM_FALL,
-        P196_RED_MUSHROOM_CHEST,
+        P196_UNUSED,
         P197_GREEN_MUSHROOM_STATIC,
         P198_GREEN_MUSHROOM_FALL,
-        P199_GREEN_MUSHROOM_CHEST,
+        P199_UNUSED,
         P200_YELLOW_MUSHROOM_STATIC,
         P201_YELLOW_MUSHROOM_FALL,
-        P202_YELLOW_MUSHROOM_CHEST,
+        P202_UNUSED,
         P203_FRYING_PAN_STATIC,
         P204_FRYING_PAN_FALL,
-        P205_FRYING_PAN_CHEST,
+        P205_UNUSED,
         P206_HAMMER_STATIC,
         P207_HAMMER_FALL,
-        P208_HAMMER_CHEST,
+        P208_UNUSED,
         P209_STICK_STATIC,
         P210_STICK_FALL,
-        P211_STICK_CHEST,
+        P211_UNUSED,
         P212_CHOMP_STATIC,
         P213_CHOMP_FALL,
-        P214_CHOMP_CHEST,
+        P214_UNUSED,
         P215_FAN_STATIC,
         P216_FAN_FALL,
-        P217_FAN_CHEST,
+        P217_UNUSED,
         P218_RED_SHELL_STATIC,
         P219_RED_SHELL_FALL,
-        P220_RED_SHELL_CHEST,
+        P220_UNUSED,
         P221_GREEN_SHELL_STATIC,
         P222_GREEN_SHELL_FALL,
-        P223_GREEN_SHELL_CHEST,
+        P223_UNUSED,
         P224_PARASOL_STATIC,
         P225_PARASOL_FALL,
-        P226_PARASOL_CHEST,
+        P226_UNUSED,
         P227_YELLOW_JUICE_STATIC,
         P228_YELLOW_JUICE_FALL,
-        P229_YELLOW_JUICE_CHEST,
+        P229_UNUSED,
         P230_GLOVE_STATIC,
         P231_GLOVE_FALL,
-        P232_GLOVE_CHEST,
-        P233_CRYSTAL_CHEST,
+        P232_UNUSED,
+        P233_UNUSED,
         P234_CRYSTAL_FALL,
         P235_CRYSTAL_STATIC,
-        P236_MARIODOLL_CHEST,
+        P236_UNUSED,
         P237_MARIODOLL_FALL,
         P238_MARIODOLL_STATIC,
-        P239_MALLOWDOLL_CHEST,
+        P239_UNUSED,
         P240_MALLOWDOLL_FALL,
         P241_MALLOWDOLL_STATIC,
-        P242_GENODOLL_CHEST,
+        P242_UNUSED,
         P243_GENODOLL_FALL,
         P244_GENODOLL_STATIC,
-        P245_BOWSERDOLL_CHEST,
+        P245_UNUSED,
         P246_BOWSERDOLL_FALL,
         P247_BOWSERDOLL_STATIC,
-        P248_PEACHDOLL_CHEST,
+        P248_UNUSED,
         P249_PEACHDOLL_FALL,
         P250_PEACHDOLL_STATIC,
         P251_UNUSED,

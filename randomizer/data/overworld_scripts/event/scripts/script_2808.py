@@ -68,9 +68,11 @@ script = EventScript([
 	SetBit(SWITCH_MENU_UNLOCKED),
     RunEventAsSubroutine(E1194_MUSHROOM_WAY_BOSS_UNLOCKS),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER, identifier="EVENT_2808_j_24"),
-	JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_1, ["grant_toad_2_rescue_if_not_done"]),
-	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
-	JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_2, ["EVENT_2808_ret_28"], identifier="grant_toad_2_rescue_if_not_done"),
-	RunEventAsSubroutine(E0180_NPC_QUEST_3_CONTAINER),
+	JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_1, ["grant_toad_2_rescue_if_not_done"]),
+    SetVarToConst(PRIMARY_TEMP_7000, R203_MUSHROOM_WAY_AREA_01),
+	RunEventAsSubroutine(E0252_NPC_QUEST_2_GRANT),
+	JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_2, ["EVENT_2808_ret_28"], identifier="grant_toad_2_rescue_if_not_done"),
+    SetVarToConst(PRIMARY_TEMP_7000, R204_MUSHROOM_WAY_AREA_02),
+	RunEventAsSubroutine(E0251_NPC_QUEST_3_GRANT),
 	Return(identifier="EVENT_2808_ret_28")
 ])

@@ -20,7 +20,7 @@ script = ActionScript([
 	A_VisibilityOff(),
 	A_Pause(9),
 	A_VisibilityOn(),
-	A_Pause(24),
+	A_Pause(26),
 	A_VisibilityOff(),
 	A_ReturnQueue()
 ])

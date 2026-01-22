@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
-	CreatePacketAt7010(packet=P096_BROOCH_CHEST, destinations=["EVENT_3944_ret_6"]),
+	CreatePacketAt7010(packet=P040_BROOCH_CHEST, destinations=["EVENT_3944_ret_6"]),
 	AddToInventory(BroochItem),
 	PlaySound(sound=SO014_FLOWER, channel=6),
 	RunDialog(dialog_id=DI2095_GOT_BROOCH, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
