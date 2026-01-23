@@ -49,6 +49,7 @@ from smrpgpatchbuilder.datatypes.levels.room_collection import RoomCollection
 from smrpgpatchbuilder.datatypes.shops.classes import ShopCollection
 from smrpgpatchbuilder.datatypes.spells.classes import SpellCollection
 from smrpgpatchbuilder.datatypes.graphics.classes import SpriteCollection
+from smrpgpatchbuilder.datatypes.sprites.palette import EventPaletteCollection, SpritePaletteCollection
 from smrpgpatchbuilder.datatypes.scripts_common.classes import IdentifierException
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     RunEventAsSubroutine,
@@ -178,6 +179,8 @@ class GameWorld:
     shops: ShopCollection
     spells: SpellCollection
     sprites: SpriteCollection
+    event_palettes: EventPaletteCollection
+    sprite_palettes: SpritePaletteCollection
     mario_palette: MarioPalette = MarioDefault()
     mallow_palette: MallowPalette = MallowDefault()
     geno_palette: GenoPalette = GenoDefault()
@@ -753,6 +756,8 @@ class GameWorld:
         spells: SpellCollection,
         sprites: SpriteCollection,
         world_map_locations: WorldMapLocationCollection,
+        event_palettes: EventPaletteCollection,
+        sprite_palettes: SpritePaletteCollection,
         progress_callback: Callable[[str, int], None] | None = None,
         debug_bps_patches: bool = False,
     ):
@@ -784,6 +789,8 @@ class GameWorld:
         self.world_map_locations = world_map_locations
         self._cached_patch: Patch | None = None
         self._debug_bps_patches = debug_bps_patches
+        self.event_palettes = event_palettes
+        self.sprite_palettes = sprite_palettes
 
         # Validate settings combinations before doing anything else
         # This catches invalid combinations early with clear error messages
@@ -1574,6 +1581,10 @@ class GameWorld:
             addr = 0x3EF528 + (i * 7)
             val = name.encode().ljust(7, b"\x00")
             patch.add_data(addr, val)
+
+        # Palettes
+        patch.add_dict(self.sprite_palettes.render())
+        patch.add_dict(self.event_palettes.render())
 
         # Update ROM title and version.
         title = "SMRPG-R {}".format(self.seed).ljust(20)

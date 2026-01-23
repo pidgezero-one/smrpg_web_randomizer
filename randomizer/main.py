@@ -22,6 +22,8 @@ from .data.shops.shops import shop_collection
 from .data.spells.spells import ALL_SPELLS
 from .data.sprites.sprites import sprites
 from .data.world_map_locations.world_map_locations import world_map_location_collection
+from .data.palettes.event_palettes import ALL_EVENT_PALETTES
+from .data.palettes.sprite_palettes import ALL_SPRITE_PALETTES
 
 # Current version number
 VERSION = '9.0.0'
@@ -70,6 +72,8 @@ def create(
         deepcopy(ALL_SPELLS),
         deepcopy(sprites),
         deepcopy(world_map_location_collection),
+        deepcopy(ALL_EVENT_PALETTES),
+        deepcopy(ALL_SPRITE_PALETTES),
         progress_callback=progress_callback,
         debug_bps_patches=debug_bps_patches,
     )
