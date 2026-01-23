@@ -1,6 +1,7 @@
 # SPR0039_RED_SCARECROW
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL503_RED_MUSHROOM
 sprite = CompleteSprite(
     animation=AnimationPack(273, length=608, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -834,7 +835,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=503,
+    palette_id=SPAL503_RED_MUSHROOM,
     palette_offset=0,
     unknown_num=0
 )

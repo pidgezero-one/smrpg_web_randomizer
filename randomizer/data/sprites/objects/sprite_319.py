@@ -1,6 +1,7 @@
 # SPR0319_CORKPEDITE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL132_CORKPEDITE
 sprite = CompleteSprite(
     animation=AnimationPack(58, length=960, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=8192,
@@ -4044,7 +4045,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=132,
+    palette_id=SPAL132_CORKPEDITE,
     palette_offset=0,
     unknown_num=8
 )

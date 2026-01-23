@@ -1,6 +1,7 @@
 # SPR0563_ABXY_BUTTONS_FROM_BOWYER_S_BUTTON_LOCK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL379_ABXY_BUTTONS_FROM_BOWYER_S_BUTTON_LOCK
 sprite = CompleteSprite(
     animation=AnimationPack(217, length=183, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -193,7 +194,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=379,
+    palette_id=SPAL379_ABXY_BUTTONS_FROM_BOWYER_S_BUTTON_LOCK,
     palette_offset=0,
     unknown_num=8
 )

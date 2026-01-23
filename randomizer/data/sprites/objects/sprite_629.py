@@ -1,6 +1,7 @@
 # SPR0629_SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL708_SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM
 sprite = CompleteSprite(
     animation=AnimationPack(409, length=91, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -95,7 +96,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=708,
+    palette_id=SPAL708_SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM,
     palette_offset=0,
     unknown_num=0
 )

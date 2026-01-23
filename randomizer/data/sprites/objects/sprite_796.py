@@ -1,6 +1,7 @@
 # SPR0796_LIGHT_ORANGE_STARS
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL351_WHITE_STARS
 sprite = CompleteSprite(
     animation=AnimationPack(203, length=441, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -607,7 +608,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=351,
+    palette_id=SPAL351_WHITE_STARS,
     palette_offset=2,
     unknown_num=8
 )

@@ -1,6 +1,7 @@
 # SPR0632_GREY_STONE_BLOCK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL525_BRICK_BEANSTALK_BLOCK
 sprite = CompleteSprite(
     animation=AnimationPack(382, length=72, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -70,7 +71,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=525,
+    palette_id=SPAL525_BRICK_BEANSTALK_BLOCK,
     palette_offset=1,
     unknown_num=0
 )

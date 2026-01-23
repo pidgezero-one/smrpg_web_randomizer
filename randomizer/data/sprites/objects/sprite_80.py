@@ -1,6 +1,7 @@
 # SPR0080_TOADOFSKY
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL439_TOADOFSKY
 sprite = CompleteSprite(
     animation=AnimationPack(318, length=430, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -610,7 +611,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=439,
+    palette_id=SPAL439_TOADOFSKY,
     palette_offset=0,
     unknown_num=0
 )

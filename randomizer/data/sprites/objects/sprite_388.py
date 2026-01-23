@@ -1,6 +1,7 @@
 # SPR0388_POUNDETTE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL295_TINY_STAR
 sprite = CompleteSprite(
     animation=AnimationPack(166, length=293, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -368,7 +369,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=295,
+    palette_id=SPAL295_TINY_STAR,
     palette_offset=0,
     unknown_num=8
 )

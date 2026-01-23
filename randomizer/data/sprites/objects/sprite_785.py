@@ -1,6 +1,7 @@
 # SPR0785_SPRITZ_BOMB
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL294_SPRITZ_BOMB
 sprite = CompleteSprite(
     animation=AnimationPack(165, length=93, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -102,7 +103,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=294,
+    palette_id=SPAL294_SPRITZ_BOMB,
     palette_offset=0,
     unknown_num=8
 )

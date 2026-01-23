@@ -1,6 +1,7 @@
 # SPR0601_HAMMER_STANDALONE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL531_HAMMER_STANDALONE
 sprite = CompleteSprite(
     animation=AnimationPack(388, length=426, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -31,7 +32,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=531,
+    palette_id=SPAL531_HAMMER_STANDALONE,
     palette_offset=0,
     unknown_num=0
 )

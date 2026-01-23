@@ -1,6 +1,7 @@
 # SPR0004_MARIO_ATTACK_UP_RIGHT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL644_MARIO_ATTACK_UP_RIGHT
 sprite = CompleteSprite(
     animation=AnimationPack(4, length=909, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -1072,7 +1073,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=644,
+    palette_id=SPAL644_MARIO_ATTACK_UP_RIGHT,
     palette_offset=0,
     unknown_num=0
 )

@@ -1,6 +1,7 @@
 # SPR0078_NIMBUSITE_YELLOW_GREEN
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL519_NIMBUSITE_BLUE
 sprite = CompleteSprite(
     animation=AnimationPack(321, length=225, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -234,7 +235,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=519,
+    palette_id=SPAL519_NIMBUSITE_BLUE,
     palette_offset=3,
     unknown_num=0
 )

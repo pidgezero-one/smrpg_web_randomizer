@@ -1,6 +1,7 @@
 # SPR0128_BLOCK_SHADOW
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL462_BLOCK_SHADOW
 sprite = CompleteSprite(
     animation=AnimationPack(344, length=88, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -91,7 +92,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=462,
+    palette_id=SPAL462_BLOCK_SHADOW,
     palette_offset=0,
     unknown_num=0
 )

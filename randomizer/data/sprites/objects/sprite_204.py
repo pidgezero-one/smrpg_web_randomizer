@@ -1,6 +1,7 @@
 # SPR0204_GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL459_EXPLOSION
 sprite = CompleteSprite(
     animation=AnimationPack(342, length=195, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -184,7 +185,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=459,
+    palette_id=SPAL459_EXPLOSION,
     palette_offset=2,
     unknown_num=0
 )

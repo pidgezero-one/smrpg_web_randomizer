@@ -1,6 +1,7 @@
 # SPR0500_AERO
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL542_AERO
 sprite = CompleteSprite(
     animation=AnimationPack(139, length=201, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
@@ -193,7 +194,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=542,
+    palette_id=SPAL542_AERO,
     palette_offset=0,
     unknown_num=0
 )

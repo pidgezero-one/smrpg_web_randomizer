@@ -1,6 +1,7 @@
 # SPR0285_AMEBOID
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL083_AMEBOID
 sprite = CompleteSprite(
     animation=AnimationPack(28, length=635, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -746,7 +747,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=83,
+    palette_id=SPAL083_AMEBOID,
     palette_offset=0,
     unknown_num=0
 )

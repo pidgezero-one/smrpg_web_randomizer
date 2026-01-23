@@ -1,6 +1,7 @@
 # SPR0153_GUNYOLK_TOP_SECTION
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL602_GUNYOLK_TOP_SECTION
 sprite = CompleteSprite(
     animation=AnimationPack(160, length=160, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -172,7 +173,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=602,
+    palette_id=SPAL602_GUNYOLK_TOP_SECTION,
     palette_offset=0,
     unknown_num=0
 )

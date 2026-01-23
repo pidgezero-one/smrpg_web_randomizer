@@ -1,6 +1,7 @@
 # SPR0625_SPLASH_WATER_GEYSER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL475_SPLASH_WATER_DROPLETS
 sprite = CompleteSprite(
     animation=AnimationPack(356, length=246, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -246,7 +247,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=475,
+    palette_id=SPAL475_SPLASH_WATER_DROPLETS,
     palette_offset=0,
     unknown_num=0
 )

@@ -1,6 +1,7 @@
 # SPR0125_FROGFUCIUS_STUDENT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL530_FROGFUCIUS_STUDENT
 sprite = CompleteSprite(
     animation=AnimationPack(387, length=64, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -64,7 +65,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=530,
+    palette_id=SPAL530_FROGFUCIUS_STUDENT,
     palette_offset=0,
     unknown_num=0
 )

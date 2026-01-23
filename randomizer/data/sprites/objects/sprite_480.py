@@ -1,6 +1,7 @@
 # SPR0480_MACK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL618_MACHINE_MADE_MACK
 sprite = CompleteSprite(
     animation=AnimationPack(81, length=780, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=6144,
@@ -2079,7 +2080,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=618,
+    palette_id=SPAL618_MACHINE_MADE_MACK,
     palette_offset=0,
     unknown_num=8
 )

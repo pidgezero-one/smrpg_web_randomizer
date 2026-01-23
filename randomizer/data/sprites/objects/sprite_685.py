@@ -1,6 +1,7 @@
 # SPR0685_CHOMPWEED
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL215_CHOMPWEED
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -133,6 +134,6 @@ sprite = CompleteSprite(
                     ]
                 ),
             ])),
-    palette_id=215,
+    palette_id=SPAL215_CHOMPWEED,
     palette_offset=0,
     unknown_num=8)

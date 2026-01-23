@@ -1,6 +1,7 @@
 # SPR0513_RAINBOW_EXPLOSION
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL333_RAINBOW_EXPLOSION
 sprite = CompleteSprite(
     animation=AnimationPack(191, length=306, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -319,7 +320,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=333,
+    palette_id=SPAL333_RAINBOW_EXPLOSION,
     palette_offset=1,
     unknown_num=8
 )

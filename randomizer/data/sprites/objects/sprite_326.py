@@ -1,6 +1,7 @@
 # SPR0326_GU_GOOMBA
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL022_GOOMBA
 sprite = CompleteSprite(
     animation=AnimationPack(7, length=431, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -451,7 +452,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=22,
+    palette_id=SPAL022_GOOMBA,
     palette_offset=1,
     unknown_num=0
 )

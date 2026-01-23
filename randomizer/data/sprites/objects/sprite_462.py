@@ -1,6 +1,7 @@
 # SPR0462_EGGBERT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL252_EGG
 sprite = CompleteSprite(
     animation=AnimationPack(132, length=146, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -130,7 +131,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=252,
+    palette_id=SPAL252_EGG,
     palette_offset=0,
     unknown_num=8
 )

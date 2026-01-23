@@ -1,6 +1,7 @@
 # SPR0541_SNOWY_EYES
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL374_SNOWY_EYES
 sprite = CompleteSprite(
     animation=AnimationPack(215, length=91, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -95,7 +96,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=374,
+    palette_id=SPAL374_SNOWY_EYES,
     palette_offset=0,
     unknown_num=8
 )

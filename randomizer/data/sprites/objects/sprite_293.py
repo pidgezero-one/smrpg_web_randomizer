@@ -1,6 +1,7 @@
 # SPR0293_BLASTER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL193_BLASTER
 sprite = CompleteSprite(
     animation=AnimationPack(80, length=477, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=6144,
@@ -993,7 +994,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=193,
+    palette_id=SPAL193_BLASTER,
     palette_offset=0,
     unknown_num=8
 )

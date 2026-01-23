@@ -1,6 +1,7 @@
 # SPR0227_LIGHT_GREEN_PIPE_TOP_EDGE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL486_LIGHT_GREEN_PIPE_TOP_EDGE
 sprite = CompleteSprite(
     animation=AnimationPack(366, length=40, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -37,7 +38,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=486,
+    palette_id=SPAL486_LIGHT_GREEN_PIPE_TOP_EDGE,
     palette_offset=0,
     unknown_num=0
 )

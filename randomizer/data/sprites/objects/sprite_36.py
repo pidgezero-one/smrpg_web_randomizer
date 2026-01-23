@@ -1,6 +1,7 @@
 # SPR0036_PARASOL
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL559_PARASOL
 sprite = CompleteSprite(
     animation=AnimationPack(393, length=260, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -307,7 +308,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=559,
+    palette_id=SPAL559_PARASOL,
     palette_offset=0,
     unknown_num=0
 )

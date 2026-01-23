@@ -1,6 +1,7 @@
 # SPR0401_MACHINE_MADE_SHYSTER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL190_SPRINGER
 sprite = CompleteSprite(
     animation=AnimationPack(121, length=657, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -948,7 +949,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=190,
+    palette_id=SPAL190_SPRINGER,
     palette_offset=2,
     unknown_num=0
 )

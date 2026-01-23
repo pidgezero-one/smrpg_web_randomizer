@@ -1,6 +1,7 @@
 # SPR0258_SKY_TROOPA
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL566_COMMANDER_TROOPA
 sprite = CompleteSprite(
     animation=AnimationPack(4, length=649, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -831,7 +832,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=566,
+    palette_id=SPAL566_COMMANDER_TROOPA,
     palette_offset=0,
     unknown_num=0
 )

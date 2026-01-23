@@ -1,6 +1,7 @@
 # SPR0946_MACK_YARIDOVICH_BOWYER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL738_MACK_YARIDOVICH_BOWYER
 sprite = CompleteSprite(
     animation=AnimationPack(431, length=258, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -279,7 +280,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=738,
+    palette_id=SPAL738_MACK_YARIDOVICH_BOWYER,
     palette_offset=0,
     unknown_num=8
 )

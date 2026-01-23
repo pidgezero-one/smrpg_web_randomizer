@@ -1,6 +1,7 @@
 # SPR0673_BOWYER_STATUE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL786_BOWYER_STATUE
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -71,6 +72,6 @@ sprite = CompleteSprite(
                     ]
                 ),
             ])),
-    palette_id=786,
+    palette_id=SPAL786_BOWYER_STATUE,
     palette_offset=0,
     unknown_num=0)

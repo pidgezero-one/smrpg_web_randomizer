@@ -1,6 +1,7 @@
 # SPR0721_BUNDT_OBJECT_MAYBE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL152_BUNDT_OBJECT_MAYBE
 sprite = CompleteSprite(
     animation=AnimationPack(99, length=80, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
@@ -77,7 +78,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=152,
+    palette_id=SPAL152_BUNDT_OBJECT_MAYBE,
     palette_offset=0,
     unknown_num=0
 )

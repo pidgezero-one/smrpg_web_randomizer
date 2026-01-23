@@ -1,6 +1,7 @@
 # SPR0668_COUNT_DOWN_STATUE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL782_COUNT_DOWN_STATUE
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -69,6 +70,6 @@ sprite = CompleteSprite(
                     ]
                 ),
             ])),
-    palette_id=782,
+    palette_id=SPAL782_COUNT_DOWN_STATUE,
     palette_offset=0,
     unknown_num=0)

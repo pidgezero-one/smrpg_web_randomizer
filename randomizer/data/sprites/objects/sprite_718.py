@@ -1,6 +1,7 @@
 # SPR0718_SCARECROW
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL677_SCARECROW
 sprite = CompleteSprite(
     animation=AnimationPack(60, length=267, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
@@ -287,7 +288,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=677,
+    palette_id=SPAL677_SCARECROW,
     palette_offset=0,
     unknown_num=0
 )

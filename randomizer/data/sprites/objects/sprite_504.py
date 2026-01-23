@@ -1,6 +1,7 @@
 # SPR0504_SNIFIT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL585_SPOOKUM
 sprite = CompleteSprite(
     animation=AnimationPack(76, length=765, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -1072,7 +1073,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=585,
+    palette_id=SPAL585_SPOOKUM,
     palette_offset=1,
     unknown_num=0
 )

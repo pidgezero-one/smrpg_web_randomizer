@@ -1,6 +1,7 @@
 # SPR0102_SAVE_POINT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL447_SAVE_POINT
 sprite = CompleteSprite(
     animation=AnimationPack(337, length=103, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -106,7 +107,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=447,
+    palette_id=SPAL447_SAVE_POINT,
     palette_offset=0,
     unknown_num=0
 )

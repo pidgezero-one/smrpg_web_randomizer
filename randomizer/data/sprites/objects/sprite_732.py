@@ -1,6 +1,7 @@
 # SPR0732_CYMBALS
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL535_CYMBALS
 sprite = CompleteSprite(
     animation=AnimationPack(390, length=448, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -686,7 +687,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=535,
+    palette_id=SPAL535_CYMBALS,
     palette_offset=0,
     unknown_num=0
 )

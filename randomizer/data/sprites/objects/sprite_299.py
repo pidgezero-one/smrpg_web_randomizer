@@ -1,6 +1,7 @@
 # SPR0299_ORB_USER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL119_ORB_USER
 sprite = CompleteSprite(
     animation=AnimationPack(38, length=1249, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -1569,7 +1570,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=119,
+    palette_id=SPAL119_ORB_USER,
     palette_offset=0,
     unknown_num=8
 )

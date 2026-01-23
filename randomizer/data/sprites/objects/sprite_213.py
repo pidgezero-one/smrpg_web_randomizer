@@ -1,6 +1,7 @@
 # SPR0213_AXEM_RED_TELEPORT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL275_AXEM_RED_TELEPORT
 sprite = CompleteSprite(
     animation=AnimationPack(148, length=155, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -318,7 +319,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=275,
+    palette_id=SPAL275_AXEM_RED_TELEPORT,
     palette_offset=0,
     unknown_num=0
 )

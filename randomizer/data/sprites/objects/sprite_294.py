@@ -1,6 +1,7 @@
 # SPR0294_GUERRILLA
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL205_GUERRILLA
 sprite = CompleteSprite(
     animation=AnimationPack(104, length=1937, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=6144,
@@ -3391,7 +3392,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=205,
+    palette_id=SPAL205_GUERRILLA,
     palette_offset=0,
     unknown_num=8
 )

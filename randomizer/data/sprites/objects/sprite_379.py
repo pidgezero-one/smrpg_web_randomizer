@@ -1,6 +1,7 @@
 # SPR0379_SPINTHRA
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL178_ARACHNE
 sprite = CompleteSprite(
     animation=AnimationPack(65, length=1261, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=6144,
@@ -2761,7 +2762,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=178,
+    palette_id=SPAL178_ARACHNE,
     palette_offset=1,
     unknown_num=8
 )

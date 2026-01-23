@@ -1,6 +1,7 @@
 # SPR0472_KING_CALAMARI
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL194_KING_CALAMARI
 sprite = CompleteSprite(
     animation=AnimationPack(82, length=1369, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=8192,
@@ -3196,7 +3197,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=194,
+    palette_id=SPAL194_KING_CALAMARI,
     palette_offset=0,
     unknown_num=8
 )

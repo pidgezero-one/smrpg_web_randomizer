@@ -1,6 +1,7 @@
 # SPR0190_CROCO_OVERWORLD
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL635_CROCO_OVERWORLD
 sprite = CompleteSprite(
     animation=AnimationPack(283, length=657, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -874,7 +875,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=635,
+    palette_id=SPAL635_CROCO_OVERWORLD,
     palette_offset=0,
     unknown_num=0
 )

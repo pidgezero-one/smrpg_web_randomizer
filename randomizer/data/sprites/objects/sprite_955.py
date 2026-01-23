@@ -1,6 +1,7 @@
 # SPR0955_SMALLER_RED_FIREWORK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL759_SMALLER_RED_FIREWORK
 sprite = CompleteSprite(
     animation=AnimationPack(440, length=460, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -595,7 +596,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=759,
+    palette_id=SPAL759_SMALLER_RED_FIREWORK,
     palette_offset=0,
     unknown_num=8
 )

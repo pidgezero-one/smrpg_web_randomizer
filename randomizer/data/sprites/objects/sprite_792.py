@@ -1,6 +1,7 @@
 # SPR0792_BLACK_ROCK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL304_ICE_ROCK
 sprite = CompleteSprite(
     animation=AnimationPack(171, length=464, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -571,7 +572,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=304,
+    palette_id=SPAL304_ICE_ROCK,
     palette_offset=1,
     unknown_num=8
 )

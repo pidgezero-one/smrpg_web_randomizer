@@ -1,6 +1,7 @@
 # SPR0416_BOBOMB_S_3
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL066_BOB_OMB
 sprite = CompleteSprite(
     animation=AnimationPack(25, length=349, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
@@ -345,7 +346,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=66,
+    palette_id=SPAL066_BOB_OMB,
     palette_offset=0,
     unknown_num=0
 )

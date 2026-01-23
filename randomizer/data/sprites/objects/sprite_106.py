@@ -1,6 +1,7 @@
 # SPR0106_WHIRLPOOL_WATER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL448_WHIRLPOOL_WATER
 sprite = CompleteSprite(
     animation=AnimationPack(339, length=241, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -247,7 +248,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=448,
+    palette_id=SPAL448_WHIRLPOOL_WATER,
     palette_offset=0,
     unknown_num=0
 )

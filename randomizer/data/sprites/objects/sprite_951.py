@@ -1,6 +1,7 @@
 # SPR0951_WAVING_MARIO_TOADSTOOL
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL755_WAVING_MARIO_TOADSTOOL
 sprite = CompleteSprite(
     animation=AnimationPack(436, length=206, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -185,7 +186,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=755,
+    palette_id=SPAL755_WAVING_MARIO_TOADSTOOL,
     palette_offset=0,
     unknown_num=8
 )

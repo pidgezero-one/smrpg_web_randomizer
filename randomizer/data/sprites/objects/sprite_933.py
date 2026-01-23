@@ -1,6 +1,7 @@
 # SPR0933_NIMBUS_BUSMAN_LAKITU_FROGFUCIUS
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL717_NIMBUS_BUSMAN_LAKITU_FROGFUCIUS
 sprite = CompleteSprite(
     animation=AnimationPack(418, length=121, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -130,7 +131,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=717,
+    palette_id=SPAL717_NIMBUS_BUSMAN_LAKITU_FROGFUCIUS,
     palette_offset=0,
     unknown_num=8
 )

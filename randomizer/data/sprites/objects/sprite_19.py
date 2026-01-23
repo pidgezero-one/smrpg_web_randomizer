@@ -1,6 +1,7 @@
 # SPR0019_BOWSER_SWING_BALL_CHAIN
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL669_BOWSER_CLAW_ATTACK
 sprite = CompleteSprite(
     animation=AnimationPack(5, length=696, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -1259,7 +1260,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=669,
+    palette_id=SPAL669_BOWSER_CLAW_ATTACK,
     palette_offset=0,
     unknown_num=0
 )

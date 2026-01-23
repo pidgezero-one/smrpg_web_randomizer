@@ -1,6 +1,7 @@
 # SPR0313_JESTER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL135_JESTER
 sprite = CompleteSprite(
     animation=AnimationPack(44, length=996, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -2596,7 +2597,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=135,
+    palette_id=SPAL135_JESTER,
     palette_offset=0,
     unknown_num=8
 )

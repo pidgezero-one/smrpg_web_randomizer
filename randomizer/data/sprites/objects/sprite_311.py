@@ -1,6 +1,7 @@
 # SPR0311_STUMPET
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL141_STUMPET
 sprite = CompleteSprite(
     animation=AnimationPack(46, length=746, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=8192,
@@ -3224,7 +3225,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=141,
+    palette_id=SPAL141_STUMPET,
     palette_offset=0,
     unknown_num=8
 )

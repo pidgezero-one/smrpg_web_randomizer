@@ -1,6 +1,7 @@
 # SPR0095_EMPTY_TREASURE_CHEST
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL440_TREASURE_CHEST
 sprite = CompleteSprite(
     animation=AnimationPack(323, length=559, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -1284,7 +1285,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=440,
+    palette_id=SPAL440_TREASURE_CHEST,
     palette_offset=0,
     unknown_num=0
 )

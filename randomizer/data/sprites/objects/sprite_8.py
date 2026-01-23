@@ -1,6 +1,7 @@
 # SPR0008_TOADSTOOL_JUMP_FRONT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL654_TOADSTOOL_WALKING_DOWN_LEFT
 sprite = CompleteSprite(
     animation=AnimationPack(1, length=680, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
@@ -646,7 +647,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=654,
+    palette_id=SPAL654_TOADSTOOL_WALKING_DOWN_LEFT,
     palette_offset=0,
     unknown_num=0
 )

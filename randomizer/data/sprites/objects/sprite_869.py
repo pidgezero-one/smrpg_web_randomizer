@@ -1,6 +1,7 @@
 # SPR0869_EMPTY
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL000_NOTHING
 sprite = CompleteSprite(
     animation=AnimationPack(0, length=31, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -25,7 +26,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=0,
+    palette_id=SPAL000_NOTHING,
     palette_offset=0,
     unknown_num=8
 )

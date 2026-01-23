@@ -1,6 +1,7 @@
 # SPR0943_BOOSTER_RIDING_TRAIN
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL735_BOOSTER_RIDING_TRAIN
 sprite = CompleteSprite(
     animation=AnimationPack(428, length=272, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -270,7 +271,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=735,
+    palette_id=SPAL735_BOOSTER_RIDING_TRAIN,
     palette_offset=0,
     unknown_num=8
 )

@@ -1,6 +1,7 @@
 # SPR0467_AXEM_GREEN
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL271_MACHINE_MADE_AXEM_GREEN
 sprite = CompleteSprite(
     animation=AnimationPack(147, length=817, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -973,7 +974,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=271,
+    palette_id=SPAL271_MACHINE_MADE_AXEM_GREEN,
     palette_offset=1,
     unknown_num=8
 )

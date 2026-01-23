@@ -1,6 +1,7 @@
 # SPR0271_RAT_FUNK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL047_RAT_FUNK
 sprite = CompleteSprite(
     animation=AnimationPack(16, length=539, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -715,7 +716,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=47,
+    palette_id=SPAL047_RAT_FUNK,
     palette_offset=0,
     unknown_num=0
 )

@@ -1,6 +1,7 @@
 # SPR0470_FANCY_BUNDT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL202_BUNDT
 sprite = CompleteSprite(
     animation=AnimationPack(98, length=405, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=4096,
@@ -1039,7 +1040,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=202,
+    palette_id=SPAL202_BUNDT,
     palette_offset=0,
     unknown_num=0
 )

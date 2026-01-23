@@ -1,6 +1,7 @@
 # SPR0273_MAGMITE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL102_MAGMITE
 sprite = CompleteSprite(
     animation=AnimationPack(31, length=794, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -1058,7 +1059,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=102,
+    palette_id=SPAL102_MAGMITE,
     palette_offset=0,
     unknown_num=0
 )

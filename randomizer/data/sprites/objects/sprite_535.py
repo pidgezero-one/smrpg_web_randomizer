@@ -1,6 +1,7 @@
 # SPR0535_RED_SPARK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL320_BLUE_SPARK
 sprite = CompleteSprite(
     animation=AnimationPack(187, length=75, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -69,7 +70,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=320,
+    palette_id=SPAL320_BLUE_SPARK,
     palette_offset=3,
     unknown_num=12
 )

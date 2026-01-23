@@ -1,6 +1,7 @@
 # SPR0804_GUNK_BALL_INK_BLAST
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL288_GUNK_BALL_INK_BLAST
 sprite = CompleteSprite(
     animation=AnimationPack(176, length=279, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -304,7 +305,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=288,
+    palette_id=SPAL288_GUNK_BALL_INK_BLAST,
     palette_offset=0,
     unknown_num=8
 )

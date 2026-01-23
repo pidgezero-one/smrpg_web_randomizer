@@ -1,6 +1,7 @@
 # SPR0288_CRUSTY
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL122_CRUSTY
 sprite = CompleteSprite(
     animation=AnimationPack(40, length=989, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=6144,
@@ -2476,7 +2477,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=122,
+    palette_id=SPAL122_CRUSTY,
     palette_offset=0,
     unknown_num=8
 )

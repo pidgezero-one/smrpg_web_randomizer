@@ -1,6 +1,7 @@
 # SPR0272_K
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL054_K
 sprite = CompleteSprite(
     animation=AnimationPack(17, length=764, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -1037,7 +1038,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=54,
+    palette_id=SPAL054_K,
     palette_offset=0,
     unknown_num=0
 )

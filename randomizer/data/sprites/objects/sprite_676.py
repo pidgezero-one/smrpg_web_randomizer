@@ -1,6 +1,7 @@
 # SPR0676_BIRDETTA_STATUE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL789_BIRDETTA_STATUE
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -71,6 +72,6 @@ sprite = CompleteSprite(
                     ]
                 ),
             ])),
-    palette_id=789,
+    palette_id=SPAL789_BIRDETTA_STATUE,
     palette_offset=0,
     unknown_num=0)

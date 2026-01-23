@@ -1,6 +1,7 @@
 # SPR0199_FRYING_PAN_PACKET
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL538_FRYING_PAN
 sprite = CompleteSprite(
     animation=AnimationPack(392, length=154, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -31,7 +32,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=538,
+    palette_id=SPAL538_FRYING_PAN,
     palette_offset=0,
     unknown_num=0
 )

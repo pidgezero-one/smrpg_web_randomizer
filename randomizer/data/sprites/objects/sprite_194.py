@@ -1,6 +1,7 @@
 # SPR0194_FROG_COIN
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL008_MIMIC_FACE_STANDALONE
 sprite = CompleteSprite(
     animation=AnimationPack(324, length=490, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -581,7 +582,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=8,
+    palette_id=SPAL008_MIMIC_FACE_STANDALONE,
     palette_offset=2,
     unknown_num=0
 )

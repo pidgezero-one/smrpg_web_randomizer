@@ -1,6 +1,7 @@
 # SPR0794_DARK_RED_YELLOW_FIREBALL
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL302_HELIO
 sprite = CompleteSprite(
     animation=AnimationPack(169, length=85, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -88,7 +89,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=302,
+    palette_id=SPAL302_HELIO,
     palette_offset=0,
     unknown_num=8
 )

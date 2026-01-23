@@ -1,6 +1,7 @@
 # SPR0147_GOLDEN_BELOME
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL156_GOLDEN_BELOME
 sprite = CompleteSprite(
     animation=AnimationPack(55, length=2092, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=6144,
@@ -3374,7 +3375,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=156,
+    palette_id=SPAL156_GOLDEN_BELOME,
     palette_offset=1,
     unknown_num=0
 )

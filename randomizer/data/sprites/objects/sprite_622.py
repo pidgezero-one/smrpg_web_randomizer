@@ -1,6 +1,7 @@
 # SPR0622_BOOSTER_S_CHOO_CHOO_TRAIN
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL476_BOOSTER_S_CHOO_CHOO_TRAIN
 sprite = CompleteSprite(
     animation=AnimationPack(359, length=290, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -586,7 +587,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=476,
+    palette_id=SPAL476_BOOSTER_S_CHOO_CHOO_TRAIN,
     palette_offset=0,
     unknown_num=0
 )

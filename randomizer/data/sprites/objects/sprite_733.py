@@ -1,6 +1,7 @@
 # SPR0733_CHOMP
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL537_CHOMP_PACKET
 sprite = CompleteSprite(
     animation=AnimationPack(391, length=731, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -918,7 +919,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=537,
+    palette_id=SPAL537_CHOMP_PACKET,
     palette_offset=0,
     unknown_num=0
 )

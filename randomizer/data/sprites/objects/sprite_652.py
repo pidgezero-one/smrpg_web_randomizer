@@ -1,6 +1,7 @@
 # SPR0652_MIMIC_STATUE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL766_MIMIC_STATUE
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -47,6 +48,6 @@ sprite = CompleteSprite(
                     ]
                 ),
             ])),
-    palette_id=766,
+    palette_id=SPAL766_MIMIC_STATUE,
     palette_offset=0,
     unknown_num=0)

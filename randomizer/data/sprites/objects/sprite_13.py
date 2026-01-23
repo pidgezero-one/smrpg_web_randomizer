@@ -1,6 +1,7 @@
 # SPR0013_TOADSTOOL_FALLEN_CRYING
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL659_TOADSTOOL_SLAP_ATTACK
 sprite = CompleteSprite(
     animation=AnimationPack(6, length=724, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
@@ -903,7 +904,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=659,
+    palette_id=SPAL659_TOADSTOOL_SLAP_ATTACK,
     palette_offset=0,
     unknown_num=0
 )

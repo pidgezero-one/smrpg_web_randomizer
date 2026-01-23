@@ -1,6 +1,7 @@
 # SPR0395_CHESTER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL148_PANDORITE
 sprite = CompleteSprite(
     animation=AnimationPack(53, length=761, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -1712,7 +1713,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=148,
+    palette_id=SPAL148_PANDORITE,
     palette_offset=3,
     unknown_num=8
 )

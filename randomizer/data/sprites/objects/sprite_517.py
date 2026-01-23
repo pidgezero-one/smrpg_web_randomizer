@@ -1,6 +1,7 @@
 # SPR0517_BOMB_EXPLOSION
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL324_BOMB_EXPLOSION
 sprite = CompleteSprite(
     animation=AnimationPack(188, length=299, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -307,7 +308,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=324,
+    palette_id=SPAL324_BOMB_EXPLOSION,
     palette_offset=0,
     unknown_num=8
 )

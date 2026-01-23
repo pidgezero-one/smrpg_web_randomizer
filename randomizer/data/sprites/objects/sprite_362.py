@@ -1,6 +1,7 @@
 # SPR0362_ARMORED_ANT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL172_SHOGUN
 sprite = CompleteSprite(
     animation=AnimationPack(61, length=1071, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -1977,7 +1978,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=172,
+    palette_id=SPAL172_SHOGUN,
     palette_offset=1,
     unknown_num=8
 )

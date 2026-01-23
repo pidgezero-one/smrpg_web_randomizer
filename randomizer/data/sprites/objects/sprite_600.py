@@ -1,6 +1,7 @@
 # SPR0600_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL797_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE
 sprite = CompleteSprite(
     animation=AnimationPack(363, length=46, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -99,7 +100,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=797,
+    palette_id=SPAL797_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE,
     palette_offset=0,
     unknown_num=0
 )

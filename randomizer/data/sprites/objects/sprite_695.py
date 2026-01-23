@@ -1,6 +1,7 @@
 # SPR0695_DODO_SUB
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL584_FEATHER
 sprite = CompleteSprite(
     animation=AnimationPack(74, length=1691, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=6144,
@@ -3363,7 +3364,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=584,
+    palette_id=SPAL584_FEATHER,
     palette_offset=0,
     unknown_num=8
 )

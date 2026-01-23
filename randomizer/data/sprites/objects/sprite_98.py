@@ -1,6 +1,7 @@
 # SPR0098_ROLLING_BARREL
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL444_ROLLING_BARREL
 sprite = CompleteSprite(
     animation=AnimationPack(333, length=160, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -162,7 +163,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=444,
+    palette_id=SPAL444_ROLLING_BARREL,
     palette_offset=0,
     unknown_num=0
 )

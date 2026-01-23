@@ -1,6 +1,7 @@
 # SPR0289_MAGIKOOPA
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL227_MAGIKOOPA
 sprite = CompleteSprite(
     animation=AnimationPack(78, length=974, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -1905,7 +1906,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=227,
+    palette_id=SPAL227_MAGIKOOPA,
     palette_offset=0,
     unknown_num=8
 )

@@ -1,6 +1,7 @@
 # SPR0518_SMALL_WHITE_CLOUD
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL331_SMALL_WHITE_CLOUD
 sprite = CompleteSprite(
     animation=AnimationPack(189, length=97, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -91,7 +92,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=331,
+    palette_id=SPAL331_SMALL_WHITE_CLOUD,
     palette_offset=0,
     unknown_num=8
 )

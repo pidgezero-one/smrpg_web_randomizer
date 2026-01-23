@@ -1,6 +1,7 @@
 # SPR0803_WATER_BLAST_WATER_SPOUTS
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL403_WATER_BLAST_WATER_SPOUTS
 sprite = CompleteSprite(
     animation=AnimationPack(232, length=420, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -405,7 +406,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=403,
+    palette_id=SPAL403_WATER_BLAST_WATER_SPOUTS,
     palette_offset=0,
     unknown_num=8
 )

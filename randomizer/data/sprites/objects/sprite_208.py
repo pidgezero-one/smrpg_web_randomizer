@@ -1,6 +1,7 @@
 # SPR0208_HAMMER_PACKET
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL349_HAMMER_PACKET
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -63,6 +64,6 @@ sprite = CompleteSprite(
                     frames=[AnimationSequenceFrame(duration=2, mold_id=0)]
                 ),
             ])),
-    palette_id=349,
+    palette_id=SPAL349_HAMMER_PACKET,
     palette_offset=0,
     unknown_num=8)

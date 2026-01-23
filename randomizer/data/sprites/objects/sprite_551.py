@@ -1,6 +1,7 @@
 # SPR0551_MUTE_BALLOON
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL375_MUTE_BALLOON
 sprite = CompleteSprite(
     animation=AnimationPack(216, length=516, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -549,7 +550,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=375,
+    palette_id=SPAL375_MUTE_BALLOON,
     palette_offset=0,
     unknown_num=8
 )

@@ -1,6 +1,7 @@
 # SPR0201_MOKURA_S_CLOUD_BLUE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL459_EXPLOSION
 sprite = CompleteSprite(
     animation=AnimationPack(343, length=82, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -73,7 +74,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=459,
+    palette_id=SPAL459_EXPLOSION,
     palette_offset=1,
     unknown_num=0
 )

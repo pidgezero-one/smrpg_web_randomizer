@@ -1,6 +1,7 @@
 # SPR0599_SMITHY_SMALL
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL798_SMITHY_SMALL
 sprite = CompleteSprite(
     animation=AnimationPack(0, length=31, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -37,7 +38,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=798,
+    palette_id=SPAL798_SMITHY_SMALL,
     palette_offset=0,
     unknown_num=0
 )

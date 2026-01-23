@@ -1,6 +1,7 @@
 # SPR0620_FALLING_STEPPING_BRIDGE_BLOCK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL480_FALLING_STEPPING_BRIDGE_BLOCK
 sprite = CompleteSprite(
     animation=AnimationPack(362, length=89, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -89,7 +90,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=480,
+    palette_id=SPAL480_FALLING_STEPPING_BRIDGE_BLOCK,
     palette_offset=0,
     unknown_num=0
 )

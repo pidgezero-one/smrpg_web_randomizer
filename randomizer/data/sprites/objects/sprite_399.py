@@ -1,6 +1,7 @@
 # SPR0399_SHY_AWAY
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL612_SHY_AWAY
 sprite = CompleteSprite(
     animation=AnimationPack(117, length=740, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -1035,7 +1036,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=612,
+    palette_id=SPAL612_SHY_AWAY,
     palette_offset=0,
     unknown_num=8
 )

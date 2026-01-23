@@ -1,6 +1,7 @@
 # SPR0798_GENO_BEAM_BLAST_FLASH_RED_POWER_UP_STAR
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL365_COME_BACK_RAINBOW_STAR
 sprite = CompleteSprite(
     animation=AnimationPack(209, length=191, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -251,7 +252,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=365,
+    palette_id=SPAL365_COME_BACK_RAINBOW_STAR,
     palette_offset=1,
     unknown_num=8
 )

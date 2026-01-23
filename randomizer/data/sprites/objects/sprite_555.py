@@ -1,6 +1,7 @@
 # SPR0555_THANK_YOU_GREEN_DIALOGUE_BUBBLE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL354_THANK_YOU_RED_DIALOGUE_BUBBLE
 sprite = CompleteSprite(
     animation=AnimationPack(204, length=91, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -129,7 +130,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=354,
+    palette_id=SPAL354_THANK_YOU_RED_DIALOGUE_BUBBLE,
     palette_offset=3,
     unknown_num=8
 )

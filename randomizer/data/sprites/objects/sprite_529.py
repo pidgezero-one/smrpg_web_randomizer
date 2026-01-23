@@ -1,6 +1,7 @@
 # SPR0529_HP_RAIN_CLOUD
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL368_HP_RAIN_CLOUD
 sprite = CompleteSprite(
     animation=AnimationPack(211, length=92, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -127,7 +128,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=368,
+    palette_id=SPAL368_HP_RAIN_CLOUD,
     palette_offset=0,
     unknown_num=8
 )

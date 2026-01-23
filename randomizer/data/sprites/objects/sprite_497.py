@@ -1,6 +1,7 @@
 # SPR0497_CROCO_2
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL511_CROCO
 sprite = CompleteSprite(
     animation=AnimationPack(283, length=657, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -874,7 +875,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=511,
+    palette_id=SPAL511_CROCO,
     palette_offset=0,
     unknown_num=0
 )

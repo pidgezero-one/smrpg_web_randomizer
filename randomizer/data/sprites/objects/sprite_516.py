@@ -1,6 +1,7 @@
 # SPR0516_ENEMY_DEFEATED_EXPLOSION_STARS
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL315_ENEMY_DEFEATED_EXPLOSION_STARS
 sprite = CompleteSprite(
     animation=AnimationPack(182, length=359, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -454,7 +455,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=315,
+    palette_id=SPAL315_ENEMY_DEFEATED_EXPLOSION_STARS,
     palette_offset=0,
     unknown_num=12
 )

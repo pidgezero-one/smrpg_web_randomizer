@@ -1,6 +1,7 @@
 # SPR0255_BEETLE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL423_BEETLE
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -47,6 +48,6 @@ sprite = CompleteSprite(
                     ]
                 ),
             ])),
-    palette_id=423,
+    palette_id=SPAL423_BEETLE,
     palette_offset=0,
     unknown_num=0)

@@ -1,6 +1,7 @@
 # SPR0657_CLERK_MANAGER_DIRECTOR_STATUE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL771_CLERK_MANAGER_DIRECTOR_STATUE
 sprite = CompleteSprite(
     animation=AnimationPack(63, length=88, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -91,7 +92,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=771,
+    palette_id=SPAL771_CLERK_MANAGER_DIRECTOR_STATUE,
     palette_offset=0,
     unknown_num=0
 )

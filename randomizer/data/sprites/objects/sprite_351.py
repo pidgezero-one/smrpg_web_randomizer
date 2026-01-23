@@ -1,6 +1,7 @@
 # SPR0351_JABIT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL230_MACHINE_MADE_DRILL_BIT
 sprite = CompleteSprite(
     animation=AnimationPack(123, length=682, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -763,7 +764,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=230,
+    palette_id=SPAL230_MACHINE_MADE_DRILL_BIT,
     palette_offset=1,
     unknown_num=0
 )

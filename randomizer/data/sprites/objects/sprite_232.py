@@ -1,6 +1,7 @@
 # SPR0232_LEVEL_UP_BONUS_HP
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL496_LEVEL_UP_BONUS_HP
 sprite = CompleteSprite(
     animation=AnimationPack(373, length=107, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -95,7 +96,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=496,
+    palette_id=SPAL496_LEVEL_UP_BONUS_HP,
     palette_offset=0,
     unknown_num=0
 )

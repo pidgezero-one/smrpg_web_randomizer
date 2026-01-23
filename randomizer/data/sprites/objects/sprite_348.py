@@ -1,6 +1,7 @@
 # SPR0348_STINGER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL093_BUZZER
 sprite = CompleteSprite(
     animation=AnimationPack(27, length=458, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -506,7 +507,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=93,
+    palette_id=SPAL093_BUZZER,
     palette_offset=1,
     unknown_num=0
 )

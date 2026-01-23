@@ -1,6 +1,7 @@
 # SPR0270_PINWHEEL
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL044_PINWHEEL
 sprite = CompleteSprite(
     animation=AnimationPack(15, length=428, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -587,7 +588,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=44,
+    palette_id=SPAL044_PINWHEEL,
     palette_offset=0,
     unknown_num=0
 )

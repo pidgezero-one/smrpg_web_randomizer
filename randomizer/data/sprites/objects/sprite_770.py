@@ -1,6 +1,7 @@
 # SPR0770_FIRE_ORB_HIT_EXPLOSION
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL392_FIRE_ORB_HIT_EXPLOSION
 sprite = CompleteSprite(
     animation=AnimationPack(227, length=182, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -184,7 +185,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=392,
+    palette_id=SPAL392_FIRE_ORB_HIT_EXPLOSION,
     palette_offset=0,
     unknown_num=8
 )

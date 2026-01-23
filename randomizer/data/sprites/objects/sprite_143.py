@@ -1,6 +1,7 @@
 # SPR0143_LAND_S_END_CANNON
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL463_LAND_S_END_CANNON
 sprite = CompleteSprite(
     animation=AnimationPack(345, length=88, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -91,7 +92,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=463,
+    palette_id=SPAL463_LAND_S_END_CANNON,
     palette_offset=0,
     unknown_num=0
 )

@@ -1,6 +1,7 @@
 # SPR0546_BOMBS_AWAY_ELECTRIC_BALL
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL350_BOMBS_AWAY_ELECTRIC_BALL
 sprite = CompleteSprite(
     animation=AnimationPack(202, length=136, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -134,7 +135,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=350,
+    palette_id=SPAL350_BOMBS_AWAY_ELECTRIC_BALL,
     palette_offset=0,
     unknown_num=8
 )

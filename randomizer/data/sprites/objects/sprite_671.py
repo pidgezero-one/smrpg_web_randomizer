@@ -1,6 +1,7 @@
 # SPR0671_SMALL_BELOME_STATUE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL785_SMALL_BELOME_STATUE
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -83,6 +84,6 @@ sprite = CompleteSprite(
                     ]
                 ),
             ])),
-    palette_id=785,
+    palette_id=SPAL785_SMALL_BELOME_STATUE,
     palette_offset=0,
     unknown_num=0)

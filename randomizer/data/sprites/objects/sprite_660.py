@@ -1,6 +1,7 @@
 # SPR0660_JINX_STATUE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL774_JINX_STATUE
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -269,6 +270,6 @@ sprite = CompleteSprite(
                     ]
                 ),
             ])),
-    palette_id=774,
+    palette_id=SPAL774_JINX_STATUE,
     palette_offset=0,
     unknown_num=0)

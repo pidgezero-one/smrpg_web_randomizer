@@ -1,6 +1,7 @@
 # SPR0713_SAGESTICK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL762_SAGESTICK
 sprite = CompleteSprite(
     animation=AnimationPack(389, length=189, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
@@ -232,7 +233,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=762,
+    palette_id=SPAL762_SAGESTICK,
     palette_offset=0,
     unknown_num=0
 )

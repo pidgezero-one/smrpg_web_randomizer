@@ -1,6 +1,7 @@
 # SPR0954_PURPLE_FIREWORK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL758_PURPLE_FIREWORK
 sprite = CompleteSprite(
     animation=AnimationPack(439, length=766, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -899,7 +900,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=758,
+    palette_id=SPAL758_PURPLE_FIREWORK,
     palette_offset=0,
     unknown_num=8
 )

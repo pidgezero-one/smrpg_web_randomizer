@@ -1,6 +1,7 @@
 # SPR0471_RASPBERRY
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL200_RASPBERRY
 sprite = CompleteSprite(
     animation=AnimationPack(100, length=217, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -481,7 +482,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=200,
+    palette_id=SPAL200_RASPBERRY,
     palette_offset=0,
     unknown_num=8
 )

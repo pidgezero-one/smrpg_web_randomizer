@@ -1,6 +1,7 @@
 # SPR0699_BAHAMUTT_SUB
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL163_BAHAMUTT
 sprite = CompleteSprite(
     animation=AnimationPack(42, length=2279, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=8192,
@@ -5091,7 +5092,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=163,
+    palette_id=SPAL163_BAHAMUTT,
     palette_offset=0,
     unknown_num=8
 )

@@ -1,6 +1,7 @@
 # SPR0136_MARIO_IN_MINE_CART
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL527_MOLEVILLE_MINE_CART
 sprite = CompleteSprite(
     animation=AnimationPack(386, length=767, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -855,7 +856,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=527,
+    palette_id=SPAL527_MOLEVILLE_MINE_CART,
     palette_offset=2,
     unknown_num=0
 )

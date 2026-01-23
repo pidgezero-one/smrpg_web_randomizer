@@ -1,6 +1,7 @@
 # SPR0171_SPARKLES_FROM_STAR_PIECE
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL008_MIMIC_FACE_STANDALONE
 sprite = CompleteSprite(
     animation=AnimationPack(403, length=150, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -150,7 +151,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=8,
+    palette_id=SPAL008_MIMIC_FACE_STANDALONE,
     palette_offset=0,
     unknown_num=8
 )

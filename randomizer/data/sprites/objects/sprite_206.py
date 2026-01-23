@@ -1,6 +1,7 @@
 # SPR0206_CARD
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL310_CARD
 
 sprite = CompleteSprite(
     animation=AnimationPack(
@@ -193,6 +194,6 @@ sprite = CompleteSprite(
                     ]
                 ),
             ])),
-    palette_id=310,
+    palette_id=SPAL310_CARD,
     palette_offset=0,
     unknown_num=0)

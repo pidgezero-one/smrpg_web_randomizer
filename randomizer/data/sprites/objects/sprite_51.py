@@ -1,6 +1,7 @@
 # SPR0051_GREEN_YOSHI_WALK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL674_GREEN_YOSHI
 sprite = CompleteSprite(
     animation=AnimationPack(287, length=714, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -944,7 +945,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=674,
+    palette_id=SPAL674_GREEN_YOSHI,
     palette_offset=0,
     unknown_num=0
 )

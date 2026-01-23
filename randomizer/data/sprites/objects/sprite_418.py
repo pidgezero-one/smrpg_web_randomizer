@@ -1,6 +1,7 @@
 # SPR0418_SMELTER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL281_SMELTER_BACK_SECTION
 sprite = CompleteSprite(
     animation=AnimationPack(155, length=652, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
@@ -1448,7 +1449,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=281,
+    palette_id=SPAL281_SMELTER_BACK_SECTION,
     palette_offset=0,
     unknown_num=0
 )

@@ -1,6 +1,7 @@
 # SPR0580_SMALL_MARIO_HURLY_GLOVES
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL634_MARIO_DOLL_SURPRISED
 sprite = CompleteSprite(
     animation=AnimationPack(246, length=157, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -36,7 +37,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=634,
+    palette_id=SPAL634_MARIO_DOLL_SURPRISED,
     palette_offset=0,
     unknown_num=0
 )

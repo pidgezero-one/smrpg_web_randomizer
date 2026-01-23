@@ -1,6 +1,7 @@
 # SPR0548_WILLY_WISP_PURPLE_ELECTRIC_BALL
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL394_WILLY_WISP_PURPLE_ELECTRIC_BALL
 sprite = CompleteSprite(
     animation=AnimationPack(229, length=164, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -154,7 +155,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=394,
+    palette_id=SPAL394_WILLY_WISP_PURPLE_ELECTRIC_BALL,
     palette_offset=1,
     unknown_num=8
 )

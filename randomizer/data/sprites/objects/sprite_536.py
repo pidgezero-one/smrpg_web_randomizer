@@ -1,6 +1,7 @@
 # SPR0536_RAINBOW_RAIN
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL343_RAINBOW_RAIN
 sprite = CompleteSprite(
     animation=AnimationPack(195, length=429, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -560,7 +561,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=343,
+    palette_id=SPAL343_RAINBOW_RAIN,
     palette_offset=0,
     unknown_num=8
 )

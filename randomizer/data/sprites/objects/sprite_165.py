@@ -1,6 +1,7 @@
 # SPR0165_MONSTERMAMA_GOLDEN_BROWN_RED
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from randomizer.data.variables.sprite_palette_names import SPAL429_OLD_MAN
 sprite = CompleteSprite(
     animation=AnimationPack(309, length=128, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -134,7 +135,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=429,
+    palette_id=SPAL429_OLD_MAN,
     palette_offset=5,
     unknown_num=0
 )
