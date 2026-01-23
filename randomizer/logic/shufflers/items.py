@@ -114,18 +114,8 @@ def shuffle_prizes(world: GameWorld) -> None:
         BoosterTowerGating,
         SeaGate,
         SeaGating,
-        BoosterHillGate,
-        BoosterHillGating,
-        MarrymoreGate,
-        MarrymoreGating,
-        YaridovichGate,
-        YaridovichGating,
         LandsEndGate,
         LandsEndGating,
-        MonstroTownGate,
-        MonstroTownGating,
-        BarrelVolcanoGate,
-        BarrelVolcanoGating,
         BowsersKeepGate,
         BowsersKeepGating,
         FactoryGate,
@@ -531,6 +521,10 @@ def shuffle_prizes(world: GameWorld) -> None:
         for char_name in sorted(gating_required_characters):
             prize_class = all_recruitment_prizes[char_name]
             if prize_class not in placed_characters:
+                # Skip if already placed via debug override
+                if should_skip_for_debug(prize_class):
+                    placed_characters.add(prize_class)
+                    continue
                 progression_prizes.append(prize_class())
                 placed_characters.add(prize_class)
 
@@ -544,6 +538,10 @@ def shuffle_prizes(world: GameWorld) -> None:
         for ally_name, prize_class in remaining_chars:
             if len(placed_characters) >= max_char_count:
                 break
+            # Skip if already placed via debug override
+            if should_skip_for_debug(prize_class):
+                placed_characters.add(prize_class)
+                continue
             progression_prizes.append(prize_class())
             placed_characters.add(prize_class)
 
@@ -606,30 +604,31 @@ def shuffle_prizes(world: GameWorld) -> None:
 
         # Add all enabled spells to the pool
         # absolutely must have a spell that can always damage mokura
-        progression_prizes.append(
-            random.choice(
-                [
-                    p()
-                    for p in enabled_spell_prizes
-                    if p
-                    in [
-                        StarRainSpellPrize,
-                        GenoWhirlSpellPrize,
-                        TerrorizeSpellPrize,
-                        PoisonGasSpellPrize,
-                    ]
-                ]
-            )
-        )
-        spell_count = 1
+        mokura_spell_options = [
+            p
+            for p in [
+                StarRainSpellPrize,
+                GenoWhirlSpellPrize,
+                TerrorizeSpellPrize,
+                PoisonGasSpellPrize,
+            ]
+            if p in enabled_spell_prizes and not should_skip_for_debug(p)
+        ]
+        spell_count = 0
+        if mokura_spell_options:
+            progression_prizes.append(random.choice(mokura_spell_options)())
+            spell_count = 1
+
         if SuperJumpSpell not in disabled_spell_classes:
-            progression_prizes.append(SuperJumpSpellPrize())
-            spell_count += 1
+            if not should_skip_for_debug(SuperJumpSpellPrize):
+                progression_prizes.append(SuperJumpSpellPrize())
+                spell_count += 1
 
         remaining_spell_pool = [
             p()
             for p in enabled_spell_prizes
             if p not in [type(q) for q in must_include] + extra_spells
+            and not should_skip_for_debug(p)
         ]
 
         # Add all other spells to the "optional" array so that shuffler doesn't
@@ -655,8 +654,8 @@ def shuffle_prizes(world: GameWorld) -> None:
             StarPiece6,
             StarPiece7,
         ]
-        progression_prizes.extend([sp() for sp in sp_prizes[: progress_stars]])
-        must_include.extend([sp() for sp in sp_prizes[progress_stars:world.settings.get_flag(TotalStarPieces).value]])
+        progression_prizes.extend([sp() for sp in sp_prizes[: progress_stars] if not should_skip_for_debug(sp)])
+        must_include.extend([sp() for sp in sp_prizes[progress_stars:world.settings.get_flag(TotalStarPieces).value] if not should_skip_for_debug(sp)])
 
     if world.settings.isflag_enabled(BossShuffle):
         # Place disabled bosses (those not enabled in ShuffledBosses)
@@ -669,7 +668,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         ]:
             if loc.originally_held in disabled_boss_types:
                 loc.set_prize(loc.originally_held())  # type: ignore
-            else:
+            elif not should_skip_for_debug(loc.originally_held):
                 progression_prizes.append(loc.originally_held())  # type: ignore
 
     # Always exclude freestanding coin locations (not frog coins) from shuffling

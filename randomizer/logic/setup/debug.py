@@ -52,3 +52,14 @@ def apply_debug_max_stats(world: GameWorld) -> None:
         ally.starting_mg_attack = 255
         ally.starting_mg_defense = 255
         ally.starting_speed = 255
+        ally.starting_level = 30
+        ally.starting_experience = 9999
+
+        # Learn all spells that were shuffled to this ally
+        # Collect spells from level-ups and add to starting_magic
+        all_spells = list(ally.starting_magic)  # Start with existing starting spells
+        for level_up in ally.levels:
+            if level_up.spell_learned is not None:
+                if level_up.spell_learned not in all_spells:
+                    all_spells.append(level_up.spell_learned)
+        ally.starting_magic = all_spells

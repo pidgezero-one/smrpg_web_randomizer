@@ -801,17 +801,10 @@ class FrogCoinPrize(StandardPrize):
 
     @property
     def chest_grant(self) -> EventScript:
-        if self.amount == 1:
-            return EventScript(
-                [
-                    SetVarToConst(ITEM_ID, 48),
-                    JmpToEvent(E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST),
-                ]
-            )
         return EventScript(
             [
                 SetVarToConst(PRIMARY_TEMP_7000, self.amount),
-                JmpToEvent(E3082_FROG_COIN_CHEST_MULTI_HIT_1),
+                JmpToEvent(E3084_FROG_COIN_CHEST_QUICK_HIT), 
             ]
         )
 

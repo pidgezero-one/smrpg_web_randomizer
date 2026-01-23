@@ -704,18 +704,9 @@ def set_locations(world: GameWorld) -> None:
             )
         # Checks for postgame-unlocking bosses by default expect an impossible value.
         # Enabling the remake flag sets it to the correct value, 7.
-        cast(
-            CompareVarToConst,
-            world.event_scripts.get_command_by_identifier(
-                "postgame_progress_checker_1"
-            ),
-        ).set_value(7)
-        cast(
-            CompareVarToConst,
-            world.event_scripts.get_command_by_identifier(
-                "postgame_progress_checker_2"
-            ),
-        ).set_value(7)
+        world.event_scripts.get_script_by_id(E0225_CHECK_VOUCHER_UNLOCK).set_contents([
+            Return()
+        ])
         room = world.rooms._rooms[R204_MUSHROOM_WAY_AREA_02]
         assert room is not None
         room.get_npc_by_target_id(NPC_10).set_visible(True)

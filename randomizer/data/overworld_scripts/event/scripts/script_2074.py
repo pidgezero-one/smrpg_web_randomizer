@@ -156,7 +156,7 @@ script = EventScript([
 	EnterArea(room_id=R324_MONSTRO_TOWN_OUTSIDE, face_direction=SOUTHWEST, x=11, y=63, z=4, identifier="EVENT_2074_enter_area_21"),
 	Jmp(["EVENT_2048_set_bit_0"]),
 	FadeInFromBlack(sync=False, identifier="EVENT_2074_fade_in_from_black_async_23"),
-    Inc(POSTGAME_PROGRESS_COUNTER),
+    RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	Pause(5),
 	PlayMusicAtDefaultVolume(M0058_CONVERSATIONWITHCULEX),
 	Pause(60),

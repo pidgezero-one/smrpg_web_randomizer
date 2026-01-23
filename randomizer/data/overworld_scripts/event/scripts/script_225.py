@@ -1,4 +1,4 @@
-# E0225_EMPTY
+# E0225_CHECK_VOUCHER_UNLOCK
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,14 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-
+    JmpIfBitSet(VOUCHER_CHECK_DONE, ["voucher_subroutine_exit"]),
+    JmpIfBitClear(POST_MINES_LEVEL_MODS_COMPLETED, ["voucher_subroutine_exit"]),
+    JmpIfBitClear(MARRYMORE_LIBERATED, ["voucher_subroutine_exit"]),
+    JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["voucher_subroutine_exit"]),
+    JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["voucher_subroutine_exit"]),
+    JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["voucher_subroutine_exit"]),
+    JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["voucher_subroutine_exit"]),
+    JmpIfBitClear(SHIP_LIBERATED, ["voucher_subroutine_exit"]),
+    SummonObjectToSpecificLevel(NPC_3, R189_MARIOS_PIPEHOUSE),
+    Return(identifier="voucher_subroutine_exit")
 ])

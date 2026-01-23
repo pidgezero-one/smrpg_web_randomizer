@@ -78,7 +78,7 @@ script = EventScript([
 	RestoreAllHP(),
 	RestoreAllFP(),
 	SetBit(SHIP_LIBERATED),
-    Inc(POSTGAME_PROGRESS_COUNTER),
+    RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	UnknownCommand(bytearray(b'\xfd\x8er\x00(')),
 	Pause(30),
 	ActionQueueAsync(target=NPC_0, subscript=[

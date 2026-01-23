@@ -33,6 +33,7 @@ from ....packets import *
 script = EventScript([
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
 	ActionQueueAsync(target=NPC_3, subscript=[
+        A_SequenceLoopingOn(),
         A_ClearSolidityBits(bit_4=True, cant_walk_through=True),
         A_FaceNorthwest(),
 		A_SetWalkingSpeed(NORMAL),

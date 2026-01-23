@@ -154,7 +154,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1216_DOJO_4_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 517),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
-    Inc(POSTGAME_PROGRESS_COUNTER),
+    RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	Return(),
 	RunDialog(dialog_id=DI3353_DOJO_BOSS_2_FULLY_DEFEATED, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_2077_run_dialog_40"),
 	Return(identifier="EVENT_2077_ret_41")

@@ -77,7 +77,7 @@ SMALL_COIN_BASE = _item_npc_base(
     SPR0193_SMALL_COIN, height=3, y_shift=1, min_vram_size=1
 )
 SMALL_FROG_COIN_BASE = _item_npc_base(
-    SPR0606_SMALL_FROG_COIN,
+    SPR0131_SMALL_FROG_COIN,
     height=3,
     y_shift=1,
     min_vram_size=1,
@@ -3388,7 +3388,7 @@ BLOCK_SHADOW_NPC_2 = NPC(
 )
 
 DODO_AS_PARSON_NPC = NPC(
-    sprite_id=SPR0131_DODO_AS_PARSON,
+    sprite_id=SPR0606_DODO_AS_PARSON,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -5164,7 +5164,7 @@ MOKURA_S_CLOUD_BLUE_NPC = NPC(
 )
 
 SMALL_FROG_COIN_NPC = NPC(
-    sprite_id=SPR0606_SMALL_FROG_COIN,
+    sprite_id=SPR0131_SMALL_FROG_COIN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,

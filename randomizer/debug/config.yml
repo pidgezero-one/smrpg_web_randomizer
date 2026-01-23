@@ -22,9 +22,10 @@ invisible_flags:
 items:
   # Items given to player at game start (use exact class names from randomizer/data/items)
   start:
-    - CastleKey1Item
-    - CastleKey2Item
+    - MushroomItem
 
   # Override specific locations with specific prizes (minimal for testing)
   override:
     MushroomWay1LowerChest: BanditsWayStarPrize
+    MushroomWay1UpperChest: SlotsPrize1
+    MushroomWayCharacter: BowserRecruitmentPrize

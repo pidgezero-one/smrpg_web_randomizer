@@ -1000,7 +1000,7 @@ P123_SMALL_COIN_STILL = Packet(
 )
 P124_SMALL_FROG_COIN_STILL = Packet(
     packet_id=124,
-    sprite_id=SPR0606_SMALL_FROG_COIN,
+    sprite_id=SPR0131_SMALL_FROG_COIN,
     shadow=False,
     action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],

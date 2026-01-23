@@ -58,7 +58,7 @@ script = EventScript([
 	ApplySolidityModToLevel(permanent=True, room_id=R276_MOLEVILLE_MINES_AREA_01_ENTRANCE, mod_id=0),
 	SetBit(POST_MINES_LEVEL_MODS_COMPLETED),
 	Store01To0248(),
-    Inc(POSTGAME_PROGRESS_COUNTER),
+    RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(),
     JmpIfBitSet(MINES_POSTGAME_COMPLETED, ["finish_mines_boss_room_loader"], identifier="mines_postgame_check"),

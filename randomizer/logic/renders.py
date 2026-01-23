@@ -179,7 +179,7 @@ def render_forest_maze_character_empty(world: GameWorld) -> None:
     ss = e.subscript
     cast(
         A_SetSpriteSequence,
-        ss.get_command_by_name("forest_character_animation_13"),
+        ss.get_command_by_name("forest_character_animation_13")[1],
     ).set_index(6)
     world.event_scripts.delete_subscript_command_by_identifier(
         "forest_character_animation_14", "forest_character_animation_11"

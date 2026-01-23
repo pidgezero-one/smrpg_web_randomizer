@@ -367,8 +367,50 @@ def generate_formation_coordinates(
 
 
 def randomize_enemy_formations(world: GameWorld) -> None:
-    """Randomize enemy formations."""
+    """Randomize enemy formations.
+
+    - Boss fight formations (linked to BossFightPrize subclasses) are excluded
+    - Monsters that appear in boss fight formations are excluded from the candidate pool
+    - Monsters are matched by stat similarity: sum of (attack + defense + magic_attack + magic_defense)
+      must be within ±20% of the formation's average
+    """
+    from randomizer.types.prize import BossFightPrize
+
     max_enemies = 6
+
+    # Collect all enemy types that appear in any BossFightPrize subclass
+    boss_enemy_types: set[type] = set()
+    for prize_cls in BossFightPrize.__subclasses__():
+        # Get enemies from formation members
+        if hasattr(prize_cls, '_members') and prize_cls._members:
+            for member in prize_cls._members:
+                if member is not None:
+                    boss_enemy_types.add(member.enemy)
+        # Get additional enemies that are part of the boss fight
+        if hasattr(prize_cls, '_additional_enemies_to_scale'):
+            boss_enemy_types.update(prize_cls._additional_enemies_to_scale)
+        if hasattr(prize_cls, '_extra_hp_enemies'):
+            boss_enemy_types.update(prize_cls._extra_hp_enemies)
+        if hasattr(prize_cls, '_hp_slice_excluded_enemies'):
+            boss_enemy_types.update(prize_cls._hp_slice_excluded_enemies)
+        if hasattr(prize_cls, '_scaling_excluded_enemies'):
+            boss_enemy_types.update(prize_cls._scaling_excluded_enemies)
+        if hasattr(prize_cls, '_anchor_enemy') and prize_cls._anchor_enemy:
+            anchor = prize_cls._anchor_enemy
+            if isinstance(anchor, list):
+                boss_enemy_types.update(anchor)
+            else:
+                boss_enemy_types.add(anchor)
+
+    # Build pool of eligible enemy types (exclude boss enemies and ohko_immune enemies)
+    eligible_enemy_types = [
+        type(e) for e in world.enemies.enemies
+        if not e.ohko_immune and type(e) not in boss_enemy_types
+    ]
+
+    # Helper function to calculate stat sum for an enemy
+    def get_stat_sum(enemy) -> int:
+        return enemy.attack + enemy.defense + enemy.magic_attack + enemy.magic_defense
 
     for pack in world.battle_packs.packs:
         for formation in pack.formations:
@@ -377,45 +419,34 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                 continue
             if any(m.hidden_at_start for m in current_members):
                 continue
-            if not formation.can_run_away:
-                continue
 
             current_enemy_types = list(set(m.enemy for m in current_members))
+
+            # Skip if any current enemy is a boss enemy (shouldn't shuffle boss-adjacent formations)
+            if any(e in boss_enemy_types for e in current_enemy_types):
+                continue
+
             candidates = list(current_enemy_types)
 
-            # Calculate average stats of current formation
+            # Calculate average stat sum of unique monsters in the formation
             current_enemies_objs = [world.enemies.get_by_type(e) for e in current_enemy_types]
-            avg_hp = sum(e.hp for e in current_enemies_objs) / len(current_enemies_objs)
-            avg_attack = sum(e.attack for e in current_enemies_objs) / len(current_enemies_objs)
-            avg_defense = sum(e.defense for e in current_enemies_objs) / len(current_enemies_objs)
-            avg_magic_attack = sum(e.magic_attack for e in current_enemies_objs) / len(current_enemies_objs)
-            avg_magic_defense = sum(e.magic_defense for e in current_enemies_objs) / len(current_enemies_objs)
-            avg_speed = sum(e.speed for e in current_enemies_objs) / len(current_enemies_objs)
+            avg_stat_sum = sum(get_stat_sum(e) for e in current_enemies_objs) / len(current_enemies_objs)
 
-            # Find enemies with similar stats (within 50% of average)
-            all_enemy_types = [type(e) for e in world.enemies.enemies if not e.ohko_immune]
+            # Find enemies with similar stats (within ±20% of average stat sum)
             similar_enemies = []
-            for enemy_type in all_enemy_types:
+            for enemy_type in eligible_enemy_types:
                 enemy = world.enemies.get_by_type(enemy_type)
-                # Check if stats are within reasonable range (0.5x to 2x)
-                hp_ratio = enemy.hp / avg_hp if avg_hp > 0 else 1
-                attack_ratio = enemy.attack / avg_attack if avg_attack > 0 else 1
-                defense_ratio = enemy.defense / avg_defense if avg_defense > 0 else 1
-                magic_attack_ratio = enemy.magic_attack / avg_magic_attack if avg_magic_attack > 0 else 1
-                magic_defense_ratio = enemy.magic_defense / avg_magic_defense if avg_magic_defense > 0 else 1
-                speed_ratio = enemy.speed / avg_speed if avg_speed > 0 else 1
+                enemy_stat_sum = get_stat_sum(enemy)
 
-                # All stats should be within 0.5x to 2x of average
-                if (0.5 <= hp_ratio <= 2.0 and
-                    0.5 <= attack_ratio <= 2.0 and
-                    0.5 <= defense_ratio <= 2.0 and
-                    0.5 <= magic_attack_ratio <= 2.0 and
-                    0.5 <= magic_defense_ratio <= 2.0 and
-                    0.5 <= speed_ratio <= 2.0):
+                # Check if stat sum is within ±20% of average
+                lower_bound = avg_stat_sum * 0.8
+                upper_bound = avg_stat_sum * 1.2
+
+                if lower_bound <= enemy_stat_sum <= upper_bound:
                     similar_enemies.append(enemy_type)
 
-            # If we have similar enemies, use them; otherwise fall back to all enemies
-            candidate_pool = similar_enemies if similar_enemies else all_enemy_types
+            # If we have similar enemies, use them; otherwise fall back to eligible enemies
+            candidate_pool = similar_enemies if similar_enemies else eligible_enemy_types
 
             # Add unique candidates up to 3, but avoid infinite loop if not enough unique enemies exist
             while len(candidates) < 3 and candidate_pool:

@@ -1,4 +1,4 @@
-# E3084_EMPTY
+# E3084_FROG_COIN_CHEST_QUICK_HIT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,14 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-
+	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
+	PlaySound(sound=SO094_FROG_COIN, channel=6),
+	AddFrogCoins(PRIMARY_TEMP_7000),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3084_pkt_1"]),
+	CreatePacketAt7010(packet=P122_FROG_COIN_STILL, destinations=["EVENT_3084_pk_1"]),
+	RunDialog(dialog_id=DI4050_GOT_X_COINS_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3084_pk_1"),
+	Return(),
+	CreatePacketAt7010(packet=P124_SMALL_FROG_COIN_STILL, destinations=["EVENT_3084_pk_2"], identifier="EVENT_3084_pkt_1"),
+	RunDialog(dialog_id=DI4047_GOT_A_COIN_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3084_pk_2"),
+	Return()
 ])

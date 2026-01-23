@@ -1,4 +1,4 @@
-# E3085_EMPTY
+# E3085_FREESTANDING_SHUFFLED_COIN
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,20 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-
+	DisableObjectTrigger(MEM_70A8),
+	ActionQueueAsync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_Pause(30),
+		A_VisibilityOff(),
+		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+	]),
+	PlaySound(sound=SO013_COIN, channel=6),
+	AddCoins(PRIMARY_TEMP_7000),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3085_pkt_1"]),
+	CreatePacketAt7010(packet=P121_COIN_CHEST_STILL, destinations=["EVENT_3085_pk_1"]),
+	RunDialog(dialog_id=DI4050_GOT_X_COINS_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3085_pk_1"),
+	Return(),
+	CreatePacketAt7010(packet=P123_SMALL_COIN_STILL, destinations=["EVENT_3085_pk_2"], identifier="EVENT_3085_pkt_1"),
+	RunDialog(dialog_id=DI4047_GOT_A_COIN_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3085_pk_2"),
+	Return()
 ])
