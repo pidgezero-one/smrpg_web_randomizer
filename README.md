@@ -104,3 +104,8 @@ python scripts/add_submission.py --type song --issue GITHUB_ISSUE_ID
 ```bash
 python scripts/add_submission.py --type TYPE --issue GITHUB_ISSUE_ID --dry-run
 ```
+
+### Palettes
+```bash
+python scripts/add_submission.py --type palette --issue GITHUB_ISSUE_ID
+```

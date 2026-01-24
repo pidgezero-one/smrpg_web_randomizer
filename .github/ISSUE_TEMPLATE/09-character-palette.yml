@@ -40,7 +40,7 @@ body:
       required: true
 
   - type: textarea
-    id: basic
+    id: dark
     attributes:
       label: Basic palette
       description: | 
@@ -52,7 +52,7 @@ body:
       required: true
 
   - type: textarea
-    id: basic
+    id: psn
     attributes:
       label: Basic palette
       description: | 
