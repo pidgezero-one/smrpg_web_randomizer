@@ -34,7 +34,7 @@ body:
       label: Basic palette
       description: | 
         These are the colours the character will use most of the time.
-        List the 15 colours, one per line, in the format `0xRRGGBB`.  
+        List the 15 colours, one per line, in the format `#RRGGBB` (html/hex format).  
         In the Lazy Shell palette editor, you will find the six digits for your colour in the "HTML" field.
     validations:
       required: true
@@ -42,10 +42,10 @@ body:
   - type: textarea
     id: dark
     attributes:
-      label: Basic palette
+      label: Dark/underwater palette
       description: | 
         These are the colours the character will use while underwater.  
-        List the 15 colours, one per line, in the format `0xRRGGBB`.  
+        List the 15 colours, one per line, in the format `#RRGGBB` (html/hex format).  
         In the Lazy Shell palette editor, you will find the six digits for your colour in the "HTML" field.  
         (Note: This is usually just a darkened version of the standard palette. Use the "Effects" tab in the Lazy Shell palette editor to take most of the work out of this.)
     validations:
@@ -54,10 +54,10 @@ body:
   - type: textarea
     id: psn
     attributes:
-      label: Basic palette
+      label: Poison palette
       description: | 
         These are the colours the character will use while poisoned.  
-        List the 15 colours, one per line, in the format `0xRRGGBB`.  
+        List the 15 colours, one per line, in the format `#RRGGBB` (html/hex format).  
         In the Lazy Shell palette editor, you will find the six digits for your colour in the "HTML" field.  
         (Note: You can get creative with green or purple tints, whatever you think looks good. Use the "Effects" tab in the Lazy Shell palette editor to apply tints.)
     validations:
