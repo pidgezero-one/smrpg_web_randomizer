@@ -21,6 +21,23 @@ body:
         Leave this blank if you prefer to be anonymous.
 
   - type: input
+    id: pname
+    attributes:
+      label: Palette name
+      description: |
+        Give us a name to identify your palette with.  
+        If you don't click the "rename character" checkbox, this will only be used to identify it in the palette picker and will not be used in-game.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Rename character?
+      options:
+        - label: If the "Change character names" flag is applied, this character's name should be changed to my palette's name. 
+          
+  - type: input
     id: character
     attributes:
       label: Character

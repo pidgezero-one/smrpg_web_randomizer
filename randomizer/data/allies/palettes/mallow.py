@@ -92,6 +92,7 @@ class MallowMokura(MallowPalette):
         0x0C0C3E,
     ]
     name = "Mokura"
+    author = "HERRSHAUN"
 
 
 class MallowFrog(MallowPalette):
@@ -147,6 +148,7 @@ class MallowFrog(MallowPalette):
         0x05051E,
     ]
     name = "Frog"
+    author = "EGGTALK"
 
 
 class MallowPalom(MallowPalette):
@@ -202,6 +204,7 @@ class MallowPalom(MallowPalette):
         0x200436,
     ]
     name = "Palom"
+    author = "PIDGEZERO_ONE"
 
 
 class MallowPorom(MallowPalette):
@@ -257,6 +260,7 @@ class MallowPorom(MallowPalette):
         0x200436,
     ]
     name = "Porom"
+    author = "PIDGEZERO_ONE"
 
 
 class MallowCloud(MallowPalette):
@@ -313,6 +317,7 @@ class MallowCloud(MallowPalette):
     ]
     name = "Cloud"
     rename_character = False
+    author = "DEVILING"
 
 
 class MallowStormy(MallowPalette):
@@ -369,6 +374,7 @@ class MallowStormy(MallowPalette):
     ]
     name = "Stormy"
     rename_character = False
+    author = "HERRSHAUN"
 
 
 class MallowLight(MallowPalette):
@@ -425,6 +431,7 @@ class MallowLight(MallowPalette):
     ]
     name = "Light"
     rename_character = False
+    author = "PIDGEZERO_ONE"
 
 
 class MallowWater(MallowPalette):
@@ -481,6 +488,7 @@ class MallowWater(MallowPalette):
     ]
     name = "Water"
     rename_character = False
+    author = "DEVILING"
 
 
 class MallowRed(MallowPalette):
@@ -537,6 +545,7 @@ class MallowRed(MallowPalette):
     ]
     name = "Red"
     rename_character = False
+    author = "HERRSHAUN"
 
 
 class MallowMint(MallowPalette):
@@ -593,6 +602,7 @@ class MallowMint(MallowPalette):
     ]
     name = "Mint"
     rename_character = False
+    author = "AARONDOBBE"
 
 
 class MallowDemon(MallowPalette):
@@ -649,6 +659,62 @@ class MallowDemon(MallowPalette):
     ]
     name = "Demon"
     rename_character = False
+    author = "SMBAI"
+class MallowRainCloud(MallowPalette):
+    colours = [
+        0xF8F8F8,
+        0xF8E8B0,
+        0xE09870,
+        0x985010,
+        0x181818,
+        0x284050,
+        0x203040,
+        0x182028,
+        0x700000,
+        0xF8D038,
+        0xF88820,
+        0x3838D0,
+        0xD0C8C8,
+        0x786860,
+        0x181818,
+    ]
+    poison_colours = [
+        0xA8F8F8,
+        0xA8F8B0,
+        0x989868,
+        0x604800,
+        0x000000,
+        0x003048,
+        0x002030,
+        0x001018,
+        0x380000,
+        0xA8D828,
+        0xA88810,
+        0x102850,
+        0x88D0D0,
+        0x486058,
+        0x000000,
+    ]
+    underwater_colours = [
+        0x7c7cad,
+        0x7c7489,
+        0x704c69,
+        0x4c2839,
+        0x0c0c3d,
+        0x142059,
+        0x101851,
+        0x0c1045,
+        0x380031,
+        0x7c684d,
+        0x7c4441,
+        0x1c1c99,
+        0x686495,
+        0x3c3461,
+        0x0c0c3d,
+    ]
+    name = "Rain Cloud"
+    rename_character = False
+    author = "SMBAI"
 
 
 all_palettes: list[MallowPalette] = [
@@ -664,4 +730,5 @@ all_palettes: list[MallowPalette] = [
     MallowRed(),
     MallowMint(),
     MallowDemon(),
+    MallowRainCloud()
 ]

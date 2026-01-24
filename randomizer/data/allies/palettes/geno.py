@@ -109,6 +109,7 @@ class GenoPink(GenoPalette):
         0x181818,
     ]
     name = "Millnium"
+    author = "PIDGEZERO_ONE"
 
 
 class GenoMagikoopa(GenoPalette):
@@ -164,6 +165,7 @@ class GenoMagikoopa(GenoPalette):
         0x080840,
     ]
     name = "Magikoopa"
+    author = "AARONDOBBE"
 
 
 class GenoMagikoopaRed(GenoPalette):
@@ -219,6 +221,7 @@ class GenoMagikoopaRed(GenoPalette):
         0x0C0C3D,
     ]
     name = "Magikoopa"
+    author = "EGGTALK"
 
 
 class GenoLink(GenoPalette):
@@ -274,6 +277,7 @@ class GenoLink(GenoPalette):
         0x0c0c3e,
     ]
     name = "Zelda"
+    author = "PIDGEZERO_ONE"
 
 
 class GenoVlados(GenoPalette):
@@ -329,6 +333,7 @@ class GenoVlados(GenoPalette):
         0x0C0C3E,
     ]
     name = "Vlador"
+    author = "HERRSHAUN"
 
 
 class GenoLight(GenoPalette):
@@ -385,6 +390,7 @@ class GenoLight(GenoPalette):
     ]
     name = "Light"
     rename_character = False
+    author = "DEVILING"
 
 
 class GenoPurple(GenoPalette):
@@ -441,6 +447,7 @@ class GenoPurple(GenoPalette):
     ]
     name = "Purple"
     rename_character = False
+    author = "DEVILING"
 
 
 class GenoGrey(GenoPalette):
@@ -497,6 +504,7 @@ class GenoGrey(GenoPalette):
     ]
     name = "Grey"
     rename_character = False
+    author = "SMBAI"
 
 
 class GenoGreen(GenoPalette):
@@ -553,6 +561,66 @@ class GenoGreen(GenoPalette):
     ]
     name = "Green"
     rename_character = False
+    author = "MINAMIYO"
+
+
+
+
+class GenoDark(GenoPalette):
+    colours = [
+        0xF8F8F8,
+        0xF8E8B0,
+        0xE09870,
+        0x985010,
+        0x181818,
+        0x284050,
+        0x203040,
+        0x182028,
+        0x000000,
+        0xF8D038,
+        0xF88820,
+        0x383838,
+        0xD0C8C8,
+        0x786860,
+        0x181818,
+    ]
+    poison_colours = [
+        0xA8F8F8,
+        0xA8F8B0,
+        0x989868,
+        0x604800,
+        0x000000,
+        0x003048,
+        0x002030,
+        0x001018,
+        0x380000,
+        0xA8D828,
+        0xA88810,
+        0x102850,
+        0x88D0D0,
+        0x486058,
+        0x000000,
+    ]
+    underwater_colours = [
+        0x7C7CAD,
+        0x7C7489,
+        0x704C69,
+        0x4C2839,
+        0x0C0C3D,
+        0x142059,
+        0x101851,
+        0x0C1045,
+        0x380031,
+        0x7C684D,
+        0x7C4441,
+        0x1C1C99,
+        0x686495,
+        0x3C3461,
+        0x0C0C3D,
+    ]
+    name = "Dark"
+    rename_character = False
+    author = "SMBAI"
 
 
 all_palettes: list[GenoPalette] = [
@@ -566,4 +634,5 @@ all_palettes: list[GenoPalette] = [
     GenoPurple(),
     GenoGrey(),
     GenoGreen(),
+    GenoDark(),
 ]

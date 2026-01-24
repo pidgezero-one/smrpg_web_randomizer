@@ -91,6 +91,7 @@ class Palette:
     overworld_map_colours: list[int] | None = None
     original_name = ""
     name = ""
+    author = ""
     rename_character = True
 
     def transform(

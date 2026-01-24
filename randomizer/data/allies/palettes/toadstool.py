@@ -1107,6 +1107,66 @@ class ToadstoolBlack(ToadstoolPalette):
     name = "Black"
     rename_character = False
 
+class ToadstoolIndigo(ToadstoolPalette):
+    colours = [
+        0xF8F8F8,
+        0xF898B0,
+        0xE09870,
+        0x880090,
+        0x400080,
+        0x0020B8,
+        0x0050E8,
+        0x0030E0,
+        0x700000,
+        0xA000B0,
+        0x782098,
+        0x3838D0,
+        0xD0C8C8,
+        0x786860,
+        0x181818,
+    ]
+    poison_colours = [
+        0xF8F8F8,
+        0xB0C8F8,
+        0x6898F8,
+        0x880090,
+        0x6800A8,
+        0x207090,
+        0x3088B0,
+        0x2888B0,
+        0x700000,
+        0x9880F8,
+        0xA008F8,
+        0x005868,
+        0xD0C8C8,
+        0x786860,
+        0x181818,
+    ]
+    underwater_colours = [
+        0xC0C0C0,
+        0xC06078,
+        0xA86038,
+        0x500058,
+        0x080048,
+        0x000080,
+        0x0018B0,
+        0x0000A8,
+        0x380000,
+        0x680078,
+        0x400060,
+        0x000098,
+        0x989090,
+        0x403028,
+        0x000000,
+    ]
+    name = "Indigo"
+    rename_character = False
+    author = "TERROR VAN"
+
+
+
+
+
 
 all_palettes: list[ToadstoolPalette] = [
     ToadstoolDefault(),
@@ -1129,4 +1189,5 @@ all_palettes: list[ToadstoolPalette] = [
     ToadstoolGreen(),
     ToadstoolBlue(),
     ToadstoolBlack(),
+    ToadstoolIndigo(),
 ]

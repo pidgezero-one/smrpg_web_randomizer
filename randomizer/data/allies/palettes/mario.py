@@ -59,6 +59,7 @@ class MarioJumpman(MarioPalette):
         0x191944,
     ]
     name = "Jumpman"
+    author = "DEVILING"
 
 
 class MarioFireMario(MarioPalette):
@@ -114,6 +115,7 @@ class MarioFireMario(MarioPalette):
         0x0C0C3E,
     ]
     name = "Fire Mario"
+    author = "HERRSHAUN"
 
 
 class MarioLuigi(MarioPalette):
@@ -169,6 +171,7 @@ class MarioLuigi(MarioPalette):
         0x080c36,
     ]
     name = "Luigi"
+    author = "SMRPG ARMAGEDDON"
 
 
 class MarioFireLuigi(MarioPalette):
@@ -224,6 +227,7 @@ class MarioFireLuigi(MarioPalette):
         0x191944,
     ]
     name = "Fire Luigi"
+    author = "DEVILING"
 
 
 class MarioWario(MarioPalette):
@@ -279,6 +283,7 @@ class MarioWario(MarioPalette):
         0x0C0C3E,
     ]
     name = "Wario"
+    author = "HERRSHAUN"
 
 
 class MarioWaluigi(MarioPalette):
@@ -334,6 +339,7 @@ class MarioWaluigi(MarioPalette):
         0x0C0C3E,
     ]
     name = "Waluigi"
+    author = "HERRSHAUN"
 
 
 class MarioBuilder(MarioPalette):
@@ -389,6 +395,7 @@ class MarioBuilder(MarioPalette):
         0x100838,
     ]
     name = "Builder"
+    author = "AARONDOBBE"
 
 
 class MarioMegaman(MarioPalette):
@@ -444,6 +451,7 @@ class MarioMegaman(MarioPalette):
         0x181818,
     ]
     name = "Mega Mar"
+    author = "MYOHMYKE"
 
 
 class MarioGrey(MarioPalette):
@@ -499,6 +507,7 @@ class MarioGrey(MarioPalette):
         0x12122a,
     ]
     name = "Grey"
+    author = "SMBAI"
     rename_character = False
 
 
@@ -555,6 +564,7 @@ class MarioZombie(MarioPalette):
         0x0C0C3E,
     ]
     name = "Zombio"
+    author = "HERRSHAUN"
 
 
 class MarioSponge(MarioPalette):
@@ -610,6 +620,7 @@ class MarioSponge(MarioPalette):
         0x0C0C3E,
     ]
     name = "Sponge"
+    author = "HERRSHAUN"
 
 
 class MarioPretzel(MarioPalette):
@@ -665,6 +676,7 @@ class MarioPretzel(MarioPalette):
         0x0C0C3E,
     ]
     name = "Pretzel"
+    author = "HERRSHAUN"
 
 
 class MarioMarlon(MarioPalette):
@@ -720,6 +732,62 @@ class MarioMarlon(MarioPalette):
         0x0C0C3E,
     ]
     name = "Marlon"
+    author = "HERRSHAUN"
+
+class MarioGrandDad(MarioPalette):
+    colours = [
+        0xF8F8F8,
+        0xF0F0F0,
+        0xB0B0B8,
+        0x787878,
+        0x2058F8,
+        0xA80000,
+        0x880000,
+        0x600000,
+        0x200000,
+        0xE86830,
+        0xC04018,
+        0x780800,
+        0x80B8D8,
+        0x80A8D8,
+        0x1818B8
+    ]
+    poison_colours = [
+        0xF8C0F8,
+        0xF8B0F8,
+        0xC888F8,
+        0x8858D8,
+        0x2038F8,
+        0xC00000,
+        0x980000,
+        0x680000,
+        0x200000,
+        0xF84850,
+        0xD82820,
+        0x880000,
+        0x9088F8,
+        0x9080F8,
+        0x1810F8,
+    ]
+    underwater_colours = [
+        0x7C7CAD,
+        0x7878A9,
+        0x58588D,
+        0x3C3C6D,
+        0x102CAD,
+        0x540032,
+        0x440032,
+        0x300032,
+        0x100032,
+        0x74344A,
+        0x60203E,
+        0x3C0432,
+        0x405C9D,
+        0x40549D,
+        0x0C0C8D,
+    ]
+    name = "Grand Dad"
+    author = "HERRSHAUN"
 
 
 all_palettes: list[MarioPalette] = [
@@ -737,4 +805,5 @@ all_palettes: list[MarioPalette] = [
     MarioSponge(),
     MarioPretzel(),
     MarioMarlon(),
+    MarioGrandDad(),
 ]

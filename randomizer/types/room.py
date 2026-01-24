@@ -59,3 +59,7 @@ class Room(RoomBase):
         super().__init__(*args, **kwargs)
         self.extra_sprite_actions = extra_sprite_actions or []
         self.adjacent_rooms = adjacent_rooms or []
+
+    def update_partition_by_prize(self) -> None:
+        """Update the room's partition based on its prize type."""
+        pass

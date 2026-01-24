@@ -499,7 +499,12 @@ def parse_palette_sections(body: str) -> tuple[list[int], list[int], list[int]]:
 def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
     """Add a character palette to the palette pool."""
     character = fields.get("Character", "").strip().lower()
-    name = fields.get("Your name or handle", "").strip()
+    palette_name = fields.get("Palette name", "").strip()
+    author_name = fields.get("Your name or handle", "").strip()
+
+    # Check for rename character checkbox (appears as "- [X] ..." when checked)
+    rename_field = fields.get("Rename character?", "")
+    rename_character = "[X]" in rename_field or "[x]" in rename_field
 
     if not character:
         print("Error: No character specified in issue")
@@ -508,6 +513,10 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
     if character not in CHARACTER_MAP:
         print(f"Error: Unknown character: {character}")
         print(f"Valid characters: mario, mallow, geno, bowser, toadstool (or peach)")
+        sys.exit(1)
+
+    if not palette_name:
+        print("Error: No palette name specified in issue")
         sys.exit(1)
 
     # Parse colors from raw body since the template has duplicate headers
@@ -527,9 +536,11 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
     filename, char_prefix, base_class = CHARACTER_MAP[character]
     file_path = PALETTES_DIR / filename
 
-    # Generate palette name from contributor or use generic
-    palette_name = name if name else "Custom"
+    # Generate class name from palette name
     class_name = generate_palette_class_name(char_prefix, palette_name)
+
+    # Format author for credits (uppercase, A-Z, space, period, underscore)
+    author = format_credits_name(author_name) if author_name else None
 
     # Build the class code
     lines = [
@@ -556,6 +567,11 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
         ])
 
     lines.append(f'    name = "{escape_string(palette_name)}"')
+    if author:
+        lines.append(f'    author = "{author}"')
+    # Only include rename_character if False (True is the default)
+    if not rename_character:
+        lines.append("    rename_character = False")
     class_code = "\n".join(lines)
 
     # Read file and insert class before all_palettes list
