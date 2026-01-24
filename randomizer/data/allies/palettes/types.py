@@ -1,3 +1,67 @@
+from randomizer.data.variables.event_palette_names import (
+    EPAL0084_MARIO_ENDING,
+    EPAL0085_MALLOW_ENDING,
+    EPAL0086_GENO_ENDING,
+    EPAL0140_BOWSER_ENDING,
+    EPAL0141_TOADSTOOL_ENDING,
+    EPAL0142_HOTSPRING,
+    EPAL0163_MARIO_ENDING_DARK,
+    EPAL0164_TOADSTOOL_ENDING_DARK,
+    EPAL0165_BOWSER_ENDING_DARK,
+    EPAL0166_MALLOW_ENDING_DARK,
+    EPAL0167_GENO_ENDING_DARK,
+)
+from randomizer.data.variables.sprite_palette_names import (
+    SPAL477_OLD_CLASSIC_MARIO,
+    SPAL503_RED_MUSHROOM,
+    SPAL504_TOADSTOOL_3,
+    SPAL505_BOWSER_3,
+    SPAL506_MALLOW_3,
+    SPAL507_GENO_3,
+    SPAL508_MARIO_S_BATTLE_PORTRAIT,
+    SPAL510_MARIO_PSN_3,
+    SPAL529_MINECART_RIDER,
+    SPAL607_MARIO_PSN_4,
+    SPAL628_MARIO_WALKING_DOWN_LEFT,
+    SPAL630_MARIO_PSN_1,
+    SPAL632_MARIO_DARK_1,
+    SPAL634_MARIO_DOLL_SURPRISED,
+    SPAL636_GENO_DOLL,
+    SPAL637_BOWSER_DOLL,
+    SPAL638_TOADSTOOL_DOLL,
+    SPAL639,
+    SPAL644_MARIO_ATTACK_UP_RIGHT,
+    SPAL646_MARIO_PSN_2,
+    SPAL648_MARIO_DARK_2,
+    SPAL654_TOADSTOOL_WALKING_DOWN_LEFT,
+    SPAL656_TOADSTOOL_PSN_1,
+    SPAL658_TOADSTOOL_DARK_1,
+    SPAL659_TOADSTOOL_SLAP_ATTACK,
+    SPAL661_TOADSTOOL_PSN_2,
+    SPAL663_TOADSTOOL_DARK_2,
+    SPAL664_BOWSER_WALKING_DOWN_LEFT,
+    SPAL666_BOWSER_PSN_1,
+    SPAL668_BOWSER_DARK_1,
+    SPAL669_BOWSER_CLAW_ATTACK,
+    SPAL671_BOWSER_PSN_2,
+    SPAL673_BOWSER_DARK_2,
+    SPAL685_GENO_WALKING_DOWN_LEFT,
+    SPAL687_GENO_PSN_1,
+    SPAL689_GENO_DARK,
+    SPAL691_GENO_ELBOW_SHOT,
+    SPAL693_GENO_PSN_2,
+    SPAL695_GENO_DARK_2,
+    SPAL697_MALLOW_WALKING_DOWN_LEFT,
+    SPAL699_MALLOW_PSN_1,
+    SPAL701_MALLOW_DARK,
+    SPAL702_MALLOW_PUNCH,
+    SPAL704_MALLOW_PSN_2,
+    SPAL706_MALLOW_DARK_2,
+    SPAL797_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE,
+)
+from randomizer.types.gameworld import GameWorld
+
+
 def color_to_bytes(color) -> list[int]:
     color_int = int(color, 16)
     r = color_int >> 19
@@ -16,34 +80,32 @@ def palette_to_bytes(colors) -> list[int]:
     return ret
 
 
-classic_palette_offset = 0x2567E6
-minecart_palette_offset = 0x256DFE
-map_palette_offset = 0x3E99C1
-hotspring_palette_offset = 0x37B0A4
+MAP_PALETTE_OFFSET = 0x3E99C1
 
 
 class Palette:
-
-    # Address array = should be an array containing all child arrays that need palette changes
-    # Child arrays should be 16 addresses in length... or maybe 15. Seems the first address is unused?
-    starting_addresses: list[int] = []
-    doll_addresses: list[int] = (
-        []
-    )  # only populate this if it follows different palette rules. currently only used for mario
-    poison_addresses: list[int] = []
-    underwater_addresses: list[int] = []
-    classic_addresses: list[int] = []
-
-    colours: list[str] = []
-    poison_colours: list[str] = []
-    underwater_colours: list[str] = []
-    classic_colours: list[str] | None = None
-    overworld_map_colours: list[str] | None = None
-    name_address = 0
-    clone_name_address = 0
+    colours: list[int] | None = None
+    poison_colours: list[int] | None = None
+    underwater_colours: list[int] | None = None
+    classic_colours: list[int] | None = None
+    overworld_map_colours: list[int] | None = None
     original_name = ""
     name = ""
     rename_character = True
+
+    def transform(
+        self, base: list[int], colours: list[int], indexes: list[int | None]
+    ) -> list[int]:
+        output = []
+        for i, j in enumerate(indexes):
+            output.append(colours[j] if j is not None else base[i])
+        return output
+
+    def mutate(self, colours: list[int], indexes: list[int]) -> list[int]:
+        output = []
+        for i in indexes:
+            output.append(colours[i])
+        return output
 
     @property
     def clone_name(self, rename_character=None) -> str:
@@ -69,425 +131,405 @@ class Palette:
             return f"{name} 3"
         return f"{name[0:10]}. 3"
 
-    def special_palette(
-        self, colours: list[int | None], address: int
-    ) -> dict[int, bytearray]:
-        patch: dict[int, bytearray] = {}
-        for j in range(0, len(colours)):
-            i = colours[j]
-            if i is not None:
-                colour = self.colours[i]
-                patch[address + j * 2] = bytearray(color_to_bytes(colour))
-        return patch
-
-    def palette_override(
-        self, colours: list[str], address: int
-    ) -> dict[int, bytearray]:
-        patch: dict[int, bytearray] = {}
-        for j in range(0, len(colours)):
-            patch[address + j * 2] = bytearray(color_to_bytes(colours[j]))
-        return patch
-
-    def standard_patch(self) -> dict[int, bytearray]:
-        patch: dict[int, bytearray] = {}
-        if self.colours is not None:
-            for addr in self.starting_addresses:
-                patch.update(self.palette_override(self.colours, addr))
-        for addr in self.poison_addresses:
-            if self.poison_colours is not None:
-                patch.update(self.palette_override(self.poison_colours, addr))
-        for addr in self.underwater_addresses:
-            if self.underwater_colours is not None:
-                patch.update(self.palette_override(self.underwater_colours, addr))
-        return patch
-
 
 class MarioPalette(Palette):
-    hot_spring_reset_row = (0x37A9D8 - 0x37A000) // 30
-    starting_addresses = [
-        # overworld
-        0x257998,
-        # battle
-        0x257B78,
-        # portrait
-        0x256B88,
-        # doll 2
-        0x257A4C,
-        # scarecrow/mushroom
-        0x256AF2,
-        # ?
-        0x257AE2,
-        # ending
-        0x37A9D8,
-        # ?
-        0x3EDFFD,
-        # ?
-        0x3EE0FF,
-    ]
-    doll_addresses: list[int] = [
-        # doll 1 - for mario, 6th colour should be 7th in palette, 7th colour should be 8th in palette, and 8th and 9th colour should both be 9th in palette. 10th colour should be 11th in palette, 11th and 12th colour should be 12th in palette
-        # 0x2576E6
-        0x258D66
-    ]
-    poison_addresses: list[int] = [
-        0x2579D4,
-        0x257BB4,
-        0x256BC4,
-        # ?
-        0x257722,
-    ]
-    # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses: list[int] = [0x257A10, 0x257BF0, 0x37B31A]
-    name_address = 0x3A134D
-    clone_name_address = 0x399A96
-    # poison - 646
-    # underwater - 648
     name = "Mario"
     _original_name = "Mario"
 
-    def doll_patch(self) -> dict[int, bytearray]:
-        if not self.colours:
-            return {}
-        return self.special_palette(
-            [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14], self.doll_addresses[0]
-        )
+    def render(self, world: GameWorld) -> dict[int, bytearray]:
+        output = {}
+        if self.colours is not None:
+            world.sprite_palettes.get_palette(
+                SPAL628_MARIO_WALKING_DOWN_LEFT
+            ).set_colors(self.colours)
+            world.sprite_palettes.get_palette(SPAL644_MARIO_ATTACK_UP_RIGHT).set_colors(
+                self.colours
+            )
+            world.sprite_palettes.get_palette(
+                SPAL508_MARIO_S_BATTLE_PORTRAIT
+            ).set_colors(self.colours)
+            world.sprite_palettes.get_palette(EPAL0084_MARIO_ENDING).set_colors(
+                self.colours
+            )
+            world.sprite_palettes.get_palette(SPAL634_MARIO_DOLL_SURPRISED).set_colors(
+                self.colours
+            )
+            world.sprite_palettes.get_palette(SPAL503_RED_MUSHROOM).set_colors(
+                self.colours
+            )
+            world.sprite_palettes.get_palette(SPAL639).set_colors(self.colours)
+            world.event_palettes.get_palette(EPAL0084_MARIO_ENDING).set_colors(
+                self.colours
+            )
+            heated_palette = [*self.colours][0:4]
+            heated_palette[1] = 0xF85030
+            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+            base_palette.set_colors(heated_palette + base_palette.colors[4:])
+            if self.overworld_map_colours is None:
+                output[MAP_PALETTE_OFFSET] = bytearray(
+                    self.mutate(
+                        self.colours,
+                        [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
+                    )
+                )
+            else:
+                output[MAP_PALETTE_OFFSET] = bytearray(
+                    palette_to_bytes(self.overworld_map_colours)
+                )
+            output[0x3EDFFD] = bytearray(palette_to_bytes(self.colours))
+            output[0x3EE0FF] = bytearray(palette_to_bytes(self.colours))
+            world.sprite_palettes.get_palette(
+                SPAL797_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE
+            ).set_colors(
+                self.mutate(
+                    self.colours, [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14]
+                )
+            )
+            minecart_palette = world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER)
+            minecart_palette.set_colors(
+                self.transform(
+                    minecart_palette.colors,
+                    self.colours,
+                    [None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11],
+                )
+            )
+            classic_palette = world.sprite_palettes.get_palette(
+                SPAL477_OLD_CLASSIC_MARIO
+            )
+            if self.classic_colours is None:
+                classic_palette.set_colors(
+                    self.transform(
+                        classic_palette.colors,
+                        self.colours,
+                        [
+                            10,
+                            6,
+                            1,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                        ],
+                    )
+                )
+            else:
+                classic_palette.set_colors(self.classic_colours)
+        if self.poison_colours is not None:
+            world.sprite_palettes.get_palette(SPAL630_MARIO_PSN_1).set_colors(
+                self.poison_colours
+            )
+            world.sprite_palettes.get_palette(SPAL646_MARIO_PSN_2).set_colors(
+                self.poison_colours
+            )
+            world.sprite_palettes.get_palette(SPAL510_MARIO_PSN_3).set_colors(
+                self.poison_colours
+            )
+            world.sprite_palettes.get_palette(SPAL607_MARIO_PSN_4).set_colors(
+                self.poison_colours
+            )
+        if self.underwater_colours is not None:
+            world.sprite_palettes.get_palette(SPAL632_MARIO_DARK_1).set_colors(
+                self.underwater_colours
+            )
+            world.sprite_palettes.get_palette(SPAL648_MARIO_DARK_2).set_colors(
+                self.underwater_colours
+            )
+            world.event_palettes.get_palette(EPAL0163_MARIO_ENDING_DARK).set_colors(
+                self.underwater_colours
+            )
 
-    def classic_patch(self) -> dict[int, bytearray]:
-        if self.classic_colours is not None:
-            return self.palette_override(self.classic_colours, classic_palette_offset)
-        if not self.colours:
-            return {}
-        return self.special_palette(
-            [
-                10,
-                6,
-                1,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-            ],
-            classic_palette_offset,
-        )
-
-    def minecart_patch(self) -> dict[int, bytearray]:
-        if not self.colours:
-            return {}
-        return self.special_palette(
-            [None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11],
-            minecart_palette_offset,
-        )
-
-    def overworld_map_patch(self) -> dict[int, bytearray]:
-        if not self.colours:
-            return {}
-        return self.special_palette(
-            [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
-            map_palette_offset,
-        )
-    
-    def heated_sprite(self) -> dict[int, bytearray]:
-        if not self.colours:
-            return {}
-        colours = [*self.colours]
-        colours[1] = "F85030"
-        b = palette_to_bytes(colours)
-        return {
-            hotspring_palette_offset: bytearray(b[0:4])
-        }
+        return output
 
 
 class MallowPalette(Palette):
-    hot_spring_reset_row = (0x37A9F6 - 0x37A000) // 30
-    starting_addresses = [
-        # overworld
-        0x2581AE,
-        # battle
-        0x258244,
-        # portrait
-        0x256B4C,
-        # doll 1 - for mallow, skip 8th and 9th colour replacement
-        # maybe leave this out since mario and peach in credits have to share a palette and im probably not going to change them
-        # 0x2583CA,
-        # scarecrow/mushroom
-        # 0x256B4C
-        # ending
-        0x37A9F6
-    ]
-    poison_addresses = [0x2581EA, 0x258280]
-    # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses = [0x258226, 0x2582BC, 0x37B374]
-    name_address = 0x3A1375
-    clone_name_address = 0x399ACA
-    # poison - 704
-    # underwater - 706
     name = "Mallow"
     _original_name = "Mallow"
 
-    def doll_patch(self) -> dict[int, bytearray]:
-        return {}
-
-    def classic_patch(self) -> dict[int, bytearray]:
-        if self.classic_colours is not None:
-            return self.palette_override(self.classic_colours, classic_palette_offset)
+    def render(self, world: GameWorld) -> dict[int, bytearray]:
+        output = {}
         if self.colours is not None:
-            return self.palette_override(self.colours, classic_palette_offset)
-        return {}
-
-    def minecart_patch(self) -> dict[int, bytearray]:
-        if self.colours is not None:
-            return self.palette_override(
-                self.colours,
-                minecart_palette_offset,
+            world.sprite_palettes.get_palette(
+                SPAL697_MALLOW_WALKING_DOWN_LEFT
+            ).set_colors(self.colours)
+            world.sprite_palettes.get_palette(SPAL702_MALLOW_PUNCH).set_colors(
+                self.colours
             )
-        else:
-            return {}
+            world.sprite_palettes.get_palette(SPAL506_MALLOW_3).set_colors(self.colours)
+            world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
+                self.colours
+            )
+            if self.classic_colours is None:
+                world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
+                    self.colours
+                )
+            else:
+                world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
+                    self.classic_colours
+                )
+            world.event_palettes.get_palette(EPAL0085_MALLOW_ENDING).set_colors(
+                self.colours
+            )
 
-    def overworld_map_patch(self) -> dict[int, bytearray]:
-        if self.overworld_map_colours is not None:
-            return self.palette_override(self.overworld_map_colours, map_palette_offset)
-        if self.colours is not None:
-            return self.palette_override(self.colours, map_palette_offset)
-        return {}
-    
-    def heated_sprite(self) -> dict[int, bytearray]:
-        if not self.colours:
-            return {}
-        colours = [*self.colours]
-        colours[0] = "F85030"
-        colours[1] = "F85030"
-        b = palette_to_bytes(colours)
-        return {
-            hotspring_palette_offset: bytearray(b[0:4])
-        }
+            heated_palette = [*self.colours][0:4]
+            heated_palette[0] = 0xF85030
+            heated_palette[1] = 0xF85030
+            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+            base_palette.set_colors(heated_palette + base_palette.colors[4:])
+            if self.overworld_map_colours is None:
+                output[MAP_PALETTE_OFFSET] = bytearray(self.colours)
+            else:
+                output[MAP_PALETTE_OFFSET] = bytearray(
+                    palette_to_bytes(self.overworld_map_colours)
+                )
+        if self.poison_colours is not None:
+            world.sprite_palettes.get_palette(SPAL699_MALLOW_PSN_1).set_colors(
+                self.poison_colours
+            )
+            world.sprite_palettes.get_palette(SPAL704_MALLOW_PSN_2).set_colors(
+                self.poison_colours
+            )
+        if self.underwater_colours is not None:
+            world.sprite_palettes.get_palette(SPAL701_MALLOW_DARK).set_colors(
+                self.underwater_colours
+            )
+            world.sprite_palettes.get_palette(SPAL706_MALLOW_DARK_2).set_colors(
+                self.underwater_colours
+            )
+            world.event_palettes.get_palette(EPAL0166_MALLOW_ENDING_DARK).set_colors(
+                self.underwater_colours
+            )
+
+        return output
 
 
 class GenoPalette(Palette):
-    hot_spring_reset_row = (0x37AA14 - 0x37A000) // 30
-    starting_addresses = [
-        # overworld
-        0x258046,
-        # battle
-        0x2580FA,
-        # portrait
-        0x256B6A,
-        # doll 1
-        0x257A88,
-        # scarecrow/mushroom
-        # 0x256B6A,
-        # ending
-        0x37AA14
-    ]
-    poison_addresses = [0x258082, 0x258136]
-    # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses = [0x2580BE, 0x258172, 0x37B392]
-    name_address = 0x3A136B
-    clone_name_address = 0x399ABD
-    # poison - 693
-    # underwater - 695
     name = "Geno"
     _original_name = "Geno"
 
-    def doll_patch(self) -> dict[int, bytearray]:
-        return {}
-
-    def classic_patch(self) -> dict[int, bytearray]:
-        if self.classic_colours is not None:
-            return self.palette_override(self.classic_colours, classic_palette_offset)
-        return self.special_palette(
-            [
-                3,
-                6,
-                1,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-            ],
-            classic_palette_offset,
-        )
-
-    def minecart_patch(self) -> dict[int, bytearray]:
+    def render(self, world: GameWorld) -> dict[int, bytearray]:
+        output = {}
         if self.colours is not None:
-            return self.palette_override(
-                self.colours,
-                minecart_palette_offset,
+            world.sprite_palettes.get_palette(
+                SPAL685_GENO_WALKING_DOWN_LEFT
+            ).set_colors(self.colours)
+            world.sprite_palettes.get_palette(SPAL691_GENO_ELBOW_SHOT).set_colors(
+                self.colours
             )
-        else:
-            return {}
+            world.sprite_palettes.get_palette(SPAL507_GENO_3).set_colors(self.colours)
+            world.sprite_palettes.get_palette(SPAL636_GENO_DOLL).set_colors(
+                self.colours
+            )
 
-    def overworld_map_patch(self) -> dict[int, bytearray]:
-        if self.overworld_map_colours is not None:
-            return self.palette_override(self.overworld_map_colours, map_palette_offset)
-        if self.colours is not None:
-            return self.palette_override(self.colours, map_palette_offset)
-        return {}
-    
-    def heated_sprite(self) -> dict[int, bytearray]:
-        if not self.colours:
-            return {}
-        colours = [*self.colours]
-        colours[1] = "F85030"
-        b = palette_to_bytes(colours)
-        return {
-            hotspring_palette_offset: bytearray(b[0:4])
-        }
+            classic_palette = world.sprite_palettes.get_palette(
+                SPAL477_OLD_CLASSIC_MARIO
+            )
+            if self.classic_colours is None:
+                classic_palette.set_colors(
+                    self.transform(
+                        classic_palette.colors,
+                        self.colours,
+                        [
+                            3,
+                            6,
+                            1,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                        ],
+                    )
+                )
+            else:
+                classic_palette.set_colors(self.classic_colours)
+
+            world.event_palettes.get_palette(EPAL0086_GENO_ENDING).set_colors(
+                self.colours
+            )
+            heated_palette = [*self.colours][0:4]
+            heated_palette[1] = 0xF85030
+            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+            base_palette.set_colors(heated_palette + base_palette.colors[4:])
+            if self.overworld_map_colours is None:
+                output[MAP_PALETTE_OFFSET] = bytearray(self.colours)
+            else:
+                output[MAP_PALETTE_OFFSET] = bytearray(
+                    palette_to_bytes(self.overworld_map_colours)
+                )
+        if self.poison_colours is not None:
+            world.sprite_palettes.get_palette(SPAL687_GENO_PSN_1).set_colors(
+                self.poison_colours
+            )
+            world.sprite_palettes.get_palette(SPAL693_GENO_PSN_2).set_colors(
+                self.poison_colours
+            )
+        if self.underwater_colours is not None:
+            world.sprite_palettes.get_palette(SPAL689_GENO_DARK).set_colors(
+                self.underwater_colours
+            )
+            world.sprite_palettes.get_palette(SPAL695_GENO_DARK_2).set_colors(
+                self.underwater_colours
+            )
+            world.event_palettes.get_palette(EPAL0167_GENO_ENDING_DARK).set_colors(
+                self.underwater_colours
+            )
+
+        return output
 
 
 class BowserPalette(Palette):
-    hot_spring_reset_row = (0x37B068 - 0x37A000) // 30
-    starting_addresses = [
-        # overworld
-        0x257DD0,
-        # battle
-        0x257E66,
-        # portrait
-        0x256B2E,
-        # doll 1
-        0x257AA6,
-        # scarecrow/mushroom0x37AA14
-        # 0x256B2E,
-        # ending credits
-        # 0x2585AA,
-        # ending
-        0x37B068
-    ]
-    name_address = 0x3A1361
-    clone_name_address = 0x399AB0
-    poison_addresses = [0x257E0C, 0x257EA2]
-    # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses = [0x257E48, 0x257EDE, 0x37B356]
-    # poison - 671
-    # underwater - 673
     name = "Bowser"
     _original_name = "Bowser"
 
-    def doll_patch(self) -> dict[int, bytearray]:
-        return {}
-
-    def classic_patch(self) -> dict[int, bytearray]:
-        if self.classic_colours is not None:
-            return self.palette_override(self.classic_colours, classic_palette_offset)
+    def render(self, world: GameWorld) -> dict[int, bytearray]:
+        output = {}
         if self.colours is not None:
-            return self.palette_override(self.colours, classic_palette_offset)
-        return {}
-
-    def minecart_patch(self) -> dict[int, bytearray]:
-        if self.colours is not None:
-            return self.palette_override(
-                self.colours,
-                minecart_palette_offset,
+            world.sprite_palettes.get_palette(
+                SPAL664_BOWSER_WALKING_DOWN_LEFT
+            ).set_colors(self.colours)
+            world.sprite_palettes.get_palette(SPAL669_BOWSER_CLAW_ATTACK).set_colors(
+                self.colours
             )
-        else:
-            return {}
+            world.sprite_palettes.get_palette(SPAL505_BOWSER_3).set_colors(self.colours)
+            world.sprite_palettes.get_palette(SPAL637_BOWSER_DOLL).set_colors(
+                self.colours
+            )
+            world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
+                self.colours
+            )
+            world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
+                self.colours
+            )
+            world.event_palettes.get_palette(EPAL0140_BOWSER_ENDING).set_colors(
+                self.colours
+            )
 
-    def overworld_map_patch(self) -> dict[int, bytearray]:
-        if self.overworld_map_colours is not None:
-            return self.palette_override(self.overworld_map_colours, map_palette_offset)
-        if self.colours is not None:
-            return self.palette_override(self.colours, map_palette_offset)
-        return {}
-    
-    def heated_sprite(self) -> dict[int, bytearray]:
-        if not self.colours:
-            return {}
-        b = palette_to_bytes(self.colours) # no change bc main skin tone is past first 2 bytes. not sure how to change
-        return {
-            hotspring_palette_offset: bytearray(b[0:4])
-        }
+            heated_palette = [*self.colours][0:4]
+            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+            base_palette.set_colors(heated_palette + base_palette.colors[4:])
+            if self.overworld_map_colours is None:
+                output[MAP_PALETTE_OFFSET] = bytearray(self.colours)
+            else:
+                output[MAP_PALETTE_OFFSET] = bytearray(
+                    palette_to_bytes(self.overworld_map_colours)
+                )
+        if self.poison_colours is not None:
+            world.sprite_palettes.get_palette(SPAL666_BOWSER_PSN_1).set_colors(
+                self.poison_colours
+            )
+            world.sprite_palettes.get_palette(SPAL671_BOWSER_PSN_2).set_colors(
+                self.poison_colours
+            )
+        if self.underwater_colours is not None:
+            world.sprite_palettes.get_palette(SPAL668_BOWSER_DARK_1).set_colors(
+                self.underwater_colours
+            )
+            world.sprite_palettes.get_palette(SPAL673_BOWSER_DARK_2).set_colors(
+                self.underwater_colours
+            )
+            world.event_palettes.get_palette(EPAL0165_BOWSER_ENDING_DARK).set_colors(
+                self.underwater_colours
+            )
+
+        return output
 
 
 class ToadstoolPalette(Palette):
-    hot_spring_reset_row = (0x37B086 - 0x37A000) // 30
-    starting_addresses = [
-        # overworld
-        0x257CA4,
-        # battle
-        0x257D3A,
-        # portrait
-        0x256B10,
-        # doll 1
-        0x257AC4,
-        # scarecrow/mushroom
-        # 0x256B10,
-        # ending
-        0x37B086
-    ]
-    name_address = 0x3A1357
-    clone_name_address = 0x399AA3
-    poison_addresses = [0x257CE0, 0x257D76]
-    # Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
-    underwater_addresses = [0x257D1C, 0x257DB2, 0x37B338]
-    # poison - 656
-    # underwater - 658
     name = "Toadstool"
     _original_name = "Toadstool"
 
-    def doll_patch(self) -> dict[int, bytearray]:
-        return {}
-
-    def classic_patch(self) -> dict[int, bytearray]:
-        if self.classic_colours is not None:
-            return self.palette_override(self.classic_colours, classic_palette_offset)
-        return self.special_palette(
-            [
-                6,
-                3,
-                1,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-            ],
-            classic_palette_offset,
-        )
-
-    def minecart_patch(self) -> dict[int, bytearray]:
+    def render(self, world: GameWorld) -> dict[int, bytearray]:
+        output = {}
         if self.colours is not None:
-            return self.palette_override(
-                self.colours,
-                minecart_palette_offset,
+            world.sprite_palettes.get_palette(
+                SPAL654_TOADSTOOL_WALKING_DOWN_LEFT
+            ).set_colors(self.colours)
+            world.sprite_palettes.get_palette(SPAL659_TOADSTOOL_SLAP_ATTACK).set_colors(
+                self.colours
             )
-        else:
-            return {}
+            world.sprite_palettes.get_palette(SPAL504_TOADSTOOL_3).set_colors(
+                self.colours
+            )
+            world.sprite_palettes.get_palette(SPAL638_TOADSTOOL_DOLL).set_colors(
+                self.colours
+            )
 
-    def overworld_map_patch(self) -> dict[int, bytearray]:
-        if self.overworld_map_colours is not None:
-            return self.palette_override(self.overworld_map_colours, map_palette_offset)
-        if self.colours is not None:
-            return self.palette_override(self.colours, map_palette_offset)
-        return {}
-    
-    def heated_sprite(self) -> dict[int, bytearray]:
-        if not self.colours:
-            return {}
-        colours = [*self.colours]
-        colours[1] = "F85030"
-        b = palette_to_bytes(colours)
-        return {
-            hotspring_palette_offset: bytearray(b[0:4])
-        }
+            world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
+                self.colours
+            )
+            classic_palette = world.sprite_palettes.get_palette(
+                SPAL477_OLD_CLASSIC_MARIO
+            )
+            if self.classic_colours is None:
+                classic_palette.set_colors(
+                    self.transform(
+                        classic_palette.colors,
+                        self.colours,
+                        [
+                            6,
+                            3,
+                            1,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                        ],
+                    )
+                )
+            else:
+                classic_palette.set_colors(self.classic_colours)
+            world.event_palettes.get_palette(EPAL0141_TOADSTOOL_ENDING).set_colors(
+                self.colours
+            )
+            heated_palette = [*self.colours][0:4]
+            heated_palette[1] = 0xF85030
+            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+            base_palette.set_colors(heated_palette + base_palette.colors[4:])
+            if self.overworld_map_colours is None:
+                output[MAP_PALETTE_OFFSET] = bytearray(self.colours)
+            else:
+                output[MAP_PALETTE_OFFSET] = bytearray(
+                    palette_to_bytes(self.overworld_map_colours)
+                )
+        if self.poison_colours is not None:
+            world.sprite_palettes.get_palette(SPAL656_TOADSTOOL_PSN_1).set_colors(
+                self.poison_colours
+            )
+            world.sprite_palettes.get_palette(SPAL661_TOADSTOOL_PSN_2).set_colors(
+                self.poison_colours
+            )
+        if self.underwater_colours is not None:
+            world.sprite_palettes.get_palette(SPAL658_TOADSTOOL_DARK_1).set_colors(
+                self.underwater_colours
+            )
+            world.sprite_palettes.get_palette(SPAL663_TOADSTOOL_DARK_2).set_colors(
+                self.underwater_colours
+            )
+            world.event_palettes.get_palette(EPAL0164_TOADSTOOL_ENDING_DARK).set_colors(
+                self.underwater_colours
+            )
+
+        return output

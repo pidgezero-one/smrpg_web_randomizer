@@ -8,7 +8,16 @@ from concurrent.futures import ThreadPoolExecutor
 
 #
 
-from randomizer.data.sprites.overworld_map import BOWSER_OVERWORLD, GENO_OVERWORLD, MALLOW_OVERWORLD, TOADSTOOL_OVERWORLD
+from randomizer.data.sprites.overworld_map import (
+    BOWSER_OVERWORLD,
+    GENO_OVERWORLD,
+    MALLOW_OVERWORLD,
+    TOADSTOOL_OVERWORLD,
+)
+from randomizer.data.variables.sprite_palette_names import (
+    SPAL293_ABXY_ACTION_BUTTON_SELECTION_IN_BATTLE,
+    SPAL379_ABXY_BUTTONS_FROM_BOWYER_S_BUTTON_LOCK,
+)
 
 from .flags import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
@@ -49,7 +58,10 @@ from smrpgpatchbuilder.datatypes.levels.room_collection import RoomCollection
 from smrpgpatchbuilder.datatypes.shops.classes import ShopCollection
 from smrpgpatchbuilder.datatypes.spells.classes import SpellCollection
 from smrpgpatchbuilder.datatypes.graphics.classes import SpriteCollection
-from smrpgpatchbuilder.datatypes.sprites.palette import EventPaletteCollection, SpritePaletteCollection
+from smrpgpatchbuilder.datatypes.sprites.palette import (
+    EventPaletteCollection,
+    SpritePaletteCollection,
+)
 from smrpgpatchbuilder.datatypes.scripts_common.classes import IdentifierException
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     RunEventAsSubroutine,
@@ -501,9 +513,10 @@ class GameWorld:
 
         Uses the palette's custom name if set, otherwise falls back to the class name.
         """
+
         def get_palette_name(palette: Any, original_name: str) -> str:
             # If palette has a custom name different from original, use it
-            if hasattr(palette, 'name') and palette.name != original_name:
+            if hasattr(palette, "name") and palette.name != original_name:
                 return palette.name
             # Otherwise use the class name
             return type(palette).__name__
@@ -681,16 +694,21 @@ class GameWorld:
             elif isinstance(flag, CategorizationFlagWithOrdinance):
                 # Get list of selected options sorted by their order
                 selected_with_order = [
-                    (opt, order) for opt, order in flag.options.items()
+                    (opt, order)
+                    for opt, order in flag.options.items()
                     if order is not None
                 ]
                 # Sort by order value
                 selected_with_order.sort(key=lambda x: x[1])
                 # Get display names in order
-                result[flag_name] = [get_option_display_name(opt) for opt, _ in selected_with_order]
+                result[flag_name] = [
+                    get_option_display_name(opt) for opt, _ in selected_with_order
+                ]
             elif isinstance(flag, CategorizationFlag):
                 # Get list of enabled options
-                result[flag_name] = [get_option_display_name(opt) for opt in flag.enabled]
+                result[flag_name] = [
+                    get_option_display_name(opt) for opt in flag.enabled
+                ]
             else:
                 result[flag_name] = str(flag)
         return result
@@ -947,6 +965,7 @@ class GameWorld:
         # Apply debug mode max stats again after all character randomization
         # (ensures debug stats override everything)
         from ..logic.setup.debug import apply_debug_max_stats
+
         apply_debug_max_stats(self)
 
         # Apply EXP multiplier
@@ -993,6 +1012,7 @@ class GameWorld:
 
         # Apply debug mode overrides (must be after apply_shuffler_results_to_game_data)
         from ..logic.setup.debug import apply_debug_max_stats
+
         apply_debug_max_stats(self)
 
         # Note:
@@ -1063,7 +1083,9 @@ class GameWorld:
         """
         # Update Dodo's AI script HP threshold (60% of HP triggers flee behavior)
         dodo = self.get_enemy(DODOEnemy)
-        _, _, dodo_hp_check = self.monster_scripts.get_command_by_identifier("dodo_low_hp_check")
+        _, _, dodo_hp_check = self.monster_scripts.get_command_by_identifier(
+            "dodo_low_hp_check"
+        )
         cast(IfHPBelow, dodo_hp_check).set_threshold(round(dodo.hp * 0.6))
 
         # Update Shelly's AI script HP thresholds (80%, 60%, 40%, 20% triggers phase changes)
@@ -1074,13 +1096,19 @@ class GameWorld:
             ("shelly_low_hp_check_40_percent", 0.4),
             ("shelly_low_hp_check_20_percent", 0.2),
         ]:
-            _, _, shelly_hp_check = self.monster_scripts.get_command_by_identifier(identifier)
+            _, _, shelly_hp_check = self.monster_scripts.get_command_by_identifier(
+                identifier
+            )
             cast(IfHPBelow, shelly_hp_check).set_threshold(round(shelly.hp * percent))
 
         # Update Right Eye's revival HP in battle animation scripts (120% of HP)
         right_eye = self.get_enemy(RIGHTEYEEnemy)
-        right_eye_revival_cmd = self.get_battle_animation_command_by_name("right_eye_revival_hp")
-        cast(SetAMEM16BitToConst, right_eye_revival_cmd).set_value(round(right_eye.hp * 1.2))
+        right_eye_revival_cmd = self.get_battle_animation_command_by_name(
+            "right_eye_revival_hp"
+        )
+        cast(SetAMEM16BitToConst, right_eye_revival_cmd).set_value(
+            round(right_eye.hp * 1.2)
+        )
 
     def get_patch(self) -> Patch:
         # Return cached patch if already generated
@@ -1094,10 +1122,16 @@ class GameWorld:
         from bps.diff import diff_bytearrays
         from bps.io import write_bps
 
-        DEBUG_PATCHES = self._debug_bps_patches  # Controlled by debug_bps_patches setting
-        PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        DEBUG_PATCHES = (
+            self._debug_bps_patches
+        )  # Controlled by debug_bps_patches setting
+        PROJECT_ROOT = os.path.dirname(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        )
         DEBUG_DIR = os.path.join(PROJECT_ROOT, "debug_patches")
-        VANILLA_ROM_PATH = os.environ.get("VANILLA_ROM_PATH", os.path.join(PROJECT_ROOT, "smrpg.sfc"))
+        VANILLA_ROM_PATH = os.environ.get(
+            "VANILLA_ROM_PATH", os.path.join(PROJECT_ROOT, "smrpg.sfc")
+        )
 
         vanilla_rom: bytearray | None = None
         if DEBUG_PATCHES:
@@ -1105,12 +1139,18 @@ class GameWorld:
             if os.path.exists(VANILLA_ROM_PATH):
                 with open(VANILLA_ROM_PATH, "rb") as f:
                     vanilla_rom = bytearray(f.read())
-                print(f"DEBUG: Loaded vanilla ROM ({len(vanilla_rom):,} bytes) for debug patches")
+                print(
+                    f"DEBUG: Loaded vanilla ROM ({len(vanilla_rom):,} bytes) for debug patches"
+                )
             else:
-                print(f"DEBUG: Vanilla ROM not found at {VANILLA_ROM_PATH}, skipping debug patches")
+                print(
+                    f"DEBUG: Vanilla ROM not found at {VANILLA_ROM_PATH}, skipping debug patches"
+                )
                 DEBUG_PATCHES = False
 
-        def save_debug_bps(name: str, patch_data: Mapping[int, bytearray | bytes | list[int]]) -> None:
+        def save_debug_bps(
+            name: str, patch_data: Mapping[int, bytearray | bytes | list[int]]
+        ) -> None:
             """Create a BPS patch from just this render's data and save it."""
             if not DEBUG_PATCHES or vanilla_rom is None:
                 return
@@ -1122,11 +1162,13 @@ class GameWorld:
                         data = bytes(data)
                     elif isinstance(data, bytearray):
                         data = bytes(data)
-                    patched[addr:addr + len(data)] = data
+                    patched[addr : addr + len(data)] = data
 
                 # Create BPS diff using correct bps library API
                 blocksize = (len(vanilla_rom) + len(patched)) // 1000000 + 1
-                bps_iterable = diff_bytearrays(blocksize, bytes(vanilla_rom), bytes(patched))
+                bps_iterable = diff_bytearrays(
+                    blocksize, bytes(vanilla_rom), bytes(patched)
+                )
 
                 # Save to file using write_bps
                 bps_path = os.path.join(DEBUG_DIR, f"{name}.bps")
@@ -1138,6 +1180,7 @@ class GameWorld:
                     print(f"DEBUG:   Address range: 0x{addrs[0]:X} - 0x{addrs[-1]:X}")
             except Exception as e:
                 print(f"DEBUG: Failed to save {name}.bps: {e}")
+
         # ========================================================================
 
         patch = Patch()
@@ -1154,107 +1197,18 @@ class GameWorld:
         save_debug_bps("01_battle_animations", debug_battle_anims)
         progress += 3
 
-
-        # Palettes - do this first before attempting to render scripts
-        debug_palettes: dict[int, bytearray] = dict()
-
-        if self.overworld_character.ally.index == MARIO_Ally.index and hasattr(self, "mario_palette"):
-            for i, p in self.mario_palette.doll_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.mario_palette.minecart_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.mario_palette.classic_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.mario_palette.overworld_map_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.mario_palette.heated_sprite().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
-                self.mario_palette.hot_spring_reset_row
-            )
+        if self.overworld_character.ally.index == MARIO_Ally.index and hasattr(
+            self, "mario_palette"
+        ):
+            patch.add_dict(self.mario_palette.render(self))
         if self.overworld_character.ally.index == MALLOW_Ally.index:
-            for i, p in self.mallow_palette.doll_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.mallow_palette.minecart_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.mallow_palette.classic_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.mallow_palette.overworld_map_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.mallow_palette.heated_sprite().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
-                self.mallow_palette.hot_spring_reset_row
-            )
+            patch.add_dict(self.mallow_palette.render(self))
         if self.overworld_character.ally.index == GENO_Ally.index:
-            for i, p in self.geno_palette.doll_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.geno_palette.minecart_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.geno_palette.classic_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.geno_palette.overworld_map_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.geno_palette.heated_sprite().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
-                self.geno_palette.hot_spring_reset_row
-            )
+            patch.add_dict(self.geno_palette.render(self))
         if self.overworld_character.ally.index == BOWSER_Ally.index:
-            for i, p in self.bowser_palette.doll_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.bowser_palette.minecart_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.bowser_palette.classic_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.bowser_palette.overworld_map_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.bowser_palette.heated_sprite().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
-                self.bowser_palette.hot_spring_reset_row
-            )
+            patch.add_dict(self.bowser_palette.render(self))
         if self.overworld_character.ally.index == TOADSTOOL_Ally.index:
-            for i, p in self.toadstool_palette.doll_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.toadstool_palette.minecart_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.toadstool_palette.classic_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.toadstool_palette.overworld_map_patch().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            for i, p in self.toadstool_palette.heated_sprite().items():
-                patch.add_data(i, p)
-                debug_palettes[i] = p
-            self.event_scripts.get_command_by_identifier("hot_spring_reset_palette", PaletteSet).set_palette_set(
-                self.toadstool_palette.hot_spring_reset_row
-            )
-        save_debug_bps("02_palettes", debug_palettes)
-
+            patch.add_dict(self.toadstool_palette.render(self))
 
         # Finalize startup script
         self.event_2496_startup += [Return()]
@@ -1273,7 +1227,9 @@ class GameWorld:
         for event_script_bank in self.event_scripts.banks:
             self._report_progress("Assembling event scripts...", progress)
             rendered = event_script_bank.render()
-            patch.add_data(event_script_bank.pointer_table_start, rendered, source="event_scripts")
+            patch.add_data(
+                event_script_bank.pointer_table_start, rendered, source="event_scripts"
+            )
             debug_event_scripts[event_script_bank.pointer_table_start] = rendered
             progress += 3
         save_debug_bps("03_event_scripts", debug_event_scripts)
@@ -1291,19 +1247,36 @@ class GameWorld:
         # so we must write to pointer_table_start, not start
         self._report_progress("Assembling action scripts...", progress)
         action_data = self.action_scripts.render()
-        patch.add_data(self.action_scripts.pointer_table_start, action_data, source="action_scripts")
-        save_debug_bps("05_action_scripts", {self.action_scripts.pointer_table_start: action_data})
+        patch.add_data(
+            self.action_scripts.pointer_table_start,
+            action_data,
+            source="action_scripts",
+        )
+        save_debug_bps(
+            "05_action_scripts", {self.action_scripts.pointer_table_start: action_data}
+        )
         progress += 3
 
         # Monster AI scripts (rendered before sprites to reclaim unused space)
         self._report_progress("Assembling monster AI scripts...", progress)
         monster_scripts = self.monster_scripts.render()
-        patch.add_data(self.monster_scripts.pointer_table_start, monster_scripts[0], source="monster_scripts")
-        patch.add_data(self.monster_scripts.range_2_start, monster_scripts[1], source="monster_scripts")
-        save_debug_bps("06_monster_scripts", {
-            self.monster_scripts.pointer_table_start: monster_scripts[0],
-            self.monster_scripts.range_2_start: monster_scripts[1]
-        })
+        patch.add_data(
+            self.monster_scripts.pointer_table_start,
+            monster_scripts[0],
+            source="monster_scripts",
+        )
+        patch.add_data(
+            self.monster_scripts.range_2_start,
+            monster_scripts[1],
+            source="monster_scripts",
+        )
+        save_debug_bps(
+            "06_monster_scripts",
+            {
+                self.monster_scripts.pointer_table_start: monster_scripts[0],
+                self.monster_scripts.range_2_start: monster_scripts[1],
+            },
+        )
         progress += 3
 
         # Collect unused ranges and add as AnimationBanks
@@ -1354,10 +1327,10 @@ class GameWorld:
             self.sprites.animation_data_banks.append(AnimationBank(start, end))
 
         # Debug: print all animation banks
-        #print(f"Sprite collection animation banks ({len(self.sprites.animation_data_banks)} total):")
-        #for bank in self.sprites.animation_data_banks:
-            #size = bank.end - bank.start
-            #print(f"  0x{bank.start:06X} - 0x{bank.end:06X} ({size:,} bytes)")
+        # print(f"Sprite collection animation banks ({len(self.sprites.animation_data_banks)} total):")
+        # for bank in self.sprites.animation_data_banks:
+        # size = bank.end - bank.start
+        # print(f"  0x{bank.start:06X} - 0x{bank.end:06X} ({size:,} bytes)")
 
         # ========================================================================
 
@@ -1382,8 +1355,6 @@ class GameWorld:
             patch.add_data(0x3E90AA, MALLOW_OVERWORLD)
 
         set_partitions(self)
-
-
 
         # Dialogs, enemies, items, packets, battle packs, rooms, shops, spells
         # (Note: overworld_dialogs and action_scripts are rendered earlier for space reclamation)
@@ -1453,26 +1424,6 @@ class GameWorld:
         if self.selected_music_ids:
             patch.add_data(0x029F51, bytes(self.selected_music_ids))
 
-        # Postgame weapon palettes
-        patch.add_data(
-            0x25894C,
-            bytes.fromhex(
-                "7B 37 BD 33 39 33 F7 2E F7 2A F7 22 31 26 52 22 DE 53 10 1E 8C 15 4A 15 08 11 C6 0C 63 0C"
-            ),
-        )
-        patch.add_data(
-            0x25896A,
-            bytes.fromhex(
-                "BD 6B BD 6B 5B 47 39 3B 95 1A D7 1E 74 1A EF 15 6C 0D 09 09 A6 04 A6 04 84 04 FF 7B 63 0C"
-            ),
-        )
-        patch.add_data(
-            0x258898,
-            bytes.fromhex(
-                "FF 7F F5 7F EA 7F E0 7F 40 7F 80 7E E0 7D 20 7D 00 69 C0 58 A0 44 60 30 40 20 00 0C 00 00"
-            ),
-        )
-
         if self.settings.isflag_enabled(HoldB):
             # hold B to advance
             patch.add_data(0x5D5E, [0x20, 0x54, 0xF1])
@@ -1482,82 +1433,47 @@ class GameWorld:
                 0x2FE90, [0xAF, 0x14, 0x30, 0x00, 0x0F, 0x11, 0x30, 0x00, 0x6B]
             )
 
-        # palettes cont'd
-        debug_palettes_contd: dict[int, bytearray] = dict()
-        pd = [
-            self.mario_palette.standard_patch(),
-            self.mallow_palette.standard_patch(),
-            self.geno_palette.standard_patch(),
-            self.bowser_palette.standard_patch(),
-            self.toadstool_palette.standard_patch()
-        ]
-        for p_data in pd:
-            patch.add_dict(p_data)
-            debug_palettes_contd.update(p_data)
-        save_debug_bps("19_palettes_standard", debug_palettes_contd)
-
         if self.settings.isflag_enabled(JapaneseABXY):
-            patch.add_data(
-                0x255258,
-                bytearray(
-                    [
-                        0x0C,
-                        0x00,
-                        0x36,
-                        0x16,
-                        0x3A,
-                        0x27,
-                        0x48,
-                        0x26,
-                        0xE3,
-                        0x11,
-                        0x07,
-                        0x49,
-                        0x63,
-                        0x44,
-                        0x00,
-                        0x20,
-                        0x3F,
-                        0x29,
-                        0xDB,
-                        0x1C,
-                        0xA6,
-                        0x04,
-                        0xC1,
-                        0x08,
-                    ]
-                ),
+            self.sprite_palettes.get_palette(
+                SPAL293_ABXY_ACTION_BUTTON_SELECTION_IN_BATTLE
+            ).set_colors(
+                [
+                    0xFFFFFF,
+                    0x391063,
+                    0x630000,
+                    0xB58C29,
+                    0xD6CE4A,
+                    0x42944A,
+                    0x187B21,
+                    0x394294,
+                    0x18188C,
+                    0x000042,
+                    0xFF4A52,
+                    0xDE3139,
+                    0x312908,
+                    0x083110,
+                    0x000000,
+                ]
             )
-            patch.add_data(
-                0x255C6C,
-                bytearray(
-                    [
-                        0x0C,
-                        0x00,
-                        0x52,
-                        0x4A,
-                        0x29,
-                        0x25,
-                        0x48,
-                        0x26,
-                        0xE3,
-                        0x11,
-                        0x07,
-                        0x49,
-                        0x63,
-                        0x44,
-                        0x00,
-                        0x20,
-                        0x3F,
-                        0x29,
-                        0xDB,
-                        0x1C,
-                        0xD1,
-                        0x00,
-                        0xC1,
-                        0x08,
-                    ]
-                ),
+            self.sprite_palettes.get_palette(
+                SPAL379_ABXY_BUTTONS_FROM_BOWYER_S_BUTTON_LOCK
+            ).set_colors(
+                [
+                    0xFFFFFF,
+                    0x63398C,
+                    0x630000,
+                    0x949494,
+                    0x4A4A4A,
+                    0x42944A,
+                    0x187B21,
+                    0x394294,
+                    0x18188C,
+                    0x000042,
+                    0xFF4A52,
+                    0xDE3139,
+                    0x8C3100,
+                    0x083110,
+                ]
             )
 
         starter = cast(CharacterPrize, self.get_location(StartingCharacter1).prize).ally
