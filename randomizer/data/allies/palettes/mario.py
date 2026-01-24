@@ -42,19 +42,19 @@ class MarioJumpman(MarioPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x8989b4,
+        0x8989B4,
         0x897178,
-        0x6d515c,
-        0x61415c,
+        0x6D515C,
+        0x61415C,
         0x492950,
-        0x2929a8,
-        0x0d0da4,
+        0x2929A8,
+        0x0D0DA4,
         0x151580,
-        0x3d0d38,
+        0x3D0D38,
         0x692954,
-        0x5d0d38,
+        0x5D0D38,
         0x391944,
-        0x7979a8,
+        0x7979A8,
         0x515184,
         0x191944,
     ]
@@ -71,7 +71,7 @@ class MarioFireMario(MarioPalette):
         0x785030,
         0xF0F0F0,
         0xD0D0D0,
-        0x989898 ,
+        0x989898,
         0x484848,
         0xD03838,
         0xA00000,
@@ -154,21 +154,21 @@ class MarioLuigi(MarioPalette):
         0x101808,
     ]
     underwater_colours = [
-        0x7c7cad,
-        0x7c6471,
+        0x7C7CAD,
+        0x7C6471,
         0x604456,
         0x543456,
-        0x1c143a,
+        0x1C143A,
         0x145042,
-        0x0c3c3e,
+        0x0C3C3E,
         0x103842,
         0x080432,
-        0x1c1ca1,
-        0x00009d,
+        0x1C1CA1,
+        0x00009D,
         0x000062,
-        0x706c9d,
-        0x4c4475,
-        0x080c36,
+        0x706C9D,
+        0x4C4475,
+        0x080C36,
     ]
     name = "Luigi"
     author = "SMRPG ARMAGEDDON"
@@ -210,20 +210,20 @@ class MarioFireLuigi(MarioPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x8989b4,
+        0x8989B4,
         0x897178,
-        0x6d515c,
-        0x61415c,
+        0x6D515C,
+        0x61415C,
         0x492950,
-        0x8989b4,
-        0x8181ac,
+        0x8989B4,
+        0x8181AC,
         0x696994,
-        0x3d0d38,
+        0x3D0D38,
         0x295950,
         0x295154,
-        0x1d4948,
-        0x7979a4,
-        0x59517c,
+        0x1D4948,
+        0x7979A4,
+        0x59517C,
         0x191944,
     ]
     name = "Fire Luigi"
@@ -417,9 +417,9 @@ class MarioMegaman(MarioPalette):
         0x181818,
     ]
     poison_colours = [
-        0xf8f8f8,
-        0xb870e0,
-        0x8848c8,
+        0xF8F8F8,
+        0xB870E0,
+        0x8848C8,
         0x502858,
         0x783830,
         0x380838,
@@ -434,19 +434,19 @@ class MarioMegaman(MarioPalette):
         0x181818,
     ]
     underwater_colours = [
-        0xf8f8f8,
-        0xb8d0f8,
-        0x98b0f8,
-        0x6870c8,
+        0xF8F8F8,
+        0xB8D0F8,
+        0x98B0F8,
+        0x6870C8,
         0x000068,
-        0x0050b0,
-        0x0000a0,
+        0x0050B0,
+        0x0000A0,
         0x000060,
         0x000050,
         0x101080,
         0x000030,
         0x000028,
-        0x4000a8,
+        0x4000A8,
         0x886088,
         0x181818,
     ]
@@ -490,21 +490,21 @@ class MarioGrey(MarioPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x82829a,
-        0x826a5e,
-        0x664a42,
-        0x5a3a42,
+        0x82829A,
+        0x826A5E,
+        0x664A42,
+        0x5A3A42,
         0x422236,
-        0x6e6e86,
-        0x5e627a,
-        0x52526a,
-        0x36051e,
-        0x1a2242,
-        0x161e3e,
-        0x121a36,
-        0x76728a,
-        0x524a62,
-        0x12122a,
+        0x6E6E86,
+        0x5E627A,
+        0x52526A,
+        0x36051E,
+        0x1A2242,
+        0x161E3E,
+        0x121A36,
+        0x76728A,
+        0x524A62,
+        0x12122A,
     ]
     name = "Grey"
     author = "SMBAI"
@@ -734,6 +734,7 @@ class MarioMarlon(MarioPalette):
     name = "Marlon"
     author = "HERRSHAUN"
 
+
 class MarioGrandDad(MarioPalette):
     colours = [
         0xF8F8F8,
@@ -750,7 +751,7 @@ class MarioGrandDad(MarioPalette):
         0x780800,
         0x80B8D8,
         0x80A8D8,
-        0x1818B8
+        0x1818B8,
     ]
     poison_colours = [
         0xF8C0F8,
@@ -790,6 +791,63 @@ class MarioGrandDad(MarioPalette):
     author = "HERRSHAUN"
 
 
+class MarioBlue2(MarioPalette):
+    colours = [
+        0xF8F8F8,
+        0xF8D090,
+        0xC89058,
+        0x4868A8,
+        0x303878,
+        0x3840E8,
+        0x0008F8,
+        0x0008B0,
+        0x000060,
+        0x505050,
+        0x383840,
+        0x000000,
+        0xD8D8E0,
+        0x888898,
+        0x181818,
+    ]
+    poison_colours = [
+        0xF0F8F8,
+        0xA0D0E0,
+        0x58A8C0,
+        0x6838B0,
+        0x482878,
+        0x8058C0,
+        0x6838B8,
+        0x482880,
+        0x000060,
+        0x083020,
+        0x001008,
+        0x000000,
+        0x80D0B8,
+        0x289068,
+        0x181818,
+    ]
+    underwater_colours = [
+        0xC0C0C0,
+        0xC09858,
+        0x905820,
+        0x103070,
+        0x000040,
+        0x0008B0,
+        0x0000C0,
+        0x000078,
+        0x000028,
+        0x181818,
+        0x000008,
+        0x000000,
+        0xA0A0A8,
+        0x505060,
+        0x000000,
+    ]
+    name = "Blue2"
+    author = "SWINCH"
+    rename_character = False
+
+
 all_palettes: list[MarioPalette] = [
     MarioDefault(),
     MarioJumpman(),
@@ -806,4 +864,5 @@ all_palettes: list[MarioPalette] = [
     MarioPretzel(),
     MarioMarlon(),
     MarioGrandDad(),
+    MarioBlue2(),
 ]

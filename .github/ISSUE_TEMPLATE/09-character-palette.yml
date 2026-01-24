@@ -12,13 +12,13 @@ body:
         The form will ask you for **fifteen colours**. The palette editor shows 16 colours. Omit the first one. **Do not list all sixteen colours.**
 
   - type: input
-    id: name
+    id: character
     attributes:
-      label: Your name or handle
-      description: |
-        Palette swap contributors will not be included in the ending credits for now, but that may change in the future, so include your preferred name here in case that happens.  
-        Only capital letters A-Z, periods, spaces, and underscores are supported (no numbers or other characters).  
-        Leave this blank if you prefer to be anonymous.
+      label: Character
+      description: | 
+        Which character is this for? (Mario, Mallow, Geno, Bowser, Toadstool)
+    validations:
+      required: true
 
   - type: input
     id: pname
@@ -36,15 +36,15 @@ body:
       label: Rename character?
       options:
         - label: If the "Change character names" flag is applied, this character's name should be changed to my palette's name. 
-          
+
   - type: input
-    id: character
+    id: name
     attributes:
-      label: Character
-      description: | 
-        Which character is this for? (Mario, Mallow, Geno, Bowser, Toadstool)
-    validations:
-      required: true
+      label: Your name or handle
+      description: |
+        When your palette is chosen, you will appear in the ending credits.  
+        Only capital letters A-Z, periods, spaces, and underscores are supported (no numbers or other characters).  
+        Leave this blank if you prefer to be anonymous, in which case the palette will be uncredited.
 
   - type: textarea
     id: basic

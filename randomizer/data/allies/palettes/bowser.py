@@ -75,23 +75,24 @@ class BowserDrybone(BowserPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x8985b0,
-        0x817d90,
+        0x8985B0,
+        0x817D90,
         0x858198,
         0x691540,
         0x351944,
         0x292550,
-        0x1d1d48,
+        0x1D1D48,
         0x191540,
-        0x1d1944,
+        0x1D1944,
         0x716988,
         0x595170,
-        0x1d113c,
-        0x554d78,
-        0x3d2d58,
+        0x1D113C,
+        0x554D78,
+        0x3D2D58,
         0x191944,
     ]
     name = "Dry Bone"
+    author = "DEVILING"
 
 
 class BowserCulex(BowserPalette):
@@ -148,6 +149,7 @@ class BowserCulex(BowserPalette):
     ]
     name = "Culex"
     rename_character = False
+    author = "AARONDOBBE"
 
 
 class BowserWabowser(BowserPalette):
@@ -203,6 +205,7 @@ class BowserWabowser(BowserPalette):
         0x18103A,
     ]
     name = "Wabowser"
+    author = "HERRSHAUN"
 
 
 class BowserRed(BowserPalette):
@@ -241,24 +244,25 @@ class BowserRed(BowserPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x8989b4,
-        0x7575a0,
-        0x85719c,
+        0x8989B4,
+        0x7575A0,
+        0x85719C,
         0x692954,
         0x352954,
         0x612950,
-        0x491d48,
+        0x491D48,
         0x311940,
-        0x1d214c,
-        0x714d78,
-        0x51315c,
-        0x51315c,
+        0x1D214C,
+        0x714D78,
+        0x51315C,
+        0x51315C,
         0x555580,
-        0x3d3d68,
+        0x3D3D68,
         0x191944,
     ]
     name = "Red"
     rename_character = False
+    author = "DEVILING"
 
 
 class BowserDark(BowserPalette):
@@ -315,6 +319,7 @@ class BowserDark(BowserPalette):
     ]
     name = "Dark"
     rename_character = False
+    author = "EGGTALK"
 
 
 class BowserKronk(BowserPalette):
@@ -370,20 +375,21 @@ class BowserKronk(BowserPalette):
         0x24143A,
     ]
     name = "Korush"
+    author = "HERRSHAUN"
 
 
 class BowserZeccet(BowserPalette):
     colours = [
         0xF8F8F8,
-        0xf8d8b0,
-        0xe0b088,
+        0xF8D8B0,
+        0xE0B088,
         0x703038,
-        0x481e24,
-        0xc84858,
-        0xa04068,
+        0x481E24,
+        0xC84858,
+        0xA04068,
         0x683858,
         0x482840,
-        0xb08860,
+        0xB08860,
         0x886048,
         0x201008,
         0x909080,
@@ -408,23 +414,24 @@ class BowserZeccet(BowserPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x7c7cad,
-        0x7c6c89,
+        0x7C7CAD,
+        0x7C6C89,
         0x705875,
-        0x38184e,
+        0x38184E,
         0x241042,
-        0x64245e,
+        0x64245E,
         0x502065,
-        0x341c5e,
+        0x341C5E,
         0x241452,
         0x584462,
         0x443056,
         0x100836,
         0x484871,
         0x303052,
-        0x0c0c3e,
+        0x0C0C3E,
     ]
     name = "Zeccet"
+    author = "PIDGEZERO_ONE"
 
 
 class BowserBlue(BowserPalette):
@@ -463,23 +470,81 @@ class BowserBlue(BowserPalette):
         0x080000,
     ]
     underwater_colours = [
-        0x7c7cad,
+        0x7C7CAD,
         0x646885,
-        0x605c69,
-        0x64343a,
+        0x605C69,
+        0x64343A,
         0x102442,
-        0x2828a5,
-        0x20208d,
-        0x0c0c85,
+        0x2828A5,
+        0x20208D,
+        0x0C0C85,
         0x081836,
         0x345065,
-        0x1c384a,
+        0x1C384A,
         0x100836,
         0x484871,
         0x303052,
-        0x0c0c3e,
+        0x0C0C3E,
     ]
     name = "Melee Blue"
+    rename_character = False
+    author = "PIDGEZERO_ONE"
+
+
+class BowserSking(BowserPalette):
+    colours = [
+        0xF8F8F8,
+        0xF8E0C8,
+        0xE09870,
+        0x985010,
+        0x181818,
+        0x284050,
+        0x203040,
+        0x182028,
+        0x700000,
+        0x586848,
+        0x786828,
+        0x383838,
+        0xD0C8C8,
+        0x786860,
+        0x181818,
+    ]
+    poison_colours = [
+        0xA8F8F8,
+        0xA8F8B0,
+        0x989868,
+        0x604800,
+        0x000000,
+        0x003048,
+        0x002030,
+        0x001018,
+        0xA80000,
+        0x087038,
+        0x286818,
+        0x102850,
+        0x88D0D0,
+        0x486058,
+        0x000000,
+    ]
+    underwater_colours = [
+        0x7C7CAD,
+        0x7C68A0,
+        0x704C69,
+        0x4C2839,
+        0x0C0C3D,
+        0x142059,
+        0x101851,
+        0x0C1045,
+        0xA80031,
+        0x000058,
+        0x002048,
+        0x1C1C99,
+        0x686495,
+        0x3C3461,
+        0x0C0C3D,
+    ]
+    name = "S.King"
+    author = "SMBAI"
     rename_character = False
 
 
@@ -493,4 +558,5 @@ all_palettes: list[BowserPalette] = [
     BowserKronk(),
     BowserZeccet(),
     BowserBlue(),
+    BowserSking(),
 ]

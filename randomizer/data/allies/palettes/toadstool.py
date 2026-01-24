@@ -92,23 +92,24 @@ class ToadstoolDaisy(ToadstoolPalette):
         0x000008,
     ]
     underwater_colours = [
-        0x8989b4,
-        0x7d5970,
-        0x613d5c,
-        0x2d2138,
+        0x8989B4,
+        0x7D5970,
+        0x613D5C,
+        0x2D2138,
         0x352144,
         0x897140,
-        0x895d44,
+        0x895D44,
         0x755138,
-        0x450d38,
+        0x450D38,
         0x613538,
         0x552938,
         0x115988,
-        0x7171a0,
+        0x7171A0,
         0x494168,
         0x191944,
     ]
     name = "Daisy"
+    author = "DEVILING"
 
 
 class ToadstoolPauline(ToadstoolPalette):
@@ -164,6 +165,7 @@ class ToadstoolPauline(ToadstoolPalette):
         0x0C0C3D,
     ]
     name = "Pauline"
+    author = "EGGTALK"
 
 
 class ToadstoolRosalina(ToadstoolPalette):
@@ -202,23 +204,24 @@ class ToadstoolRosalina(ToadstoolPalette):
         0x000800,
     ]
     underwater_colours = [
-        0x7c7cad,
-        0x7c7489,
-        0x704c69,
+        0x7C7CAD,
+        0x7C7489,
+        0x704C69,
         0x583456,
-        0x08104e,
-        0x40709d,
-        0x28547d,
-        0x103c69,
+        0x08104E,
+        0x40709D,
+        0x28547D,
+        0x103C69,
         0x001456,
-        0x7c6c75,
-        0x7c545e,
-        0x10449d,
+        0x7C6C75,
+        0x7C545E,
+        0x10449D,
         0x686495,
-        0x3c3462,
-        0x0c0c3e,
+        0x3C3462,
+        0x0C0C3E,
     ]
     name = "Rosalina"
+    author = "PIDGEZERO_ONE"
 
 
 class ToadstoolPalutena(ToadstoolPalette):
@@ -259,21 +262,22 @@ class ToadstoolPalutena(ToadstoolPalette):
     underwater_colours = [
         0x747095,
         0x706881,
-        0x704c69,
+        0x704C69,
         0x102842,
-        0x0c143e,
-        0x7878a5,
+        0x0C143E,
+        0x7878A5,
         0x606095,
         0x501442,
-        0x2c204e,
-        0x385c62,
+        0x2C204E,
+        0x385C62,
         0x204452,
         0x481442,
         0x685862,
-        0x5c4832,
-        0x0c0c3e,
+        0x5C4832,
+        0x0C0C3E,
     ]
     name = "Palutena"
+    author = "PIDGEZERO_ONE"
 
 
 class ToadstoolKumatora(ToadstoolPalette):
@@ -312,23 +316,24 @@ class ToadstoolKumatora(ToadstoolPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x7c6491,
-        0x7c6491,
-        0x704c69,
+        0x7C6491,
+        0x7C6491,
+        0x704C69,
         0x581071,
-        0x14105e,
-        0x3860ad,
-        0x3048a1,
+        0x14105E,
+        0x3860AD,
+        0x3048A1,
         0x283899,
-        0x54105e,
-        0x7c4cad,
+        0x54105E,
+        0x7C4CAD,
         0x742489,
-        0x1c0032,
-        0x704c69,
-        0x1a1a70,
-        0x0c0c3e,
+        0x1C0032,
+        0x704C69,
+        0x1A1A70,
+        0x0C0C3E,
     ]
     name = "Kumatora"
+    author = "PIDGEZERO_ONE"
 
 
 class ToadstoolTia(ToadstoolPalette):
@@ -367,23 +372,24 @@ class ToadstoolTia(ToadstoolPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x6c688d,
-        0x6c688d,
+        0x6C688D,
+        0x6C688D,
         0x705475,
         0x203081,
-        0x1c045e,
+        0x1C045E,
         0x744081,
         0x782875,
-        0x6c1865,
+        0x6C1865,
         0x585889,
-        0x4858ad,
-        0x2c44a9,
+        0x4858AD,
+        0x2C44A9,
         0x503046,
         0x705475,
-        0x643c52,
-        0x0c0c3e,
+        0x643C52,
+        0x0C0C3E,
     ]
     name = "Tia"
+    author = "PIDGEZERO_ONE"
 
 
 class ToadstoolKairi(ToadstoolPalette):
@@ -439,6 +445,7 @@ class ToadstoolKairi(ToadstoolPalette):
         0x080840,
     ]
     name = "Kairi"
+    author = "AARONDOBBE"
 
 
 class ToadstoolLeena(ToadstoolPalette):
@@ -494,6 +501,7 @@ class ToadstoolLeena(ToadstoolPalette):
         0x300C3E,
     ]
     name = "Leena"
+    author = "HERRSHAUN"
 
 
 class ToadstoolEmeralda(ToadstoolPalette):
@@ -532,23 +540,24 @@ class ToadstoolEmeralda(ToadstoolPalette):
         0x000010,
     ]
     underwater_colours = [
-        0x7c709d,
+        0x7C709D,
         0x706469,
-        0x5c3852,
-        0x242c5a,
+        0x5C3852,
+        0x242C5A,
         0x101042,
         0x481842,
-        0x28103e,
-        0x18184a,
+        0x28103E,
+        0x18184A,
         0x101042,
-        0x385c5e,
+        0x385C5E,
         0x244062,
-        0x44304a,
-        0x5c4c75,
-        0x50446d,
-        0x0c0c3e,
+        0x44304A,
+        0x5C4C75,
+        0x50446D,
+        0x0C0C3E,
     ]
     name = "Emeralda"
+    author = "PIDGEZERO_ONE"
 
 
 class ToadstoolMiku(ToadstoolPalette):
@@ -604,6 +613,7 @@ class ToadstoolMiku(ToadstoolPalette):
         0x080840,
     ]
     name = "Miku"
+    author = "AARONDOBBE"
 
 
 class ToadstoolJasmine(ToadstoolPalette):
@@ -659,6 +669,7 @@ class ToadstoolJasmine(ToadstoolPalette):
         0x0C0C3E,
     ]
     name = "Jasmine"
+    author = "HERRSHAUN"
 
 
 class ToadstoolKotori(ToadstoolPalette):
@@ -697,23 +708,24 @@ class ToadstoolKotori(ToadstoolPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x7c7cad,
-        0x786c81,
+        0x7C7CAD,
+        0x786C81,
         0x605065,
         0x383052,
-        0x1c1c3e,
+        0x1C1C3E,
         0x607495,
         0x386475,
-        0x1c4862,
+        0x1C4862,
         0x103052,
         0x605879,
         0x504871,
         0x382842,
         0x686495,
-        0x3c3462,
-        0x0c0c3e,
+        0x3C3462,
+        0x0C0C3E,
     ]
     name = "Kotori"
+    author = "PIDGEZERO_ONE"
 
 
 class ToadstoolZombie(ToadstoolPalette):
@@ -770,6 +782,7 @@ class ToadstoolZombie(ToadstoolPalette):
     ]
     name = "Zombie"
     rename_character = False
+    author = "HERRSHAUN"
 
 
 class ToadstoolBlood(ToadstoolPalette):
@@ -808,24 +821,25 @@ class ToadstoolBlood(ToadstoolPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x8989b4,
+        0x8989B4,
         0x898190,
-        0x7d5970,
+        0x7D5970,
         0x593540,
-        0x3d2144,
-        0x8989b4,
-        0x750d38,
-        0x550d38,
-        0x450d38,
+        0x3D2144,
+        0x8989B4,
+        0x750D38,
+        0x550D38,
+        0x450D38,
         0x897554,
         0x895148,
-        0x2929a0,
-        0x75719c,
+        0x2929A0,
+        0x75719C,
         0x494168,
-        0x250d38,
+        0x250D38,
     ]
     name = "Blood Peach"
     rename_character = False
+    author = "DEVILING"
 
 
 class ToadstoolDemon(ToadstoolPalette):
@@ -864,24 +878,25 @@ class ToadstoolDemon(ToadstoolPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x2e2226,
-        0x2a1e26,
-        0x261a26,
-        0x1e1622,
-        0x1a1222,
-        0x1a1222,
-        0x120e22,
+        0x2E2226,
+        0x2A1E26,
+        0x261A26,
+        0x1E1622,
+        0x1A1222,
+        0x1A1222,
+        0x120E22,
         0x090922,
         0x050522,
         0x121622,
-        0x05051e,
-        0x76622e,
-        0x05051e,
-        0x05051e,
-        0x05051e,
+        0x05051E,
+        0x76622E,
+        0x05051E,
+        0x05051E,
+        0x05051E,
     ]
     name = "Demon"
     rename_character = False
+    author = "SMBAI"
 
 
 class ToadstoolRed(ToadstoolPalette):
@@ -897,7 +912,7 @@ class ToadstoolRed(ToadstoolPalette):
         0x700000,
         0xF8D038,
         0xD86800,
-        0x4a9dbe,
+        0x4A9DBE,
         0xD0C8C8,
         0x786860,
         0x181818,
@@ -920,24 +935,25 @@ class ToadstoolRed(ToadstoolPalette):
         0x101818,
     ]
     underwater_colours = [
-        0x7c7cad,
-        0x7c7489,
-        0x704c69,
-        0x441c32,
-        0x200c36,
-        0x64285e,
-        0x50144e,
-        0x3c083e,
+        0x7C7CAD,
+        0x7C7489,
+        0x704C69,
+        0x441C32,
+        0x200C36,
+        0x64285E,
+        0x50144E,
+        0x3C083E,
         0x380032,
-        0x7c684e,
-        0x6c3432,
+        0x7C684E,
+        0x6C3432,
         0x245091,
         0x686495,
-        0x3c3462,
-        0x0c0c3e,
+        0x3C3462,
+        0x0C0C3E,
     ]
     name = "Red"
     rename_character = False
+    author = "PIDGEZERO_ONE"
 
 
 class ToadstoolGreen(ToadstoolPalette):
@@ -994,6 +1010,7 @@ class ToadstoolGreen(ToadstoolPalette):
     ]
     name = "Green"
     rename_character = False
+    author = "SMBAI"
 
 
 class ToadstoolBlue(ToadstoolPalette):
@@ -1003,9 +1020,9 @@ class ToadstoolBlue(ToadstoolPalette):
         0xE09870,
         0x985010,
         0x181818,
-        0x00C0F8 ,
-        0x0090E0 ,
-        0x0070D0 ,
+        0x00C0F8,
+        0x0090E0,
+        0x0070D0,
         0x004878,
         0xF8D038,
         0xF88820,
@@ -1032,24 +1049,25 @@ class ToadstoolBlue(ToadstoolPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x7c7cad,
-        0x7c7489,
-        0x704c69,
-        0x4c2839,
-        0x0c0c3d,
-        0x0060ad,
-        0x0048a1,
+        0x7C7CAD,
+        0x7C7489,
+        0x704C69,
+        0x4C2839,
+        0x0C0C3D,
+        0x0060AD,
+        0x0048A1,
         0x003899,
-        0x00246d,
-        0x7c684d,
-        0x7c4441,
-        0x1c1c99,
+        0x00246D,
+        0x7C684D,
+        0x7C4441,
+        0x1C1C99,
         0x686495,
-        0x3c3461,
-        0x0c0c3d,
+        0x3C3461,
+        0x0C0C3D,
     ]
     name = "Blue"
     rename_character = False
+    author = "SMBAI"
 
 
 class ToadstoolBlack(ToadstoolPalette):
@@ -1088,24 +1106,26 @@ class ToadstoolBlack(ToadstoolPalette):
         0x000000,
     ]
     underwater_colours = [
-        0x7c7cad,
-        0x7c7489,
-        0x704c69,
-        0x4c2839,
-        0x0c0c3d,
+        0x7C7CAD,
+        0x7C7489,
+        0x704C69,
+        0x4C2839,
+        0x0C0C3D,
         0x142059,
         0x101851,
-        0x0c1045,
+        0x0C1045,
         0x380031,
-        0x7c684d,
-        0x7c4441,
-        0x1c1c99,
+        0x7C684D,
+        0x7C4441,
+        0x1C1C99,
         0x686495,
-        0x3c3461,
-        0x0c0c3d,
+        0x3C3461,
+        0x0C0C3D,
     ]
     name = "Black"
     rename_character = False
+    author = "SMBAI"
+
 
 class ToadstoolIndigo(ToadstoolPalette):
     colours = [
@@ -1164,8 +1184,60 @@ class ToadstoolIndigo(ToadstoolPalette):
     author = "TERROR VAN"
 
 
-
-
+class ToadstoolShadowQ(ToadstoolPalette):
+    colours = [
+        0xF8F8F8,
+        0xF8E8B0,
+        0xF89870,
+        0x805010,
+        0x000000,
+        0x500050,
+        0x400040,
+        0x300030,
+        0x700000,
+        0xF8D038,
+        0xF88820,
+        0x3838D0,
+        0xD0C8C8,
+        0xA86860,
+        0x000000,
+    ]
+    poison_colours = [
+        0xF8F8F8,
+        0xF8E8B0,
+        0xE09870,
+        0x985010,
+        0x502818,
+        0x583860,
+        0x503858,
+        0x483850,
+        0x700000,
+        0xF8D038,
+        0xF88820,
+        0x3838D0,
+        0xD0C8C8,
+        0x786860,
+        0x181818,
+    ]
+    underwater_colours = [
+        0xC0C0C0,
+        0xC0B078,
+        0xC06038,
+        0x481800,
+        0x000000,
+        0x180018,
+        0x080008,
+        0x000000,
+        0x380000,
+        0xC09800,
+        0xC05000,
+        0x000098,
+        0x989090,
+        0x703028,
+        0x000000,
+    ]
+    name = "Shadow Q."
+    author = "SMRPG ARMAGEDDON"
 
 
 all_palettes: list[ToadstoolPalette] = [
@@ -1190,4 +1262,5 @@ all_palettes: list[ToadstoolPalette] = [
     ToadstoolBlue(),
     ToadstoolBlack(),
     ToadstoolIndigo(),
+    ToadstoolShadowQ(),
 ]

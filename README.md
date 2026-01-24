@@ -100,12 +100,12 @@ python scripts/add_submission.py --type password --issue GITHUB_ISSUE_ID
 python scripts/add_submission.py --type song --issue GITHUB_ISSUE_ID
 ```
 
-### Dry run (parse only, don't modify files)
-```bash
-python scripts/add_submission.py --type TYPE --issue GITHUB_ISSUE_ID --dry-run
-```
-
 ### Palettes
 ```bash
 python scripts/add_submission.py --type palette --issue GITHUB_ISSUE_ID
+```
+
+### Dry run (parse only, don't modify files)
+```bash
+python scripts/add_submission.py --type TYPE --issue GITHUB_ISSUE_ID --dry-run
 ```

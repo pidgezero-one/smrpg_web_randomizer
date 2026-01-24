@@ -2,7 +2,7 @@ from __future__ import annotations
 import random
 from typing import TYPE_CHECKING
 
-from ...types.flags import RandomTadpolePondSong, RandomSunkenShipPassword
+from ...types.flags import PaletteSwaps, RandomTadpolePondSong, RandomSunkenShipPassword
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -269,6 +269,130 @@ DEV_MESSAGES = [
 ]
 
 
+def get_palette_authors(world: GameWorld) -> list[str]:
+    """Collect unique palette authors from the world's selected palettes.
+
+    Returns a list of unique author names (no duplicates), excluding palettes
+    that have no author attribute (i.e., defaults).
+    """
+    authors = []
+    palettes = [
+        getattr(world, 'mario_palette', None),
+        getattr(world, 'mallow_palette', None),
+        getattr(world, 'geno_palette', None),
+        getattr(world, 'bowser_palette', None),
+        getattr(world, 'toadstool_palette', None),
+    ]
+
+    for palette in palettes:
+        if palette is not None and hasattr(palette, 'author') and palette.author:
+            if palette.author not in authors:
+                authors.append(palette.author)
+
+    return authors
+
+
+def pad_author_line(author1: str, author2: str, total_length: int = 25) -> str:
+    """Combine two author names into a single line with space padding.
+
+    The line will be exactly total_length characters, with spaces between
+    the two names (not at the beginning or end).
+    """
+    combined_len = len(author1) + len(author2)
+    padding_needed = total_length - combined_len
+    if padding_needed < 1:
+        padding_needed = 1  # At least one space between names
+    return author1 + " " * padding_needed + author2
+
+
+def find_best_author_pairs(authors: list[str], max_line_length: int = 25) -> list[tuple[str, str]]:
+    """Find the best pairing of authors so each combined line fits within max_line_length.
+
+    Returns a list of (author1, author2) tuples. For odd numbers of authors,
+    the longest name is placed alone at the end.
+    """
+    if len(authors) <= 1:
+        return [(authors[0], "")] if authors else []
+
+    # Sort by length for easier pairing (shortest with longest)
+    sorted_authors = sorted(authors, key=len)
+
+    # For odd number, put the longest on its own line (last)
+    if len(sorted_authors) % 2 == 1:
+        longest = sorted_authors.pop()  # Remove longest
+    else:
+        longest = None
+
+    pairs = []
+    # Pair shortest with longest remaining, working inward
+    while len(sorted_authors) >= 2:
+        short = sorted_authors.pop(0)
+        long = sorted_authors.pop()
+
+        # Check if they fit together (need at least 1 space between)
+        if len(short) + len(long) + 1 <= max_line_length:
+            pairs.append((short, long))
+        else:
+            # If they don't fit, try to find a better match
+            # This is a simple greedy approach; could be improved
+            pairs.append((short, long))
+
+    # Add the longest name alone if odd number of authors
+    if longest:
+        pairs.append((longest, ""))
+
+    return pairs
+
+
+def add_palette_author_credits(credits: Credits, authors: list[str]) -> None:
+    """Add palette author credits based on the number of authors.
+
+    Layout varies by count:
+    - 1 author: single centered line
+    - 2 authors: two separate lines
+    - 3 authors: three separate lines
+    - 4 authors: two lines with paired names
+    - 5 authors: three lines, first two paired, third alone (longest name)
+    """
+    if not authors:
+        return
+
+    credits.begin_credits()
+
+    if len(authors) == 1:
+        credits.add_credit(0x80, 0x40, 0x81, authors[0])
+
+    elif len(authors) == 2:
+        credits.add_credit(0x80, 0xC0, 0xC0, authors[0])
+        credits.add_credit(0x80, 0x80, 0x81, authors[1])
+
+    elif len(authors) == 3:
+        credits.add_credit(0x80, 0x80, 0xC0, authors[0])
+        credits.add_credit(0x80, 0x40, 0x81, authors[1])
+        credits.add_credit(0x80, 0x00, 0xC2, authors[2])
+
+    elif len(authors) == 4:
+        pairs = find_best_author_pairs(authors)
+        line1 = pad_author_line(pairs[0][0], pairs[0][1])
+        line2 = pad_author_line(pairs[1][0], pairs[1][1])
+        credits.add_credit(0x80, 0xC0, 0xC0, line1)
+        credits.add_credit(0x80, 0x80, 0x81, line2)
+
+    elif len(authors) >= 5:
+        # Take first 5 authors only
+        authors_to_use = authors[:5]
+        pairs = find_best_author_pairs(authors_to_use)
+        # pairs will be [(short1, long1), (short2, long2), (longest, "")]
+        line1 = pad_author_line(pairs[0][0], pairs[0][1])
+        line2 = pad_author_line(pairs[1][0], pairs[1][1])
+        line3 = pairs[2][0]  # Longest name alone
+        credits.add_credit(0x80, 0x80, 0xC0, line1)
+        credits.add_credit(0x80, 0x40, 0x81, line2)
+        credits.add_credit(0x80, 0x00, 0xC2, line3)
+
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+
 # Takes world because everything does.
 # If we every implement stats, we'll need it, probably.
 def update_credits(world: GameWorld) -> dict[int, bytearray]:
@@ -369,16 +493,19 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "SMBAI")
-    credits.add_credit(0x80, 0x40, 0x81, "SEANCASS")
-    credits.add_credit(0x80, 0x00, 0xC2, "ALANIM")
+    credits.add_credit(0x80, 0x80, 0xC0, "SMBAI            SEANCASS")
+    credits.add_credit(0x80, 0x40, 0x81, "ALANIM            EGGTALK")
+    credits.add_credit(0x80, 0x00, 0xC2, "MINAMIYO           NIMBUS")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "DEVILING         MINAMIYO")
-    credits.add_credit(0x80, 0x40, 0x81, "EGGTALK         HERRSHAUN")
-    credits.add_credit(0x80, 0x00, 0xC2, "MYOHMYKE       AARONDOBBE")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+    if world.settings.isflag_enabled(PaletteSwaps):
+        palette_authors = get_palette_authors(world)
+        if palette_authors:
+            credits.begin_titles(BEGIN_TITLES_DELAY)
+            credits.add_title(0x80, 0x00, 0x08, "SELECTED ALLY PALETTES")
+            credits.end_titles(END_TITLES_DELAY)
+
+            add_palette_author_credits(credits, palette_authors)
 
     # 26
     credits.begin_titles(BEGIN_TITLES_DELAY)
