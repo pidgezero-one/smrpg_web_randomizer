@@ -8,7 +8,8 @@ body:
     attributes:
       value: |
         Submit a palette that can be chosen by the Palette Swaps flag.  
-        Design your palette in the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) and then write down your colours in this form.
+        Design your palette in the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) and then write down your colours in this form.  
+        The form will ask you for **fifteen colours**. The palette editor shows 16 colours. Omit the first one. **Do not list all sixteen colours.**
 
   - type: input
     id: name
