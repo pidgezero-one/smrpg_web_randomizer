@@ -1,0 +1,64 @@
+name: Ally palette submission
+description: Submit a palette that can be chosen by the Palette Swaps flag.
+title: "[Submission - Ally Palette]: "
+labels: [submission]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a palette that can be chosen by the Palette Swaps flag.  
+        Design your palette in the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) and then write down your colours in this form.
+
+  - type: input
+    id: name
+    attributes:
+      label: Your name or handle
+      description: |
+        Palette swap contributors will not be included in the ending credits for now, but that may change in the future, so include your preferred name here in case that happens.  
+        Only capital letters A-Z, periods, spaces, and underscores are supported (no numbers or other characters).  
+        Leave this blank if you prefer to be anonymous.
+
+  - type: input
+    id: character
+    attributes:
+      label: Character
+      description: | 
+        Which character is this for? (Mario, Mallow, Geno, Bowser, Toadstool)
+    validations:
+      required: true
+
+  - type: textarea
+    id: basic
+    attributes:
+      label: Basic palette
+      description: | 
+        These are the colours the character will use most of the time.
+        List the 15 colours, one per line, in the format `0xRRGGBB`.  
+        In the Lazy Shell palette editor, you will find the six digits for your colour in the "HTML" field.
+    validations:
+      required: true
+
+  - type: textarea
+    id: basic
+    attributes:
+      label: Basic palette
+      description: | 
+        These are the colours the character will use while underwater.  
+        List the 15 colours, one per line, in the format `0xRRGGBB`.  
+        In the Lazy Shell palette editor, you will find the six digits for your colour in the "HTML" field.  
+        (Note: This is usually just a darkened version of the standard palette. Use the "Effects" tab in the Lazy Shell palette editor to take most of the work out of this.)
+    validations:
+      required: true
+
+  - type: textarea
+    id: basic
+    attributes:
+      label: Basic palette
+      description: | 
+        These are the colours the character will use while poisoned.  
+        List the 15 colours, one per line, in the format `0xRRGGBB`.  
+        In the Lazy Shell palette editor, you will find the six digits for your colour in the "HTML" field.  
+        (Note: You can get creative with green or purple tints, whatever you think looks good. Use the "Effects" tab in the Lazy Shell palette editor to apply tints.)
+    validations:
+      required: true
