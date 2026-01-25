@@ -1,6 +1,11 @@
 """Room type extension with extra sprite actions support."""
+from __future__ import annotations
 
 from enum import Enum
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from randomizer.types.gameworld import GameWorld
 from smrpgpatchbuilder.datatypes.levels.classes import Room as RoomBase
 
 
@@ -59,6 +64,54 @@ class Room(RoomBase):
         super().__init__(*args, **kwargs)
         self.extra_sprite_actions = extra_sprite_actions or []
         self.adjacent_rooms = adjacent_rooms or []
+
+    def update_partition_by_protagonist(self, world: GameWorld) -> None:
+        if self.partition is None:
+            return
+        if self.partition.ally_sprite_buffer_size == 0:
+            return
+
+        # Lazy import to avoid circular dependency
+        from ..logic.partition_calculator import EXTRA_ACTION_TO_ANIMATION_STATE
+
+        m = world.overworld_character.character_model
+        ally = world.overworld_character.ally
+
+        # Base animation sequences to always check
+        vram_values = [
+            m.min_vram_from_sequence(world, a[0], a[1])
+            for a in [
+                (0, 0),
+                (1, 0),
+                (0, 1),
+                (1, 1),
+                (2, 1),
+                (3, 1),
+                (4, 1),
+                (5, 1),
+                (6, 1),
+                (7, 1),
+                (8, 1),
+                (9, 1),
+            ]
+        ]
+
+        # Check extra sprite actions required by this room
+        for action in self.extra_sprite_actions:
+            if action not in EXTRA_ACTION_TO_ANIMATION_STATE:
+                continue
+            for state in EXTRA_ACTION_TO_ANIMATION_STATE[action]:
+                if state not in ally._sprites_primary:
+                    continue
+                tup = ally._sprites_primary[state]
+                if tup[2]:  # is_mold
+                    vram_values.append(m.min_vram_from_mold(world, tup[0], tup[1]))
+                else:
+                    vram_values.append(m.min_vram_from_sequence(world, tup[0], tup[1]))
+
+        min_vram = max(vram_values)
+        self.partition.set_ally_sprite_buffer_size(min_vram)
+
 
     def update_partition_by_prize(self) -> None:
         """Update the room's partition based on its prize type."""

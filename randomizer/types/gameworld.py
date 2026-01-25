@@ -86,6 +86,7 @@ from .ally import Ally
 from .prizelocation import (
     PrizeLocation,
 )
+from .room import Room
 from ..logic.partition_calculator import set_partitions
 from ..progression.prizelocations import *
 from ..data.variables.dialog_names import *
@@ -1354,7 +1355,9 @@ class GameWorld:
         elif self.overworld_character.ally.index == 4:
             patch.add_data(0x3E90AA, MALLOW_OVERWORLD)
 
-        set_partitions(self)
+        for r in self.rooms._rooms:
+            if r is not None and isinstance(r, Room):
+                r.update_partition_by_protagonist(self)
 
         # Dialogs, enemies, items, packets, battle packs, rooms, shops, spells
         # (Note: overworld_dialogs and action_scripts are rendered earlier for space reclamation)

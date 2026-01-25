@@ -146,7 +146,7 @@ script = EventScript([
 	ActionQueueSync(target=NPC_6, subscript=[
 		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
 		A_SetPriority(3),
-		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
 		A_Pause(32),
 		A_VisibilityOff()
 	]),

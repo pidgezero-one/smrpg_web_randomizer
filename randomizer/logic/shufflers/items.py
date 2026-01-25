@@ -5,7 +5,12 @@ import random
 from copy import copy
 from typing import TYPE_CHECKING
 
+from randomizer.data.variables.room_names import R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE
 from randomizer.types.prizelocation import StandingLocation, TreasureShopLocation
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
+    NPC_2, NPC_3, NPC_4, NPC_5, NPC_6, NPC_7,
+)
+from ...data.rooms.npcs import EMPTY_NPC
 
 from ..placement import place
 from ...types.prize import RandomPrizeSubstitute, CoinPrize, FPFlowerPrize, FrogCoinPrize
@@ -763,6 +768,32 @@ def shuffle_prizes(world: GameWorld) -> None:
                 # SlotsPrize has restricted placement (needs room with space for 5 NPCs)
                 # so it must be placed before other items fill up eligible locations
                 restricted_prizes.append(loc.originally_held())
+
+                # Clear the vanilla slot machine NPCs from their original rooms
+                # Room 334: NPCs 2-6
+                room_334 = world.rooms._rooms[334]
+                if room_334 is not None:
+                    for npc_target in [NPC_2, NPC_3, NPC_4, NPC_5, NPC_6]:
+                        npc = room_334.get_npc_by_target_id(npc_target)
+                        if npc is not None:
+                            npc._npc = EMPTY_NPC
+
+                # Room 348: NPCs 2-6
+                room_348 = world.rooms._rooms[348]
+                if room_348 is not None:
+                    for npc_target in [NPC_2, NPC_3, NPC_4, NPC_5, NPC_6]:
+                        npc = room_348.get_npc_by_target_id(npc_target)
+                        if npc is not None:
+                            npc._npc = EMPTY_NPC
+
+                # Room 349: NPCs 3-7
+                room_349 = world.rooms._rooms[349]
+                if room_349 is not None:
+                    for npc_target in [NPC_3, NPC_4, NPC_5, NPC_6, NPC_7]:
+                        npc = room_349.get_npc_by_target_id(npc_target)
+                        if npc is not None:
+                            npc._npc = EMPTY_NPC
+
                 continue
         if isinstance(loc.originally_held(), BeetlemaniaPrize):
             if not world.settings.isflag_enabled(ShuffleBeetlemania):

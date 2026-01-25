@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from randomizer.data.variables.event_palette_names import (
     EPAL0084_MARIO_ENDING,
     EPAL0085_MALLOW_ENDING,
@@ -59,7 +63,9 @@ from randomizer.data.variables.sprite_palette_names import (
     SPAL706_MALLOW_DARK_2,
     SPAL797_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE,
 )
-from randomizer.types.gameworld import GameWorld
+
+if TYPE_CHECKING:
+    from randomizer.types.gameworld import GameWorld
 
 
 def color_to_bytes(color) -> list[int]:

@@ -1,8 +1,14 @@
 from __future__ import annotations
 import random
 from typing import TYPE_CHECKING, TypeVar
-from .physical_objects import BossNPC, ItemNPC, HenchmanNPC
-from ..data.physical_objects.items import DefaultItem
+from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC
+from ..data.physical_objects.items import (
+    DefaultItem,
+    TinyStarObject,
+    FlowerObject,
+    BigCoinObject,
+    FrogCoinObject,
+)
 
 from smrpgpatchbuilder.datatypes.items.classes import Item
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
@@ -32,7 +38,6 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
 from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
 from ..types.ally import Ally
 from ..data.variables.overworld_sfx_names import SO081_STAR
-from ..data.physical_objects.items import *
 from ..types.enemy import Enemy
 from ..data.variables.overworld_sfx_names import *
 
@@ -367,11 +372,11 @@ class CharacterPrize(Prize):
     _ally: Ally
     _starting_level: int = 1
     _name_props: CharacterName
-    _character_model: NPC
+    _character_model: type[NPC]
 
     @property
     def character_model(self) -> NPC:
-        return self._character_model
+        return self._character_model()
 
     @property
     def ally(self) -> Ally:

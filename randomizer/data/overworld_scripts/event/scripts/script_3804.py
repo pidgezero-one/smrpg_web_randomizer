@@ -40,7 +40,7 @@ script = EventScript([
 	SetTempSyncActionScript(NPC_9, A0803_INC_PALETTE_ROW),
 	SetTempSyncActionScript(NPC_5, A0807_INC_PALETTE_ROW_2),
 	ActionQueueAsync(target=NPC_0, subscript=[
-		A_SetSpriteSequence(index=14, sprite_offset=2, is_mold=True, is_sequence=True, looping=True)
+		A_SetSpriteSequence(index=7, sprite_offset=6, is_mold=True, is_sequence=True, looping=True)
 	]),
 	StarMaskExpandFromScreenCenter(),
 	Pause(60),
@@ -79,15 +79,15 @@ script = EventScript([
 	SetTempSyncActionScript(NPC_8, A0238_CHEERING_NIMBITES),
 	Pause(65),
 	ActionQueueAsync(target=NPC_0, subscript=[
-		A_SetSpriteSequence(index=15, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=26, sprite_offset=6, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(20),
-		A_SetSpriteSequence(index=14, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=7, sprite_offset=6, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(20),
-		A_SetSpriteSequence(index=16, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=27, sprite_offset=6, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(20),
-		A_SetSpriteSequence(index=14, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=7, sprite_offset=6, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(60),
-		A_SetSpriteSequence(index=17, sprite_offset=2, is_mold=True, is_sequence=True, looping=True)
+		A_SetSpriteSequence(index=28, sprite_offset=6, is_mold=True, is_sequence=True, looping=True)
 	]),
 	Pause(95),
 	ActionQueueSync(target=NPC_1, subscript=[

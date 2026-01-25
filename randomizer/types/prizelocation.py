@@ -2158,7 +2158,7 @@ class CharacterRecruitmentLocation(PrizeLocation):
                     raise ValueError(
                         f"NPC ID {npc_sub.npc_id} not found in room {npc_sub.room_id} while creating character recruitment script."
                     )
-                obj._npc = self.prize.character_model
+                obj._npc = self.prize.character_model.base
 
 
 class StartingCharacterLocation(CharacterRecruitmentLocation):

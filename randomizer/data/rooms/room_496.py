@@ -404,7 +404,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 23
-            npc=npcs.BOWSER_WALKING_DOWN_LEFT_NPC,
+            npc=npcs.BOWSER_WALKING_DOWN_LEFT_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
