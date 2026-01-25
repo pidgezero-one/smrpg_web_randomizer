@@ -986,7 +986,7 @@ P122_FROG_COIN_STILL = Packet(
     packet_id=122,
     sprite_id=SPR0194_FROG_COIN,
     shadow=False,
-    action_script_id=A0925_SPINNING_STATIC_COIN,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )

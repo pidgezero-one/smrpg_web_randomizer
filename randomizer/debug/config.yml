@@ -27,5 +27,5 @@ items:
   # Override specific locations with specific prizes (minimal for testing)
   override:
     MushroomWay1LowerChest: BanditsWayStarPrize
-    MushroomWay1UpperChest: SlotsPrize1
+    MushroomWay1UpperChest: FrogCoin1Prize
     MushroomWayCharacter: BowserRecruitmentPrize

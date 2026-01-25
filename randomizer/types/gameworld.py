@@ -87,7 +87,6 @@ from .prizelocation import (
     PrizeLocation,
 )
 from .room import Room
-from ..logic.partition_calculator import set_partitions
 from ..progression.prizelocations import *
 from ..data.variables.dialog_names import *
 from ..data.variables.battle_variable_names import *
@@ -1442,7 +1441,6 @@ class GameWorld:
             ).set_colors(
                 [
                     0xFFFFFF,
-                    0x391063,
                     0x630000,
                     0xB58C29,
                     0xD6CE4A,
@@ -1456,6 +1454,7 @@ class GameWorld:
                     0x312908,
                     0x083110,
                     0x000000,
+                    0x000000,
                 ]
             )
             self.sprite_palettes.get_palette(
@@ -1463,7 +1462,6 @@ class GameWorld:
             ).set_colors(
                 [
                     0xFFFFFF,
-                    0x63398C,
                     0x630000,
                     0x949494,
                     0x4A4A4A,
@@ -1476,6 +1474,8 @@ class GameWorld:
                     0xDE3139,
                     0x8C3100,
                     0x083110,
+                    0x000000,
+                    0x000000,
                 ]
             )
 

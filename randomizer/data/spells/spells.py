@@ -316,18 +316,18 @@ class SuperFlameSpell(CharacterSpell):
         elif self.element == Element.ICE:
             return "Super Ice"
         elif self.element == Element.THUNDER:
-            return "Super Thunder"
+            return "SuperThunder"
         else:
             return self._title
 
     @property
     def remake_name(self) -> str:
         if self.element == Element.JUMP:
-            return "S. Earth Ball"
+            return "S. EarthBall"
         elif self.element == Element.ICE:
             return "S. Ice Ball"
         elif self.element == Element.THUNDER:
-            return "S. Thndr Ball"
+            return "S. ThndrBall"
         else:
             return self._remake_name or self.title
 
@@ -534,11 +534,11 @@ class UltraFlameSpell(CharacterSpell):
     @property
     def remake_name(self) -> str:
         if self.element == Element.JUMP:
-            return "U. Earth Ball"
+            return "U. EarthBall"
         elif self.element == Element.ICE:
             return "U. Ice Ball"
         elif self.element == Element.THUNDER:
-            return "U. Thndr Ball"
+            return "U. ThndrBall"
         else:
             return self._remake_name or self.title
 
@@ -958,7 +958,7 @@ class CrusherSpell(CharacterSpell):
         elif self.element == Element.ICE:
             return "Ice Crusher"
         elif self.element == Element.THUNDER:
-            return "Thndr Crusher"
+            return "ThndrCrusher"
         else:
             return self._title
 
@@ -1008,7 +1008,7 @@ class BowserCrushSpell(CharacterSpell):
         elif self.element == Element.ICE:
             return "Ice Crush"
         elif self.element == Element.THUNDER:
-            return "Thunder Crush"
+            return "ThunderCrush"
         else:
             return self._title
 
@@ -1019,7 +1019,7 @@ class BowserCrushSpell(CharacterSpell):
         elif self.element == Element.ICE:
             return "Ice Stomp"
         elif self.element == Element.THUNDER:
-            return "Thunder Stomp"
+            return "ThunderStomp"
         else:
             return self._remake_name or self.title
         
@@ -1188,7 +1188,7 @@ class GenoFlashSpell(CharacterSpell):
         elif self.element == Element.ICE:
             return "Ice Flash"
         elif self.element == Element.THUNDER:
-            return "Thunder Flash"
+            return "ThunderFlash"
         else:
             return self._title
 
@@ -1329,7 +1329,7 @@ class ShockerSpell(CharacterSpell):
         elif self.element == Element.ICE:
             return "Ice Shocker"
         elif self.element == Element.JUMP:
-            return "Earth Shocker"
+            return "EarthShocker"
         else:
             return self._title
 

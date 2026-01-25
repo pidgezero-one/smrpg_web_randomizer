@@ -433,7 +433,7 @@ class MushroomWay1LowerChest(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_1
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     # Flag as checked: npc 0 in room 203 has its object trigger disabled.
 
 
@@ -443,7 +443,7 @@ class MushroomWay1UpperChest(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_2
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     # Flag as checked: npc 1 in room 203 has its object trigger disabled.
 
 
@@ -1148,7 +1148,7 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BANDITS_WAY_DOG_JUMP
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1376,7 +1376,7 @@ class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
     # FirstMimicFightLauncher must be blacklisted to prevent circular dependency:
     # This location's can_access requires defeating first mimic, which requires
     # accessing the FirstMimicFightLauncher location - can't be the same location.
-    _blacklist = [SlotsPrize, MimicFightInitiatorPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize, MimicFightInitiatorPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(FirstMimicFightLauncher)
@@ -1934,7 +1934,7 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_2
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -3358,7 +3358,7 @@ class BoosterTowerParachuteRoomChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -5315,7 +5315,7 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     # SecondMimicFightLauncher must be blacklisted to prevent circular dependency:
     # This location's can_access requires defeating second mimic, which requires
     # accessing the SecondMimicFightLauncher location - can't be the same location.
-    _blacklist = [SlotsPrize, MimicFightInitiatorPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize, MimicFightInitiatorPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)
@@ -5665,6 +5665,7 @@ class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_2
     _world_area = WorldAreaEnum.LANDS_END
+    _blacklist = [SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -5686,7 +5687,7 @@ class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
     # flag as checked: npc 6 in room 141 has its object trigger disabled.
 
 
-class LandsEndCaveSideRemake(TreasureChestLocationRow1):
+class LandsEndCaveSideRemake(StandingLocationRow1):
     _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R142_LANDS_END_AREA_05_SKY_BRIDGE]
@@ -5709,7 +5710,6 @@ class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_1
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -5724,6 +5724,7 @@ class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_2
     _world_area = WorldAreaEnum.LANDS_END
+    _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6924,6 +6925,7 @@ class BeanValleyFirstDeadEndLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BEAN_VALLEY_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 3 in room 252 has its object trigger disabled.
 
 
@@ -6933,6 +6935,7 @@ class BeanValleyFirstProgressChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 4 in room 252 has its object trigger disabled.
 
 
@@ -6942,6 +6945,7 @@ class BeanValleyLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_LEFT_PIRANHA_PIPE
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 0 in room 334 has its object trigger disabled.
 
 
@@ -6951,6 +6955,7 @@ class BeanValleyBottomLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_LEFT_PIRANHA_PIPE
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 0 in room 348 has its object trigger disabled.
 
 
@@ -6960,6 +6965,7 @@ class BeanValleyBottomRightPiranhaPipeUpperLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA_PIPE_UPPER
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 0 in room 349 has its object trigger disabled.
 
 
@@ -6969,6 +6975,7 @@ class BeanValleyBottomRightPiranhaPipeLowerLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA_PIPE_LOWER
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 2 in room 349 has its object trigger disabled.
 
 
@@ -6978,6 +6985,7 @@ class BeanValleyRightPipeLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 5 in room 335 has its object trigger disabled.
 
 
@@ -7030,6 +7038,7 @@ class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 7 in room 335 has its object trigger disabled.
 
 
@@ -7047,6 +7056,7 @@ class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BEAN_VALLEY_PIRANHA_PLANTS
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 13 in room 251 has its object trigger disabled.
 
 
@@ -7136,6 +7146,7 @@ class BeanstalkLowestChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 9 in room 379 has its object trigger disabled.
 
 
@@ -7298,6 +7309,7 @@ class BeanstalkUpperCloudLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BEAN_VALLEY_CLOUD_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 1 in room 372 has its object trigger disabled.
 
 
@@ -7307,6 +7319,7 @@ class BeanstalkUpperCloudRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BEAN_VALLEY_CLOUD_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 2 in room 372 has its object trigger disabled.
 
 
@@ -7316,6 +7329,7 @@ class BeanstalkLowerCloudLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FALL_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 1 in room 373 has its object trigger disabled.
 
 
@@ -7325,6 +7339,7 @@ class BeanstalkLowerCloudRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FALL_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _blacklist = [EXPStarPrize]
     # flag as checked: npc 2 in room 373 has its object trigger disabled.
 
 
@@ -8037,6 +8052,7 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_nimbus_boss(world, inventory)
@@ -8094,6 +8110,7 @@ class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8108,6 +8125,7 @@ class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8222,6 +8240,7 @@ class VolcanoSaveRoomLowerChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8236,6 +8255,7 @@ class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
