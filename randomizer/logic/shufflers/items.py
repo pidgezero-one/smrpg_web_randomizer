@@ -81,8 +81,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         Remake,
         RestrictSpecialEquips,
         SuperJump2Threshold,
-        NimbusGate,
-        NimbusGating,
         NoStarEgg,
         ItemQuality,
         ItemQualityOptions,
@@ -111,6 +109,8 @@ def shuffle_prizes(world: GameWorld) -> None:
         BanditsWayGating,
         KeroSewersGate,
         KeroSewersGating,
+        ForestMazeGate,
+        ForestMazeGating,
         PipeVaultGate,
         PipeVaultGating,
         Moleville1Gate,
@@ -121,10 +121,24 @@ def shuffle_prizes(world: GameWorld) -> None:
         SeaGating,
         LandsEndGate,
         LandsEndGating,
+        BelomeTempleGate,
+        BelomeTempleGating,
+        MonstroTownGate,
+        MonstroTownGating,
+        NimbusGate,
+        NimbusGating,
+        BarrelVolcanoGate,
+        BarrelVolcanoGating,
         BowsersKeepGate,
         BowsersKeepGating,
         FactoryGate,
         FactoryGating,
+        BoosterHillGate,
+        BoosterHillGating,
+        MarrymoreGate,
+        MarrymoreGating,
+        YaridovichGate,
+        YaridovichGating,
         StarPiecesRequired,
     )
     from ...types.prizelocation import (
@@ -244,6 +258,9 @@ def shuffle_prizes(world: GameWorld) -> None:
         # Special prizes
         EXPStarPrize,
         MimicFightInitiatorPrize,
+        FirstMimicFightLauncher,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
         SlotsPrize,
         BeetlemaniaPrize,
         InfiniteCoinsPrize,
@@ -254,6 +271,17 @@ def shuffle_prizes(world: GameWorld) -> None:
         CoinTrickPrize,
         ExpBoosterPrize,
         ScroogeRingPrize,
+        # Boss fight prizes for gating
+        BowyerBossFight,
+        PunchinelloBossFight,
+        BundtBossFight,
+        YaridovichBossFight,
+        Belome2BossFight,
+        MegasmilaxBossFight,
+        ValentinaBossFight,
+        AxemRangersBossFight,
+        KnifeGuyGrateGuyBossFight,
+        JohnnyBossFight,
     )
     from ...data.spells.spells import (
         JumpSpell,
@@ -306,6 +334,13 @@ def shuffle_prizes(world: GameWorld) -> None:
                 continue
 
             location = world.locations[location_cls]
+
+            # Warn if trying to override a BossFightLocation with a non-boss prize
+            if isinstance(location, BossFightLocation) and not issubclass(prize_cls, BossFightPrize):
+                print(f"WARNING: Cannot override BossFightLocation '{location_name}' with non-boss prize '{prize_name}'")
+                print(f"  This will cause boss placement to fail! Skipping this override.")
+                continue
+
             location.set_prize(prize_cls())
 
             # Track prize to remove from pool (one instance per override)
@@ -319,51 +354,130 @@ def shuffle_prizes(world: GameWorld) -> None:
             return True
         return False
 
-    # Define which items should be considered highest priority to place
-    unlocks_other_checks: list[type[Prize]] = [
-        RareFrogCoinPrize,
-        WalletPrize,
-        CricketPiePrize,
-        BambinoBombPrize,
-        CastleKey1Prize,
-        CastleKey2Prize,
-        GreaperFlagPrize,
-        DryBonesFlagPrize,
-        BigBooFlagPrize,
-        ShedKeyPrize,
-        ElderKeyPrize,
-        CricketJamPrize,
-        TempleKeyPrize,
-        RoomKeyPrize,
-        SeedPrize,
-        FertilizerPrize,
-        BrightCardPrize,
-        RegularFireworksPrize,
-        ProgressiveFireworksPrize,
-        WeddingGearPrize,
-        MimicFightInitiatorPrize,
+    # Define which items unlock HIGH-VOLUME areas (many checks)
+    # These are always considered high-volume regardless of settings
+    always_high_volume_key_items: list[type[Prize]] = [
+        CastleKey1Prize,  # Bowser's Keep
+        CastleKey2Prize,  # Bowser's Keep
+        BambinoBombPrize,  # Moleville Mines
     ]
+
+    # Conditionally high-volume items (depend on gating settings)
+    conditionally_high_volume: dict[type[Prize], list[tuple[type, object]]] = {
+        # Key items
+        CricketPiePrize: [(ForestMazeGate, ForestMazeGating.PIE)],
+        TempleKeyPrize: [(BelomeTempleGate, BelomeTempleGating.KEY)],
+        RareFrogCoinPrize: [],  # High-vol if any gating requires it (checked below)
+        ShedKeyPrize: [(LandsEndGate, LandsEndGating.ELDER)],  # Needed to release elder
+        GoldPaintPrize: [(NimbusGate, NimbusGating.PAINT)],  # Needed to enter Nimbus Castle
+        # Boss fights that unlock high-volume areas
+        BowyerBossFight: [
+            (PipeVaultGate, PipeVaultGating.BOWYER),
+            (Moleville1Gate, Moleville1Gating.BOWYER),
+        ],
+        PunchinelloBossFight: [(BoosterTowerGate, BoosterTowerGating.PUNCHINELLO)],
+        BundtBossFight: [(SeaGate, SeaGating.BUNDT)],
+        YaridovichBossFight: [(LandsEndGate, LandsEndGating.YARIDOVICH)],
+        Belome2BossFight: [(MonstroTownGate, MonstroTownGating.BELOME_2)],
+        MegasmilaxBossFight: [(NimbusGate, NimbusGating.MEGASMILAX)],
+        ValentinaBossFight: [(BarrelVolcanoGate, BarrelVolcanoGating.VALENTINA)],
+        AxemRangersBossFight: [(BowsersKeepGate, BowsersKeepGating.AXEM)],
+    }
+
+    # Conditionally low-volume boss fights (unlock fewer checks)
+    conditionally_low_volume_bosses: dict[type[Prize], list[tuple[type, object]]] = {
+        KnifeGuyGrateGuyBossFight: [
+            (BoosterHillGate, BoosterHillGating.KGGG),
+            (MarrymoreGate, MarrymoreGating.KGGG),
+        ],
+        JohnnyBossFight: [(YaridovichGate, YaridovichGating.JOHNNY)],
+    }
+
+    # Define which items unlock LOW-VOLUME areas (fewer checks)
+    low_volume_key_items: list[type[Prize]] = [
+        BrightCardPrize,  # Grate Guy's Casino
+        ElderKeyPrize,  # Tadpole Pond area
+        RoomKeyPrize,  # Single room
+        WalletPrize,  # Frog coin trade
+        GreaperFlagPrize,  # Monstro Town flags
+        DryBonesFlagPrize,  # Monstro Town flags
+        BigBooFlagPrize,  # Monstro Town flags
+        CricketJamPrize,  # Frog sage reward
+        SeedPrize,  # Lazy shell
+        FertilizerPrize,  # Lazy shell
+        RegularFireworksPrize,  # Marrymore
+        ProgressiveFireworksPrize,  # Marrymore
+        WeddingGearPrize,  # Marrymore
+        ExtraShinyStonePrize,  # Extra Shiny Stone (Remake)
+        StayVoucherPrize,  # Stay Voucher (Marrymore item, Remake)
+    ]
+
+    # Add mimic launchers to shuffle pool when MimicsAnywhere is enabled
+    if world.settings.isflag_enabled(MimicsAnywhere):
+        low_volume_key_items.extend([
+            FirstMimicFightLauncher,
+            SecondMimicFightLauncher,
+            ThirdMimicFightLauncher,
+        ])
+
+    # Build high-volume list based on current settings
+    high_volume_key_items: list[type[Prize]] = list(always_high_volume_key_items)
+
+    # Check conditionally high-volume items
+    for item_prize, gating_checks in conditionally_high_volume.items():
+        # Skip if already in high-volume (from always_high_volume_key_items)
+        if item_prize in high_volume_key_items:
+            continue
+        is_high_vol = False
+        for gating_check in gating_checks:
+            if world.settings.is_flag_value(gating_check[0], gating_check[1]):
+                is_high_vol = True
+                break
+        if is_high_vol:
+            high_volume_key_items.append(item_prize)
+        else:
+            # Add to low-volume if not high-volume (and not already there)
+            if item_prize not in low_volume_key_items:
+                low_volume_key_items.append(item_prize)
+
+    # Check conditionally low-volume boss fights
+    for boss_prize, gating_checks in conditionally_low_volume_bosses.items():
+        is_low_vol = False
+        for gating_check in gating_checks:
+            if world.settings.is_flag_value(gating_check[0], gating_check[1]):
+                is_low_vol = True
+                break
+        if is_low_vol:
+            # Only add to low-volume if the gating is active AND not already in high-volume
+            # (high-volume takes priority if same prize unlocks both types of areas)
+            if boss_prize not in low_volume_key_items and boss_prize not in high_volume_key_items:
+                low_volume_key_items.append(boss_prize)
+
+    # Combined list for backwards compatibility (used in item collection logic later)
+    unlocks_other_checks: list[type[Prize]] = high_volume_key_items + low_volume_key_items
     # Items that absolutely must be included, but aren't important for progress, can be second priority
     should_otherwise_include = [
-        ProgressiveCardPrize,
         YouMissed,
         LuckyJewelPrize,
         SignalRingPrize,
         GoodieBagPrize,
         StarEggPrize,
     ]
+    # Items that go to post_progression_priority (after progression, before must_include)
+    # Order: slots/exp stars > progressive cards/crystal shard/leftover stars
+    post_progression_include: list[type[Prize]] = [
+        SlotsPrize,  # Slot machines (placed after progression, needs room with 5 NPCs)
+        ProgressiveCardPrize,  # Progressive cards
+    ]
     # Items with very restricted placement options (can only go in certain chest locations
-    # with additional room constraints) should be placed first to ensure they have valid spots
-    restricted_placement_items: list[type[Prize]] = [SlotsPrize]
+    # with additional room constraints) - SlotsPrize moved to post_progression_include
+    restricted_placement_items: list[type[Prize]] = []
 
     progress_stars = 0
     if world.settings.isflag_enabled(Remake):
-        unlocks_other_checks.extend([ExtraShinyStonePrize, StayVoucherPrize])
-        should_otherwise_include.extend([CrystalShardPrize])
-    if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
-        unlocks_other_checks.append(RegularFireworksPrize)
-    elif world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
-        unlocks_other_checks.append(ProgressiveFireworksPrize)
+        # ExtraShinyStonePrize and StayVoucherPrize are in low_volume_key_items
+        post_progression_include.append(CrystalShardPrize)  # Crystal shard goes to post_progression
+    # Note: Fireworks and GoldPaint are handled via conditionally_high_volume or low_volume_key_items
     if world.settings.is_flag_value(SeaGate, SeaGating.STAR_4):
         progress_stars = 4
     elif world.settings.is_flag_value(LandsEndGate, LandsEndGating.STAR_5):
@@ -372,8 +486,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         progress_stars = 6
     elif world.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6):
         progress_stars = 6
-    if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
-        unlocks_other_checks.append(GoldPaintPrize)
     if world.settings.isflag_enabled(ShuffleShops):
         should_otherwise_include.extend([
             SeeYaPrize,
@@ -410,9 +522,10 @@ def shuffle_prizes(world: GameWorld) -> None:
                 JinxBeltPrize,
                 AttackScarfPrize,
                 SuperSuitPrize,
-                EXPStarPrize,
             ]
         )
+        # EXP stars go to post_progression_priority (placed after progression, before must_include)
+        post_progression_include.append(EXPStarPrize)
         if world.settings.isflag_enabled(Remake):
             should_otherwise_include.extend(
                 [
@@ -424,12 +537,22 @@ def shuffle_prizes(world: GameWorld) -> None:
                 ]
             )
 
+    # Prize pools with high-vol/low-vol distinction
+    # Characters and items that unlock high-volume areas (many checks)
+    high_vol_character_prizes: list[Prize] = []
+    high_vol_other_prizes: list[Prize] = []
+    # Characters and items that unlock low-volume areas (fewer checks)
+    low_vol_character_prizes: list[Prize] = []
+    low_vol_other_prizes: list[Prize] = []
+
     progression_prizes: list[Prize] = []
     must_include: list[Prize] = [ProgressiveEggPrize(), ProgressiveEggPrize()]
     not_important: list[Prize] = []
     # Items with very restricted placement options (e.g., SlotsPrize which can only go
     # in chest locations with enough room for 5 extra NPCs) - placed first
     restricted_prizes: list[Prize] = []
+    # Items that go after progression but before must_include
+    post_progression_priority: list[Prize] = []
 
     if world.settings.isflag_enabled(ShuffleCharacters):
         # Place starting characters based on StartingCharacters flag
@@ -441,9 +564,12 @@ def shuffle_prizes(world: GameWorld) -> None:
             "Toadstool": ToadstoolRecruitmentPrize,
         }
 
-        # Collect characters required by gating settings
+        # Collect characters required by gating settings AND determine if they're high-vol
+        # High-volume areas: Bandit's Way, Kero Sewers, Pipe Vault, Moleville, Booster Tower, Sea
         gating_required_characters: set[str] = set()
-        gating_checks: list[tuple[type, object, str]] = [
+        high_vol_gating_characters: set[str] = set()  # Characters that unlock high-vol areas
+        char_gating_checks: list[tuple[type, object, str]] = [
+            # All of these areas are considered HIGH-VOLUME
             (BanditsWayGate, BanditsWayGating.MALLOW, "Mallow"),
             (KeroSewersGate, KeroSewersGating.MALLOW, "Mallow"),
             (PipeVaultGate, PipeVaultGating.GENO, "Geno"),
@@ -455,9 +581,10 @@ def shuffle_prizes(world: GameWorld) -> None:
             (BoosterTowerGate, BoosterTowerGating.TOADSTOOL, "Toadstool"),
             (SeaGate, SeaGating.TOADSTOOL, "Toadstool"),
         ]
-        for flag_class, gating_value, char_name in gating_checks:
+        for flag_class, gating_value, char_name in char_gating_checks:
             if world.settings.is_flag_value(flag_class, gating_value):
                 gating_required_characters.add(char_name)
+                high_vol_gating_characters.add(char_name)  # All gating areas are high-vol
 
         # Collect explicitly set starting characters (non-random)
         starting_chars_flag = world.settings.get_flag(StartingCharacters)
@@ -530,7 +657,8 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if should_skip_for_debug(prize_class):
                     placed_characters.add(prize_class)
                     continue
-                progression_prizes.append(prize_class())
+                # All gating-required characters go to high-vol (they unlock major areas)
+                high_vol_character_prizes.append(prize_class())
                 placed_characters.add(prize_class)
 
         # Then add random unplaced characters up to max count
@@ -547,7 +675,8 @@ def shuffle_prizes(world: GameWorld) -> None:
             if should_skip_for_debug(prize_class):
                 placed_characters.add(prize_class)
                 continue
-            progression_prizes.append(prize_class())
+            # Non-gating characters go to low-vol (they don't unlock major areas)
+            low_vol_character_prizes.append(prize_class())
             placed_characters.add(prize_class)
 
     if world.settings.isflag_enabled(CharacterLearnedSpells):
@@ -608,7 +737,7 @@ def shuffle_prizes(world: GameWorld) -> None:
             extra_spells = [c() for c in spells_to_double]
 
         # Add all enabled spells to the pool
-        # absolutely must have a spell that can always damage mokura
+        # One Mokura-compliant spell goes to low-vol (required for Mokura fight)
         mokura_spell_options = [
             p
             for p in [
@@ -621,12 +750,14 @@ def shuffle_prizes(world: GameWorld) -> None:
         ]
         spell_count = 0
         if mokura_spell_options:
-            progression_prizes.append(random.choice(mokura_spell_options)())
+            # Mokura spell goes to low-vol (unlocks one check)
+            low_vol_other_prizes.append(random.choice(mokura_spell_options)())
             spell_count = 1
 
         if SuperJumpSpell not in disabled_spell_classes:
             if not should_skip_for_debug(SuperJumpSpellPrize):
-                progression_prizes.append(SuperJumpSpellPrize())
+                # Super Jump goes to low-vol (unlocks few checks)
+                low_vol_other_prizes.append(SuperJumpSpellPrize())
                 spell_count += 1
 
         remaining_spell_pool = [
@@ -660,17 +791,20 @@ def shuffle_prizes(world: GameWorld) -> None:
             StarPiece7,
         ]
         progression_prizes.extend([sp() for sp in sp_prizes[: progress_stars] if not should_skip_for_debug(sp)])
-        must_include.extend([sp() for sp in sp_prizes[progress_stars:world.settings.get_flag(TotalStarPieces).value] if not should_skip_for_debug(sp)])
+        # Leftover star pieces go to post_progression_priority (after progressive cards/crystal shard)
+        post_progression_priority.extend([sp() for sp in sp_prizes[progress_stars:world.settings.get_flag(TotalStarPieces).value] if not should_skip_for_debug(sp)])
 
     if world.settings.isflag_enabled(BossShuffle):
         # Place disabled bosses (those not enabled in ShuffledBosses)
         shuffled_bosses_flag = world.settings.get_flag(ShuffledBosses)
         disabled_boss_types = {m.value for m in shuffled_bosses_flag.disabled}
-        for loc in [
-            l
-            for l in world.locations.values()
+
+        boss_locations = [
+            l for l in world.locations.values()
             if isinstance(l, BossFightLocation) and l.originally_held is not None
-        ]:
+        ]
+
+        for loc in boss_locations:
             if loc.originally_held in disabled_boss_types:
                 loc.set_prize(loc.originally_held())  # type: ignore
             elif not should_skip_for_debug(loc.originally_held):
@@ -765,9 +899,9 @@ def shuffle_prizes(world: GameWorld) -> None:
                 loc.set_prize(loc.originally_held())
                 continue
             else:
-                # SlotsPrize has restricted placement (needs room with space for 5 NPCs)
-                # so it must be placed before other items fill up eligible locations
-                restricted_prizes.append(loc.originally_held())
+                # SlotsPrize goes to post_progression_priority (placed after progression)
+                # Note: Has restricted placement (needs room with space for 5 NPCs)
+                post_progression_priority.append(loc.originally_held())
 
                 # Clear the vanilla slot machine NPCs from their original rooms
                 # Room 334: NPCs 2-6
@@ -822,10 +956,23 @@ def shuffle_prizes(world: GameWorld) -> None:
             ):
                 loc.set_prize(loc.originally_held())
                 continue
-        is_progress_item = [p for p in unlocks_other_checks if isinstance(loc.originally_held(), p)]
-        if len(is_progress_item) > 0:
+        # Check if item unlocks high-volume areas
+        is_high_vol_item = [p for p in high_volume_key_items if isinstance(loc.originally_held(), p)]
+        if len(is_high_vol_item) > 0:
             if not should_skip_for_debug(type(loc.originally_held())):
-                progression_prizes.append(loc.originally_held())
+                high_vol_other_prizes.append(loc.originally_held())
+            continue
+        # Check if item unlocks low-volume areas
+        is_low_vol_item = [p for p in low_volume_key_items if isinstance(loc.originally_held(), p)]
+        if len(is_low_vol_item) > 0:
+            if not should_skip_for_debug(type(loc.originally_held())):
+                low_vol_other_prizes.append(loc.originally_held())
+            continue
+        # Check if item goes to post_progression_priority (progressive cards, crystal shard, exp stars)
+        is_post_prog_item = [p for p in post_progression_include if isinstance(loc.originally_held(), p)]
+        if len(is_post_prog_item) > 0:
+            if not should_skip_for_debug(type(loc.originally_held())):
+                post_progression_priority.append(loc.originally_held())
             continue
         is_important_item = [p for p in should_otherwise_include if isinstance(loc.originally_held(), p)]
         if len(is_important_item) > 0:
@@ -849,6 +996,34 @@ def shuffle_prizes(world: GameWorld) -> None:
         else:
             not_important.append(RandomPrizeSubstitute().generate(world, loc))
             
+    # Build progression_prizes with 80% bias toward high-volume items
+    # Priority order: high-vol chars > high-vol other > low-vol chars > low-vol other
+    # Within each tier, 80% chance to pick from that tier before moving to next
+    random.shuffle(high_vol_character_prizes)
+    random.shuffle(high_vol_other_prizes)
+    random.shuffle(low_vol_character_prizes)
+    random.shuffle(low_vol_other_prizes)
+
+    # Build progression prizes with bias: 80% chance to exhaust current tier before moving on
+    prize_tiers = [
+        high_vol_character_prizes,
+        high_vol_other_prizes,
+        low_vol_character_prizes,
+        low_vol_other_prizes,
+    ]
+
+    for tier in prize_tiers:
+        while tier:
+            # 80% chance to take from current tier, 20% chance to defer to next tier
+            if random.random() < 0.8:
+                progression_prizes.append(tier.pop(0))
+            else:
+                break
+
+    # Add any remaining items from all tiers
+    for tier in prize_tiers:
+        progression_prizes.extend(tier)
+
     """     print(f"Priority 1:")
     for p in progression_prizes:
         print(f"  {type(p).__name__}")
@@ -871,15 +1046,24 @@ def shuffle_prizes(world: GameWorld) -> None:
             on_placed=lambda i, l: _on_item_placed(world, i, l),
         )
 
-    # Place critical/progress items first
-    # or items that likely can't appear in shops and do something unique
+    # Place critical/progress items (with high-vol bias applied)
     print("placing keys")
-    random.shuffle(progression_prizes)
     place(
         world,
         progression_prizes,
         on_placed=lambda i, l: _on_item_placed(world, i, l),
     )
+
+    # Place post-progression priority items (slots/exp stars, progressive cards, crystal shard)
+    if post_progression_priority:
+        print("placing post-progression priority items")
+        random.shuffle(post_progression_priority)
+        place(
+            world,
+            post_progression_priority,
+            on_placed=lambda i, l: _on_item_placed(world, i, l),
+        )
+
     print("placing important items")
     random.shuffle(must_include)
     place(

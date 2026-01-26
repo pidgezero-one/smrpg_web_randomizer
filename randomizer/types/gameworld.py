@@ -1197,17 +1197,12 @@ class GameWorld:
         save_debug_bps("01_battle_animations", debug_battle_anims)
         progress += 3
 
-        if self.overworld_character.ally.index == MARIO_Ally.index and hasattr(
-            self, "mario_palette"
-        ):
+        # Render all character palettes when palette swaps are enabled
+        if self.settings.isflag_enabled(PaletteSwaps):
             patch.add_dict(self.mario_palette.render(self))
-        if self.overworld_character.ally.index == MALLOW_Ally.index:
             patch.add_dict(self.mallow_palette.render(self))
-        if self.overworld_character.ally.index == GENO_Ally.index:
             patch.add_dict(self.geno_palette.render(self))
-        if self.overworld_character.ally.index == BOWSER_Ally.index:
             patch.add_dict(self.bowser_palette.render(self))
-        if self.overworld_character.ally.index == TOADSTOOL_Ally.index:
             patch.add_dict(self.toadstool_palette.render(self))
 
         # Finalize startup script

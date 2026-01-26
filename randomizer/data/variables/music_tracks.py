@@ -28,7 +28,7 @@ class MusicTrack(Enum):
     TADPOLE_POND = (17, "Tadpole Pond")
     ROSE_TOWN = (18, "Rose Town")
     RACE_TRAINING = (19, "Race Training")
-    SHOCK = (20, "Shock!")
+    #SHOCK = (20, "Shock!")
     SAD_SONG = (21, "Sad Song")
     MIDAS_RIVER = (22, "Midas River")
     STAR_PIECE_1 = (23, "Got A Star Piece (part 1)")
@@ -48,7 +48,7 @@ class MusicTrack(Enum):
     BOOSTER_HILL_START = (37, "Booster Hill (start)")
     BOOSTER_HILL = (38, "Booster Hill")
     MARRYMORE = (39, "Marrymore")
-    NEW_PARTNER = (40, "New Partner")
+    #NEW_PARTNER = (40, "New Partner")
     SUNKEN_SHIP = (41, "Sunken Ship")
     STILL_ROAD_MONSTERS = (42, "Still The Road Is Full Of Monsters")
     SEA = (44, "Sea")
@@ -79,7 +79,7 @@ class MusicTrack(Enum):
     ENDING_1 = (70, "Ending Part 1")
     ENDING_2 = (71, "Ending Part 2")
     ENDING_3 = (72, "Ending Part 3")
-    ENDING_4 = (73, "Ending Part 4")
+    #ENDING_4 = (73, "Ending Part 4")
 
     def __init__(self, music_id: int, display_name: str):
         self._music_id = music_id

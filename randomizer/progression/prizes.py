@@ -1968,7 +1968,7 @@ class FrogCoin1Prize(FrogCoinQuantityPrize):
 
     @property
     def standing_grant(self) -> EventScript:
-        return EventScript([JmpToEvent(E3238_FREESTANDING_FROG_COIN)])
+        return EventScript([JmpToEvent(E3085_FREESTANDING_SHUFFLED_FROG_COIN)])
 
     @property
     def river_grant(self) -> EventScript:

@@ -1642,7 +1642,7 @@ class RoseWayMiddleIslandLocation(StandingLocationRow2):
 class RoseWayCoin1Location(StandingLocationRow7):
     _originally_held = Coins10Prize
     _rooms = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids = [NPC_17]
+    _npc_ids = [NPC_18]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_1
     _world_area = WorldAreaEnum.ROSE_WAY
     # Flag as checked: npc 17 in room 79 has been removed from the room.
@@ -1651,7 +1651,7 @@ class RoseWayCoin1Location(StandingLocationRow7):
 class RoseWayCoin2Location(StandingLocationRow6):
     _originally_held = Coins10Prize
     _rooms = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids = [NPC_18]
+    _npc_ids = [NPC_19]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_2
     _world_area = WorldAreaEnum.ROSE_WAY
     # Flag as checked: npc 18 in room 79 has been removed from the room.
@@ -1660,7 +1660,7 @@ class RoseWayCoin2Location(StandingLocationRow6):
 class RoseWayCoin3Location(StandingLocationRow5):
     _originally_held = Coins10Prize
     _rooms = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids = [NPC_19]
+    _npc_ids = [NPC_20]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_3
     _world_area = WorldAreaEnum.ROSE_WAY
     # Flag as checked: npc 19 in room 79 has been removed from the room
@@ -1669,7 +1669,7 @@ class RoseWayCoin3Location(StandingLocationRow5):
 class RoseWayCoin4Location(StandingLocationRow4):
     _originally_held = Coins10Prize
     _rooms = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids = [NPC_20]
+    _npc_ids = [NPC_21]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_4
     _world_area = WorldAreaEnum.ROSE_WAY
     # Flag as checked: npc 20 in room 79 has been removed from the room
@@ -1678,7 +1678,7 @@ class RoseWayCoin4Location(StandingLocationRow4):
 class RoseWayCoin5Location(StandingLocationRow3):
     _originally_held = Coins10Prize
     _rooms = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids = [NPC_21]
+    _npc_ids = [NPC_22]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_5
     _world_area = WorldAreaEnum.ROSE_WAY
     # Flag as checked: npc 21 in room 79 has been removed from the room

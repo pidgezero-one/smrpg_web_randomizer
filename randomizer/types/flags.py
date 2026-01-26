@@ -2169,8 +2169,8 @@ class JapaneseABXY(BooleanFlag):
 
 # ✅
 class BossShuffleMusic(BooleanFlag):
-    _name = "Randomize boss music"
-    _description = "Battle music will be randomized for each boss fight."
+    _name = "Randomize battle music"
+    _description = "All battle music will be randomized."
     _id = "music"
 
 

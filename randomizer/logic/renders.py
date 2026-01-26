@@ -1067,12 +1067,11 @@ def render_volcano_exit_boss(
     if loops == 0:
         world.event_scripts.delete_command_by_identifier("axem_trampoline_aqueue")
     else:
-        cast(
+        # Get the loop command and set its count (don't delete it)
+        world.event_scripts.get_subscript_command_by_identifier(
+            "axem_trampoline_aqueue",
+            "axem_trampoline_loop",
             A_StartLoopNTimes,
-            world.event_scripts.delete_subscript_command_by_identifier(
-                "axem_trampoline_aqueue",
-                "axem_trampoline_loop",
-            ),
         ).set_count(loops)
 
 

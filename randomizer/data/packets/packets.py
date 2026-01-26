@@ -266,7 +266,7 @@ P032_BLUE_CLOUD = Packet(
     packet_id=32,
     sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
     shadow=False,
-    action_script_id=A0651_EMPTY,
+    action_script_id=A0651_MOKURA_PACKET,
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
@@ -754,7 +754,7 @@ P093_MUSIC_NOTE_CHEST = Packet(
     packet_id=93,
     sprite_id=SPR0195_FLOWER,
     shadow=False,
-    action_script_id=A0687_EMPTY,
+    action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
@@ -988,7 +988,7 @@ P122_FROG_COIN_STILL = Packet(
     shadow=False,
     action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
-    unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
 P123_SMALL_COIN_STILL = Packet(
     packet_id=123,
@@ -1338,7 +1338,7 @@ P166_MUSIC_NOTE_STATIC = Packet(
     packet_id=166,
     sprite_id=SPR0195_FLOWER,
     shadow=False,
-    action_script_id=A0202_EMPTY,
+    action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00]),
 )
@@ -1346,7 +1346,7 @@ P167_MUSIC_NOTE_FALL = Packet(
     packet_id=167,
     sprite_id=SPR0195_FLOWER,
     shadow=True,
-    action_script_id=A0583_EMPTY,
+    action_script_id=A0917_SEQ_0_FALLING,
     unknown_bits=[False, True, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x01, 0x04, 0x01, 0x00, 0x00]),
 )
@@ -1602,7 +1602,7 @@ P199_UNUSED = Packet(
     packet_id=199,
     sprite_id=SPR0194_FROG_COIN,
     shadow=False,
-    action_script_id=A0196_EMPTY,
+    action_script_id=A0196_SPIKEY_BANDITS_WAY,
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x05, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )

@@ -2077,14 +2077,19 @@ class BossFightLocation(PrizeLocation):
                 ],
                 henchmen_event_packs,
             )
+        # Use prize's force_battlefield if set, otherwise use room-based battlefields
+        if self.prize.force_battlefield is not None:
+            effective_battlefields = [self.prize.force_battlefield] * len(self._rooms)
+        else:
+            effective_battlefields = self.battlefields
         assert len(self._rooms) == len(
-            self.battlefields
+            effective_battlefields
         ), "Rooms and battlefields length mismatch"
         battles = list(
             zip(
                 self._rooms,
-                self.battlefields,
-                (str(uuid4()) for _ in self.battlefields),
+                effective_battlefields,
+                (str(uuid4()) for _ in effective_battlefields),
             )
         )
 

@@ -1,7 +1,7 @@
 """Cosmetic settings that don't affect gameplay."""
 from __future__ import annotations
 import random
-import datetime
+import os
 from typing import TYPE_CHECKING, cast
 
 from django.contrib.gis.measure import D
@@ -62,7 +62,8 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     from ...types.prizelocation import BossFightLocation
 
     # Re-seed for cosmetics (so they vary between generations with same seed)
-    random.seed(datetime.datetime.now().timestamp())
+    # Use os.urandom for maximum entropy instead of timestamp
+    random.seed(int.from_bytes(os.urandom(8), 'big'))
 
     # Canon names
     if world.settings.isflag_enabled(CanonNames):
@@ -263,7 +264,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
     # Boss shuffle music
     if world.settings.isflag_enabled(BossShuffleMusic):
-        from smrpgpatchbuilder.datatypes.battles.enums import BattleMusic
+        from smrpgpatchbuilder.datatypes.battles.music import get_default_music
 
         # Get the enabled music tracks from user selection
         enabled_tracks = world.settings.get_flag(ShuffledMusic).enabled
@@ -277,18 +278,13 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         # Store the music IDs for patching in get_patch
         world.selected_music_ids = [track.music_id for track in selected_tracks]
 
-        # The 8 battle music classes (pointers to the IDs we'll write at 0x029F51)
-        music_classes = list(BattleMusic)
+        # Get all 8 battle music instances directly
+        music_instances = get_default_music()
 
-        for boss_fight in [
-            l for l in world.locations if isinstance(l, BossFightLocation)
-        ]:
-            pack_id = cast(BossFightLocation, boss_fight).pack_id
-            # Assign a random battle music class (0-7) to each boss fight
-            battle_music = random.choice(music_classes)
-            pack = world.get_battle_pack(pack_id)
-            for f in pack.formations:
-                f.set_music(battle_music)
+        # Assign random music to every battle formation (not just boss fights)
+        for pack in world.battle_packs.packs:
+            for formation in pack.formations:
+                formation.set_music(random.choice(music_instances))
 
     # Random Star Hill wishes (truly random, not tied to seed)
     wishes = zip(WISH_DIALOG_IDS, random.sample(WISH_POOL, len(WISH_DIALOG_IDS)))

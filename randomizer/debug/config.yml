@@ -24,8 +24,114 @@ items:
   start:
     - MushroomItem
 
-  # Override specific locations with specific prizes (minimal for testing)
+  # Override specific locations with specific prizes for chest packet testing
+  # Each prize has a unique _model (physical_objects/items.py) which uses a unique _chest_packet_id
   override:
-    MushroomWay1LowerChest: BanditsWayStarPrize
+    # P000_FLASHING_POOF_FLOWER - FlowerObject
+    MushroomKingdomMainHall: FPFlowerPrize
+    # P001_FLASHING_POOF_MUSHROOM - RecoveryMushroomObject
+    MushroomKingdomShopBasementLeft: RecoveryMushroomPrize
+    # P002_BRIEF_KEY - KeyObject
+    MushroomKingdomLiberatedVaultRight: ShedKeyPrize
+    # P005_BRIEF_POOF_BAG - DefaultItem (default for items without custom model)
+    MushroomKingdomShopBasementRight: ShirtPrize
+    # P006_FEATHER_CHEST - FeatherObject
+    MushroomWay1LowerChest: FeatherPrize
+    # P007_STAR_PIECE_CHEST - TinyStarObject
+    MushroomWayRightGoomba: StarPiece1
+    # P016_BIG_COIN_BEING_COLLECTED - BigCoinObject
+    MushroomKingdomLiberatedVaultLeft: Coins5Prize
+    # P019_FROG_COIN_BEING_COLLECTED - FrogCoinObject
     MushroomWay1UpperChest: FrogCoin1Prize
-    MushroomWayCharacter: BowserRecruitmentPrize
+    # P025_RING_CHEST - RingObject
+    MushroomKingdomLiberatedVaultMiddle: RingPrize
+    # P040_BROOCH_CHEST - BroochObject
+    BanditsWayFlowerJumpLocation: BroochPrize
+    # P043_SHOES_CHEST - ShoesObject
+    BanditsWayPlatformsLeftChestLocation: ShoesPrize
+    # P048_BANANA_CHEST - BananaObject
+    BanditsWayDogChestLocation: WiltShroomPrize
+    # P053_CROWN_CHEST - CrownObject
+    BanditsWayPlatformsRightChestLocation: CrownPrize
+    # P067_BOMB_CHEST - MicrobombObject
+    KeroSewersStairRoomRightChestLocation: BambinoBombPrize
+    # P070_EGG_CHEST - EggObject
+    BanditsWayDeadEndChestLocation: ProgressiveEggPrize
+    # P073_COOKIE_CHEST - CookieObject
+    KeroSewersStairRoomLeftChestLocation: YoshiCookiePrize
+    # P076_BERRY_CHEST - BerryObject
+    Mimic1ReloadRewardLocation: SeedPrize
+    # P079_CARD_CHEST - CardObject
+    RoseWayFiveChestRoomBottomLeftLocation: ProgressiveCardPrize
+    # P080_GREEN_SYRUP_CHEST - GreenSyrupObject
+    KeroSewersFourRatRoomChestLocation: MapleSyrupPrize
+    # P081_RED_SYRUP_CHEST - RedSyrupObject
+    KeroSewersBeforeBelomeLowerLocation: HoneySyrupPrize
+    # P082_BLUE_SYRUP_CHEST - BlueSyrupObject
+    KeroSewersBeforeBelomeUpperBeforeFlipLocation: PureWaterPrize
+    # P083_YELLOW_SYRUP_CHEST - YellowSyrupObject
+    RoseWayFiveChestRoomTopLocation: RoyalSyrupPrize
+    # P084_GREEN_JUICE_CHEST - GreenJuiceObject
+    RoseWayFiveChestRoomLeftLocation: YoshiAdePrize
+    # P086_P_DRINK_CHEST - PDrinkObject
+    RoseWayFiveChestRoomBottomRightLocation: EnergizerPrize
+    # P087_D_DRINK_CHEST - DDrinkObject
+    RoseTownShopLeftChestLocation: BracerPrize
+    # P088_YELLOW_MUSIC_DRINK_CHEST - YellowMusicDrinkObject
+    RoseTownShopRightChestLocation: FroggieDrinkPrize
+    # P089_BLUE_MUSIC_DRINK_CHEST - BlueMusicDrinkObject
+    RoseTownCloudRightChestLocation: ElixirPrize
+    # P090_FROG_DRINK_CHEST - FrogDrinkObject
+    RoseTownCloudLeftChestLocation: KerokeroColaPrize
+    # P091_RED_MUSIC_DRINK_CHEST - RedMusicDrinkObject
+    RoseTownTreasureHouseLeftChestLocation: MegalixirPrize
+    # P092_R_DRINK_CHEST - RDrinkObject
+    RoseTownTreasureHouseRightChestLocation: AbleJuicePrize
+    # P093_MUSIC_NOTE_CHEST - MusicObject
+    RoseTownTreasureHouseUpperChestLocation: CymbalsPrize
+    # P094_STAR_DRINK_CHEST - StarDrinkObject
+    ForestMazeFirstRoomLocation: PickMeUpPrize
+    # P095_GREEN_CANDY_CHEST - GreenCandyObject
+    ForestMazeFirstUndergroundExitLocation: YoshiCandyPrize
+    # P096_BLUE_CANDY_CHEST - BlueCandyObject
+    ForestMazeUndergroundWigglerChestLocation: RockCandyPrize
+    # P097_GREEN_BOMB_CHEST - GreenBombObject
+    ForestMazeUndergroundBottomRightTrunkChestLocation: FrightBombPrize
+    # P098_RED_BOMB_CHEST - RedBombObject
+    ForestMazeUndergroundMiddleLeftChestLocation: FireBombPrize
+    # P099_BLUE_BOMB_CHEST - BlueBombObject
+    ForestMazeInnerMazeEntranceLocation: IceBombPrize
+    # P100_YELLOW_BOMB_CHEST - YellowBombObject
+    ForestMazeSecretTopRightChestLocation: SleepyBombPrize
+    # P101_BEETLE_CHEST - BeetleObject
+    ForestMazeSecretBottomRightChestLocation: BeetlemaniaPrize
+    # P102_RED_MUSHROOM_CHEST - RedMushroomObject
+    ForestMazeSecretTopMiddleChestLocation: MushroomPrize
+    # P103_GREEN_MUSHROOM_CHEST - GreenMushroomObject
+    ForestMazeSecretBottomMiddleChestLocation: MidMushroomPrize
+    # P104_YELLOW_MUSHROOM_CHEST - YellowMushroomObject
+    ForestMazeSecretLeftChestLocation: MaxMushroomPrize
+    # P105_FRYING_PAN_CHEST - FryingPanObject
+    PipeVaultSlidingCoinRoomBackChestLocation: FryingPanPrize
+    # P106_HAMMER_CHEST - HammerObject
+    PipeVaultSlidingCoinRoomMiddleChestLocation: HammerPrize
+    # P107_STICK_CHEST - StickObject
+    PipeVaultSlidingCoinRoomFrontChestLocation: FroggiestickPrize
+    # P108_CHOMP_CHEST - ChompObject
+    PipeVaultRisingPlatformChestLocation: ChompPrize
+    # P109_FAN_CHEST - FanObject
+    PipeVaultChompweedChestLocation: WarFanPrize
+    # P110_RED_SHELL_CHEST - RedShellObject
+    YosterEntranceChestLocation: TroopaShellPrize
+    # P111_GREEN_SHELL_CHEST - GreenShellObject
+    InnerMinesTracksChestLocation: NokNokShellPrize
+    # P112_PARASOL_CHEST - ParasolObject
+    InnerMinesBoxesChestLocation: ParasolPrize
+    # P113_YELLOW_JUICE_CHEST - YellowJuiceObject
+    InnerMinesSaveBlockChestLocation: GoldPaintPrize
+    # P114_GLOVE_CHEST - GloveObject
+    InnerMinesHighUpChestLocation: PunchGlovePrize
+    # P115_CRYSTAL_CHEST - CrystalObject
+    BoosterPassFirstRoomLeftChestLocation: LuckyJewelPrize
+    BoosterPassFirstRoomRightChestLocation: FirstMimicFightLauncher
+

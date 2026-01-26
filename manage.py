@@ -12,4 +12,11 @@ if __name__ == "__main__":
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
+    # Register debug config.yml watcher for autoreload (must be before execute)
+    try:
+        from randomizer import debug  # noqa: F401
+    except ImportError:
+        pass
+
     execute_from_command_line(sys.argv)

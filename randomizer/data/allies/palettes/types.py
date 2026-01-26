@@ -68,8 +68,9 @@ if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 
 
-def color_to_bytes(color) -> list[int]:
-    color_int = int(color, 16)
+def color_to_bytes(color: int | str) -> list[int]:
+    # Handle both integer colors (0xF8F8F8) and hex strings ("F8F8F8")
+    color_int = color if isinstance(color, int) else int(color, 16)
     r = color_int >> 19
     g = (color_int >> 10) & 0x3E
     b = (color_int >> 1) & 0x7C
@@ -174,9 +175,11 @@ class MarioPalette(Palette):
             base_palette.set_colors(heated_palette + base_palette.colors[4:])
             if self.overworld_map_colours is None:
                 output[MAP_PALETTE_OFFSET] = bytearray(
-                    self.mutate(
-                        self.colours,
-                        [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
+                    palette_to_bytes(
+                        self.mutate(
+                            self.colours,
+                            [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
+                        )
                     )
                 )
             else:
@@ -291,7 +294,7 @@ class MallowPalette(Palette):
             base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
             base_palette.set_colors(heated_palette + base_palette.colors[4:])
             if self.overworld_map_colours is None:
-                output[MAP_PALETTE_OFFSET] = bytearray(self.colours)
+                output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
             else:
                 output[MAP_PALETTE_OFFSET] = bytearray(
                     palette_to_bytes(self.overworld_map_colours)
@@ -373,7 +376,7 @@ class GenoPalette(Palette):
             base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
             base_palette.set_colors(heated_palette + base_palette.colors[4:])
             if self.overworld_map_colours is None:
-                output[MAP_PALETTE_OFFSET] = bytearray(self.colours)
+                output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
             else:
                 output[MAP_PALETTE_OFFSET] = bytearray(
                     palette_to_bytes(self.overworld_map_colours)
@@ -430,7 +433,7 @@ class BowserPalette(Palette):
             base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
             base_palette.set_colors(heated_palette + base_palette.colors[4:])
             if self.overworld_map_colours is None:
-                output[MAP_PALETTE_OFFSET] = bytearray(self.colours)
+                output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
             else:
                 output[MAP_PALETTE_OFFSET] = bytearray(
                     palette_to_bytes(self.overworld_map_colours)
@@ -516,7 +519,7 @@ class ToadstoolPalette(Palette):
             base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
             base_palette.set_colors(heated_palette + base_palette.colors[4:])
             if self.overworld_map_colours is None:
-                output[MAP_PALETTE_OFFSET] = bytearray(self.colours)
+                output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
             else:
                 output[MAP_PALETTE_OFFSET] = bytearray(
                     palette_to_bytes(self.overworld_map_colours)
