@@ -412,6 +412,21 @@ def randomize_enemy_formations(world: GameWorld) -> None:
     def get_stat_sum(enemy) -> int:
         return enemy.attack + enemy.defense + enemy.magic_attack + enemy.magic_defense
 
+    # Helper function to get vram_size for an enemy type
+    # Sprite ID = monster_id + 256
+    def get_vram_size(enemy_type: type) -> int:
+        enemy = world.enemies.get_by_type(enemy_type)
+        sprite_id = enemy.monster_id + 256
+        try:
+            sprite = world.get_sprite(sprite_id)
+            return sprite.animation.properties.vram_size
+        except (IndexError, AttributeError):
+            # Default to a reasonable size if sprite lookup fails
+            return 2048
+
+    # Maximum total VRAM size for a formation
+    MAX_VRAM_SIZE = 8192
+
     for pack in world.battle_packs.packs:
         for formation in pack.formations:
             current_members = [m for m in formation.members if m is not None]
@@ -445,8 +460,9 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                 if lower_bound <= enemy_stat_sum <= upper_bound:
                     similar_enemies.append(enemy_type)
 
-            # If we have similar enemies, use them; otherwise fall back to eligible enemies
-            candidate_pool = similar_enemies if similar_enemies else eligible_enemy_types
+            # Only use similar enemies for candidate pool - don't fall back to all eligible enemies
+            # If no similar enemies exist, we only use the original formation enemies
+            candidate_pool = similar_enemies if similar_enemies else []
 
             # Add unique candidates up to 3, but avoid infinite loop if not enough unique enemies exist
             while len(candidates) < 3 and candidate_pool:
@@ -459,12 +475,27 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             num_enemies = random.randint(1, random.randint(3, max_enemies))
             num_enemies = max(num_enemies, len(current_enemy_types))
 
+            # Build formation while respecting VRAM constraint
             chosen_enemies: list[type] = list(current_enemy_types)
+            current_vram = sum(get_vram_size(e) for e in chosen_enemies)
+
             while len(chosen_enemies) < num_enemies:
                 sub_candidates = candidates + chosen_enemies
                 if not sub_candidates:
                     break
-                chosen_enemies.append(random.choice(sub_candidates))
+
+                # Filter candidates by VRAM constraint
+                vram_valid_candidates = [
+                    e for e in sub_candidates
+                    if current_vram + get_vram_size(e) <= MAX_VRAM_SIZE
+                ]
+
+                if not vram_valid_candidates:
+                    break  # Can't add any more enemies without exceeding VRAM
+
+                new_enemy = random.choice(vram_valid_candidates)
+                chosen_enemies.append(new_enemy)
+                current_vram += get_vram_size(new_enemy)
 
             random.shuffle(chosen_enemies)
 
