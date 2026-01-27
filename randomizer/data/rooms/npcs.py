@@ -124,7 +124,7 @@ MARIO_WALKING_DOWN_LEFT_NPC = NPC(
     byte6_bit2=False,
 )
 MARIO_CLONE_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0986_MARIO_NONPROTAGONIST_1,
+    sprite_id=SPR0990_MARIO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -148,7 +148,7 @@ MARIO_CLONE_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
+    sprite_id=SPR0962_TOADSTOOL_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -172,7 +172,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 BOWSER_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0014_BOWSER_WALKING_DOWN_LEFT,
+    sprite_id=SPR0969_BOWSER_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,
@@ -196,7 +196,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0021_MALLOW_WALKING_DOWN_LEFT,
+    sprite_id=SPR0976_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -220,7 +220,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0028_GENO_WALKING_DOWN_LEFT,
+    sprite_id=SPR0983_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -244,7 +244,7 @@ GENO_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=SPR0962_TOADSTOOL_NONPROTAGONIST_1,
+    sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -292,7 +292,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_2 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=SPR0962_TOADSTOOL_NONPROTAGONIST_1,
+    sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -316,7 +316,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_3 = NPC(
 )
 
 BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=SPR0968_BOWSER_NONPROTAGONIST_1,
+    sprite_id=SPR0013_BOWSER_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,
@@ -340,7 +340,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=SPR0974_MALLOW_NONPROTAGONIST_1,
+    sprite_id=SPR0019_MALLOW_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -436,7 +436,7 @@ OLD_CLASSIC_MARIO_NPC = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=SPR0980_GENO_NONPROTAGONIST_1,
+    sprite_id=SPR0025_GENO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -508,7 +508,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_3 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_4 = NPC(
-    sprite_id=SPR0962_TOADSTOOL_NONPROTAGONIST_1,
+    sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -532,7 +532,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_4 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=SPR0974_MALLOW_NONPROTAGONIST_1,
+    sprite_id=SPR0019_MALLOW_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -556,7 +556,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=SPR0980_GENO_NONPROTAGONIST_1,
+    sprite_id=SPR0025_GENO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -676,7 +676,7 @@ NIMBUSITE_RED_NPC = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_4 = NPC(
-    sprite_id=SPR0974_MALLOW_NONPROTAGONIST_1,
+    sprite_id=SPR0019_MALLOW_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -17447,7 +17447,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_4 = NPC(
 )
 
 MARIO_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=SPR0986_MARIO_NONPROTAGONIST_1,
+    sprite_id=SPR0990_MARIO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17471,7 +17471,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_5 = NPC(
 )
 
 MARIO_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=SPR0986_MARIO_NONPROTAGONIST_1,
+    sprite_id=SPR0990_MARIO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17495,7 +17495,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_6 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=SPR0962_TOADSTOOL_NONPROTAGONIST_1,
+    sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17519,7 +17519,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_5 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=SPR0962_TOADSTOOL_NONPROTAGONIST_1,
+    sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17543,7 +17543,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_6 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_7 = NPC(
-    sprite_id=SPR0962_TOADSTOOL_NONPROTAGONIST_1,
+    sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17567,7 +17567,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_7 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=SPR0974_MALLOW_NONPROTAGONIST_1,
+    sprite_id=SPR0019_MALLOW_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17591,7 +17591,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_5 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=SPR0974_MALLOW_NONPROTAGONIST_1,
+    sprite_id=SPR0019_MALLOW_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17615,7 +17615,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_6 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_7 = NPC(
-    sprite_id=SPR0974_MALLOW_NONPROTAGONIST_1,
+    sprite_id=SPR0019_MALLOW_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17639,7 +17639,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_7 = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_4 = NPC(
-    sprite_id=SPR0980_GENO_NONPROTAGONIST_1,
+    sprite_id=SPR0025_GENO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17663,7 +17663,7 @@ GENO_WALKING_DOWN_LEFT_NPC_4 = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=SPR0980_GENO_NONPROTAGONIST_1,
+    sprite_id=SPR0025_GENO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17687,7 +17687,7 @@ GENO_WALKING_DOWN_LEFT_NPC_5 = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=SPR0980_GENO_NONPROTAGONIST_1,
+    sprite_id=SPR0025_GENO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17711,7 +17711,7 @@ GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
 )
 
 BOWSER_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=SPR0968_BOWSER_NONPROTAGONIST_1,
+    sprite_id=SPR0013_BOWSER_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,

@@ -1478,10 +1478,10 @@ class GameWorld:
         i = starter.index
         file_select_char_bytes = [
             SPR0000_MARIO_WALKING_DOWN_LEFT,
-            SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
-            SPR0014_BOWSER_WALKING_DOWN_LEFT,
-            SPR0028_GENO_WALKING_DOWN_LEFT,
-            SPR0021_MALLOW_WALKING_DOWN_LEFT,
+            SPR0007_TOADSTOOL_NONPROTAGONIST_1,
+            SPR0014_BOWSER_NONPROTAGONIST_2,
+            SPR0028_GENO_NONPROTAGONIST_4,
+            SPR0021_MALLOW_NONPROTAGONIST_3,
         ]
         self.file_select_character = starter.name
 

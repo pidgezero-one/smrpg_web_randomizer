@@ -919,8 +919,8 @@ def set_partitions(world: GameWorld) -> None:
                     if complete_sprite is None:
                         continue
 
-                    # Handle ally sprites (0-30)
-                    if sprite_id <= SPR0034_GENO_MORPH_INTO_CANNON:
+                    # Handle ally sprites (0-34)
+                    if sprite_id <= SPR0034_EMPTY:
                         if room_index in [
                             R203_MUSHROOM_WAY_AREA_01,
                             R204_MUSHROOM_WAY_AREA_02,

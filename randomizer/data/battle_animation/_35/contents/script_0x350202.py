@@ -372,13 +372,13 @@ script = AnimationScriptBlock(expected_size=872, expected_beginning=0x350202, sc
 	DefineObjectQueue(["command_0x350547", "command_0x35054E", "command_0x350555", "command_0x35055C", "command_0x350563"], identifier="command_0x35053D"),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x350547"),
 	ReturnSubroutine(),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x35054E"),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x35054E"),
 	ReturnSubroutine(),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0014_BOWSER_WALKING_DOWN_LEFT, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x350555"),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0012_TOADSTOOL_NONPROTAGONIST_6, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x350555"),
 	ReturnSubroutine(),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0028_GENO_WALKING_DOWN_LEFT, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x35055C"),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0025_GENO_NONPROTAGONIST_1, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x35055C"),
 	ReturnSubroutine(),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0021_MALLOW_WALKING_DOWN_LEFT, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x350563"),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0019_MALLOW_NONPROTAGONIST_1, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x350563"),
 	ReturnSubroutine()
 
 ])

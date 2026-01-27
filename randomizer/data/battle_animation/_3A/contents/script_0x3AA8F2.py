@@ -53,7 +53,7 @@ script = AnimationScriptBlock(expected_size=4816, expected_beginning=0x3AA8F2, s
 	Jmp(["command_0x3AB8E2"]),
 	PlaySound(sound=S0000_SILENCE, identifier="command_0x3AB8EE"),
 	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=164, y=116, z=0, set_x=True, set_y=True, set_z=True),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0023_MALLOW_WALKING_UP_RIGHT, sequence=3, store_to_vram=True, store_palette=True, behind_all_sprites=True, overlap_all_sprites=True, bit_4=True),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0020_MALLOW_NONPROTAGONIST_2, sequence=3, store_to_vram=True, store_palette=True, behind_all_sprites=True, overlap_all_sprites=True, bit_4=True),
 	RunSubroutine(["command_0x3A8200"]),
 	RunSubroutine(["command_0x3A7312"]),
 	RunSubroutine(["command_0x3A8160"]),
