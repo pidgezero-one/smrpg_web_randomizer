@@ -118,7 +118,7 @@ def update_ally_animation(seq: A_SetSpriteSequence, ally: Ally, anim: SpriteAnim
 
 def render_bandits_way_boss(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply animation script changes for Bandits Way boss fight."""
-    m = prize.small_npc()
+    m = prize.smallest_npc()
     bway = m.animations.bandits_way_distracted
     seq_id_replacements = [
         ("bway_aqueue_1", "bway_distracted_1"),
@@ -233,7 +233,7 @@ def render_booster_tower_indoor_boss(
     )
 
     as_contents: list[UsableActionScriptCommand] = []
-    m = prize.small_npc()
+    m = prize.smallest_npc()
     if m.tower_entrance_horizontal_shift:
         as_contents.append(A_ShiftXYPixels(m.tower_entrance_horizontal_shift, 0))
     if m.eye_height:
@@ -676,7 +676,7 @@ def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
 
 def render_seaside_beach_boss(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply animation changes for Seaside Beach boss fight."""
-    m = prize.small_npc()
+    m = prize.smallest_npc()
 
     # large boss sprite
     world.event_scripts.delete_subscript_command_by_identifier(
@@ -688,7 +688,7 @@ def render_ship_password_boss(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply animation changes for Ship Password boss fight."""
     world.action_scripts.delete_command_by_identifier("password_boss_vanilla_1")
     world.action_scripts.delete_command_by_identifier("password_boss_vanilla_2")
-    m = prize.small_npc()
+    m = prize.smallest_npc()
     if m.animations.ship_beckon is not None:
         c = world.action_scripts.get_command_by_identifier(
             "password_boss_reveal_sequence", A_SetSpriteSequence
@@ -702,7 +702,7 @@ def render_ship_password_boss(world: GameWorld, prize: BossFightPrize) -> None:
 
 def render_ship_final_boss(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply animation changes for Ship Final boss fight."""
-    m = prize.small_npc()
+    m = prize.smallest_npc()
     # boss room on revisit
     if m.animations.ship_chair is not None:
         c = world.action_scripts.get_command_by_identifier(
@@ -756,7 +756,7 @@ def render_ship_final_boss(world: GameWorld, prize: BossFightPrize) -> None:
 
 def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply animation changes for Dojo first fight."""
-    m = prize.small_npc()
+    m = prize.smallest_npc()
     # Check if prize is a mimic-type boss
     from ..progression.prizes import (
         PandoriteBossFight,
@@ -799,7 +799,7 @@ def render_dojo_fight(
     pause_id: str,
 ) -> None:
     """Apply animation changes for a generic Dojo fight."""
-    m = prize.small_npc()
+    m = prize.smallest_npc()
     from ..progression.prizes import (
         PandoriteBossFight,
         HidonBossFight,
@@ -871,8 +871,8 @@ def render_statue_room_boss(
 
     # statue game
     if not keep_minigame_sprites:
-        mo = prize.large_npc
-        assert mo is not None
+        # Use VRAM-constrained selection (max 6144 for statue room)
+        mo = prize.get_npc_for_slot(world, 6144)
         m = mo()
         if m.animations.statue_peck is None:
             world.event_scripts.get_script_by_id(
@@ -1084,7 +1084,7 @@ def render_inner_factory_second_fight(world: GameWorld, prize: BossFightPrize) -
     """Apply look-up animation changes for Inner Factory Second Fight."""
     if isinstance(prize, (ClerkBossFight, ManagerBossFight, DirectorBossFight)):
         return
-    m = prize.small_npc()
+    m = prize.smallest_npc()
     look_up_replacements = [
         ("factory_2nd_boss_look_up_aq_1", "factory_2nd_boss_look_up_1"),
         ("factory_2nd_boss_look_up_aq_2", "factory_2nd_boss_look_up_2"),
@@ -1172,7 +1172,7 @@ def render_final_boss_fight(
     e3792.set_contents(es_non_smithy_3792.contents)
     e3794.set_contents(es_non_smithy_3794.contents)
 
-    anim = prize.large_npc().animations.endgame_challenge
+    anim = prize.largest_npc().animations.endgame_challenge
     if anim is not None:
         if anim.total_duration is not None and anim.total_duration > 55:
             cast(

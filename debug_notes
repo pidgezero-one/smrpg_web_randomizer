@@ -17,14 +17,23 @@
 - verify if boss music is actually being randomized or not, 2 in a row had same songPlease 
 - culex 3Ds guys are wrong, also doesnt float?
 - booster tower does not load
-
-- lakitu and shy guy in rose way broken
-- palettes in rose way still broken
 - toad shadow broken
 - save boxes broken in nimbus inn, marrymore inn
 - mario doesnt m ove to the right spot when attacking enemies
+- lakitu and shy guy in rose way broken
+
+- forest maze should cap at 6144 Maybe
+- forest character does not join party before battle
+- culex battle message is empty
+- culex crystals no autodeath
+- "couldn't run" message broken
+- A LOT of partitions seem wrong. Double check them as well as the NPC information, min vram etc.
+- Frog coin chests just don't work
+- Not sure wtf is going on in mushroom way 2. Does it just not like the remake items?
+- Forest maze messed up in battle. Maybe the calc should be aware of how much vram enemies can bring
+- Also enemies are still t oo strong in formation randomizer
+- palettes in rose way still broken
 - kero sewers is not blocked
-- rose way block palettes are wrong
 - lakitu and shy guy palettes broken
 - trampoline in nimbus land broken sprite
 - mallow statue palette in garros house is wrong and partially cut off

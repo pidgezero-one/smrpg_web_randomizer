@@ -592,6 +592,18 @@ class BossNPC(NPC):
         """The vertical pixel shift to apply to this statue when spawned facing north."""
         return self._north_facing_vertical_pixel_shift
 
+    @classmethod
+    def get_vram_size(cls, world: "GameWorld") -> int:
+        """Get the VRAM size for this BossNPC's sprite.
+
+        Returns the sprite's animation.properties.vram_size value.
+        Valid values are typically 2048, 4096, 6144, or 8192.
+        """
+        instance = cls()
+        sprite_id = instance.base.sprite_id
+        sprite = world.get_sprite(sprite_id)
+        return sprite.animation.properties.vram_size
+
 
 class HenchmanNPC(NPC):
     _animations: SpriteAnimationCollection = SpriteAnimationCollection()

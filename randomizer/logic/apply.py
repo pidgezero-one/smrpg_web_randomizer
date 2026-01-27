@@ -524,7 +524,7 @@ def _calculate_location_stats(
 
     # Formation members participating in HP calculation
     hp_counted_members = [
-        m for m in original_prize.formation
+        m for m in original_prize.formation_members
         if m is not None and m.enemy not in scaling_excluded and m.enemy not in hp_slice_excluded
     ]
 
@@ -558,7 +558,7 @@ def _calculate_location_stats(
     if anchor_spec is None:
         # Use all non-excluded formation members
         anchor_classes = [
-            m.enemy for m in original_prize.formation
+            m.enemy for m in original_prize.formation_members
             if m is not None and m.enemy not in scaling_excluded
         ]
     elif isinstance(anchor_spec, list):
@@ -609,7 +609,7 @@ def _apply_stats_to_prize(
         return  # No stats to apply
 
     # Get all formation members
-    formation_members = [m for m in prize.formation if m is not None]
+    formation_members = [m for m in prize.formation_members if m is not None]
     if not formation_members:
         return
 

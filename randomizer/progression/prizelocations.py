@@ -19,7 +19,6 @@ from ..types.prizelocation import (
     AllyNPCSub,
     BossFightLocationHenchmanNPC,
     BossFightLocationNPC,
-    BossSpriteSize,
     RemoveIfNotFilled,
     StandingLocation,
     TreasureChestLocationRow1,
@@ -518,8 +517,7 @@ class MushrooomWayBossFight(BossFightLocation):
         BossFightLocationNPC(
             R205_MUSHROOM_WAY_AREA_03,
             NPC_7,
-            BossSpriteSize.LARGE,
-            E0755_MUSHROOM_WAY_AREA_03_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0755_MUSHROOM_WAY_AREA_03_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
 
@@ -853,8 +851,7 @@ class MushroomKingdomBossFight(BossFightLocation):
         BossFightLocationNPC(
             R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
             NPC_3,
-            BossSpriteSize.LARGE,
-            E0761_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0761_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
     _character_henchman_slots = [
@@ -1465,8 +1462,7 @@ class KeroSewersBossFight(BossFightLocation):
         BossFightLocationNPC(
             R302_KERO_SEWERS_AREA_08_BELOMES_ROOM,
             NPC_1,
-            BossSpriteSize.BATTLE,
-            E0772_KERO_SEWERS_BELOME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0772_KERO_SEWERS_BELOME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
 
@@ -2059,8 +2055,7 @@ class ForestMazeBossFight(BossFightLocation):
         BossFightLocationNPC(
             R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
             NPC_11,
-            BossSpriteSize.LARGE,
-            E0775_FOREST_MAZE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0775_FOREST_MAZE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
     _character_henchman_slots = [
@@ -2870,8 +2865,7 @@ class InnerMinesBossFight(BossFightLocation):
         BossFightLocationNPC(
             R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
             NPC_0,
-            BossSpriteSize.BATTLE,
-            E0788_MINES_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0788_MINES_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
     _mook_henchman_slots = [
@@ -2951,10 +2945,10 @@ class InnerMinesBossFight(BossFightLocation):
         list[tuple[int, int]],
     ]:
         op = super().render(world)
-        assert (
-            isinstance(self.prize, BossFightPrize) and self.prize.battle_npc is not None
-        )
-        set_mines_punch_command(world, self.prize.battle_npc())
+        assert isinstance(self.prize, BossFightPrize)
+        # Use VRAM-constrained selection (max 4096 for mines boss room)
+        npc_model = self.prize.get_npc_for_slot(world, 4096)
+        set_mines_punch_command(world, npc_model())
         return op
 
     # Flag as checked: MINES_BOSS_2_DEFEATED
@@ -3095,7 +3089,6 @@ class InnerMinesPostgameBossFight(BossFightLocation):
         BossFightLocationNPC(
             R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE,
             NPC_0,
-            BossSpriteSize.BATTLE,
         ),
     ]
 
@@ -4681,8 +4674,7 @@ class SeasideBeachBossFight(BossFightLocation):
         BossFightLocationNPC(
             R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
             NPC_7,
-            BossSpriteSize.LARGE,
-            E0802_SEASIDE_OCCUPIED_BEACH_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0802_SEASIDE_OCCUPIED_BEACH_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
     _character_henchman_slots = [
@@ -6241,8 +6233,7 @@ class TempleBossFight(BossFightLocation):
         BossFightLocationNPC(
             R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
             NPC_4,
-            BossSpriteSize.LARGE,
-            E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
 
@@ -6288,8 +6279,7 @@ class TempleBossFightPostgame(BossFightLocation):
         BossFightLocationNPC(
             R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
             NPC_5,
-            BossSpriteSize.LARGE,
-            E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
 
@@ -6378,6 +6368,7 @@ class DojoFirstFight(BossFightLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _pack_id = PACK189_DOJO_PREFIGHT
     _post_unlocks_event_id = E1213_DOJO_1_BOSS_UNLOCKS
+    _allow_run_away = True
 
     _npc_slots = [
         BossFightLocationNPC(
@@ -6438,6 +6429,7 @@ class DojoSecondFight(BossFightLocation):
     _override_id = 515
     _pack_id = PACK178_DOJO_FIGHT_1
     _post_unlocks_event_id = E1214_DOJO_2_BOSS_UNLOCKS
+    _allow_run_away = True
     _npc_slots = [
         BossFightLocationNPC(
             R255_MONSTRO_TOWN_JINXS_DOJO,
@@ -6507,6 +6499,7 @@ class DojoThirdFight(BossFightLocation):
     _override_id = 516
     _pack_id = PACK187_DOJO_SECOND_BOSS
     _post_unlocks_event_id = E1215_DOJO_3_BOSS_UNLOCKS
+    _allow_run_away = True
     _npc_slots = [
         BossFightLocationNPC(
             R255_MONSTRO_TOWN_JINXS_DOJO,
@@ -6574,6 +6567,7 @@ class DojoFourthFight(BossFightLocation):
     _override_id = 517
     _pack_id = PACK188_DOJO_THIRD_BOSS
     _post_unlocks_event_id = E1216_DOJO_4_BOSS_UNLOCKS
+    _allow_run_away = True
     _npc_slots = [
         BossFightLocationNPC(
             R255_MONSTRO_TOWN_JINXS_DOJO,
@@ -6659,6 +6653,7 @@ class DojoFifthFight(BossFightLocation):
     _remake_only = True
     _pack_id = PACK189_DOJO_PREFIGHT
     _post_unlocks_event_id = E1217_DOJO_5_BOSS_UNLOCKS
+    _allow_run_away = True
     _npc_slots = [
         BossFightLocationNPC(
             R255_MONSTRO_TOWN_JINXS_DOJO,
@@ -7443,26 +7438,22 @@ class StatueRoomBossFight(BossFightLocation):
         BossFightLocationNPC(
             R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
             NPC_1,
-            BossSpriteSize.LARGE,
-            E0818_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0818_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
         BossFightLocationNPC(
             R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
             NPC_0,
-            BossSpriteSize.LARGE,
-            E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
         BossFightLocationNPC(
             R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
             NPC_3,
-            BossSpriteSize.LARGE,
-            E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
         BossFightLocationNPC(
             R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
             NPC_0,
-            BossSpriteSize.LARGE,
-            E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
     _dialogs_expecting_replacement = [
@@ -8290,8 +8281,7 @@ class VolcanoBridgeBossFight(BossFightLocation):
         BossFightLocationNPC(
             R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
             NPC_1,
-            BossSpriteSize.LARGE,
-            E0840_VOLCANO_FIRST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0840_VOLCANO_FIRST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
     _mook_henchman_slots = [
@@ -9024,7 +9014,7 @@ class ObstacleCourseFinalFight(BossFightLocation):
             self.prize,
             (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
         ):
-            m = self.prize.small_npc()
+            m = self.prize.smallest_npc()
             if m.animations.dojo_challenge is not None:
                 a = m.animations.dojo_challenge
                 cast(
@@ -9268,7 +9258,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, KamekBossFight):
             world.event_scripts.delete_command_by_identifier("kamek_palette")
-            m = self.prize.small_npc()
+            m = self.prize.smallest_npc()
             if isinstance(
                 self.prize,
                 (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
@@ -9407,8 +9397,7 @@ class KeepChandelierBossFight(BossFightLocation):
         BossFightLocationNPC(
             R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM,
             NPC_0,
-            BossSpriteSize.LARGE,
-            E0853_KEEP_FINAL_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0853_KEEP_FINAL_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
 
@@ -9429,7 +9418,9 @@ class KeepChandelierBossFight(BossFightLocation):
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, BoomerBossFight):
-            m = self.prize.large_npc()
+            # Use VRAM-constrained selection (max 4096 for chandelier room)
+            npc_model = self.prize.get_npc_for_slot(world, 4096)
+            m = npc_model()
             if (
                 m.animations.chandelier_challenge is not None
                 and m.animations.chandelier_challenge.total_duration is not None
@@ -10063,8 +10054,7 @@ class FinalBossFight(BossFightLocation):
         BossFightLocationNPC(
             R509_FACTORY_GROUNDS_SMITHYS_PAD,
             NPC_4,
-            BossSpriteSize.LARGE,
-            E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
+            sequence_setter_event_id=E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
     _mook_henchman_slots = [

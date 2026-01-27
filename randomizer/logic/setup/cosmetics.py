@@ -211,35 +211,41 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.toadstool_palette = random.choice(TOADSTOOL_PALETTES)
 
         if world.settings.isflag_enabled(ChangeNames):
-            world.allies._allies[0].name = world.mario_palette.name
+            # Only rename characters if the palette allows it
+            if world.mario_palette.rename_character:
+                world.allies._allies[0].name = world.mario_palette.name
             world.enemies.get_by_type(MARIOCLONEEnemy).set_name(
                 world.mario_palette.clone_name
             )
             world.enemies.get_by_type(MARIOCLONESEnemy).set_name(
                 world.mario_palette.strong_clone_name
             )
-            world.allies._allies[1].name = world.toadstool_palette.name
+            if world.toadstool_palette.rename_character:
+                world.allies._allies[1].name = world.toadstool_palette.name
             world.enemies.get_by_type(TOADSTOOL2Enemy).set_name(
                 world.toadstool_palette.clone_name
             )
             world.enemies.get_by_type(TOADSTOOL3Enemy).set_name(
                 world.toadstool_palette.strong_clone_name
             )
-            world.allies._allies[2].name = world.bowser_palette.name
+            if world.bowser_palette.rename_character:
+                world.allies._allies[2].name = world.bowser_palette.name
             world.enemies.get_by_type(BOWSERCLONEEnemy).set_name(
                 world.bowser_palette.clone_name
             )
             world.enemies.get_by_type(BOWSERCOPYSEnemy).set_name(
                 world.bowser_palette.strong_clone_name
             )
-            world.allies._allies[3].name = world.geno_palette.name
+            if world.geno_palette.rename_character:
+                world.allies._allies[3].name = world.geno_palette.name
             world.enemies.get_by_type(GENOCLONEEnemy).set_name(
                 world.geno_palette.clone_name
             )
             world.enemies.get_by_type(GENOCLONESEnemy).set_name(
                 world.geno_palette.strong_clone_name
             )
-            world.allies._allies[4].name = world.mallow_palette.name
+            if world.mallow_palette.rename_character:
+                world.allies._allies[4].name = world.mallow_palette.name
             world.enemies.get_by_type(MALLOWCLONEEnemy).set_name(
                 world.mallow_palette.clone_name
             )

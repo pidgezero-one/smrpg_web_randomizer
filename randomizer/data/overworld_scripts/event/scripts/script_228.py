@@ -32,8 +32,8 @@ from ....packets import *
 
 script = EventScript([
 	Set7000ToCurrentLevel(),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 41, ["EVENT_228_set_var_to_const_4"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 422, ["EVENT_228_set_var_to_const_6"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["EVENT_228_set_var_to_const_4"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["EVENT_228_set_var_to_const_6"]),
 	Return(),
 	SetVarToConst(ITEM_ID, RoomKeyItem, identifier="EVENT_228_set_var_to_const_4"),
 	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),

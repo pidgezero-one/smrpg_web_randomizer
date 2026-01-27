@@ -33,6 +33,7 @@ from ..data.variables.variable_names import (
 from enum import StrEnum
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import Battlefield
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
+    Formation,
     FormationMember,
 )
 from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
@@ -431,14 +432,19 @@ class BossFightHenchman:
 
 
 class BossFightPrize(Prize):
+    # The formation for this boss fight (contains formation_id, members, battlefield, etc.)
+    # If set, this takes precedence over _members/_force_battlefield/_force_start_event
+    _formation: Formation | None = None
+
+    # Legacy: these are used if _formation is not set
     _members: list[FormationMember]
     _force_battlefield: Battlefield | None = None
     _force_start_event: int | None = None
     _text: str
 
-    _big_npc: type[BossNPC] | None = None
-    _battle_npc: type[BossNPC] | None = None
-    _small_npc: type[BossNPC] 
+    # Ordered list of NPC models (largest VRAM to smallest)
+    # Must have at least one item
+    _npc_models: list[type[BossNPC]]
     _statue_npc: type[BossNPC] | None = None
 
     _character_henchmen: list[BossFightHenchman] | None = None
@@ -555,26 +561,63 @@ class BossFightPrize(Prize):
         return self._hp_slice_multipliers
 
     @property
-    def battle_npc(self) -> type[BossNPC]:
-        if self._battle_npc is not None:
-            return self._battle_npc
-        if self._big_npc is not None:
-            return self._big_npc
-        return self._small_npc
+    def npc_models(self) -> list[type[BossNPC]]:
+        """Ordered list of NPC models for this boss, from largest to smallest VRAM size.
 
-    @property
-    def large_npc(self) -> type[BossNPC]:
-        if self._big_npc is not None:
-            return self._big_npc
-        return self._small_npc
+        During slot assignment, the system iterates through this list and selects
+        the first model whose VRAM size fits within the slot's max VRAM capacity.
+        If none fit, the last (smallest) model is used as fallback.
+        """
+        if not self._npc_models:
+            raise ValueError(
+                f"{self.__class__.__name__} must define at least one NPC model in _npc_models"
+            )
+        return self._npc_models
 
-    @property
-    def small_npc(self) -> type[BossNPC]:
-        return self._small_npc
+    def get_npc_for_slot(self, world: "GameWorld", max_vram_size: int) -> type[BossNPC]:
+        """Select the appropriate NPC model for a slot with the given max VRAM capacity.
+
+        Iterates through npc_models (largest to smallest) and returns the first
+        model whose VRAM size <= max_vram_size. Falls back to the smallest model
+        (last in list) if none fit.
+
+        Args:
+            world: GameWorld instance for sprite lookups
+            max_vram_size: Maximum VRAM size the slot can accommodate
+
+        Returns:
+            The appropriate BossNPC subclass for the slot
+        """
+        models = self.npc_models
+        for model in models:
+            model_vram = model.get_vram_size(world)
+            if model_vram <= max_vram_size:
+                return model
+        # Fallback to smallest (last in list)
+        return models[-1]
 
     @property
     def statue_npc(self) -> type[BossNPC] | None:
+        """The NPC model to use for statue slots. Returns None if not defined."""
         return self._statue_npc
+
+    @property
+    def smallest_npc(self) -> type[BossNPC]:
+        """The smallest NPC model (last in npc_models list).
+
+        Use this for render functions that need a guaranteed-to-fit model
+        without VRAM calculations.
+        """
+        return self.npc_models[-1]
+
+    @property
+    def largest_npc(self) -> type[BossNPC]:
+        """The largest NPC model (first in npc_models list).
+
+        Use this for render functions that need the biggest available model
+        without VRAM calculations.
+        """
+        return self.npc_models[0]
 
     def get_dialog_replacements(
         self,
@@ -723,7 +766,23 @@ class BossFightPrize(Prize):
         return self._name or self._text
 
     @property
-    def formation(self) -> list[FormationMember]:
+    def formation(self) -> Formation | None:
+        """The Formation object for this boss fight, if defined.
+
+        When set, this Formation contains the formation_id that monster AI scripts
+        use for checks like IfCurrentlyInFormationID(). The formation is used
+        directly by the pack instead of overwriting the location's formation contents.
+        """
+        return self._formation
+
+    @property
+    def formation_members(self) -> list[FormationMember | None]:
+        """Get the list of FormationMember objects for stat calculations.
+
+        If _formation is set, returns its members. Otherwise falls back to _members.
+        """
+        if self._formation is not None:
+            return self._formation.members
         return self._members
 
     @property

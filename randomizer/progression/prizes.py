@@ -34,6 +34,55 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
 )
+from ..data.packs.pack_collection import (
+    FORM0055,
+    FORM0096,
+    FORM0123,
+    FORM0124,
+    FORM0137,
+    FORM0216,
+    FORM0217,
+    FORM0251,
+    FORM0258,
+    FORM0259,
+    FORM0260,
+    FORM0261,
+    FORM0266,
+    FORM0267,
+    FORM0268,
+    FORM0269,
+    FORM0271,
+    FORM0273,
+    FORM0274,
+    FORM0276,
+    FORM0277,
+    FORM0278,
+    FORM0279,
+    FORM0281,
+    FORM0282,
+    FORM0283,
+    FORM0284,
+    FORM0285,
+    FORM0286,
+    FORM0287,
+    FORM0288,
+    FORM0289,
+    FORM0290,
+    FORM0291,
+    FORM0292,
+    FORM0293,
+    FORM0294,
+    FORM0295,
+    FORM0296,
+    FORM0297,
+    FORM0298,
+    FORM0299,
+    FORM0314,
+    FORM0315,
+    FORM0316,
+    FORM0317,
+    FORM0322,
+)
 from ..data.items.items import (
     CrystalShardItem,
     ExtraShinyStoneItem,
@@ -2407,6 +2456,7 @@ class ToadstoolRecruitmentPrize(CharacterPrize):
 
 class HammerBrosFight(BossFightPrize):
     _text = "Hammer Bros."
+    _formation = FORM0293
     _members = [
         FormationMember(HAMMERBROEnemy, 135, 127),
         FormationMember(HAMMERBROEnemy, 199, 143),
@@ -2425,8 +2475,7 @@ class HammerBrosFight(BossFightPrize):
             )
         return EventScript(output)
 
-    _big_npc = HammerBroLargeObject
-    _small_npc = HammerBroSmallObject
+    _npc_models = [HammerBroLargeObject, HammerBroSmallObject]
     _statue_npc = HammerBroStatueObject
 
     _seaside_letter_name_if_sunken_ship_boss = "the Hammer Bros"
@@ -2469,6 +2518,7 @@ class HammerBrosFight(BossFightPrize):
 
 class Croco1BossFight(BossFightPrize):
     _text = "Croco 1"
+    _formation = FORM0273
     _members = [
         FormationMember(CROCO1Enemy, 183, 127),
     ]
@@ -2476,7 +2526,7 @@ class Croco1BossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Croco's flunkiess."
     _name = "Croco"
 
-    _small_npc = Croco1Object
+    _npc_models = [Croco1Object]
     _statue_npc = CrocoStatueObject
 
     _dialog_replacements = {
@@ -2515,6 +2565,7 @@ class Croco1BossFight(BossFightPrize):
 
 class MackBossFight(BossFightPrize):
     _text = "Mack"
+    _formation = FORM0289
     _members = [
         FormationMember(MACKEnemy, 199, 119),
         FormationMember(BODYGUARDEnemy, 135, 111),
@@ -2530,9 +2581,7 @@ class MackBossFight(BossFightPrize):
 
     _remake_name = "Claymorton"
 
-    _small_npc = MackSmallObject
-    _big_npc = MackMediumObject
-    _battle_npc = MackLargeObject
+    _npc_models = [MackLargeObject, MackMediumObject, MackSmallObject]
     _statue_npc = MackStatueObject
 
     _mook_henchmen = [BossFightHenchman(monster=BODYGUARDEnemy, model=ShysterHenchman)]
@@ -2622,6 +2671,7 @@ class MackBossFight(BossFightPrize):
 
 class PandoriteBossFight(BossFightPrize):
     _text = "Pandorite"
+    _formation = FORM0266
     _members = [
         FormationMember(PANDORITEEnemy, 183, 127),
     ]
@@ -2630,8 +2680,7 @@ class PandoriteBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss_remake = "Huhwhat's gremlins."
     _remake_name = "Huhwhat"
 
-    _small_npc = PandoriteSmallObject
-    _big_npc = PandoriteLargeObject
+    _npc_models = [PandoriteLargeObject, PandoriteSmallObject]
     _statue_npc = MimicStatueObject
 
     _dialog_replacements = {
@@ -2683,6 +2732,7 @@ class PandoriteBossFight(BossFightPrize):
 
 class Belome1BossFight(BossFightPrize):
     _text = "Belome 1"
+    _formation = FORM0278
     _members = [
         FormationMember(BELOME1Enemy, 183, 127),
     ]
@@ -2690,8 +2740,7 @@ class Belome1BossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Belome's clones."
     _name = "Belome"
 
-    _small_npc = Belome1SmallObject
-    _big_npc = Belome1LargeObject
+    _npc_models = [Belome1LargeObject, Belome1SmallObject]
     _statue_npc = BelomeSmallStatueObject
 
     _dialog_replacements = {
@@ -2730,6 +2779,7 @@ class Belome1BossFight(BossFightPrize):
 
 class BowyerBossFight(BossFightPrize):
     _text = "Bowyer"
+    _formation = FORM0291
     _members = [
         FormationMember(BOWYEREnemy, 183, 127),
     ]
@@ -2739,10 +2789,8 @@ class BowyerBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a longbow loosing arrows at"
     _seaside_letter_name_if_final_boss = "Bowyer's lackeys."
 
-    _small_npc = BowyerSmallObject
+    _npc_models = [BowyerLargeObject, BowyerOverworldObject, BowyerSmallObject]
     _statue_npc = BowyerStatueObject
-    _big_npc = BowyerOverworldObject
-    _battle_npc = BowyerLargeObject
 
     _mook_henchmen = [BossFightHenchman(monster=AEROEnemy, model=AeroHenchman)]
 
@@ -2822,6 +2870,7 @@ class BowyerBossFight(BossFightPrize):
 
 class Croco2BossFight(BossFightPrize):
     _text = "Croco 2"
+    _formation = FORM0274
     _members = [
         FormationMember(CROCO2Enemy, 183, 127),
     ]
@@ -2830,7 +2879,7 @@ class Croco2BossFight(BossFightPrize):
     _name = "Croco"
     _additional_enemies_to_scale = [CROOKEnemyHenchman]
 
-    _small_npc = Croco2Object
+    _npc_models = [Croco2Object]
     _statue_npc = CrocoStatueObject
 
     _character_henchmen = [
@@ -2895,6 +2944,7 @@ class Croco2BossFight(BossFightPrize):
 
 class PunchinelloBossFight(BossFightPrize):
     _text = "Punchinello 1"
+    _formation = FORM0251
     _members = [
         FormationMember(PUNCHINELLOEnemy, 199, 119),
         FormationMember(MICROBOMBEnemy, 135, 119, hidden_at_start=True),
@@ -2911,8 +2961,7 @@ class PunchinelloBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a demolitionist stomping"
     _seaside_letter_name_if_final_boss = "Punchinello's demo team."
 
-    _small_npc = PunchinelloSmallObject
-    _big_npc = PunchinelloLargeObject
+    _npc_models = [PunchinelloLargeObject, PunchinelloSmallObject]
     _statue_npc = PunchinelloStatueObject
 
     _mook_henchmen = [
@@ -2998,6 +3047,7 @@ class PunchinelloBossFight(BossFightPrize):
 
 class BoosterBossFight(BossFightPrize):
     _text = "Booster 1"
+    _formation = FORM0271
     _force_start_event = BE0012_DIALOGUE_FROM_BOOSTER_FIGHT
     _members = [
         FormationMember(BOOSTEREnemy, 183, 127),
@@ -3011,7 +3061,7 @@ class BoosterBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Booster's frenemies."
     _name = "Booster"
 
-    _small_npc = BoosterObject
+    _npc_models = [BoosterObject]
     _statue_npc = BoosterStatueObject
 
     _character_henchmen = [
@@ -3075,6 +3125,7 @@ class BoosterBossFight(BossFightPrize):
 
 class KnifeGuyGrateGuyBossFight(BossFightPrize):
     _text = "Knife Guy & Grate Guy"
+    _formation = FORM0287
     _members = [
         FormationMember(KNIFEGUYEnemy, 151, 119),
         FormationMember(GRATEGUYEnemy, 199, 143),
@@ -3083,9 +3134,8 @@ class KnifeGuyGrateGuyBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a couple clowns bouncing"
     _seaside_letter_name_if_final_boss = "Grate Guy's clowns."
 
-    _small_npc = GrateGuySmallObject
+    _npc_models = [GrateGuyLargeObject, GrateGuySmallObject]
     _statue_npc = GrateGuyStatueObject
-    _big_npc = GrateGuyLargeObject
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """GRATE GUY: Get lost, buddy, I'm\n busy![await]""",
@@ -3132,6 +3182,7 @@ class KnifeGuyGrateGuyBossFight(BossFightPrize):
 
 class BundtBossFight(BossFightPrize):
     _text = "Bundt 1"
+    _formation = FORM0286
     _members = [
         FormationMember(BUNDTEnemy, 199, 127),
         FormationMember(RASPBERRYEnemy, 199, 119),
@@ -3145,9 +3196,8 @@ class BundtBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Bundt's dinner guests."
     _name = "Bundt"
 
-    _small_npc = BundtSmallObject
+    _npc_models = [BundtLargeObject, BundtSmallObject]
     _statue_npc = BundtStatueObject
-    _big_npc = BundtLargeObject
 
     _mook_henchmen = [
         BossFightHenchman(monster=TORTEEnemy, model=TorteHenchman),
@@ -3211,6 +3261,7 @@ class BundtBossFight(BossFightPrize):
 
 class KingCalamariBossFight(BossFightPrize):
     _text = "King Calamari"
+    _formation = FORM0277
     _members = [
         FormationMember(KINGCALAMARIEnemy, 222, 94, hidden_at_start=True),
         FormationMember(TENTACLESEnemy2, 136, 115, hidden_at_start=True),
@@ -3229,7 +3280,7 @@ class KingCalamariBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a giant squid lurking"
     _seaside_letter_name_if_final_boss = "King Calamari's hands."
 
-    _small_npc = BlooberObject
+    _npc_models = [BlooberObject]
     _statue_npc = BlooberStatueObject
 
     _mook_henchmen = [
@@ -3282,6 +3333,7 @@ class KingCalamariBossFight(BossFightPrize):
 
 class HidonBossFight(BossFightPrize):
     _text = "Hidon"
+    _formation = FORM0267
     _members = [
         FormationMember(HIDONEnemy, 167, 119),
         FormationMember(GOOMBETTEEnemy, 135, 111, hidden_at_start=True),
@@ -3302,9 +3354,8 @@ class HidonBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss_remake = "Whuhoh's Goombas."
     _remake_name = "Whuhoh"
 
-    _small_npc = HidonSmallObject
+    _npc_models = [HidonLargeObject, HidonSmallObject]
     _statue_npc = MimicStatueObject
-    _big_npc = HidonLargeObject
 
     _mook_henchmen = [
         BossFightHenchman(monster=GOOMBETTEEnemy, model=GoombetteLowerHenchman),
@@ -3403,6 +3454,7 @@ class HidonBossFight(BossFightPrize):
 
 class JohnnyBossFight(BossFightPrize):
     _text = "Johnny 1"
+    _formation = FORM0276
     _members = [
         FormationMember(JOHNNYEnemy, 183, 127),
         FormationMember(BANDANABLUEEnemy, 135, 111),
@@ -3427,9 +3479,8 @@ class JohnnyBossFight(BossFightPrize):
     ]
     _scaling_excluded_enemies = [WATERCRYSTALEnemy, WATERCRYSTALEnemy]
 
-    _small_npc = JohnnySmallObject
+    _npc_models = [JohnnyLargeObject, JohnnySmallObject]
     _statue_npc = JohnnyStatueObject
-    _big_npc = JohnnyLargeObject
 
     _character_henchmen = [
         BossFightHenchman(monster=BANDANABLUEEnemy, model=BandanaBlueHenchman),
@@ -3495,6 +3546,7 @@ class JohnnyBossFight(BossFightPrize):
 
 class YaridovichBossFight(BossFightPrize):
     _text = "Yaridovich"
+    _formation = FORM0290
     _members = [
         FormationMember(YARIDOVICHEnemy, 183, 127),
         FormationMember(YARIDOVICHMirageEnemy, 183, 127, hidden_at_start=True),
@@ -3510,9 +3562,7 @@ class YaridovichBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss_remake = "Speardovich's spies."
     _remake_name = "Speardovich"
 
-    _small_npc = YaridovichSmallObject
-    _big_npc = YaridOverworldObject
-    _battle_npc = YaridovichLargeObject
+    _npc_models = [YaridovichLargeObject, YaridOverworldObject, YaridovichSmallObject]
     _statue_npc = YaridovichStatueObject
 
     _mook_henchmen = [
@@ -3589,6 +3639,7 @@ class YaridovichBossFight(BossFightPrize):
 
 class MokuraBossFight(BossFightPrize):
     _text = "Mokura"
+    _formation = FORM0314
     _members = [
         FormationMember(FORMLESSEnemy, 167, 135),
         FormationMember(MOKURAEnemy, 167, 135, hidden_at_start=True),
@@ -3600,8 +3651,7 @@ class MokuraBossFight(BossFightPrize):
     _anchor_enemy = MOKURAEnemy
     _hp_slice_excluded_enemies = [FORMLESSEnemy]
 
-    _small_npc = MokuraSmallObject
-    _big_npc = MokuraLargeObject
+    _npc_models = [MokuraLargeObject, MokuraSmallObject]
     _statue_npc = MokuraStatueObject
 
     _tiny_henchmen = [
@@ -3658,6 +3708,7 @@ class MokuraBossFight(BossFightPrize):
 
 class Belome2BossFight(BossFightPrize):
     _text = "Belome 2"
+    _formation = FORM0279
     _members = [
         FormationMember(BELOME2Enemy, 183, 127),
         FormationMember(MARIOCLONEEnemy, 135, 119, hidden_at_start=True),
@@ -3695,8 +3746,7 @@ class Belome2BossFight(BossFightPrize):
         ),
     ]
 
-    _small_npc = Belome2SmallObject
-    _big_npc = Belome2LargeObject
+    _npc_models = [Belome2LargeObject, Belome2SmallObject]
     _statue_npc = BelomeSmallStatueObject
 
     _dialog_replacements = {
@@ -3765,13 +3815,14 @@ class Belome2BossFight(BossFightPrize):
 
 class JaggerBossFight(BossFightPrize):
     _text = "Jagger"
+    _formation = FORM0299
     _members = [
         FormationMember(JAGGEREnemy, 183, 127),
     ]
     _seaside_letter_name_if_volcano_boss = "a turtle shoulder-charging"
     _seaside_letter_name_if_final_boss = "Jagger's compatriots."
 
-    _small_npc = TerrapinObject
+    _npc_models = [TerrapinObject]
     _statue_npc = TerrapinStatueObject
 
     _dialog_replacements = {
@@ -3808,6 +3859,7 @@ class JaggerBossFight(BossFightPrize):
 
 class Jinx1BossFight(BossFightPrize):
     _text = "Jinx 1"
+    _formation = FORM0288
     _members = [
         FormationMember(JINX1Enemy, 183, 127),
     ]
@@ -3816,7 +3868,7 @@ class Jinx1BossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Jinx's kouhai."
     _name = "Jinx"
 
-    _small_npc = Jinx1SmallObject
+    _npc_models = [Jinx1SmallObject]
     _statue_npc = JinxStatueObject
 
     _dialog_replacements = {
@@ -3854,6 +3906,7 @@ class Jinx1BossFight(BossFightPrize):
 
 class Jinx2BossFight(BossFightPrize):
     _text = "Jinx 2"
+    _formation = FORM0297
     _members = [
         FormationMember(JINX2Enemy, 183, 127),
     ]
@@ -3862,7 +3915,7 @@ class Jinx2BossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Jinx's kouhai."
     _name = "Jinx"
 
-    _small_npc = Jinx2SmallObject
+    _npc_models = [Jinx2SmallObject]
     _statue_npc = JinxStatueObject
 
     _dialog_replacements = {
@@ -3900,6 +3953,7 @@ class Jinx2BossFight(BossFightPrize):
 
 class Jinx3BossFight(BossFightPrize):
     _text = "Jinx 3"
+    _formation = FORM0298
     _members = [
         FormationMember(JINX3Enemy, 183, 127),
     ]
@@ -3908,7 +3962,7 @@ class Jinx3BossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Jinx's kouhai."
     _name = "Jinx"
 
-    _small_npc = Jinx3SmallObject
+    _npc_models = [Jinx3SmallObject]
     _statue_npc = JinxStatueObject
 
     _dialog_replacements = {
@@ -3946,6 +4000,7 @@ class Jinx3BossFight(BossFightPrize):
 
 class CulexBossFight(BossFightPrize):
     _text = "Culex 1"
+    _formation = FORM0322
     _members = [
         FormationMember(CULEXEnemy, 183, 103),
         FormationMember(FIRECRYSTALEnemy, 135, 103, hidden_at_start=True),
@@ -3965,9 +4020,8 @@ class CulexBossFight(BossFightPrize):
         WINDCRYSTALEnemy,
     ]
 
-    _small_npc = CulexSmallObject
+    _npc_models = [CulexLargeObject, CulexSmallObject]
     _statue_npc = CulexStatueObject
-    _battle_npc = CulexLargeObject
 
     _character_henchmen = [
         BossFightHenchman(monster=FIRECRYSTALEnemy, model=FireCrystalHenchman),
@@ -4035,6 +4089,7 @@ class CulexBossFight(BossFightPrize):
 
 class BoxBoyBossFight(BossFightPrize):
     _text = "Box Boy"
+    _formation = FORM0268
     _members = [
         FormationMember(BOXBOYEnemy, 183, 127),
         FormationMember(FAUTSOEnemy, 151, 111, hidden_at_start=True),
@@ -4046,9 +4101,8 @@ class BoxBoyBossFight(BossFightPrize):
     _hp_slice_excluded_enemies = [FAUTSOEnemy]
     _anchor_enemy = BOXBOYEnemy
 
-    _small_npc = BoxBoySmallObject
+    _npc_models = [BoxBoyLargeObject, BoxBoySmallObject]
     _statue_npc = MimicStatueObject
-    _big_npc = BoxBoyLargeObject
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOX BOY: How many times are you\n gonna wake me up? Get lost![await]""",
@@ -4100,6 +4154,7 @@ class BoxBoyBossFight(BossFightPrize):
 
 class MegasmilaxBossFight(BossFightPrize):
     _text = "Megasmilax"
+    _formation = FORM0283
     _members = [
         FormationMember(SMILAXEnemy, 180, 157),
         FormationMember(SMILAXEnemy, 164, 175, hidden_at_start=True),
@@ -4116,9 +4171,8 @@ class MegasmilaxBossFight(BossFightPrize):
     _extra_hp_enemies = [SMILAXEnemy, SMILAXEnemy, SMILAXEnemy]
     _additional_enemies_to_scale = [PIRANHAPLANTEnemyHenchman]
 
-    _small_npc = PiranhaPlantObject
+    _npc_models = [MegasmilaxLargeObject, PiranhaPlantObject]
     _statue_npc = PiranhaPlantStatueObject
-    _big_npc = MegasmilaxLargeObject
 
     _mook_henchmen = [
         BossFightHenchman(monster=PIRANHAPLANTEnemyHenchman, model=PiranhaPlantHenchman),
@@ -4195,15 +4249,15 @@ class MegasmilaxBossFight(BossFightPrize):
 
 class DodoBossFight(BossFightPrize):
     _text = "Dodo"
+    _formation = FORM0315
     _members = [
         FormationMember(DODOEnemySolo, 183, 127),
     ]
     _seaside_letter_name_if_volcano_boss = "a large bird flapping about"
     _seaside_letter_name_if_final_boss = "Dodo's flock."
 
-    _small_npc = DodoSmallObject
+    _npc_models = [DodoLargeObject, DodoSmallObject]
     _statue_npc = DodoStatueObject
-    _big_npc = DodoLargeObject
 
     _tiny_henchmen = [
         BossFightHenchman(monster=DODOEnemy, model=FeatherHenchman),
@@ -4246,6 +4300,7 @@ class DodoBossFight(BossFightPrize):
 
 class BirdettaBossFight(BossFightPrize):
     _text = "Birdo"
+    _formation = FORM0285
     _members = [
         FormationMember(BIRDETTAEnemy, 167, 118, hidden_at_start=True),
         FormationMember(SHELLYEnemy, 171, 103),
@@ -4265,9 +4320,8 @@ class BirdettaBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a giant egg rolling"
     _seaside_letter_name_if_final_boss = "Birdo's bad eggs."
 
-    _small_npc = BirdettaSmallObject
+    _npc_models = [BirdettaLargeObject, BirdettaSmallObject]
     _statue_npc = BirdettaStatueObject
-    _battle_npc = BirdettaLargeObject
 
     _mook_henchmen = [
         BossFightHenchman(monster=EGGBERTEnemy, model=EggbertHenchman),
@@ -4367,6 +4421,7 @@ class BirdettaBossFight(BossFightPrize):
 
 class ValentinaBossFight(BossFightPrize):
     _text = "Valentina"
+    _formation = FORM0281
     _members = [
         FormationMember(VALENTINAEnemy, 183, 127),
         FormationMember(DODOEnemy, 199, 151, hidden_at_start=True),
@@ -4379,9 +4434,8 @@ class ValentinaBossFight(BossFightPrize):
     _hp_pie_contribution_multipliers = {DODOEnemy: 0.4}
     _hp_slice_multipliers = {DODOEnemy: 2.5}
 
-    _small_npc = ValentinaSmallObject
+    _npc_models = [ValentinaLargeObject, ValentinaSmallObject]
     _statue_npc = NimbusLandStatueObject
-    _battle_npc = ValentinaLargeObject
 
     _mook_henchmen = [
         BossFightHenchman(monster=BLUEBIRDEnemyHenchman, model=BluebirdHenchman),
@@ -4457,6 +4511,7 @@ class ValentinaBossFight(BossFightPrize):
 
 class CzarDragonBossFight(BossFightPrize):
     _text = "Czar Dragon"
+    _formation = FORM0282
     _members = [
         FormationMember(CZARDRAGONEnemy, 183, 143),
         FormationMember(ZOMBONEEnemy, 183, 143, hidden_at_start=True),
@@ -4474,10 +4529,8 @@ class CzarDragonBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a huge dragon blazing"
     _seaside_letter_name_if_final_boss = "the Czar Dragon's spawn."
 
-    _small_npc = CzarDragonSmallObject
+    _npc_models = [CzarDragonLargeObject, CzarDragonMediumObject, CzarDragonSmallObject]
     _statue_npc = CzarStatueObject
-    _big_npc = CzarDragonMediumObject
-    _battle_npc = CzarDragonLargeObject
 
     _mook_henchmen = [
         BossFightHenchman(monster=HELIOEnemy, model=HelioHenchman),
@@ -4544,6 +4597,7 @@ class CzarDragonBossFight(BossFightPrize):
 
 class AxemRangersBossFight(BossFightPrize):
     _text = "Axem Rangers"
+    _formation = FORM0292
     _members = [
         FormationMember(AXEMRANGERSEnemy, 201, 79),
         FormationMember(AXEMREDEnemy, 135, 111, hidden_at_start=True),
@@ -4573,7 +4627,7 @@ class AxemRangersBossFight(BossFightPrize):
         BossFightHenchman(monster=AXEMGREENEnemy, model=AxemGreenHenchman),
     ]
 
-    _small_npc = AxemRedObject
+    _npc_models = [AxemRedObject]
     _statue_npc = AxemRedStatueObject
 
     _dialog_replacements = {
@@ -4646,6 +4700,7 @@ class AxemRangersBossFight(BossFightPrize):
 
 class ChesterBossFight(BossFightPrize):
     _text = "Chester"
+    _formation = FORM0269
     _members = [
         FormationMember(CHESTEREnemy, 183, 127),
         FormationMember(BAHAMUTTEnemy, 135, 119, hidden_at_start=True),
@@ -4655,9 +4710,8 @@ class ChesterBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss_remake = "Comeon's monsters."
     _remake_name = "Comeon"
 
-    _small_npc = ChesterSmallObject
+    _npc_models = [ChesterLargeObject, ChesterSmallObject]
     _statue_npc = MimicStatueObject
-    _big_npc = ChesterLargeObject
 
     _anchor_enemy = CHESTEREnemy
     _hp_slice_excluded_enemies = [BAHAMUTTEnemy]
@@ -4713,6 +4767,7 @@ class ChesterBossFight(BossFightPrize):
 
 class KamekBossFight(BossFightPrize):
     _text = "Magikoopa"
+    _formation = FORM0316
     _members = [
         FormationMember(KAMEKEnemy, 215, 111),
         FormationMember(TERRAPINEnemy, 167, 135, hidden_at_start=True),
@@ -4737,9 +4792,8 @@ class KamekBossFight(BossFightPrize):
         BossFightHenchman(monster=BOBOMBEnemyHenchman, model=MicrobombHenchman),
     ]
 
-    _small_npc = MagikoopaSmallObject
+    _npc_models = [MagikoopaLargeObject, MagikoopaSmallObject]
     _statue_npc = MagikoopaStatueObject
-    _big_npc = MagikoopaLargeObject
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MAGIKOOPA: Normally,[delay] when I\n summon an egg,[delay] it doesn't\n encapsulate me...[await]""",
@@ -4810,6 +4864,7 @@ class KamekBossFight(BossFightPrize):
 
 class BoomerBossFight(BossFightPrize):
     _text = "Boomer"
+    _formation = FORM0317
     _members = [
         FormationMember(BOOMEREnemy, 215, 143),
         FormationMember(HANGINSHYEnemy, 66, 115),
@@ -4820,10 +4875,8 @@ class BoomerBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Boomer's soldiers."
     _hp_slice_excluded_enemies = [HANGINSHYEnemy, HANGINSHYEnemy]
 
-    _small_npc = BoomerSmallObject
+    _npc_models = [BoomerLargeObject, BoomerOverworldObject, BoomerSmallObject]
     _statue_npc = BoomerStatueObject
-    _big_npc = BoomerOverworldObject
-    _battle_npc = BoomerLargeObject
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOOMER: I lost fair and square.[await]\n Now it is time for me to sleep.[await]""",
@@ -4861,6 +4914,7 @@ class BoomerBossFight(BossFightPrize):
 
 class ExorBossFight(BossFightPrize):
     _text = "Exor"
+    _formation = FORM0296
     _members = [
         FormationMember(EXOREnemy, 193, 64),
         FormationMember(NEOSQUIDEnemy, 187, 136),
@@ -4877,7 +4931,7 @@ class ExorBossFight(BossFightPrize):
     ]  # exor and left eye are minimum required to defeat so only they count
     _anchor_enemy = [RIGHTEYEEnemy, LEFTEYEEnemy, NEOSQUIDEnemy]
 
-    _small_npc = ExorSmallObject
+    _npc_models = [ExorSmallObject]
     _statue_npc = ExorStatueObject
 
     _dialog_replacements = {
@@ -4928,6 +4982,7 @@ class ExorBossFight(BossFightPrize):
 
 class CountdownBossFight(BossFightPrize):
     _text = "Count Down"
+    _formation = FORM0284
     _members = [
         FormationMember(COUNTDOWNEnemy, 150, 93),
         FormationMember(DINGALINGEnemy, 158, 52),
@@ -4940,7 +4995,7 @@ class CountdownBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a noisy clock winding"
     _seaside_letter_name_if_final_boss = "Count Down's friends."
 
-    _small_npc = CountDownGridplaneObject
+    _npc_models = [CountDownGridplaneObject]
     _statue_npc = CountDownStatueObject
 
     _mook_henchmen = [
@@ -5012,6 +5067,7 @@ class CountdownBossFight(BossFightPrize):
 
 class CloakerDominoBossFight(BossFightPrize):
     _text = "Cloaker & Domino"
+    _formation = FORM0294
     _members = [
         FormationMember(CLOAKEREnemy, 151, 111),
         FormationMember(DOMINOEnemy, 215, 159),
@@ -5029,8 +5085,7 @@ class CloakerDominoBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a snake slithering around"
     _seaside_letter_name_if_final_boss = "Domino's snakes."
 
-    _small_npc = DominoSmallObject
-    _big_npc = DominoLargeObject
+    _npc_models = [DominoLargeObject, DominoSmallObject]
     _statue_npc = DominoStatueObject
 
     _dialog_replacements = {
@@ -5069,6 +5124,7 @@ class CloakerDominoBossFight(BossFightPrize):
 
 class ClerkBossFight(BossFightPrize):
     _text = "Clerk"
+    _formation = FORM0258
     _members = [
         FormationMember(CLERKEnemy, 199, 119),
         FormationMember(MADMALLETEnemyHenchman, 135, 119),
@@ -5078,10 +5134,8 @@ class ClerkBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a yellow-clad smith trudging"
     _seaside_letter_name_if_final_boss = "the Clerk's minions."
 
+    _npc_models = [ClerkBattleObject, ClerkLargeObject, ClerkSmallObject]
     _statue_npc = ShovelKnightStatueObject
-    _small_npc = ClerkSmallObject
-    _big_npc = ClerkLargeObject
-    _battle_npc = ClerkBattleObject
 
     _mook_henchmen = [
         BossFightHenchman(monster=MADMALLETEnemyHenchman, model=MadMalletHenchman),
@@ -5143,6 +5197,7 @@ class ClerkBossFight(BossFightPrize):
 
 class ManagerBossFight(BossFightPrize):
     _text = "Manager"
+    _formation = FORM0259
     _members = [
         FormationMember(MANAGEREnemy, 199, 119),
         FormationMember(POUNDEREnemyHenchman, 151, 111),
@@ -5153,10 +5208,8 @@ class ManagerBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a blue-clad smith trudging"
     _seaside_letter_name_if_final_boss = "the Manager's minions."
 
+    _npc_models = [ManagerBattleObject, ManagerLargeObject, ManagerSmallObject]
     _statue_npc = ShovelKnightStatueObject
-    _small_npc = ManagerSmallObject
-    _big_npc = ManagerLargeObject
-    _battle_npc = ManagerBattleObject
 
     _mook_henchmen = [
         BossFightHenchman(monster=POUNDEREnemyHenchman, model=PounderHenchman),
@@ -5218,6 +5271,7 @@ class ManagerBossFight(BossFightPrize):
 
 class DirectorBossFight(BossFightPrize):
     _text = "Director"
+    _formation = FORM0260
     _members = [
         FormationMember(DIRECTOREnemy, 183, 127),
         FormationMember(POUNDETTEEnemyHenchman, 135, 119),
@@ -5229,10 +5283,8 @@ class DirectorBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a red-clad smith trudging"
     _seaside_letter_name_if_final_boss = "the Director's minions."
 
+    _npc_models = [DirectorBattleObject, DirectorLargeObject, DirectorSmallObject]
     _statue_npc = ShovelKnightStatueObject
-    _small_npc = DirectorSmallObject
-    _big_npc = DirectorLargeObject
-    _battle_npc = DirectorBattleObject
 
     _mook_henchmen = [
         BossFightHenchman(monster=POUNDETTEEnemyHenchman, model=PoundetteHenchman),
@@ -5294,6 +5346,7 @@ class DirectorBossFight(BossFightPrize):
 
 class GunyolkBossFight(BossFightPrize):
     _text = "Gunyolk"
+    _formation = FORM0261
     _members = [
         FormationMember(GUNYOLKEnemy, 199, 103),
         FormationMember(FACTORYCHIEFEnemy, 231, 151),
@@ -5302,7 +5355,7 @@ class GunyolkBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a big machine rolling"
     _seaside_letter_name_if_final_boss = "the Factory Chief's goons."
 
-    _small_npc = FactoryChiefObject
+    _npc_models = [FactoryChiefObject]
     _statue_npc = FactoryChiefStatueObject
 
     _dialog_replacements = {
@@ -5341,6 +5394,7 @@ class GunyolkBossFight(BossFightPrize):
 
 class SmithyBossFight(BossFightPrize):
     _text = "Smithy"
+    _formation = FORM0295
     _members = [
         FormationMember(SMITHY1Enemy, 199, 127),
         FormationMember(SMELTEREnemy, 87, 87),
@@ -5364,10 +5418,8 @@ class SmithyBossFight(BossFightPrize):
         SMITHYTankEnemy,
     ]
 
-    _small_npc = SmithySmallObject
+    _npc_models = [SmithyLargeObject, SmithyBodyOverworldObject, SmithySmallObject]
     _statue_npc = SmithyStatueObject
-    _big_npc = SmithyBodyOverworldObject
-    _battle_npc = SmithyLargeObject
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """SMITHY: How utterly annoying!\n Leave me alone![await]""",
@@ -5405,6 +5457,7 @@ class SmithyBossFight(BossFightPrize):
 
 class Punchinello2BossFight(BossFightPrize):
     _text = "Punchinello 2"
+    _formation = FORM0124
     _members = [
         FormationMember(PUNCHINELLO2Enemy, 188, 116),
         FormationMember(STRONGBOBOMB3Enemy, 145, 103, hidden_at_start=True),
@@ -5425,8 +5478,7 @@ class Punchinello2BossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a demolitionist stomping"
     _seaside_letter_name_if_final_boss = "Punchinello's demo team."
 
-    _small_npc = Punchinello2SmallObject
-    _big_npc = Punchinello2LargeObject
+    _npc_models = [Punchinello2LargeObject, Punchinello2SmallObject]
     _statue_npc = PunchinelloStatueObject
 
     _dialog_replacements = {
@@ -5465,6 +5517,7 @@ class Punchinello2BossFight(BossFightPrize):
 
 class Booster2BossFight(BossFightPrize):
     _text = "Booster 2"
+    _formation = FORM0123
     _members = [
         FormationMember(BOOSTEREnemy2, 184, 116),
         FormationMember(SNIFIT2Enemy, 156, 132),
@@ -5478,7 +5531,7 @@ class Booster2BossFight(BossFightPrize):
     _name = "Booster"
     _hp_slice_excluded_enemies = [BOOSTERDUMMY]
 
-    _small_npc = Booster2SmallObject
+    _npc_models = [Booster2SmallObject]
     _statue_npc = BoosterStatueObject
 
     _dialog_replacements = {
@@ -5514,6 +5567,7 @@ class Booster2BossFight(BossFightPrize):
 
 class Bundt2BossFight(BossFightPrize):
     _text = "Bundt 2"
+    _formation = FORM0137
     _members = [
         FormationMember(BUNDT2Enemy, 199, 127),
         FormationMember(RASPBERRY2Enemy, 199, 119),
@@ -5528,9 +5582,8 @@ class Bundt2BossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Bundt's dinner guests."
     _name = "Bundt"
 
-    _small_npc = Bundt2SmallObject
+    _npc_models = [Bundt2LargeObject, Bundt2SmallObject]
     _statue_npc = BundtStatueObject
-    _big_npc = Bundt2LargeObject
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BUNDT: La la la la la la la la la~[await]""",
@@ -5569,6 +5622,7 @@ class Bundt2BossFight(BossFightPrize):
 
 class Johnny2Fight(BossFightPrize):
     _text = "Johnny 2"
+    _formation = FORM0216
     _members = [
         FormationMember(JOHNNYEnemy2, 165, 121),
     ]
@@ -5577,9 +5631,8 @@ class Johnny2Fight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Johnny's crew."
     _seaside_letter_name_if_sunken_ship_boss = "Jonathan “Johnny” Jones"
 
-    _small_npc = Johnny2SmallObject
+    _npc_models = [Johnny2LargeObject, Johnny2SmallObject]
     _statue_npc = JohnnyStatueObject
-    _big_npc = Johnny2LargeObject
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JOHNNY: Matey, it'd be mighty fun\n to spar again, but I'm tryin' to\n sleep now.[await]""",
@@ -5603,6 +5656,7 @@ class Johnny2Fight(BossFightPrize):
 
 class Belome3Fight(BossFightPrize):
     _text = "Belome 3"
+    _formation = FORM0055
     _members = [
         FormationMember(BELOMEEnemy3, 183, 127),
         FormationMember(MARIOCLONESEnemy, 135, 119, hidden_at_start=True),
@@ -5616,8 +5670,7 @@ class Belome3Fight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Belome's clones."
     _name = "Belome"
 
-    _small_npc = Belome3SmallObject
-    _big_npc = Belome3LargeObject
+    _npc_models = [Belome3LargeObject, Belome3SmallObject]
     _statue_npc = BelomeSmallStatueObject
 
     _dialog_replacements = {
@@ -5656,6 +5709,7 @@ class Belome3Fight(BossFightPrize):
 
 class Jinx4BossFight(BossFightPrize):
     _text = "Jinx 4"
+    _formation = FORM0217
     _members = [
         FormationMember(JINXEnemy4, 181, 122),
         FormationMember(TeamGaugeEnemy, 36, 200),
@@ -5667,7 +5721,7 @@ class Jinx4BossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Jinx's kouhai."
     _name = "Jinx"
 
-    _small_npc = Jinx4SmallObject
+    _npc_models = [Jinx4SmallObject]
     _statue_npc = JinxStatueObject
 
     _dialog_replacements = {
@@ -5705,6 +5759,7 @@ class Jinx4BossFight(BossFightPrize):
 
 class Culex3DBossFight(BossFightPrize):
     _text = "Culex 2"
+    _formation = FORM0096
     _members = [
         FormationMember(CULEX3DEnemy, 183, 103),
         FormationMember(FIRECRYS3DEnemy, 135, 103, hidden_at_start=True),
@@ -5719,9 +5774,8 @@ class Culex3DBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Culex's travelers."
     _name = "Culex"
 
-    _small_npc = CulexSmallObject
+    _npc_models = [CulexLargeObject, CulexSmallObject]
     _statue_npc = CulexStatueObject
-    _battle_npc = CulexLargeObject
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It is not an effective way to\n grind experience points.[await]""",

@@ -116,9 +116,8 @@ class Palette:
         return output
 
     @property
-    def clone_name(self, rename_character=None) -> str:
-        rename = self.rename_character if rename_character is None else rename_character
-        name = (self.name if rename else self.original_name).upper()
+    def clone_name(self) -> str:
+        name = (self.name if self.rename_character else self.original_name).upper()
         if len(name) <= 7:
             return f"{name} CLONE"
         if len(name) <= 8:
@@ -128,9 +127,8 @@ class Palette:
         return f"{name[0:10]}. 2"
 
     @property
-    def strong_clone_name(self, rename_character=None) -> str:
-        rename = self.rename_character if rename_character is None else rename_character
-        name = (self.name if rename else self.original_name).upper()
+    def strong_clone_name(self) -> str:
+        name = (self.name if self.rename_character else self.original_name).upper()
         if len(name) <= 5:
             return f"{name} CLONE S"
         if len(name) <= 6:

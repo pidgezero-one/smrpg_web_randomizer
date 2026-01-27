@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	Set7000ToCurrentLevel(),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 422, ["EVENT_227_set_var_to_const_3"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["EVENT_227_set_var_to_const_3"]),
 	Return(),
 	SetVarToConst(ITEM_ID, FireBombItem, identifier="EVENT_227_set_var_to_const_3"),
 	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG)

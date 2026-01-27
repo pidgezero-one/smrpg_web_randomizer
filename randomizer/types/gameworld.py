@@ -3,7 +3,7 @@ from typing import Any, Callable, Mapping, TypeVar, cast
 import random
 import hashlib
 import re
-from copy import copy
+from copy import copy, deepcopy
 from concurrent.futures import ThreadPoolExecutor
 
 #
@@ -800,7 +800,7 @@ class GameWorld:
         self.action_scripts = action_scripts
         self.packets = packets
         self.battle_packs = battle_packs
-        self.rooms = rooms
+        self.rooms = deepcopy(rooms)
         self.shops = shops
         self.spells = spells
         self.sprites = sprites

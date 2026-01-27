@@ -1533,17 +1533,10 @@ class BossFightLocationHenchmanNPC:
         )
 
 
-class BossSpriteSize(StrEnum):
-    SMALL = "Small"
-    LARGE = "Medium"
-    BATTLE = "Large"
-    STATUE = "Statue"
-
-
 class BossFightLocationNPC:
     _room_id: int
     _npc_id: AreaObject
-    _max_sprite_size: BossSpriteSize = BossSpriteSize.SMALL
+    _vram_size_override: int | None = None
     _sequence_setter_event_id: int | None = None
 
     @property
@@ -1555,23 +1548,41 @@ class BossFightLocationNPC:
         return self._npc_id
 
     @property
-    def max_sprite_size(self) -> BossSpriteSize:
-        return self._max_sprite_size
+    def vram_size_override(self) -> int | None:
+        """Manual VRAM size override, if specified."""
+        return self._vram_size_override
 
     @property
     def sequence_setter_event_id(self) -> int | None:
         return self._sequence_setter_event_id
 
+    def get_max_vram_size(self, world: "GameWorld") -> int:
+        """Compute the maximum VRAM size this slot can support.
+
+        If vram_size_override is set, returns that value.
+        Otherwise, retrieves the original room NPC's sprite vram_size.
+        """
+        if self._vram_size_override is not None:
+            return self._vram_size_override
+
+        room = world.rooms._rooms[self._room_id]
+        assert room is not None
+        obj = room.get_npc_by_target_id(self._npc_id)
+        assert obj is not None
+        sprite_id = obj._npc.sprite_id
+        sprite = world.get_sprite(sprite_id)
+        return sprite.animation.properties.vram_size
+
     def __init__(
         self,
         room_id: int,
         npc_id: AreaObject,
-        max_sprite_size: BossSpriteSize = BossSpriteSize.SMALL,
+        vram_size_override: int | None = None,
         sequence_setter_event_id: int | None = None,
     ):
         self._room_id = room_id
         self._npc_id = npc_id
-        self._max_sprite_size = max_sprite_size
+        self._vram_size_override = vram_size_override
         self._sequence_setter_event_id = sequence_setter_event_id
 
 
@@ -1590,6 +1601,10 @@ class BossFightLocation(PrizeLocation):
     _mook_henchman_slots: list[BossFightLocationHenchmanNPC] | None = None
     _tiny_henchman_slots: list[BossFightLocationHenchmanNPC] | None = None
     _statue_slots: list[BossFightLocationNPC] | None = None
+
+    # Whether the player can run away from battles at this location
+    # Set to True for dojo fights, mimic fights with mimics anywhere, etc.
+    _allow_run_away: bool = False
 
     _originally_held: type[BossFightPrize]
 
@@ -1624,6 +1639,11 @@ class BossFightLocation(PrizeLocation):
     @property
     def henchman_packs(self) -> list[int] | None:
         return self._henchman_packs
+
+    @property
+    def allow_run_away(self) -> bool:
+        """Whether the player can run away from battles at this location."""
+        return self._allow_run_away
 
     def post_unlocks(self, world: GameWorld) -> EventScript:
         """Script commands that should run when this boss location is cleared. Depends on settings."""
@@ -1874,6 +1894,48 @@ class BossFightLocation(PrizeLocation):
 
         return event_script_battle_packs, henchmen_assignments
 
+    def _get_henchmen_event_packs_for_original(
+        self, world: GameWorld
+    ) -> list[tuple[int, int]]:
+        """Get event script battle pack entries for original (unmodified) henchmen.
+
+        This is used when the prize matches the original - we don't modify NPCs,
+        but we still need to generate E1189 entries for RegularNPC henchmen because
+        E1189 is being rebuilt from scratch.
+
+        Returns a list of (room_id, pack_id) tuples for henchmen that need
+        event script battle pack selectors (non-BattlePackNPC objects).
+        """
+        from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC
+
+        event_script_battle_packs: list[tuple[int, int]] = []
+
+        # Gather all henchman slots with pack_ids
+        all_slots = []
+        if self.mook_henchman_slots:
+            all_slots.extend(self.mook_henchman_slots)
+        if self.character_henchman_slots:
+            all_slots.extend(self.character_henchman_slots)
+        if self.tiny_henchman_slots:
+            all_slots.extend(self.tiny_henchman_slots)
+
+        # Check each slot's NPCs
+        for slot in all_slots:
+            if slot.pack_id is None:
+                continue
+            for room_id, room_target in zip(slot.room_ids, slot.npc_ids):
+                room = world.rooms._rooms[room_id]
+                if room is None:
+                    continue
+                obj = room.get_npc_by_target_id(room_target)
+                if obj is None:
+                    continue
+                # Only RegularNPC objects need event script entries
+                if not isinstance(obj, BattlePackNPC):
+                    event_script_battle_packs.append((room_id, slot.pack_id))
+
+        return event_script_battle_packs
+
     def _on_henchmen_assigned(
         self,
         world: GameWorld,
@@ -1944,35 +2006,45 @@ class BossFightLocation(PrizeLocation):
     ]:
 
         # update the battle pack
-        # doing it this way means that you can still run away in the dojo, etc
         assert isinstance(self.prize, BossFightPrize)
         pack = world.battle_packs._packs[self._pack_id]
-        for f in pack.formations:
-            f.set_members(self.prize._members)  # pyright: ignore[reportArgumentType]
+
+        if self.prize.formation is not None:
+            # Use the prize's formation directly (preserves formation_id for AI scripts)
+            formation = self.prize.formation
+            pack.set_formations(formation)
+
+            # Apply location-specific overrides to the formation
+            if self._allow_run_away:
+                formation.set_can_run_away(True)
             if self.prize.force_battlefield is not None:
-                f.set_battlefield(self.prize.force_battlefield)
+                formation.set_battlefield(self.prize.force_battlefield)
             if self.prize.force_start_event is not None:
-                f.set_run_event_at_load(self.prize.force_start_event)
+                formation.set_run_event_at_load(self.prize.force_start_event)
+        else:
+            # Legacy path: modify formation members in place
+            # (used for prizes that haven't been migrated to use _formation)
+            for f in pack.formations:
+                f.set_members(self.prize._members)  # pyright: ignore[reportArgumentType]
+                if self._allow_run_away:
+                    f.set_can_run_away(True)
+                if self.prize.force_battlefield is not None:
+                    f.set_battlefield(self.prize.force_battlefield)
+                if self.prize.force_start_event is not None:
+                    f.set_run_event_at_load(self.prize.force_start_event)
 
         # Skip NPC replacements if the prize matches the original (no shuffle occurred)
         prize_matches_original = isinstance(self.prize, self._originally_held)
 
-        # Set NPC slots with boss models
+        # Set NPC slots with boss models (using VRAM-based selection)
         if self.npc_slots is not None and not prize_matches_original:
             for slot in self.npc_slots:
                 room = world.rooms._rooms[slot.room_id]
                 assert room is not None
                 obj = room.get_npc_by_target_id(slot.npc_id)
                 assert obj is not None
-                if slot.max_sprite_size == BossSpriteSize.BATTLE:
-                    m = self.prize.battle_npc
-                elif slot.max_sprite_size == BossSpriteSize.LARGE:
-                    m = self.prize.large_npc
-                elif slot.max_sprite_size == BossSpriteSize.STATUE:
-                    m = self.prize.statue_npc
-                else:
-                    m = self.prize.small_npc
-                assert m is not None
+                max_vram = slot.get_max_vram_size(world)
+                m = self.prize.get_npc_for_slot(world, max_vram)
                 obj._npc = m().base
 
         # Set statue slots with statue models
@@ -2051,7 +2123,9 @@ class BossFightLocation(PrizeLocation):
             # Hide NPCs for unfilled henchman slots
             self._hide_unfilled_henchman_slots(world, henchmen_assignments)
         else:
-            henchmen_event_packs = []
+            # Even when prize matches original, we need to generate E1189 entries
+            # for RegularNPC henchmen since E1189 is rebuilt from scratch
+            henchmen_event_packs = self._get_henchmen_event_packs_for_original(world)
 
         # any gating tied to the location or its contained boss needs to be written
         world.event_scripts.get_script_by_id(self._post_unlocks_event_id).set_contents(
