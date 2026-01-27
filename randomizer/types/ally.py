@@ -64,7 +64,9 @@ class Ally(AllyBase):
         self,
         *args,
         _sprites_primary: dict[SpriteAnimationState, tuple[int, int, bool]] | None = None,
+        _sprites_secondary: dict[SpriteAnimationState, tuple[int, int, bool]] | None = None,
         **kwargs,
     ):
         super().__init__(*args, **kwargs)
         self._sprites_primary = _sprites_primary or {}
+        self._sprites_secondary = _sprites_secondary or {}
