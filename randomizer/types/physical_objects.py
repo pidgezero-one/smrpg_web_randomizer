@@ -482,7 +482,11 @@ class NPC:
     ) -> int:
         """Get min vram size from a certain sprite mold ID"""
         sprite = world.get_sprite(self.base.sprite_id + offset)
-        assert mold_id < len(sprite.animation.properties.molds)
+        assert mold_id < len(sprite.animation.properties.molds), (
+            f"Mold {mold_id} not found in sprite {self.base.sprite_id + offset} "
+            f"(base={self.base.sprite_id}, offset={offset}, "
+            f"num_molds={len(sprite.animation.properties.molds)})"
+        )
         tiles = sprite.animation.properties.molds[mold_id].tiles
         return ceil(max(0, len(tiles) - 4) / 4)
 
@@ -491,11 +495,15 @@ class NPC:
     ) -> int:
         """Get min vram size from a certain sprite sequence ID"""
         sprite = world.get_sprite(self.base.sprite_id + offset)
-        assert sequence_id < len(sprite.animation.properties.sequences)
+        assert sequence_id < len(sprite.animation.properties.sequences), (
+            f"Sequence {sequence_id} not found in sprite {self.base.sprite_id + offset} "
+            f"(base={self.base.sprite_id}, offset={offset}, "
+            f"num_sequences={len(sprite.animation.properties.sequences)})"
+        )
         min_vram = 0
         frames = sprite.animation.properties.sequences[sequence_id].frames
         for frame in frames:
-            min_vram = max(min_vram, self.min_vram_from_mold(world, frame.mold_id))
+            min_vram = max(min_vram, self.min_vram_from_mold(world, frame.mold_id, offset))
         return min_vram
 
     def _min_vram_size_from_script(

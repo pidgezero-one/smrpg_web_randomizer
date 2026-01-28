@@ -996,7 +996,7 @@ class GameWorld:
         # shuffle according to settings
         shuffle_prizes(self)
 
-        # replace bad items with coins, supplant YouMissed, etc
+        # replace bad items with coins, supplant YouMissed, fill empty locations, etc
 
         # Write spoiler to JSON file
         import json
@@ -1478,10 +1478,10 @@ class GameWorld:
         i = starter.index
         file_select_char_bytes = [
             SPR0000_MARIO_WALKING_DOWN_LEFT,
-            SPR0007_TOADSTOOL_NONPROTAGONIST_1,
-            SPR0014_BOWSER_NONPROTAGONIST_2,
-            SPR0028_GENO_NONPROTAGONIST_4,
-            SPR0021_MALLOW_NONPROTAGONIST_3,
+            SPR0962_TOADSTOOL_WALKING_DOWN_LEFT,
+            SPR0969_BOWSER_WALKING_DOWN_LEFT,
+            SPR0983_GENO_WALKING_DOWN_LEFT,
+            SPR0976_MALLOW_WALKING_DOWN_LEFT,
         ]
         self.file_select_character = starter.name
 

@@ -317,7 +317,11 @@ def shuffle_prizes(world: GameWorld) -> None:
         loc.set_prize(None)
 
     # Apply debug overrides first (hard-set locations before shuffle)
-    debug_prizes_to_remove: dict[type, int] = {}
+    # Track which prize TYPES were placed via override (to avoid double-placing characters/spells/etc.)
+    # Note: We don't remove these from the item pool - the overridden location's originally_held
+    # item naturally won't be collected (because has_item will be True), so the pool already
+    # accounts for one item being "replaced" by the override.
+    debug_placed_prize_types: set[type] = set()
     if world.settings.debug_mode:
         from randomizer.debug import load_debug_config, get_prize_class, get_location_class
         config = load_debug_config()
@@ -342,17 +346,11 @@ def shuffle_prizes(world: GameWorld) -> None:
                 continue
 
             location.set_prize(prize_cls())
+            debug_placed_prize_types.add(prize_cls)
 
-            # Track prize to remove from pool (one instance per override)
-            debug_prizes_to_remove[prize_cls] = debug_prizes_to_remove.get(prize_cls, 0) + 1
-
-    # Helper to check if prize should be skipped for debug override
-    def should_skip_for_debug(prize_cls: type) -> bool:
-        if prize_cls in debug_prizes_to_remove and debug_prizes_to_remove[prize_cls] > 0:
-            debug_prizes_to_remove[prize_cls] -= 1
-            print(f"Debug: Removed one {prize_cls.__name__} from pool")
-            return True
-        return False
+    # Helper to check if a prize type was already placed via debug override
+    def is_debug_placed(prize_cls: type) -> bool:
+        return prize_cls in debug_placed_prize_types
 
     # Define which items unlock HIGH-VOLUME areas (many checks)
     # These are always considered high-volume regardless of settings
@@ -654,7 +652,7 @@ def shuffle_prizes(world: GameWorld) -> None:
             prize_class = all_recruitment_prizes[char_name]
             if prize_class not in placed_characters:
                 # Skip if already placed via debug override
-                if should_skip_for_debug(prize_class):
+                if is_debug_placed(prize_class):
                     placed_characters.add(prize_class)
                     continue
                 # All gating-required characters go to high-vol (they unlock major areas)
@@ -672,7 +670,7 @@ def shuffle_prizes(world: GameWorld) -> None:
             if len(placed_characters) >= max_char_count:
                 break
             # Skip if already placed via debug override
-            if should_skip_for_debug(prize_class):
+            if is_debug_placed(prize_class):
                 placed_characters.add(prize_class)
                 continue
             # Non-gating characters go to low-vol (they don't unlock major areas)
@@ -746,7 +744,7 @@ def shuffle_prizes(world: GameWorld) -> None:
                 TerrorizeSpellPrize,
                 PoisonGasSpellPrize,
             ]
-            if p in enabled_spell_prizes and not should_skip_for_debug(p)
+            if p in enabled_spell_prizes and not is_debug_placed(p)
         ]
         spell_count = 0
         if mokura_spell_options:
@@ -755,7 +753,7 @@ def shuffle_prizes(world: GameWorld) -> None:
             spell_count = 1
 
         if SuperJumpSpell not in disabled_spell_classes:
-            if not should_skip_for_debug(SuperJumpSpellPrize):
+            if not is_debug_placed(SuperJumpSpellPrize):
                 # Super Jump goes to low-vol (unlocks few checks)
                 low_vol_other_prizes.append(SuperJumpSpellPrize())
                 spell_count += 1
@@ -764,7 +762,7 @@ def shuffle_prizes(world: GameWorld) -> None:
             p()
             for p in enabled_spell_prizes
             if p not in [type(q) for q in must_include] + extra_spells
-            and not should_skip_for_debug(p)
+            and not is_debug_placed(p)
         ]
 
         # Add all other spells to the "optional" array so that shuffler doesn't
@@ -790,9 +788,9 @@ def shuffle_prizes(world: GameWorld) -> None:
             StarPiece6,
             StarPiece7,
         ]
-        progression_prizes.extend([sp() for sp in sp_prizes[: progress_stars] if not should_skip_for_debug(sp)])
+        progression_prizes.extend([sp() for sp in sp_prizes[: progress_stars] if not is_debug_placed(sp)])
         # Leftover star pieces go to post_progression_priority (after progressive cards/crystal shard)
-        post_progression_priority.extend([sp() for sp in sp_prizes[progress_stars:world.settings.get_flag(TotalStarPieces).value] if not should_skip_for_debug(sp)])
+        post_progression_priority.extend([sp() for sp in sp_prizes[progress_stars:world.settings.get_flag(TotalStarPieces).value] if not is_debug_placed(sp)])
 
     if world.settings.isflag_enabled(BossShuffle):
         # Place disabled bosses (those not enabled in ShuffledBosses)
@@ -807,7 +805,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         for loc in boss_locations:
             if loc.originally_held in disabled_boss_types:
                 loc.set_prize(loc.originally_held())  # type: ignore
-            elif not should_skip_for_debug(loc.originally_held):
+            elif not is_debug_placed(loc.originally_held):
                 progression_prizes.append(loc.originally_held())  # type: ignore
 
     # Always exclude freestanding coin locations (not frog coins) from shuffling
@@ -959,40 +957,33 @@ def shuffle_prizes(world: GameWorld) -> None:
         # Check if item unlocks high-volume areas
         is_high_vol_item = [p for p in high_volume_key_items if isinstance(loc.originally_held(), p)]
         if len(is_high_vol_item) > 0:
-            if not should_skip_for_debug(type(loc.originally_held())):
-                high_vol_other_prizes.append(loc.originally_held())
+            high_vol_other_prizes.append(loc.originally_held())
             continue
         # Check if item unlocks low-volume areas
         is_low_vol_item = [p for p in low_volume_key_items if isinstance(loc.originally_held(), p)]
         if len(is_low_vol_item) > 0:
-            if not should_skip_for_debug(type(loc.originally_held())):
-                low_vol_other_prizes.append(loc.originally_held())
+            low_vol_other_prizes.append(loc.originally_held())
             continue
         # Check if item goes to post_progression_priority (progressive cards, crystal shard, exp stars)
         is_post_prog_item = [p for p in post_progression_include if isinstance(loc.originally_held(), p)]
         if len(is_post_prog_item) > 0:
-            if not should_skip_for_debug(type(loc.originally_held())):
-                post_progression_priority.append(loc.originally_held())
+            post_progression_priority.append(loc.originally_held())
             continue
         is_important_item = [p for p in should_otherwise_include if isinstance(loc.originally_held(), p)]
         if len(is_important_item) > 0:
-            if not should_skip_for_debug(type(loc.originally_held())):
-                must_include.append(loc.originally_held())
+            must_include.append(loc.originally_held())
             continue
         elif world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
             if isinstance(
                 loc.originally_held(),
                 (RecoveryMushroomPrize, FPFlowerPrize, FrogCoin1Prize),
             ):
-                if not should_skip_for_debug(type(loc.originally_held())):
-                    not_important.append(loc.originally_held())
+                not_important.append(loc.originally_held())
             else:
-                if not should_skip_for_debug(type(loc.originally_held())):
-                    must_include.append(loc.originally_held())
+                must_include.append(loc.originally_held())
             continue
         if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
-            if not should_skip_for_debug(type(loc.originally_held())):
-                not_important.append(loc.originally_held())
+            not_important.append(loc.originally_held())
         else:
             not_important.append(RandomPrizeSubstitute().generate(world, loc))
             
@@ -1121,6 +1112,23 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
         MoldyMushItem,
         MushroomItem2,
     )
+
+    # Fill empty required locations (non-treasure-chest) with fallback prize
+    # This handles locations that were left empty because the prize pool ran out
+    filled_with_fallback = []
+    for loc in world.locations.values():
+        if loc.has_item:
+            continue
+        if isinstance(loc, TreasureChestLocation):
+            continue  # Handled separately below
+        if loc.can_be_empty(world):
+            continue  # Location is allowed to be empty
+        # Fill with a fallback prize
+        loc.set_prize(Coins10Prize())
+        filled_with_fallback.append(type(loc).__name__)
+
+    if filled_with_fallback:
+        print(f"Filled {len(filled_with_fallback)} locations with fallback coins: {filled_with_fallback}")
 
     # Replace as necessary
     for loc in [

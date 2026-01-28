@@ -103,6 +103,7 @@ script = EventScript([
 		A_SequenceLoopingOn()
 	]),
     Pause(90),
+	RunEventAsSubroutine(E1226_FOREST_MAZE_CHARACTER),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	JmpIfBitClear(GAME_OVER, ["EVENT_2448_set_bit_43"]),
 	ResetAndChooseGame(),
@@ -142,7 +143,6 @@ script = EventScript([
 	RestoreAllFP(),
 	PlayMusicAtDefaultVolume(M0026_FORESTMAZE),
 	UnfreezeCamera(),
-	RunEventAsSubroutine(E1226_FOREST_MAZE_CHARACTER),
 	Set7000ToPartySize(),
 	CompareVarToConst(PRIMARY_TEMP_7000, 4),
 	JmpIfComparisonResultIsLesser(["EVENT_2448_j_24"]),

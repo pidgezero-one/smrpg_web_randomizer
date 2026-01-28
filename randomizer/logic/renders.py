@@ -105,7 +105,7 @@ def update_ally_animation(seq: A_SetSpriteSequence, ally: Ally, anim: SpriteAnim
     If no animation is provided, replace the command with a face direction
     command instead.
     """
-    data = ally._sprites_primary[anim]
+    data = ally._sprites_secondary[anim]
     seq.set_is_mold(data[2])
     seq.set_index(data[1])
     seq.set_sprite_offset(data[0])

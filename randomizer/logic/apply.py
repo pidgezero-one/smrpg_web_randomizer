@@ -133,7 +133,6 @@ from ..data.sprites.subs.peach.sprite_621 import sprite as TOADSTOOL_621
 from ..utils.tower_access_scripts import mario_script, mario_self_script, mallow_script, mallow_self_script, geno_script, geno_self_script, bowser_script, bowser_self_script, toadstool_script, toadstool_self_script
 
 
-
 def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # This takes the results of the shuffler and uses them to write the event scripts that grant prizes and launch boss fights, scale boss fight stats, put allies and enemies in the overworld where they've been shuffled to, etc
 
