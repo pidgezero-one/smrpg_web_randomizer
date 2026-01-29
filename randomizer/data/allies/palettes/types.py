@@ -86,6 +86,8 @@ def palette_to_bytes(colors) -> list[int]:
         ret += color_to_bytes(color)
     return ret
 
+    
+
 
 MAP_PALETTE_OFFSET = 0x3E99C1
 
@@ -136,6 +138,9 @@ class Palette:
         if len(name) <= 11:
             return f"{name} 3"
         return f"{name[0:10]}. 3"
+    
+    def render(self, world: GameWorld) -> dict[int, bytearray]:
+        return {}
 
 
 class MarioPalette(Palette):
@@ -167,25 +172,6 @@ class MarioPalette(Palette):
             world.event_palettes.get_palette(EPAL0084_MARIO_ENDING).set_colors(
                 self.colours
             )
-            heated_palette = [*self.colours][0:4]
-            heated_palette[1] = 0xF85030
-            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
-            base_palette.set_colors(heated_palette + base_palette.colors[4:])
-            if self.overworld_map_colours is None:
-                output[MAP_PALETTE_OFFSET] = bytearray(
-                    palette_to_bytes(
-                        self.mutate(
-                            self.colours,
-                            [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
-                        )
-                    )
-                )
-            else:
-                output[MAP_PALETTE_OFFSET] = bytearray(
-                    palette_to_bytes(self.overworld_map_colours)
-                )
-            output[0x3EDFFD] = bytearray(palette_to_bytes(self.colours))
-            output[0x3EE0FF] = bytearray(palette_to_bytes(self.colours))
             world.sprite_palettes.get_palette(
                 SPAL797_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE
             ).set_colors(
@@ -193,43 +179,63 @@ class MarioPalette(Palette):
                     self.colours, [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14]
                 )
             )
-            minecart_palette = world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER)
-            minecart_palette.set_colors(
-                self.transform(
-                    minecart_palette.colors,
-                    self.colours,
-                    [None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11],
+            output[0x3EDFFD] = bytearray(palette_to_bytes(self.colours))
+            output[0x3EE0FF] = bytearray(palette_to_bytes(self.colours))
+            if world.overworld_character.ally.index == 0:
+                heated_palette = [*self.colours][0:4]
+                heated_palette[1] = 0xF85030
+                base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+                base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                if self.overworld_map_colours is None:
+                    output[MAP_PALETTE_OFFSET] = bytearray(
+                        palette_to_bytes(
+                            self.mutate(
+                                self.colours,
+                                [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
+                            )
+                        )
+                    )
+                else:
+                    output[MAP_PALETTE_OFFSET] = bytearray(
+                    palette_to_bytes(self.overworld_map_colours)
                 )
-            )
-            classic_palette = world.sprite_palettes.get_palette(
-                SPAL477_OLD_CLASSIC_MARIO
-            )
-            if self.classic_colours is None:
-                classic_palette.set_colors(
+                minecart_palette = world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER)
+                minecart_palette.set_colors(
                     self.transform(
-                        classic_palette.colors,
+                        minecart_palette.colors,
                         self.colours,
-                        [
-                            10,
-                            6,
-                            1,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                        ],
+                        [None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11],
                     )
                 )
-            else:
-                classic_palette.set_colors(self.classic_colours)
+                classic_palette = world.sprite_palettes.get_palette(
+                    SPAL477_OLD_CLASSIC_MARIO
+                )
+                if self.classic_colours is None:
+                    classic_palette.set_colors(
+                        self.transform(
+                            classic_palette.colors,
+                            self.colours,
+                            [
+                                10,
+                                6,
+                                1,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                            ],
+                        )
+                    )
+                else:
+                    classic_palette.set_colors(self.classic_colours)
         if self.poison_colours is not None:
             world.sprite_palettes.get_palette(SPAL630_MARIO_PSN_1).set_colors(
                 self.poison_colours
@@ -271,32 +277,33 @@ class MallowPalette(Palette):
                 self.colours
             )
             world.sprite_palettes.get_palette(SPAL506_MALLOW_3).set_colors(self.colours)
-            world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
-                self.colours
-            )
-            if self.classic_colours is None:
-                world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
-                    self.colours
-                )
-            else:
-                world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
-                    self.classic_colours
-                )
             world.event_palettes.get_palette(EPAL0085_MALLOW_ENDING).set_colors(
                 self.colours
             )
-
-            heated_palette = [*self.colours][0:4]
-            heated_palette[0] = 0xF85030
-            heated_palette[1] = 0xF85030
-            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
-            base_palette.set_colors(heated_palette + base_palette.colors[4:])
-            if self.overworld_map_colours is None:
-                output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
-            else:
-                output[MAP_PALETTE_OFFSET] = bytearray(
-                    palette_to_bytes(self.overworld_map_colours)
+            if world.overworld_character.ally.index == 4:
+                heated_palette = [*self.colours][0:4]
+                heated_palette[0] = 0xF85030
+                heated_palette[1] = 0xF85030
+                base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+                base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                if self.overworld_map_colours is None:
+                    output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
+                else:
+                    output[MAP_PALETTE_OFFSET] = bytearray(
+                        palette_to_bytes(self.overworld_map_colours)
+                    )
+                world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
+                    self.colours
                 )
+                if self.classic_colours is None:
+                    world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
+                        self.colours
+                    )
+                else:
+                    world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
+                        self.classic_colours
+                )
+
         if self.poison_colours is not None:
             world.sprite_palettes.get_palette(SPAL699_MALLOW_PSN_1).set_colors(
                 self.poison_colours
@@ -335,50 +342,54 @@ class GenoPalette(Palette):
             world.sprite_palettes.get_palette(SPAL636_GENO_DOLL).set_colors(
                 self.colours
             )
-
-            classic_palette = world.sprite_palettes.get_palette(
-                SPAL477_OLD_CLASSIC_MARIO
-            )
-            if self.classic_colours is None:
-                classic_palette.set_colors(
-                    self.transform(
-                        classic_palette.colors,
-                        self.colours,
-                        [
-                            3,
-                            6,
-                            1,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                        ],
-                    )
-                )
-            else:
-                classic_palette.set_colors(self.classic_colours)
-
             world.event_palettes.get_palette(EPAL0086_GENO_ENDING).set_colors(
                 self.colours
             )
-            heated_palette = [*self.colours][0:4]
-            heated_palette[1] = 0xF85030
-            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
-            base_palette.set_colors(heated_palette + base_palette.colors[4:])
-            if self.overworld_map_colours is None:
-                output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
-            else:
-                output[MAP_PALETTE_OFFSET] = bytearray(
-                    palette_to_bytes(self.overworld_map_colours)
+
+            if world.overworld_character.ally.index == 3:
+                heated_palette = [*self.colours][0:4]
+                heated_palette[1] = 0xF85030
+                base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+                base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
+                    self.colours
                 )
+                if self.overworld_map_colours is None:
+                    output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
+                else:
+                    output[MAP_PALETTE_OFFSET] = bytearray(
+                        palette_to_bytes(self.overworld_map_colours)
+                    )
+                classic_palette = world.sprite_palettes.get_palette(
+                    SPAL477_OLD_CLASSIC_MARIO
+                )
+                if self.classic_colours is None:
+                    classic_palette.set_colors(
+                        self.transform(
+                            classic_palette.colors,
+                            self.colours,
+                            [
+                                3,
+                                6,
+                                1,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                            ],
+                        )
+                    )
+                else:
+                    classic_palette.set_colors(self.classic_colours)
+
         if self.poison_colours is not None:
             world.sprite_palettes.get_palette(SPAL687_GENO_PSN_1).set_colors(
                 self.poison_colours
@@ -417,25 +428,26 @@ class BowserPalette(Palette):
             world.sprite_palettes.get_palette(SPAL637_BOWSER_DOLL).set_colors(
                 self.colours
             )
-            world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
-                self.colours
-            )
-            world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
-                self.colours
-            )
             world.event_palettes.get_palette(EPAL0140_BOWSER_ENDING).set_colors(
                 self.colours
             )
 
-            heated_palette = [*self.colours][0:4]
-            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
-            base_palette.set_colors(heated_palette + base_palette.colors[4:])
-            if self.overworld_map_colours is None:
-                output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
-            else:
-                output[MAP_PALETTE_OFFSET] = bytearray(
-                    palette_to_bytes(self.overworld_map_colours)
+            if world.overworld_character.ally.index == 2:
+                world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
+                    self.colours
                 )
+                world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
+                    self.colours
+                )
+                heated_palette = [*self.colours][0:4]
+                base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+                base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                if self.overworld_map_colours is None:
+                    output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
+                else:
+                    output[MAP_PALETTE_OFFSET] = bytearray(
+                        palette_to_bytes(self.overworld_map_colours)
+                    )
         if self.poison_colours is not None:
             world.sprite_palettes.get_palette(SPAL666_BOWSER_PSN_1).set_colors(
                 self.poison_colours
@@ -476,52 +488,52 @@ class ToadstoolPalette(Palette):
             world.sprite_palettes.get_palette(SPAL638_TOADSTOOL_DOLL).set_colors(
                 self.colours
             )
-
-            world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
-                self.colours
-            )
-            classic_palette = world.sprite_palettes.get_palette(
-                SPAL477_OLD_CLASSIC_MARIO
-            )
-            if self.classic_colours is None:
-                classic_palette.set_colors(
-                    self.transform(
-                        classic_palette.colors,
-                        self.colours,
-                        [
-                            6,
-                            3,
-                            1,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                        ],
-                    )
-                )
-            else:
-                classic_palette.set_colors(self.classic_colours)
             world.event_palettes.get_palette(EPAL0141_TOADSTOOL_ENDING).set_colors(
                 self.colours
             )
-            heated_palette = [*self.colours][0:4]
-            heated_palette[1] = 0xF85030
-            base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
-            base_palette.set_colors(heated_palette + base_palette.colors[4:])
-            if self.overworld_map_colours is None:
-                output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
-            else:
-                output[MAP_PALETTE_OFFSET] = bytearray(
-                    palette_to_bytes(self.overworld_map_colours)
+            if world.overworld_character.ally.index == 1:
+                world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
+                    self.colours
                 )
+                classic_palette = world.sprite_palettes.get_palette(
+                    SPAL477_OLD_CLASSIC_MARIO
+                )
+                if self.classic_colours is None:
+                    classic_palette.set_colors(
+                        self.transform(
+                            classic_palette.colors,
+                            self.colours,
+                            [
+                                6,
+                                3,
+                                1,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                            ],
+                        )
+                    )
+                else:
+                    classic_palette.set_colors(self.classic_colours)
+                heated_palette = [*self.colours][0:4]
+                heated_palette[1] = 0xF85030
+                base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+                base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                if self.overworld_map_colours is None:
+                    output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
+                else:
+                    output[MAP_PALETTE_OFFSET] = bytearray(
+                        palette_to_bytes(self.overworld_map_colours)
+                    )
         if self.poison_colours is not None:
             world.sprite_palettes.get_palette(SPAL656_TOADSTOOL_PSN_1).set_colors(
                 self.poison_colours

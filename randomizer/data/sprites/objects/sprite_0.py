@@ -3,7 +3,7 @@
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 from randomizer.data.variables.sprite_palette_names import SPAL628_MARIO_WALKING_DOWN_LEFT
 sprite = CompleteSprite(
-    animation=AnimationPack(0, length=686, unknown=0x0002,
+    animation=AnimationPack(239, length=699, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=True,
@@ -680,6 +680,15 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=16, mold_id=28),
                         AnimationSequenceFrame(duration=16, mold_id=29),
                         AnimationSequenceFrame(duration=16, mold_id=28),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=8, mold_id=30),
+                        AnimationSequenceFrame(duration=8, mold_id=27),
+                        AnimationSequenceFrame(duration=8, mold_id=30),
+                        AnimationSequenceFrame(duration=8, mold_id=27),
+                        AnimationSequenceFrame(duration=63, mold_id=30),
                     ]
                 ),
             ]

@@ -1,4 +1,4 @@
-# SPR0451_JINX_3
+# SPR0474_JINX_1
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 from randomizer.data.variables.sprite_palette_names import SPAL581_JINX_CLONE

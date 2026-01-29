@@ -1496,6 +1496,11 @@ class GameWorld:
             val = name.encode().ljust(7, b"\x00")
             patch.add_data(addr, val)
 
+        # Debug mode: Set starting FP and max FP to 99
+        if self.settings.debug_mode:
+            patch.add_data(0x3A00DD, bytes([99]))  # Starting current FP
+            patch.add_data(0x3A00DE, bytes([99]))  # Starting maximum FP
+
         # Palettes
         patch.add_dict(self.sprite_palettes.render())
         patch.add_dict(self.event_palettes.render())

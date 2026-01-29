@@ -843,13 +843,11 @@ def shuffle_prizes(world: GameWorld) -> None:
         if isinstance(loc, CharacterRecruitmentLocation):
             if not world.settings.isflag_enabled(ShuffleCharacters):
                 loc.set_prize(loc.originally_held())
-            else:
-                continue
+            continue  # Characters handled here or in ShuffleCharacters block above
         if isinstance(loc, StarPieceLocation):
             if not world.settings.isflag_enabled(ShuffleStarPieces):
                 loc.set_prize(loc.originally_held())
-            else:
-                continue
+            continue  # Star pieces handled here or in ShuffleStarPieces block above
         if isinstance(loc, BossFightLocation):
             if not world.settings.isflag_enabled(BossShuffle):
                 loc.set_prize(loc.originally_held())
@@ -859,13 +857,19 @@ def shuffle_prizes(world: GameWorld) -> None:
                 disabled_boss_types = {m.value for m in shuffled_bosses_flag.disabled}
                 if loc.originally_held in disabled_boss_types:
                     loc.set_prize(loc.originally_held())
-                else:
-                    continue
+            continue  # Bosses handled here or in BossShuffle block above
         if isinstance(loc, SpellSlotLocation):
             if not world.settings.isflag_enabled(CharacterLearnedSpells):
-                loc.set_prize(loc.originally_held())
-            else:
-                continue
+                # Place original spell unless it's disabled in AvailableSpells
+                spell_prize = loc.originally_held()
+                if spell_prize is not None:
+                    available_spells_flag = world.settings.get_flag(AvailableSpells)
+                    disabled_spell_classes = {m.value for m in available_spells_flag.disabled}
+                    # Check if this spell's class is disabled
+                    if spell_prize._spell not in disabled_spell_classes:
+                        loc.set_prize(spell_prize)
+                    # else: leave location empty (spell is excluded)
+            continue  # Always continue - spells handled here or in CharacterLearnedSpells block above
         # special exclusions
         if isinstance(loc, FrogDiscipleLocation):
             # nowhere to put it if shuffle shops is on but item shuffle is off

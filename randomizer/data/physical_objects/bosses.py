@@ -77,10 +77,26 @@ squid_hit_fast = SpriteAnimation(
 squid_default = SpriteAnimation(sequence_id=0, total_duration=36)
 
 # Jinx animations
-jinx_punch = SpriteAnimation(sequence_id=3, contact_frame=10, total_duration=18)
+jinx_punch = SpriteAnimation(sequence_id=5, contact_frame=10, total_duration=18)
 jinx_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
-
+punchinello_hit = SpriteAnimation(sequence_id=3, contact_frame=24, total_duration=34)
+punchinello_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=16, total_duration=23, speed=FAST)
+punchinello_cast = SpriteAnimation(sequence_id=4, contact_frame=46, total_duration=54)
+punchinello_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
+punchinello_animations = SpriteAnimationCollection(
+    recoil= punchinello_recoil,
+    mines_punch= punchinello_hit,
+    ship_beckon=punchinello_cast,
+    dojo_challenge=punchinello_cast,
+    statue_intro=punchinello_cast,
+    statue_peck=punchinello_hit_fast,
+    statue_flustered= punchinello_recoil,
+    keep_challenge=punchinello_cast,
+    keep_summon=punchinello_cast,
+    chandelier_challenge=punchinello_cast,
+    endgame_challenge=punchinello_cast
+)
 class HammerBroLargeObject(BossNPC):
     """Hammer Bro object in Mushroom Way Area 03."""
 
@@ -284,12 +300,14 @@ class PunchinelloLargeObject(BossNPC):
     """Large Punchinello object."""
 
     _base = PUNCHINELLO_NPC
+    _animations=punchinello_animations
 
 
 class Punchinello2LargeObject(BossNPC):
     """Large Punchinello object."""
 
     _base = PUNCHINELLO_POSTGAME_NPC
+    _animations=punchinello_animations
 
 
 # Dodo

@@ -71,9 +71,21 @@ def set_mines_punch_command(world: GameWorld, boss: BossNPC):
         sequence_id = collection.sequence_id
         sprite_id = boss.base.sprite_id
         sprite = world.sprites.sprites[sprite_id]
+        num_sequences = len(sprite.animation.properties.sequences)
+        assert sequence_id < num_sequences, (
+            f"Mines punch animation error: {boss.__class__.__name__} references "
+            f"sequence {sequence_id} but sprite {sprite_id} only has {num_sequences} sequences"
+        )
         sequence = sprite.animation.properties.sequences[sequence_id]
         boss_pause_length = sequence.total_duration
-        final_mold = sequence.frames[-1].mold_id
+        try:
+            
+            final_mold = sequence.frames[-1].mold_id
+        except IndexError:
+            raise Exception(
+                f"Mines punch animation error: {boss.__class__.__name__} references "
+                f"sequence {sequence_id} has {len(sequence.frames)} frames"
+            )
         boss_animation = ActionQueueSync(target=NPC_0, subscript=[
             A_SetSpriteSequence(index=sequence_id, is_sequence=True, looping=False),
             A_Pause(boss_pause_length),

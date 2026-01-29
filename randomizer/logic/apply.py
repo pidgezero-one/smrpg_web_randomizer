@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
 
 from randomizer.data.variables.dialog_names import DI1163_BOOSTER_TOWER_DOOR_OPEN, DI2320_TOADSTOOL_ROOM_HINT, DI2908_TREASURE_SELLER_ITEM_2, DI2911_TREASURE_SELLER_ITEM_1, DI2914_TREASURE_SELLER_ITEM_3
-from randomizer.data.variables.sprite_names import SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO
+from randomizer.data.variables.sprite_names import SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO, SPR0962_TOADSTOOL_WALKING_DOWN_LEFT, SPR0963_TOADSTOOL_JUMP_FRONT, SPR0964_TOADSTOOL_WALKING_UP_RIGHT, SPR0965_TOADSTOOL_SURPRISE, SPR0966_TOADSTOOL_SLAP_ATTACK, SPR0967_TOADSTOOL_FRYING_PAN_ATTACK, SPR0968_TOADSTOOL_FALLEN_CRYING, SPR0969_BOWSER_WALKING_DOWN_LEFT, SPR0970_BOWSER_JUMP_FRONT, SPR0971_BOWSER_WALKING_UP_RIGHT, SPR0972_BOWSER_SURPRISE, SPR0973_BOWSER_CLAW_ATTACK, SPR0974_BOWSER_SWING_BALL_CHAIN, SPR0975_BOWSER_CAST_SPELL, SPR0976_MALLOW_WALKING_DOWN_LEFT, SPR0977_MALLOW_JUMP_FRONT, SPR0978_MALLOW_WALKING_UP_RIGHT, SPR0979_MALLOW_SURPRISE, SPR0980_MALLOW_PUNCH, SPR0981_MALLOW_SWING_STICK, SPR0982_MALLOW_STILL_UP_RIGHT, SPR0983_GENO_WALKING_DOWN_LEFT, SPR0984_GENO_JUMP_FRONT, SPR0985_GENO_WALKING_UP_RIGHT, SPR0986_GENO_SURPRISE, SPR0987_GENO_ELBOW_SHOT, SPR0988_GENO_FINGER_SHOT, SPR0989_GENO_MORPH_INTO_CANNON
 from ..types.prizelocation import (
     BossFightLocation,
     PrizeRow,
@@ -130,6 +130,34 @@ from ..data.sprites.subs.peach.sprite_132 import sprite as TOADSTOOL_132
 from ..data.sprites.subs.peach.sprite_135 import sprite as TOADSTOOL_135
 from ..data.sprites.subs.peach.sprite_136 import sprite as TOADSTOOL_136
 from ..data.sprites.subs.peach.sprite_621 import sprite as TOADSTOOL_621
+from ..data.sprites.subs.peach.sprite_962 import sprite as TOADSTOOL_962
+from ..data.sprites.subs.peach.sprite_963 import sprite as TOADSTOOL_963
+from ..data.sprites.subs.peach.sprite_964 import sprite as TOADSTOOL_964
+from ..data.sprites.subs.peach.sprite_965 import sprite as TOADSTOOL_965
+from ..data.sprites.subs.peach.sprite_966 import sprite as TOADSTOOL_966
+from ..data.sprites.subs.peach.sprite_967 import sprite as TOADSTOOL_967
+from ..data.sprites.subs.peach.sprite_968 import sprite as TOADSTOOL_968
+from ..data.sprites.subs.bowser.sprite_969 import sprite as BOWSER_969
+from ..data.sprites.subs.bowser.sprite_970 import sprite as BOWSER_970
+from ..data.sprites.subs.bowser.sprite_971 import sprite as BOWSER_971
+from ..data.sprites.subs.bowser.sprite_972 import sprite as BOWSER_972
+from ..data.sprites.subs.bowser.sprite_973 import sprite as BOWSER_973
+from ..data.sprites.subs.bowser.sprite_974 import sprite as BOWSER_974
+from ..data.sprites.subs.bowser.sprite_975 import sprite as BOWSER_975
+from ..data.sprites.subs.mallow.sprite_976 import sprite as MALLOW_976
+from ..data.sprites.subs.mallow.sprite_977 import sprite as MALLOW_977
+from ..data.sprites.subs.mallow.sprite_978 import sprite as MALLOW_978
+from ..data.sprites.subs.mallow.sprite_979 import sprite as MALLOW_979
+from ..data.sprites.subs.mallow.sprite_980 import sprite as MALLOW_980
+from ..data.sprites.subs.mallow.sprite_981 import sprite as MALLOW_981
+from ..data.sprites.subs.mallow.sprite_982 import sprite as MALLOW_982
+from ..data.sprites.subs.geno.sprite_983 import sprite as GENO_983
+from ..data.sprites.subs.geno.sprite_984 import sprite as GENO_984
+from ..data.sprites.subs.geno.sprite_985 import sprite as GENO_985
+from ..data.sprites.subs.geno.sprite_986 import sprite as GENO_986
+from ..data.sprites.subs.geno.sprite_987 import sprite as GENO_987
+from ..data.sprites.subs.geno.sprite_988 import sprite as GENO_988
+from ..data.sprites.subs.geno.sprite_989 import sprite as GENO_989
 from ..utils.tower_access_scripts import mario_script, mario_self_script, mallow_script, mallow_self_script, geno_script, geno_self_script, bowser_script, bowser_self_script, toadstool_script, toadstool_self_script
 
 
@@ -467,6 +495,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = TOADSTOOL_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = TOADSTOOL_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = TOADSTOOL_621
+        world.sprites.sprites[SPR0962_TOADSTOOL_WALKING_DOWN_LEFT] = TOADSTOOL_962
+        world.sprites.sprites[SPR0963_TOADSTOOL_JUMP_FRONT] = TOADSTOOL_963
+        world.sprites.sprites[SPR0964_TOADSTOOL_WALKING_UP_RIGHT] = TOADSTOOL_964
+        world.sprites.sprites[SPR0965_TOADSTOOL_SURPRISE] = TOADSTOOL_965
+        world.sprites.sprites[SPR0966_TOADSTOOL_SLAP_ATTACK] = TOADSTOOL_966
+        world.sprites.sprites[SPR0967_TOADSTOOL_FRYING_PAN_ATTACK] = TOADSTOOL_967
+        world.sprites.sprites[SPR0968_TOADSTOOL_FALLEN_CRYING] = TOADSTOOL_968
         world.update_dialog(DI2320_TOADSTOOL_ROOM_HINT, " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
     elif world.overworld_character.ally.index == 2:
         clone_room.get_npc_by_target_id(NPC_0)._npc = BOWSER_WALKING_DOWN_LEFT_NPC
@@ -475,6 +510,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = BOWSER_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = BOWSER_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = BOWSER_621
+        world.sprites.sprites[SPR0969_BOWSER_WALKING_DOWN_LEFT] = BOWSER_969
+        world.sprites.sprites[SPR0970_BOWSER_JUMP_FRONT] = BOWSER_970
+        world.sprites.sprites[SPR0971_BOWSER_WALKING_UP_RIGHT] = BOWSER_971
+        world.sprites.sprites[SPR0972_BOWSER_SURPRISE] = BOWSER_972
+        world.sprites.sprites[SPR0973_BOWSER_CLAW_ATTACK] = BOWSER_973
+        world.sprites.sprites[SPR0974_BOWSER_SWING_BALL_CHAIN] = BOWSER_974
+        world.sprites.sprites[SPR0975_BOWSER_CAST_SPELL] = BOWSER_975
     elif world.overworld_character.ally.index == 3:
         clone_room.get_npc_by_target_id(NPC_0)._npc = GENO_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
@@ -482,6 +524,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = GENO_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = GENO_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = GENO_621
+        world.sprites.sprites[SPR0983_GENO_WALKING_DOWN_LEFT] = GENO_983
+        world.sprites.sprites[SPR0984_GENO_JUMP_FRONT] = GENO_984
+        world.sprites.sprites[SPR0985_GENO_WALKING_UP_RIGHT] = GENO_985
+        world.sprites.sprites[SPR0986_GENO_SURPRISE] = GENO_986
+        world.sprites.sprites[SPR0987_GENO_ELBOW_SHOT] = GENO_987
+        world.sprites.sprites[SPR0988_GENO_FINGER_SHOT] = GENO_988
+        world.sprites.sprites[SPR0989_GENO_MORPH_INTO_CANNON] = GENO_989
     elif world.overworld_character.ally.index == 4:
         clone_room.get_npc_by_target_id(NPC_0)._npc = MALLOW_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = MALLOW_96
@@ -489,6 +538,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = MALLOW_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = MALLOW_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = MALLOW_621
+        world.sprites.sprites[SPR0976_MALLOW_WALKING_DOWN_LEFT] = MALLOW_976
+        world.sprites.sprites[SPR0977_MALLOW_JUMP_FRONT] = MALLOW_977
+        world.sprites.sprites[SPR0978_MALLOW_WALKING_UP_RIGHT] = MALLOW_978
+        world.sprites.sprites[SPR0979_MALLOW_SURPRISE] = MALLOW_979
+        world.sprites.sprites[SPR0980_MALLOW_PUNCH] = MALLOW_980
+        world.sprites.sprites[SPR0981_MALLOW_SWING_STICK] = MALLOW_981
+        world.sprites.sprites[SPR0982_MALLOW_STILL_UP_RIGHT] = MALLOW_982
 
 
 

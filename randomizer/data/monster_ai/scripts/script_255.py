@@ -15,7 +15,6 @@ from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 script = MonsterScript([
 	IfVarBitsClear(BV7EE004, [0]),
 	SetVarBits(BV7EE004, [0]),
-	RunBattleDialog(215),
 	RunBattleEvent(BE0074_CULEX_SUMMONS_CRYSTALS),
 	Wait1TurnandRestartScript(),
 	IfTurnCounterEquals(3),
