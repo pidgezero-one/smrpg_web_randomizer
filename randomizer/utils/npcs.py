@@ -24,8 +24,11 @@ def min_vram(number_of_tiles: int):
 
 
 def is_swse_only(sprite: CompleteSprite):
-    south = sprite.animation.properties.sequences[0]
-    north = sprite.animation.properties.sequences[1]
+    sequences = sprite.animation.properties.sequences
+    if len(sequences) < 2:
+        return False
+    south = sequences[0]
+    north = sequences[1]
     if len(north.frames) != len(south.frames):
         return False
     for comp1, comp2 in zip(south.frames, north.frames):

@@ -55,48 +55,83 @@ class Enemy(EnemyBase):
     def build_psychopath_text(self) -> str:
         """Generate Psychopath text showing elemental weaknesses/immunities and status vulnerabilities.
 
+        Uses ~empty~ (character 141) as invisible placeholder for missing elements/statuses.
+        The encoder trims trailing ~empty~ characters before terminating.
+
+        Format: [resist_icon elements] [weak_icon elements] [V statuses ohko]
+
         Returns:
             Psychopath message string with special characters for game display.
         """
+        EMPTY = '~empty~'  # Invisible placeholder (character 141)
+
+        # Element tokens map to their byte values via BATTLE_CHAR_MAP in encoder
+        ELEMENT_TOKENS = {
+            Element.ICE: '~ice~',       # 125
+            Element.FIRE: '~fire~',     # 126
+            Element.THUNDER: '~thunder~',  # 127
+            Element.JUMP: '~jump~',     # 133
+        }
+
+        # Status tokens - using raw bytes since they're not in BATTLE_CHAR_MAP
+        STATUS_CHARS = {
+            Status.SLEEP: '\x80',    # 128
+            Status.FEAR: '\x81',     # 129
+            Status.MUTE: '\x82',     # 130
+            Status.POISON: '\x83',   # 131
+        }
+
         desc = ''
 
-        # Elemental immunities/resistances
-        if self.resistances:
-            desc += '\x7C'  # Shield icon
-            for element in [Element.FIRE, Element.ICE, Element.THUNDER, Element.JUMP]:
-                if element in self.resistances:
-                    desc += element.dialog_char
+        # Elemental resistances - collect present elements, then pad with empty
+        element_order = [Element.FIRE, Element.ICE, Element.THUNDER, Element.JUMP]
+        resist_elements = [e for e in element_order if e in self.resistances]
+        if resist_elements:
+            desc += '|'  # Resistance icon (124)
+            for element in resist_elements:
+                desc += ELEMENT_TOKENS[element]
+            # Pad to 4 elements
+            desc += EMPTY * (4 - len(resist_elements))
         else:
-            desc += '\x20' * 5
+            desc += EMPTY * 5
 
-        desc += '\x20'
+        desc += EMPTY
 
-        # Elemental weaknesses
-        if self.weaknesses:
-            desc += '\x7B'  # Weakness icon
-            for element in [Element.FIRE, Element.ICE, Element.THUNDER, Element.JUMP]:
-                if element in self.weaknesses:
-                    desc += element.dialog_char
+        # Elemental weaknesses - collect present elements, then pad with empty
+        weak_elements = [e for e in element_order if e in self.weaknesses]
+        if weak_elements:
+            desc += '{'  # Weakness icon (123)
+            for element in weak_elements:
+                desc += ELEMENT_TOKENS[element]
+            # Pad to 4 elements
+            desc += EMPTY * (4 - len(weak_elements))
         else:
-            desc += '\x20' * 5
+            desc += EMPTY * 5
 
-        desc += '\x20\x20'
+        desc += EMPTY * 2
 
-        # Status vulnerabilities (inverse of immunities)
-        # Check which statuses this enemy is NOT immune to
-        status_checks = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
-        vulnerabilities = [s for s in status_checks if s not in self.status_immunities]
+        # Status vulnerabilities (inverse of immunities) - collect present, then pad
+        status_order = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+        vulnerabilities = [s for s in status_order if s not in self.status_immunities]
 
-        if vulnerabilities:
-            for status in status_checks:
-                if status in vulnerabilities:
-                    desc += status.dialog_char
-            # Death vulnerability (not OHKO immune)
-            if not self.ohko_immune:
-                desc += '\x84\x84'
+        # Check if there are any vulnerabilities (status or OHKO)
+        has_status_vulns = len(vulnerabilities) > 0
+        has_ohko_vuln = not self.ohko_immune
+
+        if has_status_vulns or has_ohko_vuln:
+            # Add "V" prefix for vulnerabilities section
+            desc += 'V'
+            for status in vulnerabilities:
+                desc += STATUS_CHARS[status]
+            # Pad to 4 statuses
+            desc += EMPTY * (4 - len(vulnerabilities))
+            # OHKO vulnerability
+            if has_ohko_vuln:
+                desc += '~ohko~~ohko~'  # Two OHKO symbols (132, 132)
+            else:
+                desc += EMPTY * 2
         else:
-            desc += '\x20' * 6
-
-        desc += '\x02'
+            # No vulnerabilities at all - just empty space
+            desc += EMPTY * 7
 
         return desc

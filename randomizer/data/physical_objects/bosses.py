@@ -1078,7 +1078,7 @@ class YaridOverworldObject(BossNPC):
 class BowyerOverworldObject(BossNPC):
     """Bowyer overworld object."""
 
-    _base = BOWYER_NPC_BATTLE
+    _base = BOWYER_NPC_LARGE
 
 
 # Postgame bosses - Small versions

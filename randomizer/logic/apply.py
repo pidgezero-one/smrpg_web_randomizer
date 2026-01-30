@@ -795,8 +795,8 @@ def _apply_stats_to_prize(
         enemy.set_defense(scale_stat(defense, original.defense, ref_defense, enemy.ratio_defense))
         enemy.set_magic_attack(scale_stat(magic_attack, original.magic_attack, ref_magic_attack, enemy.ratio_magic_attack))
         enemy.set_magic_defense(scale_stat(magic_defense, original.magic_defense, ref_magic_defense, enemy.ratio_magic_defense))
-        enemy.set_evade(scale_stat(evade, original.evade, ref_evade, enemy.ratio_evade))
-        enemy.set_magic_evade(scale_stat(magic_evade, original.magic_evade, ref_magic_evade, enemy.ratio_magic_evade))
+        enemy.set_evade(min(100, scale_stat(evade, original.evade, ref_evade, enemy.ratio_evade)))
+        enemy.set_magic_evade(min(100, scale_stat(magic_evade, original.magic_evade, ref_magic_evade, enemy.ratio_magic_evade)))
 
         # === XP Calculation ===
         # Scale XP proportionally based on original XP contribution

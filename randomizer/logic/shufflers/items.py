@@ -1033,7 +1033,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     # Place items with restricted placement options first (e.g., SlotsPrize)
     # These must be placed before other items fill up their limited eligible locations
     if restricted_prizes:
-        print("placing restricted items (slots)")
         random.shuffle(restricted_prizes)
         place(
             world,
@@ -1042,7 +1041,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         )
 
     # Place critical/progress items (with high-vol bias applied)
-    print("placing keys")
     place(
         world,
         progression_prizes,
@@ -1051,7 +1049,6 @@ def shuffle_prizes(world: GameWorld) -> None:
 
     # Place post-progression priority items (slots/exp stars, progressive cards, crystal shard)
     if post_progression_priority:
-        print("placing post-progression priority items")
         random.shuffle(post_progression_priority)
         place(
             world,
@@ -1059,7 +1056,6 @@ def shuffle_prizes(world: GameWorld) -> None:
             on_placed=lambda i, l: _on_item_placed(world, i, l),
         )
 
-    print("placing important items")
     random.shuffle(must_include)
     place(
         world,
@@ -1067,7 +1063,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         on_placed=lambda i, l: _on_item_placed(world, i, l),
         force_frog_disciple=True
     )
-    print("filling remaining")
     random.shuffle(not_important)
     place(
         world,
@@ -1130,9 +1125,6 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
         # Fill with a fallback prize
         loc.set_prize(Coins10Prize())
         filled_with_fallback.append(type(loc).__name__)
-
-    if filled_with_fallback:
-        print(f"Filled {len(filled_with_fallback)} locations with fallback coins: {filled_with_fallback}")
 
     # Replace as necessary
     for loc in [

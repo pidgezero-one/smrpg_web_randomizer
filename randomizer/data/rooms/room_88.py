@@ -2,7 +2,8 @@
 # pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
 from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
-from ...types.room import Room, ExtraSpriteActions
+from ...types.room import Room
+from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from . import npcs
 from ..variables.room_names import *
@@ -228,7 +229,7 @@ room = Room(
             byte7_upper2=3),
     ],
     extra_sprite_actions=[
-        ExtraSpriteActions.LOOK_AT_DOLL,
-        ExtraSpriteActions.PRAISE_FRONT,
+        SpriteAnimationState.LOOK_AT_DOLL,
+        SpriteAnimationState.PRAISE_FRONT,
     ]
 )

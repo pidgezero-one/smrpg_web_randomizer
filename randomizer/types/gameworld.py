@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Any, Callable, Mapping, TypeVar, cast
+from typing import Any, Callable, TypeVar, cast
 import random
 import hashlib
 import re
@@ -851,19 +851,14 @@ class GameWorld:
         MAX_FAILURES_PER_COUNT = 5
 
         success = False
-        print("shuffling items...")
         while not success:
             try:
                 self._shuffle_items()
-                print("success!")
                 success = True
             except PlacementException as e:
                 # Track this failure count
                 count = e.unplaced_count
                 failure_counts[count] = failure_counts.get(count, 0) + 1
-                print(
-                    f"Placement failed with {count} unplaced items (attempt #{failure_counts[count]} for this count)"
-                )
 
                 # Check if all failure counts have reached the threshold
                 if failure_counts and all(
@@ -875,8 +870,7 @@ class GameWorld:
                         f"The chosen settings with excluded locations may be impossible to solve. "
                         f"Unplaced items on last attempt: {e.unplaced_items}"
                     )
-                print("retrying...")
-            except Exception as e:
+            except Exception:
                 # Re-raise unexpected exceptions
                 raise
 
@@ -1115,86 +1109,15 @@ class GameWorld:
         if self._cached_patch is not None:
             return self._cached_patch
 
-        # ========================================================================
-        # DEBUG: Create separate BPS patches for each render function
-        # ========================================================================
-        import os
-        from bps.diff import diff_bytearrays
-        from bps.io import write_bps
-
-        DEBUG_PATCHES = (
-            self._debug_bps_patches
-        )  # Controlled by debug_bps_patches setting
-        PROJECT_ROOT = os.path.dirname(
-            os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        )
-        DEBUG_DIR = os.path.join(PROJECT_ROOT, "debug_patches")
-        VANILLA_ROM_PATH = os.environ.get(
-            "VANILLA_ROM_PATH", os.path.join(PROJECT_ROOT, "smrpg.sfc")
-        )
-
-        vanilla_rom: bytearray | None = None
-        if DEBUG_PATCHES:
-            os.makedirs(DEBUG_DIR, exist_ok=True)
-            if os.path.exists(VANILLA_ROM_PATH):
-                with open(VANILLA_ROM_PATH, "rb") as f:
-                    vanilla_rom = bytearray(f.read())
-                print(
-                    f"DEBUG: Loaded vanilla ROM ({len(vanilla_rom):,} bytes) for debug patches"
-                )
-            else:
-                print(
-                    f"DEBUG: Vanilla ROM not found at {VANILLA_ROM_PATH}, skipping debug patches"
-                )
-                DEBUG_PATCHES = False
-
-        def save_debug_bps(
-            name: str, patch_data: Mapping[int, bytearray | bytes | list[int]]
-        ) -> None:
-            """Create a BPS patch from just this render's data and save it."""
-            if not DEBUG_PATCHES or vanilla_rom is None:
-                return
-            try:
-                # Create a patched ROM with just this data
-                patched = bytearray(vanilla_rom)
-                for addr, data in patch_data.items():
-                    if isinstance(data, list):
-                        data = bytes(data)
-                    elif isinstance(data, bytearray):
-                        data = bytes(data)
-                    patched[addr : addr + len(data)] = data
-
-                # Create BPS diff using correct bps library API
-                blocksize = (len(vanilla_rom) + len(patched)) // 1000000 + 1
-                bps_iterable = diff_bytearrays(
-                    blocksize, bytes(vanilla_rom), bytes(patched)
-                )
-
-                # Save to file using write_bps
-                bps_path = os.path.join(DEBUG_DIR, f"{name}.bps")
-                with open(bps_path, "wb") as f:
-                    write_bps(bps_iterable, f)
-                print(f"DEBUG: Saved {bps_path} ({len(patch_data)} entries)")
-                if patch_data:
-                    addrs = sorted(patch_data.keys())
-                    print(f"DEBUG:   Address range: 0x{addrs[0]:X} - 0x{addrs[-1]:X}")
-            except Exception as e:
-                print(f"DEBUG: Failed to save {name}.bps: {e}")
-
-        # ========================================================================
-
         patch = Patch()
         progress = 45
 
         # Battle animations patch
         self._report_progress("Assembling battle animations...", progress)
-        debug_battle_anims: dict[int, bytearray] = dict()
         for animation_bank in self.battle_animations.values():
             patches = animation_bank.render()
             for p in patches:
                 patch.add_data(p[0], p[1], source="battle_animations")
-                debug_battle_anims[p[0]] = p[1]
-        save_debug_bps("01_battle_animations", debug_battle_anims)
         progress += 3
 
         # Render all character palettes when palette swaps are enabled
@@ -1218,23 +1141,19 @@ class GameWorld:
         # Event scripts patch
         # NOTE: render() returns pointer_table + script_content combined,
         # so we must write to pointer_table_start, not start
-        debug_event_scripts: dict[int, bytearray] = dict()
         for event_script_bank in self.event_scripts.banks:
             self._report_progress("Assembling event scripts...", progress)
             rendered = event_script_bank.render()
             patch.add_data(
                 event_script_bank.pointer_table_start, rendered, source="event_scripts"
             )
-            debug_event_scripts[event_script_bank.pointer_table_start] = rendered
             progress += 3
-        save_debug_bps("03_event_scripts", debug_event_scripts)
 
         # Overworld dialogs (rendered before sprites to reclaim unused space)
         self._report_progress("Assembling dialogs...", progress)
         dialog_data = self.overworld_dialogs.render()
         for addr, data in dialog_data.items():
             patch.add_data(addr, data, source="overworld_dialogs")
-        save_debug_bps("04_overworld_dialogs", dialog_data)
         progress += 3
 
         # Action scripts (rendered before sprites to reclaim unused space)
@@ -1246,9 +1165,6 @@ class GameWorld:
             self.action_scripts.pointer_table_start,
             action_data,
             source="action_scripts",
-        )
-        save_debug_bps(
-            "05_action_scripts", {self.action_scripts.pointer_table_start: action_data}
         )
         progress += 3
 
@@ -1264,13 +1180,6 @@ class GameWorld:
             self.monster_scripts.range_2_start,
             monster_scripts[1],
             source="monster_scripts",
-        )
-        save_debug_bps(
-            "06_monster_scripts",
-            {
-                self.monster_scripts.pointer_table_start: monster_scripts[0],
-                self.monster_scripts.range_2_start: monster_scripts[1],
-            },
         )
         progress += 3
 
@@ -1332,11 +1241,8 @@ class GameWorld:
         # Sprite graphics patch (now has access to reclaimed animation banks)
         self._report_progress("Assembling graphics...", progress)
 
-        debug_sprites: dict[int, bytearray] = dict()
         for p in self.sprites.render():
             patch.add_data(p[0], p[1], source="sprites")
-            debug_sprites[p[0]] = p[1]
-        save_debug_bps("07_sprites", debug_sprites)
         progress += 3
 
         # World map
@@ -1355,6 +1261,7 @@ class GameWorld:
 
         # Dialogs, enemies, items, packets, battle packs, rooms, shops, spells
         # (Note: overworld_dialogs and action_scripts are rendered earlier for space reclamation)
+
         # Run all render() calls in parallel
         with ThreadPoolExecutor() as executor:
             futures = {
@@ -1371,7 +1278,6 @@ class GameWorld:
                 "world_map_locations": executor.submit(self.world_map_locations.render),
             }
             # Wait for all to complete and add results to patch
-            debug_counter = 8
             for key in [
                 "battle_dialogs",
                 "enemies",
@@ -1387,15 +1293,12 @@ class GameWorld:
             ]:
                 result = futures[key].result()
                 patch.add_dict(result, source=key)
-                save_debug_bps(f"{debug_counter:02d}_{key}", result)
-                debug_counter += 1
                 progress += 2
                 self._report_progress("Assembling object data...", progress)
 
         self._report_progress("Writing patch...", 95)
         credits_data = update_credits(self)
         patch.add_dict(credits_data)
-        save_debug_bps("18_credits", credits_data)
 
         # Misc
 
@@ -1504,6 +1407,9 @@ class GameWorld:
         # Palettes
         patch.add_dict(self.sprite_palettes.render())
         patch.add_dict(self.event_palettes.render())
+        for s in self.spells.spells:
+            if isinstance(s, CharacterSpell):
+                patch.add_dict(s.palette_patch)
 
         # Update ROM title and version.
         title = "SMRPG-R {}".format(self.seed).ljust(20)
@@ -1523,10 +1429,5 @@ class GameWorld:
 
         # Cache the patch for subsequent calls
         self._cached_patch = patch
-
-        # Final combined debug patch
-        save_debug_bps("99_FINAL_COMBINED", patch._data)
-        if DEBUG_PATCHES:
-            print(f"DEBUG: All debug patches saved to {DEBUG_DIR}")
 
         return patch

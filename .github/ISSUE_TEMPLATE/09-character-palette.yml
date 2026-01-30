@@ -25,7 +25,7 @@ body:
     attributes:
       label: Palette name
       description: |
-        Give us a name to identify your palette with.  
+        Give us a name to identify your palette with. 10 characters or less.  
         If you don't click the "rename character" checkbox, this will only be used to identify it in the palette picker and will not be used in-game.
     validations:
       required: true

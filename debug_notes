@@ -19,19 +19,20 @@
 - booster tower does not load
 - toad shadow broken
 - save boxes broken in nimbus inn, marrymore inn
-- mario doesnt m ove to the right spot when attacking enemies
 - lakitu and shy guy in rose way broken
-
 - forest maze should cap at 6144 Maybe
-- forest character does not join party before battle
-- culex battle message is empty
-- culex crystals no autodeath
-- "couldn't run" message broken
 - A LOT of partitions seem wrong. Double check them as well as the NPC information, min vram etc.
+- save box in pre-maze is broken
+- randomized element palettes not being applied
+- geno's upper sprites dont work, same with bowser, and peach, psych bomb animation is wrong
+
+- going to have to move the protagonist to below 255 or else file select menu wont work
+- psychopath text is garbled
+- forest character does not join party before battle
+- culex crystals no autodeath
 - Frog coin chests just don't work
 - Not sure wtf is going on in mushroom way 2. Does it just not like the remake items?
 - Forest maze messed up in battle. Maybe the calc should be aware of how much vram enemies can bring
-- Also enemies are still t oo strong in formation randomizer
 - palettes in rose way still broken
 - kero sewers is not blocked
 - lakitu and shy guy palettes broken
@@ -39,7 +40,4 @@
 - mallow statue palette in garros house is wrong and partially cut off
 - hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
 - did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings
-- mallow in mushoom way also rendered as an exp star for some reason (probably because theres an exp star in a chest and the partition is not right for him to be 8-dimensional, so bing overwritten)
-- mushroom way fight to rescue mallow is VERY broken 
-- mushroom way lakitu spiney toss broken
 - palette is wrong if you get into calamari fight in mushroom kingdom (failed slots)

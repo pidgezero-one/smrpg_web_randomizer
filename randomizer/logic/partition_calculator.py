@@ -45,7 +45,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
     ActionSubcriptCommandPrototype,
 )
-from ..types.room import ExtraSpriteActions, Room
+from ..types.room import Room
 from ..types.ally import SpriteAnimationState, Ally
 from ..types.prize import FrogCoinPrize, EXPStarPrize, CoinPrize
 from ..types.prizelocation import TreasureChestLocation
@@ -89,74 +89,74 @@ _vanilla_room_states: dict[int, VanillaRoomState] = {}
 
 
 # =============================================================================
-# Mapping from ExtraSpriteActions to SpriteAnimationState
+# Mapping from extra sprite action states to animation states needed for VRAM
 # Used to determine which ally animation states are needed for each room action
 # =============================================================================
 
 EXTRA_ACTION_TO_ANIMATION_STATE: dict[
-    ExtraSpriteActions, list[SpriteAnimationState]
+    SpriteAnimationState, list[SpriteAnimationState]
 ] = {
-    # Direct matches
-    ExtraSpriteActions.DEFEND: [SpriteAnimationState.DEFEND],
-    ExtraSpriteActions.SALUTE: [SpriteAnimationState.SALUTE],
-    ExtraSpriteActions.CHALLENGE: [SpriteAnimationState.CHALLENGE],
-    ExtraSpriteActions.SLEEP: [SpriteAnimationState.SLEEPING],
+    # Direct matches (already in _sprites_primary, just need to load themselves)
+    SpriteAnimationState.DEFEND: [SpriteAnimationState.DEFEND],
+    SpriteAnimationState.SALUTE: [SpriteAnimationState.SALUTE],
+    SpriteAnimationState.CHALLENGE: [SpriteAnimationState.CHALLENGE],
+    SpriteAnimationState.SLEEP: [SpriteAnimationState.SLEEPING],
     # Surprise/shock animations
-    ExtraSpriteActions.SURPRISE_FRAME: [
+    SpriteAnimationState.SURPRISE_FRAME: [
         SpriteAnimationState.SHOCKED_LOOP,
         SpriteAnimationState.SHOCKED_SHADOW,
     ],
-    ExtraSpriteActions.SURPRISE_FRAME_BACK: [
+    SpriteAnimationState.SURPRISE_FRAME_BACK: [
         SpriteAnimationState.SHOCKED_LOOP_BACKWARDS,
         SpriteAnimationState.SHOCKED_SHADOW_BACKWARDS,
         SpriteAnimationState.SHOCKED_BACKWARDS_SEQUENCE,
     ],
     # Standing/leaning animations
-    ExtraSpriteActions.STANDING_SLEEP: [SpriteAnimationState.SLEEPING],
-    ExtraSpriteActions.LEAN_BACK: [SpriteAnimationState.LOOKING_DOWN],
-    ExtraSpriteActions.LEAN_BACK_2: [SpriteAnimationState.LOOKING_DOWN_AWAY],
-    ExtraSpriteActions.LEAN_FORWARD: [SpriteAnimationState.LOOKING_DOWN_STATIC],
+    SpriteAnimationState.STANDING_SLEEP: [SpriteAnimationState.SLEEPING],
+    SpriteAnimationState.LEAN_BACK: [SpriteAnimationState.LOOKING_DOWN],
+    SpriteAnimationState.LEAN_BACK_2: [SpriteAnimationState.LOOKING_DOWN_AWAY],
+    SpriteAnimationState.LEAN_FORWARD: [SpriteAnimationState.LOOKING_DOWN_STATIC],
     # Displeased animations
-    ExtraSpriteActions.DISPLEASED_FRONT: [SpriteAnimationState.DISPLEASED],
-    ExtraSpriteActions.DISPLEASED_BACK: [SpriteAnimationState.DISPLEASED],
+    SpriteAnimationState.DISPLEASED_FRONT: [SpriteAnimationState.DISPLEASED],
+    SpriteAnimationState.DISPLEASED_BACK: [SpriteAnimationState.DISPLEASED],
     # Praise/joy animations
-    ExtraSpriteActions.PRAISE_FRONT: [
+    SpriteAnimationState.PRAISE_FRONT: [
         SpriteAnimationState.JOY,
         SpriteAnimationState.JOY_JUMP,
     ],
-    ExtraSpriteActions.PRAISE_BACK: [SpriteAnimationState.JOY_BEHIND],
+    SpriteAnimationState.PRAISE_BACK: [SpriteAnimationState.JOY_BEHIND],
     # Tumble/hurt animations
-    ExtraSpriteActions.TUMBLE_FRONT: [
+    SpriteAnimationState.TUMBLE_FRONT: [
         SpriteAnimationState.FLOORED,
         SpriteAnimationState.HURT,
     ],
-    ExtraSpriteActions.TUMBLE_BACK: [
+    SpriteAnimationState.TUMBLE_BACK: [
         SpriteAnimationState.FLOORED,
         SpriteAnimationState.HURT,
     ],
-    ExtraSpriteActions.RECOIL: [SpriteAnimationState.HURT],
-    ExtraSpriteActions.FLOP: [SpriteAnimationState.FLOORED],
-    ExtraSpriteActions.DIZZY: [SpriteAnimationState.SHAKING_HEAD],
-    ExtraSpriteActions.WOBBLE: [SpriteAnimationState.SHAKING_HEAD],
+    SpriteAnimationState.RECOIL: [SpriteAnimationState.HURT],
+    SpriteAnimationState.FLOP: [SpriteAnimationState.FLOORED],
+    SpriteAnimationState.DIZZY: [SpriteAnimationState.SHAKING_HEAD],
+    SpriteAnimationState.WOBBLE: [SpriteAnimationState.SHAKING_HEAD],
     # Looking animations
-    ExtraSpriteActions.LOOK_AT_DOLL: [
+    SpriteAnimationState.LOOK_AT_DOLL: [
         SpriteAnimationState.LOOK_TO_SIDE,
         SpriteAnimationState.LOOK_TO_DOWN,
     ],
-    ExtraSpriteActions.EXOR: [SpriteAnimationState.LOOK_WAY_UP],
+    SpriteAnimationState.EXOR: [SpriteAnimationState.LOOK_WAY_UP],
     # Challenge variants
-    ExtraSpriteActions.CHALLENGE_NIMBUS: [SpriteAnimationState.CHALLENGE],
+    SpriteAnimationState.CHALLENGE_NIMBUS: [SpriteAnimationState.CHALLENGE],
     # Special animations - map to base states as fallback
-    ExtraSpriteActions.SWIM: [SpriteAnimationState.SOUTH],
-    ExtraSpriteActions.WHIRL: [SpriteAnimationState.SOUTH],
-    ExtraSpriteActions.DOWN_PIPE: [SpriteAnimationState.SOUTH],
-    ExtraSpriteActions.CROUCH: [SpriteAnimationState.LOOKING_DOWN_STATIC],
-    ExtraSpriteActions.YOSHI: [SpriteAnimationState.SOUTH],
-    ExtraSpriteActions.CLIMB: [SpriteAnimationState.FACE_NORTH],
-    ExtraSpriteActions.CLIMB_FRAME: [SpriteAnimationState.FACE_NORTH],
-    ExtraSpriteActions.BLACKJACK: [SpriteAnimationState.SOUTH],
-    ExtraSpriteActions.HOLD_STAR: [SpriteAnimationState.VICTORY_POSE],
-    ExtraSpriteActions.MUTE: [SpriteAnimationState.SHAKING_HEAD],
+    SpriteAnimationState.SWIM: [SpriteAnimationState.SOUTH],
+    SpriteAnimationState.WHIRL: [SpriteAnimationState.SOUTH],
+    SpriteAnimationState.DOWN_PIPE: [SpriteAnimationState.SOUTH],
+    SpriteAnimationState.CROUCH: [SpriteAnimationState.LOOKING_DOWN_STATIC],
+    SpriteAnimationState.YOSHI: [SpriteAnimationState.SOUTH],
+    SpriteAnimationState.CLIMB: [SpriteAnimationState.FACE_NORTH],
+    SpriteAnimationState.CLIMB_FRAME: [SpriteAnimationState.FACE_NORTH],
+    SpriteAnimationState.BLACKJACK: [SpriteAnimationState.SOUTH],
+    SpriteAnimationState.HOLD_STAR: [SpriteAnimationState.VICTORY_POSE],
+    SpriteAnimationState.MUTE: [SpriteAnimationState.SHAKING_HEAD],
 }
 
 # Default animation states to always consider (basic movement)

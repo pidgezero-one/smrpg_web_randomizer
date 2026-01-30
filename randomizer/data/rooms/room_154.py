@@ -26,7 +26,8 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     RegularClone,
     ChestClone,
 )
-from ...types.room import Room, ExtraSpriteActions
+from ...types.room import Room
+from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from . import npcs
 from ..variables.room_names import *

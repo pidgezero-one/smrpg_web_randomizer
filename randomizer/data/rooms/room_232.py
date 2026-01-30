@@ -2,7 +2,8 @@
 # pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
 from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
-from ...types.room import Room, ExtraSpriteActions
+from ...types.room import Room
+from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from . import npcs
 from ..variables.room_names import *
@@ -375,7 +376,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 11
-            npc=npcs.BOWYER_NPC_BATTLE,
+            npc=npcs.BOWYER_NPC_LARGE,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0400_SEQUENCE_LOOPING_ON,
@@ -403,6 +404,6 @@ room = Room(
             byte7_upper2=3),
     ],
     extra_sprite_actions=[
-        ExtraSpriteActions.RECOIL,
+        SpriteAnimationState.RECOIL,
     ]
 )

@@ -147,7 +147,6 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             Status.SCARECROW,
             Status.INVINCIBLE,
         ])
-        print(chosen_status)
         world.items.get_by_type(MushroomItem2).set_status_immunities([chosen_status])
         world.poison_mushroom_status = chosen_status.name
 
