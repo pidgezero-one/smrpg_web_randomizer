@@ -1252,7 +1252,7 @@ GENO_ARM_SHOT_NPC = NPC(
 )
 
 WAR_FAN_NPC = NPC(
-    sprite_id=SPR0037_WAR_FAN,
+    sprite_id=SPR0902_WAR_FAN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -2549,7 +2549,7 @@ MARIO_DOLL_SURPRISED_NPC = NPC(
 
 MARIO_S_EXOR_IMPRESSION_NPC_2 = NPC(
     sprite_id=SPR0111_MARIO_S_EXOR_IMPRESSION,
-    shadow_size=ShadowSize.OVAL_BIG,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=9,
     obtuse_axis=9,
     height=15,
@@ -2618,6 +2618,29 @@ TRAMPOLINE_WARP_NPC = NPC(
     byte5_bit7=False,
     byte6_bit2=False,
 )
+TRAMPOLINE_WARP_NPC_CLONEABLE = NPC(
+    sprite_id=SPR0099_TRAMPOLINE_WARP,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=7,
+    obtuse_axis=7,
+    height=10,
+    y_shift=1,
+    show_shadow=False,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
 
 TRAMPOLINE_JUMP_NPC = NPC(
     sprite_id=SPR0100_TRAMPOLINE_JUMP,
@@ -2633,6 +2656,29 @@ TRAMPOLINE_JUMP_NPC = NPC(
     priority_1=False,
     priority_2=True,
     cannot_clone=True,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+TRAMPOLINE_JUMP_NPC_CLONEABLE = NPC(
+    sprite_id=SPR0100_TRAMPOLINE_JUMP,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=7,
+    obtuse_axis=7,
+    height=10,
+    y_shift=1,
+    show_shadow=False,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
     byte2_bit0=False,
     byte2_bit1=False,
     byte2_bit2=False,
@@ -5236,7 +5282,7 @@ GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS_NPC = NPC(
 )
 
 PARASOL_NPC = NPC(
-    sprite_id=SPR0036_PARASOL,
+    sprite_id=SPR0901_PARASOL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -5618,6 +5664,29 @@ YELLOW_LETTER_NPC = NPC(
     byte5_bit7=False,
     byte6_bit2=False,
 )
+YELLOW_LETTER_NPC_CLONEABLE = NPC(
+    sprite_id=SPR0616_YELLOW_LETTER,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=4,
+    obtuse_axis=4,
+    height=7,
+    y_shift=0,
+    show_shadow=False,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
 
 YARIDOVICH_OUT_OF_BATTLE_NPC = NPC(
     sprite_id=SPR0617_YARIDOVICH_OUT_OF_BATTLE,
@@ -5956,7 +6025,7 @@ AERO_NPC = NPC(
 )
 
 FRYING_PAN_NPC = NPC(
-    sprite_id=SPR0035_FRYING_PAN,
+    sprite_id=SPR0900_FRYING_PAN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -9363,30 +9432,6 @@ SPINTHRA_NPC = NPC(
     byte6_bit2=False,
 )
 
-CRIPPO_NPC = NPC(
-    sprite_id=SPR0381_BOWSER_CLONE_S,
-    shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=15,
-    obtuse_axis=15,
-    height=23,
-    y_shift=1,
-    show_shadow=False,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=7,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
 APPRENTICE_NPC = NPC(
     sprite_id=SPR0384_APPRENTICE,
     shadow_size=ShadowSize.OVAL_SMALL,
@@ -9460,7 +9505,7 @@ WIND_CRYSTAL_GRIDPLANE_NPC = NPC(
 )
 
 NOTHING_NPC = NPC(
-    sprite_id=SPR0387_MARIO_CLONE_S,
+    sprite_id=SPR0524_EMPTY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9989,7 +10034,7 @@ WIND_CRYSTAL_NPC = NPC(
 
 MARIO_CLONE_NPC = NPC(
     sprite_id=SPR0409_MARIO_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -10013,7 +10058,7 @@ MARIO_CLONE_NPC = NPC(
 
 TOADSTOOL_NPC = NPC(
     sprite_id=SPR0410_TOADSTOOL,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -10037,7 +10082,7 @@ TOADSTOOL_NPC = NPC(
 
 BOWSER_CLONE_NPC = NPC(
     sprite_id=SPR0411_BOWSER_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -10061,7 +10106,7 @@ BOWSER_CLONE_NPC = NPC(
 
 GENO_CLONE_NPC = NPC(
     sprite_id=SPR0412_GENO_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -10085,7 +10130,7 @@ GENO_CLONE_NPC = NPC(
 
 MALLOW_CLONE_NPC = NPC(
     sprite_id=SPR0413_MALLOW_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -11694,7 +11739,7 @@ SMELTER_BACK_SECTION_NPC = NPC(
 
 GENO_DOLL_NPC_2 = NPC(
     sprite_id=SPR0172_GENO_DOLL,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=1,
     obtuse_axis=1,
     height=3,
@@ -17064,7 +17109,7 @@ MACHINE_MADE_AXEM_GREEN_NPC_2 = NPC(
 
 MARIO_CLONE_NPC_2 = NPC(
     sprite_id=SPR0409_MARIO_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17088,7 +17133,7 @@ MARIO_CLONE_NPC_2 = NPC(
 
 MARIO_CLONE_NPC_3 = NPC(
     sprite_id=SPR0409_MARIO_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17112,7 +17157,7 @@ MARIO_CLONE_NPC_3 = NPC(
 
 MARIO_CLONE_NPC_4 = NPC(
     sprite_id=SPR0409_MARIO_CLONE,
-    shadow_size=ShadowSize.OVAL_BIG,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17136,7 +17181,7 @@ MARIO_CLONE_NPC_4 = NPC(
 
 MALLOW_CLONE_NPC_2 = NPC(
     sprite_id=SPR0413_MALLOW_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17160,7 +17205,7 @@ MALLOW_CLONE_NPC_2 = NPC(
 
 MALLOW_CLONE_NPC_3 = NPC(
     sprite_id=SPR0413_MALLOW_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17184,7 +17229,7 @@ MALLOW_CLONE_NPC_3 = NPC(
 
 MALLOW_CLONE_NPC_4 = NPC(
     sprite_id=SPR0413_MALLOW_CLONE,
-    shadow_size=ShadowSize.OVAL_BIG,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17208,7 +17253,7 @@ MALLOW_CLONE_NPC_4 = NPC(
 
 GENO_CLONE_NPC_2 = NPC(
     sprite_id=SPR0412_GENO_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17232,7 +17277,7 @@ GENO_CLONE_NPC_2 = NPC(
 
 GENO_CLONE_NPC_3 = NPC(
     sprite_id=SPR0412_GENO_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17256,7 +17301,7 @@ GENO_CLONE_NPC_3 = NPC(
 
 GENO_CLONE_NPC_4 = NPC(
     sprite_id=SPR0412_GENO_CLONE,
-    shadow_size=ShadowSize.OVAL_BIG,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17280,7 +17325,7 @@ GENO_CLONE_NPC_4 = NPC(
 
 BOWSER_CLONE_NPC_2 = NPC(
     sprite_id=SPR0411_BOWSER_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17304,7 +17349,7 @@ BOWSER_CLONE_NPC_2 = NPC(
 
 BOWSER_CLONE_NPC_3 = NPC(
     sprite_id=SPR0411_BOWSER_CLONE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17352,7 +17397,7 @@ BOWSER_CLONE_NPC_4 = NPC(
 
 TOADSTOOL_NPC_2 = NPC(
     sprite_id=SPR0410_TOADSTOOL,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17376,7 +17421,7 @@ TOADSTOOL_NPC_2 = NPC(
 
 TOADSTOOL_NPC_3 = NPC(
     sprite_id=SPR0410_TOADSTOOL,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -17400,7 +17445,7 @@ TOADSTOOL_NPC_3 = NPC(
 
 TOADSTOOL_NPC_4 = NPC(
     sprite_id=SPR0410_TOADSTOOL,
-    shadow_size=ShadowSize.OVAL_BIG,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
     height=13,
@@ -18725,7 +18770,7 @@ CULEX_STATUE_NPC = NPC(
 
 MALLOW_STATUE_NPC = NPC(
     sprite_id=SPR0683_MALLOW_STATUE_UNTINTED,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
     height=8,

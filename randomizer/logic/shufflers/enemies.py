@@ -89,120 +89,126 @@ def randomize_enemy_stats(world: GameWorld) -> None:
     from randomizer.types.flags import EnemyStats, EnemyStatsShuffleOptions
     from randomizer.types.enemy import Enemy as CustomEnemy
 
-    full_random = (
-        world.settings.get_flag(EnemyStats).selected
-        == EnemyStatsShuffleOptions.FULL_RANDOM
-    )
-
-    # Get list of non-boss enemies for inter-shuffling
-    non_boss_enemies = [e for e in world.enemies.enemies if not e.ohko_immune]
     all_enemies = list(world.enemies.enemies)
+    if (
+        world.settings.get_flag(EnemyStats).selected
+        != EnemyStatsShuffleOptions.DISABLED
+    ):
 
-    # Determine which attributes to shuffle
-    if full_random:
-        shuffle_attrs = [
-            "hp", "speed", "defense", "magic_defense", "evade", "magic_evade",
-            "resistances", "weaknesses", "status_immunities",
-        ]
-    else:
-        shuffle_attrs = [
-            "hp", "speed", "defense", "magic_defense", "evade", "magic_evade",
-        ]
+        full_random = (
+            world.settings.get_flag(EnemyStats).selected
+            == EnemyStatsShuffleOptions.FULL_RANDOM
+        )
 
-    # Inter-shuffle stats between similar-ranked enemies
-    for attr in shuffle_attrs:
-        shuffled = list(non_boss_enemies)
-        max_index = len(non_boss_enemies) - 1
-        done: set = set()
+        # Get list of non-boss enemies for inter-shuffling
+        non_boss_enemies = [e for e in world.enemies.enemies if not e.ohko_immune]
+        
 
-        for i in range(len(non_boss_enemies)):
-            if shuffled[i] in done:
-                continue
-            new_index = i
-            while random.randint(0, 1) == 1:
-                new_index += 1
-            new_index = min(new_index, max_index)
-            a, b = shuffled[i], shuffled[new_index]
-            done.add(a)
-            shuffled[i] = b
-            shuffled[new_index] = a
-
-        # Swap attribute values
-        swaps = [getattr(s, attr) for s in shuffled]
-        for enemy, swapped_val in zip(non_boss_enemies, swaps):
-            setter_name = f"set_{attr}"
-            if hasattr(enemy, setter_name):
-                setter = getattr(enemy, setter_name)
-                if isinstance(swapped_val, list):
-                    setter(list(swapped_val))
-                else:
-                    setter(int(swapped_val))
-
-    # Inter-shuffle morph chances randomly (for non-boss enemies)
-    if full_random:
-        morph_chances = [e.morph_chance for e in non_boss_enemies]
-        random.shuffle(morph_chances)
-        for chance, enemy in zip(morph_chances, non_boss_enemies):
-            enemy.set_morph_chance(chance)
-
-    # Mutate individual enemy stats
-    for enemy in all_enemies:
-        old_stats = {
-            "hp": int(enemy.hp),
-            "speed": int(enemy.speed),
-            "attack": int(enemy.attack),
-            "defense": int(enemy.defense),
-            "magic_attack": int(enemy.magic_attack),
-            "magic_defense": int(enemy.magic_defense),
-            "fp": int(enemy.fp),
-            "evade": int(enemy.evade),
-            "magic_evade": int(enemy.magic_evade),
-        }
-
-        # Mutate numeric stats
-        enemy.set_hp(mutate_normal(int(enemy.hp), minimum=1, maximum=32000))
-        enemy.set_speed(mutate_normal(int(enemy.speed), minimum=0, maximum=255))
-        enemy.set_attack(mutate_normal(int(enemy.attack), minimum=1, maximum=255))
-        enemy.set_defense(mutate_normal(int(enemy.defense), minimum=1, maximum=255))
-        enemy.set_magic_attack(mutate_normal(int(enemy.magic_attack), minimum=1, maximum=255))
-        enemy.set_magic_defense(mutate_normal(int(enemy.magic_defense), minimum=1, maximum=255))
-        enemy.set_fp(mutate_normal(int(enemy.fp), minimum=1, maximum=31))
-        enemy.set_evade(mutate_normal(int(enemy.evade), minimum=0, maximum=100))
-        enemy.set_magic_evade(mutate_normal(int(enemy.magic_evade), minimum=0, maximum=100))
-
-        # For bosses, don't let stats go below vanilla values
-        if enemy.ohko_immune:
-            for attr, old_val in old_stats.items():
-                current_val = int(getattr(enemy, attr))
-                if current_val < old_val:
-                    setter = getattr(enemy, f"set_{attr}")
-                    setter(old_val)
-
-            # Small 1/255 chance for boss to be vulnerable to Geno Whirl
-            if random.randint(1, 255) == 1:
-                enemy.set_ohko_immune(False)
-        else:
-            # For non-bosses: 1/3 chance to reverse OHKO immunity
-            if random.randint(1, 3) == 3:
-                enemy.set_ohko_immune(not enemy.ohko_immune)
-
-            # Randomize morph chance (only in FULL_RANDOM mode)
-            if full_random:
-                morph_options = [0, 25, 75, 100]
-                enemy.set_morph_chance(random.choice(morph_options))
-
-        # FULL_RANDOM: also shuffle elemental resistances/weaknesses
+        # Determine which attributes to shuffle
         if full_random:
-            _randomize_enemy_elements_and_statuses(enemy)
+            shuffle_attrs = [
+                "hp", "speed", "defense", "magic_defense", "evade", "magic_evade",
+                "resistances", "weaknesses", "status_immunities",
+            ]
+        else:
+            shuffle_attrs = [
+                "hp", "speed", "defense", "magic_defense", "evade", "magic_evade",
+            ]
 
-    # Special logic for Smithy 2: All heads must have the same HP
-    try:
-        main_head = world.enemies.get_by_type(SMITHY2Enemy)
-        for head_type in [SMITHYTankEnemy, SMITHYSafeEnemy2, SMITHYMageEnemy, SMITHYChestEnemy]:
-            head = world.enemies.get_by_type(head_type)
-            head.set_hp(int(main_head.hp))
-    except (KeyError, StopIteration):
-        pass
+        # Inter-shuffle stats between similar-ranked enemies
+        for attr in shuffle_attrs:
+            shuffled = list(non_boss_enemies)
+            max_index = len(non_boss_enemies) - 1
+            done: set = set()
+
+            for i in range(len(non_boss_enemies)):
+                if shuffled[i] in done:
+                    continue
+                new_index = i
+                while random.randint(0, 1) == 1:
+                    new_index += 1
+                new_index = min(new_index, max_index)
+                a, b = shuffled[i], shuffled[new_index]
+                done.add(a)
+                shuffled[i] = b
+                shuffled[new_index] = a
+
+            # Swap attribute values
+            swaps = [getattr(s, attr) for s in shuffled]
+            for enemy, swapped_val in zip(non_boss_enemies, swaps):
+                setter_name = f"set_{attr}"
+                if hasattr(enemy, setter_name):
+                    setter = getattr(enemy, setter_name)
+                    if isinstance(swapped_val, list):
+                        setter(list(swapped_val))
+                    else:
+                        setter(int(swapped_val))
+
+        # Inter-shuffle morph chances randomly (for non-boss enemies)
+        if full_random:
+            morph_chances = [e.morph_chance for e in non_boss_enemies]
+            random.shuffle(morph_chances)
+            for chance, enemy in zip(morph_chances, non_boss_enemies):
+                enemy.set_morph_chance(chance)
+
+        # Mutate individual enemy stats
+        for enemy in all_enemies:
+            old_stats = {
+                "hp": int(enemy.hp),
+                "speed": int(enemy.speed),
+                "attack": int(enemy.attack),
+                "defense": int(enemy.defense),
+                "magic_attack": int(enemy.magic_attack),
+                "magic_defense": int(enemy.magic_defense),
+                "fp": int(enemy.fp),
+                "evade": int(enemy.evade),
+                "magic_evade": int(enemy.magic_evade),
+            }
+
+            # Mutate numeric stats
+            enemy.set_hp(mutate_normal(int(enemy.hp), minimum=1, maximum=32000))
+            enemy.set_speed(mutate_normal(int(enemy.speed), minimum=0, maximum=255))
+            enemy.set_attack(mutate_normal(int(enemy.attack), minimum=1, maximum=255))
+            enemy.set_defense(mutate_normal(int(enemy.defense), minimum=1, maximum=255))
+            enemy.set_magic_attack(mutate_normal(int(enemy.magic_attack), minimum=1, maximum=255))
+            enemy.set_magic_defense(mutate_normal(int(enemy.magic_defense), minimum=1, maximum=255))
+            enemy.set_fp(mutate_normal(int(enemy.fp), minimum=1, maximum=31))
+            enemy.set_evade(mutate_normal(int(enemy.evade), minimum=0, maximum=100))
+            enemy.set_magic_evade(mutate_normal(int(enemy.magic_evade), minimum=0, maximum=100))
+
+            # For bosses, don't let stats go below vanilla values
+            if enemy.ohko_immune:
+                for attr, old_val in old_stats.items():
+                    current_val = int(getattr(enemy, attr))
+                    if current_val < old_val:
+                        setter = getattr(enemy, f"set_{attr}")
+                        setter(old_val)
+
+                # Small 1/255 chance for boss to be vulnerable to Geno Whirl
+                if random.randint(1, 255) == 1:
+                    enemy.set_ohko_immune(False)
+            else:
+                # For non-bosses: 1/3 chance to reverse OHKO immunity
+                if random.randint(1, 3) == 3:
+                    enemy.set_ohko_immune(not enemy.ohko_immune)
+
+                # Randomize morph chance (only in FULL_RANDOM mode)
+                if full_random:
+                    morph_options = [0, 25, 75, 100]
+                    enemy.set_morph_chance(random.choice(morph_options))
+
+            # FULL_RANDOM: also shuffle elemental resistances/weaknesses
+            if full_random:
+                _randomize_enemy_elements_and_statuses(enemy)
+
+        # Special logic for Smithy 2: All heads must have the same HP
+        try:
+            main_head = world.enemies.get_by_type(SMITHY2Enemy)
+            for head_type in [SMITHYTankEnemy, SMITHYSafeEnemy2, SMITHYMageEnemy, SMITHYChestEnemy]:
+                head = world.enemies.get_by_type(head_type)
+                head.set_hp(int(main_head.hp))
+        except (KeyError, StopIteration):
+            pass
 
     # Update psychopath messages based on new stats
     for enemy in all_enemies:
@@ -369,14 +375,21 @@ def generate_formation_coordinates(
 def randomize_enemy_formations(world: GameWorld) -> None:
     """Randomize enemy formations.
 
-    - Boss fight formations (linked to BossFightPrize subclasses) are excluded
+    - Boss fight packs (used by BossFightLocation subclasses) are excluded entirely
     - Monsters that appear in boss fight formations are excluded from the candidate pool
     - Monsters are matched by stat similarity: sum of (attack + defense + magic_attack + magic_defense)
       must be within ±20% of the formation's average
     """
     from randomizer.types.prize import BossFightPrize
+    from randomizer.types.prizelocation import BossFightLocation
 
     max_enemies = 6
+
+    # Collect all pack IDs used by boss fight locations - these packs are never modified
+    boss_pack_ids: set[int] = set()
+    for location_cls in BossFightLocation.__subclasses__():
+        if hasattr(location_cls, '_pack_id') and location_cls._pack_id is not None:
+            boss_pack_ids.add(location_cls._pack_id)
 
     # Collect all enemy types that appear in any BossFightPrize subclass
     boss_enemy_types: set[type] = set()
@@ -427,7 +440,11 @@ def randomize_enemy_formations(world: GameWorld) -> None:
     # Maximum total VRAM size for a formation
     MAX_VRAM_SIZE = 8192
 
-    for pack in world.battle_packs.packs:
+    for pack_id, pack in enumerate(world.battle_packs.packs):
+        # Skip boss fight packs entirely - never modify boss formations
+        if pack_id in boss_pack_ids:
+            continue
+
         for formation in pack.formations:
             current_members = [m for m in formation.members if m is not None]
             if not current_members:

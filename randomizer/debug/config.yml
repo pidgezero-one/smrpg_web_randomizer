@@ -134,4 +134,5 @@ items:
     # P115_CRYSTAL_CHEST - CrystalObject
     BoosterPassFirstRoomLeftChestLocation: LuckyJewelPrize
     BoosterPassFirstRoomRightChestLocation: FirstMimicFightLauncher
+    ForestMazeBossFight: CulexBossFight
 

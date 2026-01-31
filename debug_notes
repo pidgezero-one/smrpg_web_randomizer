@@ -10,32 +10,25 @@
 - bean valley FC chest crashes game (supposed to just be a frog coin)
 - nimbus guards dont have different dialogs
 - gold paint logic not working
-- booster hill is a softlock
 - dying to failed slots does not game over
 - seaside frog placement not working, everything is still full price
-- boss formation randomizer seems broken overall, strong enemies in mushroom way
-- verify if boss music is actually being randomized or not, 2 in a row had same songPlease 
-- culex 3Ds guys are wrong, also doesnt float?
 - booster tower does not load
-- toad shadow broken
 - save boxes broken in nimbus inn, marrymore inn
 - lakitu and shy guy in rose way broken
-- forest maze should cap at 6144 Maybe
-- A LOT of partitions seem wrong. Double check them as well as the NPC information, min vram etc.
-- save box in pre-maze is broken
 - randomized element palettes not being applied
-- geno's upper sprites dont work, same with bowser, and peach, psych bomb animation is wrong
+- geno blast animation is incorrect
+- bowser's coords are too high
 
-- going to have to move the protagonist to below 255 or else file select menu wont work
-- psychopath text is garbled
-- forest character does not join party before battle
+- beetlemania packet is wrong sprite
+- buzzer's default attack sound effect is wrong somehow
+- booster hill needs to be packeted
 - culex crystals no autodeath
 - Frog coin chests just don't work
 - Not sure wtf is going on in mushroom way 2. Does it just not like the remake items?
 - Forest maze messed up in battle. Maybe the calc should be aware of how much vram enemies can bring
 - palettes in rose way still broken
 - kero sewers is not blocked
-- lakitu and shy guy palettes broken
+- lakitu and shy guy broken
 - trampoline in nimbus land broken sprite
 - mallow statue palette in garros house is wrong and partially cut off
 - hidon as statue keeper breaks when he moves upward, might be incorrect mold being set

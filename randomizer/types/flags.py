@@ -2025,9 +2025,9 @@ class EnemyStats(SelectOneFlag[EnemyStatsShuffleOptions]):
     _name = "Randomize enemy stats"
     _description = """Choose what should be randomized about enemy stats (includes normal mobs and bosses).
 <br>
-<br><bold>Stat values only</bold>: Attack, defense, speed, and HP values are randomized. Elemental weaknesses/resistances and status immunities remain unchanged.
+<br><b>Stat values only</b>: Attack, defense, speed, and HP values are randomized. Elemental weaknesses/resistances and status immunities remain unchanged.
 <br>
-<br><bold>Everything</bold>: Attack, defense, speed, and HP values are randomized. Elemental weaknesses/resistances and status immunities are also randomized.
+<br><b>Everything</b>: Attack, defense, speed, and HP values are randomized. Elemental weaknesses/resistances and status immunities are also randomized.
 <br>
 <br><b>Original stats</b>: Enemy stats remain unchanged."""
     _id = "enemystats"

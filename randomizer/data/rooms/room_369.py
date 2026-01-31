@@ -18,12 +18,12 @@ room = Room(
         extra_sprite_buffer_size=1,
         buffers = [
             Buffer(
-                buffer_type=BufferType.TREASURE_CHEST,
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
@@ -164,6 +164,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,),
     ]
 )

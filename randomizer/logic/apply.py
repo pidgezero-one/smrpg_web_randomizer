@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
 
 from randomizer.data.variables.dialog_names import DI1163_BOOSTER_TOWER_DOOR_OPEN, DI2320_TOADSTOOL_ROOM_HINT, DI2908_TREASURE_SELLER_ITEM_2, DI2911_TREASURE_SELLER_ITEM_1, DI2914_TREASURE_SELLER_ITEM_3
-from randomizer.data.variables.sprite_names import SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO, SPR0962_TOADSTOOL_WALKING_DOWN_LEFT, SPR0963_TOADSTOOL_JUMP_FRONT, SPR0964_TOADSTOOL_WALKING_UP_RIGHT, SPR0965_TOADSTOOL_SURPRISE, SPR0966_TOADSTOOL_SLAP_ATTACK, SPR0967_TOADSTOOL_FRYING_PAN_ATTACK, SPR0968_TOADSTOOL_FALLEN_CRYING, SPR0969_BOWSER_WALKING_DOWN_LEFT, SPR0970_BOWSER_JUMP_FRONT, SPR0971_BOWSER_WALKING_UP_RIGHT, SPR0972_BOWSER_SURPRISE, SPR0973_BOWSER_CLAW_ATTACK, SPR0974_BOWSER_SWING_BALL_CHAIN, SPR0975_BOWSER_CAST_SPELL, SPR0976_MALLOW_WALKING_DOWN_LEFT, SPR0977_MALLOW_JUMP_FRONT, SPR0978_MALLOW_WALKING_UP_RIGHT, SPR0979_MALLOW_SURPRISE, SPR0980_MALLOW_PUNCH, SPR0981_MALLOW_SWING_STICK, SPR0982_MALLOW_STILL_UP_RIGHT, SPR0983_GENO_WALKING_DOWN_LEFT, SPR0984_GENO_JUMP_FRONT, SPR0985_GENO_WALKING_UP_RIGHT, SPR0986_GENO_SURPRISE, SPR0987_GENO_ELBOW_SHOT, SPR0988_GENO_FINGER_SHOT, SPR0989_GENO_MORPH_INTO_CANNON
+from randomizer.data.variables.sprite_names import SPR0031_EMPTY, SPR0032_EMPTY, SPR0033_EMPTY, SPR0034_EMPTY, SPR0035_EMPTY, SPR0036_EMPTY, SPR0037_EMPTY, SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO
 from ..types.prizelocation import (
     BossFightLocation,
     PrizeRow,
@@ -483,6 +483,15 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # Apply boss stat scaling after all prizes are set
     apply_boss_stat_scaling(world)
 
+    # Set can_run_away for each boss fight location's formation
+    # This must happen after all renders to ensure the correct formation is used
+    # Each boss fight is unique, so each formation should only be used by one location
+    for location in world.locations.values():
+        if isinstance(location, BossFightLocation) and location.prize is not None:
+            pack = world.battle_packs._packs[location._pack_id]
+            for formation in pack.formations:
+                formation.set_can_run_away(location.allow_run_away)
+
     # put the right character clone in the sunken ship mirror room
     # and also sub character sprites in overworld where appropriate
     # some other edge case logic for character-specific stuff could go here too
@@ -495,13 +504,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = TOADSTOOL_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = TOADSTOOL_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = TOADSTOOL_621
-        world.sprites.sprites[SPR0962_TOADSTOOL_WALKING_DOWN_LEFT] = TOADSTOOL_962
-        world.sprites.sprites[SPR0963_TOADSTOOL_JUMP_FRONT] = TOADSTOOL_963
-        world.sprites.sprites[SPR0964_TOADSTOOL_WALKING_UP_RIGHT] = TOADSTOOL_964
-        world.sprites.sprites[SPR0965_TOADSTOOL_SURPRISE] = TOADSTOOL_965
-        world.sprites.sprites[SPR0966_TOADSTOOL_SLAP_ATTACK] = TOADSTOOL_966
-        world.sprites.sprites[SPR0967_TOADSTOOL_FRYING_PAN_ATTACK] = TOADSTOOL_967
-        world.sprites.sprites[SPR0968_TOADSTOOL_FALLEN_CRYING] = TOADSTOOL_968
+        world.sprites.sprites[SPR0031_EMPTY] = TOADSTOOL_962
+        world.sprites.sprites[SPR0032_EMPTY] = TOADSTOOL_963
+        world.sprites.sprites[SPR0033_EMPTY] = TOADSTOOL_964
+        world.sprites.sprites[SPR0034_EMPTY] = TOADSTOOL_965
+        world.sprites.sprites[SPR0035_EMPTY] = TOADSTOOL_966
+        world.sprites.sprites[SPR0036_EMPTY] = TOADSTOOL_967
+        world.sprites.sprites[SPR0037_EMPTY] = TOADSTOOL_968
         world.update_dialog(DI2320_TOADSTOOL_ROOM_HINT, " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
     elif world.overworld_character.ally.index == 2:
         clone_room.get_npc_by_target_id(NPC_0)._npc = BOWSER_WALKING_DOWN_LEFT_NPC
@@ -510,13 +519,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = BOWSER_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = BOWSER_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = BOWSER_621
-        world.sprites.sprites[SPR0969_BOWSER_WALKING_DOWN_LEFT] = BOWSER_969
-        world.sprites.sprites[SPR0970_BOWSER_JUMP_FRONT] = BOWSER_970
-        world.sprites.sprites[SPR0971_BOWSER_WALKING_UP_RIGHT] = BOWSER_971
-        world.sprites.sprites[SPR0972_BOWSER_SURPRISE] = BOWSER_972
-        world.sprites.sprites[SPR0973_BOWSER_CLAW_ATTACK] = BOWSER_973
-        world.sprites.sprites[SPR0974_BOWSER_SWING_BALL_CHAIN] = BOWSER_974
-        world.sprites.sprites[SPR0975_BOWSER_CAST_SPELL] = BOWSER_975
+        world.sprites.sprites[SPR0031_EMPTY] = BOWSER_969
+        world.sprites.sprites[SPR0032_EMPTY] = BOWSER_970
+        world.sprites.sprites[SPR0033_EMPTY] = BOWSER_971
+        world.sprites.sprites[SPR0034_EMPTY] = BOWSER_972
+        world.sprites.sprites[SPR0035_EMPTY] = BOWSER_973
+        world.sprites.sprites[SPR0036_EMPTY] = BOWSER_974
+        world.sprites.sprites[SPR0037_EMPTY] = BOWSER_975
     elif world.overworld_character.ally.index == 3:
         clone_room.get_npc_by_target_id(NPC_0)._npc = GENO_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
@@ -524,13 +533,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = GENO_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = GENO_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = GENO_621
-        world.sprites.sprites[SPR0983_GENO_WALKING_DOWN_LEFT] = GENO_983
-        world.sprites.sprites[SPR0984_GENO_JUMP_FRONT] = GENO_984
-        world.sprites.sprites[SPR0985_GENO_WALKING_UP_RIGHT] = GENO_985
-        world.sprites.sprites[SPR0986_GENO_SURPRISE] = GENO_986
-        world.sprites.sprites[SPR0987_GENO_ELBOW_SHOT] = GENO_987
-        world.sprites.sprites[SPR0988_GENO_FINGER_SHOT] = GENO_988
-        world.sprites.sprites[SPR0989_GENO_MORPH_INTO_CANNON] = GENO_989
+        world.sprites.sprites[SPR0031_EMPTY] = GENO_983
+        world.sprites.sprites[SPR0032_EMPTY] = GENO_984
+        world.sprites.sprites[SPR0033_EMPTY] = GENO_985
+        world.sprites.sprites[SPR0034_EMPTY] = GENO_986
+        world.sprites.sprites[SPR0035_EMPTY] = GENO_987
+        world.sprites.sprites[SPR0036_EMPTY] = GENO_988
+        world.sprites.sprites[SPR0037_EMPTY] = GENO_989
     elif world.overworld_character.ally.index == 4:
         clone_room.get_npc_by_target_id(NPC_0)._npc = MALLOW_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = MALLOW_96
@@ -538,13 +547,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = MALLOW_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = MALLOW_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = MALLOW_621
-        world.sprites.sprites[SPR0976_MALLOW_WALKING_DOWN_LEFT] = MALLOW_976
-        world.sprites.sprites[SPR0977_MALLOW_JUMP_FRONT] = MALLOW_977
-        world.sprites.sprites[SPR0978_MALLOW_WALKING_UP_RIGHT] = MALLOW_978
-        world.sprites.sprites[SPR0979_MALLOW_SURPRISE] = MALLOW_979
-        world.sprites.sprites[SPR0980_MALLOW_PUNCH] = MALLOW_980
-        world.sprites.sprites[SPR0981_MALLOW_SWING_STICK] = MALLOW_981
-        world.sprites.sprites[SPR0982_MALLOW_STILL_UP_RIGHT] = MALLOW_982
+        world.sprites.sprites[SPR0031_EMPTY] = MALLOW_976
+        world.sprites.sprites[SPR0032_EMPTY] = MALLOW_977
+        world.sprites.sprites[SPR0033_EMPTY] = MALLOW_978
+        world.sprites.sprites[SPR0034_EMPTY] = MALLOW_979
+        world.sprites.sprites[SPR0035_EMPTY] = MALLOW_980
+        world.sprites.sprites[SPR0036_EMPTY] = MALLOW_981
+        world.sprites.sprites[SPR0037_EMPTY] = MALLOW_982
 
 
 

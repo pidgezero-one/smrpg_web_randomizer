@@ -1,4 +1,4 @@
-# E0735_EMPTY
+# E0735_FOREST_UNDERGROUND_CHEST
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,11 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-
+    JmpIfVarEqualsConst(ACTIVE_NPC, NPC_2, ["JmpToChest1Container"]),
+    JmpIfVarEqualsConst(ACTIVE_NPC, NPC_3, ["JmpToChest2Container"]),
+    JmpIfVarEqualsConst(ACTIVE_NPC, NPC_4, ["JmpToChest3Container"]),
+    Return(),
+    JmpToEvent(E0172_CHEST_1_CONTAINER, identifier="JmpToChest1Container"),
+    JmpToEvent(E0173_CHEST_2_CONTAINER, identifier="JmpToChest2Container"),
+    JmpToEvent(E0174_CHEST_3_CONTAINER, identifier="JmpToChest3Container")
 ])

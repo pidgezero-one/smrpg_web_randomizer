@@ -874,11 +874,6 @@ class GameWorld:
                 # Re-raise unexpected exceptions
                 raise
 
-        # Apply shuffle results to game data AFTER successful placement
-        # This must be outside the retry loop because it modifies event scripts
-        # which can't be undone on retry
-        self._apply_shuffle_results()
-
         # TODO: update sprite pointers for new ally IDs
         # TODO: make up some presets
 
@@ -889,11 +884,10 @@ class GameWorld:
         if self.settings.isflag_enabled(EnemyAttacks):
             self._randomize_enemy_attacks_and_spells()
 
-        if (
-            self.settings.get_flag(EnemyStats).selected
-            != EnemyStatsShuffleOptions.DISABLED
-        ):
-            self._randomize_enemy_stats()
+        self._apply_shuffle_results()
+
+        self._randomize_enemy_stats()
+            
 
         # Update HP-based AI thresholds after all stat mutations are complete
         self._update_enemy_hp_thresholds()
@@ -1381,10 +1375,10 @@ class GameWorld:
         i = starter.index
         file_select_char_bytes = [
             SPR0000_MARIO_WALKING_DOWN_LEFT,
-            SPR0962_TOADSTOOL_WALKING_DOWN_LEFT,
-            SPR0969_BOWSER_WALKING_DOWN_LEFT,
-            SPR0983_GENO_WALKING_DOWN_LEFT,
-            SPR0976_MALLOW_WALKING_DOWN_LEFT,
+            SPR0031_EMPTY,
+            SPR0031_EMPTY,
+            SPR0031_EMPTY,
+            SPR0031_EMPTY,
         ]
         self.file_select_character = starter.name
 

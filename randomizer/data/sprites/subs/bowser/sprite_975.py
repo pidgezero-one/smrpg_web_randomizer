@@ -311,7 +311,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=118, y=104),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=114, y=100),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00030\x148\x12=\x1c"\x10\x02\x08\x00\x15\x00\x000\x03\x02\x07#&/="\x1d\n\x0f\x00\x1f\x10'),
                             bytearray(b'\x00\x00\x01\x03#O.\r\x029@;\x18\x1f\xb0\x1f\x80\x00\xd0\x00\xbcD\xfe\x01\xfa4\xf86\xfcF\xf8\x0f'),

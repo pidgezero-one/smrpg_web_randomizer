@@ -133,5 +133,9 @@ class Enemy(EnemyBase):
         else:
             # No vulnerabilities at all - just empty space
             desc += EMPTY * 7
+        desc = desc.rstrip(EMPTY)
+        if desc == '':
+            desc = "(none)"
+        print(desc)
 
         return desc

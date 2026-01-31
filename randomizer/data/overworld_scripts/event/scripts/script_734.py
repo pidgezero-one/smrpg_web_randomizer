@@ -1,4 +1,4 @@
-# E0734_EMPTY
+# E0734_MWAY_CHEST
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-
+    JmpIfVarEqualsConst(ACTIVE_NPC, NPC_0, ["JmpToChest1Container"]),
+    JmpIfVarEqualsConst(ACTIVE_NPC, NPC_1, ["JmpToChest2Container"]),
+    Return(),
 ])
