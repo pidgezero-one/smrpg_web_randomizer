@@ -1,6 +1,6 @@
 from __future__ import annotations
 import random
-from typing import TYPE_CHECKING, TypeVar
+from typing import TYPE_CHECKING, Sequence, TypeVar
 from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC
 from ..data.physical_objects.items import (
     DefaultItem,
@@ -776,7 +776,7 @@ class BossFightPrize(Prize):
         return self._formation
 
     @property
-    def formation_members(self) -> list[FormationMember | None]:
+    def formation_members(self) -> Sequence[FormationMember | None]:
         """Get the list of FormationMember objects for stat calculations.
 
         If _formation is set, returns its members. Otherwise falls back to _members.

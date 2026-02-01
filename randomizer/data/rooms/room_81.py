@@ -108,7 +108,7 @@ room = Room(
         ChestClone( # 1
             npc=npcs.TREASURE_CHEST_NPC,
             lower_70a7=5,
-            upper_70a7=8,
+            upper_70a7=0,
             visible=True,
             x=19,
             y=37,
@@ -118,7 +118,7 @@ room = Room(
         ChestClone( # 2
             npc=npcs.TREASURE_CHEST_NPC,
             lower_70a7=5,
-            upper_70a7=8,
+            upper_70a7=0,
             visible=True,
             x=26,
             y=29,
@@ -128,7 +128,7 @@ room = Room(
         ChestClone( # 3
             npc=npcs.TREASURE_CHEST_NPC,
             lower_70a7=5,
-            upper_70a7=8,
+            upper_70a7=0,
             visible=True,
             x=17,
             y=22,
@@ -138,7 +138,7 @@ room = Room(
         ChestClone( # 4
             npc=npcs.TREASURE_CHEST_NPC,
             lower_70a7=5,
-            upper_70a7=8,
+            upper_70a7=0,
             visible=True,
             x=25,
             y=38,

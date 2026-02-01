@@ -39,8 +39,8 @@ script = EventScript([
 		A_WalkSouthSteps(2),
 		A_SetWalkingSpeed(NORMAL)
 	]),
-	JmpIfVarEqualsConst(ACTIVE_NPC, 21, ["EVENT_3880_jmp_to_event_6"], identifier="EVENT_3880_jmp_if_var_equals_const_3"),
-	JmpIfVarEqualsConst(ACTIVE_NPC, 22, ["EVENT_3880_jmp_to_event_7"]),
+	JmpIfVarEqualsConst(ACTIVE_NPC, NPC_1, ["EVENT_3880_jmp_to_event_6"], identifier="EVENT_3880_jmp_if_var_equals_const_3"),
+	JmpIfVarEqualsConst(ACTIVE_NPC, NPC_0, ["EVENT_3880_jmp_to_event_7"]),
 	JmpToEvent(E0174_CHEST_3_CONTAINER),
 	JmpToEvent(E0173_CHEST_2_CONTAINER, identifier="EVENT_3880_jmp_to_event_6"),
 	JmpToEvent(E0172_CHEST_1_CONTAINER, identifier="EVENT_3880_jmp_to_event_7")

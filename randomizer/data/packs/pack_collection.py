@@ -32,7 +32,6 @@ FORM0000 = Formation(
         FormationMember(SNIFITEnemyStatic, 183, 127),
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -211,6 +210,7 @@ FORM0017 = Formation(
         FormationMember(SHYSTEREnemy, 199, 135),
     ],
     music=NormalBattleMusic(),
+    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -222,6 +222,7 @@ FORM0018 = Formation(
         FormationMember(SHYSTEREnemy, 167, 135),
     ],
     music=NormalBattleMusic(),
+    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -622,7 +623,6 @@ FORM0055 = Formation(
         FormationMember(TOADSTOOL3Enemy, 215, 159, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -1082,7 +1082,6 @@ FORM0096 = Formation(
         FormationMember(WINDCRYS3DEnemy, 185, 173, hidden_at_start=True),
     ],
     music=CulexMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=77,
 )
@@ -1390,7 +1389,6 @@ FORM0123 = Formation(
         FormationMember(BOOSTERDUMMY, 0, 0),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -1404,7 +1402,6 @@ FORM0124 = Formation(
         FormationMember(STRONGBOBOMB2Enemy, 223, 142, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -1551,7 +1548,6 @@ FORM0137 = Formation(
         FormationMember(CANDLEEnemy, 0, 0),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=17,
 )
@@ -2427,7 +2423,6 @@ FORM0216 = Formation(
         FormationMember(JOHNNYEnemy2, 165, 121),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -2822,7 +2817,6 @@ FORM0251 = Formation(
         FormationMember(MICROBOMBEnemy, 215, 159, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -2904,7 +2898,6 @@ FORM0258 = Formation(
         FormationMember(MADMALLETEnemyHenchman, 199, 151),
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -2917,7 +2910,6 @@ FORM0259 = Formation(
         FormationMember(POUNDEREnemyHenchman, 215, 143),
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -2931,7 +2923,6 @@ FORM0260 = Formation(
         FormationMember(POUNDETTEEnemyHenchman, 231, 135),
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -2942,7 +2933,6 @@ FORM0261 = Formation(
         FormationMember(FACTORYCHIEFEnemy, 231, 151),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -2964,7 +2954,6 @@ FORM0263 = Formation(
         FormationMember(APPRENTICEEnemyStatic, 183, 127),
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
 )
 
 FORM0264 = Formation(
@@ -2993,7 +2982,6 @@ FORM0266 = Formation(
         FormationMember(PANDORITEEnemy, 183, 127),
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3007,7 +2995,6 @@ FORM0267 = Formation(
         FormationMember(GOOMBETTEEnemy, 215, 151, hidden_at_start=True),
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3018,7 +3005,6 @@ FORM0268 = Formation(
         FormationMember(FAUTSOEnemy, 151, 111, hidden_at_start=True),
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3029,7 +3015,6 @@ FORM0269 = Formation(
         FormationMember(BAHAMUTTEnemy2, 135, 119, hidden_at_start=True),
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3052,7 +3037,6 @@ FORM0271 = Formation(
         FormationMember(SNIFITEnemyHenchman, 199, 151),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=12,
 )
@@ -3063,7 +3047,6 @@ FORM0272 = Formation(
         FormationMember(BOOSTEREnemy2, 183, 127),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3073,7 +3056,6 @@ FORM0273 = Formation(
         FormationMember(CROCO1Enemy, 183, 127),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3083,7 +3065,6 @@ FORM0274 = Formation(
         FormationMember(CROCO2Enemy, 183, 127),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3093,7 +3074,6 @@ FORM0275 = Formation(
         FormationMember(MACHINEMADEAxemBlackEnemy, 183, 127),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3109,7 +3089,6 @@ FORM0276 = Formation(
         FormationMember(WATERCRYSTALEnemy, 0, 0, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3124,7 +3103,6 @@ FORM0277 = Formation(
         FormationMember(TENTACLESEnemy, 135, 143, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=26,
 )
@@ -3135,7 +3113,6 @@ FORM0278 = Formation(
         FormationMember(BELOME1Enemy, 183, 127),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3147,7 +3124,6 @@ FORM0279 = Formation(
         FormationMember(TOADSTOOL2Enemy, 215, 159, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3167,7 +3143,6 @@ FORM0281 = Formation(
         FormationMember(DODOEnemy, 199, 151, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3182,7 +3157,6 @@ FORM0282 = Formation(
         FormationMember(HELIOEnemy, 231, 151, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3197,7 +3171,6 @@ FORM0283 = Formation(
         FormationMember(MEGASMILAXEnemy, 175, 111, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=58,
 )
@@ -3210,7 +3183,6 @@ FORM0284 = Formation(
         FormationMember(DINGALINGEnemy, 194, 67),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3225,7 +3197,6 @@ FORM0285 = Formation(
         FormationMember(EGGBERTEnemy, 199, 151, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3238,7 +3209,6 @@ FORM0286 = Formation(
         FormationMember(TORTEEnemy, 135, 119),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3249,7 +3219,6 @@ FORM0287 = Formation(
         FormationMember(GRATEGUYEnemy, 199, 143),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3272,7 +3241,6 @@ FORM0289 = Formation(
         FormationMember(BODYGUARDEnemy, 215, 151),
     ],
     music=BossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3283,7 +3251,6 @@ FORM0290 = Formation(
         FormationMember(YARIDOVICHMirageEnemy, 183, 127, hidden_at_start=True),
     ],
     music=BossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3293,7 +3260,6 @@ FORM0291 = Formation(
         FormationMember(BOWYEREnemy, 183, 127),
     ],
     music=BossMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=14,
 )
@@ -3309,7 +3275,6 @@ FORM0292 = Formation(
         FormationMember(AXEMYELLOWEnemy, 215, 151, hidden_at_start=True),
     ],
     music=BossMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=61,
 )
@@ -3321,7 +3286,6 @@ FORM0293 = Formation(
         FormationMember(HAMMERBROEnemy, 199, 143),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3333,7 +3297,6 @@ FORM0294 = Formation(
         FormationMember(MADADDEREnemy, 167, 135, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=52,
 )
@@ -3347,7 +3310,6 @@ FORM0295 = Formation(
         FormationMember(MACHINEMADEBodyguardEnemy, 199, 159, hidden_at_start=True),
     ],
     music=Smithy1Music(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3360,7 +3322,6 @@ FORM0296 = Formation(
         FormationMember(LEFTEYEEnemy, 203, 157, hidden_at_start=True),
     ],
     music=BossMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=80,
 )
@@ -3542,7 +3503,6 @@ FORM0314 = Formation(
         FormationMember(MOKURAEnemy, 167, 135, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3552,7 +3512,6 @@ FORM0315 = Formation(
         FormationMember(DODOEnemySolo, 183, 127),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3563,7 +3522,6 @@ FORM0316 = Formation(
         FormationMember(TERRAPINEnemy, 167, 135, hidden_at_start=True),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
     run_event_at_load=101,
 )
@@ -3576,7 +3534,6 @@ FORM0317 = Formation(
         FormationMember(HANGINSHYEnemy, 186, 74),
     ],
     music=MidbossMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3635,7 +3592,6 @@ FORM0322 = Formation(
         FormationMember(WINDCRYSTALEnemy, 215, 143, hidden_at_start=True),
     ],
     music=CulexMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 
@@ -3866,7 +3822,6 @@ FORM0342 = Formation(
     members=[
     ],
     music=NormalBattleMusic(),
-    can_run_away=False,
     unknown_bit=True,
 )
 

@@ -15,7 +15,7 @@ room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=2,
+        extra_sprite_buffer_size=3,
         buffers = [
             Buffer(
                 buffer_type=BufferType.TREASURE_CHEST,

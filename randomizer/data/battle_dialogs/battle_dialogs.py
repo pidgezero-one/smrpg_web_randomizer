@@ -283,7 +283,8 @@ battle_messages[20] = 'All'
 battle_messages[21] = 'Unarmed'
 battle_messages[22] = 'Defense'
 battle_messages[23] = 'Run away'
-battle_messages[24] = "Can't run!"
+# Message 24 uses item/menu font: apostrophe=0x7E, exclamation=0x7C
+battle_messages[24] = "Can[item_apos]t run[item_excl]"
 battle_messages[25] = 'Coin'
 battle_messages[26] = 'Ex.pts.'
 battle_messages[27] = 'Item'

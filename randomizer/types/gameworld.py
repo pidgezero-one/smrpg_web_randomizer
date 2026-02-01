@@ -1253,6 +1253,10 @@ class GameWorld:
             if r is not None and isinstance(r, Room):
                 r.update_partition_by_protagonist(self)
 
+        # fuck you
+        if random.randint(0, 100) < 10:
+            self.battle_dialogs.battle_messages[38] = "Wanna double you're coins?"
+
         # Dialogs, enemies, items, packets, battle packs, rooms, shops, spells
         # (Note: overworld_dialogs and action_scripts are rendered earlier for space reclamation)
 

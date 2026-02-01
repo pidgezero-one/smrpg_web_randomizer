@@ -37,8 +37,8 @@ script = EventScript([
 	DecVarFrom7000(Z_COORD_1),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
 	CreatePacketAt7010(packet=P101_BEETLE_CHEST, destinations=["EVENT_162_ret_9"]),
-	PlaySound(sound=SO014_FLOWER, channel=6),
+	PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_162_ret_9"),
 	RunDialog(dialog_id=DI3077_GOT_BEETLEMANIA, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
 	SetBit(BEETLEMANIA_UNLOCKED),
-	Return(identifier="EVENT_162_ret_9")
+	Return()
 ])

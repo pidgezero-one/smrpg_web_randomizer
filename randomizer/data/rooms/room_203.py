@@ -104,7 +104,7 @@ room = Room(
             event_script=E0734_MWAY_CHEST,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=8,
-            upper_70a7=5,
+            upper_70a7=0,
             visible=True,
             x=16,
             y=43,
@@ -131,7 +131,7 @@ room = Room(
         ChestClone(  # 1
             npc=npcs.TREASURE_CHEST_NPC,
             lower_70a7=8,
-            upper_70a7=8,
+            upper_70a7=0,
             visible=True,
             x=11,
             y=23,

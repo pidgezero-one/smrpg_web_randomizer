@@ -40,7 +40,7 @@ script = EventScript([
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=COIN_CHEST_MULTIPLIER, identifier="EVENT_3091_copy_var_to_var_6"),
 	CopyVarToVar(from_var=ITEM_ID, to_var=PRIMARY_TEMP_7000),
 	Mem7000AndConst(0x000F),
-	AddVarTo7000(COIN_CHEST_MULTIPLIER),
+	AddVarTo7000(ShortVar(COIN_CHEST_MULTIPLIER)),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=COIN_CHEST_MULTIPLIER),
 	SetVarToConst(PRIMARY_TEMP_7000, 0),
 	JmpIfVarEqualsConst(COIN_CHEST_MULTIPLIER, 0, ["EVENT_3091_add_frog_coins_16"], identifier="EVENT_3091_jmp_if_var_equals_const_12"),
@@ -58,9 +58,7 @@ script = EventScript([
 	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
 	AddConstToVar(PRIMARY_TEMP_7000, 608),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
-	JmpIfBitSet(UNKNOWN_704A_3, ["EVENT_3091_clear_bit_29"]),
 	PlaySound(sound=SO094_FROG_COIN, channel=6),
-	ClearBit(UNKNOWN_704A_3, identifier="EVENT_3091_clear_bit_29"),
 	CreatePacketAt7010(packet=P019_FROG_COIN_BEING_COLLECTED, destinations=["EVENT_3091_ret_31"]),
 	Return(identifier="EVENT_3091_ret_31")
 ])

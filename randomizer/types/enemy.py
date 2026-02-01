@@ -133,9 +133,10 @@ class Enemy(EnemyBase):
         else:
             # No vulnerabilities at all - just empty space
             desc += EMPTY * 7
-        desc = desc.rstrip(EMPTY)
+        # Strip trailing EMPTY placeholders (must strip full substring, not individual chars)
+        while desc.endswith(EMPTY):
+            desc = desc[:-len(EMPTY)]
         if desc == '':
             desc = "(none)"
-        print(desc)
 
         return desc

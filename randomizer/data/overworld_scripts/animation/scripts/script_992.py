@@ -17,6 +17,7 @@ from ....items import *
 
 script = ActionScript([
 	A_FloatingOff(),
+	A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
 	A_VisibilityOff(),
 	A_Pause(9),
 	A_VisibilityOn(),

@@ -73,7 +73,7 @@ class Room(RoomBase):
                     vram_values.append(m.min_vram_from_sequence(world, tup[0], tup[1]))
 
         min_vram = max(vram_values) 
-        self.partition.set_ally_sprite_buffer_size(min_vram)
+        self.partition.set_ally_sprite_buffer_size(max(min_vram, self.partition.ally_sprite_buffer_size))
 
 
     def update_partition_by_prize(self) -> None:

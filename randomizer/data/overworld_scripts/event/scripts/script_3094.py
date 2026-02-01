@@ -39,9 +39,7 @@ script = EventScript([
 	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
 	AddConstToVar(PRIMARY_TEMP_7000, 608),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
-	JmpIfBitSet(UNKNOWN_704A_3, ["EVENT_3094_clear_bit_10"]),
 	PlaySound(sound=SO081_STAR, channel=6),
-	ClearBit(UNKNOWN_704A_3, identifier="EVENT_3094_clear_bit_10"),
 	CreatePacketAt7010(packet=P007_STAR_PIECE_CHEST, destinations=["EVENT_3094_ret_13"]),
 	Pause(45),
 	Return(identifier="EVENT_3094_ret_13")

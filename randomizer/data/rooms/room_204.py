@@ -38,9 +38,9 @@ from ..variables.action_script_names import *
 
 room = Room(
     partition=Partition(
-        ally_sprite_buffer_size=1,
+        ally_sprite_buffer_size=2,
         allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=2,
+        extra_sprite_buffer_size=1,
         buffers=[
             Buffer(
                 buffer_type=BufferType.TREASURE_CHEST,
@@ -428,9 +428,8 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3,
         ),
-        RegularNPC(  # 11
+        RegularClone(  # 11
             npc=npcs.ITEM_BAG_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0240_FREESTANDING_2_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=False,
@@ -439,22 +438,6 @@ room = Room(
             z=3,
             z_half=False,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=True,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=False,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3,
         ),
     ],
 )
