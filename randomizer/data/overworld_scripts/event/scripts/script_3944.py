@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
 	CreatePacketAt7010(packet=P040_BROOCH_CHEST, destinations=["EVENT_3944_ret_6"]),
 	AddToInventory(BroochItem),
 	PlaySound(sound=SO014_FLOWER, channel=6),

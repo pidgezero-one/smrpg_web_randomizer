@@ -648,7 +648,7 @@ P079_CARD_CHEST = Packet(
 )
 P080_GREEN_SYRUP_CHEST = Packet(
     packet_id=80,
-    sprite_id=SPR0220_GREEN_SYRUP,
+    sprite_id=SPR0566_GREEN_SYRUP,
     shadow=False,
     action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
@@ -656,7 +656,7 @@ P080_GREEN_SYRUP_CHEST = Packet(
 )
 P081_RED_SYRUP_CHEST = Packet(
     packet_id=81,
-    sprite_id=SPR0219_RED_SYRUP,
+    sprite_id=SPR0567_RED_SYRUP,
     shadow=False,
     action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
@@ -664,7 +664,7 @@ P081_RED_SYRUP_CHEST = Packet(
 )
 P082_BLUE_SYRUP_CHEST = Packet(
     packet_id=82,
-    sprite_id=SPR0223_BLUE_SYRUP,
+    sprite_id=SPR0568_BLUE_SYRUP,
     shadow=False,
     action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
@@ -672,7 +672,7 @@ P082_BLUE_SYRUP_CHEST = Packet(
 )
 P083_YELLOW_SYRUP_CHEST = Packet(
     packet_id=83,
-    sprite_id=SPR0221_YELLOW_SYRUP,
+    sprite_id=SPR0569_YELLOW_SYRUP,
     shadow=False,
     action_script_id=A0992_DEFAULT_SEQUENCE_IN_CHEST,
     unknown_bits=[False, False, False],
@@ -1024,7 +1024,7 @@ P126_UNUSED = Packet(
 )
 P127_GREEN_SYRUP_STATIC = Packet(
     packet_id=127,
-    sprite_id=SPR0220_GREEN_SYRUP,
+    sprite_id=SPR0566_GREEN_SYRUP,
     shadow=False,
     action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
@@ -1032,7 +1032,7 @@ P127_GREEN_SYRUP_STATIC = Packet(
 )
 P128_GREEN_SYRUP_FALL = Packet(
     packet_id=128,
-    sprite_id=SPR0220_GREEN_SYRUP,
+    sprite_id=SPR0566_GREEN_SYRUP,
     shadow=True,
     action_script_id=A0917_SEQ_0_FALLING,
     unknown_bits=[False, True, False],
@@ -1048,7 +1048,7 @@ P129_UNUSED = Packet(
 )
 P130_RED_SYRUP_STATIC = Packet(
     packet_id=130,
-    sprite_id=SPR0219_RED_SYRUP,
+    sprite_id=SPR0567_RED_SYRUP,
     shadow=False,
     action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
@@ -1056,7 +1056,7 @@ P130_RED_SYRUP_STATIC = Packet(
 )
 P131_RED_SYRUP_FALL = Packet(
     packet_id=131,
-    sprite_id=SPR0219_RED_SYRUP,
+    sprite_id=SPR0567_RED_SYRUP,
     shadow=True,
     action_script_id=A0917_SEQ_0_FALLING,
     unknown_bits=[False, True, False],
@@ -1072,7 +1072,7 @@ P132_UNUSED = Packet(
 )
 P133_BLUE_SYRUP_STATIC = Packet(
     packet_id=133,
-    sprite_id=SPR0223_BLUE_SYRUP,
+    sprite_id=SPR0568_BLUE_SYRUP,
     shadow=False,
     action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
@@ -1080,7 +1080,7 @@ P133_BLUE_SYRUP_STATIC = Packet(
 )
 P134_BLUE_SYRUP_FALL = Packet(
     packet_id=134,
-    sprite_id=SPR0223_BLUE_SYRUP,
+    sprite_id=SPR0568_BLUE_SYRUP,
     shadow=True,
     action_script_id=A0917_SEQ_0_FALLING,
     unknown_bits=[False, True, False],
@@ -1096,7 +1096,7 @@ P135_UNUSED = Packet(
 )
 P136_YELLOW_SYRUP_STATIC = Packet(
     packet_id=136,
-    sprite_id=SPR0221_YELLOW_SYRUP,
+    sprite_id=SPR0569_YELLOW_SYRUP,
     shadow=False,
     action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
     unknown_bits=[False, False, False],
@@ -1104,7 +1104,7 @@ P136_YELLOW_SYRUP_STATIC = Packet(
 )
 P137_YELLOW_SYRUP_FALL = Packet(
     packet_id=137,
-    sprite_id=SPR0221_YELLOW_SYRUP,
+    sprite_id=SPR0569_YELLOW_SYRUP,
     shadow=True,
     action_script_id=A0917_SEQ_0_FALLING,
     unknown_bits=[False, True, False],

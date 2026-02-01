@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
 	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
 	SetVarToConst(Z_COORD_1, 150),
 	DecVarFrom7000(Z_COORD_1),

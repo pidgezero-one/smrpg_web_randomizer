@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=SECONDARY_TEMP_7024),
-	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
 	PlaySound(sound=SO094_FROG_COIN, channel=6),
 	CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
 	AddFrogCoins(PRIMARY_TEMP_7000),

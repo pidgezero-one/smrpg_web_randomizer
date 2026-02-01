@@ -1199,7 +1199,7 @@ script = AnimationScriptBlock(expected_size=4971, expected_beginning=0x35C992, s
 	SetOMEMMainToAMEM8Bit(omem=0x6C, amem=0x6C),
 	ReturnObjectQueue(),
 	SetAMEM32ToXYZCoords(origin=CASTER_CURRENT_POSITION, x=0, y=-18, z=0, set_x=True, set_y=True, set_z=True, identifier="command_0x35DA82"),
-	NewSpriteAtCoords(sprite_id=SPR0566_GREEN_ITEM_COLLECTION, sequence=9, priority=3, vram_address=0x6600, palette_row=8, overwrite_vram=True, overwrite_palette=True, overlap_all_sprites=True),
+	NewSpriteAtCoords(sprite_id=SPR0220_GREEN_ITEM_COLLECTION, sequence=9, priority=3, vram_address=0x6600, palette_row=8, overwrite_vram=True, overwrite_palette=True, overlap_all_sprites=True),
 	ResetTargetMappingMemory(),
 	SetAMEM40ToXYZCoords(origin=CASTER_CURRENT_POSITION, x=-40, y=-24, z=0, set_x=True, set_y=True, set_z=True),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=512, arch_height=256),

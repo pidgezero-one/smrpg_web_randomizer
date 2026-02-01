@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
 	CreatePacketAt7010(packet=P110_RED_SHELL_CHEST, destinations=["EVENT_926_ret_3"]),
 	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_926_ret_3"),
 	Return()

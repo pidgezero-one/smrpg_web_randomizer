@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
     StoreItemAmountTo7000(ShinyStoneItem),
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["chest_carbo_cookie"]),
     StoreItemAmountTo7000(FireworksItem),
