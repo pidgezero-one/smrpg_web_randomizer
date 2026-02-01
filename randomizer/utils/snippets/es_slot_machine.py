@@ -222,11 +222,13 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
             A_SetSpriteSequence(index=4, is_sequence=True, looping=True)
         ], identifier=f"gen_{uniq}_action_queue_99"),
         Pause(32),
-        JmpIfBitSet(ALTERNATE_STAR_PIECE_WIN_CONDITION, [f"gen_{uniq}_set_var_to_const_104"]),
-        RunEventAsSubroutine(E1931_TREASURE_CHEST_FAILURE_MIMIC_FIGHT),
-        Jmp([f"gen_{uniq}_remove_from_current_level_107"]),
         SetVarToConst(PRIMARY_TEMP_7000, 514, identifier=f"gen_{uniq}_set_var_to_const_104"),
         RunEventAsSubroutine(E0353_BOSS_BATTLE),
+	    JmpIfBitSet(GAME_OVER, [f"{uniq}_reset_and_choose_game_3"]),
+	    JmpIfBitSet(RUN_AWAY, [f"gen_{uniq}_remove_from_current_level_107"]),
+        JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, [f"gen_{uniq}_remove_from_current_level_107"]),
+        FadeInFromBlack(sync=False),
+        RunEventAsSubroutine(E0171_MIMIC_3_GRANT_STAR_PIECE_CONTAINER),
         RemoveObjectFromCurrentLevel(npcs[0], identifier=f"gen_{uniq}_remove_from_current_level_107"),
         FadeInFromBlack(sync=False),
         ActionQueueSync(target=MEM_70A8, subscript=[
@@ -240,5 +242,7 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
         ClearBit(TEMP_7044_2),
         ClearBit(TEMP_7044_3),
         ClearBit(TEMP_7044_4),
+        Return(),
+        ResetAndChooseGame(identifier=f"{uniq}_reset_and_choose_game_3"),
         Return()
     ]
