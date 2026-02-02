@@ -1,4 +1,5 @@
 from .types import MarioPalette
+from randomizer.types.flags import MarioPaletteOptions
 
 
 # mario palettes
@@ -58,6 +59,7 @@ class MarioJumpman(MarioPalette):
         0x515184,
         0x191944,
     ]
+    id = MarioPaletteOptions.JUMPMAN
     name = "Jumpman"
     author = "DEVILING"
 
@@ -114,6 +116,7 @@ class MarioFireMario(MarioPalette):
         0x4C4475,
         0x0C0C3E,
     ]
+    id = MarioPaletteOptions.FIRE_MARIO
     name = "Fire Mario"
     author = "HERRSHAUN"
 
@@ -170,6 +173,7 @@ class MarioLuigi(MarioPalette):
         0x4C4475,
         0x080C36,
     ]
+    id = MarioPaletteOptions.LUIGI
     name = "Luigi"
     author = "SMRPG ARMAGEDDON"
 
@@ -226,6 +230,7 @@ class MarioFireLuigi(MarioPalette):
         0x59517C,
         0x191944,
     ]
+    id = MarioPaletteOptions.FIRE_LUIGI
     name = "Fire Luigi"
     author = "DEVILING"
 
@@ -282,6 +287,7 @@ class MarioWario(MarioPalette):
         0x4C486D,
         0x0C0C3E,
     ]
+    id = MarioPaletteOptions.WARIO
     name = "Wario"
     author = "HERRSHAUN"
 
@@ -338,6 +344,7 @@ class MarioWaluigi(MarioPalette):
         0x4C4475,
         0x0C0C3E,
     ]
+    id = MarioPaletteOptions.WALUIGI
     name = "Waluigi"
     author = "HERRSHAUN"
 
@@ -394,6 +401,7 @@ class MarioBuilder(MarioPalette):
         0x484078,
         0x100838,
     ]
+    id = MarioPaletteOptions.BUILDER
     name = "Builder"
     author = "AARONDOBBE"
 
@@ -450,6 +458,7 @@ class MarioMegaman(MarioPalette):
         0x886088,
         0x181818,
     ]
+    id = MarioPaletteOptions.MEGAMAN
     name = "Mega Mar"
     author = "MYOHMYKE"
 
@@ -506,6 +515,7 @@ class MarioGrey(MarioPalette):
         0x524A62,
         0x12122A,
     ]
+    id = MarioPaletteOptions.GREY
     name = "Grey"
     author = "SMBAI"
     rename_character = False
@@ -563,6 +573,7 @@ class MarioZombie(MarioPalette):
         0x4C4475,
         0x0C0C3E,
     ]
+    id = MarioPaletteOptions.ZOMBIE
     name = "Zombio"
     author = "HERRSHAUN"
 
@@ -619,6 +630,7 @@ class MarioSponge(MarioPalette):
         0x4C4475,
         0x0C0C3E,
     ]
+    id = MarioPaletteOptions.SPONGE
     name = "Sponge"
     author = "HERRSHAUN"
 
@@ -675,6 +687,7 @@ class MarioPretzel(MarioPalette):
         0x4C4475,
         0x0C0C3E,
     ]
+    id = MarioPaletteOptions.PRETZEL
     name = "Pretzel"
     author = "HERRSHAUN"
 
@@ -731,6 +744,7 @@ class MarioMarlon(MarioPalette):
         0x4C4475,
         0x0C0C3E,
     ]
+    id = MarioPaletteOptions.MARLON
     name = "Marlon"
     author = "HERRSHAUN"
 
@@ -787,6 +801,7 @@ class MarioGrandDad(MarioPalette):
         0x40549D,
         0x0C0C8D,
     ]
+    id = MarioPaletteOptions.GRANDDAD
     name = "Grand Dad"
     author = "HERRSHAUN"
 
@@ -843,6 +858,7 @@ class MarioBlue2(MarioPalette):
         0x505060,
         0x000000,
     ]
+    id = MarioPaletteOptions.BLUE2
     name = "Blue2"
     author = "SWINCH"
     rename_character = False

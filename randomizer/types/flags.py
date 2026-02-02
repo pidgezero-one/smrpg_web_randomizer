@@ -2127,7 +2127,184 @@ class PaletteSwaps(BooleanFlag):
     _name = "Palette Swaps"
     _description = "Your party members get a change of wardrobe!"
     _id = "palette"
+    
 
+
+class MarioPaletteOptions(CategorizationOption):
+    """Enumeration for Mario Palette Name options"""
+
+    RANDOM = "Random"
+    DEFAULT = "Default"
+    JUMPMAN = "Jumpman"
+    FIREMARIO = "Fire Mario"
+    LUIGI = "Luigi"
+    FIRELUIGI = "Fire Luigi"
+    WARIO = "Wario"
+    WALUIGI = "Waluigi"
+    BUILDER = "Builder"
+    MEGAMAN = "Mega Man"
+    GREY = "Grey"
+    ZOMBIE = "Zombio"
+    SPONGE = "Sponge"
+    PRETZEL = "Pretzel"
+    MARLON = "Marlon"
+    GRANDDAD = "Grand Dad"
+    BLUE2 = "Blue2"
+
+
+
+class MarioPaletteChoice(SelectOneFlag[MarioPaletteOptions]):
+    _name = "Mario Palette"
+    _description = "Choose Mario's Palette"
+    choices = [
+        MarioPaletteOptions.RANDOM,
+        MarioPaletteOptions.DEFAULT,
+        *sorted(o for o in MarioPaletteOptions if o not in [MarioPaletteOptions.RANDOM, MarioPaletteOptions.DEFAULT]),
+    ]
+
+    _default = MarioPaletteOptions.RANDOM
+    _id = "mariopalette"
+    _requires_all = [(PaletteSwaps(), True)]
+
+
+
+class MallowPaletteOptions(CategorizationOption):
+    """Enumeration for Mallow Palette Name options"""
+
+    RANDOM = "Random"
+    DEFAULT = "Default"
+    MOKURA = "Mokura"
+    FROG = "Frog"
+    PALOM = "Palom"
+    POROM = "Porom"
+    CLOUD = "Cloud"
+    STORMY = "Stormy"
+    LIGHT = "Light"
+    WATER = "Water"
+    RED = "Red"
+    MINT = "Mint"
+    DEMON = "Demon"
+    RAINCLOUD = "Rain Cloud"
+
+
+
+class MallowPaletteChoice(SelectOneFlag[MallowPaletteOptions]):
+    _name = "Mallow Palette"
+    _description = "Choose Mallow's Palette"
+    choices = [
+        MallowPaletteOptions.RANDOM,
+        MallowPaletteOptions.DEFAULT,
+        *sorted(o for o in MallowPaletteOptions if o not in [MallowPaletteOptions.RANDOM, MallowPaletteOptions.DEFAULT]),
+    ]
+    _default = MallowPaletteOptions.RANDOM
+    _id = "mallowpalette"
+    _requires_all = [(PaletteSwaps(), True)]
+
+
+
+class GenoPaletteOptions(CategorizationOption):
+    """Enumeration for Geno Palette Name options"""
+
+    RANDOM = "Random"
+    DEFAULT = "Default"
+    PINK = "Millnium"
+    MAGIKOOPA = "Magikoopa"
+    MAGIKOOPARED = "Magikoopa Red"
+    LINK = "Zelda"
+    VLADOS = "Vlados"
+    LIGHT = "Light"
+    PURPLE = "Purple"
+    GREY = "Grey"
+    GREEN = "Green"
+    DARK = "Dark"
+
+
+
+class GenoPaletteChoice(SelectOneFlag[GenoPaletteOptions]):
+    _name = "Geno Palette"
+    _description = "Choose Geno's Palette"
+    choices = [
+        GenoPaletteOptions.RANDOM,
+        GenoPaletteOptions.DEFAULT,
+        *sorted(o for o in GenoPaletteOptions if o not in [GenoPaletteOptions.RANDOM, GenoPaletteOptions.DEFAULT]),
+    ]
+    _default = GenoPaletteOptions.RANDOM
+    _id = "genopalette"
+    _requires_all = [(PaletteSwaps(), True)]
+
+
+
+class BowserPaletteOptions(CategorizationOption):
+    """Enumeration for Bowser Palette Name options"""
+
+    RANDOM = "Random"
+    DEFAULT = "Default"
+    DRYBONE = "Dry Bone"
+    CULEX = "Culex"
+    WABOWSER = "Wabowser"
+    RED = "Red"
+    DARK = "Dark"
+    KRONK = "Korush"
+    ZECCET = "Zeccet"
+    BLUE = "Melee Blue"
+    SKING = "S.King"
+
+
+
+class BowserPaletteChoice(SelectOneFlag[BowserPaletteOptions]):
+    _name = "Bowser Palette"
+    _description = "Choose Bowser's Palette"
+    choices = [
+        BowserPaletteOptions.RANDOM,
+        BowserPaletteOptions.DEFAULT,
+        *sorted(o for o in BowserPaletteOptions if o not in [BowserPaletteOptions.RANDOM, BowserPaletteOptions.DEFAULT]),
+    ]
+    _default = BowserPaletteOptions.RANDOM
+    _id = "bowserpalette"
+    _requires_all = [(PaletteSwaps(), True)]
+
+
+
+class ToadstoolPaletteOptions(CategorizationOption):
+    """Enumeration for Toadstool Palette Name options"""
+
+    RANDOM = "Random"
+    DEFAULT = "Default"
+    DAISY = "Daisy"
+    PAULINE = "Pauline"
+    ROSALINA = "Rosalina"
+    PALUTENA = "Palutena"
+    KUMATORA = "Kumatora"
+    TIA = "Tia"
+    KAIRI = "Kairi"
+    LEENA = "Leena"
+    EMERALDA = "Emeralda"
+    MIKU = "Miku"
+    JASMINE = "Jasmine"
+    KOTORI = "Kotori"
+    ZOMBIE = "Zombie"
+    BLOOD = "Blood Peach"
+    DEMON = "Demon"
+    RED = "Red"
+    GREEN = "Green"
+    BLUE = "Blue"
+    BLACK = "Black"
+    INDIGO = "Indigo"
+    SHADOWQ = "Shadow Q."
+
+
+
+class ToadstoolPaletteChoice(SelectOneFlag[ToadstoolPaletteOptions]):
+    _name = "Toadstool Palette"
+    _description = "Choose Toadstool's Palette"
+    choices = [
+        ToadstoolPaletteOptions.RANDOM,
+        ToadstoolPaletteOptions.DEFAULT,
+        *sorted(o for o in ToadstoolPaletteOptions if o not in [ToadstoolPaletteOptions.RANDOM, ToadstoolPaletteOptions.DEFAULT]),
+    ]
+    _default = ToadstoolPaletteOptions.RANDOM
+    _id = "toadstoolpalette"
+    _requires_all = [(PaletteSwaps(), True)]
 
 # ✅
 class ChangeNames(BooleanFlag):  # not available unless PaletteSwaps enabled

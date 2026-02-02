@@ -1,4 +1,5 @@
 from .types import GenoPalette
+from randomizer.types.flags import GenoPaletteOptions
 
 
 class GenoDefault(GenoPalette):
@@ -108,6 +109,7 @@ class GenoPink(GenoPalette):
         0x605068,
         0x181818,
     ]
+    id = GenoPaletteOptions.PINK
     name = "Millnium"
     author = "PIDGEZERO_ONE"
 
@@ -164,6 +166,7 @@ class GenoMagikoopa(GenoPalette):
         0x303068,
         0x080840,
     ]
+    id = GenoPaletteOptions.MAGIKOOPA
     name = "Magikoopa"
     author = "AARONDOBBE"
 
@@ -220,6 +223,7 @@ class GenoMagikoopaRed(GenoPalette):
         0x343069,
         0x0C0C3D,
     ]
+    id = GenoPaletteOptions.MAGIKOOPARED
     name = "Magikoopa"
     author = "EGGTALK"
 
@@ -276,6 +280,7 @@ class GenoLink(GenoPalette):
         0x343069,
         0x0c0c3e,
     ]
+    id = GenoPaletteOptions.LINK
     name = "Zelda"
     author = "PIDGEZERO_ONE"
 
@@ -332,6 +337,7 @@ class GenoVlados(GenoPalette):
         0x343465,
         0x0C0C3E,
     ]
+    id = GenoPaletteOptions.VLADOS
     name = "Vlador"
     author = "HERRSHAUN"
 
@@ -388,6 +394,7 @@ class GenoLight(GenoPalette):
         0x413d68,
         0x191944,
     ]
+    id = GenoPaletteOptions.LIGHT
     name = "Light"
     rename_character = False
     author = "DEVILING"
@@ -445,6 +452,7 @@ class GenoPurple(GenoPalette):
         0x413d68,
         0x191944,
     ]
+    id = GenoPaletteOptions.PURPLE
     name = "Purple"
     rename_character = False
     author = "DEVILING"
@@ -502,6 +510,7 @@ class GenoGrey(GenoPalette):
         0x343069,
         0x0c0c3d,
     ]
+    id = GenoPaletteOptions.GREY
     name = "Grey"
     rename_character = False
     author = "SMBAI"
@@ -559,6 +568,7 @@ class GenoGreen(GenoPalette):
         0x343069,
         0x0c0c3d,
     ]
+    id = GenoPaletteOptions.GREEN
     name = "Green"
     rename_character = False
     author = "MINAMIYO"
@@ -618,6 +628,7 @@ class GenoDark(GenoPalette):
         0x3C3461,
         0x0C0C3D,
     ]
+    id = GenoPaletteOptions.DARK
     name = "Dark"
     rename_character = False
     author = "SMBAI"

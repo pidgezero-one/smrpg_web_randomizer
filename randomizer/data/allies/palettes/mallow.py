@@ -1,4 +1,5 @@
 from .types import MallowPalette
+from randomizer.types.flags import MallowPaletteOptions
 
 
 class MallowDefault(MallowPalette):
@@ -91,6 +92,7 @@ class MallowMokura(MallowPalette):
         0x243456,
         0x0C0C3E,
     ]
+    id = MallowPaletteOptions.MOKURA
     name = "Mokura"
     author = "HERRSHAUN"
 
@@ -147,6 +149,7 @@ class MallowFrog(MallowPalette):
         0x053A1E,
         0x05051E,
     ]
+    id = MallowPaletteOptions.FROG
     name = "Frog"
     author = "EGGTALK"
 
@@ -203,6 +206,7 @@ class MallowPalom(MallowPalette):
         0x483452,
         0x200436,
     ]
+    id = MallowPaletteOptions.PALOM
     name = "Palom"
     author = "PIDGEZERO_ONE"
 
@@ -259,6 +263,7 @@ class MallowPorom(MallowPalette):
         0x483452,
         0x200436,
     ]
+    id = MallowPaletteOptions.POROM
     name = "Porom"
     author = "PIDGEZERO_ONE"
 
@@ -315,6 +320,7 @@ class MallowCloud(MallowPalette):
         0x31316c,
         0x191944,
     ]
+    id = MallowPaletteOptions.CLOUD
     name = "Cloud"
     rename_character = False
     author = "DEVILING"
@@ -372,6 +378,7 @@ class MallowStormy(MallowPalette):
         0x343475,
         0x0C0C3E,
     ]
+    id = MallowPaletteOptions.STORMY
     name = "Stormy"
     rename_character = False
     author = "HERRSHAUN"
@@ -429,6 +436,7 @@ class MallowLight(MallowPalette):
         0x343465,
         0x0c0c3e,
     ]
+    id = MallowPaletteOptions.LIGHT
     name = "Light"
     rename_character = False
     author = "PIDGEZERO_ONE"
@@ -486,6 +494,7 @@ class MallowWater(MallowPalette):
         0x193d70,
         0x191944,
     ]
+    id = MallowPaletteOptions.WATER
     name = "Water"
     rename_character = False
     author = "DEVILING"
@@ -543,6 +552,7 @@ class MallowRed(MallowPalette):
         0x342475,
         0x0C0C3E,
     ]
+    id = MallowPaletteOptions.RED
     name = "Red"
     rename_character = False
     author = "HERRSHAUN"
@@ -600,6 +610,7 @@ class MallowMint(MallowPalette):
         0x283058,
         0x080840,
     ]
+    id = MallowPaletteOptions.MINT
     name = "Mint"
     rename_character = False
     author = "AARONDOBBE"
@@ -657,6 +668,7 @@ class MallowDemon(MallowPalette):
         0x7c0c3d,
         0x1818F8,
     ]
+    id = MallowPaletteOptions.DEMON
     name = "Demon"
     rename_character = False
     author = "SMBAI"
@@ -712,6 +724,7 @@ class MallowRainCloud(MallowPalette):
         0x3c3461,
         0x0c0c3d,
     ]
+    id = MallowPaletteOptions.RAINCLOUD
     name = "Rain Cloud"
     rename_character = False
     author = "SMBAI"

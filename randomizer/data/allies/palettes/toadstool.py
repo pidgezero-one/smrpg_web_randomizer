@@ -1,4 +1,5 @@
 from .types import ToadstoolPalette
+from randomizer.types.flags import ToadstoolPaletteOptions
 
 
 class ToadstoolDefault(ToadstoolPalette):
@@ -108,6 +109,7 @@ class ToadstoolDaisy(ToadstoolPalette):
         0x494168,
         0x191944,
     ]
+    id = ToadstoolPaletteOptions.DAISY
     name = "Daisy"
     author = "DEVILING"
 
@@ -164,6 +166,7 @@ class ToadstoolPauline(ToadstoolPalette):
         0x3C3461,
         0x0C0C3D,
     ]
+    id = ToadstoolPaletteOptions.PAULINE
     name = "Pauline"
     author = "EGGTALK"
 
@@ -220,6 +223,7 @@ class ToadstoolRosalina(ToadstoolPalette):
         0x3C3462,
         0x0C0C3E,
     ]
+    id = ToadstoolPaletteOptions.ROSALINA
     name = "Rosalina"
     author = "PIDGEZERO_ONE"
 
@@ -276,6 +280,7 @@ class ToadstoolPalutena(ToadstoolPalette):
         0x5C4832,
         0x0C0C3E,
     ]
+    id = ToadstoolPaletteOptions.PALUTENA
     name = "Palutena"
     author = "PIDGEZERO_ONE"
 
@@ -332,6 +337,7 @@ class ToadstoolKumatora(ToadstoolPalette):
         0x1A1A70,
         0x0C0C3E,
     ]
+    id = ToadstoolPaletteOptions.KUMATORA
     name = "Kumatora"
     author = "PIDGEZERO_ONE"
 
@@ -388,6 +394,7 @@ class ToadstoolTia(ToadstoolPalette):
         0x643C52,
         0x0C0C3E,
     ]
+    id = ToadstoolPaletteOptions.TIA
     name = "Tia"
     author = "PIDGEZERO_ONE"
 
@@ -444,6 +451,7 @@ class ToadstoolKairi(ToadstoolPalette):
         0x383060,
         0x080840,
     ]
+    id = ToadstoolPaletteOptions.KAIRI
     name = "Kairi"
     author = "AARONDOBBE"
 
@@ -500,6 +508,7 @@ class ToadstoolLeena(ToadstoolPalette):
         0x503C52,
         0x300C3E,
     ]
+    id = ToadstoolPaletteOptions.LEENA
     name = "Leena"
     author = "HERRSHAUN"
 
@@ -556,6 +565,7 @@ class ToadstoolEmeralda(ToadstoolPalette):
         0x50446D,
         0x0C0C3E,
     ]
+    id = ToadstoolPaletteOptions.EMERALDA
     name = "Emeralda"
     author = "PIDGEZERO_ONE"
 
@@ -612,6 +622,7 @@ class ToadstoolMiku(ToadstoolPalette):
         0x283060,
         0x080840,
     ]
+    id = ToadstoolPaletteOptions.MIKU
     name = "Miku"
     author = "AARONDOBBE"
 
@@ -668,6 +679,7 @@ class ToadstoolJasmine(ToadstoolPalette):
         0x3C3462,
         0x0C0C3E,
     ]
+    id = ToadstoolPaletteOptions.JASMINE
     name = "Jasmine"
     author = "HERRSHAUN"
 
@@ -724,6 +736,7 @@ class ToadstoolKotori(ToadstoolPalette):
         0x3C3462,
         0x0C0C3E,
     ]
+    id = ToadstoolPaletteOptions.KOTORI
     name = "Kotori"
     author = "PIDGEZERO_ONE"
 
@@ -780,6 +793,7 @@ class ToadstoolZombie(ToadstoolPalette):
         0x3C3462,
         0x0C0C3E,
     ]
+    id = ToadstoolPaletteOptions.ZOMBIE
     name = "Zombie"
     rename_character = False
     author = "HERRSHAUN"
@@ -837,6 +851,7 @@ class ToadstoolBlood(ToadstoolPalette):
         0x494168,
         0x250D38,
     ]
+    id = ToadstoolPaletteOptions.BLOOD
     name = "Blood Peach"
     rename_character = False
     author = "DEVILING"
@@ -894,6 +909,7 @@ class ToadstoolDemon(ToadstoolPalette):
         0x05051E,
         0x05051E,
     ]
+    id = ToadstoolPaletteOptions.DEMON
     name = "Demon"
     rename_character = False
     author = "SMBAI"
@@ -951,6 +967,7 @@ class ToadstoolRed(ToadstoolPalette):
         0x3C3462,
         0x0C0C3E,
     ]
+    id = ToadstoolPaletteOptions.RED
     name = "Red"
     rename_character = False
     author = "PIDGEZERO_ONE"
@@ -1008,6 +1025,7 @@ class ToadstoolGreen(ToadstoolPalette):
         0x483070,
         0x000000,
     ]
+    id = ToadstoolPaletteOptions.GREEN
     name = "Green"
     rename_character = False
     author = "SMBAI"
@@ -1065,6 +1083,7 @@ class ToadstoolBlue(ToadstoolPalette):
         0x3C3461,
         0x0C0C3D,
     ]
+    id = ToadstoolPaletteOptions.BLUE
     name = "Blue"
     rename_character = False
     author = "SMBAI"
@@ -1122,6 +1141,7 @@ class ToadstoolBlack(ToadstoolPalette):
         0x3C3461,
         0x0C0C3D,
     ]
+    id = ToadstoolPaletteOptions.BLACK
     name = "Black"
     rename_character = False
     author = "SMBAI"
@@ -1179,6 +1199,7 @@ class ToadstoolIndigo(ToadstoolPalette):
         0x403028,
         0x000000,
     ]
+    id = ToadstoolPaletteOptions.INDIGO
     name = "Indigo"
     rename_character = False
     author = "TERROR VAN"
@@ -1236,6 +1257,7 @@ class ToadstoolShadowQ(ToadstoolPalette):
         0x703028,
         0x000000,
     ]
+    id = ToadstoolPaletteOptions.SHADOWQ
     name = "Shadow Q."
     author = "SMRPG ARMAGEDDON"
 

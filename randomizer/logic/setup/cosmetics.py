@@ -21,6 +21,22 @@ if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
 
 
+def apply_palette_selection(world, flag, palette_list, attr_name):
+    choice = world.settings.get_flag(flag).selected
+    
+    if choice.name == "DEFAULT":
+        return
+    
+    if choice.name == "RANDOM":
+        setattr(world, attr_name, random.choice(palette_list))
+        return
+    
+    for p in palette_list:
+        if p.id is choice:
+            setattr(world, attr_name, p)
+            return
+
+
 def apply_cosmetic_settings(world: GameWorld) -> None:
     """Apply cosmetic settings that don't affect gameplay.
 
@@ -38,7 +54,8 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     """
     from ...types.flags import (
         CanonNames, Peach, RemakeNames, RemoveFlashes, PaletteSwaps,
-        ChangeNames, BossShuffleMusic, ShuffledMusic,
+        ChangeNames, BossShuffleMusic, ShuffledMusic, MarioPaletteChoice, 
+        MallowPaletteChoice, GenoPaletteChoice, ToadstoolPaletteChoice, BowserPaletteChoice,
     )
     from ...data.enemies.enemies import (
         KAMEKEnemy, BIRDETTAEnemy,
@@ -223,11 +240,11 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
     # Palette swaps
     if world.settings.isflag_enabled(PaletteSwaps):
-        world.mario_palette = random.choice(MARIO_PALETTES)
-        world.mallow_palette = random.choice(MALLOW_PALETTES)
-        world.geno_palette = random.choice(GENO_PALETTES)
-        world.bowser_palette = random.choice(BOWSER_PALETTES)
-        world.toadstool_palette = random.choice(TOADSTOOL_PALETTES)
+        apply_palette_selection(world, MarioPaletteChoice, MARIO_PALETTES, "mario_palette")
+        apply_palette_selection(world, MallowPaletteChoice, MALLOW_PALETTES, "mallow_palette")
+        apply_palette_selection(world, GenoPaletteChoice, GENO_PALETTES, "geno_palette")
+        apply_palette_selection(world, BowserPaletteChoice, BOWSER_PALETTES, "bowser_palette")
+        apply_palette_selection(world, ToadstoolPaletteChoice, TOADSTOOL_PALETTES, "toadstool_palette")
 
         if world.settings.isflag_enabled(ChangeNames):
             # Only rename characters if the palette allows it

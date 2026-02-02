@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from randomizer.data.variables.event_palette_names import (
     EPAL0084_MARIO_ENDING,
@@ -93,6 +93,7 @@ MAP_PALETTE_OFFSET = 0x3E99C1
 
 
 class Palette:
+    id: Any | None = None
     colours: list[int] | None = None
     poison_colours: list[int] | None = None
     underwater_colours: list[int] | None = None
