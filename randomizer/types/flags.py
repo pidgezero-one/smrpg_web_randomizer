@@ -2132,7 +2132,6 @@ class PaletteSwaps(BooleanFlag):
 
 class MarioPaletteOptions(CategorizationOption):
     """Enumeration for Mario Palette Name options"""
-    # Use the name strings exactly as they appear in each palette object, this is how the helper function grabs the correct palette object.
 
     RANDOM = "Random"
     DEFAULT = "Default"
@@ -2143,7 +2142,7 @@ class MarioPaletteOptions(CategorizationOption):
     WARIO = "Wario"
     WALUIGI = "Waluigi"
     BUILDER = "Builder"
-    MEGAMAN = "Mega Mar"
+    MEGAMAN = "Mega Man"
     GREY = "Grey"
     ZOMBIE = "Zombio"
     SPONGE = "Sponge"
@@ -2171,7 +2170,6 @@ class MarioPaletteChoice(SelectOneFlag[MarioPaletteOptions]):
 
 class MallowPaletteOptions(CategorizationOption):
     """Enumeration for Mallow Palette Name options"""
-    # Use the name strings exactly as they appear in each palette object, this is how the helper function grabs the correct palette object.
 
     RANDOM = "Random"
     DEFAULT = "Default"
@@ -2206,13 +2204,12 @@ class MallowPaletteChoice(SelectOneFlag[MallowPaletteOptions]):
 
 class GenoPaletteOptions(CategorizationOption):
     """Enumeration for Geno Palette Name options"""
-    # Use the name strings exactly as they appear in each palette object, this is how the helper function grabs the correct palette object.
 
     RANDOM = "Random"
     DEFAULT = "Default"
     PINK = "Millnium"
     MAGIKOOPA = "Magikoopa"
-    MAGIKOOPARED = "Magikoopa Red" # The name for this palette is the same as magikoopa, needs to be changed to work with the helper function in cosmetics.py 
+    MAGIKOOPARED = "Magikoopa Red"
     LINK = "Zelda"
     VLADOS = "Vlados"
     LIGHT = "Light"
@@ -2239,7 +2236,6 @@ class GenoPaletteChoice(SelectOneFlag[GenoPaletteOptions]):
 
 class BowserPaletteOptions(CategorizationOption):
     """Enumeration for Bowser Palette Name options"""
-    # Use the name strings exactly as they appear in each palette object, this is how the helper function grabs the correct palette object.
 
     RANDOM = "Random"
     DEFAULT = "Default"
@@ -2271,7 +2267,6 @@ class BowserPaletteChoice(SelectOneFlag[BowserPaletteOptions]):
 
 class ToadstoolPaletteOptions(CategorizationOption):
     """Enumeration for Toadstool Palette Name options"""
-    # Use the name strings exactly as they appear in each palette object, this is how the helper function grabs the correct palette object.
 
     RANDOM = "Random"
     DEFAULT = "Default"

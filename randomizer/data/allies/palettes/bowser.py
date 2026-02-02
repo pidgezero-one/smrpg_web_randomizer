@@ -1,4 +1,5 @@
 from .types import BowserPalette
+from randomizer.types.flags import BowserPaletteOptions
 
 
 # bowser palettes
@@ -91,6 +92,7 @@ class BowserDrybone(BowserPalette):
         0x3D2D58,
         0x191944,
     ]
+    id = BowserPaletteOptions.DRYBONE
     name = "Dry Bone"
     author = "DEVILING"
 
@@ -147,6 +149,7 @@ class BowserCulex(BowserPalette):
         0x102878,
         0x081048,
     ]
+    id = BowserPaletteOptions.CULEX
     name = "Culex"
     rename_character = False
     author = "AARONDOBBE"
@@ -204,6 +207,7 @@ class BowserWabowser(BowserPalette):
         0x544452,
         0x18103A,
     ]
+    id = BowserPaletteOptions.WABOWSER
     name = "Wabowser"
     author = "HERRSHAUN"
 
@@ -260,6 +264,7 @@ class BowserRed(BowserPalette):
         0x3D3D68,
         0x191944,
     ]
+    id = BowserPaletteOptions.RED
     name = "Red"
     rename_character = False
     author = "DEVILING"
@@ -317,6 +322,7 @@ class BowserDark(BowserPalette):
         0x36363E,
         0x12122A,
     ]
+    id = BowserPaletteOptions.DARK
     name = "Dark"
     rename_character = False
     author = "EGGTALK"
@@ -374,6 +380,7 @@ class BowserKronk(BowserPalette):
         0x403442,
         0x24143A,
     ]
+    id = BowserPaletteOptions.KRONK
     name = "Korush"
     author = "HERRSHAUN"
 
@@ -430,6 +437,7 @@ class BowserZeccet(BowserPalette):
         0x303052,
         0x0C0C3E,
     ]
+    id = BowserPaletteOptions.ZECCET
     name = "Zeccet"
     author = "PIDGEZERO_ONE"
 
@@ -486,6 +494,7 @@ class BowserBlue(BowserPalette):
         0x303052,
         0x0C0C3E,
     ]
+    id = BowserPaletteOptions.BLUE
     name = "Melee Blue"
     rename_character = False
     author = "PIDGEZERO_ONE"
@@ -543,6 +552,7 @@ class BowserSking(BowserPalette):
         0x3C3461,
         0x0C0C3D,
     ]
+    id = BowserPaletteOptions.SKING
     name = "S.King"
     author = "SMBAI"
     rename_character = False

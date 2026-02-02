@@ -32,7 +32,7 @@ def apply_palette_selection(world, flag, palette_list, attr_name):
         return
     
     for p in palette_list:
-        if p.name == choice.value:
+        if p.id is choice:
             setattr(world, attr_name, p)
             return
 
