@@ -125,7 +125,7 @@ script = EventScript([
 	], identifier="EVENT_3502_action_queue_62"),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_WalkNorthPixels(4),
-		A_SetSpriteSequence(index=4, sprite_offset=3, is_sequence=True, looping=True, identifier="chapel_character_animation_17"),
+		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True, identifier="chapel_character_animation_17"),
 		A_WalkNorthPixels(4),
 		A_Pause(64),
 		A_VisibilityOff()

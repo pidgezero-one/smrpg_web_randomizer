@@ -27,7 +27,11 @@ from ..logic.shufflers.enemies import generate_formation_coordinates
 # in InvisibleFlagLocation.originally_held to avoid circular import
 from ..data.variables.event_script_names import *
 from ..data.variables.action_script_names import *
-from ..data.variables.variable_names import BATTLE_PACK_ID, PRIMARY_TEMP_7000
+from ..data.variables.variable_names import (
+    BATTLE_PACK_ID,
+    BOOSTER_HILL_FLOWER_COUNTER,
+    PRIMARY_TEMP_7000,
+)
 from ..data.variables.battlefield_names import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
     EventScript,
@@ -40,8 +44,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     DisableObjectTriggerInSpecificLevel,
     Return,
-    SetSyncActionScript,
-    Jmp,
+    Inc,
     JmpIfVarEqualsConst,
     StartBattleAtBattlefield,
     StartBattleWithPackAt700E,
@@ -1466,9 +1469,12 @@ class RiverLocation(StandardPrizeLocation):
 
 class RemoveIfNotFilled(StrEnum):
     """Controls whether unfilled henchman slot NPCs should be hidden."""
+
     NEVER = "never"  # Never hide unfilled slots (default)
     ALWAYS = "always"  # Always hide unfilled slots
-    IF_ANY_FILLED = "if_any_filled"  # Only hide if at least one slot of this type is filled
+    IF_ANY_FILLED = (
+        "if_any_filled"  # Only hide if at least one slot of this type is filled
+    )
 
 
 class BossFightLocationHenchmanNPC:
@@ -1521,6 +1527,7 @@ class BossFightLocationHenchmanNPC:
         """Resolve a flag class or string name to the actual flag class."""
         if isinstance(flag, str):
             from ..types import flags
+
             return getattr(flags, flag)
         return flag
 
@@ -2026,7 +2033,9 @@ class BossFightLocation(PrizeLocation):
             # Legacy path: modify formation members in place
             # (used for prizes that haven't been migrated to use _formation)
             for f in pack.formations:
-                f.set_members(self.prize._members)  # pyright: ignore[reportArgumentType]
+                f.set_members(
+                    self.prize._members
+                )  # pyright: ignore[reportArgumentType]
                 # Always set run away based on location, not the prize's original setting
                 f.set_can_run_away(self._allow_run_away)
                 if self.prize.force_battlefield is not None:
@@ -2512,7 +2521,12 @@ class PacketLocation(StandingLocationRow):
         assert self.prize is not None and self.prize.model is not None and p is not None
         p._set_sprite_id(self.prize.packet_data[0])
         prep_script = world.action_scripts.scripts[p.action_script_id]
-        prep_script.insert_before_nth_command(0, A_SetSpriteSequence(index=self.prize.packet_data[1], is_sequence=True, looping=True))
+        prep_script.insert_before_nth_command(
+            0,
+            A_SetSpriteSequence(
+                index=self.prize.packet_data[1], is_sequence=True, looping=True
+            ),
+        )
         return super().render(world)
 
 
@@ -2561,7 +2575,6 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
         assert (
             len(grant.contents) > 0
         ), "Prize grant scripts must have at least one command"
-        grant.contents[0].rename(identifier)
         for id in self._designated_packet_ids:
             packet = world.packets.packets[id]
             assert (
@@ -2570,12 +2583,16 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
             assert self.prize is not None
             packet._set_sprite_id(self.prize.packet_data[0])
             prep_script = world.action_scripts.scripts[packet.action_script_id]
-            prep_script.insert_before_nth_command(0, A_SetSpriteSequence(index=self.prize.packet_data[1], is_sequence=True, looping=True))
-
+            prep_script.insert_before_nth_command(
+                0,
+                A_SetSpriteSequence(
+                    index=self.prize.packet_data[1], is_sequence=True, looping=True
+                ),
+            )
 
         return (
             [[JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self._70B1_id, [identifier])]],
-            grant.contents,
+            [Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier=identifier), *grant.contents],
         )
 
 
@@ -2595,7 +2612,7 @@ class KeyItemLocation(PrizeLocation):
         ):
             return False
         else:
-            if not hasattr(prize, "_nickname") or (hasattr(prize, "_nickname") and prize._nickname is None): # type: ignore[attr-defined]
+            if not hasattr(prize, "_nickname") or (hasattr(prize, "_nickname") and prize._nickname is None):  # type: ignore[attr-defined]
                 return False
             return super().can_accept(prize, inventory, world)
 

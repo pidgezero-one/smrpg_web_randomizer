@@ -116,7 +116,7 @@ class MarioFireMario(MarioPalette):
         0x4C4475,
         0x0C0C3E,
     ]
-    id = MarioPaletteOptions.FIRE_MARIO
+    id = MarioPaletteOptions.FIREMARIO
     name = "Fire Mario"
     author = "HERRSHAUN"
 
@@ -230,7 +230,7 @@ class MarioFireLuigi(MarioPalette):
         0x59517C,
         0x191944,
     ]
-    id = MarioPaletteOptions.FIRE_LUIGI
+    id = MarioPaletteOptions.FIRELUIGI
     name = "Fire Luigi"
     author = "DEVILING"
 

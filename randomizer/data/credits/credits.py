@@ -413,7 +413,7 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
 
     # Randomizer credits strt here.
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "RANDOMIZER CONCEPT")
+    credits.add_title(0x80, 0x00, 0x08, "ORIGINAL CONCEPT")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
@@ -437,9 +437,14 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "YAKIBOMB         FORALIAS")
-    credits.add_credit(0x80, 0x40, 0x81, "AMAZING AMPHAROS   SWINCH")
-    credits.add_credit(0x80, 0x00, 0xC2, "WEFFJEBSTER")
+    credits.add_credit(0x80, 0xC0, 0xC0, "YAKIBOMB         FORALIAS")
+    credits.add_credit(0x80, 0x80, 0xC2, "WEFFJEBSTER        SWINCH")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xC0, "ABYSSONYM        CHAOSICX")
+    credits.add_credit(0x80, 0x40, 0x81, "CODANTHEBARBARIAN")
+    credits.add_credit(0x80, 0x00, 0xC2, "AMAZING AMPHAROS")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 26

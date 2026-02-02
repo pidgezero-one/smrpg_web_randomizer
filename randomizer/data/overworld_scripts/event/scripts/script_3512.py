@@ -33,6 +33,5 @@ from ....packets import *
 script = EventScript([
 	EnableControlsUntilReturn([]),
 	SetAsyncActionScript(MEM_70A8, A0365_BOOSTER_HILL_LEFTOVER_FLOWERS_PICKED_UP),
-    Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier="increment_70B1_final"),
     JmpToEvent(E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT),
 ])

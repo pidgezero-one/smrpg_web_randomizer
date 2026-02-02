@@ -628,7 +628,7 @@ def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
     update_ally_animation(a2, ally, SpriteAnimationState.FLOORED)
     a3 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_2", "chapel_character_animation_3", A_SetSpriteSequence)
     update_ally_animation(a3, ally, SpriteAnimationState.HURT)
-    a4 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_3", "chapel_character_animation_3_", A_SetSpriteSequence)
+    a4 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_3", "chapel_character_queue_3_", A_SetSpriteSequence)
     update_ally_animation(a4, ally, SpriteAnimationState.LOOKING_DOWN_STATIC)
     a5 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_4", "chapel_character_animation_4", A_SetSpriteSequence)
     update_ally_animation(a5, ally, SpriteAnimationState.SHAKING_HEAD)

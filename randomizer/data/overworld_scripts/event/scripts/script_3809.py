@@ -66,7 +66,7 @@ script = EventScript([
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_VisibilityOn(),
 		A_TransferXYZFPixels(x=8, y=4, z=6, direction=EAST),
-		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, identifier="chapel_character_animation_1"),
+		A_SetSpriteSequence(index=2, sprite_offset=2, is_sequence=True, looping=True, identifier="chapel_character_animation_1"),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0]),
 		A_Pause(96),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[]),
@@ -76,7 +76,7 @@ script = EventScript([
 		A_FloatingOn(),
 		A_WalkSouthwestSteps(2),
 		A_WalkSouthwestPixels(12),
-		A_SetSpriteSequence(index=1, sprite_offset=3, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_2")
+		A_SetSpriteSequence(index=1, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_2")
 	], identifier="chapel_character_queue_1"),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_VisibilityOn(),
@@ -170,7 +170,7 @@ script = EventScript([
 	RememberLastObject(),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_Pause(60),
-		A_SetSpriteSequence(index=0, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_3")
+		A_SetSpriteSequence(index=0, sprite_offset=5, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_3")
 	], identifier="chapel_character_queue_2"),
 	Pause(20),
 	ActionQueueAsync(target=NPC_8, subscript=[
@@ -210,7 +210,7 @@ script = EventScript([
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_Pause(44),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, identifier="chapel_character_animation_7"),
+		A_SetSpriteSequence(index=2, sprite_offset=2, is_sequence=True, looping=True, identifier="chapel_character_animation_7"),
 		A_SetWalkingSpeed(FAST),
 		A_ShadowOn(),
 		A_AddZCoord1Step(),
@@ -381,7 +381,7 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_Pause(50),
-		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_10"),
+		A_SetSpriteSequence(index=2, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_10"),
 		A_SetWalkingSpeed(SLOW),
 		A_FloatingOff(),
 		A_ClearSolidityBits(cant_pass_walls=True),
