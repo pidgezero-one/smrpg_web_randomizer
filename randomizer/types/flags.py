@@ -2745,6 +2745,11 @@ class PaletteSubcategory(FlagCategory):
     _flags: list[type[Flag]] = [
         PaletteSwaps,
         JapaneseABXY,
+        MarioPaletteChoice,
+        MallowPaletteChoice,
+        GenoPaletteChoice,
+        BowserPaletteChoice,
+        ToadstoolPaletteChoice,
     ]
     _size: int = 3
     _id: str = "R"

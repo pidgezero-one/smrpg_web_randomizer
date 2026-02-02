@@ -127,7 +127,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
         PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
         MeteorSwarmSpell, WeirdMushroomSpell, BreakerBeamSpell, ShredderSpell,
         SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell, BigBangSpell,
-        EnemySpell,
+        EnemySpell, EscapeSpell,
     )
     from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import (
         DoNothing,
@@ -214,11 +214,13 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
         for script in world.monster_scripts.scripts:
             for cmd in script.contents:
                 if isinstance(cmd, CastSpell):
-                    if cmd.spell_1 is not None and not isinstance(cmd.spell_1, DoNothing):
+                    # Skip EscapeSpell and DoNothing - spell slots contain types, not instances
+                    # EscapeSpell causes enemies to flee and should never be replaced
+                    if cmd.spell_1 is not None and cmd.spell_1 is not DoNothing and cmd.spell_1 is not EscapeSpell:
                         cmd.set_spell_1(random.choice(spell_pool))
-                    if cmd.spell_2 is not None and not isinstance(cmd.spell_2, DoNothing):
+                    if cmd.spell_2 is not None and cmd.spell_2 is not DoNothing and cmd.spell_2 is not EscapeSpell:
                         cmd.set_spell_2(random.choice(spell_pool))
-                    if cmd.spell_3 is not None and not isinstance(cmd.spell_3, DoNothing):
+                    if cmd.spell_3 is not None and cmd.spell_3 is not DoNothing and cmd.spell_3 is not EscapeSpell:
                         cmd.set_spell_3(random.choice(spell_pool))
 
     # Allow running away from mimics if MimicsAnywhere is enabled

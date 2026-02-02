@@ -540,14 +540,17 @@ def shuffle_shops(world: GameWorld) -> None:
         if item and item.price > 0:
             item.set_price(max(1, item.price // 10))
 
-    # Sort items in all shops by item_id in ascending order
+    # Sort items in all shops: non-equippables (ID >= 96) first, then equippables, each group sorted by ID
     for shop in world.shops.shops:
         if shop is None:
             continue
         # Get current items, filter out None values
         current_items = [item for item in (shop.items or []) if item is not None]
-        # Sort by item_id (items are types, need to instantiate to access item_id)
-        sorted_items = sorted(current_items, key=lambda item_type: item_type().item_id) # type: ignore - not possible for any of these items to be None due to filtering above
+        # Sort by: (0 if non-equippable else 1, item_id) - puts consumables/specials at top
+        sorted_items = sorted(
+            current_items,
+            key=lambda item_type: (0 if item_type().item_id >= 96 else 1, item_type().item_id)  # type: ignore
+        )
         # Set the sorted items back to the shop
         shop.set_items(sorted_items)
 
