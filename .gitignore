@@ -135,3 +135,7 @@ smrpg.sfc
 *.sfc
 *.smc
 debug_patches/*
+lazyshell_updates
+fix_lazyshell_lists.py
+generate_lazyshell_updates.py
+update_lazyshell_lists.py
