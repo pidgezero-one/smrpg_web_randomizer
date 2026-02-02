@@ -36,11 +36,10 @@ script = EventScript([
 	PlaySound(sound=SO094_FROG_COIN, channel=6),
 	CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
 	AddFrogCoins(PRIMARY_TEMP_7000),
-    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3084_pkt_1"]),
-	CreatePacketAt7010(packet=P122_FROG_COIN_STILL, destinations=["EVENT_3084_pk_1"]),
+	CreatePacketAt7010(packet=P064_FROG_COIN_CHEST_STILL, destinations=["EVENT_3084_pk_1"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3084_pk_2"]),
 	RunDialog(dialog_id=DI4056_GOT_X_FROG_COINS_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3084_pk_1"),
 	Return(),
-	CreatePacketAt7010(packet=P124_SMALL_FROG_COIN_STILL, destinations=["EVENT_3084_pk_2"], identifier="EVENT_3084_pkt_1"),
 	RunDialog(dialog_id=DI4053_GOT_A_FROG_COIN_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3084_pk_2"),
 	Return()
 ])

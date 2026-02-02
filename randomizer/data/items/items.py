@@ -1306,7 +1306,7 @@ class AmuletItem(Accessory):
     _inflict_type = None
     _elemental_resistances: list[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
 
-    _remake_name = "Booster'sCharm"
+    _remake_name = "BoosterCharm"
 
 
 class ScroogeRingItem(Accessory):
@@ -2029,7 +2029,7 @@ class MukuCookieItem(RegularItem):
     _prefix = ItemPrefix.DOT
 
     _text_shop_menu = "Muku Cookie......"
-    _remake_text_shop_menu = "ThropherBite....."
+    _remake_text_shop_menu = "ThrophCookie....."
 
     _item_id: int = 120
     _description: str = " Muku! Muku-\n muku! Muka?"
@@ -2043,7 +2043,7 @@ class MukuCookieItem(RegularItem):
     _one_side_only: bool = True
     _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
-    _remake_name = "ThropherBite"
+    _remake_name = "ThrophCookie"
 
 
 class ElixirItem(RegularItem):

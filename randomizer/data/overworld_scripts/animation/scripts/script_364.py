@@ -32,5 +32,6 @@ script = ActionScript([
 	A_Set700CToObjectCoord(target_npc=DUMMY_0X07, coord=COORD_X, pixel=True),
 	A_CompareVarToConst(PRIMARY_TEMP_700C, 5888),
 	A_JmpIfComparisonResultIsLesser(["ACTION_364_walk_1_step_southeast_12"]),
+    A_VisibilityOff(),
 	A_ReturnQueue()
 ])

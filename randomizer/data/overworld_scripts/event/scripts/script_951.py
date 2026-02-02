@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0033_OPEN_CHEST),
-	CreatePacketAt7010(packet=P115_CRYSTAL_CHEST, destinations=["EVENT_951_ret_3"]),
+	CreatePacketAt7010(packet=P093_CRYSTAL_CHEST, destinations=["EVENT_951_ret_3"]),
 	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_951_ret_3"),
 	Return()
 ])

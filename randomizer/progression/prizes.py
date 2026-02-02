@@ -421,6 +421,7 @@ class HammerPrize(ItemPrize):
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
     _model = HammerObject
+    
 
 
 class FroggiestickPrize(ItemPrize):
@@ -1915,6 +1916,7 @@ class GoldPaintPrize(ItemPrize, KeyPrize):
 
 class RecoveryMushroomPrize(StandardPrize):
     _model = RecoveryMushroomObject
+    _packet_data = (SPR0195_FLOWER, 1)
 
     @property
     def chest_grant(self) -> EventScript:
@@ -2017,7 +2019,7 @@ class FrogCoin1Prize(FrogCoinQuantityPrize):
 
     @property
     def standing_grant(self) -> EventScript:
-        return EventScript([JmpToEvent(E3085_FREESTANDING_SHUFFLED_FROG_COIN)])
+        return EventScript([JmpToEvent(E3083_FREESTANDING_SHUFFLED_FROG_COIN)])
 
     @property
     def river_grant(self) -> EventScript:

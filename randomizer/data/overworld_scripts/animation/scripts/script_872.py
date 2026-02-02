@@ -1,4 +1,4 @@
-#A0872_EMPTY
+#A0872_SUNKEN_SHIP_3D_MAZE_PRIZE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,6 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+    A_Jmp(["ACTION_917_default"])
+])

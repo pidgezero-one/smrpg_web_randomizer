@@ -1,4 +1,4 @@
-# E0919_CHEST_GREEN_MUSHROOM_PACKET
+# E0919_UNUSED
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,8 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	RunEventAsSubroutine(E0033_OPEN_CHEST),
-	CreatePacketAt7010(packet=P103_GREEN_MUSHROOM_CHEST, destinations=["EVENT_919_ret_3"]),
-	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_919_ret_3"),
-	Return()
 ])

@@ -618,33 +618,6 @@ class HenchmanNPC(NPC):
 
 
 class ItemNPC(NPC):
-    _chest_packet_id: int = P005_BRIEF_POOF_BAG
     _chest_event_id: int = E0883_CHEST_ITEM_BAG_PACKET
-    _static_packet_id: int = P037_ITEM_BAG_FALL
-    _falling_packet_id: int = P020_BAG_STATIC
     _chest_70a7_upper: int = 0
     _hover: bool = False
-
-    def chest_packet(self, world: "GameWorld") -> Packet:
-        """The packet used when this NPC is in a treasure chest."""
-        p = world.packets.packets[self._chest_packet_id]
-        assert p is not None
-        return p
-
-    def chest_event(self, world: "GameWorld") -> EventScript:
-        """The event script used when this NPC is in a treasure chest."""
-        e = world.event_scripts.get_script_by_id(self._chest_event_id)
-        assert e is not None
-        return e
-
-    def static_packet(self, world: "GameWorld") -> Packet:
-        """The packet used when this NPC is freestanding in the world."""
-        p = world.packets.packets[self._static_packet_id]
-        assert p is not None
-        return p
-
-    def falling_packet(self, world: "GameWorld") -> Packet:
-        """The packet used when this NPC is freestanding and falling."""
-        p = world.packets.packets[self._falling_packet_id]
-        assert p is not None
-        return p

@@ -1,4 +1,4 @@
-# E3085_FREESTANDING_SHUFFLED_FROG_COIN
+# E3083_FREESTANDING_SHUFFLED_FROG_COIN
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -39,13 +39,7 @@ script = EventScript([
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
 	]),
 	PlaySound(sound=SO094_FROG_COIN, channel=6),
-	AddFrogCoins(PRIMARY_TEMP_7000),
-    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3083_pkt_1"]),
-	CreatePacketAt7010(packet=P122_FROG_COIN_STILL, destinations=["EVENT_3083_pk_1"]),
-	RunDialog(dialog_id=DI4056_GOT_X_FROG_COINS_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3083_pk_1"),
-	Return(),
-	CreatePacketAt7010(packet=P124_SMALL_FROG_COIN_STILL, destinations=["EVENT_3083_pk_2"], identifier="EVENT_3083_pkt_1"),
-	RunDialog(dialog_id=DI4053_GOT_A_FROG_COIN_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3083_pk_2"),
+	AddFrogCoins(1),
 	Return()
 ])
 

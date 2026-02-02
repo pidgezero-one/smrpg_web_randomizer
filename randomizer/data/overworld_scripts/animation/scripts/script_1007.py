@@ -1,4 +1,4 @@
-#A1007_EMPTY
+#A1007_CHEST_SEQUENCE_0_DEFAULT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,6 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+    A_Jmp(["A0992_default"])
+])

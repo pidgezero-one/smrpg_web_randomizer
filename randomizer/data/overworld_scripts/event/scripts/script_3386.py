@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CreatePacketAt7010WithEvent(packet=P037_ITEM_BAG_FALL, event_id=E3290_SHIP_COLLECT_3D_MAZE_PRIZE, destinations=["EVENT_3221_pause_8"], identifier="spawn_ship_3d_maze_item"),
+	CreatePacketAt7010WithEvent(packet=P029_SUNKEN_SHIP_3D_MAZE, event_id=E3290_SHIP_COLLECT_3D_MAZE_PRIZE, destinations=["EVENT_3221_pause_8"], identifier="spawn_ship_3d_maze_item"),
 	Return()
 ])

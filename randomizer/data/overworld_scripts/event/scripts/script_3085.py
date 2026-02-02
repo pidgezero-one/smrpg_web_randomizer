@@ -40,11 +40,4 @@ script = EventScript([
 	]),
 	PlaySound(sound=SO013_COIN, channel=6),
 	AddCoins(PRIMARY_TEMP_7000),
-    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3085_pkt_1"]),
-	CreatePacketAt7010(packet=P121_COIN_CHEST_STILL, destinations=["EVENT_3085_pk_1"]),
-	RunDialog(dialog_id=DI4050_GOT_X_COINS_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3085_pk_1"),
-	Return(),
-	CreatePacketAt7010(packet=P123_SMALL_COIN_STILL, destinations=["EVENT_3085_pk_2"], identifier="EVENT_3085_pkt_1"),
-	RunDialog(dialog_id=DI4047_GOT_A_COIN_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3085_pk_2"),
-	Return()
 ])

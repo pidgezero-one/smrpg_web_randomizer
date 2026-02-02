@@ -1,4 +1,4 @@
-#A0875_EMPTY
+#A0875_SHIP_STAIRCASE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *

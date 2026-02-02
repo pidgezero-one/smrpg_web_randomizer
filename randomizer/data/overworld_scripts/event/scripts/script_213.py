@@ -31,6 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+    EnableControlsUntilReturn([B]),
 	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
     JmpToEvent(E0219_HILL_GRANT_LOGIC),
 ])

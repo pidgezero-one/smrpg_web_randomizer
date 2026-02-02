@@ -1,6 +1,8 @@
 from __future__ import annotations
 import random
 from typing import TYPE_CHECKING, Sequence, TypeVar
+
+from ..data.variables.sprite_names import SPR0195_FLOWER
 from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC
 from ..data.physical_objects.items import (
     DefaultItem,
@@ -103,6 +105,15 @@ class Prize:
     key: bool = False
     _model: type[ItemNPC] | None = DefaultItem
     _sound_effect: int = SO014_FLOWER
+    _packet_data: tuple[int, int] | None = None # list of (sprite id, sequence id)
+    
+    @property
+    def packet_data(self) -> tuple[int, int]:
+        if self._packet_data is None:
+            if self.model is not None and self.model().base.sprite_id <= 255:
+                return (self.model().base.sprite_id, 0)
+            return (SPR0195_FLOWER, 5)
+        return self._packet_data
 
     @property
     def sound_effect(self) -> int:
@@ -159,6 +170,7 @@ class Prize:
 TOriginallyHeld = TypeVar("TOriginallyHeld", bound=type[Prize] | None)
 
 class KeyPrize(Prize):
+    _packet_data = (SPR0195_FLOWER, 2)
     pass
 
 
@@ -181,6 +193,7 @@ class ItemPrize(StandardPrize):
     item: type[Item]
     _importance: SpecialItemPrizeType | None = None
     _monstro_shuffle: bool = False
+    _packet_data = (SPR0195_FLOWER, 5)
 
     @property
     def importance(self) -> SpecialItemPrizeType | None:
@@ -286,6 +299,7 @@ class StarPiecePrize(StandardPrize):
 
 class FPFlowerPrize(Prize):
     _model = FlowerObject
+    _packet_data = (SPR0195_FLOWER, 0)
 
     @property
     def chest_grant(self) -> EventScript:

@@ -16,8 +16,8 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_VisibilityOff(),
 	A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
+	A_VisibilityOff(identifier="ACTION_917_default"),
 	A_Pause(2, identifier="ACTION_917_pause_2"),
 	A_SetPriority(3),
 	A_VisibilityOn(),

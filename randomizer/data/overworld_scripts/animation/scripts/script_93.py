@@ -1,4 +1,4 @@
-#A0093_EMPTY
+#A0093_BOOSTER_HILL_PRIZE_STANDING_5
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,6 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+    A_JmpToScript(A0364_BOOSTER_HILL_LEFTOVER_FLOWERS)
+])

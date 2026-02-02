@@ -24,7 +24,6 @@ def shuffle_shops(world: GameWorld) -> None:
         MaxMushroomItem,
         HoneySyrupItem,
         MapleSyrupItem,
-        RoyalDressItem,
         AbleJuiceItem,
         BracerItem,
         EnergizerItem,
@@ -540,6 +539,17 @@ def shuffle_shops(world: GameWorld) -> None:
         item = world.items.get_by_type(item_type)
         if item and item.price > 0:
             item.set_price(max(1, item.price // 10))
+
+    # Sort items in all shops by item_id in ascending order
+    for shop in world.shops.shops:
+        if shop is None:
+            continue
+        # Get current items, filter out None values
+        current_items = [item for item in (shop.items or []) if item is not None]
+        # Sort by item_id (items are types, need to instantiate to access item_id)
+        sorted_items = sorted(current_items, key=lambda item_type: item_type().item_id) # type: ignore - not possible for any of these items to be None due to filtering above
+        # Set the sorted items back to the shop
+        shop.set_items(sorted_items)
 
     # Room service menu
     lower_tier_items = [

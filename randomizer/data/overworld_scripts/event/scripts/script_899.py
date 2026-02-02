@@ -1,4 +1,4 @@
-# E0899_CHEST_YELLOW_SYRUP_PACKET
+# E0899_CHEST_YELLOW_ITEM_COLLECTION
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0033_OPEN_CHEST),
-	CreatePacketAt7010(packet=P083_YELLOW_SYRUP_CHEST, destinations=["EVENT_899_ret_3"]),
+	CreatePacketAt7010(packet=P011_YELLOW_CHEST_ITEM, destinations=["EVENT_899_ret_3"]),
 	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_899_ret_3"),
 	Return()
 ])

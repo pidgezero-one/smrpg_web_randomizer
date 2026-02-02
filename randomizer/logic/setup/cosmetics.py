@@ -98,6 +98,25 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.update_dialog(DI3073_TOWER_HENCHMAN_3, '''SNIFSTER 3: You wanna fight?[await]''')
         world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got\n distracted again when he heard\n Claymorton was around.[await]")
         world.overworld_dialogs.search_and_replace_in_all_dialogs("FROGFUCIUS", "FROG SAGE")
+        deletables = [
+            "EVENT_215_delete_vowel_1",
+            "EVENT_215_delete_vowel_2",
+            "EVENT_215_delete_vowel_3",
+            "EVENT_160_delete_vowel_1",
+            "EVENT_160_delete_vowel_2",
+            "EVENT_160_delete_vowel_3",
+            "EVENT_165_delete_vowel_1",
+            "EVENT_165_delete_vowel_2",
+            "EVENT_165_delete_vowel_3",
+            "EVENT_2820_delete_vowel_1",
+            "EVENT_2820_delete_vowel_2",
+            "EVENT_2820_delete_vowel_3",
+            "EVENT_3089_delete_vowel_1",
+            "EVENT_3089_delete_vowel_2",
+            "EVENT_3089_delete_vowel_3",
+        ]
+        for d in deletables:
+            world.event_scripts.delete_command_by_identifier(d)
 
     for location in world.locations.values():
         if isinstance(location, BossFightLocation) and isinstance(location.prize, BossFightPrize):

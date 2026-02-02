@@ -51,6 +51,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
+    A_SetSpriteSequence,
     A_WalkEastPixels,
     A_WalkWestPixels,
     A_WalkNorthPixels,
@@ -2336,7 +2337,7 @@ class PrizeRow(PrizeLocation):
     _container_event: int
 
     def render(
-        self,
+        self, world: GameWorld | None = None
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         identifier = str(uuid4())
         grant = self.grant()
@@ -2370,7 +2371,7 @@ class TreasureChestLocationRow(PrizeRow, TreasureChestLocation):
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         if world is not None:
             TreasureChestLocation.render(self, world)
-        return PrizeRow.render(self)
+        return PrizeRow.render(self, world)
 
 
 class TreasureChestLocationRow1(TreasureChestLocationRow):
@@ -2399,9 +2400,9 @@ class TreasureChestLocationRow6(TreasureChestLocationRow):
 
 class NPCLocationRow(PrizeRow, EventLocation):
     def render(
-        self,
+        self, world: GameWorld | None = None
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        return super().render()
+        return super().render(world)
 
 
 class NPCLocationRow1(NPCLocationRow):
@@ -2434,9 +2435,9 @@ class NPCLocationRow7(NPCLocationRow):
 
 class StandingLocationRow(PrizeRow, StandingLocation):
     def render(
-        self,
+        self, world: GameWorld | None = None
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        return super().render()
+        return super().render(world)
 
 
 class StandingLocationRow1(StandingLocationRow):
@@ -2501,29 +2502,18 @@ class StandingLocationRow15(StandingLocationRow):
 
 class PacketLocation(StandingLocationRow):
     _replace: str
-    _packet_type: PacketType
+    _packet_id: int
 
     def render(
-        self,
+        self, world: GameWorld | None = None
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        return super().render()
-
-    def get_packet_id(self) -> int:
-        if self.prize is None:
-            raise ValueError("No prize assigned to this location")
-        if self.prize.model is None:
-            raise ValueError("Prize has no model to create packet from")
-        model = self.prize.model()
-        if self._packet_type == PacketType.CHEST:
-            return model._chest_packet_id
-        elif self._packet_type == PacketType.FALLING:
-            return model._falling_packet_id
-        return model._static_packet_id
-
-    def get_packet(self, world: GameWorld) -> Packet:
-        p = world.packets.packets[self.get_packet_id()]
-        assert p is not None, "Packet ID does not exist in world packets"
-        return p
+        assert world is not None
+        p = world.packets.packets[self._packet_id]
+        assert self.prize is not None and self.prize.model is not None and p is not None
+        p._set_sprite_id(self.prize.packet_data[0])
+        prep_script = world.action_scripts.scripts[p.action_script_id]
+        prep_script.insert_before_nth_command(0, A_SetSpriteSequence(index=self.prize.packet_data[1], is_sequence=True, looping=True))
+        return super().render(world)
 
 
 class PacketLocationRow1(StandingLocationRow1, PacketLocation):
@@ -2546,6 +2536,7 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
     _70B1_id: int
     _npc_id: AreaObject
     _container_event: int = E0219_HILL_GRANT_LOGIC
+    _designated_packet_ids: list[int]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -2562,14 +2553,26 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
         return self.prize.hill_grant
 
     def render(
-        self,
+        self, world: GameWorld | None = None
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        assert world is not None
         identifier = str(uuid4())
         grant = self.grant()
         assert (
             len(grant.contents) > 0
         ), "Prize grant scripts must have at least one command"
         grant.contents[0].rename(identifier)
+        for id in self._designated_packet_ids:
+            packet = world.packets.packets[id]
+            assert (
+                packet is not None
+            ), f"Packet ID {id} not found in world while creating Booster Hill location."
+            assert self.prize is not None
+            packet._set_sprite_id(self.prize.packet_data[0])
+            prep_script = world.action_scripts.scripts[packet.action_script_id]
+            prep_script.insert_before_nth_command(0, A_SetSpriteSequence(index=self.prize.packet_data[1], is_sequence=True, looping=True))
+
+
         return (
             [[JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self._70B1_id, [identifier])]],
             grant.contents,

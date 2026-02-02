@@ -444,12 +444,13 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
 
     # 26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "SWITCH DEMAKE DEVELOPMENT")
+    credits.add_title(0x80, 0x00, 0x08, "POSTGAME DEMAKE DEVELOPMENT")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0xC0, 0xC0, "ANAXEMRANGER")
-    credits.add_credit(0x80, 0x80, 0x81, "CLEARTONIC")
+    credits.add_credit(0x80, 0x80, 0xC0, "ANAXEMRANGER")
+    credits.add_credit(0x80, 0x40, 0x81, "CLEARTONIC")
+    credits.add_credit(0x80, 0x00, 0xC2, "PIDGEZERO_ONE")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 26

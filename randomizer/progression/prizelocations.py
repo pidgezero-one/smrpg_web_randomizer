@@ -3961,9 +3961,12 @@ class BoosterHillGuaranteedItem1(StandingLocation, BoosterHillLocation):
     _70B1_id = 0
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_9, NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_1
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P038_BOOSTER_HILL_PRIZE_0,
+        P069_BOOSTER_HILL_PRIZE_STANDING_0
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -3976,9 +3979,12 @@ class BoosterHillGuaranteedItem2(StandingLocation, BoosterHillLocation):
     _70B1_id = 1
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_10, NPC_10]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_2
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P039_BOOSTER_HILL_PRIZE_1,
+        P071_BOOSTER_HILL_PRIZE_STANDING_1
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -3991,9 +3997,12 @@ class BoosterHillGuaranteedItem3(StandingLocation, BoosterHillLocation):
     _70B1_id = 2
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_11, NPC_11]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_3
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P041_BOOSTER_HILL_PRIZE_2,
+        P072_BOOSTER_HILL_PRIZE_STANDING_2
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4006,9 +4015,12 @@ class BoosterHillGuaranteedItem4(StandingLocation, BoosterHillLocation):
     _70B1_id = 3
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_12, NPC_12]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_4
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P042_BOOSTER_HILL_PRIZE_3,
+        P074_BOOSTER_HILL_PRIZE_STANDING_3,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4021,9 +4033,12 @@ class BoosterHillGuaranteedItem5(StandingLocation, BoosterHillLocation):
     _70B1_id = 4
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_13, NPC_13]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_5
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P044_BOOSTER_HILL_PRIZE_4,
+        P075_BOOSTER_HILL_PRIZE_STANDING_4,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4036,9 +4051,12 @@ class BoosterHillGuaranteedItem6(StandingLocation, BoosterHillLocation):
     _70B1_id = 5
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_14, NPC_14]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_6
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P046_BOOSTER_HILL_PRIZE_5,
+        P077_BOOSTER_HILL_PRIZE_STANDING_5
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4051,9 +4069,12 @@ class BoosterHillGuaranteedItem7(StandingLocation, BoosterHillLocation):
     _70B1_id = 6
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_15, NPC_15]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_7
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P057_BOOSTER_HILL_PRIZE_6,
+        P078_BOOSTER_HILL_PRIZE_STANDING_6
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4066,9 +4087,12 @@ class BoosterHillGuaranteedItem8(StandingLocation, BoosterHillLocation):
     _70B1_id = 7
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_16, NPC_16]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_8
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P058_BOOSTER_HILL_PRIZE_7,
+        P080_BOOSTER_HILL_PRIZE_STANDING_7
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4081,9 +4105,12 @@ class BoosterHillGuaranteedItem9(StandingLocation, BoosterHillLocation):
     _70B1_id = 8
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_17, NPC_17]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_9
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P059_BOOSTER_HILL_PRIZE_8,
+        P081_BOOSTER_HILL_PRIZE_STANDING_8
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4096,9 +4123,12 @@ class BoosterHillGuaranteedItem10(StandingLocation, BoosterHillLocation):
     _70B1_id = 9
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_18, NPC_18]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_10
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P060_BOOSTER_HILL_PRIZE_9,
+        P082_BOOSTER_HILL_PRIZE_STANDING_9
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4111,9 +4141,12 @@ class BoosterHillGuaranteedItem11(StandingLocation, BoosterHillLocation):
     _70B1_id = 10
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_19, NPC_19]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_11
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P061_BOOSTER_HILL_PRIZE_10,
+        P083_BOOSTER_HILL_PRIZE_STANDING_10
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4126,9 +4159,12 @@ class BoosterHillGuaranteedItem12(StandingLocation, BoosterHillLocation):
     _70B1_id = 11
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_20, NPC_20]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_12
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P062_BOOSTER_HILL_PRIZE_11,
+        P084_BOOSTER_HILL_PRIZE_STANDING_11
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4141,9 +4177,12 @@ class BoosterHillGuaranteedItem13(StandingLocation, BoosterHillLocation):
     _70B1_id = 12
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_21, NPC_21]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_13
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P063_BOOSTER_HILL_PRIZE_12,
+        P085_BOOSTER_HILL_PRIZE_STANDING_12
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4156,9 +4195,12 @@ class BoosterHillGuaranteedItem14(StandingLocation, BoosterHillLocation):
     _70B1_id = 13
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_22, NPC_22]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_14
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P065_BOOSTER_HILL_PRIZE_13,
+        P086_BOOSTER_HILL_PRIZE_STANDING_13
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4171,9 +4213,13 @@ class BoosterHillGuaranteedItem15(StandingLocation, BoosterHillLocation):
     _70B1_id = 14
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_23, NPC_23]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_15
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P066_BOOSTER_HILL_PRIZE_14,
+        P087_BOOSTER_HILL_PRIZE_STANDING_14
+    ]
+
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4186,9 +4232,12 @@ class BoosterHillGuaranteedItem16(StandingLocation, BoosterHillLocation):
     _70B1_id = 15
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
-    _npc_ids = [NPC_24, NPC_24]
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_16
     _world_area = WorldAreaEnum.BOOSTER_HILL
+    _designated_packet_ids = [
+        P068_BOOSTER_HILL_PRIZE_15,
+        P088_BOOSTER_HILL_PRIZE_STANDING_15
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4944,6 +4993,7 @@ class ShipRatStairsBoxesLocation(PacketLocationRow1):
     _rooms = [R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS]
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.CHEST
+    _packet_id = P037_SHIP_STAIRCASE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -4958,6 +5008,7 @@ class ShipTroopaPuzzleLocation(PacketLocationRow1):
     _rooms = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
+    _packet_id = P027_SUNKEN_SHIP_TROOPA_PUZZLE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -4972,6 +5023,7 @@ class ShipTrampolinePuzzle(PacketLocationRow1):
     _rooms = [R163_SUNKEN_SHIP_PUZZLE_ROOM_2]
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
+    _packet_id = P026_SUNKEN_SHIP_TRAMPOLINE_PUZZLE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -4986,6 +5038,7 @@ class Ship3DMazePuzzle(PacketLocationRow1):
     _rooms = [R168_SUNKEN_SHIP_PUZZLE_ROOM_3]
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
+    _packet_id = P029_SUNKEN_SHIP_3D_MAZE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5065,6 +5118,7 @@ class ShipCannonballPuzzle(PacketLocationRow1):
     _rooms = [R172_SUNKEN_SHIP_PUZZLE_ROOM_5]
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
+    _packet_id = P035_SUNKEN_SHIP_CANNONBALL_PUZZLE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5079,6 +5133,7 @@ class ShipBarrelPuzzle(PacketLocationRow1):
     _rooms = [R176_SUNKEN_SHIP_AREA_08_WSAVE_POINT_AND_GREEN_SWITCH_FOR_BARREL]
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
+    _packet_id = P036_BARREL_PUZZLE_PRIZE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)

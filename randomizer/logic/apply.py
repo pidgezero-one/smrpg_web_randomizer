@@ -307,7 +307,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                         StartBattleAtBattlefield(pack_id, ROOM_TO_BATTLEFIELD[room_id], identifier=identifier),
                         Return(),
                     ])
-            elif isinstance(place, TreasureChestLocationRow):
+            elif isinstance(place, (PacketLocation, BoosterHillLocation, TreasureChestLocationRow)):
                 decision, execution = place.render(world)
             else:
                 decision, execution = place.render()
@@ -315,32 +315,21 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             builders[ctr][0].extend(d_flat)
             builders[ctr][1].extend(execution)
             
-            if isinstance(place, PacketLocation):
-                # set the packet graphic that will load for this prize location type
-                cast(
-                    CreatePacketAt7010WithEvent,
-                    world.event_scripts.get_command_by_identifier(place._replace),
-                ).set_packet_id(place.get_packet(world))
-            elif isinstance(
-                place, (StandingLocation, EventLocation, BoosterHillLocation)
-            ):
+            if isinstance(
+                place, (StandingLocation, EventLocation)
+            ) and not isinstance(place, BoosterHillLocation):
                 npcs = []
                 if hasattr(place, "_npc_ids") and hasattr(place, "_rooms"):
                     npcs = zip(place._npc_ids, place._rooms)  # type: ignore
-                elif isinstance(place, BoosterHillLocation):
-                    npcs = zip(
-                        [place._npc_id, place._npc_id],
-                        [R014_BOOSTER_HILL, R054_BOOSTER_HILL_DUMMY],
-                    )
-                for n, room_id in npcs:
+                for n, room_id_int in npcs:
                     npc = cast(AreaObject, n)
-                    room_id = world.rooms._rooms[room_id]
-                    assert room_id is not None
+                    room = world.rooms._rooms[room_id_int]
+                    assert room is not None
                     if place.prize is not None and place.prize.model is not None:
                         model = place.prize.model().base
                     else:
                         model = EMPTY_NPC
-                    cast(BaseRoomObject, room_id.get_npc_by_target_id(npc))._npc = model
+                    cast(BaseRoomObject, room.get_npc_by_target_id(npc))._npc = model
 
             if isinstance(place, StarHillStarPiece):
                 # Show the star piece on Star Hill if it's set

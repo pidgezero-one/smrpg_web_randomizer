@@ -1,4 +1,4 @@
-#A0870_EMPTY
+#A0870_SUNKEN_SHIP_TRAMPOLINE_PUZZLE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,6 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+    A_Jmp(["ACTION_917_default"])
+])

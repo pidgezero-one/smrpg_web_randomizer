@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CreatePacketAt7010WithEvent(packet=P035_FLOWER_FALL, event_id=E3289_SHIP_COLLECT_TRAMPOLINE_PRIZE, destinations=["EVENT_3210_pause_69"], identifier="spawn_ship_trampoline_item"),
+	CreatePacketAt7010WithEvent(packet=P026_SUNKEN_SHIP_TRAMPOLINE_PUZZLE, event_id=E3289_SHIP_COLLECT_TRAMPOLINE_PRIZE, destinations=["EVENT_3210_pause_69"], identifier="spawn_ship_trampoline_item"),
 	Jmp(["EVENT_3210_action_queue_71"])
 ])
