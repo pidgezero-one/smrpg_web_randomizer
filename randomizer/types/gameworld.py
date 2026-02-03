@@ -97,7 +97,7 @@ from ..data.spells.spells import *
 from ..data.credits.credits import update_credits
 from ..logic.setup.gating import apply_gating_settings
 from ..logic.setup.thresholds import apply_threshold_settings
-from ..logic.setup.enemy_tweaks import apply_enemy_tweaks
+from ..logic.setup.enemy_tweaks import apply_enemy_tweaks, apply_experience_zero_settings
 from ..logic.setup.equipment_setup import apply_equipment_settings
 from ..logic.setup.minigames_setup import apply_minigame_settings
 from ..logic.setup.cosmetics import apply_cosmetic_settings
@@ -779,8 +779,9 @@ class GameWorld:
         progress_callback: Callable[[str, int], None] | None = None,
         debug_bps_patches: bool = False,
     ):
-        print(seed)
-        print(settings.flag_string)
+        if debug_bps_patches:
+            print(seed)
+            print(settings.flag_string)
         self._progress_callback = progress_callback
         self._report_progress("Parsing settings...", 0)
         self.allies = allies
@@ -959,6 +960,10 @@ class GameWorld:
         # Apply EXP multiplier
         self._apply_exp_multiplier()
 
+        # Apply experience zero settings AFTER all XP manipulation
+        # This ensures 0 XP flags take precedence over randomization
+        apply_experience_zero_settings(self)
+
         # Apply minigame settings
         apply_minigame_settings(self)
 
@@ -1103,7 +1108,7 @@ class GameWorld:
         if self._cached_patch is not None:
             return self._cached_patch
 
-        patch = Patch()
+        patch = Patch(debug_mode=self._debug_bps_patches)
         progress = 45
 
         # Battle animations patch

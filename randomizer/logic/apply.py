@@ -25,7 +25,7 @@ from ..types.prizelocation import (
     TreasureShopLocation,
     ROOM_TO_BATTLEFIELD
 )
-from ..types.flags import BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating
+from ..types.flags import BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating, CharacterLearnedSpells, SpellsAnywhere
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
     UsableEventScriptCommand,
 )
@@ -227,6 +227,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     ):
         ally = world.allies._allies[char_id]
         assert ally is not None
+        # Skip spell assignment if SpellsAnywhere is enabled
+        # (spells will be found as items in the world instead of learned at level-up)
+        if world.settings.isflag_enabled(SpellsAnywhere):
+            continue
         for level_num, spell_location in zip(levels, locations):
             if level_num is None:
                 continue
@@ -262,11 +266,23 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             id = ally.index
             char = world.allies._allies[id]
             char.starting_level = level
-            char.starting_magic = []
+            # When SpellsAnywhere is enabled, characters don't start with or learn any spells
+            # (spells are found as items in the world instead)
+            if world.settings.isflag_enabled(SpellsAnywhere):
+                char.starting_magic = []
+            # When spell shuffling is enabled (but not SpellsAnywhere), rebuild from scratch
+            elif world.settings.isflag_enabled(CharacterLearnedSpells):
+                char.starting_magic = []
+            else:
+                # Keep original starting_magic (level-1 spells like Jump)
+                char.starting_magic = list(char.starting_magic)
+            # Apply stat bonuses from level-ups (and add spells if not SpellsAnywhere)
             for lv in range(0, level - 1):
                 lvlup = char.levels[lv]
-                if lvlup.spell_learned is not None:
-                    char.starting_magic.append(lvlup.spell_learned)
+                # Only add spells from level-ups if SpellsAnywhere is disabled
+                if not world.settings.isflag_enabled(SpellsAnywhere):
+                    if lvlup.spell_learned is not None and lvlup.spell_learned not in char.starting_magic:
+                        char.starting_magic.append(lvlup.spell_learned)
                 char.starting_max_hp += lvlup.hp_plus
                 char.starting_current_hp = char.starting_max_hp
                 char.starting_attack += lvlup.attack_plus
@@ -798,9 +814,10 @@ def _apply_stats_to_prize(
 
         # === XP Calculation ===
         # Scale XP proportionally based on original XP contribution
+        # Minimum of 1 XP (0 XP is only allowed via ExperienceNoBosses/ExperienceNoRegular flags)
         if enemy_class in enemy_classes_in_formation:
             xp_ratio = original.xp / total_original_xp
-            enemy.set_xp(round(xp * xp_ratio))
+            enemy.set_xp(max(1, round(xp * xp_ratio)))
 
 
 def apply_boss_stat_scaling(world: GameWorld) -> None:

@@ -418,10 +418,18 @@ class CharacterPrize(Prize):
 
 class SpellPrize(Prize):
     _spell: type[CharacterSpell]
+    _character: type[CharacterPrize] | None # This is only relevant if SpellsAnywhere is enabled and needs to be set before attempting prize shuffling. Otherwise, spells go to dedicated slot locations that are gated behind characters.
 
     @property
     def spell(self) -> type[CharacterSpell]:
         return self._spell
+    
+    @property
+    def character(self) -> type[CharacterPrize] | None:
+        return self._character
+    
+    def set_character(self, character: type[CharacterPrize]) -> None:
+        self._character = character
 
 
 class BossFightHenchman:

@@ -97,6 +97,30 @@ def _get_enemy_lists():
     return SIDEKICK_ENEMIES, BOSS_ENEMIES
 
 
+def apply_experience_zero_settings(world: GameWorld) -> None:
+    """Apply experience zero settings for bosses and/or regular enemies.
+
+    This must run AFTER all enemy stat randomization/scaling to ensure
+    the 0 XP setting takes precedence over any randomization.
+    """
+    from ...types.flags import ExperienceNoBosses, ExperienceNoRegular
+
+    sidekicks, bosses = _get_enemy_lists()
+
+    if world.settings.isflag_enabled(ExperienceNoBosses):
+        for enemy_type in bosses + sidekicks:
+            enemy = world.enemies.get_by_type(enemy_type)
+            enemy.set_xp(0)
+
+    if world.settings.isflag_enabled(ExperienceNoRegular):
+        for enemy_type in [
+            type(e)
+            for e in world.enemies.enemies
+            if type(e) not in bosses + sidekicks
+        ]:
+            world.enemies.get_by_type(enemy_type).set_xp(0)
+
+
 def apply_enemy_tweaks(world: GameWorld) -> None:
     """Apply enemy and combat-related tweaks.
 
@@ -106,13 +130,14 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
     - Geno Whirl Exor immunity
     - Magikoopa fix
     - OHKO immunity for sidekicks
-    - Experience settings for bosses and regular enemies
     - Enemy spell randomization
+
+    Note: Experience zero settings are handled separately by apply_experience_zero_settings()
+    which must run after all enemy stat randomization.
     """
     from ...types.flags import (
         PoisonMushroom, UncapSuperJumps, NoGenoWhirlExor, FixMagikoopa,
-        NoOHKO, ExperienceNoBosses, ExperienceNoRegular, EnemySpells,
-        MimicsAnywhere
+        NoOHKO, EnemySpells, MimicsAnywhere
     )
     from ...data.items.items import MushroomItem2, CarboCookieItem
     from ...data.enemies.enemies import KINGBOMBEnemy
@@ -133,7 +158,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
         DoNothing,
     )
 
-    sidekicks, bosses = _get_enemy_lists()
+    sidekicks, _ = _get_enemy_lists()
 
     # Poison Mushroom random status effect
     if world.settings.isflag_enabled(PoisonMushroom):
@@ -182,20 +207,6 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             for cmd in world.monster_scripts.scripts[enemy.monster_id].contents:
                 if isinstance(cmd, IfTargetedByItem):
                     cmd.set_commands([CarboCookieItem])
-
-    # Experience settings
-    if world.settings.isflag_enabled(ExperienceNoBosses):
-        for enemy_type in bosses + sidekicks:
-            enemy = world.enemies.get_by_type(enemy_type)
-            enemy.set_xp(0)
-
-    if world.settings.isflag_enabled(ExperienceNoRegular):
-        for enemy_type in [
-            type(e)
-            for e in world.enemies.enemies
-            if type(e) not in bosses + sidekicks
-        ]:
-            world.enemies.get_by_type(enemy_type).set_xp(0)
 
     # Enemy spell randomization
     if world.settings.isflag_enabled(EnemySpells):

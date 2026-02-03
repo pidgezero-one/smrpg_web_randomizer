@@ -6,8 +6,9 @@ from smrpgpatchbuilder.datatypes.allies.ally import Ally
 class Patch:
     """Class representing a patch for a specific seed that can be added to as we build it."""
 
-    def __init__(self):
+    def __init__(self, debug_mode: bool = False):
         self._data = {}
+        self._debug_mode = debug_mode
 
     def __add__(self, other: "Patch") -> "Patch":
         """Add another patch to this patch and return a new Patch object."""
@@ -39,12 +40,31 @@ class Patch:
         self, addr: int, data: bytearray | bytes | list[int] | int | str, source: str = ""
     ) -> None:
         """Add data to the patch."""
-        # For integers and strings, convert them to byte representations.
-        if isinstance(data, int) and data <= 0xFF:
-            data = data.to_bytes(1, "little")
+        # Convert all types to bytes/bytearray for consistent handling
+        if isinstance(data, int):
+            if data <= 0xFF:
+                data = data.to_bytes(1, "little")
+            else:
+                # For larger integers, determine byte length needed
+                byte_length = (data.bit_length() + 7) // 8
+                data = data.to_bytes(byte_length, "little")
         elif isinstance(data, str):
             data = data.encode("latin1")
-            
+        elif isinstance(data, list):
+            data = bytes(data)
+
+        # Check for overlaps with existing data (only in debug mode)
+        if self._debug_mode:
+            new_start = addr
+            new_end = addr + len(data)
+            for existing_addr, existing_data in self._data.items():
+                existing_end = existing_addr + len(existing_data)
+                # Check if ranges overlap
+                if new_start < existing_end and existing_addr < new_end:
+                    print(f"OVERLAP DETECTED!")
+                    print(f"    New data: 0x{new_start:06X}-0x{new_end:06X} ({len(data)} bytes) {source}")
+                    print(f"    Existing: 0x{existing_addr:06X}-0x{existing_end:06X} ({len(existing_data)} bytes)")
+
         self._data[addr] = data
 
     def add_dict(self, data: dict[int, bytearray], source: str = "") -> None:

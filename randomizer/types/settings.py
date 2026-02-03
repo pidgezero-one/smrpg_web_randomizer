@@ -79,6 +79,7 @@ class Settings:
             FireworksSetting: FireworksSetting(),
             KeyItemsAnywhere: KeyItemsAnywhere(),
             StarPieceAvailability: StarPieceAvailability(),
+            SpellsAnywhere: SpellsAnywhere(),
             InvisibleFlagsSetting: InvisibleFlagsSetting(),
             Remake: Remake(),
             EnabledRegularChecks: EnabledRegularChecks(),

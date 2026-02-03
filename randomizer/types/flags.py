@@ -928,6 +928,14 @@ class StarPieceAvailability(BooleanFlag):
     # change EVENT_947_jmp_to_event_107" to point to event 949
 
 
+class SpellsAnywhere(BooleanFlag):
+    _name = "Spells can appear in the general item pool"
+    _description = "If enabled, characters will learn spells by finding them in prize locations instead of by leveling up. Spells are still pre-assigned to characters, so for example if Mallow is supposed to learn Jump, finding the Jump spell will automatically assign it to Mallow."
+    _id = "spells_anywhere"
+    _requires_all = [(ShuffleItems(), True)]
+    # change EVENT_947_jmp_to_event_107" to point to event 949
+
+
 # ✅
 class InvisibleFlagsSetting(BooleanFlag):
     _name = "Move invisible flag checks"
@@ -1465,7 +1473,7 @@ class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
     _id = "chests"
     _default = {o: True for o in ItemCheckEnum.__members__.values()}
     _requires_all = [(ShuffleItems(), True)]
-    _requires_any = [(KeyItemsAnywhere(), True), (StarPieceAvailability(), True)]
+    _requires_any = [(KeyItemsAnywhere(), True), (StarPieceAvailability(), True), (SpellsAnywhere(), True)]
 
 
 # ✅
@@ -2526,6 +2534,7 @@ class ItemLocationSubcategory(FlagCategory):
     _flags: list[type[Flag]] = [
         KeyItemsAnywhere,
         StarPieceAvailability,
+        SpellsAnywhere,
         InvisibleFlagsSetting,
         Remake,
         EnabledRegularChecks,

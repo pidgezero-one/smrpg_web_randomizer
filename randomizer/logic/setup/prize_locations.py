@@ -516,57 +516,58 @@ def set_locations(world: GameWorld) -> None:
     if not world.settings.is_flag_value(WinCondition, WinConditions.FACTORY):
         world.locations[FinalBossFightStarPiece] = FinalBossFightStarPiece()
 
-    included_charaters = [m.value for m in world.settings.get_flag(AvailableCharacters).enabled]
-    if MARIO_Ally in included_charaters:
-        world.locations = {
-            **world.locations,
-            MarioSpell1: MarioSpell1(),
-            MarioSpell2: MarioSpell2(),
-            MarioSpell3: MarioSpell3(),
-            MarioSpell4: MarioSpell4(),
-            MarioSpell5: MarioSpell5(),
-            MarioSpell6: MarioSpell6(),
-        }
-    if MALLOW_Ally in included_charaters:
-        world.locations = {
-            **world.locations,
-            MallowSpell1: MallowSpell1(),
-            MallowSpell2: MallowSpell2(),
-            MallowSpell3: MallowSpell3(),
-            MallowSpell4: MallowSpell4(),
-            MallowSpell5: MallowSpell5(),
-            MallowSpell6: MallowSpell6(),
-        }
-    if GENO_Ally in included_charaters:
-        world.locations = {
-            **world.locations,
-            GenoSpell1: GenoSpell1(),
-            GenoSpell2: GenoSpell2(),
-            GenoSpell3: GenoSpell3(),
-            GenoSpell4: GenoSpell4(),
-            GenoSpell5: GenoSpell5(),
-            GenoSpell6: GenoSpell6(),
-        }
-    if BOWSER_Ally in included_charaters:
-        world.locations = {
-            **world.locations,
-            BowserSpell1: BowserSpell1(),
-            BowserSpell2: BowserSpell2(),
-            BowserSpell3: BowserSpell3(),
-            BowserSpell4: BowserSpell4(),
-            BowserSpell5: BowserSpell5(),
-            BowserSpell6: BowserSpell6(),
-        }
-    if TOADSTOOL_Ally in included_charaters:
-        world.locations = {
-            **world.locations,
-            ToadstoolSpell1: ToadstoolSpell1(),
-            ToadstoolSpell2: ToadstoolSpell2(),
-            ToadstoolSpell3: ToadstoolSpell3(),
-            ToadstoolSpell4: ToadstoolSpell4(),
-            ToadstoolSpell5: ToadstoolSpell5(),
-            ToadstoolSpell6: ToadstoolSpell6(),
-        }
+    if not world.settings.isflag_enabled(SpellsAnywhere):
+        included_charaters = [m.value for m in world.settings.get_flag(AvailableCharacters).enabled]
+        if MARIO_Ally in included_charaters:
+            world.locations = {
+                **world.locations,
+                MarioSpell1: MarioSpell1(),
+                MarioSpell2: MarioSpell2(),
+                MarioSpell3: MarioSpell3(),
+                MarioSpell4: MarioSpell4(),
+                MarioSpell5: MarioSpell5(),
+                MarioSpell6: MarioSpell6(),
+            }
+        if MALLOW_Ally in included_charaters:
+            world.locations = {
+                **world.locations,
+                MallowSpell1: MallowSpell1(),
+                MallowSpell2: MallowSpell2(),
+                MallowSpell3: MallowSpell3(),
+                MallowSpell4: MallowSpell4(),
+                MallowSpell5: MallowSpell5(),
+                MallowSpell6: MallowSpell6(),
+            }
+        if GENO_Ally in included_charaters:
+            world.locations = {
+                **world.locations,
+                GenoSpell1: GenoSpell1(),
+                GenoSpell2: GenoSpell2(),
+                GenoSpell3: GenoSpell3(),
+                GenoSpell4: GenoSpell4(),
+                GenoSpell5: GenoSpell5(),
+                GenoSpell6: GenoSpell6(),
+            }
+        if BOWSER_Ally in included_charaters:
+            world.locations = {
+                **world.locations,
+                BowserSpell1: BowserSpell1(),
+                BowserSpell2: BowserSpell2(),
+                BowserSpell3: BowserSpell3(),
+                BowserSpell4: BowserSpell4(),
+                BowserSpell5: BowserSpell5(),
+                BowserSpell6: BowserSpell6(),
+            }
+        if TOADSTOOL_Ally in included_charaters:
+            world.locations = {
+                **world.locations,
+                ToadstoolSpell1: ToadstoolSpell1(),
+                ToadstoolSpell2: ToadstoolSpell2(),
+                ToadstoolSpell3: ToadstoolSpell3(),
+                ToadstoolSpell4: ToadstoolSpell4(),
+                ToadstoolSpell5: ToadstoolSpell5(),
+                ToadstoolSpell6: ToadstoolSpell6(),
+            }
 
     # Only add Super Jump reward locations if Super Jump spell is enabled
     available_spells = world.settings.get_flag(AvailableSpells)

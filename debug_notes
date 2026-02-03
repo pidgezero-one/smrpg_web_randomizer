@@ -2,13 +2,20 @@
   "version": "9.0.0",
   "flags": "A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:yaridovich|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor) B(rboss) C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap) E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp) F(skips|nowhirl|nobigbang|noko) G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng) I(replace|fake|xpstar:bosses|fix_kg) L(keys_anywhere|stars_anywhere|moveflags|postgame) O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel) P(rchars) Q(perms:vanilla_accessories_all|props:some|hints) S(rshops|biasshops|showperms) T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|fireworks:progressive) X(rstars|proglogic:hard|disperse)",
   
+Spells Anywhere
+- Set up logic that assigns spells evenly to character recruits
+- Add dialogs, terminating and auto-terminating
+- Set up render events for chests, NPCs, freestandings, river, packets, and booster hill
+- Add sprites (one for each element plus a grey one for non element) and define models
+- Models per spell change based on spell infusion and element randomization settings
+- Should be ok to shuffle after that? Make sure all of the chosen spells are in the "must place" pool
+
 General
 🚧 dying to failed slots does not game over
 🚧 randomized element palettes sometimes not being applied
 - geno blast animation is incorrect (extra sprite at the end)
 - water is very broken, when you jump out of it it starts creating keys, can't move, wrote the "this is a dead end" dialog when i pressed A, stoppd music. Likely an AS problem
 🚧 shop items need to be sorted by id
-🚧 big bang randomized crashes game, enemy is stil ltargetable after they use it
 🚧 crook targeted self with dark star on using spell (might have been trying to escape normally?)
 - even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
 🚧 "found an cleanse juice"

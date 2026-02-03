@@ -283,10 +283,11 @@ def randomize_enemy_drops(
         new_xp = mutate_normal(old_xp, minimum=1, maximum=0xFFFF)
 
         # For bosses, don't let XP go above vanilla; for normal enemies, don't go below
+        # Minimum of 1 XP (0 XP is only allowed via ExperienceNoBosses/ExperienceNoRegular flags)
         if enemy.ohko_immune:
-            enemy.set_xp(min(old_xp, new_xp))
+            enemy.set_xp(max(1, min(old_xp, new_xp)))
         else:
-            enemy.set_xp(max(old_xp, new_xp))
+            enemy.set_xp(max(1, max(old_xp, new_xp)))
 
         # Shuffle reward items
         linked = enemy.common_item_drop == enemy.rare_item_drop
@@ -546,5 +547,6 @@ def apply_exp_multiplier(world: GameWorld) -> None:
 
     for enemy in world.enemies.enemies:
         current_xp = enemy.xp
-        new_xp = min(9999, current_xp * multiplier)
+        # Minimum of 1 XP (0 XP is only allowed via ExperienceNoBosses/ExperienceNoRegular flags)
+        new_xp = max(1, min(9999, current_xp * multiplier))
         enemy.set_xp(new_xp)

@@ -83,9 +83,17 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     random.seed(int.from_bytes(os.urandom(8), 'big'))
 
     # Canon names
+    if world.settings.isflag_enabled(RemakeNames):
+        world.battle_dialogs.battle_dialogs[217] = " Wizakoopa’s hiding![await]"
+        world.battle_dialogs.battle_dialogs[214] = 'GASSOX: Duh, huh huh...[await]'
+        world.battle_dialogs.battle_dialogs[132] = ' Claymorton’s stunned!![await]'
+
+    # Canon names
     if world.settings.isflag_enabled(CanonNames):
         world.enemies.get_by_type(KAMEKEnemy).set_name("KAMEK")
         world.enemies.get_by_type(BIRDETTAEnemy).set_name("BIRDETTA")
+        world.battle_dialogs.battle_dialogs[217] = " Kamek’s hiding![await]"
+        world.battle_dialogs.battle_dialogs[206] = 'BIRDETTA: Tee, hee![await]\n Ouch, you’re hurting me![await]\n Now it’s my turn![await]\n Get it while it’s hot![await]'
 
     # Peach name
     if world.settings.isflag_enabled(Peach):
@@ -266,6 +274,8 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             )
             if world.bowser_palette.rename_character:
                 world.allies._allies[2].name = world.bowser_palette.name
+                world.battle_dialogs.battle_dialogs[129] = f' {world.bowser_palette.name}’s mood has affected[await]\n the monster![await]\n The monster’s confused!![await]'
+                world.battle_dialogs.battle_dialogs[130] = f' {world.bowser_palette.name}’s scaring the monster![await]'
             world.enemies.get_by_type(BOWSERCLONEEnemy).set_name(
                 world.bowser_palette.clone_name
             )

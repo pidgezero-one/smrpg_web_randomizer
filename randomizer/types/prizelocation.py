@@ -4,6 +4,8 @@ from uuid import uuid4
 from enum import StrEnum
 import random
 
+from randomizer.types.flags import SpellsAnywhere
+
 from .prize import (
     Prize,
     EXPStarPrize,
@@ -128,6 +130,10 @@ def _get_cached_import(name: str) -> type:
             from .flags import KeyItemsAnywhere
 
             _lazy_import_cache[name] = KeyItemsAnywhere
+        elif name == "SpellsAnywhere":
+            from .flags import SpellsAnywhere
+
+            _lazy_import_cache[name] = SpellsAnywhere
         elif name == "StarPieceAvailability":
             from .flags import StarPieceAvailability
 
@@ -1194,6 +1200,13 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                     for r in l._rooms:
                         if r in self._rooms:
                             return False
+        if isinstance(prize, SpellPrize):
+            if world.settings.isflag_enabled(SpellsAnywhere):
+                if prize.character is None:
+                    return False
+                return inventory.has_item(prize.character)
+            else:
+                return isinstance(self, SpellSlotLocation)
         if world.settings.isflag_enabled(RestrictSpecialEquips):
             if self.monstro_shuffle:
                 return isinstance(prize, ItemPrize) and prize._monstro_shuffle

@@ -235,7 +235,7 @@ class StartingItem1Location(NPCLocationRow2):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_1
     _world_area = WorldAreaEnum.MARIOS_PAD
-    _blacklist = [StarPiecePrize]
+    _blacklist = [StarPiecePrize, RecoveryMushroomPrize]
     # this is granted at the start of the game by default
 
 
@@ -244,7 +244,7 @@ class StartingItem2Location(NPCLocationRow3):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_2
     _world_area = WorldAreaEnum.MARIOS_PAD
-    _blacklist = [StarPiecePrize]
+    _blacklist = [StarPiecePrize, RecoveryMushroomPrize]
     # this is granted at the start of the game by default
 
 
@@ -253,7 +253,7 @@ class StartingItem3Location(NPCLocationRow4):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_3
     _world_area = WorldAreaEnum.MARIOS_PAD
-    _blacklist = [StarPiecePrize]
+    _blacklist = [StarPiecePrize, RecoveryMushroomPrize]
     # this is granted at the start of the game by default
 
 
@@ -262,7 +262,7 @@ class StartingItem4Location(NPCLocationRow5):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_4
     _world_area = WorldAreaEnum.MARIOS_PAD
-    _blacklist = [StarPiecePrize]
+    _blacklist = [StarPiecePrize, RecoveryMushroomPrize]
     # this is granted at the start of the game by default
 
 
