@@ -18,6 +18,14 @@ Once you've installed Docker (either the desktop client or command line interfac
 
 The development environment files are `.env.dev` and `.env.dev.db`.  These are set up to use testing values and run the Django development server on localhost port 8000.  You can change these as needed.
 
+## Updating the base patch
+
+To add fundamental changes to how the game works, i.e. ASM patches, patch randomizer/patches/open_mode.ips to a vanilla unheadered copy of SMRPG (you can use any IPS patching tool for this, including [web tools](https://www.marcrobledo.com/RomPatcher.js/)).  
+Then make your changes however you like, i.e. in a [hex editor](https://www.heaventools.com/download-hex-editor.htm).  
+Then, using the IPS patcher again, create a new open_mode.ips patch against a vanilla unheadered copy of SMRPG (this is "creator mode" in the patch web tool).  
+Replace the old open_mode.ips file and then run `python3 randomizer/patches/build_json.py`.  
+Restart the container. You may need to delete site data in your browser's development console to see the new version of the file.
+
 ## Debugging
 
 - The "Debug Mode" checkbox maxes out your party stats.
@@ -30,6 +38,14 @@ The development environment files are `.env.dev` and `.env.dev.db`.  These are s
 - You can use [Lazy Shell](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) and [FlexHEX](https://www.heaventools.com/download-hex-editor.htm) to debug your randomized/patched ROM. Both are compatible with Wine with a little finagling.
   - I've added a `lazyshell` directory in this repo that includes a randomizer-compatible custom build executable (aka it can read from the randomizer's adjusted sprite data ranges, moved partition banks, can understand flexibly-written battle animations, can support 256 packets and ~1400 NPCs, knows all the sprite/packet/eventscript/actionscript names). This is moderately compatible with wine.
   - You won't be able to view battle events in Lazy Shell. This is normal, unfortunately.
+
+## Nuke and restart container
+
+For when you suspect you're having a problem with cached old data.  
+```bash
+find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null && find . -type f -name "*.pyc" -delete && docker compose down -v && docker compose build --no-cache && docker compose up
+```
+
 
 ## Deploying to production
 
@@ -67,14 +83,6 @@ Some helpful scripts you can run (in the `scripts` folder):
 - `PYTHONPATH=. python scripts/empty_dialog.py` - Run this against a dialog ID that you know is not used anywhere (usually the results of `find_unreferenced_dialogs_with_content.py`). It will empty the dialog's data and replace it with `[await]`. Be careful not to run it against unused dialogs that share data with used dialogs. Be careful not to delete any dialogs that are referenced by `RunDialog(dialog_id=PRIMARY_TEMP_7000)` (these are denoted by comments in `dialog_pointers.py`).
 - `PYTHONPATH=. python scripts/compress_dialogs.py --apply` - Removes every empty `[await]` dialog in your dialog table data files and shifts dialog pointers accordingly. Each `[await]` is a single byte, and this adds up when there are a lot of them, so this will condense your dialog data such that it leaves a large contiguous empty block at the end to be repurposed for sprite code. Run without `--apply` for a preview that does not change the files.
 - `PYTHONPATH=. python scripts/fix_dialog_order.py` - Dialog IDs should have their data index pointer higher or equal to the previous dialog ID. If you want to add dialogs, run this after making your additions to make sure the data stays in order.
-
-
-## Updating the base patch
-
-To add fundamental changes to how the game works, i.e. ASM patches, patch randomizer/patches/open_mode.ips to a vanilla unheadered copy of SMRPG (you can use any IPS patching tool for this, including [web tools](https://www.marcrobledo.com/RomPatcher.js/)).  
-Then make your changes however you like, i.e. in a [hex editor](https://www.heaventools.com/download-hex-editor.htm).  
-Then, using the IPS patcher again, create a new open_mode.ips patch against a vanilla unheadered copy of SMRPG (this is "creator mode" in the patch web tool).  
-Replace the old open_mode.ips file and then run `python3 randomizer/patches/build_json.py`. 
 
 
 ## Adding user submissions
