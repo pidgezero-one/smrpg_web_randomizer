@@ -28,7 +28,7 @@ The development environment files are `.env.dev` and `.env.dev.db`.  These are s
   - For starting inventory items, use the item class name in randomizer/data/items.py.
   - For pre-assigning prizes to checks, use the location and prize names from randomizer/progression/prizelocations.py and randomizer/progression/prizes.py
 - You can use [Lazy Shell](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) and [FlexHEX](https://www.heaventools.com/download-hex-editor.htm) to debug your randomized/patched ROM. Both are compatible with Wine with a little finagling.
-  - I've added a `lazyshell` directory in this repo that includes a randomizer-compatible custom build executable (aka it can read from the randomizer's adjusted sprite data ranges, moved partition banks, can understand flexibly-written battle animations, can support 256 packets and ~1400 NPCs, knows all the sprite/packet/eventscript/actionscript names). This is moderately compatible with wine.
+  - I've added a `lazyshell` directory in this repo that includes a randomizer-compatible custom build executable (aka it can read from the randomizer's adjusted sprite data ranges, moved partition banks, can understand flexibly-written battle animations, can support 256 packets and ~1400 NPCs, includes custom event script commands, knows all the sprite/packet/eventscript/actionscript names). This is moderately compatible with wine.
   - You won't be able to view battle events in Lazy Shell. This is normal, unfortunately.
 
 ## Deploying to production
