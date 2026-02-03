@@ -26,15 +26,16 @@ QUIZ_FILE = REPO_ROOT / "randomizer/data/minigames/quiz_questions.py"
 PASSWORD_FILE = REPO_ROOT / "randomizer/data/minigames/ship_password.py"
 SONG_FILE = REPO_ROOT / "randomizer/data/minigames/melody_bay.py"
 PALETTES_DIR = REPO_ROOT / "randomizer/data/allies/palettes"
+FLAGS_FILE = REPO_ROOT / "randomizer/types/flags.py"
 
-# Map character names (lowercase) to (filename, class_prefix, base_class)
+# Map character names (lowercase) to (filename, class_prefix, base_class, enum_class)
 CHARACTER_MAP = {
-    "mario": ("mario.py", "Mario", "MarioPalette"),
-    "mallow": ("mallow.py", "Mallow", "MallowPalette"),
-    "geno": ("geno.py", "Geno", "GenoPalette"),
-    "bowser": ("bowser.py", "Bowser", "BowserPalette"),
-    "toadstool": ("toadstool.py", "Toadstool", "ToadstoolPalette"),
-    "peach": ("toadstool.py", "Toadstool", "ToadstoolPalette"),  # Alias
+    "mario": ("mario.py", "Mario", "MarioPalette", "MarioPaletteOptions"),
+    "mallow": ("mallow.py", "Mallow", "MallowPalette", "MallowPaletteOptions"),
+    "geno": ("geno.py", "Geno", "GenoPalette", "GenoPaletteOptions"),
+    "bowser": ("bowser.py", "Bowser", "BowserPalette", "BowserPaletteOptions"),
+    "toadstool": ("toadstool.py", "Toadstool", "ToadstoolPalette", "ToadstoolPaletteOptions"),
+    "peach": ("toadstool.py", "Toadstool", "ToadstoolPalette", "ToadstoolPaletteOptions"),  # Alias
 }
 
 
@@ -466,6 +467,61 @@ def generate_palette_class_name(character_prefix: str, palette_name: str) -> str
     return f"{character_prefix}{pascal_name}"
 
 
+def generate_palette_enum_name(palette_name: str) -> str:
+    """Generate an enum name from palette name (SCREAMING_SNAKE_CASE)."""
+    # Remove non-alphanumeric characters except spaces
+    clean_name = re.sub(r"[^a-zA-Z0-9\s]", "", palette_name)
+    # Convert to SCREAMING_SNAKE_CASE
+    words = clean_name.split()
+    return "_".join(word.upper() for word in words if word)
+
+
+def add_palette_enum_to_flags(enum_class_name: str, enum_name: str, palette_name: str) -> None:
+    """Add a new palette option to the appropriate enum in flags.py.
+
+    Args:
+        enum_class_name: Name of the enum class (e.g., "MarioPaletteOptions")
+        enum_name: Name of the new enum value (e.g., "MYCOOLPALETTE")
+        palette_name: Display name for the palette (e.g., "My Cool Palette")
+    """
+    content = FLAGS_FILE.read_text()
+
+    # Find the enum class definition and its last entry
+    # Pattern: find the class, then find the last entry before the closing of the class
+    pattern = rf"^class {re.escape(enum_class_name)}\(CategorizationOption\):.*?(?=^class |\Z)"
+    match = re.search(pattern, content, re.MULTILINE | re.DOTALL)
+
+    if not match:
+        print(f"Error: Could not find {enum_class_name} in flags.py")
+        sys.exit(1)
+
+    enum_block = match.group(0)
+    enum_start = match.start()
+    enum_end = match.end()
+
+    # Find the last assignment in this enum (e.g., 'BLUE2 = "Blue2"')
+    # We'll insert the new entry after this
+    assignment_pattern = r'^\s+([A-Z_0-9]+)\s*=\s*"([^"]+)"'
+    assignments = list(re.finditer(assignment_pattern, enum_block, re.MULTILINE))
+
+    if not assignments:
+        print(f"Error: Could not find any enum entries in {enum_class_name}")
+        sys.exit(1)
+
+    last_assignment = assignments[-1]
+    # Calculate position in full content
+    insert_pos = enum_start + last_assignment.end()
+
+    # Generate the new enum entry with proper indentation
+    new_entry = f'\n    {enum_name} = "{palette_name}"'
+
+    # Insert the new entry
+    new_content = content[:insert_pos] + new_entry + content[insert_pos:]
+
+    FLAGS_FILE.write_text(new_content)
+    print(f"Added {enum_name} to {enum_class_name} in flags.py")
+
+
 def format_palette_colors(colors: list[int], indent: str = "        ") -> str:
     """Format a list of colors as Python code."""
     return "\n".join(f"{indent}0x{color:06X}," for color in colors)
@@ -533,11 +589,15 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
         print(f"Warning: Expected 15 poison colors, found {len(psn_colors)}")
 
     # Get character info
-    filename, char_prefix, base_class = CHARACTER_MAP[character]
+    filename, char_prefix, base_class, enum_class = CHARACTER_MAP[character]
     file_path = PALETTES_DIR / filename
 
-    # Generate class name from palette name
+    # Generate class name and enum name from palette name
     class_name = generate_palette_class_name(char_prefix, palette_name)
+    enum_name = generate_palette_enum_name(palette_name)
+
+    # Add enum entry to flags.py
+    add_palette_enum_to_flags(enum_class, enum_name, palette_name)
 
     # Format author for credits (uppercase, A-Z, space, period, underscore)
     author = format_credits_name(author_name) if author_name else None
@@ -566,6 +626,8 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
             "    ]",
         ])
 
+    # Add id field using the enum
+    lines.append(f"    id = {enum_class}.{enum_name}")
     lines.append(f'    name = "{escape_string(palette_name)}"')
     if author:
         lines.append(f'    author = "{author}"')

@@ -69,6 +69,14 @@ Some helpful scripts you can run (in the `scripts` folder):
 - `PYTHONPATH=. python scripts/fix_dialog_order.py` - Dialog IDs should have their data index pointer higher or equal to the previous dialog ID. If you want to add dialogs, run this after making your additions to make sure the data stays in order.
 
 
+## Updating the base patch
+
+To add fundamental changes to how the game works, i.e. ASM patches, patch randomizer/patches/open_mode.ips to a vanilla unheadered copy of SMRPG (you can use any IPS patching tool for this, including [web tools](https://www.marcrobledo.com/RomPatcher.js/)).  
+Then make your changes however you like, i.e. in a [hex editor](https://www.heaventools.com/download-hex-editor.htm).  
+Then, using the IPS patcher again, create a new open_mode.ips patch against a vanilla unheadered copy of SMRPG (this is "creator mode" in the patch web tool).  
+Replace the old open_mode.ips file and then run `python3 randomizer/patches/build_json.py`. 
+
+
 ## Adding user submissions
 
 Make sure you've installed the GitHub CLI and authed to it.

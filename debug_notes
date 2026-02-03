@@ -8,7 +8,7 @@ General
 - geno blast animation is incorrect (extra sprite at the end)
 - water is very broken, when you jump out of it it starts creating keys, can't move, wrote the "this is a dead end" dialog when i pressed A, stoppd music. Likely an AS problem
 🚧 shop items need to be sorted by id
-- big bang randomized crashes game, enemy is stil ltargetable after they use it
+🚧 big bang randomized crashes game, enemy is stil ltargetable after they use it
 🚧 crook targeted self with dark star on using spell (might have been trying to escape normally?)
 - even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
 🚧 "found an cleanse juice"

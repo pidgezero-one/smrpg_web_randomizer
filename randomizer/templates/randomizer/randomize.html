@@ -362,6 +362,11 @@
             const applyFlags = (flags = null, initial_load = false) => {
 
                 FLAGS.forEach(flag => {
+                    // Skip Player Experience flags (subcategory "R") - they should not be reset by Apply button
+                    if (flag.subcategory === "R") {
+                        return;
+                    }
+
                     $(".multiselect-option").show();
                     $(".multiselect-button-container input[type='text']").val('');
                     if (flag.type == "number") {

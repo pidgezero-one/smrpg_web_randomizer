@@ -16,6 +16,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types impor
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
+
+from ....spells.spells import StarRainSpell
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
 from ....variables.dialog_names import *
@@ -133,6 +135,7 @@ script = EventScript([
 	CompareVarToConst(PRIMARY_TEMP_7000, 4),
 	JmpIfComparisonResultIsLesser(["EVENT_2496_j"]),
 	SetBit(SWITCH_MENU_UNLOCKED),
+    LearnSpell(MARIO, StarRainSpell),
 	EnterArea(room_id=R189_MARIOS_PIPEHOUSE, face_direction=SOUTHEAST, x=3, y=13, z=0, identifier="EVENT_2496_j"),
 	JmpToEvent(E2497_ADDITIONAL_GATING_LOGIC_START_PLAYING)
 ])

@@ -785,7 +785,6 @@ def _apply_stats_to_prize(
 
         # Apply ratio multiplier if defined on the enemy itself
         new_hp = round(new_hp * enemy.ratio_hp)
-        print(f"[BOSS SCALING]   Setting {enemy._name} (id={enemy.monster_id}) HP: {enemy.hp} -> {new_hp}")
         enemy.set_hp(new_hp)
 
         # === Other Stats ===
@@ -813,20 +812,15 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
     - RANDOM: Location stats are randomly assigned to prizes (one-to-one)
     """
     if world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.VANILLA):
-        print("[BOSS SCALING] VANILLA mode - skipping scaling")
         return  # No scaling needed
-
-    print(f"[BOSS SCALING] Mode: {world.settings.get_flag(BossShuffleScaleStats).selected}")
 
     # Collect all boss fight locations with valid prizes
     boss_locations: list[BossFightLocation] = []
     for location in world.locations.values():
         if isinstance(location, BossFightLocation):
             if isinstance(location.prize, location._originally_held):
-                print(f"[BOSS SCALING] Skipping {type(location).__name__} - prize matches original")
                 continue
             boss_locations.append(location)
-            print(f"[BOSS SCALING] Will scale {type(location).__name__}: {type(location.prize).__name__}")
 
     if not boss_locations:
         return
@@ -842,7 +836,6 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
         # Apply each location's stats to its own prize
         for location, stats in location_stats:
             assert isinstance(location.prize, BossFightPrize)
-            print(f"[BOSS SCALING] Applying to {type(location).__name__} -> {type(location.prize).__name__}: HP={stats[0]}")
             _apply_stats_to_prize(location.prize, stats, world)
 
     elif world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.RANDOM):
