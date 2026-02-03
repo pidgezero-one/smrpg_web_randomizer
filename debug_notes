@@ -3,23 +3,23 @@
   "flags": "A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:yaridovich|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor) B(rboss) C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap) E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp) F(skips|nowhirl|nobigbang|noko) G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng) I(replace|fake|xpstar:bosses|fix_kg) L(keys_anywhere|stars_anywhere|moveflags|postgame) O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel) P(rchars) Q(perms:vanilla_accessories_all|props:some|hints) S(rshops|biasshops|showperms) T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|fireworks:progressive) X(rstars|proglogic:hard|disperse)",
   
 General
-- dying to failed slots does not game over
-- randomized element palettes sometimes not being applied
+🚧 dying to failed slots does not game over
+🚧 randomized element palettes sometimes not being applied
 - geno blast animation is incorrect (extra sprite at the end)
 - water is very broken, when you jump out of it it starts creating keys, can't move, wrote the "this is a dead end" dialog when i pressed A, stoppd music. Likely an AS problem
-- shop items need to be sorted by id
+🚧 shop items need to be sorted by id
 - big bang randomized crashes game, enemy is stil ltargetable after they use it
-- crook targeted self with dark star on using spell (might have been trying to escape normally?)
+🚧 crook targeted self with dark star on using spell (might have been trying to escape normally?)
 - even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
-- "found an cleanse juice"
-- cymbals (music note) packet shows up as a flower
-- frog coins in chest render wrong packet, but regular coins seem to work correctly
-- gold paint in chest rendered as a blue drink
-- freestanding coins are all the wrong size when they are single coins (bandits way, booster tower)
-- bowser's runaway sprite is wrong
-- some of bowser's sprites were not shiftd correctly, some tiles broken
-- beetlemania packet is wrong sprite
-- Might be able to condense packets. all blue items for example use the same sprite but just show a specific mold based on a variable set when you open the chest.
+🚧 "found an cleanse juice"
+🚧 cymbals (music note) packet shows up as a flower
+🚧 frog coins in chest render wrong packet, but regular coins seem to work correctly
+🚧 gold paint in chest rendered as a blue drink
+🚧 freestanding coins are all the wrong size when they are single coins (bandits way, booster tower)
+🚧 bowser's runaway sprite is wrong
+🚧 some of bowser's sprites were not shiftd correctly, some tiles broken
+🚧 beetlemania packet is wrong sprite
+🚧 Might be able to condense packets. all blue items for example use the same sprite but just show a specific mold based on a variable set when you open the chest.
 
 Boss-specific
 - torte henchman is untargetable in battle
@@ -27,7 +27,7 @@ Boss-specific
 
 Mushroom Way 
 - Chest sprites in MW2 are broken. Something wrong with vram. Possibly caused by remake items
-- mushroom way boss still wrong stats
+🚧 mushroom way boss still wrong stats
 
 Mushroom kingdom
 - bowyer in mushroom kingdom: aero henchmen are upside down when they shouldnt be, also they don't die, also attach animations are wrong
@@ -82,18 +82,18 @@ Marrymore
 - everything in the sanctuary renders incorrectly, disables x button permanently, snifits disappear when talked to, granting too many frog coins (154)
 
 Sea
-- why are there two goodie bags in the sea? one of these chests is running the wrong event
+🚧 why are there two goodie bags in the sea? one of these chests is running the wrong event
 - whirlpools move
 
 Seaside Town
-- seaside frog placement not working, everything is still full price
-- seaside: elder at confrontation time is not replaced by actual boss sprite
+🚧 seaside frog placement not working, everything is still full price
+🚧 seaside: elder at confrontation time is not replaced by actual boss sprite
 - yaridovich boss fight gets skipped completely
 - royal syrup (replaces shed key) moves around
 - culex's letter scrolls too fast, also doesn't properly explain who the final boss is
 
 Land's End
-- mokura cloud broken
+🚧 mokura cloud broken
 
 Bean Valley
 - bean valley FC chest crashes game
@@ -101,8 +101,7 @@ Bean Valley
 Nimbus Land
 - gold paint logic does not work, will take you in if you talk to him twice
 - frog coin in nimbus castle doesnt render in chest (bridge room)
-- shaman attacked itself with diamond saw after being hit by bowser crush or thunderbolt, also won't die
-- same with birds, won't die, also stunned by ice crush?
+🚧 same with birds, won't die
 - chests broken in jawful room, that definitely should not be happening
 - ninja in dodo spot has some problematic animations, doesnt turn around, sprite briefly distorts
 - statue bird palettes are wrong everywhere, possibly bc of exp star?

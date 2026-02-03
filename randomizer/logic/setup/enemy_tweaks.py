@@ -199,7 +199,9 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
 
     # Enemy spell randomization
     if world.settings.isflag_enabled(EnemySpells):
-        # Note: EscapeSpell is excluded because it causes enemies to flee the battle
+        # Note: EscapeSpell and BigBangSpell are excluded from the pool
+        # - EscapeSpell causes enemies to flee the battle
+        # - BigBangSpell requires RemoveTarget(self) afterward which complicates AI scripts
         spell_pool: list[type[EnemySpell]] = [
             DrainSpell, LightningOrbSpell, FlameSpell, BoltSpell, CrystalSpell,
             FlameStoneSpell, MegaDrainSpell, WillyWispSpell, DiamondSawSpell,
@@ -209,18 +211,20 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             MeteorBlastSpell, LightBeamSpell, WaterBlastSpell, SolidifySpell,
             PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
             MeteorSwarmSpell, WeirdMushroomSpell, BreakerBeamSpell, ShredderSpell,
-            SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell, BigBangSpell,
+            SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell,
         ]
         for script in world.monster_scripts.scripts:
             for cmd in script.contents:
                 if isinstance(cmd, CastSpell):
-                    # Skip EscapeSpell and DoNothing - spell slots contain types, not instances
-                    # EscapeSpell causes enemies to flee and should never be replaced
-                    if cmd.spell_1 is not None and cmd.spell_1 is not DoNothing and cmd.spell_1 is not EscapeSpell:
+                    # Skip special spells - spell slots contain types, not instances
+                    # - DoNothing: placeholder for empty spell slots
+                    # - EscapeSpell: causes enemies to flee
+                    # - BigBangSpell: requires RemoveTarget(self) afterward
+                    if cmd.spell_1 is not None and cmd.spell_1 is not DoNothing and cmd.spell_1 is not EscapeSpell and cmd.spell_1 is not BigBangSpell:
                         cmd.set_spell_1(random.choice(spell_pool))
-                    if cmd.spell_2 is not None and cmd.spell_2 is not DoNothing and cmd.spell_2 is not EscapeSpell:
+                    if cmd.spell_2 is not None and cmd.spell_2 is not DoNothing and cmd.spell_2 is not EscapeSpell and cmd.spell_2 is not BigBangSpell:
                         cmd.set_spell_2(random.choice(spell_pool))
-                    if cmd.spell_3 is not None and cmd.spell_3 is not DoNothing and cmd.spell_3 is not EscapeSpell:
+                    if cmd.spell_3 is not None and cmd.spell_3 is not DoNothing and cmd.spell_3 is not EscapeSpell and cmd.spell_3 is not BigBangSpell:
                         cmd.set_spell_3(random.choice(spell_pool))
 
     # Allow running away from mimics if MimicsAnywhere is enabled

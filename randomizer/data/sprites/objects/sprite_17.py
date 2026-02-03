@@ -13,12 +13,8 @@ from smrpgpatchbuilder.datatypes.graphics.classes import (
 )
 
 sprite = CompleteSprite(
-    animation=AnimationPack(
-        258,
-        length=708,
-        unknown=0x0002,
-        properties=AnimationPackProperties(
-            vram_size=4096,
+    animation=AnimationPack(258, length=708, unknown=0x0002,
+        properties=AnimationPackProperties(vram_size=4096,
             molds=[
                 Mold(0, gridplane=False,
                     tiles=[
@@ -1099,8 +1095,8 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=4, mold_id=13),
                     ]
                 ),
-            ],
-        ),
+            ]
+        )
     ),
     palette_id=SPAL669_BOWSER_CLAW_ATTACK,
     palette_offset=0,

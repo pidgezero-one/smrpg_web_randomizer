@@ -90,6 +90,12 @@ def randomize_enemy_stats(world: GameWorld) -> None:
     from randomizer.types.enemy import Enemy as CustomEnemy
 
     all_enemies = list(world.enemies.enemies)
+
+    # Debug: Print Johnny's HP before any modification
+    johnny = next((e for e in all_enemies if e.monster_id == 249), None)
+    if johnny:
+        print(f"[ENEMY STATS] Johnny HP at start: {johnny.hp}, ohko_immune: {johnny.ohko_immune}")
+
     if (
         world.settings.get_flag(EnemyStats).selected
         != EnemyStatsShuffleOptions.DISABLED
@@ -102,6 +108,10 @@ def randomize_enemy_stats(world: GameWorld) -> None:
 
         # Get list of non-boss enemies for inter-shuffling
         non_boss_enemies = [e for e in world.enemies.enemies if not e.ohko_immune]
+
+        # Debug: Check if Johnny is in non_boss_enemies
+        johnny_in_list = any(e.monster_id == 249 for e in non_boss_enemies)
+        print(f"[ENEMY STATS] Johnny in non_boss_enemies: {johnny_in_list}")
         
 
         # Determine which attributes to shuffle
@@ -150,6 +160,11 @@ def randomize_enemy_stats(world: GameWorld) -> None:
             random.shuffle(morph_chances)
             for chance, enemy in zip(morph_chances, non_boss_enemies):
                 enemy.set_morph_chance(chance)
+
+        # Debug: Print Johnny's HP after inter-shuffling
+        johnny = next((e for e in all_enemies if e.monster_id == 249), None)
+        if johnny:
+            print(f"[ENEMY STATS] Johnny HP after inter-shuffle: {johnny.hp}")
 
         # Mutate individual enemy stats
         for enemy in all_enemies:
@@ -200,6 +215,10 @@ def randomize_enemy_stats(world: GameWorld) -> None:
             # FULL_RANDOM: also shuffle elemental resistances/weaknesses
             if full_random:
                 _randomize_enemy_elements_and_statuses(enemy)
+
+            # Debug: Print Johnny's HP after mutation
+            if enemy.monster_id == 249:
+                print(f"[ENEMY STATS] Johnny HP after mutation: {enemy.hp} (old_stats hp was: {old_stats['hp']})")
 
         # Special logic for Smithy 2: All heads must have the same HP
         try:

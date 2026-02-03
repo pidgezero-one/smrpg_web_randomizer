@@ -1958,6 +1958,7 @@ class InfiniteCoinsPrize(StandardPrize):
 
 class Coins1Prize(CoinQuantityPrize):
     _amount: int = 1
+    _model = SmallCoinObject
 
     @property
     def standing_grant(self) -> EventScript:
