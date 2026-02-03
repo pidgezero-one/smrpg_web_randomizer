@@ -11,6 +11,8 @@ body:
         Design your palette in the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) and then write down your colours in this form.  
         The form will ask you for **fifteen colours**. The palette editor shows 16 colours. Omit the first one. **Do not list all sixteen colours.**
 
+        You can see existing palettes here: https://github.com/pidgezero-one/smrpg_web_randomizer/tree/v9-wip/randomizer/data/allies/palettes
+
   - type: input
     id: character
     attributes:
