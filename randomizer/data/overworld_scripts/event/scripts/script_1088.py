@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	PlaySound(sound=SO038_TADPOLE_POND_STAFF_MI, channel=6),

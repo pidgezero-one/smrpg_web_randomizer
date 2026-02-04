@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	Set70107015ToObjectXYZ(target=MARIO, bit_7=True, identifier="EVENT_3196_set_7010_to_object_xyz_0"),

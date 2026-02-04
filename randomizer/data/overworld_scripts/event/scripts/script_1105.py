@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(TEMP_7043_1, ["EVENT_1105_ret_61"], identifier="EVENT_1105_jmp_if_bit_set_0"),

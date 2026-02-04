@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunDialog(dialog_id=DI3323_TO_MARRYMORE, above_object=NPC_12, closable=True, sync=False, multiline=False, use_background=False),

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(PIPE_VAULT_GATED, ["EVENT_485_set_var_to_const_2"]),

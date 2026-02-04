@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunDialogForDuration(dialog_id=DI1233_MONSTRO_TADPOLE_POND_HINT, duration=1, sync=False),

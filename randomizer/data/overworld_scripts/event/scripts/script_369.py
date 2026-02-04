@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfObjectNotInSpecificLevel(NPC_3, R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, ["EVENT_369_ret_2"]),

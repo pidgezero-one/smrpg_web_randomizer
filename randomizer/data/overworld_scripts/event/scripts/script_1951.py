@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpToEvent(E1952_KEEP_ENTER_MARATHON_PUZZLE_ROOM)

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R191_MUSHROOM_KINGDOM_OUTSIDE, face_direction=SOUTHWEST, x=12, y=82, z=9, run_entrance_event=True),

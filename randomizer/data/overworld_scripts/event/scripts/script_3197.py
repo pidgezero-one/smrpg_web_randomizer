@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["EVENT_3197_enter_area_3"]),

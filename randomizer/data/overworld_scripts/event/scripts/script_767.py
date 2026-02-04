@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0768_MUSHROOM_KINGDOM_OCCUPIED_EAST_HALL_SHUFFLED_NPC_ANIMATION_LOADER),

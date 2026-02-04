@@ -1,4 +1,4 @@
-# E0904_UNUSED
+# E0904_CHEST_SPELL_5
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -29,6 +29,17 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
+	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
+	SetVarToConst(Z_COORD_1, 150),
+	DecVarFrom7000(Z_COORD_1),
+	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
+	CreatePacketAt7010(packet=P096_GREEN_SPELL_CHEST, destinations=["spell_5_character"], identifier="spell_5_elemental_packet"),
+	LearnSpell(MARIO, UltraJumpSpell, identifier="spell_5_character"),
+	PlaySound(sound=SO085_FLOWER, channel=6),
+	RunDialog(dialog_id=DI1956_LEARN_SPELL_5_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return()
 ])

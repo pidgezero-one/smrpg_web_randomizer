@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(SHIP_PRE_BOSS_BATTLE_1_CLEARED, ["EVENT_3280_jmp_to_event_48"]),

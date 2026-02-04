@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, mod_id=7),

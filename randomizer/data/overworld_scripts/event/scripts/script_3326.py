@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	ClearBit(TEMP_7043_0, identifier="EVENT_3326_clear_bit_0"),

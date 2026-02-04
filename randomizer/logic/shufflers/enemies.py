@@ -239,9 +239,8 @@ def _randomize_enemy_elements_and_statuses(enemy) -> None:
         # Prioritize resistances
         new_res = random.sample(available_elements, min(new_resistances, len(available_elements)))
         enemy.set_resistances(new_res)
+        # Only allow weaknesses from elements NOT in resistances
         potential_weak = list(set(available_elements) - set(new_res))
-        potential_weak.append(Element.JUMP)
-        potential_weak = list(set(potential_weak))
         current_weak_count = len(enemy.weaknesses)
         enemy.set_weaknesses(
             random.sample(potential_weak, min(current_weak_count, len(potential_weak)))
@@ -251,9 +250,8 @@ def _randomize_enemy_elements_and_statuses(enemy) -> None:
         current_weak_count = len(enemy.weaknesses)
         new_weak = random.sample(available_elements, min(current_weak_count, len(available_elements)))
         enemy.set_weaknesses(new_weak)
+        # Only allow resistances from elements NOT in weaknesses
         potential_res = list(set(available_elements) - set(new_weak))
-        potential_res.append(Element.JUMP)
-        potential_res = list(set(potential_res))
         enemy.set_resistances(
             random.sample(potential_res, min(new_resistances, len(potential_res)))
         )

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	StartBattleAtBattlefield(PACK092_BIRDY_PACK_1, BF02_BEAN_VALLEY_BEANSTALKS),

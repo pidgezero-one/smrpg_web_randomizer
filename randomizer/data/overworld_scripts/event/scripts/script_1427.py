@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0202_UNLOCK_FOREST_IF_GATED_BY_MUSHROOM_WAY_CHARACTER),

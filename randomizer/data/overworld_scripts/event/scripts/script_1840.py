@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfMarioOnAnObjectOrNot(['EVENT_1840_copy_var_to_var_2', 'EVENT_1840_ret_24']),

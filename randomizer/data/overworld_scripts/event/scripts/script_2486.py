@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfObjectInSpecificLevel(NPC_0, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["EVENT_2486_ret_5"]),

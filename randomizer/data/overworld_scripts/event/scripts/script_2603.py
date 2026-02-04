@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(INNER_FACTORY_ROOM_4_COMPLETED, ["EVENT_2603_ret_38"]),

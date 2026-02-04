@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunDialog(dialog_id=DI1945_NIMBUS_GUARD, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True),

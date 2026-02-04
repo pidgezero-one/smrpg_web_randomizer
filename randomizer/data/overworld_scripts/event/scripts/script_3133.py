@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunDialog(dialog_id=DI1652_PA_MOLE_AFTER_MINES_CLEARED, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),

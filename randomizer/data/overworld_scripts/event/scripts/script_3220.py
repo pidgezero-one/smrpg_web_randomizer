@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	Set7000ToObjectCoord(target_npc=MEM_70A8, coord=COORD_Z, pixel=True, bit_7=True),

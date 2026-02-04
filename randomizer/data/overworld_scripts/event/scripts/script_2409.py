@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfVarEqualsConst(FACTORY_FALL_1, 237, ["EVENT_2409_set_var_to_const_21"]),

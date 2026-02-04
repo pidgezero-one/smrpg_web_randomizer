@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0838_NIMBUS_CASTLE_FIRST_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER),

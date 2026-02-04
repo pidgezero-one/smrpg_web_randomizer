@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	StartBattleAtBattlefield(PACK167_SHIP_FIRST_BOSS, BF03_SUNKEN_SHIP_KING_CALAMARIS_CELLAR),

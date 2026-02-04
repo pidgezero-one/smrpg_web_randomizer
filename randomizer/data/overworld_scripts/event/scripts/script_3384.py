@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	CreatePacketAt7010WithEvent(packet=P027_SUNKEN_SHIP_TROOPA_PUZZLE, event_id=E3288_SHIP_SPAWN_PRIZE_IN_TROOPA_PUZZLE_ROOM, destinations=["EVENT_3223_pause_9"], identifier="spawn_ship_troopa_item"),

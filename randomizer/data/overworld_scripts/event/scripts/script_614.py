@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunDialog(dialog_id=DI0986_TIP_PROMPT, above_object=NPC_14, closable=True, sync=False, multiline=True, use_background=False),

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	StartBattleAtBattlefield(PACK184_FACTORY_SECOND_BOSS, BF40_SMITHY_FACTORY_DOMINO_CLOAKERS_PAD),

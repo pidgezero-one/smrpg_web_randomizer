@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_708_jmp_to_event_7"], identifier="suite_threshold_1"),

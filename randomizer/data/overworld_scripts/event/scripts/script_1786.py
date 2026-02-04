@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(MOUSE_RETURNED_TO_MONSTRO, ["EVENT_1786_summon_to_level_2"]),

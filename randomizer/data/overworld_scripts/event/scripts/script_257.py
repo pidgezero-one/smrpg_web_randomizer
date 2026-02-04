@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	FadeInFromBlack(sync=False, identifier="EVENT_257_fade_in_from_black_async_0"),

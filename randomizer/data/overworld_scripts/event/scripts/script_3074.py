@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 # todo: how to fix this and make it available to 6 chests? COIN_CHEST_1_COMPLETED never gets cleared...
 script = EventScript([

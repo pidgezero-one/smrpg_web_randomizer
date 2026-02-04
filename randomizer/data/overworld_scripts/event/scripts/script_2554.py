@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(BEAN_VALLEY_BIG_PIPE_ROOM_INVISIBLE_ITEM, ["EVENT_2554_ret_4"]),

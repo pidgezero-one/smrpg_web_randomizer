@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunDialog(dialog_id=DI2731_FROGFUCIUS_MARIOS_PAD_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_991_run_dialog_0"),

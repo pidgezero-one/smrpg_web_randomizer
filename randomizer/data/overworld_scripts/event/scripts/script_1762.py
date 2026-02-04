@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfObjectNotInSpecificLevel(NPC_3, R404_LANDS_END_DESERT_AREA_04, ["EVENT_1762_run_event_as_subroutine_3"]),

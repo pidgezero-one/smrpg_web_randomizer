@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, face_direction=NORTHEAST, x=3, y=59, z=2, run_entrance_event=True),

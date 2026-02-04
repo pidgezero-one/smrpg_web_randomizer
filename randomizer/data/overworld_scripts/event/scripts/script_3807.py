@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI, face_direction=SOUTH, x=4, y=16, z=0),

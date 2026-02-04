@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	CompareVarToConst(PRIMARY_TEMP_7000, 30, identifier="sj_threshold_1"),

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	SetVarToRandom(PRIMARY_TEMP_7000, 10000, identifier="mushroom_boy_odds"),

@@ -104,6 +104,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         ShuffleMagikoopaChest,
         ShuffleWeddingGear,
         ShuffleCoins,
+        SpellsAnywhere,
         # Gating flags for character requirement validation
         BanditsWayGate,
         BanditsWayGating,
@@ -1028,6 +1029,58 @@ def shuffle_prizes(world: GameWorld) -> None:
     print(f"Priority 3:")
     for p in not_important:
         print(f"  {type(p).__name__}") """
+
+    # Assign characters to spells when SpellsAnywhere is enabled
+    if world.settings.isflag_enabled(SpellsAnywhere):
+        # Collect all spell prizes from must_include
+        spell_prizes = [p for p in must_include if isinstance(p, SpellPrize)]
+
+        if spell_prizes:
+            # Collect all included character prize types
+            # These are the characters that were placed or added to progression pools
+            included_character_types: set[type[CharacterPrize]] = set()
+
+            # Get characters from starting locations
+            for start_loc_cls in [
+                StartingCharacter1,
+                StartingCharacter2,
+                StartingCharacter3,
+                StartingCharacter4,
+                StartingCharacter5,
+            ]:
+                loc = world.locations.get(start_loc_cls)
+                if loc and loc.has_item and isinstance(loc.prize, CharacterPrize):
+                    included_character_types.add(type(loc.prize))
+
+            # Get characters from progression pools
+            for prize in high_vol_character_prizes + low_vol_character_prizes:
+                if isinstance(prize, CharacterPrize):
+                    included_character_types.add(type(prize))
+
+            # Convert to sorted list for deterministic ordering
+            character_types = sorted(list(included_character_types), key=lambda x: x.__name__)
+
+            if character_types:
+                num_characters = len(character_types)
+                num_spells = len(spell_prizes)
+
+                # Calculate base spells per character and remainder
+                base_per_char = num_spells // num_characters
+                remainder = num_spells % num_characters
+
+                # Shuffle spell prizes for random assignment
+                random.shuffle(spell_prizes)
+
+                # Assign spells to characters
+                spell_idx = 0
+                for char_idx, char_type in enumerate(character_types):
+                    # First 'remainder' characters get one extra spell
+                    spells_for_this_char = base_per_char + (1 if char_idx < remainder else 0)
+
+                    for _ in range(spells_for_this_char):
+                        if spell_idx < num_spells:
+                            spell_prizes[spell_idx]._character = char_type
+                            spell_idx += 1
 
     # Shuffle!
     # Place items with restricted placement options first (e.g., SlotsPrize)

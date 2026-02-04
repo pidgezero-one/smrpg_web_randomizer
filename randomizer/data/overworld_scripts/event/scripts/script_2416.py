@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	SetBit(DIRECTIONAL_7047_0, identifier="EVENT_2416_set_bit_0"),

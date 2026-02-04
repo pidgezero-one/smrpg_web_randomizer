@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunBackgroundEvent(event_id=E3497_MIDAS_RIVER_BOTTOM_LEFT_TUNNEL_ITEM_GRANTER, return_on_level_exit=True),

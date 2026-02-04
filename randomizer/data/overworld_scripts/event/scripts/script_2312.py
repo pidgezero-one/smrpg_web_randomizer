@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(BOOSTER_PASS_2ND_ROOM_BUTTON_PRESSED, ["EVENT_2312_ret_78"]),

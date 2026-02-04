@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunDialog(dialog_id=DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),

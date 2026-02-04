@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0777_MINES_TRAMPOLINE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),

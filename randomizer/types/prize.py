@@ -419,6 +419,17 @@ class CharacterPrize(Prize):
 class SpellPrize(Prize):
     _spell: type[CharacterSpell]
     _character: type[CharacterPrize] | None # This is only relevant if SpellsAnywhere is enabled and needs to be set before attempting prize shuffling. Otherwise, spells go to dedicated slot locations that are gated behind characters.
+    _chest_event_id: int
+    _npc_grant_event_id: int
+    _standing_grant_event_id: int
+    _river_grant_event_id: int 
+    _hill_grant_event_id: int
+
+    character_replacement_ids: list[str]
+    packet_replacement_ids: list[str]
+
+    def set_model(self, model: type[ItemNPC]) -> None:
+        self._model = model
 
     @property
     def spell(self) -> type[CharacterSpell]:
@@ -431,6 +442,25 @@ class SpellPrize(Prize):
     def set_character(self, character: type[CharacterPrize]) -> None:
         self._character = character
 
+    @property
+    def chest_grant(self) -> EventScript:
+        return EventScript([JmpToEvent(self._chest_event_id)])
+    
+    @property
+    def npc_grant(self) -> EventScript:
+        return EventScript([JmpToEvent(self._npc_grant_event_id)])
+
+    @property
+    def standing_grant(self) -> EventScript:
+        return EventScript([JmpToEvent(self._standing_grant_event_id)])
+
+    @property
+    def river_grant(self) -> EventScript:
+        return EventScript([JmpToEvent(self._river_grant_event_id)])
+
+    @property
+    def hill_grant(self) -> EventScript:
+        return EventScript([JmpToEvent(self._hill_grant_event_id)])
 
 class BossFightHenchman:
     _monster: type[Enemy]

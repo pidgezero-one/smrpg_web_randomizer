@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(WIN_CONDITION_STAR_PIECES, ["EVENT_3101_fade_in_from_black_async_2"]),

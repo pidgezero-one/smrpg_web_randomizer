@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(PROGRESSIVE_FIREWORKS_ENABLED, ["EVENT_1626_store_item_amount_7000_6"]),

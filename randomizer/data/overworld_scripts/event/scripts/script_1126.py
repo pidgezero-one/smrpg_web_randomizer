@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0810_SEASIDE_OCCUPIED_WPN_ARM_SHOP_SHUFFLED_NPC_ANIMATION_LOADER),

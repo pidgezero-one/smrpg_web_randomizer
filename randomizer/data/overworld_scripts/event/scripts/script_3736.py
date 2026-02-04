@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfObjectNotInSpecificLevel(NPC_0, R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD, ["EVENT_3736_fade_in_from_black_async_4"]),

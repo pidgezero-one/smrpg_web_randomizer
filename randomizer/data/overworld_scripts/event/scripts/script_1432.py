@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	SetSyncActionScript(NPC_7, A0563_WHILE_RECRUITABLE_CHARACTER_CAPTIVE_IN_MUSHROOM_WAY_2),

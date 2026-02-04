@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfVarEqualsConst(ACTIVE_NPC, 28, ["EVENT_3607_jmp_to_event_9"]),

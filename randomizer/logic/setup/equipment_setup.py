@@ -183,3 +183,43 @@ def apply_equipment_settings(world: GameWorld) -> None:
     for item in world.items.items:
         if isinstance(item, Equipment):
             item.set_description(item.build_equipment_description())
+
+
+def assign_spell_prize_models(world: GameWorld) -> None:
+    """Assign spell prize models based on their element.
+
+    This sets the visual appearance (colored orb) for spell prizes when they
+    appear as freestanding items in the overworld:
+    - Thunder spells → Yellow orb
+    - Fire spells → Red orb
+    - Ice spells → Blue orb
+    - Jump/Earth spells → Green orb
+    - No element spells → Gray orb
+
+    Must run after spell elements are finalized (after apply_equipment_settings)
+    but before item shuffling begins.
+    """
+    from ...types.prize import SpellPrize
+    from ...data.physical_objects.items import (
+        YellowSpellObject, RedSpellObject, BlueSpellObject,
+        GreenSpellObject, GraySpellObject
+    )
+
+    # Collect all spell prizes from world
+    spell_prizes = [p for p in world.prizes if isinstance(p, SpellPrize)]
+
+    for prize in spell_prizes:
+        # Get the actual spell instance from world with its finalized element
+        spell_instance = world.get_spell(prize.spell)
+
+        # Map element to orb model
+        if spell_instance.element == Element.THUNDER:
+            prize.set_model(YellowSpellObject)
+        elif spell_instance.element == Element.FIRE:
+            prize.set_model(RedSpellObject)
+        elif spell_instance.element == Element.ICE:
+            prize.set_model(BlueSpellObject)
+        elif spell_instance.element == Element.JUMP:
+            prize.set_model(GreenSpellObject)
+        else:  # Element.NONE
+            prize.set_model(GraySpellObject)

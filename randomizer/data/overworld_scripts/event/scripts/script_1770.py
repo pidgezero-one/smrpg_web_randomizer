@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(HAS_A_PRIZE_FORTUNE, ["EVENT_1770_remove_from_current_level_4"]),

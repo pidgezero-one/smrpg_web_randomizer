@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	PlayMusicAtDefaultVolume(M0002_MUSHROOMKINGDOM, identifier="EVENT_375_play_music_default_volume_0"),

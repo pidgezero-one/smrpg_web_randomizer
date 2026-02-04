@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	CreatePacketAt7010WithEvent(packet=P037_SHIP_STAIRCASE, event_id=E3247_ITEM_BEHIND_SHIP_UPPER_STAIRS_GRANTER, destinations=["EVENT_3385_ret_1"], identifier="spawn_ship_box_item"),

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(TEMP_7044_0, ["EVENT_447_set_var_to_random_6"], identifier="EVENT_447_jmp_if_bit_clear_0"),

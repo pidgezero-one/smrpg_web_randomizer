@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	SetSyncActionScript(MEM_70A8, A0930_DONUT_LIFT_FALL),

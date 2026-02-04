@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["EVENT_754_enter_area_2"]),

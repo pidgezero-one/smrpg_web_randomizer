@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunDialog(dialog_id=DI0519_MUSHROOM_INNKEEPER, above_object=MEM_70A8, closable=False, sync=False, multiline=True, use_background=True),

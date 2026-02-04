@@ -1,4 +1,4 @@
-# E0973_EMPTY
+# E0973_NPC_SPELL_22
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -29,7 +29,11 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
-
+	LearnSpell(TOADSTOOL, GroupHugSpell, identifier="npc_spell_23_character"),
+	PlaySound(sound=SO085_FLOWER, channel=6),
+	RunDialog(dialog_id=DI1991_LEARN_SPELL_23, above_object=MARIO, closable=True, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return()
 ])

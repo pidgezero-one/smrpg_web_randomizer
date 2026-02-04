@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfObjectInSpecificLevel(NPC_6, R157_STAR_HILL_AREA_03, ["EVENT_2461_remove_from_level_2"]),

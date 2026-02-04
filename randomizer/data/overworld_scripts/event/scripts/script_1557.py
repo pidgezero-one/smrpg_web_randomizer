@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(DIRECTIONAL_7047_0, ["EVENT_1557_jmp_if_bit_clear_10"]),

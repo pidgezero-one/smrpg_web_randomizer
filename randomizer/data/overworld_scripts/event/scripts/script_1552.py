@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(DIRECTIONAL_7047_0, ["EVENT_1552_fade_in_from_black_sync_10"]),

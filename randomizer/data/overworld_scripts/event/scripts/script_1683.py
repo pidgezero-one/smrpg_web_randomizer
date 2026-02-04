@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(TRAMPOLINE_SHAMAN_PAID, ["EVENT_1682_copy_var_to_var_0"]),

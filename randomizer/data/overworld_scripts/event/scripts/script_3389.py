@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	CreatePacketAt7010WithEvent(packet=P036_BARREL_PUZZLE_PRIZE, event_id=E3295_SHIP_COLLECT_BARREL_PRIZE, destinations=["EVENT_3219_pause_13"], identifier="spawn_ship_barrel_item"),

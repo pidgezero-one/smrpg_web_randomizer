@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([    
 	JmpIfObjectInSpecificLevel(NPC_4, R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM, ["EVENT_1771_jmp_if_bit_clear_2"]),

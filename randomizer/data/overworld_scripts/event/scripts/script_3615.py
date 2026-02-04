@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R378_BEAN_VALLEY_BEANSTALKS_AREA_01, face_direction=NORTHWEST, x=6, y=123, z=0),

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunDialog(dialog_id=DI2987_FAN_SETTING, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),

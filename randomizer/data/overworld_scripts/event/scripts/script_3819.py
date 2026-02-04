@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
     JmpIfBitClear(LANDS_END_GATED, ["EVENT_3819_event_precursor"]),

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
     JmpIfBitSet(BK_OBSTACLE_6_PRIZE_RETRIEVED, ["bke6"]),

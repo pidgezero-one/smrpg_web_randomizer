@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R370_NIMBUS_LAND_ENTRANCE_TO_HOT_SPRINGS, face_direction=NORTHWEST, x=20, y=56, z=0, run_entrance_event=True),

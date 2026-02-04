@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfObjectInSpecificLevel(NPC_2, R403_LANDS_END_DESERT_AREA_05, ["EVENT_1759_copy_var_to_var_9"]),

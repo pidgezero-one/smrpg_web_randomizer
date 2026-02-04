@@ -1,4 +1,4 @@
-# E1001_EMPTY
+# E1001_FREESTANDING_SPELL_10
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -29,7 +29,13 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
-
+	DisableObjectTrigger(MEM_70A8),
+	RemoveObjectAt70A8FromCurrentLevel(),
+	LearnSpell(MALLOW, ShockerSpell, identifier="freestanding_spell_10_character"),
+	PlaySound(sound=SO085_FLOWER, channel=6),
+	RunDialog(dialog_id=DI1966_LEARN_SPELL_10_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return()
 ])

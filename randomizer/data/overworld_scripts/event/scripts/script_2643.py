@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(TOAD_SHOP_FREEBIE_RECEIVED, ["EVENT_2643_jmp_to_event_4"]),

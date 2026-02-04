@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	SummonObjectToSpecificLevel(NPC_0, R056_KERO_SEWERS_AREA_02_LONG_ROOM_WTHREE_PIPES, identifier="EVENT_3134_summon_to_level_0"),

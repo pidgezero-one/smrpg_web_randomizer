@@ -280,6 +280,22 @@ class CrystalObject(ItemNPC):
     _base = CRYSTAL_BASE
     _chest_event_id: int = E0950_CHEST_GLOVE_PACKET
 
+class FireSpellObject(ItemNPC):
+    _base = RED_ORB_BASE
+    _chest_event_id: int = 0
+class BlueSpellObject(ItemNPC):
+    _base = BLUE_ORB_BASE
+    _chest_event_id: int = 0
+class GreenSpellObject(ItemNPC):
+    _base = GREEN_ORB_BASE
+    _chest_event_id: int = 0
+class YellowSpellObject(ItemNPC):
+    _base = YELLOW_ORB_BASE
+    _chest_event_id: int = 0
+class GraySpellObject(ItemNPC):
+    _base = GRAY_ORB_BASE
+    _chest_event_id: int = 0
+
 # possibilities for more models
 # urchin
 # heart

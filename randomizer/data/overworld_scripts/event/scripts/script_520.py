@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(FREEZE_ROSE_TOWN_NPC_2, ["EVENT_520_run_dialog_29"]),

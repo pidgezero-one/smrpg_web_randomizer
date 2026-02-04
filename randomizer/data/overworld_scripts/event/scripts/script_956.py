@@ -1,4 +1,4 @@
-# E0956_EMPTY
+# E0956_NPC_SPELL_5
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -29,7 +29,11 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
-
+	LearnSpell(MARIO, UltraJumpSpell, identifier="npc_spell_5_character"),
+	PlaySound(sound=SO085_FLOWER, channel=6),
+	RunDialog(dialog_id=DI1955_LEARN_SPELL_5, above_object=MARIO, closable=True, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return()
 ])

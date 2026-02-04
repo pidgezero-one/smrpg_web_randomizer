@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, face_direction=SOUTHWEST, x=4, y=51, z=0),

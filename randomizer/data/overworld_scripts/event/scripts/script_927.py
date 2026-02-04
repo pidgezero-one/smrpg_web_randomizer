@@ -1,4 +1,4 @@
-# E0927_UNUSED
+# E0927_CHEST_SPELL_27
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -29,6 +29,17 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
+	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
+	SetVarToConst(Z_COORD_1, 150),
+	DecVarFrom7000(Z_COORD_1),
+	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
+	CreatePacketAt7010(packet=P098_GRAY_SPELL_CHEST, destinations=["spell_27_character"], identifier="spell_27_elemental_packet"),
+	LearnSpell(TOADSTOOL, PsychBombSpell, identifier="spell_27_character"),
+	PlaySound(sound=SO085_FLOWER, channel=6),
+	RunDialog(dialog_id=DI2000_LEARN_SPELL_27_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return()
 ])

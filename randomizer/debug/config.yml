@@ -89,15 +89,15 @@ items:
     RoseTownTreasureHouseRightChestLocation: AbleJuicePrize
     # P093_UNUSED - MusicObject
     RoseTownTreasureHouseUpperChestLocation: CymbalsPrize
-    # P094_UNUSED - StarDrinkObject
+    # P094_FIRE_SPELL_CHEST - StarDrinkObject
     ForestMazeFirstRoomLocation: PickMeUpPrize
-    # P095_UNUSED - GreenCandyObject
+    # P095_BLUE_SPELL_CHEST - GreenCandyObject
     ForestMazeFirstUndergroundExitLocation: YoshiCandyPrize
-    # P096_UNUSEDT - BlueCandyObject
+    # P096_GREEN_SPELL_CHEST - BlueCandyObject
     ForestMazeUndergroundWigglerChestLocation: RockCandyPrize
-    # P097_UNUSED - GreenBombObject
+    # P097_YELLOW_SPELL_CHEST - GreenBombObject
     ForestMazeUndergroundBottomRightTrunkChestLocation: FrightBombPrize
-    # P098_UNUSED - RedBombObject
+    # P098_GRAY_SPELL_CHEST - RedBombObject
     ForestMazeUndergroundMiddleLeftChestLocation: FireBombPrize
     # P099_UNUSED - BlueBombObject
     ForestMazeInnerMazeEntranceLocation: IceBombPrize

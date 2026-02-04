@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0785_MINES_SMALL_NORTH_ROOM_IN_MINIBOSS_PATH_SHUFFLED_NPC_ANIMATION_LOADER),

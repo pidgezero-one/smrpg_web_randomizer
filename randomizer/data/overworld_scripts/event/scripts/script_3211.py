@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R168_SUNKEN_SHIP_PUZZLE_ROOM_3, mod_id=32),

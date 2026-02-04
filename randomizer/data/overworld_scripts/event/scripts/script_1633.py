@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(MOLEVILLE_TOADOFSKY_HINT, ["EVENT_1633_set_var_to_const_4"]),

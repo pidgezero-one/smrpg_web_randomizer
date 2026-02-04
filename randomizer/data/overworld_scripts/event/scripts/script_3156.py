@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunBackgroundEvent(event_id=E3157_MINECART_ROOM_LOADER_BACKGROUND, return_on_level_exit=True),

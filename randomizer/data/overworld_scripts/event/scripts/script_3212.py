@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	PauseActionScript(NPC_2, identifier="EVENT_3212_pause_action_script_0"),

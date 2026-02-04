@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	SummonObjectToSpecificLevel(NPC_0, R040_BOOSTER_TOWER_8F_CHOMP_STAIRWAY),

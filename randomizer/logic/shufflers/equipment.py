@@ -162,6 +162,15 @@ def randomize_equipment_properties(world: GameWorld) -> None:
                     elif random.random() < odds:
                         item.append_elemental_immunity(elem)
 
+            # Safety check: ensure no element is in both immunity and resistance lists
+            immunities_set = set(item.elemental_immunities)
+            resistances_set = set(item.elemental_resistances)
+            overlap = immunities_set & resistances_set
+            if overlap:
+                # Remove overlapping elements from resistances (immunity takes priority)
+                for elem in overlap:
+                    item.remove_elemental_resistance(elem)
+
             # Status immunities
             item.set_status_immunities([])
             status_list = [

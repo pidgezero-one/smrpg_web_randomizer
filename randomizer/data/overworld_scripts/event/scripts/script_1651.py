@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R108_MOLEVILLE_OUTSIDE, face_direction=SOUTHWEST, x=30, y=43, z=2, run_entrance_event=True),

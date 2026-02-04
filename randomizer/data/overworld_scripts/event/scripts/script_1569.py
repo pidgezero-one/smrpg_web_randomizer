@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(UNKNOWN_MIDAS_RIVER_7079_0, ["EVENT_1569_set_var_to_const_5"]),

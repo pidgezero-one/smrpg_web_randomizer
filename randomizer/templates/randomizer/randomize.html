@@ -957,6 +957,52 @@
                 }
             }
 
-        })
+            // Handle palette preview images
+            const characterMapping = {
+                'mariopalette': 'mario',
+                'mallowpalette': 'mallow',
+                'genopalette': 'geno',
+                'bowserpalette': 'bowser',
+                'toadstoolpalette': 'toadstool'
+            };
+
+            function updatePalettePreview(selectElement) {
+                const $select = $(selectElement);
+                const $container = $select.siblings('.palette-preview-container');
+                const $img = $container.find('.palette-preview-image');
+
+                const selectedOption = $select.find('option:selected');
+                const paletteName = selectedOption.data('palette-name');
+                const paletteId = selectedOption.data('palette-id');
+
+                // Extract character from the select element's ID (format: "R.mariopalette")
+                const selectId = $select.attr('id');
+                const flagId = selectId ? selectId.split('.')[1] : null;
+                const characterDir = flagId ? characterMapping[flagId] : null;
+
+                // Show preview for all palettes if character mapping exists
+                if (paletteId && characterDir) {
+                    // Use the palette ID directly as the filename
+                    const imagePath = `/static/randomizer/images/palette_previews/${characterDir}/${paletteId}.png`;
+
+                    $img.attr('src', imagePath);
+                    $img.attr('alt', `${paletteName} Preview`);
+                    $container.show();
+                } else {
+                    $container.hide();
+                }
+            }
+
+            // Initialize palette previews on page load
+            $('.palette-selector').each(function() {
+                updatePalettePreview(this);
+            });
+
+            // Update preview when selection changes
+            $(document).on('change', '.palette-selector', function() {
+                updatePalettePreview(this);
+            });
+
+        });
     </script>
 {% endblock %}

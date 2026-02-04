@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, face_direction=SOUTH, x=6, y=29, z=9, run_entrance_event=True),

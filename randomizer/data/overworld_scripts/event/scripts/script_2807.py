@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_3, ["EVENT_2808_jmp_if_bit_set_0"]),

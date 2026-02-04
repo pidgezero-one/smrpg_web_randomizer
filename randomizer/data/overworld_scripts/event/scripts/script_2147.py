@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	ApplySolidityModToLevel(permanent=True, room_id=R479_BOWSERS_KEEP_2ND_TIME_AREA_04_THRONE_ROOM, mod_id=0),

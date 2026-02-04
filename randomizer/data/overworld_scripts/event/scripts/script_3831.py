@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, ["EVENT_3831_apply_tile_mod_4"]),

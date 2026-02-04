@@ -98,7 +98,7 @@ from ..data.credits.credits import update_credits
 from ..logic.setup.gating import apply_gating_settings
 from ..logic.setup.thresholds import apply_threshold_settings
 from ..logic.setup.enemy_tweaks import apply_enemy_tweaks, apply_experience_zero_settings
-from ..logic.setup.equipment_setup import apply_equipment_settings
+from ..logic.setup.equipment_setup import apply_equipment_settings, assign_spell_prize_models
 from ..logic.setup.minigames_setup import apply_minigame_settings
 from ..logic.setup.cosmetics import apply_cosmetic_settings
 from ..logic.setup.prize_locations import set_locations
@@ -838,6 +838,9 @@ class GameWorld:
 
         # Apply equipment and spell element settings
         apply_equipment_settings(self)
+
+        # Assign spell prize models based on finalized elements
+        assign_spell_prize_models(self)
 
         # Build item impact categories (used for shop shuffling and other systems)
         self._build_item_impact_categories()

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0812_SEASIDE_OCCUPIED_MUSHROOM_BOY_SHOP_SHUFFLED_NPC_ANIMATION_LOADER),

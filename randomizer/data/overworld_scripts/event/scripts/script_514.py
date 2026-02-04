@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(ROSE_TOWN_GAZ_ITEM_GRANTED, ["EVENT_514_jmp_to_event_3"]),

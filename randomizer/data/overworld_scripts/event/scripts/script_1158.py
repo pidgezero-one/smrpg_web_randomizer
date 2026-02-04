@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(SEASIDE_SHED_EMPTIED, ["EVENT_1158_remove_from_current_level_3"]),

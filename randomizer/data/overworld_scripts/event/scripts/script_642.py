@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R152_MARRYMORE_CHAPEL_MAIN_HALL, face_direction=SOUTHWEST, x=6, y=27, z=3, z_add_half_unit=True, run_entrance_event=True),

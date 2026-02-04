@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_9, R159_STAR_HILL_AREA_04, identifier="EVENT_2122_remove_from_level_0"),

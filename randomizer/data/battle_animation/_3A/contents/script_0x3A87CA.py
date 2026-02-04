@@ -1268,7 +1268,7 @@ script = AnimationScriptBlock(expected_size=7842, expected_beginning=0x3A87CA, s
 	RunSubroutine(["command_0x3A774A"]),
 	SpriteSequence(sequence=1, looping_off=True, mirror=True),
 	RunSubroutine(["command_0x3A7755"]),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0224_RED_BOMB, sequence=1, store_to_vram=True, looping=True, store_palette=True, overlap_all_sprites=True, bit_7=True),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0819_RED_BOMB, sequence=1, store_to_vram=True, looping=True, store_palette=True, overlap_all_sprites=True, bit_7=True),
 	RunSubroutine(["command_0x3A733E"]),
 	SpriteSequence(sequence=0, looping_off=True, mirror=True),
 	SpriteSequence(sequence=2, mirror=True),

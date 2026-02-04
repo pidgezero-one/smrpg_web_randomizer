@@ -5,11 +5,16 @@ import os
 from typing import TYPE_CHECKING, cast
 
 from django.contrib.gis.measure import D
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import MARIO, TOADSTOOL, BOWSER, GENO, MALLOW
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import CreatePacketAt7010, LearnSpell
+from smrpgpatchbuilder.datatypes.spells.enums import Element
 
-from randomizer.data.variables.dialog_names import DI1055_SEWER_GATING_TEXT, DI1222_SHAMAN_SALESMAN_NOT_ENOUGH_COINS, DI1223_SHAMAN_SALESMAN_400_COINS, DI1224_SHAMAN_SALESMAN_2ND_PROMPT, DI1227_SHAMAN_SALESMAN_800_COINS, DI2109_RAZ_OUTSIDE, DI2112_RAZ_OCCUPIED, DI2114_MARRYMORE_BOSS_NAMES, DI2115_MARRYMORE_SHITPOST, DI2117_MARRYMORE_SHITPOST, DI2119_MARRYMORE_SHITPOST, DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
+from ...data.variables.packet_names import P094_FIRE_SPELL_CHEST, P095_BLUE_SPELL_CHEST, P096_GREEN_SPELL_CHEST, P098_GRAY_SPELL_CHEST
+from ...progression.prizes import BowserRecruitmentPrize, GenoRecruitmentPrize, MallowRecruitmentPrize, MarioRecruitmentPrize, ToadstoolRecruitmentPrize
+from randomizer.data.variables.dialog_names import DI1055_SEWER_GATING_TEXT, DI1222_SHAMAN_SALESMAN_NOT_ENOUGH_COINS, DI1223_SHAMAN_SALESMAN_400_COINS, DI1224_SHAMAN_SALESMAN_2ND_PROMPT, DI1227_SHAMAN_SALESMAN_800_COINS, DI1947_LEARN_SPELL_1, DI2109_RAZ_OUTSIDE, DI2112_RAZ_OCCUPIED, DI2114_MARRYMORE_BOSS_NAMES, DI2115_MARRYMORE_SHITPOST, DI2117_MARRYMORE_SHITPOST, DI2119_MARRYMORE_SHITPOST, DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
 from randomizer.progression.prizelocations import BoosterTowerIndoorBossFight, FinalBossFight, MarrymoreCharacter, SeasideBeachBossFight, VolcanoExitBossFight
 from randomizer.types.flags import BowsersKeepGate, BowsersKeepGating, EXPStarsAnywhere, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
-from randomizer.types.prize import BossFightPrize, CharacterPrize
+from randomizer.types.prize import BossFightPrize, CharacterPrize, SpellPrize
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import (
     ScreenFlashWithDuration,
     AttackTimerBegins,
@@ -505,6 +510,57 @@ DI1227_SHAMAN_SALESMAN_800_COINS, ''' I found an incredible item.
  I'll sell it for 800 coins.[await]
   [select] (Buy it)
   [select] (Pass)[await]''')
+        
+    # Apply spell shuffler results to dialogs and chest packets, but use the character names and spell names as per cosmetics settings
+    for location in world.locations.values():
+        p = location.prize
+        if isinstance(p, SpellPrize):
+            idx = p.spell().index
+            spell = world.spells.spells[idx]
+            dialog_id = DI1947_LEARN_SPELL_1 + idx * 2
+            dialog_id_2 = dialog_id + 1
+            world.overworld_dialogs.search_and_replace_in_all_dialogs(f"`SPELL_{idx}`", spell.title)
+            if isinstance(p.character, MarioRecruitmentPrize):
+                character = world.allies._allies[0]
+                for c in p.character_replacement_ids:
+                    world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(MARIO)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
+            if isinstance(p.character, ToadstoolRecruitmentPrize):
+                character = world.allies._allies[1]
+                for c in p.character_replacement_ids:
+                    world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(TOADSTOOL)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
+            if isinstance(p.character, BowserRecruitmentPrize):
+                character = world.allies._allies[2]
+                for c in p.character_replacement_ids:
+                    world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(BOWSER)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
+            if isinstance(p.character, GenoRecruitmentPrize):
+                character = world.allies._allies[3]
+                for c in p.character_replacement_ids:
+                    world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(GENO)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
+            if isinstance(p.character, MallowRecruitmentPrize):
+                character = world.allies._allies[4]
+                for c in p.character_replacement_ids:
+                    world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(MALLOW)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
+                world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
+            for i in p.packet_replacement_ids:
+                if spell.element == Element.FIRE:
+                    world.event_scripts.get_command_by_identifier(i, CreatePacketAt7010).set_packet_id(P094_FIRE_SPELL_CHEST)
+                elif spell.element == Element.THUNDER:
+                    world.event_scripts.get_command_by_identifier(i, CreatePacketAt7010).set_packet_id(P097_YELLOW_SPELL_CHEST)
+                elif spell.element == Element.ICE:
+                    world.event_scripts.get_command_by_identifier(i, CreatePacketAt7010).set_packet_id(P095_BLUE_SPELL_CHEST)
+                elif spell.element == Element.JUMP:
+                    world.event_scripts.get_command_by_identifier(i, CreatePacketAt7010).set_packet_id(P096_GREEN_SPELL_CHEST)
+                else:
+                     world.event_scripts.get_command_by_identifier(i, CreatePacketAt7010).set_packet_id(P098_GRAY_SPELL_CHEST)
 
 
     

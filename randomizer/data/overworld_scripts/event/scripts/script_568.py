@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(ROSE_TOWN_WATER_PUMPERS_POSITION, ["EVENT_568_remove_from_current_level_2"]),

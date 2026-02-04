@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	PlaySoundBalance(sound=SO077_EXOTIC_BIRD_CALLS, balance=56, identifier="EVENT_2446_play_sound_balance_0"),

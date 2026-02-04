@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 50, identifier="EVENT_3333_set_var_to_const_0"),

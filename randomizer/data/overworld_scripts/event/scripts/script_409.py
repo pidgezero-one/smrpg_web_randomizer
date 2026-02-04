@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0771_MUSHROOM_KINGDOM_OCCUPIED_JUMPING_KIDS_HOUSE_2F_SHUFFLED_NPC_ANIMATION_LOADER),

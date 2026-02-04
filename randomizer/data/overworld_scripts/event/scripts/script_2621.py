@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	RunBackgroundEvent(event_id=E2620_FACTORY_3RD_ROOM_BACKGROUND_NPCS_BONK_CONVEYOR, return_on_level_exit=True),

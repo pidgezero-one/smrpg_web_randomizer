@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	CreatePacketAt7010WithEvent(packet=P012_FLOWER_STATIC, event_id=E0240_FREESTANDING_2_GRANT, destinations=["EVENT_3414_ret_1"]),

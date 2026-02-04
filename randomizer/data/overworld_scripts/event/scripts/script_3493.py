@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(MIDAS_RIVER_TUNNEL_2_BIT_2, ["EVENT_3493_fade_in_from_black_sync_2"]),

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(FACTORY_BOSS_DEFEATED, ["EVENT_2645_remove_from_current_level_3"]),

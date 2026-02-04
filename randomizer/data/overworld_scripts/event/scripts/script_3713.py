@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	SetSyncActionScript(NPC_2, A0257_NIMBUS_PINWHEEL_LEFT),

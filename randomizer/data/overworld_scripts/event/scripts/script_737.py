@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	PaletteSet(palette_set=110, row=1, bit_0=True, bit_1=True, bit_3=True),

@@ -758,11 +758,46 @@ P093_CRYSTAL_CHEST = Packet(
     unknown_bits=[False, False, False],
     unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
 )
-P094_UNUSED = None
-P095_UNUSED = None
-P096_UNUSED = None
-P097_UNUSED = None
-P098_UNUSED = None
+P094_FIRE_SPELL_CHEST = Packet(
+    packet_id=94,
+    sprite_id=SPR0214_RED_BALL,
+    shadow=False,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P095_BLUE_SPELL_CHEST = Packet(
+    packet_id=95,
+    sprite_id=SPR0215_BLUE_BALL,
+    shadow=False,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P096_GREEN_SPELL_CHEST = Packet(
+    packet_id=96,
+    sprite_id=SPR0217_GREEN_BALL,
+    shadow=False,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P097_YELLOW_SPELL_CHEST = Packet(
+    packet_id=97,
+    sprite_id=SPR0218_YELLOW_BALL,
+    shadow=False,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
+P098_GRAY_SPELL_CHEST = Packet(
+    packet_id=98,
+    sprite_id=SPR0224_GRAY_BALL,
+    shadow=False,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+    unknown_bits=[False, False, False],
+    unknown_bytes=bytearray([0x00, 0x00, 0x03, 0x03, 0x01, 0x00, 0x00]),
+)
 P099_UNUSED = None
 P100_UNUSED = None
 P101_UNUSED = None
@@ -1020,11 +1055,11 @@ ALL_PACKETS = PacketCollection(
         P091_CHEST_COIN_STILL,
         P092_GLOVE_CHEST,
         P093_CRYSTAL_CHEST,
-        P094_UNUSED,
-        P095_UNUSED,
-        P096_UNUSED,
-        P097_UNUSED,
-        P098_UNUSED,
+        P094_FIRE_SPELL_CHEST,
+        P095_BLUE_SPELL_CHEST,
+        P096_GREEN_SPELL_CHEST,
+        P097_YELLOW_SPELL_CHEST,
+        P098_GRAY_SPELL_CHEST,
         P099_UNUSED,
         P100_UNUSED,
         P101_UNUSED,

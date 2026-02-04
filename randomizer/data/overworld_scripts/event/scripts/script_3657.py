@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfDialogOptionBOrCSelected(['room_service_price_2_a', 'EVENT_3657_close_dialog_11']),

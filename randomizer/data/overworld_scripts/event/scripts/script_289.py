@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	Set7000ToCurrentLevel(identifier="EVENT_289_set_7000_to_current_level_0"),

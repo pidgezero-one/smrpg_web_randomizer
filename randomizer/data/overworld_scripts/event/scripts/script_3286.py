@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfMarioOnAnObjectOrNot(['EVENT_3286_enable_controls_until_return_6', 'EVENT_3286_enable_controls_until_return_6']),

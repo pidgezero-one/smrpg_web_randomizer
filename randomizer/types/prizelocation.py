@@ -1157,7 +1157,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
 
     def set_prize(self, prize: Prize | None):
         self._prize = prize
-
+        
     @property
     def prize(self) -> Prize | None:
         return self._prize

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
     JmpIfBitSet(NIMBUS_MISSABLE_CHECK_CLEARED, ["E3762_apply_tile_mod_to_level_0"]),

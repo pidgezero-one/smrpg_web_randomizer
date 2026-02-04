@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	SummonObjectToSpecificLevel(NPC_10, R222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS),

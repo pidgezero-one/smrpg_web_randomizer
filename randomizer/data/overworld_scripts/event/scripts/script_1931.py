@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	StartBattleAtBattlefield(PACK158_VALLEY_CHEST_FIGHT, BF21_KERO_SEWERS),

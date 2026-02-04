@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	PauseScriptIfMenuOpen(identifier="EVENT_3198_pause_script_if_menu_open_0"),

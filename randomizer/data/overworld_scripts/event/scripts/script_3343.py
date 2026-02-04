@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(VOLCANO_PENULTIMATE_ROOM_ANIMATION_COMPLETED, ["EVENT_3343_ret_7"]),

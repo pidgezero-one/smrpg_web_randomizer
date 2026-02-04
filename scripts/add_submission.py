@@ -552,6 +552,83 @@ def parse_palette_sections(body: str) -> tuple[list[int], list[int], list[int]]:
     return basic_colors, dark_colors, psn_colors
 
 
+def generate_palette_preview_for_submission(character: str, palette_class_name: str, palette_name: str) -> None:
+    """Generate a preview image for a newly submitted palette.
+
+    Args:
+        character: Character name (mario, mallow, geno, bowser, toadstool)
+        palette_class_name: Name of the palette class that was created
+        palette_name: Display name of the palette
+    """
+    from randomizer.utils.sprite_renderer import generate_ally_palette_preview
+    import importlib
+    import sys
+
+    # Sprite ID mapping
+    sprite_ids = {
+        'mario': 0,
+        'mallow': 19,
+        'geno': 25,
+        'bowser': 13,
+        'toadstool': 7,
+        'peach': 7,
+    }
+
+    if character not in sprite_ids:
+        print(f"Warning: Unknown character '{character}', skipping preview generation")
+        return
+
+    sprite_id = sprite_ids[character]
+
+    # Import the palette module to get the newly created class
+    palette_module_map = {
+        'mario': 'randomizer.data.allies.palettes.mario',
+        'mallow': 'randomizer.data.allies.palettes.mallow',
+        'geno': 'randomizer.data.allies.palettes.geno',
+        'bowser': 'randomizer.data.allies.palettes.bowser',
+        'toadstool': 'randomizer.data.allies.palettes.toadstool',
+        'peach': 'randomizer.data.allies.palettes.toadstool',
+    }
+
+    module_name = palette_module_map[character]
+
+    try:
+        # Dynamically import the module
+        # Reload the module to pick up the newly added class
+        if module_name in sys.modules:
+            module = importlib.reload(sys.modules[module_name])
+        else:
+            module = importlib.import_module(module_name)
+
+        # Get the palette class
+        palette_class = getattr(module, palette_class_name)
+
+        # Generate safe filename
+        safe_name = palette_name.lower().replace(' ', '_').replace("'", '')
+
+        # Determine output directory
+        char_output_dir = character if character != 'peach' else 'toadstool'
+        output_dir = REPO_ROOT / 'randomizer' / 'static' / 'randomizer' / 'images' / 'palette_previews' / char_output_dir
+        output_dir.mkdir(parents=True, exist_ok=True)
+        output_path = output_dir / f'{safe_name}.png'
+
+        # Generate the preview
+        generate_ally_palette_preview(
+            sprite_id=sprite_id,
+            palette_class=palette_class,
+            output_path=str(output_path),
+            mold_index=0,
+            scale=4
+        )
+
+        print(f"Generated palette preview: {output_path}")
+
+    except Exception as e:
+        print(f"Warning: Failed to generate palette preview: {e}")
+        import traceback
+        traceback.print_exc()
+
+
 def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
     """Add a character palette to the palette pool."""
     character = fields.get("Character", "").strip().lower()
@@ -664,6 +741,10 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
 
     file_path.write_text(new_content)
     print(f"Added palette: {class_name} to {filename}")
+
+    # Generate preview image for the new palette
+    print("Generating palette preview image...")
+    generate_palette_preview_for_submission(character, class_name, palette_name)
 
 
 def main():

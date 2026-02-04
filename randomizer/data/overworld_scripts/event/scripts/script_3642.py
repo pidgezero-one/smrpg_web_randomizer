@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(NIMBUS_MID_BOSS_COMPLETED, ["EVENT_3642_set_temp_action_script_3"]),

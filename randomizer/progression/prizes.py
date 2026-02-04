@@ -2167,110 +2167,488 @@ class StarPiece7(StarPiecePrize):
 
 class JumpSpellPrize(SpellPrize):
     _spell = JumpSpell
+    _chest_event_id = E0900_CHEST_SPELL_1
+    _npc_grant_event_id = E0952_NPC_SPELL_1
+    _standing_grant_event_id = E0978_FREESTANDING_SPELL_1
+    _river_grant_event_id = E1022_HILL_RIVER_SPELL_1
+    _hill_grant_event_id = E1022_HILL_RIVER_SPELL_1
+    character_replacement_ids = [
+        "spell_1_character",
+        "freestanding_spell_1_character",
+        "hill_river_spell_1_character",
+        "npc_spell_1_character"
+    ]
+    packet_replacement_ids = [
+        "spell_1_elemental_packet"
+    ]
 
 
 class FireOrbSpellPrize(SpellPrize):
     _spell = FireOrbSpell
+    _chest_event_id = E0901_CHEST_SPELL_2
+    _npc_grant_event_id = E0953_NPC_SPELL_2
+    _standing_grant_event_id = E0992_FREESTANDING_SPELL_2
+    _river_grant_event_id = E1023_HILL_RIVER_SPELL_2
+    _hill_grant_event_id = E1023_HILL_RIVER_SPELL_2
+    character_replacement_ids = [
+        "spell_2_character",
+        "freestanding_spell_2_character",
+        "hill_river_spell_2_character",
+        "npc_spell_2_character"
+    ]
+    packet_replacement_ids = [
+        "spell_2_elemental_packet"
+    ]
 
 
 class SuperJumpSpellPrize(SpellPrize):
     _spell = SuperJumpSpell
+    _chest_event_id = E0902_CHEST_SPELL_3
+    _npc_grant_event_id = E0954_NPC_SPELL_3
+    _standing_grant_event_id = E0993_FREESTANDING_SPELL_3
+    _river_grant_event_id = E1024_HILL_RIVER_SPELL_3
+    _hill_grant_event_id = E1024_HILL_RIVER_SPELL_3
+    character_replacement_ids = [
+        "spell_3_character",
+        "freestanding_spell_3_character",
+        "hill_river_spell_3_character",
+        "npc_spell_3_character"
+    ]
+    packet_replacement_ids = [
+        "spell_3_elemental_packet"
+    ]
 
 
 class SuperFlameSpellPrize(SpellPrize):
     _spell = SuperFlameSpell
+    _chest_event_id = E0903_CHEST_SPELL_4
+    _npc_grant_event_id = E0955_NPC_SPELL_4
+    _standing_grant_event_id = E0994_FREESTANDING_SPELL_4
+    _river_grant_event_id = E1025_HILL_RIVER_SPELL_4
+    _hill_grant_event_id = E1025_HILL_RIVER_SPELL_4
+    character_replacement_ids = [
+        "spell_4_character",
+        "freestanding_spell_4_character",
+        "hill_river_spell_4_character",
+        "npc_spell_4_character"
+    ]
+    packet_replacement_ids = [
+        "spell_4_elemental_packet"
+    ]
 
 
 class UltraJumpSpellPrize(SpellPrize):
     _spell = UltraJumpSpell
+    _chest_event_id = E0904_CHEST_SPELL_5
+    _npc_grant_event_id = E0956_NPC_SPELL_5
+    _standing_grant_event_id = E0995_FREESTANDING_SPELL_5
+    _river_grant_event_id = E1026_HILL_RIVER_SPELL_5
+    _hill_grant_event_id = E1026_HILL_RIVER_SPELL_5
+    character_replacement_ids = [
+        "spell_5_character",
+        "freestanding_spell_5_character",
+        "hill_river_spell_5_character",
+        "npc_spell_5_character"
+    ]
+    packet_replacement_ids = [
+        "spell_5_elemental_packet"
+    ]
 
 
 class UltraFlameSpellPrize(SpellPrize):
     _spell = UltraFlameSpell
+    _chest_event_id = E0905_CHEST_SPELL_6
+    _npc_grant_event_id = E0957_NPC_SPELL_6
+    _standing_grant_event_id = E0996_FREESTANDING_SPELL_6
+    _river_grant_event_id = E1027_HILL_RIVER_SPELL_6
+    _hill_grant_event_id = E1027_HILL_RIVER_SPELL_6
+    character_replacement_ids = [
+        "spell_6_character",
+        "freestanding_spell_6_character",
+        "hill_river_spell_6_character",
+        "npc_spell_6_character"
+    ]
+    packet_replacement_ids = [
+        "spell_6_elemental_packet"
+    ]
 
 
 class ThunderboltSpellPrize(SpellPrize):
     _spell = ThunderboltSpell
+    _chest_event_id = E0906_CHEST_SPELL_7
+    _npc_grant_event_id = E0958_NPC_SPELL_7
+    _standing_grant_event_id = E0997_FREESTANDING_SPELL_7
+    _river_grant_event_id = E1028_HILL_RIVER_SPELL_7
+    _hill_grant_event_id = E1028_HILL_RIVER_SPELL_7
+    character_replacement_ids = [
+        "spell_7_character",
+        "freestanding_spell_7_character",
+        "hill_river_spell_7_character",
+        "npc_spell_7_character"
+    ]
+    packet_replacement_ids = [
+        "spell_7_elemental_packet"
+    ]
 
 
 class HPRainSpellPrize(SpellPrize):
     _spell = HPRainSpell
+    _chest_event_id = E0907_CHEST_SPELL_8
+    _npc_grant_event_id = E0959_NPC_SPELL_8
+    _standing_grant_event_id = E0999_FREESTANDING_SPELL_8
+    _river_grant_event_id = E1029_HILL_RIVER_SPELL_8
+    _hill_grant_event_id = E1029_HILL_RIVER_SPELL_8
+    character_replacement_ids = [
+        "spell_8_character",
+        "freestanding_spell_8_character",
+        "hill_river_spell_8_character",
+        "npc_spell_8_character"
+    ]
+    packet_replacement_ids = [
+        "spell_8_elemental_packet"
+    ]
 
 
 class PsychopathSpellPrize(SpellPrize):
     _spell = PsychopathSpell
+    _chest_event_id = E0908_CHEST_SPELL_9
+    _npc_grant_event_id = E0960_NPC_SPELL_9
+    _standing_grant_event_id = E1000_FREESTANDING_SPELL_9
+    _river_grant_event_id = E1030_HILL_RIVER_SPELL_9
+    _hill_grant_event_id = E1030_HILL_RIVER_SPELL_9
+    character_replacement_ids = [
+        "spell_9_character",
+        "freestanding_spell_9_character",
+        "hill_river_spell_9_character",
+        "npc_spell_9_character"
+    ]
+    packet_replacement_ids = [
+        "spell_9_elemental_packet"
+    ]
 
 
 class ShockerSpellPrize(SpellPrize):
     _spell = ShockerSpell
+    _chest_event_id = E0909_CHEST_SPELL_10
+    _npc_grant_event_id = E0961_NPC_SPELL_10
+    _standing_grant_event_id = E1001_FREESTANDING_SPELL_10
+    _river_grant_event_id = E1031_HILL_RIVER_SPELL_10
+    _hill_grant_event_id = E1031_HILL_RIVER_SPELL_10
+    character_replacement_ids = [
+        "spell_10_character",
+        "freestanding_spell_10_character",
+        "hill_river_spell_10_character",
+        "npc_spell_10_character"
+    ]
+    packet_replacement_ids = [
+        "spell_10_elemental_packet"
+    ]
 
 
 class SnowyPrize(SpellPrize):
     _spell = SnowySpell
+    _chest_event_id = E0910_CHEST_SPELL_11
+    _npc_grant_event_id = E0962_NPC_SPELL_11
+    _standing_grant_event_id = E1002_FREESTANDING_SPELL_11
+    _river_grant_event_id = E1032_HILL_RIVER_SPELL_11
+    _hill_grant_event_id = E1032_HILL_RIVER_SPELL_11
+    character_replacement_ids = [
+        "spell_11_character",
+        "freestanding_spell_11_character",
+        "hill_river_spell_11_character",
+        "npc_spell_11_character"
+    ]
+    packet_replacement_ids = [
+        "spell_11_elemental_packet"
+    ]
 
 
 class StarRainSpellPrize(SpellPrize):
     _spell = StarRainSpell
+    _chest_event_id = E0911_CHEST_SPELL_12
+    _npc_grant_event_id = E0963_NPC_SPELL_12
+    _standing_grant_event_id = E1003_FREESTANDING_SPELL_12
+    _river_grant_event_id = E1033_HILL_RIVER_SPELL_12
+    _hill_grant_event_id = E1033_HILL_RIVER_SPELL_12
+    character_replacement_ids = [
+        "spell_12_character",
+        "freestanding_spell_12_character",
+        "hill_river_spell_12_character",
+        "npc_spell_12_character"
+    ]
+    packet_replacement_ids = [
+        "spell_12_elemental_packet"
+    ]
 
 
 class GenoBeamSpellPrize(SpellPrize):
     _spell = GenoBeamSpell
+    _chest_event_id = E0912_CHEST_SPELL_13
+    _npc_grant_event_id = E0964_NPC_SPELL_13
+    _standing_grant_event_id = E1004_FREESTANDING_SPELL_13
+    _river_grant_event_id = E1034_HILL_RIVER_SPELL_13
+    _hill_grant_event_id = E1034_HILL_RIVER_SPELL_13
+    character_replacement_ids = [
+        "spell_13_character",
+        "freestanding_spell_13_character",
+        "hill_river_spell_13_character",
+        "npc_spell_13_character"
+    ]
+    packet_replacement_ids = [
+        "spell_13_elemental_packet"
+    ]
 
 
 class GenoBoostSpellPrize(SpellPrize):
     _spell = GenoBoostSpell
+    _chest_event_id = E0913_CHEST_SPELL_14
+    _npc_grant_event_id = E0965_NPC_SPELL_14
+    _standing_grant_event_id = E1005_FREESTANDING_SPELL_14
+    _river_grant_event_id = E1035_HILL_RIVER_SPELL_14
+    _hill_grant_event_id = E1035_HILL_RIVER_SPELL_14
+    character_replacement_ids = [
+        "spell_14_character",
+        "freestanding_spell_14_character",
+        "hill_river_spell_14_character",
+        "npc_spell_14_character"
+    ]
+    packet_replacement_ids = [
+        "spell_14_elemental_packet"
+    ]
 
 
 class GenoWhirlSpellPrize(SpellPrize):
     _spell = GenoWhirlSpell
+    _chest_event_id = E0914_CHEST_SPELL_15
+    _npc_grant_event_id = E1048_NPC_SPELL_15
+    _standing_grant_event_id = E1049_FREESTANDING_SPELL_15
+    _river_grant_event_id = E1050_HILL_RIVER_SPELL_15
+    _hill_grant_event_id = E1050_HILL_RIVER_SPELL_15
+    character_replacement_ids = [
+        "spell_15_character",
+        "freestanding_spell_15_character",
+        "hill_river_spell_15_character",
+        "npc_spell_15_character"
+    ]
+    packet_replacement_ids = [
+        "spell_15_elemental_packet"
+    ]
 
 
 class GenoBlastSpellPrize(SpellPrize):
     _spell = GenoBlastSpell
+    _chest_event_id = E0915_CHEST_SPELL_16
+    _npc_grant_event_id = E0966_NPC_SPELL_16
+    _standing_grant_event_id = E1006_FREESTANDING_SPELL_16
+    _river_grant_event_id = E1036_HILL_RIVER_SPELL_16
+    _hill_grant_event_id = E1036_HILL_RIVER_SPELL_16
+    character_replacement_ids = [
+        "spell_16_character",
+        "freestanding_spell_16_character",
+        "hill_river_spell_16_character",
+        "npc_spell_16_character"
+    ]
+    packet_replacement_ids = [
+        "spell_16_elemental_packet"
+    ]
 
 
 class GenoFlashSpellPrize(SpellPrize):
     _spell = GenoFlashSpell
+    _chest_event_id = E0916_CHEST_SPELL_17
+    _npc_grant_event_id = E0967_NPC_SPELL_17
+    _standing_grant_event_id = E1007_FREESTANDING_SPELL_17
+    _river_grant_event_id = E1037_HILL_RIVER_SPELL_17
+    _hill_grant_event_id = E1037_HILL_RIVER_SPELL_17
+    character_replacement_ids = [
+        "spell_17_character",
+        "freestanding_spell_17_character",
+        "hill_river_spell_17_character",
+        "npc_spell_17_character"
+    ]
+    packet_replacement_ids = [
+        "spell_17_elemental_packet"
+    ]
 
 
 class TerrorizeSpellPrize(SpellPrize):
     _spell = TerrorizeSpell
+    _chest_event_id = E0918_CHEST_SPELL_18
+    _npc_grant_event_id = E0968_NPC_SPELL_18
+    _standing_grant_event_id = E1012_FREESTANDING_SPELL_18
+    _river_grant_event_id = E1038_HILL_RIVER_SPELL_18
+    _hill_grant_event_id = E1038_HILL_RIVER_SPELL_18
+    character_replacement_ids = [
+        "spell_18_character",
+        "freestanding_spell_18_character",
+        "hill_river_spell_18_character",
+        "npc_spell_18_character"
+    ]
+    packet_replacement_ids = [
+        "spell_18_elemental_packet"
+    ]
 
 
 class PoisonGasSpellPrize(SpellPrize):
     _spell = PoisonGasSpell
+    _chest_event_id = E0919_CHEST_SPELL_19
+    _npc_grant_event_id = E0969_NPC_SPELL_19
+    _standing_grant_event_id = E1013_FREESTANDING_SPELL_19
+    _river_grant_event_id = E1039_HILL_RIVER_SPELL_19
+    _hill_grant_event_id = E1039_HILL_RIVER_SPELL_19
+    character_replacement_ids = [
+        "spell_19_character",
+        "freestanding_spell_19_character",
+        "hill_river_spell_19_character",
+        "npc_spell_19_character"
+    ]
+    packet_replacement_ids = [
+        "spell_19_elemental_packet"
+    ]
 
 
 class CrusherSpellPrize(SpellPrize):
     _spell = CrusherSpell
+    _chest_event_id = E0920_CHEST_SPELL_20
+    _npc_grant_event_id = E0970_NPC_SPELL_20
+    _standing_grant_event_id = E1014_FREESTANDING_SPELL_20
+    _river_grant_event_id = E1040_HILL_RIVER_SPELL_20
+    _hill_grant_event_id = E1040_HILL_RIVER_SPELL_20
+    character_replacement_ids = [
+        "spell_20_character",
+        "freestanding_spell_20_character",
+        "hill_river_spell_20_character",
+        "npc_spell_20_character"
+    ]
+    packet_replacement_ids = [
+        "spell_20_elemental_packet"
+    ]
 
 
 class BowserCrushSpellPrize(SpellPrize):
     _spell = BowserCrushSpell
+    _chest_event_id = E0921_CHEST_SPELL_21
+    _npc_grant_event_id = E0971_NPC_SPELL_21
+    _standing_grant_event_id = E1015_FREESTANDING_SPELL_21
+    _river_grant_event_id = E1041_HILL_RIVER_SPELL_21
+    _hill_grant_event_id = E1041_HILL_RIVER_SPELL_21
+    character_replacement_ids = [
+        "spell_21_character",
+        "freestanding_spell_21_character",
+        "hill_river_spell_21_character",
+        "npc_spell_21_character"
+    ]
+    packet_replacement_ids = [
+        "spell_21_elemental_packet"
+    ]
 
 
 class TherapySpellPrize(SpellPrize):
     _spell = TherapySpell
+    _chest_event_id = E0922_CHEST_SPELL_22
+    _npc_grant_event_id = E0972_NPC_SPELL_22
+    _standing_grant_event_id = E1016_FREESTANDING_SPELL_22
+    _river_grant_event_id = E1042_HILL_RIVER_SPELL_22
+    _hill_grant_event_id = E1042_HILL_RIVER_SPELL_22
+    character_replacement_ids = [
+        "spell_22_character",
+        "freestanding_spell_22_character",
+        "hill_river_spell_22_character",
+        "npc_spell_22_character"
+    ]
+    packet_replacement_ids = [
+        "spell_22_elemental_packet"
+    ]
 
 
 class GroupHugSpellPrize(SpellPrize):
     _spell = GroupHugSpell
+    _chest_event_id = E0923_CHEST_SPELL_23
+    _npc_grant_event_id = E0973_NPC_SPELL_23
+    _standing_grant_event_id = E1017_FREESTANDING_SPELL_23
+    _river_grant_event_id = E1043_HILL_RIVER_SPELL_23
+    _hill_grant_event_id = E1043_HILL_RIVER_SPELL_23
+    character_replacement_ids = [
+        "spell_23_character",
+        "freestanding_spell_23_character",
+        "hill_river_spell_23_character",
+        "npc_spell_23_character"
+    ]
+    packet_replacement_ids = [
+        "spell_23_elemental_packet"
+    ]
 
 
 class MuteSpellPrize(SpellPrize):
     _spell = MuteSpell
+    _chest_event_id = E0924_CHEST_SPELL_24
+    _npc_grant_event_id = E0974_NPC_SPELL_24
+    _standing_grant_event_id = E1018_FREESTANDING_SPELL_24
+    _river_grant_event_id = E1044_HILL_RIVER_SPELL_24
+    _hill_grant_event_id = E1044_HILL_RIVER_SPELL_24
+    character_replacement_ids = [
+        "spell_24_character",
+        "freestanding_spell_24_character",
+        "hill_river_spell_24_character",
+        "npc_spell_24_character"
+    ]
+    packet_replacement_ids = [
+        "spell_24_elemental_packet"
+    ]
 
 
 class SleepyTimeSpellPrize(SpellPrize):
     _spell = SleepyTimeSpell
+    _chest_event_id = E0925_CHEST_SPELL_25
+    _npc_grant_event_id = E0975_NPC_SPELL_25
+    _standing_grant_event_id = E1019_FREESTANDING_SPELL_25
+    _river_grant_event_id = E1045_HILL_RIVER_SPELL_25
+    _hill_grant_event_id = E1045_HILL_RIVER_SPELL_25
+    character_replacement_ids = [
+        "spell_25_character",
+        "freestanding_spell_25_character",
+        "hill_river_spell_25_character",
+        "npc_spell_25_character"
+    ]
+    packet_replacement_ids = [
+        "spell_25_elemental_packet"
+    ]
 
 
 class ComeBackSpellPrize(SpellPrize):
     _spell = ComeBackSpell
+    _chest_event_id = E0926_CHEST_SPELL_26
+    _npc_grant_event_id = E0976_NPC_SPELL_26
+    _standing_grant_event_id = E1020_FREESTANDING_SPELL_26
+    _river_grant_event_id = E1046_HILL_RIVER_SPELL_26
+    _hill_grant_event_id = E1046_HILL_RIVER_SPELL_26
+    character_replacement_ids = [
+        "spell_26_character",
+        "freestanding_spell_26_character",
+        "hill_river_spell_26_character",
+        "npc_spell_26_character"
+    ]
+    packet_replacement_ids = [
+        "spell_26_elemental_packet"
+    ]
 
 
 class PsychBombSpellPrize(SpellPrize):
     _spell = PsychBombSpell
+    _chest_event_id = E0927_CHEST_SPELL_27
+    _npc_grant_event_id = E0977_NPC_SPELL_27
+    _standing_grant_event_id = E1021_FREESTANDING_SPELL_27
+    _river_grant_event_id = E1047_HILL_RIVER_SPELL_27
+    _hill_grant_event_id = E1047_HILL_RIVER_SPELL_27
+    character_replacement_ids = [
+        "spell_27_character",
+        "freestanding_spell_27_character",
+        "hill_river_spell_27_character",
+        "npc_spell_27_character"
+    ]
+    packet_replacement_ids = [
+        "spell_27_elemental_packet"
+    ]
 
 
 # Characters

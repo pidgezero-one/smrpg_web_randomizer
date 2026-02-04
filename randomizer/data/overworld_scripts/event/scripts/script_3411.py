@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfVarNotEqualsConst(SECONDARY_TEMP_7024, 4, ["EVENT_3411_jmp_if_var_not_equals_const_2"]),

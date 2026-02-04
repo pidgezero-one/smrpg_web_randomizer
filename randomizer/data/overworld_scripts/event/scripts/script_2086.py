@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["EVENT_2086_run_dialog_3"]),

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM, mod_id=32),

@@ -29,6 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
+from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM, face_direction=SOUTHWEST, x=3, y=121, z=3, run_entrance_event=True),
