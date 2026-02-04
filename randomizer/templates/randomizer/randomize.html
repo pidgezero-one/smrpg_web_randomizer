@@ -1003,6 +1003,30 @@
             // Initialize palette previews on page load
             updateAllPreviews();
 
+            // Use MutationObserver to watch for browser form restoration
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'value') {
+                        updatePalettePreview(mutation.target);
+                    }
+                });
+            });
+
+            // Observe all palette selectors for value changes
+            $('.palette-selector').each(function() {
+                observer.observe(this, { attributes: true, attributeFilter: ['value'] });
+            });
+
+            // Also poll for changes for the first second (catches browser form restoration)
+            let pollCount = 0;
+            const pollInterval = setInterval(function() {
+                updateAllPreviews();
+                pollCount++;
+                if (pollCount >= 10) { // Stop after 1 second (10 * 100ms)
+                    clearInterval(pollInterval);
+                }
+            }, 100);
+
             // Update preview when selection changes
             $(document).on('change', '.palette-selector', function() {
                 updatePalettePreview(this);
@@ -1010,7 +1034,6 @@
 
             // Handle browser form restoration (back button, etc.)
             $(window).on('pageshow', function(event) {
-                // Update previews when page is shown (including from bfcache)
                 updateAllPreviews();
             });
 
