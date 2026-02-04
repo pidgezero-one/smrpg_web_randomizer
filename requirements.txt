@@ -7,6 +7,7 @@ pytest==8.3.5
 PyYAML==6.0.2
 scipy
 Wii.py==0.1
+pycryptodome==3.21.0
 smrpgpatchbuilder==1.2.4
 git+https://gitlab.com/pidgezero_one/python-bps.git@0.1#egg=python-bps
 gunicorn==23.0.0
