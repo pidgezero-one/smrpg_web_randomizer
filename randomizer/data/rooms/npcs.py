@@ -320,6 +320,8 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte6_bit2=False,
 )
 
+# Vram size 1 is required for forest.
+# Consider making other npcs with bigger vram size if he causes trouble elsewhere.
 BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
     sprite_id=SPR0013_BOWSER_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_BIG,
@@ -329,7 +331,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
     y_shift=-2,
     show_shadow=True,
     directions=VramStore.DIR0_SWSE_NWNE,
-    min_vram_size=2,
+    min_vram_size=1,
     priority_0=False,
     priority_1=False,
     priority_2=True,
@@ -4088,7 +4090,7 @@ SPIKEY_NPC = NPC(
 
 GOOMBA_NPC_3 = NPC(
     sprite_id=SPR0262_GOOMBA,
-    shadow_size=ShadowSize.OVAL_MED,
+    shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
     height=10,
@@ -10716,6 +10718,30 @@ WATER_CRYSTAL_GRIDPLANE_NPC = NPC(
     obtuse_axis=5,
     height=12,
     y_shift=0,
+    show_shadow=True,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
+CHOMPWEED_NPC = NPC(
+    sprite_id=SPR0685_CHOMPWEED,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=3,
+    obtuse_axis=3,
+    height=6,
+    y_shift=1,
     show_shadow=True,
     directions=VramStore.DIR2_SWSE,
     min_vram_size=0,

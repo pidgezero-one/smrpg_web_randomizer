@@ -49,19 +49,23 @@ Mushroom kingdom
 Kero sewers
 - kero sewers is not blocked when it should be
 
+Tadpole Pond
+🚧 add booster hill to hint system. BOOSTER_HILL_FLOWER_COUNTER < 15, only when hill available
+
 Rose way
 - palettes in rose way still broken
 
 Forest maze 
-- uderground rooms are fucked up. how the hell to get partition to work?
-- Might be able to figure out how that works. Wiggler overwriting chests. Which NPC slot is he in and why is he overwriting the top buffer? Packets also do that.
+🚧 uderground rooms are fucked up. how the hell to get partition to work?
+🚧 Might be able to figure out how that works. Wiggler overwriting chests. Which NPC slot is he in and why is he overwriting the top buffer? Packets also do that.
 - buzzer's default attack sound effect is wrong somehow
-- Look at v8 and see what the partitions look like when Bowser is the character, will need to fix up the maze section.
+🚧 Look at v8 and see what the partitions look like when Bowser is the character, will need to fix up the maze section.
 
 Pipe vault
-- chompweeds don't render
+- when blocked, no brick or note show up
+🚧 chompweeds don't render
 - chest in chompweed room doesnt open
-- goombas in pipe vault can't face northeast, dont animate
+🚧 goombas in pipe vault can't face northeast, dont animate
 - safety ring replacing frog coin in pipe vault has no sprite
 
 Yoster

@@ -741,19 +741,12 @@ def shuffle_prizes(world: GameWorld) -> None:
             if spell_class not in disabled_spell_classes
         ]
 
-        # Check if all 5 characters are available
+        # Calculate how many characters are available (for spell slot count)
         available_chars_flag = world.settings.get_flag(AvailableCharacters)
         charcount = min(
             len(available_chars_flag.enabled),
             world.settings.get_flag(MaxCharacters).value,
         )
-        all_chars_available = charcount == 5
-        extra_spells = []
-
-        # If all 5 characters are present, double 3 random spells
-        if all_chars_available and len(enabled_spell_prizes) >= 3:
-            spells_to_double = random.sample(enabled_spell_prizes, 3)
-            extra_spells = [c() for c in spells_to_double]
 
         # Add all enabled spells to the pool
         # One Mokura-compliant spell goes to low-vol (required for Mokura fight)
@@ -782,7 +775,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         remaining_spell_pool = [
             p()
             for p in enabled_spell_prizes
-            if p not in [type(q) for q in must_include] + extra_spells
+            if p not in [type(q) for q in must_include]
             and not is_debug_placed(p)
         ]
 

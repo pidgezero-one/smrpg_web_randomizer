@@ -76,7 +76,7 @@ script = EventScript([
 	ReturnAll(),
 	RunDialog(dialog_id=DI2752_FROGFUCIUS_TEMPLE_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_991_run_dialog_42"),
 	ReturnAll(),
-	RunDialog(dialog_id=DI2753_FROGFUCIUS_BOOSTER_HILL_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI2753_FROGFUCIUS_BOOSTER_HILL_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_991_run_dialog_44"),
 	ReturnAll(),
 	RunDialog(dialog_id=DI2754_FROGFUCIUS_VOLCANO_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_991_run_dialog_46"),
 	ReturnAll(),
