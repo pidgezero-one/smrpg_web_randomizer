@@ -9,7 +9,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import MARIO, TOADS
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import CreatePacketAt7010, LearnSpell
 from smrpgpatchbuilder.datatypes.spells.enums import Element
 
-from ...data.variables.packet_names import P094_FIRE_SPELL_CHEST, P095_BLUE_SPELL_CHEST, P096_GREEN_SPELL_CHEST, P098_GRAY_SPELL_CHEST
+from ...data.packets import P094_FIRE_SPELL_CHEST, P095_BLUE_SPELL_CHEST, P096_GREEN_SPELL_CHEST, P098_GRAY_SPELL_CHEST, P097_YELLOW_SPELL_CHEST
 from ...progression.prizes import BowserRecruitmentPrize, GenoRecruitmentPrize, MallowRecruitmentPrize, MarioRecruitmentPrize, ToadstoolRecruitmentPrize
 from randomizer.data.variables.dialog_names import DI1055_SEWER_GATING_TEXT, DI1222_SHAMAN_SALESMAN_NOT_ENOUGH_COINS, DI1223_SHAMAN_SALESMAN_400_COINS, DI1224_SHAMAN_SALESMAN_2ND_PROMPT, DI1227_SHAMAN_SALESMAN_800_COINS, DI1947_LEARN_SPELL_1, DI2109_RAZ_OUTSIDE, DI2112_RAZ_OCCUPIED, DI2114_MARRYMORE_BOSS_NAMES, DI2115_MARRYMORE_SHITPOST, DI2117_MARRYMORE_SHITPOST, DI2119_MARRYMORE_SHITPOST, DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
 from randomizer.progression.prizelocations import BoosterTowerIndoorBossFight, FinalBossFight, MarrymoreCharacter, SeasideBeachBossFight, VolcanoExitBossFight

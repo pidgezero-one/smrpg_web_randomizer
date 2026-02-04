@@ -96,13 +96,14 @@ class Command(BaseCommand):
 
             # Generate preview for each palette
             for palette_class in palette_classes:
-                # Skip "Default" and "Random" palettes as requested
-                if palette_class.name in ['Default', 'Random']:
+                # Skip "Default" and "Random" palettes, and base palette classes with no ID
+                if palette_class.name in ['Default', 'Random'] or palette_class.id is None:
                     continue
 
-                # Generate safe filename from palette name
-                safe_name = palette_class.name.lower().replace(' ', '_').replace("'", '')
-                output_path = char_output_dir / f'{safe_name}.png'
+                # Generate safe filename from palette ID (unique enum value)
+                # Use ID instead of name since names don't have to be unique
+                safe_id = str(palette_class.id).lower().replace(' ', '_').replace("'", '')
+                output_path = char_output_dir / f'{safe_id}.png'
 
                 try:
                     generate_ally_palette_preview(

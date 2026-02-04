@@ -973,7 +973,6 @@
 
                 const selectedOption = $select.find('option:selected');
                 const paletteName = selectedOption.data('palette-name');
-                const paletteId = selectedOption.data('palette-id');
 
                 // Extract character from the select element's ID (format: "R.mariopalette")
                 const selectId = $select.attr('id');
@@ -981,9 +980,10 @@
                 const characterDir = flagId ? characterMapping[flagId] : null;
 
                 // Show preview for all palettes if character mapping exists
-                if (paletteId && characterDir) {
-                    // Use the palette ID directly as the filename
-                    const imagePath = `/static/randomizer/images/palette_previews/${characterDir}/${paletteId}.png`;
+                if (paletteName && characterDir) {
+                    // Convert palette name (enum value like "Fire Luigi") to filename
+                    const filename = paletteName.toLowerCase().replace(/ /g, '_').replace(/'/g, '');
+                    const imagePath = `/static/randomizer/images/palette_previews/${characterDir}/${filename}.png`;
 
                     $img.attr('src', imagePath);
                     $img.attr('alt', `${paletteName} Preview`);
@@ -993,14 +993,25 @@
                 }
             }
 
+            // Function to update all palette previews
+            function updateAllPreviews() {
+                $('.palette-selector').each(function() {
+                    updatePalettePreview(this);
+                });
+            }
+
             // Initialize palette previews on page load
-            $('.palette-selector').each(function() {
-                updatePalettePreview(this);
-            });
+            updateAllPreviews();
 
             // Update preview when selection changes
             $(document).on('change', '.palette-selector', function() {
                 updatePalettePreview(this);
+            });
+
+            // Handle browser form restoration (back button, etc.)
+            $(window).on('pageshow', function(event) {
+                // Update previews when page is shown (including from bfcache)
+                updateAllPreviews();
             });
 
         });

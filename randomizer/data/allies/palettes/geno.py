@@ -285,7 +285,7 @@ class GenoLink(GenoPalette):
     author = "PIDGEZERO_ONE"
 
 
-class GenoVlados(GenoPalette):
+class GenoVlador(GenoPalette):
     colours = [
         0xF8E0E0,
         0xB0B0B0,
@@ -337,7 +337,7 @@ class GenoVlados(GenoPalette):
         0x343465,
         0x0C0C3E,
     ]
-    id = GenoPaletteOptions.VLADOS
+    id = GenoPaletteOptions.VLADOR
     name = "Vlador"
     author = "HERRSHAUN"
 
@@ -640,7 +640,7 @@ all_palettes: list[GenoPalette] = [
     GenoMagikoopa(),
     GenoMagikoopaRed(),
     GenoLink(),
-    GenoVlados(),
+    GenoVlador(),
     GenoLight(),
     GenoPurple(),
     GenoGrey(),

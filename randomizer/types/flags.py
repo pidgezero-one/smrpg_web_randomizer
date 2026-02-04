@@ -2219,7 +2219,7 @@ class GenoPaletteOptions(CategorizationOption):
     MAGIKOOPA = "Magikoopa"
     MAGIKOOPARED = "Magikoopa Red"
     LINK = "Zelda"
-    VLADOS = "Vlados"
+    VLADOR = "Vlador"
     LIGHT = "Light"
     PURPLE = "Purple"
     GREY = "Grey"

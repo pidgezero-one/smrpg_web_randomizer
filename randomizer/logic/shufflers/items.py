@@ -3,9 +3,8 @@
 from __future__ import annotations
 import random
 from copy import copy
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
-from randomizer.data.variables.room_names import R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE
 from randomizer.types.prizelocation import StandingLocation, TreasureShopLocation
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     NPC_2, NPC_3, NPC_4, NPC_5, NPC_6, NPC_7,
@@ -867,7 +866,7 @@ def shuffle_prizes(world: GameWorld) -> None:
                     available_spells_flag = world.settings.get_flag(AvailableSpells)
                     disabled_spell_classes = {m.value for m in available_spells_flag.disabled}
                     # Check if this spell's class is disabled
-                    if spell_prize._spell not in disabled_spell_classes:
+                    if cast(SpellPrize, spell_prize).spell not in disabled_spell_classes:
                         loc.set_prize(spell_prize)
                     # else: leave location empty (spell is excluded)
             continue  # Always continue - spells handled here or in CharacterLearnedSpells block above
