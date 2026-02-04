@@ -26,7 +26,7 @@ if TYPE_CHECKING:
 def _on_item_placed(
     world: GameWorld, item: Prize, placed_location: PrizeLocation
 ) -> None:
-    """Callback to handle Mimic world area updates after placement."""
+    """Callback to handle placement events like Mimic world area updates and spell count tracking."""
     from ...progression.prizelocations import (
         Mimic1BossFight,
         Mimic1DropRewardLocation,
@@ -44,7 +44,18 @@ def _on_item_placed(
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
     )
-    #print(f"Placed {type(item).__name__} at {type(placed_location).__name__}")
+    from ...types.flags import SpellsAnywhere
+    from ...types.prize import SpellPrize
+
+    # Update spell assignment count when a spell is actually placed
+    # (the character was assigned in can_accept, but count is tracked here)
+    if isinstance(item, SpellPrize) and world.settings.isflag_enabled(SpellsAnywhere):
+        if item.character is not None:
+            if world._spell_assignments is None:
+                world._spell_assignments = {}
+            char_type = item.character
+            world._spell_assignments[char_type] = world._spell_assignments.get(char_type, 0) + 1
+            print(f"    → {type(item).__name__} assigned to {char_type.__name__} (now has {world._spell_assignments[char_type]} spells)")
 
     # Update Mimic location world areas to match where the launcher was placed
     if isinstance(item, FirstMimicFightLauncher):
@@ -322,6 +333,9 @@ def shuffle_prizes(world: GameWorld) -> None:
     for loc in world.locations.values():
         loc.set_prize(None)
     print(f"✓ All locations emptied")
+
+    # Reset spell assignments for SpellsAnywhere mode (handles retry scenarios)
+    world._spell_assignments = None
 
     # Apply debug overrides first (hard-set locations before shuffle)
     # Track which prize TYPES were placed via override (to avoid double-placing characters/spells/etc.)
@@ -1051,136 +1065,16 @@ def shuffle_prizes(world: GameWorld) -> None:
     for p in not_important:
         print(f"  {type(p).__name__}") """
 
-    # Assign characters to spells when SpellsAnywhere is enabled
+    # SpellsAnywhere mode: spells will be dynamically assigned to characters at placement time
+    # No pre-assignment needed - the _on_item_placed callback handles character assignment
     if world.settings.isflag_enabled(SpellsAnywhere):
-        # Collect all spell prizes from ALL prize lists (not just must_include)
-        # Some spells are in low_vol_other_prizes (Mokura spell, Super Jump)
-        spell_prizes = []
+        # Count spell prizes for logging
+        spell_count = 0
         for prize_list in [progression_prizes, low_vol_other_prizes, high_vol_other_prizes,
                           must_include, post_progression_priority]:
-            spell_prizes.extend([p for p in prize_list if isinstance(p, SpellPrize)])
-
-        if spell_prizes:
-            # Collect all included character prize types
-            # These are the characters that were placed or added to progression pools
-            included_character_types: set[type[CharacterPrize]] = set()
-
-            # Get characters from starting locations
-            for start_loc_cls in [
-                StartingCharacter1,
-                StartingCharacter2,
-                StartingCharacter3,
-                StartingCharacter4,
-                StartingCharacter5,
-            ]:
-                loc = world.locations.get(start_loc_cls)
-                if loc and loc.has_item and isinstance(loc.prize, CharacterPrize):
-                    included_character_types.add(type(loc.prize))
-
-            # Get characters from progression pools
-            for prize in high_vol_character_prizes + low_vol_character_prizes:
-                if isinstance(prize, CharacterPrize):
-                    included_character_types.add(type(prize))
-
-            # Convert to sorted list for deterministic ordering
-            character_types = sorted(list(included_character_types), key=lambda x: x.__name__)
-
-            # Check if CharacterLearnedSpells is disabled
-            # If so, use vanilla character assignments instead of random
-            if not world.settings.isflag_enabled(CharacterLearnedSpells):
-                print(f"  Using vanilla spell-to-character assignments (CharacterLearnedSpells disabled)")
-                # Define vanilla spell-to-character mappings
-                vanilla_spell_assignments = {
-                    # Mario spells
-                    JumpSpellPrize: MarioRecruitmentPrize,
-                    FireOrbSpellPrize: MarioRecruitmentPrize,
-                    SuperJumpSpellPrize: MarioRecruitmentPrize,
-                    SuperFlameSpellPrize: MarioRecruitmentPrize,
-                    UltraJumpSpellPrize: MarioRecruitmentPrize,
-                    UltraFlameSpellPrize: MarioRecruitmentPrize,
-                    # Mallow spells
-                    ThunderboltSpellPrize: MallowRecruitmentPrize,
-                    HPRainSpellPrize: MallowRecruitmentPrize,
-                    PsychopathSpellPrize: MallowRecruitmentPrize,
-                    ShockerSpellPrize: MallowRecruitmentPrize,
-                    SnowyPrize: MallowRecruitmentPrize,
-                    StarRainSpellPrize: MallowRecruitmentPrize,
-                    # Geno spells
-                    GenoBeamSpellPrize: GenoRecruitmentPrize,
-                    GenoBoostSpellPrize: GenoRecruitmentPrize,
-                    GenoWhirlSpellPrize: GenoRecruitmentPrize,
-                    GenoBlastSpellPrize: GenoRecruitmentPrize,
-                    GenoFlashSpellPrize: GenoRecruitmentPrize,
-                    # Bowser spells
-                    TerrorizeSpellPrize: BowserRecruitmentPrize,
-                    PoisonGasSpellPrize: BowserRecruitmentPrize,
-                    CrusherSpellPrize: BowserRecruitmentPrize,
-                    BowserCrushSpellPrize: BowserRecruitmentPrize,
-                    # Toadstool spells
-                    TherapySpellPrize: ToadstoolRecruitmentPrize,
-                    GroupHugSpellPrize: ToadstoolRecruitmentPrize,
-                    SleepyTimeSpellPrize: ToadstoolRecruitmentPrize,
-                    ComeBackSpellPrize: ToadstoolRecruitmentPrize,
-                    MuteSpellPrize: ToadstoolRecruitmentPrize,
-                    PsychBombSpellPrize: ToadstoolRecruitmentPrize,
-                }
-
-                # Filter and assign spells based on vanilla assignments
-                spells_to_remove = []
-                char_spell_counts = {}
-                for spell_prize in spell_prizes:
-                    spell_type = type(spell_prize)
-                    if spell_type in vanilla_spell_assignments:
-                        vanilla_char = vanilla_spell_assignments[spell_type]
-                        # Only include spell if its vanilla character is in the seed
-                        if vanilla_char in included_character_types:
-                            spell_prize._character = vanilla_char
-                            # Track counts for logging
-                            char_spell_counts[vanilla_char] = char_spell_counts.get(vanilla_char, 0) + 1
-                        else:
-                            # Character not available, remove spell from pool
-                            spells_to_remove.append(spell_prize)
-
-                # Log spell assignments per character
-                if char_spell_counts:
-                    print(f"  Spell assignments by character:")
-                    for char, count in sorted(char_spell_counts.items(), key=lambda x: x[0].__name__):
-                        print(f"    {char.__name__}: {count} spell(s)")
-
-                # Remove spells whose characters aren't available
-                if spells_to_remove:
-                    print(f"  Removing {len(spells_to_remove)} spell(s) (characters not available):")
-                for spell in spells_to_remove:
-                    for prize_list in [progression_prizes, low_vol_other_prizes, high_vol_other_prizes,
-                                      must_include, post_progression_priority]:
-                        if spell in prize_list:
-                            prize_list.remove(spell)
-                            vanilla_char_name = vanilla_spell_assignments[type(spell)].__name__
-                            print(f"    - {type(spell).__name__} (needs {vanilla_char_name})")
-
-            elif character_types:
-                # CharacterLearnedSpells is enabled - use random assignment
-                print(f"  Using random spell-to-character assignments (CharacterLearnedSpells enabled)")
-                num_characters = len(character_types)
-                num_spells = len(spell_prizes)
-
-                # Calculate base spells per character and remainder
-                base_per_char = num_spells // num_characters
-                remainder = num_spells % num_characters
-
-                # Shuffle spell prizes for random assignment
-                random.shuffle(spell_prizes)
-
-                # Assign spells to characters
-                spell_idx = 0
-                for char_idx, char_type in enumerate(character_types):
-                    # First 'remainder' characters get one extra spell
-                    spells_for_this_char = base_per_char + (1 if char_idx < remainder else 0)
-
-                    for _ in range(spells_for_this_char):
-                        if spell_idx < num_spells:
-                            spell_prizes[spell_idx]._character = char_type
-                            spell_idx += 1
+            spell_count += len([p for p in prize_list if isinstance(p, SpellPrize)])
+        if spell_count > 0:
+            print(f"  SpellsAnywhere mode: {spell_count} spells will be dynamically assigned to characters at placement time")
 
     # Shuffle!
     # Place items with restricted placement options first (e.g., SlotsPrize)

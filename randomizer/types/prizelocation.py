@@ -1202,9 +1202,58 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                             return False
         if isinstance(prize, SpellPrize):
             if world.settings.isflag_enabled(SpellsAnywhere):
-                if prize.character is None:
+                # Dynamic assignment mode: assign a character BEFORE placement
+                # Get all recruited character types from inventory
+                recruited_chars = list(set([
+                    type(item) for item in inventory
+                    if isinstance(item, CharacterPrize)
+                ]))
+
+                # Fallback: if no characters in inventory, check character locations directly
+                # This handles edge cases where inventory might not include characters yet
+                if not recruited_chars:
+                    from ..progression.prizelocations import (
+                        StartingCharacter1, StartingCharacter2, StartingCharacter3,
+                        StartingCharacter4, StartingCharacter5,
+                    )
+                    # Check starting character locations
+                    for loc_cls in [StartingCharacter1, StartingCharacter2, StartingCharacter3,
+                                   StartingCharacter4, StartingCharacter5]:
+                        loc = world.locations.get(loc_cls)
+                        if loc and loc.has_item and isinstance(loc.prize, CharacterPrize):
+                            recruited_chars.append(type(loc.prize))
+                    # Check character recruitment locations
+                    for loc in world.locations.values():
+                        if isinstance(loc, CharacterRecruitmentLocation) and loc.has_item:
+                            if isinstance(loc.prize, CharacterPrize):
+                                recruited_chars.append(type(loc.prize))
+                    # Deduplicate
+                    recruited_chars = list(set(recruited_chars))
+
+                if not recruited_chars:
                     return False
-                return inventory.has_item(prize.character)
+
+                # Initialize spell assignments if needed
+                if world._spell_assignments is None:
+                    world._spell_assignments = {}
+
+                # Find characters with <6 spells assigned
+                available_chars = [
+                    char_type for char_type in recruited_chars
+                    if world._spell_assignments.get(char_type, 0) < 6
+                ]
+
+                if not available_chars:
+                    return False
+
+                # Assign a random available character to this spell if not already assigned
+                # Note: count is NOT incremented here - it's done in _on_item_placed when actually placed
+                # This is because can_accept is called multiple times (once per potential location)
+                if prize.character is None:
+                    import random as _random
+                    selected_char = _random.choice(available_chars)
+                    prize.set_character(selected_char)
+                return True
             else:
                 return isinstance(self, SpellSlotLocation)
         if world.settings.isflag_enabled(RestrictSpecialEquips):

@@ -418,7 +418,7 @@ class CharacterPrize(Prize):
 
 class SpellPrize(Prize):
     _spell: type[CharacterSpell]
-    _character: type[CharacterPrize] | None # This is only relevant if SpellsAnywhere is enabled and needs to be set before attempting prize shuffling. Otherwise, spells go to dedicated slot locations that are gated behind characters.
+    _character: type[CharacterPrize] | None = None  # This is only relevant if SpellsAnywhere is enabled and needs to be set before attempting prize shuffling. Otherwise, spells go to dedicated slot locations that are gated behind characters.
     _chest_event_id: int
     _npc_grant_event_id: int
     _standing_grant_event_id: int
@@ -426,12 +426,17 @@ class SpellPrize(Prize):
     _hill_grant_event_id: int
     _dialog_id: int
     _autoterm_dialog_id: int
+    _placement_id: int
 
     character_replacement_ids: list[str]
     packet_replacement_ids: list[str]
 
     def set_model(self, model: type[ItemNPC]) -> None:
         self._model = model
+
+    @property
+    def placement_id(self) -> int:
+        return self._placement_id
 
     @property
     def dialog_id(self) -> int:

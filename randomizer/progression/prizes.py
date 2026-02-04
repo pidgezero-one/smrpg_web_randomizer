@@ -2183,6 +2183,7 @@ class JumpSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1947_LEARN_SPELL_1
     _autoterm_dialog_id = DI1948_LEARN_SPELL_1_AUTOTERM
+    _placement_id = 1
 
 
 class FireOrbSpellPrize(SpellPrize):
@@ -2203,7 +2204,7 @@ class FireOrbSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1949_LEARN_SPELL_2
     _autoterm_dialog_id = DI1950_LEARN_SPELL_2_AUTOTERM
-
+    _placement_id = 2
 
 class SuperJumpSpellPrize(SpellPrize):
     _spell = SuperJumpSpell
@@ -2223,6 +2224,7 @@ class SuperJumpSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1951_LEARN_SPELL_3
     _autoterm_dialog_id = DI1952_LEARN_SPELL_3_AUTOTERM
+    _placement_id = 3
 
 
 class SuperFlameSpellPrize(SpellPrize):
@@ -2243,6 +2245,7 @@ class SuperFlameSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1953_LEARN_SPELL_4
     _autoterm_dialog_id = DI1954_LEARN_SPELL_4_AUTOTERM
+    _placement_id = 4
 
 
 class UltraJumpSpellPrize(SpellPrize):
@@ -2263,6 +2266,7 @@ class UltraJumpSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1955_LEARN_SPELL_5
     _autoterm_dialog_id = DI1956_LEARN_SPELL_5_AUTOTERM
+    _placement_id = 5
 
 
 class UltraFlameSpellPrize(SpellPrize):
@@ -2283,6 +2287,7 @@ class UltraFlameSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1957_LEARN_SPELL_6
     _autoterm_dialog_id = DI1958_LEARN_SPELL_6_AUTOTERM
+    _placement_id = 6
 
 
 class ThunderboltSpellPrize(SpellPrize):
@@ -2303,6 +2308,7 @@ class ThunderboltSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1959_LEARN_SPELL_7
     _autoterm_dialog_id = DI1960_LEARN_SPELL_7_AUTOTERM
+    _placement_id = 7
 
 
 class HPRainSpellPrize(SpellPrize):
@@ -2323,6 +2329,7 @@ class HPRainSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1961_LEARN_SPELL_8
     _autoterm_dialog_id = DI1962_LEARN_SPELL_8_AUTOTERM
+    _placement_id = 8
 
 
 class PsychopathSpellPrize(SpellPrize):
@@ -2343,6 +2350,7 @@ class PsychopathSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1963_LEARN_SPELL_9
     _autoterm_dialog_id = DI1964_LEARN_SPELL_9_AUTOTERM
+    _placement_id = 9
 
 
 class ShockerSpellPrize(SpellPrize):
@@ -2363,6 +2371,7 @@ class ShockerSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1965_LEARN_SPELL_10
     _autoterm_dialog_id = DI1966_LEARN_SPELL_10_AUTOTERM
+    _placement_id = 10
 
 
 class SnowyPrize(SpellPrize):
@@ -2383,6 +2392,7 @@ class SnowyPrize(SpellPrize):
     ]
     _dialog_id = DI1967_LEARN_SPELL_11
     _autoterm_dialog_id = DI1968_LEARN_SPELL_11_AUTOTERM
+    _placement_id = 11
 
 
 class StarRainSpellPrize(SpellPrize):
@@ -2403,6 +2413,7 @@ class StarRainSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1969_LEARN_SPELL_12
     _autoterm_dialog_id = DI1970_LEARN_SPELL_12_AUTOTERM
+    _placement_id = 12
 
 
 class GenoBeamSpellPrize(SpellPrize):
@@ -2423,6 +2434,7 @@ class GenoBeamSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1971_LEARN_SPELL_13
     _autoterm_dialog_id = DI1972_LEARN_SPELL_13_AUTOTERM
+    _placement_id = 13
 
 
 class GenoBoostSpellPrize(SpellPrize):
@@ -2443,6 +2455,7 @@ class GenoBoostSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1973_LEARN_SPELL_14
     _autoterm_dialog_id = DI1974_LEARN_SPELL_14_AUTOTERM
+    _placement_id = 14
 
 
 class GenoWhirlSpellPrize(SpellPrize):
@@ -2463,6 +2476,7 @@ class GenoWhirlSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1975_LEARN_SPELL_15
     _autoterm_dialog_id = DI1976_LEARN_SPELL_15_AUTOTERM
+    _placement_id = 15
 
 
 class GenoBlastSpellPrize(SpellPrize):
@@ -2483,6 +2497,7 @@ class GenoBlastSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1977_LEARN_SPELL_16
     _autoterm_dialog_id = DI1978_LEARN_SPELL_16_AUTOTERM
+    _placement_id = 16
 
 
 class GenoFlashSpellPrize(SpellPrize):
@@ -2503,6 +2518,7 @@ class GenoFlashSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1979_LEARN_SPELL_17
     _autoterm_dialog_id = DI1980_LEARN_SPELL_17_AUTOTERM
+    _placement_id = 17
 
 
 class TerrorizeSpellPrize(SpellPrize):
@@ -2523,6 +2539,7 @@ class TerrorizeSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1981_LEARN_SPELL_18
     _autoterm_dialog_id = DI1982_LEARN_SPELL_18_AUTOTERM
+    _placement_id = 18
 
 
 class PoisonGasSpellPrize(SpellPrize):
@@ -2543,6 +2560,7 @@ class PoisonGasSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1983_LEARN_SPELL_19
     _autoterm_dialog_id = DI1984_LEARN_SPELL_19_AUTOTERM
+    _placement_id = 19
 
 
 class CrusherSpellPrize(SpellPrize):
@@ -2563,6 +2581,7 @@ class CrusherSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1985_LEARN_SPELL_20
     _autoterm_dialog_id = DI1986_LEARN_SPELL_20_AUTOTERM
+    _placement_id = 20
 
 
 class BowserCrushSpellPrize(SpellPrize):
@@ -2583,6 +2602,7 @@ class BowserCrushSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1987_LEARN_SPELL_21
     _autoterm_dialog_id = DI1988_LEARN_SPELL_21_AUTOTERM
+    _placement_id = 21
 
 
 class TherapySpellPrize(SpellPrize):
@@ -2603,6 +2623,7 @@ class TherapySpellPrize(SpellPrize):
     ]
     _dialog_id = DI1989_LEARN_SPELL_22
     _autoterm_dialog_id = DI1990_LEARN_SPELL_22_AUTOTERM
+    _placement_id = 22
 
 
 class GroupHugSpellPrize(SpellPrize):
@@ -2623,6 +2644,7 @@ class GroupHugSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1991_LEARN_SPELL_23
     _autoterm_dialog_id = DI1992_LEARN_SPELL_23_AUTOTERM
+    _placement_id = 23
 
 
 class MuteSpellPrize(SpellPrize):
@@ -2643,6 +2665,7 @@ class MuteSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1993_LEARN_SPELL_24
     _autoterm_dialog_id = DI1994_LEARN_SPELL_24_AUTOTERM
+    _placement_id = 24
 
 
 class SleepyTimeSpellPrize(SpellPrize):
@@ -2663,6 +2686,7 @@ class SleepyTimeSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1995_LEARN_SPELL_25
     _autoterm_dialog_id = DI1996_LEARN_SPELL_25_AUTOTERM
+    _placement_id = 25
 
 
 class ComeBackSpellPrize(SpellPrize):
@@ -2683,6 +2707,7 @@ class ComeBackSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1997_LEARN_SPELL_26
     _autoterm_dialog_id = DI1998_LEARN_SPELL_26_AUTOTERM
+    _placement_id = 26
 
 
 class PsychBombSpellPrize(SpellPrize):
@@ -2703,6 +2728,7 @@ class PsychBombSpellPrize(SpellPrize):
     ]
     _dialog_id = DI1999_LEARN_SPELL_27
     _autoterm_dialog_id = DI2000_LEARN_SPELL_27_AUTOTERM
+    _placement_id = 27
 
 
 # Characters

@@ -253,6 +253,14 @@ class GameWorld:
     # Progress callback for SSE streaming (set by __init__)
     _progress_callback: Callable[[str, int], None] | None
 
+    # Invisible item locations - stored separately to allow reuse across shuffle retries
+    # These are initialized once during the first call to set_locations, then reused
+    _invisible_item_locations: dict[type[PrizeLocation], PrizeLocation] | None = None
+
+    # Spell assignment tracking for SpellsAnywhere mode
+    # Maps character prize type -> count of spells assigned to that character
+    _spell_assignments: dict[type, int] | None = None
+
     @property
     def overworld_character(self) -> CharacterPrize:
         if not self.settings.isflag_enabled(PlayAsStarter):

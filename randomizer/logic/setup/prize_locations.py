@@ -12,7 +12,8 @@ from randomizer.types.flags import (
     InvisibleFlagsSetting,
     KeyItemsAnywhere,
     StarPieceAvailability,
-    ShuffleCoins
+    ShuffleCoins,
+    SpellsAnywhere,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     CompareVarToConst,
@@ -812,92 +813,103 @@ def set_locations(world: GameWorld) -> None:
         FactoryButtonFlag,
     ]
 
-    invisible_flag_locations: dict[type[PrizeLocation], PrizeLocation] = {}
+    # Check if invisible item locations have already been initialized
+    # This prevents duplication when set_locations is called multiple times during shuffle retries
+    if world._invisible_item_locations is not None:
+        # Reuse the stored invisible item locations - just add them to world.locations
+        invisible_flag_locations = world._invisible_item_locations
+    else:
+        # First time initialization - create invisible item locations and modify rooms
+        invisible_flag_locations = {}
 
-    # Check for debug override of invisible flags
-    debug_invisible_flags: list[type] | None = None
-    if world.settings.debug_mode:
-        from randomizer.debug import load_debug_config, get_location_class
-        config = load_debug_config()
-        flag_names = config.get("invisible_flags", [])
-        if len(flag_names) == 3:
-            debug_invisible_flags = []
-            for name in flag_names:
-                cls = get_location_class(name)
-                if cls is not None:
-                    debug_invisible_flags.append(cls)
-                else:
-                    debug_invisible_flags = None
-                    break
-
-    for i in range(0, 3):
-        # choose the three invisible item locations
-        if debug_invisible_flags is not None:
-            location_cls = debug_invisible_flags[i]
-        elif not world.settings.isflag_enabled(InvisibleFlagsSetting):
-            location_cls = invisible_item_pool[i]
-        else:
-            # Filter out locations in rooms that are too full (>27 objects)
-            valid_pool = []
-            for loc_cls in invisible_item_pool:
-                # Create a temporary instance to check room capacity
-                temp_loc = loc_cls(0)
-                can_use = True
-                for r in temp_loc._rooms:
-                    room = world.rooms._rooms[r]
-                    if room is not None and len(room.objects) > 27:  # 0x1B, leaves no room for +0x14
-                        print(f"  ⚠ Skipping {loc_cls.__name__} - Room {r} has {len(room.objects)} objects (max 27)")
-                        can_use = False
+        # Check for debug override of invisible flags
+        debug_invisible_flags: list[type] | None = None
+        if world.settings.debug_mode:
+            from randomizer.debug import load_debug_config, get_location_class
+            config = load_debug_config()
+            flag_names = config.get("invisible_flags", [])
+            if len(flag_names) == 3:
+                debug_invisible_flags = []
+                for name in flag_names:
+                    cls = get_location_class(name)
+                    if cls is not None:
+                        debug_invisible_flags.append(cls)
+                    else:
+                        debug_invisible_flags = None
                         break
-                if can_use:
-                    valid_pool.append(loc_cls)
 
-            if not valid_pool:
-                raise Exception(f"No valid rooms available for invisible flag {i+1}! All candidate rooms are too full.")
+        for i in range(0, 3):
+            # choose the three invisible item locations
+            if debug_invisible_flags is not None:
+                location_cls = debug_invisible_flags[i]
+            elif not world.settings.isflag_enabled(InvisibleFlagsSetting):
+                location_cls = invisible_item_pool[i]
+            else:
+                # Filter out locations in rooms that are too full (>27 objects)
+                valid_pool = []
+                for loc_cls in invisible_item_pool:
+                    # Create a temporary instance to check room capacity
+                    temp_loc = loc_cls(0)
+                    can_use = True
+                    for r in temp_loc._rooms:
+                        room = world.rooms._rooms[r]
+                        if room is not None and len(room.objects) > 27:  # 0x1B, leaves no room for +0x14
+                            print(f"  ⚠ Skipping {loc_cls.__name__} - Room {r} has {len(room.objects)} objects (max 27)")
+                            can_use = False
+                            break
+                    if can_use:
+                        valid_pool.append(loc_cls)
 
-            location_cls = random.choice(valid_pool)
+                if not valid_pool:
+                    raise Exception(f"No valid rooms available for invisible flag {i+1}! All candidate rooms are too full.")
 
-        location = cast(InvisibleFlagLocation, location_cls(i))
-        for r in location._rooms:
-            # place them in rooms and set visibility triggers
-            room = world.rooms._rooms[r]
-            assert room is not None
+                location_cls = random.choice(valid_pool)
 
-            # Double-check room capacity before creating AreaObject
-            num_objects = len(room.objects)
-            calculated_id = num_objects + 0x14
-            if calculated_id > 0x2F:
-                raise Exception(
-                    f"Room {r} ({location_cls.__name__}) has too many objects!\n"
-                    f"  Objects in room: {num_objects}\n"
-                    f"  Calculated NPC ID: 0x{calculated_id:02X} (requires <= 0x2F)\n"
-                    f"  Max objects allowed: 27 (0x1B)"
+            location = cast(InvisibleFlagLocation, location_cls(i))
+            for r in location._rooms:
+                # place them in rooms and set visibility triggers
+                room = world.rooms._rooms[r]
+                assert room is not None
+
+                # Double-check room capacity before creating AreaObject
+                num_objects = len(room.objects)
+                calculated_id = num_objects + 0x14
+                if calculated_id > 0x2F:
+                    raise Exception(
+                        f"Room {r} ({location_cls.__name__}) has too many objects!\n"
+                        f"  Objects in room: {num_objects}\n"
+                        f"  Calculated NPC ID: 0x{calculated_id:02X} (requires <= 0x2F)\n"
+                        f"  Max objects allowed: 27 (0x1B)"
+                    )
+
+                n = location.npc
+                n_id = AreaObject(calculated_id)
+                n.set_visible(False)
+                world.event_scripts.get_script_by_id(
+                    E0091_INVISIBLE_ITEM_SUMMONER
+                ).insert_before_nth_command(0, SummonObjectToSpecificLevel(n_id, r))
+                room.add_object(location.npc)
+            # set hint text
+            if i == 0:
+                world.update_dialog(
+                    DI1108_RESERVED_FOR_DRYBONESFLAG_HINT,
+                    "DRY BONES:\n" + location.clue_text,
                 )
+            elif i == 1:
+                world.update_dialog(
+                    DI1109_RESERVED_FOR_GREAPERFLAG_HINT,
+                    "GREAPER:\n" + location.clue_text,
+                )
+            elif i == 2:
+                world.update_dialog(
+                    DI1107_RESERVED_FOR_BIGBOOFLAG_HINT,
+                    "THE BIG BOO:\n" + location.clue_text,
+                )
+            invisible_flag_locations[location_cls] = location
 
-            n = location.npc
-            n_id = AreaObject(calculated_id)
-            n.set_visible(False)
-            world.event_scripts.get_script_by_id(
-                E0091_INVISIBLE_ITEM_SUMMONER
-            ).insert_before_nth_command(0, SummonObjectToSpecificLevel(n_id, r))
-            room.add_object(location.npc)
-        # set hint text
-        if i == 0:
-            world.update_dialog(
-                DI1108_RESERVED_FOR_DRYBONESFLAG_HINT,
-                "DRY BONES:\n" + location.clue_text,
-            )
-        elif i == 1:
-            world.update_dialog(
-                DI1109_RESERVED_FOR_GREAPERFLAG_HINT,
-                "GREAPER:\n" + location.clue_text,
-            )
-        elif i == 2:
-            world.update_dialog(
-                DI1107_RESERVED_FOR_BIGBOOFLAG_HINT,
-                "THE BIG BOO:\n" + location.clue_text,
-            )
-        invisible_flag_locations[location_cls] = location
+        # Store the invisible item locations for reuse on retry
+        world._invisible_item_locations = invisible_flag_locations
+
     world.locations = {**world.locations, **invisible_flag_locations}
     
     world.chest_locations = [
