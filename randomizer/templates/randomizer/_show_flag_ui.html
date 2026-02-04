@@ -23,24 +23,25 @@
     </div>
 {% elif flag.type == "select_one" %}
     <div class="flag-container flag-container-select {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag.description }}">
-        <label for="{{ subcategory.id }}.{{ flag.id }}" >{{ flag.name }}:</label><br/>
-        <div class="select-with-preview-container" style="display: flex; gap: 0.5rem; align-items: flex-start;">
-            <select class="flag-form-input flag-form-select form-select flag-{{ subcategory.id }}-{{ flag.id }} palette-selector"
-                    id="{{ subcategory.id }}.{{ flag.id }}"
-                    name="{{ subcategory.id }}.{{ flag.id }}"
-                    data-character="{{ subcategory.id }}"
-                    style="flex: 1; min-width: 0;">
-                    {% for choice in flag.choices_dict %}
-                        {% if choice.text == flag.default_dict.text %}
-                            <option selected="selected" value="{{ choice.id }}" data-palette-name="{{ choice.text }}" data-palette-id="{{ choice.id }}">{{ choice.text }}</option>
-                        {% else %}
-                            <option value="{{ choice.id }}" data-palette-name="{{ choice.text }}" data-palette-id="{{ choice.id }}">{{ choice.text }}</option>
-                        {% endif %}
-                    {% endfor %}
-            </select>
+        <div style="display: flex; gap: 0.5rem; align-items: flex-start;">
+            <div style="flex: 1; min-width: 0;">
+                <label for="{{ subcategory.id }}.{{ flag.id }}" >{{ flag.name }}:</label><br/>
+                <select class="flag-form-input flag-form-select form-select flag-{{ subcategory.id }}-{{ flag.id }} palette-selector"
+                        id="{{ subcategory.id }}.{{ flag.id }}"
+                        name="{{ subcategory.id }}.{{ flag.id }}"
+                        data-character="{{ subcategory.id }}">
+                        {% for choice in flag.choices_dict %}
+                            {% if choice.text == flag.default_dict.text %}
+                                <option selected="selected" value="{{ choice.id }}" data-palette-name="{{ choice.text }}" data-palette-id="{{ choice.id }}">{{ choice.text }}</option>
+                            {% else %}
+                                <option value="{{ choice.id }}" data-palette-name="{{ choice.text }}" data-palette-id="{{ choice.id }}">{{ choice.text }}</option>
+                            {% endif %}
+                        {% endfor %}
+                </select>
+            </div>
             {% if "Palette" in flag.name %}
             <div class="palette-preview-container" style="display: none; flex-shrink: 0;">
-                <img class="palette-preview-image" src="" alt="Palette Preview" style="image-rendering: pixelated; width: 96px; height: auto; border: 1px solid #ccc; border-radius: 4px;">
+                <img class="palette-preview-image" src="" alt="Palette Preview" style="image-rendering: pixelated; width: auto; height: auto; border: 1px solid #ccc; border-radius: 4px;">
             </div>
             {% endif %}
         </div>

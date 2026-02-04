@@ -57,8 +57,8 @@ class Command(BaseCommand):
         parser.add_argument(
             '--scale',
             type=int,
-            default=4,
-            help='Scale factor for output images (default: 4)',
+            default=3,
+            help='Scale factor for output images (default: 3)',
         )
 
     def handle(self, *args, **options):

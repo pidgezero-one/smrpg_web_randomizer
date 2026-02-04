@@ -968,7 +968,7 @@
 
             function updatePalettePreview(selectElement) {
                 const $select = $(selectElement);
-                const $container = $select.siblings('.palette-preview-container');
+                const $container = $select.closest('.flag-container').find('.palette-preview-container');
                 const $img = $container.find('.palette-preview-image');
 
                 const selectedOption = $select.find('option:selected');
