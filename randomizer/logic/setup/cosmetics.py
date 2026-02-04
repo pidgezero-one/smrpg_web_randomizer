@@ -517,8 +517,9 @@ DI1227_SHAMAN_SALESMAN_800_COINS, ''' I found an incredible item.
         if isinstance(p, SpellPrize):
             idx = p.spell().index
             spell = world.spells.spells[idx]
-            dialog_id = DI1947_LEARN_SPELL_1 + idx * 2
-            dialog_id_2 = dialog_id + 1
+            print(idx)
+            dialog_id = p.dialog_id
+            dialog_id_2 = p.autoterm_dialog_id
             world.overworld_dialogs.search_and_replace_in_all_dialogs(f"`SPELL_{idx}`", spell.title)
             if isinstance(p.character, MarioRecruitmentPrize):
                 character = world.allies._allies[0]
@@ -550,6 +551,8 @@ DI1227_SHAMAN_SALESMAN_800_COINS, ''' I found an incredible item.
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(MALLOW)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
+            else:
+                raise Exception(f"No character assigned for spell prize {spell} at location {location}")
             for i in p.packet_replacement_ids:
                 if spell.element == Element.FIRE:
                     world.event_scripts.get_command_by_identifier(i, CreatePacketAt7010).set_packet_id(P094_FIRE_SPELL_CHEST)

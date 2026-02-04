@@ -2181,6 +2181,8 @@ class JumpSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_1_elemental_packet"
     ]
+    _dialog_id = DI1947_LEARN_SPELL_1
+    _autoterm_dialog_id = DI1948_LEARN_SPELL_1_AUTOTERM
 
 
 class FireOrbSpellPrize(SpellPrize):
@@ -2199,6 +2201,8 @@ class FireOrbSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_2_elemental_packet"
     ]
+    _dialog_id = DI1949_LEARN_SPELL_2
+    _autoterm_dialog_id = DI1950_LEARN_SPELL_2_AUTOTERM
 
 
 class SuperJumpSpellPrize(SpellPrize):
@@ -2217,6 +2221,8 @@ class SuperJumpSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_3_elemental_packet"
     ]
+    _dialog_id = DI1951_LEARN_SPELL_3
+    _autoterm_dialog_id = DI1952_LEARN_SPELL_3_AUTOTERM
 
 
 class SuperFlameSpellPrize(SpellPrize):
@@ -2235,6 +2241,8 @@ class SuperFlameSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_4_elemental_packet"
     ]
+    _dialog_id = DI1953_LEARN_SPELL_4
+    _autoterm_dialog_id = DI1954_LEARN_SPELL_4_AUTOTERM
 
 
 class UltraJumpSpellPrize(SpellPrize):
@@ -2253,6 +2261,8 @@ class UltraJumpSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_5_elemental_packet"
     ]
+    _dialog_id = DI1955_LEARN_SPELL_5
+    _autoterm_dialog_id = DI1956_LEARN_SPELL_5_AUTOTERM
 
 
 class UltraFlameSpellPrize(SpellPrize):
@@ -2271,6 +2281,8 @@ class UltraFlameSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_6_elemental_packet"
     ]
+    _dialog_id = DI1957_LEARN_SPELL_6
+    _autoterm_dialog_id = DI1958_LEARN_SPELL_6_AUTOTERM
 
 
 class ThunderboltSpellPrize(SpellPrize):
@@ -2289,6 +2301,8 @@ class ThunderboltSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_7_elemental_packet"
     ]
+    _dialog_id = DI1959_LEARN_SPELL_7
+    _autoterm_dialog_id = DI1960_LEARN_SPELL_7_AUTOTERM
 
 
 class HPRainSpellPrize(SpellPrize):
@@ -2307,6 +2321,8 @@ class HPRainSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_8_elemental_packet"
     ]
+    _dialog_id = DI1961_LEARN_SPELL_8
+    _autoterm_dialog_id = DI1962_LEARN_SPELL_8_AUTOTERM
 
 
 class PsychopathSpellPrize(SpellPrize):
@@ -2325,6 +2341,8 @@ class PsychopathSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_9_elemental_packet"
     ]
+    _dialog_id = DI1963_LEARN_SPELL_9
+    _autoterm_dialog_id = DI1964_LEARN_SPELL_9_AUTOTERM
 
 
 class ShockerSpellPrize(SpellPrize):
@@ -2343,6 +2361,8 @@ class ShockerSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_10_elemental_packet"
     ]
+    _dialog_id = DI1965_LEARN_SPELL_10
+    _autoterm_dialog_id = DI1966_LEARN_SPELL_10_AUTOTERM
 
 
 class SnowyPrize(SpellPrize):
@@ -2361,6 +2381,8 @@ class SnowyPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_11_elemental_packet"
     ]
+    _dialog_id = DI1967_LEARN_SPELL_11
+    _autoterm_dialog_id = DI1968_LEARN_SPELL_11_AUTOTERM
 
 
 class StarRainSpellPrize(SpellPrize):
@@ -2379,6 +2401,8 @@ class StarRainSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_12_elemental_packet"
     ]
+    _dialog_id = DI1969_LEARN_SPELL_12
+    _autoterm_dialog_id = DI1970_LEARN_SPELL_12_AUTOTERM
 
 
 class GenoBeamSpellPrize(SpellPrize):
@@ -2397,6 +2421,8 @@ class GenoBeamSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_13_elemental_packet"
     ]
+    _dialog_id = DI1971_LEARN_SPELL_13
+    _autoterm_dialog_id = DI1972_LEARN_SPELL_13_AUTOTERM
 
 
 class GenoBoostSpellPrize(SpellPrize):
@@ -2415,6 +2441,8 @@ class GenoBoostSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_14_elemental_packet"
     ]
+    _dialog_id = DI1973_LEARN_SPELL_14
+    _autoterm_dialog_id = DI1974_LEARN_SPELL_14_AUTOTERM
 
 
 class GenoWhirlSpellPrize(SpellPrize):
@@ -2433,6 +2461,8 @@ class GenoWhirlSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_15_elemental_packet"
     ]
+    _dialog_id = DI1975_LEARN_SPELL_15
+    _autoterm_dialog_id = DI1976_LEARN_SPELL_15_AUTOTERM
 
 
 class GenoBlastSpellPrize(SpellPrize):
@@ -2451,6 +2481,8 @@ class GenoBlastSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_16_elemental_packet"
     ]
+    _dialog_id = DI1977_LEARN_SPELL_16
+    _autoterm_dialog_id = DI1978_LEARN_SPELL_16_AUTOTERM
 
 
 class GenoFlashSpellPrize(SpellPrize):
@@ -2469,6 +2501,8 @@ class GenoFlashSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_17_elemental_packet"
     ]
+    _dialog_id = DI1979_LEARN_SPELL_17
+    _autoterm_dialog_id = DI1980_LEARN_SPELL_17_AUTOTERM
 
 
 class TerrorizeSpellPrize(SpellPrize):
@@ -2487,6 +2521,8 @@ class TerrorizeSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_18_elemental_packet"
     ]
+    _dialog_id = DI1981_LEARN_SPELL_18
+    _autoterm_dialog_id = DI1982_LEARN_SPELL_18_AUTOTERM
 
 
 class PoisonGasSpellPrize(SpellPrize):
@@ -2505,6 +2541,8 @@ class PoisonGasSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_19_elemental_packet"
     ]
+    _dialog_id = DI1983_LEARN_SPELL_19
+    _autoterm_dialog_id = DI1984_LEARN_SPELL_19_AUTOTERM
 
 
 class CrusherSpellPrize(SpellPrize):
@@ -2523,6 +2561,8 @@ class CrusherSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_20_elemental_packet"
     ]
+    _dialog_id = DI1985_LEARN_SPELL_20
+    _autoterm_dialog_id = DI1986_LEARN_SPELL_20_AUTOTERM
 
 
 class BowserCrushSpellPrize(SpellPrize):
@@ -2541,6 +2581,8 @@ class BowserCrushSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_21_elemental_packet"
     ]
+    _dialog_id = DI1987_LEARN_SPELL_21
+    _autoterm_dialog_id = DI1988_LEARN_SPELL_21_AUTOTERM
 
 
 class TherapySpellPrize(SpellPrize):
@@ -2559,6 +2601,8 @@ class TherapySpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_22_elemental_packet"
     ]
+    _dialog_id = DI1989_LEARN_SPELL_22
+    _autoterm_dialog_id = DI1990_LEARN_SPELL_22_AUTOTERM
 
 
 class GroupHugSpellPrize(SpellPrize):
@@ -2577,6 +2621,8 @@ class GroupHugSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_23_elemental_packet"
     ]
+    _dialog_id = DI1991_LEARN_SPELL_23
+    _autoterm_dialog_id = DI1992_LEARN_SPELL_23_AUTOTERM
 
 
 class MuteSpellPrize(SpellPrize):
@@ -2595,6 +2641,8 @@ class MuteSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_24_elemental_packet"
     ]
+    _dialog_id = DI1993_LEARN_SPELL_24
+    _autoterm_dialog_id = DI1994_LEARN_SPELL_24_AUTOTERM
 
 
 class SleepyTimeSpellPrize(SpellPrize):
@@ -2613,6 +2661,8 @@ class SleepyTimeSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_25_elemental_packet"
     ]
+    _dialog_id = DI1995_LEARN_SPELL_25
+    _autoterm_dialog_id = DI1996_LEARN_SPELL_25_AUTOTERM
 
 
 class ComeBackSpellPrize(SpellPrize):
@@ -2631,6 +2681,8 @@ class ComeBackSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_26_elemental_packet"
     ]
+    _dialog_id = DI1997_LEARN_SPELL_26
+    _autoterm_dialog_id = DI1998_LEARN_SPELL_26_AUTOTERM
 
 
 class PsychBombSpellPrize(SpellPrize):
@@ -2649,6 +2701,8 @@ class PsychBombSpellPrize(SpellPrize):
     packet_replacement_ids = [
         "spell_27_elemental_packet"
     ]
+    _dialog_id = DI1999_LEARN_SPELL_27
+    _autoterm_dialog_id = DI2000_LEARN_SPELL_27_AUTOTERM
 
 
 # Characters

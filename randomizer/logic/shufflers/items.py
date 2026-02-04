@@ -74,6 +74,10 @@ def shuffle_prizes(world: GameWorld) -> None:
     3. Places prizes using assumed-reachability algorithm
     4. Verifies all required prizes were placed
     """
+    print(f"\n{'='*50}")
+    print(f"STARTING PRIZE SHUFFLING")
+    print(f"{'='*50}")
+
     from ...types.flags import (
         ShuffleItems,
         ShuffleShops,
@@ -313,8 +317,11 @@ def shuffle_prizes(world: GameWorld) -> None:
         PsychBombSpell,
     )
     # Start off emptying every location of every type
+    total_locations = len(world.locations.values())
+    print(f"Total locations in world: {total_locations}")
     for loc in world.locations.values():
         loc.set_prize(None)
+    print(f"✓ All locations emptied")
 
     # Apply debug overrides first (hard-set locations before shuffle)
     # Track which prize TYPES were placed via override (to avoid double-placing characters/spells/etc.)
@@ -980,7 +987,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         elif world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
             if isinstance(
                 loc.originally_held(),
-                (RecoveryMushroomPrize, FPFlowerPrize, FrogCoin1Prize),
+                (RecoveryMushroomPrize, FrogCoin1Prize),
             ):
                 not_important.append(loc.originally_held())
             else:
@@ -998,6 +1005,15 @@ def shuffle_prizes(world: GameWorld) -> None:
     random.shuffle(high_vol_other_prizes)
     random.shuffle(low_vol_character_prizes)
     random.shuffle(low_vol_other_prizes)
+
+    print(f"\n=== Prize Tier Distribution ===")
+    print(f"High-volume characters: {len(high_vol_character_prizes)}")
+    print(f"High-volume key items: {len(high_vol_other_prizes)}")
+    print(f"Low-volume characters: {len(low_vol_character_prizes)}")
+    print(f"Low-volume key items: {len(low_vol_other_prizes)}")
+    print(f"Post-progression priority: {len(post_progression_priority)}")
+    print(f"Must-include items: {len(must_include)}")
+    print(f"Less important items: {len(not_important)}")
 
     # Build progression prizes with bias: 80% chance to exhaust current tier before moving on
     prize_tiers = [
@@ -1019,6 +1035,12 @@ def shuffle_prizes(world: GameWorld) -> None:
     for tier in prize_tiers:
         progression_prizes.extend(tier)
 
+    # Show summary before placement
+    empty_locations = len([l for l in world.locations.values() if not l.has_item])
+    print(f"\n=== Pre-Placement Summary ===")
+    print(f"Total items to place: {len(progression_prizes) + len(post_progression_priority) + len(must_include) + len(not_important)}")
+    print(f"Empty locations available: {empty_locations}")
+
     """     print(f"Priority 1:")
     for p in progression_prizes:
         print(f"  {type(p).__name__}")
@@ -1031,8 +1053,12 @@ def shuffle_prizes(world: GameWorld) -> None:
 
     # Assign characters to spells when SpellsAnywhere is enabled
     if world.settings.isflag_enabled(SpellsAnywhere):
-        # Collect all spell prizes from must_include
-        spell_prizes = [p for p in must_include if isinstance(p, SpellPrize)]
+        # Collect all spell prizes from ALL prize lists (not just must_include)
+        # Some spells are in low_vol_other_prizes (Mokura spell, Super Jump)
+        spell_prizes = []
+        for prize_list in [progression_prizes, low_vol_other_prizes, high_vol_other_prizes,
+                          must_include, post_progression_priority]:
+            spell_prizes.extend([p for p in prize_list if isinstance(p, SpellPrize)])
 
         if spell_prizes:
             # Collect all included character prize types
@@ -1059,7 +1085,82 @@ def shuffle_prizes(world: GameWorld) -> None:
             # Convert to sorted list for deterministic ordering
             character_types = sorted(list(included_character_types), key=lambda x: x.__name__)
 
-            if character_types:
+            # Check if CharacterLearnedSpells is disabled
+            # If so, use vanilla character assignments instead of random
+            if not world.settings.isflag_enabled(CharacterLearnedSpells):
+                print(f"  Using vanilla spell-to-character assignments (CharacterLearnedSpells disabled)")
+                # Define vanilla spell-to-character mappings
+                vanilla_spell_assignments = {
+                    # Mario spells
+                    JumpSpellPrize: MarioRecruitmentPrize,
+                    FireOrbSpellPrize: MarioRecruitmentPrize,
+                    SuperJumpSpellPrize: MarioRecruitmentPrize,
+                    SuperFlameSpellPrize: MarioRecruitmentPrize,
+                    UltraJumpSpellPrize: MarioRecruitmentPrize,
+                    UltraFlameSpellPrize: MarioRecruitmentPrize,
+                    # Mallow spells
+                    ThunderboltSpellPrize: MallowRecruitmentPrize,
+                    HPRainSpellPrize: MallowRecruitmentPrize,
+                    PsychopathSpellPrize: MallowRecruitmentPrize,
+                    ShockerSpellPrize: MallowRecruitmentPrize,
+                    SnowyPrize: MallowRecruitmentPrize,
+                    StarRainSpellPrize: MallowRecruitmentPrize,
+                    # Geno spells
+                    GenoBeamSpellPrize: GenoRecruitmentPrize,
+                    GenoBoostSpellPrize: GenoRecruitmentPrize,
+                    GenoWhirlSpellPrize: GenoRecruitmentPrize,
+                    GenoBlastSpellPrize: GenoRecruitmentPrize,
+                    GenoFlashSpellPrize: GenoRecruitmentPrize,
+                    # Bowser spells
+                    TerrorizeSpellPrize: BowserRecruitmentPrize,
+                    PoisonGasSpellPrize: BowserRecruitmentPrize,
+                    CrusherSpellPrize: BowserRecruitmentPrize,
+                    BowserCrushSpellPrize: BowserRecruitmentPrize,
+                    # Toadstool spells
+                    TherapySpellPrize: ToadstoolRecruitmentPrize,
+                    GroupHugSpellPrize: ToadstoolRecruitmentPrize,
+                    SleepyTimeSpellPrize: ToadstoolRecruitmentPrize,
+                    ComeBackSpellPrize: ToadstoolRecruitmentPrize,
+                    MuteSpellPrize: ToadstoolRecruitmentPrize,
+                    PsychBombSpellPrize: ToadstoolRecruitmentPrize,
+                }
+
+                # Filter and assign spells based on vanilla assignments
+                spells_to_remove = []
+                char_spell_counts = {}
+                for spell_prize in spell_prizes:
+                    spell_type = type(spell_prize)
+                    if spell_type in vanilla_spell_assignments:
+                        vanilla_char = vanilla_spell_assignments[spell_type]
+                        # Only include spell if its vanilla character is in the seed
+                        if vanilla_char in included_character_types:
+                            spell_prize._character = vanilla_char
+                            # Track counts for logging
+                            char_spell_counts[vanilla_char] = char_spell_counts.get(vanilla_char, 0) + 1
+                        else:
+                            # Character not available, remove spell from pool
+                            spells_to_remove.append(spell_prize)
+
+                # Log spell assignments per character
+                if char_spell_counts:
+                    print(f"  Spell assignments by character:")
+                    for char, count in sorted(char_spell_counts.items(), key=lambda x: x[0].__name__):
+                        print(f"    {char.__name__}: {count} spell(s)")
+
+                # Remove spells whose characters aren't available
+                if spells_to_remove:
+                    print(f"  Removing {len(spells_to_remove)} spell(s) (characters not available):")
+                for spell in spells_to_remove:
+                    for prize_list in [progression_prizes, low_vol_other_prizes, high_vol_other_prizes,
+                                      must_include, post_progression_priority]:
+                        if spell in prize_list:
+                            prize_list.remove(spell)
+                            vanilla_char_name = vanilla_spell_assignments[type(spell)].__name__
+                            print(f"    - {type(spell).__name__} (needs {vanilla_char_name})")
+
+            elif character_types:
+                # CharacterLearnedSpells is enabled - use random assignment
+                print(f"  Using random spell-to-character assignments (CharacterLearnedSpells enabled)")
                 num_characters = len(character_types)
                 num_spells = len(spell_prizes)
 
@@ -1093,6 +1194,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         )
 
     # Place critical/progress items (with high-vol bias applied)
+    print(f"\n[POOL 1/4] Placing progression prizes ({len(progression_prizes)} items)")
     place(
         world,
         progression_prizes,
@@ -1101,13 +1203,17 @@ def shuffle_prizes(world: GameWorld) -> None:
 
     # Place post-progression priority items (slots/exp stars, progressive cards, crystal shard)
     if post_progression_priority:
+        print(f"\n[POOL 2/4] Placing post-progression priority items ({len(post_progression_priority)} items)")
         random.shuffle(post_progression_priority)
         place(
             world,
             post_progression_priority,
             on_placed=lambda i, l: _on_item_placed(world, i, l),
         )
+    else:
+        print(f"\n[POOL 2/4] No post-progression priority items to place")
 
+    print(f"\n[POOL 3/4] Placing must-include items ({len(must_include)} items)")
     random.shuffle(must_include)
     place(
         world,
@@ -1115,6 +1221,8 @@ def shuffle_prizes(world: GameWorld) -> None:
         on_placed=lambda i, l: _on_item_placed(world, i, l),
         force_frog_disciple=True
     )
+
+    print(f"\n[POOL 4/4] Placing less important items ({len(not_important)} items, overflow allowed)")
     random.shuffle(not_important)
     place(
         world,
@@ -1124,13 +1232,69 @@ def shuffle_prizes(world: GameWorld) -> None:
         force_frog_disciple=True
     )
 
+    # Final summary
+    filled_locations = len([l for l in world.locations.values() if l.has_item])
+    empty_locations = len([l for l in world.locations.values() if not l.has_item])
+    print(f"\n{'='*50}")
+    print(f"PRIZE SHUFFLING COMPLETE")
+    print(f"{'='*50}")
+    print(f"Filled locations: {filled_locations}")
+    print(f"Empty locations: {empty_locations}")
+    print(f"Total locations: {filled_locations + empty_locations}")
+
+
+def assign_spell_prize_models(world: GameWorld) -> None:
+    """Assign spell prize models based on their element.
+
+    This sets the visual appearance (colored orb) for spell prizes when they
+    appear as freestanding items in the overworld:
+    - Thunder spells → Yellow orb
+    - Fire spells → Red orb
+    - Ice spells → Blue orb
+    - Jump/Earth spells → Green orb
+    - No element spells → Gray orb
+
+    Must run after spell elements are finalized and after prizes are shuffled into locations.
+    """
+    from ...types.prize import SpellPrize
+    from ...data.physical_objects.items import (
+        YellowSpellObject, FireSpellObject, BlueSpellObject,
+        GreenSpellObject, GraySpellObject
+    )
+    from smrpgpatchbuilder.datatypes.spells.enums import Element
+
+    # Iterate through all locations to find spell prizes
+    for location in world.locations.values():
+        if not location.has_item:
+            continue
+
+        prize = location.prize
+        if not isinstance(prize, SpellPrize):
+            continue
+
+        # Get the actual spell instance from world with its finalized element
+        spell_instance = world.get_spell(prize.spell)
+
+        # Map element to orb model
+        if spell_instance.element == Element.THUNDER:
+            prize.set_model(YellowSpellObject)
+        elif spell_instance.element == Element.FIRE:
+            prize.set_model(FireSpellObject)
+        elif spell_instance.element == Element.ICE:
+            prize.set_model(BlueSpellObject)
+        elif spell_instance.element == Element.JUMP:
+            prize.set_model(GreenSpellObject)
+        else:  # Element.NONE
+            prize.set_model(GraySpellObject)
+
 
 def post_shuffle_cleanup(world: GameWorld) -> None:
     """Handle empty chests and replace low-value items with coins.
 
     This function:
-    1. Fills or disables empty treasure chests based on settings
-    2. Replaces low-impact items with coin prizes at half their price
+    1. Assigns spell prize models based on finalized elements
+    2. Fills or disables empty treasure chests based on settings
+    3. Replaces low-impact items with coin prizes at half their price
     """
     from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
         DisableObjectTriggerInSpecificLevel,
@@ -1163,6 +1327,9 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
         MoldyMushItem,
         MushroomItem2,
     )
+
+    # First, assign spell prize models based on their finalized elements
+    assign_spell_prize_models(world)
 
     # Fill empty required locations (non-treasure-chest) with fallback prize
     # This handles locations that were left empty because the prize pool ran out

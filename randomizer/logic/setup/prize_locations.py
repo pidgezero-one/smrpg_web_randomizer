@@ -837,14 +837,45 @@ def set_locations(world: GameWorld) -> None:
         elif not world.settings.isflag_enabled(InvisibleFlagsSetting):
             location_cls = invisible_item_pool[i]
         else:
-            location_cls = random.choice(invisible_item_pool)
+            # Filter out locations in rooms that are too full (>27 objects)
+            valid_pool = []
+            for loc_cls in invisible_item_pool:
+                # Create a temporary instance to check room capacity
+                temp_loc = loc_cls(0)
+                can_use = True
+                for r in temp_loc._rooms:
+                    room = world.rooms._rooms[r]
+                    if room is not None and len(room.objects) > 27:  # 0x1B, leaves no room for +0x14
+                        print(f"  ⚠ Skipping {loc_cls.__name__} - Room {r} has {len(room.objects)} objects (max 27)")
+                        can_use = False
+                        break
+                if can_use:
+                    valid_pool.append(loc_cls)
+
+            if not valid_pool:
+                raise Exception(f"No valid rooms available for invisible flag {i+1}! All candidate rooms are too full.")
+
+            location_cls = random.choice(valid_pool)
+
         location = cast(InvisibleFlagLocation, location_cls(i))
         for r in location._rooms:
             # place them in rooms and set visibility triggers
             room = world.rooms._rooms[r]
             assert room is not None
+
+            # Double-check room capacity before creating AreaObject
+            num_objects = len(room.objects)
+            calculated_id = num_objects + 0x14
+            if calculated_id > 0x2F:
+                raise Exception(
+                    f"Room {r} ({location_cls.__name__}) has too many objects!\n"
+                    f"  Objects in room: {num_objects}\n"
+                    f"  Calculated NPC ID: 0x{calculated_id:02X} (requires <= 0x2F)\n"
+                    f"  Max objects allowed: 27 (0x1B)"
+                )
+
             n = location.npc
-            n_id = AreaObject(len(room.objects) + 0x14)
+            n_id = AreaObject(calculated_id)
             n.set_visible(False)
             world.event_scripts.get_script_by_id(
                 E0091_INVISIBLE_ITEM_SUMMONER

@@ -120,7 +120,8 @@ python scripts/add_submission.py --type song --issue GITHUB_ISSUE_ID
 ### Palettes
 ```bash
 python scripts/add_submission.py --type palette --issue GITHUB_ISSUE_ID
-```
+```  
+(You don't need to export screenshots of new palettes for the UI preview. Either run `python manage.py generate_palette_previews` or simply let the Github Actions CI automatically derive an image from the palette data.)
 
 ### Dry run (parse only, don't modify files)
 ```bash

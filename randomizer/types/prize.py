@@ -424,12 +424,22 @@ class SpellPrize(Prize):
     _standing_grant_event_id: int
     _river_grant_event_id: int 
     _hill_grant_event_id: int
+    _dialog_id: int
+    _autoterm_dialog_id: int
 
     character_replacement_ids: list[str]
     packet_replacement_ids: list[str]
 
     def set_model(self, model: type[ItemNPC]) -> None:
         self._model = model
+
+    @property
+    def dialog_id(self) -> int:
+        return self._dialog_id
+    
+    @property
+    def autoterm_dialog_id(self) -> int:
+        return self._autoterm_dialog_id
 
     @property
     def spell(self) -> type[CharacterSpell]:

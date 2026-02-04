@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Any, Callable, TypeVar, cast
+from typing import Any, Callable, Type, TypeVar, cast
 import random
 import hashlib
 import re
@@ -81,8 +81,12 @@ from .patch import Patch
 from .spell import Spell
 from .prize import (
     ItemPrize,
+    SpellPrize,
 )
 from .ally import Ally
+
+# TypeVar for spell types to allow CharacterSpell and other Spell subclasses
+SpellType = TypeVar('SpellType', bound=Spell)
 from .prizelocation import (
     PrizeLocation,
 )
@@ -98,7 +102,7 @@ from ..data.credits.credits import update_credits
 from ..logic.setup.gating import apply_gating_settings
 from ..logic.setup.thresholds import apply_threshold_settings
 from ..logic.setup.enemy_tweaks import apply_enemy_tweaks, apply_experience_zero_settings
-from ..logic.setup.equipment_setup import apply_equipment_settings, assign_spell_prize_models
+from ..logic.setup.equipment_setup import apply_equipment_settings
 from ..logic.setup.minigames_setup import apply_minigame_settings
 from ..logic.setup.cosmetics import apply_cosmetic_settings
 from ..logic.setup.prize_locations import set_locations
@@ -330,7 +334,7 @@ class GameWorld:
         ), f"Attack {attack_id} does not exist in EnemyAttackCollection"
         return a
 
-    def get_spell(self, spell_id: int | type[Spell]):
+    def get_spell(self, spell_id: int | Type[SpellType]) -> Spell:
         if isinstance(spell_id, int):
             s = next((s for s in self.spells.spells if s.index == spell_id), None)
         else:
@@ -480,6 +484,7 @@ class GameWorld:
         """Return a JSON-serializable dict of all locations and their prizes.
 
         Keys are location class names, values are prize class names or "None".
+        For SpellPrize items, includes the character name in the format: "SpellName (CharacterName)"
         """
         result: dict[str, str] = dict()
         for loc_type, loc in self.locations.items():
@@ -488,7 +493,36 @@ class GameWorld:
                 prize_name = "None"
             else:
                 prize_name = type(loc.prize).__name__
+                # If it's a spell, include the character it's assigned to
+                if isinstance(loc.prize, SpellPrize):
+                    character = loc.prize.character
+                    if character is not None:
+                        character_name = character.__name__.replace("RecruitmentPrize", "")
+                        prize_name = f"{prize_name} ({character_name})"
+                    else:
+                        prize_name = f"{prize_name} (No Character)"
             result[location_name] = prize_name
+        return result
+
+    def _get_spell_character_assignments_json(self) -> dict[str, str]:
+        """Get JSON representation of all spell-to-character assignments.
+
+        Returns a dictionary mapping spell names to their assigned character names.
+        This works whether spells are in the general item pool or learned by level-up.
+        """
+        result: dict[str, str] = {}
+
+        # Get all spell prizes from locations
+        for loc in self.locations.values():
+            if loc.prize and isinstance(loc.prize, SpellPrize):
+                spell_name = type(loc.prize).__name__
+                character = loc.prize.character
+                if character is not None:
+                    character_name = character.__name__.replace("RecruitmentPrize", "")
+                    result[spell_name] = character_name
+                else:
+                    result[spell_name] = "No Character"
+
         return result
 
     event_2496_startup = []
@@ -501,6 +535,7 @@ class GameWorld:
             "shops": self._get_shops_json(),
             "palettes": self._get_palettes_json(),
             "spell_learning_levels": self._get_spell_learning_levels_json(),
+            "spell_character_assignments": self._get_spell_character_assignments_json(),
             "password": self.password,
             "songs": [self.song_1, self.song_2, self.song_3],
         }
@@ -779,9 +814,8 @@ class GameWorld:
         progress_callback: Callable[[str, int], None] | None = None,
         debug_bps_patches: bool = False,
     ):
-        if debug_bps_patches:
-            print(seed)
-            print(settings.flag_string)
+        print(seed)
+        print(settings.flag_string)
         self._progress_callback = progress_callback
         self._report_progress("Parsing settings...", 0)
         self.allies = allies
@@ -838,9 +872,6 @@ class GameWorld:
 
         # Apply equipment and spell element settings
         apply_equipment_settings(self)
-
-        # Assign spell prize models based on finalized elements
-        assign_spell_prize_models(self)
 
         # Build item impact categories (used for shop shuffling and other systems)
         self._build_item_impact_categories()
