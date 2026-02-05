@@ -846,6 +846,7 @@ class MushroomKingdomBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _pack_id = PACK179_MUSHROOM_KINGDOM_BOSS
     _post_unlocks_event_id = E1195_BANDITS_WAY_BOSS_UNLOCKS
+    _henchman_can_run_away = False
 
     _npc_slots = [
         BossFightLocationNPC(
@@ -920,6 +921,7 @@ class MushroomKingdomBossFight(BossFightLocation):
             ],
             pack_id=PACK010_KINGDOM_HENCHMEN_1,
             skip_swap_if_flag="KeepMinigameSpritesIntact",
+            container_event=E0051_HENCHMAN_CONTAINER_1,
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -960,6 +962,7 @@ class MushroomKingdomBossFight(BossFightLocation):
             ],
             pack_id=PACK011_KINGDOM_HENCHMEN_2,
             skip_swap_if_flag="KeepMinigameSpritesIntact",
+            container_event=E0052_HENCHMAN_CONTAINER_2,
         ),
     ]
 
@@ -3665,6 +3668,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _pack_id = PACK161_TOWER_FIRST_FIGHT
     _post_unlocks_event_id = E1201_TOWER_CURTAIN_BOSS_UNLOCKS
+    _henchman_can_run_away = False
     _npc_slots = [
         BossFightLocationNPC(
             R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
@@ -3724,6 +3728,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             [NPC_4, NPC_1, NPC_0, NPC_3, NPC_0, NPC_2],
             PACK000_TOWER_HENCHMAN_1,
             skip_swap_if_flag="KeepMinigameSpritesIntact",
+            container_event=E0053_HENCHMAN_CONTAINER_3,
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -3737,6 +3742,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             [NPC_0, NPC_2, NPC_1, NPC_4, NPC_1, NPC_1],
             PACK001_TOWER_HENCHMAN_2,
             skip_swap_if_flag="KeepMinigameSpritesIntact",
+            container_event=E0054_HENCHMAN_CONTAINER_4,
         ),
         BossFightLocationHenchmanNPC(
             [
@@ -3750,6 +3756,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             [NPC_8, NPC_3, NPC_2, NPC_5, NPC_2, NPC_3],
             PACK054_TOWER_HENCHMAN_3,
             skip_swap_if_flag="KeepMinigameSpritesIntact",
+            container_event=E0055_HENCHMAN_CONTAINER_5,
         ),
         BossFightLocationHenchmanNPC(
             [R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA], [NPC_4]
@@ -5471,6 +5478,7 @@ class ShipFinalBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _pack_id = PACK166_SHIP_SECOND_BOSS
     _post_unlocks_event_id = E1208_SHIP_END_BOSS_UNLOCKS
+    _henchman_can_run_away = False
     _npc_slots = [
         BossFightLocationNPC(
             R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,

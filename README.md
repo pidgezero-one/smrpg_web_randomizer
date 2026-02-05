@@ -43,7 +43,7 @@ Restart the container. You may need to delete site data in your browser's develo
 
 For when you suspect you're having a problem with cached old data.  
 ```bash
-find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null && find . -type f -name "*.pyc" -delete && docker compose down -v && docker compose build --no-cache && docker compose up
+find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null && find . -type f -name "*.pyc" -delete && docker compose down -v && docker system prune -af && docker compose build --no-cache && docker compose up
 ```
 
 

@@ -1,4 +1,4 @@
-# E0331_EMPTY
+# E0331_EXIT_TOADSTOOLS_ROOM_AFTER_RESCUE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -33,4 +33,10 @@ from ....spells.spells import *
 
 
 script = EventScript([
+    JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["exit_toadstools_room_to_bad_ending"]),
+    JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_TOAD_RESCUED, ["exit_toadstools_room_to_bad_ending"]),
+    EnterArea(R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM, SOUTHWEST, 12, 95, 2, False, False, True, identifier="exit_toadstools_room_to_bad_ending"),
+    Return(),
+    EnterArea(R032_MUSHROOM_KINGDOM_CASTLE_ENTRANCE_TO_TOADSTOOLS_ROOM, SOUTHWEST, 12, 95, 2, False, False, True, identifier="exit_toadstools_room_to_good_ending"),
+    Return(),
 ])

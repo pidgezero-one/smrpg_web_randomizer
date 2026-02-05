@@ -854,7 +854,6 @@ def set_locations(world: GameWorld) -> None:
                     for r in temp_loc._rooms:
                         room = world.rooms._rooms[r]
                         if room is not None and len(room.objects) > 27:  # 0x1B, leaves no room for +0x14
-                            print(f"  ⚠ Skipping {loc_cls.__name__} - Room {r} has {len(room.objects)} objects (max 27)")
                             can_use = False
                             break
                     if can_use:

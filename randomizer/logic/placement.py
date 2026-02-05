@@ -55,9 +55,6 @@ def place(
     while pending:
         iteration += 1
         length_at_start = len(pending)
-        print(f"  [Placement iteration {iteration}] {length_at_start} items remaining to place")
-        if iteration == 1 or length_at_start <= 10:
-            print(f"    Items: {[type(i).__name__ for i in pending]}")
 
         # Check if there's a character in the pending list
         character_items = [item for item in pending if isinstance(item, CharacterPrize)]
@@ -117,35 +114,23 @@ def place(
                 reduce = random.randint(0, 10)
                 if reduce < 4:
                     accessible_locations = star_locations
-            #print(f"  Accessible locations for {type(item).__name__}: {[type(l).__name__ for l in accessible_locations]}")
             if len(accessible_locations) == 0:
-                # Debug: Check why no locations are available
-                if not placed_this_iteration and len(pending) <= 10:
-                    total_empty = len([l for l in world.locations.values() if not l.has_item])
-                    reachable = len([l for l in world.locations.values() if l.can_access(player_has, world) and not l.has_item])
-                    accepting = len([l for l in world.locations.values() if not l.has_item and l.can_access(player_has, world) and l.can_accept(item, player_has, world)])
-                    print(f"    ⚠ {type(item).__name__}: {total_empty} empty locations, {reachable} reachable, {accepting} can accept this item")
                 # Move onto the next item to see if it can be placed
                 continue
             placed_this_iteration = True
             random.shuffle(accessible_locations)
             accessible_locations[0].set_prize(item)
             pending.remove(item)
-            print(f"    ✓ Placed {type(item).__name__} at {type(accessible_locations[0]).__name__}")
             if on_placed:
                 on_placed(item, accessible_locations[0])
             break
             # Start again from the beginning of the now-shortened pending list
 
         if len(pending) == 0:
-            print(f"  ✓ All items placed successfully after {iteration} iterations")
             break
         if len(pending) == length_at_start:
-            print(f"  ✗ No progress made! {len(pending)} items stuck:")
-            print(f"    Unplaced items: {[type(p).__name__ for p in pending]}")
             if not can_overflow:
                 raise PlacementException(len(pending), [type(p).__name__ for p in pending])
             else:
-                print(f"    Overflow allowed, continuing with {len(pending)} items unplaced")
                 break
             

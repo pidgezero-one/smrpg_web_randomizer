@@ -110,7 +110,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 1
-            npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC,
+            npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC_2_CLONEABLE,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0721_PEACHS_GRANDMA,
             action_script=A0015_DO_NOTHING,

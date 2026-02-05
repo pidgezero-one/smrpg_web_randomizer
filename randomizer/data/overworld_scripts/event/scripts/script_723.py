@@ -38,7 +38,11 @@ script = EventScript([
 	FadeOutMusicToVolume(duration=1, volume=127),
 	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["EVENT_723_run_event_as_subroutine_20"]),
     JmpIfBitSet(KINGDOM_BOUNCER_FREED, ["EVENT_723_run_event_as_subroutine_20"]),
+    ActionQueueAsync(NPC_9, subscript=[
+        A_TransferToXYZF(16, 113, 2, NORTHWEST)
+	]),
     SummonObjectToCurrentLevel(NPC_10),
+    SetSyncActionScript(NPC_10, A0130_HENCHMAN_TERRORIZING_EAST_GUARD),
 	SetSyncActionScript(NPC_9, A0131_EAST_GUARD_OCCUPIED),
 	FadeInFromBlack(sync=False, identifier="EVENT_723_run_event_as_subroutine_20"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_723_ret_9"]),

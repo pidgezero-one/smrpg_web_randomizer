@@ -271,6 +271,29 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_2 = NPC(
     byte5_bit7=False,
     byte6_bit2=False,
 )
+TOADSTOOL_WALKING_DOWN_LEFT_NPC_2_CLONEABLE = NPC(
+    sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=3,
+    obtuse_axis=3,
+    height=12,
+    y_shift=1,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=2,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
 
 MARIO_WALKING_DOWN_LEFT_NPC_2 = NPC(
     sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
@@ -11626,7 +11649,7 @@ MEZZO_BOMB_NPC = NPC(
 
 BUNDT_OBJECT_NPC = NPC(
     sprite_id=SPR0721_BUNDT_OBJECT_MAYBE,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
     height=8,
@@ -13496,7 +13519,7 @@ TORTE_NPC_4 = NPC(
 
 BUNDT_OBJECT_NPC_2 = NPC(
     sprite_id=SPR0728_BUNDT_OBJECT_MAYBE_2,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
     height=8,
@@ -18898,7 +18921,7 @@ JOHNNY_2_SMALL_NPC = NPC(
 
 BUNDT_2_SMALL_NPC = NPC(
     sprite_id=SPR0740_BUNDT_2_SMALL,
-    shadow_size=ShadowSize.OVAL_SMALL,
+    shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=3,
     obtuse_axis=3,
     height=12,

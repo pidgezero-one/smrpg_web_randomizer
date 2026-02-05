@@ -2,13 +2,6 @@
   "version": "9.0.0",
   "flags": "P(rchars)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko)",
   
-Spells Anywhere
-🚧 Set up logic that assigns spells evenly to character recruits
-🚧 Add dialogs, terminating and auto-terminating
-🚧 Set up render events for chests, NPCs, freestandings, river, packets, and booster hill
-🚧 Add sprites (one for each element plus a grey one for non element) and define models
-🚧 Models per spell change based on spell infusion and element randomization settings
-- Dialogs and sounds don't play if the character hasn't been recruited yet
 
 General
 🚧 dying to failed slots does not game over
@@ -22,16 +15,14 @@ General
 🚧 cymbals (music note) packet shows up as a flower
 🚧 frog coins in chest render wrong packet, but regular coins seem to work correctly
 🚧 gold paint in chest rendered as a blue drink
-🚧 freestanding coins are all the wrong size when they are single coins (bandits way, booster tower)
 🚧 bowser's runaway sprite is wrong
-🚧 some of bowser's sprites were not shiftd correctly, some tiles broken
 🚧 beetlemania packet is wrong sprite
-🚧 Might be able to condense packets. all blue items for example use the same sprite but just show a specific mold based on a variable set when you open the chest.
-- beetle packet doesn't work
 
 Boss-specific
 - torte henchman is untargetable in battle
 - kggg trying to run battle dialogs
+- fancy bundt animations are wrong, cross ref against demake
+- jinx 4 too - am i increasing the counter?
 
 Mushroom Way 
 - Chest sprites in MW2 are broken. Something wrong with vram. Possibly caused by remake items
@@ -39,19 +30,17 @@ Mushroom Way
 
 Mushroom kingdom
 🚧 bowyer in mushroom kingdom: aero henchmen are upside down when they shouldnt be
-🚧 also they don't die, also attach animations are wrong
-- can't jump up to main hall chest when kingdom is invaded and door does not work, also does not work after liberation
-- toad being harassed in main hall dos not animate after kingdom liberated and henchman fight does not work, same with toad in yard
-- peach not rendering in her room
-- yellow note not rendering in raz and rainis house
-- vault chests no packets
+🚧 hallway fight still doesnt work
+- can't jump up to main hall chest when kingdom is invaded
+🚧 toad in yard in liberated mode is desynced from enemy chasing him
+🚧 yard fight also doesnt work
+🚧 vault chests no packets
 - palette is wrong if you get into calamari fight in mushroom kingdom (failed slots)
+🚧 if you rescue toad in liberated mode, leaving toadstool's room should always load unoccupied rooms
+🚧 guest room should not change music when doing quests in liberated mode
 
 Kero sewers
 - kero sewers is not blocked when it should be
-
-Tadpole Pond
-🚧 add booster hill to hint system. BOOSTER_HILL_FLOWER_COUNTER < 15, only when hill available
 
 Rose way
 - palettes in rose way still broken

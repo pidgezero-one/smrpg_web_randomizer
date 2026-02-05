@@ -35,7 +35,7 @@ script = EventScript([
 	SetBit(TEMP_707C_5),
 	SetBit(TEMP_707C_6),
 	SetBit(TEMP_707C_7),
-	RunEventAsSubroutine(E1189_HENCHMAN_BATTLE_PACK_SELECTOR),
+	RunEventAsSubroutine(E0051_HENCHMAN_CONTAINER_1),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	PauseActionScript(NPC_9),
 	ActionQueueSync(target=MARIO, subscript=[

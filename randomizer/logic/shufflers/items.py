@@ -55,7 +55,6 @@ def _on_item_placed(
                 world._spell_assignments = {}
             char_type = item.character
             world._spell_assignments[char_type] = world._spell_assignments.get(char_type, 0) + 1
-            print(f"    → {type(item).__name__} assigned to {char_type.__name__} (now has {world._spell_assignments[char_type]} spells)")
 
     # Update Mimic location world areas to match where the launcher was placed
     if isinstance(item, FirstMimicFightLauncher):
@@ -85,10 +84,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     3. Places prizes using assumed-reachability algorithm
     4. Verifies all required prizes were placed
     """
-    print(f"\n{'='*50}")
-    print(f"STARTING PRIZE SHUFFLING")
-    print(f"{'='*50}")
-
     from ...types.flags import (
         ShuffleItems,
         ShuffleShops,
@@ -328,11 +323,8 @@ def shuffle_prizes(world: GameWorld) -> None:
         PsychBombSpell,
     )
     # Start off emptying every location of every type
-    total_locations = len(world.locations.values())
-    print(f"Total locations in world: {total_locations}")
     for loc in world.locations.values():
         loc.set_prize(None)
-    print(f"✓ All locations emptied")
 
     # Reset spell assignments for SpellsAnywhere mode (handles retry scenarios)
     world._spell_assignments = None
@@ -1013,15 +1005,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     random.shuffle(low_vol_character_prizes)
     random.shuffle(low_vol_other_prizes)
 
-    print(f"\n=== Prize Tier Distribution ===")
-    print(f"High-volume characters: {len(high_vol_character_prizes)}")
-    print(f"High-volume key items: {len(high_vol_other_prizes)}")
-    print(f"Low-volume characters: {len(low_vol_character_prizes)}")
-    print(f"Low-volume key items: {len(low_vol_other_prizes)}")
-    print(f"Post-progression priority: {len(post_progression_priority)}")
-    print(f"Must-include items: {len(must_include)}")
-    print(f"Less important items: {len(not_important)}")
-
     # Build progression prizes with bias: 80% chance to exhaust current tier before moving on
     prize_tiers = [
         high_vol_character_prizes,
@@ -1042,33 +1025,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     for tier in prize_tiers:
         progression_prizes.extend(tier)
 
-    # Show summary before placement
-    empty_locations = len([l for l in world.locations.values() if not l.has_item])
-    print(f"\n=== Pre-Placement Summary ===")
-    print(f"Total items to place: {len(progression_prizes) + len(post_progression_priority) + len(must_include) + len(not_important)}")
-    print(f"Empty locations available: {empty_locations}")
-
-    """     print(f"Priority 1:")
-    for p in progression_prizes:
-        print(f"  {type(p).__name__}")
-    print(f"Priority 2:")
-    for p in must_include:
-        print(f"  {type(p).__name__}")
-    print(f"Priority 3:")
-    for p in not_important:
-        print(f"  {type(p).__name__}") """
-
-    # SpellsAnywhere mode: spells will be dynamically assigned to characters at placement time
-    # No pre-assignment needed - the _on_item_placed callback handles character assignment
-    if world.settings.isflag_enabled(SpellsAnywhere):
-        # Count spell prizes for logging
-        spell_count = 0
-        for prize_list in [progression_prizes, low_vol_other_prizes, high_vol_other_prizes,
-                          must_include, post_progression_priority]:
-            spell_count += len([p for p in prize_list if isinstance(p, SpellPrize)])
-        if spell_count > 0:
-            print(f"  SpellsAnywhere mode: {spell_count} spells will be dynamically assigned to characters at placement time")
-
     # Shuffle!
     # Place items with restricted placement options first (e.g., SlotsPrize)
     # These must be placed before other items fill up their limited eligible locations
@@ -1081,7 +1037,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         )
 
     # Place critical/progress items (with high-vol bias applied)
-    print(f"\n[POOL 1/4] Placing progression prizes ({len(progression_prizes)} items)")
     place(
         world,
         progression_prizes,
@@ -1090,17 +1045,13 @@ def shuffle_prizes(world: GameWorld) -> None:
 
     # Place post-progression priority items (slots/exp stars, progressive cards, crystal shard)
     if post_progression_priority:
-        print(f"\n[POOL 2/4] Placing post-progression priority items ({len(post_progression_priority)} items)")
         random.shuffle(post_progression_priority)
         place(
             world,
             post_progression_priority,
             on_placed=lambda i, l: _on_item_placed(world, i, l),
         )
-    else:
-        print(f"\n[POOL 2/4] No post-progression priority items to place")
 
-    print(f"\n[POOL 3/4] Placing must-include items ({len(must_include)} items)")
     random.shuffle(must_include)
     place(
         world,
@@ -1109,7 +1060,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         force_frog_disciple=True
     )
 
-    print(f"\n[POOL 4/4] Placing less important items ({len(not_important)} items, overflow allowed)")
     random.shuffle(not_important)
     place(
         world,
@@ -1118,16 +1068,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         on_placed=lambda i, l: _on_item_placed(world, i, l),
         force_frog_disciple=True
     )
-
-    # Final summary
-    filled_locations = len([l for l in world.locations.values() if l.has_item])
-    empty_locations = len([l for l in world.locations.values() if not l.has_item])
-    print(f"\n{'='*50}")
-    print(f"PRIZE SHUFFLING COMPLETE")
-    print(f"{'='*50}")
-    print(f"Filled locations: {filled_locations}")
-    print(f"Empty locations: {empty_locations}")
-    print(f"Total locations: {filled_locations + empty_locations}")
 
 
 def assign_spell_prize_models(world: GameWorld) -> None:

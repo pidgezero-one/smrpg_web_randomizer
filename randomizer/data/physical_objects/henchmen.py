@@ -454,4 +454,4 @@ class PoundetteHenchman(HenchmanNPC):
 class AeroHenchman(HenchmanNPC):
     """Aero henchman NPC for boss fights."""
 
-    _base = AERO_UPRIGHT_NPC
+    _base = AERO_NPC

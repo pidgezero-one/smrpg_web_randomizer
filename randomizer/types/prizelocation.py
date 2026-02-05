@@ -1684,6 +1684,10 @@ class BossFightLocation(PrizeLocation):
     # Set to True for dojo fights, mimic fights with mimics anywhere, etc.
     _allow_run_away: bool = False
 
+    # Whether the player can run away from henchmen fights at this location
+    # Defaults to True (can escape). Set to False for Mushroom Kingdom, Booster Tower, etc.
+    _henchman_can_run_away: bool = True
+
     _originally_held: type[BossFightPrize]
 
     @property
@@ -1843,6 +1847,19 @@ class BossFightLocation(PrizeLocation):
         ] = []
         event_script_battle_packs: list[tuple[int, int, int]] = []
 
+        # Set can_run_away for ALL henchman slot packs upfront
+        # This ensures the setting is applied even if no henchmen are assigned
+        all_henchman_slots = (
+            (self.mook_henchman_slots or [])
+            + (self.character_henchman_slots or [])
+            + (self.tiny_henchman_slots or [])
+        )
+        for slot in all_henchman_slots:
+            if slot.pack_id is not None:
+                henchman_pack = world.battle_packs._packs[slot.pack_id]
+                for f in henchman_pack.formations:
+                    f.set_can_run_away(self._henchman_can_run_away)
+
         # Assign mook henchmen
         if self.mook_henchman_slots and self.prize.mook_henchmen:
             # Filter out slots that should skip swapping
@@ -1879,6 +1896,7 @@ class BossFightLocation(PrizeLocation):
                         f.set_members(
                             formation_members
                         )  # pyright: ignore[reportArgumentType]
+                        f.set_can_run_away(self._henchman_can_run_away)
 
         # Assign character henchmen
         if self.character_henchman_slots:
@@ -1903,6 +1921,7 @@ class BossFightLocation(PrizeLocation):
                     henchman_pack = world.battle_packs._packs[slot.pack_id]
                     for f in henchman_pack.formations:
                         f.set_members([fr])  # pyright: ignore[reportArgumentType]
+                        f.set_can_run_away(self._henchman_can_run_away)
             henchmen_assignments.extend(zip(active_char_slots[: len(chars)], chars))
 
             # Fill remaining character slots with mooks if needed
@@ -1941,6 +1960,7 @@ class BossFightLocation(PrizeLocation):
                         f.set_members(
                             formation_members
                         )  # pyright: ignore[reportArgumentType]
+                        f.set_can_run_away(self._henchman_can_run_away)
                 henchmen_assignments.extend(zip(active_char_slots[len(chars) :], mooks))
 
         # Assign tiny henchmen
@@ -1962,7 +1982,9 @@ class BossFightLocation(PrizeLocation):
                 assert room is not None
                 obj = room.get_npc_by_target_id(room_target)
                 assert obj is not None
-                obj._npc = henchman.model().base
+                new_npc = henchman.model().base
+                print(f"DEBUG: Setting henchman NPC in room {room_id}, target {room_target}: sprite_id={new_npc.sprite_id}")
+                obj._npc = new_npc
                 if slot.pack_id is not None:
                     if isinstance(obj, BattlePackNPC):
                         obj.set_battle_pack(slot.pack_id)
