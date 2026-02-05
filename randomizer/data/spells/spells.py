@@ -3862,5 +3862,6 @@ ALL_SPELLS = SpellCollection(
         ArrowRainSpell(),  # index: 102
         BigBangSpell(),  # index: 103
         CakerBeamSpell(),  # index: 108
-    ]
+    ],
+    additional_desc_ranges=[(0x3A1EA0, 0x3A20F0)]
 )

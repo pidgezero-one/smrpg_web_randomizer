@@ -1,4 +1,4 @@
-# SPR0174_AERO_UPRIGHT
+# SPR0174_AERO_OBJECT
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 from randomizer.data.variables.sprite_palette_names import SPAL233_AERO_UPRIGHT

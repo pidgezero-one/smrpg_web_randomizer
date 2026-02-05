@@ -31,7 +31,7 @@ def _get_enemy_lists():
 
     from ...data.enemies.enemies import (
         # Sidekicks
-        BODYGUARDEnemy, GOOMBETTEEnemy, FAUTSOEnemy, BAHAMUTTEnemy, BAHAMUTTEnemy2,
+        AEROEnemy, BODYGUARDEnemy, GOOMBETTEEnemy, FAUTSOEnemy, BAHAMUTTEnemy, BAHAMUTTEnemy2,
         KINGBOMBEnemy, JINXCLONEEnemy, MARIOCLONEEnemy, MARIOCLONESEnemy,
         MALLOWCLONEEnemy, MALLOWCOPYSEnemy, GENOCLONEEnemy, GENOCLONESEnemy,
         BOWSERCLONEEnemy, BOWSERCOPYSEnemy, TOADSTOOL2Enemy, TOADSTOOL3Enemy,

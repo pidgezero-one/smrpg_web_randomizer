@@ -1,3 +1,4 @@
+# pyright: reportWildcardImportFromLibrary=false
 from __future__ import annotations
 from typing import Any, Callable, Type, TypeVar, cast
 import random
@@ -5,8 +6,6 @@ import hashlib
 import re
 from copy import copy, deepcopy
 from concurrent.futures import ThreadPoolExecutor
-
-#
 
 from randomizer.data.sprites.overworld_map import (
     BOWSER_OVERWORLD,
@@ -86,7 +85,7 @@ from .prize import (
 from .ally import Ally
 
 # TypeVar for spell types to allow CharacterSpell and other Spell subclasses
-SpellType = TypeVar('SpellType', bound=Spell)
+SpellT = TypeVar('SpellT', bound=Spell)
 from .prizelocation import (
     PrizeLocation,
 )
@@ -193,7 +192,7 @@ class GameWorld:
     battle_packs: PackCollection
     rooms: RoomCollection
     shops: ShopCollection
-    spells: SpellCollection
+    spells: SpellCollection[Spell]
     sprites: SpriteCollection
     event_palettes: EventPaletteCollection
     sprite_palettes: SpritePaletteCollection
@@ -334,7 +333,7 @@ class GameWorld:
         ), f"Attack {attack_id} does not exist in EnemyAttackCollection"
         return a
 
-    def get_spell(self, spell_id: int | Type[SpellType]) -> Spell:
+    def get_spell(self, spell_id: int | Type[SpellT]) -> Spell:
         if isinstance(spell_id, int):
             s = next((s for s in self.spells.spells if s.index == spell_id), None)
         else:
@@ -806,7 +805,7 @@ class GameWorld:
         battle_packs: PackCollection,
         rooms: RoomCollection,
         shops: ShopCollection,
-        spells: SpellCollection,
+        spells: SpellCollection[Spell],
         sprites: SpriteCollection,
         world_map_locations: WorldMapLocationCollection,
         event_palettes: EventPaletteCollection,
@@ -885,12 +884,19 @@ class GameWorld:
         failure_counts: dict[int, int] = dict()
         MAX_FAILURES_PER_COUNT = 5
 
+        # Save a snapshot of rooms before shuffling so we can restore on retry
+        # (shuffle adds invisible items to rooms which would accumulate on retries)
+        rooms_snapshot = deepcopy(self.rooms)
+
         success = False
         while not success:
             try:
                 self._shuffle_items()
                 success = True
             except PlacementException as e:
+                # Restore rooms to pre-shuffle state before retrying
+                self.rooms = deepcopy(rooms_snapshot)
+
                 # Track this failure count
                 count = e.unplaced_count
                 failure_counts[count] = failure_counts.get(count, 0) + 1
@@ -922,7 +928,7 @@ class GameWorld:
         self._apply_shuffle_results()
 
         self._randomize_enemy_stats()
-            
+
 
         # Update HP-based AI thresholds after all stat mutations are complete
         self._update_enemy_hp_thresholds()

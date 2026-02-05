@@ -521,31 +521,31 @@ DI1227_SHAMAN_SALESMAN_800_COINS, ''' I found an incredible item.
             dialog_id = p.dialog_id
             dialog_id_2 = p.autoterm_dialog_id
             world.overworld_dialogs.search_and_replace_in_all_dialogs(f"`SPELL_{idx}`", spell.title)
-            if isinstance(p.character, MarioRecruitmentPrize):
+            if p.character is MarioRecruitmentPrize:
                 character = world.allies._allies[0]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(MARIO)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
-            if isinstance(p.character, ToadstoolRecruitmentPrize):
+            elif p.character is ToadstoolRecruitmentPrize:
                 character = world.allies._allies[1]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(TOADSTOOL)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
-            if isinstance(p.character, BowserRecruitmentPrize):
+            elif p.character is BowserRecruitmentPrize:
                 character = world.allies._allies[2]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(BOWSER)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
-            if isinstance(p.character, GenoRecruitmentPrize):
+            elif p.character is GenoRecruitmentPrize:
                 character = world.allies._allies[3]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(GENO)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
-            if isinstance(p.character, MallowRecruitmentPrize):
+            elif p.character is MallowRecruitmentPrize:
                 character = world.allies._allies[4]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(MALLOW)

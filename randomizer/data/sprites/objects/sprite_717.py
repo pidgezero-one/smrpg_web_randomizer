@@ -1,4 +1,4 @@
-# SPR0717_AERO
+# SPR0717_AERO_CHARACTER
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 from randomizer.data.variables.sprite_palette_names import SPAL542_AERO

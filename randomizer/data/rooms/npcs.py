@@ -6006,7 +6006,7 @@ FALLING_STEPPING_BRIDGE_BLOCK_NPC_2 = NPC(
 )
 
 AERO_NPC = NPC(
-    sprite_id=SPR0717_AERO,
+    sprite_id=SPR0717_AERO_CHARACTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -12007,7 +12007,7 @@ POISON_TOXIC_GAS_NPC = NPC(
 )
 
 AERO_UPRIGHT_NPC = NPC(
-    sprite_id=SPR0174_AERO_UPRIGHT,
+    sprite_id=SPR0174_AERO_OBJECT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -12917,7 +12917,7 @@ BELOME_SCARECROW_NPC_4 = NPC(
 )
 
 AERO_NPC_2 = NPC(
-    sprite_id=SPR0717_AERO,
+    sprite_id=SPR0717_AERO_CHARACTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,

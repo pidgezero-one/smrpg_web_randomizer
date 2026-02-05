@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 from ....spells.spells import *
 
-script = EventScript([
 
+script = EventScript([
 ])

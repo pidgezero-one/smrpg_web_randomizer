@@ -88,9 +88,13 @@ def randomize_enemy_stats(world: GameWorld) -> None:
     )
     from randomizer.types.flags import EnemyStats, EnemyStatsShuffleOptions
     from randomizer.types.enemy import Enemy as CustomEnemy
+    from randomizer.logic.setup.enemy_tweaks import _get_enemy_lists
 
     all_enemies = list(world.enemies.enemies)
 
+    # Get sidekick and boss enemy types to exclude from inter-shuffling
+    sidekick_types, boss_types = _get_enemy_lists()
+    boss_related_types = set(sidekick_types) | set(boss_types)
 
     if (
         world.settings.get_flag(EnemyStats).selected
@@ -103,7 +107,11 @@ def randomize_enemy_stats(world: GameWorld) -> None:
         )
 
         # Get list of non-boss enemies for inter-shuffling
-        non_boss_enemies = [e for e in world.enemies.enemies if not e.ohko_immune]
+        # Exclude both ohko_immune enemies AND sidekick enemies (boss henchmen)
+        non_boss_enemies = [
+            e for e in world.enemies.enemies
+            if not e.ohko_immune and type(e) not in boss_related_types
+        ]
         
 
         # Determine which attributes to shuffle
@@ -154,6 +162,7 @@ def randomize_enemy_stats(world: GameWorld) -> None:
                 enemy.set_morph_chance(chance)
 
         # Mutate individual enemy stats
+        # Cap changes at ±50% to prevent wild swings, especially for scaled boss stats
         for enemy in all_enemies:
             old_stats = {
                 "hp": int(enemy.hp),
@@ -167,16 +176,16 @@ def randomize_enemy_stats(world: GameWorld) -> None:
                 "magic_evade": int(enemy.magic_evade),
             }
 
-            # Mutate numeric stats
-            enemy.set_hp(mutate_normal(int(enemy.hp), minimum=1, maximum=32000))
-            enemy.set_speed(mutate_normal(int(enemy.speed), minimum=0, maximum=255))
-            enemy.set_attack(mutate_normal(int(enemy.attack), minimum=1, maximum=255))
-            enemy.set_defense(mutate_normal(int(enemy.defense), minimum=1, maximum=255))
-            enemy.set_magic_attack(mutate_normal(int(enemy.magic_attack), minimum=1, maximum=255))
-            enemy.set_magic_defense(mutate_normal(int(enemy.magic_defense), minimum=1, maximum=255))
-            enemy.set_fp(mutate_normal(int(enemy.fp), minimum=1, maximum=31))
-            enemy.set_evade(mutate_normal(int(enemy.evade), minimum=0, maximum=100))
-            enemy.set_magic_evade(mutate_normal(int(enemy.magic_evade), minimum=0, maximum=100))
+            # Mutate numeric stats with ±50% cap
+            enemy.set_hp(mutate_normal(int(enemy.hp), minimum=1, maximum=32000, max_change_ratio=0.5))
+            enemy.set_speed(mutate_normal(int(enemy.speed), minimum=0, maximum=255, max_change_ratio=0.5))
+            enemy.set_attack(mutate_normal(int(enemy.attack), minimum=1, maximum=255, max_change_ratio=0.5))
+            enemy.set_defense(mutate_normal(int(enemy.defense), minimum=1, maximum=255, max_change_ratio=0.5))
+            enemy.set_magic_attack(mutate_normal(int(enemy.magic_attack), minimum=1, maximum=255, max_change_ratio=0.5))
+            enemy.set_magic_defense(mutate_normal(int(enemy.magic_defense), minimum=1, maximum=255, max_change_ratio=0.5))
+            enemy.set_fp(mutate_normal(int(enemy.fp), minimum=1, maximum=31, max_change_ratio=0.5))
+            enemy.set_evade(mutate_normal(int(enemy.evade), minimum=0, maximum=100, max_change_ratio=0.5))
+            enemy.set_magic_evade(mutate_normal(int(enemy.magic_evade), minimum=0, maximum=100, max_change_ratio=0.5))
 
             # For bosses, don't let stats go below vanilla values
             if enemy.ohko_immune:
