@@ -57,7 +57,7 @@ class JumpSpell(CharacterSpell):
     _target_not_self = False
     _timing_modifiers = ONE_TIMING_FOR_125_OR_15X_DMG
     _damage_modifiers = NO_MODIFIERS
-    _description = ""
+    _description = ' Stomp foes! Press "Y" just before hit!'
 
     @property
     def title(self) -> str:
@@ -69,6 +69,17 @@ class JumpSpell(CharacterSpell):
             return "Thunder Jump"
         else:
             return self._title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.FIRE:
+            return ' Stomp foes with fire!\n Press "Y" just before hit!'
+        elif self.element == Element.ICE:
+            return ' Stomp foes with ice!\n Press "Y" just before hit!'
+        elif self.element == Element.THUNDER:
+            return ' Stomp foes with thunder!\n Press "Y" just before hit!'
+        else:
+            return self._description
 
 
 class FireOrbSpell(CharacterSpell):
@@ -119,6 +130,17 @@ class FireOrbSpell(CharacterSpell):
             return "Thunder Ball"
         else:
             return self._remake_name or self.title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.JUMP:
+            return ' Earth orb!\n Push "Y"\n repeatedly!'
+        elif self.element == Element.ICE:
+            return ' Ice orb!\n Push "Y"\n repeatedly!'
+        elif self.element == Element.THUNDER:
+            return ' Thunder orb!\n Push "Y"\n repeatedly!'
+        else:
+            return self._description
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
@@ -280,6 +302,17 @@ class SuperJumpSpell(CharacterSpell):
             return "Thndr S.Jump"
         else:
             return self._title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.FIRE:
+            return ' Push "Y"\n prior to hit\n for FIRE DAMAGE!'
+        elif self.element == Element.ICE:
+            return ' Push "Y"\n prior to hit\n for ICE DAMAGE!'
+        elif self.element == Element.THUNDER:
+            return ' Push "Y"\n prior to hit\n for THUNDER DAMAGE!'
+        else:
+            return self._description
 
 
 class SuperFlameSpell(CharacterSpell):
@@ -330,6 +363,17 @@ class SuperFlameSpell(CharacterSpell):
             return "S. ThndrBall"
         else:
             return self._remake_name or self.title
+
+    @property
+    def description(self) -> str:
+        if self.element == Element.JUMP:
+            return ' Earth blast!\n Push "Y"\n repeatedly!'
+        elif self.element == Element.ICE:
+            return ' Ice blast!\n Push "Y"\n repeatedly!'
+        elif self.element == Element.THUNDER:
+            return ' Thunder blast!\n Push "Y"\n repeatedly!'
+        else:
+            return self._description
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
@@ -491,6 +535,17 @@ class UltraJumpSpell(CharacterSpell):
             return "Thndr U.Jump"
         else:
             return self._title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.FIRE:
+            return ' Push "Y"\n prior to hit\n for FIRE DAMAGE!'
+        elif self.element == Element.ICE:
+            return ' Push "Y"\n prior to hit\n for ICE DAMAGE!'
+        elif self.element == Element.THUNDER:
+            return ' Push "Y"\n prior to hit\n for THUNDER DAMAGE!'
+        else:
+            return self._description
 
 
 class UltraFlameSpell(CharacterSpell):
@@ -541,6 +596,17 @@ class UltraFlameSpell(CharacterSpell):
             return "U. ThndrBall"
         else:
             return self._remake_name or self.title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.JUMP:
+            return ' Earth orbs!\n Push "Y"\n repeatedly!'
+        elif self.element == Element.ICE:
+            return ' Ice orbs!\n Push "Y"\n repeatedly!'
+        elif self.element == Element.THUNDER:
+            return ' Thunder orbs!\n Push "Y"\n repeatedly!'
+        else:
+            return self._description
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
@@ -857,6 +923,17 @@ class PsychBombSpell(CharacterSpell):
             return "Thunder Bomb"
         else:
             return self._title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.JUMP:
+            return ' Make me mad\n and my earth\n bomb will go\n...BOOM!'
+        elif self.element == Element.ICE:
+            return ' Make me mad\n and my ice\n bomb will go\n...BOOM!'
+        elif self.element == Element.THUNDER:
+            return ' Make me mad\n and my thunder\n bomb will go\n...BOOM!'
+        else:
+            return self._description
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
@@ -961,6 +1038,17 @@ class CrusherSpell(CharacterSpell):
             return "ThndrCrusher"
         else:
             return self._title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.FIRE:
+            return ' Fire rock slide!\n Hit "Y" prior\n to contact!'
+        elif self.element == Element.ICE:
+            return ' Ice rock slide!\n Hit "Y" prior\n to contact!'
+        elif self.element == Element.THUNDER:
+            return ' Thunder rock slide!\n Hit "Y" prior\n to contact!'
+        else:
+            return self._description
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
@@ -1023,6 +1111,17 @@ class BowserCrushSpell(CharacterSpell):
         else:
             return self._remake_name or self.title
         
+    @property
+    def description(self) -> str:
+        if self.element == Element.FIRE:
+            return " Bowser's\nultimate fire\n weapon!"
+        elif self.element == Element.ICE:
+            return " Bowser's\nultimate ice\n weapon!"
+        elif self.element == Element.THUNDER:
+            return " Bowser's\nultimate thunder\n weapon!"
+        else:
+            return self._description
+        
     # honestly cant figure out where the colour is here
 
 
@@ -1061,6 +1160,17 @@ class GenoBeamSpell(CharacterSpell):
             return "Earth Beam"
         else:
             return self._title
+
+    @property
+    def description(self) -> str:
+        if self.element == Element.FIRE:
+            return ' A fiery beam!\n Hold "Y" until\n just before\n discharge!'
+        elif self.element == Element.THUNDER:
+            return ' A thunderous beam!\n Hold "Y" until\n just before\n discharge!'
+        elif self.element == Element.JUMP:
+            return ' Earthen beam!\n Hold "Y" until\n just before\n discharge!'
+        else:
+            return self._description
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
@@ -1191,6 +1301,17 @@ class GenoFlashSpell(CharacterSpell):
             return "ThunderFlash"
         else:
             return self._title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.JUMP:
+            return ' Build power!\n Earth beam hits\n all foes!'
+        elif self.element == Element.ICE:
+            return ' Build power!\n Ice beam hits\n all foes!'
+        elif self.element == Element.THUNDER:
+            return ' Build power!\n Thunder beam hits\n all foes!'
+        else:
+            return self._description
 
 
 class ThunderboltSpell(CharacterSpell):
@@ -1228,6 +1349,17 @@ class ThunderboltSpell(CharacterSpell):
             return "Earth Bolt"
         else:
             return self._title
+
+    @property
+    def description(self) -> str:
+        if self.element == Element.FIRE:
+            return ' Hit "Y" just\n before fire bolt\n ends!'
+        elif self.element == Element.ICE:
+            return ' Hit "Y" just\n before ice bolt\n ends!'
+        elif self.element == Element.JUMP:
+            return ' Hit "Y" just\n before earth bolt\n ends!'
+        else:
+            return self._description
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
@@ -1332,6 +1464,17 @@ class ShockerSpell(CharacterSpell):
             return "EarthShocker"
         else:
             return self._title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.FIRE:   
+            return ' Hit "Y" just\n before fire bolt\n ends!'
+        elif self.element == Element.ICE:
+            return ' Hit "Y" just\n before ice bolt\n ends!'
+        elif self.element == Element.JUMP:
+            return ' Hit "Y" just\n before earth bolt\n ends!'
+        else:
+            return self._description
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
@@ -1432,6 +1575,17 @@ class SnowySpell(CharacterSpell):
             return "Earthy"
         else:
             return self._title
+        
+    @property
+    def description(self) -> str:
+        if self.element == Element.FIRE:   
+            return ' Fiery snowman\n fells foes!'
+        elif self.element == Element.THUNDER:
+            return ' Thundery snowman\n fells foes!'
+        elif self.element == Element.JUMP:
+            return ' Earthy snowman\n fells foes!'
+        else:
+            return self._description
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
