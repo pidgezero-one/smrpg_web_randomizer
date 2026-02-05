@@ -512,40 +512,57 @@ DI1227_SHAMAN_SALESMAN_800_COINS, ''' I found an incredible item.
   [select] (Pass)[await]''')
         
     # Apply spell shuffler results to dialogs and chest packets, but use the character names and spell names as per cosmetics settings
+    from randomizer.types.prizelocation import SpellSlotLocation
     for location in world.locations.values():
         p = location.prize
         if isinstance(p, SpellPrize):
             idx = p.spell().index
             spell = world.spells.spells[idx]
-            print(idx)
             dialog_id = p.dialog_id
             dialog_id_2 = p.autoterm_dialog_id
-            world.overworld_dialogs.search_and_replace_in_all_dialogs(f"`SPELL_{idx}`", spell.title)
-            if p.character is MarioRecruitmentPrize:
+            world.overworld_dialogs.search_and_replace_in_all_dialogs(f"`SPELL_{p.placement_id}`", spell.title)
+
+            # Determine character: use p.character if set, otherwise derive from SpellSlotLocation name
+            char_type = p.character
+            if char_type is None and isinstance(location, SpellSlotLocation):
+                # For SpellSlotLocations, determine character from location class name
+                loc_name = type(location).__name__
+                if loc_name.startswith("Mario"):
+                    char_type = MarioRecruitmentPrize
+                elif loc_name.startswith("Mallow"):
+                    char_type = MallowRecruitmentPrize
+                elif loc_name.startswith("Geno"):
+                    char_type = GenoRecruitmentPrize
+                elif loc_name.startswith("Bowser"):
+                    char_type = BowserRecruitmentPrize
+                elif loc_name.startswith("Toadstool"):
+                    char_type = ToadstoolRecruitmentPrize
+
+            if char_type is MarioRecruitmentPrize:
                 character = world.allies._allies[0]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(MARIO)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
-            elif p.character is ToadstoolRecruitmentPrize:
+            elif char_type is ToadstoolRecruitmentPrize:
                 character = world.allies._allies[1]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(TOADSTOOL)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
-            elif p.character is BowserRecruitmentPrize:
+            elif char_type is BowserRecruitmentPrize:
                 character = world.allies._allies[2]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(BOWSER)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
-            elif p.character is GenoRecruitmentPrize:
+            elif char_type is GenoRecruitmentPrize:
                 character = world.allies._allies[3]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(GENO)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
-            elif p.character is MallowRecruitmentPrize:
+            elif char_type is MallowRecruitmentPrize:
                 character = world.allies._allies[4]
                 for c in p.character_replacement_ids:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(MALLOW)

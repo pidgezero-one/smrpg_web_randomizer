@@ -121,7 +121,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 2
-            npc=npcs.EMPTY_ENEMY_NPC,
+            npc=npcs.CHOMPWEED_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
             action_script=A0118_PIPE_VAULT_CHOMPWEED,
@@ -148,7 +148,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularClone( # 3
-            npc=npcs.EMPTY_ENEMY_NPC,
+            npc=npcs.CHOMPWEED_NPC,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
             action_script=A0118_PIPE_VAULT_CHOMPWEED,
             visible=True,
@@ -158,7 +158,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularClone( # 4
-            npc=npcs.EMPTY_ENEMY_NPC,
+            npc=npcs.CHOMPWEED_NPC,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
             action_script=A0118_PIPE_VAULT_CHOMPWEED,
             visible=True,
@@ -168,7 +168,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularClone( # 5
-            npc=npcs.EMPTY_ENEMY_NPC,
+            npc=npcs.CHOMPWEED_NPC,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
             action_script=A0118_PIPE_VAULT_CHOMPWEED,
             visible=True,
@@ -178,7 +178,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularClone( # 6
-            npc=npcs.EMPTY_ENEMY_NPC,
+            npc=npcs.CHOMPWEED_NPC,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
             action_script=A0118_PIPE_VAULT_CHOMPWEED,
             visible=True,
@@ -188,7 +188,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularNPC( # 7
-            npc=npcs.EMPTY_ENEMY_NPC,
+            npc=npcs.CHOMPWEED_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
             action_script=A0661_PIPE_VAULT_JUMPING_CHOMPWEED,
@@ -306,7 +306,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         BattlePackNPC( # 12
-            npc=npcs.GOOMBA_NPC,
+            npc=npcs.GOOMBA_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             after_battle=PostBattleBehaviour.REMOVE_PERMANENTLY,
             battle_pack=7,
@@ -334,7 +334,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         BattlePackClone( # 13
-            npc=npcs.GOOMBA_NPC,
+            npc=npcs.GOOMBA_NPC_3,
             battle_pack=7,
             action_script=A0659_PIPE_VAULT_THWOMP_ROOM_GOOMBA,
             visible=True,

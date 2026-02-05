@@ -159,7 +159,10 @@ script = EventScript([
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP, ["EVENT_991_run_dialog_18"]),
     
 
-	JmpIfBitClear(TOWER_BOSS_2_DEFEATED, ["EVENT_949_run_event_as_subroutine_122"], identifier="EVENT_949_knifeguy_insert"),
+	JmpIfBitClear(TOWER_BOSS_2_DEFEATED, ["EVENT_949_hill_check"], identifier="EVENT_949_knifeguy_insert"),
+
+	JmpIfBitSet(BOOSTER_HILL_CLOSED, ["EVENT_949_run_event_as_subroutine_122"], identifier="EVENT_949_hill_check"),
+    JmpIfVarNotEqualsConst(BOOSTER_HILL_FLOWER_COUNTER, 15, ["EVENT_991_run_dialog_44"]),
     
 	RunEventAsSubroutine(E0980_FROGFUCIUS_HINT_MARRYMORE_SUITE, identifier="EVENT_949_run_event_as_subroutine_122"),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R009_MARRYMORE_INN_REGULAR_ROOM, ["EVENT_991_run_dialog_38"]),

@@ -1,6 +1,6 @@
 "seed": 3285956465,
   "version": "9.0.0",
-  "flags": "P(rchars)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:yaridovich|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor)     O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(enemystats:full_random|drops|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko)",
+  "flags": "P(rchars)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko)",
   
 Spells Anywhere
 🚧 Set up logic that assigns spells evenly to character recruits
@@ -8,6 +8,7 @@ Spells Anywhere
 🚧 Set up render events for chests, NPCs, freestandings, river, packets, and booster hill
 🚧 Add sprites (one for each element plus a grey one for non element) and define models
 🚧 Models per spell change based on spell infusion and element randomization settings
+- Dialogs and sounds don't play if the character hasn't been recruited yet
 
 General
 🚧 dying to failed slots does not game over
@@ -26,6 +27,7 @@ General
 🚧 some of bowser's sprites were not shiftd correctly, some tiles broken
 🚧 beetlemania packet is wrong sprite
 🚧 Might be able to condense packets. all blue items for example use the same sprite but just show a specific mold based on a variable set when you open the chest.
+- beetle packet doesn't work
 
 Boss-specific
 - torte henchman is untargetable in battle
@@ -48,17 +50,23 @@ Mushroom kingdom
 Kero sewers
 - kero sewers is not blocked when it should be
 
+Tadpole Pond
+🚧 add booster hill to hint system. BOOSTER_HILL_FLOWER_COUNTER < 15, only when hill available
+
 Rose way
 - palettes in rose way still broken
 
 Forest maze 
-- uderground rooms are fucked up. how the hell to get partition to work?
+🚧 uderground rooms are fucked up. how the hell to get partition to work?
+🚧 Might be able to figure out how that works. Wiggler overwriting chests. Which NPC slot is he in and why is he overwriting the top buffer? Packets also do that.
 - buzzer's default attack sound effect is wrong somehow
+🚧 Look at v8 and see what the partitions look like when Bowser is the character, will need to fix up the maze section.
 
 Pipe vault
-- chompweeds don't render
+- when blocked, no brick or note show up
+🚧 chompweeds don't render
 - chest in chompweed room doesnt open
-- goombas in pipe vault can't face northeast, dont animate
+🚧 goombas in pipe vault can't face northeast, dont animate
 - safety ring replacing frog coin in pipe vault has no sprite
 
 Yoster
@@ -103,7 +111,7 @@ Land's End
 🚧 mokura cloud broken
 
 Bean Valley
-- bean valley FC chest crashes game
+- Corner item should not have a truthy NPC, keep using empty.
 
 Nimbus Land
 - gold paint logic does not work, will take you in if you talk to him twice

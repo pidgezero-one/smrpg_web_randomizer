@@ -146,7 +146,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         BattlePackNPC( # 1
-            npc=npcs.GOOMBA_NPC,
+            npc=npcs.GOOMBA_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             after_battle=PostBattleBehaviour.REMOVE_PERMANENTLY,
             battle_pack=7,
@@ -174,7 +174,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         BattlePackClone( # 2
-            npc=npcs.GOOMBA_NPC,
+            npc=npcs.GOOMBA_NPC_3,
             battle_pack=7,
             action_script=A0673_PIPE_VAULT_FINAL_ROOM_GOOMBA,
             visible=True,
@@ -184,7 +184,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         BattlePackClone( # 3
-            npc=npcs.GOOMBA_NPC,
+            npc=npcs.GOOMBA_NPC_3,
             battle_pack=7,
             action_script=A0673_PIPE_VAULT_FINAL_ROOM_GOOMBA,
             visible=True,
