@@ -1545,6 +1545,7 @@ class BossFightLocationHenchmanNPC:
     _npc_ids: list[AreaObject]
     _skip_swap_if_flag: list[type | str] | None = None
     _remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER
+    _container_event: int
 
     @property
     def room_ids(self) -> list[int]:
@@ -1566,6 +1567,10 @@ class BossFightLocationHenchmanNPC:
     def remove_if_not_filled(self) -> RemoveIfNotFilled:
         return self._remove_if_not_filled
 
+    @property
+    def container_event(self) -> int:
+        return self._container_event
+
     def __init__(
         self,
         room_ids: list[int],
@@ -1573,11 +1578,14 @@ class BossFightLocationHenchmanNPC:
         pack_id: int | None = None,
         skip_swap_if_flag: type | str | list[type | str] | None = None,
         remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER,
+        container_event: int | None = None,
     ):
+        from ..data.variables.event_script_names import E1189_HENCHMAN_BATTLE_PACK_SELECTOR
         self._room_ids = room_ids
         self._npc_ids = npc_ids
         self._pack_id = pack_id
         self._remove_if_not_filled = remove_if_not_filled
+        self._container_event = container_event if container_event is not None else E1189_HENCHMAN_BATTLE_PACK_SELECTOR
         if skip_swap_if_flag is None:
             self._skip_swap_if_flag = None
         elif isinstance(skip_swap_if_flag, list):
@@ -1811,13 +1819,13 @@ class BossFightLocation(PrizeLocation):
         return super().can_accept(prize, inventory, world)
 
     def _apply_henchmen(self, world: GameWorld) -> tuple[
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
         list[tuple[BossFightLocationHenchmanNPC, BossFightHenchman]],
     ]:
         """Assign henchmen to slots and set their NPC models and battle packs.
 
         Returns a tuple containing:
-        - list of (room_id, pack_id) tuples for henchmen that need
+        - list of (container_event, room_id, pack_id) tuples for henchmen that need
           event script battle pack selectors (non-BattlePackNPC objects).
         - list of (slot, henchman) tuples for all assigned henchmen.
         """
@@ -1833,7 +1841,7 @@ class BossFightLocation(PrizeLocation):
         henchmen_assignments: list[
             tuple[BossFightLocationHenchmanNPC, BossFightHenchman]
         ] = []
-        event_script_battle_packs: list[tuple[int, int]] = []
+        event_script_battle_packs: list[tuple[int, int, int]] = []
 
         # Assign mook henchmen
         if self.mook_henchman_slots and self.prize.mook_henchmen:
@@ -1960,28 +1968,28 @@ class BossFightLocation(PrizeLocation):
                         obj.set_battle_pack(slot.pack_id)
                     else:
                         # Need event script for battle pack selection
-                        event_script_battle_packs.append((room_id, slot.pack_id))
+                        event_script_battle_packs.append((slot.container_event, room_id, slot.pack_id))
 
         return event_script_battle_packs, henchmen_assignments
 
     def _get_henchmen_event_packs_for_original(
         self, world: GameWorld
-    ) -> list[tuple[int, int]]:
+    ) -> list[tuple[int, int, int]]:
         """Get event script battle pack entries for original (unmodified) henchmen.
 
         This is used when the prize matches the original - we don't modify NPCs,
-        but we still need to generate E1189 entries for RegularNPC henchmen because
-        E1189 is being rebuilt from scratch.
+        but we still need to generate event script entries for RegularNPC henchmen
+        because the event scripts are being rebuilt from scratch.
 
-        Returns a list of (room_id, pack_id) tuples for henchmen that need
-        event script battle pack selectors (non-BattlePackNPC objects).
+        Returns a list of (container_event, room_id, pack_id) tuples for henchmen
+        that need event script battle pack selectors (non-BattlePackNPC objects).
         """
         from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC
 
-        event_script_battle_packs: list[tuple[int, int]] = []
+        event_script_battle_packs: list[tuple[int, int, int]] = []
 
         # Gather all henchman slots with pack_ids
-        all_slots = []
+        all_slots: list[BossFightLocationHenchmanNPC] = []
         if self.mook_henchman_slots:
             all_slots.extend(self.mook_henchman_slots)
         if self.character_henchman_slots:
@@ -2002,7 +2010,7 @@ class BossFightLocation(PrizeLocation):
                     continue
                 # Only RegularNPC objects need event script entries
                 if not isinstance(obj, BattlePackNPC):
-                    event_script_battle_packs.append((room_id, slot.pack_id))
+                    event_script_battle_packs.append((slot.container_event, room_id, slot.pack_id))
 
         return event_script_battle_packs
 
@@ -2072,7 +2080,7 @@ class BossFightLocation(PrizeLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
 
         # update the battle pack

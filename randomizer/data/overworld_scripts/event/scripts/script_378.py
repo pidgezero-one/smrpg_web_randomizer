@@ -49,8 +49,6 @@ script = EventScript([
 		A_FaceSouthwest()
 	]),
 	SetBit(TEMP_7049_6),
-	RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
-	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=NPC_5, subscript=[
 		A_SetWalkingSpeed(NORMAL),
 		A_WalkNorthwestSteps(2),

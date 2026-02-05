@@ -302,8 +302,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     builders: dict[
         int, tuple[list[UsableEventScriptCommand], list[UsableEventScriptCommand]]
     ] = {}
-    # Initialize henchman battle pack selector
-    builders[E1189_HENCHMAN_BATTLE_PACK_SELECTOR] = ([], [])
+    # Collect all henchman container events used
+    henchman_container_events: set[int] = set()
     for place in world.locations.values():
         # Construct prize granter hub events
         # skip frog disciple locations, they're set in shop shuffler
@@ -314,12 +314,15 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             if isinstance(place, BossFightLocation):
                 decision, execution, henchmen_packs = place.render(world)
                 # Add henchmen event script battle packs
-                for room_id, pack_id in henchmen_packs:
+                for container_event, room_id, pack_id in henchmen_packs:
+                    henchman_container_events.add(container_event)
+                    if container_event not in builders:
+                        builders[container_event] = ([], [])
                     identifier = str(uuid4())
-                    builders[E1189_HENCHMAN_BATTLE_PACK_SELECTOR][0].append(
+                    builders[container_event][0].append(
                         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room_id, [identifier])
                     )
-                    builders[E1189_HENCHMAN_BATTLE_PACK_SELECTOR][1].extend([
+                    builders[container_event][1].extend([
                         StartBattleAtBattlefield(pack_id, ROOM_TO_BATTLEFIELD[room_id], identifier=identifier),
                         Return(),
                     ])
@@ -397,7 +400,11 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         elif isinstance(place, CharacterRecruitmentLocation):
             # this takes care of everything for character gating and recruitment
             place.render(world)
-
+    # Insert Set7000ToCurrentLevel at the beginning of all henchman container events
+    for henchman_event in henchman_container_events:
+        builders[henchman_event][0].insert(0,
+            Set7000ToCurrentLevel(),
+        )
     for key, (decision, execution) in builders.items():
         event_script = world.event_scripts.get_script_by_id(key)
         contents: list[UsableEventScriptCommand] = []

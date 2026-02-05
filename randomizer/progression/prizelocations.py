@@ -2942,7 +2942,7 @@ class InnerMinesBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -4803,7 +4803,7 @@ class SeasideBeachBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -5170,7 +5170,7 @@ class ShipPasswordBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -5571,7 +5571,7 @@ class ShipFinalBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -6434,7 +6434,7 @@ class DojoFirstFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -6492,7 +6492,7 @@ class DojoSecondFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -6562,7 +6562,7 @@ class DojoThirdFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -6631,7 +6631,7 @@ class DojoFourthFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -6714,7 +6714,7 @@ class DojoFifthFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -7137,7 +7137,7 @@ class BeanValleyPlanterBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -7514,7 +7514,7 @@ class StatueRoomBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -8462,7 +8462,7 @@ class VolcanoExitBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         if isinstance(self.prize, AxemRangersBossFight):
@@ -9046,7 +9046,7 @@ class ObstacleCourseFinalFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -9292,7 +9292,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -9453,7 +9453,7 @@ class KeepChandelierBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -9919,7 +9919,7 @@ class InnerFactorySecondFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         if isinstance(self.prize, self._originally_held):
@@ -9982,7 +9982,7 @@ class InnerFactoryThirdFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
@@ -10044,7 +10044,7 @@ class InnerFactoryFourthFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         # If the prize is not the original GunyolkBossFight, hide NPCs 0-6 in room 470
@@ -10190,7 +10190,7 @@ class FinalBossFight(BossFightLocation):
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
         list[UsableEventScriptCommand],
-        list[tuple[int, int]],
+        list[tuple[int, int, int]],
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)

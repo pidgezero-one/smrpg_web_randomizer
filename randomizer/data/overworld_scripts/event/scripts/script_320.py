@@ -39,7 +39,9 @@ script = EventScript([
     JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["EVENT_320_fade_in_from_black_async"]),
     JmpIfObjectNotInSpecificLevel(NPC_4, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, ["EVENT_320_fade_in_from_black_async"]),
     SummonObjectToCurrentLevel(NPC_4),
+    SetSyncActionScript(NPC_4, A0111_MK_HALL_REPEATING_HENCHMEN_STARTING),
     SummonObjectToCurrentLevel(NPC_5),
+    SetSyncActionScript(NPC_5, A0112_MK_HALL_TOAD),
 	FadeInFromBlack(sync=False, identifier="EVENT_320_fade_in_from_black_async"),
     RunBackgroundEvent(event_id=E0324_KINGDOM_MAIN_HALL_FLIP_VERANDA, return_on_level_exit=True),
 	Return()

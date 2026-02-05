@@ -35,7 +35,7 @@ room = Room(
         ],
         full_palette_buffer=True
     ),
-    music=M0015_HERE_SSOMEWEAPONS,
+    music=M0000_CURRENT,
     entrance_event=E0382_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_LOADER,
     events=[
         Event(
