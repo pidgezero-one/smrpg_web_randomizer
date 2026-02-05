@@ -1312,9 +1312,6 @@ class GameWorld:
         # (Note: overworld_dialogs and action_scripts are rendered earlier for space reclamation)
 
         # Run all render() calls in parallel
-        print("DEBUG: About to run render() calls in ThreadPoolExecutor")
-        import sys
-        sys.stdout.flush()
         with ThreadPoolExecutor() as executor:
             futures = {
                 "battle_dialogs": executor.submit(self.battle_dialogs.render),
@@ -1343,11 +1340,7 @@ class GameWorld:
                 "allies",
                 "world_map_locations",
             ]:
-                print(f"DEBUG: Getting result for {key}")
-                sys.stdout.flush()
                 result = futures[key].result()
-                print(f"DEBUG: Got {len(result)} entries for {key}")
-                sys.stdout.flush()
                 patch.add_dict(result, source=key)
                 progress += 2
                 self._report_progress("Assembling object data...", progress)

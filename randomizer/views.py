@@ -284,7 +284,6 @@ class GenerateView(FormView):
             full_flag_string = (data["flags"] or "") + "     " + (data["cosmetics"] or "")
             s.set_from_flag_string(full_flag_string.strip())
             s.debug_mode = debug_mode
-            print(s.print_settings())
 
             world = create(
                 seed,

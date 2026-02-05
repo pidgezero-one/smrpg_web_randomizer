@@ -557,7 +557,9 @@ def shuffle_prizes(world: GameWorld) -> None:
     low_vol_other_prizes: list[Prize] = []
 
     progression_prizes: list[Prize] = []
-    must_include: list[Prize] = [ProgressiveEggPrize(), ProgressiveEggPrize()]
+    must_include: list[Prize] = []
+    if world.settings.isflag_enabled(ShuffleItems):
+        must_include.extend([ProgressiveEggPrize(), ProgressiveEggPrize()])
     not_important: list[Prize] = []
     # Items with very restricted placement options (e.g., SlotsPrize which can only go
     # in chest locations with enough room for 5 extra NPCs) - placed first
@@ -850,11 +852,11 @@ def shuffle_prizes(world: GameWorld) -> None:
             if not world.settings.isflag_enabled(ShuffleCharacters):
                 loc.set_prize(loc.originally_held())
             continue  # Characters handled here or in ShuffleCharacters block above
-        if isinstance(loc, StarPieceLocation):
+        elif isinstance(loc, StarPieceLocation):
             if not world.settings.isflag_enabled(ShuffleStarPieces):
                 loc.set_prize(loc.originally_held())
             continue  # Star pieces handled here or in ShuffleStarPieces block above
-        if isinstance(loc, BossFightLocation):
+        elif isinstance(loc, BossFightLocation):
             if not world.settings.isflag_enabled(BossShuffle):
                 loc.set_prize(loc.originally_held())
             else:
@@ -864,7 +866,7 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if loc.originally_held in disabled_boss_types:
                     loc.set_prize(loc.originally_held())
             continue  # Bosses handled here or in BossShuffle block above
-        if isinstance(loc, SpellSlotLocation):
+        elif isinstance(loc, SpellSlotLocation):
             if not world.settings.isflag_enabled(CharacterLearnedSpells):
                 # Place original spell unless it's disabled in AvailableSpells
                 spell_prize = loc.originally_held()
@@ -877,32 +879,32 @@ def shuffle_prizes(world: GameWorld) -> None:
                     # else: leave location empty (spell is excluded)
             continue  # Always continue - spells handled here or in CharacterLearnedSpells block above
         # special exclusions
-        if isinstance(loc, FrogDiscipleLocation):
+        elif isinstance(loc, FrogDiscipleLocation):
             # nowhere to put it if shuffle shops is on but item shuffle is off
             if not world.settings.isflag_enabled(ShuffleShops) or not world.settings.isflag_enabled(ShuffleItems):
                 loc.set_prize(loc.originally_held())
                 continue
-        if isinstance(loc, TreasureShopLocation):
+        elif isinstance(loc, TreasureShopLocation):
             # nowhere to put it if shuffle shops is on but item shuffle is off
             if not world.settings.isflag_enabled(ShuffleShops) or not world.settings.isflag_enabled(ShuffleItems):
                 loc.set_prize(loc.originally_held())
                 continue
         # made it this far? start setting
-        if not world.settings.isflag_enabled(ShuffleItems):
+        elif not world.settings.isflag_enabled(ShuffleItems):
             loc.set_prize(loc.originally_held())
             continue
-        if isinstance(loc.originally_held(), StarEggPrize):
+        elif isinstance(loc.originally_held(), StarEggPrize):
             if world.settings.isflag_enabled(NoStarEgg):
                 continue
-        if isinstance(loc.originally_held(), EXPStarPrize):
+        elif isinstance(loc.originally_held(), EXPStarPrize):
             if not world.settings.isflag_enabled(EXPStarsAnywhere):
                 loc.set_prize(loc.originally_held())
                 continue
-        if isinstance(loc.originally_held(), MimicFightInitiatorPrize):
+        elif isinstance(loc.originally_held(), MimicFightInitiatorPrize):
             if not world.settings.isflag_enabled(MimicsAnywhere):
                 loc.set_prize(loc.originally_held())
                 continue
-        if isinstance(loc.originally_held(), SlotsPrize):
+        elif isinstance(loc.originally_held(), SlotsPrize):
             if not world.settings.isflag_enabled(SlotsAnywhere):
                 loc.set_prize(loc.originally_held())
                 continue
@@ -937,19 +939,19 @@ def shuffle_prizes(world: GameWorld) -> None:
                             npc._npc = EMPTY_NPC
 
                 continue
-        if isinstance(loc.originally_held(), BeetlemaniaPrize):
+        elif isinstance(loc.originally_held(), BeetlemaniaPrize):
             if not world.settings.isflag_enabled(ShuffleBeetlemania):
                 loc.set_prize(loc.originally_held())
                 continue
-        if isinstance(loc.originally_held(), InfiniteCoinsPrize):
+        elif isinstance(loc.originally_held(), InfiniteCoinsPrize):
             if not world.settings.isflag_enabled(ShuffleMagikoopaChest):
                 loc.set_prize(loc.originally_held())
                 continue
-        if isinstance(loc.originally_held(), WeddingGearPrize):
+        elif isinstance(loc.originally_held(), WeddingGearPrize):
             if not world.settings.isflag_enabled(ShuffleWeddingGear):
                 loc.set_prize(loc.originally_held())
                 continue
-        if isinstance(loc.originally_held(), SuperSuitPrize) and world.settings.isflag_enabled(RestrictSpecialEquips):
+        elif isinstance(loc.originally_held(), SuperSuitPrize) and world.settings.isflag_enabled(RestrictSpecialEquips):
             # 50% chance of keeping super suit in its original location if threshold is 100
             if world.settings.is_flag_value(
                 SuperJump2Threshold, 100
@@ -958,7 +960,7 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if roll:
                     loc.set_prize(loc.originally_held())
                     continue
-        if isinstance(loc.originally_held(), RegularFireworksPrize):
+        elif isinstance(loc.originally_held(), RegularFireworksPrize):
             if world.settings.is_flag_value(
                 FireworksSetting, FireworksOptions.VANILLA
             ):

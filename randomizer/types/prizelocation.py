@@ -1983,7 +1983,6 @@ class BossFightLocation(PrizeLocation):
                 obj = room.get_npc_by_target_id(room_target)
                 assert obj is not None
                 new_npc = henchman.model().base
-                print(f"DEBUG: Setting henchman NPC in room {room_id}, target {room_target}: sprite_id={new_npc.sprite_id}")
                 obj._npc = new_npc
                 if slot.pack_id is not None:
                     if isinstance(obj, BattlePackNPC):

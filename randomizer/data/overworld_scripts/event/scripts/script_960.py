@@ -34,6 +34,6 @@ from ....spells.spells import *
 script = EventScript([
 	LearnSpell(MALLOW, PsychopathSpell, identifier="npc_spell_9_character"),
 	PlaySound(sound=SO085_FLOWER, channel=6),
-	RunDialog(dialog_id=DI1963_LEARN_SPELL_9, above_object=MARIO, closable=True, sync=True, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1963_LEARN_SPELL_9, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, bit_6=True),
 	Return()
 ])

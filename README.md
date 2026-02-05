@@ -16,7 +16,9 @@ Once you've installed Docker (either the desktop client or command line interfac
 
 ```> docker compose up --build```
 
-The development environment files are `.env.dev` and `.env.dev.db`.  These are set up to use testing values and run the Django development server on localhost port 8000.  You can change these as needed.
+The development environment files are `.env.dev` and `.env.dev.db`.  These are set up to use testing values and run the Django development server on localhost:8000.  You can change these as needed.
+
+When you get it up and running in your browser, open your browser's development console and disable caching (in Chrome this is a checkbox in the Network tab).
 
 ## Updating the base patch
 

@@ -34,6 +34,6 @@ from ....spells.spells import *
 script = EventScript([
 	LearnSpell(MARIO, SuperJumpSpell, identifier="npc_spell_3_character"),
 	PlaySound(sound=SO085_FLOWER, channel=6),
-	RunDialog(dialog_id=DI1951_LEARN_SPELL_3, above_object=MARIO, closable=True, sync=True, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1951_LEARN_SPELL_3, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, bit_6=True),
 	Return()
 ])

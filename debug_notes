@@ -31,7 +31,7 @@ Mushroom Way
 Mushroom kingdom
 🚧 bowyer in mushroom kingdom: aero henchmen are upside down when they shouldnt be
 🚧 hallway fight still doesnt work
-- can't jump up to main hall chest when kingdom is invaded
+🚧 can't jump up to main hall chest when kingdom is invaded
 🚧 toad in yard in liberated mode is desynced from enemy chasing him
 🚧 yard fight also doesnt work
 🚧 vault chests no packets
@@ -52,21 +52,20 @@ Forest maze
 🚧 Look at v8 and see what the partitions look like when Bowser is the character, will need to fix up the maze section.
 
 Pipe vault
-- when blocked, no brick or note show up
 🚧 chompweeds don't render
-- chest in chompweed room doesnt open
+🚧 chest in chompweed room doesnt open
 🚧 goombas in pipe vault can't face northeast, dont animate
-- safety ring replacing frog coin in pipe vault has no sprite
+🚧 safety ring replacing frog coin in pipe vault has no sprite
 
 Yoster
 - pink yoshis are all coloured wrong
 
 Booster Pass
 - battle crashes when you attack carroboscis
-- mimic in booster pass crashes game
+🚧 mimic in booster pass crashes game
 
 Booster Tower
-- booster tower does not load when character needed to unlock it
+🚧 booster tower does not load when character needed to unlock it
 - balcony boss fight gets completely skipped'
 - shadows broken when punchinello replaces booster in curtain room, makes no sense
 - beetle in booster room is floating at wrong offset, too low

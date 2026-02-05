@@ -34,6 +34,6 @@ from ....spells.spells import *
 script = EventScript([
 	LearnSpell(GENO, GenoBeamSpell, identifier="npc_spell_13_character"),
 	PlaySound(sound=SO085_FLOWER, channel=6),
-	RunDialog(dialog_id=DI1971_LEARN_SPELL_13, above_object=MARIO, closable=True, sync=True, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1971_LEARN_SPELL_13, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, bit_6=True),
 	Return()
 ])

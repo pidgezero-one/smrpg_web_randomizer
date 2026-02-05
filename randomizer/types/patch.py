@@ -61,9 +61,7 @@ class Patch:
                 existing_end = existing_addr + len(existing_data)
                 # Check if ranges overlap
                 if new_start < existing_end and existing_addr < new_end:
-                    print(f"OVERLAP DETECTED!")
-                    print(f"    New data: 0x{new_start:06X}-0x{new_end:06X} ({len(data)} bytes) {source}")
-                    print(f"    Existing: 0x{existing_addr:06X}-0x{existing_end:06X} ({len(existing_data)} bytes)")
+                    pass  # Overlap detected - could add logging here if needed
 
         self._data[addr] = data
 
