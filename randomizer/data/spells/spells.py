@@ -73,11 +73,11 @@ class JumpSpell(CharacterSpell):
     @property
     def description(self) -> str:
         if self.element == Element.FIRE:
-            return ' Stomp foes with fire!\n Press "Y" just before hit!'
+            return ' Stomp foes with\n fire! Press "Y"\n just before hit!'
         elif self.element == Element.ICE:
-            return ' Stomp foes with ice!\n Press "Y" just before hit!'
+            return ' Stomp foes with\n ice! Press "Y"\n just before hit!'
         elif self.element == Element.THUNDER:
-            return ' Stomp foes with thunder!\n Press "Y" just before hit!'
+            return ' Stomp foes with\n thunder! Press\n "Y" just\n before hit!'
         else:
             return self._description
 
@@ -306,11 +306,11 @@ class SuperJumpSpell(CharacterSpell):
     @property
     def description(self) -> str:
         if self.element == Element.FIRE:
-            return ' Push "Y"\n prior to hit\n for FIRE DAMAGE!'
+            return ' Push "Y"\n prior to hit for\n FIRE DAMAGE!'
         elif self.element == Element.ICE:
-            return ' Push "Y"\n prior to hit\n for ICE DAMAGE!'
+            return ' Push "Y"\n prior to hit for\n ICE DAMAGE!'
         elif self.element == Element.THUNDER:
-            return ' Push "Y"\n prior to hit\n for THUNDER DAMAGE!'
+            return ' Push "Y"\n prior to hit for\n THUNDER\n DAMAGE!'
         else:
             return self._description
 
@@ -539,11 +539,11 @@ class UltraJumpSpell(CharacterSpell):
     @property
     def description(self) -> str:
         if self.element == Element.FIRE:
-            return ' Push "Y"\n prior to hit\n for FIRE DAMAGE!'
+            return ' Push "Y"\n prior to hit for\n FIRE DAMAGE!'
         elif self.element == Element.ICE:
-            return ' Push "Y"\n prior to hit\n for ICE DAMAGE!'
+            return ' Push "Y"\n prior to hit for\n ICE DAMAGE!'
         elif self.element == Element.THUNDER:
-            return ' Push "Y"\n prior to hit\n for THUNDER DAMAGE!'
+            return ' Push "Y"\n prior to hit for\n THUNDER\n DAMAGE!'
         else:
             return self._description
 
@@ -927,11 +927,11 @@ class PsychBombSpell(CharacterSpell):
     @property
     def description(self) -> str:
         if self.element == Element.JUMP:
-            return ' Make me mad\n and my earth\n bomb will go\n...BOOM!'
+            return ' Make me mad\n and my earth\n bomb will go...\n BOOM!'
         elif self.element == Element.ICE:
-            return ' Make me mad\n and my ice\n bomb will go\n...BOOM!'
+            return ' Make me mad\n and my ice\n bomb will go...\n BOOM!'
         elif self.element == Element.THUNDER:
-            return ' Make me mad\n and my thunder\n bomb will go\n...BOOM!'
+            return ' Make me mad\n and my thunder\n bomb will go...\n BOOM!'
         else:
             return self._description
 
@@ -972,7 +972,7 @@ class TerrorizeSpell(CharacterSpell):
     _status_effects = [Status.FEAR]
     _timing_modifiers = ROTATE_ONLY
     _damage_modifiers = X00625_MODIFIER
-    _description = "Scare 'em good!"
+    _description = " Scare 'em good!"
 
 
 class PoisonGasSpell(CharacterSpell):
@@ -1046,7 +1046,7 @@ class CrusherSpell(CharacterSpell):
         elif self.element == Element.ICE:
             return ' Ice rock slide!\n Hit "Y" prior\n to contact!'
         elif self.element == Element.THUNDER:
-            return ' Thunder rock slide!\n Hit "Y" prior\n to contact!'
+            return ' Thunder rock\n slide! Hit "Y"\n prior to contact!'
         else:
             return self._description
 
@@ -1085,7 +1085,7 @@ class BowserCrushSpell(CharacterSpell):
     _target_not_self = False
     _timing_modifiers = BUTTON_MASH
     _damage_modifiers = X00625_MODIFIER
-    _description = "Bowser's\nultimate weapon!"
+    _description = " Bowser's\n ultimate weapon!"
 
     _remake_name = "Mecha Stomp"
 
@@ -1114,11 +1114,11 @@ class BowserCrushSpell(CharacterSpell):
     @property
     def description(self) -> str:
         if self.element == Element.FIRE:
-            return " Bowser's\nultimate fire\n weapon!"
+            return " Bowser's\n ultimate fire\n weapon!"
         elif self.element == Element.ICE:
-            return " Bowser's\nultimate ice\n weapon!"
+            return " Bowser's\n ultimate ice\n weapon!"
         elif self.element == Element.THUNDER:
-            return " Bowser's\nultimate thunder\n weapon!"
+            return " Bowser's\n ultimate thunder\n weapon!"
         else:
             return self._description
         
@@ -1237,7 +1237,7 @@ class GenoWhirlSpell(CharacterSpell):
     _target_not_self = False
     _timing_modifiers = TIMED_FOR_9999_SET_ENEMY_HP_0
     _damage_modifiers = NO_MODIFIERS
-    _description = 'Press "Y" prior\nto contact for\ncritical hit!'
+    _description = ' Press "Y" prior\nto contact for\ncritical hit!'
 
 
 class GenoBlastSpell(CharacterSpell):
@@ -1357,7 +1357,7 @@ class ThunderboltSpell(CharacterSpell):
         elif self.element == Element.ICE:
             return ' Hit "Y" just\n before ice bolt\n ends!'
         elif self.element == Element.JUMP:
-            return ' Hit "Y" just\n before earth bolt\n ends!'
+            return ' Hit "Y" just\n before earth\n bolt ends!'
         else:
             return self._description
 
@@ -1472,7 +1472,7 @@ class ShockerSpell(CharacterSpell):
         elif self.element == Element.ICE:
             return ' Hit "Y" just\n before ice bolt\n ends!'
         elif self.element == Element.JUMP:
-            return ' Hit "Y" just\n before earth bolt\n ends!'
+            return ' Hit "Y" just\n before earth\n bolt ends!'
         else:
             return self._description
 
@@ -1581,7 +1581,7 @@ class SnowySpell(CharacterSpell):
         if self.element == Element.FIRE:   
             return ' Fiery snowman\n fells foes!'
         elif self.element == Element.THUNDER:
-            return ' Thundery snowman\n fells foes!'
+            return ' Thundery\n snowman fells\n foes!'
         elif self.element == Element.JUMP:
             return ' Earthy snowman\n fells foes!'
         else:
