@@ -32,7 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["3105_normal_exit"]),
+	JmpIfBitClear(BANDITS_WAY_LIBERATED, ["3105_normal_exit"]),
 	JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_TOAD_RESCUED, ["3105_normal_exit"]),
     EnterArea(R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, NORTHWEST, 27, 28, 0, False, False, True),
     Return(),
