@@ -74,10 +74,10 @@ script = EventScript([
 		A_WalkNorthwestSteps(2),
 		A_WalkNorthwestPixels(13),
 		A_Pause(15),
-		A_SetSpriteSequence(index=14, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=14, is_sequence=True, looping=True, identifier="tower_henchman_curtain_39"),
 		A_Pause(7),
-		A_SetSpriteSequence(index=15, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=15, is_sequence=True, looping=True, identifier="tower_henchman_curtain_40")
+	], identifier="tower_henchman_curtain_aqueue_39"),
 	PlayMusicAtDefaultVolume(M0032_ANDMYNAME_SBOOSTER),
 	ApplyTileModToLevel(use_alternate=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=41),
 	Pause(3),

@@ -3248,7 +3248,7 @@ OLD_WOMAN_PURPLE_GREY_NPC = NPC(
 )
 
 BEETLE_NPC = NPC(
-    sprite_id=SPR0255_BEETLE,
+    sprite_id=SPR0706_BEETLE_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,

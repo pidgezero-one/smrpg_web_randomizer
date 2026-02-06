@@ -1,7 +1,31 @@
 # R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    ObjectType,
+    EventInitiator,
+    PostBattleBehaviour,
+    Direction,
+    EdgeDirection,
+    ExitType,
+    BufferType,
+    BufferSpace,
+    VramStore,
+    ShadowSize,
+)
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    Buffer,
+    Partition,
+    DestinationProps,
+    RoomExit,
+    MapExit,
+    Event,
+    BattlePackNPC,
+    RegularNPC,
+    ChestNPC,
+    BattlePackClone,
+    RegularClone,
+    ChestClone,
+)
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -11,29 +35,30 @@ from ..variables.overworld_area_names import *
 from ..variables.music_names import *
 from ..variables.event_script_names import *
 from ..variables.action_script_names import *
+
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
         extra_sprite_buffer_size=1,
-        buffers = [
+        buffers=[
             Buffer(
                 buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.COINS,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
-            )
+                index_in_main_buffer=True,
+            ),
         ],
-        full_palette_buffer=True
+        full_palette_buffer=True,
     ),
     music=M0032_ANDMYNAME_SBOOSTER,
     entrance_event=E1295_TOWER_CHECKERBOARD_ROOM_LOADER,
@@ -48,7 +73,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1296_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=20,
@@ -59,7 +85,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1298_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=22,
@@ -70,7 +97,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1298_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=22,
@@ -81,7 +109,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1299_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=25,
@@ -92,7 +121,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1299_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=25,
@@ -103,7 +133,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1300_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=24,
@@ -114,7 +145,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1300_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=24,
@@ -125,7 +157,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1302_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=27,
@@ -136,7 +169,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1302_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=27,
@@ -147,7 +181,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1303_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=24,
@@ -158,7 +193,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1303_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=24,
@@ -169,7 +205,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1305_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=27,
@@ -180,7 +217,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1305_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=27,
@@ -191,7 +229,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1306_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=29,
@@ -202,7 +241,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1306_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=29,
@@ -213,7 +253,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1307_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=25,
@@ -224,7 +265,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1307_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=25,
@@ -235,7 +277,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1308_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=27,
@@ -246,7 +289,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E1308_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
             x=27,
@@ -257,7 +301,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
     ],
     exits=[
         RoomExit(
@@ -277,7 +322,8 @@ room = Room(
             dst_z=15,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=20,
             y=20,
@@ -295,7 +341,8 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=27,
             y=13,
@@ -313,10 +360,11 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
     ],
     objects=[
-        RegularNPC( # 0
+        RegularNPC(  # 0
             npc=npcs.SMALL_FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0241_FREESTANDING_1_GRANT,
@@ -342,8 +390,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 1
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 1
             npc=npcs.SMALL_FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0240_FREESTANDING_2_GRANT,
@@ -369,8 +418,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 2
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 2
             npc=npcs.SMALL_FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0239_FREESTANDING_3_GRANT,
@@ -396,8 +446,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 3
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 3
             npc=npcs.SMALL_FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0238_FREESTANDING_4_GRANT,
@@ -423,8 +474,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 4
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 4
             npc=npcs.FIREBALL_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
@@ -450,12 +502,13 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 5
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 5
             npc=npcs.BIG_FLOWER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0228_FREESTANDING_14_GRANT,
-            action_script=A0830_EMPTY,
+            action_script=A0015_DO_NOTHING,
             visible=True,
             x=29,
             y=25,
@@ -477,8 +530,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 6
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 6
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E1311_TOWER_CHECKERBOARD_LOCKED_DOOR,
@@ -505,8 +559,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 7
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 7
             npc=npcs.SMALL_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0237_FREESTANDING_5_GRANT,
@@ -532,10 +587,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 8
+            byte7_upper2=3,
+        ),
+        RegularClone(  # 8
             npc=npcs.SMALL_COIN_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0236_FREESTANDING_6_GRANT,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -544,25 +599,9 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 9
+        ),
+        RegularClone(  # 9
             npc=npcs.SMALL_COIN_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0235_FREESTANDING_7_GRANT,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -571,25 +610,9 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 10
+        ),
+        RegularClone(  # 10
             npc=npcs.SMALL_COIN_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0234_FREESTANDING_8_GRANT,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -598,25 +621,9 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 11
+        ),
+        RegularClone(  # 11
             npc=npcs.SMALL_COIN_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0233_FREESTANDING_9_GRANT,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -625,25 +632,9 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 12
+        ),
+        RegularClone(  # 12
             npc=npcs.SMALL_COIN_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0232_FREESTANDING_10_GRANT,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -652,25 +643,9 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 13
+        ),
+        RegularClone(  # 13
             npc=npcs.SMALL_COIN_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0231_FREESTANDING_11_GRANT,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -679,25 +654,9 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 14
+        ),
+        RegularClone(  # 14
             npc=npcs.SMALL_COIN_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0230_FREESTANDING_12_GRANT,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -706,25 +665,9 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 15
+        ),
+        RegularClone(  # 15
             npc=npcs.SMALL_COIN_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0229_FREESTANDING_13_GRANT,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -733,21 +676,6 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-    ]
+        ),
+    ],
 )

@@ -3919,7 +3919,7 @@ class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow2):
 class BoosterTowerBalconyBossFight(BossFightLocation):
     _bias = True
     _originally_held = KnifeGuyGrateGuyBossFight
-    _rooms = [R202_BOOSTER_TOWER_ENTRANCE]
+    _rooms = [R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _pack_id = PACK177_TOWER_SECOND_BOSS

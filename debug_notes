@@ -66,19 +66,19 @@ Booster Pass
 
 Booster Tower
 🚧 booster tower does not load when character needed to unlock it
-- balcony boss fight gets completely skipped'
-- shadows broken when punchinello replaces booster in curtain room, makes no sense
-- beetle in booster room is floating at wrong offset, too low
-- punchinello disappears briefly when opens curtains, probably need to remove a mold
-- room key replacement is invislbe and moving around when it shouldnt me (its a frog coin?)
-- attacking blue fireball makes you run away
-- all front-facing chomp animations are wrong (shows bowser's chomp swing and not just their standard sprite) in booster tower
+🚧 balcony boss fight gets completely skipped'
+🚧 shadows broken when punchinello replaces booster in curtain room, makes no sense
+🚧 beetle in booster room is floating at wrong offset, too low
+🚧 punchinello disappears briefly when opens curtains, probably need to remove a mold
+🚧 room key replacement is invislbe and moving around when it shouldnt me (its a frog coin?)
+🚧 attacking blue fireball makes you run away
+🚧 all front-facing chomp animations are wrong (shows bowser's chomp swing and not just their standard sprite) in booster tower
 - shouln't be able to run from tower henchman fights
 - star music in booster tower is wrong, but it fixes itself
 - mario disappears when he collects the seesaw prise in tower
 
 Booster Hill
-- booster hill needs to be packeted
+🚧 booster hill needs to be packeted
 
 Marrymore
 - fireball sprites in kitchen are glitching out

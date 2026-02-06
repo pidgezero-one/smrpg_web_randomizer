@@ -319,6 +319,8 @@ def render_booster_tower_indoor_boss(
         ("tower_henchman_curtain_aqueue_36", "tower_henchman_curtain_36"),
         ("tower_henchman_curtain_aqueue_37", "tower_henchman_curtain_37"),
         ("tower_henchman_curtain_aqueue_38", "tower_henchman_curtain_38"),
+        ("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_39"),
+        ("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_40"),
     ]
     for eid, aid in deletions:
         world.event_scripts.delete_subscript_command_by_identifier(eid, aid)

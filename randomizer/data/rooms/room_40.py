@@ -77,7 +77,7 @@ room = Room(
     ],
     objects=[
         BattlePackNPC( # 0
-            npc=npcs.CHOMP_NPC,
+            npc=npcs.CHOMP_FRONT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             after_battle=PostBattleBehaviour.REMOVE_PERMANENTLY,
             battle_pack=50,
@@ -105,7 +105,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         BattlePackClone( # 1
-            npc=npcs.CHOMP_NPC,
+            npc=npcs.CHOMP_FRONT_NPC,
             battle_pack=50,
             action_script=A0703_TOWER_CHOMP_GROUP,
             visible=True,
@@ -115,7 +115,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST),
         BattlePackClone( # 2
-            npc=npcs.CHOMP_NPC,
+            npc=npcs.CHOMP_FRONT_NPC,
             battle_pack=50,
             action_script=A0703_TOWER_CHOMP_GROUP,
             visible=True,
