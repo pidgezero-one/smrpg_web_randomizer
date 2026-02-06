@@ -33,8 +33,9 @@ from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(BANDITS_WAY_LIBERATED, ["3105_normal_exit"]),
+	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["3105_unliberated_exit"]),
 	JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_TOAD_RESCUED, ["3105_normal_exit"]),
-    EnterArea(R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, NORTHWEST, 27, 28, 0, False, False, True),
+    EnterArea(R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, NORTHWEST, 27, 28, 0, False, False, True, identifier="3105_unliberated_exit"),
     Return(),
     EnterArea(R019_MUSHROOM_KINGDOM_CASTLE_STAIR_ROOM_TO_TOADSTOOLS_ROOM, NORTHWEST, 27, 28, 0, False, False, True, identifier="3105_normal_exit"),
     Return(),
