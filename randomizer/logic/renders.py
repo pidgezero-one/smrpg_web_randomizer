@@ -554,6 +554,8 @@ def render_marrymore_boss_henchmen(
                 "kitchen_chef_seq_1", A_SetSpriteSequence
             )
             cmd.set_index(henchman_animations.kitchen_prep.sequence_id)
+        else:
+            world.action_scripts.delete_command_by_identifier("kitchen_chef_seq_1")
 
     if len(henchmen) >= 2:
         second_henchman = henchmen[1]
@@ -564,6 +566,9 @@ def render_marrymore_boss_henchmen(
                     cmd_id, A_SetSpriteSequence
                 )
                 cmd.set_index(henchman_animations.kitchen_prep.sequence_id)
+        else:
+            world.action_scripts.delete_command_by_identifier("kitchen_chef_seq_2")
+            world.action_scripts.delete_command_by_identifier("kitchen_chef_seq_3")
 
 
 def render_marrymore_character_empty(world: GameWorld) -> None:
@@ -937,7 +942,7 @@ def render_statue_room_boss(
     spr = world.sprites.sprites[m.base.sprite_id]
     assert spr is not None
     has_walking_sequence = len(spr.animation.properties.sequences[0].frames) >= 2
-    has_back_walking_sequence = len(
+    has_back_walking_sequence = len(spr.animation.properties.sequences) > 1 and len(
         spr.animation.properties.sequences[1].frames
     ) >= 2 and not is_swse_only(spr)
 

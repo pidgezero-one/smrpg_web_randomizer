@@ -553,6 +553,5 @@ script = EventScript([
 	ClearBit(SANCTUARY_LOCKED),
 	SetVarToConst(TIMER_701C, 300),
 	RunBackgroundEventWithPauseReturnOnExit(event_id=E0647_MARRYMORE_SANCTUARY_CANDLE_1, timer_var=TIMER_701C, bit_4=True, bit_5=True),
-	EnableControls([LEFT, RIGHT, DOWN, UP, A, Y, B]),
 	Return()
 ])

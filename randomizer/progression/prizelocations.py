@@ -3257,7 +3257,7 @@ class BoosterTowerChestNearThwompLocation(TreasureChestLocationRow1):
 
 
 class BoosterTowerFallingChestLocation(
-    StandingLocationRow1
+    NPCLocationRow1
 ):  # this looks like a chest, requires an overworld item, but acts like a npc reward
     _originally_held = MasherPrize
     _rooms = [R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER]
@@ -4324,7 +4324,7 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
 
 # These are really NPC grants but they need sprite replacements.
 # Override container event
-class MarrymoreSnifit1Location(KeyItemLocation, StandingLocationRow1):
+class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1):
     _bias = True
     _originally_held = BroochPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
@@ -4339,14 +4339,14 @@ class MarrymoreSnifit1Location(KeyItemLocation, StandingLocationRow1):
     # flag as checked: CHAPEL_ITEM_1_RETRIEVED
 
 
-class MarrymoreSnifit2Location(KeyItemLocation, StandingLocationRow2):
+class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2):
     _bias = True
     _originally_held = RingPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E0252_NPC_QUEST_2_GRANT
-    _npc_ids = [NPC_7]
+    _npc_ids = [NPC_3]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory)
@@ -4354,7 +4354,7 @@ class MarrymoreSnifit2Location(KeyItemLocation, StandingLocationRow2):
     # flag as checked: CHAPEL_ITEM_2_RETRIEVED
 
 
-class MarrymoreSnifit3Location(KeyItemLocation, StandingLocationRow3):
+class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3):
     _bias = True
     _originally_held = ShoesPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]

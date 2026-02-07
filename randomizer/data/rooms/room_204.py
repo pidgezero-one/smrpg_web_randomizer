@@ -1,5 +1,6 @@
 # R204_MUSHROOM_WAY_AREA_02
 # pyright: reportWildcardImportFromLibrary=false
+from django.db.models.expressions import F
 from smrpgpatchbuilder.datatypes.levels.classes import (
     ObjectType,
     EventInitiator,
@@ -38,9 +39,9 @@ from ..variables.action_script_names import *
 
 room = Room(
     partition=Partition(
-        ally_sprite_buffer_size=2,
-        allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=1,
+        ally_sprite_buffer_size=1,
+        allow_extra_sprite_buffer=False,
+        extra_sprite_buffer_size=0,
         buffers=[
             Buffer(
                 buffer_type=BufferType.TREASURE_CHEST,

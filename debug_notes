@@ -10,7 +10,7 @@ General
 - water is very broken, when you jump out of it it starts creating keys, can't move, wrote the "this is a dead end" dialog when i pressed A, stoppd music. Likely an AS problem
 🚧 shop items need to be sorted by id
 🚧 crook targeted self with dark star on using spell (might have been trying to escape normally?)
-- even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
+🚧 even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
 🚧 "found an cleanse juice"
 🚧 cymbals (music note) packet shows up as a flower
 🚧 frog coins in chest render wrong packet, but regular coins seem to work correctly
@@ -25,7 +25,7 @@ Boss-specific
 - jinx 4 too - am i increasing the counter?
 
 Mushroom Way 
-- Chest sprites in MW2 are broken. Something wrong with vram. Possibly caused by remake items
+🚧 Chest sprites in MW2 are broken. Something wrong with vram. Possibly caused by remake items
 🚧 mushroom way boss still wrong stats
 
 Mushroom kingdom
@@ -40,7 +40,7 @@ Mushroom kingdom
 🚧 guest room should not change music when doing quests in liberated mode
 
 Kero sewers
-- kero sewers is not blocked when it should be
+🚧 kero sewers is not blocked when it should be
 
 Rose way
 - palettes in rose way still broken
@@ -73,16 +73,19 @@ Booster Tower
 🚧 room key replacement is invislbe and moving around when it shouldnt me (its a frog coin?)
 🚧 attacking blue fireball makes you run away
 🚧 all front-facing chomp animations are wrong (shows bowser's chomp swing and not just their standard sprite) in booster tower
-- shouln't be able to run from tower henchman fights
+🚧 shouln't be able to run from tower henchman fights
 - star music in booster tower is wrong, but it fixes itself
-- mario disappears when he collects the seesaw prise in tower
+🚧 mario disappears when he collects the seesaw prise in tower
 
 Booster Hill
 🚧 booster hill needs to be packeted
 
 Marrymore
-- fireball sprites in kitchen are glitching out
-- everything in the sanctuary renders incorrectly, disables x button permanently, snifits disappear when talked to, granting too many frog coins (154)
+🚧 fireball sprites in kitchen are glitching out
+🚧 everything in the sanctuary renders incorrectly, 
+🚧 disables x button permanently
+🚧 snifits disappear when talked t
+🚧 granting too many frog coins (154)
 
 Sea
 🚧 why are there two goodie bags in the sea? one of these chests is running the wrong event
@@ -109,8 +112,8 @@ Nimbus Land
 🚧 ninja in dodo spot has some problematic animations, doesnt turn around, sprite briefly distorts
 - statue bird palettes are wrong everywhere, possibly bc of exp star?
 🚧 statue sprites in garro's house need a diff partition (jagger doesnt load correctly), same in castle
-- statues in statue room face wrong direction
-- right nimbus guard cant be talked to
+🚧 statues in statue room face wrong direction
+🚧 right nimbus guard cant be talked to
 🚧 mallow statue palette in garros house is wrong and partially cut off
 🚧 hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
 - did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings

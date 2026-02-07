@@ -4,9 +4,10 @@ from uuid import uuid4
 from enum import StrEnum
 import random
 
-from randomizer.types.flags import SpellsAnywhere
+from randomizer.types.flags import MimicsAnywhere, SpellsAnywhere
 
 from .prize import (
+    MimicFightInitiatorPrize,
     Prize,
     EXPStarPrize,
     BossFightPrize,
@@ -1854,11 +1855,6 @@ class BossFightLocation(PrizeLocation):
             + (self.character_henchman_slots or [])
             + (self.tiny_henchman_slots or [])
         )
-        for slot in all_henchman_slots:
-            if slot.pack_id is not None:
-                henchman_pack = world.battle_packs._packs[slot.pack_id]
-                for f in henchman_pack.formations:
-                    f.set_can_run_away(self._henchman_can_run_away)
 
         # Assign mook henchmen
         if self.mook_henchman_slots and self.prize.mook_henchmen:
@@ -2107,6 +2103,9 @@ class BossFightLocation(PrizeLocation):
         # update the battle pack
         assert isinstance(self.prize, BossFightPrize)
         pack = world.battle_packs._packs[self._pack_id]
+        run_away = self.allow_run_away
+        if world.settings.isflag_enabled(MimicsAnywhere) and isinstance(self.prize, MimicFightInitiatorPrize):
+            run_away = True
 
         if self.prize.formation is not None:
             # Use the prize's formation directly (preserves formation_id for AI scripts)
@@ -2115,7 +2114,7 @@ class BossFightLocation(PrizeLocation):
 
             # Apply location-specific overrides to the formation
             # Always set run away based on location, not the prize's original setting
-            formation.set_can_run_away(self._allow_run_away)
+            formation.set_can_run_away(run_away)
             if self.prize.force_battlefield is not None:
                 formation.set_battlefield(self.prize.force_battlefield)
             if self.prize.force_start_event is not None:
@@ -2128,7 +2127,7 @@ class BossFightLocation(PrizeLocation):
                     self.prize._members
                 )  # pyright: ignore[reportArgumentType]
                 # Always set run away based on location, not the prize's original setting
-                f.set_can_run_away(self._allow_run_away)
+                f.set_can_run_away(run_away)
                 if self.prize.force_battlefield is not None:
                     f.set_battlefield(self.prize.force_battlefield)
                 if self.prize.force_start_event is not None:

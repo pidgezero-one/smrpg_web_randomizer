@@ -564,7 +564,7 @@ room = Room(
         RegularNPC(  # 7
             npc=npcs.SMALL_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E0237_FREESTANDING_5_GRANT,
+            event_script=E1257_CHECKERBOARD_ROOM_COIN_CLONE,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=21,
@@ -591,7 +591,7 @@ room = Room(
         ),
         RegularClone(  # 8
             npc=npcs.SMALL_COIN_NPC,
-            event_script=E0236_FREESTANDING_6_GRANT,
+            event_script=E1257_CHECKERBOARD_ROOM_COIN_CLONE,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=25,
@@ -602,7 +602,7 @@ room = Room(
         ),
         RegularClone(  # 9
             npc=npcs.SMALL_COIN_NPC,
-            event_script=E0235_FREESTANDING_7_GRANT,
+            event_script=E1257_CHECKERBOARD_ROOM_COIN_CLONE,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=24,
@@ -613,7 +613,7 @@ room = Room(
         ),
         RegularClone(  # 10
             npc=npcs.SMALL_COIN_NPC,
-            event_script=E0234_FREESTANDING_8_GRANT,
+            event_script=E1257_CHECKERBOARD_ROOM_COIN_CLONE,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=22,
@@ -624,7 +624,7 @@ room = Room(
         ),
         RegularClone(  # 11
             npc=npcs.SMALL_COIN_NPC,
-            event_script=E0233_FREESTANDING_9_GRANT,
+            event_script=E1257_CHECKERBOARD_ROOM_COIN_CLONE,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=23,
@@ -635,7 +635,7 @@ room = Room(
         ),
         RegularClone(  # 12
             npc=npcs.SMALL_COIN_NPC,
-            event_script=E0232_FREESTANDING_10_GRANT,
+            event_script=E1257_CHECKERBOARD_ROOM_COIN_CLONE,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=27,
@@ -646,7 +646,7 @@ room = Room(
         ),
         RegularClone(  # 13
             npc=npcs.SMALL_COIN_NPC,
-            event_script=E0231_FREESTANDING_11_GRANT,
+            event_script=E1257_CHECKERBOARD_ROOM_COIN_CLONE,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=25,
@@ -657,7 +657,7 @@ room = Room(
         ),
         RegularClone(  # 14
             npc=npcs.SMALL_COIN_NPC,
-            event_script=E0230_FREESTANDING_12_GRANT,
+            event_script=E1257_CHECKERBOARD_ROOM_COIN_CLONE,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=23,
@@ -668,7 +668,7 @@ room = Room(
         ),
         RegularClone(  # 15
             npc=npcs.SMALL_COIN_NPC,
-            event_script=E0229_FREESTANDING_13_GRANT,
+            event_script=E1257_CHECKERBOARD_ROOM_COIN_CLONE,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=26,

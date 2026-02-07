@@ -1,4 +1,4 @@
-# E1257_EMPTY
+# E1257_CHECKERBOARD_ROOM_COIN_CLONE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,24 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+    CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, NPC_7, ["EVENT_1257_jump_to_freestanding_5_grant"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, NPC_8, ["EVENT_1257_jump_to_freestanding_6_grant"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, NPC_9, ["EVENT_1257_jump_to_freestanding_7_grant"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, NPC_10, ["EVENT_1257_jump_to_freestanding_8_grant"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, NPC_11, ["EVENT_1257_jump_to_freestanding_9_grant"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, NPC_12, ["EVENT_1257_jump_to_freestanding_10_grant"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, NPC_13, ["EVENT_1257_jump_to_freestanding_11_grant"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, NPC_14, ["EVENT_1257_jump_to_freestanding_12_grant"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, NPC_15, ["EVENT_1257_jump_to_freestanding_13_grant"]),
+    Return(),
+    JmpToEvent(E0237_FREESTANDING_5_GRANT, identifier="EVENT_1257_jump_to_freestanding_5_grant"),
+    JmpToEvent(E0236_FREESTANDING_6_GRANT, identifier="EVENT_1257_jump_to_freestanding_6_grant"),
+    JmpToEvent(E0235_FREESTANDING_7_GRANT, identifier="EVENT_1257_jump_to_freestanding_7_grant"),
+    JmpToEvent(E0234_FREESTANDING_8_GRANT, identifier="EVENT_1257_jump_to_freestanding_8_grant"),
+    JmpToEvent(E0233_FREESTANDING_9_GRANT, identifier="EVENT_1257_jump_to_freestanding_9_grant"),
+    JmpToEvent(E0232_FREESTANDING_10_GRANT, identifier="EVENT_1257_jump_to_freestanding_10_grant"),
+    JmpToEvent(E0231_FREESTANDING_11_GRANT, identifier="EVENT_1257_jump_to_freestanding_11_grant"),
+    JmpToEvent(E0230_FREESTANDING_12_GRANT, identifier="EVENT_1257_jump_to_freestanding_12_grant"),
+    JmpToEvent(E0229_FREESTANDING_13_GRANT, identifier="EVENT_1257_jump_to_freestanding_13_grant"),
 ])

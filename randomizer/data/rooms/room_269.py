@@ -39,7 +39,7 @@ room = Room(
     entrance_event=E3805_ENDING_CREDITS_CORONATION_LOADER,
     objects=[
         RegularNPC( # 0
-            npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC_2,
+            npc=npcs.MALLOW_PRINCE_LEFT_NPC_2,
             initiator=EventInitiator.NONE,
             event_script=E0933_FAT_YOSHI_PRESENT_GENERATOR,
             action_script=A0015_DO_NOTHING,

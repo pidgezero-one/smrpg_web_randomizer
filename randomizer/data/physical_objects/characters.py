@@ -1,14 +1,10 @@
 from ...types.physical_objects import NPC
 from ..rooms.npcs import (
     BOWSER_WALKING_DOWN_LEFT_NPC_2,
-    GENO_WALKING_DOWN_LEFT_NPC_2,
+    GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE,
     MALLOW_WALKING_DOWN_LEFT_NPC_2,
     MARIO_CLONE_WALKING_DOWN_LEFT_NPC,
-    MALLOW_CLONE_NPC,
-    GENO_CLONE_NPC,
-    BOWSER_CLONE_NPC,
-    TOADSTOOL_NPC,
-    TOADSTOOL_WALKING_DOWN_LEFT_NPC_2,
+    TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM,
 )
 
 
@@ -27,7 +23,7 @@ class MallowCharacterNPC(NPC):
 class GenoCharacterNPC(NPC):
     """Geno character NPC wrapper for recruitment prizes."""
 
-    _base = GENO_WALKING_DOWN_LEFT_NPC_2
+    _base = GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE
 
 
 class BowserCharacterNPC(NPC):
@@ -39,4 +35,4 @@ class BowserCharacterNPC(NPC):
 class ToadstoolCharacterNPC(NPC):
     """Toadstool character NPC wrapper for recruitment prizes."""
 
-    _base = TOADSTOOL_WALKING_DOWN_LEFT_NPC_2
+    _base = TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM

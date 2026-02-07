@@ -90,12 +90,7 @@ class Enemy(EnemyBase):
             desc += '|'  # Resistance icon (124)
             for element in resist_elements:
                 desc += ELEMENT_TOKENS[element]
-            # Pad to 4 elements
-            desc += EMPTY * (4 - len(resist_elements))
-        else:
-            desc += EMPTY * 5
-
-        desc += EMPTY
+            desc += EMPTY * 2
 
         # Elemental weaknesses - collect present elements, then pad with empty
         weak_elements = [e for e in element_order if e in self.weaknesses]
@@ -103,12 +98,7 @@ class Enemy(EnemyBase):
             desc += '{'  # Weakness icon (123)
             for element in weak_elements:
                 desc += ELEMENT_TOKENS[element]
-            # Pad to 4 elements
-            desc += EMPTY * (4 - len(weak_elements))
-        else:
-            desc += EMPTY * 5
-
-        desc += EMPTY * 2
+            desc += EMPTY * 2
 
         # Status vulnerabilities (inverse of immunities) - collect present, then pad
         status_order = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
@@ -124,15 +114,9 @@ class Enemy(EnemyBase):
             for status in vulnerabilities:
                 desc += STATUS_CHARS[status]
             # Pad to 4 statuses
-            desc += EMPTY * (4 - len(vulnerabilities))
             # OHKO vulnerability
             if has_ohko_vuln:
                 desc += '~ohko~~ohko~'  # Two OHKO symbols (132, 132)
-            else:
-                desc += EMPTY * 2
-        else:
-            # No vulnerabilities at all - just empty space
-            desc += EMPTY * 7
         # Strip trailing EMPTY placeholders (must strip full substring, not individual chars)
         while desc.endswith(EMPTY):
             desc = desc[:-len(EMPTY)]
