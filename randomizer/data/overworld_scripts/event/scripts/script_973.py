@@ -34,6 +34,6 @@ from ....spells.spells import *
 script = EventScript([
 	LearnSpell(TOADSTOOL, GroupHugSpell, identifier="npc_spell_23_character"),
 	PlaySound(sound=SO085_FLOWER, channel=6),
-	RunDialog(dialog_id=DI1991_LEARN_SPELL_23, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1991_LEARN_SPELL_23, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, bit_6=True),
 	Return()
 ])

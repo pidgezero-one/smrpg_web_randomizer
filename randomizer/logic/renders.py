@@ -872,6 +872,7 @@ def render_statue_room_boss(
     keep_minigame_sprites: bool,
 ) -> None:
     """Apply animation changes for Statue Room boss fight."""
+    print(prize)
     # wedding ending
     world.event_scripts.delete_subscript_command_by_identifier(
         "wedding_ending_aq", "wedding_ending_shift"

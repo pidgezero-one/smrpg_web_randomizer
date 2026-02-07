@@ -35,8 +35,8 @@ script = EventScript([
 	PlaySound(sound=SO013_COIN, channel=6),
 	AddCoins(PRIMARY_TEMP_7000),
     JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_159_pkt_1"]),
-	RunDialog(dialog_id=DI4047_GOT_A_COIN_AUTO_TERMINATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI4046_GOT_A_COIN, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
     Return(),
-	RunDialog(dialog_id=DI4050_GOT_X_COINS_AUTO_TERMINATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_159_pkt_1"),
+	RunDialog(dialog_id=DI4049_GOT_X_COINS, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_159_pkt_1"),
 	Return()
 ])

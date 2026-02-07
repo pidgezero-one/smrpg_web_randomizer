@@ -77,7 +77,7 @@ squid_hit_fast = SpriteAnimation(
 squid_default = SpriteAnimation(sequence_id=0, total_duration=36)
 
 # Jinx animations
-jinx_punch = SpriteAnimation(sequence_id=5, contact_frame=10, total_duration=18)
+jinx_punch = SpriteAnimation(sequence_id=3, contact_frame=10, total_duration=18)
 jinx_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 punchinello_hit = SpriteAnimation(sequence_id=3, contact_frame=24, total_duration=34)

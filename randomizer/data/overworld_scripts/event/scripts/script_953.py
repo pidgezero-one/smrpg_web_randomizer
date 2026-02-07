@@ -34,6 +34,6 @@ from ....spells.spells import *
 script = EventScript([
 	LearnSpell(MARIO, FireOrbSpell, identifier="npc_spell_2_character"),
 	PlaySound(sound=SO085_FLOWER, channel=6),
-	RunDialog(dialog_id=DI1949_LEARN_SPELL_2, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1949_LEARN_SPELL_2, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, bit_6=True),
 	Return()
 ])
