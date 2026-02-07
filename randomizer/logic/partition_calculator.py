@@ -1060,3 +1060,84 @@ def set_partitions(world: GameWorld) -> None:
                 partition.set_extra_sprite_buffer_size(0)
 
             room.set_partition(partition)
+
+    # Update room 341's partition buffer based on shuffled statue sprite
+    update_statue_room_partition(world)
+
+
+def update_statue_room_partition(world: GameWorld) -> None:
+    """Update room 341's first partition buffer based on the shuffled statue sprite.
+
+    The statue game room (Garro's House, room 341) needs its first partition buffer
+    to match the gridplane format of the sprite shuffled into the first mold:
+    - Format 0 or 1: FOUR_SPRITES_PER_ROW
+    - Format 2 or 3: THREE_SPRITES_PER_ROW
+    - Non-gridplane or no mold: EMPTY_3
+
+    This should be called after boss shuffling is complete.
+    """
+    from ..progression.prizelocations import StatueRoomBossFight
+    from ..types.prize import BossFightPrize
+
+    # Room 341 is Garro's House / Statue Game room
+    STATUE_ROOM_INDEX = 341
+
+    room = world.rooms._rooms[STATUE_ROOM_INDEX]
+    if room is None or room.partition is None:
+        return
+
+    # Get the StatueRoomBossFight location and its prize
+    try:
+        location = world.get_location(StatueRoomBossFight)
+    except KeyError:
+        return
+
+    if location.prize is None or not isinstance(location.prize, BossFightPrize):
+        return
+
+    prize = location.prize
+
+    # Get the NPC model that will be used for the statue game (6144 VRAM limit)
+    npc_model = prize.get_npc_for_slot(world, 6144)
+    npc_instance = npc_model()
+
+    # Get the sprite for this NPC
+    sprite_id = npc_instance.base.sprite_id
+    complete_sprite = _get_complete_sprite(world, sprite_id)
+    if complete_sprite is None:
+        # No sprite found - set to empty
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+        return
+
+    # Check the first mold's gridplane format
+    molds = complete_sprite.animation.properties.molds
+    if not molds or len(molds) == 0:
+        # No molds - set to empty
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+        return
+
+    first_mold = molds[0]
+    if not first_mold.gridplane:
+        # Non-gridplane - set to empty
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+        return
+
+    if not first_mold.tiles or len(first_mold.tiles) == 0:
+        # Gridplane but no tiles - set to empty
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+        return
+
+    # Get the gridplane format from the first tile
+    first_tile = first_mold.tiles[0]
+    tile_format = first_tile.format  # type: ignore[attr-defined]
+
+    # Set buffer type based on format:
+    # Format 0 (3x3) or 1 (3x4): 4 sprites per row
+    # Format 2 (4x3) or 3 (4x4): 3 sprites per row
+    if tile_format in [0, 1]:
+        room.partition.buffers[0].set_buffer_type(BufferType.FOUR_SPRITES_PER_ROW)
+    elif tile_format in [2, 3]:
+        room.partition.buffers[0].set_buffer_type(BufferType.THREE_SPRITES_PER_ROW)
+    else:
+        # Unknown format - set to empty
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)

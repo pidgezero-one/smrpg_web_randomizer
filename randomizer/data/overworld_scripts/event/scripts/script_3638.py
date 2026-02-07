@@ -1,4 +1,4 @@
-# E3638_EMPTY
+# E3638_NIMBUS_OUTER_GUARD_2
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript

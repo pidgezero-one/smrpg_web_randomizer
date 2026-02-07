@@ -1165,8 +1165,16 @@ class GameWorld:
                 patch.add_data(p[0], p[1], source="battle_animations")
         progress += 3
 
-        # Render all character palettes when palette swaps are enabled
-        if self.settings.isflag_enabled(PaletteSwaps):
+        # Render character palettes when any non-default palette is selected
+        from .flags import (
+            MarioPaletteChoice, MallowPaletteChoice, GenoPaletteChoice,
+            BowserPaletteChoice, ToadstoolPaletteChoice,
+        )
+        palette_flags = [
+            MarioPaletteChoice, MallowPaletteChoice, GenoPaletteChoice,
+            BowserPaletteChoice, ToadstoolPaletteChoice,
+        ]
+        if any(self.settings.get_flag(f).selected.name != "DEFAULT" for f in palette_flags):
             patch.add_dict(self.mario_palette.render(self))
             patch.add_dict(self.mallow_palette.render(self))
             patch.add_dict(self.geno_palette.render(self))

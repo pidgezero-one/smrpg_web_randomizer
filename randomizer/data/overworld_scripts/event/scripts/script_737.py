@@ -51,7 +51,7 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_4, subscript=[
 		A_SetSpriteSequence(index=3, is_mold=True, looping=True, mirror_sprite=True)
 	], identifier="EVENT_737_action_queue_12"),
-	SetSyncActionScript(NPC_0, A0119_SLOW_SEQUENCE_LOOP, identifier="EVENT_737_set_action_script_13"),
+	SetSyncActionScript(NPC_6, A0119_SLOW_SEQUENCE_LOOP, identifier="EVENT_737_set_action_script_13"),
 	RunEventAsSubroutine(E0821_GARROS_HOUSE_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False),
 	Return()

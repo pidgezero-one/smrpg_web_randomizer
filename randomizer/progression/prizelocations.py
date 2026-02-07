@@ -4691,7 +4691,7 @@ class FrogDiscipleLocation5(FrogDiscipleLocation):
 class SeasideBeachBossFight(BossFightLocation):
     _bias = True
     _originally_held = YaridovichBossFight
-    _rooms = [R316_SEASIDE_TOWN_BEACH]
+    _rooms = [R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS_FIGHT
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _pack_id = PACK180_SEASIDE_BOSS
@@ -7532,7 +7532,7 @@ class StatueRoomBossFight(BossFightLocation):
             render_statue_room_boss(
                 world,
                 self.prize,
-                not world.settings.isflag_enabled(KeepMinigameSpritesIntact),
+                world.settings.isflag_enabled(KeepMinigameSpritesIntact),
             )
         return op
 

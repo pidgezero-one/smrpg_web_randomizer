@@ -152,7 +152,6 @@ class Settings:
             NoGenoWhirlExor: NoGenoWhirlExor(),
             FixMagikoopa: FixMagikoopa(),
             NoOHKO: NoOHKO(),
-            PaletteSwaps: PaletteSwaps(),
             MarioPaletteChoice: MarioPaletteChoice(),
             MallowPaletteChoice: MallowPaletteChoice(),
             GenoPaletteChoice: GenoPaletteChoice(),

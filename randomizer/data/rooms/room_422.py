@@ -383,10 +383,10 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 12
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.KEY_BASE,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E1803_EMPTY,
-            action_script=A0830_EMPTY,
+            action_script=A0015_DO_NOTHING,
             visible=False,
             x=0,
             y=0,

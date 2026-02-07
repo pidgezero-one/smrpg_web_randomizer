@@ -3909,7 +3909,7 @@ class HidonBossFight(BossFightPrize):
         DI3073_TOWER_HENCHMAN_3: """MINI GOOMBA: Put up your dukes,\n tough guy![await]""",
     }
     _dialog_replacements_remake = {
-        DI1120_NIMBUS_BIRD_GUARD: """MINI GOOMBAE: Oh yeah? Think\n you're tough, just 'cause you're\n bigger than me?![await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """MINI GOOMBA: Oh yeah? Think\n you're tough, just 'cause you're\n bigger than me?![await]""",
         DI1945_NIMBUS_GUARD: """MINI GOOMBA: I heard you laughing!\n Go on, laugh it up! At least I'm\n allowed in the castle![await]"""}
 
 
@@ -4507,7 +4507,7 @@ class CulexBossFight(BossFightPrize):
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """CULEX: This is not the encounter In expected when I came to visit this\n world.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ How droll, my crystals shattered.[await]\n I've only Bacchus Wine remaining.[await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """WATER CRYSTAL: I guess this is as\n close as I'll get to being returned\n to Mysidia.[await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """\n Greetings, honored Warrior.\n[await][page]\n I have witnessed you do battle with\n `SEASIDE_BOSS`. \n I am impressed, but not surprised.[await]\n In my travels of your world, I saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n The crystals revealed they are \n `FINAL_BOSS_NAME`\n I know not your path to victory, \n but challenge awaits you there. \n I must return to the sea, lest the\n fragile water crystal shatter.[await][page]\n\n                       Fight with honor,\n                                     Culex[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n Greetings, honored Warrior.\n[await][page]\n I have witnessed you do battle with\n `SEASIDE_BOSS`. \n I am impressed, but not surprised.[await]\n In my travels of your world, I saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n The crystals revealed they are \n allies of `FINAL_BOSS_NAME`.[await]\n I know not your path to victory, \n but challenge awaits you there. \n I must return to the sea, lest the\n fragile water crystal shatter.[await][page]\n\n                       Fight with honor,\n                                     Culex[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """EARTH CRYSTAL: I thought the\n Dark Elf was a bit strange, until\n we came to this world.[await]\n You truly have some characters\n here![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """FIRE CRYSTAL: Of course I'm\n miserable! We're UNDERWATER![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """WIND CRYSTAL: Culex is nice and\n all, but I miss Yang sometimes.[await]""",
@@ -6249,7 +6249,7 @@ class Culex3DBossFight(BossFightPrize):
         DI1782_SHIP_BOSS_DRINK: """ How droll, my crystals shattered.[await]\n I've only Bacchus Wine remaining.[await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """\n Greetings, honored Warrior.\n[await][page]\n I have witnessed you do battle with\n `SEASIDE_BOSS`. \n I am impressed, but not surprised.[await]\n In my travels of your world, I saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n The crystals revealed they are \n `FINAL_BOSS_NAME`\n I know not your path to victory, \n but challenge awaits you there. \n I must return to the sea, lest the\n fragile water crystal shatter.[await][page]\n\n                       Fight with honor,\n                                     Culex[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n Greetings, honored Warrior.\n[await][page]\n I have witnessed you do battle with\n `SEASIDE_BOSS`. \n I am impressed, but not surprised.[await]\n In my travels of your world, I saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n The crystals revealed they are \n allies of `FINAL_BOSS_NAME`.[await]\n I know not your path to victory, \n but challenge awaits you there. \n I must return to the sea, lest the\n fragile water crystal shatter.[await][page]\n\n                       Fight with honor,\n                                     Culex[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like demon! It is...\n masterpiece![await]""",

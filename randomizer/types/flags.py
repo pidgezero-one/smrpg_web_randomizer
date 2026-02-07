@@ -2130,14 +2130,6 @@ class NoOHKO(BooleanFlag):
 # aka stuff that doesn't affect the seed
 
 
-# ✅
-class PaletteSwaps(BooleanFlag):
-    _name = "Palette Swaps"
-    _description = "Your party members get a change of wardrobe!"
-    _id = "palette"
-    
-
-
 class MarioPaletteOptions(CategorizationOption):
     """Enumeration for Mario Palette Name options"""
 
@@ -2165,14 +2157,13 @@ class MarioPaletteChoice(SelectOneFlag[MarioPaletteOptions]):
     _name = "Mario Palette"
     _description = "Choose Mario's Palette"
     choices = [
-        MarioPaletteOptions.RANDOM,
         MarioPaletteOptions.DEFAULT,
+        MarioPaletteOptions.RANDOM,
         *sorted(o for o in MarioPaletteOptions if o not in [MarioPaletteOptions.RANDOM, MarioPaletteOptions.DEFAULT]),
     ]
 
-    _default = MarioPaletteOptions.RANDOM
+    _default = MarioPaletteOptions.DEFAULT
     _id = "mariopalette"
-    _requires_all = [(PaletteSwaps(), True)]
 
 
 
@@ -2200,13 +2191,12 @@ class MallowPaletteChoice(SelectOneFlag[MallowPaletteOptions]):
     _name = "Mallow Palette"
     _description = "Choose Mallow's Palette"
     choices = [
-        MallowPaletteOptions.RANDOM,
         MallowPaletteOptions.DEFAULT,
+        MallowPaletteOptions.RANDOM,
         *sorted(o for o in MallowPaletteOptions if o not in [MallowPaletteOptions.RANDOM, MallowPaletteOptions.DEFAULT]),
     ]
-    _default = MallowPaletteOptions.RANDOM
+    _default = MallowPaletteOptions.DEFAULT
     _id = "mallowpalette"
-    _requires_all = [(PaletteSwaps(), True)]
 
 
 
@@ -2232,13 +2222,12 @@ class GenoPaletteChoice(SelectOneFlag[GenoPaletteOptions]):
     _name = "Geno Palette"
     _description = "Choose Geno's Palette"
     choices = [
-        GenoPaletteOptions.RANDOM,
         GenoPaletteOptions.DEFAULT,
+        GenoPaletteOptions.RANDOM,
         *sorted(o for o in GenoPaletteOptions if o not in [GenoPaletteOptions.RANDOM, GenoPaletteOptions.DEFAULT]),
     ]
-    _default = GenoPaletteOptions.RANDOM
+    _default = GenoPaletteOptions.DEFAULT
     _id = "genopalette"
-    _requires_all = [(PaletteSwaps(), True)]
 
 
 
@@ -2263,13 +2252,12 @@ class BowserPaletteChoice(SelectOneFlag[BowserPaletteOptions]):
     _name = "Bowser Palette"
     _description = "Choose Bowser's Palette"
     choices = [
-        BowserPaletteOptions.RANDOM,
         BowserPaletteOptions.DEFAULT,
+        BowserPaletteOptions.RANDOM,
         *sorted(o for o in BowserPaletteOptions if o not in [BowserPaletteOptions.RANDOM, BowserPaletteOptions.DEFAULT]),
     ]
-    _default = BowserPaletteOptions.RANDOM
+    _default = BowserPaletteOptions.DEFAULT
     _id = "bowserpalette"
-    _requires_all = [(PaletteSwaps(), True)]
 
 
 
@@ -2306,20 +2294,18 @@ class ToadstoolPaletteChoice(SelectOneFlag[ToadstoolPaletteOptions]):
     _name = "Toadstool Palette"
     _description = "Choose Toadstool's Palette"
     choices = [
-        ToadstoolPaletteOptions.RANDOM,
         ToadstoolPaletteOptions.DEFAULT,
+        ToadstoolPaletteOptions.RANDOM,
         *sorted(o for o in ToadstoolPaletteOptions if o not in [ToadstoolPaletteOptions.RANDOM, ToadstoolPaletteOptions.DEFAULT]),
     ]
-    _default = ToadstoolPaletteOptions.RANDOM
+    _default = ToadstoolPaletteOptions.DEFAULT
     _id = "toadstoolpalette"
-    _requires_all = [(PaletteSwaps(), True)]
 
 # ✅
-class ChangeNames(BooleanFlag):  # not available unless PaletteSwaps enabled
+class ChangeNames(BooleanFlag):
     _name = "Change character names"
     _description = """Some palette swaps are references to other media. If this flag is enabled, the character's name will be changed to match the palette."""
     _id = "names"
-    _requires_all = [(PaletteSwaps(), True)]
 
 
 # ✅
@@ -2752,7 +2738,6 @@ class PaletteSubcategory(FlagCategory):
 
     _name: str = "Visual Cosmetics"
     _flags: list[type[Flag]] = [
-        PaletteSwaps,
         JapaneseABXY,
         MarioPaletteChoice,
         MallowPaletteChoice,

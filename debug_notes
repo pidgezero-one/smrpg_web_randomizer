@@ -91,28 +91,28 @@ Sea
 Seaside Town
 🚧 seaside frog placement not working, everything is still full price
 🚧 seaside: elder at confrontation time is not replaced by actual boss sprite
-- yaridovich boss fight gets skipped completely
-- royal syrup (replaces shed key) moves around
-- culex's letter scrolls too fast, also doesn't properly explain who the final boss is
+🚧 yaridovich boss fight gets skipped completely
+🚧 royal syrup (replaces shed key) moves around (probably same fix as tower)
+🚧 culex's letter scrolls too fast, also doesn't properly explain who the final boss is
 
 Land's End
 🚧 mokura cloud broken
 
 Bean Valley
-- Corner item should not have a truthy NPC, keep using empty.
+🚧 Corner item should not have a truthy NPC, keep using empty.
 
 Nimbus Land
-- gold paint logic does not work, will take you in if you talk to him twice
-- frog coin in nimbus castle doesnt render in chest (bridge room)
+🚧 gold paint logic does not work, will take you in if you talk to him twice
+🚧 frog coin in nimbus castle doesnt render in chest (bridge room)
 🚧 same with birds, won't die
-- chests broken in jawful room, that definitely should not be happening
-- ninja in dodo spot has some problematic animations, doesnt turn around, sprite briefly distorts
+🚧 chests broken in jawful room, that definitely should not be happening
+🚧 ninja in dodo spot has some problematic animations, doesnt turn around, sprite briefly distorts
 - statue bird palettes are wrong everywhere, possibly bc of exp star?
-- statue sprites in garro's house need a diff partition (jagger doesnt load correctly), same in castle
+🚧 statue sprites in garro's house need a diff partition (jagger doesnt load correctly), same in castle
 - statues in statue room face wrong direction
 - right nimbus guard cant be talked to
-- mallow statue palette in garros house is wrong and partially cut off
-- hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
+🚧 mallow statue palette in garros house is wrong and partially cut off
+🚧 hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
 - did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings
 
 Ending

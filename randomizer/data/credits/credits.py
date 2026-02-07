@@ -2,7 +2,11 @@ from __future__ import annotations
 import random
 from typing import TYPE_CHECKING
 
-from ...types.flags import PaletteSwaps, RandomTadpolePondSong, RandomSunkenShipPassword
+from ...types.flags import (
+    RandomTadpolePondSong, RandomSunkenShipPassword,
+    MarioPaletteChoice, MallowPaletteChoice, GenoPaletteChoice,
+    BowserPaletteChoice, ToadstoolPaletteChoice,
+)
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -504,7 +508,12 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.add_credit(0x80, 0x00, 0xC2, "MINAMIYO           NIMBUS")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
-    if world.settings.isflag_enabled(PaletteSwaps):
+    # Show palette credits if any non-default palette is selected
+    palette_flags = [
+        MarioPaletteChoice, MallowPaletteChoice, GenoPaletteChoice,
+        BowserPaletteChoice, ToadstoolPaletteChoice,
+    ]
+    if any(world.settings.get_flag(f).selected.name != "DEFAULT" for f in palette_flags):
         palette_authors = get_palette_authors(world)
         if palette_authors:
             credits.begin_titles(BEGIN_TITLES_DELAY)

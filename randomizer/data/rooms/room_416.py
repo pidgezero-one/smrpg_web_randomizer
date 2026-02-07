@@ -1,7 +1,31 @@
 # R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    ObjectType,
+    EventInitiator,
+    PostBattleBehaviour,
+    Direction,
+    EdgeDirection,
+    ExitType,
+    BufferType,
+    BufferSpace,
+    VramStore,
+    ShadowSize,
+)
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    Buffer,
+    Partition,
+    DestinationProps,
+    RoomExit,
+    MapExit,
+    Event,
+    BattlePackNPC,
+    RegularNPC,
+    ChestNPC,
+    BattlePackClone,
+    RegularClone,
+    ChestClone,
+)
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -11,29 +35,30 @@ from ..variables.overworld_area_names import *
 from ..variables.music_names import *
 from ..variables.event_script_names import *
 from ..variables.action_script_names import *
+
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
-        buffers = [
+        buffers=[
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
-            )
+                index_in_main_buffer=True,
+            ),
         ],
-        full_palette_buffer=True
+        full_palette_buffer=True,
     ),
     music=M0050_NIMBUSLAND,
     entrance_event=E3642_NIMBUS_EXTERIOR_OCCUPIED_LOADER,
@@ -48,7 +73,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E3619_NIMBUS_EXTERIOR_OPEN_SHOP_DOOR,
             x=11,
@@ -59,7 +85,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E3622_NIMBUS_EXTERIOR_OPEN_NORTHEAST_HOUSE_DOOR,
             x=12,
@@ -70,7 +97,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E3621_NIMBUS_EXTERIOR_OPEN_SOUTH_HOUSE_DOOR,
             x=15,
@@ -81,7 +109,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E3620_NIMBUS_EXTERIOR_OPEN_GARROS_DOOR,
             x=25,
@@ -92,7 +121,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E3645_NIMBUS_EXTERIOR_EXIT_TO_VINES,
             x=12,
@@ -103,7 +133,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E3645_NIMBUS_EXTERIOR_EXIT_TO_VINES,
             x=11,
@@ -114,7 +145,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
         Event(
             event=E0740_NIMBUS_LAND_OCCUPIED_CASTLE_FRONT_ENTRANCE,
             x=20,
@@ -125,7 +157,8 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
     ],
     exits=[
         RoomExit(
@@ -145,7 +178,8 @@ room = Room(
             dst_z=1,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=13,
             y=26,
@@ -163,7 +197,8 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=16,
             y=64,
@@ -181,7 +216,8 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=5,
             y=46,
@@ -199,7 +235,8 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=11,
             y=46,
@@ -217,7 +254,8 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=25,
             y=48,
@@ -235,10 +273,11 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
     ],
     objects=[
-        RegularNPC( # 0
+        RegularNPC(  # 0
             npc=npcs.NIMBUSITE_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3631_NIMBUS_EXTERIOR_BLUE_GUY_NEAR_GARROS_HOUSE,
@@ -264,8 +303,9 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularClone( # 1
+            byte7_upper2=3,
+        ),
+        RegularClone(  # 1
             npc=npcs.NIMBUSITE_BLUE_NPC,
             event_script=E3629_NIMBUS_EXTERIOR_BLUE_GUY_NEAR_SHOP,
             action_script=A0811_NIMBUS_NPC_RANDOM_DIRECTIONS,
@@ -274,8 +314,9 @@ room = Room(
             y=38,
             z=2,
             z_half=False,
-            direction=SOUTHEAST),
-        RegularNPC( # 2
+            direction=SOUTHEAST,
+        ),
+        RegularNPC(  # 2
             npc=npcs.NIMBUSITE_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3655_NIMBUS_EXTERIOR_SOUTHERNMOST_BLUE_GUY,
@@ -301,8 +342,9 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 3
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 3
             npc=npcs.NIMBUSITE_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3628_NIMBUS_EXTERIOR_BLUE_GUY_IN_FRONT_OF_CASTLE_ENTRANCE,
@@ -328,8 +370,9 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 4
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 4
             npc=npcs.NIMBUSITE_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3630_NIMBUS_EXTERIOR_BLUE_GUY_NEAR_INVISIBLE_PATH,
@@ -355,8 +398,9 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 5
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 5
             npc=npcs.NIMBUSITE_RED_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3632_NIMBUS_EXTERIOR_WOMAN_NEAR_INVISIBLE_PATH,
@@ -382,8 +426,9 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularClone( # 6
+            byte7_upper2=3,
+        ),
+        RegularClone(  # 6
             npc=npcs.NIMBUSITE_RED_NPC_2,
             event_script=E3633_NIMBUS_EXTERIOR_WOMAN_NEAR_INN,
             action_script=A0812_NIMBUS_NPC_RANDOM_DIRECTIONS,
@@ -392,8 +437,9 @@ room = Room(
             y=50,
             z=2,
             z_half=False,
-            direction=NORTHEAST),
-        RegularNPC( # 7
+            direction=NORTHEAST,
+        ),
+        RegularNPC(  # 7
             npc=npcs.NIMBUSITE_RED_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3634_NIMBUS_EXTERIOR_WOMAN_NEAR_ENTRANCE,
@@ -419,8 +465,9 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 8
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 8
             npc=npcs.NIMBUS_GUARD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3647_NIMBUS_EXTERIOR_GUARD_NEAR_CASTLE,
@@ -446,8 +493,9 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 9
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 9
             npc=npcs.NIMBUS_GUARD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3646_NIMBUS_EXTERIOR_GUARD_NEAR_ENTRANCE,
@@ -473,8 +521,9 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 10
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 10
             npc=npcs.NIMBUSITE_YELLOW_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3635_NIMBUS_EXTERIOR_WOMAN_IN_FRONT_OF_CASTLE_ENTRANCE,
@@ -500,11 +549,12 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 11
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 11
             npc=npcs.BIRDY_NPC_3,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E3636_NIMBUS_BIRD_GUARD,
+            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            event_script=E3638_NIMBUS_OUTER_GUARD_2,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
             x=19,
@@ -529,9 +579,8 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
         ),
-        RegularNPC( # 12
+        RegularClone(  # 12
             npc=npcs.BIRDY_NPC_3,
-            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3636_NIMBUS_BIRD_GUARD,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
@@ -540,22 +589,6 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHWEST,
-            face_on_trigger=True,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=True,
-            slidable_along_walls=False,
-            cant_move_if_in_air=False,
-            byte7_upper2=3,
         ),
-    ]
+    ],
 )

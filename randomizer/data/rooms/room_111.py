@@ -14,7 +14,7 @@ from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
-        allow_extra_sprite_buffer=True,
+        allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
         buffers = [
             Buffer(
@@ -28,7 +28,7 @@ room = Room(
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
+                buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             )

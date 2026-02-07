@@ -34,8 +34,10 @@ from ....spells.spells import *
 script = EventScript([
     JmpIfBitClear(PAINT_GATING, ["EVENT_3640_start"]),
     
-    JmpIfBitSet(GARRO_ITEM_GRANTED, ["EVENT_3640_start"]),
-    StoreItemAmountTo7000(GoldPaintItem),
+    JmpIfBitClear(GARRO_ITEM_GRANTED, ["EVENT_3640_run_dialog_308"]),
+
+
+    StoreItemAmountTo7000(GoldPaintItem, identifier="EVENT_3640_check_paint"),
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3640_run_dialog_308"]),
     RemoveOneOfItemFromInventory(GoldPaintItem),
     Jmp(["EVENT_3640_start"]),

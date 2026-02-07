@@ -6,6 +6,7 @@ in prizelocations.py, organized by location/area.
 
 from __future__ import annotations
 
+from ast import Return
 from typing import TYPE_CHECKING, cast
 
 from randomizer.progression.prizes import (
@@ -870,152 +871,153 @@ def render_statue_room_boss(
     world.event_scripts.delete_subscript_command_by_identifier(
         "wedding_ending_aq", "wedding_ending_shift"
     )
+    if keep_minigame_sprites:
+        return
 
     # statue game
-    if not keep_minigame_sprites:
-        # Use VRAM-constrained selection (max 6144 for statue room)
-        mo = prize.get_npc_for_slot(world, 6144)
-        m = mo()
-        if m.animations.statue_peck is None:
-            world.event_scripts.get_script_by_id(
-                E0936_PECK_SUBROUTINE_LEFT_STATUE
-            ).set_contents(bonk.contents)
-            world.event_scripts.get_script_by_id(
-                E0937_PECK_SUBROUTINE_MIDDLE_STATUE
-            ).set_contents(bonk_mario.contents)
-            cast(
-                ActionQueueSync,
-                world.event_scripts.get_command_by_identifier("dodo_starts_battle"),
-            ).set_subscript(
-                [
-                    A_FaceSouthwest(),
-                    A_Pause(160),
-                ]
+    # Use VRAM-constrained selection (max 6144 for statue room)
+    mo = prize.get_npc_for_slot(world, 6144)
+    m = mo()
+    if m.animations.statue_peck is None:
+        world.event_scripts.get_script_by_id(
+            E0936_PECK_SUBROUTINE_LEFT_STATUE
+        ).set_contents(bonk.contents)
+        world.event_scripts.get_script_by_id(
+            E0937_PECK_SUBROUTINE_MIDDLE_STATUE
+        ).set_contents(bonk_mario.contents)
+        cast(
+            ActionQueueSync,
+            world.event_scripts.get_command_by_identifier("dodo_starts_battle"),
+        ).set_subscript(
+            [
+                A_FaceSouthwest(),
+                A_Pause(160),
+            ]
+        )
+    else:
+        world.event_scripts.get_script_by_id(
+            E0936_PECK_SUBROUTINE_LEFT_STATUE
+        ).set_contents(gen_peck_left_subroutine(m.animations.statue_peck).contents)
+        world.event_scripts.get_script_by_id(
+            E0937_PECK_SUBROUTINE_MIDDLE_STATUE
+        ).set_contents(
+            gen_peck_middle_subroutine(m.animations.statue_peck).contents
+        )
+        cast(
+            ActionQueueSync,
+            world.event_scripts.get_command_by_identifier("dodo_starts_battle"),
+        ).set_subscript(
+            gen_start_battle(
+                world.get_sprite(m.base.sprite_id), m.animations.statue_peck
             )
-        else:
-            world.event_scripts.get_script_by_id(
-                E0936_PECK_SUBROUTINE_LEFT_STATUE
-            ).set_contents(gen_peck_left_subroutine(m.animations.statue_peck).contents)
-            world.event_scripts.get_script_by_id(
-                E0937_PECK_SUBROUTINE_MIDDLE_STATUE
-            ).set_contents(
-                gen_peck_middle_subroutine(m.animations.statue_peck).contents
-            )
-            cast(
-                ActionQueueSync,
-                world.event_scripts.get_command_by_identifier("dodo_starts_battle"),
-            ).set_subscript(
-                gen_start_battle(
-                    world.get_sprite(m.base.sprite_id), m.animations.statue_peck
-                )
-            )
+        )
 
-        if m.animations.look_at_ceiling_mold_id is not None:
-            world.event_scripts.get_subscript_command_by_identifier(
-                "statue_keeper_introduced_aq",
-                "statue_keeper_introduced_1",
-                A_SetSpriteSequence,
-            ).set_index(m.animations.look_at_ceiling_mold_id)
-        else:
-            world.event_scripts.delete_subscript_command_by_identifier(
-                "statue_keeper_introduced_aq", "statue_keeper_introduced_1"
-            )
+    if m.animations.look_at_ceiling_mold_id is not None:
+        world.event_scripts.get_subscript_command_by_identifier(
+            "statue_keeper_introduced_aq",
+            "statue_keeper_introduced_1",
+            A_SetSpriteSequence,
+        ).set_index(m.animations.look_at_ceiling_mold_id)
+    else:
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "statue_keeper_introduced_aq", "statue_keeper_introduced_1"
+        )
 
-        if m.animations.statue_flustered is not None:
-            world.event_scripts.get_subscript_command_by_identifier(
-                "statue_keeper_flustered_aq",
-                "statue_keeper_flustered_1",
-                A_SetSpriteSequence,
-            ).set_index(m.animations.statue_flustered.sequence_id)
-        else:
-            world.event_scripts.delete_subscript_command_by_identifier(
-                "statue_keeper_flustered_aq", "statue_keeper_flustered_1"
-            )
+    if m.animations.statue_flustered is not None:
+        world.event_scripts.get_subscript_command_by_identifier(
+            "statue_keeper_flustered_aq",
+            "statue_keeper_flustered_1",
+            A_SetSpriteSequence,
+        ).set_index(m.animations.statue_flustered.sequence_id)
+    else:
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "statue_keeper_flustered_aq", "statue_keeper_flustered_1"
+        )
 
-        spr = world.sprites.sprites[m.base.sprite_id]
-        assert spr is not None
-        has_walking_sequence = len(spr.animation.properties.sequences[0].frames) >= 2
-        has_back_walking_sequence = len(
-            spr.animation.properties.sequences[1].frames
-        ) >= 2 and not is_swse_only(spr)
+    spr = world.sprites.sprites[m.base.sprite_id]
+    assert spr is not None
+    has_walking_sequence = len(spr.animation.properties.sequences[0].frames) >= 2
+    has_back_walking_sequence = len(
+        spr.animation.properties.sequences[1].frames
+    ) >= 2 and not is_swse_only(spr)
 
-        # walking from statue to statue
-        for aq, id in [("EVENT_3640_action_queue_271", "dodo_extra_sprite_1")]:
-            if has_walking_sequence:
-                world.event_scripts.replace_subscript_command_by_identifier(
-                    aq,
-                    id,
-                    A_SetSpriteSequence(
-                        index=2,
-                        is_sequence=True,
-                        looping=False,
-                        mirror_sprite=True,
-                    ),
-                )
-            else:
-                world.event_scripts.delete_subscript_command_by_identifier(aq, id)
-
-        for aq, id in [("EVENT_3640_action_queue_273", "dodo_extra_sprite_2")]:
-            if has_walking_sequence:
-                world.event_scripts.replace_subscript_command_by_identifier(
-                    aq,
-                    id,
-                    A_SetSpriteSequence(
-                        index=1,
-                        is_sequence=True,
-                        looping=False,
-                        mirror_sprite=True,
-                    ),
-                )
-            else:
-                world.event_scripts.delete_subscript_command_by_identifier(aq, id)
-
-        for aq, id in [("EVENT_3640_action_queue_304", "dodo_left_forward")]:
-            if has_back_walking_sequence:
-                world.event_scripts.replace_subscript_command_by_identifier(
-                    aq, id, A_SetSpriteSequence(index=4, is_mold=True)
-                )
-            else:
-                world.event_scripts.delete_subscript_command_by_identifier(aq, id)
-
-        for aq, id in [("EVENT_3640_action_queue_306", "dodo_right_forward")]:
-            if has_back_walking_sequence:
-                world.event_scripts.replace_subscript_command_by_identifier(
-                    aq, id, A_SetSpriteSequence(index=5, is_mold=True)
-                )
-            else:
-                world.event_scripts.delete_subscript_command_by_identifier(aq, id)
-
-        # head-shake
-        for aq, id in [
-            ("dodo_shake_head_aq", "dodo_shake_head_1"),
-            ("dodo_shake_head_aq", "dodo_shake_head_2"),
-        ]:
+    # walking from statue to statue
+    for aq, id in [("EVENT_3640_action_queue_271", "dodo_extra_sprite_1")]:
+        if has_walking_sequence:
             world.event_scripts.replace_subscript_command_by_identifier(
                 aq,
                 id,
-                A_SetSpriteSequence(index=0, is_mold=True, mirror_sprite=True),
+                A_SetSpriteSequence(
+                    index=2,
+                    is_sequence=True,
+                    looping=False,
+                    mirror_sprite=True,
+                ),
             )
+        else:
+            world.event_scripts.delete_subscript_command_by_identifier(aq, id)
 
-        # finished deletions
-        world.event_scripts.delete_subscript_command_by_identifier(
-            "dodo_finished_aq", "dodo_finished_1"
+    for aq, id in [("EVENT_3640_action_queue_273", "dodo_extra_sprite_2")]:
+        if has_walking_sequence:
+            world.event_scripts.replace_subscript_command_by_identifier(
+                aq,
+                id,
+                A_SetSpriteSequence(
+                    index=1,
+                    is_sequence=True,
+                    looping=False,
+                    mirror_sprite=True,
+                ),
+            )
+        else:
+            world.event_scripts.delete_subscript_command_by_identifier(aq, id)
+
+    for aq, id in [("EVENT_3640_action_queue_304", "dodo_left_forward")]:
+        if has_back_walking_sequence:
+            world.event_scripts.replace_subscript_command_by_identifier(
+                aq, id, A_SetSpriteSequence(index=4, is_mold=True)
+            )
+        else:
+            world.event_scripts.delete_subscript_command_by_identifier(aq, id)
+
+    for aq, id in [("EVENT_3640_action_queue_306", "dodo_right_forward")]:
+        if has_back_walking_sequence:
+            world.event_scripts.replace_subscript_command_by_identifier(
+                aq, id, A_SetSpriteSequence(index=5, is_mold=True)
+            )
+        else:
+            world.event_scripts.delete_subscript_command_by_identifier(aq, id)
+
+    # head-shake
+    for aq, id in [
+        ("dodo_shake_head_aq", "dodo_shake_head_1"),
+        ("dodo_shake_head_aq", "dodo_shake_head_2"),
+    ]:
+        world.event_scripts.replace_subscript_command_by_identifier(
+            aq,
+            id,
+            A_SetSpriteSequence(index=0, is_mold=True, mirror_sprite=True),
         )
-        world.event_scripts.delete_subscript_command_by_identifier(
-            "dodo_finished_aq_2", "dodo_finished_2"
-        )
-        world.event_scripts.delete_subscript_command_by_identifier(
-            "dodo_finished_aq_3", "dodo_finished_3"
-        )
-        world.event_scripts.delete_subscript_command_by_identifier(
-            "dodo_possibly_unused_aq", "dodo_possibly_unused"
-        )
-        world.event_scripts.delete_subscript_command_by_identifier(
-            "final_statue_peck_aq", "dodo_fakeout_1"
-        )
-        world.event_scripts.delete_subscript_command_by_identifier(
-            "final_statue_peck_aq", "dodo_fakeout_2"
-        )
+
+    # finished deletions
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "dodo_finished_aq", "dodo_finished_1"
+    )
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "dodo_finished_aq_2", "dodo_finished_2"
+    )
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "dodo_finished_aq_3", "dodo_finished_3"
+    )
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "dodo_possibly_unused_aq", "dodo_possibly_unused"
+    )
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "final_statue_peck_aq", "dodo_fakeout_1"
+    )
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "final_statue_peck_aq", "dodo_fakeout_2"
+    )
 
 
 # =============================================================================
