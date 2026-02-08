@@ -679,7 +679,7 @@ dialog_data[245] = ''' Heard the fireworks guy's workin'
  could pass the time by... oh, I
  dunno, climbin' a hill or somethin'.[await]'''
 dialog_data[246] = ''' Have ya met the weirdos livin' in
- the tower a little way from here?[await]
+ the tower a little ways from here?[await]
  This land's just full of interestin'
  people![await]'''
 dialog_data[247] = '''

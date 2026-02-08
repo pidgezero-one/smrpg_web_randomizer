@@ -6092,7 +6092,7 @@ class Johnny2Fight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Johnny's crew."
     _seaside_letter_name_if_sunken_ship_boss = "Jonathan “Johnny” Jones"
 
-    _npc_models = [Johnny2LargeObject, Johnny2SmallObject]
+    _npc_models = [JohnnyLargeObject, JohnnySmallObject]
     _statue_npc = JohnnyStatueObject
 
     _dialog_replacements = {

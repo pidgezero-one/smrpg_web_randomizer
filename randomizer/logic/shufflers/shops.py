@@ -48,6 +48,12 @@ def shuffle_shops(world: GameWorld) -> None:
         SleepyBombItem,
         FrightBombItem,
         BadMushroomItem,
+        # Original Frog Disciple items
+        SeeYaItem,
+        EarlierTimesItem,
+        ExpBoosterItem,
+        CoinTrickItem,
+        ScroogeRingItem,
     )
     from ...types.flags import (
         ShopQuality,
@@ -108,6 +114,23 @@ def shuffle_shops(world: GameWorld) -> None:
     JUICE_BAR_ALTO = SH10_JUICE_BAR_ALTO
     JUICE_BAR_TENOR = SH11_JUICE_BAR_TENOR
     JUICE_BAR_SOPRANO = SH12_JUICE_BAR_SOPRANO
+
+    # Original frog coin shop items (vanilla items sold in frog coin shops)
+    # Used for price adjustment logic
+    ORIGINAL_FROG_COIN_ITEMS: set[type[BaseItem]] = {
+        # Frog Disciple (buy_frog_coin_one=True)
+        SeeYaItem,
+        EarlierTimesItem,
+        ExpBoosterItem,
+        CoinTrickItem,
+        ScroogeRingItem,
+        # Frog Coin Emporium (buy_frog_coin=True)
+        SleepyBombItem,
+        BracerItem,
+        EnergizerItem,
+        CrystallineItem,
+        PowerBlastItem,
+    }
 
     # Get the items from Frog Disciple prize locations (already shuffled)
     frog_disciple_items: list[type[BaseItem] | None] = []
@@ -530,15 +553,33 @@ def shuffle_shops(world: GameWorld) -> None:
             if item.price > 0:
                 item.set_price(1)
 
-    # Apply Frog Coin shop price reduction (divide by 5)
-    # This applies to both Frog Disciple and Frog Coin Emporium
-    frog_coin_items = frog_disciple_set | frog_emporium_items
-    for item_type in frog_coin_items:
-        if item_type is None:
-            continue
-        item = world.items.get_by_type(item_type)
-        if item and item.price > 0:
-            item.set_price(max(1, item.price // 10))
+    # Apply Frog Coin shop price adjustments (skip if FreeShops is enabled)
+    if not free_shops:
+        # Items that end up in frog coin shops (after shuffling)
+        frog_coin_items = frog_disciple_set | frog_emporium_items
+
+        # Case 1 & 2: Handle items currently in frog coin shops
+        for item_type in frog_coin_items:
+            if item_type is None:
+                continue
+            # If item was originally a frog coin item, don't reduce price (it's already frog-coin-priced)
+            if item_type in ORIGINAL_FROG_COIN_ITEMS:
+                continue
+            # Non-original item going to frog coin shop: divide by 10
+            item = world.items.get_by_type(item_type)
+            if item and item.price > 0:
+                item.set_price(max(1, item.price // 10))
+
+        # Case 3: Handle original frog coin items that are NOT in frog coin shops anymore
+        # These need their price multiplied (inverse operation) since they now cost coins
+        for item_type in ORIGINAL_FROG_COIN_ITEMS:
+            if item_type in frog_coin_items:
+                # Still in a frog coin shop, no change needed
+                continue
+            # Original frog coin item moved to a regular shop: multiply by 10
+            item = world.items.get_by_type(item_type)
+            if item and item.price > 0:
+                item.set_price(min(9999, item.price * 10))
 
     # Sort items in all shops: non-equippables (ID >= 96) first, then equippables, each group sorted by ID
     for shop in world.shops.shops:

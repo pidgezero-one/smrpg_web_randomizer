@@ -33,6 +33,12 @@ from ....spells.spells import *
 
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_PlaySound(sound=SO085_FLOWER, channel=4),
+		A_VisibilityOff(),
+		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+	]),
 	RemoveObjectAt70A8FromCurrentLevel(),
 	LearnSpell(GENO, GenoWhirlSpell, identifier="freestanding_spell_15_character"),
 	PlaySound(sound=SO085_FLOWER, channel=6),

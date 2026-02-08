@@ -61,7 +61,7 @@ room = Room(
             ne_sw_edge_active=False,
             byte_8_bit_4=False),
         Event(
-            event=E0263_BOUNCE_ON_BED,
+            event=E0331_EXIT_TOADSTOOLS_ROOM_AFTER_RESCUE,
             x=2,
             y=67,
             z=0,

@@ -90,7 +90,7 @@ class Enemy(EnemyBase):
             desc += '|'  # Resistance icon (124)
             for element in resist_elements:
                 desc += ELEMENT_TOKENS[element]
-            desc += EMPTY * 2
+            desc += EMPTY 
 
         # Elemental weaknesses - collect present elements, then pad with empty
         weak_elements = [e for e in element_order if e in self.weaknesses]
@@ -98,7 +98,7 @@ class Enemy(EnemyBase):
             desc += '{'  # Weakness icon (123)
             for element in weak_elements:
                 desc += ELEMENT_TOKENS[element]
-            desc += EMPTY * 2
+            desc += EMPTY 
 
         # Status vulnerabilities (inverse of immunities) - collect present, then pad
         status_order = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]

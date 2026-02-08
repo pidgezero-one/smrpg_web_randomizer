@@ -33,7 +33,12 @@ from ....spells.spells import *
 
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
-	RemoveObjectAt70A8FromCurrentLevel(),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_PlaySound(sound=SO085_FLOWER, channel=4),
+		A_VisibilityOff(),
+		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+	]),
 	LearnSpell(TOADSTOOL, MuteSpell, identifier="freestanding_spell_26_character"),
 	PlaySound(sound=SO085_FLOWER, channel=6),
 	RunDialog(dialog_id=DI1998_LEARN_SPELL_26_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),

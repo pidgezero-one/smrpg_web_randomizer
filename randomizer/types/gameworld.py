@@ -1148,7 +1148,7 @@ class GameWorld:
         cast(SetAMEM16BitToConst, right_eye_revival_cmd).set_value(
             round(right_eye.hp * 1.2)
         )
-
+    
     def get_patch(self) -> Patch:
         # Return cached patch if already generated
         if self._cached_patch is not None:
@@ -1467,6 +1467,9 @@ class GameWorld:
         for s in self.spells.spells:
             if isinstance(s, CharacterSpell):
                 patch.add_dict(s.palette_patch)
+
+        # Make invaded mushroom kingdom's doorway treasure chest accessible
+        patch.add_dict({0x1D903A: bytearray([0xC2, 0x91])})
 
         # Update ROM title and version.
         title = "SMRPG-R {}".format(self.seed).ljust(20)

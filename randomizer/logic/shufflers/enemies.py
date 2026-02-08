@@ -96,6 +96,21 @@ def randomize_enemy_stats(world: GameWorld) -> None:
     sidekick_types, boss_types = _get_enemy_lists()
     boss_related_types = set(sidekick_types) | set(boss_types)
 
+    # Capture original vanilla stats BEFORE any shuffling for ±50% clamping
+    original_stats: dict[int, dict[str, int]] = {}
+    for enemy in all_enemies:
+        original_stats[id(enemy)] = {
+            "hp": int(enemy.hp),
+            "speed": int(enemy.speed),
+            "attack": int(enemy.attack),
+            "defense": int(enemy.defense),
+            "magic_attack": int(enemy.magic_attack),
+            "magic_defense": int(enemy.magic_defense),
+            "fp": int(enemy.fp),
+            "evade": int(enemy.evade),
+            "magic_evade": int(enemy.magic_evade),
+        }
+
     if (
         world.settings.get_flag(EnemyStats).selected
         != EnemyStatsShuffleOptions.DISABLED
@@ -106,56 +121,47 @@ def randomize_enemy_stats(world: GameWorld) -> None:
             == EnemyStatsShuffleOptions.FULL_RANDOM
         )
 
-        # Get list of non-boss enemies for inter-shuffling
+        # Get list of non-boss enemies for FULL_RANDOM mode effects
         # Exclude both ohko_immune enemies AND sidekick enemies (boss henchmen)
         non_boss_enemies = [
             e for e in world.enemies.enemies
             if not e.ohko_immune and type(e) not in boss_related_types
         ]
-        
 
-        # Determine which attributes to shuffle
+        # Note: We intentionally do NOT inter-shuffle STATS (HP, attack, defense, etc.)
+        # between enemies. Inter-shuffling could cause early-game enemies to inherit
+        # late-game stats, making the game unfairly difficult. The ±50% mutation
+        # provides enough variety. Boss stat scaling is handled separately.
+
+        # In FULL_RANDOM mode, we DO shuffle non-stat properties (elemental, morph)
         if full_random:
-            shuffle_attrs = [
-                "hp", "speed", "defense", "magic_defense", "evade", "magic_evade",
-                "resistances", "weaknesses", "status_immunities",
-            ]
-        else:
-            shuffle_attrs = [
-                "hp", "speed", "defense", "magic_defense", "evade", "magic_evade",
-            ]
+            # Inter-shuffle resistances, weaknesses, status immunities
+            for attr in ["resistances", "weaknesses", "status_immunities"]:
+                shuffled = list(non_boss_enemies)
+                max_index = len(non_boss_enemies) - 1
+                done: set = set()
 
-        # Inter-shuffle stats between similar-ranked enemies
-        for attr in shuffle_attrs:
-            shuffled = list(non_boss_enemies)
-            max_index = len(non_boss_enemies) - 1
-            done: set = set()
+                for i in range(len(non_boss_enemies)):
+                    if shuffled[i] in done:
+                        continue
+                    new_index = i
+                    while random.randint(0, 1) == 1:
+                        new_index += 1
+                    new_index = min(new_index, max_index)
+                    a, b = shuffled[i], shuffled[new_index]
+                    done.add(a)
+                    shuffled[i] = b
+                    shuffled[new_index] = a
 
-            for i in range(len(non_boss_enemies)):
-                if shuffled[i] in done:
-                    continue
-                new_index = i
-                while random.randint(0, 1) == 1:
-                    new_index += 1
-                new_index = min(new_index, max_index)
-                a, b = shuffled[i], shuffled[new_index]
-                done.add(a)
-                shuffled[i] = b
-                shuffled[new_index] = a
-
-            # Swap attribute values
-            swaps = [getattr(s, attr) for s in shuffled]
-            for enemy, swapped_val in zip(non_boss_enemies, swaps):
-                setter_name = f"set_{attr}"
-                if hasattr(enemy, setter_name):
-                    setter = getattr(enemy, setter_name)
-                    if isinstance(swapped_val, list):
+                # Swap attribute values
+                swaps = [getattr(s, attr) for s in shuffled]
+                for enemy, swapped_val in zip(non_boss_enemies, swaps):
+                    setter_name = f"set_{attr}"
+                    if hasattr(enemy, setter_name):
+                        setter = getattr(enemy, setter_name)
                         setter(list(swapped_val))
-                    else:
-                        setter(int(swapped_val))
 
-        # Inter-shuffle morph chances randomly (for non-boss enemies)
-        if full_random:
+            # Inter-shuffle morph chances randomly
             morph_chances = [e.morph_chance for e in non_boss_enemies]
             random.shuffle(morph_chances)
             for chance, enemy in zip(morph_chances, non_boss_enemies):
@@ -164,19 +170,9 @@ def randomize_enemy_stats(world: GameWorld) -> None:
         # Mutate individual enemy stats
         # Cap changes at ±50% to prevent wild swings, especially for scaled boss stats
         for enemy in all_enemies:
-            old_stats = {
-                "hp": int(enemy.hp),
-                "speed": int(enemy.speed),
-                "attack": int(enemy.attack),
-                "defense": int(enemy.defense),
-                "magic_attack": int(enemy.magic_attack),
-                "magic_defense": int(enemy.magic_defense),
-                "fp": int(enemy.fp),
-                "evade": int(enemy.evade),
-                "magic_evade": int(enemy.magic_evade),
-            }
+            orig = original_stats[id(enemy)]
 
-            # Mutate numeric stats with ±50% cap
+            # Mutate numeric stats with ±50% cap relative to current (post-shuffle) value
             enemy.set_hp(mutate_normal(int(enemy.hp), minimum=1, maximum=32000, max_change_ratio=0.5))
             enemy.set_speed(mutate_normal(int(enemy.speed), minimum=0, maximum=255, max_change_ratio=0.5))
             enemy.set_attack(mutate_normal(int(enemy.attack), minimum=1, maximum=255, max_change_ratio=0.5))
@@ -187,13 +183,35 @@ def randomize_enemy_stats(world: GameWorld) -> None:
             enemy.set_evade(mutate_normal(int(enemy.evade), minimum=0, maximum=100, max_change_ratio=0.5))
             enemy.set_magic_evade(mutate_normal(int(enemy.magic_evade), minimum=0, maximum=100, max_change_ratio=0.5))
 
+            # Clamp all stats to ±50% of ORIGINAL vanilla values
+            stat_bounds = {
+                "hp": (1, 32000),
+                "speed": (0, 255),
+                "attack": (1, 255),
+                "defense": (1, 255),
+                "magic_attack": (1, 255),
+                "magic_defense": (1, 255),
+                "fp": (1, 31),
+                "evade": (0, 100),
+                "magic_evade": (0, 100),
+            }
+            for attr, (stat_min, stat_max) in stat_bounds.items():
+                original_val = orig[attr]
+                current_val = int(getattr(enemy, attr))
+                min_allowed = max(stat_min, int(original_val * 0.5))
+                max_allowed = min(stat_max, int(original_val * 1.5))
+                clamped_val = max(min_allowed, min(max_allowed, current_val))
+                setter = getattr(enemy, f"set_{attr}")
+                setter(clamped_val)
+
             # For bosses, don't let stats go below vanilla values
             if enemy.ohko_immune:
-                for attr, old_val in old_stats.items():
+                for attr in stat_bounds.keys():
+                    original_val = orig[attr]
                     current_val = int(getattr(enemy, attr))
-                    if current_val < old_val:
+                    if current_val < original_val:
                         setter = getattr(enemy, f"set_{attr}")
-                        setter(old_val)
+                        setter(original_val)
 
                 # Small 1/255 chance for boss to be vulnerable to Geno Whirl
                 if random.randint(1, 255) == 1:
