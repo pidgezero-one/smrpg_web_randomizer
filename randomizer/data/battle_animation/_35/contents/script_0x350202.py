@@ -374,7 +374,7 @@ script = AnimationScriptBlock(expected_size=872, expected_beginning=0x350202, sc
 	ReturnSubroutine(),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x35054E"),
 	ReturnSubroutine(),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0012_TOADSTOOL_NONPROTAGONIST_6, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x350555"),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0013_BOWSER_NONPROTAGONIST_1, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x350555"),
 	ReturnSubroutine(),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0025_GENO_NONPROTAGONIST_1, sequence=0, store_to_vram=True, looping=True, overlap_all_sprites=True, identifier="command_0x35055C"),
 	ReturnSubroutine(),

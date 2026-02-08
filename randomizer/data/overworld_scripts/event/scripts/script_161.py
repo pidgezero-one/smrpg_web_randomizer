@@ -32,6 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
+    PlaySound(sound=SO014_FLOWER, channel=6),
 	SetBit(BEETLEMANIA_UNLOCKED),
 	RunDialog(dialog_id=DI3074_GOT_BEETLEMANIA, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	Return()

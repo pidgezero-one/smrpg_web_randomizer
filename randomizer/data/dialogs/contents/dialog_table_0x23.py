@@ -1,4 +1,4 @@
-dialog_data = [""]*276
+dialog_data = [""]*280
 dialog_data[0] = ''' I slept like a baby.
  Thanks![await]'''
 dialog_data[1] = ''' That card you have there...[await]
@@ -867,3 +867,7 @@ dialog_data[275] = '''  You will enter combat against me\n
  in 3D?[await]
   [select] (Yes)
   [select] (Uh...)[await]'''
+dialog_data[276] = '''             Got the Brooch![end]'''
+dialog_data[277] = '''              Got the Shoes![end]'''
+dialog_data[278] = '''               Got the Ring![end]'''
+dialog_data[279] = '''            Found the Crown![end]'''

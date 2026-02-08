@@ -1259,25 +1259,14 @@ class GameWorld:
             )
 
         # From battle animation scripts (0x3A bank)
-        # These unused ranges are split: one for item descriptions, rest for animation banks
-        self.battle_animations[0x3A].set_bank_end(0x3B0000)
+        # Reserve 0x3AFA00-0x3B0000 for item descriptions by limiting battle animations
+        self.battle_animations[0x3A].set_bank_end(0x3AFA00)
         unused_ranges = self.battle_animations[0x3A].get_unused_ranges()
-        # Find the largest range that's 200 bytes or less for item descriptions
-        # (items use the 0x3A bank for descriptions)
-        best_desc_range = None
-        best_desc_size = 0
+        # Add the reserved range for item descriptions (1536 bytes)
+        self.items.add_additional_desc_range(0x3AFA00, 0x3B0000)
+        # Add unused ranges as animation banks for sprites
         for start, end in unused_ranges:
-            size = end - start
-            if size <= 200 and size > best_desc_size:
-                best_desc_range = (start, end)
-                best_desc_size = size
-        # Add the selected range for item descriptions
-        if best_desc_range:
-            self.items.add_additional_desc_range(best_desc_range[0], best_desc_range[1])
-        # Add remaining ranges as animation banks for sprites
-        for start, end in unused_ranges:
-            if (start, end) != best_desc_range:
-                self.sprites.animation_data_banks.append(AnimationBank(start, end))
+            self.sprites.animation_data_banks.append(AnimationBank(start, end))
 
         # From monster AI scripts
         for start, end in self.monster_scripts.get_unused_ranges():

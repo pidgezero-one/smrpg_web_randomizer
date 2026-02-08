@@ -32,7 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	RunDialog(dialog_id=DI2098_GOT_CROWN, above_object=BOWSER, closable=False, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI3062_CROWN_AUTOTERM, above_object=BOWSER, closable=False, sync=False, multiline=False, use_background=False),
 	Inc(WEDDING_GEAR_COUNTER),
 	AddToInventory(CrownItem),
 	Return()

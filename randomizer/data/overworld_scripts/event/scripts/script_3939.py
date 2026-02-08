@@ -32,7 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	RunDialog(dialog_id=DI2096_GOT_SHOES, above_object=BOWSER, closable=False, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI3060_SHOES_AUTOTERM, above_object=BOWSER, closable=False, sync=False, multiline=False, use_background=False),
 	AddToInventory(ShoesItem),
 	Inc(WEDDING_GEAR_COUNTER),
 	Return()

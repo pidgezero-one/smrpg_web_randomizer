@@ -35,8 +35,8 @@ script = EventScript([
 	RunEventAsSubroutine(E0033_OPEN_CHEST),
 	CreatePacketAt7010(packet=P043_SHOES_CHEST, destinations=["EVENT_3943_ret_6"]),
 	AddToInventory(ShoesItem),
-	PlaySound(sound=SO014_FLOWER, channel=6),
-	RunDialog(dialog_id=DI2096_GOT_SHOES, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	PlaySound(sound=SO085_FLOWER, channel=6),
+	RunDialog(dialog_id=DI3060_SHOES_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
 	Inc(WEDDING_GEAR_COUNTER),
 	Return(identifier="EVENT_3943_ret_6")
 ])

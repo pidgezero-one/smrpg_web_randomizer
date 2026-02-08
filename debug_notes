@@ -7,21 +7,21 @@ General
 🚧 dying to failed slots does not game over
 🚧 randomized element palettes sometimes not being applied
 - geno blast animation is incorrect (extra sprite at the end)
-- water is very broken, when you jump out of it it starts creating keys, can't move, wrote the "this is a dead end" dialog when i pressed A, stoppd music. Likely an AS problem
-  - Less broken. Summons a flower temporarily. No other weird stuff happening
+🚧 water is very broken, when you jump out of it it starts creating keys, can't move, wrote the "this is a dead end" dialog when i pressed A, stoppd music. Likely an AS problem
+  🚧 Less broken. Summons a flower temporarily. No other weird stuff happening
 🚧 even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
 🚧 "found an cleanse juice"
 - cymbals (music note) packet shows up as a flower
 🚧 gold paint in chest rendered as a blue drink
-- bowser's runaway sprite is wrong
+🚧 bowser's runaway sprite is wrong
 🚧 beetlemania packet is wrong sprite
-- NPC spell learns are rendering up top instead of down below
+🚧 NPC spell learns are rendering up top instead of down below
 - bowser extremely bugged fighting aeros, does not return to his spot when finishes attacking, randomly ended the fight
   - run away also seems to happen after marios attacks
   - this might be enemy dependent. pulsars in bowsers keep did it
-- lucky jewel chest renders as an egg
-- "Got the Brooch" chest dialog doesn't go away
-- uhh... when did i lose my whole equip inventory?
+🚧 lucky jewel chest renders as an egg
+🚧 "Got the Brooch" chest dialog doesn't go away
+🚧 uhh... when did i lose my whole equip inventory?
 - random snifits MIGHT be because enemies are being rendered with pack id 0
 - unsure if random character palette works
 

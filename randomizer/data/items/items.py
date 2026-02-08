@@ -3038,3 +3038,6 @@ ITEMS = ItemCollection([
     GoldPaintItem(),  # item_id: 234
     MarioDollItem(),  # item_id: 235
 ])
+ITEMS.set_additional_desc_ranges([
+    (0x3AFA00, 0x3B0000)
+])

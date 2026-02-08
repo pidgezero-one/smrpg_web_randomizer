@@ -43,12 +43,12 @@ script = ActionScript([
     A_JmpIfVarEqualsConst(ITEM_ID, PickMeUpItem().item_id, ["A0992_star"]),
     A_JmpIfVarEqualsConst(ITEM_ID, YoshiCandyItem().item_id, ["A0992_candy"]),
     A_JmpIfVarEqualsConst(ITEM_ID, RockCandyItem().item_id, ["A0992_candy"]),
+    A_JmpIfVarEqualsConst(ITEM_ID, CymbalsItem().item_id, ["A0992_candy"]), # sequence 9 also used for music notes
+    A_JmpIfVarEqualsConst(ITEM_ID, SonicCymbalItem().item_id, ["A0992_candy"]), 
     A_JmpIfVarEqualsConst(ITEM_ID, FrightBombItem().item_id, ["A0992_bomb"]),
     A_JmpIfVarEqualsConst(ITEM_ID, SleepyBombItem().item_id, ["A0992_bomb"]),
     A_JmpIfVarEqualsConst(ITEM_ID, IceBombItem().item_id, ["A0992_bomb"]),
     A_JmpIfVarEqualsConst(ITEM_ID, FireBombItem().item_id, ["A0992_bomb"]),
-    A_JmpIfVarEqualsConst(ITEM_ID, CymbalsItem().item_id, ["A0992_candy"]), # sequence 9 also used for music notes
-    A_JmpIfVarEqualsConst(ITEM_ID, SonicCymbalItem().item_id, ["A0992_candy"]), 
 	A_SetSpriteSequence(index=0, is_sequence=True, looping=True, identifier="A0992_default"),
     A_Jmp(["A0992_begin_animation"]),
 	A_SetSpriteSequence(index=1, is_sequence=True, looping=True, identifier="A0992_syrup"),

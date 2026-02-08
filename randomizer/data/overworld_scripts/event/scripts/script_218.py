@@ -32,8 +32,8 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
+	PlaySound(sound=SO085_FLOWER, channel=4),
 	SetBit(BEETLEMANIA_UNLOCKED),
-	RunDialog(dialog_id=DI3078_GOT_BEETLEMANIA, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI3077_GOT_BEETLEMANIA_AUTOTERM, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	Return()
 ])

@@ -39,5 +39,9 @@ script = EventScript([
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
 	]),
-	JmpToEvent(E3932_GET_BROOCH)
+	PlaySound(sound=SO085_FLOWER, channel=6),
+	RunDialog(dialog_id=DI3059_BROOCH_AUTOTERM, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	Inc(WEDDING_GEAR_COUNTER),
+	AddToInventory(BroochItem),
+	Return()
 ])

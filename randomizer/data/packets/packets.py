@@ -306,7 +306,7 @@ P019_FROG_COIN_BEING_COLLECTED = Packet(
     b2=0,
     b4=1,
 )
-P020_BAG_STATIC = Packet(
+P020_WATER_SPLASH = Packet(
     packet_id=20,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0545_SEQUENCE_5_STATIC,
@@ -1491,7 +1491,21 @@ P098_GRAY_SPELL_CHEST = Packet(
     b2=0,
     b4=0,
 )
-P099_UNUSED = None
+P099_BAG_STATIC =  Packet(
+    packet_id=99,
+    sprite_id=SPR0195_FLOWER,
+    action_script_id=A0545_SEQUENCE_5_STATIC,
+    show_shadow=False,
+    b0=0,
+    b1a=0,
+    b1b=1,
+    b1c=3,
+    b2b2=False,
+    b2b3=False,
+    b2b4=False,
+    b2=0,
+    b4=1,
+)
 P100_UNUSED = None
 P101_UNUSED = None
 P102_UNUSED = None
@@ -1674,7 +1688,7 @@ ALL_PACKETS = PacketCollection(
         P017_SMALL_MINIGAME_COIN,
         P018_SMALL_COIN_BEING_COLLECTED,
         P019_FROG_COIN_BEING_COLLECTED,
-        P020_BAG_STATIC,
+        P020_WATER_SPLASH,
         P021_FLASHING_SMALL_EXPLOSION,
         P022_RECURSIVE_SPARKLES,
         P023_LOOPING_SINGLE_SPARKLE,
@@ -1753,7 +1767,7 @@ ALL_PACKETS = PacketCollection(
         P096_GREEN_SPELL_CHEST,
         P097_YELLOW_SPELL_CHEST,
         P098_GRAY_SPELL_CHEST,
-        P099_UNUSED,
+        P099_BAG_STATIC,
         P100_UNUSED,
         P101_UNUSED,
         P102_UNUSED,

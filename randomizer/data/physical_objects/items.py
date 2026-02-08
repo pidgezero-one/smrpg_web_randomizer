@@ -278,7 +278,7 @@ class ProgressiveFireworksObject(ItemNPC):
 
 class CrystalObject(ItemNPC):
     _base = CRYSTAL_BASE
-    _chest_event_id: int = E0950_CHEST_GLOVE_PACKET
+    _chest_event_id: int = E0951_CRYSTAL_CHEST_PACKET
 
 class FireSpellObject(ItemNPC):
     _base = RED_ORB_BASE
