@@ -1272,14 +1272,6 @@ class GameWorld:
         for start, end in self.monster_scripts.get_unused_ranges():
             self.sprites.animation_data_banks.append(AnimationBank(start, end))
 
-        # Debug: print all animation banks
-        # print(f"Sprite collection animation banks ({len(self.sprites.animation_data_banks)} total):")
-        # for bank in self.sprites.animation_data_banks:
-        # size = bank.end - bank.start
-        # print(f"  0x{bank.start:06X} - 0x{bank.end:06X} ({size:,} bytes)")
-
-        # ========================================================================
-
         # Sprite graphics patch (now has access to reclaimed animation banks)
         self._report_progress("Assembling graphics...", progress)
 

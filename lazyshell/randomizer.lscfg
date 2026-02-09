@@ -1,0 +1,7691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LazyShellConfig version="1">
+  <RomLayout>
+    <SpriteGraphicsRanges>
+      <Range>280000-3787C0</Range>
+    </SpriteGraphicsRanges>
+    <AnimationBanks>
+      <Range>259000-25FFFF</Range>
+      <Range>260000-26FFFF</Range>
+      <Range>270000-27FFFF</Range>
+      <Range>379A00-379FFF</Range>
+      <Range>387CC0-387FFF</Range>
+      <Range>3DB5E0-3DBFFF</Range>
+      <Range>3DD800-3DEFFF</Range>
+    </AnimationBanks>
+    <AnimationPointerTable>252000</AnimationPointerTable>
+    <PartitionTableStart>1DEBE0</PartitionTableStart>
+    <PartitionCount>256</PartitionCount>
+    <ItemDescriptionRanges>
+      <Range>3A3120-3A40F1</Range>
+      <Range>3AFA00-3B0000</Range>
+    </ItemDescriptionRanges>
+    <SpellDescriptionRanges>
+      <Range>3A2BB6-3A2F20</Range>
+      <Range>3A1EA0-3A20F0</Range>
+    </SpellDescriptionRanges>
+    <PsychopathMessageRanges>
+      <Range>39A1D1-39B643</Range>
+    </PsychopathMessageRanges>
+    <NPCPropertiesCount>1462</NPCPropertiesCount>
+    <NPCPacketCount>256</NPCPacketCount>
+  </RomLayout>
+  <Advanced>
+    <Enable0xCE>True</Enable0xCE>
+  </Advanced>
+  <CustomLabels>
+    <SpriteNames>Mario Walking Down Left
+Mario Jump Front
+Mario Walking Up Right
+Mario Surprise Left
+Mario Attack Up Right
+Mario Hammer Attack Up Right
+Mario Crouch Up Right
+Toadstool Nonprotagonist 1
+Toadstool Nonprotagonist 2
+Toadstool Nonprotagonist 3
+Toadstool Nonprotagonist 4
+Toadstool Nonprotagonist 5
+Toadstool Nonprotagonist 6
+Bowser Nonprotagonist 1
+Bowser Nonprotagonist 2
+Bowser Nonprotagonist 3
+Bowser Nonprotagonist 4
+Bowser Nonprotagonist 5
+Bowser Nonprotagonist 6
+Mallow Nonprotagonist 1
+Mallow Nonprotagonist 2
+Mallow Nonprotagonist 3
+Mallow Nonprotagonist 4
+Mallow Nonprotagonist 5
+Mallow Nonprotagonist 6
+Geno Nonprotagonist 1
+Geno Nonprotagonist 2
+Geno Nonprotagonist 3
+Geno Nonprotagonist 4
+Geno Nonprotagonist 5
+Geno Nonprotagonist 6
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Red Mushroom
+Red Scarecrow
+Mario S Battle Portrait
+Toadstool S Battle Portrait
+Bowser S Battle Portrait
+Mallow S Battle Portrait
+Geno S Battle Portrait
+Hammer Packet
+Stick Packet
+Yellow Juice
+Croco
+Green Yoshi
+Booster
+Green Yoshi Walk
+Green Yoshi Laying Egg
+King Nimbus
+Queen Nimbus
+Jonathan Jones
+Chomp Packet
+Magikoopa
+Frogfucius
+Tadpole
+Thwomp
+Big Thwomp
+Belome Scarecrow
+Valentina Statue
+Toad
+Wallet Guy Also Casino Assistants
+Raini
+Old Man
+Old Woman
+Green Brown Toad
+Chancellor
+Pa Mole
+Ma Mole
+Girl Mole Pink Bow
+Girl Mole Yellow Bow
+Nimbusite Blue
+Nimbusite Red
+Nimbusite Brown Green
+Nimbusite Yellow Green
+Nimbus Guard
+Toadofsky
+Mallow Doll
+Blue Star Piece
+Purple Star Piece
+Red Star Piece
+Gold Star Piece
+Green Star Piece
+Light Blue Star Piece
+Yellow Star Piece
+Geno Doll
+Bowser Doll
+Mario Doll
+Toadstool Doll
+Blue Stepping Block
+Treasure Chest
+Empty Treasure Chest
+Mario Doll Surprised
+Toadstool S Parachute
+Rolling Barrel
+Trampoline Warp
+Trampoline Jump
+Teeter Totter
+Save Point
+Corkpedite
+J Puzzle Block
+Yellow Stepping Block
+Whirlpool Water
+Hinopio
+Factory Hex Nut
+Green Switch
+Mimic Face Standalone
+Mario S Exor Impression
+Mushroom Boy
+Marrymore Man Green
+Marrymore Woman Yellow
+Marrymore Woman Green
+Marrymore Kid Purple
+Marrymore Kid Blue Green
+Marrymore Bright Card Buyer Brown Grey
+Rose Town Gardener Green Grey
+Old Woman Green Grey
+Old Woman Purple Grey
+Fat Yoshi Baby
+Yoshi Baby Egg
+Gameboy Kid
+Frogfucius Student
+Chomp Behind
+Wiggler Head
+Block Shadow
+Red Magikoopa
+Wiggler Body Segment
+Fan Packet
+Moleville Mine Cart
+Knife Guy Juggler Still Red Balls
+Knife Guy Juggler
+Mine Cart Bad Palette
+Mario In Mine Cart
+Fireball Surface From Lava
+Piranha Plant
+Goomba
+Bullet Bill
+Golden Bullet Bill
+Factory Clerk Green
+Land S End Cannon
+Red Dot
+Bob Omb
+Commander Troopa
+Golden Belome
+Birdy Statue
+Shyguy In Bowser S Helicopter
+Machine Made Bowyer
+Machine Made Yaridovich Out Of Battle
+Machine Made Axem Red
+Gunyolk Top Section
+Gunyolk Outer Section
+Factory Crane
+Blue Green Star Piece Spinning
+Smithy S Hammer
+Smithy S Chest
+Poison Toxic Gas
+Shelly Bottom Section
+Dyna And Mite
+Seaside Town Fake Green
+Seaside Town Fake Elder Green
+Seaside Town Elder Yellow Green
+Monstermama Golden Brown Red
+Nimbus Guard
+Factory Manager Blue
+Factory Director Red
+Boomer Red
+Dr Topper Green
+Sparkles From Star Piece
+Geno Doll
+Smelter Back Section
+Aero Object
+Golden Chomp Back
+Chomp Front
+Grate Guy From Casino
+Marrymore Inn Keeper Blue Striped Hat
+Rose Town Treasure Holder
+Rose Town Woman Blue Pink Braids
+Marrymore Woman Yellow
+Rose Town Old Man Blue Grey
+Old Woman Grey Red
+Kid Red Striped Hat
+Gaz Purple
+Nothing
+Nothing
+Cannon Ball
+Croco Still
+Croco Overworld
+Jinx Overworld 1
+Coin
+Small Coin
+Frog Coin
+Flower
+Ring
+Sparkle Sideways
+Sparkle Downwards
+Frying Pan Packet
+Explosion
+Mokura S Cloud Blue
+Shoes
+Level Up Text From Invincible Star
+Grey Explosion When Encountering Fireballs
+Microbomb Packet
+Card
+Brooch
+Glove Packet
+Shiny Stone
+Splash Water Droplets
+Small Frog Coin
+Red Mushroom Item
+Axem Red Teleport
+Red Ball
+Blue Ball
+Crown
+Green Ball
+Yellow Ball
+Red Item Collection
+Green Item Collection
+Yellow Item Collection
+Banana Peel
+Blue Item Collection
+Gray Ball
+Level Up Bonus Selection Box
+Tiny Star
+Light Green Pipe Top Edge
+Level Up Bonus Text
+Level Up Bonus Flower
+Level Up Bonus Pow Power
+Level Up Bonus Star Magic
+Level Up Bonus Hp
+Green Bomb
+Yellow Bomb
+Blue Bomb
+Green Juice
+Egg
+Red Juice
+Blue R Drink
+Yellow D Drink
+Green P Drink
+White Gas Cloud
+Machine Made Drill Bit
+Green Frog Drink
+Yellow Music Drink
+Blue Music Drink
+Red Music Drink
+Red Star Drink
+Red Shell
+Green Shell
+Parasol Packet
+Feather
+Berry
+Yoshi Cookie
+Beetle
+Terrapin
+Spikey
+Sky Troopa
+Mad Mallet
+Shaman
+Crook
+Goomba
+Piranha Plant
+Amanita
+Goby
+Bloober
+Bandana Red
+Lakitu
+Birdy
+Pinwheel
+Rat Funk
+K
+Magmite
+The Big Boo
+Dry Bones
+Greaper
+Sparky
+Chomp
+Pandorite
+Shy Ranger
+Bob Omb
+Spookum
+Hammer Bro
+Buzzer
+Ameboid
+Gecko
+Wiggler
+Crusty
+Magikoopa
+Leuko
+Jawful
+Enigma
+Blaster
+Guerrilla
+Birdy
+Hobgoblin
+Reacher
+Shogun
+Orb User
+Heavy Troopa
+Shadow
+Cluster
+Bahamutt
+Octolot
+Frogog
+Clerk
+Gunyolk
+Boomer
+Remo Con
+Snapdragon
+Stumpet
+Dodo Nd Time
+Jester
+Artichoker
+Arachne
+Carroboscis
+Hippopo
+Mastadoom
+Corkpedite
+Terra Cotta
+Spikester
+Malakoopa
+Pounder
+Poundette
+Sackit
+Gu Goomba
+Chewy
+Fireball
+Mr Kipper
+Factory Chief
+Bandana Blue
+Manager
+Bluebird
+Geno Clone S
+Alley Rat
+Chow
+Magmus
+Li Xx L Boo
+Vomer
+Glum Reaper
+Pyrosphere
+Chomp Chomp
+Hidon
+Sling Shy
+Rob Omb
+Shy Guy
+Ninja
+Stinger
+Goombette
+Geckit
+Jabit
+Star Cruster
+Team Gauge
+Muckle
+Forkies
+Gorgon
+Big Bertha
+Chained Kong
+Fautso
+Straw Head
+Bluebird
+Armored Ant
+Orbison
+Tub O Troopa
+Doppel
+Pulsar
+Bobomb
+Octovader
+Ribbite
+Director
+Snifit
+Pounder
+Puppox
+Fink Flower
+Crook
+Springer
+Apprentice
+Kriffid
+Spinthra
+Bandana Red
+Bowser Clone S
+Bloober
+Booster Dummy
+Apprentice
+Toadstool Clone S
+Piranha Plant
+Mario Clone S
+Poundette
+Mad Mallet
+Box Boy
+Shelly
+Punchinello 2
+Dodo
+Oerlikon
+Chester
+Body
+Bobomb S 1
+Torte
+Shy Away
+Jinx Clone
+Machine Made Shyster
+Machine Made Drill Bit
+Formless
+Mokura
+Fire Crystal
+Water Crystal
+Earth Crystal
+Wind Crystal
+Mario Clone
+Toadstool
+Bowser Clone
+Geno Clone
+Mallow Clone
+Shyster
+Bobomb S 2
+Bobomb S 3
+Hangin Xx Shy
+Smelter
+Machine Made Mack
+Machine Made Bowyer
+Machine Made Yaridovich
+Machine Made Axem Pink
+Machine Made Axem Black
+Machine Made Axem Red
+Machine Made Axem Yellow
+Machine Made Axem Green
+Bahamutt
+Mallow Clone S
+Bobomb S 4
+Culex 3D
+Johnny 2
+Starslap
+Mukumuku
+Zeostar
+Jagger
+Jinx 4
+Smithy Tank Head
+Smithy Box Head
+Fire Crystal 3D
+Microbomb
+Water Crystal 3D
+Pyrosphere
+Neosquid
+Yaridovich Mirage
+Helio
+Right Eye
+Left Eye
+Knife Guy
+Grate Guy
+Bundt
+Jinx 2
+Jinx 3
+Count Down
+Ding A Ling
+Belome 1St Time
+Belome 2Nd Time
+Belome 3Rd Time
+Smilax
+Earth Crystal 3D
+Megasmilax
+Birdetta
+Eggbert
+Axem Yellow
+Punchinello
+Tentacles Right
+Axem Red
+Axem Green
+King Bomb
+Mezzo Bomb
+Fancy Bundt
+Raspberry
+King Calamari
+Tentacles Left
+Jinx 1
+Zombone
+Czar Dragon
+Cloaker St Time
+Domino Nd Time
+Mad Adder
+Mack
+Bodyguard
+Yaridovich
+Drill Bit
+Axem Pink
+Axem Black
+Bowyer
+Fancyraspberry
+Exhausted Torte
+Exor
+Smithy 1St Form
+Shyper
+Smithy Body
+Smithy Head
+Smithy Magic Head
+Smithy Chest Head
+Croco 1
+Croco 2
+Wind Crystal 3D
+Earth Link
+Aero
+Axem Rangers
+Booster
+Booster
+Snifit
+Johnny
+Strong Snifit
+Valentina
+Cloaker 2
+Domino 2
+Candle
+Culex
+Abxy Action Button Selection In Battle
+Rainbow Explosion
+Blue Explosion
+Green Explosion
+Enemy Defeated Explosion Stars
+Bomb Explosion
+Small White Cloud
+Drain Explosion
+Flower Bonus Alphabet Symbols
+Light Blue Stars
+Come Back Rainbow Star
+Yellow Cure Stars
+Empty
+Bowyer S Arrow
+Yellow Mist Steam
+Yellow Mist Steam Forms Into Small Star
+Very Small Black Dot
+Hp Rain Cloud
+Stat Boost Arrows
+Black Rolling Coal Rock
+Blue Spark
+Yellow Spark
+Green Spark
+Red Spark
+Rainbow Rain
+Mushroom Spores
+Lazy Shell Heavy Troopa Nok Nok Shell
+Orange Lazy Shell
+Green Lazy Shell Tub O Troopa
+Snowy Eyes
+Blinking Yellow Light Circle
+Purple Petal
+Small Pink Petal
+Thrown Hammer
+Bombs Away Electric Ball
+Fire Orb Fireball
+Willy Wisp Purple Electric Ball
+Spore Pink Green
+Bolt Hardware Wise
+Mute Balloon
+Thank You Red Dialogue Bubble
+Thank You Purple Dialogue Bubble
+Thank You Blue Dialogue Bubble
+Thank You Green Dialogue Bubble
+Thank You Yellow Dialogue Bubble
+Psychopath Question Mark Cloud
+Thrown Shuriken
+Green Cure Stars
+Red Cure Stars
+Blue Cure Stars
+Yellow Reusable Item Sprite With Letter I
+Abxy Buttons From Bowyer S Button Lock
+Bowser S Spike Shot
+Geno Flash Squinting Eyes
+Green Syrup
+Red Syrup
+Blue Syrup
+Yellow Syrup
+Green Spore
+Fear Exclamation Point
+Count Down Gridplane
+Mokura
+Drain
+Sparkles
+Super Flame Fireball
+Ultra Flame Fireball
+Super Flame Explosion
+Ultra Flame Explosion
+Small Mario Hurly Gloves
+Mario Jump Attacks
+Mario Crouch
+Pandorite Small
+Hidon Small
+Chester Small
+Box Boy Small
+Hammer Bro Small
+Mack Small
+Belome Small
+Belome Small
+Bowyer Small
+Punchinello Small
+Dodo Small
+Birdetta Small
+Czar Dragon Small
+Boomer Small
+Exor Small
+Domino Small
+Smithy Small
+Mario Doll Unaffected By Main Character Palette
+Hammer Standalone
+Gold Goomba
+Fire Crystal
+Earth Crystal
+Big Flower
+Dodo As Parson
+Jinx Overworld 2
+Jinx Overworld 3
+Terrapin Ending Credits
+Stumpet Head
+Stumpet Roots Right
+Czar Dragon Body
+Growing Vine Beanstalk
+Brick Beanstalk Block
+Whirlpool Desert
+Yellow Letter
+Yaridovich Out Of Battle
+Tentacle Extending
+Snifit Black Back
+Falling Stepping Bridge Block
+Old Classic Mario
+Booster S Choo Choo Train
+Valentina
+Small Sea Fish
+Splash Water Geyser
+Bowyer
+Mushroom House Decor Mailbox
+Link Sleeping In Rose Town Inn
+Samus Sleeping In Mushroom Kingdom
+Grey Stepping Stone
+Hinopio S Model Airplane Blue Grey
+Grey Stone Block
+Culex Small
+Attack Sprite Overflow
+Sparkle Circular Winding
+Small Flower Standalone
+Recovery Mushroom Standalone
+Key Standalone
+Item Bag Standalone
+Music Note Standalone
+Amanita Mushroom Standalone
+Dingaling Gridplane
+Eggbert Gridplane
+Fire Crystal Gridplane
+Water Crystal Gridplane
+Earth Crystal Gridplane
+Wind Crystal Gridplane
+Geno Arm Shot
+Mack Medium
+Knife Guy Gridplane
+Tiny Bloober Standalone
+Mimic Statue
+Croco Statue
+Booster Statue
+Johnny Statue
+Magikoopa Statue
+Clerk Manager Director Statue
+Fake Elder Statue
+Grate Guy Statue
+Jinx Statue
+Mokura Statue
+Jagger Statue
+Piranha Plant Statue
+Bloober Statue
+Factory Chief Statue
+Axem Red Statue
+Bundt Statue
+Count Down Statue
+Hammer Bro Statue
+Mack Statue
+Small Belome Statue
+Belome Large Overworld
+Bowyer Statue
+Punchinello Statue
+Dodo Statue
+Birdetta Statue
+Czar Dragon Statue
+Boomer Statue
+Exor Statue
+Domino Statue
+Smithy Statue
+Culex Statue
+Mallow Statue Untinted
+Sprite Id Reserved For Egg Hatch
+Chompweed
+Mack Sub
+Belome Sub
+Bowyer Sub
+Knife Guy Sub
+Grate Guy Sub
+Johnny Sub
+Yaridovich Sub
+Belome Sub
+Culex Sub
+Dodo Sub
+Dodo Sub
+Valentina Sub
+Czar Dragon Sub
+Bahamutt Sub
+King Bomb Sub
+Boomer Sub
+Clerk Sub
+Manager Sub
+Director Sub
+Gunyolk Sub
+Beetle Gridplane
+Banana Gridplane
+Crown Gridplane
+Brooch Gridplane
+Shoes Gridplane
+Ring Gridplane
+Stella Beam
+Sagestick
+Wonder Chomp
+Thrax
+Drill Bit
+Aero Character
+Scarecrow
+Booster Tower Door
+Thwomp
+Bundt Object Maybe
+Johnny Pasteover
+Merlin
+Boomer Blue
+Geno Redemption
+Culex 3D Small
+Jinx Overworld 4
+Bundt Object Maybe 2
+Boshi
+Hammer
+Froggie Stick
+Cymbals
+Chomp
+Yellow Yoshi
+Pink Yoshi
+Belome 3 Small
+Punchinello 2 Small
+Booster 2 Small
+Johnny 2 Small
+Bundt 2 Small
+Jinx 4 Small
+Culex 2 Small
+Fire Crystal 3D
+Earth Crystal 3D
+Wind Crystal 3D
+Water Crystal 3D
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Yellow Lightning Ball
+Fire Orb Hit Explosion
+Egg
+Lightning Orb Blue Lightning Ball
+Small Yellow Spike
+Large Yellow Spike
+White Gas Cloud
+Blast Orange Gas Cloud
+Star Egg Little Brown Bird
+Poison Gas Green Gas Cloud
+White Stars
+Purple Gas Cloud
+Yellow Star
+Diamond Saw Snowflake
+Blue Gas Cloud
+Bone Throw
+Spritz Bomb
+Wind Crystal
+Green Shine Web
+Mecha Koopa Bowser Crush Eyes
+Water Crystal
+Plasm Water Droplet Blue Green
+Ice Rock
+Black Rock
+Big Pink Heart
+Dark Red Yellow Fireball
+Light Green Stars
+Light Orange Stars
+Sleepy Time Sheep Ram
+Geno Beam Blast Flash Red Power Up Star
+Empty
+Blue Green Bubbles Circles
+Sleep Zzz S
+Backwards Yellow Spike
+Water Blast Water Spouts
+Gunk Ball Ink Blast
+Water Spout Red
+Royal Flush Card
+Yellow Shaking Bell
+Empty
+Blue Music Note
+White Pixel Dot
+Empty
+Blue Water Surfacing Diving Droplets
+Green Water Surfacing Diving Droplets
+Yellow Water Surfacing Diving Droplets
+Green Mushroom Item
+Yellow Mushroom Item
+Green Candy
+Blue Candy
+Red Bomb
+Magikoopa S Triangle Circle X Cast Magic
+Empty
+Empty
+Empty
+Empty
+Empty
+Flower Bonus
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Frying Pan
+Parasol
+War Fan
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Marching Luigi
+Marching Toads
+Conducting Toadofsky
+Waving Mallow
+Waving King Queen Nimbus
+Nimbus Busman Lakitu Frogfucius
+Tadpole
+Trumpeting Piranhas
+Mole Miners Star
+Dyna Mite
+Hammer Bros Chomps
+Crook Croco
+Bowser In Helicopter Chasing
+Dodo Carrying Valentina
+Red Balloon
+Booster Riding Train
+Snifits Chasing Beetle
+Bouncing Shysters
+Mack Yaridovich Bowyer
+Smithy
+Johnny Mates
+Blue Red Green Toads
+Riding Yoshi
+Waving Mario Toadstool
+Sparkle
+Poof
+Purple Firework
+Smaller Red Firework
+Normal Yellow Pronged Star
+Brown Object Dissipating
+Tiny Glowing Pixel
+Smithy Lower
+Goombette Lower
+Johnny 2 Overworld
+Toadstool Walking Down Left
+Toadstool Jump Front
+Toadstool Walking Up Right
+Toadstool Surprise
+Toadstool Slap Attack
+Toadstool Frying Pan Attack
+Toadstool Fallen Crying
+Bowser Walking Down Left
+Bowser Jump Front
+Bowser Walking Up Right
+Bowser Surprise
+Bowser Claw Attack
+Bowser Swing Ball Chain
+Bowser Cast Spell
+Mallow Walking Down Left
+Mallow Jump Front
+Mallow Walking Up Right
+Mallow Surprise
+Mallow Punch
+Mallow Swing Stick
+Mallow Still Up Right
+Geno Walking Down Left
+Geno Jump Front
+Geno Walking Up Right
+Geno Surprise
+Geno Elbow Shot
+Geno Finger Shot
+Geno Morph Into Cannon
+Mario Nonprotagonist 1
+Mario Nonprotagonist 2
+Mario Nonprotagonist 3
+Mario Nonprotagonist 4
+Mario Nonprotagonist 5
+Mario Nonprotagonist 6
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty</SpriteNames>
+    <EventLabels>Empty
+Empty
+Empty
+Empty
+Launch Prologue
+Set 70A7 To Random Tier 1 Consumable
+Set 70A7 To Random Tier 2 Consumable
+Set 70A7 To Random Tier 3 Consumable
+Set 70A7 To Random Tier 4 Consumable
+Set 70A7 To Random Tier 1 Equip
+Set 70A7 To Random Tier 2 Equip
+Set 70A7 To Random Tier 3 Equip
+Set 70A7 To Random Tier 4 Equip
+Base Rom Only Fix Map And Party
+Standard Room Loader
+Standard Room Loader
+Fight Remove Permanently
+Fight Remove Temporarily
+Fight Do Not Remove
+Fight Remove Permanently Blink On Run
+Fight Remove Temporarily Blink On Run
+Forest Maze Mushroom Grant
+Better Tip Granter
+Mushroom Selection
+Battle Result Check
+Battle Result Check Blinking
+Grant Tier 1 Consumable Or Equip
+Grant Tier 2 Consumable Or Equip
+Grant Tier 3 Consumable Or Equip
+Grant Tier 4 Consumable Or Equip
+Empty
+Empty
+Non Coin Chest Container
+Open Chest
+Coin Chest Container
+Mimic Or Slot Chest Container
+Grant Any Consumable
+Grant Any Equip
+Grant Any Consumable Or Equip
+Grant Any Consumable Or Equip Tier 3 Cap
+Grant Any Equip Tier 3 Cap
+Grant Any Consumable Tier 3 Cap
+Grant Any Consumable Tier 2 Cap
+Grant Any Equip Tier 2 Cap
+Grant Any Consumable Or Equip Tier 2 Cap
+Grant Any Consumable Exclude Worst
+Grant Any Equip Exclude Worst
+Grant Any Consumable Or Equip Exclude Worst
+Grant Any Consumable Exclude Worst Tier 3 Cap
+Grant Any Equip Exclude Worst Tier 3 Cap
+Grant Any Equip Or Consumable Exclude Worst Tier 3 Cap
+Henchman Container 1
+Henchman Container 2
+Henchman Container 3
+Henchman Container 4
+Henchman Container 5
+Henchman Container 6
+Henchman Container 7
+Henchman Container 8
+Henchman Container 9
+Henchman Container 10
+Henchman Container 11
+Henchman Container 12
+Henchman Container 13
+Henchman Container 14
+Trampoline Subroutine
+Pipe Down Subroutine
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Unknown
+Unknown
+Save Block Subroutine
+Mario Lands Subroutine
+Three Musty Fears Greaper Dialog
+Three Musty Fears Boo Dialog
+Three Musty Fears Bones Dialog
+Invisible Item Check 1
+Invisible Item Check 2
+Invisible Item Check 3
+Invisible Item Check 1 Container
+Invisible Item Check 2 Container
+Invisible Item Check 3 Container
+Invisible Item Summoner
+Pipe Vault Closed Note
+Background Event For Slot Machine
+Out Of Order Note
+Revert All Clone Chests Mimic 1
+Revert All Clone Chests Mimic 2
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Abort Attract Mode
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Npc Quest 7 Container
+Packet Decider Container
+Packet Decider
+Npc Quest Grant 1 Frog Coin
+Npc Quest Grant Multi Frog Coin
+Npc Quest Grant Coins
+Npc Quest Grant Item
+Npc Quest Grant Beetlemania
+Chest Grant Beetlemania
+Chest Grant Star Piece
+Npc Quest Grant Star Piece
+Freestanding Grant Item Bag
+Freestanding Grant Star Piece
+Boss Grant Star Piece
+Boss Grant Star Piece Container
+Mimic 1 Grant Star Piece Container
+Mimic 2 Grant Star Piece Container
+Mimic 3 Grant Star Piece Container
+Chest 1 Container
+Chest 2 Container
+Chest 3 Container
+Chest 4 Container
+Chest 5 Container
+Chest 6 Container
+Npc Quest 1 Container
+Npc Quest 2 Container
+Npc Quest 3 Container
+Npc Quest 4 Container
+Npc Quest 5 Container
+Npc Quest 6 Container
+Npc Quest Grant Single Fireworks
+Npc Quest Grant Progressive Fireworks
+Party Join Logic
+Mario Joins
+Mallow Joins
+Geno Joins
+Bowser Joins
+Toadstool Joins
+Gating And Party Join Logic
+Mario Joins Container
+Mallow Joins Container
+Geno Joins Container
+Bowser Joins Container
+Toadstool Joins Container
+Unlock Tower If Gated By Moleville
+Unlock Bandits If Gated By Mushroom Way
+Unlock Forest If Gated By Marrymore Character
+Unlock Forest If Gated By Moleville Character
+Unlock Forest If Gated By Mushroom Way Character
+Unlock Forest If Gated By Cricket Pie
+Unlock Marrymore If Gated By Booster Hill
+Unlock Marrymore If Gated By Tower Boss
+Unlock Sea If Gated By Star Pieces
+Unlock Keep If Gated By Star Pieces
+Unlock Keep If Gated By Volcano Boss
+Unlock Switch Menu If Enough Members
+Unlock Seaside Boss If Gated By Ship Boss
+Unlock Pipe Vault If Gated By Forest Maze
+Npc Quest 7 Container
+Booster Hill Prize Container Event
+Hill Get Flower
+Hill Item
+Get Flower From Npc
+Hill Fireworks
+Hill Beetlemania
+Hill Grant Logic
+Empty
+Empty
+Empty
+Empty
+Empty
+Check Voucher Unlock
+Npc Quest 7 Grant
+Freestanding 15 Grant
+Freestanding 14 Grant
+Freestanding 13 Grant
+Freestanding 12 Grant
+Freestanding 11 Grant
+Freestanding 10 Grant
+Freestanding 9 Grant
+Freestanding 8 Grant
+Freestanding 7 Grant
+Freestanding 6 Grant
+Freestanding 5 Grant
+Freestanding 4 Grant
+Freestanding 3 Grant
+Freestanding 2 Grant
+Freestanding 1 Grant
+Chest 6 Grant
+Chest 5 Grant
+Chest 4 Grant
+Chest 3 Grant
+Chest 2 Grant
+Chest 1 Grant
+Npc Quest 6 Grant
+Npc Quest 5 Grant
+Npc Quest 4 Grant
+Npc Quest 3 Grant
+Npc Quest 2 Grant
+Npc Quest 1 Grant
+Exp Star Hit Subroutine
+Exp Star Hit
+Return
+Fade In Async
+Empty
+Unknown
+Unknown
+Fade Music Room Loader
+Fade Music Room Loader
+Bounce On Bed
+Return
+Occupied Mk Inn Loader
+Unknown
+Unknown
+Unknown
+Pipe Up Subroutine
+Trampoline Or Pipe Subroutine
+Unknown
+Pause Active Until A Pressed
+Sleep In Inns
+Check If Have Enough Coins
+Unknown
+Refocus Camera On Self
+Unknown
+Unknown
+Unknown
+Sleep In Nimbus Inn
+Clear Exp Star Bits
+Unknown Pipe Vault
+Get Frog Coin No Dialog Possibly Unused
+Open Mushroom Kingdom Shop
+Unknown
+Await B Press
+Reset Game
+Unknown Rose Town
+Inns Container
+Mushroom Kingdom Shop Logic
+Mushroom Kingdom Outer Castle Guards
+Mushroom Kingdom West Blue Toad
+Unused
+Mushroom Kingdom Inn Npc
+Go To Mushroom Kingdom Outside
+Mushroom Kingdom Grandma
+Mushroom Kingdom Running Kid
+Mushroom Kingdom Pink Toad
+Empty
+Generic No Help Message
+Mushroom Kingdom Mom
+Mushroom Kingdom Dad
+Mushroom Kingdom Jumping Kid
+Unknown
+Unknown
+Mushroom Kingdom Brother
+Unknown
+Empty
+Empty
+Mushroom Kingdom Grandpa
+Mushroom Kingdom East Guard
+Mushroom Kingdom Occupied Running Kid
+Mushroom Kingdom Occupied Grandma
+Empty
+Empty
+Mushroom Kingdom Occupied Dad
+Mushroom Kingdom Occupied Mom
+Mushroom Kingdom Occupied Castle Toad
+Toadstool Antechamber Loader
+Mushroom Kingdom Main Hall Loader
+Bellhop While Guiding
+Mushroom Kingdom Throne Room Loader
+Unknown
+Kingdom Main Hall Flip Veranda
+Detect Main Hall Door Opened
+Mushroom Kingdom Castle Generic Toad
+Mushroom Kingdom Castle Throne Room Toad
+Detect Main Hall Door Opened
+Kingdom Main Hall Flip Upper
+Chancellor
+Exit Toadstools Room After Rescue
+Empty
+Empty
+Empty
+Unknown
+Unknown
+Mushroom Kingdom Shop Bookshelf
+Mushroom Kingdom Shopkeeper
+Mushroom Kingdom Occupied Raz Raini House Loader
+Mushroom Kingdom Occupied Raz Raini House Shake
+Empty
+Empty
+Empty
+Mushroom Kingdom Raz Raini House Loader
+Mushroom Kingdom Toadstools Room Guard
+Toadstools Room Item
+Toadstools Room Loader
+Mushroom Kingdom Main Hall Toad
+Mushroom Kingdom Antechamber Exit
+Kingdom Hallway Shyguy
+Gameboy Kid
+Mushroom Kingdom Occupied Shopkeeper
+Boss Battle
+Boss Battle Container
+Boss Hunt Bit Setter
+Boss Hunt Bit Setter Container
+Exp Star Music Experiment
+Mushroom Kingdom Npc Behind House
+Chest Clones
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Mushroom Kingdom Occupied Throne Room Forced Off Minion
+Mushroom Kingdom Occupied Throne Room Forced Off Minion
+Mushroom Kingdom Occupied Throne Room Loader
+Mushroom Kingdom Occupied Throne Room Exit
+Empty
+Mushroom Kingdom Occupied Main Hall Loader
+Mushroom Kingdom Boss Fight Cutscene
+Mushroom Kingdom Boss Fight
+Empty
+Talk To Chancellor After Mushroom Kingdom Boss
+Mushroom Kingdom Occupied Exterior Loader
+Mushroom Kingdom Occupied Main Hall Repeating Shysters Position
+Mushroom Kingdom Occupied Main Hall Shyster Chasing Toad
+Mushroom Kingdom Occupied Guest Room Grant
+Mushroom Kingdom Occupied Vault Guard Toad
+Mushroom Kingdom Occupied Toadstools Room Antechamber Fight
+Mushroom Kingdom Occupied Toadstools Room Loader
+Toad Wishes You Well
+Mushroom Kingdom Occupied Toadstools Room Antechamber Loader
+Mushroom Kingdom Occupied Toadstools Room Antechamber Toad
+Mushroom Kingdom Occupied Toadstools Room Toad 1
+Mushroom Kingdom Occupied Toadstools Room Toad 2
+Mushroom Kingdom Occupied Toadstools Room Toad 3
+Mushroom Kingdom Occupied Left Stairway Shyster
+Mushroom Kingdom Occupied Left Stairway Toad
+Mushroom Kingdom Occupied Left Stairway Loader
+Mushroom Kingdom Occupied Exterior Repeating Shysters Position
+Mushroom Kingdom During Mack Jumping Kids House 1F Loader
+Mushroom Kingdom Occupied Exterior Pink Toad
+Wallet Toad 2
+Mushroom Kingdom Occupied Rescued Eastern Guard
+Heal In Toadstools Room
+Empty
+Empty
+Guest Room Guard
+Guest Room Antechamber Loader
+Shyster Harassing Eastern Guard
+Shyster Harassing Wallet Guy
+Mushroom Kingdom Occupied Shop Loader
+Table Shyster
+Younger Brother
+Countertop Shyster
+Mushroom Kingdom Occupied Older Brother
+Mushroom Kingdom Occupied Jumping Kids House 2F Loader
+Bed Shyster
+Mushroom Kingdom Occupied Main Hall Repeating Shysters
+Mushroom Kingdom Occupied Exterior Repeating Shysters
+Clear Temp 7044 0
+Set Temp 7044 0
+Pipe Vault Room 1 Exit
+Pipe Vault Thwomp Room Entrance
+Pipe Vault Thwomp Room Exit Pipe
+Pipe Vault Pipes Room Entrance Pipe
+Empty
+Pipe Vault Crouch Room Exit Trampoline
+Pipe Vault Pipes Room Exit Pipe
+Pipe Vault Platforming Room Entrance Pipe
+Pipe Vault Platforming Room Exit Pipe
+Pipe Vault Red Room Entrance Pipe
+Pipe Vault Red Room Exit Pipe
+Pipe Vault Chompweed Room Entrance Pipe
+Pipe Vault Chompweed Room Exit Pipe
+Pipe Vault Thwomp Room Loader
+Pipe Vault Thwomp Room Loader Background
+Pipe Vault Mario Hit By Thwomp
+Pipe Vault Goomba Thumpin Entrance Pipe
+Pipe Vault Goomba Thumpin Exit Trampoline
+Pipe Vault Chompweed
+Pipe Vault Red Room Loader
+Pipe Vault Room 1 Loader
+Pipe Vault Fireball 1
+Pipe Vault Fireball 2
+Pipe Vault Fireball 3
+Pipe Vault Fireball 4
+Pipe Vault Fireball Background
+Pipe Vault Chompweed Room Chompweeds
+Empty
+Pipe Vault Chompweed Room Loader
+Goomba Thumpin Administrator
+Goomba Thumpin Begins
+Goomba Thumpin Scorekeeping
+Goomba Thumpin Spawns
+Goomba Thumpin Goomba 1
+Goomba Thumpin Goomba 2
+Goomba Thumpin Goomba 3
+Goomba Thumpin Goomba 4
+Empty
+Empty
+Goomba Thumpin Room Loader
+Resummon Pipe Vault Enemies
+Yoshi Talks To Other Yoshi
+Mushroom Derby Unknown
+Mushroom Derby Begins
+Upper Right Yoshi
+Cookie Storage Yoshi
+Yoshi On Track
+Yoshi Mom
+Free Cookie Yoshi
+Empty
+Mushroom Derby Business Logic
+Mushroom Derby Business Logic Extension
+Pipe Vault Platforming Room Loader
+Mushroom Derby Use Yoshi Cookie
+Yoster Isle Background
+Green Yoshi
+Boshi
+Empty
+Empty
+Empty
+Mushroom Derby Unknown
+Initiate Mushroom Derby From Talking To Boshi
+Dismount Yoshi 1
+Dismount Yoshi 2
+Dismount Yoshi 3
+Dismount Yoshi 4
+Empty
+Yoster Isle Unknown
+Empty
+Empty
+Pipe Vault Crouch Room Entrance Pipe
+Empty
+Pipe Vault Chompweed Room Exit Pipe Reverse
+Red Room Piranha 1
+Red Room Piranha 2
+Red Room Piranha 3
+Red Room Piranha 4
+Pipe Vault Piranha Timer 1
+Pipe Vault Piranha Bit
+Pipe Vault Piranha Timer 2
+Pipe Vault Piranha Timer 3
+Pipe Vault Piranha Timer 4
+Pipe Vault Piranha Timer 5
+Pipe Vault First Goomba
+Pipe Vault Entrance Trampoline
+Pipe Vault Hidden Platform
+Empty
+Pipe Vault Crouch Item Init
+Pipe Vault Crouch Item Confirm
+Pipe Vault Small Coin
+Pipe Vault Mario Thwomp Tumble
+Pipe Vault Summon First Goomba
+Pipe Vault Piranha Bit
+Unknown
+Pipe Vault Crouch Item Reset
+Pipe Vault Crouch Room Clear Bits
+Empty
+Rose Town Occupied Inn Loader
+Empty
+Gaz Item Grant
+Empty
+Occupied Rose Town Gaz
+Rose Town Occupied Exit
+Rose Town Occupied Stairway
+Empty
+Rose Town Occupied Exterior Pink Toad
+Rose Town Occupied Exterior Blue Toad Left
+Empty
+Empty
+Rose Town Occupied Exterior Grandpa
+Rose Town Item Shop
+Rose Town Equip Shop
+Rose Town Shop Red Toad
+Rose Town Shop Yellow Toad
+Rose Town Occupied Exterior Loader
+Rose Town Occupied Background 1
+Rose Town Occupied Inn 2F Loader
+Empty
+Empty
+Rose Town Dad
+Rose Town Son
+Empty
+Rose Town Treasure House 2F Loader
+Rose Town Pink Toad In House
+Rose Town Shop Unknown
+Unused Hint Dialog
+Debug Dialog
+Rose Town Occupied Grandma
+Rose Town Occupied Kid 1
+Rose Town Occupied Kid 2
+Rose Town Occupied Kid 3
+Rose Town Occupied Blue Toad Right
+Rose Town Occupied Arrow Control 1
+Rose Town Occupied Arrow Animate
+Rose Town Occupied Arrow Control 2
+Rose Town Occupied Arrow Control 3
+Rose Town Occupied Mods
+Rose Town Occupied Intro Toad Movement
+Rose Town Occupied Arrow Control 4
+Rose Town Occupied Exterior Yellow Toad
+Rose Town Inn Toad Item Grant
+Rose Town Liberated Loader
+Rose Town Liberated Loader Background
+Rose Town Shop Exit
+Rose Town Couples House Exit
+Old Key Item Manager
+Place Link In Rose Town
+Rose Town Liberated Kids Indoors
+Summons Husband In Rose Town Couples House
+Rose Town Liberated Kid Outdoors
+Rose Town Liberated 3Rd Kid Outdoors
+Rose Town Liberated Grandpa
+Rose Town Liberated Grandma
+Rose Rown Liberated Water Pump House Loader
+Rose Town Liberated Pink Toad
+Rose Town Liberated Right Blue Toad
+Rose Town Liberated Yellow Toad
+Rose Town Liberated Husband
+Rose Town Liberated Wife
+Empty
+Rose Town Liberated Couples House Loader
+Rose Town Treasure House Chest 1
+Rose Town Treasure House Chest 2
+Rose Town Liberated Upper Hidden Npc
+Rose Town Liberated Left Blue Toad
+Rose Town Occupied Treasure House 1F Loader
+Rose Town Liberated Lower Hidden Npc
+Rose Town Occupied Treasure House Bedroom Chest
+Rose Town Liberated Treasure House Bedroom Chest
+Goomba Thumpin Gold Goomba 1
+Goomba Thumpin Gold Goomba 2
+Goomba Thumpin Gold Goomba 3
+Goomba Thumpin Gold Goomba 4
+Goomba Thumpin Spiny 1
+Goomba Thumpin Spiny 2
+Goomba Thumpin Spiny 3
+Goomba Thumpin Spiny 4
+Mines Boss Room Loader Before Defeat
+Mines Boss Room Loader After Defeat
+Mines Boss Shoves You
+Mines Boss Room Exit
+Mines Boss Room Background Explosions
+Mines Boss Room Explosion Recoil
+Mines Initiate Final Boss Fight
+Mines Boss Room Entrance Reverse
+Marrymore Occupied Chapel Loader
+Marrymore Back Door Enter Chapel
+Marrymore Inn Manager
+Marrymore Bellhop Lobby While Guest
+Marrymore Inn Bright Card Enthusiast
+Marrymore Inn Lobby Guest 1
+Marrymore Inn Lobby Guest 2
+Locked Door
+Marrymore Inn 3F Hallway Loader
+Marrymore Inn 3F Hallway Bellhop
+Marrymore Occupied Exterior Loader
+Marrymore Inn Lobby Loader
+Marrymore Inn 2F Hallway Loader
+Marrymore Suite Loader
+Marrymore Suite Tip Bellhop
+Marrymore Lamp
+Marrymore Inn Lobby Exit
+Mario As Bellhop Main Event
+Mario As Bellhop Tries To Go Upstairs Without Guest
+Real Bellhop Blocks Exit 1
+Real Bellhop Blocks Exit 2
+Marrymore Inn Elderly Guest
+Marrymore Inn Elderly Guest Tip Subroutine 1
+Marrymore Inn Employed Guest Leaves
+Marrymore Inn Lobby Stairs
+Marrymore Inn Something
+Marrymore Inn Elderly Guest Tip Subroutine Flowerbox
+Marrymore Sanctuary Exit To Antechamber
+Marrymore Kitchen Loader
+Empty
+Marrymore Kitchen Chef 1
+Marrymore Kitchen Chef 2
+Marrymore Exterior Chapel Locked Front Door
+Marrymore Chapel Lobby Exit To Exterior
+Empty
+Marrymore Inn Elderly Guest Tip Sunroutine 3
+Empty
+Empty
+Empty
+Empty
+Empty
+Marrymore Antechamber Loader Extension
+Marrymore Antechamber Entrance Reverse
+Empty
+Empty
+Empty
+Marrymore Shop Event Container
+Marrymore Sanctuary Candle 1
+Marrymore Sanctuary Candle 2
+Marrymore Sanctuary Candle 3
+Marrymore Sanctuary Candle 4
+Marrymore Sanctuary Candle 5
+Marrymore Sanctuary Candle 6
+Marrymore Sanctuary Candle 7
+Marrymore Sanctuary Candle 8
+Marrymore Gear Grant Crown
+Empty
+Empty
+Empty
+Empty
+Empty
+Bowsers Keep Button Room Forfeit
+Empty
+Initiate Marrymore Boss Fight If All Gear Collected
+Empty
+Empty
+Empty
+Empty
+Summon Marrymore Boss To Room
+Enter Unoccupied Marrymore Sanctuary
+Marrymore Unoccupied Exterior Loader
+Marrymore Back Area Exit To Exterior
+Marrymore Occupied Exterior Chapel Front Entrance
+Marrymore Chapel Lobby Exit To Antechamber
+Marrymore Unoccupied Exterior Open Front Chapel Entrance
+Empty
+Empty
+Marrymore Unoccupied Sanctuary Loader
+Marrymore Jump On Organ Pipe
+Marrymore Liberated Exterior Pathway Red Toad
+Marrymore Liberated Exterior Pathway Yellow Toad
+Marrymore Liberated Exterior Kid
+Marrymore Liberated Exterior Mom
+Marrymore Liberated Exterior Green Toad
+Marrymore Liberated Exterior Husband
+Marrymore Liberated Exterior Wife
+Marrymore Liberated Exterior Red Toad
+Empty
+Marrymore Raz
+Marrymore Raini
+Marrymore Red Toad 1
+Marrymore Yellow Toad 1
+Empty
+Marrymore Grey Toad
+Marrymore Red Toad 2
+Marrymore Green Kid
+Marrymore Yellow Toad 2
+Marrymore Entrance Toad
+Marrymore Photographer
+Empty
+Empty
+Pastor Mario
+Marrymore Take Photo
+Empty
+Empty
+Marrymore Liberated Chapel Green Toad
+Marrymore Liberated Chapel Pink Kid
+Marrymore Raz Raini
+Marrymore Tip Decision Subroutine
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Enter Jumping Kids House
+Empty
+Empty
+Empty
+Old Star Piece Script
+Peachs Grandma
+Empty
+Mushroom Kingdom Unoccupied Exterior Loader
+Nimbus Croco House Loader
+Empty
+Empty
+Empty
+Empty
+Several Marrymore Room Loaders
+Empty
+Empty
+Empty
+Empty
+Mway Chest
+Forest Underground Chest
+Rose Town Inn Sleep Subroutine
+Garros House Loader
+Nimbus Land Final Boss Fight Town Square Loader
+Nimbus Land Inn Hint Guy
+Nimbus Land Occupied Castle Front Entrance
+Empty
+Nimbus Land Liberated Castle Main Hallway Woman
+Nimbus Land Liberated Castle Main Hallway Man
+Nimbus Land Liberated Castle Inner Cellar Reward
+Mushroom Kingdom Inn Sleeping Guy
+Mushroom Kingdom Inn 2F Downward Stairs
+Mushroom Kingdom Inn 2F Loader
+Empty
+Vine Field
+Vine Field
+Vine Field
+Vine Field
+Rose Town Innkeeper Over Counter
+Mushroom Kingdom Shop Basement Stairway
+Mushroom Way Area 03 Shuffled Npc Animation Loader
+Bandits Way Area 02 Shuffled Npc Animation Loader
+Bandits Way Area 01 Shuffled Npc Animation Loader
+Bandits Way Area 03 Shuffled Npc Animation Loader
+Bandits Way Area 04 Shuffled Npc Animation Loader
+Bandits Way Area 05 Shuffled Npc Animation Loader
+Mushroom Kingdom Occupied Throne Room Shuffled Npc Animation Loader
+Mushroom Kingdom Occupied Exterior Shuffled Npc Animation Loader
+Mushroom Kingdom Occupied Throne Antechamber Shuffled Npc Animation Loader
+Mushroom Kingdom Occupied Throne Antechamber Loader
+Mushroom Kingdom Occupied Main Hall Shuffled Npc Animation Loader
+Mushroom Kingdom Occupied Stairway Shuffled Npc Animation Loader
+Mushroom Kingdom Occupied East Hall Loader
+Mushroom Kingdom Occupied East Hall Shuffled Npc Animation Loader
+Mushroom Kingdom Occupied Peachs Antechamber Shuffled Npc Animation Loader
+Mushroom Kingdom Occupied Jumping Kids House 1F Shuffled Npc Animation Loader
+Mushroom Kingdom Occupied Jumping Kids House 2F Shuffled Npc Animation Loader
+Kero Sewers Belome Room Shuffled Npc Animation Loader
+Kero Sewers Belome Room Loader Container
+Forest Maze Boss Room Loader
+Forest Maze Boss Room Shuffled Npc Animation Loader
+Mines Trampoline Room Loader
+Mines Trampoline Room Shuffled Npc Animation Loader
+Mines Left Of Trampoline Room Loader
+Mines Left Of Trampoline Room Shuffled Npc Animation Loader
+Mines Tiny Room 2 Left Of Trampoline Room Loader
+Mines Tiny Room 2 Left Of Trampoline Room Shuffled Npc Animation Loader
+Mines Room That Splits To Pa Mole Path Loader
+Mines Room That Splits To Pa Mole Path Shuffled Npc Animation Loader
+Mines Small North Room In Miniboss Path Loader
+Mines Small North Room In Miniboss Path Shuffled Npc Animation Loader
+Mines Long Room In Miniboss Path Loader
+Mines Long Room In Miniboss Path Shuffled Npc Animation Loader
+Mines Boss Room Shuffled Npc Animation Loader
+Tower Curtain Game Room Shuffled Npc Animation Loader
+Marrymore Occupied Sanctuary Shuffled Npc Animation Loader
+Tower Ancestor Game Room Shuffled Npc Animation Loader
+Tower First Bobomb Staircase Shuffled Npc Animation Loader
+Tower First Bobomb Staircase Loader
+Tower Balcony Shuffled Npc Animation Loader
+Ending Credits Chapel Shuffled Npc Animation Loader
+Marrymore Kitchen Shuffled Npc Animation Loader
+Tower Lobby Shuffled Npc Animation Loader
+Tower First Rail Room Shuffled Npc Animation Loader
+Tower Jumping Spookum Room Shuffled Npc Animation Loader
+Ship Password Room Shuffled Npc Animation Loader
+Ship Boss Room Shuffled Npc Animation Loader
+Seaside Occupied Beach Shuffled Npc Animation Loader
+Ship 1St Preboss Battle Room Shuffled Npc Animation Loader
+Ship 2Nd Preboss Battle Room Shuffled Npc Animation Loader
+Seaside Occupied Elder House 1F Shuffled Npc Animation Loader
+Seaside Occupied Exterior Shuffled Npc Animation Loader
+Seaside Occupied Inn 1F Shuffled Npc Animation Loader
+Seaside Occupied Inn 2F Shuffled Npc Animation Loader
+Seaside Occupied Bomb Shop Shuffled Npc Animation Loader
+Seaside Occupied Wpn Arm Shop Shuffled Npc Animation Loader
+Seaside Occupied Health Store Shuffled Npc Animation Loader
+Seaside Occupied Mushroom Boy Shop Shuffled Npc Animation Loader
+Seaside Occupied Accessory Shop Shuffled Npc Animation Loader
+Temple Boss Room Shuffled Npc Animation Loader
+Dojo Shuffled Npc Animation Loader
+Monstro Superboss Shuffled Npc Animation Loader
+Bean Valley Boss Room Shuffled Npc Animation Loader
+Nimbus Castle Statue Polisher Boss Room Shuffled Npc Animation Loader
+Nimbus Castle Statue Polishing Room Shuffled Npc Animation Loader
+Nimbus Castle Final Hallway Shuffled Npc Animation Loader
+Garros House Shuffled Npc Animation Loader
+Nimbus Land Occupied Exterior Final Boss Room Shuffled Npc Animation Loader
+Nimbus Castle Main Hallway Shuffled Npc Animation Loader
+Nimbus Castle Occupied 4Way Path Shuffled Npc Animation Loader
+Nimbus Castle Throne Room Antechamber Shuffled Npc Animation Loader
+Nimbus Castle Occupied Throne Room Shuffled Npc Animation Loader
+Nimbus Castle Single Bird Statue Room Shuffled Npc Animation Loader
+Nimbus Castle Single Bird Statue Room Loader
+Nimbus Castle Early West Shaman Path Shuffled Npc Animation Loader
+Nimbus Castle Early East Shaman Path Shuffled Npc Animation Loader
+Nimbus Castle Liberated Throne Room Shuffled Npc Animation Loader
+Nimbus Land Hot Springs Shuffled Npc Animation Loader
+Nimbus Castle Liberated Inner Cellar Hallway Loader
+Nimbus Castle Liberated Inner Cellar Hallway Shuffled Npc Animation Loader
+Nimbus Castle Liberated 5 Door Room Shuffled Npc Animation Loader
+Nimbus Castle Liberated 4Way Path Shuffled Npc Animation Loader
+Nimbus Castle Liberated 4Way Path Loader
+Nimbus Castle First Post Throne Hallway Shuffled Npc Animation Loader
+Nimbus Castle Second Post Throne Hallway Shuffled Npc Animation Loader
+Volcano First Boss Room Shuffled Npc Animation Loader
+Volcano Final Pre Exit Room Loader
+Volcano Final Pre Exit Room Shuffled Npc Animation Loader
+Volcano Post Boss Room With Enemy Warps Shuffled Npc Animation Loader
+Volcano Exit Room Shuffled Npc Animation Loader
+Volcano Brief Henchman Room Shuffled Npc Animation Loader
+Keep Battle Door 1C Shuffled Npc Animation Loader
+Keep First Boss Room Shuffled Npc Animation Loader
+Keep Battle Door 2B Shuffled Npc Animation Loader
+Keep Battle Door 2C Shuffled Npc Animation Loader
+Keep Battle Door 1A Shuffled Npc Animation Loader
+Keep Battle Door 1B Shuffled Npc Animation Loader
+Keep Battle Door 2A Shuffled Npc Animation Loader
+Keep Final Boss Room Shuffled Npc Animation Loader
+Abyss 1St Boss Room Shuffled Npc Animation Loader
+Inner Factory 1St Room Shuffled Npc Animation Loader
+Inner Factory 2Nd Room Shuffled Npc Animation Loader
+Inner Factory 3Rd Room Shuffled Npc Animation Loader
+Inner Factory 4Th Room Shuffled Npc Animation Loader
+Inner Factory 1St Room Post Fight Shuffled Npc Animation Loader
+Mines Boss Shove Subroutine
+Dojo 1St Boss Challenge Subroutine
+Dojo 2Nd Boss Challenge Subroutine
+Dojo 2Nd Boss Challenge Deescalate
+Dojo 3Rd Boss Challenge Subroutine
+Dojo 3Rd Boss Challenge Deescalate
+Dojo 4Th Boss Challenge Subroutine
+Dojo 5Th Boss Challenge Subroutine
+Dojo 5Th Boss Challenge Deescalate
+Test Script 3
+Test Script 4
+Test Script 5
+Test Script 6
+Test Script 7
+Test Script 8
+Test Script 9
+Test Script 10
+Test Script 11
+Tower Exterior Shuffled Npc Animation Loader
+Ship Trampoline Loader Override
+Booster Pass Secret Room Shuffled Npc Animation Loader
+Booster Pass Seesaw Chest Room Shuffled Npc Animation Loader
+Chest Flower Item Collection
+Chest Item Bag Packet
+Chest Feather Packet
+Chest Star Piece Packet
+Chest Ring Packet
+Chest Brooch Packet
+Chest Shoes Packet
+Chest Banana Peel Packet
+Chest Crown Packet
+Chest Bomb Packet
+Chest Egg Packet
+Chest Cookie Packet
+Chest Berry Packet
+Chest Card Packet
+Chest Green Item Collection
+Chest Red Item Collection
+Chest Blue Item Collection
+Chest Yellow Item Collection
+Chest Spell 1
+Chest Spell 2
+Chest Spell 3
+Chest Spell 4
+Chest Spell 5
+Chest Spell 6
+Chest Spell 7
+Chest Spell 8
+Chest Spell 9
+Chest Spell 10
+Chest Spell 11
+Chest Spell 12
+Chest Spell 13
+Chest Spell 14
+Chest Spell 15
+Chest Spell 16
+Chest Spell 17
+Chest Beetle Packet
+Chest Spell 18
+Chest Spell 19
+Chest Spell 20
+Chest Spell 21
+Chest Spell 22
+Chest Spell 23
+Chest Spell 24
+Chest Spell 25
+Chest Spell 26
+Chest Spell 27
+Unused
+Unused
+Yoshi Cookie Storage Business Logic
+Initatie Yoshi Race For Gambling
+Fat Yoshi
+Fat Yoshi Present Generator
+Progressive Firework Chest Packet
+Marrymore Inn Regular Room Loader
+Peck Subroutine Left Statue
+Peck Subroutine Middle Statue
+Peck Subroutine Right Statue
+Statue Subroutine 1
+Statue Subroutine 2
+Keep First Boss Set Script
+Keep First Boss Summon Chest
+Keep Second Boss Animation Subroutine
+Final Boss Animation Subroutine 1
+Final Boss Animation Subroutine 2
+Final Boss Animation Subroutine 3
+Frogfucius Hint Main Checks
+Frogfucius Hint Expansion
+Frogfucius Hint Treasure Chests
+Chest Glove Packet
+Crystal Chest Packet
+Npc Spell 1
+Npc Spell 2
+Npc Spell 3
+Npc Spell 4
+Npc Spell 5
+Npc Spell 6
+Npc Spell 7
+Npc Spell 8
+Npc Spell 9
+Npc Spell 10
+Npc Spell 11
+Npc Spell 12
+Npc Spell 13
+Npc Spell 14
+Npc Spell 16
+Npc Spell 17
+Npc Spell 18
+Npc Spell 19
+Npc Spell 20
+Npc Spell 21
+Npc Spell 22
+Npc Spell 23
+Npc Spell 24
+Npc Spell 25
+Npc Spell 26
+Npc Spell 27
+Freestanding Spell 1
+Frogfucius Hint Optional Marrymore
+Frogfucius Hint Marrymore Suite
+Frogfucius Hint Optional 1
+Frogfucius Hint Optional 2
+Frogfucius Hint Optional 3
+Frogfucius Hint Optional 4
+Frogfucius Hint Optional 5
+Frogfucius Hint Optional 6
+Frogfucius Hint Optional 7
+Frogfucius Hint Optional 8
+Frogfucius Hint Optional 9
+Frogfucius Hint Optional 10
+Frogfucius Hint Dialogues
+Freestanding Spell 2
+Freestanding Spell 3
+Freestanding Spell 4
+Freestanding Spell 5
+Freestanding Spell 6
+Freestanding Spell 7
+Set Star Hill As Checked
+Freestanding Spell 8
+Freestanding Spell 9
+Freestanding Spell 10
+Freestanding Spell 11
+Freestanding Spell 12
+Freestanding Spell 13
+Freestanding Spell 14
+Freestanding Spell 16
+Freestanding Spell 17
+Post Mines Boss Subroutine
+Unknown
+Shyster Subroutine
+Post Mines Boss Check If Won
+Freestanding Spell 18
+Freestanding Spell 19
+Freestanding Spell 20
+Freestanding Spell 21
+Freestanding Spell 22
+Freestanding Spell 23
+Freestanding Spell 24
+Freestanding Spell 25
+Freestanding Spell 26
+Freestanding Spell 27
+Hill River Spell 1
+Hill River Spell 2
+Hill River Spell 3
+Hill River Spell 4
+Hill River Spell 5
+Hill River Spell 6
+Hill River Spell 7
+Hill River Spell 8
+Hill River Spell 9
+Hill River Spell 10
+Hill River Spell 11
+Hill River Spell 12
+Hill River Spell 13
+Hill River Spell 14
+Hill River Spell 16
+Hill River Spell 17
+Hill River Spell 18
+Hill River Spell 19
+Hill River Spell 20
+Hill River Spell 21
+Hill River Spell 22
+Hill River Spell 23
+Hill River Spell 24
+Hill River Spell 25
+Hill River Spell 26
+Hill River Spell 27
+Npc Spell 15
+Freestanding Spell 15
+Hill River Spell 15
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Begin Melody Bay Tadpoles
+Melody Bay Loader
+Melody Bay Jump On Tadpoles
+Melody Bay Song Judged
+Toadofsky
+Empty
+Empty
+Melody Bay Final Song
+Melody Bay Song 1 Validator
+Melody Bay Song 2 Validator
+Melody Bay Song 3 Validator
+Melody Bay Song 1 Input
+Melody Bay Song 2 Input
+Melody Bay Song 3 Input
+Melody Bay Jump Animation
+Melody Bay Swim Animation
+Melody Bay Exit Water Animation
+Melody Bay Third Song Hint
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Tadpole Pond Loader
+Tadpole Bridge Summon
+Tadpole Bridge Summon
+Tadpole Bridge Jumping
+Frogfucius Scroll
+Empty
+Empty
+Frogfucius
+Frog Coin Emporium
+Song Hint Tadpole
+Summon Tadpole Shops
+Summon Hint Tadpole
+Juice Bar
+Empty
+Empty
+Seaside Occupied Exterior Loader
+Empty
+Seaside Occupied Inn 1F Loader
+Seaside Occupied Inn 2F Loader
+Seaside Occupied Elders House Loader
+Frog Shop Room Loader
+Seaside Occupied Bomb Shop Loader
+Seaside Occupied Armor Shop Loader
+Seaside Occupied Health Store Loader
+Seaside Occupied Mushroom Boy Shop Loader
+Seaside Occupied Accessory Shop Loader
+Empty
+Empty
+Seaside Occupied Innkeeper
+Seaside Occupied Accessory Shop Occupant
+Fake Elder
+Seaside Occupied Mushroom Boy Shop Occupant 1
+Seaside Occupied Mushroom Boy Shop Occupant 2
+Seaside Occupied Health Store Occupant
+Seaside Occupied Wpn Arm Shop Occupant 1
+Seaside Occupied Wpn Arm Shop Occupant 2
+Seaside Occupied Bomb Shop
+Seaside Occupied Bomb Shop Customer
+Seaside Shed Guard 1
+Seaside Shed Guard 2
+Shed Window
+Seaside Occupied Beach Loader
+Seaside Initiate Boss Fight
+Seaside Initiate Boss Fight Animation
+Frog Shop
+Empty
+Empty
+Empty
+Empty
+Seaside Liberated Inn 1F Loader
+Empty
+Seaside Liberated Elders House Loader
+Empty
+Empty
+Seaside Liberated Wpn Arm Shop Loader
+Seaside Liberated Health Store Loader
+Seaside Liberated Mushroom Boy Loader
+Seaside Liberated Accessory Shop Loader
+Seaside Liberated Shed Loader
+Seaside Liberated Beach
+Empty
+Seaside Liberated Beach Letter
+Shed Key Door
+Seaside Elder
+Seaside Liberated Innkeeper
+Open Lands End If Gated By Elder
+Seaside Health Food Shop
+Seaside Accessory Shop
+Mushroom Boy
+Seaside Weapon Shop
+Seaside Armor Shop
+Empty
+Empty
+Empty
+Seaside Grant Shed Item
+Juice Bar No Card
+Juice Bar Alto Card
+Juice Bar Tenor Card
+Juice Bar Soprano Card
+Volcano Item Shop
+Volcano Armor Shop
+Toad Shop
+Henchman Battle Pack Selector
+Henchman Battle Pack Selector
+Henchman Battle Pack Selector
+Henchman Battle Pack Selector
+Henchman Battle Pack Selector
+Ending Credits Cliff Shuffled Npc Animation Loader
+Ending Credits Keep Shuffled Npc Animation Loader
+Ending Credits Yoster Shuffled Npc Animation Loader
+Mushroom Way Boss Unlocks
+Bandits Way Boss Unlocks
+Mushroom Kingdom Boss Unlocks
+Kero Sewer Boss Unlocks
+Forest Maze Boss Unlocks
+Outer Mnes Boss Unlocks
+Inner Mines Boss Unlocks
+Tower Curtain Boss Unlocks
+Postgame Tower Curtain Boss Unlocks
+Tower Balcony Boss Unlocks
+Chapel Boss Unlocks
+Postgame Chapel Boss Unlocks
+Seaside Boss Unlocks
+Ship Mid Boss Unlocks
+Ship End Boss Unlocks
+Postgame Ship End Boss Unlocks
+Cloud Boss Unlocks
+Temple Boss Unlocks
+Postgame Temple Boss Unlocks
+Dojo 1 Boss Unlocks
+Dojo 2 Boss Unlocks
+Dojo 3 Boss Unlocks
+Dojo 4 Boss Unlocks
+Dojo 5 Boss Unlocks
+Monstro Sealed Boss Unlocks
+Postgame Monstro Sealed Boss Unlocks
+Starting Character 1
+Starting Character 2
+Starting Character 3
+Starting Character 4
+Starting Character 5
+Mushroom Way Character
+Forest Maze Character
+Moleville Character
+Marrymore Character
+Bean Valley Boss Unlocks
+Statue Boss Unlocks
+Egg Boss Unlocks
+Nimbus Boss Unlocks
+Volcano Mid Boss Unlocks
+Volcano Boss Unlocks
+Obstacle Course Boss Unlocks
+Keep 1 Boss Unlocks
+Keep Chandelier Boss Unlocks
+Keep Exit Boss Unlocks
+Outer Factory 1 Boss Unlocks
+Outer Factory 2 Boss Unlocks
+Inner Factory 1 Boss Unlocks
+Inner Factory 2 Boss Unlocks
+Inner Factory 3 Boss Unlocks
+Inner Factory 4 Boss Unlocks
+Inner Factory 5 Boss Unlocks
+Invisible Grant 1
+Invisible Grant 2
+Invisible Grant 3
+Mimic 1 Boss Unlocks
+Mimic 2 Boss Unlocks
+Mimic 3 Boss Unlocks
+Flag Specific Housekeeping Game Start
+Postgame Mines Boss Unlocks
+Unlock Sewer By Rfc
+Unlock Forest By Pie
+Unlock Moleville If Gated By Boshi
+Checkerboard Room Coin Clone
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Ship Boss Room Rightmost Henchman
+Mushroom Kingdom Occupied Exterior Henchman
+Mushroom Kingdom Occupied Exterior Henchman
+Mushroom Kingdom Occupied Exterior Henchman
+Mushroom Kingdom Occupied Exterior Henchman
+Empty
+Empty
+Empty
+Tower Balcony Loader After Marrymore
+Tower Balcony Loader Before Marrymore
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Collect Freestanding Small Coin
+Collect Freestanding Small Frog Coin
+Tower Checkerboard Room Loader
+Tower Checkerboard Room Fireball Launcher
+Empty
+Tower Checkerboard Room Fireball Launcher
+Tower Checkerboard Room Fireball Launcher
+Tower Checkerboard Room Fireball Launcher
+Empty
+Tower Checkerboard Room Fireball Launcher
+Tower Checkerboard Room Fireball Launcher
+Empty
+Tower Checkerboard Room Fireball Launcher
+Tower Checkerboard Room Fireball Launcher
+Tower Checkerboard Room Fireball Launcher
+Tower Checkerboard Room Fireball Launcher
+Empty
+Tower Checkerboard Collect Key Item
+Tower Checkerboard Locked Door
+Tower Lobby Loader
+Empty
+Tower Boss 1 Hides Behind Doorway In Lobby 1
+Tower Boss 1 Hides Behind Doorway In Lobby 2
+Lobby Portrait 1
+Lobby Portrait 2
+Lobby Portrait 3
+Lobby Portrait 4
+Lobby Portrait 5
+Lobby Portrait 6
+Nimbus 5 Door Chest Liberated
+Tower Lobby Henchman
+Empty
+Empty
+Empty
+Empty
+Tower Exterior Loader
+Hill Unlocks
+Tower Exterior Door
+Tower Break Down Door
+Portrait Game 1
+Portrait Game 2
+Portrait Game 3
+Portrait Game 4
+Portrait Game 5
+Portrait Game 6
+Portrait Game Incorrect
+Portrait Game Room Loader
+Portrait Game Room Locked Door
+Elder Key Prize Room Loader
+Elder Key Prize Granter
+Portrait Game Instructions
+Tower Henchman 2 Room Loader
+Empty
+Tower Henchman 2
+Tower Henchman 2 Room Hidden Item
+Empty
+Empty
+Empty
+Empty
+Empty
+Tower Checkerboard Room Locked Door
+Empty
+Empty
+Empty
+Empty
+Curtain Game Begins Npcs Walk Into Room
+Curtain Game Room Loader
+Curtain 1
+Curtain 2
+Curtain 3
+Curtain 4
+Curtain Room Exit To Balcony
+Curtain Game Business Logic 1
+Curtain Game Business Logic 2
+Curtain Game Success 1
+Curtain Game Success 2
+Curtain Game Success Failure Fight Boss
+Curtain Game Success Failure General
+Unlock Marrymore If Gated By Tower Balcony Fight
+Toad Voucher Grant
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Vista Hill Loader
+Vista Hill Loader Continued
+Empty
+Empty
+Empty
+Empty
+Empty
+Marios House Interior Loader
+Empty
+Four Digit Coin Value Handler
+Marios House Lamp
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Marios Pad Open Door
+Marios Pad Close Door
+Marios Pad Exterior Loader
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Mushroom Way 1 Exit To World Map
+Empty
+Empty
+Rescue Toad Mushroom Way 2
+Mushroom Way 2 Loader
+Mushroom Way 2 Lone Troopa
+Summon Left Goomba In Mushroom Way 2
+Summon Right Goomba In Mushroom Way 2
+Mushroom Way 1 Loader
+Rescue Toad Mushroom Way 1
+Summon Jumping Goomba Mushroom Way 2
+Mushroom Way 2 Spinning Flower
+Summon Middle Goomba In Mushroom Way 2
+Rescue Toad Extended
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Empty
+Spinning Flower Core Logic
+Bandits Way Star Chest Camera And Dogs
+Empty
+Unknown
+Unknown
+Forest Maze Pipe
+Chest Camera Shift
+Sand Whirlpool
+Sand Whirlpool
+Lands End First Two Chests
+Lands End Third Chest
+Empty
+Sky Bridge Donut Lift
+Clear Bucket Warp Bit
+Bank 1F Return Event
+Forest Tree Trunk Area Loader
+Forest Tree Trunk Area Loader Contd
+Forest First Wiggler Room Loader
+Forest First Wiggler Room Loader Contd
+Wiggler Jump
+Forest Maze Past Trunk Area Room Loader
+Lands End Spinny Flower 1
+Lands End Spinny Flower 2
+Lands End Spinny Flower 3
+Lands End Geckit Cannon Room Loader
+Lands End Cannon
+Lands End Mario Oob
+Lands End Cannon Contd
+Empty
+Lands End Dog Pit
+Lands End 2 Loader
+Midas River Begin Barrel Section
+Midas River Barrel Subroutine
+Midas River Fish
+Midas River Barrel Section Business Logic
+Midas River Coin
+Midas River Barrel Subroutine
+Midas River Barrel Subroutine
+Midas River Barrel Subroutine
+Midas River Barrel Subroutine
+Midas River Barrel Subroutine
+Midas River Barrel Subroutine
+Midas River Barrel Subroutine
+Midas River Barrel Subroutine
+Midas River Barrel Subroutine
+Lands End Trampoline To Sewer
+Lands End Underground Trampoline To Desert
+Temple Final Room Loader
+Midas River Barrel Subroutine
+Midas River Barrel Fish Movement
+Bandits Way 4 Right Chest
+Lands End Grotto Chest
+Lands End Grotto Trampoline To Surface
+Sewer Pipe To Lands End Subroutine
+Lands End Grotto Barrel Kick
+Belome Statue
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Lands End 1St Room Exit To World Map
+Exp Star Subroutine Cancel Npc Event Do Not Remove From Level
+Exp Star Subroutine Cancel Tile Event
+Exp Star Subroutine Cancel Npc Event Remove From Level
+Tower Exterior Cancel Exp Star
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Summon Geckits In Cannon Room
+Empty
+Moleville Swap Shop Loader
+Moleville Swap Shop Tutorial
+Moleville Inn Loader
+Moleville Occupied Pa Mole In House
+Empty
+Occupied Moleville Exterior Npc Trigger Cutscene
+Occupied Moleville Exterior Npc At Mtn Base
+Occupied Moleville Exterior Npc At Mtn Top
+Bucket Warp
+Belome Fortune Brick
+Moleville Shop
+Moleville Tower Unlock Condition Hint
+Moleville Carbo Cookie Trader
+Dyna House Loader
+Moleville Inn Girl
+Ma Mole
+Moleville Liberated Pa Mole In House
+Dyna In House
+Moleville Minecart Freeplay Ending Landing
+Moleville Inn
+Fireworks House Left Girl
+Fireworks House Right Girl
+Moleville Swap Shop Logic
+Moleville Swap Shop Girl
+Moleville Liberated Npc At Mtn Base 1
+Moleville Liberated Npc At Mtn Base 2
+Initiate Minecart Freeplay
+Tells You Minecart Pb
+Booster Pass Secret Hint Guy
+Purtend Store
+Moleville Occupied Exterior Loader
+Bucket Girl
+Moleville Song Hint Girl
+Moleville Minecart Freeplay Entrance
+Minecart Ending
+Moleville Liberated Exterior Loader
+Moleville Liberated Exterior Loader Contd
+Mario Crash Thru Moleville Roof
+Empty
+Exit Barrel Count Timer
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Nimbus Final Hallway Miniboss Collision
+Lands End 2 Summon Invisible Platform
+Lands End 1 Invisible Platform
+Lands End 2 Summon Invisible Platform
+Lands End 2 Invisible Platform Upper
+Lands End Enter Grotto
+Mario Bumped Off Cannon
+Lands End Grotto Room 1 Loader
+Temple Pipe To Monstro
+Open Lands End Grotto
+Lands End Trampoline In Lower Underground Gecko Room
+Temple Pipe To Fortune Result Room
+Temple Trampoline In Fortune Result Room
+Trampoline Shaman
+Temple Exit Warp Trampoline
+Temple Elevator Lower Exit
+Temple Fortune Head 1
+Temple Fortune Head 2
+Temple Fortune Head 3
+Temple Fortune Heads Room Loader
+Temple Pipe To Boss Fight
+Temple Boss Room Trampoline
+Empty
+Temple Fortune Scroll
+Temple Final Fortune Head
+Temple Elevator
+Bandits Way Goomba
+Bandits Way Chest Platforms 1
+Bandits Way Chest Platforms 2
+Bandits Way 4 Loader
+Bandits Way 4 Loader Background
+Bandits Way 2 Left Platform
+Bandits Way 2 Right Platform
+Bandits Way 2 Loader
+Bandits Way 2 Spinny Flower 1
+Bandits Way 2 Spinny Flower 2
+Bandits Way 2 Dogs Background
+Bandits Way Left Chest Star Check
+Bandits Way 5 Loader Background
+Bandits Way 5 Loader
+Bandits Way 5 Loader Background 2
+Bandits Way 5 Loader Background Boss Fight
+Bandits Way Trampoline
+Bandits Way 2 Dog
+Bandits Way 3 Loader
+Bandits Way 1 Loader
+Bandits Way 4 Platform Subroutine
+Bandits Way 5 Chase Catch Boss
+Bandits Way 4 Manage Dog Collision
+Empty
+Empty
+Empty
+Empty
+Sky Bridge Room Loader
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Sky Bridge Background
+Empty
+Empty
+Empty
+Empty
+Sky Bridge Donut Lift
+Empty
+Refocus Camera
+Empty
+Empty
+Empty
+Empty
+Empty
+Whirlpool Shogun
+Empty
+Empty
+Mines Postgame Fight
+Ship Postgame Boss
+Temple Boss Postgame
+Lands End Desert 1 Left Whirlpool
+Lands End Desert 1 Right Whirlpool
+Lands End Final Whirlpool 1
+Lands End Final Whirlpool 2
+Lands End Shy Away Whirlpool 1
+Lands End Shy Away Whirlpool 2
+Lands End Shy Away Whirlpool 3
+Lands End Penultimate Whirlpool 1
+Lands End Penultimate Whirlpool 2
+Lands End Stage 2 Whirlpool 1
+Lands End Stage 2 Whirlpool 2
+Lands End Stage 2 Whirlpool 3
+Lands End Bee Whirlpool 1
+Lands End Bee Whirlpool 2
+Lands End Bee Whirlpool 3
+Temple Elevator Room Loader
+Temple Fortune Results Room Gate Opens
+Temple Boss
+Temple Summon Green Button
+Temple Fortune Results Room Loader
+Temple Boss Room Loader
+Lands End Bullet Bill
+Lands End Bullet Bill Background
+Empty
+Sky Troopa Platform
+E1776
+Lands End Cliff Loader
+Temple Generic Pipe Room Loader
+Lands End Underground 1 Loader
+Lands End Flower Loader
+Empty
+Lands End Desert 1 Loader
+Lands End Final Whirlpool Room Loader
+Lands End Desert 1 Left Whirlpool Subroutine
+Lands End Final Whirlpool 1 Subroutine
+Lands End Shy Away Whirlpool 1 Subroutine
+Lands End Desert 1 Right Whirlpool Subroutine
+Lands End Underground Dog Wall Room Loader Background
+Whirlpool Shogun Subroutine
+Lands End Underground Upper Pit Room Loader Background
+Lands End Underground Dog Wall Room Loader
+Lands End Underground Upper Pit Room Loader
+Lands End Purchasable Chest 1 Subroutine
+Lands End Buy Chest
+Lands End Underground Lower Level Loader
+Lands End Desert 1 Trampoline
+Lands End Sky Bridge Room Exit To Desert
+Lands End Cliff Mouse Hint
+Temple Final Fortune Scroll
+Temple Mouse Monstro Town Access Hint
+Freestanding Flower
+Empty
+Empty
+Empty
+Temple 3 Fortune Shaman
+Temple Fortune Results Dog Fight
+Temple Fortune Results Shy Away Fight
+Belome Fortune Prize Chest 1 Subroutine
+Lands End Cliff Exit To World Map
+Temple Vault Loader
+Temple Four Chest Room Loader
+Empty
+Save Box In Rooms With Exp Stars
+Start Troopa Cliff Timer
+Troopa Cliff Timer
+Troopa Cliff Finish
+Troopa Cliff Fall
+Lands End Desert Mouse
+Shy Away Early Lands End
+Empty
+Empty
+Empty
+Lands End Grotto First Room Upper Chest
+Keep Set Platform Properties
+Keep Rotating Room Loader
+Keep Invisible Floor Room Loader
+Keep Linear Platform Room Loader
+Keep Mario Falls In Lava
+Keep Display Remaining Tries
+Keep Handle Room Reload After Lava Fall
+Keep Invisible Floor Room Background 1
+Keep Invisible Floor Room Background 2
+Keep Linear Platform Room Background
+Keep Cannonball
+Keep Cannonball Room Loader
+Keep Donkey Room Loader
+Unknown
+Empty
+Unknown
+Platform Subroutine
+Keep Invisible Floor Chest 1
+Keep Invisible Floor Coin 1
+Keep Invisible Floor Show Floor
+Summon Cloud Boss
+Cloud Boss
+Safe Donut Lift Jump
+Cannonball Room Bomb 1
+Cannonball Room Bomb 2
+Cannonball Room Bomb 1 Contd
+Cannonball Room Bomb 2 Contd
+Lands End Grotto Directional Bit
+Sky Bridge Admin Shaman
+Sky Bridge Ride Shaman
+Keep Donkey Room Background
+Keep Donkey Room Barrel
+Moleville Shop Loader
+Moleville Shop Exit To Exterior
+Moleville Inn Exit To Exterior
+Fireworks House Exit To Exterior
+Moleville Swap Shop Exit To Exterior
+Keep Donkey Room Donkey
+Croco Shop 1
+Croco Shop 2
+Bowser Door Ultimate Failure Animation
+Empty
+Keep Invisible Floor Chest 2
+Empty
+Lands End Flower Room Exit To Sky Bridge
+Sky Bridge Loader
+Keep Invisible Floor Chest 3
+Fireworks House Loader
+Fireworks House Buy Item
+Midas River Sign After Bucket Warp
+Temple Elevator Room Shaman
+Keep Rotating Room Platform 1
+Keep Rotating Room Platform 2
+Keep Rotating Room Loader Contd
+Keep Cannonball Room Exit To Previous
+Keep Linear Platform Room Exit To Previous
+Keep Invisible Floor Chest 4
+Keep Invisible Floor Coin 2
+Keep Invisible Floor Coin 3
+Whirlpool Shogun 1
+Whirlpool Shogun 2
+Whirlpool Shogun 3
+Whirlpool Shogun 4
+Whirlpool Shogun 5
+Abyss Axem Pit Room Loader
+Abyss Side Treasure Rooms Loader
+Determine Side Treasure Room To Load
+Abyss Big Conveyor Room Loader
+Abyss Boss 1 Defeated Temp Room Loader
+Abyss Boss 2 Room Loader
+Abyss Boss 2
+Abyss After Boss 1 Trampoline Backward
+Abyss Axem Pit Trampoline
+Abyss Upper Machine Yarid Room Loader
+Abyss Boss 2 Room Trampoline
+Abyss Axem Pit Room Fall
+Abyss Big Conveyor Room Fall
+Abyss Axem Pit Platforms
+Abyss Exit To Side Treasure Rooms
+Abyss Side Treasure Rooms Exit
+Abyss Machine Yarid Upper
+Abyss Exit To Boss 2 Room
+Turn Off Mario Shadow
+Abyss Machine Yarid Lower
+Abyss Machine Axem Red
+Abyss Conveyor Belt Jabit Or Bowyer
+Abyss Conveyor Belt Shyper
+Abyss Machine Mack
+Abyss Machine Arrow Hit
+Abyss Machine Arrow Animate
+Abyss Machine Arrow Reset
+Abyss Big Conveyor Checkpoint
+Abyss Big Conveyor Checkpoint
+Abyss Big Conveyor Checkpoint
+Abyss Big Conveyor Checkpoint
+Abyss Big Conveyor Platform
+Abyss Big Conveyor Checkpoint
+Abyss Machine Bowyer
+Abyss Set Machine Bowyer Spawn Point
+Abyss Set Machine Bowyer Spawn Point
+World Map Inner Factory
+Postgame Tower Fight
+Tower Balcony Loader
+Tower Balcony Jump Off
+Balcony Is Locked
+Keep Invisible Floor Coin 4
+Mackskip Maybe
+Treasure Chest Failure Mimic Fight
+Belome Fortune Prize Chest 2
+Belome Fortune Prize Chest 3
+Belome Fortune Prize Chest 4
+Keep Rotating Room Exit To Previous
+Keep Rotating Room Chest 1
+Keep Rotating Room Chest 2
+Keep Rotating Room Chest 3
+Keep Rotating Room Chest 4
+Keep Rotating Room Chest 5
+Keep Rotating Room Chest 6
+Keep Vertical Platform Room Exit To Previous
+Keep Invisible Floor Room Exit
+Keep Chewy Battle Room Exit
+Keep Cannonball Room Exit
+Keep Donkey Room Exit To Previous
+Keep Linear Platform Room Exit
+Keep Terra Corra Battle Room Exit
+Keep Alley Rat Battle Room Exit
+Keep Goomba Battle Room Exit
+Keep Barrel Count Room Exit Container
+Keep Enter Marathon Puzzle Room
+Keep Quiz Room Exit Container
+Keep Enter Barrel Count Room
+Keep Coin Game Room Exit Container
+Keep Enter Button Game Room
+Keep Door 5 Container
+Keep Enter Vertical Platform Room
+Keep Door 4 Container
+Keep Enter Invisible Floor Room
+Keep Door 6 Container
+Keep Enter Terra Cotta Battle Room
+Keep Door 3 Container
+Keep Enter Goomba Battle Room
+Keep Door 1 Container
+Keep Enter Quiz Room
+Keep Door 2 Container
+Keep Enter Coin Game Room
+Check If Star Pieces For Factory Boss Collected
+Boshi Odds Calculator
+Mushroom Boy Grants Rock Candy
+Mushroom Boy Odds
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Monstro Town Exterior Loader
+Monstro Super Jump House Loader
+Monstro Thwomp
+Monstro Shop Loader
+Chapel Postgame Boss
+Monstro Goombette Shop
+Monstro Main Shop
+Monstro Trampoline
+Monstro Ledge Item
+Monstromama House 1F Loader
+Monstro Fan Setting
+Monstromama
+Monstromama House 2F Loader
+Monstro Town Star
+Monstro Mimic
+Super Jump Prize Grant
+Dojo Loader
+Dojo Loader First Time Animation
+Dojo Boss 1
+Dojo Fight 1 Finished
+Dojo Boss 2
+Monstro Mouse
+Monstromama House Exit To Exterior
+Empty
+Empty
+Empty
+Enter Monstro Sealed Room
+Monstro Sealed Door
+Dojo Boss 3
+Dojo Boss 4
+Monstro Save Box
+Monstro Town Exterior Loader From Save Box
+Musty Fears Room Loader
+Musty Fears Lamp
+Nimbus Missable Chest 1
+Musty Fears Away Note
+Marios Room Invisible Item
+Empty
+Monstro Piranha
+Empty
+Empty
+Sky Troopas Ad
+Monstro Entrance Loader
+Empty
+Monstro Town Back Exit
+Empty
+Empty
+Empty
+Hino Mart Loader
+Move Hinopio To Item Shop
+Move Hinopio To Inn
+Move Hinopio To Armor Shop
+Hinopio
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Nimbus Castle Statue Polisher Boss Fight Room Loader
+Empty
+Empty
+Empty
+Nimbus Castle Statue Game Room Loader
+Empty
+Empty
+Statue 1 Shake
+Statue 2 Shake
+Statue 4 Shake
+Initiate Statue Polisher Manual Boss Fight
+Empty
+Empty
+Empty
+Star Hill Star Piece
+Empty
+Choose Marrymore Sanctuary State
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Nimbus Castle Statue Polisher Boss Fight Room Exit To 4Way Path
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Keep 2Nd Room Loader
+Keep Donut Bridge Room Loader
+Keep Donut Lift
+Keep Original Throne Room Loader
+Keep Move Goombas In Original Throne Room
+Keep Resummon Enemies On Exit
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Keep Terra Cotta Battle Room Loader
+Keep Terra Cotta Battle Room Summon 1St Battle
+Keep Terra Cotta Battle Room Summon 2Nd Battle
+Keep Terra Cotta Battle Room Summon 3Rd Battle
+Keep Terra Cotta Battle Room Summon 4Th Battle
+Keep Alley Rat Battle Room Loader
+Keep Alley Rat Battle Room Summon 1St Battle
+Keep Alley Rat Battle Room Summon 2Nd Battle
+Keep Alley Rat Battle Room Summon 3Rd Battle
+Keep Alley Rat Battle Room Summon 4Th Battle
+Keep Bobomb Battle Room Loader
+Keep Bobomb Battle Room Summon 1St Battle
+Keep Bobomb Battle Room Summon 2Nd Battle
+Keep Bobomb Battle Room Summon 3Rd Battle
+Keep Bobomb Battle Room Summon 4Th Battle
+Keep Goomba Battle Room Loader
+Keep Goomba Battle Room Summon 1St Battle
+Keep Goomba Battle Room Summon 2Nd Battle
+Keep Goomba Battle Room Summon 3Rd Battle
+Keep Goomba Battle Room Summon 4Th Battle
+Keep Chewy Battle Room Loader
+Keep Chewy Battle Room Summon 1St Battle
+Keep Chewy Battle Room Summon 2Nd Battle
+Keep Chewy Battle Room Summon 3Rd Battle
+Keep Chewy Battle Room Summon 4Th Battle
+Keep Sparky Battle Room Loader
+Keep Sparky Battle Room Summon 1St Battle
+Keep Sparky Battle Room Summon 2Nd Battle
+Keep Sparky Battle Room Summon 3Rd Battle
+Keep Sparky Battle Room Summon 4Th Battle
+Battle Door Mimic Boss Animation
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Keep 1St Boss Room Loader
+Keep 1St Boss Fight
+Keep 1St Boss Heals You
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Keep Final Boss Room Loader
+Keep 2Nd Boss
+Keep 3Rd Boss
+Empty
+Keep Dark Room Loader
+Keep Dark Room Summon Goomba 1
+Keep Dark Room Summon Goomba 2
+Keep Dark Room Summon Goomba 3
+Empty
+Keep 1St Room Loader
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Sets Seaside Inn State
+Sets Seaside Elders House State
+Sets Seaside Wpn Arm Shop State 1
+Sets Seaside Wpn Arm Shop State 2
+Sets Seaside Health Store State
+Sets Mushroom Boy Shop State
+Sets Seaside Accessory Shop State
+Dojo Boss 5
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Moleville Treasure Shop
+Empty
+Empty
+Empty
+Empty
+Empty
+Balcony Loader After Nimbus Castle
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Ending Credits Toadofsky
+Empty
+Ending Credits Wedding Loader
+Ending Credits Wedding Logic
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Bank 1F Return Event 2
+Slot Chest Template
+Empty
+Tower Button
+Booster Pass 1St Room Loader
+Booster Pass Lakitu Tosses Spiny
+Empty
+Booster Pass Artichoker Encounter 1
+Booster Pass Spiny Coin Button
+Booster Pass Artichoker Encounter 2
+Empty
+Tower Parachute Room Loader
+Gardener Exterior Loader
+Gardener Cloud Loader
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Booster Pass 2Nd Room Spiny Summoner
+Empty
+Tower First Staircase Loader
+Tower First Staircase Spookum Direction 1
+Tower First Staircase Spookum Direction 2
+Tower Button Room Loader
+Tower First Staircase Controls Npc Behind Curtain
+Tower Seesaw Chest Room Loader
+Tower Seesaw Chest
+Tower Seesaw Chest Contd
+Tower Seesaw Room Set Origin
+Tower Thwomp Seesaw Room Loader
+Tower Thwomp Seesaw
+Tower Thwomp Seesaw Contd
+Tower Top Floor Dummy Chest
+Tower Bullet Bill Room Loader
+Tower Spookum Jumps Out
+Climb Gardener Beanstalk
+Tower Start Bullet Bills Animation
+Tower Start Bullet Bills
+Tower Henchman 3
+Empty
+Empty
+Empty
+Empty
+Tower Thwomp Seesaw Room Loader Contd
+Abyss 1St Save Room Loader
+Abyss 1St Trampoline Catcher Loader
+Abyss Ameboid Button Room Loader
+Abyss Four Bolt Room Loader
+Abyss 1St Boss Room Loader
+Tower Top Floor Chest Room Loader
+Empty
+Empty
+Empty
+Empty
+Abyss Bolt
+Abyss Bolt
+Abyss Bolt
+Abyss Bolt
+Empty
+Empty
+Empty
+Empty
+Empty
+Tower Parachute Room Hidden Item
+Abyss 1St Save Room Background
+Abyss Bolt Near Side
+Abyss Bolt Far Side
+Abyss Bolt Near Side
+Abyss Bolt Far Side
+Gardeners House Loader
+Abyss Four Bolt Room Background
+Abyss Four Bolt Room Bolt
+Bean Valley Boss Prize Pickup
+Abyss Ameboid Button
+Empty
+Abyss 1St Save Point
+Beanstalk From Inside Gardeners House
+Gardener
+Abyss Exit Trampoline
+Empty
+Empty
+Empty
+Empty
+Empty
+Abyss Room 1 Loader
+Empty
+Begin 8Bit
+8Bit Background
+8Bit End East
+8Bit End West
+Star Hill Final Area Loader
+Empty
+Star Hill Final Exit
+Abyss Bolt Near Side
+Abyss Room Before 1St Boss Loader
+Forest Tree Generic Underground Trampoline
+Forest Underground 2 Exit Trampoline
+Forest Secret Trampoline
+Forest Underground 2 Entrance Trampoline
+Forest Underground 1 Exit Trampoline
+Forest Underground 1 Entrance Trampoline
+Forest Trampoline Business Logic
+Tower Chomp Stairway Loader
+Forest Underground 1 Loader
+Empty
+Empty
+Empty
+Abyss Room Before 1St Boss Lower Trampoline
+Abyss Trampoline To 1St Boss
+Forest Arrow Hits You
+Forest Maze Secret Loader
+Forest Mushroom Pickup
+Forest Underground 2 Loader
+Empty
+Forest Unknown Summoner
+Forest Premaze Save Room Loader
+Forest Maze Area Loader
+Forest Maze Transition
+Forest Maze Transition
+Forest Maze Transition
+Forest Maze Transition
+Forest Boss Room Exit To Maze
+Forest Boss Room Exit To World Map
+Forest Secret Trunk
+Forest Secret Area Exit
+Forest Final Wiggler Pipe
+Forest 1St Trunk
+Forest Initiate Maze
+Forest Room Before Trunks Area Trunk
+Forest Premaze Save Room Trunk
+Tower Small Save Room Loader
+Forest Boss Henchmen Bounce
+Forest Summon Fast Amanita
+Forest Boss Fight
+Forest Trunk Room Rightmost Trunk
+Forest Trunk Room Lowest Trunk
+Forest Trunk Room Middle Right Trunk
+Forest Trunk Room Middle Left Trunk
+Forest Trunk Room Upper Left Trunk
+Forest Trunk Room Upper Right Trunk
+Forest Trunk Room Wiggler Trunk
+Awaken Sleeping Wiggler
+Star Hill 1St Room Summon South Sackit
+Star Hill 1St Room Summon North Sackit
+Star Hill 1St Room Summon Northwest Sackit
+Star Hill 1St Room Summon Southeast Sackit
+Star Hill 2Nd Room Summon North Sackit
+Star Hill 2Nd Room Summon East Sackit
+Star Hill 2Nd Room Summon West Sackit
+Star Hill 2Nd Room Summon Central Sackit
+Empty
+Bean Valley 1St Room Loader
+Bean Valley Pipe To Dead End
+Bean Valley Dead End Pipe
+Bean Valley 1St Progression Pipe
+Bean Valley 1St Progression Pipe Reverse
+Bean Valley 2Nd Progression Pipe
+Bean Valley 2Nd Progression Pipe Reverse
+Bean Valley Pipe To 1St Chest
+Bean Valley 1St Chest Pipe
+Star Hill 3Rd Room Summon Sackit
+Bean Valley 5 Pipe Area Loader
+Bean Valley Piranha Plant Animations
+Bean Valley Beanstalk Room Loader
+Bean Valley Bottom Left Piranha
+Bean Valley Bottom Right Piranha
+Bean Valley Rightmost Piranha
+Bean Valley Top Piranha
+Bean Valley Leftmost Piranha
+Bean Valley Top Pipe
+Bean Valley Leftmost Pipe
+Bean Valley Bottom Left Pipe
+Bean Valley Rightmost Pipe
+Bean Valley Bottom Right Pipe
+Bean Valley Leftmost Pipe Basement Loader
+Bean Valley Leftmost Pipe Basement Original Slot Machine
+Bean Valley Bottom Left Pipe Basement Original Slot Machine
+Bean Valley Bottom Right Pipe Basement Original Slot Machine
+Mimic 3
+Empty
+Empty
+Start Game
+Additional Gating Logic Start Playing
+Empty
+Empty
+Empty
+Empty
+Empty
+Star Hill 3Rd Room Top Left Flower
+Star Hill 3Rd Room Bottom Left Flower
+Star Hill 3Rd Room Door Front Flower
+Star Hill 3Rd Room Door Back Flower
+Star Hill 3Rd Room Top Right Flower
+Star Hill 3Rd Room Bottom Right Flower
+Star Hill 3Rd Room Open Door
+Star Hill 1St Room Top Left Flower
+Star Hill 1St Room Bottom Left Flower
+Star Hill 1St Room Bottom Middle Flower
+Star Hill 1St Room Top Right Flower
+Star Hill 1St Room Bottom Right Flower
+Star Hill 1St Room Open Door
+Star Hill 2Nd Room Top Left Flower
+Star Hill 2Nd Room Bottom Left Flower
+Star Hill 2Nd Room Central Left Flower
+Star Hill 2Nd Room Central Right Flower
+Star Hill 2Nd Room Top Right Flower
+Star Hill 2Nd Room Bottom Right Flower
+Star Hill 2Nd Room Open Door
+Star Hill 1St Room Use Door
+Star Hill 2Nd Room Loader
+Star Hill 2Nd Room Use Door
+Star Hill 1St Room Loader
+Star Hill 1St Room Wish In Front Of Door
+Star Hill 1St Room Wish Southeast Of Door
+Star Hill 1St Room Wish Top Left
+Star Hill 1St Room Wish Bottom Right
+Star Hill 2Nd Room Wish Bottom Right
+Star Hill 2Nd Room Wish Bottom Left
+Star Hill 2Nd Room Wish In Front Of Door
+Star Hill 2Nd Room Wish Top Right
+Star Hill 2Nd Room Wish Top Left
+Star Hill 3Rd Room Wish Top Left
+Star Hill 3Rd Room Wish Behind Door Left
+Star Hill 3Rd Room Wish Behind Door Right
+Bean Valley Leftmost Pipe Basement Trampoline
+Bean Valley Top Pipe Basement Trampoline
+Bean Valley Top Pipe Basement Loader
+Bean Valley Bottom Left Pipe Basement Trampoline
+Bean Valley Bottom Left Pipe Basement Loader
+Bean Valley Rightmost Pipe Basement Loader
+Bean Valley Rightmost Pipe Basement Trampoline To Five Pipe Room
+Bean Valley Rightmost Pipe Basement Trampoline To Lone Chest
+Bean Valley Rightmost Pipe
+Bean Valley Bottom Right Pipe
+Bean Valley Bottom Right Pipe Basement Loader
+Bean Valley Rightmost Pipe Basement Geckit Runs At You
+Empty
+Empty
+Empty
+Bean Valley Rightmost Pipe Basement Staircase Item
+Bean Valley Boss Room Loader
+Bean Valley Boss Fight
+Bean Valley Waters Boss
+Bean Valley Boss Room Pipe
+Bean Valley Beanstalk Room Pipe
+Empty
+Empty
+Empty
+Reveal Bean Valley Beanstalk
+Booster Pass Bush Item
+Empty
+Empty
+Empty
+Booster Pass Exit To Secret
+Booster Pass Secret Exit
+Booster Pass Secret Loader
+Booster Pass Secret Background
+Booster Pass Exit From Room 1 To Room 2
+Empty
+Tower First Staircase Chest
+Tower 8Bit Music
+Tower 8Bit Room Loader
+Empty
+Booster Tower Small Save Room Back Exit
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Booster Pass Apprentice Fight
+Snifit 4
+Snifit 5
+Snifit 6
+Snifit 7
+Snifit 8
+Abyss Fall Off Before First Boss
+Abyss Pre First Boss Bolt
+Abyss Pre First Boss Bolt
+Abyss Save Room With Chest Loader
+Abyss 1St Boss Fight
+Abyss Pre First Boss Bolt
+Forest Secret Entrance Loader
+Empty
+Empty
+Factory 4Th Room Loader
+Bean Valley Exit To World Map
+Factory 4Th Boss Fight
+Abyss Chest Before 1St Boss
+Factory 1St Room Before Fight Loader
+Factory 1St Boss
+Empty
+Factory 1St Room Exit To 2Nd Room
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Factory 4Th Room Green Button
+Factory 2Nd Room Loader
+Factory 2Nd Boss
+Ending Credits Sunset
+Factory 3Rd Room Background Npcs Bonk Conveyor
+Factory 3Rd Room Loader
+Ending Credits Keep
+Empty
+Empty
+Empty
+Empty
+Factory 3Rd Boss Fight
+Ending Credits Sunset Opener
+Ending Credits Keep Opener
+Blackjack Table
+Casino Slot Machine
+Blackjack Guy
+Casino Interior Loader
+Casino Slot Machine
+Casino Doorway Loader
+Casino Guard
+Casino Grate Guy
+Empty
+Empty
+Booster Pass Right Chest
+Factory 1St Room Loader After Fight
+Empty
+Toad Shop
+Empty
+Casino Subroutine
+Casino Grate Guy Await Button
+Empty
+Casino Exterior Loader
+Casino Grate Guy Random Prize Granter
+Casino Grate Guy Check If Sidequest Completed
+Bucket Warp Check Granter
+Seaside Exit To Beach
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Knife Guy Second Grant
+Empty
+Tower Knife Guy Consolation Prize
+Tower Knife Guy Check If Sidequest Completed
+Tower Knife Guy Minigame Business Logic
+Tower Knife Guy Minigame Business Logic Subroutine
+Tower Knife Guy Minigame Business Logic Subroutine
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Star Hill Entrance Loader
+Star Hill Marrymore Exit Sign
+Star Hill Progress Sign
+Star Hill Marrymore Exit Flower
+Star Hill Progress Flower
+Star Hill Exit To World Map
+Star Hill Entrance To 1St Room
+Casino Exit To World Map
+Bean Valley Exit To Casino
+Bean Valley Top Pipe Basement Loader
+Bean Valley North Pipe Directional Bit
+Bean Valley North Pipe Directional Bit
+Tower Apprentice Room Loader
+Forest Maze Room Before Trunk Room Loader
+Mushroom Way 3 Exit To World Map
+Mushroom Way Boss Fight
+Mushroom Way Boss Threatens You
+Empty
+Mushroom Way 3 Lower Quick Spiny
+Mushroom Way 3 Upper Quick Spiny
+Mushroom Way 3 Summon Spinys
+Mushroom Way 3 Loader
+Empty
+Async No Animation Frog Coin
+Async No Animation Flower
+Async No Animation 10 Coin
+Async No Animation 1 Coin
+Async No Animation Item
+Async No Animation Star Piece
+Async No Animation Mushroom
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Flower Star Fc Or Mushroom Chest
+Item Chest
+Coin Chest Multi Hit 1
+Heal Flash
+Exp Star Chest Background
+Ship Puzzle Mushroom
+Mimic Or Slot Chest
+Exp Star Levelup Screen
+Coin Chest Quick Hit
+You Missed
+Frog Coin Chest Multi Hit 1
+Freestanding Shuffled Frog Coin
+Frog Coin Chest Quick Hit
+Freestanding Shuffled Coin
+Juice Bar Card Upgrade
+Progressive Egg Upgrade
+Empty
+Grant Item From Chest
+Open Lands End If Gated By Star Pieces
+Multi Frog Coin Chest Single Hit
+Star Piece Grant
+Open Abyss If Star Piece Threshold Met
+Star Piece Chest Animation
+Empty
+Empty
+Juice Bar Card Npc Grant
+Progressive Egg Npc Grant
+Shuffle Fireworks Chest Grant
+Progressive Fireworks Chest Grant
+Star Piece Hunt End Game
+Exit Jumping Kids House
+Enter Mk Guest Room
+Exit Mk Guest Room
+Enter Mk Staircase
+Exit Mk Staircase
+Empty
+Empty
+Freestanding Beetlemania Grant
+Freestanding Juice Bar Card Grant
+Freestanding Progressive Egg Grant
+Freestanding Shuffle Fireworks Grant
+Freestanding Progressive Fireworks Grant
+Hill Progressive Egg
+Hill Progressive Card
+Change Music In Moleville Mines When Backtracking
+Empty
+Water State
+Goby Battle
+Empty
+Sewer Boss Fight
+Sewer Boss Room Trampoline
+Sewer Drain Water
+Mimic 1 Chest
+Sewer Pipe To Lands End
+Mimic 2 Chest
+Sewer Exit Trampoline
+Empty
+Empty
+Sewer Tutorial Note
+Moleville Toad In Mines
+Moleville Miners Song
+Pa Mole In Mines
+Resummon Enemies In Sewer
+Sewers Generic Loader
+Sewers Overworld Pipe
+Sewers 1St Water Room Pipe To Tutorial Room
+Sewers 1St Water Room Pipe To 3Rd Water Room
+Sewers 4 Rat Room Pipe To 1St Water Room
+1St Water Toom Pipe To Sewers 4 Rat Room
+3Rd Water Room Pipe To 1St Water Room
+Pipe To Boss
+Rose Way Main Room Platforms
+Rose Way Main Room Platforms Background
+Sewers Flippable Chest
+Freestanding Big Coin
+Rose Way Tutorial
+Rose Way Main Room Loader
+Empty
+Rose Way Swing Chest
+Rose Way Tossed Shyguys
+Rose Way Five Chests
+Old Chest Granter
+Resummon Rose Way Npcs
+Empty
+Minecart Room Loader
+Minecart Room Loader Background
+Item Behind Ship Upper Stairs Tile
+Pa Mole After Bambino Bomb
+Mines Long Track Room Lower Backward Exit
+Mines Check If Shyguy Moved
+Mines Area 2 Lower Backward Exit If Mines Cleared
+Sewers Tutorial Room Exit To Exterior
+Sewers Tutorial Room Pipe To First Water Room
+Active Minecart Mario Collision Check
+Active Minecart Mario Collision Check Properties
+Mines Final Save Room Loader
+Sewers 3Rd Water Room Pipe To Water Switch Room
+Sewers Stair Room Pipe To Third Water Room
+Sewers Four Rat Room Pipe To Stair Room
+Sewers Stair Room Pipe To Four Rat Room
+Sewers 3Rd Water Room Pipe To Stair Room
+Sewers Four Rat Room Pipe To Rat Line Room
+Sewers 3Rd Water Room Pipe To Water Switch Room
+Sewers Water Switch Room Pipe To 3Rd Water Room
+Sewers Rat Line Room Pipe To 3Rd Water Room
+Sewers Stair Room Pipe To Four Rat Room
+Sewers 3Rd Water Toom Pipe To Rat Line Room
+Sewers Four Rat Room Pipe To Stair Room
+Sewers Rat Line Room Pipe To Four Rat Room
+Sewers Water Switch Room Pipe To 3Rd Water Room
+Minecart Paid Lobby Room Loader
+Minecart Paid Lobby Trampoline To Exterior
+Mines First Room Loader
+Pa Mole In Deep Mines
+Moles In First Mines Room
+Minecart Tutorial
+Mount Minecart
+Fall To Minecart Room From Lobby
+Activate Post Mines Boss First Minecart Session Continued
+Activate Post Mines Boss First Minecart Session
+Mines Left Henchman
+Mines Right Henchman
+Mines Center Henchman
+Parked Minecart Mario Collision Check
+Parked Minecart Mario Collision Check Properties
+Mines Final Save Room Exit To Boss Room
+Shyguy Cart Pushes Mario Into Smaller Room
+Shyguy Cart Prize Grant
+Mines Trampoline
+Mines 1St Boss Fight
+Minecart Room Exit To Boss Room
+Empty
+Empty
+Empty
+Sea Pipe To Ship
+Ship Exit Trampoline
+Water Whirlpool
+Sleeping Dry Bones
+Ship Trampoline Puzzle Block
+Ship 3D Maze Room Loader
+Ship 3D Maze Forfeit Listener
+Ship Post 1St Boss Trampoline Back Up
+Ship 1St Boss
+Ship Coin Snake Puzzle Header Coin
+Ship Coin Snake Puzzle Tail Coin
+Ship Cannonball Puzzle Cannonball
+Ship Submit Password
+Ship Barrel Puzzle Button
+Ship Barrel Puzzle Barrel Movement
+Ship 3D Maze Hit Button
+Ship Troopa Puzzle Loader
+Ship Troopa Puzzle
+Ship Password Room Loader
+Ship Password Box Dialog
+Ship Generic Loader
+Ship Clone Room Loader
+Ship Clone Control
+Ship Clone Transform
+Cancel Star In Sea
+Ship Cannonball Puzzle Initiator Block
+Ship Password Box 1
+Ship Password Box 2
+Ship Password Box 3
+Ship Password Box 4
+Ship Password Box 5
+Ship Password Box 6
+Freestanding Frog Coin
+Ship Open Door To Room Behind Box Wall
+Ship Troopa Puzzle Hint
+Ship Trampoline Puzzle Hint
+Ship 3D Maze Hint
+Ship Coin Snake Hint
+Ship Cannonball Puzzle Hint
+Ship Barrel Puzzle Hint
+Dry Bones Fight
+Item Behind Ship Upper Stairs Granter
+Ship Entrance Open Right Door
+Ship Entrance Open Left Door
+Ship 1St Greaper Room Open Upper Door
+Ship 2Nd Greaper Room Open Upper Door
+Ship Puzzle Hub Room Open Upper Exit Door
+Ship Puzzle Hub Room Open Troopa Puzzle Door
+Ship Puzzle Hub Room Open Trampoline Puzzle Door
+Ship Puzzle Hub Room Open 3D Maze Door
+Ship Puzzle Hub Room Open Lower Exit Door
+Ship Puzzle Hub Room Open Cannonball Puzzle Door
+Ship Puzzle Hub Room Open Coin Snake Puzzle Door
+Ship Shop Room Open Upper Door
+Ship Shop Room Open Lower Door
+Ship Barrel Puzzle Room Open Exit Door
+Ship Password Room Open Door To Boss
+Ship Lower First Trampoline Room Open Exit Door
+Ship Lower First Drybones Room Open Upper Door
+Ship Lower First Drybones Room Open Lower Door
+Ship Lower Rat Stairway Open Upper Door
+Ship Lower Rat Stairway Open Lower Door
+Ship Outer Clone Room Open Left Door
+Ship Outer Clone Room Open Right Door
+Ship Room With Box Wall Open Right Door
+Ship Final Save Room Open Exit Door
+Ship 1St Water Room Open Upper Door
+Ship 1St Water Room Open Underwater Door
+Ship Upper Whirlpool Room Open Underwater Door
+Ship Zeostar Stairway Open Underwater Door
+Ship Big Water Room Open Upper Door
+Ship Big Water Room Open Hidden Door
+Ship Open Door To Final Boss Room
+Ship Open Door In Final Boss Room
+Ship Lower Henchman Room Loader
+Ship Upper Henchman Room Loader
+Ship Boss Room Loader
+Empty
+Ship Save Rooms Loader
+Sea Single Chest Room Loader
+Ship Interact With Boss After Winning
+Ship Upper Henchman Room Talk To Guard After Winning
+Ship Spawn Prize In Troopa Puzzle Room
+Ship Collect Trampoline Prize
+Ship Collect 3D Maze Prize
+Ship Collect Cannonball Prize
+Lower Ship Generic Loader
+Ship Bullet Collision
+Ship Bullet Collision Background
+Ship Collect Barrel Prize
+Sea Entrance Trampoline
+Sea Shop
+Sea Reverse Whirlpool To Lone Chest
+Outer Sea Whirlpool
+Ship Entrance Note
+Ship Boss Room Inner Left Henchman
+Ship Boss Room Inner Right Henchman
+Ship 1St Save Room Hint Note
+Ship 1St Greaper Room Hint Note
+Ship 2Nd Greaper Room Hint Note
+Ship Lower Henchman Room Loader Continued
+Ship Password Tutorial
+Ship Boss Room Drink
+Ship Spawn Hidden Chest
+Ship Hidden Chest
+Ship Shop
+Sewers 1St Water Room Exit To Rat Line Room
+Sewers Rat Line Room Exit To 1St Water Room
+Sewers Rat Line Room Exit To 3Rd Water Room
+Sewers 3Rd Water Room Exit To Rat Line Room
+Ship Boss Room Leftmost Henchman
+Mines Final Chest
+Set Oerlikon Pack
+Set Vomer Pack
+Empty
+Volcano Enter 1St Room
+Volcano 1St Room Trampoline
+Volcano 1St Room Loader
+Volcano 3 Lift Room Donut Lift
+Stumpet Room Loader
+Stumpet Eruption
+Stumpet Fight
+Volcano Generic Loader 1
+Jumping Fireballs
+Volcano 1St Boss Room Loader
+Volcano 1St Boss Fight
+Volcano 1St Boss Path Room Loader
+Volcano Generic Loader 2
+Volcano Enter Shop Area
+Corkpedite Collision
+Corkpedite Room Loader
+Corkpedite Animation
+Volcano Trampoline To 2Nd Boss
+Volcano 2Nd Boss Path Room Loader
+Volcano 3Rd Boss Path Room Loader
+Volcano Small Boss Path Room Loader
+Volcano 5Th Boss Path Room Loader
+Volcano Final Boss Path Room Loader
+Volcano Final Trampoline Room Loader
+Volcano Chase Seqeunce
+Volcano 1St Boss Screen Tint
+Empty
+Keep Door Reward Chest
+Keep 6 Door Lobby Exit To Prev Room
+Keep All Door Paths Exit To Reward Room
+Empty
+Dr Topper Quiz
+Keep Enter Ball Solitaire Room
+Keep Barrel Count Loader
+Keep Barrel Count Loader Contd
+Keep Respawn In Lobby Upon Failure
+Keep Button Game Loader
+Keep Ball Solitaire Loader
+Keep Initiate Coin Game
+Keep Coin Game Chest
+Keep Exit Completed Doors To Boss Antechamber
+Keep Button Game Press Button
+Keep Ball Solitaire Kick Ball
+Keep Logic Game Loader
+Keep Logic Game Finalize Answer
+Keep Logic Game Boo
+Keep Logic Game Goo
+Keep Logic Game Bones
+Keep Logic Game Kipp
+Volcano Bridge Donut Lift
+Volcano Bridge Donut Lift No Falling
+Keep Get Crushed By Huge Thwomp
+Keep Thwomp Room Loader
+Keep Thwomp Room Background
+Keep Set Door Order
+Keep 6 Door Lobby Loader
+Keep Open Door 1
+Keep Open Door 2
+Keep Open Door 3
+Keep Open Door 4
+Keep Open Door 5
+Keep Open Door 6
+Ship Trampoline Prize Packet Grant
+Ship Troopa Prize Packet Grant
+Ship Upper Stairway Item Packet Grant
+Ship 3D Maze Spawn Prize
+Ship Cannonball Puzzle Spawn Prize
+Ship Boss Room Periscope
+Ship Barrel Puzzle Spawn Prize
+Keep Lava Patform Room Chest Camera
+Volcano 1St Save Room Lower Chest
+Volcano 1St Save Room Upper Chest
+Super Jump Compare For 1St Prize
+Super Jump Compare For 2Nd Prize
+Midas Cave Beetlemania Granter
+Midas Cave Progressive Card Granter
+Midas Cave Progressive Egg Granter
+Midas Cave Single Firework Granter
+Midas Cave Progressive Firework Granter
+Restart Music After Star Piece Sequence
+Coin Chest Multi Hit 2
+Coin Chest Multi Hit 3
+Coin Chest Multi Hit 4
+Coin Chest Multi Hit 5
+Coin Chest Multi Hit 6
+Frog Coin Chest Multi Hit 2
+Frog Coin Chest Multi Hit 3
+Frog Coin Chest Multi Hit 4
+Frog Coin Chest Multi Hit 5
+Frog Coin Chest Multi Hit 6
+Ship Password Correctness Check
+Empty
+Mines Shyguy Collide With Boxes
+Rose Way Main Room 2Nd Freestanding Item
+Tower Stacked Chests On Top Floor
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Kingdom Hallway Chest
+Midas River Trampoline
+Midas River Score Submission
+Midas River Waterfall Loader
+Midas River Tunnel Warp Check
+Midas River Top Tunnel Loader
+Midas River Mid Left Or Mid Right Loader
+Midas River Bottom Left Loader
+Midas River Bottom Right Loader
+Midas River Base Area Loader
+Midas River Frog Coin
+Midas River Coin
+Midas River Waterfall Listen For Button Inputs
+Midas Small Mario Coord Calc
+Midas River Top Tunnel Animation And Exit
+Midas River Mid Left Tunnel Animation And Exit
+Midas River Mid Right Tunnel Animation And Exit
+Midas River Bottom Left Tunnel Animation And Exit
+Midas River Bottom Right Tunnel Animation And Exit
+Midas River Mid Right Tunnel Animation And Exit Background
+Midas River Bottom Left Tunnel Item Granter
+Midas River Bottom Right Tunnel Background
+Booster Hill 1St Pass Loader
+Booster Hill 1St Pass Snifit Jumps
+Booster Hill Barrel Interaction
+Booster Hill End
+Booster Hill Barrel Summoner
+Booster Hill Henchman Interaction
+Booster Hill Unknown
+Booster Hill Get Flower
+Booster Hill 2Nd Pass Loader
+Booster Hill Return
+Empty
+Booster Hill Exit To World Map
+Booster Hill 2Nd Pass Background
+Booster Hill Flower Pickup
+Midas River Bottom Right Tunnel Item Granter
+Nimbus Castle Egg Room Exit To Previous Room
+Nimbus Castle Egg Room Exit To Next Room
+Chest Differentiator Npc 3 Or Other
+Chest Differentiator Npc 1 2 3 Or Other
+Chest Differentiator Npc 2 3 4 5 6 Or Other
+Chest Differentiator Npc 4 Or Other
+Chest Differentiator Npc 12 13 Or Other Camera A
+Chest Differentiator Npc 12 13 Or Other Camera B
+Chest Differentiator Npc 9 Or Other Camera A
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Bank 20 Return Event
+Nimbus Fade In Async
+Nimbus Inn Lobby Loader From Save Point
+Set 70Ae To 70A8
+Signal Ring Activator
+Empty
+Rose Town Chimney
+Empty
+Empty
+Get Item From Chapel Henchman 3
+Get Item From Chapel Henchman 1
+Get Item From Chapel Henchman 2
+Empty
+Yoster Empty Mailbox
+Empty
+Mushroom Derby Prize Calculator
+Mushroom Derby Goal Tile
+Mushroom Derby Yoshi Autoplay
+Mushroom Kingdom Raz Raini Note
+Empty
+Pipe Vault Triple Chest Room Loader
+Pipe Vault Pipe To Triple Chest Room
+Chest Differentiator Npc 1 Or Other Camera A
+Coin Differentiator Npc 8 Through 15
+Lands End Purchasable Chest
+Keep Invisible Floor Chests
+Keep Invisible Floor Coins
+Chest Differentiator Npc 2 Or Other
+Chest Differentiator Npc 1 Or Other Camera B
+Chest Differentiator Npc 11 Or Other
+Belome Fortune Prize Chest
+Climb Up Valley Beanstalk Into Vine Clouds
+Nimbus Inn Loader From Door
+Nimbus Inn Bedroom Loader
+Nimbus Exterior Open Inn Door
+Nimbus Exterior Open Shop Door
+Nimbus Exterior Open Garros Door
+Nimbus Exterior Open South House Door
+Nimbus Exterior Open Northeast House Door
+Empty
+Nimbus Shop Loader
+Empty
+Nimbus Shop Chest Camera Shift
+Empty
+Nimbus Exterior Blue Guy In Front Of Castle Entrance
+Nimbus Exterior Blue Guy Near Shop
+Nimbus Exterior Blue Guy Near Invisible Path
+Nimbus Exterior Blue Guy Near Garros House
+Nimbus Exterior Woman Near Invisible Path
+Nimbus Exterior Woman Near Inn
+Nimbus Exterior Woman Near Entrance
+Nimbus Exterior Woman In Front Of Castle Entrance
+Nimbus Bird Guard
+Temple Backdoor Locked
+Nimbus Outer Guard 2
+Empty
+Statue Game
+Empty
+Nimbus Exterior Occupied Loader
+Nimbus Shop
+Nimbus Innkeeper
+Nimbus Exterior Exit To Vines
+Nimbus Exterior Guard Near Entrance
+Nimbus Exterior Guard Near Castle
+Nimbus Occupied Northeast House Right Guy
+Nimbus Occupied Northeast House Left Woman
+Nimbus Occupied Northeast House Right Woman
+Nimbus Northeast House Croco
+Nimbus Occupied Northeast House Left Guard
+Nimbus South House Guy
+Nimbus South House Woman
+Nimbus Exterior Southernmost Blue Guy
+Empty
+Room Service Menu
+Empty
+Nimbus Deep Castle Note
+Nimbus Repopulate Castle Upon Liberation
+Bathrobe
+Nimbus Castle Left Fan Room Exit To Bridge Room
+Nimbus Castle Left Shaman Room Exit To 5 Door Room
+Nimbus Castle Right Shaman Room Exit To 5 Door Room
+Nimbus Castle Right Shaman Room Exit To Two Level Chest Room
+Nimbus Castle Note Hallway Exit To Two Level Chest Room
+Nimbus Castle Antechamber Left Guard
+Nimbus Castle Antechamber Right Guard
+Nimbus Castle Solo Bird Statue Room Exit To 5 Door Room
+Nimbus Castle Main Hall Loader
+Nimbus Castle First Post Throne Hall Exit To Throne Room
+Nimbus Castle Back Exit Fall
+Nimbus Liberated Town Square Loader
+Nimbus Castle Two Level Chest Room Lower Chest
+Nimbus Castle Bridge Room Lower Npc
+Nimbus Castle Two Level Chest Room Female Npc
+Royal Bus Platform Loader
+Royal Bus Attendant
+Nimbus Castle Egg Room Loader
+Nimbus Castle Egg Post Defeat
+Birdy Becomes Platform
+Empty
+Vine Instructions
+Empty
+Nimbus Get Crocos Item
+Marrymore Shower
+Marrymore Shower Door
+Marrymore Service Bell
+Link
+Nimbus Castle Main Hall Exit To Exterior
+Garros House Exit
+Nimbus Lower House Exit To Exterior
+Nimbus Inn Exit To Exterior
+Nimbus Shop Exit
+Nimbus Croco House Exit
+Nimbus Castle West Lower Hall Loader
+Nimbus Castle West Lower Hall Pinwheel Animations
+Nimbus Castle West Lower Hall Pinwheel
+Nimbus Castle West Lower Hall Mario Blown By Fan Bit
+Nimbus Castle West Lower Hall Mario Blown By Fan Bit
+Nimbus Castle Left Shaman Room Loader
+Nimbus Castle Right Shaman Room Loader
+Nimbus Castle Two Level Chest Room Loader
+Nimbus Castle Occupied 5 Door Room Loader
+Jawful Battle
+Activate Jawful Extended Hitboxes
+Nimbus Castle West Staircase Loader
+Open Castlekey1 Door
+Empty
+Empty
+Nimbus Castle Bridge Room Loader
+Nimbus Castle Bridge Room Npc Animations
+Nimbus Castle Angled Plant Room Npc Animations
+Nimbus Castle Angled Plant Room Loader
+Nimbus Castle Angled Plant Room Right Fan Gust Path
+Nimbus Castle Angled Plant Room Right Fan Gust
+Nimbus Castle Two Level Chest Room Fan Gust Path
+Nimbus Castle Angled Plant Room Right Fan Battle
+Nimbus Castle Right Red Cellar Woman
+Nimbus Castle Outer Cellar Blue Gift Guy
+Nimbus Castle Rightmost Outer Cellar Guy
+Nimbus Castle Left Cellar Woman
+Nimbus Castle Outer Cellar Gift Guard
+Nimbus Castle Outer Cellar Loader
+Nimbus Castle Note Hallway Loader
+Nimbus Castle Antechamber Loader
+Nimbus Castle Stairway Guard
+Empty
+Nimbus Castle Occupied Throne Room Loader
+Nimbus Castle Occupied 4 Path Room Loader
+Empty
+Nimbus Castle Final Chest Hallway Loader
+Nimbus Castle Final Chest Hallway Platform
+Nimbus Castle Final Chest Hallway Exit To Final Hallway
+Nimbus Castle Final Hallway Apply Mod
+Nimbus Castle Final Hallway Loader
+Nimbus Castle Back Exit Loader
+Empty
+Nimbus Castle Throne Room Exit To Antechamber
+Nimbus Castle Liberated Throne Room Loader
+Nimbus Castle Antechamber Exit To Note Hallway
+Nimbus Castle Antechamber Exit To Throne Room
+Nimbus Castle Right Shaman Hallway Liberated Npc
+Nimbus Exterior Shy Away
+Nimbus Back Exit Initiate Falling Sequence
+Hot Springs Trampoline To Mezzanine
+Nimbus Hot Spring Guards
+Empty
+Nimbus Mezzanine Trampoline To Town Square
+Nimbus Mezzanine Fall To Hot Springs
+Nimbus Land Hot Springs Lobby Exit
+Hot Springs Exit To Lobby
+Hot Springs Lobby Loader
+Hot Springs Fall To Volcano
+Hot Springs Note
+Hot Springs Loader
+King Nimbus
+Queen Nimbus
+Nimbus Castle Left Shaman Hallway Liberated Npc
+Nimbus Mezzanine Trampoline To World Map
+Nimbus Mezzanine Loader
+Nimbus Castle Liberated 5 Door Room Loader
+Nimbus Back Exit Mario Fall Animation
+Nimbus First Fall Room Load 2Nd Room
+Bean Valley Upper Chest Room Fall To Lower Chest Room
+Bean Valley Lower Chest Room Fall To Hot Springs Mezzanine
+Nimbus Castle Angled Plant Room Exit To 4 Path Room
+Nimbus Castle Main Hall Exit To 4 Way Path
+Nimbus Castle Liberated Bridge Room Loader
+Bean Valley 1St Vine Room Loader
+Samus
+Hot Springs Water
+Hot Springs Eject From Water
+Hot Springs Reset Ejection Timer
+Unused Nimbus Dialog
+Empty
+Royal Bus Platform Exit
+Ball Solitaire Set Puzzle
+Bean Valley 1St Vine Room Exit To 2Nd Vine Room
+Bean Valley 2Nd Vine Room Exit To East Vine Room
+Bean Valley East Vine Room Exit To Nimbus Mezzanine
+Bean Valley Upper Chest Room Fall To West Vine Room
+Bean Valley East Vine Room Exit To 2Nd Vine Room
+Bean Valley 2Nd Vine Room Exit To 1St Vine Room
+Bean Valley 1St Vine Room Exit To Ground Level
+Bean Valley West Vine Room Exit To Upper Chest Room
+Nimbus Mezzanine Fall To East Vine Room
+Bean Valley West Vine Room Summon Platform
+Bean Valley West Vine Room Platform
+Bean Valley 2Nd Vine Room Exit To West Vine Room
+Open Factory Final Boss Room
+Factory Final Boss Room Loader
+Factory Smelter Animation
+Factory Final Boss Fight
+Empty
+Empty
+Ending Credits Room Loader
+Ending Credits Orange Star
+Ending Credits Purple Star
+Ending Credits Indigo Star
+Ending Credits Red Star
+Ending Credits Yellow Star
+Ending Credits Green Star
+Ending Credits Coronation Npcs
+Ending Credits Coronation Loader
+Ending Credits Race Npcs
+Ending Credits Race Loader
+Ending Credits Race Audience
+Marrymore Sanctuary Begin Wedding Gear Sequence
+Empty
+Nimbus Inner Cellar Loader
+Empty
+Nimbus Inn Guest
+Mushroom Kingdom Liberated Loader
+Empty
+Empty
+Empty
+World Map Mushroom Way
+Lands End First Room Loader
+Forced Tower Boss 1 Fight
+Empty
+Rose Town Sign Item Granter
+Yoster Isle Goalpost Item Granter
+Yoster Isle Loader
+Nimbus Final Chest Room Platform Bit
+Empty
+Grant Item Standard Sound
+Empty
+Empty
+Mushroom Kingdom Shop Cellar Npc
+Mushroom Kingdom Shop Cellar Mod
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Keep Anti Softlock Trampoline
+Empty
+Starter Debug Items
+World Map Marios Pad
+Booster Hill Star Piece Signal
+World Map Mushroom Kingdom
+World Map Bandits Way
+World Map Kero Sewers
+World Map Midas River
+World Map Tadpole Pond
+World Map Pipe Vault
+World Map Rose Way
+World Map Rose Town
+World Map Forest Maze
+World Map Yoster Isle
+World Map Moleville
+World Map Booster Pass
+World Map Booster Tower
+World Map Marrymore
+World Map Star Hill
+World Map Seaside Town
+World Map Sea
+World Map Ship
+World Map Lands End
+World Map Montro Town
+World Map Bean Valley
+World Map Nimbus Land
+World Map Barrel Volcano
+World Map Vista Hill
+World Map Booster Hill
+World Map Bowsers Keep
+World Map Abyss
+World Map Grate Guys Casino
+Nimbus Castle Two Chest Room Guard
+Nimbus Castle 5 Door Room Left Guard
+Nimbus Castle 5 Door Room Right Guard
+Nimbus Castle Bridge Room Guard
+Nimbus Unused Dialog
+Nimbus Castlle 4 Way Path Left Guard
+Nimbus Castle Two Chest Room Upper Chest
+Casino Trampoline
+Nimbus Castle Bridge Room Chest
+Sea Chests
+Chest Differentiator Npc 1 Or Other
+Chest Differentiator Npc 3 4 Or Other
+Inner Factory Exit Trampoline
+Ball Solitaire Set Puzzle Configuration Value
+End Game
+End Game Container From Alt Win Conditions
+Marios Pad Star Piece Signal
+Mushroom Way Star Piece Signal
+Mushroom Kingdom Star Piece Signal
+Bandits Way Star Piece Signal
+Sewers Star Piece Signal
+Midas River Star Piece Signal
+Tadpole Pond Star Piece Signal
+Rose Way Star Piece Signal
+Rose Town Star Piece Signal
+Forest Maze Star Piece Signal
+Moleville Star Piece Signal
+Booster Pass Star Piece Signal
+Booster Tower Star Piece Signal
+Pipe Vault Star Piece Signal
+Yoster Isle Star Piece Signal
+Marrymore Star Piece Signal
+Star Hill Star Piece Signal
+Seaside Town Star Piece Signal
+Sea Star Piece Signal
+Ship Star Piece Signal
+Lands End Star Piece Signal
+Temple Star Piece Signal
+Monstro Star Piece Signal
+Casino Star Piece Signal
+Bean Valley Star Piece Signal
+Nimbus Star Piece Signal
+Volcano Star Piece Signal
+Keep Star Piece Signal
+Factory Star Piece Signal
+Inner Factory Star Piece Signal
+Rose Way Back Entrance Loader
+Forest Maze Entrance Loader
+Booster Pass Back Entrance Loader
+Sea Save Room Loader
+Ship First Save Room Loader
+Temple Set Signal Ring Directional Bit
+Volcano Save Room Loader
+Keep 1St Save Room Loader
+Factory Save Room Loaders
+Temple Back Entrance
+Nimbus Castle Exit Hallway Save Room Loader
+Nimbus Castlle 4 Way Path Right Guard
+Lands End Purchasable Chest 2 Subroutine
+Marrymore Gear Preloader
+Get Shoes
+Get Brooch
+Get Ring
+Get Crown
+Freestanding Shoes
+Freestanding Brooch
+Freestanding Ring
+Freestanding Crown
+River Shoes
+River Brooch
+River Ring
+River Crown
+Shoes Chest
+Brooch Chest
+Ring Chest
+Crown Chest
+Empty
+Empty
+Empty
+Post Final Boss Init
+Star Piece Credits Init
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reservedclone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved
+Clone Reserved</EventLabels>
+    <ActionLabels>Do Nothing
+Fix F Coord For Clones
+Flash After Running Away Iframes
+Sequence Looping On
+Empty
+Ship Shop Shaman
+Empty
+Hit Treasure Chest Contents Depleted
+Hit Treasure Chest Contents Remaining
+Sewer Boss Room Trampoline
+Fall On Trampoline
+Go Down Pipe
+Empty
+Spinning Static Coin Proxy
+Floating Chest
+Do Nothing
+Infinite Wait Loop
+Empty
+Empty
+Nimbus Note
+Empty
+Stand Still And Move Random Directions
+Slow Repeated Jumping
+Fast Repeated Jumping
+Empty
+Empty
+Empty
+Empty
+Empty
+Post Throne First Bird
+Post Throne Birds 3 To 7
+Empty
+First Wiggler In Front Of Stump
+First Wiggler Behind Stump
+Inner Forst Wiggler Southwest
+Inner Forst Wiggler Northeast
+Wiggler Going To Stump To Sleep
+Midas River 3Rd Tunnel On Left Goombette
+Midas River 3Rd Tunnel On Left Lakitu
+Midas River 3Rd Tunnel On Left Tiny Fish
+Midas River 3Rd Tunnel On Left Water Droplets
+Midas River 3Rd Tunnel On Left Left Goomba
+Midas River 3Rd Tunnel On Left Right Goomba
+Midas River 3Rd Tunnel On Left Item Path
+Midas River Bottom Right Tunnel Chow
+Midas River Bottom Right Tunnel Item Path
+Midas Waterfall Splash
+Sky Bridge Bullet Bill
+Sewers 1St Water Room Rat
+Sewers 3Rd Water Room Rats
+Sewers 3Rd Water Room Rats
+Empty
+Empty
+Empty
+Empty
+Box Shadow Vram Priority 0
+Sewer Water Drain
+Sewer Fish
+Sewer Stair Most Rats
+Sewer Stair Upper Right Rat Pacing And Bowsers Keep Game Molds
+Sewer Water Switch Boos
+Sewer Rats In A Line
+Sewer Rat Near Progression Pipe
+Explosion With Sound
+Kingdom Fast Kid
+Booster Hill Prize 0
+Booster Hill Prize 1
+Booster Hill Prize 2
+Booster Hill Prize 3
+Booster Hill Prize 4
+Booster Hill Prize 5
+Booster Hill Prize 6
+Booster Hill Prize 7
+Booster Hill Prize 8
+Booster Hill Prize 9
+Booster Hill Prize 10
+Booster Hill Prize 11
+Booster Hill Prize 12
+Invisible Flag 1 Position
+Invisible Flag 2 Position
+Invisible Flag 3 Position
+Melody Bay Tutorial
+Booster Hill Prize 13
+Booster Hill Prize 14
+Booster Hill Prize 15
+Booster Hill Prize Standing 1
+Booster Hill Prize Standing 2
+Shop Tadpole
+Shop Tadpole
+Booster Hill Prize Standing 3
+Booster Hill Prize Standing 4
+Bridge Tadpole
+Bridge Tadpole
+Booster Hill Prize Standing 5
+Booster Hill Prize Standing 6
+Player Game Start
+Booster Hill Prize Standing 7
+Booster Hill Prize Standing 8
+Walk Random Directions No Solidity Change
+Looped Jumping
+Booster Hill Prize Standing 9
+Mk Throne Henchman Bounce
+Mk Throne Henchman Bounce
+Mk Throne Henchman Bounce Boss Fight Start
+Base Southwest Mk Henchman Movement
+Base Northwest Mk Henchman Movement
+Base Northeast Mk Henchman Movement
+Base Southeast Mk Henchman Movement
+Mk Hall Repeating Henchmen
+Mk Hall Repeating Henchmen Starting
+Mk Hall Repeating Henchmen
+Mk Hall Repeating Henchmen Starting
+Mk Hall Toad
+Henchman Bouncing In Place
+Booster Hill Prize Standing 10
+Mk Throne Antechamber Henchman
+Mk Throne Antechamber Henchman
+Pipe Vault Chompweed Platform
+Pipe Vault Chompweed
+Slow Sequence Loop
+Embedded Routine
+Mk Branch Hallway Spinning Toad
+Mk Branch Hallway Henchman
+Mk Branch Hallway Henchman
+Mk Branch Hallway Henchman
+Mk Branch Hallway Henchman
+Cannon Geckit
+Bag Appears Briefly Then Poofs
+Walk Random Directions
+Wallet Toad Occupied
+Henchman Terrorizing East Guard
+East Guard Occupied
+Henchman Bonking House
+Mk Occupied Exterior Repeating Henchmen
+Henchman Terrorizing Wallet Guy
+Henchman Impressing Jump Lady
+Mk Occupied Exterior Repeating Henchmen
+Booster Hill Prize Standing 11
+Chancellor
+Booster Hill Prize Standing 12
+Booster Hill Prize Standing 13
+Booster Hill Prize Standing 14
+Booster Hill Prize Standing 15
+Booster Hill Prize Standing 0
+Frogfucius
+Empty
+Empty
+Seaside Henchman
+Song Scroll
+Empty
+Empty
+Empty
+Empty
+Empty
+Tadpole Pond Tadpole Default
+Empty
+Empty
+Melody Bay Tadpoles
+Empty
+Empty
+Sequence Looping On
+Sequence Looping Off
+Boss In Bandits Way 3
+Midas Small Coin
+Hide
+Fall Off Spinning Flower
+Empty
+Spawn At 7016 701A Calculated
+Bandits Way 3 Chow
+Bandits Way Goomba
+Midas Barrels Water Splash
+Minigame Coin Spins
+Ending Cutscene Sparkles
+Midas River Waterfall Interaction
+Midas Upper Tunnel Boos
+Midas Upper Tunnel Troopa
+Tower Parachute
+Forest Arrow
+Forest Arrow
+Empty
+Forest 1St Underground Rat
+Fast Amanita
+Empty
+Empty
+Chest Slot Machine Roller
+Chest Slot Machine Roller
+Chest Slot Machine Roller
+Abyss Bolt
+Abyss Bolt
+Abyss Bolt
+Abyss Bolt
+Abyss Bolt
+Empty
+Tower Final Chomp
+Bean Valley Chomp
+Bomb Explosion Faster
+Spikey Bandits Way
+Empty
+Empty
+Coin Snake Head
+Coin Snake Tail
+Empty
+Empty
+Ship Password Boss Reveal
+Sequence 2 Fall
+Casino Slot Machine Roller
+Casino Slot Machine Roller
+Casino Slot Machine Roller
+Raz Ending
+Raini Ending
+Goomba Thumpin
+Green Yoshi
+Green Yoshi
+Green Yoshi
+Sanctuary Camera
+Sanctuary Camera
+Vines 1St Room Vertical Flying Bird
+Green Yoshi
+Green Yoshi
+Green Yoshi
+Green Yoshi
+Green Yoshi
+Empty
+Big Toad Sleeping
+Ending Cutscene Effect
+Ending Cutscene Effect
+Ending Cutscene Effect
+Ending Cutscene Effect
+Ending Cutscene Effect
+Ending Cutscene Effect
+Ride Yoshi
+Ride Yoshi
+Ride Yoshi
+Ride Yoshi
+Ride Yoshi
+Ride Yoshi
+Ride Yoshi
+Ride Yoshi
+Cheering Nimbites
+Ending Credits Croco
+Smithy Component
+Smithy Component
+Smithy Component
+Empty
+Empty
+Nimbus 5 Exit Hallway Fake Bird Statues Activate
+Ending Cutscene Effect
+Empty
+Ending Cutscene Effect
+Water Blast Sfx
+Drill Bit
+Ending Cutscene Effect
+Ending Cutscene Effect
+Ending Cutscene Effect
+Ending Cutscene Effect
+Ending Cutscene Effect
+Nimbus Shy Guy Left
+Nimbus Pinwheel Left
+Nimbus Shy Guy Right
+Nimbus Pinwheel Right
+Empty
+Nimbus Final Hallway Boss
+Empty
+Fix F Coord
+Empty
+Empty
+Sea Shore Bloober
+Bloober Tail
+Bloober Tail
+Bloober Tail
+Ship Bloober
+Empty
+Volcano Dry Bones
+Volcano Dry Bones Collapse
+Sewer 4 Rat Room Boos
+Volcano Bridge Fireball
+Volcano Long Room Fireball
+Volcano Homing Fireball
+Keep Topper Game Platform
+Keep Barrel Counting Optional Barrel
+Keep Button Game Button
+Keep Topper Game Set Button Or Ball State
+Keep Ball Solitaire Ball
+Empty
+Iframe Blink
+Keep Bullet Bill
+Keep Thwomps
+Volcano Bridge Donut Lift
+Mario Dismount Yoshi
+Mario Dismount Yoshi
+Mines Final Boss Room Henchman
+Mines Final Boss Room Henchman
+Mines Final Boss Room Henchman
+Mines Final Boss Room Henchman Base
+Empty
+Empty
+Empty
+Empty
+Midas River 3Rd Tunnel On Left Item Path Base
+Mines Final Boss Room Tiny Henchman Explode
+Marrymore Top Floor Bellhop Move If Working
+Marrymore Bellhop While Player Working
+Mines Final Boss Room Tiny Henchman Explode Base
+Bomb Explosion
+Outer Sea Whirlpool
+Outer Sea Bubble
+Whirlpool
+Whirlpool
+Ship First Whirlpool Room Fish
+Ship Early Greapers
+Ship 1St Collapsed Dry Bones
+Ship Troopa Puzzle Troopa
+Ship Troopa Puzzle Cannonball
+Ship Troopa Puzzle Button
+Ship Trampoline Puzzle Trampoline
+Ship Trampoline Puzzle Button
+Ship Trampoline Puzzle Block Freeze
+Coin Snake Head Base
+Coin Snake Tail Base
+Ship Cannonball Puzzle Cannonball
+Bellhop Set Position
+Bellhop Face Player
+Marrymore Innkeeper Overstay Makes You Work
+Marrymore Innkeeper Overstay Take Coins
+Invisible Item Shift 1
+Invisible Item Shift 2
+Invisible Item Shift 3
+Marrymore Elderly Guest Leaves
+Empty
+Empty
+Marrymore Head Chef
+Marrymore 2Nd Chef
+Empty
+Midas River 3Rd Tunnel On Left Item Path
+Empty
+Empty
+Ship Barrel Puzzle Button
+Various Ship Objects
+Ship Trampoline Puzzle Scroll
+Ship Trampoline Puzzle Cannonball
+Ship Puzzle Hint Vanish
+Ship 1St Stairway Rats
+Ship 2Nd Stairway Rats
+Ship 1 Chest Room Rats
+Ship Puzzle Area Greapers
+Ship 1St Water Room Fish
+Ship Puzzle Area Dry Bones
+Empty
+Ship Boss
+Static Rat
+Ship Bullet
+Oerlikons And 3D Maze
+Empty
+Empty
+Lands End Flower Tower Bees
+Player In Forest 1St Trunk
+Player In Forest Trunk Room Rightmost Trunk
+Player In Forest Trunk Room Lowest Trunk
+Player In Forest Trunk Room Middle Right Trunk
+Player In Forest Trunk Room Middle Left Trunk
+Player In Forest Trunk Room Upper Left Trunk
+Player In Forest Trunk Room Upper Right Trunk
+Player In Forest Trunk Room Wiggler Trunk
+Sky Bridge Hit By Bullet Bill
+Booster Hill Leftover Flowers
+Booster Hill Leftover Flowers Picked Up
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Sanctuary Henchman
+Sanctuary Henchman
+Sanctuary Henchman
+Empty
+Turn Randomly In Place
+Move 6 Diagonal
+Marrymore Liberated Exterior Photo Mom
+Marrymore Liberated Exterior Photo Kid
+Marrymore Liberated Exterior Approach Chapel
+Empty
+Empty
+Empty
+Player Look Down Shake Head
+Look Up At Tower Seesaw Chest
+Tower Shoot Bullet Bills
+Jumping Tower Spookum
+Empty
+Tower Bullet Bill Appears
+Empty
+Camera Shake
+Sleeping Wiggler Camera
+Empty
+Empty
+Player Reset Properties And Solidity
+Empty
+Player Tumbles Down Booster Pass
+Block Shadow
+Jumping Falling State In Factory
+Sequence Looping On
+Sequence Looping Off
+Forest Trunk Area Underground Amanita
+Forest Trunk Area Underground Amanita
+Forest Trunk Area Underground Amanita
+Forest Maze Area Freemoving Amanita
+Star Hill 3Rd Room Muku
+Star Hill 3Rd Room Muku
+Jump On Save Block
+Empty
+Forest Maze Area Bee
+Forest Maze Area Bee
+Forest Maze Area Bee
+Empty
+Player Enter Angled Jumping Pose
+Player Enter Angled Jumping Pose
+Goomba Thumpin Left Pipe
+Goomba Thumpin Top Pipe
+Goomba Thumpin Right Pipe
+Goomba Thumpin Bottom Pipe
+Goomba Thumpin Bonk
+Goomba Thumpin Bonk
+Goomba Thumpin Bonk
+Goomba Thumpin Bonk
+Goomba Thumpin Spiny
+Goomba Thumpin Spiny
+Goomba Thumpin Spiny
+Goomba Thumpin Spiny
+Yoshi Finish Race
+Empty
+Yoshi Finish Race
+Yoshi Race Animation
+Sewer Four Rats
+Rose Way Transport Platform Subroutine
+Rose Way Transport Platform
+Floating Chest
+Empty
+Rose Way Swinging Platform 1
+Rose Way Swinging Platform 2
+Rose Way Lakitu
+Ship 2Nd Graper Room Dry Bones
+Mines Quad Bomb Squad
+Rose Way Crook
+Rose Way Swinging Platform Shy Guy
+Ship Hidden Chest Block Trigger
+Rose Way Starslap
+Summon Extra Sparkles
+Looping Single Sparkle
+Factory Four Screw Room Glum Reaper
+Factory Four Screw Room Glum Reaper
+Factory Four Screw Room Glum Reaper
+Factory Four Screw Room Ameboid
+Factory Four Screw Room Ameboid
+Factory Four Screw Room Ameboid
+Empty
+Empty
+Factory Switch Room Ameboid Init
+Factory Switch Room Ameboid
+Nimbus Post Throne Bird
+Factory Switch Room Ameboid
+Empty
+Factory Switch Room Ameboid
+Empty
+Factory Switch Room Ameboid
+Midas River Chow
+Pause Script For 2 Frames
+Midas River Tunnel Leave
+Bandits Way 5 Troopa Chase
+Empty
+Bandits Way 5 Loader Boss
+Collect Midas Coin
+Bandits Way 2 Chest Room Chest
+Bandits Way 5 Goomba
+Bandits Way 5 Troopa Init
+Bandits Way 2 Chest Room Chest
+Chow Unknown
+Bandits Way Spiny
+Bandits Way 1St Platforms Static
+Bandits Way 1St Platforms Swing
+Bandits Way Chest Platforms On Mount
+Empty
+Factory Switch Room Ameboid
+Forest Player Falls To Underground
+Forest Obtainable Mushroom
+Empty
+Player Shocked When Wiggler Wakes Up
+Forest Boss Room Henchmen Static
+Forest Boss Room Henchmen Jump
+Forest Maze Area Recruitable Character
+Forest Maze Area Decoy Mushroom
+Forest Decoy Mushroom
+Mushroom Way 3 Recruitable Character
+Mushroom Way Boss
+Empty
+Fast Spiny
+Fast Spiny
+Mushroom Derby Referee
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Player When Cookie Used
+Empty
+Slow Sequence Loop
+Empty
+Sparkle Line Looped
+Pipe Vault Fireball
+Pipe Vault Fireball
+Empty
+Pipe Vault 3 Chest Room Coin
+Empty
+Empty
+Empty
+Mario During Songs
+Empty
+Tower Boss 1 Hides Behind Doorway In Lobby 1
+Tower Boss 1 Hides Behind Doorway In Lobby 2
+Tower Boss Peeking Behind Entrance
+Empty
+Tower Beetle
+Tower Snifit Viewing Portraits
+Tower Snifit Left Visitor
+Tower Snifit Right Visitor
+Spinning Card
+Empty
+Seaside Boss Transform
+Mushroom Way 1 Goomba
+Mushroom Way 1 Goomba
+Mushroom Way 1 Goomba
+Mushroom Way 1 Goomba
+Mushroom Way 1 Troopa
+Mushroom Way 1 Troopa
+Mushroom Way Guard Goomba
+Mushroom Way 2 Recruitable Character
+Mushroom Way Spinning Goomba
+Left Goomba In Mushroom Way 2
+Right Goomba In Mushroom Way 2
+Mushroom Way 2 Troopa
+Jumping Goomba Mushroom Way 2
+Middle Goomba In Mushroom Way 2
+Empty
+Empty
+Empty
+Sequence 5 Static
+Empty
+Keep Crossing Terra Cottas
+Keep Crossing Terra Cottas
+Keep Crossing Terra Cottas Base
+Empty
+Empty
+Empty
+Empty
+Empty
+Booster Pass Tossed Spiny
+Booster Pass Lakitu Tossing
+Mushroom Way Lakitu
+Empty
+Empty
+Empty
+Empty
+Song Hint Tadpole Summoning
+While Recruitable Character Captive In Mushroom Way 2
+Empty
+Empty
+Empty
+Empty
+Musty Fears 1
+Musty Fears 2
+Melody Bay Tadpole Swims
+Melody Bay Tadpole Affirmative
+Melody Bay Tadpole Incorrect
+Empty
+Empty
+Monstro Lair Transparency Layer
+Curtain Game Open Curtain
+Curtain Game Open Curtain
+Curtain Game Henchman Spin
+Curtain Game Henchman Spin
+Curtain Game Henchman Spin
+Sequence 1 Static
+Empty
+Empty
+Seaside Occupied Innkeeper After Sleep
+Seaside Occupied Shopkeeper
+Seaside Occupied Customer
+Empty
+Seaside Liberated Businessperson
+Empty
+Keep Final Room Chandelier String
+Empty
+Midas Barrel Camera
+Midas Barrel Area Move Southwest Repeatedly
+Midas Barrel Right Lane To Left
+Midas Barrel Slow Animation
+Midas Barrel Left Lane To Right
+Midas Fish
+Midas River Top Tunnel Player Outer
+Midas River Mid Left Tunnel Player Outer
+Midas River Mid Right Tunnel Player Outer
+Midas River Bottom Left Tunnel Player Outer
+Midas River Bottom Right Tunnel Player Outer
+Midas 1St Tunnel Goomba
+Midas 1St Tunnel Spiny
+Midas 1St Tunnel Troopa
+Midas 1St Tunnel Fish
+Empty
+Rose Way 5 Chest Shy Guy
+Mines Long Track Room Shy Guy
+Empty
+Rose Way Lakitu Shy Guy
+Rose Way Lakitu Shy Guy
+Rose Way Lakitu Shy Guy
+Rose Way Lakitu Shy Guy
+Mines Pa Mole Attempted Escape
+Mines Post Long Track Room Minecart
+Mines Left Crook
+Mines Right Crook
+Mines Center Crook
+Levelup Text
+Seq 10 Store Button Input And Make Sound
+Empty
+Small Explosion Flash 7 Times
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Rose Town Arrow
+54 Velocity Single Jump
+Rose Town Initial Arrow
+Rose Town Arrow
+Rose Town Arrow That Freezes Toad By Inn
+Midas 2Nd Tunnels Piranha
+Midas 2Nd Tunnels Piranha
+Midas 2Nd Tunnels Troopa
+Midas 2Nd Tunnels Fish
+Midas 2Nd Tunnels Flower
+Midas 2Nd Tunnels Jawful
+Midas 2Nd Tunnels Crook
+Midas Mid Right Tunnel Camera
+Moleville Woman Near Mountain
+Moleville Woman On Mountain
+Blue Cloud Movement
+Mokura Packet
+Forest First Wiggler After Running Away
+Slow Rotating Platform
+Empty
+Booster Hill Layer 2
+Running Yellow Yoshi
+Pipe Vault Thwomp
+Pipe Vault Thwomp Room Shake Camera
+Pipe Vault Thwomp Room Goomba
+Various Yellow Platforms Without Xy Movement
+Pipe Vault Jumping Chompweed
+Rose Town Liberated Water Guy
+Rose Town Liberated Water Guy
+Rose Town Occupied Water Guy
+Pipe Vault Piranha
+Pipe Vault Piranha
+Pipe Vault Piranha
+Pipe Vault Piranha
+Empty
+Nod Yes
+Shake Head No
+Rose Town Liberated Water Kid
+Pipe Vault Final Room Goomba
+Rose Town Liberated Water Kid
+Rose Town Liberated Water Kid
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Samus
+Empty
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Empty
+Empty
+Booster Pass Lakitu
+Bean Valley Boss Prize Drifts Down
+Opening Chest
+Booster Pass Spiny
+Booster Pass Spiny
+Booster Pass Spiny
+Booster Pass Spiny
+Tower First Staircase Spookum Direction 2
+Tower First Staircase Spookum Direction 1
+Tower Early Circling Bomb
+Tower Early Circling Bomb
+Tower Early Circling Bomb
+Tower Early Circling Bomb
+Booster Pass Secret Spiny
+Tower First Staircase Boss
+Tower Chomp Group
+Booster Hill Layer 1
+Booster Hill Layer 3
+Moleville Liberated Entrance Mole
+Booster Hill Henchman
+Booster Hill Barrel
+Booster Hill Barrel
+Booster Hill Barrel
+Booster Hill Henchman Bounce
+Booster Hill Henchman Jumps Over Barrel
+Lands End Shogun
+Lands End Slow Random Moving Enemies
+Forever Pause Loop
+Booster Hill Bump Flower
+Booster Hill Boss Shift Side Coord
+Booster Hill Boss Move Forward
+Midas River Frog Coin
+Water Splash Drops Sfx
+Sequence 2 Static
+Mines Entrance Moles
+Mines Recruitable Character
+Mines Final Minecart
+Mines Long Track Room Minecart
+Mines Fireballs
+Magmites
+Set Seq 1
+Exploding Microbomb
+Mines Croco
+Mines Croco
+Mines Croco
+Mines Croco
+Mines Croco
+Mines Croco
+Tower Early Circling Bomb
+Tower Early Circling Bomb
+Tower Chest Seesaw When Activated
+Tower Seesaw Chest Item
+Tower Mid Circling Bomb
+Tower Mid Circling Bomb
+Tower Mid Circling Bomb
+Tower Mid Circling Bomb
+Star Hill 1St Room North Gecko
+Star Hill 1St Room South Gecko
+Star Hill 1St Room South Sackit
+Star Hill 1St Room North Sackit
+Star Hill 1St Room Northwest Sackit
+Star Hill 1St Room Southeast Sackit
+Star Hill 1St Room Mukumuku
+Star Hill 1St Room Mukumuku
+Star Hill 2Nd Room Mukumuku
+Star Hill 2Nd Room Mukumuku
+Star Hill 2Nd Room Mukumuku
+Star Hill 2Nd Room Mukumuku
+Star Hill 3Rd Room Sackit
+Star Hill 2Nd Room East Gecko
+Star Hill 2Nd Room West Gecko
+Star Hill 2Nd Room North Sackit
+Star Hill 2Nd Room East Sackit
+Star Hill 2Nd Room West Sackit
+Star Hill 2Nd Room Central Sackit
+Empty
+Empty
+Empty
+Empty
+Empty
+Lands End Underground Gecko
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Player Falls In Keep Lava
+Empty
+Empty
+Priority 3 Looping Off
+Lands End Moving Chest
+Lands End Whirlpools
+Player Spins On Flower
+Lands End Cannon While Player Occupied
+Lands End Cannon While Player Occupied
+Empty
+Empty
+Empty
+Player Cowers In Corner
+Empty
+Empty
+Empty
+Empty
+Empty
+Default Sequence Static
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Mushroom Derby Unknown
+Inc Palette Row
+Inc Palette Row 15
+Inc Palette Row 4
+Inc Palette Row 3
+Inc Palette Row 2
+Nimbus Exterior Layer 3
+Mario Blown By Fan
+Nimbus Npc Random Directions
+Nimbus Npc Random Directions
+Nimbus Npc Random Directions
+Nimbus Npc Random Directions
+Mario Blown By Fan
+Nimbus Npc Random Directions
+Lands End Vertical Moving Platform
+Lands End Cannon At Rest
+Lands End Chow Jump Out Of Pit
+Lands End Gecko Cannon
+Jump Off Spinning Flower
+Keep Vertical Platforms In Lava Room
+Keep Jumping Terrapin Init
+Player Reset In Sky Bridge Room
+Keep Donkey Room Barrels
+Machine Yarid
+Enemy Fall Onto Conveyor
+Enemy On Sideways Conveyor
+Big Conveyor Room Boo
+Keep Xy Platforms
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Empty
+Valley 5 Pipe Shy Away
+Activate Piranha Plant In Pipe
+Valley Top Pipe Right Gecko
+Valley Top Pipe Mid Gecko
+Valley Right Pipe 1St Gecko
+Bean Valley Beanstalk Brick
+Booster Pass Apprentice
+Booster Pass Apprentice After Fight
+Valley Right Pipe 2Nd Gecko Running
+Empty
+Empty
+Player Dizzy From Gardener
+Gardener Runs In Circles
+Player Denies Gardener
+Abyss Before 1St Boss Screw 1
+Abyss Before 1St Boss Screw 2
+Abyss Before 1St Boss Jump Back Up
+Abyss 1St Boss Fight Shocked
+Abyss 1St Boss Fight Camera
+Empty
+Move Hinopio To Inn
+Move Hinopio To Armor Shop
+Move Hinopio To Item Shop
+Move Hinopio To Armor Shop
+Move Hinopio To Item Shop
+Move Hinopio To Inn
+Sunken Ship Trampoline Puzzle
+Sunken Ship Troopa Puzzle
+Sunken Ship 3D Maze Prize
+Barrel Puzzle
+Sunken Ship Cannonball
+Ship Staircase
+Monstro Mimic
+Monstro Thwomp
+Monstro Goombette
+Monstro Goombette
+Crowd Around Nimbus Boss
+Nimbus Shaman
+Nimbus Shaman
+Inc Palette Row Fake Bird Statue
+Nimbus Red Bird
+Nimbus Red Bird
+Nimbus Forkies
+Nimbus Red Bird
+Nimbus Solo Fake Bird Statue
+Jawful Extended Hitboxes
+Nimbus Dizzy Shy Guy
+Marrymore Bellhop After Paying For Overstay
+Knife Guy Default
+Knife Guy Hiding
+Knife Guy Holding Ball
+Knife Guy Holding Ball
+Coin Shower E
+Coin Shower Se
+Coin Shower S
+Coin Shower Sw
+Coin Shower W
+Coin Shower Nw
+Coin Shower N
+Coin Shower Ne
+Coin Gets Collected
+Coin Shower E Db
+Coin Chest
+Mushroom Thrown Southwest
+Mushroom Flash Then Poof
+Star Appears Briefly
+Flower Flash Then Poof
+Frog Coin Gets Collected
+Poof When Mimic 3 Defeated
+Key Appears Briefly
+Empty
+Empty
+Seq 1 Falling
+Seq 0 Falling
+Seq 5 Falling
+Ship First Note
+Static Dry Bones Collapse
+Seq 1 Falling
+Ship Whirlpools
+Ship Staircase Zeostars
+Sea Zeostar
+Spinning Static Coin
+Sea Escape Bubble
+Sea Escape Bubble
+Mines Treasure Hunter
+Empty
+Donut Lift Fall
+Stumpet
+Stumpet
+Erupt
+Corkpedite
+Ejecting An Oerlikon
+Volcano 1St Boss Henchman
+Empty
+Unused
+Empty
+Teleportation Shine
+Volcano 1St Boss
+Hinopio In Doorway
+Blue Fire Trail
+Crane For Final Factory Boss
+Factory 1St Room Conveyor Enemies
+Wiggler Asleep
+Forest 1St Underground Rat
+Factory 2Nd Room Conveyor Enemies Before Paint Base
+Factory 2Nd Room Conveyor Enemies Before Paint
+Factory 2Nd Room Conveyor Enemies After Paint Base
+Factory 2Nd Room Conveyor Enemies After Paint
+Hammer Sparks Sfx
+Factory 2Nd Room Conveyor Enemies Base
+Factory 2Nd Room Conveyor Enemies
+Factory 2Nd Room Conveyor Enemies
+Factory 2Nd Room Conveyor Enemies
+Factory Conveyor Paint
+Crane For Final Factory Boss Default
+Final Factory Room Mass Produced Npc Picked Up
+Factory 2Nd Boss Henchman
+Factory 2Nd Boss Henchman
+Factory 3Rd Boss Left Hammer
+Factory 3Rd Boss Mid Hammer
+Factory 3Rd Boss Right Hammer
+Factory 3Rd Boss Conveyor Npc Base
+Factory 3Rd Boss Conveyor Npc
+Factory 3Rd Boss Conveyor Npc
+Factory 3Rd Boss Conveyor Npc
+Ending Credits Castle Director
+Ending Credits Castle Terrapins
+Ending Credits Castle Shy Guy
+Ending Credits Castle Assistant
+Ending Credits Castle Goomba
+Ending Credits Castle Goomba
+Ending Credits Castle Goomba
+Cloud Landing Blue Puff Spawner
+Note Without Knife
+Randomly Face Southwest
+Nimbus Castle Caged Bird
+Nimbus Castle Caged Bird
+Nimbus Castle Caged Bird
+Dream Cushion Chef
+Dream Cushion Chef
+Dream Cushion Chef
+Dream Cushion Chef
+Dream Cushion Chef
+Smithy Component
+Smithy Component
+Smithy Component
+Smithy Component
+Smithy Component
+Chest Items With Specific Ids
+Keep Bridge Goomba
+Keep Bridge Goomba
+Keep Bridge Goomba
+Keep Bridge Goomba
+Keep Original Throne Room Running Goombas
+Keep Original Throne Room Goomba
+Keep Original Throne Room Goomba
+Keep Original Throne Room Troopa
+Keep Original Throne Room Troopa
+Keep Original Throne Room Troopa
+Keep Original Throne Room Troopa
+Keep 1St Boss Summon Animation
+Keep Battle Room Summon Enemy
+Dojo Perma Jump
+Chest Sequence 0 Default
+Empty
+Keep Dark Room Goomba Runs From Chest
+Keep Dark Room Init Goomba
+Keep Dark Room Jumping Goomba
+Mushroom Way 1 Recruitable Character
+Keep Dark Room Kamikaze Goomba
+Keep Dark Room Troopa
+End Credits Frogfucius Raises
+Freestanding Flower Picked Up
+Empty
+Empty
+Empty
+Empty
+Empty
+Hit By Exp Star
+Erupted Magmites</ActionLabels>
+    <PacketNames>Flashing Poof Flower
+Flashing Poof Mushroom
+Flower Pack Chest Item
+Brief Star
+Mimic Poof On Defeat
+Brief Poof Bag
+Feather Chest
+Star Piece Chest
+Red Chest Item
+Green Chest Item
+Blue Chest Item
+Yellow Chest Item
+Flower Static
+Mushroom Static
+Flower Collection
+Small Frog Coin (still)
+Big Coin Being Collected
+Small Minigame Coin
+Small Coin Being Collected
+Frog Coin Being Collected
+Water Splash
+Flashing Small Explosion
+Recursive Sparkles
+Looping Single Sparkle
+Regular Sound Explosion
+Ring Chest
+Sunken Ship Trampoline Puzzle
+Sunken Ship Troopa Puzzle
+Mushroom Thrown Southwest
+Sunken Ship 3D Maze
+Water Splash Drops Sfx
+Levelup Text
+Blue Cloud
+Bomb Explosion
+Grey Explosion Sfx
+Sunken Ship Cannonball Puzzle
+Barrel Puzzle Prize
+Ship Staircase
+Booster Hill Prize 0
+Booster Hill Prize 1
+Brooch Chest
+Booster Hill Prize 2
+Booster Hill Prize 3
+Shoes Chest
+Booster Hill Prize 4
+Teleportation Shine
+Booster Hill Prize 5
+Blue Fire Trail
+Banana Chest
+Hammer Sparks Sfx
+Water Blast Sfx
+Drill Bit
+Bomb Explosion Faster
+Crown Chest
+Levelup Bonus Pow
+Levelup Bonus S
+Levelup Bonus Hp
+Booster Hill Prize 6
+Booster Hill Prize 7
+Booster Hill Prize 8
+Booster Hill Prize 9
+Booster Hill Prize 10
+Booster Hill Prize 11
+Booster Hill Prize 12
+Frog Coin Chest Still
+Booster Hill Prize 13
+Booster Hill Prize 14
+Bomb Chest
+Booster Hill Prize 15
+Booster Hill Prize Standing 0
+Egg Chest
+Booster Hill Prize Standing 1
+Booster Hill Prize Standing 2
+Cookie Chest
+Booster Hill Prize Standing 3
+Booster Hill Prize Standing 4
+Berry Chest
+Booster Hill Prize Standing 5
+Booster Hill Prize Standing 6
+Card Chest
+Booster Hill Prize Standing 7
+Booster Hill Prize Standing 8
+Booster Hill Prize Standing 9
+Booster Hill Prize Standing 10
+Booster Hill Prize Standing 11
+Booster Hill Prize Standing 12
+Booster Hill Prize Standing 13
+Booster Hill Prize Standing 14
+Booster Hill Prize Standing 15
+Beetle chest
+Small Coin Still
+Chest Coin Still
+Glove Chest
+Crystal Chest
+Fire Spell Chest
+Blue Spell Chest
+Green Spell Chest
+Yellow Spell Chest
+Gray Spell Chest
+Bag Static
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused</PacketNames>
+    <EffectNames>___DUMMY
+___DUMMY
+Thundershock
+Thundershock (BG mask)
+Crusher
+Meteor Blast
+Bolt
+Star Rain
+Flame (fire engulf)
+Mute (balloon)
+Flame Stone
+Bowser Crush
+spell cast spade
+spell cast heart
+spell cast club
+spell cast diamond
+spell cast star
+Terrorize
+Snowy (snow BG, 4bpp)
+Snowy (snow FG, 2bpp)
+Endobubble (black ball/orb)
+___DUMMY
+Solidify
+___DUMMY
+___DUMMY
+Psych Bomb (BG)
+___DUMMY
+Dark Star
+Willy Wisp (blue orb/ball BG)
+___DUMMY
+___DUMMY
+___DUMMY
+Geno Whirl
+___DUMMY
+___DUMMY
+___DUMMY
+blank white flash (2bpp)
+blank white flash (4bpp)
+Boulder
+black ball/orb
+blank blue flash (2bpp)
+blank red flash (2bpp)
+blank blue flash (4bpp)
+blank red flash (4bpp)
+___DUMMY
+blank dark blue flash (2bpp)
+blank dark blue flash (4bpp)
+Meteor Shower (snow/confetti)
+purple/violet flash (4bpp)
+brown flash (4bpp)
+dark red blast
+dark blue blast
+snow/confetti, green
+light blue blast
+black ball/orb
+red ball/orb
+green ball/orb
+snow/confetti, slate green
+snow/confetti, red
+orange/red blast (Fire Bomb)
+Ice bomb/Solidify BG (blue freeze)
+Static E! (electric blast)
+green star bunches
+blue star bunches
+pink star bunches
+yellow star bunches
+Aurora Flash
+Storm
+Electroshock
+Smithy Treasure Head spell, red
+Smithy Treasure Head spell, green
+Smithy Treasure Head spell, blue
+Smithy Treasure Head spell, yellow
+___DUMMY
+___DUMMY
+___DUMMY
+Flame Wall (orange/red fire)
+Petal Blast 1
+Petal Blast 2
+Drain Beam BG (4bpp)
+Drain Beam FG (2bpp)
+___DUMMY
+electric bolt
+Sand Storm BG (2bpp)
+___DUMMY
+Pollen Nap (yellow pollen)
+Geno Beam, blue
+Geno Beam, red
+Geno Beam, gold
+Geno Beam, yellow
+Geno Beam, green
+Thunderbolt
+Light Beam
+Meteor Shower
+S'Crow Dust (purple pollen)
+HP Rain BG
+HP Rain FG
+wavy dark blue lines
+wavy blue lines
+wavy red lines
+wavy brown lines
+Sand Storm FG (4bpp)
+Sledge
+Arrow Rain
+Spear Rain
+Sword Rain
+Lightning Orb (BG waves)
+Echofinder
+Poison Gas FG 1
+Poison Gas FG 2
+Poison Gas BG
+Smithy Transforms (beam effect)
+Smelter's molten metal
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY
+___DUMMY</EffectNames>
+    <BattleEventNames>Unused
+Solo Wind Crystal Appears
+Belome swallows Mallow
+Unused
+Mack jumps out of battle off screen
+Mack returns to battle
+Belome spits out Mallow
+Countdown runs schedule, 1:00,3:00,5:00,6:00,7:00
+Countdown runs schedule, 6:00,9:00,10:00,12:00
+Punchinello interludes and prepares to summon Bob-ombs
+Punchinello interludes and prepares to summon Mezzo Bombs
+Solo Earth Crystal Appears
+Dialogue From Booster Fight
+Unknown
+Set 7Ee00A To Party Size At Start Of Fight
+Croco steals items: "You want them back?"
+Croco returns items: "Enough! Here's your junk..."
+Begin Bundt Postgame
+Knife Guy Grate Guy Pair Up Piggy Back
+Knife Guy Grate Guy Separate Yikes They're Pretty Tough
+Solo Water Crystal Appears
+Johnny Challenges Mario To A One On One
+Knife Guy &amp; Grate Guy pair up piggy-back
+Knife Guy &amp; Grate Guy separate: "Yikes! They're pretty tough"
+Machine Made Yaridovich 'Multiplier'
+Drill Bit
+INTRO SCENE: Tentacles rise from holes
+beat Tentacles, move on to next
+beat Tentacles, move on to King Calamari
+Torte 2
+Unused
+Unused
+Bundt moves again, both cooks run away
+candles appear on Bundt
+"Blow those candles out!"
+Raspberry is beaten, Snifits &amp; Booster run in and eat cake
+Tentacles throw character off screen
+Booster Working
+Unused
+Unused
+Unused
+Unused
+Bb-bombs explode
+Unused
+Czar Dragon dies
+Zombone dies
+Czar Dragon summons Helios
+Unknown
+Valentina summons Dodo, Dodo carries off middle character
+Dodo flutters and leaves battle
+Dodo returns to Valentina's formation
+Valentina &amp; Dodo are beaten
+INTRO SCENE: Domino &amp; Cloaker's introduction
+Domino teams up with Mad Adder
+Cloaker teams up with Earthlink
+Shy Away waters Smilax: part 1
+Shy Away waters Smilax: part 2
+Shy Away waters Smilax: part 3
+Thrax is there
+Belome confronts a character: "You all LOOK delicious..."
+Belome clones someone
+only Mario is there
+INTRO: Jinx 4
+Unused
+Unused
+Unused
+Unused
+Axem Rangers group formation
+Punchinello 2 Summons Bombs
+Axem Rangers are defeated
+Jinx uses Jinxed
+Jinx uses Triple Kick
+Jinx uses Quicksilver
+Jinx uses Bombs Away
+Culex summons crystals
+Formless changes into Mokura
+Solo Fire Crystal Appears
+Culex 3D
+Dodo flutters and exits battle
+Magikoopa summons monster
+Exor Fight Begins
+Exor is defeated, cries and opens mouth
+Smithy (1st Form) is beaten, ground shakes etc.
+Belome 3 Clones
+Screen Flashes White
+Fear Roulette
+Smelter pours molten liquid, Smithy welds
+Smithy transforms into Tank Head
+Smithy transforms into Magic Head
+Smithy transforms into Chest Head
+Smithy transforms into Box Head
+Smithy's head fades before transforming into other head
+Shelly breaks, Birdo appears
+beam of light forms around Smithy head before body appears
+Punchinello's bombs explode if still alive
+bombs explode
+Nothing
+Smithy waits before transforming head
+Smithy is defeated
+Belome 3 Summons Clones
+Earthlink/Mad Adder collapses and dies
+Magikoopa Is There
+None</BattleEventNames>
+    <LevelNames>Debug Room
+____blue BG, nothing there
+Bowser's Keep, outside (Mario enters at beginning of game)
+Bowser's Keep 1st time, Area 01
+Bowser's Keep 1st time, Area 02
+Marrymore, outside (during Booster)
+Marrymore Inn, 2F
+Marrymore Inn, 1F
+Bowser's Keep, Area 09 (tall room, w/o save point this time)
+Marrymore Inn, regular room
+Bowser's Keep 1st time, Area 04 (Throne Room)
+Marrymore Inn, 3F
+Marrymore Inn, Suite room
+Barrel Volcano, falling into Volcano
+Booster Hill
+Vista Hill
+Mario's Pad
+Mushroom Kingdom Castle, Main Hall
+Mushroom Kingdom Castle, Throne Room
+Mushroom Kingdom Castle, Stair Room to Toadstool's room
+Mushroom Kingdom Castle, Toadstool's room
+Mushroom Kingdom Castle, branch room to Vault/Guest Room
+Mushroom Kingdom Castle, Guest room
+Mushroom Kingdom, before Croco, Outside
+Sunken Ship, post-KC Area 15 (Bandana Red room w/long stairwell)
+Sunken Ship, post-KC Area 16 (Entrance to Johnny's room)
+Sunken Ship, post-KC Area 12 (underwater room w/stairwell and Zeostars)
+Sunken Ship, post-KC Area 13 (large underwater room with a Bloober)
+Sunken Ship, post-KC Area 17 (Johnny's room)
+Mushroom Kingdom Castle, Throne Room (Toadstool returns)
+Mushroom Kingdom Castle, Toadstool's room (Toadstool returns)
+Mushroom Kingdom Castle, Vault
+Mushroom Kingdom Castle, Entrance to Toadstool's room
+Yo'ster Isle, entrance from Pipe Vault
+Yo'ster Isle
+Booster Tower, 7F (3-level w/parachuting Spookums)
+Booster Tower, 6F Area 04 (3-level w/Thwomp on teeter-totter)
+Booster Tower, 4F (3-level room w/jumping Spookums)
+Booster Tower, 9F (Booster's bomb-throwing room w/rail tracks)
+Booster Tower, 5F (Knife Guy's juggling room)
+Booster Tower, 5F (Knife Guy's juggline room, after defeat)
+Booster Tower, 8F Area 01 (‘minesweeper' room w/coins and hidden Fireballs)
+Booster Tower, 3F Area 02 (NES Mario room)
+Booster Tower, 1F Area 01 (main room)
+Mushroom Kingdom, before Croco, jumping kid's house (1F)
+Mushroom Kingdom, before Croco, jumping kid's house (2F)
+Mushroom Kingdom, before Croco, Raz and Raini's house
+Mushroom Kingdom, before Croco, Item Shop (top floor)
+Booster Tower, 8F Area 02 (Zoom Shoes room)
+Mushroom Kingdom, before Croco, Inn (1F)
+____blue BG, nothing there
+Mushroom Kingdom, before Croco, running kid's house
+Mushroom Kingdom, Inn (2F)
+Mushroom Kingdom, before Croco, Item Shop (basement)
+Booster Hill ____dummy
+Pipe Vault Entrance
+Kero Sewers, Area 02 (long room w/three pipes)
+Kero Sewers, Area 03 (large water room w/pipe in center)
+Kero Sewers, Area 06 (long water room w/Rat Funks in a line)
+Kero Sewers, Area 05 (super star room w/four Rat Funks)
+Kero Sewers, Area 04 (large room w/Pandorite and hiding Rat Funks)
+Nimbus Land, outside (during Valentina right before fight)
+Kero Sewers, Area 01 (water room w/save)
+Marrymore Scene
+Marrymore, outside
+Marrymore Chapel, sanctuary
+Rose Way, exit Area where Bowser's Troops gathered
+Midas River, business transaction Area
+Midas River, barrel jumping river
+Midas River, waterfall
+Midas River, 1st tunnel
+Midas River, 2nd tunnel (both left and right)
+Midas River, 3rd tunnel (on left)
+Midas River, 4th tunnel (on very bottom right)
+Tadpole Pond, Area 02
+Tadpole Pond, Area 01
+Bandit's Way, Area 01
+Bandit's Way, Area 03
+Bandit's Way, Area 04
+Rose Way, main Area
+Rose Way, two fast-floating platforms
+Rose Way, treasure chests w/coins Area
+Rose Way, winding path w/Crooks
+Rose Town, during Bowyer outside
+Rose Town, outside
+Rose Town, during Bowyer Inn (1F)
+Rose Town, Inn (1F)
+Rose Town, Item Shop
+Smithy's Final Form Defeat: Geno's Redemption
+Rose Town, during Bowyer three grandkids' house
+Rose Town, three grandkids' house
+Rose Town, couple's house
+Grate Guy's Casino, inside casino
+Rose Town, during Bowyer treasure house (1F)
+Rose Town, treasure house (1F)
+Rose Town, during Bowyer Inn (2F)
+Rose Town, Inn (2F)
+Rose Town, during Bowyer treasure house (2F)
+Rose Town, treasure house (2F)
+Rose Town, Geno Awakens in Inn (1F)
+Booster Pass, Area 01
+Booster Pass, Area 02
+Moleville, Outside (at exit from Mines)
+Smithy Factory, Area 17 (Domino and Cloaker's room)
+Grate Guy's Casino, front door
+Moleville, Dyna and Mite's House ____dummy
+Grate Guy's Casino, outside
+Nimbus Castle, Area 09 (Statue Room, after Valentina)
+Moleville, Outside
+Nimbus Castle, Area 01 (entrance hall)
+Nimbus Castle, Area 18 (Dodo's statue-polishing room)
+Nimbus Castle, Area 04 (left of 4-way path, right-angle red brick path w/ treasure)
+Nimbus Castle, Area 17 (right of 4-way path, Save Point)
+Nimbus Castle, Area 16 (small two-door room w/treasure, from Area 15)
+Nimbus Castle, Area 10 (red brick 2-level room w/treasure from Birdo's room)
+Nimbus Castle, Area 03 (4-way path, during Valentina)
+Nimbus Castle, Area 02 (left of Area 01)
+Nimbus Castle, Area 15 (front of 4-way path, large right-angle room w/ plant)
+Nimbus Castle, Area 05 (long 5-exit room, during Valentina)
+Nimbus Castle, Area 06 (left-most front door from Area 05)
+Nimbus Castle, Area 13 (Throne Room, during Valentina)
+Nimbus Castle, path after Throne Room (2nd)
+Nimbus Castle, Area 12 (entrance to throne room)
+Pipe Vault, Area 01
+Pipe Vault, Area 03 (line of pipes)
+Pipe Vault, Area 04 (line of coins, 2 hidden treasures)
+Pipe Vault, Area 06 (line of red pipes)
+Pipe Vault, Area 02
+Pipe Vault, Area 07 (long path w/moving platforms)
+Pipe Vault, Area 05
+Sea, Area 02 (large room with shop)
+Sea, Area 04 (bunch of Zeostars)
+Sea, Area 05 (from Area 02 w/save point)
+Sea, Area 06 (water room w/whirlpools)
+Sea, Area 03 (super star room)
+Sea, Area 01 (entrance)
+Sea, Area 07 (small underwater room)
+Land's End, Area 01
+Land's End, Area 02
+Land's End, Area 03 (Geckits playing cannonball)
+Land's End, Area 01,2 (nothing there, unused?)
+Land's End, Area 04 (rotating flowers)
+Land's End, Area 05 (sky bridge)
+Pipe Vault, Goomba-thumping room
+Bowser's Keep 6-door, treasure after each room
+Star Hill, Area 01
+Pipe Vault, Area 02 ___dummy
+GAME INTRO: Midas River, water tunnel
+GAME INTRO: Bandit's Way, Area 04
+GAME INTRO: Midas River, Barrel Jumping
+GAME INTRO: Moleville, outside during Bowser's troop scene
+GAME INTRO: Booster Hill
+Marrymore Chapel, main hall
+Marrymore Chapel, entrance to sanctuary
+Marrymore Chapel, sanctuary (during Booster)
+Marrymore Chapel, kitchen
+Marrymore Chapel, kitchen (no sprites/exits, unused?)
+Star Hill, Area 03
+Star Hill, Area 02
+Star Hill, Area 04
+Sunken Ship, Area 01
+Sunken Ship, Area 03 (Greapers)
+Sunken Ship, Area 04 (Greapers &amp; Dry Bones)
+Sunken Ship, puzzle room 2
+Sunken Ship, Area 02 (from entrance w/save point)
+Sunken Ship, Area 06 (puzzle room passageway)
+Sunken Ship, puzzle room 1
+Sunken Ship, Area 05 (long stairwell with running Alley Rats)
+Sunken Ship, puzzle room 3
+Sunken Ship, Area 07 (puzzle room passageway branch room w/Shaman)
+Sunken Ship, Area 14 ____dummy
+Sunken Ship, puzzle room 4
+Sunken Ship, puzzle room 5
+Sunken Ship, post-KC Area 01 (small room w/Trampoline)
+Sea, Area 08 (shore with Sunken Ship)
+Sunken Ship, post-KC Area 05 (w/Dry Bones, linked by Mario mirror room)
+Sunken Ship, Area 08 (w/save point and green switch for barrel)
+Sunken Ship, Area 09 (Password room)
+Sunken Ship, post-KC Area 04 (long stairwell w/running Alley Rats)
+Sunken Ship, post-KC Area 06 (Mario Mirror room)
+Sunken Ship, post-KC Area 02 (small 2-level room)
+Sunken Ship, post-KC Area 03 (Alley Rats on cannons)
+Sunken Ship, post-KC Area 07 (three Dry Bones)
+Sunken Ship, post-KC Area 08 (secret room with Frog Coin)
+Sunken Ship, post-KC Area 09 (Hidon's room w/save point)
+Sunken Ship, post-KC Area 14 (secret Safety Ring)
+Sunken Ship, post-KC Area 18 (warp room from Johnny's room)
+Sunken Ship, post-KC Area 10 (water room with frog coins)
+Sunken Ship, post-KC Area 11 (water room with whirlpool)
+Mario's Pipehouse
+Mushroom Kingdom, during Mack, Outside
+Mushroom Kingdom, Outside
+Booster Tower, 9F Area 02 (Booster's curtain game room)
+Booster Tower, 2F Area 03 (steps w/circling Bob-ombs)
+Booster Tower, 2F Area 02 (Booster's railway room)
+Booster Tower, 6F Area 02 (Booster's Ancestor Game room)
+Booster Tower, 2F Area 01 (w/constantly appearing Spookums)
+Booster Tower, 1F Area 02 (high Masher room w/teeter-totter)
+Booster Tower, 8F Area 03 (3-level w/one Chomp)
+Booster Tower, 9F Area 01 (three yellow platforms w/save point)
+Booster Tower, 6F Area 03 (Elder's Room w/Chomp)
+Booster Tower, 6F Area 01 (small room w/save point)
+Booster Tower Entrance
+Mushroom Way, Area 01
+Mushroom Way, Area 02
+Mushroom Way, Area 03
+Bandit's Way, Area 05
+Bandit's Way, Area 02
+Seaside Town, during Yaridovich Outside
+Seaside Town, during Yaridovich Inn (1F)
+Seaside Town, during Yaridovich Inn (2F)
+Seaside Town, during Yaridovich Elder's House (1F)
+Seaside Town, during Yaridovich Elder's House (2F)
+Seaside Town, during Yaridovich Beetles Are Us/Bomb Shop
+Seaside Town, during Yaridovich Weapons and Armor Shop
+Seaside Town, during Yaridovich Health Food Store (left-most)
+Seaside Town, during Yaridovich Mushroom Boy Shop (middle)
+Seaside Town, during Yaridovich Accessory Shop (right-most)
+Seaside Town, during Yaridovich Shed (unused b/c inaccessible)
+GAME INTRO: Sea, shore with Sunken Ship
+Smithy Factory, Area 02 (w/save point)
+Smithy Factory, Area 04 (green switch w/Ameboids)
+Smithy Factory, Area 03 (Glum Reapers)
+Smithy Factory, Area 07 (Count Down's room)
+Forest Maze, Area 01
+Forest Maze, Area 05 (tree trunk Area)
+Forest Maze, Area 02
+Forest Maze, Area 09 (leads to 4-path maze)
+Forest Maze, Area 04
+Forest Maze, Area 06
+Forest Maze, 4-way path from Area 09
+Forest Maze, Secret entrance
+Forest Maze, Bowyer's practice pad
+Forest Maze, Area 03 (underground)
+Forest Maze, Secret
+Forest Maze, Area 08 (underground)
+Forest Maze, Area 07 (underground w/sleeping Wiggler)
+Smithy Factory, Area 05 (w/save point)
+Smithy Factory, fall from lugnut rooms (Area 06 &amp; prior)
+Smithy Factory, Area 06 (Ultra Hammer)
+Volcano, Area 21 ____dummy
+Volcano, Area 02 ____dummy
+Forest Maze, all tree trunk underground areas
+GAME INTRO: Mushroom Kingdom Castle, Throne Room
+GAME INTRO: Yo'ster Isle, talk to Yoshi &amp; run around
+GAME INTRO: Pipe Vault, Area 02 (w/Thwomp)
+GAME INTRO: Kero Sewers, Entrance
+GAME INTRO: Tadpole Pond, Mario summons tadpoles
+GAME INTRO: Mushroom Way, Area 01
+GAME INTRO: Vista Hill
+GAME INTRO: Booster Tower, balcony with Toadstool crying
+Bean Valley, piranha pipe Area
+Bean Valley, main Area
+Bean Valley, magic brick to Beanstalk Area
+Bean Valley, Smilax Area
+Monstro Town, Jinx's Dojo
+Forest Maze, Small area w/tree trunk (unused?)
+GAME INTRO: Forest Maze, fighting Magikoopa at Bowyer's Pad
+Booster Tower, Balcony at top floor
+Booster Tower, 3F Area 01 (green switch for BP secret)
+GAME INTRO: Forest Maze, jumping on Wiggler
+Bowser's Keep 1st time, Area 03 (lava room w/bridge)
+Land's End Underground, Area 04 (buy super stars)
+Land's End Underground, Area 01
+Land's End Underground, Area 02
+Land's End Underground, Area 03
+Bowser's Keep, Area 10 (Magikoopa's room)
+Monstro Town, entrance
+Belome Temple, Area 08 (Belome's room)
+ENDING CREDITS: Nimbus Land, Prince Mallow
+Land's End secret underground, Area 01 (leads to Kero Sewers)
+Moleville Mines, Area 17 (Punchinello's room, after battle)
+Moleville Mines, Area 11 (bombed room w/singing Moles)
+Moleville Mines, Area 04 (w/trampoline)
+Moleville Mines, Area 02
+Moleville Mines, Area 06 (small room leading to Area 06)
+Moleville Mines, Area 01 (entrance)
+Moleville Mines, Area 05 (left of trampoline room)
+Moleville Mines, Area 03 (leads back to Area 1)
+Moleville Mines, Area 08 (Croco's bombed room)
+Moleville Mines, Area 15 (2-level room w/Sparky and 10-coin TC)
+Moleville Mines, Area 07 (from Croco's bombed room)
+Moleville Mines, Area 10 (small room w/minecart tracks)
+Moleville Mines, Area 09 (leads left to Croco's bombed room)
+Moleville Mines, Area 18 (minecart room)
+Moleville Mines, Area 13 (long minecart tracks room)
+Moleville Mines, Area 12 (2-level room, leads to long minecart tracks room)
+Moleville Mines, Area 14 (2-level room from long minecart tracks room)
+Moleville Mines, Area 16 (large save-point room w/four Bob-ombs)
+Moleville Mines, Area 17 (Punchinello's room, before battle)
+Moleville Mines, Area 19 (from outside after paying)
+GAME INTRO: Booster Tower, 7F (parachuting Spookums)
+____unmapped house room
+____unmapped house room
+____unmapped house room
+____unmapped house room
+____unmapped house room
+____unmapped outside townplace (resembles Seaside Town)
+____unmapped house room
+____unmapped house room
+____unmapped house room
+Kero Sewers, Area 07 (water switch room w/Boos)
+Kero Sewers, Area 08 (Belome's Room)
+Kero Sewers, Area 08 (Belome's Room, after defeat)
+Seaside Town, Outside
+Seaside Town, Inn (1F)
+Seaside Town, Inn (2F)
+Seaside Town, Elder's house (1F)
+Seaside Town, Elder's house (2F)
+Seaside Town, Beetles Are Us
+Seaside Town, Weapon and Armor shop
+Seaside Town, Health Food Store
+Seaside Town, Mushroom Boy's Shop
+Seaside Town, Accessory Shop
+Seaside Town, Shed
+Seaside Town, during Yaridovich Beach
+Seaside Town, Beach
+Land's End Desert, Area 01
+Land's End Desert, Area 02
+Land's End Desert, Area 06
+Mushroom Kingdom Castle, Entrance to Throne room
+Bowser's Keep 6-door, Action Room 2-A (slow elevating platforms)
+Bowser's Keep 6-door, Action Room 1-A (jumping Terrapin)
+Mushroom Kingdom Castle, during Mack entrance to Throne Room
+Monstro Town, outside
+Mushroom Kingdom Castle, during Mack Main Hall
+Mushroom Kingdom Castle, during Mack Throne Room
+Mushroom Kingdom Castle, during Mack stairwell to Toadstool's Room
+Mushroom Kingdom Castle, during Mack Toadstool's Room
+Mushroom Kingdom Castle, during Mack branch room to Vault/Guest Room
+Mushroom Kingdom Castle, during Mack Guest room
+Mushroom Kingdom Castle, during Mack Vault
+Mushroom Kingdom Castle, during Mack entrance to Toadstool's room
+Kero Sewers Entrance
+Bean Valley pipe room, left-most pipe
+Bean Valley pipe room, right-most pipe (large room)
+Moleville, Item Shop
+Moleville, Inn
+Moleville, Dyna and Mite's house
+Moleville, Fireworks shop
+Moleville, Special item-trading shop
+Nimbus Land, Garro's House
+Nimbus Land, lower house
+Nimbus Land, Inn
+Nimbus Land, Item Shop
+Nimbus Land, top-right house (Croco drops Signal Ring)
+Nimbus Land, Inn (bedroom)
+Bean Valley pipe room, top pipe (leads to Grate Guy's Casino)
+Bean Valley pipe room, bottom left
+Bean Valley pipe room, bottom right
+Smithy Factory, Area 01
+Culex's Room
+Volcano, Area 21 (Czar Dragon's room)
+Volcano, Area 18 (Hino Mart)
+Volcano, Area 01
+Volcano, Area 03 (secret w/two flowers)
+Volcano, Area 08
+Volcano, Post-CD Area 01
+Volcano, Area 11
+Volcano, Area 02
+Volcano, Area 04 (bunch of steps)
+Volcano, Area 09
+Volcano, Area 07 (stomping Corkpedite)
+Volcano, Area 15 (stomping Corkpedite)
+Volcano, Area 14
+Volcano, Post-CD Area 03
+Volcano, Area 13 (w/save point)
+Volcano, Area 17 (leads to Hinopio's Shop)
+Nimbus Land, Royal Bus station
+Nimbus Land, entrance (w/warp trampoline)
+Nimbus Land, entrance to hot springs
+Nimbus Land, fall from platform (1st)
+Nimbus Land, fall from platform (2nd)
+Nimbus Land, fall from platform (3rd)
+Nimbus Land, fall from platform (4th)
+ENDING CREDITS: Vista Hill (Exor vanishes from the world)
+Bowser's Keep 6-door, Battle Room 2-B (1st fight: Chewy)
+Bowser's Keep 6-door, Battle Room 2-C (1st fight: Sparky)
+Bean Valley Beanstalks, Area 01
+Bean Valley Beanstalks, Area 02
+Bean Valley Beanstalks, Area 03 (from right beanstalk of Area 02)
+Bean Valley Beanstalks, Area 04 (from left beanstalk of Area 02)
+Nimbus Land, entrance (no trampolines/exits)
+Volcano, Area 10 (jumping Pyrospheres)
+Volcano, Area 05
+Volcano, Area 06
+Volcano, Area 12 (erupting Stumpet)
+Volcano, Area 19 (from Hino Mart w/save point)
+Volcano, Post-CD Area 02
+Volcano, Area 20 (jumping Pyrospheres)
+Volcano, Area 16 (erupting Stumpet)
+Volcano, Post-CD Area 04
+Volcano, Post-CD Area 06
+Volcano, Post-CD Area 07 (warp to World Map)
+Volcano, Post-CD Area 05
+Monstro Town, Monstermama's house (1F)
+Monstro Town, Monstermama's house (2F)
+Monstro Town, super-jumping room
+Monstro Town, Weapon and Armor Shop
+Monstro Town, 3 Musty Fears Inn
+Bowser's Keep, Area 13 (2nd throne room, Boomer's room)
+Land's End secret underground, Area 02 (leads to Kero Sewers)
+Land's End Desert, Area 03
+Land's End Desert, Area 05
+Land's End Desert, Area 04
+Booster Pass, Secret
+Factory Grounds, Area 01 (with Toad)
+Land's End Cliff (climb w/Sky Troopas)
+Nimbus Castle, Area 14 (right-most front door of long 5-exit room) 
+Nimbus Castle, Area 09 (Birdo's Room)
+Nimbus Castle, Area 07 (straight from Area 06 w/long staircase)
+Nimbus Castle, path after Throne room (1st)
+Nimbus Castle, Area 11 (long hallway, door to King's Cellar)
+Nimbus Castle, King's locked cellar
+Nimbus Castle, Area 08 (from Area 07, get Room Key 1 here)
+Nimbus Land, small platform after Nimbus Castle throne paths
+Nimbus Land, outside (before Valentina)
+Gardener's House, outside
+Gardener's House
+Lazy Shell cloud
+Belome Temple, Area 02 (Fortune Room)
+Belome Temple, Area 04 (room determined by fortune)
+Belome Temple, Area 09 (Belome's Treasure room)
+Belome Temple, Area 06 (Belome's fortune room w/elevating platform)
+Belome Temple, Area 03 (pipe to room determined by fortune)
+Belome Temple, Area 05 (from Fortune Room)
+Belome Temple, Area 07 (pipe to Belome's room)
+Belome Temple, Area 10 (pipe to Monstro Town)
+Belome Temple, Area 01 (w/Warp Trampoline)
+GAME INTRO: Nimbus Land, outside with patrolling Birdies
+Nimbus Land, outside (during Valentina)
+Bowser's Keep 6-door, Puzzle Rooms
+ENDING CREDITS: Johnny looking out at sunset on beach shore
+Smithy Factory, Area 01 ____dummy
+Smithy Factory, Area 09 (falling Axem Reds on conveyor belts)
+ENDING CREDITS: Bowser's Keep, Bowser &amp; troops repair
+Smithy Factory, Area 01 ____dummy
+Nimbus Castle, path after Throne room (3rd)
+Nimbus Land, outside (after Valentina)
+Bowser's Keep, outside (talk to Exor)
+Nimbus Castle, Area 13 (Throne room, after Valentina)
+ENDING CREDITS: Toadofsky conducts choir
+Smithy Factory, Area 11 (conveyor belts spawning Drill Bits and Macks)
+Smithy Factory, Area 16 (small room w/two treasures after falling Yaridovich room)
+Smithy Factory, Area 09 ____dummy
+Smithy Factory, Area 10 (fall from Area 09)
+Bowser's Keep 6-door, exit room after finishing 4 doors
+Nimbus Land, hot springs
+Bowser's Keep, Area 09 (tall room, w/save point)
+Bowser's Keep, Area 11 (Thwomp/Bullet room after Magikoopa's room)
+Bowser's Keep, Area 12 (Croco's Shop 2, after Magikoopa's room)
+Bowser's Keep, Area 07 (150 coins and a mushroom)
+Bowser's Keep, Area 06 (save point w/Croco shop)
+Bowser's Keep, Area 05 (dark tunnel, after throne room)
+Bowser's Keep, Area 08 (room with 6 doors)
+Bowser's Keep 6-door, Action Room 2-C (very slow moving circling platforms)
+Bowser's Keep 6-door, Action Room 1-C (Gorilla throwing barrels)
+Bowser's Keep 6-door, Action Room 2-B (cannonball riding)
+Bowser's Keep 6-door, Action Room 1-B (moving platforms)
+Bowser's Keep 6-door, Battle Room 1-A (1st fight: Terra Cotta)
+Bowser's Keep 6-door, Battle Room 1-B (1st fight: Alley Rat)
+Bowser's Keep 6-door, Battle Room 1-C (1st fight: Bob-Omb)
+Bowser's Keep 6-door, Battle Room 2-A (1st fight: Gu Goomba)
+Bowser's Keep 6-door, Puzzle Room 1-B (barrel-counting)
+Bowser's Keep 6-door, Puzzle Room 1-A (quiz)
+Bowser's Keep 6-door, Puzzle Room 2-B (green switches)
+Bowser's Keep 6-door, Puzzle Room 1-C (word problem)
+Bowser's Keep 6-door, Puzzle Room 2-A (coin collecting)
+Bowser's Keep 6-door, Puzzle Room 2-C (ball solitaire)
+Factory Grounds, Area 01
+Factory Grounds, Area 04 (Gun Yolk's room)
+Factory Grounds, Area 02
+Factory Grounds, Area 03
+Smithy Factory, Area 13 (Bowyers falling down conveyor belts)
+Smithy Factory, Area 15 (falling Yaridovichs)
+Smithy Factory, Area 12 (lots of consecutive conveyor belts and LIL{xx}BOOS)
+Bowser's Keep 2nd Time, Area 01
+Bowser's Keep 2nd Time, Area 02
+Bowser's Keep 2nd Time, Area 03 (lava room w/bridge)
+Bowser's Keep 2nd Time, Area 04 (Throne Room)
+Mushroom Kingdom, during Mack, jumping kid's house (1F)
+Mushroom Kingdom, during Mack, jumping kid's house (2F)
+Mushroom Kingdom, during Mack, Raz and Raini's house
+Mushroom Kingdom, during Mack, Item Shop (top floor)
+Mushroom Kingdom, during Mack, Item Shop (basement)
+Mushroom Kingdom, during Mack, Inn (1F)
+ENDING CREDITS: Star Pieces (Rose Town), last star piece to ‘Thank You'
+Mushroom Kingdom, during Mack, running kid's house
+Mushroom Kingdom, jumping kid's house (1F)
+Mushroom Kingdom, jumping kid's house (2F)
+Mushroom Kingdom, Raz and Raini's house
+Mushroom Kingdom, Item Shop (top floor)
+Mushroom Kingdom, Item Shop (basement)
+Mushroom Kingdom, Inn (1F)
+Mushroom Kingdom, Inn (2F)
+Mushroom Kingdom, running kid's house
+ENDING CREDITS: Factory Grounds, fight with Smithy
+Nimbus Castle, Area 06 ____dummy
+Nimbus Castle, Area 10 ____dummy
+Nimbus Castle, Area 05 (long 5-exit room, after Valentina)
+Nimbus Castle, Area 04 ____dummy
+Nimbus Castle, Area 03 (4-way path, after Valentina)
+Nimbus Land, Dream Cushion Dream: small cloud, person cheers on Mario/bed floats
+Nimbus Land, Dream Cushion Dream: Heavy Troopa laying on Mario
+Nimbus Land, Dream Cushion Dream: Tortes are seasoning Mario
+ENDING CREDITS: Yo'ster Isle, Croco racing Yoshi
+ENDING CREDITS: Marrymore Chapel, Booster wedding Valentina
+Smithy Factory, Area 08 (Trampoline after Count Down)
+Smithy Factory, Area 14 (w/save point)
+Factory Grounds, Smithy's Pad</LevelNames>
+    <MusicNames>{CURRENT}
+Dodo's Coming
+Mushroom Kingdom
+Fight Against Stronger Monster
+Yo'ster Island
+Seaside Town
+Fight Against Monsters
+Pipe Vault
+Invincible Star
+Victory
+In The Flower Garden
+Bowser's Castle (1st time)
+Fight Against Bowser
+Road Is Full Of Dangers
+Mario's Pad
+Here's Some Weapons
+Let's Race
+Tadpole Pond
+Rose Town
+Race Training
+Shock!
+Sad Song
+Midas River
+Got A Star Piece (part 1)
+Got A Star Piece (part 2)
+Fight Against An Armed Boss
+Forest Maze
+Dungeon Is Full Of Monsters
+Let's Play Geno
+Start Slot Menu
+Long Long Ago
+Booster's Tower
+And My Name's Booster
+Moleville
+Star Hill
+Mountain Railroad
+Explanation
+Booster Hill (start)
+Booster Hill
+Marrymore
+New Partner
+Sunken Ship
+Still The Road Is Full Of Monsters
+{SILENCE}
+Sea
+Heart Beating A Little Faster (part 1)
+Heart Beating A Little Faster (part 2)
+Grate Guy's Casino
+Geno Awakens
+Celebrational
+Nimbus Land
+Monstro Town
+Toadofsky
+{SILENCE}
+Happy Adventure, Delighful Adventure
+World Map
+Factory
+Sword Crashes And Stars Scatter
+Conversation With Culex
+Fight Against Culex
+Victory Against Culex
+Valentina
+Barrel Volcano
+Axem Rangers Drop In
+The End
+Gate
+Bowser's Castle (2nd time)
+Weapons Factory
+Fight Against Smithy 1
+Fight Against Smithy 2
+Ending Part 1
+Ending Part 2
+Ending Part 3
+Ending Part 4</MusicNames>
+    <SoundNames>{SILENCE}
+menu select
+menu cancel
+menu scroll
+jump
+block switch
+running water
+gushing water
+waterfall
+green switch
+trampoline
+whoosh away
+dizziness
+coin
+item get
+birds tweeting
+open door
+open front gate
+sudden stop
+long fall
+lighting bolt
+rumbling
+close door
+helicopter
+tapping feet
+heel click
+laughing Bowser
+found an item
+pipe entrance
+alarm clock
+surprised monster
+spinning flower
+underground warp
+jumping bouncing fish
+squirm writhe
+running water
+*Tadpole Pond staff: Do
+*Tadpole Pond staff: Re
+*Tadpole Pond staff: Mi
+*Tadpole Pond staff: Fa
+*Tadpole Pond staff: So
+*Tadpole Pond staff: La
+*Tadpole Pond staff: Ti
+slipping
+ghost float
+Goomba taunt
+marching troops
+snooze
+rolling
+big shell hit
+water droplet
+moving yellow switch
+deep bounce
+bounce
+goodnight
+coin shower lose fountain
+shake head
+finger snap
+insert
+hovering Frogfucius
+dynamite bomb explosion
+deep uh-oh
+big yoshi talk
+yoshi talk
+spinning copters
+thwomp stomp 1
+kick ball shell
+sword in keep
+*Mallow yelling at Croco
+*Mallow falling landing
+*Mallow sliding on wall
+mushroom cure
+syrup cure
+thwomp stomp 2
+Boosters train
+rocketing blast
+Boosters train horn
+Bowyer arrows dancing
+click
+*yelp in distance
+star explanation
+star
+screeching stop
+weird laugh
+smoked fireball
+1-up flower
+big bounce
+correct signal
+wrong signal
+lit fuse
+curtain
+tumbling boulders
+*Lakitu attaches Frogfucius
+water splash
+frog coin
+level up with star
+swinging fist
+engage in battle
+*puzzle game timer
+tapping feet
+minecart ride
+Terrapin attack
+time running out
+Toadstool crying
+chomp spinning
+surprise
+off balance
+drum roll
+drum roll end
+big shell hit
+abstract Star Hill music
+water jumping
+draining water
+Bullet Bill ignition
+*orchestra hit A
+*orchestra hit A#
+*orchestra hit B
+Dry Bones crumble
+beckoning Tentacle
+Czar Dragon roar
+Axem Rangers strike!
+Axem Ranger teleport
+Sky Troopas approaching
+chain rumbling noise
+Sgt. Flutter flight
+enter Star Hill warp
+exit Star Hill warp
+Yoshi egg hatch
+vine growing
+baby yoshi
+big baby yoshi
+*jump on organ
+honking horn
+march single
+curtain sweep
+impending blast
+*Toadofsky composition: Do
+*Toadofsky composition: Re
+*Toadofsky composition: Mi
+*Toadofsky composition: Fa
+*Toadofsky composition: So
+*Toadofsky composition: La
+*Toadofsky composition: Ti
+metronome upbeat ding
+click
+blacksmith hammer strike
+machine transform
+Troopa shell poof hide
+Yaridovich tranforms
+secret hint
+jump on save box
+open chapel doors
+shuffle cards
+slot machines
+big squish
+whistling Mario theme
+Link fanfare
+firework ascending
+firework bang
+firework bang big
+chomping
+ghost
+closing gate door</SoundNames>
+    <BattleSoundNames>{SILENCE}
+menu select
+menu cancel
+menu scroll
+jump
+birdie tweet
+bonus flower status up
+error incorrect answer
+get dizzy
+arrow sling
+Mallow punch 1
+swoosh run away
+bomb explosion
+coin
+item get
+spike sting
+bite
+Star Gun shoot
+Super Jump hit 1
+Drain Beam
+Aurora Flash
+Scarecrow birdies
+Corona descends
+small laser?
+{NULL}
+slap big
+Flame Wall
+item 1-UP
+Flame
+fire shoot
+fire throw
+fire hit
+fire burn
+insert
+Muku Muku~
+spell power up
+snow
+monster item toss
+frying pan hit 2
+claw
+pierce
+Super Jump hit 4
+blade
+coin showers into fountain
+Bolt
+HP Rain cloud
+plasma bounce
+dry clunk
+Mallow punch 2
+cymbal crash
+Super Jump hit 5
+fire throw big
+Finger Shot bullets
+Thwomp hit ground
+hammer hit 1
+hammer hit 2
+Super Jump hit 1-UP
+fire spout__
+Super Jump hit 2
+Super Jump hit 3
+cymbal resonance
+item use
+monster run away
+Geno Blast ignition
+egg hatch
+Yoshi cant make cookie
+Recover HP
+Recover FP
+Recover Drink
+Geno power up
+Geno Beam
+Psychopath drum roll
+Psychopath cloud appears
+Psychopath message
+quack__
+Yoshi talk
+stat boost (single)
+stat boost (multi)
+timed stat boost
+rumble (single)
+wallop 1
+wallop 2
+wallop 3
+frying pan hit 1
+wallop 4
+wallop 5
+long fall
+big bounce
+ticking bomb
+common monster explosion
+birdie call?__
+{NULL}
+Spear Rain (single)
+Bowyer arrow lock button
+Shocker
+Bowsers Crusher?__
+rumble (multi)
+plasma toss
+click
+Willy Wisp
+Electroshock sparks
+Stench
+Static E!
+Crystal hits
+Blizzard
+Rock Candy
+Light Beam
+bubble pop
+Howl
+Geno Hand Cannon shoot
+huge explosion
+Sledge
+swing
+Geno Finger Shot hit
+Spikey attack
+transform
+Terrapin swing
+sting?__
+Geno Blast end
+Meteor Swarm
+deep swallow
+big swing
+poisoned
+Chomp bite
+Goomba roll
+spike shot
+flopping hit
+liquid droplet
+Amanita curls
+throw?__
+Valor Up Vigor Up
+echoing bubble__
+stinger poison
+Lullaby Sad Song
+Boo disappears
+Boo appears
+Boo approaches
+Bowser Crush stomp!
+Endobubble
+guitar string
+S'crow Bell
+Lullaby Mario Theme
+Dry Bones attack
+toss
+Lightning Orb
+Artichoker spines
+slap
+{NULL}
+Smithy bullet fingers
+enemy jumps high
+enemy taunts then hits
+spores
+hit
+Guerrilla thinks
+buzzing bee
+Sparky hit
+Chomp bite
+Enigma scatters
+yelp__
+big deep hit
+slap
+Spore Chimes Doom Reverb
+{NULL}
+{NULL}
+Carroboscis attack
+Sky Troopa flaps
+tapping feet
+Belome eats
+Terrapin attack
+teleport attack
+submerged under
+slap powerful
+weapon timing
+Terrorize
+Solidify
+Deathsickle
+boss fade out death
+Poison Gas 1
+Poison Gas 2
+Sleepy Bomb
+Sleepy Time timed
+Lamb's Lure (single)
+Sheep Attack 1
+floating lamb
+Sheep Attack 2 (multi)
+Geno Flash shoot
+Geno Flash explosion
+Mute balloon rises
+Petal Blast
+Pollen Nap
+Come Back
+Mute balloon fails
+big shell kick
+big shell hit 1
+big shell hit 2
+explosive hit
+Geno Flash transformation
+Geno Star Gun hit
+Ice Rock
+Arrow Rain
+Spear Rain (multi)
+Sword Rain
+Corona flash
+Mega Drain (single)
+chomping
+Jinxed
+monster swing
+monster taunt
+Smithy Form 1 - light up
+Smithy Form 1 - transform
+Booster Express train horn</BattleSoundNames>
+    <BattlefieldNames>Forest Maze
+Forest Maze: Bowyer's Pad
+Bean Valley: Beanstalks
+Sunken Ship: King Calamari's Cellar
+Sunken Ship
+Moleville Mines
+___mines
+Bowser's Keep
+Barrel Volcano: Czar Dragon's Pad
+Grasslands
+Mountains
+Mushroom Kingdom House
+Booster Tower
+Mushroom Kingdom Castle
+Kero Sewers: Underwater
+Mushroom Kingdom Castle
+Bowser's Keep Turret: Exor
+Booster Tower: Balcony
+Smithy Factory: Count Down's Pad
+Smithy Factory
+Barrel Volcano
+Kero Sewers
+Nimbus Castle
+Nimbus Castle: Birdo's Room
+Nimbus Land
+Underground
+___uses Mushroom Kingdom tiles
+___forested area with unique trees
+Mushroom Kingdom
+Bowser's Keep: Chandeliers
+Forest Maze: Path to Bowyer
+Level Up foreground
+Level Up background
+Plateaus
+___sea enclave
+Marrymore Chapel Sanctuary
+Star Hill
+Seaside Town Beach
+Sea
+Blade: Axem Rangers
+Smithy Factory: Domino &amp; Cloaker's Pad
+Bean Valley: Grasslands
+Belome Temple
+Land's End Desert
+Factory Grounds: Smithy's Pad
+Smithy's Final Form
+Jinx's Dojo
+Culex
+Factory Grounds
+Bean Valley: Pipe Room
+_____
+_____
+_____
+_____
+_____
+_____
+_____
+_____
+_____
+_____
+_____
+_____
+_____
+_____</BattlefieldNames>
+  </CustomLabels>
+</LazyShellConfig>

@@ -233,7 +233,7 @@ P014_FLOWER_COLLECTION = Packet(
 )
 P015_SMALL_FROG_COIN_STILL = Packet(
     packet_id=15,
-    sprite_id=SPR0131_SMALL_FROG_COIN,
+    sprite_id=SPR0211_SMALL_FROG_COIN,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
     show_shadow=False,
     b0=0,
@@ -308,8 +308,8 @@ P019_FROG_COIN_BEING_COLLECTED = Packet(
 )
 P020_WATER_SPLASH = Packet(
     packet_id=20,
-    sprite_id=SPR0195_FLOWER,
-    action_script_id=A0545_SEQUENCE_5_STATIC,
+    sprite_id=SPR0210_SPLASH_WATER_DROPLETS,
+    action_script_id=A0167_SPAWN_AT_7016_701A_CALCULATED,
     show_shadow=False,
     b0=0,
     b1a=0,
@@ -458,7 +458,7 @@ P029_SUNKEN_SHIP_3D_MAZE = Packet(
 )
 P030_WATER_SPLASH_DROPS_SFX = Packet(
     packet_id=30,
-    sprite_id=SPR0056_SPLASH_WATER_DROPLETS,
+    sprite_id=SPR0210_SPLASH_WATER_DROPLETS,
     action_script_id=A0720_WATER_SPLASH_DROPS_SFX,
     show_shadow=False,
     b0=0,
@@ -1388,7 +1388,7 @@ P091_CHEST_COIN_STILL = Packet(
 )
 P092_GLOVE_CHEST = Packet(
     packet_id=92,
-    sprite_id=SPR0045_GLOVE,
+    sprite_id=SPR0208_GLOVE,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
     show_shadow=False,
     b0=0,
@@ -1403,7 +1403,7 @@ P092_GLOVE_CHEST = Packet(
 )
 P093_CRYSTAL_CHEST = Packet(
     packet_id=93,
-    sprite_id=SPR0046_SHINY_STONE,
+    sprite_id=SPR0209_SHINY_STONE,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
     show_shadow=False,
     b0=0,

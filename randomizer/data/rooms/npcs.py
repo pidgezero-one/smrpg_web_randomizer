@@ -30,18 +30,18 @@ class _item_npc_base(NPC):
         )
 
 
-HAMMER_BASE = _item_npc_base(SPR0208_HAMMER_PACKET)
-FROGGIE_STICK_BASE = _item_npc_base(SPR0209_STICK_PACKET)
+HAMMER_BASE = _item_npc_base(SPR0045_HAMMER_PACKET)
+FROGGIE_STICK_BASE = _item_npc_base(SPR0046_STICK_PACKET)
 GREEN_SHELL_BASE = _item_npc_base(
     SPR0250_GREEN_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
 MUSIC_BASE = _item_npc_base(SPR0640_MUSIC_NOTE_STANDALONE)
-CHOMP_BASE = _item_npc_base(SPR0210_CHOMP_PACKET, acute_axis=3, obtuse_axis=3, height=3)
+CHOMP_BASE = _item_npc_base(SPR0056_CHOMP_PACKET, acute_axis=3, obtuse_axis=3, height=3)
 RED_SHELL_BASE = _item_npc_base(
     SPR0249_RED_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
 PARASOL_BASE = _item_npc_base(SPR0251_PARASOL_PACKET)
-FAN_BASE = _item_npc_base(SPR0211_FAN_PACKET)
+FAN_BASE = _item_npc_base(SPR0131_FAN_PACKET)
 TINY_STAR_BASE = _item_npc_base(SPR0226_TINY_STAR)
 PAN_BASE = _item_npc_base(SPR0199_FRYING_PAN_PACKET)
 CROWN_BASE = _item_npc_base(SPR0216_CROWN)
@@ -77,7 +77,7 @@ SMALL_COIN_BASE = _item_npc_base(
     SPR0193_SMALL_COIN, height=3, y_shift=1, min_vram_size=1
 )
 SMALL_FROG_COIN_BASE = _item_npc_base(
-    SPR0131_SMALL_FROG_COIN,
+    SPR0211_SMALL_FROG_COIN,
     height=3,
     y_shift=1,
     min_vram_size=1,
@@ -96,8 +96,8 @@ BEETLE_BASE = _item_npc_base(SPR0255_BEETLE, y_shift=1)
 FLOWER_BASE = _item_npc_base(SPR0636_SMALL_FLOWER_STANDALONE, y_shift=1)
 RECOVERY_MUSHROOM_BASE = _item_npc_base(SPR0637_RECOVERY_MUSHROOM_STANDALONE, y_shift=1)
 FROG_COIN_BASE = _item_npc_base(SPR0194_FROG_COIN, height=6, y_shift=5, min_vram_size=1)
-GLOVE_BASE = _item_npc_base(SPR0045_GLOVE)
-CRYSTAL_BASE = _item_npc_base(SPR0046_SHINY_STONE)
+GLOVE_BASE = _item_npc_base(SPR0208_GLOVE)
+CRYSTAL_BASE = _item_npc_base(SPR0209_SHINY_STONE)
 RED_ORB_BASE = _item_npc_base(SPR0214_RED_BALL)
 BLUE_ORB_BASE = _item_npc_base(SPR0215_BLUE_BALL)
 GREEN_ORB_BASE = _item_npc_base(SPR0217_GREEN_BALL)
@@ -2239,7 +2239,7 @@ NIMBUS_GUARD_NPC = NPC(
 )
 
 SPLASH_WATER_DROPLETS_NPC = NPC(
-    sprite_id=SPR0056_SPLASH_WATER_DROPLETS,
+    sprite_id=SPR0210_SPLASH_WATER_DROPLETS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -3893,7 +3893,7 @@ BOB_OMB_NPC = NPC(
 )
 
 CHOMP_PACKET_NPC = NPC(
-    sprite_id=SPR0210_CHOMP_PACKET,
+    sprite_id=SPR0056_CHOMP_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -4061,7 +4061,7 @@ MARIO_DOLL_SURPRISED_NPC_2 = NPC(
 )
 
 HAMMER_PACKET_NPC = NPC(
-    sprite_id=SPR0208_HAMMER_PACKET,
+    sprite_id=SPR0045_HAMMER_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -5309,7 +5309,7 @@ MOKURA_S_CLOUD_BLUE_NPC = NPC(
 )
 
 SMALL_FROG_COIN_NPC = NPC(
-    sprite_id=SPR0131_SMALL_FROG_COIN,
+    sprite_id=SPR0211_SMALL_FROG_COIN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -6196,7 +6196,7 @@ TERRAPIN_NPC_2 = NPC(
 )
 
 SPLASH_WATER_DROPLETS_NPC_2 = NPC(
-    sprite_id=SPR0056_SPLASH_WATER_DROPLETS,
+    sprite_id=SPR0210_SPLASH_WATER_DROPLETS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -6508,7 +6508,7 @@ GREY_STONE_BLOCK_NPC = NPC(
 )
 
 STICK_PACKET_NPC = NPC(
-    sprite_id=SPR0209_STICK_PACKET,
+    sprite_id=SPR0046_STICK_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -7156,7 +7156,7 @@ GREAPER_NPC = NPC(
 )
 
 FAN_PACKET_NPC = NPC(
-    sprite_id=SPR0211_FAN_PACKET,
+    sprite_id=SPR0131_FAN_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,

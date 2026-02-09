@@ -495,7 +495,7 @@ def _is_coin_sprite(sprite_id: int) -> bool:
         SPR0192_COIN,
         SPR0193_SMALL_COIN,
         SPR0194_FROG_COIN,
-        SPR0131_SMALL_FROG_COIN,
+        SPR0211_SMALL_FROG_COIN,
     ]
 
 
@@ -941,7 +941,7 @@ def set_partitions(world: GameWorld) -> None:
                         SPR0192_COIN,
                         SPR0193_SMALL_COIN,
                         SPR0194_FROG_COIN,
-                        SPR0131_SMALL_FROG_COIN,
+                        SPR0211_SMALL_FROG_COIN,
                     ]:
                         priority_buffers.append(BufferType.COINS)
 
