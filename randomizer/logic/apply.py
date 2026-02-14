@@ -6,6 +6,8 @@ from uuid import uuid4
 import random
 import statistics
 
+from randomizer.logic.partition_calculator import update_kitchen_partitions
+
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
 
@@ -357,12 +359,14 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                 for n, room_id_int in npcs:
                     npc = cast(AreaObject, n)
                     room = world.rooms._rooms[room_id_int]
-                    assert room is not None
+                    assert room is not None, f"Room {room_id_int} not found"
                     if place.prize is not None and place.prize.model is not None:
                         model = place.prize.model().base
                     else:
                         model = EMPTY_NPC
-                    cast(BaseRoomObject, room.get_npc_by_target_id(npc))._npc = model
+                    room_obj = room.get_npc_by_target_id(npc)
+                    assert room_obj is not None, f"NPC {npc} not found in room {room_id_int}"
+                    cast(BaseRoomObject, room_obj)._npc = model
 
             if isinstance(place, StarHillStarPiece):
                 # Show the star piece on Star Hill if it's set
@@ -440,12 +444,18 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # Booster Tower gating animation
     # On paper this could go into setup/gating.py, but script insertion depends on who the starting character is, which can be random
     tower_door_room = world.rooms._rooms[R202_BOOSTER_TOWER_ENTRANCE]
-    assert tower_door_room is not None
+    assert tower_door_room is not None, f"Room {R202_BOOSTER_TOWER_ENTRANCE} not found"
+    tower_npc_0 = tower_door_room.get_npc_by_target_id(NPC_0)
+    assert tower_npc_0 is not None, f"NPC_0 not found in room {R202_BOOSTER_TOWER_ENTRANCE}"
+    tower_npc_3 = tower_door_room.get_npc_by_target_id(NPC_3)
+    assert tower_npc_3 is not None, f"NPC_3 not found in room {R202_BOOSTER_TOWER_ENTRANCE}"
+    tower_npc_4 = tower_door_room.get_npc_by_target_id(NPC_4)
+    assert tower_npc_4 is not None, f"NPC_4 not found in room {R202_BOOSTER_TOWER_ENTRANCE}"
     if not world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
-        tower_door_room.get_npc_by_target_id(NPC_3)._npc = EMPTY_NPC
+        tower_npc_3._npc = EMPTY_NPC
     if not world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
-        tower_door_room.get_npc_by_target_id(NPC_4)._npc = EMPTY_NPC
-    
+        tower_npc_4._npc = EMPTY_NPC
+
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN, """ You can't get inside Booster's\n Tower very easily. You'll need\n a pretty good jumper for that.[await]""")
         if world.overworld_character.ally.index == 0:
@@ -456,7 +466,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 mario_script.contents
             )
-            tower_door_room.get_npc_by_target_id(NPC_0)._npc = MARIO_WALKING_DOWN_LEFT_NPC
+            tower_npc_0._npc = MARIO_WALKING_DOWN_LEFT_NPC
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MALLOW):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN, """ You can't get inside Booster's\n Tower very easily. You'll need\n some pretty magical fluff for that.[await]""")
         if world.overworld_character.ally.index == 4:
@@ -467,7 +477,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 mallow_script.contents
             )
-            tower_door_room.get_npc_by_target_id(NPC_0)._npc = MALLOW_WALKING_DOWN_LEFT_NPC
+            tower_npc_0._npc = MALLOW_WALKING_DOWN_LEFT_NPC
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a pretty strong gun for that.[await]""")
         if world.overworld_character.ally.index == 3:
@@ -488,7 +498,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 bowser_script.contents
             )
-            tower_door_room.get_npc_by_target_id(NPC_0)._npc = BOWSER_WALKING_DOWN_LEFT_NPC
+            tower_npc_0._npc = BOWSER_WALKING_DOWN_LEFT_NPC
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a pyrotechnician for that.[await]""")
         if world.overworld_character.ally.index == 1:
@@ -499,7 +509,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 toadstool_script.contents
             )
-            tower_door_room.get_npc_by_target_id(NPC_0)._npc = TOADSTOOL_WALKING_DOWN_LEFT_NPC
+            tower_npc_0._npc = TOADSTOOL_WALKING_DOWN_LEFT_NPC
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.PUNCHINELLO):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n to track down a hot-head for that.[await]""")
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MINES):
@@ -518,6 +528,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     update_statue_room_partition(world)
     update_mines_henchman_room_partitions(world)
     update_protagonist_room_partition(world)
+    update_kitchen_partitions(world)
 
     # Set can_run_away for each boss fight location's formation
     # This must happen after all renders to ensure the correct formation is used
@@ -532,9 +543,11 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # and also sub character sprites in overworld where appropriate
     # some other edge case logic for character-specific stuff could go here too
     clone_room = world.rooms._rooms[R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
-    assert clone_room is not None
+    assert clone_room is not None, f"Room {R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM} not found"
+    clone_room_npc_0 = clone_room.get_npc_by_target_id(NPC_0)
+    assert clone_room_npc_0 is not None, f"NPC_0 not found in room {R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM}"
     if world.overworld_character.ally.index == 1:
-        clone_room.get_npc_by_target_id(NPC_0)._npc = TOADSTOOL_WALKING_DOWN_LEFT_NPC
+        clone_room_npc_0._npc = TOADSTOOL_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = TOADSTOOL_96
         world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = TOADSTOOL_132
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = TOADSTOOL_135
@@ -549,7 +562,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0037_EMPTY] = TOADSTOOL_968
         world.update_dialog(DI2320_TOADSTOOL_ROOM_HINT, " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
     elif world.overworld_character.ally.index == 2:
-        clone_room.get_npc_by_target_id(NPC_0)._npc = BOWSER_WALKING_DOWN_LEFT_NPC
+        clone_room_npc_0._npc = BOWSER_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = BOWSER_96
         world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = BOWSER_132
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = BOWSER_135
@@ -563,7 +576,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0036_EMPTY] = BOWSER_974
         world.sprites.sprites[SPR0037_EMPTY] = BOWSER_975
     elif world.overworld_character.ally.index == 3:
-        clone_room.get_npc_by_target_id(NPC_0)._npc = GENO_WALKING_DOWN_LEFT_NPC
+        clone_room_npc_0._npc = GENO_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
         world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = GENO_132
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = GENO_135
@@ -577,7 +590,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0036_EMPTY] = GENO_988
         world.sprites.sprites[SPR0037_EMPTY] = GENO_989
     elif world.overworld_character.ally.index == 4:
-        clone_room.get_npc_by_target_id(NPC_0)._npc = MALLOW_WALKING_DOWN_LEFT_NPC
+        clone_room_npc_0._npc = MALLOW_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = MALLOW_96
         world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = MALLOW_132
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = MALLOW_135

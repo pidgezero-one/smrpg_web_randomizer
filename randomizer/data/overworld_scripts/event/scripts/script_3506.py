@@ -37,7 +37,11 @@ script = EventScript([
 	DisableObjectTrigger(NPC_8, identifier="EVENT_3506_disable_trigger_2"),
 	StopBackgroundEvent(TIMER_701C),
 	EnableControlsUntilReturn([]),
-
+	Set70107015ToObjectXYZ(MARIO),
+	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
+	AddConstToVar(PRIMARY_TEMP_7000, 608),
+	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
+    CopyVarToVar(BOOSTER_HILL_FLOWER_COUNTER, PRIMARY_TEMP_7000),
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["summon_flower_1_"]),
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["summon_flower_2_"]),
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["summon_flower_3_"]),
@@ -158,8 +162,8 @@ script = EventScript([
 	JmpIfBitClear(TEMP_7043_7, ["EVENT_3506_set_bit_19"]),
 	SetTempSyncActionScript(NPC_7, A0718_BOOSTER_HILL_BOSS_MOVE_FORWARD),
 	SetBit(TEMP_7043_7, identifier="EVENT_3506_set_bit_19"),
+	EnableObjectTrigger(NPC_8),
 	EnableControlsUntilReturn([B]),
 	ResumeBackgroundEvent(TIMER_701C),
-	EnableObjectTrigger(NPC_8),
 	Return()
 ])

@@ -60,7 +60,7 @@ script = EventScript([
 	Pause(30),
 	RunDialog(dialog_id=DI2572_TOWER_HENCHMAN_2, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Pause(5),
-	RunEventAsSubroutine(E1186_HENCHMAN_BATTLE_PACK_SELECTOR),
+	RunEventAsSubroutine(E0054_HENCHMAN_CONTAINER_4),
 	JmpIfBitClear(GAME_OVER, ["EVENT_1346_remove_from_current_level_12"]),
 	ResetAndChooseGame(),
 	RemoveObjectFromCurrentLevel(NPC_0, identifier="EVENT_1346_remove_from_current_level_12"),

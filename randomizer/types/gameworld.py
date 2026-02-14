@@ -1,6 +1,7 @@
 # pyright: reportWildcardImportFromLibrary=false
 from __future__ import annotations
 from typing import Any, Callable, Type, TypeVar, cast
+import json
 import random
 import hashlib
 import re
@@ -56,7 +57,7 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
 from smrpgpatchbuilder.datatypes.levels.room_collection import RoomCollection
 from smrpgpatchbuilder.datatypes.shops.classes import ShopCollection
 from smrpgpatchbuilder.datatypes.spells.classes import SpellCollection
-from smrpgpatchbuilder.datatypes.graphics.classes import SpriteCollection
+from smrpgpatchbuilder.datatypes.graphics.classes import SpriteCollection, AnimationBank
 from smrpgpatchbuilder.datatypes.sprites.palette import (
     EventPaletteCollection,
     SpritePaletteCollection,
@@ -1031,8 +1032,6 @@ class GameWorld:
         # Apply cosmetic settings (re-seeded for variation between generations)
         apply_cosmetic_settings(self)
 
-        import json
-
         with open("spoiler_after_replacements.json", "w") as f:
             json.dump(self.spoiler, f, indent=2, default=str)
 
@@ -1050,8 +1049,6 @@ class GameWorld:
         # replace bad items with coins, supplant YouMissed, fill empty locations, etc
 
         # Write spoiler to JSON file
-        import json
-
         with open("spoiler.json", "w") as f:
             json.dump(self.spoiler, f, indent=2, default=str)
 
@@ -1380,14 +1377,6 @@ class GameWorld:
         progress += 3
 
         # Render character palettes when any non-default palette is selected
-        from .flags import (
-            MarioPaletteChoice,
-            MallowPaletteChoice,
-            GenoPaletteChoice,
-            BowserPaletteChoice,
-            ToadstoolPaletteChoice,
-        )
-
         palette_flags = [
             MarioPaletteChoice,
             MallowPaletteChoice,
@@ -1460,8 +1449,6 @@ class GameWorld:
         progress += 3
 
         # Collect unused ranges and add as AnimationBanks
-        from smrpgpatchbuilder.datatypes.graphics.classes import AnimationBank
-
         # From overworld dialogs
         for start, end in self.overworld_dialogs.get_unused_ranges():
             self.sprites.animation_data_banks.append(AnimationBank(start, end))

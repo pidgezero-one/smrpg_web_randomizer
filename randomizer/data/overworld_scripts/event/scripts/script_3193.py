@@ -34,7 +34,7 @@ from ....spells.spells import *
 script = EventScript([
 	MoveScriptToMainThread(),
 	SetBit(TEMP_7043_0),
-	RunEventAsSubroutine(E0018_FIGHT_DO_NOT_REMOVE),
+	RunEventAsSubroutine(E0030_MINES_HENCHMAN_FIGHT),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	JmpIfBitSet(RUN_AWAY, ["EVENT_3193_clear_bit_9"]),
 	ActionQueueSync(target=MEM_70A8, subscript=[

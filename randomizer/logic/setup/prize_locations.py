@@ -710,12 +710,18 @@ def set_locations(world: GameWorld) -> None:
             Return()
         ])
         room = world.rooms._rooms[R204_MUSHROOM_WAY_AREA_02]
-        assert room is not None
-        room.get_npc_by_target_id(NPC_10).set_visible(True)
-        room.get_npc_by_target_id(NPC_11).set_visible(True)
+        assert room is not None, f"Room {R204_MUSHROOM_WAY_AREA_02} not found"
+        npc_10 = room.get_npc_by_target_id(NPC_10)
+        assert npc_10 is not None, f"NPC_10 not found in room {R204_MUSHROOM_WAY_AREA_02}"
+        npc_10.set_visible(True)
+        npc_11 = room.get_npc_by_target_id(NPC_11)
+        assert npc_11 is not None, f"NPC_11 not found in room {R204_MUSHROOM_WAY_AREA_02}"
+        npc_11.set_visible(True)
         room = world.rooms._rooms[R142_LANDS_END_AREA_05_SKY_BRIDGE]
-        assert room is not None
-        room.get_npc_by_target_id(NPC_19).set_visible(True)
+        assert room is not None, f"Room {R142_LANDS_END_AREA_05_SKY_BRIDGE} not found"
+        npc_19 = room.get_npc_by_target_id(NPC_19)
+        assert npc_19 is not None, f"NPC_19 not found in room {R142_LANDS_END_AREA_05_SKY_BRIDGE}"
+        npc_19.set_visible(True)
 
 
     invisible_item_pool = [

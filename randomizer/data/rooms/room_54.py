@@ -29,6 +29,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.numbers.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *
@@ -280,6 +281,9 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            acute_axis=UInt4(6),
+            obtuse_axis=UInt4(5),
+            height=UInt8(12),
         ),
     ],
     extra_sprite_actions=[

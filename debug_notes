@@ -94,33 +94,34 @@ Booster Tower
 🚧 chomps are too light
 🚧 booster tower does not load when character needed to unlock it
 🚧 shadows broken in curtain room, makes no sense
-- snifits in curtain room animations look backward, leaning forward sprite happens after closing curtain instead of before opening it
+🚧 snifits in curtain room animations look backward, leaning forward sprite happens after closing curtain instead of before opening it
 - attacking blue fireball makes you run away
-- shouln't be able to run from tower henchman fights
-- jinx is boss in booster tower: snifit is unchanged at front desk, but battle loads shy guy. can still run away
-- rob omb is a snifit battle
-- some of the items in checkerboard room dont load at all
-- top level chests dont seem suitable for slots, unless we can figure out a working partition
+🚧 shouln't be able to run from tower henchman fights
+🚧 jinx is boss in booster tower: snifit is unchanged at front desk, but battle loads shy guy. can still run away
+🚧 rob omb is a snifit battle
+🚧 some of the items in checkerboard room dont load at all
+🚧 top level chests dont seem suitable for slots, unless we can figure out a working partition
 
 Booster Hill
-- captee animation is wrong
-- packet did not show. after that, no longer able to activate captee
-- make sure captee's hitbox is always the same size as original
+🚧 captee animation is wrong
+🚧 packet did not show
+🚧 after that, no longer able to activate captee
+🚧 make sure captee's hitbox is always the same size as original
 
 Marrymore
-- bloober sprites are wrong (incorrect buffer for their sprite size)
-- geno doing wrong animations in sanctuary
+🚧 bloober sprites are wrong (incorrect buffer for their sprite size)
+🚧 geno doing wrong animations in sanctuary
 - snifit sprites glitch out
-- item on jinx's head too high up
-- squids have torte dialogs
-- what the hell happened to the dialog when i chose the suite with the stay voucher?
-- bellhop sidequest gets stuck on "please see our guest out"
+🚧 item on jinx's head too high up
+🚧 squids have torte dialogs
+🚧 what the hell happened to the dialog when i chose the suite with the stay voucher?
+🚧 bellhop sidequest gets stuck on "please see our guest out"
 
 Seaside Town
 🚧 seaside: boss is replacing the wrong sprite in confrontation, also bad partition for grate guy
 🚧 culex's letter scrolls too fast, also doesn't properly explain who the final boss is
-  - dodo's has this problem now. audit letters
-- let's make the shop in the left house never go away
+  🚧 dodo's has this problem now. audit letters
+🚧 let's make the shop in the left house never go away
 
 Sea
 

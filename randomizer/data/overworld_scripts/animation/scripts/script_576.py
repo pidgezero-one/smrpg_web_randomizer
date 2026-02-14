@@ -16,11 +16,11 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_SetSpriteSequence(index=7, is_mold=True, is_sequence=True, looping=True),
+	A_SetSpriteSequence(index=7, is_mold=True, is_sequence=True, looping=True, identifier="EVENT_576_open_curtain_async_26"),
 	A_Pause(4),
-	A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True, looping=True),
+	A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True, looping=True, identifier="EVENT_576_open_curtain_async_27"),
 	A_Pause(4),
-	A_SetSpriteSequence(index=8, is_mold=True, is_sequence=True, looping=True),
+	A_SetSpriteSequence(index=8, is_mold=True, is_sequence=True, looping=True, identifier="EVENT_576_open_curtain_async_28"),
 	A_Pause(4),
 	A_ReturnQueue()
 ])

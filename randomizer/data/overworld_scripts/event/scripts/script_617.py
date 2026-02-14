@@ -49,7 +49,7 @@ script = EventScript([
 		A_WalkNorthwestSteps(4),
 		A_SetSequenceSpeed(SLOW)
 	]),
-	SetVarToConst(TEMP_70A9, 27),
+	SetVarToConst(TEMP_70A9, NPC_7),
 	SetVarToConst(TEMP_70B8, 1),
 	Jmp(["EVENT_617_pause_13"]),
 	ActionQueueAsync(target=NPC_6, subscript=[
@@ -60,7 +60,7 @@ script = EventScript([
 		A_WalkNorthwestSteps(4),
 		A_SetSequenceSpeed(SLOW)
 	], identifier="EVENT_617_action_queue_10"),
-	SetVarToConst(TEMP_70A9, 26),
+	SetVarToConst(TEMP_70A9, NPC_6),
 	SetVarToConst(TEMP_70B8, 3),
 	Pause(120, identifier="EVENT_617_pause_13"),
 	ActionQueueAsync(target=NPC_1, subscript=[
@@ -79,12 +79,8 @@ script = EventScript([
 	ClearBit(TEMP_7042_6),
 	EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
 	CopyVarToVar(from_var=TEMP_70B8, to_var=PRIMARY_TEMP_7000),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_617_set_action_script_28"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_617_set_action_script_31"]),
 	SetSyncActionScript(NPC_7, A0321_BELLHOP_FACE_PLAYER),
-	Return(),
-	SetSyncActionScript(NPC_8, A0321_BELLHOP_FACE_PLAYER, identifier="EVENT_617_set_action_script_28"),
-	SetSyncActionScript(NPC_9, A0321_BELLHOP_FACE_PLAYER),
 	Return(),
 	SetSyncActionScript(NPC_6, A0321_BELLHOP_FACE_PLAYER, identifier="EVENT_617_set_action_script_31"),
 	Return()

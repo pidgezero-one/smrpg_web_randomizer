@@ -159,21 +159,10 @@ script = EventScript([
 	], identifier="EVENT_611_action_queue_95"),
 	JmpIfBitSet(GUEST_DROPPED_OFF, ["EVENT_611_jmp_if_bit_set_107"]),
 	CopyVarToVar(from_var=TEMP_70B8, to_var=PRIMARY_TEMP_7000),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_611_jmp_if_bit_set_107"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_611_action_queue_103"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_611_action_queue_106"]),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_TransferToXYZF(x=4, y=60, z=0, direction=EAST),
 		A_FaceSoutheast()
-	]),
-	Jmp(["EVENT_611_jmp_if_bit_set_107"]),
-	ActionQueueSync(target=NPC_8, subscript=[
-		A_TransferToXYZF(x=4, y=60, z=0, direction=EAST),
-		A_FaceNortheast()
-	], identifier="EVENT_611_action_queue_103"),
-	ActionQueueAsync(target=NPC_9, subscript=[
-		A_TransferToXYZF(x=4, y=59, z=0, direction=EAST),
-		A_FaceSouthwest()
 	]),
 	Jmp(["EVENT_611_jmp_if_bit_set_107"]),
 	ActionQueueAsync(target=NPC_6, subscript=[

@@ -220,6 +220,7 @@ def render_booster_tower_indoor_boss(
     prize: BossFightPrize,
     npc_slots: list[BossFightLocationNPC],
     is_vanilla: bool,
+    henchmen_replaced: bool = True,
 ) -> None:
     """Apply animation and sprite changes for Booster Tower indoor boss fight."""
     # Adjust the boss sprite behind the Booster Tower door
@@ -323,9 +324,20 @@ def render_booster_tower_indoor_boss(
         ("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_39"),
         ("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_40"),
     ]
-    for eid, aid in deletions:
-        if not is_vanilla:
+    as_deletions = [
+        "EVENT_576_open_curtain_async_26",
+        "EVENT_576_open_curtain_async_27",
+        "EVENT_576_open_curtain_async_28",
+        "EVENT_577_open_curtain_async_26",
+        "EVENT_577_open_curtain_async_27",
+        "EVENT_577_open_curtain_async_28",
+        "EVENT_577_open_curtain_async_29",
+    ]
+    if not is_vanilla and henchmen_replaced:
+        for eid, aid in deletions:
             world.event_scripts.delete_subscript_command_by_identifier(eid, aid)
+        for aid in as_deletions:
+            world.action_scripts.delete_command_by_identifier(aid)
 
     # T-pose replacements
     tpose_replacements = [("chapel_tpose_queue_1", "chapel_tpose_1")]
@@ -847,10 +859,12 @@ def render_dojo_fight(
 def render_bean_valley_planter_boss(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply NPC position changes for Bean Valley Planter boss fight."""
     room = world.rooms._rooms[R254_BEAN_VALLEY_SMILAX_AREA]
-    assert room is not None
+    assert room is not None, f"Room {R254_BEAN_VALLEY_SMILAX_AREA} not found"
     thrax = room.get_npc_by_target_id(NPC_0)
+    assert thrax is not None, f"NPC_0 not found in room {R254_BEAN_VALLEY_SMILAX_AREA}"
     thrax.set_visible(False)
     boss = room.get_npc_by_target_id(NPC_1)
+    assert boss is not None, f"NPC_1 not found in room {R254_BEAN_VALLEY_SMILAX_AREA}"
     boss.set_x(thrax.x)
     boss.set_y(thrax.y)
     boss.set_z(thrax.z)
@@ -1164,11 +1178,11 @@ def render_inner_factory_third_fight_slot(
 def render_inner_factory_fourth_fight(world: GameWorld) -> None:
     """Hide NPCs 0-6 in Gun Yolk's room for non-vanilla boss."""
     room = world.rooms._rooms[R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
-    assert room is not None
+    assert room is not None, f"Room {R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM} not found"
     for npc_id in [NPC_0, NPC_1, NPC_2, NPC_3, NPC_4, NPC_5, NPC_6]:
         obj = room.get_npc_by_target_id(npc_id)
-        if obj is not None:
-            obj.set_visible(False)
+        assert obj is not None, f"NPC {npc_id} not found in room {R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM}"
+        obj.set_visible(False)
 
 
 def render_final_boss_fight(

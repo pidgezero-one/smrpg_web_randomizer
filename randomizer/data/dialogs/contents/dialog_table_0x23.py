@@ -93,7 +93,7 @@ dialog_data[28] = ''' The chapel kitchen has been making
  some pretty weird cakes lately.[await]
  I'm not sure if all of them are even
  really cakes.[await]'''
-dialog_data[29] = '''[await][page]
+dialog_data[29] = '''[page]
  I see you have a Stay Voucher.[await]
  You're going to love our hotel's
  fine suite![await]'''

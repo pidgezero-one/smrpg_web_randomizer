@@ -38,5 +38,5 @@ script = EventScript([
 	ClearBit(TEMP_707C_5),
 	ClearBit(TEMP_707C_6),
 	ClearBit(TEMP_707C_7),
-	JmpToEvent(E1186_HENCHMAN_BATTLE_PACK_SELECTOR)
+	JmpToEvent(E0024_BATTLE_RESULT_CHECK)
 ])

@@ -33,6 +33,7 @@ FORM0000 = Formation(
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,
+    can_run_away=False,
 )
 
 FORM0001 = Formation(

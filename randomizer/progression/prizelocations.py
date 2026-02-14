@@ -135,6 +135,7 @@ from ..logic.renders import (
     render_booster_tower_henchman_scripts,
     render_marrymore_boss_henchmen,
     render_marrymore_character_empty,
+    render_marrymore_character,
     render_seaside_beach_boss,
     render_ship_password_boss,
     render_ship_final_boss,
@@ -3643,7 +3644,7 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3658,7 +3659,7 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3673,7 +3674,7 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3841,18 +3842,18 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             is_vanilla = isinstance(
                 self.prize, (self._originally_held, Booster2BossFight)
             )
-            render_booster_tower_indoor_boss(
-                world, self.prize, self.npc_slots, is_vanilla
-            )
 
-            # Remove special snifit sprites that other henchmen don't have
-            # Only if character henchman slots are assigned (KeepMinigameSpritesIntact not set)
+            # Check if character henchman slots are assigned (KeepMinigameSpritesIntact not set)
             from ..types.flags import KeepMinigameSpritesIntact
 
             character_henchmen_assigned = (
                 not world.settings.isflag_enabled(KeepMinigameSpritesIntact)
                 and self.prize.character_henchmen is not None
                 and len(self.prize.character_henchmen) >= 3
+            )
+
+            render_booster_tower_indoor_boss(
+                world, self.prize, self.npc_slots, is_vanilla, character_henchmen_assigned
             )
             if character_henchmen_assigned:
                 render_booster_tower_henchman_scripts(
@@ -4543,6 +4544,9 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
         op = super().render(world)
         if self.prize is None:
             render_marrymore_character_empty(world)
+        else:
+            assert isinstance(self.prize, CharacterPrize), f"MarrymoreCharacter prize must be CharacterPrize, got {type(self.prize)}"
+            render_marrymore_character(world, self.prize)
         return op
 
     # Flag as checked: MARRYMORE_LIBERATED

@@ -1,6 +1,6 @@
 """Progression gating and startup event setup."""
 from __future__ import annotations
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING
 
 from randomizer.data.variables.dialog_names import (
     DI1051_MOLEVILLE_CLOSED,
@@ -8,21 +8,17 @@ from randomizer.data.variables.dialog_names import (
     DI1053_BANDITS_WAY_HINT,
     DI1054_SUNKEN_SHIP_HINT,
     DI1055_SEWER_GATING_TEXT,
-    DI1163_BOOSTER_TOWER_DOOR_OPEN,
     DI2474_NIMBUS_NPC,
     DI3726_KEEP_ACCESS_HINT,
 )
-from randomizer.data.variables.event_script_names import E1055_EMPTY
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     SetBit,
     ClearBit,
-    Return,
     ApplySolidityModToLevel,
     ApplyTileModToLevel,
     SummonObjectToSpecificLevel,
     RemoveObjectFromSpecificLevel,
 )
-from smrpgpatchbuilder.datatypes.levels.classes import RoomObject, Room
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_0, NPC_1, NPC_2, NPC_3
 
 if TYPE_CHECKING:
@@ -165,18 +161,14 @@ def apply_gating_settings(world: GameWorld) -> None:
 
     # Kero Sewers
     if not world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.OPEN):
-        cast(
-            RoomObject,
-            cast(
-                Room, world.rooms._rooms[R333_KERO_SEWERS_ENTRANCE]
-            ).get_npc_by_target_id(NPC_0),
-        ).set_visible(True)
-        cast(
-            RoomObject,
-            cast(
-                Room, world.rooms._rooms[R333_KERO_SEWERS_ENTRANCE]
-            ).get_npc_by_target_id(NPC_1),
-        ).set_visible(True)
+        room = world.rooms._rooms[R333_KERO_SEWERS_ENTRANCE]
+        assert room is not None, f"Room {R333_KERO_SEWERS_ENTRANCE} not found"
+        npc_0 = room.get_npc_by_target_id(NPC_0)
+        assert npc_0 is not None, f"NPC_0 not found in room {R333_KERO_SEWERS_ENTRANCE}"
+        npc_0.set_visible(True)
+        npc_1 = room.get_npc_by_target_id(NPC_1)
+        assert npc_1 is not None, f"NPC_1 not found in room {R333_KERO_SEWERS_ENTRANCE}"
+        npc_1.set_visible(True)
         world.event_2496_startup += [SetBit(SEWERS_CLOSED)]
 
         if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):

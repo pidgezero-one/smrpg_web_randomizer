@@ -640,8 +640,9 @@ def shuffle_shops(world: GameWorld) -> None:
         [low_item.room_service_price, low_item.room_service_price, type(low_item),
          high_item.room_service_price, high_item.room_service_price, type(high_item)]
     )
-    for id, val in updates:
-        cmd = world.event_scripts.get_command_by_identifier(id, SetVarToConst)
+    for identifier, val in updates:
+        cmd = world.event_scripts.get_command_by_identifier(identifier, SetVarToConst)
+        assert cmd is not None, f"Event script command with identifier '{identifier}' not found"
         var = cmd.address
         cmd.set_value_and_address(var, val)
 
@@ -665,8 +666,9 @@ def shuffle_shops(world: GameWorld) -> None:
         ["bomb_shop_item_1", "bomb_shop_item_2", "bomb_shop_item_3"],
         [type(b) for b in bi]
     )
-    for id, val in bomb_updates:
-        cmd = world.event_scripts.get_command_by_identifier(id, SetVarToConst)
+    for identifier, val in bomb_updates:
+        cmd = world.event_scripts.get_command_by_identifier(identifier, SetVarToConst)
+        assert cmd is not None, f"Event script command with identifier '{identifier}' not found"
         var = cmd.address
         cmd.set_value_and_address(var, val)
     

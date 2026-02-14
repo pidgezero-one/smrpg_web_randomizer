@@ -1080,8 +1080,8 @@ def update_statue_room_partition(world: GameWorld) -> None:
     STATUE_ROOM_INDEX = 341
 
     room = world.rooms._rooms[STATUE_ROOM_INDEX]
-    if room is None or room.partition is None:
-        return
+    assert room is not None, f"Room {STATUE_ROOM_INDEX} not found"
+    assert room.partition is not None, f"Room {STATUE_ROOM_INDEX} has no partition"
 
     # Get the StatueRoomBossFight location and its prize
     try:
@@ -1139,6 +1139,58 @@ def update_statue_room_partition(world: GameWorld) -> None:
         # Unknown format - set to empty
         room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
 
+def update_kitchen_partitions(world: GameWorld) -> None:
+    from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_0, NPC_1, NPC_2
+
+    room = world.rooms._rooms[R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    assert room is not None, f"Room {R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM} not found"
+    assert room.partition is not None, f"Room {R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM} has no partition"
+
+    npc_obj = room.get_npc_by_target_id(NPC_0)
+    assert npc_obj is not None, f"NPC_0 not found in room {R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM}"
+    sprite_id = npc_obj._npc.sprite_id
+    complete_sprite = _get_complete_sprite(world, sprite_id)
+    assert complete_sprite is not None
+    molds = complete_sprite.animation.properties.molds
+    first_mold = molds[0]
+    if first_mold.gridplane:
+        if first_mold.tiles[0].format in [0, 1]:
+            room.partition.buffers[0].set_buffer_type(BufferType.FOUR_SPRITES_PER_ROW)
+        else:
+            room.partition.buffers[0].set_buffer_type(BufferType.THREE_SPRITES_PER_ROW)
+    else:
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+
+    npc_obj = room.get_npc_by_target_id(NPC_1)
+    assert npc_obj is not None, f"NPC_1 not found in room {R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM}"
+    sprite_id = npc_obj._npc.sprite_id
+    complete_sprite = _get_complete_sprite(world, sprite_id)
+    assert complete_sprite is not None, f"Sprite {sprite_id} not found for NPC_1"
+    molds = complete_sprite.animation.properties.molds
+    first_mold = molds[0]
+    if first_mold.gridplane:
+        if first_mold.tiles[0].format in [0, 1]:
+            room.partition.buffers[1].set_buffer_type(BufferType.FOUR_SPRITES_PER_ROW)
+        else:
+            room.partition.buffers[1].set_buffer_type(BufferType.THREE_SPRITES_PER_ROW)
+    else:
+        room.partition.buffers[1].set_buffer_type(BufferType.EMPTY_3)
+
+    npc_obj = room.get_npc_by_target_id(NPC_2)
+    assert npc_obj is not None, f"NPC_2 not found in room {R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM}"
+    sprite_id = npc_obj._npc.sprite_id
+    complete_sprite = _get_complete_sprite(world, sprite_id)
+    assert complete_sprite is not None, f"Sprite {sprite_id} not found for NPC_2"
+    molds = complete_sprite.animation.properties.molds
+    first_mold = molds[0]
+    if first_mold.gridplane:
+        if first_mold.tiles[0].format in [0, 1]:
+            room.partition.buffers[2].set_buffer_type(BufferType.FOUR_SPRITES_PER_ROW)
+        else:
+            room.partition.buffers[2].set_buffer_type(BufferType.THREE_SPRITES_PER_ROW)
+    else:
+        room.partition.buffers[2].set_buffer_type(BufferType.EMPTY_3)
+
 
 def update_mines_henchman_room_partitions(world: GameWorld) -> None:
     """Update partition buffers for mines henchman rooms based on sprite width.
@@ -1162,16 +1214,15 @@ def update_mines_henchman_room_partitions(world: GameWorld) -> None:
 
     for room_index, buffer_index in room_configs:
         room = world.rooms._rooms[room_index]
-        if room is None or room.partition is None:
-            continue
+        assert room is not None, f"Room {room_index} not found"
+        assert room.partition is not None, f"Room {room_index} has no partition"
 
         if len(room.partition.buffers) <= buffer_index:
             continue
 
         # Get the henchman NPC (NPC_1 in both rooms)
         npc_obj = room.get_npc_by_target_id(NPC_1)
-        if npc_obj is None:
-            continue
+        assert npc_obj is not None, f"NPC_1 not found in room {room_index}"
 
         # Get the sprite ID from the NPC's base
         sprite_id = npc_obj._npc.sprite_id
@@ -1212,11 +1263,9 @@ def update_protagonist_room_partition(world: GameWorld) -> None:
     PROTAGONIST_ROOM_INDEX = 284
 
     room = world.rooms._rooms[PROTAGONIST_ROOM_INDEX]
-    if room is None or room.partition is None:
-        return
-
-    if len(room.partition.buffers) == 0:
-        return
+    assert room is not None, f"Room {PROTAGONIST_ROOM_INDEX} not found"
+    assert room.partition is not None, f"Room {PROTAGONIST_ROOM_INDEX} has no partition"
+    assert len(room.partition.buffers) > 0, f"Room {PROTAGONIST_ROOM_INDEX} has no partition buffers"
 
     # Get the recruited character's sprite
     character_model = world.overworld_character.character_model

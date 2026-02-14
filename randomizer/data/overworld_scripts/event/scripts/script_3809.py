@@ -521,7 +521,9 @@ script = EventScript([
 	ActionQueueSync(target=NPC_5, subscript=[
 		A_TransferToObjectXYZ(NPC_7),
 		A_ShiftZUpSteps(2, identifier="crown_adjust_height"),
-		A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True)
+		A_FloatingOn(),
+		A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True),
+		A_JumpToHeight(height=0, silent=True),
 	], identifier="crown_adjust_height_aq"),
 	Pause(30),
 	SetSyncActionScript(NPC_2, A0376_TURN_RANDOMLY_IN_PLACE),

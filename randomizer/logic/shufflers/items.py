@@ -916,27 +916,27 @@ def shuffle_prizes(world: GameWorld) -> None:
                 # Clear the vanilla slot machine NPCs from their original rooms
                 # Room 334: NPCs 2-6
                 room_334 = world.rooms._rooms[334]
-                if room_334 is not None:
-                    for npc_target in [NPC_2, NPC_3, NPC_4, NPC_5, NPC_6]:
-                        npc = room_334.get_npc_by_target_id(npc_target)
-                        if npc is not None:
-                            npc._npc = EMPTY_NPC
+                assert room_334 is not None, "Room 334 not found"
+                for npc_target in [NPC_2, NPC_3, NPC_4, NPC_5, NPC_6]:
+                    npc = room_334.get_npc_by_target_id(npc_target)
+                    assert npc is not None, f"NPC {npc_target} not found in room 334"
+                    npc._npc = EMPTY_NPC
 
                 # Room 348: NPCs 2-6
                 room_348 = world.rooms._rooms[348]
-                if room_348 is not None:
-                    for npc_target in [NPC_2, NPC_3, NPC_4, NPC_5, NPC_6]:
-                        npc = room_348.get_npc_by_target_id(npc_target)
-                        if npc is not None:
-                            npc._npc = EMPTY_NPC
+                assert room_348 is not None, "Room 348 not found"
+                for npc_target in [NPC_2, NPC_3, NPC_4, NPC_5, NPC_6]:
+                    npc = room_348.get_npc_by_target_id(npc_target)
+                    assert npc is not None, f"NPC {npc_target} not found in room 348"
+                    npc._npc = EMPTY_NPC
 
                 # Room 349: NPCs 3-7
                 room_349 = world.rooms._rooms[349]
-                if room_349 is not None:
-                    for npc_target in [NPC_3, NPC_4, NPC_5, NPC_6, NPC_7]:
-                        npc = room_349.get_npc_by_target_id(npc_target)
-                        if npc is not None:
-                            npc._npc = EMPTY_NPC
+                assert room_349 is not None, "Room 349 not found"
+                for npc_target in [NPC_3, NPC_4, NPC_5, NPC_6, NPC_7]:
+                    npc = room_349.get_npc_by_target_id(npc_target)
+                    assert npc is not None, f"NPC {npc_target} not found in room 349"
+                    npc._npc = EMPTY_NPC
 
                 continue
         elif isinstance(loc.originally_held(), BeetlemaniaPrize):
@@ -1229,6 +1229,7 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
                 continue
             event = SIGNAL_RING_EVENT_DICT[l.world_area]
             script = world.event_scripts.get_script_by_id(event)
+            assert script is not None, f"Event script {event} not found for StarPieceHints"
             script.insert_before_nth_command(
                 0, JmpIfBitClear(l.prize._hint, [f"EVENT_{event}_play_sound"])
                 )
