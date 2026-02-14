@@ -103,6 +103,28 @@ script = EventScript([
 		A_SequencePlaybackOff()
 	]),
 	JmpIfBitSet(RUNAWAY_MINECART_ITEM_OBTAINED, ["EVENT_3198_action_queue_17"]),
+    ActionQueueSync(target=NPC_2, subscript=[
+        A_Pause(22),
+        A_TransferToObjectXY(NPC_0),
+        A_SetSpriteSequence(index=1, is_sequence=True, identifier="minecart_item_coin_1"),
+        A_VisibilityOn(),
+        A_SetSequenceSpeed(FAST),
+        A_JumpToHeight(height=80, silent=True),
+        A_WalkSouthSteps(2),
+        A_JumpToHeight(height=32, silent=True),
+        A_WalkSouthPixels(3),
+        A_JumpToHeight(height=8, silent=True),
+        A_WalkSouthPixels(1),
+        A_SetSequenceSpeed(NORMAL),
+        A_Pause(15),
+        A_SetSequenceSpeed(SLOW),
+        A_Pause(5),
+        A_SetSequenceSpeed(NORMAL),
+        A_SetSpriteSequence(index=0, is_sequence=True, identifier="minecart_item_coin_2"),
+        A_ObjectMemoryClearBit(0x30, bits=[4]),
+        A_SetSolidityBits(cant_jump_through=True),
+        A_SummonObjectToSpecificLevel(NPC_2, R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM)
+	], identifier="minecart_item_aqueue"),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_SetSequenceSpeed(FAST),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),

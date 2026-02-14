@@ -24,6 +24,5 @@ script = MonsterScript([
 	IncreaseVarBy1(BV7EE000),
 	IfVarEqualOrGreaterThan(BV7EE000, 3),
 	SetTargetable(MONSTER_1_SET),
-	RunBattleDialog(69),
 	Wait1TurnandRestartScript()
 ])

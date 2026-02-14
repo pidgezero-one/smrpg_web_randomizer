@@ -36,7 +36,7 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0004_YO_STERISLAND,
-    entrance_event=E0455_RESUMMON_PIPE_VAULT_ENEMIES,
+    entrance_event=E3795_RESUMMON_PIPE_VAULT_ENEMIES,
     events=[
         Event(
             event=E0487_PIPE_VAULT_CHOMPWEED_ROOM_EXIT_PIPE_REVERSE,

@@ -324,7 +324,8 @@ def render_booster_tower_indoor_boss(
         ("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_40"),
     ]
     for eid, aid in deletions:
-        world.event_scripts.delete_subscript_command_by_identifier(eid, aid)
+        if not is_vanilla:
+            world.event_scripts.delete_subscript_command_by_identifier(eid, aid)
 
     # T-pose replacements
     tpose_replacements = [("chapel_tpose_queue_1", "chapel_tpose_1")]

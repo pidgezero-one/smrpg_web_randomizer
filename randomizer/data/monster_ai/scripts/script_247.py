@@ -20,6 +20,7 @@ script = MonsterScript([
 	IfHPBelow(0),
 	SetVarBits(BV7EE001, [2]),
 	RunObjectSequence(3),
+	RemoveTarget(MONSTER_4_SET),
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript(),
 	IfTargetedByRegularAttack(),

@@ -39,7 +39,7 @@ script = MonsterScript([
 	RunObjectSequence(3),
 	RemoveTarget(ALL_ALLIES_AND_SELF),
 	Wait1TurnandRestartScript(),
-	IfHPBelow(400),
+	IfHPBelow(400, identifier="johnny_400_hp"),
 	IfVarBitsClear(BV7EE004, [0]),
 	SetVarBits(BV7EE004, [0]),
 	SetTarget(SELF),

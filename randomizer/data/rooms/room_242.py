@@ -106,13 +106,11 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        ChestNPC( # 2
+        RegularNPC( # 2
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
             event_script=E0735_FOREST_UNDERGROUND_CHEST,
             action_script=A0014_FLOATING_CHEST,
-            lower_70a7=6,
-            upper_70a7=0,
             visible=True,
             x=2,
             y=73,
@@ -135,10 +133,9 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        ChestClone( # 3
+        RegularClone( # 3
             npc=npcs.TREASURE_CHEST_NPC_2,
-            lower_70a7=2,
-            upper_70a7=0,
+            event_script=E0735_FOREST_UNDERGROUND_CHEST,
             visible=True,
             x=6,
             y=88,
@@ -146,10 +143,9 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
         ),
-        ChestClone( # 4
+        RegularClone( # 4
             npc=npcs.TREASURE_CHEST_NPC_2,
-            lower_70a7=0,
-            upper_70a7=0,
+            event_script=E0735_FOREST_UNDERGROUND_CHEST,
             visible=True,
             x=8,
             y=77,

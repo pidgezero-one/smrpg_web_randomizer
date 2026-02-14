@@ -340,7 +340,7 @@ script = AnimationScriptBlock(expected_size=3221, expected_beginning=0x351493, s
 	ReturnSubroutine(),
 	SetAMEM16BitTo7E1x(0x62, 0x7E0072, identifier="bundt2_subroutine"),
     IncAMEM16BitByConst(0x62, 5),
-    Set7E1xToAMEM16Bit(0x7EE002, 0x62),
+    Set7E1xToAMEM16Bit(0x7EE072, 0x62),
     SetAMEM16BitTo7E1x(0x66, 0x7E0076),
     IncAMEM16BitByConst(0x66, 5),
     Set7E1xToAMEM16Bit(0x7EE076, 0x66),

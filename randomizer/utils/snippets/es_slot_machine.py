@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
     from randomizer.types.prizelocation import TreasureChestLocation
+from randomizer.types.prize import SlotsPrize
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -48,8 +49,9 @@ def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld
         room = world.rooms._rooms[room_id]
         if room is None:
             raise ValueError(f"Room ID {room_id} not found in world while creating slot machine script.")
+        assert isinstance(location.prize, SlotsPrize)
 
-        slot_machine_script_commands = create_slot_machine_script_for_one_room(room)
+        slot_machine_script_commands = create_slot_machine_script_for_one_room(room, location.prize.override_id)
         identifier = slot_machine_script_commands[0].identifier.label
         output.insert(0, JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room_id, [identifier]))
         output.extend(slot_machine_script_commands)
@@ -57,7 +59,7 @@ def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld
 
     return output
 
-def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScriptCommand]:
+def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id: int) -> list[UsableEventScriptCommand]:
     npc_count = len(room.objects)
     npcs = [
         AreaObject(0x14 + npc_count + x) for x in range(5)
@@ -222,12 +224,13 @@ def create_slot_machine_script_for_one_room(room: Room) -> list[UsableEventScrip
             A_SetSpriteSequence(index=4, is_sequence=True, looping=True)
         ], identifier=f"gen_{uniq}_action_queue_99"),
         Pause(32),
-        SetVarToConst(PRIMARY_TEMP_7000, 514, identifier=f"gen_{uniq}_set_var_to_const_104"),
+        SetVarToConst(PRIMARY_TEMP_7000, battlefield_override_id, identifier=f"gen_{uniq}_set_var_to_const_104"),
         RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	    JmpIfBitSet(GAME_OVER, [f"{uniq}_reset_and_choose_game_3"]),
 	    JmpIfBitSet(RUN_AWAY, [f"gen_{uniq}_remove_from_current_level_107"]),
         JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, [f"gen_{uniq}_remove_from_current_level_107"]),
         FadeInFromBlack(sync=False),
+        SetVarToConst(PRIMARY_TEMP_7000, 514),
         RunEventAsSubroutine(E0171_MIMIC_3_GRANT_STAR_PIECE_CONTAINER),
         RemoveObjectFromCurrentLevel(npcs[0], identifier=f"gen_{uniq}_remove_from_current_level_107"),
         FadeInFromBlack(sync=False),

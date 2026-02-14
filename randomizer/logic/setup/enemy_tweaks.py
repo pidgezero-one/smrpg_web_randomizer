@@ -152,7 +152,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
         PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
         MeteorSwarmSpell, WeirdMushroomSpell, BreakerBeamSpell, ShredderSpell,
         SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell, BigBangSpell,
-        EnemySpell, EscapeSpell,
+        EnemySpell, EscapeSpell, Engine023Spell,
     )
     from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import (
         DoNothing,
@@ -210,9 +210,10 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
 
     # Enemy spell randomization
     if world.settings.isflag_enabled(EnemySpells):
-        # Note: EscapeSpell and BigBangSpell are excluded from the pool
+        # Note: These spells are excluded from the pool and won't be replaced:
         # - EscapeSpell causes enemies to flee the battle
         # - BigBangSpell requires RemoveTarget(self) afterward which complicates AI scripts
+        # - Engine023Spell is a special attack that should stay where it is
         spell_pool: list[type[EnemySpell]] = [
             DrainSpell, LightningOrbSpell, FlameSpell, BoltSpell, CrystalSpell,
             FlameStoneSpell, MegaDrainSpell, WillyWispSpell, DiamondSawSpell,
@@ -228,14 +229,12 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             for cmd in script.contents:
                 if isinstance(cmd, CastSpell):
                     # Skip special spells - spell slots contain types, not instances
-                    # - DoNothing: placeholder for empty spell slots
-                    # - EscapeSpell: causes enemies to flee
-                    # - BigBangSpell: requires RemoveTarget(self) afterward
-                    if cmd.spell_1 is not None and cmd.spell_1 is not DoNothing and cmd.spell_1 is not EscapeSpell and cmd.spell_1 is not BigBangSpell:
+                    excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell)
+                    if cmd.spell_1 is not None and cmd.spell_1 not in excluded_spells:
                         cmd.set_spell_1(random.choice(spell_pool))
-                    if cmd.spell_2 is not None and cmd.spell_2 is not DoNothing and cmd.spell_2 is not EscapeSpell and cmd.spell_2 is not BigBangSpell:
+                    if cmd.spell_2 is not None and cmd.spell_2 not in excluded_spells:
                         cmd.set_spell_2(random.choice(spell_pool))
-                    if cmd.spell_3 is not None and cmd.spell_3 is not DoNothing and cmd.spell_3 is not EscapeSpell and cmd.spell_3 is not BigBangSpell:
+                    if cmd.spell_3 is not None and cmd.spell_3 not in excluded_spells:
                         cmd.set_spell_3(random.choice(spell_pool))
 
     # Allow running away from mimics if MimicsAnywhere is enabled

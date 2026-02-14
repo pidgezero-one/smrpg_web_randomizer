@@ -56,13 +56,13 @@ script = EventScript([
 	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=2),
 	JmpIfBitSet(FAST_TRAVEL_ENABLED, ["EVENT_1359_jmp_if_bit_set_12"]),
 	JmpIfBitClear(TOWER_BOSS_2_DEFEATED, ["EVENT_1359_jmp_if_bit_set_12"]),
+	SummonObjectToCurrentLevel(NPC_7),
 	SummonObjectToCurrentLevel(NPC_8),
-	SummonObjectToCurrentLevel(NPC_9),
-	ActionQueueAsync(target=NPC_8, subscript=[
+	ActionQueueAsync(target=NPC_7, subscript=[
 		A_WalkWestPixels(8),
 		A_WalkSouthPixels(8)
 	]),
-	ActionQueueAsync(target=NPC_9, subscript=[
+	ActionQueueAsync(target=NPC_8, subscript=[
 		A_WalkWestPixels(8),
 		A_WalkSouthPixels(8)
 	]),
@@ -86,7 +86,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0789_TOWER_CURTAIN_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_1359_fade_in_from_black_async_26"),
     JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["curtain_room_end"]),
     JmpIfBitClear(STAY_VOUCHER_USED, ["curtain_room_end"]),
-    SummonObjectToCurrentLevel(NPC_10),
+    SummonObjectToCurrentLevel(NPC_9),
 	FadeInFromBlack(sync=False, identifier="curtain_room_end"),
 	Return()
 ])

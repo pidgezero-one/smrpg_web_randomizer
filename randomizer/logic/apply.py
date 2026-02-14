@@ -57,7 +57,7 @@ from ..data.variables.variable_names import (
 from ..data.variables.room_names import *
 from ..data.rooms.npcs import BOWSER_WALKING_DOWN_LEFT_NPC, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC, MALLOW_WALKING_DOWN_LEFT_NPC, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_NPC
 from ..types.flags import CharacterStats
-from ..types.prize import BossFightPrize, SpellPrize, CharacterPrize, StandardPrize
+from ..types.prize import BossFightPrize, MimicFightInitiatorPrize, SlotsPrize, SpellPrize, CharacterPrize, StandardPrize
 from ..types.enemy import Enemy
 from ..progression.prizelocations import (
     Mimic1ReloadRewardLocation,
@@ -333,6 +333,20 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             d_flat = [cmd for l in decision for cmd in l]
             builders[ctr][0].extend(d_flat)
             builders[ctr][1].extend(execution)
+
+            # special handling: battlefield selection for failed slot machines which fights mimic #3
+            slot_pack = 0
+            for l in world.locations.values():
+                if isinstance(l, BossFightLocation) and isinstance(l.prize, MimicFightInitiatorPrize):
+                    slot_pack = l.pack_id
+            if isinstance(place.prize, SlotsPrize):
+                room = place._rooms[0]
+                identifier = str(uuid4())
+                builders[E0353_BOSS_BATTLE][0].append(JmpIfVarEqualsConst(PRIMARY_TEMP_7000, place.prize.override_id, [identifier]))
+                builders[E0353_BOSS_BATTLE][1].extend([
+                    StartBattleAtBattlefield(slot_pack, ROOM_TO_BATTLEFIELD[room], identifier=identifier),
+                    Return(),
+                ])
             
             if isinstance(
                 place, (StandingLocation, EventLocation)
@@ -494,6 +508,16 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
 
     # Apply boss stat scaling after all prizes are set
     apply_boss_stat_scaling(world)
+
+    # Update partition buffers for rooms with shuffled sprites
+    from .partition_calculator import (
+        update_statue_room_partition,
+        update_mines_henchman_room_partitions,
+        update_protagonist_room_partition,
+    )
+    update_statue_room_partition(world)
+    update_mines_henchman_room_partitions(world)
+    update_protagonist_room_partition(world)
 
     # Set can_run_away for each boss fight location's formation
     # This must happen after all renders to ensure the correct formation is used

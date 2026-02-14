@@ -63,6 +63,7 @@ from ..types.prizelocation import (
     InvisibleFlagLocation,
     WorldAreaEnum,
     KeyItemLocation,
+    MimicFightLocation,
 )
 from ..types.packet_type import PacketType
 from ..data.variables.room_names import *
@@ -1312,7 +1313,8 @@ class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
     # flag as checked: npc 1 in room 60 has its object trigger disabled.
 
 
-class Mimic1BossFight(BossFightLocation):
+
+class Mimic1BossFight(MimicFightLocation):
     _bias = True
     _originally_held = PandoriteBossFight
     _rooms = [512]  # can be in any room.
@@ -2521,6 +2523,14 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory)
 
+    def render(self, world: GameWorld | None = None):
+        assert isinstance(self.prize, StandardPrize)
+        assert self.originally_held is not None
+        assert world is not None
+        if not isinstance(self.prize, self.originally_held):
+            world.update_dialog(DI2911_TREASURE_SELLER_ITEM_1, self.prize.nickname.get_slot_1_dialog())
+        return super().render(world)
+
     # Flag as checked: TREASURE_SHOP_ITEM_1_PURCHASED
 
 
@@ -2536,6 +2546,14 @@ class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
             world, inventory
         )
 
+    def render(self, world: GameWorld | None = None):
+        assert isinstance(self.prize, StandardPrize)
+        assert self.originally_held is not None
+        assert world is not None
+        if not isinstance(self.prize, self.originally_held):
+            world.update_dialog(DI2908_TREASURE_SELLER_ITEM_2, self.prize.nickname.get_slot_2_dialog())
+        return super().render(world)
+
     # Flag as checked: TREASURE_SHOP_ITEM_2_PURCHASED
 
 
@@ -2548,6 +2566,14 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory) and can_clear_volcano(world, inventory)
+
+    def render(self, world: GameWorld | None = None):
+        assert isinstance(self.prize, StandardPrize)
+        assert self.originally_held is not None
+        assert world is not None
+        if not isinstance(self.prize, self.originally_held):
+            world.update_dialog(DI2914_TREASURE_SELLER_ITEM_3, self.prize.nickname.get_slot_3_dialog())
+        return super().render(world)
 
     # Flag as checked: TREASURE_SHOP_ITEM_3_PURCHASED
 
@@ -2674,6 +2700,7 @@ class OuterMinesBossFight(BossFightLocation):
         R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
     ]
     _override_id = 518
+    _default_battlefield = BF25_UNDERGROUND
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_FIGHT_1
     _world_area = WorldAreaEnum.MOLEVILLE
     _pack_id = PACK164_MINES_FIRST_BOSS
@@ -2807,6 +2834,13 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
+
+    def render(self, world: GameWorld | None = None):
+        assert world is not None
+        if not isinstance(self.prize, (CoinPrize, FrogCoinPrize)):
+            world.event_scripts.delete_subscript_command_by_identifier("minecart_item_aqueue", "minecart_item_coin_1")
+            world.event_scripts.delete_subscript_command_by_identifier("minecart_item_aqueue", "minecart_item_coin_2")
+        return super().render(world)
 
     # Flag as checked: RUNAWAY_MINECART_ITEM_OBTAINED
 
@@ -3068,6 +3102,7 @@ class InnerMinesPostgameBossFight(BossFightLocation):
     _originally_held = Punchinello2BossFight
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _override_id = 527
+    _default_battlefield = BF25_UNDERGROUND
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_FIGHT_3
     _world_area = WorldAreaEnum.MOLEVILLE
     _remake_only = True
@@ -3861,6 +3896,7 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     _originally_held = Booster2BossFight
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _override_id = 528
+    _default_battlefield = BF12_BOOSTER_TOWER
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _remake_only = True
@@ -4579,6 +4615,7 @@ class MarrymoreBossFightRemake(BossFightLocation):
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_BOSS_FIGHT
     _world_area = WorldAreaEnum.MARRYMORE
     _override_id = 529
+    _default_battlefield = BF35_MARRYMORE_CHAPEL_SANCTUARY
     _remake_only = True
     _pack_id = PACK078_CHAPEL_POSTGAME
     _post_unlocks_event_id = E1204_CHAPEL_BOSS_UNLOCKS
@@ -5306,7 +5343,7 @@ class Mimic2DropRewardLocation(NPCLocationRow1):
     # flag as checked: MIMIC_2_CLEARED
 
 
-class Mimic2BossFight(BossFightLocation):
+class Mimic2BossFight(MimicFightLocation):
     _bias = True
     _originally_held = HidonBossFight
     _rooms = [513]  # can be in any room.
@@ -5612,6 +5649,7 @@ class ShipPostgameBossFight(BossFightLocation):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_BOSS_FIGHT
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 526
+    _default_battlefield = BF04_SUNKEN_SHIP
     _remake_only = True
     _pack_id = PACK118_SHIP_POSTGAME
     _post_unlocks_event_id = E1209_POSTGAME_SHIP_END_BOSS_UNLOCKS
@@ -6320,6 +6358,7 @@ class TempleBossFightPostgame(BossFightLocation):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_FIGHT
     _world_area = WorldAreaEnum.TEMPLE
     _override_id = 523
+    _default_battlefield = BF42_BELOME_TEMPLE
     _remake_only = True
     _pack_id = PACK033_POSTGAME_TEMPLE
     _post_unlocks_event_id = E1212_POSTGAME_TEMPLE_BOSS_UNLOCKS
@@ -6475,6 +6514,7 @@ class DojoSecondFight(BossFightLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_2
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 515
+    _default_battlefield = BF46_JINXS_DOJO
     _pack_id = PACK178_DOJO_FIGHT_1
     _post_unlocks_event_id = E1214_DOJO_2_BOSS_UNLOCKS
     _allow_run_away = True
@@ -6545,6 +6585,7 @@ class DojoThirdFight(BossFightLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_3
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 516
+    _default_battlefield = BF46_JINXS_DOJO
     _pack_id = PACK187_DOJO_SECOND_BOSS
     _post_unlocks_event_id = E1215_DOJO_3_BOSS_UNLOCKS
     _allow_run_away = True
@@ -6613,6 +6654,7 @@ class DojoFourthFight(BossFightLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_4
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 517
+    _default_battlefield = BF46_JINXS_DOJO
     _pack_id = PACK188_DOJO_THIRD_BOSS
     _post_unlocks_event_id = E1216_DOJO_4_BOSS_UNLOCKS
     _allow_run_away = True
@@ -6698,6 +6740,7 @@ class DojoFifthFight(BossFightLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_POSTGAME
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 525
+    _default_battlefield = BF46_JINXS_DOJO
     _remake_only = True
     _pack_id = PACK189_DOJO_PREFIGHT
     _post_unlocks_event_id = E1217_DOJO_5_BOSS_UNLOCKS
@@ -6848,6 +6891,7 @@ class MonstroSealedDoorBossFightPostgame(BossFightLocation):
     _originally_held = Culex3DBossFight
     _rooms = [R351_CULEXS_ROOM]
     _override_id = 524
+    _default_battlefield = BF47_CULEX
     _id = ShuffleLocationSelector.CULEX_POSTGAME_BOSS_FIGHT
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _remake_only = True
@@ -7032,7 +7076,7 @@ class BeanValleyRightPipeLeftChestLocation(TreasureChestLocationRow1):
     # flag as checked: npc 5 in room 335 has its object trigger disabled.
 
 
-class Mimic3BossFight(BossFightLocation):
+class Mimic3BossFight(MimicFightLocation):
     _bias = True
     _originally_held = BoxBoyBossFight
     _rooms = [514]  # can be in any room.
@@ -7478,6 +7522,7 @@ class StatueRoomBossFight(BossFightLocation):
     _bias = True
     _originally_held = DodoBossFight
     _override_id = 520
+    _default_battlefield = BF22_NIMBUS_CASTLE
     _id = ShuffleLocationSelector.NIMBUS_LAND_STATUE_BOSS_FIGHT
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _pack_id = PACK208_NIMBUS_CASTLE_FIRST_BOSS
@@ -9439,6 +9484,7 @@ class KeepChandelierBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 521
+    _default_battlefield = BF07_BOWSERS_KEEP
     _pack_id = PACK210_KEEP_SECOND_BOSS
     _post_unlocks_event_id = E1237_KEEP_CHANDELIER_BOSS_UNLOCKS
     _npc_slots = [
@@ -9515,6 +9561,7 @@ class KeepFinalBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 522
+    _default_battlefield = BF07_BOWSERS_KEEP
     _pack_id = PACK186_KEEP_THIRD_BOSS
     _post_unlocks_event_id = E1238_KEEP_EXIT_BOSS_UNLOCKS
 

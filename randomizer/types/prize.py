@@ -341,6 +341,12 @@ class EXPStarPrize(Prize):
 
 class SlotsPrize(Prize):
     _logic_event: int
+    _override_id: int
+
+    @property
+    def override_id(self) -> int:
+        """Controls battlefield selection during failure"""
+        return self._override_id
 
     @property
     def logic_event(self) -> int:

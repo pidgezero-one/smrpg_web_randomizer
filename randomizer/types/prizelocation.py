@@ -4,6 +4,9 @@ from uuid import uuid4
 from enum import StrEnum
 import random
 
+from django.conf.locale import el
+
+from randomizer.progression.prizes import BoomerBossFight, FirstMimicFightLauncher, SecondMimicFightLauncher, ThirdMimicFightLauncher
 from randomizer.types.flags import MimicsAnywhere, SpellsAnywhere
 
 from .prize import (
@@ -1691,6 +1694,12 @@ class BossFightLocation(PrizeLocation):
 
     _originally_held: type[BossFightPrize]
 
+    _default_battlefield: Battlefield | None = None
+
+    @property
+    def default_battlefield(self) -> Battlefield | None:
+        return self._default_battlefield
+
     @property
     def originally_held(self) -> type[BossFightPrize]:
         return self._originally_held
@@ -2234,7 +2243,15 @@ class BossFightLocation(PrizeLocation):
 
         # return the contents for event 353
         # test this, not sure if this divide will work for mimics anywhere, esp if they end up in chests in rooms that normally dont have battles
-        if self.override_id is not None:
+        if isinstance(self, MimicFightLocation):
+            # Lazy import to avoid circular dependency
+            from randomizer.progression.prizelocations import Mimic1BossFight, Mimic2BossFight, Mimic3BossFight
+            pairs = [(FirstMimicFightLauncher, Mimic1BossFight), (SecondMimicFightLauncher, Mimic2BossFight), (ThirdMimicFightLauncher, Mimic3BossFight)]
+            for launcher_cls, boss_cls in pairs:                                                                                                                             
+                for location in world.locations.values():                                                                                                                                                                           
+                    if isinstance(location.prize, launcher_cls) and isinstance(self, boss_cls):  
+                        effective_battlefields = [ROOM_TO_BATTLEFIELD[r] for r in location._rooms]
+        elif self.override_id is not None and self.prize.force_battlefield is None and self.default_battlefield is None:
             identifier = str(uuid4())
             return (
                 [
@@ -2252,8 +2269,12 @@ class BossFightLocation(PrizeLocation):
                 henchmen_event_packs,
             )
         # Use prize's force_battlefield if set, otherwise use room-based battlefields
+        if isinstance(self.prize, BoomerBossFight):
+            print(f"Boomer boss fight at {self.__class__.__name__} has force_battlefield={self.prize.force_battlefield}")
         if self.prize.force_battlefield is not None:
             effective_battlefields = [self.prize.force_battlefield] * len(self._rooms)
+        elif self.default_battlefield is not None:
+            effective_battlefields = [self.default_battlefield] * len(self._rooms)
         else:
             effective_battlefields = self.battlefields
         assert len(self._rooms) == len(
@@ -2285,6 +2306,8 @@ class BossFightLocation(PrizeLocation):
         )
 
 
+class MimicFightLocation(BossFightLocation):
+    pass
 class AllyNPCSub:
     _room_id: int
     _npc_id: AreaObject
@@ -2687,7 +2710,10 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
 
 
 class TreasureShopLocation(PrizeLocation):
-    pass
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        return (
+            hasattr(prize, "_nickname")
+        )
 
 
 class KeyItemLocation(PrizeLocation):

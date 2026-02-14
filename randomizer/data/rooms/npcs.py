@@ -31,7 +31,7 @@ class _item_npc_base(NPC):
 
 
 HAMMER_BASE = _item_npc_base(SPR0045_HAMMER_PACKET)
-FROGGIE_STICK_BASE = _item_npc_base(SPR0046_STICK_PACKET)
+FROGGIE_STICK_BASE = _item_npc_base(SPR0735_STICK_PACKET)
 GREEN_SHELL_BASE = _item_npc_base(
     SPR0250_GREEN_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
@@ -1399,7 +1399,7 @@ YELLOW_YOSHI_NPC = NPC(
 )
 
 PINK_YOSHI_NPC = NPC(
-    sprite_id=SPR0735_PINK_YOSHI,
+    sprite_id=SPR0046_PINK_YOSHI,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -5647,9 +5647,9 @@ STUMPET_ROOTS_RIGHT_NPC = NPC(
 CZAR_DRAGON_BODY_NPC = NPC(
     sprite_id=SPR0612_CZAR_DRAGON_BODY,
     shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=1,
-    obtuse_axis=1,
-    height=1,
+    acute_axis=13,
+    obtuse_axis=13,
+    height=13,
     y_shift=0,
     show_shadow=False,
     directions=VramStore.DIR2_SWSE,
@@ -6508,7 +6508,7 @@ GREY_STONE_BLOCK_NPC = NPC(
 )
 
 STICK_PACKET_NPC = NPC(
-    sprite_id=SPR0046_STICK_PACKET,
+    sprite_id=SPR0735_STICK_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -11789,7 +11789,7 @@ GOLDEN_CHOMP_BACK_NPC = NPC(
 )
 
 CHOMP_FRONT_NPC = NPC(
-    sprite_id=SPR0176_CHOMP_FRONT,
+    sprite_id=SPR0278_CHOMP,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=9,
     obtuse_axis=9,

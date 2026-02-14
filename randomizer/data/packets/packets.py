@@ -19,7 +19,7 @@ P000_FLASHING_POOF_FLOWER = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P001_FLASHING_POOF_MUSHROOM = Packet(
     packet_id=1,
@@ -34,7 +34,7 @@ P001_FLASHING_POOF_MUSHROOM = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P002_FLOWER_PACK_CHEST_ITEM = Packet(
     packet_id=2,
@@ -64,7 +64,7 @@ P003_BRIEF_STAR = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P004_MIMIC_POOF_ON_DEFEAT = Packet(
     packet_id=4,
@@ -79,7 +79,7 @@ P004_MIMIC_POOF_ON_DEFEAT = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P005_BRIEF_POOF_BAG = Packet(
     packet_id=5,
@@ -94,7 +94,7 @@ P005_BRIEF_POOF_BAG = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P006_FEATHER_CHEST = Packet(
     packet_id=6,
@@ -199,7 +199,7 @@ P012_FLOWER_STATIC = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P013_MUSHROOM_STATIC = Packet(
     packet_id=13,
@@ -214,7 +214,7 @@ P013_MUSHROOM_STATIC = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P014_FLOWER_COLLECTION = Packet(
     packet_id=14,
@@ -259,7 +259,7 @@ P016_BIG_COIN_BEING_COLLECTED = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P017_SMALL_MINIGAME_COIN = Packet(
     packet_id=17,
@@ -274,7 +274,7 @@ P017_SMALL_MINIGAME_COIN = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P018_SMALL_COIN_BEING_COLLECTED = Packet(
     packet_id=18,
@@ -289,7 +289,7 @@ P018_SMALL_COIN_BEING_COLLECTED = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P019_FROG_COIN_BEING_COLLECTED = Packet(
     packet_id=19,
@@ -304,7 +304,7 @@ P019_FROG_COIN_BEING_COLLECTED = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P020_WATER_SPLASH = Packet(
     packet_id=20,
@@ -319,7 +319,7 @@ P020_WATER_SPLASH = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P021_FLASHING_SMALL_EXPLOSION = Packet(
     packet_id=21,
@@ -334,7 +334,7 @@ P021_FLASHING_SMALL_EXPLOSION = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P022_RECURSIVE_SPARKLES = Packet(
     packet_id=22,
@@ -379,7 +379,7 @@ P024_REGULAR_SOUND_EXPLOSION = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P025_RING_CHEST = Packet(
     packet_id=25,
@@ -409,7 +409,7 @@ P026_SUNKEN_SHIP_TRAMPOLINE_PUZZLE = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P027_SUNKEN_SHIP_TROOPA_PUZZLE = Packet(
     packet_id=27,
@@ -424,7 +424,7 @@ P027_SUNKEN_SHIP_TROOPA_PUZZLE = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P028_MUSHROOM_THROWN_SOUTHWEST = Packet(
     packet_id=28,
@@ -439,7 +439,7 @@ P028_MUSHROOM_THROWN_SOUTHWEST = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P029_SUNKEN_SHIP_3D_MAZE = Packet(
     packet_id=29,
@@ -454,7 +454,7 @@ P029_SUNKEN_SHIP_3D_MAZE = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P030_WATER_SPLASH_DROPS_SFX = Packet(
     packet_id=30,
@@ -484,7 +484,7 @@ P031_LEVELUP_TEXT = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P032_BLUE_CLOUD = Packet(
     packet_id=32,
@@ -499,7 +499,7 @@ P032_BLUE_CLOUD = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P033_BOMB_EXPLOSION = Packet(
     packet_id=33,
@@ -514,7 +514,7 @@ P033_BOMB_EXPLOSION = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P034_GREY_EXPLOSION_SFX = Packet(
     packet_id=34,
@@ -529,7 +529,7 @@ P034_GREY_EXPLOSION_SFX = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P035_SUNKEN_SHIP_CANNONBALL_PUZZLE = Packet(
     packet_id=35,
@@ -544,7 +544,7 @@ P035_SUNKEN_SHIP_CANNONBALL_PUZZLE = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P036_BARREL_PUZZLE_PRIZE = Packet(
     packet_id=36,
@@ -559,7 +559,7 @@ P036_BARREL_PUZZLE_PRIZE = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P037_SHIP_STAIRCASE = Packet(
     packet_id=37,
@@ -574,7 +574,7 @@ P037_SHIP_STAIRCASE = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P038_BOOSTER_HILL_PRIZE_0 = Packet(
     packet_id=38,
@@ -589,7 +589,7 @@ P038_BOOSTER_HILL_PRIZE_0 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P039_BOOSTER_HILL_PRIZE_1 = Packet(
     packet_id=39,
@@ -604,7 +604,7 @@ P039_BOOSTER_HILL_PRIZE_1 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P040_BROOCH_CHEST = Packet(
     packet_id=40,
@@ -634,7 +634,7 @@ P041_BOOSTER_HILL_PRIZE_2 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P042_BOOSTER_HILL_PRIZE_3 = Packet(
     packet_id=42,
@@ -649,7 +649,7 @@ P042_BOOSTER_HILL_PRIZE_3 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P043_SHOES_CHEST = Packet(
     packet_id=43,
@@ -679,7 +679,7 @@ P044_BOOSTER_HILL_PRIZE_4 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P045_TELEPORTATION_SHINE = Packet(
     packet_id=45,
@@ -709,7 +709,7 @@ P046_BOOSTER_HILL_PRIZE_5 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P047_BLUE_FIRE_TRAIL = Packet(
     packet_id=47,
@@ -724,7 +724,7 @@ P047_BLUE_FIRE_TRAIL = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P048_BANANA_CHEST = Packet(
     packet_id=48,
@@ -754,7 +754,7 @@ P049_HAMMER_SPARKS_SFX = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P050_WATER_BLAST_SFX = Packet(
     packet_id=50,
@@ -769,7 +769,7 @@ P050_WATER_BLAST_SFX = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P051_DRILL_BIT = Packet(
     packet_id=51,
@@ -799,7 +799,7 @@ P052_BOMB_EXPLOSION_FASTER = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P053_CROWN_CHEST = Packet(
     packet_id=53,
@@ -874,7 +874,7 @@ P057_BOOSTER_HILL_PRIZE_6 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P058_BOOSTER_HILL_PRIZE_7 = Packet(
     packet_id=58,
@@ -889,7 +889,7 @@ P058_BOOSTER_HILL_PRIZE_7 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P059_BOOSTER_HILL_PRIZE_8 = Packet(
     packet_id=59,
@@ -904,7 +904,7 @@ P059_BOOSTER_HILL_PRIZE_8 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P060_BOOSTER_HILL_PRIZE_9 = Packet(
     packet_id=60,
@@ -919,7 +919,7 @@ P060_BOOSTER_HILL_PRIZE_9 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P061_BOOSTER_HILL_PRIZE_10 = Packet(
     packet_id=61,
@@ -934,7 +934,7 @@ P061_BOOSTER_HILL_PRIZE_10 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P062_BOOSTER_HILL_PRIZE_11 = Packet(
     packet_id=62,
@@ -949,7 +949,7 @@ P062_BOOSTER_HILL_PRIZE_11 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P063_BOOSTER_HILL_PRIZE_12 = Packet(
     packet_id=63,
@@ -964,7 +964,7 @@ P063_BOOSTER_HILL_PRIZE_12 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P064_FROG_COIN_CHEST_STILL = Packet(
     packet_id=64,
@@ -994,7 +994,7 @@ P065_BOOSTER_HILL_PRIZE_13 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P066_BOOSTER_HILL_PRIZE_14 = Packet(
     packet_id=66,
@@ -1009,7 +1009,7 @@ P066_BOOSTER_HILL_PRIZE_14 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P067_BOMB_CHEST = Packet(
     packet_id=67,
@@ -1039,7 +1039,7 @@ P068_BOOSTER_HILL_PRIZE_15 = Packet(
     b2b3=True,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P069_BOOSTER_HILL_PRIZE_STANDING_0 = Packet(
     packet_id=69,
@@ -1054,7 +1054,7 @@ P069_BOOSTER_HILL_PRIZE_STANDING_0 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P070_EGG_CHEST = Packet(
     packet_id=70,
@@ -1084,7 +1084,7 @@ P071_BOOSTER_HILL_PRIZE_STANDING_1 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P072_BOOSTER_HILL_PRIZE_STANDING_2 = Packet(
     packet_id=72,
@@ -1099,7 +1099,7 @@ P072_BOOSTER_HILL_PRIZE_STANDING_2 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P073_COOKIE_CHEST = Packet(
     packet_id=73,
@@ -1129,7 +1129,7 @@ P074_BOOSTER_HILL_PRIZE_STANDING_3 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P075_BOOSTER_HILL_PRIZE_STANDING_4 = Packet(
     packet_id=75,
@@ -1144,7 +1144,7 @@ P075_BOOSTER_HILL_PRIZE_STANDING_4 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P076_BERRY_CHEST = Packet(
     packet_id=76,
@@ -1174,7 +1174,7 @@ P077_BOOSTER_HILL_PRIZE_STANDING_5 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P078_BOOSTER_HILL_PRIZE_STANDING_6 = Packet(
     packet_id=78,
@@ -1189,7 +1189,7 @@ P078_BOOSTER_HILL_PRIZE_STANDING_6 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P079_CARD_CHEST = Packet(
     packet_id=79,
@@ -1219,7 +1219,7 @@ P080_BOOSTER_HILL_PRIZE_STANDING_7 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P081_BOOSTER_HILL_PRIZE_STANDING_8 = Packet(
     packet_id=81,
@@ -1234,7 +1234,7 @@ P081_BOOSTER_HILL_PRIZE_STANDING_8 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P082_BOOSTER_HILL_PRIZE_STANDING_9 = Packet(
     packet_id=82,
@@ -1249,7 +1249,7 @@ P082_BOOSTER_HILL_PRIZE_STANDING_9 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P083_BOOSTER_HILL_PRIZE_STANDING_10 = Packet(
     packet_id=83,
@@ -1264,7 +1264,7 @@ P083_BOOSTER_HILL_PRIZE_STANDING_10 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P084_BOOSTER_HILL_PRIZE_STANDING_11 = Packet(
     packet_id=84,
@@ -1279,7 +1279,7 @@ P084_BOOSTER_HILL_PRIZE_STANDING_11 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P085_BOOSTER_HILL_PRIZE_STANDING_12 = Packet(
     packet_id=85,
@@ -1294,7 +1294,7 @@ P085_BOOSTER_HILL_PRIZE_STANDING_12 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P086_BOOSTER_HILL_PRIZE_STANDING_13 = Packet(
     packet_id=86,
@@ -1309,7 +1309,7 @@ P086_BOOSTER_HILL_PRIZE_STANDING_13 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P087_BOOSTER_HILL_PRIZE_STANDING_14 = Packet(
     packet_id=87,
@@ -1324,7 +1324,7 @@ P087_BOOSTER_HILL_PRIZE_STANDING_14 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P088_BOOSTER_HILL_PRIZE_STANDING_15 = Packet(
     packet_id=88,
@@ -1339,7 +1339,7 @@ P088_BOOSTER_HILL_PRIZE_STANDING_15 = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P089_BEETLE_CHEST = Packet(
     packet_id=89,
@@ -1504,7 +1504,7 @@ P099_BAG_STATIC =  Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=1,
+    b4=0,
 )
 P100_UNUSED = None
 P101_UNUSED = None

@@ -33,7 +33,7 @@ from .contents.script_0x35816D import script as script_0x35816D
 from .contents.script_0x358271 import script as script_0x358271
 from .contents.script_0x358916 import script as script_0x358916
 from .contents.script_0x3589D5 import script as script_0x3589D5
-from .contents.script_0x358AC6 import script as script_0x358AC6
+from .contents.script_0x358A6C import script as script_0x358A6C
 from .contents.script_0x358B57 import script as script_0x358B57
 from .contents.script_0x358BEC import script as script_0x358BEC
 from .contents.script_0x35C71F import script as script_0x35C71F
@@ -79,7 +79,7 @@ bank = AnimationScriptBank(
 		script_0x358271,
 		script_0x358916,
 		script_0x3589D5,
-		script_0x358AC6,
+		script_0x358A6C,
 		script_0x358B57,
 		script_0x358BEC,
 		script_0x35C71F,

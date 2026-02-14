@@ -107,8 +107,6 @@ def randomize_enemy_stats(world: GameWorld) -> None:
             "magic_attack": int(enemy.magic_attack),
             "magic_defense": int(enemy.magic_defense),
             "fp": int(enemy.fp),
-            "evade": int(enemy.evade),
-            "magic_evade": int(enemy.magic_evade),
         }
 
     if (
@@ -180,8 +178,6 @@ def randomize_enemy_stats(world: GameWorld) -> None:
             enemy.set_magic_attack(mutate_normal(int(enemy.magic_attack), minimum=1, maximum=255, max_change_ratio=0.5))
             enemy.set_magic_defense(mutate_normal(int(enemy.magic_defense), minimum=1, maximum=255, max_change_ratio=0.5))
             enemy.set_fp(mutate_normal(int(enemy.fp), minimum=1, maximum=31, max_change_ratio=0.5))
-            enemy.set_evade(mutate_normal(int(enemy.evade), minimum=0, maximum=100, max_change_ratio=0.5))
-            enemy.set_magic_evade(mutate_normal(int(enemy.magic_evade), minimum=0, maximum=100, max_change_ratio=0.5))
 
             # Clamp all stats to ±50% of ORIGINAL vanilla values
             stat_bounds = {
@@ -192,8 +188,6 @@ def randomize_enemy_stats(world: GameWorld) -> None:
                 "magic_attack": (1, 255),
                 "magic_defense": (1, 255),
                 "fp": (1, 31),
-                "evade": (0, 100),
-                "magic_evade": (0, 100),
             }
             for attr, (stat_min, stat_max) in stat_bounds.items():
                 original_val = orig[attr]

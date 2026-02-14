@@ -17,7 +17,7 @@ script = MonsterScript([
 	ClearVarBits(BV7EE003, [0]),
 	RunBattleDialog(131),
 	Wait1TurnandRestartScript(),
-	IfHPBelow(100),
+	IfHPBelow(100, identifier="croco1_heal"),
 	IfVarBitsClear(BV7EE004, [0]),
 	SetVarBits(BV7EE004, [0]),
 	SetTarget(SELF),

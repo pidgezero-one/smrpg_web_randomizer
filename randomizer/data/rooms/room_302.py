@@ -67,7 +67,7 @@ room = Room(
             byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.BELOME_ST_TIME_NPC_2,
-            initiator=EventInitiator.TOUCH_FROM_FRONT,
+            initiator=EventInitiator.TOUCH_ANY_SIDE,
             event_script=E3121_SEWER_BOSS_FIGHT,
             action_script=A0000_DO_NOTHING,
             visible=True,

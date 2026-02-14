@@ -48,7 +48,7 @@ script = MonsterScript([
 	IncreaseVarBy1(BV7EE00D),
 	Wait1TurnandRestartScript(),
 	StartCounterCommands(),
-	IfHPBelow(1200),
+	IfHPBelow(1200, identifier="dodo_returns"),
 	IfVarBitsSet(BV7EE003, [6]),
 	IfVarBitsClear(BV7EE003, [2]),
 	IfVarBitsSet(BV7EE003, [1]),

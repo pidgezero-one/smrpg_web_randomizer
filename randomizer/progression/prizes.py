@@ -6269,6 +6269,7 @@ class Culex3DBossFight(BossFightPrize):
 
 class SlotsPrize1(SlotsPrize):
     _logic_event = E2490_BEAN_VALLEY_LEFTMOST_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE
+    _override_id = 530
 
     @property
     def chest_grant(self) -> EventScript:
@@ -6279,6 +6280,7 @@ class SlotsPrize1(SlotsPrize):
 
 class SlotsPrize2(SlotsPrize):
     _logic_event = E2491_BEAN_VALLEY_BOTTOM_LEFT_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE
+    _override_id = 531
 
     @property
     def chest_grant(self) -> EventScript:
@@ -6293,6 +6295,7 @@ class SlotsPrize2(SlotsPrize):
 
 class SlotsPrize3(SlotsPrize):
     _logic_event = E2492_BEAN_VALLEY_BOTTOM_RIGHT_PIPE_BASEMENT_ORIGINAL_SLOT_MACHINE
+    _override_id = 532
 
     @property
     def chest_grant(self) -> EventScript:

@@ -1061,9 +1061,6 @@ def set_partitions(world: GameWorld) -> None:
 
             room.set_partition(partition)
 
-    # Update room 341's partition buffer based on shuffled statue sprite
-    update_statue_room_partition(world)
-
 
 def update_statue_room_partition(world: GameWorld) -> None:
     """Update room 341's first partition buffer based on the shuffled statue sprite.
@@ -1141,3 +1138,114 @@ def update_statue_room_partition(world: GameWorld) -> None:
     else:
         # Unknown format - set to empty
         room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+
+
+def update_mines_henchman_room_partitions(world: GameWorld) -> None:
+    """Update partition buffers for mines henchman rooms based on sprite width.
+
+    Rooms 277 and 283 have henchman NPCs shuffled into them from OuterMinesBossFight.
+    If the henchman sprite is 24px wide (gridplane format 0 or 1), the room's
+    partition buffer needs to be set to FOUR_SPRITES_PER_ROW.
+
+    - Room 277: Update first buffer (index 0)
+    - Room 283: Update second buffer (index 1)
+
+    This should be called after boss shuffling is complete.
+    """
+    from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_1
+
+    # Room configurations: (room_index, buffer_index)
+    room_configs = [
+        (277, 0),  # Room 277: first buffer
+        (283, 1),  # Room 283: second buffer
+    ]
+
+    for room_index, buffer_index in room_configs:
+        room = world.rooms._rooms[room_index]
+        if room is None or room.partition is None:
+            continue
+
+        if len(room.partition.buffers) <= buffer_index:
+            continue
+
+        # Get the henchman NPC (NPC_1 in both rooms)
+        npc_obj = room.get_npc_by_target_id(NPC_1)
+        if npc_obj is None:
+            continue
+
+        # Get the sprite ID from the NPC's base
+        sprite_id = npc_obj._npc.sprite_id
+        complete_sprite = _get_complete_sprite(world, sprite_id)
+        if complete_sprite is None:
+            continue
+
+        # Check the first mold's gridplane format
+        molds = complete_sprite.animation.properties.molds
+        if not molds or len(molds) == 0:
+            continue
+
+        first_mold = molds[0]
+        if not first_mold.gridplane:
+            continue
+
+        if not first_mold.tiles or len(first_mold.tiles) == 0:
+            continue
+
+        # Get the gridplane format from the first tile
+        first_tile = first_mold.tiles[0]
+        tile_format = first_tile.format  # type: ignore[attr-defined]
+
+        # Only update if format is 0 or 1 (24px wide = 3 subtiles width)
+        if tile_format in [0, 1]:
+            room.partition.buffers[buffer_index].set_buffer_type(BufferType.FOUR_SPRITES_PER_ROW)
+
+
+def update_protagonist_room_partition(world: GameWorld) -> None:
+    """Update room 284's first partition buffer based on the recruited character's sprite.
+
+    If the character's sprite mold 0 is a gridplane with format 0 or 1 (24px wide),
+    set the first buffer to FOUR_SPRITES_PER_ROW.
+    If the mold is not a gridplane at all, set it to EMPTY_3.
+
+    This should be called after character recruitment is determined.
+    """
+    PROTAGONIST_ROOM_INDEX = 284
+
+    room = world.rooms._rooms[PROTAGONIST_ROOM_INDEX]
+    if room is None or room.partition is None:
+        return
+
+    if len(room.partition.buffers) == 0:
+        return
+
+    # Get the recruited character's sprite
+    character_model = world.overworld_character.character_model
+    sprite_id = character_model._base.sprite_id
+    complete_sprite = _get_complete_sprite(world, sprite_id)
+    if complete_sprite is None:
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+        return
+
+    # Check the first mold's gridplane format
+    molds = complete_sprite.animation.properties.molds
+    if not molds or len(molds) == 0:
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+        return
+
+    first_mold = molds[0]
+    if not first_mold.gridplane:
+        # Non-gridplane - set to empty
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+        return
+
+    if not first_mold.tiles or len(first_mold.tiles) == 0:
+        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
+        return
+
+    # Get the gridplane format from the first tile
+    first_tile = first_mold.tiles[0]
+    tile_format = first_tile.format  # type: ignore[attr-defined]
+
+    # Set buffer based on format
+    if tile_format in [0, 1]:
+        room.partition.buffers[0].set_buffer_type(BufferType.FOUR_SPRITES_PER_ROW)

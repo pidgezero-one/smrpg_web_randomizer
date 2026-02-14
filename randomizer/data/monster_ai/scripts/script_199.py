@@ -19,7 +19,7 @@ script = MonsterScript([
 	Attack(Attack1),
 	SetTarget(RANDOM_OPPONENT),
 	Wait1TurnandRestartScript(),
-	IfHPBelow(300),
+	IfHPBelow(300, identifier="belome1_phase2"),
 	IfVarBitsClear(BV7EE004, [1]),
 	SetVarBits(BV7EE004, [1]),
 	SetTarget(RANDOM_OPPONENT),

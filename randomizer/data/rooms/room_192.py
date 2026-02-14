@@ -117,8 +117,8 @@ room = Room(
     objects=[
         RegularNPC( # 0
             npc=npcs.BOOSTER_NPC,
-            initiator=EventInitiator.NONE,
-            event_script=E1360_CURTAIN_1,
+            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            event_script=E3820_FORCED_TOWER_BOSS_1_FIGHT,
             action_script=A0000_DO_NOTHING,
             visible=False,
             x=8,
@@ -142,7 +142,8 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False),
+            cannot_clone=False,
+            show_shadow=True),
         RegularNPC( # 1
             npc=npcs.SNIFIT_NPC_2,
             initiator=EventInitiator.NONE,
@@ -275,34 +276,6 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 7
-            npc=npcs.BOOSTER_NPC,
-            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
-            event_script=E3820_FORCED_TOWER_BOSS_1_FIGHT,
-            action_script=A0013_SPINNING_STATIC_COIN_PROXY,
-            speed=3,
-            visible=False,
-            x=5,
-            y=29,
-            z=0,
-            z_half=False,
-            direction=NORTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=True,
-            cant_walk_up_stairs=True,
-            cant_walk_under=True,
-            cant_pass_walls=False,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 8
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E1928_BALCONY_IS_LOCKED,
@@ -329,7 +302,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3),
-        RegularClone( # 9
+        RegularClone( # 8
             npc=npcs.EMPTY_NPC_3,
             event_script=E1928_BALCONY_IS_LOCKED,
             action_script=A0015_DO_NOTHING,
@@ -339,7 +312,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST),
-        RegularNPC( # 10
+        RegularNPC( # 9
             npc=npcs.BOOSTER_NPC_3,
             initiator=EventInitiator.DO_ANYTHING,
             event_script=E1925_POSTGAME_TOWER_FIGHT,

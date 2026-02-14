@@ -17,7 +17,7 @@ script = MonsterScript([
 	SetVarBits(BV7EE000, [0]),
 	Attack(QuicksilverAttack),
 	Wait1TurnandRestartScript(),
-	IfHPBelow(400),
+	IfHPBelow(400, identifier="jinx2_phase2"),
 	IfVarBitsClear(BV7EE004, [0]),
 	SetVarBits(BV7EE004, [0]),
 	SetTarget(SELF),

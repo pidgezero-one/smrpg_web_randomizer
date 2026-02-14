@@ -13,7 +13,7 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	IfHPBelow(300),
+	IfHPBelow(300, identifier="jinx1_phase2"),
 	IfVarBitsClear(BV7EE004, [0]),
 	SetVarBits(BV7EE004, [0]),
 	SetTarget(SELF),

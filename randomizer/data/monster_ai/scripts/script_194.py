@@ -38,7 +38,7 @@ script = MonsterScript([
 	ClearVarBits(BV7EE000, [7]),
 	Wait1TurnandRestartScript(),
 	StartCounterCommands(),
-	IfHPBelow(200),
+	IfHPBelow(200, identifier="bundt_hp_threshold"),
 	IfVarBitsClear(BV7EE000, [1]),
 	SetVarBits(BV7EE000, [1]),
 	RunBattleEvent(BE0031_UNUSED),

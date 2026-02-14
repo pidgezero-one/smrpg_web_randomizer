@@ -11,12 +11,12 @@ General
   🚧 Less broken. Summons a flower temporarily. No other weird stuff happening
 🚧 even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
 🚧 "found an cleanse juice"
-- cymbals (music note) packet shows up as a flower
+🚧 cymbals (music note) packet shows up as a flower
 🚧 gold paint in chest rendered as a blue drink
 🚧 bowser's runaway sprite is wrong
 🚧 beetlemania packet is wrong sprite
 🚧 NPC spell learns are rendering up top instead of down below
-- bowser extremely bugged fighting aeros, does not return to his spot when finishes attacking, randomly ended the fight
+🚧 bowser extremely bugged fighting aeros, does not return to his spot when finishes attacking, randomly ended the fight
   - run away also seems to happen after marios attacks
   - this might be enemy dependent. pulsars in bowsers keep did it
 🚧 lucky jewel chest renders as an egg
@@ -27,20 +27,20 @@ General
 
 Boss-specific
 - torte henchman is untargetable in battle
-- kggg trying to run battle dialogs
-- fancy bundt animations are wrong, cross ref against demake
-  - opening event is fine. it's when it takes its first turn that things mess up (moves forward and separates)
-  - tortes saying empty dialogs
-  - candles are not lighting up
-  - movement might be related to monster behaviours. ie raspberry shuold not move forward when attacking but it does
-- jinx 4 too - am i increasing the counter?
-- booster 2 "I'm gonna start working" after KOed
+🚧 kggg trying to run battle dialogs
+🚧 fancy bundt animations are wrong, cross ref against demake
+  🚧 opening event is fine. it's when it takes its first turn that things mess up (moves forward and separates)
+  🚧 tortes saying empty dialogs
+  🚧 candles are not lighting up
+  🚧 movement might be related to monster behaviours. ie raspberry shuold not move forward when attacking but it does
+🚧 jinx 4 too - am i increasing the counter?
+🚧 booster 2 "I'm gonna start working" after KOed
 - boomer should always be on chandelier
-- cloaker/domino running empoty dialogs
-- why did mokura transform from physical attack
-- normal booster running empty dialogs
-- double check if punchinello's hp thresholds are being calced correctly
-  - also showing empty dialogs
+🚧 cloaker/domino running empoty dialogs
+🚧 why did mokura transform from physical attack
+🚧 normal booster running empty dialogs
+🚧 double check if punchinello's hp thresholds are being calced correctly
+  🚧 also showing empty dialogs
 
 Mushroom Way 
 
@@ -54,47 +54,46 @@ Mushroom kingdom
 
 Kero sewers
 🚧 kero sewers is not blocked when it should be
-- no packets in chests in pre-belome room
-- double chest does not work. opening it first after lands end did not refill it
-- boss fight doesn't start, can't be interacted with. no collision?
-- water does not drain. that's bad (well, it does, it just looks like it didn't)
+🚧 no packets in chests in pre-belome room
+🚧 double chest does not work. opening it first after lands end did not refill it
+🚧 boss fight doesn't start, can't be interacted with. no collision?
+🚧 water does not drain. that's bad (well, it does, it just looks like it didn't)
 
 Rose way
 - palettes in rose way still broken
-- chest animations in second room are weird. check memory partition and sprite properties
+🚧 chest animations in second room are weird. check memory partition and sprite properties
 
 Forest maze 
-- uderground rooms are fucked up. how the hell to get partition to work?
-- Might be able to figure out how that works. Wiggler overwriting chests. Which NPC slot is he in and why is he overwriting the top buffer? Packets also do that.
+🚧 uderground rooms are fucked up. how the hell to get partition to work?
 - buzzer's default attack sound effect is wrong somehow
 - why does buzzer underground turn into a snifit in battle?
 
 Pipe vault
-- item bags in chompweed room chests move around when summoned from chests
+🚧 item bags in chompweed room chests move around when summoned from chests
 🚧 safety ring replacing frog coin in pipe vault has no sprite
-- bright card replacing frog coin in pipe vault renders as a knife
-- gold goomba is loading into a 3x per row buffer
+🚧 bright card replacing frog coin in pipe vault renders as a knife
+🚧 gold goomba is loading into a 3x per row buffer
 
 Yoster
-- pink yoshis are all coloured wrong
+🚧 pink yoshis are all coloured wrong
 
 Moleville
-- shy guy in left and right crook spot (mack) use bad buffer. center ok
-- no item came out of shy guy minecart
-- peach taking minecart is also using a bad partition
-- skip minecart flag does not work
-- shiny stone girl still asking for fireworks in progressive settings
-- treasure hunter's dialogs are not changed
+🚧 shy guy in left and right crook spot (mack) use bad buffer. center ok
+🚧 no item came out of shy guy minecart
+🚧 peach taking minecart is also using a bad partition
+🚧 skip minecart flag does not work
+🚧 shiny stone girl still asking for fireworks in progressive settings
+🚧 treasure hunter's dialogs are not changed
 
 Booster Pass
 - battle crashes when you attack carroboscis
   - not anymore, but it forces you to run away
-- mimic in booster pass crashes game
+🚧 mimic in booster pass crashes game
 
 Booster Tower
-- chomps are too light
+🚧 chomps are too light
 🚧 booster tower does not load when character needed to unlock it
-- shadows broken in curtain room, makes no sense
+🚧 shadows broken in curtain room, makes no sense
 - snifits in curtain room animations look backward, leaning forward sprite happens after closing curtain instead of before opening it
 - attacking blue fireball makes you run away
 - shouln't be able to run from tower henchman fights

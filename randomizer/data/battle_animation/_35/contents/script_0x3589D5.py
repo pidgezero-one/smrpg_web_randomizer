@@ -11,7 +11,7 @@ from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
-script = AnimationScriptBlock(expected_size=240, expected_beginning=0x3589D5, script=[
+script = AnimationScriptBlock(expected_size=151, expected_beginning=0x3589D5, script=[
 	ResetTargetMappingMemory(identifier="command_0x3589D5"),
 	ResetObjectMappingMemory(),
 	SetAMEM60ToCurrentTarget(),
@@ -67,35 +67,4 @@ script = AnimationScriptBlock(expected_size=240, expected_beginning=0x3589D5, sc
 	SetAMEM8BitToConst(0x62, 1),
 	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35ECA2"]),
 	Jmp(["command_0x358A08"]),
-	ResetTargetMappingMemory(identifier="bowser_weapon_wrapper"),
-	ResetObjectMappingMemory(),
-	SetAMEM60ToCurrentTarget(),
-	SetAMEM8BitToConst(0x66, 1),
-	Set7E1xToAMEM8Bit(0x7EE020, 0x66),
-	SetAMEM8BitTo7E5x(0x66, 0x7E002E),
-	JmpIfAMEM8BitEqualsConst(0x66, 20, ["command_0x358A9B"]),
-	Pause1Frame(),
-	JmpIfAMEM8BitEqualsConst(0x66, 11, ["command_0x358AB0"]),
-	JmpIfAMEM8BitEqualsConst(0x66, 13, ["command_0x358AB0"]),
-	JmpIfAMEM8BitEqualsConst(0x66, 23, ["command_0x358AB0"]),
-	JmpIfAMEM8BitEqualsConst(0x66, 35, ["command_0x358AB0"]),
-	ClearAMEM8Bit(0x66),
-	UnknownCommand(bytearray(b'DU')),
-	Jmp(["command_0x358AA3"]),
-	ClearAMEM8Bit(0x6F, identifier="command_0x358A9B"),
-	Set7E1xToAMEM8Bit(0x7EE020, 0x6F),
-	UnknownCommand(bytearray(b'Dk')),
-	SpriteSequence(sequence=0, looping_off=True, identifier="command_0x358AA3"),
-	MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=1792, arch_height=96),
-	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
-	ResetObjectMappingMemory(),
-	SetAMEM8BitTo7E5x(0x60, 0x7E002E, identifier="command_0x358AB0"),
-	ClearAMEM16Bit(0x61),
-	ClearAMEM16Bit(0x63),
-	ClearAMEM8Bit(0x65),
-	ClearAMEM8Bit(0x67),
-	SetAMEM8BitTo7E5x(0x6A, 0x7E002E),
-	ClearAMEM8Bit(0x6B),
-	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35ECA2"]),
-	JmpIfTimedHitSuccess(destinations=["command_0x358B41"])
 ])

@@ -14,7 +14,7 @@ from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
 	IfLastMonsterStanding(),
-	IfHPBelow(500),
+	IfHPBelow(500, identifier="booster_powers_up"),
 	Attack(Attack1, SpritzBombAttack, LocoExpressAttack),
 	Wait1TurnandRestartScript(),
 	IfLastMonsterStanding(),

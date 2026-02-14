@@ -354,11 +354,11 @@ script = EventScript([
 	RunEventAsSubroutine(E1201_TOWER_CURTAIN_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(),
-	SummonObjectToSpecificLevel(NPC_7, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, identifier="EVENT_1368_summon_to_level_94"),
-	ActionQueueAsync(target=NPC_7, subscript=[
+	ActionQueueAsync(target=NPC_0, subscript=[
 		A_VisibilityOn(),
 		A_FaceNorthwest(),
 		A_ShiftToXYCoords(x=5, y=29)
-	]),
+	], identifier="EVENT_1368_summon_to_level_94"),
+	SummonObjectToSpecificLevel(NPC_0, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM),
 	Return()
 ])
