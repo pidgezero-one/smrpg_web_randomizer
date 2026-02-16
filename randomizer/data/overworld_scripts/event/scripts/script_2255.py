@@ -1,4 +1,4 @@
-# E2255_EMPTY
+# E2255_AP_GRANT_RIVER_HILL_IMPORTANT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+	PlaySound(sound=SO085_FLOWER, channel=6),
+	RunDialog(dialog_id=DI2002_AP_ITEM_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return()
 ])

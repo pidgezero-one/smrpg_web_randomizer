@@ -39,7 +39,7 @@ script = EventScript([
 	EnableControlsUntilReturn([]),
 	Set70107015ToObjectXYZ(MARIO),
 	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
-	AddConstToVar(PRIMARY_TEMP_7000, 608),
+	AddConstToVar(PRIMARY_TEMP_7000, 1216),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
     CopyVarToVar(BOOSTER_HILL_FLOWER_COUNTER, PRIMARY_TEMP_7000),
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["summon_flower_1_"]),

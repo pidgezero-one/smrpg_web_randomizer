@@ -2,7 +2,7 @@ from __future__ import annotations
 import random
 from typing import TYPE_CHECKING, Sequence, TypeVar
 
-from ..data.variables.sprite_names import SPR0195_FLOWER
+from ..data.variables.sprite_names import SPR0192_COIN, SPR0193_SMALL_COIN, SPR0194_FROG_COIN, SPR0195_FLOWER, SPR0211_SMALL_FROG_COIN, SPR0226_TINY_STAR
 from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC
 from ..data.physical_objects.items import (
     DefaultItem,
@@ -170,7 +170,6 @@ class Prize:
 TOriginallyHeld = TypeVar("TOriginallyHeld", bound=type[Prize] | None)
 
 class KeyPrize(Prize):
-    _packet_data = (SPR0195_FLOWER, 2)
     pass
 
 
@@ -256,6 +255,7 @@ class StarPiecePrize(StandardPrize):
     )
     _hint: Flag
     _model = TinyStarObject
+    _packet_data = (SPR0226_TINY_STAR, 0)
 
     @property
     def chest_grant(self) -> EventScript:
@@ -903,6 +903,12 @@ class CoinPrize(Prize):
     )
 
     @property
+    def packet_data(self) -> tuple[int, int]:
+        if self.amount >= 10:
+            return (SPR0192_COIN, 0)
+        return (SPR0193_SMALL_COIN, 0)
+
+    @property
     def chest_grant(self) -> EventScript:
         return EventScript(
             [
@@ -935,6 +941,12 @@ class FrogCoinPrize(StandardPrize):
         nickname="Green Coin",
         description="The exchange rate on this must be\n pretty high.",
     )
+
+    @property
+    def packet_data(self) -> tuple[int, int]:
+        if self.amount >= 10:
+            return (SPR0194_FROG_COIN, 0)
+        return (SPR0211_SMALL_FROG_COIN, 0)
 
     @property
     def chest_grant(self) -> EventScript:

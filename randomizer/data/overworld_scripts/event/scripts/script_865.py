@@ -38,8 +38,8 @@ script = EventScript([
 		A_SetWalkingSpeed(FAST),
 		A_WalkNortheastSteps(1),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=3, is_sequence=True, looping=False),
+		A_SetSpriteSequence(index=3, is_sequence=True, looping=False, identifier="dojo_boss_4_deescalate"),
 		A_Pause(18)
-	]),
+	], identifier="dojo_boss_4_deescalate_aq"),
 	Return()
 ])

@@ -1,4 +1,5 @@
 from smrpgpatchbuilder.datatypes.levels.room_collection import RoomCollection
+from .npcs import AP_BASE
 from .room_0 import room as room_0
 from .room_1 import room as room_1
 from .room_2 import room as room_2
@@ -1027,5 +1028,6 @@ room_collection = RoomCollection(
         room_510,  # 510: R510_UNKNOWN
         room_511,  # 511: R511_UNKNOWN
     ],
-    large_partition_table=True
+    large_partition_table=True,
+    force_first_npc=AP_BASE
 )

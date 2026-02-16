@@ -126,49 +126,50 @@ Seaside Town
 Sea
 
 Sunken Ship
-- Stair packet does not rise very high enough
-- realign "Hate to burst your Endobubble" hint bottom line
-- are any of the packet shuffles actually working? looks like original
+🚧 Stair packet does not rise very high enough
+🚧 realign "Hate to burst your Endobubble" hint bottom line
+🚧 are any of the packet shuffles actually working? looks like original
   - seems like it? check spoiler log
   - packet that falls in barrel puzzle floats
-- physical attacks are killing dry bones
-- mid boss battle is totally skipped
+🚧 physical attacks are killing dry bones
+🚧 mid boss battle is totally skipped
 - flower packet in left chest in inner ship floats to the left 
-- chest in clone room is broken
-- slots chest in hidon room causes coin sprites to overwrite chests
+🚧 chest in clone room is broken
+🚧 slots chest in hidon room causes coin sprites to overwrite chests
   - see if you can find another partition for it
-- sprites of items underwater are messed up, keep shifting or disappearing
-- no item replacing corner frog coin at all
-- Dodo in johnny's room cut off. might need to use a different partition
+🚧 sprites of items underwater are messed up, keep shifting or disappearing
+🚧 no item replacing corner frog coin at all
+🚧 Dodo in johnny's room cut off. might need to use a different partition
 
 Land's End
-- side item from remake does not work (green spell). doesn't activate
-- should not be able to run away from mokura slot (jinx)
+🚧 side item from remake does not work (green spell). doesn't activate
+🚧 should not be able to run away from mokura slot (jinx)
   - or should you? doesn't break anything...
-- is mokura actually spawning more often?
-- broken shadows in cliff room
+🚧 is mokura actually spawning more often?
+🚧 broken shadows in cliff room
 - belome fortune triggering after only 2 statues
-- geckits also load a snifit fight
-- chests in grotto don't render correctly
-- crystal shard in chest loaded an egg packet
+  - needs more research
+🚧 geckits also load a snifit fight
+🚧 chests in grotto don't render correctly
+🚧 crystal shard in chest loaded an egg packet
 
 Monstro Town
-- count down in jagger spot but the battle is yaridovich? even though it's using count down's background?
-  - yarid stats clearly meant for somewhere else. possibly dojo 
-- what the hell did manager's last standing pounder do? glitched spell name, flame stone that did nothing
-- boomer in dojo 3 is doing stances (when first introduced after dojo 2 fight) of sequences that dont exist
-  - same with clerk. probably just forgot to identify detente animations and delete them
-- piranha plant is invisible
-- starslap song hint is wrong
-- sleeping in the inn circle mask centers in the wrong place
-- palettes on musty fears might be wrong
-- musty fears should not say intro twice
-- tramopline up to belome temple crashes game, never fades in
+🚧 count down in jagger spot but the battle is yaridovich? even though it's using count down's background?
+  🚧 yarid stats clearly meant for somewhere else. possibly dojo 
+🚧 what the hell did manager's last standing pounder do? glitched spell name, flame stone that did nothing
+🚧 boomer in dojo 3 is doing stances (when first introduced after dojo 2 fight) of sequences that dont exist
+  🚧 same with clerk. probably just forgot to identify detente animations and delete them
+🚧 piranha plant is invisible
+🚧 starslap song hint is wrong
+🚧 sleeping in the inn circle mask centers in the wrong place
+🚧 palettes on musty fears might be wrong
+🚧 musty fears should not say intro twice
+🚧 tramopline up to belome temple crashes game, never fades in
 
 Bean Valley
-- magikoopa appearing at pipe: faces backward for a moment. intentional?
-  - also he's blue
-- is frog coin at vine fork path randomized?
+🚧 magikoopa appearing at pipe: faces backward for a moment. intentional?
+  🚧 also he's blue
+🚧 is frog coin at vine fork path randomized?
 
 Nimbus Land
 - default bonk animation doesn't seem to let you jump

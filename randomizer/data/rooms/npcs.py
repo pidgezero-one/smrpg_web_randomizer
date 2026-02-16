@@ -103,6 +103,7 @@ BLUE_ORB_BASE = _item_npc_base(SPR0215_BLUE_BALL)
 GREEN_ORB_BASE = _item_npc_base(SPR0217_GREEN_BALL)
 YELLOW_ORB_BASE = _item_npc_base(SPR0218_YELLOW_BALL)
 GRAY_ORB_BASE = _item_npc_base(SPR0224_GRAY_BALL)
+AP_BASE = _item_npc_base(SPR0639_ITEM_BAG_STANDALONE)
 
 
 MARIO_WALKING_DOWN_LEFT_NPC = NPC(
@@ -5078,6 +5079,29 @@ FROG_COIN_NPC = NPC(
     show_shadow=True,
     directions=VramStore.DIR2_SWSE,
     min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+STATIC_FROG_COIN_NPC = NPC(
+    sprite_id=SPR0747_STATIC_FROG_COIN,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=3,
+    obtuse_axis=3,
+    height=6,
+    y_shift=5,
+    show_shadow=True,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
     priority_0=False,
     priority_1=False,
     priority_2=True,

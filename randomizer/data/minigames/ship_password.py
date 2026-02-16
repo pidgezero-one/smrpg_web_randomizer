@@ -617,7 +617,7 @@ pool = [
     ),
     Password(
         "domino",
-        "%RANDOM_WRITER%\n\nHate to burst your Endobubble.[await]",
+        "%RANDOM_WRITER%\n\n    Hate to burst your Endobubble.[await]",
         "%RANDOM_WRITER%\n     Has a warrior as a partner\n                in crime.[await]",
         "%RANDOM_WRITER%\n\nWhen you face them, its clobbering time![await]",
         "%RANDOM_WRITER%\n          When you face them,\n          its clobbering time![await]",

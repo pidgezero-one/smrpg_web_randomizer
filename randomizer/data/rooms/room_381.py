@@ -458,10 +458,10 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 7
-            npc=npcs.FROG_COIN_NPC,
+            npc=npcs.STATIC_FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0238_FREESTANDING_4_GRANT,
-            action_script=A0511_PIPE_VAULT_3_CHEST_ROOM_COIN,
+            action_script=A0015_DO_NOTHING,
             visible=True,
             x=17,
             y=73,

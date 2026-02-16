@@ -13,15 +13,6 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	IfTurnCounterEquals(6),
-	CastSpell(LightningOrbSpell),
-	ClearVar(BV7EE005_ATTACK_PHASE_COUNTER),
-	Wait1TurnandRestartScript(),
-	Attack(Attack1),
-	Wait1Turn(),
-	Attack(Attack1),
-	Wait1Turn(),
-	UnknownCommand(bytearray(b'\x82')),
-	Wait1Turn(),
+	Attack(Attack1, Attack1, Attack46),
 	StartCounterCommands()
 ])

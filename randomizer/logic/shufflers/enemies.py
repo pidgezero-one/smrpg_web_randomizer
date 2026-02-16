@@ -97,7 +97,9 @@ def randomize_enemy_stats(world: GameWorld) -> None:
     boss_related_types = set(sidekick_types) | set(boss_types)
 
     # Capture original vanilla stats BEFORE any shuffling for ±50% clamping
+    # Also capture disable_auto_death to ensure it's never changed
     original_stats: dict[int, dict[str, int]] = {}
+    original_disable_auto_death: dict[int, bool] = {}
     for enemy in all_enemies:
         original_stats[id(enemy)] = {
             "hp": int(enemy.hp),
@@ -108,6 +110,7 @@ def randomize_enemy_stats(world: GameWorld) -> None:
             "magic_defense": int(enemy.magic_defense),
             "fp": int(enemy.fp),
         }
+        original_disable_auto_death[id(enemy)] = enemy.disable_auto_death
 
     if (
         world.settings.get_flag(EnemyStats).selected
@@ -232,6 +235,10 @@ def randomize_enemy_stats(world: GameWorld) -> None:
                 head.set_hp(int(main_head.hp))
         except (KeyError, StopIteration):
             pass
+
+    # Restore disable_auto_death to original values (must never change)
+    for enemy in all_enemies:
+        enemy.set_disable_auto_death(original_disable_auto_death[id(enemy)])
 
     # Update psychopath messages based on new stats
     for enemy in all_enemies:

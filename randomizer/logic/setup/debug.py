@@ -7,10 +7,11 @@ if TYPE_CHECKING:
 
 
 def apply_debug_start_items(world: GameWorld) -> None:
-    """Insert starting items into event script 3840 if debug mode is enabled.
+    """Insert starting items and coins into event script 3840 if debug mode is enabled.
 
     Reads items.start from debug/config.yml and adds AddToInventory commands
     for each item to E3840_STARTER_DEBUG_ITEMS, which runs at game start.
+    Also adds 9999 coins and 99 frog coins.
     """
     if not world.settings.debug_mode:
         return
@@ -18,15 +19,23 @@ def apply_debug_start_items(world: GameWorld) -> None:
     from randomizer.debug import load_debug_config, get_item_class
     from randomizer.data.variables.event_script_names import E3840_STARTER_DEBUG_ITEMS
     from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import (
-        AddToInventory, Return
+        AddToInventory, AddCoins, AddFrogCoins, Return
     )
 
+    commands = []
+
+    # Add 9999 coins (AddCoins only takes 0-255, so we need multiple calls)
+    # 9999 = 39 * 255 + 54
+    for _ in range(39):
+        commands.append(AddCoins(255))
+    commands.append(AddCoins(54))
+
+    # Add 99 frog coins
+    commands.append(AddFrogCoins(99))
+
+    # Add starting items from config
     config = load_debug_config()
     start_items = config.get("items", {}).get("start", [])
-    if not start_items:
-        return
-
-    commands = []
     for item_name in start_items:
         item_cls = get_item_class(item_name)
         if item_cls is not None:
@@ -35,6 +44,7 @@ def apply_debug_start_items(world: GameWorld) -> None:
     commands.append(Return())
 
     script = world.event_scripts.get_script_by_id(E3840_STARTER_DEBUG_ITEMS)
+    assert script is not None, "Event script E3840_STARTER_DEBUG_ITEMS not found"
     script.set_contents(commands)
 
 

@@ -32,7 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	ActionQueueAsync(target=NPC_1, subscript=[
+	ActionQueueAsync(target=NPC_4, subscript=[
 		A_WalkNorthwestPixels(4),
 		A_WalkNorthPixels(9),
 		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),

@@ -530,6 +530,33 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     update_protagonist_room_partition(world)
     update_kitchen_partitions(world)
 
+    # Update freestanding frog coin NPCs in rooms with Coins partition
+    # to use the animated frog coin NPC and spinning action script
+    from smrpgpatchbuilder.datatypes.levels.classes import BufferType
+    from ..data.rooms.npcs import FROG_COIN_NPC, STATIC_FROG_COIN_NPC
+    from ..data.variables.action_script_names import A0511_PIPE_VAULT_3_CHEST_ROOM_COIN
+    from ..types.prize import FrogCoinPrize
+    for location in world.locations.values():
+        if not isinstance(location, StandingLocation):
+            continue
+        if location.originally_held is None or not issubclass(location.originally_held, FrogCoinPrize):
+            continue
+        # Check if any room containing this prize has a Coins partition buffer
+        for room_id in location._rooms:
+            room = world.rooms._rooms[room_id]
+            if room is None or room.partition is None:
+                continue
+            has_coins_buffer = any(
+                buf.buffer_type == BufferType.COINS for buf in room.partition.buffers
+            )
+            if has_coins_buffer:
+                # Update all NPCs for this location in this room
+                for npc_id in location._npc_ids:
+                    npc_obj = room.get_npc_by_target_id(npc_id)
+                    if npc_obj is not None and npc_obj._npc == STATIC_FROG_COIN_NPC:
+                        npc_obj._npc = FROG_COIN_NPC
+                        npc_obj.set_action_script(A0511_PIPE_VAULT_3_CHEST_ROOM_COIN)
+
     # Set can_run_away for each boss fight location's formation
     # This must happen after all renders to ensure the correct formation is used
     # Each boss fight is unique, so each formation should only be used by one location

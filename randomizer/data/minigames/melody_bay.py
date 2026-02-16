@@ -61,13 +61,14 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
     
 )
 from randomizer.data.variables.overworld_sfx_names import (
+    SO000_SILENCE,
     SO036_TADPOLE_POND_STAFF_DO,
-    SO037_TADPOLE_POND_STAFF_RE,
-    SO038_TADPOLE_POND_STAFF_MI,
-    SO039_TADPOLE_POND_STAFF_FA,
-    SO040_TADPOLE_POND_STAFF_SO,
-    SO041_TADPOLE_POND_STAFF_LA,
-    SO042_TADPOLE_POND_STAFF_TI,
+    SO037_TADPOLE_POND_STAFF_SO,
+    SO038_TADPOLE_POND_STAFF_LA,
+    SO039_TADPOLE_POND_STAFF_TI,
+    SO040_TADPOLE_POND_STAFF_DO,
+    SO041_TADPOLE_POND_STAFF_RE,
+    SO042_TADPOLE_POND_STAFF_MI,
 )
 from randomizer.data.variables.music_names import M0017_TADPOLEPOND
 
@@ -88,37 +89,37 @@ class Fa(SongNote):
 class So(SongNote):
     val = 1
     name = "So"
-    sfx = SO037_TADPOLE_POND_STAFF_RE
+    sfx = SO037_TADPOLE_POND_STAFF_SO
 
 
 class La(SongNote):
     val = 2
     name = "La"
-    sfx = SO038_TADPOLE_POND_STAFF_MI
+    sfx = SO038_TADPOLE_POND_STAFF_LA
 
 
 class Ti(SongNote):
     val = 3
     name = "Ti"
-    sfx = SO039_TADPOLE_POND_STAFF_FA
+    sfx = SO039_TADPOLE_POND_STAFF_TI
 
 
 class Do(SongNote):
     val = 4
     name = "Do"
-    sfx = SO040_TADPOLE_POND_STAFF_SO
+    sfx = SO040_TADPOLE_POND_STAFF_DO
 
 
 class Re(SongNote):
     val = 5
     name = "Re"
-    sfx = SO041_TADPOLE_POND_STAFF_LA
+    sfx = SO041_TADPOLE_POND_STAFF_RE
 
 
 class Mi(SongNote):
     val = 6
     name = "Mi"
-    sfx = SO042_TADPOLE_POND_STAFF_TI
+    sfx = SO042_TADPOLE_POND_STAFF_MI
 
 
 @dataclass
@@ -183,15 +184,25 @@ class Song:
 
         for cmd in subscript:
             # Replace PlaySound commands with the appropriate note sounds
-            if isinstance(cmd, ASPlaySound) and note_index < len(self.notes):
-                output.append(
-                    ASPlaySound(
-                        sound=self.notes[note_index].note.sfx,
-                        channel=cmd.channel,
-                        identifier=str(cmd.identifier) if cmd.identifier else None,
+            if isinstance(cmd, ASPlaySound):
+                if note_index < len(self.notes):
+                    output.append(
+                        ASPlaySound(
+                            sound=self.notes[note_index].note.sfx,
+                            channel=cmd.channel,
+                            identifier=str(cmd.identifier) if cmd.identifier else None,
+                        )
                     )
-                )
+                else:
+                    output.append(
+                        ASPlaySound(
+                            sound=SO000_SILENCE,
+                            channel=cmd.channel,
+                            identifier=str(cmd.identifier) if cmd.identifier else None,
+                        )
+                    )
                 note_index += 1
+
             else:
                 output.append(cmd)
 

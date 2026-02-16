@@ -1073,15 +1073,17 @@ def shuffle_prizes(world: GameWorld) -> None:
 
 
 def assign_spell_prize_models(world: GameWorld) -> None:
-    """Assign spell prize models based on their element.
+    """Assign spell prize models and packet data based on their element.
 
     This sets the visual appearance (colored orb) for spell prizes when they
     appear as freestanding items in the overworld:
-    - Thunder spells → Yellow orb
-    - Fire spells → Red orb
-    - Ice spells → Blue orb
-    - Jump/Earth spells → Green orb
-    - No element spells → Gray orb
+    - Thunder spells → Yellow orb (SPR0218_YELLOW_BALL)
+    - Fire spells → Red orb (SPR0214_RED_BALL)
+    - Ice spells → Blue orb (SPR0215_BLUE_BALL)
+    - Jump/Earth spells → Green orb (SPR0217_GREEN_BALL)
+    - No element spells → Gray orb (SPR0224_GRAY_BALL)
+
+    Also sets packet_data to (sprite_id, 0) for each spell prize based on element.
 
     Must run after spell elements are finalized and after prizes are shuffled into locations.
     """
@@ -1089,6 +1091,13 @@ def assign_spell_prize_models(world: GameWorld) -> None:
     from ...data.physical_objects.items import (
         YellowSpellObject, FireSpellObject, BlueSpellObject,
         GreenSpellObject, GraySpellObject
+    )
+    from ...data.variables.sprite_names import (
+        SPR0214_RED_BALL,
+        SPR0215_BLUE_BALL,
+        SPR0217_GREEN_BALL,
+        SPR0218_YELLOW_BALL,
+        SPR0224_GRAY_BALL,
     )
     from smrpgpatchbuilder.datatypes.spells.enums import Element
 
@@ -1104,17 +1113,22 @@ def assign_spell_prize_models(world: GameWorld) -> None:
         # Get the actual spell instance from world with its finalized element
         spell_instance = world.get_spell(prize.spell)
 
-        # Map element to orb model
+        # Map element to orb model and packet sprite
         if spell_instance.element == Element.THUNDER:
             prize.set_model(YellowSpellObject)
+            prize._packet_data = (SPR0218_YELLOW_BALL, 0)
         elif spell_instance.element == Element.FIRE:
             prize.set_model(FireSpellObject)
+            prize._packet_data = (SPR0214_RED_BALL, 0)
         elif spell_instance.element == Element.ICE:
             prize.set_model(BlueSpellObject)
+            prize._packet_data = (SPR0215_BLUE_BALL, 0)
         elif spell_instance.element == Element.JUMP:
             prize.set_model(GreenSpellObject)
+            prize._packet_data = (SPR0217_GREEN_BALL, 0)
         else:  # Element.NONE
             prize.set_model(GraySpellObject)
+            prize._packet_data = (SPR0224_GRAY_BALL, 0)
 
 
 def post_shuffle_cleanup(world: GameWorld) -> None:

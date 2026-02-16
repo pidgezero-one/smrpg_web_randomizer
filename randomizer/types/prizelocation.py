@@ -1360,7 +1360,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                     )
                 room._objects.extend(
                     [
-                        RegularNPC(  # 2
+                        RegularNPC(  
                             npc=FLOWER_NPC_2,
                             initiator=EventInitiator.NONE,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -1388,7 +1388,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                             cant_move_if_in_air=True,
                             byte7_upper2=3,
                         ),
-                        RegularClone(  # 3
+                        RegularClone(  
                             npc=FLOWER_NPC_2,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
                             action_script=A0015_DO_NOTHING,
@@ -1399,7 +1399,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                             z_half=False,
                             direction=SOUTHWEST,
                         ),
-                        RegularClone(  # 4
+                        RegularClone(  
                             npc=FLOWER_NPC_2,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
                             action_script=A0015_DO_NOTHING,
@@ -1410,8 +1410,8 @@ class TreasureChestLocation(StandardPrizeLocation):
                             z_half=False,
                             direction=SOUTHWEST,
                         ),
-                        RegularNPC(  # 5
-                            npc=FROG_COIN_NPC,
+                        RegularNPC(  
+                            npc=STATIC_FROG_COIN_NPC,
                             initiator=EventInitiator.NONE,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
                             action_script=A0015_DO_NOTHING,
@@ -1438,7 +1438,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                             cant_move_if_in_air=True,
                             byte7_upper2=3,
                         ),
-                        RegularNPC(  # 6
+                        RegularNPC(  
                             npc=EXPLOSION_NPC,
                             initiator=EventInitiator.NONE,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -1469,18 +1469,6 @@ class TreasureChestLocation(StandardPrizeLocation):
                         ),
                     ]
                 )
-        elif isinstance(self.prize, EXPStarPrize):
-            for r in self._rooms:
-                room = world.rooms._rooms[r]
-                if room is None:
-                    raise ValueError(
-                        f"Room ID {r} not found in world while creating EXP star prize script."
-                    )
-                p = room.partition
-                assert p is not None
-                # Increase packet buffer for rooms where EXP star sparkles are expected.
-                p.set_extra_sprite_buffer_size(p.extra_sprite_buffer_size + 1)
-                room.set_partition(p)
 
 
 class StandingLocation(StandardPrizeLocation):

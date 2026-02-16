@@ -1,4 +1,4 @@
-dialog_data = [""]*612
+dialog_data = [""]*614
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -1717,4 +1717,6 @@ dialog_data[607] = '''`CHARACTER` learns `SPELL_26`[await]'''
 dialog_data[608] = '''`CHARACTER` learns `SPELL_26`[end]'''
 dialog_data[609] = '''`CHARACTER` learns `SPELL_27`[await]'''
 dialog_data[610] = '''`CHARACTER` learns `SPELL_27`[end]'''
-dialog_data[611] = '''[await]'''
+dialog_data[611] = '''    Sent an item to another player[await]'''
+dialog_data[612] = '''Sent an item to another player![end]'''
+dialog_data[613] = '''[await]'''

@@ -3644,7 +3644,7 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3659,7 +3659,7 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3674,7 +3674,7 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -5192,7 +5192,7 @@ class ShipBarrelPuzzle(PacketLocationRow1):
 class ShipPasswordBossFight(BossFightLocation):
     _bias = True
     _originally_held = KingCalamariBossFight
-    _rooms = [R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE]
+    _rooms = [R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS_BOSS_FIGHT
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _pack_id = PACK167_SHIP_FIRST_BOSS
@@ -6628,6 +6628,8 @@ class DojoThirdFight(BossFightLocation):
                 "dojo_boss_3_initiate_aq",
                 "dojo_boss_3_initiate",
                 "dojo_boss_3_pause",
+                "dojo_boss_3_deescalate_aq",
+                "dojo_boss_3_deescalate",
             )
         return op
 
@@ -6698,6 +6700,8 @@ class DojoFourthFight(BossFightLocation):
                 "dojo_boss_4_initiate_aq",
                 "dojo_boss_4_initiate",
                 "dojo_boss_4_pause",
+                "dojo_boss_4_deescalate_aq",
+                "dojo_boss_4_deescalate",
             )
         return op
 
@@ -6746,7 +6750,7 @@ class DojoFifthFight(BossFightLocation):
     _override_id = 525
     _default_battlefield = BF46_JINXS_DOJO
     _remake_only = True
-    _pack_id = PACK189_DOJO_PREFIGHT
+    _pack_id = PACK119_DOJO_POSTGAME
     _post_unlocks_event_id = E1217_DOJO_5_BOSS_UNLOCKS
     _allow_run_away = True
     _npc_slots = [
@@ -6782,6 +6786,8 @@ class DojoFifthFight(BossFightLocation):
                 "dojo_boss_5_initiate_aq",
                 "dojo_boss_5_initiate",
                 "dojo_boss_5_pause",
+                "dojo_boss_5_deescalate_aq",
+                "dojo_boss_5_deescalate",
             )
         return op
 

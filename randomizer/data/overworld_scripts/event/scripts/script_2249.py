@@ -1,4 +1,4 @@
-# E2249_EMPTY
+# E2249_AP_GRANT_NO_GRAPHICS
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+    PlaySound(sound=SO014_FLOWER, channel=6),
+	RunDialog(dialog_id=DI2001_AP_ITEM, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+    Return()
 ])

@@ -162,10 +162,10 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 2
-            npc=npcs.FROG_COIN_NPC,
+            npc=npcs.STATIC_FROG_COIN_NPC,
             initiator=EventInitiator.NONE,
             event_script=E3199_SHYGUY_CART_PRIZE_GRANT,
-            action_script=A0925_SPINNING_STATIC_COIN,
+            action_script=A0015_DO_NOTHING,
             visible=False,
             x=0,
             y=0,

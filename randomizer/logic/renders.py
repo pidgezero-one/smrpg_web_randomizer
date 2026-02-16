@@ -14,6 +14,7 @@ from randomizer.progression.prizes import (
     DirectorBossFight,
     ManagerBossFight,
 )
+from randomizer.utils.tower_access_scripts import A_EndLoop, A_JmpIfRandom1of2, A_VisibilityOn
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
     ActionScript,
 )
@@ -60,6 +61,7 @@ from ..data.variables.action_script_names import (
     A0386_TOWER_SHOOT_BULLET_BILLS,
     A0576_CURTAIN_GAME_OPEN_CURTAIN,
     A0577_CURTAIN_GAME_OPEN_CURTAIN,
+    A0845_ACTIVATE_PIRANHA_PLANT_IN_PIPE,
     A0962_FACTORY_3RD_BOSS_LEFT_HAMMER,
     A0963_FACTORY_3RD_BOSS_MID_HAMMER,
     A0964_FACTORY_3RD_BOSS_RIGHT_HAMMER,
@@ -818,6 +820,8 @@ def render_dojo_fight(
     initiate_aq_id: str,
     initiate_id: str,
     pause_id: str,
+    deescalate_aq_id: str | None = None,
+    deescalate_id: str | None = None,
 ) -> None:
     """Apply animation changes for a generic Dojo fight."""
     m = prize.smallest_npc()
@@ -845,10 +849,20 @@ def render_dojo_fight(
             world.event_scripts.get_subscript_command_by_identifier(
                 initiate_aq_id, pause_id, A_Pause
             ).set_length(m.animations.dojo_challenge.contact_frame)
+        if deescalate_aq_id is not None and deescalate_id is not None:
+            world.event_scripts.get_subscript_command_by_identifier(
+                deescalate_aq_id,
+                deescalate_id,
+                A_SetSpriteSequence,
+            ).set_index(m.animations.dojo_challenge.sequence_id)
     else:
         world.event_scripts.delete_subscript_command_by_identifier(
             initiate_aq_id, initiate_id
         )
+        if deescalate_aq_id is not None and deescalate_id is not None:
+            world.event_scripts.delete_subscript_command_by_identifier(
+                deescalate_aq_id, deescalate_id
+            )
 
 
 # =============================================================================
@@ -874,6 +888,57 @@ def render_bean_valley_planter_boss(world: GameWorld, prize: BossFightPrize) -> 
     ).insert_before_nth_command(
         0, RemoveObjectFromSpecificLevel(NPC_0, R254_BEAN_VALLEY_SMILAX_AREA)
     )
+
+    complete_sprite = world.get_sprite(prize.smallest_npc().base.sprite_id)
+    seqs = complete_sprite.animation.properties.sequences
+    if len(seqs) > 0 and len(seqs[0].frames) >= 3:
+        mold_0 = seqs[0].frames[0].mold_id
+        mold_1 = seqs[0].frames[1].mold_id
+        mold_2 = seqs[0].frames[2].mold_id 
+
+        world.action_scripts.scripts[A0845_ACTIVATE_PIRANHA_PLANT_IN_PIPE] = ActionScript([
+            A_VisibilityOn(),
+            A_Pause(32),
+            A_JmpIfRandom1of2(["ACTION_845_pause_6"]),
+            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True),
+            A_Jmp(["ACTION_845_pause_8"]),
+            A_Pause(1, identifier="ACTION_845_pause_6"),
+            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+            A_Pause(48, identifier="ACTION_845_pause_8"),
+            A_JmpIfRandom1of2(["ACTION_845_start_loop_n_times_23"], identifier="ACTION_845_jmp_if_random_above_128_9"),
+            A_StartLoopNTimes(2),
+            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True),
+            A_Pause(2),
+            A_SetSpriteSequence(index=mold_1, is_mold=True, is_sequence=True, looping=True),
+            A_Pause(4),
+            A_SetSpriteSequence(index=mold_2, is_mold=True, is_sequence=True, looping=True),
+            A_Pause(8),
+            A_SetSpriteSequence(index=mold_1, is_mold=True, is_sequence=True, looping=True),
+            A_Pause(2),
+            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True),
+            A_Pause(4),
+            A_EndLoop(),
+            A_Jmp(["ACTION_845_jmp_if_random_above_128_9"]),
+            A_StartLoopNTimes(2, identifier="ACTION_845_start_loop_n_times_23"),
+            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+            A_Pause(2),
+            A_SetSpriteSequence(index=mold_1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+            A_Pause(4),
+            A_SetSpriteSequence(index=mold_2, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+            A_Pause(8),
+            A_SetSpriteSequence(index=mold_1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+            A_Pause(2),
+            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+            A_Pause(4),
+            A_EndLoop(),
+            A_Jmp(["ACTION_845_jmp_if_random_above_128_9"])
+        ])
+    else:
+        world.action_scripts.scripts[A0845_ACTIVATE_PIRANHA_PLANT_IN_PIPE] = ActionScript([
+            A_VisibilityOn(),
+            A_ReturnQueue()
+        ])
+
 
 
 # =============================================================================

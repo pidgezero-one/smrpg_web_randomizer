@@ -47,7 +47,7 @@ script = EventScript([
 	]),
 	ActionQueueAsync(target=NPC_2, subscript=[
 		A_SetSequenceSpeed(SLOW),
-		A_SetSpriteSequence(index=7, is_sequence=True, looping=True)
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=True)
 	]),
 	FadeInFromBlack(sync=False),
 	Return()

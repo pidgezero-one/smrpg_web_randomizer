@@ -416,7 +416,7 @@ room = Room(
         RegularNPC( # 19
             npc=npcs.ITEM_BAG_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E0240_FREESTANDING_2_GRANT,
+            event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=False,
             x=5,

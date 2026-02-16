@@ -1,4 +1,4 @@
-# E2250_EMPTY
+# E2250_AP_GRANT_FREESTANDING
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,14 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+	DisableObjectTrigger(MEM_70A8),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
+		A_VisibilityOff(),
+		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+	]),
+    PlaySound(sound=SO014_FLOWER, channel=6),
+    RunDialog(dialog_id=DI2002_AP_ITEM_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return()
 ])

@@ -448,6 +448,7 @@ class PunchGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
+    _packet_data = (SPR0208_GLOVE, 5)
 
 
 class FingerShotPrize(ItemPrize):
@@ -463,6 +464,7 @@ class CymbalsPrize(ItemPrize):
         nickname="Percussion Plate", description="I bet it could get pretty loud."
     )
     _model = MusicObject
+    _packet_data = (SPR0195_FLOWER, 9)
 
 
 class ChompPrize(ItemPrize):
@@ -513,6 +515,7 @@ class WhompGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
+    _packet_data = (SPR0208_GLOVE, 5)
 
 
 class SlapGlovePrize(ItemPrize):
@@ -521,6 +524,7 @@ class SlapGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
+    _packet_data = (SPR0208_GLOVE, 5)
 
 
 class TroopaShellPrize(ItemPrize):
@@ -545,6 +549,7 @@ class HurlyGlovesPrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
+    _packet_data = (SPR0208_GLOVE, 5)
 
 
 class DoublePunchPrize(ItemPrize):
@@ -554,6 +559,7 @@ class DoublePunchPrize(ItemPrize):
         description="Be careful, it could take your\n hands clean off.",
     )
     _model = GloveObject
+    _packet_data = (SPR0208_GLOVE, 5)
 
 
 class RibbitStickPrize(ItemPrize):
@@ -578,6 +584,7 @@ class MegaGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
+    _packet_data = (SPR0208_GLOVE, 5)
 
 
 class WarFanPrize(ItemPrize):
@@ -601,6 +608,7 @@ class StickyGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
+    _packet_data = (SPR0208_GLOVE, 5)
 
 
 class UltraHammerPrize(ItemPrize):
@@ -617,6 +625,7 @@ class SuperSlapPrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
+    _packet_data = (SPR0208_GLOVE, 5)
 
 
 class DrillClawPrize(ItemPrize):
@@ -626,6 +635,7 @@ class DrillClawPrize(ItemPrize):
         description="I bet you could do some real damage\n with this.",
     )
     _model = GloveObject
+    _packet_data = (SPR0208_GLOVE, 5)
 
 
 class StarGunPrize(ItemPrize):
@@ -635,7 +645,7 @@ class StarGunPrize(ItemPrize):
         description="I bet you could do some real damage\n with this.",
     )
     _model = TinyStarObject
-
+    _packet_data = (SPR0226_TINY_STAR, 0)
 
 class SonicCymbalPrize(ItemPrize):
     item = SonicCymbalItem
@@ -644,6 +654,7 @@ class SonicCymbalPrize(ItemPrize):
         description="This could catch monsters\n off-guard.",
     )
     _model = MusicObject
+    _packet_data = (SPR0195_FLOWER, 9)
 
 
 class LazyShellWeaponPrize(ItemPrize):
@@ -683,6 +694,7 @@ class Stella023Prize(ItemPrize):
     remake_only = True
     _monstro_shuffle = True
     _model = TinyStarObject
+    _packet_data = (SPR0226_TINY_STAR, 0)
 
 
 class SageStickPrize(ItemPrize):
@@ -934,6 +946,7 @@ class RoyalDressPrize(ItemPrize):
         nickname="Fancy Dress", description="Check out the gold trim!"
     )
     _model = CrownObject
+    _packet_data = (SPR0216_CROWN, 0)
 
 
 class SuperSuitPrize(ItemPrize):
@@ -963,6 +976,7 @@ class ZoomShoesPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _model = ShoesObject
+    _packet_data = (SPR0202_SHOES, 0)
 
 
 class SafetyBadgePrize(ItemPrize):
@@ -972,6 +986,7 @@ class SafetyBadgePrize(ItemPrize):
         description="I don't really follow politics, but\n this button looks like it's against\n a lot of things.",
     )
     _model = BroochObject
+    _packet_data = (SPR0207_BROOCH, 0)
 
 
 class JumpShoesPrize(ItemPrize):
@@ -980,6 +995,7 @@ class JumpShoesPrize(ItemPrize):
         nickname="Brown Clogs", description="Check out the thick soles!"
     )
     _model = ShoesObject
+    _packet_data = (SPR0202_SHOES, 0)
 
 
 class SafetyRingPrize(ItemPrize):
@@ -988,6 +1004,7 @@ class SafetyRingPrize(ItemPrize):
         nickname="Protective Charm", description="Never go into battle without it."
     )
     _model = RingObject
+    _packet_data = (SPR0196_RING, 0)
 
 
 class AmuletPrize(ItemPrize):
@@ -996,7 +1013,7 @@ class AmuletPrize(ItemPrize):
         nickname="Stinky Charm", description="It'll help you weather the elements."
     )
     _model = CardObject
-
+    _packet_data = (SPR0206_CARD, 0)
 
 class ScroogeRingPrize(ItemPrize):
     item = ScroogeRingItem
@@ -1004,6 +1021,7 @@ class ScroogeRingPrize(ItemPrize):
         nickname="Mage Totem", description="It might help with spellcasting."
     )
     _model = RingObject
+    _packet_data = (SPR0196_RING, 0)
 
 
 class ExpBoosterPrize(ItemPrize):
@@ -1035,6 +1053,7 @@ class BtubRingPrize(ItemPrize):
         nickname="Wedding Ring", description="For that special someone!"
     )
     _model = RingObject
+    _packet_data = (SPR0196_RING, 0)
 
 
 class AntidotePinPrize(ItemPrize):
@@ -1043,6 +1062,7 @@ class AntidotePinPrize(ItemPrize):
         nickname="Green Button", description="Looks like an environmentalist\n thing."
     )
     _model = BroochObject
+    _packet_data = (SPR0207_BROOCH, 0)
 
 
 class WakeUpPinPrize(ItemPrize):
@@ -1051,6 +1071,7 @@ class WakeUpPinPrize(ItemPrize):
         nickname="Blue Button", description="Looks like an anti-fur thing."
     )
     _model = BroochObject
+    _packet_data = (SPR0207_BROOCH, 0)
 
 
 class FearlessPinPrize(ItemPrize):
@@ -1059,6 +1080,7 @@ class FearlessPinPrize(ItemPrize):
         nickname="Yellow Button", description="Who you gonna call?\n GHOSTBUSTERS!"
     )
     _model = BroochObject
+    _packet_data = (SPR0207_BROOCH, 0)
 
 
 class TrueformPinPrize(ItemPrize):
@@ -1068,6 +1090,7 @@ class TrueformPinPrize(ItemPrize):
         description="For someone who doesn't like\n scarecrows.",
     )
     _model = BroochObject
+    _packet_data = (SPR0207_BROOCH, 0)
 
 
 class CoinTrickPrize(ItemPrize):
@@ -1101,6 +1124,7 @@ class FeatherPrize(ItemPrize):
         nickname="Fluttering Quill", description="It's pretty exotic, isn't it?"
     )
     _model = FeatherObject
+    _packet_data = (SPR0252_FEATHER, 0)
 
 
 class TroopaPinPrize(ItemPrize):
@@ -1109,7 +1133,7 @@ class TroopaPinPrize(ItemPrize):
         nickname="Military Decoration", description="I wonder what powers it bestows?"
     )
     _model = BroochObject
-
+    _packet_data = (SPR0207_BROOCH, 0)
 
 class SignalRingPrize(ItemPrize):
     item = SignalRingItem
@@ -1117,6 +1141,7 @@ class SignalRingPrize(ItemPrize):
         nickname="Bell Charm", description="I wonder what it can help you find?"
     )
     _model = RingObject
+    _packet_data = (SPR0196_RING, 0)
 
 
 class QuartzCharmPrize(ItemPrize):
@@ -1128,7 +1153,7 @@ class QuartzCharmPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _model = CrystalObject
-
+    _packet_data = (SPR0209_SHINY_STONE, 0)
 
 class TeamworkBandPrize(ItemPrize):
     item = TeamworkBandItem
@@ -1148,6 +1173,7 @@ class EnduringBroochPrize(ItemPrize):
     remake_only = True
     _monstro_shuffle = True
     _model = BroochObject
+    _packet_data = (SPR0207_BROOCH, 0)
 
 
 class MushroomPrize(ItemPrize):
@@ -1156,6 +1182,7 @@ class MushroomPrize(ItemPrize):
         nickname="Red Mushroom", description="It's just food, right?"
     )
     _model = RedMushroomObject
+    _packet_data = (SPR0219_RED_ITEM_COLLECTION, 0)
 
 
 class MidMushroomPrize(ItemPrize):
@@ -1164,7 +1191,7 @@ class MidMushroomPrize(ItemPrize):
         nickname="Green Mushroom", description="It's just food, right?"
     )
     _model = GreenMushroomObject
-
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 0)
 
 class MaxMushroomPrize(ItemPrize):
     item = MaxMushroomItem
@@ -1172,6 +1199,7 @@ class MaxMushroomPrize(ItemPrize):
         nickname="Yellow Mushroom", description="It's just food, right?"
     )
     _model = YellowMushroomObject
+    _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 0)
 
 
 class HoneySyrupPrize(ItemPrize):
@@ -1180,6 +1208,7 @@ class HoneySyrupPrize(ItemPrize):
         nickname="Red Drink", description="I wonder what flavor it is?"
     )
     _model = RedSyrupObject
+    _packet_data = (SPR0219_RED_ITEM_COLLECTION, 1)
 
 
 class MapleSyrupPrize(ItemPrize):
@@ -1188,6 +1217,7 @@ class MapleSyrupPrize(ItemPrize):
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
     _model = GreenSyrupObject
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 1)
 
 
 class RoyalSyrupPrize(ItemPrize):
@@ -1196,6 +1226,7 @@ class RoyalSyrupPrize(ItemPrize):
         nickname="Yellow Drink", description="I wonder what flavor it is?"
     )
     _model = YellowSyrupObject
+    _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 1)
 
 
 class PickMeUpPrize(ItemPrize):
@@ -1204,6 +1235,7 @@ class PickMeUpPrize(ItemPrize):
         nickname="Red Drink", description="I wonder what flavor it is?"
     )
     _model = StarDrinkObject
+    _packet_data = (SPR0219_RED_ITEM_COLLECTION, 8)
 
 
 class AbleJuicePrize(ItemPrize):
@@ -1212,6 +1244,7 @@ class AbleJuicePrize(ItemPrize):
         nickname="Blue Drink", description="I wonder what flavor it is?"
     )
     _model = RDrinkObject
+    _packet_data = (SPR0223_BLUE_ITEM_COLLECTION, 7)
 
 
 class BracerPrize(ItemPrize):
@@ -1220,7 +1253,7 @@ class BracerPrize(ItemPrize):
         nickname="Yellow Drink", description="I wonder what flavor it is?"
     )
     _model = DDrinkObject
-
+    _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 4)
 
 class EnergizerPrize(ItemPrize):
     item = EnergizerItem
@@ -1228,6 +1261,7 @@ class EnergizerPrize(ItemPrize):
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
     _model = PDrinkObject
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 3)
 
 
 class YoshiAdePrize(ItemPrize):
@@ -1236,7 +1270,7 @@ class YoshiAdePrize(ItemPrize):
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
     _model = GreenJuiceObject
-
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 2)
 
 class RedEssencePrize(ItemPrize):
     item = RedEssenceItem
@@ -1244,6 +1278,7 @@ class RedEssencePrize(ItemPrize):
         nickname="Red Drink", description="I wonder what flavor it is?"
     )
     _model = RedJuiceObject
+    _packet_data = (SPR0219_RED_ITEM_COLLECTION, 2)
 
 
 class KerokeroColaPrize(ItemPrize):
@@ -1252,7 +1287,7 @@ class KerokeroColaPrize(ItemPrize):
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
     _model = FrogDrinkObject
-
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 6)   
 
 class YoshiCookiePrize(ItemPrize):
     item = YoshiCookieItem
@@ -1260,6 +1295,7 @@ class YoshiCookiePrize(ItemPrize):
         nickname="Baked Good", description="Looks tasty, doesn't it?"
     )
     _model = CookieObject
+    _packet_data = (SPR0254_YOSHI_COOKIE, 0)
 
 
 class PureWaterPrize(ItemPrize):
@@ -1268,6 +1304,7 @@ class PureWaterPrize(ItemPrize):
         nickname="Blue Drink", description="I wonder what flavor it is?"
     )
     _model = BlueSyrupObject
+    _packet_data = (SPR0223_BLUE_ITEM_COLLECTION, 1)
 
 
 class SleepyBombPrize(ItemPrize):
@@ -1276,7 +1313,7 @@ class SleepyBombPrize(ItemPrize):
         nickname="Explosive Device", description="Don't try this at home!"
     )
     _model = YellowBombObject
-
+    _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 10)
 
 class BadMushroomPrize(ItemPrize):
     item = BadMushroomItem
@@ -1284,6 +1321,7 @@ class BadMushroomPrize(ItemPrize):
         nickname="Red Mushroom", description="It's just food, right?"
     )
     _model = RedMushroomObject
+    _packet_data = (SPR0219_RED_ITEM_COLLECTION, 0)
 
 
 class FireBombPrize(ItemPrize):
@@ -1292,6 +1330,7 @@ class FireBombPrize(ItemPrize):
         nickname="Explosive Device", description="Don't try this at home!"
     )
     _model = RedBombObject
+    _packet_data = (SPR0219_RED_ITEM_COLLECTION, 10)
 
 
 class IceBombPrize(ItemPrize):
@@ -1300,7 +1339,7 @@ class IceBombPrize(ItemPrize):
         nickname="Explosive Device", description="Don't try this at home!"
     )
     _model = BlueBombObject
-
+    _packet_data = (SPR0223_BLUE_ITEM_COLLECTION, 10)
 
 class FlowerTabPrize(ItemPrize):
     item = FlowerTabItem
@@ -1329,6 +1368,7 @@ class YoshiCandyPrize(ItemPrize):
         nickname="Candy Piece", description="I wonder what flavor it is?"
     )
     _model = GreenCandyObject
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 9)
 
 
 class FroggieDrinkPrize(ItemPrize):
@@ -1337,7 +1377,7 @@ class FroggieDrinkPrize(ItemPrize):
         nickname="Yellow Drink", description="I wonder what flavor it is?"
     )
     _model = YellowMusicDrinkObject
-
+    _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 5)
 
 class MukuCookiePrize(ItemPrize):
     item = MukuCookieItem
@@ -1345,6 +1385,7 @@ class MukuCookiePrize(ItemPrize):
         nickname="Baked Good", description="Looks tasty, doesn't it?"
     )
     _model = CookieObject
+    _packet_data = (SPR0254_YOSHI_COOKIE, 0)
 
 
 class ElixirPrize(ItemPrize):
@@ -1353,7 +1394,7 @@ class ElixirPrize(ItemPrize):
         nickname="Blue Drink", description="I wonder what flavor it is?"
     )
     _model = BlueMusicDrinkObject
-
+    _packet_data = (SPR0223_BLUE_ITEM_COLLECTION, 5)
 
 class MegalixirPrize(ItemPrize):
     item = MegalixirItem
@@ -1361,7 +1402,7 @@ class MegalixirPrize(ItemPrize):
         nickname="Red Drink", description="I wonder what flavor it is?"
     )
     _model = RedMusicDrinkObject
-
+    _packet_data = (SPR0219_RED_ITEM_COLLECTION, 5)
 
 class SeeYaPrize(ItemPrize):
     item = SeeYaItem
@@ -1376,6 +1417,8 @@ class TempleKeyPrize(ItemPrize, KeyPrize):
         nickname="Golden Key", description="I wonder what it opens?"
     )
     _model = KeyObject
+    _packet_data = (SPR0195_FLOWER, 2)
+
 
 
 class GoodieBagPrize(ItemPrize):
@@ -1398,6 +1441,7 @@ class FreshenUpPrize(ItemPrize):
         nickname="Blue Drink", description="I wonder what flavor it is?"
     )
     _model = RDrinkObject
+    _packet_data = (SPR0223_BLUE_ITEM_COLLECTION, 7)
 
 
 class RareFrogCoinPrize(ItemPrize, KeyPrize):
@@ -1406,7 +1450,7 @@ class RareFrogCoinPrize(ItemPrize, KeyPrize):
         nickname="Green Coin", description="It looks different from most Frog \nCoins."
     )
     _model = SmallFrogCoinObject
-
+    _packet_data = (SPR0194_FROG_COIN, 0) 
 
 class WalletPrize(ItemPrize, KeyPrize):
     item = WalletItem
@@ -1421,6 +1465,7 @@ class CricketPiePrize(ItemPrize, KeyPrize):
         nickname="Baked Good", description="Looks tasty, doesn't it?"
     )
     _model = CookieObject
+    _packet_data = (SPR0254_YOSHI_COOKIE, 0)
 
 
 class RockCandyPrize(ItemPrize):
@@ -1429,6 +1474,7 @@ class RockCandyPrize(ItemPrize):
         nickname="Candy Piece", description="I wonder what flavor it is?"
     )
     _model = BlueCandyObject
+    _packet_data = (SPR0223_BLUE_ITEM_COLLECTION, 9)
 
 
 class CastleKey1Prize(ItemPrize, KeyPrize):
@@ -1437,6 +1483,7 @@ class CastleKey1Prize(ItemPrize, KeyPrize):
         nickname="Golden Key", description="I wonder what it opens?"
     )
     _model = KeyObject
+    _packet_data = (SPR0195_FLOWER, 2)
 
 
 class CastleKey2Prize(ItemPrize, KeyPrize):
@@ -1445,6 +1492,7 @@ class CastleKey2Prize(ItemPrize, KeyPrize):
         nickname="Golden Key", description="I wonder what it opens?"
     )
     _model = KeyObject
+    _packet_data = (SPR0195_FLOWER, 2)
 
 
 class BambinoBombPrize(ItemPrize, KeyPrize):
@@ -1453,6 +1501,7 @@ class BambinoBombPrize(ItemPrize, KeyPrize):
         nickname="Explosive Device", description="Don't try this at home!"
     )
     _model = MicrobombObject
+    _packet_data = (SPR0205_MICROBOMB_PACKET, 5)
 
 
 class ProgressiveCardPrize(ProgressiveItemPrize, KeyPrize):
@@ -1461,6 +1510,7 @@ class ProgressiveCardPrize(ProgressiveItemPrize, KeyPrize):
         description="It's sure to bring you an air of\n prestige.",
     )
     _model = CardObject
+    _packet_data = (SPR0206_CARD, 0)
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1489,6 +1539,7 @@ class ProgressiveEggPrize(ProgressiveItemPrize):
         description="I have no idea what it does!\n It sort of grows on ya, huh?",
     )
     _model = EggObject
+    _packet_data = (SPR0237_EGG, 0)
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1519,6 +1570,7 @@ class ExtraShinyStonePrize(ItemPrize, KeyPrize):
     )
     remake_only = True
     _model = CrystalObject
+    _packet_data = (SPR0209_SHINY_STONE, 0)
 
 
 class CrystalShardPrize(ItemPrize, KeyPrize):
@@ -1529,6 +1581,7 @@ class CrystalShardPrize(ItemPrize, KeyPrize):
     )
     remake_only = True
     _model = CrystalObject
+    _packet_data = (SPR0209_SHINY_STONE, 0)
 
 
 class RoomKeyPrize(ItemPrize, KeyPrize):
@@ -1537,6 +1590,7 @@ class RoomKeyPrize(ItemPrize, KeyPrize):
         nickname="Golden Key", description="I wonder what it opens?"
     )
     _model = KeyObject
+    _packet_data = (SPR0195_FLOWER, 2)
 
 
 class ElderKeyPrize(ItemPrize, KeyPrize):
@@ -1545,6 +1599,7 @@ class ElderKeyPrize(ItemPrize, KeyPrize):
         nickname="Golden Key", description="I wonder what it opens?"
     )
     _model = KeyObject
+    _packet_data = (SPR0195_FLOWER, 2)
 
 
 class ShedKeyPrize(ItemPrize, KeyPrize):
@@ -1553,6 +1608,7 @@ class ShedKeyPrize(ItemPrize, KeyPrize):
         nickname="Golden Key", description="I wonder what it opens?"
     )
     _model = KeyObject
+    _packet_data = (SPR0195_FLOWER, 2)
 
 
 class FrightBombPrize(ItemPrize):
@@ -1561,6 +1617,7 @@ class FrightBombPrize(ItemPrize):
         nickname="Explosive Device", description="Don't try this at home!"
     )
     _model = GreenBombObject
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 10)
 
 
 class BeetleBoxPrize(ItemPrize):
@@ -1575,6 +1632,7 @@ class LuckyJewelPrize(ItemPrize):
         description="It’s sure to bring you plenty of\n good luck.",
     )
     _model = CrystalObject
+    _packet_data = (SPR0209_SHINY_STONE, 0)
 
 
 class CrystallinePrize(ItemPrize):
@@ -1583,6 +1641,7 @@ class CrystallinePrize(ItemPrize):
         nickname="Yellow Drink", description="I wonder what flavor it is?"
     )
     _model = DDrinkObject
+    _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 4)
 
 
 class PowerBlastPrize(ItemPrize):
@@ -1591,7 +1650,7 @@ class PowerBlastPrize(ItemPrize):
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
     _model = PDrinkObject
-
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 4)
 
 class WiltShroomPrize(ItemPrize):
     item = WiltShroomItem
@@ -1599,7 +1658,7 @@ class WiltShroomPrize(ItemPrize):
         nickname="Red Mushroom", description="It's just food, right?"
     )
     _model = BananaObject
-
+    _packet_data = (SPR0222_BANANA_PEEL, 0)
 
 class RottenMushPrize(ItemPrize):
     item = RottenMushItem
@@ -1607,6 +1666,7 @@ class RottenMushPrize(ItemPrize):
         nickname="Red Mushroom", description="It's just food, right?"
     )
     _model = BananaObject
+    _packet_data = (SPR0222_BANANA_PEEL, 0)
 
 
 class MoldyMushPrize(ItemPrize):
@@ -1615,6 +1675,7 @@ class MoldyMushPrize(ItemPrize):
         nickname="Red Mushroom", description="It's just food, right?"
     )
     _model = BananaObject
+    _packet_data = (SPR0222_BANANA_PEEL, 0)
 
 
 class SeedPrize(ItemPrize, KeyPrize):
@@ -1623,6 +1684,7 @@ class SeedPrize(ItemPrize, KeyPrize):
         nickname="Mysterious Seed", description="I wonder what will grow from it?"
     )
     _model = BerryObject
+    _packet_data = (SPR0253_BERRY, 0)
 
 
 class FertilizerPrize(ItemPrize, KeyPrize):
@@ -1640,6 +1702,7 @@ class BigBooFlagPrize(ItemPrize, KeyPrize):
         description="I wonder if someone is looking for\n this?",
     )
     _model = CardObject
+    _packet_data = (SPR0206_CARD, 0)
 
 
 class DryBonesFlagPrize(ItemPrize, KeyPrize):
@@ -1649,6 +1712,7 @@ class DryBonesFlagPrize(ItemPrize, KeyPrize):
         description="I wonder if someone is looking fon\n this?",
     )
     _model = CardObject
+    _packet_data = (SPR0206_CARD, 0)
 
 
 class GreaperFlagPrize(ItemPrize, KeyPrize):
@@ -1658,6 +1722,7 @@ class GreaperFlagPrize(ItemPrize, KeyPrize):
         description="I wonder if someone is looking for\n this?",
     )
     _model = CardObject
+    _packet_data = (SPR0206_CARD, 0)
 
 
 class CricketJamPrize(ItemPrize, KeyPrize):
@@ -1666,6 +1731,7 @@ class CricketJamPrize(ItemPrize, KeyPrize):
         nickname="Green Jelly", description="I wonder what flavor it is?"
     )
     _model = GreenJuiceObject
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 2)
 
 
 class RegularFireworksPrize(ItemPrize):
@@ -1711,6 +1777,7 @@ class StayVoucherPrize(ItemPrize):
     )
     remake_only = True
     _model = CardObject
+    _packet_data = (SPR0206_CARD, 0)
 
 
 class BrightCardPrize(ItemPrize, KeyPrize):
@@ -1720,6 +1787,7 @@ class BrightCardPrize(ItemPrize, KeyPrize):
         description="It's sure to bring you an air of\n prestige.",
     )
     _model = CardObject
+    _packet_data = (SPR0206_CARD, 0)
 
 
 class PoisonMushroomPrize(ItemPrize):
@@ -1728,6 +1796,7 @@ class PoisonMushroomPrize(ItemPrize):
         nickname="Red Mushroom", description="It's just food, right?"
     )
     _model = RedMushroomObject
+    _packet_data = (SPR0219_RED_ITEM_COLLECTION, 0)
 
 
 class StarEggPrize(ItemPrize):
@@ -1737,6 +1806,7 @@ class StarEggPrize(ItemPrize):
         description="I have no idea what it does!\n It sort of grows on ya, huh?",
     )
     _model = EggObject
+    _packet_data = (SPR0237_EGG, 0)
 
 
 ### Other kinds of prizes ###
@@ -1748,6 +1818,7 @@ class BeetlemaniaPrize(StandardPrize):
         description="It's pretty addictive.",
     )
     _model = BeetleObject
+    _packet_data = (SPR0255_BEETLE, 0)
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1776,6 +1847,7 @@ class ShoesPrize(WeddingGearPrize, KeyPrize):
         nickname="Ruby Slippers", description="Do you think they'll take you\n home?"
     )
     _model = ShoesObject
+    _packet_data = (SPR0202_SHOES, 0)
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1810,6 +1882,7 @@ class BroochPrize(WeddingGearPrize, KeyPrize):
         nickname="Shiny Brooch", description="It looks pretty stylish."
     )
     _model = BroochObject
+    _packet_data = (SPR0207_BROOCH, 0)
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1844,6 +1917,7 @@ class RingPrize(WeddingGearPrize, KeyPrize):
         nickname="Wedding Ring", description="For that special someone!"
     )
     _model = RingObject
+    _packet_data = (SPR0196_RING, 0)
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1878,6 +1952,7 @@ class CrownPrize(WeddingGearPrize, KeyPrize):
         nickname="Gold Crown", description="It looks pretty important!"
     )
     _model = CrownObject
+    _packet_data = (SPR0216_CROWN, 0)
 
     @property
     def chest_grant(self) -> EventScript:
@@ -1912,6 +1987,7 @@ class GoldPaintPrize(ItemPrize, KeyPrize):
         nickname="Chrome Coat", description="It'll make you look shiny!"
     )
     _model = YellowJuiceObject
+    _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 2)
 
 
 class RecoveryMushroomPrize(StandardPrize):

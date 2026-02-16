@@ -552,7 +552,7 @@ class YaridovichLargeObject(BossNPC):
 class MagikoopaSmallObject(BossNPC):
     """Small Magikoopa object."""
 
-    _base = MAGIKOOPA_NPC
+    _base = RED_MAGIKOOPA_NPC
     _animations = SpriteAnimationCollection(
         mines_punch=small_magikoopa_hit,
         ship_beckon=small_magikoopa_hit,

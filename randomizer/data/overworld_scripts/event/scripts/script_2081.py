@@ -35,7 +35,7 @@ from ....spells.spells import *
 script = EventScript([
 	MoveScriptToMainThread(),
 	SetBit(MARIOS_PAD_OR_MONSTRO_TOWN_SLEEP),
-	ActionQueueAsync(target=NPC_0, subscript=[
+	ActionQueueAsync(target=NPC_3, subscript=[
 		A_Pause(2),
 		A_SetSpriteSequence(index=12, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(4),
@@ -72,13 +72,13 @@ script = EventScript([
 	Pause(5),
 	FadeInFromBlack(sync=False, duration=120),
 	Pause(150),
-	SetSyncActionScript(NPC_2, A0568_MUSTY_FEARS_1),
+	SetSyncActionScript(NPC_0, A0568_MUSTY_FEARS_1),
 	JmpIfBitSet(INVISIBLE_ITEMS_ANYWHERE_EXPLAINED, ["EVENT_2081_pause_0"]),
 	SetBit(INVISIBLE_ITEMS_ANYWHERE_EXPLAINED),
     RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER),
-	Pause(60, identifier="EVENT_2081_pause_0"),
-	RunDialog(dialog_id=DI1105_MUSTY_FEARS_EXPLANATION, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=False),
 	Pause(60),
+	RunDialog(dialog_id=DI1105_MUSTY_FEARS_EXPLANATION, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=False),
+	Pause(60, identifier="EVENT_2081_pause_0"),
     
 	JmpIfBitSet(INVISIBLE_FLAG_1_FOUND, ["EVENT_2081_dialog_97"]),
 	RunDialog(dialog_id=DI1109_RESERVED_FOR_GREAPERFLAG_HINT, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=False),
@@ -86,7 +86,7 @@ script = EventScript([
 	RunDialog(dialog_id=DI3748_GREAPER_FLAG_FOUND, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=False, identifier="EVENT_2081_dialog_97"),
 	
 	Pause(20, identifier="EVENT_2081_pause_97"),
-	SetSyncActionScript(NPC_3, A0568_MUSTY_FEARS_1),
+	SetSyncActionScript(NPC_1, A0568_MUSTY_FEARS_1),
 	Pause(60),
     
 	JmpIfBitSet(INVISIBLE_FLAG_2_FOUND, ["EVENT_2081_dialog_99"]),
@@ -95,7 +95,7 @@ script = EventScript([
 	RunDialog(dialog_id=DI3750_BIGBOO_FLAG_FOUND, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=False, identifier="EVENT_2081_dialog_99"),
 	
 	Pause(20, identifier="EVENT_2081_pause_99"),
-	SetSyncActionScript(NPC_4, A0568_MUSTY_FEARS_1),
+	SetSyncActionScript(NPC_2, A0568_MUSTY_FEARS_1),
 	Pause(60),
     
 	JmpIfBitSet(INVISIBLE_FLAG_3_FOUND, ["EVENT_2081_dialog_100"]),
@@ -117,14 +117,14 @@ script = EventScript([
 	RemoveOneOfItemFromInventory(GreaperFlagItem),
 	RemoveOneOfItemFromInventory(BigBooFlagItem),
 
-	SetSyncActionScript(NPC_2, A0569_MUSTY_FEARS_2, identifier="EVENT_2081_set_7000_to_tapped_button_98"),
-	SetSyncActionScript(NPC_3, A0569_MUSTY_FEARS_2),
-	SetSyncActionScript(NPC_4, A0569_MUSTY_FEARS_2),
+	SetSyncActionScript(NPC_0, A0569_MUSTY_FEARS_2, identifier="EVENT_2081_set_7000_to_tapped_button_98"),
+	SetSyncActionScript(NPC_1, A0569_MUSTY_FEARS_2),
+	SetSyncActionScript(NPC_2, A0569_MUSTY_FEARS_2),
 	Pause(60),
 	TintLayers(layers=[LAYER_L1, LAYER_L2, NPC_SPRITES, MINUS_SUB], red=0, green=0, blue=0, speed=0),
 	ResetPrioritySet(),
 	FadeOutMusicToVolume(duration=0, volume=100),
-	ActionQueueSync(target=NPC_0, subscript=[
+	ActionQueueSync(target=NPC_3, subscript=[
 		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True)
 	]),
 	ActionQueueAsync(target=MARIO, subscript=[

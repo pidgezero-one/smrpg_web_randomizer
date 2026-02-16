@@ -137,7 +137,7 @@ def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id:
         SummonObjectToCurrentLevel(npcs[4]),
         ActionQueueAsync(target=npcs[4], subscript=[
             A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-            A_SetSpriteSequence(index=1, looping=False),
+            A_SetSpriteSequence(index=0, looping=False),
             A_Pause(16),
             A_VisibilityOff()
         ]),

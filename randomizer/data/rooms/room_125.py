@@ -163,7 +163,7 @@ room = Room(
             z_half=False,
             direction=NORTHWEST),
         RegularNPC( # 5
-            npc=npcs.FROG_COIN_NPC,
+            npc=npcs.STATIC_FROG_COIN_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
