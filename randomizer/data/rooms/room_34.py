@@ -157,7 +157,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularClone( # 1
-            npc=npcs.YELLOW_YOSHI_NPC,
+            npc=npcs.PINK_YOSHI_NPC ,
             event_script=E0460_COOKIE_STORAGE_YOSHI,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
@@ -167,7 +167,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST),
         RegularNPC( # 2
-            npc=npcs.YELLOW_YOSHI_NPC,
+            npc=npcs.PINK_YOSHI_NPC ,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0461_YOSHI_ON_TRACK,
             action_script=A0656_RUNNING_YELLOW_YOSHI,
@@ -221,7 +221,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularClone( # 4
-            npc=npcs.YELLOW_YOSHI_NPC,
+            npc=npcs.PINK_YOSHI_NPC ,
             event_script=E0462_YOSHI_MOM,
             action_script=A0128_WALK_RANDOM_DIRECTIONS,
             visible=False,
@@ -231,7 +231,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST),
         RegularNPC( # 5
-            npc=npcs.YELLOW_YOSHI_NPC,
+            npc=npcs.PINK_YOSHI_NPC ,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0463_FREE_COOKIE_YOSHI,
             action_script=A0098_WALK_RANDOM_DIRECTIONS_NO_SOLIDITY_CHANGE,

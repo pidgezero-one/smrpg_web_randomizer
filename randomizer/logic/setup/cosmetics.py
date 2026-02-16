@@ -1,5 +1,6 @@
 """Cosmetic settings that don't affect gameplay."""
 from __future__ import annotations
+from gc import is_finalized
 import random
 import os
 from typing import TYPE_CHECKING, cast
@@ -424,11 +425,11 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     chapelchar = world.get_location(MarrymoreCharacter).prize
     if isinstance(chapelchar, CharacterPrize) and chapelchar._ally.index == 4:
         world.update_dialog(DI2112_RAZ_OCCUPIED, "RAZ: If there's one thing I know\n about `MARRYMORE_CHARACTER`, it's that he\n just HATES wedding rehearsals.[await]")
-        world.update_dialog(DI2114_MARRYMORE_BOSS_NAMES, " `TOWER_BOSS_1`'s fiance is busy today.[await] It was nice of `MARRYMORE_CHARACTER`\n to offer to step in and help with\n the rehearsal.[await]")
+        world.update_dialog(DI2114_MARRYMORE_BOSS_NAMES, " `TOWER_BOSS_1`'s fiance is busy today.[await]\n It was nice of `MARRYMORE_CHARACTER`\n to offer to step in and help with\n the rehearsal.[await]")
         world.update_dialog(DI2115_MARRYMORE_SHITPOST, " Does anyone here even know who\n `TOWER_BOSS_1`'s fiance is?\n Is it `RANDOM_BOSS_NAME_1`?[await]")
         world.update_dialog(DI2117_MARRYMORE_SHITPOST, " I'm not even invited to a wedding.\n I just needed to go for a walk.[await]\n My Discord has been full of drama\n since one guy posted ship art of\n `RANDOM_CHARACTER_NAME` and `TOWER_BOSS_1`.[await]")
         world.update_dialog(DI2119_MARRYMORE_SHITPOST, " I heard that `TOWER_BOSS_1`\n proposed at a gas station.\n Who DOES that?[await]")
-         
+
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1`", towerboss_name)
     cc_name = world.allies._allies[chapelchar._ally.index].name if isinstance(chapelchar, CharacterPrize) else "Toad"
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MARRYMORE_CHARACTER`", cc_name)
@@ -460,13 +461,13 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     # Bowser's Keep access
     keep_cond = world.settings.get_flag(BowsersKeepGate).selected
     if keep_cond == BowsersKeepGating.AXEM:
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_KEEP_CONDITION`", "with the Axem Rangers' permission.")
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSERS_KEEP_CONDITION`", "with the Axem Rangers' permission.")
     elif keep_cond == BowsersKeepGating.OPEN:
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_KEEP_CONDITION`", "on foot.")
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSERS_KEEP_CONDITION`", "on foot.")
     elif keep_cond == BowsersKeepGating.STAR_6:
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_KEEP_CONDITION`", "with six Star Pieces.")
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSERS_KEEP_CONDITION`", "with six Star Pieces.")
     else:
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_KEEP_CONDITION`", "through the volcano.")
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSERS_KEEP_CONDITION`", "through the volcano.")
 
     # Seaside letter
     seasideboss = world.get_location(SeasideBeachBossFight).prize

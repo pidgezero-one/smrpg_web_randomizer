@@ -60,7 +60,7 @@ Kero sewers
 🚧 water does not drain. that's bad (well, it does, it just looks like it didn't)
 
 Rose way
-- palettes in rose way still broken
+🚧 palettes in rose way still broken
 🚧 chest animations in second room are weird. check memory partition and sprite properties
 
 Forest maze 
@@ -173,44 +173,45 @@ Bean Valley
 
 Nimbus Land
 - default bonk animation doesn't seem to let you jump
+  - needs timing, should connect on 34th frame
 - statues in statue room are shifted incorrectly
 🚧 gold paint logic does not work, will take you in if you talk to him twice
 - frog coin in nimbus castle doesnt render in chest (bridge room)
 🚧 ninja in dodo spot has some problematic animations, doesnt turn around, sprite briefly distorts
-- statue bird palettes are wrong everywhere, possibly bc of exp star?
+🚧 statue bird palettes are wrong everywhere, possibly bc of exp star?
 🚧 statue sprites in garro's house need a diff partition (jagger doesnt load correctly), same in castle
-  - did not load at all in latest seed
+  🚧 did not load at all in latest seed
 🚧 statues in statue room face wrong direction
 🚧 mallow statue palette in garros house is wrong and partially cut off
 🚧 hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
 - did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings
-- trueform pin packet did not appear in forkies room
-- chests broken in post-birdo room
-- bowsers keep condition not substituted in dialog
+🚧 trueform pin packet did not appear in forkies room
+🚧 chests broken in post-birdo room
+🚧 bowsers keep condition not substituted in dialog
 
 Volcano
-- sparkles act weirdly when you hit oerlikons with exp star
-- axem henchmen are not removed when boss is shuffled to someone else
+🚧 sparkles act weirdly when you hit oerlikons with exp star
+🚧 axem henchmen are not removed when boss is shuffled to someone else
 
 Keep
-- for safety reasons, gate everything from the red doors onward behind having a mokura-turning spell (so it can KO vomers in battle hall)
-- game crashes when you defeat chester spot
+🚧 for safety reasons, gate everything from the red doors onward behind having a mokura-turning spell (so it can KO vomers in battle hall)
+🚧 game crashes when you defeat chester spot
 
 Gate
-- countdown fight is skipped
-- ameboid in first axem room is also a snifit
-- chests broken in conveyor room
-- red essence chest in conveyor room shows as a red mushroom
+🚧 countdown fight is skipped
+🚧 ameboid in first axem room is also a snifit
+🚧 chests broken in conveyor room
+🚧 red essence chest in conveyor room shows as a red mushroom
 
 Inner Factory
-- megasmilax animation is very weird
-  - that's the wrong sprite, isn't it? bigs sprite
-  - henchmen invisible
+🚧 megasmilax animation is very weird
+  🚧 that's the wrong sprite, isn't it? bigs sprite
+  🚧 henchmen invisible
   - smilax ran away
-- no drill bits in 3rd boss rush room
-- priority might be too low? they're in the background in gunyolk room
-- mario's shadow broken in gunyolk room
-- toad's shop is empty
+🚧 no drill bits in 3rd boss rush room
+  🚧 priority might be too low? they're in the background in gunyolk room
+🚧 mario's shadow broken in gunyolk room
+🚧 toad's shop is empty
 
 Ending
 - need to restore original animations

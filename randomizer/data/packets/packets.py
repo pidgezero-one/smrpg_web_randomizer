@@ -349,7 +349,7 @@ P022_RECURSIVE_SPARKLES = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=3,
+    b4=0,
 )
 P023_LOOPING_SINGLE_SPARKLE = Packet(
     packet_id=23,
@@ -364,7 +364,7 @@ P023_LOOPING_SINGLE_SPARKLE = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=3,
+    b4=0,
 )
 P024_REGULAR_SOUND_EXPLOSION = Packet(
     packet_id=24,
@@ -469,7 +469,7 @@ P030_WATER_SPLASH_DROPS_SFX = Packet(
     b2b3=False,
     b2b4=False,
     b2=0,
-    b4=3,
+    b4=0,
 )
 P031_LEVELUP_TEXT = Packet(
     packet_id=31,

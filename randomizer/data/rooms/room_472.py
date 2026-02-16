@@ -1,7 +1,31 @@
 # R472_FACTORY_GROUNDS_AREA_03
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    ObjectType,
+    EventInitiator,
+    PostBattleBehaviour,
+    Direction,
+    EdgeDirection,
+    ExitType,
+    BufferType,
+    BufferSpace,
+    VramStore,
+    ShadowSize,
+)
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    Buffer,
+    Partition,
+    DestinationProps,
+    RoomExit,
+    MapExit,
+    Event,
+    BattlePackNPC,
+    RegularNPC,
+    ChestNPC,
+    BattlePackClone,
+    RegularClone,
+    ChestClone,
+)
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -11,29 +35,30 @@ from ..variables.overworld_area_names import *
 from ..variables.music_names import *
 from ..variables.event_script_names import *
 from ..variables.action_script_names import *
+
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
         extra_sprite_buffer_size=0,
-        buffers = [
+        buffers=[
             Buffer(
                 buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
-            )
+                index_in_main_buffer=True,
+            ),
         ],
-        full_palette_buffer=True
+        full_palette_buffer=True,
     ),
     music=M0056_FACTORY,
     entrance_event=E2621_FACTORY_3RD_ROOM_LOADER,
@@ -48,7 +73,8 @@ room = Room(
             length=6,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
     ],
     exits=[
         RoomExit(
@@ -68,7 +94,8 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
         RoomExit(
             x=15,
             y=121,
@@ -86,10 +113,11 @@ room = Room(
             dst_z=5,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False),
+            x_bit_7=False,
+        ),
     ],
     objects=[
-        RegularNPC( # 0
+        RegularNPC(  # 0
             npc=npcs.SAVE_POINT_NPC_3,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0080_SAVE_BLOCK_SUBROUTINE,
@@ -115,8 +143,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 1
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 1
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -142,10 +171,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 2
+            byte7_upper2=3,
+        ),
+        RegularClone(  # 2
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
-            initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0968_FACTORY_3RD_BOSS_CONVEYOR_NPC,
             visible=True,
@@ -154,25 +183,9 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=False,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 3
+        ),
+        RegularClone(  # 3
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
-            initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0968_FACTORY_3RD_BOSS_CONVEYOR_NPC,
             visible=True,
@@ -181,25 +194,9 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=False,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 4
+        ),
+        RegularClone(  # 4
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
-            initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0968_FACTORY_3RD_BOSS_CONVEYOR_NPC,
             visible=True,
@@ -208,25 +205,9 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=False,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 5
+        ),
+        RegularClone(  # 5
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
-            initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0968_FACTORY_3RD_BOSS_CONVEYOR_NPC,
             visible=True,
@@ -235,25 +216,9 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=False,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 6
+        ),
+        RegularClone(  # 6
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
-            initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0968_FACTORY_3RD_BOSS_CONVEYOR_NPC,
             visible=True,
@@ -262,23 +227,8 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=False,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 7
+        ),
+        RegularNPC(  # 7
             npc=npcs.POUNDETTE_NPC_2,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -304,10 +254,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 8
+            byte7_upper2=3,
+        ),
+        RegularClone(  # 8
             npc=npcs.POUNDETTE_NPC_2,
-            initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0963_FACTORY_3RD_BOSS_MID_HAMMER,
             visible=True,
@@ -316,25 +266,9 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=True,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=False,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 9
+        ),
+        RegularClone(  # 9
             npc=npcs.POUNDETTE_NPC_2,
-            initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0964_FACTORY_3RD_BOSS_RIGHT_HAMMER,
             visible=True,
@@ -343,23 +277,8 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=True,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=False,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 10
+        ),
+        RegularNPC(  # 10
             npc=npcs.FACTORY_DIRECTOR_RED_NPC,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -386,6 +305,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-    ]
+            byte7_upper2=3,
+        ),
+    ],
 )

@@ -1,4 +1,4 @@
-# E3524_EMPTY
+# E3524_OUTER_FACTORY_CONVEYOR_CHEST
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+	JmpIfVarEqualsConst(ACTIVE_NPC, NPC_8, ["EVENT_3524_jmp_to_event_6"]),
+	JmpToEvent(E1937_KEEP_ROTATING_ROOM_CHEST_2),
+	JmpToEvent(E1936_KEEP_ROTATING_ROOM_CHEST_1, identifier="EVENT_3524_jmp_to_event_6"),
 ])

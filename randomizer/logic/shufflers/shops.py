@@ -500,11 +500,45 @@ def shuffle_shops(world: GameWorld) -> None:
                 # Track shop count for ORIGINAL mode
                 current_item_shop_count[item] = current_item_shop_count.get(item, 0) + 1
 
-        if shop_new_items:
-            shop.set_items(shop_new_items)
-        elif quality == ShopQualities.ORIGINAL:
-            # If no items could be placed in ORIGINAL mode, discard
-            shop.set_items([])
+        shop.set_items(shop_new_items)
+
+    # Ensure no shop has 0 items - forcibly place at least one item in empty shops
+    all_items = low_consumables + high_consumables + highest_consumables + low_equip + high_equip + highest_equip
+    for shop in world.shops.shops:
+        if shop is None or shop.index == FROG_DISCIPLE_SHOP:
+            continue
+        current_items = shop.items or []
+        if len(current_items) == 0:
+            chosen_item = None
+            # Try to find any item that can be placed in this shop
+            # First, try items that pass can_place_item
+            placeable_items = [
+                item for item in all_items
+                if can_place_item(item, shop.index, [])
+            ]
+            if placeable_items:
+                chosen_item = random.choice(placeable_items)
+            else:
+                # If no items pass restrictions, relax type restrictions and try again
+                # (skip only the frog coin shop exclusivity checks)
+                fallback_items = []
+                for item in all_items:
+                    # Skip items exclusive to frog coin shops (unless this IS the frog emporium)
+                    if shop.index != FROG_COIN_EMPORIUM:
+                        if item in frog_emporium_items:
+                            continue
+                        if item in frog_disciple_set:
+                            continue
+                    fallback_items.append(item)
+                if fallback_items:
+                    chosen_item = random.choice(fallback_items)
+
+            if chosen_item:
+                shop.set_items([chosen_item])
+                current_item_shop_count[chosen_item] = current_item_shop_count.get(chosen_item, 0) + 1
+                # If placing in Frog Coin Emporium, track it for exclusivity
+                if shop.index == FROG_COIN_EMPORIUM:
+                    frog_emporium_items.add(chosen_item)
 
     # Guarantee Pick Me Ups appear in at least one shop if not disabled
     # In ORIGINAL mode, only guarantee if Pick Me Up was originally in at least one shop

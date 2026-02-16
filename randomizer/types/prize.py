@@ -647,16 +647,23 @@ class BossFightPrize(Prize):
             )
         return self._npc_models
 
-    def get_npc_for_slot(self, world: "GameWorld", max_vram_size: int) -> type[BossNPC]:
+    def get_npc_for_slot(
+        self,
+        world: "GameWorld",
+        max_vram_size: int,
+        max_min_vram_size: int | None = None,
+    ) -> type[BossNPC]:
         """Select the appropriate NPC model for a slot with the given max VRAM capacity.
 
         Iterates through npc_models (largest to smallest) and returns the first
-        model whose VRAM size <= max_vram_size. Falls back to the smallest model
-        (last in list) if none fit.
+        model whose VRAM size <= max_vram_size AND whose NPC min_vram_size <=
+        max_min_vram_size (if provided). Falls back to the smallest model
+        (last in list) if none fit both criteria.
 
         Args:
             world: GameWorld instance for sprite lookups
             max_vram_size: Maximum VRAM size the slot can accommodate
+            max_min_vram_size: Maximum min_vram_size the slot's original NPC had (optional)
 
         Returns:
             The appropriate BossNPC subclass for the slot
@@ -665,6 +672,11 @@ class BossFightPrize(Prize):
         for model in models:
             model_vram = model.get_vram_size(world)
             if model_vram <= max_vram_size:
+                # Also check min_vram_size if provided
+                if max_min_vram_size is not None:
+                    model_min_vram = model.get_min_vram_size()
+                    if model_min_vram > max_min_vram_size:
+                        continue
                 return model
         # Fallback to smallest (last in list)
         return models[-1]

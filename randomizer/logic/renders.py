@@ -78,6 +78,10 @@ from ..data.variables.event_script_names import (
 from ..data.variables.room_names import (
     R202_BOOSTER_TOWER_ENTRANCE,
     R254_BEAN_VALLEY_SMILAX_AREA,
+    R391_VOLCANO_POSTCD_AREA_04,
+    R392_VOLCANO_POSTCD_AREA_06,
+    R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+    R394_VOLCANO_POSTCD_AREA_05,
     R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
 )
 from ..data.variables.variable_names import TEMP_7043_3
@@ -1124,32 +1128,43 @@ def render_volcano_exit_boss(
 
     loops = 0
 
-    # Slot 0
+    # Slot 0 - black
     if not slot_has_henchman(0):
         world.event_scripts.delete_command_by_identifier("axem_henchman_1_aq")
         world.event_scripts.delete_command_by_identifier("axem_henchman_1_aq_2")
         world.event_scripts.delete_command_by_identifier("axem_henchman_1_aq_3")
+        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(NPC_1).set_visible(False)
+        world.get_room(R391_VOLCANO_POSTCD_AREA_04).get_npc_by_target_id(NPC_0).set_visible(False)
+        world.get_room(R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP).get_npc_by_target_id(NPC_2).set_visible(False)
     else:
         loops += 1
 
-    # Slot 1
+    # Slot 1 - pink
     if not slot_has_henchman(1):
         world.event_scripts.delete_command_by_identifier("axem_henchman_2_aq")
         world.event_scripts.delete_command_by_identifier("axem_henchman_2_aq_2")
+        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(NPC_2).set_visible(False)
+        world.get_room(R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP).get_npc_by_target_id(NPC_3).set_visible(False)
     else:
         loops += 1
 
-    # Slot 2
+    # Slot 2 - green
     if not slot_has_henchman(2):
         world.event_scripts.delete_command_by_identifier("axem_henchman_3_aq")
         world.event_scripts.delete_command_by_identifier("axem_henchman_3_aq_2")
+        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(NPC_3).set_visible(False)
+        world.get_room(R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP).get_npc_by_target_id(NPC_4).set_visible(False)
+        world.get_room(R394_VOLCANO_POSTCD_AREA_05).get_npc_by_target_id(NPC_1).set_visible(False)
     else:
         loops += 1
 
-    # Slot 3
+    # Slot 3 - yellow
     if not slot_has_henchman(3):
         world.event_scripts.delete_command_by_identifier("axem_henchman_4_aq")
         world.event_scripts.delete_command_by_identifier("axem_henchman_4_aq_2")
+        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(NPC_4).set_visible(False)
+        world.get_room(R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP).get_npc_by_target_id(NPC_5).set_visible(False)
+        world.get_room(R394_VOLCANO_POSTCD_AREA_05).get_npc_by_target_id(NPC_0).set_visible(False)
     else:
         loops += 1
 

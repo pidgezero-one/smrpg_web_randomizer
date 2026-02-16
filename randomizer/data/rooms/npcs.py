@@ -1413,10 +1413,10 @@ PINK_YOSHI_NPC = NPC(
     priority_1=False,
     priority_2=True,
     cannot_clone=False,
-    byte2_bit0=False,
+    byte2_bit0=True,
     byte2_bit1=False,
     byte2_bit2=False,
-    byte2_bit3=False,
+    byte2_bit3=True,
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
@@ -2573,6 +2573,7 @@ YELLOW_STEPPING_BLOCK_NPC = NPC(
     byte5_bit6=False,
     byte5_bit7=False,
     byte6_bit2=False,
+    force_id=93,
 )
 
 TREASURE_CHEST_NPC = NPC(
@@ -4803,6 +4804,7 @@ BIRDY_NPC = NPC(
     byte5_bit6=False,
     byte5_bit7=False,
     byte6_bit2=False,
+    force_id=183,
 )
 
 SHYGUY_IN_BOWSER_S_HELICOPTER_NPC = NPC(
@@ -4971,6 +4973,7 @@ RED_MAGIKOOPA_NPC = NPC(
     byte5_bit6=False,
     byte5_bit7=False,
     byte6_bit2=False,
+    force_id=190,
 )
 
 SPARKLE_DOWNWARDS_NPC = NPC(
@@ -6366,16 +6369,16 @@ WHITE_GAS_CLOUD_NPC = NPC(
 MACHINE_MADE_DRILL_BIT_NPC = NPC(
     sprite_id=SPR0243_MACHINE_MADE_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=0,
-    obtuse_axis=0,
-    height=0,
-    y_shift=0,
-    show_shadow=False,
+    acute_axis=3,
+    obtuse_axis=3,
+    height=11,
+    y_shift=2,
+    show_shadow=True,
     directions=VramStore.DIR0_SWSE_NWNE,
     min_vram_size=0,
     priority_0=False,
     priority_1=False,
-    priority_2=False,
+    priority_2=True,
     cannot_clone=False,
     byte2_bit0=False,
     byte2_bit1=False,

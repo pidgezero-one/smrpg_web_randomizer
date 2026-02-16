@@ -612,6 +612,15 @@ class BossNPC(NPC):
         sprite = world.get_sprite(sprite_id)
         return sprite.animation.properties.vram_size
 
+    @classmethod
+    def get_min_vram_size(cls) -> int:
+        """Get the min_vram_size for this BossNPC's NPC definition.
+
+        Returns the NPC's min_vram_size value (0-7).
+        """
+        instance = cls()
+        return instance.base.min_vram_size
+
 
 class HenchmanNPC(NPC):
     _animations: SpriteAnimationCollection = SpriteAnimationCollection()

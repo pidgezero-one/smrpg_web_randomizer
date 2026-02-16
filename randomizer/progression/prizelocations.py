@@ -434,7 +434,12 @@ class MushroomWay1LowerChest(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_1
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]
     # Flag as checked: npc 0 in room 203 has its object trigger disabled.
 
 
@@ -444,7 +449,12 @@ class MushroomWay1UpperChest(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_2
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]
     # Flag as checked: npc 1 in room 203 has its object trigger disabled.
 
 
@@ -1312,7 +1322,6 @@ class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
         return can_access_sewer(world, inventory)
 
     # flag as checked: npc 1 in room 60 has its object trigger disabled.
-
 
 
 class Mimic1BossFight(MimicFightLocation):
@@ -2529,7 +2538,9 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
         assert self.originally_held is not None
         assert world is not None
         if not isinstance(self.prize, self.originally_held):
-            world.update_dialog(DI2911_TREASURE_SELLER_ITEM_1, self.prize.nickname.get_slot_1_dialog())
+            world.update_dialog(
+                DI2911_TREASURE_SELLER_ITEM_1, self.prize.nickname.get_slot_1_dialog()
+            )
         return super().render(world)
 
     # Flag as checked: TREASURE_SHOP_ITEM_1_PURCHASED
@@ -2552,7 +2563,9 @@ class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
         assert self.originally_held is not None
         assert world is not None
         if not isinstance(self.prize, self.originally_held):
-            world.update_dialog(DI2908_TREASURE_SELLER_ITEM_2, self.prize.nickname.get_slot_2_dialog())
+            world.update_dialog(
+                DI2908_TREASURE_SELLER_ITEM_2, self.prize.nickname.get_slot_2_dialog()
+            )
         return super().render(world)
 
     # Flag as checked: TREASURE_SHOP_ITEM_2_PURCHASED
@@ -2573,7 +2586,9 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
         assert self.originally_held is not None
         assert world is not None
         if not isinstance(self.prize, self.originally_held):
-            world.update_dialog(DI2914_TREASURE_SELLER_ITEM_3, self.prize.nickname.get_slot_3_dialog())
+            world.update_dialog(
+                DI2914_TREASURE_SELLER_ITEM_3, self.prize.nickname.get_slot_3_dialog()
+            )
         return super().render(world)
 
     # Flag as checked: TREASURE_SHOP_ITEM_3_PURCHASED
@@ -2839,8 +2854,12 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
     def render(self, world: GameWorld | None = None):
         assert world is not None
         if not isinstance(self.prize, (CoinPrize, FrogCoinPrize)):
-            world.event_scripts.delete_subscript_command_by_identifier("minecart_item_aqueue", "minecart_item_coin_1")
-            world.event_scripts.delete_subscript_command_by_identifier("minecart_item_aqueue", "minecart_item_coin_2")
+            world.event_scripts.delete_subscript_command_by_identifier(
+                "minecart_item_aqueue", "minecart_item_coin_1"
+            )
+            world.event_scripts.delete_subscript_command_by_identifier(
+                "minecart_item_aqueue", "minecart_item_coin_2"
+            )
         return super().render(world)
 
     # Flag as checked: RUNAWAY_MINECART_ITEM_OBTAINED
@@ -3823,7 +3842,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         DI2560_TOWER_HENCHMAN_1,
         DI2572_TOWER_HENCHMAN_2,
         DI3072_TOWER_HENCHMAN_3_WINDOW,
-        DI3073_TOWER_HENCHMAN_3
+        DI3073_TOWER_HENCHMAN_3,
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -3853,7 +3872,11 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             )
 
             render_booster_tower_indoor_boss(
-                world, self.prize, self.npc_slots, is_vanilla, character_henchmen_assigned
+                world,
+                self.prize,
+                self.npc_slots,
+                is_vanilla,
+                character_henchmen_assigned,
             )
             if character_henchmen_assigned:
                 render_booster_tower_henchman_scripts(
@@ -4009,7 +4032,7 @@ class BoosterHillGuaranteedItem1(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P038_BOOSTER_HILL_PRIZE_0,
-        P069_BOOSTER_HILL_PRIZE_STANDING_0
+        P069_BOOSTER_HILL_PRIZE_STANDING_0,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4027,7 +4050,7 @@ class BoosterHillGuaranteedItem2(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P039_BOOSTER_HILL_PRIZE_1,
-        P071_BOOSTER_HILL_PRIZE_STANDING_1
+        P071_BOOSTER_HILL_PRIZE_STANDING_1,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4045,7 +4068,7 @@ class BoosterHillGuaranteedItem3(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P041_BOOSTER_HILL_PRIZE_2,
-        P072_BOOSTER_HILL_PRIZE_STANDING_2
+        P072_BOOSTER_HILL_PRIZE_STANDING_2,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4099,7 +4122,7 @@ class BoosterHillGuaranteedItem6(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P046_BOOSTER_HILL_PRIZE_5,
-        P077_BOOSTER_HILL_PRIZE_STANDING_5
+        P077_BOOSTER_HILL_PRIZE_STANDING_5,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4117,7 +4140,7 @@ class BoosterHillGuaranteedItem7(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P057_BOOSTER_HILL_PRIZE_6,
-        P078_BOOSTER_HILL_PRIZE_STANDING_6
+        P078_BOOSTER_HILL_PRIZE_STANDING_6,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4135,7 +4158,7 @@ class BoosterHillGuaranteedItem8(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P058_BOOSTER_HILL_PRIZE_7,
-        P080_BOOSTER_HILL_PRIZE_STANDING_7
+        P080_BOOSTER_HILL_PRIZE_STANDING_7,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4153,7 +4176,7 @@ class BoosterHillGuaranteedItem9(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P059_BOOSTER_HILL_PRIZE_8,
-        P081_BOOSTER_HILL_PRIZE_STANDING_8
+        P081_BOOSTER_HILL_PRIZE_STANDING_8,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4171,7 +4194,7 @@ class BoosterHillGuaranteedItem10(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P060_BOOSTER_HILL_PRIZE_9,
-        P082_BOOSTER_HILL_PRIZE_STANDING_9
+        P082_BOOSTER_HILL_PRIZE_STANDING_9,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4189,7 +4212,7 @@ class BoosterHillGuaranteedItem11(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P061_BOOSTER_HILL_PRIZE_10,
-        P083_BOOSTER_HILL_PRIZE_STANDING_10
+        P083_BOOSTER_HILL_PRIZE_STANDING_10,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4207,7 +4230,7 @@ class BoosterHillGuaranteedItem12(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P062_BOOSTER_HILL_PRIZE_11,
-        P084_BOOSTER_HILL_PRIZE_STANDING_11
+        P084_BOOSTER_HILL_PRIZE_STANDING_11,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4225,7 +4248,7 @@ class BoosterHillGuaranteedItem13(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P063_BOOSTER_HILL_PRIZE_12,
-        P085_BOOSTER_HILL_PRIZE_STANDING_12
+        P085_BOOSTER_HILL_PRIZE_STANDING_12,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4243,7 +4266,7 @@ class BoosterHillGuaranteedItem14(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P065_BOOSTER_HILL_PRIZE_13,
-        P086_BOOSTER_HILL_PRIZE_STANDING_13
+        P086_BOOSTER_HILL_PRIZE_STANDING_13,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4261,9 +4284,8 @@ class BoosterHillGuaranteedItem15(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P066_BOOSTER_HILL_PRIZE_14,
-        P087_BOOSTER_HILL_PRIZE_STANDING_14
+        P087_BOOSTER_HILL_PRIZE_STANDING_14,
     ]
-
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4280,7 +4302,7 @@ class BoosterHillGuaranteedItem16(StandingLocation, BoosterHillLocation):
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
         P068_BOOSTER_HILL_PRIZE_15,
-        P088_BOOSTER_HILL_PRIZE_STANDING_15
+        P088_BOOSTER_HILL_PRIZE_STANDING_15,
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4456,10 +4478,7 @@ class MarrymoreBossFight(BossFightLocation):
             [NPC_2, NPC_10],
         ),
     ]
-    _dialogs_expecting_replacement = [
-        DI2061_HEAD_CHEF,
-        DI2062_APPRENTICE_CHEF
-    ]
+    _dialogs_expecting_replacement = [DI2061_HEAD_CHEF, DI2062_APPRENTICE_CHEF]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -4545,7 +4564,9 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
         if self.prize is None:
             render_marrymore_character_empty(world)
         else:
-            assert isinstance(self.prize, CharacterPrize), f"MarrymoreCharacter prize must be CharacterPrize, got {type(self.prize)}"
+            assert isinstance(
+                self.prize, CharacterPrize
+            ), f"MarrymoreCharacter prize must be CharacterPrize, got {type(self.prize)}"
             render_marrymore_character(world, self.prize)
         return op
 
@@ -7559,9 +7580,7 @@ class StatueRoomBossFight(BossFightLocation):
             sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
-    _dialogs_expecting_replacement = [
-        DI2180_CHAPEL_NPC
-    ]
+    _dialogs_expecting_replacement = [DI2180_CHAPEL_NPC]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -8611,7 +8630,7 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 4 in room 322 has its object trigger disabled.
 
@@ -8626,7 +8645,7 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 5 in room 322 has its object trigger disabled.
 
@@ -8641,7 +8660,7 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 6 in room 322 has its object trigger disabled.
 
@@ -8656,7 +8675,7 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 7 in room 322 has its object trigger disabled.
 
@@ -8670,7 +8689,7 @@ class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 8 in room 322 has been removed from the room.
 
@@ -8684,7 +8703,7 @@ class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 9 in room 322 has been removed from the room.
 
@@ -8698,7 +8717,7 @@ class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 10 in room 322 has been removed from the room.
 
@@ -8712,7 +8731,7 @@ class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 11 in room 322 has been removed from the room.
 
@@ -8727,7 +8746,7 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 10 in room 458 has its object trigger disabled.
 
@@ -8742,7 +8761,7 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 11 in room 458 has its object trigger disabled.
 
@@ -8757,7 +8776,7 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 12 in room 458 has its object trigger disabled.
 
@@ -8772,7 +8791,7 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 13 in room 458 has its object trigger disabled.
 
@@ -8787,7 +8806,7 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 8 in room 321 has its object trigger disabled.
 
@@ -8802,7 +8821,7 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 3 in room 457 has its object trigger disabled.
 
@@ -8817,7 +8836,7 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 4 in room 457 has its object trigger disabled.
 
@@ -8832,7 +8851,7 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 5 in room 457 has its object trigger disabled.
 
@@ -8847,7 +8866,7 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 6 in room 457 has its object trigger disabled.
 
@@ -8862,7 +8881,7 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 7 in room 457 has its object trigger disabled.
 
@@ -8876,7 +8895,7 @@ class KeepCannonballCoin1Location(StandingLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 8 in room 457 has been removed from the room.
 
@@ -8890,7 +8909,7 @@ class KeepCannonballCoin2Location(StandingLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 9 in room 457 has been removed from the room.
 
@@ -8904,7 +8923,7 @@ class KeepCannonballCoin3Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 10 in room 457 has been removed from the room.
 
@@ -8918,7 +8937,7 @@ class KeepCannonballCoin4Location(StandingLocationRow4):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 11 in room 457 has been removed from the room.
 
@@ -8932,7 +8951,7 @@ class KeepCannonballCoin5Location(StandingLocationRow5):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 12 in room 457 has been removed from the room.
 
@@ -8946,7 +8965,7 @@ class KeepCannonballCoin6Location(StandingLocationRow6):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 13 in room 457 has been removed from the room.
 
@@ -8960,7 +8979,7 @@ class KeepCannonballCoin7Location(StandingLocationRow7):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 14 in room 457 has been removed from the room.
 
@@ -8974,7 +8993,7 @@ class KeepCannonballCoin8Location(StandingLocationRow8):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 15 in room 457 has been removed from the room.
 
@@ -8991,7 +9010,7 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 1 in room 455 has its object trigger disabled.
 
@@ -9008,7 +9027,7 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 2 in room 455 has its object trigger disabled.
 
@@ -9025,7 +9044,7 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 3 in room 455 has its object trigger disabled.
 
@@ -9042,7 +9061,7 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 4 in room 455 has its object trigger disabled.
 
@@ -9059,7 +9078,7 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 5 in room 455 has its object trigger disabled.
 
@@ -9076,7 +9095,7 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory)
+        return can_pass_obstacle_courses(world, inventory)
 
     # flag as checked: npc 6 in room 455 has its object trigger disabled.
 
@@ -9104,7 +9123,9 @@ class ObstacleCourseFinalFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
@@ -9153,7 +9174,9 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
     _parent = ObstacleCourseFinalFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
@@ -9176,7 +9199,7 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
             if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
-        return can_access_keep(world, inventory) and boss_condition
+        return can_pass_obstacle_courses(world, inventory) and boss_condition
 
     # flag as checked: BK_OBSTACLE_1_PRIZE_RETRIEVED
 
@@ -9199,7 +9222,7 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
             if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
-        return can_access_keep(world, inventory) and boss_condition
+        return can_pass_obstacle_courses(world, inventory) and boss_condition
 
     # flag as checked: BK_OBSTACLE_2_PRIZE_RETRIEVED
 
@@ -9222,7 +9245,7 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
             if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
-        return can_access_keep(world, inventory) and boss_condition
+        return can_pass_obstacle_courses(world, inventory) and boss_condition
 
     # flag as checked: BK_OBSTACLE_3_PRIZE_RETRIEVED
 
@@ -9241,7 +9264,7 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = not_earlygame(world, inventory)
-        return can_access_keep(world, inventory) and boss_condition
+        return can_pass_obstacle_courses(world, inventory) and boss_condition
 
     # flag as checked: BK_OBSTACLE_4_PRIZE_RETRIEVED
 
@@ -9264,7 +9287,7 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
             if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
-        return can_access_keep(world, inventory) and boss_condition
+        return can_pass_obstacle_courses(world, inventory) and boss_condition
 
     # flag as checked: BK_OBSTACLE_5_PRIZE_RETRIEVED
 
@@ -9287,7 +9310,7 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
             if world.settings.isflag_enabled(_get_flag("BowserDoorShuffle"))
             else True
         )
-        return can_access_keep(world, inventory) and boss_condition
+        return can_pass_obstacle_courses(world, inventory) and boss_condition
 
     # flag as checked: BK_OBSTACLE_6_PRIZE_RETRIEVED
 
@@ -9350,7 +9373,9 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
@@ -9436,6 +9461,9 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                         Return(),
                     ]
                 )
+                world.event_scripts.delete_command_by_identifier(
+                    "keep_battle_room_summon"
+                )
         return op
 
     # Flag as checked: KEEP_BOSS_1_DEFEATED
@@ -9450,7 +9478,9 @@ class KeepAfterObstaclesStarPiece(StarPieceLocation):
     _parent = KeepAfterObstaclesBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     # Flag as checked: KEEP_BOSS_1_DEFEATED
 
@@ -9465,7 +9495,9 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     def render(
         self, world: GameWorld | None = None
@@ -9512,7 +9544,9 @@ class KeepChandelierBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
@@ -9559,7 +9593,9 @@ class KeepChandelierStarPiece(StarPieceLocation):
     _parent = KeepChandelierBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     # Flag as checked: KEEP_BOSS_2_DEFEATED
 
@@ -9582,7 +9618,9 @@ class KeepFinalBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     def post_unlocks(self, world: GameWorld) -> EventScript:
         content: list[UsableEventScriptCommand] = []
@@ -9609,7 +9647,9 @@ class KeepFinalStarPiece(StarPieceLocation):
     _parent = KeepFinalBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     # Flag as checked: KEEP_BOSS_3_DEFEATED
 
@@ -9650,7 +9690,7 @@ class FactoryBoltPlatformsChestLocation(TreasureChestLocationRow1):
 class FactoryEntranceBossFight(BossFightLocation):
     _bias = True
     _originally_held = CountdownBossFight
-    _rooms = [R433_SMITHY_FACTORY_AREA_01_DUMMY]
+    _rooms = [R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM]
     _id = ShuffleLocationSelector.FACTORY_BOSS_FIGHT_1
     _world_area = WorldAreaEnum.FACTORY
     _pack_id = PACK174_FACTORY_FIRST_BOSS
@@ -10095,14 +10135,22 @@ class InnerFactoryFourthFight(BossFightLocation):
     _post_unlocks_event_id = E1244_INNER_FACTORY_4_BOSS_UNLOCKS
     _npc_slots = [
         BossFightLocationNPC(
-            R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
             NPC_12,
             sequence_setter_event_id=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
     _character_henchman_slots = [
         BossFightLocationHenchmanNPC(
-            [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM], [NPC_0]
+            [
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+                R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+            ],
+            [NPC_0, NPC_1, NPC_2, NPC_3, NPC_4, NPC_5, NPC_6],
         ),
     ]
 
@@ -11601,7 +11649,7 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
             can_access_monstro_town(world, inventory)
-            and can_access_keep(world, inventory)
+            and can_pass_obstacle_courses(world, inventory)
             and not_earlygame(world, inventory)
         )
 
@@ -11617,7 +11665,7 @@ class KeepThwompFlag(InvisibleFlagLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
             can_access_monstro_town(world, inventory)
-            and can_access_keep(world, inventory)
+            and can_pass_obstacle_courses(world, inventory)
             and not_earlygame(world, inventory)
         )
 
@@ -12025,6 +12073,13 @@ def can_access_keep(world: GameWorld, inventory: Inventory) -> bool:
     if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.AXEM):
         return inventory.has_item(AxemRangersBossFight)
     return True
+
+
+def can_pass_obstacle_courses(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to pass the obstacle courses in Bowser's Keep."""
+    return can_access_keep(world, inventory) and can_damage_enemies_with_spells(
+        world, inventory
+    )
 
 
 def can_access_factory(world: GameWorld, inventory: Inventory) -> bool:
