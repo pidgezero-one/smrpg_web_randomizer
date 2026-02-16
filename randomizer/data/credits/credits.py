@@ -30,6 +30,7 @@ END_CREDITS_DELAY_1 = 34
 END_CREDITS_DELAY_2 = 40
 BEGIN_TITLES_DELAY = 50
 END_TITLES_DELAY = 40
+FINAL_DELAY = 0xFF
 
 
 def to_str(string):
@@ -188,10 +189,30 @@ class Credits(object):
         credit_len = 3380
         string_table_start = 0x3FE8E4
         string_table_size = len(self.strings) * 2
+        # Fill remaining space with invisible credit blocks so the credits
+        # engine processes real commands instead of raw zero bytes.
+        if credit_len - len(self.acc) >= 101:
+            self.begin_titles(BEGIN_TITLES_DELAY)
+            self.add_title(0x80, 0x00, 0x08, " ")
+            self.end_titles(END_TITLES_DELAY)
+            self.begin_credits()
+            self.add_credit(0x80, 0x80, 0xC0, " ")
+            self.add_credit(0x80, 0x40, 0x81, " ")
+            self.add_credit(0x80, 0x00, 0xC2, " ")
+            self.end_credits(FINAL_DELAY, END_CREDITS_DELAY_2)
+        while credit_len - len(self.acc) >= 108:
+            self.begin_titles(BEGIN_TITLES_DELAY)
+            self.add_title(0x80, 0x00, 0x08, " ")
+            self.end_titles(END_TITLES_DELAY)
+            self.begin_credits()
+            self.add_credit(0x80, 0x80, 0xC0, " ")
+            self.add_credit(0x80, 0x40, 0x81, " ")
+            self.add_credit(0x80, 0x00, 0xC2, " ")
+            self.end_credits(FINAL_DELAY, END_CREDITS_DELAY_2)
         assert len(self.acc) <= credit_len
         # Fill the unused section of credits script with 0.
         # This is very important.
-        self.acc += (3380 - len(self.acc)) * [0]
+        self.acc += (credit_len - len(self.acc)) * [0]
 
         free_list = {
             0x3f9c40: 952,
@@ -608,11 +629,6 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.add_credit(0x80, 0x80, 0xC0, "TINYWETBLANKET")
     credits.add_credit(0x80, 0x40, 0x81, "THANK YOU MIKAYLA")
     credits.add_credit(0x80, 0x00, 0xC2, "WE MISS YOU")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # Clear the titles
-    credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.end_titles(END_TITLES_DELAY)
 
     credits.end_thing(END_CREDITS_DELAY_1)  # Yeah, my abstraction breaks at the end.
 
