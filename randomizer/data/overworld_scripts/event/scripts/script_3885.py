@@ -128,7 +128,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=19, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	ActionQueueSync(target=NPC_20, subscript=[
-		A_SetSpriteSequence(index=17, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
+		A_SetSpriteSequence(index=16, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	RememberLastObject(),
 	Pause(10),
@@ -358,7 +358,7 @@ script = EventScript([
 	]),
 	Pause(30),
 	ActionQueueAsync(target=NPC_21, subscript=[
-		A_SetSpriteSequence(index=7, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_Pause(8),
 		A_ResetProperties(),
 		A_Pause(30),
@@ -368,17 +368,17 @@ script = EventScript([
 	]),
 	Pause(60),
 	ActionQueueSync(target=NPC_20, subscript=[
-		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_Pause(8),
 		A_ResetProperties()
 	]),
 	ActionQueueSync(target=NPC_19, subscript=[
-		A_SetSpriteSequence(index=7, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(8),
 		A_ResetProperties()
 	]),
 	ActionQueueSync(target=NPC_23, subscript=[
-		A_SetSpriteSequence(index=7, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_Pause(8),
 		A_ResetProperties()
 	]),

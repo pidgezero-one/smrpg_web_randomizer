@@ -76,7 +76,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST),
         RegularClone( # 2
-            npc=npcs.YELLOW_YOSHI_NPC,
+            npc=npcs.PINK_YOSHI_NPC,
             event_script=E0471_BOSHI,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
@@ -86,7 +86,7 @@ room = Room(
             z_half=False,
             direction=NORTHWEST),
         RegularClone( # 3
-            npc=npcs.YELLOW_YOSHI_NPC,
+            npc=npcs.PINK_YOSHI_NPC,
             event_script=E0471_BOSHI,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,

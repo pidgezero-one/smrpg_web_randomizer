@@ -163,7 +163,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularNPC( # 9
-            npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC_4,
+            npc=npcs.TOADSTOOL_ENDING,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0432_PIPE_VAULT_GOOMBA_THUMPIN_EXIT_TRAMPOLINE,
             action_script=A0015_DO_NOTHING,

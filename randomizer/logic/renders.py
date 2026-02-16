@@ -133,6 +133,7 @@ def render_bandits_way_boss(world: GameWorld, prize: BossFightPrize) -> None:
         ("bway_aqueue_3", "bway_distracted_3"),
         ("bway_aqueue_4", "bway_distracted_4"),
         ("bway_aqueue_5", "bway_distracted_5"),
+        ("ending_credits_croco_animation_aq", "ending_credits_croco_animation"),
     ]
     for eid, aid in seq_id_replacements:
         e = world.event_scripts.get_subscript_command_by_identifier(

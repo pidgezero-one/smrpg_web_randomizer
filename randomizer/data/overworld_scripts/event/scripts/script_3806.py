@@ -62,7 +62,7 @@ script = EventScript([
 		A_SetWalkingSpeed(VERY_SLOW),
 		A_SetSequenceSpeed(FAST),
 		A_Walk1StepSouthwest(),
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=4, is_sequence=True, looping=True, identifier="ending_credits_croco_animation"),
 		A_Pause(61),
 		A_ResetProperties(),
 		A_FaceNorthwest(),
@@ -81,7 +81,7 @@ script = EventScript([
 		A_WalkSouthwestSteps(4),
 		A_SequenceLoopingOff(),
 		A_SetSequenceSpeed(NORMAL)
-	]),
+	], identifier="ending_credits_croco_animation_aq"),
 	ActionQueueSync(target=NPC_9, subscript=[
 		A_Pause(159),
 		A_SetSpriteSequence(index=12, is_sequence=True, looping=True),

@@ -39,7 +39,7 @@ room = Room(
     entrance_event=E3792_FACTORY_FINAL_BOSS_ROOM_LOADER,
     objects=[
         RegularNPC( # 0
-            npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC_4,
+            npc=npcs.TOADSTOOL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -66,7 +66,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularClone( # 1
-            npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC_3,
+            npc=npcs.MALLOW_ENDING,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
@@ -76,7 +76,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularClone( # 2
-            npc=npcs.GENO_WALKING_DOWN_LEFT_NPC_3,
+            npc=npcs.GENO_ENDING,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
@@ -86,7 +86,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularNPC( # 3
-            npc=npcs.BOWSER_WALKING_DOWN_LEFT_NPC,
+            npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,

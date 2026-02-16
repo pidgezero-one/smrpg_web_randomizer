@@ -258,7 +258,7 @@ class BowsercloneHenchman_2(HenchmanNPC):
 class PeachcloneHenchman(HenchmanNPC):
     """Peach clone henchman NPC for boss fights."""
 
-    _base = TOADSTOOL_WALKING_DOWN_LEFT_NPC_4
+    _base = TOADSTOOL_ENDING
     _animations = SpriteAnimationCollection(
         tower_bullet=peachclone_mad,
         kitchen_prep=peachclone_mad,

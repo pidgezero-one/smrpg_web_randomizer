@@ -160,7 +160,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 7
-            npc=npcs.BOWSER_WALKING_DOWN_LEFT_NPC_2,
+            npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0969_ENDING_CREDITS_CASTLE_DIRECTOR,
@@ -187,7 +187,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularClone( # 8
-            npc=npcs.BOWSER_WALKING_DOWN_LEFT_NPC,
+            npc=npcs.BOWSER_ENDING,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0969_ENDING_CREDITS_CASTLE_DIRECTOR,
             visible=False,

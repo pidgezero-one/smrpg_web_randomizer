@@ -214,4 +214,11 @@ Inner Factory
 🚧 toad's shop is empty
 
 Ending
-- need to restore original animations
+🚧 need to restore original animations
+
+lazy shell
+- more intelligent weapon detection in animation script dropdown
+- write new parser for monster behaviours and just make a dropdown of unique pointers
+- KOed should be object sequences
+- event scripts: fix the problem where sequence commands can't load numbers > 7
+- monster AI: fix "7E00015"

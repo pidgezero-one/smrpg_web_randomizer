@@ -135,7 +135,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 4
-            npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC_3,
+            npc=npcs.MALLOW_ENDING,
             initiator=EventInitiator.NONE,
             event_script=E1551_BANK_1F_RETURN_EVENT,
             action_script=A0160_SEQUENCE_LOOPING_ON,

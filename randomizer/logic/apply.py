@@ -328,7 +328,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                         StartBattleAtBattlefield(pack_id, ROOM_TO_BATTLEFIELD[room_id], identifier=identifier),
                         Return(),
                     ])
-            elif isinstance(place, (PacketLocation, BoosterHillLocation, TreasureChestLocationRow)):
+            elif isinstance(place, (PacketLocation, BoosterHillLocation, TreasureChestLocationRow, TreasureShopLocation)):
                 decision, execution = place.render(world)
             else:
                 decision, execution = place.render()
@@ -344,6 +344,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             if isinstance(place.prize, SlotsPrize):
                 room = place._rooms[0]
                 identifier = str(uuid4())
+                if E0353_BOSS_BATTLE not in builders:
+                    builders[E0353_BOSS_BATTLE] = ([], [])
                 builders[E0353_BOSS_BATTLE][0].append(JmpIfVarEqualsConst(PRIMARY_TEMP_7000, place.prize.override_id, [identifier]))
                 builders[E0353_BOSS_BATTLE][1].extend([
                     StartBattleAtBattlefield(slot_pack, ROOM_TO_BATTLEFIELD[room], identifier=identifier),

@@ -39,7 +39,7 @@ room = Room(
     entrance_event=E0015_STANDARD_ROOM_LOADER,
     objects=[
         RegularNPC( # 0
-            npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC_4,
+            npc=npcs.TOADSTOOL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -93,7 +93,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 2
-            npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC_3,
+            npc=npcs.MALLOW_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -120,7 +120,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 3
-            npc=npcs.GENO_DOLL_NPC,
+            npc=npcs.GENO_DOLL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -147,7 +147,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 4
-            npc=npcs.BOWSER_WALKING_DOWN_LEFT_NPC,
+            npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,

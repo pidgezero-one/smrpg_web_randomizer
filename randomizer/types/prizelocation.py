@@ -86,7 +86,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
 )
 from .base import CategorizationOption
 from .packet_type import PacketType
-from ..data.rooms.npcs import EMPTY_NPC_3, EXPLOSION_NPC, FLOWER_NPC_2, FROG_COIN_NPC
+from ..data.rooms.npcs import EMPTY_NPC_3, EXPLOSION_NPC, FLOWER_NPC_2, FROG_COIN_NPC, STATIC_FROG_COIN_NPC
 from ..data.variables.room_names import *
 from ..data.variables.variable_names import (
     INVISIBLE_FLAG_1_FOUND,
@@ -2243,6 +2243,7 @@ class BossFightLocation(PrizeLocation):
 
         # return the contents for event 353
         # test this, not sure if this divide will work for mimics anywhere, esp if they end up in chests in rooms that normally dont have battles
+        effective_rooms = self._rooms
         if isinstance(self, MimicFightLocation):
             # Lazy import to avoid circular dependency
             from randomizer.progression.prizelocations import Mimic1BossFight, Mimic2BossFight, Mimic3BossFight
@@ -2251,6 +2252,7 @@ class BossFightLocation(PrizeLocation):
                 for location in world.locations.values():                                                                                                                                                                           
                     if isinstance(location.prize, launcher_cls) and isinstance(self, boss_cls):  
                         effective_battlefields = [ROOM_TO_BATTLEFIELD[r] for r in location._rooms]
+                        effective_rooms = location._rooms
         elif self.override_id is not None and self.prize.force_battlefield is None and self.default_battlefield is None:
             identifier = str(uuid4())
             return (
@@ -2272,17 +2274,17 @@ class BossFightLocation(PrizeLocation):
         if isinstance(self.prize, BoomerBossFight):
             print(f"Boomer boss fight at {self.__class__.__name__} has force_battlefield={self.prize.force_battlefield}")
         if self.prize.force_battlefield is not None:
-            effective_battlefields = [self.prize.force_battlefield] * len(self._rooms)
+            effective_battlefields = [self.prize.force_battlefield] * len(effective_rooms)
         elif self.default_battlefield is not None:
-            effective_battlefields = [self.default_battlefield] * len(self._rooms)
+            effective_battlefields = [self.default_battlefield] * len(effective_rooms)
         else:
             effective_battlefields = self.battlefields
-        assert len(self._rooms) == len(
+        assert len(effective_rooms) == len(
             effective_battlefields
         ), "Rooms and battlefields length mismatch"
         battles = list(
             zip(
-                self._rooms,
+                effective_rooms,
                 effective_battlefields,
                 (str(uuid4()) for _ in effective_battlefields),
             )

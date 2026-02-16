@@ -78,7 +78,7 @@ script = EventScript([
 		A_SetWalkingSpeed(SLOW),
 		A_Walk1StepNorthwest(),
 		A_WalkNorthwestPixels(8),
-		A_SetSpriteSequence(index=7, is_sequence=True, looping=True)
+		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True)
 	]),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_Pause(16),
@@ -86,7 +86,7 @@ script = EventScript([
 		A_SetSequenceSpeed(FAST),
 		A_Walk1StepSoutheast(),
 		A_WalkSoutheastPixels(8),
-		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, mirror_sprite=True)
+		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	ActionQueueSync(target=NPC_4, subscript=[
 		A_Pause(16),
@@ -94,7 +94,7 @@ script = EventScript([
 		A_SetSequenceSpeed(FAST),
 		A_Walk1StepNortheast(),
 		A_WalkNortheastPixels(6),
-		A_SetSpriteSequence(index=7, is_sequence=True, looping=True, mirror_sprite=True)
+		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	RememberLastObject(),
 	Pause(120),
@@ -139,9 +139,9 @@ script = EventScript([
 		A_Pause(90),
 		A_ResetProperties(),
 		A_Pause(120),
-		A_SetSpriteSequence(index=22, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=24, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(2),
-		A_SetSpriteSequence(index=23, sprite_offset=1, is_mold=True, is_sequence=True, looping=True)
+		A_SetSpriteSequence(index=25, sprite_offset=1, is_mold=True, is_sequence=True, looping=True)
 	]),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_Pause(90),
@@ -194,7 +194,7 @@ script = EventScript([
 		A_ResetProperties()
 	]),
 	ActionQueueAsync(target=NPC_4, subscript=[
-		A_SetSpriteSequence(index=2, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True)
+		A_SetSpriteSequence(index=12, sprite_offset=0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	Pause(60),
 	PauseActionScript(NPC_6),

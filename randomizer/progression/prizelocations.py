@@ -10135,6 +10135,7 @@ class InnerFactoryFourthFight(BossFightLocation):
     _post_unlocks_event_id = E1244_INNER_FACTORY_4_BOSS_UNLOCKS
     _npc_slots = [
         BossFightLocationNPC(
+            R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
             NPC_12,
             sequence_setter_event_id=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),

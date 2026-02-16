@@ -104,6 +104,7 @@ GREEN_ORB_BASE = _item_npc_base(SPR0217_GREEN_BALL)
 YELLOW_ORB_BASE = _item_npc_base(SPR0218_YELLOW_BALL)
 GRAY_ORB_BASE = _item_npc_base(SPR0224_GRAY_BALL)
 AP_BASE = _item_npc_base(SPR0639_ITEM_BAG_STANDALONE)
+AP_BASE._force_id = 0
 
 
 MARIO_WALKING_DOWN_LEFT_NPC = NPC(
@@ -607,7 +608,8 @@ MARIO_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte6_bit2=False,
 )
 
-TOADSTOOL_WALKING_DOWN_LEFT_NPC_4 = NPC(
+TOADSTOOL_ENDING = NPC(
+    force_id=16,
     sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
@@ -631,7 +633,8 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_4 = NPC(
     byte6_bit2=False,
 )
 
-MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
+MALLOW_ENDING = NPC(
+    force_id=17,
     sprite_id=SPR0019_MALLOW_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
@@ -655,7 +658,8 @@ MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte6_bit2=False,
 )
 
-GENO_WALKING_DOWN_LEFT_NPC_3 = NPC(
+GENO_ENDING = NPC(
+    force_id=18,
     sprite_id=SPR0025_GENO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
@@ -2120,6 +2124,7 @@ GIRL_MOLE_YELLOW_BOW_NPC = NPC(
 )
 
 NIMBUSITE_BLUE_NPC = NPC(
+    force_id=75,
     sprite_id=SPR0075_NIMBUSITE_BLUE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
@@ -2144,6 +2149,7 @@ NIMBUSITE_BLUE_NPC = NPC(
 )
 
 NIMBUSITE_RED_NPC_2 = NPC(
+    force_id=76,
     sprite_id=SPR0076_NIMBUSITE_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
@@ -9655,6 +9661,7 @@ NOTHING_NPC = NPC(
 )
 
 GENO_REDEMPTION_NPC = NPC(
+    force_id=388,
     sprite_id=SPR0725_GENO_REDEMPTION,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
@@ -11887,7 +11894,8 @@ SMELTER_BACK_SECTION_NPC = NPC(
     byte6_bit2=False,
 )
 
-GENO_DOLL_NPC_2 = NPC(
+GENO_DOLL_ENDING = NPC(
+    force_id=476,
     sprite_id=SPR0172_GENO_DOLL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=1,
@@ -17905,7 +17913,8 @@ GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
     byte6_bit2=False,
 )
 
-BOWSER_WALKING_DOWN_LEFT_NPC_3 = NPC(
+BOWSER_ENDING = NPC(
+    force_id=2,
     sprite_id=SPR0013_BOWSER_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
@@ -17913,7 +17922,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC_3 = NPC(
     height=14,
     y_shift=-2,
     show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
+    directions=VramStore.DIR0_SWSE_NWNE,
     min_vram_size=1,
     priority_0=False,
     priority_1=False,
