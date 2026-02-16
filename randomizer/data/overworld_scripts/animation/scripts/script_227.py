@@ -17,7 +17,7 @@ from ....items import *
 
 script = ActionScript([
 	A_SetSequenceSpeed(VERY_SLOW),
-	A_SetSpriteSequence(index=10, sprite_offset=2, is_sequence=True, looping=True),
+	A_SetSpriteSequence(index=3, sprite_offset=2, is_sequence=True, looping=True),
 	A_Pause(98),
 	A_SetSequenceSpeed(SLOW),
 	A_Pause(162),

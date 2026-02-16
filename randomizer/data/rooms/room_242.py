@@ -135,6 +135,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.TREASURE_CHEST_NPC_2,
+            action_script=A0014_FLOATING_CHEST,
             event_script=E0735_FOREST_UNDERGROUND_CHEST,
             visible=True,
             x=6,
@@ -145,6 +146,7 @@ room = Room(
         ),
         RegularClone( # 4
             npc=npcs.TREASURE_CHEST_NPC_2,
+            action_script=A0014_FLOATING_CHEST,
             event_script=E0735_FOREST_UNDERGROUND_CHEST,
             visible=True,
             x=8,

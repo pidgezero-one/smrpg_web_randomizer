@@ -7,6 +7,7 @@ from ...types.flags import (
     MarioPaletteChoice, MallowPaletteChoice, GenoPaletteChoice,
     BowserPaletteChoice, ToadstoolPaletteChoice,
 )
+from smrpgpatchbuilder.datatypes.numbers.classes import ByteField
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -29,8 +30,6 @@ END_CREDITS_DELAY_1 = 34
 END_CREDITS_DELAY_2 = 40
 BEGIN_TITLES_DELAY = 50
 END_TITLES_DELAY = 40
-
-FINAL_DELAY = 0xFF
 
 
 def to_str(string):
@@ -185,78 +184,29 @@ class Credits(object):
         self.acc += [0xE3, 0, 0, 0, 0, 0, 0]
 
     def finalize(self) -> dict[int, bytearray]:
-        # Return a patch next time...
         credit_start = 0x3FDBB0
         credit_len = 3380
-        # print(len(self.acc))
-
-        # empty_string = ' ' * (remaining_space // 3)
-        # space_filler = []
-
-        # while remaining_space >= 73:
-        #     remaining_space -= 73
-        #     space_filler.append((self.begin_titles, [BEGIN_TITLES_DELAY]))
-        #     space_filler.append((self.add_title, [0x80, 0x00, 0x08, EMPTY_STRING]))
-        #     space_filler.append((self.end_titles, [END_TITLES_DELAY]))
-        #     space_filler.append((self.begin_credits, []))
-        #     space_filler.append((self.add_credit, [0x80, 0x80, 0xc0, EMPTY_STRING]))
-        #     space_filler.append((self.add_credit, [0x80, 0x40, 0x81, EMPTY_STRING]))
-        #     space_filler.append((self.add_credit, [0x80, 0x00, 0xc2, EMPTY_STRING]))
-        #     space_filler.append((self.end_credits, [END_CREDITS_DELAY_1, END_CREDITS_DELAY_2]))
-
-        # for i, (cmd, args) in enumerate(space_filler):
-        #     if i == len(space_filler) - 1 and cmd == self.add_credit:
-        #         args[3] == empty_string
-        #     cmd(*args)
-
-        # fill remaining space with pointers to empty text
-        # print("initial:", len(self.acc))
-        if credit_len - len(self.acc) >= 101:
-            self.begin_titles(BEGIN_TITLES_DELAY)
-            self.add_title(0x80, 0x00, 0x08, " ")
-            self.end_titles(END_TITLES_DELAY)
-            self.begin_credits()
-            self.add_credit(0x80, 0x80, 0xC0, " ")
-            self.add_credit(0x80, 0x40, 0x81, " ")
-            self.add_credit(0x80, 0x00, 0xC2, " ")
-            self.end_credits(FINAL_DELAY, END_CREDITS_DELAY_2)
-            # print("first:", len(self.acc))
-        while credit_len - len(self.acc) >= 108:
-            self.begin_titles(BEGIN_TITLES_DELAY)
-            self.add_title(0x80, 0x00, 0x08, " ")
-            self.end_titles(END_TITLES_DELAY)
-            self.begin_credits()
-            self.add_credit(0x80, 0x80, 0xC0, " ")
-            self.add_credit(0x80, 0x40, 0x81, " ")
-            self.add_credit(0x80, 0x00, 0xC2, " ")
-            self.end_credits(FINAL_DELAY, END_CREDITS_DELAY_2)
-            # print("ptr:", len(self.acc))
-
-        # print("final:", credit_len - len(self.acc), "out of", credit_len)
-        assert len(self.acc) <= credit_len
-
         string_table_start = 0x3FE8E4
         string_table_size = len(self.strings) * 2
-
+        assert len(self.acc) <= credit_len
         # Fill the unused section of credits script with 0.
         # This is very important.
-        self.acc += (credit_len - len(self.acc)) * [0]
+        self.acc += (3380 - len(self.acc)) * [0]
 
-        free_list: dict[int, int] = {
-            0x3F9C40: 952,
+        free_list = {
+            0x3f9c40: 952,
             credit_start + len(self.acc): credit_len - len(self.acc),
-            string_table_start + string_table_size: 2080 - string_table_size,
+            string_table_start + string_table_size: 2080 - string_table_size
         }
 
         patch: dict[int, bytearray] = {}
         patch[credit_start] = bytearray(self.acc)
         for i in range(len(self.strings)):
-            string_bytes = inv_str(self.strings[i])
-            base = allocate_string(len(string_bytes), free_list)
-            if base is None:
-                raise Exception("Ran out of space for credits strings!")
-            patch[base] = bytearray(string_bytes)
-            patch[string_table_start + i * 2] = bytearray((base & 0xFFFF).to_bytes(length=2, byteorder='little'))
+            string = inv_str(self.strings[i])
+            base = allocate_string(len(string), free_list)
+            assert base is not None, "Ran out of space for credits strings!"
+            patch[base] = bytearray(string)
+            patch[string_table_start + i*2] = bytearray(ByteField(base & 0xFFFF, num_bytes=2).as_bytes())
 
         # Underscore
         patch[0x3FFDDA] =  bytearray(b"\x3f\xc0\x7f\x80")
@@ -432,7 +382,7 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
 
     credits.begin_credits()
     credits.add_credit(0x80, 0xC0, 0xC0, "ALANIM    DORKMASTER FLEK")
-    credits.add_credit(0x80, 0x80, 0xC2, "PATCDR      PIDGEZERO_ONE")
+    credits.add_credit(0x80, 0x80, 0x81, "PATCDR      PIDGEZERO_ONE")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 26
@@ -442,7 +392,7 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
 
     credits.begin_credits()
     credits.add_credit(0x80, 0xC0, 0xC0, "YAKIBOMB         FORALIAS")
-    credits.add_credit(0x80, 0x80, 0xC2, "WEFFJEBSTER        SWINCH")
+    credits.add_credit(0x80, 0x80, 0x81, "WEFFJEBSTER        SWINCH")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
@@ -571,11 +521,8 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
         credits.begin_credits()
         tadpole_submitters = world.song_authors
         if len(tadpole_submitters) == 1:
-            credits.add_credit(0x80, 0x80, 0xC0, EMPTY_STRING)
             credits.add_credit(0x80, 0x40, 0x81, tadpole_submitters[0])
-            credits.add_credit(0x80, 0x00, 0xC2, EMPTY_STRING)
         elif len(tadpole_submitters) == 2:
-            credits.add_credit(0x80, 0x80, 0xC0, EMPTY_STRING)
             credits.add_credit(0x80, 0xC0, 0xC0, tadpole_submitters[0])
             credits.add_credit(0x80, 0x80, 0x81, tadpole_submitters[1])
         else:

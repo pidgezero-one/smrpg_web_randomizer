@@ -53,7 +53,7 @@ script = AnimationScriptBlock(expected_size=1409, expected_beginning=0x3ABBC6, s
 	Set7E5xToAMEM8Bit(0x7E003D, 0x62),
 	RunSubroutine(["command_0x3A755E"]),
 	ReturnSpriteQueue(),
-	SpriteSequence(sequence=2),
+	SpriteSequence(sequence=2, identifier="command_0x3ABF91"),
 	PauseScriptUntilSpriteSequenceDone(),
 	ResetSpriteSequence(),
 	RunSubroutine(["command_0x3A756C"]),

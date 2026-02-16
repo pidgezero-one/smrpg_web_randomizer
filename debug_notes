@@ -215,6 +215,19 @@ Inner Factory
 
 Ending
 🚧 need to restore original animations
+- star piece in first room glitches out (not visible)
+- peach in first room doesnt fade when star piece sequence begins
+- geno victory animation when he's about to transform starts overwriting bowser
+- geno falls down when surrounded by stars, wrong sequence
+- mallow glitches out when geno redemption first surfaces
+- mallow totlly missing from coronation sequence
+- shy guy missing from bowser sequence
+- enemy missing in johnny sequence
+- toadofsky replaced with an item bag for some reason
+- frogfucius replaced with a nimbus guy
+- no henchmen or pastor in chapel
+- culex and jagger ran right through the pedestal
+- why the hell is "THE END" broken?
 
 lazy shell
 - more intelligent weapon detection in animation script dropdown

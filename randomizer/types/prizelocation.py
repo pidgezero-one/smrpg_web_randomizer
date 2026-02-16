@@ -2148,8 +2148,15 @@ class BossFightLocation(PrizeLocation):
         if self.npc_slots is not None and not prize_matches_original:
             for slot in self.npc_slots:
                 room = world.rooms._rooms[slot.room_id]
-                assert room is not None
-                obj = room.get_npc_by_target_id(slot.npc_id)
+                assert room is not None, f"Room {slot.room_id} not found"
+                try:
+                    obj = room.get_npc_by_target_id(slot.npc_id)
+                except AssertionError:
+                    raise ValueError(
+                        f"{self.__class__.__name__}: Cannot access NPC {slot.npc_id} (0x{int(slot.npc_id):02x}) "
+                        f"in room {slot.room_id}. Room has {len(room.objects)} objects "
+                        f"(valid NPC range: 0x14-0x{0x14 + len(room.objects) - 1:02x})"
+                    )
                 assert obj is not None
                 max_vram = slot.get_max_vram_size(world)
                 max_min_vram = slot.get_original_min_vram_size(world)
@@ -2160,8 +2167,15 @@ class BossFightLocation(PrizeLocation):
         if self.statue_slots is not None and not prize_matches_original:
             for slot in self.statue_slots:
                 room = world.rooms._rooms[slot.room_id]
-                assert room is not None
-                obj = room.get_npc_by_target_id(slot.npc_id)
+                assert room is not None, f"Room {slot.room_id} not found"
+                try:
+                    obj = room.get_npc_by_target_id(slot.npc_id)
+                except AssertionError:
+                    raise ValueError(
+                        f"{self.__class__.__name__}: Cannot access statue NPC {slot.npc_id} (0x{int(slot.npc_id):02x}) "
+                        f"in room {slot.room_id}. Room has {len(room.objects)} objects "
+                        f"(valid NPC range: 0x14-0x{0x14 + len(room.objects) - 1:02x})"
+                    )
                 assert obj is not None
                 m = self.prize.statue_npc
                 assert m is not None
@@ -2244,13 +2258,14 @@ class BossFightLocation(PrizeLocation):
         # return the contents for event 353
         # test this, not sure if this divide will work for mimics anywhere, esp if they end up in chests in rooms that normally dont have battles
         effective_rooms = self._rooms
+        effective_battlefields: list[Battlefield] | None = None
         if isinstance(self, MimicFightLocation):
             # Lazy import to avoid circular dependency
             from randomizer.progression.prizelocations import Mimic1BossFight, Mimic2BossFight, Mimic3BossFight
             pairs = [(FirstMimicFightLauncher, Mimic1BossFight), (SecondMimicFightLauncher, Mimic2BossFight), (ThirdMimicFightLauncher, Mimic3BossFight)]
-            for launcher_cls, boss_cls in pairs:                                                                                                                             
-                for location in world.locations.values():                                                                                                                                                                           
-                    if isinstance(location.prize, launcher_cls) and isinstance(self, boss_cls):  
+            for launcher_cls, boss_cls in pairs:
+                for location in world.locations.values():
+                    if isinstance(location.prize, launcher_cls) and isinstance(self, boss_cls):
                         effective_battlefields = [ROOM_TO_BATTLEFIELD[r] for r in location._rooms]
                         effective_rooms = location._rooms
         elif self.override_id is not None and self.prize.force_battlefield is None and self.default_battlefield is None:
@@ -2271,17 +2286,24 @@ class BossFightLocation(PrizeLocation):
                 henchmen_event_packs,
             )
         # Use prize's force_battlefield if set, otherwise use room-based battlefields
-        if isinstance(self.prize, BoomerBossFight):
-            print(f"Boomer boss fight at {self.__class__.__name__} has force_battlefield={self.prize.force_battlefield}")
-        if self.prize.force_battlefield is not None:
-            effective_battlefields = [self.prize.force_battlefield] * len(effective_rooms)
-        elif self.default_battlefield is not None:
-            effective_battlefields = [self.default_battlefield] * len(effective_rooms)
-        else:
-            effective_battlefields = self.battlefields
+        # Only compute if not already set (e.g., by MimicFightLocation logic above)
+        if effective_battlefields is None:
+            if self.prize.force_battlefield is not None:
+                effective_battlefields = [self.prize.force_battlefield] * len(effective_rooms)
+            elif self.default_battlefield is not None:
+                effective_battlefields = [self.default_battlefield] * len(effective_rooms)
+            else:
+                effective_battlefields = self.battlefields
+                # Check for rooms missing from ROOM_TO_BATTLEFIELD
+                missing_rooms = [r for r in effective_rooms if r not in ROOM_TO_BATTLEFIELD]
+                if missing_rooms:
+                    raise ValueError(
+                        f"{self.__class__.__name__}: Rooms missing from ROOM_TO_BATTLEFIELD: {missing_rooms}. "
+                        f"All rooms: {effective_rooms}"
+                    )
         assert len(effective_rooms) == len(
             effective_battlefields
-        ), "Rooms and battlefields length mismatch"
+        ), f"Rooms and battlefields length mismatch: {len(effective_rooms)} rooms vs {len(effective_battlefields)} battlefields"
         battles = list(
             zip(
                 effective_rooms,
@@ -2412,7 +2434,7 @@ class StarPieceLocation(PrizeLocation):
     _container_event: int = E0167_BOSS_GRANT_STAR_PIECE
 
     def render(
-        self,
+        self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         identifier = str(uuid4())
         grant = EventScript(
@@ -2461,7 +2483,7 @@ class PrizeRow(PrizeLocation):
     _container_event: int
 
     def render(
-        self, world: GameWorld | None = None
+        self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         identifier = str(uuid4())
         grant = self.grant()
@@ -2491,10 +2513,9 @@ class PrizeRow(PrizeLocation):
 
 class TreasureChestLocationRow(PrizeRow, TreasureChestLocation):
     def render(  # type: ignore[override]
-        self, world: GameWorld | None = None
+        self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        if world is not None:
-            TreasureChestLocation.render(self, world)
+        TreasureChestLocation.render(self, world)
         return PrizeRow.render(self, world)
 
 
@@ -2524,7 +2545,7 @@ class TreasureChestLocationRow6(TreasureChestLocationRow):
 
 class NPCLocationRow(PrizeRow, EventLocation):
     def render(
-        self, world: GameWorld | None = None
+        self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         return super().render(world)
 
@@ -2559,7 +2580,7 @@ class NPCLocationRow7(NPCLocationRow):
 
 class StandingLocationRow(PrizeRow, StandingLocation):
     def render(
-        self, world: GameWorld | None = None
+        self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         return super().render(world)
 
@@ -2629,9 +2650,8 @@ class PacketLocation(StandingLocationRow):
     _packet_id: int
 
     def render(
-        self, world: GameWorld | None = None
+        self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        assert world is not None
         p = world.packets.packets[self._packet_id]
         assert self.prize is not None and self.prize.model is not None and p is not None
         p._set_sprite_id(self.prize.packet_data[0])
@@ -2682,9 +2702,8 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
         return self.prize.hill_grant
 
     def render(
-        self, world: GameWorld | None = None
+        self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        assert world is not None
         identifier = str(uuid4())
         grant = self.grant()
         assert (

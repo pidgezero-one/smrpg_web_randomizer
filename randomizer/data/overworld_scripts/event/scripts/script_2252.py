@@ -33,8 +33,8 @@ from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0033_OPEN_CHEST),
-	CreatePacketAt7010(packet=P005_BRIEF_POOF_BAG, destinations=["EVENT_2248_ret_3"]),
-    PlaySound(sound=SO085_FLOWER, channel=6, identifier="EVENT_2248_ret_3"),
+	CreatePacketAt7010(packet=P005_BRIEF_POOF_BAG, destinations=["EVENT_2252_ret_3"]),
+    PlaySound(sound=SO085_FLOWER, channel=6, identifier="EVENT_2252_ret_3"),
 	RunDialog(dialog_id=DI2002_AP_ITEM_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
 	Return()
 ])

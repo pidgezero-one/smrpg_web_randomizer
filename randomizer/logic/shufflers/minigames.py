@@ -120,9 +120,9 @@ def randomize_tadpole_pond(world: GameWorld) -> None:
 
     world.song_authors = list(
         set(
-            selection[0].submitter_credits
-            + selection[1].submitter_credits
-            + selection[2].submitter_credits
+            [selection[0].submitter_credits,
+            selection[1].submitter_credits,
+            selection[2].submitter_credits]
         )
     )
 

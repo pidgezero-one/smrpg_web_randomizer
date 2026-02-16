@@ -415,10 +415,11 @@ class GenerateStreamView(View):
                 progress_queue.put({"stage": message, "percent": percent})
 
             def run_generation():
+                # Compute flag string outside try block so it's available for error logging
+                full_flag_string = (data["flags"] or "") + "     " + (data["cosmetics"] or "")
                 try:
                     # Build settings
                     s = Settings()
-                    full_flag_string = (data["flags"] or "") + "     " + (data["cosmetics"] or "")
                     s.set_from_flag_string(full_flag_string.strip())
                     s.debug_mode = debug_mode
 
@@ -484,7 +485,11 @@ class GenerateStreamView(View):
                     logger.error("Flag error during generation: %s", e.args[0])
                     result_holder["error"] = e.args[0]
                 except Exception as e:
-                    logger.exception("Error during generation")
+                    logger.exception(
+                        "Error during generation - seed: %r, flags: %r",
+                        seed,
+                        full_flag_string.strip(),
+                    )
                     result_holder["error"] = str(e)
                 finally:
                     progress_queue.put({"done": True})

@@ -67,4 +67,7 @@ script = AnimationScriptBlock(expected_size=151, expected_beginning=0x3589D5, sc
 	SetAMEM8BitToConst(0x62, 1),
 	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35ECA2"]),
 	Jmp(["command_0x358A08"]),
+	VisibilityOff(unknown_byte=0x01, identifier="command_0x350790"),
+	UnknownCommand(bytearray(b'O')),
+	Jmp(["command_0x3505C9"]),
 ])

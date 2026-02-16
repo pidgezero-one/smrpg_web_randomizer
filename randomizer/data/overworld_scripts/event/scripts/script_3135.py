@@ -58,9 +58,9 @@ script = EventScript([
 	JmpToSubroutine(["EVENT_3134_summon_to_level_0"]),
 	JmpIfBitClear(SEWER_WATER_LEVEL, ["EVENT_3135_reset_priority_set_14"], identifier="EVENT_3135_jmp_if_bit_clear_9"),
 	Set7000ToCurrentLevel(),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE, ["EVENT_3135_run_event_as_subroutine_17"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE, ["EVENT_3135_fade"]),
 	PrioritySet(mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES], subscreen=[], colour_math=[]),
-	Jmp(["EVENT_3135_run_event_as_subroutine_17"]),
+	Jmp(["EVENT_3135_fade"]),
 	ResetPrioritySet(identifier="EVENT_3135_reset_priority_set_14"),
     
 

@@ -12232,6 +12232,7 @@ FACTORY_CLERK_GREEN_NPC_3 = NPC(
 )
 
 BLUE_GREEN_STAR_PIECE_SPINNING_NPC = NPC(
+    force_id=490,
     sprite_id=SPR0156_BLUE_GREEN_STAR_PIECE_SPINNING,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,

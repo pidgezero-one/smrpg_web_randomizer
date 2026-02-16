@@ -252,8 +252,8 @@ room = Room(
         ),
         RegularNPC(  # 12
             npc=npcs.KEY_BASE,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E1803_EMPTY,
+            initiator=EventInitiator.NONE,
+            event_script=E0229_FREESTANDING_13_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=False,
             x=0,
@@ -281,7 +281,7 @@ room = Room(
         RegularClone(  # 13
             npc=npcs.ITEM_BAG_NPC,
             event_script=E0229_FREESTANDING_13_GRANT,
-            action_script=A0773_EMPTY,
+            action_script=A0015_DO_NOTHING,
             visible=True,
             x=2,
             y=122,
@@ -292,7 +292,7 @@ room = Room(
         RegularClone(  # 14
             npc=npcs.ITEM_BAG_NPC,
             event_script=E0228_FREESTANDING_14_GRANT,
-            action_script=A0773_EMPTY,
+            action_script=A0015_DO_NOTHING,
             visible=True,
             x=3,
             y=123,
@@ -303,7 +303,7 @@ room = Room(
         RegularClone(  # 15
             npc=npcs.ITEM_BAG_NPC,
             event_script=E0227_FREESTANDING_15_GRANT,
-            action_script=A0773_EMPTY,
+            action_script=A0015_DO_NOTHING,
             visible=True,
             x=7,
             y=120,

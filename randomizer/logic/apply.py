@@ -328,10 +328,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                         StartBattleAtBattlefield(pack_id, ROOM_TO_BATTLEFIELD[room_id], identifier=identifier),
                         Return(),
                     ])
-            elif isinstance(place, (PacketLocation, BoosterHillLocation, TreasureChestLocationRow, TreasureShopLocation)):
-                decision, execution = place.render(world)
             else:
-                decision, execution = place.render()
+                decision, execution = place.render(world)
             d_flat = [cmd for l in decision for cmd in l]
             builders[ctr][0].extend(d_flat)
             builders[ctr][1].extend(execution)
@@ -545,6 +543,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             continue
         # Check if any room containing this prize has a Coins partition buffer
         for room_id in location._rooms:
+            # Skip room 41 (Booster Tower minesweeper room) - has coins partition but
+            # frog coin NPC there uses a different animation system
+            if room_id == R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS:
+                continue
             room = world.rooms._rooms[room_id]
             if room is None or room.partition is None:
                 continue

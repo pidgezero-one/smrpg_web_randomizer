@@ -91,11 +91,4 @@ script = AnimationScriptBlock(expected_size=235, expected_beginning=0x358A6C, sc
 	RunSubroutine(["command_0x358072"]),
 	UnknownCommand(bytearray(b'm')),
 	ReturnSubroutine(),
-	PlaySound(sound=S0172_WEAPON_TIMING, channel=4, identifier="command_0x358B41"),
-	SetAMEM8BitToConst(0x63, 1),
-	SetAMEM8BitTo7E5x(0x60, 0x7E002E),
-	ClearAMEM8Bit(0x61),
-	SetAMEM8BitToConst(0x62, 1),
-	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35ECA2"]),
-	Jmp(["command_0x358ADC"])
 ])

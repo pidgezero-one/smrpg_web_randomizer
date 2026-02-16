@@ -34,7 +34,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E1602_EXP_STAR_SUBROUTINE_CANCEL_NPC_EVENT_DO_NOT_REMOVE_FROM_LEVEL),
-	DisableObjectTrigger(MEM_70A8, identifier="EVENT_18_disable_trigger_2"),
+	DisableObjectTrigger(MEM_70A8),
 	ClearBit(TEMP_707C_5),
 	ClearBit(TEMP_707C_6),
 	ClearBit(TEMP_707C_7),

@@ -143,7 +143,12 @@ script = AnimationScriptBlock(expected_size=0x0202, expected_beginning=0x350000,
     PlaySound(S0121_BIG_SWING),
     PauseScriptUntilSpriteSequenceDone(),
     ReturnSubroutine(),
-    
-    
+	PlaySound(sound=S0172_WEAPON_TIMING, channel=4, identifier="command_0x358B41"),
+	SetAMEM8BitToConst(0x63, 1),
+	SetAMEM8BitTo7E5x(0x60, 0x7E002E),
+	ClearAMEM8Bit(0x61),
+	SetAMEM8BitToConst(0x62, 1),
+	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35ECA2"]),
+	Jmp(["command_0x358ADC"])
     
 ])

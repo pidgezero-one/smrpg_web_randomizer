@@ -75,6 +75,8 @@ from ..types.prize import (
     FPFlowerPrize,
     SlotsPrize,
     EmptyPrize,
+    CoinPrize,
+    FrogCoinPrize
 )
 from ..types.flags import *
 from ..utils.npcs import (
@@ -2533,10 +2535,9 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory)
 
-    def render(self, world: GameWorld | None = None):
+    def render(self, world: GameWorld):
         assert isinstance(self.prize, StandardPrize)
         assert self.originally_held is not None
-        assert world is not None
         if not isinstance(self.prize, self.originally_held):
             world.update_dialog(
                 DI2911_TREASURE_SELLER_ITEM_1, self.prize.nickname.get_slot_1_dialog()
@@ -2558,10 +2559,9 @@ class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
             world, inventory
         )
 
-    def render(self, world: GameWorld | None = None):
+    def render(self, world: GameWorld):
         assert isinstance(self.prize, StandardPrize)
         assert self.originally_held is not None
-        assert world is not None
         if not isinstance(self.prize, self.originally_held):
             world.update_dialog(
                 DI2908_TREASURE_SELLER_ITEM_2, self.prize.nickname.get_slot_2_dialog()
@@ -2581,10 +2581,9 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory) and can_clear_volcano(world, inventory)
 
-    def render(self, world: GameWorld | None = None):
+    def render(self, world: GameWorld):
         assert isinstance(self.prize, StandardPrize)
         assert self.originally_held is not None
-        assert world is not None
         if not isinstance(self.prize, self.originally_held):
             world.update_dialog(
                 DI2914_TREASURE_SELLER_ITEM_3, self.prize.nickname.get_slot_3_dialog()
@@ -2851,8 +2850,7 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
 
-    def render(self, world: GameWorld | None = None):
-        assert world is not None
+    def render(self, world: GameWorld):
         if not isinstance(self.prize, (CoinPrize, FrogCoinPrize)):
             world.event_scripts.delete_subscript_command_by_identifier(
                 "minecart_item_aqueue", "minecart_item_coin_1"
@@ -3929,7 +3927,7 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     _npc_slots = [
         BossFightLocationNPC(
             R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            NPC_10,
+            NPC_9,
         ),
     ]
 
@@ -7558,6 +7556,7 @@ class StatueRoomBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _pack_id = PACK208_NIMBUS_CASTLE_FIRST_BOSS
     _post_unlocks_event_id = E1230_STATUE_BOSS_UNLOCKS
+    _rooms = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT]
     _npc_slots = [
         BossFightLocationNPC(
             R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
@@ -9500,10 +9499,9 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
         )
 
     def render(
-        self, world: GameWorld | None = None
+        self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         op = super().render(world)
-        assert world is not None
 
         if not isinstance(self.prize, self._originally_held):
             # only colour the chest gold if it's vanilla
