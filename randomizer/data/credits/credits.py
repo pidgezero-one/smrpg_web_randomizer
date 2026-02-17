@@ -30,8 +30,6 @@ END_CREDITS_DELAY_1 = 34
 END_CREDITS_DELAY_2 = 40
 BEGIN_TITLES_DELAY = 50
 END_TITLES_DELAY = 40
-FINAL_DELAY = 0xFF
-
 
 def to_str(string):
     return (
@@ -189,34 +187,25 @@ class Credits(object):
         credit_len = 3380
         string_table_start = 0x3FE8E4
         string_table_size = len(self.strings) * 2
-        # Fill remaining space with invisible credit blocks so the credits
-        # engine processes real commands instead of raw zero bytes.
-        if credit_len - len(self.acc) >= 101:
-            self.begin_titles(BEGIN_TITLES_DELAY)
-            self.add_title(0x80, 0x00, 0x08, " ")
-            self.end_titles(END_TITLES_DELAY)
-            self.begin_credits()
-            self.add_credit(0x80, 0x80, 0xC0, " ")
-            self.add_credit(0x80, 0x40, 0x81, " ")
-            self.add_credit(0x80, 0x00, 0xC2, " ")
-            self.end_credits(FINAL_DELAY, END_CREDITS_DELAY_2)
-        while credit_len - len(self.acc) >= 108:
-            self.begin_titles(BEGIN_TITLES_DELAY)
-            self.add_title(0x80, 0x00, 0x08, " ")
-            self.end_titles(END_TITLES_DELAY)
-            self.begin_credits()
-            self.add_credit(0x80, 0x80, 0xC0, " ")
-            self.add_credit(0x80, 0x40, 0x81, " ")
-            self.add_credit(0x80, 0x00, 0xC2, " ")
-            self.end_credits(FINAL_DELAY, END_CREDITS_DELAY_2)
         assert len(self.acc) <= credit_len
-        # Fill the unused section of credits script with 0.
-        # This is very important.
+        # Pad unused credit script space with complete invisible credit blocks.
+        # The SNES credits engine processes all 3380 bytes sequentially, and
+        # large blocks of zero bytes (>~200) cause the engine to crash.
+        # Since our content is shorter than the original game's credits,
+        # we fill the gap with properly-structured but invisible credit blocks
+        # (EMPTY_STRING + transitions). Each block is 40 bytes:
+        #   add_credit(7) + end_thing(13) + end_thing_2(13) + clear(7)
+        # Using delay=1 for near-instant processing.
+        self.current_credits.clear()
+        self.current_titles.clear()
+        while credit_len - len(self.acc) >= 40:
+            self.begin_credits()
+            self.add_credit(0x80, 0x40, 0x81, EMPTY_STRING)
+            self.end_credits(1, 1)
         self.acc += (credit_len - len(self.acc)) * [0]
 
         free_list = {
             0x3f9c40: 952,
-            credit_start + len(self.acc): credit_len - len(self.acc),
             string_table_start + string_table_size: 2080 - string_table_size
         }
 
@@ -230,7 +219,7 @@ class Credits(object):
             patch[string_table_start + i*2] = bytearray(ByteField(base & 0xFFFF, num_bytes=2).as_bytes())
 
         # Underscore
-        patch[0x3FFDDA] =  bytearray(b"\x3f\xc0\x7f\x80")
+        patch[0x3FFDDA] = bytearray(b"\x3f\xc0\x7f\x80")
         return patch
 
 

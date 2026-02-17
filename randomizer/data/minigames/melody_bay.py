@@ -841,10 +841,10 @@ all_songs = [
         "Sun's Song",
         submitter="pidgezero_one",
         submitter_credits="PIDGEZERO_ONE",
-        hint_1=' My favorite song?[await][page]\n It\'s the Sun\'s Song,\n ♪"Ti So Mi To So Mi".\n Toadofsky\'s fond of it, too![await]',
-        hint_2=' My favorite song?[await][page]\n It\'s the Sun\'s Song.\n ♪"Ti So Mi To So Mi".\n I wonder what it means?[await]',
+        hint_1=' My favorite song?[await][page]\n It\'s the Sun\'s Song,\n ♪"Ti So Mi Ti So Mi".\n Toadofsky\'s fond of it, too![await]',
+        hint_2=' My favorite song?[await][page]\n It\'s the Sun\'s Song.\n ♪"Ti So Mi Ti So Mi".\n I wonder what it means?[await]',
         hint_3=' I tell ya, I can\'t wait for the work\n day to be over.[await][pause] I wish there was a\n way to make the day pass quicker![await]',
-        scroll='\n           Ti So Mi To So Mi[await]'),
+        scroll='\n           Ti So Mi Ti So Mi[await]'),
     Song(
         [(Ti, 35), (Fa, 70), (So, 35), (Ti, 35), (Fa, 70), (So, 0)],
         "Song of Time",
