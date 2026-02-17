@@ -192,10 +192,10 @@ class Credits(object):
         # The SNES credits engine processes all 3380 bytes sequentially, and
         # large blocks of zero bytes (>~200) cause the engine to crash.
         # Since our content is shorter than the original game's credits,
-        # we fill the gap with properly-structured but invisible credit blocks
-        # (EMPTY_STRING + transitions). Each block is 40 bytes:
-        #   add_credit(7) + end_thing(13) + end_thing_2(13) + clear(7)
-        # Using delay=1 for near-instant processing.
+        # we fill the gap with properly-structured but invisible credit blocks.
+        # The last slide is already cleared in update_credits() so a single
+        # EMPTY_STRING per block keeps the screen blank. Each block is 40
+        # bytes: add_credit(7) + end_thing(13) + end_thing_2(13) + clear(7).
         self.current_credits.clear()
         self.current_titles.clear()
         while credit_len - len(self.acc) >= 40:
@@ -618,7 +618,11 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.add_credit(0x80, 0x80, 0xC0, "TINYWETBLANKET")
     credits.add_credit(0x80, 0x40, 0x81, "THANK YOU MIKAYLA")
     credits.add_credit(0x80, 0x00, 0xC2, "WE MISS YOU")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
-    credits.end_thing(END_CREDITS_DELAY_1)  # Yeah, my abstraction breaks at the end.
+    # Clear the "DEDICATED TO" title from VRAM so filler transitions
+    # don't flicker stale text back onto the screen.
+    credits.begin_titles(1)
+    credits.end_titles(1)
 
     return credits.finalize()
