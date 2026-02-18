@@ -467,13 +467,7 @@ def shuffle_prizes(world: GameWorld) -> None:
     # Combined list for backwards compatibility (used in item collection logic later)
     unlocks_other_checks: list[type[Prize]] = high_volume_key_items + low_volume_key_items
     # Items that absolutely must be included, but aren't important for progress, can be second priority
-    should_otherwise_include = [
-        YouMissed,
-        LuckyJewelPrize,
-        SignalRingPrize,
-        GoodieBagPrize,
-        StarEggPrize,
-    ]
+    should_otherwise_include = []
     # Items that go to post_progression_priority (after progression, before must_include)
     # Order: slots/exp stars > progressive cards/crystal shard/leftover stars
     post_progression_include: list[type[Prize]] = [
@@ -999,6 +993,20 @@ def shuffle_prizes(world: GameWorld) -> None:
         else:
             not_important.append(RandomPrizeSubstitute().generate(world, loc))
             
+    # Safety net: ensure these prize types end up in the pool if not already placed or queued
+    for prize_class in [YouMissed, LuckyJewelPrize, SignalRingPrize, GoodieBagPrize, StarEggPrize]:
+        # Check if already assigned to a location
+        if any(loc.has_item and isinstance(loc.prize, prize_class) for loc in world.locations.values()):
+            continue
+        # Check if already in must_include
+        if any(isinstance(p, prize_class) for p in must_include):
+            continue
+        # Check if already in should_otherwise_include
+        if prize_class in should_otherwise_include:
+            continue
+        # Not found anywhere — add an instance to must_include so it gets placed
+        must_include.append(prize_class())
+
     # Build progression_prizes with 80% bias toward high-volume items
     # Priority order: high-vol chars > high-vol other > low-vol chars > low-vol other
     # Within each tier, 80% chance to pick from that tier before moving to next

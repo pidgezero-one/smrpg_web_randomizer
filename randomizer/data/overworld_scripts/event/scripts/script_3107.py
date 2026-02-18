@@ -1,4 +1,4 @@
-# E3107_EMPTY
+# E3107_BANDITS_WAY_4_CHEST
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+    JmpIfVarEqualsConst(ACTIVE_NPC, NPC_0, ["JmpToChest1Container3107"]),
+    JmpToEvent(E1587_BANDITS_WAY_4_RIGHT_CHEST),
+    JmpToEvent(E1538_BANDITS_WAY_STAR_CHEST_CAMERA_AND_DOGS, identifier="JmpToChest1Container3107")
 ])

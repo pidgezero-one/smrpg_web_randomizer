@@ -34,7 +34,6 @@ from ....spells.spells import *
 script = EventScript([
 	JmpIfBitSet(TEMP_7076_0, ["EVENT_3124_ret_32"]),
 	JmpIfBitSet(MIMIC_1_CLEARED, ["EVENT_3124_set_var_to_const_33"]),
-	RunEventAsSubroutine(E0095_REVERT_ALL_CLONE_CHESTS_MIMIC_1),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(FAST),
 		A_ShiftZUpSteps(2),

@@ -33,7 +33,6 @@ from ....spells.spells import *
 script = EventScript([
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=SECONDARY_TEMP_7024),
 	RunEventAsSubroutine(E0033_OPEN_CHEST),
-	PlaySound(sound=SO013_COIN, channel=6),
 	CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
 	AddCoins(PRIMARY_TEMP_7000),
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3080_pkt_1"]),
@@ -47,9 +46,11 @@ script = EventScript([
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 9, ["EVENT_3080_pkt_1"]),
 	CreatePacketAt7010(packet=P091_CHEST_COIN_STILL, destinations=["EVENT_3080_pk_1"]),
 	RunDialog(dialog_id=DI4050_GOT_X_COINS_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3080_pk_1"),
+	PlaySound(sound=SO013_COIN, channel=6),
 	Return(),
 	CreatePacketAt7010(packet=P090_SMALL_COIN_STILL, destinations=["EVENT_3080_pk_2"], identifier="EVENT_3080_pkt_1"),
     JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3080_pk_1"]),
 	RunDialog(dialog_id=DI4047_GOT_A_COIN_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3080_pk_2"),
+	PlaySound(sound=SO013_COIN, channel=6),
 	Return()
 ])

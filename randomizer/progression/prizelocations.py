@@ -474,7 +474,7 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_3
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     # Flag as checked: npc 0 in room 204 has its object trigger disabled.
 
 
@@ -492,7 +492,7 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_4
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     # Flag as checked: npc 1 in room 204 has its object trigger disabled.
 
 

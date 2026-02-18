@@ -6,7 +6,7 @@ import random
 
 from django.conf.locale import el
 
-from randomizer.progression.prizes import BoomerBossFight, FirstMimicFightLauncher, SecondMimicFightLauncher, ThirdMimicFightLauncher
+from randomizer.progression.prizes import BoomerBossFight, FirstMimicFightLauncher, InfiniteCoinsPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher
 from randomizer.types.flags import MimicsAnywhere, SpellsAnywhere
 
 from .prize import (
@@ -36,6 +36,7 @@ from ..data.variables.action_script_names import *
 from ..data.variables.variable_names import (
     BATTLE_PACK_ID,
     BOOSTER_HILL_FLOWER_COUNTER,
+    MIMIC_1_CLEARED,
     PRIMARY_TEMP_7000,
 )
 from ..data.variables.battlefield_names import *
@@ -49,6 +50,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     DisableObjectTriggerInSpecificLevel,
+    JmpIfBitClear,
     Return,
     Inc,
     JmpIfVarEqualsConst,
@@ -1344,7 +1346,14 @@ class TreasureChestLocation(StandardPrizeLocation):
         for npc, room in zip(self._npc_ids, self._rooms):
             # If npc is already an AreaObject, use it directly; otherwise convert from raw index
             ao = npc if isinstance(npc, AreaObject) else AreaObject(npc + 14)
-            itemgrant.insert(0, DisableObjectTriggerInSpecificLevel(ao, room))
+            if isinstance(self.prize, (FirstMimicFightLauncher, SecondMimicFightLauncher)):
+                # Account for mimic chests needing to be opened twice
+                itemgrant.extend([
+                    JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]),
+                    DisableObjectTriggerInSpecificLevel(ao, room)
+                ])
+            elif not isinstance(self.prize, InfiniteCoinsPrize):
+                itemgrant.insert(0, DisableObjectTriggerInSpecificLevel(ao, room))
         return EventScript(itemgrant)
 
     def render(self, world: GameWorld) -> None:

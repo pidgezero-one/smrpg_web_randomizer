@@ -38,5 +38,20 @@ script = EventScript([
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
 	]),
-	JmpToEvent(E3098_PROGRESSIVE_EGG_NPC_GRANT)
+	StoreItemAmountTo7000(MysteryEggItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3111_set_var_to_const_15"]),
+	StoreItemAmountTo7000(LambsLureItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3111_set_var_to_const_12"]),
+	StoreItemAmountTo7000(SheepAttackItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3111_set_var_to_const_8"]),
+	SetVarToConst(ITEM_ID, MysteryEggItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3111_set_var_to_const_8"),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3111_set_var_to_const_12"),
+	RemoveOneOfItemFromInventory(LambsLureItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),
+	SetVarToConst(ITEM_ID, LambsLureItem, identifier="EVENT_3111_set_var_to_const_15"),
+	RemoveOneOfItemFromInventory(MysteryEggItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG)
 ])

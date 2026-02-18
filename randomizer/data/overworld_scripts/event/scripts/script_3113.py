@@ -39,5 +39,19 @@ script = EventScript([
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
 	]),
-	JmpToEvent(E0185_NPC_QUEST_GRANT_PROGRESSIVE_FIREWORKS)
+	StoreItemAmountTo7000(FireworksItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3098_set_var_to_const_10"]),
+	StoreItemAmountTo7000(ShinyStoneItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3098_set_var_to_const_7"]),
+	SetVarToConst(FIREWORKS_COUNTER, 5),
+	SetVarToConst(ITEM_ID, FireworksItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),
+	SetVarToConst(ITEM_ID, CarboCookieItem, identifier="EVENT_3098_set_var_to_const_7"),
+	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),
+	RemoveObjectFromSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
+	RemoveOneOfItemFromInventory(ShinyStoneItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),
+	SetVarToConst(ITEM_ID, ShinyStoneItem, identifier="EVENT_3098_set_var_to_const_10"),
+	RemoveOneOfItemFromInventory(FireworksItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG)
 ])

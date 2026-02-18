@@ -38,5 +38,16 @@ script = EventScript([
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
 	]),
-	JmpToEvent(E3097_JUICE_BAR_CARD_NPC_GRANT)
+	StoreItemAmountTo7000(AltoCardItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3110_set_var_to_const_9"]),
+	StoreItemAmountTo7000(TenorCardItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3110_set_var_to_const_6"]),
+	SetVarToConst(ITEM_ID, AltoCardItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),
+	SetVarToConst(ITEM_ID, SopranoCardItem, identifier="EVENT_3110_set_var_to_const_6"),
+	RemoveOneOfItemFromInventory(TenorCardItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),
+	SetVarToConst(ITEM_ID, TenorCardItem, identifier="EVENT_3110_set_var_to_const_9"),
+	RemoveOneOfItemFromInventory(AltoCardItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG)
 ])

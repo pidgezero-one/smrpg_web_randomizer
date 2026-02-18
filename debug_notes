@@ -8,7 +8,7 @@ General
 🚧 randomized element palettes sometimes not being applied
 - geno blast animation is incorrect (extra sprite at the end)
 🚧 water is very broken, when you jump out of it it starts creating keys, can't move, wrote the "this is a dead end" dialog when i pressed A, stoppd music. Likely an AS problem
-  🚧 Less broken. Summons a flower temporarily. No other weird stuff happening
+  - Less broken. Summons a flower temporarily. No other weird stuff happening
 🚧 even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
 🚧 "found an cleanse juice"
 🚧 cymbals (music note) packet shows up as a flower
@@ -19,11 +19,8 @@ General
 🚧 bowser extremely bugged fighting aeros, does not return to his spot when finishes attacking, randomly ended the fight
   - run away also seems to happen after marios attacks
   - this might be enemy dependent. pulsars in bowsers keep did it
-🚧 lucky jewel chest renders as an egg
 🚧 "Got the Brooch" chest dialog doesn't go away
-🚧 uhh... when did i lose my whole equip inventory?
-- random snifits MIGHT be because enemies are being rendered with pack id 0
-- unsure if random character palette works
+🚧 why are there two lucky jewels?
 
 Boss-specific
 - torte henchman is untargetable in battle
@@ -41,15 +38,12 @@ Boss-specific
 🚧 normal booster running empty dialogs
 🚧 double check if punchinello's hp thresholds are being calced correctly
   🚧 also showing empty dialogs
-- single character fighting valentina: does not summon dodo right away, your turn comes first. maybe that's ok?
-- valentina uses empty dialogs
+🚧 valentina uses empty dialogs
 - dodo's sequence before he takes valentina away is really messed up
 
 Mushroom Way 
-- star gun sprite in R203 chest 2 is broken
-- slots break chests in R204. maybe needs to ban slots from that room since it's not like this is an active coin sprite being used or has a coin partition
-- fireworks freestanding item on top plateau stops you from moving
-- megasmilax totally broken. shy away does not do proceed after watering post phase 2
+🚧- fireworks freestanding item on top plateau stops you from moving
+🚧 megasmilax totally broken. shy away does not do proceed after watering post phase 2
 
 Mushroom kingdom
 - hallway fight in liberated mode: level does not fade back in after fight
@@ -64,15 +58,18 @@ bandit's way
 - room 4, second chest: pick me up shows as mushroom
 
 Kero sewers
-- kero sewers is not blocked when it should be
+🚧 kero sewers is not blocked when it should be
 🚧 no packets in chests in pre-belome room
 🚧 double chest does not work. opening it first after lands end did not refill it
 🚧 boss fight doesn't start, can't be interacted with. no collision?
 🚧 water does not drain. that's bad (well, it does, it just looks like it didn't)
 
 Rose way
-🚧 palettes in rose way still broken
+- palettes in rose way still broken
 🚧 chest animations in second room are weird. check memory partition and sprite properties
+
+Rose Town
+🚧 cymbals in chest is a flower (top chest in corner house)
 
 Forest maze 
 🚧 uderground rooms are fucked up. how the hell to get partition to work?
@@ -80,13 +77,12 @@ Forest maze
 - why does buzzer underground turn into a snifit in battle?
 
 Pipe vault
-🚧 item bags in chompweed room chests move around when summoned from chests
-🚧 safety ring replacing frog coin in pipe vault has no sprite
-🚧 bright card replacing frog coin in pipe vault renders as a knife
-🚧 gold goomba is loading into a 3x per row buffer
+- chompweed in piranha room is invisible
+- gold goomba is loading into a 3x per row buffer
 
 Yoster
-🚧 pink yoshis are all coloured wrong
+- yellow yoshis glitched sprites
+- infinite chest disables its object trigger
 
 Moleville
 🚧 shy guy in left and right crook spot (mack) use bad buffer. center ok
@@ -95,23 +91,26 @@ Moleville
 🚧 skip minecart flag does not work
 🚧 shiny stone girl still asking for fireworks in progressive settings
 🚧 treasure hunter's dialogs are not changed
+- touching crook behind trampoline makes johnny temporarily appear, crashes game
+  - touching crook always crashes game
+  - fireball in west mines room has bad partition
+  - midboss fight completely skipped, did not drop an item?
 
 Booster Pass
 - battle crashes when you attack carroboscis
   - not anymore, but it forces you to run away
-🚧 mimic in booster pass crashes game
+- mimic in booster pass fight is skipped
+🚧 does not re-enable
+- packet remains in the air
 
 Booster Tower
-🚧 chomps are too light
+- snifit 1 event is totally wrong
 🚧 booster tower does not load when character needed to unlock it
-🚧 shadows broken in curtain room, makes no sense
-🚧 snifits in curtain room animations look backward, leaning forward sprite happens after closing curtain instead of before opening it
-- attacking blue fireball makes you run away
+- shadows broken in curtain room, makes no sense
 🚧 shouln't be able to run from tower henchman fights
-🚧 jinx is boss in booster tower: snifit is unchanged at front desk, but battle loads shy guy. can still run away
 🚧 rob omb is a snifit battle
-🚧 some of the items in checkerboard room dont load at all
 🚧 top level chests dont seem suitable for slots, unless we can figure out a working partition
+- jagger briefly disappears while waiting for you to hit the mario doll
 
 Booster Hill
 🚧 captee animation is wrong

@@ -42,6 +42,6 @@ script = EventScript([
 	]),
     PlaySound(sound=SO085_FLOWER, channel=6),
 	SetBit(BEETLEMANIA_UNLOCKED),
-	RunDialog(dialog_id=DI3077_GOT_BEETLEMANIA_AUTOTERM, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI3077_GOT_BEETLEMANIA_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
 	Return()
 ])

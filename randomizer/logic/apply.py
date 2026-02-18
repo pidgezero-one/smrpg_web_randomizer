@@ -384,37 +384,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     elif isinstance(place, TreasureShopItem3):
                         world.update_dialog(DI2914_TREASURE_SELLER_ITEM_3, nn.get_slot_3_dialog())
 
-            if isinstance(
-                place.prize, (FirstMimicFightLauncher, SecondMimicFightLauncher)
-            ):
-                # Re-enable mimic fights after opening them, but make sure it applies to every room that contains the check
-                # don't want to forget to grab the reload prize and then have the chest be permanently disabled when you change the town state
-                assert isinstance(place, TreasureChestLocation)
-                contents = []
-                npcs = zip(place._npc_ids, place._rooms)
-                for n, r in npcs:
-                    contents.append(EnableObjectTriggerInSpecificLevel(n, r))
-                contents.append(Return())
-                if isinstance(place.prize, FirstMimicFightLauncher):
-                    if world.get_location(Mimic1ReloadRewardLocation).prize is None:
-                        # do not re-enable object trigger if the reload location is empty
-                        # should only happen if empty chests is enabled
-                        world.event_scripts.get_script_by_id(
-                            E0095_REVERT_ALL_CLONE_CHESTS_MIMIC_1
-                        ).set_contents([Return()])
-                    else:
-                        world.event_scripts.get_script_by_id(
-                            E0095_REVERT_ALL_CLONE_CHESTS_MIMIC_1
-                        ).set_contents(contents)
-                elif isinstance(place.prize, SecondMimicFightLauncher):
-                    if world.get_location(Mimic2ReloadRewardLocation).prize is None:
-                        world.event_scripts.get_script_by_id(
-                            E0096_REVERT_ALL_CLONE_CHESTS_MIMIC_2
-                        ).set_contents([Return()])
-                    else:
-                        world.event_scripts.get_script_by_id(
-                            E0096_REVERT_ALL_CLONE_CHESTS_MIMIC_2
-                        ).set_contents(contents)
         elif isinstance(place, CharacterRecruitmentLocation):
             # this takes care of everything for character gating and recruitment
             place.render(world)

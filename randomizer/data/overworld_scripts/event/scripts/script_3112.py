@@ -38,5 +38,7 @@ script = EventScript([
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray(b'\xfd\xf2'))
 	]),
-	JmpToEvent(E0184_NPC_QUEST_GRANT_SINGLE_FIREWORKS)
+	SetVarToConst(FIREWORKS_COUNTER, 5),
+	SetVarToConst(ITEM_ID, FireworksItem),
+	JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG)
 ])

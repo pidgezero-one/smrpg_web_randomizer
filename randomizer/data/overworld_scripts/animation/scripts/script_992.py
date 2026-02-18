@@ -16,6 +16,9 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
+	A_ShadowOn(),
+	A_FloatingOff(),
+	A_SetVRAMPriority(PRIORITY_3),
     A_JmpIfVarEqualsConst(ITEM_ID, HoneySyrupItem().item_id, ["A0992_syrup"]),
     A_JmpIfVarEqualsConst(ITEM_ID, MapleSyrupItem().item_id, ["A0992_syrup"]),
     A_JmpIfVarEqualsConst(ITEM_ID, RoyalSyrupItem().item_id, ["A0992_syrup"]),
@@ -40,10 +43,10 @@ script = ActionScript([
     A_JmpIfVarEqualsConst(ITEM_ID, KerokeroColaItem().item_id, ["A0992_frog"]),
     A_JmpIfVarEqualsConst(ITEM_ID, FreshenUpItem().item_id, ["A0992_r"]),
     A_JmpIfVarEqualsConst(ITEM_ID, AbleJuiceItem().item_id, ["A0992_r"]),
+    A_JmpIfVarEqualsConst(ITEM_ID, CymbalsItem().item_id, ["A0992_r"]), # sequence 7 also used for music notes
     A_JmpIfVarEqualsConst(ITEM_ID, PickMeUpItem().item_id, ["A0992_star"]),
     A_JmpIfVarEqualsConst(ITEM_ID, YoshiCandyItem().item_id, ["A0992_candy"]),
     A_JmpIfVarEqualsConst(ITEM_ID, RockCandyItem().item_id, ["A0992_candy"]),
-    A_JmpIfVarEqualsConst(ITEM_ID, CymbalsItem().item_id, ["A0992_candy"]), # sequence 9 also used for music notes
     A_JmpIfVarEqualsConst(ITEM_ID, SonicCymbalItem().item_id, ["A0992_candy"]), 
     A_JmpIfVarEqualsConst(ITEM_ID, FrightBombItem().item_id, ["A0992_bomb"]),
     A_JmpIfVarEqualsConst(ITEM_ID, SleepyBombItem().item_id, ["A0992_bomb"]),
@@ -70,11 +73,9 @@ script = ActionScript([
 	A_SetSpriteSequence(index=9, is_sequence=True, looping=True, identifier="A0992_candy"),
     A_Jmp(["A0992_begin_animation"]),
 	A_SetSpriteSequence(index=10, is_sequence=True, looping=True, identifier="A0992_bomb"),
-	A_FloatingOff(identifier="A0992_begin_animation"),
-    A_SetVRAMPriority(PRIORITY_3),
-	A_VisibilityOff(),
+	A_VisibilityOff(identifier="A0992_begin_animation"),
     A_SequenceLoopingOn(),
-	A_Pause(9),
+	A_Pause(6),
 	A_VisibilityOn(),
 	A_Pause(26),
 	A_VisibilityOff(),

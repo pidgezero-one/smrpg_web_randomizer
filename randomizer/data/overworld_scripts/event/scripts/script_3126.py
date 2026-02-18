@@ -33,7 +33,6 @@ from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(MIMIC_2_CLEARED, ["EVENT_3126_set_var_to_const_32"]),
-	RunEventAsSubroutine(E0096_REVERT_ALL_CLONE_CHESTS_MIMIC_2),
 	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6),
 	CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=CHEST_COIN_SIZE),
