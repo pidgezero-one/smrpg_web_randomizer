@@ -38,5 +38,6 @@ script = EventScript([
 	ClearBit(TEMP_707C_5),
 	ClearBit(TEMP_707C_6),
 	ClearBit(TEMP_707C_7),
+    StartBattleWithPackAt700E(),
 	JmpToEvent(E0024_BATTLE_RESULT_CHECK)
 ])
