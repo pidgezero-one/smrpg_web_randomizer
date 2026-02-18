@@ -4,9 +4,13 @@ from uuid import uuid4
 from enum import StrEnum
 import random
 
-from django.conf.locale import el
-
-from randomizer.progression.prizes import BoomerBossFight, FirstMimicFightLauncher, InfiniteCoinsPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher
+from randomizer.progression.prizes import (
+    BoomerBossFight,
+    FirstMimicFightLauncher,
+    InfiniteCoinsPrize,
+    SecondMimicFightLauncher,
+    ThirdMimicFightLauncher,
+)
 from randomizer.types.flags import MimicsAnywhere, SpellsAnywhere
 
 from .prize import (
@@ -59,6 +63,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     SetVarToConst,
     JmpToEvent,
     ActionQueueAsync,
+    Set7000ToCurrentLevel,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
@@ -88,7 +93,13 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
 )
 from .base import CategorizationOption
 from .packet_type import PacketType
-from ..data.rooms.npcs import EMPTY_NPC_3, EXPLOSION_NPC, FLOWER_NPC_2, FROG_COIN_NPC, STATIC_FROG_COIN_NPC
+from ..data.rooms.npcs import (
+    EMPTY_NPC_3,
+    EXPLOSION_NPC,
+    FLOWER_NPC_2,
+    FROG_COIN_NPC,
+    STATIC_FROG_COIN_NPC,
+)
 from ..data.variables.room_names import *
 from ..data.variables.variable_names import (
     INVISIBLE_FLAG_1_FOUND,
@@ -1163,7 +1174,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
 
     def set_prize(self, prize: Prize | None):
         self._prize = prize
-        
+
     @property
     def prize(self) -> Prize | None:
         return self._prize
@@ -1210,27 +1221,48 @@ class PrizeLocation(Generic[TOriginallyHeld]):
             if world.settings.isflag_enabled(SpellsAnywhere):
                 # Dynamic assignment mode: assign a character BEFORE placement
                 # Get all recruited character types from inventory
-                recruited_chars = list(set([
-                    type(item) for item in inventory
-                    if isinstance(item, CharacterPrize)
-                ]))
+                recruited_chars = list(
+                    set(
+                        [
+                            type(item)
+                            for item in inventory
+                            if isinstance(item, CharacterPrize)
+                        ]
+                    )
+                )
 
                 # Fallback: if no characters in inventory, check character locations directly
                 # This handles edge cases where inventory might not include characters yet
                 if not recruited_chars:
                     from ..progression.prizelocations import (
-                        StartingCharacter1, StartingCharacter2, StartingCharacter3,
-                        StartingCharacter4, StartingCharacter5,
+                        StartingCharacter1,
+                        StartingCharacter2,
+                        StartingCharacter3,
+                        StartingCharacter4,
+                        StartingCharacter5,
                     )
+
                     # Check starting character locations
-                    for loc_cls in [StartingCharacter1, StartingCharacter2, StartingCharacter3,
-                                   StartingCharacter4, StartingCharacter5]:
+                    for loc_cls in [
+                        StartingCharacter1,
+                        StartingCharacter2,
+                        StartingCharacter3,
+                        StartingCharacter4,
+                        StartingCharacter5,
+                    ]:
                         loc = world.locations.get(loc_cls)
-                        if loc and loc.has_item and isinstance(loc.prize, CharacterPrize):
+                        if (
+                            loc
+                            and loc.has_item
+                            and isinstance(loc.prize, CharacterPrize)
+                        ):
                             recruited_chars.append(type(loc.prize))
                     # Check character recruitment locations
                     for loc in world.locations.values():
-                        if isinstance(loc, CharacterRecruitmentLocation) and loc.has_item:
+                        if (
+                            isinstance(loc, CharacterRecruitmentLocation)
+                            and loc.has_item
+                        ):
                             if isinstance(loc.prize, CharacterPrize):
                                 recruited_chars.append(type(loc.prize))
                     # Deduplicate
@@ -1245,7 +1277,8 @@ class PrizeLocation(Generic[TOriginallyHeld]):
 
                 # Find characters with <6 spells assigned
                 available_chars = [
-                    char_type for char_type in recruited_chars
+                    char_type
+                    for char_type in recruited_chars
                     if world._spell_assignments.get(char_type, 0) < 6
                 ]
 
@@ -1257,6 +1290,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                 # This is because can_accept is called multiple times (once per potential location)
                 if prize.character is None:
                     import random as _random
+
                     selected_char = _random.choice(available_chars)
                     prize.set_character(selected_char)
                 return True
@@ -1346,12 +1380,16 @@ class TreasureChestLocation(StandardPrizeLocation):
         for npc, room in zip(self._npc_ids, self._rooms):
             # If npc is already an AreaObject, use it directly; otherwise convert from raw index
             ao = npc if isinstance(npc, AreaObject) else AreaObject(npc + 14)
-            if isinstance(self.prize, (FirstMimicFightLauncher, SecondMimicFightLauncher)):
+            if isinstance(
+                self.prize, (FirstMimicFightLauncher, SecondMimicFightLauncher)
+            ):
                 # Account for mimic chests needing to be opened twice
-                itemgrant.extend([
-                    JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]),
-                    DisableObjectTriggerInSpecificLevel(ao, room)
-                ])
+                itemgrant.extend(
+                    [
+                        JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]),
+                        DisableObjectTriggerInSpecificLevel(ao, room),
+                    ]
+                )
             elif not isinstance(self.prize, InfiniteCoinsPrize):
                 itemgrant.insert(0, DisableObjectTriggerInSpecificLevel(ao, room))
         return EventScript(itemgrant)
@@ -1369,7 +1407,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                     )
                 room._objects.extend(
                     [
-                        RegularNPC(  
+                        RegularNPC(
                             npc=FLOWER_NPC_2,
                             initiator=EventInitiator.NONE,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -1397,7 +1435,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                             cant_move_if_in_air=True,
                             byte7_upper2=3,
                         ),
-                        RegularClone(  
+                        RegularClone(
                             npc=FLOWER_NPC_2,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
                             action_script=A0015_DO_NOTHING,
@@ -1408,7 +1446,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                             z_half=False,
                             direction=SOUTHWEST,
                         ),
-                        RegularClone(  
+                        RegularClone(
                             npc=FLOWER_NPC_2,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
                             action_script=A0015_DO_NOTHING,
@@ -1419,7 +1457,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                             z_half=False,
                             direction=SOUTHWEST,
                         ),
-                        RegularNPC(  
+                        RegularNPC(
                             npc=STATIC_FROG_COIN_NPC,
                             initiator=EventInitiator.NONE,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -1447,7 +1485,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                             cant_move_if_in_air=True,
                             byte7_upper2=3,
                         ),
-                        RegularNPC(  
+                        RegularNPC(
                             npc=EXPLOSION_NPC,
                             initiator=EventInitiator.NONE,
                             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -1581,12 +1619,19 @@ class BossFightLocationHenchmanNPC:
         remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER,
         container_event: int | None = None,
     ):
-        from ..data.variables.event_script_names import E1189_HENCHMAN_BATTLE_PACK_SELECTOR
+        from ..data.variables.event_script_names import (
+            E1189_HENCHMAN_BATTLE_PACK_SELECTOR,
+        )
+
         self._room_ids = room_ids
         self._npc_ids = npc_ids
         self._pack_id = pack_id
         self._remove_if_not_filled = remove_if_not_filled
-        self._container_event = container_event if container_event is not None else E1189_HENCHMAN_BATTLE_PACK_SELECTOR
+        self._container_event = (
+            container_event
+            if container_event is not None
+            else E1189_HENCHMAN_BATTLE_PACK_SELECTOR
+        )
         if skip_swap_if_flag is None:
             self._skip_swap_if_flag = None
         elif isinstance(skip_swap_if_flag, list):
@@ -2002,7 +2047,9 @@ class BossFightLocation(PrizeLocation):
                         obj.set_battle_pack(slot.pack_id)
                     else:
                         # Need event script for battle pack selection
-                        event_script_battle_packs.append((slot.container_event, room_id, slot.pack_id))
+                        event_script_battle_packs.append(
+                            (slot.container_event, room_id, slot.pack_id)
+                        )
 
         return event_script_battle_packs, henchmen_assignments
 
@@ -2044,7 +2091,9 @@ class BossFightLocation(PrizeLocation):
                     continue
                 # Only RegularNPC objects need event script entries
                 if not isinstance(obj, BattlePackNPC):
-                    event_script_battle_packs.append((slot.container_event, room_id, slot.pack_id))
+                    event_script_battle_packs.append(
+                        (slot.container_event, room_id, slot.pack_id)
+                    )
 
         return event_script_battle_packs
 
@@ -2121,7 +2170,9 @@ class BossFightLocation(PrizeLocation):
         assert isinstance(self.prize, BossFightPrize)
         pack = world.battle_packs._packs[self._pack_id]
         run_away = self.allow_run_away
-        if world.settings.isflag_enabled(MimicsAnywhere) and isinstance(self.prize, MimicFightInitiatorPrize):
+        if world.settings.isflag_enabled(MimicsAnywhere) and isinstance(
+            self.prize, MimicFightInitiatorPrize
+        ):
             run_away = True
 
         if self.prize.formation is not None:
@@ -2141,8 +2192,8 @@ class BossFightLocation(PrizeLocation):
             # (used for prizes that haven't been migrated to use _formation)
             for f in pack.formations:
                 f.set_members(
-                    self.prize._members
-                )  # pyright: ignore[reportArgumentType]
+                    self.prize._members  # pyright: ignore[reportArgumentType]
+                )
                 # Always set run away based on location, not the prize's original setting
                 f.set_can_run_away(run_away)
                 if self.prize.force_battlefield is not None:
@@ -2270,14 +2321,31 @@ class BossFightLocation(PrizeLocation):
         effective_battlefields: list[Battlefield] | None = None
         if isinstance(self, MimicFightLocation):
             # Lazy import to avoid circular dependency
-            from randomizer.progression.prizelocations import Mimic1BossFight, Mimic2BossFight, Mimic3BossFight
-            pairs = [(FirstMimicFightLauncher, Mimic1BossFight), (SecondMimicFightLauncher, Mimic2BossFight), (ThirdMimicFightLauncher, Mimic3BossFight)]
+            from randomizer.progression.prizelocations import (
+                Mimic1BossFight,
+                Mimic2BossFight,
+                Mimic3BossFight,
+            )
+
+            pairs = [
+                (FirstMimicFightLauncher, Mimic1BossFight),
+                (SecondMimicFightLauncher, Mimic2BossFight),
+                (ThirdMimicFightLauncher, Mimic3BossFight),
+            ]
             for launcher_cls, boss_cls in pairs:
                 for location in world.locations.values():
-                    if isinstance(location.prize, launcher_cls) and isinstance(self, boss_cls):
-                        effective_battlefields = [ROOM_TO_BATTLEFIELD[r] for r in location._rooms]
+                    if isinstance(location.prize, launcher_cls) and isinstance(
+                        self, boss_cls
+                    ):
+                        effective_battlefields = [
+                            ROOM_TO_BATTLEFIELD[r] for r in location._rooms
+                        ]
                         effective_rooms = location._rooms
-        elif self.override_id is not None and self.prize.force_battlefield is None and self.default_battlefield is None:
+        elif (
+            self.override_id is not None
+            and self.prize.force_battlefield is None
+            and self.default_battlefield is None
+        ):
             identifier = str(uuid4())
             return (
                 [
@@ -2298,13 +2366,19 @@ class BossFightLocation(PrizeLocation):
         # Only compute if not already set (e.g., by MimicFightLocation logic above)
         if effective_battlefields is None:
             if self.prize.force_battlefield is not None:
-                effective_battlefields = [self.prize.force_battlefield] * len(effective_rooms)
+                effective_battlefields = [self.prize.force_battlefield] * len(
+                    effective_rooms
+                )
             elif self.default_battlefield is not None:
-                effective_battlefields = [self.default_battlefield] * len(effective_rooms)
+                effective_battlefields = [self.default_battlefield] * len(
+                    effective_rooms
+                )
             else:
                 effective_battlefields = self.battlefields
                 # Check for rooms missing from ROOM_TO_BATTLEFIELD
-                missing_rooms = [r for r in effective_rooms if r not in ROOM_TO_BATTLEFIELD]
+                missing_rooms = [
+                    r for r in effective_rooms if r not in ROOM_TO_BATTLEFIELD
+                ]
                 if missing_rooms:
                     raise ValueError(
                         f"{self.__class__.__name__}: Rooms missing from ROOM_TO_BATTLEFIELD: {missing_rooms}. "
@@ -2313,14 +2387,14 @@ class BossFightLocation(PrizeLocation):
         assert len(effective_rooms) == len(
             effective_battlefields
         ), f"Rooms and battlefields length mismatch: {len(effective_rooms)} rooms vs {len(effective_battlefields)} battlefields"
+        split_ids = [str(uuid4()) for _ in effective_battlefields]
         battles = list(
             zip(
                 effective_rooms,
                 effective_battlefields,
-                (str(uuid4()) for _ in effective_battlefields),
+                split_ids,
             )
         )
-
         second_array: list[UsableEventScriptCommand] = [
             cmd
             for _, battlefield, i in battles
@@ -2329,18 +2403,40 @@ class BossFightLocation(PrizeLocation):
                 Return(),
             )
         ]
-        return (
-            [
-                [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room, [battle_id])]
+        if self.override_id is not None:
+            second_array = [
+                JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room, [battle_id])
                 for room, _, battle_id in battles
-            ],
-            second_array,
-            henchmen_event_packs,
-        )
+            ] + second_array
+            second_array.insert(0, Set7000ToCurrentLevel())
+            return (
+                [
+                    [
+                        JmpIfVarEqualsConst(
+                            PRIMARY_TEMP_7000,
+                            self.override_id,
+                            [second_array[0].identifier.label],
+                        )
+                    ]
+                ],
+                second_array,
+                henchmen_event_packs,
+            )
+        else:
+            return (
+                [
+                    [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room, [battle_id])]
+                    for room, _, battle_id in battles
+                ],
+                second_array,
+                henchmen_event_packs,
+            )
 
 
 class MimicFightLocation(BossFightLocation):
     pass
+
+
 class AllyNPCSub:
     _room_id: int
     _npc_id: AreaObject
@@ -2741,9 +2837,7 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
 
 class TreasureShopLocation(PrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return (
-            hasattr(prize, "_nickname")
-        )
+        return hasattr(prize, "_nickname")
 
 
 class KeyItemLocation(PrizeLocation):
