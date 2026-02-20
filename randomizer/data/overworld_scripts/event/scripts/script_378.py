@@ -32,7 +32,6 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	SetBit(TEMP_707C_5),
 	SetBit(TEMP_707C_7),
 	SetBit(TEMP_707C_6),
 	RunEventAsSubroutine(E0051_HENCHMAN_CONTAINER_1),

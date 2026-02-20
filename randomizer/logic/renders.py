@@ -1251,9 +1251,10 @@ def render_inner_factory_third_fight_slot(
             world.action_scripts.scripts[script_id].insert_before_identifier(
                 attack_id, A_SetSequenceSpeed(anim.speed)
             )
-        world.action_scripts.scripts[script_id].insert_before_identifier(
-            attack_id, A_Pause(prepause)
-        )
+        if prepause == 0:
+            world.action_scripts.scripts[script_id].insert_before_identifier(
+                attack_id, A_Pause(prepause)
+            )
 
 
 def render_inner_factory_fourth_fight(world: GameWorld) -> None:

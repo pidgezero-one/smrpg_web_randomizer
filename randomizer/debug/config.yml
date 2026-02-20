@@ -18,18 +18,7 @@ items:
     - SeeYaItem
   # Override specific locations with specific prizes for chest packet testing
   override:
-    BoosterPassFirstRoomRightChestLocation: FirstMimicFightLauncher
-    # P076_BERRY_CHEST - BerryObject
-    Mimic1ReloadRewardLocation: SeedPrize
-    # P092_UNUSED - RDrinkObject
-    RoseTownTreasureHouseRightChestLocation: AbleJuicePrize
-    # P093_UNUSED - MusicObject
-    RoseTownTreasureHouseLeftChestLocation: BeetlemaniaPrize
-    # P093_UNUSED - MusicObject
     RoseTownTreasureHouseUpperChestLocation: CymbalsPrize
-    # P092_GLOVE_CHEST - GloveObject
-    InnerMinesHighUpChestLocation: PunchGlovePrize
-    # P093_CRYSTAL_CHEST - CrystalObject
-    BoosterPassFirstRoomLeftChestLocation: LuckyJewelPrize
-    BoosterPassFirstRoomRightChestLocation: FirstMimicFightLauncher
+    MushroomKingdomBossFight: ValentinaBossFight
+    BanditsWayPlatformsRightChestLocation: PickMeUpPrize
 

@@ -7,17 +7,15 @@ General
 🚧 dying to failed slots does not game over
 🚧 randomized element palettes sometimes not being applied
 - geno blast animation is incorrect (extra sprite at the end)
-🚧 even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
-🚧 "found an cleanse juice"
 🚧 cymbals (music note) packet shows up as a flower
 🚧 gold paint in chest rendered as a blue drink
 🚧 bowser's runaway sprite is wrong
-🚧 NPC spell learns are rendering up top instead of down below
 🚧 bowser extremely bugged fighting aeros, does not return to his spot when finishes attacking, randomly ended the fight
   - run away also seems to happen after marios attacks
   - this might be enemy dependent. pulsars in bowsers keep did it
 🚧 "Got the Brooch" chest dialog doesn't go away
-🚧 why are there two lucky jewels?
+- cymbals not making a sound?
+- physical immunity not doing anything? transforming formless, killing dry bones
 
 Boss-specific
 - torte henchman is untargetable in battle
@@ -37,22 +35,35 @@ Boss-specific
   🚧 also showing empty dialogs
 🚧 valentina uses empty dialogs
 - dodo's sequence before he takes valentina away is really messed up
+- fire bomb topped smilaxes from floating? not super important
 
 Mushroom Way 
 🚧 fireworks freestanding item on top plateau stops you from moving
-🚧 megasmilax totally broken. shy away does not do proceed after watering post phase 2
+- czar dragon in mushroom way messes up shadows. why using that sprite?
+  - consider 4096 for vram. might need to specify its min npc vram to be accurate to its tile count
+  - actually, why don't we do that automatically for some npcs? 
 
 Mushroom kingdom
-- hallway fight in liberated mode: level does not fade back in after fight
 🚧 toad in yard in liberated mode is desynced from enemy chasing him
-🚧 yard fight also doesnt work
 - palette is wrong if you get into calamari fight in mushroom kingdom (failed slots)
-🚧 if you rescue toad in liberated mode, leaving toadstool's room should always load unoccupied rooms
-- bluebirds have bad partition
-  - only wrong in invaded state. looks ok in liberated
+🚧 bluebirds have bad partition
+  🚧 partition reset works, but i did it wrong in the outdoor,s, fixed birds but messed up mushroom guys
+  - needs fix in upper floor of terrorized house (base floor is fine)
+  - antechamber before throne room as well
+  - branch room before the vault as well
+  - staircase room also
+  - entrance to peach's room also
+  - throne room also
+  - coming out backwards from antechamber loads you inside the guy you can jump on. move him over to the left a bit
+- occupied main hall door is preopened. might be applying tile mod incorrectly
+- not a huge deal but if you leave toadstools room after getting the toad rescue prize, the hallway doesnt reset until you go all the way back to the main hall. should reset as soon as you leave toadstools room\
+- guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
+  - seems to be using wallet guy's scripts?
+- if you save the family, leave, and come back in, still acts as the occupied version of the house
 
 bandit's way
 - room 4, second chest: pick me up shows as mushroom
+- two stars in room 4. should not be allowed
 
 Kero sewers
 🚧 kero sewers is not blocked when it should be
@@ -61,15 +72,24 @@ Kero sewers
 🚧 boss fight doesn't start, can't be interacted with. no collision?
 🚧 water does not drain. that's bad (well, it does, it just looks like it didn't)
 
+midas river
+- using big flower sprites, should be small
+- red essence was modeled as a big flower
+- music slows down instead of speeds up
+- maybe add a dialog so guy explains why hes giving you a prize even if you lost
+
 Rose way
-- palettes in rose way still broken
-🚧 chest animations in second room are weird. check memory partition and sprite properties
+
 
 Rose Town
-
+- pandorite in house: packet stays there without disappearing
+- cymbals: does not render at all
+- pandorite chest did not reload with a reward
+- red guy should not be outside his house 
 
 Forest maze 
-🚧 uderground rooms are fucked up. how the hell to get partition to work?
+- uderground rooms are fucked up. how the hell to get partition to work?
+  - Why did flower work, and item bag, but NOT frog coin?
 - buzzer's default attack sound effect is wrong somehow
 - why does buzzer underground turn into a snifit in battle?
 
@@ -82,49 +102,48 @@ Yoster
 🚧 infinite chest disables its object trigger
 
 Moleville
-🚧 shy guy in left and right crook spot (mack) use bad buffer. center ok
 🚧 no item came out of shy guy minecart
 🚧 peach taking minecart is also using a bad partition
 🚧 skip minecart flag does not work
 🚧 shiny stone girl still asking for fireworks in progressive settings
 🚧 treasure hunter's dialogs are not changed
-🚧 touching crook behind trampoline makes johnny temporarily appear, crashes game
-  🚧 touching crook always crashes game
-  🚧 fireball in west mines room has bad partition
+- models don't exit the room when you beat henchmen
+- mid boss' running animations not working correctly in some rooms
 
 Booster Pass
 - battle crashes when you attack carroboscis
   - not anymore, but it forces you to run away
 
 Booster Tower
-- snifit 1 event is totally wrong
 🚧 booster tower does not load when character needed to unlock it
 - shadows broken in curtain room, makes no sense
-🚧 shouln't be able to run from tower henchman fights
-🚧 rob omb is a snifit battle
-🚧 top level chests dont seem suitable for slots, unless we can figure out a working partition
 - jagger briefly disappears while waiting for you to hit the mario doll
+- johnny doesnt do an animation in place of booster crying?
 
 Booster Hill
-🚧 captee animation is wrong
-🚧 packet did not show
-🚧 after that, no longer able to activate captee
-🚧 make sure captee's hitbox is always the same size as original
+- works! except captee disappears after hit for the first time. still can be interacted with, just not visible
+- don't forget: henchmen must always inherit snifit solidity
+- item counter is wrong, said i got 8/16 when i only got 4
+- revisit: toad does not recognize that you can pick up more items, thinks it's not unlocked yet
+  - items still appear, though!
 
 Marrymore
 🚧 bloober sprites are wrong (incorrect buffer for their sprite size)
-🚧 geno doing wrong animations in sanctuary
 - snifit sprites glitch out
-🚧 item on jinx's head too high up
+- crown replacement sinks into the floor
+- can't talk to johnny?
+- music slows down instead of speeding up
 🚧 squids have torte dialogs
-🚧 what the hell happened to the dialog when i chose the suite with the stay voucher?
 🚧 bellhop sidequest gets stuck on "please see our guest out"
+- coming out of the shower is wrong. resets to mario's original palette
+- stay voucher can be used multiple times. should be taken away after first time
+- could use a dialog explaining why you're getting a gift
+- dialogs seem wrong. both are attributed as torte in kitchen
 
 Seaside Town
 🚧 seaside: boss is replacing the wrong sprite in confrontation, also bad partition for grate guy
-🚧 culex's letter scrolls too fast, also doesn't properly explain who the final boss is
-  🚧 dodo's has this problem now. audit letters
-🚧 let's make the shop in the left house never go away
+- frog disciple doesnt go back to reading book if you talk to him when hes out of items
+- no signoff in jinx letter
 
 Sea
 
@@ -175,7 +194,6 @@ Monstro Town
 
 Bean Valley
 🚧 magikoopa appearing at pipe: faces backward for a moment. intentional?
-  🚧 also he's blue
 🚧 is frog coin at vine fork path randomized?
 
 Nimbus Land

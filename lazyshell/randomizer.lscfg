@@ -80,7 +80,7 @@ Bowser S Battle Portrait
 Mallow S Battle Portrait
 Geno S Battle Portrait
 Hammer Packet
-Stick Packet
+Pink Yoshi
 Yellow Juice
 Croco
 Green Yoshi
@@ -242,7 +242,7 @@ Grey Explosion When Encountering Fireballs
 Microbomb Packet
 Card
 Brooch
-Glove Packet
+Glove
 Shiny Stone
 Splash Water Droplets
 Small Frog Coin
@@ -285,7 +285,7 @@ Red Music Drink
 Red Star Drink
 Red Shell
 Green Shell
-Parasol Packet
+Beetle Packet Copy
 Feather
 Berry
 Yoshi Cookie
@@ -769,7 +769,7 @@ Froggie Stick
 Cymbals
 Chomp
 Yellow Yoshi
-Pink Yoshi
+Stick Packet
 Belome 3 Small
 Punchinello 2 Small
 Booster 2 Small
@@ -781,7 +781,7 @@ Fire Crystal 3D
 Earth Crystal 3D
 Wind Crystal 3D
 Water Crystal 3D
-Empty
+Static Frog Coin
 Empty
 Empty
 Empty
@@ -855,7 +855,7 @@ Green Candy
 Blue Candy
 Red Bomb
 Magikoopa S Triangle Circle X Cast Magic
-Empty
+Parasol Packet
 Empty
 Empty
 Empty
@@ -1088,7 +1088,7 @@ Grant Tier 1 Consumable Or Equip
 Grant Tier 2 Consumable Or Equip
 Grant Tier 3 Consumable Or Equip
 Grant Tier 4 Consumable Or Equip
-Empty
+Mines Henchman Fight
 Empty
 Non Coin Chest Container
 Open Chest
@@ -1510,10 +1510,10 @@ Goomba Thumpin Goomba 1
 Goomba Thumpin Goomba 2
 Goomba Thumpin Goomba 3
 Goomba Thumpin Goomba 4
-Empty
-Empty
-Goomba Thumpin Room Loader
-Resummon Pipe Vault Enemies
+Goomba Thumpin Gold Goomba 1
+Goomba Thumpin Gold Goomba 2
+Goomba Thumpin Gold Goomba 3
+Goomba Thumpin Gold Goomba 4
 Yoshi Talks To Other Yoshi
 Mushroom Derby Unknown
 Mushroom Derby Begins
@@ -1642,10 +1642,10 @@ Rose Town Occupied Treasure House 1F Loader
 Rose Town Liberated Lower Hidden Npc
 Rose Town Occupied Treasure House Bedroom Chest
 Rose Town Liberated Treasure House Bedroom Chest
-Goomba Thumpin Gold Goomba 1
-Goomba Thumpin Gold Goomba 2
-Goomba Thumpin Gold Goomba 3
-Goomba Thumpin Gold Goomba 4
+Empty
+Empty
+Empty
+Empty
 Goomba Thumpin Spiny 1
 Goomba Thumpin Spiny 2
 Goomba Thumpin Spiny 3
@@ -3306,14 +3306,14 @@ Sets Seaside Health Store State
 Sets Mushroom Boy Shop State
 Sets Seaside Accessory Shop State
 Dojo Boss 5
-Empty
-Empty
-Empty
-Empty
-Empty
-Empty
-Empty
-Empty
+Ap Grant Chests
+Ap Grant No Graphics
+Ap Grant Freestanding
+Ap Grant River Hill
+Ap Grant Chests Important
+Ap Grant No Graphics Important
+Ap Grant Freestanding Important
+Ap Grant River Hill Important
 Empty
 Empty
 Empty
@@ -4165,7 +4165,7 @@ Enter Mk Guest Room
 Exit Mk Guest Room
 Enter Mk Staircase
 Exit Mk Staircase
-Empty
+Bandits Way 4 Chest
 Empty
 Freestanding Beetlemania Grant
 Freestanding Juice Bar Card Grant
@@ -4581,8 +4581,8 @@ Chest Differentiator Npc 4 Or Other
 Chest Differentiator Npc 12 13 Or Other Camera A
 Chest Differentiator Npc 12 13 Or Other Camera B
 Chest Differentiator Npc 9 Or Other Camera A
-Empty
-Empty
+Sewers Switch Room Chests
+Outer Factory Conveyor Chest
 Empty
 Empty
 Empty
@@ -4853,8 +4853,8 @@ Open Factory Final Boss Room
 Factory Final Boss Room Loader
 Factory Smelter Animation
 Factory Final Boss Fight
-Empty
-Empty
+Resummon Pipe Vault Enemies
+Goomba Thumpin Room Loader
 Ending Credits Room Loader
 Ending Credits Orange Star
 Ending Credits Purple Star
@@ -6068,8 +6068,8 @@ Flower Flash Then Poof
 Frog Coin Gets Collected
 Poof When Mimic 3 Defeated
 Key Appears Briefly
-Empty
-Empty
+Player Enters Water
+Player Enters Water
 Seq 1 Falling
 Seq 0 Falling
 Seq 5 Falling
@@ -6192,8 +6192,8 @@ Blue Chest Item
 Yellow Chest Item
 Flower Static
 Mushroom Static
-Flower Collection
-Small Frog Coin (still)
+Player Enters Water
+Player Enters Water
 Big Coin Being Collected
 Small Minigame Coin
 Small Coin Being Collected
@@ -6240,7 +6240,7 @@ Booster Hill Prize 7
 Booster Hill Prize 8
 Booster Hill Prize 9
 Booster Hill Prize 10
-Booster Hill Prize 11
+Splash
 Booster Hill Prize 12
 Frog Coin Chest Still
 Booster Hill Prize 13
@@ -6267,7 +6267,7 @@ Booster Hill Prize Standing 12
 Booster Hill Prize Standing 13
 Booster Hill Prize Standing 14
 Booster Hill Prize Standing 15
-Beetle chest
+Beetle Chest
 Small Coin Still
 Chest Coin Still
 Glove Chest
@@ -6278,9 +6278,9 @@ Green Spell Chest
 Yellow Spell Chest
 Gray Spell Chest
 Bag Static
-Unused
-Unused
-Unused
+Booster Hill Prize 11
+Flower Collection
+Small Frog Coin Still
 Unused
 Unused
 Unused

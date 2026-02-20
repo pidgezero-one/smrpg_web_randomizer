@@ -1,6 +1,6 @@
 from ...types.physical_objects import HenchmanNPC, SpriteAnimation, SpriteAnimationCollection
 from ..rooms.npcs import *
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import FAST
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import FAST, FASTEST, VERY_FAST
 
 # Animation definitions for henchmen (from data_old/npcs.py)
 shyster_taunt = SpriteAnimation(sequence_id=4, contact_frame=56, total_duration=56)
@@ -28,6 +28,7 @@ goombette_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=21, total_dura
 goombette_taunt = SpriteAnimation(sequence_id=2, total_duration=12)
 
 bandana_attack = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=50)
+bandana_attack_fast = SpriteAnimation(sequence_id=3, contact_frame=17, total_duration=32, speed=FAST)
 bandana_taunt = SpriteAnimation(sequence_id=4, total_duration=36)
 
 drillbit_hit = SpriteAnimation(sequence_id=3, contact_frame=54, total_duration=64)
@@ -47,11 +48,15 @@ bird_attack = SpriteAnimation(sequence_id=3, contact_frame=24, total_duration=36
 eggbert_expand = SpriteAnimation(sequence_id=2, total_duration=32)
 
 axem_black_hit = SpriteAnimation(sequence_id=3, contact_frame=16, total_duration=64)
+axem_black_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=8, total_duration=32, speed=VERY_FAST)
 axem_pink_hit = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=58)
+axem_pink_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=13, total_duration=29, speed=VERY_FAST)
 axem_yellow_hit = SpriteAnimation(sequence_id=3, contact_frame=82, total_duration=108)
 axem_yellow_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=41, total_duration=54, speed=FAST)
+axem_yellow_hit_very_fast = SpriteAnimation(sequence_id=3, contact_frame=11, total_duration=27, speed=FASTEST)
 axem_green_hit = SpriteAnimation(sequence_id=3, contact_frame=56, total_duration=84)
-axem_green_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=28, total_duration=42, speed=FAST)
+axem_green_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=28, total_duration=42, speed=VERY_FAST)
+axem_green_hit_fastest = SpriteAnimation(sequence_id=3, contact_frame=9, total_duration=28, speed=FASTEST)
 
 jinx_punch = SpriteAnimation(sequence_id=3, contact_frame=10, total_duration=18)
 jinx_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
@@ -172,7 +177,7 @@ class BandanaBlueHenchman(HenchmanNPC):
     _animations = SpriteAnimationCollection(
         tower_bullet=bandana_taunt,
         kitchen_prep=bandana_attack,
-        factory_pierce=bandana_attack,
+        factory_pierce=bandana_attack_fast,
     )
 
 
@@ -183,7 +188,7 @@ class BandanaRedHenchman(HenchmanNPC):
     _animations = SpriteAnimationCollection(
         tower_bullet=bandana_taunt,
         kitchen_prep=bandana_attack,
-        factory_pierce=bandana_attack,
+        factory_pierce=bandana_attack_fast,
     )
 
 
@@ -366,7 +371,7 @@ class AxemBlackHenchman(HenchmanNPC):
     _animations = SpriteAnimationCollection(
         tower_bullet=axem_black_hit,
         kitchen_prep=axem_black_hit,
-        factory_pierce=axem_black_hit,
+        factory_pierce=axem_black_hit_fast,
     )
 
 
@@ -377,7 +382,7 @@ class AxemPinkHenchman(HenchmanNPC):
     _animations = SpriteAnimationCollection(
         tower_bullet=axem_pink_hit,
         kitchen_prep=axem_pink_hit,
-        factory_pierce=axem_pink_hit,
+        factory_pierce=axem_pink_hit_fast,
     )
 
 
@@ -398,7 +403,7 @@ class AxemGreenHenchman(HenchmanNPC):
     _animations = SpriteAnimationCollection(
         tower_bullet=axem_green_hit,
         kitchen_prep=axem_green_hit,
-        factory_pierce=axem_green_hit_fast,
+        factory_pierce=axem_green_hit_fastest,
     )
 
 

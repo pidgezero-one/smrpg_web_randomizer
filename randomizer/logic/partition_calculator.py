@@ -34,6 +34,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_0,
     NPC_1,
     NPC_2,
+    NPC_3,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
 
@@ -456,3 +457,7 @@ def update_protagonist_room_partition(world: GameWorld) -> None:
 
 def update_johnny_room_partition(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM, NPC_0, 0)
+
+def update_mushroom_kingdom_partitions(world: GameWorld) -> None:
+    _update_buffer_by_room_object(world, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, NPC_0, 1)
+    _update_buffer_by_room_object(world, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, NPC_0, 0)
