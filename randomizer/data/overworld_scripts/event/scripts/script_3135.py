@@ -46,6 +46,13 @@ script = EventScript([
     Jmp(["event_3135_init"]),
     SummonObjectToCurrentLevel(NPC_0, identifier="EVENT_3135_a"),
 	SummonObjectToCurrentLevel(NPC_1),
+    
+	ActionQueueAsync(target=NPC_1, subscript=[
+		A_WalkEastPixels(11),
+		A_WalkNortheastPixels(4),
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
+		A_SetVRAMPriority(NORMAL_PRIORITY)
+	]),
 	ClearBit(TEMP_707C_5, "event_3135_init"),
 	SetVarToConst(TIMER_701C, 300),
 	StopBackgroundEvent(TIMER_701C),

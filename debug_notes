@@ -1,20 +1,17 @@
 "seed": 3285956465,
   "version": "9.0.0",
-  "flags": "P(rchars)     Q(perms:vanilla_accessories_all|props:random|hints)     C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(bw:open|ks:rfc|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(enemystats:full_random|drops|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko)",
+  "flags": "A(bw:open|ks:rfc|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open) B(rboss) C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap) E(enemystats:full_random|drops|attacks|enemyspells|noregexp|nobossexp) F(skips|nowhirl|nobigbang|noko) G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng) I(replace|fake|xpstar:bosses|fix_kg) L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame) O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel) P(rchars) Q(perms:vanilla_accessories_all|props:random|hints) S(rshops|biasshops|showperms) T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|fireworks:progressive) X(rstars|proglogic:hard|disperse)",
   
 
 General
 🚧 dying to failed slots does not game over
 🚧 randomized element palettes sometimes not being applied
 - geno blast animation is incorrect (extra sprite at the end)
-🚧 water is very broken, when you jump out of it it starts creating keys, can't move, wrote the "this is a dead end" dialog when i pressed A, stoppd music. Likely an AS problem
-  - Less broken. Summons a flower temporarily. No other weird stuff happening
 🚧 even without formation randomizer, enemies are still showing up at the wrong coords (shy guys and fowers in rowse way)
 🚧 "found an cleanse juice"
 🚧 cymbals (music note) packet shows up as a flower
 🚧 gold paint in chest rendered as a blue drink
 🚧 bowser's runaway sprite is wrong
-🚧 beetlemania packet is wrong sprite
 🚧 NPC spell learns are rendering up top instead of down below
 🚧 bowser extremely bugged fighting aeros, does not return to his spot when finishes attacking, randomly ended the fight
   - run away also seems to happen after marios attacks
@@ -69,7 +66,7 @@ Rose way
 🚧 chest animations in second room are weird. check memory partition and sprite properties
 
 Rose Town
-🚧 cymbals in chest is a flower (top chest in corner house)
+
 
 Forest maze 
 🚧 uderground rooms are fucked up. how the hell to get partition to work?
@@ -82,7 +79,7 @@ Pipe vault
 
 Yoster
 - yellow yoshis glitched sprites
-- infinite chest disables its object trigger
+🚧 infinite chest disables its object trigger
 
 Moleville
 🚧 shy guy in left and right crook spot (mack) use bad buffer. center ok
@@ -91,17 +88,13 @@ Moleville
 🚧 skip minecart flag does not work
 🚧 shiny stone girl still asking for fireworks in progressive settings
 🚧 treasure hunter's dialogs are not changed
-- touching crook behind trampoline makes johnny temporarily appear, crashes game
-  - touching crook always crashes game
-  - fireball in west mines room has bad partition
-  - midboss fight completely skipped, did not drop an item?
+🚧 touching crook behind trampoline makes johnny temporarily appear, crashes game
+  🚧 touching crook always crashes game
+  🚧 fireball in west mines room has bad partition
 
 Booster Pass
 - battle crashes when you attack carroboscis
   - not anymore, but it forces you to run away
-🚧 mimic in booster pass fight is skipped
-🚧 does not re-enable
-- packet remains in the air
 
 Booster Tower
 - snifit 1 event is totally wrong
@@ -137,6 +130,9 @@ Sea
 
 Sunken Ship
 🚧 Stair packet does not rise very high enough
+  - shoes: it just falls
+- dry bones dies to regular attacks
+- dry bones does not collapse when you run away
 🚧 realign "Hate to burst your Endobubble" hint bottom line
 🚧 are any of the packet shuffles actually working? looks like original
   - seems like it? check spoiler log
@@ -150,6 +146,7 @@ Sunken Ship
 🚧 sprites of items underwater are messed up, keep shifting or disappearing
 🚧 no item replacing corner frog coin at all
 🚧 Dodo in johnny's room cut off. might need to use a different partition
+- shaman should not say password is related to the sea when shuffler is turned on
 
 Land's End
 🚧 side item from remake does not work (green spell). doesn't activate

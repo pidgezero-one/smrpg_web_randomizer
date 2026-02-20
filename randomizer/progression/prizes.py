@@ -1818,7 +1818,7 @@ class BeetlemaniaPrize(StandardPrize):
         description="It's pretty addictive.",
     )
     _model = BeetleObject
-    _packet_data = (SPR0255_BEETLE, 0)
+    _packet_data = (SPR0251_BEETLE_PACKET_COPY, 0)
 
     @property
     def chest_grant(self) -> EventScript:

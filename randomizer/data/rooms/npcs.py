@@ -40,7 +40,7 @@ CHOMP_BASE = _item_npc_base(SPR0056_CHOMP_PACKET, acute_axis=3, obtuse_axis=3, h
 RED_SHELL_BASE = _item_npc_base(
     SPR0249_RED_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
-PARASOL_BASE = _item_npc_base(SPR0251_PARASOL_PACKET)
+PARASOL_BASE = _item_npc_base(SPR0821_PARASOL_PACKET)
 FAN_BASE = _item_npc_base(SPR0131_FAN_PACKET)
 TINY_STAR_BASE = _item_npc_base(SPR0226_TINY_STAR)
 PAN_BASE = _item_npc_base(SPR0199_FRYING_PAN_PACKET)
@@ -6565,7 +6565,7 @@ STICK_PACKET_NPC = NPC(
 )
 
 PARASOL_PACKET_NPC = NPC(
-    sprite_id=SPR0251_PARASOL_PACKET,
+    sprite_id=SPR0821_PARASOL_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,

@@ -34,7 +34,12 @@ from ....spells.spells import *
 script = EventScript([
 	MoveScriptToMainThread(),
 	SetBit(TEMP_7043_0),
-	RunEventAsSubroutine(E0030_MINES_HENCHMAN_FIGHT),
+	RunEventAsSubroutine(E1602_EXP_STAR_SUBROUTINE_CANCEL_NPC_EVENT_DO_NOT_REMOVE_FROM_LEVEL),
+	DisableObjectTrigger(MEM_70A8),
+	ClearBit(TEMP_707C_5),
+	ClearBit(TEMP_707C_6),
+	ClearBit(TEMP_707C_7),
+	RunEventAsSubroutine(E1189_HENCHMAN_BATTLE_PACK_SELECTOR),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	JmpIfBitSet(RUN_AWAY, ["EVENT_3192_clear_bit_9"]),
 	ActionQueueSync(target=MEM_70A8, subscript=[

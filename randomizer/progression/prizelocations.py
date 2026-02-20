@@ -2760,8 +2760,8 @@ class OuterMinesBossFight(BossFightLocation):
             skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
-            [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM],
-            [NPC_1],
+            [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM],
+            [NPC_1, NPC_2, NPC_3],
             PACK141_MINES_HENCHMAN_LEFT,
             skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
@@ -4227,7 +4227,7 @@ class BoosterHillGuaranteedItem12(StandingLocation, BoosterHillLocation):
     _id = ShuffleLocationSelector.BOOSTER_HILL_FLOWER_12
     _world_area = WorldAreaEnum.BOOSTER_HILL
     _designated_packet_ids = [
-        P062_BOOSTER_HILL_PRIZE_11,
+        P100_BOOSTER_HILL_PRIZE_11,
         P084_BOOSTER_HILL_PRIZE_STANDING_11,
     ]
 
@@ -9460,7 +9460,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                         Return(),
                     ]
                 )
-                world.event_scripts.delete_command_by_identifier(
+                world.action_scripts.delete_command_by_identifier(
                     "keep_battle_room_summon"
                 )
         return op

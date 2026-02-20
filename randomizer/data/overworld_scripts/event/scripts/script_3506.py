@@ -92,7 +92,7 @@ script = EventScript([
     CreatePacketAtObjectCoords(P061_BOOSTER_HILL_PRIZE_10, MARIO, ["summon_flower_11__"],  identifier="summon_flower_11_"),
     RunEventAsSubroutine(E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT, identifier="summon_flower_11__"),
     Jmp(["increment_70B1_final_2"]),
-    CreatePacketAtObjectCoords(P062_BOOSTER_HILL_PRIZE_11, MARIO, ["summon_flower_12__"],  identifier="summon_flower_12_"),
+    CreatePacketAtObjectCoords(P100_BOOSTER_HILL_PRIZE_11, MARIO, ["summon_flower_12__"],  identifier="summon_flower_12_"),
     RunEventAsSubroutine(E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT, identifier="summon_flower_12__"),
     Jmp(["increment_70B1_final_2"]),
     CreatePacketAtObjectCoords(P063_BOOSTER_HILL_PRIZE_12, MARIO, ["summon_flower_13__"],  identifier="summon_flower_13_"),

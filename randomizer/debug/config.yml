@@ -24,6 +24,8 @@ items:
     # P092_UNUSED - RDrinkObject
     RoseTownTreasureHouseRightChestLocation: AbleJuicePrize
     # P093_UNUSED - MusicObject
+    RoseTownTreasureHouseLeftChestLocation: BeetlemaniaPrize
+    # P093_UNUSED - MusicObject
     RoseTownTreasureHouseUpperChestLocation: CymbalsPrize
     # P092_GLOVE_CHEST - GloveObject
     InnerMinesHighUpChestLocation: PunchGlovePrize

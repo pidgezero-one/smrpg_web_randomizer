@@ -1,4 +1,4 @@
-#A0914_EMPTY
+#A0914_PLAYER_ENTERS_WATER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,8 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+	A_SetSpriteSequence(index=5, sprite_offset=3, is_sequence=True, looping=True),
+	A_Pause(12),
+	A_ReturnQueue()
+])

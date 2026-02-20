@@ -1384,12 +1384,10 @@ class TreasureChestLocation(StandardPrizeLocation):
                 self.prize, (FirstMimicFightLauncher, SecondMimicFightLauncher)
             ):
                 # Account for mimic chests needing to be opened twice
-                itemgrant.extend(
-                    [
-                        JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]),
-                        DisableObjectTriggerInSpecificLevel(ao, room),
-                    ]
-                )
+                itemgrant = [
+                    JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]),
+                    DisableObjectTriggerInSpecificLevel(ao, room),
+                ] + itemgrant
             elif not isinstance(self.prize, InfiniteCoinsPrize):
                 itemgrant.insert(0, DisableObjectTriggerInSpecificLevel(ao, room))
         return EventScript(itemgrant)
@@ -2034,7 +2032,9 @@ class BossFightLocation(PrizeLocation):
                 henchmen_assignments.extend(zip(active_tiny_slots, blobs))
 
         # Set NPC models and battle packs for all assigned henchmen
+        assigned_slots: set[BossFightLocationHenchmanNPC] = set()
         for slot, henchman in henchmen_assignments:
+            assigned_slots.add(slot)
             for room_id, room_target in zip(slot.room_ids, slot.npc_ids):
                 room = world.rooms._rooms[room_id]
                 assert room is not None
@@ -2050,6 +2050,25 @@ class BossFightLocation(PrizeLocation):
                         event_script_battle_packs.append(
                             (slot.container_event, room_id, slot.pack_id)
                         )
+
+        # Generate E1189 entries for unassigned slots that have non-BattlePackNPC
+        # objects. This covers cases where the incoming boss has no henchmen or
+        # should_skip_swap filtered the slot out — the original NPCs remain
+        # visible and still call E1189 as a subroutine, so it needs an entry.
+        for slot in all_henchman_slots:
+            if slot in assigned_slots or slot.pack_id is None:
+                continue
+            for room_id, room_target in zip(slot.room_ids, slot.npc_ids):
+                room = world.rooms._rooms[room_id]
+                if room is None:
+                    continue
+                obj = room.get_npc_by_target_id(room_target)
+                if obj is None:
+                    continue
+                if not isinstance(obj, BattlePackNPC):
+                    event_script_battle_packs.append(
+                        (slot.container_event, room_id, slot.pack_id)
+                    )
 
         return event_script_battle_packs, henchmen_assignments
 
@@ -2404,11 +2423,12 @@ class BossFightLocation(PrizeLocation):
             )
         ]
         if self.override_id is not None:
-            second_array = [
-                JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room, [battle_id])
-                for room, _, battle_id in battles
-            ] + second_array
-            second_array.insert(0, Set7000ToCurrentLevel())
+            if len(battles) > 1:
+                second_array = [
+                    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room, [battle_id])
+                    for room, _, battle_id in battles
+                ] + second_array
+                second_array.insert(0, Set7000ToCurrentLevel())
             return (
                 [
                     [

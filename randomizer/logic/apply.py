@@ -64,6 +64,7 @@ from ..types.enemy import Enemy
 from ..progression.prizelocations import (
     Mimic1ReloadRewardLocation,
     Mimic2ReloadRewardLocation,
+    Mimic3BossFight,
     StarHillStarPiece,
     MarioSpell1,
     MarioSpell2,
@@ -109,7 +110,7 @@ from ..progression.prizelocations import (
     TreasureShopItem3,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_9, NPC_0, NPC_3, NPC_4, NPC_5
-from ..progression.prizes import FirstMimicFightLauncher, SecondMimicFightLauncher
+from ..progression.prizes import FirstMimicFightLauncher, SecondMimicFightLauncher, ThirdMimicFightLauncher
 
 from ..data.rooms.npcs import EMPTY_NPC
 from ..data.sprites.subs.bowser.sprite_96 import sprite as BOWSER_96
@@ -334,12 +335,9 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             builders[ctr][0].extend(d_flat)
             builders[ctr][1].extend(execution)
 
-            # special handling: battlefield selection for failed slot machines which fights mimic #3
-            slot_pack = 0
-            for l in world.locations.values():
-                if isinstance(l, BossFightLocation) and isinstance(l.prize, MimicFightInitiatorPrize):
-                    slot_pack = l.pack_id
             if isinstance(place.prize, SlotsPrize):
+                # special handling: battlefield selection for failed slot machines which fights mimic #3
+                slot_pack = cast(BossFightLocation, world.get_location(Mimic3BossFight)).pack_id
                 room = place._rooms[0]
                 identifier = str(uuid4())
                 if E0353_BOSS_BATTLE not in builders:

@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0033_OPEN_CHEST),
-	CreatePacketAt7010(packet=P014_FLOWER_COLLECTION, destinations=["EVENT_882_ret_3"]),
+	CreatePacketAt7010(packet=P101_FLOWER_COLLECTION, destinations=["EVENT_882_ret_3"]),
 	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_882_ret_3"),
 	Return()
 ])

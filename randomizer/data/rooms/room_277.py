@@ -130,7 +130,27 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        BattlePackNPC( # 2
+        RegularClone( # 2
+            npc=npcs.CROOK_NPC,
+            event_script=E3192_MINES_LEFT_HENCHMAN,
+            action_script=A0617_MINES_LEFT_CROOK,
+            visible=False,
+            x=0,
+            y=0,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,),
+        RegularClone( # 3
+            npc=npcs.CROOK_NPC,
+            event_script=E3192_MINES_LEFT_HENCHMAN,
+            action_script=A0617_MINES_LEFT_CROOK,
+            visible=False,
+            x=0,
+            y=0,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,),
+        BattlePackNPC( # 4
             npc=npcs.MAGMITE_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             after_battle=PostBattleBehaviour.REMOVE_PERMANENTLY,
@@ -158,7 +178,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        BattlePackClone( # 3
+        BattlePackClone( # 5
             npc=npcs.MAGMITE_NPC,
             battle_pack=41,
             action_script=A0727_MAGMITES,
@@ -168,7 +188,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHEAST),
-        BattlePackNPC( # 4
+        BattlePackNPC( # 6
             npc=npcs.SPARKY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             after_battle=PostBattleBehaviour.REMOVE_PERMANENTLY_NO_IFRAME_COLLISION,
