@@ -106,9 +106,7 @@ script = EventScript([
     Jmp(["increment_70B1_final_2"]),
     CreatePacketAtObjectCoords(P068_BOOSTER_HILL_PRIZE_15, MARIO, ["summon_flower_16__"],  identifier="summon_flower_16_"),
     RunEventAsSubroutine(E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT, identifier="summon_flower_16__"),
-    
-	Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier="increment_70B1_final_2"),
-	Pause(8),
+	Pause(8, identifier="increment_70B1_final_2"),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_SetWalkingSpeed(FAST),
 		A_WalkNorthPixels(4),

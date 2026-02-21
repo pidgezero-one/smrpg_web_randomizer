@@ -1,4 +1,4 @@
-dialog_data = [""]*614
+dialog_data = [""]*615
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -799,7 +799,7 @@ dialog_data[277] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
   [select]  (Don't go with him)[await]'''
 dialog_data[278] = ''' Follow me, it's right this way.[await]'''
 dialog_data[279] = ''' Okay, whatever![await]'''
-dialog_data[280] = ''' There are no more flowers left.
+dialog_data[280] = ''' There are no more items left.
  Let's leave now.[await]
   [select]  (Okay)
   [select]  (No)[await]'''
@@ -1719,4 +1719,11 @@ dialog_data[609] = '''`CHARACTER` learns `SPELL_27`[await]'''
 dialog_data[610] = '''`CHARACTER` learns `SPELL_27`[end]'''
 dialog_data[611] = '''    Sent an item to another player[await]'''
 dialog_data[612] = '''Sent an item to another player![end]'''
-dialog_data[613] = '''[await]'''
+dialog_data[613] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
+ This is “Booster Hill”, where there
+ isn't much besides barrels.[await][page]
+ You'll need to come back later.[await]
+ So, please follow me to the exit.[await]
+  [select]  (Go with him)
+  [select]  (Don't go with him)[await]'''
+dialog_data[614] = '''[await]'''

@@ -4021,7 +4021,7 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
 ########## booster hill
 
 
-class BoosterHillGuaranteedItem1(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem1(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 0
     _originally_held = FPFlowerPrize
@@ -4039,7 +4039,7 @@ class BoosterHillGuaranteedItem1(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 0 to 1
 
 
-class BoosterHillGuaranteedItem2(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem2(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 1
     _originally_held = FPFlowerPrize
@@ -4057,7 +4057,7 @@ class BoosterHillGuaranteedItem2(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 1 to 2
 
 
-class BoosterHillGuaranteedItem3(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem3(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 2
     _originally_held = FPFlowerPrize
@@ -4075,7 +4075,7 @@ class BoosterHillGuaranteedItem3(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 2 to 3
 
 
-class BoosterHillGuaranteedItem4(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem4(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 3
     _originally_held = FPFlowerPrize
@@ -4093,7 +4093,7 @@ class BoosterHillGuaranteedItem4(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 3 to 4
 
 
-class BoosterHillGuaranteedItem5(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem5(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 4
     _originally_held = FPFlowerPrize
@@ -4111,7 +4111,7 @@ class BoosterHillGuaranteedItem5(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 4 to 5
 
 
-class BoosterHillGuaranteedItem6(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem6(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 5
     _originally_held = FPFlowerPrize
@@ -4129,7 +4129,7 @@ class BoosterHillGuaranteedItem6(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 5 to 6
 
 
-class BoosterHillGuaranteedItem7(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem7(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 6
     _originally_held = FPFlowerPrize
@@ -4147,7 +4147,7 @@ class BoosterHillGuaranteedItem7(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 6 to 7
 
 
-class BoosterHillGuaranteedItem8(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem8(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 7
     _originally_held = FPFlowerPrize
@@ -4165,7 +4165,7 @@ class BoosterHillGuaranteedItem8(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 7 to 8
 
 
-class BoosterHillGuaranteedItem9(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem9(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 8
     _originally_held = FPFlowerPrize
@@ -4183,7 +4183,7 @@ class BoosterHillGuaranteedItem9(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 8 to 9
 
 
-class BoosterHillGuaranteedItem10(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem10(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 9
     _originally_held = FPFlowerPrize
@@ -4201,7 +4201,7 @@ class BoosterHillGuaranteedItem10(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 9 to 10
 
 
-class BoosterHillGuaranteedItem11(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem11(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 10
     _originally_held = FPFlowerPrize
@@ -4219,7 +4219,7 @@ class BoosterHillGuaranteedItem11(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 10 to 11
 
 
-class BoosterHillGuaranteedItem12(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem12(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 11
     _originally_held = FPFlowerPrize
@@ -4237,7 +4237,7 @@ class BoosterHillGuaranteedItem12(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 11 to 12
 
 
-class BoosterHillGuaranteedItem13(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem13(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 12
     _originally_held = FPFlowerPrize
@@ -4255,7 +4255,7 @@ class BoosterHillGuaranteedItem13(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 12 to 13
 
 
-class BoosterHillGuaranteedItem14(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem14(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 13
     _originally_held = FPFlowerPrize
@@ -4273,7 +4273,7 @@ class BoosterHillGuaranteedItem14(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 13 to 14
 
 
-class BoosterHillGuaranteedItem15(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem15(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 14
     _originally_held = FPFlowerPrize
@@ -4291,7 +4291,7 @@ class BoosterHillGuaranteedItem15(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 14 to 15
 
 
-class BoosterHillGuaranteedItem16(StandingLocation, BoosterHillLocation):
+class BoosterHillGuaranteedItem16(BoosterHillLocation, StandingLocation):
     _bias = True
     _70B1_id = 15
     _originally_held = FPFlowerPrize

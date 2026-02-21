@@ -78,7 +78,7 @@ script = EventScript([
 	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
     Jmp(["EVENT_3507_pause_18"]),
 
-	RunDialog(dialog_id=DI1199_TOAD_WARNS_YOU_TO_LEAVE_EMPTY_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="booster_hill_already_done"),
+	RunDialog(dialog_id=DI2003_TOAD_WARNS_YOU_TO_LEAVE_EMPTY_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="booster_hill_already_done"),
 	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
 	Pause(10, identifier="EVENT_3507_pause_18"),
 	SetAsyncActionScript(MARIO, A0670_NOD_YES),
@@ -96,7 +96,7 @@ script = EventScript([
 	Return(),
 	JmpIfBitSet(BOOSTER_HILL_CLOSED, ["EVENT_3507_pause_38"], identifier="EVENT_3507_copy_var_to_var_26"),
 	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
-	CompareVarToConst(PRIMARY_TEMP_7000, 8),
+	CompareVarToConst(PRIMARY_TEMP_7000, 16),
 	JmpIfComparisonResultIsLesser(["EVENT_3507_pause_38"]),
 	Pause(10),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),

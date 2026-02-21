@@ -48,18 +48,19 @@ Mushroom kingdom
 - palette is wrong if you get into calamari fight in mushroom kingdom (failed slots)
 🚧 bluebirds have bad partition
   🚧 partition reset works, but i did it wrong in the outdoor,s, fixed birds but messed up mushroom guys
-  - needs fix in upper floor of terrorized house (base floor is fine)
-  - antechamber before throne room as well
-  - branch room before the vault as well
-  - staircase room also
-  - entrance to peach's room also
-  - throne room also
-  - coming out backwards from antechamber loads you inside the guy you can jump on. move him over to the left a bit
-- occupied main hall door is preopened. might be applying tile mod incorrectly
-- not a huge deal but if you leave toadstools room after getting the toad rescue prize, the hallway doesnt reset until you go all the way back to the main hall. should reset as soon as you leave toadstools room\
-- guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
-  - seems to be using wallet guy's scripts?
-- if you save the family, leave, and come back in, still acts as the occupied version of the house
+  🚧 needs fix in upper floor of terrorized house (base floor is fine)
+  🚧 antechamber before throne room as well
+  🚧 branch room before the vault as well
+  🚧 staircase room also
+  🚧 entrance to peach's room also
+  🚧 throne room also
+🚧 coming out backwards from antechamber loads you inside the guy you can jump on. move him over to the left a bit
+🚧 occupied main hall door is preopened. might be applying tile mod incorrectly
+  🚧 this is normal. just make sure door acts as always open, ie does not make opening sound
+🚧 not a huge deal but if you leave toadstools room after getting the toad rescue prize, the hallway doesnt reset until you go all the way back to the main hall. should reset as soon as you leave toadstools room\
+🚧 guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
+  🚧 seems to be using wallet guy's scripts?
+🚧 if you save the family, leave, and come back in, still acts as the occupied version of the house
 
 bandit's way
 - room 4, second chest: pick me up shows as mushroom
@@ -121,11 +122,10 @@ Booster Tower
 - johnny doesnt do an animation in place of booster crying?
 
 Booster Hill
-- works! except captee disappears after hit for the first time. still can be interacted with, just not visible
-- don't forget: henchmen must always inherit snifit solidity
-- item counter is wrong, said i got 8/16 when i only got 4
-- revisit: toad does not recognize that you can pick up more items, thinks it's not unlocked yet
-  - items still appear, though!
+🚧 works! except captee disappears after hit for the first time. still can be interacted with, just not visible
+🚧 don't forget: henchmen must always inherit snifit solidity
+🚧 item counter is wrong, said i got 8/16 when i only got 4
+🚧 revisit: toad does not recognize that you can pick up more items, thinks it's not unlocked yet
 
 Marrymore
 🚧 bloober sprites are wrong (incorrect buffer for their sprite size)

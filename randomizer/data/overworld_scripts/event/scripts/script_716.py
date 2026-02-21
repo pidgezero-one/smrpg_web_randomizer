@@ -32,12 +32,13 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["jumping_kids_house_mk_not_liberated_yet"]),
-    JmpIfBitClear(OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_1_DEFEATED, ["jumping_kid_load_occupied_house"]),
-    JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_2_DEFEATED, ["jumping_kid_load_normal_house"]),
-    JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["jumping_kid_load_normal_house"], identifier="jumping_kids_house_mk_not_liberated_yet"),
-    EnterArea(R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, NORTHWEST, 6, 24, 2, run_entrance_event=True, identifier="jumping_kid_load_occupied_house"),
-    Return(),
+    JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["jumping_kid_load_normal_house"]),
+	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["jumping_kid_load_occupied_house"]),
+    JmpIfObjectInSpecificLevel(NPC_3, R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, ["jumping_kid_load_occupied_house"]),
+    JmpIfObjectInSpecificLevel(NPC_4, R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, ["jumping_kid_load_occupied_house"]),
+    JmpIfObjectInSpecificLevel(NPC_1, R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, ["jumping_kid_load_occupied_house"]),
     EnterArea(R488_MUSHROOM_KINGDOM_JUMPING_KIDS_HOUSE_1F, NORTHWEST, 6, 24, 2, run_entrance_event=True, identifier="jumping_kid_load_normal_house"),
+    Return(),
+    EnterArea(R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, NORTHWEST, 6, 24, 2, run_entrance_event=True, identifier="jumping_kid_load_occupied_house"),
     Return()
 ])

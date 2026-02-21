@@ -2234,6 +2234,18 @@ class CastleKey1Item(RegularItem):
     _inflict_type = None
 
 
+class MarioDollItem(RegularItem):
+    """Mario Doll item class"""
+    _item_name: str = "Mario Doll"
+    _prefix = ItemPrefix.EMPTY_SPACE
+
+    _item_id: int = 133
+    _description: str = " It's an\n action figure"
+    _price: int = 0
+
+    _inflict_type = None
+
+
 class CastleKey2Item(RegularItem):
     """Castle Key 2 item class"""
     _item_name: str = "Castle Key 2"
@@ -2634,6 +2646,17 @@ class GreaperFlagItem(RegularItem):
     _inflict_type = None
 
 
+class GoldPaintItem(RegularItem):
+    """Gold Paint item class"""
+    _item_name: str = "Gold Paint"
+    _prefix = ItemPrefix.EMPTY_SPACE
+
+    _item_id: int = 164
+    _description: str = " Garro\n uses it"
+    _price: int = 0
+    _inflict_type = None
+
+
 class CricketJamItem(RegularItem):
     """Cricket Jam item class"""
     _item_name: str = "Cricket Jam"
@@ -2724,8 +2747,8 @@ class ShoesItem(RegularItem):
     _item_name: str = "Shoes"
     _prefix = ItemPrefix.EMPTY_SPACE
 
-    _item_id: int = 230
-    _description: str = ""
+    _item_id: int = 167
+    _description: str = " There's no\n place like home"
     _price: int = 0
     _inflict_type = None
 
@@ -2735,8 +2758,8 @@ class BroochItem(RegularItem):
     _item_name: str = "Brooch"
     _prefix = ItemPrefix.EMPTY_SPACE
 
-    _item_id: int = 231
-    _description: str = ""
+    _item_id: int = 168
+    _description: str = " A shiny brooch!"
     _price: int = 0
     _inflict_type = None
 
@@ -2746,8 +2769,8 @@ class RingItem(RegularItem):
     _item_name: str = "Ring"
     _prefix = ItemPrefix.EMPTY_SPACE
 
-    _item_id: int = 232
-    _description: str = ""
+    _item_id: int = 169
+    _description: str = " An expensive\n ring!"
     _price: int = 0
     _inflict_type = None
 
@@ -2757,32 +2780,9 @@ class CrownItem(RegularItem):
     _item_name: str = "Crown"
     _prefix = ItemPrefix.EMPTY_SPACE
 
-    _item_id: int = 233
-    _description: str = ""
+    _item_id: int = 170
+    _description: str = " A fancy crown!"
     _price: int = 0
-    _inflict_type = None
-
-
-class GoldPaintItem(RegularItem):
-    """Gold Paint item class"""
-    _item_name: str = "Gold Paint"
-    _prefix = ItemPrefix.EMPTY_SPACE
-
-    _item_id: int = 234
-    _description: str = ""
-    _price: int = 0
-    _inflict_type = None
-
-
-class MarioDollItem(RegularItem):
-    """Mario Doll item class"""
-    _item_name: str = "Mario Doll"
-    _prefix = ItemPrefix.EMPTY_SPACE
-
-    _item_id: int = 235
-    _description: str = ""
-    _price: int = 0
-
     _inflict_type = None
 
 
@@ -2934,7 +2934,7 @@ ITEMS = ItemCollection([
     CricketPieItem(),  # item_id: 130
     RockCandyItem(),  # item_id: 131
     CastleKey1Item(),  # item_id: 132
-    DummyItem(133),  # item_id: 133
+    MarioDollItem(),  # item_id: 133
     CastleKey2Item(),  # item_id: 134
     BambinoBombItem(),  # item_id: 135
     SheepAttackItem(),  # item_id: 136
@@ -2965,13 +2965,13 @@ ITEMS = ItemCollection([
     BigBooFlagItem(),  # item_id: 161
     DryBonesFlagItem(),  # item_id: 162
     GreaperFlagItem(),  # item_id: 163
-    DummyItem(164),  # item_id: 164
+    GoldPaintItem(),  # item_id: 164
     DummyItem(165),  # item_id: 165
     CricketJamItem(),  # item_id: 166
-    DummyItem(167),  # item_id: 167
-    DummyItem(168),  # item_id: 168
-    DummyItem(169),  # item_id: 169
-    DummyItem(170),  # item_id: 170
+    ShoesItem(),  # item_id: 167
+    BroochItem(),  # item_id: 168
+    RingItem(),  # item_id: 169
+    CrownItem(),  # item_id: 170
     DummyItem(171),  # item_id: 171
     FireworksItem(),  # item_id: 172
     StayVoucherItem(),  # item_id: 173
@@ -3031,12 +3031,12 @@ ITEMS = ItemCollection([
     DummyItem(227),  # item_id: 227
     DummyItem(228),  # item_id: 228
     DummyItem(229),  # item_id: 229
-    ShoesItem(),  # item_id: 230
-    BroochItem(),  # item_id: 231
-    RingItem(),  # item_id: 232
-    CrownItem(),  # item_id: 233
-    GoldPaintItem(),  # item_id: 234
-    MarioDollItem(),  # item_id: 235
+    DummyItem(230),  # item_id: 230
+    DummyItem(231),  # item_id: 231
+    DummyItem(232),  # item_id: 232
+    DummyItem(233),  # item_id: 233
+    DummyItem(234),  # item_id: 234
+    DummyItem(235),  # item_id: 235
 ])
 ITEMS.set_additional_desc_ranges([
     (0x3AFA00, 0x3B0000)

@@ -35,6 +35,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_1,
     NPC_2,
     NPC_3,
+    NPC_4,
+    NPC_8
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
 
@@ -461,3 +463,15 @@ def update_johnny_room_partition(world: GameWorld) -> None:
 def update_mushroom_kingdom_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, NPC_0, 1)
     _update_buffer_by_room_object(world, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, NPC_0, 0)
+    _update_buffer_by_room_object(world, R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, NPC_1, 1)
+    _update_buffer_by_room_object(world, R323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM, NPC_0, 0)
+    _update_buffer_by_room_object(world, R323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM, NPC_1, 1)
+    _update_buffer_by_room_object(world, R323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM, NPC_1, 2)
+    _update_buffer_by_room_object(world, R329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM, NPC_0, 0)
+    _update_buffer_by_room_object(world, R329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM, NPC_1, 1)
+    _update_buffer_by_room_object(world, R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, NPC_0, 0)
+    _update_buffer_by_room_object(world, R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, NPC_1, 1)
+    _update_buffer_by_room_object(world, R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM, NPC_0, 0)
+    _update_buffer_by_room_object(world, R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM, NPC_1, 1)
+    _update_buffer_by_room_object(world, R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, NPC_4, 0)
+    _update_buffer_by_room_object(world, R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, NPC_8, 1)

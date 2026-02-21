@@ -64,18 +64,6 @@ room = Room(
     music=M0015_HERE_SSOMEWEAPONS,
     entrance_event=E0371_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_LOADER,
     events=[
-        Event(
-            event=E0328_DETECT_MAIN_HALL_DOOR_OPENED,
-            x=10,
-            y=18,
-            z=2,
-            f=EdgeDirection.SOUTHWEST,
-            length=2,
-            height=2,
-            nw_se_edge_active=True,
-            ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
     ],
     exits=[
         RoomExit(
