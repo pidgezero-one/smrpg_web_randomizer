@@ -1,4 +1,4 @@
-# E0220_EMPTY
+# E0220_HILL_GET_COINS
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -33,4 +33,13 @@ from ....spells.spells import *
 
 script = EventScript([
 
+	AddCoins(PRIMARY_TEMP_7000),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["hill_1_coin"]),
+    RunDialog(dialog_id=DI4050_GOT_X_COINS_AUTO_TERMINATE, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	PlaySound(sound=SO013_COIN, channel=6),
+	Return(),
+	RunDialog(dialog_id=DI4047_GOT_A_COIN_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="hill_1_coin"),
+	PlaySound(sound=SO013_COIN, channel=6),
+    Return(),
+    
 ])

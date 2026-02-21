@@ -37,7 +37,7 @@ script = EventScript([
 	SetBit(TEMP_7043_2),
 	JmpIfVarEqualsConst(SECONDARY_TEMP_7024, 4, ["EVENT_1576_db_5"]),
 	Return(identifier="EVENT_1576_ret_4"),
-	UnknownCommand(bytearray(b'\xfd\x8d'), identifier="EVENT_1576_db_5"),
+	UnknownCommand(bytearray([0xFD, 0x8D]), identifier="EVENT_1576_db_5"),
 	ApplyTileModToLevel(use_alternate=True, room_id=R068_MIDAS_RIVER_BARREL_JUMPING_RIVER, mod_id=1),
 	Return()
 ])

@@ -38,7 +38,7 @@ script = EventScript([
 	EnableControlsUntilReturn([X, B]),
 	StartSyncEmbeddedActionScript(target=SCREEN_FOCUS, prefix=0xF1, subscript=[
 		A_SetWalkingSpeed(FAST),
-		A_UnknownCommand(bytearray(b'\xc8\x92')),
+		A_UnknownCommand(bytearray([0xC8, 0x92])),
 		A_AddConstToVar(X_COORD_2, 65532),
 		A_AddConstToVar(Y_COORD_2, 65522),
 		A_WalkTo70167018()
@@ -53,7 +53,7 @@ script = EventScript([
 	Set7000ToTappedButton(),
 	JmpIf7000AllBitsClear(bits=[7], destinations=["EVENT_3143_set_7000_to_pressed_button_11"]),
 	ActionQueueSync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9c\x04')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x04])),
 		A_JumpToHeight(height=108, silent=True)
 	]),
 	Set7000ToPressedButton(identifier="EVENT_3143_set_7000_to_pressed_button_11"),

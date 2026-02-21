@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	LearnSpell(MALLOW, ShockerSpell, identifier="hill_river_spell_10_character"),
-	PlaySound(sound=SO085_FLOWER, channel=6),
 	RunDialog(dialog_id=DI1966_LEARN_SPELL_10_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	PlaySound(sound=SO085_FLOWER, channel=6),
 	Return()
 ])

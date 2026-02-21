@@ -178,7 +178,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1739_REFOCUS_CAMERA),
 	ActionQueueAsync(target=MEM_70AB, subscript=[
 		A_SetVarToConst(TEMP_7034, 65535),
-		A_UnknownCommand(bytearray(b'\xc7\x13')),
+		A_UnknownCommand(bytearray([0xC7, 0x13])),
 		A_AddConstToVar(X_COORD_1, 80),
 		A_AddConstToVar(Z_COORD_1, 128),
 		A_Pause(1, identifier="EVENT_1777_action_queue_26_SUBSCRIPT_pause_4"),

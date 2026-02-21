@@ -44,19 +44,19 @@ script = EventScript([
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=True)
 	]),
 	ActionQueueSync(target=NPC_2, subscript=[
-		A_UnknownCommand(bytearray(b'\x99'))
+		A_UnknownCommand(bytearray([0x99]))
 	]),
 	ActionQueueSync(target=NPC_3, subscript=[
-		A_UnknownCommand(bytearray(b'\x99'))
+		A_UnknownCommand(bytearray([0x99]))
 	]),
 	ActionQueueSync(target=NPC_4, subscript=[
-		A_UnknownCommand(bytearray(b'\x99'))
+		A_UnknownCommand(bytearray([0x99]))
 	]),
 	ActionQueueSync(target=NPC_5, subscript=[
-		A_UnknownCommand(bytearray(b'\x99'))
+		A_UnknownCommand(bytearray([0x99]))
 	]),
 	ActionQueueAsync(target=NPC_6, subscript=[
-		A_UnknownCommand(bytearray(b'\x99'))
+		A_UnknownCommand(bytearray([0x99]))
 	]),
 	Pause(6),
 	SummonObjectToCurrentLevel(NPC_2),

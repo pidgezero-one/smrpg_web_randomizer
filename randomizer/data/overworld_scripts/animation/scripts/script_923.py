@@ -26,9 +26,9 @@ script = ActionScript([
 	A_Pause(15),
 	A_Pause(15, identifier="ACTION_923_pause_8"),
 	A_Pause(15, identifier="ACTION_923_pause_9"),
-	A_UnknownCommand(bytearray(b' \x05'), identifier="ACTION_923_db_10"),
-	A_EmbeddedAnimationRoutine(bytearray(b'&\x00\x00\x00\x00\x00\x00\x00\x08\x00\x01\x00\x00\x00\x01\x80')),
-	A_EmbeddedAnimationRoutine(bytearray(b'(\x00\x00\x00\x00\x00\xc0\x00\x02\x00\x01\x00\x00\x00\x02\x80')),
+	A_UnknownCommand(bytearray([0x20, 0x05]), identifier="ACTION_923_db_10"),
+	A_EmbeddedAnimationRoutine(bytearray([0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x80])),
+	A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80])),
 	A_Pause(1, identifier="ACTION_923_pause_13"),
 	A_Jmp(["ACTION_923_pause_13"])
 ])

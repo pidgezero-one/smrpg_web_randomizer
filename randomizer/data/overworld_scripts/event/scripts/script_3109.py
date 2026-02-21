@@ -38,7 +38,7 @@ script = EventScript([
 		A_PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
 		A_Pause(30),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
     PlaySound(sound=SO085_FLOWER, channel=6),
 	SetBit(BEETLEMANIA_UNLOCKED),

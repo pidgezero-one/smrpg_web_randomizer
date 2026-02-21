@@ -34,6 +34,6 @@ from ....spells.spells import *
 script = EventScript([
 	EnableControls([]),
 	SetSyncActionScript(NPC_9, A0119_SLOW_SEQUENCE_LOOP),
-	UnknownCommand(bytearray(b'\xfdE')),
+	UnknownCommand(bytearray([0xFD, 0x45])),
 	Return()
 ])

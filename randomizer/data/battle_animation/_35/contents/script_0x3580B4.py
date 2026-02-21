@@ -25,7 +25,7 @@ script = AnimationScriptBlock(expected_size=183, expected_beginning=0x3580B4, sc
 	SpriteSequence(sequence=0, looping_off=True, identifier="command_0x3580E2"),
 	ResetTargetMappingMemory(),
 	SetAMEM60ToCurrentTarget(),
-	UnknownCommand(bytearray(b'Dh')),
+	UnknownCommand(bytearray([0x44, 0x68])),
 	Jmp(["movesprite_routine"]),
 	SpriteSequence(sequence=0, looping_off=True, identifier="command_0x3580F5"),
 	ResetTargetMappingMemory(),
@@ -70,7 +70,7 @@ script = AnimationScriptBlock(expected_size=183, expected_beginning=0x3580B4, sc
 	RunSubroutine(["command_0x3536FF"]),
 	ReturnSubroutine(),
 	PauseScriptUntilAMEMBitsSet(0x6F, [0], identifier="moved_poison_code"),
-	UnknownCommand(bytearray(b'\x8c')),
+	UnknownCommand(bytearray([0x8C])),
 	ResetSpriteSequence(),
 	ReturnSubroutine(),
 ])

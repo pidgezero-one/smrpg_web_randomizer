@@ -36,7 +36,7 @@ script = EventScript([
 	ActionQueueAsync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	StoreItemAmountTo7000(AltoCardItem),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3110_set_var_to_const_9"]),

@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	LearnSpell(TOADSTOOL, GroupHugSpell, identifier="hill_river_spell_23_character"),
-	PlaySound(sound=SO085_FLOWER, channel=6),
 	RunDialog(dialog_id=DI1992_LEARN_SPELL_23_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	PlaySound(sound=SO085_FLOWER, channel=6),
 	Return()
 ])

@@ -37,7 +37,7 @@ script = EventScript([
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 		A_Pause(30),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	PlaySound(sound=SO013_COIN, channel=6),
 	AddCoins(PRIMARY_TEMP_7000),

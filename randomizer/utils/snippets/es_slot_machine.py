@@ -79,19 +79,19 @@ def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id:
             A_SetSpriteSequence(index=2, is_sequence=True, looping=True)
         ]),
         ActionQueueSync(target=npcs[0], subscript=[
-            A_UnknownCommand(bytearray(b'\x99'))
+            A_UnknownCommand(bytearray([0x99]))
         ]),
         ActionQueueSync(target=npcs[1], subscript=[
-            A_UnknownCommand(bytearray(b'\x99'))
+            A_UnknownCommand(bytearray([0x99]))
         ]),
         ActionQueueSync(target=npcs[2], subscript=[
-            A_UnknownCommand(bytearray(b'\x99'))
+            A_UnknownCommand(bytearray([0x99]))
         ]),
         ActionQueueSync(target=npcs[3], subscript=[
-            A_UnknownCommand(bytearray(b'\x99'))
+            A_UnknownCommand(bytearray([0x99]))
         ]),
         ActionQueueAsync(target=npcs[4], subscript=[
-            A_UnknownCommand(bytearray(b'\x99'))
+            A_UnknownCommand(bytearray([0x99]))
         ]),
         Pause(6),
         SummonObjectToCurrentLevel(npcs[0]),

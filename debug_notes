@@ -15,7 +15,7 @@ General
   - this might be enemy dependent. pulsars in bowsers keep did it
 🚧 "Got the Brooch" chest dialog doesn't go away
 - cymbals not making a sound?
-- physical immunity not doing anything? transforming formless, killing dry bones
+🚧 physical immunity not doing anything? transforming formless, killing dry bones
 
 Boss-specific
 - torte henchman is untargetable in battle
@@ -27,7 +27,7 @@ Boss-specific
   🚧 movement might be related to monster behaviours. ie raspberry shuold not move forward when attacking but it does
 🚧 jinx 4 too - am i increasing the counter?
 🚧 booster 2 "I'm gonna start working" after KOed
-- boomer should always be on chandelier
+🚧 boomer should always be on chandelier
 🚧 cloaker/domino running empoty dialogs
 🚧 why did mokura transform from physical attack
 🚧 normal booster running empty dialogs
@@ -35,36 +35,25 @@ Boss-specific
   🚧 also showing empty dialogs
 🚧 valentina uses empty dialogs
 - dodo's sequence before he takes valentina away is really messed up
-- fire bomb topped smilaxes from floating? not super important
+- fire bomb stopped smilaxes from floating? not super important
 
 Mushroom Way 
 🚧 fireworks freestanding item on top plateau stops you from moving
-- czar dragon in mushroom way messes up shadows. why using that sprite?
-  - consider 4096 for vram. might need to specify its min npc vram to be accurate to its tile count
-  - actually, why don't we do that automatically for some npcs? 
+🚧 czar dragon in mushroom way messes up shadows. why using that sprite?
+  - they have the exact same specs. how???
 
 Mushroom kingdom
-🚧 toad in yard in liberated mode is desynced from enemy chasing him
 - palette is wrong if you get into calamari fight in mushroom kingdom (failed slots)
-🚧 bluebirds have bad partition
-  🚧 partition reset works, but i did it wrong in the outdoor,s, fixed birds but messed up mushroom guys
-  🚧 needs fix in upper floor of terrorized house (base floor is fine)
-  🚧 antechamber before throne room as well
-  🚧 branch room before the vault as well
-  🚧 staircase room also
-  🚧 entrance to peach's room also
-  🚧 throne room also
+🚧 check toad partition is ok with bluebirds in peach antechamber, vault branch rooms
+🚧 the one red bird is facing the wrong direction and has a bad partition, everyone else is okay. weird
 🚧 coming out backwards from antechamber loads you inside the guy you can jump on. move him over to the left a bit
-🚧 occupied main hall door is preopened. might be applying tile mod incorrectly
-  🚧 this is normal. just make sure door acts as always open, ie does not make opening sound
 🚧 not a huge deal but if you leave toadstools room after getting the toad rescue prize, the hallway doesnt reset until you go all the way back to the main hall. should reset as soon as you leave toadstools room\
-🚧 guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
-  🚧 seems to be using wallet guy's scripts?
-🚧 if you save the family, leave, and come back in, still acts as the occupied version of the house
+- guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
+  - seems to be using wallet guy's scripts?
 
 bandit's way
 - room 4, second chest: pick me up shows as mushroom
-- two stars in room 4. should not be allowed
+🚧 two stars in room 4. should not be allowed
 
 Kero sewers
 🚧 kero sewers is not blocked when it should be
@@ -83,7 +72,7 @@ Rose way
 
 
 Rose Town
-- pandorite in house: packet stays there without disappearing
+🚧 pandorite in house: packet stays there without disappearing
 - cymbals: does not render at all
 - pandorite chest did not reload with a reward
 - red guy should not be outside his house 
@@ -122,10 +111,8 @@ Booster Tower
 - johnny doesnt do an animation in place of booster crying?
 
 Booster Hill
-🚧 works! except captee disappears after hit for the first time. still can be interacted with, just not visible
-🚧 don't forget: henchmen must always inherit snifit solidity
-🚧 item counter is wrong, said i got 8/16 when i only got 4
-🚧 revisit: toad does not recognize that you can pick up more items, thinks it's not unlocked yet
+- pickup coin rendered as a flower
+- something's wrong with counter. jumped way too far ahead in 70b2 after first clear
 
 Marrymore
 🚧 bloober sprites are wrong (incorrect buffer for their sprite size)
@@ -209,7 +196,7 @@ Nimbus Land
 🚧 statues in statue room face wrong direction
 🚧 mallow statue palette in garros house is wrong and partially cut off
 🚧 hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
-- did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings
+🚧 did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings
 🚧 trueform pin packet did not appear in forkies room
 🚧 chests broken in post-birdo room
 🚧 bowsers keep condition not substituted in dialog

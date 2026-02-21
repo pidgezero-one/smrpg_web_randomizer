@@ -288,9 +288,9 @@ script = EventScript([
 		A_OverwriteSolidity(),
 		A_SequenceLoopingOn(),
 		A_PlaySound(sound=SO004_JUMP, channel=4),
-		A_UnknownCommand(bytearray(b' \x07')),
-		A_UnknownCommand(bytearray(b'$ \x01\xa0\xff')),
-		A_UnknownCommand(bytearray(b'%\xc0\x06\x80\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_UnknownCommand(bytearray([0x24, 0x20, 0x01, 0xA0, 0xFF])),
+		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 		A_Pause(25),
 		A_BPL262728(),
 		A_Pause(10),
@@ -338,9 +338,9 @@ script = EventScript([
 		A_SetSpriteSequence(index=0, sprite_offset=3, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	ActionQueueAsync(target=NPC_3, subscript=[
-		A_UnknownCommand(bytearray(b' \x07')),
-		A_UnknownCommand(bytearray(b'$\xe0\xfe`\x00')),
-		A_UnknownCommand(bytearray(b'%\xc0\x06\x80\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_UnknownCommand(bytearray([0x24, 0xE0, 0xFE, 0x60, 0x00])),
+		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 		A_Pause(32),
 		A_BPL262728()
 	]),

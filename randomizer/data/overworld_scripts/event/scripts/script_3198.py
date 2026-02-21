@@ -160,7 +160,7 @@ script = EventScript([
 		A_WalkToXYCoords(x=19, y=32),
 		A_VisibilityOff(),
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	], identifier="EVENT_3198_action_queue_17"),
 	SummonObjectToSpecificLevel(NPC_0, R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM),
 	RemoveObjectFromSpecificLevel(NPC_1, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM),

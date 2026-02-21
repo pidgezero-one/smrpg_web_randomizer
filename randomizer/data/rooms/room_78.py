@@ -106,7 +106,7 @@ room = Room(
         ChestNPC(  # 0
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E1538_BANDITS_WAY_STAR_CHEST_CAMERA_AND_DOGS,
+            event_script=E1548_BANDITS_WAY_4_CHEST_SELECTOR,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=1,
             upper_70a7=0,

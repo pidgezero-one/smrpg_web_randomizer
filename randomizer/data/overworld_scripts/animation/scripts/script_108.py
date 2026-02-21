@@ -17,8 +17,8 @@ from ....items import *
 
 script = ActionScript([
 	A_StartLoopNTimes(2),
-	A_UnknownCommand(bytearray(b' \x04')),
-	A_UnknownCommand(bytearray(b'%\xc0\x06\x80\xff')),
+	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 	A_Walk1StepSouthwest(),
 	A_WalkSouthwestPixels(11),
 	A_BPL262728(),
@@ -29,8 +29,8 @@ script = ActionScript([
 	A_Walk1StepSouthwest(),
 	A_WalkSouthwestPixels(14),
 	A_Pause(2),
-	A_UnknownCommand(bytearray(b' \x04')),
-	A_UnknownCommand(bytearray(b'%\xc0\x06\x80\xff')),
+	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 	A_Walk1StepSouthwest(),
 	A_WalkSouthwestPixels(11),
 	A_BPL262728(),

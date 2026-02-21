@@ -55,7 +55,7 @@ script = EventScript([
 		A_SetWalkingSpeed(FASTEST, identifier="EVENT_1739_action_queue_15_SUBSCRIPT_set_animation_speed_4"),
 		A_Jmp(["EVENT_1739_action_queue_15_SUBSCRIPT_db_7"]),
 		A_SetWalkingSpeed(FASTEST, identifier="EVENT_1739_action_queue_15_SUBSCRIPT_set_animation_speed_6"),
-		A_UnknownCommand(bytearray(b'\x98'), identifier="EVENT_1739_action_queue_15_SUBSCRIPT_db_7"),
+		A_UnknownCommand(bytearray([0x98]), identifier="EVENT_1739_action_queue_15_SUBSCRIPT_db_7"),
 		A_SetWalkingSpeed(FASTEST)
 	]),
 	Return()

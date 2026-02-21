@@ -26,11 +26,11 @@ script = ActionScript([
 	A_Dec(PRIMARY_TEMP_700C),
 	A_Dec(PRIMARY_TEMP_700C),
 	A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_70A9),
-	A_UnknownCommand(bytearray(b'\xc8\x11')),
+	A_UnknownCommand(bytearray([0xC8, 0x11])),
 	A_AddConstToVar(Z_COORD_2, 192),
 	A_AddConstToVar(X_COORD_2, 64),
 	A_AddConstToVar(Y_COORD_2, 48),
-	A_UnknownCommand(bytearray(b'\x99')),
+	A_UnknownCommand(bytearray([0x99])),
 	A_EndLoop(),
 	A_Jmp(["ACTION_443_face_mario_4"])
 ])

@@ -36,6 +36,6 @@ script = ActionScript([
 	A_Pause(2),
 	A_JmpIfObjectInSpecificLevel(NPC_1, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, ["ACTION_609_shift_z_up_pixels_14"]),
 	A_VisibilityOff(),
-	A_UnknownCommand(bytearray(b'\xfd\xf2')),
+	A_UnknownCommand(bytearray([0xFD, 0xF2])),
 	A_ReturnQueue()
 ])

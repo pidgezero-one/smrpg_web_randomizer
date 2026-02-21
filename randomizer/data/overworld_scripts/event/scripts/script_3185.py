@@ -72,7 +72,7 @@ script = EventScript([
 		A_WalkToXYCoords(x=6, y=24),
 		A_WalkToXYCoords(x=4, y=20),
 		A_WalkSouthwestSteps(2),
-		A_UnknownCommand(bytearray(b'\xfd\xf2')),
+		A_UnknownCommand(bytearray([0xFD, 0xF2])),
 		A_VisibilityOff()
 	]),
 	SetBit(MINES_BACK_OPENED),

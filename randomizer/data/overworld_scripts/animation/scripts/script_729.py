@@ -28,7 +28,7 @@ script = ActionScript([
 	A_SetSpriteSequence(index=3, is_sequence=True, looping=False),
 	A_Pause(20),
 	A_VisibilityOff(),
-	A_UnknownCommand(bytearray(b'\xc7\x07')),
+	A_UnknownCommand(bytearray([0xC7, 0x07])),
 	A_StartLoopNTimes(2),
 	A_AddConstToVar(Z_COORD_1, 32),
 	A_JmpToSubroutine(["ACTION_729_pause_42"]),

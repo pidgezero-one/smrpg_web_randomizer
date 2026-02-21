@@ -130,7 +130,7 @@ script = EventScript([
 	Pause(3),
 	PauseActionScript(NPC_1),
 	ActionQueueAsync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOn(),
 		A_SetWalkingSpeed(NORMAL),
@@ -161,7 +161,7 @@ script = EventScript([
 	Pause(3),
 	PauseActionScript(NPC_1),
 	ActionQueueAsync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_FixedFCoordOff(),
 		A_ResetProperties(),
 		A_Pause(10),

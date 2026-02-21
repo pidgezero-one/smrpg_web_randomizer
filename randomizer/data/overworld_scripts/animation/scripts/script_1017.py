@@ -1,4 +1,4 @@
-#A1017_EMPTY
+#A1017_MIMIC_1_POOF_WHEN_DEFEATED
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,18 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+	A_FloatingOff(),
+	A_VisibilityOff(),
+	A_SetSpriteSequence(index=4, is_sequence=True, looping=True),
+	A_Pause(9),
+	A_VisibilityOn(),
+	A_Pause(1, identifier="ACTION_1017_pause_5"),
+	A_JmpIfBitClear(MIMIC_1_CLEARED, ["ACTION_1017_pause_5"]),
+	A_JmpIfBitSet(RUN_AWAY, ["ACTION_1017_pause_10"]),
+	A_SetSpriteSequence(index=6, is_sequence=True, looping=True),
+	A_Pause(18),
+	A_Pause(6, identifier="ACTION_1017_pause_10"),
+	A_VisibilityOff(),
+	A_ReturnQueue()
+])

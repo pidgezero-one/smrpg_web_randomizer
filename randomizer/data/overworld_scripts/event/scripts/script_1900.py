@@ -36,7 +36,7 @@ script = EventScript([
 	Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True),
 	CompareVarToConst(PRIMARY_TEMP_7000, 1792),
 	JmpIfComparisonResultIsGreaterOrEqual(["EVENT_1900_pause_0"]),
-	UnknownCommand(bytearray(b'\xfdG')),
+	UnknownCommand(bytearray([0xFD, 0x47])),
 	RemoveObjectFromCurrentLevel(MARIO),
 	SetBit(DIRECTIONAL_7049_0),
 	EnableControls([]),

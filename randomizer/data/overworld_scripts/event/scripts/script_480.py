@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitClear(TEMP_7044_5, ["EVENT_256_ret_0"]),
-	UnknownCommand(bytearray(b'\xfdE')),
+	UnknownCommand(bytearray([0xFD, 0x45])),
 	ActionQueueSync(target=NPC_9, subscript=[
 		A_FaceSouthwest(),
 		A_SetSequenceSpeed(FAST)

@@ -25,7 +25,7 @@ script = ActionScript([
 	A_Set700CToPressedButton(identifier="ACTION_653_set_700C_to_pressed_button_6"),
 	A_AddConstToVar(PRIMARY_TEMP_700C, 65534),
 	A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=ACTIVE_NPC),
-	A_UnknownCommand(bytearray(b'\x97\x10')),
+	A_UnknownCommand(bytearray([0x97, 0x10])),
 	A_Jmp(["ACTION_653_set_700C_to_pressed_button_6"]),
 	A_SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES, identifier="ACTION_653_set_vram_priority_11"),
 	A_Set700CToPressedButton(identifier="ACTION_653_set_700C_to_pressed_button_12"),

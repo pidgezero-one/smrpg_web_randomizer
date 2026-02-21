@@ -39,9 +39,9 @@ script = EventScript([
 	EnterArea(room_id=R143_PIPE_VAULT_GOOMBATHUMPING_ROOM, face_direction=NORTHEAST, x=2, y=123, z=1, run_entrance_event=True),
 	EnableControlsUntilReturn([]),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\xc8\x00')),
+		A_UnknownCommand(bytearray([0xC8, 0x00])),
 		A_AddConstToVar(Z_COORD_2, 2304),
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_TransferXYZFPixels(x=16, y=0, z=0, direction=EAST),
 		A_JumpToHeight(height=0, silent=True)
 	]),

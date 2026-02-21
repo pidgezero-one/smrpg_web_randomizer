@@ -14,7 +14,7 @@ from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targe
 script = AnimationScriptBlock(expected_size=209, expected_beginning=0x357B73, script=[
 	ResetTargetMappingMemory(identifier="command_0x357B73"),
 	SetAMEM60ToCurrentTarget(),
-	UnknownCommand(bytearray(b'D8')),
+	UnknownCommand(bytearray([0x44, 0x38])),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=1024, arch_height=64),
 	Jmp(["shift_sprite_and_remap"]),
 	SetAMEM40ToXYZCoords(origin=CASTER_INITIAL_POSITION, x=-16, y=8, z=0, set_x=True, set_y=True, set_z=True, identifier="command_0x357B83"),
@@ -22,7 +22,7 @@ script = AnimationScriptBlock(expected_size=209, expected_beginning=0x357B73, sc
 	Jmp(["shift_sprite_and_remap"]),
 	ResetTargetMappingMemory(identifier="command_0x357B97"),
 	SetAMEM60ToCurrentTarget(),
-	UnknownCommand(bytearray(b'D8')),
+	UnknownCommand(bytearray([0x44, 0x38])),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=512, arch_height=128),
 	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
 	PlaySound(sound=S0111_SLEDGE),

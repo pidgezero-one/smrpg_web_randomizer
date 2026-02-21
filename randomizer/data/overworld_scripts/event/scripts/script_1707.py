@@ -187,25 +187,25 @@ script = EventScript([
 	ClearBit(TEMP_7044_2),
 	SetBit(TEMP_7044_3),
 	ActionQueueSync(target=MEM_70A9, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x12')),
+		A_UnknownCommand(bytearray([0xFD, 0x12])),
 		A_TransferToXYZF(x=10, y=90, z=0, direction=EAST)
 	], identifier="EVENT_1707_action_queue_94"),
 	Inc(TEMP_70A9),
 	JmpIfVarEqualsConst(TEMP_70A9, 28, ["EVENT_1707_clear_bit_107"]),
 	ActionQueueSync(target=MEM_70A9, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x12')),
+		A_UnknownCommand(bytearray([0xFD, 0x12])),
 		A_TransferToXYZF(x=14, y=102, z=0, direction=EAST)
 	], identifier="EVENT_1707_action_queue_97"),
 	Inc(TEMP_70A9),
 	JmpIfVarEqualsConst(TEMP_70A9, 28, ["EVENT_1707_clear_bit_107"]),
 	ActionQueueSync(target=MEM_70A9, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x12')),
+		A_UnknownCommand(bytearray([0xFD, 0x12])),
 		A_TransferToXYZF(x=10, y=110, z=0, direction=EAST)
 	], identifier="EVENT_1707_action_queue_100"),
 	Inc(TEMP_70A9),
 	JmpIfVarEqualsConst(TEMP_70A9, 28, ["EVENT_1707_clear_bit_107"]),
 	ActionQueueSync(target=MEM_70A9, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x12')),
+		A_UnknownCommand(bytearray([0xFD, 0x12])),
 		A_TransferToXYZF(x=6, y=98, z=0, direction=EAST)
 	], identifier="EVENT_1707_action_queue_103"),
 	Inc(TEMP_70A9),

@@ -37,7 +37,7 @@ script = EventScript([
 		A_PlaySound(sound=SO081_STAR, channel=6),
 		A_Pause(30),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	JmpToEvent(E3092_STAR_PIECE_GRANT)
 ])

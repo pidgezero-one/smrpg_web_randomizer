@@ -24,7 +24,7 @@ script = ActionScript([
 	A_JmpIfVarEqualsConst(ROSE_WAY_7038, 7, ["ACTION_670_start_loop_n_times_36"]),
 	A_CopyVarToVar(from_var=TEMP_70AE, to_var=PRIMARY_TEMP_700C),
 	A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_70AB),
-	A_UnknownCommand(bytearray(b'\xfd$\x00\x13')),
+	A_UnknownCommand(bytearray([0xFD, 0x24, 0x00, 0x13])),
 	A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=PRIMARY_TEMP_7000),
 	A_Mem700CAndConst(0x00C0),
 	A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 0, ["ACTION_670_start_loop_n_times_15"]),

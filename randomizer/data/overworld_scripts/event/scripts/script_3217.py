@@ -62,7 +62,7 @@ script = EventScript([
 	SetVarToConst(X_COORD_1, 7),
 	SetVarToConst(Y_COORD_1, 62),
 	SetVarToConst(Z_COORD_1, 21),
-	UnknownCommand(bytearray(b'\xfd\xc4')),
+	UnknownCommand(bytearray([0xFD, 0xC4])),
 	Pause(1),
 	RunEventAsSubroutine(E3387_SHIP_CANNONBALL_PUZZLE_SPAWN_PRIZE),
 	Return(identifier="EVENT_3217_ret_28")

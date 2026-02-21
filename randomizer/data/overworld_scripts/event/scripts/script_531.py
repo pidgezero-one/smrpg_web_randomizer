@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	CloseDialog(),
-	UnknownCommand(bytearray(b'\xfdG')),
+	UnknownCommand(bytearray([0xFD, 0x47])),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_SetPriority(2)
 	]),

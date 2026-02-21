@@ -18,7 +18,7 @@ from ....items import *
 script = ActionScript([
 	A_SequenceLoopingOn(),
 	A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
-	A_UnknownCommand(bytearray(b'\xfd\x12')),
+	A_UnknownCommand(bytearray([0xFD, 0x12])),
 	A_FloatingOff(),
 	A_ClearSolidityBits(cant_pass_walls=True),
 	A_TransferToXYZF(x=16, y=77, z=0, direction=EAST),
@@ -49,6 +49,6 @@ script = ActionScript([
 	A_WalkNorthwestPixels(4),
 	A_WalkSouthwestSteps(5),
 	A_VisibilityOff(),
-	A_UnknownCommand(bytearray(b'\xfd\xf2')),
+	A_UnknownCommand(bytearray([0xFD, 0xF2])),
 	A_ReturnQueue()
 ])

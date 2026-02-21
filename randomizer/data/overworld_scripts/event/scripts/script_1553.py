@@ -96,7 +96,7 @@ script = EventScript([
 	SetVarToConst(Z_COORD_2, 256),
 	ActionQueueAsync(target=MEM_70A9, subscript=[
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_SetWalkingSpeed(NORMAL),
 		A_JmpIfBitSet(TEMP_7044_1, ["EVENT_1553_inc_63"]),
 		A_ShiftXYPixels(x=160, y=48)

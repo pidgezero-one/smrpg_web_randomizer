@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	LearnSpell(MARIO, UltraJumpSpell, identifier="hill_river_spell_5_character"),
-	PlaySound(sound=SO085_FLOWER, channel=6),
 	RunDialog(dialog_id=DI1956_LEARN_SPELL_5_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	PlaySound(sound=SO085_FLOWER, channel=6),
 	Return()
 ])

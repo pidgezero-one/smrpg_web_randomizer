@@ -37,7 +37,7 @@ script = EventScript([
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 		A_Pause(30),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	StoreItemAmountTo7000(FireworksItem),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3098_set_var_to_const_10"]),

@@ -20,7 +20,7 @@ script = ActionScript([
 	A_WalkSouthPixels(3),
 	A_WalkNorthwestPixels(11),
 	A_WalkSouthwestPixels(6),
-	A_UnknownCommand(bytearray(b'\xfd\x12')),
+	A_UnknownCommand(bytearray([0xFD, 0x12])),
 	A_VisibilityOn(),
 	A_PlaySound(sound=SO073_THWOMP_STOMP, channel=4),
 	A_SequenceLoopingOn(),

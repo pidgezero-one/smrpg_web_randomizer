@@ -32,5 +32,5 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	UnknownCommand(bytearray(b'\xfd\xd0'))
+	UnknownCommand(bytearray([0xFD, 0xD0]))
 ])

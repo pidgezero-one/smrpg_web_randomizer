@@ -53,8 +53,8 @@ script = EventScript([
 		A_SetSpriteSequence(index=10, sprite_offset=3, is_sequence=True, looping=True),
 		A_ShadowOn(),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%\x00\x00\x08\x00'))
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0x00, 0x00, 0x08, 0x00]))
 	]),
 	FadeInFromBlack(sync=True),
 	ActionQueueAsync(target=MARIO, subscript=[
@@ -74,8 +74,8 @@ script = EventScript([
 		A_TransferToXYZF(x=27, y=91, z=16, direction=SOUTHEAST),
 		A_SetSpriteSequence(index=30, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%\x00\x00\x0c\x00'))
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0x00, 0x00, 0x0C, 0x00]))
 	]),
 	FadeInFromBlack(sync=True),
 	ActionQueueAsync(target=MARIO, subscript=[
@@ -97,8 +97,8 @@ script = EventScript([
 		A_SetSpriteSequence(index=0, sprite_offset=3, is_sequence=True, looping=True),
 		A_VisibilityOn(),
 		A_ShadowOn(),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%\x00\x00\x0e\x00'))
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0x00, 0x00, 0x0E, 0x00]))
 	]),
 	FadeInFromBlack(sync=True),
 	Pause(50),

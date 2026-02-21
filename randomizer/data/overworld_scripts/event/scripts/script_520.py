@@ -54,7 +54,7 @@ script = EventScript([
 	]),
 	JmpIfBitSet(TEMP_7044_3, ["EVENT_520_resume_action_script_27"]),
 	ActionQueueAsync(target=NPC_2, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd$\x07\x00')),
+		A_UnknownCommand(bytearray([0xFD, 0x24, 0x07, 0x00])),
 		A_Mem700CAndConst(0x00C0),
 		A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_702A),
 		A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 0, ["EVENT_520_action_queue_11_SUBSCRIPT_face_northwest_7"]),

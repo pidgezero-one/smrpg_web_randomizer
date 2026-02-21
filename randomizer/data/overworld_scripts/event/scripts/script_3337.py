@@ -44,7 +44,7 @@ script = EventScript([
 	JmpIfBitSet(TEMP_7043_0, ["EVENT_3337_pause_8"]),
 	Pause(8),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9c\x15')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x15])),
 		A_SetWalkingSpeed(FAST),
 		A_StartLoopNTimes(23),
 		A_WalkNorthPixels(2),

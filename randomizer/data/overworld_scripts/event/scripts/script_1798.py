@@ -41,7 +41,7 @@ script = EventScript([
 		A_WalkSouthSteps(4),
 		A_WalkSouthwestSteps(3),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	Return()
 ])

@@ -69,9 +69,9 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_ShadowOn(),
-		A_UnknownCommand(bytearray(b' \x07')),
-		A_UnknownCommand(bytearray(b'$\x00\xff\x00\xff')),
-		A_UnknownCommand(bytearray(b'%\x00\x0c\xf0\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0xFF, 0x00, 0xFF])),
+		A_UnknownCommand(bytearray([0x25, 0x00, 0x0C, 0xF0, 0xFF])),
 		A_Pause(32),
 		A_BPL262728()
 	]),

@@ -73,7 +73,7 @@ script = EventScript([
 		A_TransferXYZFSteps(x=0, y=0, z=20, direction=EAST)
 	]),
 	ActionQueueAsync(target=NPC_8, subscript=[
-		A_UnknownCommand(bytearray(b'\x97\x00')),
+		A_UnknownCommand(bytearray([0x97, 0x00])),
 		A_VisibilityOn(),
 		A_SequenceLoopingOn(),
 		A_SetSpriteSequence(index=7, is_sequence=True, looping=True),
@@ -95,8 +95,8 @@ script = EventScript([
 		A_SetPriority(3),
 		A_SetWalkingSpeed(FAST),
 		A_WalkSouthwestSteps(19),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%\x01\x00\xe0\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0x01, 0x00, 0xE0, 0xFF])),
 		A_SetWalkingSpeed(NORMAL),
 		A_Walk1StepSouthwest(),
 		A_Walk1StepSouthwest(),
@@ -118,7 +118,7 @@ script = EventScript([
 		A_TransferXYZFSteps(x=0, y=0, z=18, direction=EAST)
 	]),
 	ActionQueueAsync(target=NPC_8, subscript=[
-		A_UnknownCommand(bytearray(b'\x97\x00')),
+		A_UnknownCommand(bytearray([0x97, 0x00])),
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_VisibilityOn(),
 		A_SequenceLoopingOn(),

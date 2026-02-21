@@ -36,9 +36,9 @@ script = EventScript([
 	EnterArea(room_id=R076_BANDITS_WAY_AREA_01, face_direction=SOUTH, x=4, y=52, z=0, run_entrance_event=True),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
-		A_UnknownCommand(bytearray(b'\xc8\x00')),
+		A_UnknownCommand(bytearray([0xC8, 0x00])),
 		A_AddConstToVar(Z_COORD_2, 2304),
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_JumpToHeight(height=0, silent=True),
 		A_Pause(1, identifier="EVENT_1711_action_queue_2_SUBSCRIPT_pause_5"),
 		A_JmpIfMarioInAir(["EVENT_1711_action_queue_2_SUBSCRIPT_pause_5"]),

@@ -308,7 +308,7 @@ script = EventScript([
 		A_WalkNorthwestSteps(2),
 		A_WalkNorthwestPixels(8),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(16),

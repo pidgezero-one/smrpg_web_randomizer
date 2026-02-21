@@ -47,7 +47,7 @@ script = EventScript([
 		A_FaceSoutheast(),
 		A_WalkSoutheastSteps(2)
 	]),
-	UnknownCommand(bytearray(b'\xfd\x8d')),
+	UnknownCommand(bytearray([0xFD, 0x8D])),
 	ActionQueueAsync(target=NPC_12, subscript=[
 		A_SetWalkingSpeed(NORMAL),
 		A_SetSequenceSpeed(FAST),
@@ -55,7 +55,7 @@ script = EventScript([
 		A_WalkSouthwestPixels(8),
 		A_FaceSoutheast()
 	]),
-	UnknownCommand(bytearray(b'\xfd\x8d')),
+	UnknownCommand(bytearray([0xFD, 0x8D])),
 	ActionQueueAsync(target=NPC_12, subscript=[
 		A_SetWalkingSpeed(FAST),
 		A_SetSequenceSpeed(VERY_FAST),
@@ -64,7 +64,7 @@ script = EventScript([
 		A_WalkNorthwestSteps(2),
 		A_FaceSoutheast()
 	]),
-	UnknownCommand(bytearray(b'\xfd\x8d')),
+	UnknownCommand(bytearray([0xFD, 0x8D])),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	JmpIfBitClear(GAME_OVER, ["EVENT_2603_restore_all_hp_14"]),
 	ResetAndChooseGame(),

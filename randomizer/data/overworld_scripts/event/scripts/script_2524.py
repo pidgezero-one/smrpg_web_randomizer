@@ -56,7 +56,7 @@ script = EventScript([
 	]),
 	FadeInFromBlack(sync=False),
 	Pause(16),
-	UnknownCommand(bytearray(b'\xfd\x8d')),
+	UnknownCommand(bytearray([0xFD, 0x8D])),
 	ApplyTileModToLevel(use_alternate=True, room_id=R157_STAR_HILL_AREA_03, mod_id=0),
 	PlaySound(sound=SO126_EMERGE_DEEP_WATER, channel=6),
 	Pause(16),
@@ -65,7 +65,7 @@ script = EventScript([
 		A_WalkSouthwestSteps(2)
 	]),
 	Pause(16),
-	UnknownCommand(bytearray(b'\xfd\x8d')),
+	UnknownCommand(bytearray([0xFD, 0x8D])),
 	ApplyTileModToLevel(use_alternate=True, room_id=R157_STAR_HILL_AREA_03, mod_id=13),
 	PlaySound(sound=SO125_ENTER_DEEP_WATER, channel=6),
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

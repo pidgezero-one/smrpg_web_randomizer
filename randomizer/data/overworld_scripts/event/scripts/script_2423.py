@@ -50,9 +50,9 @@ script = EventScript([
 		A_Pause(4),
 		A_SetSpriteSequence(index=4, sprite_offset=1, is_sequence=True, looping=True, mirror_sprite=True),
 		A_ClearSolidityBits(cant_pass_walls=True),
-		A_UnknownCommand(bytearray(b' \x07')),
-		A_UnknownCommand(bytearray(b'$0\x02\xe0\xfe')),
-		A_UnknownCommand(bytearray(b'%\x00\t\x80\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_UnknownCommand(bytearray([0x24, 0x30, 0x02, 0xE0, 0xFE])),
+		A_UnknownCommand(bytearray([0x25, 0x00, 0x09, 0x80, 0xFF])),
 		A_Pause(56),
 		A_BPL262728()
 	]),

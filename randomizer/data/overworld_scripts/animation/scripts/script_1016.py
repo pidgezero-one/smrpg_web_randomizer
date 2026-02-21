@@ -26,6 +26,6 @@ script = ActionScript([
 	A_Pause(2),
 	A_EndLoop(),
 	A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
-	A_UnknownCommand(bytearray(b'\xfd\xf2')),
+	A_UnknownCommand(bytearray([0xFD, 0xF2])),
 	A_ReturnQueue()
 ])

@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	LearnSpell(GENO, GenoFlashSpell, identifier="hill_river_spell_17_character"),
-	PlaySound(sound=SO085_FLOWER, channel=6),
 	RunDialog(dialog_id=DI1980_LEARN_SPELL_17_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	PlaySound(sound=SO085_FLOWER, channel=6),
 	Return()
 ])

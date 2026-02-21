@@ -51,7 +51,7 @@ script = EventScript([
 		A_Set700CToObjectCoord(target_npc=NPC_0, coord=COORD_F),
 		A_FaceEast7C(),
 		A_Pause(1),
-		A_UnknownCommand(bytearray(b'\xfd\x9c:'))
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x3A]))
 	]),
 	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
 	Jmp(["EVENT_3329_pause_0"]),
@@ -73,7 +73,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=8, sprite_offset=3, is_sequence=True, looping=True, identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_14"),
 		A_Jmp(["EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17"]),
 		A_SetSpriteSequence(index=9, sprite_offset=3, is_sequence=True, looping=True, identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16"),
-		A_UnknownCommand(bytearray(b'\xfd\x9ci'), identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17"),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x69]), identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17"),
 		A_JmpIfObjectWithinRange(comparing_npc=NPC_0, usually=0, tiles=8, destinations=["EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_27"]),
 		A_JmpIfObjectWithinRange(comparing_npc=NPC_0, usually=0, tiles=16, destinations=["EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_25"]),
 		A_JmpIfObjectWithinRange(comparing_npc=NPC_0, usually=0, tiles=28, destinations=["EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_23"]),
@@ -88,8 +88,8 @@ script = EventScript([
 		A_ClearSolidityBits(cant_pass_npcs=True, bit_7=True, identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_clear_solidity_bits_29"),
 		A_Pause(4),
 		A_ClearSolidityBits(cant_pass_walls=True),
-		A_UnknownCommand(bytearray(b'\xc8\x14')),
-		A_UnknownCommand(bytearray(b'\xfd\xc7')),
+		A_UnknownCommand(bytearray([0xC8, 0x14])),
+		A_UnknownCommand(bytearray([0xFD, 0xC7])),
 		A_SetWalkingSpeed(VERY_FAST),
 		A_WalkTo70167018(),
 		A_SetSolidityBits(cant_pass_walls=True),

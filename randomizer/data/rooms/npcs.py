@@ -609,7 +609,6 @@ MARIO_WALKING_DOWN_LEFT_NPC_3 = NPC(
 )
 
 TOADSTOOL_ENDING = NPC(
-    force_id=16,
     sprite_id=SPR0007_TOADSTOOL_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
@@ -634,7 +633,6 @@ TOADSTOOL_ENDING = NPC(
 )
 
 MALLOW_ENDING = NPC(
-    force_id=17,
     sprite_id=SPR0019_MALLOW_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
@@ -659,7 +657,6 @@ MALLOW_ENDING = NPC(
 )
 
 GENO_ENDING = NPC(
-    force_id=18,
     sprite_id=SPR0025_GENO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
@@ -2124,7 +2121,6 @@ GIRL_MOLE_YELLOW_BOW_NPC = NPC(
 )
 
 NIMBUSITE_BLUE_NPC = NPC(
-    force_id=75,
     sprite_id=SPR0075_NIMBUSITE_BLUE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
@@ -2149,7 +2145,6 @@ NIMBUSITE_BLUE_NPC = NPC(
 )
 
 NIMBUSITE_RED_NPC_2 = NPC(
-    force_id=76,
     sprite_id=SPR0076_NIMBUSITE_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
@@ -2579,7 +2574,6 @@ YELLOW_STEPPING_BLOCK_NPC = NPC(
     byte5_bit6=False,
     byte5_bit7=False,
     byte6_bit2=False,
-    force_id=93,
 )
 
 TREASURE_CHEST_NPC = NPC(
@@ -4810,7 +4804,6 @@ BIRDY_NPC = NPC(
     byte5_bit6=False,
     byte5_bit7=False,
     byte6_bit2=False,
-    force_id=183,
 )
 
 SHYGUY_IN_BOWSER_S_HELICOPTER_NPC = NPC(
@@ -4979,7 +4972,6 @@ RED_MAGIKOOPA_NPC = NPC(
     byte5_bit6=False,
     byte5_bit7=False,
     byte6_bit2=False,
-    force_id=190,
 )
 
 SPARKLE_DOWNWARDS_NPC = NPC(
@@ -5684,7 +5676,7 @@ CZAR_DRAGON_BODY_NPC = NPC(
     obtuse_axis=13,
     height=13,
     y_shift=0,
-    show_shadow=False,
+    show_shadow=True,
     directions=VramStore.DIR2_SWSE,
     min_vram_size=3,
     priority_0=False,
@@ -7341,7 +7333,7 @@ HAMMER_BRO_NPC = NPC(
     y_shift=1,
     show_shadow=True,
     directions=VramStore.DIR2_SWSE,
-    min_vram_size=3,
+    min_vram_size=2,
     priority_0=False,
     priority_1=False,
     priority_2=True,
@@ -9661,7 +9653,6 @@ NOTHING_NPC = NPC(
 )
 
 GENO_REDEMPTION_NPC = NPC(
-    force_id=388,
     sprite_id=SPR0725_GENO_REDEMPTION,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
@@ -11895,7 +11886,6 @@ SMELTER_BACK_SECTION_NPC = NPC(
 )
 
 GENO_DOLL_ENDING = NPC(
-    force_id=476,
     sprite_id=SPR0172_GENO_DOLL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=1,
@@ -12232,7 +12222,6 @@ FACTORY_CLERK_GREEN_NPC_3 = NPC(
 )
 
 BLUE_GREEN_STAR_PIECE_SPINNING_NPC = NPC(
-    force_id=490,
     sprite_id=SPR0156_BLUE_GREEN_STAR_PIECE_SPINNING,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
@@ -17915,7 +17904,6 @@ GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
 )
 
 BOWSER_ENDING = NPC(
-    force_id=2,
     sprite_id=SPR0013_BOWSER_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,

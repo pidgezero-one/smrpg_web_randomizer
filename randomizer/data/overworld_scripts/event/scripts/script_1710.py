@@ -128,7 +128,7 @@ script = EventScript([
 	]),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(FAST),
-		A_UnknownCommand(bytearray(b'\xc8\x80')),
+		A_UnknownCommand(bytearray([0xC8, 0x80])),
 		A_AddConstToVar(X_COORD_2, 65532),
 		A_AddConstToVar(Y_COORD_2, 65520),
 		A_WalkTo70167018(),

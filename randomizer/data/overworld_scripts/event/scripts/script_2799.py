@@ -43,7 +43,7 @@ script = EventScript([
 		A_VisibilityOff()
 	]),
 	Pause(32),
-	UnknownCommand(bytearray(b'\xfd\x8d')),
+	UnknownCommand(bytearray([0xFD, 0x8D])),
 	ApplyTileModToLevel(use_alternate=True, room_id=R145_STAR_HILL_AREA_01, mod_id=1),
 	PlaySound(sound=SO125_ENTER_DEEP_WATER, channel=6),
 	UnfreezeCamera(),

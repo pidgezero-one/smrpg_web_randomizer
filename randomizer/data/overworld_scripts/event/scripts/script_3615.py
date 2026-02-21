@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	EnterArea(room_id=R378_BEAN_VALLEY_BEANSTALKS_AREA_01, face_direction=NORTHWEST, x=6, y=123, z=0),
-	UnknownCommand(bytearray(b'\xfdI')),
+	UnknownCommand(bytearray([0xFD, 0x49])),
 	SetBit(NOTE_DIRECTION),
 	SetSyncActionScript(NPC_0, A0977_NOTE_WITHOUT_KNIFE),
 	ActionQueueSync(target=MARIO, subscript=[

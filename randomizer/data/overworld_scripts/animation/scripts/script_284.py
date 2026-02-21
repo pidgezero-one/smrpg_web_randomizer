@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_UnknownCommand(bytearray(b'6')),
+	A_UnknownCommand(bytearray([0x36])),
 	A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 	A_JmpIfBitClear(TEMP_707C_1, ["ACTION_284_start_loop_n_times_4"]),
 	A_ClearSolidityBits(bit_4=True, cant_walk_through=True),
@@ -28,6 +28,6 @@ script = ActionScript([
 	A_EndLoop(),
 	A_SetSolidityBits(bit_4=True, cant_walk_through=True),
 	A_ObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-	A_UnknownCommand(bytearray(b'7')),
+	A_UnknownCommand(bytearray([0x37])),
 	A_ReturnQueue()
 ])

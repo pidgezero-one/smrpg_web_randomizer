@@ -17,7 +17,7 @@ from ....items import *
 
 script = ActionScript([
 	A_VisibilityOff(),
-	A_UnknownCommand(bytearray(b'\xfd\x12')),
+	A_UnknownCommand(bytearray([0xFD, 0x12])),
 	A_FaceNortheast(),
 	A_Set700CToPressedButton(),
 	A_AddConstToVar(PRIMARY_TEMP_700C, 65512),

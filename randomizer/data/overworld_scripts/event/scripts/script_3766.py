@@ -35,9 +35,9 @@ script = EventScript([
 	EnterArea(room_id=R374_NIMBUS_LAND_FALL_FROM_PLATFORM_4TH, face_direction=SOUTH, x=27, y=115, z=4),
 	EnableControls([]),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\xc8\x00')),
+		A_UnknownCommand(bytearray([0xC8, 0x00])),
 		A_AddConstToVar(Z_COORD_2, 2304),
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_JumpToHeight(height=0, silent=True)
 	]),
 	FadeInFromBlack(sync=True),

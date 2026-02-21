@@ -52,7 +52,7 @@ script = EventScript([
 	SetSyncActionScript(NPC_9, A1023_ERUPTED_MAGMITES),
 	ApplyTileModToLevel(use_alternate=True, room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM, mod_id=32),
 	ApplyTileModToLevel(use_alternate=True, room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM, mod_id=33),
-	UnknownCommand(bytearray(b'\xfdD')),
+	UnknownCommand(bytearray([0xFD, 0x44])),
 	ResetPrioritySet(),
 	FadeInFromBlack(sync=False),
 	RunEventAsSubroutine(E1233_VOLCANO_MID_BOSS_UNLOCKS),

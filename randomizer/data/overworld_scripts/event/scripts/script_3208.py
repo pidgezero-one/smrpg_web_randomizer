@@ -34,7 +34,7 @@ from ....spells.spells import *
 script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_PlaySound(sound=SO112_DRAINING_WATER, channel=4),
-		A_UnknownCommand(bytearray(b'\xc8\x90')),
+		A_UnknownCommand(bytearray([0xC8, 0x90])),
 		A_WalkTo70167018(),
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_ObjectMemoryModifyBits(arg_1=0x0C, set_bits=[4], clear_bits=[3, 5]),

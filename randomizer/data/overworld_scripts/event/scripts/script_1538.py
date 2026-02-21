@@ -32,7 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	JmpIfBitSet(TEMP_7043_1, ["EVENT_1538_run_background_event_3"]),
+	JmpIfBitSet(TEMP_7043_1, ["EVENT_1538_run_background_event_3"], identifier="EVENT_1538_jmp_to_event_1"),
 	SetBit(TEMP_7043_1),
 	ClearBit(TEMP_7043_2),
 	RunBackgroundEvent(event_id=E1706_BANDITS_WAY_LEFT_CHEST_STAR_CHECK, return_on_level_exit=True, bit_6=True, identifier="EVENT_1538_run_background_event_3"),

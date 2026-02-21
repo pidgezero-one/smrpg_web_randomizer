@@ -28,7 +28,7 @@ script = ActionScript([
 	A_PlaySound(sound=SO084_SMOKED, channel=4),
 	A_Jmp(["ACTION_775_jump_to_height_silent_5"]),
 	A_SetVarToConst(TEMP_7034, 65535, identifier="ACTION_775_set_var_to_const_11"),
-	A_UnknownCommand(bytearray(b'\xc7\x00')),
+	A_UnknownCommand(bytearray([0xC7, 0x00])),
 	A_CreatePacketAt7010(packet=P032_BLUE_CLOUD, destinations=["ACTION_775_pause_14"]),
 	A_Pause(6, identifier="ACTION_775_pause_14"),
 	A_Jmp(["ACTION_775_set_var_to_const_11"])

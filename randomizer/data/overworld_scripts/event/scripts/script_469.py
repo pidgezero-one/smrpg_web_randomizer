@@ -65,7 +65,7 @@ script = EventScript([
 	Set7016701BToObjectXYZ(target=MARIO, bit_7=True),
 	CopyVarToVar(from_var=Z_COORD_2, to_var=PRIMARY_TEMP_7000),
 	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_469_enable_controls_until_return_4"]),
-	UnknownCommand(bytearray(b'\xfd\xca')),
+	UnknownCommand(bytearray([0xFD, 0xCA])),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_469_action_queue_30"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 512, ["EVENT_469_action_queue_30"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 531, ["EVENT_469_action_queue_30"]),

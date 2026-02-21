@@ -39,7 +39,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 7, ["EVENT_3092_a"], identifier="EVENT_3092_jmp_if_var_equals_const_4"),
 	Inc(STAR_PIECE_COUNTER),
 	PlayMusicAtCurrentVolume(M0024_GOTASTARPIECE_PART2, identifier="EVENT_3092_a"),
-	UnknownCommand(bytearray(b'\xfd\x8e\x80\x07\x01')),
+	UnknownCommand(bytearray([0xFD, 0x8E, 0x80, 0x07, 0x01])),
 	PauseScriptUntilEffectDone(),
 	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 7, ["EVENT_3092_run_star_piece_sequence_29"]),
 	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_3092_run_star_piece_sequence_27"]),
@@ -62,7 +62,7 @@ script = EventScript([
 	RunStarPieceSequence(6, identifier="EVENT_3092_run_star_piece_sequence_27"),
 	Jmp(["EVENT_3092_db_30"]),
 	RunStarPieceSequence(7, identifier="EVENT_3092_run_star_piece_sequence_29"),
-	UnknownCommand(bytearray(b'\xfd\x8e\xb2\x07\x01'), identifier="EVENT_3092_db_30"),
+	UnknownCommand(bytearray([0xFD, 0x8E, 0xB2, 0x07, 0x01]), identifier="EVENT_3092_db_30"),
 	PauseScriptUntilEffectDone(),
 	JmpToEvent(E3101_STAR_PIECE_HUNT_END_GAME),
 	Return(identifier="EVENT_3092_ret_33")

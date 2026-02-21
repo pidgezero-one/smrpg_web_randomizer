@@ -40,7 +40,7 @@ script = EventScript([
 	SetVarToConst(X_COORD_1, 15),
 	SetVarToConst(Y_COORD_1, 117),
 	SetVarToConst(Z_COORD_1, 15),
-	UnknownCommand(bytearray(b'\xfd\xc4')),
+	UnknownCommand(bytearray([0xFD, 0xC4])),
 	Pause(1, identifier="EVENT_3223_pause_9"),
 	JmpToEvent(E3384_SHIP_TROOPA_PRIZE_PACKET_GRANT),
 	Return(identifier="EVENT_3223_ret_11"),

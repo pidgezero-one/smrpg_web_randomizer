@@ -50,7 +50,7 @@ script = EventScript([
 	Jmp(["EVENT_1712_inc_16"]),
 	ActionQueueAsync(target=MEM_70AB, subscript=[
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
-		A_UnknownCommand(bytearray(b'\xfd\x12')),
+		A_UnknownCommand(bytearray([0xFD, 0x12])),
 		A_Set700CToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
 		A_CompareVarToConst(PRIMARY_TEMP_700C, 14),
 		A_JmpIfComparisonResultIsLesser(["EVENT_1712_action_queue_13_SUBSCRIPT_transfer_to_xyzf_9"]),

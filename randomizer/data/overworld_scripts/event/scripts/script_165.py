@@ -37,7 +37,7 @@ script = EventScript([
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 		A_PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
     JmpIfVarEqualsConst(ITEM_ID, TempleKeyItem, ["freestand_key_item_sound"]),
     JmpIfVarEqualsConst(ITEM_ID, RareFrogCoinItem, ["freestand_key_item_sound"]),

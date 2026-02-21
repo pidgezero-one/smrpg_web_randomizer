@@ -35,7 +35,7 @@ script = EventScript([
 	Set7016701BToObjectXYZ(target=MARIO),
 	AddConstToVar(X_COORD_2, 63744),
 	AddConstToVar(Y_COORD_2, 63744),
-	UnknownCommand(bytearray(b'\xfd\xc7')),
+	UnknownCommand(bytearray([0xFD, 0xC7])),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_JmpIfBitSet(TEMP_7049_2, ["EVENT_276_action_queue_4_SUBSCRIPT_set_animation_speed_6"]),
 		A_JmpIfBitSet(TEMP_7049_6, ["EVENT_276_action_queue_4_SUBSCRIPT_set_animation_speed_4"]),
@@ -44,7 +44,7 @@ script = EventScript([
 		A_SetWalkingSpeed(FASTEST, identifier="EVENT_276_action_queue_4_SUBSCRIPT_set_animation_speed_4"),
 		A_Jmp(["EVENT_276_action_queue_4_SUBSCRIPT_db_7"]),
 		A_SetWalkingSpeed(NORMAL, identifier="EVENT_276_action_queue_4_SUBSCRIPT_set_animation_speed_6"),
-		A_UnknownCommand(bytearray(b'\x98'), identifier="EVENT_276_action_queue_4_SUBSCRIPT_db_7"),
+		A_UnknownCommand(bytearray([0x98]), identifier="EVENT_276_action_queue_4_SUBSCRIPT_db_7"),
 		A_SetWalkingSpeed(NORMAL)
 	]),
 	ClearBit(TEMP_7049_2),

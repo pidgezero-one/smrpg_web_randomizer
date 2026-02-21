@@ -21,7 +21,7 @@ script = ActionScript([
 	A_ClearSolidityBits(cant_pass_walls=True),
 	A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 	A_SetVRAMPriority(PRIORITY_3),
-	A_UnknownCommand(bytearray(b'\xc8\x91')),
+	A_UnknownCommand(bytearray([0xC8, 0x91])),
 	A_SetWalkingSpeed(SLOW),
 	A_WalkTo70167018(),
 	A_SetWalkingSpeed(NORMAL),

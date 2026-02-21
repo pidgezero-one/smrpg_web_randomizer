@@ -193,8 +193,8 @@ script = EventScript([
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0, 1, 2])
 	]),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\xf0\xff\xc0\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0xF0, 0xFF, 0xC0, 0xFF])),
 		A_Pause(64),
 		A_BPL262728()
 	]),
@@ -209,8 +209,8 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=NPC_19, subscript=[
 		A_SequenceLoopingOn(),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x80\x00\xe0\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x80, 0x00, 0xE0, 0xFF])),
 		A_Pause(140),
 		A_BPL262728(),
 		A_SequenceLoopingOff(),
@@ -221,15 +221,15 @@ script = EventScript([
 		A_SetSequenceSpeed(FAST),
 		A_FixedFCoordOn(),
 		A_SequenceLoopingOn(),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$0\x00\x80\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x30, 0x00, 0x80, 0xFF])),
 		A_Pause(64),
 		A_BPL262728(),
 		A_FixedFCoordOff(),
 		A_SequenceLoopingOff(),
 		A_FaceSoutheast()
 	]),
-	UnknownCommand(bytearray(b'\xfd\x8e\x16\n\x0b')),
+	UnknownCommand(bytearray([0xFD, 0x8E, 0x16, 0x0A, 0x0B])),
 	RememberLastObject(),
 	UnsyncActionScript(NPC_0),
 	ActionQueueAsync(target=NPC_7, subscript=[
@@ -301,7 +301,7 @@ script = EventScript([
 		A_AddZCoord1Step()
 	]),
 	Pause(100),
-	UnknownCommand(bytearray(b'\xfd\x8e\x00\n\n')),
+	UnknownCommand(bytearray([0xFD, 0x8E, 0x00, 0x0A, 0x0A])),
 	RememberLastObject(),
 	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
 	Pause(98),
@@ -320,7 +320,7 @@ script = EventScript([
 	]),
 	RememberLastObject(),
 	RunStarPieceSequence(7),
-	UnknownCommand(bytearray(b'\xfd\x8er\x00\x00')),
+	UnknownCommand(bytearray([0xFD, 0x8E, 0x72, 0x00, 0x00])),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ResetProperties(),
 		A_TransferXYZFPixels(x=0, y=16, z=0, direction=EAST)
@@ -339,8 +339,8 @@ script = EventScript([
 	ActionQueueSync(target=NPC_21, subscript=[
 		A_SetSequenceSpeed(NORMAL),
 		A_SequenceLoopingOn(),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x80\x00\x80\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x80, 0x00, 0x80, 0xFF])),
 		A_Pause(88),
 		A_BPL262728(),
 		A_SequenceLoopingOff()
@@ -488,7 +488,7 @@ script = EventScript([
 		A_FloatingOn()
 	]),
 	RememberLastObject(),
-	UnknownCommand(bytearray(b'^')),
+	UnknownCommand(bytearray([0x5E])),
 	SetSyncActionScript(NPC_8, A0120_EMBEDDED_ROUTINE),
 	SetSyncActionScript(NPC_9, A0120_EMBEDDED_ROUTINE),
 	SetSyncActionScript(NPC_10, A0120_EMBEDDED_ROUTINE),
@@ -563,8 +563,8 @@ script = EventScript([
 		A_TransferXYZFPixels(x=250, y=12, z=0, direction=EAST),
 		A_SetSequenceSpeed(FAST),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\xfa\x00\xfa')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0xFA, 0x00, 0xFA])),
 		A_Pause(32),
 		A_BPL262728(),
 		A_VisibilityOff()
@@ -578,8 +578,8 @@ script = EventScript([
 		A_TransferXYZFPixels(x=6, y=244, z=0, direction=EAST),
 		A_SetSequenceSpeed(FAST),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$ \xfc\xe0\xfb')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x20, 0xFC, 0xE0, 0xFB])),
 		A_Pause(32),
 		A_BPL262728(),
 		A_VisibilityOff()
@@ -595,8 +595,8 @@ script = EventScript([
 		A_VisibilityOn(),
 		A_SetWalkingSpeed(VERY_FAST),
 		A_WalkNortheastPixels(8),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\xe0\x05\xe0\xf8')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0xE0, 0x05, 0xE0, 0xF8])),
 		A_Pause(32),
 		A_BPL262728(),
 		A_VisibilityOff()
@@ -608,8 +608,8 @@ script = EventScript([
 		A_TransferToXYZF(x=4, y=49, z=0, direction=EAST),
 		A_SetSequenceSpeed(FAST),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\xfe\x00\xf8')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0xFE, 0x00, 0xF8])),
 		A_Pause(32),
 		A_BPL262728(),
 		A_VisibilityOff()
@@ -622,8 +622,8 @@ script = EventScript([
 		A_TransferXYZFPixels(x=232, y=4, z=0, direction=EAST),
 		A_SetSequenceSpeed(FAST),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\xfe\x00\xf8')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0xFE, 0x00, 0xF8])),
 		A_Pause(32),
 		A_BPL262728(),
 		A_VisibilityOff()

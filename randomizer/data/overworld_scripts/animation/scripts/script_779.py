@@ -18,8 +18,8 @@ from ....items import *
 script = ActionScript([
 	A_SetPriority(3),
 	A_FixedFCoordOn(),
-	A_UnknownCommand(bytearray(b' \x04')),
-	A_EmbeddedAnimationRoutine(bytearray(b'(\x00\x00\x00\x00\x00\x00\x00\x02\x00\x01\x00\x00\x00\x08\x80')),
+	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80])),
 	A_SetWalkingSpeed(VERY_SLOW),
 	A_Walk1StepNortheast(identifier="ACTION_779_walk_1_step_northeast_5"),
 	A_Walk1StepSouthwest(),

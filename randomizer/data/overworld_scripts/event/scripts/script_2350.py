@@ -44,8 +44,8 @@ script = EventScript([
 		A_TransferToXYZF(x=8, y=87, z=9, direction=EAST),
 		A_SetWalkingSpeed(NORMAL),
 		A_Pause(4),
-		A_UnknownCommand(bytearray(b' \x01')),
-		A_UnknownCommand(bytearray(b'$ \x00\x00\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x01])),
+		A_UnknownCommand(bytearray([0x24, 0x20, 0x00, 0x00, 0x00])),
 		A_ShiftZUpSteps(10),
 		A_BPL262728()
 	]),

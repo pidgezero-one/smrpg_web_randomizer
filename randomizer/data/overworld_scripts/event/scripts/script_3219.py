@@ -52,7 +52,7 @@ script = EventScript([
 	SetVarToConst(X_COORD_1, 17),
 	SetVarToConst(Y_COORD_1, 18),
 	SetVarToConst(Z_COORD_1, 21),
-	UnknownCommand(bytearray(b'\xfd\xc4')),
+	UnknownCommand(bytearray([0xFD, 0xC4])),
 	Pause(1, identifier="EVENT_3219_pause_13"),
 	RunEventAsSubroutine(E3389_SHIP_BARREL_PUZZLE_SPAWN_PRIZE),
 	ActionQueueSync(target=NPC_0, subscript=[

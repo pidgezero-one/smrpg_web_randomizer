@@ -52,7 +52,7 @@ script = EventScript([
 		A_ShiftZUpSteps(14),
 		A_CopyVarToVar(from_var=UNKNOWN_70C6, to_var=PRIMARY_TEMP_700C),
 		A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_70A9),
-		A_UnknownCommand(bytearray(b'\xc8\x91')),
+		A_UnknownCommand(bytearray([0xC8, 0x91])),
 		A_RunAwayShift(),
 		A_ReturnQueue()
 	]),

@@ -80,7 +80,7 @@ script = EventScript([
 	RestoreAllFP(),
 	SetBit(SHIP_LIBERATED),
     RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
-	UnknownCommand(bytearray(b'\xfd\x8er\x00(')),
+	UnknownCommand(bytearray([0xFD, 0x8E, 0x72, 0x00, 0x28])),
 	Pause(30),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_WalkNorthwestSteps(6),

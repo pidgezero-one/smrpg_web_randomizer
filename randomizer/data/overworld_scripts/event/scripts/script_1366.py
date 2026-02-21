@@ -36,7 +36,7 @@ script = EventScript([
 	PauseActionScript(NPC_2),
 	Pause(10),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_SetWalkingSpeed(NORMAL),
 		A_SetSequenceSpeed(FAST),
@@ -86,7 +86,7 @@ script = EventScript([
 	PauseActionScript(NPC_1),
 	PauseActionScript(NPC_2),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_SetWalkingSpeed(NORMAL),
@@ -135,7 +135,7 @@ script = EventScript([
 	PauseActionScript(NPC_1),
 	PauseActionScript(NPC_2),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_SetWalkingSpeed(SLOW),
@@ -189,7 +189,7 @@ script = EventScript([
 	PauseActionScript(NPC_2),
 	Pause(15),
 	ActionQueueSync(target=NPC_2, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_SetWalkingSpeed(NORMAL),
@@ -339,7 +339,7 @@ script = EventScript([
 	PauseActionScript(NPC_1),
 	PauseActionScript(NPC_2),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_SetWalkingSpeed(NORMAL),
@@ -392,7 +392,7 @@ script = EventScript([
 	PauseActionScript(NPC_1),
 	PauseActionScript(NPC_2),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_SetWalkingSpeed(NORMAL),

@@ -169,7 +169,7 @@ script = EventScript([
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(8),
 		A_JumpToHeight(height=128, silent=True),
-		A_UnknownCommand(bytearray(b'\xfd\x9c\n')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x0A])),
 		A_Walk1StepSouth()
 	]),
 	Pause(48),

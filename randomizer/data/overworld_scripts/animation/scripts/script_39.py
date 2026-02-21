@@ -36,7 +36,7 @@ script = ActionScript([
 	A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
 	A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
 	A_VisibilityOn(),
-	A_UnknownCommand(bytearray(b'\x97\x17'), identifier="ACTION_39_db_20"),
+	A_UnknownCommand(bytearray([0x97, 0x17]), identifier="ACTION_39_db_20"),
 	A_JmpIfBitClear(TEMP_7043_3, ["ACTION_39_db_20"]),
 	A_JumpToHeight(120),
 	A_SetWalkingSpeed(SLOW),

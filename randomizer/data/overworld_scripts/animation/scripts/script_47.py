@@ -17,11 +17,11 @@ from ....items import *
 
 script = ActionScript([
 	A_SetPriority(3),
-	A_UnknownCommand(bytearray(b'\xc8#')),
+	A_UnknownCommand(bytearray([0xC8, 0x23])),
 	A_AddConstToVar(X_COORD_2, 224),
 	A_AddConstToVar(Y_COORD_2, 112),
 	A_AddConstToVar(Z_COORD_2, 384),
-	A_UnknownCommand(bytearray(b'\x99')),
+	A_UnknownCommand(bytearray([0x99])),
 	A_PlaySound(sound=SO113_OPEN_CHAMBER_DOOR, channel=4),
 	A_VisibilityOn(),
 	A_SetVarToConst(TEMP_7034, 65535),

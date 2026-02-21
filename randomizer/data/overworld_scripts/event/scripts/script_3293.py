@@ -45,7 +45,7 @@ script = EventScript([
 		A_FloatingOn(),
 		A_Pause(20),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	Return(),
 	PauseActionScript(MEM_70A8, identifier="EVENT_3293_pause_action_script_8"),
@@ -56,7 +56,7 @@ script = EventScript([
 		A_FloatingOn(),
 		A_Pause(30),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	Return()
 ])

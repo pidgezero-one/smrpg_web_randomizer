@@ -141,7 +141,7 @@ script = EventScript([
 		A_AddZCoord1Step(),
 		A_Pause(28),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(VERY_FAST),

@@ -2,7 +2,14 @@ from __future__ import annotations
 import random
 from typing import TYPE_CHECKING, Sequence, TypeVar
 
-from ..data.variables.sprite_names import SPR0192_COIN, SPR0193_SMALL_COIN, SPR0194_FROG_COIN, SPR0195_FLOWER, SPR0211_SMALL_FROG_COIN, SPR0226_TINY_STAR
+from ..data.variables.sprite_names import (
+    SPR0192_COIN,
+    SPR0193_SMALL_COIN,
+    SPR0194_FROG_COIN,
+    SPR0195_FLOWER,
+    SPR0211_SMALL_FROG_COIN,
+    SPR0226_TINY_STAR,
+)
 from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC
 from ..data.physical_objects.items import (
     DefaultItem,
@@ -105,8 +112,8 @@ class Prize:
     key: bool = False
     _model: type[ItemNPC] | None = DefaultItem
     _sound_effect: int = SO014_FLOWER
-    _packet_data: tuple[int, int] | None = None # list of (sprite id, sequence id)
-    
+    _packet_data: tuple[int, int] | None = None  # list of (sprite id, sequence id)
+
     @property
     def packet_data(self) -> tuple[int, int]:
         if self._packet_data is None:
@@ -118,7 +125,7 @@ class Prize:
     @property
     def sound_effect(self) -> int:
         return self._sound_effect
-    
+
     @property
     def model(self) -> type[ItemNPC] | None:
         return self._model
@@ -168,6 +175,7 @@ class Prize:
 
 
 TOriginallyHeld = TypeVar("TOriginallyHeld", bound=type[Prize] | None)
+
 
 class KeyPrize(Prize):
     pass
@@ -357,7 +365,6 @@ class SlotsPrize(Prize):
         return EventScript([JmpToEvent(self.logic_event)])
 
 
-
 class CharacterName:
     placeholder: str = "`NAME`"
     gender: str = "man"
@@ -424,11 +431,13 @@ class CharacterPrize(Prize):
 
 class SpellPrize(Prize):
     _spell: type[CharacterSpell]
-    _character: type[CharacterPrize] | None = None  # This is only relevant if SpellsAnywhere is enabled and needs to be set before attempting prize shuffling. Otherwise, spells go to dedicated slot locations that are gated behind characters.
+    _character: type[CharacterPrize] | None = (
+        None  # This is only relevant if SpellsAnywhere is enabled and needs to be set before attempting prize shuffling. Otherwise, spells go to dedicated slot locations that are gated behind characters.
+    )
     _chest_event_id: int
     _npc_grant_event_id: int
     _standing_grant_event_id: int
-    _river_grant_event_id: int 
+    _river_grant_event_id: int
     _hill_grant_event_id: int
     _dialog_id: int
     _autoterm_dialog_id: int
@@ -447,7 +456,7 @@ class SpellPrize(Prize):
     @property
     def dialog_id(self) -> int:
         return self._dialog_id
-    
+
     @property
     def autoterm_dialog_id(self) -> int:
         return self._autoterm_dialog_id
@@ -455,18 +464,18 @@ class SpellPrize(Prize):
     @property
     def spell(self) -> type[CharacterSpell]:
         return self._spell
-    
+
     @property
     def character(self) -> type[CharacterPrize] | None:
         return self._character
-    
+
     def set_character(self, character: type[CharacterPrize]) -> None:
         self._character = character
 
     @property
     def chest_grant(self) -> EventScript:
         return EventScript([JmpToEvent(self._chest_event_id)])
-    
+
     @property
     def npc_grant(self) -> EventScript:
         return EventScript([JmpToEvent(self._npc_grant_event_id)])
@@ -482,6 +491,7 @@ class SpellPrize(Prize):
     @property
     def hill_grant(self) -> EventScript:
         return EventScript([JmpToEvent(self._hill_grant_event_id)])
+
 
 class BossFightHenchman:
     _monster: type[Enemy]
@@ -925,7 +935,7 @@ class CoinPrize(Prize):
         return EventScript(
             [
                 SetVarToConst(PRIMARY_TEMP_7000, self.amount),
-                JmpToEvent(E3080_COIN_CHEST_QUICK_HIT), 
+                JmpToEvent(E3080_COIN_CHEST_QUICK_HIT),
             ]
         )
 
@@ -935,6 +945,15 @@ class CoinPrize(Prize):
             [
                 SetVarToConst(PRIMARY_TEMP_7000, self.amount),
                 JmpToEvent(E0159_NPC_QUEST_GRANT_COINS),
+            ]
+        )
+
+    @property
+    def hill_grant(self) -> EventScript:
+        return EventScript(
+            [
+                SetVarToConst(PRIMARY_TEMP_7000, self.amount),
+                JmpToEvent(E0220_HILL_GET_COINS),
             ]
         )
 
@@ -965,7 +984,7 @@ class FrogCoinPrize(StandardPrize):
         return EventScript(
             [
                 SetVarToConst(PRIMARY_TEMP_7000, self.amount),
-                JmpToEvent(E3084_FROG_COIN_CHEST_QUICK_HIT), 
+                JmpToEvent(E3084_FROG_COIN_CHEST_QUICK_HIT),
             ]
         )
 

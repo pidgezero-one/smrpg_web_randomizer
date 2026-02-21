@@ -121,11 +121,11 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetWalkingSpeed(FAST),
 		A_ClearSolidityBits(cant_pass_walls=True),
-		A_UnknownCommand(bytearray(b'\xc8\x1c')),
+		A_UnknownCommand(bytearray([0xC8, 0x1C])),
 		A_AddConstToVar(X_COORD_2, 256),
 		A_AddConstToVar(Y_COORD_2, 128),
-		A_UnknownCommand(bytearray(b'\xfd\xc7')),
-		A_UnknownCommand(bytearray(b'\x98')),
+		A_UnknownCommand(bytearray([0xFD, 0xC7])),
+		A_UnknownCommand(bytearray([0x98])),
 		A_FaceNorthwest(),
 		A_SetWalkingSpeed(NORMAL),
 		A_SetSolidityBits(cant_pass_walls=True)

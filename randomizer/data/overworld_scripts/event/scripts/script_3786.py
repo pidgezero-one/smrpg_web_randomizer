@@ -34,7 +34,7 @@ from ....spells.spells import *
 script = EventScript([
 	JmpIfMarioInAir(["EVENT_3584_ret_0"]),
 	EnterArea(room_id=R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, face_direction=NORTHEAST, x=17, y=104, z=6),
-	UnknownCommand(bytearray(b'\xfdI')),
+	UnknownCommand(bytearray([0xFD, 0x49])),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_FloatingOff(),
 		A_ClearSolidityBits(cant_pass_walls=True),

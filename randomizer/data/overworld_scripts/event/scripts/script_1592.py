@@ -80,7 +80,7 @@ script = EventScript([
 		A_VisibilityOff(),
 		A_Pause(1),
 		A_EndLoop(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	RemoveOneOfItemFromInventory(TempleKeyItem),
 	ApplySolidityModToLevel(permanent=True, room_id=R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, mod_id=0),

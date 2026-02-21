@@ -40,7 +40,7 @@ script = EventScript([
 	SummonObjectToSpecificLevel(NPC_3, R404_LANDS_END_DESERT_AREA_04),
 	SummonObjectToSpecificLevel(NPC_6, R318_LANDS_END_DESERT_AREA_02),
 	ActionQueueAsync(target=NPC_3, subscript=[
-		A_UnknownCommand(bytearray(b'\x97\x16')),
+		A_UnknownCommand(bytearray([0x97, 0x16])),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0])
 	]),
 	JmpIfBitSet(TEMP_7044_6, ["EVENT_1786_set_var_to_const_11"]),

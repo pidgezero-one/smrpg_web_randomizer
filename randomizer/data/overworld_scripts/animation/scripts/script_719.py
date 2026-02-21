@@ -27,6 +27,6 @@ script = ActionScript([
 	A_AddZCoord1Step(),
 	A_Pause(24),
 	A_VisibilityOff(),
-	A_UnknownCommand(bytearray(b'\xfd\xf2')),
+	A_UnknownCommand(bytearray([0xFD, 0xF2])),
 	A_ReturnQueue()
 ])

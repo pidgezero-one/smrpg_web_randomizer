@@ -64,7 +64,7 @@ script = EventScript([
 	SummonObjectToSpecificLevel(NPC_15, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS),
 	ClearBit(UNKNOWN_704F_5),
 	ActionQueueAsync(target=NPC_2, subscript=[
-		A_UnknownCommand(bytearray(b'\x97\x15')),
+		A_UnknownCommand(bytearray([0x97, 0x15])),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0])
 	]),
 	JmpIfBitSet(TEMP_7044_6, ["EVENT_1783_set_var_to_const_35"]),

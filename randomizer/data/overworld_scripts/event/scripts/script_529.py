@@ -32,7 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	UnknownCommand(bytearray(b'\xfdG')),
+	UnknownCommand(bytearray([0xFD, 0x47])),
 	CloseDialog(),
 	FadeOutMusicToVolume(duration=1, volume=127),
 	ActionQueueSync(target=NPC_3, subscript=[
@@ -94,7 +94,7 @@ script = EventScript([
 	SetVarToConst(Z_COORD_2, 2),
 	ActionQueueAsync(target=NPC_2, subscript=[
 		A_ObjectMemoryClearBit(arg_1=0x08, bits=[3, 4]),
-		A_UnknownCommand(bytearray(b'\x9a')),
+		A_UnknownCommand(bytearray([0x9A])),
 		A_JmpIfBitSet(TEMP_7043_2, ["EVENT_529_action_queue_24_SUBSCRIPT_set_sprite_sequence_6"]),
 		A_FaceNorthwest(),
 		A_TransferXYZFPixels(x=240, y=248, z=0, direction=EAST),

@@ -68,8 +68,8 @@ script = EventScript([
 	JmpToSubroutine(["EVENT_3480_action_queue_40"]),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%\x80\x02\xec\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0x80, 0x02, 0xEC, 0xFF])),
 		A_SetWalkingSpeed(SLOW),
 		A_WalkSouthwestSteps(2),
 		A_BPL262728(),

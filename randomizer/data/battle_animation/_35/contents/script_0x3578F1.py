@@ -14,7 +14,7 @@ from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targe
 script = AnimationScriptBlock(expected_size=44, expected_beginning=0x3578F1, script=[
 	ResetTargetMappingMemory(identifier="command_0x3578F1"),
 	SetAMEM60ToCurrentTarget(),
-	UnknownCommand(bytearray(b'D`')),
+	UnknownCommand(bytearray([0x44, 0x60])),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_0X00, speed=1536, arch_height=0),
 	SetAMEM16BitToConst(0x60, 10),
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=0, destinations=["command_0x355F1D"]),

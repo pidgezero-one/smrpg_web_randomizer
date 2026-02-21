@@ -4,7 +4,6 @@ from .contents.script_0x350202 import script as script_0x350202
 from .contents.script_0x35058A import script as script_0x35058A
 from .contents.script_0x350737 import script as script_0x350737
 from .contents.script_0x350A55 import script as script_0x350A55
-from .contents.script_0x350C14 import script as script_0x350C14
 from .contents.script_0x351026 import script as script_0x351026
 from .contents.script_0x351493 import script as script_0x351493
 from .contents.script_0x352128 import script as script_0x352128
@@ -50,7 +49,6 @@ bank = AnimationScriptBank(
 		script_0x35058A,
 		script_0x350737,
 		script_0x350A55,
-		script_0x350C14,
 		script_0x351026,
 		script_0x351493,
 		script_0x352128,

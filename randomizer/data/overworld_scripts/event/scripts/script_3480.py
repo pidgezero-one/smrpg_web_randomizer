@@ -43,7 +43,7 @@ script = EventScript([
 	SetVarToConst(Z_COORD_2, 0),
 	StartLoopNTimes(2),
 	ActionQueueAsync(target=MEM_70A9, subscript=[
-		A_UnknownCommand(bytearray(b'\x99'))
+		A_UnknownCommand(bytearray([0x99]))
 	]),
 	AddConstToVar(X_COORD_2, 128),
 	AddConstToVar(Y_COORD_2, 64),
@@ -52,7 +52,7 @@ script = EventScript([
 	SetVarToConst(X_COORD_2, 4608),
 	SetVarToConst(Y_COORD_2, 512),
 	ActionQueueAsync(target=MEM_70A9, subscript=[
-		A_UnknownCommand(bytearray(b'\x99'))
+		A_UnknownCommand(bytearray([0x99]))
 	]),
 	FadeInFromBlack(sync=True, duration=80),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3480_jmp_if_bit_set_23"]),
@@ -126,8 +126,8 @@ script = EventScript([
 		A_VisibilityOn(),
 		A_Pause(2),
 		A_EndLoop(),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%\x00\x02\xf0\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0x00, 0x02, 0xF0, 0xFF])),
 		A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
 		A_WalkSouthwestSteps(2),
 		A_SetWalkingSpeed(NORMAL),
@@ -148,8 +148,8 @@ script = EventScript([
 		A_EndLoop(),
 		A_SetWalkingSpeed(NORMAL),
 		A_WalkSouthSteps(6),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%p\x02\xf5\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0x70, 0x02, 0xF5, 0xFF])),
 		A_PlaySound(sound=SO010_TRAMPOLINE, channel=4),
 		A_WalkNortheastSteps(6),
 		A_Walk1StepNorth(),
@@ -168,7 +168,7 @@ script = EventScript([
 	RunEventAtReturn(E3489_MIDAS_RIVER_WATERFALL_LISTEN_FOR_BUTTON_INPUTS),
 	Return(),
 	ActionQueueAsync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\x97\x00')),
+		A_UnknownCommand(bytearray([0x97, 0x00])),
 		A_VisibilityOn(),
 		A_SequenceLoopingOn(),
 		A_ShadowOn(),

@@ -30,8 +30,8 @@ script = ActionScript([
 	A_Jmp(["ACTION_485_set_sprite_sequence_6"]),
 	A_Pause(3, identifier="ACTION_485_pause_12"),
 	A_WalkSoutheastPixels(4),
-	A_UnknownCommand(bytearray(b' \x04')),
-	A_UnknownCommand(bytearray(b'%\x00\x0f\x80\xff')),
+	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_UnknownCommand(bytearray([0x25, 0x00, 0x0F, 0x80, 0xFF])),
 	A_Pause(48),
 	A_BPL262728(),
 	A_ReturnQueue()

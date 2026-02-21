@@ -49,8 +49,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNortheast(),
 		A_JumpToHeight(height=64, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\x02\x00\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0x02, 0x00, 0xFF])),
 		A_Pause(16),
 		A_BPL262728()
 	]),
@@ -59,8 +59,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNortheast(),
 		A_JumpToHeight(height=64, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\x01\x80\xfe')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0x01, 0x80, 0xFE])),
 		A_Pause(16),
 		A_BPL262728()
 	]),
@@ -69,8 +69,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorth(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\x00\xab\xfe')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0x00, 0xAB, 0xFE])),
 		A_Pause(24),
 		A_BPL262728()
 	]),
@@ -79,8 +79,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorth(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$V\xffV\xfe')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x56, 0xFF, 0x56, 0xFE])),
 		A_Pause(24),
 		A_BPL262728()
 	]),
@@ -89,8 +89,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorthwest(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\xab\xfe\x00\xfe')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0xAB, 0xFE, 0x00, 0xFE])),
 		A_Pause(24),
 		A_BPL262728()
 	]),
@@ -99,8 +99,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorthwest(),
 		A_JumpToHeight(height=128, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x80\xfe@\xfe')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x80, 0xFE, 0x40, 0xFE])),
 		A_Pause(32),
 		A_BPL262728()
 	]),
@@ -109,8 +109,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorthwest(),
 		A_JumpToHeight(height=128, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\xfe\x00\xfe')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0xFE, 0x00, 0xFE])),
 		A_Pause(32),
 		A_BPL262728()
 	]),
@@ -119,8 +119,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNortheast(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\x02\xab\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0x02, 0xAB, 0xFF])),
 		A_Pause(24),
 		A_BPL262728()
 	]),
@@ -129,8 +129,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceEast(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\xaa\x02\x00\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0xAA, 0x02, 0x00, 0x00])),
 		A_Pause(24),
 		A_BPL262728()
 	]),
@@ -139,8 +139,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceEast(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$U\x03U\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x55, 0x03, 0x55, 0x00])),
 		A_Pause(24),
 		A_BPL262728()
 	]),
@@ -149,8 +149,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSoutheast(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\x04\xaa\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0x04, 0xAA, 0x00])),
 		A_Pause(24),
 		A_BPL262728()
 	]),
@@ -159,8 +159,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSoutheast(),
 		A_JumpToHeight(height=128, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x80\x03\xc0\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x80, 0x03, 0xC0, 0x00])),
 		A_Pause(32),
 		A_BPL262728()
 	]),
@@ -169,8 +169,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSoutheast(),
 		A_JumpToHeight(height=128, silent=True),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\x04\x00\x01')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0x04, 0x00, 0x01])),
 		A_Pause(32),
 		A_BPL262728()
 	]),

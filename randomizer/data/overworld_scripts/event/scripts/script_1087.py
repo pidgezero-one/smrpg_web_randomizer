@@ -37,8 +37,8 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNortheast(),
 		A_JumpToHeight(64),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\x02\x00\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0x02, 0x00, 0xFF])),
 		A_Pause(16),
 		A_BPL262728()
 	]),
@@ -69,8 +69,8 @@ script = EventScript([
 		A_FaceNortheast(),
 		A_Pause(10),
 		A_JumpToHeight(64),
-		A_UnknownCommand(bytearray(b' \x03')),
-		A_UnknownCommand(bytearray(b'$\x00\x02\x00\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x03])),
+		A_UnknownCommand(bytearray([0x24, 0x00, 0x02, 0x00, 0xFF])),
 		A_Pause(16),
 		A_BPL262728()
 	]),

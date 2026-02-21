@@ -34,7 +34,7 @@ from ....spells.spells import *
 script = EventScript([
 	JmpIfMarioInAir(["EVENT_3584_ret_0"]),
 	EnterArea(room_id=R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, face_direction=SOUTHEAST, x=25, y=114, z=0),
-	UnknownCommand(bytearray(b'\xfdI')),
+	UnknownCommand(bytearray([0xFD, 0x49])),
 	JmpToSubroutine(["EVENT_3780_jmp_if_present_in_current_level_9"]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_ClearSolidityBits(cant_pass_walls=True),

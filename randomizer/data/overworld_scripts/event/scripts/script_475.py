@@ -32,7 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	UnknownCommand(bytearray(b'\xfdD')),
+	UnknownCommand(bytearray([0xFD, 0x44])),
 	JmpToEvent(E0465_MUSHROOM_DERBY_BUSINESS_LOGIC),
 	Return()
 ])

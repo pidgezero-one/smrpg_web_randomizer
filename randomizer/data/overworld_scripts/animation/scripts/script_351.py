@@ -17,7 +17,7 @@ from ....items import *
 
 script = ActionScript([
 	A_JmpIfVarEqualsConst(CURRENT_OVERWORLD_MARKER_ID, 50, ["ACTION_351_set_animation_speed_10"]),
-	A_UnknownCommand(bytearray(b'\xc8\x00')),
+	A_UnknownCommand(bytearray([0xC8, 0x00])),
 	A_TransferTo70167018(),
 	A_SetPriority(3),
 	A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),

@@ -21,7 +21,7 @@ script = ActionScript([
 	A_SetVarToConst(X_COORD_2, 512),
 	A_SetVarToConst(Y_COORD_2, 6656),
 	A_SetVarToConst(Z_COORD_2, 0),
-	A_UnknownCommand(bytearray(b'\x99')),
+	A_UnknownCommand(bytearray([0x99])),
 	A_SetAllSpeeds(NORMAL),
 	A_VisibilityOn(),
 	A_WalkNortheastSteps(4),

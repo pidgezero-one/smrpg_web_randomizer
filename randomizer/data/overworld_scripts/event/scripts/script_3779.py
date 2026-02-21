@@ -34,7 +34,7 @@ from ....spells.spells import *
 script = EventScript([
 	JmpIfMarioInAir(["EVENT_3584_ret_0"]),
 	EnterArea(room_id=R379_BEAN_VALLEY_BEANSTALKS_AREA_02, face_direction=NORTHWEST, x=7, y=59, z=0),
-	UnknownCommand(bytearray(b'\xfdI')),
+	UnknownCommand(bytearray([0xFD, 0x49])),
 	JmpIfObjectNotInSpecificLevel(NPC_1, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["EVENT_3779_action_queue_6"]),
 	RemoveObjectFromCurrentLevel(NPC_2),
 	ActionQueueSync(target=NPC_1, subscript=[

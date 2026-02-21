@@ -34,12 +34,12 @@ from ....spells.spells import *
 script = EventScript([
 	JmpIfBitSet(TEMP_7043_1, ["EVENT_2672_set_var_to_const_2"]),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\xc8\x94')),
+		A_UnknownCommand(bytearray([0xC8, 0x94])),
 		A_AddConstToVar(Y_COORD_2, 2),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_Pause(1, identifier="EVENT_2672_action_queue_1_SUBSCRIPT_pause_3"),
 		A_JmpIfMarioInAir(["EVENT_2672_action_queue_1_SUBSCRIPT_pause_3"]),
-		A_UnknownCommand(bytearray(b'\x98')),
+		A_UnknownCommand(bytearray([0x98])),
 		A_FaceNorth(),
 		A_SetSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True)
 	]),

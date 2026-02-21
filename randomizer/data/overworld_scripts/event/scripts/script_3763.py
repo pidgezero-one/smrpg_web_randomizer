@@ -34,9 +34,9 @@ from ....spells.spells import *
 script = EventScript([
 	EnableControlsUntilReturn([]),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\xc8\x00')),
+		A_UnknownCommand(bytearray([0xC8, 0x00])),
 		A_AddConstToVar(Z_COORD_2, 2304),
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_JumpToHeight(height=0, silent=True)
 	]),
 	FadeInFromBlack(sync=True),

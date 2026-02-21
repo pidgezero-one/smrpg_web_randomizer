@@ -40,7 +40,7 @@ script = EventScript([
 	Jmp(["EVENT_446_set_var_to_const_20"]),
 	RunDialog(dialog_id=DI0866_X_POINTS, above_object=MARIO, closable=False, sync=True, multiline=True, use_background=False, identifier="EVENT_446_run_dialog_6"),
 	StopAllBackgroundEvents(),
-	UnknownCommand(bytearray(b'\xfdD')),
+	UnknownCommand(bytearray([0xFD, 0x44])),
 	UnfreezeCamera(),
 	FadeOutMusicToVolume(duration=2, volume=0),
 	ClearBit(TEMP_7044_6),

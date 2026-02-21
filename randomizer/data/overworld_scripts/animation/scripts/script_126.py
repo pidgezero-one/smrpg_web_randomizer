@@ -29,7 +29,7 @@ script = ActionScript([
 	A_Mem700CAndConst(0x0003),
 	A_AddConstToVar(PRIMARY_TEMP_700C, 21),
 	A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_70AA),
-	A_UnknownCommand(bytearray(b'\x97\x12')),
+	A_UnknownCommand(bytearray([0x97, 0x12])),
 	A_JmpIfBitSet(TEMP_7044_1, ["ACTION_126_pause_4"]),
 	A_SetBit(TEMP_7044_1),
 	A_SetAllSpeeds(FASTER),

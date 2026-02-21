@@ -103,7 +103,7 @@ script = EventScript([
 	VarShiftLeft(X_COORD_2, 8),
 	SetVarToConst(Z_COORD_2, 10),
 	ActionQueueAsync(target=MEM_70AB, subscript=[
-		A_UnknownCommand(bytearray(b'\x9a')),
+		A_UnknownCommand(bytearray([0x9A])),
 		A_VisibilityOn(),
 		A_ObjectMemoryClearBit(arg_1=0x30, bits=[4])
 	]),

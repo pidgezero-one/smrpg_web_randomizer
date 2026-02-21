@@ -74,7 +74,7 @@ script = ActionScript([
 	A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 	A_SetBit(TEMP_7044_4),
 	A_SetObjectMemoryBits(arg_1=0x0E, bits=[]),
-	A_UnknownCommand(bytearray(b'\x97\x11')),
+	A_UnknownCommand(bytearray([0x97, 0x11])),
 	A_ClearBit(TEMP_7044_4),
 	A_ObjectMemoryClearBit(arg_1=0x30, bits=[4]),
 	A_CopyVarToVar(from_var=TEMP_7026, to_var=PRIMARY_TEMP_700C),

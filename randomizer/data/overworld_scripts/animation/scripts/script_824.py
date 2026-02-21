@@ -84,7 +84,7 @@ script = ActionScript([
 	A_VisibilityOff(),
 	A_Pause(1),
 	A_EndLoop(),
-	A_UnknownCommand(bytearray(b'\xfd\xf2')),
+	A_UnknownCommand(bytearray([0xFD, 0xF2])),
 	A_ReturnQueue(),
 	A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True, identifier="ACTION_824_set_sprite_sequence_70"),
 	A_Pause(4),
@@ -143,7 +143,7 @@ script = ActionScript([
 	A_VisibilityOff(),
 	A_Pause(1),
 	A_EndLoop(),
-	A_UnknownCommand(bytearray(b'\xfd\xf2')),
+	A_UnknownCommand(bytearray([0xFD, 0xF2])),
 	A_ClearBit(TEMP_7043_0),
 	A_ReturnQueue()
 ])

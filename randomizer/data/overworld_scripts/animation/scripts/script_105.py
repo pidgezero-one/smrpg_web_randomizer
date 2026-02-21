@@ -17,8 +17,8 @@ from ....items import *
 
 script = ActionScript([
 	A_SetWalkingSpeed(NORMAL, identifier="ACTION_105_set_animation_speed_0"),
-	A_UnknownCommand(bytearray(b' \x04')),
-	A_UnknownCommand(bytearray(b'%\xc0\x06\x80\xff')),
+	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 	A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=6),
 	A_Walk1StepNorthwest(),
 	A_WalkNorthwestPixels(11),

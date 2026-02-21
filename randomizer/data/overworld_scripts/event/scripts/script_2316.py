@@ -59,8 +59,8 @@ script = EventScript([
 		A_WalkWestPixels(4),
 		A_ShiftZUpSteps(2),
 		A_SetWalkingSpeed(NORMAL),
-		A_UnknownCommand(bytearray(b' \x01')),
-		A_UnknownCommand(bytearray(b'$ \x00\x00\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x01])),
+		A_UnknownCommand(bytearray([0x24, 0x20, 0x00, 0x00, 0x00])),
 		A_ShiftZUpSteps(8),
 		A_BPL262728()
 	]),
@@ -99,8 +99,8 @@ script = EventScript([
 	SetBit(TEMP_GARDENER_EXTERIOR_1),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b' \x01')),
-		A_UnknownCommand(bytearray(b'$\x1c\x00\x00\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x01])),
+		A_UnknownCommand(bytearray([0x24, 0x1C, 0x00, 0x00, 0x00])),
 		A_ShiftZUpSteps(6),
 		A_BPL262728(),
 		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True),
@@ -132,8 +132,8 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetWalkingSpeed(NORMAL),
-		A_UnknownCommand(bytearray(b' \x01')),
-		A_UnknownCommand(bytearray(b'$\xe3\xff\x00\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x01])),
+		A_UnknownCommand(bytearray([0x24, 0xE3, 0xFF, 0x00, 0x00])),
 		A_ShiftZDownSteps(7),
 		A_BPL262728(),
 		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
@@ -142,9 +142,9 @@ script = EventScript([
 	ActionQueueSync(target=MARIO, subscript=[
 		A_SetSpriteSequence(index=3, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_PlaySound(sound=SO004_JUMP, channel=4),
-		A_UnknownCommand(bytearray(b' \x07')),
-		A_UnknownCommand(bytearray(b'$@\x000\x01')),
-		A_UnknownCommand(bytearray(b'%\xc0\x06\x80\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_UnknownCommand(bytearray([0x24, 0x40, 0x00, 0x30, 0x01])),
+		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 		A_Pause(37),
 		A_BPL262728()
 	]),

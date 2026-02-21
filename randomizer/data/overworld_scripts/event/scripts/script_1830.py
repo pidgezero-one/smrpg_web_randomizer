@@ -109,7 +109,7 @@ script = EventScript([
 		A_SwapVars(X_COORD_2, ROSE_WAY_7038),
 		A_SwapVars(Y_COORD_2, ROSE_WAY_703A),
 		A_SwapVars(Z_COORD_2, ROSE_WAY_703C),
-		A_UnknownCommand(bytearray(b'\x99'))
+		A_UnknownCommand(bytearray([0x99]))
 	]),
 	Jmp(["EVENT_1830_ret_81"]),
 	Pause(1, identifier="EVENT_1830_pause_75"),
@@ -118,7 +118,7 @@ script = EventScript([
 	Set7016701BToObjectXYZ(target=MEM_70A8),
 	AddConstToVar(Z_COORD_2, 320),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_Pause(1, identifier="EVENT_1830_action_queue_80_SUBSCRIPT_pause_1"),
 		A_JmpIfMarioInAir(["EVENT_1830_action_queue_80_SUBSCRIPT_pause_1"])
 	]),

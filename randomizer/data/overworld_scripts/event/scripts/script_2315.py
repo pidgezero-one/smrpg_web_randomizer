@@ -84,9 +84,9 @@ script = EventScript([
 	ActionQueueSync(target=MARIO, subscript=[
 		A_SetSpriteSequence(index=3, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_ShadowOn(),
-		A_UnknownCommand(bytearray(b' \x07')),
-		A_UnknownCommand(bytearray(b'$\xc0\x00`\x00')),
-		A_UnknownCommand(bytearray(b'%\x00\n\x80\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_UnknownCommand(bytearray([0x24, 0xC0, 0x00, 0x60, 0x00])),
+		A_UnknownCommand(bytearray([0x25, 0x00, 0x0A, 0x80, 0xFF])),
 		A_Pause(40),
 		A_BPL262728(),
 		A_PlaySound(sound=SO058_INSERT, channel=4)

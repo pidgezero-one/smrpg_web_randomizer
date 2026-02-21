@@ -36,9 +36,9 @@ script = EventScript([
 	MoveScriptToBackgroundThread2(),
 	EnableControls([]),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\xc8\x00')),
+		A_UnknownCommand(bytearray([0xC8, 0x00])),
 		A_AddConstToVar(Z_COORD_2, 2304),
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_JumpToHeight(height=0, silent=True)
 	]),
 	JmpIfBitSet(TEMP_709C_3, ["EVENT_282_clear_bit_6"]),

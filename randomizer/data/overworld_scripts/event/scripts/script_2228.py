@@ -34,7 +34,7 @@ from ....spells.spells import *
 script = EventScript([
 	JmpIfObjectNotInSpecificLevel(NPC_2, R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, ["EVENT_2228_db_2"]),
 	SetSyncActionScript(NPC_2, A1010_KEEP_DARK_ROOM_INIT_GOOMBA),
-	UnknownCommand(bytearray(b'\xfd\x8f\x02'), identifier="EVENT_2228_db_2"),
+	UnknownCommand(bytearray([0xFD, 0x8F, 0x02]), identifier="EVENT_2228_db_2"),
 	PrioritySet(mainscreen=[LAYER_L3], subscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES], colour_math=[BACKGROUND, HALF_INTENSITY]),
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_SequenceLoopingOn()

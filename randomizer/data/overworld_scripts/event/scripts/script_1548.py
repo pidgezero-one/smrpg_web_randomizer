@@ -1,4 +1,4 @@
-# E1548_EMPTY
+# E1548_BANDITS_WAY_4_CHEST_SELECTOR
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+    JmpIfVarEqualsConst(ACTIVE_NPC, NPC_0, ["EVENT_1538_jmp_to_event_1"]),
+    JmpIfVarEqualsConst(ACTIVE_NPC, NPC_1, ["EVENT_1587_jmp_to_event_1"]),
+    Return(),
 ])

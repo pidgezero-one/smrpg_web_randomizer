@@ -66,7 +66,7 @@ P003_BRIEF_STAR = Packet(
     b2=0,
     b4=0,
 )
-P004_MIMIC_POOF_ON_DEFEAT = Packet(
+P004_MIMIC_3_POOF_ON_DEFEAT = Packet(
     packet_id=4,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0912_POOF_WHEN_MIMIC_3_DEFEATED,
@@ -1551,8 +1551,36 @@ P102_SMALL_FROG_COIN_STILL = Packet(
     b2=0,
     b4=0,
 )
-P103_UNUSED = None
-P104_UNUSED = None
+P103_MIMIC_1_POOF_ON_DEFEAT = Packet(
+    packet_id=103,
+    sprite_id=SPR0195_FLOWER,
+    action_script_id=A1017_MIMIC_1_POOF_WHEN_DEFEATED,
+    show_shadow=False,
+    b0=0,
+    b1a=0,
+    b1b=2,
+    b1c=3,
+    b2b2=False,
+    b2b3=False,
+    b2b4=False,
+    b2=0,
+    b4=0,
+)
+P104_MIMIC_2_POOF_ON_DEFEAT = Packet(
+    packet_id=104,
+    sprite_id=SPR0195_FLOWER,
+    action_script_id=A1018_MIMIC_2_POOF_WHEN_DEFEATED,
+    show_shadow=False,
+    b0=0,
+    b1a=0,
+    b1b=2,
+    b1c=3,
+    b2b2=False,
+    b2b3=False,
+    b2b4=False,
+    b2=0,
+    b4=0,
+)
 P105_UNUSED = None
 P106_UNUSED = None
 P107_UNUSED = None
@@ -1714,7 +1742,7 @@ ALL_PACKETS = PacketCollection(
         P001_FLASHING_POOF_MUSHROOM,
         P002_FLOWER_PACK_CHEST_ITEM,
         P003_BRIEF_STAR,
-        P004_MIMIC_POOF_ON_DEFEAT,
+        P004_MIMIC_3_POOF_ON_DEFEAT,
         P005_BRIEF_POOF_BAG,
         P006_FEATHER_CHEST,
         P007_STAR_PIECE_CHEST,
@@ -1813,8 +1841,8 @@ ALL_PACKETS = PacketCollection(
         P100_BOOSTER_HILL_PRIZE_11,
         P101_FLOWER_COLLECTION,
         P102_SMALL_FROG_COIN_STILL,
-        P103_UNUSED,
-        P104_UNUSED,
+        P103_MIMIC_1_POOF_ON_DEFEAT,
+        P104_MIMIC_2_POOF_ON_DEFEAT,
         P105_UNUSED,
         P106_UNUSED,
         P107_UNUSED,

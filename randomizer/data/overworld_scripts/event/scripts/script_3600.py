@@ -37,8 +37,8 @@ script = EventScript([
 	ClearBit(UNKNOWN_MUSHROOM_DERBY_7085_4),
 	FreezeCamera(),
 	StopAllBackgroundEvents(),
-	UnknownCommand(bytearray(b'\xfdD')),
-	UnknownCommand(bytearray(b'\xfdE')),
+	UnknownCommand(bytearray([0xFD, 0x44])),
+	UnknownCommand(bytearray([0xFD, 0x45])),
 	PauseActionScript(MARIO),
 	StartSyncEmbeddedActionScript(target=MARIO, prefix=0xF1, subscript=[
 		A_BPL262728(),

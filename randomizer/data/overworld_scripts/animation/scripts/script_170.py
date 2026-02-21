@@ -22,7 +22,7 @@ script = ActionScript([
 	A_SetPriority(3),
 	A_SequenceLoopingOn(),
 	A_AddConstToVar(Z_COORD_2, 2),
-	A_UnknownCommand(bytearray(b'\x9a')),
+	A_UnknownCommand(bytearray([0x9A])),
 	A_SetWalkingSpeed(VERY_FAST),
 	A_WalkEastPixels(4),
 	A_SetObjectMemoryBits(arg_1=0x0E, bits=[3]),

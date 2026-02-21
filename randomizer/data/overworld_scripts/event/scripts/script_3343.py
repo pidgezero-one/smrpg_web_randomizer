@@ -35,27 +35,27 @@ script = EventScript([
 	JmpIfBitSet(VOLCANO_PENULTIMATE_ROOM_ANIMATION_COMPLETED, ["EVENT_3343_ret_7"]),
 	SetBit(VOLCANO_PENULTIMATE_ROOM_ANIMATION_COMPLETED),
 	ActionQueueSync(target=NPC_0, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\xf2')),
+		A_UnknownCommand(bytearray([0xFD, 0xF2])),
 		A_Walk1StepSouthwest(),
 		A_VisibilityOff()
 	]),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\xf2')),
+		A_UnknownCommand(bytearray([0xFD, 0xF2])),
 		A_WalkSouthwestSteps(2),
 		A_VisibilityOff()
 	], identifier="axem_henchman_1_aq_2"),
 	ActionQueueSync(target=NPC_2, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\xf2')),
+		A_UnknownCommand(bytearray([0xFD, 0xF2])),
 		A_WalkSouthwestSteps(3),
 		A_VisibilityOff()
 	], identifier="axem_henchman_2_aq_2"),
 	ActionQueueSync(target=NPC_3, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\xf2')),
+		A_UnknownCommand(bytearray([0xFD, 0xF2])),
 		A_WalkSouthwestSteps(4),
 		A_VisibilityOff()
 	], identifier="axem_henchman_3_aq_2"),
 	ActionQueueSync(target=NPC_4, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\xf2')),
+		A_UnknownCommand(bytearray([0xFD, 0xF2])),
 		A_WalkSouthwestSteps(5),
 		A_VisibilityOff()
 	], identifier="axem_henchman_4_aq_2"),

@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_UnknownCommand(bytearray(b'\xfd\xf2')),
+	A_UnknownCommand(bytearray([0xFD, 0xF2])),
 	A_FaceNortheast(),
 	A_SetWalkingSpeed(VERY_SLOW),
 	A_Walk1StepNortheast(),

@@ -134,8 +134,8 @@ script = EventScript([
 		A_Mem700CXorConst(0x0004),
 		A_FaceEast7C(),
 		A_FloatingOff(),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%\x00\x08\xb0\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0x00, 0x08, 0xB0, 0xFF])),
 		A_Walk1StepFDirection(),
 		A_VisibilityOff(),
 		A_BPL262728()

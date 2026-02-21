@@ -59,7 +59,7 @@ script = EventScript([
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_JmpIfBitClear(TEMP_7043_2, ["EVENT_1913_action_queue_24_SUBSCRIPT_db_2"]),
 		A_Pause(4),
-		A_UnknownCommand(bytearray(b'\x99'), identifier="EVENT_1913_action_queue_24_SUBSCRIPT_db_2"),
+		A_UnknownCommand(bytearray([0x99]), identifier="EVENT_1913_action_queue_24_SUBSCRIPT_db_2"),
 		A_ObjectMemoryClearBit(arg_1=0x30, bits=[4]),
 		A_PlaySound(sound=SO078_CLICK, channel=4),
 		A_VisibilityOn(),

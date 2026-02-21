@@ -16,9 +16,9 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_UnknownCommand(bytearray(b' \x03')),
-	A_EmbeddedAnimationRoutine(bytearray(b'&\x00\x00\x00\x00\x00\x18\x00\x7f\xff\x00\xee\xff\x80\xfe\x80')),
-	A_EmbeddedAnimationRoutine(bytearray(b"\'\x00\x00\x00\x00\x00\xe4\x00\\\xff\x00\xee\xff\x80\xfe\x80")),
+	A_UnknownCommand(bytearray([0x20, 0x03])),
+	A_EmbeddedAnimationRoutine(bytearray([0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x00, 0x7F, 0xFF, 0x00, 0xEE, 0xFF, 0x80, 0xFE, 0x80])),
+	A_EmbeddedAnimationRoutine(bytearray([0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE4, 0x00, 0x5C, 0xFF, 0x00, 0xEE, 0xFF, 0x80, 0xFE, 0x80])),
 	A_SetWalkingSpeed(VERY_SLOW),
 	A_AddZCoord1Step(),
 	A_Pause(392),

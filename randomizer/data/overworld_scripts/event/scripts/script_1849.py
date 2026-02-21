@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	MoveScriptToMainThread(),
-	UnknownCommand(bytearray(b'\xfdG')),
+	UnknownCommand(bytearray([0xFD, 0x47])),
 	RunEventAtReturn(E1847_CANNONBALL_ROOM_BOMB_1),
 	Return()
 ])

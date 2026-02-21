@@ -69,7 +69,7 @@ script = EventScript([
 	ActionQueueAsync(target=MEM_70A9, subscript=[
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_Move70107015To7016701B(),
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_SetWalkingSpeed(NORMAL)
 	]),
 	Inc(TEMP_70A9),

@@ -16,9 +16,9 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_UnknownCommand(bytearray(b' \x03')),
-	A_UnknownCommand(bytearray(b'$\xe0\x00\x90\xff')),
+	A_UnknownCommand(bytearray([0x20, 0x03])),
+	A_UnknownCommand(bytearray([0x24, 0xE0, 0x00, 0x90, 0xFF])),
 	A_Pause(4),
-	A_UnknownCommand(bytearray(b'$@\x00\xe0\xff')),
+	A_UnknownCommand(bytearray([0x24, 0x40, 0x00, 0xE0, 0xFF])),
 	A_Pause(2)
 ])

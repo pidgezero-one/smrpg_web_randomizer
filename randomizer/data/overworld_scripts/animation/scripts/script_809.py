@@ -18,11 +18,11 @@ from ....items import *
 script = ActionScript([
 	A_Set700CToCurrentLevel(),
 	A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 117, ["ACTION_809_db_6"]),
-	A_UnknownCommand(bytearray(b' \x03')),
-	A_UnknownCommand(bytearray(b'$\x00\xfe\x00\x01')),
+	A_UnknownCommand(bytearray([0x20, 0x03])),
+	A_UnknownCommand(bytearray([0x24, 0x00, 0xFE, 0x00, 0x01])),
 	A_Pause(1, identifier="ACTION_809_pause_4"),
 	A_Jmp(["ACTION_809_pause_4"]),
-	A_UnknownCommand(bytearray(b' \x03'), identifier="ACTION_809_db_6"),
-	A_UnknownCommand(bytearray(b'$\x00\x02\x00\x01')),
+	A_UnknownCommand(bytearray([0x20, 0x03]), identifier="ACTION_809_db_6"),
+	A_UnknownCommand(bytearray([0x24, 0x00, 0x02, 0x00, 0x01])),
 	A_Jmp(["ACTION_809_pause_4"])
 ])

@@ -37,7 +37,7 @@ script = EventScript([
 	DisableObjectTrigger(MEM_70A8, identifier="EVENT_1604_disable_trigger_2"),
 	StartAsyncEmbeddedActionScript(target=MEM_70A8, prefix=0xF1, subscript=[
 		A_SetObjectMemoryBits(arg_1=0x0B, bits=[0, 1]),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	SetSyncActionScript(MEM_70A8, A1022_HIT_BY_EXP_STAR),
 	IncEXPByPacket(),

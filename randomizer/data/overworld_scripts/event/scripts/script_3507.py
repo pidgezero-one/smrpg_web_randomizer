@@ -77,9 +77,20 @@ script = EventScript([
 	RunDialog(dialog_id=DI1197_BOOSTER_HILL_NOT_UNLOCKED_YET, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
     Jmp(["EVENT_3507_pause_18"]),
+    
+	
+	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000, identifier="booster_hill_already_done"),
+	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=SECONDARY_TEMP_7024),
+	CompareVarToConst(SECONDARY_TEMP_7024, 16),
+	JmpIfComparisonResultIsLesser(["some_items_left"]),
 
-	RunDialog(dialog_id=DI2003_TOAD_WARNS_YOU_TO_LEAVE_EMPTY_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="booster_hill_already_done"),
+	RunDialog(dialog_id=DI2003_TOAD_WARNS_YOU_TO_LEAVE_EMPTY_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
+    Jmp(["EVENT_3507_pause_18"]),
+    
+	RunDialog(dialog_id=DI2004_SOME_ITEMS_LEFT_ON_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="some_items_left"),
+	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
+    
 	Pause(10, identifier="EVENT_3507_pause_18"),
 	SetAsyncActionScript(MARIO, A0670_NOD_YES),
 	RunDialog(dialog_id=DI1200_TOAD_TAKES_YOU_OUT_OF_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
@@ -100,11 +111,7 @@ script = EventScript([
 	JmpIfComparisonResultIsLesser(["EVENT_3507_pause_38"]),
 	Pause(10),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
-	JmpIfBitSet(UNKNOWN_704E_2, ["EVENT_3507_run_dialog_35"]),
 	RunDialog(dialog_id=DI1203_TOAD_TELLS_YOU_THERES_NOTHING_LEFT, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	JmpIfDialogOptionBSelected(["EVENT_3507_pause_38"]),
-	Jmp(["EVENT_3507_pause_18"]),
-	RunDialog(dialog_id=DI1202_TOAD_TELLS_YOU_THERES_NO_FLOWERS, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="EVENT_3507_run_dialog_35"),
 	JmpIfDialogOptionBSelected(["EVENT_3507_pause_38"]),
 	Jmp(["EVENT_3507_pause_18"]),
 	Pause(10, identifier="EVENT_3507_pause_38"),

@@ -60,7 +60,7 @@ script = EventScript([
 	SetVarToConst(TEMP_70AA, 27),
 	ActionQueueAsync(target=MEM_70A9, subscript=[
 		A_BPL262728(),
-		A_UnknownCommand(bytearray(b'\xfd$\x11\x12')),
+		A_UnknownCommand(bytearray([0xFD, 0x24, 0x11, 0x12])),
 		A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_702A)
 	]),
 	PauseActionScript(NPC_9),

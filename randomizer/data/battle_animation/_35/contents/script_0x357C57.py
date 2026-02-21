@@ -23,7 +23,7 @@ script = AnimationScriptBlock(expected_size=159, expected_beginning=0x357C57, sc
 	ReturnSubroutine(),
 	ResetTargetMappingMemory(identifier="command_0x357C7D"),
 	SetAMEM60ToCurrentTarget(),
-	UnknownCommand(bytearray(b'DH')),
+	UnknownCommand(bytearray([0x44, 0x48])),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=1024, arch_height=128),
 	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
 	ResetObjectMappingMemory(),

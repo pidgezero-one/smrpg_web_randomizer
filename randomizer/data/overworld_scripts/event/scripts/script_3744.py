@@ -45,7 +45,7 @@ script = EventScript([
 	]),
 	ActionQueueAsync(target=MEM_70A8, subscript=[
 		A_WalkSoutheastSteps(8),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	RemoveObjectFromSpecificLevel(NPC_9, R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA),
 	RemoveObjectFromCurrentLevel(NPC_9),

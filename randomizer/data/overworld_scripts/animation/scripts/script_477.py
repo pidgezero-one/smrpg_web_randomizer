@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_UnknownCommand(bytearray(b' \x00')),
+	A_UnknownCommand(bytearray([0x20, 0x00])),
 	A_Pause(1, identifier="ACTION_477_pause_1"),
 	A_Jmp(["ACTION_477_pause_1"])
 ])

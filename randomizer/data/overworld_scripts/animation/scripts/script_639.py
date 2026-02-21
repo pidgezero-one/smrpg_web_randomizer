@@ -21,7 +21,7 @@ script = ActionScript([
 	A_CopyVarToVar(from_var=ROSE_TOWN_ARROW_POSITION, to_var=PRIMARY_TEMP_700C),
 	A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=Y_COORD_2),
 	A_SetVarToConst(Z_COORD_2, 32),
-	A_UnknownCommand(bytearray(b'\x9a')),
+	A_UnknownCommand(bytearray([0x9A])),
 	A_JmpIfBitSet(TEMP_7043_0, ["ACTION_639_transfer_xyzf_pixels_9"]),
 	A_TransferXYZFPixels(x=212, y=6, z=30, direction=NORTHEAST),
 	A_Jmp(["ACTION_639_visibility_on_10"]),

@@ -42,8 +42,8 @@ script = EventScript([
 	Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Y, pixel=True),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ROSE_WAY_703A),
 	Jmp(["EVENT_1828_pause_0"]),
-	UnknownCommand(bytearray(b'\xfdD'), identifier="EVENT_1828_db_10"),
-	UnknownCommand(bytearray(b'\xfdG')),
+	UnknownCommand(bytearray([0xFD, 0x44]), identifier="EVENT_1828_db_10"),
+	UnknownCommand(bytearray([0xFD, 0x47])),
 	RunEventAtReturn(E1830_KEEP_HANDLE_ROOM_RELOAD_AFTER_LAVA_FALL),
 	Return()
 ])

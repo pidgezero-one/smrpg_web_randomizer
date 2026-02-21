@@ -57,8 +57,8 @@ script = EventScript([
 	SetBit(TEMP_GARDENER_EXTERIOR_1),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b' \x01')),
-		A_UnknownCommand(bytearray(b'$\x1c\x00\x00\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x01])),
+		A_UnknownCommand(bytearray([0x24, 0x1C, 0x00, 0x00, 0x00])),
 		A_ShiftZUpSteps(6),
 		A_BPL262728(),
 		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),

@@ -146,7 +146,7 @@ script = EventScript([
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_CopyVarToVar(from_var=ROSE_WAY_7038, to_var=PRIMARY_TEMP_700C),
 		A_FaceEast7C(),
-		A_UnknownCommand(bytearray(b'\xc8\x07')),
+		A_UnknownCommand(bytearray([0xC8, 0x07])),
 		A_PlaySound(sound=SO066_KICK_BALL_SHELL, channel=4),
 		A_JumpToHeight(height=124, silent=True),
 		A_SetSolidityBits(cant_pass_npcs=True, bit_7=True),
@@ -156,7 +156,7 @@ script = EventScript([
 		A_WalkFDirectionSteps(2),
 		A_SetBit(TEMP_7043_2),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_VisibilityOff(),
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
@@ -170,7 +170,7 @@ script = EventScript([
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_Pause(8),
-		A_UnknownCommand(bytearray(b'\xfd\x9cW')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x57])),
 		A_ReturnAll()
 	]),
 	ActionQueueAsync(target=MEM_70AA, subscript=[

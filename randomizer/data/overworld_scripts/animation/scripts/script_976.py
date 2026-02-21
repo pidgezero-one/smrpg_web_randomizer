@@ -17,7 +17,7 @@ from ....items import *
 
 script = ActionScript([
 	A_SetVarToConst(TEMP_7034, 1),
-	A_UnknownCommand(bytearray(b'\xc7\x07')),
+	A_UnknownCommand(bytearray([0xC7, 0x07])),
 	A_StartLoopNTimes(2),
 	A_AddConstToVar(TEMP_7034, 1),
 	A_AddConstToVar(Z_COORD_1, 8),
@@ -25,7 +25,7 @@ script = ActionScript([
 	A_Pause(2),
 	A_EndLoop(identifier="ACTION_976_end_loop_7"),
 	A_SetVarToConst(TEMP_7034, 1),
-	A_UnknownCommand(bytearray(b'\xc7\x07')),
+	A_UnknownCommand(bytearray([0xC7, 0x07])),
 	A_StartLoopNTimes(2),
 	A_AddConstToVar(TEMP_7034, 1),
 	A_AddConstToVar(Z_COORD_1, 8),

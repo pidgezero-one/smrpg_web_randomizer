@@ -48,7 +48,7 @@ script = EventScript([
 	SetVarToConst(X_COORD_1, 26),
 	SetVarToConst(Y_COORD_1, 110),
 	SetVarToConst(Z_COORD_1, 21),
-	UnknownCommand(bytearray(b'\xfd\xc4')),
+	UnknownCommand(bytearray([0xFD, 0xC4])),
 	Pause(1, identifier="EVENT_3221_pause_8"),
 	RunEventAsSubroutine(E3386_SHIP_3D_MAZE_SPAWN_PRIZE),
 	Return(identifier="EVENT_3221_ret_10")

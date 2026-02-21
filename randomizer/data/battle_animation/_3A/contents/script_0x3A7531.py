@@ -22,6 +22,6 @@ script = AnimationScriptBlock(expected_size=33, expected_beginning=0x3A7531, scr
 	ClearAMEMBits(0x60, [6]),
 	SetAMEMToAMEM8Bit(dest_amem=0x60, upper=0x50, amem=0x60),
 	ReturnSubroutine(),
-	UnknownCommand(bytearray(b'\xa0'), identifier="command_0x3A7550"),
+	UnknownCommand(bytearray([0xA0]), identifier="command_0x3A7550"),
 	ReturnObjectQueue()
 ])

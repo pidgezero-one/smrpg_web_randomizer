@@ -104,9 +104,9 @@ script = EventScript([
 		A_FloatingOff(),
 		A_PlaySound(sound=SO004_JUMP, channel=4),
 		A_ShadowOn(),
-		A_UnknownCommand(bytearray(b' \x07')),
-		A_UnknownCommand(bytearray(b'$\x80\x01\x80\x01')),
-		A_UnknownCommand(bytearray(b'%\x00\x0c\x80\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_UnknownCommand(bytearray([0x24, 0x80, 0x01, 0x80, 0x01])),
+		A_UnknownCommand(bytearray([0x25, 0x00, 0x0C, 0x80, 0xFF])),
 		A_Pause(31),
 		A_BPL262728(),
 		A_ShadowOn(),
@@ -118,8 +118,8 @@ script = EventScript([
 	]),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetSpriteSequence(index=7, sprite_offset=6, is_sequence=True, looping=True),
-		A_UnknownCommand(bytearray(b' \x01')),
-		A_UnknownCommand(bytearray(b'$ \x00\x00\x00')),
+		A_UnknownCommand(bytearray([0x20, 0x01])),
+		A_UnknownCommand(bytearray([0x24, 0x20, 0x00, 0x00, 0x00])),
 		A_WalkNorthSteps(10),
 		A_BPL262728()
 	]),

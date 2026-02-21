@@ -37,7 +37,7 @@ script = EventScript([
 	SetBit(TEMP_7044_7),
 	ResumeActionScript(MEM_70A8),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ci')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x69])),
 		A_Set700CToObjectCoord(target_npc=DUMMY_0X07, coord=COORD_F),
 		A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 7, ["EVENT_3372_action_queue_4_SUBSCRIPT_set_sprite_sequence_10"]),
 		A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 0, ["EVENT_3372_action_queue_4_SUBSCRIPT_set_sprite_sequence_10"]),

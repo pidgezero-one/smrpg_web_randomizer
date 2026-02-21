@@ -182,7 +182,7 @@ script = EventScript([
 		A_SetVRAMPriority(PRIORITY_3),
 		A_SetPriority(3),
 		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
-		A_UnknownCommand(bytearray(b'\x97\x17')),
+		A_UnknownCommand(bytearray([0x97, 0x17])),
 		A_SetAllSpeeds(FASTEST),
 		A_ShiftZUpPixels(16),
 		A_SetAllSpeeds(NORMAL),

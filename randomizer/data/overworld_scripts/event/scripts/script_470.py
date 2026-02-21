@@ -111,7 +111,7 @@ script = EventScript([
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_ClearSolidityBits(cant_pass_walls=True)
 	]),
-	UnknownCommand(bytearray(b'\xfdE')),
+	UnknownCommand(bytearray([0xFD, 0x45])),
 	FreezeCamera(),
 	SetBit(TEMP_7044_5),
 	SetBit(TEMP_7044_4),
@@ -123,7 +123,7 @@ script = EventScript([
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_SetWalkingSpeed(FASTEST),
 		A_FixedFCoordOn(),
-		A_UnknownCommand(bytearray(b'\x98')),
+		A_UnknownCommand(bytearray([0x98])),
 		A_VisibilityOff(),
 		A_Jmp(["EVENT_470_non_embedded_action_queue_75"])
 	]),
@@ -156,7 +156,7 @@ script = EventScript([
 		A_Jmp(["EVENT_470_non_embedded_action_queue_75_SUBSCRIPT_set_var_to_const_23"]),
 		A_SetSpriteSequence(index=6, sprite_offset=6, is_sequence=True, looping=False, mirror_sprite=True, identifier="EVENT_470_non_embedded_action_queue_75_SUBSCRIPT_set_sprite_sequence_22"),
 		A_SetVarToConst(Z_COORD_2, 0, identifier="EVENT_470_non_embedded_action_queue_75_SUBSCRIPT_set_var_to_const_23"),
-		A_UnknownCommand(bytearray(b'\x9a')),
+		A_UnknownCommand(bytearray([0x9A])),
 		A_VisibilityOn(),
 		A_FixedFCoordOff(),
 		A_SequencePlaybackOff(),

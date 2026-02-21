@@ -37,7 +37,7 @@ script = EventScript([
 	PauseActionScript(NPC_3),
 	Pause(10),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_FaceNorthwest()
 	]),
 	ActionQueueSync(target=NPC_2, subscript=[
@@ -107,7 +107,7 @@ script = EventScript([
 	PauseActionScript(NPC_2),
 	PauseActionScript(NPC_3),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_SetWalkingSpeed(NORMAL),
@@ -178,7 +178,7 @@ script = EventScript([
 	PauseActionScript(NPC_2),
 	PauseActionScript(NPC_3),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_SetWalkingSpeed(NORMAL),
@@ -247,7 +247,7 @@ script = EventScript([
 	PauseActionScript(NPC_2),
 	PauseActionScript(NPC_3),
 	ActionQueueSync(target=NPC_2, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_SetWalkingSpeed(NORMAL),
@@ -316,7 +316,7 @@ script = EventScript([
 	PauseActionScript(NPC_2),
 	PauseActionScript(NPC_3),
 	ActionQueueSync(target=NPC_3, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_SetWalkingSpeed(NORMAL),
@@ -341,7 +341,7 @@ script = EventScript([
 		A_ResetProperties(),
 		A_FaceNorthwest(),
 		A_FixedFCoordOn(),
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_WalkNortheastSteps(2),
 		A_Pause(5),
 		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="tower_henchman_curtain_33")
@@ -422,7 +422,7 @@ script = EventScript([
 	PauseActionScript(NPC_2),
 	PauseActionScript(NPC_3),
 	ActionQueueSync(target=NPC_1, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9ck')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x6B])),
 		A_ResetProperties(),
 		A_Pause(40),
 		A_FixedFCoordOff(),

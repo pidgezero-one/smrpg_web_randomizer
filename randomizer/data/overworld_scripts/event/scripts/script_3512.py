@@ -33,6 +33,6 @@ from ....spells.spells import *
 
 script = EventScript([
 	EnableControlsUntilReturn([]),
-	SetAsyncActionScript(MEM_70A8, A0365_BOOSTER_HILL_LEFTOVER_FLOWERS_PICKED_UP),
+	SetSyncActionScript(MEM_70A8, A0365_BOOSTER_HILL_LEFTOVER_FLOWERS_PICKED_UP),
     JmpToEvent(E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT),
 ])

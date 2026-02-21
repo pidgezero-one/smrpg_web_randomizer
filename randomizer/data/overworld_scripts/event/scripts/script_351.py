@@ -41,7 +41,7 @@ script = EventScript([
 	Return(),
 	JmpIfBitSet(GAMEBOY_KID_PURCHASE_COMPLETE, ["EVENT_351_jmp_if_bit_set_1"], identifier="EVENT_351_jmp_if_bit_set_7"),
 	ActionQueueAsync(target=MEM_70A8, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd$\x17\x00')),
+		A_UnknownCommand(bytearray([0xFD, 0x24, 0x17, 0x00])),
 		A_Mem700CAndConst(0x00C0),
 		A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 64, ["EVENT_351_run_event_as_subroutine_9"]),
 		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),

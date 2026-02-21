@@ -38,7 +38,7 @@ script = EventScript([
 		A_SetWalkingSpeed(SLOW)
 	]),
 	ClearBit(YOSHI_UNKNOWN_7061_7),
-	UnknownCommand(bytearray(b'\xfdE')),
+	UnknownCommand(bytearray([0xFD, 0x45])),
 	PauseActionScript(NPC_9),
 	ClearBit(TEMP_7044_5),
 	EnableControls([]),

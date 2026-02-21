@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	ActionQueueAsync(target=MEM_70AA, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd$\x12\x00')),
+		A_UnknownCommand(bytearray([0xFD, 0x24, 0x12, 0x00])),
 		A_Mem700CAndConst(0x00C0),
 		A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 0, ["EVENT_260_action_queue_0_SUBSCRIPT_face_southeast_6"]),
 		A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 64, ["EVENT_260_action_queue_0_SUBSCRIPT_face_southwest_8"]),

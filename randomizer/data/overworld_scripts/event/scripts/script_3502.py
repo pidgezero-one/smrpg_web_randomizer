@@ -85,7 +85,7 @@ script = EventScript([
 	MoveScriptToMainThread(identifier="EVENT_3502_move_script_to_main_thread_32"),
 	FreezeAllNPCsUntilReturn(),
 	StopAllBackgroundEvents(),
-	UnknownCommand(bytearray(b'\xfdD')),
+	UnknownCommand(bytearray([0xFD, 0x44])),
 	StopBackgroundEvent(TIMER_701C),
 	StopBackgroundEvent(TIMER_701E),
 	SetSyncActionScript(LAYER_1, A0161_SEQUENCE_LOOPING_OFF),
@@ -100,7 +100,7 @@ script = EventScript([
 		A_WalkNorthwestSteps(15)
 	]),
 	FadeOutMusicToVolume(duration=5, volume=0),
-	UnknownCommand(bytearray(b'\xfdE')),
+	UnknownCommand(bytearray([0xFD, 0x45])),
 	EnableControlsUntilReturn([]),
 	JmpIfBitSet(BOOSTER_HILL_CLEARED, ["EVENT_3502_apply_tile_mod_74"]),
 	ApplyTileModToLevel(use_alternate=True, room_id=R054_BOOSTER_HILL_DUMMY, mod_id=34),

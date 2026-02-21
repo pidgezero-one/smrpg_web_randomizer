@@ -100,7 +100,7 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_Set700CToObjectCoord(target_npc=MARIO, coord=COORD_F),
 		A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=SECONDARY_TEMP_7024),
-		A_UnknownCommand(bytearray(b'\xfd$\x00\x10')),
+		A_UnknownCommand(bytearray([0xFD, 0x24, 0x00, 0x10])),
 		A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=PRIMARY_TEMP_7000),
 		A_Mem700CAndConst(0x00C0),
 		A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 0, ["EVENT_289_action_queue_55_SUBSCRIPT_set_sprite_sequence_9"]),

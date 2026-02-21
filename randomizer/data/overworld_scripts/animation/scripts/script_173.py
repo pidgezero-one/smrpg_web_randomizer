@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_UnknownCommand(bytearray(b'\x99')),
+	A_UnknownCommand(bytearray([0x99])),
 	A_ShadowOn(),
 	A_ObjectMemoryClearBit(arg_1=0x30, bits=[4]),
 	A_StartLoopNTimes(3),

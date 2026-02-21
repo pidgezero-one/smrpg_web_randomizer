@@ -38,7 +38,7 @@ script = EventScript([
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_FixedFCoordOff(),
-		A_UnknownCommand(bytearray(b'\x98')),
+		A_UnknownCommand(bytearray([0x98])),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_SetSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_SetAllSpeeds(NORMAL)

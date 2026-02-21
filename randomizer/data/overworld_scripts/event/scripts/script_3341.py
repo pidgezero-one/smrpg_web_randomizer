@@ -37,7 +37,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
 	SetBit(VOLCANO_HENCHMAN_SHORT_ANIMATION_COMPLETED),
 	ActionQueueSync(target=NPC_0, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\xf2')),
+		A_UnknownCommand(bytearray([0xFD, 0xF2])),
 		A_WalkNortheastSteps(2),
 		A_VisibilityOff()
 	], identifier="axem_henchman_1_aq_3"),

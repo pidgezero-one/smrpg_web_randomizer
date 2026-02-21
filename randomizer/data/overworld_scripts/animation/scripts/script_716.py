@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_UnknownCommand(bytearray(b'\x97\x1c')),
+	A_UnknownCommand(bytearray([0x97, 0x1C])),
 	A_SetVRAMPriority(PRIORITY_3),
 	A_SetPriority(3),
 	A_SetWalkingSpeed(FASTEST),

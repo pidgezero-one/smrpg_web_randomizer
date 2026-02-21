@@ -70,8 +70,8 @@ script = EventScript([
 		A_ClearSolidityBits(bit_4=True),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_SetWalkingSpeed(NORMAL),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%\xc0\x06`\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x60, 0xFF])),
 		A_WalkSoutheastPixels(11),
 		A_SetWalkingSpeed(SLOW),
 		A_WalkSoutheastPixels(4),
@@ -82,8 +82,8 @@ script = EventScript([
 		A_ClearSolidityBits(bit_4=True),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_SetWalkingSpeed(NORMAL),
-		A_UnknownCommand(bytearray(b' \x04')),
-		A_UnknownCommand(bytearray(b'%\xc0\x06`\xff')),
+		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x60, 0xFF])),
 		A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=6),
 		A_WalkNorthwestPixels(11),
 		A_SetWalkingSpeed(SLOW),
@@ -121,7 +121,7 @@ script = EventScript([
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_Walk1StepNortheast(),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(10),

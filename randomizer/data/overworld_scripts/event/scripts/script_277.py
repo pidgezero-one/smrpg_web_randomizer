@@ -41,7 +41,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(TEMP_7032, 5, ["EVENT_277_action_queue_18"]),
 	JmpIfVarEqualsConst(TEMP_7032, 7, ["EVENT_277_action_queue_20"]),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd$\x00\x10')),
+		A_UnknownCommand(bytearray([0xFD, 0x24, 0x00, 0x10])),
 		A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=PRIMARY_TEMP_7000)
 	], identifier="EVENT_277_action_queue_8"),
 	Mem7000AndConst(0x00C0),

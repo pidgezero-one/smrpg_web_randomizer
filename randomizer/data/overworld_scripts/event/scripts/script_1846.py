@@ -42,7 +42,7 @@ script = EventScript([
 		A_PlaySound(sound=SO058_INSERT, channel=4),
 		A_Set700CToObjectCoord(target_npc=MARIO, coord=COORD_F),
 		A_CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_702A),
-		A_UnknownCommand(bytearray(b'\xc8\x91')),
+		A_UnknownCommand(bytearray([0xC8, 0x91])),
 		A_SetWalkingSpeed(FAST),
 		A_FloatingOff(),
 		A_WalkTo70167018(),

@@ -78,7 +78,7 @@ script = EventScript([
 		A_SetWalkingSpeed(FAST),
 		A_WalkNorthwestSteps(5),
 		A_WalkSouthwestSteps(5),
-		A_UnknownCommand(bytearray(b'\xfd\xf2')),
+		A_UnknownCommand(bytearray([0xFD, 0xF2])),
 		A_VisibilityOff()
 	]),
 	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

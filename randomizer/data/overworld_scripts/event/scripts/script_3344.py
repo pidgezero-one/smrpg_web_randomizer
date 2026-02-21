@@ -61,7 +61,7 @@ script = EventScript([
 		A_Pause(10),
 		A_FloatingOff(),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_ShiftXYPixels(x=252, y=254),
@@ -85,7 +85,7 @@ script = EventScript([
 		A_Pause(10),
 		A_FloatingOff(),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	], identifier="axem_henchman_1_aq"),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_ShiftXYPixels(x=252, y=254),
@@ -109,7 +109,7 @@ script = EventScript([
 		A_Pause(10),
 		A_FloatingOff(),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	], identifier="axem_henchman_2_aq"),
 	ActionQueueSync(target=NPC_4, subscript=[
 		A_ShiftXYPixels(x=252, y=254),
@@ -133,7 +133,7 @@ script = EventScript([
 		A_Pause(10),
 		A_FloatingOff(),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	], identifier="axem_henchman_3_aq"),
 	ActionQueueSync(target=NPC_5, subscript=[
 		A_ShiftXYPixels(x=252, y=254),
@@ -157,7 +157,7 @@ script = EventScript([
 		A_Pause(10),
 		A_FloatingOff(),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	], identifier="axem_henchman_4_aq"),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_StartLoopNTimes(4, identifier="axem_trampoline_loop"),

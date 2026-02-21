@@ -104,7 +104,7 @@ script = EventScript([
 	Pause(1),
 	ApplyTileModToLevel(use_alternate=True, room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, mod_id=0),
 	Pause(180),
-	UnknownCommand(bytearray(b'_')),
+	UnknownCommand(bytearray([0x5F])),
 	Pause(404),
 	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=161, row=1),
 	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=162, row=5),

@@ -60,7 +60,7 @@ script = EventScript([
 	SetBit(TEMP_7043_0),
 	SetSyncActionScript(MEM_70AA, A0933_ERUPT),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_UnknownCommand(bytearray(b'\xfd\x9c\x15')),
+		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x15])),
 		A_StartLoopNTimes(33),
 		A_WalkNorthPixels(1),
 		A_WalkSouthPixels(1),

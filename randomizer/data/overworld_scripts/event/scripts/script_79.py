@@ -33,9 +33,9 @@ from ....spells.spells import *
 
 script = EventScript([
 	StopAllBackgroundEvents(),
-	UnknownCommand(bytearray(b'\xfdD')),
-	UnknownCommand(bytearray(b'\xfdE')),
-	UnknownCommand(bytearray(b'\xfdG')),
+	UnknownCommand(bytearray([0xFD, 0x44])),
+	UnknownCommand(bytearray([0xFD, 0x45])),
+	UnknownCommand(bytearray([0xFD, 0x47])),
 	RunEventAtReturn(E0078_UNKNOWN),
 	Return()
 ])

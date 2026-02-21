@@ -24,7 +24,7 @@ script = ActionScript([
 	A_FixedFCoordOff(),
 	A_SetSolidityBits(cant_pass_walls=True),
 	A_ObjectMemorySetBit(arg_1=0x09, bits=[7]),
-	A_UnknownCommand(bytearray(b'\xfd\x12')),
+	A_UnknownCommand(bytearray([0xFD, 0x12])),
 	A_SetAllSpeeds(VERY_FAST),
 	A_Set700CToPressedButton(),
 	A_Mem700CAndConst(0x0003),

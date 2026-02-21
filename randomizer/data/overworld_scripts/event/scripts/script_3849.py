@@ -34,8 +34,8 @@ from ....spells.spells import *
 script = EventScript([
 	SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	StopAllBackgroundEvents(),
-	UnknownCommand(bytearray(b'\xfdD')),
-	UnknownCommand(bytearray(b'\xfdE')),
+	UnknownCommand(bytearray([0xFD, 0x44])),
+	UnknownCommand(bytearray([0xFD, 0x45])),
 	JmpIfVarEqualsConst(LAST_OVERWORLD_MARKER_ID, 18, ["EVENT_3849_set_var_to_const_8"]),
 	SetVarToConst(UNKNOWN_7036, 0),
 	EnterArea(room_id=R079_ROSE_WAY_MAIN_AREA, face_direction=NORTHEAST, x=4, y=56, z=0, run_entrance_event=True),

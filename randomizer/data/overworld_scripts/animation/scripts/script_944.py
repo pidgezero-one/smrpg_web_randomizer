@@ -18,9 +18,9 @@ from ....items import *
 script = ActionScript([
 	A_SetWalkingSpeed(NORMAL),
 	A_SetSpriteSequence(index=1, is_mold=True, is_sequence=True, looping=True),
-	A_UnknownCommand(bytearray(b'\xc8\x87')),
+	A_UnknownCommand(bytearray([0xC8, 0x87])),
 	A_SetVarToConst(Z_COORD_2, 13),
-	A_UnknownCommand(bytearray(b'\x98')),
+	A_UnknownCommand(bytearray([0x98])),
 	A_WalkToXYCoords(x=3, y=82),
 	A_SetBit(TEMP_7044_3),
 	A_WalkToXYCoords(x=6, y=81),

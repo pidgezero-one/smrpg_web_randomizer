@@ -22,7 +22,7 @@ script = ActionScript([
 	A_SetVarToConst(X_COORD_2, 15104),
 	A_SetVarToConst(Y_COORD_2, 3712),
 	A_SetVarToConst(Z_COORD_2, 0),
-	A_UnknownCommand(bytearray(b'\x99')),
+	A_UnknownCommand(bytearray([0x99])),
 	A_VisibilityOn(),
 	A_SequenceLoopingOn(),
 	A_SetSpriteSequence(index=0, is_sequence=True, looping=True),

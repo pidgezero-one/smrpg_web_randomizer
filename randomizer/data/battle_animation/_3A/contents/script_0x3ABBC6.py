@@ -164,7 +164,7 @@ script = AnimationScriptBlock(expected_size=1409, expected_beginning=0x3ABBC6, s
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=30),
 	SpriteSequence(sequence=0, looping_off=True, mirror=True),
 	RunSubroutine(["command_0x3A7374"]),
-	UnknownCommand(bytearray(b'\x16'), identifier="command_0x3AC0F9"),
+	UnknownCommand(bytearray([0x16]), identifier="command_0x3AC0F9"),
 	Pause1Frame(),
 	SetAMEM8BitTo7E1x(0x67, 0x7EE003),
 	JmpIfAMEMBitsSet(0x67, [0], ["command_0x3AC141"]),

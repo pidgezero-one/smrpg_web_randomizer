@@ -39,9 +39,9 @@ script = EventScript([
 	EnterArea(room_id=R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, face_direction=NORTHEAST, x=0, y=79, z=0, run_entrance_event=True),
 	EnableControlsUntilReturn([]),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray(b'\xc8\x00')),
+		A_UnknownCommand(bytearray([0xC8, 0x00])),
 		A_AddConstToVar(Z_COORD_2, 2304),
-		A_UnknownCommand(bytearray(b'\x99')),
+		A_UnknownCommand(bytearray([0x99])),
 		A_JumpToHeight(height=0, silent=True)
 	]),
 	FadeInFromBlack(sync=False),

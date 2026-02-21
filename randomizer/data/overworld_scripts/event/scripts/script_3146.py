@@ -39,7 +39,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=False),
 		A_ShiftZUpSteps(2),
 		A_VisibilityOff(),
-		A_UnknownCommand(bytearray(b'\xfd\xf2'))
+		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	AddCoins(10),
 	Return()
