@@ -9,14 +9,9 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import 
     UsableEventScriptCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
-    JmpIfBitClear,
-    JmpIfBitSet,
-    JmpIfVarEqualsConst,
-    PlaySound,
-    RemoveOneOfItemFromInventory,
     Return,
-    ReturnAll,
-    StoreItemAmountTo7000,
+    ActionQueueAsync,
+    Pause,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import MEM_70A8
@@ -123,11 +118,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
     SOUTHEAST,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import (
-    ActionQueueAsync,
-    Pause,
-)
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
     A_SetSpriteSequence,
     A_FaceSoutheast,
     A_FaceSouthwest,
@@ -137,7 +128,6 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
 )
 from typing import TYPE_CHECKING, cast
 
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import *
 from ..logic.renders import (
     render_bandits_way_boss,
     render_forest_maze_character_empty,
@@ -2500,29 +2490,6 @@ class YosterRaceCookieYoshiLocation(NPCLocationRow5):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
-    def render(self, world: GameWorld) -> tuple[
-        list[list[UsableEventScriptCommand]],
-        list[UsableEventScriptCommand],
-    ]:
-        op = super().render(world)
-        if world.settings.isflag_enabled(ShuffleCookies):
-            world.event_scripts.get_script_by_id(E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE).set_contents(
-                [
-                    Pause(10),
-                    PlaySound(sound=SO063_YOSHI_TALK, channel=6),
-                    JmpIfBitClear(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_11"]),
-                    JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["EVENT_464_pause_10"]),
-                    RunDialog(dialog_id=DI4058_SHUFFLE_COOKIES_1, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_464_pause_11"),
-                    JmpIfBitSet(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_12"]),
-                    SetBit(YOSHI_ITEM_GRANTED),
-                    RunDialog(dialog_id=DI4059_SHUFFLE_COOKIES_2, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-                    JmpToEvent(E0182_NPC_QUEST_5_CONTAINER),
-                    Return(identifier="EVENT_464_pause_10"),
-                    ReturnAll(identifier="EVENT_464_pause_12"),
-                ]
-            )
-
-        return op
 
     # Flag as checked: YOSHI_ITEM_GRANTED
     
@@ -3766,26 +3733,6 @@ class BoosterTowerMarioDollLocation(StandingLocationRow1):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_do_tower_curtain_game(world, inventory)
-    
-    def render(self, world: GameWorld) -> tuple[
-        list[list[UsableEventScriptCommand]],
-        list[UsableEventScriptCommand],
-    ]:
-        op = super().render(world)
-        if world.settings.isflag_enabled(ShuffleMarioDoll):
-            world.event_scripts.get_script_by_id(E1357_USE_MARIO_DOLL).set_contents(
-                [
-                    JmpIfBitSet(RETURNED_MARIO_DOLL, ["EVENT_1357_pause_10"]),
-                    StoreItemAmountTo7000(MarioDollItem),
-                    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1357_pause_12"]),
-                    SetBit(RETURNED_MARIO_DOLL),
-                    RemoveOneOfItemFromInventory(MarioDollItem),
-                    Return(identifier="EVENT_1357_pause_10"),
-                    ReturnAll(identifier="EVENT_1357_pause_12"),
-                ]
-            )
-
-        return op
 
     # Flag as checked: NPC 5 removed from room 192
     

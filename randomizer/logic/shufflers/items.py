@@ -13,7 +13,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 from types.gameworld import CookiesPrize, MarioDollPrize
 from ...data.rooms.npcs import EMPTY_NPC
 
-from ..placement import place
+from ..placement import PlacementException, place
 from ...types.prize import RandomPrizeSubstitute, CoinPrize, FPFlowerPrize, FrogCoinPrize
 from ..utils import debug_time
 from ...progression.prizes import FryingPanPrize, RecoveryMushroomPrize, FrogCoin1Prize
@@ -1181,20 +1181,6 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
     # First, assign spell prize models based on their finalized elements
     assign_spell_prize_models(world)
 
-    # Fill empty required locations (non-treasure-chest) with fallback prize
-    # This handles locations that were left empty because the prize pool ran out
-    filled_with_fallback = []
-    for loc in world.locations.values():
-        if loc.has_item:
-            continue
-        if isinstance(loc, TreasureChestLocation):
-            continue  # Handled separately below
-        if loc.can_be_empty(world):
-            continue  # Location is allowed to be empty
-        # Fill with a fallback prize
-        loc.set_prize(Coins10Prize())
-        filled_with_fallback.append(type(loc).__name__)
-
     # Replace as necessary
     for loc in [
         s for s in world.locations.values() if isinstance(s, TreasureChestLocation)
@@ -1208,6 +1194,14 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
                     world.event_2496_startup.append(
                         DisableObjectTriggerInSpecificLevel(npc, room)
                     )
+
+    # Verify that all locations that need prizes are filled
+    for loc in world.locations.values():
+        if loc.has_item:
+            continue
+        if loc.can_be_empty(world):
+            continue  # Location is allowed to be empty
+        raise PlacementException(0, [])
 
     for loc in [
         s

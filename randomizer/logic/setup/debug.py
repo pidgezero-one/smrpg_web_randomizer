@@ -11,7 +11,7 @@ def apply_debug_start_items(world: GameWorld) -> None:
 
     Reads items.start from debug/config.yml and adds AddToInventory commands
     for each item to E3840_STARTER_DEBUG_ITEMS, which runs at game start.
-    Also adds 9999 coins and 99 frog coins.
+    Also adds coins and frog coins (configurable via config.yml).
     """
     if not world.settings.debug_mode:
         return
@@ -24,17 +24,23 @@ def apply_debug_start_items(world: GameWorld) -> None:
 
     commands = []
 
-    # Add 9999 coins (AddCoins only takes 0-255, so we need multiple calls)
-    # 9999 = 39 * 255 + 54
-    for _ in range(39):
-        commands.append(AddCoins(255))
-    commands.append(AddCoins(54))
+    config = load_debug_config()
 
-    # Add 99 frog coins
-    commands.append(AddFrogCoins(99))
+    starting_coins = config.get("starting_coins", 9999)
+    starting_frog_coins = config.get("starting_frog_coins", 99)
+
+    # Add coins (AddCoins only takes 0-255, so we need multiple calls)
+    full, remainder = divmod(starting_coins, 255)
+    for _ in range(full):
+        commands.append(AddCoins(255))
+    if remainder > 0:
+        commands.append(AddCoins(remainder))
+
+    # Add frog coins
+    if starting_frog_coins > 0:
+        commands.append(AddFrogCoins(starting_frog_coins))
 
     # Add starting items from config
-    config = load_debug_config()
     start_items = config.get("items", {}).get("start", [])
     for item_name in start_items:
         item_cls = get_item_class(item_name)

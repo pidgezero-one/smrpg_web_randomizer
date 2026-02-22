@@ -32,9 +32,36 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-	MoveScriptToBackgroundThread2(),
-	JmpIfBitSet(TEMP_7043_2, ["EVENT_1362_ret_6"]),
 	SetBit(TEMP_7043_2),
+    JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["EVENT_1362_bg_thread"]),
+    JmpIfObjectNotInSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, ["EVENT_1362_bg_thread"]),
+    Set7016701BToObjectXYZ(NPC_5),
+    JmpIfVarEqualsConst(Z_COORD_1, 0, ["EVENT_1362_bg_thread"]),
+    JmpIfBitClear(TEMP_7043_2, ["EVENT_1362_ret_6"], identifier="EVENT_1362_jump_check_loop"),
+	Set7000ToTappedButton(),
+    Pause(1),
+	Mem7000AndConst(0x0080),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 128, ["EVENT_1362_action_queue_54"]),
+	Jmp(["EVENT_1362_jump_check_loop"]),
+	EnableControlsUntilReturn([], identifier="EVENT_1362_action_queue_54"),
+	ActionQueueSync(target=MARIO, subscript=[
+		A_JumpToHeight(112),
+		A_Pause(60),
+		A_SetSequenceSpeed(NORMAL),
+	], identifier="EVENT_1368_action_queue_54"),
+	ActionQueueSync(target=NPC_5, subscript=[
+		A_ClearSolidityBits(cant_pass_walls=True),
+		A_Pause(8),
+		A_SetWalkingSpeed(FAST),
+		A_FloatingOn(),
+		A_ShadowOff(),
+		A_JumpToHeight(height=64, silent=True),
+		A_WalkSoutheastSteps(3)
+	]),
+    Return(),
+    
+	MoveScriptToBackgroundThread2(identifier="EVENT_1362_bg_thread"),
+	JmpIfBitSet(TEMP_7043_2, ["EVENT_1362_ret_6"]),
 	ClearBit(TEMP_7043_0),
 	ClearBit(TEMP_7043_1),
 	ClearBit(TEMP_7043_3),

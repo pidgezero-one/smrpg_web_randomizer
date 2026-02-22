@@ -2,6 +2,11 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
+from data.items import MarioDollItem
+from data.variables.event_script_names import E0182_NPC_QUEST_5_CONTAINER, E0241_FREESTANDING_1_GRANT, E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE, E1357_USE_MARIO_DOLL
+from data.variables.overworld_sfx_names import SO063_YOSHI_TALK
+from data.variables.room_names import R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM
+from data.variables.variable_names import COMPLETED_MUSHROOM_DERBY, PRIMARY_TEMP_7000, RETURNED_MARIO_DOLL, YOSHI_ITEM_GRANTED
 from randomizer.data.variables.dialog_names import (
     DI1051_MOLEVILLE_CLOSED,
     DI1052_PIPE_VAULT_HINT,
@@ -10,6 +15,8 @@ from randomizer.data.variables.dialog_names import (
     DI1055_SEWER_GATING_TEXT,
     DI2474_NIMBUS_NPC,
     DI3726_KEEP_ACCESS_HINT,
+    DI4058_SHUFFLE_COOKIES_1,
+    DI4059_SHUFFLE_COOKIES_2,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     SetBit,
@@ -18,22 +25,28 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     ApplyTileModToLevel,
     SummonObjectToSpecificLevel,
     RemoveObjectFromSpecificLevel,
+    JmpIfBitClear,
+    JmpIfBitSet,
+    JmpIfVarEqualsConst,
+    PlaySound,
+    RemoveOneOfItemFromInventory,
+    Return,
+    ReturnAll,
+    StoreItemAmountTo7000,
+    Pause,
+    RunDialog,
+    JmpToEvent
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_0, NPC_1, NPC_2, NPC_3
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import MEM_70A8, NPC_0, NPC_1, NPC_2, NPC_3, NPC_5
+
+from types.flags import ShuffleCookies, ShuffleMarioDoll
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
 
 
-def apply_gating_settings(world: GameWorld) -> None:
-    """Apply all progression gating settings to the world.
-
-    This configures:
-    - Win conditions (Smithy, Stars, Sealed Door)
-    - Fast travel, Casino warp, Bucket warp
-    - EXP challenge settings
-    - All area gates (Bandits Way, Kero Sewers, Forest Maze, etc.)
-    """
+def apply_shuffler_independent_settings(world: GameWorld) -> None:
+    """Apply settings to the world that don't require any input from the shuffler results."""
     from ...types.flags import (
         WinCondition, WinConditions,
         FastTravel, CasinoWarp, BucketWarp, ShuffleWeddingGear,
@@ -112,7 +125,6 @@ def apply_gating_settings(world: GameWorld) -> None:
         E1256_UNLOCK_MOLEVILLE_IF_GATED_BY_BOSHI,
         E1329_HILL_UNLOCKS,
         E1169_OPEN_LANDS_END_IF_GATED_BY_ELDER,
-        E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START,
     )
 
     # Win conditions
@@ -367,6 +379,39 @@ def apply_gating_settings(world: GameWorld) -> None:
         world.update_dialog(
             DI3726_KEEP_ACCESS_HINT,
             """ I heard there was a big factory\n behind it. Is that true?[await][pause] I bet Exor\n would know, if you run into him![await]""")
+        
+
+    # Settings that aren't dependent on shuffler contents
+    if world.settings.isflag_enabled(ShuffleCookies):
+        world.event_scripts.get_script_by_id(E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE).set_contents(
+            [
+                Pause(10),
+                PlaySound(sound=SO063_YOSHI_TALK, channel=6),
+                JmpIfBitClear(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_11"]),
+                JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["EVENT_464_pause_10"]),
+                RunDialog(dialog_id=DI4058_SHUFFLE_COOKIES_1, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_464_pause_11"),
+                JmpIfBitSet(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_12"]),
+                SetBit(YOSHI_ITEM_GRANTED),
+                RunDialog(dialog_id=DI4059_SHUFFLE_COOKIES_2, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+                JmpToEvent(E0182_NPC_QUEST_5_CONTAINER),
+                Return(identifier="EVENT_464_pause_10"),
+                ReturnAll(identifier="EVENT_464_pause_12"),
+            ]
+        )
+    if world.settings.isflag_enabled(ShuffleMarioDoll):
+        world.event_scripts.get_script_by_id(E1357_USE_MARIO_DOLL).set_contents(
+            [
+                JmpIfBitSet(RETURNED_MARIO_DOLL, ["EVENT_1357_pause_10"]),
+                StoreItemAmountTo7000(MarioDollItem),
+                JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1357_pause_12"]),
+                SetBit(RETURNED_MARIO_DOLL),
+                RemoveOneOfItemFromInventory(MarioDollItem),
+                Return(identifier="EVENT_1357_pause_10"),
+                ReturnAll(identifier="EVENT_1357_pause_12"),
+            ]
+        )
+        world.get_room(R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM).get_npc_by_target_id(NPC_5).set_event_script(E0241_FREESTANDING_1_GRANT)
+
 
 
     # Apply debug starting items if debug mode is enabled

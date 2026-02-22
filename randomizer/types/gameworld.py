@@ -99,7 +99,7 @@ from ..data.variables.shop_names import *
 from ..data.variables.sprite_names import *
 from ..data.spells.spells import *
 from ..data.credits.credits import update_credits
-from ..logic.setup.gating import apply_gating_settings
+from ..logic.setup.pre_shuffler_settings import apply_shuffler_independent_settings
 from ..logic.setup.thresholds import apply_threshold_settings
 from ..logic.setup.enemy_tweaks import (
     apply_enemy_tweaks,
@@ -881,7 +881,7 @@ class GameWorld:
             ]
 
         # Apply progression gating settings (win conditions, area gates, travel)
-        apply_gating_settings(self)
+        apply_shuffler_independent_settings(self)
 
         # Apply threshold adjustments
         apply_threshold_settings(self)

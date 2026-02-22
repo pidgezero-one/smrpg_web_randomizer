@@ -1,4 +1,4 @@
-# E1356_EMPTY
+# E1356_CLEAR_DOLL_POSITIONER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,10 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+    JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["EVENT_1356_ret_6"]),
+	ClearBit(TEMP_7043_0),
+	ClearBit(TEMP_7043_1),
+	ClearBit(TEMP_7043_2),
+	ClearBit(TEMP_7043_3),
+    Return(identifier="EVENT_1356_ret_6")
 ])

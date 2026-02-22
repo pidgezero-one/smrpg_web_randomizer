@@ -93,6 +93,17 @@ room = Room(
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
             byte_8_bit_4=False),
+        Event(
+            event=E1356_CLEAR_DOLL_POSITIONER,
+            x=1,
+            y=21,
+            z=0,
+            f=EdgeDirection.SOUTHEAST,
+            height=6,
+            length=8,
+            nw_se_edge_active=True,
+            ne_sw_edge_active=False,
+            byte_8_bit_4=False), 
     ],
     exits=[
         RoomExit(

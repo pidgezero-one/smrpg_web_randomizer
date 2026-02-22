@@ -13,6 +13,12 @@
 #   These are the locations chosen for the Dry Bones, Greaper, and Big Boo flags.
 #   Class names are from randomizer/progression/prizelocations.py (e.g., MariosPadChimneyFlag)
 
+# starting_coins: Number of coins to start with (0-9999). Default: 9999
+starting_coins: 9999
+
+# starting_frog_coins: Number of frog coins to start with (0-255). Default: 99
+starting_frog_coins: 99
+
 items:
   start:
     - SeeYaItem
