@@ -878,6 +878,24 @@ class ShuffleWeddingGear(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
 
 
+class ShuffleMarioDoll(BooleanFlag):
+    _name = "Shuffle Mario doll"
+    _description = """If enabled, you will need to find the Mario Doll in the item pool in order to initiate the curtain sequence in Booster Tower. A random item will be placed on the curtain rod for you to bonk off.
+<br>
+<br>If disabled, the curtain minigame will behave as normal."""
+    _id = "doll"
+    _requires_all = [(ShuffleItems(), True)]
+
+
+class ShuffleCookies(BooleanFlag):
+    _name = "Shuffle Cookies"
+    _description = """If enabled, the cookies you receive to initiate the Mushroom Derby solo race with Boshi are shuffled into the pool as a single key item. Once turned in, the race will always be available until you win it. The Yoshi who normally grants you the event cookies will give you a random item.
+<br>
+<br>If disabled, the Mushroom Derby solo race will behave as normal."""
+    _id = "cookies"
+    _requires_all = [(ShuffleItems(), True)]
+
+
 # ✅
 class FireworksOptions(CategorizationOption):
     """Enumeration for Fireworks flag option"""
@@ -927,7 +945,7 @@ class StarPieceAvailability(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
     # change EVENT_947_jmp_to_event_107" to point to event 949
 
-
+# ✅
 class SpellsAnywhere(BooleanFlag):
     _name = "Spells can appear in the general item pool"
     _description = "If enabled, characters will learn spells by finding them in prize locations instead of by leveling up. Spells are still pre-assigned to characters, so for example if Mallow is supposed to learn Jump, finding the Jump spell will automatically assign it to Mallow."
@@ -1429,7 +1447,9 @@ def _is_freestanding_coin_location(cls: type[PrizeLocation]) -> bool:
     if originally_held is None:
         return False
     # Check if it's a CoinPrize but not a FrogCoinPrize
-    return issubclass(originally_held, CoinPrize) and not issubclass(originally_held, FrogCoinPrize)
+    return issubclass(originally_held, CoinPrize) and not issubclass(
+        originally_held, FrogCoinPrize
+    )
 
 
 # Build enum members dynamically from prizelocations
@@ -1473,7 +1493,11 @@ class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
     _id = "chests"
     _default = {o: True for o in ItemCheckEnum.__members__.values()}
     _requires_all = [(ShuffleItems(), True)]
-    _requires_any = [(KeyItemsAnywhere(), True), (StarPieceAvailability(), True), (SpellsAnywhere(), True)]
+    _requires_any = [
+        (KeyItemsAnywhere(), True),
+        (StarPieceAvailability(), True),
+        (SpellsAnywhere(), True),
+    ]
 
 
 # ✅
@@ -2152,19 +2176,21 @@ class MarioPaletteOptions(CategorizationOption):
     BLUE2 = "Blue2"
 
 
-
 class MarioPaletteChoice(SelectOneFlag[MarioPaletteOptions]):
     _name = "Mario Palette"
     _description = "Choose Mario's Palette"
     choices = [
         MarioPaletteOptions.DEFAULT,
         MarioPaletteOptions.RANDOM,
-        *sorted(o for o in MarioPaletteOptions if o not in [MarioPaletteOptions.RANDOM, MarioPaletteOptions.DEFAULT]),
+        *sorted(
+            o
+            for o in MarioPaletteOptions
+            if o not in [MarioPaletteOptions.RANDOM, MarioPaletteOptions.DEFAULT]
+        ),
     ]
 
     _default = MarioPaletteOptions.DEFAULT
     _id = "mariopalette"
-
 
 
 class MallowPaletteOptions(CategorizationOption):
@@ -2186,18 +2212,20 @@ class MallowPaletteOptions(CategorizationOption):
     RAINCLOUD = "Rain Cloud"
 
 
-
 class MallowPaletteChoice(SelectOneFlag[MallowPaletteOptions]):
     _name = "Mallow Palette"
     _description = "Choose Mallow's Palette"
     choices = [
         MallowPaletteOptions.DEFAULT,
         MallowPaletteOptions.RANDOM,
-        *sorted(o for o in MallowPaletteOptions if o not in [MallowPaletteOptions.RANDOM, MallowPaletteOptions.DEFAULT]),
+        *sorted(
+            o
+            for o in MallowPaletteOptions
+            if o not in [MallowPaletteOptions.RANDOM, MallowPaletteOptions.DEFAULT]
+        ),
     ]
     _default = MallowPaletteOptions.DEFAULT
     _id = "mallowpalette"
-
 
 
 class GenoPaletteOptions(CategorizationOption):
@@ -2217,18 +2245,20 @@ class GenoPaletteOptions(CategorizationOption):
     DARK = "Dark"
 
 
-
 class GenoPaletteChoice(SelectOneFlag[GenoPaletteOptions]):
     _name = "Geno Palette"
     _description = "Choose Geno's Palette"
     choices = [
         GenoPaletteOptions.DEFAULT,
         GenoPaletteOptions.RANDOM,
-        *sorted(o for o in GenoPaletteOptions if o not in [GenoPaletteOptions.RANDOM, GenoPaletteOptions.DEFAULT]),
+        *sorted(
+            o
+            for o in GenoPaletteOptions
+            if o not in [GenoPaletteOptions.RANDOM, GenoPaletteOptions.DEFAULT]
+        ),
     ]
     _default = GenoPaletteOptions.DEFAULT
     _id = "genopalette"
-
 
 
 class BowserPaletteOptions(CategorizationOption):
@@ -2247,18 +2277,20 @@ class BowserPaletteOptions(CategorizationOption):
     SKING = "S.King"
 
 
-
 class BowserPaletteChoice(SelectOneFlag[BowserPaletteOptions]):
     _name = "Bowser Palette"
     _description = "Choose Bowser's Palette"
     choices = [
         BowserPaletteOptions.DEFAULT,
         BowserPaletteOptions.RANDOM,
-        *sorted(o for o in BowserPaletteOptions if o not in [BowserPaletteOptions.RANDOM, BowserPaletteOptions.DEFAULT]),
+        *sorted(
+            o
+            for o in BowserPaletteOptions
+            if o not in [BowserPaletteOptions.RANDOM, BowserPaletteOptions.DEFAULT]
+        ),
     ]
     _default = BowserPaletteOptions.DEFAULT
     _id = "bowserpalette"
-
 
 
 class ToadstoolPaletteOptions(CategorizationOption):
@@ -2289,17 +2321,22 @@ class ToadstoolPaletteOptions(CategorizationOption):
     SHADOWQ = "Shadow Q."
 
 
-
 class ToadstoolPaletteChoice(SelectOneFlag[ToadstoolPaletteOptions]):
     _name = "Toadstool Palette"
     _description = "Choose Toadstool's Palette"
     choices = [
         ToadstoolPaletteOptions.DEFAULT,
         ToadstoolPaletteOptions.RANDOM,
-        *sorted(o for o in ToadstoolPaletteOptions if o not in [ToadstoolPaletteOptions.RANDOM, ToadstoolPaletteOptions.DEFAULT]),
+        *sorted(
+            o
+            for o in ToadstoolPaletteOptions
+            if o
+            not in [ToadstoolPaletteOptions.RANDOM, ToadstoolPaletteOptions.DEFAULT]
+        ),
     ]
     _default = ToadstoolPaletteOptions.DEFAULT
     _id = "toadstoolpalette"
+
 
 # ✅
 class ChangeNames(BooleanFlag):
@@ -2508,6 +2545,8 @@ class ItemShuffleSubcategory(FlagCategory):
         ShuffleBeetlemania,
         ShuffleMagikoopaChest,
         ShuffleWeddingGear,
+        ShuffleMarioDoll,
+        ShuffleCookies,
         FireworksSetting,
     ]
     _id: str = "T"
@@ -2752,7 +2791,13 @@ class PaletteSubcategory(FlagCategory):
 class NamesCategory(FlagCategory):
 
     _name: str = "Names"
-    _flags: list[type[Flag]] = [PlayAsStarter, ChangeNames, RemakeNames, CanonNames, Peach]
+    _flags: list[type[Flag]] = [
+        PlayAsStarter,
+        ChangeNames,
+        RemakeNames,
+        CanonNames,
+        Peach,
+    ]
     _size: int = 3
     _id: str = "R"
 

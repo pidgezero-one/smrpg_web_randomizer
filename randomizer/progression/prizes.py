@@ -1989,6 +1989,22 @@ class GoldPaintPrize(ItemPrize, KeyPrize):
     _model = YellowJuiceObject
     _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 2)
 
+class MarioDollPrize(ItemPrize, KeyPrize):
+    item = MarioDollItem
+    _nickname = TreasureHunterNickname(
+        nickname="Action Figure", description="Batteries not included."
+    )
+    _model = MarioDollObject
+    _packet_data = (SPR0233_MARIO_DOLL, 0)
+
+class CookiesPrize(ItemPrize, KeyPrize):
+    item = CookiesItem
+    _nickname = TreasureHunterNickname(
+        nickname="Baked Good", description="Looks tasty, doesn't it?"
+    )
+    _model = CookieObject
+    _packet_data = (SPR0254_YOSHI_COOKIE, 0)
+
 
 class RecoveryMushroomPrize(StandardPrize):
     _model = RecoveryMushroomObject

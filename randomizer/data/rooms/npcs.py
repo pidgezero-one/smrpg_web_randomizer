@@ -87,7 +87,7 @@ SMALL_FROG_COIN_BASE = _item_npc_base(
 BLUE_CANDY_BASE = _item_npc_base(SPR0818_BLUE_CANDY)
 MICROBOMB_BASE = _item_npc_base(SPR0205_MICROBOMB_PACKET, y_shift=1)
 EGG_BASE = _item_npc_base(SPR0237_EGG)
-GREEN_BOMB_BASE = _item_npc_base(SPR0233_GREEN_BOMB)
+GREEN_BOMB_BASE = _item_npc_base(SPR0748_GREEN_BOMB)
 CARD_BASE = _item_npc_base(SPR0206_CARD)
 BANANA_BASE = _item_npc_base(SPR0222_BANANA_PEEL)
 BERRY_BASE = _item_npc_base(SPR0253_BERRY, y_shift=1)
@@ -2505,7 +2505,7 @@ BOWSER_DOLL_NPC = NPC(
 )
 
 MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC = NPC(
-    sprite_id=SPR0600_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE,
+    sprite_id=SPR0233_MARIO_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,

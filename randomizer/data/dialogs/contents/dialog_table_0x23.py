@@ -1,4 +1,4 @@
-dialog_data = [""]*280
+dialog_data = [""]*284
 dialog_data[0] = ''' I slept like a baby.
  Thanks![await]'''
 dialog_data[1] = ''' That card you have there...[await]
@@ -871,3 +871,12 @@ dialog_data[276] = '''             Got the Brooch![end]'''
 dialog_data[277] = '''              Got the Shoes![end]'''
 dialog_data[278] = '''               Got the Ring![end]'''
 dialog_data[279] = '''            Found the Crown![end]'''
+dialog_data[280] = ''' Here's something I picked up.
+ You can keep it for good luck.[await]'''
+dialog_data[281] =''' Take this with you.
+ Youll probably need it.[await]'''
+dialog_data[282] = ''' Oh! You got your coin back!
+ Okay, here's the thing
+ I promised you...[await]'''
+dialog_data[283] = '''GAZ: This is yours, so take it
+ along with you.[await]'''

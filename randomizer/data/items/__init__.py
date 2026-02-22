@@ -139,6 +139,7 @@ from .items import (
     CricketPieItem,
     RockCandyItem,
     CastleKey1Item,
+    MarioDollItem,
     CastleKey2Item,
     BambinoBombItem,
     SheepAttackItem,
@@ -169,6 +170,8 @@ from .items import (
     BigBooFlagItem,
     DryBonesFlagItem,
     GreaperFlagItem,
+    GoldPaintItem,
+    CookiesItem,
     CricketJamItem,
     FireworksItem,
     StayVoucherItem,
@@ -179,5 +182,4 @@ from .items import (
     BroochItem,
     RingItem,
     CrownItem,
-    GoldPaintItem,
-    MarioDollItem)
+    DummyItem)

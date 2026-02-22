@@ -39,7 +39,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(SECONDARY_TEMP_7024, 1, ["EVENT_1574_jmp_if_var_not_equals_const_6"]),
 	RunBackgroundEvent(event_id=E1586_MIDAS_RIVER_BARREL_FISH_MOVEMENT, return_on_level_exit=True, bit_6=True),
 	JmpIfVarNotEqualsConst(SECONDARY_TEMP_7024, 2, ["EVENT_1574_set_var_to_const_8"], identifier="EVENT_1574_jmp_if_var_not_equals_const_6"),
-	SlowDownMusicTempoBy(duration=255, change=24),
+	SpeedUpMusicTempoBy(duration=255, change=24),
 	SetVarToConst(X_COORD_2, 6, identifier="EVENT_1574_set_var_to_const_8"),
 	SetVarToConst(Y_COORD_2, 29),
 	JmpToEvent(E1573_MIDAS_RIVER_BARREL_SUBROUTINE),

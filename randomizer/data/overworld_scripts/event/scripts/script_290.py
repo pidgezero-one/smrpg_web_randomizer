@@ -33,6 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	JmpIfBitSet(MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED, ["EVENT_290_jmp_if_bit_clear_4"]),
+	RunDialog(dialog_id=DI3064_MK_SHOP_FREE_GRANT, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	SetBit(MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	Return(),
@@ -42,6 +43,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_290_remove_one_from_inventory_8"]),
 	JmpToEvent(E0284_OPEN_MUSHROOM_KINGDOM_SHOP, identifier="EVENT_290_jmp_to_event_7"),
 	RemoveOneOfItemFromInventory(RareFrogCoinItem, identifier="EVENT_290_remove_one_from_inventory_8"),
+	RunDialog(dialog_id=DI3065_FROG_COIN_TRADE, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
     SetBit(RARE_FROG_COIN_EXCHANGED),
     RunEventAsSubroutine(E1254_UNLOCK_SEWER_BY_RFC),

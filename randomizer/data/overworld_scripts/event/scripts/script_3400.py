@@ -510,7 +510,7 @@ script = EventScript([
 	PlayMusicAtDefaultVolume(M0063_AXEMRANGERSDROPIN, identifier="EVENT_3400_play_music_default_volume_473"),
 	Return(),
 	JmpIfBitClear(MARRYMORE_LIBERATED, ["EVENT_3400_fade_out_music_to_volume_389"], identifier="EVENT_3400_jmp_if_bit_clear_475"),
-	SlowDownMusicTempoBy(duration=0, change=12),
+	SpeedUpMusicTempoBy(duration=0, change=12),
 	Jmp(["EVENT_3400_fade_out_music_to_volume_389"]),
 	Return(),
 	PlayMusicAtDefaultVolume(M0034_STARHILL, identifier="EVENT_3400_play_music_default_volume_479"),

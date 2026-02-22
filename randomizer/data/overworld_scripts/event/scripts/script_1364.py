@@ -32,6 +32,7 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
+    RunEventAsSubroutine(E1357_USE_MARIO_DOLL),
 	JmpIfBitSet(CURTAIN_MINIGAME_COMPLETED, ["EVENT_1364_jmp_if_bit_set_27"]),
 	JmpIfBitSet(TOWER_BOSS_1_DEFEATED, ["EVENT_1364_jmp_if_bit_set_27"]),
 	SetVarToConst(TEMP_7026, 0, identifier="EVENT_1364_set_var_to_const_2"),

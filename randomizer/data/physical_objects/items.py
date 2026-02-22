@@ -296,6 +296,10 @@ class GraySpellObject(ItemNPC):
     _base = GRAY_ORB_BASE
     _chest_event_id: int = 0
 
+class MarioDollObject(ItemNPC):
+    _base = MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC
+    _chest_event_id: int = E0928_MARIO_DOLL_PACKET
+
 # possibilities for more models
 # urchin
 # heart

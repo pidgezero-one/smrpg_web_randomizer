@@ -16,6 +16,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types impor
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
+
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
 from ....variables.dialog_names import *
@@ -34,7 +35,11 @@ from ....spells.spells import *
 script = EventScript([
 	PlaySound(sound=SO062_BIG_YOSHI_TALK, channel=6),
 	JmpIfBitClear(TEMP_7044_5, ["EVENT_471_enable_controls_until_return_11"]),
-	JmpIfBitSet(TEMP_7043_3, ["EVENT_471_run_event_as_subroutine_14"]),
+	StoreItemAmountTo7000(CookiesItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_471_boshi_init"]),
+    SetBit(GOT_FREE_COOKIES),
+    RemoveOneOfItemFromInventory(CookiesItem),
+	JmpIfBitSet(TEMP_7043_3, ["EVENT_471_run_event_as_subroutine_14"], identifier="EVENT_471_boshi_init"),
 	JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["EVENT_462_jmp_to_event_10"]),
 	JmpIfBitSet(GOT_FREE_COOKIES, ["EVENT_471_run_event_as_subroutine_9"]),
 	RunEventAsSubroutine(E0456_YOSHI_TALKS_TO_OTHER_YOSHI),

@@ -546,7 +546,7 @@ script = EventScript([
 	SetSyncActionScript(NPC_1, A0373_SANCTUARY_HENCHMAN, identifier="EVENT_3809_set_action_script_133"),
 	SetSyncActionScript(NPC_0, A0372_SANCTUARY_HENCHMAN),
 	SetSyncActionScript(NPC_2, A0374_SANCTUARY_HENCHMAN),
-	SlowDownMusicTempoBy(duration=0, change=12),
+	SpeedUpMusicTempoBy(duration=0, change=12),
 	SetVarToConst(TEMP_70AE, 8),
 	SetVarToConst(TEMP_70AF, 0),
 	SetVarToConst(FACTORY_FALL_1, 0),

@@ -9,9 +9,17 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import 
     UsableEventScriptCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    JmpIfBitClear,
+    JmpIfBitSet,
+    JmpIfVarEqualsConst,
+    PlaySound,
+    RemoveOneOfItemFromInventory,
     Return,
+    ReturnAll,
+    StoreItemAmountTo7000,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import MEM_70A8
 
 from ..types.logic import Inventory
 from ..types.prize import Prize
@@ -70,6 +78,7 @@ from ..data.variables.room_names import *
 from ..data.variables.event_script_names import *
 from ..data.variables.action_script_names import *
 from ..data.variables.pack_names import *
+from ..data.variables.variable_names import YOSHI_ITEM_GRANTED
 from .prizes import *
 from ..types.prize import (
     FPFlowerPrize,
@@ -2482,6 +2491,41 @@ class YosterEntranceChestLocation(TreasureChestLocationRow1):
 
     # Flag as checked: npc 1 in room 33 has its object trigger disabled.
 
+class YosterRaceCookieYoshiLocation(NPCLocationRow5):
+    _bias = True
+    _originally_held = CookiesPrize
+    _rooms = [R034_YOSTER_ISLE]
+    _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_COOKIE
+    _world_area = WorldAreaEnum.YOSTER_ISLE
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_pipe_vault(world, inventory)
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+    ]:
+        op = super().render(world)
+        if world.settings.isflag_enabled(ShuffleCookies):
+            world.event_scripts.get_script_by_id(E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE).set_contents(
+                [
+                    Pause(10),
+                    PlaySound(sound=SO063_YOSHI_TALK, channel=6),
+                    JmpIfBitClear(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_11"]),
+                    JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["EVENT_464_pause_10"]),
+                    RunDialog(dialog_id=DI4058_SHUFFLE_COOKIES_1, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_464_pause_11"),
+                    JmpIfBitSet(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_12"]),
+                    SetBit(YOSHI_ITEM_GRANTED),
+                    RunDialog(dialog_id=DI4059_SHUFFLE_COOKIES_2, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+                    JmpToEvent(E0182_NPC_QUEST_5_CONTAINER),
+                    Return(identifier="EVENT_464_pause_10"),
+                    ReturnAll(identifier="EVENT_464_pause_12"),
+                ]
+            )
+
+        return op
+
+    # Flag as checked: YOSHI_ITEM_GRANTED
+    
 
 class YosterRacePrize1Location(NPCLocationRow1):
     _bias = True
@@ -3707,10 +3751,44 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory)
+        return can_do_tower_curtain_game(world, inventory)
 
     # flag as checked: TOWER_BOSS_1_STAR_PIECE
     # will be granted regardless of whether they do curtain game or fight boss
+
+class BoosterTowerMarioDollLocation(StandingLocationRow1):
+    _bias = True
+    _originally_held = MarioDollPrize
+    _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _npc_ids = [NPC_5]
+    _id = ShuffleLocationSelector.BOOSTER_TOWER_MARIO_DOLL
+    _world_area = WorldAreaEnum.BOOSTER_TOWER
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_do_tower_curtain_game(world, inventory)
+    
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+    ]:
+        op = super().render(world)
+        if world.settings.isflag_enabled(ShuffleMarioDoll):
+            world.event_scripts.get_script_by_id(E1357_USE_MARIO_DOLL).set_contents(
+                [
+                    JmpIfBitSet(RETURNED_MARIO_DOLL, ["EVENT_1357_pause_10"]),
+                    StoreItemAmountTo7000(MarioDollItem),
+                    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1357_pause_12"]),
+                    SetBit(RETURNED_MARIO_DOLL),
+                    RemoveOneOfItemFromInventory(MarioDollItem),
+                    Return(identifier="EVENT_1357_pause_10"),
+                    ReturnAll(identifier="EVENT_1357_pause_12"),
+                ]
+            )
+
+        return op
+
+    # Flag as checked: NPC 5 removed from room 192
+    
 
 
 class BoosterTowerIndoorBossFight(BossFightLocation):
@@ -3850,7 +3928,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory) and not_earlygame(world, inventory)
+        return can_do_tower_curtain_game(world, inventory) and not_earlygame(world, inventory)
 
     def render(self, world: GameWorld):
         op = super().render(world)
@@ -3908,7 +3986,7 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     _parent = BoosterTowerIndoorBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory) and not_earlygame(world, inventory)
+        return can_do_tower_curtain_game(world, inventory) and not_earlygame(world, inventory)
 
     # Flag as checked: TOWER_BOSS_1_STAR_PIECE
 
@@ -11864,11 +11942,16 @@ def can_access_tower(world: GameWorld, inventory: Inventory) -> bool:
         return inventory.has_item(PunchinelloBossFight)
     return True
 
+def can_do_tower_curtain_game(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to do the curtain game in Booster Tower."""
+    if world.settings.isflag_enabled(ShuffleMarioDoll) and not inventory.has_item(MarioDollPrize):
+        return False
+    return can_access_tower(world, inventory)
 
 def can_access_tower_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the postgame boss at Booster Tower."""
     return (
-        can_access_tower(world, inventory)
+        can_do_tower_curtain_game(world, inventory)
         and inventory.has_item(StayVoucherPrize)
         and not_earlygame(world, inventory)
     )
@@ -11877,7 +11960,7 @@ def can_access_tower_postgame_boss(world: GameWorld, inventory: Inventory) -> bo
 def can_access_hill(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Booster Hill."""
     if world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.TOWER):
-        return can_access_tower(world, inventory)
+        return can_do_tower_curtain_game(world, inventory)
     if world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.KGGG):
         return inventory.has_item(KnifeGuyGrateGuyBossFight)
     return True
@@ -11886,7 +11969,7 @@ def can_access_hill(world: GameWorld, inventory: Inventory) -> bool:
 def can_access_chapel(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to enter the Marrymore chapel."""
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.TOWER):
-        return can_access_tower(world, inventory)
+        return can_do_tower_curtain_game(world, inventory)
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.KGGG):
         return inventory.has_item(KnifeGuyGrateGuyBossFight)
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.HILL):

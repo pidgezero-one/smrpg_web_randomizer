@@ -9,6 +9,8 @@ from randomizer.types.prizelocation import StandingLocation, TreasureShopLocatio
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     NPC_2, NPC_3, NPC_4, NPC_5, NPC_6, NPC_7,
 )
+
+from types.gameworld import CookiesPrize, MarioDollPrize
 from ...data.rooms.npcs import EMPTY_NPC
 
 from ..placement import place
@@ -421,6 +423,8 @@ def shuffle_prizes(world: GameWorld) -> None:
         WeddingGearPrize,  # Marrymore
         ExtraShinyStonePrize,  # Extra Shiny Stone (Remake)
         StayVoucherPrize,  # Stay Voucher (Marrymore item, Remake)
+        CookiesPrize,
+        MarioDollPrize
     ]
 
     # Add mimic launchers to shuffle pool when MimicsAnywhere is enabled
@@ -464,8 +468,6 @@ def shuffle_prizes(world: GameWorld) -> None:
             if boss_prize not in low_volume_key_items and boss_prize not in high_volume_key_items:
                 low_volume_key_items.append(boss_prize)
 
-    # Combined list for backwards compatibility (used in item collection logic later)
-    unlocks_other_checks: list[type[Prize]] = high_volume_key_items + low_volume_key_items
     # Items that absolutely must be included, but aren't important for progress, can be second priority
     should_otherwise_include = []
     # Items that go to post_progression_priority (after progression, before must_include)
@@ -474,9 +476,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         SlotsPrize,  # Slot machines (placed after progression, needs room with 5 NPCs)
         ProgressiveCardPrize,  # Progressive cards
     ]
-    # Items with very restricted placement options (can only go in certain chest locations
-    # with additional room constraints) - SlotsPrize moved to post_progression_include
-    restricted_placement_items: list[type[Prize]] = []
 
     progress_stars = 0
     if world.settings.isflag_enabled(Remake):

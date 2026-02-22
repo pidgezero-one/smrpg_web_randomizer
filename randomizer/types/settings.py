@@ -75,6 +75,8 @@ class Settings:
             ShuffleBeetlemania: ShuffleBeetlemania(),
             ShuffleMagikoopaChest: ShuffleMagikoopaChest(),
             ShuffleWeddingGear: ShuffleWeddingGear(),
+            ShuffleMarioDoll: ShuffleMarioDoll(),
+            ShuffleCookies: ShuffleCookies(),
             AnnoyingChests: AnnoyingChests(),
             FireworksSetting: FireworksSetting(),
             KeyItemsAnywhere: KeyItemsAnywhere(),

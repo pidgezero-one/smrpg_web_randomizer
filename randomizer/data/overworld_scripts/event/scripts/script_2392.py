@@ -54,7 +54,7 @@ script = EventScript([
 		A_SetSequenceSpeed(VERY_FAST)
 	]),
 	Pause(22),
-	SlowDownMusicTempoBy(duration=0, change=32),
+	SpeedUpMusicTempoBy(duration=0, change=32),
 	Pause(2),
 	RunDialog(dialog_id=DI3217_GARDENER_CUTSCENE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	FreezeCamera(),
@@ -103,7 +103,7 @@ script = EventScript([
 		A_SetSequenceSpeed(VERY_FAST)
 	]),
 	Pause(22),
-	SlowDownMusicTempoBy(duration=0, change=32),
+	SpeedUpMusicTempoBy(duration=0, change=32),
 	Pause(2),
 	RunDialog(dialog_id=DI3218_GARDENER_CUTSCENE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	FreezeCamera(),
@@ -163,7 +163,7 @@ script = EventScript([
 		A_SetSequenceSpeed(VERY_FAST)
 	]),
 	Pause(22),
-	SlowDownMusicTempoBy(duration=0, change=32),
+	SpeedUpMusicTempoBy(duration=0, change=32),
 	Pause(2),
 	RunDialog(dialog_id=DI3218_GARDENER_CUTSCENE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	FreezeCamera(),
@@ -220,7 +220,7 @@ script = EventScript([
 		A_SetSequenceSpeed(VERY_FAST)
 	], identifier="EVENT_2392_action_queue_148"),
 	Pause(24),
-	SlowDownMusicTempoBy(duration=0, change=32),
+	SpeedUpMusicTempoBy(duration=0, change=32),
 	Pause(2),
 	RunDialog(dialog_id=DI3218_GARDENER_CUTSCENE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	FreezeCamera(),
@@ -378,7 +378,7 @@ script = EventScript([
 	RunDialog(dialog_id=DI3099_GARDENER_CUTSCENE, above_object=NPC_14, closable=True, sync=False, multiline=True, use_background=False),
 	Pause(24),
 	SetSyncActionScript(NPC_3, A0856_GARDENER_RUNS_IN_CIRCLES),
-	SlowDownMusicTempoBy(duration=0, change=32),
+	SpeedUpMusicTempoBy(duration=0, change=32),
 	Pause(2),
 	RunDialog(dialog_id=DI2993_GARDENER_CUTSCENE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	SetBit(TEMP_7043_0),

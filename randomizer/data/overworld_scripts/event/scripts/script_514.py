@@ -34,6 +34,7 @@ from ....spells.spells import *
 script = EventScript([
 	JmpIfBitSet(ROSE_TOWN_GAZ_ITEM_GRANTED, ["EVENT_514_jmp_to_event_3"]),
 	SetBit(ROSE_TOWN_GAZ_ITEM_GRANTED),
+	RunDialog(dialog_id=DI3066_GAZ_ITEM, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	JmpToEvent(E0178_NPC_QUEST_1_CONTAINER),
 	JmpToEvent(E0516_OCCUPIED_ROSE_TOWN_GAZ, identifier="EVENT_514_jmp_to_event_3")
 ])

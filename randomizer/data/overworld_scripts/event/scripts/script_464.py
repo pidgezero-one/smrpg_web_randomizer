@@ -1,4 +1,4 @@
-# E0464_EMPTY
+# E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,11 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+	JmpIfBitSet(GOT_FREE_COOKIES, ["EVENT_464_pause_10"]),
+	SetBit(GOT_FREE_COOKIES),
+	RunDialog(dialog_id=DI0938_TAKE_MY_COOKIES, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6),
+	Pause(10, identifier="EVENT_464_pause_10"),
+	PlaySound(sound=SO063_YOSHI_TALK, channel=6),
+    Return()
 ])

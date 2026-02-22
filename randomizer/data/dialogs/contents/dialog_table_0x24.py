@@ -1,4 +1,4 @@
-dialog_data = [""]*179
+dialog_data = [""]*181
 dialog_data[0] = '''SNIFIT 3: Um...
  Nice weather we're having.[await]'''
 dialog_data[1] = '''SNIFIT 3: You wanna fight?[await]'''
@@ -529,3 +529,8 @@ dialog_data[176] = '''
           Got [0x7000] Frog Coins![await]'''
 dialog_data[177] = '''          Got [0x7000] Frog Coins![end]'''
 dialog_data[178] = '''Got [0x7000] Frog Coins![end]'''
+dialog_data[179] = ''' (We've had a cookie shortage here
+  lately. If you find any, bring them
+  here if you want to race.)[await]'''
+dialog_data[180] = ''' (But since you came all this way,
+  take this instead.)[await]'''

@@ -1,4 +1,4 @@
-# E1357_EMPTY
+# E1357_USE_MARIO_DOLL
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,5 +32,5 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
-
+    Return()
 ])

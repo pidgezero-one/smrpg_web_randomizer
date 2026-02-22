@@ -1581,7 +1581,21 @@ P104_MIMIC_2_POOF_ON_DEFEAT = Packet(
     b2=0,
     b4=0,
 )
-P105_UNUSED = None
+P105_MARIO_DOLL = Packet(
+    packet_id=105,
+    sprite_id=SPR0233_MARIO_DOLL,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+    show_shadow=False,
+    b0=0,
+    b1a=0,
+    b1b=3,
+    b1c=3,
+    b2b2=False,
+    b2b3=False,
+    b2b4=False,
+    b2=0,
+    b4=0,
+)
 P106_UNUSED = None
 P107_UNUSED = None
 P108_UNUSED = None
@@ -1843,7 +1857,7 @@ ALL_PACKETS = PacketCollection(
         P102_SMALL_FROG_COIN_STILL,
         P103_MIMIC_1_POOF_ON_DEFEAT,
         P104_MIMIC_2_POOF_ON_DEFEAT,
-        P105_UNUSED,
+        P105_MARIO_DOLL,
         P106_UNUSED,
         P107_UNUSED,
         P108_UNUSED,

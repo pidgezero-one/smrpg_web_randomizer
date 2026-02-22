@@ -2657,6 +2657,17 @@ class GoldPaintItem(RegularItem):
     _inflict_type = None
 
 
+class CookiesItem(RegularItem):
+    """Cookies item class"""
+    _item_name: str = "Cookies"
+    _prefix = ItemPrefix.EMPTY_SPACE
+
+    _item_id: int = 165
+    _description: str = " Give these\n to Boshi\n for a race"
+    _price: int = 0
+    _inflict_type = None
+
+
 class CricketJamItem(RegularItem):
     """Cricket Jam item class"""
     _item_name: str = "Cricket Jam"
@@ -2966,7 +2977,7 @@ ITEMS = ItemCollection([
     DryBonesFlagItem(),  # item_id: 162
     GreaperFlagItem(),  # item_id: 163
     GoldPaintItem(),  # item_id: 164
-    DummyItem(165),  # item_id: 165
+    CookiesItem(),  # item_id: 165
     CricketJamItem(),  # item_id: 166
     ShoesItem(),  # item_id: 167
     BroochItem(),  # item_id: 168

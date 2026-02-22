@@ -61,6 +61,8 @@ script = EventScript([
     JmpIfVarEqualsConst(ITEM_ID, RingItem, ["river_key_item_sound"]),
     JmpIfVarEqualsConst(ITEM_ID, CrownItem, ["river_key_item_sound"]),
     JmpIfVarEqualsConst(ITEM_ID, GoldPaintItem, ["river_key_item_sound"]),
+    JmpIfVarEqualsConst(ITEM_ID, CookiesItem, ["river_key_item_sound"]),
+    JmpIfVarEqualsConst(ITEM_ID, MarioDollItem, ["river_key_item_sound"]),
 	PlaySound(sound=SO014_FLOWER, channel=6),
     Jmp(["river_choose_article"]),
     PlaySound(sound=SO085_FLOWER, channel=6, identifier="river_key_item_sound"),

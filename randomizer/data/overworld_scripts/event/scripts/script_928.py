@@ -1,4 +1,4 @@
-# E0928_UNUSED
+# E0928_MARIO_DOLL_PACKET
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -32,4 +32,8 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
+	CreatePacketAt7010(packet=P105_MARIO_DOLL, destinations=["EVENT_928_ret_3"]),
+	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_928_ret_3"),
+	Return()
 ])

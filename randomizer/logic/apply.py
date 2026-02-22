@@ -16,6 +16,7 @@ from randomizer.data.variables.sprite_names import SPR0031_EMPTY, SPR0032_EMPTY,
 from ..types.prizelocation import (
     BossFightLocation,
     PrizeRow,
+    RiverLocation,
     StarPieceLocation,
     PacketLocation,
     StandingLocation,
@@ -349,7 +350,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                 ])
             
             if isinstance(
-                place, (StandingLocation, EventLocation)
+                place, (StandingLocation, EventLocation, RiverLocation)
             ) and not isinstance(place, BoosterHillLocation):
                 npcs = []
                 if hasattr(place, "_npc_ids") and hasattr(place, "_rooms"):
@@ -506,7 +507,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     from ..data.variables.action_script_names import A0511_PIPE_VAULT_3_CHEST_ROOM_COIN
     from ..types.prize import FrogCoinPrize
     for location in world.locations.values():
-        if not isinstance(location, StandingLocation):
+        if not isinstance(location, (StandingLocation, RiverLocation)):
             continue
         if location.originally_held is None or not issubclass(location.originally_held, FrogCoinPrize):
             continue

@@ -588,6 +588,19 @@ def set_locations(world: GameWorld) -> None:
             BoosterTowerKnifeGuy2PrizeLocation: BoosterTowerKnifeGuy2PrizeLocation(),
         }
 
+    if world.settings.isflag_enabled(ShuffleCookies):
+        world.locations = {
+            **world.locations,
+            YosterRaceCookieYoshiLocation: YosterRaceCookieYoshiLocation(),
+        }
+
+    if world.settings.isflag_enabled(ShuffleMarioDoll):
+        world.locations = {
+            **world.locations,
+            BoosterTowerMarioDollLocation: BoosterTowerMarioDollLocation(),
+        }
+
+
     if world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
         fwshop = FireworksShopItemLocation()
         fwshop._originally_held = ProgressiveFireworksPrize
