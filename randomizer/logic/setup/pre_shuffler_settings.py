@@ -2,12 +2,12 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from data.items import MarioDollItem
-from data.variables.event_script_names import E0182_NPC_QUEST_5_CONTAINER, E0241_FREESTANDING_1_GRANT, E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE, E1357_USE_MARIO_DOLL
-from data.variables.overworld_sfx_names import SO063_YOSHI_TALK
-from data.variables.room_names import R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM
-from data.variables.variable_names import COMPLETED_MUSHROOM_DERBY, PRIMARY_TEMP_7000, RETURNED_MARIO_DOLL, YOSHI_ITEM_GRANTED
-from randomizer.data.variables.dialog_names import (
+from ...data.items import MarioDollItem
+from ...data.variables.event_script_names import E0182_NPC_QUEST_5_CONTAINER, E0241_FREESTANDING_1_GRANT, E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE, E1357_USE_MARIO_DOLL
+from ...data.variables.overworld_sfx_names import SO063_YOSHI_TALK
+from ...data.variables.room_names import R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM
+from ...data.variables.variable_names import COMPLETED_MUSHROOM_DERBY, PRIMARY_TEMP_7000, RETURNED_MARIO_DOLL, YOSHI_ITEM_GRANTED
+from ...data.variables.dialog_names import (
     DI1051_MOLEVILLE_CLOSED,
     DI1052_PIPE_VAULT_HINT,
     DI1053_BANDITS_WAY_HINT,
@@ -39,7 +39,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import MEM_70A8, NPC_0, NPC_1, NPC_2, NPC_3, NPC_5
 
-from types.flags import ShuffleCookies, ShuffleMarioDoll
+from ...types.flags import ShuffleCookies, ShuffleMarioDoll
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
