@@ -243,7 +243,7 @@ room = Room(
             npc=npcs.SPARKLES_FROM_STAR_PIECE_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
-            action_script=A0172_ENDING_CUTSCENE_SPARKLES,
+            action_script=A0247_ENDING_SPARKLES,
             visible=True,
             x=3,
             y=12,
@@ -269,7 +269,7 @@ room = Room(
         RegularClone( # 16
             npc=npcs.SPARKLES_FROM_STAR_PIECE_NPC_2,
             event_script=E0256_RETURN,
-            action_script=A0172_ENDING_CUTSCENE_SPARKLES,
+            action_script=A0247_ENDING_SPARKLES,
             visible=True,
             x=3,
             y=14,
@@ -279,7 +279,7 @@ room = Room(
         RegularClone( # 17
             npc=npcs.SPARKLES_FROM_STAR_PIECE_NPC_2,
             event_script=E0256_RETURN,
-            action_script=A0172_ENDING_CUTSCENE_SPARKLES,
+            action_script=A0247_ENDING_SPARKLES,
             visible=True,
             x=4,
             y=12,
@@ -289,7 +289,7 @@ room = Room(
         RegularClone( # 18
             npc=npcs.SPARKLES_FROM_STAR_PIECE_NPC_2,
             event_script=E0256_RETURN,
-            action_script=A0172_ENDING_CUTSCENE_SPARKLES,
+            action_script=A0247_ENDING_SPARKLES,
             visible=True,
             x=4,
             y=14,

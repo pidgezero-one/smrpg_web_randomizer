@@ -79,7 +79,7 @@ room = Room(
         ChestNPC( # 0
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E0576_ROSE_TOWN_TREASURE_HOUSE_CHEST_1,
+            event_script=E0172_CHEST_1_CONTAINER,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=2,
             upper_70a7=0,
@@ -108,7 +108,7 @@ room = Room(
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E0577_ROSE_TOWN_TREASURE_HOUSE_CHEST_2,
+            event_script=E0173_CHEST_2_CONTAINER,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=2,
             upper_70a7=0,

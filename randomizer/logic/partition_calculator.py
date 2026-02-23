@@ -473,3 +473,7 @@ def update_mushroom_kingdom_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM, NPC_0, 0)
     _update_buffer_by_room_object(world, R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, NPC_4, 0)
     _update_buffer_by_room_object(world, R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, NPC_8, 1)
+
+def update_chapel_partition(world: GameWorld) -> None:
+    _update_buffer_by_room_object(world, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, NPC_0, 0)
+    _update_buffer_by_room_object(world, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, NPC_3, 1)

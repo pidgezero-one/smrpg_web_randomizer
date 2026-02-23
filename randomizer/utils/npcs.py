@@ -4,7 +4,7 @@ from __future__ import annotations
 from math import ceil
 from typing import TYPE_CHECKING
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite
+from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, Tile
 from smrpgpatchbuilder.datatypes.levels.classes import NPC, VramStore
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHWEST
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_0
@@ -12,15 +12,31 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaOb
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import ActionQueueSync
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import A_SetSpriteSequence, A_Pause
 
-from ..types.physical_objects import BossNPC, SpriteAnimationCollection
+from ..types.physical_objects import BossNPC
 
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 
 
-def min_vram(number_of_tiles: int):
-    """Get the expected min vram size from the given number of tiles."""
-    return ceil(max(0, number_of_tiles - 4) / 4)
+def min_vram_from_sequence_for_sprite(world: "GameWorld", sprite_id: int, sequence_id: int) -> int:
+    """Compute min_vram_from_sequence for a given sprite ID and sequence.
+
+    This is a standalone version of NPC.min_vram_from_sequence that works
+    from a sprite_id rather than requiring an NPC instance.
+    """
+    sprite = world.get_sprite(sprite_id)
+    assert sequence_id < len(sprite.animation.properties.sequences)
+    min_vram = 0
+    for frame in sprite.animation.properties.sequences[sequence_id].frames:
+        mold = sprite.animation.properties.molds[frame.mold_id]
+        if mold.gridplane:
+            continue
+        truthy_subtiles = 0
+        for t in mold.tiles:
+            if isinstance(t, Tile):
+                truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
+        min_vram = max(min_vram, ceil(max(0, truthy_subtiles - 16) / 16))
+    return min_vram
 
 
 def is_swse_only(sprite: CompleteSprite):

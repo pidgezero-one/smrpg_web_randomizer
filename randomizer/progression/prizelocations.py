@@ -3755,7 +3755,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         ),
         BossFightLocationNPC(
             R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
-            NPC_7,
+            NPC_9,
             sequence_setter_event_id=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
         BossFightLocationNPC(
@@ -3866,6 +3866,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         DI2572_TOWER_HENCHMAN_2,
         DI3072_TOWER_HENCHMAN_3_WINDOW,
         DI3073_TOWER_HENCHMAN_3,
+        DI4060_NEED_TO_DO_CHAPEL_CHECKS,
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -4413,7 +4414,7 @@ class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1):
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E0253_NPC_QUEST_1_GRANT
-    _npc_ids = [NPC_6]
+    _npc_ids = [NPC_8]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory)
@@ -4428,7 +4429,7 @@ class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2):
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E0252_NPC_QUEST_2_GRANT
-    _npc_ids = [NPC_3]
+    _npc_ids = [NPC_5]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory)
@@ -4443,7 +4444,7 @@ class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3):
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E0251_NPC_QUEST_3_GRANT
-    _npc_ids = [NPC_4]
+    _npc_ids = [NPC_6]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory)
@@ -4455,7 +4456,7 @@ class MarrymoreAltarHeadLocation(KeyItemLocation, StandingLocationRow1):
     _bias = True
     _originally_held = CrownPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    _npc_ids = [NPC_5]
+    _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.MARRYMORE_ALTAR
     _world_area = WorldAreaEnum.MARRYMORE
 
@@ -4491,14 +4492,14 @@ class MarrymoreBossFight(BossFightLocation):
                 R155_MARRYMORE_CHAPEL_KITCHEN,
                 R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
             ],
-            [NPC_1, NPC_9],
+            [NPC_1, NPC_3],
         ),
         BossFightLocationHenchmanNPC(
             [
                 R155_MARRYMORE_CHAPEL_KITCHEN,
                 R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
             ],
-            [NPC_2, NPC_10],
+            [NPC_2, NPC_4],
         ),
     ]
     _dialogs_expecting_replacement = [DI2061_HEAD_CHEF, DI2062_APPRENTICE_CHEF]
@@ -4563,7 +4564,7 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
     _npc_fills = [
         AllyNPCSub(
             R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
-            NPC_8,
+            NPC_10,
         ),
         AllyNPCSub(
             R054_BOOSTER_HILL_DUMMY,
@@ -9215,7 +9216,7 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -9238,7 +9239,7 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -9261,7 +9262,7 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -9284,7 +9285,7 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = not_earlygame(world, inventory)
@@ -9303,7 +9304,7 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -9326,7 +9327,7 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_6
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (

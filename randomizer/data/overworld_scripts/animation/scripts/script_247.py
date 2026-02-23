@@ -1,4 +1,4 @@
-#A0247_EMPTY
+#A0247_ENDING_SPARKLES
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,10 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+    A_ShadowOn(),
+    A_SetPriority(3),
+    A_SetSequenceSpeed(NORMAL),
+    A_SequenceLoopingOn(),
+    A_ReturnQueue()
+])

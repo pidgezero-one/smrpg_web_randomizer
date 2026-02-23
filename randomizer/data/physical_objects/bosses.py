@@ -1,4 +1,6 @@
 from typing import Sequence
+
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import FASTEST
 from ...types.physical_objects import (
     BossNPC,
     SpriteAnimation,
@@ -26,6 +28,7 @@ booster_punch = SpriteAnimation(
 )
 booster_jump = SpriteAnimation(sequence_id=4)
 booster_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
+booster_cry = SpriteAnimation(sequence_id=13, total_duration=20)
 
 # Johnny animations
 small_johnny_sit = SpriteAnimation(sequence_id=10)
@@ -123,6 +126,7 @@ class Croco1Object(BossNPC):
     _tower_entrance_horizontal_shift = 9
     _animations = SpriteAnimationCollection(
         recoil=croco_recoil,
+        tower_crying=croco_bag_loop,
         bandits_way_distracted=croco_bag_loop,
         mines_punch=croco_bag_hit,
         chapel_laugh=croco_bag_loop,
@@ -143,6 +147,7 @@ class Croco2Object(BossNPC):
     _eye_height = 16
     _animations = SpriteAnimationCollection(
         recoil=croco_recoil,
+        tower_crying=croco_bag_loop,
         bandits_way_distracted=croco_bag_loop,
         mines_punch=croco_bag_hit,
         chapel_laugh=croco_bag_loop,
@@ -447,6 +452,7 @@ class JohnnySmallObject(BossNPC):
     _eye_height = 20
     _animations = SpriteAnimationCollection(
         bandits_way_distracted=small_johnny_sit,
+        tower_crying=small_johnny_sit,
         chapel_laugh=small_johnny_sit,
         ship_beckon=small_johnny_sit,
         ship_chair=small_johnny_sit,
@@ -478,6 +484,7 @@ class ValentinaSmallObject(BossNPC):
     _eye_height = 16
     _animations = SpriteAnimationCollection(
         bandits_way_distracted=valentina_stand,
+        tower_crying=valentina_stand,
         chapel_laugh=valentina_laugh,
         ship_beckon=valentina_laugh,
         ship_chair=valentina_stand,
@@ -572,6 +579,7 @@ class ClerkSmallObject(BossNPC):
     _eye_height = 10
     _animations = SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
+        tower_crying=shovelknight_tile,
         chapel_laugh=shovelknight_tile,
         ship_chair=shovelknight_tile,
         dojo_challenge=shovelknight_tile,
@@ -591,6 +599,7 @@ class ManagerSmallObject(BossNPC):
     _eye_height = 10
     _animations = SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
+        tower_crying=shovelknight_tile,
         chapel_laugh=shovelknight_tile,
         ship_chair=shovelknight_tile,
         dojo_challenge=shovelknight_tile,
@@ -610,6 +619,7 @@ class DirectorSmallObject(BossNPC):
     _eye_height = 10
     _animations = SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
+        tower_crying=shovelknight_tile,
         chapel_laugh=shovelknight_tile,
         ship_chair=shovelknight_tile,
         dojo_challenge=shovelknight_tile,
@@ -736,6 +746,7 @@ class BoosterObject(BossNPC):
     _base = BOOSTER_NPC
     _animations = SpriteAnimationCollection(
         recoil=booster_recoil,
+        tower_crying=booster_cry,
         bandits_way_distracted=booster_laugh,
         mines_punch=booster_punch,
         chapel_laugh=booster_laugh,
@@ -820,6 +831,7 @@ class TerrapinObject(BossNPC):
     _base = TERRAPIN_NPC
     _animations = SpriteAnimationCollection(
         bandits_way_distracted=jagger_look,
+        tower_crying=jagger_look,
         mines_punch=jagger_punch,
         chapel_laugh=jagger_look,
         ship_beckon=jagger_taunt,
@@ -925,6 +937,7 @@ class FactoryChiefObject(BossNPC):
     _base = FACTORY_CHIEF_NPC
     _animations = SpriteAnimationCollection(
         recoil=chief_recoil,
+        tower_crying=chief_cast,
         bandits_way_distracted=chief_cast,
         mines_punch=chief_stab,
         chapel_laugh=chief_cast,
@@ -941,12 +954,32 @@ class FactoryChiefObject(BossNPC):
         tower_toss=chief_cast
     )
 
+red_recoil=SpriteAnimation(sequence_id=2, total_duration=22)
+red_attack=SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=66)
+red_attack_fast=SpriteAnimation(sequence_id=3, contact_frame=9, total_duration=22, speed=FASTEST)
+red_cast=SpriteAnimation(sequence_id=4, contact_frame=82, total_duration=120)
+
 
 class AxemRedObject(BossNPC):
     """Axem Red object."""
 
     _base = AXEM_RED_NPC_2
     _eye_height = 15
+    _animations = SpriteAnimationCollection(
+        recoil=red_recoil,
+        bandits_way_distracted=red_cast,
+        mines_punch=red_attack,
+        dojo_challenge=red_cast,
+        ship_beckon=red_cast,
+        statue_intro=red_cast,
+        statue_peck=red_attack_fast,
+        statue_flustered=red_recoil,
+        keep_challenge=red_cast,
+        keep_summon=red_cast,
+        chandelier_challenge=red_cast,
+        endgame_challenge=red_cast,
+        tower_toss=red_attack
+    )
 
 
 class AxemRedStatueObject(BossNPC):
@@ -1036,9 +1069,6 @@ class MallowStatueObject(BossNPC):
     """Mallow statue object."""
 
     _base = MALLOW_STATUE_NPC
-
-
-# Missing Overworld Classes
 
 
 class MachineYaridOverworldObject(BossNPC):

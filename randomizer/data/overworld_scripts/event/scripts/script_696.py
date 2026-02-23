@@ -33,7 +33,7 @@ from ....spells.spells import *
 
 script = EventScript([
 	Set7000ToCurrentLevel(),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 65, ["EVENT_696_run_dialog_8"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R065_MARRYMORE_CHAPEL_SANCTUARY, ["EVENT_696_run_dialog_8"]),
 	JmpIfBitSet(MARRYMORE_BACKDOOR_OPEN, ["EVENT_696_run_dialog_5"]),
 	RunDialog(dialog_id=DI2333_MARRYMORE_NPC, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return(),

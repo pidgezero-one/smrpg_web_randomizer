@@ -46,5 +46,11 @@ script = EventScript([
 		A_Pause(36)
 	]),
 	SetVarToConst(BATTLE_PACK_ID, 72),
-	JmpToEvent(E0016_FIGHT_REMOVE_PERMANENTLY)
+	RunEventAsSubroutine(E0016_FIGHT_REMOVE_PERMANENTLY),
+    JmpIfBitSet(RUN_AWAY, ["EVENT_3209_ret_30"]),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_SetSpriteSequence(index=4, looping=False),
+	]),
+    PlaySound(SO117_SPINNING_MONSTER, 4),
+    Return(identifier="EVENT_3209_ret_30")
 ])

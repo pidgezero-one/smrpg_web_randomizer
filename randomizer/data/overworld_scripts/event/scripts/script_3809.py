@@ -39,7 +39,7 @@ script = EventScript([
 	SetBit(CHAPEL_ITEM_RETRIEVAL_STARTED),
 	FreezeCamera(),
 	RunEventAsSubroutine(E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER),
-	ActionQueueSync(target=NPC_7, subscript=[
+	ActionQueueSync(target=NPC_9, subscript=[
 		A_VisibilityOn(),
 		A_TransferXYZFPixels(x=252, y=248, z=0, direction=EAST),
 		A_Pause(12),
@@ -64,7 +64,7 @@ script = EventScript([
 		A_WalkNortheastPixels(2),
 		A_WalkSouthwestPixels(1)
 	], identifier="chapel_tpose_queue_1"),
-	ActionQueueSync(target=NPC_8, subscript=[
+	ActionQueueSync(target=NPC_10, subscript=[
 		A_VisibilityOn(),
 		A_TransferXYZFPixels(x=8, y=4, z=6, direction=EAST),
 		A_SetSpriteSequence(index=2, sprite_offset=2, is_sequence=True, looping=True, identifier="chapel_character_animation_1"),
@@ -132,9 +132,9 @@ script = EventScript([
 		A_WalkNortheastPixels(8),
 		A_WalkSouthwestPixels(4)
 	]),
-	ActionQueueSync(target=NPC_3, subscript=[
+	ActionQueueSync(target=NPC_5, subscript=[
 		A_Pause(30),
-		A_TransferToObjectXY(NPC_8),
+		A_TransferToObjectXY(NPC_10),
 		A_TransferXYZFPixels(x=0, y=0, z=8, direction=EAST),
 		A_SetPriority(3),
 		A_JumpToHeight(height=144, silent=True),
@@ -144,9 +144,9 @@ script = EventScript([
 		A_BPL262728(),
 		A_TransferToXYZF(x=11, y=86, z=0, direction=EAST)
 	]),
-	ActionQueueSync(target=NPC_4, subscript=[
+	ActionQueueSync(target=NPC_6, subscript=[
 		A_Pause(34),
-		A_TransferToObjectXY(NPC_8),
+		A_TransferToObjectXY(NPC_10),
 		A_TransferXYZFPixels(x=0, y=8, z=12, direction=EAST),
 		A_SetPriority(3),
 		A_JumpToHeight(height=136, silent=True),
@@ -158,9 +158,9 @@ script = EventScript([
 	ReturnFD(),
 	Pause(20),
 	ReturnFD(),
-	ActionQueueSync(target=NPC_6, subscript=[
+	ActionQueueSync(target=NPC_8, subscript=[
 		A_Pause(48),
-		A_TransferToObjectXY(NPC_8),
+		A_TransferToObjectXY(NPC_10),
 		A_TransferXYZFPixels(x=0, y=12, z=14, direction=EAST),
 		A_SetPriority(3),
 		A_JumpToHeight(height=152, silent=True),
@@ -169,16 +169,16 @@ script = EventScript([
 		A_VisibilityOn()
 	]),
 	RememberLastObject(),
-	ActionQueueAsync(target=NPC_8, subscript=[
+	ActionQueueAsync(target=NPC_10, subscript=[
 		A_Pause(60),
 		A_SetSpriteSequence(index=0, sprite_offset=5, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_3")
 	], identifier="chapel_character_queue_2"),
 	Pause(20),
-	ActionQueueAsync(target=NPC_8, subscript=[
+	ActionQueueAsync(target=NPC_10, subscript=[
 		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_queue_3_")
 	], identifier="chapel_character_queue_3"),
 	Pause(10),
-	ActionQueueAsync(target=NPC_8, subscript=[
+	ActionQueueAsync(target=NPC_10, subscript=[
 		A_SetSequenceSpeed(FAST),
 		A_SetSpriteSequence(index=8, is_sequence=True, looping=True, identifier="chapel_character_animation_4"),
 		A_Pause(40),
@@ -187,7 +187,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_5"),
 		A_FaceSouthwest()
 	], identifier="chapel_character_queue_4"),
-	ActionQueueAsync(target=NPC_8, subscript=[
+	ActionQueueAsync(target=NPC_10, subscript=[
 		A_SetSequenceSpeed(FAST),
 		A_SetSpriteSequence(index=13, is_sequence=True, looping=True, identifier="chapel_character_animation_6")
 	], identifier="chapel_character_queue_5"),
@@ -208,7 +208,7 @@ script = EventScript([
 		A_FixedFCoordOff(),
 		A_FaceNortheast()
 	]),
-	ActionQueueSync(target=NPC_8, subscript=[
+	ActionQueueSync(target=NPC_10, subscript=[
 		A_Pause(44),
 		A_SetSequenceSpeed(NORMAL),
 		A_SetSpriteSequence(index=2, sprite_offset=2, is_sequence=True, looping=True, identifier="chapel_character_animation_7"),
@@ -240,7 +240,7 @@ script = EventScript([
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[]),
 		A_SetSequenceSpeed(SLOW)
 	]),
-	ActionQueueSync(target=NPC_8, subscript=[
+	ActionQueueSync(target=NPC_10, subscript=[
 		A_Pause(10),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOff(),
@@ -270,7 +270,7 @@ script = EventScript([
 		A_FixedFCoordOff()
 	]),
 	Pause(10),
-	ActionQueueSync(target=NPC_7, subscript=[
+	ActionQueueSync(target=NPC_9, subscript=[
 		A_ResetProperties(),
 		A_FaceSoutheast(),
 		A_Pause(2),
@@ -281,17 +281,17 @@ script = EventScript([
 		A_ResetProperties()
 	], identifier="chapel_stare_up_queue_1"),
 	RememberLastObject(),
-	ActionQueueAsync(target=NPC_7, subscript=[
+	ActionQueueAsync(target=NPC_9, subscript=[
 		A_FaceSoutheast()
 	]),
 	Pause(10),
-	ActionQueueAsync(target=NPC_7, subscript=[
+	ActionQueueAsync(target=NPC_9, subscript=[
 		A_SetWalkingSpeed(SLOW),
 		A_SetSequenceSpeed(FAST),
 		A_WalkSoutheastPixels(10)
 	]),
 	Pause(20),
-	ActionQueueAsync(target=NPC_7, subscript=[
+	ActionQueueAsync(target=NPC_9, subscript=[
 		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_stare_up_2"),
 		A_Pause(120),
 		A_ResetProperties(),
@@ -325,7 +325,7 @@ script = EventScript([
 		A_FixedFCoordOff()
 	]),
 	Pause(10),
-	ActionQueueAsync(target=NPC_7, subscript=[
+	ActionQueueAsync(target=NPC_9, subscript=[
 		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True, identifier="chapel_stare_up_3"),
 		A_Pause(8),
 		A_ResetProperties()
@@ -374,13 +374,13 @@ script = EventScript([
 		A_FixedFCoordOff()
 	]),
 	Pause(10),
-	ActionQueueSync(target=NPC_7, subscript=[
+	ActionQueueSync(target=NPC_9, subscript=[
 		A_WalkSoutheastPixels(10),
 		A_Pause(30),
 		A_WalkNorthwestPixels(14),
 		A_FaceNortheast()
 	]),
-	ActionQueueSync(target=NPC_8, subscript=[
+	ActionQueueSync(target=NPC_10, subscript=[
 		A_Pause(50),
 		A_SetSpriteSequence(index=2, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_character_animation_10"),
 		A_SetWalkingSpeed(SLOW),
@@ -404,7 +404,7 @@ script = EventScript([
 		A_FixedFCoordOff()
 	]),
 	Pause(30),
-	ActionQueueAsync(target=NPC_7, subscript=[
+	ActionQueueAsync(target=NPC_9, subscript=[
 		A_FaceSouthwest()
 	]),
 	Pause(10),
@@ -423,12 +423,12 @@ script = EventScript([
 		A_FixedFCoordOff()
 	]),
 	Pause(10),
-	ActionQueueSync(target=NPC_6, subscript=[
+	ActionQueueSync(target=NPC_8, subscript=[
 		A_Pause(140),
 		A_VisibilityOff(),
 		A_PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4)
 	]),
-	ActionQueueSync(target=NPC_7, subscript=[
+	ActionQueueSync(target=NPC_9, subscript=[
 		A_FixedFCoordOn(),
 		A_SetWalkingSpeed(FAST),
 		A_Walk1StepSoutheast(),
@@ -436,7 +436,7 @@ script = EventScript([
 		A_FaceSouthwest(),
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=True, identifier="tower_boss_laughing_seq_3")
 	], identifier="tower_boss_laughing_aqueue_3"),
-	ActionQueueSync(target=NPC_8, subscript=[
+	ActionQueueSync(target=NPC_10, subscript=[
 		A_FixedFCoordOn(),
 		A_SetWalkingSpeed(FAST),
 		A_Walk1StepNorthwest(),
@@ -496,7 +496,7 @@ script = EventScript([
 	]),
 	Pause(10),
 	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6),
-	RemoveObjectFromCurrentLevel(NPC_4),
+	RemoveObjectFromCurrentLevel(NPC_6),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_Pause(30),
 		A_SetSequenceSpeed(FAST),
@@ -510,7 +510,7 @@ script = EventScript([
 	SetSyncActionScript(SCREEN_FOCUS, A0215_SANCTUARY_CAMERA),
 	Pause(10),
 	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6),
-	RemoveObjectFromCurrentLevel(NPC_3),
+	RemoveObjectFromCurrentLevel(NPC_5),
 	ActionQueueAsync(target=NPC_2, subscript=[
 		A_Pause(60),
 		A_SetSequenceSpeed(FAST),
@@ -518,13 +518,18 @@ script = EventScript([
 		A_SetSequenceSpeed(SLOW),
 		A_FaceNortheast()
 	]),
-	ActionQueueSync(target=NPC_5, subscript=[
-		A_TransferToObjectXYZ(NPC_7),
+	ActionQueueAsync(target=NPC_7, subscript=[
+		A_TransferToObjectXYZ(NPC_9),
 		A_ShiftZUpSteps(2, identifier="crown_adjust_height"),
-		A_FloatingOn(),
-		A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True),
-		A_JumpToHeight(height=0, silent=True),
 	], identifier="crown_adjust_height_aq"),
+	ActionQueueAsync(target=NPC_9, subscript=[
+		A_SetSolidityBits(cant_pass_npcs=True),
+	]),
+	ActionQueueAsync(target=NPC_7, subscript=[
+		A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True, cant_pass_npcs=True),
+		A_FloatingOn(),
+		A_JumpToHeight(height=0, silent=True),
+	]),
 	Pause(30),
 	SetSyncActionScript(NPC_2, A0376_TURN_RANDOMLY_IN_PLACE),
 	SetSyncActionScript(NPC_0, A0376_TURN_RANDOMLY_IN_PLACE),
@@ -536,7 +541,7 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSouth()
 	]),
-	ActionQueueAsync(target=NPC_7, subscript=[
+	ActionQueueAsync(target=NPC_9, subscript=[
 		A_ResetProperties(),
 		A_FixedFCoordOff(),
 		A_FaceNortheast()

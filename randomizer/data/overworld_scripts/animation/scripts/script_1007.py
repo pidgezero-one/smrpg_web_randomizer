@@ -18,6 +18,6 @@ from ....items import *
 script = ActionScript([
 	A_ShadowOn(),
 	A_FloatingOff(),
-	A_SetVRAMPriority(PRIORITY_3),
+	#A_SetVRAMPriority(PRIORITY_3),
     A_Jmp(["A0992_default"])
 ])

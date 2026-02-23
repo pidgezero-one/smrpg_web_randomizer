@@ -41,11 +41,11 @@ script = EventScript([
 	JmpIfBitClear(FROG_DISCIPLE_ITEM_4_PURCHASED, ["EVENT_1148_open_shop_8"]),
 	JmpIfBitClear(FROG_DISCIPLE_ITEM_5_PURCHASED, ["EVENT_1148_open_shop_8"]),
 	RunDialog(dialog_id=DI2927_FROG_DISCIPLE_OUT_OF_ITEMS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	Return(),
+	Jmp(["EVENT_1148_close_shop_9"]),
 	OpenShop(SH03_FROG_DISCIPLE, identifier="EVENT_1148_open_shop_8"),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+	], identifier="EVENT_1148_close_shop_9"),
 	Return()
 ])

@@ -97,5 +97,9 @@ script = EventScript([
 	RememberLastObject(),
 	PaletteSet(palette_set=110, row=1, bit_0=True, bit_1=True, bit_3=True),
 	Pause(2),
+    SetSyncActionScript(NPC_5, A0803_INC_PALETTE_ROW),
+    SetSyncActionScript(NPC_6, A0803_INC_PALETTE_ROW),
+    SetSyncActionScript(NPC_7, A0803_INC_PALETTE_ROW),
+    SetAsyncActionScript(NPC_8, A0803_INC_PALETTE_ROW),
 	Return()
 ])

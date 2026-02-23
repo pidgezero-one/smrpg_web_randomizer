@@ -32,9 +32,9 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
+	RunEventAsSubroutine(E1602_EXP_STAR_SUBROUTINE_CANCEL_NPC_EVENT_DO_NOT_REMOVE_FROM_LEVEL),
 	MoveScriptToMainThread(),
 	SetBit(TEMP_7043_0),
-	RunEventAsSubroutine(E1602_EXP_STAR_SUBROUTINE_CANCEL_NPC_EVENT_DO_NOT_REMOVE_FROM_LEVEL),
 	DisableObjectTrigger(MEM_70A8),
 	ClearBit(TEMP_707C_5),
 	ClearBit(TEMP_707C_6),

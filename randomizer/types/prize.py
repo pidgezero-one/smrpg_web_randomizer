@@ -662,18 +662,22 @@ class BossFightPrize(Prize):
         world: "GameWorld",
         max_vram_size: int,
         max_min_vram_size: int | None = None,
+        max_min_vram_from_seq0: int | None = None,
     ) -> type[BossNPC]:
         """Select the appropriate NPC model for a slot with the given max VRAM capacity.
 
         Iterates through npc_models (largest to smallest) and returns the first
         model whose VRAM size <= max_vram_size AND whose NPC min_vram_size <=
-        max_min_vram_size (if provided). Falls back to the smallest model
-        (last in list) if none fit both criteria.
+        max_min_vram_size (if provided) AND whose sequence 0 min_vram <=
+        max_min_vram_from_seq0 (if provided). Falls back to the smallest model
+        (last in list) if none fit all criteria.
 
         Args:
             world: GameWorld instance for sprite lookups
             max_vram_size: Maximum VRAM size the slot can accommodate
             max_min_vram_size: Maximum min_vram_size the slot's original NPC had (optional)
+            max_min_vram_from_seq0: Maximum min_vram_from_sequence for sequence 0
+                the slot's original NPC had (optional)
 
         Returns:
             The appropriate BossNPC subclass for the slot
@@ -686,6 +690,11 @@ class BossFightPrize(Prize):
                 if max_min_vram_size is not None:
                     model_min_vram = model.get_min_vram_size()
                     if model_min_vram > max_min_vram_size:
+                        continue
+                # Also check sequence 0 min_vram if provided
+                if max_min_vram_from_seq0 is not None:
+                    model_seq0_vram = model.get_min_vram_from_sequence(world, 0)
+                    if model_seq0_vram > max_min_vram_from_seq0:
                         continue
                 return model
         # Fallback to smallest (last in list)

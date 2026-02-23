@@ -32,6 +32,8 @@ from ....packets import *
 from ....spells.spells import *
 
 script = EventScript([
+    RunDialog(dialog_id=DI4061_MARRYMORE_GIFT_SUITE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_708_jmp_to_event_7"], identifier="suite_threshold_1"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_708_jmp_to_event_9"], identifier="suite_threshold_2"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_708_jmp_to_event_11"], identifier="suite_threshold_3"),

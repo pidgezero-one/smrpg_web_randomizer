@@ -499,6 +499,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     update_kitchen_partitions(world)
     update_johnny_room_partition(world)
     update_mushroom_kingdom_partitions(world)
+    update_chapel_partition(world)
 
     # Update freestanding frog coin NPCs in rooms with Coins partition
     # to use the animated frog coin NPC and spinning action script

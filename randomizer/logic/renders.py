@@ -287,9 +287,19 @@ def render_booster_tower_indoor_boss(
                 eid, aid, A_FaceSouthwest()
             )
 
+    cry = m.animations.tower_crying
+    if cry:
+        e = world.event_scripts.get_subscript_command_by_identifier(
+           "tower_boss_crying_aq_1", "tower_boss_crying_1", A_SetSpriteSequence
+        )
+        e.set_index(cry.sequence_id)
+    else:
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "tower_boss_crying_aq_1", "tower_boss_crying_1"
+        )
+        
     # Delete henchman curtain animations
     deletions = [
-        ("tower_boss_crying_aq_1", "tower_boss_crying_1"),
         ("tower_henchman_curtain_aqueue_1", "tower_henchman_curtain_1"),
         ("tower_henchman_curtain_aqueue_2", "tower_henchman_curtain_2"),
         ("tower_henchman_curtain_aqueue_3", "tower_henchman_curtain_3"),

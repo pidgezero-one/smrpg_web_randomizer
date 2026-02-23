@@ -67,11 +67,10 @@ script = EventScript([
 	CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
 	Dec7000FromCoins(),
 	CopyVarToVar(from_var=MARRYMORE_SUITE_LEGAL_COUNT, to_var=PRIMARY_TEMP_7000),
-    
-	RunDialog(dialog_id=DI2122_STAY_VOUCHER_DIALOG, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="run_stay_voucher_dialog"),
-    RunDialog(dialog_id=DI2123_STAY_VOUCHER_USE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
-    RemoveOneOfItemFromInventory(StayVoucherItem),
+    RemoveOneOfItemFromInventory(StayVoucherItem, identifier="run_stay_voucher_dialog"),
 	SetBit(STAY_VOUCHER_USED),
+	RunDialog(dialog_id=DI2122_STAY_VOUCHER_DIALOG, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+    RunDialog(dialog_id=DI2123_STAY_VOUCHER_USE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
     # put culex's door back
     JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["hotel_check_prize_count"]),
 	ApplyTileModToLevel(use_alternate=False, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=33),

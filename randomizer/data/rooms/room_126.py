@@ -211,7 +211,7 @@ room = Room(
             z_half=True,
             direction=SOUTHWEST),
         RegularNPC( # 2
-            npc=npcs.EMPTY_ENEMY_NPC,
+            npc=npcs.CHOMPWEED_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0433_PIPE_VAULT_CHOMPWEED,
             action_script=A0661_PIPE_VAULT_JUMPING_CHOMPWEED,
@@ -238,7 +238,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularClone( # 3
-            npc=npcs.EMPTY_ENEMY_NPC,
+            npc=npcs.CHOMPWEED_NPC,
             event_script=E0433_PIPE_VAULT_CHOMPWEED,
             action_script=A0661_PIPE_VAULT_JUMPING_CHOMPWEED,
             visible=True,

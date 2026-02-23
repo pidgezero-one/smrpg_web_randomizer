@@ -45,7 +45,5 @@ script = EventScript([
 	Jmp(["EVENT_3311_run_event_as_subroutine_12"]),
 	RunDialog(dialog_id=DI1687_SHAMAN_PASSWORD_RIGHT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_3311_run_dialog_11"),
 	RunEventAsSubroutine(E3297_SEA_SHOP, identifier="EVENT_3311_run_event_as_subroutine_12"),
-	JmpIfBitSet(TEMP_7042_6, ["EVENT_3311_ret_15"]),
-	RunDialog(dialog_id=DI1690_SEA_SHOPKEEPER_HINT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return(identifier="EVENT_3311_ret_15")
 ])

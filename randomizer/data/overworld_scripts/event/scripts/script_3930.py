@@ -41,21 +41,21 @@ script = EventScript([
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_TransferToXYZF(x=13, y=90, z=0, direction=EAST)
 	]),
-	ActionQueueSync(target=NPC_8, subscript=[
+	ActionQueueSync(target=NPC_10, subscript=[
 		A_TransferToXYZF(x=22, y=72, z=2, direction=EAST),
 		A_FaceNortheast(),
 		A_SetSpriteSequence(index=14, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
-	ActionQueueSync(target=NPC_7, subscript=[
+	ActionQueueSync(target=NPC_9, subscript=[
 		A_TransferToXYZF(x=22, y=73, z=2, direction=EAST),
 		A_WalkSoutheastPixels(5),
 		A_FaceNortheast()
 	]),
-	JmpIfObjectInSpecificLevel(NPC_5, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["EVENT_3930_pause_7"]),
+	JmpIfObjectInSpecificLevel(NPC_7, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["EVENT_3930_pause_7"]),
 	Jmp(["EVENT_3930_pause_9"]),
 	Pause(1, identifier="EVENT_3930_pause_7"),
-	ActionQueueAsync(target=NPC_5, subscript=[
-		A_TransferToObjectXYZ(NPC_7),
+	ActionQueueAsync(target=NPC_7, subscript=[
+		A_TransferToObjectXYZ(NPC_9),
 		A_ShiftZUpSteps(2),
 		A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True)
 	]),

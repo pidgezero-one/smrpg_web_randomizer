@@ -15,14 +15,13 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
     ActionSubcriptCommandPrototype,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
-    EventScript,
-)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import Packet
 from ..data.variables.event_script_names import *
 from ..data.variables.packet_names import *
 import re
 from typing import TYPE_CHECKING
+from smrpgpatchbuilder.datatypes.graphics.classes import Tile
+
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -115,6 +114,7 @@ class SpriteAnimationCollection:
     under different circumstances in and in specific contexts."""
 
     _recoil: SpriteAnimation | None
+    _tower_crying: SpriteAnimation | None
     _bandits_way_distracted: SpriteAnimation | None
     _mines_punch: SpriteAnimation | None
     _tower_bullet: SpriteAnimation | None
@@ -134,6 +134,17 @@ class SpriteAnimationCollection:
     _look_at_ceiling_mold_id: int | None
     _tpose_mold_id: int | None
     _tower_toss: SpriteAnimation | None
+
+    @property
+    def tower_crying(self) -> SpriteAnimation | None:
+        """Boss animation.
+        A crying animation for this NPC to use in the tower henchman room where they cry."""
+        return self._tower_crying
+    
+    def set_tower_crying(self, tower_crying: SpriteAnimation | None = None) -> None:
+        """Boss animation.
+        Set a crying animation for this NPC to use in the tower henchman room where they cry."""
+        self._tower_crying = tower_crying
 
     @property
     def recoil(self) -> SpriteAnimation | None:
@@ -397,6 +408,7 @@ class SpriteAnimationCollection:
     def __init__(
         self,
         recoil: SpriteAnimation | None = None,
+        tower_crying: SpriteAnimation | None = None,
         bandits_way_distracted: SpriteAnimation | None = None,
         mines_punch: SpriteAnimation | None = None,
         tower_bullet: SpriteAnimation | None = None,
@@ -418,6 +430,7 @@ class SpriteAnimationCollection:
         tpose_mold_id: int | None = None,
     ):
         self.set_recoil(recoil)
+        self.set_tower_crying(tower_crying)
         self.set_bandits_way_distracted(bandits_way_distracted)
         self.set_mines_punch(mines_punch)
         self.set_tower_bullet(tower_bullet)
@@ -487,8 +500,14 @@ class NPC:
             f"(base={self.base.sprite_id}, offset={offset}, "
             f"num_molds={len(sprite.animation.properties.molds)})"
         )
+        if sprite.animation.properties.molds[mold_id].gridplane:
+            return 0
         tiles = sprite.animation.properties.molds[mold_id].tiles
-        return ceil(max(0, len(tiles) - 4) / 4)
+        truthy_subtiles = 0
+        for t in tiles:
+            if isinstance(t, Tile):
+                truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
+        return ceil(max(0, truthy_subtiles - 16) / 16)
 
     def min_vram_from_sequence(
         self, world: "GameWorld", sequence_id: int, offset: int = 0
@@ -620,6 +639,15 @@ class BossNPC(NPC):
         """
         instance = cls()
         return instance.base.min_vram_size
+
+    @classmethod
+    def get_min_vram_from_sequence(cls, world: "GameWorld", sequence_id: int) -> int:
+        """Get the min vram size from a certain sprite sequence ID for this BossNPC.
+
+        Returns the maximum min_vram_from_mold across all frames in the sequence.
+        """
+        instance = cls()
+        return instance.min_vram_from_sequence(world, sequence_id)
 
 
 class HenchmanNPC(NPC):

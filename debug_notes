@@ -40,7 +40,7 @@ Boss-specific
 Mushroom Way 
 🚧 fireworks freestanding item on top plateau stops you from moving
 🚧 czar dragon in mushroom way messes up shadows. why using that sprite?
-  - they have the exact same specs. how???
+  🚧 they have the exact same specs. how???
 
 Mushroom kingdom
 - palette is wrong if you get into calamari fight in mushroom kingdom (failed slots)
@@ -73,22 +73,22 @@ Rose way
 
 Rose Town
 🚧 pandorite in house: packet stays there without disappearing
-- cymbals: does not render at all
-- pandorite chest did not reload with a reward
-- red guy should not be outside his house 
+🚧 cymbals: does not render at all
+🚧 pandorite chest did not reload with a reward
+🚧 red guy should not be outside his house 
 
 Forest maze 
-- uderground rooms are fucked up. how the hell to get partition to work?
-  - Why did flower work, and item bag, but NOT frog coin?
+🚧 uderground rooms are fucked up. how the hell to get partition to work?
+  🚧 Why did flower work, and item bag, but NOT frog coin?
 - buzzer's default attack sound effect is wrong somehow
-- why does buzzer underground turn into a snifit in battle?
+🚧 why does buzzer underground turn into a snifit in battle?
 
 Pipe vault
-- chompweed in piranha room is invisible
-- gold goomba is loading into a 3x per row buffer
+🚧 chompweed in piranha room is invisible
+🚧 gold goomba is loading into a 3x per row buffer
 
 Yoster
-- yellow yoshis glitched sprites
+🚧 yellow yoshis glitched sprites
 🚧 infinite chest disables its object trigger
 
 Moleville
@@ -107,8 +107,8 @@ Booster Pass
 Booster Tower
 🚧 booster tower does not load when character needed to unlock it
 - shadows broken in curtain room, makes no sense
-- jagger briefly disappears while waiting for you to hit the mario doll
-- johnny doesnt do an animation in place of booster crying?
+🚧 jagger briefly disappears while waiting for you to hit the mario doll
+🚧 johnny doesnt do an animation in place of booster crying?
 
 Booster Hill
 - pickup coin rendered as a flower
@@ -116,43 +116,43 @@ Booster Hill
 
 Marrymore
 🚧 bloober sprites are wrong (incorrect buffer for their sprite size)
-- snifit sprites glitch out
-- crown replacement sinks into the floor
-- can't talk to johnny?
-- music slows down instead of speeding up
+🚧 snifit sprites glitch out
+🚧 crown replacement sinks into the floor
+🚧- can't talk to johnny?
+🚧 music slows down instead of speeding up
 🚧 squids have torte dialogs
 🚧 bellhop sidequest gets stuck on "please see our guest out"
-- coming out of the shower is wrong. resets to mario's original palette
-- stay voucher can be used multiple times. should be taken away after first time
-- could use a dialog explaining why you're getting a gift
-- dialogs seem wrong. both are attributed as torte in kitchen
+🚧 coming out of the shower is wrong. resets to mario's original palette
+🚧 stay voucher can be used multiple times. should be taken away after first time
+🚧 could use a dialog explaining why you're getting a gift
+🚧 dialogs seem wrong. both are attributed as torte in kitchen
 
 Seaside Town
 🚧 seaside: boss is replacing the wrong sprite in confrontation, also bad partition for grate guy
-- frog disciple doesnt go back to reading book if you talk to him when hes out of items
-- no signoff in jinx letter
+🚧 frog disciple doesnt go back to reading book if you talk to him when hes out of items
+🚧 no signoff in jinx letter
 
 Sea
 
 Sunken Ship
 🚧 Stair packet does not rise very high enough
   - shoes: it just falls
-- dry bones dies to regular attacks
-- dry bones does not collapse when you run away
+🚧 dry bones dies to regular attacks
+🚧 dry bones does not collapse when you run away
 🚧 realign "Hate to burst your Endobubble" hint bottom line
 🚧 are any of the packet shuffles actually working? looks like original
   - seems like it? check spoiler log
-  - packet that falls in barrel puzzle floats
+  🚧 packet that falls in barrel puzzle floats
 🚧 physical attacks are killing dry bones
 🚧 mid boss battle is totally skipped
-- flower packet in left chest in inner ship floats to the left 
+🚧 flower packet in left chest in inner ship floats to the left 
 🚧 chest in clone room is broken
 🚧 slots chest in hidon room causes coin sprites to overwrite chests
   - see if you can find another partition for it
 🚧 sprites of items underwater are messed up, keep shifting or disappearing
 🚧 no item replacing corner frog coin at all
 🚧 Dodo in johnny's room cut off. might need to use a different partition
-- shaman should not say password is related to the sea when shuffler is turned on
+🚧 shaman should not say password is related to the sea when shuffler is turned on
 
 Land's End
 🚧 side item from remake does not work (green spell). doesn't activate
@@ -188,7 +188,7 @@ Nimbus Land
   - needs timing, should connect on 34th frame
 - statues in statue room are shifted incorrectly
 🚧 gold paint logic does not work, will take you in if you talk to him twice
-- frog coin in nimbus castle doesnt render in chest (bridge room)
+🚧 frog coin in nimbus castle doesnt render in chest (bridge room)
 🚧 ninja in dodo spot has some problematic animations, doesnt turn around, sprite briefly distorts
 🚧 statue bird palettes are wrong everywhere, possibly bc of exp star?
 🚧 statue sprites in garro's house need a diff partition (jagger doesnt load correctly), same in castle
@@ -227,14 +227,7 @@ Inner Factory
 
 Ending
 🚧 need to restore original animations
-- sparkle not trailing star in room 1
+🚧 sparkle not trailing star in room 1
 - need a mario npc sub for when you are playing as another character
 - culex and jagger ran right through the pedestal
 - why the hell is "THE END" broken?
-
-lazy shell
-- more intelligent weapon detection in animation script dropdown
-- write new parser for monster behaviours and just make a dropdown of unique pointers
-- KOed should be object sequences
-- event scripts: fix the problem where sequence commands can't load numbers > 7
-- monster AI: fix "7E00015"

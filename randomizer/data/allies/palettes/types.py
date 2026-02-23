@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
+from copy import deepcopy
 
 from randomizer.data.variables.event_palette_names import (
     EPAL0084_MARIO_ENDING,
@@ -186,7 +187,7 @@ class MarioPalette(Palette):
                 heated_palette = [*self.colours][0:4]
                 heated_palette[1] = 0xF85030
                 base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
-                base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                base_palette.set_colors([0xFFFFFF, 0xFF5231, 0xC63139, 0xAD4A4A] + self.colours[4:])
                 if self.overworld_map_colours is None:
                     output[MAP_PALETTE_OFFSET] = bytearray(
                         palette_to_bytes(
@@ -282,11 +283,18 @@ class MallowPalette(Palette):
                 self.colours
             )
             if world.overworld_character.ally.index == 4:
-                heated_palette = [*self.colours][0:4]
-                heated_palette[0] = 0xF85030
-                heated_palette[1] = 0xF85030
+                
                 base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
-                base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                c = deepcopy(self.colours)
+                c[0] = 0xF85030
+                c[1] = 0xC03038
+                c[2] = 0xA84848
+                c[3] = 0x783030
+                c[13] = 0x783030
+                c[14] = 0x783030
+                base_palette.set_colors(c)
+
+
                 if self.overworld_map_colours is None:
                     output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
                 else:
@@ -348,10 +356,9 @@ class GenoPalette(Palette):
             )
 
             if world.overworld_character.ally.index == 3:
-                heated_palette = [*self.colours][0:4]
-                heated_palette[1] = 0xF85030
                 base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
-                base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                base_palette.set_colors([0xFF5231, 0xC63139, 0xAD4A4A, 0x7B3131] + self.colours[4:])
+
                 world.sprite_palettes.get_palette(SPAL529_MINECART_RIDER).set_colors(
                     self.colours
                 )
@@ -440,9 +447,15 @@ class BowserPalette(Palette):
                 world.sprite_palettes.get_palette(SPAL477_OLD_CLASSIC_MARIO).set_colors(
                     self.colours
                 )
-                heated_palette = [*self.colours][0:4]
                 base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
-                base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                c = deepcopy(self.colours)
+                c[2] = 0xF85030
+                c[3] = 0xC03038
+                c[4] = 0xA84848
+                c[10] = 0xA84848
+                c[11] = 0x702018
+                base_palette.set_colors(c)
+
                 if self.overworld_map_colours is None:
                     output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
                 else:
@@ -529,6 +542,10 @@ class ToadstoolPalette(Palette):
                 heated_palette[1] = 0xF85030
                 base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
                 base_palette.set_colors(heated_palette + base_palette.colors[4:])
+                
+                base_palette = world.event_palettes.get_palette(EPAL0142_HOTSPRING)
+                base_palette.set_colors([0xFFFFFF, 0xF89078, 0xF85030, 0xAD4A4A] + self.colours[4:])
+
                 if self.overworld_map_colours is None:
                     output[MAP_PALETTE_OFFSET] = bytearray(palette_to_bytes(self.colours))
                 else:

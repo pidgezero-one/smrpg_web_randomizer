@@ -1708,6 +1708,20 @@ class BossFightLocationNPC:
         assert obj is not None
         return obj._npc.min_vram_size
 
+    def get_original_min_vram_from_sequence_0(self, world: "GameWorld") -> int:
+        """Get the original room NPC's min_vram_from_sequence for sequence 0.
+
+        Computes the maximum VRAM needed across all frames in sequence 0
+        of the original NPC's sprite.
+        """
+        from ..utils.npcs import min_vram_from_sequence_for_sprite
+
+        room = world.rooms._rooms[self._room_id]
+        assert room is not None
+        obj = room.get_npc_by_target_id(self._npc_id)
+        assert obj is not None
+        return min_vram_from_sequence_for_sprite(world, obj._npc.sprite_id, 0)
+
     def __init__(
         self,
         room_id: int,
@@ -2241,7 +2255,8 @@ class BossFightLocation(PrizeLocation):
                 assert obj is not None
                 max_vram = slot.get_max_vram_size(world)
                 max_min_vram = slot.get_original_min_vram_size(world)
-                m = self.prize.get_npc_for_slot(world, max_vram, max_min_vram)
+                max_min_vram_seq0 = slot.get_original_min_vram_from_sequence_0(world)
+                m = self.prize.get_npc_for_slot(world, max_vram, max_min_vram, max_min_vram_seq0)
                 obj._npc = m().base
 
         # Set statue slots with statue models
