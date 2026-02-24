@@ -11,7 +11,8 @@ from randomizer.progression.prizes import (
     SecondMimicFightLauncher,
     ThirdMimicFightLauncher,
 )
-from randomizer.types.flags import MimicsAnywhere, SpellsAnywhere
+from randomizer.types.flags import ItemQuality, ItemQualityOptions, MimicsAnywhere, SpellsAnywhere
+from types.gameworld import GameWorld
 
 from .prize import (
     MimicFightInitiatorPrize,
@@ -2623,6 +2624,11 @@ class SpellSlotLocation(PrizeLocation):
 
 class PrizeRow(PrizeLocation):
     _container_event: int
+
+    def can_be_empty(self, world: GameWorld) -> bool:
+        if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY):
+            return True
+        return super().can_be_empty(world)
 
     def render(
         self, world: GameWorld

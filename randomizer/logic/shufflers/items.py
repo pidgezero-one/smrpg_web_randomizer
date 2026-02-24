@@ -5,6 +5,20 @@ import random
 from copy import copy
 from typing import TYPE_CHECKING, cast
 
+from smrpgpatchbuilder.datatypes.spells.enums import Status
+
+from data.items import (
+    AbleJuiceItem,
+    FroggieDrinkItem,
+    HoneySyrupItem,
+    MoldyMushItem,
+    MushroomItem,
+    MushroomItem2,
+    PureWaterItem,
+    RottenMushItem,
+    WiltShroomItem,
+    YoshiCookieItem,
+)
 from randomizer.types.prizelocation import StandingLocation, TreasureShopLocation
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     NPC_2,
@@ -21,6 +35,8 @@ from ...data.rooms.npcs import EMPTY_NPC
 from ..placement import PlacementException, place
 from ...types.prize import (
     CharacterPrize,
+    CoinQuantityPrize,
+    ItemPrize,
     RandomPrizeSubstitute,
     CoinPrize,
     FPFlowerPrize,
@@ -45,7 +61,255 @@ from ...progression.prizes import (
     LandsEndStar3Prize,
     ToadstoolRecruitmentPrize,
 )
-from ...progression.prizelocations import ShipCoinSnakePuzzleLocation
+from ...progression.prizelocations import (
+    MushroomKingdomInnPurchaseLocation,
+    ShipCoinSnakePuzzleLocation,
+)
+from ...types.flags import (
+    ReplaceItems,
+    ShuffleHillFlowers,
+    ShuffleItems,
+    ShuffleShops,
+    Remake,
+    RestrictSpecialEquips,
+    SuperJump2Threshold,
+    NoStarEgg,
+    ItemQuality,
+    ItemQualityOptions,
+    FireworksSetting,
+    FireworksOptions,
+    ShuffleCharacters,
+    StartingCharacters,
+    AvailableCharacters,
+    MaxCharacters,
+    CharacterLearnedSpells,
+    AvailableSpells,
+    ShuffleStarPieces,
+    TotalStarPieces,
+    BossShuffle,
+    ShuffledBosses,
+    EnabledBossChecks,
+    EXPStarsAnywhere,
+    MimicsAnywhere,
+    SlotsAnywhere,
+    ShuffleBeetlemania,
+    ShuffleMagikoopaChest,
+    ShuffleWeddingGear,
+    ShuffleCoins,
+    SpellsAnywhere,
+    # Gating flags for character requirement validation
+    BanditsWayGate,
+    BanditsWayGating,
+    KeroSewersGate,
+    KeroSewersGating,
+    ForestMazeGate,
+    ForestMazeGating,
+    PipeVaultGate,
+    PipeVaultGating,
+    Moleville1Gate,
+    Moleville1Gating,
+    BoosterTowerGate,
+    BoosterTowerGating,
+    SeaGate,
+    SeaGating,
+    LandsEndGate,
+    LandsEndGating,
+    BelomeTempleGate,
+    BelomeTempleGating,
+    MonstroTownGate,
+    MonstroTownGating,
+    NimbusGate,
+    NimbusGating,
+    BarrelVolcanoGate,
+    BarrelVolcanoGating,
+    BowsersKeepGate,
+    BowsersKeepGating,
+    FactoryGate,
+    FactoryGating,
+    BoosterHillGate,
+    BoosterHillGating,
+    MarrymoreGate,
+    MarrymoreGating,
+    YaridovichGate,
+    YaridovichGating,
+    StarPiecesRequired,
+)
+from ...types.prizelocation import (
+    BoosterHillLocation,
+    CharacterRecruitmentLocation,
+    EventLocation,
+    RiverLocation,
+    StarPieceLocation,
+    BossFightLocation,
+    SpellSlotLocation,
+    FrogDiscipleLocation,
+    TreasureChestLocation,
+)
+from ...types.prize import (
+    CharacterPrize,
+    SpellPrize,
+    StarPiecePrize,
+    BossFightPrize,
+)
+from ...progression.prizelocations import (
+    StartingCharacter1,
+    StartingCharacter2,
+    StartingCharacter3,
+    StartingCharacter4,
+    StartingCharacter5,
+)
+from ...progression.prizes import (
+    # Key items
+    RareFrogCoinPrize,
+    WalletPrize,
+    CricketPiePrize,
+    BambinoBombPrize,
+    CastleKey1Prize,
+    CastleKey2Prize,
+    ProgressiveCardPrize,
+    GreaperFlagPrize,
+    DryBonesFlagPrize,
+    BigBooFlagPrize,
+    ShedKeyPrize,
+    ElderKeyPrize,
+    CricketJamPrize,
+    TempleKeyPrize,
+    RoomKeyPrize,
+    SeedPrize,
+    FertilizerPrize,
+    BrightCardPrize,
+    YouMissed,
+    ProgressiveEggPrize,
+    LuckyJewelPrize,
+    SignalRingPrize,
+    GoodieBagPrize,
+    CrystalShardPrize,
+    ExtraShinyStonePrize,
+    StayVoucherPrize,
+    GoldPaintPrize,
+    StarEggPrize,
+    # Equipment
+    FroggiestickPrize,
+    ChompPrize,
+    ZoomShoesPrize,
+    LazyShellArmorPrize,
+    LazyShellWeaponPrize,
+    GhostMedalPrize,
+    QuartzCharmPrize,
+    JinxBeltPrize,
+    AttackScarfPrize,
+    WonderChompPrize,
+    Stella023Prize,
+    SageStickPrize,
+    EnduringBroochPrize,
+    TeamworkBandPrize,
+    SuperSuitPrize,
+    JumpShoesPrize,
+    BtubRingPrize,
+    # Fireworks
+    RegularFireworksPrize,
+    ProgressiveFireworksPrize,
+    # Characters
+    MarioRecruitmentPrize,
+    MallowRecruitmentPrize,
+    GenoRecruitmentPrize,
+    BowserRecruitmentPrize,
+    ToadstoolRecruitmentPrize,
+    # Spells
+    JumpSpellPrize,
+    FireOrbSpellPrize,
+    SuperJumpSpellPrize,
+    SuperFlameSpellPrize,
+    UltraJumpSpellPrize,
+    UltraFlameSpellPrize,
+    ThunderboltSpellPrize,
+    HPRainSpellPrize,
+    PsychopathSpellPrize,
+    ShockerSpellPrize,
+    SnowyPrize,
+    StarRainSpellPrize,
+    GenoBeamSpellPrize,
+    GenoBoostSpellPrize,
+    GenoWhirlSpellPrize,
+    GenoBlastSpellPrize,
+    GenoFlashSpellPrize,
+    TerrorizeSpellPrize,
+    PoisonGasSpellPrize,
+    CrusherSpellPrize,
+    BowserCrushSpellPrize,
+    TherapySpellPrize,
+    GroupHugSpellPrize,
+    MuteSpellPrize,
+    SleepyTimeSpellPrize,
+    ComeBackSpellPrize,
+    PsychBombSpellPrize,
+    # Star pieces
+    StarPiece1,
+    StarPiece2,
+    StarPiece3,
+    StarPiece4,
+    StarPiece5,
+    StarPiece6,
+    StarPiece7,
+    # Special prizes
+    EXPStarPrize,
+    MimicFightInitiatorPrize,
+    FirstMimicFightLauncher,
+    SecondMimicFightLauncher,
+    ThirdMimicFightLauncher,
+    SlotsPrize,
+    BeetlemaniaPrize,
+    InfiniteCoinsPrize,
+    WeddingGearPrize,
+    # bosses
+    SeeYaPrize,
+    EarlierTimesPrize,
+    CoinTrickPrize,
+    ExpBoosterPrize,
+    ScroogeRingPrize,
+    # Boss fight prizes for gating
+    BowyerBossFight,
+    PunchinelloBossFight,
+    BundtBossFight,
+    YaridovichBossFight,
+    Belome2BossFight,
+    MegasmilaxBossFight,
+    ValentinaBossFight,
+    AxemRangersBossFight,
+    KnifeGuyGrateGuyBossFight,
+    JohnnyBossFight,
+)
+from ...data.spells.spells import (
+    JumpSpell,
+    FireOrbSpell,
+    SuperJumpSpell,
+    SuperFlameSpell,
+    UltraJumpSpell,
+    UltraFlameSpell,
+    ThunderboltSpell,
+    HPRainSpell,
+    PsychopathSpell,
+    ShockerSpell,
+    SnowySpell,
+    StarRainSpell,
+    GenoBeamSpell,
+    GenoBoostSpell,
+    GenoWhirlSpell,
+    GenoBlastSpell,
+    GenoFlashSpell,
+    TerrorizeSpell,
+    PoisonGasSpell,
+    CrusherSpell,
+    BowserCrushSpell,
+    TherapySpell,
+    GroupHugSpell,
+    MuteSpell,
+    SleepyTimeSpell,
+    ComeBackSpell,
+    PsychBombSpell,
+)
+from randomizer.debug import load_debug_config, get_prize_class, get_location_class
+
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -106,6 +370,7 @@ def _on_item_placed(
         world.locations[Mimic3BossFight]._world_area = world_area
         world.locations[Mimic3StarPiece]._world_area = world_area
 
+
 ally_name_to_prize: dict[str, type[CharacterPrize]] = {
     "Mario": MarioRecruitmentPrize,
     "Mallow": MallowRecruitmentPrize,
@@ -114,272 +379,13 @@ ally_name_to_prize: dict[str, type[CharacterPrize]] = {
     "Toadstool": ToadstoolRecruitmentPrize,
 }
 
-def shuffle(world: GameWorld) -> None:
+PROGRESSION_PRIZES = 0
+RESTRICTED_PRIZES = 1
+MANDATORY_INCLUSIONS = 2
+LOW_PRIORITY = 3
 
-    from ...types.flags import (
-        ShuffleItems,
-        ShuffleShops,
-        Remake,
-        RestrictSpecialEquips,
-        SuperJump2Threshold,
-        NoStarEgg,
-        ItemQuality,
-        ItemQualityOptions,
-        FireworksSetting,
-        FireworksOptions,
-        ShuffleCharacters,
-        StartingCharacters,
-        AvailableCharacters,
-        MaxCharacters,
-        CharacterLearnedSpells,
-        AvailableSpells,
-        ShuffleStarPieces,
-        TotalStarPieces,
-        BossShuffle,
-        ShuffledBosses,
-        EnabledBossChecks,
-        EXPStarsAnywhere,
-        MimicsAnywhere,
-        SlotsAnywhere,
-        ShuffleBeetlemania,
-        ShuffleMagikoopaChest,
-        ShuffleWeddingGear,
-        ShuffleCoins,
-        SpellsAnywhere,
-        # Gating flags for character requirement validation
-        BanditsWayGate,
-        BanditsWayGating,
-        KeroSewersGate,
-        KeroSewersGating,
-        ForestMazeGate,
-        ForestMazeGating,
-        PipeVaultGate,
-        PipeVaultGating,
-        Moleville1Gate,
-        Moleville1Gating,
-        BoosterTowerGate,
-        BoosterTowerGating,
-        SeaGate,
-        SeaGating,
-        LandsEndGate,
-        LandsEndGating,
-        BelomeTempleGate,
-        BelomeTempleGating,
-        MonstroTownGate,
-        MonstroTownGating,
-        NimbusGate,
-        NimbusGating,
-        BarrelVolcanoGate,
-        BarrelVolcanoGating,
-        BowsersKeepGate,
-        BowsersKeepGating,
-        FactoryGate,
-        FactoryGating,
-        BoosterHillGate,
-        BoosterHillGating,
-        MarrymoreGate,
-        MarrymoreGating,
-        YaridovichGate,
-        YaridovichGating,
-        StarPiecesRequired,
-    )
-    from ...types.prizelocation import (
-        CharacterRecruitmentLocation,
-        StarPieceLocation,
-        BossFightLocation,
-        SpellSlotLocation,
-        FrogDiscipleLocation,
-    )
-    from ...types.prize import (
-        CharacterPrize,
-        SpellPrize,
-        StarPiecePrize,
-        BossFightPrize,
-    )
-    from ...progression.prizelocations import (
-        StartingCharacter1,
-        StartingCharacter2,
-        StartingCharacter3,
-        StartingCharacter4,
-        StartingCharacter5,
-    )
-    from ...progression.prizes import (
-        # Key items
-        RareFrogCoinPrize,
-        WalletPrize,
-        CricketPiePrize,
-        BambinoBombPrize,
-        CastleKey1Prize,
-        CastleKey2Prize,
-        ProgressiveCardPrize,
-        GreaperFlagPrize,
-        DryBonesFlagPrize,
-        BigBooFlagPrize,
-        ShedKeyPrize,
-        ElderKeyPrize,
-        CricketJamPrize,
-        TempleKeyPrize,
-        RoomKeyPrize,
-        SeedPrize,
-        FertilizerPrize,
-        BrightCardPrize,
-        YouMissed,
-        ProgressiveEggPrize,
-        LuckyJewelPrize,
-        SignalRingPrize,
-        GoodieBagPrize,
-        CrystalShardPrize,
-        ExtraShinyStonePrize,
-        StayVoucherPrize,
-        GoldPaintPrize,
-        StarEggPrize,
-        # Equipment
-        FroggiestickPrize,
-        ChompPrize,
-        ZoomShoesPrize,
-        LazyShellArmorPrize,
-        LazyShellWeaponPrize,
-        GhostMedalPrize,
-        QuartzCharmPrize,
-        JinxBeltPrize,
-        AttackScarfPrize,
-        WonderChompPrize,
-        Stella023Prize,
-        SageStickPrize,
-        EnduringBroochPrize,
-        TeamworkBandPrize,
-        SuperSuitPrize,
-        JumpShoesPrize,
-        BtubRingPrize,
-        # Fireworks
-        RegularFireworksPrize,
-        ProgressiveFireworksPrize,
-        # Characters
-        MarioRecruitmentPrize,
-        MallowRecruitmentPrize,
-        GenoRecruitmentPrize,
-        BowserRecruitmentPrize,
-        ToadstoolRecruitmentPrize,
-        # Spells
-        JumpSpellPrize,
-        FireOrbSpellPrize,
-        SuperJumpSpellPrize,
-        SuperFlameSpellPrize,
-        UltraJumpSpellPrize,
-        UltraFlameSpellPrize,
-        ThunderboltSpellPrize,
-        HPRainSpellPrize,
-        PsychopathSpellPrize,
-        ShockerSpellPrize,
-        SnowyPrize,
-        StarRainSpellPrize,
-        GenoBeamSpellPrize,
-        GenoBoostSpellPrize,
-        GenoWhirlSpellPrize,
-        GenoBlastSpellPrize,
-        GenoFlashSpellPrize,
-        TerrorizeSpellPrize,
-        PoisonGasSpellPrize,
-        CrusherSpellPrize,
-        BowserCrushSpellPrize,
-        TherapySpellPrize,
-        GroupHugSpellPrize,
-        MuteSpellPrize,
-        SleepyTimeSpellPrize,
-        ComeBackSpellPrize,
-        PsychBombSpellPrize,
-        # Star pieces
-        StarPiece1,
-        StarPiece2,
-        StarPiece3,
-        StarPiece4,
-        StarPiece5,
-        StarPiece6,
-        StarPiece7,
-        # Special prizes
-        EXPStarPrize,
-        MimicFightInitiatorPrize,
-        FirstMimicFightLauncher,
-        SecondMimicFightLauncher,
-        ThirdMimicFightLauncher,
-        SlotsPrize,
-        BeetlemaniaPrize,
-        InfiniteCoinsPrize,
-        WeddingGearPrize,
-        # bosses
-        SeeYaPrize,
-        EarlierTimesPrize,
-        CoinTrickPrize,
-        ExpBoosterPrize,
-        ScroogeRingPrize,
-        # Boss fight prizes for gating
-        BowyerBossFight,
-        PunchinelloBossFight,
-        BundtBossFight,
-        YaridovichBossFight,
-        Belome2BossFight,
-        MegasmilaxBossFight,
-        ValentinaBossFight,
-        AxemRangersBossFight,
-        KnifeGuyGrateGuyBossFight,
-        JohnnyBossFight,
-    )
-    from ...data.spells.spells import (
-        JumpSpell,
-        FireOrbSpell,
-        SuperJumpSpell,
-        SuperFlameSpell,
-        UltraJumpSpell,
-        UltraFlameSpell,
-        ThunderboltSpell,
-        HPRainSpell,
-        PsychopathSpell,
-        ShockerSpell,
-        SnowySpell,
-        StarRainSpell,
-        GenoBeamSpell,
-        GenoBoostSpell,
-        GenoWhirlSpell,
-        GenoBlastSpell,
-        GenoFlashSpell,
-        TerrorizeSpell,
-        PoisonGasSpell,
-        CrusherSpell,
-        BowserCrushSpell,
-        TherapySpell,
-        GroupHugSpell,
-        MuteSpell,
-        SleepyTimeSpell,
-        ComeBackSpell,
-        PsychBombSpell,
-    )
-    from randomizer.debug import load_debug_config, get_prize_class, get_location_class
 
-    # Start off emptying every location
-    for loc in world.locations.values():
-        loc.set_prize(None)
-    # Reset spell assignments for SpellsAnywhere
-    world._spell_assignments = None
-    # Set debug overrides
-    displaced_prizes: list[Prize] = []
-    debug_placed: list[type] = []
-    if world.settings.debug_mode:
-        config = load_debug_config()
-        overrides = config.get("items", {}).get("override", {})
-        for location_name, prize_name in overrides.items():
-            location_cls = get_location_class(location_name)
-            prize_cls = get_prize_class(prize_name)
-            if location_cls is None or prize_cls is None:
-                continue
-            if location_cls not in world.locations:
-                print(f"Warning: Location '{location_name}' not in world.locations")
-                continue
-            location = world.get_location(location_cls)
-            if location.originally_held is not None:
-                displaced_prizes.append(location.originally_held)
-            location.set_prize(prize_cls())
-            displaced_prizes.append(prize_cls())
-
+def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     # Prize placement guidelines are divided into tiers.
     # The highest tier is prizes that gate other checks.
     progress_rules: list[type[Prize]] = [
@@ -397,8 +403,6 @@ def shuffle(world: GameWorld) -> None:
         SeedPrize,
         FertilizerPrize,
         RegularFireworksPrize,
-        ProgressiveFireworksPrize,
-        ProgressiveFireworksPrize,
         ProgressiveFireworksPrize,
         WeddingGearPrize,
         ExtraShinyStonePrize,
@@ -445,17 +449,16 @@ def shuffle(world: GameWorld) -> None:
             if world.settings.is_flag_value(gate, gating_flag):
                 progress_rules.append(prize_cls)
                 break
+    # todo: add super jump
+    # todo: add one nonelemental spell
 
     # Tier 3: Prizes that don't unlock anything but that are extremely limited in terms of where they can be placed, so they need to be placed next
     post_progression_rules: list[type[Prize]] = [
-        SlotsPrize,
-        SlotsPrize,
         SlotsPrize,
         BanditsWayStarPrize,
         KeroSewersStarPrize,
         MolevilleMinesStarPrize,
         SeaStarPrize,
-        LandsEndVolcanoStarPrize,
         LandsEndVolcanoStarPrize,
         NimbusLandStarPrize,
         LandsEndStar2Prize,
@@ -466,11 +469,7 @@ def shuffle(world: GameWorld) -> None:
     # These can include unpurchase-able items, for example
     should_otherwise_include_rules: list[type[Prize]] = [
         ProgressiveEggPrize,
-        ProgressiveEggPrize,
-        ProgressiveEggPrize,
         CrystalShardPrize,
-        ProgressiveCardPrize,
-        ProgressiveCardPrize,
         ProgressiveCardPrize,
         SeeYaPrize,
         EarlierTimesPrize,
@@ -480,6 +479,187 @@ def shuffle(world: GameWorld) -> None:
         LuckyJewelPrize,
         FryingPanPrize,
     ]
+    if not world.settings.isflag_enabled(NoStarEgg):
+        should_otherwise_include_rules.extend([StarEggPrize])
+    return {
+        PROGRESSION_PRIZES: progress_rules,
+        RESTRICTED_PRIZES: post_progression_rules,
+        MANDATORY_INCLUSIONS: should_otherwise_include_rules,
+        LOW_PRIORITY: [FrogCoin1Prize, RecoveryMushroomPrize, FPFlowerPrize, CoinPrize],
+    }
+
+
+def should_shuffle(location: PrizeLocation, world: GameWorld) -> bool:
+    if isinstance(
+        location,
+        (
+            TreasureChestLocation,
+            StandingLocation,
+            EventLocation,
+            RiverLocation,
+            BoosterHillLocation,
+        ),
+    ) and not world.settings.isflag_enabled(ShuffleItems):
+        return False
+    if isinstance(
+        location, (TreasureShopLocation, FrogDiscipleLocation)
+    ) and not world.settings.isflag_enabled(ShuffleShops):
+        return False
+    if isinstance(location, BoosterHillLocation) and not world.settings.isflag_enabled(
+        ShuffleHillFlowers
+    ):
+        return False
+    if isinstance(
+        location, CharacterRecruitmentLocation
+    ) and not world.settings.isflag_enabled(ShuffleCharacters):
+        return False
+    if isinstance(location, StarPieceLocation) and not world.settings.isflag_enabled(
+        ShuffleStarPieces
+    ):
+        return False
+    if isinstance(location, BossFightLocation) and not world.settings.isflag_enabled(
+        BossShuffle
+    ):
+        return False
+    if isinstance(
+        location, MushroomKingdomInnPurchaseLocation
+    ) and not world.settings.isflag_enabled(ShuffleBeetlemania):
+        return False
+    if location.originally_held is not None:
+        if issubclass(
+            location.originally_held, SlotsPrize
+        ) and not world.settings.isflag_enabled(SlotsAnywhere):
+            return False
+        if issubclass(
+            location.originally_held, EXPStarPrize
+        ) and not world.settings.isflag_enabled(EXPStarsAnywhere):
+            return False
+        if issubclass(
+            location.originally_held, MimicFightInitiatorPrize
+        ) and not world.settings.isflag_enabled(MimicsAnywhere):
+            return False
+        if issubclass(
+            location.originally_held, InfiniteCoinsPrize
+        ) and not world.settings.isflag_enabled(ShuffleMagikoopaChest):
+            return False
+    return True
+
+
+def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
+    if location.originally_held is None:
+        return None
+    inclusions = shuffle_rules(world)
+    if issubclass(
+        location.originally_held, RegularFireworksPrize
+    ) and not world.settings.is_flag_value(FireworksSetting, FireworksOptions.VANILLA):
+        return ProgressiveFireworksPrize()
+    if issubclass(
+        location.originally_held, StarEggPrize
+    ) and world.settings.isflag_enabled(NoStarEgg):
+        return None
+    if isinstance(
+        location,
+        (
+            TreasureChestLocation,
+            StandingLocation,
+            EventLocation,
+            RiverLocation,
+            BoosterHillLocation,
+        ),
+    ):
+        for tier in inclusions.values():
+            for prize_cls in tier:
+                if tier == LOW_PRIORITY and world.settings.is_flag_value(ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY):
+                    return None
+                if issubclass(location.originally_held, prize_cls):
+                    return prize_cls()
+        if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY):
+            return None
+        
+        if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
+            prize = location.originally_held()
+        else:
+            prize = RandomPrizeSubstitute().generate(world, location)
+
+        if world.settings.isflag_enabled(ReplaceItems) and issubclass(location.originally_held, ItemPrize):
+            item = location.originally_held().item
+            if issubclass(
+                item,
+                (
+                    MushroomItem,
+                    HoneySyrupItem,
+                    AbleJuiceItem,
+                    YoshiCookieItem,
+                    PureWaterItem,
+                    FroggieDrinkItem,
+                    WiltShroomItem,
+                    RottenMushItem,
+                    MoldyMushItem,
+                ),
+            ) or (
+                issubclass(item, MushroomItem2)
+                and Status.INVINCIBLE not in world.get_item(MushroomItem2).status_immunities
+            ):
+                prize = CoinPrize(world.get_item(item).price)
+        return prize
+            
+    return location.originally_held()
+
+
+def shuffle(world: GameWorld) -> None:
+    pool: dict[int, list[Prize]] = {
+        PROGRESSION_PRIZES: [],
+        RESTRICTED_PRIZES: [],
+        MANDATORY_INCLUSIONS: [],
+        LOW_PRIORITY: [],
+    }
+    # Always have 3 progressive eggs if item shuffle is enabled
+    if world.settings.isflag_enabled(ShuffleItems):
+        pool[MANDATORY_INCLUSIONS].extend([ProgressiveEggPrize(), ProgressiveEggPrize()])
+    rules = shuffle_rules(world)
+
+    # Start off emptying every location and populating the prize pool
+    for loc in world.locations.values():
+        if should_shuffle(loc, world):
+            loc.set_prize(None)
+            pool_item = pull_prize(loc, world)
+            if pool_item is None:
+                continue
+            for tier, classes in rules.items():
+                if any(isinstance(pool_item, cls) for cls in classes):
+                    pool[tier].append(pool_item)
+                    break
+            if world.settings.is_flag_value(
+                ItemQuality, ItemQualityOptions.ORIGINAL_POOL
+            ):
+                pool[MANDATORY_INCLUSIONS].append(pool_item)
+            else:
+                pool[LOW_PRIORITY].append(pool_item)
+        else:
+            if loc.originally_held is not None:
+                loc.set_prize(loc.originally_held())
+
+    # Reset spell assignments for SpellsAnywhere
+    world._spell_assignments = None
+    # Set debug overrides
+    displaced_prizes: list[Prize] = []
+    debug_placed: list[type] = []
+    if world.settings.debug_mode:
+        config = load_debug_config()
+        overrides = config.get("items", {}).get("override", {})
+        for location_name, prize_name in overrides.items():
+            location_cls = get_location_class(location_name)
+            prize_cls = get_prize_class(prize_name)
+            if location_cls is None or prize_cls is None:
+                continue
+            if location_cls not in world.locations:
+                print(f"Warning: Location '{location_name}' not in world.locations")
+                continue
+            location = world.get_location(location_cls)
+            if location.originally_held is not None:
+                displaced_prizes.append(location.originally_held)
+            location.set_prize(prize_cls())
+            displaced_prizes.append(prize_cls())
 
     stars = [
         StarPiece1,
@@ -536,51 +716,6 @@ def shuffle(world: GameWorld) -> None:
                 TeamworkBandPrize,
             ]
         )
-    # Collect explicitly set starting characters (non-random)
-    starting_chars_flag = world.settings.get_flag(StartingCharacters)
-    explicitly_set_starting_chars: set[str] = set()
-    for option in starting_chars_flag.enabled:
-        value = option.value
-        # Check if this is a "Random_X" string value - skip, those aren't explicit
-        if isinstance(value, str):
-            continue
-        # This is an actual ally instance
-        ally_name = value.name
-        if ally_name:
-            explicitly_set_starting_chars.add(ally_name)
-    # Validate requirements against available characters and max count
-    available_chars_flag = world.settings.get_flag(AvailableCharacters)
-    disabled_char_names = {m.value.name for m in available_chars_flag.disabled}
-    max_char_count = world.settings.get_flag(MaxCharacters).value
-    # Note: Character/gating validation is now done earlier in validate_settings()
-    # The variables collected above (gating_required_characters, disabled_char_names,
-    # max_char_count) are still needed for the actual placement logic below.
-    # Starting character locations in order
-    starting_locations = [
-        StartingCharacter1,
-        StartingCharacter2,
-        StartingCharacter3,
-        StartingCharacter4,
-        StartingCharacter5,
-    ]
-    # Track which characters have been explicitly placed
-    placed_characters: set[type[CharacterPrize]] = set()
-    # Place characters based on their ordinance position
-    for idx, option in enumerate(starting_chars_flag.enabled):
-        if idx >= len(starting_locations) or idx >= max_char_count:
-            break
-        value = option.value
-        # Check if this is a "Random_X" string value - skip, shuffler will handle it
-        if isinstance(value, str):
-            continue
-        # This is an actual ally instance - place it using its name
-        ally_name = value.name
-        if ally_name and ally_name in ally_name_to_prize:
-            prize_class = ally_name_to_prize[ally_name]
-            loc = world.locations.get(starting_locations[idx])
-            if loc is not None:
-                loc.set_prize(prize_class())
-                placed_characters.add(prize_class)
 
 
 def shuffle_prizes(world: GameWorld) -> None:

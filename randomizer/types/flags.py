@@ -752,7 +752,7 @@ class ItemQualityOptions(CategorizationOption):
     ORIGINAL_POOL = "Original item pool"
     COMPLETELY_RANDOM = "Completely random items"
     MOSTLY_RANDOM = "Random items, biased toward low-impact items"
-    COMPLETELY_EMPTY = "Completely empty except for progress items"
+    COMPLETELY_EMPTY = "Empty except for required items"
 
 
 # ✅
