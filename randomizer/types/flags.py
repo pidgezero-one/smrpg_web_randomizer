@@ -1483,11 +1483,9 @@ StarPieceCheckEnum = ClassCategorizationOption(
 # ✅
 class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
     _name = "General item pool checks"
-    _description = """If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
+    _description = """If a check is highlighted (white text over blue), its contents can be shuffled.
 <br>
-<br>If a check is not highlighted, its contents will still be shuffled, but it will not contain any items required to complete the seed.
-<br>
-<br>This setting only applies if you have "Special Items can appear in the general item pool" or "Star Pieces can appear in the general item pool" enabled.
+<br>If a check is not highlighted, its contents will match the original game.
 <br>
 <br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
     _id = "chests"
@@ -1503,9 +1501,9 @@ class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
 # ✅
 class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
     _name = "Boss location star pieces"
-    _description = """If a check is highlighted (white text over blue), it is eligible to contain a boss fight that un-gates an area.
+    _description = """If a check is highlighted (white text over blue), it can randomly contain a star piece.
 <br>
-<br>If a check is not highlighted, its contents can still be shuffled, but it will not contain a boss fight that un-gates an area.
+<br>If a check is not highlighted, it will have a star piece if it had one in the original game, and it will not have a star piece otherwise.
 <br>
 <br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
     _id = "bosses"
@@ -1979,18 +1977,30 @@ _shuffled_boss_enum_populated = False
 
 
 def _ensure_shuffled_boss_enum_populated() -> None:
-    """Create ShuffledBossEnum dynamically from ALL_BOSS_FIGHTS on first access."""
+    """Create ShuffledBossEnum dynamically from BossFightLocation subclasses.
+
+    Each enum member's value is a BossFightLocation subclass, but the display
+    name (attr_name) is derived from the location's originally held boss fight prize.
+    """
     global ShuffledBossEnum, _shuffled_boss_enum_populated
     if _shuffled_boss_enum_populated:
         return
     _shuffled_boss_enum_populated = True
 
-    from ..progression.prizes import ALL_BOSS_FIGHTS
+    from ..progression import prizelocations
 
     members = {}
-    for boss_class in ALL_BOSS_FIGHTS:
-        attr_name = _boss_class_to_attr_name(boss_class)
-        members[attr_name] = boss_class
+    for cls in vars(prizelocations).values():
+        if (
+            isinstance(cls, type)
+            and issubclass(cls, BossFightLocation)
+            and cls is not BossFightLocation
+            and hasattr(cls, "_originally_held")
+            and cls._originally_held is not None
+        ):
+            # Use the originally held boss fight prize name for display
+            attr_name = _boss_class_to_attr_name(cls._originally_held)
+            members[attr_name] = cls
 
     ShuffledBossEnum = ClassCategorizationOption("ShuffledBossEnum", members)
 

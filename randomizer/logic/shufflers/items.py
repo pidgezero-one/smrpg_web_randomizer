@@ -5,7 +5,8 @@ import random
 from copy import copy
 from typing import TYPE_CHECKING, cast
 
-from smrpgpatchbuilder.datatypes.spells.enums import Status
+from randomizer.types.logic import Inventory
+from smrpgpatchbuilder.datatypes.spells.enums import Status, Element
 
 from data.items import (
     AbleJuiceItem,
@@ -64,6 +65,8 @@ from ...progression.prizes import (
 from ...progression.prizelocations import (
     MushroomKingdomInnPurchaseLocation,
     ShipCoinSnakePuzzleLocation,
+    MonstroFirstSuperJumpRewardLocation,
+    MonstroSecondSuperJumpRewardLocation,
 )
 from ...types.flags import (
     ReplaceItems,
@@ -88,6 +91,7 @@ from ...types.flags import (
     TotalStarPieces,
     BossShuffle,
     ShuffledBosses,
+    EnabledRegularChecks,
     EnabledBossChecks,
     EXPStarsAnywhere,
     MimicsAnywhere,
@@ -449,8 +453,76 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
             if world.settings.is_flag_value(gate, gating_flag):
                 progress_rules.append(prize_cls)
                 break
-    # todo: add super jump
-    # todo: add one nonelemental spell
+
+    # Add Super Jump to progress if either Super Jump reward location is enabled
+    if (
+        world.is_location_enabled(MonstroFirstSuperJumpRewardLocation)
+        or world.is_location_enabled(MonstroSecondSuperJumpRewardLocation)
+    ):
+        progress_rules.append(SuperJumpSpellPrize)
+
+    # All spell prizes (these will be split between progress and should_otherwise_include)
+    all_spell_prizes: list[type[Prize]] = [
+        JumpSpellPrize,
+        FireOrbSpellPrize,
+        SuperFlameSpellPrize,
+        UltraJumpSpellPrize,
+        UltraFlameSpellPrize,
+        ThunderboltSpellPrize,
+        HPRainSpellPrize,
+        PsychopathSpellPrize,
+        ShockerSpellPrize,
+        SnowyPrize,
+        StarRainSpellPrize,
+        GenoBeamSpellPrize,
+        GenoBoostSpellPrize,
+        GenoWhirlSpellPrize,
+        GenoBlastSpellPrize,
+        GenoFlashSpellPrize,
+        TerrorizeSpellPrize,
+        PoisonGasSpellPrize,
+        CrusherSpellPrize,
+        BowserCrushSpellPrize,
+        TherapySpellPrize,
+        GroupHugSpellPrize,
+        MuteSpellPrize,
+        SleepyTimeSpellPrize,
+        ComeBackSpellPrize,
+        PsychBombSpellPrize,
+    ]
+    # SuperJumpSpellPrize is handled separately above based on location availability
+
+    # Non-elemental spell prizes (Element.NONE) - excluding Super Jump (it's JUMP element)
+    non_elemental_spell_prizes: list[type[Prize]] = [
+        HPRainSpellPrize,
+        PsychopathSpellPrize,
+        StarRainSpellPrize,
+        GenoBeamSpellPrize,
+        GenoBoostSpellPrize,
+        GenoWhirlSpellPrize,
+        GenoBlastSpellPrize,
+        GenoFlashSpellPrize,
+        TerrorizeSpellPrize,
+        PoisonGasSpellPrize,
+        CrusherSpellPrize,
+        BowserCrushSpellPrize,
+        TherapySpellPrize,
+        GroupHugSpellPrize,
+        MuteSpellPrize,
+        SleepyTimeSpellPrize,
+        ComeBackSpellPrize,
+        PsychBombSpellPrize,
+    ]
+
+    # Choose one random non-elemental spell for progress_rules
+    chosen_nonelemental = random.choice(non_elemental_spell_prizes)
+    progress_rules.append(chosen_nonelemental)
+
+    # All other spells go to should_otherwise_include_rules
+    spells_for_inclusion = [
+        sp for sp in all_spell_prizes
+        if sp != SuperJumpSpellPrize and sp != chosen_nonelemental
+    ]
 
     # Tier 3: Prizes that don't unlock anything but that are extremely limited in terms of where they can be placed, so they need to be placed next
     post_progression_rules: list[type[Prize]] = [
@@ -479,6 +551,8 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         LuckyJewelPrize,
         FryingPanPrize,
     ]
+    # Add all spells except Super Jump and the chosen non-elemental
+    should_otherwise_include_rules.extend(spells_for_inclusion)
     if not world.settings.isflag_enabled(NoStarEgg):
         should_otherwise_include_rules.extend([StarEggPrize])
     return {
@@ -542,6 +616,8 @@ def should_shuffle(location: PrizeLocation, world: GameWorld) -> bool:
             location.originally_held, InfiniteCoinsPrize
         ) and not world.settings.isflag_enabled(ShuffleMagikoopaChest):
             return False
+    if not world.is_location_enabled(type(location)):
+        return False
     return True
 
 
@@ -616,51 +692,9 @@ def shuffle(world: GameWorld) -> None:
     # Always have 3 progressive eggs if item shuffle is enabled
     if world.settings.isflag_enabled(ShuffleItems):
         pool[MANDATORY_INCLUSIONS].extend([ProgressiveEggPrize(), ProgressiveEggPrize()])
-    rules = shuffle_rules(world)
-
-    # Start off emptying every location and populating the prize pool
-    for loc in world.locations.values():
-        if should_shuffle(loc, world):
-            loc.set_prize(None)
-            pool_item = pull_prize(loc, world)
-            if pool_item is None:
-                continue
-            for tier, classes in rules.items():
-                if any(isinstance(pool_item, cls) for cls in classes):
-                    pool[tier].append(pool_item)
-                    break
-            if world.settings.is_flag_value(
-                ItemQuality, ItemQualityOptions.ORIGINAL_POOL
-            ):
-                pool[MANDATORY_INCLUSIONS].append(pool_item)
-            else:
-                pool[LOW_PRIORITY].append(pool_item)
-        else:
-            if loc.originally_held is not None:
-                loc.set_prize(loc.originally_held())
 
     # Reset spell assignments for SpellsAnywhere
     world._spell_assignments = None
-    # Set debug overrides
-    displaced_prizes: list[Prize] = []
-    debug_placed: list[type] = []
-    if world.settings.debug_mode:
-        config = load_debug_config()
-        overrides = config.get("items", {}).get("override", {})
-        for location_name, prize_name in overrides.items():
-            location_cls = get_location_class(location_name)
-            prize_cls = get_prize_class(prize_name)
-            if location_cls is None or prize_cls is None:
-                continue
-            if location_cls not in world.locations:
-                print(f"Warning: Location '{location_name}' not in world.locations")
-                continue
-            location = world.get_location(location_cls)
-            if location.originally_held is not None:
-                displaced_prizes.append(location.originally_held)
-            location.set_prize(prize_cls())
-            displaced_prizes.append(prize_cls())
-
     stars = [
         StarPiece1,
         StarPiece2,
@@ -683,39 +717,63 @@ def shuffle(world: GameWorld) -> None:
     if mxstars > progress_stars:
         progress_stars = mxstars
     maxstars = world.settings.get_flag(TotalStarPieces).value
-    for i in range(0, maxstars):
-        if i < progress_stars:
-            progress_rules.append(stars[i])
-        else:
-            should_otherwise_include_rules.append(stars[i])
 
-    if not world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
-        should_otherwise_include_rules.extend(
-            [
-                JumpShoesPrize,
-                BtubRingPrize,
-            ]
-        )
-    if world.settings.isflag_enabled(RestrictSpecialEquips):
-        should_otherwise_include_rules.extend(
-            [
-                FroggiestickPrize,
-                ChompPrize,
-                ZoomShoesPrize,
-                LazyShellArmorPrize,
-                LazyShellWeaponPrize,
-                GhostMedalPrize,
-                QuartzCharmPrize,
-                JinxBeltPrize,
-                AttackScarfPrize,
-                SuperSuitPrize,
-                WonderChompPrize,
-                Stella023Prize,
-                SageStickPrize,
-                EnduringBroochPrize,
-                TeamworkBandPrize,
-            ]
-        )
+    rules = shuffle_rules(world)
+    config = {}
+    if world.settings.debug_mode:
+        config = load_debug_config()
+    overrides = config.get("items", {}).get("override", {})
+
+    # Empty every location and build the prize pool
+    for loc in world.locations.values():
+        # TODO: Need to manage deficit for debug items
+        # TODO: Need to account for excluded characters and starting characters
+        # TODO: Need to account for reduced star piece counts
+        is_debug = False
+        if world.settings.debug_mode:
+            for location_name, prize_name in overrides.items():
+                location_cls = get_location_class(location_name)
+                if location_cls is None:
+                    raise ValueError(f"Invalid location name in debug config: '{location_name}'")
+                if isinstance(loc, location_cls):
+                    prize_cls = get_prize_class(prize_name)
+                    if prize_cls is None or not loc.can_accept(prize_cls(), Inventory(), world):
+                        if not loc.can_be_empty(world):
+                            raise ValueError(
+                                f"Invalid prize assigned to debug location '{location_name}' when it cannot be empty"
+                            )
+                        else:
+                            loc.set_prize(None)
+                    else:
+                        loc.set_prize(prize_cls())
+                    if loc.originally_held is not None:
+                        # displace prize
+                        for tier, classes in rules.items():
+                            if any(isinstance(loc.originally_held(), cls) for cls in classes):
+                                pool[tier].append(loc.originally_held())
+                                break
+                    is_debug = True
+                    break
+        if is_debug:
+            continue
+        if should_shuffle(loc, world):
+            loc.set_prize(None)
+            pool_item = pull_prize(loc, world)
+            if pool_item is None:
+                continue
+            for tier, classes in rules.items():
+                if any(isinstance(pool_item, cls) for cls in classes):
+                    pool[tier].append(pool_item)
+                    break
+            if world.settings.is_flag_value(
+                ItemQuality, ItemQualityOptions.ORIGINAL_POOL
+            ):
+                pool[MANDATORY_INCLUSIONS].append(pool_item)
+            else:
+                pool[LOW_PRIORITY].append(pool_item)
+        else:
+            if loc.originally_held is not None:
+                loc.set_prize(loc.originally_held())
 
 
 def shuffle_prizes(world: GameWorld) -> None:

@@ -372,6 +372,28 @@ class GameWorld:
         """Get a location instance with proper typing."""
         return cast(PrizeLocationT, self.locations[location_type])
 
+    def is_location_enabled(self, location_type: type[PrizeLocation]) -> bool:
+        """Check if a location type is enabled in EnabledRegularChecks, EnabledBossChecks, or ShuffledBosses.
+
+        Returns True if the location is enabled in the relevant flag based on its type:
+        - BossFightLocation subclasses check EnabledBossChecks and ShuffledBosses
+        - Other PrizeLocation subclasses check EnabledRegularChecks
+        """
+        if issubclass(location_type, BossFightLocation):
+            # Check EnabledBossChecks for boss fight locations (star piece checks)
+            boss_checks_flag = self.settings.get_flag(EnabledBossChecks)
+            if location_type in boss_checks_flag.enabled:
+                return True
+            # Check ShuffledBosses for boss fight locations (boss shuffle pool)
+            shuffled_bosses_flag = self.settings.get_flag(ShuffledBosses)
+            if location_type in shuffled_bosses_flag.enabled:
+                return True
+            return False
+        else:
+            # Check EnabledRegularChecks for non-boss locations
+            regular_checks_flag = self.settings.get_flag(EnabledRegularChecks)
+            return location_type in regular_checks_flag.enabled
+
     def notify_prize_placed(self, location: PrizeLocation, prize) -> None:
         """Notify that a prize was placed - updates caches.
 
