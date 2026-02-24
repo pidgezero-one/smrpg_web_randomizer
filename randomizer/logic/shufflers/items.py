@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, cast
 from randomizer.types.logic import Inventory
 from smrpgpatchbuilder.datatypes.spells.enums import Status, Element
 
-from data.items import (
+from ...data.items import (
     AbleJuiceItem,
     FroggieDrinkItem,
     HoneySyrupItem,

@@ -12,7 +12,6 @@ from randomizer.progression.prizes import (
     ThirdMimicFightLauncher,
 )
 from randomizer.types.flags import ItemQuality, ItemQualityOptions, MimicsAnywhere, SpellsAnywhere
-from types.gameworld import GameWorld
 
 from .prize import (
     MimicFightInitiatorPrize,
