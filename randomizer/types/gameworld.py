@@ -88,7 +88,12 @@ from .ally import Ally
 # TypeVar for spell types to allow CharacterSpell and other Spell subclasses
 SpellT = TypeVar("SpellT", bound=Spell)
 from .prizelocation import (
+    CharacterRecruitmentLocation,
+    InvisibleFlagLocation,
+    PacketLocation,
     PrizeLocation,
+    SpellSlotLocation,
+    StarPieceLocation,
 )
 from .room import Room
 from ..progression.prizelocations import *
@@ -373,26 +378,57 @@ class GameWorld:
         return cast(PrizeLocationT, self.locations[location_type])
 
     def is_location_enabled(self, location_type: type[PrizeLocation]) -> bool:
-        """Check if a location type is enabled in EnabledRegularChecks, EnabledBossChecks, or ShuffledBosses.
+        """Check if a location type is enabled based on its category flag.
 
         Returns True if the location is enabled in the relevant flag based on its type:
-        - BossFightLocation subclasses check EnabledBossChecks and ShuffledBosses
+        - BossFightLocation subclasses check ShuffledBosses
+        - StarPieceLocation subclasses check EnabledBossChecks
+        - SpellSlotLocation subclasses are always enabled (controlled by CharacterLearnedSpells/SpellsAnywhere)
+        - CharacterRecruitmentLocation subclasses are always enabled (controlled by ShuffleCharacters)
+        - PacketLocation subclasses are always enabled (controlled by ShuffleItems)
+        - InvisibleFlagLocation subclasses are always enabled (controlled by ShuffleItems)
         - Other PrizeLocation subclasses check EnabledRegularChecks
         """
         if issubclass(location_type, BossFightLocation):
-            # Check EnabledBossChecks for boss fight locations (star piece checks)
-            boss_checks_flag = self.settings.get_flag(EnabledBossChecks)
-            if location_type in boss_checks_flag.enabled:
-                return True
-            # Check ShuffledBosses for boss fight locations (boss shuffle pool)
+            # BossFightLocations check ShuffledBosses (which bosses are in the shuffle pool)
+            # .enabled contains enum members, so we compare against .value
             shuffled_bosses_flag = self.settings.get_flag(ShuffledBosses)
-            if location_type in shuffled_bosses_flag.enabled:
+            return any(m.value == location_type for m in shuffled_bosses_flag.enabled)
+        elif issubclass(location_type, SpellSlotLocation):
+            # SpellSlotLocations are always considered "enabled" here - their actual
+            # shuffle status is controlled by CharacterLearnedSpells/SpellsAnywhere flags
+            return True
+        elif issubclass(location_type, StarPieceLocation):
+            # StarPieceLocations check EnabledBossChecks (star pieces are tied to boss fights)
+            # If a star piece isn't in the enum (no _id), it's always enabled
+            boss_checks_flag = self.settings.get_flag(EnabledBossChecks)
+            all_star_pieces = {m.value for m in EnabledBossChecks._option.__members__.values()}  # type: ignore[union-attr]
+            if location_type not in all_star_pieces:
                 return True
-            return False
+            return any(m.value == location_type for m in boss_checks_flag.enabled)
+        elif issubclass(location_type, CharacterRecruitmentLocation):
+            # CharacterRecruitmentLocations are always considered "enabled" here - their actual
+            # shuffle status is controlled by ShuffleCharacters flag
+            return True
+        elif issubclass(location_type, PacketLocation):
+            # PacketLocations are always considered "enabled" here - their actual
+            # shuffle status is controlled by ShuffleItems flag
+            return True
+        elif issubclass(location_type, InvisibleFlagLocation):
+            # InvisibleFlagLocations are always considered "enabled" here - their actual
+            # shuffle status is controlled by ShuffleItems flag
+            return True
         else:
-            # Check EnabledRegularChecks for non-boss locations
+            # Check EnabledRegularChecks for locations that have _id
+            # If a location isn't in the enum (no _id), it's always enabled
+            # (controlled only by higher-level flags like ShuffleItems)
             regular_checks_flag = self.settings.get_flag(EnabledRegularChecks)
-            return location_type in regular_checks_flag.enabled
+            # Check if this location type is in the enum at all
+            all_regular_locations = {m.value for m in EnabledRegularChecks._option.__members__.values()}  # type: ignore[union-attr]
+            if location_type not in all_regular_locations:
+                # Location has no _id, so it can't be individually disabled - always enabled
+                return True
+            return any(m.value == location_type for m in regular_checks_flag.enabled)
 
     def notify_prize_placed(self, location: PrizeLocation, prize) -> None:
         """Notify that a prize was placed - updates caches.

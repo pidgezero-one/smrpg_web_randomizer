@@ -1499,7 +1499,7 @@ class EnabledRegularChecks(CategorizationFlag[ItemCheckEnum]):
 
 
 # ✅
-class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
+class EnabledBossChecks(CategorizationFlag[StarPieceCheckEnum]):
     _name = "Boss location star pieces"
     _description = """If a check is highlighted (white text over blue), it can randomly contain a star piece.
 <br>
@@ -1507,7 +1507,7 @@ class EnabledBossChecks(CategorizationFlag[BossFightCheckEnum]):
 <br>
 <br>Selecting a remake-specific check will do nothing if the remake flag is not enabled."""
     _id = "bosses"
-    _default = {o: True for o in BossFightCheckEnum.__members__.values()}
+    _default = {o: True for o in StarPieceCheckEnum.__members__.values()}
     _requires_all = [(ShuffleStarPieces(), True)]
 
 

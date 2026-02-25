@@ -2613,6 +2613,10 @@ class SpellSlotLocation(PrizeLocation):
     _level: int
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        # When SpellsAnywhere is enabled, spell slots are only sources (for pulling prizes)
+        # not destinations - spells go into the general pool instead
+        if world.settings.isflag_enabled(SpellsAnywhere):
+            return False
         return isinstance(prize, SpellPrize) and super().can_accept(
             prize, inventory, world
         )
