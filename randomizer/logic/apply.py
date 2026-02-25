@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
 
 from randomizer.data.variables.dialog_names import DI1163_BOOSTER_TOWER_DOOR_OPEN, DI2320_TOADSTOOL_ROOM_HINT, DI2908_TREASURE_SELLER_ITEM_2, DI2911_TREASURE_SELLER_ITEM_1, DI2914_TREASURE_SELLER_ITEM_3
-from randomizer.data.variables.sprite_names import SPR0031_EMPTY, SPR0032_EMPTY, SPR0033_EMPTY, SPR0034_EMPTY, SPR0035_EMPTY, SPR0036_EMPTY, SPR0037_EMPTY, SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO
+from randomizer.data.variables.sprite_names import SPR0031_ALT_PROTAGONIST_1, SPR0032_ALT_PROTAGONIST_2, SPR0033_ALT_PROTAGONIST_3, SPR0034_ALT_PROTAGONIST_4, SPR0035_ALT_PROTAGONIST_5, SPR0036_ALT_PROTAGONIST_6, SPR0037_ALT_PROTAGONIST_7, SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO
 from ..types.prizelocation import (
     BossFightLocation,
     PrizeRow,
@@ -555,13 +555,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = TOADSTOOL_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = TOADSTOOL_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = TOADSTOOL_621
-        world.sprites.sprites[SPR0031_EMPTY] = TOADSTOOL_962
-        world.sprites.sprites[SPR0032_EMPTY] = TOADSTOOL_963
-        world.sprites.sprites[SPR0033_EMPTY] = TOADSTOOL_964
-        world.sprites.sprites[SPR0034_EMPTY] = TOADSTOOL_965
-        world.sprites.sprites[SPR0035_EMPTY] = TOADSTOOL_966
-        world.sprites.sprites[SPR0036_EMPTY] = TOADSTOOL_967
-        world.sprites.sprites[SPR0037_EMPTY] = TOADSTOOL_968
+        world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = TOADSTOOL_962
+        world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = TOADSTOOL_963
+        world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = TOADSTOOL_964
+        world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = TOADSTOOL_965
+        world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = TOADSTOOL_966
+        world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = TOADSTOOL_967
+        world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = TOADSTOOL_968
         world.update_dialog(DI2320_TOADSTOOL_ROOM_HINT, " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
     elif world.overworld_character.ally.index == 2:
         clone_room_npc_0._npc = BOWSER_WALKING_DOWN_LEFT_NPC
@@ -570,13 +570,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = BOWSER_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = BOWSER_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = BOWSER_621
-        world.sprites.sprites[SPR0031_EMPTY] = BOWSER_969
-        world.sprites.sprites[SPR0032_EMPTY] = BOWSER_970
-        world.sprites.sprites[SPR0033_EMPTY] = BOWSER_971
-        world.sprites.sprites[SPR0034_EMPTY] = BOWSER_972
-        world.sprites.sprites[SPR0035_EMPTY] = BOWSER_973
-        world.sprites.sprites[SPR0036_EMPTY] = BOWSER_974
-        world.sprites.sprites[SPR0037_EMPTY] = BOWSER_975
+        world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = BOWSER_969
+        world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = BOWSER_970
+        world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = BOWSER_971
+        world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = BOWSER_972
+        world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = BOWSER_973
+        world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = BOWSER_974
+        world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = BOWSER_975
     elif world.overworld_character.ally.index == 3:
         clone_room_npc_0._npc = GENO_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
@@ -584,13 +584,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = GENO_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = GENO_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = GENO_621
-        world.sprites.sprites[SPR0031_EMPTY] = GENO_983
-        world.sprites.sprites[SPR0032_EMPTY] = GENO_984
-        world.sprites.sprites[SPR0033_EMPTY] = GENO_985
-        world.sprites.sprites[SPR0034_EMPTY] = GENO_986
-        world.sprites.sprites[SPR0035_EMPTY] = GENO_987
-        world.sprites.sprites[SPR0036_EMPTY] = GENO_988
-        world.sprites.sprites[SPR0037_EMPTY] = GENO_989
+        world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = GENO_983
+        world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = GENO_984
+        world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = GENO_985
+        world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = GENO_986
+        world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = GENO_987
+        world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = GENO_988
+        world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = GENO_989
     elif world.overworld_character.ally.index == 4:
         clone_room_npc_0._npc = MALLOW_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = MALLOW_96
@@ -598,13 +598,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = MALLOW_135
         world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = MALLOW_136
         world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = MALLOW_621
-        world.sprites.sprites[SPR0031_EMPTY] = MALLOW_976
-        world.sprites.sprites[SPR0032_EMPTY] = MALLOW_977
-        world.sprites.sprites[SPR0033_EMPTY] = MALLOW_978
-        world.sprites.sprites[SPR0034_EMPTY] = MALLOW_979
-        world.sprites.sprites[SPR0035_EMPTY] = MALLOW_980
-        world.sprites.sprites[SPR0036_EMPTY] = MALLOW_981
-        world.sprites.sprites[SPR0037_EMPTY] = MALLOW_982
+        world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = MALLOW_976
+        world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = MALLOW_977
+        world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = MALLOW_978
+        world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = MALLOW_979
+        world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = MALLOW_980
+        world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = MALLOW_981
+        world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = MALLOW_982
 
 
 

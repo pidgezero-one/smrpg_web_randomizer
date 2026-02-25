@@ -2555,11 +2555,6 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
                 DI2911_TREASURE_SELLER_ITEM_1, self.prize.nickname.get_slot_1_dialog()
             )
         return super().render(world)
-    
-    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        if not isinstance(self.prize, StandardPrize):
-            return False
-        return super().can_accept(prize, inventory, world)
 
     # Flag as checked: TREASURE_SHOP_ITEM_1_PURCHASED
 

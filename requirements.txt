@@ -9,6 +9,6 @@ scipy
 Wii.py==0.1
 pycryptodome==3.21.0
 smrpgpatchbuilder==1.5.9
-git+https://gitlab.com/pidgezero_one/python-bps.git@0.1#egg=python-bps
+python-bps @ https://gitlab.com/pidgezero_one/python-bps/-/archive/0.1/python-bps-0.1.tar.gz
 gunicorn==23.0.0
 psycopg2-binary==2.9.10

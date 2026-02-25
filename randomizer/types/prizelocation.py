@@ -2889,7 +2889,9 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
 
 class TreasureShopLocation(PrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        return hasattr(prize, "_nickname")
+        if not hasattr(prize, "_nickname"):
+            return False
+        return super().can_accept(prize, inventory, world)
 
 
 class KeyItemLocation(PrizeLocation):

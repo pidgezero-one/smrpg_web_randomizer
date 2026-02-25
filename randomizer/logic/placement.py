@@ -43,6 +43,42 @@ def collect_accessible_items(world: GameWorld) -> Inventory:
 
 
 
+def _diagnose_placement_failure(
+    world: "GameWorld",
+    pending: list["Prize"],
+    candidate_locations: list["PrizeLocation"],
+) -> None:
+    """Print diagnostic info when placement gets stuck."""
+    player_has = collect_accessible_items(world)
+
+    # Show what's already placed
+    placed: list[str] = []
+    for loc in candidate_locations:
+        if loc.has_item:
+            placed.append(f"  {type(loc).__name__}: {type(loc.prize).__name__}")
+    print(f"\n[DEBUG] === PLACEMENT FAILURE ===")
+    print(f"[DEBUG] Already placed ({len(placed)} items):")
+    for line in placed:
+        print(f"[DEBUG] {line}")
+
+    # Show why each pending item is stuck
+    empty_candidates = [l for l in candidate_locations if not l.has_item]
+    accessible_empty = [l for l in empty_candidates if l.can_access(player_has, world)]
+    print(f"[DEBUG] Empty candidate locations: {len(empty_candidates)}, accessible: {len(accessible_empty)}")
+    print(f"[DEBUG] Unplaceable items ({len(pending)}):")
+    for item in pending:
+        accepting = [l for l in accessible_empty if l.can_accept(item, player_has, world)]
+        if accepting:
+            print(f"[DEBUG]   {type(item).__name__}: {len(accepting)} locations could accept (bug?)")
+        else:
+            inaccessible_accepting = [
+                l for l in empty_candidates
+                if not l.can_access(player_has, world) and l.can_accept(item, Inventory(), world)
+            ]
+            print(f"[DEBUG]   {type(item).__name__}: 0 accessible accepting locations"
+                  f" ({len(inaccessible_accepting)} inaccessible could accept)")
+
+
 def place(
     world: GameWorld,
     to_place: list[Prize],
@@ -151,6 +187,7 @@ def place(
             break
         if len(pending) == length_at_start:
             if not can_overflow:
+                _diagnose_placement_failure(world, pending, candidate_locations)
                 raise PlacementException(len(pending), [type(p).__name__ for p in pending])
             else:
                 break

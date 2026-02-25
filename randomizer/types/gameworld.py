@@ -979,7 +979,7 @@ class GameWorld:
                 count = e.unplaced_count
                 failure_counts[count] = failure_counts.get(count, 0) + 1
 
-                # Check if all failure counts have reached the threshold
+                # Check if any failure count has reached the threshold
                 if failure_counts and all(
                     v >= MAX_FAILURES_PER_COUNT for v in failure_counts.values()
                 ):
@@ -1685,20 +1685,13 @@ class GameWorld:
 
         starter = cast(CharacterPrize, self.get_location(StartingCharacter1).prize).ally
         i = starter.index
-        file_select_char_bytes = [
-            SPR0000_MARIO_WALKING_DOWN_LEFT,
-            SPR0031_EMPTY,
-            SPR0031_EMPTY,
-            SPR0031_EMPTY,
-            SPR0031_EMPTY,
-        ]
         self.file_select_character = starter.name
 
         # Change file select character graphic, if not Mario.
         if i != 0:
             addresses = [0x34757, 0x3489A, 0x34EE7, 0x340AA, 0x3501E]
-            for addr in addresses:
-                patch.add_data(addr, file_select_char_bytes[i])
+            for addr, value in zip(addresses, [1, 2, 1, 0, 2]):
+                patch.add_data(addr, SPR0031_ALT_PROTAGONIST_1 + value)
 
         for i, name in enumerate(self.file_select_names):
             addr = 0x3EF528 + (i * 7)

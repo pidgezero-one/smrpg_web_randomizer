@@ -34,7 +34,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 from ...types.gameworld import CookiesPrize, MarioDollPrize
 from ...data.rooms.npcs import EMPTY_NPC
 
-from ..placement import PlacementException, place, diagnose_empty_locations
+from ..placement import PlacementException, place, diagnose_empty_locations, collect_accessible_items
 from ...types.prize import (
     CharacterPrize,
     CoinQuantityPrize,
@@ -393,10 +393,9 @@ ally_name_to_prize: dict[str, type[CharacterPrize]] = {
 PROGRESSION_PRIZES = 0
 RESTRICTED_PRIZES = 1
 MANDATORY_INCLUSIONS = 2
-OPTIONAL_SPELLS = 3
-LOW_PRIORITY = 4
+LOW_PRIORITY = 3
 
-TIERS_CAN_OVERFLOW = [OPTIONAL_SPELLS, LOW_PRIORITY]
+TIERS_CAN_OVERFLOW = [LOW_PRIORITY]
 
 def select_spells(world: GameWorld) -> list[type[Prize]]:
     # All 27 spell prize classes
@@ -486,7 +485,7 @@ def select_spells(world: GameWorld) -> list[type[Prize]]:
     remaining_spells = [a for a in available_spells if a not in selected_spells]
     # Select random spells up to target count (or all available if fewer)
     random.shuffle(remaining_spells)
-    selected_spells.extend(remaining_spells[:target_spell_count - len(selected_spells)])
+    selected_spells.extend(remaining_spells[:target_spell_count])
     return selected_spells
 
 
@@ -584,13 +583,15 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     if len(non_elemental_spell_prizes) == 0:
         raise ValueError("No non-elemental spells are available to assign to progress rules. At least one non-elemental spell must be included in the seed for progression purposes.")
 
-    # Choose one random non-elemental spell for progress_rules (if any available)
-    chosen_nonelemental = random.choice(non_elemental_spell_prizes)
+    # Place up to 3 non-elemental spells in progression tier to ensure
+    # MokuraBossFight (and similar) can be placed (they require a non-elemental
+    # spell to be accessible). Use fewer if not enough are available.
+    random.shuffle(non_elemental_spell_prizes)
+    progression_nonelementals = non_elemental_spell_prizes[:min(3, len(non_elemental_spell_prizes))]
 
-    # Remaining selected spells go to mandatory inclusions tier
-    spells_for_inclusion = selected_spells
+    # Assign selected spells to tiers
     for spell in selected_spells:
-        if issubclass(spell, (SuperJumpSpellPrize, chosen_nonelemental)):
+        if spell in progression_nonelementals or issubclass(spell, SuperJumpSpellPrize):
             progress_rules.append(spell)
         else:
             should_otherwise_include_rules.append(spell)
@@ -780,13 +781,11 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
             should_otherwise_include_rules.append(stars[i])
 
     # Add spells to mandatory inclusions tier with characters
-    mandatory_with_spells = copy(should_otherwise_include_rules) + spells_for_inclusion
 
     return {
         PROGRESSION_PRIZES: copy(progress_rules),
         RESTRICTED_PRIZES: copy(post_progression_rules),
-        MANDATORY_INCLUSIONS: mandatory_with_spells,
-        OPTIONAL_SPELLS: [],  # Spells now go in MANDATORY_INCLUSIONS
+        MANDATORY_INCLUSIONS: should_otherwise_include_rules,
         LOW_PRIORITY: [FrogCoin1Prize, RecoveryMushroomPrize, FPFlowerPrize, CoinPrize],
     }
 
@@ -879,6 +878,9 @@ def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
     # empty locations don't return anything
     if location.originally_held is None:
         return None
+    # special case
+    if issubclass(location.originally_held, SpellPrize):
+        return None
     # always return the original prize if shuffling disabled so that it can receive its original prize during placement
     # this should happen regardless of item shuffler pool settings
     if not should_shuffle(location, world):
@@ -898,9 +900,6 @@ def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
     if issubclass(
         location.originally_held, StarEggPrize
     ) and world.settings.isflag_enabled(NoStarEgg):
-        return None
-    # Exclude spells that are disabled in AvailableSpells
-    if issubclass(location.originally_held, SpellPrize):
         return None
     if issubclass(location.originally_held, (CharacterPrize, StarPiecePrize)):
         for tier in inclusions.values():
@@ -996,7 +995,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         PROGRESSION_PRIZES: [],
         RESTRICTED_PRIZES: [],
         MANDATORY_INCLUSIONS: [],
-        OPTIONAL_SPELLS: [],
         LOW_PRIORITY: [],
     }
     # Always have 3 progressive eggs if item shuffle is enabled
@@ -1024,42 +1022,49 @@ def shuffle_prizes(world: GameWorld) -> None:
     # Empty every location and build the prize pool
     all_locations = list(world.locations.values())
 
-    pulled_prizes = 0
-    tiered_prizes = 0
+    pre_seeded = sum(len(p) for p in pool.values())
 
-    # spells are a specil case
+    # Spells are a special case - added from rules, not pulled from locations
+    spell_count = 0
     for tier, classes in rules.items():
         for cls in classes:
             if issubclass(cls, SpellPrize):
                 pool[tier].append(cls())
+                spell_count += 1
 
+    pulled_count = 0
     for loc in all_locations:
         loc.set_prize(None)
         pool_item = pull_prize(loc, world)
 
         if pool_item is None:
             continue
-        pulled_prizes += 1
+        pulled_count += 1
 
         included = False
         for tier, classes in rules.items():
             if any(isinstance(pool_item, cls) for cls in classes):
                 pool[tier].append(pool_item)
-                tiered_prizes += 1
                 included = True
                 break
-        if included:
-            continue
+        if not included:
+            if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
+                pool[MANDATORY_INCLUSIONS].append(pool_item)
+            else:
+                pool[LOW_PRIORITY].append(pool_item)
 
-        if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.ORIGINAL_POOL):
-            pool[MANDATORY_INCLUSIONS].append(pool_item)
-            tiered_prizes += 1
-        else:
-            pool[LOW_PRIORITY].append(pool_item)
-            tiered_prizes += 1
-    print(pulled_prizes)
-    print(tiered_prizes)
-
+    pool_total = sum(len(p) for p in pool.values())
+    print(f"[DEBUG] Pool sources: pre-seeded={pre_seeded}, spells={spell_count}, "
+          f"pulled={pulled_count}, total={pool_total} "
+          f"(expected {pre_seeded + spell_count + pulled_count})")
+    if pool_total != pre_seeded + spell_count + pulled_count:
+        # Dump full pool contents to find the extras
+        pool_contents: dict[str, int] = {}
+        for tier_prizes in pool.values():
+            for p in tier_prizes:
+                name = type(p).__name__
+                pool_contents[name] = pool_contents.get(name, 0) + 1
+        print(f"[DEBUG] Full pool contents: {dict(sorted(pool_contents.items()))}")
     # remove slot machine npcs from their original rooms
     room_334 = world.rooms._rooms[334]
     assert room_334 is not None, "Room 334 not found"
@@ -1178,7 +1183,7 @@ def shuffle_prizes(world: GameWorld) -> None:
         random.shuffle(prizes)
 
     # Add some "noise" to the top tier to prevent progression items from ending up in too many same-y formations
-    non_progression_size = len(pool[RESTRICTED_PRIZES]) + len(pool[MANDATORY_INCLUSIONS]) + len(pool[OPTIONAL_SPELLS]) + len(pool[LOW_PRIORITY])
+    non_progression_size = len(pool[RESTRICTED_PRIZES]) + len(pool[MANDATORY_INCLUSIONS]) + len(pool[LOW_PRIORITY])
     progression_size = len(pool[PROGRESSION_PRIZES])
     if non_progression_size > 0:
         addition_size = progression_size * 0.2
@@ -1196,6 +1201,25 @@ def shuffle_prizes(world: GameWorld) -> None:
     for prizes in pool.values():
         random.shuffle(prizes)
 
+    # Snapshot pool before placement for post-placement diff
+    pool_snapshot: dict[str, int] = {}
+    for tier_prizes in pool.values():
+        for p in tier_prizes:
+            name = type(p).__name__
+            pool_snapshot[name] = pool_snapshot.get(name, 0) + 1
+    # Also count items placed during static fills (debug/unshuffled)
+    static_placed: dict[str, int] = {}
+    for loc in world.locations.values():
+        if loc.has_item:
+            name = type(loc.prize).__name__
+            static_placed[name] = static_placed.get(name, 0) + 1
+    pool_plus_static: dict[str, int] = dict(pool_snapshot)
+    for name, count in static_placed.items():
+        pool_plus_static[name] = pool_plus_static.get(name, 0) + count
+    total_before = sum(pool_snapshot.values()) + sum(static_placed.values())
+    print(f"[DEBUG] Pool before placement: {sum(pool_snapshot.values())} items, "
+          f"static fills: {sum(static_placed.values())} items, total: {total_before}")
+
     # Only place items in locations that should be shuffled
     shuffle_filter = lambda loc: should_shuffle(loc, world)
 
@@ -1205,6 +1229,21 @@ def shuffle_prizes(world: GameWorld) -> None:
         on_placed=lambda i, l: _on_item_placed(world, i, l),
         location_filter=shuffle_filter,
     )
+
+    # Debug: check which locations are still inaccessible after progression placement
+    player_has = collect_accessible_items(world)
+    inaccessible = [
+        loc for loc in world.locations.values()
+        if should_shuffle(loc, world) and not loc.can_access(player_has, world)
+    ]
+    non_spell_inaccessible = [l for l in inaccessible if not isinstance(l, SpellSlotLocation)]
+    if non_spell_inaccessible:
+        print(f"[DEBUG] After progression placement: {len(non_spell_inaccessible)} non-SpellSlot locations still inaccessible:")
+        for loc in non_spell_inaccessible:
+            print(f"[DEBUG]   {type(loc).__name__}")
+    else:
+        print(f"[DEBUG] After progression placement: {len(inaccessible)} inaccessible locations, all SpellSlotLocations")
+
     place(
         world,
         pool[RESTRICTED_PRIZES],
@@ -1220,18 +1259,34 @@ def shuffle_prizes(world: GameWorld) -> None:
     )
     place(
         world,
-        pool[OPTIONAL_SPELLS],
-        can_overflow=True,
-        on_placed=lambda i, l: _on_item_placed(world, i, l),
-        location_filter=shuffle_filter,
-    )
-    place(
-        world,
         pool[LOW_PRIORITY],
         can_overflow=True,
         on_placed=lambda i, l: _on_item_placed(world, i, l),
         location_filter=shuffle_filter,
     )
+
+    # Post-placement diff: collect all items from every location and compare to pool snapshot
+    placed_items: dict[str, int] = {}
+    for loc in world.locations.values():
+        if loc.has_item:
+            name = type(loc.prize).__name__
+            placed_items[name] = placed_items.get(name, 0) + 1
+    total_after = sum(placed_items.values())
+    print(f"[DEBUG] Items in locations after placement: {total_after}")
+
+    all_keys = sorted(set(pool_plus_static.keys()) | set(placed_items.keys()))
+    diffs: list[str] = []
+    for key in all_keys:
+        before = pool_plus_static.get(key, 0)
+        after = placed_items.get(key, 0)
+        if before != after:
+            diffs.append(f"  {key}: pool+static={before}, placed={after} (diff={after - before:+d})")
+    if diffs:
+        print(f"[DEBUG] POOL vs PLACED DIFF ({len(diffs)} mismatches):")
+        for d in diffs:
+            print(f"[DEBUG] {d}")
+    else:
+        print(f"[DEBUG] Pool and placed items match perfectly.")
 
     if world.settings.debug_mode:
         diagnose_empty_locations(world)
