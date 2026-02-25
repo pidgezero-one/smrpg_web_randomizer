@@ -26,6 +26,7 @@ from randomizer.data.variables.sprite_palette_names import (
     SPAL508_MARIO_S_BATTLE_PORTRAIT,
     SPAL510_MARIO_PSN_3,
     SPAL529_MINECART_RIDER,
+    SPAL605_MARIO_DOLL,
     SPAL607_MARIO_PSN_4,
     SPAL628_MARIO_WALKING_DOWN_LEFT,
     SPAL630_MARIO_PSN_1,
@@ -160,6 +161,9 @@ class MarioPalette(Palette):
             )
             world.sprite_palettes.get_palette(
                 SPAL508_MARIO_S_BATTLE_PORTRAIT
+            ).set_colors(self.colours)
+            world.sprite_palettes.get_palette(
+                SPAL605_MARIO_DOLL
             ).set_colors(self.colours)
             world.sprite_palettes.get_palette(EPAL0084_MARIO_ENDING).set_colors(
                 self.colours

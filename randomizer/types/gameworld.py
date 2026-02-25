@@ -90,11 +90,11 @@ SpellT = TypeVar("SpellT", bound=Spell)
 from .prizelocation import (
     CharacterRecruitmentLocation,
     InvisibleFlagLocation,
-    PacketLocation,
     PrizeLocation,
     SpellSlotLocation,
     StarPieceLocation,
 )
+# ThreeMustyFears proxy classes come from prizelocations via the wildcard import below
 from .room import Room
 from ..progression.prizelocations import *
 from ..data.variables.dialog_names import *
@@ -385,8 +385,6 @@ class GameWorld:
         - StarPieceLocation subclasses check EnabledBossChecks
         - SpellSlotLocation subclasses are always enabled (controlled by CharacterLearnedSpells/SpellsAnywhere)
         - CharacterRecruitmentLocation subclasses are always enabled (controlled by ShuffleCharacters)
-        - PacketLocation subclasses are always enabled (controlled by ShuffleItems)
-        - InvisibleFlagLocation subclasses are always enabled (controlled by ShuffleItems)
         - Other PrizeLocation subclasses check EnabledRegularChecks
         """
         if issubclass(location_type, BossFightLocation):
@@ -400,34 +398,35 @@ class GameWorld:
             return True
         elif issubclass(location_type, StarPieceLocation):
             # StarPieceLocations check EnabledBossChecks (star pieces are tied to boss fights)
-            # If a star piece isn't in the enum (no _id), it's always enabled
             boss_checks_flag = self.settings.get_flag(EnabledBossChecks)
-            all_star_pieces = {m.value for m in EnabledBossChecks._option.__members__.values()}  # type: ignore[union-attr]
-            if location_type not in all_star_pieces:
-                return True
             return any(m.value == location_type for m in boss_checks_flag.enabled)
         elif issubclass(location_type, CharacterRecruitmentLocation):
             # CharacterRecruitmentLocations are always considered "enabled" here - their actual
             # shuffle status is controlled by ShuffleCharacters flag
             return True
-        elif issubclass(location_type, PacketLocation):
-            # PacketLocations are always considered "enabled" here - their actual
-            # shuffle status is controlled by ShuffleItems flag
-            return True
         elif issubclass(location_type, InvisibleFlagLocation):
-            # InvisibleFlagLocations are always considered "enabled" here - their actual
-            # shuffle status is controlled by ShuffleItems flag
-            return True
-        else:
-            # Check EnabledRegularChecks for locations that have _id
-            # If a location isn't in the enum (no _id), it's always enabled
-            # (controlled only by higher-level flags like ShuffleItems)
+            # InvisibleFlagLocations are randomly assigned to one of 3 slots at runtime.
+            # Look up this class in the world's invisible item locations to find its _which value,
+            # then check if the corresponding proxy is enabled.
+            if self._invisible_item_locations is None:
+                return False
+            location_instance = self._invisible_item_locations.get(location_type)
+            if location_instance is None:
+                return False
+            which = location_instance._which
+            proxy_classes = {
+                0: ThreeMustyFearsBonesProxy,
+                1: ThreeMustyFearsGreaperProxy,
+                2: ThreeMustyFearsBooProxy,
+            }
+            proxy_class = proxy_classes.get(which)
+            if proxy_class is None:
+                return False
             regular_checks_flag = self.settings.get_flag(EnabledRegularChecks)
-            # Check if this location type is in the enum at all
-            all_regular_locations = {m.value for m in EnabledRegularChecks._option.__members__.values()}  # type: ignore[union-attr]
-            if location_type not in all_regular_locations:
-                # Location has no _id, so it can't be individually disabled - always enabled
-                return True
+            return any(m.value == proxy_class for m in regular_checks_flag.enabled)
+        else:
+            # Check EnabledRegularChecks for non-boss locations
+            regular_checks_flag = self.settings.get_flag(EnabledRegularChecks)
             return any(m.value == location_type for m in regular_checks_flag.enabled)
 
     def notify_prize_placed(self, location: PrizeLocation, prize) -> None:
@@ -974,6 +973,7 @@ class GameWorld:
             except PlacementException as e:
                 # Restore rooms to pre-shuffle state before retrying
                 self.rooms = deepcopy(rooms_snapshot)
+                print(f"[DEBUG] Placement failed with {e.unplaced_count} unplaced items, retrying...")
 
                 # Track this failure count
                 count = e.unplaced_count
@@ -1697,8 +1697,8 @@ class GameWorld:
         # Change file select character graphic, if not Mario.
         if i != 0:
             addresses = [0x34757, 0x3489A, 0x34EE7, 0x340AA, 0x3501E]
-            for addr, value in zip(addresses, [0, 1, 0, 0, 1]):
-                patch.add_data(addr, file_select_char_bytes[i] + value)
+            for addr in addresses:
+                patch.add_data(addr, file_select_char_bytes[i])
 
         for i, name in enumerate(self.file_select_names):
             addr = 0x3EF528 + (i * 7)

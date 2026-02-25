@@ -925,12 +925,12 @@ class ArchipelagoPrize(StandardPrize):
     )
 
 
-class CoinPrize(Prize):
+class CoinPrize(StandardPrize):
     _model = BigCoinObject
     _amount: int
     _nickname = TreasureHunterNickname(
         nickname="Gold Coin",
-        description=" They're nothing special, but a guy's\n gotta eat.",
+        description=" It's nothing special, but a guy's\n gotta eat.",
     )
 
     @property

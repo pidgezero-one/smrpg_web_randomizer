@@ -693,6 +693,7 @@ class ShuffleLocationSelector(CategorizationOption):
     LANDS_END_CHOW_PIT_2 = "Land's End chow pit right chest"
     LNDS_END_BEE_ROOM = "Land's End bee room chest"
     REMAKE_3 = "Land's End bridge room freestanding item (remake)"
+    LANDS_END_CAVE_SIDE_REMAKE = "Land's End sky bridge freestanding item (remake)"
     LANDS_END_SECRET_1 = "Land's End grotto first chest"
     LANDS_END_SECRET_2 = "Land's End grotto corner chest"
     LANDS_END_SHY_AWAY = "Land's End grotto near sewer chest"
@@ -850,6 +851,7 @@ class ShuffleLocationSelector(CategorizationOption):
     NIMBUS_CASTLE_STAR_PIECE_3 = "Nimbus Land final boss Star Piece"
     NIMBUS_CASTLE_STAR_CHEST = "Nimbus Castle post-throne chest (occupied)"
     NIMBUS_CASTLE_STAR_AFTER_VALENTINA = "Nimbus Castle post-throne chest (unoccupied)"
+    NIMBUS_CASTLE_BUSINESS_CENTRE = "Nimbus Castle business centre chest (occupied)"
     NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA = (
         "Nimbus Castle (unoccupied) 5-door room chest"
     )
@@ -993,6 +995,10 @@ class ShuffleLocationSelector(CategorizationOption):
     INNER_FACTORY_BOSS_FIGHT_3 = "Inner Factory third boss fight"
     INNER_FACTORY_BOSS_FIGHT_4 = "Inner Factory fourth boss fight"
     INNER_FACTORY_BOSS_FIGHT_FINAL = "Factory final boss fight"
+    # Three Musty Fears proxy entries (represent the 3 randomly-selected invisible flag locations)
+    THREE_MUSTY_FEARS_BONES = "Dry Bones' invisible item (Three Musty Fears)"
+    THREE_MUSTY_FEARS_GREAPER = "Greaper's invisible item (Three Musty Fears)"
+    THREE_MUSTY_FEARS_BOO = "Big Boo's invisible item (Three Musty Fears)"
 
 
 class WorldAreaEnum(StrEnum):

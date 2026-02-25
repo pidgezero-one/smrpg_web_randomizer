@@ -48,7 +48,7 @@ script = EventScript([
 		A_JumpToHeight(112),
 		A_Pause(60),
 		A_SetSequenceSpeed(NORMAL),
-	], identifier="EVENT_1368_action_queue_54"),
+	]),
 	ActionQueueSync(target=NPC_5, subscript=[
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_Pause(8),

@@ -22,6 +22,7 @@ from ..types.prizelocation import (
     AllyNPCSub,
     BossFightLocationHenchmanNPC,
     BossFightLocationNPC,
+    PrizeLocation,
     RemoveIfNotFilled,
     StandingLocation,
     TreasureChestLocationRow1,
@@ -2554,6 +2555,11 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
                 DI2911_TREASURE_SELLER_ITEM_1, self.prize.nickname.get_slot_1_dialog()
             )
         return super().render(world)
+    
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        if not isinstance(self.prize, StandardPrize):
+            return False
+        return super().can_accept(prize, inventory, world)
 
     # Flag as checked: TREASURE_SHOP_ITEM_1_PURCHASED
 
@@ -3714,7 +3720,7 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     _bias = True
     _originally_held = AmuletPrize
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
-    _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
+    _id = ShuffleLocationSelector.BOOSTER_TOWER_CURTAIN_GAME
     _world_area = WorldAreaEnum.BOOSTER_TOWER
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5087,6 +5093,7 @@ class ShipRatStairsBoxesLocation(PacketLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.CHEST
     _packet_id = P037_SHIP_STAIRCASE
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS_FLOWER
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5102,6 +5109,7 @@ class ShipTroopaPuzzleLocation(PacketLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
     _packet_id = P027_SUNKEN_SHIP_TROOPA_PUZZLE
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_TROOPA_PUZZLE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5117,6 +5125,7 @@ class ShipTrampolinePuzzle(PacketLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
     _packet_id = P026_SUNKEN_SHIP_TRAMPOLINE_PUZZLE
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_TRAMPOLINE_PUZZLE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5132,6 +5141,7 @@ class Ship3DMazePuzzle(PacketLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
     _packet_id = P029_SUNKEN_SHIP_3D_MAZE
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_3D_MAZE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5212,6 +5222,7 @@ class ShipCannonballPuzzle(PacketLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
     _packet_id = P035_SUNKEN_SHIP_CANNONBALL_PUZZLE
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_CANNONBALL_PUZZLE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5227,6 +5238,7 @@ class ShipBarrelPuzzle(PacketLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _packet_type = PacketType.FALLING
     _packet_id = P036_BARREL_PUZZLE_PRIZE
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_BARREL_PUZZLE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5308,7 +5320,7 @@ class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
     _originally_held = Coins100Prize
     _rooms = [R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM]
     _npc_ids = [NPC_1]
-    _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_1
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [ThirdMimicFightLauncher]
 
@@ -5821,6 +5833,7 @@ class LandsEndCaveSideRemake(StandingLocationRow1):
     _world_area = WorldAreaEnum.LANDS_END
     _npc_ids = [NPC_19]
     _remake_only = True
+    _id = ShuffleLocationSelector.LANDS_END_CAVE_SIDE_REMAKE
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and world.settings.is_flag_value(
@@ -6106,7 +6119,7 @@ class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
     _originally_held = FrogCoin1Prize
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_3]
-    _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
+    _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_4
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
 
@@ -7690,7 +7703,7 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
     _originally_held = FPFlowerPrize
     _rooms = [R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA]
     _npc_ids = [NPC_0]
-    _id = ShuffleLocationSelector.NIMBUS_LAND_INN_2
+    _id = ShuffleLocationSelector.NIMBUS_CASTLE_BUSINESS_CENTRE
     _world_area = WorldAreaEnum.NIMBUS_LAND
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11758,6 +11771,26 @@ class FactoryButtonFlag(InvisibleFlagLocation):
             and can_access_factory(world, inventory)
             and not_earlygame(world, inventory)
         )
+
+
+########## Three Musty Fears Proxy Classes
+# These proxy classes represent the 3 Three Musty Fears slots in the UI
+# rather than exposing all individual InvisibleFlagLocation subclasses
+
+
+class ThreeMustyFearsBonesProxy(PrizeLocation):
+    """Proxy class for Dry Bones' invisible item slot in Three Musty Fears."""
+    _id = ShuffleLocationSelector.THREE_MUSTY_FEARS_BONES
+
+
+class ThreeMustyFearsGreaperProxy(PrizeLocation):
+    """Proxy class for Greaper's invisible item slot in Three Musty Fears."""
+    _id = ShuffleLocationSelector.THREE_MUSTY_FEARS_GREAPER
+
+
+class ThreeMustyFearsBooProxy(PrizeLocation):
+    """Proxy class for Big Boo's invisible item slot in Three Musty Fears."""
+    _id = ShuffleLocationSelector.THREE_MUSTY_FEARS_BOO
 
 
 ########## Mixins
