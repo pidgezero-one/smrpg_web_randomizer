@@ -65,13 +65,13 @@ Geno Nonprotagonist 3
 Geno Nonprotagonist 4
 Geno Nonprotagonist 5
 Geno Nonprotagonist 6
-Empty
-Empty
-Empty
-Empty
-Empty
-Empty
-Empty
+Alt Protagonist 1
+Alt Protagonist 2
+Alt Protagonist 3
+Alt Protagonist 4
+Alt Protagonist 5
+Alt Protagonist 6
+Alt Protagonist 7
 Red Mushroom
 Red Scarecrow
 Mario S Battle Portrait
@@ -267,12 +267,12 @@ Level Up Bonus Flower
 Level Up Bonus Pow Power
 Level Up Bonus Star Magic
 Level Up Bonus Hp
-Green Bomb
-Yellow Bomb
-Blue Bomb
-Green Juice
+Mario Doll
+Static Frog Coin
+Static Coin
+Coin Static Small
 Egg
-Red Juice
+Static Frog Coin Small
 Blue R Drink
 Yellow D Drink
 Green P Drink
@@ -634,7 +634,7 @@ Boomer Small
 Exor Small
 Domino Small
 Smithy Small
-Mario Doll Unaffected By Main Character Palette
+Empty
 Hammer Standalone
 Gold Goomba
 Fire Crystal
@@ -782,7 +782,7 @@ Earth Crystal 3D
 Wind Crystal 3D
 Water Crystal 3D
 Static Frog Coin
-Empty
+Green Bomb
 Empty
 Empty
 Empty
@@ -856,10 +856,10 @@ Blue Candy
 Red Bomb
 Magikoopa S Triangle Circle X Cast Magic
 Parasol Packet
-Empty
-Empty
-Empty
-Empty
+Yellow Bomb
+Blue Bomb
+Green Juice
+Red Juice
 Flower Bonus
 Empty
 Empty
@@ -1278,7 +1278,7 @@ Get Flower From Npc
 Hill Fireworks
 Hill Beetlemania
 Hill Grant Logic
-Empty
+Hill Get Coins
 Empty
 Empty
 Empty
@@ -1522,7 +1522,7 @@ Cookie Storage Yoshi
 Yoshi On Track
 Yoshi Mom
 Free Cookie Yoshi
-Empty
+Yoshi Race Cookie Granter Subroutine
 Mushroom Derby Business Logic
 Mushroom Derby Business Logic Extension
 Pipe Vault Platforming Room Loader
@@ -1986,7 +1986,7 @@ Chest Spell 24
 Chest Spell 25
 Chest Spell 26
 Chest Spell 27
-Unused
+Mario Doll Packet
 Unused
 Yoshi Cookie Storage Business Logic
 Initatie Yoshi Race For Gambling
@@ -2414,8 +2414,8 @@ Empty
 Tower Checkerboard Room Locked Door
 Empty
 Empty
-Empty
-Empty
+Clear Doll Positioner
+Use Mario Doll
 Curtain Game Begins Npcs Walk Into Room
 Curtain Game Room Loader
 Curtain 1
@@ -2606,7 +2606,7 @@ Sand Whirlpool
 Sand Whirlpool
 Lands End First Two Chests
 Lands End Third Chest
-Empty
+Bandits Way 4 Chest Selector
 Sky Bridge Donut Lift
 Clear Bucket Warp Bit
 Bank 1F Return Event
@@ -2834,7 +2834,7 @@ Lands End Bullet Bill
 Lands End Bullet Bill Background
 Empty
 Sky Troopa Platform
-E1776
+Empty
 Lands End Cliff Loader
 Temple Generic Pipe Room Loader
 Lands End Underground 1 Loader
@@ -5401,7 +5401,7 @@ Empty
 Empty
 Nimbus 5 Exit Hallway Fake Bird Statues Activate
 Ending Cutscene Effect
-Empty
+Ending Sparkles
 Ending Cutscene Effect
 Water Blast Sfx
 Drill Bit
@@ -6171,8 +6171,8 @@ Keep Dark Room Kamikaze Goomba
 Keep Dark Room Troopa
 End Credits Frogfucius Raises
 Freestanding Flower Picked Up
-Empty
-Empty
+Mimic 1 Poof When Defeated
+Mimic 2 Poof When Defeated
 Empty
 Empty
 Empty
@@ -6182,7 +6182,7 @@ Erupted Magmites</ActionLabels>
 Flashing Poof Mushroom
 Flower Pack Chest Item
 Brief Star
-Mimic Poof On Defeat
+Mimic 3 Poof On Defeat
 Brief Poof Bag
 Feather Chest
 Star Piece Chest
@@ -6281,9 +6281,9 @@ Bag Static
 Booster Hill Prize 11
 Flower Collection
 Small Frog Coin Still
-Unused
-Unused
-Unused
+Mimic 1 Poof On Defeat
+Mimic 2 Poof On Defeat
+Mario Doll
 Unused
 Unused
 Unused

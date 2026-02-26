@@ -864,7 +864,7 @@ class BossFightPrize(Prize):
 
     def name(self, remake: bool = False, canon: bool = False) -> str:
         if canon:
-            return self._canon_name or self._remake_name or self._name or self._text
+            return self._canon_name or (self._remake_name if remake else None) or self._name or self._text
         if remake:
             return self._remake_name or self._name or self._text
         return self._name or self._text

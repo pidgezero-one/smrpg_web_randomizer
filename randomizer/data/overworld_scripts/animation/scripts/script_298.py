@@ -21,7 +21,6 @@ script = ActionScript([
 	A_SetBit(MIDAS_BOTTOM_LEFT_TUNNEL_ITEM),
 	A_SetVRAMPriority(PRIORITY_3),
 	A_SetPriority(3),
-	A_SetSpriteSequence(index=2, looping=False),
 	A_SetSequenceSpeed(NORMAL),
 	A_SetWalkingSpeed(VERY_FAST),
 	A_AddZCoord1Step(),

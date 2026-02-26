@@ -2,23 +2,27 @@
   "version": "9.0.0",
   "flags": "P(rchars)     Q(perms:vanilla_accessories_all|props:random|hints)     C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(bw:open|ks:rfc|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(enemystats:full_random|drops|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko)",
   
+setting option:
+- skip lands end ants
 
 General
 🚧 dying to failed slots does not game over
-🚧 randomized element palettes sometimes not being applied
 - geno blast animation is incorrect (extra sprite at the end)
-🚧 cymbals (music note) packet shows up as a flower
 🚧 gold paint in chest rendered as a blue drink
 🚧 bowser's runaway sprite is wrong
-🚧 bowser extremely bugged fighting aeros, does not return to his spot when finishes attacking, randomly ended the fight
-  - run away also seems to happen after marios attacks
-  - this might be enemy dependent. pulsars in bowsers keep did it
 🚧 "Got the Brooch" chest dialog doesn't go away
 - cymbals not making a sound?
 🚧 physical immunity not doing anything? transforming formless, killing dry bones
+- mimic event starts too fast
+   - pretty consistent with original game...
+- beetlemania packet still not showing in chests
+- xtrashinystone name is too long. X.ShinyStone?
 
 Boss-specific
+- culex 3D sprite is broken. HUD disappears in phase 2
+  🚧 and loading only wind crystal sprites (enemies are correct)
 - torte henchman is untargetable in battle
+- bundt fight crashes!
 🚧 kggg trying to run battle dialogs
 🚧 fancy bundt animations are wrong, cross ref against demake
   🚧 opening event is fine. it's when it takes its first turn that things mess up (moves forward and separates)
@@ -26,7 +30,8 @@ Boss-specific
   🚧 candles are not lighting up
   🚧 movement might be related to monster behaviours. ie raspberry shuold not move forward when attacking but it does
 🚧 jinx 4 too - am i increasing the counter?
-🚧 booster 2 "I'm gonna start working" after KOed
+- booster 2 "I'm gonna start working" after KOed
+  - I'm removing the wrong target. it removed snifit 3
 🚧 boomer should always be on chandelier
 🚧 cloaker/domino running empoty dialogs
 🚧 why did mokura transform from physical attack
@@ -36,60 +41,65 @@ Boss-specific
 🚧 valentina uses empty dialogs
 🚧 dodo's sequence before he takes valentina away is really messed up
 - fire bomb stopped smilaxes from floating? not super important
+- director poundettes are just the wrong sprite altogether
+- bowser clone disappears after doing claw attack, loading a bad peach sprite (IDs probably wrong)
+- belome 2 shows empty dialog
+  - game straight up crashes when belome 2 finishes with 2 bowser clones on field
+- axem rangers ship targetable right away
+- axem rangers in slot machine does not use their forced background, using level background instead (at least level background works)
+- axem pink is attacking allies with spells that replaced recover, should not do that
+- defeating axem red makes him move behind axem yellow and you start being able to target "bob-omb s". very wrong
+  - attacking it crashes game
+  - this is likely because of missing object sequence
+- punchinello 2 broken, sprites are all messed up, doesn't summon bombs right away. whole fight doesnt work
+
 
 Mushroom Way 
-🚧 fireworks freestanding item on top plateau stops you from moving
-🚧 czar dragon in mushroom way messes up shadows. why using that sprite?
-  🚧 they have the exact same specs. how???
+- frog coin in right chest of mw2 does not show
 
 Mushroom kingdom
 - palette is wrong if you get into calamari fight in mushroom kingdom (failed slots)
-🚧 check toad partition is ok with bluebirds in peach antechamber, vault branch rooms
+🚧 different birds have broken partitions in outdoors - buffer 0 changed only - added change for buffer 2
+🚧 same in east branch room - buffer 0 changed only - made the shy guys clones
+🚧 same in throne room - buffer 0 and 1 changed only - changed to 1 and 2
 🚧 the one red bird is facing the wrong direction and has a bad partition, everyone else is okay. weird
-🚧 coming out backwards from antechamber loads you inside the guy you can jump on. move him over to the left a bit
-🚧 not a huge deal but if you leave toadstools room after getting the toad rescue prize, the hallway doesnt reset until you go all the way back to the main hall. should reset as soon as you leave toadstools room\
+- coming out backwards from antechamber loads you inside the guy you can jump on. move him over to the left a bittoadstools room\
 - guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
   - seems to be using wallet guy's scripts?
+- signal ring not working (there are 3 star pieces in the kingdom: shop, and 2 vault chests) while invaded
 
 bandit's way
 - room 4, second chest: pick me up shows as mushroom
-🚧 two stars in room 4. should not be allowed
 
 Kero sewers
-🚧 kero sewers is not blocked when it should be
-🚧 no packets in chests in pre-belome room
-🚧 double chest does not work. opening it first after lands end did not refill it
+- no packets in chests in pre-belome room
+- double chest does not work. opening it first after lands end did not refill it
 🚧 boss fight doesn't start, can't be interacted with. no collision?
 🚧 water does not drain. that's bad (well, it does, it just looks like it didn't)
+- smithy as boss renders TOTALLY wrong
+- belome room battle background probably needs to be changed, looks like it's underwater?
+- smithy 1 finishing crashes battle, plays empty dialog
 
 midas river
-🚧 using big flower sprites, should be small
-🚧 red essence was modeled as a big flower
-🚧 music slows down instead of speeds up
-🚧 maybe add a dialog so guy explains why hes giving you a prize even if you lost
+🚧 left tunnel item still showing up as a flowr
 
 Rose way
 
 
 Rose Town
-🚧 pandorite in house: packet stays there without disappearing
-🚧 cymbals: does not render at all
-🚧 pandorite chest did not reload with a reward
-🚧 red guy should not be outside his house 
+- red guy should have a dialog when you get an item from him post-forest
 
 Forest maze 
-🚧 uderground rooms are fucked up. how the hell to get partition to work?
-  🚧 Why did flower work, and item bag, but NOT frog coin?
+- uderground rooms are fucked up. how the hell to get partition to work?
+  - Why did flower work, and item bag, but NOT static frog coin?
 - buzzer's default attack sound effect is wrong somehow
 🚧 why does buzzer underground turn into a snifit in battle?
 
 Pipe vault
-🚧 chompweed in piranha room is invisible
-🚧 gold goomba is loading into a 3x per row buffer
+
 
 Yoster
-🚧 yellow yoshis glitched sprites
-🚧 infinite chest disables its object trigger
+- minor, but main area loads very slowly
 
 Moleville
 🚧 no item came out of shy guy minecart
@@ -98,75 +108,72 @@ Moleville
 🚧 shiny stone girl still asking for fireworks in progressive settings
 🚧 treasure hunter's dialogs are not changed
 - models don't exit the room when you beat henchmen
-- mid boss' running animations not working correctly in some rooms
+  - disappearing, woosh sounds delayed
+  - check if theyre loading a bad seuqnece while jumping in place that makes them invisible
+- left of trampoline: punchinello and bob-omb partitions are wrong
+- right of trampoline: punchinello and bob-omb partitions are wrong
+- circule path leading to traintrack room: fireball partition is wrong
 
 Booster Pass
-- battle crashes when you attack carroboscis
-  - not anymore, but it forces you to run away
 
 Booster Tower
 🚧 booster tower does not load when character needed to unlock it
-- shadows broken in curtain room, makes no sense
 🚧 jagger briefly disappears while waiting for you to hit the mario doll
 🚧 johnny doesnt do an animation in place of booster crying?
+- bottom left shuffled item is always reloading when booster tower checkerboard room reloads
 
 Booster Hill
 - pickup coin rendered as a flower
 - something's wrong with counter. jumped way too far ahead in 70b2 after first clear
+  - got 9/16 items, picked up 2 more, toad told me there was nothing here. this is wrong
+- brooch on booster hill appeared as a card
 
 Marrymore
-🚧 bloober sprites are wrong (incorrect buffer for their sprite size)
-🚧 snifit sprites glitch out
-🚧 crown replacement sinks into the floor
-🚧- can't talk to johnny?
-🚧 music slows down instead of speeding up
-🚧 squids have torte dialogs
+🚧 remake names are disabled but whenh mallow is recruitable character one of the npcs said "toad and comeon"
+- one of the bloober sprites, when it goes very far to the right of the table and does its attack animation, is broken. doing this animation anywhere else is fine
+- snifit sprites glitch out (overwritten by ally)
+- crown replacement sinks into the floor
+- plays DI4060_NEED_TO_DO_CHAPEL_CHECKS when you get a marrymore gift for some reason?! in hotel?!
 🚧 bellhop sidequest gets stuck on "please see our guest out"
-🚧 coming out of the shower is wrong. resets to mario's original palette
-🚧 stay voucher can be used multiple times. should be taken away after first time
+- stay voucher can be used multiple times. should be taken away after first time
+  - it's being taken away but still detecting as present in inventory
 🚧 could use a dialog explaining why you're getting a gift
 🚧 dialogs seem wrong. both are attributed as torte in kitchen
+- frog coin items sold in room service menu are very cheap. should multiply by 5 first.
+  - actually maube leaving it like this count be fun...
 
 Seaside Town
-🚧 seaside: boss is replacing the wrong sprite in confrontation, also bad partition for grate guy
+- seaside: boss is replacing the wrong sprite in confrontation, also bad partition for grate guy
+  - belome 2 here's allies are very broken
 🚧 frog disciple doesnt go back to reading book if you talk to him when hes out of items
 🚧 no signoff in jinx letter
 
 Sea
+- slot machine npcs broke chest in save room
 
 Sunken Ship
-🚧 Stair packet does not rise very high enough
-  - shoes: it just falls
-🚧 dry bones dies to regular attacks
-🚧 dry bones does not collapse when you run away
-🚧 realign "Hate to burst your Endobubble" hint bottom line
-🚧 are any of the packet shuffles actually working? looks like original
-  - seems like it? check spoiler log
-  🚧 packet that falls in barrel puzzle floats
-🚧 physical attacks are killing dry bones
-🚧 mid boss battle is totally skipped
-🚧 flower packet in left chest in inner ship floats to the left 
-🚧 chest in clone room is broken
+- stairs are using falling packets instead of rising packets
+- dry bones dies to regular attacks
+- dry bones does not collapse when you run away
+- royal syrup in corner of pool room was invisible?
 🚧 slots chest in hidon room causes coin sprites to overwrite chests
   - see if you can find another partition for it
-🚧 sprites of items underwater are messed up, keep shifting or disappearing
-🚧 no item replacing corner frog coin at all
 🚧 Dodo in johnny's room cut off. might need to use a different partition
-🚧 shaman should not say password is related to the sea when shuffler is turned on
+- everything in the water cellar should be a coin, flower, mushroom, or item bag. everything else does not render correctly
+- booster as johnny sprite is totally broken, glitched out
+  - can't face northwest
+  - likely messed up by presence of postgame boss. shadows are fucked up too
 
 Land's End
-🚧 side item from remake does not work (green spell). doesn't activate
-🚧 should not be able to run away from mokura slot (jinx)
-  - or should you? doesn't break anything...
-🚧 is mokura actually spawning more often?
-🚧 broken shadows in cliff room
 - belome fortune triggering after only 2 statues
   - needs more research
-🚧 geckits also load a snifit fight
 🚧 chests in grotto don't render correctly
-🚧 crystal shard in chest loaded an egg packet
+  - specifically the shy away chest. not even a slot machine room
+- floating chest in room 2 was a mimic. no reload prize
+- shaman selling items to you: probably should be a slot machine
 
 Monstro Town
+- terrain completely broken 
 🚧 count down in jagger spot but the battle is yaridovich? even though it's using count down's background?
   🚧 yarid stats clearly meant for somewhere else. possibly dojo 
 🚧 what the hell did manager's last standing pounder do? glitched spell name, flame stone that did nothing
@@ -180,8 +187,13 @@ Monstro Town
 🚧 tramopline up to belome temple crashes game, never fades in
 
 Bean Valley
-🚧 magikoopa appearing at pipe: faces backward for a moment. intentional?
 🚧 is frog coin at vine fork path randomized?
+  - hard to tell. Beanstalk2ndRoomFloatingItemLocation
+- culex on pipe: shy away totally broken
+  - water crystal did something that broke the game
+    - it's breaker beam
+- boss room is deleting save file again
+- above-ground chest (normally fc chest) partially overwritten by a coin. dont think theres a slot machine here
 
 Nimbus Land
 - default bonk animation doesn't seem to let you jump
@@ -189,7 +201,7 @@ Nimbus Land
 - statues in statue room are shifted incorrectly
 🚧 gold paint logic does not work, will take you in if you talk to him twice
 🚧 frog coin in nimbus castle doesnt render in chest (bridge room)
-🚧 ninja in dodo spot has some problematic animations, doesnt turn around, sprite briefly distorts
+🚧 ninja in dodo spot has some problematic animations, d++++++++oesnt turn around, sprite briefly distorts
 🚧 statue bird palettes are wrong everywhere, possibly bc of exp star?
 🚧 statue sprites in garro's house need a diff partition (jagger doesnt load correctly), same in castle
   🚧 did not load at all in latest seed
@@ -200,6 +212,7 @@ Nimbus Land
 🚧 trueform pin packet did not appear in forkies room
 🚧 chests broken in post-birdo room
 🚧 bowsers keep condition not substituted in dialog
+- garro partition is wrong when grate guy statue is loaded
 
 Volcano
 🚧 sparkles act weirdly when you hit oerlikons with exp star

@@ -968,7 +968,7 @@ P063_BOOSTER_HILL_PRIZE_12 = Packet(
 )
 P064_FROG_COIN_CHEST_STILL = Packet(
     packet_id=64,
-    sprite_id=SPR0194_FROG_COIN,
+    sprite_id=SPR0234_STATIC_FROG_COIN,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
     show_shadow=False,
     b0=0,
@@ -1358,7 +1358,7 @@ P089_BEETLE_CHEST = Packet(
 )
 P090_SMALL_COIN_STILL = Packet(
     packet_id=90,
-    sprite_id=SPR0193_SMALL_COIN,
+    sprite_id=SPR0236_COIN_STATIC_SMALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
     show_shadow=False,
     b0=0,
@@ -1373,7 +1373,7 @@ P090_SMALL_COIN_STILL = Packet(
 )
 P091_CHEST_COIN_STILL = Packet(
     packet_id=91,
-    sprite_id=SPR0192_COIN,
+    sprite_id=SPR0235_STATIC_COIN,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
     show_shadow=False,
     b0=0,
@@ -1538,7 +1538,7 @@ P101_FLOWER_COLLECTION = Packet(
 )
 P102_SMALL_FROG_COIN_STILL = Packet(
     packet_id=102,
-    sprite_id=SPR0211_SMALL_FROG_COIN,
+    sprite_id=SPR0238_STATIC_FROG_COIN_SMALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
     show_shadow=False,
     b0=0,

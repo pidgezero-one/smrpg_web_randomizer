@@ -36,7 +36,7 @@ script = EventScript([
 	SetBit(TEMP_7043_1),
 	ClearBit(TEMP_7043_2),
 	RunBackgroundEvent(event_id=E1706_BANDITS_WAY_LEFT_CHEST_STAR_CHECK, return_on_level_exit=True, bit_6=True, identifier="EVENT_1587_run_background_event_3"),
-	JmpIfBitSet(UNIVERSAL_CHEST_ANIMATION_BIT, ["EVENT_1587_jmp_to_event_7"]),
+	JmpIfBitSet(UNIVERSAL_CHEST_ANIMATION_BIT, ["EVENT_1587_jmp_to_event_7"], identifier="EVENT_1587_jmp_to_event_2"),
 	SetBit(UNIVERSAL_CHEST_ANIMATION_BIT),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(VERY_FAST),

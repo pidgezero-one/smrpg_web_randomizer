@@ -16,8 +16,13 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_ShadowOn(),
 	A_FloatingOff(),
-	#A_SetVRAMPriority(PRIORITY_3),
-    A_Jmp(["A0992_default"])
+	A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
+	A_VisibilityOff(),
+	A_SequenceLoopingOn(),
+	A_Pause(9),
+	A_VisibilityOn(),
+	A_Pause(26),
+	A_VisibilityOff(),
+	A_ReturnQueue()
 ])

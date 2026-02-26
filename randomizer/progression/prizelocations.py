@@ -9,6 +9,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import 
     UsableEventScriptCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    Jmp,
     Return,
     ActionQueueAsync,
     Pause,
@@ -1152,6 +1153,11 @@ class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
 
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        if not isinstance(self.prize, EXPStarPrize):
+            world.event_scripts.get_script_by_id(E1538_BANDITS_WAY_STAR_CHEST_CAMERA_AND_DOGS).insert_before_nth_command(0, Jmp(["EVENT_1538_jmp_to_event_2"]))
+        return super().render(world) 
+
     # Flag as checked: npc 0 in room 78 has its object trigger disabled.
 
 
@@ -1167,6 +1173,11 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
 
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        if not isinstance(self.prize, EXPStarPrize):
+            world.event_scripts.get_script_by_id(E1587_BANDITS_WAY_4_RIGHT_CHEST).insert_before_nth_command(0, Jmp(["EVENT_1587_jmp_to_event_2"]))
+        return super().render(world) 
+    
     # Flag as checked: npc 1 in room 78 has its object trigger disabled.
 
 

@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y gcc git netcat-openbsd
 # install Python dependencies
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
-COPY ./vendor ./vendor
 RUN pip install -r requirements.txt
 
 # copy entrypoint.sh

@@ -35,6 +35,6 @@ sprite = CompleteSprite(
         )
     ),
     palette_id=SPAL326_EARTH_CRYSTAL_3D,
-    palette_offset=1,
+    palette_offset=0,
     unknown_num=8
 )

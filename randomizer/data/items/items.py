@@ -2311,7 +2311,7 @@ class ShinyStoneItem(RegularItem):
 
 class ExtraShinyStoneItem(RegularItem):
     """Extra Shiny Stone item class"""
-    _item_name: str = "XtraShinyStone"
+    _item_name: str = "X.ShinyStone"
     _prefix = ItemPrefix.EMPTY_SPACE
 
     _item_id: int = 139
@@ -2448,7 +2448,7 @@ class CrystalShardItem(RegularItem):
     _prefix = ItemPrefix.EMPTY_SPACE
 
     _item_id: int = 149
-    _description: str = "A symbol\n of ultimate\n strength"
+    _description: str = " A symbol\n of ultimate\n strength"
     _price: int = 0
     _inflict_type = None
 
