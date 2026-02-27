@@ -2,9 +2,6 @@
   "version": "9.0.0",
   "flags": "P(rchars)     Q(perms:vanilla_accessories_all|props:random|hints)     C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(bw:open|ks:rfc|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(enemystats:full_random|drops|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko)",
   
-setting option:
-- skip lands end ants
-
 General
 🚧 dying to failed slots does not game over
 - geno blast animation is incorrect (extra sprite at the end)
@@ -46,7 +43,7 @@ Boss-specific
 - belome 2 shows empty dialog
   - game straight up crashes when belome 2 finishes with 2 bowser clones on field
 - axem rangers ship targetable right away
-- axem rangers in slot machine does not use their forced background, using level background instead (at least level background works)
+🚧 axem rangers in slot machine does not use their forced background, using level background instead (at least level background works)
 - axem pink is attacking allies with spells that replaced recover, should not do that
 - defeating axem red makes him move behind axem yellow and you start being able to target "bob-omb s". very wrong
   - attacking it crashes game
@@ -193,6 +190,10 @@ Bean Valley
   - water crystal did something that broke the game
     - it's breaker beam
 - boss room is deleting save file again
+11:03 PM]pidge: problem ended up being because megasmilax's npc substitution i wrote a little differently from the rest of the bosses
+[11:03 PM]pidge: bc shy away was causing problems so i just reconfigured a lot of things in the room, and the sprite replaces the smilax stem instead of the smilax head
+[11:03 PM]pidge: but some npc properties were lost in translation because of that
+
 - above-ground chest (normally fc chest) partially overwritten by a coin. dont think theres a slot machine here
 
 Nimbus Land

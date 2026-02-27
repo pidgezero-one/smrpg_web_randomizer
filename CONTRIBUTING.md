@@ -41,6 +41,10 @@ Edited scripts are assembled into a table and turned into patch bytes by smrpgpa
 
 There are lots of other features in the game that are important to the randomizer, such as level exits, dialogs, etc. Look around in the Lazy Shell editor to see how these work. Most of these things you will find in the randomizer/data folder. It's recommended to explore the codebase for the randomizer a bit to see how these features are interacted with and modified.
 
+### Troubleshooting
+
+Once you get to the point of generating randomized ROMs in your local development environment, you'll find that there are parts of the game you can't look at in Lazy Shell anymore. This is because the randomizer moves some key pieces of the game's data around to areas that the program is not expected to find them. Download [pidge's fork of Lazy Shell](https://github.com/pidgezero-one/LAZYSHELL-UPDATED/releases) which supports randomizer ROMs. When you use it, the first thing you will need to do is open the settings panel (gear icon), flip to the last tab, and load the config file in /lazyshell/randomizer.lscfg (within the randomizer codebase). Then you will be able to look at things properly.
+
 ## Design Philosophy
 
 Follow these guidelines when developing for this randomizer:

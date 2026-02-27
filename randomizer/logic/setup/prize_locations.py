@@ -257,7 +257,6 @@ def set_locations(world: GameWorld) -> None:
         MarrymoreBossFightStarPiece: MarrymoreBossFightStarPiece(),
         MarrymoreCharacter: MarrymoreCharacter(),
         StarHillStarPiece: StarHillStarPiece(),
-        FrogDiscipleLocation1: FrogDiscipleLocation1(),
         FrogDiscipleLocation2: FrogDiscipleLocation2(),
         FrogDiscipleLocation3: FrogDiscipleLocation3(),
         FrogDiscipleLocation4: FrogDiscipleLocation4(),
@@ -509,6 +508,10 @@ def set_locations(world: GameWorld) -> None:
         InnerFactoryFourthFightStarPiece: InnerFactoryFourthFightStarPiece(),
         FinalBossFight: FinalBossFight(),
     }
+
+    if not (world.settings.isflag_enabled(SeeYa) and not world.settings.isflag_enabled(ShuffleShops)):
+        # If the user wants to start with See Ya but not shuffle shops, it will be pre-bought from the frog disciple.
+        world.locations[FrogDiscipleLocation1] = FrogDiscipleLocation1()
 
 
     # Only include FinalBossFightStarPiece if win condition is not FACTORY

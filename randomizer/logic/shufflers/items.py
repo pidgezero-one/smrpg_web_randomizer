@@ -72,6 +72,7 @@ from ...progression.prizelocations import (
 from ...types.flags import (
     InfuseSpellElements,
     ReplaceItems,
+    SeeYa,
     ShopQualities,
     ShopQuality,
     ShuffleHillFlowers,
@@ -530,13 +531,14 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         ProgressiveEggPrize,
         CrystalShardPrize,
         ProgressiveCardPrize,
-        SeeYaPrize,
         EarlierTimesPrize,
         CoinTrickPrize,
         ExpBoosterPrize,
         ScroogeRingPrize,
         LuckyJewelPrize,
     ]
+    if not world.settings.isflag_enabled(SeeYa):
+        should_otherwise_include_rules.append(SeeYaPrize)
 
     # All boss fights are progress because they each unlock one star piece check at minimum.
     for prize_cls in BossFightPrize.__subclasses__():
@@ -880,6 +882,8 @@ def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
         return None
     # special case
     if issubclass(location.originally_held, SpellPrize):
+        return None
+    if issubclass(location.originally_held, SeeYaPrize) and world.settings.isflag_enabled(SeeYa):
         return None
     # always return the original prize if shuffling disabled so that it can receive its original prize during placement
     # this should happen regardless of item shuffler pool settings

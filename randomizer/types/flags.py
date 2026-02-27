@@ -1804,6 +1804,12 @@ class SkipMinecart(BooleanFlag):
     _description = """If enabled, boarding the minecart for the first time will teleport you back to Moleville. Subsequent visits to the minecart room will play the minigame as normal."""
     _id = "skipcart"
 
+# ✅
+class SkipAnts(BooleanFlag):
+    _name = "Skip Shoguns"
+    _description = """If enabled, you will not have to fight the Shoguns in the Land's End whirlpools."""
+    _id = "skipant"
+
 
 # ✅
 class BetterTips(BooleanFlag):
@@ -1911,6 +1917,7 @@ class BossScaleOptions(CategorizationOption):
     VANILLA = "Do not scale"
     MATCH = "Match to area"
     RANDOM = "Completely random"
+    GODMODE = "Godmode"
 
 
 # ✅
@@ -1920,7 +1927,9 @@ class BossShuffleScaleStats(SelectOneFlag[BossScaleOptions]):
 <br>
 <br><b>Match to area</b>: A boss fight that has been shuffled into a different area will have its stats scaled to match the area's original boss. For example, Culex would have about 100 HP if he's in Mushroom Way.
 <br>
-<br><b>Completely random</b>: A boss fight will inherit the relative stats of a random other location, regardless of position. For example, Culex could be placed in Mushroom Way, but have 1200 HP because he's inherited Belome 2's original stats. Only use this option if you have a reasonable expectation that the seed may not be feasible to complete."""
+<br><b>Completely random</b>: A boss fight will inherit the relative stats of a random other location, regardless of position. For example, Culex could be placed in Mushroom Way, but have 1200 HP because he's inherited Belome 2's original stats. Only use this option if you have a reasonable expectation that the seed may not be feasible to complete. Save often.
+<br>
+<br><b>Godmode</b>: All boss fights are scaled up to have endgame-level stats. Your allies all start the game at level 30. If "Spells Anywhere" is not enabled, you also start the game with your complete spell roster."""
     choices = [o for o in BossScaleOptions]
     _default = BossScaleOptions.MATCH
     _id = "bossscale"
@@ -2122,13 +2131,13 @@ class ExperienceNoBosses(BooleanFlag):
 # ✅
 class SkipBossFights(BooleanFlag):
     _name = "Allow alternate boss fight win conditions"
-    _description = """If set, the following actions will allow you to skip a boss fight and still proceed as normal:
+    _description = """If the relevant boss has a star piece, the following actions will be valid to obtain the star piece: 
 <ul>
-<li> Mack Skip</li>
-<li> Booster Tower curtain game</li>
-<li> Nimbus Castle statue game</li>
-</ul>
-<br/>If unset, you must still fight the associated boss to receive Star Pieces and other rewards."""
+<li> Perform Mack Skip</li>
+<li> Win the Booster Tower curtain game</li>
+<li> Win the Nimbus Castle statue game</li>
+<li> Defeat the third mimic by failing a slot machine chest</li>
+</ul>"""
     _id = "skips"
 
 
@@ -2159,6 +2168,17 @@ class NoOHKO(BooleanFlag):
     )
     _id = "noko"
 
+
+# ✅
+class SeeYa(BooleanFlag):
+    _name = "Start with See Ya"
+    _description = (
+        """You will start the game with See Ya already in your item inventory. This removes it from the item pool but it does not count toward your four random starting items.
+<br>
+<br>If "Shuffle Shops" is disabled, the Frog Disciple will not carry the See Ya and will only have his other four items for sale.
+"""
+    )
+    _id = "seeya"
 
 # ******** Cosmetics and Accessibility
 # aka stuff that doesn't affect the seed
@@ -2646,13 +2666,15 @@ class OtherAccessSubcategory(FlagCategory):
     _name: str = "Other Access & Win Condition"
     _flags: list[type[Flag]] = [
         YaridovichGate,
-        SkipMustyFearsSequence,
-        BowserDoorRequirements,
+        WinCondition,
         StarPiecesRequired,
+        BowserDoorRequirements,
         CasinoWarp,
         BucketWarp,
         FastTravel,
-        WinCondition,
+        SkipMinecart,
+        SkipAnts,
+        SkipMustyFearsSequence,
     ]
     _size: int = 3
     _id: str = "O"
@@ -2670,7 +2692,6 @@ class PuzzleCategory(FlagCategory):
         RandomTadpolePondSong,
         RandomSunkenShipPassword,
         BowserDoorShuffle,
-        SkipMinecart,
         BetterTips,
     ]
     _size: int = 3
@@ -2747,6 +2768,7 @@ class BossCheeseSubcategory(FlagCategory):
         NoGenoWhirlExor,
         FixMagikoopa,
         NoOHKO,
+        SeeYa,
     ]
     _size: int = 4
     _id: str = "F"

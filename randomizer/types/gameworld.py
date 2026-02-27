@@ -18,6 +18,7 @@ from randomizer.data.variables.sprite_palette_names import (
     SPAL293_ABXY_ACTION_BUTTON_SELECTION_IN_BATTLE,
     SPAL379_ABXY_BUTTONS_FROM_BOWYER_S_BUTTON_LOCK,
 )
+from randomizer.utils.tower_access_scripts import AddToInventory
 
 from .flags import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
@@ -116,7 +117,7 @@ from ..logic.setup.cosmetics import apply_cosmetic_settings
 from ..logic.setup.prize_locations import set_locations
 from ..logic.shufflers.items import shuffle_prizes, post_shuffle_cleanup
 from ..logic.validation import validate_settings
-from ..logic.shufflers.shops import shuffle_shops
+from ..logic.shufflers.shops import shuffle_shops, exclude_seeya_from_frog_disciple
 from ..logic.shufflers.equipment import (
     build_item_to_prize_mapping,
     build_item_impact_categories,
@@ -936,6 +937,22 @@ class GameWorld:
             self.event_2496_startup += [
                 SetBit(PROGRESSIVE_FIREWORKS_ENABLED),
             ]
+        if self.settings.isflag_enabled(SeeYa):
+            self.event_2496_startup += [
+                AddToInventory(SeeYaItem),
+            ]
+            if not self.settings.isflag_enabled(ShuffleShops):
+                self.event_2496_startup += [
+                    SetBit(FROG_DISCIPLE_ITEM_5_PURCHASED),
+                ]
+        if self.settings.isflag_enabled(SkipAnts):
+            self.event_2496_startup += [
+                SetBit(SHOGUN_1_CLEARED),
+                SetBit(SHOGUN_2_CLEARED),
+                SetBit(SHOGUN_3_CLEARED),
+                SetBit(SHOGUN_4_CLEARED),
+                SetBit(SHOGUN_5_CLEARED),
+            ]
 
         # Apply progression gating settings (win conditions, area gates, travel)
         apply_shuffler_independent_settings(self)
@@ -999,6 +1016,8 @@ class GameWorld:
         # Shop shuffling happens after equipment randomization so we can score equipment
         if self.settings.isflag_enabled(ShuffleShops):
             self._shuffle_shops()
+        elif self.settings.isflag_enabled(SeeYa):
+            exclude_seeya_from_frog_disciple(self)
 
         if self.settings.isflag_enabled(EnemyAttacks):
             self._randomize_enemy_attacks_and_spells()

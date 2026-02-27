@@ -229,7 +229,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             for cmd in script.contents:
                 if isinstance(cmd, CastSpell):
                     # Skip special spells - spell slots contain types, not instances
-                    excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell)
+                    excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell, RecoverSpell, MegaRecoverSpell)
                     if cmd.spell_1 is not None and cmd.spell_1 not in excluded_spells:
                         cmd.set_spell_1(random.choice(spell_pool))
                     if cmd.spell_2 is not None and cmd.spell_2 not in excluded_spells:

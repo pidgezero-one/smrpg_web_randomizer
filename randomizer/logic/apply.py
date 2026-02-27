@@ -111,7 +111,20 @@ from ..progression.prizelocations import (
     TreasureShopItem3,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_9, NPC_0, NPC_3, NPC_4, NPC_5
-from ..progression.prizes import FirstMimicFightLauncher, SecondMimicFightLauncher, ThirdMimicFightLauncher
+from ..data.enemies.enemies import CULEX3DEnemy
+from ..progression.prizes import (
+    FirstMimicFightLauncher,
+    SecondMimicFightLauncher,
+    ThirdMimicFightLauncher,
+    SmithyBossFight,
+    Punchinello2BossFight,
+    Booster2BossFight,
+    Bundt2BossFight,
+    Johnny2Fight,
+    Belome3Fight,
+    Jinx4BossFight,
+    Culex3DBossFight,
+)
 
 from ..data.rooms.npcs import EMPTY_NPC
 from ..data.sprites.subs.bowser.sprite_96 import sprite as BOWSER_96
@@ -266,6 +279,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         if loc.prize is not None:
             charp = cast(CharacterPrize, loc.prize)
             level = charp.starting_level
+            if world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE):
+                level = 30
             ally = charp.ally
             id = ally.index
             char = world.allies._allies[id]
@@ -303,6 +318,30 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     char.starting_mg_attack += lvlup.mg_attack_plus_bonus
                     char.starting_mg_defense += lvlup.mg_defense_plus_bonus
 
+    # Godmode: grant all spell-slot spells to each character's starting_magic
+    # (only when SpellsAnywhere is disabled, since spells are in the world otherwise)
+    if (
+        world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE)
+        and not world.settings.isflag_enabled(SpellsAnywhere)
+    ):
+        all_spell_locations_by_char: list[tuple[int, list[type]]] = [
+            (0, [MarioSpell1, MarioSpell2, MarioSpell3, MarioSpell4, MarioSpell5, MarioSpell6]),
+            (1, [ToadstoolSpell1, ToadstoolSpell2, ToadstoolSpell3, ToadstoolSpell4, ToadstoolSpell5, ToadstoolSpell6]),
+            (2, [BowserSpell1, BowserSpell2, BowserSpell3, BowserSpell4, BowserSpell5, BowserSpell6]),
+            (3, [GenoSpell1, GenoSpell2, GenoSpell3, GenoSpell4, GenoSpell5, GenoSpell6]),
+            (4, [MallowSpell1, MallowSpell2, MallowSpell3, MallowSpell4, MallowSpell5, MallowSpell6]),
+        ]
+        for char_id, spell_locs in all_spell_locations_by_char:
+            char = world.allies._allies[char_id]
+            for spell_loc_type in spell_locs:
+                if spell_loc_type not in world.locations:
+                    continue
+                spell_loc = world.get_location(spell_loc_type)
+                if spell_loc is not None and spell_loc.prize is not None:
+                    spell = cast(SpellPrize, spell_loc.prize)._spell
+                    if spell not in char.starting_magic:
+                        char.starting_magic.append(spell)
+
     builders: dict[
         int, tuple[list[UsableEventScriptCommand], list[UsableEventScriptCommand]]
     ] = {}
@@ -338,14 +377,19 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
 
             if isinstance(place.prize, SlotsPrize):
                 # special handling: battlefield selection for failed slot machines which fights mimic #3
-                slot_pack = cast(BossFightLocation, world.get_location(Mimic3BossFight)).pack_id
+                proxy_fight = cast(BossFightLocation, world.get_location(Mimic3BossFight))
+                slot_pack = proxy_fight.pack_id
                 room = place._rooms[0]
+                battlefield = ROOM_TO_BATTLEFIELD[room]
+                proxy_prize = cast(BossFightPrize, proxy_fight.prize)
+                if proxy_prize.force_battlefield is not None:
+                    battlefield = proxy_prize.force_battlefield
                 identifier = str(uuid4())
                 if E0353_BOSS_BATTLE not in builders:
                     builders[E0353_BOSS_BATTLE] = ([], [])
                 builders[E0353_BOSS_BATTLE][0].append(JmpIfVarEqualsConst(PRIMARY_TEMP_7000, place.prize.override_id, [identifier]))
                 builders[E0353_BOSS_BATTLE][1].extend([
-                    StartBattleAtBattlefield(slot_pack, ROOM_TO_BATTLEFIELD[room], identifier=identifier),
+                    StartBattleAtBattlefield(slot_pack, battlefield, identifier=identifier),
                     Return(),
                 ])
             
@@ -606,6 +650,22 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = MALLOW_981
         world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = MALLOW_982
 
+
+
+# --- Godmode reference enemy (swap this class to re-center normalization) ---
+_GODMODE_REFERENCE_ENEMY: type = CULEX3DEnemy
+
+# Fights excluded from Godmode normalization (final boss + postgame)
+_GODMODE_EXCLUDED_FIGHTS: tuple[type, ...] = (
+    SmithyBossFight,
+    Punchinello2BossFight,
+    Booster2BossFight,
+    Bundt2BossFight,
+    Johnny2Fight,
+    Belome3Fight,
+    Jinx4BossFight,
+    Culex3DBossFight,
+)
 
 
 def _calculate_location_stats(
@@ -913,3 +973,26 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
         for prize, stats in zip(prizes, stats_list):
             assert isinstance(prize, BossFightPrize)
             _apply_stats_to_prize(prize, stats, world)
+
+    elif world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE):
+        # Normalize all boss combat stats to the reference enemy's average
+        ref = _GODMODE_REFERENCE_ENEMY()
+        culex_avg = round(statistics.mean([ref._attack, ref._defense, ref._magic_attack, ref._magic_defense]))
+
+        for location, stats in location_stats:
+            # Skip final boss and postgame fights
+            if type(location.prize) in _GODMODE_EXCLUDED_FIGHTS:
+                continue
+
+            orig_hp, xp, coins, attack, defense, m_atk, m_def, evade, m_evade = stats
+            orig_avg = round(statistics.mean([attack, defense, m_atk, m_def]))
+            if orig_avg == 0:
+                continue
+
+            sponginess_ratio = orig_hp / orig_avg
+            godmode_hp = min(9999, max(1, round(sponginess_ratio * culex_avg)))
+            capped_avg = min(255, culex_avg)
+            godmode_stats = (godmode_hp, xp, coins, capped_avg, capped_avg, capped_avg, capped_avg, evade, m_evade)
+
+            assert isinstance(location.prize, BossFightPrize)
+            _apply_stats_to_prize(location.prize, godmode_stats, world)

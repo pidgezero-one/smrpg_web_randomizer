@@ -4760,6 +4760,7 @@ class FrogDiscipleLocation2(FrogDiscipleLocation):
     _id = ShuffleLocationSelector.FROG_DISCIPLE_2
     _world_area = WorldAreaEnum.TADPOLE_POND
     # flag as checked: FROG_DISCIPLE_ITEM_2_PURCHASED
+    # FROG_DISCIPLE_ITEM_1_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
 
 
 class FrogDiscipleLocation3(FrogDiscipleLocation):
@@ -4767,6 +4768,7 @@ class FrogDiscipleLocation3(FrogDiscipleLocation):
     _id = ShuffleLocationSelector.FROG_DISCIPLE_3
     _world_area = WorldAreaEnum.TADPOLE_POND
     # flag as checked: FROG_DISCIPLE_ITEM_3_PURCHASED
+    # FROG_DISCIPLE_ITEM_2_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
 
 
 class FrogDiscipleLocation4(FrogDiscipleLocation):
@@ -4774,6 +4776,7 @@ class FrogDiscipleLocation4(FrogDiscipleLocation):
     _id = ShuffleLocationSelector.FROG_DISCIPLE_4
     _world_area = WorldAreaEnum.TADPOLE_POND
     # flag as checked: FROG_DISCIPLE_ITEM_4_PURCHASED
+    # FROG_DISCIPLE_ITEM_3_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
 
 
 class FrogDiscipleLocation5(FrogDiscipleLocation):
@@ -4781,6 +4784,7 @@ class FrogDiscipleLocation5(FrogDiscipleLocation):
     _id = ShuffleLocationSelector.FROG_DISCIPLE_5
     _world_area = WorldAreaEnum.TADPOLE_POND
     # flag as checked: FROG_DISCIPLE_ITEM_5_PURCHASED
+    # FROG_DISCIPLE_ITEM_4_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
 
 
 ########### seaside town when boss fight available
