@@ -244,3 +244,14 @@ Ending
 🚧 sparkle not trailing star in room 1
 - need a mario npc sub for when you are playing as another character
 🚧 culex and jagger ran right through the pedestal
+
+
+lazy shell
+- In the sprite editor, add a button that opens a popout panel, which lets you select and edit event palettes. The sprite takes on this palette while the editor is open.
+- Add the same thing to the level palette editor. Allow it to pick a different palette for each row (since it can do that)
+- In the event script editor, change palette set verbiage and layout to use a dropdown for palette row. Rename existing palette row field
+- Change palette set morph layout to use a dropdown.
+- Add a palette preview panel for those commands. Morph palette set should only show one. Palette set should use up to 16 depending on what the user has chosen.
+- Investigate what the hell 0x0F actually does once you have the ability to look at event palettes.
+- Change verbiage so that 89 and 8A clearly refer to EVENT PALETTES and action script 0E refers to SPRITE PALETTE
+- Change verbiage in sprite editor for the 0-7 palette field to be called palette row
