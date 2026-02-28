@@ -926,9 +926,8 @@ class GameWorld:
         # not shuffled, just determined if they exist in the seed or not
 
         if self.settings.isflag_enabled(SkipMustyFearsSequence):
-            self.event_2496_startup += [
-                RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER)
-            ]
+            self.event_scripts.get_script_by_id(E2496_START_GAME).insert_after_identifier("EVENT_2496_flag_setup", RunEventAsSubroutine(E0091_INVISIBLE_ITEM_SUMMONER))
+
         if self.settings.isflag_enabled(SkipMinecart):
             self.event_2496_startup += [
                 SetBit(SKIP_MANDATORY_MINECART),
@@ -1730,6 +1729,7 @@ class GameWorld:
                 patch.add_dict(s.palette_patch)
 
         # Make invaded mushroom kingdom's doorway treasure chest accessible
+        # solidity mod
         patch.add_dict({0x1D903A: bytearray([0xC2, 0x91])})
 
         # Update ROM title and version.

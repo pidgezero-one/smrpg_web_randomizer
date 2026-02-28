@@ -303,7 +303,7 @@ battle_messages[39] = 'Battle'
 battle_messages[40] = 'Lucky'
 battle_messages[41] = ' Hit “Y” repeatedly![pause]'
 battle_messages[42] = ' Muku...~![pause]'
-battle_messages[43] = ' I REALLY hate males...![pause]'
+battle_messages[43] = '[await]'
 battle_messages[44] = ' DEFENSE UP!![pause]'
 battle_messages[45] = ' ATTACK UP!![pause]'
 

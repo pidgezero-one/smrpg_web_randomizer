@@ -227,7 +227,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0983_GENO_WALKING_DOWN_LEFT,
+    sprite_id=SPR0025_GENO_NONPROTAGONIST_1,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -14575,7 +14575,7 @@ PIRANHA_PLANT_NPC_2 = NPC(
     obtuse_axis=5,
     height=11,
     y_shift=1,
-    show_shadow=True,
+    show_shadow=False,
     directions=VramStore.DIR2_SWSE,
     min_vram_size=0,
     priority_0=False,

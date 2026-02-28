@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 
 from ....spells.spells import *
@@ -32,6 +33,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	SummonObjectToSpecificLevel(NPC_0, R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN),
@@ -130,7 +132,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1223_STARTING_CHARACTER_4),
 	RunEventAsSubroutine(E1224_STARTING_CHARACTER_5),
     RunEventAsSubroutine(E3840_STARTER_DEBUG_ITEMS),
-    RunEventAsSubroutine(E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START),
+    RunEventAsSubroutine(E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START, identifier="EVENT_2496_flag_setup"),
 	Set7000ToPartySize(),
 	CompareVarToConst(PRIMARY_TEMP_7000, 4),
 	JmpIfComparisonResultIsLesser(["EVENT_2496_j"]),

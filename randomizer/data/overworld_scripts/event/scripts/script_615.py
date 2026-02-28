@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,6 +31,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfBitSet(BELLHOP_CALLED, ["EVENT_256_ret_0"]),
@@ -41,7 +43,7 @@ script = EventScript([
 		A_JumpToHeight(height=16, silent=True),
 		A_PlaySound(sound=SO005_BLOCK_SWITCH, channel=6)
 	], identifier="EVENT_615_action_queue_5"),
-	PaletteSet(palette_set=89, row=7, bit_0=True),
+	PaletteSet(palette_set_starts_at=EPAL0089, from_row=LEVEL_PALETTE_1, to_row=LEVEL_PALETTE_7),
 	Pause(60),
 	FadeOutMusicToVolume(duration=2, volume=0),
 	CircleMaskShrinkToObject(target=MARIO, width=18, speed=3, static=True),

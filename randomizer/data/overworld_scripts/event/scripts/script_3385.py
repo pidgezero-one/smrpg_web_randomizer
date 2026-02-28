@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,6 +31,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	CreatePacketAt7010WithEvent(packet=P037_SHIP_STAIRCASE, event_id=E3247_ITEM_BEHIND_SHIP_UPPER_STAIRS_GRANTER, destinations=["EVENT_3385_ret_1"], identifier="spawn_ship_box_item"),

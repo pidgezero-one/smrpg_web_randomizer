@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,6 +31,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	EnterArea(room_id=R058_KERO_SEWERS_AREA_06_LONG_WATER_ROOM_WRAT_FUNKS_IN_A_LINE, face_direction=SOUTHWEST, x=26, y=29, z=2),

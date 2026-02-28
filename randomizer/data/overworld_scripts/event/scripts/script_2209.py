@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,6 +31,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	Pause(30, identifier="EVENT_2209_pause_0"),
@@ -73,9 +75,9 @@ script = EventScript([
 	ResetAndChooseGame(),
 	FadeInFromBlack(sync=False, identifier="EVENT_2209_fade_in_from_black_async_10"),
 	PlayMusicAtDefaultVolume(M0051_MONSTROTOWN),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=138, row=11, identifier="kamek_palette"),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0138_KAMEK_BLUE, row=NPC_PALETTE_ROW_2, identifier="kamek_palette"),
 	RunEventAsSubroutine(E0942_KEEP_FIRST_BOSS_SUMMON_CHEST),
-	PaletteSet(palette_set=139, row=1, bit_0=True, bit_3=True, identifier="infinite_coin_chest_palette"),
+	PaletteSet(palette_set_starts_at=EPAL0139_GOLD_CHEST, from_row=NPC_PALETTE_ROW_1, identifier="infinite_coin_chest_palette"),
 	SetSyncActionScript(NPC_0, A0014_FLOATING_CHEST),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_PlaySound(sound=SO055_LOSE_COINS_COIN_FOUNTAIN, channel=6, identifier="infinite_coin_chest_sfx"),

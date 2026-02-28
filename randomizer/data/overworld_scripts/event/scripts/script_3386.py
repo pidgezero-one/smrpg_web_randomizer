@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,6 +31,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	CreatePacketAt7010WithEvent(packet=P029_SUNKEN_SHIP_3D_MAZE, event_id=E3290_SHIP_COLLECT_3D_MAZE_PRIZE, destinations=["EVENT_3221_pause_8"], identifier="spawn_ship_3d_maze_item"),

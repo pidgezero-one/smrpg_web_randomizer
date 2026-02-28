@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,9 +31,10 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
-	PaletteSet(palette_set=33, row=7, bit_0=True),
+	PaletteSet(palette_set_starts_at=EPAL0033, from_row=LEVEL_PALETTE_1, to_row=LEVEL_PALETTE_7),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FloatingOff(),
 		A_TransferToXYZF(x=3, y=9, z=3, direction=EAST),

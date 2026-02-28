@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,6 +31,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_13, R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA),
@@ -38,7 +40,7 @@ script = EventScript([
 	JmpIfBitSet(UNKNOWN_STATUE_ROOM_7090_1, ["EVENT_3730_run_event_as_subroutine_14"]),
 	JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3730_palette_set_6"]),
 	Jmp(["EVENT_3730_run_event_as_subroutine_14"]),
-	PaletteSet(palette_set=84, row=1, bit_0=True, bit_1=True, bit_2=True, bit_3=True, identifier="EVENT_3730_palette_set_6"),
+	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE, identifier="EVENT_3730_palette_set_6"),
 	PauseActionScript(NPC_4),
 	PauseActionScript(NPC_5),
 	RemoveObjectFromCurrentLevel(NPC_1),

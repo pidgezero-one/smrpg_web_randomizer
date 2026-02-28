@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,6 +31,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
     JmpIfBitClear(PAINT_GATING, ["EVENT_3640_start"]),
@@ -59,7 +61,7 @@ script = EventScript([
     RemoveObjectFromSpecificLevel(NPC_12, R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA),
 	ClearBit(TEMP_704C_0),
 	EnterArea(room_id=R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, face_direction=NORTHEAST, x=6, y=68, z=1),
-	PaletteSet(palette_set=111, row=1, bit_3=True),
+	PaletteSet(palette_set_starts_at=EPAL0111_GOLD_MARIO, from_row=MARIO_PALETTE),
 	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(VERY_FAST),
@@ -441,7 +443,7 @@ script = EventScript([
 	JmpIfBitClear(GAME_OVER, ["EVENT_3640_unfreeze_camera_233"]),
 	ResetAndChooseGame(),
 	UnfreezeCamera(identifier="EVENT_3640_unfreeze_camera_233"),
-	PaletteSet(palette_set=84, row=1, bit_3=True),
+	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_SetSequenceSpeed(FAST),
 		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="dodo_finished_3")

@@ -13,6 +13,7 @@ bomb_tick = SpriteAnimation(sequence_id=4, total_duration=22, contact_frame=11)
 bomb_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 snifit_shoot = SpriteAnimation(sequence_id=4, total_duration=60)
+snifit_shoot_fast = SpriteAnimation(sequence_id=4, total_duration=30, speed=FASTEST)
 snifit_taunt = SpriteAnimation(sequence_id=5, contact_frame=30, total_duration=46)
 snifit_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
@@ -124,7 +125,7 @@ class SpookumHenchman(HenchmanNPC):
         recoil=snifit_recoil,
         tower_bullet=snifit_shoot,
         kitchen_prep=snifit_taunt,
-        factory_pierce=snifit_taunt,
+        factory_pierce=snifit_shoot_fast,
     )
 
 

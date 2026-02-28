@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,6 +31,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	FreezeCamera(),
@@ -38,7 +40,7 @@ script = EventScript([
 		A_WalkToXYCoords(x=17, y=114),
 		A_FaceSouth()
 	]),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=10, palette_set=142, row=8),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=10, palette_set=EPAL0142_HOTSPRING, row=MARIO_PALETTE),
 	Pause(60),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetWalkingSpeed(FAST),
@@ -61,7 +63,7 @@ script = EventScript([
 		A_Pause(50),
 		A_ResetProperties()
 	]),
-	PaletteSet(palette_set=84, row=1, bit_3=True, identifier="hot_spring_reset_palette"),
+	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE, identifier="hot_spring_reset_palette"),
 	UnfreezeCamera(),
 	Return()
 ])

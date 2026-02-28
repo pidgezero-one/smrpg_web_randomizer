@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,12 +31,13 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	ActionQueueAsync(target=NPC_2, subscript=[
 		A_WalkSouthPixels(7)
 	]),
-	PaletteSet(palette_set=84, row=1, bit_0=True, bit_1=True, bit_2=True, bit_3=True),
+	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE),
 	JmpIfBitClear(STATUE_KEEPER_FIGHT_PRESENT, ["EVENT_2108_jmp_if_bit_set_4"]),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_WalkNortheastPixels(8),

@@ -165,9 +165,6 @@ class MarioPalette(Palette):
             world.sprite_palettes.get_palette(
                 SPAL605_MARIO_DOLL
             ).set_colors(self.colours)
-            world.sprite_palettes.get_palette(EPAL0084_MARIO_ENDING).set_colors(
-                self.colours
-            )
             world.sprite_palettes.get_palette(SPAL634_MARIO_DOLL_SURPRISED).set_colors(
                 self.colours
             )

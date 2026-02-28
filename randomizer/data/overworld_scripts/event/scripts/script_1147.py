@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,6 +31,7 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	ActionQueueSync(target=NPC_6, subscript=[
@@ -198,7 +200,7 @@ script = EventScript([
 	]),
 	PlaySound(sound=SO148_SURGING_ELECTRICITY, channel=6),
 	FadeOutMusicToVolume(duration=8, volume=0),
-	PaletteSetMorphs(palette_type=NOTHING, duration=2, palette_set=214, row=11),
+	PaletteSetMorphs(palette_type=NOTHING, duration=2, palette_set=EPAL0214, row=NPC_PALETTE_ROW_2),
 	Pause(60),
 	ScreenFlashesWithColour(WHITE, identifier="screenflash_1"),
 	Pause(20),

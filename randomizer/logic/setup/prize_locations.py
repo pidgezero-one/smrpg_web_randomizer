@@ -12,8 +12,8 @@ from randomizer.types.flags import (
     InvisibleFlagsSetting,
     KeyItemsAnywhere,
     StarPieceAvailability,
-    ShuffleCoins,
-    SpellsAnywhere,
+    SeeYa,
+    ShuffleShops
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     CompareVarToConst,

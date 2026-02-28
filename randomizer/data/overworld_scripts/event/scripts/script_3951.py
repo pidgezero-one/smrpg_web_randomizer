@@ -15,6 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,15 +31,16 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 from ....spells.spells import *
+from ....variables.event_palette_names import *
 
 script = EventScript([
 	EnterArea(room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, face_direction=NORTHWEST, x=4, y=48, z=0),
 	RunStarPieceSequence(8),
-	PaletteSet(palette_set=163, row=1, bit_3=True),
-	PaletteSet(palette_set=164, row=1, bit_0=True, bit_3=True),
-	PaletteSet(palette_set=166, row=1, bit_1=True, bit_3=True),
-	PaletteSet(palette_set=167, row=1, bit_0=True, bit_1=True, bit_3=True),
-	PaletteSet(palette_set=165, row=1, bit_0=True, bit_2=True, bit_3=True),
+	PaletteSet(palette_set_starts_at=EPAL0163_MARIO_ENDING_DARK, from_row=MARIO_PALETTE),
+	PaletteSet(palette_set_starts_at=EPAL0164_TOADSTOOL_ENDING_DARK, from_row=NPC_PALETTE_ROW_1),
+	PaletteSet(palette_set_starts_at=EPAL0166_MALLOW_ENDING_DARK, from_row=NPC_PALETTE_ROW_2),
+	PaletteSet(palette_set_starts_at=EPAL0167_GENO_ENDING_DARK, from_row=NPC_PALETTE_ROW_3),
+	PaletteSet(palette_set_starts_at=EPAL0165_BOWSER_ENDING_DARK, from_row=NPC_PALETTE_ROW_5),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(FASTEST),
 		A_WalkEastPixels(16),
@@ -106,13 +108,13 @@ script = EventScript([
 	Pause(180),
 	UnknownCommand(bytearray([0x5F])),
 	Pause(404),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=161, row=1),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=162, row=5),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=84, row=8),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=85, row=10),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=86, row=11),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=141, row=9),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=140, row=13),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0161, row=ROW_1),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0162, row=LEVEL_PALETTE_4),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0084_MARIO_ENDING, row=MARIO_PALETTE),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0085_MALLOW_ENDING, row=NPC_PALETTE_ROW_1),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0086_GENO_ENDING, row=NPC_PALETTE_ROW_2),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0141_TOADSTOOL_ENDING, row=NPC_PALETTE_ROW_2),
+	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0140_BOWSER_ENDING, row=NPC_PALETTE_ROW_4),
 	PauseScriptUntilEffectDone(),
 	Pause(216),
 	ApplyTileModToLevel(use_alternate=True, room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, mod_id=0),
