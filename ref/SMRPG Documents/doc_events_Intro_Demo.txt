@@ -1,0 +1,57 @@
+Original Documentation by Sukasa (now defunct Acmlm Kafuka Board2)
+--------------------------------
++128 - Demo Start - Call Mario, Run Event 2396
+ +2396 - Waypoint Event
+  +2357 - Mushroom Way, Mario Intro
+   +129 - Waypoint Event
+    +48 -> Battle, Pack 196 Beanstalk BG (2), jump via #129 to #992
+    +992 Kingdom Castle, talk with Chancellor
+     +130 - Waypoint Event
+      +1733 - Bandits Way Intro (Power Star / Level Up)
+       +1728 - Waypoint Event, If Mem $704E:3 then skip 131 and go to #1738
+        +131 - Waypoint Event
+         +149 -> Battle, Pack 201 Grasslands BG (9), jump via #149 to #1725
+         +1725 - Midas River intro, start #1724 sync, spin mario until level exit
+          +1724 - Wait until $7043:1, then fade out and execute three UNKCMDs before ending side script w/ return
++132 - Waypoint Event
+ +1746 - Midas River barrel jumping intro
+  +2288 - Mallow Intro
+   +135 - Waypoint Event
+    +2289 - Tadpole Pond scene
+     +134 - Waypoint Event
+      +1723 - Open Wiggler intro level, 6,32,3 southeast run event no message return
+      \1718 - Level Event, control mario jumping
++136 - Waypoint Event
+ +150 -> Battle Pack 198 Kero Sewers BG (Dec 21 Hex 15)
+  +2397 - Load Geno Intro Level
+   +2366 - Script Geno Intro Level
+    +137 - Waypoint Event
+     +993 - Pipe Vault Intro
+      +138 - Waypoint Event
+       +151 - Battle Pack 199 Ship BG (4), goto #994 via #138
+       +994 - Yo'ster Isle intro
+        +139 - Waypoint Event
+         +995 - Docaty Railroad Intro
+          +1738 - Load/Do Bowser intro scene
+           +1730 - Waypoint Event, if $704E:3 Then skip #140 and go to #1740
+            +140 - Waypoint Event
+             +152 -> Battle, Pack 203 Mines BG (5), Then jump via #140 to #2398
+              +2398 - Open Booster Tower with Parachuters at 5,53,0 facing northeast no event no message
+               +2365 - Action Script Above Level
+                +142 - Waypoint Event
+                 +153 - Battle Pack 202 Birdo BG (Dec 23 / Hex 17), jump -> #1740
+                 +1740 - Booster Hill Scene
+                  +1731 - Waypoint Event If $074E:3 skip #143 and go to #1746
+                   +143 - Waypoint Event
+                    +154 - Battle Pack 202 Seaside Town Beach BG (Hex 25 / Dec 37), Goto Event #3839 Via #143
+                    +3839 - Sea Shore intro area
+                     +145 - Waypoint Event
+                      +155 -> Battle Pack 197 Mountains BG (Dec 10 / Hex A), Goto #997 via #145
+                      +997 - Intro level Nimbus Land w/ birdbrains
+                       +146 - Waypoint Event
+                        +156 -> Battle Czar Dragon (204) His BG (8), Goto #2290 Via #146
+                        +2290 - Booster Tower, Peach's Intro
+                         +141 - Goto #2291
+                          +2291 - Open Vista Hill level
+                           +147 - Goto #996
+                            +996 - Pipe Vault Area 01 (not faded in), "In...' text, Return.  ==END OF SCRIPTS EXECUTION HERE==

@@ -1,0 +1,74 @@
+00   Silence
+01   Dodo's Coming
+02   Mushroom Kingdom
+03   Fight Against Stronger Monster
+04   Yo'ster Island
+05   Seaside Town
+06   Fight Against Monsters
+07   Pipe Vault
+08   Invincible Star
+09   Victory
+0A   In The Flower Garden
+0B   Bowser's Castle (1st time)
+0C   Fight Against Bowser
+0D   Road Is Full Of Dangers
+0E   Mario's Pad
+0F   Here's Some Weapons
+10   Let's Race
+11   Tadpole Pond
+12   Rose Town
+13   Race Training
+14   Shock!
+15   Sad Song
+16   Midas River
+17   Got A Star Piece (part 1)
+18   Got A Star Piece (part 2)
+19   Fight Against An Armed Boss
+1A   Forest Maze
+1B   Dungeon Is Full Of Monsters
+1C   Let's Play Geno
+1D   Start Slot Menu
+1E   Long Long Ago
+1F   Booster's Tower
+20   And My Name's Booster
+21   Moleville
+22   Star Hill
+23   Mountain Railroad
+24   Explanation
+25   Booster Hill (start)
+26   Booster Hill
+27   Marrymore
+28   New Partner
+29   Sunken Ship
+2A   Still The Road Is Full Of Monsters
+2B   Silence
+2C   Sea
+2D   Heart Beating A Little Faster (part 1)
+2E   Heart Beating A Little Faster (part 2)
+2F   Grate Guy's Casino
+30   Geno Awakens
+31   Celebrational
+32   Nimbus Land
+33   Monstro Town
+34   Toadofsky
+35   Silence
+36   Happy Adventure, Delighful Adventure
+37   World Map
+38   Factory
+39   Sword Crashes And Stars Scatter
+3A   Conversation With Culex
+3B   Fight Against Culex
+3C   Victory Against Culex
+3D   Valentina
+3E   Barrel Volcano
+3F   Axem Rangers Drop In
+40   The End
+41   Gate
+42   Bowser's Castle (2nd time)
+43   Weapons Factory
+44   Fight Against Smithy 1
+45   Fight Against Smithy 2
+46   Ending Part 1
+47   Ending Part 2
+48   Ending Part 3
+49   Ending Part 4

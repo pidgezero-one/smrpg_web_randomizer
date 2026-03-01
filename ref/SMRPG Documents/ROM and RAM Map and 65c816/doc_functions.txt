@@ -1,0 +1,165 @@
+C01AE0   read room header
+
+C01B5C   load palette PTR for rooms in houses
+
+C02BC9   JSR to 2BF5
+C02BF5   load palette for most areas
+
+C02CD3   'Freebie' timer
+
+C03E93   read event data
+
+C06A56   load joypad register and store to RAM
+C06B8B   random number generator
+
+C0B975   read event pointer
+
+C0C4FF   recover all HP after fight
+C0C50C   recover all FP after fight
+
+C004B7   menu accessibility
+C004ED   inaccessible in Bowser's Castle, 1st time
+
+$C0/4E16 B9 01 00    LDA $0001,y[$DE:F82B]  load Mario's Pipehouse palette PTR
+
+C08B81   sprite mapping (SA-1)
+C0F782   decompression (SA-1)
+
+C20C4F   load spell animation data
+
+C22294   'Run Away' timer
+C2299B   Lucky Jewel counter (part 1)
+C22C07   Lamb's Lure Counter
+C22C19   Lucky Jewel counter (part 2)
+C22C6D   Mystery Egg counter
+C22FF4   fade-out code?
+C241A7   load constant to limit spell/attack name length
+
+C24973   fade-out code?
+C25DCD   monster explosion pointer (universal)
+
+C266AB   load Shocker timing ranges
+C26713   load Super/Ultra Jump, Thunderbolt, Come Back, Geno Boost
+C2676E   load Fire Orb, Super/Ultra Flame timing ranges
+C26803   load Psych Bomb, Bowser Crush timing ranges
+C2682D   load d-pad rotation timing ranges
+C268F8   load Geno Beam timing ranges
+
+C29092   load formation pack formation bytes
+C2926D   copy post-battle stats to character RAM
+C292DD   Coin Trick
+C293DE   copy monster stats to RAM
+
+C2A6A9   battle script function: ED
+
+C2AE6F   subtract FP cost
+C2B2FE   Miss
+C2B58E   load timing variables for weapon
+C2C1F4   final damage read
+C2C266   modify final damage
+C2C55E   subtract final damage from current HP
+C2BD69   damage type
+C2BE09   reusable item
+C2BEDE   check if monster dead
+C2C19E   Hit % and Evade %
+C2C266   damage modifier
+C2C55E   subtract damage from HP
+C2C6A6   Flower Bonus
+C2C7A0   status ailments
+C2C82F   regenerate HP (mushroom)
+C2C86F   reduce HP (poison)
+C2C8E3   timed attack damage modifier
+C2C952   timed defense
+C2CA23   9999 damage/instant death
+C2CF35   Geno Boost
+C2DC76   load XP won and store to current XP
+
+--------------------------------------------------------
+C2CBEB   read Super Jump timer, branch if timed too late
+
+$C2/CBEB AD DE 30    LDA $30DE  [$00:30DE]      ;load counter
+$C2/CBEE 3A          DEC A                      ;decrement
+$C2/CBEF 85 B0       STA $B0    [$00:00B0]      ;store
+$C2/CBF1 10 01       BPL $01    [$CBF4]         ;branch if greater than 0 (timed too late)
+$C2/CBF4 AE 50 07    LDX $0750  [$00:0750]   
+$C2/CBF7 86 C8       STX $C8    [$00:00C8]   
+$C2/CBF9 AE 30 07    LDX $0730  [$00:0730]   
+$C2/CBFC 86 CA       STX $CA    [$00:00CA]   
+$C2/CBFE A9 00 01    LDA #$0100              
+$C2/CC01 85 CE       STA $CE    [$00:00CE]   
+$C2/CC03 BF 5E 00 7E LDA $7E005E,x[$7E:FC5E] 
+$C2/CC07 85 C2       STA $C2    [$00:00C2]   
+$C2/CC09 BF 44 00 7E LDA $7E0044,x[$7E:FC44] 
+$C2/CC0D 89 80 00    BIT #$0080                 ;carry bit 7
+$C2/CC10 D0 06       BNE $06    [$CC18]         ;branch if bit 7 not clear
+$C2/CC18 BF 45 00 7E LDA $7E0045,x[$7E:FC45]    ;load current damage
+$C2/CC1C 18          CLC                        ;carry clear
+$C2/CC1D 65 C2       ADC $C2    [$00:00C2]      ;add damage for every jump
+$C2/CC1F 9F 45 00 7E STA $7E0045,x[$7E:FC45]    ;store to damage
+$C2/CC23 BF 11 00 7E LDA $7E0011,x[$7E:FC11]    ;load monster's current HP
+$C2/CC27 F0 1A       BEQ $1A    [$CC43]         ;branch if at 0
+$C2/CC43 60          RTS                     
+---------------------------------------------------------------
+
+C2CE85   Geno Beam final damage calculator
+
+C2CFF2   Star Rain timer
+
+C2CFAE   load 9999 variable for timed Geno Whirl
+
+C31604	starting address of overworld menu frame: top menu, character stats
+C31669	X position of character objects on overworld menu: top menu
+
+C318D6	X position of cursor on overworld menu: item menu
+
+C32742	starting address of overworld menu text: item menu, item list
+C32792	starting address of overworld menu frame: item menu, item list
+C3279F	length of overworld menu frame: item menu, item list
+
+C328DE	starting address of overworld menu frame: item menu, character stats
+C3290C	X position of character objects on overworld menu: item menu
+C32968	starting address of overworld menu frame: item menu, item description
+C3296A	length of overworld menu frame: item menu, item description
+C3296C	starting address of overworld menu frame: item menu, flowers
+C3296E	length of overworld menu frame: item menu, flowers
+
+C32E1A	starting address of overworld menu frame: status menu, battle stats
+C32E20	length of overworld menu frame: status menu, battle stats
+C32E30	X position of character objects on overworld menu: status menu
+C32F96	starting address of overworld menu text: status menu, character stats
+C32FA8	length of overworld menu text: status menu, character stats
+C32FDF	starting address of overworld menu frame: status menu, character stats
+C32FF2	length of overworld menu frame: status menu, character stats
+
+C33279	starting addresses of stats
+
+C332E5	starting address of overworld menu frame: special, character stats
+C332F0	starting address of overworld menu empty space: special, item description
+C332F8	starting address of overworld menu text: special, flowers
+C3330A	X position of character objects on overworld menu: special
+C3334E	starting address of overworld menu frame: special, specials
+C33352	starting address of overworld menu frame: special, flowers
+C33356	starting address of overworld menu frame: special, special descriptions
+C3335B	starting address of overworld menu text: special, special descriptions flower used
+C33588	starting address of overworld menu text: special, special descriptions clear space
+C335EB	starting address of overworld menu text: special, flower points
+C33632	clearer
+C33665	
+C3366D	
+C33741	starting address of overworld menu text: special, specials
+
+C3618C	starting address of overworld menu frame: switch
+C361CA	X position of character objects on overworld menu: switch
+
+C36EB6   load tilemap for overworld menu
+
+C36F5C	length of overworld menu frame: item menu, character stats
+
+C3786C   load text for overworld menu
+
+C9576D   read door exit pointer
+C96CBC   read exit field pointer
+C96DFA   read room data
+C96FB7   read room byte PTR
+
+C9CD69	check object engagement property

@@ -1,0 +1,168 @@
+C3/1878 BF A3 18 C3	;
+
+C3/1880 A2 02 00	;set sequence 02 (camera gawk)
+
+...from C3/1878...
+C3/18A3 02	 ;Mario
+	08	 ;Toadstool
+	0E	 ;Bowser
+	1A	 ;Geno
+	14	 ;Mallow
+
+C3/40AF			;load victory anim?
+
+--------------------------
+C3/5307 BF A0 F8 7F	;load Special Item inventory
+
+--------------------------
+C3/72EB	A2 82 F8	;load address for Items inventory
+--------------------------
+C3/731B A2 64 F8	;load address where Equipment is stored
+C3/732C	C2 20
+	8B 48 DA 5A
+	A2 40 29 	;transfer from 7E:2940 (items in battle)
+	A0 64 F8	;transfer to 7F:F864
+	A9 1D 00	;load 29 items
+	54 7F 7E	;begin data transfer from 7E to 7F
+--------------------------
+
+C3/7993 08          PHP                     A:400A X:0006 Y:FA80 
+C3/7994 E2 20       SEP #$20                A:400A X:0006 Y:FA80 
+C3/7996 A6 6E       LDX $6E    [$00:006E]   A:400A X:0006 Y:FA80 
+C3/7998 C2 20       REP #$20                A:400A X:0006 Y:FA80 
+C3/799A BF 00 00 FA LDA $FA0000,x[$FA:0006] A:400A X:0006 Y:FA80 
+C3/799E 85 6E       STA $6E    [$00:006E]   A:134D X:0006 Y:FA80 
+C3/79A0 E2 20       SEP #$20                A:134D X:0006 Y:FA80 
+C3/79A2 A5 70       LDA $70    [$00:0070]   A:134D X:0006 Y:FA80 
+C3/79A4 EB          XBA                     A:1300 X:0006 Y:FA80 
+C3/79A5 A5 72       LDA $72    [$00:0072]   A:0013 X:0006 Y:FA80 
+C3/79A7 20 84 04    JSR $0484  [$C3:0484]   A:000A X:0006 Y:FA80
+
+C3/79AA C2 20       REP #$20                A:0000 X:0006 Y:FA80 
+C3/79AC 18          CLC                     A:0000 X:0006 Y:FA80 
+C3/79AD 65 6E       ADC $6E    [$00:006E]   A:0000 X:0006 Y:FA80 
+C3/79AF AA          TAX                     A:134D X:0006 Y:FA80 
+C3/79B0 E2 20       SEP #$20                A:134D X:134D Y:FA80 
+C3/79B2 7B          TDC                     A:134D X:134D Y:FA80 
+C3/79B3 A8          TAY                     A:0000 X:134D Y:FA80 
+C3/79B4 A5 7E       LDA $7E    [$00:007E]   A:0000 X:134D Y:0000 
+C3/79B6 48          PHA                     A:0003 X:134D Y:0000 
+C3/79B7 A9 0E       LDA #$0E                A:0003 X:134D Y:0000 ;set counter for string length
+C3/79B9 85 7E       STA $7E    [$00:007E]   A:000E X:134D Y:0000 
+C3/79BB BF 00 00 FA LDA $FA0000,x[$FA:134D] A:000E X:134D Y:0000 ;load text
+C3/79BF C9 20       CMP #$20                A:004D X:134D Y:0000 ;check if not alphanumeric
+C3/79C1 B0 02       BCS $02    [$79C5]      A:004D X:134D Y:0000 ;branch if not alphanumeric
+
+C3/79C3 A9 20       LDA #$20                A:004D X:134D Y:0000 
+
+C3/79C5 99 95 09    STA $0995,y[$7E:0995]   A:004D X:134D Y:0000 
+C3/79C8 E8          INX                     A:004D X:134D Y:0000 
+C3/79C9 C8          INY                     A:004D X:134E Y:0000 
+C3/79CA C6 7E       DEC $7E    [$00:007E]   A:004D X:134E Y:0001 ;decrement string length counter
+C3/79CC D0 ED       BNE $ED    [$79BB]      A:004D X:134E Y:0001 
+
+C3/79CE 68          PLA                     A:0064 X:135B Y:000E 
+C3/79CF 85 7E       STA $7E    [$00:007E]   A:0003 X:135B Y:000E 
+C3/79D1 28          PLP                     A:0003 X:135B Y:000E 
+C3/79D2 60          RTS                     A:0003 X:135B Y:000E 
+
+C3/32B9 A9 0A       LDA #$0A                A:0003 X:135B Y:000E 
+C3/32BB 8D 94 09    STA $0994  [$7E:0994]   A:000A X:135B Y:000E 
+C3/32BE 20 3C 7A    JSR $7A3C  [$C3:7A3C]   A:000A X:135B Y:000E 
+
+C3/7A3C A6 70       LDX $70    [$00:0070]   A:000A X:135B Y:000E 
+C3/7A3E DA          PHX                     A:000A X:0000 Y:000E 
+C3/7A3F A6 72       LDX $72    [$00:0072]   A:000A X:0000 Y:000E 
+C3/7A41 DA          PHX                     A:000A X:FF0A Y:000E 
+C3/7A42 A5 9E       LDA $9E    [$00:009E]   A:000A X:FF0A Y:000E 
+C3/7A44 85 72       STA $72    [$00:0072]   A:0040 X:FF0A Y:000E 
+C3/7A46 64 73       STZ $73    [$00:0073]   A:0040 X:FF0A Y:000E 
+C3/7A48 A5 9D       LDA $9D    [$00:009D]   A:0040 X:FF0A Y:000E 
+C3/7A4A 0A          ASL A                   A:0000 X:FF0A Y:000E 
+C3/7A4B 0A          ASL A                   A:0000 X:FF0A Y:000E 
+C3/7A4C 09 20       ORA #$20                A:0000 X:FF0A Y:000E 
+C3/7A4E 85 71       STA $71    [$00:0071]   A:0020 X:FF0A Y:000E 
+C3/7A50 64 70       STZ $70    [$00:0070]   A:0020 X:FF0A Y:000E 
+C3/7A52 7B          TDC                     A:0020 X:FF0A Y:000E 
+C3/7A53 AA          TAX                     A:0000 X:FF0A Y:000E 
+C3/7A54 A4 62       LDY $62    [$00:0062]   A:0000 X:0000 Y:000E 
+C3/7A56 AD 94 09    LDA $0994  [$7E:0994]   A:0000 X:0000 Y:408A 
+C3/7A59 85 7C       STA $7C    [$00:007C]   A:000A X:0000 Y:408A 
+C3/7A5B 7B          TDC                     A:000A X:0000 Y:408A 
+C3/7A5C BD 95 09    LDA $0995,x[$7E:0995]   A:0000 X:0000 Y:408A 
+C3/7A5F 38          SEC                     A:004D X:0000 Y:408A 
+C3/7A60 E9 20       SBC #$20                A:004D X:0000 Y:408A 
+C3/7A62 C2 20       REP #$20                A:002D X:0000 Y:408A 
+C3/7A64 0A          ASL A                   A:002D X:0000 Y:408A 
+C3/7A65 05 70       ORA $70    [$00:0070]   A:005A X:0000 Y:408A 
+C3/7A67 99 00 00    STA $0000,y[$7E:408A]   A:205A X:0000 Y:408A 
+C3/7A6A 1A          INC A                   A:205A X:0000 Y:408A 
+C3/7A6B 91 72       STA ($72),y[$7E:40CA]   A:205B X:0000 Y:408A 
+C3/7A6D E2 20       SEP #$20                A:205B X:0000 Y:408A 
+C3/7A6F E8          INX                     A:205B X:0000 Y:408A 
+C3/7A70 C8          INY                     A:205B X:0001 Y:408A 
+C3/7A71 C8          INY                     A:205B X:0001 Y:408B 
+C3/7A72 C6 7C       DEC $7C    [$00:007C]   A:205B X:0001 Y:408C 
+C3/7A74 D0 E5       BNE $E5    [$7A5B]      A:205B X:0001 Y:408C 
+
+Moving cursor in SWITCH window
+------------------------------
+$C3/6235 E2 20       SEP #$20                A:0000 X:0078 Y:0597 P:envMxdIZC
+$C3/6237 AD 25 09    LDA $0925  [$7E:0925]   A:0000 X:0078 Y:0597 P:envMxdIZC
+$C3/623A 38          SEC                     A:0005 X:0078 Y:0597 P:envMxdIzC
+$C3/623B E9 04       SBC #$04                A:0005 X:0078 Y:0597 P:envMxdIzC
+$C3/623D 85 60       STA $60    [$00:0060]   A:0001 X:0078 Y:0597 P:envMxdIzC
+$C3/623F C2 20       REP #$20                A:0001 X:0078 Y:0597 P:envMxdIzC
+$C3/6241 A5 14       LDA $14    [$00:0014]   A:0001 X:0078 Y:0597 P:envmxdIzC
+
+$C3/6243 89 00 08    BIT #$0800              A:0800 X:0078 Y:0597 P:envmxdIzC	branch if UP pressed
+$C3/6246 D0 27       BNE $27    [$626F]      A:0800 X:0078 Y:0597 P:envmxdIzC
+$C3/6248 89 00 04    BIT #$0400              A:0400 X:0048 Y:0597 P:envmxdIZC	branch if DOWN pressed
+$C3/624B D0 2E       BNE $2E    [$627B]      A:0400 X:0048 Y:0597 P:envmxdIzC
+$C3/624D 89 00 02    BIT #$0200              A:0000 X:4784 Y:0597 P:envmxdIZC	branch if LEFT pressed
+$C3/6250 D0 46       BNE $46    [$6298]      A:0000 X:4784 Y:0597 P:envmxdIZC
+$C3/6252 89 00 01    BIT #$0100              A:0000 X:4784 Y:0597 P:envmxdIZC	branch if RIGHT pressed
+$C3/6255 D0 4D       BNE $4D    [$62A4]      A:0000 X:4784 Y:0597 P:envmxdIZC
+$C3/6257 89 80 40    BIT #$4080              A:0000 X:4784 Y:0597 P:envmxdIZC	branch if A or Y pressed
+$C3/625A D0 6C       BNE $6C    [$62C8]      A:0000 X:4784 Y:0597 P:envmxdIZC
+$C3/625C 89 00 80    BIT #$8000              A:0000 X:4784 Y:0597 P:envmxdIZC	branch if B pressed
+$C3/625F F0 03       BEQ $03    [$6264]      A:0000 X:4784 Y:0597 P:envmxdIZC
+$C3/6264 89 40 00    BIT #$0040              A:0000 X:4784 Y:0597 P:envmxdIZC	branch if X pressed
+$C3/6267 F0 03       BEQ $03    [$626C]      A:0000 X:4784 Y:0597 P:envmxdIZC
+$C3/626C E2 20       SEP #$20                A:0000 X:4784 Y:0597 P:envmxdIZC
+$C3/626E 60          RTS                     A:0000 X:4784 Y:0597 P:envMxdIZC
+
+$C3/626F E2 20       SEP #$20                A:0800 X:0078 Y:0597 P:envmxdIzC
+$C3/6271 AD 2A 09    LDA $092A  [$7E:092A]   A:0800 X:0078 Y:0597 P:envMxdIzC
+$C3/6274 F0 51       BEQ $51    [$62C7]      A:0801 X:0078 Y:0597 P:envMxdIzC	cancel if cannot move up anymore
+$C3/6276 CE 2A 09    DEC $092A  [$7E:092A]   A:0801 X:0078 Y:0597 P:envMxdIzC	move cursor up
+$C3/6279 80 3D       BRA $3D    [$62B8]      A:0801 X:0078 Y:0597 P:envMxdIZC
+
+$C3/627B E2 20       SEP #$20                A:0400 X:0048 Y:0597 P:envmxdIzC
+$C3/627D AD 29 09    LDA $0929  [$7E:0929]   A:0400 X:0048 Y:0597 P:envMxdIzC
+$C3/6280 D0 0A       BNE $0A    [$628C]      A:0400 X:0048 Y:0597 P:envMxdIZC	cancel if cannot move cursor right anymore
+$C3/6282 AD 2A 09    LDA $092A  [$7E:092A]   A:0400 X:0048 Y:0597 P:envMxdIZC
+$C3/6285 D0 40       BNE $40    [$62C7]      A:0400 X:0048 Y:0597 P:envMxdIZC	cancel if cannot move down anymore
+$C3/6287 EE 2A 09    INC $092A  [$7E:092A]   A:0400 X:0048 Y:0597 P:envMxdIZC	move cursor down
+$C3/628A 80 2C       BRA $2C    [$62B8]      A:0400 X:0048 Y:0597 P:envMxdIzC
+
+$C3/62A4 E2 20       SEP #$20                A:0100 X:0078 Y:0597 P:envmxdIzC
+$C3/62A6 AD 29 09    LDA $0929  [$7E:0929]   A:0100 X:0078 Y:0597 P:envMxdIzC
+$C3/62A9 D0 1C       BNE $1C    [$62C7]      A:0100 X:0078 Y:0597 P:envMxdIZC
+$C3/62AB EE 29 09    INC $0929  [$7E:0929]   A:0100 X:0078 Y:0597 P:envMxdIZC
+$C3/62AE A5 60       LDA $60    [$00:0060]   A:0100 X:0078 Y:0597 P:envMxdIzC
+$C3/62B0 CD 2A 09    CMP $092A  [$7E:092A]   A:0101 X:0078 Y:0597 P:envMxdIzC
+$C3/62B3 B0 03       BCS $03    [$62B8]      A:0101 X:0078 Y:0597 P:envMxdIZC
+$C3/62B8 9C 2F 09    STZ $092F  [$7E:092F]   A:0101 X:0078 Y:0597 P:envMxdIZC
+$C3/62BB A9 03       LDA #$03                A:0101 X:0078 Y:0597 P:envMxdIZC
+$C3/62BD 85 70       STA $70    [$00:0070]   A:0103 X:0078 Y:0597 P:envMxdIzC
+$C3/62BF 20 BE 7A    JSR $7ABE  [$C3:7ABE]   A:0103 X:0078 Y:0597 P:envMxdIzC
+
+$C3/62B8 9C 2F 09    STZ $092F  [$7E:092F]   A:0801 X:0078 Y:0597 P:envMxdIZC
+$C3/62BB A9 03       LDA #$03                A:0801 X:0078 Y:0597 P:envMxdIZC
+$C3/62BD 85 70       STA $70    [$00:0070]   A:0803 X:0078 Y:0597 P:envMxdIzC
+$C3/62BF 20 BE 7A    JSR $7ABE  [$C3:7ABE]   A:0803 X:0078 Y:0597 P:envMxdIzC
+
+---------------------------------------------------------------------------------
+C3/7383 A9 14       LDA #$14                A:0000 X:0000 Y:FA80 ;copies this many bytes from battle RAM to overworld RAM
+

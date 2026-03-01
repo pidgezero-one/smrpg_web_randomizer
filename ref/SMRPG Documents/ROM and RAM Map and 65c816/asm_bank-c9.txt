@@ -1,0 +1,93 @@
+40:0FFE - If 1, show exor+move title screen down
+40:0FFE saves to 00:62A1 (for checks for move title Ypos up/bg down)
+
+C9/E640 AF FE 0F 40 LDA $400FFE[$40:0FFE]   A:001E X:001E Y:7ACB ;loads title screen mod flag
+C9/E644 8D A1 62    STA $62A1  [$00:62A1]   A:0001 X:001E Y:7ACB ;saves to 00:62A1
+C9/E647 9C 01 60    STZ $6001  [$00:6001]   A:0001 X:001E Y:7ACB
+C9/E64A 9C 02 60    STZ $6002  [$00:6002]   A:0001 X:001E Y:7ACB
+C9/E64D 9C 03 60    STZ $6003  [$00:6003]   A:0001 X:001E Y:7ACB
+C9/E650 9C 04 60    STZ $6004  [$00:6004]   A:0001 X:001E Y:7ACB
+C9/E653 9C 05 60    STZ $6005  [$00:6005]   A:0001 X:001E Y:7ACB
+C9/E656 9C 06 60    STZ $6006  [$00:6006]   A:0001 X:001E Y:7ACB
+C9/E659 9C 07 60    STZ $6007  [$00:6007]   A:0001 X:001E Y:7ACB
+C9/E65C 9C 9A 62    STZ $629A  [$00:629A]   A:0001 X:001E Y:7ACB
+C9/E65F 9C B0 62    STZ $62B0  [$00:62B0]   A:0001 X:001E Y:7ACB
+
+C9/E662 AD A1 62    LDA $62A1  [$00:62A1]   A:0001 X:001E Y:7ACB ;if set, mods title screen
+C9/E665 D0 0B       BNE $0B    [$E672]      A:0001 X:001E Y:7ACB
+
+C9/E667 9C 00 60    STZ $6000  [$00:6000]   A:0001 X:001E Y:4B35
+C9/E66A A2 B0 00    LDX #$00B0              A:0001 X:001E Y:4B35 ;set Ypos of background (before Exor)
+C9/E66D 8E 98 62    STX $6298  [$00:6298]   A:0001 X:00B0 Y:4B35
+C9/E670 80 1E       BRA $1E    [$E690]      A:0001 X:00B0 Y:4B35
+
+title screen mods (adds exor + lowers Bowser's Keep in background)
+C9/E672 A9 01       LDA #$01                A:0001 X:001E Y:7ACB ;add one sprite? (Exor)
+C9/E674 8D 00 60    STA $6000  [$00:6000]   A:0001 X:001E Y:7ACB
+C9/E677 A2 08 60    LDX #$6008              A:0001 X:001E Y:7ACB
+C9/E67A A9 70       LDA #$70                A:0001 X:6008 Y:7ACB ;set Xpos of Exor
+C9/E67C 95 00       STA $00,x  [$00:6008]   A:0070 X:6008 Y:7ACB
+C9/E67E 74 01       STZ $01,x  [$00:6009]   A:0070 X:6008 Y:7ACB
+C9/E680 A9 64       LDA #$64                A:0070 X:6008 Y:7ACB ;set Ypos of Exor
+C9/E682 95 02       STA $02,x  [$00:600A]   A:0064 X:6008 Y:7ACB
+C9/E684 74 03       STZ $03,x  [$00:600B]   A:0064 X:6008 Y:7ACB
+C9/E686 A9 01       LDA #$01                A:0064 X:6008 Y:7ACB
+C9/E688 95 07       STA $07,x  [$00:600F]   A:0001 X:6008 Y:7ACB
+C9/E68A A2 98 00    LDX #$0098              A:0001 X:6008 Y:7ACB ;set Ypos of background
+C9/E68D 8E 98 62    STX $6298  [$00:6298]   A:0001 X:0098 Y:7ACB
+
+C9/E690 A9 0F       LDA #$0F                A:0001 X:0098 Y:7ACB
+C9/E692 8D 00 30    STA $3000  [$00:3000]   A:000F X:0098 Y:7ACB
+C9/E695 20 16 E9    JSR $E916  [$C9:E916]   A:000F X:0098 Y:7ACB
+
+--------------
+Loads Title (SUPER MARIO RPG)
+C9/E745 AD A1 62    LDA $62A1  [$00:62A1]   A:000F X:0000 Y:0000 ;checks title mods flag
+C9/E748 1A          INC A                   A:0000 X:0000 Y:0000 ;adds 1 to A:
+C9/E749 8D A9 62    STA $62A9  [$00:62A9]   A:0001 X:0000 Y:0000 ;Saves to Ypos of title graphic
+C9/E74C 20 71 EE    JSR $EE71  [$C9:EE71]   A:0001 X:0000 Y:0000 ;loads title graphic
+	20 A1 E3
+	20 83 EF
+	20 18 EE
+	20 A1 E3
+	20 62 E8
+	90 03
+--------------
+Loads Title's Banner (Legend of the Seven Stars)
+These coordinates only matter after the intro demo ends (without the player pressing any buttons to skip straight to the title)
+C9/E80E AD A1 62    LDA $62A1  [$00:62A1]   A:EE80 X:0000 Y:0020 ;checks title mods flag
+C9/E811 D0 09       BNE $09    [$E81C]      A:EE01 X:0000 Y:0020
+
+C9/E813 A2 C0 55    LDX #$55C0              A:EE01 X:0000 Y:0020 ;coordinates for company credits (before Exor)
+C9/E816 DA          PHX                     A:EE01 X:0000 Y:0020
+C9/E817 A2 00 4C    LDX #$4C00              A:EE01 X:0000 Y:0020 ;coordinates for title's banner (before Exor)
+C9/E81A 80 07       BRA $07    [$E823]      A:EE01 X:0000 Y:0020
+
+C9/E81C A2 80 55    LDX #$5580              A:EE01 X:0000 Y:0020 ;coordinates for company credits (after Exor)
+C9/E81F DA          PHX                     A:EE01 X:5580 Y:0020
+C9/E820 A2 80 4B    LDX #$4B80              A:EE01 X:5580 Y:0020 ;coordinates for title's banner (after Exor)
+
+C9/E823 8E 16 21    STX $2116  [$00:2116]   A:EE01 X:4B80 Y:0020
+C9/E826 A9 7E       LDA #$7E                A:EE01 X:4B80 Y:0020
+C9/E828 A2 60 DD    LDX #$DD60              A:EE7E X:4B80 Y:0020
+-------------
+C9/E9DE AD A1 62 ;checks title mods flag
+C9/E9E1 D0 09	 ;jump
+
+C9/E9E3 A2 C0 55 ; coordinates company credits (before Exor)
+		DA	  
+C9/E9E7 A2 40 4B ; coordinates Title SUPER MARIO RPG (before Exor)
+		80 07 
+
+C9/E9EC A2 80 55 ; coordinates company credits (after Exor)
+		DA
+C9/E9F0 A2 C0 4A ; coordinates Title SUPER MARIO RPG (after Exor)
+
+		8E 16 21 ;save title coordinates
+-------------
+These coordinates only matter after the intro demo ends (without the player pressing any buttons to skip straight to the title)
+
+C9/EF4B A2 C0 4A ; coordinates Title SUPER MARIO RPG (after Exor)
+		80 08
+C9/EF50 A2 40 4B ; coordinates Title SUPER MARIO RPG (before Exor)
+		80 03

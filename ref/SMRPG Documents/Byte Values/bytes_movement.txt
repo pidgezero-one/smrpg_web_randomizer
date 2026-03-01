@@ -1,0 +1,1028 @@
+OBJECT ANIMATION MOVEMENTS
+
+BYTE	ACTION
+--------------
+000	waiting
+001	jumping up/down
+002	---
+003	waiting
+004	waiting
+005	waiting/stop
+006	invisible
+007	shock/cast
+008	shock/stop
+009	---
+00A	transform
+00B	slide/stop
+00C	waiting animation
+00D	nothing
+00E	hovering, twitching
+00F	nothing
+010	nothing
+011	leaning backwards, twitching
+012	completely gone
+013	nothing
+014	completely gone
+015	move back and forth at random speed/intervals
+016	jump up and down, no noise
+017	jump up and down very fast
+018	move left and right at random intervals
+019	look foward then left over and over
+01A	waiting animation, skip middle frame, fast
+01B	move(slide?) left and right VERY fast
+01C	Mario Doll surprise?
+01D	move only left slowly, then return right at random intervals
+01E	move only foward slowly, then return back at random intervals
+01F	slide fast to the right, convulse, move back left, special animation
+020	slide around in random directions/intervals for couple of seconds, then vanish
+021	slide around in random directions/intervals for couple of seconds, then vanish
+022	slide around in random directions/intervals for couple of seconds, then vanish
+023	slide around in random directions/intervals for couple of seconds, then vanish
+024	hover backwards then vanish
+025	run foward, jump, run backward, surprise, continue backwards
+026	hop hop, attack, move backward, attack
+027	nothing
+028	nothing
+029	reverse casting animation, facing 90 degrees clockwise
+02A	reverse casting animation
+02B	completely gone
+02C	wiggle to the right, hop left
+02D	jump to the left the fade away, flower sound
+02E	waiting animation, vanish after several seconds
+02F	completely gone
+030	running in random directions/intervals, randomly hopping around
+031	walking in random directions/intervals, never to the right (set sequence)
+032	walking in random directions/intervals, never foward past initial spot (set sequence)
+033	nothing
+034	float up high, then drop
+035	float up higher, then drop
+036	rush foward, wiggle foward a bit, rush back
+037	nothing
+038	nothing
+039	walk quickly in random directions/intervals but never behind initial spot
+03A	hiding, then ambush to the left when Mario approaches, go back to hiding
+03B	move in a line at equal intervals, sometimes hopping, changing cardinal directions
+03C	teleporting and hovering around in random places, attack animation
+03D	move backward at equal intervals, look foward once, randomly move foward
+03E	move in a square perimeter, left of intial spot
+03F	completely gone
+040	running fast in a larger square perimeter, left of initial spot
+041	walk to the right continuously the vanish (only once)
+042	move to the right, stop, then vanish
+043	move right then left initial, stop (only twice)
+044	move foward then back initial, stop (only twice)
+045	few pixels back, one unit off ground floor, no animation
+046	move foward one unit, hop twice, facing to the left, stop (only once)
+047	few pixels back, one unit off ground floor, no animation
+048	move right, stop, move back left initial, look foward once
+049	move foward, stop, move back initial, look foward once
+04A	few pixels back, one unit off ground floor, no animation
+04B	few pixels back, one unit off ground floor, no animation
+04C	casting animation middle frame then initial, quick sequence
+04D	special animation, looks left then foward
+04E	rolling Goomba animation, no movement before
+04F	jumping up and down
+050	shocked sprite, blinking/teleport foward	at equal intervals, then back initial
+051	gyrating animation
+052	gyrating animation, 
+053	gyrating animation, shocked sprite
+054	move left then disappear
+055	gyrating animation, 
+056	twitching
+057	gyrating animation, one unit left/several units down from initial
+058	gyrating animation, one unit right/several units down from initial, 
+059	gyrating animation, one unit back from initial, 
+05A	nothing, then shocked sprite, gyrating animation, look left (only once)
+05B	move foward only one unit, gyrating animation
+05C	shocked sprite, hovering left/right one unit
+05D	hovering gyrating animation
+05E	look back and forth a few times with sound, gyrating animation
+05F	facing left, nothing, off ground
+060	facing left, gyrating animation, skip middle frame
+061	nothing, then vanish
+062	float left then back right initial at random time units
+063	jumping up and down
+064	completely gone
+065	bouncing up and down, w/sound
+066	bouncing up and down, w/sound
+067	bouncing up and down, w/sound
+068	bounce left then stop, facing left, w/sound
+069	bounce back then stop, facing left, w/sound
+06A	bounce right then stop, facing foward, w/sound
+06B	bounce foward then stop, facing foward, w/sound
+06C	bounce twice left then stop
+06D	bouncing up and down higher
+06E	bounce in from the right, stop completely at initial, w/sound
+06F	invisible, appear then bounce foward then vanish, appear then bounce backward then vanish
+070	invisible, appear then move foward then vanish, appear then move back then vanish (only once)
+071	shaking/twitching very fast
+072	gyrating animation, skip middle frame
+073	bouncing one unit in random directions, never back, w/sound
+074	bouncing one unit in random directions, never left, w/sound
+075	sliding right the left back to initial over and over, facing left
+076	waiting animation
+077	waiting animation, slow
+078	waiting animation, hovering
+079	look left/foward randomly
+07A	bouncing one unit in random directions, never right, w/sound
+07B	bouncing one unit in random directions, never foward or left, w/sound
+07C	bounce twice at initial, then foward, then back
+07D	bounce twice at initial, then left, then right
+07E	waiting animation
+07F	convulse then disappear
+080	
+081	
+082	
+083	
+084	
+085	
+086	
+087	
+088	
+089	
+08A	
+08B	
+08C	
+08D	
+08E	
+08F	
+090	
+091	
+092	
+093	
+094	
+095	
+096	
+097	
+098	
+099	
+09A	
+09B	
+09C	
+09D	
+09E	
+09F	
+0A0	
+0A1	
+0A2	
+0A3	
+0A4	
+0A5	
+0A6	
+0A7	
+0A8	
+0A9	
+0AA	
+0AB	
+0AC	
+0AD	
+0AE	
+0AF	
+0B0	
+0B1	
+0B2	
+0B3	
+0B4	
+0B5	
+0B6	
+0B7	
+0B8	
+0B9	
+0BA	
+0BB	
+0BC	
+0BD	
+0BE	
+0BF	
+0C0	
+0C1	
+0C2	
+0C3	
+0C4	
+0C5	
+0C6	
+0C7	
+0C8	
+0C9	
+0CA	
+0CB	
+0CC	
+0CD	
+0CE	
+0CF	
+0D0	
+0D1	
+0D2	
+0D3	
+0D4	
+0D5	
+0D6	
+0D7	
+0D8	
+0D9	
+0DA	
+0DB	
+0DC	
+0DD	
+0DE	
+0DF	
+0E0	
+0E1	
+0E2	
+0E3	
+0E4	
+0E5	
+0E6	
+0E7	
+0E8	
+0E9	
+0EA	
+0EB	
+0EC	
+0ED	
+0EE	
+0EF	
+0F0	
+0F1	
+0F2	
+0F3	
+0F4	
+0F5	
+0F6	
+0F7	
+0F8	
+0F9	
+0FA	
+0FB	
+0FC	
+0FD	
+0FE	
+0FF	
+100	
+101	
+102	
+103	
+104	
+105	
+106	
+107	
+108	
+109	
+10A	
+10B	
+10C	
+10D	
+10E	
+10F	
+110	
+111	
+112	
+113	
+114	
+115	
+116	
+117	
+118	
+119	
+11A	
+11B	
+11C	
+11D	
+11E	
+11F	
+120	
+121	
+122	
+123	
+124	
+125	
+126	
+127	
+128	
+129	
+12A	
+12B	
+12C	
+12D	
+12E	
+12F	
+130	
+131	
+132	
+133	
+134	
+135	
+136	
+137	
+138	
+139	
+13A	
+13B	
+13C	
+13D	
+13E	
+13F	
+140	
+141	
+142	
+143	
+144	
+145	
+146	
+147	
+148	
+149	
+14A	
+14B	
+14C	
+14D	
+14E	
+14F	
+150	
+151	
+152	
+153	
+154	
+155	
+156	
+157	
+158	
+159	
+15A	
+15B	
+15C	
+15D	
+15E	
+15F	
+160	
+161	
+162	
+163	
+164	
+165	
+166	
+167	
+168	
+169	
+16A	
+16B	
+16C	
+16D	
+16E	
+16F	
+170	
+171	
+172	
+173	
+174	
+175	
+176	
+177	
+178	
+179	
+17A	
+17B	
+17C	
+17D	
+17E	
+17F	
+180	
+181	
+182	
+183	
+184	
+185	
+186	
+187	
+188	
+189	
+18A	
+18B	
+18C	
+18D	
+18E	
+18F	
+190	
+191	
+192	
+193	
+194	
+195	
+196	
+197	
+198	
+199	
+19A	
+19B	
+19C	
+19D	
+19E	
+19F	
+1A0	
+1A1	
+1A2	
+1A3	
+1A4	
+1A5	
+1A6	
+1A7	
+1A8	
+1A9	
+1AA	
+1AB	
+1AC	
+1AD	
+1AE	
+1AF	
+1B0	
+1B1	
+1B2	
+1B3	
+1B4	
+1B5	
+1B6	
+1B7	
+1B8	
+1B9	
+1BA	
+1BB	
+1BC	
+1BD	
+1BE	
+1BF	
+1C0	
+1C1	
+1C2	
+1C3	
+1C4	
+1C5	
+1C6	
+1C7	
+1C8	
+1C9	
+1CA	
+1CB	
+1CC	
+1CD	
+1CE	
+1CF	
+1D0	
+1D1	
+1D2	
+1D3	
+1D4	
+1D5	
+1D6	
+1D7	
+1D8	
+1D9	
+1DA	
+1DB	
+1DC	
+1DD	
+1DE	
+1DF	
+1E0	
+1E1	
+1E2	
+1E3	
+1E4	
+1E5	
+1E6	
+1E7	
+1E8	
+1E9	
+1EA	
+1EB	
+1EC	
+1ED	
+1EE	
+1EF	
+1F0	
+1F1	
+1F2	
+1F3	
+1F4	
+1F5	
+1F6	
+1F7	
+1F8	
+1F9	
+1FA	
+1FB	
+1FC	
+1FD	
+1FE	
+1FF	
+200	
+201	
+202	
+203	
+204	
+205	
+206	
+207	
+208	
+209	
+20A	
+20B	
+20C	
+20D	
+20E	
+20F	
+210	
+211	
+212	
+213	
+214	
+215	
+216	
+217	
+218	
+219	
+21A	
+21B	
+21C	
+21D	
+21E	
+21F	
+220	
+221	
+222	
+223	
+224	
+225	
+226	
+227	
+228	
+229	
+22A	
+22B	
+22C	
+22D	
+22E	
+22F	
+230	
+231	
+232	
+233	
+234	
+235	
+236	
+237	
+238	
+239	
+23A	
+23B	
+23C	
+23D	
+23E	
+23F	
+240	
+241	
+242	
+243	
+244	
+245	
+246	
+247	
+248	
+249	
+24A	
+24B	
+24C	
+24D	
+24E	
+24F	
+250	
+251	
+252	
+253	
+254	
+255	
+256	
+257	
+258	
+259	
+25A	
+25B	
+25C	
+25D	
+25E	
+25F	
+260	
+261	
+262	
+263	
+264	
+265	
+266	
+267	
+268	
+269	
+26A	
+26B	
+26C	
+26D	
+26E	
+26F	
+270	
+271	
+272	
+273	
+274	
+275	
+276	
+277	
+278	
+279	
+27A	
+27B	
+27C	
+27D	
+27E	
+27F	
+280	
+281	
+282	
+283	
+284	
+285	
+286	
+287	
+288	
+289	
+28A	
+28B	
+28C	
+28D	
+28E	
+28F	
+290	
+291	
+292	
+293	
+294	
+295	
+296	
+297	
+298	
+299	
+29A	
+29B	
+29C	
+29D	
+29E	
+29F	
+2A0	
+2A1	
+2A2	
+2A3	
+2A4	
+2A5	
+2A6	
+2A7	
+2A8	
+2A9	
+2AA	
+2AB	
+2AC	
+2AD	
+2AE	
+2AF	
+2B0	
+2B1	
+2B2	
+2B3	
+2B4	
+2B5	
+2B6	
+2B7	
+2B8	
+2B9	
+2BA	
+2BB	
+2BC	
+2BD	
+2BE	
+2BF	
+2C0	
+2C1	
+2C2	
+2C3	
+2C4	
+2C5	
+2C6	
+2C7	
+2C8	
+2C9	
+2CA	
+2CB	
+2CC	
+2CD	
+2CE	
+2CF	
+2D0	
+2D1	
+2D2	
+2D3	
+2D4	
+2D5	
+2D6	
+2D7	
+2D8	
+2D9	
+2DA	
+2DB	
+2DC	
+2DD	
+2DE	
+2DF	
+2E0	
+2E1	
+2E2	
+2E3	
+2E4	
+2E5	
+2E6	
+2E7	
+2E8	
+2E9	
+2EA	
+2EB	
+2EC	
+2ED	
+2EE	
+2EF	
+2F0	
+2F1	
+2F2	
+2F3	
+2F4	
+2F5	
+2F6	
+2F7	
+2F8	
+2F9	
+2FA	
+2FB	
+2FC	
+2FD	
+2FE	
+2FF	
+300	move around in random directions/speeds === USE: Geckits in Land's End Underground
+301	
+302	
+303	
+304	
+305	
+306	
+307	
+308	
+309	
+30A	
+30B	
+30C	
+30D	
+30E	
+30F	
+310	
+311	
+312	
+313	
+314	
+315	
+316	
+317	
+318	
+319	
+31A	
+31B	
+31C	
+31D	
+31E	
+31F	
+320	
+321	
+322	
+323	
+324	
+325	
+326	
+327	
+328	
+329	
+32A	
+32B	
+32C	
+32D	
+32E	
+32F	
+330	
+331	
+332	
+333	
+334	
+335	
+336	
+337	
+338	
+339	
+33A	
+33B	
+33C	
+33D	
+33E	
+33F	
+340	
+341	
+342	
+343	
+344	
+345	
+346	
+347	
+348	
+349	
+34A	
+34B	
+34C	
+34D	
+34E	
+34F	
+350	
+351	
+352	
+353	
+354	
+355	
+356	
+357	
+358	
+359	
+35A	
+35B	
+35C	
+35D	
+35E	
+35F	
+360	
+361	
+362	
+363	
+364	
+365	
+366	
+367	
+368	
+369	
+36A	
+36B	
+36C	
+36D	
+36E	
+36F	
+370	
+371	
+372	
+373	
+374	
+375	
+376	
+377	
+378	
+379	
+37A	
+37B	
+37C	
+37D	
+37E	
+37F	
+380	
+381	
+382	
+383	
+384	
+385	
+386	
+387	
+388	
+389	
+38A	
+38B	
+38C	
+38D	
+38E	
+38F	
+390	
+391	
+392	
+393	
+394	
+395	
+396	
+397	
+398	
+399	
+39A	
+39B	
+39C	
+39D	
+39E	
+39F	
+3A0	
+3A1	
+3A2	
+3A3	
+3A4	
+3A5	
+3A6	
+3A7	
+3A8	
+3A9	
+3AA	
+3AB	
+3AC	
+3AD	
+3AE	
+3AF	
+3B0	
+3B1	
+3B2	
+3B3	
+3B4	
+3B5	
+3B6	
+3B7	
+3B8	
+3B9	
+3BA	
+3BB	
+3BC	
+3BD	
+3BE	
+3BF	
+3C0	
+3C1	
+3C2	
+3C3	
+3C4	
+3C5	
+3C6	
+3C7	
+3C8	
+3C9	
+3CA	
+3CB	
+3CC	
+3CD	
+3CE	
+3CF	
+3D0	
+3D1	
+3D2	
+3D3	
+3D4	
+3D5	
+3D6	
+3D7	
+3D8	
+3D9	
+3DA	
+3DB	
+3DC	
+3DD	
+3DE	
+3DF	
+3E0	
+3E1	
+3E2	
+3E3	
+3E4	
+3E5	
+3E6	
+3E7	
+3E8	
+3E9	
+3EA	
+3EB	
+3EC	
+3ED	
+3EE	
+3EF	
+3F0	
+3F1	
+3F2	
+3F3	
+3F4	
+3F5	
+3F6	
+3F7	
+3F8	
+3F9	
+3FA	
+3FB	
+3FC	
+3FD	
+3FE	
+3FF	
