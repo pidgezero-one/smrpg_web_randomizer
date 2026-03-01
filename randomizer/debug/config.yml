@@ -19,10 +19,6 @@ starting_coins: 9999
 # starting_frog_coins: Number of frog coins to start with (0-255). Default: 99
 starting_frog_coins: 99
 
-items:
+# items:
   # Override specific locations with specific prizes for chest packet testing
-  override:
-    RoseTownTreasureHouseUpperChestLocation: CymbalsPrize
-    MushroomKingdomBossFight: ValentinaBossFight
-    BanditsWayPlatformsRightChestLocation: PickMeUpPrize
-
+  # override:

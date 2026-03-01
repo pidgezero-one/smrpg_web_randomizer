@@ -2204,6 +2204,7 @@ class MarioPaletteOptions(CategorizationOption):
     MARLON = "Marlon"
     GRANDDAD = "Grand Dad"
     BLUE2 = "Blue2"
+    KRIS = "Kris"
 
 
 class MarioPaletteChoice(SelectOneFlag[MarioPaletteOptions]):
@@ -2273,6 +2274,7 @@ class GenoPaletteOptions(CategorizationOption):
     GREY = "Grey"
     GREEN = "Green"
     DARK = "Dark"
+    RALSEI = "Ralsei"
 
 
 class GenoPaletteChoice(SelectOneFlag[GenoPaletteOptions]):
@@ -2305,6 +2307,7 @@ class BowserPaletteOptions(CategorizationOption):
     ZECCET = "Zeccet"
     BLUE = "Melee Blue"
     SKING = "S.King"
+    SUSIE = "Susie"
 
 
 class BowserPaletteChoice(SelectOneFlag[BowserPaletteOptions]):

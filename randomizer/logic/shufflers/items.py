@@ -1,12 +1,13 @@
 """Item and prize shuffling logic."""
 
 from __future__ import annotations
+import os
 import random
 from copy import copy
+from datetime import datetime
 from typing import TYPE_CHECKING, cast
 
 from randomizer.types.item import Equipment
-from randomizer.types.logic import Inventory
 from smrpgpatchbuilder.datatypes.spells.enums import Status, Element
 
 from ...data.items import (
@@ -34,7 +35,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 from ...types.gameworld import CookiesPrize, MarioDollPrize
 from ...data.rooms.npcs import EMPTY_NPC
 
-from ..placement import PlacementException, place, diagnose_empty_locations, collect_accessible_items
+from ..placement import PlacementException, place, collect_accessible_items
 from ...types.prize import (
     CharacterPrize,
     CoinQuantityPrize,
@@ -280,6 +281,8 @@ from ...progression.prizes import (
     ExpBoosterPrize,
     ScroogeRingPrize,
     # Boss fight prizes for gating
+    HammerBrosFight,
+    MackBossFight,
     BowyerBossFight,
     PunchinelloBossFight,
     BundtBossFight,
@@ -320,7 +323,6 @@ from ...data.spells.spells import (
     ComeBackSpell,
     PsychBombSpell,
 )
-from randomizer.debug import load_debug_config, get_prize_class, get_location_class
 
 
 if TYPE_CHECKING:
@@ -397,6 +399,112 @@ MANDATORY_INCLUSIONS = 2
 LOW_PRIORITY = 3
 
 TIERS_CAN_OVERFLOW = [LOW_PRIORITY]
+
+TIER_NAMES = {
+    PROGRESSION_PRIZES: "PROGRESSION",
+    RESTRICTED_PRIZES: "RESTRICTED",
+    MANDATORY_INCLUSIONS: "MANDATORY_INCLUSIONS",
+    LOW_PRIORITY: "LOW_PRIORITY",
+}
+
+
+def _dump_placement_failure(
+    world: GameWorld,
+    pool_before: dict[int, list[str]],
+    unplaced_items: list[str],
+    priority_classes: set[type[Prize]] | None = None,
+) -> str:
+    """Write a debug dump to a timestamped file when placement fails.
+
+    Returns the path to the written file.
+    """
+    from ..placement import collect_accessible_items
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_dir = os.path.join(os.path.dirname(__file__), "..", "..", "debug", "placement_logs")
+    os.makedirs(log_dir, exist_ok=True)
+    filepath = os.path.join(log_dir, f"placement_fail_{timestamp}.txt")
+
+    player_has = collect_accessible_items(world)
+
+    lines: list[str] = []
+    lines.append(f"PLACEMENT FAILURE - {datetime.now().isoformat()}")
+    lines.append("=" * 80)
+
+    # 1) Pool contents before placement, by tier
+    lines.append("")
+    lines.append("POOL BEFORE PLACEMENT (by tier)")
+    lines.append("-" * 40)
+    for tier_id in sorted(pool_before.keys()):
+        tier_name = TIER_NAMES.get(tier_id, f"TIER_{tier_id}")
+        items = pool_before[tier_id]
+        lines.append(f"  {tier_name} ({len(items)} items):")
+        for item_name in sorted(items):
+            lines.append(f"    - {item_name}")
+
+    # 2) Priority classes used for placement
+    lines.append("")
+    lines.append("PRIORITY CLASSES (high-volume items)")
+    lines.append("-" * 40)
+    if priority_classes:
+        for cls_name in sorted(cls.__name__ for cls in priority_classes):
+            lines.append(f"  - {cls_name}")
+    else:
+        lines.append("  (none)")
+
+    # 3) Unplaceable items
+    lines.append("")
+    lines.append(f"UNPLACEABLE ITEMS ({len(unplaced_items)})")
+    lines.append("-" * 40)
+    for name in sorted(unplaced_items):
+        lines.append(f"  - {name}")
+
+    # 3) Already placed items and their locations
+    placed: list[tuple[str, str]] = []
+    for loc in world.locations.values():
+        if loc.has_item:
+            placed.append((type(loc).__name__, type(loc.prize).__name__))
+    placed.sort()
+
+    lines.append("")
+    lines.append(f"PLACED ITEMS ({len(placed)})")
+    lines.append("-" * 40)
+    for loc_name, prize_name in placed:
+        lines.append(f"  {loc_name}: {prize_name}")
+
+    # 4) Accessible locations with no item
+    accessible_empty: list[str] = []
+    for loc in world.locations.values():
+        if loc.can_access(player_has, world) and not loc.has_item:
+            accessible_empty.append(type(loc).__name__)
+    accessible_empty.sort()
+
+    lines.append("")
+    lines.append(f"ACCESSIBLE EMPTY LOCATIONS ({len(accessible_empty)})")
+    lines.append("-" * 40)
+    for name in accessible_empty:
+        lines.append(f"  - {name}")
+
+    # 5) Inaccessible locations
+    inaccessible: list[str] = []
+    for loc in world.locations.values():
+        if not loc.can_access(player_has, world):
+            prize_info = type(loc.prize).__name__ if loc.has_item else "(empty)"
+            inaccessible.append(f"{type(loc).__name__}: {prize_info}")
+    inaccessible.sort()
+
+    lines.append("")
+    lines.append(f"INACCESSIBLE LOCATIONS ({len(inaccessible)})")
+    lines.append("-" * 40)
+    for entry in inaccessible:
+        lines.append(f"  - {entry}")
+
+    text = "\n".join(lines) + "\n"
+    with open(filepath, "w") as f:
+        f.write(text)
+
+    print(f"[DEBUG] Placement failure dump written to: {filepath}")
+    return filepath
 
 def select_spells(world: GameWorld) -> list[type[Prize]]:
     # All 27 spell prize classes
@@ -994,6 +1102,81 @@ def remove_prize_from_pool(pool: dict[int, list[Prize]], prize_class: type[Prize
     )
 
 
+def _build_priority_classes(world: GameWorld) -> set[type[Prize]]:
+    """Build the set of high-unlock-volume prize types for priority placement.
+
+    These items unlock many downstream checks, so they should be placed
+    earlier and spread throughout the placement order rather than clumping
+    at the end.
+    """
+    priority: set[type[Prize]] = {
+        BambinoBombPrize,
+        CastleKey1Prize,
+        CastleKey2Prize,
+        GoldPaintPrize,
+        StayVoucherPrize,
+        TempleKeyPrize,
+    }
+
+    # MarioDollPrize if Booster Tower completion gates downstream areas
+    if (
+        world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.TOWER)
+        or world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.TOWER)
+    ):
+        priority.add(MarioDollPrize)
+
+    # Star pieces if any area is star-gated
+    if (
+        world.settings.is_flag_value(SeaGate, SeaGating.STAR_4)
+        or world.settings.is_flag_value(LandsEndGate, LandsEndGating.STAR_5)
+        or world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6)
+        or world.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6)
+    ):
+        priority.add(StarPiecePrize)
+
+    # Boss fights that are required for gating in AreaAccessSubcategory flags
+    boss_gating: list[tuple[type, object, type[Prize]]] = [
+        (BanditsWayGate, BanditsWayGating.HAMMER_BRO, HammerBrosFight),
+        (KeroSewersGate, KeroSewersGating.MACK, MackBossFight),
+        (PipeVaultGate, PipeVaultGating.BOWYER, BowyerBossFight),
+        (Moleville1Gate, Moleville1Gating.BOWYER, BowyerBossFight),
+        (BoosterTowerGate, BoosterTowerGating.PUNCHINELLO, PunchinelloBossFight),
+        (BoosterHillGate, BoosterHillGating.KGGG, KnifeGuyGrateGuyBossFight),
+        (MarrymoreGate, MarrymoreGating.KGGG, KnifeGuyGrateGuyBossFight),
+        (SeaGate, SeaGating.BUNDT, BundtBossFight),
+        (YaridovichGate, YaridovichGating.JOHNNY, JohnnyBossFight),
+        (LandsEndGate, LandsEndGating.YARIDOVICH, YaridovichBossFight),
+        (MonstroTownGate, MonstroTownGating.BELOME_2, Belome2BossFight),
+        (NimbusGate, NimbusGating.MEGASMILAX, MegasmilaxBossFight),
+        (BarrelVolcanoGate, BarrelVolcanoGating.VALENTINA, ValentinaBossFight),
+        (BowsersKeepGate, BowsersKeepGating.AXEM, AxemRangersBossFight),
+    ]
+    for gate, gating_value, boss_prize in boss_gating:
+        if world.settings.is_flag_value(gate, gating_value):
+            priority.add(boss_prize)
+
+    # Conditional key items
+    if world.settings.is_flag_value(LandsEndGate, LandsEndGating.ELDER):
+        priority.add(ShedKeyPrize)
+
+    if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
+        priority.add(RareFrogCoinPrize)
+
+    if world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.PIE):
+        priority.add(CricketPiePrize)
+
+    # All character recruitment prizes
+    priority.update({
+        MarioRecruitmentPrize,
+        MallowRecruitmentPrize,
+        GenoRecruitmentPrize,
+        BowserRecruitmentPrize,
+        ToadstoolRecruitmentPrize,
+    })
+
+    return priority
+
+
 def shuffle_prizes(world: GameWorld) -> None:
     pool: dict[int, list[Prize]] = {
         PROGRESSION_PRIZES: [],
@@ -1018,10 +1201,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     world._spell_assignments = None
 
     rules = shuffle_rules(world)
-    config = {}
-    if world.settings.debug_mode:
-        config = load_debug_config()
-    overrides = config.get("items", {}).get("override", {})
 
     # Empty every location and build the prize pool
     all_locations = list(world.locations.values())
@@ -1058,9 +1237,6 @@ def shuffle_prizes(world: GameWorld) -> None:
                 pool[LOW_PRIORITY].append(pool_item)
 
     pool_total = sum(len(p) for p in pool.values())
-    print(f"[DEBUG] Pool sources: pre-seeded={pre_seeded}, spells={spell_count}, "
-          f"pulled={pulled_count}, total={pool_total} "
-          f"(expected {pre_seeded + spell_count + pulled_count})")
     if pool_total != pre_seeded + spell_count + pulled_count:
         # Dump full pool contents to find the extras
         pool_contents: dict[str, int] = {}
@@ -1112,38 +1288,7 @@ def shuffle_prizes(world: GameWorld) -> None:
     resolved_starting_chars = starting_chars_flag.resolve_random_selections()
 
     # Fill statically set locations
-    # Track which locations have debug overrides for later diagnosis
-    debug_locations: set[type[PrizeLocation]] = set()
-
     for loc in world.locations.values():
-        is_debug = False
-        if world.settings.debug_mode:
-            for location_name, prize_name in overrides.items():
-                location_cls = get_location_class(location_name)
-                if location_cls is None:
-                    raise ValueError(
-                        f"Invalid location name in debug config: '{location_name}'"
-                    )
-                if isinstance(loc, location_cls):
-                    is_debug = True
-                    debug_locations.add(type(loc))
-                    prize_cls = get_prize_class(prize_name)
-                    if prize_cls is None or not loc.can_accept(
-                        prize_cls(), Inventory(), world
-                    ):
-                        if not loc.can_be_empty(world):
-                            raise ValueError(
-                                f"Invalid prize assigned to debug location '{location_name}' when it cannot be empty"
-                            )
-                        else:
-                            loc.set_prize(None)
-                    else:
-                        loc.set_prize(prize_cls())
-                        remove_prize_from_pool(pool, prize_cls, world)
-                    break
-        if is_debug:
-            continue
-
         # Handle starting character locations based on settings
         if isinstance(loc, StartingCharacterLocation):
             loc_idx = starting_char_locations.get(type(loc))
@@ -1177,33 +1322,35 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if prize_exists_in_pool:
                     loc.set_prize(loc.originally_held())
                     remove_prize_from_pool(pool, loc.originally_held, world)
-                # else: prize was excluded - leave location empty
-
-    # Store debug locations in world for later diagnosis
-    world._debug_locations = debug_locations
 
     # Shuffle the prize pools
     for prizes in pool.values():
         random.shuffle(prizes)
 
     # Add some "noise" to the top tier to prevent progression items from ending up in too many same-y formations
-    non_progression_size = len(pool[RESTRICTED_PRIZES]) + len(pool[MANDATORY_INCLUSIONS]) + len(pool[LOW_PRIORITY])
-    progression_size = len(pool[PROGRESSION_PRIZES])
-    if non_progression_size > 0:
-        addition_size = progression_size * 0.2
-        rate = addition_size / non_progression_size
-    else:
-        rate = 0
-    for tier, prizes in pool.items():
-        if tier == PROGRESSION_PRIZES:
-            continue
-        for _ in range(len(prizes)):
-            if random.random() < rate:
-                pool[PROGRESSION_PRIZES].append(prizes.pop())
+    # non_progression_size = len(pool[RESTRICTED_PRIZES]) + len(pool[MANDATORY_INCLUSIONS]) + len(pool[LOW_PRIORITY])
+    # progression_size = len(pool[PROGRESSION_PRIZES])
+    # if non_progression_size > 0:
+    #     addition_size = progression_size * 0.2
+    #     rate = addition_size / non_progression_size
+    # else:
+    #     rate = 0
+    # for tier, prizes in pool.items():
+    #     if tier == PROGRESSION_PRIZES:
+    #         continue
+    #     for _ in range(len(prizes)):
+    #         if random.random() < rate:
+    #             pool[PROGRESSION_PRIZES].append(prizes.pop())
 
     # Shuffle the prize pools again
     for prizes in pool.values():
         random.shuffle(prizes)
+
+    # Snapshot pool before placement (item names per tier, for debug dump)
+    pool_before: dict[int, list[str]] = {
+        tier: [type(p).__name__ for p in prizes]
+        for tier, prizes in pool.items()
+    }
 
     # Snapshot pool before placement for post-placement diff
     pool_snapshot: dict[str, int] = {}
@@ -1221,53 +1368,57 @@ def shuffle_prizes(world: GameWorld) -> None:
     for name, count in static_placed.items():
         pool_plus_static[name] = pool_plus_static.get(name, 0) + count
     total_before = sum(pool_snapshot.values()) + sum(static_placed.values())
-    print(f"[DEBUG] Pool before placement: {sum(pool_snapshot.values())} items, "
-          f"static fills: {sum(static_placed.values())} items, total: {total_before}")
 
     # Only place items in locations that should be shuffled
     shuffle_filter = lambda loc: should_shuffle(loc, world)
+    priority_classes = _build_priority_classes(world)
 
-    place(
-        world,
-        pool[PROGRESSION_PRIZES],
-        on_placed=lambda i, l: _on_item_placed(world, i, l),
-        location_filter=shuffle_filter,
-    )
+    try:
+        place(
+            world,
+            pool[PROGRESSION_PRIZES],
+            on_placed=lambda i, l: _on_item_placed(world, i, l),
+            location_filter=shuffle_filter,
+            priority_classes=priority_classes,
+        )
 
-    # Debug: check which locations are still inaccessible after progression placement
-    player_has = collect_accessible_items(world)
-    inaccessible = [
-        loc for loc in world.locations.values()
-        if should_shuffle(loc, world) and not loc.can_access(player_has, world)
-    ]
-    non_spell_inaccessible = [l for l in inaccessible if not isinstance(l, SpellSlotLocation)]
-    if non_spell_inaccessible:
-        print(f"[DEBUG] After progression placement: {len(non_spell_inaccessible)} non-SpellSlot locations still inaccessible:")
-        for loc in non_spell_inaccessible:
-            print(f"[DEBUG]   {type(loc).__name__}")
-    else:
-        print(f"[DEBUG] After progression placement: {len(inaccessible)} inaccessible locations, all SpellSlotLocations")
+        # Debug: check which locations are still inaccessible after progression placement
+        player_has = collect_accessible_items(world)
+        inaccessible = [
+            loc for loc in world.locations.values()
+            if should_shuffle(loc, world) and not loc.can_access(player_has, world)
+        ]
+        non_spell_inaccessible = [l for l in inaccessible if not isinstance(l, SpellSlotLocation)]
+        if non_spell_inaccessible:
+            print(f"[DEBUG] After progression placement: {len(non_spell_inaccessible)} non-SpellSlot locations still inaccessible:")
+            for loc in non_spell_inaccessible:
+                print(f"[DEBUG]   {type(loc).__name__}")
+        else:
+            print(f"[DEBUG] After progression placement: {len(inaccessible)} inaccessible locations, all SpellSlotLocations")
 
-    place(
-        world,
-        pool[RESTRICTED_PRIZES],
-        on_placed=lambda i, l: _on_item_placed(world, i, l),
-        location_filter=shuffle_filter,
-    )
-    place(
-        world,
-        pool[MANDATORY_INCLUSIONS],
-        on_placed=lambda i, l: _on_item_placed(world, i, l),
-        force_frog_disciple=True,
-        location_filter=shuffle_filter,
-    )
-    place(
-        world,
-        pool[LOW_PRIORITY],
-        can_overflow=True,
-        on_placed=lambda i, l: _on_item_placed(world, i, l),
-        location_filter=shuffle_filter,
-    )
+        place(
+            world,
+            pool[RESTRICTED_PRIZES],
+            on_placed=lambda i, l: _on_item_placed(world, i, l),
+            location_filter=shuffle_filter,
+        )
+        place(
+            world,
+            pool[MANDATORY_INCLUSIONS],
+            on_placed=lambda i, l: _on_item_placed(world, i, l),
+            force_frog_disciple=True,
+            location_filter=shuffle_filter,
+        )
+        place(
+            world,
+            pool[LOW_PRIORITY],
+            can_overflow=True,
+            on_placed=lambda i, l: _on_item_placed(world, i, l),
+            location_filter=shuffle_filter,
+        )
+    except PlacementException as e:
+        _dump_placement_failure(world, pool_before, e.unplaced_items, priority_classes)
+        raise
 
     # Post-placement diff: collect all items from every location and compare to pool snapshot
     placed_items: dict[str, int] = {}
@@ -1292,9 +1443,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     else:
         print(f"[DEBUG] Pool and placed items match perfectly.")
 
-    if world.settings.debug_mode:
-        diagnose_empty_locations(world)
-    
 
 def assign_spell_prize_models(world: GameWorld) -> None:
     """Assign spell prize models and packet data based on their element.
@@ -1358,13 +1506,59 @@ def assign_spell_prize_models(world: GameWorld) -> None:
             prize._packet_data = (SPR0224_GRAY_BALL, 0)
 
 
+def apply_debug_overrides(world: GameWorld) -> None:
+    """Apply debug item overrides and diagnostics after shuffling.
+
+    This runs after the shuffler so that debug mode doesn't affect the shuffle
+    outcome. Overrides simply replace whatever the shuffler placed at the
+    configured locations.
+    """
+    from ..placement import diagnose_empty_locations
+    from randomizer.debug import load_debug_config, get_prize_class, get_location_class
+    from ...types.logic import Inventory
+
+    if not world.settings.debug_mode:
+        return
+
+    config = load_debug_config()
+    overrides = config.get("items", {}).get("override", {})
+    debug_locations: set[type[PrizeLocation]] = set()
+
+    for location_name, prize_name in overrides.items():
+        location_cls = get_location_class(location_name)
+        if location_cls is None:
+            raise ValueError(
+                f"Invalid location name in debug config: '{location_name}'"
+            )
+        for loc in world.locations.values():
+            if isinstance(loc, location_cls):
+                debug_locations.add(type(loc))
+                prize_cls = get_prize_class(prize_name)
+                if prize_cls is None or not loc.can_accept(
+                    prize_cls(), Inventory(), world
+                ):
+                    if not loc.can_be_empty(world):
+                        raise ValueError(
+                            f"Invalid prize assigned to debug location '{location_name}' when it cannot be empty"
+                        )
+                    else:
+                        loc.set_prize(None)
+                else:
+                    loc.set_prize(prize_cls())
+                break
+
+    world._debug_locations = debug_locations
+    diagnose_empty_locations(world)
+
+
 def post_shuffle_cleanup(world: GameWorld) -> None:
     """Handle empty chests and replace low-value items with coins.
 
     This function:
-    1. Assigns spell prize models based on finalized elements
-    2. Fills or disables empty treasure chests based on settings
-    3. Replaces low-impact items with coin prizes at half their price
+    1. Applies debug overrides (if debug mode enabled)
+    2. Assigns spell prize models based on finalized elements
+    3. Fills or disables empty treasure chests based on settings
+    4. Replaces low-impact items with coin prizes at half their price
     """
     from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
         DisableObjectTriggerInSpecificLevel,
@@ -1398,7 +1592,10 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
         MushroomItem2,
     )
 
-    # First, assign spell prize models based on their finalized elements
+    # Apply debug overrides (replaces shuffled prizes at configured locations)
+    apply_debug_overrides(world)
+
+    # Assign spell prize models based on their finalized elements
     assign_spell_prize_models(world)
 
     # Replace as necessary

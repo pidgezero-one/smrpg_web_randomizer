@@ -634,6 +634,65 @@ class GenoDark(GenoPalette):
     author = "SMBAI"
 
 
+
+
+class GenoRalsei(GenoPalette):
+    colours = [
+        0xF8F8F8,
+        0xB8B8B8,
+        0x707070,
+        0x383838,
+        0x101010,
+        0x10F870,
+        0x00D058,
+        0x00B048,
+        0x007028,
+        0xF85098,
+        0xD00058,
+        0x181818,
+        0x888888,
+        0x686070,
+        0x000000,
+    ]
+    poison_colours = [
+        0xF8F8F8,
+        0xB8B8B8,
+        0x707070,
+        0x383838,
+        0x101010,
+        0xF870F8,
+        0xD058D0,
+        0xB048B0,
+        0x702870,
+        0x509850,
+        0x005800,
+        0x181818,
+        0x888888,
+        0x607060,
+        0x000000,
+    ]
+    underwater_colours = [
+        0xC0C0D8,
+        0x9090A8,
+        0x606078,
+        0x383850,
+        0x202038,
+        0x20C078,
+        0x20A868,
+        0x209058,
+        0x206040,
+        0xC04898,
+        0xA82068,
+        0x202038,
+        0x707088,
+        0x585078,
+        0x202038,
+    ]
+    id = GenoPaletteOptions.RALSEI
+    name = "Ralsei"
+    author = "WILL"
+
+
 all_palettes: list[GenoPalette] = [
     GenoDefault(),
     GenoPink(),
@@ -646,4 +705,5 @@ all_palettes: list[GenoPalette] = [
     GenoGrey(),
     GenoGreen(),
     GenoDark(),
+    GenoRalsei(),
 ]

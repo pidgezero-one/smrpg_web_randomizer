@@ -143,3 +143,6 @@ lazyshell/Lunar Compress.dll
 
 **/open_mode.sfc
 **/open_mode.smc
+
+# Placement debug logs
+randomizer/debug/placement_logs/

@@ -558,6 +558,65 @@ class BowserSking(BowserPalette):
     rename_character = False
 
 
+
+
+class BowserSusie(BowserPalette):
+    colours = [
+        0xF8F0F8,
+        0xF0D8E8,
+        0xE8A0C8,
+        0xF00070,
+        0x601840,
+        0xA838B0,
+        0x702870,
+        0x401840,
+        0x281028,
+        0xD04890,
+        0x882058,
+        0x200818,
+        0x909080,
+        0x606040,
+        0x181818,
+    ]
+    poison_colours = [
+        0xF8F0F8,
+        0xE8D8F0,
+        0xC8A0E8,
+        0x7000F0,
+        0x401860,
+        0xB038A8,
+        0x702870,
+        0x401840,
+        0x281028,
+        0x9048D0,
+        0x582088,
+        0x180820,
+        0x809090,
+        0x406060,
+        0x181818,
+    ]
+    underwater_colours = [
+        0xD0C8E8,
+        0xC8B8E0,
+        0xC888C0,
+        0xC81078,
+        0x581850,
+        0x9030B0,
+        0x602878,
+        0x381850,
+        0x281040,
+        0xB04098,
+        0x782068,
+        0x201030,
+        0x808088,
+        0x585850,
+        0x181830,
+    ]
+    id = BowserPaletteOptions.SUSIE
+    name = "Susie"
+    author = "WILL"
+
+
 all_palettes: list[BowserPalette] = [
     BowserDefault(),
     BowserDrybone(),
@@ -569,4 +628,5 @@ all_palettes: list[BowserPalette] = [
     BowserZeccet(),
     BowserBlue(),
     BowserSking(),
+    BowserSusie(),
 ]

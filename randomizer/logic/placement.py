@@ -86,6 +86,7 @@ def place(
     on_placed: Callable[[Prize, PrizeLocation], None] | None = None,
     force_frog_disciple: bool = False,
     location_filter: Callable[[PrizeLocation], bool] | None = None,
+    priority_classes: set[type[Prize]] | None = None,
 ):
     """Place prizes into locations.
 
@@ -96,9 +97,14 @@ def place(
         on_placed: Callback when a prize is placed.
         force_frog_disciple: Prefer FrogDiscipleLocation for placement.
         location_filter: Optional filter - only consider locations where this returns True.
+        priority_classes: If provided, every 4th placement will attempt to place
+            an item matching one of these types first, to ensure high-unlock-volume
+            items are spread throughout the placement order.
     """
     pending = copy(to_place)
     iteration = 0
+    placements_count = 0
+    priority_types = tuple(priority_classes) if priority_classes else ()
 
     # Get the set of valid locations (apply filter if provided)
     def get_candidate_locations():
@@ -112,6 +118,38 @@ def place(
     while pending:
         iteration += 1
         length_at_start = len(pending)
+
+        # Priority detour: every 4th placement, try to place a high-volume item
+        if priority_types and (placements_count + 1) % 4 == 0:
+            priority_pending = [
+                item for item in pending
+                if isinstance(item, priority_types)
+            ]
+            if priority_pending:
+                chosen = random.choice(priority_pending)
+                player_has = collect_accessible_items(world)
+                accessible_locations = [
+                    l for l in candidate_locations
+                    if l.can_access(player_has, world)
+                    and l.can_accept(chosen, player_has, world)
+                    and not l.has_item
+                ]
+                if isinstance(chosen, StarPiecePrize):
+                    star_locations = [
+                        l for l in accessible_locations
+                        if isinstance(l, StarPieceLocation)
+                    ]
+                    if random.randint(0, 10) < 4:
+                        accessible_locations = star_locations
+                if accessible_locations:
+                    random.shuffle(accessible_locations)
+                    accessible_locations[0].set_prize(chosen)
+                    pending.remove(chosen)
+                    placements_count += 1
+                    if on_placed:
+                        on_placed(chosen, accessible_locations[0])
+                    continue
+            # Fall through to normal placement if no priority item can be placed
 
         # Check if there's a character in the pending list
         character_items = [item for item in pending if isinstance(item, CharacterPrize)]
@@ -139,6 +177,7 @@ def place(
                 random.shuffle(accessible_locations)
                 accessible_locations[0].set_prize(character)
                 pending.remove(character)
+                placements_count += 1
                 if on_placed:
                     on_placed(character, accessible_locations[0])
                 continue  # Go back to the start of the loop
@@ -178,6 +217,7 @@ def place(
             random.shuffle(accessible_locations)
             accessible_locations[0].set_prize(item)
             pending.remove(item)
+            placements_count += 1
             if on_placed:
                 on_placed(item, accessible_locations[0])
             break

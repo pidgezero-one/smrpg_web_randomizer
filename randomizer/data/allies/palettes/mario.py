@@ -864,6 +864,65 @@ class MarioBlue2(MarioPalette):
     rename_character = False
 
 
+
+
+class MarioKris(MarioPalette):
+    colours = [
+        0xF0F0F8,
+        0xD8E0F0,
+        0x88A0D0,
+        0x6088C8,
+        0x305898,
+        0x5878C0,
+        0x305898,
+        0x284880,
+        0x182850,
+        0xD00090,
+        0x700048,
+        0x500038,
+        0xF8F8F8,
+        0x7898D0,
+        0x181818,
+    ]
+    poison_colours = [
+        0xF0F0F0,
+        0xD8E0D8,
+        0x88A088,
+        0x608860,
+        0x305830,
+        0x587858,
+        0x305830,
+        0x284828,
+        0x182818,
+        0xD000D0,
+        0x700070,
+        0x500050,
+        0xF8F8F8,
+        0x789878,
+        0x181818,
+    ]
+    underwater_colours = [
+        0xB0B0D0,
+        0xA0A8C8,
+        0x6078B0,
+        0x4860B0,
+        0x204088,
+        0x4058A8,
+        0x204088,
+        0x183078,
+        0x181850,
+        0x981880,
+        0x501848,
+        0x381840,
+        0xB8B8D0,
+        0x5870B0,
+        0x181830,
+    ]
+    id = MarioPaletteOptions.KRIS
+    name = "Kris"
+    author = "WILL"
+
+
 all_palettes: list[MarioPalette] = [
     MarioDefault(),
     MarioJumpman(),
@@ -881,4 +940,5 @@ all_palettes: list[MarioPalette] = [
     MarioMarlon(),
     MarioGrandDad(),
     MarioBlue2(),
+    MarioKris(),
 ]

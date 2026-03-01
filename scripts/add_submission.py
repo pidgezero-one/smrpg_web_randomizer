@@ -19,6 +19,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Ensure the project root is on the Python path so `randomizer` can be imported
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 # File paths relative to repository root
 REPO_ROOT = Path(__file__).parent.parent
 WISH_FILE = REPO_ROOT / "randomizer/data/minigames/star_hill_wishes.py"

@@ -1730,7 +1730,8 @@ class GameWorld:
 
         # Make invaded mushroom kingdom's doorway treasure chest accessible
         # solidity mod
-        patch.add_dict({0x1D903A: bytearray([0xC2, 0x91])})
+        # is this why monstro town broke?
+        # patch.add_dict({0x1D903A: bytearray([0xC2, 0x91])})
 
         # Update ROM title and version.
         title = "SMRPG-R {}".format(self.seed).ljust(20)
