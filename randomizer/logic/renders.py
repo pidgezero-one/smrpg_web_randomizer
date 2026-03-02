@@ -887,22 +887,6 @@ def render_dojo_fight(
 
 def render_bean_valley_planter_boss(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply NPC position changes for Bean Valley Planter boss fight."""
-    room = world.rooms._rooms[R254_BEAN_VALLEY_SMILAX_AREA]
-    assert room is not None, f"Room {R254_BEAN_VALLEY_SMILAX_AREA} not found"
-    thrax = room.get_npc_by_target_id(NPC_0)
-    assert thrax is not None, f"NPC_0 not found in room {R254_BEAN_VALLEY_SMILAX_AREA}"
-    thrax.set_visible(False)
-    boss = room.get_npc_by_target_id(NPC_1)
-    assert boss is not None, f"NPC_1 not found in room {R254_BEAN_VALLEY_SMILAX_AREA}"
-    boss.set_x(thrax.x)
-    boss.set_y(thrax.y)
-    boss.set_z(thrax.z)
-
-    world.event_scripts.get_script_by_id(
-        E0817_BEAN_VALLEY_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
-    ).insert_before_nth_command(
-        0, RemoveObjectFromSpecificLevel(NPC_0, R254_BEAN_VALLEY_SMILAX_AREA)
-    )
 
     complete_sprite = world.get_sprite(prize.smallest_npc().base.sprite_id)
     seqs = complete_sprite.animation.properties.sequences

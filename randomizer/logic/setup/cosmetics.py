@@ -361,11 +361,13 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     if world.room_service_items:
         low_item = cast(Item, world.get_item(world.room_service_items[0]))
         high_item = cast(Item, world.get_item(world.room_service_items[1]))
+        low_price = world.room_service_prices[0] if world.room_service_prices else None
+        high_price = world.room_service_prices[1] if world.room_service_prices else None
         world.update_dialog(
             DI3847_ROOM_SERVICE_MENU,
             f"[page]\n Here is the menu.[await]\n"
-            f" [select]  {low_item.text_shop_menu(use_remake)}\n"
-            f" [select]  {high_item.text_shop_menu(use_remake)}\n"
+            f" [select]  {low_item.text_shop_menu(use_remake, low_price)}\n"
+            f" [select]  {high_item.text_shop_menu(use_remake, high_price)}\n"
             f" [select]  (No thanks)[await]"
         )
 

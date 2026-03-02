@@ -46,6 +46,7 @@ script = AnimationScriptBlock(expected_size=149, expected_beginning=0x358B57, sc
 	UnknownCommand(bytearray([0x3C, 0x00, 0x08])),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0026_GENO_NONPROTAGONIST_2, sequence=0, store_to_vram=True, overlap_all_sprites=True, bit_4=True),
 	RunSubroutine(["fix_sprite_after_attack"]),
+    RunSubroutine(["command_0x358072"]),
 	UnknownCommand(bytearray([0x6D])),
 	ReturnSubroutine(),
 	ResetTargetMappingMemory(identifier="command_0x358BAA"),
@@ -58,7 +59,7 @@ script = AnimationScriptBlock(expected_size=149, expected_beginning=0x358B57, sc
 	ReturnSubroutine(),
 	ResetTargetMappingMemory(identifier="command_0x358BB7"),
 	ResetObjectMappingMemory(),
-	RunSubroutine(["command_0x358086"]),
+	RunSubroutine(["ally_spell_common_subroutine_1"]),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0030_GENO_NONPROTAGONIST_6, sequence=1, store_to_vram=True, overlap_all_sprites=True),
 	PauseScriptUntilSpriteSequenceDone(),
 	SetOMEM60To072C(),
@@ -68,11 +69,4 @@ script = AnimationScriptBlock(expected_size=149, expected_beginning=0x358B57, sc
 	RunSubroutine(["command_0x358072"]),
 	UnknownCommand(bytearray([0x6D])),
 	ReturnSubroutine(),
-	PlaySound(sound=S0172_WEAPON_TIMING, channel=4, identifier="command_0x358BD6"),
-	SetAMEM8BitToConst(0x63, 1),
-	SetAMEM8BitTo7E5x(0x60, 0x7E002E),
-	ClearAMEM8Bit(0x61),
-	SetAMEM8BitToConst(0x62, 1),
-	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35ECA2"]),
-	Jmp(["command_0x358B8D"])
 ])

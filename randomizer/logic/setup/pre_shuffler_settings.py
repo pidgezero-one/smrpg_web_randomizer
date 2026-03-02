@@ -39,7 +39,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import MEM_70A8, NPC_0, NPC_1, NPC_2, NPC_3, NPC_5
 
-from ...types.flags import ShuffleCookies, ShuffleMarioDoll
+from ...types.flags import EnemySpells, ShuffleCookies, ShuffleMarioDoll
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -412,7 +412,10 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         )
         world.get_room(R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM).get_npc_by_target_id(NPC_5).set_event_script(E0241_FREESTANDING_1_GRANT)
 
-
+    # For safety, delete Breaker Beam caster animations in case an enemy uses it that doesn't have a sequence 3
+    if world.settings.isflag_enabled(EnemySpells):
+        world.battle_animations[0x35].delete_command_by_name("breaker_beam_sequence_1")
+        world.battle_animations[0x35].delete_command_by_name("breaker_beam_sequence_2")
 
     # Apply debug starting items if debug mode is enabled
     from .debug import apply_debug_start_items

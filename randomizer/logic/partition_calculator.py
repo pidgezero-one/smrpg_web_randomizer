@@ -27,6 +27,7 @@ from ..data.variables.sprite_names import *
 from ..data.variables.room_names import *
 
 from smrpgpatchbuilder.datatypes.levels.classes import (
+    BufferSpace,
     BufferType,
 )
 from ..types.ally import SpriteAnimationState
@@ -36,6 +37,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_2,
     NPC_3,
     NPC_4,
+    NPC_7,
     NPC_8
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
@@ -292,7 +294,7 @@ def _buffer_by_room_object(world: GameWorld, npc: RoomObject) -> BufferType:
 
 
 def _update_buffer_by_room_object(
-    world: GameWorld, room_id: int, npc: AreaObject, buffer_index: int
+    world: GameWorld, room_id: int, npc: AreaObject, buffer_index: int, buffer_space: BufferSpace | None = None
 ) -> None:
     room = world.rooms._rooms[room_id]
     assert room is not None
@@ -301,87 +303,18 @@ def _update_buffer_by_room_object(
     room.partition.buffers[buffer_index].set_buffer_type(
         _buffer_by_room_object(world, npc_obj)
     )
+    if buffer_space is not None:
+        room.partition.buffers[buffer_index].set_main_buffer_space(buffer_space)
 
 
 def update_statue_room_partition(world: GameWorld) -> None:
-    """Update room 341's first partition buffer based on the shuffled statue sprite.
-
-    The statue game room (Garro's House, room 341) needs its first partition buffer
-    to match the gridplane format of the sprite shuffled into the first mold:
-    - Format 0 or 1: FOUR_SPRITES_PER_ROW
-    - Format 2 or 3: THREE_SPRITES_PER_ROW
-    - Non-gridplane or no mold: EMPTY_3
-
-    This should be called after boss shuffling is complete.
-    """
-    from ..progression.prizelocations import StatueRoomBossFight
-    from ..types.prize import BossFightPrize
-
-    room = world.rooms._rooms[R341_NIMBUS_LAND_GARROS_HOUSE]
-    assert room is not None, f"Room {R341_NIMBUS_LAND_GARROS_HOUSE} not found"
-    assert room.partition is not None, f"Room {R341_NIMBUS_LAND_GARROS_HOUSE} has no partition"
-
-    # Get the StatueRoomBossFight location and its prize
-    try:
-        location = world.get_location(StatueRoomBossFight)
-    except KeyError:
-        return
-
-    if location.prize is None or not isinstance(location.prize, BossFightPrize):
-        return
-
-    prize = location.prize
-
-    # Get the NPC model that will be used for the statue game (6144 VRAM limit)
-    npc_model = prize.get_npc_for_slot(world, 6144)
-    npc_instance = npc_model()
-
-    # Get the sprite for this NPC
-    sprite_id = npc_instance.base.sprite_id
-    complete_sprite = _get_complete_sprite(world, sprite_id)
-    if complete_sprite is None:
-        # No sprite found - set to empty
-        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
-        return
-
-    # Check the first mold's gridplane format
-    molds = complete_sprite.animation.properties.molds
-    if not molds or len(molds) == 0:
-        # No molds - set to empty
-        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
-        return
-
-    first_mold = molds[0]
-    if not first_mold.gridplane:
-        # Non-gridplane - set to empty
-        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
-        return
-
-    if not first_mold.tiles or len(first_mold.tiles) == 0:
-        # Gridplane but no tiles - set to empty
-        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
-        return
-
-    # Get the gridplane format from the first tile
-    first_tile = first_mold.tiles[0]
-    tile_format = first_tile.format  # type: ignore[attr-defined]
-
-    # Set buffer type based on format:
-    # Format 0 (3x3) or 1 (3x4): 4 sprites per row
-    # Format 2 (4x3) or 3 (4x4): 3 sprites per row
-    if tile_format in [0, 1]:
-        room.partition.buffers[0].set_buffer_type(BufferType.FOUR_SPRITES_PER_ROW)
-    elif tile_format in [2, 3]:
-        room.partition.buffers[0].set_buffer_type(BufferType.THREE_SPRITES_PER_ROW)
-    else:
-        # Unknown format - set to empty
-        room.partition.buffers[0].set_buffer_type(BufferType.EMPTY_3)
-
+    _update_buffer_by_room_object(world, R341_NIMBUS_LAND_GARROS_HOUSE, NPC_1, 1)
+    
 
 def update_kitchen_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R155_MARRYMORE_CHAPEL_KITCHEN, NPC_0, 0)
-    _update_buffer_by_room_object(world, R155_MARRYMORE_CHAPEL_KITCHEN, NPC_1, 1)
-    _update_buffer_by_room_object(world, R155_MARRYMORE_CHAPEL_KITCHEN, NPC_2, 2)
+    _update_buffer_by_room_object(world, R155_MARRYMORE_CHAPEL_KITCHEN, NPC_1, 1, BufferSpace.BYTES_512)
+    _update_buffer_by_room_object(world, R155_MARRYMORE_CHAPEL_KITCHEN, NPC_2, 2, BufferSpace.BYTES_512)
 
 
 def update_mines_henchman_room_partitions(world: GameWorld) -> None:
@@ -399,12 +332,15 @@ def update_mines_henchman_room_partitions(world: GameWorld) -> None:
 
     # Room configurations: (room_index, buffer_index)
     room_configs = [
-        (277, 0),  # Room 277: first buffer
+        (277, 1),  # Room 277: first buffer
         (283, 1),  # Room 283: second buffer
     ]
 
     for room_index, buffer_index in room_configs:
         _update_buffer_by_room_object(world, room_index, NPC_1, buffer_index)
+    _update_buffer_by_room_object(world, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, NPC_0, 0)
+    _update_buffer_by_room_object(world, R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, NPC_0, 0)
+    _update_buffer_by_room_object(world, R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, NPC_0, 0)
 
 
 def update_protagonist_room_partition(world: GameWorld) -> None:
@@ -459,6 +395,7 @@ def update_protagonist_room_partition(world: GameWorld) -> None:
 
 def update_johnny_room_partition(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM, NPC_0, 0)
+    _update_buffer_by_room_object(world, R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM, NPC_1, 1)
 
 def update_mushroom_kingdom_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, NPC_0, 1)
@@ -478,3 +415,4 @@ def update_mushroom_kingdom_partitions(world: GameWorld) -> None:
 def update_chapel_partition(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, NPC_0, 0)
     _update_buffer_by_room_object(world, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, NPC_3, 1)
+    _update_buffer_by_room_object(world, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, NPC_7, 2)

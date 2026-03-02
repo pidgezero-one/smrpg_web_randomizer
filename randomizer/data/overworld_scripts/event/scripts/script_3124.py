@@ -63,7 +63,7 @@ script = EventScript([
 	PlaySound(sound=SO014_FLOWER, channel=6),
 	CreatePacketAt7010(packet=P103_MIMIC_1_POOF_ON_DEFEAT, destinations=["EVENT_3124_pause_14"]),
 	Pause(8, identifier="EVENT_3124_pause_14"),
-	Pause(12),
+	Pause(30),
 	PlaySound(sound=SO000_SILENCE, channel=6),
 	SetVarToConst(PRIMARY_TEMP_7000, 512),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),

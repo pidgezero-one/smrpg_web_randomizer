@@ -425,7 +425,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            show_shadow=True,),
         RegularClone( # 19
             npc=npcs.COIN_NPC_2,
             event_script=E3146_FREESTANDING_BIG_COIN,
@@ -435,7 +436,8 @@ room = Room(
             y=35,
             z=6,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            show_shadow=True),
         RegularClone( # 20
             npc=npcs.COIN_NPC_2,
             event_script=E3146_FREESTANDING_BIG_COIN,
@@ -445,7 +447,8 @@ room = Room(
             y=23,
             z=6,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            show_shadow=True),
         RegularClone( # 21
             npc=npcs.COIN_NPC_2,
             event_script=E3146_FREESTANDING_BIG_COIN,
@@ -455,7 +458,8 @@ room = Room(
             y=34,
             z=6,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            show_shadow=True),
         RegularClone( # 22
             npc=npcs.COIN_NPC_2,
             event_script=E3146_FREESTANDING_BIG_COIN,
@@ -465,6 +469,7 @@ room = Room(
             y=46,
             z=6,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            show_shadow=True),
     ]
 )

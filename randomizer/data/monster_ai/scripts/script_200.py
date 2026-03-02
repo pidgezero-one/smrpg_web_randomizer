@@ -36,7 +36,6 @@ script = MonsterScript([
 	Attack(Attack1, Attack1, LullaByeAttack),
 	StartCounterCommands(),
 	IfHPBelow(0),
-	RunBattleDialog(176),
 	RunObjectSequence(3),
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript(),

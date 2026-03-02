@@ -90,7 +90,12 @@ script = EventScript([
 	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
     Jmp(["EVENT_3507_pause_18"]),
     
-	RunDialog(dialog_id=DI2004_SOME_ITEMS_LEFT_ON_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="some_items_left"),
+	
+    CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000, identifier="some_items_left"),
+    CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=SECONDARY_TEMP_7024),
+	SetVarToConst(PRIMARY_TEMP_7000, 16),
+	DecVarFrom7000(SECONDARY_TEMP_7024),
+	RunDialog(dialog_id=DI2004_SOME_ITEMS_LEFT_ON_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
     
 	Pause(10, identifier="EVENT_3507_pause_18"),

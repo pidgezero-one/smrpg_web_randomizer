@@ -130,6 +130,17 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
 )
 from typing import TYPE_CHECKING, cast
 
+from ..data.physical_objects.items import (
+    BigCoinObject,
+    DefaultItem,
+    FlowerObject,
+    FrogCoinObject,
+    KeyObject,
+    RecoveryMushroomObject,
+    SmallCoinObject,
+    SmallFrogCoinObject,
+)
+
 from ..logic.renders import (
     render_bandits_way_boss,
     render_forest_maze_character_empty,
@@ -4806,7 +4817,7 @@ class SeasideBeachBossFight(BossFightLocation):
         ),
         BossFightLocationNPC(
             R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
-            NPC_0,
+            NPC_4,
             sequence_setter_event_id=E0805_SEASIDE_OCCUPIED_ELDER_HOUSE_1F_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
         BossFightLocationNPC(
@@ -5024,7 +5035,7 @@ class SeaSaveRoomBackChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_1
     _world_area = WorldAreaEnum.SEA
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5039,7 +5050,7 @@ class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_2
     _world_area = WorldAreaEnum.SEA
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5054,7 +5065,7 @@ class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_3
     _world_area = WorldAreaEnum.SEA
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5478,6 +5489,18 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     # flag as checked: the host chest for SecondMimicFightLauncher has its object trigger disabled
 
 
+UNDERWATER_ALLOWED_MODELS = [
+    BigCoinObject,
+    SmallCoinObject,
+    FrogCoinObject,
+    SmallFrogCoinObject,
+    FlowerObject,
+    RecoveryMushroomObject,
+    DefaultItem,
+    KeyObject,
+]
+
+
 class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
     _bias = True
     _originally_held = FrogCoin1Prize
@@ -5485,6 +5508,7 @@ class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_1
     _world_area = WorldAreaEnum.SUNKEN_SHIP
+    _model_allowlist = UNDERWATER_ALLOWED_MODELS
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5499,6 +5523,7 @@ class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
+    _model_allowlist = UNDERWATER_ALLOWED_MODELS
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5513,6 +5538,7 @@ class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_3
     _world_area = WorldAreaEnum.SUNKEN_SHIP
+    _model_allowlist = UNDERWATER_ALLOWED_MODELS
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5527,6 +5553,7 @@ class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_4
     _world_area = WorldAreaEnum.SUNKEN_SHIP
+    _model_allowlist = UNDERWATER_ALLOWED_MODELS
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5918,6 +5945,7 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_18]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_2
     _world_area = WorldAreaEnum.LANDS_END
+    _blacklist = [SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -5932,6 +5960,7 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_19]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_3
     _world_area = WorldAreaEnum.LANDS_END
+    _blacklist = [SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -12243,9 +12272,34 @@ def can_access_invisible_flags(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_damage_enemies_with_spells(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to damage enemies with a non-elemental spell."""
+    if not world.settings.isflag_enabled(CharacterLearnedSpells) and not world.settings.isflag_enabled(SpellsAnywhere):
+        # Spells aren't shuffled, so check if the player has recruited a character
+        # whose vanilla spells include a non-elemental damage spell that isn't disabled.
+        disabled_spells: set[type] = {
+            m.value for m in world.settings.get_flag(AvailableSpells).disabled
+        }
+
+        def spell_available(*spell_classes: type) -> bool:
+            return any(s not in disabled_spells for s in spell_classes)
+
+        if inventory.has_item(MallowRecruitmentPrize) and spell_available(StarRainSpell):
+            return True
+        if inventory.has_item(GenoRecruitmentPrize) and spell_available(GenoWhirlSpell, GenoBlastSpell):
+            return True
+        if inventory.has_item(BowserRecruitmentPrize) and spell_available(PoisonGasSpell, TerrorizeSpell):
+            return True
+        if not world.settings.isflag_enabled(InfuseSpellElements):
+            if inventory.has_item(GenoRecruitmentPrize) and spell_available(GenoBeamSpell, GenoFlashSpell):
+                return True
+            if inventory.has_item(BowserRecruitmentPrize) and spell_available(CrusherSpell, BowserCrushSpell):
+                return True
+            if inventory.has_item(ToadstoolRecruitmentPrize) and spell_available(PsychBombSpell):
+                return True
+        return False
     pool = [
         StarRainSpellPrize,
         GenoWhirlSpellPrize,
+        GenoFlashSpellPrize,
         TerrorizeSpellPrize,
         PoisonGasSpellPrize,
     ]
@@ -12253,7 +12307,6 @@ def can_damage_enemies_with_spells(world: GameWorld, inventory: Inventory) -> bo
         pool.extend(
             [
                 GenoBeamSpellPrize,
-                GenoFlashSpellPrize,
                 GenoBlastSpellPrize,
                 CrusherSpellPrize,
                 BowserCrushSpellPrize,

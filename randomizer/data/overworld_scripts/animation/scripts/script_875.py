@@ -16,5 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
+	A_ShadowOn(),
+	A_FloatingOff(),
     A_Jmp(["A0992_begin_animation"])
 ])

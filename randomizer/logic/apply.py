@@ -127,6 +127,7 @@ from ..progression.prizes import (
 )
 
 from ..data.rooms.npcs import EMPTY_NPC
+from ..data.physical_objects.items import DefaultItem
 from ..data.sprites.subs.bowser.sprite_96 import sprite as BOWSER_96
 from ..data.sprites.subs.bowser.sprite_132 import sprite as BOWSER_132
 from ..data.sprites.subs.bowser.sprite_135 import sprite as BOWSER_135
@@ -404,7 +405,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     room = world.rooms._rooms[room_id_int]
                     assert room is not None, f"Room {room_id_int} not found"
                     if place.prize is not None and place.prize.model is not None:
-                        model = place.prize.model().base
+                        prize_model = place.prize.model
+                        if place._model_allowlist is not None and not issubclass(prize_model, tuple(place._model_allowlist)):
+                            prize_model = DefaultItem
+                        model = prize_model().base
                     else:
                         model = EMPTY_NPC
                     room_obj = room.get_npc_by_target_id(npc)

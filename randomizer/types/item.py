@@ -41,7 +41,7 @@ class Item(ItemBase):
     def room_service_price(self) -> int:
         return max(2, int(self.price // 2 * 0.75))
 
-    def text_shop_menu(self, use_remake: bool = False) -> str:
+    def text_shop_menu(self, use_remake: bool = False, price_override: int | None = None) -> str:
         if self._text_shop_menu is None:
             raise ValueError("not a valid shop choice")
         string: str = ""
@@ -49,12 +49,13 @@ class Item(ItemBase):
             string = self._remake_text_shop_menu
         else:
             string = self._text_shop_menu
-        if self.price < 100:
+        price = price_override if price_override is not None else self.room_service_price
+        if price < 100:
             string += "."
-        if self.price < 10:
+        if price < 10:
             string += "."
 
-        return f"({string}{self.room_service_price} Coins)"
+        return f"({string}{price} Coins)"
 
     @property
     def remake_name(self) -> str:

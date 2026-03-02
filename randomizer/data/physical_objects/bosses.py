@@ -448,7 +448,7 @@ class Bundt2LargeObject(BossNPC):
 class JohnnySmallObject(BossNPC):
     """Small Johnny object."""
 
-    _base = JONATHAN_JONES_NPC
+    _base = JONATHAN_JONES_NPC_2
     _eye_height = 20
     _animations = SpriteAnimationCollection(
         bandits_way_distracted=small_johnny_sit,

@@ -523,15 +523,16 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_TransferToObjectXYZ(NPC_9),
 		A_ShiftZUpSteps(2, identifier="crown_adjust_height"),
+		A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True, cant_pass_npcs=True),
 	], identifier="crown_adjust_height_aq"),
 	ActionQueueAsync(target=NPC_9, subscript=[
 		A_SetSolidityBits(cant_pass_npcs=True),
 	]),
-	ActionQueueAsync(target=NPC_7, subscript=[
-		A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True, cant_pass_npcs=True),
-		A_FloatingOn(),
-		A_JumpToHeight(height=0, silent=True),
-	]),
+	# ActionQueueAsync(target=NPC_7, subscript=[
+	# 	A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True, cant_pass_npcs=True),
+	# 	A_FloatingOn(),
+	# 	A_JumpToHeight(height=0, silent=True),
+	# ]),
 	Pause(30),
 	SetSyncActionScript(NPC_2, A0376_TURN_RANDOMLY_IN_PLACE),
 	SetSyncActionScript(NPC_0, A0376_TURN_RANDOMLY_IN_PLACE),

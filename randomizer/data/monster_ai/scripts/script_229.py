@@ -34,7 +34,6 @@ script = MonsterScript([
 	IncreaseVarBy1(BV7EE00F),
 	SetUntargetable(SELF),
 	SetVarBits(BV7EE003, [1]),
-	RunBattleEvent(BE0064_UNUSED),
 	Wait1TurnandRestartScript(),
 	IfTargetedByCommand([COMMAND_SPECIAL]),
 	Attack(SpritzBombAttack),

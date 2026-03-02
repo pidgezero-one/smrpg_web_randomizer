@@ -1,4 +1,4 @@
-dialog_data = [""]*616
+dialog_data = [""]*617
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -1727,9 +1727,12 @@ dialog_data[613] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
   [select]  (Don't go with him)[await]'''
 dialog_data[614] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
  This is “Booster Hill”. There are
- a few items here, but it's a long
+ [0x7000] items left, but it's a long
  climb up to the top.[await][page]
  Do you want to leave, or stay?[await]
   [select]  (Leave)
   [select]  (Stay)[await]'''
-dialog_data[615] = '''[await]'''
+dialog_data[615] = ''' You've found the treasure!
+ Way to GO!
+ Keep up the good work![await]'''
+dialog_data[616] = '''[await]'''

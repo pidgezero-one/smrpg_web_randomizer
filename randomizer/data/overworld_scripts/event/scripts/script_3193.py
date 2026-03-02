@@ -44,7 +44,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1189_HENCHMAN_BATTLE_PACK_SELECTOR),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	JmpIfBitSet(RUN_AWAY, ["EVENT_3193_clear_bit_9"]),
-	ActionQueueSync(target=MEM_70A8, subscript=[
+	ActionQueueAsync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4], identifier="EVENT_3193_action_queue_5_SUBSCRIPT_object_memory_set_bit_0"),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_FaceMario(),

@@ -1581,7 +1581,7 @@ JONATHAN_JONES_POSTGAME_NPC = NPC(
     priority_0=False,
     priority_1=False,
     priority_2=True,
-    cannot_clone=True,
+    cannot_clone=False,
     byte2_bit0=False,
     byte2_bit1=False,
     byte2_bit2=False,
@@ -11453,7 +11453,7 @@ SMILAX_NPC = NPC(
 )
 
 THRAX_NPC_2 = NPC(
-    sprite_id=SPR0715_THRAX,
+    sprite_id=SPR0581_STANDALONE_THRAX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -11461,7 +11461,7 @@ THRAX_NPC_2 = NPC(
     y_shift=1,
     show_shadow=False,
     directions=VramStore.DIR2_SWSE,
-    min_vram_size=5,
+    min_vram_size=0,
     priority_0=False,
     priority_1=False,
     priority_2=True,

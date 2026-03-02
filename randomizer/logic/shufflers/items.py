@@ -586,6 +586,18 @@ def select_spells(world: GameWorld) -> list[type[Prize]]:
     available_spells: list[type[Prize]] = [
         sp for sp in all_spell_prizes if sp not in excluded_spell_prizes
     ]
+
+    if not world.settings.isflag_enabled(CharacterLearnedSpells):
+        # Characters learn their vanilla spells - return only those from
+        # included characters' spell slots that aren't disabled
+        return [
+            loc.originally_held
+            for loc in world.locations.values()
+            if isinstance(loc, SpellSlotLocation)
+            and loc.originally_held is not None
+            and loc.originally_held not in excluded_spell_prizes
+        ]
+
     selected_spells = []
     if SuperJumpSpellPrize in available_spells:
         selected_spells.append(SuperJumpSpellPrize)
@@ -697,7 +709,33 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     # MokuraBossFight (and similar) can be placed (they require a non-elemental
     # spell to be accessible). Use fewer if not enough are available.
     random.shuffle(non_elemental_spell_prizes)
-    progression_nonelementals = non_elemental_spell_prizes[:min(3, len(non_elemental_spell_prizes))]
+    progression_nonelementals = non_elemental_spell_prizes[:min(2, len(non_elemental_spell_prizes))]
+
+    # Characters required for spell progression (when spells are vanilla)
+    spell_required_chars: set[type[CharacterPrize]] = set()
+    if (
+        not world.settings.isflag_enabled(CharacterLearnedSpells)
+        and not world.settings.isflag_enabled(SpellsAnywhere)
+    ):
+        # Mario must be in progression (always has Jump for combat)
+        spell_required_chars.add(MarioRecruitmentPrize)
+        # Characters who learn the selected progression non-elemental spells
+        spell_to_character: dict[type[Prize], type[CharacterPrize]] = {
+            StarRainSpellPrize: MallowRecruitmentPrize,
+            GenoWhirlSpellPrize: GenoRecruitmentPrize,
+            GenoBlastSpellPrize: GenoRecruitmentPrize,
+            TerrorizeSpellPrize: BowserRecruitmentPrize,
+            PoisonGasSpellPrize: BowserRecruitmentPrize,
+            GenoBeamSpellPrize: GenoRecruitmentPrize,
+            GenoFlashSpellPrize: GenoRecruitmentPrize,
+            CrusherSpellPrize: BowserRecruitmentPrize,
+            BowserCrushSpellPrize: BowserRecruitmentPrize,
+            PsychBombSpellPrize: ToadstoolRecruitmentPrize,
+        }
+        for spell in progression_nonelementals:
+            char = spell_to_character.get(spell)
+            if char is not None:
+                spell_required_chars.add(char)
 
     # Assign selected spells to tiers
     for spell in selected_spells:
@@ -733,6 +771,8 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         ],
     }
 
+
+
     # Collect characters required for progression
     progression_required_chars: set[type[CharacterPrize]] = set()
     for prize_cls, gating_info in conditional_progress.items():
@@ -742,6 +782,9 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
             if world.settings.is_flag_value(gate, gating_flag):
                 progression_required_chars.add(prize_cls)
                 break
+
+    # Add characters required by spell progression (vanilla spells)
+    progression_required_chars |= spell_required_chars
 
     # Map prize class to character name for validation
     prize_to_name: dict[type[CharacterPrize], str] = {
@@ -1367,7 +1410,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     pool_plus_static: dict[str, int] = dict(pool_snapshot)
     for name, count in static_placed.items():
         pool_plus_static[name] = pool_plus_static.get(name, 0) + count
-    total_before = sum(pool_snapshot.values()) + sum(static_placed.values())
 
     # Only place items in locations that should be shuffled
     shuffle_filter = lambda loc: should_shuffle(loc, world)

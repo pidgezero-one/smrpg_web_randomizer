@@ -38,7 +38,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=120,
-                            y=120),
+                            y=114),
                     ]),
                 Mold(
                     1,

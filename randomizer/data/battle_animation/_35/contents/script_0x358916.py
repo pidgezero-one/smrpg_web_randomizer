@@ -56,6 +56,7 @@ script = AnimationScriptBlock(expected_size=191, expected_beginning=0x358916, sc
 	SetAMEM8BitToConst(0x65, 1),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0002_MARIO_WALKING_UP_RIGHT, sequence=0, store_to_vram=True, overlap_all_sprites=True, bit_4=True),
 	RunSubroutine(["fix_sprite_after_attack"]),
+    RunSubroutine(["command_0x358072"]),
 	UnknownCommand(bytearray([0x6D])),
 	ReturnSubroutine(),
 	ResetTargetMappingMemory(identifier="command_0x358993"),
@@ -68,7 +69,7 @@ script = AnimationScriptBlock(expected_size=191, expected_beginning=0x358916, sc
 	ReturnSubroutine(),
 	ResetTargetMappingMemory(identifier="command_0x3589A0"),
 	ResetObjectMappingMemory(),
-	RunSubroutine(["command_0x358086"]),
+	RunSubroutine(["ally_spell_common_subroutine_1"]),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0006_MARIO_CROUCH_UP_RIGHT, sequence=1, store_to_vram=True, overlap_all_sprites=True),
 	PauseScriptUntilSpriteSequenceDone(),
 	SetOMEM60To072C(),
@@ -78,11 +79,4 @@ script = AnimationScriptBlock(expected_size=191, expected_beginning=0x358916, sc
 	RunSubroutine(["command_0x358072"]),
 	UnknownCommand(bytearray([0x6D])),
 	ReturnSubroutine(),
-	PlaySound(sound=S0172_WEAPON_TIMING, channel=4, identifier="command_0x3589BF"),
-	SetAMEM8BitToConst(0x63, 1),
-	SetAMEM8BitTo7E5x(0x60, 0x7E002E),
-	ClearAMEM8Bit(0x61),
-	SetAMEM8BitToConst(0x62, 1),
-	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35ECA2"]),
-	Jmp(["command_0x358971"])
 ])

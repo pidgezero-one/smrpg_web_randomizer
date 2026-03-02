@@ -59,7 +59,7 @@ script = EventScript([
 	ClearBit(MIMIC_3_CLEARED),
 	PlaySound(sound=SO014_FLOWER, channel=6),
 	CreatePacketAt7010(packet=P004_MIMIC_3_POOF_ON_DEFEAT, destinations=["EVENT_2493_pause_12"]),
-	Pause(32, identifier="EVENT_2493_pause_12"),
+	Pause(38, identifier="EVENT_2493_pause_12"),
 	StopEmbeddedActionScript(MEM_70A8),
 	SetVarToConst(PRIMARY_TEMP_7000, 514),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),

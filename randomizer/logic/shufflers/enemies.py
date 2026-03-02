@@ -240,6 +240,11 @@ def randomize_enemy_stats(world: GameWorld) -> None:
     for enemy in all_enemies:
         enemy.set_disable_auto_death(original_disable_auto_death[id(enemy)])
 
+    # Enemies with 0 HP (undead like Dry Bones, Vomer) must stay at 0 HP
+    for enemy in all_enemies:
+        if original_stats[id(enemy)]["hp"] == 0:
+            enemy.set_hp(0)
+
     # Update psychopath messages based on new stats
     for enemy in all_enemies:
         custom_enemy = cast(CustomEnemy, enemy)

@@ -680,12 +680,24 @@ def shuffle_shops(world: GameWorld) -> None:
     # Store for spoiler log and cosmetic dialog updates
     world.room_service_items = [type(low_item), type(high_item)]
 
+    # If an item's price was reduced for the frog coin shop, compensate in room service
+    frog_coin_items = frog_disciple_set | frog_emporium_items
+    def get_room_service_price(item: Item) -> int:
+        price = item.room_service_price
+        if type(item) in frog_coin_items and type(item) not in ORIGINAL_FROG_COIN_ITEMS:
+            price *= 5
+        return price
+
+    low_price = get_room_service_price(low_item)
+    high_price = get_room_service_price(high_item)
+    world.room_service_prices = [low_price, high_price]
+
     # Update event script variables for room service prices and item IDs
     updates = zip(
         ["room_service_price_1_a", "room_service_price_1_b", "room_service_item_id_1",
          "room_service_price_2_a", "room_service_price_2_b", "room_service_item_id_2"],
-        [low_item.room_service_price, low_item.room_service_price, type(low_item),
-         high_item.room_service_price, high_item.room_service_price, type(high_item)]
+        [low_price, low_price, type(low_item),
+         high_price, high_price, type(high_item)]
     )
     for identifier, val in updates:
         cmd = world.event_scripts.get_command_by_identifier(identifier, SetVarToConst)

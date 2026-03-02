@@ -220,7 +220,7 @@ class MariocloneHenchman(HenchmanNPC):
 class MallowcloneHenchman(HenchmanNPC):
     """Mallow clone henchman NPC for boss fights."""
 
-    _base = MALLOW_WALKING_DOWN_LEFT_NPC
+    _base = MALLOW_WALKING_DOWN_LEFT_NPC_2
     _animations = SpriteAnimationCollection(
         tower_bullet=mallowclone_laugh,
         kitchen_prep=mallowclone_mad,
@@ -231,7 +231,7 @@ class MallowcloneHenchman(HenchmanNPC):
 class GenocloneHenchman(HenchmanNPC):
     """Geno clone henchman NPC for boss fights."""
 
-    _base = GENO_WALKING_DOWN_LEFT_NPC
+    _base = GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE
     _animations = SpriteAnimationCollection(
         tower_bullet=genoclone_laugh,
         kitchen_prep=genoclone_mad,
@@ -264,7 +264,7 @@ class BowsercloneHenchman_2(HenchmanNPC):
 class PeachcloneHenchman(HenchmanNPC):
     """Peach clone henchman NPC for boss fights."""
 
-    _base = TOADSTOOL_ENDING
+    _base = TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM
     _animations = SpriteAnimationCollection(
         tower_bullet=peachclone_mad,
         kitchen_prep=peachclone_mad,

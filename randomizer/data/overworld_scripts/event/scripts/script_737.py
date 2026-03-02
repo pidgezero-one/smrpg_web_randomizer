@@ -34,26 +34,37 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	PaletteSet(palette_set_starts_at=EPAL0110_GOLD_GOOMBA, from_row=NPC_PALETTE_ROW_3),
+	PaletteSet(palette_set_starts_at=EPAL0108_MALLOW_STATUE, from_row=NPC_PALETTE_ROW_3),
 	SetVarToRandom(PRIMARY_TEMP_7000, 6),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_737_action_queue_8"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_737_set_action_script_13"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_737_action_queue_10"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_737_set_action_script_13"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_737_action_queue_12"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_737_action_queue_6"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_737_action_queue_5"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_737_action_queue_4"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_737_action_queue_3"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_737_action_queue_2"]),
+	ActionQueueAsync(target=NPC_4, subscript=[
+		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True)
+	], identifier="EVENT_737_action_queue_1"),
 	Jmp(["EVENT_737_set_action_script_13"]),
 	ActionQueueAsync(target=NPC_4, subscript=[
 		A_SetSpriteSequence(index=1, is_mold=True, looping=True, mirror_sprite=True)
-	], identifier="EVENT_737_action_queue_8"),
+	], identifier="EVENT_737_action_queue_2"),
 	Jmp(["EVENT_737_set_action_script_13"]),
 	ActionQueueAsync(target=NPC_4, subscript=[
 		A_SetSpriteSequence(index=2, is_mold=True, looping=True, mirror_sprite=True)
-	], identifier="EVENT_737_action_queue_10"),
+	], identifier="EVENT_737_action_queue_3"),
 	Jmp(["EVENT_737_set_action_script_13"]),
 	ActionQueueAsync(target=NPC_4, subscript=[
 		A_SetSpriteSequence(index=3, is_mold=True, looping=True, mirror_sprite=True)
-	], identifier="EVENT_737_action_queue_12"),
-	SetSyncActionScript(NPC_6, A0119_SLOW_SEQUENCE_LOOP, identifier="EVENT_737_set_action_script_13"),
+	], identifier="EVENT_737_action_queue_4"),
+	Jmp(["EVENT_737_set_action_script_13"]),
+	ActionQueueAsync(target=NPC_4, subscript=[
+		A_SetSpriteSequence(index=4, is_mold=True, looping=True, mirror_sprite=True)
+	], identifier="EVENT_737_action_queue_5"),
+	Jmp(["EVENT_737_set_action_script_13"]),
+	ActionQueueAsync(target=NPC_4, subscript=[
+		A_SetSpriteSequence(index=5, is_mold=True, looping=True, mirror_sprite=True)
+	], identifier="EVENT_737_action_queue_6"),
+	SetSyncActionScript(NPC_0, A0119_SLOW_SEQUENCE_LOOP, identifier="EVENT_737_set_action_script_13"),
 	RunEventAsSubroutine(E0821_GARROS_HOUSE_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False),
 	Return()

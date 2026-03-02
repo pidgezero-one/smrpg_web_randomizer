@@ -31,7 +31,6 @@ script = MonsterScript([
 	IncreaseVarBy1(BV7EE00F),
 	SetUntargetable(SELF),
 	SetVarBits(BV7EE003, [3]),
-	RunBattleEvent(BE0065_UNUSED),
 	Wait1TurnandRestartScript(),
 	IfTargetedByCommand([COMMAND_ATTACK]),
 	Attack(BodySlamAttack),

@@ -341,6 +341,7 @@ script = EventScript([
 	JmpToEvent(E0736_ROSE_TOWN_INN_SLEEP_SUBROUTINE),
 	Pause(10, identifier="EVENT_3644_pause_168"),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
+    CloseDialog(),
 	Return(),
 	ClearBit(INSUFFICIENT_COINS, identifier="EVENT_3644_clear_bit_171"),
 	RunDialog(dialog_id=DI3731_NIMBUS_INN_INSUFFICIENT_COINS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),

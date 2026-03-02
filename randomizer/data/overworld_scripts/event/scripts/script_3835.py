@@ -1,4 +1,4 @@
-# E3835_EMPTY
+# E3835_ROOM_28_CLONE_2
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    JmpToEvent(E3302_SHIP_BOSS_ROOM_INNER_RIGHT_HENCHMAN)
 ])

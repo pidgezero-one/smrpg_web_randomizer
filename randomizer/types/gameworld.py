@@ -224,6 +224,7 @@ class GameWorld:
 
     # Text-based shop items (set by shuffle_shops)
     room_service_items: list[type] = [PickMeUpItem, KerokeroColaItem]
+    room_service_prices: list[int] = []  # Compensated prices (set by shuffle_shops)
     bomb_shop_items: list[type] = [FrightBombItem, FireBombItem, IceBombItem]
 
     locations: dict[type[PrizeLocation], PrizeLocation]
@@ -919,6 +920,7 @@ class GameWorld:
         validate_settings(self.settings)
 
         random.seed(self.seed)
+        print(self.seed)
 
         self.event_2496_startup: list[UsableEventScriptCommand] = []
 

@@ -9,6 +9,10 @@ from ..data.variables.sprite_names import (
     SPR0195_FLOWER,
     SPR0211_SMALL_FROG_COIN,
     SPR0226_TINY_STAR,
+    SPR0234_STATIC_FROG_COIN,
+    SPR0235_STATIC_COIN,
+    SPR0236_COIN_STATIC_SMALL,
+    SPR0238_STATIC_FROG_COIN_SMALL,
 )
 from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC
 from ..data.physical_objects.items import (
@@ -936,7 +940,7 @@ class CoinPrize(StandardPrize):
     @property
     def packet_data(self) -> tuple[int, int]:
         if self.amount >= 10:
-            return (SPR0192_COIN, 0)
+            return (SPR0235_STATIC_COIN, 0)
         return (SPR0193_SMALL_COIN, 0)
 
     @property
@@ -985,8 +989,8 @@ class FrogCoinPrize(StandardPrize):
     @property
     def packet_data(self) -> tuple[int, int]:
         if self.amount >= 10:
-            return (SPR0194_FROG_COIN, 0)
-        return (SPR0211_SMALL_FROG_COIN, 0)
+            return (SPR0234_STATIC_FROG_COIN, 0)
+        return (SPR0238_STATIC_FROG_COIN_SMALL, 0)
 
     @property
     def chest_grant(self) -> EventScript:

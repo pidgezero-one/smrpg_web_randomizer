@@ -49,7 +49,7 @@ script = EventScript([
 	]),
 	SetVarToConst(BATTLE_PACK_ID, 72),
 	RunEventAsSubroutine(E0016_FIGHT_REMOVE_PERMANENTLY),
-    JmpIfBitSet(RUN_AWAY, ["EVENT_3209_ret_30"]),
+    JmpIfBitClear(RUN_AWAY, ["EVENT_3209_ret_30"]),
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_SetSpriteSequence(index=4, looping=False),
 	]),

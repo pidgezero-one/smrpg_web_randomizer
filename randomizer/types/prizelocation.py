@@ -114,6 +114,7 @@ if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
     from ..progression.prizes import SmithyBossFight
     from ..types.enemy import Enemy
+    from ..types.physical_objects import ItemNPC
 
 # Module-level cache for lazy imports to avoid repeated import overhead in hot paths
 # These are populated on first access to avoid circular import issues
@@ -1088,6 +1089,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
     _id: ShuffleLocationSelector
     _remake_only: bool = False
     _blacklist: list[type[Prize]] | None = None
+    _model_allowlist: list[type[ItemNPC]] | None = None
     _override_id: int | None = None
     _can_be_empty: bool = False
     _bias: bool = False
