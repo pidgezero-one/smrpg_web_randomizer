@@ -2,7 +2,7 @@
   "version": "9.0.0",
   "flags": "P(rchars)     Q(perms:vanilla_accessories_all|props:random|hints)     C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(bw:open|ks:rfc|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(enemystats:full_random|drops|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko)",
 NEW FLAGSET:
-P(rchars)     Q(perms:vanilla_accessories_all|props:random|hints)     C(exp:double|charspells|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(bw:open|ks:rfc|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops|enemyspells)     F(skips|nowhirl|nobigbang|noko)"
+P(rchars)     Q(perms:vanilla_accessories_all|hints)     C(exp:double|charspells|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(bw:open|ks:rfc|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops|enemyspells)     F(skips|nowhirl|nobigbang|noko)
 
 
 General
@@ -14,6 +14,7 @@ General
 🚧 physical immunity not doing anything? transforming formless, killing dry bones
 🚧 mimic event starts too fast
 - beetlemania packet still not showing in chests
+- crusher palettes not applyiong
 
 Boss-specific
 🚧 culex 3D sprite is broken. HUD disappears in phase 2
@@ -63,9 +64,9 @@ Mushroom kingdom
   - seems to be using wallet guy's scripts?
 - signal ring not working (there are 3 star pieces in the kingdom: shop, and 2 vault chests) while invaded
   🚧 might be too many sfx at once
+- dodo in throne room is very messed up
 
 bandit's way
-🚧 room 4, second chest: pick me up shows as mushroom
 
 Kero sewers
 - no packets in chests in pre-belome room
@@ -77,16 +78,19 @@ Kero sewers
 - smithy 1 finishing crashes battle, plays empty dialog
 
 midas river
-🚧 left tunnel item still showing up as a flowr
+- left tunnel item still showing up as a flowr
 
 tadpole pond 
 - turning in cricket pie did not unlock forest
+- frogfucius telling me to go to kero sewers when i can't do that
 
 Rose way
+- Gold coins take on weird palettes again, might happen when too many npc palette rows
 
 
 Rose Town
-🚧 red guy should have a dialog when you get an item from him post-forest
+- do sean's idea of replacing arrows
+- slots in treasure chest house lower floor is bad
 
 Forest maze 
 - uderground rooms are fucked up. how the hell to get partition to work?
