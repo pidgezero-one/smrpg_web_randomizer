@@ -2918,12 +2918,29 @@ class Preset:
         return cls.__name__
 
 
-class TestPreset(Preset):
-    """test preset"""
+class VeteranPreset(Preset):
 
-    _name: str = "test preset"
-    _description: str = "test"
-    _flags: str = "P(random|max:5)"
+    _name: str = "I Know Everything About SMRPG"
+    _description: str = "For people who know the original game (and its remake) upside down and inside out."
+    _flags: str = "P(rchars)     Q(perms:vanilla_accessories_all|hints)     C(exp:double|uncap)     X(rstars|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|moveflags|postgame)     I(fake|xpstar:bosses|fix_kg)     A(fm:open|bh:tower|bk:star_6)     O(doorcount:1|fasttravel|skipcart)     G(rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops)     F(skips)"
 
 
-PRESETS = [TestPreset]
+class RandomizerPreset(Preset):
+
+    _name: str = "I ♥ Randomizer Logic"
+    _description: str = "A highly access-restrictive preset for people who enjoy solving the puzzle of randomized progression."
+    _flags: str = "P(rchars)     Q(perms:random_accessories_all|props:random|hints)     C(exp:double|charspells|infuse|uncap)     X(rstars)     T(ritems|itemqual:completely_random|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:elder|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor)     O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|melody|pwd|rng)     S(rshops|shopqual:mostly_random|biasshops|showperms)     B(rboss)     E(drops)     F(skips)"
+
+class GodPreset(Preset):
+
+    _name: str = "The World's My Oyster"
+    _description: str = "A preset where your order of operations is wide open."
+    _flags: str = "P(rchars|starters:4:5:6:7:8)     Q(perms:random_accessories_all|props:random|unsafe|hints)     C(stats|charspells)     X(rstars)     T(ritems|itemqual:completely_random|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:none|fix_kg|sj1:10|sj2:20)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|objective:stars|endgame:7|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|shopqual:completely_random|showperms)     B(rboss|bossscale:godmode)     E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko|seeya)"
+
+class Pidge(Preset):
+
+    _name: str = "Pidge Loves This Preset"
+    _description: str = "She likes testing with this, so it's here for convenience."
+    _flags: str = "P(rchars|starters:4)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|charspells|infuse|uncap)     X(rstars)     T(ritems|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:geno|bh:kggg|mm:tower|land:elder|tmpl:key|nl:paint|bv:valentina|bk:axem|wf:open)     O(doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(quiz|melody|pwd|rng)     S(rshops|showperms)     B(rboss|pool://9////f)     E(drops)     F(skips|seeya)"
+
+PRESETS = [VeteranPreset, RandomizerPreset, GodPreset, Pidge]

@@ -621,7 +621,7 @@ def generate_palette_preview_for_submission(character: str, palette_class_name: 
             palette_class=palette_class,
             output_path=str(output_path),
             mold_index=0,
-            scale=4
+            scale=3
         )
 
         print(f"Generated palette preview: {output_path}")
