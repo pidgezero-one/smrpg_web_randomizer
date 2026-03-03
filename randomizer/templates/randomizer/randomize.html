@@ -602,6 +602,42 @@
                 }
             }
 
+            function normalizeFlagString(str) {
+                if (!str || !str.trim()) return '';
+                const groups = {};
+                const regex = /([A-Z])\(([^)]*)\)/g;
+                let match;
+                while ((match = regex.exec(str)) !== null) {
+                    const letter = match[1];
+                    const flags = match[2].split('|').filter(f => f.trim()).sort();
+                    if (flags.length > 0) {
+                        groups[letter] = flags.join('|');
+                    }
+                }
+                return Object.keys(groups).sort().map(k => `${k}(${groups[k]})`).join(' ');
+            }
+
+            function detectPreset() {
+                const normalizedCurrent = normalizeFlagString(flagString);
+                let matchedValue = null;
+
+                $('#preset option').each(function() {
+                    const val = $(this).val();
+                    if (val === 'custom') return;
+                    if (normalizeFlagString(val) === normalizedCurrent) {
+                        matchedValue = val;
+                        return false; // break
+                    }
+                });
+
+                if (matchedValue) {
+                    $('#preset').val(matchedValue);
+                } else {
+                    $('#preset').val('custom');
+                }
+                $('#preset').change();
+            }
+
             // Build flag string based on selected flags visible for this mode.
             function buildFlagString() {
                 // Apply flag requirements from requires_all/requires_any/disabled_if_all
@@ -669,6 +705,7 @@
                         if (stored_flag_string) {
                             applyFlags(stored_flag_string, true);
                         }
+                        detectPreset();
                     });
                 });
 

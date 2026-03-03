@@ -945,6 +945,7 @@ class StarPieceAvailability(BooleanFlag):
     _requires_all = [(ShuffleItems(), True)]
     # change EVENT_947_jmp_to_event_107" to point to event 949
 
+
 # ✅
 class SpellsAnywhere(BooleanFlag):
     _name = "Spells can appear in the general item pool"
@@ -1804,6 +1805,7 @@ class SkipMinecart(BooleanFlag):
     _description = """If enabled, boarding the minecart for the first time will teleport you back to Moleville. Subsequent visits to the minecart room will play the minigame as normal."""
     _id = "skipcart"
 
+
 # ✅
 class SkipAnts(BooleanFlag):
     _name = "Skip Shoguns"
@@ -2172,13 +2174,12 @@ class NoOHKO(BooleanFlag):
 # ✅
 class SeeYa(BooleanFlag):
     _name = "Start with See Ya"
-    _description = (
-        """You will start the game with See Ya already in your item inventory. This removes it from the item pool but it does not count toward your four random starting items.
+    _description = """You will start the game with See Ya already in your item inventory. This removes it from the item pool but it does not count toward your four random starting items.
 <br>
 <br>If "Shuffle Shops" is disabled, the Frog Disciple will not carry the See Ya and will only have his other four items for sale.
 """
-    )
     _id = "seeya"
+
 
 # ******** Cosmetics and Accessibility
 # aka stuff that doesn't affect the seed
@@ -2918,29 +2919,146 @@ class Preset:
         return cls.__name__
 
 
+class ReturningVeteran(Preset):
+    _name: str = '"I haven\'t played in a while..."'
+    _description: str = (
+        "For people who played SMRPG growing up and may do an occasional playthrough nowadays but don't necessarily know all of its obscure secrets inside out."
+    )
+    _flags: str = (
+        "P(rchars)     Q(perms:random_accessories_all)     C(exp:triple)     X(rstars|bosses:/39b8v//)     T(ritems|itemqual:completely_random)     L(keys_anywhere|postgame|chests://P9/3/B//HAA0/Xt4BgAAA89BZOPKhAwi/N+c///7V+xP0N4+//vP7+/C)     A(bw:mushroom_way|fm:open|bh:tower|mm:tower|sea:open)     O(doorcount:1|fasttravel)     S(rshops|shopqual:completely_random|showperms)     B(rboss|pool:f79v3N/P)     E(drops|formations)     F(skips|seeya)"
+    )
+
+
 class VeteranPreset(Preset):
 
-    _name: str = "I Know Everything About SMRPG"
-    _description: str = "For people who know the original game (and its remake) upside down and inside out."
-    _flags: str = "P(rchars)     Q(perms:vanilla_accessories_all|hints)     C(exp:double|uncap)     X(rstars|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|moveflags|postgame)     I(fake|xpstar:bosses|fix_kg)     A(fm:open|bh:tower|bk:star_6)     O(doorcount:1|fasttravel|skipcart)     G(rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops)     F(skips)"
+    _name: str = '"I know everything about SMRPG"'
+    _description: str = (
+        "For people who know the original game (and its remake) upside down and inside out."
+    )
+    _flags: str = (
+        "P(rchars)     Q(perms:vanilla_accessories_all|hints)     C(exp:double|uncap)     X(rstars|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|moveflags|postgame)     I(fake|xpstar:bosses|fix_kg)     A(fm:open|bh:tower|bk:star_6)     O(doorcount:1|fasttravel|skipcart)     G(rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops)     F(skips)"
+    )
 
 
 class RandomizerPreset(Preset):
 
-    _name: str = "I ♥ Randomizer Logic"
-    _description: str = "A highly access-restrictive preset for people who enjoy solving the puzzle of randomized progression."
-    _flags: str = "P(rchars)     Q(perms:random_accessories_all|props:random|hints)     C(exp:double|charspells|infuse|uncap)     X(rstars)     T(ritems|itemqual:completely_random|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:elder|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor)     O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|melody|pwd|rng)     S(rshops|shopqual:mostly_random|biasshops|showperms)     B(rboss)     E(drops)     F(skips)"
+    _name: str = '"I ♥ randomizer logic"'
+    _description: str = (
+        "A highly access-restrictive preset for people who enjoy solving the puzzle of randomized progression."
+    )
+    _flags: str = (
+        "P(rchars)     Q(perms:random_accessories_all|props:random|hints)     C(exp:double|charspells|infuse|uncap)     X(rstars)     T(ritems|itemqual:completely_random|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:elder|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor)     O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|melody|pwd|rng)     S(rshops|shopqual:mostly_random|biasshops|showperms)     B(rboss)     E(drops)     F(skips)"
+    )
+
 
 class GodPreset(Preset):
 
-    _name: str = "The World's My Oyster"
+    _name: str = '"The world\'s my oyster"'
     _description: str = "A preset where your order of operations is wide open."
-    _flags: str = "P(rchars|starters:4:5:6:7:8)     Q(perms:random_accessories_all|props:random|unsafe|hints)     C(stats|charspells)     X(rstars)     T(ritems|itemqual:completely_random|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:none|fix_kg|sj1:10|sj2:20)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|objective:stars|endgame:7|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|shopqual:completely_random|showperms)     B(rboss|bossscale:godmode)     E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko|seeya)"
+    _flags: str = (
+        "P(rchars|starters:4:5:6:7:8)     Q(perms:random_accessories_all|props:random|unsafe|hints)     C(stats|charspells)     X(rstars)     T(ritems|itemqual:completely_random|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:none|fix_kg|sj1:10|sj2:20)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|objective:stars|endgame:7|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|shopqual:completely_random|showperms)     B(rboss|bossscale:godmode)     E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko|seeya)"
+    )
+
+
+class Speedrunner(Preset):
+    _name: str = '"I just speedrun this game"'
+    _description: str = (
+        "For any% speedrunners who don't remember much about casual playthroughs or MOTS speedruns (but might have done Low Level once or twice)."
+    )
+    _flags: str = "Q(hints)     C(exp:double|uncap)     X(rstars|bosses:fz9v3t/f)     T(ritems|hill|marry)     L(keys_anywhere|stars_anywhere|chests://P//3/D//XA/9/f9+9/b4/99/5//d9gzi/d+f//n71/9/8P7////v7+vf)     I(replace|fake)     A(bw:mushroom_way|fm:open|bh:tower|mm:tower|sea:open)     O(doorcount:1|fasttravel|skipcart)     G(rng)     S(showperms)     B(rboss|allsprites|pool://9////f)     F(skips|seeya)"
+
+
+class LegacyQuick(Preset):
+    _name: str = "Legacy Quick Preset"
+    _description: str = (
+        "A preset that approximates the settings of the old 'Quick' preset from 8.x.x."
+    )
+    _flags: str = (
+        "P(rchars|starters:4:5:6)     Q(perms:random|props:random)     C(exp:triple|stats|charspells)     X(rstars|bosses:fzFu3Nfe)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:star_6)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     S(rshops|shopqual:completely_random|showperms|free)     B(rboss|pool:fz9v3N/P)     E(drops)"
+    )
+
+
+class LegacyCasual(Preset):
+    _name: str = "Legacy Casual Preset"
+    _description: str = (
+        "A preset that approximates the settings of the old 'Casual' preset from 8.x.x."
+    )
+    _flags: str = (
+        "P(rchars|starters:4:5:6)     Q(perms:random)     C(exp:double|stats)     X(rstars|bosses:f7/v3N/f)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace|xpstar:bosses)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:star_6)     O(doorcount:1|cwarp)     G(ball|button|quiz|doorshuffle)     S(rshops|shopqual:completely_random|showperms)     B(rboss|pool:fz9v3N/P)     E(drops|formations)"
+    )
+
+
+class LegacyIntermediate(Preset):
+    _name: str = "Legacy Intermediate Preset"
+    _description: str = (
+        "A preset that approximates the settings of the old 'Intermediate' preset from 8.x.x."
+    )
+    _flags: str = (
+        "P(rchars|starters:4:6:5)     Q(perms:random|props:random)     C(exp:double|stats|charspells|spellstats)     X(rstars|total_sp:7|bosses:/HE+//f+)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|endgame:7|doorcount:2|cwarp)     G(ball|button|quiz|doorshuffle)     S(rshops|shopqual:completely_random|showperms)     B(rboss|pool:fz9v3N/P)     E(drops|formations)"
+    )
+
+
+class LegacyAdvanced(Preset):
+    _name: str = "Legacy Advanced Preset"
+    _description: str = (
+        "A preset that approximates the settings of the old 'Advanced' preset from 8.x.x."
+    )
+    _flags: str = (
+        "P(rchars|starters:4)     Q(perms:random|props:random)     C(exp:double|stats|charspells|spellstats)     X(rstars|total_sp:7|bosses://F+//f+)     T(ritems|itemqual:mostly_random|restrict_monstro)     L(keys_anywhere|chests:////////////////////////////////////f8////////////////////)     I(replace|xpstar:stars)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open)     O(seaside:open|endgame:7)     G(ball|button|quiz|doorshuffle)     S(rshops|shopqual:mostly_random|showperms)     B(rboss|pool:fz9v3t/P)     E(enemystats:full_random|drops|formations|attacks)"
+    )
+
+
+class LegacyExpert(Preset):
+    _name: str = "Legacy Expert Preset"
+    _description: str = (
+        "A preset that approximates the settings of the old 'Expert' preset from 8.x.x."
+    )
+    _flags: str = (
+        "P(rchars|starters:4)     Q(perms:random|props:random|unsafe)     C(exp:double|stats|charspells|spellstats)     X(rstars|total_sp:7|bosses://F+//f+)     T(ritems|itemqual:mostly_random|restrict_monstro)     L(keys_anywhere)     I(replace|fake|xpstar:stars)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|endgame:7)     G(ball|button|quiz|doorshuffle)     S(rshops|showperms)     B(rboss|bossscale:vanilla|pool:f79v3t/P)     E(enemystats:full_random|drops|formations|attacks|enemyspells)     F(nowhirl|nobigbang|noko)"
+    )
+
+
+class LegacyAsyncTournament(Preset):
+    _name: str = "Legacy 2021 Fall Async Tournament Preset"
+    _description: str = (
+        "A preset that approximates the settings of the old '2021 Fall Async Tournament' preset from 8.x.x."
+    )
+    _flags: str = (
+        "P(rchars|starters:4)     Q(perms:random|props:random)     C(exp:double|stats|charspells|spellstats)     X(rstars|total_sp:7|bosses:f7Fu3Nfe)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace|fake)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open)     O(endgame:7|doorcount:2|cwarp)     G(button|doorshuffle)     S(rshops|shopqual:completely_random|showperms)     B(rboss|pool:/39////f)     E(enemystats:full_random|drops|formations|attacks)"
+    )
+
+
+class LegacyBingo(Preset):
+    _name: str = "Legacy Standard Bingo Flags Preset"
+    _description: str = (
+        "A preset that approximates the settings of the old 'Standard Bingo Flags' preset from 8.x.x."
+    )
+    _flags: str = (
+        "P(rchars|starters:4)     Q(perms:random|props:random)     C(exp:triple|stats|charspells|spellstats)     X(rstars|total_sp:7)     T(ritems|itemqual:completely_random|restrict_monstro)     L(keys_anywhere|chests:////////////////////////////////////f8//////////////v/////)     I(fake)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open)     O(seaside:open|endgame:7|doorcount:2|cwarp)     G(button|doorshuffle)     S(rshops|shopqual:completely_random)     B(rboss|pool:f79v3t/P)     E(enemystats:full_random|drops|formations|attacks)"
+    )
+
 
 class Pidge(Preset):
 
-    _name: str = "Pidge Loves This Preset"
+    _name: str = "Pidge loves this preset"
     _description: str = "She likes testing with this, so it's here for convenience."
-    _flags: str = "P(rchars|starters:4)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|charspells|infuse|uncap)     X(rstars)     T(ritems|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:geno|bh:kggg|mm:tower|land:elder|tmpl:key|nl:paint|bv:valentina|bk:axem|wf:open)     O(doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(quiz|melody|pwd|rng)     S(rshops|showperms)     B(rboss|pool://9////f)     E(drops)     F(skips|seeya)"
+    _flags: str = (
+        "P(rchars|starters:4)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|charspells|infuse|uncap)     X(rstars)     T(ritems|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:geno|bh:kggg|mm:tower|land:elder|tmpl:key|nl:paint|bv:valentina|bk:axem|wf:open)     O(doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(quiz|melody|pwd|rng)     S(rshops|showperms)     B(rboss|pool://9////f)     E(drops)     F(skips|seeya)"
+    )
 
-PRESETS = [VeteranPreset, RandomizerPreset, GodPreset, Pidge]
+
+PRESETS = [
+    ReturningVeteran,
+    VeteranPreset,
+    RandomizerPreset,
+    GodPreset,
+    Speedrunner,
+    LegacyQuick,
+    LegacyCasual,
+    LegacyIntermediate,
+    LegacyAdvanced,
+    LegacyExpert,
+    LegacyAsyncTournament,
+    LegacyBingo,
+    Pidge,
+]

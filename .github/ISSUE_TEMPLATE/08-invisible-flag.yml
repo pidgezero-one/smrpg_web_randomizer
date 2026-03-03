@@ -43,6 +43,7 @@ body:
         Supported characters:  
         `A-Z`, `a-z`, `0-9`, and any of `♥♪•~©:;#×+%↑→←*&()-/?!.,`
 
-        It is recommended to use the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to preview your text for run-on sentences. Hints should be short enough to fit in a single dialog, but if you feel like your location won't be specific enough without more detail, make sure there is a good spot to await the user to press A within every 3 lines or less to prevent forced scrolling (usually the end of a sentence).
+        It is recommended to use the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to preview your text for run-on sentences. Hints should be short enough to fit in a single dialog, but if you feel like your location won't be specific enough without more detail, make sure there is a good spot to await the user to press A within every 3 lines or less to prevent forced scrolling (usually the end of a sentence).  
+        You don't *have* to do this, but if you don't, your submission might sit in the queue indefinitely since it would require someone else to take the time to format it for you. It's best to just do it yourself.
     validations:
       required: true

@@ -3377,7 +3377,7 @@ class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
     _bias = True
     _originally_held = RedEssencePrize
     _rooms = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
-    _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
+    _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3997,7 +3997,7 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _originally_held = None
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _override_id = 528
-    _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
+    _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _remake_only = True
     _parent = BoosterTowerIndoorBossFightRemake

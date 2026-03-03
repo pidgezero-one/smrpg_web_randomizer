@@ -48,7 +48,8 @@ body:
         Supported characters for hint dialogs:  
         `A-Z`, `a-z`, `0-9`, and any of `♥♪•~©:;#×+%↑→←*&()-/?!.,`
 
-        It is recommended to use the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to preview your text for run-on sentences. There should be a good spot to await the user to press A within every 3 lines or less to prevent forced scrolling.
+        It is recommended to use the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to preview your text for run-on sentences. There should be a good spot to await the user to press A within every 3 lines or less to prevent forced scrolling.  
+        You don't *have* to do this, but if you don't, your submission might sit in the queue indefinitely since it would require someone else to take the time to format it for you. It's best to just do it yourself.
         
         (Note the third Melody Bay song hints are audio only and will be derived from your submission.)
 
