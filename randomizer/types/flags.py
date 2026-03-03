@@ -2933,7 +2933,7 @@ class VeteranPreset(Preset):
 
     _name: str = '"I know everything about SMRPG"'
     _description: str = (
-        "For people who know the original game (and its remake) upside down and inside out."
+        "For people who know the original game (and its remake) upside down and inside out. Everything is shuffled and no checks are disabled. Your knowledge of equipment properties and monster behaviours will come in handy."
     )
     _flags: str = (
         "P(rchars)     Q(perms:vanilla_accessories_all|hints)     C(exp:double|uncap)     X(rstars|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|moveflags|postgame)     I(fake|xpstar:bosses|fix_kg)     A(fm:open|bh:tower|bk:star_6)     O(doorcount:1|fasttravel|skipcart)     G(rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops)     F(skips)"

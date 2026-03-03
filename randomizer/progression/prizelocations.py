@@ -2504,7 +2504,7 @@ class YosterEntranceChestLocation(TreasureChestLocationRow1):
 
     # Flag as checked: npc 1 in room 33 has its object trigger disabled.
 
-class YosterRaceCookieYoshiLocation(NPCLocationRow5):
+class YosterRaceCookieYoshiLocation(KeyItemLocation, NPCLocationRow5):
     _bias = True
     _originally_held = CookiesPrize
     _rooms = [R034_YOSTER_ISLE]
@@ -3746,7 +3746,7 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     # flag as checked: TOWER_BOSS_1_STAR_PIECE
     # will be granted regardless of whether they do curtain game or fight boss
 
-class BoosterTowerMarioDollLocation(StandingLocationRow1):
+class BoosterTowerMarioDollLocation( KeyItemLocation, StandingLocationRow1):
     _bias = True
     _originally_held = MarioDollPrize
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
