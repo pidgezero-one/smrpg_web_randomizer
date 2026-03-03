@@ -560,7 +560,7 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xC0, "DARKKEFKA       DOOMSDAY")
     credits.add_credit(0x80, 0x40, 0x81, "GIANGURGOLO        OMEGA")
-    credits.add_credit(0x80, 0x00, 0xC2, "WILL")
+    credits.add_credit(0x80, 0x00, 0xC2, "WILL               DJFOX")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 32

@@ -1867,7 +1867,7 @@ class RoseTownTreasureHouseLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_1
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     # Flag as checked: npc 0 in room 93 or 94 has its object trigger disabled.
 
 
@@ -1880,7 +1880,7 @@ class RoseTownTreasureHouseRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1, NPC_1]
     _id = ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_2
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     # Flag as checked: npc 1 in room 93 or 94 has its object trigger disabled.
 
 
@@ -10276,9 +10276,10 @@ class FinalBossFight(BossFightLocation):
     _bias = True
     _originally_held = SmithyBossFight
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_FINAL
-    _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _world_area = WorldAreaEnum.INNER_FACTORY
     _rooms = [R509_FACTORY_GROUNDS_SMITHYS_PAD]
     _pack_id = PACK185_FINAL_BOSS
+    _force_battlefield = BF44_FACTORY_GROUNDS_SMITHYS_PAD
     _post_unlocks_event_id = E1245_INNER_FACTORY_5_BOSS_UNLOCKS
     _npc_slots = [
         BossFightLocationNPC(
