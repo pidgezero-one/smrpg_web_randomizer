@@ -299,7 +299,7 @@ class WindCrystalHenchman(HenchmanNPC):
 class PiranhaPlantHenchman(HenchmanNPC):
     """Piranha Plant henchman NPC for boss fights."""
 
-    _base = PIRANHA_PLANT_NPC
+    _base = PIRANHA_PLANT_NPC_3
     _animations = SpriteAnimationCollection(
         recoil=piranha_recoil,
         tower_bullet=piranha_bite,

@@ -25,7 +25,7 @@ script = MonsterScript([
 	ClearVarBits(BV7EE00F, [0]),
 	StartCounterCommands(),
 	IfHPBelow(0),
-	RunBattleEvent(BE0035_BOOSTER_EATS_CAKE),
+	RunObjectSequence(6),
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript()
 ])

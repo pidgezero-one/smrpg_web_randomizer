@@ -5,6 +5,8 @@ NEW FLAGSET:
 P(rchars)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|charspells|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg|sj1:5|sj2:10)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops|enemyspells)     F(skips|nowhirl|nobigbang|noko|seeya)
 
 
+3708761499
+
 General
 🚧 dying to failed slots does not game over
 🚧 gold paint in chest rendered as a blue drink
@@ -15,12 +17,22 @@ General
 🚧 mimic event starts too fast
 - beetlemania packet still not showing in chests
 - crusher palettes not applyiong
+- picking up a freestanding frog coin in mushroom way is making him stop for a moment and get caught by the goombler
+- why is domino in mushroom way giving 368 exp LOL
+- mallow in midas river climbing sprite is broken
+- 80 frog coins?! in rose way chest
+- if you find a star piece while the exp star is active, see if you can resume the exp star music instead of the level selector music
+- exchanging cricket pie unlocks forest maze dot, but not he path that leads there
+- need to actually prevent race from starting if you dont have the cookies
+- sage stick attack is a hard lock
+- should be able to run away from mimic fights in mimics anywhere
 
 Boss-specific
 🚧 culex 3D sprite is broken. HUD disappears in phase 2
   🚧 and loading only wind crystal sprites (enemies are correct)
 - torte henchman is untargetable in battle
 - bundt fight crashes!
+  - got a little farther than last time, right torte faces other guy and yells at him, but then the script does not respond
 🚧 kggg trying to run battle dialogs
 🚧 fancy bundt animations are wrong, cross ref against demake
   🚧 opening event is fine. it's when it takes its first turn that things mess up (moves forward and separates)
@@ -81,7 +93,6 @@ midas river
 - left tunnel item still showing up as a flowr
 
 tadpole pond 
-- turning in cricket pie did not unlock forest
 - frogfucius telling me to go to kero sewers when i can't do that
 
 Rose way
@@ -119,6 +130,15 @@ Moleville
   - changed partition altogether
 🚧 circule path leading to traintrack room: fireball partition is wrong
   - try putting 3rd partition as 4x?
+- the crook can't get through you when they try to run away, need to unset the collision bit to make that not happen
+- shyguy cart item broken, can't pick it up, graphical glitch (gets overwritten by shy guy animation)
+  - if you leave room before picking it up, make sure it does not disappear
+- four-pack of bombs in mine area is loading a henchmen pack instead of a mob pack
+  - one of the bobombs in punchinellos room is not transformed into a henchman
+  - also exploding sprites look a bit broken
+  - one corner of the bundt object is a bit messy
+- final train track room - coin overwrites chest
+
 
 Booster Pass
 
@@ -143,7 +163,7 @@ Marrymore
 🚧 crown replacement sinks into the floor
 🚧 plays DI4060_NEED_TO_DO_CHAPEL_CHECKS when you get a marrymore gift for some reason?! in hotel?!
 🚧 bellhop sidequest gets stuck on "please see our guest out"
-🚧 stay voucher can be used multiple times. should be taken away after first time
+- stay voucher can be used multiple times. should be taken away after first time
   - it's being taken away but still detecting as present in inventory
 🚧 could use a dialog explaining why you're getting a gift
 🚧 dialogs seem wrong. both are attributed as torte in kitchen
@@ -152,8 +172,8 @@ Marrymore
 Seaside Town
 🚧 seaside: boss is replacing the wrong sprite in confrontation, also bad partition for grate guy
   🚧 belome 2 here's allies are very broken
-🚧 frog disciple doesnt go back to reading book if you talk to him when hes out of items
 🚧 no signoff in jinx letter
+- boomer has bad partition inside elder's house
 
 Sea
 
@@ -194,14 +214,11 @@ Monstro Town
 Bean Valley
 🚧 is frog coin at vine fork path randomized?
   - hard to tell. Beanstalk2ndRoomFloatingItemLocation
+  - missing in one seed?
 🚧 culex on pipe: shy away totally broken
   🚧 water crystal did something that broke the game
     🚧 it's breaker beam
-🚧 boss room is deleting save file again
-11:03 PM]pidge: problem ended up being because megasmilax's npc substitution i wrote a little differently from the rest of the bosses
-[11:03 PM]pidge: bc shy away was causing problems so i just reconfigured a lot of things in the room, and the sprite replaces the smilax stem instead of the smilax head
-[11:03 PM]pidge: but some npc properties were lost in translation because of that
-  🚧 Thrax was already saved there. Try using a gridplane-only copy with size 0 instead of size 5
+- save deletion seems inconsistent now, happened when you got into a fight with the boss but not before?
 
 - above-ground chest (normally fc chest) partially overwritten by a coin. dont think theres a slot machine here
 
@@ -211,21 +228,22 @@ Nimbus Land
   - need more research
 - statues in statue room are shifted incorrectly
   - need more research
-🚧 gold paint logic does not work, will take you in if you talk to him twice
 🚧 frog coin in nimbus castle doesnt render in chest (bridge room)
 🚧 ninja in dodo spot has some problematic animations, d++++++++oesnt turn around, sprite briefly distorts
-🚧 statue bird palettes are wrong everywhere, possibly bc of exp star?
-🚧 statue sprites in garro's house need a diff partition (jagger doesnt load correctly), same in castle
-  🚧 did not load at all in latest seed
 🚧 statues in statue room face wrong direction
-🚧 mallow statue palette in garros house is wrong and partially cut off
 🚧 hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
 🚧 did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings
+  - item problem is fixed, i think, but battle still required
 🚧 trueform pin packet did not appear in forkies room
 🚧 chests broken in post-birdo room
 🚧 bowsers keep condition not substituted in dialog
 🚧 garro partition is wrong when grate guy statue is loaded
 🚧 can't say no in nimbus inn
+- need to actually disable the front door when blocked by guarss
+- croco in statue room: molds moving forward are incorrect, but the game otherwise words correclty
+- forkies is still overwriting chests in the staircase room
+- croco in back hallway facing wrong direction (turn off f coord probably), was facing NW while walking NE
+- castle final boss uses wrong room id in event 353
 
 Volcano
 🚧 sparkles act weirdly when you hit oerlikons with exp star
@@ -256,3 +274,7 @@ Ending
 🚧 sparkle not trailing star in room 1
 - need a mario npc sub for when you are playing as another character
 🚧 culex and jagger ran right through the pedestal
+- sun does not come out! what the hell did you do to the palette set
+- grate guy in bowsers keep: bad partition
+- hammer bro and boshi: boshi get soverwritten partially. check out min vram on hammer bro
+- chapel: priest is missing sometimes

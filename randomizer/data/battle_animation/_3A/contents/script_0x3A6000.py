@@ -428,6 +428,9 @@ script = AnimationScriptBlock(expected_size=4189, expected_beginning=0x3A6000, s
 	Jmp(["be0029_TORTE_2_sprq_sub"]),
 	DefineObjectQueue(["be0030_unused_0x3A65C4"], identifier="battle_event_0030_unused"),
 	Jmp(["command_0x3A7550"], identifier="be0030_unused_0x3A65C4"),
+    
+
+
 	DefineObjectQueue(["be0031_unused_0x3A65F1"], identifier="battle_event_0031_bundt_hp_threshold"),
 	RunSubroutine(["command_0x3A7531"], identifier="be0031_unused_0x3A65F1"),
 	UseSpriteQueue(field_object=0, destinations=["command_0x3AC99B"], bit_2=True, bit_4=True),
@@ -450,9 +453,7 @@ script = AnimationScriptBlock(expected_size=4189, expected_beginning=0x3A6000, s
 	RunSubroutine(["command_0x3A771E"]),
 	Jmp(["command_0x3A7550"]),
 	DefineObjectQueue(["be0034_blow_those_candles_out_0x3A663F"], identifier="battle_event_0034_blow_those_candles_out"),
-    SetAMEM8BitTo7E5x(0x67, 0x7E0926, identifier="be0034_blow_those_candles_out_0x3A663F"),
-    Set7E1xToAMEM8Bit(0x7EE007, 0x67), # set party size so that bundt won't respawn candles in a solo run
-	RunSubroutine(["command_0x3A7531"]),
+    RunSubroutine(["command_0x3A7531"], identifier="be0034_blow_those_candles_out_0x3A663F"),
 	UseSpriteQueue(field_object=2, destinations=["command_0x3ACC59"], bit_2=True, bit_4=True),
 	Jmp(["command_0x3A7550"]),
 	DefineObjectQueue(["be0035_booster_eats_cake_0x3A664C"], identifier="battle_event_0035_booster_eats_cake"),

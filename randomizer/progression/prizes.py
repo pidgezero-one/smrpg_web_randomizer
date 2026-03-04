@@ -3758,6 +3758,7 @@ class BundtBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a possessed cake walking"
     _seaside_letter_name_if_final_boss = "Bundt's dinner guests."
     _name = "Bundt"
+    _force_start_event = BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
 
     _npc_models = [BundtLargeObject, BundtSmallObject]
     _statue_npc = BundtStatueObject

@@ -22,12 +22,12 @@ script = MonsterScript([
 	IfHPBelow(400, identifier="croco2_steal"),
 	SetVarBits(BV7EE004, [0, 1]),
 	RunBattleEvent(BE0015_CROCO_STEALS_ITEMS_YOU_WANT_THEM_BACK),
-	RemoveAllInventory(),
+	DisableCommand([COMMAND_ITEM]),
 	ClearVar(BV7EE00F),
 	Wait1TurnandRestartScript(),
 	IfHPBelow(0),
 	RunBattleEvent(BE0016_CROCO_RETURNS_ITEMS_ENOUGH_HERE_S_YOUR_JUNK),
-	RemoveAllInventory(),
+	EnableCommand([COMMAND_ITEM]),
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript()
 ])
