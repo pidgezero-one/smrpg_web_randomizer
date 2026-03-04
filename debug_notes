@@ -10,6 +10,7 @@ P(rchars)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double
 General
 🚧 dying to failed slots does not game over
 🚧 physical immunity not doing anything? transforming formless, killing dry bones
+  - This is happening because the final byte of the if block is assembling to 02 instead of 03. Incorrect
 🚧 mimic event starts too fast
 - beetlemania packet still not showing in chests
 - crusher palettes not applyiong
@@ -176,6 +177,7 @@ Sea
 Sunken Ship
 🚧 stairs are using falling packets instead of rising packets
 🚧 dry bones dies to regular attacks
+  - This is happening because the final byte of the if block is assembling to 02 instead of 03. Incorrect
 🚧 dry bones does not collapse when you run away
 - royal syrup in corner of pool room was invisible?
 🚧 slots chest in hidon room causes coin sprites to overwrite chests
