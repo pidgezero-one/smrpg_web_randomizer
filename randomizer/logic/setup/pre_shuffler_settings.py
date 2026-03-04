@@ -207,7 +207,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
     elif world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.PIE):
         e = world.event_scripts.get_script_by_id(E1255_UNLOCK_FOREST_BY_PIE)
         e.insert_before_nth_command(0, SetBit(MAP_FOREST_MAZE))
-        e.insert_before_nth_command(0, SetBit(MAP_FOREST_MAZE))
+        e.insert_before_nth_command(0, SetBit(MAP_DIRECTIONAL_ROSE_TOWN_FOREST_MAZE))
 
     # Pipe Vault
     if not world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.OPEN):
