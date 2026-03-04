@@ -18,17 +18,17 @@ room = Room(
         extra_sprite_buffer_size=0,
         buffers = [
             Buffer(
-                buffer_type=BufferType.TREASURE_CHEST,
-                main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
-            ),
-            Buffer(
                 buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
+                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                main_buffer_space=BufferSpace.BYTES_0,
+                index_in_main_buffer=True
+            ),
+            Buffer(
+                buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             )
@@ -139,9 +139,8 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        RegularNPC( # 1
+        RegularClone( # 1
             npc=npcs.VALENTINA_STATUE_NPC,
-            initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
@@ -149,23 +148,7 @@ room = Room(
             y=19,
             z=1,
             z_half=False,
-            direction=NORTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=False,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=True,
-            cant_walk_through=True,
-            byte3_bit7=True,
-            slidable_along_walls=False,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
+            direction=NORTHWEST,),
         RegularNPC( # 2
             npc=npcs.NIMBUS_GUARD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,

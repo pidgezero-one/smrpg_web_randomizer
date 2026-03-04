@@ -23,6 +23,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from dataclasses import dataclass
+
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_6
 from ..data.variables.sprite_names import *
 from ..data.variables.room_names import *
 
@@ -307,8 +309,24 @@ def _update_buffer_by_room_object(
         room.partition.buffers[buffer_index].set_main_buffer_space(buffer_space)
 
 
-def update_statue_room_partition(world: GameWorld) -> None:
+def update_statue_room_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R341_NIMBUS_LAND_GARROS_HOUSE, NPC_1, 1)
+    _update_buffer_by_room_object(world, R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, NPC_0, 0)
+    _update_buffer_by_room_object(world, R109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, NPC_0, 0)
+    _update_buffer_by_room_object(world, R115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA, NPC_0, 0)
+    _update_buffer_by_room_object(world, R122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM, NPC_0, 1)
+    _update_buffer_by_room_object(world, R120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA, NPC_0, 1)
+    _update_buffer_by_room_object(world, R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, NPC_3, 2)
+    _update_buffer_by_room_object(world, R119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05, NPC_6, 2)
+    _update_buffer_by_room_object(world, R408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM, NPC_6, 2)
+    # Skip room 113, it has both a 3 and a 4 buffer. See what happens when there's a non gridplane enemy here
+    _update_buffer_by_room_object(world, R440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA, NPC_0, 1)
+    _update_buffer_by_room_object(world, R447_NIMBUS_LAND_HOT_SPRINGS, NPC_1, 0)
+    _update_buffer_by_room_object(world, R447_NIMBUS_LAND_HOT_SPRINGS, NPC_1, 1)
+    _update_buffer_by_room_object(world, R447_NIMBUS_LAND_HOT_SPRINGS, NPC_1, 2)
+    _update_buffer_by_room_object(world, R497_NIMBUS_CASTLE_AREA_06_DUMMY, NPC_0, 0)
+    _update_buffer_by_room_object(world, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, NPC_1, 1)
+    _update_buffer_by_room_object(world, R501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA, NPC_0, 0)
     
 
 def update_kitchen_partitions(world: GameWorld) -> None:

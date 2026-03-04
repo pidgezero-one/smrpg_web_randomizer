@@ -219,9 +219,6 @@ Bean Valley
 - above-ground chest (normally fc chest) partially overwritten by a coin. dont think theres a slot machine here
 
 Nimbus Land
-- default bonk animation doesn't seem to let you jump
-  - needs timing, should connect on 34th frame
-  - need more research
 - statues in statue room are shifted incorrectly
   - need more research
 🚧 frog coin in nimbus castle doesnt render in chest (bridge room)
@@ -236,7 +233,7 @@ Nimbus Land
 🚧 garro partition is wrong when grate guy statue is loaded
 🚧 can't say no in nimbus inn
 - need to actually disable the front door when blocked by guarss
-- croco in statue room: molds moving forward are incorrect, but the game otherwise words correclty
+🚧 croco in statue room: molds moving forward are incorrect, but the game otherwise words correclty
 - forkies is still overwriting chests in the staircase room
 - croco in back hallway facing wrong direction (turn off f coord probably), was facing NW while walking NE
 - castle final boss uses wrong room id in event 353

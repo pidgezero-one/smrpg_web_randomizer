@@ -1020,10 +1020,37 @@ def render_statue_room_boss(
 
     spr = world.sprites.sprites[m.base.sprite_id]
     assert spr is not None
-    has_walking_sequence = len(spr.animation.properties.sequences[0].frames) >= 2
-    has_back_walking_sequence = len(spr.animation.properties.sequences) > 1 and len(
-        spr.animation.properties.sequences[1].frames
-    ) >= 2 and not is_swse_only(spr)
+    has_walking_sequence = True
+    has_back_walking_sequence = True
+
+    south_mold_map = {}
+    walking_molds = []
+    for frame in spr.animation.properties.sequences[0].frames:
+        if south_mold_map.get(frame.mold_id) is None:
+            south_mold_map[frame.mold_id] = 0
+        south_mold_map[frame.mold_id] += 1
+    for mold_id, count in south_mold_map.items():
+        if count == 1:
+            walking_molds.append(mold_id)
+            if len(walking_molds) == 2:
+                break
+    if len(walking_molds) < 2:
+        has_walking_sequence = False
+
+    north_mold_map = {}
+    back_walking_molds = []
+    if not is_swse_only(spr):
+        for frame in spr.animation.properties.sequences[1].frames:
+            if north_mold_map.get(frame.mold_id) is None:
+                north_mold_map[frame.mold_id] = 0
+            north_mold_map[frame.mold_id] += 1
+        for mold_id, count in north_mold_map.items():
+            if count == 1:
+                back_walking_molds.append(mold_id)
+                if len(back_walking_molds) == 2:
+                    break
+    if len(back_walking_molds) < 2:
+        has_back_walking_sequence = False
 
     # walking from statue to statue
     for aq, id in [("EVENT_3640_action_queue_271", "dodo_extra_sprite_1")]:
@@ -1032,10 +1059,11 @@ def render_statue_room_boss(
                 aq,
                 id,
                 A_SetSpriteSequence(
-                    index=2,
+                    index=walking_molds[0],
                     is_sequence=True,
                     looping=False,
                     mirror_sprite=True,
+                    is_mold=True,
                 ),
             )
         else:
@@ -1047,10 +1075,11 @@ def render_statue_room_boss(
                 aq,
                 id,
                 A_SetSpriteSequence(
-                    index=1,
+                    index=walking_molds[1],
                     is_sequence=True,
                     looping=False,
                     mirror_sprite=True,
+                    is_mold=True,
                 ),
             )
         else:
@@ -1059,7 +1088,7 @@ def render_statue_room_boss(
     for aq, id in [("EVENT_3640_action_queue_304", "dodo_left_forward")]:
         if has_back_walking_sequence:
             world.event_scripts.replace_subscript_command_by_identifier(
-                aq, id, A_SetSpriteSequence(index=4, is_mold=True)
+                aq, id, A_SetSpriteSequence(index=back_walking_molds[0], is_mold=True)
             )
         else:
             world.event_scripts.delete_subscript_command_by_identifier(aq, id)
@@ -1067,7 +1096,7 @@ def render_statue_room_boss(
     for aq, id in [("EVENT_3640_action_queue_306", "dodo_right_forward")]:
         if has_back_walking_sequence:
             world.event_scripts.replace_subscript_command_by_identifier(
-                aq, id, A_SetSpriteSequence(index=5, is_mold=True)
+                aq, id, A_SetSpriteSequence(index=back_walking_molds[1], is_mold=True)
             )
         else:
             world.event_scripts.delete_subscript_command_by_identifier(aq, id)
