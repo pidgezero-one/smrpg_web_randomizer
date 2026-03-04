@@ -9,15 +9,11 @@ P(rchars)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double
 
 General
 🚧 dying to failed slots does not game over
-🚧 gold paint in chest rendered as a blue drink
-🚧 bowser's runaway sprite is wrong
-🚧 "Got the Brooch" chest dialog doesn't go away
-- cymbals not making a sound?
 🚧 physical immunity not doing anything? transforming formless, killing dry bones
 🚧 mimic event starts too fast
 - beetlemania packet still not showing in chests
 - crusher palettes not applyiong
-- picking up a freestanding frog coin in mushroom way is making him stop for a moment and get caught by the goombler
+🚧 picking up a freestanding frog coin in mushroom way is making him stop for a moment and get caught by the goombler
 - why is domino in mushroom way giving 368 exp LOL
 - mallow in midas river climbing sprite is broken
 - 80 frog coins?! in rose way chest

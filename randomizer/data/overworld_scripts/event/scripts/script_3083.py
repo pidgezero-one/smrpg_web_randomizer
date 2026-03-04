@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
-	ActionQueueAsync(target=MEM_70A8, subscript=[
+	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 		A_Pause(30),
 		A_VisibilityOff(),
