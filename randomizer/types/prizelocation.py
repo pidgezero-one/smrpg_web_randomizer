@@ -1352,6 +1352,11 @@ class StandardPrizeLocation(PrizeLocation):
         if isinstance(prize, KeyPrize) and not world.settings.isflag_enabled(
             KeyItemsAnywhere
         ):
+            # KeyItemLocations should always accept KeyPrize items, even without
+            # KeyItemsAnywhere — that flag only controls whether key items can
+            # spill into the general (non-KeyItemLocation) pool.
+            if isinstance(self, KeyItemLocation):
+                return super().can_accept(prize, inventory, world)
             return False
         elif isinstance(prize, StarPiecePrize) and not world.settings.isflag_enabled(
             StarPieceAvailability
