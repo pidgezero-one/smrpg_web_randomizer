@@ -107,6 +107,7 @@ from ..data.variables.variable_names import (
     INVISIBLE_FLAG_3_FOUND,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import Packet
+from ..data.physical_objects.items import DefaultItem
 from ..types.prize import TOriginallyHeld
 
 if TYPE_CHECKING:
@@ -1387,6 +1388,16 @@ class TreasureChestLocation(StandardPrizeLocation):
         itemgrant = (
             [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
         )
+        if (
+            self._model_allowlist is not None
+            and isinstance(self.prize, ItemPrize)
+            and self.prize.model is not None
+            and not issubclass(self.prize.model, tuple(self._model_allowlist))
+        ):
+            itemgrant = [
+                cmd if not isinstance(cmd, JmpToEvent) else JmpToEvent(DefaultItem._chest_event_id)
+                for cmd in itemgrant
+            ]
         for npc, room in zip(self._npc_ids, self._rooms):
             # If npc is already an AreaObject, use it directly; otherwise convert from raw index
             ao = npc if isinstance(npc, AreaObject) else AreaObject(npc + 14)
