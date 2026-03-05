@@ -1070,8 +1070,10 @@ class RandomPrizeSubstitute(Prize):
                     + world.high_impact_equip
                     + world.highest_impact_equip
                 )
+            pool = [world.item_to_prize.get(pool_item) for pool_item in pool]
+            pool = [prize for prize in pool if prize is not None]
             chosen_item = random.choice(pool)
-            return world.item_to_prize.get(chosen_item)()  # type: ignore
+            return chosen_item() 
         elif world.settings.is_flag_value(
             ItemQuality, ItemQualityOptions.MOSTLY_RANDOM
         ):
@@ -1098,8 +1100,10 @@ class RandomPrizeSubstitute(Prize):
                     pool = world.high_impact_items + world.high_impact_equip
                 else:
                     pool = world.highest_impact_items + world.highest_impact_equip
+            pool = [world.item_to_prize.get(pool_item) for pool_item in pool]
+            pool = [prize for prize in pool if prize is not None]
             chosen_item = random.choice(pool)
-            return world.item_to_prize.get(chosen_item)()  # type: ignore
+            return chosen_item() 
         elif world.settings.is_flag_value(
             ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY
         ):

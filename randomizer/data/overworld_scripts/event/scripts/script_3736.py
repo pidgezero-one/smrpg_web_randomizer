@@ -38,8 +38,8 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_TransferXYZFPixels(x=252, y=252, z=0, direction=EAST),
 		A_FaceNortheast(),
-		A_SetSpriteSequence(index=1, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=True, identifier="dodo_hallway_mirror_sprite_if_not_vanilla")
+	], identifier="dodo_hallway_mirror_sprite_if_not_vanilla_container"),
 	RunBackgroundEvent(event_id=E3735_NIMBUS_CASTLE_FINAL_HALLWAY_APPLY_MOD, return_on_level_exit=True),
 	RunEventAsSubroutine(E0820_NIMBUS_CASTLE_FINAL_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False, identifier="EVENT_3736_fade_in_from_black_async_4"),

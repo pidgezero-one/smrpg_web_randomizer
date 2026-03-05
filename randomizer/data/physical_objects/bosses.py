@@ -963,7 +963,7 @@ red_cast=SpriteAnimation(sequence_id=4, contact_frame=82, total_duration=120)
 class AxemRedObject(BossNPC):
     """Axem Red object."""
 
-    _base = AXEM_RED_NPC_2
+    _base = AXEM_RED_NPC_2_LOW_VRAM
     _eye_height = 15
     _animations = SpriteAnimationCollection(
         recoil=red_recoil,

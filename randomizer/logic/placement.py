@@ -154,8 +154,12 @@ def place(
         # Check if there's a character in the pending list
         character_items = [item for item in pending if isinstance(item, CharacterPrize)]
 
-        # If there's a character, try to place it first
+        # If there's a character, try to place it first (prefer gate-critical ones)
         if character_items:
+            if priority_types:
+                pri = [c for c in character_items if isinstance(c, priority_types)]
+                non = [c for c in character_items if not isinstance(c, priority_types)]
+                character_items = pri + non
             character = character_items[0]
             player_has = collect_accessible_items(world)
             accessible_locations = [
@@ -185,8 +189,16 @@ def place(
 
         # Standard placement algorithm for all items (including character if it couldn't be placed)
         random.shuffle(pending)
+        # Try priority items first to prevent non-critical items from consuming
+        # limited typed locations (e.g. BossFightLocation) before gate-critical items
+        if priority_types:
+            pri_items = [item for item in pending if isinstance(item, priority_types)]
+            non_items = [item for item in pending if not isinstance(item, priority_types)]
+            ordered_pending = pri_items + non_items
+        else:
+            ordered_pending = pending
         placed_this_iteration = False
-        for _, item in enumerate(pending):
+        for _, item in enumerate(ordered_pending):
             player_has = collect_accessible_items(world)
             #print(f"  Inventory: {[type(i).__name__ for i in player_has]}")
             accessible_locations = [

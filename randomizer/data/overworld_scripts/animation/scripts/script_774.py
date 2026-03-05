@@ -1,4 +1,4 @@
-#A0774_EMPTY
+#A0774_MUSHROOM_GUARD_TEST
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,14 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+	A_SetSequenceSpeed(FAST, identifier="ACTION_774_set_priority_0"),
+	A_WalkSoutheastSteps(5),
+	A_Pause(1, identifier="ACTION_774_pause_3"),
+	A_JmpIfBitSet(TEMP_7044_4, ["ACTION_774_shift_northwest_steps_6"]),
+	A_Jmp(["ACTION_774_pause_3"]),
+	A_WalkNorthwestSteps(5, identifier="ACTION_774_shift_northwest_steps_6"),
+	A_Pause(1, identifier="ACTION_774_pause_7"),
+	A_JmpIfBitSet(TEMP_7044_3, ["ACTION_774_set_priority_0"]),
+	A_Jmp(["ACTION_774_pause_7"])
+])

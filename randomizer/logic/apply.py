@@ -537,11 +537,11 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
 
     # Update partition buffers for rooms with shuffled sprites
     from .partition_calculator import (
-        update_statue_room_partition,
+        update_statue_room_partitions,
         update_mines_henchman_room_partitions,
         update_protagonist_room_partition,
     )
-    update_statue_room_partition(world)
+    update_statue_room_partitions(world)
     update_mines_henchman_room_partitions(world)
     update_protagonist_room_partition(world)
     update_kitchen_partitions(world)

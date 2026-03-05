@@ -68,7 +68,9 @@ script = EventScript([
 	JmpIfBitSet(INSUFFICIENT_COINS, ["EVENT_602_run_dialog_21"]),
 	CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
 	Dec7000FromCoins(),
-	CopyVarToVar(from_var=MARRYMORE_SUITE_LEGAL_COUNT, to_var=PRIMARY_TEMP_7000),
+    Jmp(["skipped_stay_voucher_code"]),
+
+	
     RemoveOneOfItemFromInventory(StayVoucherItem, identifier="run_stay_voucher_dialog"),
 	SetBit(STAY_VOUCHER_USED),
 	RunDialog(dialog_id=DI2122_STAY_VOUCHER_DIALOG, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
@@ -79,6 +81,7 @@ script = EventScript([
 	SummonObjectToSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
 	
 
+	CopyVarToVar(from_var=MARRYMORE_SUITE_LEGAL_COUNT, to_var=PRIMARY_TEMP_7000, identifier="skipped_stay_voucher_code"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 255, ["EVENT_602_set_bit_32"], identifier="hotel_check_prize_count"),
 	Inc(MARRYMORE_SUITE_LEGAL_COUNT),
 	SetBit(TEMP_7043_0, identifier="EVENT_602_set_bit_32"),

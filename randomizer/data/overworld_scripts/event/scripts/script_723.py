@@ -46,7 +46,7 @@ script = EventScript([
 	]),
     SummonObjectToCurrentLevel(NPC_10),
     SetSyncActionScript(NPC_10, A0130_HENCHMAN_TERRORIZING_EAST_GUARD),
-	SetSyncActionScript(NPC_9, A0131_EAST_GUARD_OCCUPIED),
+	SetSyncActionScript(NPC_9, A0774_MUSHROOM_GUARD_TEST),
 	FadeInFromBlack(sync=False, identifier="EVENT_723_run_event_as_subroutine_20"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_723_ret_9"]),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),

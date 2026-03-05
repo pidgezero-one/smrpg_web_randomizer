@@ -206,6 +206,10 @@ class SmallFrogCoinObject(ItemNPC):
     _base = SMALL_FROG_COIN_BASE
     _chest_event_id: int = E3084_FROG_COIN_CHEST_QUICK_HIT
 
+class SmallFrogCoinObjectNoMoney(ItemNPC):
+    _base = SMALL_FROG_COIN_BASE
+    _chest_event_id: int = E3095_ITEM_GRANT_CHEST_BUT_SHOW_FROG_COIN
+
 
 class BlueCandyObject(ItemNPC):
     _base = BLUE_CANDY_BASE

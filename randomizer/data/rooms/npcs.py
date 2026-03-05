@@ -11669,6 +11669,30 @@ AXEM_RED_NPC_2 = NPC(
     byte6_bit2=False,
 )
 
+AXEM_RED_NPC_2_LOW_VRAM = NPC(
+    sprite_id=SPR0466_AXEM_RED,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=11,
+    obtuse_axis=11,
+    height=13,
+    y_shift=1,
+    show_shadow=False,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 AXEM_GREEN_NPC_2 = NPC(
     sprite_id=SPR0467_AXEM_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,

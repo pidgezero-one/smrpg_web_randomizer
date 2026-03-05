@@ -9,9 +9,13 @@ from __future__ import annotations
 from ast import Return
 from typing import TYPE_CHECKING, cast
 
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import A_FixedFCoordOn, A_TransferXYZFPixels
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST
+
 from randomizer.progression.prizes import (
     ClerkBossFight,
     DirectorBossFight,
+    DodoBossFight,
     ManagerBossFight,
 )
 from randomizer.utils.tower_access_scripts import A_EndLoop, A_JmpIfRandom1of2, A_VisibilityOn
@@ -1051,6 +1055,22 @@ def render_statue_room_boss(
                     break
     if len(back_walking_molds) < 2:
         has_back_walking_sequence = False
+
+    if not isinstance(prize, DodoBossFight):
+        if has_back_walking_sequence:
+            dodo_replacement_faces_wrong_direction = world.event_scripts.get_subscript_command_by_identifier(
+                "dodo_hallway_mirror_sprite_if_not_vanilla_container", "dodo_hallway_mirror_sprite_if_not_vanilla", A_SetSpriteSequence
+            )
+            dodo_replacement_faces_wrong_direction.set_mirror_sprite(True)
+        else:
+            dodo_hallway_action_script = world.event_scripts.get_command_by_identifier("dodo_hallway_mirror_sprite_if_not_vanilla_container", ActionQueueAsync)
+            dodo_hallway_action_script.set_subscript(
+                [
+                    A_TransferXYZFPixels(x=252, y=252, z=0, direction=EAST),
+                    A_FixedFCoordOn(),
+                    A_SetSpriteSequence(index=0, is_sequence=True, looping=True)
+                ])
+
 
     # walking from statue to statue
     for aq, id in [("EVENT_3640_action_queue_271", "dodo_extra_sprite_1")]:

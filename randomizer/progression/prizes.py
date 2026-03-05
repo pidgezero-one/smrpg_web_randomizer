@@ -1449,7 +1449,7 @@ class RareFrogCoinPrize(ItemPrize, KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Coin", description="It looks different from most Frog \nCoins."
     )
-    _model = SmallFrogCoinObject
+    _model = SmallFrogCoinObjectNoMoney
     _packet_data = (SPR0238_STATIC_FROG_COIN_SMALL, 0) 
 
 class WalletPrize(ItemPrize, KeyPrize):

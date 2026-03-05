@@ -1208,14 +1208,22 @@ def _build_priority_classes(world: GameWorld) -> set[type[Prize]]:
     if world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.PIE):
         priority.add(CricketPiePrize)
 
-    # All character recruitment prizes
-    priority.update({
-        MarioRecruitmentPrize,
-        MallowRecruitmentPrize,
-        GenoRecruitmentPrize,
-        BowserRecruitmentPrize,
-        ToadstoolRecruitmentPrize,
-    })
+    # Characters that are required by active gating settings (gate-critical)
+    character_gating: list[tuple[type, object, type[Prize]]] = [
+        (BanditsWayGate, BanditsWayGating.MALLOW, MallowRecruitmentPrize),
+        (KeroSewersGate, KeroSewersGating.MALLOW, MallowRecruitmentPrize),
+        (BoosterTowerGate, BoosterTowerGating.MALLOW, MallowRecruitmentPrize),
+        (PipeVaultGate, PipeVaultGating.GENO, GenoRecruitmentPrize),
+        (Moleville1Gate, Moleville1Gating.GENO, GenoRecruitmentPrize),
+        (BoosterTowerGate, BoosterTowerGating.GENO, GenoRecruitmentPrize),
+        (BoosterTowerGate, BoosterTowerGating.MARIO, MarioRecruitmentPrize),
+        (BoosterTowerGate, BoosterTowerGating.TOADSTOOL, ToadstoolRecruitmentPrize),
+        (SeaGate, SeaGating.TOADSTOOL, ToadstoolRecruitmentPrize),
+        (BoosterTowerGate, BoosterTowerGating.BOWSER, BowserRecruitmentPrize),
+    ]
+    for gate, gating_value, char_prize in character_gating:
+        if world.settings.is_flag_value(gate, gating_value):
+            priority.add(char_prize)
 
     return priority
 

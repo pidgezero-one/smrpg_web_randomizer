@@ -770,7 +770,7 @@ script = AnimationScriptBlock(expected_size=4189, expected_beginning=0x3A6000, s
 	UseSpriteQueue(field_object=1, destinations=["command_0x3ABFFF"], character_slot=True, bit_4=True),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=20),
     SetAMEM8BitTo7E5x(0x60, 0x7E0926),
-    JmpIfAMEM8BitLessThanConst(0x60, 2, destinations=["axem_rangers_end"]),
+    JmpIfAMEM8BitLessThanConst(0x60, 3, destinations=["axem_rangers_end"]),
 	UseSpriteQueue(field_object=2, destinations=["command_0x3AC003"], character_slot=True, bit_4=True),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=60, identifier="axem_rangers_end"),
 	RunSubroutine(["command_0x3A7596"]),

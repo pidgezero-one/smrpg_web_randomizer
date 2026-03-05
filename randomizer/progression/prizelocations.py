@@ -2464,7 +2464,7 @@ class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_1
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2479,7 +2479,7 @@ class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_2
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -10399,6 +10399,7 @@ class FinalBossFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FINAL
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _parent = FinalBossFight
+    _rooms = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, R108_MOLEVILLE_OUTSIDE, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
