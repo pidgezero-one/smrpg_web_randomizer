@@ -1,0 +1,112 @@
+---------------------------------------------------------
+ITEM		OFFSET	CODE
+---------------------------------------------------------
+Mushroom	35C803	23 10 22 E0 10 AC CA 10 68 C9 11 
+Mid Mushroom	35C80E	23 10 22 E0 10 CB CA 10 68 C9 11 
+Max Mushroom	35C819	23 10 22 E0 10 EC CA 10 75 C9 11 
+Honey Syrup	35C824	23 10 22 E0 10 0D CB 10 68 C9 11 
+Maple Syrup	35C82F	23 10 22 E0 10 2E CB 10 68 C9 11 
+Royal Syrup	35C83A	23 10 22 E0 10 4F CB 10 68 C9 11 
+Pick Me Up	35C845	23 10 22 E0 10 70 CB 10 68 C9 11 
+Able Juice	35C850	23 10 22 E0 10 8D CB 10 68 C9 11 
+Bracer		35C85B	23 10 22 E0 10 AC CB 10 68 C9 11 
+Energizer	35C866	23 10 22 E0 10 C9 CB 10 68 C9 11 
+Yoshi-Ade	35C871	23 10 22 E0 10 E8 CB 10 68 C9 11 
+Red Essence	35C87C	23 10 22 E0 10 07 CC 10 75 C9 11 
+KeroKero Cola	35C887	23 10 22 E0 10 24 CC 10 68 C9 11 
+Yoshi Cookie	35C892	10 45 CC 11 
+Pure Water	35C896	23 10 22 E0 10 51 CC 10 75 C9 11 
+Sleepy Bomb	35C8A1	23 10 22 E0 10 6C CC 10 68 C9 11 
+Bad Mushroom	35C8AC	23 10 22 E0 10 87 CC 10 68 C9 11 
+Fire Bomb	35C8B7	23 10 22 E0 10 A2 CC 10 68 C9 11 
+Ice Bomb	35C8C2	23 10 22 E0 10 BD CC 10 68 C9 11 
+Flower Tab	35C8CD	11 
+Flower Jar	35C8CD	11 
+Flower Box	35C8CD	11 
+Yoshi Candy	35C8CE	10 D8 CC 11 
+Froggie Drink	35C8D2	23 10 22 E0 10 F7 CC 10 68 C9 11 
+Muku Cookie	35C8DD	23 10 22 E0 10 16 CD 10 75 C9 11 
+Elixer		35C8E8	23 10 22 E0 10 33 CD 10 68 C9 11 
+Megaelixer	35C8F3	23 10 22 E0 10 54 CD 10 68 C9 11 
+See Ya		35C8FE	10 75 CD 11 
+Temple Key	35C902	11 
+Goodie Bag	35C903	10 CD CD 11 
+Earlier Times	35C907	10 D9 CD 11 
+Freshen Up	35C90B	10 0D CE 11 
+Rare Frog Coin	35C90F	11 
+Wallet		35C90F	11 
+Cricket Pie	35C90F	11 
+Rock Candy	35C910	23 10 22 E0 10 2C CE 10 68 C9 11 
+Castle Key 1	35C91B	11 
+Debug Bomb	35C91C	10 EF CE 11 
+Castle Key 2	35C91C	10 EF CE 11 
+Bambino Bomb	35C91C	10 EF CE 11 
+Sheep Attack	35C920	10 47 CE 11 
+Carbo Cookie	35C924	11
+Shiny Stone	35C924	11
+DUMMY		35C924	11
+Room Key	35C924	11
+Elder Key	35C924	11
+Shed Key	35C924	11 
+Lamb's Lure	35C925	10 5E CE 11 
+Fright Bomb	35C929	23 10 22 E0 10 75 CE 10 68 C9 11 
+Mystery Egg	35C934	10 90 CE 11 
+Beetle Box	35C938	11
+Beetle Box	35C938	11 
+Lucky Jewel	35C939	10 9C CE 11 
+DUMMY		35C93D	11
+Soprano Card	35C93D	11
+Alto Card	35C93D	11
+Tenor Card	35C93D	11 
+Cystalline	35C93E	23 10 22 E0 10 B3 CE 10 68 C9 11 
+Power Blast	35C949	23 10 22 E0 10 D0 CE 10 68 C9 11 
+Wilted Shroom	35C954	11
+Rotten Mush	35C954	11
+Moldy Mush	35C954	11
+Seed		35C954	11
+Fertilizer	35C954	11
+Waste Basket	35C954	11
+Big Boo Flag	35C954	11
+Dry Bones Flag	35C954	11
+Greaper Flag	35C954	11
+Secret Game	35C954	11 
+S. Crow Bomb	35C955	10 EF CE 11 
+Cricket Jam	35C955	10 EF CE 11 
+Bane Bomb	35C955	10 EF CE 11 
+Doom Bomb	35C955	10 EF CE 11 
+Fear Bomb	35C955	10 EF CE 11 
+Sleep Bomb	35C955	10 EF CE 11 
+Mute Bomb	35C955	10 EF CE 11 
+Fireworks	35C955	10 EF CE 11 
+Bomb		35C955	10 EF CE 11 
+Bright Card	35C955	10 EF CE 11 
+Mushroom	35C959	23 10 22 E0 10 AC CA 10 68 C9 11 
+Star Egg	35C964	10 FC CE 11 
+
+Freebie Odds Code
+-----------------
+35C968		6A 0E 64 
+		2A 0E 1A 	;freebie ratio - 15:26
+		00 74 C9 	;pointer to C974: cancel if failed
+		10 82 C9 	;pointer to freebie message and sound
+		11 		;end
+
+35C975		6A 0E 64 
+		2A 0E 0D 	;freebie ratio - 15:14
+		00 81 C9 	;pointer to C982: cancel if failed
+		10 82 C9 	;pointer to freebie message and sound
+		11 		;end
+
+35C982		AB 06 		;message sound
+		7A 02 08 7B 21 
+		10 22 E0 
+		2D 00 60 00 E0 
+		11 
+
+--------------------
+Limited Item Reusage
+
+Lamb's Lure     35E694  maximum to Sheep Attack
+Mystery Egg	35E9AD  maximum to Lamb's Lure
+Lucky Jewel	35E9F1	maximum
+		35E9F7  minimum

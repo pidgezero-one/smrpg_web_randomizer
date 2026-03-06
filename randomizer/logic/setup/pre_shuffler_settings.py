@@ -1,12 +1,25 @@
 """Progression gating and startup event setup."""
+
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from ...data.items import MarioDollItem
-from ...data.variables.event_script_names import E0182_NPC_QUEST_5_CONTAINER, E0241_FREESTANDING_1_GRANT, E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE, E1357_USE_MARIO_DOLL
+from ...data.variables.event_script_names import (
+    E0182_NPC_QUEST_5_CONTAINER,
+    E0241_FREESTANDING_1_GRANT,
+    E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE,
+    E1357_USE_MARIO_DOLL,
+)
 from ...data.variables.overworld_sfx_names import SO063_YOSHI_TALK
-from ...data.variables.room_names import R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM
-from ...data.variables.variable_names import COMPLETED_MUSHROOM_DERBY, PRIMARY_TEMP_7000, RETURNED_MARIO_DOLL, YOSHI_ITEM_GRANTED
+from ...data.variables.room_names import (
+    R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+)
+from ...data.variables.variable_names import (
+    COMPLETED_MUSHROOM_DERBY,
+    PRIMARY_TEMP_7000,
+    RETURNED_MARIO_DOLL,
+    YOSHI_ITEM_GRANTED,
+)
 from ...data.variables.dialog_names import (
     DI1051_MOLEVILLE_CLOSED,
     DI1052_PIPE_VAULT_HINT,
@@ -35,9 +48,16 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     StoreItemAmountTo7000,
     Pause,
     RunDialog,
-    JmpToEvent
+    JmpToEvent,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import MEM_70A8, NPC_0, NPC_1, NPC_2, NPC_3, NPC_5
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import (
+    MEM_70A8,
+    NPC_0,
+    NPC_1,
+    NPC_2,
+    NPC_3,
+    NPC_5,
+)
 
 from ...types.flags import EnemySpells, ShuffleCookies, ShuffleMarioDoll
 
@@ -48,26 +68,49 @@ if TYPE_CHECKING:
 def apply_shuffler_independent_settings(world: GameWorld) -> None:
     """Apply settings to the world that don't require any input from the shuffler results."""
     from ...types.flags import (
-        WinCondition, WinConditions,
-        FastTravel, CasinoWarp, BucketWarp, ShuffleWeddingGear,
-        EXPChallenge, EXPChallengeOptions, SkipBossFights,
-        BanditsWayGate, BanditsWayGating,
-        KeroSewersGate, KeroSewersGating,
-        ForestMazeGate, ForestMazeGating,
-        PipeVaultGate, PipeVaultGating,
-        Moleville1Gate, Moleville1Gating,
-        BoosterHillGate, BoosterHillGating,
-        BoosterTowerGate, BoosterTowerGating,
-        MarrymoreGate, MarrymoreGating,
-        SeaGate, SeaGating,
-        YaridovichGate, YaridovichGating,
-        LandsEndGate, LandsEndGating,
-        BelomeTempleGate, BelomeTempleGating,
-        MonstroTownGate, MonstroTownGating,
-        NimbusGate, NimbusGating,
-        BarrelVolcanoGate, BarrelVolcanoGating,
-        BowsersKeepGate, BowsersKeepGating,
-        FactoryGate, FactoryGating,
+        WinCondition,
+        WinConditions,
+        FastTravel,
+        CasinoWarp,
+        BucketWarp,
+        ShuffleWeddingGear,
+        EXPChallenge,
+        EXPChallengeOptions,
+        SkipBossFights,
+        BanditsWayGate,
+        BanditsWayGating,
+        KeroSewersGate,
+        KeroSewersGating,
+        ForestMazeGate,
+        ForestMazeGating,
+        PipeVaultGate,
+        PipeVaultGating,
+        Moleville1Gate,
+        Moleville1Gating,
+        BoosterHillGate,
+        BoosterHillGating,
+        BoosterTowerGate,
+        BoosterTowerGating,
+        MarrymoreGate,
+        MarrymoreGating,
+        SeaGate,
+        SeaGating,
+        YaridovichGate,
+        YaridovichGating,
+        LandsEndGate,
+        LandsEndGating,
+        BelomeTempleGate,
+        BelomeTempleGating,
+        MonstroTownGate,
+        MonstroTownGating,
+        NimbusGate,
+        NimbusGating,
+        BarrelVolcanoGate,
+        BarrelVolcanoGating,
+        BowsersKeepGate,
+        BowsersKeepGating,
+        FactoryGate,
+        FactoryGating,
     )
     from ...data.variables.variable_names import (
         SMITHY_BOSS_HUNT_WIN_CONDITION,
@@ -165,38 +208,65 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
             SetBit(MAP_DIRECTIONAL_MUSHROOM_KINGDOM_BANDITS_WAY),
         ]
     elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.HAMMER_BRO):
-        world.update_dialog(DI1053_BANDITS_WAY_HINT, """ Have you been to Bandit's Way?[await]\n I got lost on my way over there.\n I heard only the Hammer Bros know\n where the entrance is.[await]""")
+        world.update_dialog(
+            DI1053_BANDITS_WAY_HINT,
+            """ Have you been to Bandit's Way?[await]\n I got lost on my way over there.\n I heard only the Hammer Bros know\n where the entrance is.[await]""",
+        )
     elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MALLOW):
-        world.update_dialog(DI1053_BANDITS_WAY_HINT, """ Have you been to Bandit's Way?[await]\n I got lost on my way over there.\n I heard only `MALLOW_NAME`\n knows where the entrance is.[await]""")
+        world.update_dialog(
+            DI1053_BANDITS_WAY_HINT,
+            """ Have you been to Bandit's Way?[await]\n I got lost on my way over there.\n I heard only `MALLOW_NAME`\n knows where the entrance is.[await]""",
+        )
     elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MUSHROOM_WAY):
-        world.update_dialog(DI1053_BANDITS_WAY_HINT, """ Have you been to Bandit's Way?[await]\n I couldn't figure out how to get in.\n I heard you need to go through\n Mushroom Way. Is that true?[await]""")
+        world.update_dialog(
+            DI1053_BANDITS_WAY_HINT,
+            """ Have you been to Bandit's Way?[await]\n I couldn't figure out how to get in.\n I heard you need to go through\n Mushroom Way. Is that true?[await]""",
+        )
 
     # Kero Sewers
     if not world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.OPEN):
-        room = world.rooms._rooms[R333_KERO_SEWERS_ENTRANCE]
-        assert room is not None, f"Room {R333_KERO_SEWERS_ENTRANCE} not found"
-        npc_0 = room.get_npc_by_target_id(NPC_0)
-        assert npc_0 is not None, f"NPC_0 not found in room {R333_KERO_SEWERS_ENTRANCE}"
-        npc_0.set_visible(True)
-        npc_1 = room.get_npc_by_target_id(NPC_1)
-        assert npc_1 is not None, f"NPC_1 not found in room {R333_KERO_SEWERS_ENTRANCE}"
-        npc_1.set_visible(True)
         world.event_2496_startup += [SetBit(SEWERS_CLOSED)]
 
         if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
             world.event_scripts.get_script_by_id(
                 E1254_UNLOCK_SEWER_BY_RFC
             ).insert_before_nth_command(0, ClearBit(SEWERS_CLOSED))
-    else:
-        world.event_2496_startup += [ClearBit(SEWERS_CLOSED)]
-        if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
-            world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on\n it is waiting for payment, but our\n shop guy is out of RareFrogCoins.[await]")
-        if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MALLOW):
-            world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on\n it needs help from `MALLOW_NAME`,\n but nobody knows where he is.[await]")
+            world.event_scripts.get_script_by_id(
+                E1254_UNLOCK_SEWER_BY_RFC
+            ).insert_before_nth_command(
+                0, RemoveObjectFromSpecificLevel(NPC_0, R333_KERO_SEWERS_ENTRANCE)
+            )
+            world.event_scripts.get_script_by_id(
+                E1254_UNLOCK_SEWER_BY_RFC
+            ).insert_before_nth_command(
+                0, RemoveObjectFromSpecificLevel(NPC_1, R333_KERO_SEWERS_ENTRANCE)
+            )
+            world.update_dialog(
+                DI1055_SEWER_GATING_TEXT,
+                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on\n it is waiting for payment, but our\n shop guy is out of RareFrogCoins.[await]",
+            )
+
+        elif world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MALLOW):
+            world.update_dialog(
+                DI1055_SEWER_GATING_TEXT,
+                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on\n it needs help from `MALLOW_NAME`,\n but nobody knows where he is.[await]",
+            )
         if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.KINGDOM):
-            world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet some bigger changes will\n happen to this town before that\n ever gets finished.[await]")
+            world.update_dialog(
+                DI1055_SEWER_GATING_TEXT,
+                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet some bigger changes will\n happen to this town before that\n ever gets finished.[await]",
+            )
         if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MACK):
-            world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got\n distracted again when he heard\n Mack was around.[await]")
+            world.update_dialog(
+                DI1055_SEWER_GATING_TEXT,
+                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got\n distracted again when he heard\n Mack was around.[await]",
+            )
+    else:
+        world.event_2496_startup += [
+            ClearBit(SEWERS_CLOSED),
+            RemoveObjectFromSpecificLevel(NPC_0, R333_KERO_SEWERS_ENTRANCE),
+            RemoveObjectFromSpecificLevel(NPC_1, R333_KERO_SEWERS_ENTRANCE),
+        ]
 
     # Forest Maze
     if world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.OPEN):
@@ -213,11 +283,20 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
     if not world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.OPEN):
         world.event_2496_startup += [SetBit(PIPE_VAULT_GATED)]
         if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.BOWYER):
-           world.update_dialog(DI1052_PIPE_VAULT_HINT, """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it was mumbling\n something about the jerk who was\n shooting arrows into town.[await]""")
+            world.update_dialog(
+                DI1052_PIPE_VAULT_HINT,
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it was mumbling\n something about the jerk who was\n shooting arrows into town.[await]""",
+            )
         if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.GENO):
-           world.update_dialog(DI1052_PIPE_VAULT_HINT, """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it was talking\n to someone named `GENO_NAME`.[await]\n If you find him, he might know how\n to get in.[await]""")
+            world.update_dialog(
+                DI1052_PIPE_VAULT_HINT,
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it was talking\n to someone named `GENO_NAME`.[await]\n If you find him, he might know how\n to get in.[await]""",
+            )
         if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.FOREST):
-           world.update_dialog(DI1052_PIPE_VAULT_HINT, """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it ran off to\n get something from the forest.[await]""")
+            world.update_dialog(
+                DI1052_PIPE_VAULT_HINT,
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it ran off to\n get something from the forest.[await]""",
+            )
 
     # Moleville Mines
     if not world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.OPEN):
@@ -226,13 +305,25 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(
                 E1256_UNLOCK_MOLEVILLE_IF_GATED_BY_BOSHI
             ).insert_before_nth_command(0, ClearBit(MOLEVILLE_MINES_ENTRANCE_GATING))
-            world.update_dialog(DI1051_MOLEVILLE_CLOSED, """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n went off to the racetrack.[await]""")
+            world.update_dialog(
+                DI1051_MOLEVILLE_CLOSED,
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n went off to the racetrack.[await]""",
+            )
         elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOWYER):
-            world.update_dialog(DI1051_MOLEVILLE_CLOSED, """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to go hunt down some fella\n named “Bowyer”, or somethin'.[await]""")
+            world.update_dialog(
+                DI1051_MOLEVILLE_CLOSED,
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to go hunt down some fella\n named “Bowyer”, or somethin'.[await]""",
+            )
         elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.FOREST):
-            world.update_dialog(DI1051_MOLEVILLE_CLOSED, """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to go get firewood from\n the forest.[await]""")
+            world.update_dialog(
+                DI1051_MOLEVILLE_CLOSED,
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to go get firewood from\n the forest.[await]""",
+            )
         elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.GENO):
-            world.update_dialog(DI1051_MOLEVILLE_CLOSED, """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n went lookin' for some fella\n named `GENO_NAME`.[await]""")
+            world.update_dialog(
+                DI1051_MOLEVILLE_CLOSED,
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n went lookin' for some fella\n named `GENO_NAME`.[await]""",
+            )
 
     # Booster Hill
     if not world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.OPEN):
@@ -251,7 +342,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
             ),
             SetBit(TOWER_OPENED),
         ]
-        
+
     # Marrymore
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.OPEN):
         world.event_2496_startup += [SetBit(MARRYMORE_BACKDOOR_OPEN)]
@@ -265,7 +356,8 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         world.event_2496_startup += [SetBit(SEA_GATED_BY_STAR_PIECES)]
         world.update_dialog(
             DI1054_SUNKEN_SHIP_HINT,
-            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n It will be pretty easy to find if you\n have four stars to guide you.[await]""")
+            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n It will be pretty easy to find if you\n have four stars to guide you.[await]""",
+        )
     elif world.settings.is_flag_value(SeaGate, SeaGating.OPEN):
         world.event_2496_startup += [
             SetBit(MAP_SEA),
@@ -276,15 +368,18 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
     elif world.settings.is_flag_value(SeaGate, SeaGating.TOADSTOOL):
         world.update_dialog(
             DI1054_SUNKEN_SHIP_HINT,
-            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n `PEACH_NAME` can help you\n get there.[await]""")
+            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n `PEACH_NAME` can help you\n get there.[await]""",
+        )
     elif world.settings.is_flag_value(SeaGate, SeaGating.BUNDT):
         world.update_dialog(
             DI1054_SUNKEN_SHIP_HINT,
-            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n You'll need to vanquish a large\n cake in order to make it more\n visible.[await]""")
+            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n You'll need to vanquish a large\n cake in order to make it more\n visible.[await]""",
+        )
     elif world.settings.is_flag_value(SeaGate, SeaGating.MARRYMORE):
         world.update_dialog(
             DI1054_SUNKEN_SHIP_HINT,
-            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n I heard you can only get there\n through Marrymore, somehow.[await]""")
+            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n I heard you can only get there\n through Marrymore, somehow.[await]""",
+        )
 
     # Yaridovich
     if world.settings.is_flag_value(YaridovichGate, YaridovichGating.OPEN):
@@ -345,11 +440,13 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
     elif world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.NIMBUS):
         world.update_dialog(
             DI2474_NIMBUS_NPC,
-            """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need to clear\n out the castle first, though.[await]""")
+            """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need to clear\n out the castle first, though.[await]""",
+        )
     elif world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.VALENTINA):
         world.update_dialog(
             DI2474_NIMBUS_NPC,
-            """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need\n Valentina's permission to enter,\n though.[await]""")
+            """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need\n Valentina's permission to enter,\n though.[await]""",
+        )
 
     # Bowser's Keep
     if not world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.OPEN):
@@ -374,25 +471,43 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         world.event_2496_startup += [SetBit(FACTORY_GATED_BY_STAR_PIECES)]
         world.update_dialog(
             DI3726_KEEP_ACCESS_HINT,
-            """ I heard there was a big factory\n behind it. Is that true?[await][pause] I wish I had\n 6 Star Pieces, so I could find out.[await]""")
+            """ I heard there was a big factory\n behind it. Is that true?[await][pause] I wish I had\n 6 Star Pieces, so I could find out.[await]""",
+        )
     elif world.settings.is_flag_value(FactoryGate, FactoryGating.EXOR):
         world.update_dialog(
             DI3726_KEEP_ACCESS_HINT,
-            """ I heard there was a big factory\n behind it. Is that true?[await][pause] I bet Exor\n would know, if you run into him![await]""")
-        
+            """ I heard there was a big factory\n behind it. Is that true?[await][pause] I bet Exor\n would know, if you run into him![await]""",
+        )
 
     # Settings that aren't dependent on shuffler contents
     if world.settings.isflag_enabled(ShuffleCookies):
-        world.event_scripts.get_script_by_id(E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE).set_contents(
+        world.event_scripts.get_script_by_id(
+            E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE
+        ).set_contents(
             [
                 Pause(10),
                 PlaySound(sound=SO063_YOSHI_TALK, channel=6),
                 JmpIfBitClear(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_11"]),
                 JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["EVENT_464_pause_10"]),
-                RunDialog(dialog_id=DI4058_SHUFFLE_COOKIES_1, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_464_pause_11"),
+                RunDialog(
+                    dialog_id=DI4058_SHUFFLE_COOKIES_1,
+                    above_object=MEM_70A8,
+                    closable=True,
+                    sync=False,
+                    multiline=True,
+                    use_background=True,
+                    identifier="EVENT_464_pause_11",
+                ),
                 JmpIfBitSet(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_12"]),
                 SetBit(YOSHI_ITEM_GRANTED),
-                RunDialog(dialog_id=DI4059_SHUFFLE_COOKIES_2, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+                RunDialog(
+                    dialog_id=DI4059_SHUFFLE_COOKIES_2,
+                    above_object=MEM_70A8,
+                    closable=True,
+                    sync=False,
+                    multiline=True,
+                    use_background=True,
+                ),
                 JmpToEvent(E0182_NPC_QUEST_5_CONTAINER),
                 Return(identifier="EVENT_464_pause_10"),
                 ReturnAll(identifier="EVENT_464_pause_12"),
@@ -410,7 +525,9 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
                 ReturnAll(identifier="EVENT_1357_pause_12"),
             ]
         )
-        world.get_room(R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM).get_npc_by_target_id(NPC_5).set_event_script(E0241_FREESTANDING_1_GRANT)
+        world.get_room(
+            R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM
+        ).get_npc_by_target_id(NPC_5).set_event_script(E0241_FREESTANDING_1_GRANT)
 
     # For safety, delete Breaker Beam caster animations in case an enemy uses it that doesn't have a sequence 3
     if world.settings.isflag_enabled(EnemySpells):
@@ -419,4 +536,5 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
 
     # Apply debug starting items if debug mode is enabled
     from .debug import apply_debug_start_items
+
     apply_debug_start_items(world)

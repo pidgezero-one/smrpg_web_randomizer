@@ -1,0 +1,354 @@
+-------------------
+EVENT SOUND EFFECTS
+-------------------
+00  nothing
+01  menu select
+02  menu cancel
+03  menu scroll
+04  jump
+05  block switch
+06  running water
+07  rushing water
+08  waterfall
+09  green switch
+0A  trampoline
+0B  whoosh away
+0C  dizziness
+0D  coin
+0E  flower
+0F  night crickets
+10  open door
+11  open front gate
+12  sudden stop
+13  long fall
+14  lighting bolt
+15  rumbling
+16  close door
+17  helicopter
+18  tapping feet
+19  heel click
+1A  laughing Bowser
+1B  found an item
+1C  pipe entrance
+1D  alarm clock
+1E  surprised monster
+1F  spinning flower
+20  underground warp
+21  jumping/bouncing fish
+22  squirm/writhe
+23  running water
+24  
+25  
+26  
+27  
+28  
+29  
+2A  
+2B  pop up from water
+2C  ghost float
+2D  Goomba taunt
+2E  crumbling noise
+2F  snooze
+30  minecart start
+31  big shell hit
+32  water droplet
+33  moving yellow switch
+34  deep bounce
+35  bounce
+36  goodnight
+37  lose coins/coin fountain
+38  shake head
+39  finger snap
+3A  insert
+3B  hovering Frogfucius
+3C  dynamite/bomb explosion
+3D  deep uh-oh
+3E  big yoshi talk
+3F  yoshi talk
+40  spinning copters
+41  thwomp stomp
+42  kick ball/shell
+43  sword in keep
+44  
+45  
+46  
+47  mushroom cure
+48  syrup cure
+49  thwomp stomp
+4A  Boosters train
+4B  rocketing blast
+4C  Boosters train horn
+4D  exotic bird calls
+4E  click
+4F  
+50  beeping
+51  star
+52  screeching stop
+53  weird laugh
+54  smoked
+55  flower
+56  big bounce
+57  correct signal
+58  wrong signal
+59  lit fuse
+5A  curtain
+5B  tumbling boulders
+5C  
+5D  jump into water
+5E  frog coin
+5F  level up with star
+60  swinging fist
+61  engage in battle
+62  
+63  tapping feet
+64  minecart ride
+65  Terrapin attack
+66  time running out
+67  Toadstool crying
+68  deep scraping
+69  surprise
+6A  off balance
+6B  drum roll
+6C  drum roll end
+6D  big shell hit
+6E  abstract music
+6F  sleeping
+70  draining water
+71  open chamber door
+72  
+73  
+74  
+75  spinning monster
+76  beckoning Tentacle
+77  Czar Dragon roar
+78  metal/bolt strike
+79  Axem Ranger teleport
+7A  
+7B  chain/rumbling noise
+7C  engine starting
+7D  enter deep water
+7E  emerge deep water
+7F  light rattle
+80  floating/hovering
+81  baby yoshi
+82  big baby yoshi
+83  
+84  honking horn
+85  close hit door
+86  swipe
+87  impending blast
+88  
+89  
+8A  
+8B  
+8C  
+8D  
+8E  
+8F  metronome upbeat ding
+90  click
+91  blacksmith hammer strike
+92  machine transform
+93  click
+94  surging electricity
+95  casino secret passage
+96  exit to world map
+97  crash hit
+98  slip hit
+99  slot machines
+9A  big squish
+9B  post-credits Mario theme whistle
+9C  Link fanfare
+9D  descending fall
+9E  hard land
+9F  deep underground noise
+A0  chomp
+A1  ghost
+A2  closing gate door
+
+--------------------
+BATTLE SOUND EFFECTS
+--------------------
+01  select action/menu
+02  cancel action/menu
+03  move cursor
+04  Mario's jump
+05  birdie tweet
+06  flower bonus/status up
+07  error/incorrect answer
+08  get dizzy
+09  arrow sling
+0A  punch
+0B  swoosh/run away
+0C  bomb explosion
+0D  coin
+0E  grab flower
+0F  spike strike
+10  bite
+11  falling stars (electroshock?)
+12  shell kick
+13  Flame Wall
+14  Aurora Flash
+15  wing flaps
+16  Electroshock shock
+17  small laser?
+18  
+19  wing hit
+1A  mine cart track scraping
+1B  grab item/1-UP
+1C  Flame
+1D  Drain
+1E  Fire Orb multiple orb hit
+1F  Fire Orb background burn
+20  Fire Orb finish
+21  kick?
+22  spike shot
+23  Bombs Away power up
+24  Snowy gathering snow
+25  monster/item toss
+26  hit by tossed item
+27  claw strike
+28  K-9 fang hit
+29  Hammer Bro hammer hit
+2A  Johnnys Skewer strike
+2B  casting a spell
+2C  Thunderbolt second strike
+2D  HP Rain cloud
+2E  bounce
+2F  dry clunk
+30  Marios punch
+31  cymbal crash
+32  tiny shell hit
+33  Super Flame multiple orb hit
+34  Finger Shot/Bullets
+35  Thwomp hit ground
+36  hammer hit from Hammer Time
+37  Marios hammer hit
+38  super/ultra jump 1-UP sound
+39  Water Blast spout?
+3A  Marios shell kick up
+3B  Marios shell kick forward
+3C  cymbal resonance
+3D  use item
+3E  monster run away
+3F  ignition from Geno Blast
+40  egg hatch
+41  Yoshi cant make cookie
+42  Recover HP/MP
+43  stars?
+44  rain cloud
+45  Geno power up
+46  Geno Beam
+47  drum roll (Psycopath/Roulette)
+48  rain cloud appears
+49  correct password
+4A  quack?
+4B  Yoshi talk
+4C  Yoshi make item
+4D  stat boost (Geno Boost)
+4E  timed stat boost
+4F  rumble
+50  hit
+51  hit
+52  big hit
+53  Dry Bones hit
+54  big hit
+55  Jinxs Triple Kick kick
+56  long fall
+57  Lazy Shell kick
+58  ticking bomb
+59  enemy defeated (common explosion)
+5A  valor up?
+5B  
+5C  fall
+5D  going inside something
+5E  Mallows Shocker
+5F  Bowsers Crusher?
+60  Boulder
+61  toss
+62  click
+63  Willy Wisp
+64  Electroshock sparks
+65  electricity?
+66  Static E!
+67  Crystal hits
+68  Blizzard
+69  Rock Candy
+6A  Light Beam
+6B  squeak then hit?
+6C  howl
+6D  bullet shot
+6E  huge explosion
+6F  Heavy Troopa land?
+70  swing
+71  shot
+72  Spikey attack
+73  hit
+74  Terrapin hit
+75  sting?
+76  jolt?
+77  Meteor Swarm/Snowy
+78  deep swallow
+79  big swing
+7A  arrow shot?
+7B  Chomp bite
+7C  Goomba run forward
+7D  spike shot
+7E  big object bounces
+7F  ???
+80  Lil Boo approaches
+81  throw?
+82  Valor Up/Vigor Up
+83  Come Back summon star?
+84  little beep
+85  lullaby
+86  hit
+87  hit
+88  Lil Boo approaches
+89  heavy machine stomp
+8A  Endobubble
+8B  guitar string?
+8C  Come Back star
+8D  lullaby
+8E  tongue noise?
+8F  toss something
+90  Lightning Orb
+91  ???
+92  slap
+93  
+94  finger shot/arm cannon
+95  enemy jumps high
+96  enemy taunts then hits
+97  spores
+98  hit
+99  deep weird voice
+9A  buzzing bee
+9B  Sparky hit
+9C  Chomp bite
+9D  weird enemy hit
+9E  tongue swing?
+9F  big deep hit
+A0  wing slap
+B0  fade-out
+BC  Petal Blast
+BD  ???
+BE  Come Back
+BF  monster call
+C0  big shell kick
+C1  big shell hit 1
+C2  big shell hit 2
+C3  explosive attack
+C4  hovering attack
+C5  smash
+C6  Ice Rock
+C7  Arrow Rain
+C8  Spear Rain
+C9  Sword Rain
+CA  Corona 1
+CB  Corona 2
+CC  chomping
+CD  Jinxed
+CE  monster swing
+CF  monster taunt
+D0  Smithy Form 1 - light up
+D1  Smithy Form 1 - transform
+D2  Booster Express train horn

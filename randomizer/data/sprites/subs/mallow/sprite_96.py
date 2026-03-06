@@ -1,6 +1,8 @@
 # SPR0096_MARIO_DOLL_SURPRISED
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+
+from data.variables.sprite_palette_names import SPAL697_MALLOW_WALKING_DOWN_LEFT
 sprite = CompleteSprite(
     animation=AnimationPack(246, length=82, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
@@ -65,6 +67,18 @@ sprite = CompleteSprite(
                 ),
                 AnimationSequence(
                     frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
                         AnimationSequenceFrame(duration=2, mold_id=2),
                         AnimationSequenceFrame(duration=2, mold_id=3),
                         AnimationSequenceFrame(duration=2, mold_id=4),
@@ -73,7 +87,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=697,
+    palette_id=SPAL697_MALLOW_WALKING_DOWN_LEFT,
     palette_offset=0,
     unknown_num=0
 )

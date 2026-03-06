@@ -4,6 +4,7 @@ from uuid import uuid4
 from enum import StrEnum
 import random
 
+from randomizer.progression.prizelocations import KeroSewersBeforeBelomeUpperBeforeFlipLocation
 from randomizer.progression.prizes import (
     BoomerBossFight,
     FirstMimicFightLauncher,
@@ -40,6 +41,7 @@ from ..data.variables.action_script_names import *
 from ..data.variables.variable_names import (
     BATTLE_PACK_ID,
     BOOSTER_HILL_FLOWER_COUNTER,
+    LANDS_END_GROTTO_BARREL_FLIPPED,
     MIMIC_1_CLEARED,
     PRIMARY_TEMP_7000,
 )
@@ -55,6 +57,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     DisableObjectTriggerInSpecificLevel,
     JmpIfBitClear,
+    JmpIfBitSet,
     Return,
     Inc,
     JmpIfVarEqualsConst,
@@ -455,6 +458,9 @@ class ShuffleLocationSelector(CategorizationOption):
     KERO_SEWERS_BOSS = "Kero Sewers boss"
     KERO_SEWERS_STAR_PIECE = "Kero Sewers boss Star Piece"
     MIDAS_RIVER_FIRST_TIME = "Midas River first play reward"
+    MIDAS_RIVER_LEFT_CAVE = (
+        "Midas River bottom left tunnel freestanding frog coin"
+    )
     MIDAS_RIVER_BOTTOM_LEFT_CAVE = (
         "Midas River bottom left tunnel freestanding frog coin"
     )
@@ -1412,6 +1418,11 @@ class TreasureChestLocation(StandardPrizeLocation):
                 # Account for mimic chests needing to be opened twice
                 itemgrant = [
                     JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]),
+                    DisableObjectTriggerInSpecificLevel(ao, room),
+                ] + itemgrant
+            elif isinstance(self, KeroSewersBeforeBelomeUpperBeforeFlipLocation):
+                itemgrant = [
+                    JmpIfBitSet(LANDS_END_GROTTO_BARREL_FLIPPED, [itemgrant[0].identifier.label]),
                     DisableObjectTriggerInSpecificLevel(ao, room),
                 ] + itemgrant
             elif not isinstance(self.prize, InfiniteCoinsPrize):
@@ -2835,14 +2846,10 @@ class KeyItemLocation(PrizeLocation):
         return True
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        KeyItemsAnywhere = _get_cached_import("KeyItemsAnywhere")
-
-        if not isinstance(prize, KeyPrize) and not world.settings.isflag_enabled(
-            KeyItemsAnywhere
-        ):
-            return False
-        else:
-            return super().can_accept(prize, inventory, world)
+        # No reverse restriction: non-key items can fill key locations as filler.
+        # The forward restriction (key items → key locations only) is enforced by
+        # StandardPrizeLocation.can_accept, which rejects KeyPrize without KeyItemsAnywhere.
+        return super().can_accept(prize, inventory, world)
 
 
 class InvisibleFlagLocation(NPCLocationRow1, KeyItemLocation):

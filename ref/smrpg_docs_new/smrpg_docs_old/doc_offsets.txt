@@ -1,0 +1,434 @@
+ASM	65816 assembly code
+CGFX	compressed graphics using the LZ4 format
+DATA	any type of data or formatting
+GFX	raw uncompressed graphics, such as objects
+PAL	palettes or palette sets
+PTR	pointers, in whatever structure
+SND	sound effects, SPC data, samples
+TXT	raw text, such as dialogue, names, descriptions, etc.
+
+============================================================================================================
+OFFSETS         | TYPE | DATA
+----------------+------+------------------------------------------------------------------------------------
+000088 - ...... | ASM  | CPU processor start offset
+003CF4 - 00576E | ASM  | CPU event functions
+----------------+------+------------------------------------------------------------------------------------
+007FAC - 007FAE | DATA | battle debug menu lock
+007FC0 - 008001 | DATA | embedded cartridge info
+008002 - ...... | ASM  | SA-1 processor start offset
+----------------+------+------------------------------------------------------------------------------------
+00C685 - 00C6A4 | PTR  | Event function #$00-2F #$Fx pointers (16 pointers)
+00C6A5 - 00C8A4 | PTR  | Event function pointers (256 pointers)
+00C8A5 - 00CA44 | PTR  | Event function #$FD xx pointers
+00CA82 - 00E396 | ASM  | SA-1 event functions
+00EEB1 - 00F0B0 | PTR  | Event function SA-1 pointers
+00F0B1 - 00F2B0 | PTR  | Event function SA-1 #$FD xx pointers
+----------------+------+------------------------------------------------------------------------------------
+00F7F1 - 00FBCB | ASM  | LZ4 Decompression functions
+00FBCC - 00FBEB | PTR  | LZ4 Decompression function pointers
+----------------+------+------------------------------------------------------------------------------------
+010000 - 019563 | ASM  | Battle Engine Assembly
+019564 - 019D64 | ---- | --------
+019D65 - 019F63 | DATA | ___bytes
+019F64 - 01A015 | ASM  | Battle Engine Assembly
+01A016 - 01A78E | TXT  | Battle Debug Menu Text + Assembly
+01A78F - 01B065 | ASM  | Battle Engine Assembly
+----------------+------+------------------------------------------------------------------------------------
+01B066 - 01B06D | PAL  | Battle Debug Menu Palette
+01B100 - 01BCFF | GFX  | Bowser's Keep Chandeliers
+01BD00 - 01BE3F | GFX  | Numerals 0-9 (unknown usage)
+01BE40 - 01BEFF | GFX  | Bowser's Keep Chandeliers
+01BF00 - 01CFFF | GFX  | ___GFX
+1D0000 - 01D59C | CGFX | Battle XP/Coins Won Background
+01D59D - 01E56F | CGFX | ___GFX
+01E570 - 01EADF | GFX  | ___2bpp GFX (a door?)
+01EAE0 - 01ECBF | PAL  | Battle Interface Palettes
+01ECC0 - 01EE3F | GFX  | Battle Numerals 0-9 (used by HP only)
+01EE40 - 01EF5F | PAL  | Battle Interface Palettes: Alphanumeric Symbols
+01EF60 - 01EFFF | GFX  | "QUEST"
+01F000 - 01F21F | GFX  | Unknown Small Numerals, Coin, Star
+01F220 - 01F27F | GFX  | Battle Window Frames: top-left
+01F280 - 01F3FF | GFX  | Battle Inventory Page Numerals 1-5
+01F400 - 01F47F | GFX  | Battle Window Frames: left, bottom-left
+01F480 - 01F5FF | GFX  | FP Flower Icon, Symbols: x / <
+01F600 - 01F9FF | GFX  | Battle Window Frames
+01FA00 - 01FDFF | GFX  | Battle Debug Menu Alphanumeric Symbols
+01FE00 - 01FFFF | GFX  | ___other symbols
+----------------+------+------------------------------------------------------------------------------------
+020000 - 02002F | ASM  | ___CPU Function pointers
+020030 - 020126 | ASM  | ___CPU Assembly Code
+020127 - 02013C | PTR  | Character & Monster Slot RAM-addr pointers
+02013D - 0201AE | PTR  | Battle Engine Numeral VRAM-addr pointers
+0201AF - 020222 | PTR  | ___memory-addr pointers?
+02022C - 020368 | ASM  | ___CPU Assembly Code
+020369 - 020482 | PTR  | ___pointers
+020483 - 020D3C | ASM  | ___CPU Assembly Code
+020D3D - 020F1E | ASM  | Event/Animation function pointers
+020F1F - 026DFF | ASM  | Event/Animation functions
+024B8B - 024BBA | PTR  | Battle Dialogue function pointers
+027000 - 0289F1 | ASM  | ___CPU Assembly Code, pointers
+0289F2 - 028B2A | DATA | ___data
+028B2B - 029F50 | ASM  | ___CPU Assembly Code
+029F51 - 029F58 | DATA | Battle Music Assignment bytes (8 bytes)
+029F59 - 029FFF | ASM  | ___CPU Assembly Code
+----------------+------+------------------------------------------------------------------------------------
+02A000 - 02A3C2 | ASM  | ___CPU Assembly Code
+02A3C3 - 02A402 | ASM  | Battle Script function pointers
+02A403 - 02A8DD | ASM  | Battle Script functions
+----------------+------+------------------------------------------------------------------------------------
+02A8DE - 02A93E | PTR  | ___function pointers
+02A93F - 02B5B5 | ASM  | ___CPU Assembly Code
+02B5B6 - 02B6A7 | PTR  | ___function pointers
+02B6A8 - 02CACD | ASM  | ___CPU Assembly Code
+02CACE - 02CB0D | PTR  | ___function pointers
+02CB0E - 02D05A | ASM  | ___CPU Assembly Code
+02D05B - 02D09A | PTR  | ___function pointers
+02D09B - 02D3A4 | ASM  | ___CPU Assembly Code
+----------------+------+------------------------------------------------------------------------------------
+02D3AF - 02D3D1 | TXT  | Level-Up Bonus character names
+02D5F8 - 02D6AF | TXT  | Level-Up Bonus text
+02E555 - 02E55C | DATA | Level-Up Spell bits
+02E654 - 02E6C5 | PTR  | ___function pointers
+02E6C6 - 02F9A5 | DATA | ___data/functions?
+02F9A6 - 02FFFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+030000 - 033FFF | ASM  | Windowing Assembly
+034165 - 0341AA | TXT  | Alphanumeric Text
+035000 - 037FFF | ASM  | Windowing Assembly
+----------------+------+------------------------------------------------------------------------------------
+03E260 - 03EFFF | ---- | --------
+03F000 - 03FBFF | GFX  | Battle Numerals, Targetting Cursor, Shadow
+03FC00 - 03FC1E | PAL  | Battle Numerals, Targetting Cursor, Shadow palette
+03FC1F - 03FFFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+040000 - 040B0E | ASM  | CPU Assembly Code
+040B0F - 0421E7 | ASM  | SPC Assembly Code
+0421E8 - 04224D | PTR  | ??? pointers
+04224E - 0422C7 | PTR  | Sound FX Decompression Function Pointers
+042333 - 04248E | PTR  | Audio Sample Pointers (116 samples, 3 bytes each)
+042748 - 042825 | PTR  | SPC Pointers (73 songs, 3 bytes each)
+042826 - 042C25 | PTR  | EVT Sound FX APU Register Pointers (256 sounds, 4 bytes each, 2 pairs)
+042C26 - 043E25 | SND  | EVT Sound FX Stats
+043E26 - 044225 | PTR  | BAT Sound FX APU Register Pointers (256 sounds, 4 bytes each, 2 pairs)
+044226 - 045425 | SND  | BAT Sound FX Stats
+045426 - 045525 | SND  | Sound FX bytes (512 sounds total, 4 bits ie. 1/2 byte each)
+045526 - 060938 | SND  | SPC Data
+060939 - 093FFF | SND  | Audio Sample Data
+----------------+------+------------------------------------------------------------------------------------
+094000 - 09E02D | ASM  | Assembly Code
+----------------+------+------------------------------------------------------------------------------------
+09E02E - 09E0F6 | TXT  | 'multi5 connection' text
+----------------+------+------------------------------------------------------------------------------------
+0A0000 - 0AF437 | GFX  | Compressed GFX, areas
+0B0000 - 0BF8E8 | GFX  | Compressed GFX, areas
+0C0000 - 0CF9A1 | GFX  | Compressed GFX, areas
+0D0000 - 0DF790 | GFX  | Compressed GFX, areas
+0E0000 - 0EFF8D | GFX  | Compressed GFX, areas
+0F0000 - 0FF799 | GFX  | Compressed GFX, areas
+100000 - 10FC24 | GFX  | Compressed GFX, areas
+----------------+------+------------------------------------------------------------------------------------
+110000 - 11FC00 | GFX  | Compressed GFX, battle fields
+120000 - 12FE96 | GFX  | Compressed GFX, battle fields
+130000 - 13FFFF | GFX  | Compressed GFX, battle fields
+140000 - 145FFF | GFX  | Compressed GFX, battle fields
+----------------+------+------------------------------------------------------------------------------------
+146000 - 147FFF | SND  | Audio Sample Data
+----------------+------+------------------------------------------------------------------------------------
+148000 - 1483FF | DATA | Sprite Map pointers
+148400 - 14F016 | DATA | Sprite Map data
+14F017 - 14FFFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+150000 - 15EFEA | DATA | Battlefield Tile Maps
+15EFEB - 15FFFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+160000 - 16FDE8 | DATA | Tile Maps, compressed
+170000 - 17FC80 | DATA | Tile Maps, compressed
+180000 - 18FC80 | DATA | Tile Maps, compressed
+190000 - 19FEDD | DATA | Tile Maps, compressed
+1A0000 - 1A4D9F | DATA | Tile Maps, compressed
+1A4DA0 - 1A7FFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+1A8000 - 1AFF71 | DATA | Ending Scene Close/Beetle Game CGFX, palettes and tilemaps
+1A8020 - 1A8B7D | DATA | Ending Scene Close - animation sequences & molds
+1A8B7E - 1AA071 | CGFX | Ending Scene Close GFX - Mario
+1AA072 - 1AA0F5 | PAL  | Ending Scene Close palettes (4 palettes total)
+1AA0F6 - 1ADFEC | CGFX | Ending Scene Close GFX - Toadstool, Yoshi, Chancellor, Thank You
+1ADFED - 1AE233 | DATA | Ending Scene Close tilemap - BGL 1
+1AE234 - 1AE554 | DATA | Ending Scene Close tilemap - BGL 2
+1AE555 - 1AEA37 | DATA | Ending Scene Close tilemap - 'Thank You' word art only
+1AEA38 - 1AEB2A | PAL  | Ending Scene Close palettes (8 palettes total)
+1AEB2B - 1AF3C4 | CGFX | Beetle Game objects: beetle, stars, timer, shells, hearts, numbers
+1AF3C5 - 1AF430 | PAL  | Beetle Game object palettes (8 palettes total)
+1AF431 - 1AF7F2 | CGFX | Beetle Game background clouds
+1AF7F3 - 1AFC70 | CGFX | Beetle Game background woods, grass
+1AFC71 - 1AFD44 | DATA | Beetle Game tilemap - clouds
+1AFD45 - 1AFEF5 | DATA | Beetle Game tilemap - woods, grass
+1AFEF6 - 1AFF1B | PAL  | Beetle Game background clouds palette (1 palette)
+1AFF1C - 1AFF71 | PAL  | Beetle Game background woods, grass palettes (3 palettes total)
+----------------+------+------------------------------------------------------------------------------------
+1B0000 - 1BFC12 | DATA | Physical Field Maps, compressed
+1C0000 - 1C6505 | DATA | Physical Field Maps, compressed
+----------------+------+------------------------------------------------------------------------------------
+1C8000 - 1CFFFF | SND  | Audio Sample Data
+----------------+------+------------------------------------------------------------------------------------
+1D0040 - 1D243F | DATA | Area Layout data (layout PTR, screen placement, etc...)
+1D2440 - 1D2D63 | DATA | Area Mapping Assignments data (tilesets, physical fields, palettes)
+----------------+------+------------------------------------------------------------------------------------
+1D2D64 - 1D3165 | PTR  | Exit Field pointers
+1D3166 - 1D4904 | DATA | Exit Field data
+----------------+------+------------------------------------------------------------------------------------
+1D4906 - 1D4D04 | PTR  | ?????? pointers
+1D4D05 - 1D5EBC | DATA | ?????? data
+1D5EBD - 1D62BC | PTR  | Event Modification pointers
+1D62BD - 1D8DAF | DATA | Event Modifications: backgrounds
+1D8DB0 - 1D91AF | PTR  | Event Modification pointers
+1D91B0 - 1D9AAE | DATA | Event Modifications: physical fields
+----------------+------+------------------------------------------------------------------------------------
+1D9CF1 - 1D9DEE | PTR  | Layer Animation Effect pointers
+1DB190 - 1DB7FF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+1DB800 - 1DC5FF | DATA | Object mapping properties (512 objects, 7 bytes each)
+1DC600 - 1DDDFF | ---- | --------
+1DDE00 - 1DDFDF | DATA | Sprite Mapping parameters (120 items, 4 bytes each)
+----------------+------+------------------------------------------------------------------------------------
+1E0000 - 1E0BFF | PTR  | Event Data pointers: 0000 - 05FF
+1E0C00 - 1EFFFF | DATA | Event Data
+1F0000 - 1F0BFF | PTR  | Event Data pointers: 0600 - 0BFF
+1F0C00 - 1FFFFF | DATA | Event Data
+200000 - 2007FF | PTR  | Event Data pointers: 0C00 - 0FFF
+200800 - 20DFFF | DATA | Event Data
+----------------+------+------------------------------------------------------------------------------------
+20E000 - 20E3FF | DATA | Area Event Mapping pointers (512 pointers)
+20E400 - 20FDC7 | DATA | Area Event Mapping Data: event maps, exit fields events, area music
+210000 - 2107FF | PTR  | Object Movement Sequence pointers
+210800 - 21BADE | DATA | Object Movement Sequences
+21BADF - 21BFFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+21C000 - 21FFFF | PAL  | Palettes
+----------------+------+------------------------------------------------------------------------------------
+220000 - 249100 | DATA | Dialogue
+249280 - 24
+249400 - 24A003 | GFX  | Alphanumeric Symbols (Floating Blue)
+----------------+------+------------------------------------------------------------------------------------
+24A000 - 24EDDF | DATA | Palette Sets for areas (93 sets, 212 bytes each)
+24EDE0 - 24FFFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+250000 - 2508FF | DATA | Object animation data (575 items, 4 bytes each)
+250C00 - 250E7F | DATA | Object animation data (spells)
+----------------+------+------------------------------------------------------------------------------------
+251000 - 2511C1 | DATA | Spell GFX assignments
+----------------+------+------------------------------------------------------------------------------------
+251800 - 251FFF | DATA | Object GFX/Palette Pointers (512 items, 4 bytes each)
+                | DATA | 1st short: pointer to GFX
+                | DATA | 2nd short: pointer to palette
+----------------+------+------------------------------------------------------------------------------------
+252000 - 252BFF | PTR  | Object Sequence pointers (1024 objects, 3 bytes each)
+252C00 - 252FFF | DATA | Spell GFX assignment mold/palette pointers
+253000 - 258FFF | DATA | Object palettes (819 palettes, 30 bytes each)
+259000 - 27FFFF | DATA | Object Sequences
+----------------+------+------------------------------------------------------------------------------------
+280000 - 32FFFF | GFX  | Object uncompressed GFX
+330000 - 34FFFF | GFX  | Spell/Effect uncompressed GFX, Palettes
+----------------+------+------------------------------------------------------------------------------------
+350202 - 350401 | PTR  | Monster death animation/misc pointers (256 monsters, 2 bytes each)
+350462 - 350832 | DATA | Common animation code
+350833 - 350868 | PTR  | Battle Animation Sequence Pointers
+----------------+------+------------------------------------------------------------------------------------
+351026 - 35107F | PTR  | Spell animation pointers-Monsters (45 spells, 2 bytes each)
+351080 - 351492 | DATA | Spell animation code/pointer sets-Monsters
+----------------+------+------------------------------------------------------------------------------------
+351493 - 351594 | PTR  | Attack animation pointers (129 pointers)
+351595 - 352127 | DATA | Attack animation code/pointer sets
+352128 - 352147 | PTR  | Battle Entrance Animation pointers (16 pointers)
+352148 - 353218 | DATA | Battle Entrance Animation code
+353219 - 353705 | DATA | Battle Animation Sequence code
+353706 - 35375F | PTR  | Extended Animation pointers
+----------------+------+------------------------------------------------------------------------------------
+359300 - 35C760 | DATA | Spell timing ranges, sounds
+----------------+------+------------------------------------------------------------------------------------
+35C761 - 35C802 | PTR  | Item Animation pointers (81 items)
+35C803 - 35C967 | DATA | Item Animation code/pointer sets 
+35C968 - 35C981 | DATA | Item Freebie code/timers
+35C982 - 35C991 | DATA | display 'Get a freebie!' message
+----------------+------+------------------------------------------------------------------------------------
+35C992 - 35C9C7 | PTR  | Spell animation pointers-Allies (27 spells, 2 bytes each)
+35C9C8 - 35CAAB | DATA | Spell animation code/pointer sets-Allies
+----------------+------+------------------------------------------------------------------------------------
+360000 - 36FFFF | DATA | Object animation data/molds
+----------------+------+------------------------------------------------------------------------------------
+370024 - 370984 | DATA | Tileset, ????
+370985 - 371469 | CGFX | Flower Garden CGFX - background clouds
+37146A - 371496 | PAL  | Flower Garden palettes (2 total) - background clouds
+371497 - 371547 | DATA | Flower Garden Tileset, BGL 3
+371548 - 373638 | CGFX | Flower Garden CGFX - grassland hills & flower bed
+373639 - 37376D | DATA | Flower Garden Tileset, BGL 2
+37376E - 373896 | DATA | Flower Garden Tileset, BGL 1
+373897 - 373A3A | PAL  | Flower Garden palettes (16 total) - Toadstool, Pipehouse
+373A3B - 373BE2 | PAL  | Flower Garden palettes (16 total) - Toadstool, Pipehouse (darkened) 
+373BE3 - 374521 | CGFX | Flower Garden CGFX - Bowser in helicopter, dialogue bubble
+374522 - 374589 | DATA | Flower Garden Tilemap, Objects/Sprites
+37458A - 3745D3 | DATA | Tilemap, ????
+3745D4 - 374635 | PAL  | Flower Garden palettes (3 total) - Bowser, helicopter, dialogue bubble
+374636 - 374654 | DATA | Tileset, ????
+374655 - 376C9D | CGFX | Flower Garden CGFX - Toadstool picking flowers, Pipehouse
+376C9E - 378725 | CGFX | Flower Garden CGFX - Mario at opened door, jumping
+378726 - 3787C4 | PAL  | Flower Garden palettes - Mario
+3787C5 - 3799E8 | DATA | Tileset, ????
+3799E9 - 379FFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+37A000 - 37BFFF | PAL  | Palettes
+----------------+------+------------------------------------------------------------------------------------
+37C000 - 37DFFF | GFX  | Overworld Menu Alphanumeric symbol GFX
+----------------+------+------------------------------------------------------------------------------------
+37E000 - 37FFFF | PTR  | Dialogue pointers (to bank $E2-$E4)
+----------------+------+------------------------------------------------------------------------------------
+380000 - 384678 | CGFX | Ending Credits (LC_LZ8 compression)
+384800 - 384DC8 | CGFX | Ending Credits, fireworks (mushroom, star, flower)
+385000 - 3857FF | PAL  | Ending Credits, palettes
+385800 - 385D96 | DATA | Ending Credits procession march, tilemap
+386000 - 387214 | DATA | Ending Credits final closing screen, tilemap
+387400 - 3878EB | CGFX | Ending Credits, BG star in final closing screen
+387A00 - 387CA7 | CGFX | Ending Credits, 'The End' word art
+387CA8 - 387FFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+388000 - 38801E | PTR  | Moleville Mountain Railroad - Stage Properties
+38801F - 389EC4 | CGFX | Moleville Mountain Railroad Stage 1,3 - Compressed GFX (used for Mode 7)
+389EC5 - 389F98 | DATA | Moleville Mountain Railroad Stage 1,3 - Tileset (used for Mode 7)
+389F99 - 38A05D | PAL  | Moleville Mountain Railroad Stage 1,3 - Palettes (used for Mode 7)
+38A05E - 38A07D | DATA | Moleville Mountain Railroad Stage 1,3 - CGFX Assignments (used for Mode 7)
+38A07E - 38A539 | DATA | Moleville Mountain Railroad Stage 1 - Tilemap  (used for Mode 7)
+38A53A - 38AAD4 | DATA | Moleville Mountain Railroad Stage 3 - Tilemap  (used for Mode 7)
+38AAD5 - 38ACB6 | DATA | Moleville Mountain Railroad Stage 1,3 - background tilemap
+38ACB7 - 38B035 | CGFX | Moleville Mountain Railroad - Item GFX (mushroom, coin, sparks)
+38B036 - 38B077 | PAL  | Moleville Mountain Railroad - Item Palettes (mushroom, coin, sparks)
+38B078 - 38B37A | DATA | Moleville Mountain Railroad Stage 2,4 - Physical Field
+38B37B - 38EBFC | CGFX | Moleville Mountain Railroad Stage 2,4 - Compressed GFX
+38EBFD - 38EE6E | DATA | Moleville Mountain Railroad Stage 2,4 - Tileset
+38EE6F - 38EF33 | PAL  | Moleville Mountain Railroad Stage 2,4 - Palettes
+38EF34 - 38F534 | DATA | Moleville Mountain Railroad Stage 2,4 - background tilemap
+----------------+------+------------------------------------------------------------------------------------
+390000 - 390025 | PTR  | Bank Datablock Offsets
+390026 - 390224 | PTR  | Monster Stats pointers
+390226 - 391146 | DATA | Monster Stats (256 monsters, 16 bytes each)
+391226 - 391429 | DATA | Monster Special Attack stats (128 specials, 4 bytes each)
+39142A - 391629 | PTR  | Monster EXP, coins, items, Yoshi Cookie pointers
+39162A - 391C29 | DATA | Monster EXP, coins, items, Yoshi Cookie (256 monsters, 6 bytes each)
+39222A - 392609 | DATA | Monster Formation Packs (248 packs, 4 bytes each)
+39260A - 392AA9 | ---- | --------
+392AAA - 3930A9 | DATA | Monster Formation Stats (512 items, 3 bytes each)
+3930AA - 3932A9 | PTR  | Monster Battle Script pointers (256 monsters, 2 bytes each)
+3932AA - 3959F3 | DATA | Monster Battle Script data
+----------------+------+------------------------------------------------------------------------------------
+3959F4 - 396554 | TXT  | Monster special attack names
+396554 - 396753 | PTR  | Battle Dialogue pointers
+396755 - 3992D0 | TXT  | Battle Dialogue
+                |      | 02 01  break line
+                |      | 02 00  end dialogue
+                |      | 20  space
+3992D1 - 399FD0 | TXT  | Monster names
+399FD1 - 39A1D0 | PTR  | Psychopath Message pointers
+39A1D1 - 39B643 | TXT  | Psychopath Messages
+----------------+------+------------------------------------------------------------------------------------
+39B644 - 39B843 | DATA | Battlefield Layouts (64 battlefields, 8 bytes each)
+                |      | Byte 1-5	GFX sets
+                |      | Byte 6	??? (nothing uses this)
+                |      | Byte 7	BG1 Tileset
+                |      | Byte 8	Palette Set
+----------------+------+------------------------------------------------------------------------------------
+39B944 - 39BA43 | DATA | Monster targetting cursor coordinates (256 bytes)
+                |      | lower bits: +Y coordinate from bottom of monster
+                |      | upper bits: -X coordinate from right of monster
+----------------+------+------------------------------------------------------------------------------------
+39BA44 - 39BB43 | DATA | Battlefield Sets by area map byte (64 sets, 4 bytes each)
+----------------+------+------------------------------------------------------------------------------------
+39BB44 - 39BC43 | DATA | Monster Flower Bonus (256 bytes)
+                |      | bit 0-3   flower bonus
+                |      | bit 4-7   odds of getting flower
+                |      | 1   Attack Up
+                |      | 2   Defense Up
+                |      | 3   HP Max
+                |      | 4   Once Again
+                |      | 5   Lucky
+39BC44 - 39BC56 | DATA | Experience Increments for some event commands
+39BC57 - 39BFFF | ---- | --------
+39C000 - 39F3FF | DATA | Monster Formations (512 formations, 26 bytes each)
+39F400 - 39FFFF | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+3A0000 - 3A002B | PTR  | Bank Datablock Offsets
+3A002C - 3A008F | DATA | Characters' starting stats (16 bytes each)
+3A0090 - 3A00DA | DATA | Starting Items, Equipment, Special Items
+3A00DB - 3A00E0 | DATA | Starting Coins, FP, and Frog Coins
+3A00E1 - 3A014C | DATA | ____
+3A014D - 3A134C | DATA | Item stats (256 items, 18 bytes each)
+----------------+------+------------------------------------------------------------------------------------
+3A134D - 3A137E | DATA | Character Names
+3A137F - 3A1514 | TXT  | Spell Names-Allies
+3A1514 - 3A1AFE | TXT  | Spell Names-Monsters
+----------------+------+------------------------------------------------------------------------------------
+3A1AFF - 3A1B38 | DATA | Experience needed for level up (29 items, 2 bytes each)
+3A1B39 - 3A1CEB | DATA | Stat modifications by level (29 items, 15 bytes each, 3 bytes per character)
+                | DATA | 1st byte		HP increase
+                | DATA | 2nd byte, bit 4-7	Attack increase
+                | DATA | 2nd byte, bit 0-3	Defense increase
+                | DATA | 3rd byte, bit 4-7	Mg.Attack increase
+                | DATA | 3rd byte, bit 0-3	Mg.Defense increase
+3A1CEC - 3A1E9E | DATA | Stat Bonus modifications by level (29 items, 15 bytes each, 3 bytes per character)
+3A1E9F - 3A20F0 | ---- | --------
+----------------+------+------------------------------------------------------------------------------------
+3A20F1 - 3A26F0 | DATA | Magic Stats (128 spells, 12 bytes each)
+3A26F1 - 3A274C | PTR  | Battle Message pointers
+3A274D - 3A29FF | TXT  | Battle Messages
+3A2A00 - 3A2AFF | PTR  | ____
+3A2B00 - 3A2B7F | DATA | ____
+3A2B80 - 3A2BB5 | PTR  | Magic Spell description pointers
+3A2BB6 - 3A2F1F | TXT  | Magic Spell description data
+3A2F20 - 3A311F | PTR  | Equipment/Item description pointers
+3A3120 - 3A40F1 | TXT  | Equipment/Item description data
+3A40F2 - 3A42F1 | DATA | Shop Prices for Items (256 items, 2 bytes each)
+----------------+------+------------------------------------------------------------------------------------
+3A42F2 - 3A42F4 | PTR  | ____
+3A42F5 - 3A4387 | DATA | Magic Spell Level Up Mods by level (starts at LV 2, 29 items, 5 bytes each)
+		| DATA | byte 1	Mario's spell to learn
+		| DATA | byte 2	Toadstool's spell to learn
+		| DATA | byte 3	Bowser's spell to learn
+		| DATA | byte 4	Geno's spell to learn
+		| DATA | byte 5	Mallow's spell to learn
+3A438A - 3A441D | DATA | Weapon Timing variables (41 weapons, 4 bytes each)
+3A44DF - 3A46EE | DATA | Shop Data (16 bytes each)
+----------------+------+------------------------------------------------------------------------------------
+3A46EF - 3A55EF | TXT  | Equipment/Item names
+3A55F0 - 3A5FFF | DATA | --------
+----------------+------+------------------------------------------------------------------------------------
+3A6004 - 3A60CF | PTR  | Battle Event pointers
+3A60D0 - 3A70__ | DATA | Battle Event data
+----------------+------+------------------------------------------------------------------------------------
+3B0000 - 3BFA55 | DATA | Tilesets, compressed
+3C0000 - 3CFF54 | DATA | Tilesets, compressed
+3D0000 - 3DB5D3 | DATA | Tilesets, compressed
+3DB5D4 - 3DBFFF | DATA | --------
+----------------+------+------------------------------------------------------------------------------------
+3DC000 - 3DD7FF | DATA | Physical Tile properties (1024 tiles, 6 bytes each)
+3DD800 - 3DEFFF | DATA | --------
+----------------+------+------------------------------------------------------------------------------------
+3DF000 - 3DFFFF | GFX  | fog/sky and other GFX
+----------------+------+------------------------------------------------------------------------------------
+3E0000 - 3EE03A | CGFX | Compressed GFX - world maps, overworld menus
+----------------+------+------------------------------------------------------------------------------------
+3EEF00 - 3EEFEB | PTR  | Menu Text Pointers
+3EF000 - 3EF5FF | TXT  | Menu Text
+----------------+------+------------------------------------------------------------------------------------
+3EF800 - 3EF81F | DATA | Map image and coordinates (3 bytes each)
+		|      | byte 1 - image, byte 2,3 - X,Y coordinates
+3EF820 - 3EF82F | DATA | Map Location point count
+3EF830 - 3EFBAF | DATA | Map Location data (55 locations, 16 bytes each)
+----------------+------+------------------------------------------------------------------------------------
+3EFD00 - 3EFD7F | PTR  | Location Names pointers
+3EFD80 - 3EFF1F | TXT  | Location Names
+----------------+------+------------------------------------------------------------------------------------
+3F0000 - 3F9FFF | PAL  | Palettes
+----------------+------+------------------------------------------------------------------------------------
+3FA000 - 3FAFFF | ASM  | LZ8 Decompression functions (ending credits)
+----------------+------+------------------------------------------------------------------------------
+3FB5E3 - 3FB642 | TXT  | alphanumeric text
+3FE800 - 3FFFFF | GFX  | long alphanumeric symbols
+============================================================================================================

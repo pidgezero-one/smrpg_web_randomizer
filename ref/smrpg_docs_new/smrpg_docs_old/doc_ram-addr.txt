@@ -1,0 +1,487 @@
+CPU/SA-1 MIRRORS
+----------------
+SA-1		CPU
+00:0000-00:07FF	00:3000-00:37FF
+
+CPU BANK MIRRORS
+----------------
+40:0000-40:07FF	7F:F800-7F:FFFF
+40:0800-40:0FFF	7F:F800-7F:FFFF
+40:1000-40:1FFF	00:9000-00:9FFF
+40:2000-40:3FFF	00:6000-00:7FFF
+40:4000-40:7FFF	VRAM shadow
+
+SA-1 MEMORY
+-----------
+00:2200-00:23FF	HWREGISTERS
+00:3000-00:37FF	IRAM
+00:6000-00:7FFF	WRAM
+
+OAM MEMORY
+----------
+0000-000C battle numerals/digits (4 bytes each)
+
+RAM MEMORY
+----------
+00:3030	current area (2 bytes)
+00:3032 current # open chracter slots (1 to 5)
+00:3033 character in slot 1
+00:3034 character in slot 2
+00:3035 character in slot 3
+00:3036 character in slot 4
+00:3037 character in slot 5
+00:303F	current # characters in party (1 to 3)
+00:3051 current sound effect (event)
+00:30DE timed hit variable
+00:30F0 Game current score
+00:30F4 Game hi-score
+00:3112 menu accessibility (EF inaccessible, FF accessible)
+00:3113	directions Mario can walk
+	bit 0 - left
+	bit 1 - right
+	bit 2 - down
+	bit 3 - up
+00:3117	screen scrolling (00 screen scrolls w/Mario, 01 screen stays put)
+
+OBJECT 0 (Mario)
+00:6000	Mario's X coord (2 bytes)
+00:6002	Mario's Y coord (2 bytes)
+00:6004	Mario's Z coord (2 bytes)
+00:6007	Mario's sprite (bit 6 - allow sequence animation)
+00:600C	bit 4 - walking underwater
+	bit 5 - wading through water
+	bit 6 - up-right
+	bit 7 - up-left
+00:600F	Mario is above OBJECT #$
+	bit 6 - Mario is registered on top of OBJECT #$
+	bit 7 - Mario is currently on top of OBJECT #$
+00:601C	Mario's idle sprite
+00:601E	Mario's walking sprite
+00:6021	Animation Sequence frame
+
+OBJECT 1
+00:6060
+
+OBJECT 2
+00:60C0
+
+OBJECT 3-6 (BG layers)
+00:6120	Sprite Layer settings (96 bytes)
+00:6180	BG1 settings (96 bytes)
+00:61E0	BG2 settings (96 bytes)
+00:6240	BG3 settings (96 bytes)
+
+OBJECT 7-34 (NPC objects)
+00:62A0 - 00:6D1F 28 NPC objects, 96 bytes each
+
+00:7022	frame duration of invincible star (2 bytes)
+
+00:7040	bit 0 - game over
+
+00:7042 bit 0 - temporary event flag...
+
+00:7043	bit 0 - Bowser's Keep: Terrapin guards have been defeated
+	bit 1 - Bowser's Keep: bridge has collapsed
+
+00:7044	bit 7 - returning from saved game
+
+00:704C	bit 6 - kid with beetle mania game will now sell it
+
+00:704D	bit 3 - Bandit's Way 5: warp available
+
+00:7051	bit 0 - Tadpole Pond: Frogfucius has divulged information
+	bit 1 - Tadpole Pond: Mario has talked to tadpoles, Frogfucius
+	bit 3 - Tadpole Pond: Frogfucius has recieved Cricket Jam
+	bit 4 - Tadpole Pond: Alto Card achieved
+	bit 5 = Tadpole Pond: Frog Coin Emporium tadpole has been talked to 1st time
+
+00:7052	bit 0 = 
+	bit 2 - Mario's Pad: Mario has fallen into pipehouse
+	bit 4 - Mushroom Way 1: Toad's been saved from Goomba
+	bit 5 - Mushroom Way 2: Toad's been saved from Sky Troopa
+	bit 6 - Mushroom Way 3: Hammer Bros have been beaten
+	bit 7 - Mario's Pad: Toad has explained (or Mario has used) Save Point
+
+00:7053	bit 0 - Mario's Pad: Toad has talked to Mario after falling into pipehouse
+	bit 1 - Mario's Pad: Exor has been talked to, Toad is inside pipehouse
+	bit 2 - Mario's Pad: Mario has illustrated to Toad the Keep's bridge going out
+	bit 3 - Mario's Pad: Toad has bumped into Mario and informed about Mushroom Way
+
+00:7054	bit 5 = Tadpole Pond: Tenor Card achieved
+	bit 6 = Tadpole Pond: Soprano Card achieved
+
+00:7055	bit 0 = Kero Sewers Entrance: Mario and Mallow enter 1st time
+	bit 1 = Kero Sewers Entrance: 
+
+00:7056	bit 0 = Rose Way: Bowser's troops have marched out
+
+00:7058	bit 7 - Seaside Town: Johnny has been beaten, Yaridovich gang waiting at entrance
+
+00:705D	bit 4 - 
+	bit 5 - Mushroom Kingdom Castle 1: Princess is back
+
+00:7062 event flag: add menu option to overworld menu
+	bit 0 = Map
+	bit 1 = Star Pieces
+	bit 2 = Switch
+	bit 3 = Game
+
+WORLD MAP POINT APPEARANCE
+00:7065 bit 0 = Mario's Pad
+	bit 1 = To Bowser's Keep
+	bit 2 = Mushroom Way
+	bit 3 = Mushroom Kingdom
+	bit 4 = Bandit's Way
+	bit 5 = To Kero Sewers
+	bit 6 = Midas River
+	bit 7 = Tadpole Pond
+
+00:7066	bit 0 = Rose Way
+	bit 1
+	bit 2 = Rose Town
+	bit 3 = Forest Maze
+	bit 4 = Pipe Vault/To Moleville
+	bit 5 = Yo'ster Isle
+	bit 6 = Booster Pass
+	bit 7 = Booster Tower
+
+00:7067	bit 0 = Booster Hill/Marrymore 
+	bit 1 = Star Hill 
+	bit 2 = Seaside Town 
+	bit 3 = Sea 
+	bit 4 = Sunken Ship 
+	bit 5 = To Land's End 
+	bit 6 = Monstro Town 
+	bit 7 = Bean Valley 
+
+00:7068	bit 0 = To Nimbus Land 
+	bit 1 = Barrel Volcano 
+	bit 2 = To Bowser's Keep 
+	bit 3 = To Mario's Pad/Vista Hill
+	bit 4
+	bit 5 = Gate
+	bit 6
+	bit 7 = Bowser's Keep
+
+WORLD MAP POINT ACCESSIBILITY
+00:706D	bit 0 = Mario's Pad
+	bit 1 = To Bowser's Keep
+	bit 2 = Mushroom Way
+	bit 3 = Mushroom Kingdom
+	bit 4 = Bandit's Way
+	bit 5 = To Kero Sewers
+	bit 6 = Midas River
+	bit 7 = Tadpole Pond
+
+00:706E	bit 0 = Rose Way
+	bit 1
+	bit 2 = Rose Town
+	bit 3 = Forest Maze
+	bit 4 = Pipe Vault/To Moleville
+	bit 5 = Yo'ster Isle
+	bit 6 = Booster Pass
+	bit 7 = Booster Tower
+
+00:706F	bit 0 = Booster Hill/Marrymore 
+	bit 1 = Star Hill 
+	bit 2 = Seaside Town 
+	bit 3 = Sea 
+	bit 4 = Sunken Ship 
+	bit 5 = To Land's End 
+	bit 6 = Monstro Town 
+	bit 7 = Bean Valley 
+
+00:7070	bit 0 = To Nimbus Land 
+	bit 1 = Barrel Volcano 
+	bit 2 = To Bowser's Keep 
+	bit 3 = To Mario's Pad/Vista Hill
+	bit 4
+	bit 5 = Gate
+	bit 6
+	bit 7 = Bowser's Keep
+
+00:7076	bit 0 = invincibility
+
+00:7077	bit 0 = Bandit's Way 1 - Croco has rifled through bag
+	bit 1 = Bandit's Way 2 - Croco has jumped on rotating flower
+	bit 2 = Bandit's Way 3 - Croco has run away
+	bit 3 = Bandit's Way 4 - Croco has been tempted by treasure
+
+00:7081 bit 1 = 
+	bit 2 = Mushroom Kingdom Castle Throne Room - Princess is back
+	bit 3 = Mushroom Kingdom - Mallow chases Croco, cries
+	bit 5 = Mushroom Kingdom - raining noise
+	bit 6 = Mushroom Kingdom - Mallow has joined the party
+	bit 7 = Bandit's Way 5 - Croco has been beaten
+
+00:7082	bit 0 = Mushroom Kingdom: Mack has been beaten
+	bit 1 = 
+	bit 2 = Mushroom Kingdom - Toad has reported Croco to Mario
+
+00:7083	bit 3 = Tadpole Pond: 
+	bit 6 = Rose Town: Bowyer has been beaten
+
+00:7084	bit 7 = Rose Town: Geno has come to life
+00:7085	bit 0 = Rose Town: Gaz scene complete
+
+00:7086	bit 0 = Seaside Town: Yaridovich has been beaten
+	bit 1 = Seaside Town: 
+	bit 6 = Seaside Town: people have been released from the Shed
+
+00:7087	bit 6 = Tadpole Pond: Juice Bar tadpole has been talked to 1st time
+
+00:7088	bit 4 = Seaside Town: Frogfucius disciple has been talked to 1st time
+	bit 6 = Monstro Town: Thwomp has knocked the key off the ledge
+	bit 7 = Monstro Town: Bowser has talked to Goomba
+
+00:7089	bit 0 = Monstro Town: Mario has talked to music star
+	bit 1 = Monstro Town: Mario has talked to Monstermama 1st time
+
+00:708A	bit 0 = Monstro Town: Monstermama has dispatched Troopas
+	bit 1 = Jinx's Dojo: Bowser has talked to Jagger
+	bit 2 = Jinx's Dojo: Jagger has been beaten
+	bit 3 = Jinx's Dojo: Jinx has been beaten 1st time
+	bit 4 = Jinx's Dojo: Jinx has been beaten 2nd time
+	bit 5 = Jinx's Dojo: Jinx has been beaten 3rd time
+
+00:7092	bit 0 = Monstro Town: talk to Chow, Mario has done 30 jumps
+	bit 1 = Monstro Town: talk to Chow
+	bit 2 = Monstro Town: talk to Chow, Mario has done 100 jumps
+	bit 4 = Monstro Town: Chester has been talked to 1st time
+
+00:7093	bit 4 = Monstro Town: Piranha plant thinks Culex moved away
+
+00:70C8	hidden treasure chest count
+00:70C9	number of wins from Knife Guy's juggling game (decremented on each loss)
+00:70D8 number of cookies in bank
+00:70EF	number of wins from "look the other way"
+
+00:7E00-00:7EFF  frame timer (256 bytes, each address = 2 frames)
+
+////////////////////////////////////////////////////////////////////////
+
+WRAM
+----
+7E:0044 damage accumulated by consecutive super jumps
+7E:0048 current formation (2 bytes)
+7E:004B battlefield BG
+
+7E:0225	dialogue option chosen (0 - 1st option, 1 - 2nd option, etc...)
+7E:0335	current music
+7E:03CC physical field byte
+
+7E:04E4	current interactive object
+
+7E:0539 spell to use
+7E:072C spell to use
+
+7E:091C-0924 menu option 1-9
+00   Equip
+01   Item
+02   Special
+03   Status
+04   Special Item
+05   Map
+06   Star Pieces
+07   Switch
+08   Game
+7E:0926 # of party members
+7E:0928 which menu option the cursor is on
+7E;09E5	current world map location
+
+7E:1D00	current music
+7E:1D01 current sound effect
+
+7E:2000 current background color (2 bytes)
+
+7E:2940 item bytes
+
+7E:3944 Background
+7E:3942 Background screen wrap (bottom; on entrance)
+
+7E:4190	current HP slot 1, digit 1 (top)
+7E:4192	current HP slot 1, digit 2 (top)
+7E:4194	current HP slot 1, digit 3 (top)
+7E:4196	current HP slot 1, slash bar (top)
+7E:4198	max HP slot 1, digit 1 (top)
+7E:419A	max HP slot 1, digit 2 (top)
+7E:419C	max HP slot 1, digit 3 (top)
+7E:41D0	current HP slot 1, digit 1 (bottom)
+7E:41D2	current HP slot 1, digit 2 (bottom)
+7E:41D4	current HP slot 1, digit 3 (bottom)
+7E:41D6	current HP slot 1, slash bar (bottom)
+7E:41D8	max HP slot 1, digit 1 (bottom)
+7E:41DA	max HP slot 1, digit 2 (bottom)
+7E:41DC	max HP slot 1, digit 3 (bottom)
+
+7E:5800-7E:5FFF	BG3 overworld menu tilemap
+
+7E:6000-7E:6FFF	overworld menu item list
+
+7E:7040 spell list in battle (6 bytes)
+
+7E:70D4	current HP slot 1, digit 1 (hex to dec: HP / #$0064 = digit 1)
+7E:70D6	current HP slot 1, digit 2 (hex to dec: HP / #$0064, remainder / #$000A = digit 2)
+7E:70D8	current HP slot 1, digit 3 (hex to dec: HP / #$0064, remainder / #$000A, remainder = digit 3)
+7E:70DA	slot 1, / slash bar
+7E:70DC	max HP slot 1, digit 1
+7E:70DE max HP slot 1, digit 2
+7E:70E0 max HP slot 1, digit 3
+
+7E:7248	current HP slot 2, digit 1
+7E:724A	current HP slot 2, digit 2
+7E:724C	current HP slot 2, digit 3
+7E:724E	slot 2, / slash bar
+7E:7250	max HP slot 2, digit 1
+7E:7252 max HP slot 2, digit 2
+7E:7254 max HP slot 2, digit 3
+
+EXPANDED WRAM
+-------------
+7E:D123 current formation
+
+7E:E000 - 7E:E00F   variables used in battle scripts
+7E:E010 Jump increment counter
+7E:E012 Mystery Egg/Lamb's Lure counters
+	Mystery Egg counter decrements from 10 to 0
+	Lamb's Lure counter increments from 0 to 48
+7E:E014 Lucky Jewel counter
+
+7E:FA00
+7E:FA02 total XP gained from battle
+7E:FA04 total coins gained from battle
+7E:FA0C current FP
+7E:FA0D max FP
+7E:FA0E monster formation byte 2
+7E:FA0F monster formation byte 1
+7E:FA1C	
+7E:FA1D	battle event
+7E:FA1E battle music
+
+CHARACTER BATTLE STATS - Slot 1
+7E:FA80 mortal status
+7E:FA81 character byte
+
+7E:FA90 Level
+7E:FA91 Current HP (2 bytes)
+7E:FA93 Maximum HP (2 bytes)
+7E:FA95 Speed
+7E:FA96 Dttack
+7E:FA97 Defense
+7E:FA98 Magic Attack
+7E:FA99 Magic Defense
+7E:FA9A Current EXP (2 bytes)
+7E:FA9C equipped weapon
+7E:FA9D equipped armor
+7E:FA9E equipped accessory
+7E:FA9F unused byte*
+7E:FAA0 spell list (4 bytes)
+
+7E:FAC0 status (ailments, if any)
+7E:FAC1 reaction after being attacked (jarred while ducking, standing, etc.)
+7E:FAC4 
+7E:FAC5 amount of damage to display
+
+7E:FAF0 modified speed
+
+7E:FB00-FB7F Slot 2
+7E:FB80-FBFF Slot 3
+
+MONSTER BATTLE STATS - Slots 1-8
+7E:FC00 mortal status
+	bit 6: disable target
+	bit 7: remove target
+7E:FC01 monster byte
+
+7E:FC11 Current HP (2 bytes)
+7E:FC13 Maximum HP (2 bytes)
+7E:FC15 Speed
+7E:FC16 Attack
+7E:FC17 Defense
+7E:FC18 Magic Attack
+7E:FC19 Magic Defense
+7E:FC1A Current FP
+7E:FC1B Evade%
+7E:FC1C Magic Evade%
+7E:FC1D Special Flags
+7E:FC1E 
+7E:FC1F 
+7E:FC20 
+7E:FC21 
+7E:FC22 entrance style byte
+7E:FC2C coin animation
+7E:FC2D flower bonus
+7E:FC2E entrance style bits
+7E:FC37 targetting cursor X coordinate
+7E:FC38 targetting cursor Y coordinate
+7E:FC3D elevation
+7E:FC41 special defense (death/morph protection)
+7E:FC45 amount of damage to display
+7E:FC46 heal bit
+
+7E:FC80-FFFF slot 5 - 8 (128 bytes each)
+
+7F:F40A Room 1 to Room 2 event
+7F:F42E Room 1 to Room 2 screen darkening
+
+7F:B6CE battle-prone sprites
+7F:B6CF movement of monsters on screen
+
+7F:8000-7F:AFFF	physical tile properties (1024 tiles, 12 bytes each)
+
+7F:F41C pointer to room byte
+
+CHARACTER OVERWORLD STATS - Mario
+7F:F800 current level
+7F:F801 current HP (2 bytes)
+7F:F803 maximum HP (2 bytes)
+7F:F805 speed
+7F:F806 attack
+7F:F807 defense
+7F:F808 magic attack
+7F:F809 magic defense
+7F:F80A experience (2 bytes)
+7F:F80C equipped weapon
+7F:F80D equipped armor
+7F:F80E equipped accessory
+7F:F80F unused byte*
+7F:F810	spell list (4 bytes)
+
+7F:F814-7F:F827 Toadstool
+7F:F828-7F:F83B Bowser
+7F:F83C-7F:F84F Geno
+7F:F850-7F:F863 Mallow
+
+7F:F864-7F:F881 Equipment
+7F:F882-7F:F89F Items
+7F:F8A0-7F:F8AE Special Items
+
+7F:F8AF Current Coins (2 bytes)
+7F:F8B1 Current FP
+7F:F8B2 Max FP
+7F:F8B3 Current Frog Coins
+7F:F8BD Jump increment power
+7F:F8C0 Super Jump record
+
+*based on careful observation, this byte is apparently never used
+
+NOTE: SMRPG does not use an absolute address for storing final damage/health (i.e 7E:????).
+      It uses a direct page, $C2, and subtracts/adds the result (after stat modifications) from
+      current HP and uses difference/sum to determine outcome (this is all determined before
+      the actual attack/spell animation and final damage digit display). Thus, it is impossible
+      to directly edit the final damage through a PAR code.
+
+JOYPAD REGISTER BITS
+--------------------
+0010   R
+0020   L
+0040   X
+0080   A
+0100   right
+0200   left
+0400   down
+0800   up
+1000   START
+2000   SELECT
+4000   Y
+8000   B

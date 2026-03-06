@@ -24,7 +24,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 from dataclasses import dataclass
 
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_6
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_13, NPC_6
 from ..data.variables.sprite_names import *
 from ..data.variables.room_names import *
 
@@ -434,3 +434,13 @@ def update_chapel_partition(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, NPC_0, 0)
     _update_buffer_by_room_object(world, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, NPC_3, 1)
     _update_buffer_by_room_object(world, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, NPC_7, 2)
+
+def update_arrow_partitions(world: GameWorld) -> None:
+    _update_buffer_by_room_object(world, R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, NPC_7, 2)
+    _update_buffer_by_room_object(world, R228_FOREST_MAZE_AREA_04, NPC_1, 2)
+    _update_buffer_by_room_object(world, R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09, NPC_13, 2)
+    
+def update_mines_inner_henchman_room_partition(world: GameWorld) -> None:
+    _update_buffer_by_room_object(world, R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, NPC_4, 1)
+    _update_buffer_by_room_object(world, R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, NPC_4, 2)
+

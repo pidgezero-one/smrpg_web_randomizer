@@ -42,6 +42,11 @@ script = EventScript([
 	RunEventAsSubroutine(E0765_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHUFFLED_NPC_ANIMATION_LOADER),
 	ClearBit(TEMP_7042_7),
 	ClearBit(TEMP_7042_6),
+    ActionQueueAsync(NPC_3, subscript=[
+        A_FixedFCoordOn(),
+        A_WalkNorthwestPixels(8),
+        A_FixedFCoordOff()
+	]),
 	FadeInFromBlack(sync=False),
 	Return()
 ])

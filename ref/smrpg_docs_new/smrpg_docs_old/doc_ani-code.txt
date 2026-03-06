@@ -1,0 +1,121 @@
+--------------------------
+ANIMATION STRING FUNCTIONS
+--------------------------
+00 xx xx	;set yy sprite assignment
+   yy yy
+   xx xx xx xx
+
+01 yy		;set yy initial position
+		;07 screen edge
+		;37 caster
+   xx xx	;set X coordinate
+   xx xx	;set Y coordinate
+   xx xx
+
+03 xx xx	;set yy sprite assignment
+   yy yy
+   xx
+
+04 10		;set frame delay yy yy
+   yy yy	;frame delay
+
+07		;ends code, returns to 1st code bank
+
+08 xx		shift object yy pixels
+   yy yy
+   yy yy
+   yy yy
+
+09 xx xx	;direct pointer
+
+0B yy		;set xx coordinates of spell receptor
+   xx xx
+   xx xx
+   xx xx
+
+0C yy		;yy = subroutine pointer
+   xx zz	;zz = sprite animation frameskip value
+   xx xx
+
+0E		;stores #$8000 to 3 SA-1 registers
+
+0F		;stores #$0000 to 12 SA-1 registers
+
+10 xx xx	;direct pointer
+
+11		;ends code/returns to previous code bank
+
+20 xx yy yy	;
+
+21 00 yy 00	;sets animation code pointer yy for offset pointer sets
+
+22 xx yy yy	;
+
+34 0F		;starts offset pointer set
+
+40 0F 01	;ends offset pointer set
+
+43 xx		set object sequence xx
+
+44 xx		;
+
+45		;loads pointer for RAM address of spell-receptor character slot
+
+5A		;clear bit 0 of 400047,x
+
+5D xx 		;
+   yy 		;monster slot (1-8)
+   zz zz	;animation code offset zz zz
+
+5E		;
+
+63 xx		display (from memory 40:0060,x)...
+   00		special attack name
+   01		spell name
+   02		item name
+
+68 xx xx	;offset pointer + (yy * 2) where yy is set by function 21 00 yy 00
+   zz           ;P byte -- offset pointer for pointer at (yy * 2) address
+before reading code within an offset pointer, it reads all offset pointer sets until it 
+reaches 40 0F 01 or any variation thereof 40 xx xx
+
+69		store current attack byte to memory 40:0060,x
+
+72 xx		;spell graphic assignment
+   yy		;set spell graphic assignment yy
+when reaching this function, read all following offset pointers in original code if any,
+before reading further into code (repeats the same routine with them)
+
+73 xx		;
+
+74 xx xx	;
+
+77 xx		;
+78 xx		;
+
+7A xx yy	;dialogue type xx
+		 00: battle dialogue
+		 01: psychopath message
+		;execute battle dialogue yy
+
+7E xx		;
+
+85 xx xx	;
+
+86 xx xx 	;shake screen
+   xx 		;shake direction
+   xx 		;shake intensity
+   xx xx
+
+8C		;execute infliction animation?
+
+AB xx		;play _battle_ sound effect (see bytes_sound.txt)
+
+CC
+CD
+D3 xx xx xx	;
+
+E1 xx xx yy	run battle event xx xx, yy = event offset addend
+
+... xx		;function
+---		;spacer bytes

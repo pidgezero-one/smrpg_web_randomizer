@@ -1,0 +1,229 @@
+-----------------------------------
+INITIAL MOLD OFFSETS (4 bytes each)
+-----------------------------------
+this data uses the object's mold offset (the initial mold pointer) listed in the MOLD column in doc_objects.txt
+
+byte 1,2	NOT USED - not actual start of data; start 2 bytes later (byte 1,2 is probably data from some other sprite)
+		e.g. - Goomba's initial mold pointer is $259CEE, but the data starts at $259CF0
+
+byte 3,4	animation sequence
+		1. add to initial mold pointer
+		2. sum is address of next pointer
+		3. add the value at that address to the initial mold pointer
+		4. the sum is the address at which determines sequence of sprites
+
+EXAMPLE: Goomba
+$259CEE - initial mold pointer
+$259CF0 - actual start of data: the byte at this address (0x0C) is to be added to 0x259CEE
+$259CFA - this address is the sum of 0x0C and 0x259CEE: the byte at this address (0x18) is to be added to 0x259CEE
+	- NOTE: this address contains the addends for each sequence in the same sequential order as seen in the debug menu
+$259D06 - sum of 0x18 and 0x259CEE: this is the animation sequence data
+
+byte 5,6	sprite molding
+		1. add to initial mold pointer (real mold pointer, not the +2 one)
+		2. sum is address of next pointer **if bit 7 of high byte set, use the smaller mold version**
+		3. add the value at that address to the initial mold pointer
+		4. sum is address of tile row/column length data
+
+EXAMPLE: Goomba
+$259CEE - initial mold pointer
+$259CF2 - actual start of data: the byte at this address (0x5B) is to be added to 0x259CEE
+$259D49 - this address is the sum of 0x5B and 0x259CEE: the byte at this address (0x91) is to be added to 0x259CEE
+	- NOTE: since bit 7 of the high byte (0x80) is set, it uses the gridplane/small mold function
+$259D7F - sum of 0x91 and 0x259CEE: this is the sprite molding data
+
+///////////////////////////////////////////////////////////////////
+
+MOLD TYPE USAGE NOTES:
+gridplane/small molds load from left to right, top to bottom
+gridplane/small molds can use a minimum size of 24x24 pixels and a maximum size of 32x32 pixels for sprites
+
+dynamic/large molds can load the tiles in any order according to chosen overlapping priorities
+dynamic/large molds can probably be as large as they want to until function 00 is read
+dynamic/large molds are most often used for sprites larger than 32x32, but are also used for sprites smaller than 24x24
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+---------------------------------
+GRID MOLDS - TILE ROW/COLUMN SIZE
+---------------------------------
+this data sets one of four different sizes (24x24, 32x24, 24x32, 32x32) as the mold size
+each number in the brackets is an 8x8 tile numbered in the order of the bytes following the arrangment function byte (byte 1)
+
+byte 1	arrangement function (see .gifs for examples)
+	NOTE: do NOT confuse the numbers in brackets with the hex numbers in the Goomba example below;
+	      THESE are the order of the bytes following the arrangment function byte
+	-------------------
+	BYTE	ORIENTATION
+	-------------------
+	00	3 rows, 3 columns (24x24, 9 bytes)
+		[01 02 03]
+		[04 05 06]
+		[07 08 09]
+	01	4 rows, 3 columns (24x32, 12 bytes)
+		[01 02 03]
+		[04 05 06]
+		[07 08 09]
+		[10 11 12]
+	02	3 rows, 4 columns (32x24, 12 bytes)
+		[01 02 03 04]
+		[05 06 07 08]
+		[09 10 11 12]
+	03-07	4 rows, 4 columns (32x32, 16 bytes)
+		[01 02 03 04]
+		[05 06 07 08]
+		[09 10 11 12]
+		[13 14 15 16]
+
+byte 2 - 10 (min) to 17 (max)
+these bytes are the tiles as seen in the sequence of a tile editor
+
+small molds are very simple and do not use any more than one function
+
+EXAMPLE: Goomba
+$259D7F
+0x00 		arrangment function byte
+0x01 0x02 0x03 	row 1 (byte 2-4)
+0x07 0x08 0x09 	row 2 (byte 5-7)
+0x11 0x12 0x13 	row 3 (byte 8-10)
+
+NOTE: do NOT confuse these hex numbers with the numbers in the arrangement functions above
+      THESE are the actual bytes seen in a hex editor at the address $259D7F
+
+------------------------------------------
+TILE MOLDS - USING 16x16 TILE ARRANGEMENTS
+------------------------------------------
+large molds arrange four 8x8 tiles into a 16x16 tile, and assigns a coordinate
+the 16x16 tiles often have transparent 8x8 tile segments which is the reason for the different functions
+the 16x16 tiles are loaded in a particular order...
+...each succeeding 16x16 tile underlaps the previous, with the first overlapping all
+
+the - sign means the 8x8 tile is transparent
+
+byte 1	arrangment function (the numbers and -'s represent 8x8 tiles)
+	numbers represent the sequence number of the tiles to be arranged
+	-'s represent a transparent 8x8 tile
+
+	*2	load 16x16 tile(s) again at offset
+		byte 2,3  Y/X offset (add to original Y/X offset)
+		byte 4,5  add to mold offset
+		* = number of 16x16 tiles to load starting at offset
+
+	60	[- 1]
+		[2 -]
+
+	70	[- 1]
+		[2 3]
+
+	80	[1 -]
+		[- -]
+
+	90	[1 -]
+		[- 2]
+
+	A0	[1 -]
+		[2 -]
+
+	B0	[1 -]
+		[2 3]
+
+	C0	[1 2]
+		[- -]
+
+	D0	[1 2]
+		[- 3]
+
+	E0	[1 2]
+		[3 -]
+
+	F0	[1 2]
+		[3 4]
+
+byte 2	+/-Y coordinate
+byte 3	+/-X coordinate
+byte 4 - ...	8x8 tile bytes
+
+if the function is 12, byte 4 and 5 is a mold offset
+
+the coordinate can be signed (ie. greater than 0x80) and be moved - instead of +
+EG:
+a value of FF would move the tile 1 byte left/up from center (-1)
+a value of 01 would move the tile 1 byte right/down from center (+1)
+a value of 81 would move the tile 127 bytes left/up from center (-128)
+a value of 7F would move the tile 127 bytes right/down from center (+128)
+
+a coordinate of 00 x 00 is in the dead center of the object field (which covers a large span of the screen)
+the bytes after are the 8x8 tiles to use in sequence of the 8x8 GFX as seen in a tile editor (every 0x20 bytes)
+there can be up to 4 of these
+
+this example uses Cloaker (2nd time), which uses a large mold:
+
+ANIMATION SEQUENCE (example: Cloaker)
+-------------------------------------
+$274730
+0C 00 
+
+$27473A
+18 00
+
+$274746
+02 00
+
+GRAPHICS MOLD
+-------------
+$274732
+65 00
+
+$274793
+91 00
+
+
+$2747BF
+whichever is loaded first I guess overlaps the rest
+
+his shield (overlaps all apparently):
+80 10 13 15 		80 - [1 -] 8x8 tile function, 10 13 - Y/X coords, 15[1] - 8x8 tile byte
+			     [- -]
+C0 10 03 13 14 		C0 - [1 2] 8x8 tile function, 10 03 - Y/X coords, 13[1] 14[2] - 8x8 tile bytes
+			     [- -]
+A0 00 13 03 0B 		A0 - [1 -] 8x8 tile function, 00 13 - Y/X coords, 03[1] 0B[2] - 8x8 tile bytes
+			     [2 -]
+F0 00 03 01 02 09 0A 	F0 - [1 2] 8x8 tile function, 00 03 - Y/X coords, 01[1] 02[2] 09[3] 0A[4] - 8x8 tile bytes
+			     [3 4]
+
+his right arm (holding shield):
+B0 FA 0C 46 4C 4D 
+
+his hat feather:
+70 D4 04 04 0C 0D 
+
+his upper mustache and eyes:
+80 F8 01 34 
+C0 F8 F1 32 33 
+A0 E8 01 1E 29 
+F0 E8 F1 1C 1D 27 28 
+
+his lower mustache:
+A0 F6 FE 41 49 
+F0 F6 EE 3F 40 47 48 
+
+his body:
+C0 04 00 3D 3E 
+F0 FC F0 2E 2F 3B 3C 
+F0 F4 00 25 26 30 31 
+F0 EC F0 18 19 23 24 
+70 E4 00 12 1A 1B 
+F0 DC F8 07 08 10 11 
+
+bottom-right electricity:
+F0 09 FB 6B 6C 70 71 
+
+his left arm (holding sword):
+C0 F2 E8 67 68 
+B0 E2 E8 57 61 62 
+A0 DA 00 50 5A 
+F0 DA F0 4E 4F 58 59 
+
+bottom electricity:
+F0 04 F3 69 6A 6E 6F 
+00 42 FD 

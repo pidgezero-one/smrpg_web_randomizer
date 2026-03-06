@@ -1,0 +1,203 @@
+<html><head>
+
+<style>
+a:link, a:visited {text-decoration: none}
+a:hover, a:active {text-decoration: underline}
+a.header:link, a.header:visited {text-decoration: none}
+a.header:hover, a.header:active {text-decoration: underline}
+table {margin-top: 20px; clear: both; border-width: 1; border-color: black; border-collapse: collapse}
+td {font: 10pt verdana; letter-spacing: 1px; vertical-align: top; border-color: black}
+*#tabs {
+	background: #FFFFC0;
+	padding: 20px;
+	padding-top: 200px;
+	padding-bottom: 10px;
+	font: bold 10pt verdana;
+	letter-spacing: 2px;
+	display: inline; 
+	border: 1px dotted black;
+	border-top: 0;
+}
+</style>
+<meta name="description" content="SMRPG Rom Documents, SMRPG Official Art, DKC Rom Documents">
+<meta name="keywords" content="super mario rpg,super mario rpg rom hacking,smrpg rom hacking,romhacking,smrpg,donkey kong country,dkc,donkey kong country hacking,hacking,dkc hacking,dkc rom hacking,donkey kong country rom hacking,dkc rom hacking"></head><body linkwrapperstatus="false">
+<center>
+<br>
+<span id="tabs"><a href="http://giangurgolo.home.att.net/">Index</a></span>
+<span id="tabs">SMRPG ROM Documents</span>
+<span id="tabs"><a href="http://giangurgolo.home.att.net/frame.html">SMRPG Official Art</a></span>
+
+<span id="tabs"><a href="http://giangurgolo.home.att.net/dkc/">DKC ROM Documents</a></span>
+
+<table cellpadding="15" width="960">
+<tbody><tr><td rowspan="2" style="border-top: 1px dashed black; border-left: 2px dotted black;" bgcolor="#e0e0e0" width="30%">
+<b>ROM/RAM Maps and 65c816</b><br>
+<a href="doc_offsets.txt">ROM Offsets</a><br>
+<a href="doc_ram-addr.txt">RAM Memory Addresses</a><br>
+<a href="doc_zst.txt">ZST Offsets</a><br>
+<a href="doc_functions.txt">CPU/SA-1 functions</a><br>
+<a href="asm_bank-c0.txt">65816 disassembly: bank C0</a><br>
+
+<a href="asm_bank-c1.txt">65816 disassembly: bank C1</a><br>
+<a href="asm_bank-c2.txt">65816 disassembly: bank C2</a><br>
+<a href="asm_bank-c3.txt">65816 disassembly: bank C3</a><br>
+<a href="codes.txt">PAR/GG codes</a><p>
+</p>
+<b>HTML/MS Word Documents</b><br>
+<a href="items.html">Item Chart (.html)</a><br>
+<a href="spells.html">Spell Chart (.html)</a><br>
+<a href="attacks.html">Attack Chart (.html)</a><br>
+
+<a href="battlescripts.html">Battle Script Chart (.html)</a><br>
+<a href="monsters1.html">Monster Stats 1 Chart (.html)</a><br>
+<a href="monsters2.html">Monster Stats 2 Chart (.html)</a><p>
+</p>
+<b>Statistics</b><br>
+<a href="doc_stats.txt">Statistics Guide</a><br>
+<a href="doc_formations.txt">Monster Formations</a><br>
+<a href="doc_formpacks.txt">Monster Formation Packs</a><p>
+</p>
+<b>Strings and Instructions</b><br>
+
+<a href="doc_battlescripts.txt">Battle Script Instructions</a><br>
+<a href="doc_events.txt">Event String Instructions</a><br>
+<a href="data_events.txt">Event String Examples</a><br>
+<a href="doc_ani-code.txt">Animation Instructions</a><br>
+<a href="doc_ani-attack.txt">Attack Animations</a><br>
+<a href="doc_ani-spell.txt">Spell Animations</a><br>
+<a href="doc_ani-item.txt">Item Animations</a><br>
+<a href="doc_timing.txt">Spell/Weapon Timing</a>
+</td>
+
+<td style="border-bottom: 2px dotted black;" align="center" width="40%">
+<br><img src="index_files/STUMPET.gif">
+</td>
+
+<td rowspan="2" style="border-top: 1px dashed black; border-right: 2px dotted black;" bgcolor="#e0e0e0" width="30%">
+<b>Byte Values</b><br>
+<a href="bytes_attacks.txt">Bytes - Attacks/Specials</a><br>
+<a href="bytes_battlebg.txt">Bytes - Battlefields</a><br>
+<a href="bytes_bat-dlg.txt">Bytes - Battle Dialogue</a><br>
+<a href="bytes_bat-evt.txt">Bytes - Battle Events</a><br>
+<a href="bytes_items.txt">Bytes - Items</a><br>
+
+<a href="bytes_monster.txt">Bytes - Monsters</a><br>
+<a href="bytes_movement.txt">Bytes - Movements</a><br>
+<a href="bytes_music.txt">Bytes - Music</a><br>
+<a href="bytes_sound.txt">Bytes - Sounds</a><br>
+<a href="bytes_spells.txt">Bytes - Spells</a><br>
+<a href="bytes_worldmap.txt">Bytes - World Maps</a><p>
+</p>
+<b>Object/Field Mapping</b><br>
+<a href="doc_objects.txt">Object Offsets</a><br>
+
+<a href="doc_obj-maps.txt">Object Mapping</a><br>
+<a href="doc_obj-attr.txt">Object Map Object ID's</a><br>
+<a href="doc_obj-molds.txt">Object Sequences</a><br>
+<a href="doc_worldmap.txt">World Map Point Mapping</a><br>
+<a href="doc_exits.txt">Exit Field Mapping</a><p>
+</p>
+<b>Area/Tile Mapping</b><br>
+<a href="doc_area-layout.txt">Area Layouts</a><br>
+<a href="doc_areas.txt">Area Offsets</a><br>
+
+<a href="doc_areas_.txt">Area Offsets (alpha)</a><br>
+<a href="doc_area-maps.txt">Area Mapping</a><p>
+</p>
+<b>Maps</b><br>
+<a href="doc_map-tiles.txt">Tilemap Offsets</a><br>
+<a href="doc_map-phys.txt">Physical Map Offsets</a><br>
+<a href="doc_tiles-phys.txt">Physical Tile Properties</a><br>
+<a href="doc_palettes.txt">Palette Offsets</a><br>
+<a href="doc_gfx.txt">BPP GFX Offsets</a>
+
+</td></tr>
+
+<tr><td bgcolor="#f0f0f0">
+<b>Archives</b><br>
+<a href="smrpg_docs.zip">archive of all documents</a><br>
+<a href="fmt_docs.zip">archive of HTML/MSWORD docs</a><br>
+<a href="dummy_layout.exe">dummied layouts (in .GIF)</a><p>
+</p>
+<b>Tutorials</b><br>
+<a href="mold/mold1.html">object molds tutorial 1: grid molds</a><br>
+<a href="mold/mold2.html">object molds tutorial 2: tile molds</a><br>
+
+<a href="event/event.html">event fields and code strings tutorial</a><br>
+<a href="level/level1.html">level tutorial 1: level mapping</a><br>
+<a href="level/level2.html">level tutorial 2: tileset organization</a>
+</td>
+
+</tr>
+
+<tr>
+<td colspan="3" style="border: 3px dotted black;" bgcolor="#d3edd3">
+<b>DISASSEMBLER APPLICATIONS</b><p>
+</p>
+<a href="Disasm_SMRPGb.zip">Disassembler Applications and .txt dumps</a><br>
+
+<ul><li><b>EventScriptTxt.txt</b>
+<ul><li>some commands are unknown, but enough are included to show the general process behind the script
+</li><li>there may be inaccuracies with the commands and also the output format
+</li><li>includes text from dialogue and item names
+</li><li>traverses all three ROM banks containing the event code</li></ul></li></ul>
+
+<ul><li><b>EventFieldsTxt.txt</b>: identifies all properties of each area's event field
+</li><li><b>ExitFieldsTxt.txt</b>: identifies all properties of each area's exit field
+</li><li><b>NPCMapsTxt.txt</b>: identifies most properties of each area's NPC (or object) map
+</li></ul>
+
+<a href="Disasm_SMRPGs.zip">Disassembler Source Code</a><br>
+<ul><li>modded for SMRPG from <a href="http://www.angelfire.com/pq/jumparound/ff6utilities.html">the original application</a>
+</li><li>the "hex dump" option is gone, and the "hex encode" option probably won't work or might crash the application</li></ul>
+
+</td>
+</tr>
+
+<tr colspan="3">
+<td rowspan="2" style="border-left: 2px dotted black; border-bottom: 1px dashed black;" bgcolor="#fffe80">
+<b>Patches</b><p></p>
+
+Must be applied to a <i>headerless</i> ROM. Use the <i>official</i> (NOT a build) release of ZSNESw v1.42 in case the .ZST does not load properly.<p></p>
+<a href="smrpg_demo.zip"><b>Function Demo</b></a><br>
+<li>5-digit damage
+</li><li>4-digit HP
+</li><li>custom event + battlescript<br>
+Load the .ZST and talk to the bed lamp.<p>
+</p>
+
+<a href="smrpg_CI.zip"><b>Custom Items</b></a><br>
+Introduces 6 new items that enhance Mario and other characters' abilities in/out of battle.<p>
+</p>
+<a href="smrpg_5DG.zip"><b>5-digit (x17) Damage</b></a><br>
+Displays 5 digits when 9999+ damage is dealt; attack has been increased 17x<p>
+</p>
+<a href="smrpg_MSL.zip"><b>Muscle Patch</b></a><br>
+Same effects of 5-digit damage patch, plus 4-digit HP
+</li></td>
+
+<td bgcolor="#ffffc0">
+<b>Links</b><p>
+
+</p>
+<span style="float: left;">
+<a href="http://www.zsnes.com/">ZSNES.com</a><br>
+<a href="http://www.snes9x.com/">Snes9x.com</a><br>
+<a href="http://www.geigercount.net/crypt/index.html">Snes9x Debugger</a></span>
+<span style="float: right;">
+<a href="http://vsnes.aep-emu.de/">vSNES</a><br>
+<a href="http://www.zophar.net/">Zophar's Domain</a><br>
+<a href="http://www.bpsoft.com/">Hex Workshop</a></span>
+</td>
+
+<td rowspan="2" style="border-right: 2px dotted black; border-bottom: 1px dashed black;" align="center" bgcolor="#808080">
+<img src="index_files/demo_2.gif"> <img src="index_files/demo_pd.gif"><br>
+<i>Function Demo Patch</i>
+</td>
+</tr>
+
+<tr><td style="border-top: 2px dotted black;" align="center">
+<img src="index_files/PILEDRIVER.gif"><br>
+</td></tr>
+</tbody></table>
+</center></body></html>

@@ -55,8 +55,6 @@ script = EventScript([
 		A_Pause(32),
 		A_JumpToHeight(56),
 		A_Pause(32),
-		A_Pause(1, identifier="EVENT_3193_action_queue_5_SUBSCRIPT_pause_10"),
-		A_JmpIfBitClear(TEMP_7043_1, ["EVENT_3193_action_queue_5_SUBSCRIPT_pause_10"]),
 		A_Pause(32),
 		A_SetAllSpeeds(VERY_FAST),
 		A_SequenceLoopingOn(),
@@ -72,7 +70,6 @@ script = EventScript([
 	]),
     RemoveObjectFromCurrentLevel(NPC_1),
 	SetBit(MINES_HENCHMAN_RIGHT_DEFEATED),
-	SetBit(TEMP_7043_1),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
 	ClearBit(TEMP_7043_0, identifier="EVENT_3193_clear_bit_9"),
 	Return()

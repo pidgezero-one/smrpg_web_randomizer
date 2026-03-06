@@ -41,20 +41,12 @@ script = EventScript([
     JmpIfBitClear(LANDS_END_GROTTO_BARREL_FLIPPED, ["EVENT_3135_fade"]),
     EnableObjectTrigger(NPC_1),
     
-    JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, R333_KERO_SEWERS_ENTRANCE, ["event_3135_init"], identifier="event_3135_id_check_2"),
-    JmpIfBitSet(SEWERS_CLOSED, ["EVENT_3135_a"]),
-    RemoveObjectFromCurrentLevel(NPC_0),
-	RemoveObjectFromCurrentLevel(NPC_1),
-    Jmp(["event_3135_init"]),
-    SummonObjectToCurrentLevel(NPC_0, identifier="EVENT_3135_a"),
-	SummonObjectToCurrentLevel(NPC_1),
-    
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_WalkEastPixels(11),
 		A_WalkNortheastPixels(4),
 		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
 		A_SetVRAMPriority(NORMAL_PRIORITY)
-	]),
+	], identifier="event_3135_id_check_2"),
 	ClearBit(TEMP_707C_5, "event_3135_init"),
 	SetVarToConst(TIMER_701C, 300),
 	StopBackgroundEvent(TIMER_701C),

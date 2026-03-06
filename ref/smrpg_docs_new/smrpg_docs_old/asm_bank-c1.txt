@@ -1,0 +1,491 @@
+C1/0311 64 08       STZ $08    [$00:0408]   A:0006 X:A13A Y:2500 
+C1/0313 A9 F0 06    LDA #$06F0              A:0006 X:A13A Y:2500 
+C1/0316 80 05       BRA $05    [$031D]      A:06F0 X:A13A Y:2500 
+C1/031D 8D 32 05    STA $0532  [$7E:0532]   A:06F0 X:A13A Y:2500 
+C1/0320 C2 30       REP #$30                A:06F0 X:A13A Y:2500 
+C1/0322 AF 40 30 00 LDA $003040[$00:3040]   A:06F0 X:A13A Y:2500 ;load timer
+C1/0326 89 01 00    BIT #$0001              A:00AF X:A13A Y:2500 
+C1/0329 F0 2E       BEQ $2E    [$0359]      A:00AF X:A13A Y:2500 
+C1/032B AD 60 05    LDA $0560  [$7E:0560]   A:00AF X:A13A Y:2500 
+C1/032E F0 14       BEQ $14    [$0344]      A:0000 X:A13A Y:2500 
+
+C1/0344 A5 32       LDA $32    [$00:0432]   A:0000 X:A13A Y:2500 
+C1/0346 89 07 00    BIT #$0007              A:0000 X:A13A Y:2500 
+C1/0349 F0 0E       BEQ $0E    [$0359]      A:0000 X:A13A Y:2500 
+C1/0359 AD 30 05    LDA $0530  [$7E:0530]   A:0000 X:A13A Y:2500 
+C1/035C 1B          TCS                     A:1FE3 X:A13A Y:2500 
+C1/035D 60          RTS                     A:1FE3 X:A13A Y:2500 
+
+C1/035E C2 30       REP #$30                A:0007 X:1000 Y:2680 
+C1/0360 48          PHA                     A:0007 X:1000 Y:2680 
+C1/0361 AF 40 30 00 LDA $003040[$00:3040]   A:0007 X:1000 Y:2680 ;load timer
+C1/0365 89 01 00    BIT #$0001              A:024B X:1000 Y:2680 
+C1/0368 F0 04       BEQ $04    [$036E]      A:024B X:1000 Y:2680 ;branch if not set
+C1/036A A5 30       LDA $30    [$00:0430]   A:024B X:1000 Y:2680 
+C1/036C F0 08       BEQ $08    [$0376]      A:0000 X:1000 Y:2680 
+C1/0376 68          PLA                     A:0000 X:1000 Y:2680 
+C1/0377 85 30       STA $30    [$00:0430]   A:0007 X:1000 Y:2680 
+C1/0379 E2 20       SEP #$20                A:0007 X:1000 Y:2680 
+C1/037B A9 00       LDA #$00                A:0007 X:1000 Y:2680 
+C1/037D 8F 45 30 00 STA $003045[$00:3045]   A:0000 X:1000 Y:2680 
+C1/0381 A9 01       LDA #$01                A:0000 X:1000 Y:2680 
+C1/0383 04 03       TSB $03    [$00:0403]   A:0001 X:1000 Y:2680 
+C1/0385 C2 30       REP #$30                A:0001 X:1000 Y:2680 
+C1/0387 A2 8C 03    LDX #$038C              A:0001 X:1000 Y:2680 
+C1/038A 4C 18 03    JMP $0318  [$7E:0318]   A:0001 X:038C Y:2680 
+
+===load debug menu===
+
+C1/069E AF 14 30 00 LDA $003014[$00:3014]   A:0002 X:0002 Y:2600 ;load joypad register
+C1/06A2 AA          TAX                     A:1000 X:0002 Y:2600 
+C1/06A3 AF AC FF 00 LDA $00FFAC[$00:FFAC]   A:1000 X:1000 Y:2600 ;load debug menu locks
+C1/06A7 85 80       STA $80    [$00:0480]   A:1601 X:1000 Y:2600 
+C1/06A9 AF AE FF 00 LDA $00FFAE[$00:FFAE]   A:1601 X:1000 Y:2600 
+C1/06AD 05 80       ORA $80    [$00:0480]   A:110F X:1000 Y:2600 
+
+C1/06AF F0 01       BEQ $01    [$06B2]      A:170F X:1000 Y:2600 ;branch if locks not set
+C1/06B1 60          RTS                     A:170F X:1000 Y:2600 ;end
+
+C1/06B2 8A          TXA                     A:170F X:1000 Y:2600 
+C1/06B3 89 00 10    BIT #$1000              A:1000 X:1000 Y:2600 ;check START button bit
+C1/06B6 D0 01       BNE $01    [$06B9]      A:1000 X:1000 Y:2600 ;branch if set
+C1/06B8 60          RTS                     A:1000 X:1000 Y:2600 ;end
+
+C1/06B9 A9 07 00    LDA #$0007              A:1000 X:1000 Y:2600 
+C1/06BC 20 5E 03    JSR $035E  [$C1:035E]   A:0007 X:1000 Y:2600 ;load debug menu
+
+C1/06BF 9C 0F 0B    STZ $0B0F  [$7E:0B0F]   A:038C X:0000 Y:2680 
+C1/06C2 9C 11 0B    STZ $0B11  [$7E:0B11]   A:038C X:0000 Y:2680 
+C1/06C5 E2 20       SEP #$20                A:038C X:0000 Y:2680 
+C1/06C7 64 54       STZ $54    [$00:0454]   A:038C X:0000 Y:2680 
+
+----------------------------------------------------------------
+Load debug menu
+
+C1/06C9 C2 30       REP #$30                A:038C X:0000 Y:2680 
+C1/06CB A9 04 00    LDA #$0004              A:038C X:0000 Y:2680 
+C1/06CE 0C 7C 0B    TSB $0B7C  [$7E:0B7C]   A:0004 X:0000 Y:2680 
+C1/06D1 20 CF AF    JSR $AFCF  [$C1:AFCF]   A:0004 X:0000 Y:2680 
+
+C1/06D4 A2 94 07    LDX #$0794              A:0004 X:9965 Y:2A01 ;constant for menu text
+C1/06D7 20 88 AD    JSR $AD88  [$C1:AD88]   A:0004 X:0794 Y:2A01 
+
+C1/06DA A2 90 07    LDX #$0790              A:0004 X:705A Y:0556 ;constant for menu length (in rows)
+C1/06DD 20 78 AD    JSR $AD78  [$C1:AD78]   A:0004 X:0790 Y:0556 
+
+C1/06E0 E2 30       SEP #$30                A:0001 X:0000 Y:01D8 
+C1/06E2 0A          ASL A                   A:0001 X:0000 Y:00D8 
+C1/06E3 AA          TAX                     A:0002 X:0000 Y:00D8 
+C1/06E4 7C E7 06    JMP ($06E7,x)[$C1:071F] A:0002 X:0002 Y:00D8 ;jump to menu option function
+
+debug menu options: function pointers
+
+C1/06E7 6C 07       ...
+C1/06E9 1F 07       SCENE
+C1/06EB 1A 07       OBJ
+C1/06ED 7A 07       BG
+C1/06EF 6C 07       ...
+C1/06F1 30 07       HPMAX
+C1/06F3 3B 07       MUSIC
+C1/06F5 43 07       SE
+C1/06F7 05 07       LINE
+C1/06F9 6C 07       ...
+C1/06FB 25 07       EFFECT
+C1/06FD 4B 07       EVT 1
+C1/06FF 80 08       EVT 2
+C1/0701 EE 07       EVT 3
+C1/0703 66 08       TEST
+
+==LINE==
+
+C1/0705 C2 30       REP #$30
+C1/0707 A2 01 00    LDX #$0001
+C1/070A AD 7E 0B    LDA $0B7E  [$7E:0B7E]
+C1/070D F0 03       BEQ $03    [$0712]
+C1/070F A2 00 00    LDX #$0000
+C1/0712 8E 7E 0B    STX $0B7E  [$7E:0B7E]
+C1/0715 20 CF AF    JSR $AFCF  [$C1:AFCF]
+C1/0718 80 52       BRA $52    [$076C]
+
+==OBJ==
+
+C1/071A 20 AD A1    JSR $A1AD  [$C1:A1AD]
+C1/071D 80 4D       BRA $4D    [$076C]
+
+==SCENE==
+
+C1/071F 20 B9 A0    JSR $A0B9  [$C1:A0B9]
+C1/0722 4C 11 03    JMP $0311  [$C1:0311]
+
+==EFFECT==
+
+C1/0725 20 CF AF    JSR $AFCF
+C1/0728 20 F1 A3    JSR $A3F1
+C1/072B 20 A6 5C    JSR $5CA6
+C1/072E 80 3C       BRA $3C    [$076C]
+
+==HPMAX==
+
+C1/0730 20 CF AF    JSR $AFCF
+C1/0733 20 2D 0B    JSR $0B2D
+C1/0736 20 A6 5C    JSR $5CA6
+C1/0739 80 31       BRA $31    [$076C]
+
+==MUSIC==
+
+C1/073B 20 CF AF    JSR $AFCF
+C1/073E 20 15 A6    JSR $A615
+C1/0741 80 29       BRA $29    [$076C]
+
+==SE==
+
+C1/0743 20 CF AF    JSR $AFCF
+C1/0746 20 04 A7    JSR $A704
+C1/0749 80 21       BRA $21    [$076C]
+
+==EVT 1==
+
+C1/074B 20 CF AF    JSR $AFCF
+C1/074E A9 10 01    LDA #$0110
+C1/0751 8D 0E FA    STA $FA0E
+
+C1/0754 E2 20       SEP #$20
+C1/0756 A9 1D       LDA #$1D
+C1/0758 8D 4B 00    STA $004B
+
+C1/075B C2 20       REP #$20
+C1/075D A9 01 00    LDA #$0001
+C1/0760 8D 82 0B    STA $0B82
+C1/0763 A9 06 00    LDA #$0006
+C1/0766 1C 7C 0B    TRB $0B7C
+C1/0769 4C 11 03    JMP $0311
+
+==cancel menu (for blank options)==
+
+C1/076C C2 30       SEP #$30
+C1/076E A9 04 00    LDA #$0004
+C1/0771 1C 7C 0B    TRB $0B7C
+C1/0774 20 CF AF    JSR $AFCF
+C1/0777 4C 11 03    JMP $0311
+
+==BG==
+
+C1/077A C2 30       SEP #$30
+C1/077C 20 38 A5    JSR $A538
+C1/077F A9 04 00    LDA #$0004
+C1/0782 1C 7C 0B    TRB $0B7C
+C1/0785 64 08       STZ $08
+C1/0787 A9 01 00    LDA #$0001
+C1/078A 8D 82 0B    STA $0B82
+C1/078D 4C 11 03    JMP $0311
+
+==debug menu TEXT==
+
+C1/0790
+
+==EVT 3==
+
+C1/07EE 4C 87 08    JMP $0887
+
+----------------------------------------------------------------
+Load GFX debug menu
+
+C1/07F1 C2 30       REP #$30
+C1/07F3 A2 16 08    LDX #$0816
+C1/07F6 20 88 AD    JSR $AD88
+
+C1/07F9 A2 12 08    LDX #$0812
+C1/07FC 20 78 AD    JSR $AD78
+
+C1/07FF E2 30       SEP #$30
+C1/0801 0A          ASL
+C1/0802 AA          TAX
+C1/0803 7C 06 08    JMP ($0806,x)
+
+GFX debug menu options: function pointers
+
+C1/0806 6C 07       ...
+C1/0808 4B 08       MAGIC
+C1/080A 54 08       LASTER
+C1/080C 5D 08       BGLASTER
+C1/080E 6C 07       ...
+C1/0810 6C 07       ...
+
+C1/0812 ...GFX debug menu text...
+
+----------------------------------------------------------------
+read current HP to show in battle profile
+
+C1/5D59 C2 30       REP #$30                A:0152 X:FA80 Y:0124 
+C1/5D5B BD 11 00    LDA $0011,x[$7E:FA91]   A:0152 X:FA80 Y:0124 ;load current HP
+C1/5D5E A0 42 00    LDY #$0042              A:00CB X:FA80 Y:0124 
+C1/5D61 20 6A 5D    JSR $5D6A  [$C1:5D6A]   A:00CB X:FA80 Y:0042 
+
+C1/5D6A DA          PHX                     A:00CB X:FA80 Y:0042 
+C1/5D6B 85 8E       STA $8E    [$00:048E]   A:00CB X:FA80 Y:0042 ;store to register
+C1/5D6D 98          TYA                     A:00CB X:FA80 Y:0042 
+C1/5D6E 18          CLC                     A:0042 X:FA80 Y:0042 
+C1/5D6F 65 8C       ADC $8C    [$00:048C]   A:0042 X:FA80 Y:0042 
+C1/5D71 AA          TAX                     A:00D4 X:FA80 Y:0042 
+C1/5D72 64 86       STZ $86    [$00:0486]   A:00D4 X:00D4 Y:0042 
+C1/5D74 A4 8E       LDY $8E    [$00:048E]   A:00D4 X:00D4 Y:0042 ;load current HP register
+C1/5D76 A9 64 00    LDA #$0064              A:00D4 X:00D4 Y:00CB ;load 100's constant
+C1/5D79 20 53 0E    JSR $0E53  [$C1:0E53]   A:0064 X:00D4 Y:00CB 
+
+C1/0E53 C2 30       REP #$30                A:0064 X:00D4 Y:00CB 
+C1/0E55 48          PHA                     A:0064 X:00D4 Y:00CB 
+C1/0E56 98          TYA                     A:0064 X:00D4 Y:00CB 
+C1/0E57 8F 04 42 00 STA $004204[$00:4204]   A:00CB X:00D4 Y:00CB ;store current HP as dividend
+C1/0E5B 68          PLA                     A:00CB X:00D4 Y:00CB 
+C1/0E5C E2 20       SEP #$20                A:0064 X:00D4 Y:00CB 
+C1/0E5E 8F 06 42 00 STA $004206[$00:4206]   A:0064 X:00D4 Y:00CB ;store 100 as divisor
+C1/0E62 EA          NOP                     A:0064 X:00D4 Y:00CB 
+C1/0E63 EA          NOP                     A:0064 X:00D4 Y:00CB 
+C1/0E64 EA          NOP                     A:0064 X:00D4 Y:00CB 
+C1/0E65 EA          NOP                     A:0064 X:00D4 Y:00CB 
+C1/0E66 EA          NOP                     A:0064 X:00D4 Y:00CB 
+C1/0E67 EA          NOP                     A:0064 X:00D4 Y:00CB 
+C1/0E68 EA          NOP                     A:0064 X:00D4 Y:00CB 
+C1/0E69 C2 20       REP #$20                A:0064 X:00D4 Y:00CB 
+C1/0E6B AF 14 42 00 LDA $004214[$00:4214]   A:0064 X:00D4 Y:00CB ;read quotient for value in 100's place
+C1/0E6F 60          RTS                     A:0002 X:00D4 Y:00CB ;end
+
+C1/5D7C 20 98 5D    JSR $5D98  [$C1:5D98]   A:0002 X:00D4 Y:00CB 
+
+C1/5D98 85 80       STA $80    [$00:0480]   A:0002 X:00D4 Y:00CB 
+C1/5D9A D0 07       BNE $07    [$5DA3]      A:0002 X:00D4 Y:00CB ;branch if current HP > or = to 100
+C1/5DA3 09 30 00    ORA #$0030              A:0002 X:00D4 Y:00CB 
+C1/5DA6 85 80       STA $80    [$00:0480]   A:0032 X:00D4 Y:00CB 
+C1/5DA8 E6 86       INC $86    [$00:0486]   A:0032 X:00D4 Y:00CB 
+C1/5DAA A5 80       LDA $80    [$00:0480]   A:0032 X:00D4 Y:00CB 
+C1/5DAC 09 00 24    ORA #$2400              A:0032 X:00D4 Y:00CB 
+C1/5DAF 9D 00 70    STA $7000,x[$7E:70D4]   A:2432 X:00D4 Y:00CB 
+C1/5DB2 E8          INX                     A:2432 X:00D4 Y:00CB 
+C1/5DB3 E8          INX                     A:2432 X:00D5 Y:00CB 
+C1/5DB4 60          RTS                     A:2432 X:00D6 Y:00CB 
+
+----------------------------------------------------------------
+===load item list===
+
+C1/6590 C2 30       REP #$30                A:FB01 X:FB20 Y:0000 
+C1/6592 AD 00 70    LDA $7000  [$7E:7000]   A:FB01 X:FB20 Y:0000 
+C1/6595 85 8A       STA $8A    [$00:048A]   A:0000 X:FB20 Y:0000 
+C1/6597 C9 FF 00    CMP #$00FF              A:0000 X:FB20 Y:0000 
+C1/659A D0 02       BNE $02    [$659E]      A:0000 X:FB20 Y:0000 
+C1/659E A2 00 00    LDX #$0000              A:0000 X:FB20 Y:0000 
+C1/65A1 E2 20       SEP #$20                A:0000 X:0000 Y:0000 
+
+C1/65A3 BF 82 F8 7F LDA $7FF882,x[$7F:F882] A:0000 X:0000 Y:0000 ;load item byte
+C1/65A7 C9 FF       CMP #$FF                A:0065 X:0000 Y:0000 ;check if nothing
+C1/65A9 D0 0D       BNE $0D    [$65B8]      A:0065 X:0000 Y:0000 ;branch if something
+
+C1/65B8 85 80       STA $80    [$00:0480]   A:0065 X:0000 Y:0000 ;store as item in list
+C1/65BA C2 20       REP #$20                A:0065 X:0000 Y:0000 ;set 16-bit A
+C1/65BC 5A          PHY                     A:0065 X:0000 Y:0000 
+C1/65BD DA          PHX                     A:0065 X:0000 Y:0000 
+C1/65BE A0 12 00    LDY #$0012              A:0065 X:0000 Y:0000 ;load multiplier (default item name length)
+C1/65C1 29 FF 00    AND #$00FF              A:0065 X:0000 Y:0012 ;isolate item byte
+C1/65C4 20 3C 0E    JSR $0E3C  [$C1:0E3C]   A:0065 X:0000 Y:0012 ;multiplication function: item byte * 0x12
+
+C1/65C7 18          CLC                     A:071A X:0000 Y:0012 
+C1/65C8 6F 04 00 FA ADC $FA0004[$FA:0004]   A:071A X:0000 Y:0012 ;load item stats pointer
+C1/65CC AA          TAX                     A:0867 X:0000 Y:0012 
+C1/65CD BF 03 00 FA LDA $FA0003,x[$FA:086A] A:0867 X:0867 Y:0012 ;load targetting byte
+C1/65D1 85 90       STA $90    [$00:0490]   A:0040 X:0867 Y:0012 
+C1/65D3 BF 00 00 FA LDA $FA0000,x[$FA:0867] A:0040 X:0867 Y:0012 ;load item type/usability byte
+C1/65D7 FA          PLX                     A:601B X:0867 Y:0012 
+C1/65D8 7A          PLY                     A:601B X:0000 Y:0012 
+C1/65D9 E2 20       SEP #$20                A:601B X:0000 Y:0000 
+C1/65DB 89 08       BIT #$08                A:601B X:0000 Y:0000 ;check battle-usable bit
+C1/65DD F0 1C       BEQ $1C    [$65FB]      A:601B X:0000 Y:0000 ;branch if not set
+C1/65DF 20 4E 6F    JSR $6F4E  [$C1:6F4E]   A:601B X:0000 Y:0000 ;checks ally wounded/other allies bits
+
+C1/65E2 A5 80       LDA $80    [$00:0480]   A:0000 X:0000 Y:0000 ;load item byte
+C1/65E4 99 40 70    STA $7040,y[$7E:7040]   A:0065 X:0000 Y:0000 
+C1/65E7 A5 90       LDA $90    [$00:0490]   A:0065 X:0000 Y:0000 ;load disable flag
+C1/65E9 99 E0 70    STA $70E0,y[$7E:70E0]   A:0000 X:0000 Y:0000 ;store to RAM
+C1/65EC 84 86       STY $86    [$00:0486]   A:0000 X:0000 Y:0000 
+C1/65EE A5 84       LDA $84    [$00:0484]   A:0000 X:0000 Y:0000 
+C1/65F0 F0 04       BEQ $04    [$65F6]      A:0000 X:0000 Y:0000 
+C1/65F6 8A          TXA                     A:0000 X:0000 Y:0000 
+C1/65F7 99 90 70    STA $7090,y[$7E:7090]   A:0000 X:0000 Y:0000 
+C1/65FA C8          INY                     A:0000 X:0000 Y:0000 ;increment item byte counter
+C1/65FB E8          INX                     A:0000 X:0000 Y:0001 ;increment max items counter
+C1/65FC E0 1E 00    CPX #$001E              A:0000 X:0001 Y:0001 ;compare it to maximum # of items (0x1E)
+C1/65FF D0 A2       BNE $A2    [$65A3]      A:0000 X:0001 Y:0001 ;repeat process if not at last item
+
+===load items/spells===
+
+C1/6610 C2 30       REP #$30                A:0000 X:FA80 Y:0006 
+C1/6612 64 92       STZ $92    [$00:0492]   A:0000 X:FA80 Y:0006 
+C1/6614 AD 0E FA    LDA $FA0E  [$7E:FA0E]   A:0000 X:FA80 Y:0006 ;loads current monster formation
+C1/6617 29 FF 01    AND #$01FF              A:000D X:FA80 Y:0006 ;isolates 9-bits
+C1/661A C9 5D 01    CMP #$015D              A:000D X:FA80 Y:0006 ;compares to formation 0x15D
+C1/661D D0 02       BNE $02    [$6621]      A:000D X:FA80 Y:0006 ;branch if not equal
+
+C1/6621 64 94       STZ $94    [$00:0494]   A:000D X:FA80 Y:0006 
+C1/6623 AE 50 07    LDX $0750  [$7E:0750]   A:000D X:FA80 Y:0006 
+C1/6626 BD 1E 00    LDA $001E,x[$7E:FA9E]   A:000D X:FA80 Y:0006 ;load equipped accessory
+C1/6629 29 FF 00    AND #$00FF              A:00FF X:FA80 Y:0006 
+C1/662C C9 4F 00    CMP #$004F              A:00FF X:FA80 Y:0006 ;check if Scrooge Ring
+C1/662F D0 02       BNE $02    [$6633]      A:00FF X:FA80 Y:0006 ;branch if not
+
+C1/6631 E6 94       INC $94    [$00:0494]   A:00FF X:FA80 Y:0006 
+
+C1/6633 AD 50 07    LDA $0750  [$7E:0750]   A:00FF X:FA80 Y:0006 ;load current slot address
+C1/6636 18          CLC                     A:FA80 X:FA80 Y:0006 
+C1/6637 69 20 00    ADC #$0020              A:FA80 X:FA80 Y:0006 ;set spell list RAM address
+C1/663A AA          TAX                     A:FAA0 X:FA80 Y:0006 
+C1/663B E2 20       SEP #$20                A:FAA0 X:FAA0 Y:0006 
+C1/663D A0 00 00    LDY #$0000              A:FAA0 X:FAA0 Y:0006 
+C1/6640 64 84       STZ $84    [$00:0484]   A:FAA0 X:FAA0 Y:0000 
+C1/6642 64 86       STZ $86    [$00:0486]   A:FAA0 X:FAA0 Y:0000 
+C1/6644 64 88       STZ $88    [$00:0488]   A:FAA0 X:FAA0 Y:0000 
+C1/6646 64 8A       STZ $8A    [$00:048A]   A:FAA0 X:FAA0 Y:0000 
+C1/6648 AD 44 05    LDA $0544  [$7E:0544]   A:FAA0 X:FAA0 Y:0000 
+C1/664B F0 03       BEQ $03    [$6650]      A:FA00 X:FAA0 Y:0000 ;branch if 0
+
+C1/664D 4C 90 65    JMP $6590  [$7E:6590]   A:FB01 X:FB20 Y:0000 ;jump to item lister
+
+C1/6650 A9 04       LDA #$04                A:FA00 X:FAA0 Y:0000 ;constant for # of spell bytes
+C1/6652 85 8C       STA $8C    [$00:048C]   A:FA04 X:FAA0 Y:0000 
+C1/6654 BD 00 00    LDA $0000,x[$7E:FAA0]   A:FA04 X:FAA0 Y:0000 ;load spell list byte 1
+C1/6657 85 82       STA $82    [$00:0482]   A:FA00 X:FAA0 Y:0000 ;store to register
+C1/6659 A9 08       LDA #$08                A:FA00 X:FAA0 Y:0000 ;load starting value for counter
+C1/665B 85 80       STA $80    [$00:0480]   A:FA08 X:FAA0 Y:0000 ;store to bit-checking counter
+
+check each spell bit in current spell list byte
+
+C1/665D A5 82       LDA $82    [$00:0482]   A:FA08 X:FAA0 Y:0000 ;load spell list register
+C1/665F 89 01       BIT #$01                A:FA00 X:FAA0 Y:0000 ;check 1st bit
+C1/6661 F0 7E       BEQ $7E    [$66E1]      A:FA00 X:FAA0 Y:0000 ;branch if not set
+
+C1/6663 A9 00       LDA #$00                A:FA1F X:FAA2 Y:0000 
+C1/6665 99 E0 70    STA $70E0,y[$7E:70E0]   A:FA00 X:FAA2 Y:0000 
+C1/6668 A5 84       LDA $84    [$00:0484]   A:FA00 X:FAA2 Y:0000 ;load spell byte
+C1/666A 99 40 70    STA $7040,y[$7E:7040]   A:FA10 X:FAA2 Y:0000 ;store to ram
+C1/666D 48          PHA                     A:FA10 X:FAA2 Y:0000 
+C1/666E DA          PHX                     A:FA10 X:FAA2 Y:0000 
+
+C1/666F C2 20       REP #$20                A:FA10 X:FAA2 Y:0000 ;set 16-bit A
+C1/6671 29 FF 00    AND #$00FF              A:FA10 X:FAA2 Y:0000 ;isolate spell byte
+C1/6674 0A          ASL A                   A:0010 X:FAA2 Y:0000 ;multiply by 12 (# of spell stat bytes)
+C1/6675 0A          ASL A                   A:0020 X:FAA2 Y:0000 
+C1/6676 85 8E       STA $8E    [$00:048E]   A:0040 X:FAA2 Y:0000 
+C1/6678 0A          ASL A                   A:0040 X:FAA2 Y:0000 
+C1/6679 18          CLC                     A:0080 X:FAA2 Y:0000 
+C1/667A 65 8E       ADC $8E    [$00:048E]   A:0080 X:FAA2 Y:0000 
+C1/667C 18          CLC                     A:00C0 X:FAA2 Y:0000 
+
+C1/667D 6F 12 00 FA ADC $FA0012[$FA:0012]   A:00C0 X:FAA2 Y:0000 ;add to Spell Stats initial pointer
+C1/6681 AA          TAX                     A:21B1 X:FAA2 Y:0000 
+C1/6682 BF 02 00 FA LDA $FA0002,x[$FA:21B3] A:21B1 X:21B1 Y:0000 ;load FP cost
+C1/6686 E2 20       SEP #$20                A:4603 X:21B1 Y:0000 
+C1/6688 99 90 70    STA $7090,y[$7E:7090]   A:4603 X:21B1 Y:0000 ;store as FP cost
+C1/668B A5 94       LDA $94    [$00:0494]   A:4603 X:21B1 Y:0000 ;load Scrooge Ring bit
+C1/668D F0 0C       BEQ $0C    [$669B]      A:4600 X:21B1 Y:0000 ;branch if not set
+
+C1/668F B9 90 70    LDA        [$7E:7090]   A:4600 X:21B1 Y:0000 ;load FP cost
+C1/6692 89 01       BIT #$01                A:4603 X:21B1 Y:0000 ;check if odd number
+C1/6694 F0 01       BEQ $01    [$6697]      A:4603 X:21B1 Y:0000 ;branch if not set
+
+C1/6696 1A          INC                     A:4603 X:21B1 Y:0000 ;increment FP cost to even it out
+C1/6697 4A          LSR                     A:4604 X:21B1 Y:0000 ;divide by 2
+C1/6698 99 90 70    STA        [$7E:7090]   A:4602 X:21B1 Y:0000 ;store as FP cost
+
+===load spell's FP cost===
+***EG: Geno Beam***
+
+C1/669B AD 0C FA    LDA $FA0C  [$7E:FA0C]   A:4600 X:21B1 Y:0000 ;load current FP
+C1/669E 38          SEC                     A:4663 X:21B1 Y:0000 
+C1/669F F9 90 70    SBC $7090,y[$7E:7090]   A:4663 X:21B1 Y:0000 ;subtract FP cost from current FP
+C1/66A2 10 03       BPL $03    [$66A7]      A:4660 X:21B1 Y:0000 ;branch if greater than/equal to 0
+
+C1/66A4 99 E0 70    STA $70E0,y[$7E:70E0]   A:4600 X:21B1 Y:0000 ;set current FP to 0
+
+C1/66A7 BF 03 00 FA LDA $FA0003,x[$FA:21B4] A:4660 X:21B1 Y:0000 ;load spell's targetting
+C1/66AB 85 90       STA $90    [$00:0490]   A:4646 X:21B1 Y:0000 
+C1/66AD 20 4E 6F    JSR $6F4E  [$C1:6F4E]   A:4646 X:21B1 Y:0000 ;load spell name
+
+C1/66E1 E6 84       INC $84    [$00:0484]   A:FA00 X:FAA0 Y:0000 
+C1/66E3 46 82       LSR $82    [$00:0482]   A:FA00 X:FAA0 Y:0000 ;shift spell bits right
+C1/66E5 C6 80       DEC $80    [$00:0480]   A:FA00 X:FAA0 Y:0000 ;decrement 8-bit counter
+C1/66E7 F0 03       BEQ $03    [$66EC]      A:FA00 X:FAA0 Y:0000 ;branch if counter at 0
+C1/66E9 4C 5D 66    JMP $665D  [$7E:665D]   A:FA00 X:FAA0 Y:0000 
+
+move to next spell list byte
+
+C1/66EC E8          INX                     A:FA00 X:FAA0 Y:0000 ;move to next byte
+C1/66ED C6 8C       DEC $8C    [$00:048C]   A:FA00 X:FAA1 Y:0000 ;decrement spell list counter
+C1/66EF F0 03       BEQ $03    [$66F4]      A:FA00 X:FAA1 Y:0000 ;branch if after last spell byte
+C1/66F1 4C 54 66    JMP $6654  [$7E:6654]   A:FA00 X:FAA1 Y:0000 ;return to same procedure
+
+===read item name (SA-1)===
+***EG: Royal Syrup***
+
+C1/6AD5 C2 30       REP #$30                A:000F X:030C Y:7460 
+C1/6AD7 A6 8C       LDX $8C    [$00:308C]   A:000F X:030C Y:7460 ;load item name pointer
+C1/6AD9 E6 8C       INC $8C    [$00:308C]   A:000F X:4CDA Y:7460 ;increment to next byte (later code)
+C1/6ADB AF 90 30 00 LDA $003090[$00:3090]   A:000F X:4CDA Y:7460 
+C1/6ADF F0 06       BEQ $06    [$6AE7]      A:0000 X:4CDA Y:7460 
+C1/6AE7 BF 00 00 FA LDA $FA0000,x[$FA:4CDA] A:0000 X:4CDA Y:7460 ;load item name icon
+C1/6AEB 29 FF 00    AND #$00FF              A:522D X:4CDA Y:7460 ;isolate
+C1/6AEE C9 08 00    CMP #$0008              A:002D X:4CDA Y:7460 
+C1/6AF1 90 1B       BCC $1B    [$6B0E]      A:002D X:4CDA Y:7460 ;branch if less than
+C1/6AF3 C9 0B 00    CMP #$000B              A:002D X:4CDA Y:7460 
+C1/6AF6 B0 16       BCS $16    [$6B0E]      A:002D X:4CDA Y:7460 ;branch if greater than
+
+C1/6AF8 38          SEC
+C1/6AF9 E9 06 00    SBC #$0006
+C1/6AFC 48          PHA
+C1/6AFD 20 0B 6B    JSR $6B0B
+C1/6B00 68          PLA
+C1/6B01 E6 86       INC $86
+C1/6B03 C6 86       DEC $86
+C1/6B05 F0 03       BEQ $03
+C1/6B07 3A D0 F2    DEC $F2D0
+C1/6B0A 60          RTS
+
+C1/6B0B A9 20 00    LDA #$0020
+
+C1/6B0E 38          SEC                     A:002D X:4CDA Y:7460 
+C1/6B0F E9 20 00    SBC #$0020              A:002D X:4CDA Y:7460 
+C1/6B12 48          PHA                     A:000D X:4CDA Y:7460 
+C1/6B13 0A          ASL A                   A:000D X:4CDA Y:7460 
+C1/6B14 0A          ASL A                   A:001A X:4CDA Y:7460 
+C1/6B15 0A          ASL A                   A:0034 X:4CDA Y:7460 
+C1/6B16 85 80       STA $80    [$00:3080]   A:0068 X:4CDA Y:7460 
+C1/6B18 0A          ASL A                   A:0068 X:4CDA Y:7460 
+C1/6B19 18          CLC                     A:00D0 X:4CDA Y:7460 
+C1/6B1A 65 80       ADC $80    [$00:3080]   A:00D0 X:4CDA Y:7460 
+C1/6B1C AA          TAX                     A:0138 X:4CDA Y:7460 
+C1/6B1D DA          PHX                     A:0138 X:0138 Y:7460 
+C1/6B1E A4 8A       LDY $8A    [$00:308A]   A:0138 X:0138 Y:7460 
+C1/6B20 20 6E 6B    JSR $6B6E  [$40:6B6E]   A:0138 X:0138 Y:0000 
+
+===greyed out, indefinitely unusable item (usable on wounded allies)===
+***EG: Royal Syrup***
+
+C1/6F4E 08          PHP                     A:601B X:0000 Y:0000 
+C1/6F4F C2 30       REP #$30                A:601B X:0000 Y:0000 
+C1/6F51 DA          PHX                     A:601B X:0000 Y:0000 
+C1/6F52 A5 90       LDA $90    [$00:0490]   A:601B X:0000 Y:0000 ;load targetting byte
+C1/6F54 64 90       STZ $90    [$00:0490]   A:0040 X:0000 Y:0000 ;zero out register
+C1/6F56 89 20 00    BIT #$0020              A:0040 X:0000 Y:0000 ;check 'wounded ally only' bit
+C1/6F59 F0 10       BEQ $10    [$6F6B]      A:0040 X:0000 Y:0000 ;branch if not set
+
+C1/6F5B AD 80 FA    LDA $FA80  [$7E:FA80]   A:0040 X:0000 Y:0000 ;set all 3 characters' mortal status to A
+C1/6F5E 0D 00 FB    ORA $FB00  [$7E:FB00]   A:0000 X:0000 Y:0000 
+C1/6F61 0D 80 FB    ORA $FB80  [$7E:FB80]   A:0000 X:0000 Y:0000 
+C1/6F64 89 40 00    BIT #$0040              A:0000 X:0000 Y:0000 ;check if any mortal wound bit set
+C1/6F67 F0 22       BEQ $22    [$6F8B]      A:0000 X:0000 Y:0000 ;branch if not set, grey out/disable item
+C1/6F69 80 22       BRA $22    [$6F8D]      A:0000 X:0000 Y:0000 ;branch to make item usable
+
+C1/6F6B 89 80 00    BIT #$0080              A:0040 X:0000 Y:0000 ;check 'usable only other allies' bit
+C1/6F6E F0 1D       BEQ $1D    [$6F8D]      A:0040 X:0000 Y:0000 ;branch if not set
+
+C1/6F8B E6 90       INC $90    [$00:0490]   A:0040 X:0000 Y:0000 ;set disable flag
+C1/6F8D FA          PLX                     A:0040 X:0000 Y:0000 
+C1/6F8E A5 90       LDA $90    [$00:0490]   A:0040 X:0000 Y:0000 
+C1/6F90 28          PLP                     A:0000 X:0000 Y:0000 
+C1/6F91 60          RTS                     A:0000 X:0000 Y:0000 ;end

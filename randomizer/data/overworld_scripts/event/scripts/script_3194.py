@@ -44,7 +44,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1189_HENCHMAN_BATTLE_PACK_SELECTOR),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	JmpIfBitSet(RUN_AWAY, ["EVENT_3194_clear_bit_9"]),
-	ActionQueueAsync(target=MEM_70A8, subscript=[
+	ActionQueueAsync(target=NPC_1, subscript=[
 		A_Pause(32, identifier="EVENT_3194_action_queue_5_SUBSCRIPT_pause_0"),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_FaceMario(),
@@ -55,8 +55,6 @@ script = EventScript([
 		A_Pause(32),
 		A_JumpToHeight(56),
 		A_Pause(32),
-		A_Pause(1, identifier="EVENT_3194_action_queue_5_SUBSCRIPT_pause_10"),
-		A_JmpIfBitClear(TEMP_7043_1, ["EVENT_3194_action_queue_5_SUBSCRIPT_pause_10"]),
 		A_Pause(32),
 		A_SetAllSpeeds(VERY_FAST),
 		A_SequenceLoopingOn(),
@@ -71,7 +69,6 @@ script = EventScript([
 	]),
     RemoveObjectFromCurrentLevel(NPC_1),
 	SetBit(MINES_HENCHMAN_MIDDLE_DEFEATED),
-	SetBit(TEMP_7043_1),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
 	ClearBit(TEMP_7043_0, identifier="EVENT_3194_clear_bit_9"),
 	Return()

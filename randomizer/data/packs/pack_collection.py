@@ -4042,6 +4042,28 @@ FORM0361 = Formation(
     music=NormalBattleMusic(),
     unknown_bit=True,
 )
+FORM0362 = Formation(
+    id=362,
+    members=[
+        FormationMember(BOBOMBEnemyStatic, 135, 119),
+        FormationMember(BOBOMBEnemyStatic, 199, 151),
+        FormationMember(CLUSTEREnemy, 199, 119),
+    ],
+    music=NormalBattleMusic(),
+    unknown_bit=True,
+)
+
+FORM0363 = Formation(
+    id=363,
+    members=[
+        FormationMember(BOBOMBEnemyStatic, 151, 127),
+        FormationMember(BOBOMBEnemyStatic, 167, 103),
+        FormationMember(BOBOMBEnemyStatic, 199, 151),
+        FormationMember(BOBOMBEnemyStatic, 215, 127),
+    ],
+    music=NormalBattleMusic(),
+    unknown_bit=True,
+)
 
 
 # ============================================================================
@@ -4088,7 +4110,7 @@ packs[PACK033_POSTGAME_TEMPLE] = FormationPack(FORM0055)
 packs[PACK034_PIRANHA_WITH_SHYRANGER] = FormationPack(FORM0056, FORM0057, FORM0058)
 packs[PACK035_MULTIPLE_PIRANHA_WITH_SHYRANGER] = FormationPack(FORM0059, FORM0058, FORM0057)
 packs[PACK036_BOBOMB_WITH_CLUSTER] = FormationPack(FORM0060, FORM0061, FORM0062)
-packs[PACK037_BOBOMB_WITH_CLUSTER_SOMETIMES_ENIGMA] = FormationPack(FORM0063, FORM0062, FORM0061)
+packs[PACK037_BOBOMB_WITH_CLUSTER_SOMETIMES_ENIGMA] = FormationPack(FORM0063, FORM0362, FORM0363)
 packs[PACK038_SPARKY_WITH_ALWAYS_OTHER_ENEMIES_1] = FormationPack(FORM0064, FORM0065, FORM0066)
 packs[PACK039_SPARKY_WITH_ALWAYS_OTHER_ENEMIES_2] = FormationPack(FORM0067, FORM0066, FORM0065)
 packs[PACK040_MAGMITES_WITH_SPARKY_BOBOMB_OR_CLUSTER] = FormationPack(FORM0068, FORM0069, FORM0070)

@@ -35,21 +35,30 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	Pause(1, identifier="EVENT_3413_pause_0"),
-	JmpIfBitSet(TEMP_7043_0, ["EVENT_3413_action_queue_5"]),
+	JmpIfBitSet(TEMP_7043_0, ["minecart_item_aqueue"]),
 	Jmp(["EVENT_3413_pause_0"]),
-	ActionQueueSync(target=NPC_2, subscript=[
-		A_FixedFCoordOn(),
-		A_TransferToObjectXY(NPC_0),
-		A_SetSequenceSpeed(FAST),
-		A_JumpToHeight(height=80, silent=True),
-		A_WalkSouthSteps(2),
-		A_JumpToHeight(height=32, silent=True),
-		A_WalkSouthPixels(3),
-		A_JumpToHeight(height=8, silent=True),
-		A_WalkSouthPixels(1),
-		A_Pause(20),
-		A_SetSolidityBits(cant_jump_through=True)
-	], identifier="EVENT_3413_action_queue_5"),
+    ActionQueueSync(target=NPC_2, subscript=[
+        A_Pause(22),
+        A_TransferToObjectXY(NPC_0),
+        A_SetSpriteSequence(index=1, is_sequence=True, identifier="minecart_item_coin_1"),
+        A_VisibilityOn(),
+        A_SetSequenceSpeed(FAST),
+        A_JumpToHeight(height=80, silent=True),
+        A_WalkSouthSteps(2),
+        A_JumpToHeight(height=32, silent=True),
+        A_WalkSouthPixels(3),
+        A_JumpToHeight(height=8, silent=True),
+        A_WalkSouthPixels(1),
+        A_SetSequenceSpeed(NORMAL),
+        A_Pause(15),
+        A_SetSequenceSpeed(SLOW),
+        A_Pause(5),
+        A_SetSequenceSpeed(NORMAL),
+        A_SetSpriteSequence(index=0, is_sequence=True, identifier="minecart_item_coin_2"),
+        A_ObjectMemoryClearBit(0x30, bits=[4]),
+        A_SetSolidityBits(cant_jump_through=True),
+        A_SummonObjectToSpecificLevel(NPC_2, R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM)
+	], identifier="minecart_item_aqueue"),
 	ClearBit(TEMP_7043_0),
 	Return(identifier="EVENT_3413_ret_7")
 ])

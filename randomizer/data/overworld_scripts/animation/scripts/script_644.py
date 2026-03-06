@@ -16,6 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
+	A_JmpIfBitSet(MIDAS_RIVER_TUNNEL_2_BIT_1, ["ACTION_644_shift_southwest_steps_63_"]),
 	A_Pause(1, identifier="ACTION_644_pause_0"),
 	A_JmpIfBitClear(TEMP_7043_1, ["ACTION_644_pause_0"]),
 	A_SetPriority(3),
@@ -84,7 +85,7 @@ script = ActionScript([
 	A_Walk1StepSouth(),
 	A_Walk1StepSouthwest(),
 	A_Walk1StepSouth(),
-	A_VisibilityOff(),
+	A_VisibilityOff(identifier="ACTION_644_shift_southwest_steps_63_"),
 	A_ClearBit(TEMP_7043_4),
 	A_ReturnQueue()
 ])

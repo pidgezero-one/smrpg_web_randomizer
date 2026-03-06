@@ -14,14 +14,8 @@ P(rchars|starters:4)     Q(perms:vanilla_accessories_all|props:some|hints)     C
 3708761499
 
 General
-🚧 dying to failed slots does not game over
-🚧 mimic event starts too fast
 - beetlemania packet still not showing in chests
 - crusher palettes not applyiong
-🚧 picking up a freestanding frog coin in mushroom way is making him stop for a moment and get caught by the goombler
-- why is domino in mushroom way giving 368 exp LOL
-- mallow in midas river climbing sprite is broken
-- 80 frog coins?! in rose way chest
 - if you find a star piece while the exp star is active, see if you can resume the exp star music instead of the level selector music
 - exchanging cricket pie unlocks forest maze dot, but not he path that leads there
 - need to actually prevent race from starting if you dont have the cookies
@@ -32,13 +26,9 @@ General
 
 Boss-specific
 🚧 culex 3D sprite is broken. HUD disappears in phase 2
-  - sprites are still all showing up as only wind crystal, but this might be because it was underwater- crystaks using their force attacks before SDing which is not normal behaviiur, after culex 3D koed. supposed to revive him
-  - speed force targeted an ally member
-  🚧 and loading only wind crystal sprites (enemies are correct)
-- torte henchman is untargetable in battle
-- bundt fight crashes!
-  - got a little farther than last time, right torte faces other guy and yells at him, but then the script does not respond
-🚧 kggg trying to run battle dialogs
+  🚧 sprites are still all showing up as only wind crystal, but this might be because it was underwater
+  🚧 crystaks using their force attacks before SDing which is not normal behaviiur, after culex 3D koed. supposed to revive him
+  🚧 speed force targeted an ally member
 🚧 fancy bundt animations are wrong, cross ref against demake
   🚧 opening event is fine. it's when it takes its first turn that things mess up (moves forward and separates)
   🚧 tortes saying empty dialogs
@@ -48,34 +38,17 @@ Boss-specific
 🚧 booster 2 "I'm gonna start working" after KOed
   🚧 I'm removing the wrong target. it removed snifit 3
 🚧 boomer should always be on chandelier
-🚧 cloaker/domino running empoty dialogs
-🚧 why did mokura transform from physical attack
-🚧 normal booster running empty dialogs
-🚧 double check if punchinello's hp thresholds are being calced correctly
-  🚧 also showing empty dialogs
-🚧 valentina uses empty dialogs
-🚧 dodo's sequence before he takes valentina away is really messed up
 - fire bomb stopped smilaxes from floating? not super important
-🚧 director poundettes are just the wrong sprite altogether
 🚧 bowser clone disappears after doing claw attack, loading a bad peach sprite (IDs probably wrong)
 🚧 belome 2 shows empty dialog
   - game straight up crashes when belome 2 finishes with 2 bowser clones on field
-🚧 axem rangers in slot machine does not use their forced background, using level background instead (at least level background works)
-🚧 axem pink is attacking allies with spells that replaced recover, should not do that
-🚧 defeating axem red makes him move behind axem yellow and you start being able to target "bob-omb s". very wrong
 🚧 punchinello 2 broken, sprites are all messed up, doesn't summon bombs right away. whole fight doesnt work
-- formless can be transformed by elements hes immune to, so just make sure the spell gating him is not a support healing spell
 
 Mushroom Way 
-- frog coin in right chest of mw2 does not show
+🚧 frog coin in right chest of mw2 does not show
 
 Mushroom kingdom
-- Need to figure out what to do about the doorjamb chest++++++++++++++++++++
-- palette is wrong if you get into calamari fight in mushroom kingdom (failed slots)
-🚧 different birds have broken partitions in outdoors - buffer 0 changed only - added change for buffer 2
-🚧 same in east branch room - buffer 0 changed only - made the shy guys clones
-🚧 same in throne room - buffer 0 and 1 changed only - changed to 1 and 2
-🚧 the one red bird is facing the wrong direction and has a bad partition, everyone else is okay. weird
+🚧 Need to figure out what to do about the doorjamb chest++++++++++++++++++++
 🚧 coming out backwards from antechamber loads you inside the guy you can jump on. move him over to the left a bit
 - guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
   - seems to be using wallet guy's scripts?
@@ -86,15 +59,16 @@ Mushroom kingdom
 bandit's way
 
 Kero sewers
-- no packets in chests in pre-belome room
-- double chest does not work. opening it first after lands end did not refill it
+🚧 no packets in chests in pre-belome room
+🚧 double chest does not work. opening it first after lands end did not refill it
 - smithy as boss renders TOTALLY wrong
 🚧 smithy 1 finishing crashes battle, plays empty dialog
-- when you exit kero sewers, the block is back. need to hide it always on room load
+🚧 when you exit kero sewers, the block is back. need to hide it always on room load
 
 midas river
-- left tunnel item still showing up as a flowr
-- mallow should not be getting marios palette when hes the protag
+🚧 left tunnel item still showing up as a flowr
+  🚧 lmao it's a different check...
+🚧 mallow should not be getting marios palette when hes the protag
 
 tadpole pond 
 - frogfucius telling me to go to kero sewers when i can't do that
@@ -104,11 +78,11 @@ Rose way
 
 
 Rose Town
-- do sean's idea of replacing arrows
-- slots in treasure chest house lower floor is bad
+🚧 do sean's idea of replacing arrows
+🚧 slots in treasure chest house lower floor is bad
 
 Forest maze 
-- uderground rooms are fucked up. how the hell to get partition to work?
+🚧 uderground rooms are fucked up. how the hell to get partition to work?
   - Why did flower work, and item bag, but NOT static frog coin?
 - buzzer's default attack sound effect is wrong somehow
 🚧 why does buzzer underground turn into a snifit in battle?
@@ -134,16 +108,17 @@ Moleville
   - changed partition altogether
 🚧 circule path leading to traintrack room: fireball partition is wrong
   - try putting 3rd partition as 4x?
-- the crook can't get through you when they try to run away, need to unset the collision bit to make that not happen
-- shyguy cart item broken, can't pick it up, graphical glitch (gets overwritten by shy guy animation)
+  🚧 512 bytes?
+🚧 the crook can't get through you when they try to run away, need to unset the collision bit to make that not happen
+🚧 shyguy cart item broken, can't pick it up, graphical glitch (gets overwritten by shy guy animation)
   - if you leave room before picking it up, make sure it does not disappear
-- four-pack of bombs in mine area is loading a henchmen pack instead of a mob pack
-  - one of the bobombs in punchinellos room is not transformed into a henchman
-  - also exploding sprites look a bit broken
-  - one corner of the bundt object is a bit messy
-- final train track room - coin overwrites chest
-- when you skip minecart, some NPCs dont appear when they should. treasure seller and fireworks guy for example
-  - This might actually be caused by house entrances. looks like its taking you to pre-mines versions when you go inside from liberated town
+🚧 four-pack of bombs in mine area is loading a henchmen pack instead of a mob pack
+  🚧 one of the bobombs in punchinellos room is not transformed into a henchman
+  🚧 also exploding sprites look a bit broken
+  🚧 one corner of the bundt object is a bit messy
+🚧 final train track room - coin overwrites chest
+🚧 when you skip minecart, some NPCs dont appear when they should. treasure seller and fireworks guy for example
+  🚧 This might actually be caused by house entrances. looks like its taking you to pre-mines versions when you go inside from liberated town
 
 
 Booster Pass
@@ -154,9 +129,9 @@ Booster Tower
 🚧 jagger briefly disappears while waiting for you to hit the mario doll
 🚧 johnny doesnt do an animation in place of booster crying?
 - bottom left shuffled item is always reloading when booster tower checkerboard room reloads
-- bowser npc using old sprite id, need to fix
-- mario loses solidity and goes out of bounds
-- prize in elder key room moves when it shouldnt
+🚧 bowser npc using old sprite id, need to fix
+🚧 mario loses solidity and goes out of bounds
+🚧 prize in elder key room moves when it shouldnt
 
 Booster Hill
 🚧 pickup coin rendered as a flower

@@ -42,11 +42,11 @@ script = EventScript([
     JmpIfBitSet(KINGDOM_BOUNCER_FREED, ["EVENT_723_run_event_as_subroutine_20"]),
     ActionQueueAsync(NPC_9, subscript=[
         A_TransferToXYZF(16, 113, 2, NORTHWEST),
-		A_ClearSolidityBits(cant_pass_npcs=True, cant_walk_through=True),
+		A_ClearSolidityBits(cant_walk_through=True),
 	]),
     SummonObjectToCurrentLevel(NPC_10),
     SetSyncActionScript(NPC_10, A0130_HENCHMAN_TERRORIZING_EAST_GUARD),
-	SetSyncActionScript(NPC_9, A0774_MUSHROOM_GUARD_TEST),
+	SetSyncActionScript(NPC_9, A0131_EAST_GUARD_OCCUPIED),
 	FadeInFromBlack(sync=False, identifier="EVENT_723_run_event_as_subroutine_20"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_723_ret_9"]),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),

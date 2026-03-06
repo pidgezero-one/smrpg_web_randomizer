@@ -1,0 +1,1011 @@
+===Compressed GFX===
+
+0A009C	____
+0A00AB	moon crescent
+0A0290	circles
+0A0414	fire ring?
+0A08C4	floor grates
+0A0AAA	some marblish ground pattern
+0A0B78	ground graphics
+0A0CDD	
+0A0DF3	
+0A0E1F	
+0A119C	Nimbus Land background clouds, with faces
+0A1667	Yo'ser Isle racetrack Goal
+0A1A01	rain
+0A1A57	
+0A1D3B	
+0A1FC0	Bowser's Keep throne room walls
+0A26F9	clouds
+0A29E1	Vista Hill background clouds
+0A3048	
+0A3121	big heart
+0A3363	cloud
+0A34C0	numbers on the 6 doors in Bowser's Keep
+0A38E4	
+0A3A6F	
+0A3C95	clouds/fog
+0A4245	fog
+0A458A	
+0A4635	
+0A4798	____
+0A47A7	____
+0A47B6	____
+0A47C5	____
+0A47D4	____
+0A47E3	____
+0A47F2	____
+0A4801	____
+0A4810	____
+0A481F	____
+0A482E	____
+0A483D	____
+0A484C	vines
+0A4C79	flowing wavy water used in Tadpole Pond
+0A5014	fire sprite
+0A5104	gushing water from gate in Belome's Room
+0A58BC	moving water used in Kero Sewers
+0A5A98	rain
+0A5B6B	o-rings, circles
+0A5E26	little gas cloud
+0A60B3	spinning fireball
+0A63EB	____
+0A63FA	____
+0A6409	____
+0A6418	____
+0A6427	____
+0A6436	____
+0A6445	____
+0A6454	rotating mushroom, star, shell ornaments; animated torch
+0A6C80	glowing lantern/lamp
+0A7288	organ pipes, mouths
+0A7866	
+0A7E19	rotating flowers
+0A8909	
+0A8F21	rotating mushroom, star, shell ornaments
+0A95B4	explosion
+0A9BE9	animated conveyor belts
+0AA047	mushroom person's head
+0AA8A1	____
+0AA8B0	____
+0AA8BF	____
+0AA8CE	____
+0AA8DD	____
+0AA8EC	____
+
+===start of 8x8 tile graphics===
+0AA8FB	____
+0AA90A	Bowser's Keep, floor and walls
+0AC35D	Bowser's Keep, window grates, large wall chains
+0AD0FC	Bowser's Keep, red doors, entrance mat
+0ADCEB	Bowser's Keep, rope bridge, lava
+0AE7C8	Bowser's Keep, window grates, ground edges
+
+
+0B0021	Bower's Keep, gargoyles and pillars
+0B0BF2	Barrel Volcano
+0B1E74	Royal Bus from Nimbus Land
+0B28A6	Mushroom Kingdom houses
+0B42E4	Mushroom Kingdom houses (ground), castle door
+0B4FAF	Mushroom Kingdom castle fireplace, doors
+0B5C94	Bowser's Keep turrets
+0B76F0	Bowser's Keep giant gargoyle hill
+0B85FF	Bowser's Keep ground
+0B940F	Bowser's Keep castle body
+0BA1C5	Bowser's Keep castle edges
+0BAF34	floorboards, wall decor, stairs, curtains, walls
+0BC72A	wall grates, stoves
+0BD33F	crates, boxes
+0BDF51	beds
+0BEC56	Moleville beds, walls, cuckoo clocks
+
+
+0C0023	Rose/Seaside Town houses, roofs shingles, welcome signs
+0C19EC	welcome signs, doors, chimneys
+0C26E8	plywood, wood structures from mines
+0C33F7	mine lanterns, crates
+0C3EC3	water pumps, bushes, crates, welcome sign, outside decor
+0C4C22	Mushroom Kingdom Castle walls
+0C64E5	Mushroom Kingdom Castle wall torches, wall decor
+0C7128	Mushroom Kingdom Castle beds, fireplace, chairs
+0C7DCD	Booster Tower windows, walls
+0C935F	Booster Tower curtains
+0C9D25	Booster Tower front desk, Grate Guy's Casino blackjack table, beetle cage, doll pen, locked door
+0CAA72	Booster Tower floor tiles, ancestor portraits
+0CB4EF	____
+0CB50C	Forest Maze ground, tree tops, leaves
+0CD143	Forest Maze tree trunks
+0CDECD	Forest Maze battle BG trees
+0CEB81	Forest Maze dirt patch (ground)
+
+
+0D0024	seashells, clams, coral
+0D0D27	Sunken Ship doors, wall, floors
+0D235E	barrels, J-crates, cannons, Johnny's armchair
+0D2FD0	Sunken Ship parascope ceiling pipes
+0D3B2F	shark emblem, doors, scribblings
+0D3F33	doors, open doors
+0D4440	pipes, gargoyles (Land's End?)
+0D4D98	____
+0D4DB4	sewers/temple brick floor tiles
+0D5AC5	sewers/temple brick walls, gothic gates
+0D7649	sewers/temple brick wall corners, thin pillars
+0D84C9	sewers/temple steps, small brick designs
+0D9242	Moleville bush/Kriffid, shacks
+0DAD59	Moleville/Land's End mountain step stones
+0DBA64	Moleville mines entrance, cliff sign (Climb Here)
+0DC79E	mines/underground dirt ground
+0DDDFA	mines rails, pipes
+0DEADE	stalactites/stalagmites
+
+
+0E0024	molten lava
+0E0F37	arrow and IN signs
+0E138B	palm trees, little desert hills
+0E2248	palm trees, Frofucius's table, scroll, drawer
+0E2F5F	beach shore rocks
+0E3D6B	beach shore cliffs
+0E4AD6	Jinx's Dojo walls, floor
+0E60CA	grassland hills and grass
+0E7E76	grassland grass
+0E8C8E	grassland ground
+0E994A	Mario's pipehouse roof, sign, pipe
+0EA5CA	Mario's pipehouse front porch
+0EB3A7	Booster Tower, outside walls, entrance door, welcome sign
+0ECCAC	Booster Tower, outside ground, bushes
+0ED5A5	____
+0ED5C1	palm trees, hills
+0EE294	Booster Tower, outside door/entrance
+0EE6F0	Seashore Sunken Ship
+
+
+0F0028	Seashore rock slopes, escarpment, berry huts, egg nests
+0F0AE0	Toadstool kisses Mario scene at Marrymore
+0F17FD	ground puddle
+0F3066	donut plains hills, trees
+0F44F1	donut plains ground, sharp rock
+0F4D19	rotating flowers
+0F5735	countryside (unused?)
+0F6228	____
+0F6244	cliff/plateau rocks, escarpment
+0F7050	Booster Hill desert slope sand ground
+0F7DBB	Booster Hill blue cactus, slope edges
+0F94A3	Booster Hill distant background, Congratulations sign
+0F9D9B	Nimbus Castle, outside, giant pillars (top)
+0FA442	Nimbus Castle, outside, giant pillars (bottom), roof leaves
+0FB982	Nimbus Land briar/thorn walls, roof leaves
+0FC57E	Exor Battle BG: castle turret, star design ground
+0FD230	Exor's hilt
+0FE512	Exor's head
+0FEA40	Exor's face
+0FF03F	Exor's arms
+
+
+100022	ground/fog (unused?)
+100DCC	Hollow sign, thorn pole, leaf on cloud opening, giant pot
+101A20	Nimbus Land door flaps, miniature pillars on castle
+10269A	Nimbus Castle walls, doors
+1041CA	Nimbus Castle wall grates, leaves, birdcages
+104E99	Nimbus Castle floors, leaftops
+105C49	Smithy Factory, brick ground, ground, junk
+106987	Smithy Factory, large pillar structure (top)
+1077B3	Smithy Factory, large pillar structure (bottom)
+1084CA	Smithy Factory, large pillar structure grounding/foundation, metal objects on sides
+10929E	conveyor belts
+109CC8	Seashore Sunken Ship, rock seafloor
+10B30F	Marrymore Chapel Sanctuary walls, floors
+10CE2A	Marrymore Chapel Sanctuary Organ, candles
+10D8FB	Nimbus Land house floors, beds, boxes
+10E54C	Nimbus Land stoves, tables/drawers, pots
+10F176	The Blade, flying blade
+
+
+110028	Shelly, nest
+11054A	Birdo's egg, nest
+110B75	Bowser's Keep, throne room walls
+1124C8	Bowser's Keep, throne room windows, throne/steps
+113019	Bowser's Keep, throne room floors
+113CB8	Bowser's Keep, throne room steps, gargoyles
+114A7E	chandeliers
+115706	____
+1163D1	Midas River flowing water, trampolines
+117080	Star Hill hills, star doors
+11881A	Star Hill stars, signs
+118DFE	Vista Hill, Keep as seen from Vista Hill
+11A73C	Bean Valley beanstalks
+11AC67	sunset from seashore, as seen in Johnny's ending scene
+11B419	Factory Grounds, floor underlayer, crane head
+11C07B	Factory Grounds, floor side structure, crane body
+11CCC1	Tree Stump battle BG, top-left
+11D81B	Tree Stump battle BG, bottom-left
+11E2BD	Factory Grounds, conveyor belts spawning Drill Bits
+11EF29	fog/clouds
+
+
+===Battlefields===
+
+120040	Beanstalk Leaves, bottom-left leaf (top)
+1209D5	Beanstalk Leaves, bottom-left leaf (bottom)
+12131A	Beanstalk Leaves, vine (top)
+121CEA	Beanstalk Leaves, top/bottom-right leaf
+122602	Sunken Ship King Calamari, cellar (top)
+122D86	Sunken Ship King Calamari, cellar (bottom)
+123180	Sunken Ship, barrels
+12335E	Mines, ceiling plywood structure, lanterns
+12395D	Factory Grounds, walls
+123DA1	Bowser's Keep repairs (wooden X's)
+124AC1	Volcano Czar Dragon, gargoyles, fire
+125933	Grasslands, grass
+12655E	Grasslands, hills
+127399	Mountains, corners, bushes
+127794	House, nooks and crannies
+127865	Booster Tower, backdoor
+127A74	Kero Sewers Underwater, walls
+1284CA	Booster Tower Balcony, background clouds
+1292A9	Beanstalk Leaves, bottom-left leaf (middle)
+129C3E	Mushroom Kingdom Castle, candle-holders, backdoor
+12A31A	Beanstalk Leaves, background clouds
+12B032	dirt mountains (unused?)
+12B6A2	dirt mountains (unused?)
+12BB42	Booster Tower Balcony (top)
+12C3B1	Booster Tower Balcony (bottom)
+12CD08	Countdown
+12DA7A	Kero Sewers, back wall
+12DC04	____palette tiles
+12DC3B	Nimbus Castle, back walls, bird cages, leaves
+12E77A	Nimbus Castle Birdo's Nest (egg)
+12F474	Nimbus Castle Birdo's Nest (nest)
+12FA12	Nimbus Land, briars
+
+
+130032	Nimbus Land, leaves
+130572	____???? Forest Maze (unused) vines, window
+130F05	____a mushroom man and some weird object
+1311F5	Mushroom Kingdom oustide, house door, stone walkway
+131BB2	Bowser's Keep, carpet, walls
+13296C	Mushroom Kingdom house, carpet, walls, decor
+1335A1	Forest Maze path to Bowyer, tree edges
+1337CB	Level-Up foreground
+134A9E	Overworld Menu background, clouds & ghosts
+135969	Overworld Menu background, bombs & stars
+136295	Grasslands Plateau, palm trees
+13675A	Sea Enclave, plants, outer sea
+136BCA	Marrymore Chapel Sanctuary, organ
+1374BC	Level-Up background
+13792B	Star Hill
+137D99	Seaside Town Beach, rock edges, sunset
+1380B4	Blade Castle Roof
+1394D9	Blade Castle Roof, background clouds
+13A07A	Blade Castle Roof, background clouds
+13A2CF	Smithy Factory Cloaker & Domino, snake body
+13B11B	Land's End Desert, cactus, desert floor
+13B6E5	Factory Grounds, floor & sides
+13CCCB	Factory Grounds, giant chains & bolts holding up floor structure
+13D93B	Factory Grounds, floor structure
+13E626	Smithy's Final Form, wedges, giant Smithy head, pipes
+
+140016	Smithy's Final Form, a sea of Smithy heads
+140D8B	Smithy's Final Form, a sea of Smithy heads (two closest heads)
+14195D	Culex, star bunches
+14209D	Factory Grounds, floors, small metal supports
+14280E	Factory Grounds, giant chains & bolts holding up floor structure
+
+14347E	ENDING CREDITS: Mallow's Throne in Nimbus Land
+143B1B	ENDING CREDITS: Flowers in Yo'ster Isle
+1443B1	front desk, floors, boxes (unused?)
+144B2A	Count Down
+1458BA	____
+1458D6	Exor, front view from Vista Hill
+
+3E004C	World Map logo, location label/sign (paper scroll)
+3E0E68	Overworld Menu background clouds, boos, bombs, stars
+3E2606	Overworld Menu window frames
+3E269D	Overworld Menu cursor, arrows
+3E2869	___junk
+3E2C80	___junk
+3E2D53	___junk
+3E2E81	World Maps, all
+3E8577	World Maps, background clouds
+3E90A6	miniature Mario on World Map, down arrow
+3E929F	___junk
+3E9340	___junk
+3E93AD	___junk
+3E9441	___junk
+3E94F5	___junk
+3E95AC	___junk
+3E96B1	___junk
+3E9775	___junk
+3E9838	___junk
+3E988C	___junk
+3E9960	___junk
+3E99A3	___junk
+3E99E0	___junk
+3E9A03	___junk
+3E9A26	___junk
+3E9A49	Game Select window frame pipes
+3EB2CD	___junk
+3EB50F	___junk
+3EB624	Game Select speaker format options, L/R mono/stereo
+3EB94A	clouds
+3ED3D9	___junk
+3ED62D	___junk
+3ED64A	___junk
+3EDA54	___junk
+3EDB58	___junk
+3EDC96	___junk
+3EDCB9	miniature Mario outside Bowser's Keep
+3EDFF9	miniature Royal Bus outside Bowser's Keep
+
+============================================
+
+280000 - 2BFFFF    Monster sprite GFX
+
+280000	[0BA]	(nothing)
+280000	[0BB]	(nothing)
+280000	[11D]	Ameboid
+280000	[14E]	__nothing
+280000	[181]	__nothing
+280000	[182]	__nothing
+280000	[183]	__nothing
+280000	[194]	Mokura
+280000	[195]	Fire Crystal
+280000	[196]	Water Crystal
+280000	[197]	Earth Crystal
+280000	[198]	Wind Crystal
+280000	[1BC]	Yaridovich
+
+280080	[101]	Spikey
+280080	[141]	Spikester
+280080	[188]	Super Spike
+280080	[18A]	Oerlikon
+280BA0	[08C]	Bullet Bill
+280BA0	[08D]	Golden Bullet Bill
+281060	[0AB]	Sparkles from Star Piece
+281060	[0C0]	Coin
+281060	[0C1]	Small Coin
+281060	[0C2]	Frog Coin
+281060	[0C3]	Flower
+281060	[0C4]	Big Flower
+281060	[0C5]	Sparkle? (sideways)
+281060	[0C6]	Sparkle (downwards)
+281060	[0C7]	Sparkle (circular winding)
+281060	[0CA]	Small Frog Coin
+281060	[3B8]	sparkle
+281100	[11C]	Buzzer
+281100	[15C]	Stinger
+281700	[108]	Amanita
+281B40	[104]	Shaman
+282380	[113]	Dry Bones
+282380	[153]	Vomer
+2828A0	[105]	Crook
+2828A0	[145]	Sackit
+283000	[07F]	Wiggler (head)
+283000	[082]	Wiggler (body segment)
+283000	[11F]	Wiggler
+283140	[08B]	Goomba
+283140	[106]	Goomba
+283140	[146]	Gu Goomba
+283140	[1AB]	Goomba
+283F00	[111]	Magmite
+283F00	[151]	Magmus
+283FE0	[08A]	Piranha Plant
+283FE0	[107]	Piranha Plant
+283FE0	[147]	Chewy
+283FE0	[1CA]	Smilax
+283FE0	[1CB]	Thrax        
+283FE0	[1CC]	Megasmilax
+2846C0	[15D]	Goombette
+284B00	[128]	Hobgoblin
+284B00	[168]	Straw Head
+285200	[12D]	Shadow
+285200	[16D]	Doppel
+285CE0	[131]	Frogog
+285CE0	[171]	Ribbite
+2864E0	[12B]	Orb User
+2864E0	[16B]	Orbison
+286500	[109]	Goby
+286500	[149]	Mr.Kipper
+286E60	[10A]	Bloober
+287040	[120]	Crusty
+287040	[160]	Star Cruster
+287A40	[10B]	Bandana Red
+287A40	[14B]	Bandana Blue
+288380	[094]	Birdy Statue
+288380	[10D]	Birdy
+288380	[14D]	Bluebird
+2884E0	[127]	Baba Yaga
+2884E0	[167]	Fautso
+288F40	[10E]	Pinwheel
+289480	[1F9]	Johnny
+289480	[1FA]	Johnny
+289CA0	[10F]	Rat Funk
+289CA0	[14F]	Alley Rat
+28A380	[067]	Corkpedite
+28A380	[13F]	Corkpedite
+28A380	[17F]	Pile Driver
+28A380	[18C]	Body
+28A380	[18D]	__Pile Driver (body)
+28A380	[1B7]	__Corkpedite
+28A380	[1BA]	Grit
+28A660	[110]	K-9
+28A660	[150]	Chow
+28B380	[139]	Jester
+28B380	[179]	Harlequin
+28B3C0	[112]	The Big Boo
+28B3C0	[152]	Li~L Boo
+28BC00	[13A]	Artichoker
+28BC00	[17A]	Kriffid
+28BD00	[114]	Greaper
+28BD00	[154]	Glum Reaper
+28CAA0	[089]	Fireball (surface from lava)
+28CAA0	[115]	Sparky
+28CAA0	[148]	Fireball
+28CAA0	[155]	Pyrosphere
+28D020	[0D6]	Stumpet (head)
+28D020	[0D7]	Stumpet (roots, right)
+28D020	[137]	Stumpet
+28D020	[177]	Lumbler
+28D3C0	[091]	Bob-omb
+28D3C0	[119]	Bob-Omb
+28D3C0	[159]	Rob-Omb
+28DBC0	[122]	Leuko
+28DBC0	[162]	Muckle
+28DD60	[1B1]	Mukumuku
+28E560	[12C]	Heavy Troopa
+28E560	[16C]	Tub-O-Troopa
+28EB80	[124]	Enigma
+28EB80	[164]	Gorgon
+28F040	[117]	Pandorite
+28F040	[157]	Hidon
+28F040	[186]	Box Boy
+28F040	[18B]	Chester
+28F1C0	[135]	Remo Con
+28F1C0	[175]	Puppox
+2A0000	[1D6]	__Bundt object
+2A0000	[1D7]	Raspberry
+2A0200	[136]	Snapdragon
+2A0200	[176]	Fink Flower
+2A0620	[18E]	Torte
+2A0D20	[093]	Golden Belome
+2A0D20	[1C7]	Belome
+2A0D20	[1C8]	Belome
+2A0D20	[1C9]	__Belome
+2A1000	[1C2]	Bundt
+2A1000	[1FE]	Candle
+2A16C0	[130]	Octolot
+2A16C0	[170]	Octovader
+2A1960	[129]	Reacher
+2A1960	[169]	Juju
+2A20A0	[126]	Guerrilla
+2A20A0	[166]	Chained Kong
+2A2540	[0A9]	Boomer (red)
+2A2540	[134]	Boomer
+2A2540	[174]	__Boomer (blue)
+2A2BE0	[13C]	Carroboscis
+2A2BE0	[17C]	Radish
+2A3060	[12F]	Bahamutt
+2A3060	[16F]	__purple Bahamutt
+2A3640	[1B4]	Chompweed
+2A3860	[1AD]	Birdo
+2A3860	[1CD]	Birdo
+2A3FC0	[187]	Shelly
+2A4080	[13D]	Hippopo
+2A4080	[17D]	Crippo
+2A4820	[0AA]	Dr.Topper (green)
+2A4820	[11B]	Hammer Bro
+2A4820	[1AC]	Hammer Bro
+2A4E20	[13E]	Mastadoom
+2A4E20	[17E]	Mastablasta
+2A5060	[1B0]	Starslap
+2A5060	[1B2]	Zeostar
+2A5A00	[12A]	Shogun
+2A5A00	[16A]	Armored Ant
+2A5EC0	[121]	Magikoopa
+2A5EC0	[161]	Merlin
+2A5F40	[08E]	Factory Clerk (green)
+2A5F40	[0A7]	Factory Manager (blue)
+2A5F40	[0A8]	Factory Director (red)
+2A5F40	[132]	Clerk
+2A5F40	[14C]	Manager
+2A5F40	[172]	Director
+2A6780	[19F]	Kinklink
+2A6B60	[0F3]	Machine Made Drill Bit
+2A6B60	[15F]	Jabit
+2A6B60	[192]	Machine Made (Drill Bit)
+2A6B60	[1E3]	Drill Bit
+2A73A0	[13B]	Arachne
+2A73A0	[17B]	Spinthra
+2A75C0	[1E7]	Aero
+2A7B00	[14A]	Factory Chief
+2A7B00	[15B]	Ninja
+2A7CC0	[0D8]	Czar Dragon (body)
+2A7CC0	[1AF]	Magidragon
+2A7CC0	[1DB]	Zombone
+2A7CC0	[1DC]	Czar Dragon
+2A8740	[1D4]	King Bomb
+2A9140	[03E]	Microbomb
+2A9140	[1AE]	Bb-Bomb
+2A9140	[1B8]	Microbomb
+2A9140	[1D5]	Mezzo Bomb
+2A91A0	[1C0]	Knife Guy
+2A91A0	[1C1]	Grate Guy
+2A9960	[12E]	Cluster
+2A9960	[16E]	Pulsar
+2AA0C0	[1CE]	Eggbert
+2AA240	[1E8]	__Exor (mouth)
+2AA3C0	[097]	Machine Made Yaridovich (out of battle)
+2AA3C0	[0DD]	Yaridovich (out of battle)
+2AA3C0	[1A5]	Machine Made (Yaridovich)
+2AA3C0	[1E2]	Yaridovich
+2AA560	[1FF]	Culex
+2AB600	[11E]	Gecko
+2AB600	[15E]	Geckit
+2AB6E0	[098]	Machine Made Axem Red
+2AB6E0	[0D0]	Axem Red
+2AB6E0	[1A8]	Machine Made (Axem Red)
+2AB6E0	[1D2]	Axem Red
+2AC160	[0D1]	Axem Black
+2AC160	[1A7]	Machine Made (Axem Black)
+2AC160	[1E5]	Axem Black
+2AC320	[178]	Springer
+2AC320	[191]	Machine Made (Shyster)
+2AC320	[19E]	Shyster
+2AC320	[1E1]	Bodyguard
+2ACB20	[0D2]	Axem Pink
+2ACB20	[1A6]	Machine Made (Axem Pink)
+2ACB20	[1E4]	Axem Pink
+2ACCC0	[125]	Blaster
+2ACCC0	[165]	Big Bertha
+2AD4A0	[0D3]	Axem Yellow
+2AD4A0	[1A9]	Machine Made (Axem Yellow)
+2AD4A0	[1CF]	Axem Yellow
+2AD780	[1D8]	King Calamari
+2ADFE0	[0D4]	Axem Green
+2ADFE0	[1AA]	Machine Made (Axem Green)
+2ADFE0	[1D3]	Axem Green
+2AE5A0	[1D1]	Tentacles
+2AE780	[0D5]	Axem Red teleport
+2AE8E0	[1F5]	Axem Rangers
+2AEB40	[1D9]	Tentacles
+2AF280	[123]	Jawful
+2AF280	[163]	Forkies
+2AF4E0	[0AD]	Smelter (back section)
+2AF4E0	[1A2]	Smelter
+2AFCE0	[324]	green drop?
+2C0000	[0FF]	Beetle
+2C0000	[1BB]	Neosquid
+2C0000	[1BE]	Right Eye
+2C0000	[1BF]	Left Eye
+2C0100	[03A]	Frogfucius
+2C07A0	[041]	Wallet Guy (also casino assistants)
+2C07A0	[042]	Raini
+2C07A0	[070]	Mushroom Boy
+2C07A0	[071]	Marrymore Man (green)
+2C07A0	[072]	Marrymore Woman (yellow)
+2C07A0	[073]	Marrymore Woman (green)
+2C07A0	[0A2]	Seaside Town Fake (green)
+2C07A0	[0B2]	Marrymore Inn Keeper (blue, striped hat)
+2C07A0	[0B3]	Rose Town Treasure Holder
+2C07A0	[0B4]	Rose Town Woman (blue/pink, braids)
+2C07A0	[0B5]	Marrymore Woman (yellow)
+2C0B40	[1E9]	Exor
+2C0D00	[1A1]	Hangin~ Shy
+2C10A0	[193]	Formless
+2C10A0	[200]	A/B/X/Y action button selection in battle
+2C16A0	[311]	little bullet spark?
+2C16E0	[184]	__Geno redemption
+2C16E0	[20E]	yellow steam?
+2C19A0	[1BD]	Helio
+2C19A0	[31A]	dark red/yellow fireball
+2C1B20	[316]	blue-green 'Sleep Sauce'
+2C1DE0	[043]	Old Man
+2C1DE0	[044]	Old Woman
+2C1DE0	[076]	Marrymore Bright Card buyer (brown/grey)
+2C1DE0	[077]	Rose Town Gardener (green/grey)
+2C1DE0	[078]	Old Woman (green/grey)
+2C1DE0	[079]	Old Woman (purple/grey)
+2C1DE0	[0A3]	Seaside Town Fake Elder (green)
+2C1DE0	[0A4]	Seaside Town Elder (yellow/green)
+2C1DE0	[0A5]	Monstermama (golden/brown/red)
+2C1DE0	[0B6]	Rose Town Old Man (blue/grey)
+2C1DE0	[0B7]	Old Woman (grey/red)
+2C1F60	[317]	'Ice Rock'
+2C1F60	[318]	grey transparent palette swap of 'Ice Rock'
+2C2420	[314]	big googly eyes
+2C2500	[320]	blue/green bubbles/circles
+2C2660	[321]	purple sleep ZZZ's
+2C2700	[322]	backwards yellow spike
+2C27A0	[326]	JESTER 'Royal Flush' card
+2C2980	[046]	Chancellor
+2C2A20	[327]	yellow shaking bell
+2C2D00	[329]	blue music note
+2C2E00	[334]	MAGIKOOPA triangle/circle/X cast magic
+2C2EE0	[33A]	flower bonus
+2C3060	[047]	Pa Mole
+2C3060	[048]	Ma Mole
+2C3140	[204]	Enemy Defeated Explosion Stars
+2C3620	[213]	black rolling coal rock
+2C3BC0	[310]	DRY BONES thrown spinning bone
+2C3D60	[319]	big pink heart
+2C3E40	[049]	Girl Mole (pink bow)
+2C3E40	[04A]	Girl Mole (yellow bow)
+2C43A0	[185]	__little bird
+2C43A0	[309]	'Star Egg' little brown bird
+2C43C0	[050]	Toadofsky
+2C44E0	[214]	blue spark
+2C44E0	[215]	yellow spark
+2C44E0	[216]	green spark
+2C44E0	[217]	red spark
+2C46C0	[205]	Bomb Explosion
+2C4AE0	[206]	Small White Cloud
+2C4CE0	[05E]	Treasure Chest
+2C4CE0	[05F]	Empty Treasure Chest
+2C4CE0	[06E]	Discolored Treasure Chest?
+2C4D20	[208]	alphabet + symbols
+2C5100	[201]	Rainbow Explosion
+2C5100	[202]	Blue Explosion
+2C5100	[203]	Green Explosion
+2C5100	[207]	'Drain' Explosion
+2C5500	[209]	light blue stars
+2C5620	[20B]	yellow cure stars
+2C5620	[22F]	green cure stars
+2C5620	[230]	red cure stars
+2C5620	[231]	blue cure stars
+2C56C0	[210]	very small black bullet
+2C56E0	[218]	rainbow rain
+2C59A0	[0CB]	Level Up text from Invincible Star
+2C59A0	[30E]	'Diamond Saw' snowflake
+2C5DE0	[05D]	Blue Stepping Block
+2C5DE0	[069]	Yellow Stepping Block
+2C5F60	[062]	Rolling Barrel
+2C6120	[219]	mushroom spores
+2C65A0	[063]	Warp Spring-board
+2C65A0	[064]	Jump Spring-board
+2C68A0	[21F]	purple petal
+2C6AE0	[220]	small pink petal
+2C6B80	[221]	thrown hammer 'Hammer Time'
+2C6BE0	[066]	Save Point
+2C70A0	[222]	blue electric ball 'Bombs Away'
+2C70E0	[06A]	Water Droplet
+2C70E0	[0DB]	Yellow Dot?
+2C70E0	[0EF]	Small Sea Fish
+2C7400	[30B]	white stars
+2C7400	[31B]	light green stars
+2C7400	[31C]	light orange stars
+2C74A0	[228]	'Thank You' red dialogue bubble
+2C74A0	[229]	'Thank You' purple dialogue bubble
+2C74A0	[22A]	'Thank You' blue dialogue bubble
+2C74A0	[22B]	'Thank You' green dialogue bubble
+2C74A0	[22C]	'Thank You' yellow dialogue bubble
+2C75C0	[22D]	'Psychopath' question mark cloud
+2C7A00	[06C]	Factory Hex-Nut
+2C7BC0	[32C]	BLOOBER water surfacing/diving droplets
+2C7BC0	[32D]	green water surfacing/diving droplets
+2C7BC0	[32E]	yellow water surfacing/diving droplets
+2C7CE0	[31D]	'Sleepy Time' big sheep/ram
+2C8080	[06D]	Green Switch
+2C8200	[232]	yellow reusable item sprite with letter I
+2C8280	[20A]	'Come Back' rainbow star
+2C8280	[31E]	'Geno Beam/Blast/Flash' red power-up star
+2C8360	[20D]	Bowyer's arrow
+2C8380	[0C8]	Explosion
+2C8380	[0C9]	Mokura's Cloud (blue)
+2C8380	[0CC]	Grey Explosion (when encountering Fireballs)
+2C8480	[211]	'HP Rain' cloud
+2C86A0	[20F]	small black bullet
+2C8740	[21A]	Lazy Shell (Heavy Troopa)
+2C8740	[21B]	Orange Lazy Shell
+2C8740	[21C]	Green Lazy Shell (Tub-O-Troopa)
+2C8CE0	[212]	stat-boost arrows
+2C8D40	[080]	Block Shadow
+2C8EE0	[21D]	'Snowy' eyes
+2C8F40	[08F]	Land's End Cannon
+2C9100	[227]	'Mute' balloon
+2C9540	[0FE]	Plywood Brown Door Bowser's Keep
+2C9880	[233]	'A' button from Bowyer's 'Button Lock'
+2C9F40	[21E]	blinking yellow light circle
+2CA0E0	[22E]	thrown shuriken
+2CA160	[234]	Bowser's spike shot
+2CA1E0	[235]	'Geno Flash' squinting eyes
+2CA2C0	[236]	green item mushroom
+2CA2C0	[237]	red item mushroom
+2CA2C0	[238]	blue item mushroom
+2CA2C0	[239]	yellow item mushroom
+2CA340	[0FC]	Grey Stone Bridge Bowser's Keep (right section)
+2CA6E0	[23B]	'Fear' exclamation point
+2CA800	[23D]	Mokura
+2CACA0	[23E]	Drain
+2CADE0	[0FB]	Wooden Bridge Bowser's Keep (right section)
+2CAE20	[23F]	sparkles
+2CAE80	[302]	'Fire Orb' hit monster explosion
+2CB040	[303]	egg
+2CB1C0	[224]	'Willy Wisp' purple electric ball
+2CB1C0	[301]	yellow lightning ball
+2CB1C0	[304]	'Lightning Orb' blue lightning ball
+2CB260	[0FA]	Small Black Fence
+2CB2E0	[052]	Blue Star Piece
+2CB2E0	[053]	Purple Star Piece
+2CB2E0	[054]	Red Star Piece
+2CB2E0	[055]	Gold Star Piece
+2CB2E0	[056]	Green Star Piece
+2CB2E0	[057]	Light Blue Star Piece
+2CB2E0	[058]	Yellow Star Piece
+2CB2E0	[09C]	Blue-Green Star Piece (spinning)
+2CB520	[0F2]	White Gas Cloud
+2CB520	[307]	white gas cloud
+2CB520	[308]	'Blast' orange gas cloud
+2CB520	[30A]	'Poison Gas' green gas cloud
+2CB520	[30C]	purple gas cloud
+2CB520	[30F]	blue gas cloud
+2CB8A0	[313]	green shine web
+2CBBA0	[323]	'Water Blast' water hits
+2CBBA0	[325]	red palette swap of 'Water Blast' water hit
+2CBDE0	[0EE]	Splash Water Droplets
+2CBDE0	[0F0]	Splash Water Geyser
+2CBDE0	[312]	WIND CRYSTAL
+2CBDE0	[315]	WATER CRYSTAL
+2CBF60	[223]	'Fire Orb' fireball
+2CBFA0	[0EB]	Booster's Choo-Choo Train
+2CC440	[32A]	white pixel dot
+2CC460	[30D]	yellow star
+2CC4E0	[225]	spore (pink/green)
+2CC4E0	[23A]	green spore
+2CC500	[0EA]	Old Classic Mario
+2CC640	[226]	bolt (hardware-wise)
+2CC7E0	[037]	Jonathan Jones
+2CCA80	[07B]	Yoshi Baby Egg
+2CCF40	[0E9]	Falling Stepping Bridge Block
+2CD120	[0E4]	Level Up Bonus Text
+2CD7C0	[038]	Valentina
+2CDF80	[03B]	Tadpole
+2CE5C0	[03F]	Valentina Statue
+2CEC00	[06B]	Hinopio
+2CEDC0	[068]	J Puzzle Block
+2CEDC0	[0BC]	Cannon Ball
+2CF1E0	[065]	Teeter-totter
+2CF400	[0E3]	Light Green Pipe (top edge)
+2CF4E0	[3B0]	Snifits chasing beetle
+2CF6E0	[090]	Red Dot?
+2CF700	[085]	Knife Guy Juggler (still, red balls)
+2CF700	[086]	Knife Guy Juggler
+2CF780	[0A1]	Dyna and Mite
+2E0000	[025]	War Fan
+2E0000	[0E5]	Level Up Bonus Flower
+2E04E0	[305]	small yellow spike
+2E0500	[306]	large yellow spike
+2E0580	[024]	Parasol
+2E06C0	[061]	Toadstool's Parachute
+2E0880	[0E1]	Level Up Bonus Selection Box
+2E0980	[0E2]	Booster's Tower Entrance Door
+2E0B40	[0E6]	Level Up Bonus Pow Power
+2E0C80	[0CD]	Miniature Axem Red
+2E1040	[0E7]	Level Up Bonus Star Magic
+2E1180	[0CE]	Terrapin (still)
+2E1180	[0ED]	Terrapin (walking)
+2E1180	[100]	Terrapin
+2E1180	[140]	Terra Cotta
+2E1180	[1B3]	Jagger
+2E1520	[0E8]	Level Up Bonus HP
+2E1980	[0DF]	Tentacle (extending)
+2E1E00	[0DC]	Yellow Letter
+2E1F00	[095]	Shyguy in Bowser's Helicopter
+2E2160	[07C]	Gameboy Kid
+2E23E0	[09B]	Factory Crane
+2E2640	[092]	Commander Troopa
+2E2640	[102]	Sky Troopa
+2E2640	[142]	Malakoopa
+2E2820	[0B1]	Grate Guy (from casino)
+2E2D40	[026]	Red Mushroom
+2E2D40	[027]	Red Scarecrow
+2E3520	[07E]	Chomp (behind)
+2E3520	[0AF]	Golden Chomp (back)
+2E3520	[0B0]	Chomp (front)
+2E3520	[116]	Chomp
+2E3520	[156]	Chomp Chomp
+2E3860	[028]	Mario's battle portrait
+2E3860	[029]	Toadstool's battle portrait
+2E3860	[02A]	Bowser's battle portrait
+2E3860	[02B]	Mallow's battle portrait
+2E3860	[02C]	Geno's battle portrait
+2E42C0	[03C]	Thwomp
+2E42C0	[03D]	Big Thwomp
+2E42C0	[1B9]	__Thwomp
+2E4CA0	[103]	Mad Mallet
+2E4CA0	[143]	Pounder
+2E4CA0	[144]	Poundette
+2E5940	[030]	Croco
+2E5940	[0BD]	Croco (still)
+2E5940	[1F0]	Croco
+2E5940	[1F1]	Croco
+2E5940	[1F2]	__Croco
+2E5A40	[0CF]	Jinx (walk)
+2E5A40	[190]	Jinx Clone
+2E5A40	[1C3]	Jinx
+2E5A40	[1C4]	Jinx
+2E5A40	[1DA]	Jinx
+2E6B80	[083]	Dodo (as parson)
+2E6B80	[138]	Dodo
+2E6B80	[189]	Dodo
+2E6D80	[032]	Booster
+2E6D80	[1F6]	Booster
+2E6D80	[1F7]	Booster
+2E7A60	[0E0]	Snifit (black, back)
+2E7A60	[11A]	Spookum
+2E7A60	[180]	Apprentice
+2E7A60	[1F8]	Snifit
+2E7FA0	[035]	King Nimbus
+2E87C0	[036]	Queen Nimbus
+2E8D80	[1D0]	Punchinello
+2E8E00	[039]	Magikoopa
+2E8E00	[081]	Red Magikoopa
+2E8E00	[0EC]	Magikoopa (blue, walking)
+2E9720	[1DD]	Cloaker
+2E9720	[1FC]	Cloaker
+2E9800	[04F]	Nimbus Guard
+2E9800	[0A6]	Nimbus Guard
+2E9E40	[04B]	Nimbusite (blue)
+2E9E40	[04C]	Nimbusite (red)
+2E9E40	[04D]	Nimbusite (brown/green)
+2E9E40	[04E]	Nimbusite (yellow/green)
+2EA840	[1DE]	Domino
+2EA840	[1FD]	Domino
+2EAA40	[0DE]	Banana Peel
+2EADC0	[0D9]	Growing Vine Beanstalk
+2EB1C0	[0DA]	Brick Beanstalk Block
+2EB1C0	[0F9]	Grey Stone Block
+2EB540	[084]	Moleville Mine Cart
+2EB540	[087]	White Mine Cart?
+2EB540	[088]	Discolored Mine Cart
+2EB800	[1DF]	Mad Adder
+2EB800	[1F3]	Earth Link
+2EC700	[1FB]	Valentina
+2ECF20	[07D]	Frogfucius Student
+2ED220	[01F]	Hammer
+2ED580	[1C5]	Count Down
+2EDAA0	[020]	Froggie Stick
+2EDE60	[021]	Cymbals
+2EE2C0	[1C6]	Ding-A-Ling
+2EE640	[099]	Gunyolk (top section)
+2EE640	[09A]	Gunyolk (outer section)
+2EE640	[133]	Gunyolk
+2EE640	[173]	__Gunyolk (yellow)
+2EE9A0	[022]	Chomp
+2EF260	[023]	Frying Pan
+2EF680	[09F]	Poison Toxic Gas
+2EF8C0	[0AE]	Small Candy Cloud
+2EF8E0	[02F]	Boshi
+2EFA40	[0A0]	Shelly (bottom section)
+2EFEA0	[051]	Mario Doll (Booster's Castle)
+2EFEA0	[05B]	Mario Doll
+300000	[060]	Mario Doll (surprised)
+300000	[118]	Shy Ranger
+300000	[158]	Sling Shy
+300000	[15A]	Shy Guy
+300440	[0BE]	Bowser w/Toadstool in Helicopter
+300660	[059]	Geno Doll
+300660	[05A]	Bowser Doll
+300660	[05C]	Toadstool Doll
+300660	[0AC]	Geno Doll
+300D80	[040]	Toad
+300D80	[045]	Green/Brown Toad
+300D80	[074]	Marrymore Kid (purple)
+300D80	[075]	Marrymore Kid (blue/green)
+300D80	[0B8]	Kid (red, striped hat)
+300D80	[0B9]	Gaz (purple)
+300FA0	[1B6]	Smithy
+301680	[004]	Mario (attack, up-right)
+301680	[005]	Mario (hammer attack, up-right)
+301680	[006]	Mario (crouch, up-right)
+301800	[18F]	Shy Away
+302360	[10C]	Lakitu
+303220	[096]	Machine Made Bowyer
+303220	[0F1]	Bowyer
+303220	[1A4]	Machine Made (Bowyer)
+303220	[1E6]	Bowyer
+303C00	[0BF]	Miniature Toad
+303C80	[06F]	Nimbusland Bus Driver
+304000	[007]	Toadstool (walking, down-left)
+304000	[008]	Toadstool (walking, up-right)
+304000	[009]	Toadstool (surprise)
+304000	[19A]	Toadstool 2
+304920	[1A3]	Machine Made (Mack)
+304920	[1E0]	Mack
+305960	[09D]	Smithy's Hammer
+305960	[09E]	Smithy's Chest
+305960	[1EA]	Smithy
+305960	[1EB]	Shyper
+3065E0	[00A]	Toadstool (slap attack)
+3065E0	[00B]	Toadstool (frying pan attack)
+3065E0	[00C]	Toadstool (fallen/crying)
+3077A0	[1EC]	Smithy
+308200	[00D]	Bowser (walking, down-left)
+308200	[00E]	Bowser (walking, up-right)
+308200	[00F]	Bowser (surprise)
+308200	[19B]	Bowser Clone
+308200	[1F4]	Bowser
+308F80	[1ED]	Smithy
+309B60	[1EE]	Smithy
+30A600	[1EF]	Smithy
+30B3A0	[1B5]	Smithy
+30B9A0	[010]	Bowser (claw attack)
+30B9A0	[011]	Bowser (swing ball-chain)
+30B9A0	[012]	Bowser (cast spell)
+30C4C0	[000]	Mario (walking, down-left)
+30C4C0	[001]	Mario (jump, front)
+30C4C0	[002]	Mario (walking, up-right)
+30C4C0	[003]	Mario (surprise, left)
+30C4C0	[199]	Mario Clone
+30DE60	[02D]	Yellow Yoshi
+30DE60	[02E]	Pink Yoshi
+30DE60	[031]	Green Yoshi
+30DE60	[033]	Green Yoshi (walk)
+30DE60	[034]	Booster (walk)
+30DE60	[07A]	Fat Yoshi Baby
+30F940	[0FD]	Toadstool Hand Captive from Rope
+30F940	[1A0]	__Toadstool (captive)
+30FDA0	[0F5]	Link Sleeping in Rose Town Inn
+30FE40	[3AE]	red balloon
+320000	[3A0]	marching Luigi
+320280	[3A4]	waving King & Queen Nimbus
+3204A0	[019]	Geno (walking, down-left)
+3204A0	[01A]	Geno (walking, up-right)
+3204A0	[01B]	Geno (surprise)
+3204A0	[19C]	Geno Clone
+3230A0	[01C]	Geno (elbow shot)
+3230A0	[01D]	Geno (finger shot)
+3230A0	[01E]	Geno (morph into cannon)
+324CE0	[013]	Mallow (walking, down-left)
+324CE0	[014]	Mallow (walking, up-right)
+324CE0	[015]	Mallow (surprise)
+324CE0	[19D]	Mallow Clone
+327A40	[016]	Mallow (punch)
+327A40	[017]	Mallow (swing stick)
+327A40	[018]	Mallow (still, up-right)
+328BA0	[0F4]	Mushroom House Decor Mailbox
+328CA0	[0F6]	Samus Sleeping in Mushroom Kingdom
+328EA0	[0F7]	Grey Stepping Stone
+329020	[0F8]	Hinopio's Model Airplane (blue/grey)
+3291A0	[3A1]	marching Toads
+329AA0	[3A2]	conducting Toadofsky
+329D20	[3A3]	waving Mallow
+32A1E0	[3A5]	Nimbus Busman, Lakitu & Frogfucius
+32A5E0	[3A6]	Tadpole
+32A8E0	[3A7]	trumpeting Piranhas
+32B060	[3A8]	Mole miners & star
+32B260	[3A9]	Dyna & Mite
+32B400	[3AA]	Hammer Bros & Chomps
+32B740	[3AB]	Crook & Croco
+32BC60	[3AC]	Bowser in helicopter chasing
+32C1C0	[3AD]	Dodo carrying Valentina
+32CB60	[3AF]	Booster riding train
+32D080	[3B1]	bouncing Shysters
+32D2C0	[3B2]	Mack, Yaridovich, Bowyer
+32DA00	[3B3]	Smithy
+32E220	[3B4]	Johnny & mates
+32E680	[3B5]	blue/red/green Toads
+32E800	[3B6]	riding Yoshi
+32EA40	[3B7]	waving Mario & Toadstool
+32EF40	[3B9]	poof
+32F040	[3BA]	purple firework
+32F6E0	[3BB]	smaller red firework
+32FA40	[3BC]	normal yellow 5-pronged star
+32FC00	[3BD]	brown object dissipating
+32FEC0	[3BE]	tiny glowing pixel
+
+2EC8A0	Mario in minecart (Mode 7 stage)
+
+===World Map GFX (compressed)===
+
+3E004C   'World Map' logo and location paper scroll
+3E0E68   cloud, bob-omb, star, and ghost engravings/constellations
+3E2606   selection box/borders
+3E269D   some arrows
+3E286A   some lines
+3E2C80   some bars
+3E2D53   some bars
+3E2E81   all Maps for each World Region
+3E8577   clouds in background of World Map
+3E90A6   Mario sprite cursor on map and an arrow
+3E929F   some more bars
+
+3E9A49   a bunch of logos and medallions

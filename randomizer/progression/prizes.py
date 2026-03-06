@@ -2,6 +2,8 @@ from __future__ import annotations
 from re import M
 from typing import TYPE_CHECKING
 
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_0, NPC_1
+
 from randomizer.data.overworld_scripts.event.scripts.script_3645 import NPC_2
 from randomizer.data.variables.dialog_names import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
@@ -421,7 +423,6 @@ class HammerPrize(ItemPrize):
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
     _model = HammerObject
-    
 
 
 class FroggiestickPrize(ItemPrize):
@@ -646,6 +647,7 @@ class StarGunPrize(ItemPrize):
     )
     _model = TinyStarObject
     _packet_data = (SPR0226_TINY_STAR, 0)
+
 
 class SonicCymbalPrize(ItemPrize):
     item = SonicCymbalItem
@@ -1015,6 +1017,7 @@ class AmuletPrize(ItemPrize):
     _model = CardObject
     _packet_data = (SPR0206_CARD, 0)
 
+
 class ScroogeRingPrize(ItemPrize):
     item = ScroogeRingItem
     _nickname = TreasureHunterNickname(
@@ -1135,6 +1138,7 @@ class TroopaPinPrize(ItemPrize):
     _model = BroochObject
     _packet_data = (SPR0207_BROOCH, 0)
 
+
 class SignalRingPrize(ItemPrize):
     item = SignalRingItem
     _nickname = TreasureHunterNickname(
@@ -1154,6 +1158,7 @@ class QuartzCharmPrize(ItemPrize):
     _monstro_shuffle = True
     _model = CrystalObject
     _packet_data = (SPR0209_SHINY_STONE, 0)
+
 
 class TeamworkBandPrize(ItemPrize):
     item = TeamworkBandItem
@@ -1192,6 +1197,7 @@ class MidMushroomPrize(ItemPrize):
     )
     _model = GreenMushroomObject
     _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 0)
+
 
 class MaxMushroomPrize(ItemPrize):
     item = MaxMushroomItem
@@ -1255,6 +1261,7 @@ class BracerPrize(ItemPrize):
     _model = DDrinkObject
     _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 4)
 
+
 class EnergizerPrize(ItemPrize):
     item = EnergizerItem
     _nickname = TreasureHunterNickname(
@@ -1272,6 +1279,7 @@ class YoshiAdePrize(ItemPrize):
     _model = GreenJuiceObject
     _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 2)
 
+
 class RedEssencePrize(ItemPrize):
     item = RedEssenceItem
     _nickname = TreasureHunterNickname(
@@ -1287,7 +1295,8 @@ class KerokeroColaPrize(ItemPrize):
         nickname="Green Drink", description="I wonder what flavor it is?"
     )
     _model = FrogDrinkObject
-    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 6)   
+    _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 6)
+
 
 class YoshiCookiePrize(ItemPrize):
     item = YoshiCookieItem
@@ -1315,6 +1324,7 @@ class SleepyBombPrize(ItemPrize):
     _model = YellowBombObject
     _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 10)
 
+
 class BadMushroomPrize(ItemPrize):
     item = BadMushroomItem
     _nickname = TreasureHunterNickname(
@@ -1340,6 +1350,7 @@ class IceBombPrize(ItemPrize):
     )
     _model = BlueBombObject
     _packet_data = (SPR0223_BLUE_ITEM_COLLECTION, 10)
+
 
 class FlowerTabPrize(ItemPrize):
     item = FlowerTabItem
@@ -1379,6 +1390,7 @@ class FroggieDrinkPrize(ItemPrize):
     _model = YellowMusicDrinkObject
     _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 5)
 
+
 class MukuCookiePrize(ItemPrize):
     item = MukuCookieItem
     _nickname = TreasureHunterNickname(
@@ -1396,6 +1408,7 @@ class ElixirPrize(ItemPrize):
     _model = BlueMusicDrinkObject
     _packet_data = (SPR0223_BLUE_ITEM_COLLECTION, 5)
 
+
 class MegalixirPrize(ItemPrize):
     item = MegalixirItem
     _nickname = TreasureHunterNickname(
@@ -1403,6 +1416,7 @@ class MegalixirPrize(ItemPrize):
     )
     _model = RedMusicDrinkObject
     _packet_data = (SPR0219_RED_ITEM_COLLECTION, 5)
+
 
 class SeeYaPrize(ItemPrize):
     item = SeeYaItem
@@ -1418,7 +1432,6 @@ class TempleKeyPrize(ItemPrize, KeyPrize):
     )
     _model = KeyObject
     _packet_data = (SPR0195_FLOWER, 2)
-
 
 
 class GoodieBagPrize(ItemPrize):
@@ -1450,7 +1463,8 @@ class RareFrogCoinPrize(ItemPrize, KeyPrize):
         nickname="Green Coin", description="It looks different from most Frog \nCoins."
     )
     _model = SmallFrogCoinObjectNoMoney
-    _packet_data = (SPR0238_STATIC_FROG_COIN_SMALL, 0) 
+    _packet_data = (SPR0238_STATIC_FROG_COIN_SMALL, 0)
+
 
 class WalletPrize(ItemPrize, KeyPrize):
     item = WalletItem
@@ -1652,6 +1666,7 @@ class PowerBlastPrize(ItemPrize):
     _model = PDrinkObject
     _packet_data = (SPR0220_GREEN_ITEM_COLLECTION, 4)
 
+
 class WiltShroomPrize(ItemPrize):
     item = WiltShroomItem
     _nickname = TreasureHunterNickname(
@@ -1659,6 +1674,7 @@ class WiltShroomPrize(ItemPrize):
     )
     _model = BananaObject
     _packet_data = (SPR0222_BANANA_PEEL, 0)
+
 
 class RottenMushPrize(ItemPrize):
     item = RottenMushItem
@@ -1989,6 +2005,7 @@ class GoldPaintPrize(ItemPrize, KeyPrize):
     _model = YellowJuiceObject
     _packet_data = (SPR0221_YELLOW_ITEM_COLLECTION, 2)
 
+
 class MarioDollPrize(ItemPrize, KeyPrize):
     item = MarioDollItem
     _nickname = TreasureHunterNickname(
@@ -1996,6 +2013,7 @@ class MarioDollPrize(ItemPrize, KeyPrize):
     )
     _model = MarioDollObject
     _packet_data = (SPR0233_MARIO_DOLL, 0)
+
 
 class CookiesPrize(ItemPrize, KeyPrize):
     item = CookiesItem
@@ -2268,11 +2286,9 @@ class JumpSpellPrize(SpellPrize):
         "spell_1_character",
         "freestanding_spell_1_character",
         "hill_river_spell_1_character",
-        "npc_spell_1_character"
+        "npc_spell_1_character",
     ]
-    packet_replacement_ids = [
-        "spell_1_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_1_elemental_packet"]
     _dialog_id = DI1947_LEARN_SPELL_1
     _autoterm_dialog_id = DI1948_LEARN_SPELL_1_AUTOTERM
     _placement_id = 1
@@ -2289,14 +2305,13 @@ class FireOrbSpellPrize(SpellPrize):
         "spell_2_character",
         "freestanding_spell_2_character",
         "hill_river_spell_2_character",
-        "npc_spell_2_character"
+        "npc_spell_2_character",
     ]
-    packet_replacement_ids = [
-        "spell_2_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_2_elemental_packet"]
     _dialog_id = DI1949_LEARN_SPELL_2
     _autoterm_dialog_id = DI1950_LEARN_SPELL_2_AUTOTERM
     _placement_id = 2
+
 
 class SuperJumpSpellPrize(SpellPrize):
     _spell = SuperJumpSpell
@@ -2309,11 +2324,9 @@ class SuperJumpSpellPrize(SpellPrize):
         "spell_3_character",
         "freestanding_spell_3_character",
         "hill_river_spell_3_character",
-        "npc_spell_3_character"
+        "npc_spell_3_character",
     ]
-    packet_replacement_ids = [
-        "spell_3_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_3_elemental_packet"]
     _dialog_id = DI1951_LEARN_SPELL_3
     _autoterm_dialog_id = DI1952_LEARN_SPELL_3_AUTOTERM
     _placement_id = 3
@@ -2330,11 +2343,9 @@ class SuperFlameSpellPrize(SpellPrize):
         "spell_4_character",
         "freestanding_spell_4_character",
         "hill_river_spell_4_character",
-        "npc_spell_4_character"
+        "npc_spell_4_character",
     ]
-    packet_replacement_ids = [
-        "spell_4_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_4_elemental_packet"]
     _dialog_id = DI1953_LEARN_SPELL_4
     _autoterm_dialog_id = DI1954_LEARN_SPELL_4_AUTOTERM
     _placement_id = 4
@@ -2351,11 +2362,9 @@ class UltraJumpSpellPrize(SpellPrize):
         "spell_5_character",
         "freestanding_spell_5_character",
         "hill_river_spell_5_character",
-        "npc_spell_5_character"
+        "npc_spell_5_character",
     ]
-    packet_replacement_ids = [
-        "spell_5_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_5_elemental_packet"]
     _dialog_id = DI1955_LEARN_SPELL_5
     _autoterm_dialog_id = DI1956_LEARN_SPELL_5_AUTOTERM
     _placement_id = 5
@@ -2372,11 +2381,9 @@ class UltraFlameSpellPrize(SpellPrize):
         "spell_6_character",
         "freestanding_spell_6_character",
         "hill_river_spell_6_character",
-        "npc_spell_6_character"
+        "npc_spell_6_character",
     ]
-    packet_replacement_ids = [
-        "spell_6_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_6_elemental_packet"]
     _dialog_id = DI1957_LEARN_SPELL_6
     _autoterm_dialog_id = DI1958_LEARN_SPELL_6_AUTOTERM
     _placement_id = 6
@@ -2393,11 +2400,9 @@ class ThunderboltSpellPrize(SpellPrize):
         "spell_7_character",
         "freestanding_spell_7_character",
         "hill_river_spell_7_character",
-        "npc_spell_7_character"
+        "npc_spell_7_character",
     ]
-    packet_replacement_ids = [
-        "spell_7_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_7_elemental_packet"]
     _dialog_id = DI1959_LEARN_SPELL_7
     _autoterm_dialog_id = DI1960_LEARN_SPELL_7_AUTOTERM
     _placement_id = 7
@@ -2414,11 +2419,9 @@ class HPRainSpellPrize(SpellPrize):
         "spell_8_character",
         "freestanding_spell_8_character",
         "hill_river_spell_8_character",
-        "npc_spell_8_character"
+        "npc_spell_8_character",
     ]
-    packet_replacement_ids = [
-        "spell_8_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_8_elemental_packet"]
     _dialog_id = DI1961_LEARN_SPELL_8
     _autoterm_dialog_id = DI1962_LEARN_SPELL_8_AUTOTERM
     _placement_id = 8
@@ -2435,11 +2438,9 @@ class PsychopathSpellPrize(SpellPrize):
         "spell_9_character",
         "freestanding_spell_9_character",
         "hill_river_spell_9_character",
-        "npc_spell_9_character"
+        "npc_spell_9_character",
     ]
-    packet_replacement_ids = [
-        "spell_9_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_9_elemental_packet"]
     _dialog_id = DI1963_LEARN_SPELL_9
     _autoterm_dialog_id = DI1964_LEARN_SPELL_9_AUTOTERM
     _placement_id = 9
@@ -2456,11 +2457,9 @@ class ShockerSpellPrize(SpellPrize):
         "spell_10_character",
         "freestanding_spell_10_character",
         "hill_river_spell_10_character",
-        "npc_spell_10_character"
+        "npc_spell_10_character",
     ]
-    packet_replacement_ids = [
-        "spell_10_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_10_elemental_packet"]
     _dialog_id = DI1965_LEARN_SPELL_10
     _autoterm_dialog_id = DI1966_LEARN_SPELL_10_AUTOTERM
     _placement_id = 10
@@ -2477,11 +2476,9 @@ class SnowyPrize(SpellPrize):
         "spell_11_character",
         "freestanding_spell_11_character",
         "hill_river_spell_11_character",
-        "npc_spell_11_character"
+        "npc_spell_11_character",
     ]
-    packet_replacement_ids = [
-        "spell_11_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_11_elemental_packet"]
     _dialog_id = DI1967_LEARN_SPELL_11
     _autoterm_dialog_id = DI1968_LEARN_SPELL_11_AUTOTERM
     _placement_id = 11
@@ -2498,11 +2495,9 @@ class StarRainSpellPrize(SpellPrize):
         "spell_12_character",
         "freestanding_spell_12_character",
         "hill_river_spell_12_character",
-        "npc_spell_12_character"
+        "npc_spell_12_character",
     ]
-    packet_replacement_ids = [
-        "spell_12_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_12_elemental_packet"]
     _dialog_id = DI1969_LEARN_SPELL_12
     _autoterm_dialog_id = DI1970_LEARN_SPELL_12_AUTOTERM
     _placement_id = 12
@@ -2519,11 +2514,9 @@ class GenoBeamSpellPrize(SpellPrize):
         "spell_13_character",
         "freestanding_spell_13_character",
         "hill_river_spell_13_character",
-        "npc_spell_13_character"
+        "npc_spell_13_character",
     ]
-    packet_replacement_ids = [
-        "spell_13_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_13_elemental_packet"]
     _dialog_id = DI1971_LEARN_SPELL_13
     _autoterm_dialog_id = DI1972_LEARN_SPELL_13_AUTOTERM
     _placement_id = 13
@@ -2540,11 +2533,9 @@ class GenoBoostSpellPrize(SpellPrize):
         "spell_14_character",
         "freestanding_spell_14_character",
         "hill_river_spell_14_character",
-        "npc_spell_14_character"
+        "npc_spell_14_character",
     ]
-    packet_replacement_ids = [
-        "spell_14_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_14_elemental_packet"]
     _dialog_id = DI1973_LEARN_SPELL_14
     _autoterm_dialog_id = DI1974_LEARN_SPELL_14_AUTOTERM
     _placement_id = 14
@@ -2561,11 +2552,9 @@ class GenoWhirlSpellPrize(SpellPrize):
         "spell_15_character",
         "freestanding_spell_15_character",
         "hill_river_spell_15_character",
-        "npc_spell_15_character"
+        "npc_spell_15_character",
     ]
-    packet_replacement_ids = [
-        "spell_15_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_15_elemental_packet"]
     _dialog_id = DI1975_LEARN_SPELL_15
     _autoterm_dialog_id = DI1976_LEARN_SPELL_15_AUTOTERM
     _placement_id = 15
@@ -2582,11 +2571,9 @@ class GenoBlastSpellPrize(SpellPrize):
         "spell_16_character",
         "freestanding_spell_16_character",
         "hill_river_spell_16_character",
-        "npc_spell_16_character"
+        "npc_spell_16_character",
     ]
-    packet_replacement_ids = [
-        "spell_16_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_16_elemental_packet"]
     _dialog_id = DI1977_LEARN_SPELL_16
     _autoterm_dialog_id = DI1978_LEARN_SPELL_16_AUTOTERM
     _placement_id = 16
@@ -2603,11 +2590,9 @@ class GenoFlashSpellPrize(SpellPrize):
         "spell_17_character",
         "freestanding_spell_17_character",
         "hill_river_spell_17_character",
-        "npc_spell_17_character"
+        "npc_spell_17_character",
     ]
-    packet_replacement_ids = [
-        "spell_17_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_17_elemental_packet"]
     _dialog_id = DI1979_LEARN_SPELL_17
     _autoterm_dialog_id = DI1980_LEARN_SPELL_17_AUTOTERM
     _placement_id = 17
@@ -2624,11 +2609,9 @@ class TerrorizeSpellPrize(SpellPrize):
         "spell_18_character",
         "freestanding_spell_18_character",
         "hill_river_spell_18_character",
-        "npc_spell_18_character"
+        "npc_spell_18_character",
     ]
-    packet_replacement_ids = [
-        "spell_18_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_18_elemental_packet"]
     _dialog_id = DI1981_LEARN_SPELL_18
     _autoterm_dialog_id = DI1982_LEARN_SPELL_18_AUTOTERM
     _placement_id = 18
@@ -2645,11 +2628,9 @@ class PoisonGasSpellPrize(SpellPrize):
         "spell_19_character",
         "freestanding_spell_19_character",
         "hill_river_spell_19_character",
-        "npc_spell_19_character"
+        "npc_spell_19_character",
     ]
-    packet_replacement_ids = [
-        "spell_19_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_19_elemental_packet"]
     _dialog_id = DI1983_LEARN_SPELL_19
     _autoterm_dialog_id = DI1984_LEARN_SPELL_19_AUTOTERM
     _placement_id = 19
@@ -2666,11 +2647,9 @@ class CrusherSpellPrize(SpellPrize):
         "spell_20_character",
         "freestanding_spell_20_character",
         "hill_river_spell_20_character",
-        "npc_spell_20_character"
+        "npc_spell_20_character",
     ]
-    packet_replacement_ids = [
-        "spell_20_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_20_elemental_packet"]
     _dialog_id = DI1985_LEARN_SPELL_20
     _autoterm_dialog_id = DI1986_LEARN_SPELL_20_AUTOTERM
     _placement_id = 20
@@ -2687,11 +2666,9 @@ class BowserCrushSpellPrize(SpellPrize):
         "spell_21_character",
         "freestanding_spell_21_character",
         "hill_river_spell_21_character",
-        "npc_spell_21_character"
+        "npc_spell_21_character",
     ]
-    packet_replacement_ids = [
-        "spell_21_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_21_elemental_packet"]
     _dialog_id = DI1987_LEARN_SPELL_21
     _autoterm_dialog_id = DI1988_LEARN_SPELL_21_AUTOTERM
     _placement_id = 21
@@ -2708,11 +2685,9 @@ class TherapySpellPrize(SpellPrize):
         "spell_22_character",
         "freestanding_spell_22_character",
         "hill_river_spell_22_character",
-        "npc_spell_22_character"
+        "npc_spell_22_character",
     ]
-    packet_replacement_ids = [
-        "spell_22_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_22_elemental_packet"]
     _dialog_id = DI1989_LEARN_SPELL_22
     _autoterm_dialog_id = DI1990_LEARN_SPELL_22_AUTOTERM
     _placement_id = 22
@@ -2729,11 +2704,9 @@ class GroupHugSpellPrize(SpellPrize):
         "spell_23_character",
         "freestanding_spell_23_character",
         "hill_river_spell_23_character",
-        "npc_spell_23_character"
+        "npc_spell_23_character",
     ]
-    packet_replacement_ids = [
-        "spell_23_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_23_elemental_packet"]
     _dialog_id = DI1991_LEARN_SPELL_23
     _autoterm_dialog_id = DI1992_LEARN_SPELL_23_AUTOTERM
     _placement_id = 23
@@ -2750,11 +2723,9 @@ class MuteSpellPrize(SpellPrize):
         "spell_24_character",
         "freestanding_spell_24_character",
         "hill_river_spell_24_character",
-        "npc_spell_24_character"
+        "npc_spell_24_character",
     ]
-    packet_replacement_ids = [
-        "spell_24_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_24_elemental_packet"]
     _dialog_id = DI1993_LEARN_SPELL_24
     _autoterm_dialog_id = DI1994_LEARN_SPELL_24_AUTOTERM
     _placement_id = 24
@@ -2771,11 +2742,9 @@ class SleepyTimeSpellPrize(SpellPrize):
         "spell_25_character",
         "freestanding_spell_25_character",
         "hill_river_spell_25_character",
-        "npc_spell_25_character"
+        "npc_spell_25_character",
     ]
-    packet_replacement_ids = [
-        "spell_25_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_25_elemental_packet"]
     _dialog_id = DI1995_LEARN_SPELL_25
     _autoterm_dialog_id = DI1996_LEARN_SPELL_25_AUTOTERM
     _placement_id = 25
@@ -2792,11 +2761,9 @@ class ComeBackSpellPrize(SpellPrize):
         "spell_26_character",
         "freestanding_spell_26_character",
         "hill_river_spell_26_character",
-        "npc_spell_26_character"
+        "npc_spell_26_character",
     ]
-    packet_replacement_ids = [
-        "spell_26_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_26_elemental_packet"]
     _dialog_id = DI1997_LEARN_SPELL_26
     _autoterm_dialog_id = DI1998_LEARN_SPELL_26_AUTOTERM
     _placement_id = 26
@@ -2813,11 +2780,9 @@ class PsychBombSpellPrize(SpellPrize):
         "spell_27_character",
         "freestanding_spell_27_character",
         "hill_river_spell_27_character",
-        "npc_spell_27_character"
+        "npc_spell_27_character",
     ]
-    packet_replacement_ids = [
-        "spell_27_elemental_packet"
-    ]
+    packet_replacement_ids = ["spell_27_elemental_packet"]
     _dialog_id = DI1999_LEARN_SPELL_27
     _autoterm_dialog_id = DI2000_LEARN_SPELL_27_AUTOTERM
     _placement_id = 27
@@ -2876,6 +2841,8 @@ class MallowRecruitmentPrize(CharacterPrize):
             output.extend(
                 [
                     ClearBit(SEWERS_CLOSED),
+                    RemoveObjectFromSpecificLevel(NPC_0, R333_KERO_SEWERS_ENTRANCE),
+                    RemoveObjectFromSpecificLevel(NPC_1, R333_KERO_SEWERS_ENTRANCE),
                 ]
             )
         if show_dialog:
@@ -3221,7 +3188,13 @@ class MackBossFight(BossFightPrize):
         if world.settings.is_flag_value(
             _gf("KeroSewersGate"), _gf("KeroSewersGating").MACK
         ):
-            output.extend([ClearBit(SEWERS_CLOSED)])
+            output.extend(
+                [
+                    ClearBit(SEWERS_CLOSED),
+                    RemoveObjectFromSpecificLevel(NPC_0, R333_KERO_SEWERS_ENTRANCE),
+                    RemoveObjectFromSpecificLevel(NPC_1, R333_KERO_SEWERS_ENTRANCE),
+                ]
+            )
         return EventScript(output)
 
 
@@ -3671,13 +3644,13 @@ class BoosterBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
         DI1120_NIMBUS_BIRD_GUARD: """SNIFIT 1: Hello there.[await]\n Booster's busy right now, so we\n can't let you in.[await]""",
-        DI1945_NIMBUS_GUARD: """SNIFIT 2: Please refrain\n from bothering Booster.[await]"""
+        DI1945_NIMBUS_GUARD: """SNIFIT 2: Please refrain\n from bothering Booster.[await]""",
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Booster's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Booster.[await]""",
         DI1120_NIMBUS_BIRD_GUARD: """SNIFSTER 1: Hello there.[await]\n Booster's busy right now, so we\n can't let you in.[await]""",
-        DI1945_NIMBUS_GUARD: """SNIFSTER 2: Please refrain\n from bothering Booster.[await]"""
+        DI1945_NIMBUS_GUARD: """SNIFSTER 2: Please refrain\n from bothering Booster.[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """APPRENTICE: Oh, dear![delay] We've\n failed to keep the intruder away\n from Booster![await]""",
@@ -3797,7 +3770,7 @@ class BundtBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BUNDT: What a delicious training\n exercise![await]""",
         DI1120_NIMBUS_BIRD_GUARD: """CHEF TORTE: Is dinner time.[await]\n Ze guests are enjoyeeng zeir\n dinner, so ve cannot let you in.[await]""",
-        DI1945_NIMBUS_GUARD: """APPRENTICE: Oh, yeah, I'm sure\n they're loving the food. Nice of\n them to invite us in for some...[await]"""
+        DI1945_NIMBUS_GUARD: """APPRENTICE: Oh, yeah, I'm sure\n they're loving the food. Nice of\n them to invite us in for some...[await]""",
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Bundt is busy right now, so it\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
@@ -3998,7 +3971,7 @@ class HidonBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """WHUHOH: I bet this would be even\n harder to do in my box.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """WHUHOH: I bet this would be even\n harder to do in my box.[await]""",
         DI1120_NIMBUS_BIRD_GUARD: """GOOMBETTE: Oh yeah? Think you're\n tough, just 'cause you're bigger\n than me?![await]""",
-        DI1945_NIMBUS_GUARD: """GOOMBETTE: I heard you laughing!\n Go on, laugh it up! At least I'm\n allowed in the castle![await]"""
+        DI1945_NIMBUS_GUARD: """GOOMBETTE: I heard you laughing!\n Go on, laugh it up! At least I'm\n allowed in the castle![await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """GOOMBETTE: You mighta' won\n against us, but Hidon's gonna\n beat you up![await]""",
@@ -4018,7 +3991,8 @@ class HidonBossFight(BossFightPrize):
     }
     _dialog_replacements_remake = {
         DI1120_NIMBUS_BIRD_GUARD: """MINI GOOMBA: Oh yeah? Think\n you're tough, just 'cause you're\n bigger than me?![await]""",
-        DI1945_NIMBUS_GUARD: """MINI GOOMBA: I heard you laughing!\n Go on, laugh it up! At least I'm\n allowed in the castle![await]"""}
+        DI1945_NIMBUS_GUARD: """MINI GOOMBA: I heard you laughing!\n Go on, laugh it up! At least I'm\n allowed in the castle![await]""",
+    }
 
 
 class JohnnyBossFight(BossFightPrize):
@@ -4092,7 +4066,7 @@ class JohnnyBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
         DI1120_NIMBUS_BIRD_GUARD: """ Read my lips... WE AIN'T LETTIN'\n YA THROUGH![await]""",
-        DI1945_NIMBUS_GUARD: """ Arr, they won't even let us go for\n a dip in the springs! We're FISH![await]\n ...Time to unionize, arr harr![await]"""
+        DI1945_NIMBUS_GUARD: """ Arr, they won't even let us go for\n a dip in the springs! We're FISH![await]\n ...Time to unionize, arr harr![await]""",
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Johnny is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
@@ -4167,7 +4141,7 @@ class YaridovichBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """YARIDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """YARIDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
         DI1120_NIMBUS_BIRD_GUARD: """\n There's nothing...to see...in here.[await]""",
-        DI1945_NIMBUS_GUARD: """ If you have...no business...please\n leave.[await]"""
+        DI1945_NIMBUS_GUARD: """ If you have...no business...please\n leave.[await]""",
     }
     _dialog_replacements_remake = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """SPEARDOVICH: How could I lose to\n those...[delay] Huh? Hey, get lost![await]""",
@@ -4295,28 +4269,18 @@ class Belome2BossFight(BossFightPrize):
     _hp_slice_excluded_enemies = [MARIOCLONEEnemy, TOADSTOOL2Enemy]
     _additional_enemies_to_scale = [MALLOWCLONEEnemy, GENOCLONEEnemy, BOWSERCLONEEnemy]
     _character_henchmen = [
-        BossFightHenchman(
-            monster=MARIOCLONEEnemy, model=MariocloneHenchman
-        ),
+        BossFightHenchman(monster=MARIOCLONEEnemy, model=MariocloneHenchman),
         BossFightHenchman(monster=MALLOWCLONEEnemy, model=MallowcloneHenchman),
         BossFightHenchman(monster=GENOCLONEEnemy, model=GenocloneHenchman),
-        BossFightHenchman(
-            monster=TOADSTOOL2Enemy, model=PeachcloneHenchman
-        ),
+        BossFightHenchman(monster=TOADSTOOL2Enemy, model=PeachcloneHenchman),
     ]
 
     _mook_henchmen = [
-        BossFightHenchman(
-            monster=MARIOCLONEEnemy, model=MariocloneHenchman
-        ),
-        BossFightHenchman(
-            monster=TOADSTOOL2Enemy, model=PeachcloneHenchman
-        ),
+        BossFightHenchman(monster=MARIOCLONEEnemy, model=MariocloneHenchman),
+        BossFightHenchman(monster=TOADSTOOL2Enemy, model=PeachcloneHenchman),
         BossFightHenchman(monster=GENOCLONEEnemy, model=GenocloneHenchman),
         BossFightHenchman(monster=MALLOWCLONEEnemy, model=MallowcloneHenchman),
-        BossFightHenchman(
-            monster=BOWSERCLONEEnemy, model=BowsercloneHenchman_2
-        ),
+        BossFightHenchman(monster=BOWSERCLONEEnemy, model=BowsercloneHenchman_2),
     ]
 
     _npc_models = [Belome2LargeObject, Belome2SmallObject]
@@ -4355,7 +4319,7 @@ class Belome2BossFight(BossFightPrize):
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """TOADSTOOL 2: Yuck, I don't want\n to play ANYTHING with you![await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Need a nap?\n You can stay here for free.[await][pause] No dolls will\n wander around overnight, I swear.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
         DI1120_NIMBUS_BIRD_GUARD: """\n                    ••••••[await]""",
-        DI1945_NIMBUS_GUARD: """ There's nothing unusual about\n someone as pretty as me being a\n security guard![await]"""
+        DI1945_NIMBUS_GUARD: """ There's nothing unusual about\n someone as pretty as me being a\n security guard![await]""",
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
@@ -4650,7 +4614,7 @@ class CulexBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI1120_NIMBUS_BIRD_GUARD: """FIRE CRYSTAL: This area is\n off-limits.[await]""",
-        DI1945_NIMBUS_GUARD: """WIBD CRYSTAL: Are you sure you\n want to mess with a water crystal\n in a cloud kingdom?[await]"""
+        DI1945_NIMBUS_GUARD: """WIBD CRYSTAL: Are you sure you\n want to mess with a water crystal\n in a cloud kingdom?[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """CRYSTAL: Proceed forth. Culex\n awaits you.[await]""",
@@ -4756,7 +4720,9 @@ class MegasmilaxBossFight(BossFightPrize):
     _statue_npc = PiranhaPlantStatueObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=PIRANHAPLANTEnemyHenchman, model=PiranhaPlantHenchman),
+        BossFightHenchman(
+            monster=PIRANHAPLANTEnemyHenchman, model=PiranhaPlantHenchman
+        ),
     ]
 
     _dialog_replacements = {
@@ -5166,7 +5132,7 @@ class CzarDragonBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
         DI1120_NIMBUS_BIRD_GUARD: """\n                    ••••••[await]""",
-        DI1945_NIMBUS_GUARD: """\n                    ••••••[await]"""
+        DI1945_NIMBUS_GUARD: """\n                    ••••••[await]""",
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Czar Dragon is busy right now,\n so he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
@@ -5250,7 +5216,7 @@ class AxemRangersBossFight(BossFightPrize):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  AXEM RED: I'm way outta shape![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  AXEM RED: I'm way outta shape![await]""",
         DI1120_NIMBUS_BIRD_GUARD: """AXEM BLACK:\n              Beat it, clod![await]""",
-        DI1945_NIMBUS_GUARD: """AXEM PINK:\n              Get lost, jerk![await]"""
+        DI1945_NIMBUS_GUARD: """AXEM PINK:\n              Get lost, jerk![await]""",
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Axem Rangers are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",

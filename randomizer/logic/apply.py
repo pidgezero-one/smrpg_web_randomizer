@@ -6,7 +6,7 @@ from uuid import uuid4
 import random
 import statistics
 
-from randomizer.logic.partition_calculator import update_chapel_partition, update_johnny_room_partition, update_kitchen_partitions, update_mushroom_kingdom_partitions
+from randomizer.logic.partition_calculator import update_arrow_partitions, update_chapel_partition, update_johnny_room_partition, update_kitchen_partitions, update_mushroom_kingdom_partitions
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -58,7 +58,7 @@ from ..data.variables.variable_names import (
     BATTLE_PACK_ID,
 )
 from ..data.variables.room_names import *
-from ..data.rooms.npcs import BOWSER_WALKING_DOWN_LEFT_NPC, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC, MALLOW_WALKING_DOWN_LEFT_NPC, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_NPC
+from ..data.rooms.npcs import BOWSER_WALKING_DOWN_LEFT_NPC, BOWSER_WALKING_DOWN_LEFT_NPC_2, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC, GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE, MALLOW_WALKING_DOWN_LEFT_NPC, MALLOW_WALKING_DOWN_LEFT_NPC_2, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM, TOADSTOOL_WALKING_DOWN_LEFT_NPC
 from ..types.flags import CharacterStats
 from ..types.prize import BossFightPrize, MimicFightInitiatorPrize, SlotsPrize, SpellPrize, CharacterPrize, StandardPrize
 from ..types.enemy import Enemy
@@ -493,7 +493,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 mallow_script.contents
             )
-            tower_npc_0._npc = MALLOW_WALKING_DOWN_LEFT_NPC
+            tower_npc_0._npc = MALLOW_WALKING_DOWN_LEFT_NPC_2
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a pretty strong gun for that.[await]""")
         if world.overworld_character.ally.index == 3:
@@ -504,6 +504,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 geno_script.contents
             )
+            tower_npc_0._npc = GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.BOWSER):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a REALLY strong person for that.[await]""")
         if world.overworld_character.ally.index == 2:
@@ -514,7 +515,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 bowser_script.contents
             )
-            tower_npc_0._npc = BOWSER_WALKING_DOWN_LEFT_NPC
+            tower_npc_0._npc = BOWSER_WALKING_DOWN_LEFT_NPC_2
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a pyrotechnician for that.[await]""")
         if world.overworld_character.ally.index == 1:
@@ -525,7 +526,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 toadstool_script.contents
             )
-            tower_npc_0._npc = TOADSTOOL_WALKING_DOWN_LEFT_NPC
+            tower_npc_0._npc = TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.PUNCHINELLO):
         world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n to track down a hot-head for that.[await]""")
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MINES):
@@ -548,6 +549,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     update_johnny_room_partition(world)
     update_mushroom_kingdom_partitions(world)
     update_chapel_partition (world)
+    update_arrow_partitions(world)
+    update_mines_inner_henchman_room_partition(world)
 
     # Update freestanding frog coin NPCs in rooms with Coins partition
     # to use the animated frog coin NPC and spinning action script
@@ -866,10 +869,28 @@ def _apply_stats_to_prize(
         # No participants in slicing - reference gets full location HP
         ref_new_hp = location_hp
 
-    # Calculate total original XP for XP ratio calculation
-    total_original_xp = sum(cast(Enemy, c()).xp for c in enemy_classes_in_formation)
-    if total_original_xp == 0:
-        total_original_xp = 1  # Avoid division by zero
+    # === XP/Coins pie slicing (mirrors HP slicing, accounting for instance counts) ===
+    xp_slice_participant_classes = {c for c in enemy_counts.keys() if c not in hp_slice_excluded}
+    total_xp_for_slicing = sum(
+        cast(Enemy, c()).xp * enemy_counts[c]
+        for c in xp_slice_participant_classes
+    ) if xp_slice_participant_classes else 0
+    total_coins_for_slicing = sum(
+        cast(Enemy, c()).coins * enemy_counts[c]
+        for c in xp_slice_participant_classes
+    ) if xp_slice_participant_classes else 0
+
+    # Reference (anchor) enemy's new XP/coins from slicing (for scaling excluded enemies)
+    ref_xp: float = sum(cast(Enemy, c()).xp for c in anchor_classes) / len(anchor_classes)
+    ref_coins: float = sum(cast(Enemy, c()).coins for c in anchor_classes) / len(anchor_classes)
+    if total_xp_for_slicing > 0:
+        ref_new_xp = round(xp * (ref_xp / total_xp_for_slicing))
+    else:
+        ref_new_xp = xp
+    if total_coins_for_slicing > 0:
+        ref_new_coins = round(coins * (ref_coins / total_coins_for_slicing))
+    else:
+        ref_new_coins = coins
 
     # Helper to scale a stat relative to reference, clamped to 0-255
     def scale_stat(loc_stat: int, orig_stat: int, ref_orig: float, ratio: float) -> int:
@@ -922,12 +943,31 @@ def _apply_stats_to_prize(
         enemy.set_evade(min(100, scale_stat(evade, original.evade, ref_evade, enemy.ratio_evade)))
         enemy.set_magic_evade(min(100, scale_stat(magic_evade, original.magic_evade, ref_magic_evade, enemy.ratio_magic_evade)))
 
-        # === XP Calculation ===
-        # Scale XP proportionally based on original XP contribution
-        # Minimum of 1 XP (0 XP is only allowed via ExperienceNoBosses/ExperienceNoRegular flags)
-        if enemy_class in enemy_classes_in_formation:
-            xp_ratio = original.xp / total_original_xp
-            enemy.set_xp(max(1, round(xp * xp_ratio)))
+        # === XP Calculation (mirrors HP slicing) ===
+        if enemy_class in hp_slice_excluded:
+            # Excluded from pie - scale relative to anchor
+            if ref_xp > 0:
+                new_xp = round(ref_new_xp * (original.xp / ref_xp))
+            else:
+                new_xp = original.xp
+        elif total_xp_for_slicing > 0:
+            # Participate in pie - divide location XP proportionally (counts in denominator)
+            new_xp = round(xp * (original.xp / total_xp_for_slicing))
+        else:
+            new_xp = original.xp
+        enemy.set_xp(max(1, new_xp))
+
+        # === Coins Calculation (mirrors HP slicing) ===
+        if enemy_class in hp_slice_excluded:
+            if ref_coins > 0:
+                new_coins = round(ref_new_coins * (original.coins / ref_coins))
+            else:
+                new_coins = original.coins
+        elif total_coins_for_slicing > 0:
+            new_coins = round(coins * (original.coins / total_coins_for_slicing))
+        else:
+            new_coins = original.coins
+        enemy.set_coins(max(0, new_coins))
 
 
 def apply_boss_stat_scaling(world: GameWorld) -> None:

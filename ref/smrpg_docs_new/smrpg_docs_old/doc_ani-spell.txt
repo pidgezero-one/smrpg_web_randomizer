@@ -1,0 +1,1314 @@
+-----------------------
+SPELL ANIMATION STRINGS
+-----------------------
+351026 - 35107F   Enemy spell animation pointers
+351080 - 351492   Enemy spell animation code pointer sets;
+		  contains prepost-animation code such as screen darkeninglighting;
+		  actual animation code is found from the pointers in the set;
+		  more pointers are found within the animation code (prefixed by #$68) to the most specific
+
+===SPELL		OFFSET===
+---------------------------------
+===Drain		351080===	
+
+10 2B 25 	;show spell name
+AB 1D 		;sound: fireball
+21 00 03 00 	;0x03 = yy
+10 75 24	;pointer
+   34 0F	   ;...
+   68 06 37	   ;pointer + (yy * 2)
+      70 3C	      ;pointer
+         82 3C	         ;pointer
+
+	    01 		    ;...read coordinates of spell caster
+	    37	    	    ;position indicator: spell caster
+	    F8 FF	    ;byte 1 - sprite's initial X coordinate
+	    F8 FF	    ;byte 1 - sprite's initial Y coordinate
+	    00 00	    ;more coordinate parameters
+
+	    00		    ;...
+	    81 28	    ;
+	    3E 02	    ;fireball sprite pointer
+	    00 30 00 62	    ;
+ 
+	    10 32 7F	    ;pointer to fireball animation
+
+	       0E 	       ;...
+	       0F 	       ;...
+	       45 	       ;...stores character slot address to register
+
+	       0B 	       ;...read coordinates of spell receptor
+	       27 	       ;position indicator: spell receptor
+	       08 00 	       ;byte 1 - sprite's conclusive X coordinate
+	       F0 FF 	       ;byte 1 - sprite's conclusive Y coordinate
+	       00 00	       ;more coordinate parameters
+
+	       0C 	       ;...
+	       02 	       ;subroutine pointer
+	       00 02 	       ;byte 2 - frame skip (speed of fireball)
+	       00 00	       ;---
+
+	       04	       ;...
+	       06 	       ;bit 1 - wait 2 frames before removal
+				bit 2 - removal flag (must be set to remove fireball)
+				bit 3 - break animation and continue
+
+	       00 00	       ;---
+	       11 	       ;...end
+
+	    AB 1F	    ;sound: explosion
+
+	    03		    ;...
+	    81 20	    ;
+	    07 02	    ;explosion sprite pointer
+	    00		    ;
+
+	    4E		    ;...
+	    09 2F 25	    ;pointer
+
+	       34 0F 	       ;
+	       20 0F 01 00     ;
+	       22 6F 6F 00     ;
+
+	       05	       ;
+	       07	       ;end
+
+   00		   ;
+   40 0F 01 	   ;
+   11 		   ;end
+11		;end
+---------------------------------
+===Lightning Orb 	35108D===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+AB 63 		;sound
+21 00 08 00 	;0x08 = yy
+10 75 24 
+   34 0F	   ;...
+   68 06 37	   ;pointer + (yy * 2)
+      B9 43	      ;pointer
+	 C7 43		 ;pointer
+
+	    10 37 34 	    ;pointer
+
+	    01		    ;...
+	    37		    ;
+	    00 00	    ;
+	    00 00	    ;
+	    E0 FF	    ;
+
+	    70 00	    ;
+	    80 28	    ;
+	    04 03	    ;
+	    00		    ;
+	    08		    ;
+	    00 62	    ;
+
+	    85		    ;...
+	    12 02	    ;(byte 1) / 8 = function: read palette
+
+	    1A		    ;...
+	    01		    ;
+
+	    0E 		    ;...
+
+	    08 
+	    E1 
+	    FF FE 
+	    00 00 
+	    11 00 
+
+	    04 10 10 00 
+
+	    0F 
+
+	    04 10 1E 00 
+
+	    10 48 7F 
+
+	    05 84 03 00 34 08 
+	    21 00 08 00 
+
+	    68 06 37 
+	    06 
+
+	    68 06 37 
+	    0C 
+
+	    04 10 96 00 
+
+	    10 B5 33 
+	    10 0B 34 
+
+	    84 03 00 
+
+	    09 2F 25 
+
+	    01 
+	    17 
+	    00 00 
+	    00 00 
+	    00 00 
+
+	    0E 
+
+	    08 
+	    C2 
+	    FF FB 
+	    FF FB 
+	    01 00 
+
+	    10 EA 33 
+
+	    72 02 6A 
+
+	    85 
+	    02 01 
+
+	    8F 09 77 33 
+
+	    10 6F 33 
+	    10 F5 33 
+
+	    7E 01 74 00 04 78 33 
+
+	    10 99 33 
+
+	    73 76 0F 
+	    10 A7 33 
+	    07 
+
+	    0E 
+
+	    45 
+
+	    01 
+	    27 
+	    00 00 
+	    F6 FF 
+	    00 00 
+
+	    C3 04 
+
+	    10 7D 33 
+	    10 DF 33 
+	    AB 90 
+	    20 0A 00 00 
+	    20 0B 23 00 
+	    20 0C 01 00 
+	    10 97 32 
+	    10 16 34 
+	    10 8B 33 
+	    10 00 34 
+
+	    C4 C5 
+
+	    07 
+
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Flame		3510A0===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+AB 1C 		;sound
+21 00 03 00 
+10 89 24 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Bolt			3510B3===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+AB 2C 		;sound
+21 00 11 00 
+10 75 24 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Crystal		3510C6===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+21 00 09 00 
+10 75 24 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Flame Stone		3510D7===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+AB 1A 		;sound
+21 00 03 00 
+10 7F 24 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Mega Drain		3510EA===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+21 00 21 00 
+10 75 24 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Willy Wisp		3510FB===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+AB 63 		;sound
+21 00 08 00 
+10 7F 24 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Diamond Saw		35110E===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+21 00 09 00 
+10 7F 24 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Electroshock  	351123===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+AB 64 		;sound
+21 00 11 00 
+10 89 24 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Blast		351136===	
+
+10 2B 25 	;show spell name
+AB 0C 		;sound
+21 00 1D 00 
+10 75 24 
+11		;end
+---------------------------------
+===Storm		351143===	
+
+10 2B 25 	;show spell name
+10 F8 36 	;darken screen
+AB 13 		;sound
+21 00 0A 00 
+10 75 24 
+B2 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Ice Rock		351157===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+AB C6 		;sound
+21 00 09 00 
+10 89 24 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Escape		35116A===	
+
+21 38 3A 00 
+27 08 00 00 
+79 
+11		;end
+---------------------------------
+===Dark Star		35117E===	
+
+10 2B 32 
+16 02 
+10 74 32 
+16 02 
+10 2B 25 	;show spell name
+10 EB 36 
+AB 00 		;sound
+34 0F 
+21 00 00 00 
+68 BE C4 
+00 40 0F 01 
+8C 
+11		;end
+---------------------------------
+===Recover		351195===	
+
+10 2B 25 	;show spell name
+AB 42 		;sound
+21 00 17 00 
+34 0F 
+68 06 37 
+00 04 10 10 00 
+68 06 37 
+02 04 10 10 00 
+68 06 37 
+04 40 0F 01 
+11		;end
+---------------------------------
+===Mega Recover  	3511B8===	
+
+10 2B 25 	;show spell name
+AB 42 		;sound
+21 00 17 00 
+34 0F 
+68 06 37 
+06 04 10 10 00 
+68 06 37 
+08 04 10 10 00 
+68 06 37 
+0A 40 0F 01 
+11		;end
+---------------------------------
+===Flame Wall		3511DB===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB 1A 		;sound
+21 00 03 00 
+10 B1 24 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Static E!		3511F2===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB 66 		;sound
+21 00 11 00 
+10 7F 24 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Sand Storm		351209===	
+
+10 2B 25 	;show spell name
+10 EB 36 
+AB 60 		;sound
+21 00 0B 00 
+10 93 24 
+B2 
+8C 
+11		;end
+---------------------------------
+===Blizzard		35121B===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB 68 		;sound
+21 00 09 00 
+10 B1 24 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Drain Beam		351232===	
+
+10 F8 36 	;darken screen
+10 EB 36 
+10 2B 25 	;show spell name
+AB 13 		;sound
+21 00 1B 00 
+10 89 24 
+10 FF 36 	;lighten screen
+8C 
+11		;end
+---------------------------------
+===Meteor Blast  	351249===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB 69 		;sound
+21 00 18 00 
+10 75 24 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Light Beam		351260===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB 6A 		;sound
+21 00 00 00 
+10 A7 24 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Water Blast		351277===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB B2 		;sound
+21 00 1E 00 
+10 75 24 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Solidify		35128E===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB AE 		;sound
++---------------------------------------------
+|34 0F 		;start offset pointer set
+|21 00 1A 00    ;yy = 0x1A
+|68 06 37 	;offset pointer 1 + (yy * 2) = $373A
+|   E3 56	   ;pointer 1 + P byte = $56E5
+|      16 57	      ;pointer 2
+|	 +-------------------------------------------------------------
+|	 |10 37 34	 ;direct pointer
+|	 |  +---------------------------+
+|	 |  |34 08 			
+|	 |  |22 18 1B E0 		
+|	 |  |11 			
+|	 |  +---------------------------+
+|	 |01		 ;...set position of ice BG effect from caster
+|	 |07		 ;set initial position flag (screen edge)
+|	 |00 00		 ;(no modifications)
+|	 |00 00		 ;
+|	 |00 00		 ;
+|	 |
+|	 |72 04		 ;...set spell GFX assignment
+|	 |3C		 ;ice BG effect graphic assignment
+|	 |***now read from $56ED***
+|	 +------------------------------------------------
+|	 |10 EA 33	    ;
+|	 |  +---------------------------+
+|	 |  |0A 	    ;...
+|	 |  |20 18 1B E0    ;...
+|	 |  |
+|	 |  |39 08 02	    ;...
+|	 |  |EA 33	    ;direct pointer
+|	 |  |11		    ;end
+|	 |  +---------------------------+
+|	 |***now read from $337D***
+|	 |85 02 02 	 ;byte 2 - slowdown (higher value = slower animation)
+|	 |77 12 	 ;
+|	 |04 10 14 00 
+|	 |10 8B 33 
+|	 |74 00 04 
+|	 |7E 02 
+|	 |74 00 04 
+|	 |78 12 73 76 	 ;
+|	 |07 		 ;end
+|	 +----------------------------------------------
+|02		;offset pointer 1 P byte
++-----|  |----------------------------------------------
++-----|  |----------------------------------------------
+|68 06 37 	;offset pointer 2
+|   E3 56	   ;pointer 1 + P byte = $56E3
+|      ED 56	      ;pointer 2
+|	 +---------------------------------------------------------------
+|	 |01 		 ;...set position of ice spires from screen edge
+|	 |07 		 ;set initial position flag (screen edge)
+|	 |30 00		 ;0x30 pixels from left
+|	 |50 00		 ;0x50 pixels from top
+|	 |00 00		 ;
+|	 |
+|	 |72 04		 ;...set spell GFX assignment
+|	 |16		 ;ice spires graphic assignment
+|	 |***now read offset pointer set ending function***
+|	 +----------------------------------------------
+|	 |10 7D 33	 ;
+|	 |10 F5 33	 ;
+|	 |
+|	 |85 02 01 
+|	 |77 14 
+|	 |74 00 08 
+|	 |04 10 1E 00 
+|	 |7E 02 
+|	 |74 00 08 
+|	 |78 14 73 76 
+|	 |
+|	 |09 2F 25 
+|	 +----------------------------------------------
+|00 		;offset pointer 2 P byte
++-----|  |----------------------------------------------
++-----|  |----------------------------------------------
+|40 0F 01 	;end offset pointer set
++------------------------------------------------------
+|8C 
+|10 FF 36 	;lighten screen
+|11		;end
++---------------------------------
+
+===Petal Blast		3512AF===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB BC 		;sound
+34 0F 
+21 00 1A 00 	;0x1A = yy
+
+---BGL 2 petals---
+68 06 37 	;pointer + (yy * 2) = $373A
+   E3 56	   ;pointer 2 (+P byte) = $56E9
+      55 57	      ;pointer 3 to code
+
+	 01		 ;
+	 07 
+	 00 00 
+	 00 00 
+	 00 00 
+
+	 72 01 
+	 4D	 	 ;spell GFX assignment
+
+	 04 10 08 00 
+
+	 0E 
+
+	 08 
+	 C4 
+	 FF FC 
+	 FF FC 
+	 01 00 
+
+	 08 
+	 C2 
+	 80 01 
+	 80 01 
+	 01 00 
+
+	 85 02 02 
+	 77 12 
+	 74 00 04 
+	 04 10 5A 00 
+	 7E 02 
+	 74 00 04 
+	 78 12 
+	 73 0F 
+
+	 10 99 33 
+
+	 76 
+
+	 09 2F 25 
+
+06 		;P byte
+
+---BGL 3 petals---
+68 06 37 	;pointer + (yy * 2) = $373A
+   E3 56	   ;pointer 2 (+P byte) = $56EB
+      91 57	      ;pointer 3 to code
+
+	 01 
+	 07 
+	 00 00 
+	 00 00 
+	 00 00 
+
+	 72 01 4E 
+
+	 08 
+	 C4 
+	 FF FE 
+	 FF FE 
+	 01 00 
+
+	 08 
+	 C2 
+	 80 00 
+	 80 00 
+	 01 00 
+
+	 85 02 02 
+	 77 14 
+	 74 00 08 
+	 04 10 5A 00 
+	 7E 02 
+	 74 00 08 
+	 78 14 
+	 73 0F 
+	 10 A7 33 
+	 76 
+
+	 07 
+
+08 		;P byte
+
+04 10 10 00 
+
+---sprite layer petals---
+68 06 37 	;pointer + (yy * 2) = $373A
+   E3 56	   ;pointer 2 (+P byte) = $56E7
+      40 57	      ;pointer 3 to code
+
+	 10 37 34 	 ;
+	    34 08 	    ;
+	    22 18 1B E0     ;
+	    11 		    ;
+	 21 00 05 00 	 ;0x05 = yy
+	 68 4B 62 	 ;pointer + (yy * 2) = $6255
+	    49 66	    ;pointer 2 (+P byte) = $664D
+	       8A 66	       ;pointer 3 to code
+
+		  01 		  ;
+		  37 		  ;
+		  00 00 	  ;
+		  00 01 	  ;
+		  00 00 	  ;
+
+		  00 		  ;...set sprite assignment
+		  C1 28 	  ;
+		  20 02 	  ;sprite assignment
+		  00 38 00 62 	  ;
+		  
+		  34 08 
+		  34 09 
+		  34 04 
+
+		  21 00 00 00 	  ;...set 00 = yy
+		  68 15 6B 	  ;
+		     2D 6B	     ;pointer 2 (+P byte) = $6B49
+			D5 6B		;pointer 3 to code
+			   10 E6 2A 
+
+			      6B 00 19 00 64 
+			      EE 2A 
+				 20 2B
+
+				    01 
+				    06 
+				    20 00 
+				    20 00 
+				    00 00 
+				    11 
+
+			      11 
+			      20 2B
+
+				 01 
+				 06 
+				 20 00 
+				 20 00 
+				 00 00 
+				 11 
+
+			   83 83 0F 
+			   08 
+			   C4 
+			   FF FB 
+			   FF FB 
+			   01 00 
+			   08 
+			   C2 
+			   00 02 
+			   00 02 
+			   01 00 
+			   04 10 14 00 
+			   09 F4 6A 
+
+		  1C 		  ;P byte
+
+		  04 10 04 00 
+
+		  30 04 
+
+		  26 04 20 00 
+		  A5 66 
+
+		  0A 
+
+		  26 09 20 00 
+		  B5 66 
+
+		  09 01 6B 
+		     2C 08 01 00 
+		     22 68 68 00 
+		     05 
+		     07 
+
+	 04 		 ;
+	 10 52 25 	 ;
+	    0A 
+	    20 38 68 00 
+	    26 08 01 00 
+	    52 25 
+	    11 		    ;end
+	 10 00 34 	 ;
+	 10 0B 34 	 ;
+	 07 		 ;end, return to 1st code bank
+                   
+04 		;P byte
+
+40 0F 01 	;end animation sequence
+AB 73 		;sound
+8C 		;infliction animation
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Aurora Flash  	3512DA===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB 14 		;sound
+21 00 12 00 	;0x12 = yy
+10 75 24 
+
+   34 0F	   ;...
+   68 06 37	   ;pointer + (yy * 2) = $372A
+
+      11 4F	      ;pointer 2 (+P byte) = $4F11
+	 19 4F		 ;pointer 3 to code
+	    01 
+	    07 
+	    10 00 
+	    00 00 
+	    00 00 
+
+	    72 04 
+	    42		 ;spell GFX assignment
+
+	    77 12 
+
+	    04 10 78 00 
+	    78 12 
+	    73 76 
+	    09 2F 25 
+
+   00		   ;P byte
+   40 0F 01 	   ;
+   11 		   ;end
+
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Boulder		3512F1===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+AB 60 		;sound
+21 00 12 00 
+10 7F 24 
+B2 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Corona		351309===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+21 00 21 00 
+10 7F 24 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Meteor Swarm  	35131E===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+21 00 20 00 
+10 9D 24 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Knock Out	 	351333===	
+
+10 2B 25 	;show spell name
+10 EB 36 
+AB 00 		;sound
+21 00 03 00 
+10 75 24 
+8C 
+11		;end
+---------------------------------
+===Weird Mushroom	351344===	
+
+10 2B 25 	;show spell name
+21 00 06 00 
+34 0F 
+68 06 37 
+0C 40 0F 01 
+AB 42 		;sound
+21 00 17 00 
+7F 34 0F 
+68 06 37 
+00 04 10 10 00 
+68 06 37 
+02 04 10 10 00 
+68 06 37 
+04 40 0F 01 
+11		;end
+---------------------------------
+===Breaker Beam  	351375===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+43 03 4E 34 0F 
+21 00 1C 00 
+68 06 37 
+06 40 0F 01 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Shredder		35138F===	
+
+10 2B 25 	;show spell name
+10 EB 36 
+21 00 00 00 
+34 0F 
+68 FE C5 
+00 40 0F 01 
+8C 
+11		;end
+---------------------------------
+===Sledge		3513A4===	
+
+10 2B 25 	;show spell name
+10 EB 36 
+10 EB 36 
+AB 00 		;sound
+21 00 20 00 
+10 75 24 
+8C 
+11		;end
+---------------------------------
+===Sword Rain		3513B8===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+21 00 20 00 
+10 7F 24 
+B2 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Spear Rain		3513CE===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+21 00 20 00 
+10 89 24 
+B2 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Arrow Rain		3513E4===	
+
+10 F8 36 	;darken screen
+10 2B 25 	;show spell name
+10 EB 36 
+21 00 20 00 
+10 93 24 
+B2 
+8C 
+10 FF 36 	;lighten screen
+11		;end
+---------------------------------
+===Big Bang		3513FA===	
+
+10 2B 25 	;show spell name
+10 EB 36 
+21 00 0B 00 
+34 0F 
+68 06 37 
+0A 04 10 08 00 1B 01 40 0F 01 
+8C 
+11		;end
+---------------------------------
+
+//////////////////////////////////////////////////////////////////
+
+ALLIES
+
+35C9C8	 @Jump
+35C9CC	 @Fire Orb
+35C9D6	 @Super Jump
+35C9DA	 @Super Flame
+35C9E4	 @Ultra Jump
+35C9E8	 @Ultra Flame
+35C9F2	 @Therapy
+35C9FC	 @Group Hug
+35CA00	 @Sleepy Time
+35CA07	 @Come Back
+35CA11	 @Mute
+35CA1B	 @Psych Bomb
+35CA22	 @Terrorize
+35CA2C	 @Poison Gas
+35CA36	 @Crusher
+35CA40	 @Bowser Crush  
+35CA47	 @Geno Beam
+35CA4E	 @Geno Boost
+35CA58	 @Geno Whirl
+35CA62	 @Geno Blast
+35CA69	 @Geno Flash
+35CA73	 @Thunderbolt
+35CA7D	 @HP Rain
+35CA84	 @Psychopath
+35CA8E	 @Shocker
+35CA98	 @Snowy
+35CAA2	 @Star Rain
+
+FUNCTIONS
+---------
+10 xx xx	;pointer to code
+68 xx xx	;indirect pointer to code (more often used in in-depth code)
+AB xx		;sound
+
+//////////////////////////////////////////
+
+21 xx yy zz	;sprite animation register
+10 75 24	;common pointer
+10 7F 24	;common pointer
+10 89 24	;common pointer
+
+yy  ANIMATION
+-------------
+
+10 75 24
+
+00  aura light ball
+01  medium spike shot
+02  small knife throw
+03  drain
+04  Bullet Bill
+05  ___dummy
+06  three pink spores
+07  ink blast
+08  lightning orb
+09  crystal
+0A  storm
+0B  suicide explosion
+0C  dust spray
+0D  scream sonar field
+0E  split-image of caster from right
+0F  bell chimes
+10  thrown hammer
+11  bolt
+12  aurora flash
+13  yellow droplet
+14  electroshock sparks
+15  arrow button locker: right
+16  arrow strike
+17  recover
+18  meteor blast
+19  egg shot
+1A  solidify spires
+1B  ---
+1C  bombs away
+1D  blast
+1E  water blast
+1F  fear roulette
+20  sledge
+21  mega drain
+22  pollen nap
+
+10 7F 24
+
+00  heart
+01  small spike shot
+02  card toss
+03  flame stone
+04  blazer bullet
+05  orb shot
+06  three pink spores
+07  ink blast exhaust tail
+08  willy wisp
+09  diamond saw
+0A  black rock shot
+0B  white fireworks explosion
+0C  ---
+0D  ---
+0E  split-image of caster from behind
+0F  elegy
+10  bomb throw
+11  static e!
+12  boulder (opaque FG layer)
+13  water droplet
+14  coin fountain from boss death
+15  arrow button locker: left
+16  G'night
+17  recover
+18  ---
+19  egg ricocheted
+1A  ---
+1B  ---
+1C  ---
+1D  ---
+1E  King Bomb explosion
+1F  ---
+20  sword rain
+21  corona
+
+10 89 24
+
+00  ---
+01  big spike shot
+02  wild card
+03  flame
+04  slingshot
+05  underground dive rock debris
+06  sleep sauce
+07  endobubble
+08  ---
+09  ice rock
+0A  small spike shot
+0B  migraine/psyche
+0C  water spout
+0D  ---
+0E  split-image of caster from left
+0F  ---
+10  spritz bomb
+11  electroshock
+12  boulder (partially transparent BG layer)
+13  water droplet
+14  ---
+15  arrow button locker: middle
+16  ---
+17  recover
+18  ---
+19  egg ricocheted
+1A  petal blast: FG petals
+1B  drain beam
+1C  __sound
+1D  ---
+1E  ---
+1F  ---
+20  spear rain
+21  ___red BG glitch
+
+10 93 24
+
+00  ---
+01  small spike shot
+02  ---
+03  flame engulf
+04  booster express
+05  echofinder
+06  bubbles
+07  ---
+08  ---
+09  ---
+0A  black rock toss
+0B  sand storm FG
+0C  ---
+0D  ---
+0E  ---
+0F  ---
+10  hammer time
+11  ---
+12  sand storm BG
+13  water splash
+14  red sparks
+15  A button land
+16  ---
+17  yellow recover
+18  ---
+19  egg ricocheted
+1A  petal blast BG 2
+1B  ---
+1C  breaker beam
+1D  ---
+1E  water spout
+1F  ---
+20  arrow rain
+
+10 B1 24
+
+00  ---
+01  large spike shot
+02  royal flush
+03  flame wall
+04  bullet
+05  egg shot
+06  weird mushroom
+07  ---
+08  ---
+09  blizzard
+0A  ---
+0B  ---
+0C  ---
+0D  ---
+0E  ---
+0F  ---
+10  musical note toss
+11  ---
+12  ---
+13  water splash
+
+//////////////////////////////////////
+
+SPELL GRAPHIC ASSIGNMENTS
+
+byte 1	palette offset
+byte 2	graphic assignment
+byte 3	
+byte 4	
+
+251000	00 00 00 00 	[00]	---
+251004	00 00 00 00 	[01]	---
+251008	00 01 20 70 	[02]	thundershock
+25100C	00 3E 50 40 	[03]	thundershock effect
+251010	00 02 20 80 	[04]	crusher
+251014	00 03 00 00 	[05]	meteor blast
+251018	00 25 28 60 	[06]	bolt
+25101C	00 22 00 00 	[07]	star rain
+251020	00 04 10 70 	[08]	flame engulf
+251024	00 23 00 00 	[09]	mute balloon
+251028	00 35 20 20 	[0A]	flame stone
+25102C	00 05 40 40 	[0B]	bowser crush
+251030	00 0D 20 18 	[0C]	spell cast spade
+251034	00 0E 20 18 	[0D]	spell cast heart
+251038	00 0F 20 18 	[0E]	spell cast club
+25103C	00 10 20 18 	[0F]	spell cast diamond
+251040	00 1E 20 18 	[10]	spell cast star
+251044	00 06 30 40 	[11]	terrorize
+251048	00 19 00 00 	[12]	snowy snow 1
+25104C	00 1A 00 00 	[13]	snowy snow 2
+251050	00 07 20 20 	[14]	endobubble black ball
+251054	00 00 00 00 	[15]	---
+251058	00 34 00 00 	[16]	solidify
+25105C	00 00 00 00 	[17]	---
+251060	00 00 00 00 	[18]	---
+251064	00 08 00 00 	[19]	psych bomb sphere
+251068	00 00 00 00 	[1A]	---
+25106C	01 22 00 00 	[1B]	black star rain
+251070	00 09 00 00 	[1C]	blue orb/ball
+251074	00 00 00 00 	[1D]	---
+251078	00 00 00 00 	[1E]	---
+25107C	00 00 00 00 	[1F]	---
+251080	00 3D 00 00 	[20]	Geno whirl
+251084	00 00 00 00 	[21]	---
+251088	00 00 00 00 	[22]	---
+25108C	00 00 00 00 	[23]	---
+251090	00 1D 00 00 	[24]	blank white flash
+251094	00 24 00 00 	[25]	blank white flash
+251098	00 0A 00 00 	[26]	boulder
+25109C	00 0B 10 10 	[27]	black ball/orb
+2510A0	01 1D 00 00 	[28]	blank blue flash
+2510A4	02 1D 00 00 	[29]	blank red flash
+2510A8	01 24 00 00 	[2A]	blank blue flash
+2510AC	02 24 00 00 	[2B]	blank red flash
+2510B0	00 00 00 00 	[2C]	---
+2510B4	03 1D 00 00 	[2D]	black flash
+2510B8	03 24 00 00 	[2E]	black flash
+2510BC	03 2A 00 00 	[2F]	meteor shower snow/confetti
+2510C0	04 24 00 00 	[30]	black flash
+2510C4	05 24 00 00 	[31]	black flash
+2510C8	02 29 00 00 	[32]	dark red bomb blast
+2510CC	03 29 00 00 	[33]	dark blue bomb blast
+2510D0	01 2A 00 00 	[34]	greenish snow/confetti
+2510D4	01 29 00 00 	[35]	blue bomb blast
+2510D8	00 0B 10 10 	[36]	black ball/orb
+2510DC	02 0B 10 10 	[37]	red ball/orb
+2510E0	03 0B 10 10 	[38]	green ball/orb
+2510E4	00 2A 00 00 	[39]	greyish-red snow/confetti
+2510E8	02 2A 00 00 	[3A]	red snow/confetti
+2510EC	00 29 00 00 	[3B]	fire bomb
+2510F0	00 28 00 00 	[3C]	ice bomb/solidify BG
+2510F4	00 27 00 00 	[3D]	static e!
+2510F8	00 0C 00 00 	[3E]	green star bunches
+2510FC	01 0C 00 00 	[3F]	blue star bunches
+251100	02 0C 00 00 	[40]	pink star bunches
+251104	03 0C 00 00 	[41]	yellow star bunches
+251108	00 11 00 00 	[42]	aurora flash
+25110C	00 3C 00 00 	[43]	storm
+251110	00 12 20 B8 	[44]	electroshock
+251114	00 3F 00 00 	[45]	treasure head spell 1
+251118	01 3F 00 00 	[46]	treasure head spell 2
+25111C	02 3F 00 00 	[47]	treasure head spell 3
+251120	03 3F 00 00 	[48]	treasure head spell 4
+251124	00 00 00 00 	[49]	---
+251128	00 00 00 00 	[4A]	---
+25112C	00 00 00 00 	[4B]	---
+251130	00 1C 00 00 	[4C]	flame wall
+251134	00 13 00 00 	[4D]	petals
+251138	00 14 00 00 	[4E]	faster petals
+25113C	00 15 00 00 	[4F]	drain beam
+251140	00 16 00 00 	[50]	drain beam effect
+251144	00 00 00 00 	[51]	---
+251148	00 17 30 70 	[52]	electric bolt
+25114C	00 33 00 00 	[53]	black flash
+251150	00 00 00 00 	[54]	---
+251154	01 3A 00 00 	[55]	dark yellow pollen
+251158	00 18 00 00 	[56]	geno beam
+25115C	01 18 00 00 	[57]	geno beam - red
+251160	02 18 00 00 	[58]	geno beam - gold
+251164	03 18 00 00 	[59]	geno beam - yellow
+251168	04 18 00 00 	[5A]	geno beam - green
+25116C	00 1B 00 00 	[5B]	thunderbolt
+251170	00 21 00 00 	[5C]	light beam
+251174	00 2B 00 00 	[5D]	meteor shower stars
+251178	00 3A 00 00 	[5E]	purple pollen
+25117C	00 1F 00 00 	[5F]	HP rain - blue
+251180	00 20 00 00 	[60]	HP rain - dark blue
+251184	00 2C 00 00 	[61]	wavy dark blue lines
+251188	01 2C 00 00 	[62]	wavy blue lines
+25118C	02 2C 00 00 	[63]	wavy red lines
+251190	03 2C 00 00 	[64]	wavy brown lines
+251194	00 26 00 00 	[65]	sand storm sand
+251198	00 2D 00 00 	[66]	sledge
+25119C	00 2E 00 00 	[67]	arrow rain BG
+2511A0	00 2F 00 00 	[68]	spear rain BG
+2511A4	00 30 00 00 	[69]	sword rain BG
+2511A8	00 31 00 00 	[6A]	lightning orb dome waves
+2511AC	00 32 00 00 	[6B]	echofinder
+2511B0	00 36 00 00 	[6C]	poison gas BG 1
+2511B4	00 37 00 00 	[6D]	poison gas BG 2
+2511B8	00 38 00 00 	[6E]	poison gas green BG
+2511BC	00 39 00 00 	[6F]	beige beam effect
+2511C0	00 3B 00 00 	[70]	molten liquid Smelter
+
+common string pointers
+10 75 24	;common indirect pointer to spell animation
+		;conditioned by sprite animation register
+10 2B 25	;show spell name
+10 F8 36	;darken screen
+10 FF 36	;lighten screen
+
+34 0F 35 00 suit appears
+68 ## ##  (suit)
+00 40 0F 01 suit disappears
+
+Suit Animations
+68 99 84  Spade
+68 DB 83  Club
+68 7C 83  Diamond
+68 1D 83  Heart
+
+Geno's Star)
+68 3A 84  Star
+
+3593AF   'Fire Orb' spell message
+00   Exp. up 0 point(s)!
+01   Got a(n) Weapon!
+02   Got 0 coin(s)!
+08   Get a freebie!
+0A   Hit Y repeatedly!
+0C   Rotate control pad!
+0E   The flock is full!
+35AC71   'Rotate Control Pad' text pointer

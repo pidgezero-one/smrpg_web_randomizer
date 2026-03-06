@@ -1,0 +1,102 @@
+00  Mallow belts Croco, gets back frog coin
+01  Kinklink flashes, loses grip and Bowser falls
+02  Belome swallows Mallow
+03  ___four Aeros
+04  Mack jumps out of battle off screen
+05  Mack returns to battle
+06  Belome spits out Mallow
+07  ___dialogue from Countdown, Toadstool puts on a show
+08  ___more dialogue from Countdown, Toadstool act
+09  Punchinello interludes and prepares to summon Bob-ombs
+0A  Punchinello interludes and prepares to summon Mezzo Bombs
+0B  Punchinello summons King Bomb which then explodes
+0C  ___dialogue from Booster fight
+0D  ___
+0E  INTRO SCENE: Punchinello fight
+0F  Croco steals items: "You want them back?"
+10  Croco returns items: "Enough! Here's your junk..."
+11  INTRO SCENE: Knife Guy & Grate Guy fight
+12  Knife Guy & Grate Guy pair up piggy-back
+13  Knife Guy & Grate Guy separate: "Yikes! They're pretty tough"
+14  Mario and party run off of balcony after Knife Guy & Grate Guy fight
+15  Johnny challenges Mario to a one-on-one
+16  Yaridovich 'Mirage Attack'
+17  Yaridovich mirage is destroyed, return to single form
+18  Machine Made Yaridovich 'Multiplier'
+19  Drill Bit
+1A  INTRO SCENE: Tentacles rise from holes
+1B  beat Tentacles, move on to next
+1C  beat Tentacles, move on to King Calamari
+1D  jump down King Calamari's cellar hole
+1E  jump up King Calamari's cellar hole
+1F  Bundt moves, Assistant pokes Torte
+20  Bundt moves again, both cooks run away
+21  candles appear on Bundt
+22  "Blow those candles out!"
+23  Raspberry is beaten, Snifits & Booster run in and eat cake
+24  Tentacles throw character off screen
+25  GAME INTRO: Mario hammers Sky Troopa
+26  GAME INTRO: Mario stomps Goomba
+27  GAME INTRO: Mallow uses Thunderbolt
+28  GAME INTRO: Geno attacks
+29  GAME INTRO: Geno uses Geno Beam
+2A  Bb-bombs explode
+2B  Toad's battle mechanics tutorial
+2C  Czar Dragon dies
+2D  Zombone dies
+2E  Czar Dragon summons Helios
+2F  ___
+30  Valentina summons Dodo, Dodo carries off middle character
+31  Dodo flutters and leaves battle
+32  Dodo returns to Valentina's formation
+33  Valentina & Dodo are beaten
+34  INTRO SCENE: Domino & Cloaker's introduction
+35  Domino teams up with Mad Adder
+36  Cloaker teams up with Earthlink
+37  Shy Away waters Smilax: part 1
+38  Shy Away waters Smilax: part 2
+39  Shy Away waters Smilax: part 3
+3A  Thrax is there
+3B  Belome confronts a character: "You all LOOK delicious..."
+3C  Belome clones someone
+3D  only Mario is there
+3E  Axem Rangers intro scene
+3F  Axem Pink quits
+40  Axem Black quits
+41  Axem Yellow quits
+42  Axem Green quits
+43  Axem Rangers group formation
+44  Axem Red quits
+45  Axem Rangers are defeated
+46  ___
+47  Jinx uses Triple Kick
+48  Jinx uses Quicksilver
+49  Jinx uses Bombs Away
+4A  Culex summons crystals
+4B  Formless changes into Mokura
+4C  Boomer is defeated, chandelier crashing scene
+4D  ___screen flashes white
+4E  Dodo flutters and exits battle
+4F  Magikoopa summons monster
+50  no one there
+51  Exor is defeated, cries and opens mouth
+52  Smithy (1st Form) is beaten, ground shakes etc.
+53  ___screen flashes white
+54  ___screen flashes white
+55  ___Fear Roulette
+56  Smelter pours molten liquid, Smithy welds
+57  Smithy transforms into Tank Head
+58  Smithy transforms into Magic Head
+59  Smithy transforms into Chest Head
+5A  Smithy transforms into Box Head
+5B  Smithy's head fades before transforming into other head
+5C  Shelly breaks, Birdo appears
+5D  beam of light forms around Smithy head before body appears
+5E  Punchinello's bombs explode if still alive
+5F  bombs explode
+60  ___nothing
+61  Smithy waits before transforming head
+62  Smithy is defeated
+63  ___
+64  Earthlink/Mad Adder collapses and dies
+65  ___Magikoopa is there

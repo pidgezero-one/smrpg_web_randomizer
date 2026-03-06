@@ -35,6 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	FadeInFromBlack(sync=True),
+    RunBackgroundEvent(E3476_MIDAS_UPPER_TUNNEL_GRANT, return_on_level_exit=True),
 	FreezeCamera(),
 	SetSyncActionScript(MARIO, A0599_MIDAS_RIVER_MID_LEFT_TUNNEL_PLAYER_OUTER),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[

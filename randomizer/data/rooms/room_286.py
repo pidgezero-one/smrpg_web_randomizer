@@ -23,8 +23,8 @@ room = Room(
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
-                main_buffer_space=BufferSpace.BYTES_0,
+                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                main_buffer_space=BufferSpace.BYTES_512,
                 index_in_main_buffer=True
             ),
             Buffer(
@@ -175,17 +175,17 @@ room = Room(
             face_on_trigger=False,
             cant_enter_doors=False,
             byte2_bit5=False,
-            set_sequence_playback=False,
+            set_sequence_playback=True,
             cant_float=False,
             cant_walk_up_stairs=False,
             cant_walk_under=False,
-            cant_pass_walls=False,
+            cant_pass_walls=True,
             cant_jump_through=True,
             cant_pass_npcs=False,
             byte3_bit5=False,
             cant_walk_through=False,
             byte3_bit7=False,
-            slidable_along_walls=False,
+            slidable_along_walls=True,
             cant_move_if_in_air=False,
             byte7_upper2=3),
     ],

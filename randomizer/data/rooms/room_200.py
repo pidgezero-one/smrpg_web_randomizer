@@ -59,10 +59,10 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.ITEM_BAG_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E1342_ELDER_KEY_PRIZE_GRANTER,
-            action_script=A0773_EMPTY,
+            action_script=A0015_DO_NOTHING,
             visible=True,
             x=23,
             y=121,

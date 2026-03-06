@@ -1,4 +1,4 @@
-# E3476_EMPTY
+# E3476_MIDAS_UPPER_TUNNEL_GRANT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,10 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    JmpIfBitSet(MIDAS_RIVER_TUNNEL_2_BIT_1, ["EVENT_3476_return_0"]),
+    Pause(1, identifier="EVENT_3476_enter_area_0"),
+    JmpIfBitSet(MIDAS_RIVER_TUNNEL_2_BIT_1, ["EVENT_3476_grant_0"]),
+    Jmp(["EVENT_3476_enter_area_0"]),
+    RunEventAsSubroutine(E0241_FREESTANDING_1_GRANT, identifier="EVENT_3476_grant_0"),
+    Return(identifier="EVENT_3476_return_0"),
 ])

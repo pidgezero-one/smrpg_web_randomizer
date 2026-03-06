@@ -1,0 +1,41 @@
+-------------------------------
+EXIT FIELD MAPS $1D3166-$1D4904
+pointers: $1D2D64-$1D3165
+-------------------------------
+byte 1  low byte of area pointer
+byte 2  lower bits: high byte of area pointer
+	upper bits: area format flag (tells it what type of area is being entered)
+	bit 4	turn into classic NES Mario (only used at Booster Tower)
+	bit 5	Overworld area
+		extra byte(s): 3 bytes to set Mario's coordinates
+	bit 6	World Map area
+	bit 7	+1 unit width
+		extra byte(s): 1 for field width
+
+fields that point to a World Map area AND do NOT have a width greater than 1 unit are 5 bytes each
+fields that point to a World Map area AND have a width greater than 1 unit are 6 bytes each
+fields that point to an Overworld area AND do NOT have a width greater than 1 unit are 8 bytes each
+fields that point to an Overworld area AND have a width greater than 1 unit are 9 bytes each
+
+so an exit field is either 5,6,8 or 9 bytes long
+
+byte 3	horizontal planar position of exit field (from left)
+byte 4  vertical planar position of exit field (from top)
+byte 5  height of exit field from ground
+byte 6  horizontal planar position of Mario at entered area's entrance
+byte 7  vertical planar position of Mario at entered area's entrance
+byte 8
+  bits 0-4  height of Mario from ground (00-1F)
+  bits 5-7  radial position of Mario at entrance (ie. facing direction)
+   00  right
+   20  down-right
+   40  foward
+   60  down-left
+   80  left
+   A0  up-left
+   C0  up
+   E0  up-right
+byte 9	lower bits: field width, if +1 unit width flag set
+	upper bits: which way the exit field faces
+	0x  down-right / up-left
+	8x  down-left / up-right

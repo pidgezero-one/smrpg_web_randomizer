@@ -1,0 +1,300 @@
+<style>
+body {font-family: "Lucida Console"; font-size: 12}
+table {border-width: 1; border-color: black; border-collapse: collapse}
+td {font-family: "Lucida Console"; font-size: 12; vertical-align: top; border-color: black}
+table.moldtypes tr td {font-size: 30; text-align: center}
+</style>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+<h1>SPRITE ANIMATION/MOLDING: CLOAKER</h1>
+<br>
+<b>STEP 1: calculate object pointer address of monster</b><br>
+[(monster byte) x 4] + $250400 = <font color=red size=3><b>object pointer address</b></font><br>
+[($DD)          x 4] + $250400 = <font color=red size=3><b>$250774</b></font><br>
+<br>
+//////////////////////////////////////////////////////////////
+<h2>MOLDING</h2>
+<TABLE FRAME=box RULES=all CELLSPACING=0 CELLPADDING=5>
+<tr>
+<td><b>STEP 2: calculate mold pointer address<br>
+<img src="mold2_step1.gif"></td>
+<td>
+[(byte 3,4) x 3] + $252000 = mold pointer address<br>
+[$005C x 3] + $252000 = $252114</td>
+</tr>
+
+<tr>
+<td><b>STEP 3: determine mold/sequence data addresses from mold pointer</b><br>
+<img src="mold2_step2.gif"></td>
+<td>
+mold pointer + 2 = mold data<br>
+$26CF6E(PC address) + 2 = $26CF70</td>
+</tr>
+
+<tr>
+<td><b>STEP 4: determine mold set pointer address from byte 3,4</b><br>
+<img src="mold2_step3.gif"></td>
+<td>
+(byte 3,4) + mold pointer = mold set pointer address<br>
+$005F + $26CF6E = $26CFCD</td>
+</tr>
+
+<tr>
+<td><b>STEP 5: determine mold function address from byte</b><br>
+<img src="mold2_step4.gif"></td>
+<td>
+Cloaker has 17 mold assignments (2 bytes each), as seen in the selection.<br>
+<br>
+[(byte 1,2) AND $0FFF] + mold pointer = sprite GFX mold<br>
+[$0083 AND $0FFF] + $26CF6E = $25CFF1<br>
+<br>
+<i>bit 7 of byte 2 (00) is not set, so it uses a dynamic mold format</i></td>
+</tr>
+
+<tr>
+<td><b>STEP 6: arrange 8x8 tiles into full sprite through function</b><br>
+<img src="mold2_step5.gif"></td>
+<td>
+byte 1 = tile format<br>
+80 = [1 -]<br>
+.....[- -]
+<br>
+byte 2 = Y coordinate (0x10)<br>
+byte 3 = X coordinate (0x13)<br>
+byte 4 = 8x8 tile pointer (0x15)<br>
+<br>
+00 = END DATA<br>
+<br>
+Cloaker's mold data for all molds runs to $26D336
+</td>
+</tr>
+</table><br>
+Here are the 10 types of 16x16 <font color=#800000><b>tile formats</b></font>. The orange 8x8 tiles are numbered in the order that they are read from the ROM. The green 8x8 tiles are transparent.</p>
+<table cellpadding=10 class="moldtypes"><tr>
+<td><img src="moldtype60.gif"><br>60</td>
+<td><img src="moldtype70.gif"><br>70</td>
+<td><img src="moldtype80.gif"><br>80</td>
+<td><img src="moldtype90.gif"><br>90</td>
+<td><img src="moldtypeA0.gif"><br>A0</td>
+<td><img src="moldtypeB0.gif"><br>B0</td>
+<td><img src="moldtypeC0.gif"><br>C0</td>
+<td><img src="moldtypeD0.gif"><br>D0</td>
+<td><img src="moldtypeE0.gif"><br>E0</td>
+<td><img src="moldtypeF0.gif"><br>F0</td>
+</tr></table>
+<hr></p>
+<table><tr>
+<td>
+<h2>Tile function _2</h2></p>
+Instead of the 10 types of tile formats described above, the byte value could be _2.<br>
+This function is used to load 1 to 15 16x16 tiles that has or have already been identified.<br>
+Any value from 0 to 15 (0 to F) could be in _, where that value is the number of tiles to use again.</p>
+<table cellpadding=5>
+<tr><td><h3>EXAMPLE: OCTOLOT</h3></td></tr>
+<tr>
+<td><img src="mold2_fnc2a.gif"></td><td>This is Octolot's mold data.</td>
+</tr><tr>
+<td><img src="mold2_fnc2b.gif"></td><td>
+This is a _2 function used to "duplicate" a tile.
+<ul><li>Since it is 12, it will only read one tile.
+<li>The 0xEB and 0xEE are the Y and X coordinate values to add to the original Y and X coordinate values.
+<li>The 0x00C4 is to be added to the mold pointer (0x26EBC5 in this case for Octolot, like 0x26CF6E for Goomba).
+</ul></td></tr>
+<tr><td><img src="mold2_fnc2c.gif"></td>
+<td>
+Add the short to the mold pointer...
+<ul><li>0x26EBC5 + 0x00C4 = 0x26EC89
+<li>A0 F4 04 0C 13 will be used once more, except with different coordinates.
+<li>The original coordinates were F4 and 04
+<li>The new coordinates will be F4 + EB = DF (the sum must be ONLY 1 byte) and 04 + EE = F2.
+<li>Therefore the new Y and X coords will be DF and F2.
+</ul>
+So concluding from this, there are two 16x16 tiles that are the same, but at different coordinates.<br>
+If the function were 22 instead of 12, then it would also read the next 16x16 tile which is F0 FA F3 20 15 25 26 tile and add the coordinates to that one also. (FA + EB and F3 + EE).</td>
+</tr></table>
+In the ROM, only 12 and 22 are ever used, but when editing it yourself, any value from 0 to 15 is possible.
+<hr></p>
+<br>
+<img src="tile_example2.gif"><br>
+<br>
+<table cellpadding=5>
+<tr><td align=center colspan=4><b>These are the 16x16 tiles.</b><br>The bright green represents the completely transparent area, so as to allow overlap (explained later). The function byte, byte 1, tells what 8x8 tiles are to be transparent. See doc_sprite-gfx.txt for details.</td></tr>
+<tr>
+<td align=center>80 10 13 15<br><img src="mold16x16_1.gif"></td>
+<td align=center>C0 10 03 13 14<br><img src="mold16x16_2.gif"></td>
+<td align=center>A0 00 13 03 0B<br><img src="mold16x16_3.gif"></td>
+<td align=center>F0 00 03 01 02 09 0A<br><img src="mold16x16_4.gif"></td>
+</tr></table>
+<p>
+<table cellpadding=5><tr><td>
+<img src="mold16x16.gif" align=left>Here is the arrangement of the 16x16 tiles into the shield. The individual coordinates of each 16x16 tile allows them to be freely arranged anywhere on the object plane (which spans about 80% of the entire screen). Only preceding tiles can always overlap each other (ie. 16x16 tiles always and only overlap ones after them in the data block at $26CFF1).<br>
+<br>
+Overlaps are used for practical reasons, such as Cloaker's shield being the first in the data block. It is in front of his body and overlaps all.<br>
+<br>
+The coordinates of the bottom-right portion of the shield are 19 by 16, or the corresponding hex values 0x10 and 0x13, respectively. The bottom-left portion is just 3 pixels to the right of the dead center of the object plane and 16 pixels down from it, etc. etc...<br>
+
+</td></tr><tr><td>
+<img src="cloaker_piece-ani.gif" align=left><img src="cloaker_field.gif" align=right>
+<i>(left)</i> Here is a piecing together of the Cloaker sprite in the sequential order of all 22 tiles.<br>
+<br>
+<i>(right)</i> This is the complete span of the object's maximum coordinates, 256 x 256.<br>
+The upper-left and upper-right quadrants are for negative Y coordinates which use values 0x80 and above.<br>
+The upper-left and lower-left quadrants are for negative X coordinates which use values 0x80 and above.<br>
+<br>
+The point where the lines cross is the dead center: here the shield can be approximated at about 0,0. The exact coordinates of the shield are 3,0.
+</td></tr></table></p>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+<h2>ANIMATION</h2>
+<b><font size=4>Cloaker uses 5 animation sequences</font></b><br><br>
+<TABLE FRAME=box RULES=all CELLSPACING=0 CELLPADDING=5>
+<tr>
+<td><b>STEP 2: calculate mold pointer address<br>
+<img src="mold2_step1.gif"></td>
+<td>
+[(byte 3,4) x 3] + $252000 = mold pointer address<br>
+[$005C x 3] + $252000 = $252114</td>
+</tr>
+
+<tr>
+<td><b>STEP 3: determine mold/sequence data addresses from mold pointer</b><br>
+<img src="mold2_step2.gif"></td>
+<td>
+mold pointer + 2 = mold data<br>
+$26CF6E(PC address) + 2 = $26CF70</td>
+</tr>
+
+<tr>
+<td><b>STEP 4: determine animation sequence address from byte 1,2</b><br>
+<img src="mold2_step3.gif"></td>
+<td>
+(byte 1,2) + mold pointer = animation sequence pointers address<br>
+$000C + $26CF6E = $26CF7A</td>
+</tr>
+
+<tr>
+<td><b>STEP 5: determine sequence data address from byte</b><br>
+<img src="mold2_step4a.gif"></td>
+<td>
+Cloaker has 5 sequence assignments (2 bytes each), as seen in the selection<br>
+<br>
+(byte 1,2) + mold pointer = sequence data<br>
+$0018 + $26CF6E = $26CF86<br>
+</tr>
+
+<tr>
+<td><b>STEP 6: sequence data</b><br>
+<img src="mold2_step5a.gif"><br>
+<br>
+(mold byte x 2) + $26CFCD = tile-shifting data pointer<br>
+($0F x 2) + $26CFCD = $26CFEB<br>
+<img src="mold2_step4.gif"><br>
+<br>
+$038B + $26CF6E = $26D2F9
+</td>
+<td>
+every 2 bytes is a frame<br>
+byte 1 = frame delay<br>
+byte 2 = sprite mold to use for frame<br>
+<br>
+06 = delay 6 frames<br>
+00 = use mold 1<br>
+08 = delay 8 frames<br>
+0F = use mold 16<br>
+06 = delay 6 frames<br>
+00 = use mold 1<br>
+08 = delay 8 frames<br>
+10 = use mold 17<br>
+00 = END SEQUENCE<br>
+</td>
+</tr>
+
+<tr>
+<td><b>STEP 7: tile shifting animation mold</b><br>
+<img src="mold2_step6.gif"><br>
+</td>
+<td>
+42 = upper bits: move 4 tiles together (lower bits: shift function)<br>
+FF 00 = Y shift, X shift (FF = up 1 pixel, 00 = no X shift)<br>
+83 00 = pointer: modify tiles at 0x83 bytes after $26CF6E ***<br>
+<br>
+22 = upper bits: move 2 tiles together <br>
+00 00 = Y shift, X shift<br>
+98 00 = pointer<br>
+<br>
+etc...<br>
+00 = END DATA<br>
+<br>
+*** the ENTIRE mold for the frame (the whole sprite) must be set, which is the reason for some of the 0,0 shifts. These aren't modified, but they still must be identified or they will not appear.
+</table>
+<br>
+
+<h2>ANIMATION (more...)</h2>
+<b><font size=4>Cloaker's 4th animation sequence</font></b><br><br>
+<TABLE FRAME=box RULES=all CELLSPACING=0 CELLPADDING=5>
+<tr>
+<td><b>choose frame</b><br><img src="mold2_step9.gif"></td>
+<td><img src="cloaker_ani5.gif" align=right>The frame which uses the mold that modifies the eyebrows along with other body parts is at $26CFA3: 04 07.<br>
+<br>
+04 is the frame delay, and 07 is the mold.
+</td></tr>
+<tr><td><b>find pointer to mold address</b><br><img src="mold2_step4.gif"></td>
+<td>($07 x 2) + $26CFCD = $26CFDB<br>
+$01EE + $26CF6E = $26D15C
+</tr>
+<tr><td><b>find tiles for eyebrows</b><br><img src="mold2_step10.gif"></td>
+<td>42 <br>
+04 FC <br>
+83 00 = the shield<br>
+<br>
+12 <br>
+03 FD <br>
+98 00 = the arm holding the shield<br>
+<br>
+12 <br>
+01 00 <br>
+9E 00 = the feather<br>
+<br>
+12 <br>
+07 F9 <br>
+37 01 = top left corner of mustache and eyebrow<br>
+<br>
+12 <br>
+FE 01 <br>
+A4 00 = bottom right corner of mustache<br>
+<br>
+22 <br>
+07 F9 <br>
+40 01 = most of mustache and eyebrows<br>
+<br>
+22 <br>
+02 FE <br>
+B9 00 = the beard<br>
+<br>
+62 <br>
+00 00 = no shift!<br>
+C5 00 = the body and hat<br>
+<br>
+42 <br>
+FA 06 <br>
+EC 00 = the arm holding the sword<br>
+<br>
+00<br>
+<br>
+The eyebrows are modified at $26D176.<br>
+22 = move 2 tiles together<br>
+07 F9 = Y shift, X shift<br>
+40 01 = pointer<br>
+<br>
+$0140 + $26CF6E = $26D0AE
+</td></tr>
+<tr><td><img src="mold2_step8.gif"></td>
+<td>The two selections are the two tiles used. Parts of these tiles were not used in the previous frames: the streched eyebrows are new.<br>
+<br>
+However, any tiles can be used, new or old. The animation in step 3 reloads the entire mold in pieces so that each piece can be modified or not modified separately.</tr>
+</table>
+<br><align=left>
+<img src="cloaker_ani1.gif"><img src="cloaker_ani2.gif"><img src="cloaker_ani3.gif"><img src="cloaker_ani4.gif"><img src="cloaker_ani5.gif"><br>
+<img src="cloaker_ani6.gif"><img src="cloaker_ani7.gif"><img src="cloaker_ani8.gif"><img src="cloaker_ani9.gif"><img src="cloaker_ani10.gif"><br>
+<img src="cloaker_ani11.gif" align=left><img src="cloaker_ani12.gif" align=left><img src="cloaker_ani_.gif" align=left>
+This type of animation is a kind of 'piecing' animation which takes groups of 16x16 tiles that can be considered a 'piece' (like the whole shield, which is four 16x16 tiles) and moves it as one.<br>
+<br>
+This gives the objects a puppet-like orientation of segmented joints and appendages.

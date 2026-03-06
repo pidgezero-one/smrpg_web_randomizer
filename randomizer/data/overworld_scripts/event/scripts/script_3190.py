@@ -169,11 +169,12 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_1, R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM),
 	Set7000ToMinecartTimer(),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_702E),
-	JmpIfBitClear(SKIP_MANDATORY_MINECART, ["EVENT_3190_run_moleville_mountain_sequence_29"]),
-	JmpIfBitClear(OPTIONAL_MINECART_CLEARED, ["EVENT_3190_enter_area_30"]),
-    JmpIfBitClear(MINECART_CLEARED, ["EVENT_3190_set_mines_cleared"], identifier="skip_moleville_minecart_sequence"),
+    # If you've already finished molevile, you're here voluntarily. Run the sequence.
+    JmpIfBitSet(MINECART_CLEARED, ["EVENT_3190_run_moleville_mountain_sequence_29"]),
+    SetBit(MINECART_CLEARED),
+    # Otherwise, check if you're supposed to skip it.
+	JmpIfBitSet(SKIP_MANDATORY_MINECART, ["EVENT_3190_enter_area_30"]),
 	RunMolevilleMountainSequence(identifier="EVENT_3190_run_moleville_mountain_sequence_29"),
-	SetBit(MINECART_CLEARED, identifier="EVENT_3190_set_mines_cleared"),
 	EnterArea(room_id=R108_MOLEVILLE_OUTSIDE, face_direction=SOUTH, x=0, y=0, z=0, identifier="EVENT_3190_enter_area_30"),
 	RunEventAsSubroutine(E1394_FOUR_DIGIT_COIN_VALUE_HANDLER),
 	SetBit(TEMP_7044_6),

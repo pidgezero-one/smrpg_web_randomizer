@@ -92,6 +92,7 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_WalkToXYCoords(x=5, y=116),
+		A_ClearSolidityBits(cant_pass_walls=False),
 		A_FaceNortheast()
 	]),
 	ActionQueueAsync(target=NPC_0, subscript=[

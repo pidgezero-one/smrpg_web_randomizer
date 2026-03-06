@@ -72,6 +72,7 @@ script = EventScript([
 		A_WalkEastPixels(6),
 		A_EndLoop()
 	]),
+    EnableObjectTriggerInSpecificLevel(NPC_1, R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS),
 	SetBit(LANDS_END_GROTTO_BARREL_FLIPPED),
 	Return(identifier="EVENT_1591_ret_5")
 ])

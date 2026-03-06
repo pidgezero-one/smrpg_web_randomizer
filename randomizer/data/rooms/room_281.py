@@ -29,7 +29,7 @@ room = Room(
             ),
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
-                main_buffer_space=BufferSpace.BYTES_0,
+                main_buffer_space=BufferSpace.BYTES_512,
                 index_in_main_buffer=True
             )
         ],

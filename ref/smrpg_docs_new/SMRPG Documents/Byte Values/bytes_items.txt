@@ -1,0 +1,177 @@
+[00]  Weapon
+[01]  Armor
+[02]  Accessory
+[03]  Space
+[04]  Space
+[05]  Hammer
+[06]  FroggieStick
+[07]  NokNok Shell
+[08]  Punch Glove
+[09]  Finger Shot
+[0A]  Cymbals
+[0B]  Chomp
+[0C]  Masher
+[0D]  Chomp Shell
+[0E]  Super Hammer
+[0F]  Hand Gun
+[10]  Whomp Glove
+[11]  Slap Glove
+[12]  Troopa Shell
+[13]  Parasol
+[14]  Hurly Gloves
+[15]  Double Punch
+[16]  Ribbit Stick
+[17]  Spiked Link
+[18]  Mega Glove
+[19]  War Fan
+[1A]  Hand Cannon
+[1B]  Sticky Glove
+[1C]  Ultra Hammer
+[1D]  Super Slap
+[1E]  Drill Claw
+[1F]  Star Gun
+[20]  Sonic Cymbal
+[21]  Lazy Shell
+[22]  Frying Pan
+[23]  Hammer
+[24]  Spare
+[25]  Shirt
+[26]  Pants
+[27]  Thick Shirt
+[28]  Thick Pants
+[29]  Mega Shirt
+[2A]  Mega Pants
+[2B]  Work Pants
+[2C]  Mega Cape
+[2D]  Happy Shirt
+[2E]  Happy Pants
+[2F]  Happy Cape
+[30]  Happy Shell
+[31]  Polka Dress
+[32]  Sailor Shirt
+[33]  Sailor Pants
+[34]  Sailor Cape
+[35]  NauticaDress
+[36]  CourageShell
+[37]  Fuzzy Shirt
+[38]  Fuzzy Pants
+[39]  Fuzzy Cape
+[3A]  Fuzzy Dress
+[3B]  Fire Shirt
+[3C]  Fire Pants
+[3D]  Fire Cape
+[3E]  Fire Shell
+[3F]  Fire Dress
+[40]  Hero Shirt
+[41]  Prince Pants
+[42]  Star Cape
+[43]  Heal Shell
+[44]  Royal Dress
+[45]  Super Suit
+[46]  Lazy Shell
+[47]  Spare
+[48]  Spare
+[49]  Spare
+[4A]  Zoom Shoes
+[4B]  Safety Badge
+[4C]  Jump Shoes
+[4D]  Safety Ring
+[4E]  Amulet
+[4F]  Scrooge Ring
+[50]  Exp. Booster
+[51]  Attack Scarf
+[52]  Rare Scarf
+[53]  B'tub Ring
+[54]  Antidote Pin
+[55]  Wake Up Pin
+[56]  Fearless Pin
+[57]  Trueform Pin
+[58]  Coin Trick
+[59]  Ghost Medal
+[5A]  Jinx Belt
+[5B]  Feather
+[5C]  Troopa Pin
+[5D]  Signal Ring
+[5E]  Quartz Charm
+[5F]  Spare
+[60]  Mushroom
+[61]  Mid Mushroom
+[62]  Max Mushroom
+[63]  Honey Syrup
+[64]  Maple Syrup
+[65]  Royal Syrup
+[66]  Pick Me Up
+[67]  Able Juice
+[68]  Bracer
+[69]  Energizer
+[6A]  Yoshi-Ade
+[6B]  Red Essence
+[6C]  KerokeroCola
+[6D]  Yoshi Cookie
+[6E]  Pure Water
+[6F]  Sleepy Bomb
+[70]  Bad Mushroom
+[71]  Fire Bomb
+[72]  Ice Bomb
+[73]  Flower Tab
+[74]  Flower Jar
+[75]  Flower Box
+[76]  Yoshi Candy
+[77]  FroggieDrink
+[78]  Muku Cookie
+[79]  Elixir
+[7A]  Megalixir
+[7B]  See Ya
+[7C]  Temple Key
+[7D]  Goodie Bag
+[7E]  EarlierTimes
+[7F]  Freshen Up
+[80]  RareFrogCoin
+[81]  Wallet
+[82]  Cricket Pie
+[83]  Rock Candy
+[84]  Castle Key 1
+[85]  Debug Bomb
+[86]  Castle Key 2
+[87]  Bambino Bomb
+[88]  Sheep Attack
+[89]  Carbo Cookie
+[8A]  Shiny Stone
+[8B]  DUMMY
+[8C]  Room Key
+[8D]  Elder Key
+[8E]  Shed Key
+[8F]  Lamb's Lure
+[90]  Fright Bomb
+[91]  Mystery Egg
+[92]  Beetle Box
+[93]  Beetle Box
+[94]  Lucky Jewel
+[95]  DUMMY
+[96]  Soprano Card
+[97]  Alto Card
+[98]  Tenor Card
+[99]  Crystalline
+[9A]  Power Blast
+[9B]  Wilt Shroom
+[9C]  Rotten Mush
+[9D]  Moldy Mush
+[9E]  Seed
+[9F]  Fertilizer
+[A0]  Waste Basket
+[A1]  Big Boo Flag
+[A2]  DryBonesFlag
+[A3]  Greaper Flag
+[A4]  Secret Game
+[A5]  S.Crow Bomb
+[A6]  Cricket Jam
+[A7]  Bane Bomb
+[A8]  Doom Bomb
+[A9]  Fear Bomb
+[AA]  Sleep Bomb
+[AB]  Mute Bomb
+[AC]  Fireworks
+[AD]  Bomb
+[AE]  Bright Card
+[AF]  Mushroom
+[B0]  Star Egg

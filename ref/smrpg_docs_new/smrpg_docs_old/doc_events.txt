@@ -1,0 +1,1586 @@
+-----------------------------------------
+EVENT STRING INSTRUCTIONS $1E0000-$20FFFF
+-----------------------------------------
+
+///---CPU INSTRUCTIONS---\\\
+;function pointer offset: $00C6A5
+
+OBJECT STRINGS: instructions 00-2F
+;object string instructions use SA-1 functions only
+;see OBJECT STRING INSTRUCTIONS further down for comprehensive list
+
+00-06	1: character object string
+	   00	Mario
+	   01	Toadstool
+	   02	Bowser
+	   03	Geno
+	   04	Mallow
+	   byte x #$60 + #$6000 = character's object memory address
+	2: byte AND #$7F = byte length of object string
+	   bit 7 - uninterrupted object string execution, don't execute 
+	   frame duration functions are often used in simultaneous code to keep in synchronization
+
+	   F0 xx - 
+	   F1 xx - 
+	   F2 xx xx - set object to movement: xx xx (to data at $E10000)
+	   F3 xx xx - set object to movement: xx xx (to data at $E10000)
+	   F4 xx xx - movement?
+	   F5 xx xx - movement?
+	   F6 - 
+	   F7 - 
+	   F8 - show object
+	   F9 - remove object
+	   FA - remove movement effects
+	   FB - 
+	   FC - 
+	   FD - 
+	   FE - end object SA-1 code string
+	   FF - set object position to initial coordinates?
+
+07-0B	1: ??? object string
+	2: same as 00-06
+
+0C-0F	1: screen object string
+	   0C	Sprite Layer
+	   0D	BG1
+	   0E	BG2
+	   0F	BG3
+	   [(byte - #$09) x #$60] + #$6000 = screen's memory address
+	2: same as 00-06
+
+10-13	1: ??? object string
+	2: same as 00-06
+
+14-2F	1: NPC object string (28 functions, 1 for each object in order of sprite map)
+	   14	object 1
+	   15	object 2
+	   16	etc...
+	   [(byte - #$0D) x #$60] + #$6000 = NPC object's memory address
+	   ;different functions call from different memory addresses
+	2: same as 00-06
+
+*** instructions 00-2F must be executed to individually modify different things
+    ie. if the last 00-2F function executed was 0C (screen modifier) and an NPC object (14-2F) must next be modified, a 
+    function from 14-2F must be executed for the modifier functions to modify the appropriate thing
+
+30	1: 
+
+31	1:
+ 
+32	1:
+	2:
+	3,4:
+
+33	1:
+	2:
+	3,4:
+
+34	1: change directional maneuverability
+	   bit 0 - left
+	   bit 1 - right
+	   bit 2 - down
+	   bit 3 - up
+
+35	1: change overworld menu accessibility
+	2: EF = not accessible, FF = accessible
+
+36	1: add character to party
+	2: bit 7 - increase total party members by 1
+	   lower bits - character byte
+
+37	1: stores total number of characters in party to 00:7000
+
+38	1: store character from slot to 00:7000
+	2: slot (08 - 0C)
+
+39	1:
+	2:
+	3,4: pointer to address
+
+3A	1:
+	2:
+	3,4: pointer to address
+	5,6: pointer to address
+
+3B	1:
+	2:
+	3,4: pointer to address
+	5,6: pointer to address
+
+3C	1:
+	2:
+	3:
+	4:
+	5,6: pointer to address
+
+3D	1:
+	2,3: pointer to address
+
+3E	1:
+	2:
+	3:
+	4,5: pointer to address
+
+3F	1:
+	2:
+	3,4: pointer to address
+
+40	1: execute simultaneous event
+	2,3: event byte
+
+41	1: if value at 00:316D = 3, jump to address
+	2,3: pointer to address
+
+42	1:
+	2,3:
+	4,5:
+
+43	1:
+
+44	1:
+	2:
+	2,3:
+
+45	1:
+	2:
+	2,3:
+
+46	1:
+	2:
+
+47	1:
+	2:
+
+48	1: engage in battle?
+
+49	1: engage in battle with formation pack from 00:700E
+
+4A	1: engage in battle
+	2,3: formation pack byte
+	4: battle BG byte
+
+4B	1: lead to World Map point
+	2,3: World Map point
+
+4C	1: open shop menu
+	2: shop menu byte
+
+4D	1:
+
+4E	1: execute event category
+	2: event category
+	   00 select game slot
+	   01 open overworld menu
+	   02 open world map
+	   03 open shop menu
+	   04 save game
+	   05 "items maxed out" menu
+	   06
+	   07 menu tutorial
+	   08 add star piece to star collection (01-07 1st through 7th pieces)
+	   09 start Moleville Mountain ride
+	   0A
+	   0B INTRO - Moleville Mountain
+	   0C
+	   0D ENDING - individual star piece events (00-06 1st through 7th pieces)
+	   0E beginning - princess in garden
+	   0F characters falling through gate to factory
+	   10 world map event
+	3: category values (if one):
+	   -world map location (see world map location bytes in doc_exit-fields.txt)
+	   -shop menu byte (see shop bytes in doc_stats.txt)
+	   -"items maxed out" item byte to toss
+	   -menu tutorial
+	    00 Toad teaches how to equip
+	    01 Toad teaches how to use items
+	    02 Toad teaches how to switch allies
+	    03 Toad teaches how to play beetle mania
+	   -world map event
+	    00 Mario falls toward pipehouse
+	    01 Mario returns to Mushroom Kingdom from Booster Tower
+	    02 Mario takes the Nimbus bus to Bowser's Keep
+
+4F	1: open menu
+	2: menu byte
+	00	choose game
+	01	overworld menu
+	02	return to world map
+	03	Mushroom Kingdom shop
+	04	save game
+	05	items maxed out
+
+50	1: put item in inventory
+	2: item byte
+
+51	1: remove one of item from inventory (if item there)
+	2: item byte
+
+52	1: add coins
+	2: number of coins
+
+53	1: add frog coins
+	2: number of frog coins
+
+54	1: equip items
+	2: character byte
+	3: item to equip
+
+55	1: store total number of empty slots in item inventory to 00:7000
+
+56	1: subtract value at 00:7000 from character's current HP
+	2: character byte
+
+57	1: subtract value at 00:7000 from current FP
+
+58	1: store current FP to 00:7000
+
+59	1:
+ 
+5A	1:
+
+5B	1:
+
+5C	1: immediately read from address
+	2,3: address
+
+5D	1: load 00:600F
+
+5E	1:
+
+5F	1:
+
+60	1: execute dialogue
+	2,3: dialogue pointer (bit 7 of byte 3 = subsequent code)
+	4: bit 0 = display at middle of screen
+	   bit 1 = display at bottom of screen
+	   bit 4 - 7:
+	   0x - 1x = single-lined floating blue text
+	   2x - 3x = single-lined vellum paper
+	   4x - 5x = multiple lined floating blue text
+	   6x - 7x = multiple-lined vellum paper (most common)
+
+61	1: display walk-around dialogue from pointer at 00:7000
+	2: duration?
+	3: display orientation (see function 60, byte 4)
+
+62	1: display walk-around dialogue
+	2,3: AND #$1FFF - pointer to dialogue
+	3: duration of display (00 - forever, 20 - short, 40 - normal)
+
+63	1:
+
+64	1:
+
+65	1: 
+
+66	1: if 2nd option chosen from dialogue, jump to address
+	2,3: address pointer
+
+67	1: if 2nd option chosen from dialogue, jump to address 1
+	   if 3rd option chosen, jump to address 2
+	2,3: pointer to address 1
+	4,5: pointer to address 2
+
+68	1: enter new area
+	2,3: area byte
+	4: planar position of screen - X coordinate (from right)
+	5: planar position of screen - Y coordinate (from bottom)
+	6: radial position/Z coordinate of Mario
+
+69	1:
+
+6A	1: modify area BG/GFX
+	2,3: area byte (AND #$01FF)
+6B	1: modify area phys.field
+	2,3: area byte (AND #$01FF)
+
+6C	1:
+
+6D	1:
+
+6E	1:
+
+6F	1:
+
+70	1: simultaneously lighten screen from black w/following code
+71	1: lighten screen from black before following code
+72	1: simultaneously lighten screen from black w/following code
+	2: lightening duration
+73	1: lighten screen from black before following code
+	2: lightening duration
+74	1: simultaneously darken screen from normal w/following code
+75	1: darken screen from normal before following code
+76	1: simultaneously darken screen from normal w/following code
+	2: darkening duration
+77	1: darken screen from normal before following code
+	2: darkening duration
+
+78	1:
+
+79	1:
+
+7A	1:
+
+7B	1:
+
+7C	1:
+
+7D	1:
+
+7E	1:
+
+7F	1:
+
+80	1:
+
+81	1:
+
+82	1:
+
+83	1:
+
+84	1:
+
+85	1:
+
+86	1:
+
+87	1:
+
+88	1:
+
+89	1:
+
+8A	1: set object/area's palette from 37A000,x
+	2: [(AND #$F0) / 16] + 1 = amount of palettes to set (1 - 16)
+	3: pointer to palette set
+
+8B	1:
+
+8C	1:
+
+8D	1:
+
+8E	1:
+
+8F	1:
+
+90	1:
+
+91	1: play music
+	2: music byte
+
+92	1: fade in music
+	2: music byte
+
+93	1: fade out music
+
+94	1: stop music
+
+95	1: fade out music
+	2: fade out duration (in seconds)
+	3: fade to volume (00 = silence)
+
+96	1: 
+	2: 
+	3: 
+
+97	1:
+	2:
+	3:
+
+98	1: adjust music pitch
+	2: duration
+	3: raise / lower (bit 7)
+
+99	1:
+
+9A	1:
+
+9B	1: stop sound effect
+
+9C	1: play sound effect
+	2: sound byte
+
+9D	1: play sound effect
+	2: sound byte
+	3: speaker balance (00 - FF = left - right)
+
+9E	1:
+	2:
+	3:
+
+9F	1:
+	2:
+	3:
+
+A0-A2	1: set event flag memory address bits
+	2: AND #$07 = bit(s) to set (ie. #$07 = set bit 7, #$06 = set bit 6, etc...)
+	1,2: [(bytes AND #$0FFF) / 8] + #$7040 = event flag memory address to use ***USE BIG ENDIAN***
+	A0 = 00:7040 - 00:705F
+	A1 = 00:7060 - 00:707F
+	A2 = 00:7080 - 00:709F
+	EXAMPLES:
+	A0 00 = set 00:7040, bit 0
+	A0 01 = set 00:7040, bit 1
+	A0 08 = set 00:7041, bit 0
+	A1 01 = set 00:7060, bit 1
+
+	A1 10 = set 00:7062, bit 0 (add Map to overworld menu)
+	A1 11 = set 00:7062, bit 1 (add Star Pieces to overworld menu)
+	A1 12 = set 00:7062, bit 2 (add Switch to overworld menu)
+	A1 13 = set 00:7062, bit 3 (add Game to overworld menu)
+
+A3	1: set event flag memory address bits from 00:7000,00:7001
+	   AND 00:7000 #$07 = bit(s) to set (ie. #$07 = set bit 7, #$06 = set bit 6, etc...)
+	   [00:7001,00:7000 / 8] + #$7040 = event flag memory address to use
+
+A4-A6	1: clear event flag memory address bits
+	2: AND #$07 = bit(s) to clear (ie. #$07 = clear bit 7, #$06 = clear bit 6, etc...)
+	1,2: [(bytes AND #$0FFF) / 8] + #$7040 = event flag memory address to use ***USE BIG ENDIAN***
+	A4 = 00:7040 - 00:705F
+	A5 = 00:7060 - 00:707F
+	A6 = 00:7080 - 00:709F
+	EXAMPLES:
+	A4 00 = clear 00:7040, bit 0
+	A4 01 = clear 00:7040, bit 1
+	A4 08 = clear 00:7041, bit 0
+	A5 01 = clear 00:7060, bit 1
+	A6 09 = clear 00:7061, bit 1
+
+A7	1: clear event flag memory address bits from 00:7000,00:7001
+	   AND 00:7000 #$07 = bit(s) to clear (ie. #$07 = clear bit 7, #$06 = clear bit 6, etc...)
+	   [00:7001,00:7000 / 8] + #$7040 = event flag memory address to use
+
+A8	1: store byte value to memory address - 00:70A0,x
+	2: add to #$70A0 = memory address
+	3: byte value
+
+A9	1: add byte value to memory address - 00:70A0,x
+	2: add to #$70A0 = memory address
+	3: byte value
+
+AA	1: increment memory address - 00:70A0,x
+	2: byte + #$70A0 = memory address
+
+AB	1: decrement memory address - 00:70A0,x
+	2: byte + #$70A0 = memory address
+
+AC	1: store value to 00:7000 (for other stat modification functions)
+	2,3: value
+
+AD	1: add value to 00:7000
+	2,3: value
+
+AE	1: increment 00:7000
+
+AF	1: decrement 00:7000
+
+B0	1: store value to memory address - 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+
+B1	1: add value to memory address - 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+
+B2	1: increment memory address - 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+
+B3	1: decrement memory address - 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+
+B4	1: store value at address 00:70A0,x to 00:7000
+	2: byte + #$70A0 = address
+
+B5	1: store value at address 00:7000 to 00:70A0,x
+	2: byte + #$70A0 = address
+
+B6	1: generate random number between 0 and byte value, store to 00:7000
+	2,3: byte value
+
+B7	1: generate random number between 0 and byte value, store to 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+
+B8	1: add value at address 00:7000,x to 00:7000 (store sum to 00:7000)
+	2: (byte x 2) + #$7000 = memory address
+
+B9	1: subtract value at address 00:7000,x from 00:7000 (store diff to 00:7000)
+	2: (byte x 2) + #$7000 = memory address
+
+BA	1: store value at address 00:7000,x to 00:7000
+	2: (byte x 2) + #$7000 = memory address
+
+BB	1: store value at address 00:7000 to 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+
+BC	1: store value at address 00:7000,x to 00:7000,x
+	2: (byte x 2) + #$7000 = SOURCE memory address
+	3: (byte x 2) + #$7000 = DESTINATION memory address
+
+BD	1: exchange values at addresses 00:7000,x and 00:7000,x
+	2: (byte x 2) + #$7000 = memory address 1
+	3: (byte x 2) + #$7000 = memory address 2
+
+BE	1: store values at addresses 00:7010,00:7012,00:7014 to 00:7016,00:7018,00:701A
+
+BF	1: store values at addresses 00:7016,00:7018,00:701A to 00:7010,00:7012,00:7014
+
+C0	1: compare 00:7000 to value, save comparison (ie.push processor bits)
+	2,3: byte value
+
+C1	1: compare 00:7000,x to 00:7000, save comparison
+	2: (byte x 2) + #$7000 = memory address
+
+C2	1: compare 00:7000,x to byte value, save comparison
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+
+C3	1: store current area byte to 00:7000
+
+C4	1:
+	2:
+
+C5	1:
+	2:
+
+C6	1: store Z coord value of object to 00:7000, clear 00:7001
+	2: (byte x #$60) + #$6004 = memory address of object
+
+C7	1:
+	2:
+
+C8	1:
+	2:
+
+C9	1:
+	2:
+
+CA	1: store held joypad register to 00:7000,00:7001
+	   shift register bits left twice for buttons A,X,L,R (A = 0020, X = 0010, etc...)
+
+CB	1: store joypad register to 00:7000,00:7001
+	   shift register bits left twice for buttons A,X,L,R (A = 0020, X = 0010, etc...)
+
+CC	1:
+
+CD	1:
+
+CE	1:
+
+CF	1:
+
+D0	1: execute subsequent event
+	2,3: event byte
+
+D1	1: execute event
+	2,3: event byte
+
+D2	1: jump to address
+	2,3: pointer to address
+
+D3	1: jump to subroutine
+	2,3: pointer to subroutine address
+
+D4	1: repeat segmented code block by #$D7 function
+	2: number of repeats
+
+D5	1:
+	2,3:
+
+D6	1: store 00:7000,x to object memory
+	2: (byte x 2) + #$7000 = memory address
+
+D7	1: end of segmented code block
+
+D8-DA	1: if event flag memory address bits set, jump to address
+	1,2: ([byte - #$D800] / 8) + #$7040 = event flag memory address to use ***USE BIG ENDIAN***
+	2: AND #$07 = bit(s) to check (ie. #$07 = check bit 7, #$06 = check bit 6, etc...)
+	3,4: pointer - if bit(s) set, jump to address
+
+DB	1: if event flag memory address bits set, jump to address
+	   00:7000 AND #$07 = bit(s) to check (ie. #$07 = check bit 7, #$06 = check bit 6, etc...)
+	   [00:7001,00:7000 / 8] + #$7040 = event flag memory address to use
+	2,3: pointer - if bit(s) set, jump to address	     
+
+DC-DE	1: if event flag memory address bits clear, jump to address
+	1,2: ([byte - #$DC00] / 8) + #$7040 = event flag memory address to use ***USE BIG ENDIAN***
+	2: AND #$07 = bit(s) to check (ie. #$07 = check bit 7, #$06 = check bit 6, etc...)
+	3,4: pointer - if bit(s) clear, jump to address
+
+DF	1: if event flag memory address bits clear, jump to address
+	   00:7000 AND #$07 = bit(s) to check (ie. #$07 = check bit 7, #$06 = check bit 6, etc...)
+	   [00:7001,00:7000 / 8] + #$7040 = event flag memory address to use
+	2,3: pointer - if bit(s) clear, jump to address
+
+E0	1: compare memory address to value; if equal, jump to address
+	2: byte + #$70A0 = memory address
+	3: byte value
+	4,5: pointer to address
+
+E1	1: compare memory address to value; if NOT equal, jump to address
+	2: byte + #$70A0 = memory address
+	3: byte value
+	4,5: pointer to address
+
+E2	1: compare address 00:7000 to value; if equal, jump to address
+	2,3: byte value
+	4,5: pointer to address
+
+E3	1: compare address 00:7000 to value; if NOT equal, jump to address
+	2,3: byte value
+	4,5: pointer to address
+
+E4	1: compare address 00:7000,x to value; if equal, jump to address
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+	5,6: pointer to address
+
+E5	1: compare address 00:7000,x to value; if NOT equal, jump to address
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+	5,6: pointer to address
+
+E6	1: if any bits #### at 00:7000 set, do NOT jump to address
+	2,3: bits #### to check (eg. #$FFFF - check all bits, #$0000 - check no bits, #$0003 - check bit 0,1, etc.)
+	4,5: pointer to address
+
+E7	1: if any bits #### at 00:7000 set, jump to address
+	2,3: bits #### to check (eg. #$FFFF - check all bits, #$0000 - check no bits, #$0003 - check bit 0,1, etc.)
+	4,5: pointer to address
+
+E8	1: generate random number from 0-255: if number greater than 128, jump to address
+	2,3: pointer to address
+
+E9	1: generate random number from 0-255: if number greater than 66, jump to address
+	2,3: pointer to address
+
+EA	1: if bit 1 of 00:70A0,x set, jump to address
+	2,3: pointer to address
+
+EB	1: if bit 1 of 00:70A0,x clear, jump to address
+	2,3: pointer to address
+
+EC	1: if bit 0 of 00:70A0,x set, jump to address
+	2,3: pointer to address
+
+ED	1: if bit 0 of 00:70A0,x clear, jump to address
+	2,3: pointer to address
+
+EE	1: if bit 7 of 00:70A0,x clear, jump to address
+	2,3: pointer to address
+
+EF	1: if bit 7 of 00:70A0,x set, jump to address
+	2,3: pointer to address
+
+F0	1: set frame duration
+	2: frame duration
+
+F1	1: set frame duration (2 bytes)
+	2,3: frame duration (2 bytes)
+
+F2	1:
+	2,3:
+
+F3	1:
+	2,3:
+
+F4	1:
+
+F5	1: check current area?
+
+F6	1: check current area?
+
+F7	1: check object maps?
+
+F8	1: if character in party, jump to address?
+	2,3: (byte x 2) + 7E:3000
+	3: byte /2 AND #$3F = compare to character in slot 1
+	4,5: jump to address
+
+F9	1: restart event code string from beginning
+FA	1: restart event code string from beginning
+
+FB	1: reset game, choose game
+
+FC	1: reset game
+
+FD	1: extended functions
+	2: function pointer
+	[(** - #$30) x 2] + $C0C8A5 = JMP,x function
+
+	30	screen moves w/Mario
+	31	screen does not move w/Mario
+	32
+
+	33 	1: if bit 5 of 00:6006,x set, jump to address
+		2: [(xx * #$60) + #$6000] = memory address
+		3,4: pointer to address
+
+	34 	1: if bit 4,5 (in water) of 00:600C,x set, jump to address
+		2: [(xx * #$60) + #$6000] = memory address
+		3,4: pointer to address
+
+	35-3C
+
+	3D 	1: if bit 6 of 00:600C,x set, jump to address
+		2: [(xx * #$60) + #$6000] = memory address
+		3,4: pointer to address
+
+	3E	1:
+		2:
+		3,4:
+		5,6: pointer to address
+
+	3F	1:
+		2,3: pointer to address
+
+	40
+	41
+	42
+	43
+	44
+	45
+
+	46	1:
+		2,3:
+
+	47
+	48	store #$00 to 00:3174,00:3114
+	49	store #$01 to 00:3114
+	4A	save game
+	4B
+
+	4C 	1: Toad's menu tutorials
+		2: byte
+	4D 	1: Star Piece scene
+		2: byte (01-07)
+	4E	start Moleville Mountain
+	4F	start Moleville Mountain Intro
+
+	50	load from 00:70A7, store in item inventory
+	51	load from 00:70A7, store in equipment inventory
+	52	add value at 00:7000 (2 bytes) to current coins
+	53	subtract value at 00:7000 (2 bytes) from current coins
+	54	add value at 00:7000 (2 bytes) to current frog coins
+	55	subtract value at 00:7000 (2 bytes) from current frog coins
+	56	add value at 00:7000 to current FP, store as current FP
+	57	add value at 00:7000 to max FP, store as max FP
+	58	1: store number of a certain item in equipment to 00:7000
+		2: item byte
+	59	store current coins to 00:7000 (2 bytes)
+	5A	store current frog coins to 00:7000
+
+	5B	restore all HP
+	5C	restore all FP
+
+	5D	1: store an equipped item to 00:7000
+		2: character
+		3: type of equipped item (00 weapon, 01 armor, 02 accessory)
+	5E	store number of a certain item in equipment at 00:70A7 to 00:7000
+
+	5F
+	60
+	61
+	62	1: if 00:0210 bits 0,1,2 clear, do NOT jump to address
+		2,3: pointer to address
+	63
+	64	load XP from battle and add to current XP
+	65
+	66	1: display Intro graphic message
+		2: distance from top of screen
+		3: graphic message
+		00 Super Mario
+		01 Princess Toadstool
+		02 King Bowser
+		03 Mallow
+		04 Geno
+		05 In...
+
+	67	run ending credits
+
+	68-87
+
+	88	1: set bit 7 of memory address
+		2: ([byte AND #$7F] x #$10) + #$0158 = memory address
+	89	1: clear bit 7 of memory address
+		2: ([byte AND #$7F] x #$10) + #$0158 = memory address
+	8A	1: 
+		2: 
+	8B	1: set bit 3 of memory address
+		2: ([byte AND #$7F] x #$10) + #$0158 = memory address
+
+	8C	1:
+		2,3: 
+		4: 
+	8D	
+	8E	1:
+		2,3: 
+		4: 
+	8F	1:
+		2:
+
+	90	1: store values to addresses
+		2: 00:0335
+		3: 00:0336
+
+	91	store #$FF to 00:0335
+	92	store #$01 to 00:0334
+	93	store #$00 to 00:0334
+
+	94	1:
+		2:
+	95	1:
+		2:
+
+	96	1: if 00:2143 greater than/equal to value, jump to address
+		2: byte value
+		3,4: pointer to address
+
+	97	1: if 00:2143 NOT equal to value, jump to address
+		2: byte value
+		3,4: pointer to address
+
+	98	1:
+		2:
+	99
+	9A
+	9B
+
+	9C	1: play sound effect
+		2: sound byte
+	9D	1: play speaker balanced sound effect
+		2: sound byte
+		3: speaker balance (00 to FF; 00 max-left speaker, FF max-right speaker)
+	9E	1: play music
+		2: music byte
+	9F	stop music
+	A0	stop music
+	A1	stop music
+	A2	stop music
+	A3	fade out music
+	A4	slow down music
+	A5	speed up music to normal
+	A6	stop music
+
+	A7
+
+	A8-AA	1: store set bits to address 00:7040,x
+		1,2: ([bytes - #$A800] / 8) + #$7040 = event flag memory address to use ***USE BIG ENDIAN***
+		2: AND #$07 = bit(s) to store (ie. #$07 = store bit 7, #$06 = store bit 6, etc...)
+	AB
+	AC	1: store byte value from address 7F:F800,x to 00:7000
+		2,3: bytes + #$7FF800 = memory address
+	AD
+	AE
+	AF
+
+	B0	1: isolate bits of 00:7000
+		2,3: bits to isolate
+	B1	1: set bits of 00:7000
+		2,3: bits to set
+	B2	1: XOR bits of 00:7000
+		2,3: bits to XOR
+	B3	1: isolate bits of 00:7000 with address 00:7000,x
+		2: ([byte x 2] + #$7000) = memory address
+	B4	1: set bits of 00:7000 with address 00:7000,x
+		2: ([byte x 2] + #$7000) = memory address
+	B5	1: XOR bits of 00:7000 with address 00:7000,x
+		2: ([byte x 2] + #$7000) = memory address
+	B6	1: shift address 00:7000,x bits left (/2)
+		2: ([byte x 2] + #$7000) = memory address
+		3: (byte XOR #$FF) + 1 = number of shifts left
+	B7	1: generate random number between 0 and value at address 00:7000,x
+		2: ([byte x 2] + #$7000) = memory address
+	B8	store 7F:F8CD to 00:7000
+
+	B9-C3
+
+	C4
+	C5
+	C6	if bit 0 set on 00:7018, clear 00:7016,00:7018 and isolate high byte of 00:701A
+	C7
+	C8	1: multiply value with value at address 00:3148, store from memory address to 00:7000 (solution x2 + 7FB000 = memory address)
+		2: add to multiplication product = solution
+		3: multiplicand
+	C9
+	CA
+	CB
+	CC
+	CD
+	CE
+	CF
+	D0
+
+	D1-EF
+
+	F0	1:
+		2:
+		3:
+		4,5: pointer to address
+
+	F1-F7
+
+	F8	play event: Exor crashes into keep
+	F9	Mario starts flashing
+	FA	set bit 3 of 00:01D8
+	FB	store #$01 to 00:0248
+	FC	store #$00 to 00:0248
+	FD	store #$02 to 00:0248
+	FE	XOR 00:3105 with #$01
+	FF
+
+FE	1: end event
+
+FF	1: end all
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///---OBJECT STRING INSTRUCTIONS---\\\
+;function pointers at offset $C0CE50
+
+00	1: set bit 7 of current object (enable object visibility)
+01	1: clear bit 7 of current object
+02	1: set bit 6 of current object (enable sequence playback)
+03	1: clear bit 6,4 of current object
+04	1: set bit 4,5 of current object (enable constant sequence playback)
+05	1: clear bit 4,5 of current object
+
+06	1: set "moon-walk" sequence shifting (object doesn't face direction being shifted)
+07	1: if set, clear "moon-walk" bits
+
+08	1: set animation/sequence
+	2: properties (no animation, solidity, etc.)
+	   bit 0,1,2 - object value (0 = object 000, 1 = object 001, 2 = object 002, etc...); up to object 007
+	   bit 3 - use animation frame instead of sequence byte***
+	   bit 4 - play sequence only once
+	   bit 6 - use animation sequence (default anyways?)
+	3: bit 0-6 - object frame/sequence byte
+	   bit 7 - mirror sprite
+
+09	1: set object to default
+
+0A	1: store value to current object address 0A,x
+	2: byte value
+
+0B	1: set bits of current object address 0A,x
+	2: bits to set
+
+0C	1: XOR bits of current object address 0A,x
+	2: bits to XOR
+
+0D	1:
+	2:
+
+0E	1:
+	2:
+
+0F	1:
+
+10	1: set transition/sequence flags
+	2: bit 6 - transition flag
+	   bit 7 - sequence flag
+	   lower bits: transition/sequence acceleration if flag set
+		0 = normal
+		1 = speed x 8/4
+		2 = speed x 8/3
+		3 = speed x 8/2
+		4 = speed x 8/1
+		5 = speed / 2
+		6 = speed / 4
+
+11	1: isolate top bits and set bits of current object address 0D,x
+	2: bits to set
+
+12	1: clear bit 0,1 and set bits of current object address 0B,x
+	2: bits to set
+
+13	1: set object layering priority
+	2: 00 - Mario overlaps object on all sides
+	   01 - normal
+	   02 - object overlaps Mario on all sides
+
+14	1: isolate top bits and set bits of current object address 0E,x
+	2: bits to set
+
+15	1: clear bit 0,1,2 and set bits of current object address 0C,x
+	2: bits to set
+
+16-1F
+
+20	1:
+	2:
+
+21	1: BPL: 26,x 27,x 28,x
+22	1: BMI: 26,x 27,x 28,x
+
+23	1:
+	2:
+
+24	1:
+	2,3:
+	4,5:
+
+25	1:
+	2,3:
+	4,5:
+
+26-28	1: execute animation via animation string
+	   byte - #$26 + #$6000 = object memory address
+	2,3: 00:7100
+	4,5: 00:7102
+	6: STA 00:710E
+	7: STA 00:7107
+	8,9: 00:7104
+	10,11: 00:7108
+	12,13: 00:710A
+	14,15: 00:710C
+	16: 00:711E,00:711F
+
+29	1:
+	2:
+
+2A	1: BPL: 26,x 27,x
+
+2B	1:
+	2:
+	3:
+	4,5:
+
+2C	1:
+	2,3:
+
+2D	1:
+	2,3:
+
+2E	1:
+	2,3:
+
+2F	1:
+	2:
+	3:
+	4:
+	5,6:
+	7:
+
+30	1:
+	2,3:
+
+31	1:
+	2,3:
+
+32	1:
+	2,3:
+
+33	1:
+	2:
+	3:
+
+34	1:
+	2:
+
+35	1:
+	2:
+	3:
+
+36	1: BPL: 26,x 27,x 28,x
+
+37	1: BPL: 26,x 27,x 28,x
+
+38	1:
+
+39	1:
+
+3A	1:
+	2:
+	3,4:
+	5,6:
+
+3B	1:
+	2:
+	3,4:
+	5,6:
+
+3C	1:
+	2:
+	3:
+	4,5: pointer to address
+
+3D	1:
+	2,3: pointer to address
+
+3E	1:
+	2:
+	3:
+	4,5: pointer to address
+
+3F	1:
+	2:
+	3,4: pointer to address
+
+40-4B	1:
+
+4C-4F	1:
+
+50	1: shift right
+	2: number of units: 1 unit = 16 pixels
+51	1: shift down-right
+	2: number of units: 1 unit = 16 pixels
+52	1: shift down
+	2: number of units: 1 unit = 16 pixels
+53	1: shift down-left
+	2: number of units: 1 unit = 16 pixels
+54	1: shift left
+	2: number of units: 1 unit = 16 pixels
+55	1: shift up-left
+	2: number of units: 1 unit = 16 pixels
+56	1: shift up
+	2: number of units: 1 unit = 16 pixels
+57	1: shift up-right
+	2: number of units: 1 unit = 16 pixels
+58	1: shift right
+	2: number of units: 1 unit = 16 pixels
+
+59	1: shift right a lot (no specified number)
+
+5A	1: shift up
+	2: number of units: 1 unit = 16 pixels
+5B	1: shift down
+	2: number of units: 1 unit = 16 pixels
+
+5C	1: shift up infinitely
+5D	1: shift down infinitely
+
+60	1: shift right
+	2: pixel shift
+61	1: shift down-right
+	2: pixel shift
+62	1: shift down
+	2: pixel shift
+63	1: shift down-left
+	2: pixel shift
+64	1: shift left
+	2: pixel shift
+65	1: shift up-left
+	2: pixel shift
+66	1: shift up
+	2: pixel shift
+67	1: shift up-right
+	2: pixel shift
+68	1: shift right
+	2: pixel shift
+
+69	1: shift right
+	2: pixel shift
+6A	1: shift up
+	2: pixel shift
+
+6B	1: continue previous sequence playback?
+	2: frame duration?
+6C	1:
+6D	1:
+6E	1:
+6F	1:
+
+70	1: face object right
+71	1: face object down-right
+72	1: face object down
+73	1: face object down-left
+74	1: face object left
+75	1: face object up-left
+76	1: face object up
+77	1: face object up-right
+78	1: face object down
+79	1: turn object down
+7A	1: turn object randomly
+7B	1:
+	2:
+7C	1: face object right
+7D	1: face object down-left
+
+7E	1: object jumps
+	2,3: jumping height
+
+7F	1: object jumps with sound effect
+	2,3: jumping height
+
+80	1: shift object to planar coordinates
+	2,3: X,Y planar coordinates
+
+81	1: shift object X,Y planar units
+	2,3: X,Y planar units
+
+82	1: transfer object to planar coordinates
+	2,3: X,Y planar coordinates
+
+83	1: transfer object X,Y planar units
+	2,3: X,Y planar units
+
+84	1: transfer object X,Y planar pixels
+	2,3: X,Y planar pixels
+
+85	1: maximize object sequence speed?
+86	1: maximize object sequence speed?
+
+87	1: transfer object to another object's coordinates
+	2: object (see CPU functions 00-2F)
+
+88	1: object runs away (shift) until further notice?
+89	1: object runs away (transfer) until further notice?
+8A	1: object runs away (transfer) until further notice?
+8B	1:
+8C	1:
+8D	1:
+8E	1:
+8F	1:
+
+90	1: object bounces to coordinates
+	2,3: X,Y planar coordinates
+	4: bouncing height
+
+91	1: object bounces X,Y planar units
+	2,3: X,Y planar units
+	4: bouncing height
+
+92	1: transfer object to planar coordinates
+	2,3,4: X,Y,Z planar coordinates
+
+93	1: transfer object X,Y planar units
+	2,3,4: X,Y,Z planar coordinates
+
+94	1: transfer object X,Y pixels
+	2,3,4: X,Y,Z planar coordinates
+
+95	1: transfer object to another object's coordinates
+	2: object (see CPU functions 00-2F)
+96	1,2
+97	1,2
+98	1:
+99	1:
+9A	1:
+
+9B	1: stop sound effect
+
+9C	1: play sound effect
+	2: sound byte
+
+9D	1:
+	2:
+	3:
+
+9E	1:
+	2:
+	3:
+
+9F	1:
+	2:
+	3:
+
+A0-A2	1: set event flag memory address bits
+	2: AND #$07 = bit(s) to set (ie. #$07 = set bit 7, #$06 = set bit 6, etc...)
+	1,2: [(bytes AND #$0FFF) / 8] + #$7040 = event flag memory address to use ***USE BIG ENDIAN***
+
+A3	1: set event flag memory address bits from 00:7000,00:7001
+	   AND 00:700C #$07 = bit(s) to set (ie. #$07 = set bit 7, #$06 = set bit 6, etc...)
+	   [00:700D,00:700C / 8] + #$7040 = event flag memory address to use
+
+A4-A6	1: clear event flag memory address bits
+	2: AND #$07 = bit(s) to clear (ie. #$07 = clear bit 7, #$06 = clear bit 6, etc...)
+	1,2: [(bytes AND #$0FFF) / 8] + #$7040 = event flag memory address to use ***USE BIG ENDIAN***
+
+A7	1: clear event flag memory address bits from 00:700C,00:700D
+	   AND 00:700C #$07 = bit(s) to clear (ie. #$07 = clear bit 7, #$06 = clear bit 6, etc...)
+	   [00:700D,00:700C / 8] + #$7040 = event flag memory address to use
+
+A8	1: store byte value to memory address - 00:70A0,x
+	2: add to #$70A0 = memory address
+	3: byte value
+
+A9	1: add byte value to memory address - 00:70A0,x
+	2: add to #$70A0 = memory address
+	3: byte value
+
+AA	1: increment memory address - 00:70A0,x
+	2: byte + #$70A0 = memory address
+
+AB	1: decrement memory address - 00:70A0,x
+	2: byte + #$70A0 = memory address
+
+AC	1: store value to 00:700C (for other stat modification functions)
+	2,3: value
+
+AD	1: add value to 00:700C
+	2,3: value
+
+AE	1: increment 00:700C
+
+AF	1: decrement 00:700C
+
+B0	1: store value to memory address - 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+
+B1	1: add value to memory address - 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+
+B2	1: increment memory address - 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+
+B3	1: decrement memory address - 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+
+B4	1: store value at address 00:70A0,x to 00:700C
+	2: byte + #$70A0 = address
+
+B5	1: store value at address 00:700C to 00:70A0,x
+	2: byte + #$70A0 = address
+
+B6	1: generate random number between 0 and byte value, store to 00:700C
+	2,3: byte value
+
+B7	1: generate random number between 0 and byte value, store to 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+
+B8	1: add value at address 00:7000,x to 00:700C (store sum to 00:7000)
+	2: (byte x 2) + #$7000 = memory address
+
+B9	1: subtract value at address 00:7000,x from 00:7000 (store diff to 00:7000)
+	2: (byte x 2) + #$7000 = memory address
+
+BA	1: store value at address 00:7000,x to 00:700C
+	2: (byte x 2) + #$7000 = memory address
+
+BB	1: store value at address 00:700C to 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+
+BC	1: store value at address 00:7000,x to 00:7000,x
+	2: (byte x 2) + #$7000 = SOURCE memory address
+	3: (byte x 2) + #$7000 = DESTINATION memory address
+
+BD	1: exchange values at addresses 00:7000,x and 00:7000,x
+	2: (byte x 2) + #$7000 = memory address 1
+	3: (byte x 2) + #$7000 = memory address 2
+
+BE	1: store values at addresses 00:7010,00:7012,00:7014 to 00:7016,00:7018,00:701A
+
+BF	1: store values at addresses 00:7016,00:7018,00:701A to 00:7010,00:7012,00:7014
+
+C0	1: compare 00:700C to value, save comparison (ie.push processor bits)
+	2,3: byte value
+
+C1	1: compare 00:7000,x to 00:700C, save comparison
+	2: (byte x 2) + #$7000 = memory address
+
+C2	1: compare 00:7000,x to byte value, save comparison
+	2: (byte x 2) + #$7000 = memory address
+	3,4: byte value
+
+C3	1: store current area byte to 00:7000
+
+C4	1:
+	2:
+
+C5	1:
+	2:
+
+C6	1: store value at 04,x to 00:700C, clear 00:7001
+	2: (byte x #$60) + #$6004 = memory address
+
+C7	1:
+	2:
+
+C8	1:
+	2:
+
+C9	1:
+	2:
+
+CA	1: store joypad register(?) to 00:700C
+
+CB	1: store joypad register(?) to 00:700C
+
+CC	1:
+
+CD	1:
+
+CE	1:
+
+CF	1:
+
+D0	1: set object to movement
+	2,3: movement byte
+
+D1	1:
+
+D2	1: jump to address
+	2,3: pointer to address
+
+D3	1: jump to address
+	2,3: pointer to address
+
+D4	1: repeat code block
+	2: number of repeats
+
+D5	1:
+
+D6	1: load memory address 00:7000,x
+	2: (byte x 2) + #$7000 = memory address
+
+D7	1: end of code repeat block
+
+D8-DA	1: if event flag memory address bits set, jump to address
+	1,2: ([byte - #$D800] / 8) + #$7040 = event flag memory address to use ***USE BIG ENDIAN***
+	2: AND #$07 = bit(s) to check (ie. #$07 = check bit 7, #$06 = check bit 6, etc...)
+	3,4: pointer - if bit(s) set, jump to address
+
+DB	1: if event flag memory address bits set, jump to address
+	   00:700C AND #$07 = bit(s) to check (ie. #$07 = check bit 7, #$06 = check bit 6, etc...)
+	   [00:700D,00:700C / 8] + #$7040 = event flag memory address to use
+	2,3: pointer - if bit(s) set, jump to address
+
+DC-DE	1: if event flag memory address bits clear, jump to address
+	1,2: ([byte - #$DC00] / 8) + #$7040 = event flag memory address to use ***USE BIG ENDIAN***
+	2: AND #$07 = bit(s) to check (ie. #$07 = check bit 7, #$06 = check bit 6, etc...)
+	3,4: pointer - if bit(s) clear, jump to address
+
+DF	1: if event flag memory address bits clear, jump to address
+	   00:700C AND #$07 = bit(s) to check (ie. #$07 = check bit 7, #$06 = check bit 6, etc...)
+	   [00:700D,00:700C / 8] + #$7040 = event flag memory address to use
+	2,3: pointer - if bit(s) clear, jump to address
+
+F0	1: set frame duration
+	2: frame duration
+
+F1	1: set frame duration
+	2,3: frame duration
+
+F2	1:
+	2:
+	3:
+
+F3	1:
+	2:
+	3:
+
+F4	1:
+F5	1:
+F6	1:
+F7	1:
+F8	1:
+	2:
+	3:
+	4,5: pointer to address
+F9	1:
+FA	1:
+FB	1:
+FC	1:
+
+FD	1: modify object properties (JMP $F0B1,x)
+	2: 00 set bit 7 of object address 0D,x (set shadow)
+	   01 clear bit 7 of object address 0D,x (remove shadow)
+	   02 set bit 7 of object address 0C,x
+	   03 clear bit 6,7 of object address 0C,x (object floats)
+	   04 set bit 4 of object address 0E,x
+	   05 clear bit 4 of object address 0E,x
+	   06 set bit 5 of object address 0E,x
+	   07 clear bit 5 of object address 0E,x
+	   08 set bit 7 of object address 09,x
+	   09 clear bit 7 of object address 09,x
+	   0A set bit 4 of object address 08,x
+	   0B clear bit 3,4 of object address 08,x
+	   0C clear bit 4 of object address 30,x
+	   0D set bit 4 of object address 30,x
+	   0E clear bit 4,6 and set bit 5 of object address 09,x
+	   0F 1: overlap BG
+	      2: 02 = BG1, 03 = BG1/2
+	   10 clear bit 5 of object address 12,x
+	   11 set bit 5 of object address 12,x
+	   12
+	   13 clear bit 3,4,5 of object address 0C,x
+	   14 set bit 3,4,5 of object address 0C,x
+	   15 clear bit 3,5 and set bit 4 of object address 0C,x
+	   16 clear bit 3 of object address 0B,x
+	   17 set bit 3 of object address 0B,x
+	   18 set bit 6 of object address 3C,x
+	   19 set bit 6 of object address 0D,x
+
+	   20 1:
+	      2:
+	      3:
+	      4:
+	   21
+	   22
+	   23 1:
+	      2:
+	      3:
+	   24 1:
+	      2:
+	      3:
+	   25
+
+	   30 1:
+	      2,3:
+	      4,5:
+	      6,7:
+	   31 1:
+	      2,3:
+	      4,5:
+	      6,7:
+	   32 1:
+	      2,3:
+	      4,5:
+	      6,7:
+	   33 1:
+	      2:
+	      3,4:
+	   34
+	   35
+	   36
+	   37
+
+	   3D 1:
+	      2:
+	      3,4: pointer to address
+	   3E 1:
+	      2:
+	      3,4:
+	      5,6: pointer to address
+	   3F 1:
+	      2:
+	      3,4: pointer to address
+
+	   B0 1: isolate bits of 00:700C
+	      2,3: bits to isolate
+	   B1 1: set bits of 00:700C
+	      2,3: bits to set
+	   B2 1: XOR bits of 00:700C
+	      2,3: bits to XOR
+	   B3 1: isolate bits of 00:700C with value at address 00:7000,x
+	      2: (byte x 2) + #$7000 = memory address
+	   B4 1: set bits of 00:700C with value at address 00:7000,x
+	      2: (byte x 2) + #$7000 = memory address
+	   B5 1: XOR bits of 00:700C with value at address 00:7000,x
+	      2: (byte x 2) + #$7000 = memory address
+	   B6 1: shift bits right of memory address 00:7000,x
+	      2: (byte x 2) + #$7000 = memory address
+	      3: number of shifts
+
+	   C4
+	   C5
+	   C6
+	   C7
+	   C8 1:
+	      2:
+	      3:
+	   C9
+	   CA
+
+	   replicant functions: 1A-1F, 26-2F, 38-3C, 40-AF, B7-C3, CB-FF
+
+FE	1: end code string
+FF	1: end code
+
+***same order as all sequences, just reads from individual animation frames for idleness

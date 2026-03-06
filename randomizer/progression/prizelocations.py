@@ -15,7 +15,9 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     Pause,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import MEM_70A8
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
+    MEM_70A8,
+)
 
 from ..types.logic import Inventory
 from ..types.prize import Prize
@@ -82,7 +84,7 @@ from ..types.prize import (
     SlotsPrize,
     EmptyPrize,
     CoinPrize,
-    FrogCoinPrize
+    FrogCoinPrize,
 )
 from ..types.flags import *
 from ..utils.npcs import (
@@ -487,6 +489,13 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.MUSHROOM_WAY_3
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
+        SmallCoinObject,
+        KeyObject,
+    ]
     # Flag as checked: npc 0 in room 204 has its object trigger disabled.
 
 
@@ -504,7 +513,19 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_4
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
+        SmallCoinObject,
+        KeyObject,
+    ]
     # Flag as checked: npc 1 in room 204 has its object trigger disabled.
 
 
@@ -1018,7 +1039,11 @@ class MushroomKingdomBossFight(BossFightLocation):
     def post_unlocks(self, world: GameWorld) -> EventScript:
         content: list[UsableEventScriptCommand] = []
         if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.KINGDOM):
-            content.extend([ClearBit(SEWERS_CLOSED)])
+            content.extend([
+                ClearBit(SEWERS_CLOSED), 
+                RemoveObjectFromSpecificLevel(NPC_0, R333_KERO_SEWERS_ENTRANCE), 
+                RemoveObjectFromSpecificLevel(NPC_1, R333_KERO_SEWERS_ENTRANCE)
+            ])
         parent = super().post_unlocks(world)
         return EventScript(content + parent.contents + [Return()])
 
@@ -1164,10 +1189,14 @@ class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
 
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+    def render(
+        self, world: GameWorld
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         if not isinstance(self.prize, EXPStarPrize):
-            world.event_scripts.get_script_by_id(E1538_BANDITS_WAY_STAR_CHEST_CAMERA_AND_DOGS).insert_before_nth_command(0, Jmp(["EVENT_1538_jmp_to_event_2"]))
-        return super().render(world) 
+            world.event_scripts.get_script_by_id(
+                E1538_BANDITS_WAY_STAR_CHEST_CAMERA_AND_DOGS
+            ).insert_before_nth_command(0, Jmp(["EVENT_1538_jmp_to_event_2"]))
+        return super().render(world)
 
     # Flag as checked: npc 0 in room 78 has its object trigger disabled.
 
@@ -1184,11 +1213,15 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
 
-    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+    def render(
+        self, world: GameWorld
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         if not isinstance(self.prize, EXPStarPrize):
-            world.event_scripts.get_script_by_id(E1587_BANDITS_WAY_4_RIGHT_CHEST).insert_before_nth_command(0, Jmp(["EVENT_1587_jmp_to_event_2"]))
-        return super().render(world) 
-    
+            world.event_scripts.get_script_by_id(
+                E1587_BANDITS_WAY_4_RIGHT_CHEST
+            ).insert_before_nth_command(0, Jmp(["EVENT_1587_jmp_to_event_2"]))
+        return super().render(world)
+
     # Flag as checked: npc 1 in room 78 has its object trigger disabled.
 
 
@@ -1450,7 +1483,14 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_LOWER
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize]
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
+        SmallCoinObject,
+        KeyObject,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sewer(world, inventory)
@@ -1465,7 +1505,14 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_1
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize]
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
+        SmallCoinObject,
+        KeyObject,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sewer(world, inventory)
@@ -1481,7 +1528,14 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_2
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, FrogCoinPrize]
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
+        SmallCoinObject,
+        KeyObject,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -1553,6 +1607,15 @@ class MidasRiverFirstCompletionRewardLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.MIDAS_RIVER_FIRST_TIME
     _world_area = WorldAreaEnum.MIDAS_RIVER
     # Flag as checked: MIDAS_RIVER_FIRST_VISIT_PRIZE_RECEIVED
+
+
+class MidasRiverLeftCaveLocation(RiverLocationRow2):
+    _originally_held = FPFlowerPrize
+    _rooms = [R071_MIDAS_RIVER_2ND_TUNNEL_BOTH_LEFT_AND_RIGHT]
+    _npc_ids = [NPC_5]
+    _id = ShuffleLocationSelector.MIDAS_RIVER_LEFT_CAVE
+    _world_area = WorldAreaEnum.MIDAS_RIVER
+    # Flag as checked: MIDAS_RIVER_TUNNEL_2_BIT_1
 
 
 class MidasRiverBottomLeftCaveLocation(RiverLocationRow2):
@@ -1867,7 +1930,12 @@ class RoseTownTreasureHouseLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_1
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]
     # Flag as checked: npc 0 in room 93 or 94 has its object trigger disabled.
 
 
@@ -1880,7 +1948,12 @@ class RoseTownTreasureHouseRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1, NPC_1]
     _id = ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_2
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]
     # Flag as checked: npc 1 in room 93 or 94 has its object trigger disabled.
 
 
@@ -1954,7 +2027,14 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_1
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        FrogCoinPrize,
+        CoinPrize,
+    ]
+    _model_allowlist = [FlowerObject, RecoveryMushroomObject, KeyObject]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -1969,7 +2049,13 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_2
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        FrogCoinPrize,
+        CoinPrize,
+    ]
+    _model_allowlist = [FlowerObject, RecoveryMushroomObject, KeyObject]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -1984,7 +2070,14 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_3
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        FrogCoinPrize,
+        CoinPrize,
+    ]
+    _model_allowlist = [FlowerObject, RecoveryMushroomObject, KeyObject]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2108,6 +2201,12 @@ class ForestMazeBossFight(BossFightLocation):
         BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_8]),
         BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_0]),
         BossFightLocationHenchmanNPC([R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD], [NPC_6]),
+    ]
+    _mook_henchman_slots = [
+        BossFightLocationHenchmanNPC([R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE], [NPC_7]),
+        BossFightLocationHenchmanNPC([R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE], [NPC_8]),
+        BossFightLocationHenchmanNPC([R228_FOREST_MAZE_AREA_04], [NPC_1]),
+        BossFightLocationHenchmanNPC([R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09], [NPC_13]),
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -2504,6 +2603,7 @@ class YosterEntranceChestLocation(TreasureChestLocationRow1):
 
     # Flag as checked: npc 1 in room 33 has its object trigger disabled.
 
+
 class YosterRaceCookieYoshiLocation(KeyItemLocation, NPCLocationRow5):
     _bias = True
     _originally_held = CookiesPrize
@@ -2515,7 +2615,7 @@ class YosterRaceCookieYoshiLocation(KeyItemLocation, NPCLocationRow5):
         return can_access_pipe_vault(world, inventory)
 
     # Flag as checked: YOSHI_ITEM_GRANTED
-    
+
 
 class YosterRacePrize1Location(NPCLocationRow1):
     _bias = True
@@ -2794,7 +2894,11 @@ class OuterMinesBossFight(BossFightLocation):
             skip_swap_if_flag="KeepMinigameSpritesIntact",
         ),
         BossFightLocationHenchmanNPC(
-            [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM],
+            [
+                R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM,
+                R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM,
+                R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM,
+            ],
             [NPC_1, NPC_2, NPC_3],
             PACK141_MINES_HENCHMAN_LEFT,
             skip_swap_if_flag="KeepMinigameSpritesIntact",
@@ -2919,7 +3023,7 @@ class InnerMinesSaveBlockChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_1
     _world_area = WorldAreaEnum.MOLEVILLE
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
@@ -2934,7 +3038,7 @@ class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_2
     _world_area = WorldAreaEnum.MOLEVILLE
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
@@ -2960,6 +3064,7 @@ class InnerMinesBossFight(BossFightLocation):
     _mook_henchman_slots = [
         BossFightLocationHenchmanNPC(
             [
+                R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
                 R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
                 R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
             ],
@@ -3746,7 +3851,8 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     # flag as checked: TOWER_BOSS_1_STAR_PIECE
     # will be granted regardless of whether they do curtain game or fight boss
 
-class BoosterTowerMarioDollLocation( KeyItemLocation, StandingLocationRow1):
+
+class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
     _bias = True
     _originally_held = MarioDollPrize
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
@@ -3758,7 +3864,6 @@ class BoosterTowerMarioDollLocation( KeyItemLocation, StandingLocationRow1):
         return can_do_tower_curtain_game(world, inventory)
 
     # Flag as checked: NPC 5 removed from room 192
-    
 
 
 class BoosterTowerIndoorBossFight(BossFightLocation):
@@ -3899,7 +4004,9 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_do_tower_curtain_game(world, inventory) and not_earlygame(world, inventory)
+        return can_do_tower_curtain_game(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     def render(self, world: GameWorld):
         op = super().render(world)
@@ -3957,7 +4064,9 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     _parent = BoosterTowerIndoorBossFight
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_do_tower_curtain_game(world, inventory) and not_earlygame(world, inventory)
+        return can_do_tower_curtain_game(world, inventory) and not_earlygame(
+            world, inventory
+        )
 
     # Flag as checked: TOWER_BOSS_1_STAR_PIECE
 
@@ -6175,6 +6284,15 @@ class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_1
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6191,6 +6309,15 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_2
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6207,6 +6334,15 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_3
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6223,6 +6359,15 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_4
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6239,6 +6384,15 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_1
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6255,6 +6409,15 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_2
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6271,6 +6434,15 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_3
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6287,6 +6459,15 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_4
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6303,6 +6484,15 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_5
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6319,6 +6509,15 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_6
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6335,6 +6534,15 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_7
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6351,6 +6559,15 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_8
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6367,6 +6584,15 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_2
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6383,6 +6609,15 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
     _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_1
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6399,6 +6634,15 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
     _npc_ids = [NPC_15]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_3
     _world_area = WorldAreaEnum.TEMPLE
+    _model_allowlist = [
+        FlowerObject,
+        RecoveryMushroomObject,
+        FrogCoinObject,
+        BigCoinObject,
+        SmallCoinObject,
+        SmallFrogCoinObject,
+        SmallFrogCoinObjectNoMoney,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -7634,7 +7878,10 @@ class StatueRoomBossFight(BossFightLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _pack_id = PACK208_NIMBUS_CASTLE_FIRST_BOSS
     _post_unlocks_event_id = E1230_STATUE_BOSS_UNLOCKS
-    _rooms = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT]
+    _rooms = [
+        R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
+        R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
+    ]
     _npc_slots = [
         BossFightLocationNPC(
             R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
@@ -10399,7 +10646,11 @@ class FinalBossFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FINAL
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _parent = FinalBossFight
-    _rooms = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, R108_MOLEVILLE_OUTSIDE, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _rooms = [
+        R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+        R108_MOLEVILLE_OUTSIDE,
+        R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -11821,16 +12072,19 @@ class FactoryButtonFlag(InvisibleFlagLocation):
 
 class ThreeMustyFearsBonesProxy(PrizeLocation):
     """Proxy class for Dry Bones' invisible item slot in Three Musty Fears."""
+
     _id = ShuffleLocationSelector.THREE_MUSTY_FEARS_BONES
 
 
 class ThreeMustyFearsGreaperProxy(PrizeLocation):
     """Proxy class for Greaper's invisible item slot in Three Musty Fears."""
+
     _id = ShuffleLocationSelector.THREE_MUSTY_FEARS_GREAPER
 
 
 class ThreeMustyFearsBooProxy(PrizeLocation):
     """Proxy class for Big Boo's invisible item slot in Three Musty Fears."""
+
     _id = ShuffleLocationSelector.THREE_MUSTY_FEARS_BOO
 
 
@@ -11964,11 +12218,15 @@ def can_access_tower(world: GameWorld, inventory: Inventory) -> bool:
         return inventory.has_item(PunchinelloBossFight)
     return True
 
+
 def can_do_tower_curtain_game(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to do the curtain game in Booster Tower."""
-    if world.settings.isflag_enabled(ShuffleMarioDoll) and not inventory.has_item(MarioDollPrize):
+    if world.settings.isflag_enabled(ShuffleMarioDoll) and not inventory.has_item(
+        MarioDollPrize
+    ):
         return False
     return can_access_tower(world, inventory)
+
 
 def can_access_tower_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the postgame boss at Booster Tower."""
@@ -12274,7 +12532,9 @@ def can_access_invisible_flags(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_damage_enemies_with_spells(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to damage enemies with a non-elemental spell."""
-    if not world.settings.isflag_enabled(CharacterLearnedSpells) and not world.settings.isflag_enabled(SpellsAnywhere):
+    if not world.settings.isflag_enabled(
+        CharacterLearnedSpells
+    ) and not world.settings.isflag_enabled(SpellsAnywhere):
         # Spells aren't shuffled, so check if the player has recruited a character
         # whose vanilla spells include a non-elemental damage spell that isn't disabled.
         disabled_spells: set[type] = {
@@ -12284,18 +12544,30 @@ def can_damage_enemies_with_spells(world: GameWorld, inventory: Inventory) -> bo
         def spell_available(*spell_classes: type) -> bool:
             return any(s not in disabled_spells for s in spell_classes)
 
-        if inventory.has_item(MallowRecruitmentPrize) and spell_available(StarRainSpell):
+        if inventory.has_item(MallowRecruitmentPrize) and spell_available(
+            StarRainSpell
+        ):
             return True
-        if inventory.has_item(GenoRecruitmentPrize) and spell_available(GenoWhirlSpell, GenoBlastSpell):
+        if inventory.has_item(GenoRecruitmentPrize) and spell_available(
+            GenoWhirlSpell, GenoBlastSpell
+        ):
             return True
-        if inventory.has_item(BowserRecruitmentPrize) and spell_available(PoisonGasSpell, TerrorizeSpell):
+        if inventory.has_item(BowserRecruitmentPrize) and spell_available(
+            PoisonGasSpell, TerrorizeSpell
+        ):
             return True
         if not world.settings.isflag_enabled(InfuseSpellElements):
-            if inventory.has_item(GenoRecruitmentPrize) and spell_available(GenoBeamSpell, GenoFlashSpell):
+            if inventory.has_item(GenoRecruitmentPrize) and spell_available(
+                GenoBeamSpell, GenoFlashSpell
+            ):
                 return True
-            if inventory.has_item(BowserRecruitmentPrize) and spell_available(CrusherSpell, BowserCrushSpell):
+            if inventory.has_item(BowserRecruitmentPrize) and spell_available(
+                CrusherSpell, BowserCrushSpell
+            ):
                 return True
-            if inventory.has_item(ToadstoolRecruitmentPrize) and spell_available(PsychBombSpell):
+            if inventory.has_item(ToadstoolRecruitmentPrize) and spell_available(
+                PsychBombSpell
+            ):
                 return True
         return False
     pool = [

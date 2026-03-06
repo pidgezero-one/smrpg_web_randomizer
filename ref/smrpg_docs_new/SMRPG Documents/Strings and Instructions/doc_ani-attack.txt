@@ -1,0 +1,396 @@
+-------------------------------------------------------------------
+MONSTER ANIMATION SET POINTERS <350202-350401>
+-------------------------------------------------------------------
+BYTE   DEATH  FLOAT  SHADOW  HIT REACTION    ATTRIBUTES
+-------------------------------------------------------------------
+058A   pop    --     --      normal          no movement for Escape
+0596   pop    --     --      slide backward
+05A2   (Bowser clone)
+05AE   (Mario clone)
+05BA   pop    --     --      none
+0898   pop    --     shadow  normal
+0985   pop    float  shadow  normal
+0991   pop    float  --      normal
+0AD3   pop    float  --      slide backward
+0ADF   pop    float  --      slide backward
+0AEB   fade   float  --      normal
+0CF2   fade   --     --      normal
+0CFE   fade   --     --      normal          no coin animation
+0D0A   fade   --     --      normal          Smithy 1 sprite casting animation
+0D16   fade   --     --      normal          no casting animation for Escape
+0E60   fade   --     --      normal          doesn't move foward for Escape
+0E6C   pop    --     --      normal          no casting animation
+0E78   pop    --     --      none
+
+----------------------
+COMMON STRING POINTERS
+----------------------
+10 F5 80   Mario runs up
+10 27 81   Mario raises arms to cast spell (before Spade animation appears)
+
+10 F8 36   Darken screen (cumulative)
+10 2B 25   Display spell name
+10 FF 36   Lighten screen (NOT cumulative)
+AB xx      Sound effect
+
+10 F2 77   target gets hit
+10 C4 23   attacker returns to base stance
+
+09 2F 25   removes sprite and ends animation
+
+01 37      start of animation
+
+---------------------------------
+MONSTER ATTACKS <351493 - 351594>
+---------------------------------
+
+$352042
+
+69 		;read attack byte
+63 00 		;display special attack name
+10 3B 30 	;run code string at $35303B
+
+   34 00
+   20 50 20 00
+   37 00 F0
+   24 00 00 00 90 30	;jump to $353090
+
+      AB 00 
+      11	;end code string
+
+10 8E 78 	;run code string at $35788E - Jinx approaches
+
+   0E 
+   45 
+   44 60 
+   0C 04 00 04 40 00 
+   04 06 00 00 
+   0F 
+   11 		;end code string
+
+E1 46 00 00 	;execute battle event #$0046, sequence 00 ($3A6090) - Jinx does a series of attacks
+
+   86 6B
+      8C 6B
+
+         10 31 75	;run code string at $3A7531
+
+34 08 
+22 18 1C E0 
+22 18 1D E0 
+22 18 1E E0 
+22 18 1F E0 
+11 		;end code string
+
+         10 BF EB	;run code string at $3AEBBF
+
+5D 40 00 E6 EB 		;run character's reaction animation
+
+///
+43 13 			;playback sequence #$13 (surprised)
+04 10 3C 00 		;frame duration - 60 (bit 4: playback sequence only as long as frame count)
+43 23 			;show sequence #$13, frame 1
+04 10 1E 00 		;frame duration - 30
+AB 5C 			;sound effect (fly upward)
+08 C1 FF FB FF FB 01 00	;shift character object upward (Jinx lifts them up)
+04 10 0A 00 		;frame duration - 10
+0F 
+43 28 			;show sequence #$18, frame 1 (fallen down)
+04 10 0E 00 		;frame duration - 14
+AB 6F 			;sound effect (hit ground)
+08 C1 00 08 00 08 01 00 ;shift character object down (Jinx drops them)
+04 08 00 00 
+0F 
+08 E1 FF FB 00 04 81 00	;shift character object up (bounce off ground after landing)
+04 10 04 00 		;frame duration - 04
+04 08 00 00 
+0F 
+43 20 			;show sequence #$10, frame 1
+10 5E 75		;run code string at $3A755E
+   \\\
+34 08 
+20 18 1F E0 
+36 08 01 
+22 18 1F E0 
+11 			;end code string
+   ///
+5E			;end simultaneous code string
+\\\
+
+03 C1 20 C3 01 00 	;01C3 - object byte
+43 03 			;03 - sequence byte
+AB CD 			;sound effect (punch)
+04 10 04 00 		;frame duration - 04
+AB CD 			;sound effect (punch)
+04 10 04 00 		;frame duration - 04
+AB CD 			;sound effect (punch)
+4E 
+03 C1 20 DA 01 00 	;01DA - object byte
+7F 
+10 1E 77 
+11 			;end code string
+
+10 AD 35 	;character gets hit and Jinx returns to initial stance
+
+20 18 0F E0 
+24 08 01 00 
+8A 35 
+09 C4 23 
+
+   3A 
+   34 0F 
+   3F 80 15 00 00 84 
+   40 0F 
+   FF 
+   11 
+
+10 F2 77 
+11 
+
+-------------------------------------------------------------------
+
+Bombs Away ($35207D)
+----------
+10 73 7B 
+AB 23    (power up sound)
+03 C1 20 
+C4 01 
+04 
+04 10 3C 
+00 
+AB 66    (blast sound)
+21 00 
+1C 
+00 
+10 75 24 (blue ball shot)
+03 
+C1 
+20 
+DA 01 00 7F 
+10 AD 35 (target gets hit)
+10 F2 77
+11
+
+351782   Wild Card
+------------------
+34 0F 
+68 06 37   PTR; add to 02 doubled to get 370A
+04         add to PTR at 35370A
+40 0F 
+01 
+11                   
+
+353B39
+------
+01 37 
+F8 FF 
+F8 FF 
+00 00 
+00 
+81 20 
+15 02       spark sprite animation before throwing cards
+00 30 00 
+62 4E 05 
+
+01 37 
+F0 FF 
+08 01 
+00 00 
+00 
+81 28 
+26 03       card sprite animation
+00 30 00 
+62 21 00 
+02 00 
+
+
+pointers (393AD3 - 393AD8)
+39 3B       for value of 06 (1st CARD)
+84 3B       for value of 08 (2nd & 4th CARD)
+A6 3B       for value of 0A (3rd CARD)
+
+
+68 06 37 
+06          tells what part of animation to read from; add to PTR at ($353706 + 4)
+04 10 0A 00 
+
+68 06 37 
+08 
+04 10 0A 00 
+
+68 06 37 
+0A 
+04 10 0A 00 
+
+68 06 37 
+08 
+04 10 0A 00 
+
+09 2F 25 
+
+1st CARD
+--------
+01 37 
+FC FF 
+00 FF 
+00 00 
+83 
+83 0E 45 
+0B 27 
+08 00 
+F0 FF 
+00 00 
+0C 02 00 
+06         speed of card
+00 00 
+04 06 00 00 
+AB 0F 
+05 07 
+
+2nd & 4th CARD
+--------------
+01 37 
+F8 FF 
+F8 FE 
+00 00 
+83 
+83 0E 45 
+0B 27 
+00 00 
+F8 FF 
+00 00 
+0C 02 00 
+04         speed of card
+00 00 
+04 06 00 00 
+AB 0F 
+05 07 
+
+3rd CARD
+--------
+01 37 
+F8 FF 
+FC FE 
+00 00 
+83 
+83 0E 45 
+0B 27 
+04 00 
+EE FF 
+00 00 
+0C 02 00 
+03         speed of card
+00 00 
+04 06 00 00 
+AB 0F 
+05 07                                              
+
+3543B9 PTR to animation
+3543C7 actual animation code
+
+Triple Kick ($352056)
+-----------
+69 63 00 
+10 F1 78 
+E1 46 00 02 (Jinx jumps up and kicks opponent)
+10 AD 35    (opponent takes a hit)
+10 F2 77    (Jinx returns to base stance)
+11           
+
+$3A6B93
+$3AECBB
+0E 45 5D 40 
+00 2D EC 
+AB 45 
+03 C1 20 
+C4 01 
+05 04 
+10 28 00 
+AB 55                                  
+
+Quicksilver ($352067)
+-----------
+69 63 00 
+AB A9 
+10 BE 7E 
+E1 46 00 04 
+10 AD 35 
+10 F2 77 
+11                                        
+
+Bombs Away ($35207D)
+----------
+10 73 7B 
+AB 23    (power up sound)
+03 C1 20 
+C4 01 
+04 
+04 10 3C 
+00 
+AB 66    (blast sound)
+21 00 
+1C 00 
+10 75 24 (blue ball shot)
+03 
+C1 20 
+DA 01 00 7F 
+10 AD 35 (target gets hit)
+10 F2 77
+11
+
+Jinxed ($351581$352042)
+------
+69 63 00 
+10 3B 30 
+10 8E 78 
+E1 46 00 00 
+10 AD 35 
+10 F2 77 
+11 
+($3A6090$3A6B86)
+($3AEBBF)
+5D 
+40 
+00 
+E6 EB    (opponent's reaction)
+[Jinx punches]
+03 C1 20 
+C3 01 
+00 43 03 
+AB CD    (punch sound)
+04 
+10 04 00 
+AB CD    (punch sound)
+04 
+10 04 00 
+AB CD    (punch sound)
+4E 
+03 C1 20 
+DA 01 
+00 7F 
+
+10 1E 77 (Jinx returns to base stance)
+11    
+                        
+Opponent's reaction to 'Jinxed'($3AEBE6)
+
+43 13 04 
+10 3C 00 
+43 23 04 
+10 1E 00 
+AB 5C      (dropfalling sound)
+08 C1 
+FF FB 
+FF FB 
+01 00 04 
+10 0A 00 
+0F 43 28 04 
+10 0E 00 
+AB 6F       (body slam sound)
+08 C1 00 08 00 08 01 00 04 08 00 00 0F 
+08 E1 
+FF FB 
+00 04 81 00 04 
+10 04 00 
+04 08 00 00 
+0F 43 20 10 5E 75 5E 

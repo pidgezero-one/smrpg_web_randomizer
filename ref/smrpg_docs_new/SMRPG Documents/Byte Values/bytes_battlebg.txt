@@ -1,0 +1,57 @@
+BATTLEFIELD BACKGROUNDS
+-----------------------
+unused battlefields are prefixed by ___
+
+00  Forest Maze
+01  Forest Maze: Bowyer's Pad
+02  Bean Valley: Beanstalks
+03  Sunken Ship: King Calamari's Cellar
+04  Sunken Ship
+05  Moleville Mines
+06  ___mines
+07  Bowser's Keep
+08  Barrel Volcan: Czar Dragon's Pad
+09  Grasslands
+0A  Mountains
+0B  Mushroom Kingdom House
+0C  Booster Tower
+0D  Mushroom Kingdom Castle
+0E  Kero Sewers: Underwater
+0F  Mushroom Kingdom Castle
+10  Bowser's Keep Turret: Exor
+11  Booster Tower: Balcony
+12  Smithy Factory: Count Down's Pad
+13  Smithy Factory
+14  Barrel Volcano
+15  Kero Sewers
+16  Nimbus Castle
+17  Nimbus Castle: Birdo's Room
+18  Nimbus Land
+19  Underground
+1A  ___uses Mushroom Kingdom tiles
+1B  ___forested area with unique trees
+1C  Mushroom Kingdom
+1D  Bowser's Keep: Chandeliers
+1E  Forest Maze: Path to Bowyer
+1F  Level Up foreground
+20  Level Up background
+21  Grasslands
+22  ___sea enclave
+23  Marrymore Chapel Sanctuary
+24  Star Hill
+25  Seaside Town Beach
+26  Sea
+27  Blade: Axem Rangers
+28  Smithy Factory: Domino & Cloaker's Pad
+29  Bean Valley: Grasslands
+2A  Belome Temple
+2B  Land's End Desert
+2C  Factory Grounds: Smithy's Pad
+2D  Smithy's Final Form
+2E  Jinx's Dojo
+2F  Culex
+30  Factory Grounds
+31  Bean Valley: Pipe Room
+
+150000-15FFFF	Battlefield Tilemaps
+39B644-39B843	Battlefield Layouts

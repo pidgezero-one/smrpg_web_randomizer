@@ -1092,7 +1092,7 @@ script = AnimationScriptBlock(expected_size=3221, expected_beginning=0x351493, s
 	SetAMEM8BitToConst(0x6E, 1),
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=0, destinations=["command_0x35D2D5"]),
 	PauseScriptUntilAMEMBitsSet(0x6F, [0]),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0722_JOHNNY_PASTEOVER, sequence=0, store_to_vram=True, looping=True, store_palette=True, behind_all_sprites=True, overlap_all_sprites=True),
+	ResetSpriteSequence(),
 	ReturnSubroutine(),
 	RunSubroutine(["command_0x357E04"], identifier="DUMMYAttack11"),
 	RunSubroutine(["command_0x353140"]),

@@ -1,0 +1,453 @@
+Area Mapping Assignments: tilesets, tilemaps, physical maps, palettes, battlefields
+-----------------------------------------------------------------------------------
+the following is each area's layout data;
+the single byte in brackets is area's layout byte;
+
+mapping data starts at $1D2440 and is 15 bytes each
+
+byte 1-5	BGL 1,2 CGFX assignments
+byte 6		BGL 1 tileset
+byte 7		BGL 2 tileset (if signed, BGL 3 priority = 1)
+byte 8		BGL 1 tilemap
+byte 9		BGL 2 tilemap
+byte 10		Physical Field map
+byte 11		palette set **Mario's Pipehouse palette PTR is at offset 0x1EF82B**
+byte 12		BGL 3 CGFX pointer
+byte 13		BGL 3 tileset
+byte 14		BGL 3 tilemap
+byte 15		battlefield set assignment (0x00 - 0x40)
+
+1D2440 <00> [00 01 02 03 04 00 81 00 01 01 06 00 00 40 00]
+1D244F <01> [11 12 13 14 15 3D 81 46 47 27 02 0E 10 61 12]
+1D245E <02> [16 1A 17 2F 00 04 85 04 05 07 18 FF 00 40 03]
+1D246D <03> [1E 1F 20 21 22 1D 9E 06 07 1B 12 01 01 41 0F]
+1D247C <04> [09 1A 2F 0A 0B 07 88 08 09 06 0F FF 00 40 03]
+1D248B <05> [30 31 32 2D 2E 09 8A 18 19 02 0D 05 05 47 04]
+1D249A <06> [40 41 42 43 44 06 BE 0C 0D 25 06 FF 00 40 02]
+1D24A9 <07> [16 1A 17 2F 00 04 85 0E 0F 09 19 FF 00 40 03]
+1D24B8 <08> [01 02 03 06 05 42 91 10 11 03 14 FF 00 40 00]
+1D24C7 <09> [0C 0D 0E 0F 10 0B 3F 42 00 08 09 11 0D 57 00]
+1D24D6 <0A> [11 12 13 14 15 00 81 14 15 0A 15 FF 00 40 02]
+1D24E5 <0B> [16 1A 17 2F 00 04 85 16 17 0E 03 FF 00 40 03]
+1D24F4 <0C> [45 46 47 3B 3C 0E 8F 3A 3B 1C 1A FF 00 40 0F]
+1D2503 <0D> [1E 1F 20 21 22 1D 9E 06 07 1B 38 01 01 41 0F]
+1D2512 <0E> [36 37 38 39 3A 1B 9C 30 31 23 13 FF 00 40 0C]
+1D2521 <0F> [72 73 74 75 76 40 C1 A8 A9 19 00 0F 11 5C 00]
+1D2530 <10> [30 31 32 2D 2E 12 92 1E 1F 16 0D 05 05 47 01]
+1D253F <11> [1B 1C 1D 00 00 13 14 20 21 05 0A 02 02 43 01]
+1D254E <12> [23 24 25 26 27 15 96 24 25 10 0B 03 03 44 06]
+1D255D <13> [23 24 25 26 27 15 96 26 27 0B 0B 03 03 45 06]
+1D256C <14> [23 24 25 26 27 15 96 28 29 0D 0B 03 03 45 06]
+1D257B <15> [23 24 25 26 27 15 96 68 69 2C 0B 03 03 45 06]
+1D258A <16> [36 37 38 39 3A 1B 9C 32 33 24 13 FF 00 40 0C]
+1D2599 <17> [28 29 2A 2B 2C 17 98 22 23 12 0C 04 04 46 0A]
+1D25A8 <18> [28 29 2A 2B 2C 17 98 2C 2D 13 0C 04 04 48 0A]
+1D25B7 <19> [6A 35 4B 53 54 1F A0 3C 3D 3C 1B 07 07 4B 09]
+1D25C6 <1A> [33 1A 00 34 35 19 9A 12 13 15 0E FF 00 40 03]
+1D25D5 <1B> [11 12 13 14 15 3C 81 36 37 26 07 FF 00 40 02]
+1D25E4 <1C> [09 1A 2F 0A 0B 07 88 40 41 17 0F 0C 0E 58 03]
+1D25F3 <1D> [1E 1F 20 21 22 1D 9E 3E 3F 1A 12 01 01 49 0F]
+1D2602 <1E> [11 12 13 14 15 00 81 0A 0B 18 15 0E 10 5B 02]
+1D2611 <1F> [11 12 13 14 15 00 81 44 45 21 15 0E 10 68 02]
+1D2620 <20> [16 1A 17 2F 00 04 85 2E 2F 00 03 FF 00 40 00]
+1D262F <21> [36 37 38 18 19 1B 9C 48 49 30 13 FF 00 40 07]
+1D263E <22> [36 37 38 18 19 1B 9C 4A 4B 31 13 FF 00 40 07]
+1D264D <23> [36 37 38 18 19 1B 9C 4C 4D 32 13 FF 00 40 07]
+1D265C <24> [36 37 38 18 19 1C 9B 4E 4F 1E 13 FF 00 40 05]
+1D266B <25> [01 02 03 04 05 3A 91 50 51 01 08 FF 00 40 00]
+1D267A <26> [01 02 03 04 05 3A 91 52 53 01 14 FF 00 40 00]
+1D2689 <27> [40 41 42 3B 3C 24 A5 1C 1D 41 29 07 07 52 13]
+1D2698 <28> [11 12 13 14 15 00 81 54 55 0F 15 FF 00 40 02]
+1D26A7 <29> [36 37 38 18 19 1C 9B 56 57 1F 13 FF 00 40 05]
+1D26B6 <2A> [36 37 38 18 19 1C 9B 58 59 20 13 FF 00 40 05]
+1D26C5 <2B> [01 02 08 06 07 02 83 52 53 01 16 FF 00 40 00]
+1D26D4 <2C> [40 41 42 3B 3C 24 A5 60 61 14 29 07 07 42 13]
+1D26E3 <2D> [33 1A 1A 34 35 19 9A 1A 1B 01 0E FF 00 40 12]
+1D26F2 <2E> [11 12 13 14 15 00 81 36 37 26 34 0E 10 5E 02]
+1D2701 <2F> [30 31 32 2D 2E 09 8A 34 35 28 0D 0D 0F 59 04]
+1D2710 <30> [3B 3C 42 53 54 21 A1 5C 5D 2E 22 07 08 55 13]
+1D271F <31> [07 6F 70 00 00 48 51 B4 B5 59 3A 11 0D 57 0B]
+1D272E <32> [55 56 57 00 00 22 A3 5E 5F 5C 1D 0A 12 50 00]
+1D273D <33> [58 59 5A 61 1A 26 27 62 63 35 1F 0A 0B 53 28]
+1D274C <34> [40 41 42 3D 3E 28 A8 64 65 2A 20 08 09 4D 36]
+1D275B <35> [01 02 03 06 05 42 91 D1 D2 6C 14 15 16 73 00]
+1D276A <36> [3B 3C 42 53 54 21 C4 6A 6B 2D 22 07 08 4C 00]
+1D2779 <37> [40 41 42 4C 3C 31 32 6C 6D 2F 2A 0B 0C 56 0E]
+1D2788 <38> [11 12 13 14 15 47 01 6E 6F 33 39 0E 10 63 01]
+1D2797 <39> [77 00 4B 53 54 2D AE 70 71 0C 23 09 0A 4E 00]
+1D27A6 <3A> [36 37 38 18 19 1C 9B 72 73 11 13 FF 00 40 07]
+1D27B5 <3B> [40 41 42 3B 3C 24 A5 74 75 1D 1E 07 08 60 13]
+1D27C4 <3C> [40 41 42 2D 3C 31 B2 76 77 22 25 07 0B 40 13]
+1D27D3 <3D> [36 37 38 39 3A 1B 9C C3 C4 38 13 FF 00 40 0C]
+1D27E2 <3E> [62 63 64 71 00 2F B0 7A 7B 36 24 FF 00 40 15]
+1D27F1 <3F> [62 63 64 71 00 2F B0 7C 7D 37 24 FF 00 40 15]
+1D2800 <40> [40 41 42 2D 3C 2B AC 6C 6D 2F 25 0E 10 68 11]
+1D280F <41> [58 59 5A 6D 6E 4F 50 8E 8F 42 44 14 15 6B 00]
+1D281E <42> [36 37 38 18 19 1C 9B 80 81 3A 28 07 07 51 09]
+1D282D <43> [36 37 38 18 19 1C 9B 80 81 3A 28 07 07 51 00]
+1D283C <44> [30 31 32 2D 2E 12 92 82 83 3B 0D FF 00 40 18]
+1D284B <45> [30 31 32 39 3A 12 92 82 83 3B 0D FF 00 40 18]
+1D285A <46> [65 66 67 68 C5 36 B3 88 89 40 5D 19 1A 7A 17]
+1D2869 <47> [65 66 67 68 69 33 B3 8A 8B 3E 26 19 1A 7A 17]
+1D2878 <48> [33 1A 00 34 35 19 9A 86 87 3D 0E 0A 0B 53 05]
+1D2887 <49> [65 66 67 68 69 33 B3 8C 8D 3F 26 19 1A 7A 17]
+1D2896 <4A> [3F 00 00 00 00 52 D2 C5 C5 68 45 0E 10 6C 00]
+1D28A5 <4B> [30 31 32 2D 2E 12 92 92 93 44 2F 0E 10 6F 1C]
+1D28B4 <4C> [65 66 67 68 9D 36 B7 88 89 40 2C 19 1A 7A 17]
+1D28C3 <4D> [30 31 32 00 00 12 92 94 95 46 0D FF 00 40 00]
+1D28D2 <4E> [1B 1C 1D 00 00 13 94 96 97 47 0A 02 02 54 00]
+1D28E1 <4F> [6B 6C 00 00 00 38 B9 98 99 48 2D FF 00 40 00]
+1D28F0 <50> [01 02 03 04 05 3A C3 7E 7F 49 2E FF 00 40 00]
+1D28FF <51> [30 31 32 2D 2E 09 8A 9A 9B 4A 4C 16 17 76 1B]
+1D290E <52> [6D 6E 6F 70 71 3A BA 9C 9D 4B 2E FF 00 40 00]
+1D291D <53> [6D 6E 6F 70 71 3A BA 9E 9F 4C 2E FF 00 40 00]
+1D292C <54> [16 1A 17 2F 00 04 85 16 17 0E 03 FF 00 40 03]
+1D293B <55> [40 41 42 4C 3C 2B 2C A0 A1 4D 25 FF 00 40 11]
+1D294A <56> [40 41 42 4C 3C 2B 2C A2 A3 4E 25 FF 00 40 11]
+1D2959 <57> [01 02 03 06 05 11 91 10 11 01 08 FF 00 40 00]
+1D2968 <58> [11 12 13 14 15 00 81 A4 A5 4F 32 0E 10 5A 00]
+1D2977 <59> [40 41 42 43 44 06 BE A6 A7 50 06 FF 00 40 11]
+1D2986 <5A> [09 1A 2F 0A 0B 07 88 40 41 17 31 0C 0E 58 03]
+1D2995 <5B> [30 31 32 2D 2E 09 8A AA AB 52 36 0D 0F 59 04]
+1D29A4 <5C> [40 41 42 3B 3C 24 A5 AC AD 53 1E 07 08 5D 13]
+1D29B3 <5D> [36 37 38 78 19 45 C6 AE AF 54 33 FF 00 40 13]
+1D29C2 <5E> [11 12 13 14 15 00 81 36 37 26 35 0E 10 5F 02]
+1D29D1 <5F> [33 1A 00 34 35 19 9A B0 B1 55 0E FF 00 40 12]
+1D29E0 <60> [16 1A 17 2F 00 04 85 16 17 0E 37 FF 00 40 03]
+1D29EF <61> [33 1A 00 34 35 19 9A B2 B3 56 0E FF 00 40 03]
+1D29FE <62> [09 1A 2F 0A 0B 07 88 78 79 57 10 0C 0E 58 03]
+1D2A0D <63> [11 12 13 14 15 00 81 02 03 58 15 0E 10 62 02]
+1D2A1C <64> [79 7A 00 00 00 49 C9 90 91 43 3C 12 13 65 0D]
+1D2A2B <65> [11 12 13 14 15 00 81 02 03 58 3B 0E 10 62 02]
+1D2A3A <66> [11 12 13 14 15 00 81 02 03 58 3D 0E 10 62 02]
+1D2A49 <67> [28 29 2A 2B 07 17 98 B6 B7 5A 3E 07 07 64 0A]
+1D2A58 <68> [7B C6 00 00 00 4A 4A B8 B9 5B 3F 11 0D 66 0A]
+1D2A67 <69> [3B 3C 42 53 54 21 A1 1E 1F 5D 22 07 08 67 13]
+1D2A76 <6A> [30 31 32 2D 2E 09 8A AA AB 52 0D 05 05 59 04]
+1D2A85 <6B> [28 29 2A 2B 07 17 98 B6 B7 5A 40 07 07 64 0A]
+1D2A94 <6C> [16 1A 17 2F 00 04 85 0E 0F 5E 19 FF 00 40 03]
+1D2AA3 <6D> [4D 00 00 00 00 4B CB BA BB 5E 41 13 14 69 03]
+1D2AB2 <6E> [45 9B 9C 00 95 4C CC 86 86 01 42 FF 00 40 03]
+1D2AC1 <6F> [40 41 42 00 2D 4D CE BC BD 61 43 FF 00 40 19]
+1D2AD0 <70> [33 1A 00 34 35 19 9A 04 05 5F 0E FF 00 40 12]
+1D2ADF <71> [3B 3C 42 53 54 21 A1 54 55 60 22 FF 00 40 13]
+1D2AEE <72> [58 59 5A 61 7C 26 27 87 BE 62 49 0A 0B 53 1D]
+1D2AFD <73> [1E 1F 20 21 22 1D 9E 3E 3F 63 12 01 01 49 0F]
+1D2B0C <74> [36 37 38 18 19 1B 9C 30 31 23 13 FF 00 40 05]
+1D2B1B <75> [36 37 38 18 19 1B 9C BF C0 64 13 FF 00 40 05]
+1D2B2A <76> [55 56 57 3B 3C 23 A2 C1 C2 65 4A 17 18 77 1A]
+1D2B39 <77> [11 1A 13 14 2F 00 D4 C7 C8 66 46 0E 10 6D 00]
+1D2B48 <78> [16 1A 17 2F 00 04 85 C9 CA 67 47 00 00 40 00]
+1D2B57 <79> [01 02 03 04 05 3A C3 CB CC 71 08 07 07 6E 00]
+1D2B66 <7A> [5B 5C 5D 5E 5F 29 2A CD CE 2B 21 11 0D 70 00]
+1D2B75 <7B> [01 02 03 04 05 3A C3 CF D0 69 08 07 07 71 00]
+1D2B84 <7C> [40 41 42 43 44 06 BE A6 A7 50 25 FF 00 40 11]
+1D2B93 <7D> [33 1A 00 34 35 19 9A 38 39 6B 0E FF 00 40 12]
+1D2BA2 <7E> [01 02 03 04 05 3A C3 66 67 2B 08 07 07 72 00]
+1D2BB1 <7F> [01 02 03 04 05 3A C3 D3 D4 6D 08 07 07 74 00]
+1D2BC0 <80> [01 02 03 06 05 42 91 D5 D6 6E 14 07 07 74 00]
+1D2BCF <81> [01 02 03 06 05 42 91 D7 D8 6F 14 07 07 74 00]
+1D2BDE <82> [01 02 03 29 05 10 C3 D9 DA 70 48 07 07 75 00]
+1D2BED <83> [7D 00 4B 53 54 55 D5 DB DB 01 4B FF 00 40 00]
+1D2BFC <84> [30 31 32 2D 2E 09 8A AA AB 52 4C 16 17 76 1B]
+1D2C0B <85> [58 59 5A 61 1A 26 27 62 63 35 4D 0C 0E 58 28]
+1D2C1A <86> [65 66 67 68 69 33 B3 88 89 40 26 19 1A 7A 17]
+1D2C29 <87> [B9 7E 7F 82 8C 53 D3 C6 DC 72 4E 07 08 50 0D]
+1D2C38 <88> [B9 7E 7F 82 8C 53 D3 C6 DC 72 4F 07 08 50 0D]
+1D2C47 <89> [B9 7E 7F 82 8C 53 D3 DD DE 73 4F 07 08 50 0D]
+1D2C56 <8A> [01 02 03 8D 05 56 D6 DF E0 01 50 07 08 50 0D]
+1D2C65 <8B> [62 63 64 71 00 2F B0 7C 7D 37 51 0A 0B 53 15]
+1D2C74 <8C> [40 A6 42 3B 3C 57 D8 E1 E2 01 52 0A 0B 53 15]
+1D2C83 <8D> [01 02 03 06 05 42 91 E3 E4 74 14 15 16 78 12]
+1D2C92 <8E> [58 59 5A 61 1A 26 A7 62 63 35 53 0A 0B 79 28]
+1D2CA1 <8F> [58 59 5A 61 08 26 27 E5 E6 75 54 0A 0B 53 28]
+1D2CB0 <90> [65 66 67 68 69 33 B3 E7 E8 76 26 19 1A 7A 17]
+1D2CBF <91> [BC BD BE 00 00 00 D9 00 E9 01 55 1B 1C 7C 0D]
+1D2CCE <92> [72 73 74 75 76 40 C0 A8 A8 19 00 0F 11 5C 00]
+1D2CDD <93> [7B C7 00 00 00 4A 4A ED EE 01 3F 11 0D 7D 0A]
+1D2CEC <94> [58 59 5A 61 C2 26 27 62 63 35 5A 0A 0B 53 28]
+1D2CFB <95> [40 41 42 4C C3 5A 5B EA EB 01 57 0B 0C 56 0E]
+1D2D0A <96> [B9 BA BB 82 8C 5C DC EC EC 01 58 1A 1B 7B 0D]
+1D2D19 <97> [11 12 13 C4 15 00 81 36 37 26 5B 0E 10 5E 0D]
+1D2D28 <98> [1E 1F 20 21 22 1D 9E EF F0 2C 5C 01 01 5E 0D]
+1D2D37 <99> [79 7A 00 00 00 49 C9 F1 F2 77 3C 12 13 7E 0D]
+1D2D46 <9A> [11 12 13 14 15 00 81 F3 F4 26 34 0E 10 7F 02]
+1D2D55 <9B> [36 37 38 18 19 1C 9B 80 81 3A 28 07 07 51 08]
+
+---Tileset Group values---
+
+[00]	0AA8FB	____
+[01]	0AA90A	Bowser's Keep, floor and walls
+[02]	0AC35D	Bowser's Keep, window grates, large wall chains
+[03]	0AD0FC	Bowser's Keep, red doors, entrance mat
+[04]	0ADCEB	Bowser's Keep, rope bridge, lava
+[05]	0AE7C8	Bowser's Keep, window grates, ground edges
+[06]	0B0021	Bower's Keep, gargoyles and pillars
+[07]	0B0BF2	Barrel Volcano
+[08]	0B1E74	Royal Bus from Nimbus Land
+[09]	0B28A6	Mushroom Kingdom houses
+[0A]	0B42E4	Mushroom Kingdom houses (ground), castle door
+[0B]	0B4FAF	Mushroom Kingdom castle fireplace, doors
+[0C]	0B5C94	Bowser's Keep turrets
+[0D]	0B76F0	Bowser's Keep giant gargoyle hill
+[0E]	0B85FF	Bowser's Keep ground
+[0F]	0B940F	Bowser's Keep castle body
+[10]	0BA1C5	Bowser's Keep castle edges
+[11]	0BAF34	floorboards, wall decor, stairs, curtains, walls
+[12]	0BC72A	wall grates, stoves
+[13]	0BD33F	crates, boxes
+[14]	0BDF51	beds
+[15]	0BEC56	Moleville beds, walls, cuckoo clocks
+[16]	0C0023	Rose/Seaside Town houses, roofs shingles, welcome signs
+[17]	0C19EC	welcome signs, doors, chimneys
+[18]	0C26E8	plywood, wood structures from mines
+[19]	0C33F7	mine lanterns, crates
+[1A]	0C3EC3	water pumps, bushes, crates, welcome sign, outside decor
+[1B]	0C4C22	Mushroom Kingdom Castle walls
+[1C]	0C64E5	Mushroom Kingdom Castle wall torches, wall decor
+[1D]	0C7128	Mushroom Kingdom Castle beds, fireplace, chairs
+[1E]	0C7DCD	Booster Tower windows, walls
+[1F]	0C935F	Booster Tower curtains
+[20]	0C9D25	Booster Tower front desk, casino blackjack table, beetle cage, doll pen, locked door
+[21]	0CAA72	Booster Tower floor tiles, ancestor portraits
+[22]	0CB4EF	____
+[23]	0CB50C	Forest Maze ground, tree tops, leaves
+[24]	0CD143	Forest Maze tree trunks
+[25]	0CDECD	Forest Maze battle BG trees
+[26]	0CEB81	Forest Maze dirt patch (ground)
+[27]	0D0024	seashells, clams, coral
+[28]	0D0D27	Sunken Ship doors, wall, floors
+[29]	0D235E	barrels, J-crates, cannons, Johnny's armchair
+[2A]	0D2FD0	Sunken Ship parascope ceiling pipes
+[2B]	0D3B2F	shark emblem, doors, scribblings
+[2C]	0D3F33	doors, open doors
+[2D]	0D4440	pipes, gargoyles (Land's End?)
+[2E]	0D4D98	____
+[2F]	0D4DB4	sewers/temple brick floor tiles
+[30]	0D5AC5	sewers/temple brick walls, gothic gates
+[31]	0D7649	sewers/temple brick wall corners, thin pillars
+[32]	0D84C9	sewers/temple steps, small brick designs
+[33]	0D9242	Moleville bush/Kriffid, shacks
+[34]	0DAD59	Moleville/Land's End mountain step stones
+[35]	0DBA64	Moleville mines entrance, cliff sign (Climb Here)
+[36]	0DC79E	mines/underground dirt ground
+[37]	0DDDFA	mines rails, pipes
+[38]	0DEADE	stalactites/stalagmites
+[39]	0E0024	molten lava
+[3A]	0E0F37	arrow and IN signs
+[3B]	0E138B	palm trees, little desert hills
+[3C]	0E2248	palm trees, a stool
+[3D]	0E2F5F	beach shore rocks
+[3E]	0E3D6B	beach shore cliffs
+[3F]	0E4AD6	Jinx's Dojo walls, floor
+[40]	0E60EA	grassland hills and grass
+[41]	0E7E76	grassland grass
+[42]	0E8C8E	grassland ground
+[43]	0E994A	Mario's pipehouse roof, sign, pipe
+[44]	0EA5CA	Mario's pipehouse front porch
+[45]	0EB3A7	Booster Tower, outside walls, entrance door, welcome sign
+[46]	0ECCAC	Booster Tower, outside ground, bushes
+[47]	0ED5A5	____
+[48]	0ED5C1	palm trees, hills
+[49]	0EE294	Booster Tower, outside door/entrance
+[4A]	0EE6F0	Seashore Sunken Ship
+[4B]	0F0028	Seashore rock slopes, escarpment, berry huts, egg nests
+[4C]	0F0AE0	Toadstool kisses Mario scene at Marrymore
+[4D]	0F17FD	ground puddle
+[4E]	0F3066	donut plains hills, trees
+[4F]	0F44F1	donut plains ground, sharp rock
+[50]	0F4D19	rotating flowers
+[51]	0F5735	countryside (unused?)
+[52]	0F6228	____
+[53]	0F6244	cliff/plateau rocks, escarpment
+[54]	0F7050	Booster Hill desert slope sand ground
+[55]	0F7DBB	Booster Hill blue cactus, slope edges
+[56]	0F94A3	Booster Hill distant background, Congratulations sign
+[57]	0F9D9B	Nimbus Castle, outside, giant pillars (top)
+[58]	0FA442	Nimbus Castle, outside, giant pillars (bottom), roof leaves
+[59]	0FB982	Nimbus Land briar/thorn walls, roof leaves
+[5A]	0FC57E	Exor Battle BG: castle turret, star design ground
+[5B]	0FD230	Exor's hilt
+[5C]	0FE512	Exor's head
+[5D]	0FEA40	Exor's face
+[5E]	0FF03F	Exor's arms
+[5F]	100022	ground/fog (unused?)
+[60]	100DCC	Hollow sign, thorn pole, leaf on cloud opening, giant pot
+[61]	101A20	Nimbus Land door flaps, miniature pillars on castle
+[62]	10269A	Nimbus Castle walls, doors
+[63]	1041CA	Nimbus Castle wall grates, leaves, birdcages
+[64]	104E99	Nimbus Castle floors, leaftops
+[65]	105C49	Smithy Factory, brick ground, ground, junk
+[66]	106987	Smithy Factory, large pillar structure (top)
+[67]	1077B3	Smithy Factory, large pillar structure (bottom)
+[68]	1084CA	Smithy Factory, large pillar structure grounding/foundation, metal objects on sides
+[69]	10929E	conveyor belts
+[6A]	109CC8	Seashore Sunken Ship, rock seafloor
+[6B]	10B30F	Marrymore Chapel Sanctuary walls, floors
+[6C]	10CE2A	Marrymore Chapel Sanctuary Organ, candles
+[6D]	10D8FB	Nimbus Land house floors, beds, boxes
+[6E]	10E54C	Nimbus Land stoves, tables/drawers, pots
+[6F]	10F176	The Blade, flying blade
+[70]	110028	Shelly, nest
+[71]	11054A	Birdo's egg, nest
+[72]	110B75	Bowser's Keep, throne room walls
+[73]	1124C8	Bowser's Keep, throne room windows, throne/steps
+[74]	113019	Bowser's Keep, throne room floors
+[75]	113CB8	Bowser's Keep, throne room steps, gargoyles
+[76]	114A7E	chandeliers
+[77]	115706	____
+[78]	1163D1	Midas River flowing water, trampolines
+[79]	117080	Star Hill hills, star doors
+[7A]	11881A	Star Hill stars, signs
+[7B]	118DFE	Vista Hill, Keep as seen from Vista Hill
+[7C]	11A73C	Bean Valley beanstalks
+[7D]	11AC67	sunset from seashore, as seen in Johnny's ending scene
+[7E]	11B419	Factory Grounds, floor underlayer, crane head
+[7F]	11C07B	Factory Grounds, floor side structure, crane body
+[80]	11CCC1	Tree Stump battle BG, top-left
+[81]	11D81B	Tree Stump battle BG, bottom-left
+[82]	11E2BD	Factory Grounds, conveyor belts spawning Drill Bits
+[83]	11EF29	fog/clouds
+
+[84]	120040	Beanstalk Leaves, bottom-left leaf (top)
+[85]	1209D5	Beanstalk Leaves, bottom-left leaf (bottom)
+[86]	12131A	Beanstalk Leaves, vine (top)
+[87]	121CEA	Beanstalk Leaves, top/bottom-right leaf
+[88]	122602	Sunken Ship King Calamari, cellar (top)
+[89]	122D86	Sunken Ship King Calamari, cellar (bottom)
+[8A]	123180	Sunken Ship, barrels
+[8B]	12335E	Mines, ceiling plywood structure, lanterns
+[8C]	12395D	Factory Grounds, walls
+[8D]	123DA1	Bowser's Keep repairs (wooden X's)
+[8E]	124AC1	Volcano Czar Dragon, gargoyles, fire
+[8F]	125933	Grasslands, grass
+[90]	12655E	Grasslands, hills
+[91]	127399	Mountains, corners, bushes
+[92]	127794	House, nooks and crannies
+[93]	127865	Booster Tower, backdoor
+[94]	127A74	Kero Sewers Underwater, walls
+[95]	1284CA	Booster Tower Balcony, background clouds
+[96]	1292A9	Beanstalk Leaves, bottom-left leaf (middle)
+[97]	129C3E	Mushroom Kingdom Castle, candle-holders, backdoor
+[98]	12A31A	Beanstalk Leaves, background clouds
+[99]	12B032	dirt mountains (unused?)
+[9A]	12B6A2	dirt mountains (unused?)
+[9B]	12BB42	Booster Tower Balcony (top)
+[9C]	12C3B1	Booster Tower Balcony (bottom)
+[9D]	12CD08	Countdown
+[9E]	12DA7A	Kero Sewers, back wall
+[9F]	12DC04	____palette tiles
+[A0]	12DC3B	Nimbus Castle, back walls, bird cages, leaves
+[A1]	12E77A	Nimbus Castle Birdo's Nest (egg)
+[A2]	12F474	Nimbus Castle Birdo's Nest (nest)
+[A3]	12FA12	Nimbus Land, briars
+[A4]	130032	Nimbus Land, leaves
+[A5]	130572	____???? Forest Maze (unused) vines, window
+[A6]	130F05	____a mushroom man and some weird object
+[A7]	1311F5	Mushroom Kingdom oustide, house door, stone walkway
+[A8]	131BB2	Bowser's Keep, carpet, walls
+[A9]	13296C	Mushroom Kingdom house, carpet, walls, decor
+[AA]	1335A1	Forest Maze path to Bowyer, tree edges
+[AB]	1337CB	Level-Up foreground
+[AC]	134A9E	Overworld Menu background, clouds & ghosts
+[AD]	135969	Overworld Menu background, bombs & stars
+[AE]	136295	Grasslands Plateau, palm trees
+[AF]	13675A	Sea Enclave, plants, outer sea
+[B0]	136BCA	Marrymore Chapel Sanctuary, organ
+[B1]	1374BC	Level-Up background
+[B2]	13792B	Star Hill
+[B3]	137D99	Seaside Town Beach, rock edges, sunset
+[B4]	1380B4	Blade Castle Roof
+[B5]	1394D9	Blade Castle Roof, background clouds
+[B6]	13A07A	Blade Castle Roof, background clouds
+[B7]	13A2CF	Smithy Factory Cloaker & Domino, snake body
+[B8]	13B11B	Land's End Desert, cactus, desert floor
+[B9]	13B6E5	Factory Grounds, floor & sides
+[BA]	13CCCB	Factory Grounds, giant chains & bolts holding up floor structure
+[BB]	13D93B	Factory Grounds, floor structure
+[BC]	13E626	Smithy's Final Form, wedges, giant Smithy head, pipes
+[BD]	140016	Smithy's Final Form, a sea of Smithy heads
+[BE]	140D8B	Smithy's Final Form, a sea of Smithy heads (two closest heads)
+[BF]	14195D	Culex, star bunches
+[C0]	14209D	Factory Grounds, floors, small metal supports
+[C1]	14280E	Factory Grounds, giant chains & bolts holding up floor structure
+[C2]	14347E	ENDING CREDITS: Mallow's Throne in Nimbus Land
+[C3]	143B1B	ENDING CREDITS: Flowers in Yo'ster Isle
+[C4]	1443B1	front desk, floors, boxes (unused?)
+[C5]	144B2A	Count Down
+[C6]	1458BA	____
+[C7]	1458D6	Exor, front view from Vista Hill
+
+===Battlefield Layout Data (39B644-39B843)===
+
+byte in brackets is battlefield's byte value
+
+byte 1-5 compressed GFX pointers
+byte 6   physical field (not used for this)
+byte 7   tileset
+byte 8   palette
+
+<00>  23 24 25 26 27 00 00 00 
+<01>  23 80 81 26 27 00 01 01 
+<02>  98 84 85 86 87 00 02 02 
+<03>  28 88 89 FF FF 00 03 03 
+<04>  28 29 2A 8A FF 00 04 04 
+<05>  36 37 8B 18 19 00 05 05 
+<06>  36 37 8B 18 19 00 06 05 
+<07>  01 02 03 06 A8 00 07 06 
+<08>  36 37 38 39 8E 00 08 07 
+<09>  40 41 42 8F 90 00 09 08 
+<0A>  FF FF 91 34 35 00 0A 09 
+<0B>  11 13 14 92 A9 00 0B 0A 
+<0C>  1E 1F 93 21 22 00 0C 0B 
+<0D>  1B 1C 1D 97 FF 00 0D 0C 
+<0E>  30 31 32 94 94 00 0E 0D 
+<0F>  1B 1C 1D 97 FF 00 0D 1B 
+<10>  5B 5C 5D 5E 5F 00 10 0F 
+<11>  45 9B 9C FF 95 00 11 10 
+<12>  65 66 67 68 9D 00 12 11 
+<13>  65 66 67 68 9D 00 13 11 
+<14>  36 37 38 39 8E 00 14 07 
+<15>  30 31 32 9E FF 00 15 12 
+<16>  62 63 64 A0 FF 00 1C 14 
+<17>  62 63 64 A1 A2 00 1D 15 
+<18>  58 59 5A A3 A4 00 1E 16 
+<19>  36 37 8B 18 19 00 1F 05 
+<1A>  62 63 64 A5 A6 00 20 17 
+<1B>  23 24 25 FF A5 00 21 18 
+<1C>  09 A7 2F 0A 0B 00 22 19 
+<1D>  72 73 74 75 76 00 23 1A 
+<1E>  23 24 25 26 AA 00 26 1D 
+<1F>  AB FF FF FF FF 00 27 22 
+<20>  FF B1 FF FF FF 00 28 22 
+<21>  3B AE 42 53 54 00 29 1F 
+<22>  36 37 38 FF AF 00 2A 20 
+<23>  6B 6C FF B0 FF 00 2B 21 
+<24>  79 FF FF B2 FF 00 2C 23 
+<25>  B3 35 4B 53 54 00 2D 24 
+<26>  36 37 8B 18 19 00 1F 27 
+<27>  B4 B5 B6 FF FF 00 2E 25 
+<28>  65 66 B7 67 68 00 2F 26 
+<29>  40 41 42 8F 90 00 09 28 
+<2A>  30 31 32 9E FF 00 30 12 
+<2B>  55 56 57 57 B8 00 31 29 
+<2C>  B9 BA BB FF FF 00 33 2A 
+<2D>  BC BD BE FF FF 00 34 2B 
+<2E>  3F FF FF FF FF 00 36 2D 
+<2F>  BF FF FF FF FF 00 35 2C 
+<30>  B9 BA BB C0 FF 00 3B 2E 
+<31>  30 31 32 9E FF 00 3C 12 
+<32>  35 36 37 38 39 00 00 00 
+<33>  35 36 37 38 39 00 00 00 
+<34>  35 36 37 38 39 00 00 00 
+<35>  35 36 37 38 39 00 00 00 
+<36>  35 36 37 38 39 00 00 00 
+<37>  35 36 37 38 39 00 00 00 
+<38>  35 36 37 38 39 00 00 00 
+<39>  35 36 37 38 39 00 00 00 
+<3A>  35 36 37 38 39 00 00 00 
+<3B>  35 36 37 38 39 00 00 00 
+<3C>  35 36 37 38 39 00 00 00 
+<3D>  35 36 37 38 39 00 00 00 
+<3E>  9F FF FF FF FF 00 16 13 
+<3F>  9F FF FF FF FF 00 17 13
