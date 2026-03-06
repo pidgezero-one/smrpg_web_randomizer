@@ -2,6 +2,7 @@
 # pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
 from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
+from smrpgpatchbuilder.datatypes.numbers.classes import UInt4, UInt8
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -55,7 +56,8 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False),
+            x_bit_7=False,
+            ),
         RoomExit(
             x=16,
             y=126,
@@ -102,7 +104,11 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            acute_axis=UInt4(7),
+            obtuse_axis=UInt4(7),
+            height=UInt8(13),
+        ),
         RegularNPC( # 1
             npc=npcs.GREAPER_NPC,
             initiator=EventInitiator.NONE,

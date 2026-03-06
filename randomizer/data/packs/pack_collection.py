@@ -4065,6 +4065,16 @@ FORM0363 = Formation(
     unknown_bit=True,
 )
 
+FORM0364 = Formation(
+    id=364,
+    members=[
+        FormationMember(BOXBOYEnemy, 183, 127),
+        FormationMember(FAUTSOEnemy, 151, 111, hidden_at_start=True),
+    ],
+    music=NormalBattleMusic(),
+    unknown_bit=True,
+)
+
 
 # ============================================================================
 # Pack Definitions
@@ -4233,7 +4243,7 @@ packs[PACK156_SEWER_CHEST_FIGHT] = FormationPack(FORM0266)
 packs[PACK157_SHIP_CHEST_FIGHT] = FormationPack(FORM0267)
 packs[PACK158_VALLEY_CHEST_FIGHT] = FormationPack(FORM0268)
 packs[PACK159_SIX_DOOR_RUSH_FIGHT] = FormationPack(FORM0269)
-packs[PACK160_UNUSED] = FormationPack(FORM0270)
+packs[PACK160_SLOTS_CHEST_FIGHT] = FormationPack(FORM0364)
 packs[PACK161_TOWER_FIRST_FIGHT] = FormationPack(FORM0271)
 packs[PACK162__UNUSED] = FormationPack(FORM0272)
 packs[PACK163_BANDITS_WAY_BOSS] = FormationPack(FORM0273)

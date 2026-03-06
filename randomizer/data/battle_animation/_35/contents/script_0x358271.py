@@ -50,8 +50,8 @@ script = AnimationScriptBlock(expected_size=1701, expected_beginning=0x358271, s
                        "lazyshell_sound", 
 					   "fryingpanluckyhammerunknown_sound", 
 					   "cymbalschompmasherchompshellsuperhammer_sound", 
-                       "ribbitstickspikedlinkmegaglovewarfan_sound", 
 					   "handgun_sound", 
+                       "ribbitstickspikedlinkmegaglovewarfan_sound", 
                        "fryingpanluckyhammerunknown_sound", 
                        "fryingpanluckyhammerunknown_sound"
         ], identifier="weapon_sounds_pointer_table"),

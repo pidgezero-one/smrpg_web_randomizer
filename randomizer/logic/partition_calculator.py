@@ -444,3 +444,19 @@ def update_mines_inner_henchman_room_partition(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, NPC_4, 1)
     _update_buffer_by_room_object(world, R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, NPC_4, 2)
 
+
+def update_seaside_partitions(world: GameWorld) -> None:
+    _update_buffer_by_room_object(world, R211_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_1F, NPC_0, 0)
+
+
+def update_shuffed_boss_partitions(world: GameWorld) -> None:
+    update_statue_room_partitions(world)
+    update_mines_henchman_room_partitions(world)
+    update_protagonist_room_partition(world)
+    update_kitchen_partitions(world)
+    update_johnny_room_partition(world)
+    update_mushroom_kingdom_partitions(world)
+    update_chapel_partition (world)
+    update_arrow_partitions(world)
+    update_mines_inner_henchman_room_partition(world)
+    update_seaside_partitions(world)

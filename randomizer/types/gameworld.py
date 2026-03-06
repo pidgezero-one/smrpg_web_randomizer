@@ -1629,10 +1629,10 @@ class GameWorld:
         # Misc
 
         # Expand key item inventory size
-        patch.add_data(0xC305, 0x20)
-        patch.add_data(0xC37F, 0x20)
+        patch.add_data(0xC305, 0x1E)
+        patch.add_data(0xC37F, 0x1E)
         patch.add_data(
-            0xC3B5, 0x20
+            0xC3B5, 0x1E
         )  # TODO might need to be larger than 0x20, recount key items
         patch.add_data(0xC302, [0xF0, 0xF8])
         patch.add_data(0xC37C, [0xF0, 0xF8])

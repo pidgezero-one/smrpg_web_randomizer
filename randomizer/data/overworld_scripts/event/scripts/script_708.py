@@ -34,7 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-    RunDialog(dialog_id=DI4061_MARRYMORE_GIFT_SUITE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_708_jmp_to_event_7"], identifier="suite_threshold_1"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_708_jmp_to_event_9"], identifier="suite_threshold_2"),
@@ -43,16 +42,22 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 15, ["EVENT_708_jmp_to_event_15"], identifier="suite_threshold_5"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 200, ["EVENT_708_jmp_to_event_17"], identifier="suite_threshold_6"),
 	Return(),
-	JmpToEvent(E0178_NPC_QUEST_1_CONTAINER, identifier="EVENT_708_jmp_to_event_7"),
+    RunDialog(dialog_id=DI4061_MARRYMORE_GIFT_SUITE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_708_jmp_to_event_7"),
+	JmpToEvent(E0178_NPC_QUEST_1_CONTAINER),
 	Return(),
-	JmpToEvent(E0179_NPC_QUEST_2_CONTAINER, identifier="EVENT_708_jmp_to_event_9"),
+    RunDialog(dialog_id=DI4061_MARRYMORE_GIFT_SUITE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_708_jmp_to_event_9"),
+	JmpToEvent(E0179_NPC_QUEST_2_CONTAINER),
 	Return(),
-	JmpToEvent(E0180_NPC_QUEST_3_CONTAINER, identifier="EVENT_708_jmp_to_event_11"),
+    RunDialog(dialog_id=DI4061_MARRYMORE_GIFT_SUITE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_708_jmp_to_event_11"),
+	JmpToEvent(E0180_NPC_QUEST_3_CONTAINER),
 	Return(),
-	JmpToEvent(E0181_NPC_QUEST_4_CONTAINER, identifier="EVENT_708_jmp_to_event_13"),
+    RunDialog(dialog_id=DI4061_MARRYMORE_GIFT_SUITE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_708_jmp_to_event_13"),
+	JmpToEvent(E0181_NPC_QUEST_4_CONTAINER),
 	Return(),
-	JmpToEvent(E0182_NPC_QUEST_5_CONTAINER, identifier="EVENT_708_jmp_to_event_15"),
+    RunDialog(dialog_id=DI4061_MARRYMORE_GIFT_SUITE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_708_jmp_to_event_15"),
+	JmpToEvent(E0182_NPC_QUEST_5_CONTAINER),
 	Return(),
-	JmpToEvent(E0183_NPC_QUEST_6_CONTAINER, identifier="EVENT_708_jmp_to_event_17"),
+    RunDialog(dialog_id=DI4061_MARRYMORE_GIFT_SUITE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_708_jmp_to_event_17"),
+	JmpToEvent(E0183_NPC_QUEST_6_CONTAINER),
 	Return()
 ])

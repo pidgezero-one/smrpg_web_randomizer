@@ -15,7 +15,7 @@ room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=1,
+        extra_sprite_buffer_size=0,
         buffers = [
             Buffer(
                 buffer_type=BufferType.TREASURE_CHEST,
@@ -79,7 +79,7 @@ room = Room(
         ChestNPC( # 0
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E0172_CHEST_1_CONTAINER,
+            event_script=E3881_CHEST_DIFFERENTIATOR_NPC_1_OR_OTHER,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=3,
             upper_70a7=0,
@@ -105,11 +105,8 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        ChestNPC( # 1
+        ChestClone( # 1
             npc=npcs.TREASURE_CHEST_NPC_2,
-            initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E0173_CHEST_2_CONTAINER,
-            action_script=A0014_FLOATING_CHEST,
             lower_70a7=3,
             upper_70a7=0,
             visible=True,
@@ -117,23 +114,7 @@ room = Room(
             y=99,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=True,
-            byte2_bit5=True,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=True,
-            cant_walk_under=True,
-            cant_pass_walls=True,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=False,
-            cant_move_if_in_air=True,
-            byte7_upper2=3),
+            direction=SOUTHWEST),
         BattlePackNPC( # 2
             npc=npcs.SHAMAN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,

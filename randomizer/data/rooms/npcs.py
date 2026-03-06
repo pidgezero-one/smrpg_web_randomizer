@@ -10179,6 +10179,29 @@ MARIO_CLONE_NPC = NPC(
     byte5_bit7=True,
     byte6_bit2=True,
 )
+ALLY_CLONE_NPC = NPC(
+    sprite_id=SPR0031_ALT_PROTAGONIST_1,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=7,
+    obtuse_axis=7,
+    height=13,
+    y_shift=1,
+    show_shadow=False,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=True,
+    byte5_bit7=True,
+    byte6_bit2=True,
+)
 
 TOADSTOOL_NPC = NPC(
     sprite_id=SPR0410_TOADSTOOL,

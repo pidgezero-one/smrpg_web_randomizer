@@ -89,10 +89,18 @@ script = EventScript([
 	JmpIfVarEqualsConst(ITEM_ID, AltoCardItem, ["EVENT_165_run_dialog_17"]),
 	JmpIfVarEqualsConst(ITEM_ID, EnduringBroochItem, ["EVENT_165_run_dialog_17"]),
 	JmpIfVarEqualsConst(ITEM_ID, ExtraShinyStoneItem, ["EVENT_165_run_dialog_17"]),
+	JmpIfVarEqualsConst(ITEM_ID, LambsLureItem, ["EVENT_165_lambs_lure"]),
+	JmpIfVarEqualsConst(ITEM_ID, BtubRingItem, ["EVENT_165_btub_ring"]),
 	RunDialog(dialog_id=DI1177_FOUND_A_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
 	AddToInventory(ITEM_ID),
 	Return(),
 	RunDialog(dialog_id=DI1178_FOUND_AN_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_165_run_dialog_17"),
+	AddToInventory(ITEM_ID),
+	Return(),
+	RunDialog(dialog_id=DI2006_FOUND_A_LAMBS_LURE_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_165_lambs_lure"),
+	AddToInventory(ITEM_ID),
+	Return(),
+	RunDialog(dialog_id=DI2007_FOUND_A_BTUB_RING_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_165_btub_ring"),
 	AddToInventory(ITEM_ID),
 	Return()
 ])

@@ -19,6 +19,8 @@ script = ActionScript([
 	A_ShadowOff(),
 	A_SetWalkingSpeed(SLOW),
 	A_ShiftZUpSteps(2, identifier="ACTION_816_shift_z_up_steps_2"),
+    A_JmpIfBitSet(LANDS_END_GATED, ["no_le_platform"]),
 	A_ShiftZDownSteps(2),
-	A_Jmp(["ACTION_816_shift_z_up_steps_2"])
+	A_Jmp(["ACTION_816_shift_z_up_steps_2"]),
+    A_ReturnQueue(identifier="no_le_platform"),
 ])

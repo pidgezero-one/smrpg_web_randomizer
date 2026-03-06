@@ -318,7 +318,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularNPC( # 15
-            npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC,
+            npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC_6,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,

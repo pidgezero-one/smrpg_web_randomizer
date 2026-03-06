@@ -600,6 +600,63 @@ def shuffle_shops(world: GameWorld) -> None:
             if item.price > 0:
                 item.set_price(1)
 
+    # Room service menu
+    # NOTE: This must run BEFORE frog coin price adjustments so that
+    # room_service_price reads the original (unmodified) item prices.
+    lower_tier_items = [
+        MushroomItem,
+        MidMushroomItem,
+        HoneySyrupItem,
+        MapleSyrupItem,
+        AbleJuiceItem,
+        BracerItem,
+        EnergizerItem,
+        YoshiCookieItem,
+        PureWaterItem,
+        YoshiCandyItem,
+        FroggieDrinkItem,
+        MukuCookieItem,
+        ElixirItem,
+        FreshenUpItem,
+        MushroomItem2,
+    ]
+    if not no_pickmeups:
+        lower_tier_items.append(PickMeUpItem)
+    higher_tier_items = [
+        MaxMushroomItem,
+        RoyalSyrupItem,
+        YoshiAdeItem,
+        RedEssenceItem,
+        KerokeroColaItem,
+        MegalixirItem,
+        RockCandyItem,
+        CrystallineItem,
+        PowerBlastItem,
+    ]
+
+    low_item = cast(Item, world.get_item(random.choice(lower_tier_items)))
+    high_item = cast(Item, world.get_item(random.choice(higher_tier_items)))
+
+    # Store for spoiler log and cosmetic dialog updates
+    world.room_service_items = [type(low_item), type(high_item)]
+
+    low_price = low_item.room_service_price
+    high_price = high_item.room_service_price
+    world.room_service_prices = [low_price, high_price]
+
+    # Update event script variables for room service prices and item IDs
+    updates = zip(
+        ["room_service_price_1_a", "room_service_price_1_b", "room_service_item_id_1",
+         "room_service_price_2_a", "room_service_price_2_b", "room_service_item_id_2"],
+        [low_price, low_price, type(low_item),
+         high_price, high_price, type(high_item)]
+    )
+    for identifier, val in updates:
+        cmd = world.event_scripts.get_command_by_identifier(identifier, SetVarToConst)
+        assert cmd is not None, f"Event script command with identifier '{identifier}' not found"
+        var = cmd.address
+        cmd.set_value_and_address(var, val)
+
     # Apply Frog Coin shop price adjustments (skip if FreeShops is enabled)
     if not free_shops:
         # Items that end up in frog coin shops (after shuffling)
@@ -641,69 +698,6 @@ def shuffle_shops(world: GameWorld) -> None:
         )
         # Set the sorted items back to the shop
         shop.set_items(sorted_items)
-
-    # Room service menu
-    lower_tier_items = [
-        MushroomItem,
-        MidMushroomItem,
-        HoneySyrupItem,
-        MapleSyrupItem,
-        AbleJuiceItem,
-        BracerItem,
-        EnergizerItem,
-        YoshiCookieItem,
-        PureWaterItem,
-        YoshiCandyItem,
-        FroggieDrinkItem,
-        MukuCookieItem,
-        ElixirItem,
-        FreshenUpItem,
-        MushroomItem2,
-    ]
-    if not no_pickmeups:
-        lower_tier_items.append(PickMeUpItem)
-    higher_tier_items = [
-        MaxMushroomItem,
-        RoyalSyrupItem,
-        YoshiAdeItem,
-        RedEssenceItem,
-        KerokeroColaItem,
-        MegalixirItem,
-        RockCandyItem,
-        CrystallineItem,
-        PowerBlastItem,
-    ]
-
-    low_item = cast(Item, world.get_item(random.choice(lower_tier_items)))
-    high_item = cast(Item, world.get_item(random.choice(higher_tier_items)))
-
-    # Store for spoiler log and cosmetic dialog updates
-    world.room_service_items = [type(low_item), type(high_item)]
-
-    # If an item's price was reduced for the frog coin shop, compensate in room service
-    frog_coin_items = frog_disciple_set | frog_emporium_items
-    def get_room_service_price(item: Item) -> int:
-        price = item.room_service_price
-        if type(item) in frog_coin_items and type(item) not in ORIGINAL_FROG_COIN_ITEMS:
-            price *= 5
-        return price
-
-    low_price = get_room_service_price(low_item)
-    high_price = get_room_service_price(high_item)
-    world.room_service_prices = [low_price, high_price]
-
-    # Update event script variables for room service prices and item IDs
-    updates = zip(
-        ["room_service_price_1_a", "room_service_price_1_b", "room_service_item_id_1",
-         "room_service_price_2_a", "room_service_price_2_b", "room_service_item_id_2"],
-        [low_price, low_price, type(low_item),
-         high_price, high_price, type(high_item)]
-    )
-    for identifier, val in updates:
-        cmd = world.event_scripts.get_command_by_identifier(identifier, SetVarToConst)
-        assert cmd is not None, f"Event script command with identifier '{identifier}' not found"
-        var = cmd.address
-        cmd.set_value_and_address(var, val)
 
     # Bomb trade shop
     bomb_pool = [

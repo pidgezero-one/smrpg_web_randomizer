@@ -82,10 +82,18 @@ script = EventScript([
 	JmpIfVarEqualsConst(ITEM_ID, AltoCardItem, ["EVENT_160_run_dialog_16"]),
 	JmpIfVarEqualsConst(ITEM_ID, EnduringBroochItem, ["EVENT_160_run_dialog_16"]),
 	JmpIfVarEqualsConst(ITEM_ID, ExtraShinyStoneItem, ["EVENT_160_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, LambsLureItem, ["EVENT_160_lambs_lure"]),
+	JmpIfVarEqualsConst(ITEM_ID, BtubRingItem, ["EVENT_160_btub_ring"]),
 	RunDialog(dialog_id=DI0524_GOT_A_70A7_AWAIT_TERMINATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	AddToInventory(ITEM_ID),
 	Return(),
 	RunDialog(dialog_id=DI0065_GOT_AN_70A7_AWAIT_TERMINATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_160_run_dialog_16"),
+	AddToInventory(ITEM_ID),
+	Return(),
+	RunDialog(dialog_id=DI2008_GOT_A_LAMBS_LURE_AWAIT_TERMINATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_160_lambs_lure"),
+	AddToInventory(ITEM_ID),
+	Return(),
+	RunDialog(dialog_id=DI2009_GOT_A_BTUB_RING_AWAIT_TERMINATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_160_btub_ring"),
 	AddToInventory(ITEM_ID),
 	Return()
 ])

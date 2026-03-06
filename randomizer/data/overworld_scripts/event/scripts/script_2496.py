@@ -36,7 +36,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SummonObjectToSpecificLevel(NPC_0, R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN),
 	ApplyTileModToLevel(use_alternate=True, room_id=R042_BOOSTER_TOWER_3F_AREA_02_NES_MARIO_ROOM, mod_id=0),
 	ApplyTileModToLevel(use_alternate=True, room_id=R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM, mod_id=1),
 	ApplyTileModToLevel(use_alternate=True, room_id=R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM, mod_id=2),

@@ -1735,4 +1735,8 @@ dialog_data[614] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
 dialog_data[615] = ''' You've found the treasure!
  Way to GO!
  Keep up the good work![await]'''
-dialog_data[616] = '''[await]'''
+dialog_data[616] = '''   Found a "Lamb's Lure"![end]'''
+dialog_data[617] = '''   Found a "B'tub Ring"![end]'''
+dialog_data[618] = '''          Got a "Lamb's Lure"![await]'''
+dialog_data[619] = '''          Got a "B'tub Ring"![await]'''
+dialog_data[620] = '''[await]'''

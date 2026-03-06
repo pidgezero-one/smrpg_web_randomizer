@@ -5816,7 +5816,7 @@ class ShipFinalBossFight(BossFightLocation):
     def post_unlocks(self, world: GameWorld) -> EventScript:
         content: list[UsableEventScriptCommand] = []
         if world.settings.is_flag_value(YaridovichGate, YaridovichGating.SHIP):
-            content.extend([ClearBit(SEASIDE_BOSS_AVAILABLE)])
+            content.extend([SetBit(SEASIDE_BOSS_AVAILABLE)])
         parent = super().post_unlocks(world)
         return EventScript(content + parent.contents + [Return()])
 
@@ -7435,6 +7435,7 @@ class Mimic3BossFight(MimicFightLocation):
     _id = ShuffleLocationSelector.BOX_BOY_BOSS_FIGHT
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _pack_id = PACK158_VALLEY_CHEST_FIGHT
+    _slots_pack_id = PACK160_SLOTS_CHEST_FIGHT
     _post_unlocks_event_id = E1251_MIMIC_3_BOSS_UNLOCKS
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:

@@ -12,7 +12,7 @@ from randomizer.progression.prizes import (
     SecondMimicFightLauncher,
     ThirdMimicFightLauncher,
 )
-from randomizer.types.flags import ItemQuality, ItemQualityOptions, MimicsAnywhere, SpellsAnywhere
+from randomizer.types.flags import ItemQuality, ItemQualityOptions, MimicsAnywhere, SlotsAnywhere, SpellsAnywhere
 
 from .prize import (
     MimicFightInitiatorPrize,
@@ -1774,6 +1774,7 @@ class BossFightLocation(PrizeLocation):
     _container_event: int = E0353_BOSS_BATTLE
 
     _pack_id: int
+    _slots_pack_id: int | None = None
     _post_unlocks_event_id: int
 
     _henchman_packs: list[int] | None = None
@@ -1829,6 +1830,10 @@ class BossFightLocation(PrizeLocation):
     @property
     def pack_id(self) -> int:
         return self._pack_id
+
+    @property
+    def slots_pack_id(self) -> int | None:
+        return self._slots_pack_id
 
     @property
     def henchman_packs(self) -> list[int] | None:
@@ -2158,8 +2163,9 @@ class BossFightLocation(PrizeLocation):
         assert isinstance(self.prize, BossFightPrize)
         pack = world.battle_packs._packs[self._pack_id]
         run_away = self.allow_run_away
-        if world.settings.isflag_enabled(MimicsAnywhere) and isinstance(
-            self.prize, MimicFightInitiatorPrize
+        if world.settings.isflag_enabled(MimicsAnywhere) and (
+            isinstance(self.prize, MimicFightInitiatorPrize)
+            or isinstance(self, MimicFightLocation)
         ):
             run_away = True
 
@@ -2184,6 +2190,25 @@ class BossFightLocation(PrizeLocation):
                 )
                 # Always set run away based on location, not the prize's original setting
                 f.set_can_run_away(run_away)
+                if self.prize.force_battlefield is not None:
+                    f.set_battlefield(self.prize.force_battlefield)
+                if self.prize.force_start_event is not None:
+                    f.set_run_event_at_load(self.prize.force_start_event)
+
+        # If this location has a separate slots pack, mirror the formation to it
+        if self._slots_pack_id is not None:
+            slots_pack = world.battle_packs._packs[self._slots_pack_id]
+            slots_run_away = world.settings.isflag_enabled(SlotsAnywhere)
+            for f in slots_pack.formations:
+                if self.prize.formation is not None:
+                    f.set_members(self.prize.formation.members)
+                    f.set_music(self.prize.formation.music)
+                    f.set_unknown_bit(self.prize.formation.unknown_bit)
+                else:
+                    f.set_members(
+                        self.prize._members  # pyright: ignore[reportArgumentType]
+                    )
+                f.set_can_run_away(slots_run_away)
                 if self.prize.force_battlefield is not None:
                     f.set_battlefield(self.prize.force_battlefield)
                 if self.prize.force_start_event is not None:

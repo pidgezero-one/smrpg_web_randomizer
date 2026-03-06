@@ -5277,7 +5277,7 @@ class ChesterBossFight(BossFightPrize):
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: "\n"
         "PIRATE: That's AMAZING!\n No one's EVER whipped \nCHESTER!![await]"
         "",
-        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """   CHESTER: (How embarrassing...)[await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n  CHESTER: (How embarrassing...)[await]""",
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """CHESTER: You know, I'm kind of a\n big deal over in Bowser's Keep.[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """CHESTER: This is unnecessary. Get\n off me![await]""",
         DI1782_SHIP_BOSS_DRINK: """ Leave me alone with my precious[await]\n '92 Napper Cabernet Sauivignon.[await]""",
@@ -5305,7 +5305,7 @@ class ChesterBossFight(BossFightPrize):
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """COMEON: Go on, take it. Just let\n me go back to sleep.[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Comeon's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped \nCOMEON!![await]""",
-        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n  COMEON: (How embarrassing...)[await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """\n\n COMEON: (How embarrassing...)[await]""",
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """COMEON: You know, I'm kind of a\n big deal over in Bowser's Keep.[await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n `MAIN_CHARACTER_NAME`:[await][page]\n I'm too old for this nonsense with\n `SEASIDE_BOSS`, good luck.[await]\n Just to see if I could, I summoned\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n It seems they're associated with\n `FINAL_BOSS_NAME`, actually.[await]\n I've been belching up monsters for\n a LONG time, and I've never seen\n anything this rude.[await] Fix it, and\n I MIGHT forget you opened my box.[await][page]\n\n    Go do something useful for once.\n                                    Comeon[await]""",
         DI2180_CHAPEL_NPC: """ Reverend Comeon must have gotten\n lost on his way here.""",

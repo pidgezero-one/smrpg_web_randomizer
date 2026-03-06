@@ -6,7 +6,7 @@ from uuid import uuid4
 import random
 import statistics
 
-from randomizer.logic.partition_calculator import update_arrow_partitions, update_chapel_partition, update_johnny_room_partition, update_kitchen_partitions, update_mushroom_kingdom_partitions
+from randomizer.logic.partition_calculator import update_shuffed_boss_partitions
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -58,7 +58,7 @@ from ..data.variables.variable_names import (
     BATTLE_PACK_ID,
 )
 from ..data.variables.room_names import *
-from ..data.rooms.npcs import BOWSER_WALKING_DOWN_LEFT_NPC, BOWSER_WALKING_DOWN_LEFT_NPC_2, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC, GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE, MALLOW_WALKING_DOWN_LEFT_NPC, MALLOW_WALKING_DOWN_LEFT_NPC_2, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM, TOADSTOOL_WALKING_DOWN_LEFT_NPC
+from ..data.rooms.npcs import ALLY_CLONE_NPC, BOWSER_WALKING_DOWN_LEFT_NPC, BOWSER_WALKING_DOWN_LEFT_NPC_2, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC, GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE, MALLOW_WALKING_DOWN_LEFT_NPC, MALLOW_WALKING_DOWN_LEFT_NPC_2, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM, TOADSTOOL_WALKING_DOWN_LEFT_NPC
 from ..types.flags import CharacterStats
 from ..types.prize import BossFightPrize, MimicFightInitiatorPrize, SlotsPrize, SpellPrize, CharacterPrize, StandardPrize
 from ..types.enemy import Enemy
@@ -379,7 +379,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             if isinstance(place.prize, SlotsPrize):
                 # special handling: battlefield selection for failed slot machines which fights mimic #3
                 proxy_fight = cast(BossFightLocation, world.get_location(Mimic3BossFight))
-                slot_pack = proxy_fight.pack_id
+                slot_pack = proxy_fight.slots_pack_id
+                assert slot_pack is not None
                 room = place._rooms[0]
                 battlefield = ROOM_TO_BATTLEFIELD[room]
                 proxy_prize = cast(BossFightPrize, proxy_fight.prize)
@@ -542,15 +543,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         update_mines_henchman_room_partitions,
         update_protagonist_room_partition,
     )
-    update_statue_room_partitions(world)
-    update_mines_henchman_room_partitions(world)
-    update_protagonist_room_partition(world)
-    update_kitchen_partitions(world)
-    update_johnny_room_partition(world)
-    update_mushroom_kingdom_partitions(world)
-    update_chapel_partition (world)
-    update_arrow_partitions(world)
-    update_mines_inner_henchman_room_partition(world)
+    update_shuffed_boss_partitions
 
     # Update freestanding frog coin NPCs in rooms with Coins partition
     # to use the animated frog coin NPC and spinning action script
@@ -599,8 +592,9 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     assert clone_room is not None, f"Room {R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM} not found"
     clone_room_npc_0 = clone_room.get_npc_by_target_id(NPC_0)
     assert clone_room_npc_0 is not None, f"NPC_0 not found in room {R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM}"
+    if world.overworld_character.ally.index != 0:
+        clone_room_npc_0._npc = ALLY_CLONE_NPC
     if world.overworld_character.ally.index == 1:
-        clone_room_npc_0._npc = TOADSTOOL_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = TOADSTOOL_96
         world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = TOADSTOOL_132
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = TOADSTOOL_135
@@ -615,7 +609,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = TOADSTOOL_968
         world.update_dialog(DI2320_TOADSTOOL_ROOM_HINT, " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
     elif world.overworld_character.ally.index == 2:
-        clone_room_npc_0._npc = BOWSER_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = BOWSER_96
         world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = BOWSER_132
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = BOWSER_135
@@ -629,7 +622,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = BOWSER_974
         world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = BOWSER_975
     elif world.overworld_character.ally.index == 3:
-        clone_room_npc_0._npc = GENO_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
         world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = GENO_132
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = GENO_135
@@ -643,7 +635,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = GENO_988
         world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = GENO_989
     elif world.overworld_character.ally.index == 4:
-        clone_room_npc_0._npc = MALLOW_WALKING_DOWN_LEFT_NPC
         world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = MALLOW_96
         world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = MALLOW_132
         world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = MALLOW_135

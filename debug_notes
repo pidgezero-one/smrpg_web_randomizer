@@ -17,12 +17,11 @@ General
 - beetlemania packet still not showing in chests
 - crusher palettes not applyiong
 - if you find a star piece while the exp star is active, see if you can resume the exp star music instead of the level selector music
-- exchanging cricket pie unlocks forest maze dot, but not he path that leads there
-- need to actually prevent race from starting if you dont have the cookies
-- sage stick attack is a hard lock
-- should be able to run away from mimic fights in mimics anywhere
-- lamb's lure is showing a symbol instead of apostrophe again
+🚧 sage stick attack is a hard lock
+🚧 should be able to run away from mimic fights in mimics anywhere
+🚧 lamb's lure is showing a symbol instead of apostrophe again
 - key item inventory is still too small, did not save alto card
+  - investigate this again. are we sure it didn't save or did it just not display?
 
 Boss-specific
 🚧 culex 3D sprite is broken. HUD disappears in phase 2
@@ -148,30 +147,27 @@ Marrymore
 🚧 crown replacement sinks into the floor
 🚧 plays DI4060_NEED_TO_DO_CHAPEL_CHECKS when you get a marrymore gift for some reason?! in hotel?!
 🚧 bellhop sidequest gets stuck on "please see our guest out"
-- stay voucher can be used multiple times. should be taken away after first time
+🚧 stay voucher can be used multiple times. should be taken away after first time
   - it's being taken away but still detecting as present in inventory
 🚧 could use a dialog explaining why you're getting a gift
 🚧 dialogs seem wrong. both are attributed as torte in kitchen
 🚧 frog coin items sold in room service menu are very cheap. should multiply by 5 first.
-- kerokerocola room service is 75 coins, that calc seems incorrect
-- innkeeper should not tell you you have a gift when youve surpassed the 6th check
+🚧 kerokerocola room service is 75 coins, that calc seems incorrect
+🚧 innkeeper should not tell you you have a gift when youve surpassed the 6th check
 
 star hill
-- mallow using bad sprtie id 
+🚧 mallow using bad sprtie id 
 
 Seaside Town
 🚧 seaside: boss is replacing the wrong sprite in confrontation, also bad partition for grate guy
   🚧 belome 2 here's allies are very broken
 🚧 no signoff in jinx letter
-- boomer has bad partition inside elder's house
+🚧 boomer has bad partition inside elder's house
   - same with belome
 
 Sea
 
 Sunken Ship
-🚧 stairs are using falling packets instead of rising packets
-🚧 dry bones dies to regular attacks
-  - This is happening because the final byte of the if block is assembling to 02 instead of 03. Incorrect
 🚧 dry bones does not collapse when you run away
 - royal syrup in corner of pool room was invisible?
 🚧 slots chest in hidon room causes coin sprites to overwrite chests
@@ -179,11 +175,11 @@ Sunken Ship
 🚧 Dodo in johnny's room cut off. might need to use a different partition
 🚧 everything in the water cellar should be a coin, flower, mushroom, or item bag. everything else does not render correctly
 🚧 booster as johnny sprite is totally broken, glitched out
-- dry bones shop chest disappeared
-- clone room using old sprite id
+🚧 dry bones shop chest disappeared
+🚧 clone room using old sprite id
 - chester replacing johnny 1 uses bad sprite
-- chester replacing johnny "how embarrassing" dialog is not formatted correctly
-- clearing ship did not give seaside boss acces
+🚧 chester replacing johnny "how embarrassing" dialog is not formatted correctly
+🚧 clearing ship did not give seaside boss acces
 
 Land's End
 - belome fortune triggering after only 2 statues
@@ -194,7 +190,7 @@ Land's End
 🚧 shaman selling items to you: probably should be a slot machine
 
 Monstro Town
-- terrain completely broken 
+🚧 terrain completely broken 
   - this is because of mushroom kingdom mod
 🚧 count down in jagger spot but the battle is yaridovich? even though it's using count down's background?
   🚧 yarid stats clearly meant for somewhere else. possibly dojo 
@@ -209,15 +205,8 @@ Monstro Town
 🚧 tramopline up to belome temple crashes game, never fades in
 
 Bean Valley
-🚧 is frog coin at vine fork path randomized?
-  - hard to tell. Beanstalk2ndRoomFloatingItemLocation
-  - missing in one seed?
-🚧 culex on pipe: shy away totally broken
-  🚧 water crystal did something that broke the game
-    🚧 it's breaker beam
-- save deletion seems inconsistent now, happened when you got into a fight with the boss but not before?
-- star piece in a treasure chest: music it resumes to is nimbus castle
-
+- save deletion seems inconsistent. keep an eye on it
+🚧 star piece in a treasure chest in vine area: music it resumes to is nimbus castle
 - above-ground chest (normally fc chest) partially overwritten by a coin. dont think theres a slot machine here
 
 Nimbus Land
@@ -234,9 +223,9 @@ Nimbus Land
 🚧 bowsers keep condition not substituted in dialog
 🚧 garro partition is wrong when grate guy statue is loaded
 🚧 can't say no in nimbus inn
-- need to actually disable the front door when blocked by guarss
+🚧 need to actually disable the front door when blocked by guarss
 🚧 croco in statue room: molds moving forward are incorrect, but the game otherwise words correclty
-- forkies is still overwriting chests in the staircase room
+🚧 forkies is still overwriting chests in the staircase room
 - croco in back hallway facing wrong direction (turn off f coord probably), was facing NW while walking NE
 - castle final boss uses wrong room id in event 353
 - mallow statue in garro house sometimes loads unintended poses
