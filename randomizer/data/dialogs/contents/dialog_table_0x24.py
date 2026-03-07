@@ -185,7 +185,7 @@ dialog_data[61] = '''DEALER:
 dialog_data[62] = '''DEALER: 
         I'll play with this hand.[await]'''
 dialog_data[63] = '''DEALER: 
- Draw or stay, `MAIN_CHARACTER_NAME`?[await]'''
+[center]Draw or stay, `MAIN_CHARACTER_NAME`?[await]'''
 dialog_data[64] = '''            Your total is [0x7000].
   [select] (Draw)
   [select] (Stay)[await]'''
@@ -198,7 +198,7 @@ dialog_data[68] = '''DEALER:
 dialog_data[69] = '''DEALER: 
                 I have [0x7000].[await]'''
 dialog_data[70] = '''DEALER: 
- `MAIN_CHARACTER_NAME`, you have [0x7000].[await]'''
+[center]`MAIN_CHARACTER_NAME`, you have [0x7000].[await]'''
 dialog_data[71] = '''DEALER: I broke 21, so you won![await]
  Here's your Frog Coin.[await]'''
 dialog_data[72] = '''DEALER: You won this round.[await]
@@ -233,8 +233,7 @@ dialog_data[83] = '''DOORMAN: Please enjoy yourself.[await]'''
 dialog_data[84] = '''DOORMAN: We hope everything was
  to your liking?[await]'''
 dialog_data[85] = ''' (Hit right/left on the Control Pad)[await]'''
-dialog_data[86] = ''' Okay, `MAIN_CHARACTER_NAME`, this is in
- celebration of your [0x7000] win(s)![await]'''
+dialog_data[86] = ''' Okay, `MAIN_CHARACTER_NAME`, this is in celebration of your [0x7000] win(s)![await]'''
 dialog_data[87] = ''' Wanna try it again?
   [select] (Yes)
   [select] (No)[await]'''
@@ -384,9 +383,7 @@ dialog_data[127] = ''' You won't have to wait for the
  There's other ways to get in![await]'''
 dialog_data[128] = ''' It's the bus driver's day off today,
  so you can't take the Royal Bus.[await]
- If you need to go to Bowser's
- Keep, you can get there
- `BOWSERS_KEEP_CONDITION`[await]'''
+ If you need to go to Bowser's Keep, you can get there `BOWSERS_KEEP_CONDITION`[await]'''
 dialog_data[129] = ''' I heard there was a big factory
  behind it. Is that true?[await]'''
 dialog_data[130] = ''' Welcome! Come on in!
@@ -477,12 +474,10 @@ dialog_data[153] = '''GARRO: I don't know why Dodo
 dialog_data[154] = '''GAZ:
     Geno, come on, you can do it![await]'''
 dialog_data[155] = '''YOSHI:
- (`MAIN_CHARACTER_NAME`! Good luck!)[await]'''
+[center](`MAIN_CHARACTER_NAME`! Good luck!)[await]'''
 dialog_data[156] = '''CHANCELLOR:
- We're counting on you, `MAIN_CHARACTER_NAME`![await]'''
-dialog_data[157] = ''' Boing, boing, boing! I'm trying
- really hard, so `MAIN_CHARACTER_NAME`,
- you have to try hard, too![await]'''
+[center]We're counting on you, `MAIN_CHARACTER_NAME`![await]'''
+dialog_data[157] = ''' Boing, boing, boing! I'm trying really hard, so `MAIN_CHARACTER_NAME`, you have to try hard, too![await]'''
 dialog_data[158] = '''
        I'm with you all the way![await]'''
 dialog_data[159] = '''[page]
@@ -507,8 +502,7 @@ dialog_data[162] = '''[page]
  [select]  (No thanks)[await]'''
 dialog_data[163] = '''      Bought a “[0x70A7]”![await]'''
 dialog_data[164] = '''[page]
- `MAIN_CHARACTER_HONORIFIC_CAP`, you seem to be a few coins
- short. Please ring again.[await][pause][end]'''
+ `MAIN_CHARACTER_HONORIFIC_CAP`, you seem to be a few coins short. Please ring again.[await][pause][end]'''
 dialog_data[165] = ''' Our guest is resting.
  Please be quiet.[await]'''
 dialog_data[166] = ''' If you see Link, tell him I need him
@@ -534,9 +528,7 @@ dialog_data[179] = ''' (We've had a cookie shortage here
   here if you want to race.)[await]'''
 dialog_data[180] = ''' (But since you came all this way,
   take this instead.)[await]'''
-dialog_data[181] = '''BOOSTER: Found all of
- `MARRYMORE_CHARACTER`'s things?[await]
- 10-4, good buddy. 10-4, good buddy. But aren't you
- missing a few things in this room?[await]'''
+dialog_data[181] = '''BOOSTER: Found all of `MARRYMORE_CHARACTER`'s things?[await]
+ 10-4, good buddy. But aren't you missing a few things in this room?[await]'''
 dialog_data[182] = ''' Please take this complimentary
  gift.[await]'''

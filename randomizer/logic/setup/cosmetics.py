@@ -126,8 +126,8 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             if at.remake_name is not None:
                 attack.set_attack_name(at.remake_name)
         world.update_dialog(DI3072_TOWER_HENCHMAN_3_WINDOW, """SNIFSTER 3: Um...\n Nice weather we're having.[await]""")
-        world.update_dialog(DI3073_TOWER_HENCHMAN_3, '''SNIFSTER 3: You wanna fight?[await]''')
-        world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got\n distracted again when he heard\n Claymorton was around.[await]")
+        world.update_dialog(DI3073_TOWER_HENCHMAN_3, '''SNIFSTER 3:\n[center]You wanna fight?[await]''')
+        world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're closed for repairs.[await][pause] Honestly, I thought that finished ages ago.[await][page]\n I bet the guy working on it got distracted again when he heard Claymorton was around.[await]")
         world.overworld_dialogs.search_and_replace_in_all_dialogs("FROGFUCIUS", "FROG SAGE")
         deletables = [
             "EVENT_215_delete_vowel_1",
@@ -426,11 +426,11 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     # we're not including any randomized ship dialogs when the recruited character is canonically a kid
     chapelchar = world.get_location(MarrymoreCharacter).prize
     if isinstance(chapelchar, CharacterPrize) and chapelchar._ally.index == 4:
-        world.update_dialog(DI2112_RAZ_OCCUPIED, "RAZ: If there's one thing I know\n about `MARRYMORE_CHARACTER`, it's that he\n just HATES wedding rehearsals.[await]")
-        world.update_dialog(DI2114_MARRYMORE_BOSS_NAMES, " `TOWER_BOSS_1`'s fiance is busy today.[await]\n It was nice of `MARRYMORE_CHARACTER`\n to offer to step in and help with\n the rehearsal.[await]")
-        world.update_dialog(DI2115_MARRYMORE_SHITPOST, " Does anyone here even know who\n `TOWER_BOSS_1`'s fiance is?\n Is it `RANDOM_BOSS_NAME_1`?[await]")
-        world.update_dialog(DI2117_MARRYMORE_SHITPOST, " I'm not even invited to a wedding.\n I just needed to go for a walk.[await]\n My Discord has been full of drama\n since one guy posted ship art of\n `RANDOM_CHARACTER_NAME` and `TOWER_BOSS_1`.[await]")
-        world.update_dialog(DI2119_MARRYMORE_SHITPOST, " I heard that `TOWER_BOSS_1`\n proposed at a gas station.\n Who DOES that?[await]")
+        world.update_dialog(DI2112_RAZ_OCCUPIED, "RAZ: If there's one thing I know about `MARRYMORE_CHARACTER`, it's that he just HATES wedding rehearsals.[await]")
+        world.update_dialog(DI2114_MARRYMORE_BOSS_NAMES, " `TOWER_BOSS_1`'s fiance is busy today.[await] It was nice of `MARRYMORE_CHARACTER` to offer to step in and help with the rehearsal.[await]")
+        world.update_dialog(DI2115_MARRYMORE_SHITPOST, " Does anyone here even know who `TOWER_BOSS_1`'s fiance is? Is it `RANDOM_BOSS_NAME_1`?[await]")
+        world.update_dialog(DI2117_MARRYMORE_SHITPOST, " I'm not even invited to a wedding. I just needed to go for a walk.[await] My Discord has been full of drama since one guy posted ship art of `RANDOM_CHARACTER_NAME` and `TOWER_BOSS_1`.[await]")
+        world.update_dialog(DI2119_MARRYMORE_SHITPOST, " I heard that `TOWER_BOSS_1` proposed at a gas station. Who DOES that?![await]")
 
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1`", towerboss_name)
     cc_name = world.allies._allies[chapelchar._ally.index].name if isinstance(chapelchar, CharacterPrize) else "Toad"
@@ -482,7 +482,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
     volcanoboss = world.get_location(VolcanoExitBossFight).prize
     assert isinstance(volcanoboss, BossFightPrize)
-    volcanoboss_name = volcanoboss.seaside_letter_name_if_seaside_boss(
+    volcanoboss_name = volcanoboss.seaside_letter_name_if_volcano_boss(
         world.settings.isflag_enabled(RemakeNames),
         world.settings.isflag_enabled(CanonNames),
     )
@@ -490,7 +490,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
     finalboss = world.get_location(FinalBossFight).prize
     assert isinstance(finalboss, BossFightPrize)
-    finalboss_name = finalboss.seaside_letter_name_if_seaside_boss(
+    finalboss_name = finalboss.seaside_letter_name_if_final_boss(
         world.settings.isflag_enabled(RemakeNames),
         world.settings.isflag_enabled(CanonNames),
     )

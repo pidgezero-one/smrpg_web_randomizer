@@ -1464,7 +1464,7 @@ class GameWorld:
         ]
         if any(
             self.settings.get_flag(f).selected.name != "DEFAULT" for f in palette_flags
-        ):
+        ) or self.overworld_character.ally.index != 0:
             patch.add_dict(self.mario_palette.render(self))
             patch.add_dict(self.mallow_palette.render(self))
             patch.add_dict(self.geno_palette.render(self))
@@ -1568,7 +1568,7 @@ class GameWorld:
         # (the SNES engine only loads the base sprite's image into VRAM).
         shared_image_groups: list[list[int]] | None = None
         if self.overworld_character.ally.index > 0:
-            shared_image_groups = [[31, 32, 33, 34], [35, 36]]
+            shared_image_groups = [[31, 32]]
 
         for p in self.sprites.render(shared_image_groups=shared_image_groups):
             patch.add_data(p[0], p[1], source="sprites")
@@ -1715,7 +1715,8 @@ class GameWorld:
         self.file_select_character = starter.name
 
         # Change file select character graphic, if not Mario.
-        if i != 0:
+        # Always going to be your starting character, regardless of overworld presence
+        if starter.index != 0:
             addresses = [0x34757, 0x3489A, 0x34EE7, 0x340AA, 0x3501E]
             for addr, value in zip(addresses, [1, 2, 1, 0, 2]):
                 patch.add_data(addr, SPR0031_ALT_PROTAGONIST_1 + value)

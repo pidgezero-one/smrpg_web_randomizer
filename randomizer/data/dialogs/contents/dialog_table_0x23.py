@@ -59,34 +59,24 @@ dialog_data[17] = '''RAINI: It's a lovely day outside,
 dialog_data[18] = ''' Uh oh...
  Don't tell the hotel I snuck out
  of work for this![await]'''
-dialog_data[19] = '''RAZ: Oh NO![delay_60]
- I forgot to sign the guest book for
- `TOWER_BOSS_1` & `MARRYMORE_CHARACTER`'s wedding![await]'''
+dialog_data[19] = '''RAZ: Oh NO![delay_60] I forgot to sign the guest book for `TOWER_BOSS_1` & `MARRYMORE_CHARACTER`'s wedding![await]'''
 dialog_data[20] = '''RAINI: I think the back door to the
  chapel was left unlocked.[await][pause] But Raz
  is afraid of getting caught
  sneaking in.[await]'''
-dialog_data[21] = ''' `TOWER_BOSS_1` and `MARRYMORE_CHARACTER`
- getting married sounds like a crack
- ship fanfic.[await]
+dialog_data[21] = ''' `TOWER_BOSS_1` and `MARRYMORE_CHARACTER` getting married sounds like a crack ship fanfic.[await]
  Even so, invites to this wedding
  are highly exclusive.[await]'''
-dialog_data[22] = ''' Don't listen to that guy,
- `MARRYMORE_CHARACTER` x `RANDOM_BOSS_NAME_1`
- is a much better ship.[await]'''
+dialog_data[22] = ''' Don't listen to that guy, `MARRYMORE_CHARACTER` x `RANDOM_BOSS_NAME_1` is a much better ship.[await]'''
 dialog_data[23] = ''' We were about to begin the
  ceremony when some kids, wearing
  dark clothes, kicked us out![await]'''
 dialog_data[24] = ''' Don't listen to that guy, he's just
- mad because he ships
- `RANDOM_CHARACTER_NAME` and `TOWER_BOSS_1`.[await]'''
+ mad because he ships `RANDOM_CHARACTER_NAME` and `TOWER_BOSS_1`.[await]'''
 dialog_data[25] = ''' I was hoping for this seed to solve
- the romantic tension between
- `RANDOM_BOSS_NAME_2` and `RANDOM_BOSS_NAME_3`.[await]
+ the romantic tension between `RANDOM_BOSS_NAME_2` and `RANDOM_BOSS_NAME_3`.[await]
  Oh well, can't win 'em all.[await]'''
-dialog_data[26] = ''' Really? `MARRYMORE_CHARACTER` and `TOWER_BOSS_1`
- getting married?[delay_30] Are these writers
- even trying anymore?[await]'''
+dialog_data[26] = ''' Really? `MARRYMORE_CHARACTER` and `TOWER_BOSS_1` getting married?[delay_30] Are these writers even trying anymore?[await]'''
 dialog_data[27] = ''' Huh?[delay_30] A bathroom?[delay_30] No, I'm just
  cold![await]'''
 dialog_data[28] = ''' The chapel kitchen has been making
@@ -188,8 +178,7 @@ dialog_data[59] = '''[page]
   [select]  (It's a deal!)
   [select]  (Nope)[await]'''
 dialog_data[60] = '''[page]
- Ho ho!...`MAIN_CHARACTER_TITLE_SHORT`. Wise `MAIN_CHARACTER_GENDER_CASUAL` doesn't
- think 10 Frog Coins is enough![await]
+ Ho ho!...`MAIN_CHARACTER_TITLE_SHORT`. Wise `MAIN_CHARACTER_GENDER_CASUAL` doesn't think 10 Frog Coins is enough![await]
  You don't know what you're
  missing, but...OH, WELL...[await]'''
 dialog_data[61] = ''' See that chest up there?[await][pause] Alanim
@@ -467,9 +456,7 @@ dialog_data[138] = ''' (I can only store 200 cookies.[await][page]
   I'll store [0x7000], but....[await]
   I think I'll nibble on the rest
   of the [0x7024].)[await]'''
-dialog_data[139] = ''' Hey `MAIN_CHARACTER_MOLE_GREETING`, step right up!
- 10 coins to do some Goomba
- thumping. How about it?[await]
+dialog_data[139] = ''' Hey `MAIN_CHARACTER_MOLE_GREETING`, step right up! 10 coins to do some Goomba thumping. How about it?[await]
  [select]  (Sure, why not?)
  [select]  (I'll save it for another day)[await]'''
 dialog_data[140] = '''[page]
@@ -517,13 +504,9 @@ dialog_data[153] = ''' I heard your record for jumping
  stands at [0x7000] right now.[await]'''
 dialog_data[154] = ''' Think you can do `SUPER_JUMP_PRIZE_1_CAP` in a row?[await]'''
 dialog_data[155] = ''' Wow, you did it!
- You made over `SUPER_JUMP_PRIZE_1_CAP` jumps.[await][page]
+ You did over `SUPER_JUMP_PRIZE_1_CAP` jumps.[await][page]
  All right, here's your prize.[await]'''
-dialog_data[156] = ''' According to my source, it's
- impossible to jump more than
- 100 times.[await][page]
-  You've gotten `SUPER_JUMP_PRIZE_2_CAP`, so
-  here's a final prize for you![await]'''
+dialog_data[156] = ''' You've gotten `SUPER_JUMP_PRIZE_2_CAP` jumps, so here's a final prize for you![await]'''
 dialog_data[157] = ''' I've got no more prizes for you.
  Well done![await]'''
 dialog_data[158] = ''' Some of my friends are hiding away

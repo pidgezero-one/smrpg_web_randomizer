@@ -219,9 +219,7 @@ dialog_data[90] = '''
     Thanks for saving my brother.[await]'''
 dialog_data[91] = ''' EEK! There are...THINGS
  in our kitchen. HELP!!!![await]'''
-dialog_data[92] = ''' Sigh... I asked for a Bowsette
- costume, not a`PEACH_ARTICLE` `PEACH_NAME`
- costume.[await]
+dialog_data[92] = ''' Sigh... I asked for a Bowsette costume, not a`PEACH_ARTICLE` `PEACH_NAME` costume.[await]
  I suppose it'll just have to do.[await]'''
 dialog_data[93] = ''' Hi `MAIN_CHARACTER_NAME`. Staying for a nap?[await]
  [select]  (Sure)
@@ -242,14 +240,14 @@ dialog_data[98] = ''' Yes, you look awful!
 dialog_data[99] = '''GAZ: Sometimes we have other
  guests here, too! Maybe you'll meet
  one sometime![await]'''
-dialog_data[100] = ''' See, arrows come flying out
+dialog_data[100] = ''' See, they come flying out
  from the forest...and when you're
  hit, you can't move! See, look![await]
  I can't move a muscle. Now I know
  how a scarecrow feels![await]'''
 dialog_data[101] = ''' Some jerk waltzed into the forest
  and started messing things up.[await]
- Ever since then, arrows have been
+ Ever since then, things have been
  showering all over our town![await]'''
 dialog_data[102] = ''' I tell you, it's scary out here, but
  someone's got to pump the water.[await]'''
@@ -572,9 +570,7 @@ dialog_data[212] = ''' A couple o' jerks barged into the
 dialog_data[213] = ''' Our friend up there's tryin' to drill
  through the mountain an' rescue the
  folks trapped inside.[await][pause] Say,
- `MAIN_CHARACTER_NAME`, you wouldn't happen to
- have anything that could blow it
- open from inside, would ya?[await]'''
+ `MAIN_CHARACTER_NAME`, you wouldn't happen to have anything that could blow it open from inside, would ya?[await]'''
 dialog_data[214] = ''' I reckon this'd be a heckuva lot
  easier if they had some kinda' bomb
  to use from the inside...![await]'''
@@ -692,13 +688,7 @@ dialog_data[247] = '''
  I'm just bored.[await]
  But if you go to the mountain,
  they'll sing you the real song.[await]'''
-dialog_data[248] = ''' Hey `MAIN_CHARACTER_TITLE`, have ya ever been to
- Bean Valley?[await][pause] My friend's been
- readin' a book about it.[await][page]
- She tells me there's some treasure
- hidden under some stairs
- underground, or somethin'.[await]
- I think she's pullin' my leg![await]'''
+dialog_data[248] = ''' Hey `MAIN_CHARACTER_TITLE`, have ya ever been to Bean Valley?[await][pause] My friend told me there's a lot of treasures there![await]'''
 dialog_data[249] = ''' My sister's friend must be sick, or
  somethin'.[await][pause] She's been rattlin' off
  about jumping, gold “Chomps”,
@@ -721,36 +711,21 @@ dialog_data[255] = ''' Sorry, curatives are all gone.
 [end]'''
 dialog_data[256] = ''' Tank you, pweese come again![await]'''
 dialog_data[257] = '''      Received a “Shiny Stone”[await]'''
-dialog_data[258] = ''' I'm reading a picture book about
- Bean Valley![await][pause][delay_30] ...How the heck is
- anyone supposed to jump to that
- left beanstalk?![await][page]
- Is there somewhere else you can
- jump from that I just can't see?[await]
- Have you ever been there, `MAIN_CHARACTER_TITLE`?[await]'''
-dialog_data[259] = ''' Hey `MAIN_CHARACTER_TITLE`! Have ya been to
- Land's End?[await][pause] I wanna go, but my
- ma's afraid I'm gonna fall in the
- dog pit.[await]
- Try lookin' around there, maybe
- you'll find a way to avoid jumpin'
- into it![await]'''
+dialog_data[258] = '''[center]
+ I wanna ride the minecart![await]'''
+dialog_data[259] = ''' Hey `MAIN_CHARACTER_TITLE`! Have ya been to Land's End?[await][pause] I wanna go, but my ma's afraid I'm gonna fall in the dog pit.[await]'''
 dialog_data[260] = ''' What a nice “Shiny Stone”.
  I'll trade you my “Carbo Cookie”![await]
   [select]  (Okay)
   [select]  (No thanks)[await]'''
 dialog_data[261] = ''' Sowwy, my pur-tend store is closed
  today![await][pause] If ya want a “Shiny Stone”,
- you can prolly find one somewhere![await]'''
+ ya gotta find one![await]'''
 dialog_data[262] = ''' Booster's a pretty absent-minded
  fella. He just leaves the door to
  his tower open all the time.[await]'''
-dialog_data[263] = ''' Oh, the pipe?[delay_30]
- I think Belome 2 might know
- something about it.[await]'''
-dialog_data[264] = '''PA'MOLE: `MAIN_CHARACTER_NAME`, you're our
- only hope for those kids.
- We're countin' on ya.[await]'''
+dialog_data[263] = ''' Oh, the pipe?[delay_30] I think Belome 2 might know something about it.[await]'''
+dialog_data[264] = '''PA'MOLE: `MAIN_CHARACTER_NAME`, you're our only hope for those kids. We're countin' on ya.[await]'''
 dialog_data[265] = ''' How about a trolley ride?[await]
   [select]  (Pay 10 coins to ride)
   [select]  (Wager 30 coins and ride)
@@ -763,31 +738,19 @@ dialog_data[267] = '''
   We'll exchange your Mushrooms
        and Syrups for points.[await]
         For every 100 points
-    you'll get an item in return![await][page]
-           You can choose
-     one of the following gifts
-       to take away with you.[await][page]
-  1)A “Fright Bomb” which allows
-     you to make one enemy quiver
-     in fright.[await][page]
-  2)A “Fire Bomb” for a fire
-     attack against all enemies.[await][page]
-  3)An “Ice Bomb” for an ice
-     attack against all enemies.[await][page]
-   They're all quite rare and hard
-               to come by.[await]'''
+    you'll get an item in return![await]'''
 dialog_data[268] = '''   Found a “[0x70A7]”![end]'''
 dialog_data[269] = '''   Found an “[0x70A7]”![end]'''
-dialog_data[270] = '''
-               Mario joins![await]'''
-dialog_data[271] = '''
-              Mallow joins![await]'''
-dialog_data[272] = '''
-                Geno joins![await]'''
-dialog_data[273] = '''
-              Bowser joins![await]'''
-dialog_data[274] = '''
-            Toadstool joins![await]'''
+dialog_data[270] = '''[center]
+Mario joins![await]'''
+dialog_data[271] = '''[center]
+Mallow joins![await]'''
+dialog_data[272] = '''[center]
+Geno joins![await]'''
+dialog_data[273] = '''[center]
+Bowser joins![await]'''
+dialog_data[274] = '''[center]
+Toadstool joins![await]'''
 dialog_data[275] = '''             Got [0x7000]/16 items[await]'''
 dialog_data[276] = '''      Didn't get any items.[await]'''
 dialog_data[277] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
@@ -807,10 +770,7 @@ dialog_data[281] = ''' There's nothing left to win here.
  Let's go now.[await]
   [select]  (All right)
   [select]  (No)[await]'''
-dialog_data[282] = '''GRATE GUY: Whoa, hold on a sec,
- `MAIN_CHARACTER_NAME`![await][page]
- That trampoline will take you right
- to the factory core.[await][page]
+dialog_data[282] = '''GRATE GUY: Whoa, hold on a sec, `MAIN_CHARACTER_NAME`![await] That trampoline will take you right to the factory core.[await]
  Are you SURE you wanna do that?
   [select] (Yes)
   [select] (No)[await]'''
@@ -1113,9 +1073,7 @@ dialog_data[383] = '''
 dialog_data[384] = ''' To “DO” them old Moleville blues!~[await]'''
 dialog_data[385] = '''
    Here, hop up on our shoulders![await]'''
-dialog_data[386] = '''PA'MOLE: `MAIN_CHARACTER_NAME`! You've
- come to save us? One problem,
- though. This is a dead end...[await][page]
+dialog_data[386] = '''PA'MOLE: `MAIN_CHARACTER_NAME`! You've come to save us? One problem, though. This is a dead end...[await][page]
  We'd need a bomb to blast
  through here...[await]'''
 dialog_data[387] = '''PA'MOLE: I just can't go any
@@ -1663,59 +1621,59 @@ dialog_data[554] = '''
  And that's the way it was![await]'''
 dialog_data[555] = ''' Try coming back when we're on our\n lunch break.[await] ...[delay]That is, if we ever\n get one.[await]'''
 dialog_data[556] = '''\n   Don't bother me! I'm on a break.[await]'''
-dialog_data[557] = '''`CHARACTER` learns `SPELL_1`[await]'''
+dialog_data[557] = '''[center]`CHARACTER` learns `SPELL_1`[await]'''
 dialog_data[558] = '''`CHARACTER` learns `SPELL_1`[end]'''
-dialog_data[559] = '''`CHARACTER` learns `SPELL_2`[await]'''
+dialog_data[559] = '''[center]`CHARACTER` learns `SPELL_2`[await]'''
 dialog_data[560] = '''`CHARACTER` learns `SPELL_2`[end]'''
-dialog_data[561] = '''`CHARACTER` learns `SPELL_3`[await]'''
+dialog_data[561] = '''[center]`CHARACTER` learns `SPELL_3`[await]'''
 dialog_data[562] = '''`CHARACTER` learns `SPELL_3`[end]'''
-dialog_data[563] = '''`CHARACTER` learns `SPELL_4`[await]'''
+dialog_data[563] = '''[center]`CHARACTER` learns `SPELL_4`[await]'''
 dialog_data[564] = '''`CHARACTER` learns `SPELL_4`[end]'''
-dialog_data[565] = '''`CHARACTER` learns `SPELL_5`[await]'''
+dialog_data[565] = '''[center]`CHARACTER` learns `SPELL_5`[await]'''
 dialog_data[566] = '''`CHARACTER` learns `SPELL_5`[end]'''
-dialog_data[567] = '''`CHARACTER` learns `SPELL_6`[await]'''
+dialog_data[567] = '''[center]`CHARACTER` learns `SPELL_6`[await]'''
 dialog_data[568] = '''`CHARACTER` learns `SPELL_6`[end]'''
-dialog_data[569] = '''`CHARACTER` learns `SPELL_7`[await]'''
+dialog_data[569] = '''[center]`CHARACTER` learns `SPELL_7`[await]'''
 dialog_data[570] = '''`CHARACTER` learns `SPELL_7`[end]'''
-dialog_data[571] = '''`CHARACTER` learns `SPELL_8`[await]'''
+dialog_data[571] = '''[center]`CHARACTER` learns `SPELL_8`[await]'''
 dialog_data[572] = '''`CHARACTER` learns `SPELL_8`[end]'''
-dialog_data[573] = '''`CHARACTER` learns `SPELL_9`[await]'''
+dialog_data[573] = '''[center]`CHARACTER` learns `SPELL_9`[await]'''
 dialog_data[574] = '''`CHARACTER` learns `SPELL_9`[end]'''
-dialog_data[575] = '''`CHARACTER` learns `SPELL_10`[await]'''
+dialog_data[575] = '''[center]`CHARACTER` learns `SPELL_10`[await]'''
 dialog_data[576] = '''`CHARACTER` learns `SPELL_10`[end]'''
-dialog_data[577] = '''`CHARACTER` learns `SPELL_11`[await]'''
+dialog_data[577] = '''[center]`CHARACTER` learns `SPELL_11`[await]'''
 dialog_data[578] = '''`CHARACTER` learns `SPELL_11`[end]'''
-dialog_data[579] = '''`CHARACTER` learns `SPELL_12`[await]'''
+dialog_data[579] = '''[center]`CHARACTER` learns `SPELL_12`[await]'''
 dialog_data[580] = '''`CHARACTER` learns `SPELL_12`[end]'''
-dialog_data[581] = '''`CHARACTER` learns `SPELL_13`[await]'''
+dialog_data[581] = '''[center]`CHARACTER` learns `SPELL_13`[await]'''
 dialog_data[582] = '''`CHARACTER` learns `SPELL_13`[end]'''
-dialog_data[583] = '''`CHARACTER` learns `SPELL_14`[await]'''
+dialog_data[583] = '''[center]`CHARACTER` learns `SPELL_14`[await]'''
 dialog_data[584] = '''`CHARACTER` learns `SPELL_14`[end]'''
-dialog_data[585] = '''`CHARACTER` learns `SPELL_15`[await]'''
+dialog_data[585] = '''[center]`CHARACTER` learns `SPELL_15`[await]'''
 dialog_data[586] = '''`CHARACTER` learns `SPELL_15`[end]'''
-dialog_data[587] = '''`CHARACTER` learns `SPELL_16`[await]'''
+dialog_data[587] = '''[center]`CHARACTER` learns `SPELL_16`[await]'''
 dialog_data[588] = '''`CHARACTER` learns `SPELL_16`[end]'''
-dialog_data[589] = '''`CHARACTER` learns `SPELL_17`[await]'''
+dialog_data[589] = '''[center]`CHARACTER` learns `SPELL_17`[await]'''
 dialog_data[590] = '''`CHARACTER` learns `SPELL_17`[end]'''
-dialog_data[591] = '''`CHARACTER` learns `SPELL_18`[await]'''
+dialog_data[591] = '''[center]`CHARACTER` learns `SPELL_18`[await]'''
 dialog_data[592] = '''`CHARACTER` learns `SPELL_18`[end]'''
-dialog_data[593] = '''`CHARACTER` learns `SPELL_19`[await]'''
+dialog_data[593] = '''[center]`CHARACTER` learns `SPELL_19`[await]'''
 dialog_data[594] = '''`CHARACTER` learns `SPELL_19`[end]'''
-dialog_data[595] = '''`CHARACTER` learns `SPELL_20`[await]'''
+dialog_data[595] = '''[center]`CHARACTER` learns `SPELL_20`[await]'''
 dialog_data[596] = '''`CHARACTER` learns `SPELL_20`[end]'''
-dialog_data[597] = '''`CHARACTER` learns `SPELL_21`[await]'''
+dialog_data[597] = '''[center]`CHARACTER` learns `SPELL_21`[await]'''
 dialog_data[598] = '''`CHARACTER` learns `SPELL_21`[end]'''
-dialog_data[599] = '''`CHARACTER` learns `SPELL_22`[await]'''
+dialog_data[599] = '''[center]`CHARACTER` learns `SPELL_22`[await]'''
 dialog_data[600] = '''`CHARACTER` learns `SPELL_22`[end]'''
-dialog_data[601] = '''`CHARACTER` learns `SPELL_23`[await]'''
+dialog_data[601] = '''[center]`CHARACTER` learns `SPELL_23`[await]'''
 dialog_data[602] = '''`CHARACTER` learns `SPELL_23`[end]'''
-dialog_data[603] = '''`CHARACTER` learns `SPELL_24`[await]'''
+dialog_data[603] = '''[center]`CHARACTER` learns `SPELL_24`[await]'''
 dialog_data[604] = '''`CHARACTER` learns `SPELL_24`[end]'''
-dialog_data[605] = '''`CHARACTER` learns `SPELL_25`[await]'''
+dialog_data[605] = '''[center]`CHARACTER` learns `SPELL_25`[await]'''
 dialog_data[606] = '''`CHARACTER` learns `SPELL_25`[end]'''
-dialog_data[607] = '''`CHARACTER` learns `SPELL_26`[await]'''
+dialog_data[607] = '''[center]`CHARACTER` learns `SPELL_26`[await]'''
 dialog_data[608] = '''`CHARACTER` learns `SPELL_26`[end]'''
-dialog_data[609] = '''`CHARACTER` learns `SPELL_27`[await]'''
+dialog_data[609] = '''[center]`CHARACTER` learns `SPELL_27`[await]'''
 dialog_data[610] = '''`CHARACTER` learns `SPELL_27`[end]'''
 dialog_data[611] = '''    Sent an item to another player[await]'''
 dialog_data[612] = '''Sent an item to another player![end]'''
