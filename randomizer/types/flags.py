@@ -512,7 +512,7 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
 
 class PlayAsStarter(BooleanFlag):
     _name = "Play as starter ally everywhere"
-    _description = """If enabled, your starter ally will also be the protagonist outside of battle.
+    _description = """If enabled, your starter ally will also be the protagonist outside of battle. This may cause some minor graphical glitches but nothing game-breaking.
 <br>
 <br>If disabled, you will always play as Mario outside of battle, regardless of whether or not he is in your party."""
     _id = "protag"
