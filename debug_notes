@@ -15,8 +15,8 @@ P(rchars|starters:4)     Q(perms:vanilla_accessories_all|props:some|hints)     C
 
 General
 - beetlemania packet still not showing in chests
-- crusher palettes not applyiong
-- if you find a star piece while the exp star is active, see if you can resume the exp star music instead of the level selector music
+🚧 crusher palettes not applyiong
+🚧 if you find a star piece while the exp star is active, see if you can resume the exp star music instead of the level selector music
 🚧 sage stick attack is a hard lock
 🚧 stella is a hardl ock
 🚧 should be able to run away from mimic fights in mimics anywhere
@@ -46,7 +46,7 @@ Boss-specific
 Mushroom Way 
 
 Mushroom kingdom
-- Need to figure out what to do about the doorjamb chest++++++++++++++++++++
+🚧 Need to figure out what to do about the doorjamb chest++++++++++++++++++++
 🚧 wallet guy bad partition when birds are using good partition
 - guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
   - seems to be using wallet guy's scripts?

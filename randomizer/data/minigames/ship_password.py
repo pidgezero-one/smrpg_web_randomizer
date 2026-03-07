@@ -666,6 +666,23 @@ pool = [
         submitter_credits="FORSAKENM",
         submitter_hint_prefix="Memo left by ForsakenM:",
     ),
+    Password(
+        "goober",
+        "%RANDOM_WRITER%\n\nA gremlin, a goblin, a silly creature.[await]",
+        "%RANDOM_WRITER%\n\nThis is an 'r' in the word.[await]",
+        "%RANDOM_WRITER%\n\nIt has three vowels.[await]",
+        "%RANDOM_WRITER%\n\nIt has three consonants.[await]",
+        "%RANDOM_WRITER%\n\nAt least... two vowels are side by side.[await]",
+        "%RANDOM_WRITER%\n\nThe 'g' comes before the 'b'.[await]",
+        "If you switch two letters, it's\n the stuff in your nose.[await]",
+        "It's also a word for 'peanut.'[await]",
+        "ROCK!!!![await]",
+        None,
+        None,
+        submitter="NINTENDONUT",
+        submitter_credits="NINTENDONUT",
+        submitter_hint_prefix="Memo left by NINTENDONUT:",
+    ),
 ]
 
 all_symbols = list("""0123456789♥♪•~©:;#×+%↑→←*&()-/?!.,\'""")
