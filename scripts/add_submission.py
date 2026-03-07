@@ -19,6 +19,14 @@ import subprocess
 import sys
 from pathlib import Path
 
+from smrpgpatchbuilder.datatypes.dialogs.formatter import (
+    calculate_text_width,
+    center_lines,
+    format_dialog,
+    format_wish,
+    validate_dialog,
+)
+
 # Ensure the project root is on the Python path so `randomizer` can be imported
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
@@ -110,6 +118,16 @@ def add_wish(fields: dict[str, str]) -> None:
         print("Error: No wish text found in issue")
         sys.exit(1)
 
+    # Auto-format line breaks, vertical centering, and centering
+    wish_text = format_dialog(wish_text)
+    wish_text = format_wish(wish_text)
+    wish_text = "[center]" + wish_text
+
+    # Validate centering works
+    warnings = validate_dialog(wish_text)
+    for w in warnings:
+        print(f"Warning: {w}")
+
     escaped = escape_string(wish_text)
     new_entry = f'    "{escaped}",\n'
 
@@ -161,6 +179,22 @@ def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
     correct = clean_quiz_answer(correct)
     wrong1 = clean_quiz_answer(wrong1)
     wrong2 = clean_quiz_answer(wrong2)
+
+    # Auto-format question line breaks and validate
+    question = format_dialog(question)
+    warnings = validate_dialog(question)
+    for w in warnings:
+        print(f"Warning (question): {w}")
+
+    # Validate each answer fits on one line: " [select]  (ANSWER)" width
+    select_prefix = " [select]  "
+    for label, answer in [("Correct", correct), ("Wrong 1", wrong1), ("Wrong 2", wrong2)]:
+        answer_line = f"{select_prefix}{answer}"
+        line_width = calculate_text_width(answer_line)
+        max_width = 253  # usable width with default margin
+        if line_width > max_width:
+            print(f"Error: {label} answer too wide ({line_width}px > {max_width}px): {answer}")
+            sys.exit(1)
 
     # Escape strings
     question = escape_string(question)
@@ -258,14 +292,23 @@ def add_password(fields: dict[str, str]) -> None:
 
     # Format hints with %RANDOM_WRITER% prefix
     def format_hint(hint: str) -> str:
+        hint = format_dialog(hint)
         hint = ensure_await(hint)
+        # Validate centering works (password hints use [center])
+        warnings = validate_dialog("[center]" + hint)
+        for w in warnings:
+            print(f"Warning (hint): {w}")
         hint = escape_string(hint)
         return f'"%RANDOM_WRITER%\\n\\n{hint}"'
 
     def format_optional_hint(hint: str | None) -> str:
         if not hint:
             return "None"
+        hint = format_dialog(hint)
         hint = ensure_await(hint)
+        warnings = validate_dialog("[center]" + hint)
+        for w in warnings:
+            print(f"Warning (optional hint): {w}")
         return f'"{escape_string(hint)}"'
 
     word_escaped = escape_string(word.lower())
@@ -399,9 +442,19 @@ def add_song(fields: dict[str, str]) -> None:
             return hint + "[await]"
         return hint
 
+    # Auto-format line breaks and validate hints
+    hint1 = format_dialog(hint1)
+    hint2_pond = format_dialog(hint2_pond)
+    hint2_mines = format_dialog(hint2_mines)
+
     hint1 = ensure_await(hint1)
     hint2_pond = ensure_await(hint2_pond)
     hint2_mines = ensure_await(hint2_mines)
+
+    for label, hint_val in [("Hint 1", hint1), ("Hint 2 (pond)", hint2_pond), ("Hint 2 (mines)", hint2_mines)]:
+        warnings = validate_dialog(hint_val)
+        for w in warnings:
+            print(f"Warning ({label}): {w}")
 
     # Escape strings
     songname_escaped = escape_string(songname)
