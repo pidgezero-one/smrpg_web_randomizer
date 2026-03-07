@@ -1704,7 +1704,7 @@ class GameWorld:
             )
 
         starter = cast(CharacterPrize, self.get_location(StartingCharacter1).prize).ally
-        i = starter.index
+        i = self.overworld_character.ally.index
         self.file_select_character = starter.name
 
         # Change file select character graphic, if not Mario.

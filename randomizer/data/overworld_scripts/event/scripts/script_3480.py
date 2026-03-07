@@ -56,6 +56,7 @@ script = EventScript([
 	ActionQueueAsync(target=MEM_70A9, subscript=[
 		A_UnknownCommand(bytearray([0x99]))
 	]),
+    PaletteSet(EPAL0084_MARIO_ENDING, NPC_PALETTE_ROW_2),
 	FadeInFromBlack(sync=True, duration=80),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3480_jmp_if_bit_set_23"]),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),

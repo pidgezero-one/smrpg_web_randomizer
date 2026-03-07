@@ -59,14 +59,13 @@ script = EventScript([
 	]),
 	JmpToSubroutine(["EVENT_3491_action_queue_16"]),
 	JmpIfBitClear(TEMP_7043_4, ["EVENT_3492_enter_area_8"]),
-	SetVarToConst(PRIMARY_TEMP_7000, 1),
-	Add7000ToMaxFP(),
 	EnterArea(room_id=R069_MIDAS_RIVER_WATERFALL, face_direction=SOUTH, x=6, y=56, z=0, identifier="EVENT_3492_enter_area_8"),
 	FadeOutMusicToVolume(duration=1, volume=56),
 	PlaySound(sound=SO035_RUNNING_WATER, channel=4),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_VisibilityOff()
 	]),
+    PaletteSet(EPAL0084_MARIO_ENDING, NPC_PALETTE_ROW_1, identifier="midas_palette_2"),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ClearSolidityBits(cant_pass_walls=True),

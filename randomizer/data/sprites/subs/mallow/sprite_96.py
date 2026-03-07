@@ -2,7 +2,7 @@
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 
-from data.variables.sprite_palette_names import SPAL697_MALLOW_WALKING_DOWN_LEFT
+from randomizer.data.variables.sprite_palette_names import SPAL697_MALLOW_WALKING_DOWN_LEFT
 sprite = CompleteSprite(
     animation=AnimationPack(246, length=82, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,

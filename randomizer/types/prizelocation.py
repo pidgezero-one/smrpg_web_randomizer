@@ -4,7 +4,6 @@ from uuid import uuid4
 from enum import StrEnum
 import random
 
-from randomizer.progression.prizelocations import KeroSewersBeforeBelomeUpperBeforeFlipLocation
 from randomizer.progression.prizes import (
     BoomerBossFight,
     FirstMimicFightLauncher,
@@ -12,7 +11,7 @@ from randomizer.progression.prizes import (
     SecondMimicFightLauncher,
     ThirdMimicFightLauncher,
 )
-from randomizer.types.flags import ItemQuality, ItemQualityOptions, MimicsAnywhere, SlotsAnywhere, SpellsAnywhere
+
 
 from .prize import (
     MimicFightInitiatorPrize,
@@ -1235,6 +1234,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                         if r in self._rooms:
                             return False
         if isinstance(prize, SpellPrize):
+            from randomizer.types.flags import SpellsAnywhere
             if world.settings.isflag_enabled(SpellsAnywhere):
                 # Dynamic assignment mode: assign a character BEFORE placement
                 # Get all recruited character types from inventory
@@ -1420,13 +1420,15 @@ class TreasureChestLocation(StandardPrizeLocation):
                     JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]),
                     DisableObjectTriggerInSpecificLevel(ao, room),
                 ] + itemgrant
-            elif isinstance(self, KeroSewersBeforeBelomeUpperBeforeFlipLocation):
-                itemgrant = [
-                    JmpIfBitSet(LANDS_END_GROTTO_BARREL_FLIPPED, [itemgrant[0].identifier.label]),
-                    DisableObjectTriggerInSpecificLevel(ao, room),
-                ] + itemgrant
-            elif not isinstance(self.prize, InfiniteCoinsPrize):
-                itemgrant.insert(0, DisableObjectTriggerInSpecificLevel(ao, room))
+            else:
+                from randomizer.progression.prizelocations import KeroSewersBeforeBelomeUpperBeforeFlipLocation
+                if isinstance(self, KeroSewersBeforeBelomeUpperBeforeFlipLocation):
+                    itemgrant = [
+                        JmpIfBitSet(LANDS_END_GROTTO_BARREL_FLIPPED, [itemgrant[0].identifier.label]),
+                        DisableObjectTriggerInSpecificLevel(ao, room),
+                    ] + itemgrant
+                elif not isinstance(self.prize, InfiniteCoinsPrize):
+                    itemgrant.insert(0, DisableObjectTriggerInSpecificLevel(ao, room))
         return EventScript(itemgrant)
 
     def render(self, world: GameWorld) -> None:
@@ -1868,7 +1870,7 @@ class BossFightLocation(PrizeLocation):
           event script battle pack selectors (non-BattlePackNPC objects).
         - list of (slot, henchman) tuples for all assigned henchmen.
         """
-        from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC
+        from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC, BattlePackClone
 
         assert isinstance(self.prize, BossFightPrize)
 
@@ -2017,7 +2019,7 @@ class BossFightLocation(PrizeLocation):
                 new_npc = henchman.model().base
                 obj._npc = new_npc
                 if slot.pack_id is not None:
-                    if isinstance(obj, BattlePackNPC):
+                    if isinstance(obj, (BattlePackNPC, BattlePackClone)):
                         obj.set_battle_pack(slot.pack_id)
                     else:
                         # Need event script for battle pack selection
@@ -2163,6 +2165,7 @@ class BossFightLocation(PrizeLocation):
         assert isinstance(self.prize, BossFightPrize)
         pack = world.battle_packs._packs[self._pack_id]
         run_away = self.allow_run_away
+        from randomizer.types.flags import MimicsAnywhere
         if world.settings.isflag_enabled(MimicsAnywhere) and (
             isinstance(self.prize, MimicFightInitiatorPrize)
             or isinstance(self, MimicFightLocation)
@@ -2198,6 +2201,7 @@ class BossFightLocation(PrizeLocation):
         # If this location has a separate slots pack, mirror the formation to it
         if self._slots_pack_id is not None:
             slots_pack = world.battle_packs._packs[self._slots_pack_id]
+            from randomizer.types.flags import SlotsAnywhere
             slots_run_away = world.settings.isflag_enabled(SlotsAnywhere)
             for f in slots_pack.formations:
                 if self.prize.formation is not None:
@@ -2351,10 +2355,16 @@ class BossFightLocation(PrizeLocation):
                     if isinstance(location.prize, launcher_cls) and isinstance(
                         self, boss_cls
                     ):
-                        effective_battlefields = [
-                            ROOM_TO_BATTLEFIELD[r] for r in location._rooms
-                        ]
                         effective_rooms = location._rooms
+                        if self.prize.force_battlefield is not None:
+                            effective_battlefields = [
+                                self.prize.force_battlefield
+                            ] * len(effective_rooms)
+                        else:
+                            effective_battlefields = [
+                                ROOM_TO_BATTLEFIELD[r]
+                                for r in effective_rooms
+                            ]
         elif (
             self.override_id is not None
             and self.prize.force_battlefield is None
@@ -2593,6 +2603,7 @@ class SpellSlotLocation(PrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         # When SpellsAnywhere is enabled, spell slots are only sources (for pulling prizes)
         # not destinations - spells go into the general pool instead
+        from randomizer.types.flags import SpellsAnywhere
         if world.settings.isflag_enabled(SpellsAnywhere):
             return False
         return isinstance(prize, SpellPrize) and super().can_accept(
@@ -2607,6 +2618,7 @@ class PrizeRow(PrizeLocation):
     _container_event: int
 
     def can_be_empty(self, world: GameWorld) -> bool:
+        from randomizer.types.flags import ItemQuality, ItemQualityOptions
         if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY):
             return True
         return super().can_be_empty(world)

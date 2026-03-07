@@ -5,6 +5,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, Destin
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.numbers.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *
@@ -125,7 +126,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(13)),
         ChestNPC( # 2
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,

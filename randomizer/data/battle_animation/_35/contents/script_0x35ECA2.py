@@ -1406,4 +1406,8 @@ script = AnimationScriptBlock(expected_size=4958, expected_beginning=0x35ECA2, s
 	UnknownCommand(bytearray([0x98])),
 	GameOverIfNoAlliesStanding(identifier="command_0x350755"),
 	Jmp(["command_0x3505D5"]),
+    NewEffectObject(effect=EF0036_BLANK_WHITE_FLASH_2BPP, playback_off=True, identifier="base_wpn_subroutine"),
+    SetAMEM8BitToConst(0x60, 100),
+    Set7FToAMEM8Bit(0x7FFFB0, 0x6F),
+    ReturnSubroutine()
 ])

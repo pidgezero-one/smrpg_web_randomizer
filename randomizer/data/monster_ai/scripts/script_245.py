@@ -34,6 +34,6 @@ script = MonsterScript([
 	StartCounterCommands(),
 	IfHPBelow(0),
 	RunBattleEvent(BE0069_AXEM_RANGERS_ARE_DEFEATED),
-	RemoveTarget(SELF),
+	RemoveTarget(ALL_ALLIES_AND_SELF),
 	Wait1TurnandRestartScript()
 ])

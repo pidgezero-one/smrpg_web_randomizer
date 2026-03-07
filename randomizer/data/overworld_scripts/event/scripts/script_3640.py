@@ -357,15 +357,25 @@ script = EventScript([
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	RemoveObjectFromSpecificLevel(NPC_1, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT),
 	UnfreezeCamera(),
+    
 	SetVarToConst(PRIMARY_TEMP_7000, 520),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
     SetBit(STATUE_GAME_DONE),
+    
 	JmpIfBitSet(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_3640_set_bit_204"]),
-	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_3640_jmp_to_subroutine_205"]),
+    
+	
+	SetBit(STATUE_KEEPER_FIGHT_PRESENT),
+    Jmp(["EVENT_3640_jmp_to_subroutine_205"]),
+    
+
+	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_3640_jmp_to_subroutine_205"], identifier="EVENT_3640_set_bit_204"),
 	SetBit(STATUE_KEEPER_STAR_PIECE),
+	RunEventAsSubroutine(E1230_STATUE_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 520),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
-	SetBit(STATUE_KEEPER_FIGHT_PRESENT, identifier="EVENT_3640_set_bit_204"),
+    
+
 	JmpToSubroutine(["EVENT_3400_jmp_if_bit_set_446"], identifier="EVENT_3640_jmp_to_subroutine_205"),
 	Return(),
 	StopMusic(identifier="EVENT_3640_stop_music_207"),
@@ -476,12 +486,14 @@ script = EventScript([
 	PlayMusicAtDefaultVolume(M0061_VALENTINA),
 	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_3640_ret_253"]),
 	SetBit(STATUE_KEEPER_STAR_PIECE),
+	RunEventAsSubroutine(E1230_STATUE_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 520),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Return(identifier="EVENT_3640_ret_253"),
 	PlayMusicAtDefaultVolume(M0050_NIMBUSLAND, identifier="EVENT_3640_play_music_default_volume_254"),
 	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_3640_ret_259"]),
 	SetBit(STATUE_KEEPER_STAR_PIECE),
+	RunEventAsSubroutine(E1230_STATUE_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 520),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Return(identifier="EVENT_3640_ret_259"),

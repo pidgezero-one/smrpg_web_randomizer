@@ -36,7 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	Set7000ToCurrentLevel(),
     
-    JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS, ["event_3135_id_check_2"]),
+    JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS, ["event_3135_init"]),
 	JmpIfBitSet(SEWERS_FLIPPED_CHEST_OPENED, ["EVENT_3135_fade"]),
     JmpIfBitClear(LANDS_END_GROTTO_BARREL_FLIPPED, ["EVENT_3135_fade"]),
     EnableObjectTrigger(NPC_1),

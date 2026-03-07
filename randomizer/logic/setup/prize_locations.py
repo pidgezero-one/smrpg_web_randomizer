@@ -109,6 +109,7 @@ def set_locations(world: GameWorld) -> None:
         MidasRiverFirstCompletionRewardLocation: MidasRiverFirstCompletionRewardLocation(),
         MidasRiverBottomLeftCaveLocation: MidasRiverBottomLeftCaveLocation(),
         MidasRiverBottomRightCaveLocation: MidasRiverBottomRightCaveLocation(),
+        MidasRiverLeftCaveLocation: MidasRiverLeftCaveLocation(),
         TadpolePondCricketPieExchangeLocation: TadpolePondCricketPieExchangeLocation(),
         TadpolePondCricketJamExchangeLocation: TadpolePondCricketJamExchangeLocation(),
         MelodyBayFirstRewardLocation: MelodyBayFirstRewardLocation(),

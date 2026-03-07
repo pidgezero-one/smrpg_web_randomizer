@@ -50,7 +50,7 @@ script = AnimationScriptBlock(expected_size=1701, expected_beginning=0x358271, s
                        "lazyshell_sound", 
 					   "fryingpanluckyhammerunknown_sound", 
 					   "cymbalschompmasherchompshellsuperhammer_sound", 
-					   "handgun_sound", 
+					   "fryingpanluckyhammerunknown_sound", 
                        "ribbitstickspikedlinkmegaglovewarfan_sound", 
                        "fryingpanluckyhammerunknown_sound", 
                        "fryingpanluckyhammerunknown_sound"
@@ -75,7 +75,7 @@ script = AnimationScriptBlock(expected_size=1701, expected_beginning=0x358271, s
 	PlaySound(sound=S0194_BIG_SHELL_HIT_2, identifier="lazyshell_sound"),
 	SetAMEM60ToCurrentTarget(identifier="fryingpanluckyhammerunknown_sound"),
 	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=4, y=-10, z=0, set_x=True, set_y=True, set_z=True),
-	NewEffectObject(effect=EF0036_BLANK_WHITE_FLASH_2BPP, playback_off=True),
+	RunSubroutine(["base_wpn_subroutine"]),
 	Layer3On(property=TRANSPARENCY_OFF),
 	UnknownCommand(bytearray([0xBA, 0x03, 0xF0, 0x00, 0x01, 0x00, 0x01, 0x00])),
 	ScreenEffect(SEF0005_SLASH_INSTANT_DEATH),

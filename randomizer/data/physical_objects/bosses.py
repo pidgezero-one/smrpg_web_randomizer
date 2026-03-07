@@ -204,6 +204,8 @@ class PandoriteSmallObject(BossNPC):
     """Small Pandorite object in Mushroom Way Area 03."""
 
     _base = PANDORITE_SMALL_NPC
+    _eye_height = 4
+    _crown_height = 1
 
 
 class PandoriteLargeObject(BossNPC):
@@ -636,18 +638,24 @@ class HidonSmallObject(BossNPC):
     """Small Hidon object."""
 
     _base = HIDON_SMALL_NPC
+    _eye_height = 4
+    _crown_height = 1
 
 
 class ChesterSmallObject(BossNPC):
     """Small Chester object."""
 
     _base = CHESTER_SMALL_NPC
+    _eye_height = 4
+    _crown_height = 1
 
 
 class BoxBoySmallObject(BossNPC):
     """Small Box Boy object."""
 
     _base = BOX_BOY_SMALL_NPC
+    _eye_height = 4
+    _crown_height = 1
 
 
 # Missing Large Classes

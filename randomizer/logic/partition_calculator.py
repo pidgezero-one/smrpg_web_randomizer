@@ -24,7 +24,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 from dataclasses import dataclass
 
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_13, NPC_6
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_10, NPC_13, NPC_6
 from ..data.variables.sprite_names import *
 from ..data.variables.room_names import *
 
@@ -449,6 +449,11 @@ def update_seaside_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R211_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_1F, NPC_0, 0)
 
 
+def update_credits_partitions(world: GameWorld) -> None:
+    _update_buffer_by_room_object(world, R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_6, 1)
+    _update_buffer_by_room_object(world, R505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI, NPC_10, 2)
+    
+
 def update_shuffed_boss_partitions(world: GameWorld) -> None:
     update_statue_room_partitions(world)
     update_mines_henchman_room_partitions(world)
@@ -460,3 +465,9 @@ def update_shuffed_boss_partitions(world: GameWorld) -> None:
     update_arrow_partitions(world)
     update_mines_inner_henchman_room_partition(world)
     update_seaside_partitions(world)
+    update_credits_partitions(world)
+
+    _update_buffer_by_room_object(world, R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, NPC_1, 0)
+    _update_buffer_by_room_object(world, R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, NPC_1, 1)
+    _update_buffer_by_room_object(world, R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, NPC_1, 2)
+    

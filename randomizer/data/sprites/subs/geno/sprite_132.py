@@ -1,7 +1,7 @@
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 
-from data.variables.sprite_palette_names import SPAL527_MOLEVILLE_MINE_CART
+from randomizer.data.variables.sprite_palette_names import SPAL527_MOLEVILLE_MINE_CART
 sprite = CompleteSprite(
     animation=AnimationPack(386, length=767, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,

@@ -6,6 +6,7 @@ from uuid import uuid4
 import random
 import statistics
 
+from ..data.variables.event_palette_names import EPAL0085_MALLOW_ENDING, EPAL0086_GENO_ENDING, EPAL0140_BOWSER_ENDING, EPAL0141_TOADSTOOL_ENDING
 from randomizer.logic.partition_calculator import update_shuffed_boss_partitions
 
 if TYPE_CHECKING:
@@ -18,11 +19,9 @@ from ..types.prizelocation import (
     PrizeRow,
     RiverLocation,
     StarPieceLocation,
-    PacketLocation,
     StandingLocation,
     EventLocation,
     TreasureChestLocation,
-    TreasureChestLocationRow,
     BoosterHillLocation,
     CharacterRecruitmentLocation,
     TreasureShopLocation,
@@ -33,38 +32,32 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.
     UsableEventScriptCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    PaletteSet,
     Return,
     ClearBit,
     Inc,
-    CreatePacketAt7010WithEvent,
     Set7000ToCurrentLevel,
     SummonObjectToSpecificLevel,
-    EnableObjectTriggerInSpecificLevel,
     JmpIfVarEqualsConst,
-    SetVarToConst,
-    StartBattleWithPackAt700E,
     StartBattleAtBattlefield,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
     AreaObject,
 )
-from smrpgpatchbuilder.datatypes.levels.classes import BaseRoomObject
+from smrpgpatchbuilder.datatypes.levels.classes import BaseRoomObject, ChestNPC, ChestClone
 from ..data.variables.event_script_names import *
 from ..data.variables.variable_names import (
     PRIMARY_TEMP_7000,
     STAR_PIECE_GRANT_DIRECTIONAL_BIT,
     STAR_PIECE_GRANT_DIRECTIONAL_BIT_2,
     BOSS_VICTORY_COUNTER,
-    BATTLE_PACK_ID,
 )
 from ..data.variables.room_names import *
-from ..data.rooms.npcs import ALLY_CLONE_NPC, BOWSER_WALKING_DOWN_LEFT_NPC, BOWSER_WALKING_DOWN_LEFT_NPC_2, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC, GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE, MALLOW_WALKING_DOWN_LEFT_NPC, MALLOW_WALKING_DOWN_LEFT_NPC_2, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM, TOADSTOOL_WALKING_DOWN_LEFT_NPC
+from ..data.rooms.npcs import ALLY_CLONE_NPC, BOWSER_WALKING_DOWN_LEFT_NPC, BOWSER_WALKING_DOWN_LEFT_NPC_2, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE, MALLOW_WALKING_DOWN_LEFT_NPC_2, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM
 from ..types.flags import CharacterStats
-from ..types.prize import BossFightPrize, MimicFightInitiatorPrize, SlotsPrize, SpellPrize, CharacterPrize, StandardPrize
+from ..types.prize import BossFightPrize, ItemPrize, SlotsPrize, SpellPrize, CharacterPrize, StandardPrize
 from ..types.enemy import Enemy
 from ..progression.prizelocations import (
-    Mimic1ReloadRewardLocation,
-    Mimic2ReloadRewardLocation,
     Mimic3BossFight,
     StarHillStarPiece,
     MarioSpell1,
@@ -113,9 +106,6 @@ from ..progression.prizelocations import (
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_9, NPC_0, NPC_3, NPC_4, NPC_5
 from ..data.enemies.enemies import CULEX3DEnemy
 from ..progression.prizes import (
-    FirstMimicFightLauncher,
-    SecondMimicFightLauncher,
-    ThirdMimicFightLauncher,
     SmithyBossFight,
     Punchinello2BossFight,
     Booster2BossFight,
@@ -422,6 +412,16 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     world.event_2496_startup.append(
                         SummonObjectToSpecificLevel(NPC_9, R159_STAR_HILL_AREA_04)
                     )
+            if isinstance(place, TreasureChestLocation) and isinstance(place.prize, ItemPrize):
+                item_id = place.prize.item().item_id
+                for npc, room_id in zip(place._npc_ids, place._rooms):
+                    ao = npc if isinstance(npc, AreaObject) else AreaObject(npc + 0x14)
+                    room = world.rooms._rooms[room_id]
+                    if room is not None:
+                        room_obj = room.get_npc_by_target_id(ao)
+                        if isinstance(room_obj, (ChestNPC, ChestClone)):
+                            room_obj.set_lower_70a7(item_id & 0x0F)
+                            room_obj.set_upper_70a7((item_id >> 4) & 0x0F)
             if isinstance(place, TreasureShopLocation) and isinstance(place.prize, StandardPrize):
                 if hasattr(place.prize, "_nickname"):
                     nn = place.prize.nickname
@@ -538,12 +538,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     apply_boss_stat_scaling(world)
 
     # Update partition buffers for rooms with shuffled sprites
-    from .partition_calculator import (
-        update_statue_room_partitions,
-        update_mines_henchman_room_partitions,
-        update_protagonist_room_partition,
-    )
-    update_shuffed_boss_partitions
+    update_shuffed_boss_partitions(world)
 
     # Update freestanding frog coin NPCs in rooms with Coins partition
     # to use the animated frog coin NPC and spinning action script
@@ -592,61 +587,82 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     assert clone_room is not None, f"Room {R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM} not found"
     clone_room_npc_0 = clone_room.get_npc_by_target_id(NPC_0)
     assert clone_room_npc_0 is not None, f"NPC_0 not found in room {R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM}"
-    if world.overworld_character.ally.index != 0:
+
+    if world.overworld_character.ally.index > 0:
+        if world.overworld_character.ally.index == 1:
+            world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = TOADSTOOL_96
+            world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = TOADSTOOL_132
+            world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = TOADSTOOL_135
+            world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = TOADSTOOL_136
+            world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = TOADSTOOL_621
+            world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = TOADSTOOL_962
+            world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = TOADSTOOL_963
+            world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = TOADSTOOL_964
+            world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = TOADSTOOL_965
+            world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = TOADSTOOL_966
+            world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = TOADSTOOL_967
+            world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = TOADSTOOL_968
+            world.update_dialog(DI2320_TOADSTOOL_ROOM_HINT, " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
+            world.event_scripts.get_command_by_identifier("midas_palette_1", PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_2", PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
+        elif world.overworld_character.ally.index == 2:
+            world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = BOWSER_96
+            world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = BOWSER_132
+            world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = BOWSER_135
+            world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = BOWSER_136
+            world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = BOWSER_621
+            world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = BOWSER_969
+            world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = BOWSER_970
+            world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = BOWSER_971
+            world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = BOWSER_972
+            world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = BOWSER_973
+            world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = BOWSER_974
+            world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = BOWSER_975
+            world.event_scripts.get_command_by_identifier("midas_palette_1", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_2", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+        elif world.overworld_character.ally.index == 3:
+            world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
+            world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = GENO_132
+            world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = GENO_135
+            world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = GENO_136
+            world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = GENO_621
+            world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = GENO_983
+            world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = GENO_984
+            world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = GENO_985
+            world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = GENO_986
+            world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = GENO_987
+            world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = GENO_988
+            world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = GENO_989
+            world.event_scripts.get_command_by_identifier("midas_palette_1", PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_2", PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
+        elif world.overworld_character.ally.index == 4:
+            world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = MALLOW_96
+            world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = MALLOW_132
+            world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = MALLOW_135
+            world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = MALLOW_136
+            world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = MALLOW_621
+            world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = MALLOW_976
+            world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = MALLOW_977
+            world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = MALLOW_978
+            world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = MALLOW_979
+            world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = MALLOW_980
+            world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = MALLOW_981
+            world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = MALLOW_982
+            world.event_scripts.get_command_by_identifier("midas_palette_1", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_2", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
         clone_room_npc_0._npc = ALLY_CLONE_NPC
-    if world.overworld_character.ally.index == 1:
-        world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = TOADSTOOL_96
-        world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = TOADSTOOL_132
-        world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = TOADSTOOL_135
-        world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = TOADSTOOL_136
-        world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = TOADSTOOL_621
-        world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = TOADSTOOL_962
-        world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = TOADSTOOL_963
-        world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = TOADSTOOL_964
-        world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = TOADSTOOL_965
-        world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = TOADSTOOL_966
-        world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = TOADSTOOL_967
-        world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = TOADSTOOL_968
-        world.update_dialog(DI2320_TOADSTOOL_ROOM_HINT, " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
-    elif world.overworld_character.ally.index == 2:
-        world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = BOWSER_96
-        world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = BOWSER_132
-        world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = BOWSER_135
-        world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = BOWSER_136
-        world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = BOWSER_621
-        world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = BOWSER_969
-        world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = BOWSER_970
-        world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = BOWSER_971
-        world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = BOWSER_972
-        world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = BOWSER_973
-        world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = BOWSER_974
-        world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = BOWSER_975
-    elif world.overworld_character.ally.index == 3:
-        world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
-        world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = GENO_132
-        world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = GENO_135
-        world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = GENO_136
-        world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = GENO_621
-        world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = GENO_983
-        world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = GENO_984
-        world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = GENO_985
-        world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = GENO_986
-        world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = GENO_987
-        world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = GENO_988
-        world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = GENO_989
-    elif world.overworld_character.ally.index == 4:
-        world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = MALLOW_96
-        world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = MALLOW_132
-        world.sprites.sprites[SPR0135_MINE_CART_BAD_PALETTE] = MALLOW_135
-        world.sprites.sprites[SPR0136_MARIO_IN_MINE_CART] = MALLOW_136
-        world.sprites.sprites[SPR0621_OLD_CLASSIC_MARIO] = MALLOW_621
-        world.sprites.sprites[SPR0031_ALT_PROTAGONIST_1] = MALLOW_976
-        world.sprites.sprites[SPR0032_ALT_PROTAGONIST_2] = MALLOW_977
-        world.sprites.sprites[SPR0033_ALT_PROTAGONIST_3] = MALLOW_978
-        world.sprites.sprites[SPR0034_ALT_PROTAGONIST_4] = MALLOW_979
-        world.sprites.sprites[SPR0035_ALT_PROTAGONIST_5] = MALLOW_980
-        world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = MALLOW_981
-        world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = MALLOW_982
 
 
 

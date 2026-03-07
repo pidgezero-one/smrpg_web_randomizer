@@ -461,7 +461,7 @@ def get_smrpg_questions():
             "Goomba",
         ),
         Question("Who is the leader of\nThe Axem Rangers?", "Red", "Black", "Green"),
-        Question("What's the name of\nJagger's \"sensei#?", "Jinx", "Dinky", "Johnny"),
+        Question("What's the name of\nJagger's “sensei”?", "Jinx", "Dinky", "Johnny"),
         Question("How many underlings\ndoes Croco have?", "3", "2", "4"),
         Question(
             "What was Toadstool\ndoing when she was kidnapped by\nBowser?",

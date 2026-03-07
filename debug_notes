@@ -18,6 +18,7 @@ General
 - crusher palettes not applyiong
 - if you find a star piece while the exp star is active, see if you can resume the exp star music instead of the level selector music
 🚧 sage stick attack is a hard lock
+🚧 stella is a hardl ock
 🚧 should be able to run away from mimic fights in mimics anywhere
 🚧 lamb's lure is showing a symbol instead of apostrophe again
 - key item inventory is still too small, did not save alto card
@@ -25,9 +26,7 @@ General
 
 Boss-specific
 🚧 culex 3D sprite is broken. HUD disappears in phase 2
-  🚧 sprites are still all showing up as only wind crystal, but this might be because it was underwater
-  🚧 crystaks using their force attacks before SDing which is not normal behaviiur, after culex 3D koed. supposed to revive him
-  🚧 speed force targeted an ally member
+  - left 2 crystals bot hshowing up as water, right 2 showing up as wind
 🚧 fancy bundt animations are wrong, cross ref against demake
   🚧 opening event is fine. it's when it takes its first turn that things mess up (moves forward and separates)
   🚧 tortes saying empty dialogs
@@ -43,12 +42,12 @@ Boss-specific
   - game straight up crashes when belome 2 finishes with 2 bowser clones on field
 🚧 punchinello 2 broken, sprites are all messed up, doesn't summon bombs right away. whole fight doesnt work
 
+
 Mushroom Way 
-🚧 frog coin in right chest of mw2 does not show
 
 Mushroom kingdom
-🚧 Need to figure out what to do about the doorjamb chest++++++++++++++++++++
-🚧 coming out backwards from antechamber loads you inside the guy you can jump on. move him over to the left a bit
+- Need to figure out what to do about the doorjamb chest++++++++++++++++++++
+🚧 wallet guy bad partition when birds are using good partition
 - guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
   - seems to be using wallet guy's scripts?
 - signal ring not working (there are 3 star pieces in the kingdom: shop, and 2 vault chests) while invaded
@@ -58,16 +57,13 @@ Mushroom kingdom
 bandit's way
 
 Kero sewers
-🚧 no packets in chests in pre-belome room
 🚧 double chest does not work. opening it first after lands end did not refill it
 - smithy as boss renders TOTALLY wrong
 🚧 smithy 1 finishing crashes battle, plays empty dialog
-🚧 when you exit kero sewers, the block is back. need to hide it always on room load
 
 midas river
-🚧 left tunnel item still showing up as a flowr
-  🚧 lmao it's a different check...
-🚧 mallow should not be getting marios palette when hes the protag
+- mallow should not be getting marios palette when hes the protag
+- coming out of upper left cave warps you to barrel game now?
 
 tadpole pond 
 - frogfucius telling me to go to kero sewers when i can't do that
@@ -76,15 +72,11 @@ Rose way
 - Gold coins take on weird palettes again, might happen when too many npc palette rows
 
 
-Rose Town
-🚧 do sean's idea of replacing arrows
-🚧 slots in treasure chest house lower floor is bad
+Rose Town 
+- upper floor sonic cymbals not rendering
 
 Forest maze 
-🚧 uderground rooms are fucked up. how the hell to get partition to work?
-  - Why did flower work, and item bag, but NOT static frog coin?
 - buzzer's default attack sound effect is wrong somehow
-🚧 why does buzzer underground turn into a snifit in battle?
 
 Pipe vault
 
@@ -98,17 +90,10 @@ Moleville
   - same with mario
 🚧 shiny stone girl still asking for fireworks in progressive settings
 🚧 treasure hunter's dialogs are not changed
-🚧 models don't exit the room when you beat henchmen
-🚧 left of trampoline: punchinello and bob-omb partitions are wrong
-  - try changing 2nd buffer to fit henchman instead of 1st
-  - try changing 1st buffer to fit boss 
-🚧 right of trampoline: punchinello and bob-omb partitions are wrong
-  - try changing 1st buffer to fit Boss
-  - changed partition altogether
 🚧 circule path leading to traintrack room: fireball partition is wrong
   - try putting 3rd partition as 4x?
   🚧 512 bytes?
-🚧 the crook can't get through you when they try to run away, need to unset the collision bit to make that not happen
+  - Only broken when appearing or disappearing now. Next thing to try is removing extra sprite buff
 🚧 shyguy cart item broken, can't pick it up, graphical glitch (gets overwritten by shy guy animation)
   - if you leave room before picking it up, make sure it does not disappear
 🚧 four-pack of bombs in mine area is loading a henchmen pack instead of a mob pack
@@ -134,7 +119,7 @@ Booster Tower
 
 Booster Hill
 🚧 pickup coin rendered as a flower
-- something's wrong with counter. jumped way too far ahead in 70b2 after first clear
+🚧 something's wrong with counter. jumped way too far ahead in 70b2 after first clear
   - got 9/16 items, picked up 2 more, toad told me there was nothing here. this is wrong
   - needs more research
 🚧 brooch on booster hill appeared as a card
@@ -169,7 +154,7 @@ Sea
 
 Sunken Ship
 🚧 dry bones does not collapse when you run away
-- royal syrup in corner of pool room was invisible?
+🚧 royal syrup in corner of pool room was invisible?
 🚧 slots chest in hidon room causes coin sprites to overwrite chests
   - see if you can find another partition for it
 🚧 Dodo in johnny's room cut off. might need to use a different partition
@@ -226,9 +211,9 @@ Nimbus Land
 🚧 need to actually disable the front door when blocked by guarss
 🚧 croco in statue room: molds moving forward are incorrect, but the game otherwise words correclty
 🚧 forkies is still overwriting chests in the staircase room
-- croco in back hallway facing wrong direction (turn off f coord probably), was facing NW while walking NE
-- castle final boss uses wrong room id in event 353
-- mallow statue in garro house sometimes loads unintended poses
+🚧 croco in back hallway facing wrong direction (turn off f coord probably), was facing NW while walking NE
+🚧 castle final boss uses wrong room id in event 353
+🚧 mallow statue in garro house sometimes loads unintended poses
 
 Volcano
 🚧 sparkles act weirdly when you hit oerlikons with exp star
@@ -237,10 +222,9 @@ Volcano
 Keep
 🚧 for safety reasons, gate everything from the red doors onward behind having a mokura-turning spell (so it can KO vomers in battle hall)
 🚧 game crashes when you defeat chester spot
-- one of the questions about jinx's sensei has a # in it instead of a question mark
-- trialhlon game: their names are appearing twice in their dialogs
-- megasmilax makes a weird sound when casting the chest into existence
-- croco 2 shop is empty
+🚧 trialhlon game: their names are appearing twice in their dialogs
+🚧 megasmilax makes a weird sound when casting the chest into existence
+🚧 croco 2 shop is empty
 
 Gate
 🚧 countdown fight is skipped
@@ -263,7 +247,7 @@ Ending
 🚧 sparkle not trailing star in room 1
 - need a mario npc sub for when you are playing as another character
 🚧 culex and jagger ran right through the pedestal
-- sun does not come out! what the hell did you do to the palette set
-- grate guy in bowsers keep: bad partition
-- hammer bro and boshi: boshi get soverwritten partially. check out min vram on hammer bro
-- chapel: priest is missing sometimes
+🚧 sun does not come out! what the hell did you do to the palette set
+🚧 grate guy in bowsers keep: bad partition
+🚧 hammer bro and boshi: boshi get soverwritten partially. check out min vram on hammer bro
+🚧 chapel: priest is missing sometimes

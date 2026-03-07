@@ -156,7 +156,7 @@ room = Room(
             direction=NORTHWEST,
         ),
         RegularNPC(  # 4
-            npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC_4,
+            npc=npcs.MALLOW_STATUE_NPC,
             initiator=EventInitiator.NONE,
             event_script=E3584_BANK_20_RETURN_EVENT,
             action_script=A0803_INC_PALETTE_ROW,

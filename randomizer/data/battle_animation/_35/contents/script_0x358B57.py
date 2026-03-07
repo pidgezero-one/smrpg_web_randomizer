@@ -15,8 +15,7 @@ script = AnimationScriptBlock(expected_size=149, expected_beginning=0x358B57, sc
 	ResetTargetMappingMemory(identifier="command_0x358B57"),
 	ResetObjectMappingMemory(),
 	SetAMEM60ToCurrentTarget(),
-	UnknownCommand(bytearray([0x44, 0x68])),
-	SpriteSequence(sequence=0, looping_off=True),
+    RunSubroutine(["geno_wrapper_parent_subroutine"]),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=1792, arch_height=96),
 	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
 	ResetObjectMappingMemory(),
@@ -68,5 +67,5 @@ script = AnimationScriptBlock(expected_size=149, expected_beginning=0x358B57, sc
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0026_GENO_NONPROTAGONIST_2, sequence=0, store_to_vram=True, overlap_all_sprites=True, bit_4=True),
 	RunSubroutine(["command_0x358072"]),
 	UnknownCommand(bytearray([0x6D])),
-	ReturnSubroutine(),
+	ReturnSubroutine(),	
 ])

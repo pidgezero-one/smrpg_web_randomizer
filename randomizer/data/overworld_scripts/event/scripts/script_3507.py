@@ -53,6 +53,15 @@ script = EventScript([
 		A_WalkNorthwestSteps(18)
 	]),
 	FadeInFromBlack(sync=False),
+    
+	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+	RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
+	
+
+    
+
+
+
 	SetVarToConst(TEMP_70AE, 26),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetAllSpeeds(FAST),

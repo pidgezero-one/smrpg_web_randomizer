@@ -80,7 +80,7 @@ script = EventScript([
 	PaletteSet(palette_set_starts_at=EPAL0139_GOLD_CHEST, from_row=NPC_PALETTE_ROW_1, identifier="infinite_coin_chest_palette"),
 	SetSyncActionScript(NPC_0, A0014_FLOATING_CHEST),
 	ActionQueueAsync(target=NPC_0, subscript=[
-		A_PlaySound(sound=SO055_LOSE_COINS_COIN_FOUNTAIN, channel=6, identifier="infinite_coin_chest_sfx"),
+		A_PlaySound(sound=SO052_DEEP_BOUNCE, channel=6, identifier="infinite_coin_chest_sfx"),
 		A_StartLoopNTimes(1),
 		A_VisibilityOn(),
 		A_Pause(2),
