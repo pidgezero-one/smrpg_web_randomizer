@@ -1724,6 +1724,11 @@ class GameWorld:
         # Change overworld character if not Mario.
         if i != 0:
             patch.add_data(0x9B86, SPR0031_ALT_PROTAGONIST_1)
+            # The engine has a whitelist of known sprite bases at $9BAA-$9BC2
+            # that controls creation of additional sprites (jump, poses, etc.).
+            # Repurpose the base-49 check to recognize base 31 with count 6.
+            patch.add_data(0x9BBF, bytes([SPR0031_ALT_PROTAGONIST_1]))  # CMP #$1F
+            patch.add_data(0x9BC1, bytes([0x02]))  # BEQ $9BC4 (count=6 handler)
 
         for i, name in enumerate(self.file_select_names):
             addr = 0x3EF528 + (i * 7)

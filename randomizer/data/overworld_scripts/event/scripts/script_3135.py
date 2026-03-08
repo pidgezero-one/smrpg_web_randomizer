@@ -36,17 +36,21 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	Set7000ToCurrentLevel(),
     
-    JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS, ["event_3135_init"]),
+    JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS, ["EVENT_3135_jmp_if_bit_set_711"]),
 	JmpIfBitSet(SEWERS_FLIPPED_CHEST_OPENED, ["EVENT_3135_fade"]),
     JmpIfBitClear(LANDS_END_GROTTO_BARREL_FLIPPED, ["EVENT_3135_fade"]),
     EnableObjectTrigger(NPC_1),
     
+    
+	
+    JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, R333_KERO_SEWERS_ENTRANCE, ["event_3135_init"], identifier="EVENT_3135_jmp_if_bit_set_711"),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_WalkEastPixels(11),
 		A_WalkNortheastPixels(4),
 		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
 		A_SetVRAMPriority(NORMAL_PRIORITY)
 	], identifier="event_3135_id_check_2"),
+    
 	ClearBit(TEMP_707C_5, "event_3135_init"),
 	SetVarToConst(TIMER_701C, 300),
 	StopBackgroundEvent(TIMER_701C),

@@ -210,17 +210,17 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
     elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.HAMMER_BRO):
         world.update_dialog(
             DI1053_BANDITS_WAY_HINT,
-            """ Have you been to Bandit's Way?[await]\n I got lost on my way over there.\n I heard only the Hammer Bros know\n where the entrance is.[await]""",
+            """ Have you been to Bandit's Way?[await] I got lost on my way over there. I heard only the Hammer Bros know where the entrance is.[await]""",
         )
     elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MALLOW):
         world.update_dialog(
             DI1053_BANDITS_WAY_HINT,
-            """ Have you been to Bandit's Way?[await]\n I got lost on my way over there.\n I heard only `MALLOW_NAME`\n knows where the entrance is.[await]""",
+            """ Have you been to Bandit's Way?[await] I got lost on my way over there. I heard only `MALLOW_NAME` knows where the entrance is.[await]""",
         )
     elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MUSHROOM_WAY):
         world.update_dialog(
             DI1053_BANDITS_WAY_HINT,
-            """ Have you been to Bandit's Way?[await]\n I couldn't figure out how to get in.\n I heard you need to go through\n Mushroom Way. Is that true?[await]""",
+            """ Have you been to Bandit's Way?[await] I couldn't figure out how to get in. I heard you need to go through Mushroom Way. Is that true?[await]""",
         )
 
     # Kero Sewers
@@ -249,7 +249,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         elif world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MALLOW):
             world.update_dialog(
                 DI1055_SEWER_GATING_TEXT,
-                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on\n it needs help from `MALLOW_NAME`,\n but nobody knows where he is.[await]",
+                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on it needs help from `MALLOW_NAME`, but nobody knows where he is.[await]",
             )
         if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.KINGDOM):
             world.update_dialog(
@@ -290,7 +290,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.GENO):
             world.update_dialog(
                 DI1052_PIPE_VAULT_HINT,
-                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it was talking\n to someone named `GENO_NAME`.[await]\n If you find him, he might know how\n to get in.[await]""",
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. [await]\n The guy working on it was talking\n to someone named `GENO_NAME`.[await] If you find him, he might know how to get in.[await]""",
             )
         if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.FOREST):
             world.update_dialog(
@@ -368,7 +368,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
     elif world.settings.is_flag_value(SeaGate, SeaGating.TOADSTOOL):
         world.update_dialog(
             DI1054_SUNKEN_SHIP_HINT,
-            """ Did you know there's a shipwreck\n off the beach to the south?[await]\n `PEACH_NAME` can help you\n get there.[await]""",
+            """ Did you know there's a shipwreck\n off the beach to the south?[await] `PEACH_NAME` can help you get there.[await]""",
         )
     elif world.settings.is_flag_value(SeaGate, SeaGating.BUNDT):
         world.update_dialog(

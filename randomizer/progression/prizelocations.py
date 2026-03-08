@@ -488,7 +488,7 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_3
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize, FrogCoinPrize]
     _model_allowlist = [
         FlowerObject,
         RecoveryMushroomObject,
@@ -519,7 +519,7 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
         EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        SlotsPrize,
+        SlotsPrize, FrogCoinPrize
     ]
     _model_allowlist = [
         FlowerObject,
