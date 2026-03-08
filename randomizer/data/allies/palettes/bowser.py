@@ -38,6 +38,23 @@ class BowserDefault(BowserPalette):
         0x606040,
         0x181818,
     ]
+    classic_colours = [
+        0xF8F8F8,
+        0xA82828,
+        0xff945a,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x000000,
+    ]
 
 
 class BowserDrybone(BowserPalette):

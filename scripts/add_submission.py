@@ -105,9 +105,10 @@ def parse_issue_body(body: str) -> dict[str, str]:
 
 def escape_string(s: str) -> str:
     """Escape a string for use in Python source code."""
-    # Replace backslashes first, then quotes
+    # Replace backslashes first, then quotes, then newlines
     s = s.replace("\\", "\\\\")
     s = s.replace('"', '\\"')
+    s = s.replace("\n", "\\n")
     return s
 
 
@@ -117,6 +118,10 @@ def add_wish(fields: dict[str, str]) -> None:
     if not wish_text:
         print("Error: No wish text found in issue")
         sys.exit(1)
+
+    # Add trailing punctuation if missing
+    if wish_text and wish_text[-1] not in ".!?~":
+        wish_text += "."
 
     # Auto-format line breaks, vertical centering, and centering
     wish_text = format_dialog(wish_text)
@@ -174,6 +179,11 @@ def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
     if not all([question, correct, wrong1, wrong2]):
         print("Error: Missing required fields (question, correct answer, wrong answers)")
         sys.exit(1)
+
+    # Ensure question ends with ?
+    question = question.rstrip()
+    if question and not question.endswith("?"):
+        question += "?"
 
     # Clean answers
     correct = clean_quiz_answer(correct)
@@ -246,7 +256,7 @@ def format_credits_name(name: str) -> str:
 
 def format_hint_prefix(name: str) -> str:
     """Format the hint prefix."""
-    return f"Memo left by {name}:"
+    return f"[center]Memo left by {name}:"
 
 
 def add_password(fields: dict[str, str]) -> None:

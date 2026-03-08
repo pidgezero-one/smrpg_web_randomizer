@@ -35,7 +35,6 @@ Boss-specific
 🚧 jinx 4 too - am i increasing the counter?
 🚧 booster 2 "I'm gonna start working" after KOed
   🚧 I'm removing the wrong target. it removed snifit 3
-🚧 boomer should always be on chandelier
 - fire bomb stopped smilaxes from floating? not super important
 🚧 bowser clone disappears after doing claw attack, loading a bad peach sprite (IDs probably wrong)
 🚧 belome 2 shows empty dialog
@@ -63,7 +62,6 @@ Kero sewers
 
 midas river
 - mallow should not be getting marios palette when hes the protag
-- coming out of upper left cave warps you to barrel game now?
 
 tadpole pond 
 - frogfucius telling me to go to kero sewers when i can't do that
@@ -231,6 +229,7 @@ Gate
 🚧 ameboid in first axem room is also a snifit
 🚧 chests broken in conveyor room
 🚧 red essence chest in conveyor room shows as a red mushroom
+- slot machine in boo room opens but doesnt let you set anything
 
 Inner Factory
 🚧 megasmilax animation is very weird

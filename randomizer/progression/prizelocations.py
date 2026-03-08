@@ -10219,7 +10219,7 @@ class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_1
     _world_area = WorldAreaEnum.FACTORY
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
@@ -10236,7 +10236,7 @@ class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_2
     _world_area = WorldAreaEnum.FACTORY
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)

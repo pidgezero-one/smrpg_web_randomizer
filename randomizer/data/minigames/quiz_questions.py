@@ -572,16 +572,10 @@ def get_smrpg_questions():
         Question("What color is the\nend of Dodo's beak?", "Red", "Yellow", "Orange"),
         Question("What's the chef's\nname at Marrymore?", "Torte", "Blintz", "Gateau"),
         Question(
-            "DR. TOPPER: What status\n condition can BOWYER give you?",
+            "What status condition can\n BOWYER give you?",
             "Sleep",
             "Mute",
             "Fear",
-        ),
-        Question(
-            "DR. TOPPER: The mitochondria is...",
-            "The powerhouse of the cell",
-            "A rare species of insect",
-            "An iconic Italian pasta",
         ),
     ]
 
@@ -595,11 +589,47 @@ def get_non_smrpg_questions():
     """
     return [
         Question(
-            "DR. TOPPER: Name That Move: The\n player jumps off a Switch Palace\n button in Super Mario World?",
+            "Name That Move: The player jumps off a Switch Palace button in Super Mario World?",
             "Yump!",
             "Frame Perfect Button Bounce!",
             "No name, it's just cool",
-        )
+        ),
+        Question(
+            "The mitochondria is...",
+            "The powerhouse of the cell",
+            "A rare species of insect",
+            "An iconic Italian pasta",
+        ),
+        Question(
+            "1996's Dance Hit Craze?",
+            "Macarena",
+            "Mambo Number 5",
+            "Venga Bus",
+        ),
+        Question(
+            "1996's Best Supporting Actress?",
+            "Mira Sorvino",
+            "Mare Winningham",
+            "Kate Winslet",
+        ),
+        Question(
+            "A song by 1996's Spice Girls?",
+            "Say You'll Be There",
+            "Never Gonna Give You Up",
+            "Never Had a Dream Come True",
+        ),
+        Question(
+            "The Gin and Tonic would not\n contain?",
+            "Wolf Urine",
+            "Gin",
+            "Tonic",
+        ),
+        Question(
+            "The Manhattan Cocktail would not\n contain?",
+            "Club Soda",
+            "Vermouth",
+            "Whiskey",
+        ),
     ]
 
 

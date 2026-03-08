@@ -1099,8 +1099,8 @@ dialog_data[392] = '''DRY BONES: I know! You probably
  said to yourself, “It's just
  a pile of dusty old bones!”[await]
  ...THINK AGAIN![await]'''
-dialog_data[393] = '''     This is a 3-Dimensional Maze.[await]
-          Press X if you give up.[await]'''
+dialog_data[393] = '''[center]This is a 3-Dimensional Maze.[await]
+Press X if you give up.[await]'''
 dialog_data[394] = ''' Do you wish to give up?
  [select]  (I'll try a little more)
  [select]  (I GIVE UP!)[await]'''
@@ -1305,8 +1305,8 @@ dialog_data[484] = ''' Johnny's our main man.
 dialog_data[485] = ''' Johnny's our main man.
  He even fights in his sleep![await]
  We'd follow him anywhere.[await]'''
-dialog_data[486] = '''
-             OUT OF ORDER[await]'''
+dialog_data[486] = '''[center]
+OUT OF ORDER[await]'''
 dialog_data[487] = '''DR. TOPPER: How much...does a
  female beetle cost?[await][page]
 
