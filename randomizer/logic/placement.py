@@ -42,6 +42,53 @@ def collect_accessible_items(world: GameWorld) -> Inventory:
     return accessible_items
 
 
+def compute_location_spheres(world: GameWorld) -> dict[PrizeLocation, int]:
+    """Compute the sphere number for each accessible location.
+
+    Sphere 0 = reachable with empty inventory.
+    Sphere N+1 = newly reachable after collecting all items from spheres 0..N.
+    """
+    accessible_items = Inventory()
+    seen: set[PrizeLocation] = set()
+    sphere_map: dict[PrizeLocation, int] = {}
+    sphere = 0
+
+    while True:
+        newly_accessible = [
+            l for l in world.locations.values()
+            if l not in seen and l.can_access(accessible_items, world)
+        ]
+        if not newly_accessible:
+            break
+
+        gained_items = False
+        for loc in newly_accessible:
+            sphere_map[loc] = sphere
+            seen.add(loc)
+            if loc.has_item:
+                accessible_items.append(loc.prize)
+                gained_items = True
+
+        if not gained_items:
+            break
+        sphere += 1
+
+    return sphere_map
+
+
+def _select_by_sphere(
+    locations: list[PrizeLocation],
+    sphere_map: dict[PrizeLocation, int],
+) -> PrizeLocation:
+    """Select a location with weighted bias toward higher spheres.
+
+    Weight = sphere + 1 (sphere 0 -> weight 1, sphere 1 -> weight 2, etc.)
+    """
+    if len(locations) == 1:
+        return locations[0]
+    weights = [sphere_map.get(loc, 0) + 1 for loc in locations]
+    return random.choices(locations, weights=weights, k=1)[0]
+
 
 def _diagnose_placement_failure(
     world: "GameWorld",
@@ -119,6 +166,9 @@ def place(
         iteration += 1
         length_at_start = len(pending)
 
+        # Compute sphere depths for weighted location selection
+        sphere_map = compute_location_spheres(world)
+
         # Priority detour: every 4th placement, try to place a high-volume item
         if priority_types and (placements_count + 1) % 4 == 0:
             priority_pending = [
@@ -142,12 +192,12 @@ def place(
                     if random.randint(0, 10) < 4 and star_locations:
                         accessible_locations = star_locations
                 if accessible_locations:
-                    random.shuffle(accessible_locations)
-                    accessible_locations[0].set_prize(chosen)
+                    selected = _select_by_sphere(accessible_locations, sphere_map)
+                    selected.set_prize(chosen)
                     pending.remove(chosen)
                     placements_count += 1
                     if on_placed:
-                        on_placed(chosen, accessible_locations[0])
+                        on_placed(chosen, selected)
                     continue
             # Fall through to normal placement if no priority item can be placed
 
@@ -178,12 +228,12 @@ def place(
 
             # If the character can be placed, place it
             if len(accessible_locations) > 0:
-                random.shuffle(accessible_locations)
-                accessible_locations[0].set_prize(character)
+                selected = _select_by_sphere(accessible_locations, sphere_map)
+                selected.set_prize(character)
                 pending.remove(character)
                 placements_count += 1
                 if on_placed:
-                    on_placed(character, accessible_locations[0])
+                    on_placed(character, selected)
                 continue  # Go back to the start of the loop
             # If character can't be placed yet, fall through to place other items
 
@@ -226,12 +276,12 @@ def place(
                 # Move onto the next item to see if it can be placed
                 continue
             placed_this_iteration = True
-            random.shuffle(accessible_locations)
-            accessible_locations[0].set_prize(item)
+            selected = _select_by_sphere(accessible_locations, sphere_map)
+            selected.set_prize(item)
             pending.remove(item)
             placements_count += 1
             if on_placed:
-                on_placed(item, accessible_locations[0])
+                on_placed(item, selected)
             break
             # Start again from the beginning of the now-shortened pending list
 
