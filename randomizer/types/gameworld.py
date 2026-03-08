@@ -1717,8 +1717,10 @@ class GameWorld:
         # Change file select character graphic, if not Mario.
         # Always going to be your starting character, regardless of overworld presence
         if starter.index != 0:
-            addresses = [0x34757, 0x3489A, 0x34EE7, 0x340AA, 0x3501E]
-            for addr, value in zip(addresses, [1, 2, 1, 0, 2]):
+            addresses = [0x34757, 0x3489A, 0x34EE7, 0x340AA, 0x3501E,
+                         0x34D9A, 0x3500E, 0x35016]
+            for addr, value in zip(addresses, [1, 2, 1, 0, 2,
+                                               2, 2, 3]):
                 patch.add_data(addr, SPR0031_ALT_PROTAGONIST_1 + value)
         
         # Change overworld character if not Mario.
