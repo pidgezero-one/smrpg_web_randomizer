@@ -21,9 +21,9 @@ class ToadstoolDefault(ToadstoolPalette):
         0x181818,
     ]
     classic_colours = [
-        0xE050E0,
+        0xF8F8F8,
         0xA82828,
-        0xF8D860,
+        0xff945a,
         0x000000,
         0x000000,
         0x000000,

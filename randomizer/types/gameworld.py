@@ -1729,6 +1729,23 @@ class GameWorld:
             # Repurpose the base-49 check to recognize base 31 with count 6.
             patch.add_data(0x9BBF, bytes([SPR0031_ALT_PROTAGONIST_1]))  # CMP #$1F
             patch.add_data(0x9BC1, bytes([0x02]))  # BEQ $9BC4 (count=6 handler)
+            # Fix clone protagonist handler at $94AF: set sprite base to
+            # protagonist's base instead of hardcoding 0 (Mario).
+            # Original: STZ $70; STZ $71; STZ $7F; STZ $1F (8 bytes)
+            # New:      LDA #base; STA $70; STZ $71; STZ $1F (8 bytes)
+            # $7F is unused by downstream subroutines; $1F is read at $94EE.
+            patch.add_data(0x94AF, bytes([
+                0xA9, SPR0031_ALT_PROTAGONIST_1,  # LDA #$1F
+                0x85, 0x70,                        # STA $70
+                0x64, 0x71,                        # STZ $71
+                0x64, 0x1F,                        # STZ $1F
+            ]))
+            # Fix water effect SA-1 tile processing: the engine passes sprite
+            # base 0 (Mario) to the SA-1 coprocessor via $F5C0 for water surface
+            # rendering. Patch the LDA #$00 immediate operand at both call sites:
+            # $1A56 (splash creation) and $17BE (per-frame water surface).
+            patch.add_data(0x1A57, bytes([SPR0031_ALT_PROTAGONIST_1]))
+            patch.add_data(0x17BF, bytes([SPR0031_ALT_PROTAGONIST_1]))
 
         for i, name in enumerate(self.file_select_names):
             addr = 0x3EF528 + (i * 7)

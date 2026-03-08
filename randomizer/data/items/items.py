@@ -1211,7 +1211,7 @@ class LazyShellItem2(Armor):
 
 class EnduringBroochItem(Accessory):
     """Enduring Brooch item class"""
-    _item_name: str = "Enduring Brooch"
+    _item_name: str = "EnduringBrch"
     _prefix = ItemPrefix.RING
 
     _item_id: int = 73

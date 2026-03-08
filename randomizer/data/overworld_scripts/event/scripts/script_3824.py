@@ -40,10 +40,10 @@ script = EventScript([
 	ClearBit(YOSHI_UNKNOWN_7061_7),
 	ClearBit(MUSHROOM_DERBY_MANUAL),
 	ClearBit(MUSHROOM_DERBY_AUTO),
-    SetAsyncActionScript(NPC_1, A0803_INC_PALETTE_ROW),
-    SetAsyncActionScript(NPC_2, A0803_INC_PALETTE_ROW),
-    SetAsyncActionScript(NPC_5, A0803_INC_PALETTE_ROW),
-    SetAsyncActionScript(NPC_4, A0803_INC_PALETTE_ROW),
+    SetTempAsyncActionScript(NPC_1, A0803_INC_PALETTE_ROW),
+    SetTempAsyncActionScript(NPC_2, A0803_INC_PALETTE_ROW),
+    SetTempAsyncActionScript(NPC_5, A0803_INC_PALETTE_ROW),
+    SetTempAsyncActionScript(NPC_4, A0803_INC_PALETTE_ROW),
 	ActionQueueAsync(target=NPC_16, subscript=[
 		A_TransferXYZFPixels(x=0, y=252, z=0, direction=EAST)
 	]),
