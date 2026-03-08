@@ -4,6 +4,9 @@ from uuid import uuid4
 from enum import StrEnum
 import random
 
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_12
+
+from randomizer.data.variables.dialog_names import DI2010_DEBUG_7000
 from randomizer.progression.prizes import (
     BoomerBossFight,
     FirstMimicFightLauncher,
@@ -60,6 +63,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     Return,
     Inc,
     JmpIfVarEqualsConst,
+    RunDialog,
     StartBattleAtBattlefield,
     StartBattleWithPackAt700E,
     SetVarToConst,
@@ -2867,7 +2871,9 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
 
         return (
             [[JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self._70B1_id, [identifier])]],
-            [Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier=identifier), *grant.contents],
+            [Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier=identifier), *grant.contents, 
+             	RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
+	],
         )
 
 

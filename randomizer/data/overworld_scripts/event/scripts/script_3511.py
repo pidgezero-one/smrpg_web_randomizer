@@ -73,6 +73,7 @@ script = EventScript([
     JmpIfBitSet(BOOSTER_HILL_CLOSED, ["EVENT_3511_end_loop_41"]),
 	
 	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+	RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	CompareVarToConst(PRIMARY_TEMP_7000, 16),
 	JmpIfComparisonResultIsGreaterOrEqual(["EVENT_3511_end_loop_41"]),
 	PlaySoundBalance(sound=SO014_FLOWER, balance=40),

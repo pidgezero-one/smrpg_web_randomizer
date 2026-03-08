@@ -3,13 +3,21 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from ..data.rooms.npcs import ALLY_CLONE_NPC
+
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 from smrpgpatchbuilder.datatypes.levels.classes import Room as RoomBase
 from .ally import SpriteAnimationState
+from .physical_objects import NPC
 
 # Backwards compatibility alias - deprecated, use SpriteAnimationState directly
 ExtraSpriteActions = SpriteAnimationState
+
+class AllyContainerNPC(NPC):
+    """Mario character NPC wrapper for recruitment prizes."""
+
+    _base = ALLY_CLONE_NPC
 
 
 class Room(RoomBase):
@@ -35,8 +43,8 @@ class Room(RoomBase):
         if self.partition.ally_sprite_buffer_size == 0:
             return
 
-        m = world.overworld_character.character_model
         ally = world.overworld_character.ally
+        m = world.overworld_character.character_model if ally.index == 0 else AllyContainerNPC()
 
         # Base animation sequences to always check
         vram_values = [
@@ -64,6 +72,7 @@ class Room(RoomBase):
             tup = ally._sprites_primary[state]
             # Validate the sprite reference before using it
             sprite = world.get_sprite(m.base.sprite_id + tup[1])
+            print(f"Checking extra sprite action {state} with sequence/mold {tup} for ally {ally.name}, sprite id {m.base.sprite_id}")
             props = sprite.animation.properties
             if tup[2]:  # is_mold
                 if tup[0] < len(props.molds):
@@ -72,7 +81,8 @@ class Room(RoomBase):
                 if tup[0] < len(props.sequences):
                     vram_values.append(m.min_vram_from_sequence(world, tup[0], tup[1]))
 
-        min_vram = max(vram_values) 
+        min_vram = max(vram_values) + 1
+        print(min_vram, vram_values)
         self.partition.set_ally_sprite_buffer_size(max(min_vram, self.partition.ally_sprite_buffer_size))
 
 
