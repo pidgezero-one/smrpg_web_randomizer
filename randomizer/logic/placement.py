@@ -139,7 +139,7 @@ def place(
                         l for l in accessible_locations
                         if isinstance(l, StarPieceLocation)
                     ]
-                    if random.randint(0, 10) < 4:
+                    if random.randint(0, 10) < 4 and star_locations:
                         accessible_locations = star_locations
                 if accessible_locations:
                     random.shuffle(accessible_locations)
@@ -220,7 +220,7 @@ def place(
                     if isinstance(l, StarPieceLocation)
                 ]
                 reduce = random.randint(0, 10)
-                if reduce < 4:
+                if reduce < 4 and star_locations:
                     accessible_locations = star_locations
             if len(accessible_locations) == 0:
                 # Move onto the next item to see if it can be placed

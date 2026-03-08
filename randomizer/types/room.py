@@ -72,7 +72,6 @@ class Room(RoomBase):
             tup = ally._sprites_primary[state]
             # Validate the sprite reference before using it
             sprite = world.get_sprite(m.base.sprite_id + tup[1])
-            print(f"Checking extra sprite action {state} with sequence/mold {tup} for ally {ally.name}, sprite id {m.base.sprite_id}")
             props = sprite.animation.properties
             if tup[2]:  # is_mold
                 if tup[0] < len(props.molds):
@@ -82,7 +81,6 @@ class Room(RoomBase):
                     vram_values.append(m.min_vram_from_sequence(world, tup[0], tup[1]))
 
         min_vram = max(vram_values) + 1
-        print(min_vram, vram_values)
         self.partition.set_ally_sprite_buffer_size(max(min_vram, self.partition.ally_sprite_buffer_size))
 
 
