@@ -36,4 +36,5 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0027_DUNGEONISFULLOFMONSTERS,
-    entrance_event=E0015_STANDARD_ROOM_LOADER)
+    entrance_event=E0015_STANDARD_ROOM_LOADER, effects_npc=0x0C,    effects_npc=0x0C,
+)

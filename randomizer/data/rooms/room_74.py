@@ -227,5 +227,6 @@ room = Room(
     extra_sprite_actions=[
         SpriteAnimationState.SWIM,
         SpriteAnimationState.DISPLEASED_FRONT,
-    ]
+    ],
+    effects_npc=0x10,
 )

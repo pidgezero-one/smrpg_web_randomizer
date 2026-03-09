@@ -189,5 +189,6 @@ room = Room(
             z=4,
             z_half=False,
             direction=SOUTHWEST),
-    ]
+    ],
+    effects_npc=0x0C,
 )

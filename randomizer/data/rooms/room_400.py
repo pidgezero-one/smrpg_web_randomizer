@@ -188,5 +188,6 @@ room = Room(
     extra_sprite_actions=[
         SpriteAnimationState.RECOIL,
         SpriteAnimationState.WOBBLE,
-    ]
+    ],
+    effects_npc=0x0A,
 )

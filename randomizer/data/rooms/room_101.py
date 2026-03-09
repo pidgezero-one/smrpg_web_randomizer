@@ -392,5 +392,6 @@ room = Room(
     ],
     extra_sprite_actions=[
         SpriteAnimationState.FLOP,
-    ]
+    ],
+    effects_npc=0x12,
 )

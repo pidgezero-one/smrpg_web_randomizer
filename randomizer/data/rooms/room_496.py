@@ -401,5 +401,6 @@ room = Room(
     extra_sprite_actions=[
         SpriteAnimationState.HOLD_STAR,
         SpriteAnimationState.LEAN_BACK,
-    ]
+    ],
+    effects_npc=0x1B,
 )
