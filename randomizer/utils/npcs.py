@@ -42,7 +42,7 @@ def min_vram_from_sequence_for_sprite(world: "GameWorld", sprite_id: int, sequen
 def is_swse_only(sprite: CompleteSprite):
     sequences = sprite.animation.properties.sequences
     if len(sequences) < 2:
-        return False
+        return True
     south = sequences[0]
     north = sequences[1]
     if len(north.frames) != len(south.frames):

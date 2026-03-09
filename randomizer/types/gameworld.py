@@ -8,6 +8,17 @@ import re
 from copy import copy, deepcopy
 from concurrent.futures import ThreadPoolExecutor
 
+from randomizer.data.nmi_hook import (
+    NMI_HOOK_CODE,
+    NMI_VECTOR_ROM_OFFSET,
+    NMI_VECTOR_NEW,
+    EMU_NMI_VECTOR_ROM_OFFSET,
+    EMU_NMI_VECTOR_NEW,
+    TRAMPOLINE_ROM_OFFSET,
+    TRAMPOLINE_CODE,
+    HOOK_ROM_OFFSET,
+    NMITIMEN_PATCHES,
+)
 from randomizer.data.sprites.overworld_map import (
     BOWSER_OVERWORLD,
     GENO_OVERWORLD,
@@ -1767,6 +1778,16 @@ class GameWorld:
         # solidity mod
         # is this why monstro town broke?
         # patch.add_dict({0x1D903A: bytearray([0xC2, 0x91])})
+
+        # NMI cooperative hook for FxPakPro Archipelago support.
+        # Bridges WRAM (inaccessible on SA-1 FxPakPro) to BW-RAM mailbox.
+        patch.add_data(NMI_VECTOR_ROM_OFFSET, NMI_VECTOR_NEW)       # Native NMI → $FFE0
+        patch.add_data(EMU_NMI_VECTOR_ROM_OFFSET, EMU_NMI_VECTOR_NEW)  # Emu NMI → $FFE0
+        patch.add_data(TRAMPOLINE_ROM_OFFSET, TRAMPOLINE_CODE)      # JML $D5:F000
+        patch.add_data(HOOK_ROM_OFFSET, NMI_HOOK_CODE)              # Hook code
+        # Enable VBlank NMI during gameplay (bank C0 writes $01 → $81 to $4200).
+        for rom_offset, _old, new in NMITIMEN_PATCHES:
+            patch.add_data(rom_offset, bytes([new]))
 
         # Update ROM title and version.
         title = "SMRPG-R {}".format(self.seed).ljust(20)
