@@ -202,5 +202,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-    ]
+    ],
+    effects_npc=0x07,
 )

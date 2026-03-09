@@ -349,5 +349,6 @@ room = Room(
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SURPRISE_FRAME,
-    ]
+    ],
+    effects_npc=0x19,
 )

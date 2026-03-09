@@ -130,5 +130,6 @@ room = Room(
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,
-    ]
+    ],
+    effects_npc=0x07,
 )

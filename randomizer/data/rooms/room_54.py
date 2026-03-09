@@ -264,4 +264,5 @@ room = Room(
     extra_sprite_actions=[
         SpriteAnimationState.TUMBLE_BACK,
     ],
+    effects_npc=0x13,
 )

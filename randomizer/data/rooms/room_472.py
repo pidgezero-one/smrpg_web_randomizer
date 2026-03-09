@@ -308,4 +308,5 @@ room = Room(
             byte7_upper2=3,
         ),
     ],
+    effects_npc=0x1E,
 )

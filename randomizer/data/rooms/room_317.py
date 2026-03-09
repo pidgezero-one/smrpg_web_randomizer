@@ -197,5 +197,6 @@ room = Room(
     ],
     extra_sprite_actions=[
         SpriteAnimationState.WHIRL,
-    ]
+    ],
+    effects_npc=0x07,
 )

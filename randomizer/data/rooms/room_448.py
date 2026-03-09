@@ -117,5 +117,6 @@ room = Room(
         SpriteAnimationState.DISPLEASED_FRONT,
         SpriteAnimationState.SURPRISE_FRAME,
         SpriteAnimationState.WOBBLE,
-    ]
+    ],
+    effects_npc=0x07,
 )

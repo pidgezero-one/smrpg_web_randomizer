@@ -349,5 +349,6 @@ room = Room(
         SpriteAnimationState.LEAN_BACK_2,
         SpriteAnimationState.LEAN_BACK,
         SpriteAnimationState.CLIMB_FRAME,
-    ]
+    ],
+    effects_npc=0x1D,
 )

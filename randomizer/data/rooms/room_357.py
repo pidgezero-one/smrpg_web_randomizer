@@ -74,4 +74,5 @@ room = Room(
             dst_z_half=False,
             dst_f=NORTHEAST,
             x_bit_7=False),
-    ])
+    ], effects_npc=0x19,    effects_npc=0x19,
+)

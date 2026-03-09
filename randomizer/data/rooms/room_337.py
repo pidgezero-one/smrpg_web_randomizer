@@ -229,5 +229,6 @@ room = Room(
     extra_sprite_actions=[
         SpriteAnimationState.SALUTE,
         SpriteAnimationState.SLEEP,
-    ]
+    ],
+    effects_npc=0x0D,
 )
