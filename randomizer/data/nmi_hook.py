@@ -70,6 +70,7 @@ OUTBOX_BATTLE = 0x01      # 1B: battle state ($7E:3021), 0=not in battle
 OUTBOX_FRAME_CTR = 0x02   # 2B: frame counter (LE), incremented each NMI
 OUTBOX_VERSION = 0x04     # 1B: hook version (0x01)
 OUTBOX_RESULT = 0x05      # 1B: last command result
+OUTBOX_GAME_MODE = 0x06   # 1B: NMI handler bank ($C0=overworld, $C3=menu)
 
 # Outbox state dump (populated by command CMD_STATE_DUMP)
 OUTBOX_CONSUMABLES = 0x10  # 30B: consumable inventory (29 usable + Waste Basket)
@@ -99,6 +100,11 @@ CMD_SET_COINS = 0x02
 CMD_SET_FROG_COINS = 0x03
 CMD_ADD_FP = 0x04
 CMD_HEAL = 0x05
+CMD_ADD_COINS = 0x06
+CMD_ADD_FROG_COINS = 0x07
+CMD_ADD_STAR_PIECE = 0x08
+CMD_RECRUIT_CHAR = 0x0A
+CMD_LEARN_SPELL = 0x0B
 CMD_STATE_DUMP = 0x09
 
 # Results
@@ -122,6 +128,18 @@ WRAM_COINS = 0x7FF8AF         # 2 bytes (LE)
 WRAM_CURRENT_FP = 0x7FF8B1    # 1 byte
 WRAM_MAX_FP = 0x7FF8B2        # 1 byte
 WRAM_FROG_COINS = 0x7FF8B3    # 2 bytes (LE)
+WRAM_NMI_HANDLER_BANK = 0x7E000B  # NMI handler target bank byte
+
+# Star piece counter — BW-RAM $30D5, accessible via BMAPS=1 window at $00:70D5
+STAR_PIECE_ADDR = 0x0070D5    # BW-RAM via BMAPS window (FxPakPro $E030D5)
+
+# IRAM party addresses (SA-1 internal RAM, mirrored at $00:3000-$37FF)
+IRAM_SLOT_COUNT = 0x003032    # Number of available character slots (1-5)
+IRAM_CHAR_SLOTS = 0x003033    # 5 bytes: character in each slot ($FF=empty)
+IRAM_PARTY_COUNT = 0x00303F   # Current active party size (1-3)
+
+# Spell bitfield base (4 bytes per character, stride $14)
+SPELL_BASE = 0x7FF810         # Mario's spell bytes ($7FF810-$7FF813)
 
 # Character stat offsets in $7F:F800, stride $14 (20 bytes) per character
 # Layout per char: level(1) HP_cur(2) HP_max(2) spd(1) atk(1) def(1) matk(1) mdef(1)
@@ -231,6 +249,26 @@ class Asm65816:
     def cmp_imm8(self, val: int) -> None:
         """CMP #$xx (8-bit, requires M=1)"""
         self.emit(0xC9, val & 0xFF)
+
+    def cmp_imm16(self, val: int) -> None:
+        """CMP #$xxxx (16-bit, requires M=0)"""
+        self.emit(0xC9, val & 0xFF, (val >> 8) & 0xFF)
+
+    def adc_long(self, addr: int) -> None:
+        """ADC $xxxxxx (long, 4 bytes)"""
+        self.emit(0x6F, addr & 0xFF, (addr >> 8) & 0xFF, (addr >> 16) & 0xFF)
+
+    def and_imm8(self, val: int) -> None:
+        """AND #$xx (8-bit, requires M=1)"""
+        self.emit(0x29, val & 0xFF)
+
+    def cmp_long_x(self, addr: int) -> None:
+        """CMP $xxxxxx,X (long indexed, 4 bytes)"""
+        self.emit(0xDF, addr & 0xFF, (addr >> 8) & 0xFF, (addr >> 16) & 0xFF)
+
+    def ora_long_x(self, addr: int) -> None:
+        """ORA $xxxxxx,X (long indexed, 4 bytes)"""
+        self.emit(0x1F, addr & 0xFF, (addr >> 8) & 0xFF, (addr >> 16) & 0xFF)
 
     def cpx_imm16(self, val: int) -> None:
         """CPX #$xxxx (16-bit, requires X=0)"""
@@ -365,6 +403,14 @@ def build_hook_code() -> bytes:
     a.sta_long(_bwram(OUTBOX_VERSION))    # STA $007E04
 
     # =================================================================
+    # PER-FRAME: Copy game mode byte (NMI handler bank)
+    # =================================================================
+    # The game's WRAM NMI handler at $0008 is a JML — the bank byte at
+    # $000B indicates the active subsystem ($C0=overworld, $C3=menu, etc.)
+    a.lda_long(WRAM_NMI_HANDLER_BANK)        # LDA $7E000B
+    a.sta_long(_bwram(OUTBOX_GAME_MODE))     # STA outbox game mode
+
+    # =================================================================
     # CHECK INBOX (use BNE + JMP since no_command is >127 bytes away)
     # =================================================================
     a.lda_long(_bwram(INBOX_COMMAND))     # LDA $007EF0
@@ -400,10 +446,35 @@ def build_hook_code() -> bytes:
     a.jmp("cmd_heal")
     a.label("not_heal")
 
+    a.cmp_imm8(CMD_ADD_COINS)
+    a.bne("not_add_coins")
+    a.jmp("cmd_add_coins")
+    a.label("not_add_coins")
+
+    a.cmp_imm8(CMD_ADD_FROG_COINS)
+    a.bne("not_add_frog_coins")
+    a.jmp("cmd_add_frog_coins")
+    a.label("not_add_frog_coins")
+
+    a.cmp_imm8(CMD_ADD_STAR_PIECE)
+    a.bne("not_add_star")
+    a.jmp("cmd_add_star_piece")
+    a.label("not_add_star")
+
     a.cmp_imm8(CMD_STATE_DUMP)
     a.bne("not_state_dump")
     a.jmp("cmd_state_dump")
     a.label("not_state_dump")
+
+    a.cmp_imm8(CMD_RECRUIT_CHAR)
+    a.bne("not_recruit")
+    a.jmp("cmd_recruit_char")
+    a.label("not_recruit")
+
+    a.cmp_imm8(CMD_LEARN_SPELL)
+    a.bne("not_learn_spell")
+    a.jmp("cmd_learn_spell")
+    a.label("not_learn_spell")
 
     a.jmp("cmd_done")                     # Unknown command, just clear it
 
@@ -569,6 +640,162 @@ def build_hook_code() -> bytes:
         a.lda_long(base + CHAR_HP_MAX_OFF)
         a.sta_long(_bwram(OUTBOX_MAX_HP + i * 2))
     a.sep(0x20)                           # 8-bit A
+    a.jmp("cmd_ok")
+
+    # =================================================================
+    # CMD $06: ADD COINS
+    # =================================================================
+    a.label("cmd_add_coins")
+    a.rep(0x20)                           # 16-bit A
+    a.lda_long(WRAM_COINS)                # Current coins
+    a.emit(0x18)                          # CLC
+    a.adc_long(_bwram(INBOX_PARAM3))      # Add amount from inbox
+    a.bcs("add_coins_cap")               # 16-bit overflow → cap
+    a.cmp_imm16(999)                      # Cap at 999
+    a.bcc("add_coins_ok")
+    a.label("add_coins_cap")
+    a.lda_imm16(999)
+    a.label("add_coins_ok")
+    a.sta_long(WRAM_COINS)                # STA $7FF8AF
+    a.sep(0x20)                           # 8-bit A
+    a.jmp("cmd_ok")
+
+    # =================================================================
+    # CMD $07: ADD FROG COINS
+    # =================================================================
+    a.label("cmd_add_frog_coins")
+    a.rep(0x20)                           # 16-bit A
+    a.lda_long(WRAM_FROG_COINS)           # Current frog coins
+    a.emit(0x18)                          # CLC
+    a.adc_long(_bwram(INBOX_PARAM3))      # Add amount from inbox
+    a.bcs("add_frog_cap")                # 16-bit overflow → cap
+    a.cmp_imm16(999)                      # Cap at 999
+    a.bcc("add_frog_ok")
+    a.label("add_frog_cap")
+    a.lda_imm16(999)
+    a.label("add_frog_ok")
+    a.sta_long(WRAM_FROG_COINS)           # STA $7FF8B3
+    a.sep(0x20)                           # 8-bit A
+    a.jmp("cmd_ok")
+
+    # =================================================================
+    # CMD $08: ADD STAR PIECE
+    # =================================================================
+    # Increment star piece counter at BW-RAM $30D5 (SNES $00:70D5).
+    # Cap at 7 (valid range 0-7).
+    a.label("cmd_add_star_piece")
+    a.lda_long(STAR_PIECE_ADDR)           # LDA $0070D5
+    a.emit(0x1A)                          # INC A
+    a.cmp_imm8(8)                         # Cap at 7
+    a.bcc("star_ok")
+    a.lda_imm8(7)
+    a.label("star_ok")
+    a.sta_long(STAR_PIECE_ADDR)           # STA $0070D5
+    a.jmp("cmd_ok")
+
+    # =================================================================
+    # CMD $0A: RECRUIT CHARACTER
+    # =================================================================
+    # P2 = character byte (0=Mario, 1=Toadstool, 2=Bowser, 3=Geno, 4=Mallow)
+    # Writes to IRAM party slots at $00:3033-3037.
+    # CAUTION: IRAM writes from SNES CPU go through SA-1 shared memory
+    # interface. Should work during NMI (SA-1 halted in VBlank).
+    a.label("cmd_recruit_char")
+    a.sep(0x30)                           # 8-bit A AND X/Y
+
+    # Check if character is already in a slot (avoid duplicates)
+    a.lda_long(_bwram(INBOX_PARAM2))      # Character byte
+    a.emit(0xA2, 0x00)                    # LDX #$00 (8-bit immediate)
+
+    a.label("recruit_check_dup")
+    a.cmp_long_x(IRAM_CHAR_SLOTS)        # CMP $003033,X
+    a.beq("recruit_already")              # Already recruited
+    a.emit(0xE8)                          # INX
+    a.emit(0xE0, 0x05)                    # CPX #$05 (8-bit)
+    a.bne("recruit_check_dup")
+
+    # Not found — find first empty slot ($FF)
+    a.emit(0xA2, 0x00)                    # LDX #$00 (8-bit)
+    a.label("recruit_find_slot")
+    a.lda_long_x(IRAM_CHAR_SLOTS)        # LDA $003033,X
+    a.cmp_imm8(0xFF)                      # Empty?
+    a.beq("recruit_found_slot")
+    a.emit(0xE8)                          # INX
+    a.emit(0xE0, 0x05)                    # CPX #$05 (8-bit)
+    a.bcc("recruit_find_slot")
+    a.jmp("cmd_fail")                     # No empty slot
+
+    a.label("recruit_found_slot")
+    a.lda_long(_bwram(INBOX_PARAM2))      # Reload character byte
+    a.sta_long_x(IRAM_CHAR_SLOTS)        # STA $003033,X
+
+    # Increment available character count
+    a.lda_long(IRAM_SLOT_COUNT)           # LDA $003032
+    a.emit(0x1A)                          # INC A
+    a.sta_long(IRAM_SLOT_COUNT)           # STA $003032
+
+    # Increment party count if < 3
+    a.lda_long(IRAM_PARTY_COUNT)          # LDA $00303F
+    a.cmp_imm8(3)
+    a.bcs("recruit_done")                 # Already at max party size
+    a.emit(0x1A)                          # INC A
+    a.sta_long(IRAM_PARTY_COUNT)          # STA $00303F
+
+    a.label("recruit_done")
+    a.jmp("cmd_ok")
+
+    a.label("recruit_already")
+    a.jmp("cmd_ok")                       # Silently succeed (already recruited)
+
+    # =================================================================
+    # CMD $0B: LEARN SPELL
+    # =================================================================
+    # P1 = character index (0-4), P2 = spell bit index (0-31)
+    # Spells are 4-byte bitfields at $7F:F810 + character * $14.
+    a.label("cmd_learn_spell")
+    a.sep(0x30)                           # 8-bit A AND X/Y
+
+    # Step 1: Compute X = char * $14 + (param2 >> 3)
+    # char * $14: use (char*4 + char) * 4 = char*5*4 = char*20
+    a.lda_long(_bwram(INBOX_PARAM1))      # Character index (0-4)
+    a.emit(0x48)                          # PHA (save char on stack)
+    a.emit(0x0A)                          # ASL A: char*2
+    a.emit(0x0A)                          # ASL A: char*4
+    a.emit(0x18)                          # CLC
+    a.emit(0x63, 0x01)                    # ADC $01,S: char*4 + char = char*5
+    a.emit(0x0A)                          # ASL A: char*10
+    a.emit(0x0A)                          # ASL A: char*20
+    a.emit(0x83, 0x01)                    # STA $01,S: overwrite stack with char*20
+
+    # Add spell byte offset (param2 >> 3)
+    a.lda_long(_bwram(INBOX_PARAM2))      # Spell bit (0-31)
+    a.emit(0x4A)                          # LSR A: /2
+    a.emit(0x4A)                          # LSR A: /4
+    a.emit(0x4A)                          # LSR A: /8 → byte offset (0-3)
+    a.emit(0x18)                          # CLC
+    a.emit(0x63, 0x01)                    # ADC $01,S: + char*20
+    a.emit(0xAA)                          # TAX: X = total offset
+    a.emit(0x68)                          # PLA: clean stack
+
+    # Step 2: Compute bit mask = 1 << (param2 & 7)
+    a.lda_long(_bwram(INBOX_PARAM2))      # Spell bit (0-31)
+    a.and_imm8(0x07)                      # Bit position within byte (0-7)
+    a.beq("spell_no_shift")              # If 0, mask is already $01
+    a.emit(0xA8)                          # TAY: Y = shift count
+    a.lda_imm8(0x01)                      # Start with bit 0 mask
+    a.label("spell_shift")
+    a.emit(0x0A)                          # ASL A
+    a.emit(0x88)                          # DEY
+    a.bne("spell_shift")                  # Loop until Y=0
+    a.bra("spell_do_ora")
+
+    a.label("spell_no_shift")
+    a.lda_imm8(0x01)                      # Mask = $01 (bit 0)
+
+    # Step 3: ORA mask into spell byte
+    a.label("spell_do_ora")
+    a.ora_long_x(SPELL_BASE)             # A = mask | current spell byte
+    a.sta_long_x(SPELL_BASE)             # Write back
     a.jmp("cmd_ok")
 
     # =================================================================
