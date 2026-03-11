@@ -37,7 +37,7 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_2, subscript=[
 		A_WalkSouthPixels(7)
 	]),
-	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE),
+	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE, identifier="remove_statue_palette_1"),
 	JmpIfBitClear(STATUE_KEEPER_FIGHT_PRESENT, ["EVENT_2108_jmp_if_bit_set_4"]),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_WalkNortheastPixels(8),

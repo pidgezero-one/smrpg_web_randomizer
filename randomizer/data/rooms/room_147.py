@@ -1,7 +1,6 @@
 # R147_GAME_INTRO_MIDAS_RIVER_WATER_TUNNEL
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
+from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize, Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, EffectsNpc
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -36,5 +35,5 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0030_LONGLONGAGO,
-    entrance_event=E1551_BANK_1F_RETURN_EVENT, effects_npc=0x0F,    effects_npc=0x0F,
+    entrance_event=E1551_BANK_1F_RETURN_EVENT, effects_npc=EffectsNpc.WATER_TUNNEL,
 )

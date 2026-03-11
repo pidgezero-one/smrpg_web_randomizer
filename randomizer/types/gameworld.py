@@ -1574,14 +1574,7 @@ class GameWorld:
         # Sprite graphics patch (now has access to reclaimed animation banks)
         self._report_progress("Assembling graphics...", progress)
 
-        # When a non-Mario character is the overworld protagonist, force
-        # their sprite positions to share images matching Mario's pattern
-        # (the SNES engine only loads the base sprite's image into VRAM).
-        shared_image_groups: list[list[int]] | None = None
-        if self.overworld_character.ally.index > 0:
-            shared_image_groups = [[31, 32]]
-
-        for p in self.sprites.render(shared_image_groups=shared_image_groups):
+        for p in self.sprites.render():
             patch.add_data(p[0], p[1], source="sprites")
         progress += 3
 

@@ -23,24 +23,37 @@ General
 🚧 lamb's lure is showing a symbol instead of apostrophe again
 - key item inventory is still too small, did not save alto card
   - investigate this again. are we sure it didn't save or did it just not display?
+- make a dedicated dialog for yoshi-ade grants, hyphen is remapped
+- godmode and debug mode: always set exp pack to 0
+- mimic chest packet disappears too quickly, like before the battle even starters
+- belome has bad partition in moleville inner mines room 
+- shy guy cart item still disappearing
+- it definitely loaded the wrong sprite for smithy in the dojo
+- Too many treasure chests are using script 1396, which does nothing if a bowsers keep prize bit is set. that's bad. These should NOT be using that unless it is avtually that chest.
 
 Boss-specific
 🚧 culex 3D sprite is broken. HUD disappears in phase 2
   - left 2 crystals bot hshowing up as water, right 2 showing up as wind
+  - i moved them onto diff palette rows but now they just share with culex
 🚧 fancy bundt animations are wrong, cross ref against demake
   🚧 opening event is fine. it's when it takes its first turn that things mess up (moves forward and separates)
   🚧 tortes saying empty dialogs
   🚧 candles are not lighting up
   🚧 movement might be related to monster behaviours. ie raspberry shuold not move forward when attacking but it does
-🚧 jinx 4 too - am i increasing the counter?
+- jinx 4 too - am i increasing the counter?
+  - fix attempt does not seem to have taken. why?
 🚧 booster 2 "I'm gonna start working" after KOed
-  🚧 I'm removing the wrong target. it removed snifit 3
+  - i think some thing are running when they should not be.
+  - like he says im gonna start working when he already is
 - fire bomb stopped smilaxes from floating? not super important
 🚧 bowser clone disappears after doing claw attack, loading a bad peach sprite (IDs probably wrong)
 🚧 belome 2 shows empty dialog
   - game straight up crashes when belome 2 finishes with 2 bowser clones on field
 🚧 punchinello 2 broken, sprites are all messed up, doesn't summon bombs right away. whole fight doesnt work
-
+- chester sprite in mushroom kingdom loads incorrectly. probabkly not the right size
+- smithy summoning a shyper animation is choppy for some reason\  - crashes the game when he starts moving forward with steaming head
+- king calamari: game locks with only 1 character after phase 1
+  - same with cloaker/domino
 
 Mushroom Way 
 
@@ -52,13 +65,15 @@ Mushroom kingdom
 - signal ring not working (there are 3 star pieces in the kingdom: shop, and 2 vault chests) while invaded
   🚧 might be too many sfx at once
 - dodo in throne room is very messed up
+- save box glow shift did not work in mushroom kingdom inn as peach
 
 bandit's way
 
 Kero sewers
-🚧 double chest does not work. opening it first after lands end did not refill it
+- double chest does not work. opening it first after lands end did not refill it
 - smithy as boss renders TOTALLY wrong
 🚧 smithy 1 finishing crashes battle, plays empty dialog
+- peach messes up palettes for npcs in any room that has water- this is because of the palette shifting that her pipe animation does, as well as the special palette treatment that water rooms get-un sure if there is a feasible fix without asm bullshit
 
 midas river
 - mallow should not be getting marios palette when hes the protag
@@ -83,10 +98,9 @@ Yoster
 - minor, but main area loads very slowly
 
 Moleville
-🚧 no item came out of shy guy minecart
-🚧 peach taking minecart is also using a bad partition
-  - same with mario
-🚧 shiny stone girl still asking for fireworks in progressive settings
+- no item came out of shy guy minecart
+- shiny stone girl still asking for fireworks in progressive settings
+  - carbo cookie girl too
 🚧 treasure hunter's dialogs are not changed
 🚧 circule path leading to traintrack room: fireball partition is wrong
   - try putting 3rd partition as 4x?
@@ -114,6 +128,9 @@ Booster Tower
 🚧 bowser npc using old sprite id, need to fix
 🚧 mario loses solidity and goes out of bounds
 🚧 prize in elder key room moves when it shouldnt
+- when peach looks up at masher chests, one of the molds is incorrect. did you ever actully change this?
+- small belome temporarily disappears when he gives you elder key. possible you need to delete sequence setter instead of just replace it
+- top floor save chest has no shine when peach is protagonist
 
 Booster Hill
 🚧 pickup coin rendered as a flower
@@ -158,15 +175,19 @@ Sunken Ship
 🚧 Dodo in johnny's room cut off. might need to use a different partition
 🚧 everything in the water cellar should be a coin, flower, mushroom, or item bag. everything else does not render correctly
 🚧 booster as johnny sprite is totally broken, glitched out
-🚧 dry bones shop chest disappeared
 🚧 clone room using old sprite id
 - chester replacing johnny 1 uses bad sprite
 🚧 chester replacing johnny "how embarrassing" dialog is not formatted correctly
 🚧 clearing ship did not give seaside boss acces
+- trueform pin packet in staircase did not grant item
+- chest behind dry bones in shaman room: make sure that nothing is shuffled here unless it is behind a damage spell
+- booster in password room: bad partition
+
 
 Land's End
 🚧 belome fortune triggering after only 2 statues
-  - needs more research
+  - trigger is fixed
+  - but pipe room breaks
 🚧 chests in grotto don't render correctly
   - specifically the shy away chest. not even a slot machine room
 - floating chest in room 2 was a mimic. no reload prize
@@ -186,18 +207,24 @@ Monstro Town
 🚧 palettes on musty fears might be wrong
 🚧 musty fears should not say intro twice
 🚧 tramopline up to belome temple crashes game, never fades in
+- dojo completely broken???
 
 Bean Valley
 - save deletion seems inconsistent. keep an eye on it
 🚧 star piece in a treasure chest in vine area: music it resumes to is nimbus castle
 - above-ground chest (normally fc chest) partially overwritten by a coin. dont think theres a slot machine here
+- save box not glowing with peach as protag
+  - shy away is getting it
+  - why? debug in lazy shell shows that there isnt even that layer effect applied!
+  - this also breaks the clone buffers so that the smilaxes do not activate
 
+- bad parititon for director
 Nimbus Land
 - statues in statue room are shifted incorrectly
   - need more research
 🚧 frog coin in nimbus castle doesnt render in chest (bridge room)
-🚧 ninja in dodo spot has some problematic animations, d++++++++oesnt turn around, sprite briefly distorts
-🚧 statues in statue room face wrong direction
+- croco as dodo: when you get caught, he doesnt face north when he runs into the other room. might have bad f coord 
+- still not granting prize when you beat statue game
 🚧 hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
 🚧 did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings
   - item problem is fixed, i think, but battle still required
@@ -212,17 +239,35 @@ Nimbus Land
 🚧 croco in back hallway facing wrong direction (turn off f coord probably), was facing NW while walking NE
 🚧 castle final boss uses wrong room id in event 353
 🚧 mallow statue in garro house sometimes loads unintended poses
+  - bad palette when protag shifted. even after i thought i fixed this
+- peace sign pose is overwritten by exp star, likely need to set animation details on the room level (probably forgot this one)
+- axem red broken as statue keeper, animations dont line up
+  - pretty sure this is because i had to use a speedup and calced the frames incorrectly
+  - disappears when initiating battle with you
+  - did not get item
+- mario palette is still applying west of save room
+- not telling me i need castle key 1 to get in
+
 
 Volcano
 🚧 sparkles act weirdly when you hit oerlikons with exp star
 🚧 axem henchmen are not removed when boss is shuffled to someone else
+- pandorite: no henchmen, trampoline did not bounce
+- defeating final boss loads a blank room, does not teleport to world map
 
 Keep
 🚧 for safety reasons, gate everything from the red doors onward behind having a mokura-turning spell (so it can KO vomers in battle hall)
 🚧 game crashes when you defeat chester spot
-🚧 trialhlon game: their names are appearing twice in their dialogs
+- trialhlon game: their names are appearing twice in their dialogs
 🚧 megasmilax makes a weird sound when casting the chest into existence
 🚧 croco 2 shop is empty
+- bloober casting enemies: sometimes they look broken upon summon (peach protag)
+  - this might just be enemies that go into 4x clone buffer
+- reward chest after 6 doors does not open
+- loading invisible bridge room did a hella glitchy animation and KOed me
+  - opened the middle right chest for some reason
+- bad partition in coin game room, hits too close togethr not rendering coin
+
 
 Gate
 - chests broken in conveyor room
@@ -238,6 +283,8 @@ Inner Factory
   🚧 priority might be too low? they're in the background in gunyolk room
 🚧 mario's shadow broken in gunyolk room
 🚧 toad's shop is empty
+- domino over clerk bad partition
+- mad mallets as dominos sidekick: i think it is loading the wrong ones. think they might be loading clerk henchmen instead of being the default facotyr enemies
 
 Ending
 🚧 need to restore original animations

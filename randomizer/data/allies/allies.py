@@ -546,6 +546,7 @@ MARIO_Ally = Ally(
         SpriteAnimationState.SLEEP: (0, 13, False),
         SpriteAnimationState.HOLD_STAR: (0, 5, False),
         SpriteAnimationState.MUTE: (2, 12, False),
+        SpriteAnimationState.DEFEND_MOLD: (2, 16, True),
     },
     _sprites_secondary={
         SpriteAnimationState.SOUTH: (0, 20, True),
@@ -1133,6 +1134,7 @@ TOADSTOOL_Ally = Ally(
         SpriteAnimationState.SLEEP: (0, 13, False),
         SpriteAnimationState.HOLD_STAR: (0, 5, False),
         SpriteAnimationState.MUTE: (2, 12, False),
+        SpriteAnimationState.DEFEND_MOLD: (2, 16, True),
     },
     _sprites_secondary={
         SpriteAnimationState.SOUTH: (0, 20, True),
@@ -1694,6 +1696,7 @@ BOWSER_Ally = Ally(
         SpriteAnimationState.PRINCE_JOY: (2, 9, False),
         SpriteAnimationState.HAMMER: (2, 3, True),
         SpriteAnimationState.HAMMER_STATIC: (2, 3, True),
+        SpriteAnimationState.DEFEND_MOLD: (2, 17, True),
         # Extra sprite actions
         SpriteAnimationState.SWIM: (1, 10, False),
         SpriteAnimationState.WHIRL: (1, 15, False),
@@ -2284,6 +2287,7 @@ GENO_Ally = Ally(
         SpriteAnimationState.PRINCE_JOY: (2, 9, False),
         SpriteAnimationState.HAMMER: (2, 3, True),
         SpriteAnimationState.HAMMER_STATIC: (2, 3, True),
+        SpriteAnimationState.DEFEND_MOLD: (2, 16, True),
         # Extra sprite actions
         SpriteAnimationState.SWIM: (1, 10, False),
         SpriteAnimationState.WHIRL: (1, 15, False),
@@ -2903,6 +2907,7 @@ MALLOW_Ally = Ally(
         SpriteAnimationState.SLEEP: (0, 13, False),
         SpriteAnimationState.HOLD_STAR: (0, 5, False),
         SpriteAnimationState.MUTE: (2, 12, False),
+        SpriteAnimationState.DEFEND_MOLD: (2, 16, True),
     },
     _sprites_secondary={
         SpriteAnimationState.SOUTH: (0, 20, True),

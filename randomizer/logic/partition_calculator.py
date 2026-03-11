@@ -328,6 +328,9 @@ def update_statue_room_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, NPC_1, 1)
     _update_buffer_by_room_object(world, R501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA, NPC_0, 0)
     
+    _update_buffer_by_room_object(world, R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, NPC_3, 1)
+    _update_buffer_by_room_object(world, R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD, NPC_2, 2)
+    
 
 def update_kitchen_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R155_MARRYMORE_CHAPEL_KITCHEN, NPC_0, 0)
@@ -471,3 +474,4 @@ def update_shuffed_boss_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, NPC_1, 1)
     _update_buffer_by_room_object(world, R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, NPC_1, 2)
     
+    _update_buffer_by_room_object(world, R054_BOOSTER_HILL_DUMMY, NPC_3, 2)

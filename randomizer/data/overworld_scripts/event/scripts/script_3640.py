@@ -61,7 +61,7 @@ script = EventScript([
     RemoveObjectFromSpecificLevel(NPC_12, R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA),
 	ClearBit(TEMP_704C_0),
 	EnterArea(room_id=R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, face_direction=NORTHEAST, x=6, y=68, z=1),
-	PaletteSet(palette_set_starts_at=EPAL0111_GOLD_MARIO, from_row=MARIO_PALETTE),
+	PaletteSet(palette_set_starts_at=EPAL0111_GOLD_MARIO_BOWSER, from_row=MARIO_PALETTE, identifier="protagonist_becomes_gold"),
 	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(VERY_FAST),
@@ -453,7 +453,7 @@ script = EventScript([
 	JmpIfBitClear(GAME_OVER, ["EVENT_3640_unfreeze_camera_233"]),
 	ResetAndChooseGame(),
 	UnfreezeCamera(identifier="EVENT_3640_unfreeze_camera_233"),
-	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE),
+	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE, identifier="remove_statue_palette_2"),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_SetSequenceSpeed(FAST),
 		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="dodo_finished_3")

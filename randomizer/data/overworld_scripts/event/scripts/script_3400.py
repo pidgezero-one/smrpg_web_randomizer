@@ -527,7 +527,7 @@ script = EventScript([
 	SetVarToConst(TEMP_7032, 0, identifier="EVENT_3400_hill"),
 	ExitToWorldMap(area=OW27_BOOSTER_HILL, bit_6=True, bit_7=True),
 	Return(),
-    JmpIfBitSet(EXP_STAR_BIT_5, ["3400_ret"], identifier="EVENT_3400_resume_exp_star"),
-    MarioGlows(),
-	Return(identifier="3400_ret"),
+    #JmpIfBitSet(EXP_STAR_BIT_5, ["3400_ret"], identifier="EVENT_3400_resume_exp_star"),
+    #MarioGlows(),
+	Return(identifier="EVENT_3400_resume_exp_star"),
 ])

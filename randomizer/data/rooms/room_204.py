@@ -12,8 +12,6 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     BufferSpace,
     VramStore,
     ShadowSize,
-)
-from smrpgpatchbuilder.datatypes.levels.classes import (
     Buffer,
     Partition,
     DestinationProps,
@@ -26,6 +24,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     BattlePackClone,
     RegularClone,
     ChestClone,
+    EffectsNpc
 )
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState

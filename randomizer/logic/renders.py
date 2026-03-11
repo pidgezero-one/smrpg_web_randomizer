@@ -828,9 +828,15 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
         world.event_scripts.delete_subscript_command_by_identifier(
             "dojo_boss_1_initiate_aq", "dojo_boss_1_initiate"
         )
+    if m.animations.recoil is not None:
+        world.event_scripts.get_subscript_command_by_identifier("dojo_boss_1_recoil_aq", "dojo_boss_1_recoil", A_SetSpriteSequence).set_index(m.animations.recoil.sequence_id)
+    else:
+        world.event_scripts.delete_subscript_command_by_identifier("dojo_boss_1_recoil_aq", "dojo_boss_1_recoil")
     world.event_scripts.replace_subscript_command_by_identifier(
         "EVENT_2067_action_queue_0", "jagger_looks_around", A_FaceNorthwest()
     )
+    
+
 
 
 def render_dojo_fight(

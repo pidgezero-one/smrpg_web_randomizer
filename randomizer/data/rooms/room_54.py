@@ -11,8 +11,6 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     BufferSpace,
     VramStore,
     ShadowSize,
-)
-from smrpgpatchbuilder.datatypes.levels.classes import (
     Buffer,
     Partition,
     DestinationProps,
@@ -25,6 +23,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     BattlePackClone,
     RegularClone,
     ChestClone,
+    EffectsNpc
 )
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
@@ -41,7 +40,7 @@ room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=1,
+        extra_sprite_buffer_size=0,
         buffers=[
             Buffer(
                 buffer_type=BufferType.EMPTY_3,
@@ -259,10 +258,11 @@ room = Room(
             acute_axis=UInt4(6),
             obtuse_axis=UInt4(5),
             height=UInt8(12),
+            cannot_clone=True,
         ),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.TUMBLE_BACK,
     ],
-    effects_npc=0x13,
+    effects_npc=EffectsNpc.UNKNOWN_13,
 )

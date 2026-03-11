@@ -488,7 +488,7 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_3
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize, FrogCoinPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize, FrogCoinPrize, EXPStarPrize,]
     _model_allowlist = [
         FlowerObject,
         RecoveryMushroomObject,
@@ -1918,6 +1918,7 @@ class RoseTownInnToadPrizeLocation(NPCLocationRow1):
     ]
     _id = ShuffleLocationSelector.ROSE_TOWN_TOAD
     _world_area = WorldAreaEnum.ROSE_TOWN
+    _blacklist = [RecoveryMushroomPrize]
     # Flag as checked:  ROSE_TOWN_TOAD
 
 
@@ -7901,6 +7902,7 @@ class NimbusInnDreamPrize1Location(NPCLocationRow1):
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _blacklist = [RecoveryMushroomPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_outer_nimbus(world, inventory)
@@ -7914,6 +7916,7 @@ class NimbusInnDreamPrize2Location(NPCLocationRow2):
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _blacklist = [RecoveryMushroomPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_outer_nimbus(world, inventory)
@@ -11213,10 +11216,12 @@ class MolevilleMountainBushFlag(InvisibleFlagLocation):
         R108_MOLEVILLE_OUTSIDE,
     ]
     _x_coord = 19
-    _y_coord = 31
+    _y_coord = 33
     _world_area = WorldAreaEnum.MOLEVILLE
-    _z_coord = 12
+    _z_coord = 14
     _clue_text = " Mine's in a bush at the top of\n a mountain.[await]"
+    _x_shift = -8
+    _y_shift = -8
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)

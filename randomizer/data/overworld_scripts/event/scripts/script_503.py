@@ -49,7 +49,7 @@ script = EventScript([
 	EnableControlsUntilReturn([], identifier="EVENT_503_enable_controls_until_return_12"),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_ClearSolidityBits(cant_pass_walls=True),
-		A_SetSpriteSequence(index=16, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=16, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="crouch_for_coin"),
 		A_SetWalkingSpeed(NORMAL),
 		A_Walk1StepNortheast(),
 		A_SetWalkingSpeed(SLOW),
@@ -58,7 +58,7 @@ script = EventScript([
 		A_WalkNortheastPixels(4),
 		A_SetWalkingSpeed(NORMAL),
 		A_WalkToXYCoords(x=8, y=64)
-	]),
+	], identifier="crouch_for_coin_aq"),
 	JmpIfObjectNotInSpecificLevel(NPC_5, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["EVENT_503_remember_last_object_18"]),
 	Pause(10),
 	SetVarToConst(ACTIVE_NPC, 25),

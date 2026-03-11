@@ -16,6 +16,8 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
+	A_SetObjectMemoryBits(arg_1=0x0B, bits=[0, 1]),
+	A_UnknownCommand(bytearray([0xFD, 0xF2])),
 	A_PlaySound(sound=SO066_KICK_BALL_SHELL, channel=4),
 	A_UnknownCommand(bytearray([0xFD, 0xF2])),
 	A_SetVRAMPriority(PRIORITY_3),

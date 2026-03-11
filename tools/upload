@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# If the file doesn't exist as given, try ~/Downloads and Windows Downloads
+rom="$1"
+if [ ! -f "$rom" ]; then
+    for dir in "$HOME/Downloads" "/mnt/c/Users/pidge/Downloads"; do
+        if [ -f "$dir/$rom" ]; then
+            rom="$dir/$rom"
+            break
+        fi
+    done
+fi
+shift
+exec "$(dirname "$0")/.venv/bin/python" "$(dirname "$0")/sni_upload.py" "$rom" "$@" --host 172.26.240.1:8191

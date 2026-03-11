@@ -40,11 +40,11 @@ dialog_data[23] = '''
  BIRDETTA: Don't forget about me![await]'''
 dialog_data[24] = ''' Don't spend it all in one place,
  now.[await]'''
-dialog_data[25] = '''          Got an “[0x70A7]”![end]'''
-dialog_data[26] = '''          Got an “[0x70A7]”![await]'''
-dialog_data[27] = '''          Got a “[0x70A7]”![end]'''
-dialog_data[28] = '''          Got a “[0x70A7]”![await]'''
-dialog_data[29] = '''              Got [0x7000] coin(s)![await]'''
+dialog_data[25] = '''[center]Got an “[0x70A7]”![end]'''
+dialog_data[26] = '''[center]Got an “[0x70A7]”![await]'''
+dialog_data[27] = '''[center]Got a “[0x70A7]”![end]'''
+dialog_data[28] = '''[center]Got a “[0x70A7]”![await]'''
+dialog_data[29] = '''[center]Got [0x7000] coin(s)![await]'''
 dialog_data[30] = ''' Why don't you crash for a while?[await]
  It'll only cost you [0x7024] coins!
  [select]  (Okay!)
@@ -55,12 +55,12 @@ dialog_data[31] = '''[page]
 dialog_data[32] = '''[page]
 
                Good luck![await]'''
-dialog_data[33] = '''          Got a “[0x70A7]”![await]'''
+dialog_data[33] = '''[center]Got a “[0x70A7]”![await]'''
 dialog_data[34] = '''[page]
         [0x7024] Cookie(s)[end]'''
-dialog_data[35] = '''          Got a “[0x70A7]”![await]'''
-dialog_data[36] = '''    Got a “[0x70A7]”![end]'''
-dialog_data[37] = '''            Got a Frog Coin![await]'''
+dialog_data[35] = '''[center]Got a “[0x70A7]”![await]'''
+dialog_data[36] = '''[center]Got a “[0x70A7]”![end]'''
+dialog_data[37] = '''[center]Got a Frog Coin![await]'''
 dialog_data[38] = '''[page]
         [0x7024] Cookie(s)[await]'''
 dialog_data[39] = ''' Our economy is booming now that
@@ -76,7 +76,7 @@ dialog_data[41] = '''
               Gotta go fast![await]'''
 dialog_data[42] = '''Got an “[0x70A7]”![end]'''
 dialog_data[43] = '''Got a “[0x70A7]”![end]'''
-dialog_data[44] = '''             Got a “Flower”[await]'''
+dialog_data[44] = '''[center]Got a “Flower”[await]'''
 dialog_data[45] = ''' My son did 30 super jumps the
  other day! I'm so proud of him.[await][page]
  A nice fellow from Monstro Town
@@ -1041,7 +1041,7 @@ dialog_data[372] = ''' There is a chest in the sewers that
  order to reach it.[delay_30]
  GOOD LUCK![await]'''
 dialog_data[373] = '''     The water has been drained.[await]'''
-dialog_data[374] = '''          Got a “[0x70A7]”![await]'''
+dialog_data[374] = '''[center]Got a “[0x70A7]”![await]'''
 dialog_data[375] = ''' You can't jump on or off when
  the block is blue.[await][page]
  Try jumping when the block
@@ -1695,8 +1695,8 @@ dialog_data[615] = ''' You've found the treasure!
  Keep up the good work![await]'''
 dialog_data[616] = '''   Found a “Lamb's Lure”![end]'''
 dialog_data[617] = '''   Found a “B'tub Ring”![end]'''
-dialog_data[618] = '''          Got a “Lamb's Lure”![await]'''
-dialog_data[619] = '''          Got a “B'tub Ring”![await]'''
+dialog_data[618] = '''[center]Got a “Lamb's Lure”![await]'''
+dialog_data[619] = '''[center]Got a “B'tub Ring”![await]'''
 dialog_data[620] = '''[0x7000][await]'''
 dialog_data[621] = '''Kipp[end]'''
 dialog_data[622] = '''[await]'''

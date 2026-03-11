@@ -40,10 +40,10 @@ script = EventScript([
 		A_FaceSouthwest(),
 		A_Pause(30),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=2, is_sequence=True, looping=False),
+		A_SetSpriteSequence(index=2, is_sequence=True, looping=False, identifier="dojo_boss_1_recoil"),
 		A_Pause(15),
 		A_ResetProperties()
-	]),
+	], identifier="dojo_boss_1_recoil_aq"),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_SetSequenceSpeed(FAST),
 		A_SetWalkingSpeed(NORMAL),
