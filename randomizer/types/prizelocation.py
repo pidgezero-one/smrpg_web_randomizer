@@ -1556,7 +1556,7 @@ class TreasureChestLocation(StandardPrizeLocation):
 
 
 class StandingLocation(StandardPrizeLocation):
-    _npc_ids: list[AreaObject]
+    _npc_ids: list[AreaObject] = []
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -2685,6 +2685,9 @@ class TreasureChestLocationRow6(TreasureChestLocationRow):
 
 
 class NPCLocationRow(PrizeRow, EventLocation):
+    _npc_ids: list[AreaObject] = []
+    _check_npc_ids: list[AreaObject] = []
+
     def render(
         self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:

@@ -100,10 +100,13 @@ from .ally import Ally
 # TypeVar for spell types to allow CharacterSpell and other Spell subclasses
 SpellT = TypeVar("SpellT", bound=Spell)
 from .prizelocation import (
+    BoosterHillLocation,
     CharacterRecruitmentLocation,
     InvisibleFlagLocation,
+    NPCLocationRow,
     PrizeLocation,
     SpellSlotLocation,
+    StandingLocation,
     StarPieceLocation,
     TreasureChestLocation,
 )
@@ -684,11 +687,91 @@ class GameWorld:
 
         return mapping, room_bit_offsets, room_chest_counts
 
+    def _compute_npc_presence_mapping(self) -> dict[str, tuple[int, int, bool]]:
+        """Compute NPC presence bit positions for NPC-despawn-based check locations.
+
+        The NPC presence table at BW-RAM $6D20 (FxPak $E02D20) uses cumulative
+        bit packing by room ID: room 0 gets bits for ALL its objects first,
+        then room 1, etc. A cleared bit (1->0) means the NPC was removed.
+
+        Only maps StandingLocation and NPCLocationRow subclasses that define
+        _npc_ids. TreasureChestLocations are skipped (already detected by
+        chest bit mapping).
+
+        Returns:
+            {location_class_name: (fxpak_addr, bit_index, set_when_checked)}
+            where set_when_checked=False (bit CLEAR = check done).
+        """
+        from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
+            AreaObject,
+        )
+
+        FXPAK_BASE = 0xE02D20
+        NPC_AREA_OBJECT_START = 0x14
+
+        # Cumulative bit offset: count ALL objects per room (not just chests)
+        cumulative = 0
+        room_bit_offsets: dict[int, int] = {}
+        for room_id in range(len(self.rooms._rooms)):
+            room_bit_offsets[room_id] = cumulative
+            room = self.rooms._rooms[room_id]
+            count = len(room.objects) if room is not None else 0
+            cumulative += count
+
+        # Map locations that use NPC presence for check detection.
+        # Skip TreasureChestLocation (already handled by chest bit mapping).
+        # StandingLocation uses _npc_ids; NPCLocationRow uses _check_npc_ids
+        # (_npc_ids on NPCLocationRow controls model replacement, not tracking).
+        mapping: dict[str, tuple[int, int, bool]] = {}
+        for loc_cls, loc in self.locations.items():
+            if isinstance(loc, StandingLocation):
+                npc_ids = loc._npc_ids
+            elif isinstance(loc, NPCLocationRow):
+                npc_ids = loc._check_npc_ids
+            else:
+                continue
+            if not npc_ids:
+                continue
+
+            class_name = loc_cls.__name__
+            for npc_ao, room_id in zip(npc_ids, loc._rooms):
+                ao = (
+                    npc_ao
+                    if isinstance(npc_ao, AreaObject)
+                    else AreaObject(npc_ao + NPC_AREA_OBJECT_START)
+                )
+                obj_idx = int(ao) - NPC_AREA_OBJECT_START
+                bit_pos = room_bit_offsets[room_id] + obj_idx
+                addr = FXPAK_BASE + (bit_pos // 8)
+                bit = bit_pos % 8
+                mapping[class_name] = (addr, bit, False)  # bit CLEAR = done
+                break  # first room is the primary
+        return mapping
+
+    def _compute_booster_hill_mapping(self) -> dict[str, int]:
+        """Compute Booster Hill flower counter thresholds for check locations.
+
+        BoosterHillLocation checks use the byte counter at BW-RAM $70B1
+        (FxPak $E030B1). A check with _70B1_id=N is complete when the
+        counter value >= N+1.
+
+        Returns:
+            {location_class_name: threshold} where threshold = _70B1_id + 1.
+        """
+        mapping: dict[str, int] = {}
+        for loc_cls, loc in self.locations.items():
+            if not isinstance(loc, BoosterHillLocation):
+                continue
+            mapping[loc_cls.__name__] = loc._70B1_id + 1
+        return mapping
+
     @property
     def spoiler(self) -> dict[str, Any]:
         check_mapping, room_bit_offsets, room_chest_counts = (
             self._compute_check_bit_mapping()
         )
+        npc_presence_mapping = self._compute_npc_presence_mapping()
+        booster_hill_mapping = self._compute_booster_hill_mapping()
         result = {
             "settings": self._get_settings_json(),
             "locations": self._get_locations_json(),
@@ -701,6 +784,14 @@ class GameWorld:
             "check_bit_mapping": {
                 name: {"addr": f"0x{addr:06X}", "bit": bit, "set_when_checked": swc}
                 for name, (addr, bit, swc) in check_mapping.items()
+            },
+            "npc_presence_mapping": {
+                name: {"addr": f"0x{addr:06X}", "bit": bit, "set_when_checked": swc}
+                for name, (addr, bit, swc) in npc_presence_mapping.items()
+            },
+            "booster_hill_mapping": {
+                name: {"threshold": threshold}
+                for name, threshold in booster_hill_mapping.items()
             },
             "room_bit_offsets": {
                 str(rid): off

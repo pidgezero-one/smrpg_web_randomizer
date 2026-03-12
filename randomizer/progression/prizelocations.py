@@ -761,6 +761,7 @@ class MushroomKingdomChair(NPCLocationRow1):
         R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM,
         R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM,
     ]
+    _check_npc_ids = [NPC_0, NPC_7]
     _id = ShuffleLocationSelector.PEACH_SURPRISE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     # flag as checked: npc 0 is missing/despawned from room 20 or npc 7 is missing/despawned from room 328
@@ -835,6 +836,7 @@ class MushroomKingdomOccupiedOutdoorGuardLocation(NPCLocationRow1):
     _bias = True
     _originally_held = Coins10Prize
     _rooms = [R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, R191_MUSHROOM_KINGDOM_OUTSIDE]
+    _check_npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.INVASION_EASTERN_GUARD
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
 
@@ -2830,6 +2832,7 @@ class OuterMinesTrampolineHenchmanLocation(NPCLocationRow2):
     _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
+    _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_1
     _world_area = WorldAreaEnum.MOLEVILLE
 
@@ -2843,6 +2846,7 @@ class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
     _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
+    _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_2
     _world_area = WorldAreaEnum.MOLEVILLE
 
@@ -2856,6 +2860,7 @@ class OuterMinesRightHenchmanLocation(NPCLocationRow2):
     _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
+    _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_3
     _world_area = WorldAreaEnum.MOLEVILLE
 
@@ -3454,6 +3459,7 @@ class BoosterTowerTrainRoomCreviceLocation(NPCLocationRow1):
     _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
+    _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_RAILWAY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
 
@@ -3573,6 +3579,7 @@ class BoosterTowerParachuteRoomCreviceLocation(NPCLocationRow1):
     _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
+    _check_npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE_CREVICE
     _world_area = WorldAreaEnum.BOOSTER_TOWER
 
@@ -7563,6 +7570,7 @@ class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
 class BeanValleyRightPipeUnderStairsLocation(NPCLocationRow1):
     _originally_held = FrogCoin1Prize
     _rooms = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
+    _check_npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_HIDDEN
     _world_area = WorldAreaEnum.BEAN_VALLEY
     # flag as checked: npc 9 in room 335 is removed.
@@ -8597,6 +8605,7 @@ class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
     _bias = True
     _originally_held = FertilizerPrize
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
+    _check_npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE
     _world_area = WorldAreaEnum.NIMBUS_LAND
 
@@ -10080,7 +10089,7 @@ class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
     _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT]
-    _npc_ids = [NPC_0]
+    _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.FACTORY_SAVE_ROOM
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]

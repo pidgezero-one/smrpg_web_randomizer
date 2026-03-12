@@ -21,6 +21,7 @@ import asyncio
 import os
 import sys
 import time
+from collections import Counter
 from dataclasses import dataclass, field
 from enum import Enum, IntEnum
 from typing import Callable
@@ -132,6 +133,7 @@ BWRAM_CHESTS = (AP_REGION_CHEST_ADDR, AP_REGION_CHEST_SIZE)      # Treasure ches
 BWRAM_HIDDEN_CHESTS = (_snes_to_fxpak_bwram(0x70C8), 0x01)
 BWRAM_BOSS_VICTORIES = (_snes_to_fxpak_bwram(0x70E3), 0x01)
 BWRAM_MENU_FLAGS = (_snes_to_fxpak_bwram(0x7062), 0x01)
+BWRAM_BOOSTER_HILL_CTR = (_snes_to_fxpak_bwram(0x70B1), 0x01)
 
 
 # =============================================================================
@@ -196,6 +198,65 @@ class CommandEvent:
     timestamp: float
 
 
+@dataclass
+class GameModeEvent:
+    """Fired when the game mode changes (e.g. overworld → battle)."""
+    prev_mode: GameMode
+    prev_mode_byte: int
+    mode: GameMode
+    mode_byte: int
+    timestamp: float
+
+
+@dataclass
+class CurrencyChangeEvent:
+    """Fired when coins or frog coins change."""
+    currency: str          # "coins" or "frog_coins"
+    old_value: int
+    new_value: int
+    delta: int
+    timestamp: float
+
+
+@dataclass
+class FpChangeEvent:
+    """Fired when current FP or max FP changes."""
+    old_fp: int
+    new_fp: int
+    max_fp: int
+    old_max_fp: int
+    timestamp: float
+
+
+@dataclass
+class InventoryChangeEvent:
+    """Fired when an inventory slot changes."""
+    inventory_type: str    # "consumable", "equipment", "key_item"
+    added: list[int]       # item IDs added
+    removed: list[int]     # item IDs removed
+    new_count: int         # new inventory size
+    timestamp: float
+
+
+@dataclass
+class HpChangeEvent:
+    """Fired when a character's HP changes in the overworld."""
+    char_index: int
+    char_name: str
+    old_hp: int
+    new_hp: int
+    max_hp: int
+    timestamp: float
+
+
+@dataclass
+class StarPieceEvent:
+    """Fired when the star piece count changes."""
+    old_count: int
+    new_count: int
+    timestamp: float
+
+
 def _check_type_from_name(name: str) -> CheckType:
     """Derive CheckType from AP location name prefix."""
     if name.startswith("Chest"):
@@ -222,6 +283,24 @@ def _format_class_name(name: str) -> str:
     """Convert CamelCase class name to readable format: 'MushroomKingdomFreeShopItem' → 'Mushroom Kingdom Free Shop Item'."""
     import re as _re
     return _re.sub(r"(?<!^)(?=[A-Z])", " ", name)
+
+
+# =============================================================================
+# Item name lookup (static across all seeds)
+# =============================================================================
+
+ITEM_NAMES: dict[int, str] = {}
+try:
+    from randomizer.data.items.items import ITEMS as _ITEMS_COLLECTION
+    for _item in _ITEMS_COLLECTION.items:
+        ITEM_NAMES[_item.item_id] = _item.name
+except ImportError:
+    pass  # smrpgpatchbuilder not installed — names unavailable, fall back to hex
+
+
+def _item_name(item_id: int) -> str:
+    """Resolve an item ID to its display name, falling back to hex."""
+    return ITEM_NAMES.get(item_id, f"0x{item_id:02X}")
 
 
 # =============================================================================
@@ -345,6 +424,12 @@ class SmrpgClient:
         self._var_callbacks: list[Callable[[VarEvent], None]] = []
         self._room_callbacks: list[Callable[[RoomEvent], None]] = []
         self._command_callbacks: list[Callable[[CommandEvent], None]] = []
+        self._game_mode_callbacks: list[Callable[[GameModeEvent], None]] = []
+        self._currency_callbacks: list[Callable[[CurrencyChangeEvent], None]] = []
+        self._fp_callbacks: list[Callable[[FpChangeEvent], None]] = []
+        self._inventory_callbacks: list[Callable[[InventoryChangeEvent], None]] = []
+        self._hp_callbacks: list[Callable[[HpChangeEvent], None]] = []
+        self._star_piece_callbacks: list[Callable[[StarPieceEvent], None]] = []
 
         # Current state (from mailbox outbox, per-frame)
         self._game_mode_byte: int = 0xFF
@@ -378,9 +463,30 @@ class SmrpgClient:
         self._area_id: int = 0
         self._party_count: int = 0
 
-        # Previous state for diffing
+        # Star pieces (read directly from BW-RAM)
+        self._star_pieces: int = 0
+        self._prev_star_pieces: int | None = None
+
+        # Inventory lists (parsed from state dump, stored for header display)
+        self._consumables: list[int] = []
+        self._equipment: list[int] = []
+        self._key_items: list[int] = []
+
+        # Previous state for diffing (poll-level)
         self._prev_area_id: int | None = None
         self._prev_party_chars: list[int] | None = None
+        self._prev_game_mode_byte: int | None = None
+
+        # Previous state for diffing (state-dump-level)
+        self._prev_coins: int | None = None
+        self._prev_frog_coins: int | None = None
+        self._prev_current_fp: int | None = None
+        self._prev_max_fp: int | None = None
+        self._prev_cur_hp: list[int] | None = None
+        self._prev_max_hp: list[int] | None = None
+        self._prev_consumables: list[int] | None = None
+        self._prev_equipment: list[int] | None = None
+        self._prev_key_items: list[int] | None = None
 
         # Completed checks: class_name → True (for flag-based and compound checks)
         self._checks: dict[str, bool] = {}
@@ -394,6 +500,16 @@ class SmrpgClient:
 
         # Loaded check bit mapping from spoiler (overrides AP_CHEST_CHECKS)
         self._chest_check_table: dict[tuple[int, int], list[tuple[str, bool]]] | None = None
+
+        # NPC presence mapping from spoiler (NPC despawn-based checks)
+        self._npc_presence_check_table: dict[tuple[int, int], list[tuple[str, bool]]] | None = None
+        self._npc_presence_data: bytes = b""
+        self._prev_npc_presence_data: bytes | None = None
+
+        # Booster Hill counter mapping from spoiler ($70B1 threshold checks)
+        self._booster_hill_checks: list[tuple[str, int]] | None = None  # (display_name, threshold)
+        self._booster_hill_counter: int = 0
+        self._prev_booster_hill_counter: int | None = None
 
     # -----------------------------------------------------------------
     # Public API: connection
@@ -444,6 +560,30 @@ class SmrpgClient:
         """Register a callback for when a command is sent to the SNES."""
         self._command_callbacks.append(callback)
 
+    def on_game_mode_change(self, callback: Callable[[GameModeEvent], None]) -> None:
+        """Register a callback for when the game mode changes."""
+        self._game_mode_callbacks.append(callback)
+
+    def on_currency_change(self, callback: Callable[[CurrencyChangeEvent], None]) -> None:
+        """Register a callback for when coins or frog coins change."""
+        self._currency_callbacks.append(callback)
+
+    def on_fp_change(self, callback: Callable[[FpChangeEvent], None]) -> None:
+        """Register a callback for when FP changes."""
+        self._fp_callbacks.append(callback)
+
+    def on_inventory_change(self, callback: Callable[[InventoryChangeEvent], None]) -> None:
+        """Register a callback for when inventory contents change."""
+        self._inventory_callbacks.append(callback)
+
+    def on_hp_change(self, callback: Callable[[HpChangeEvent], None]) -> None:
+        """Register a callback for when character HP changes in overworld."""
+        self._hp_callbacks.append(callback)
+
+    def on_star_piece_change(self, callback: Callable[[StarPieceEvent], None]) -> None:
+        """Register a callback for when the star piece count changes."""
+        self._star_piece_callbacks.append(callback)
+
     def load_check_mapping(self, spoiler_path: str) -> None:
         """Load check bit mapping from a spoiler JSON file.
 
@@ -465,6 +605,31 @@ class SmrpgClient:
             display = _format_class_name(class_name)
             table.setdefault((byte_off, bit), []).append((display, swc))
         self._chest_check_table = table
+
+        # Load NPC presence mapping (same format, different base address)
+        NPC_PRESENCE_BASE = 0xE02D20
+        npm = data.get("npc_presence_mapping", {})
+        if npm:
+            npc_table: dict[tuple[int, int], list[tuple[str, bool]]] = {}
+            for class_name, entry in npm.items():
+                addr = int(entry["addr"], 16)
+                byte_off = addr - NPC_PRESENCE_BASE
+                bit = entry["bit"]
+                swc = entry["set_when_checked"]
+                display = _format_class_name(class_name)
+                npc_table.setdefault((byte_off, bit), []).append((display, swc))
+            self._npc_presence_check_table = npc_table
+
+        # Load Booster Hill counter mapping (threshold-based checks)
+        bhm = data.get("booster_hill_mapping", {})
+        if bhm:
+            hill_checks: list[tuple[str, int]] = []
+            for class_name, entry in bhm.items():
+                display = _format_class_name(class_name)
+                hill_checks.append((display, entry["threshold"]))
+            # Sort by threshold so we can fire in order
+            hill_checks.sort(key=lambda x: x[1])
+            self._booster_hill_checks = hill_checks
 
     @property
     def checks(self) -> dict[str, bool]:
@@ -553,9 +718,37 @@ class SmrpgClient:
     def frame_counter(self) -> int:
         return self._frame_counter
 
+    @property
+    def star_pieces(self) -> int:
+        return self._star_pieces
+
+    @property
+    def consumable_count(self) -> int:
+        return len(self._consumables)
+
+    @property
+    def equipment_count(self) -> int:
+        return len(self._equipment)
+
+    @property
+    def key_item_count(self) -> int:
+        return len(self._key_items)
+
+    @property
+    def current_fp(self) -> int:
+        return self._current_fp
+
+    @property
+    def max_fp(self) -> int:
+        return self._max_fp
+
     # -----------------------------------------------------------------
     # Public API: polling
     # -----------------------------------------------------------------
+
+    # NPC object presence region (BW-RAM $6D20-$6F1F, 512 bytes)
+    # Tracks which NPCs are present/removed per level via persistent bits.
+    BWRAM_NPC_PRESENCE = (_snes_to_fxpak_bwram(0x6D20), 0x200)
 
     async def debug_poll(self) -> None:
         """Single read cycle with raw debug output."""
@@ -567,10 +760,15 @@ class SmrpgClient:
             (BWRAM_HIDDEN_CHESTS[0], BWRAM_HIDDEN_CHESTS[1], FX),
             (BWRAM_BOSS_VICTORIES[0], BWRAM_BOSS_VICTORIES[1], FX),
             (BWRAM_MENU_FLAGS[0], BWRAM_MENU_FLAGS[1], FX),
+            # Star pieces — index 7
+            (0xE030D5, 1, FX),
+            # NPC presence — index 8
+            (self.BWRAM_NPC_PRESENCE[0], self.BWRAM_NPC_PRESENCE[1], FX),
         ]
         labels = [
             "mailbox_outbox", "lower_bwram", "event_flags", "chests",
-            "hidden_chests", "boss_victories", "menu_flags",
+            "hidden_chests", "boss_victories", "menu_flags", "star_pieces",
+            "npc_presence",
         ]
         results = self._reader.multi_read(reads)
         for i, (label, result) in enumerate(zip(labels, results)):
@@ -581,6 +779,12 @@ class SmrpgClient:
                 hex_str = result[:16].hex(" ")
                 suffix = "..." if len(result) > 16 else ""
                 print(f"  [{i}] {label} @ 0x{addr:06X}: {len(result)}B = {hex_str}{suffix}")
+
+    def read_npc_presence(self) -> bytes | None:
+        """Read the full 512-byte NPC presence region from BW-RAM."""
+        return self._reader.read_fxpak(
+            self.BWRAM_NPC_PRESENCE[0], self.BWRAM_NPC_PRESENCE[1],
+        )
 
     async def poll(self) -> None:
         """Single read cycle: read all state, fire check callbacks for changes.
@@ -605,6 +809,12 @@ class SmrpgClient:
             (BWRAM_BOSS_VICTORIES[0], BWRAM_BOSS_VICTORIES[1], FX),
             # Menu flags — index 6
             (BWRAM_MENU_FLAGS[0], BWRAM_MENU_FLAGS[1], FX),
+            # Star pieces — index 7
+            (0xE030D5, 1, FX),
+            # NPC presence — index 8
+            (self.BWRAM_NPC_PRESENCE[0], self.BWRAM_NPC_PRESENCE[1], FX),
+            # Booster Hill flower counter — index 9
+            (BWRAM_BOOSTER_HILL_CTR[0], BWRAM_BOOSTER_HILL_CTR[1], FX),
         ]
 
         results = self._reader.multi_read(reads)
@@ -620,6 +830,27 @@ class SmrpgClient:
             self._version_byte = outbox[OUTBOX_VERSION]
             self._result_byte = outbox[OUTBOX_RESULT]
             self._game_mode_byte = outbox[OUTBOX_GAME_MODE]
+
+            # Game mode change detection
+            if (
+                self._prev_game_mode_byte is not None
+                and self._game_mode_byte != self._prev_game_mode_byte
+                and not self._first_poll
+            ):
+                try:
+                    old_mode = GameMode(self._prev_game_mode_byte)
+                except ValueError:
+                    old_mode = GameMode.UNKNOWN
+                try:
+                    new_mode = GameMode(self._game_mode_byte)
+                except ValueError:
+                    new_mode = GameMode.UNKNOWN
+                self._fire_game_mode(GameModeEvent(
+                    old_mode, self._prev_game_mode_byte,
+                    new_mode, self._game_mode_byte, time.time(),
+                ))
+            self._prev_game_mode_byte = self._game_mode_byte
+
             new_area_id = int.from_bytes(
                 outbox[OUTBOX_AREA_ID:OUTBOX_AREA_ID + 2], "little"
             )
@@ -666,6 +897,30 @@ class SmrpgClient:
         if isinstance(menu, bytes) and len(menu) >= 1:
             self._menu_flags = menu[0]
 
+        # Star pieces
+        star_data = results[7]
+        if isinstance(star_data, bytes) and len(star_data) >= 1:
+            self._star_pieces = star_data[0]
+            if (
+                self._prev_star_pieces is not None
+                and self._star_pieces != self._prev_star_pieces
+                and not self._first_poll
+            ):
+                self._fire_star_piece(StarPieceEvent(
+                    self._prev_star_pieces, self._star_pieces, time.time(),
+                ))
+            self._prev_star_pieces = self._star_pieces
+
+        # NPC presence
+        npc_pres = results[8]
+        if isinstance(npc_pres, bytes):
+            self._npc_presence_data = npc_pres
+
+        # Booster Hill flower counter
+        hill_data = results[9]
+        if isinstance(hill_data, bytes) and len(hill_data) >= 1:
+            self._booster_hill_counter = hill_data[0]
+
         # Periodic state dump for WRAM data (coins, characters, inventory)
         now = time.time()
         if now - self._last_state_dump >= self._state_dump_interval:
@@ -673,10 +928,18 @@ class SmrpgClient:
             self._last_state_dump = now
 
         # --- Check detection ---
-        self._detect_checks()
+        # Skip during battles: the battle engine temporarily overwrites BW-RAM
+        # event flags, causing false diffs. Defer detection to overworld.
+        if self._game_mode_byte not in (
+            GameMode.BATTLE_SETUP, 0xC2,  # 0xC2 = in-battle (not in enum)
+        ):
+            self._detect_checks()
 
     async def _do_state_dump(self) -> None:
-        """Request state dump from hook and parse WRAM data (coins, HP)."""
+        """Request state dump from hook and parse WRAM data (coins, HP).
+
+        Also diffs against previous dump and fires change events.
+        """
         # Send CMD_STATE_DUMP and wait for ack
         ok = await self._send_command(CMD_STATE_DUMP)
         if not ok:
@@ -707,6 +970,85 @@ class SmrpgClient:
                 dump[OUTBOX_MAX_HP - base + i * 2:OUTBOX_MAX_HP - base + i * 2 + 2],
                 "little",
             )
+
+        # Parse inventory lists (filter 0xFF empty slots)
+        self._consumables = [b for b in dump[0:30] if b != 0xFF]
+        self._equipment = [
+            b for b in dump[OUTBOX_EQUIPMENT - base:OUTBOX_EQUIPMENT - base + 30]
+            if b != 0xFF
+        ]
+        self._key_items = [
+            b for b in dump[OUTBOX_KEY_ITEMS - base:OUTBOX_KEY_ITEMS - base + 30]
+            if b != 0xFF
+        ]
+
+        # --- Diff against previous state and fire events ---
+        now = time.time()
+
+        # Currency diffing
+        if self._prev_coins is not None and self._coins != self._prev_coins:
+            self._fire_currency(CurrencyChangeEvent(
+                "coins", self._prev_coins, self._coins,
+                self._coins - self._prev_coins, now,
+            ))
+        if self._prev_frog_coins is not None and self._frog_coins != self._prev_frog_coins:
+            self._fire_currency(CurrencyChangeEvent(
+                "frog_coins", self._prev_frog_coins, self._frog_coins,
+                self._frog_coins - self._prev_frog_coins, now,
+            ))
+
+        # FP diffing
+        if self._prev_current_fp is not None and (
+            self._current_fp != self._prev_current_fp
+            or self._max_fp != self._prev_max_fp
+        ):
+            self._fire_fp(FpChangeEvent(
+                self._prev_current_fp, self._current_fp,
+                self._max_fp, self._prev_max_fp if self._prev_max_fp is not None else self._max_fp,
+                now,
+            ))
+
+        # HP diffing (overworld only to avoid battle noise)
+        if self._prev_cur_hp is not None and self.game_mode == GameMode.OVERWORLD:
+            for i in range(5):
+                if self._cur_hp[i] != self._prev_cur_hp[i] and self._max_hp[i] > 0:
+                    self._fire_hp(HpChangeEvent(
+                        i, CHARACTER_NAMES.get(i, f"Char {i}"),
+                        self._prev_cur_hp[i], self._cur_hp[i],
+                        self._max_hp[i], now,
+                    ))
+
+        # Inventory diffing
+        if self._prev_consumables is not None:
+            self._diff_inventory("consumable", self._prev_consumables, self._consumables, now)
+        if self._prev_equipment is not None:
+            self._diff_inventory("equipment", self._prev_equipment, self._equipment, now)
+        if self._prev_key_items is not None:
+            self._diff_inventory("key_item", self._prev_key_items, self._key_items, now)
+
+        # Save previous state for next diff
+        self._prev_coins = self._coins
+        self._prev_frog_coins = self._frog_coins
+        self._prev_current_fp = self._current_fp
+        self._prev_max_fp = self._max_fp
+        self._prev_cur_hp = list(self._cur_hp)
+        self._prev_max_hp = list(self._max_hp)
+        self._prev_consumables = list(self._consumables)
+        self._prev_equipment = list(self._equipment)
+        self._prev_key_items = list(self._key_items)
+
+    def _diff_inventory(
+        self, inv_type: str, old_list: list[int], new_list: list[int], now: float,
+    ) -> None:
+        """Diff two inventory lists using Counter and fire InventoryChangeEvent."""
+        old_counts = Counter(old_list)
+        new_counts = Counter(new_list)
+        added = list((new_counts - old_counts).elements())
+        removed = list((old_counts - new_counts).elements())
+        if added or removed:
+            self._fire_inventory(InventoryChangeEvent(
+                inv_type, added, removed, len(new_list), now,
+            ))
 
     def _diff_region_checks(
         self,
@@ -820,30 +1162,44 @@ class SmrpgClient:
         # Treasure chest region (use spoiler mapping if loaded, else AP fallback)
         chest_table = self._chest_check_table if self._chest_check_table is not None else AP_CHEST_CHECKS
         if isinstance(self._chest_data, bytes) and len(self._chest_data) > 0:
-            # Debug: log ALL bit changes in chest region
-            if self._prev_chest_data is not None and not self._first_poll:
-                scan = min(len(self._chest_data), len(self._prev_chest_data), AP_REGION_CHEST_SIZE)
-                for bo in range(scan):
-                    d = self._chest_data[bo] ^ self._prev_chest_data[bo]
-                    if d == 0:
-                        continue
-                    for bi in range(8):
-                        if d & (1 << bi):
-                            is_set = bool(self._chest_data[bo] & (1 << bi))
-                            abs_bit = bo * 8 + bi
-                            addr = AP_REGION_CHEST_ADDR + bo
-                            matched = chest_table.get((bo, bi), [])
-                            print(
-                                f"\r\033[K  [CHEST-DBG] byte={bo} bit={bi} "
-                                f"abs_bit={abs_bit} addr=0x{addr:06X} "
-                                f"{'SET' if is_set else 'CLR'} "
-                                f"matched={matched}"
-                            )
             self._diff_region_checks(
                 self._chest_data, self._prev_chest_data,
                 AP_REGION_CHEST_SIZE, chest_table, now,
             )
             self._prev_chest_data = bytes(self._chest_data)
+
+        # NPC presence region (use spoiler mapping if loaded)
+        if (
+            self._npc_presence_check_table is not None
+            and isinstance(self._npc_presence_data, bytes)
+            and len(self._npc_presence_data) > 0
+        ):
+            self._diff_region_checks(
+                self._npc_presence_data, self._prev_npc_presence_data,
+                0x200, self._npc_presence_check_table, now,
+            )
+            self._prev_npc_presence_data = bytes(self._npc_presence_data)
+
+        # Booster Hill flower counter (threshold-based checks)
+        if (
+            self._booster_hill_checks is not None
+            and self._prev_booster_hill_counter is not None
+            and not self._first_poll
+            and self._booster_hill_counter != self._prev_booster_hill_counter
+        ):
+            old_val = self._prev_booster_hill_counter
+            new_val = self._booster_hill_counter
+            for check_name, threshold in self._booster_hill_checks:
+                if old_val < threshold <= new_val:
+                    if not self._checks.get(check_name, False):
+                        self._checks[check_name] = True
+                        self._fire_check(CheckEvent(
+                            _check_type_from_name(check_name),
+                            check_name,
+                            check_name,
+                            now,
+                        ))
+        self._prev_booster_hill_counter = self._booster_hill_counter
 
         # Recruitment checks via party slot diffs (IRAM copied to outbox by hook)
         if isinstance(self._party_slot_data, bytes) and len(self._party_slot_data) >= 5:
@@ -892,6 +1248,48 @@ class SmrpgClient:
     def _fire_command(self, event: CommandEvent) -> None:
         """Invoke all registered command callbacks."""
         for cb in self._command_callbacks:
+            try:
+                cb(event)
+            except Exception:
+                pass
+
+    def _fire_game_mode(self, event: GameModeEvent) -> None:
+        for cb in self._game_mode_callbacks:
+            try:
+                cb(event)
+            except Exception:
+                pass
+
+    def _fire_currency(self, event: CurrencyChangeEvent) -> None:
+        for cb in self._currency_callbacks:
+            try:
+                cb(event)
+            except Exception:
+                pass
+
+    def _fire_fp(self, event: FpChangeEvent) -> None:
+        for cb in self._fp_callbacks:
+            try:
+                cb(event)
+            except Exception:
+                pass
+
+    def _fire_inventory(self, event: InventoryChangeEvent) -> None:
+        for cb in self._inventory_callbacks:
+            try:
+                cb(event)
+            except Exception:
+                pass
+
+    def _fire_hp(self, event: HpChangeEvent) -> None:
+        for cb in self._hp_callbacks:
+            try:
+                cb(event)
+            except Exception:
+                pass
+
+    def _fire_star_piece(self, event: StarPieceEvent) -> None:
+        for cb in self._star_piece_callbacks:
             try:
                 cb(event)
             except Exception:
