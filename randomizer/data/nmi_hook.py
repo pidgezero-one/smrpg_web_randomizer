@@ -71,6 +71,9 @@ OUTBOX_FRAME_CTR = 0x02   # 2B: frame counter (LE), incremented each NMI
 OUTBOX_VERSION = 0x04     # 1B: hook version (0x01)
 OUTBOX_RESULT = 0x05      # 1B: last command result
 OUTBOX_GAME_MODE = 0x06   # 1B: NMI handler bank ($C0=overworld, $C3=menu)
+OUTBOX_AREA_ID = 0x07     # 2B: current area ID (IRAM $3030, LE)
+OUTBOX_PARTY_SLOTS = 0x09 # 5B: party character slots (IRAM $3033-$3037, $FF=empty)
+OUTBOX_PARTY_COUNT = 0x0E # 1B: active party size (IRAM $303F, 1-3)
 
 # Outbox state dump (populated by command CMD_STATE_DUMP)
 OUTBOX_CONSUMABLES = 0x10  # 30B: consumable inventory (29 usable + Waste Basket)
@@ -113,7 +116,9 @@ RESULT_OK = 0x01
 RESULT_INV_FULL = 0x02
 
 # Hook protocol version
-HOOK_VERSION = 0x01
+# 0x01: initial (music, battle, frame, version, result, game_mode)
+# 0x02: added per-frame IRAM copies (area_id, party_slots, party_count)
+HOOK_VERSION = 0x02
 
 # =============================================================================
 # WRAM source addresses (for hook copies)
@@ -409,6 +414,37 @@ def build_hook_code() -> bytes:
     # $000B indicates the active subsystem ($C0=overworld, $C3=menu, etc.)
     a.lda_long(WRAM_NMI_HANDLER_BANK)        # LDA $7E000B
     a.sta_long(_bwram(OUTBOX_GAME_MODE))     # STA outbox game mode
+
+    # =================================================================
+    # PER-FRAME: Copy area ID from IRAM (2 bytes, LE)
+    # =================================================================
+    # IRAM $3030 is accessible at SNES $00:3030 (SA-1 IRAM window).
+    # During NMI the SA-1 is halted, so IRAM reads from SNES CPU are safe.
+    a.rep(0x20)                               # REP #$20: 16-bit A
+    a.lda_long(0x003030)                      # LDA $003030 (area ID)
+    a.sta_long(_bwram(OUTBOX_AREA_ID))        # STA outbox area ID
+    a.sep(0x20)                               # SEP #$20: 8-bit A
+
+    # =================================================================
+    # PER-FRAME: Copy party slots from IRAM (5 bytes)
+    # =================================================================
+    # IRAM $3033-$3037: character IDs in each slot ($FF=empty)
+    a.lda_long(0x003033)                      # Slot 0
+    a.sta_long(_bwram(OUTBOX_PARTY_SLOTS))
+    a.lda_long(0x003034)                      # Slot 1
+    a.sta_long(_bwram(OUTBOX_PARTY_SLOTS + 1))
+    a.lda_long(0x003035)                      # Slot 2
+    a.sta_long(_bwram(OUTBOX_PARTY_SLOTS + 2))
+    a.lda_long(0x003036)                      # Slot 3
+    a.sta_long(_bwram(OUTBOX_PARTY_SLOTS + 3))
+    a.lda_long(0x003037)                      # Slot 4
+    a.sta_long(_bwram(OUTBOX_PARTY_SLOTS + 4))
+
+    # =================================================================
+    # PER-FRAME: Copy party count from IRAM (1 byte)
+    # =================================================================
+    a.lda_long(0x00303F)                      # Active party size (1-3)
+    a.sta_long(_bwram(OUTBOX_PARTY_COUNT))
 
     # =================================================================
     # CHECK INBOX (use BNE + JMP since no_command is >127 bytes away)

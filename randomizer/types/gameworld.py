@@ -105,6 +105,7 @@ from .prizelocation import (
     PrizeLocation,
     SpellSlotLocation,
     StarPieceLocation,
+    TreasureChestLocation,
 )
 # ThreeMustyFears proxy classes come from prizelocations via the wildcard import below
 from .room import Room
@@ -277,6 +278,11 @@ class GameWorld:
     # Invisible item locations - stored separately to allow reuse across shuffle retries
     # These are initialized once during the first call to set_locations, then reused
     _invisible_item_locations: dict[type[PrizeLocation], PrizeLocation] | None = None
+
+    # Dummy NPC index tracking for deterministic object presence table
+    # Pre-allocated once by _pre_allocate_dummy_npcs, then reused across shuffle retries
+    _slot_dummy_indices: dict[int, int] | None = None   # room_id → starting object index of 5 slot dummies
+    _flag_dummy_index: dict[int, int] | None = None     # room_id → object index of 1 flag dummy
 
     # Spell assignment tracking for SpellsAnywhere mode
     # Maps character prize type -> count of spells assigned to that character
@@ -610,8 +616,79 @@ class GameWorld:
 
     event_2496_startup = []
 
+    def _compute_check_bit_mapping(self) -> tuple[
+        dict[str, tuple[int, int, bool]],
+        dict[int, int],
+        dict[int, int],
+    ]:
+        """Compute chest state table bit positions for chest check locations.
+
+        The chest state table at BW-RAM $3D80 (FxPak $E03D80) uses cumulative
+        bit packing by room ID: room 0 gets its bits first, then room 1, etc.
+        Only chest-type objects (ChestNPC and ChestClone) get bits — other object
+        types are skipped. Within a room, chests are numbered sequentially.
+
+        Returns:
+            (check_mapping, room_bit_offsets, room_chest_counts) where:
+            - check_mapping: {location_class_name: (fxpak_addr, bit_index, set_when_checked)}
+            - room_bit_offsets: {room_id: cumulative_bit_offset}
+            - room_chest_counts: {room_id: chest_object_count}
+        """
+        from smrpgpatchbuilder.datatypes.levels.classes import ChestNPC, ChestClone
+        from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
+
+        FXPAK_BASE = 0xE03D80
+        NPC_AREA_OBJECT_START = 0x14  # AreaObject(0x14) = object index 0
+
+        # Cumulative bit offset per room (rooms ordered by ID 0-511).
+        # Only ChestNPC and ChestClone objects get bits in this table.
+        cumulative = 0
+        room_bit_offsets: dict[int, int] = {}
+        room_chest_counts: dict[int, int] = {}
+        for room_id in range(len(self.rooms._rooms)):
+            room_bit_offsets[room_id] = cumulative
+            room = self.rooms._rooms[room_id]
+            count = (
+                sum(1 for obj in room.objects if isinstance(obj, (ChestNPC, ChestClone)))
+                if room is not None
+                else 0
+            )
+            room_chest_counts[room_id] = count
+            cumulative += count
+
+        # Map TreasureChestLocation checks to bit positions.
+        # The bit index within a room is the chest's position among chest-type
+        # objects in the room (not its general area object index).
+        mapping: dict[str, tuple[int, int, bool]] = {}
+        for loc_cls, loc in self.locations.items():
+            if not isinstance(loc, TreasureChestLocation):
+                continue
+            class_name = loc_cls.__name__
+            for npc_ao, room_id in zip(loc._npc_ids, loc._rooms):
+                ao = npc_ao if isinstance(npc_ao, AreaObject) else AreaObject(npc_ao + NPC_AREA_OBJECT_START)
+                obj_idx = int(ao) - NPC_AREA_OBJECT_START
+                # Count chest objects before this area object index
+                room = self.rooms._rooms[room_id]
+                chest_idx = 0
+                if room is not None:
+                    for i, obj in enumerate(room.objects):
+                        if i >= obj_idx:
+                            break
+                        if isinstance(obj, (ChestNPC, ChestClone)):
+                            chest_idx += 1
+                bit_pos = room_bit_offsets[room_id] + chest_idx
+                addr = FXPAK_BASE + (bit_pos // 8)
+                bit = bit_pos % 8
+                mapping[class_name] = (addr, bit, False)  # cleared = opened
+                break  # first room is the primary
+
+        return mapping, room_bit_offsets, room_chest_counts
+
     @property
     def spoiler(self) -> dict[str, Any]:
+        check_mapping, room_bit_offsets, room_chest_counts = (
+            self._compute_check_bit_mapping()
+        )
         result = {
             "settings": self._get_settings_json(),
             "locations": self._get_locations_json(),
@@ -621,6 +698,20 @@ class GameWorld:
             "spell_character_assignments": self._get_spell_character_assignments_json(),
             "password": self.password,
             "songs": [self.song_1, self.song_2, self.song_3],
+            "check_bit_mapping": {
+                name: {"addr": f"0x{addr:06X}", "bit": bit, "set_when_checked": swc}
+                for name, (addr, bit, swc) in check_mapping.items()
+            },
+            "room_bit_offsets": {
+                str(rid): off
+                for rid, off in room_bit_offsets.items()
+                if off > 0 or rid == 0
+            },
+            "room_chest_counts": {
+                str(rid): cnt
+                for rid, cnt in room_chest_counts.items()
+                if cnt > 0
+            },
         }
         if self.poison_mushroom_status:
             result["poison_mushroom_status"] = self.poison_mushroom_status
@@ -1002,6 +1093,9 @@ class GameWorld:
             except PlacementException as e:
                 # Restore rooms to pre-shuffle state before retrying
                 self.rooms = deepcopy(rooms_snapshot)
+                # Reset dummy indices so _pre_allocate_dummy_npcs reruns with fresh rooms
+                self._slot_dummy_indices = None
+                self._flag_dummy_index = None
                 print(f"[DEBUG] Placement failed with {e.unplaced_count} unplaced items, retrying...")
 
                 # Track this failure count

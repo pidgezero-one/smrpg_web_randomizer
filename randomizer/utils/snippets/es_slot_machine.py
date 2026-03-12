@@ -46,13 +46,15 @@ from uuid import uuid4
 def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld) -> list[UsableEventScriptCommand]:
     output: list[UsableEventScriptCommand] = [Return()]
 
+    assert world._slot_dummy_indices is not None
     for room_id in location._rooms:
         room = world.rooms._rooms[room_id]
         if room is None:
             raise ValueError(f"Room ID {room_id} not found in world while creating slot machine script.")
         assert isinstance(location.prize, SlotsPrize)
 
-        slot_machine_script_commands = create_slot_machine_script_for_one_room(room, location.prize.override_id)
+        slot_start = world._slot_dummy_indices[room_id]
+        slot_machine_script_commands = create_slot_machine_script_for_one_room(room, location.prize.override_id, slot_start)
         identifier = slot_machine_script_commands[0].identifier.label
         output.insert(0, JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room_id, [identifier]))
         output.extend(slot_machine_script_commands)
@@ -60,10 +62,9 @@ def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld
 
     return output
 
-def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id: int) -> list[UsableEventScriptCommand]:
-    npc_count = len(room.objects)
+def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id: int, slot_start_idx: int) -> list[UsableEventScriptCommand]:
     npcs = [
-        AreaObject(0x14 + npc_count + x) for x in range(5)
+        AreaObject(0x14 + slot_start_idx + x) for x in range(5)
     ]
     uniq = str(uuid4())
 

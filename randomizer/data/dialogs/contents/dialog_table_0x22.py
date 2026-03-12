@@ -1,4 +1,4 @@
-dialog_data = [""]*623
+dialog_data = [""]*625
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -1699,4 +1699,6 @@ dialog_data[618] = '''[center]Got a “Lamb's Lure”![await]'''
 dialog_data[619] = '''[center]Got a “B'tub Ring”![await]'''
 dialog_data[620] = '''[0x7000][await]'''
 dialog_data[621] = '''Kipp[end]'''
-dialog_data[622] = '''[await]'''
+dialog_data[622] = '''[center]Got a “Yoshi-Ade”![await]'''
+dialog_data[623] = '''   Found a “Yoshi-Ade”![end]'''
+dialog_data[624] = '''[await]'''

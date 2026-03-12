@@ -1224,13 +1224,11 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                     if l.world_area == self.world_area:
                         return False
         if isinstance(prize, SlotsPrize):
-            # same with slots
-            for r in self._rooms:
-                room = world.rooms._rooms[r]
-                assert room is not None
-                # Can't accept a slot machine if there is not enough room for its npcs
-                if 0x14 + len(room.objects) + 5 > 0x2F:
-                    return False
+            # Space is pre-allocated via dummy NPCs — just check no duplicate slots in same room
+            if world._slot_dummy_indices is not None:
+                for r in self._rooms:
+                    if r not in world._slot_dummy_indices:
+                        return False
             for l in world.chest_locations:
                 if l is not self and isinstance(l.prize, SlotsPrize):
                     # Never have two slot machines in the same room
@@ -1440,122 +1438,120 @@ class TreasureChestLocation(StandardPrizeLocation):
             world.event_scripts.get_script_by_id(self.prize.logic_event).set_contents(
                 create_slot_machine_script(self, world)
             )
+            assert world._slot_dummy_indices is not None
             for r in self._rooms:
                 room = world.rooms._rooms[r]
                 if room is None:
                     raise ValueError(
                         f"Room ID {r} not found in world while creating slot machine script."
                     )
-                room._objects.extend(
-                    [
-                        RegularNPC(
-                            npc=FLOWER_NPC_2,
-                            initiator=EventInitiator.NONE,
-                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
-                            action_script=A0015_DO_NOTHING,
-                            visible=False,
-                            x=26,
-                            y=108,
-                            z=5,
-                            z_half=False,
-                            direction=SOUTHWEST,
-                            face_on_trigger=False,
-                            cant_enter_doors=False,
-                            byte2_bit5=False,
-                            set_sequence_playback=True,
-                            cant_float=False,
-                            cant_walk_up_stairs=False,
-                            cant_walk_under=False,
-                            cant_pass_walls=False,
-                            cant_jump_through=False,
-                            cant_pass_npcs=False,
-                            byte3_bit5=False,
-                            cant_walk_through=False,
-                            byte3_bit7=False,
-                            slidable_along_walls=True,
-                            cant_move_if_in_air=True,
-                            byte7_upper2=3,
-                        ),
-                        RegularClone(
-                            npc=FLOWER_NPC_2,
-                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
-                            action_script=A0015_DO_NOTHING,
-                            visible=False,
-                            x=26,
-                            y=108,
-                            z=5,
-                            z_half=False,
-                            direction=SOUTHWEST,
-                        ),
-                        RegularClone(
-                            npc=FLOWER_NPC_2,
-                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
-                            action_script=A0015_DO_NOTHING,
-                            visible=False,
-                            x=26,
-                            y=108,
-                            z=5,
-                            z_half=False,
-                            direction=SOUTHWEST,
-                        ),
-                        RegularNPC(
-                            npc=STATIC_FROG_COIN_NPC,
-                            initiator=EventInitiator.NONE,
-                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
-                            action_script=A0015_DO_NOTHING,
-                            visible=False,
-                            x=26,
-                            y=108,
-                            z=5,
-                            z_half=False,
-                            direction=NORTHWEST,
-                            face_on_trigger=False,
-                            cant_enter_doors=False,
-                            byte2_bit5=False,
-                            set_sequence_playback=True,
-                            cant_float=False,
-                            cant_walk_up_stairs=False,
-                            cant_walk_under=False,
-                            cant_pass_walls=False,
-                            cant_jump_through=False,
-                            cant_pass_npcs=False,
-                            byte3_bit5=False,
-                            cant_walk_through=False,
-                            byte3_bit7=False,
-                            slidable_along_walls=True,
-                            cant_move_if_in_air=True,
-                            byte7_upper2=3,
-                        ),
-                        RegularNPC(
-                            npc=EXPLOSION_NPC,
-                            initiator=EventInitiator.NONE,
-                            event_script=E2304_BANK_1F_RETURN_EVENT_2,
-                            action_script=A0400_SEQUENCE_LOOPING_ON,
-                            speed=5,
-                            visible=False,
-                            x=26,
-                            y=108,
-                            z=5,
-                            z_half=False,
-                            direction=NORTHWEST,
-                            face_on_trigger=False,
-                            cant_enter_doors=False,
-                            byte2_bit5=False,
-                            set_sequence_playback=True,
-                            cant_float=False,
-                            cant_walk_up_stairs=False,
-                            cant_walk_under=False,
-                            cant_pass_walls=False,
-                            cant_jump_through=False,
-                            cant_pass_npcs=False,
-                            byte3_bit5=False,
-                            cant_walk_through=False,
-                            byte3_bit7=False,
-                            slidable_along_walls=True,
-                            cant_move_if_in_air=True,
-                            byte7_upper2=3,
-                        ),
-                    ]
+                start = world._slot_dummy_indices[r]
+                room._objects[start] = RegularNPC(
+                    npc=FLOWER_NPC_2,
+                    initiator=EventInitiator.NONE,
+                    event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                    action_script=A0015_DO_NOTHING,
+                    visible=False,
+                    x=26,
+                    y=108,
+                    z=5,
+                    z_half=False,
+                    direction=SOUTHWEST,
+                    face_on_trigger=False,
+                    cant_enter_doors=False,
+                    byte2_bit5=False,
+                    set_sequence_playback=True,
+                    cant_float=False,
+                    cant_walk_up_stairs=False,
+                    cant_walk_under=False,
+                    cant_pass_walls=False,
+                    cant_jump_through=False,
+                    cant_pass_npcs=False,
+                    byte3_bit5=False,
+                    cant_walk_through=False,
+                    byte3_bit7=False,
+                    slidable_along_walls=True,
+                    cant_move_if_in_air=True,
+                    byte7_upper2=3,
+                )
+                room._objects[start + 1] = RegularClone(
+                    npc=FLOWER_NPC_2,
+                    event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                    action_script=A0015_DO_NOTHING,
+                    visible=False,
+                    x=26,
+                    y=108,
+                    z=5,
+                    z_half=False,
+                    direction=SOUTHWEST,
+                )
+                room._objects[start + 2] = RegularClone(
+                    npc=FLOWER_NPC_2,
+                    event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                    action_script=A0015_DO_NOTHING,
+                    visible=False,
+                    x=26,
+                    y=108,
+                    z=5,
+                    z_half=False,
+                    direction=SOUTHWEST,
+                )
+                room._objects[start + 3] = RegularNPC(
+                    npc=STATIC_FROG_COIN_NPC,
+                    initiator=EventInitiator.NONE,
+                    event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                    action_script=A0015_DO_NOTHING,
+                    visible=False,
+                    x=26,
+                    y=108,
+                    z=5,
+                    z_half=False,
+                    direction=NORTHWEST,
+                    face_on_trigger=False,
+                    cant_enter_doors=False,
+                    byte2_bit5=False,
+                    set_sequence_playback=True,
+                    cant_float=False,
+                    cant_walk_up_stairs=False,
+                    cant_walk_under=False,
+                    cant_pass_walls=False,
+                    cant_jump_through=False,
+                    cant_pass_npcs=False,
+                    byte3_bit5=False,
+                    cant_walk_through=False,
+                    byte3_bit7=False,
+                    slidable_along_walls=True,
+                    cant_move_if_in_air=True,
+                    byte7_upper2=3,
+                )
+                room._objects[start + 4] = RegularNPC(
+                    npc=EXPLOSION_NPC,
+                    initiator=EventInitiator.NONE,
+                    event_script=E2304_BANK_1F_RETURN_EVENT_2,
+                    action_script=A0400_SEQUENCE_LOOPING_ON,
+                    speed=5,
+                    visible=False,
+                    x=26,
+                    y=108,
+                    z=5,
+                    z_half=False,
+                    direction=NORTHWEST,
+                    face_on_trigger=False,
+                    cant_enter_doors=False,
+                    byte2_bit5=False,
+                    set_sequence_playback=True,
+                    cant_float=False,
+                    cant_walk_up_stairs=False,
+                    cant_walk_under=False,
+                    cant_pass_walls=False,
+                    cant_jump_through=False,
+                    cant_pass_npcs=False,
+                    byte3_bit5=False,
+                    cant_walk_through=False,
+                    byte3_bit7=False,
+                    slidable_along_walls=True,
+                    cant_move_if_in_air=True,
+                    byte7_upper2=3,
                 )
 
 

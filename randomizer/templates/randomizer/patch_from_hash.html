@@ -6,113 +6,803 @@
     {% include 'randomizer/_rom_loader.html' %}
 
     <div class="card border-success my-3">
-        <div class="card-header bg-success text-white">
-            <h3 class="card-title">Game Details</h3>
-        </div>
-        <div class="card-body">
-            <div id="seed-details" class="row" style="display:none">
-                <div class="col-md-6">
-                    <div role="group" class="btn-group btn-flex mr-3 mb-3">
-                    <button name="save_rom" class="btn btn-success" id="btn-save-rom" disabled>Save Rom</button>
+        <form id="config">
+            {% csrf_token %}
+            <input type="hidden" name="flags" id="flags" value=""/>
+            <input type="hidden" name="cosmetics" id="cosmetics" value=""/>
+            <input type="hidden" name="seed" id="seed" value=""/>
+            <input type="hidden" name="region" id="region" value=""/>
+
+            <div class="card-header bg-success text-white">
+                <h3 class="card-title">Game Details</h3>
+            </div>
+            <div class="card-body">
+                <div id="rom-select-warning" class="alert alert-warning" role="alert" style="display:none">
+                    You need to upload a ROM above!
+                </div>
+                {% include 'randomizer/_rom_info.html' %}
+            </div>
+
+            {# Cosmetics settings - Player Experience category only #}
+            <div class="card-header bg-info text-white">
+                <h4 class="card-title">Player Experience Settings</h4>
+            </div>
+            <div class="card-body">
+                <p class="mb-2 text-muted"><small>These settings are just for you. They are not included in the flag string nor affected by the seed.</small></p>
+                <div class="row flag-nav-interface">
+                    {% for category in categories %}
+                        {% if category.name == "Player Experience" %}
+                            <div class="row subcategory">
+                                {% for subcategory in category.subcategories %}
+                                    <div class="col-md-{{ subcategory.size }}">
+                                        {% for flag in subcategory.flags %}
+                                            {% include 'randomizer/_show_flag_ui.html' with flag=flag %}
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div id="seed-generate" style="display:none">
+                    <div class="alert alert-danger alert-dismissible" id="generate-error-box" role="alert"
+                         style="display:none">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <span class="sr-only">Error:</span>
+                        <span class="message" id="generate-error-message">Cannot Read ROM file.</span>
                     </div>
-                    <div role="group" class="btn-group btn-flex mr-3 mb-3">
-                    <button name="save_wad" class="btn btn-success" id="btn-save-wad" disabled>Save Wad</button>
+                    <div id="progress-box" class="card border-info my-3" style="display:none">
+                        <div class="card-body">
+                            <h5 class="card-title" id="progress-message">Generating...</h5>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                                     id="progress-bar" role="progressbar"
+                                     style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group btn-flex" role="group">
+                        <button type="button" name="generate" class="btn btn-success" id="generate-btn" disabled>Generate ROM</button>
                     </div>
                 </div>
             </div>
-            <div id="rom-select-warning" class="alert alert-warning" role="alert" style="display:none">
-                You need to upload a ROM above!
+        </form>
+    </div>
+
+    <div id="seed-details" class="card border-success my-3" style="display:none">
+        <div class="card-header bg-success text-white">
+            <h3 class="card-title">Save ROM</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div role="group" class="btn-group btn-flex mr-3 mb-3">
+                        <button name="save_rom" class="btn btn-success" id="btn-save-rom" disabled>Save Rom</button>
+                    </div>
+                    <div role="group" class="btn-group btn-flex mr-3 mb-3">
+                        <button name="save_wad" class="btn btn-success" id="btn-save-wad" disabled>Save Wad</button>
+                    </div>
+                </div>
             </div>
-            {% include 'randomizer/_rom_info.html' %}
         </div>
     </div>
 
+    <!-- JSON representation of flag hierarchy -->
+    {{ flags|json_script:"flags_json" }}
+
     <script>
-        function applyHash(rom) {
-            return new Promise(function (resolve, reject) {
-                $.get("/hash/{{ hash }}/" + rom.region, function (patch) {
-                    rom.applyModeChanges(patch.mode).then(() => {
-                        rom.parsePatch(patch.patch);
-                        resolve(patch);
-                    });
-                }, "json").fail(reject);
-            });
-        }
-
-        function seedApplied(patch) {
-            return new Promise(function (resolve) {
-                $("#btn-save-rom").prop("disabled", false);
-                if (wad && wad.valid) {
-                    $("#btn-save-wad").prop("disabled", false);
-                } else {
-                    $("#btn-save-wad").prop("disabled", true);
+        const table = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+        const getBase64StringFromBoolean = (values) => {
+            bytes = []
+            ctr = 0
+            val = 0
+            for (i of values) {
+                val += (i << ctr)
+                ctr++
+                if (ctr == 6) {
+                    bytes.push(val)
+                    ctr = 0
+                    val = 0
                 }
-                updateSeedDetailsFromPatch(patch);
-                rom.parseInfoFromPatch(patch);
-                resolve(rom);
-            });
+            }
+            if (ctr != 0) {
+                bytes.push(val)
+            }
+            return bytes.map(b => table[b]).join("")
         }
 
-        function seedFailed() {
-            $('#error-message').html('Failed Creating Seed :(');
-            $('#error-box').show().delay(2000).fadeOut("slow");
-        }
+        $(document).ready(function() {
+            const FLAGS = JSON.parse(document.getElementById('flags_json').textContent);
 
-        // Override regular romOk function
-        function romOk(rom) {
-            checkWad();
-            $("#currently-loaded").show().find(".region").text(rom.region);
-            applyHash(rom).then(seedApplied, seedFailed);
-        }
+            // The gameplay flag string from the permalink (set when seed info is fetched)
+            let hashFlagString = '';
+            let hashSeed = '';
 
-        $(function () {
-            $('#error-box, .info').hide();
+            // Build cosmetics flag string from UI selections (only subcategory "R")
+            function buildCosmeticsString() {
+                applyFlagRequirements();
 
-            // Save ROM button
-            $("#btn-save-rom").click(function () {
-                return rom.save(rom.makeFilename("sfc"));
-            });
+                let flags_grouped = {}
+                for (let flag of FLAGS) {
+                    if (flag.subcategory !== "R") continue;
+                    if (!flags_grouped[flag.subcategory]) {
+                        flags_grouped[flag.subcategory] = []
+                    }
+                    flags_grouped[flag.subcategory].push(flag)
+                }
 
-            // Save WAD button
-            $("#btn-save-wad").click(function () {
-                rom.updateChecksum().then(function () {
-                    $("#btn-save-wad").html("Generating... (this may take a few minutes)").prop("disabled", true);
-                    $("#btn-save-rom").prop("disabled", true);
+                let cosmetic_chunks = []
+                for (let letter in flags_grouped) {
+                    let flag_strings = flags_grouped[letter].map(f => buildFlagStringPart(f)).filter(f => !!f)
+                    if (flag_strings.length) {
+                        cosmetic_chunks.push(`${letter}(${flag_strings.join("|")})`)
+                    }
+                }
 
-                    let fd = new FormData();
-                    fd.append("region", rom.region);
-                    fd.append("rom", rom.toBlob());
-                    fd.append("wad", wad.toBlob());
+                let cosmeticsString = cosmetic_chunks.join("     ")
+                $('#cosmetics').val(cosmeticsString);
 
-                    $.ajax("{% url 'randomizer:pack' %}", {
-                        method: "POST",
-                        processData: false,
-                        contentType: false,
-                        dataType: 'binary',
-                        data: fd,
-                        xhrFields: {
-                            responseType: 'blob'
-                        },
-                        success: (result) => {
-                            let filename = rom.makeFilename("wad");
-                            saveAs(result, filename);
-                        },
-                        error: () => {
-                            $("#error-message").html("Failed Packing Wad :(");
-                            $("#error-box").show().delay(2000).fadeOut("slow");
-                        },
-                        complete: () => {
-                            $("#btn-save-wad").html("Save Wad").prop("disabled", false);
-                            $("#btn-save-rom").prop("disabled", false);
+                // Save cosmetics in local storage
+                localforage.setItem("rom.cosmetics", cosmeticsString);
+            }
+
+            function buildFlagStringPart(flag) {
+                let idval = `#${flag.subcategory}\\.${flag.id}`;
+                let mode = 'open';
+
+                if (flag.modes.includes(mode)) {
+                    if (flag.type == "boolean") {
+                        if ($(idval).prop("disabled")) return null;
+                        let isChecked = $(idval).is(':checked');
+                        if (isChecked === flag.default) return null;
+                        return isChecked ? flag.id : null;
+                    }
+                    else if (flag.type == "select_one") {
+                        if ($(idval).prop("disabled")) return null;
+                        let currentVal = $(idval).val();
+                        if (currentVal === flag.default.id) return null;
+                        return `${flag.id}:${currentVal.toLowerCase()}`;
+                    }
+                    else if (flag.type == "number") {
+                        if ($(idval).prop("disabled")) return null;
+                        let currentVal = parseInt($(idval).val());
+                        if (currentVal === flag.default) return null;
+                        return `${flag.id}:${currentVal}`;
+                    }
+                    else if (flag.type == "categorization") {
+                        if ($(`${idval}\\.container`).hasClass("disabled")) return null;
+                        let checkboxes = $(idval).find("input[type='checkbox']");
+                        let checks = [];
+                        for (let box of checkboxes) {
+                            checks.push($(box).prop("checked"));
+                        }
+                        let defaultIds = flag.default.map(d => d.id);
+                        let currentIds = [];
+                        checkboxes.each(function() {
+                            if ($(this).prop("checked")) {
+                                let idParts = $(this).prop("id").split(".");
+                                currentIds.push(idParts[idParts.length - 1]);
+                            }
+                        });
+                        if (JSON.stringify(defaultIds.sort()) === JSON.stringify(currentIds.sort())) return null;
+                        return `${flag.id}:${getBase64StringFromBoolean(checks)}`;
+                    }
+                    else if (flag.type == "categorization_with_ordinance") {
+                        if ($(`${idval}\\.container`).hasClass("disabled")) return null;
+                        let container = $(idval);
+                        let allCheckboxes = container.find(".ordinance-checkbox").toArray();
+                        let orderedItems = [];
+                        container.find(".ordinance-checkbox:checked").each(function() {
+                            let order = parseInt($(this).attr('data-ordinance-order') || '999');
+                            let optionId = $(this).attr('data-option-id');
+                            let index = allCheckboxes.findIndex(cb => $(cb).attr('data-option-id') === optionId);
+                            orderedItems.push({order: order, index: index});
+                        });
+                        orderedItems.sort((a, b) => a.order - b.order);
+                        let selectedIndices = orderedItems.map(item => item.index);
+                        let defaultIndices = flag.default.filter(d => d.order !== null)
+                            .sort((a, b) => a.order - b.order)
+                            .map(d => flag.options.findIndex(opt => opt.id === d.id));
+                        if (JSON.stringify(selectedIndices) === JSON.stringify(defaultIndices)) return null;
+                        if (selectedIndices.length === 0) return null;
+                        return `${flag.id}:${selectedIndices.join(":")}`;
+                    }
+                }
+                return null;
+            }
+
+            // Check if a flag is set in the permalink's gameplay flag string
+            function isFlagInHashString(subcategory, flagId) {
+                const categoryPattern = /([A-Z])\(([^)]*)\)/g;
+                let match;
+                while ((match = categoryPattern.exec(hashFlagString)) !== null) {
+                    if (match[1] !== subcategory) continue;
+                    let flags = match[2].split("|");
+                    for (let f of flags) {
+                        let parts = f.split(":");
+                        if (parts[0] === flagId) return true;
+                    }
+                }
+                return false;
+            }
+
+            // Check if a single requirement is met
+            function checkRequirement(req) {
+                let flagElement = null;
+                if (req.subcategory) {
+                    let selector = `#${$.escapeSelector(req.subcategory + '.' + req.flag_id)}`;
+                    flagElement = $(selector);
+                } else {
+                    for (let flag of FLAGS) {
+                        if (flag.id === req.flag_id) {
+                            let selector = `#${$.escapeSelector(flag.subcategory + '.' + flag.id)}`;
+                            flagElement = $(selector);
+                            break;
+                        }
+                    }
+                }
+
+                // If the element is not in the DOM (gameplay flag), check the permalink's flag string
+                if (!flagElement || flagElement.length === 0) {
+                    if (req.type === "boolean") {
+                        // Look up the flag's default value
+                        let flagDef = FLAGS.find(f => f.id === req.flag_id && (!req.subcategory || f.subcategory === req.subcategory));
+                        let flagDefault = flagDef ? flagDef.default : false;
+                        // If flag is in the string, its value is the opposite of default
+                        let flagSubcategory = req.subcategory || (flagDef ? flagDef.subcategory : null);
+                        if (flagSubcategory) {
+                            let isInString = isFlagInHashString(flagSubcategory, req.flag_id);
+                            let actualValue = isInString ? !flagDefault : flagDefault;
+                            return actualValue === req.value;
+                        }
+                        return req.value === false;
+                    } else if (req.type === "select_one") {
+                        let flagSubcategory = req.subcategory || null;
+                        if (!flagSubcategory) {
+                            let flagDef = FLAGS.find(f => f.id === req.flag_id);
+                            if (flagDef) flagSubcategory = flagDef.subcategory;
+                        }
+                        if (flagSubcategory) {
+                            // Find the value in the flag string
+                            const categoryPattern = /([A-Z])\(([^)]*)\)/g;
+                            let match;
+                            while ((match = categoryPattern.exec(hashFlagString)) !== null) {
+                                if (match[1] !== flagSubcategory) continue;
+                                let flags = match[2].split("|");
+                                for (let f of flags) {
+                                    let parts = f.split(":");
+                                    if (parts[0] === req.flag_id && parts.length > 1) {
+                                        return req.values.includes(parts[1].toUpperCase());
+                                    }
+                                }
+                            }
+                        }
+                        // Not in string = default value
+                        let flagDef = FLAGS.find(f => f.id === req.flag_id);
+                        if (flagDef && flagDef.default) {
+                            return req.values.includes(flagDef.default.id);
+                        }
+                        return false;
+                    }
+                    return false;
+                }
+
+                // Standard DOM-based check
+                if (req.type === "boolean") {
+                    return flagElement.is(':checked') === req.value;
+                } else if (req.type === "select_one") {
+                    let currentValue = flagElement.val();
+                    return req.values.includes(currentValue);
+                }
+                return false;
+            }
+
+            function applyFlagRequirements() {
+                for (let flag of FLAGS) {
+                    // Only process cosmetic flags that are in the DOM
+                    if (flag.subcategory !== "R") continue;
+
+                    let shouldBeEnabled = true;
+                    let idval = `#${$.escapeSelector(flag.subcategory + '.' + flag.id)}`;
+                    let elem = $(idval);
+
+                    if (flag.requires_all && flag.requires_all.length > 0) {
+                        for (let req of flag.requires_all) {
+                            if (!checkRequirement(req)) {
+                                shouldBeEnabled = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (shouldBeEnabled && flag.requires_any && flag.requires_any.length > 0) {
+                        shouldBeEnabled = false;
+                        for (let req of flag.requires_any) {
+                            if (checkRequirement(req)) {
+                                shouldBeEnabled = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (shouldBeEnabled && flag.disabled_if_all && flag.disabled_if_all.length > 0) {
+                        let allMet = true;
+                        for (let req of flag.disabled_if_all) {
+                            if (!checkRequirement(req)) {
+                                allMet = false;
+                                break;
+                            }
+                        }
+                        if (allMet) shouldBeEnabled = false;
+                    }
+
+                    if (elem.length > 0) {
+                        elem.prop("disabled", !shouldBeEnabled);
+                        let label = elem.siblings("label");
+                        let container = elem.closest(".flag-container");
+                        if (!shouldBeEnabled) {
+                            label.addClass("disabled");
+                            container.addClass("disabled");
+                        } else {
+                            label.removeClass("disabled");
+                            container.removeClass("disabled");
+                        }
+                    }
+
+                    if (flag.type === "categorization" || flag.type === "categorization_with_ordinance") {
+                        let catContainer = $(idval);
+                        if (catContainer.length > 0) {
+                            catContainer.find('input[type="checkbox"]').prop("disabled", !shouldBeEnabled);
+                            let outerContainer = catContainer.closest(".flag-container");
+                            if (!shouldBeEnabled) {
+                                outerContainer.addClass("disabled");
+                            } else {
+                                outerContainer.removeClass("disabled");
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Apply cosmetics from a flag string (used to restore from localStorage)
+            function applyCosmeticsFromString(cosmeticsStr) {
+                if (!cosmeticsStr) return;
+
+                // First reset cosmetics to defaults
+                for (let flag of FLAGS) {
+                    if (flag.subcategory !== "R") continue;
+
+                    let idval = $.escapeSelector(`${flag.subcategory}.${flag.id}`);
+                    if (flag.type == "boolean") {
+                        $(`#${idval}`).prop("checked", flag.default);
+                    } else if (flag.type == "select_one") {
+                        $(`#${idval}`).val(flag.default.id);
+                    } else if (flag.type == "number") {
+                        $(`#${idval}`).val(flag.default);
+                    } else if (flag.type == "categorization") {
+                        let boxes = $(`#${idval}`).find("input[type='checkbox']").toArray();
+                        boxes.forEach(box => {
+                            let val_to_check_split = $(box).prop("id").split(".");
+                            let val_to_check = val_to_check_split[val_to_check_split.length - 1];
+                            let exists_in_default = !!(flag.default.filter(d => d.id == val_to_check)).length;
+                            $(box).prop("checked", exists_in_default);
+                        });
+                    } else if (flag.type == "categorization_with_ordinance") {
+                        let container = $(`#${idval}`);
+                        container.find('.ordinance-checkbox').each(function() {
+                            $(this).prop("checked", false);
+                            $(this).removeAttr('data-ordinance-order');
+                            $(this).siblings('label').find('.ordinance-order').text('');
+                        });
+                        if (flag.default) {
+                            let defaultsWithOrder = flag.default.filter(d => d.order !== null)
+                                .sort((a, b) => a.order - b.order);
+                            defaultsWithOrder.forEach((d, index) => {
+                                let checkbox = container.find(`.ordinance-checkbox[data-option-id="${d.id}"]`);
+                                checkbox.prop("checked", true);
+                                checkbox.attr('data-ordinance-order', index + 1);
+                                checkbox.siblings('label').find('.ordinance-order').text((index + 1) + '.');
+                            });
+                        }
+                    }
+                }
+
+                // Now parse and apply the cosmetics string
+                const categoryPattern = /([A-Z])\(([^)]*)\)/g;
+                let match;
+                while ((match = categoryPattern.exec(cosmeticsStr)) !== null) {
+                    let subcategory = match[1];
+                    if (subcategory !== "R") continue;
+                    let subcategory_flags = match[2].split("|");
+                    for (let flag of subcategory_flags) {
+                        let flag_parsed = flag.split(":");
+                        if (flag_parsed.length == 1) {
+                            let idval = `${subcategory}.${flag}`;
+                            $(`#${$.escapeSelector(idval)}`).prop("checked", true);
+                        } else {
+                            let idval = `${subcategory}.${flag_parsed[0]}`;
+                            let obj = $(`#${$.escapeSelector(idval)}`);
+                            if (!obj.length || !obj[0]) continue;
+                            let type = obj[0].type;
+
+                            if (obj.hasClass('ordinance-option-container')) {
+                                let orderedIndices = flag_parsed.slice(1);
+                                let allCheckboxes = obj.find('.ordinance-checkbox').toArray();
+                                obj.find('.ordinance-checkbox').each(function() {
+                                    $(this).prop("checked", false);
+                                    $(this).removeAttr('data-ordinance-order');
+                                    $(this).siblings('label').find('.ordinance-order').text('');
+                                });
+                                orderedIndices.forEach((indexStr, order) => {
+                                    let optIndex = parseInt(indexStr);
+                                    if (optIndex >= 0 && optIndex < allCheckboxes.length) {
+                                        let checkbox = $(allCheckboxes[optIndex]);
+                                        checkbox.prop("checked", true);
+                                        checkbox.attr('data-ordinance-order', order + 1);
+                                        checkbox.siblings('label').find('.ordinance-order').text((order + 1) + '.');
+                                    }
+                                });
+                            }
+                            else if (type == "number") {
+                                obj.val(flag_parsed[1]);
+                            }
+                            else if (type == "select-one") {
+                                obj.val(flag_parsed[1].toUpperCase());
+                            }
+                            else {
+                                let checkboxes = obj.find("input[type='checkbox']").toArray();
+                                let strval = flag_parsed[1];
+                                let checkbox_index = 0;
+                                for (var i = 0; i < strval.length; i++) {
+                                    let letter = strval[i];
+                                    let numval = table.indexOf(letter);
+                                    for (let b = 0; b < 6; b++) {
+                                        let is_checked = !!(numval & (1 << b));
+                                        $(checkboxes[checkbox_index]).prop("checked", is_checked);
+                                        checkbox_index++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                buildCosmeticsString();
+            }
+
+            function applySeed(rom, formData) {
+                return new Promise((resolve, reject) => {
+                    formData.set("region", rom.region);
+                    $("#progress-box").show();
+                    $("#progress-bar").css("width", "0%");
+                    $("#progress-message").text("Starting generation...");
+
+                    fetch("{% url 'randomizer:generate_stream' %}", {
+                        method: 'POST',
+                        body: formData,
+                    }).then(response => {
+                        const reader = response.body.getReader();
+                        const decoder = new TextDecoder();
+                        let buffer = '';
+
+                        function processStream({done, value}) {
+                            if (done) return;
+                            buffer += decoder.decode(value, {stream: true});
+                            const lines = buffer.split('\n\n');
+                            buffer = lines.pop();
+
+                            for (const line of lines) {
+                                if (line.startsWith('data: ')) {
+                                    try {
+                                        const data = JSON.parse(line.slice(6));
+                                        if (data.error) {
+                                            $("#progress-box").hide();
+                                            reject(data);
+                                            return;
+                                        } else if (data.complete) {
+                                            $("#progress-box").hide();
+                                            rom.applyModeChanges(data.data.mode).then(() => {
+                                                rom.parsePatch(data.data.patch);
+                                                resolve(data.data);
+                                            });
+                                            return;
+                                        } else if (data.stage) {
+                                            $("#progress-message").text(data.stage);
+                                            $("#progress-bar").css("width", data.percent + "%");
+                                        }
+                                    } catch (e) {
+                                        console.error("Failed to parse SSE data:", e, line);
+                                    }
+                                }
+                            }
+                            return reader.read().then(processStream);
+                        }
+                        return reader.read().then(processStream);
+                    }).catch(err => {
+                        $("#progress-box").hide();
+                        reject(err);
+                    });
+                });
+            }
+
+            function seedApplied(patch) {
+                return new Promise(function (resolve) {
+                    $("#generate-btn").html("Generate ROM").prop("disabled", false);
+                    $("#btn-save-rom").prop("disabled", false);
+                    if (wad && wad.valid) {
+                        $("#btn-save-wad").prop("disabled", false);
+                    } else {
+                        $("#btn-save-wad").prop("disabled", true);
+                    }
+                    updateSeedDetailsFromPatch(patch);
+                    rom.parseInfoFromPatch(patch);
+                    $("#seed-details").show();
+                    $('html').animate({scrollTop: 0}, 500);
+                    resolve(rom);
+                });
+            }
+
+            function seedFailed(patch = {}) {
+                let errmsg;
+                if (patch.error) {
+                    errmsg = patch.error;
+                } else {
+                    errmsg = "Failed Creating Seed :(";
+                }
+                $("#generate-btn").html("Generate ROM").prop("disabled", false);
+                $("#generate-error-message").html(errmsg);
+                $("#generate-error-box").show().delay(20000).fadeOut("slow");
+            }
+
+            // Override romOk from _rom_loader.html - show generate button instead of auto-applying
+            function romOk(rom) {
+                checkWad();
+                $("#currently-loaded").show().find(".region").text(rom.region);
+                $("#generate-btn").html("Generate ROM").prop("disabled", false);
+                $("#seed-generate").show();
+            }
+
+            // Handle palette preview images
+            const characterMapping = {
+                'mariopalette': 'mario',
+                'mallowpalette': 'mallow',
+                'genopalette': 'geno',
+                'bowserpalette': 'bowser',
+                'toadstoolpalette': 'toadstool'
+            };
+
+            function updatePalettePreview(selectElement) {
+                const $select = $(selectElement);
+                const $container = $select.closest('.flag-container').find('.palette-preview-container');
+                const $img = $container.find('.palette-preview-image');
+
+                const selectedOption = $select.find('option:selected');
+                const paletteName = selectedOption.data('palette-name');
+
+                const selectId = $select.attr('id');
+                const flagId = selectId ? selectId.split('.')[1] : null;
+                const characterDir = flagId ? characterMapping[flagId] : null;
+
+                if (paletteName && characterDir) {
+                    const filename = paletteName.toLowerCase().replace(/ /g, '_').replace(/'/g, '');
+                    const imagePath = `/static/randomizer/images/palette_previews/${characterDir}/${filename}.png`;
+                    $img.attr('src', imagePath);
+                    $img.attr('alt', `${paletteName} Preview`);
+                    $container.show();
+                } else {
+                    $container.hide();
+                }
+            }
+
+            function updateAllPreviews() {
+                $('.palette-selector').each(function() {
+                    updatePalettePreview(this);
+                });
+            }
+
+            $(() => {
+                $('#error-box, .info').hide();
+
+                // Show all open mode flags
+                let flags = $('.flag-container');
+                flags.filter('.flag-open').show();
+
+                // Fetch seed info from the permalink hash
+                $.get("/hash/{{ hash }}/US", function (patch) {
+                    hashFlagString = patch.flag_string || '';
+                    hashSeed = patch.seed || '';
+                    $('#flags').val(hashFlagString);
+                    $('#seed').val(hashSeed);
+
+                    updateSeedDetailsFromPatch(patch);
+                    // Don't show save buttons yet - wait for generation
+                    $("#seed-details").hide();
+
+                    // Now apply requirements based on the permalink's gameplay flags
+                    applyFlagRequirements();
+                });
+
+                // Load stored cosmetics from localStorage
+                localforage.getItem("rom.cosmetics").then((value_cosmetics) => {
+                    if (value_cosmetics) {
+                        applyCosmeticsFromString(value_cosmetics);
+                    } else {
+                        buildCosmeticsString();
+                    }
+                    updateAllPreviews();
+                });
+
+                // Generate button
+                $("#generate-btn").click((event) => {
+                    // Build cosmetics string from current UI state
+                    buildCosmeticsString();
+
+                    const formData = new FormData(document.getElementById('config'));
+                    $(event.target).html("Generating... (this may take a few minutes)").prop("disabled", true);
+                    resetRom().then((rom) => {
+                        applySeed(rom, formData).then(seedApplied, seedFailed);
+                    });
+                });
+
+                // Save ROM button
+                $("#btn-save-rom").click(function () {
+                    return rom.save(rom.makeFilename("sfc"));
+                });
+
+                // Save WAD button
+                $("#btn-save-wad").click(function () {
+                    rom.updateChecksum().then(function () {
+                        $("#btn-save-wad").html("Generating... (this may take a few minutes)").prop("disabled", true);
+                        $("#btn-save-rom").prop("disabled", true);
+
+                        let fd = new FormData();
+                        fd.append("region", rom.region);
+                        fd.append("rom", rom.toBlob());
+                        fd.append("wad", wad.toBlob());
+
+                        $.ajax("{% url 'randomizer:pack' %}", {
+                            method: "POST",
+                            processData: false,
+                            contentType: false,
+                            dataType: 'binary',
+                            data: fd,
+                            xhrFields: {
+                                responseType: 'blob'
+                            },
+                            success: (result) => {
+                                let filename = rom.makeFilename("wad");
+                                saveAs(result, filename);
+                            },
+                            error: () => {
+                                $("#error-message").html("Failed Packing Wad :(");
+                                $("#error-box").show().delay(2000).fadeOut("slow");
+                            },
+                            complete: () => {
+                                $("#btn-save-wad").html("Save Wad").prop("disabled", false);
+                                $("#btn-save-rom").prop("disabled", false);
+                            }
+                        });
+                    });
+                });
+
+                // Rebuild cosmetics string when any cosmetic flag changes
+                $('body').on('change', '.flag-form-input:not(".ordinance-checkbox")', function() {
+                    buildCosmeticsString();
+                });
+
+                // Handle ordinance checkbox clicks
+                $('body').on('change', '.ordinance-checkbox', function() {
+                    let container = $(this).closest('.ordinance-option-container');
+                    let maxSelections = 5;
+
+                    if ($(this).is(':checked')) {
+                        let checkedCount = container.find('.ordinance-checkbox:checked').length;
+                        if (checkedCount > maxSelections) {
+                            $(this).prop('checked', false);
+                            return;
+                        }
+                        let maxOrder = 0;
+                        container.find('.ordinance-checkbox:checked').each(function() {
+                            let order = parseInt($(this).attr('data-ordinance-order') || '0');
+                            if (order > maxOrder) maxOrder = order;
+                        });
+                        $(this).attr('data-ordinance-order', maxOrder + 1);
+                    } else {
+                        $(this).removeAttr('data-ordinance-order');
+                    }
+                    updateOrdinanceDisplay(container);
+                    buildCosmeticsString();
+                });
+
+                function updateOrdinanceDisplay(container) {
+                    let items = [];
+                    container.find('.ordinance-checkbox:checked').each(function() {
+                        items.push({
+                            elem: $(this),
+                            order: parseInt($(this).attr('data-ordinance-order') || '999')
+                        });
+                    });
+                    items.sort((a, b) => a.order - b.order);
+                    items.forEach((item, index) => {
+                        item.elem.attr('data-ordinance-order', index + 1);
+                        item.elem.siblings('label').find('.ordinance-order').text((index + 1) + '.');
+                    });
+                    container.find('.ordinance-checkbox:not(:checked)').each(function() {
+                        $(this).siblings('label').find('.ordinance-order').text('');
+                    });
+                }
+
+                // Multiselect controls
+                $('body').on('click', '.multiselect-select-all', function() {
+                    let container = $(this).closest(".flag-container-list");
+                    container.find("input[type='checkbox']").prop('checked', true);
+                    buildCosmeticsString();
+                });
+                $('body').on('click', '.multiselect-clear-all', function() {
+                    let container = $(this).closest(".flag-container-list");
+                    container.find("input[type='checkbox']").prop('checked', false);
+                    buildCosmeticsString();
+                });
+                $('body').on('click', '.clear-multiselect', function() {
+                    let container = $(this).closest(".flag-container-list");
+                    let txtbox = container.find("input[type='text']");
+                    if (!txtbox.prop("disabled")) {
+                        txtbox.val('');
+                        container.find("input[type='checkbox']").toArray().forEach(b => {
+                            $(b).closest(".multiselect-option").show();
+                        });
+                    }
+                });
+                $('body').on('keyup', '.multiselect-filter', function() {
+                    let searchterm = $(this).val();
+                    let container = $(this).closest(".flag-container-list");
+                    let boxes = container.find("input[type='checkbox']").toArray();
+                    if (!(searchterm.trim())) {
+                        boxes.forEach(b => { $(b).closest(".multiselect-option").show(); });
+                    } else {
+                        boxes.forEach(b => {
+                            if ($(b).prop("value").toLowerCase().includes(searchterm.toLowerCase())) {
+                                $(b).closest(".multiselect-option").show();
+                            } else {
+                                $(b).closest(".multiselect-option").hide();
+                            }
+                        });
+                    }
+                });
+
+                // Initialize palette previews
+                updateAllPreviews();
+
+                // Observe palette selectors for changes
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'value') {
+                            updatePalettePreview(mutation.target);
                         }
                     });
                 });
-            });
+                $('.palette-selector').each(function() {
+                    observer.observe(this, { attributes: true, attributeFilter: ['value'] });
+                });
 
-            // Load patch meta-data initially in case they don't have a ROM loaded yet.
-            $.get("/hash/{{ hash }}/US", function (patch) {
-                updateSeedDetailsFromPatch(patch);
-                $("#seed-details").hide();
+                let pollCount = 0;
+                const pollInterval = setInterval(function() {
+                    updateAllPreviews();
+                    pollCount++;
+                    if (pollCount >= 10) clearInterval(pollInterval);
+                }, 100);
+
+                $(document).on('change', '.palette-selector', function() {
+                    updatePalettePreview(this);
+                });
+                $(window).on('pageshow', function() {
+                    updateAllPreviews();
+                });
             });
         });
     </script>

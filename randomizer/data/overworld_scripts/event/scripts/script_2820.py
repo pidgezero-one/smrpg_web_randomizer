@@ -84,6 +84,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(ITEM_ID, ExtraShinyStoneItem, ["EVENT_2820_run_dialog_16"]),
 	JmpIfVarEqualsConst(ITEM_ID, LambsLureItem, ["EVENT_2820_lambs_lure"]),
 	JmpIfVarEqualsConst(ITEM_ID, BtubRingItem, ["EVENT_2820_btub_ring"]),
+	JmpIfVarEqualsConst(ITEM_ID, YoshiAdeItem, ["EVENT_2820_yoshi_ade"]),
 	RunDialog(dialog_id=DI0066_GOT_A_70A7_AUTO_TERMINATE, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False),
 	AddToInventory(ITEM_ID),
 	Return(),
@@ -95,5 +96,8 @@ script = EventScript([
 	Return(),
 	RunDialog(dialog_id=DI2007_FOUND_A_BTUB_RING_AUTO_TERMINATE, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False, identifier="EVENT_2820_btub_ring"),
 	AddToInventory(ITEM_ID),
-	Return()
+	Return(),
+    RunDialog(dialog_id=DI2012_GOT_A_YOSHI_ADE_AWAIT_TERMINATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_2820_yoshi_ade"),
+    AddToInventory(ITEM_ID),
+    Return()
 ])

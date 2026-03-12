@@ -13,7 +13,7 @@
 5. [NPC Properties](#npc-properties)
 6. [Palette System](#palette-system)
 7. [Effects NPC](#effects-npc)
-8. [SA-1 Coprocessor DMA](#sa-1-coprocessor-dma)
+8. [SA-1 Coprocessor Communication](#sa-1-coprocessor-communication)
 9. [Battle VRAM](#battle-vram)
 10. [Key ROM Addresses](#key-rom-addresses)
 11. [Room-by-Room VRAM Analysis](#room-by-room-vram-analysis)
@@ -28,7 +28,7 @@ SMRPG's overworld sprite system uses a **partition-based VRAM allocation** schem
 - **Extra sprite buffer** (additional tile space)
 - **Clone buffers** (shared tile pools for NPCs)
 
-The system is managed by the **SNES CPU** (65816) with heavy delegation to the **SA-1 coprocessor** for DMA transfers.
+The system is managed by the **SA-1 coprocessor** (65816) which handles entity processing, with delegation back to the **SNES CPU** for APU sound effects (via `$F5C0`) and PPU/VRAM access.
 
 ### Memory Map
 
@@ -336,7 +336,7 @@ if buffer_increase > 0:
 
 ---
 
-## SA-1 Coprocessor DMA
+## SA-1 Coprocessor Communication
 
 ### Communication Protocol
 
@@ -344,44 +344,110 @@ The SNES and SA-1 communicate through two mechanisms:
 
 **1. Polling Loop (Normal Commands)**
 - SNES writes command byte to I-RAM `$3000` (SA-1 address `$0000`)
-- SA-1 main loop polls `$0000`, dispatches via jump table at `$C0:8376`
+- SA-1 main loop at `$C0:8167` polls `$0000`, dispatches via jump table at `$C0:8376`
 - Used for commands 1-45+ (general game operations)
 
-**2. Message Register (Command $8D — Sprite DMA)**
-- SNES writes `$8D` to register `$2209`
-- SA-1 interrupt fires, wakes polling loop
-- Parameter at I-RAM `$3050` (SA-1 `$0050`)
-- Sub-parameter at I-RAM `$3051` (SA-1 `$0051`)
+**2. Message Register ($2209 — SA-1 → SNES Delegation)**
+- **SA-1** writes `$8D` to register `$2209` (SCNT — SA-1-write-only register)
+- Bit 7 = 1: triggers SNES IRQ; Bits 0-3 = $0D: message 13 to SNES
+- SNES IRQ handler at `$02A2` → `$0692` reads `$2300`, dispatches message 13
+- Message 13 → `$0745` → JSR `$F56E` → JSL `$C4:0000`
 - Completion signaled via I-RAM `$304B`
 
-### DMA Delegation (`$C0:F5C0`)
+**Key insight:** Register `$2209` (SCNT) can ONLY be written by the SA-1 CPU. This means `$F5C0` runs on the SA-1 CPU, not the SNES. The SA-1 handles entity processing and delegates APU access to the SNES since only the SNES can access SPC700 APU ports `$2140`-`$2143`.
+
+### APU Sound Delegation (`$C0:F5C0`)
+
+**Runs on SA-1 CPU** (DP=$3000, I-RAM at $3000-$37FF from both CPUs' view):
 
 ```
-$F5C0: STA $50        ; Store parameter to I-RAM
-$F5C2: STZ $4B        ; Clear completion flag
-$F5C4: LDA $00317F    ; Poll SA-1 busy flag (I-RAM $017F)
-$F5C8: BNE $F5C4      ; Spin-wait while SA-1 busy
-$F5CA: LDA #$8D       ; Command $8D
-$F5CC: STA $002209    ; Write to SA-1 message register
+$F5C0: STA $50        ; Store main param to I-RAM $3050 (0-6)
+$F5C2: STZ $4B        ; Clear completion flag (I-RAM $304B)
+$F5C4: LDA $00317F    ; Poll SNES busy flag (I-RAM $017F)
+$F5C8: BNE $F5C4      ; Spin-wait while SNES busy
+$F5CA: LDA #$8D       ; IRQ trigger ($80) + message $0D (13)
+$F5CC: STA $002209    ; SA-1 → SNES: trigger SNES IRQ with message 13
 $F5D0: LDA $4B        ; Poll completion flag (I-RAM $004B)
-$F5D2: BEQ $F5D0      ; Spin-wait for SA-1 completion
+$F5D2: BEQ $F5D0      ; Spin-wait for SNES completion
 $F5D4: RTS
 ```
 
-### When SA-1 DMA is Used
+**SNES-side handler** (IRQ context, DP=$0000):
+1. `$0692`: Reads `$2300` → message $0D → dispatches via table at ROM `$0083AE`
+2. `$0745`: Message 13 handler → JSR `$F56E`
+3. `$F56E`: Reads param from I-RAM `$3050`, switches on value (0-6)
+   - Sets up WRAM `$1D00`-`$1D02` with processed parameters
+   - JSL `$C4:0000` (tile/sound processor at ROM `$040000`)
+4. `$C4:0000`: Sets DP=$1D00, dispatches via function table at `$C4:0893`
+   - Param 0,1 → `$C4:008B`: Sends APU command `$08` (water sound)
+   - Param 4,5 → `$C4:00A5`: Sends APU command `$09`
+   - Writes to `$2140`-`$2143` (SPC700 APU ports)
+5. `$06AD`: INC `$304B` (completion flag for SA-1)
 
-Only **VramStore 7** triggers SA-1 DMA for direction changes:
+### Parameter Mapping
+
+| Main Param ($50) | $F56E Output ($1D00) | $0052 Flag | APU Cmd | Use |
+|---|---|---|---|---|
+| 0 | $00 | $80 | $08 | Water sound (south-facing) |
+| 1 | $00 | none | $08 | Water sound (default) |
+| 2 | $12 | none | varies | Unknown sound |
+| 3 | $16 | none | NOP | Error/unused |
+| 4 | $01 | $80 | $09 | Unknown sound |
+| 5 | $01 | none | $09 | Unknown sound |
+| 6+ | $0A | none | varies | Default handler |
+
+### Callers (10 total in ROM)
+
+| ROM Offset | Context | Param | Sub-Param |
+|---|---|---|---|
+| `$0017C0` | VramStore 7 water handler | 0 | $04 or $6F (direction-dependent) |
+| `$001A58` | Splash creation handler | 0 | $5D |
+| `$00DE41` | Sound queue processor | 6 | varies |
+| `$00DE4E`-`$00DEAA` | Sound queue processor | 0-5 | from queue table |
+| `$00DF13` | Sound queue processor | 1 | from queue table |
+| `$103E09` | Unknown context | varies | varies |
+
+### When $F5C0 is Called from VramStore 7
+
+Only **VramStore 7** entities trigger the APU sound delegation:
 
 ```
 $17A8: LDA $59,X      ; Load VramStore
 $17AA: AND #$07       ; Mask to 3 bits
 $17AC: CMP #$07       ; Is it type 7?
 $17AE: BNE $17D7      ; Skip if not type 7
-; ... setup parameters ...
-$17C0: JSR $F5C0      ; SA-1 DMA call
+; ... setup sub-parameter based on direction ...
+$17B0: LDA $84; BIT #$10    ; Check direction bit 4
+$17B6: LDA #$04             ; sub-param $04 (or $6F if bit set)
+$17BC: STA $51              ; Store sub-parameter
+$17BE: LDA #$00             ; Main parameter = 0 (water sound)
+$17C0: JSR $F5C0            ; SA-1 → SNES APU sound delegation
 ```
 
-The sub-parameter (`$51`) is `$04` or `$6F` depending on direction state bit 4.
+**Important:** This is a SOUND effect trigger, NOT tile/VRAM DMA. The actual VRAM tile management for VramStore 7 is handled through the standard VramStore direction sequence system and the `$18D7` 10-sequence handler.
+
+### SNES Message Dispatch Table (ROM `$0083AE`)
+
+The SNES IRQ handler reads SA-1→SNES messages from `$2300` and dispatches via this 15-entry table:
+
+| Message | Handler | Description |
+|---------|---------|-------------|
+| 0 | `$06B1` | NOP (BRA to RTS) |
+| 1-5, 12 | `$0762` | Common handler (BRL to RTS, no completion increment) |
+| 6 | `$06B3` | Table lookup: reads `$7F:B000[idx]`, fetches 6 bytes from `$7E:6000` → I-RAM `$3050-$3054` |
+| 7 | `$06E0` | Block copy: reads `$7F:B000[idx]`, MVN 12 bytes from `$7F:8000+` → I-RAM `$3050` |
+| 8 | `$0705` | Direct read: 6 bytes from `$7E:6000[idx]` → I-RAM `$3080-$3084` |
+| 9 | `$0724` | Dual read: `$7F:D200[idx]` → `$3050`, `$7F:E300[idx]` → `$3051` |
+| 10 | `$0738` | JSL `$C9:6FB7` (ROM subroutine) |
+| 11 | `$073F` | JSR `$9613` |
+| **13** | **`$0745`** | **JSR `$F56E` → APU sound delegation (the `$F5C0` handler)** |
+| 14 | `$074B` | Bank-switched read: 2 bytes from bank `$304A`:offset → `$3050` |
+
+Most handlers end with INC `$304B` (completion flag) except messages 0 and 1-5/12.
+
+### SA-1 Main Loop Dispatch (ROM `$C0:8376`)
+
+The SA-1 CPU polls I-RAM `$0000` for command bytes and dispatches via the table at `$C0:8376`. This is separate from the message register protocol — normal game commands (entity processing, physics, etc.) use this path. The SA-1 IRQ handler at `$80AB` → `$8362` only acknowledges SNES messages (reads nibble from `$2301`, discards it after acknowledge via `$220B`).
 
 ---
 
@@ -445,7 +511,7 @@ Each formation supports at most **3 distinct monster palettes**. Monsters sharin
 |---------|-------------|
 | `$C0:9ECB` | Full VramStore dispatch — direction→sequence for all 8 types |
 | `$C0:E5E6` | VRAM offset calculator — size formula per VramStore type |
-| `$C0:17A8` | Direction change handler — VramStore 7 SA-1 DMA trigger |
+| `$C0:17A8` | Direction change handler — VramStore 7 APU sound trigger |
 | `$C0:18D7` | VramStore 7 movement handler — 10-sequence direction system |
 | `$C0:DA6E` | Animation state check — VramStore 4 and 7 specific |
 
@@ -453,11 +519,15 @@ Each formation supports at most **3 distinct monster palettes**. Monsters sharin
 
 | Address | Description |
 |---------|-------------|
-| `$C0:F5C0` | SA-1 DMA delegation — command `$8D` to register `$2209` |
+| `$C0:F5C0` | SA-1 → SNES APU sound delegation — runs on SA-1, writes `$8D` to `$2209` |
+| `$C0:F56E` | SNES-side message 13 handler — processes params, calls `$C4:0000` |
+| `$C4:0000` | Tile/sound processor — dispatches via table at `$C4:0893`, writes APU ports |
 | SA-1 `$C0:8167` | SA-1 main loop — polls I-RAM `$0000` for commands |
-| SA-1 `$C0:80AB` | SA-1 IRQ handler — message interrupt handler |
-| SA-1 `$C0:8362` | SA-1 message dispatch |
-| SA-1 `$C0:8376` | SA-1 command jump table |
+| SA-1 `$C0:80AB` | SA-1 IRQ handler — acknowledges SNES messages only |
+| SA-1 `$C0:8362` | SA-1 message acknowledgment (reads nibble, discards) |
+| SA-1 `$C0:8376` | SA-1 command jump table (for I-RAM `$0000` commands) |
+| SNES `$C0:02A2` | SNES IRQ handler — dispatches SA-1 messages via `$0692` |
+| SNES `$00:0692` | SNES message dispatch — reads `$2300`, table at `$0083AE` |
 
 ### Data Tables
 

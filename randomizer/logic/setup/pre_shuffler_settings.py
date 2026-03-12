@@ -59,7 +59,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import (
     NPC_5,
 )
 
-from ...types.flags import EnemySpells, ShuffleCookies, ShuffleMarioDoll
+from ...types.flags import BossScaleOptions, BossShuffleScaleStats, EnemySpells, ShuffleCookies, ShuffleMarioDoll
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -189,12 +189,12 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         world.event_2496_startup += [SetBit(CHAPEL_ITEMS_ANYWHERE_ENABLED)]
 
     # EXP challenge settings
-    if world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.STARS):
+    if  world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE) or world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE) or settings.debug_mode:
+        world.event_scripts.delete_command_by_identifier("inc_exp_by_packet")
+    elif world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.STARS):
         world.event_2496_startup += [SetBit(PROGRESSIVE_STAR_EXP_ENABLED)]
     elif world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.BOSSES):
         world.event_2496_startup += [SetBit(PROGRESSIVE_BOSS_EXP_ENABLED)]
-    elif world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE):
-        world.event_scripts.delete_command_by_identifier("inc_exp_by_packet")
 
     if world.settings.isflag_enabled(SkipBossFights):
         world.event_2496_startup += [SetBit(ALTERNATE_STAR_PIECE_WIN_CONDITION)]

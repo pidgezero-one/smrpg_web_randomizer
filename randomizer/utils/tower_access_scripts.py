@@ -44,7 +44,7 @@ mario_script = EventScript([
     ]),
     Pause(25),
     SummonObjectToCurrentLevelAtMariosCoords(NPC_0),
-    ActionQueueSync(target=NPC_0, subscript=[
+    ActionQueueAsync(target=NPC_0, subscript=[
         A_SetWalkingSpeed(NORMAL),
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
@@ -125,7 +125,7 @@ mario_self_script = EventScript([
     # Do have the right character
     EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
-    ActionQueueSync(target=MARIO, subscript=[
+    ActionQueueAsync(target=MARIO, subscript=[
         A_SetWalkingSpeed(NORMAL),
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
@@ -326,7 +326,7 @@ bowser_script = EventScript([
     ]),
     Pause(25),
     SummonObjectToCurrentLevelAtMariosCoords(NPC_0),
-    ActionQueueSync(target=NPC_0, subscript=[
+    ActionQueueAsync(target=NPC_0, subscript=[
         A_SetWalkingSpeed(NORMAL),
         A_WalkToXYCoords(x=5, y=115),
         A_SetSequenceSpeed(VERY_FAST),
@@ -399,7 +399,7 @@ bowser_self_script = EventScript([
     # Do have the right character
     EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
-    ActionQueueSync(target=MARIO, subscript=[
+    ActionQueueAsync(target=MARIO, subscript=[
         A_SetWalkingSpeed(NORMAL),
         A_WalkToXYCoords(x=5, y=115),
         A_SetSequenceSpeed(VERY_FAST),

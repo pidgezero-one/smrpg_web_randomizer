@@ -37,6 +37,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
     A_ShiftXYPixels,
     A_ShiftZUpPixels,
     A_ShiftZUpSteps,
+    A_ShiftZDownPixels,
     A_StartLoopNTimes,
     A_WalkNorthPixels,
     A_WalkSouthPixels,
@@ -250,7 +251,11 @@ def render_booster_tower_indoor_boss(
     if m.tower_entrance_horizontal_shift:
         as_contents.append(A_ShiftXYPixels(m.tower_entrance_horizontal_shift, 0))
     if m.eye_height:
-        as_contents.append(A_ShiftZUpPixels(m.eye_height))
+        shift = 17 - m.eye_height
+        if shift > 0:
+            as_contents.append(A_ShiftZUpPixels(shift))
+        elif shift < 0:
+            as_contents.append(A_ShiftZDownPixels(-shift))
     if len(as_contents) > 0:
         ev.set_contents(
             [

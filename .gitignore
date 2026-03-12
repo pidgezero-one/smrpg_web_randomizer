@@ -120,6 +120,7 @@ patchvenv
 **/.DS_Store
 
 spoiler.json
+spoiler_*.json
 /placement.py
 spoiler_after_replacements.json
 repeated_sequences_report.txt

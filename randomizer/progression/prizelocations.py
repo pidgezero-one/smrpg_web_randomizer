@@ -1919,7 +1919,7 @@ class RoseTownInnToadPrizeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.ROSE_TOWN_TOAD
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [RecoveryMushroomPrize]
-    # Flag as checked:  ROSE_TOWN_TOAD
+    # Flag as checked: ROSE_TOWN_INN_TOAD_ITEM_RECEIVED
 
 
 class RoseTownInnGazPrizeLocation(NPCLocationRow1):
@@ -6169,7 +6169,7 @@ class LandsEndCloudBoss(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return not_earlygame(world, inventory)
 
-    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
+    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE
 
 
 class LandsEndCloudStarPiece(StarPieceLocation):
@@ -6184,7 +6184,7 @@ class LandsEndCloudStarPiece(StarPieceLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and not_earlygame(world, inventory)
 
-    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
+    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE
 
 
 class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
