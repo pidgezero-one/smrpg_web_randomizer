@@ -6,7 +6,9 @@ from uuid import uuid4
 import random
 import statistics
 
-from ..data.variables.event_palette_names import EPAL0085_MALLOW_ENDING, EPAL0086_GENO_ENDING, EPAL0140_BOWSER_ENDING, EPAL0141_TOADSTOOL_ENDING
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_2, NPC_PALETTE_ROW_3 ,NPC_PALETTE_ROW_4,NPC_PALETTE_ROW_5,NPC_PALETTE_ROW_6, NPC_PALETTE_ROW_7
+
+from ..data.variables.event_palette_names import * # holy shit i cannot deal with how slow pylance is, fuck it just import everything
 from randomizer.logic.partition_calculator import update_shuffed_boss_partitions
 
 if TYPE_CHECKING:
@@ -33,6 +35,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     PaletteSet,
+    PaletteSetMorphs,
     Return,
     ClearBit,
     Inc,
@@ -41,6 +44,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     JmpIfVarEqualsConst,
     StartBattleAtBattlefield,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
+    A_SetSpriteSequence,
+)
+from ..types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
     AreaObject,
 )
@@ -626,6 +633,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
         elif world.overworld_character.ally.index == 2:
             world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = BOWSER_96
             world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = BOWSER_132
@@ -637,10 +645,17 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.sprites.sprites[SPR0036_ALT_PROTAGONIST_6] = BOWSER_974
             world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = BOWSER_975
             world.event_scripts.get_command_by_identifier("midas_palette_1", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_1", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("midas_palette_2", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_2", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
         elif world.overworld_character.ally.index == 3:
             world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
             world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = GENO_132
@@ -656,6 +671,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
         elif world.overworld_character.ally.index == 4:
             world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = MALLOW_96
             world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = MALLOW_132
@@ -671,7 +687,56 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
+            world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
         clone_room_npc_0._npc = ALLY_CLONE_NPC
+
+    # Update the "hide from Toad" animation to use the overworld character's
+    # defend mold, so the correct sprite frame shows when cowering.
+    ally = world.overworld_character.ally
+    defend_mold = ally._sprites_primary.get(SpriteAnimationState.DEFEND_MOLD)
+    if defend_mold is not None:
+        hide_cmd = world.event_scripts.get_subscript_command_by_identifier(
+            "EVENT_273_hide_from_toad_subscript",
+            "EVENT_273_hide_from_toad",
+            A_SetSpriteSequence,
+        )
+        hide_cmd.set_index(defend_mold[1])
+        hide_cmd = world.event_scripts.get_subscript_command_by_identifier(
+            "crouch_for_coin_aq",
+            "crouch_for_coin",
+            A_SetSpriteSequence,
+        )
+        hide_cmd.set_index(defend_mold[1])
+    # Set palettes that change when the protagonist changes.
+    if ally.index == 2: # bowser shifts a lot of stuff...
+        world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
+        world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
+        world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
+        world.event_scripts.get_command_by_identifier("goomba_thumpin_gold", PaletteSet).set_palette_set_starts_at(NPC_PALETTE_ROW_4)
+        try:
+            world.event_scripts.get_command_by_identifier("kamek_palette", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("infinite_coin_chest_palette", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_2)
+        except:
+            pass
+    # statue minigame
+    if ally.index in [1, 3]:
+        world.event_scripts.get_command_by_identifier("protagonist_becomes_gold", PaletteSet).set_palette_set_starts_at(EPAL0109_GENO_PEACH_STATUE)
+    elif ally.index == 4:
+        world.event_scripts.get_command_by_identifier("protagonist_becomes_gold", PaletteSet).set_palette_set_starts_at(EPAL0108_MALLOW_STATUE)
+    # don't do anything for mario/bowser, they both use #111
+    # set default palettes for reset reasons
+    resets = ["remove_statue_palette_1", "remove_statue_palette_2", "hot_spring_reset_palette"]
+    for reset in resets:
+        if ally.index == 1:
+            world.event_scripts.get_command_by_identifier(reset, PaletteSet).set_palette_set_starts_at(EPAL0141_TOADSTOOL_ENDING)
+        elif ally.index == 2:
+            world.event_scripts.get_command_by_identifier(reset, PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
+        elif ally.index == 3:
+            world.event_scripts.get_command_by_identifier(reset, PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
+        elif ally.index == 4:
+            world.event_scripts.get_command_by_identifier(reset, PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
+
+    # TODO: ending credits bullshittery
 
 
 

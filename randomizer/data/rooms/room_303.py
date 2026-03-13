@@ -1,7 +1,6 @@
 # R303_KERO_SEWERS_AREA_08_BELOMES_ROOM_AFTER_DEFEAT
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
+from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize, Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, EffectsNpc
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -36,5 +35,5 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0027_DUNGEONISFULLOFMONSTERS,
-    entrance_event=E0015_STANDARD_ROOM_LOADER, effects_npc=0x0C,    effects_npc=0x0C,
+    entrance_event=E0015_STANDARD_ROOM_LOADER, effects_npc=EffectsNpc.UNKNOWN_0C, 
 )

@@ -37,6 +37,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
     A_ShiftXYPixels,
     A_ShiftZUpPixels,
     A_ShiftZUpSteps,
+    A_ShiftZDownPixels,
     A_StartLoopNTimes,
     A_WalkNorthPixels,
     A_WalkSouthPixels,
@@ -250,7 +251,11 @@ def render_booster_tower_indoor_boss(
     if m.tower_entrance_horizontal_shift:
         as_contents.append(A_ShiftXYPixels(m.tower_entrance_horizontal_shift, 0))
     if m.eye_height:
-        as_contents.append(A_ShiftZUpPixels(m.eye_height))
+        shift = 17 - m.eye_height
+        if shift > 0:
+            as_contents.append(A_ShiftZUpPixels(shift))
+        elif shift < 0:
+            as_contents.append(A_ShiftZDownPixels(-shift))
     if len(as_contents) > 0:
         ev.set_contents(
             [
@@ -828,9 +833,15 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
         world.event_scripts.delete_subscript_command_by_identifier(
             "dojo_boss_1_initiate_aq", "dojo_boss_1_initiate"
         )
+    if m.animations.recoil is not None:
+        world.event_scripts.get_subscript_command_by_identifier("dojo_boss_1_recoil_aq", "dojo_boss_1_recoil", A_SetSpriteSequence).set_index(m.animations.recoil.sequence_id)
+    else:
+        world.event_scripts.delete_subscript_command_by_identifier("dojo_boss_1_recoil_aq", "dojo_boss_1_recoil")
     world.event_scripts.replace_subscript_command_by_identifier(
         "EVENT_2067_action_queue_0", "jagger_looks_around", A_FaceNorthwest()
     )
+    
+
 
 
 def render_dojo_fight(

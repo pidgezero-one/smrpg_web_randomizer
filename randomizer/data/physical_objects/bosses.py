@@ -1065,6 +1065,7 @@ class SmithyStatueObject(BossNPC):
     """Smithy statue object."""
 
     _base = SMITHY_STATUE_NPC
+    _horizontal_pixel_shift = -8
 
 
 class CulexStatueObject(BossNPC):

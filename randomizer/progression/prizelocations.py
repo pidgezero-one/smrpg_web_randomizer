@@ -488,7 +488,7 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_3
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize, FrogCoinPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize, FrogCoinPrize, EXPStarPrize,]
     _model_allowlist = [
         FlowerObject,
         RecoveryMushroomObject,
@@ -761,6 +761,7 @@ class MushroomKingdomChair(NPCLocationRow1):
         R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM,
         R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM,
     ]
+    _check_npc_ids = [NPC_0, NPC_7]
     _id = ShuffleLocationSelector.PEACH_SURPRISE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     # flag as checked: npc 0 is missing/despawned from room 20 or npc 7 is missing/despawned from room 328
@@ -835,6 +836,7 @@ class MushroomKingdomOccupiedOutdoorGuardLocation(NPCLocationRow1):
     _bias = True
     _originally_held = Coins10Prize
     _rooms = [R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, R191_MUSHROOM_KINGDOM_OUTSIDE]
+    _check_npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.INVASION_EASTERN_GUARD
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
 
@@ -1918,7 +1920,8 @@ class RoseTownInnToadPrizeLocation(NPCLocationRow1):
     ]
     _id = ShuffleLocationSelector.ROSE_TOWN_TOAD
     _world_area = WorldAreaEnum.ROSE_TOWN
-    # Flag as checked:  ROSE_TOWN_TOAD
+    _blacklist = [RecoveryMushroomPrize]
+    # Flag as checked: ROSE_TOWN_INN_TOAD_ITEM_RECEIVED
 
 
 class RoseTownInnGazPrizeLocation(NPCLocationRow1):
@@ -2829,6 +2832,7 @@ class OuterMinesTrampolineHenchmanLocation(NPCLocationRow2):
     _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
+    _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_1
     _world_area = WorldAreaEnum.MOLEVILLE
 
@@ -2842,6 +2846,7 @@ class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
     _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
+    _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_2
     _world_area = WorldAreaEnum.MOLEVILLE
 
@@ -2855,6 +2860,7 @@ class OuterMinesRightHenchmanLocation(NPCLocationRow2):
     _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
+    _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_3
     _world_area = WorldAreaEnum.MOLEVILLE
 
@@ -3453,6 +3459,7 @@ class BoosterTowerTrainRoomCreviceLocation(NPCLocationRow1):
     _bias = True
     _originally_held = FlowerTabPrize
     _rooms = [R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
+    _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_RAILWAY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
 
@@ -3572,6 +3579,7 @@ class BoosterTowerParachuteRoomCreviceLocation(NPCLocationRow1):
     _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
+    _check_npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE_CREVICE
     _world_area = WorldAreaEnum.BOOSTER_TOWER
 
@@ -6168,7 +6176,7 @@ class LandsEndCloudBoss(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return not_earlygame(world, inventory)
 
-    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
+    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE
 
 
 class LandsEndCloudStarPiece(StarPieceLocation):
@@ -6183,7 +6191,7 @@ class LandsEndCloudStarPiece(StarPieceLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and not_earlygame(world, inventory)
 
-    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
+    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE
 
 
 class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
@@ -7562,6 +7570,7 @@ class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
 class BeanValleyRightPipeUnderStairsLocation(NPCLocationRow1):
     _originally_held = FrogCoin1Prize
     _rooms = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
+    _check_npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_HIDDEN
     _world_area = WorldAreaEnum.BEAN_VALLEY
     # flag as checked: npc 9 in room 335 is removed.
@@ -7901,6 +7910,7 @@ class NimbusInnDreamPrize1Location(NPCLocationRow1):
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _blacklist = [RecoveryMushroomPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_outer_nimbus(world, inventory)
@@ -7914,6 +7924,7 @@ class NimbusInnDreamPrize2Location(NPCLocationRow2):
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _blacklist = [RecoveryMushroomPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_outer_nimbus(world, inventory)
@@ -8594,6 +8605,7 @@ class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
     _bias = True
     _originally_held = FertilizerPrize
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
+    _check_npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE
     _world_area = WorldAreaEnum.NIMBUS_LAND
 
@@ -10077,7 +10089,7 @@ class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
     _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT]
-    _npc_ids = [NPC_0]
+    _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.FACTORY_SAVE_ROOM
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
@@ -11213,10 +11225,12 @@ class MolevilleMountainBushFlag(InvisibleFlagLocation):
         R108_MOLEVILLE_OUTSIDE,
     ]
     _x_coord = 19
-    _y_coord = 31
+    _y_coord = 33
     _world_area = WorldAreaEnum.MOLEVILLE
-    _z_coord = 12
+    _z_coord = 14
     _clue_text = " Mine's in a bush at the top of\n a mountain.[await]"
+    _x_shift = -8
+    _y_shift = -8
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)

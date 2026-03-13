@@ -262,8 +262,8 @@ script = EventScript([
 		A_WalkSouthwestSteps(3),
 		A_WalkWestSteps(3),
 		A_FaceNorthwest(),
-		A_SetSpriteSequence(index=16, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+		A_SetSpriteSequence(index=16, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="EVENT_273_hide_from_toad")
+	], identifier="EVENT_273_hide_from_toad_subscript"),
 	SetSyncActionScript(MARIO, A0787_PLAYER_COWERS_IN_CORNER),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_SetWalkingSpeed(FAST),

@@ -8,6 +8,17 @@ import re
 from copy import copy, deepcopy
 from concurrent.futures import ThreadPoolExecutor
 
+from randomizer.data.nmi_hook import (
+    NMI_HOOK_CODE,
+    NMI_VECTOR_ROM_OFFSET,
+    NMI_VECTOR_NEW,
+    EMU_NMI_VECTOR_ROM_OFFSET,
+    EMU_NMI_VECTOR_NEW,
+    TRAMPOLINE_ROM_OFFSET,
+    TRAMPOLINE_CODE,
+    HOOK_ROM_OFFSET,
+    NMITIMEN_PATCHES,
+)
 from randomizer.data.sprites.overworld_map import (
     BOWSER_OVERWORLD,
     GENO_OVERWORLD,
@@ -89,11 +100,15 @@ from .ally import Ally
 # TypeVar for spell types to allow CharacterSpell and other Spell subclasses
 SpellT = TypeVar("SpellT", bound=Spell)
 from .prizelocation import (
+    BoosterHillLocation,
     CharacterRecruitmentLocation,
     InvisibleFlagLocation,
+    NPCLocationRow,
     PrizeLocation,
     SpellSlotLocation,
+    StandingLocation,
     StarPieceLocation,
+    TreasureChestLocation,
 )
 # ThreeMustyFears proxy classes come from prizelocations via the wildcard import below
 from .room import Room
@@ -266,6 +281,11 @@ class GameWorld:
     # Invisible item locations - stored separately to allow reuse across shuffle retries
     # These are initialized once during the first call to set_locations, then reused
     _invisible_item_locations: dict[type[PrizeLocation], PrizeLocation] | None = None
+
+    # Dummy NPC index tracking for deterministic object presence table
+    # Pre-allocated once by _pre_allocate_dummy_npcs, then reused across shuffle retries
+    _slot_dummy_indices: dict[int, int] | None = None   # room_id → starting object index of 5 slot dummies
+    _flag_dummy_index: dict[int, int] | None = None     # room_id → object index of 1 flag dummy
 
     # Spell assignment tracking for SpellsAnywhere mode
     # Maps character prize type -> count of spells assigned to that character
@@ -599,8 +619,159 @@ class GameWorld:
 
     event_2496_startup = []
 
+    def _compute_check_bit_mapping(self) -> tuple[
+        dict[str, tuple[int, int, bool]],
+        dict[int, int],
+        dict[int, int],
+    ]:
+        """Compute chest state table bit positions for chest check locations.
+
+        The chest state table at BW-RAM $3D80 (FxPak $E03D80) uses cumulative
+        bit packing by room ID: room 0 gets its bits first, then room 1, etc.
+        Only chest-type objects (ChestNPC and ChestClone) get bits — other object
+        types are skipped. Within a room, chests are numbered sequentially.
+
+        Returns:
+            (check_mapping, room_bit_offsets, room_chest_counts) where:
+            - check_mapping: {location_class_name: (fxpak_addr, bit_index, set_when_checked)}
+            - room_bit_offsets: {room_id: cumulative_bit_offset}
+            - room_chest_counts: {room_id: chest_object_count}
+        """
+        from smrpgpatchbuilder.datatypes.levels.classes import ChestNPC, ChestClone
+        from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
+
+        FXPAK_BASE = 0xE03D80
+        NPC_AREA_OBJECT_START = 0x14  # AreaObject(0x14) = object index 0
+
+        # Cumulative bit offset per room (rooms ordered by ID 0-511).
+        # Only ChestNPC and ChestClone objects get bits in this table.
+        cumulative = 0
+        room_bit_offsets: dict[int, int] = {}
+        room_chest_counts: dict[int, int] = {}
+        for room_id in range(len(self.rooms._rooms)):
+            room_bit_offsets[room_id] = cumulative
+            room = self.rooms._rooms[room_id]
+            count = (
+                sum(1 for obj in room.objects if isinstance(obj, (ChestNPC, ChestClone)))
+                if room is not None
+                else 0
+            )
+            room_chest_counts[room_id] = count
+            cumulative += count
+
+        # Map TreasureChestLocation checks to bit positions.
+        # The bit index within a room is the chest's position among chest-type
+        # objects in the room (not its general area object index).
+        mapping: dict[str, tuple[int, int, bool]] = {}
+        for loc_cls, loc in self.locations.items():
+            if not isinstance(loc, TreasureChestLocation):
+                continue
+            class_name = loc_cls.__name__
+            for npc_ao, room_id in zip(loc._npc_ids, loc._rooms):
+                ao = npc_ao if isinstance(npc_ao, AreaObject) else AreaObject(npc_ao + NPC_AREA_OBJECT_START)
+                obj_idx = int(ao) - NPC_AREA_OBJECT_START
+                # Count chest objects before this area object index
+                room = self.rooms._rooms[room_id]
+                chest_idx = 0
+                if room is not None:
+                    for i, obj in enumerate(room.objects):
+                        if i >= obj_idx:
+                            break
+                        if isinstance(obj, (ChestNPC, ChestClone)):
+                            chest_idx += 1
+                bit_pos = room_bit_offsets[room_id] + chest_idx
+                addr = FXPAK_BASE + (bit_pos // 8)
+                bit = bit_pos % 8
+                mapping[class_name] = (addr, bit, False)  # cleared = opened
+                break  # first room is the primary
+
+        return mapping, room_bit_offsets, room_chest_counts
+
+    def _compute_npc_presence_mapping(self) -> dict[str, tuple[int, int, bool]]:
+        """Compute NPC presence bit positions for NPC-despawn-based check locations.
+
+        The NPC presence table at BW-RAM $6D20 (FxPak $E02D20) uses cumulative
+        bit packing by room ID: room 0 gets bits for ALL its objects first,
+        then room 1, etc. A cleared bit (1->0) means the NPC was removed.
+
+        Only maps StandingLocation and NPCLocationRow subclasses that define
+        _npc_ids. TreasureChestLocations are skipped (already detected by
+        chest bit mapping).
+
+        Returns:
+            {location_class_name: (fxpak_addr, bit_index, set_when_checked)}
+            where set_when_checked=False (bit CLEAR = check done).
+        """
+        from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
+            AreaObject,
+        )
+
+        FXPAK_BASE = 0xE02D20
+        NPC_AREA_OBJECT_START = 0x14
+
+        # Cumulative bit offset: count ALL objects per room (not just chests)
+        cumulative = 0
+        room_bit_offsets: dict[int, int] = {}
+        for room_id in range(len(self.rooms._rooms)):
+            room_bit_offsets[room_id] = cumulative
+            room = self.rooms._rooms[room_id]
+            count = len(room.objects) if room is not None else 0
+            cumulative += count
+
+        # Map locations that use NPC presence for check detection.
+        # Skip TreasureChestLocation (already handled by chest bit mapping).
+        # StandingLocation uses _npc_ids; NPCLocationRow uses _check_npc_ids
+        # (_npc_ids on NPCLocationRow controls model replacement, not tracking).
+        mapping: dict[str, tuple[int, int, bool]] = {}
+        for loc_cls, loc in self.locations.items():
+            if isinstance(loc, StandingLocation):
+                npc_ids = loc._npc_ids
+            elif isinstance(loc, NPCLocationRow):
+                npc_ids = loc._check_npc_ids
+            else:
+                continue
+            if not npc_ids:
+                continue
+
+            class_name = loc_cls.__name__
+            for npc_ao, room_id in zip(npc_ids, loc._rooms):
+                ao = (
+                    npc_ao
+                    if isinstance(npc_ao, AreaObject)
+                    else AreaObject(npc_ao + NPC_AREA_OBJECT_START)
+                )
+                obj_idx = int(ao) - NPC_AREA_OBJECT_START
+                bit_pos = room_bit_offsets[room_id] + obj_idx
+                addr = FXPAK_BASE + (bit_pos // 8)
+                bit = bit_pos % 8
+                mapping[class_name] = (addr, bit, False)  # bit CLEAR = done
+                break  # first room is the primary
+        return mapping
+
+    def _compute_booster_hill_mapping(self) -> dict[str, int]:
+        """Compute Booster Hill flower counter thresholds for check locations.
+
+        BoosterHillLocation checks use the byte counter at BW-RAM $70B1
+        (FxPak $E030B1). A check with _70B1_id=N is complete when the
+        counter value >= N+1.
+
+        Returns:
+            {location_class_name: threshold} where threshold = _70B1_id + 1.
+        """
+        mapping: dict[str, int] = {}
+        for loc_cls, loc in self.locations.items():
+            if not isinstance(loc, BoosterHillLocation):
+                continue
+            mapping[loc_cls.__name__] = loc._70B1_id + 1
+        return mapping
+
     @property
     def spoiler(self) -> dict[str, Any]:
+        check_mapping, room_bit_offsets, room_chest_counts = (
+            self._compute_check_bit_mapping()
+        )
+        npc_presence_mapping = self._compute_npc_presence_mapping()
+        booster_hill_mapping = self._compute_booster_hill_mapping()
         result = {
             "settings": self._get_settings_json(),
             "locations": self._get_locations_json(),
@@ -610,6 +781,28 @@ class GameWorld:
             "spell_character_assignments": self._get_spell_character_assignments_json(),
             "password": self.password,
             "songs": [self.song_1, self.song_2, self.song_3],
+            "check_bit_mapping": {
+                name: {"addr": f"0x{addr:06X}", "bit": bit, "set_when_checked": swc}
+                for name, (addr, bit, swc) in check_mapping.items()
+            },
+            "npc_presence_mapping": {
+                name: {"addr": f"0x{addr:06X}", "bit": bit, "set_when_checked": swc}
+                for name, (addr, bit, swc) in npc_presence_mapping.items()
+            },
+            "booster_hill_mapping": {
+                name: {"threshold": threshold}
+                for name, threshold in booster_hill_mapping.items()
+            },
+            "room_bit_offsets": {
+                str(rid): off
+                for rid, off in room_bit_offsets.items()
+                if off > 0 or rid == 0
+            },
+            "room_chest_counts": {
+                str(rid): cnt
+                for rid, cnt in room_chest_counts.items()
+                if cnt > 0
+            },
         }
         if self.poison_mushroom_status:
             result["poison_mushroom_status"] = self.poison_mushroom_status
@@ -991,6 +1184,9 @@ class GameWorld:
             except PlacementException as e:
                 # Restore rooms to pre-shuffle state before retrying
                 self.rooms = deepcopy(rooms_snapshot)
+                # Reset dummy indices so _pre_allocate_dummy_npcs reruns with fresh rooms
+                self._slot_dummy_indices = None
+                self._flag_dummy_index = None
                 print(f"[DEBUG] Placement failed with {e.unplaced_count} unplaced items, retrying...")
 
                 # Track this failure count
@@ -1563,14 +1759,7 @@ class GameWorld:
         # Sprite graphics patch (now has access to reclaimed animation banks)
         self._report_progress("Assembling graphics...", progress)
 
-        # When a non-Mario character is the overworld protagonist, force
-        # their sprite positions to share images matching Mario's pattern
-        # (the SNES engine only loads the base sprite's image into VRAM).
-        shared_image_groups: list[list[int]] | None = None
-        if self.overworld_character.ally.index > 0:
-            shared_image_groups = [[31, 32]]
-
-        for p in self.sprites.render(shared_image_groups=shared_image_groups):
+        for p in self.sprites.render():
             patch.add_data(p[0], p[1], source="sprites")
         progress += 3
 
@@ -1767,6 +1956,16 @@ class GameWorld:
         # solidity mod
         # is this why monstro town broke?
         # patch.add_dict({0x1D903A: bytearray([0xC2, 0x91])})
+
+        # NMI cooperative hook for FxPakPro Archipelago support.
+        # Bridges WRAM (inaccessible on SA-1 FxPakPro) to BW-RAM mailbox.
+        patch.add_data(NMI_VECTOR_ROM_OFFSET, NMI_VECTOR_NEW)       # Native NMI → $FFE0
+        patch.add_data(EMU_NMI_VECTOR_ROM_OFFSET, EMU_NMI_VECTOR_NEW)  # Emu NMI → $FFE0
+        patch.add_data(TRAMPOLINE_ROM_OFFSET, TRAMPOLINE_CODE)      # JML $D5:F000
+        patch.add_data(HOOK_ROM_OFFSET, NMI_HOOK_CODE)              # Hook code
+        # Enable VBlank NMI during gameplay (bank C0 writes $01 → $81 to $4200).
+        for rom_offset, _old, new in NMITIMEN_PATCHES:
+            patch.add_data(rom_offset, bytes([new]))
 
         # Update ROM title and version.
         title = "SMRPG-R {}".format(self.seed).ljust(20)

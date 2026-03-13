@@ -86,6 +86,7 @@ class SpriteAnimationState(str, Enum):
     HOLD_STAR = "hold_star"
     LOOK_AT_DOLL = "look_at_doll"
     MUTE = "mute"
+    DEFEND_MOLD = "defend_mold"
 
 
 class Ally(AllyBase):

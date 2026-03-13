@@ -11,8 +11,6 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     BufferSpace,
     VramStore,
     ShadowSize,
-)
-from smrpgpatchbuilder.datatypes.levels.classes import (
     Buffer,
     Partition,
     DestinationProps,
@@ -25,6 +23,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
     BattlePackClone,
     RegularClone,
     ChestClone,
+    EffectsNpc
 )
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
@@ -308,5 +307,5 @@ room = Room(
             byte7_upper2=3,
         ),
     ],
-    effects_npc=0x1E,
+    effects_npc=EffectsNpc.UNKNOWN_1E,
 )

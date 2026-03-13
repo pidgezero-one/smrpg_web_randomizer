@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	PaletteSet(palette_set_starts_at=EPAL0108_MALLOW_STATUE, from_row=NPC_PALETTE_ROW_3),
+	PaletteSet(palette_set_starts_at=EPAL0108_MALLOW_STATUE, from_row=NPC_PALETTE_ROW_3, identifier="mallow_statue_palette_set"),
 	SetVarToRandom(PRIMARY_TEMP_7000, 6),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_737_action_queue_6"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_737_action_queue_5"]),

@@ -97,7 +97,7 @@ script = EventScript([
 		A_ShadowOn()
 	]),
 	RememberLastObject(),
-	PaletteSet(palette_set_starts_at=EPAL0110_GOLD_GOOMBA, from_row=NPC_PALETTE_ROW_3),
+	PaletteSet(palette_set_starts_at=EPAL0110_GOLD_GOOMBA, from_row=NPC_PALETTE_ROW_3, identifier="goomba_thumpin_gold"),
 	Pause(2),
     SetSyncActionScript(NPC_5, A0803_INC_PALETTE_ROW),
     SetSyncActionScript(NPC_6, A0803_INC_PALETTE_ROW),

@@ -200,7 +200,7 @@ script = EventScript([
 	]),
 	PlaySound(sound=SO148_SURGING_ELECTRICITY, channel=6),
 	FadeOutMusicToVolume(duration=8, volume=0),
-	PaletteSetMorphs(palette_type=NOTHING, duration=2, palette_set=EPAL0214, row=NPC_PALETTE_ROW_2),
+	PaletteSetMorphs(palette_type=NOTHING, duration=2, palette_set=EPAL0214_SEASIDE_BOSS_TRANSFORMS, row=NPC_PALETTE_ROW_2, identifier="seaside_palette_morph_1"),
 	Pause(60),
 	ScreenFlashesWithColour(WHITE, identifier="screenflash_1"),
 	Pause(20),

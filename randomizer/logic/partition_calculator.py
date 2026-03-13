@@ -22,15 +22,21 @@ Buffer types:
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from collections import Counter
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_10, NPC_13, NPC_6
 from ..data.variables.sprite_names import *
 from ..data.variables.room_names import *
 
 from smrpgpatchbuilder.datatypes.levels.classes import (
+    Buffer,
     BufferSpace,
     BufferType,
+    ChestNPC,
+    Clone,
+    Partition,
+    VramStore,
 )
 from ..types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
@@ -328,6 +334,9 @@ def update_statue_room_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, NPC_1, 1)
     _update_buffer_by_room_object(world, R501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA, NPC_0, 0)
     
+    _update_buffer_by_room_object(world, R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, NPC_3, 1)
+    _update_buffer_by_room_object(world, R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD, NPC_2, 2)
+    
 
 def update_kitchen_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R155_MARRYMORE_CHAPEL_KITCHEN, NPC_0, 0)
@@ -471,3 +480,521 @@ def update_shuffed_boss_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, NPC_1, 1)
     _update_buffer_by_room_object(world, R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, NPC_1, 2)
     
+    _update_buffer_by_room_object(world, R054_BOOSTER_HILL_DUMMY, NPC_3, 2)
+
+
+# =============================================================================
+# General-purpose partition analysis tool
+# =============================================================================
+
+# Coin sprite IDs that require a COINS buffer
+COIN_SPRITE_IDS = frozenset({
+    SPR0192_COIN,
+    SPR0193_SMALL_COIN,
+    SPR0194_FROG_COIN,
+    SPR0211_SMALL_FROG_COIN,
+    SPR0234_STATIC_FROG_COIN,
+    SPR0235_STATIC_COIN,
+    SPR0236_COIN_STATIC_SMALL,
+    SPR0238_STATIC_FROG_COIN_SMALL,
+})
+
+CHEST_SPRITE_ID = SPR0094_TREASURE_CHEST
+
+
+@dataclass
+class NPCAnalysis:
+    """Analysis of a single NPC's VRAM requirements."""
+
+    index: int
+    sprite_id: int
+    vram_store: VramStore
+    min_vram: int
+    cannot_clone: bool
+    is_chest: bool
+    is_coin: bool
+    buffer_type: BufferType
+    gridplane_format: int | None
+    clone_count: int
+
+
+@dataclass
+class BufferAssignment:
+    """Assignment of NPCs to a partition buffer slot."""
+
+    buffer_type: BufferType
+    buffer_space: BufferSpace
+    npc_indices: list[int] = field(default_factory=list)
+
+
+@dataclass
+class PartitionAnalysis:
+    """Complete partition analysis for a room."""
+
+    room_id: int
+    npcs: list[NPCAnalysis]
+    ally_buffer_size: int
+    extra_buffer_needed: bool
+    extra_buffer_size: int
+    buffers: list[BufferAssignment]
+    full_palette: bool
+    warnings: list[str] = field(default_factory=list)
+
+    def to_partition(self) -> Partition:
+        """Convert this analysis to a Partition object."""
+        partition = Partition()
+        partition.set_ally_sprite_buffer_size(self.ally_buffer_size)
+        partition.set_allow_extra_sprite_buffer(self.extra_buffer_needed)
+        partition.set_extra_sprite_buffer_size(self.extra_buffer_size)
+
+        buffers = []
+        for assignment in self.buffers:
+            buf = Buffer()
+            buf.set_buffer_type(assignment.buffer_type)
+            buf.set_main_buffer_space(assignment.buffer_space)
+            buffers.append(buf)
+        partition.set_buffers(buffers)
+        return partition
+
+    def format_report(self) -> str:
+        """Format a human-readable analysis report."""
+        lines = [f"=== Room {self.room_id} Partition Analysis ==="]
+        lines.append(f"Ally buffer size: {self.ally_buffer_size}")
+        lines.append(
+            f"Extra sprite buffer: {'yes' if self.extra_buffer_needed else 'no'}"
+            + (f" (size={self.extra_buffer_size})" if self.extra_buffer_needed else "")
+        )
+        lines.append(f"Full palette: {self.full_palette}")
+
+        for i, assignment in enumerate(self.buffers):
+            slot = chr(ord("A") + i)
+            space_bytes = assignment.buffer_space * 256
+            npcs_str = (
+                ", ".join(str(idx) for idx in assignment.npc_indices)
+                if assignment.npc_indices
+                else "none"
+            )
+            lines.append(
+                f"Buffer {slot}: {assignment.buffer_type.name}"
+                + (f" ({space_bytes} bytes)" if space_bytes > 0 else "")
+                + f"  NPCs: [{npcs_str}]"
+            )
+
+        if self.npcs:
+            lines.append("")
+            lines.append("NPC Details:")
+            for npc in self.npcs:
+                flags = []
+                if npc.cannot_clone:
+                    flags.append("no-clone")
+                if npc.is_chest:
+                    flags.append("chest")
+                if npc.is_coin:
+                    flags.append("coin")
+                fmt_str = (
+                    f"fmt={npc.gridplane_format}"
+                    if npc.gridplane_format is not None
+                    else "non-gp"
+                )
+                flags_str = f" [{', '.join(flags)}]" if flags else ""
+                lines.append(
+                    f"  [{npc.index}] sprite={npc.sprite_id}"
+                    f" vram={npc.vram_store.name}"
+                    f" min_vram={npc.min_vram}"
+                    f" {fmt_str}"
+                    f" clones={npc.clone_count}"
+                    f" → {npc.buffer_type.name}"
+                    f"{flags_str}"
+                )
+
+        if self.warnings:
+            lines.append("")
+            lines.append("Warnings:")
+            for warning in self.warnings:
+                lines.append(f"  ! {warning}")
+
+        return "\n".join(lines)
+
+
+def _analyze_npc(
+    world: GameWorld, npc_obj: RoomObject, index: int, clone_count: int = 0
+) -> NPCAnalysis:
+    """Analyze a single NPC's VRAM requirements.
+
+    Args:
+        world: The GameWorld instance.
+        npc_obj: The room object (must NOT be a Clone).
+        index: The NPC's index in the room's objects list.
+        clone_count: Number of Clone objects following this NPC in the objects list.
+    """
+    npc = npc_obj._npc
+    sprite_id = npc.sprite_id
+
+    # Room-level overrides take precedence over NPC-level defaults
+    vram_store = npc_obj.directions if npc_obj.directions is not None else npc.directions
+    min_vram = npc_obj.min_vram_size if npc_obj.min_vram_size is not None else npc.min_vram_size
+    cannot_clone = npc_obj.cannot_clone if npc_obj.cannot_clone is not None else npc.cannot_clone
+
+    # Detect by sprite ID, not just class — a RegularNPC with sprite 94
+    # still needs TREASURE_CHEST buffer type for VRAM layout purposes.
+    is_chest = isinstance(npc_obj, ChestNPC) or sprite_id == CHEST_SPRITE_ID
+    is_coin = sprite_id in COIN_SPRITE_IDS
+
+    is_gridplane, gridplane_format = _get_npc_gridplane_info(world, sprite_id)
+
+    if is_chest:
+        buffer_type = BufferType.TREASURE_CHEST
+    elif is_coin:
+        buffer_type = BufferType.COINS
+    elif is_gridplane:
+        if gridplane_format in (0, 1):
+            buffer_type = BufferType.FOUR_SPRITES_PER_ROW
+        elif gridplane_format in (2, 3):
+            buffer_type = BufferType.THREE_SPRITES_PER_ROW
+        else:
+            buffer_type = BufferType.EMPTY_3
+    else:
+        buffer_type = BufferType.EMPTY_3
+
+    return NPCAnalysis(
+        index=index,
+        sprite_id=sprite_id,
+        vram_store=vram_store,
+        min_vram=min_vram,
+        cannot_clone=cannot_clone,
+        is_chest=is_chest,
+        is_coin=is_coin,
+        buffer_type=buffer_type,
+        gridplane_format=gridplane_format,
+        clone_count=clone_count,
+    )
+
+
+def _calculate_buffer_space(npcs: list[NPCAnalysis]) -> BufferSpace:
+    """Calculate the BufferSpace needed for a group of NPCs."""
+    if not npcs:
+        return BufferSpace.BYTES_0
+    max_vram = max(npc.min_vram for npc in npcs)
+    max_vram = min(max_vram, 7)
+    return BufferSpace(max_vram)
+
+
+def _assign_buffers(
+    npc_analyses: list[NPCAnalysis],
+    room_id: int,
+) -> tuple[list[BufferAssignment], list[str]]:
+    """Assign NPCs to 3 buffer slots based on their requirements.
+
+    Rules:
+    - TREASURE_CHEST can only go in buffer A (index 0)
+    - COINS can only go in buffer C (index 2)
+    - Clonable gridplane NPCs fill remaining slots
+    - cannot_clone NPCs get dedicated VRAM (not assigned to buffers)
+    """
+    warnings: list[str] = []
+
+    # Separate NPCs by type.
+    # Clonable NPCs determine primary buffer slot assignments.
+    # cannot_clone NPCs get dedicated VRAM but still influence the
+    # fill strategy for remaining empty slots (compatible format needed).
+    chest_npcs = [n for n in npc_analyses if n.is_chest and not n.cannot_clone]
+    coin_npcs = [n for n in npc_analyses if n.is_coin and not n.cannot_clone]
+    four_spr_npcs = [
+        n
+        for n in npc_analyses
+        if n.buffer_type == BufferType.FOUR_SPRITES_PER_ROW and not n.cannot_clone
+    ]
+    three_spr_npcs = [
+        n
+        for n in npc_analyses
+        if n.buffer_type == BufferType.THREE_SPRITES_PER_ROW and not n.cannot_clone
+    ]
+    empty_npcs = [
+        n
+        for n in npc_analyses
+        if n.buffer_type == BufferType.EMPTY_3
+        and not n.cannot_clone
+        and not n.is_chest
+        and not n.is_coin
+    ]
+    dedicated_npcs = [n for n in npc_analyses if n.cannot_clone]
+
+    # Track gridplane types from ALL NPCs (including cannot_clone)
+    # for the fill strategy — these NPCs need compatible buffer format
+    all_four_spr = [
+        n for n in npc_analyses
+        if n.buffer_type == BufferType.FOUR_SPRITES_PER_ROW
+    ]
+    all_three_spr = [
+        n for n in npc_analyses
+        if n.buffer_type == BufferType.THREE_SPRITES_PER_ROW
+    ]
+
+    # Force coin buffer for Midas River rooms
+    force_coins = room_id in [
+        R071_MIDAS_RIVER_2ND_TUNNEL_BOTH_LEFT_AND_RIGHT,
+        R072_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT,
+        R073_MIDAS_RIVER_4TH_TUNNEL_ON_VERY_BOTTOM_RIGHT,
+    ]
+
+    # Start with 3 empty buffer slots
+    assignments: list[BufferAssignment] = [
+        BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
+        BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
+        BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
+    ]
+
+    # Assign TREASURE_CHEST to buffer A if needed
+    if chest_npcs:
+        assignments[0] = BufferAssignment(
+            BufferType.TREASURE_CHEST,
+            _calculate_buffer_space(chest_npcs),
+            [n.index for n in chest_npcs],
+        )
+
+    # Assign COINS to buffer C if needed
+    if coin_npcs or force_coins:
+        assignments[2] = BufferAssignment(
+            BufferType.COINS,
+            _calculate_buffer_space(coin_npcs),
+            [n.index for n in coin_npcs],
+        )
+
+    # Assign gridplane NPCs to remaining open slots.
+    # Vanilla fills ALL remaining empty slots with the dominant gridplane type,
+    # so multiple NPCs can be loaded simultaneously.
+    gridplane_groups = []
+    if four_spr_npcs:
+        gridplane_groups.append(
+            (BufferType.FOUR_SPRITES_PER_ROW, four_spr_npcs)
+        )
+    if three_spr_npcs:
+        gridplane_groups.append(
+            (BufferType.THREE_SPRITES_PER_ROW, three_spr_npcs)
+        )
+
+    # Sort by count descending so the dominant type gets placed first
+    gridplane_groups.sort(key=lambda g: len(g[1]), reverse=True)
+
+    for buf_type, npcs in gridplane_groups:
+        # Place into first available empty slot
+        placed = False
+        for i in range(3):
+            if assignments[i].buffer_type == BufferType.EMPTY_3:
+                assignments[i] = BufferAssignment(
+                    buf_type,
+                    _calculate_buffer_space(npcs),
+                    [n.index for n in npcs],
+                )
+                placed = True
+                break
+        if not placed:
+            # Try to merge into an existing matching buffer
+            for i in range(3):
+                if assignments[i].buffer_type == buf_type:
+                    assignments[i].npc_indices.extend(n.index for n in npcs)
+                    merged_npcs = [
+                        na
+                        for na in npc_analyses
+                        if na.index in assignments[i].npc_indices
+                    ]
+                    assignments[i].buffer_space = _calculate_buffer_space(merged_npcs)
+                    placed = True
+                    break
+            if not placed:
+                warnings.append(
+                    f"No buffer slot available for {buf_type.name} NPCs "
+                    f"(indices: {[n.index for n in npcs]})"
+                )
+
+    # Fill remaining empty slots with the dominant gridplane type.
+    # Use ALL NPCs (including cannot_clone) for type determination,
+    # since these NPCs need compatible buffer format in the room.
+    all_gp_groups = []
+    if all_four_spr:
+        all_gp_groups.append(
+            (BufferType.FOUR_SPRITES_PER_ROW, all_four_spr)
+        )
+    if all_three_spr:
+        all_gp_groups.append(
+            (BufferType.THREE_SPRITES_PER_ROW, all_three_spr)
+        )
+    all_gp_groups.sort(key=lambda g: len(g[1]), reverse=True)
+
+    if all_gp_groups:
+        dominant_type = all_gp_groups[0][0]
+        # Use clonable NPCs only for space calculation
+        clonable_of_type = [
+            n for n in gridplane_groups[0][1]
+        ] if gridplane_groups and gridplane_groups[0][0] == dominant_type else []
+        space = _calculate_buffer_space(clonable_of_type) if clonable_of_type else BufferSpace.BYTES_0
+        for i in range(3):
+            if assignments[i].buffer_type == BufferType.EMPTY_3:
+                assignments[i] = BufferAssignment(dominant_type, space)
+
+    # Assign non-gridplane clonable NPCs to any available EMPTY_3 slot
+    if empty_npcs:
+        for i in range(3):
+            if assignments[i].buffer_type == BufferType.EMPTY_3:
+                assignments[i].npc_indices.extend(n.index for n in empty_npcs)
+                assignments[i].buffer_space = _calculate_buffer_space(empty_npcs)
+                break
+
+    if dedicated_npcs:
+        for npc in dedicated_npcs:
+            warnings.append(
+                f"NPC [{npc.index}] sprite={npc.sprite_id}: cannot_clone, needs dedicated VRAM"
+            )
+
+    return assignments, warnings
+
+
+def analyze_room_partition(
+    world: GameWorld,
+    room_id: int,
+) -> PartitionAnalysis:
+    """Analyze a room and compute optimal partition settings.
+
+    This traces each NPC's sprite properties, gridplane format, VramStore type,
+    and min_vram requirements to determine the best partition configuration.
+
+    Args:
+        world: The GameWorld instance with loaded sprite data.
+        room_id: The room index to analyze.
+
+    Returns:
+        PartitionAnalysis with optimal settings and diagnostic info.
+    """
+    from ..types.room import Room
+
+    room = world.rooms._rooms[room_id]
+    assert room is not None, f"Room {room_id} not found"
+
+    # Separate regular NPCs from clones.
+    # Clones share VRAM with the nearest prior non-clone NPC, so they
+    # don't need separate buffer assignments. We count them per parent.
+    objects = room.objects
+    npc_analyses = []
+    i = 0
+    while i < len(objects):
+        obj = objects[i]
+        if isinstance(obj, Clone):
+            # Orphan clone (no parent before it) — skip
+            i += 1
+            continue
+
+        # Count consecutive Clone objects following this NPC
+        clone_count = 0
+        j = i + 1
+        while j < len(objects) and isinstance(objects[j], Clone):
+            clone_count += 1
+            j += 1
+
+        analysis = _analyze_npc(world, obj, i, clone_count)
+        npc_analyses.append(analysis)
+        i = j
+
+    # Calculate ally buffer size from room's extra_sprite_actions
+    ally_buffer_size = 1  # default minimum
+    if isinstance(room, Room) and room.extra_sprite_actions:
+        character_model = world.overworld_character.character_model
+        if character_model is not None:
+            vram_values = []
+            for state in DEFAULT_ANIMATION_STATES:
+                sprites_dict = character_model.ally._sprites_primary
+                if state in sprites_dict:
+                    prop_id, offset, is_mold = sprites_dict[state]
+                    if is_mold:
+                        try:
+                            v = character_model._npc.min_vram_from_mold(
+                                world, prop_id, offset
+                            )
+                            vram_values.append(v)
+                        except (IndexError, AssertionError):
+                            pass
+                    else:
+                        try:
+                            v = character_model._npc.min_vram_from_sequence(
+                                world, prop_id, offset
+                            )
+                            vram_values.append(v)
+                        except (IndexError, AssertionError):
+                            pass
+
+            for action in room.extra_sprite_actions:
+                anim_states = EXTRA_ACTION_TO_ANIMATION_STATE.get(action, [])
+                for state in anim_states:
+                    sprites_dict = character_model.ally._sprites_primary
+                    if state in sprites_dict:
+                        prop_id, offset, is_mold = sprites_dict[state]
+                        if is_mold:
+                            try:
+                                v = character_model._npc.min_vram_from_mold(
+                                    world, prop_id, offset
+                                )
+                                vram_values.append(v)
+                            except (IndexError, AssertionError):
+                                pass
+                        else:
+                            try:
+                                v = character_model._npc.min_vram_from_sequence(
+                                    world, prop_id, offset
+                                )
+                                vram_values.append(v)
+                            except (IndexError, AssertionError):
+                                pass
+
+            if vram_values:
+                ally_buffer_size = min(max(vram_values) + 1, 3)
+
+    # Calculate extra sprite buffer (for chest packet sprites)
+    chest_count = sum(1 for n in npc_analyses if n.is_chest)
+    extra_buffer_needed = chest_count > 0
+    extra_buffer_size = 0
+    if extra_buffer_needed:
+        if room_id in CLOSE_CHEST_ROOMS:
+            extra_buffer_size = CLOSE_CHEST_ROOMS[room_id]
+        else:
+            extra_buffer_size = min(chest_count, 1)
+
+    # Special case: triple empty rooms
+    if room_id in TRIPLE_EMPTY_EX1_ROOMS:
+        extra_buffer_needed = True
+        extra_buffer_size = 1
+
+    if room_id in TRIPLE_EMPTY_EX0_ROOMS:
+        extra_buffer_needed = False
+        extra_buffer_size = 0
+
+    # Determine full palette
+    full_palette = True
+    if isinstance(room, Room):
+        current_partition = room.partition
+        if current_partition is not None:
+            full_palette = current_partition._full_palette_buffer
+
+    # Assign NPCs to buffers
+    buffer_assignments, warnings = _assign_buffers(npc_analyses, room_id)
+
+    # Special case rooms: force triple empty
+    if room_id in SPECIAL_CASE_ROOMS:
+        has_chest = any(a.buffer_type == BufferType.TREASURE_CHEST for a in buffer_assignments)
+        has_coins = any(a.buffer_type == BufferType.COINS for a in buffer_assignments)
+        if not has_chest and not has_coins:
+            buffer_assignments = [
+                BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
+                BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
+                BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
+            ]
+            warnings.append("Special case room: forced triple EMPTY_3")
+
+    return PartitionAnalysis(
+        room_id=room_id,
+        npcs=npc_analyses,
+        ally_buffer_size=ally_buffer_size,
+        extra_buffer_needed=extra_buffer_needed,
+        extra_buffer_size=extra_buffer_size,
+        buffers=buffer_assignments,
+        full_palette=full_palette,
+        warnings=warnings,
+    )

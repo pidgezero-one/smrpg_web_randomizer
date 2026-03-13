@@ -1,7 +1,6 @@
 # R010_BOWSERS_KEEP_1ST_TIME_AREA_04_THRONE_ROOM
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
+from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize, Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, EffectsNpc
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -36,5 +35,5 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0011_BOWSER_SCASTLE_1STTIME,
-    entrance_event=E0015_STANDARD_ROOM_LOADER, effects_npc=0x0A,    effects_npc=0x0A,
+    entrance_event=E0015_STANDARD_ROOM_LOADER, effects_npc=EffectsNpc.FLASHING_CHANDELIER,
 )

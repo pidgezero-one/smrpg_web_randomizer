@@ -204,7 +204,7 @@ def _validate_exp_sources(settings: Settings) -> None:
     is_godmode = settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE)
 
 
-    if no_regular_exp and no_boss_exp and no_star_exp and not is_godmode:
+    if no_regular_exp and no_boss_exp and no_star_exp and not is_godmode and not settings.debug_mode:
         raise SettingsValidationError(
             "Invalid settings combination: all EXP sources are disabled. "
             "You cannot have 'Remove EXP from regular enemy encounters', "

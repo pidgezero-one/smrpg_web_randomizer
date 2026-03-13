@@ -1,7 +1,6 @@
 # R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone
+from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize, Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, EffectsNpc
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -106,11 +105,13 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        RegularNPC( # 2
+        ChestNPC( # 2
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
             event_script=E0735_FOREST_UNDERGROUND_CHEST,
             action_script=A0014_FLOATING_CHEST,
+            lower_70a7=0,
+            upper_70a7=0,
             visible=True,
             x=2,
             y=73,
@@ -133,10 +134,10 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        RegularClone( # 3
+        ChestClone( # 3
             npc=npcs.TREASURE_CHEST_NPC_2,
-            action_script=A0014_FLOATING_CHEST,
-            event_script=E0735_FOREST_UNDERGROUND_CHEST,
+            lower_70a7=0,
+            upper_70a7=0,
             visible=True,
             x=6,
             y=88,
@@ -144,10 +145,10 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
         ),
-        RegularClone( # 4
+        ChestClone( # 4
             npc=npcs.TREASURE_CHEST_NPC_2,
-            action_script=A0014_FLOATING_CHEST,
-            event_script=E0735_FOREST_UNDERGROUND_CHEST,
+            lower_70a7=0,
+            upper_70a7=0,
             visible=True,
             x=8,
             y=77,

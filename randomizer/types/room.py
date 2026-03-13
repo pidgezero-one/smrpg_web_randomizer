@@ -8,6 +8,7 @@ from ..data.rooms.npcs import ALLY_CLONE_NPC
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 from smrpgpatchbuilder.datatypes.levels.classes import (
+    EffectsNpc,
     GLOWING_SAVE_POINT_NPC_BYTES,
     GLOWING_SAVE_POINT_NPC_INDEX,
     Room as RoomBase,

@@ -22,6 +22,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
     AreaObject,
 )
+from smrpgpatchbuilder.datatypes.levels.classes import RegularClone, RegularNPC
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHEAST
 from typing import cast, TYPE_CHECKING
 from copy import copy
 
@@ -37,11 +39,125 @@ from ...types.prizelocation import (
     BossFightLocation,
     StarPieceLocation,
     CharacterRecruitmentLocation,
-    KeyItemLocation
+    KeyItemLocation,
+    InvisibleFlagLocation,
 )
+from ...types.prize import SlotsPrize
+from ...data.rooms.npcs import EMPTY_NPC_3
+from ...data.variables.event_script_names import E0091_INVISIBLE_ITEM_SUMMONER, E2304_BANK_1F_RETURN_EVENT_2
+from ...data.variables.action_script_names import A0015_DO_NOTHING
 
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
+
+
+def _make_dummy_npc() -> RegularNPC:
+    """Create a minimal, inert dummy NPC (non-clone) for pre-allocating object presence table slots.
+
+    Uses RegularNPC to break clone chain grouping — the serializer groups all consecutive
+    Clone objects after a non-Clone parent, so the first dummy in each batch must be a
+    non-Clone to prevent grouping with incompatible preceding NPCs.
+    """
+    return RegularNPC(
+        npc=EMPTY_NPC_3,
+        event_script=E2304_BANK_1F_RETURN_EVENT_2,
+        action_script=A0015_DO_NOTHING,
+        visible=False,
+        x=0, y=0, z=0, z_half=False,
+        direction=SOUTHEAST,
+    )
+
+
+def _make_dummy_clone() -> RegularClone:
+    """Create a minimal, inert dummy clone NPC for pre-allocating object presence table slots."""
+    return RegularClone(
+        npc=EMPTY_NPC_3,
+        event_script=E2304_BANK_1F_RETURN_EVENT_2,
+        action_script=A0015_DO_NOTHING,
+        visible=False,
+        x=0, y=0, z=0, z_half=False,
+        direction=SOUTHEAST,
+    )
+
+
+def _pre_allocate_dummy_npcs(world: GameWorld, invisible_item_pool: list[type]) -> None:
+    """Pre-allocate dummy NPCs in all rooms that could receive slot machines or invisible flags.
+
+    This ensures the NPC count per room is constant regardless of which prizes are assigned,
+    making the WRAM object presence table layout ($6D20-$6F1F) deterministic across seeds.
+
+    Rooms that already have vanilla slot machine NPCs (the 3 Bean Valley pipe rooms) are handled
+    specially: their existing 5 slot NPCs are adopted as the dummy positions and replaced with
+    inert dummies, so no extra NPCs are added.
+    """
+    if world._slot_dummy_indices is not None:
+        return  # Already allocated (shuffle retry)
+
+    world._slot_dummy_indices = {}
+    world._flag_dummy_index = {}
+
+    # Identify rooms that already contain vanilla slot machine NPCs.
+    # These are rooms belonging to locations whose _originally_held is a SlotsPrize subclass.
+    # Their last 5 objects are the vanilla slot NPCs — adopt those positions instead of adding new ones.
+    vanilla_slot_rooms: set[int] = set()
+    for loc in world.locations.values():
+        if isinstance(loc, TreasureChestLocation):
+            originally_held = loc._originally_held
+            if isinstance(originally_held, type) and issubclass(originally_held, SlotsPrize):
+                for r in loc._rooms:
+                    vanilla_slot_rooms.add(r)
+
+    # Compute slot-eligible rooms: rooms of TreasureChestLocations that don't blacklist SlotsPrize.
+    # Mirror the can_accept() blacklist check: isinstance(prize, tuple(blacklist)) catches subclasses,
+    # so we use issubclass here to match.
+    slot_eligible_rooms: set[int] = set()
+    for loc in world.locations.values():
+        if isinstance(loc, TreasureChestLocation):
+            if not loc._blacklist or not issubclass(SlotsPrize, tuple(loc._blacklist)):
+                for r in loc._rooms:
+                    slot_eligible_rooms.add(r)
+
+    # Compute flag-candidate rooms: rooms of all InvisibleFlagLocation subclasses
+    flag_candidate_rooms: set[int] = set()
+    for loc_cls in invisible_item_pool:
+        temp_loc = loc_cls(0)
+        for r in temp_loc._rooms:
+            flag_candidate_rooms.add(r)
+
+    # Process slot-eligible rooms
+    for room_id in sorted(slot_eligible_rooms):
+        room = world.rooms._rooms[room_id]
+        if room is None:
+            continue
+
+        if room_id in vanilla_slot_rooms:
+            # Room already has 5 vanilla slot NPCs as its last 5 objects.
+            # Adopt their positions and replace them with inert dummies so they're
+            # harmless when slots get shuffled elsewhere.
+            start_idx = len(room.objects) - 5
+            world._slot_dummy_indices[room_id] = start_idx
+            # First dummy must be RegularNPC to break clone chain from preceding objects
+            room._objects[start_idx] = _make_dummy_npc()
+            for i in range(1, 5):
+                room._objects[start_idx + i] = _make_dummy_clone()
+        else:
+            # Room needs new dummy NPCs added (skip if would overflow 28-object limit)
+            if len(room.objects) + 5 > 28:
+                continue
+            world._slot_dummy_indices[room_id] = len(room.objects)
+            # First dummy must be RegularNPC to break clone chain from preceding objects
+            room.add_objects([_make_dummy_npc()] + [_make_dummy_clone() for _ in range(4)])
+
+    # Add 1 flag dummy to each flag-candidate room (skip rooms that would overflow 28-object limit)
+    for room_id in sorted(flag_candidate_rooms):
+        room = world.rooms._rooms[room_id]
+        if room is None:
+            continue
+        if len(room.objects) + 1 > 28:
+            continue
+        world._flag_dummy_index[room_id] = len(room.objects)
+        # Use RegularNPC to break clone chain from preceding objects
+        room.add_object(_make_dummy_npc())
 
 
 def set_locations(world: GameWorld) -> None:
@@ -837,6 +953,10 @@ def set_locations(world: GameWorld) -> None:
         FactoryButtonFlag,
     ]
 
+    # Pre-allocate dummy NPCs for deterministic object presence table layout.
+    # Must be called after world.locations is populated but before invisible flag placement.
+    _pre_allocate_dummy_npcs(world, invisible_item_pool)
+
     # Check if invisible item locations have already been initialized
     # This prevents duplication when set_locations is called multiple times during shuffle retries
     if world._invisible_item_locations is not None:
@@ -862,6 +982,7 @@ def set_locations(world: GameWorld) -> None:
                         debug_invisible_flags = None
                         break
 
+        used_flag_rooms: set[int] = set()
         for i in range(0, 3):
             # choose the three invisible item locations
             if debug_invisible_flags is not None:
@@ -869,49 +990,36 @@ def set_locations(world: GameWorld) -> None:
             elif not world.settings.isflag_enabled(InvisibleFlagsSetting):
                 location_cls = invisible_item_pool[i]
             else:
-                # Filter out locations in rooms that are too full (>27 objects)
-                valid_pool = []
-                for loc_cls in invisible_item_pool:
-                    # Create a temporary instance to check room capacity
-                    temp_loc = loc_cls(0)
-                    can_use = True
-                    for r in temp_loc._rooms:
-                        room = world.rooms._rooms[r]
-                        if room is not None and len(room.objects) > 27:  # 0x1B, leaves no room for +0x14
-                            can_use = False
-                            break
-                    if can_use:
-                        valid_pool.append(loc_cls)
+                # Filter out locations whose rooms overlap with already-chosen flags
+                # or whose rooms don't have a pre-allocated flag dummy
+                assert world._flag_dummy_index is not None
+                valid_pool = [
+                    loc_cls for loc_cls in invisible_item_pool
+                    if not any(r in used_flag_rooms for r in loc_cls(0)._rooms)
+                    and all(r in world._flag_dummy_index for r in loc_cls(0)._rooms)
+                ]
 
                 if not valid_pool:
-                    raise Exception(f"No valid rooms available for invisible flag {i+1}! All candidate rooms are too full.")
+                    raise Exception(f"No valid rooms available for invisible flag {i+1}! All candidate rooms are taken.")
 
                 location_cls = random.choice(valid_pool)
 
             location = cast(InvisibleFlagLocation, location_cls(i))
+            used_flag_rooms.update(location._rooms)
             for r in location._rooms:
-                # place them in rooms and set visibility triggers
+                # Replace the pre-allocated dummy NPC with the actual invisible flag NPC
                 room = world.rooms._rooms[r]
                 assert room is not None
+                assert world._flag_dummy_index is not None
 
-                # Double-check room capacity before creating AreaObject
-                num_objects = len(room.objects)
-                calculated_id = num_objects + 0x14
-                if calculated_id > 0x2F:
-                    raise Exception(
-                        f"Room {r} ({location_cls.__name__}) has too many objects!\n"
-                        f"  Objects in room: {num_objects}\n"
-                        f"  Calculated NPC ID: 0x{calculated_id:02X} (requires <= 0x2F)\n"
-                        f"  Max objects allowed: 27 (0x1B)"
-                    )
-
-                n = location.npc
-                n_id = AreaObject(calculated_id)
-                n.set_visible(False)
+                idx = world._flag_dummy_index[r]
+                n_id = AreaObject(0x14 + idx)
+                npc = location.npc
+                npc.set_visible(False)
+                room._objects[idx] = npc
                 world.event_scripts.get_script_by_id(
                     E0091_INVISIBLE_ITEM_SUMMONER
                 ).insert_before_nth_command(0, SummonObjectToSpecificLevel(n_id, r))
-                room.add_object(location.npc)
             # set hint text
             if i == 0:
                 world.update_dialog(

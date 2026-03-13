@@ -336,11 +336,9 @@ def randomize_enemy_drops(
 
 
 VALID_FORMATION_COORDINATES = [
-    (119, 103), (135, 111), (151, 119), (167, 127),
-    (103, 111), (119, 119), (135, 127), (151, 135),
-    (87, 119), (103, 127), (119, 135), (135, 143),
-    (87, 135), (103, 143), (119, 151),
-    (103, 159),
+    (135, 111), (151, 119), (167, 127),
+    (119, 119), (135, 127), (151, 135),
+    (103, 127), (119, 135), (135, 143),
     
 ]
 
@@ -471,8 +469,11 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             # Default to a reasonable size if sprite lookup fails
             return 2048
 
-    # Maximum total VRAM size for a formation
-    MAX_VRAM_SIZE = 8192
+    # Maximum unique VRAM size for a formation.
+    # Duplicate enemies share sprite VRAM, so only unique sprites count.
+    # 14336 = vanilla ceiling for non-boss formations (old value 8192 was too low).
+    from randomizer.logic.battle_vram_calculator import VANILLA_MAX_NONBOSS_UNIQUE_VRAM
+    MAX_VRAM_SIZE = VANILLA_MAX_NONBOSS_UNIQUE_VRAM
 
     for pack_id, pack in enumerate(world.battle_packs.packs):
         # Skip boss fight packs entirely - never modify boss formations
@@ -526,19 +527,23 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             num_enemies = random.randint(1, random.randint(3, max_enemies))
             num_enemies = max(num_enemies, len(current_enemy_types))
 
-            # Build formation while respecting VRAM constraint
+            # Build formation while respecting VRAM constraint.
+            # Duplicate enemies share sprite VRAM, so track unique sprites only.
             chosen_enemies: list[type] = list(current_enemy_types)
-            current_vram = sum(get_vram_size(e) for e in chosen_enemies)
+            unique_vram: dict[type, int] = {e: get_vram_size(e) for e in set(chosen_enemies)}
+            current_vram = sum(unique_vram.values())
 
             while len(chosen_enemies) < num_enemies:
                 sub_candidates = candidates + chosen_enemies
                 if not sub_candidates:
                     break
 
-                # Filter candidates by VRAM constraint
+                # Filter candidates by VRAM constraint.
+                # If the enemy type is already in the formation, it adds 0 VRAM (shared).
                 vram_valid_candidates = [
                     e for e in sub_candidates
-                    if current_vram + get_vram_size(e) <= MAX_VRAM_SIZE
+                    if e in unique_vram  # already loaded, free
+                    or current_vram + get_vram_size(e) <= MAX_VRAM_SIZE
                 ]
 
                 if not vram_valid_candidates:
@@ -546,7 +551,10 @@ def randomize_enemy_formations(world: GameWorld) -> None:
 
                 new_enemy = random.choice(vram_valid_candidates)
                 chosen_enemies.append(new_enemy)
-                current_vram += get_vram_size(new_enemy)
+                if new_enemy not in unique_vram:
+                    vram_cost = get_vram_size(new_enemy)
+                    unique_vram[new_enemy] = vram_cost
+                    current_vram += vram_cost
 
             random.shuffle(chosen_enemies)
 
