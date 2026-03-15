@@ -44,7 +44,6 @@ mario_script = EventScript([
         A_FaceEast(),
         A_SetAllSpeeds(NORMAL),
     ]),
-    Pause(25),
     SummonObjectToCurrentLevelAtMariosCoords(NPC_0),
     ActionQueueAsync(target=NPC_0, subscript=[
         A_SetWalkingSpeed(NORMAL),
@@ -76,7 +75,7 @@ mario_script = EventScript([
     ApplyTileModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=32, use_alternate=True),
     RemoveObjectFromCurrentLevel(NPC_2),
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
-    ActionQueueSync(target=NPC_0, subscript=[
+    ActionQueueAsync(target=NPC_0, subscript=[
         A_FloatingOff(),
         A_JumpToHeight(height=30, silent=True),
         A_WalkSouthwestSteps(1),
@@ -87,7 +86,7 @@ mario_script = EventScript([
         A_FixedFCoordOff(),
     ]),
     Pause(60),
-    ActionQueueSync(target=NPC_0, subscript=[
+    ActionQueueAsync(target=NPC_0, subscript=[
         A_SetSequenceSpeed(NORMAL),
         A_SetSpriteSequence(index=10, sprite_offset=2, is_sequence=True, looping=False),
         A_Pause(80),
@@ -95,16 +94,12 @@ mario_script = EventScript([
         A_FaceSouthwest(),
     ]),
     Pause(10),
-    ActionQueueSync(target=NPC_0, subscript=[
-        A_ResetProperties(),
-        A_FaceSouthwest(),
-    ]),
-    Pause(10),
-    ActionQueueAsync(target=MARIO, subscript=[
+    ActionQueueSync(target=MARIO, subscript=[
         A_WalkToXYCoords(x=5, y=116),
         A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
     ]),
-    ActionQueueSync(target=NPC_0, subscript=[
+    ActionQueueAsync(target=NPC_0, subscript=[
         A_SequenceLoopingOn(),
         A_SequencePlaybackOn(),
         A_SetWalkingSpeed(NORMAL),
@@ -157,7 +152,7 @@ mario_self_script = EventScript([
     ApplyTileModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=32, use_alternate=True),
     RemoveObjectFromCurrentLevel(NPC_2),
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
-    ActionQueueSync(target=MARIO, subscript=[
+    ActionQueueAsync(target=MARIO, subscript=[
         A_FloatingOff(),
         A_JumpToHeight(height=30, silent=True),
         A_WalkSouthwestSteps(1),
@@ -168,19 +163,14 @@ mario_self_script = EventScript([
         A_FixedFCoordOff(),
     ]),
     Pause(60),
-    ActionQueueSync(target=MARIO, subscript=[
+    ActionQueueAsync(target=MARIO, subscript=[
         A_SetSequenceSpeed(NORMAL),
         A_SetSpriteSequence(index=10, sprite_offset=2, is_sequence=True, looping=False),
         A_Pause(80),
         A_ResetProperties(),
-        A_FaceSouthwest(),
+        A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
     ]),
-    Pause(10),
-    ActionQueueSync(target=MARIO, subscript=[
-        A_ResetProperties(),
-        A_FaceSouthwest(),
-    ]),
-    Pause(10),
     SetBit(TOWER_OPENED),
     Return(identifier="tower_ret"),
 ])
@@ -203,39 +193,31 @@ geno_script = EventScript([
     ]),
     Pause(25),
     SummonObjectToCurrentLevelAtMariosCoords(NPC_0),
-    ActionQueueSync(target=NPC_0, subscript=[
+    ActionQueueAsync(target=NPC_0, subscript=[
         A_SetWalkingSpeed(NORMAL),
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
-    ]),
-    ActionQueueAsync(target=NPC_0, subscript=[
-        A_Pause(31),
-    ]),
-    Pause(30),
-    ActionQueueSync(target=NPC_0, subscript=[
         A_SetSpriteSequence(index=2, sprite_offset=3, is_sequence=True, looping=False),
-        A_VisibilityOn(),
     ]),
-    Pause(21),
-    PlaySound(sound=SO075_ROCKETING_BLAST, channel=6),
     ActionQueueAsync(target=NPC_3, subscript=[
-        A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
         A_WalkNorthPixels(7),
         A_WalkWestPixels(6),
+        A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
         A_VisibilityOn(),
         A_SequenceLoopingOn(),
         A_SetSequenceSpeed(VERY_FAST),
         A_SetWalkingSpeed(VERY_FAST),
-        A_WalkNortheastSteps(6),
+        A_WalkNortheastSteps(2),
+        A_PlaySound(sound=SO075_ROCKETING_BLAST, channel=6),
+        A_WalkNortheastSteps(4),
     ]),
-    Pause(22),
     ApplySolidityModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=0, permanent=True),
     ApplyTileModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=32, use_alternate=True),
     RemoveObjectFromCurrentLevel(NPC_2),
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
-    Pause(60),
     RemoveObjectFromCurrentLevel(NPC_3),
-    ActionQueueSync(target=NPC_0, subscript=[
+    Pause(60),
+    ActionQueueAsync(target=NPC_0, subscript=[
         A_SetSequenceSpeed(NORMAL),
         A_SetSpriteSequence(index=10, sprite_offset=1, is_sequence=True, looping=False),
         A_Pause(80),
@@ -243,12 +225,13 @@ geno_script = EventScript([
         A_FaceSouthwest(),
     ]),
     Pause(10),
-    ActionQueueAsync(target=NPC_0, subscript=[
-        A_WalkToXYCoords(x=5, y=116),
-    ]),
-    ActionQueueSync(target=MARIO, subscript=[
+    ActionQueueAsync(target=MARIO, subscript=[
         A_WalkToXYCoords(x=5, y=116),
         A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
+    ]),
+    ActionQueueAsync(target=NPC_0, subscript=[
+        A_WalkToXYCoords(x=5, y=116),
     ]),
     RemoveObjectFromCurrentLevel(NPC_0),
     SetBit(TOWER_OPENED),
@@ -266,21 +249,12 @@ geno_self_script = EventScript([
     EnableControlsUntilReturn([]),
 
     RemoveObjectFromCurrentLevel(NPC_1),
-    ActionQueueSync(target=MARIO, subscript=[
+    ActionQueueAsync(target=MARIO, subscript=[
         A_SetWalkingSpeed(NORMAL),
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
+        A_SetSpriteSequence(index=2, sprite_offset=4, is_sequence=True, looping=False),
     ]),
-    ActionQueueAsync(target=MARIO, subscript=[
-        A_Pause(31),
-    ]),
-    Pause(30),
-    ActionQueueAsync(target=MARIO, subscript=[
-        A_SetSpriteSequence(index=2, is_sequence=True, looping=False),
-        A_VisibilityOn(),
-    ]),
-    Pause(21),
-    PlaySound(sound=SO075_ROCKETING_BLAST, channel=6),
     ActionQueueAsync(target=NPC_3, subscript=[
         A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
         A_WalkNorthPixels(7),
@@ -289,21 +263,23 @@ geno_self_script = EventScript([
         A_SequenceLoopingOn(),
         A_SetSequenceSpeed(VERY_FAST),
         A_SetWalkingSpeed(VERY_FAST),
-        A_WalkNortheastSteps(6),
+        A_WalkNortheastSteps(2),
+        A_PlaySound(sound=SO075_ROCKETING_BLAST, channel=6),
+        A_WalkNortheastSteps(4),
     ]),
-    Pause(22),
     ApplySolidityModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=0, permanent=True),
     ApplyTileModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=32, use_alternate=True),
     RemoveObjectFromCurrentLevel(NPC_2),
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
-    Pause(60),
     RemoveObjectFromCurrentLevel(NPC_3),
-    ActionQueueSync(target=MARIO, subscript=[
+    Pause(60),
+    ActionQueueAsync(target=MARIO, subscript=[
         A_SetSequenceSpeed(NORMAL),
         A_SetSpriteSequence(index=10, sprite_offset=2, is_sequence=True, looping=False),
         A_Pause(80),
         A_ResetProperties(),
-        A_FaceSouthwest(),
+        A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
     ]),
     Pause(10),
     SetBit(TOWER_OPENED),
@@ -376,6 +352,7 @@ bowser_script = EventScript([
     ActionQueueSync(target=MARIO, subscript=[
         A_WalkToXYCoords(x=5, y=116),
         A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
     ]),
     ActionQueueAsync(target=NPC_0, subscript=[
         A_FixedFCoordOff(),
@@ -439,12 +416,13 @@ bowser_self_script = EventScript([
     RemoveObjectFromCurrentLevel(NPC_2),
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
     Pause(60),
-    ActionQueueSync(target=MARIO, subscript=[
+    ActionQueueAsync(target=MARIO, subscript=[
         A_SetSequenceSpeed(NORMAL),
-        A_SetSpriteSequence(index=10, sprite_offset=1, is_sequence=True, looping=False),
+        A_SetSpriteSequence(index=10, sprite_offset=2, is_sequence=True, looping=False),
         A_Pause(60),
         A_ResetProperties(),
         A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
     ]),
     SetBit(TOWER_OPENED),
     Return(identifier="tower_ret"),
@@ -473,7 +451,7 @@ mallow_script = EventScript([
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
         A_Pause(30),
-        A_SetSpriteSequence(index=12, sprite_offset=1, is_sequence=True, mirror_sprite=True),
+        A_SetSpriteSequence(index=12, is_sequence=True, mirror_sprite=True, looping=True),
         A_FaceNortheast(),
         A_PlaySound(sound=SO068_MALLOW_YELLING_AT_CROCO, channel=4),
         A_Pause(60),
@@ -483,7 +461,7 @@ mallow_script = EventScript([
         A_Pause(90),
         A_StopSound(),
         A_SequenceLoopingOff(),
-        A_SetSpriteSequence(index=28, sprite_offset=1, is_mold=True, is_sequence=True, mirror_sprite=True),
+        A_SetSpriteSequence(index=28, is_mold=True, is_sequence=True, mirror_sprite=True),
     ]),
     Pause(10),
     PlaySound(sound=SO016_OPEN_DOOR, channel=6),
@@ -493,6 +471,7 @@ mallow_script = EventScript([
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
     ActionQueueAsync(target=NPC_0, subscript=[
         A_Pause(90),
+        A_ResetProperties(),
         A_FaceSouthwest(),
         A_Pause(90),
         A_SetSpriteSequence(index=7,  is_mold=True, is_sequence=True),
@@ -503,6 +482,7 @@ mallow_script = EventScript([
     ActionQueueSync(target=MARIO, subscript=[
         A_WalkToXYCoords(x=5, y=116),
         A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
     ]),
     ActionQueueAsync(target=NPC_0, subscript=[
         A_SequenceLoopingOn(),
@@ -532,7 +512,7 @@ mallow_self_script = EventScript([
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
         A_Pause(30),
-        A_SetSpriteSequence(index=8, sprite_offset=5, is_sequence=True, mirror_sprite=True),
+        A_SetSpriteSequence(index=8, sprite_offset=5, is_sequence=True, mirror_sprite=True, looping=True),
         A_FaceNortheast(),
         A_PlaySound(sound=SO068_MALLOW_YELLING_AT_CROCO, channel=4),
         A_Pause(60),
@@ -557,6 +537,9 @@ mallow_self_script = EventScript([
         A_SetSpriteSequence(index=7, mirror_sprite=True, is_mold=True, is_sequence=True),
         A_Pause(60),
         A_ResetProperties(),
+        A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
+        A_SetWalkingSpeed(NORMAL),
     ]),
     Pause(10),
     SetBit(TOWER_OPENED),
@@ -601,11 +584,11 @@ toadstool_script = EventScript([
         A_WalkSouthwestSteps(2),
         A_FixedFCoordOff(),
     ]),
+    Pause(200),
     ApplySolidityModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=0, permanent=True),
     ApplyTileModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=32, use_alternate=True),
     RemoveObjectFromCurrentLevel(NPC_2),
     RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
-    Pause(200),
 	SetBit(BAMBINO_BOMB_UNKNOWN),
     ActionQueueAsync(target=NPC_0, subscript=[
         A_ResetProperties(),
@@ -621,6 +604,7 @@ toadstool_script = EventScript([
     ActionQueueSync(target=MARIO, subscript=[
         A_WalkToXYCoords(x=5, y=116),
         A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
     ]),
     ActionQueueAsync(target=NPC_0, subscript=[
         A_SequenceLoopingOn(),
@@ -652,7 +636,7 @@ toadstool_self_script = EventScript([
         A_Pause(30),
         A_WalkNortheastSteps(4),
         A_Pause(20),
-        A_SetSpriteSequence(index=12, sprite_offset=1, is_sequence=True),
+        A_SetSpriteSequence(index=12, sprite_offset=2, is_sequence=True),
         A_Pause(15),
     ]),
     ActionQueueAsync(target=MARIO, subscript=[
@@ -675,27 +659,13 @@ toadstool_self_script = EventScript([
         A_ResetProperties(),
         A_FaceSouthwest(),
         A_Pause(40),
-        A_SetSpriteSequence(index=2, is_sequence=True),
+        A_SetSpriteSequence(index=5, sprite_offset=5, is_sequence=True),
         A_Pause(40),
-        A_SetSequenceSpeed(NORMAL),
-        A_ResetProperties(),
-    ]),
-    Pause(45),
-    ApplySolidityModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=0, permanent=True),
-    ApplyTileModToLevel(room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=32, use_alternate=True),
-    RemoveObjectFromCurrentLevel(NPC_2),
-    RemoveObjectFromSpecificLevel(NPC_2, R202_BOOSTER_TOWER_ENTRANCE),
-    Pause(120),
-    ActionQueueSync(target=MARIO, subscript=[
-        A_Pause(40),
-        A_SetSequenceSpeed(NORMAL),
-        A_SetSpriteSequence(index=6, sprite_offset=5, is_sequence=True, looping=False),
-        A_Pause(70),
         A_SetSequenceSpeed(NORMAL),
         A_ResetProperties(),
         A_FaceNortheast(),
+        A_SetSolidityBits(cant_pass_walls=True),
     ]),
-    Pause(10),
     SetBit(TOWER_OPENED),
     Return(identifier="tower_ret"),
 ])

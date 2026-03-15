@@ -4562,20 +4562,22 @@ class CulexBossFight(BossFightPrize):
         WINDCRYSTALEnemy,
     ]
 
+    _henchmen_hidden_at_start = True
+
     _npc_models = [CulexLargeObject, CulexSmallObject]
     _statue_npc = CulexStatueObject
 
     _character_henchmen = [
-        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FireCrystalHenchman),
-        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WaterCrystalHenchman),
-        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EarthCrystalHenchman),
-        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WindCrystalHenchman),
+        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FireCrystalHenchman, run_event_at_load=BE0076_SOLO_FIRE_CRYSTAL_APPEARS),
+        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WaterCrystalHenchman, run_event_at_load=BE0020_SOLO_WATER_CRYSTAL_APPEARS),
+        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EarthCrystalHenchman, run_event_at_load=BE0011_SOLO_EARTH_CRYSTAL_APPEARS),
+        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WindCrystalHenchman, run_event_at_load=BE0001_SOLO_WIND_CRYSTAL_APPEARS),
     ]
     _mook_henchmen = [
-        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FireCrystalHenchman),
-        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WaterCrystalHenchman),
-        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EarthCrystalHenchman),
-        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WindCrystalHenchman),
+        BossFightHenchman(monster=FIRECRYSTALEnemy, model=FireCrystalHenchman, run_event_at_load=BE0076_SOLO_FIRE_CRYSTAL_APPEARS),
+        BossFightHenchman(monster=WATERCRYSTALEnemy, model=WaterCrystalHenchman, run_event_at_load=BE0020_SOLO_WATER_CRYSTAL_APPEARS),
+        BossFightHenchman(monster=EARTHCRYSTALEnemy, model=EarthCrystalHenchman, run_event_at_load=BE0011_SOLO_EARTH_CRYSTAL_APPEARS),
+        BossFightHenchman(monster=WINDCRYSTALEnemy, model=WindCrystalHenchman, run_event_at_load=BE0001_SOLO_WIND_CRYSTAL_APPEARS),
     ]
 
     _dialog_replacements = {

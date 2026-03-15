@@ -519,6 +519,33 @@ class GameWorld:
     def update_packet(self, packet_id: int, new_packet):
         self.packets.packets[packet_id] = new_packet
 
+    _next_formation_id: int | None = None
+
+    def allocate_formation_id(self) -> int:
+        """Allocate a unique formation ID for a new Formation object.
+
+        Raises:
+            ValueError: If all 512 formation IDs have been exhausted.
+        """
+        from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
+            TOTAL_FORMATIONS,
+        )
+
+        if self._next_formation_id is None:
+            max_id = 0
+            for pack in self.battle_packs.packs:
+                for f in pack.formations:
+                    if f.formation_id is not None and f.formation_id > max_id:
+                        max_id = f.formation_id
+            self._next_formation_id = max_id + 1
+        if self._next_formation_id >= TOTAL_FORMATIONS:
+            raise ValueError(
+                f"Cannot allocate formation ID: all {TOTAL_FORMATIONS} slots exhausted"
+            )
+        fid = self._next_formation_id
+        self._next_formation_id += 1
+        return fid
+
     def get_battle_pack(self, pack_id: int):
         p = self.battle_packs.packs[pack_id]
         assert p is not None, f"Battle Pack {pack_id} does not exist in PackCollection"

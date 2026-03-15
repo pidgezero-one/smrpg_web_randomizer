@@ -57,11 +57,11 @@ script = EventScript([
 		A_Pause(16),
 		A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_Pause(32),
-		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="tower_lean_back_1"),
 		A_Pause(48),
-		A_SetSpriteSequence(index=24, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=24, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="tower_lean_back_full"),
 		A_Pause(127),
-		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="tower_lean_back_2"),
 		A_Pause(16),
 		A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_Pause(8),
@@ -75,7 +75,7 @@ script = EventScript([
 		A_BPL262728(),
 		A_ShiftToXYCoords(x=18, y=121),
 		A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+	], identifier="tower_lean_back_aq"),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
 		A_Pause(248),
 		A_SetWalkingSpeed(FASTEST),

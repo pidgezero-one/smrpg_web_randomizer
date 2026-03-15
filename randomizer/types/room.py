@@ -48,8 +48,6 @@ class Room(RoomBase):
         if self.partition.ally_sprite_buffer_size == 0:
             return
 
-        old_buffer_size = self.partition.ally_sprite_buffer_size
-
         ally = world.overworld_character.ally
         m = world.overworld_character.character_model if ally.index == 0 else AllyContainerNPC()
 
@@ -90,8 +88,8 @@ class Room(RoomBase):
         min_vram = max(vram_values) + 1
         self.partition.set_ally_sprite_buffer_size(max(min_vram, self.partition.ally_sprite_buffer_size))
 
-        # Shift glowing save point NPC index if buffer size increased
-        buffer_increase = self.partition.ally_sprite_buffer_size - old_buffer_size
+        # Shift glowing save point NPC index if buffer size increased from original
+        buffer_increase = self.partition.ally_sprite_buffer_size - self.partition.original_ally_sprite_buffer_size
         if buffer_increase > 0 and self.effects_npc in GLOWING_SAVE_POINT_NPC_INDEX:
             old_npc_index = GLOWING_SAVE_POINT_NPC_INDEX[self.effects_npc]
             new_npc_index = old_npc_index + buffer_increase

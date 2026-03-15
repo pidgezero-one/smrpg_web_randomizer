@@ -1,4 +1,4 @@
-dialog_data = [""]*625
+dialog_data = [""]*633
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -1702,3 +1702,11 @@ dialog_data[621] = '''Kipp[end]'''
 dialog_data[622] = '''[center]Got a “Yoshi-Ade”![await]'''
 dialog_data[623] = '''   Found a “Yoshi-Ade”![end]'''
 dialog_data[624] = '''[await]'''
+dialog_data[625] = '''[center]Got "[0x70A7]"![end]'''
+dialog_data[626] = '''[center]Got "[0x70A7]"![await]'''
+dialog_data[627] = '''   Found "[0x70A7]"![end]'''
+dialog_data[628] = '''[center]Got the "[0x70A7]"![end]'''
+dialog_data[629] = '''[center]Got the "[0x70A7]"![await]'''
+dialog_data[630] = '''   Found the "[0x70A7]"![end]'''
+dialog_data[631] = '''Got "[0x70A7]"![end]'''
+dialog_data[632] = '''Got the "[0x70A7]"![end]'''

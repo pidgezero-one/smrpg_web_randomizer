@@ -3599,41 +3599,41 @@ FORM0322 = Formation(
 FORM0323 = Formation(
     id=323,
     members=[
-        FormationMember(FIRECRYSTALEnemy, 183, 127),
+        FormationMember(FIRECRYSTALEnemy, 183, 127, hidden_at_start=True),
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,
-    run_event_at_load=76,
+    run_event_at_load=BE0076_SOLO_FIRE_CRYSTAL_APPEARS,
 )
 
 FORM0324 = Formation(
     id=324,
     members=[
-        FormationMember(WATERCRYSTALEnemy, 183, 127),
+        FormationMember(WATERCRYSTALEnemy, 183, 127, hidden_at_start=True),
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,
-    run_event_at_load=20,
+    run_event_at_load=BE0020_SOLO_WATER_CRYSTAL_APPEARS,
 )
 
 FORM0325 = Formation(
     id=325,
     members=[
-        FormationMember(EARTHCRYSTALEnemy, 183, 127),
+        FormationMember(EARTHCRYSTALEnemy, 183, 127, hidden_at_start=True),
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,
-    run_event_at_load=11,
+    run_event_at_load=BE0011_SOLO_EARTH_CRYSTAL_APPEARS,
 )
 
 FORM0326 = Formation(
     id=326,
     members=[
-        FormationMember(WINDCRYSTALEnemy, 183, 127),
+        FormationMember(WINDCRYSTALEnemy, 183, 127, hidden_at_start=True),
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,
-    run_event_at_load=1,
+    run_event_at_load=BE0001_SOLO_WIND_CRYSTAL_APPEARS,
 )
 
 FORM0327 = Formation(

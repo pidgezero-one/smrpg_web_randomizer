@@ -69,7 +69,6 @@ script = EventScript([
 	Pause(210),
 	StartLoopNTimes(1),
 	Pause(210),
-	Pause(210),
     JmpIfBitSet(BOOSTER_HILL_CLOSED, ["EVENT_3511_end_loop_41"]),
 	
 	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
@@ -125,6 +124,7 @@ script = EventScript([
 	CreatePacketAt7010WithEvent(P087_BOOSTER_HILL_PRIZE_STANDING_14, E3512_BOOSTER_HILL_FLOWER_PICKUP, ["EVENT_3511_end_loop_41"], identifier="summon_flower_floor_15"),
     Jmp(["EVENT_3511_end_loop_41"]),
 	CreatePacketAt7010WithEvent(P088_BOOSTER_HILL_PRIZE_STANDING_15, E3512_BOOSTER_HILL_FLOWER_PICKUP, ["EVENT_3511_end_loop_41"], identifier="summon_flower_floor_16"),
-    EndLoop(identifier="EVENT_3511_end_loop_41"),
+	Pause(210, identifier="EVENT_3511_end_loop_41"),
+    EndLoop(),
 	Return()
 ])

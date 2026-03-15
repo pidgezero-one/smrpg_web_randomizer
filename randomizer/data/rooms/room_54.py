@@ -40,7 +40,7 @@ room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=0,
+        extra_sprite_buffer_size=1,
         buffers=[
             Buffer(
                 buffer_type=BufferType.EMPTY_3,
@@ -173,7 +173,7 @@ room = Room(
             height=UInt8(11),
         ),
         RegularNPC(  # 6
-            npc=npcs.TOAD_NPC,
+            npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.NONE,
             event_script=E1551_BANK_1F_RETURN_EVENT,
             action_script=A0160_SEQUENCE_LOOPING_ON,

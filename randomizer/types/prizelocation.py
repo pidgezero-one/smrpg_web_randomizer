@@ -30,6 +30,7 @@ from .prize import (
     KeyPrize,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
+    Formation,
     FormationMember,
 )
 from ..utils.snippets.es_slot_machine import create_slot_machine_script
@@ -461,9 +462,7 @@ class ShuffleLocationSelector(CategorizationOption):
     KERO_SEWERS_BOSS = "Kero Sewers boss"
     KERO_SEWERS_STAR_PIECE = "Kero Sewers boss Star Piece"
     MIDAS_RIVER_FIRST_TIME = "Midas River first play reward"
-    MIDAS_RIVER_LEFT_CAVE = (
-        "Midas River bottom left tunnel freestanding frog coin"
-    )
+    MIDAS_RIVER_LEFT_CAVE = "Midas River bottom left tunnel freestanding frog coin"
     MIDAS_RIVER_BOTTOM_LEFT_CAVE = (
         "Midas River bottom left tunnel freestanding frog coin"
     )
@@ -1237,6 +1236,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                             return False
         if isinstance(prize, SpellPrize):
             from randomizer.types.flags import SpellsAnywhere
+
             if world.settings.isflag_enabled(SpellsAnywhere):
                 # Dynamic assignment mode: assign a character BEFORE placement
                 # Get all recruited character types from inventory
@@ -1408,7 +1408,11 @@ class TreasureChestLocation(StandardPrizeLocation):
             and not issubclass(self.prize.model, tuple(self._model_allowlist))
         ):
             itemgrant = [
-                cmd if not isinstance(cmd, JmpToEvent) else JmpToEvent(DefaultItem._chest_event_id)
+                (
+                    cmd
+                    if not isinstance(cmd, JmpToEvent)
+                    else JmpToEvent(DefaultItem._chest_event_id)
+                )
                 for cmd in itemgrant
             ]
         for npc, room in zip(self._npc_ids, self._rooms):
@@ -1423,10 +1427,16 @@ class TreasureChestLocation(StandardPrizeLocation):
                     DisableObjectTriggerInSpecificLevel(ao, room),
                 ] + itemgrant
             else:
-                from randomizer.progression.prizelocations import KeroSewersBeforeBelomeUpperBeforeFlipLocation
+                from randomizer.progression.prizelocations import (
+                    KeroSewersBeforeBelomeUpperBeforeFlipLocation,
+                )
+
                 if isinstance(self, KeroSewersBeforeBelomeUpperBeforeFlipLocation):
                     itemgrant = [
-                        JmpIfBitSet(LANDS_END_GROTTO_BARREL_FLIPPED, [itemgrant[0].identifier.label]),
+                        JmpIfBitSet(
+                            LANDS_END_GROTTO_BARREL_FLIPPED,
+                            [itemgrant[0].identifier.label],
+                        ),
                         DisableObjectTriggerInSpecificLevel(ao, room),
                     ] + itemgrant
                 elif not isinstance(self.prize, InfiniteCoinsPrize):
@@ -1870,7 +1880,10 @@ class BossFightLocation(PrizeLocation):
           event script battle pack selectors (non-BattlePackNPC objects).
         - list of (slot, henchman) tuples for all assigned henchmen.
         """
-        from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC, BattlePackClone
+        from smrpgpatchbuilder.datatypes.levels.classes import (
+            BattlePackNPC,
+            BattlePackClone,
+        )
 
         assert isinstance(self.prize, BossFightPrize)
 
@@ -1920,15 +1933,25 @@ class BossFightLocation(PrizeLocation):
                         members.append(henchman.monster)
                     coords = generate_formation_coordinates(len(members))
                     formation_members: list[FormationMember | None] = [
-                        FormationMember(m, c[0], c[1]) for m, c in zip(members, coords)
+                        FormationMember(
+                            m,
+                            c[0],
+                            c[1],
+                            hidden_at_start=self.prize.henchmen_hidden_at_start,
+                        )
+                        for m, c in zip(members, coords)
                     ]
-                    # Set the formation on the henchman pack
+                    # Set the formation on the henchman pack with a new Formation
+                    # to avoid mutating shared Formation objects
                     henchman_pack = world.battle_packs._packs[slot.pack_id]
-                    for f in henchman_pack.formations:
-                        f.set_members(
-                            formation_members
-                        )  # pyright: ignore[reportArgumentType]
-                        f.set_can_run_away(self._henchman_can_run_away)
+                    new_formation = Formation(
+                        members=formation_members,
+                        can_run_away=self._henchman_can_run_away,
+                        unknown_bit=not self._henchman_can_run_away,
+                        run_event_at_load=henchman.run_event_at_load,
+                        id=world.allocate_formation_id(),
+                    )
+                    henchman_pack.set_formations(new_formation)
 
         # Assign character henchmen
         if self.character_henchman_slots:
@@ -1949,11 +1972,21 @@ class BossFightLocation(PrizeLocation):
 
             for slot, henchman in zip(active_char_slots[: len(chars)], chars):
                 if slot.pack_id is not None and henchman.monster is not None:
-                    fr: FormationMember = FormationMember(henchman.monster, 183, 127)
+                    fr: FormationMember = FormationMember(
+                        henchman.monster,
+                        183,
+                        127,
+                        hidden_at_start=self.prize.henchmen_hidden_at_start,
+                    )
                     henchman_pack = world.battle_packs._packs[slot.pack_id]
-                    for f in henchman_pack.formations:
-                        f.set_members([fr])  # pyright: ignore[reportArgumentType]
-                        f.set_can_run_away(self._henchman_can_run_away)
+                    new_formation = Formation(
+                        members=[fr],
+                        can_run_away=self._henchman_can_run_away,
+                        unknown_bit=not self._henchman_can_run_away,
+                        run_event_at_load=henchman.run_event_at_load,
+                        id=world.allocate_formation_id(),
+                    )
+                    henchman_pack.set_formations(new_formation)
             henchmen_assignments.extend(zip(active_char_slots[: len(chars)], chars))
 
             # Fill remaining character slots with mooks if needed
@@ -1981,18 +2014,25 @@ class BossFightLocation(PrizeLocation):
                         members.append(henchman.monster)
                     coords = generate_formation_coordinates(len(members))
                     formation_members: list[FormationMember | None] = [
-                        FormationMember(m, c[0], c[1]) for m, c in zip(members, coords)
+                        FormationMember(
+                            m,
+                            c[0],
+                            c[1],
+                            hidden_at_start=self.prize.henchmen_hidden_at_start,
+                        )
+                        for m, c in zip(members, coords)
                     ]
-                    if isinstance(self.prize, BundtBossFight):
-                        for _ in range(4):
-                            formation_members.insert(0, None)
-                    # Set the formation on the henchman pack
+                    # Set the formation on the henchman pack with a new Formation
+                    # to avoid mutating shared Formation objects
                     henchman_pack = world.battle_packs._packs[slot.pack_id]
-                    for f in henchman_pack.formations:
-                        f.set_members(
-                            formation_members
-                        )  # pyright: ignore[reportArgumentType]
-                        f.set_can_run_away(self._henchman_can_run_away)
+                    new_formation = Formation(
+                        members=formation_members,
+                        can_run_away=self._henchman_can_run_away,
+                        unknown_bit=not self._henchman_can_run_away,
+                        run_event_at_load=henchman.run_event_at_load,
+                        id=world.allocate_formation_id(),
+                    )
+                    henchman_pack.set_formations(new_formation)
                 henchmen_assignments.extend(zip(active_char_slots[len(chars) :], mooks))
 
         # Assign tiny henchmen
@@ -2166,6 +2206,7 @@ class BossFightLocation(PrizeLocation):
         pack = world.battle_packs._packs[self._pack_id]
         run_away = self.allow_run_away
         from randomizer.types.flags import MimicsAnywhere
+
         if world.settings.isflag_enabled(MimicsAnywhere) and (
             isinstance(self.prize, MimicFightInitiatorPrize)
             or isinstance(self, MimicFightLocation)
@@ -2202,6 +2243,7 @@ class BossFightLocation(PrizeLocation):
         if self._slots_pack_id is not None:
             slots_pack = world.battle_packs._packs[self._slots_pack_id]
             from randomizer.types.flags import SlotsAnywhere
+
             slots_run_away = world.settings.isflag_enabled(SlotsAnywhere)
             for f in slots_pack.formations:
                 if self.prize.formation is not None:
@@ -2238,7 +2280,9 @@ class BossFightLocation(PrizeLocation):
                 max_vram = slot.get_max_vram_size(world)
                 max_min_vram = slot.get_original_min_vram_size(world)
                 max_min_vram_seq0 = slot.get_original_min_vram_from_sequence_0(world)
-                m = self.prize.get_npc_for_slot(world, max_vram, max_min_vram, max_min_vram_seq0)
+                m = self.prize.get_npc_for_slot(
+                    world, max_vram, max_min_vram, max_min_vram_seq0
+                )
                 obj._npc = m().base
 
         # Set statue slots with statue models
@@ -2362,8 +2406,7 @@ class BossFightLocation(PrizeLocation):
                             ] * len(effective_rooms)
                         else:
                             effective_battlefields = [
-                                ROOM_TO_BATTLEFIELD[r]
-                                for r in effective_rooms
+                                ROOM_TO_BATTLEFIELD[r] for r in effective_rooms
                             ]
         elif (
             self.override_id is not None
@@ -2604,6 +2647,7 @@ class SpellSlotLocation(PrizeLocation):
         # When SpellsAnywhere is enabled, spell slots are only sources (for pulling prizes)
         # not destinations - spells go into the general pool instead
         from randomizer.types.flags import SpellsAnywhere
+
         if world.settings.isflag_enabled(SpellsAnywhere):
             return False
         return isinstance(prize, SpellPrize) and super().can_accept(
@@ -2619,7 +2663,10 @@ class PrizeRow(PrizeLocation):
 
     def can_be_empty(self, world: GameWorld) -> bool:
         from randomizer.types.flags import ItemQuality, ItemQualityOptions
-        if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY):
+
+        if world.settings.is_flag_value(
+            ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY
+        ):
             return True
         return super().can_be_empty(world)
 
@@ -2870,9 +2917,18 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
 
         return (
             [[JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self._70B1_id, [identifier])]],
-            [Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier=identifier), *grant.contents, 
-             	RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	],
+            [
+                Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier=identifier),
+                RunDialog(
+                    dialog_id=DI2010_DEBUG_7000,
+                    above_object=NPC_12,
+                    closable=True,
+                    sync=False,
+                    multiline=True,
+                    use_background=False,
+                ),
+                *grant.contents,
+            ],
         )
 
 

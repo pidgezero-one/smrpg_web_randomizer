@@ -418,6 +418,7 @@ class CulexSmallObject(BossNPC):
     """Small Culex object."""
 
     _base = CULEX_SMALL_NPC
+    _eye_height = 11
 
 
 class CulexLargeObject(BossNPC):

@@ -435,6 +435,8 @@ def render_booster_tower_indoor_boss(
                 identifier="tower_toss_aqueue",
             ),
         )
+    else:
+        world.event_scripts.delete_subscript_command_by_identifier("tower_toss_aqueue", "tower_toss")
 
     # Door height adjustment
     door_height = 15 - m.eye_height

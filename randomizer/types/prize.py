@@ -500,6 +500,7 @@ class SpellPrize(Prize):
 class BossFightHenchman:
     _monster: type[Enemy]
     _model: type[HenchmanNPC]
+    _run_event_at_load: int | None
 
     @property
     def monster(self) -> type[Enemy]:
@@ -509,13 +510,19 @@ class BossFightHenchman:
     def model(self) -> type[HenchmanNPC]:
         return self._model
 
+    @property
+    def run_event_at_load(self) -> int | None:
+        return self._run_event_at_load
+
     def __init__(
         self,
         monster: type[Enemy],
         model: type[HenchmanNPC],
+        run_event_at_load: int | None = None,
     ):
         self._monster = monster
         self._model = model
+        self._run_event_at_load = run_event_at_load
 
 
 class BossFightPrize(Prize):
@@ -537,6 +544,7 @@ class BossFightPrize(Prize):
     _character_henchmen: list[BossFightHenchman] | None = None
     _mook_henchmen: list[BossFightHenchman] | None = None
     _tiny_henchmen: list[BossFightHenchman] | None = None
+    _henchmen_hidden_at_start: bool = False
 
     # Stat scaling configuration
     # Enemies whose HP can be scaled proportionally but should NOT receive a slice of the HP "pie"
@@ -606,6 +614,10 @@ class BossFightPrize(Prize):
     @property
     def tiny_henchmen(self) -> list[BossFightHenchman] | None:
         return self._tiny_henchmen
+
+    @property
+    def henchmen_hidden_at_start(self) -> bool:
+        return self._henchmen_hidden_at_start
 
     @property
     def hp_slice_excluded_enemies(self) -> list[type[Enemy]]:
