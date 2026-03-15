@@ -21,10 +21,7 @@ General
 🚧 stella is a hardl ock
 🚧 should be able to run away from mimic fights in mimics anywhere
 🚧 lamb's lure is showing a symbol instead of apostrophe again
-- key item inventory is still too small, did not save alto card
-  - investigate this again. are we sure it didn't save or did it just not display?
-- make a dedicated dialog for yoshi-ade grants, hyphen is remapped
-- godmode and debug mode: always set exp pack to 0
+🚧 godmode and debug mode: always set exp pack to 0
 - mimic chest packet disappears too quickly, like before the battle even starters
 - belome has bad partition in moleville inner mines room 
 - shy guy cart item still disappearing
@@ -121,7 +118,12 @@ Booster Pass
 - red essence in right chest rendered as mushroom, see if the camera shift is messing with the 70a7 selector again
 
 Booster Tower
+🚧 booster tower does not load when character needed to unlock it
+🚧 jagger briefly disappears while waiting for you to hit the mario doll
+🚧 johnny doesnt do an animation in place of booster crying?
 - bottom left shuffled item is always reloading when booster tower checkerboard room reloads
+🚧 bowser npc using old sprite id, need to fix
+🚧 mario loses solidity and goes out of bounds
 🚧 prize in elder key room moves when it shouldnt
 🚧 when peach looks up at masher chests, one of the molds is incorrect. did you ever actully change this?
 🚧 small belome temporarily disappears when he gives you elder key. possible you need to delete sequence setter instead of just replace it

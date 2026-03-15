@@ -40,7 +40,7 @@ room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=1,
+        extra_sprite_buffer_size=0,
         buffers=[
             Buffer(
                 buffer_type=BufferType.EMPTY_3,
@@ -143,6 +143,7 @@ room = Room(
             acute_axis=UInt4(5),
             obtuse_axis=UInt4(5),
             height=UInt8(11),
+            vram_size=0,
         ),
         RegularClone(  # 4
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
@@ -157,6 +158,7 @@ room = Room(
             acute_axis=UInt4(5),
             obtuse_axis=UInt4(5),
             height=UInt8(11),
+            vram_size=0,
         ),
         RegularClone(  # 5
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
@@ -171,6 +173,7 @@ room = Room(
             acute_axis=UInt4(5),
             obtuse_axis=UInt4(5),
             height=UInt8(11),
+            vram_size=0,
         ),
         RegularNPC(  # 6
             npc=npcs.EMPTY_NPC,
@@ -258,7 +261,6 @@ room = Room(
             acute_axis=UInt4(6),
             obtuse_axis=UInt4(5),
             height=UInt8(12),
-            cannot_clone=True,
         ),
     ],
     extra_sprite_actions=[

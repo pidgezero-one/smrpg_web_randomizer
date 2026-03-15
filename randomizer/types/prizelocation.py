@@ -2919,15 +2919,8 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
             [[JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self._70B1_id, [identifier])]],
             [
                 Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier=identifier),
-                RunDialog(
-                    dialog_id=DI2010_DEBUG_7000,
-                    above_object=NPC_12,
-                    closable=True,
-                    sync=False,
-                    multiline=True,
-                    use_background=False,
-                ),
                 *grant.contents,
+                Return(),
             ],
         )
 

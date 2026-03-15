@@ -4059,8 +4059,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
 
             character_henchmen_assigned = (
                 not world.settings.isflag_enabled(KeepMinigameSpritesIntact)
-                and self.prize.character_henchmen is not None
-                and len(self.prize.character_henchmen) >= 3
+                and ((self.prize.character_henchmen is not None and len(self.prize.character_henchmen) >= 3) or (self.prize.mook_henchmen is not None and len(self.prize.mook_henchmen) > 0))
             )
 
             render_booster_tower_indoor_boss(
@@ -4071,14 +4070,13 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
                 character_henchmen_assigned,
             )
             if character_henchmen_assigned:
+                char_count = len(self.prize.character_henchmen) if self.prize.character_henchmen else 0
+                has_mook_fallback = char_count < 3 and self.prize.mook_henchmen is not None and len(self.prize.mook_henchmen) > 0
+                effective_count = 3 if has_mook_fallback else char_count
                 render_booster_tower_henchman_scripts(
                     world,
                     self.prize,
-                    (
-                        len(self.prize.character_henchmen)
-                        if self.prize.character_henchmen
-                        else 0
-                    ),
+                    effective_count,
                 )
 
             # Only if mook henchman slot is assigned
@@ -4762,8 +4760,50 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
             assert isinstance(
                 self.prize, CharacterPrize
             ), f"MarrymoreCharacter prize must be CharacterPrize, got {type(self.prize)}"
+            self._apply_marrymore_npc_overrides(world)
             render_marrymore_character(world, self.prize)
         return op
+
+    def _apply_marrymore_npc_overrides(self, world: GameWorld) -> None:
+        """Apply per-character NPC overrides for Marrymore chapel/Booster Hill.
+
+        Mario uses the protagonist sprite (0) instead of non-protagonist (990)
+        because chapel animations use sprite_offset which shifts the sprite ID,
+        and the non-protagonist offset sprites cause crashes.
+
+        Room 54 buffer 0 is set to FOUR_SPRITES_PER_ROW for characters whose
+        sprites use format 1 (Mario, Geno, Peach). Mallow (format 2) uses the
+        existing THREE_SPRITES_PER_ROW buffer 1.
+
+        Bowser is cannot_clone=True with vram_size=1 (dedicated VRAM).
+        All others are cloneable (cannot_clone=False, vram_size=0).
+        """
+        from smrpgpatchbuilder.datatypes.levels.classes import BufferType
+        assert isinstance(self.prize, CharacterPrize)
+
+        room_54 = world.rooms._rooms[R054_BOOSTER_HILL_DUMMY]
+        if room_54 is None:
+            return
+
+        # Set room 54 buffer 0 type based on character sprite format
+        # if isinstance(self.prize, (MarioRecruitmentPrize, GenoRecruitmentPrize, ToadstoolRecruitmentPrize)):
+        #    room_54.partition.buffers[0].set_buffer_type(BufferType.FOUR_SPRITES_PER_ROW)
+
+        # Apply NPC 8 overrides in room 54
+        obj = room_54.get_npc_by_target_id(NPC_8)
+        if obj is None:
+            return
+        if isinstance(self.prize, MarioRecruitmentPrize):
+            from ..data.rooms.npcs import MARIO_WALKING_DOWN_LEFT_NPC
+            obj._npc = MARIO_WALKING_DOWN_LEFT_NPC
+            obj._cannot_clone = False
+            obj._min_vram_size = 0
+        elif isinstance(self.prize, BowserRecruitmentPrize):
+            obj._min_vram_size = 1
+        else:
+            # Mallow, Geno, Peach — cloneable, use buffer system
+            obj._min_vram_size = 0
+        obj._cannot_clone = True
 
     # Flag as checked: MARRYMORE_LIBERATED
 

@@ -45,6 +45,7 @@ script = EventScript([
     JmpIfVarEqualsConst(ITEM_ID, RareFrogCoinItem, ["freestand_key_item_sound"]),
     JmpIfVarEqualsConst(ITEM_ID, WalletItem, ["freestand_key_item_sound"]),
     JmpIfVarEqualsConst(ITEM_ID, CricketPieItem, ["freestand_key_item_sound"]),
+    JmpIfVarEqualsConst(ITEM_ID, CricketJamItem, ["freestand_key_item_sound"]),
     JmpIfVarEqualsConst(ITEM_ID, CastleKey1Item, ["freestand_key_item_sound"]),
     JmpIfVarEqualsConst(ITEM_ID, CastleKey2Item, ["freestand_key_item_sound"]),
     JmpIfVarEqualsConst(ITEM_ID, BambinoBombItem, ["freestand_key_item_sound"]),

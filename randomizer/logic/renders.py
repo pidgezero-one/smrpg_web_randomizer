@@ -17,6 +17,7 @@ from randomizer.progression.prizes import (
     DirectorBossFight,
     DodoBossFight,
     ManagerBossFight,
+    MarioRecruitmentPrize,
 )
 from randomizer.utils.tower_access_scripts import A_EndLoop, A_JmpIfRandom1of2, A_VisibilityOn
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
@@ -111,13 +112,14 @@ from ..types.ally import Ally, SpriteAnimationState
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
 
-def update_ally_animation(seq: A_SetSpriteSequence, ally: Ally, anim: SpriteAnimationState) -> None:
+def update_ally_animation(seq: A_SetSpriteSequence, ally: Ally, anim: SpriteAnimationState, *, use_primary: bool = False) -> None:
     """Update an ally animation sequence command with the given animation.
 
     If no animation is provided, replace the command with a face direction
     command instead.
     """
-    data = ally._sprites_secondary[anim]
+    sprites = ally._sprites_primary if use_primary else ally._sprites_secondary
+    data = sprites[anim]
     seq.set_is_mold(data[2])
     seq.set_index(data[1])
     seq.set_sprite_offset(data[0])
@@ -460,7 +462,7 @@ def render_booster_tower_henchman_scripts(
     henchmen_count: int,
 ) -> None:
     """Apply henchman-related script changes for Booster Tower."""
-    # Remove special snifit sprites that other henchmen don't have
+    # Remove special snifit sprites that other henchmen don't have\
     if henchmen_count >= 3:
         world.action_scripts.replace_script(
             A0576_CURTAIN_GAME_OPEN_CURTAIN,
@@ -491,8 +493,15 @@ def render_booster_tower_henchman_scripts(
             world.action_scripts.replace_command_by_identifier(h, A_FaceNorthwest())
 
         # Third henchman tower bullet animation
+        # The third character slot may be filled by a character henchman or
+        # a mook henchman fallback — check both sources.
+        third_henchman: BossFightHenchman | None = None
         if prize.character_henchmen is not None and len(prize.character_henchmen) >= 3:
             third_henchman = prize.character_henchmen[2]
+        elif prize.mook_henchmen is not None and len(prize.mook_henchmen) > 0:
+            third_henchman = prize.mook_henchmen[0]
+
+        if third_henchman is not None:
             third_henchman_animations = third_henchman.model()._animations
             b = third_henchman_animations.tower_bullet
             if b is not None and b.total_duration is not None:
@@ -670,51 +679,55 @@ def render_marrymore_character_empty(world: GameWorld) -> None:
             
 def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
     ally = prize.ally
+    # Mario uses protagonist sprite (0) at this location, so needs _sprites_primary
+    # which has sprite_offsets relative to sprite 0. Other allies use _sprites_secondary
+    # with offsets relative to their non-protagonist sprite IDs.
+    use_primary = isinstance(prize, MarioRecruitmentPrize)
 
     a1 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_1", "chapel_character_animation_1", A_SetSpriteSequence)
-    update_ally_animation(a1, ally, SpriteAnimationState.SHOCKED_LOOP)
+    update_ally_animation(a1, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
     a2 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_1", "chapel_character_animation_2", A_SetSpriteSequence)
-    update_ally_animation(a2, ally, SpriteAnimationState.FLOORED)
+    update_ally_animation(a2, ally, SpriteAnimationState.FLOORED, use_primary=use_primary)
     a3 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_2", "chapel_character_animation_3", A_SetSpriteSequence)
-    update_ally_animation(a3, ally, SpriteAnimationState.HURT)
+    update_ally_animation(a3, ally, SpriteAnimationState.HURT, use_primary=use_primary)
     a4 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_3", "chapel_character_queue_3_", A_SetSpriteSequence)
-    update_ally_animation(a4, ally, SpriteAnimationState.LOOKING_DOWN_STATIC)
+    update_ally_animation(a4, ally, SpriteAnimationState.LOOKING_DOWN_STATIC, use_primary=use_primary)
     a5 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_4", "chapel_character_animation_4", A_SetSpriteSequence)
-    update_ally_animation(a5, ally, SpriteAnimationState.SHAKING_HEAD)
+    update_ally_animation(a5, ally, SpriteAnimationState.SHAKING_HEAD, use_primary=use_primary)
     a6 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_4", "chapel_character_animation_5", A_SetSpriteSequence)
-    update_ally_animation(a6, ally, SpriteAnimationState.LOOKING_DOWN_STATIC)
+    update_ally_animation(a6, ally, SpriteAnimationState.LOOKING_DOWN_STATIC, use_primary=use_primary)
     a7 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_5", "chapel_character_animation_6", A_SetSpriteSequence)
-    update_ally_animation(a7, ally, SpriteAnimationState.CRYING)
+    update_ally_animation(a7, ally, SpriteAnimationState.CRYING, use_primary=use_primary)
     a8 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_6", "chapel_character_animation_7", A_SetSpriteSequence)
-    update_ally_animation(a8, ally, SpriteAnimationState.SHOCKED_LOOP)
+    update_ally_animation(a8, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
     a9 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_7", "chapel_character_animation_9", A_SetSpriteSequence)
-    update_ally_animation(a9, ally, SpriteAnimationState.LOOKING_DOWN_STATIC)
+    update_ally_animation(a9, ally, SpriteAnimationState.LOOKING_DOWN_STATIC, use_primary=use_primary)
     a10 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_7", "chapel_character_animation_8", A_SetSpriteSequence)
-    update_ally_animation(a10, ally, SpriteAnimationState.CRYING)
+    update_ally_animation(a10, ally, SpriteAnimationState.CRYING, use_primary=use_primary)
     a11 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_8", "chapel_character_animation_10", A_SetSpriteSequence)
-    update_ally_animation(a11, ally, SpriteAnimationState.SHOCKED_LOOP)
+    update_ally_animation(a11, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
     a12 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_8", "chapel_character_animation_11", A_SetSpriteSequence)
-    update_ally_animation(a12, ally, SpriteAnimationState.CRYING_BACKWARDS)
+    update_ally_animation(a12, ally, SpriteAnimationState.CRYING_BACKWARDS, use_primary=use_primary)
     a13 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_9", "chapel_character_animation_12", A_SetSpriteSequence)
-    update_ally_animation(a13, ally, SpriteAnimationState.SHOCKED_LOOP)
+    update_ally_animation(a13, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
     a14 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_42", "chapel_character_animation_13", A_SetSpriteSequence)
-    update_ally_animation(a14, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    update_ally_animation(a14, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
     a15 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_42", "chapel_character_animation_14", A_SetSpriteSequence)
-    update_ally_animation(a15, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    update_ally_animation(a15, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
     a16 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_45", "chapel_character_animation_15", A_SetSpriteSequence)
-    update_ally_animation(a16, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    update_ally_animation(a16, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
     a17 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_45", "chapel_character_animation_16", A_SetSpriteSequence)
-    update_ally_animation(a17, ally, SpriteAnimationState.SHOCKED_LOOP)
+    update_ally_animation(a17, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
     a18 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_10", "chapel_character_animation_17", A_SetSpriteSequence)
-    update_ally_animation(a18, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    update_ally_animation(a18, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
     a19 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_11", "chapel_character_animation_18", A_SetSpriteSequence)
-    update_ally_animation(a19, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    update_ally_animation(a19, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
     a20 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_11", "chapel_character_animation_19", A_SetSpriteSequence)
-    update_ally_animation(a20, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    update_ally_animation(a20, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
     a21 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_12", "chapel_character_animation_20", A_SetSpriteSequence)
-    update_ally_animation(a21, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS)
+    update_ally_animation(a21, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
     a22 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_12", "chapel_character_animation_21", A_SetSpriteSequence)
-    update_ally_animation(a22, ally, SpriteAnimationState.SHOCKED_LOOP)
+    update_ally_animation(a22, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
     
 
 
