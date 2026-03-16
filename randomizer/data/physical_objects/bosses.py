@@ -47,6 +47,7 @@ small_magikoopa_hit = SpriteAnimation(
 
 # Shovel Knight animations
 shovelknight_tile = SpriteAnimation(sequence_id=2)
+shovelknight_tapping = SpriteAnimation(sequence_id=3)
 
 # Belome animations
 belome_attack = SpriteAnimation(sequence_id=3, contact_frame=36, total_duration=48)
@@ -578,13 +579,13 @@ class MagikoopaSmallObject(BossNPC):
 class ClerkSmallObject(BossNPC):
     """Small Clerk object."""
 
-    _base = FACTORY_CLERK_GREEN_NPC
+    _base = FACTORY_CLERK_GREEN_NPC_2
     _eye_height = 10
     _animations = SpriteAnimationCollection(
-        bandits_way_distracted=shovelknight_tile,
-        tower_crying=shovelknight_tile,
-        chapel_laugh=shovelknight_tile,
-        ship_chair=shovelknight_tile,
+        bandits_way_distracted=shovelknight_tapping,
+        tower_crying=shovelknight_tapping,
+        chapel_laugh=shovelknight_tapping,
+        ship_chair=shovelknight_tapping,
         dojo_challenge=shovelknight_tile,
         keep_challenge=shovelknight_tile,
         keep_summon=shovelknight_tile,
@@ -601,10 +602,10 @@ class ManagerSmallObject(BossNPC):
     _base = FACTORY_MANAGER_BLUE_NPC
     _eye_height = 10
     _animations = SpriteAnimationCollection(
-        bandits_way_distracted=shovelknight_tile,
-        tower_crying=shovelknight_tile,
-        chapel_laugh=shovelknight_tile,
-        ship_chair=shovelknight_tile,
+        bandits_way_distracted=shovelknight_tapping,
+        tower_crying=shovelknight_tapping,
+        chapel_laugh=shovelknight_tapping,
+        ship_chair=shovelknight_tapping,
         dojo_challenge=shovelknight_tile,
         keep_challenge=shovelknight_tile,
         keep_summon=shovelknight_tile,
@@ -621,10 +622,10 @@ class DirectorSmallObject(BossNPC):
     _base = FACTORY_DIRECTOR_RED_NPC
     _eye_height = 10
     _animations = SpriteAnimationCollection(
-        bandits_way_distracted=shovelknight_tile,
-        tower_crying=shovelknight_tile,
-        chapel_laugh=shovelknight_tile,
-        ship_chair=shovelknight_tile,
+        bandits_way_distracted=shovelknight_tapping,
+        tower_crying=shovelknight_tapping,
+        chapel_laugh=shovelknight_tapping,
+        ship_chair=shovelknight_tapping,
         dojo_challenge=shovelknight_tile,
         keep_challenge=shovelknight_tile,
         keep_summon=shovelknight_tile,

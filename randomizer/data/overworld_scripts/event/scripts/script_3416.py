@@ -1,4 +1,4 @@
-# E3416_EMPTY
+# E3416_SHYGUY_MINECART_LOADER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,9 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+	JmpIfBitSet(RUNAWAY_MINECART_ITEM_OBTAINED, ["EVENT_3416_action_queue_17"]),
+    JmpIfObjectNotInSpecificLevel(NPC_0, R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM, ["EVENT_3416_action_queue_17"]),
+    SummonObjectToSpecificLevel(NPC_2, R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM),
+    SummonObjectToCurrentLevel(NPC_2),
+    JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_3416_action_queue_17")
 ])

@@ -159,7 +159,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 7
-            npc=npcs.BEETLE_NPC,
+            npc=npcs.EMPTY_ENEMY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E1665_EMPTY,
             action_script=A0160_SEQUENCE_LOOPING_ON,

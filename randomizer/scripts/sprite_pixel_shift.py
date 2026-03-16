@@ -210,6 +210,73 @@ def shift_gridplane_mold(mold: Mold, dx: int, dy: int) -> None:
     tile.subtile_bytes = new_subtiles
 
 
+def mirror_gridplane_mold(mold: Mold) -> None:
+    """Horizontally mirror all pixel data in a gridplane mold.
+
+    Flips the raw pixel data left-to-right and sets the tile's mirror
+    property to False. The mold's subtiles are modified in place.
+
+    Args:
+        mold: A gridplane mold with a single tile containing subtiles
+    """
+    if not mold.gridplane:
+        raise ValueError("Can only mirror gridplane molds")
+
+    tile = mold.tiles[0]
+    subtiles = tile.subtile_bytes
+    format_val = tile.format
+
+    grid_w, grid_h = get_gridplane_dimensions(format_val)
+    total_subtiles = grid_w * grid_h
+
+    if len(subtiles) != total_subtiles:
+        raise ValueError(f"Expected {total_subtiles} subtiles for format {format_val}, got {len(subtiles)}")
+
+    img_w = grid_w * 8
+    img_h = grid_h * 8
+
+    # Decode all subtiles into full image
+    full_image: list[list[int]] = [[0] * img_w for _ in range(img_h)]
+
+    for subtile_idx, subtile_data in enumerate(subtiles):
+        subtile_x = subtile_idx % grid_w
+        subtile_y = subtile_idx // grid_w
+        subtile_pixels = decode_4bpp_subtile(subtile_data)
+
+        for py in range(8):
+            for px in range(8):
+                img_x = subtile_x * 8 + px
+                img_y = subtile_y * 8 + py
+                full_image[img_y][img_x] = subtile_pixels[py][px]
+
+    # Flip horizontally
+    mirrored_image: list[list[int]] = [row[::-1] for row in full_image]
+
+    # Split back into subtiles
+    new_subtiles: list[bytearray | None] = []
+
+    for subtile_idx in range(total_subtiles):
+        subtile_x = subtile_idx % grid_w
+        subtile_y = subtile_idx // grid_w
+
+        subtile_pixels: list[list[int]] = []
+        for py in range(8):
+            row: list[int] = []
+            for px in range(8):
+                img_x = subtile_x * 8 + px
+                img_y = subtile_y * 8 + py
+                row.append(mirrored_image[img_y][img_x])
+            subtile_pixels.append(row)
+
+        if is_subtile_empty(subtile_pixels):
+            new_subtiles.append(None)
+        else:
+            new_subtiles.append(encode_4bpp_subtile(subtile_pixels))
+
+    tile.subtile_bytes = new_subtiles
+    tile.mirror = False
+
+
 def print_shifted_sprite(sprite_id: int, dx: int, dy: int) -> None:
     """Load a sprite, shift its gridplane molds, and print the new subtile_bytes.
 

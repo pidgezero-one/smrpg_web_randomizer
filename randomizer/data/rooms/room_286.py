@@ -13,17 +13,17 @@ from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
-        allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=1,
+        allow_extra_sprite_buffer=False,
+        extra_sprite_buffer_size=0,
         buffers = [
             Buffer(
-                buffer_type=BufferType.TREASURE_CHEST,
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
-                main_buffer_space=BufferSpace.BYTES_512,
+                buffer_type=BufferType.EMPTY_3,
+                main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
             Buffer(
@@ -35,7 +35,7 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0027_DUNGEONISFULLOFMONSTERS,
-    entrance_event=E0015_STANDARD_ROOM_LOADER,
+    entrance_event=E3416_SHYGUY_MINECART_LOADER,
     events=[
         Event(
             event=E3116_CHANGE_MUSIC_IN_MOLEVILLE_MINES_WHEN_BACKTRACKING,
@@ -134,7 +134,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 1
-            npc=npcs.SHY_GUY_NPC_5,
+            npc=npcs.SHY_GUY_NPC_2,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -159,34 +159,39 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True,
+            vram_size=1,),
         RegularNPC( # 2
             npc=npcs.STATIC_FROG_COIN_NPC,
-            initiator=EventInitiator.NONE,
+            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E3199_SHYGUY_CART_PRIZE_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=False,
-            x=0,
-            y=0,
+            x=20,
+            y=29,
             z=0,
             z_half=False,
             direction=SOUTHEAST,
             face_on_trigger=False,
             cant_enter_doors=False,
             byte2_bit5=False,
-            set_sequence_playback=True,
+            set_sequence_playback=False,
             cant_float=False,
             cant_walk_up_stairs=False,
             cant_walk_under=False,
-            cant_pass_walls=True,
+            cant_pass_walls=False,
             cant_jump_through=True,
             cant_pass_npcs=False,
             byte3_bit5=False,
             cant_walk_through=False,
             byte3_bit7=False,
             slidable_along_walls=True,
-            cant_move_if_in_air=False,
-            byte7_upper2=3),
+            cant_move_if_in_air=True,
+            byte7_upper2=3,
+            vram_size=0,
+            cannot_clone=True,
+            directions=VramStore.DIR2_SWSE),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.TUMBLE_FRONT,

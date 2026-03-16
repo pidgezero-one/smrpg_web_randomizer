@@ -1536,7 +1536,7 @@ class EXPChallengeOptions(CategorizationOption):
     VANILLA = "Default"
     STARS = "Star Pieces"
     BOSSES = "Bosses"
-    NONE = "None"
+    NONE = "No EXP"
 
 
 # ✅

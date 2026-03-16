@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	ClearBit(UNKNOWN_707B_4),
 	SetVarToConst(TEMP_7032, 0),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x0B, bits=[3])
@@ -55,7 +56,6 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
     
 	CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
-	RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	
 
     
@@ -149,7 +149,6 @@ script = EventScript([
 	SetSyncActionScript(LAYER_1, A0704_BOOSTER_HILL_LAYER_1),
 	SetSyncActionScript(LAYER_2, A0655_BOOSTER_HILL_LAYER_2),
 	SetSyncActionScript(LAYER_3, A0705_BOOSTER_HILL_LAYER_3),
-	SetBit(UNKNOWN_707B_4),
 	RunEventAtReturn(E3502_BOOSTER_HILL_END),
 	Return()
 ])

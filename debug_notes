@@ -22,8 +22,8 @@ General
 🚧 should be able to run away from mimic fights in mimics anywhere
 🚧 lamb's lure is showing a symbol instead of apostrophe again
 🚧 godmode and debug mode: always set exp pack to 0
-- mimic chest packet disappears too quickly, like before the battle even starters
-- belome has bad partition in moleville inner mines room 
+🚧 mimic chest packet disappears too quickly, like before the battle even starters
+🚧 belome has bad partition in moleville inner mines room 
 - shy guy cart item still disappearing
 - it definitely loaded the wrong sprite for smithy in the dojo
 - Too many treasure chests are using script 1396, which does nothing if a bowsers keep prize bit is set. that's bad. These should NOT be using that unless it is avtually that chest.
@@ -37,8 +37,6 @@ Boss-specific
   🚧 tortes saying empty dialogs
   🚧 candles are not lighting up
   🚧 movement might be related to monster behaviours. ie raspberry shuold not move forward when attacking but it does
-- jinx 4 too - am i increasing the counter?
-  - fix attempt does not seem to have taken. why?
 🚧 booster 2 "I'm gonna start working" after KOed
   - i think some thing are running when they should not be.
   - like he says im gonna start working when he already is
@@ -49,8 +47,7 @@ Boss-specific
 🚧 punchinello 2 broken, sprites are all messed up, doesn't summon bombs right away. whole fight doesnt work
 - chester sprite in mushroom kingdom loads incorrectly. probabkly not the right size
 - smithy summoning a shyper animation is choppy for some reason\  - crashes the game when he starts moving forward with steaming head
-- king calamari: game locks with only 1 character after phase 1
-  - same with cloaker/domino
+🚧 cloaker/domino locks with only 1 party members
 
 Mushroom Way 
 
@@ -80,6 +77,7 @@ tadpole pond
 
 Rose way
 - Gold coins take on weird palettes again, might happen when too many npc palette rows
+  - not really too concerned about this one
 
 
 Rose Town 
@@ -87,6 +85,7 @@ Rose Town
 
 Forest maze 
 - buzzer's default attack sound effect is wrong somehow
+  - hasn't happened again
 
 Pipe vault
 
@@ -130,11 +129,6 @@ Booster Tower
 - top floor save chest has no shine when peach is protagonist
 
 Booster Hill
-🚧 pickup coin rendered as a flower
-🚧 something's wrong with counter. jumped way too far ahead in 70b2 after first clear
-  - got 9/16 items, picked up 2 more, toad told me there was nothing here. this is wrong
-  - needs more research
-🚧 brooch on booster hill appeared as a card
 
 Marrymore
 🚧 remake names are disabled but whenh mallow is recruitable character one of the npcs said "toad and comeon"
@@ -204,7 +198,6 @@ Monstro Town
 🚧 palettes on musty fears might be wrong
 🚧 musty fears should not say intro twice
 🚧 tramopline up to belome temple crashes game, never fades in
-- dojo completely broken???
 
 Bean Valley
 - save deletion seems inconsistent. keep an eye on it

@@ -153,6 +153,7 @@ script = AnimationScriptBlock(expected_size=0x0202, expected_beginning=0x350000,
 	ClearAMEM8Bit(0x61),
 	SetAMEM8BitToConst(0x62, 1),
 	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35ECA2"]),
-	Jmp(["command_0x358ADC"])
-    
+	Jmp(["command_0x358ADC"]),
+    Set7E1xToAMEM8Bit(0x7EE003, 0x62, identifier="jinx4_shortcut"),
+    Jmp(["command_0x3505D5"]),
 ])

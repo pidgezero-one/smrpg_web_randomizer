@@ -23,7 +23,6 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from dataclasses import dataclass, field
-from collections import Counter
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_10, NPC_13, NPC_6
 from ..data.variables.sprite_names import *
@@ -366,6 +365,7 @@ def update_mines_henchman_room_partitions(world: GameWorld) -> None:
     for room_index, buffer_index in room_configs:
         _update_buffer_by_room_object(world, room_index, NPC_1, buffer_index)
     _update_buffer_by_room_object(world, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, NPC_0, 0)
+    _update_buffer_by_room_object(world, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, NPC_1, 1)
     _update_buffer_by_room_object(world, R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, NPC_0, 0)
     _update_buffer_by_room_object(world, R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, NPC_0, 0)
 
@@ -453,12 +453,31 @@ def update_mines_inner_henchman_room_partition(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, NPC_4, 1)
     _update_buffer_by_room_object(world, R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, NPC_4, 2)
 
+    # Update NPC 0's min_vram_size based on the incoming boss model's mines_punch animation
+    from ..progression.prizelocations import InnerMinesBossFight
+    from ..utils.npcs import min_vram_from_sequence_for_sprite
+    from ..types.prize import BossFightPrize
+
+    location = world.locations[InnerMinesBossFight]
+    assert isinstance(location.prize, BossFightPrize)
+    npc_model = location.prize.get_npc_for_slot(world, 4096)
+    boss = npc_model()
+    if boss.animations is not None and boss.animations.mines_punch is not None:
+        sequence_id = boss.animations.mines_punch.sequence_id
+        sprite_id = boss.base.sprite_id
+        min_vram = min_vram_from_sequence_for_sprite(world, sprite_id, sequence_id)
+        room = world.rooms._rooms[R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
+        assert room is not None
+        npc_obj = room.get_npc_by_target_id(NPC_0)
+        npc_obj.set_min_vram_size(min_vram)
+
 
 def update_seaside_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R211_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_1F, NPC_0, 0)
 
 
 def update_credits_partitions(world: GameWorld) -> None:
+    _update_buffer_by_room_object(world, R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_0, 0)
     _update_buffer_by_room_object(world, R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_6, 1)
     _update_buffer_by_room_object(world, R505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI, NPC_10, 2)
     

@@ -22,3 +22,7 @@ starting_frog_coins: 99
 # items:
   # Override specific locations with specific prizes for chest packet testing
   # override:
+items:
+  start:
+    - SafetyRingItem
+    - BambinoBombItem

@@ -3022,16 +3022,6 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
 
-    def render(self, world: GameWorld):
-        if not isinstance(self.prize, (CoinPrize, FrogCoinPrize)):
-            world.event_scripts.delete_subscript_command_by_identifier(
-                "minecart_item_aqueue", "minecart_item_coin_1"
-            )
-            world.event_scripts.delete_subscript_command_by_identifier(
-                "minecart_item_aqueue", "minecart_item_coin_2"
-            )
-        return super().render(world)
-
     # Flag as checked: RUNAWAY_MINECART_ITEM_OBTAINED
 
 
@@ -3448,6 +3438,7 @@ class BoosterTowerSpookumStairsLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_SPOOKUM
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [ThirdMimicFightLauncher]
+    _extra_sprite_buffer_rooms = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)

@@ -266,7 +266,6 @@ script = AnimationScriptBlock(expected_size=792, expected_beginning=0x350737, sc
     Set7FToAMEM8Bit(0x7FFFE0, 0x64),
     Jmp(["command_0x3505D5"]),
     SetAMEM8BitTo7F(0x62, 0x7FFFB0, identifier="jinx4_seq_14"),
-    JmpIfAMEM8BitNotEqualsConst(0x62, 100, ["command_0x3505D5"]),
-    Set7E1xToAMEM8Bit(0x7EE003, 0x62),
+    JmpIfAMEM8BitGreaterOrEqualThanConst(0x62, 100, ["jinx4_shortcut"]),
     Jmp(["command_0x3505D5"]),
 ])

@@ -16,6 +16,7 @@ from ...data.variables.room_names import (
 )
 from ...data.variables.variable_names import (
     COMPLETED_MUSHROOM_DERBY,
+    ITEM_ID,
     PRIMARY_TEMP_7000,
     RETURNED_MARIO_DOLL,
     YOSHI_ITEM_GRANTED,
@@ -36,6 +37,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     ClearBit,
     ApplySolidityModToLevel,
     ApplyTileModToLevel,
+    SetVarToConst,
     SummonObjectToSpecificLevel,
     RemoveObjectFromSpecificLevel,
     JmpIfBitClear,
@@ -189,8 +191,15 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         world.event_2496_startup += [SetBit(CHAPEL_ITEMS_ANYWHERE_ENABLED)]
 
     # EXP challenge settings
-    if  world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE) or world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE) or settings.debug_mode:
+    if world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE) or world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE) or settings.debug_mode:
         world.event_scripts.delete_command_by_identifier("inc_exp_by_packet")
+        world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_60", SetVarToConst).set_value_and_address(ITEM_ID, 0)
+        world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_63", SetVarToConst).set_value_and_address(ITEM_ID, 0)
+        world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_66", SetVarToConst).set_value_and_address(ITEM_ID, 0)
+        world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_69", SetVarToConst).set_value_and_address(ITEM_ID, 0)
+        world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_72", SetVarToConst).set_value_and_address(ITEM_ID, 0)
+        world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_75", SetVarToConst).set_value_and_address(ITEM_ID, 0)
+        world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_78", SetVarToConst).set_value_and_address(ITEM_ID, 0)
     elif world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.STARS):
         world.event_2496_startup += [SetBit(PROGRESSIVE_STAR_EXP_ENABLED)]
     elif world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.BOSSES):

@@ -29,6 +29,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import 
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    Add7000ToMaxFP,
     JmpToEvent,
     SetVarToConst,
     PlaySound,
@@ -336,7 +337,12 @@ class FPFlowerPrize(Prize):
 
     @property
     def hill_grant(self) -> EventScript:
-        return EventScript([JmpToEvent(E0214_HILL_GET_FLOWER)])
+        return EventScript([
+            PlaySound(sound=SO014_FLOWER, channel=4),
+            SetVarToConst(PRIMARY_TEMP_7000, 1),
+            Add7000ToMaxFP(),
+            Return(),
+        ])
 
 
 class ProgressiveItemPrize(StandardPrize):

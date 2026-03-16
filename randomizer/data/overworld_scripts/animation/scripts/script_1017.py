@@ -23,10 +23,11 @@ script = ActionScript([
 	A_VisibilityOn(),
 	A_Pause(1, identifier="ACTION_1017_pause_5"),
 	A_JmpIfBitSet(RUN_AWAY, ["ACTION_1017_pause_10"]),
-	A_JmpIfBitClear(MIMIC_1_CLEARED, ["ACTION_1017_pause_5"]),
-	A_SetSpriteSequence(index=6, is_sequence=True, looping=True),
+	A_JmpIfBitSet(MIMIC_1_CLEARED, ["ACTION_1017_pause_5"]),
+    A_Jmp(["ACTION_1017_pause_5"]),
+	A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="ACTION_1017_pause_10"),
 	A_Pause(18),
-	A_Pause(6, identifier="ACTION_1017_pause_10"),
+	A_Pause(6),
 	A_VisibilityOff(),
 	A_ReturnQueue()
 ])

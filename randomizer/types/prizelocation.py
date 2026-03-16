@@ -5,6 +5,7 @@ from enum import StrEnum
 import random
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_12
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.controller_inputs import B
 
 from randomizer.data.variables.dialog_names import DI2010_DEBUG_7000
 from randomizer.progression.prizes import (
@@ -59,6 +60,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     DisableObjectTriggerInSpecificLevel,
+    EnableControlsUntilReturn,
     JmpIfBitClear,
     JmpIfBitSet,
     Return,
@@ -1387,6 +1389,7 @@ class FrogDiscipleLocation(PrizeLocation):
 
 class TreasureChestLocation(StandardPrizeLocation):
     _npc_ids: list[AreaObject]
+    _extra_sprite_buffer_rooms: list[int] = []
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -1444,6 +1447,14 @@ class TreasureChestLocation(StandardPrizeLocation):
         return EventScript(itemgrant)
 
     def render(self, world: GameWorld) -> None:
+        if isinstance(self.prize, EXPStarPrize) and self._extra_sprite_buffer_rooms:
+            for room_id in self._extra_sprite_buffer_rooms:
+                room = world.rooms._rooms[room_id]
+                if room is not None and not room.partition.allow_extra_sprite_buffer:
+                    room.partition.set_allow_extra_sprite_buffer(True)
+                    room.partition.set_extra_sprite_buffer_size(
+                        max(1, room.partition.extra_sprite_buffer_size)
+                    )
         if isinstance(self.prize, SlotsPrize):
             world.event_scripts.get_script_by_id(self.prize.logic_event).set_contents(
                 create_slot_machine_script(self, world)
@@ -2920,6 +2931,7 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
             [
                 Inc(BOOSTER_HILL_FLOWER_COUNTER, identifier=identifier),
                 *grant.contents,
+                EnableControlsUntilReturn([B]),
                 Return(),
             ],
         )

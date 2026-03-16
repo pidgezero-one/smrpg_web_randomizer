@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfBitSet(RUNAWAY_MINECART_ITEM_OBTAINED, ["EVENT_3199_ret_3"]),
-	JmpToEvent(E0241_FREESTANDING_1_GRANT),
 	SetBit(RUNAWAY_MINECART_ITEM_OBTAINED),
+	JmpToEvent(E0241_FREESTANDING_1_GRANT),
 	Return(identifier="EVENT_3199_ret_3")
 ])

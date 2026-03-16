@@ -1851,6 +1851,10 @@ class GameWorld:
 
         # Misc
 
+        # No EXP
+        if self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE) or self.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE) or self.settings.debug_mode:
+            patch.add_data(0x39BC44, [0x00] * 32)
+
         # Expand key item inventory size
         patch.add_data(0xC305, 0x1E)
         patch.add_data(0xC37F, 0x1E)
