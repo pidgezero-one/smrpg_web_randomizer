@@ -49,7 +49,7 @@ class Room(RoomBase):
             return
 
         ally = world.overworld_character.ally
-        m = world.overworld_character.character_model if ally.index == 0 else AllyContainerNPC()
+        m = world.overworld_character.character_model
 
         # Base animation sequences to always check
         vram_values = [

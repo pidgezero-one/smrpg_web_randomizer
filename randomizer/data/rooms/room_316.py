@@ -58,8 +58,8 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            npc=npcs.BIG_FLOWER_NPC,
-            initiator=EventInitiator.PRESS_A_OR_TOUCH_ANY_SIDE,
+            npc=npcs.FLOWER_NPC,
+            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=True,

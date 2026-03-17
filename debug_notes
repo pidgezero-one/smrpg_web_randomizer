@@ -13,30 +13,36 @@ why can't it place with these flags?
 P(rchars|starters:4)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|charspells|infuse|uncap)     X(rstars)     T(ritems|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:geno|bh:kggg|mm:tower|sea:open|land:elder|tmpl:key|nl:paint|bv:valentina|bk:axem|wf:open)     O(doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(quiz|melody|pwd|rng)     S(rshops|showperms)     B(rboss)     E(drops)     F(skips|seeya)
 3708761499
 
+Rooms I need graphical advice on:
+- Booster's curtain room. Adding postgame NPCs almost always makes shadows overwrite 
+- Every room that can have a slot machine. Which ones can make it work? What partitions do they need? Cannot clone rules? 
+- Rose way 1? This room doesn't change, why are shaadows being overwritten?
+- Sanctuary room
+- yoster isle
+- chester's large NPC in seaside: partially overwritten by boster (replacing johnny)
+- chesters large NPC in throne room: partially missing
+
 General
-- beetlemania packet still not showing in chests
 🚧 crusher palettes not applyiong
-🚧 if you find a star piece while the exp star is active, see if you can resume the exp star music instead of the level selector music
 🚧 sage stick attack is a hard lock
 🚧 stella is a hardl ock
 🚧 should be able to run away from mimic fights in mimics anywhere
-🚧 lamb's lure is showing a symbol instead of apostrophe again
 🚧 godmode and debug mode: always set exp pack to 0
 🚧 mimic chest packet disappears too quickly, like before the battle even starters
 🚧 belome has bad partition in moleville inner mines room 
-- shy guy cart item still disappearing
 - it definitely loaded the wrong sprite for smithy in the dojo
 - Too many treasure chests are using script 1396, which does nothing if a bowsers keep prize bit is set. that's bad. These should NOT be using that unless it is avtually that chest.
+- Really need to do something about exp stars at level 30. Skip the whole packet thing? Just set the bits? (Does the levelup packet clear those bits?)
+- geno using super slap on greaper crashes game 
 
 Boss-specific
 🚧 culex 3D sprite is broken. HUD disappears in phase 2
   - left 2 crystals bot hshowing up as water, right 2 showing up as wind
   - i moved them onto diff palette rows but now they just share with culex
-🚧 fancy bundt animations are wrong, cross ref against demake
-  🚧 opening event is fine. it's when it takes its first turn that things mess up (moves forward and separates)
-  🚧 tortes saying empty dialogs
-  🚧 candles are not lighting up
-  🚧 movement might be related to monster behaviours. ie raspberry shuold not move forward when attacking but it does
+- fancy bundt: 
+  - raspberry moves forward to attack, should not be doing that
+  - candles don't animate 
+  - are you supposed to be able to KO it with not all candles lit?
 🚧 booster 2 "I'm gonna start working" after KOed
   - i think some thing are running when they should not be.
   - like he says im gonna start working when he already is
@@ -54,14 +60,12 @@ Mushroom Way
 Mushroom kingdom
 🚧 Need to figure out what to do about the doorjamb chest++++++++++++++++++++
 🚧 wallet guy bad partition when birds are using good partition
-- guard toad seems to have disappeared and is using wrong actin script in liberated outdoors
-  - seems to be using wallet guy's scripts?
-- signal ring not working (there are 3 star pieces in the kingdom: shop, and 2 vault chests) while invaded
+🚧 signal ring not working (there are 3 star pieces in the kingdom: shop, and 2 vault chests) while invaded
   🚧 might be too many sfx at once
 - dodo in throne room is very messed up
-- save box glow shift did not work in mushroom kingdom inn as peach
 
 bandit's way
+- flower jump chest showing sleepy bomb as yellow mushroom
 
 Kero sewers
 - double chest does not work. opening it first after lands end did not refill it
@@ -70,10 +74,10 @@ Kero sewers
 - peach messes up palettes for npcs in any room that has water- this is because of the palette shifting that her pipe animation does, as well as the special palette treatment that water rooms get-un sure if there is a feasible fix without asm bullshit
 
 midas river
-- mallow should not be getting marios palette when hes the protag
 
 tadpole pond 
 - frogfucius telling me to go to kero sewers when i can't do that
+- hint builder engine should happen here
 
 Rose way
 - Gold coins take on weird palettes again, might happen when too many npc palette rows
@@ -94,20 +98,14 @@ Yoster
 - minor, but main area loads very slowly
 
 Moleville
-- no item came out of shy guy minecart
 - shiny stone girl still asking for fireworks in progressive settings
   - carbo cookie girl too
-🚧 treasure hunter's dialogs are not changed
 🚧 circule path leading to traintrack room: fireball partition is wrong
   - try putting 3rd partition as 4x?
   🚧 512 bytes?
   - Only broken when appearing or disappearing now. Next thing to try is removing extra sprite buff
-🚧 shyguy cart item broken, can't pick it up, graphical glitch (gets overwritten by shy guy animation)
-  - if you leave room before picking it up, make sure it does not disappear
-🚧 four-pack of bombs in mine area is loading a henchmen pack instead of a mob pack
-  🚧 one of the bobombs in punchinellos room is not transformed into a henchman
-  🚧 also exploding sprites look a bit broken
-  🚧 one corner of the bundt object is a bit messy
+🚧 also exploding sprites look a bit broken
+🚧 one corner of the bundt object is a bit messy
 🚧 final train track room - coin overwrites chest
 🚧 when you skip minecart, some NPCs dont appear when they should. treasure seller and fireworks guy for example
   🚧 This might actually be caused by house entrances. looks like its taking you to pre-mines versions when you go inside from liberated town
@@ -115,20 +113,16 @@ Moleville
 
 Booster Pass
 - red essence in right chest rendered as mushroom, see if the camera shift is messing with the 70a7 selector again
+- crystalline in rightmost secret room chest rendered as mushroom, same deal
+- carroboscis attacking you turns into mario clone and crashes game
 
 Booster Tower
-🚧 booster tower does not load when character needed to unlock it
-🚧 jagger briefly disappears while waiting for you to hit the mario doll
-🚧 johnny doesnt do an animation in place of booster crying?
 - bottom left shuffled item is always reloading when booster tower checkerboard room reloads
-🚧 bowser npc using old sprite id, need to fix
-🚧 mario loses solidity and goes out of bounds
 🚧 prize in elder key room moves when it shouldnt
-🚧 when peach looks up at masher chests, one of the molds is incorrect. did you ever actully change this?
-🚧 small belome temporarily disappears when he gives you elder key. possible you need to delete sequence setter instead of just replace it
 - top floor save chest has no shine when peach is protagonist
 
 Booster Hill
+- double punch packet looked broken, what was it?
 
 Marrymore
 🚧 remake names are disabled but whenh mallow is recruitable character one of the npcs said "toad and comeon"
@@ -150,21 +144,22 @@ star hill
 🚧 mallow using bad sprtie id 
 
 Seaside Town
-🚧 seaside: boss is replacing the wrong sprite in confrontation, also bad partition for grate guy
-  🚧 belome 2 here's allies are very broken
-🚧 no signoff in jinx letter
+🚧 belome 2 here's allies are very broken
 🚧 boomer has bad partition inside elder's house
   - same with belome
+- fire crystal is glitched out on beach (belome 1 or belome 3 as johnny replacement)
 
 Sea
 
 Sunken Ship
 🚧 dry bones does not collapse when you run away
-🚧 royal syrup in corner of pool room was invisible?
+  🚧 it collapses but stands back up?
+- corner pool room item is always invisible
 🚧 slots chest in hidon room causes coin sprites to overwrite chests
   - see if you can find another partition for it
 🚧 Dodo in johnny's room cut off. might need to use a different partition
-🚧 everything in the water cellar should be a coin, flower, mushroom, or item bag. everything else does not render correctly
+- everything in the water cellar should be a coin, flower, mushroom, or item bag. everything else does not render correctly
+  - this isn't working
 🚧 booster as johnny sprite is totally broken, glitched out
 🚧 clone room using old sprite id
 - chester replacing johnny 1 uses bad sprite

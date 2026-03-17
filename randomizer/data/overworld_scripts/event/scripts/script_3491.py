@@ -49,7 +49,7 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_VisibilityOff()
 	]),
-    PaletteSet(EPAL0084_MARIO_ENDING, NPC_PALETTE_ROW_1, identifier="midas_palette_1"),
+    PaletteSet(EPAL0084_MARIO_ENDING, NPC_PALETTE_ROW_2, identifier="midas_palette_1"),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ClearSolidityBits(cant_pass_walls=True),

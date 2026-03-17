@@ -388,8 +388,9 @@ room = Room(
             z_half=False,
             direction=NORTHEAST,
         ),
-        RegularClone(  # 9
+        RegularNPC(  # 9
             npc=npcs.TOAD_NPC,
+            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0396_MUSHROOM_KINGDOM_OCCUPIED_RESCUED_EASTERN_GUARD,
             action_script=A0131_EAST_GUARD_OCCUPIED,
             visible=True,
@@ -398,6 +399,8 @@ room = Room(
             z=2,
             z_half=False,
             direction=NORTHWEST,
+            face_on_trigger=True,
+            set_sequence_playback=True,
         ),
         RegularNPC(  # 10
             npc=npcs.EMPTY_NPC_3,

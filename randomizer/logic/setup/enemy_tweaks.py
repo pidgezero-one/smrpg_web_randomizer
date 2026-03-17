@@ -8,6 +8,7 @@ from smrpgpatchbuilder.datatypes.monster_scripts.commands import (
     ClearVar,
     IfTargetedByItem,
     SetUntargetable,
+    SetTargetable
 )
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import MONSTER_1_SET
 from smrpgpatchbuilder.datatypes.spells.enums import Status
@@ -183,10 +184,10 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
     # No Geno Whirl Exor
     if world.settings.isflag_enabled(NoGenoWhirlExor):
         world.monster_scripts.replace_command_by_identifier(
-            "exor_vulnerability_1", [SetUntargetable(MONSTER_1_SET)]
+            "exor_vulnerability_1", [SetTargetable(MONSTER_1_SET)]
         )
         world.monster_scripts.replace_command_by_identifier(
-            "exor_vulnerability_2", [SetUntargetable(MONSTER_1_SET)]
+            "exor_vulnerability_2", [SetTargetable(MONSTER_1_SET)]
         )
         world.monster_scripts.replace_command_by_identifier(
             "exor_vulnerability_3", [SetUntargetable(MONSTER_1_SET)]

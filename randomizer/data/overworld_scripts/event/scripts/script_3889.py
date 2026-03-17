@@ -36,7 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	ClearBit(SIGNAL_RING_BIT),
 	Return(),
-	PlaySound(sound=SO149_CASINO_SECRET_PASSAGE, channel=6, identifier="EVENT_3889_play_sound"),
+	PlaySound(sound=SO149_CASINO_SECRET_PASSAGE, channel=4, identifier="EVENT_3889_play_sound"),
 	ClearBit(SIGNAL_RING_BIT),
 	Return()
 ])

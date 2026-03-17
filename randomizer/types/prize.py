@@ -812,10 +812,10 @@ class BossFightPrize(Prize):
         if canon:
             return (
                 self._seaside_letter_name_if_sunken_ship_boss_canon
-                or self._seaside_letter_name_if_sunken_ship_boss_remake
+                or (self._seaside_letter_name_if_sunken_ship_boss_remake if remake else None)
                 or self._seaside_letter_name_if_sunken_ship_boss
                 or self._canon_name
-                or self._remake_name
+                or (self._remake_name if remake else None)
                 or self._name
                 or self._text
             )
@@ -835,7 +835,7 @@ class BossFightPrize(Prize):
         if canon:
             return (
                 self._seaside_letter_name_if_volcano_boss_canon
-                or self._seaside_letter_name_if_volcano_boss_remake
+                or (self._seaside_letter_name_if_volcano_boss_remake if remake else None)
                 or self._seaside_letter_name_if_volcano_boss
             )
         if remake:
@@ -851,7 +851,7 @@ class BossFightPrize(Prize):
         if canon:
             return (
                 self._seaside_letter_name_if_final_boss_canon
-                or self._seaside_letter_name_if_final_boss_remake
+                or (self._seaside_letter_name_if_final_boss_remake if remake else None)
                 or self._seaside_letter_name_if_final_boss
             )
         if remake:
@@ -867,10 +867,10 @@ class BossFightPrize(Prize):
         if canon:
             return (
                 self._seaside_letter_name_if_seaside_boss_canon
-                or self._seaside_letter_name_if_seaside_boss_remake
+                or (self._seaside_letter_name_if_seaside_boss_remake if remake else None)
                 or self._seaside_letter_name_if_seaside_boss
                 or self._canon_name
-                or self._remake_name
+                or (self._remake_name if remake else None)
                 or self._name
                 or self._text
             )

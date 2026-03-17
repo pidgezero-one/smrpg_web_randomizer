@@ -1930,6 +1930,7 @@ class RoseTownInnGazPrizeLocation(NPCLocationRow1):
     _rooms = [R086_ROSE_TOWN_INN_1F]
     _id = ShuffleLocationSelector.GAZ
     _world_area = WorldAreaEnum.ROSE_TOWN
+    _blacklist = [RecoveryMushroomPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_forest(world, inventory)
@@ -4503,6 +4504,7 @@ class MarrymoreFirstSuitePrizeLocation(NPCLocationRow1):
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_1
     _world_area = WorldAreaEnum.MARRYMORE
+    _blacklist = [RecoveryMushroomPrize]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize1Threshold setting
 
 
@@ -4511,6 +4513,7 @@ class MarrymoreSecondSuitePrizeLocation(NPCLocationRow2):
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_2
     _world_area = WorldAreaEnum.MARRYMORE
+    _blacklist = [RecoveryMushroomPrize]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize2Threshold setting
 
 
@@ -4519,6 +4522,7 @@ class MarrymoreThirdSuitePrizeLocation(NPCLocationRow3):
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_3
     _world_area = WorldAreaEnum.MARRYMORE
+    _blacklist = [RecoveryMushroomPrize]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize3Threshold setting
 
 
@@ -4527,6 +4531,7 @@ class MarrymoreFourthSuitePrizeLocation(NPCLocationRow4):
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_4
     _world_area = WorldAreaEnum.MARRYMORE
+    _blacklist = [RecoveryMushroomPrize]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize4Threshold setting
 
 
@@ -4535,6 +4540,7 @@ class MarrymoreFifthSuitePrizeLocation(NPCLocationRow5):
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_5
     _world_area = WorldAreaEnum.MARRYMORE
+    _blacklist = [RecoveryMushroomPrize]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize5Threshold setting
 
 
@@ -4543,6 +4549,7 @@ class MarrymoreSixthSuitePrizeLocation(NPCLocationRow6):
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_6
     _world_area = WorldAreaEnum.MARRYMORE
+    _blacklist = [RecoveryMushroomPrize]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize6Threshold setting
     # LMK if these need dedicated bits or if AP is able to figure out the threshold on its own
 
@@ -4552,6 +4559,7 @@ class MarrymoreBigTipLocation(NPCLocationRow7):
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_BIG_TIP
     _world_area = WorldAreaEnum.MARRYMORE
+    _blacklist = [RecoveryMushroomPrize]
     # flag as checked: MARRYMORE_MAJOR_TIP_GIVEN
 
 
@@ -7012,6 +7020,14 @@ class DojoSecondFight(BossFightLocation):
                 "dojo_boss_2_initiate",
                 "dojo_boss_2_pause",
             )
+        # If the swapped-in NPC's sprite has a non-gridplane mold 0,
+        # set cannot_clone on the room object to prevent VRAM conflicts.
+        room = world.rooms._rooms[R255_MONSTRO_TOWN_JINXS_DOJO]
+        assert room is not None
+        npc_obj = room.get_npc_by_target_id(NPC_0)
+        sprite = world.get_sprite(npc_obj._npc.sprite_id)
+        if not sprite.animation.properties.molds[0].gridplane:
+            npc_obj.set_cannot_clone(True)
         return op
 
     # Flag as checked: DOJO_BOSS_2_DEFEATED
@@ -11317,7 +11333,7 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _z_coord = 3
     _x_shift = 16
-    _clue_text = '\n My item?[delay]\n ...[delay]It\'s on the word "IN",\n [delay]above a big hole.[await]'
+    _clue_text = '\n My item?[delay]\n ...[delay]It\'s on the word “IN”,\n [delay]above a big hole.[await]'
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_clear_mines(

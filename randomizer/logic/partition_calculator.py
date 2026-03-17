@@ -450,6 +450,7 @@ def update_arrow_partitions(world: GameWorld) -> None:
     _update_buffer_by_room_object(world, R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09, NPC_13, 2)
     
 def update_mines_inner_henchman_room_partition(world: GameWorld) -> None:
+    _update_buffer_by_room_object(world, R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, NPC_0, 0)
     _update_buffer_by_room_object(world, R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, NPC_4, 1)
     _update_buffer_by_room_object(world, R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, NPC_4, 2)
 

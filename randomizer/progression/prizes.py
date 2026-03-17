@@ -3285,7 +3285,7 @@ class Belome1BossFight(BossFightPrize):
         DI1782_SHIP_BOSS_DRINK: """ I'm always STARVING~![await]\n...but I hydrate with Filtered Water.[await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """ (It's a damp, slimy looking note. Did `SEASIDE_BOSS` LICK this?[await][page]\n A paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION` are etched on the paper.[await] This is probably one of `FINAL_BOSS_NAME`[await] `SEASIDE_BOSS` likely headed down to find more snacks, so it's time to move on.)[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """ (It's a damp, slimy looking note. Did Belome LICK this?[await][page]\n A paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION` are etched on the paper.[await] This is probably one of `FINAL_BOSS_NAME`[await] Belome likely headed down to find more snacks, so it's time to move on.)[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big dog! It is...\n masterpiece![await]""",
@@ -3600,9 +3600,9 @@ class BoosterBossFight(BossFightPrize):
     _statue_npc = BoosterStatueObject
 
     _character_henchmen = [
-        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SpookumHenchman),
-        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SpookumHenchman),
-        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SpookumHenchman),
+        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SnifitHenchman),
+        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SnifitHenchman),
+        BossFightHenchman(monster=SNIFITEnemyHenchman, model=SnifitHenchman),
     ]
     _mook_henchmen = [
         BossFightHenchman(monster=APPRENTICEEnemyHenchman, model=SpookumHenchman),
@@ -3621,6 +3621,7 @@ class BoosterBossFight(BossFightPrize):
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """SNIFIT 2: Booster can't find any\n beetles underwater, but he still\n enjoys watching the fish.[await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n Attention `MAIN_CHARACTER_NAME`,[await][page]\n We had an urgent engagement, and regret that we couldn't stay and play with `SEASIDE_BOSS`.[await] While on beetle patrol, #2 saw `VOLCANO_BOSS_DESCRIPTION` near the volcano.[await] Number 3 suggested they might be related to `FINAL_BOSS_NAME` 70% chance. [await] We're riding the Loco Express to the lake of wedding tears.[await] Also, Number 1 says there's no money in the budget for new doors.[await][page]\n\n                                   Booster\n                  Dictated but not read[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """SNIFIT 3: Uh... Do you know where\n we could get some cake down here?[await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """SNIFIT 2: Doesn't this cake\n look just like Booster?[await]""",
         DI2062_APPRENTICE_CHEF: """SNIFIT 3: Uh... I think we should\n have made his mustache bigger.[await]""",
         DI2180_CHAPEL_NPC: """ Reverend Booster must have gotten\n lost on his way here.""",
@@ -4297,7 +4298,7 @@ class Belome2BossFight(BossFightPrize):
         DI1782_SHIP_BOSS_DRINK: """ Woof, I ate too many Mallows~![await]\n I should wash it down with Tonic~![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: "[center]\n••••••[await]",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hey `MAIN_CHARACTER_TITLE`, have\n you seen my parents?[await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """ (It's a damp, slimy looking note. Did `SEASIDE_BOSS` LICK this?[await][page]\n A paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION` are etched on the paper.[await] This is probably one of `FINAL_BOSS_NAME`[await] `SEASIDE_BOSS` likely headed down to find more snacks, so it's time to move on.)[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """ (It's a damp, slimy looking note. Did Belome LICK this?[await][page]\n A paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION` are etched on the paper.[await] This is probably one of `FINAL_BOSS_NAME`[await] Belome likely headed down to find more snacks, so it's time to move on.)[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ If you find any Star\n Pieces, think you could hand them\n over?[await][page]\n No? [delay]...Oh well, I tried.[await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Take the trampoline in the next\n room. Go on, get outta here![await]""",
         DI2061_HEAD_CHEF: "[center]\n••••••[await]",
@@ -5033,8 +5034,8 @@ class ValentinaBossFight(BossFightPrize):
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ What? What do you want?![await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
         DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ What? What do you want?![await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
-        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]""",
-        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to make me powerful enough to take ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit to Nimbus Land?![await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to make me powerful enough to take ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit to Nimbus Land?![await]""",
     }
     _dialog_replacements_canon_and_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Valentina's busy right now, so she\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
@@ -5087,7 +5088,6 @@ class CzarDragonBossFight(BossFightPrize):
     _statue_npc = CzarStatueObject
 
     _mook_henchmen = [
-        BossFightHenchman(monster=HELIOEnemy, model=HelioHenchman),
         BossFightHenchman(monster=PYROSPHEREEnemyHenchman, model=SparkyHenchman),
     ]
     _tiny_henchmen = [
@@ -6255,7 +6255,7 @@ class Belome3Fight(BossFightPrize):
         DI1782_SHIP_BOSS_DRINK: """ Woof, I ate too many Mallows~![await]\n I should wash it down with Tonic~![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """ (It's a damp, slimy looking note. Did `SEASIDE_BOSS` LICK this?[await][page]\n A paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION` are etched on the paper.[await] This is probably one of `FINAL_BOSS_NAME`[await] `SEASIDE_BOSS` likely headed down to find more snacks, so it's time to move on.)[await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """ (It's a damp, slimy looking note. Did Belome LICK this?[await][page]\n A paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION` are etched on the paper.[await] This is probably one of `FINAL_BOSS_NAME`[await] Belome likely headed down to find more snacks, so it's time to move on.)[await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big dog! It is...\n masterpiece![await]""",

@@ -17,7 +17,7 @@ room = Room(
         extra_sprite_buffer_size=1,
         buffers = [
             Buffer(
-                buffer_type=BufferType.EMPTY_1,
+                buffer_type=BufferType.TREASURE_CHEST,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),

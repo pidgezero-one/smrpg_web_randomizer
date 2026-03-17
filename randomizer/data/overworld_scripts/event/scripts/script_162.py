@@ -35,10 +35,6 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0033_OPEN_CHEST),
-	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
-	SetVarToConst(Z_COORD_1, 150),
-	DecVarFrom7000(Z_COORD_1),
-	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
 	CreatePacketAt7010(packet=P089_BEETLE_CHEST, destinations=["EVENT_162_ret_9"]),
 	PlaySound(sound=SO085_FLOWER, channel=6, identifier="EVENT_162_ret_9"),
 	RunDialog(dialog_id=DI3078_GOT_BEETLEMANIA, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),

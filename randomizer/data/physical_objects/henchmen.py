@@ -128,6 +128,17 @@ class SpookumHenchman(HenchmanNPC):
         factory_pierce=snifit_shoot_fast,
     )
 
+class SnifitHenchman(HenchmanNPC):
+    """Snifit henchman NPC for boss fights."""
+
+    _base = SNIFIT_NPC
+    _animations = SpriteAnimationCollection(
+        recoil=snifit_recoil,
+        tower_bullet=snifit_shoot,
+        kitchen_prep=snifit_taunt,
+        factory_pierce=snifit_shoot_fast,
+    )
+
 
 class TorteHenchman(HenchmanNPC):
     """Torte henchman NPC for boss fights."""

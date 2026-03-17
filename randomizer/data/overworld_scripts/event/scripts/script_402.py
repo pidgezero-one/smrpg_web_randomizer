@@ -40,14 +40,19 @@ script = EventScript([
 	RunEventAsSubroutine(E0051_HENCHMAN_CONTAINER_1),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	PauseActionScript(NPC_9),
+	StartAsyncEmbeddedActionScript(target=NPC_11, prefix=0xF1, subscript=[
+        A_VisibilityOff(),
+	]),
+    RemoveObjectFromSpecificLevel(NPC_11, R191_MUSHROOM_KINGDOM_OUTSIDE),
+    RemoveObjectFromCurrentLevel(NPC_11),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_TransferToXYZF(x=17, y=113, z=4, direction=EAST),
 		A_FaceSouthwest()
 	]),
 	StartAsyncEmbeddedActionScript(target=NPC_9, prefix=0xF1, subscript=[
+        A_VisibilityOn(),
 		A_TransferToXYZF(x=17, y=114, z=4, direction=EAST),
 		A_FaceNortheast(),
-		A_SetSolidityBits(cant_walk_through=True)
 	]),
 	SetBit(TEMP_7049_6),
 	RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
