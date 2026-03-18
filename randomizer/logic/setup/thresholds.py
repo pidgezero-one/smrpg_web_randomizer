@@ -41,7 +41,15 @@ def apply_threshold_settings(world: GameWorld) -> None:
     ).set_value(world.settings.get_flag(SuitePrize1Threshold).value)
     cast(
         JmpIfVarEqualsConst,
+        world.event_scripts.get_command_by_identifier("suite_threshold_1_hint"),
+    ).set_value(world.settings.get_flag(SuitePrize1Threshold).value)
+    cast(
+        JmpIfVarEqualsConst,
         world.event_scripts.get_command_by_identifier("suite_threshold_2"),
+    ).set_value(world.settings.get_flag(SuitePrize2Threshold).value)
+    cast(
+        JmpIfVarEqualsConst,
+        world.event_scripts.get_command_by_identifier("suite_threshold_2_hint"),
     ).set_value(world.settings.get_flag(SuitePrize2Threshold).value)
     cast(
         JmpIfVarEqualsConst,
@@ -49,7 +57,15 @@ def apply_threshold_settings(world: GameWorld) -> None:
     ).set_value(world.settings.get_flag(SuitePrize3Threshold).value)
     cast(
         JmpIfVarEqualsConst,
+        world.event_scripts.get_command_by_identifier("suite_threshold_3_hint"),
+    ).set_value(world.settings.get_flag(SuitePrize3Threshold).value)
+    cast(
+        JmpIfVarEqualsConst,
         world.event_scripts.get_command_by_identifier("suite_threshold_4"),
+    ).set_value(world.settings.get_flag(SuitePrize4Threshold).value)
+    cast(
+        JmpIfVarEqualsConst,
+        world.event_scripts.get_command_by_identifier("suite_threshold_4_hint"),
     ).set_value(world.settings.get_flag(SuitePrize4Threshold).value)
     cast(
         JmpIfVarEqualsConst,
@@ -57,7 +73,15 @@ def apply_threshold_settings(world: GameWorld) -> None:
     ).set_value(world.settings.get_flag(SuitePrize5Threshold).value)
     cast(
         JmpIfVarEqualsConst,
+        world.event_scripts.get_command_by_identifier("suite_threshold_5_hint"),
+    ).set_value(world.settings.get_flag(SuitePrize5Threshold).value)
+    cast(
+        JmpIfVarEqualsConst,
         world.event_scripts.get_command_by_identifier("suite_threshold_6"),
+    ).set_value(world.settings.get_flag(SuitePrize6Threshold).value)
+    cast(
+        JmpIfVarEqualsConst,
+        world.event_scripts.get_command_by_identifier("suite_threshold_6_hint"),
     ).set_value(world.settings.get_flag(SuitePrize6Threshold).value)
 
     # Super Jump thresholds

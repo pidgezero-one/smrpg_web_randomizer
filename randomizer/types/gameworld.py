@@ -1174,6 +1174,10 @@ class GameWorld:
                 SetBit(SHOGUN_4_CLEARED),
                 SetBit(SHOGUN_5_CLEARED),
             ]
+        if not self.settings.isflag_enabled(ShuffleMarioDoll):
+            self.event_2496_startup += [
+                SetBit(RETURNED_MARIO_DOLL),
+            ]
 
         # Apply progression gating settings (win conditions, area gates, travel)
         apply_shuffler_independent_settings(self)

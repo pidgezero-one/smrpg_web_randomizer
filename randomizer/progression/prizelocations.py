@@ -4250,13 +4250,18 @@ class BoosterTowerKnifeGuyPrizeLocation(KeyItemLocation, NPCLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfBitSet(KNIFE_GUY_PRIZE_GRANTED, ["next"]),
-        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
-        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check"]),
+        Jmp(["next"]),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check"], identifier="returned_mario_doll_check"),
+        StoreItemAmountTo7000(MarioDollItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(KNIFE_GUY_PRIZE_GRANTED, ["next"], identifier="tower_boss_2_check"),
+        Jmp(["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory)
+        return can_do_tower_curtain_game(world, inventory)
 
     # flag as checked: KNIFE_GUY_PRIZE_GRANTED
 
@@ -4269,13 +4274,18 @@ class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfBitSet(KNIFE_GUY_SECOND_PRIZE_AWARDED, ["next"]),
-        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
-        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_"]),
+        Jmp(["next"]),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_"], identifier="returned_mario_doll_check_"),
+        StoreItemAmountTo7000(MarioDollItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(KNIFE_GUY_SECOND_PRIZE_AWARDED, ["next"], identifier="tower_boss_2_check_"),
+        Jmp(["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory) and world.settings.isflag_enabled(
+        return can_do_tower_curtain_game(world, inventory) and world.settings.isflag_enabled(
             _get_flag("FixKnifeGuy")
         )
 
@@ -4354,7 +4364,7 @@ class BoosterTowerParachuteRoomCreviceLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE_CREVICE
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_5, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_8, R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, ["next"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4375,6 +4385,11 @@ class BoosterTowerCheckerboardRightmostItemLocation(
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_ROOM_KEY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_5, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -4393,7 +4408,8 @@ class BoosterTowerCheckerboardTopItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         JmpIfObjectNotInSpecificLevel(NPC_0, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4413,7 +4429,8 @@ class BoosterTowerCheckerboardLeftmostItemLocation(StandingLocationRow2):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         JmpIfObjectNotInSpecificLevel(NPC_1, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4433,7 +4450,8 @@ class BoosterTowerCheckerboardUpperRightItemLocation(StandingLocationRow3):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         JmpIfObjectNotInSpecificLevel(NPC_2, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4453,7 +4471,8 @@ class BoosterTowerCheckerboardBottomItemLocation(StandingLocationRow4):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         JmpIfObjectNotInSpecificLevel(NPC_3, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4472,8 +4491,9 @@ class BoosterTowerCheckerboardCoin1Location(StandingLocationRow5):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_7, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        # JmpIfObjectNotInSpecificLevel(NPC_7, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4492,8 +4512,9 @@ class BoosterTowerCheckerboardCoin2Location(StandingLocationRow6):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_8, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        # JmpIfObjectNotInSpecificLevel(NPC_8, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4512,8 +4533,9 @@ class BoosterTowerCheckerboardCoin3Location(StandingLocationRow7):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_9, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        # JmpIfObjectNotInSpecificLevel(NPC_9, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4532,8 +4554,9 @@ class BoosterTowerCheckerboardCoin4Location(StandingLocationRow8):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_4
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_10, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        # JmpIfObjectNotInSpecificLevel(NPC_10, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4552,8 +4575,9 @@ class BoosterTowerCheckerboardCoin5Location(StandingLocationRow9):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_5
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_11, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        # JmpIfObjectNotInSpecificLevel(NPC_11, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4572,8 +4596,9 @@ class BoosterTowerCheckerboardCoin6Location(StandingLocationRow10):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_6
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_12, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        # JmpIfObjectNotInSpecificLevel(NPC_12, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4592,8 +4617,9 @@ class BoosterTowerCheckerboardCoin7Location(StandingLocationRow11):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_7
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_13, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        # JmpIfObjectNotInSpecificLevel(NPC_13, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4612,8 +4638,9 @@ class BoosterTowerCheckerboardCoin8Location(StandingLocationRow12):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_8
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_14, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        # JmpIfObjectNotInSpecificLevel(NPC_14, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4632,8 +4659,9 @@ class BoosterTowerCheckerboardCoin9Location(StandingLocationRow13):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_9
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_15, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        # JmpIfObjectNotInSpecificLevel(NPC_15, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4652,8 +4680,12 @@ class BoosterTowerRoomKeyChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _monstro_shuffle = True
     _hint = [
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfObjectNotInSpecificLevel(NPC_0, R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_6, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["room_key_door_opened"]),
+        StoreItemAmountTo7000(RoomKeyItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"], identifier="room_key_door_opened"),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4672,7 +4704,8 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4691,7 +4724,8 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4710,7 +4744,8 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4727,8 +4762,14 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check__"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check__"]),
+        Jmp(["next"]),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check__"], identifier="returned_mario_doll_check__"),
+        StoreItemAmountTo7000(MarioDollItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check__"),
+        Jmp(["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4746,8 +4787,14 @@ class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_MARIO_DOLL
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check___"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check___"]),
+        Jmp(["next"]),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check___"], identifier="returned_mario_doll_check___"),
+        StoreItemAmountTo7000(MarioDollItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, ["next"], identifier="tower_boss_2_check___"),
+        Jmp(["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4951,8 +4998,14 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _parent = BoosterTowerIndoorBossFight
     _hint = [
-        JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check____"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check____"]),
+        Jmp(["next"]),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check____"], identifier="returned_mario_doll_check____"),
+        StoreItemAmountTo7000(MarioDollItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check____"),
+        Jmp(["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5003,8 +5056,19 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _remake_only = True
     _parent = BoosterTowerIndoorBossFightRemake
     _hint = [
-        JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_____"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_____"]),
+        Jmp(["next"]),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_____"], identifier="returned_mario_doll_check_____"),
+        StoreItemAmountTo7000(MarioDollItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_____"),
+        JmpIfBitSet(STAY_VOUCHER_USED, ["__tower_postgame_completed_check"]),
+        StoreItemAmountTo7000(StayVoucherItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["marrymore_hotel_hint_text"]),
+        JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["next"], identifier="__tower_postgame_completed_check"),
+        Jmp(["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5022,6 +5086,21 @@ class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow2):
     _remake_only = True
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_____"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_____"]),
+        Jmp(["next"]),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_____"], identifier="returned_mario_doll_check_____"),
+        StoreItemAmountTo7000(MarioDollItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_____"),
+        JmpIfBitSet(STAY_VOUCHER_USED, ["__tower_postgame_completed_check"]),
+        StoreItemAmountTo7000(StayVoucherItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["marrymore_hotel_hint_text"]),
+        JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["next"], identifier="__tower_postgame_completed_check"),
+        Jmp(["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower_postgame_boss(world, inventory)
@@ -5067,8 +5146,14 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _parent = BoosterTowerBalconyBossFight
     _hint = [
-        JmpIfBitSet(TOWER_BOSS_2_DEFEATED, ["next"]),
-        Jmp(["booster_tower_hint_text"])
+        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check______"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check______"]),
+        Jmp(["next"]),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check______"], identifier="returned_mario_doll_check______"),
+        StoreItemAmountTo7000(MarioDollItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(TOWER_BOSS_2_DEFEATED, ["next"], identifier="tower_boss_2_check______"),
+        Jmp(["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5093,6 +5178,9 @@ class BoosterHillGuaranteedItem1(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 1),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5115,6 +5203,9 @@ class BoosterHillGuaranteedItem2(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 2),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5137,6 +5228,9 @@ class BoosterHillGuaranteedItem3(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 3),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5159,6 +5253,9 @@ class BoosterHillGuaranteedItem4(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 4),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5181,6 +5278,9 @@ class BoosterHillGuaranteedItem5(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 5),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5203,6 +5303,9 @@ class BoosterHillGuaranteedItem6(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 6),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5225,6 +5328,9 @@ class BoosterHillGuaranteedItem7(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 7),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5247,6 +5353,9 @@ class BoosterHillGuaranteedItem8(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 8),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5269,6 +5378,9 @@ class BoosterHillGuaranteedItem9(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 9),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5291,6 +5403,9 @@ class BoosterHillGuaranteedItem10(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 10),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5313,6 +5428,9 @@ class BoosterHillGuaranteedItem11(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 11),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5335,6 +5453,9 @@ class BoosterHillGuaranteedItem12(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 12),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5357,6 +5478,9 @@ class BoosterHillGuaranteedItem13(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 13),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5379,6 +5503,9 @@ class BoosterHillGuaranteedItem14(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 14),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5401,6 +5528,9 @@ class BoosterHillGuaranteedItem15(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 15),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5423,6 +5553,9 @@ class BoosterHillGuaranteedItem16(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
+        CompareVarToConst(PRIMARY_TEMP_7000, 16),
+        JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"])
     ]
 
@@ -5442,8 +5575,7 @@ class MarrymoreFirstSuitePrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        RunEventAsSubroutine(E0709_SUITE_1_HINT_SUBR)
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize1Threshold setting
 
@@ -5455,8 +5587,7 @@ class MarrymoreSecondSuitePrizeLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        RunEventAsSubroutine(E0710_SUITE_2_HINT_SUBR)
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize2Threshold setting
 
@@ -5468,8 +5599,7 @@ class MarrymoreThirdSuitePrizeLocation(NPCLocationRow3):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        RunEventAsSubroutine(E0711_SUITE_3_HINT_SUBR)
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize3Threshold setting
 
@@ -5481,8 +5611,7 @@ class MarrymoreFourthSuitePrizeLocation(NPCLocationRow4):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        RunEventAsSubroutine(E0712_SUITE_4_HINT_SUBR)
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize4Threshold setting
 
@@ -5494,8 +5623,7 @@ class MarrymoreFifthSuitePrizeLocation(NPCLocationRow5):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        RunEventAsSubroutine(E0713_SUITE_5_HINT_SUBR)
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize5Threshold setting
 
@@ -5507,8 +5635,7 @@ class MarrymoreSixthSuitePrizeLocation(NPCLocationRow6):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        RunEventAsSubroutine(E0714_SUITE_6_HINT_SUBR)
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize6Threshold setting
     # LMK if these need dedicated bits or if AP is able to figure out the threshold on its own
@@ -5522,7 +5649,7 @@ class MarrymoreBigTipLocation(NPCLocationRow7):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         JmpIfBitSet(MARRYMORE_MAJOR_TIP_GIVEN, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        Jmp(["marrymore_hotel_hint_text"])
     ]
     # flag as checked: MARRYMORE_MAJOR_TIP_GIVEN
 
@@ -5536,7 +5663,7 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R009_MARRYMORE_INN_REGULAR_ROOM, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        Jmp(["marrymore_hotel_hint_text"])
     ]
     # flag as checked: npc 0 in room 9 has its object trigger disabled.
 
@@ -5552,6 +5679,8 @@ class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1):
     _container_event = E0253_NPC_QUEST_1_GRANT
     _npc_ids = [NPC_8]
     _hint = [
+        JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CHAPEL_ITEM_1_RETRIEVED, ["next"]),
         Jmp(["marrymore_hint_text"])
     ]
@@ -5571,6 +5700,8 @@ class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2):
     _container_event = E0252_NPC_QUEST_2_GRANT
     _npc_ids = [NPC_5]
     _hint = [
+        JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CHAPEL_ITEM_2_RETRIEVED, ["next"]),
         Jmp(["marrymore_hint_text"])
     ]
@@ -5590,6 +5721,8 @@ class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3):
     _container_event = E0251_NPC_QUEST_3_GRANT
     _npc_ids = [NPC_6]
     _hint = [
+        JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CHAPEL_ITEM_3_RETRIEVED, ["next"]),
         Jmp(["marrymore_hint_text"])
     ]
@@ -5608,6 +5741,8 @@ class MarrymoreAltarHeadLocation(KeyItemLocation, StandingLocationRow1):
     _id = ShuffleLocationSelector.MARRYMORE_ALTAR
     _world_area = WorldAreaEnum.MARRYMORE
     _hint = [
+        JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_7, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["next"]),
         Jmp(["marrymore_hint_text"])
     ]
@@ -5697,6 +5832,11 @@ class MarrymoreBossFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.MARRYMORE_STAR_PIECE
     _world_area = WorldAreaEnum.MARRYMORE
     _parent = MarrymoreBossFight
+    _hint = [
+        JmpIfBitSet(MARRYMORE_LIBERATED, ["next"]),
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_chapel(world, inventory)
@@ -5725,6 +5865,7 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
     ]
     _hint = [
         JmpIfBitSet(MARRYMORE_LIBERATED, ["next"]),
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         Jmp(["marrymore_hint_text"])
     ]
 
@@ -5895,6 +6036,15 @@ class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
     _override_id = 529
     _remake_only = True
     _parent = MarrymoreBossFightRemake
+    _hint = [
+        JmpIfBitSet(POSTGAME_CHAPEL_COMPLETE, ["next"]),
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
+        JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
+        JmpIfBitSet(STAY_VOUCHER_USED, ["marrymore_hint_text"]),
+        StoreItemAmountTo7000(StayVoucherItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["marrymore_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_chapel_postgame_boss(
@@ -5912,6 +6062,15 @@ class MarrymoreBossFightRemakeItemDrop(NPCLocationRow4):
     _world_area = WorldAreaEnum.MARRYMORE
     _remake_only = True
     _monstro_shuffle = True
+    _hint = [
+        JmpIfBitSet(POSTGAME_CHAPEL_COMPLETE, ["next"]),
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
+        JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
+        JmpIfBitSet(STAY_VOUCHER_USED, ["marrymore_hint_text"]),
+        StoreItemAmountTo7000(StayVoucherItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["marrymore_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel_postgame_boss(world, inventory)
@@ -5928,6 +6087,7 @@ class StarHillStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.STAR_HILL_STAR_PIECE_1
     _world_area = WorldAreaEnum.STAR_HILL
     _hint = [
+        JmpIfObjectInSpecificLevel(NPC_9, R159_STAR_HILL_AREA_04, ["star_hill_hint_text"]),
         JmpIfBitSet(STAR_HILL_CHECKED, ["next"]),
         Jmp(["star_hill_hint_text"])
     ]
@@ -6169,6 +6329,7 @@ class SeasideBeachStarPiece(StarPieceLocation):
     _parent = SeasideBeachBossFight
     _hint = [
         JmpIfBitSet(SEASIDE_LIBERATED, ["next"]),
+        JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
         Jmp(["seaside_town_hint_text"])
     ]
 
@@ -6189,7 +6350,8 @@ class SeasideTownBossPrizeLocation(KeyItemLocation, StandingLocationRow1):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        JmpIfObjectNotInSpecificLevel(NPC_0, R316_SEASIDE_TOWN_BEACH, ["next"]),
+        JmpIfObjectInSpecificLevel(NPC_0, R316_SEASIDE_TOWN_BEACH, ["seaside_town_hint_text"]),
+        JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
         Jmp(["seaside_town_hint_text"])
     ]
 
@@ -6211,6 +6373,10 @@ class SeasideTownShedRescueLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _hint = [
         JmpIfBitSet(SEASIDE_SHED_EMPTIED, ["next"]),
+        JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_6, R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, ["seaside_town_hint_text"]),
+        StoreItemAmountTo7000(ShedKeyItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         Jmp(["seaside_town_hint_text"])
     ]
 

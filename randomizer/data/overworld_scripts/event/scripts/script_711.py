@@ -1,4 +1,4 @@
-# E0711_EMPTY
+# E0711_SUITE_3_HINT_SUBR
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    CompareVarToConst(PRIMARY_TEMP_7000, 5, identifier="suite_threshold_3_hint"),
+    JmpIfComparisonResultIsLesser(["marrymore_hotel_hint_text"]),
+    Return(),
 ])
