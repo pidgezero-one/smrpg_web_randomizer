@@ -743,6 +743,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
 
     # TODO: ending credits bullshittery
 
+    apply_hint_text(world)
+
 
 
 # --- Godmode reference enemy (swap this class to re-center normalization) ---
@@ -1126,3 +1128,129 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
 
             assert isinstance(location.prize, BossFightPrize)
             _apply_stats_to_prize(location.prize, godmode_stats, world)
+
+
+def apply_hint_text(world: GameWorld) -> None:
+    """Assemble all location hints into a single event script and replace E0947."""
+    import copy
+    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+        JmpIfBitSet,
+        RunDialog,
+        Return as ReturnCmd,
+    )
+    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
+        EventScriptCommandWithJmps,
+    )
+    from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import BOWSER
+    from ..data.variables.dialog_names import DI2758_FROGFUCIUS_DEFAULT_STUFF
+    from ..data.variables.variable_names import INFINITE_COINS_FOUND
+    from ..progression.prizelocations import (
+        MonstroFirstSuperJumpRewardLocation,
+        MonstroSecondSuperJumpRewardLocation,
+    )
+    from ..progression.prizes import InfiniteCoinsPrize
+    from ..types.prizelocation import (
+        KeyItemLocation,
+        StarPieceLocation as StarPieceLocationType,
+        CharacterRecruitmentLocation as CharRecruitLocationType,
+    )
+    from ..types.flags import KeyItemsAnywhere, StarPieceAvailability
+    from ..logic.shufflers.items import should_shuffle
+
+    # Collect hints in world.locations order, skipping empty hints
+    super_jump_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
+    regular_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
+
+    # Determine if we should exclude locations that can't hold star pieces,
+    # key items, or character recruits
+    ki_anywhere = world.settings.isflag_enabled(KeyItemsAnywhere)
+    sp_anywhere = world.settings.isflag_enabled(StarPieceAvailability)
+    exclude_non_special = not ki_anywhere and not sp_anywhere
+
+    for loc_type, location in world.locations.items():
+        hint_commands = location.hint(world)
+        if not hint_commands:
+            continue
+
+        # Exclude locations disabled by game settings
+        if not should_shuffle(location, world):
+            continue
+
+        # If KeyItemsAnywhere and StarPieceAvailability are both off,
+        # exclude locations that can't hold star pieces, key items, or character recruits
+        if exclude_non_special:
+            if not isinstance(
+                location,
+                (KeyItemLocation, StarPieceLocationType, CharRecruitLocationType),
+            ):
+                continue
+
+        # Deep copy so we don't mutate class-level _hint lists
+        hint_commands = [copy.deepcopy(cmd) for cmd in hint_commands]
+
+        # If this location has the InfiniteCoinsPrize, prepend the infinite coins check
+        if isinstance(location.prize, InfiniteCoinsPrize):
+            hint_commands.insert(
+                0,
+                JmpIfBitSet(INFINITE_COINS_FOUND, ["next"]),
+            )
+
+        # Super jump locations go last
+        if loc_type in (
+            MonstroFirstSuperJumpRewardLocation,
+            MonstroSecondSuperJumpRewardLocation,
+        ):
+            super_jump_hints.append((loc_type, hint_commands))
+        else:
+            regular_hints.append((loc_type, hint_commands))
+
+    # Combine: regular hints first, then super jump hints at the end
+    all_hints = regular_hints + super_jump_hints
+
+    if not all_hints:
+        return
+
+    # Assign unique identifiers to the first command of each hint block
+    for i, (_loc_type, commands) in enumerate(all_hints):
+        commands[0].rename(f"hint_{i}")
+
+    # Build the final "done" commands for after the last hint
+    done_dialog = RunDialog(
+        dialog_id=DI2758_FROGFUCIUS_DEFAULT_STUFF,
+        above_object=BOWSER,
+        closable=True,
+        sync=False,
+        multiline=True,
+        use_background=True,
+        identifier="hint_done",
+    )
+    done_return = ReturnCmd()
+
+    # Replace "next" destinations in each hint block
+    for i, (_loc_type, commands) in enumerate(all_hints):
+        if i < len(all_hints) - 1:
+            # Point "next" to the first command of the next hint
+            next_identifier = f"hint_{i + 1}"
+        else:
+            # Last hint: point "next" to the done dialog
+            next_identifier = "hint_done"
+
+        for cmd in commands:
+            if isinstance(cmd, EventScriptCommandWithJmps):
+                for dest in cmd.destinations:
+                    if dest.label == "next":
+                        dest._label = next_identifier
+
+    # Flatten all hint commands into one list
+    flat_commands: list[UsableEventScriptCommand] = []
+    for _loc_type, commands in all_hints:
+        flat_commands.extend(commands)
+
+    # Append the done dialog and return
+    flat_commands.append(done_dialog)
+    flat_commands.append(done_return)
+
+    # Replace event script 947
+    world.event_scripts.get_script_by_id(E0947_FROGFUCIUS_HINT_MAIN_CHECKS).set_contents(
+        flat_commands
+    )

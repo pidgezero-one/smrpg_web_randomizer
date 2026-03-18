@@ -307,11 +307,15 @@ def _update_buffer_by_room_object(
     assert room is not None
     assert room.partition is not None
     npc_obj = room.get_npc_by_target_id(npc)
-    room.partition.buffers[buffer_index].set_buffer_type(
-        _buffer_by_room_object(world, npc_obj)
-    )
-    if buffer_space is not None:
-        room.partition.buffers[buffer_index].set_main_buffer_space(buffer_space)
+    buffer_type = _buffer_by_room_object(world, npc_obj)
+    if buffer_type == BufferType.EMPTY_3:
+        # Non-gridplane sprite: flag NPC as cannot_clone (dedicated VRAM)
+        # instead of changing the partition buffer
+        npc_obj.set_cannot_clone(True)
+    else:
+        room.partition.buffers[buffer_index].set_buffer_type(buffer_type)
+        if buffer_space is not None:
+            room.partition.buffers[buffer_index].set_main_buffer_space(buffer_space)
 
 
 def update_statue_room_partitions(world: GameWorld) -> None:

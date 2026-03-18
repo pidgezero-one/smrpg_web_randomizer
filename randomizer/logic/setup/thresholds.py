@@ -119,6 +119,6 @@ def apply_threshold_settings(world: GameWorld) -> None:
         ).insert_after_identifier(
             "EVENT_949_knifeguy_insert",
             JmpIfBitClear(
-                KNIFE_GUY_SECOND_PRIZE_AWARDED, ["EVENT_991_run_dialog_18"]
+                KNIFE_GUY_SECOND_PRIZE_AWARDED, ["booster_tower_hint_text"]
             ),
         )

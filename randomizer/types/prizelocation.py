@@ -1105,10 +1105,14 @@ class PrizeLocation(Generic[TOriginallyHeld]):
     _can_be_empty: bool = False
     _bias: bool = False
     _monstro_shuffle: bool = False
+    _hint: list[UsableEventScriptCommand] | None = None
 
     def __repr__(self) -> str:
         prize_name = type(self._prize).__name__ if self._prize else "None"
         return f"{self.__class__.__name__}(prize={prize_name})"
+    
+    def hint(self, world: GameWorld) -> list[UsableEventScriptCommand]:
+        return self._hint or []
 
     @property
     def has_item(self) -> bool:

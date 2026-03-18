@@ -36,6 +36,6 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	CopyVarToVar(from_var=MARRYMORE_SUITE_LEGAL_COUNT, to_var=PRIMARY_TEMP_7000),
 	CompareVarToConst(PRIMARY_TEMP_7000, 255),
-	JmpIfComparisonResultIsLesser(["EVENT_991_run_dialog_64"]),
+	JmpIfComparisonResultIsLesser(["marrymore_hotel_hint_text"]),
 	Return()
 ])

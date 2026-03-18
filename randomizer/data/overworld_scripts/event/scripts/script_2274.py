@@ -1,4 +1,4 @@
-# E2274_EMPTY
+# E2274_TREASURE_SHOP_ITEM_2
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,19 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    JmpIfBitClear(SEASIDE_LIBERATED, ["EVENT_2274_end"]),
+	JmpIfBitSet(TREASURE_SHOP_ITEM_2_PURCHASED, ["EVENT_2274_end"]),
+	RunDialog(dialog_id=DI2908_TREASURE_SELLER_ITEM_2, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	JmpIfDialogOptionBSelected(["EVENT_2274_end"]),
+	StoreCoinCountTo7000(),
+	CompareVarToConst(PRIMARY_TEMP_7000, 200),
+	JmpIfComparisonResultIsLesser(["EVENT_2274_run_dialog_19"]),
+	SetVarToConst(PRIMARY_TEMP_7000, 200),
+	Dec7000FromCoins(),
+	SetBit(TREASURE_SHOP_ITEM_2_PURCHASED),
+	RunDialog(dialog_id=DI2912_TREASURE_SELLER_SUCCESSFUL_SALE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
+    Return(),
+	RunDialog(dialog_id=DI2910_TREASURE_SELLER_INSUFFICIENT_COINS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_2274_run_dialog_19"),
+    Return(identifier="EVENT_2274_end"),
 ])

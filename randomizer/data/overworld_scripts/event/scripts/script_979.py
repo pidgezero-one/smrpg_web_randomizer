@@ -34,5 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	Jmp(["EVENT_991_run_dialog_38"])
+	Jmp(["marrymore_hint_text"])
 ])

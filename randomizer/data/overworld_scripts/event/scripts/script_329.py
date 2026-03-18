@@ -34,9 +34,10 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-    # Apply solidity mod immediately so the doorframe is always accessible.
-    ApplySolidityModToLevel(permanent=True, room_id=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, mod_id=0),
-    SetBit(TEMP_7042_7),
     Pause(1, identifier="loop_mk_hall_mod_2"),
+    JmpIfMarioOnObject(NPC_3, ["enable_upper_level_2"]),
+    Jmp(["loop_mk_hall_mod_2"]),
+    SetBit(TEMP_7042_7, identifier="enable_upper_level_2"),
+    ApplySolidityModToLevel(permanent=True, room_id=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, mod_id=0),
     Jmp(["loop_mk_hall_mod_2"]),
 ])

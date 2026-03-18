@@ -1,4 +1,4 @@
-# E2276_EMPTY
+# E2276_TREASURE_SHOP_SIGNOFF
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,23 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    # All 3 items purchased
+    JmpIfBitClear(TREASURE_SHOP_ITEM_1_PURCHASED, ["EVENT_2276_check_availability"]),
+    JmpIfBitClear(TREASURE_SHOP_ITEM_2_PURCHASED, ["EVENT_2276_check_availability"]),
+    JmpIfBitClear(TREASURE_SHOP_ITEM_3_PURCHASED, ["EVENT_2276_check_availability"]),
+	RunDialog(dialog_id=DI2907_TREASURE_SELLER_SOLD_OUT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+    Return(),
+    # All 3 items available, but not all have been purchased
+    JmpIfBitClear(VOLCANO_LIBERATED, ["EVENT_2276_jmp_if_bit_set_6"], identifier="EVENT_2276_check_availability"),
+    JmpIfBitClear(SEASIDE_LIBERATED, ["EVENT_2276_jmp_if_bit_set_6"]),
+	RunDialog(dialog_id=DI2902_TREASURE_SELLER_ALL_ITEMS_UNLOCKED, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+    Return(),
+    # Suggests to unlock item 2 if haven't already
+	RunDialog(dialog_id=DI2909_TREASURE_SELLER_ALL_IVE_GOT_FOR_NOW, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_2276_jmp_if_bit_set_6"),
+    JmpIfBitSet(SEASIDE_LIBERATED, ["EVENT_2276_jmp_if_bit_set_7"]),
+	RunDialog(dialog_id=DI2915_TREASURE_SELLER_2ND_UNLOCK_HINT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+    Return(),
+    # Suggests to unlock item 3
+	RunDialog(dialog_id=DI2905_TREASURE_SELLER_3RD_UNLOCK_HINT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_2276_jmp_if_bit_set_7"),
+    Return(),
 ])

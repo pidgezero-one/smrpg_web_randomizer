@@ -8,12 +8,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import 
     EventScript,
     UsableEventScriptCommand,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
-    Jmp,
-    Return,
-    ActionQueueAsync,
-    Pause,
-)
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     MEM_70A8,
@@ -438,6 +433,18 @@ class PostgameVoucherLocation(NPCLocationRow6, KeyItemLocation):
             and can_access_fifth_dojo_boss(world, inventory)
         )
 
+    _hint = [
+        JmpIfBitSet(VOUCHER_CHECK_DONE, ["next"]),
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"]),
+        JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
+        JmpIfBitClear(SHIP_LIBERATED, ["next"]),
+        JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["next"]),
+        JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
+        JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["next"]),
+        Jmp(["marios_pad_hint_text"])
+    ]
+
     # Flag as checked: VOUCHER_CHECK_DONE
 
 
@@ -456,6 +463,10 @@ class MushroomWay1LowerChest(TreasureChestLocationRow1):
         ThirdMimicFightLauncher,
         SlotsPrize,
     ]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R203_MUSHROOM_WAY_AREA_01, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
     # Flag as checked: npc 0 in room 203 has its object trigger disabled.
 
 
@@ -471,6 +482,10 @@ class MushroomWay1UpperChest(TreasureChestLocationRow2):
         ThirdMimicFightLauncher,
         SlotsPrize,
     ]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R203_MUSHROOM_WAY_AREA_01, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
     # Flag as checked: npc 1 in room 203 has its object trigger disabled.
 
 
@@ -479,6 +494,10 @@ class MushroomWay1ToadRescue(NPCLocationRow2):
     _rooms = [R203_MUSHROOM_WAY_AREA_01, R205_MUSHROOM_WAY_AREA_03]
     _id = ShuffleLocationSelector.TOAD_RESCUE_1
     _world_area = WorldAreaEnum.MUSHROOM_WAY
+    _hint = [
+        JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_1, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_1
 
 
@@ -498,6 +517,10 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
         SmallCoinObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R204_MUSHROOM_WAY_AREA_02, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
     # Flag as checked: npc 0 in room 204 has its object trigger disabled.
 
 
@@ -506,6 +529,10 @@ class MushroomWay2ToadRescue(NPCLocationRow3):
     _rooms = [R204_MUSHROOM_WAY_AREA_02, R205_MUSHROOM_WAY_AREA_03]
     _id = ShuffleLocationSelector.TOAD_RESCUE_2
     _world_area = WorldAreaEnum.MUSHROOM_WAY
+    _hint = [
+        JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_2, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_2
 
 
@@ -530,6 +557,10 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
         SmallCoinObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R204_MUSHROOM_WAY_AREA_02, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
     # Flag as checked: npc 1 in room 204 has its object trigger disabled.
 
 
@@ -541,6 +572,10 @@ class MushroomWayLeftItemRemake(StandingLocationRow1):
     _id = ShuffleLocationSelector.REMAKE_1
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _remake_only = True
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_10, R204_MUSHROOM_WAY_AREA_02, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
 
     # Flag as checked: npc 10 in room 204 has been removed from the room.
 
@@ -553,6 +588,10 @@ class MushroomWayRightItemRemake(StandingLocationRow2):
     _id = ShuffleLocationSelector.REMAKE_2
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _remake_only = True
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_11, R204_MUSHROOM_WAY_AREA_02, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
 
     # Flag as checked: npc 11 in room 204 has been removed from the room.
 
@@ -600,6 +639,10 @@ class MushroomWayStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.MUSHROOM_WAY_STAR_PIECE
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _parent = MushrooomWayBossFight
+    _hint = [
+        JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_3, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
 
@@ -610,6 +653,10 @@ class MushroomWayBossFightRewardItem(NPCLocationRow1):
     _id = ShuffleLocationSelector.HAMMER_BROS_REWARD
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_3, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
+    ]
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
 
@@ -626,6 +673,10 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
         AllyNPCSub(R203_MUSHROOM_WAY_AREA_01, NPC_8),
         AllyNPCSub(R204_MUSHROOM_WAY_AREA_02, NPC_7),
         AllyNPCSub(R205_MUSHROOM_WAY_AREA_03, NPC_5),
+    ]
+    _hint = [
+        JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_3, ["next"]),
+        Jmp(["mushroom_way_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -713,6 +764,10 @@ class MushroomKingdomMainHall(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_HALLWAY
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
     # Flag as checked: either npc 2 in room 17 or npc 6 in room 325 has its object trigger disabled.
 
 
@@ -726,6 +781,10 @@ class MushroomKingdomLiberatedVaultLeft(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_1
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
     # Flag as checked: npc 0 in room 31 or 331 has its object trigger disabled.
 
 
@@ -739,6 +798,10 @@ class MushroomKingdomLiberatedVaultRight(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_2
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
     # Flag as checked: npc 1 in room 31 or 331 has its object trigger disabled.
 
 
@@ -752,6 +815,10 @@ class MushroomKingdomLiberatedVaultMiddle(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_3
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
     # Flag as checked: npc 2 in room 31 or 331 has its object trigger disabled.
 
 
@@ -764,6 +831,10 @@ class MushroomKingdomChair(NPCLocationRow1):
     _check_npc_ids = [NPC_0, NPC_7]
     _id = ShuffleLocationSelector.PEACH_SURPRISE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_0, R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
     # flag as checked: npc 0 is missing/despawned from room 20 or npc 7 is missing/despawned from room 328
 
 
@@ -775,6 +846,10 @@ class MushroomKingdomFreeShopItem(NPCLocationRow1):
     ]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfBitSet(MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
     # flag as checked: MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED
 
 
@@ -785,6 +860,10 @@ class MushroomKingdomShopBasementLeft(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE_BASEMENT_1
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
     # Flag as checked: npc 0 in room 492 has its object trigger disabled.
 
 
@@ -795,6 +874,10 @@ class MushroomKingdomShopBasementRight(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE_BASEMENT_2
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
     # Flag as checked: npc 1 in room 492 has its object trigger disabled.
 
 
@@ -806,6 +889,12 @@ class MushroomKingdomWalletGuyFirstRewardLocation(NPCLocationRow2):
     ]
     _id = ShuffleLocationSelector.WALLET_GUY_1
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfBitSet(RETURNED_WALLET, ["next"]),
+        StoreItemAmountTo7000(WalletItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(WalletPrize)
@@ -822,6 +911,12 @@ class MushroomKingdomWalletGuySecondRewardLocation(NPCLocationRow3):
     ]
     _id = ShuffleLocationSelector.WALLET_GUY_2
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfBitSet(SECOND_WALLET_PRIZE_RECEIVED, ["next"]),
+        JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
+        JmpIfBitClear(RETURNED_WALLET, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory) and inventory.has_item(WalletPrize)
@@ -839,6 +934,11 @@ class MushroomKingdomOccupiedOutdoorGuardLocation(NPCLocationRow1):
     _check_npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.INVASION_EASTERN_GUARD
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_5, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -855,6 +955,11 @@ class MushroomKingdomOccupiedCastleToadRescueLocation(NPCLocationRow2):
     ]
     _id = ShuffleLocationSelector.INVASION_TOAD_RESCUE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
+        JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_TOAD_RESCUED, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -872,6 +977,12 @@ class MushroomKingdomOccupiedFamilyRescueLocation(NPCLocationRow1):
     ]
     _id = ShuffleLocationSelector.INVASION_FAMILY
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
+        JmpIfBitClear(OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_1_DEFEATED, ["mushroom_kingdom_hint_text"]),
+        JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_2_DEFEATED, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -885,6 +996,11 @@ class MushroomKingdomOccupiedGuestRoomLocation(NPCLocationRow1):
     _rooms = [R330_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_GUEST_ROOM]
     _id = ShuffleLocationSelector.INVASION_GUEST_ROOM
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
+        JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1064,6 +1180,11 @@ class MushroomKingdomStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.INVASION_STAR_PIECE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _parent = MushroomKingdomBossFight
+    _hint = [
+        JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
+        JmpIfBitSet(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_bandits_way(
@@ -1085,6 +1206,13 @@ class MushroomKingdomStoreExchangeLocation(NPCLocationRow2, KeyItemLocation):
     ]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE_EXCHANGE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfBitSet(RARE_FROG_COIN_EXCHANGED, ["next"]),
+        JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
+        StoreItemAmountTo7000(RareFrogCoinItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory) and inventory.has_item(
@@ -1102,6 +1230,11 @@ class MushroomKingdomInnPurchaseLocation(NPCLocationRow1):
     ]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_INN
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _hint = [
+        JmpIfBitSet(GAMEBOY_KID_PURCHASE_COMPLETE, ["next"]),
+        JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
+        Jmp(["mushroom_kingdom_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1120,6 +1253,11 @@ class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BANDITS_WAY_1
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R207_BANDITS_WAY_AREA_02, ["next"]),
+        JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1134,6 +1272,11 @@ class BanditsWayCoin1Location(StandingLocationRow3):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BANDITS_WAY_COIN_1
     _world_area = WorldAreaEnum.BANDITS_WAY
+    _hint = [
+    #    JmpIfObjectNotInSpecificLevel(NPC_3, R207_BANDITS_WAY_AREA_02, ["next"]),
+    #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+    #    Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1148,6 +1291,11 @@ class BanditsWayCoin2Location(StandingLocationRow2):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BANDITS_WAY_COIN_2
     _world_area = WorldAreaEnum.BANDITS_WAY
+    _hint = [
+    #    JmpIfObjectNotInSpecificLevel(NPC_4, R207_BANDITS_WAY_AREA_02, ["next"]),
+    #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+    #    Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1162,6 +1310,11 @@ class BanditsWayCoin3Location(StandingLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BANDITS_WAY_COIN_3
     _world_area = WorldAreaEnum.BANDITS_WAY
+    _hint = [
+    #    JmpIfObjectNotInSpecificLevel(NPC_5, R207_BANDITS_WAY_AREA_02, ["next"]),
+    #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+    #    Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1177,6 +1330,11 @@ class BanditsWayDogChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BANDITS_WAY_2
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R077_BANDITS_WAY_AREA_03, ["next"]),
+        JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1192,6 +1350,11 @@ class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_CHEST
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R078_BANDITS_WAY_AREA_04, ["next"]),
+        JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1216,6 +1379,11 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BANDITS_WAY_DOG_JUMP
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R078_BANDITS_WAY_AREA_04, ["next"]),
+        JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1244,6 +1412,11 @@ class BanditsWayDeadEndChestLocation(TreasureChestLocationRow1):
         SlotsPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
+    ]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R206_BANDITS_WAY_AREA_05, ["next"]),
+        JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        Jmp(["bandits_way_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1320,6 +1493,11 @@ class BanditsWayStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_PIECE
     _world_area = WorldAreaEnum.BANDITS_WAY
     _parent = BanditsWayBossFight
+    _hint = [
+        JmpIfBitSet(BANDITS_WAY_LIBERATED, ["next"]),
+        JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_bandits_way(
@@ -1336,6 +1514,11 @@ class BanditsWayBossFirstItemDropLocation(NPCLocationRow1, KeyItemLocation):
     _id = ShuffleLocationSelector.CROCO_1_REWARD
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(BANDITS_WAY_LIBERATED, ["next"]),
+        JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1350,6 +1533,11 @@ class BanditsWayBossSecondItemDropLocation(NPCLocationRow2, KeyItemLocation):
     _id = ShuffleLocationSelector.CROCO_1_REWARD_2
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(BANDITS_WAY_LIBERATED, ["next"]),
+        JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        Jmp(["bandits_way_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)
@@ -1368,6 +1556,12 @@ class KeroSewersStairRoomLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.KERO_SEWERS_PANDORITE_ROOM
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_1"]),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS, ["next"], identifier="sewers_closed_check_1"),
+        Jmp(["kero_sewers_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sewer(world, inventory)
@@ -1383,6 +1577,12 @@ class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.PANDORITE_CHEST
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_2"]),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS, ["next"], identifier="sewers_closed_check_2"),
+        Jmp(["kero_sewers_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sewer(world, inventory)
@@ -1478,6 +1678,12 @@ class KeroSewersFourRatRoomChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.KERO_SEWERS_STAR_CHEST
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_3"]),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS, ["next"], identifier="sewers_closed_check_3"),
+        Jmp(["kero_sewers_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sewer(world, inventory)
@@ -1501,6 +1707,12 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
         KeyObject,
         SmallCoinObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_4"]),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS, ["next"], identifier="sewers_closed_check_4"),
+        Jmp(["kero_sewers_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1526,6 +1738,12 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
         SmallCoinObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_5"]),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfBitSet(SEWER_CHEST_FIRST_PRIZE_OBTAINED, ["next"], identifier="sewers_closed_check_5"),
+        Jmp(["kero_sewers_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sewer(world, inventory)
@@ -1550,6 +1768,12 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
         KeyObject,
         SmallCoinObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfBitSet(SEWERS_FLIPPED_CHEST_OPENED, ["next"]),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfBitClear(LANDS_END_GROTTO_BARREL_FLIPPED, ["lands_end_hint_text"]),
+        Jmp(["kero_sewers_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1604,6 +1828,12 @@ class KeroSewersStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.KERO_SEWERS_STAR_PIECE
     _world_area = WorldAreaEnum.KERO_SEWERS
     _parent = KeroSewersBossFight
+    _hint = [
+        JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_6"]),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfBitSet(SEWER_BOSS_DEFEATED, ["next"], identifier="sewers_closed_check_6"),
+        Jmp(["kero_sewers_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_sewer(
@@ -1621,6 +1851,10 @@ class MidasRiverFirstCompletionRewardLocation(NPCLocationRow1):
     _rooms = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
     _id = ShuffleLocationSelector.MIDAS_RIVER_FIRST_TIME
     _world_area = WorldAreaEnum.MIDAS_RIVER
+    _hint = [
+        JmpIfBitSet(MIDAS_RIVER_FIRST_VISIT_PRIZE_RECEIVED, ["next"]),
+        Jmp(["midas_river_hint_text"])
+    ]
     # Flag as checked: MIDAS_RIVER_FIRST_VISIT_PRIZE_RECEIVED
 
 
@@ -1630,6 +1864,10 @@ class MidasRiverLeftCaveLocation(RiverLocationRow2):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.MIDAS_RIVER_LEFT_CAVE
     _world_area = WorldAreaEnum.MIDAS_RIVER
+    _hint = [
+        JmpIfBitSet(MIDAS_RIVER_TUNNEL_2_BIT_1, ["next"]),
+        Jmp(["midas_river_hint_text"])
+    ]
     # Flag as checked: MIDAS_RIVER_TUNNEL_2_BIT_1
 
 
@@ -1639,6 +1877,10 @@ class MidasRiverBottomLeftCaveLocation(RiverLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MIDAS_RIVER_BOTTOM_LEFT_CAVE
     _world_area = WorldAreaEnum.MIDAS_RIVER
+    _hint = [
+        JmpIfBitSet(MIDAS_RIVER_TUNNEL_3_PRIZE, ["next"]),
+        Jmp(["midas_river_hint_text"])
+    ]
     # Flag as checked: MIDAS_RIVER_TUNNEL_3_PRIZE
 
 
@@ -1648,6 +1890,10 @@ class MidasRiverBottomRightCaveLocation(RiverLocationRow2):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.MIDAS_RIVER_BOTTOM_RIGHT_CAVE
     _world_area = WorldAreaEnum.MIDAS_RIVER
+    _hint = [
+        JmpIfBitSet(MIDAS_RIVER_TUNNEL_4_PRIZE, ["next"]),
+        Jmp(["midas_river_hint_text"])
+    ]
     # Flag as checked: MIDAS_RIVER_TUNNEL_4_PRIZE
 
 
@@ -1661,6 +1907,12 @@ class TadpolePondCricketPieExchangeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.CRICKET_PIE_REWARD
     _world_area = WorldAreaEnum.TADPOLE_POND
     _monstro_shuffle = True
+    _hint = [
+        JmpIfBitSet(CRICKET_PIE_EXCHANGED, ["next"]),
+        StoreItemAmountTo7000(CricketPieItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(CricketPiePrize)
@@ -1674,6 +1926,13 @@ class TadpolePondCricketJamExchangeLocation(NPCLocationRow2):
     _rooms = [R075_TADPOLE_POND_AREA_01]
     _id = ShuffleLocationSelector.CRICKET_JAM_REWARD
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _hint = [
+        JmpIfBitClear(CRICKET_PIE_EXCHANGED, ["next"]),
+        JmpIfBitSet(CRICKET_JAM_EXCHANGED, ["next"]),
+        StoreItemAmountTo7000(CricketJamItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(CricketPiePrize) and inventory.has_item(
@@ -1688,6 +1947,10 @@ class MelodyBayFirstRewardLocation(NPCLocationRow1, KeyItemLocation):
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_1
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _hint = [
+        JmpIfBitSet(MELODY_BAY_ITEM_1_GRANTED, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
     # Flag as checked: MELODY_BAY_ITEM_1_GRANTED
 
 
@@ -1697,6 +1960,12 @@ class MelodyBaySecondRewardLocation(NPCLocationRow2, KeyItemLocation):
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_2
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _hint = [
+        JmpIfBitSet(MELODY_BAY_ITEM_2_GRANTED, ["next"]),
+        JmpIfBitClear(MELODY_BAY_ITEM_1_GRANTED, ["next"]),
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory)
@@ -1710,6 +1979,12 @@ class MelodyBayThirdRewardLocation(NPCLocationRow3, KeyItemLocation):
     _rooms = [R074_TADPOLE_POND_AREA_02]
     _id = ShuffleLocationSelector.MELODY_BAY_3
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _hint = [
+        JmpIfBitSet(MELODY_BAY_ITEM_3_GRANTED, ["next"]),
+        JmpIfBitClear(MELODY_BAY_ITEM_2_GRANTED, ["next"]),
+        JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -1731,6 +2006,10 @@ class RoseWaySwingingPlatformRoomLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.ROSE_WAY_PLATFORM
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS, ["next"]),
+        Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 0 in room 80 has its object trigger disabled.
 
 
@@ -1740,6 +2019,10 @@ class RoseWayLeftIslandLocation(StandingLocationRow1):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.ROSE_WAY_FLOWER
     _world_area = WorldAreaEnum.ROSE_WAY
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_7, R079_ROSE_WAY_MAIN_AREA, ["next"]),
+        Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 7 in room 79 has been removed from the room.
 
 
@@ -1749,6 +2032,10 @@ class RoseWayMiddleIslandLocation(StandingLocationRow2):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.ROSE_WAY_MUSHROOM
     _world_area = WorldAreaEnum.ROSE_WAY
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_8, R079_ROSE_WAY_MAIN_AREA, ["next"]),
+        Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 8 in room 79 has been removed from the room.
 
 
@@ -1758,6 +2045,10 @@ class RoseWayCoin1Location(StandingLocationRow7):
     _npc_ids = [NPC_18]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_1
     _world_area = WorldAreaEnum.ROSE_WAY
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_18, R079_ROSE_WAY_MAIN_AREA, ["next"]),
+        # Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 17 in room 79 has been removed from the room.
 
 
@@ -1767,6 +2058,10 @@ class RoseWayCoin2Location(StandingLocationRow6):
     _npc_ids = [NPC_19]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_2
     _world_area = WorldAreaEnum.ROSE_WAY
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_19, R079_ROSE_WAY_MAIN_AREA, ["next"]),
+        # Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 18 in room 79 has been removed from the room.
 
 
@@ -1776,6 +2071,10 @@ class RoseWayCoin3Location(StandingLocationRow5):
     _npc_ids = [NPC_20]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_3
     _world_area = WorldAreaEnum.ROSE_WAY
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_20, R079_ROSE_WAY_MAIN_AREA, ["next"]),
+        # Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 19 in room 79 has been removed from the room
 
 
@@ -1785,6 +2084,10 @@ class RoseWayCoin4Location(StandingLocationRow4):
     _npc_ids = [NPC_21]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_4
     _world_area = WorldAreaEnum.ROSE_WAY
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_21, R079_ROSE_WAY_MAIN_AREA, ["next"]),
+        # Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 20 in room 79 has been removed from the room
 
 
@@ -1794,6 +2097,10 @@ class RoseWayCoin5Location(StandingLocationRow3):
     _npc_ids = [NPC_22]
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_5
     _world_area = WorldAreaEnum.ROSE_WAY
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_22, R079_ROSE_WAY_MAIN_AREA, ["next"]),
+        # Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 21 in room 79 has been removed from the room
 
 
@@ -1804,6 +2111,10 @@ class RoseWayFiveChestRoomTopLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_1
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
+        Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 0 in room 81 has its object trigger disabled.
 
 
@@ -1814,6 +2125,10 @@ class RoseWayFiveChestRoomBottomLeftLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_2
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
+        Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 1 in room 81 has its object trigger disabled.
 
 
@@ -1824,6 +2139,10 @@ class RoseWayFiveChestRoomRightLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_3
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
+        Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 2 in room 81 has its object trigger disabled.
 
 
@@ -1834,6 +2153,10 @@ class RoseWayFiveChestRoomLeftLocation(TreasureChestLocationRow4):
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_4
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
+        Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 3 in room 81 has its object trigger disabled.
 
 
@@ -1844,6 +2167,10 @@ class RoseWayFiveChestRoomBottomRightLocation(TreasureChestLocationRow5):
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_5
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
+        Jmp(["rose_way_hint_text"])
+    ]
     # Flag as checked: npc 4 in room 81 has its object trigger disabled.
 
 
@@ -1857,6 +2184,10 @@ class RoseTownShopLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_2
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R087_ROSE_TOWN_ITEM_SHOP, ["next"]),
+        Jmp(["rose_town_hint_text"])
+    ]
     # Flag as checked: npc 4 in room 87 has its object trigger disabled.
 
 
@@ -1867,6 +2198,10 @@ class RoseTownShopRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_1
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R087_ROSE_TOWN_ITEM_SHOP, ["next"]),
+        Jmp(["rose_town_hint_text"])
+    ]
     # Flag as checked: npc 5 in room 87 has its object trigger disabled.
 
 
@@ -1879,6 +2214,19 @@ class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize]
     _monstro_shuffle = True
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R419_LAZY_SHELL_CLOUD, ["next"]),
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(FOREST_LIBERATED, ["next"]),
+        JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_hint_text"]),
+        JmpIfBitSet(GAVE_SEED, ["hint_check_fertilizer"]),
+        StoreItemAmountTo7000(SeedItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(GAVE_FERTILIZER, ["rose_town_hint_text"], identifier="hint_check_fertilizer"),
+        StoreItemAmountTo7000(FertilizerItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["rose_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -1900,6 +2248,19 @@ class RoseTownCloudLeftChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize]
     _monstro_shuffle = True
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R419_LAZY_SHELL_CLOUD, ["next"]),
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(FOREST_LIBERATED, ["next"]),
+        JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_hint_text"]),
+        JmpIfBitSet(GAVE_SEED, ["hint_check_fertilizer2"]),
+        StoreItemAmountTo7000(SeedItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(GAVE_FERTILIZER, ["rose_town_hint_text"], identifier="hint_check_fertilizer2"),
+        StoreItemAmountTo7000(FertilizerItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["rose_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -1921,6 +2282,10 @@ class RoseTownInnToadPrizeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.ROSE_TOWN_TOAD
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(ROSE_TOWN_INN_TOAD_ITEM_RECEIVED, ["next"]),
+        Jmp(["rose_town_hint_text"])
+    ]
     # Flag as checked: ROSE_TOWN_INN_TOAD_ITEM_RECEIVED
 
 
@@ -1931,6 +2296,11 @@ class RoseTownInnGazPrizeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.GAZ
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(ROSE_TOWN_GAZ_ITEM_GRANTED, ["next"]),
+        JmpIfBitClear(FOREST_LIBERATED, ["next"]),
+        Jmp(["rose_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_forest(world, inventory)
@@ -1953,6 +2323,10 @@ class RoseTownTreasureHouseLeftChestLocation(TreasureChestLocationRow1):
         ThirdMimicFightLauncher,
         SlotsPrize,
     ]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, ["next"]),
+        Jmp(["rose_town_hint_text"])
+    ]
     # Flag as checked: npc 0 in room 93 or 94 has its object trigger disabled.
 
 
@@ -1971,6 +2345,10 @@ class RoseTownTreasureHouseRightChestLocation(TreasureChestLocationRow2):
         ThirdMimicFightLauncher,
         SlotsPrize,
     ]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, ["next"]),
+        Jmp(["rose_town_hint_text"])
+    ]
     # Flag as checked: npc 1 in room 93 or 94 has its object trigger disabled.
 
 
@@ -1984,6 +2362,12 @@ class RoseTownTreasureHouseMazeRewardLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_MAZE_REWARD
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfBitSet(TREASURE_HUNTER_HOUSE_PRIZE, ["next"]),
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfBitClear(FOREST_MAZE_SECRET_FOUND, ["forest_maze_hint_text"]),
+        Jmp(["rose_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2001,6 +2385,11 @@ class RoseTownTreasureHouseUpperChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_3
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F, ["next"]),
+        Jmp(["rose_town_hint_text"])
+    ]
     # Flag as checked: npc 1 in room 97 or 98 has its object trigger disabled.
 
 
@@ -2015,6 +2404,11 @@ class ForestMazeFirstRoomLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.FOREST_MAZE_1
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R224_FOREST_MAZE_AREA_01, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2030,6 +2424,11 @@ class ForestMazeFirstUndergroundExitLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.FOREST_MAZE_2
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R228_FOREST_MAZE_AREA_04, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2052,6 +2451,11 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
         CoinPrize,
     ]
     _model_allowlist = [FlowerObject, RecoveryMushroomObject, KeyObject, DefaultItem]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2073,6 +2477,11 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
         CoinPrize,
     ]
     _model_allowlist = [FlowerObject, RecoveryMushroomObject, KeyObject, DefaultItem]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2095,6 +2504,11 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
         CoinPrize,
     ]
     _model_allowlist = [FlowerObject, RecoveryMushroomObject, KeyObject, DefaultItem]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2110,6 +2524,11 @@ class ForestMazeInnerMazeEntranceLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.FOREST_MAZE_RED_ESSENCE
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2125,6 +2544,11 @@ class ForestMazeSecretTopRightChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_1
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R234_FOREST_MAZE_SECRET, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2140,6 +2564,11 @@ class ForestMazeSecretBottomRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_2
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R234_FOREST_MAZE_SECRET, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2155,6 +2584,11 @@ class ForestMazeSecretTopMiddleChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_3
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R234_FOREST_MAZE_SECRET, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2170,6 +2604,11 @@ class ForestMazeSecretBottomMiddleChestLocation(TreasureChestLocationRow4):
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_4
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R234_FOREST_MAZE_SECRET, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2185,6 +2624,11 @@ class ForestMazeSecretLeftChestLocation(TreasureChestLocationRow5):
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_5
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R234_FOREST_MAZE_SECRET, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)
@@ -2314,6 +2758,11 @@ class ForestMazeStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.FOREST_MAZE_STAR_PIECE
     _world_area = WorldAreaEnum.FOREST_MAZE
     _parent = ForestMazeBossFight
+    _hint = [
+        JmpIfBitSet(FOREST_LIBERATED, ["next"]),
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        Jmp(["forest_maze_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_clear_forest(
@@ -2345,6 +2794,11 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
             R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
             NPC_10,
         ),
+    ]
+    _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
+        JmpIfBitSet(FOREST_LIBERATED, ["next"]),
+        Jmp(["forest_maze_hint_text"])
     ]
 
     def set_prize(self, prize: Prize | None):
@@ -2440,6 +2894,11 @@ class PipeVaultSlidingCoinRoomBackChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_1
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
+        Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2455,6 +2914,11 @@ class PipeVaultSlidingCoinRoomMiddleChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_2
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
+        Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2470,6 +2934,11 @@ class PipeVaultSlidingCoinRoomFrontChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_3
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
+        Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2484,6 +2953,10 @@ class PipeVaultSlidingCoinRoomCoin1Location(StandingLocationRow5):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_1
     _world_area = WorldAreaEnum.PIPE_VAULT
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_0, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
+        # Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2498,6 +2971,10 @@ class PipeVaultSlidingCoinRoomCoin2Location(StandingLocationRow4):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_2
     _world_area = WorldAreaEnum.PIPE_VAULT
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_1, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
+        # Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2512,6 +2989,10 @@ class PipeVaultSlidingCoinRoomCoin3Location(StandingLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_3
     _world_area = WorldAreaEnum.PIPE_VAULT
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_2, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
+        # Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2526,6 +3007,10 @@ class PipeVaultSlidingCoinRoomCoin4Location(StandingLocationRow2):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_4
     _world_area = WorldAreaEnum.PIPE_VAULT
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_3, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
+        # Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2540,6 +3025,10 @@ class PipeVaultSlidingCoinRoomCoin5Location(StandingLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_5
     _world_area = WorldAreaEnum.PIPE_VAULT
+    _hint = [
+        # JmpIfObjectNotInSpecificLevel(NPC_4, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
+        # Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2554,6 +3043,11 @@ class PipeVaultSlidingCoinRoomCrouchItemLocation(StandingLocationRow6):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_FROG_COIN
     _world_area = WorldAreaEnum.PIPE_VAULT
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_5, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
+        Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2567,11 +3061,16 @@ class PipeVaultGoombaThumpinFirstPrizeLocation(NPCLocationRow1):
     _rooms = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
     _id = ShuffleLocationSelector.GOOMBA_THUMPING_1
     _world_area = WorldAreaEnum.PIPE_VAULT
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfBitSet(GOOMBA_THUMPIN_PRIZE_1_GRANTED, ["next"]),
+        Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
 
-    # flag as checked: GOOMBA_THUMPING_1
+    # flag as checked: GOOMBA_THUMPIN_PRIZE_1_GRANTED
 
 
 class PipeVaultGoombaThumpinSecondPrizeLocation(NPCLocationRow2):
@@ -2580,11 +3079,16 @@ class PipeVaultGoombaThumpinSecondPrizeLocation(NPCLocationRow2):
     _rooms = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
     _id = ShuffleLocationSelector.GOOMBA_THUMPING_2
     _world_area = WorldAreaEnum.PIPE_VAULT
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfBitSet(GOOMBA_THUMPIN_PRIZE_2_GRANTED, ["next"]),
+        Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
 
-    # flag as checked: GOOMBA_THUMPING_2
+    # flag as checked: GOOMBA_THUMPIN_PRIZE_2_GRANTED
 
 
 class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
@@ -2595,6 +3099,11 @@ class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_1
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]),
+        Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2610,6 +3119,11 @@ class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_2
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]),
+        Jmp(["pipe_vault_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2628,6 +3142,11 @@ class YosterEntranceChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.YOSTER_ISLE_ENTRANCE
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT, ["next"]),
+        Jmp(["yoster_isle_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2641,6 +3160,11 @@ class YosterRaceCookieYoshiLocation(KeyItemLocation, NPCLocationRow5):
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_COOKIE
     _world_area = WorldAreaEnum.YOSTER_ISLE
+    _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfBitSet(YOSHI_ITEM_GRANTED, ["next"]),
+        Jmp(["yoster_isle_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2654,6 +3178,15 @@ class YosterRacePrize1Location(NPCLocationRow1):
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_1
     _world_area = WorldAreaEnum.YOSTER_ISLE
+    _hint = [
+        JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["next"]),
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfBitClear(COOKIES_SHUFFLED, ["yoster_isle_hint_text"]),
+        JmpIfBitSet(GOT_FREE_COOKIES, ["yoster_isle_hint_text"]),
+        StoreItemAmountTo7000(CookiesItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["yoster_isle_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2667,6 +3200,15 @@ class YosterRacePrize2Location(NPCLocationRow3):
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_2
     _world_area = WorldAreaEnum.YOSTER_ISLE
+    _hint = [
+        JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["next"]),
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfBitClear(COOKIES_SHUFFLED, ["yoster_isle_hint_text"]),
+        JmpIfBitSet(GOT_FREE_COOKIES, ["yoster_isle_hint_text"]),
+        StoreItemAmountTo7000(CookiesItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["yoster_isle_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2680,6 +3222,15 @@ class YosterRacePrize3Location(NPCLocationRow4):
     _rooms = [R034_YOSTER_ISLE]
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_3
     _world_area = WorldAreaEnum.YOSTER_ISLE
+    _hint = [
+        JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["next"]),
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfBitClear(COOKIES_SHUFFLED, ["yoster_isle_hint_text"]),
+        JmpIfBitSet(GOT_FREE_COOKIES, ["yoster_isle_hint_text"]),
+        StoreItemAmountTo7000(CookiesItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["yoster_isle_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)
@@ -2696,6 +3247,11 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.TREASURE_SELLER_1
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitSet(TREASURE_SHOP_ITEM_1_PURCHASED, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory)
@@ -2718,6 +3274,12 @@ class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.TREASURE_SELLER_2
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(SEASIDE_LIBERATED, ["next"]),
+        JmpIfBitSet(TREASURE_SHOP_ITEM_2_PURCHASED, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory) and can_clear_seaside_boss(
@@ -2742,6 +3304,12 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.TREASURE_SELLER_3
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(VOLCANO_LIBERATED, ["next"]),
+        JmpIfBitSet(TREASURE_SHOP_ITEM_3_PURCHASED, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory) and can_clear_volcano(world, inventory)
@@ -2764,6 +3332,11 @@ class FireworksShopItemLocation(KeyItemLocation, NPCLocationRow1):
     _rooms = [R339_MOLEVILLE_FIREWORKS_SHOP]
     _id = ShuffleLocationSelector.FIREWORKS_SHOP
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitSet(FIREWORKS_HOUSE_ITEM_SOLD, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def key(self, world: GameWorld) -> bool:
         return not world.settings.is_flag_value(
@@ -2783,6 +3356,11 @@ class PurtendStoreLocation(KeyItemLocation, NPCLocationRow2):
     _rooms = [R108_MOLEVILLE_OUTSIDE]
     _id = ShuffleLocationSelector.PURTEND_STORE
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitSet(PURTEND_STORE_CHECK_DONE, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory) and inventory.has_item_count(
@@ -2799,6 +3377,11 @@ class CookieTraderLocation(KeyItemLocation, NPCLocationRow4):
     _rooms = [R336_MOLEVILLE_ITEM_SHOP]
     _id = ShuffleLocationSelector.COOKIE_TRADER
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitSet(COOKIE_TRADER_CHECKED, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory) and inventory.has_item_count(
@@ -2815,6 +3398,13 @@ class BucketGirlRewardLocation(NPCLocationRow1):
     _rooms = [R108_MOLEVILLE_OUTSIDE]
     _id = ShuffleLocationSelector.BUCKET_GIRL
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitSet(CARBO_COOKIE_GIVEN, ["next"]),
+        StoreItemAmountTo7000(CarboCookieItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         if not can_clear_mines(world, inventory):
@@ -2836,6 +3426,11 @@ class OuterMinesTrampolineHenchmanLocation(NPCLocationRow2):
     _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_1
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_moleville_entrance(world, inventory)
@@ -2850,6 +3445,11 @@ class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
     _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_2
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_moleville_entrance(world, inventory)
@@ -2864,6 +3464,11 @@ class OuterMinesRightHenchmanLocation(NPCLocationRow2):
     _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_3
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_moleville_entrance(world, inventory)
@@ -2965,6 +3570,11 @@ class OuterMinesStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_1
     _world_area = WorldAreaEnum.MOLEVILLE
     _parent = OuterMinesBossFight
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfBitSet(MINES_BOSS_1_DEFEATED, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_moleville_entrance(
@@ -2988,6 +3598,11 @@ class OuterMinesBossPrizeLocation(KeyItemLocation, NPCLocationRow1):
         R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
     ]
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfBitSet(MINES_BOSS_1_DEFEATED, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_moleville_entrance(world, inventory)
@@ -3003,6 +3618,14 @@ class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_STAR_CHEST
     _world_area = WorldAreaEnum.MOLEVILLE
     _blacklist = [ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, ["next"]),
+        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        StoreItemAmountTo7000(BambinoBombItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
@@ -3019,6 +3642,14 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_SHY_GUY
     _world_area = WorldAreaEnum.MOLEVILLE
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfBitSet(RUNAWAY_MINECART_ITEM_OBTAINED, ["next"]),
+        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        StoreItemAmountTo7000(BambinoBombItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
@@ -3034,6 +3665,14 @@ class InnerMinesBoxesChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_COINS
     _world_area = WorldAreaEnum.MOLEVILLE
     _blacklist = [ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC, ["next"]),
+        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        StoreItemAmountTo7000(BambinoBombItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
@@ -3049,6 +3688,14 @@ class InnerMinesSaveBlockChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_1
     _world_area = WorldAreaEnum.MOLEVILLE
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, ["next"]),
+        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        StoreItemAmountTo7000(BambinoBombItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
@@ -3064,6 +3711,14 @@ class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_2
     _world_area = WorldAreaEnum.MOLEVILLE
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, ["next"]),
+        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        StoreItemAmountTo7000(BambinoBombItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)
@@ -3180,6 +3835,14 @@ class InnerMinesStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_2
     _world_area = WorldAreaEnum.MOLEVILLE
     _parent = InnerMinesBossFight
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        StoreItemAmountTo7000(BambinoBombItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["moleville_hint_text"])
+    ]
     # Flag as checked: MINES_BOSS_2_DEFEATED
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3202,6 +3865,14 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
             R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM,
             NPC_1,
         ),
+    ]
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        StoreItemAmountTo7000(BambinoBombItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["moleville_hint_text"])
     ]
 
     def set_prize(self, prize: Prize | None):
@@ -3318,6 +3989,19 @@ class InnerMinesPostgameStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _remake_only = True
     _parent = InnerMinesPostgameBossFight
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfBitSet(MINES_BACK_OPENED, ["_mines_boss_2_defeated_check"]),
+        StoreItemAmountTo7000(BambinoBombItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"], identifier="_mines_boss_2_defeated_check"),
+        JmpIfBitSet(STAY_VOUCHER_USED, ["_mines_postgame_completed_check"]),
+        StoreItemAmountTo7000(StayVoucherItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["marrymore_hotel_hint_text"]),
+        JmpIfBitSet(MINES_POSTGAME_COMPLETED, ["next"], identifier="_mines_postgame_completed_check"),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(
@@ -3336,6 +4020,19 @@ class InnerMinesPostgameDrop(NPCLocationRow1):
     _remake_only = True
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
+        JmpIfBitSet(MINES_BACK_OPENED, ["__mines_boss_2_defeated_check"]),
+        StoreItemAmountTo7000(BambinoBombItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"], identifier="__mines_boss_2_defeated_check"),
+        JmpIfBitSet(STAY_VOUCHER_USED, ["__mines_postgame_completed_check"]),
+        StoreItemAmountTo7000(StayVoucherItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        Jmp(["marrymore_hotel_hint_text"]),
+        JmpIfBitSet(MINES_POSTGAME_COMPLETED, ["next"], identifier="__mines_postgame_completed_check"),
+        Jmp(["moleville_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_moleville_postgame_boss(world, inventory)
@@ -3351,6 +4048,10 @@ class BoosterPassBushLocation(NPCLocationRow1):
     _rooms = [R100_BOOSTER_PASS_AREA_01]
     _id = ShuffleLocationSelector.BOOSTER_PASS_BUSH
     _world_area = WorldAreaEnum.BOOSTER_PASS
+    _hint = [
+        JmpIfBitSet(BOOSTER_PASS_BUSH_ITEM_FOUND, ["next"]),
+        Jmp(["booster_pass_hint_text"])
+    ]
     # flag as checked: BOOSTER_PASS_BUSH_ITEM_FOUND
 
 
@@ -3361,6 +4062,10 @@ class BoosterPassFirstRoomLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_PASS_1
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R100_BOOSTER_PASS_AREA_01, ["next"]),
+        Jmp(["booster_pass_hint_text"])
+    ]
     # flag as checked: npc 8 in room 100 has its object trigger disabled.
 
 
@@ -3371,6 +4076,10 @@ class BoosterPassFirstRoomRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BOOSTER_PASS_2
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R100_BOOSTER_PASS_AREA_01, ["next"]),
+        Jmp(["booster_pass_hint_text"])
+    ]
     # flag as checked: npc 9 in room 100 has its object trigger disabled.
 
 
@@ -3380,6 +4089,10 @@ class BoosterPassSecondRoomFlowerLocation(StandingLocationRow1):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOOSTER_PASS_FLOWER
     _world_area = WorldAreaEnum.BOOSTER_PASS
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_6, R101_BOOSTER_PASS_AREA_02, ["next"]),
+        Jmp(["booster_pass_hint_text"])
+    ]
     # flag as checked: npc 6 in room 101 has been removed from the room.
 
 
@@ -3391,6 +4104,12 @@ class BoosterPassSecretMiddleChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_PASS_SECRET_1
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R405_BOOSTER_PASS_SECRET, ["next"]),
+        JmpIfBitSet(BOOSTER_PASS_SECRET_OPEN, ["booster_pass_hint_text"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3406,6 +4125,12 @@ class BoosterPassSecretRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BOOSTER_PASS_SECRET_2
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_11, R405_BOOSTER_PASS_SECRET, ["next"]),
+        JmpIfBitSet(BOOSTER_PASS_SECRET_OPEN, ["booster_pass_hint_text"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3421,6 +4146,12 @@ class BoosterPassSecretLeftChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.BOOSTER_PASS_SECRET_3
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_12, R405_BOOSTER_PASS_SECRET, ["next"]),
+        JmpIfBitSet(BOOSTER_PASS_SECRET_OPEN, ["booster_pass_hint_text"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3440,6 +4171,11 @@ class BoosterTowerSpookumStairsLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [ThirdMimicFightLauncher]
     _extra_sprite_buffer_rooms = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3454,6 +4190,11 @@ class BoosterTowerTrainRoomCreviceLocation(NPCLocationRow1):
     _check_npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_RAILWAY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_1, R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3469,6 +4210,11 @@ class BoosterTowerChestNearThwompLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_THWOMP
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(TOWER_SEESAW_CHEST_OPENED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3485,6 +4231,11 @@ class BoosterTowerFallingChestLocation(
     _id = ShuffleLocationSelector.BOOSTER_TOWER_MASHER
     _container_event = E0253_NPC_QUEST_1_GRANT
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfBitSet(TOWER_SEESAW_CHEST_OPENED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3498,6 +4249,11 @@ class BoosterTowerKnifeGuyPrizeLocation(KeyItemLocation, NPCLocationRow1):
     _rooms = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfBitSet(KNIFE_GUY_PRIZE_GRANTED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3512,6 +4268,11 @@ class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
     _rooms = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfBitSet(KNIFE_GUY_SECOND_PRIZE_AWARDED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory) and world.settings.isflag_enabled(
@@ -3528,6 +4289,11 @@ class BoosterTowerPortraitPrizeLocation(KeyItemLocation, StandingLocationRow1):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PORTRAITS
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_7, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3545,6 +4311,14 @@ class BoosterTowerElderKeyItemLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_CHOMP
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _monstro_shuffle = True
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_0, R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_14, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, ["elder_key_door_opened"]),
+        StoreItemAmountTo7000(ElderKeyItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"], identifier="elder_key_door_opened"),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory) and inventory.has_item(ElderKeyPrize)
@@ -3560,6 +4334,11 @@ class BoosterTowerParachuteRoomChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3574,6 +4353,11 @@ class BoosterTowerParachuteRoomCreviceLocation(NPCLocationRow1):
     _check_npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE_CREVICE
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_5, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3607,6 +4391,10 @@ class BoosterTowerCheckerboardTopItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_0, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3623,6 +4411,10 @@ class BoosterTowerCheckerboardLeftmostItemLocation(StandingLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_1, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3639,6 +4431,10 @@ class BoosterTowerCheckerboardUpperRightItemLocation(StandingLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_2, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3655,6 +4451,10 @@ class BoosterTowerCheckerboardBottomItemLocation(StandingLocationRow4):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_4
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_3, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3671,6 +4471,10 @@ class BoosterTowerCheckerboardCoin1Location(StandingLocationRow5):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_7, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3687,6 +4491,10 @@ class BoosterTowerCheckerboardCoin2Location(StandingLocationRow6):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_8, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3703,6 +4511,10 @@ class BoosterTowerCheckerboardCoin3Location(StandingLocationRow7):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_9, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3719,6 +4531,10 @@ class BoosterTowerCheckerboardCoin4Location(StandingLocationRow8):
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_4
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_10, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3735,6 +4551,10 @@ class BoosterTowerCheckerboardCoin5Location(StandingLocationRow9):
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_5
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_11, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3751,6 +4571,10 @@ class BoosterTowerCheckerboardCoin6Location(StandingLocationRow10):
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_6
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_12, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3767,6 +4591,10 @@ class BoosterTowerCheckerboardCoin7Location(StandingLocationRow11):
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_7
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_13, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3783,6 +4611,10 @@ class BoosterTowerCheckerboardCoin8Location(StandingLocationRow12):
     _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_8
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_14, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3799,6 +4631,10 @@ class BoosterTowerCheckerboardCoin9Location(StandingLocationRow13):
     _npc_ids = [NPC_15]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_9
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_15, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3815,6 +4651,10 @@ class BoosterTowerRoomKeyChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _monstro_shuffle = True
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory) and inventory.has_item(RoomKeyPrize)
@@ -3830,6 +4670,10 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3845,6 +4689,10 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3860,6 +4708,10 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory)
@@ -3874,6 +4726,10 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_CURTAIN_GAME
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_do_tower_curtain_game(world, inventory)
@@ -3889,6 +4745,10 @@ class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_MARIO_DOLL
     _world_area = WorldAreaEnum.BOOSTER_TOWER
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_do_tower_curtain_game(world, inventory)
@@ -4090,6 +4950,10 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _parent = BoosterTowerIndoorBossFight
+    _hint = [
+        JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_do_tower_curtain_game(world, inventory) and not_earlygame(
@@ -4138,6 +5002,10 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _remake_only = True
     _parent = BoosterTowerIndoorBossFightRemake
+    _hint = [
+        JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower_postgame_boss(world, inventory)
@@ -4198,6 +5066,10 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _parent = BoosterTowerBalconyBossFight
+    _hint = [
+        JmpIfBitSet(TOWER_BOSS_2_DEFEATED, ["next"]),
+        Jmp(["booster_tower_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower(world, inventory) and not_earlygame(world, inventory)
@@ -4219,6 +5091,10 @@ class BoosterHillGuaranteedItem1(BoosterHillLocation, StandingLocation):
         P038_BOOSTER_HILL_PRIZE_0,
         P069_BOOSTER_HILL_PRIZE_STANDING_0,
     ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4236,6 +5112,10 @@ class BoosterHillGuaranteedItem2(BoosterHillLocation, StandingLocation):
     _designated_packet_ids = [
         P039_BOOSTER_HILL_PRIZE_1,
         P071_BOOSTER_HILL_PRIZE_STANDING_1,
+    ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4255,6 +5135,10 @@ class BoosterHillGuaranteedItem3(BoosterHillLocation, StandingLocation):
         P041_BOOSTER_HILL_PRIZE_2,
         P072_BOOSTER_HILL_PRIZE_STANDING_2,
     ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4272,6 +5156,10 @@ class BoosterHillGuaranteedItem4(BoosterHillLocation, StandingLocation):
     _designated_packet_ids = [
         P042_BOOSTER_HILL_PRIZE_3,
         P074_BOOSTER_HILL_PRIZE_STANDING_3,
+    ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4291,6 +5179,10 @@ class BoosterHillGuaranteedItem5(BoosterHillLocation, StandingLocation):
         P044_BOOSTER_HILL_PRIZE_4,
         P075_BOOSTER_HILL_PRIZE_STANDING_4,
     ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4308,6 +5200,10 @@ class BoosterHillGuaranteedItem6(BoosterHillLocation, StandingLocation):
     _designated_packet_ids = [
         P046_BOOSTER_HILL_PRIZE_5,
         P077_BOOSTER_HILL_PRIZE_STANDING_5,
+    ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4327,6 +5223,10 @@ class BoosterHillGuaranteedItem7(BoosterHillLocation, StandingLocation):
         P057_BOOSTER_HILL_PRIZE_6,
         P078_BOOSTER_HILL_PRIZE_STANDING_6,
     ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4344,6 +5244,10 @@ class BoosterHillGuaranteedItem8(BoosterHillLocation, StandingLocation):
     _designated_packet_ids = [
         P058_BOOSTER_HILL_PRIZE_7,
         P080_BOOSTER_HILL_PRIZE_STANDING_7,
+    ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4363,6 +5267,10 @@ class BoosterHillGuaranteedItem9(BoosterHillLocation, StandingLocation):
         P059_BOOSTER_HILL_PRIZE_8,
         P081_BOOSTER_HILL_PRIZE_STANDING_8,
     ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4380,6 +5288,10 @@ class BoosterHillGuaranteedItem10(BoosterHillLocation, StandingLocation):
     _designated_packet_ids = [
         P060_BOOSTER_HILL_PRIZE_9,
         P082_BOOSTER_HILL_PRIZE_STANDING_9,
+    ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4399,6 +5311,10 @@ class BoosterHillGuaranteedItem11(BoosterHillLocation, StandingLocation):
         P061_BOOSTER_HILL_PRIZE_10,
         P083_BOOSTER_HILL_PRIZE_STANDING_10,
     ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4416,6 +5332,10 @@ class BoosterHillGuaranteedItem12(BoosterHillLocation, StandingLocation):
     _designated_packet_ids = [
         P100_BOOSTER_HILL_PRIZE_11,
         P084_BOOSTER_HILL_PRIZE_STANDING_11,
+    ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4435,6 +5355,10 @@ class BoosterHillGuaranteedItem13(BoosterHillLocation, StandingLocation):
         P063_BOOSTER_HILL_PRIZE_12,
         P085_BOOSTER_HILL_PRIZE_STANDING_12,
     ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4452,6 +5376,10 @@ class BoosterHillGuaranteedItem14(BoosterHillLocation, StandingLocation):
     _designated_packet_ids = [
         P065_BOOSTER_HILL_PRIZE_13,
         P086_BOOSTER_HILL_PRIZE_STANDING_13,
+    ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4471,6 +5399,10 @@ class BoosterHillGuaranteedItem15(BoosterHillLocation, StandingLocation):
         P066_BOOSTER_HILL_PRIZE_14,
         P087_BOOSTER_HILL_PRIZE_STANDING_14,
     ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4489,6 +5421,10 @@ class BoosterHillGuaranteedItem16(BoosterHillLocation, StandingLocation):
         P068_BOOSTER_HILL_PRIZE_15,
         P088_BOOSTER_HILL_PRIZE_STANDING_15,
     ]
+    _hint = [
+        JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
+        Jmp(["booster_hill_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)
@@ -4505,6 +5441,10 @@ class MarrymoreFirstSuitePrizeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_1
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize1Threshold setting
 
 
@@ -4514,6 +5454,10 @@ class MarrymoreSecondSuitePrizeLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_2
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize2Threshold setting
 
 
@@ -4523,6 +5467,10 @@ class MarrymoreThirdSuitePrizeLocation(NPCLocationRow3):
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_3
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize3Threshold setting
 
 
@@ -4532,6 +5480,10 @@ class MarrymoreFourthSuitePrizeLocation(NPCLocationRow4):
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_4
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize4Threshold setting
 
 
@@ -4541,6 +5493,10 @@ class MarrymoreFifthSuitePrizeLocation(NPCLocationRow5):
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_5
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize5Threshold setting
 
 
@@ -4550,6 +5506,10 @@ class MarrymoreSixthSuitePrizeLocation(NPCLocationRow6):
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_6
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MARRYMORE_SUITE_INN, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize6Threshold setting
     # LMK if these need dedicated bits or if AP is able to figure out the threshold on its own
 
@@ -4560,6 +5520,10 @@ class MarrymoreBigTipLocation(NPCLocationRow7):
     _id = ShuffleLocationSelector.MARRYMORE_BIG_TIP
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MARRYMORE_MAJOR_TIP_GIVEN, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
     # flag as checked: MARRYMORE_MAJOR_TIP_GIVEN
 
 
@@ -4570,6 +5534,10 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.MARRYMORE_INN
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R009_MARRYMORE_INN_REGULAR_ROOM, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
     # flag as checked: npc 0 in room 9 has its object trigger disabled.
 
 
@@ -4583,6 +5551,10 @@ class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1):
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E0253_NPC_QUEST_1_GRANT
     _npc_ids = [NPC_8]
+    _hint = [
+        JmpIfBitSet(CHAPEL_ITEM_1_RETRIEVED, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory)
@@ -4598,6 +5570,10 @@ class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2):
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E0252_NPC_QUEST_2_GRANT
     _npc_ids = [NPC_5]
+    _hint = [
+        JmpIfBitSet(CHAPEL_ITEM_2_RETRIEVED, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory)
@@ -4613,6 +5589,10 @@ class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3):
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E0251_NPC_QUEST_3_GRANT
     _npc_ids = [NPC_6]
+    _hint = [
+        JmpIfBitSet(CHAPEL_ITEM_3_RETRIEVED, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory)
@@ -4627,6 +5607,10 @@ class MarrymoreAltarHeadLocation(KeyItemLocation, StandingLocationRow1):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.MARRYMORE_ALTAR
     _world_area = WorldAreaEnum.MARRYMORE
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_7, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["next"]),
+        Jmp(["marrymore_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory)
@@ -4738,6 +5722,10 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
             R054_BOOSTER_HILL_DUMMY,
             NPC_8,
         ),
+    ]
+    _hint = [
+        JmpIfBitSet(MARRYMORE_LIBERATED, ["next"]),
+        Jmp(["marrymore_hint_text"])
     ]
 
     def set_prize(self, prize: Prize | None):
@@ -4939,6 +5927,10 @@ class StarHillStarPiece(StarPieceLocation):
     _rooms = [R159_STAR_HILL_AREA_04]
     _id = ShuffleLocationSelector.STAR_HILL_STAR_PIECE_1
     _world_area = WorldAreaEnum.STAR_HILL
+    _hint = [
+        JmpIfBitSet(STAR_HILL_CHECKED, ["next"]),
+        Jmp(["star_hill_hint_text"])
+    ]
     # Flag as checked (send item, which i guess we can't do yet with SP checks):  NPC 9 removed from room and STAR_HILL_CHECKED
     # Flag as checked (tracker): STAR_HILL_CHECKED
 
@@ -4950,6 +5942,10 @@ class FrogDiscipleLocation1(FrogDiscipleLocation):
     _originally_held = SeeYaPrize
     _id = ShuffleLocationSelector.FROG_DISCIPLE_1
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _hint = [
+        JmpIfBitSet(FROG_DISCIPLE_ITEM_1_PURCHASED, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
     # flag as checked: FROG_DISCIPLE_ITEM_1_PURCHASED
 
 
@@ -4957,6 +5953,10 @@ class FrogDiscipleLocation2(FrogDiscipleLocation):
     _originally_held = EarlierTimesPrize
     _id = ShuffleLocationSelector.FROG_DISCIPLE_2
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _hint = [
+        JmpIfBitSet(FROG_DISCIPLE_ITEM_2_PURCHASED, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
     # flag as checked: FROG_DISCIPLE_ITEM_2_PURCHASED
     # FROG_DISCIPLE_ITEM_1_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
 
@@ -4965,6 +5965,10 @@ class FrogDiscipleLocation3(FrogDiscipleLocation):
     _originally_held = ExpBoosterPrize
     _id = ShuffleLocationSelector.FROG_DISCIPLE_3
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _hint = [
+        JmpIfBitSet(FROG_DISCIPLE_ITEM_3_PURCHASED, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
     # flag as checked: FROG_DISCIPLE_ITEM_3_PURCHASED
     # FROG_DISCIPLE_ITEM_2_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
 
@@ -4973,6 +5977,10 @@ class FrogDiscipleLocation4(FrogDiscipleLocation):
     _originally_held = CoinTrickPrize
     _id = ShuffleLocationSelector.FROG_DISCIPLE_4
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _hint = [
+        JmpIfBitSet(FROG_DISCIPLE_ITEM_4_PURCHASED, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
     # flag as checked: FROG_DISCIPLE_ITEM_4_PURCHASED
     # FROG_DISCIPLE_ITEM_3_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
 
@@ -4981,6 +5989,10 @@ class FrogDiscipleLocation5(FrogDiscipleLocation):
     _originally_held = ScroogeRingPrize
     _id = ShuffleLocationSelector.FROG_DISCIPLE_5
     _world_area = WorldAreaEnum.TADPOLE_POND
+    _hint = [
+        JmpIfBitSet(FROG_DISCIPLE_ITEM_5_PURCHASED, ["next"]),
+        Jmp(["tadpole_pond_hint_text"])
+    ]
     # flag as checked: FROG_DISCIPLE_ITEM_5_PURCHASED
     # FROG_DISCIPLE_ITEM_4_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
 
@@ -5155,6 +6167,10 @@ class SeasideBeachStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _parent = SeasideBeachBossFight
+    _hint = [
+        JmpIfBitSet(SEASIDE_LIBERATED, ["next"]),
+        Jmp(["seaside_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_clear_seaside_boss(
@@ -5172,6 +6188,10 @@ class SeasideTownBossPrizeLocation(KeyItemLocation, StandingLocationRow1):
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS_PRIZE
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_0, R316_SEASIDE_TOWN_BEACH, ["next"]),
+        Jmp(["seaside_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_seaside_boss(world, inventory)
@@ -5189,6 +6209,10 @@ class SeasideTownShedRescueLocation(NPCLocationRow1):
     _rooms = [R314_SEASIDE_TOWN_SHED]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_RESCUE
     _world_area = WorldAreaEnum.SEASIDE_TOWN
+    _hint = [
+        JmpIfBitSet(SEASIDE_SHED_EMPTIED, ["next"]),
+        Jmp(["seaside_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_seaside_boss(world, inventory) and inventory.has_item(
@@ -5209,6 +6233,10 @@ class SeaStarslapRoomChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SEA_STAR_CHEST
     _world_area = WorldAreaEnum.SEA
     _blacklist = [ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R134_SEA_AREA_03_SUPER_STAR_ROOM, ["next"]),
+        Jmp(["sea_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5224,6 +6252,10 @@ class SeaSaveRoomBackChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_1
     _world_area = WorldAreaEnum.SEA
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]),
+        Jmp(["sea_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5239,6 +6271,10 @@ class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_2
     _world_area = WorldAreaEnum.SEA
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]),
+        Jmp(["sea_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5254,6 +6290,10 @@ class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_3
     _world_area = WorldAreaEnum.SEA
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]),
+        Jmp(["sea_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5269,6 +6309,10 @@ class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SEA_WHIRLPOOL_CHEST
     _world_area = WorldAreaEnum.SEA
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS, ["next"]),
+        Jmp(["sea_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5287,6 +6331,10 @@ class ShipRatStairsChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5303,6 +6351,10 @@ class ShipRatStairsBoxesLocation(PacketLocationRow1):
     _packet_type = PacketType.CHEST
     _packet_id = P037_SHIP_STAIRCASE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS_FLOWER
+    _hint = [
+        JmpIfBitSet(SHIP_STAIRWAY_FREESTANDING_ITEM_OBTAINED, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5319,6 +6371,10 @@ class ShipTroopaPuzzleLocation(PacketLocationRow1):
     _packet_type = PacketType.FALLING
     _packet_id = P027_SUNKEN_SHIP_TROOPA_PUZZLE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_TROOPA_PUZZLE
+    _hint = [
+        JmpIfBitSet(SHIP_TROOPA_PRIZE, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5335,6 +6391,10 @@ class ShipTrampolinePuzzle(PacketLocationRow1):
     _packet_type = PacketType.FALLING
     _packet_id = P026_SUNKEN_SHIP_TRAMPOLINE_PUZZLE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_TRAMPOLINE_PUZZLE
+    _hint = [
+        JmpIfBitSet(UNKNOWN_707D_1, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5351,6 +6411,10 @@ class Ship3DMazePuzzle(PacketLocationRow1):
     _packet_type = PacketType.FALLING
     _packet_id = P029_SUNKEN_SHIP_3D_MAZE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_3D_MAZE
+    _hint = [
+        JmpIfBitSet(SHIP_MAZE_PRIZE, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5366,6 +6430,10 @@ class ShipShopChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_SHOP
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5416,6 +6484,10 @@ class ShipCoinSnakePuzzleLocation(StandingLocationRow1):
         NPC_16,
     ]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COIN_SNAKE
+    _hint = [
+        JmpIfBitSet(SHIP_COIN_PRIZE, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5432,6 +6504,10 @@ class ShipCannonballPuzzle(PacketLocationRow1):
     _packet_type = PacketType.FALLING
     _packet_id = P035_SUNKEN_SHIP_CANNONBALL_PUZZLE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_CANNONBALL_PUZZLE
+    _hint = [
+        JmpIfBitSet(SHIP_CANNONBALL_PRIZE, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5448,6 +6524,10 @@ class ShipBarrelPuzzle(PacketLocationRow1):
     _packet_type = PacketType.FALLING
     _packet_id = P036_BARREL_PUZZLE_PRIZE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BARREL_PUZZLE
+    _hint = [
+        JmpIfBitSet(UNKNOWN_707D_5, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sea(world, inventory)
@@ -5502,6 +6582,10 @@ class ShipPasswordStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _parent = ShipPasswordBossFight
+    _hint = [
+        JmpIfBitSet(SHIP_MIDBOSS_COMPLETED, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_clear_ship(world, inventory)
@@ -5517,6 +6601,10 @@ class EarlyInnerShipLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_1
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5532,6 +6620,10 @@ class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5547,6 +6639,10 @@ class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_CLONE_ROOM
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [SlotsPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5562,6 +6658,10 @@ class InnerShipBehindBoxesChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_FROG_COIN_ROOM
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, SlotsPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5577,6 +6677,10 @@ class InnerShipSaveRoomLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_HIDON_MUSHROOM
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5592,6 +6696,10 @@ class InnerShipSaveRoomRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.HIDON_CHEST
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5606,6 +6714,10 @@ class Mimic2DropRewardLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.HIDON_REWARD_1
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 513
+    _hint = [
+        JmpIfBitSet(MIMIC_2_CLEARED, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)
@@ -5643,6 +6755,10 @@ class Mimic2StarPiece(StarPieceLocation):
     _rooms = [513]
     _override_id = 513
     _parent = Mimic2BossFight
+    _hint = [
+        JmpIfBitSet(MIMIC_2_CLEARED, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)
@@ -5658,6 +6774,10 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.HIDON_REWARD_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 513
+    _hint = [
+        JmpIfBitSet(MIMIC_2_CLEARED, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
     # SecondMimicFightLauncher must be blacklisted to prevent circular dependency:
     # This location's can_access requires defeating second mimic, which requires
     # accessing the SecondMimicFightLauncher location - can't be the same location.
@@ -5697,6 +6817,10 @@ class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_1
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _model_allowlist = UNDERWATER_ALLOWED_MODELS
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_0, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5712,6 +6836,10 @@ class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _model_allowlist = UNDERWATER_ALLOWED_MODELS
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_1, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5727,6 +6855,10 @@ class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_3
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _model_allowlist = UNDERWATER_ALLOWED_MODELS
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_2, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5742,6 +6874,10 @@ class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_4
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _model_allowlist = UNDERWATER_ALLOWED_MODELS
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_3, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5757,6 +6893,10 @@ class InnerShipSecretRoomChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_SAFETY_RING
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5771,6 +6911,10 @@ class InnerShipPoolRoomLocation(StandingLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BLOOBER_ROOM
     _world_area = WorldAreaEnum.SUNKEN_SHIP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_5, R027_SUNKEN_SHIP_POSTKC_AREA_13_LARGE_UNDERWATER_ROOM_WITH_A_BLOOBER, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5786,6 +6930,10 @@ class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BANDANA_REDS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
@@ -5921,6 +7069,10 @@ class ShipFinalStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BOSS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _parent = ShipFinalBossFight
+    _hint = [
+        JmpIfBitSet(SHIP_LIBERATED, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_clear_ship(world, inventory)
@@ -5968,6 +7120,10 @@ class ShipPostgameFightItemDrop(KeyItemLocation, NPCLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _remake_only = True
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(POSTGAME_SHIP_COMPLETED, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_ship_postgame_boss(world, inventory)
@@ -5984,6 +7140,10 @@ class ShipPostgameStarPiece(StarPieceLocation):
     _override_id = 526
     _remake_only = True
     _parent = ShipPostgameBossFight
+    _hint = [
+        JmpIfBitSet(POSTGAME_SHIP_COMPLETED, ["next"]),
+        Jmp(["sunken_ship_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_ship_postgame_boss(world, inventory)
@@ -6002,6 +7162,10 @@ class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.LANDS_END_RED_ESSENCE
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R137_LANDS_END_AREA_01, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6016,6 +7180,10 @@ class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_1
     _world_area = WorldAreaEnum.LANDS_END
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R138_LANDS_END_AREA_02, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6031,6 +7199,10 @@ class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_2
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R138_LANDS_END_AREA_02, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6045,6 +7217,10 @@ class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LNDS_END_BEE_ROOM
     _world_area = WorldAreaEnum.LANDS_END
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R141_LANDS_END_AREA_04_ROTATING_FLOWERS, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6060,6 +7236,10 @@ class LandsEndCaveSideRemake(StandingLocationRow1):
     _npc_ids = [NPC_19]
     _remake_only = True
     _id = ShuffleLocationSelector.LANDS_END_CAVE_SIDE_REMAKE
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_19, R142_LANDS_END_AREA_05_SKY_BRIDGE, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and world.settings.is_flag_value(
@@ -6076,6 +7256,10 @@ class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_1
     _world_area = WorldAreaEnum.LANDS_END
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6091,6 +7275,10 @@ class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.LANDS_END_SECRET_2
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6117,6 +7305,10 @@ class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
         KeyObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6131,6 +7323,10 @@ class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_1
     _world_area = WorldAreaEnum.LANDS_END
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R263_LANDS_END_UNDERGROUND_AREA_01, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6146,6 +7342,10 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_2
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_18, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6161,6 +7361,10 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_3
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_19, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6174,6 +7378,10 @@ class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
     _rooms = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _id = ShuffleLocationSelector.TROOPA_CLIMB
     _world_area = WorldAreaEnum.LANDS_END
+    _hint = [
+        JmpIfBitSet(TROOPA_CLIMB_COMPLETED, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and can_access_monstro_town(
@@ -6205,6 +7413,10 @@ class LandsEndCloudBoss(BossFightLocation):
     _override_id = 519
     _pack_id = PACK207_LANDS_END_CLOUD
     _post_unlocks_event_id = E1210_CLOUD_BOSS_UNLOCKS
+    _hint = [
+        JmpIfBitSet(LANDS_END_CLOUD_STAR_PIECE, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -6226,6 +7438,10 @@ class LandsEndCloudStarPiece(StarPieceLocation):
     _rooms = [519]
     _override_id = 519
     _parent = LandsEndCloudBoss
+    _hint = [
+        JmpIfBitSet(LANDS_END_CLOUD_STAR_PIECE, ["next"]),
+        Jmp(["lands_end_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and not_earlygame(world, inventory)
@@ -6241,6 +7457,10 @@ class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_TELLER
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6256,6 +7476,10 @@ class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_1
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6271,6 +7495,10 @@ class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_2
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6286,6 +7514,10 @@ class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_3
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6301,6 +7533,10 @@ class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_4
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6316,6 +7552,10 @@ class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_1
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6331,6 +7571,10 @@ class BelomeBeforeBossLowerLeftChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_2
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6346,6 +7590,10 @@ class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6361,6 +7609,10 @@ class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_4
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
@@ -6385,6 +7637,10 @@ class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
         SmallFrogCoinObjectNoMoney,
         KeyObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_0, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6413,6 +7669,10 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
         KeyObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_1, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6439,6 +7699,10 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
         SmallFrogCoinObjectNoMoney,
         KeyObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_2, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6467,6 +7731,10 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
         KeyObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_3, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6493,6 +7761,10 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
         SmallFrogCoinObjectNoMoney,
         KeyObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_4, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6521,6 +7793,10 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
         KeyObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_5, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6547,6 +7823,10 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
         SmallFrogCoinObjectNoMoney,
         KeyObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_6, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6575,6 +7855,10 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
         KeyObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_7, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6601,6 +7885,10 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
         SmallFrogCoinObjectNoMoney,
         KeyObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_8, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6629,6 +7917,10 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
         KeyObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_9, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6655,6 +7947,10 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
         SmallFrogCoinObjectNoMoney,
         KeyObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_10, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6683,6 +7979,10 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
         KeyObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_11, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6709,6 +8009,10 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
         SmallFrogCoinObjectNoMoney,
         KeyObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_13, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6737,6 +8041,10 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
         KeyObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_14, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and inventory.has_item(
@@ -6763,6 +8071,10 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
         SmallFrogCoinObjectNoMoney,
         KeyObject,
         DefaultItem,
+    ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_15, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        Jmp(["belome_temple_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6874,6 +8186,10 @@ class TemplePostgameFightItemDrop(NPCLocationRow1):
     _world_area = WorldAreaEnum.TEMPLE
     _remake_only = True
     _monstro_shuffle = True
+    _hint = [
+        JmpIfBitSet(TEMPLE_POSTGAME_BOSS_DEFEATED, ["next"]),
+        Jmp(["belome_temple_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_temple_postgame_boss(world, inventory)
@@ -6892,6 +8208,10 @@ class MonstroEntranceLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.MONSTRO_TOWN_ENTRANCE
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R267_MONSTRO_TOWN_ENTRANCE, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -6906,6 +8226,10 @@ class MonstroThwompItemLocation(KeyItemLocation, StandingLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MONSTRO_TOWN_THWOMP
     _world_area = WorldAreaEnum.MONSTRO_TOWN
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -6933,6 +8257,10 @@ class DojoFirstFight(BossFightLocation):
     _dialogs_expecting_replacement = [
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT,
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED,
+    ]
+    _hint = [
+        JmpIfBitSet(DOJO_BOSS_1_DEFEATED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -6965,6 +8293,10 @@ class DojoFirstFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.DOJO_BOSS_1
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _parent = DojoFirstFight
+    _hint = [
+        JmpIfBitSet(DOJO_BOSS_1_DEFEATED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
     # Flag as checked: DOJO_BOSS_1_DEFEATED
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6990,6 +8322,10 @@ class DojoSecondFight(BossFightLocation):
             NPC_0,
             sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
+    ]
+    _hint = [
+        JmpIfBitSet(DOJO_BOSS_2_DEFEATED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -7041,6 +8377,10 @@ class DojoSecondFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 515
     _parent = DojoSecondFight
+    _hint = [
+        JmpIfBitSet(DOJO_BOSS_2_DEFEATED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -7069,6 +8409,10 @@ class DojoThirdFight(BossFightLocation):
             NPC_2,
             sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
+    ]
+    _hint = [
+        JmpIfBitSet(DOJO_BOSS_3_DEFEATED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -7114,6 +8458,10 @@ class DojoThirdFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 516
     _parent = DojoThirdFight
+    _hint = [
+        JmpIfBitSet(DOJO_BOSS_3_DEFEATED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and not_earlygame(
@@ -7142,6 +8490,10 @@ class DojoFourthFight(BossFightLocation):
         ),
     ]
     _dialogs_expecting_replacement = [DI3353_DOJO_BOSS_2_FULLY_DEFEATED]
+    _hint = [
+        JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -7186,6 +8538,10 @@ class DojoFourthFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _override_id = 517
     _parent = DojoFourthFight
+    _hint = [
+        JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and not_earlygame(
@@ -7203,6 +8559,10 @@ class MonstroDojoClearRewardLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and not_earlygame(
@@ -7230,6 +8590,10 @@ class DojoFifthFight(BossFightLocation):
             NPC_4,
             sequence_setter_event_id=E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
+    ]
+    _hint = [
+        JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -7274,6 +8638,10 @@ class DojoFifthFightStarPiece(StarPieceLocation):
     _override_id = 525
     _remake_only = True
     _parent = DojoFifthFight
+    _hint = [
+        JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_fifth_dojo_boss(
@@ -7292,6 +8660,10 @@ class MonstroDojoPostgameClearRewardLocation(NPCLocationRow2):
     _remake_only = True
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_fifth_dojo_boss(world, inventory)
@@ -7345,6 +8717,10 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
             sequence_setter_event_id=E0816_MONSTRO_SUPERBOSS_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
+    _hint = [
+        JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_sealed_door_boss(
@@ -7362,6 +8738,10 @@ class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sealed_door_boss(world, inventory)
@@ -7412,6 +8792,10 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _remake_only = True
     _parent = MonstroSealedDoorBossFightPostgame
+    _hint = [
+        JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_sealed_postgame_boss(
@@ -7429,6 +8813,10 @@ class MonstroSealedDoorClearRewardLocationPostgame(KeyItemLocation, NPCLocationR
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _remake_only = True
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sealed_postgame_boss(world, inventory)
@@ -7443,6 +8831,10 @@ class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.SUPER_JUMPS_30
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _monstro_shuffle = True
+    _hint = [
+        JmpIfBitSet(SUPER_JUMP_PRIZE_1_GRANTED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and inventory.has_item(
@@ -7459,6 +8851,10 @@ class MonstroSecondSuperJumpRewardLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.SUPER_JUMPS_100
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _monstro_shuffle = True
+    _hint = [
+        JmpIfBitSet(SUPER_JUMP_PRIZE_2_GRANTED, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and inventory.has_item(
@@ -7475,6 +8871,10 @@ class MonstroFlagExchangeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.THREE_MUSTY_FEARS
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _monstro_shuffle = True
+    _hint = [
+        JmpIfBitSet(UNUSED_7093_5, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -7497,6 +8897,10 @@ class BeanValleyFirstDeadEndLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R252_BEAN_VALLEY_MAIN_AREA, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 3 in room 252 has its object trigger disabled.
 
 
@@ -7507,6 +8911,10 @@ class BeanValleyFirstProgressChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BEAN_VALLEY_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R252_BEAN_VALLEY_MAIN_AREA, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 4 in room 252 has its object trigger disabled.
 
 
@@ -7517,6 +8925,10 @@ class BeanValleyLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_LEFT_PIRANHA_PIPE
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 0 in room 334 has its object trigger disabled.
 
 
@@ -7527,6 +8939,10 @@ class BeanValleyBottomLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_LEFT_PIRANHA_PIPE
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 0 in room 348 has its object trigger disabled.
 
 
@@ -7537,6 +8953,10 @@ class BeanValleyBottomRightPiranhaPipeUpperLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA_PIPE_UPPER
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 0 in room 349 has its object trigger disabled.
 
 
@@ -7547,6 +8967,10 @@ class BeanValleyBottomRightPiranhaPipeLowerLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA_PIPE_LOWER
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 2 in room 349 has its object trigger disabled.
 
 
@@ -7557,6 +8981,10 @@ class BeanValleyRightPipeLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 5 in room 335 has its object trigger disabled.
 
 
@@ -7593,6 +9021,10 @@ class Mimic3StarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _override_id = 514
     _parent = Mimic3BossFight
+    _hint = [
+        JmpIfBitSet(MIMIC_3_CLEARED, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -7611,6 +9043,10 @@ class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 7 in room 335 has its object trigger disabled.
 
 
@@ -7620,6 +9056,10 @@ class BeanValleyRightPipeUnderStairsLocation(NPCLocationRow1):
     _check_npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_HIDDEN
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_9, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 9 in room 335 is removed.
 
 
@@ -7630,6 +9070,10 @@ class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_PIRANHA_PLANTS
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_13, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 13 in room 251 has its object trigger disabled.
 
 
@@ -7693,6 +9137,10 @@ class BeanValleyPlanterStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOSS
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _parent = BeanValleyPlanterBossFight
+    _hint = [
+        JmpIfBitSet(BEAN_VALLEY_BOSS_DEFEATED, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and not_earlygame(world, inventory)
@@ -7707,6 +9155,10 @@ class BeanValleyBossNoteLocation(KeyItemLocation, NPCLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_MEGASMILAX_ROOM
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(SEED_CHECKED, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return not_earlygame(world, inventory)
@@ -7721,6 +9173,10 @@ class BeanstalkLowestChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 9 in room 379 has its object trigger disabled.
 
 
@@ -7730,6 +9186,10 @@ class BeanValley1stRoomFloatingItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_FROG_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_3, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 3 in room 378 has been removed from the room.
 
 
@@ -7739,6 +9199,10 @@ class BeanValley1stRoomMiddleCoinLocation(StandingLocationRow2):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_MIDDLE_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_4, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 4 in room 378 has been removed from the room.
 
 
@@ -7748,6 +9212,10 @@ class BeanValley1stRoomUpperCoinLocation(StandingLocationRow3):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_UPPER_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_5, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 5 in room 378 has been removed from the room.
 
 
@@ -7757,6 +9225,10 @@ class BeanValley1stRoomLowerCoinLocation(StandingLocationRow4):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_LOWER_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_6, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 6 in room 378 has been removed from the room.
 
 
@@ -7766,6 +9238,10 @@ class Beanstalk2ndRoomFloatingItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_FROG_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_6, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 6 in room 379 has been removed from the room.
 
 
@@ -7775,6 +9251,10 @@ class Beanstalk2ndRoomCoin1Location(StandingLocationRow2):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 3 in room 379 has its object trigger disabled.
 
 
@@ -7784,6 +9264,10 @@ class Beanstalk2ndRoomCoin2Location(StandingLocationRow3):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 4 in room 379 has its object trigger disabled.
 
 
@@ -7793,6 +9277,10 @@ class Beanstalk2ndRoomCoin3Location(StandingLocationRow4):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_3
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 5 in room 379 has its object trigger disabled.
 
 
@@ -7802,6 +9290,10 @@ class BeanValleyEastBeanstalkCoin1Location(StandingLocationRow1):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 3 in room 380 has its object trigger disabled.
 
 
@@ -7811,6 +9303,10 @@ class BeanValleyEastBeanstalkCoin2Location(StandingLocationRow2):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 4 in room 380 has its object trigger disabled.
 
 
@@ -7820,6 +9316,10 @@ class BeanValleyEastBeanstalkCoin3Location(StandingLocationRow3):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_3
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 5 in room 380 has its object trigger disabled.
 
 
@@ -7829,6 +9329,10 @@ class BeanValleyEastBeanstalkCoin4Location(StandingLocationRow4):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_4
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 6 in room 380 has its object trigger disabled.
 
 
@@ -7838,6 +9342,10 @@ class BeanValleyEastBeanstalkCoin5Location(StandingLocationRow5):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_5
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 7 in room 380 has its object trigger disabled.
 
 
@@ -7847,6 +9355,10 @@ class BeanValleyWestBeanstalkCoin1Location(StandingLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 4 in room 381 has its object trigger disabled.
 
 
@@ -7856,6 +9368,10 @@ class BeanValleyWestBeanstalkCoin2Location(StandingLocationRow2):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 5 in room 381 has its object trigger disabled.
 
 
@@ -7865,6 +9381,10 @@ class BeanValleyWestBeanstalkCoin3Location(StandingLocationRow3):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_3
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 6 in room 381 has its object trigger disabled.
 
 
@@ -7874,6 +9394,10 @@ class BeanValleyWestBeanstalkFloatingItemLocation(StandingLocationRow4):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_FROG_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_7, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 7 in room 381 has been removed from the room.
 
 
@@ -7884,6 +9408,10 @@ class BeanstalkUpperCloudLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_CLOUD_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 1 in room 372 has its object trigger disabled.
 
 
@@ -7894,6 +9422,10 @@ class BeanstalkUpperCloudRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BEAN_VALLEY_CLOUD_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 2 in room 372 has its object trigger disabled.
 
 
@@ -7904,6 +9436,10 @@ class BeanstalkLowerCloudLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_FALL_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 1 in room 373 has its object trigger disabled.
 
 
@@ -7914,6 +9450,10 @@ class BeanstalkLowerCloudRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BEAN_VALLEY_FALL_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
     # flag as checked: npc 2 in room 373 has its object trigger disabled.
 
 
@@ -7926,6 +9466,10 @@ class CasinoGrateGuyPrizeLocation(NPCLocationRow1):
     _rooms = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
     _id = ShuffleLocationSelector.CASINO_GRATE_GUY_PRIZE
     _world_area = WorldAreaEnum.CASINO
+    _hint = [
+        JmpIfBitSet(CASINO_PRIZE_WON, ["next"]),
+        Jmp(["casino_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(BrightCardPrize)
@@ -7944,6 +9488,10 @@ class NimbusShopChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_LAND_SHOP
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R344_NIMBUS_LAND_ITEM_SHOP, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_outer_nimbus(world, inventory)
@@ -7958,6 +9506,10 @@ class NimbusInnDreamPrize1Location(NPCLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(NIMBUS_INN_PRIZE_GRANTED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_outer_nimbus(world, inventory)
@@ -7972,6 +9524,10 @@ class NimbusInnDreamPrize2Location(NPCLocationRow2):
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(NIMBUS_INN_PRIZE_GRANTED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_outer_nimbus(world, inventory)
@@ -7986,6 +9542,10 @@ class GarroFreeItem(KeyItemLocation, NPCLocationRow1):
     _rooms = [R341_NIMBUS_LAND_GARROS_HOUSE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_GARRO
     _world_area = WorldAreaEnum.BEAN_VALLEY
+    _hint = [
+        JmpIfBitSet(GARRO_ITEM_GRANTED, ["next"]),
+        Jmp(["bean_valley_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_outer_nimbus(world, inventory)
@@ -8001,6 +9561,10 @@ class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.DODO_REWARD
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(STATUE_GAME_DONE, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_nimbus(world, inventory)
@@ -8083,6 +9647,10 @@ class StatueRoomStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.NIMBUS_LAND_STAR_PIECE_1
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _parent = StatueRoomBossFight
+    _hint = [
+        JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = world.settings.isflag_enabled(
@@ -8103,6 +9671,10 @@ class NimbusCastleOuterPrisonCellarRightNPCLocation(NPCLocationRow1):
     _rooms = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _hint = [
+        JmpIfBitSet(BLUE_CELLAR_GUARD_ITEM_GRANTED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_nimbus_castle(world, inventory)
@@ -8116,6 +9688,10 @@ class NimbusCastleOuterPrisonCellarLeftNPCLocation(KeyItemLocation, NPCLocationR
     _rooms = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _hint = [
+        JmpIfBitSet(RED_CELLAR_GUARD_ITEM_GRANTED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_nimbus_castle(world, inventory)
@@ -8130,6 +9706,10 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_BUSINESS_CENTRE
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _hint = [
+        JmpIfBitSet(NIMBUS_MISSABLE_CHECK_CLEARED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_nimbus_castle(world, inventory)
@@ -8159,6 +9739,10 @@ class NimbusCastleCornerBridgeChestLocation(TreasureChestLocationRow1):
         KeyObject,
         DefaultItem,
     ]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_nimbus_castle(world, inventory)
@@ -8177,6 +9761,10 @@ class NimbusCastleOutOfBoundsChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_OUT_OF_BOUNDS_1
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_nimbus_castle(world, inventory)
@@ -8194,6 +9782,10 @@ class NimbusCastleAboveJawfulChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_OUT_OF_BOUNDS_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_nimbus_castle(world, inventory)
@@ -8210,6 +9802,10 @@ class NimbusCastleSingleGoldBirdChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_SINGLE_GOLD_BIRD
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_nimbus_castle(world, inventory)
@@ -8228,6 +9824,10 @@ class NimbusCastleTwoLevelLowerChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_AFTER_EGG_1
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_nimbus_castle(world, inventory)
@@ -8269,6 +9869,10 @@ class GiantEggStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _parent = GiantEggBossFight
+    _hint = [
+        JmpIfBitSet(NIMBUS_MID_BOSS_COMPLETED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -8287,6 +9891,10 @@ class NimbusCastleGiantEggRewardLocation(KeyItemLocation, NPCLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_BIRDETTA
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [RecoveryMushroomPrize]
+    _hint = [
+        JmpIfBitSet(NIMBUS_MID_BOSS_COMPLETED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_nimbus(world, inventory) and not_earlygame(
@@ -8309,6 +9917,10 @@ class NimbusCastleTwoLevelUpperChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1, NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_AFTER_EGG_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_late_nimbus(world, inventory)
@@ -8323,6 +9935,10 @@ class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_CHEST
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_late_nimbus(world, inventory)
@@ -8606,6 +10222,10 @@ class NimbusFinalStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_3
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _parent = NimbusFinalBossFight
+    _hint = [
+        JmpIfBitSet(NIMBUS_LAND_LIBERATED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_clear_nimbus_boss(
@@ -8626,6 +10246,10 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_nimbus_boss(world, inventory)
@@ -8641,6 +10265,10 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfBitSet(NIMBUS_MISSABLE_CHECK_CLEARED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_nimbus_boss(world, inventory)
@@ -8655,6 +10283,10 @@ class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
     _check_npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_9, R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_nimbus_boss(world, inventory)
@@ -8669,6 +10301,10 @@ class NimbusLandCrocoItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.NIMBUS_LAND_SIGNAL_RING
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_5, R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_nimbus_boss(world, inventory)
@@ -8682,6 +10318,10 @@ class NimbusLandInnerCellarLocation(NPCLocationRow1):
     _rooms = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
     _id = ShuffleLocationSelector.NIMBUS_LAND_CELLAR
     _world_area = WorldAreaEnum.NIMBUS_LAND
+    _hint = [
+        JmpIfBitSet(NIMBUS_CASTLE_LIBERATED_GUARD_ITEM_GRANTED, ["next"]),
+        Jmp(["nimbus_land_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_nimbus_boss(world, inventory)
@@ -8700,6 +10340,10 @@ class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8715,6 +10359,10 @@ class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8730,6 +10378,10 @@ class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R384_VOLCANO_AREA_05, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8745,6 +10397,10 @@ class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R384_VOLCANO_AREA_05, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8759,6 +10415,10 @@ class VolcanoEarlyProgressThirdChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_STAR_ROOM
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R385_VOLCANO_AREA_06, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8773,6 +10433,10 @@ class VolcanoLavaPoolLocation(StandingLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_LAVA_POOL
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_1, R361_VOLCANO_AREA_09, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8787,6 +10451,10 @@ class VolcanoReverseRecoilItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_REVERSE
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_4, R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8801,6 +10469,10 @@ class VolcanoRightDonutItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_1, R358_VOLCANO_AREA_11, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8815,6 +10487,10 @@ class VolcanoLeftDonutItemLocation(StandingLocationRow2):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_2, R358_VOLCANO_AREA_11, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8830,6 +10506,10 @@ class VolcanoSaveRoomLowerChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R366_VOLCANO_AREA_13_WSAVE_POINT, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8845,6 +10525,10 @@ class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R366_VOLCANO_AREA_13_WSAVE_POINT, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8860,6 +10544,10 @@ class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_HINOPIO
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_volcano(world, inventory)
@@ -8917,6 +10605,10 @@ class VolcanoBridgeStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _parent = VolcanoBridgeBossFight
+    _hint = [
+        JmpIfBitSet(VOLCANO_MIDBOSS_DEFEATED, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_clear_volcano(
@@ -9039,6 +10731,10 @@ class VolcanoExitStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _parent = VolcanoExitBossFight
+    _hint = [
+        JmpIfBitSet(VOLCANO_LIBERATED, ["next"]),
+        Jmp(["barrel_volcano_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_clear_volcano(
@@ -9059,6 +10755,10 @@ class KeepDarkRoomChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DARK_ROOM
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_keep(world, inventory)
@@ -9074,6 +10774,10 @@ class KeepFirstCrocoShopLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CROCO_SHOP_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_keep(world, inventory)
@@ -9089,6 +10793,10 @@ class KeepFirstCrocoShopRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CROCO_SHOP_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_keep(world, inventory)
@@ -9104,6 +10812,10 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9119,6 +10831,10 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9134,6 +10850,10 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9149,6 +10869,10 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9163,6 +10887,10 @@ class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_8, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9177,6 +10905,10 @@ class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_9, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9191,6 +10923,10 @@ class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_10, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9205,6 +10941,10 @@ class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_11, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9220,6 +10960,10 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9235,6 +10979,10 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_11, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9250,6 +10998,10 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_12, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9265,6 +11017,10 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_13, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9280,6 +11036,10 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ELEVATOR_PLATFORMS
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9295,6 +11055,10 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9310,6 +11074,10 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9325,6 +11093,10 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9340,6 +11112,10 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9355,6 +11131,10 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9369,6 +11149,10 @@ class KeepCannonballCoin1Location(StandingLocationRow1):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_8, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9383,6 +11167,10 @@ class KeepCannonballCoin2Location(StandingLocationRow2):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_9, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9397,6 +11185,10 @@ class KeepCannonballCoin3Location(StandingLocationRow3):
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_10, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9411,6 +11203,10 @@ class KeepCannonballCoin4Location(StandingLocationRow4):
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_11, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9425,6 +11221,10 @@ class KeepCannonballCoin5Location(StandingLocationRow5):
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_12, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9439,6 +11239,10 @@ class KeepCannonballCoin6Location(StandingLocationRow6):
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_6
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_13, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9453,6 +11257,10 @@ class KeepCannonballCoin7Location(StandingLocationRow7):
     _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_7
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_14, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9467,6 +11275,10 @@ class KeepCannonballCoin8Location(StandingLocationRow8):
     _npc_ids = [NPC_15]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_8
     _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_15, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9484,6 +11296,10 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9501,6 +11317,10 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9518,6 +11338,10 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9535,6 +11359,10 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9552,6 +11380,10 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9569,6 +11401,10 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_6
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory)
@@ -9590,6 +11426,10 @@ class ObstacleCourseFinalFight(BossFightLocation):
             NPC_4,
             sequence_setter_event_id=E0845_VOLCANO_BRIEF_HENCHMAN_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         )
+    ]
+    _hint = [
+        JmpIfBitSet(BATTLE_DOOR_BOSS_BIT, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -9648,6 +11488,10 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_CHESTER
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _parent = ObstacleCourseFinalFight
+    _hint = [
+        JmpIfBitSet(BATTLE_DOOR_BOSS_BIT, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory) and not_earlygame(
@@ -9668,6 +11512,10 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(BK_OBSTACLE_1_PRIZE_RETRIEVED, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -9691,6 +11539,10 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(BK_OBSTACLE_2_PRIZE_RETRIEVED, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -9714,6 +11566,10 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(BK_OBSTACLE_3_PRIZE_RETRIEVED, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -9737,6 +11593,10 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(BK_OBSTACLE_4_PRIZE_RETRIEVED, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = not_earlygame(world, inventory)
@@ -9756,6 +11616,10 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(BK_OBSTACLE_5_PRIZE_RETRIEVED, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -9779,6 +11643,10 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_6
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _hint = [
+        JmpIfBitSet(BK_OBSTACLE_6_PRIZE_RETRIEVED, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -9952,6 +11820,10 @@ class KeepAfterObstaclesStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _parent = KeepAfterObstaclesBossFight
+    _hint = [
+        JmpIfBitSet(KEEP_BOSS_1_DEFEATED, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory) and not_earlygame(
@@ -9969,6 +11841,10 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MAGIKOOPA
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, RecoveryMushroomPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory) and not_earlygame(
@@ -10066,6 +11942,10 @@ class KeepChandelierStarPiece(StarPieceLocation):
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 521
     _parent = KeepChandelierBossFight
+    _hint = [
+        JmpIfBitSet(KEEP_BOSS_2_DEFEATED, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory) and not_earlygame(
@@ -10120,6 +12000,10 @@ class KeepFinalStarPiece(StarPieceLocation):
     _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
     _override_id = 522
     _parent = KeepFinalBossFight
+    _hint = [
+        JmpIfBitSet(KEEP_BOSS_3_DEFEATED, ["next"]),
+        Jmp(["bowsers_keep_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory) and not_earlygame(
@@ -10140,6 +12024,10 @@ class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.FACTORY_SAVE_ROOM
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory)
@@ -10155,6 +12043,10 @@ class FactoryBoltPlatformsChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.FACTORY_BOLT_PLATFORMS
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory)
@@ -10209,6 +12101,10 @@ class FactoryEntranceStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.FACTORY_BOSS_1
     _world_area = WorldAreaEnum.FACTORY
     _parent = FactoryEntranceBossFight
+    _hint = [
+        JmpIfBitSet(ABYSS_BOSS_1_DEFEATED, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -10228,6 +12124,10 @@ class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.FACTORY_FALLING_AXEMS
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
@@ -10245,6 +12145,10 @@ class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.FACTORY_TREASURE_PIT_1
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
@@ -10262,6 +12166,10 @@ class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.FACTORY_TREASURE_PIT_2
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
@@ -10279,6 +12187,10 @@ class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_1
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize, SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
@@ -10296,6 +12208,10 @@ class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_2
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize, SlotsPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
@@ -10313,6 +12229,10 @@ class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_1
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
@@ -10330,6 +12250,10 @@ class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
     _id = ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_2
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
+    _hint = [
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
@@ -10365,6 +12289,10 @@ class FactoryTransitionStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.FACTORY_BOSS_2
     _world_area = WorldAreaEnum.FACTORY
     _parent = FactoryTransitionBossFight
+    _hint = [
+        JmpIfBitSet(ABYSS_BOSS_2_DEFEATED, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -10410,6 +12338,10 @@ class InnerFactoryFirstFight(BossFightLocation):
             remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
     ]
+    _hint = [
+        JmpIfBitSet(INNER_FACTORY_ROOM_1_COMPLETED, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -10430,6 +12362,10 @@ class InnerFactoryFirstFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_1
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = InnerFactoryFirstFight
+    _hint = [
+        JmpIfBitSet(INNER_FACTORY_ROOM_1_COMPLETED, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -10447,6 +12383,10 @@ class InnerFactoryToadGiftLocation(NPCLocationRow1):
     _rooms = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _id = ShuffleLocationSelector.FACTORY_TOAD_GIFT
     _world_area = WorldAreaEnum.INNER_FACTORY
+    _hint = [
+        JmpIfBitSet(TOAD_SHOP_FREEBIE_RECEIVED, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
@@ -10486,6 +12426,10 @@ class InnerFactorySecondFight(BossFightLocation):
             remove_if_not_filled=RemoveIfNotFilled.ALWAYS,
         ),
     ]
+    _hint = [
+        JmpIfBitSet(INNER_FACTORY_ROOM_2_COMPLETED, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -10518,6 +12462,10 @@ class InnerFactorySecondFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_2
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = InnerFactorySecondFight
+    _hint = [
+        JmpIfBitSet(INNER_FACTORY_ROOM_2_COMPLETED, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -10548,6 +12496,10 @@ class InnerFactoryThirdFight(BossFightLocation):
         BossFightLocationHenchmanNPC([R472_FACTORY_GROUNDS_AREA_03], [NPC_7]),
         BossFightLocationHenchmanNPC([R472_FACTORY_GROUNDS_AREA_03], [NPC_8]),
         BossFightLocationHenchmanNPC([R472_FACTORY_GROUNDS_AREA_03], [NPC_9]),
+    ]
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_10, R472_FACTORY_GROUNDS_AREA_03, ["next"]),
+        Jmp(["factory_hint_text"])
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -10589,6 +12541,10 @@ class InnerFactoryThirdFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_3
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = InnerFactoryThirdFight
+    _hint = [
+        JmpIfObjectNotInSpecificLevel(NPC_10, R472_FACTORY_GROUNDS_AREA_03, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -10629,6 +12585,10 @@ class InnerFactoryFourthFight(BossFightLocation):
             [NPC_0, NPC_1, NPC_2, NPC_3, NPC_4, NPC_5, NPC_6],
         ),
     ]
+    _hint = [
+        JmpIfBitSet(INNER_FACTORY_ROOM_4_COMPLETED, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],
@@ -10660,6 +12620,10 @@ class InnerFactoryFourthFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_4
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = InnerFactoryFourthFight
+    _hint = [
+        JmpIfBitSet(INNER_FACTORY_ROOM_4_COMPLETED, ["next"]),
+        Jmp(["factory_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -10828,6 +12792,10 @@ class MariosPadBedFlag(InvisibleFlagLocation):
     _y_coord = 11
     _world_area = WorldAreaEnum.MARIOS_PAD
     _clue_text = """\n My item's underneath a green bed.[await]"""
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(
@@ -10845,6 +12813,10 @@ class RoseTownSignFlag(InvisibleFlagLocation):
     _y_coord = 47
     _world_area = WorldAreaEnum.ROSE_TOWN
     _clue_text = """\n My item's behind a wooden flower.[await]"""
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(
@@ -10860,6 +12832,10 @@ class YosterIsleGoalFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _y_shift = -4
     _clue_text = """\n My item's between "O" and "A".[await]"""
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory) and (
@@ -10876,6 +12852,10 @@ class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARIOS_PAD
     _z_coord = 1
     _clue_text = "\n  Mine is underneath a steamwhistle.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     # All other flag locations are in logic only after you can talk to the musty fears because otherwise how tf would you know where to look?
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10891,6 +12871,10 @@ class MariosPadLanternFlag(InvisibleFlagLocation):
     _x_shift = 8
     _y_shift = -8
     _clue_text = "\n    Mine is under a white lantern.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -10904,6 +12888,10 @@ class MariosPadHatFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARIOS_PAD
     _z_coord = 1
     _clue_text = """\n      My item's under a red hat.[await]"""
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -10918,6 +12906,10 @@ class MushroomWayTreeFlag(InvisibleFlagLocation):
     _z_coord = 3
     _x_shift = -16
     _clue_text = " Mine's under a tree, up on a ledge\n by itself.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -10935,6 +12927,10 @@ class MushroomKingdomSignFlag(InvisibleFlagLocation):
     _z_coord = 2
     _y_shift = -8
     _clue_text = "\n  Mine's behind a wooden mushroom.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -10951,6 +12947,10 @@ class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _y_shift = 8
     _clue_text = " Mine is under the bed in an empty\n house.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -10967,6 +12967,10 @@ class ChancellorThroneFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _z_coord = 3
     _clue_text = "\n       Mine's under a blue chair.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -10980,6 +12984,10 @@ class BanditsWayFlowerFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _x_shift = 16
     _clue_text = "\n      Mine's on a landing flower.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_bandits_way(
@@ -10996,6 +13004,10 @@ class KeroStairsFlag(InvisibleFlagLocation):
     _z_coord = 4
     _y_shift = 8
     _clue_text = " Mine's in a corner, nearby lots of\n dank stairs.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_sewer(
@@ -11012,6 +13024,10 @@ class KeroGateFlag(InvisibleFlagLocation):
     _z_coord = 4
     _x_shift = -16
     _clue_text = "\n Mine is by a lone metal spike fence.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_sewer(
@@ -11027,6 +13043,10 @@ class MidasTreesFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _x_shift = -8
     _clue_text = " Mine's between a lone pair of\n palm trees, near water.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11042,6 +13062,10 @@ class TadpoleCabinetFlag(InvisibleFlagLocation):
     _x_shift = 8
     _y_shift = 8
     _clue_text = "\n       Mine is in a frog cabinet.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11054,6 +13078,10 @@ class RoseWayDirtPatchFlag(InvisibleFlagLocation):
     _y_coord = 88
     _world_area = WorldAreaEnum.ROSE_WAY
     _clue_text = " Mine is in the middle of a HUGE\n patch of dirt.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11070,6 +13098,10 @@ class RoseTownHydrantFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = -8
     _clue_text = "\n  Mine is under a low steel hydrant.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11086,6 +13118,10 @@ class RoseTownSinkFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = 1
     _clue_text = "\n My item is in a kitchen sink under\n some green curtains.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11101,6 +13137,10 @@ class RoseTownBowserFlag(InvisibleFlagLocation):
     _y_coord = 21
     _world_area = WorldAreaEnum.ROSE_TOWN
     _clue_text = "\n   Mine's under a miniature turtle.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11114,6 +13154,10 @@ class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = -8
     _clue_text = "\n   Mine is under a private hydrant.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -11130,6 +13174,10 @@ class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
     _y_coord = 87
     _world_area = WorldAreaEnum.ROSE_TOWN
     _clue_text = "\n   Mine is under a private bucket.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -11147,6 +13195,10 @@ class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _z_coord = 10
     _clue_text = "\n Mine's on a big leaf between\n two chests.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -11166,6 +13218,10 @@ class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _x_shift = 16
     _clue_text = " Mine is behind a brightly\n illuminated tree stump.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_forest(
@@ -11182,6 +13238,10 @@ class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = 8
     _clue_text = " Mine is on an illuminated pack of\n 5 mushrooms.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_forest(
@@ -11196,6 +13256,10 @@ class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
     _y_coord = 39
     _world_area = WorldAreaEnum.FOREST_MAZE
     _clue_text = "\n        Mine is on a sleepy bug.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_forest(
@@ -11212,6 +13276,10 @@ class PipeVaultExteriorFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = 8
     _clue_text = " Mine is by a pipe in the middle of\n the road.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_pipe_vault(
@@ -11228,6 +13296,10 @@ class PipeVaultRedPipeFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = -8
     _clue_text = "\n     Mine is behind a low red pipe.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_pipe_vault(
@@ -11242,6 +13314,10 @@ class YosterIsleHutFlag(InvisibleFlagLocation):
     _y_coord = 70
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _clue_text = "\n         Mine's in a fruity hut.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_pipe_vault(
@@ -11260,6 +13336,10 @@ class MolevilleHydrantFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _y_shift = -8
     _clue_text = "\n     Mine's under a gold hydrant.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11278,6 +13358,10 @@ class MolevilleMountainBushFlag(InvisibleFlagLocation):
     _clue_text = " Mine's in a bush at the top of\n a mountain.[await]"
     _x_shift = -8
     _y_shift = -8
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11291,6 +13375,10 @@ class MolevilleBedFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _x_shift = 16
     _clue_text = "\n       Mine's under a middle bed.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11303,6 +13391,10 @@ class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
     _y_coord = 51
     _world_area = WorldAreaEnum.MOLEVILLE
     _clue_text = " Mine's between two arrows,\n pointing away from each other.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(
@@ -11318,6 +13410,10 @@ class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _z_coord = 4
     _clue_text = " Mine's in a zig-zag room, up\n on the ceiling.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(
@@ -11334,6 +13430,10 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
     _z_coord = 3
     _x_shift = 16
     _clue_text = '\n My item?[delay]\n ...[delay]It\'s on the word “IN”,\n [delay]above a big hole.[await]'
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_clear_mines(
@@ -11350,6 +13450,10 @@ class BoosterPassCornerBushFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = 8
     _clue_text = "\n        Mine's in a corner bush.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11363,6 +13467,10 @@ class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _x_shift = 16
     _clue_text = " Mine's behind a sign with Japanese\n letters.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11376,6 +13484,10 @@ class BoosterTowerDeskFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _x_shift = 16
     _clue_text = '\n      Mine\'s under "B" and "K".[await]'
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_tower(
@@ -11391,6 +13503,10 @@ class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _y_shift = 8
     _clue_text = "\n Mine's on a lightly-loaded see-saw.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_tower(
@@ -11407,6 +13523,10 @@ class BoosterTowerCurtainFlag(InvisibleFlagLocation):
     _z_coord = 9
     _y_shift = 8
     _clue_text = " Mine's in a corner, between a\n window and a red curtain.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_tower(
@@ -11422,6 +13542,10 @@ class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _z_coord = 12
     _clue_text = "\n     Mine is near a lonely thwomp.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_tower(
@@ -11438,6 +13562,10 @@ class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = -9
     _clue_text = "\n       Mine is in a broken frame.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_tower(
@@ -11452,6 +13580,10 @@ class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
     _y_coord = 18
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _clue_text = "\n     Mine is on an insect cage.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_tower(
@@ -11467,6 +13599,10 @@ class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _x_shift = 16
     _clue_text = "\n       Mine is behind a toy box.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_tower(
@@ -11487,6 +13623,10 @@ class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = -8
     _clue_text = "\n  Mine is under a lone backyard box.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11500,6 +13640,10 @@ class MarrymoreHallwayFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _z_coord = 3
     _clue_text = " My item is in a flower pot in a\n hallway.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11514,6 +13658,10 @@ class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
     _z_coord = 6
     _x_shift = -16
     _clue_text = " Mine's beneath two adjoined\n red beds.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11528,6 +13676,10 @@ class MarrymoreKitchenFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = 8
     _clue_text = " Mine is in a big cabinet full of\n dishes.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11542,6 +13694,10 @@ class MarrymoreFireplaceFlag(InvisibleFlagLocation):
     _z_coord = 2
     _y_shift = -8
     _clue_text = "\n    Mine is in an empty fireplace.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11559,6 +13715,10 @@ class MarrymoreOrganFlag(InvisibleFlagLocation):
     _z_coord = 1
     _x_shift = -16
     _clue_text = " Mine is behind a big musical\n instrument.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_chapel(
@@ -11577,6 +13737,10 @@ class MarrymoreAltarFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _z_coord = 1
     _clue_text = "\n        Mine's behind a podium.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_chapel(
@@ -11593,6 +13757,10 @@ class StarHillNorthStarFlag(InvisibleFlagLocation):
     _z_coord = 2
     _x_shift = -10
     _clue_text = "\n     Mine is atop the North Star.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11606,6 +13774,10 @@ class SeasideTownAnchorFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _x_shift = 16
     _clue_text = "\n       Mine is behind an anchor.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11621,6 +13793,10 @@ class SeasideTownHydrantFlag(InvisibleFlagLocation):
     _x_shift = 0
     _y_shift = -8
     _clue_text = "\n  Mine is under a high steel hydrant.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11634,6 +13810,10 @@ class SeasideTownBucketFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _z_coord = 3
     _clue_text = "\n Mine is in a bucket between two\n staircases.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11650,6 +13830,10 @@ class SeasideTownFlowersFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _y_shift = 8
     _clue_text = " Mine's in the middle of three\n pink flowers.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11663,6 +13847,10 @@ class SeasideTownShedBoxFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _y_shift = 8
     _clue_text = " Mine's under a lone crate in an\n empty house.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -11681,6 +13869,10 @@ class SeaArrowFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = -8
     _clue_text = "\n   Mine is beside a mossy up-arrow.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_sea(
@@ -11696,6 +13888,10 @@ class SeaBoxesFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SEA
     _y_shift = -8
     _clue_text = "\n    Mine's in some V-shaped boxes.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_sea(
@@ -11713,6 +13909,10 @@ class SeaStalagnateFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = -8
     _clue_text = " Mine is behind a big gray\n stalagnate.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_sea(
@@ -11727,6 +13927,10 @@ class SeaUnderwaterSailFlag(InvisibleFlagLocation):
     _y_coord = 41
     _world_area = WorldAreaEnum.SEA
     _clue_text = "\n        Mine's behind a big sail.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_sea(
@@ -11742,6 +13946,10 @@ class ShipBarrelPileFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _z_coord = 3
     _clue_text = "\n  Mine is atop a big pile of barrels.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_sea(
@@ -11758,6 +13966,10 @@ class ShipDoorMarkerFlag(InvisibleFlagLocation):
     _z_coord = 1
     _y_shift = 8
     _clue_text = ' Mine is on a stack of boxes.[await][pause]\n[delay] Hm?[delay] Is that not specific enough?[await][page]\n Well,[delay] the boxes act as a door\n marker.[delay] They represent the\n number "4".[await]'
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_sea(
@@ -11772,6 +13984,10 @@ class ShipButtonFlag(InvisibleFlagLocation):
     _y_coord = 133
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _clue_text = "\n   Mine is under a floating button.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_sea(
@@ -11788,6 +14004,10 @@ class ShipSwitchFlag(InvisibleFlagLocation):
     _clue_text = (
         '\n Mine is underneath a floating "J"\n that is all on its lonesome.[await]'
     )
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_clear_ship(
@@ -11802,6 +14022,10 @@ class LandsEndPlatformFlag(InvisibleFlagLocation):
     _y_coord = 29
     _world_area = WorldAreaEnum.LANDS_END
     _clue_text = "\n   Mine is under a rising platform.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11815,6 +14039,10 @@ class LandsEndCannonFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.LANDS_END
     _y_shift = -8
     _clue_text = " Mine's under a big and quiet\n cannon.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_lands_end(
@@ -11830,6 +14058,10 @@ class LandsEndArrowFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.LANDS_END
     _x_shift = 16
     _clue_text = "\n Mine is beside an orange up-arrow.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_lands_end(
@@ -11846,6 +14078,10 @@ class LandsEndHillFlag(InvisibleFlagLocation):
     _x_shift = 8
     _y_shift = 8
     _clue_text = " Mine is on a short, red hill in a\n remote area.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_lands_end(
@@ -11860,6 +14096,10 @@ class LandsEndTwoHillFlag(InvisibleFlagLocation):
     _y_coord = 121
     _world_area = WorldAreaEnum.LANDS_END
     _clue_text = "   My item's between two red hills.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_lands_end(
@@ -11878,6 +14118,10 @@ class LandsEndStalagmiteFlag(InvisibleFlagLocation):
     _clue_text = (
         " Mine's on a big stalagmite\n formation in an underground cave.[await]"
     )
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_lands_end(
@@ -11893,6 +14137,10 @@ class LandsEndCliffBushFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.LANDS_END
     _z_coord = 22
     _clue_text = " Mine is on a bush, way up high on\n a cliff.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_lands_end(
@@ -11910,6 +14158,10 @@ class LandsEndSignFlag(InvisibleFlagLocation):
     _y_shift = -4
     _x_shift = 8
     _clue_text = "     My item's on a yellow arrow.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_lands_end(
@@ -11925,6 +14177,10 @@ class DojoBonsaiFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _y_shift = 8
     _clue_text = "\n   Mine's underneath a bonsai tree.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11937,6 +14193,10 @@ class MonstroEntranceSignFlag(InvisibleFlagLocation):
     _y_coord = 102
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _clue_text = "\n     Mine's in a lone flowery bush.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11951,6 +14211,10 @@ class MonstroBatFlag(InvisibleFlagLocation):
     _z_coord = 4
     _y_shift = 8
     _clue_text = "\n     Mine's behind a wooden bat.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11965,6 +14229,10 @@ class MonstroFanFlag(InvisibleFlagLocation):
     _z_coord = 1
     _x_shift = -16
     _clue_text = "\n         Mine's beside a fan.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11979,6 +14247,10 @@ class MonstroShellFlag(InvisibleFlagLocation):
     _z_coord = 1
     _y_shift = 8
     _clue_text = "\n   Mine's beneath a spinning shell.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -11993,6 +14265,10 @@ class BeanValleyPipeFlag(InvisibleFlagLocation):
     _z_coord = 1
     _x_shift = -16
     _clue_text = " Mine's on an isolated, dead-end\n pipe.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -12005,6 +14281,10 @@ class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
     _y_coord = 27
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _clue_text = "\n  Mine's underneath a big beanstalk.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
@@ -12019,6 +14299,10 @@ class CasinoBellFlag(InvisibleFlagLocation):
     _x_shift = 8
     _y_shift = 8
     _clue_text = "\n       Mine is beside a tiny bell.[await][pause]\n I don't think it does anything.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and inventory.has_item(
@@ -12034,6 +14318,10 @@ class NimbusGoldGoombaFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _z_coord = 1
     _clue_text = "\n     Mine is on a golden Goomba.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_outer_nimbus(
@@ -12051,6 +14339,10 @@ class NimbusInnLobbyFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = -8
     _clue_text = " Mine is under a stove with two\n pots.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_outer_nimbus(
@@ -12068,6 +14360,10 @@ class NimbusPlantFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _z_coord = 1
     _clue_text = " Mine is behind a big potted plant\n in a corner.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_nimbus_castle(
@@ -12083,6 +14379,10 @@ class NimbusBirdFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _y_shift = -8
     _clue_text = " Mine is under a birdcage, in a\n restricted dead-end area.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_clear_nimbus_boss(
@@ -12098,6 +14398,10 @@ class NimbusHotSpringsFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _z_coord = 5
     _clue_text = " Mine's on the right side of a\n hot pool.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_clear_nimbus_boss(
@@ -12113,6 +14417,10 @@ class VolcanoShipsFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _z_coord = 2
     _clue_text = "\n    Mine is between two vehicles.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_volcano(
@@ -12129,6 +14437,10 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
     _x_shift = 8
     _y_shift = 8
     _clue_text = "\n    Mine is between two red doors.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -12145,6 +14457,10 @@ class KeepThwompFlag(InvisibleFlagLocation):
     _y_coord = 47
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _clue_text = "\n      Mine is under a big thwomp.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -12163,6 +14479,10 @@ class FactoryCanopyFlag(InvisibleFlagLocation):
     _z_coord = 10
     _y_shift = 8
     _clue_text = "  My item's under a bolted canopy.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_factory(
@@ -12178,6 +14498,10 @@ class FactoryLugnutFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.FACTORY
     _z_coord = 7
     _clue_text = "    My item's underneath a lugnut.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_factory(
@@ -12193,6 +14517,10 @@ class FactoryTrampolineFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.FACTORY
     _y_shift = 16
     _clue_text = " My item is with the world's\n loneliest trampoline.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -12210,6 +14538,10 @@ class FactoryButtonFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _z_coord = 5
     _clue_text = " Mine is on a jammed machine\n button.[await]"
+    _hint = [
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["monstro_town_hint_text"])
+    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
