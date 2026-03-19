@@ -1,4 +1,4 @@
-# E3677_ROYAL_BUS_PLATFORM_LOADER
+# E3677_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,6 +34,4 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	FadeInFromBlack(sync=False),
-	Return()
 ])

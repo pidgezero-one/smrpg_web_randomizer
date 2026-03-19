@@ -1,4 +1,4 @@
-# E0030_MINES_HENCHMAN_FIGHT
+# E0030_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -33,12 +33,6 @@ from ....packets import *
 from ....spells.spells import *
 from ....variables.event_palette_names import *
 
-
 script = EventScript([
-	RunEventAsSubroutine(E1602_EXP_STAR_SUBROUTINE_CANCEL_NPC_EVENT_DO_NOT_REMOVE_FROM_LEVEL),
-	DisableObjectTrigger(MEM_70A8),
-	ClearBit(TEMP_707C_5),
-	ClearBit(TEMP_707C_6),
-	ClearBit(TEMP_707C_7),
-	JmpToEvent(E1189_HENCHMAN_BATTLE_PACK_SELECTOR)
+
 ])

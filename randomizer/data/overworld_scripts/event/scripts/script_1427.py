@@ -34,7 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	RunEventAsSubroutine(E0202_UNLOCK_FOREST_IF_GATED_BY_MUSHROOM_WAY_CHARACTER),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_SetPriority(3),
 		A_ReturnQueue()

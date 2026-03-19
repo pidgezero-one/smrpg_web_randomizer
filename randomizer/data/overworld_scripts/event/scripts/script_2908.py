@@ -1,4 +1,4 @@
-# E2908_CLONE_RESERVED
+# E2908_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript

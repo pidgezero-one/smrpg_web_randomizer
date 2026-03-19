@@ -1,4 +1,4 @@
-# E0035_MIMIC_OR_SLOT_CHEST_CONTAINER
+# E0035_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpToEvent(E3078_MIMIC_OR_SLOT_CHEST)
+
 ])

@@ -1,4 +1,4 @@
-# E0028_GRANT_TIER_3_CONSUMABLE_OR_EQUIP
+# E0028_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,7 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfRandom2of3(['EVENT_28_jmp_to_event_2', 'EVENT_28_jmp_to_event_2']),
-	JmpToEvent(E0011_SET_70A7_TO_RANDOM_TIER_3_EQUIP),
-	JmpToEvent(E0007_SET_70A7_TO_RANDOM_TIER_3_CONSUMABLE, identifier="EVENT_28_jmp_to_event_2")
+
 ])

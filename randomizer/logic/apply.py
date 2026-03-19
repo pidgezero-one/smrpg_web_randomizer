@@ -1131,10 +1131,12 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
 
 
 def apply_hint_text(world: GameWorld) -> None:
-    """Assemble all location hints into a single event script and replace E0947."""
+    """Assemble all location hints and split across three event scripts."""
     import copy
+    import math
     from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
         JmpIfBitSet,
+        JmpToEvent,
         RunDialog,
         Return as ReturnCmd,
     )
@@ -1153,6 +1155,7 @@ def apply_hint_text(world: GameWorld) -> None:
         KeyItemLocation,
         StarPieceLocation as StarPieceLocationType,
         CharacterRecruitmentLocation as CharRecruitLocationType,
+        InvisibleFlagLocation,
     )
     from ..types.flags import KeyItemsAnywhere, StarPieceAvailability
     from ..logic.shufflers.items import should_shuffle
@@ -1195,6 +1198,13 @@ def apply_hint_text(world: GameWorld) -> None:
                 JmpIfBitSet(INFINITE_COINS_FOUND, ["next"]),
             )
 
+        # If this is an InvisibleFlagLocation, prepend its found-bit check
+        if isinstance(location, InvisibleFlagLocation):
+            hint_commands.insert(
+                0,
+                JmpIfBitSet(location.bit, ["next"]),
+            )
+
         # Super jump locations go last
         if loc_type in (
             MonstroFirstSuperJumpRewardLocation,
@@ -1214,6 +1224,15 @@ def apply_hint_text(world: GameWorld) -> None:
     for i, (_loc_type, commands) in enumerate(all_hints):
         commands[0].rename(f"hint_{i}")
 
+    # Split hints into three chunks for three event scripts
+    chunk_size = math.ceil(len(all_hints) / 3)
+    chunks = [
+        all_hints[:chunk_size],
+        all_hints[chunk_size:chunk_size * 2],
+        all_hints[chunk_size * 2:],
+    ]
+    script_ids = [E0947_HINT_SYSTEM, E1536_HINT_SYSTEM, E3088_HINT_SYSTEM]
+
     # Build the final "done" commands for after the last hint
     done_dialog = RunDialog(
         dialog_id=DI2758_FROGFUCIUS_DEFAULT_STUFF,
@@ -1227,12 +1246,12 @@ def apply_hint_text(world: GameWorld) -> None:
     done_return = ReturnCmd()
 
     # Replace "next" destinations in each hint block
+    # Hints within the same chunk point to the next hint; the last hint in a
+    # chunk points to a "chain_to_next" label (JmpToEvent) or "hint_done".
     for i, (_loc_type, commands) in enumerate(all_hints):
         if i < len(all_hints) - 1:
-            # Point "next" to the first command of the next hint
             next_identifier = f"hint_{i + 1}"
         else:
-            # Last hint: point "next" to the done dialog
             next_identifier = "hint_done"
 
         for cmd in commands:
@@ -1241,16 +1260,41 @@ def apply_hint_text(world: GameWorld) -> None:
                     if dest.label == "next":
                         dest._label = next_identifier
 
-    # Flatten all hint commands into one list
-    flat_commands: list[UsableEventScriptCommand] = []
-    for _loc_type, commands in all_hints:
-        flat_commands.extend(commands)
+    # Get the hint dialog commands from E0991 (area hint text dialogs).
+    # These need to be duplicated into each hint script's bank so that
+    # identifiers like "booster_tower_hint_text" can be resolved.
+    hint_dialog_commands = world.event_scripts.get_script_by_id(
+        E0991_FROGFUCIUS_HINT_DIALOGUES
+    ).contents
 
-    # Append the done dialog and return
-    flat_commands.append(done_dialog)
-    flat_commands.append(done_return)
+    # Build each chunk's command list and write to its script
+    for chunk_idx, chunk in enumerate(chunks):
+        if not chunk:
+            continue
 
-    # Replace event script 947
-    world.event_scripts.get_script_by_id(E0947_FROGFUCIUS_HINT_MAIN_CHECKS).set_contents(
-        flat_commands
-    )
+        flat_commands: list[UsableEventScriptCommand] = []
+        for _loc_type, commands in chunk:
+            flat_commands.extend(commands)
+
+        if chunk_idx < len(chunks) - 1 and chunks[chunk_idx + 1]:
+            # Not the last chunk: append a JmpToEvent to chain to the next script.
+            # The last hint in this chunk has "next" pointing to hint_X which is
+            # the first hint of the next chunk. Give the chain command that same
+            # identifier so the jump resolves to it.
+            next_script_id = script_ids[chunk_idx + 1]
+            first_hint_idx_of_next = all_hints.index(chunks[chunk_idx + 1][0])
+            chain_cmd = JmpToEvent(next_script_id)
+            chain_cmd.rename(f"hint_{first_hint_idx_of_next}")
+            flat_commands.append(chain_cmd)
+        else:
+            # Last chunk: append the done dialog and return
+            flat_commands.append(done_dialog)
+            flat_commands.append(done_return)
+
+        # Append copies of the area hint dialog commands so identifiers
+        # like "booster_tower_hint_text" resolve within this bank
+        flat_commands.extend(copy.deepcopy(hint_dialog_commands))
+
+        world.event_scripts.get_script_by_id(script_ids[chunk_idx]).set_contents(
+            flat_commands
+        )

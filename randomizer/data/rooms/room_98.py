@@ -84,7 +84,7 @@ room = Room(
         RegularNPC( # 0
             npc=npcs.GREEN_SWITCH_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0532_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=14,

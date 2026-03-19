@@ -1,4 +1,4 @@
-# E0036_GRANT_ANY_CONSUMABLE
+# E0036_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,12 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToRandom(PRIMARY_TEMP_7000, 4),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_36_jmp_to_event_5"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_36_jmp_to_event_6"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_36_jmp_to_event_7"]),
-	JmpToEvent(E0008_SET_70A7_TO_RANDOM_TIER_4_CONSUMABLE),
-	JmpToEvent(E0007_SET_70A7_TO_RANDOM_TIER_3_CONSUMABLE, identifier="EVENT_36_jmp_to_event_5"),
-	JmpToEvent(E0006_SET_70A7_TO_RANDOM_TIER_2_CONSUMABLE, identifier="EVENT_36_jmp_to_event_6"),
-	JmpToEvent(E0005_SET_70A7_TO_RANDOM_TIER_1_CONSUMABLE, identifier="EVENT_36_jmp_to_event_7")
+
 ])

@@ -133,7 +133,7 @@ room = Room(
         RegularNPC( # 2
             npc=npcs.STAR_EGG_LITTLE_BROWN_BIRD_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E3728_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0981_NIMBUS_CASTLE_CAGED_BIRD,
             visible=True,
             x=27,
@@ -159,7 +159,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.STAR_EGG_LITTLE_BROWN_BIRD_NPC_2,
-            event_script=E3728_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0979_NIMBUS_CASTLE_CAGED_BIRD,
             visible=True,
             x=22,

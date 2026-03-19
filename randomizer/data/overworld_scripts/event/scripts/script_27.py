@@ -34,7 +34,4 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfRandom2of3(['EVENT_27_jmp_to_event_2', 'EVENT_27_jmp_to_event_2']),
-	JmpToEvent(E0010_SET_70A7_TO_RANDOM_TIER_2_EQUIP),
-	JmpToEvent(E0006_SET_70A7_TO_RANDOM_TIER_2_CONSUMABLE, identifier="EVENT_27_jmp_to_event_2")
 ])

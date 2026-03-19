@@ -1,4 +1,4 @@
-# E0011_SET_70A7_TO_RANDOM_TIER_3_EQUIP
+# E0011_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,34 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToRandom(PRIMARY_TEMP_7000, 10),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_11_set_var_to_const_12"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_11_set_var_to_const_14"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_11_set_var_to_const_16"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_11_set_var_to_const_18"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_11_set_var_to_const_20"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_11_set_var_to_const_22"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 6, ["EVENT_11_set_var_to_const_24"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_11_set_var_to_const_26"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 8, ["EVENT_11_set_var_to_const_28"]),
-	SetVarToConst(ITEM_ID, RoyalDressItem),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, SonicCymbalItem, identifier="EVENT_11_set_var_to_const_12"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, SuperSlapItem, identifier="EVENT_11_set_var_to_const_14"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, UltraHammerItem, identifier="EVENT_11_set_var_to_const_16"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, MegaGloveItem, identifier="EVENT_11_set_var_to_const_18"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, StickyGloveItem, identifier="EVENT_11_set_var_to_const_20"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, WarFanItem, identifier="EVENT_11_set_var_to_const_22"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, StarGunItem, identifier="EVENT_11_set_var_to_const_24"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, HeroShirtItem, identifier="EVENT_11_set_var_to_const_26"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, PrincePantsItem, identifier="EVENT_11_set_var_to_const_28"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM)
+
 ])

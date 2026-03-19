@@ -36,5 +36,5 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	SetVarToConst(TEMP_70A9, 20),
 	SetVarToConst(SECONDARY_TEMP_7024, 3),
-	JmpToEvent(E0264_RETURN)
+	JmpToEvent(E0256_RETURN)
 ])

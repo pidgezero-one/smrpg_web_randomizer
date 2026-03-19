@@ -190,7 +190,7 @@ room = Room(
         RegularNPC( # 1
             npc=npcs.VALENTINA_STATUE_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0472_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=15,
@@ -216,7 +216,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.VALENTINA_STATUE_NPC,
-            event_script=E0472_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=17,
@@ -226,7 +226,7 @@ room = Room(
             direction=SOUTHEAST,),
         RegularClone( # 3
             npc=npcs.VALENTINA_STATUE_NPC,
-            event_script=E0472_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=19,
@@ -236,7 +236,7 @@ room = Room(
             direction=NORTHWEST,),
         RegularClone( # 4
             npc=npcs.VALENTINA_STATUE_NPC,
-            event_script=E0472_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=17,

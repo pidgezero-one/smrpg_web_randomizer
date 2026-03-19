@@ -1,4 +1,4 @@
-# E0037_GRANT_ANY_EQUIP
+# E0037_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,12 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToRandom(PRIMARY_TEMP_7000, 4),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_37_jmp_to_event_5"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_37_jmp_to_event_6"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_37_jmp_to_event_7"]),
-	JmpToEvent(E0012_SET_70A7_TO_RANDOM_TIER_4_EQUIP),
-	JmpToEvent(E0011_SET_70A7_TO_RANDOM_TIER_3_EQUIP, identifier="EVENT_37_jmp_to_event_5"),
-	JmpToEvent(E0010_SET_70A7_TO_RANDOM_TIER_2_EQUIP, identifier="EVENT_37_jmp_to_event_6"),
-	JmpToEvent(E0009_SET_70A7_TO_RANDOM_TIER_1_EQUIP, identifier="EVENT_37_jmp_to_event_7")
+
 ])

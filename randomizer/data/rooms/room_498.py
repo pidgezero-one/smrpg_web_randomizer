@@ -208,7 +208,7 @@ room = Room(
         RegularNPC( # 4
             npc=npcs.STAR_EGG_LITTLE_BROWN_BIRD_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E3728_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0981_NIMBUS_CASTLE_CAGED_BIRD,
             visible=True,
             x=12,

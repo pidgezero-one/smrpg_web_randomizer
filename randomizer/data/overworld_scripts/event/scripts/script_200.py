@@ -1,4 +1,4 @@
-# E0200_UNLOCK_FOREST_IF_GATED_BY_MARRYMORE_CHARACTER
+# E0200_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	Return()
+
 ])

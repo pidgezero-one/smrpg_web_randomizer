@@ -40,7 +40,6 @@ script = EventScript([
 	RunDialog(dialog_id=DI2333_MARRYMORE_NPC, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return(),
 	RunDialog(dialog_id=DI2115_MARRYMORE_SHITPOST, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_696_run_dialog_5"),
-	RunEventAsSubroutine(E0200_UNLOCK_FOREST_IF_GATED_BY_MARRYMORE_CHARACTER),
 	Return(),
 	RunDialog(dialog_id=DI2180_CHAPEL_NPC, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_696_run_dialog_8"),
 	Return()

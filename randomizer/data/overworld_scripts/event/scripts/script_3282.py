@@ -73,7 +73,6 @@ script = EventScript([
 	ClearBit(TEMP_707C_6),
 	ClearBit(TEMP_707C_7),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
-	RunEventAsSubroutine(E0210_UNLOCK_SEASIDE_BOSS_IF_GATED_BY_SHIP_BOSS),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_FixedFCoordOff(),
 		A_FaceNorthwest()

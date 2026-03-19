@@ -1,4 +1,4 @@
-# E3088_EMPTY
+# E3088_HINT_SYSTEM
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript

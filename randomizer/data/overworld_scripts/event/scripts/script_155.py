@@ -1,4 +1,4 @@
-# E0155_PACKET_DECIDER_CONTAINER
+# E0155_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,6 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	Set7000ToCurrentLevel(),
-	JmpToEvent(E0156_PACKET_DECIDER)
+
 ])

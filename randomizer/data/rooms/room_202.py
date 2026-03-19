@@ -215,7 +215,7 @@ room = Room(
         RegularNPC( # 4
             npc=npcs.MICROBOMB_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0729_EXPLODING_MICROBOMB,
             visible=True,
             x=7,

@@ -60,7 +60,7 @@ room = Room(
         RegularNPC( # 0
             npc=npcs.MARRYMORE_KID_PURPLE_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0588_SEASIDE_LIBERATED_BUSINESSPERSON,
             visible=True,
             x=5,
@@ -87,7 +87,7 @@ room = Room(
         RegularNPC( # 1
             npc=npcs.MARRYMORE_KID_BLUE_GREEN_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0588_SEASIDE_LIBERATED_BUSINESSPERSON,
             visible=True,
             x=6,
@@ -114,7 +114,7 @@ room = Room(
         RegularNPC( # 2
             npc=npcs.SEASIDE_TOWN_ELDER_YELLOW_GREEN_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0588_SEASIDE_LIBERATED_BUSINESSPERSON,
             visible=True,
             x=3,
@@ -141,7 +141,7 @@ room = Room(
         RegularNPC( # 3
             npc=npcs.MA_MOLE_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0588_SEASIDE_LIBERATED_BUSINESSPERSON,
             visible=True,
             x=7,
@@ -168,7 +168,7 @@ room = Room(
         RegularNPC( # 4
             npc=npcs.OLD_WOMAN_GREEN_GREY_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0588_SEASIDE_LIBERATED_BUSINESSPERSON,
             visible=True,
             x=3,
@@ -195,7 +195,7 @@ room = Room(
         RegularNPC( # 5
             npc=npcs.MARRYMORE_WOMAN_GREEN_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0588_SEASIDE_LIBERATED_BUSINESSPERSON,
             visible=True,
             x=6,
@@ -222,7 +222,7 @@ room = Room(
         RegularNPC( # 6
             npc=npcs.ROSE_TOWN_TREASURE_HOLDER_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0588_SEASIDE_LIBERATED_BUSINESSPERSON,
             visible=True,
             x=1,

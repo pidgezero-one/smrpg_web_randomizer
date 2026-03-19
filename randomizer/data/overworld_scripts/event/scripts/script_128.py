@@ -42,5 +42,5 @@ script = EventScript([
 	StopMusicFDA6(),
 	Return(),
 	SummonObjectToCurrentLevel(MARIO),
-	JmpToEvent(E2396_EMPTY)
+	JmpToEvent(E0256_RETURN)
 ])

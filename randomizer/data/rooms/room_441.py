@@ -40,7 +40,7 @@ room = Room(
         RegularNPC( # 0
             npc=npcs.TOADOFSKY_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=6,
@@ -95,7 +95,7 @@ room = Room(
         RegularNPC( # 2
             npc=npcs.FROGFUCIUS_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=4,
@@ -122,7 +122,7 @@ room = Room(
         RegularNPC( # 3
             npc=npcs.FROGFUCIUS_STUDENT_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=1,

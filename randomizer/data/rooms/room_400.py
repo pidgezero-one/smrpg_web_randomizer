@@ -84,7 +84,7 @@ room = Room(
         RegularNPC( # 0
             npc=npcs.BOOMER_RED_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=8,
@@ -111,7 +111,7 @@ room = Room(
         RegularNPC( # 1
             npc=npcs.HANGIN_XX_SHY_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0590_KEEP_FINAL_ROOM_CHANDELIER_STRING,
             visible=True,
             x=3,
@@ -137,7 +137,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.HANGIN_XX_SHY_NPC,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0590_KEEP_FINAL_ROOM_CHANDELIER_STRING,
             visible=True,
             x=7,
@@ -148,7 +148,7 @@ room = Room(
         RegularNPC( # 3
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             speed=3,
             visible=True,
@@ -175,7 +175,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.EMPTY_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=13,

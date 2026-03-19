@@ -1,4 +1,4 @@
-# E3770_BEAN_VALLEY_1ST_VINE_ROOM_LOADER
+# E3770_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript

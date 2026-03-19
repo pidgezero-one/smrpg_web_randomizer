@@ -173,7 +173,7 @@ room = Room(
         RegularNPC( # 1
             npc=npcs.HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=11,
@@ -199,7 +199,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=11,
@@ -209,7 +209,7 @@ room = Room(
             direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=12,

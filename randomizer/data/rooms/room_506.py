@@ -40,7 +40,7 @@ room = Room(
         RegularNPC( # 0
             npc=npcs.DODO_ND_TIME_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=23,
@@ -67,7 +67,7 @@ room = Room(
         RegularNPC( # 1
             npc=npcs.SNIFIT_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=18,
@@ -93,7 +93,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.SNIFIT_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=19,
@@ -103,7 +103,7 @@ room = Room(
             direction=NORTHEAST,),
         RegularClone( # 3
             npc=npcs.SNIFIT_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=21,
@@ -113,7 +113,7 @@ room = Room(
             direction=NORTHEAST,),
         RegularClone( # 4
             npc=npcs.SNIFIT_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=22,
@@ -123,7 +123,7 @@ room = Room(
             direction=NORTHEAST,),
         RegularClone( # 5
             npc=npcs.SNIFIT_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=16,
@@ -133,7 +133,7 @@ room = Room(
             direction=NORTHEAST,),
         RegularClone( # 6
             npc=npcs.SNIFIT_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=17,
@@ -143,7 +143,7 @@ room = Room(
             direction=NORTHEAST,),
         RegularClone( # 7
             npc=npcs.SNIFIT_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=20,
@@ -153,7 +153,7 @@ room = Room(
             direction=NORTHEAST,),
         RegularClone( # 8
             npc=npcs.SNIFIT_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=21,
@@ -164,7 +164,7 @@ room = Room(
         RegularNPC( # 9
             npc=npcs.VALENTINA_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=22,
@@ -191,7 +191,7 @@ room = Room(
         RegularNPC( # 10
             npc=npcs.BOOSTER_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=22,

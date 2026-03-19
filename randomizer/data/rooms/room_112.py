@@ -127,7 +127,7 @@ room = Room(
         RegularNPC( # 2
             npc=npcs.BLOCK_SHADOW_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0055_BOX_SHADOW_VRAM_PRIORITY_0,
             visible=True,
             x=19,

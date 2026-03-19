@@ -40,7 +40,6 @@ script = EventScript([
 	RunDialog(dialog_id=DI2332_MARRYMORE_NPC, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return(),
 	RunDialog(dialog_id=DI2114_MARRYMORE_BOSS_NAMES, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_690_run_dialog_5"),
-	RunEventAsSubroutine(E0200_UNLOCK_FOREST_IF_GATED_BY_MARRYMORE_CHARACTER),
 	Return(),
 	FadeOutMusicFDA3(identifier="EVENT_690_fade_out_music_FDA3_8"),
 	ActionQueueAsync(target=MEM_70A8, subscript=[

@@ -1,4 +1,4 @@
-# E0093_BACKGROUND_EVENT_FOR_SLOT_MACHINE
+# E0093_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,11 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	EnableControls([X, A, Y, B]),
-	FreezeAllNPCsUntilReturn(),
-	Pause(1, identifier="EVENT_93_pause_2"),
-	JmpIfBitSet(TEMP_7044_2, ["EVENT_93_pause_2"]),
-	UnfreezeAllNPCs(),
-	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
-	Return()
+
 ])

@@ -125,6 +125,7 @@ spoiler_*.json
 spoiler_after_replacements.json
 repeated_sequences_report.txt
 unreferenced_dialogs.txt
+event_script_audit.txt
 
 .vscode
 

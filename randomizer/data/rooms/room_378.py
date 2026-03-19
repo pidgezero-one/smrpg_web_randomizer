@@ -35,7 +35,7 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0000_CURRENT,
-    entrance_event=E3770_BEAN_VALLEY_1ST_VINE_ROOM_LOADER,
+    entrance_event=E0257_FADE_IN_ASYNC,
     events=[
         Event(
             event=E3779_BEAN_VALLEY_1ST_VINE_ROOM_EXIT_TO_2ND_VINE_ROOM,

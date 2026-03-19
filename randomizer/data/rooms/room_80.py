@@ -89,7 +89,7 @@ room = Room(
         RegularNPC( # 1
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_4,
             initiator=EventInitiator.NONE,
-            event_script=E3149_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0437_ROSE_WAY_SWINGING_PLATFORM_1,
             visible=True,
             x=5,
@@ -115,7 +115,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_4,
-            event_script=E3149_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0438_ROSE_WAY_SWINGING_PLATFORM_2,
             visible=True,
             x=5,

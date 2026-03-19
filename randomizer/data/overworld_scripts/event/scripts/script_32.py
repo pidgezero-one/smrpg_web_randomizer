@@ -1,4 +1,4 @@
-# E0032_NON_COIN_CHEST_CONTAINER
+# E0032_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpToEvent(E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST)
+
 ])

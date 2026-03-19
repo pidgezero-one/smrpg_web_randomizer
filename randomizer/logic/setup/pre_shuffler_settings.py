@@ -51,6 +51,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     Pause,
     RunDialog,
     JmpToEvent,
+    Jmp
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import (
     MEM_70A8,
@@ -191,8 +192,8 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         world.event_2496_startup += [SetBit(CHAPEL_ITEMS_ANYWHERE_ENABLED)]
 
     # EXP challenge settings
-    if world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE) or world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE) or settings.debug_mode:
-        world.event_scripts.delete_command_by_identifier("inc_exp_by_packet")
+    if world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE) or world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE) or world.settings.debug_mode:
+        world.event_scripts.replace_command_by_identifier("inc_exp_by_packet", Jmp(["EVENT_255_ret_13"]))
         world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_60", SetVarToConst).set_value_and_address(ITEM_ID, 0)
         world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_63", SetVarToConst).set_value_and_address(ITEM_ID, 0)
         world.event_scripts.get_command_by_identifier("EVENT_3072_set_var_to_const_66", SetVarToConst).set_value_and_address(ITEM_ID, 0)

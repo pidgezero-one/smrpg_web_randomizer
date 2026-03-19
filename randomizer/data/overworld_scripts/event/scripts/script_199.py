@@ -1,4 +1,4 @@
-# E0199_UNLOCK_BANDITS_IF_GATED_BY_MUSHROOM_WAY
+# E0199_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER)
+
 ])

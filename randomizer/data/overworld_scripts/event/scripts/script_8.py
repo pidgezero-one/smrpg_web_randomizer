@@ -1,4 +1,4 @@
-# E0008_SET_70A7_TO_RANDOM_TIER_4_CONSUMABLE
+# E0008_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,16 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToRandom(PRIMARY_TEMP_7000, 4),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_8_set_var_to_const_6"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_8_set_var_to_const_8"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_8_set_var_to_const_10"]),
-	SetVarToConst(ITEM_ID, RedEssenceItem),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, KerokeroColaItem, identifier="EVENT_8_set_var_to_const_6"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, FlowerBoxItem, identifier="EVENT_8_set_var_to_const_8"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, RockCandyItem, identifier="EVENT_8_set_var_to_const_10"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM)
+
 ])

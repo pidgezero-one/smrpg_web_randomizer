@@ -97,7 +97,7 @@ room = Room(
         RegularNPC( # 0
             npc=npcs.RED_MAGIKOOPA_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=False,
             x=0,
@@ -124,7 +124,7 @@ room = Room(
         RegularNPC( # 1
             npc=npcs.BOB_OMB_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=False,
             x=0,
@@ -151,7 +151,7 @@ room = Room(
         RegularNPC( # 2
             npc=npcs.VOMER_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=False,
             x=0,
@@ -178,7 +178,7 @@ room = Room(
         RegularNPC( # 3
             npc=npcs.MAGMUS_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=False,
             x=0,
@@ -205,7 +205,7 @@ room = Room(
         RegularNPC( # 4
             npc=npcs.CHESTER_SMALL_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=False,
             x=0,

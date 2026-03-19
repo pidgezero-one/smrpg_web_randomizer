@@ -91,7 +91,7 @@ room = Room(
         ChestNPC( # 0
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E0034_COIN_CHEST_CONTAINER,
+            event_script=E0256_RETURN,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=8,
             upper_70a7=0,
@@ -120,7 +120,7 @@ room = Room(
         RegularNPC( # 1
             npc=npcs.BOB_OMB_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E2389_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             speed=5,
             visible=True,

@@ -187,7 +187,7 @@ room = Room(
         RegularNPC( # 6
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.NONE,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             speed=3,
             visible=True,
@@ -214,7 +214,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.EMPTY_NPC_2,
-            event_script=E0000_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=13,

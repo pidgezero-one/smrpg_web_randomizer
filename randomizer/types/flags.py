@@ -934,7 +934,6 @@ class KeyItemsAnywhere(BooleanFlag):
 """
     _id = "keys_anywhere"
     _requires_all = [(ShuffleItems(), True)]
-    # change EVENT_947_jmp_to_event_107" to point to event 949
 
 
 # ✅
@@ -943,7 +942,6 @@ class StarPieceAvailability(BooleanFlag):
     _description = "If enabled, some Star Pieces may be shuffled in with items instead of being only granted by boss fights."
     _id = "stars_anywhere"
     _requires_all = [(ShuffleItems(), True)]
-    # change EVENT_947_jmp_to_event_107" to point to event 949
 
 
 # ✅
@@ -952,7 +950,6 @@ class SpellsAnywhere(BooleanFlag):
     _description = "If enabled, characters will learn spells by finding them in prize locations instead of by leveling up. Spells are still pre-assigned to characters, so for example if Mallow is supposed to learn Jump, finding the Jump spell will automatically assign it to Mallow."
     _id = "spells_anywhere"
     _requires_all = [(ShuffleItems(), True)]
-    # change EVENT_947_jmp_to_event_107" to point to event 949
 
 
 # ✅

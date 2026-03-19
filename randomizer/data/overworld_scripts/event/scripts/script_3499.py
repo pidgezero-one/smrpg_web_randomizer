@@ -35,7 +35,6 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	SetVarToConst(TEMP_7032, 0),
-	RunEventAsSubroutine(E0200_UNLOCK_FOREST_IF_GATED_BY_MARRYMORE_CHARACTER),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x0B, bits=[3])
 	]),

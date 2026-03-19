@@ -5095,18 +5095,18 @@ class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow2):
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_____"]),
-        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_____"]),
+        JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_______"]),
+        JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_______"]),
         Jmp(["next"]),
-        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_____"], identifier="returned_mario_doll_check_____"),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_______"], identifier="returned_mario_doll_check_______"),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_____"),
-        JmpIfBitSet(STAY_VOUCHER_USED, ["__tower_postgame_completed_check"]),
+        JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_______"),
+        JmpIfBitSet(STAY_VOUCHER_USED, ["___tower_postgame_completed_check"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
-        JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["next"], identifier="__tower_postgame_completed_check"),
+        JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["next"], identifier="___tower_postgame_completed_check"),
         Jmp(["booster_tower_hint_text"]),
     ]
 
@@ -8513,11 +8513,11 @@ class TemplePostgameFightItemDrop(NPCLocationRow1):
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(TEMPLE_POSTGAME_BOSS_DEFEATED, ["next"]),
-        JmpIfBitSet(STAY_VOUCHER_USED, ["belome3_voucher_used"]),
+        JmpIfBitSet(STAY_VOUCHER_USED, ["belome3_voucher_used2"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
-        JmpIfBitSet(TEMPLE_BOSS_DEFEATED, ["belome_temple_hint_text"], identifier="belome3_voucher_used"),
+        JmpIfBitSet(TEMPLE_BOSS_DEFEATED, ["belome_temple_hint_text"], identifier="belome3_voucher_used2"),
         JmpIfBitClear(TEMPLE_BOSS_GATED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
@@ -9177,10 +9177,10 @@ class MonstroSealedDoorClearRewardLocationPostgame(KeyItemLocation, NPCLocationR
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
-        JmpIfBitSet(STAY_VOUCHER_USED, ["culex_pg_prereq"]),
+        JmpIfBitSet(STAY_VOUCHER_USED, ["culex_pg_prereq2"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        StoreItemAmountTo7000(ExtraShinyStoneItem, identifier="culex_pg_prereq"),
+        StoreItemAmountTo7000(ExtraShinyStoneItem, identifier="culex_pg_prereq2"),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["monstro_town_hint_text"])
     ]
@@ -10696,15 +10696,15 @@ class NimbusFinalStarPiece(StarPieceLocation):
     _hint = [
         JmpIfBitSet(NIMBUS_LAND_LIBERATED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
-        JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_4"]),
-        JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_4"]),
+        JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_40"]),
+        JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_40"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_4"], identifier="nimbus_ck_dummy_4"),
+        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_40"], identifier="nimbus_ck_dummy_40"),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_4"),
+        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_40"),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_castle_hint_text"])
@@ -13411,8 +13411,9 @@ class MariosPadBedFlag(InvisibleFlagLocation):
     _x_coord = 3
     _y_coord = 11
     _world_area = WorldAreaEnum.MARIOS_PAD
-    _clue_text = """\n My item's underneath a green bed.[await]"""
+    _clue_text = """\n[center]My item's underneath a green bed.[await]"""
     _hint = [
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["monstro_town_hint_text"])
     ]
@@ -13432,8 +13433,9 @@ class RoseTownSignFlag(InvisibleFlagLocation):
     _x_coord = 10
     _y_coord = 47
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _clue_text = """\n My item's behind a wooden flower.[await]"""
+    _clue_text = """\n[center]My item's behind a wooden flower.[await]"""
     _hint = [
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["monstro_town_hint_text"])
     ]
@@ -13451,8 +13453,10 @@ class YosterIsleGoalFlag(InvisibleFlagLocation):
     _y_coord = 62
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _y_shift = -4
-    _clue_text = """\n My item's between "O" and "A".[await]"""
+    _clue_text = """\n[center]My item's between "O" and "A".[await]"""
     _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["monstro_town_hint_text"])
     ]
@@ -13471,8 +13475,9 @@ class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
     _y_coord = 34
     _world_area = WorldAreaEnum.MARIOS_PAD
     _z_coord = 1
-    _clue_text = "\n  Mine is underneath a steamwhistle.[await]"
+    _clue_text = "\n[center]Mine is underneath a steamwhistle.[await]"
     _hint = [
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["monstro_town_hint_text"])
     ]
@@ -13490,7 +13495,7 @@ class MariosPadLanternFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARIOS_PAD
     _x_shift = 8
     _y_shift = -8
-    _clue_text = "\n    Mine is under a white lantern.[await]"
+    _clue_text = "\n[center]Mine is under a white lantern.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -13508,7 +13513,7 @@ class MariosPadHatFlag(InvisibleFlagLocation):
     _y_coord = 13
     _world_area = WorldAreaEnum.MARIOS_PAD
     _z_coord = 1
-    _clue_text = """\n      My item's under a red hat.[await]"""
+    _clue_text = """\n[center]My item's under a red hat.[await]"""
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -13549,7 +13554,7 @@ class MushroomKingdomSignFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _z_coord = 2
     _y_shift = -8
-    _clue_text = "\n  Mine's behind a wooden mushroom.[await]"
+    _clue_text = "\n[center]Mine's behind a wooden mushroom.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -13591,7 +13596,7 @@ class ChancellorThroneFlag(InvisibleFlagLocation):
     _y_coord = 24
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _z_coord = 3
-    _clue_text = "\n       Mine's under a blue chair.[await]"
+    _clue_text = "\n[center]Mine's under a blue chair.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -13609,8 +13614,9 @@ class BanditsWayFlowerFlag(InvisibleFlagLocation):
     _y_coord = 89
     _world_area = WorldAreaEnum.BANDITS_WAY
     _x_shift = 16
-    _clue_text = "\n      Mine's on a landing flower.[await]"
+    _clue_text = "\n[center]Mine's on a landing flower.[await]"
     _hint = [
+        JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -13632,7 +13638,9 @@ class KeroStairsFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine's in a corner, nearby lots of\n dank stairs.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(SEWERS_CLOSED, ["ks_availability_check"]),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="ks_availability_check"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -13651,9 +13659,11 @@ class KeroGateFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.KERO_SEWERS
     _z_coord = 4
     _x_shift = -16
-    _clue_text = "\n Mine is by a lone metal spike fence.[await]"
+    _clue_text = "\n[center]Mine is by a lone metal spike fence.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(SEWERS_CLOSED, ["ks_availability_check_2"]),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="ks_availability_check_2"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -13671,7 +13681,7 @@ class MidasTreesFlag(InvisibleFlagLocation):
     _y_coord = 26
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _x_shift = -8
-    _clue_text = " Mine's between a lone pair of\n palm trees, near water.[await]"
+    _clue_text = " Mine's between a lone pair of\n palm trees, near the water.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -13691,7 +13701,7 @@ class TadpoleCabinetFlag(InvisibleFlagLocation):
     _z_coord = 2
     _x_shift = 8
     _y_shift = 8
-    _clue_text = "\n       Mine is in a frog cabinet.[await]"
+    _clue_text = "\n[center]Mine is in a frog cabinet.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -13729,7 +13739,7 @@ class RoseTownHydrantFlag(InvisibleFlagLocation):
     _y_coord = 63
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = -8
-    _clue_text = "\n  Mine is under a low steel hydrant.[await]"
+    _clue_text = "\n[center]Mine is under a low steel hydrant.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -13750,7 +13760,7 @@ class RoseTownSinkFlag(InvisibleFlagLocation):
     _y_coord = 10
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = 1
-    _clue_text = "\n My item is in a kitchen sink under\n some green curtains.[await]"
+    _clue_text = "\n[center]My item is in a kitchen sink under\n some green curtains.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -13770,7 +13780,7 @@ class RoseTownBowserFlag(InvisibleFlagLocation):
     _x_coord = 7
     _y_coord = 21
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _clue_text = "\n   Mine's under a miniature turtle.[await]"
+    _clue_text = "\n[center]Mine's under a tiny turtle.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -13788,8 +13798,10 @@ class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
     _y_coord = 85
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = -8
-    _clue_text = "\n   Mine is under a private hydrant.[await]"
+    _clue_text = "\n[center]Mine is under a private hydrant.[await]"
     _hint = [
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -13809,8 +13821,10 @@ class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
     _x_coord = 5
     _y_coord = 87
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _clue_text = "\n   Mine is under a private bucket.[await]"
+    _clue_text = "\n[center]Mine is under a private bucket.[await]"
     _hint = [
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -13831,9 +13845,20 @@ class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
     _y_coord = 111
     _world_area = WorldAreaEnum.ROSE_TOWN
     _z_coord = 10
-    _clue_text = "\n Mine's on a big leaf between\n two chests.[await]"
+    _clue_text = "\n[center]Mine's on a big leaf between\n two chests.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(FOREST_LIBERATED, ["next"]),
+        
+        JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_cloud_invisible_hint_check"]),
+        JmpIfBitSet(GAVE_SEED, ["hint_check_fertilizer3"]),
+        StoreItemAmountTo7000(SeedItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+        JmpIfBitSet(GAVE_FERTILIZER, ["rose_town_cloud_invisible_hint_check"], identifier="hint_check_fertilizer3"),
+        StoreItemAmountTo7000(FertilizerItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="rose_town_cloud_invisible_hint_check"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -13857,6 +13882,7 @@ class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = " Mine is behind a brightly\n illuminated tree stump.[await]"
     _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -13878,6 +13904,7 @@ class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is on an illuminated pack of\n 5 mushrooms.[await]"
     _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -13895,8 +13922,9 @@ class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
     _x_coord = 2
     _y_coord = 39
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _clue_text = "\n        Mine is on a sleepy bug.[await]"
+    _clue_text = "\n[center]Mine is on a sleepy bug.[await]"
     _hint = [
+        JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -13937,8 +13965,9 @@ class PipeVaultRedPipeFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _x_shift = -8
     _y_shift = -8
-    _clue_text = "\n     Mine is behind a low red pipe.[await]"
+    _clue_text = "\n[center]Mine is behind a low red pipe.[await]"
     _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -13956,8 +13985,9 @@ class YosterIsleHutFlag(InvisibleFlagLocation):
     _x_coord = 11
     _y_coord = 70
     _world_area = WorldAreaEnum.YOSTER_ISLE
-    _clue_text = "\n         Mine's in a fruity hut.[await]"
+    _clue_text = "\n[center]Mine's under a fruity gazebo.[await]"
     _hint = [
+        JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -13979,7 +14009,7 @@ class MolevilleHydrantFlag(InvisibleFlagLocation):
     _y_coord = 63
     _world_area = WorldAreaEnum.MOLEVILLE
     _y_shift = -8
-    _clue_text = "\n     Mine's under a gold hydrant.[await]"
+    _clue_text = "\n[center]Mine's under a gold hydrant.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14020,7 +14050,7 @@ class MolevilleBedFlag(InvisibleFlagLocation):
     _y_coord = 12
     _world_area = WorldAreaEnum.MOLEVILLE
     _x_shift = 16
-    _clue_text = "\n       Mine's under a middle bed.[await]"
+    _clue_text = "\n[center]Mine's under a middle bed.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14037,8 +14067,9 @@ class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
     _x_coord = 5
     _y_coord = 51
     _world_area = WorldAreaEnum.MOLEVILLE
-    _clue_text = " Mine's between two arrows,\n pointing away from each other.[await]"
+    _clue_text = " Mine's between two arrows pointing away from each other.[await]"
     _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14059,6 +14090,7 @@ class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
     _z_coord = 4
     _clue_text = " Mine's in a zig-zag room, up\n on the ceiling.[await]"
     _hint = [
+        JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14080,6 +14112,7 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = '\n My item?[delay]\n ...[delay]It\'s on the word “IN”,\n [delay]above a big hole.[await]'
     _hint = [
+        JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14099,7 +14132,7 @@ class BoosterPassCornerBushFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _x_shift = -8
     _y_shift = 8
-    _clue_text = "\n        Mine's in a corner bush.[await]"
+    _clue_text = "\n[center]Mine's in a corner bush.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14137,7 +14170,9 @@ class BoosterTowerDeskFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = '\n      Mine\'s under "B" and "K".[await]'
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_1"]),
+        JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_1"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -14155,9 +14190,11 @@ class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
     _y_coord = 122
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _y_shift = 8
-    _clue_text = "\n Mine's on a lightly-loaded see-saw.[await]"
+    _clue_text = "\n[center]Mine's on a lightly-loaded see-saw.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_2"]),
+        JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_2"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -14178,7 +14215,9 @@ class BoosterTowerCurtainFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine's in a corner, between a\n window and a red curtain.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_3"]),
+        JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_3"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -14196,9 +14235,11 @@ class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
     _y_coord = 114
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _z_coord = 12
-    _clue_text = "\n     Mine is near a lonely thwomp.[await]"
+    _clue_text = "\n[center]Mine is near a lonely thwomp.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_4"]),
+        JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_4"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -14217,9 +14258,11 @@ class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _x_shift = -8
     _y_shift = -9
-    _clue_text = "\n       Mine is in a broken frame.[await]"
+    _clue_text = "\n[center]Mine is in a broken frame.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_5"]),
+        JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_5"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -14236,9 +14279,11 @@ class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
     _x_coord = 7
     _y_coord = 18
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _clue_text = "\n     Mine is on an insect cage.[await]"
+    _clue_text = "\n[center]Mine is on an insect cage.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_6"]),
+        JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_6"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -14256,9 +14301,11 @@ class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
     _y_coord = 24
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _x_shift = 16
-    _clue_text = "\n       Mine is behind a toy box.[await]"
+    _clue_text = "\n[center]Mine is behind a toy box.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_7"]),
+        JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_7"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -14281,7 +14328,7 @@ class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
     _z_coord = 6
     _x_shift = -8
     _y_shift = -8
-    _clue_text = "\n  Mine is under a lone backyard box.[await]"
+    _clue_text = "\n[center]Mine is under a lone backyard box.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14339,6 +14386,7 @@ class MarrymoreKitchenFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is in a big cabinet full of\n dishes.[await]"
     _hint = [
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14356,8 +14404,9 @@ class MarrymoreFireplaceFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _z_coord = 2
     _y_shift = -8
-    _clue_text = "\n    Mine is in an empty fireplace.[await]"
+    _clue_text = "\n[center]Mine is in an empty fireplace.[await]"
     _hint = [
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14380,6 +14429,7 @@ class MarrymoreOrganFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = " Mine is behind a big musical\n instrument.[await]"
     _hint = [
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14401,8 +14451,9 @@ class MarrymoreAltarFlag(InvisibleFlagLocation):
     _y_coord = 70
     _world_area = WorldAreaEnum.MARRYMORE
     _z_coord = 1
-    _clue_text = "\n        Mine's behind a podium.[await]"
+    _clue_text = "\n[center]Mine's behind a podium.[await]"
     _hint = [
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14422,7 +14473,7 @@ class StarHillNorthStarFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.STAR_HILL
     _z_coord = 2
     _x_shift = -10
-    _clue_text = "\n     Mine is atop the North Star.[await]"
+    _clue_text = "\n[center]Mine is atop the North Star.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14440,7 +14491,7 @@ class SeasideTownAnchorFlag(InvisibleFlagLocation):
     _y_coord = 57
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _x_shift = 16
-    _clue_text = "\n       Mine is behind an anchor.[await]"
+    _clue_text = "\n[center]Mine is behind an anchor.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14460,7 +14511,7 @@ class SeasideTownHydrantFlag(InvisibleFlagLocation):
     _z_coord = 5
     _x_shift = 0
     _y_shift = -8
-    _clue_text = "\n  Mine is under a high steel hydrant.[await]"
+    _clue_text = "\n[center]Mine is under a high steel hydrant.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14478,7 +14529,7 @@ class SeasideTownBucketFlag(InvisibleFlagLocation):
     _y_coord = 31
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _z_coord = 3
-    _clue_text = "\n Mine is in a bucket between two\n staircases.[await]"
+    _clue_text = "\n[center]Mine is in a bucket between two\n staircases.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14519,7 +14570,13 @@ class SeasideTownShedBoxFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine's under a lone crate in an\n empty house.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitSet(SEASIDE_SHED_EMPTIED, ["seaside_town_invis_check"]),
+        JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_6, R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, ["seaside_town_invis_check"]),
+        StoreItemAmountTo7000(ShedKeyItem),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
+
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="seaside_town_invis_check"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -14540,8 +14597,9 @@ class SeaArrowFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SEA
     _x_shift = -8
     _y_shift = -8
-    _clue_text = "\n   Mine is beside a mossy up-arrow.[await]"
+    _clue_text = "\n[center]Mine is beside a mossy up-arrow.[await]"
     _hint = [
+        JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14560,8 +14618,9 @@ class SeaBoxesFlag(InvisibleFlagLocation):
     _y_coord = 36
     _world_area = WorldAreaEnum.SEA
     _y_shift = -8
-    _clue_text = "\n    Mine's in some V-shaped boxes.[await]"
+    _clue_text = "\n[center]Mine's in some V-shaped boxes.[await]"
     _hint = [
+        JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14584,6 +14643,7 @@ class SeaStalagnateFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine is behind a big gray\n stalagnate.[await]"
     _hint = [
+        JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14601,8 +14661,9 @@ class SeaUnderwaterSailFlag(InvisibleFlagLocation):
     _x_coord = 4
     _y_coord = 41
     _world_area = WorldAreaEnum.SEA
-    _clue_text = "\n        Mine's behind a big sail.[await]"
+    _clue_text = "\n[center]Mine's behind a sail.[await]"
     _hint = [
+        JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14621,8 +14682,9 @@ class ShipBarrelPileFlag(InvisibleFlagLocation):
     _y_coord = 66
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _z_coord = 3
-    _clue_text = "\n  Mine is atop a big pile of barrels.[await]"
+    _clue_text = "\n[center]Mine is atop a big pile of barrels.[await]"
     _hint = [
+        JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14644,6 +14706,7 @@ class ShipDoorMarkerFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = ' Mine is on a stack of boxes.[await][pause]\n[delay] Hm?[delay] Is that not specific enough?[await][page]\n Well,[delay] the boxes act as a door\n marker.[delay] They represent the\n number "4".[await]'
     _hint = [
+        JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14661,8 +14724,9 @@ class ShipButtonFlag(InvisibleFlagLocation):
     _x_coord = 16
     _y_coord = 133
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _clue_text = "\n   Mine is under a floating button.[await]"
+    _clue_text = "\n[center]Mine is under a floating button.[await]"
     _hint = [
+        JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14681,9 +14745,10 @@ class ShipSwitchFlag(InvisibleFlagLocation):
     _y_coord = 121
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _clue_text = (
-        '\n Mine is underneath a floating "J"\n that is all on its lonesome.[await]'
+        '\n Mine is underneath a floating "J"\n[center]that is all on its lonesome.[await]'
     )
     _hint = [
+        JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14701,7 +14766,7 @@ class LandsEndPlatformFlag(InvisibleFlagLocation):
     _x_coord = 6
     _y_coord = 29
     _world_area = WorldAreaEnum.LANDS_END
-    _clue_text = "\n   Mine is under a rising platform.[await]"
+    _clue_text = "\n[center]Mine is under a rising platform.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14719,8 +14784,9 @@ class LandsEndCannonFlag(InvisibleFlagLocation):
     _y_coord = 115
     _world_area = WorldAreaEnum.LANDS_END
     _y_shift = -8
-    _clue_text = " Mine's under a big and quiet\n cannon.[await]"
+    _clue_text = " Mine's under a big, quiet cannon.[await]"
     _hint = [
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14739,8 +14805,9 @@ class LandsEndArrowFlag(InvisibleFlagLocation):
     _y_coord = 29
     _world_area = WorldAreaEnum.LANDS_END
     _x_shift = 16
-    _clue_text = "\n Mine is beside an orange up-arrow.[await]"
+    _clue_text = "\n[center]Mine is beside an orange up-arrow.[await]"
     _hint = [
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14760,8 +14827,9 @@ class LandsEndHillFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.LANDS_END
     _x_shift = 8
     _y_shift = 8
-    _clue_text = " Mine is on a short, red hill in a\n remote area.[await]"
+    _clue_text = " Mine is on a short, remote red hill.[await]"
     _hint = [
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14781,6 +14849,7 @@ class LandsEndTwoHillFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.LANDS_END
     _clue_text = "   My item's between two red hills.[await]"
     _hint = [
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14804,6 +14873,7 @@ class LandsEndStalagmiteFlag(InvisibleFlagLocation):
         " Mine's on a big stalagmite\n formation in an underground cave.[await]"
     )
     _hint = [
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14824,6 +14894,7 @@ class LandsEndCliffBushFlag(InvisibleFlagLocation):
     _z_coord = 22
     _clue_text = " Mine is on a bush, way up high on\n a cliff.[await]"
     _hint = [
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14846,6 +14917,7 @@ class LandsEndSignFlag(InvisibleFlagLocation):
     _x_shift = 8
     _clue_text = "     My item's on a yellow arrow.[await]"
     _hint = [
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -14864,7 +14936,7 @@ class DojoBonsaiFlag(InvisibleFlagLocation):
     _y_coord = 9
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _y_shift = 8
-    _clue_text = "\n   Mine's underneath a bonsai tree.[await]"
+    _clue_text = "\n[center]Mine's underneath a bonsai tree.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14881,7 +14953,7 @@ class MonstroEntranceSignFlag(InvisibleFlagLocation):
     _x_coord = 9
     _y_coord = 102
     _world_area = WorldAreaEnum.MONSTRO_TOWN
-    _clue_text = "\n     Mine's in a lone flowery bush.[await]"
+    _clue_text = "\n[center]Mine's in a lone flowery bush.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14900,7 +14972,7 @@ class MonstroBatFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _z_coord = 4
     _y_shift = 8
-    _clue_text = "\n     Mine's behind a wooden bat.[await]"
+    _clue_text = "\n[center]Mine's behind a wooden bat.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14919,7 +14991,7 @@ class MonstroFanFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _z_coord = 1
     _x_shift = -16
-    _clue_text = "\n         Mine's beside a fan.[await]"
+    _clue_text = "\n[center]Mine's beside a fan.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14938,7 +15010,7 @@ class MonstroShellFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _z_coord = 1
     _y_shift = 8
-    _clue_text = "\n   Mine's beneath a spinning shell.[await]"
+    _clue_text = "\n[center]Mine's beneath a spinning shell.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14974,7 +15046,7 @@ class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
     _x_coord = 27
     _y_coord = 27
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _clue_text = "\n  Mine's underneath a big beanstalk.[await]"
+    _clue_text = "\n[center]Mine's underneath a big beanstalk.[await]"
     _hint = [
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -14993,8 +15065,10 @@ class CasinoBellFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.CASINO
     _x_shift = 8
     _y_shift = 8
-    _clue_text = "\n       Mine is beside a tiny bell.[await][pause]\n I don't think it does anything.[await]"
+    _clue_text = "\n[center]Mine is beside a tiny bell.[await][pause]\n I don't think it does anything.[await]"
     _hint = [
+        StoreItemAmountTo7000(BrightCardItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -15013,8 +15087,9 @@ class NimbusGoldGoombaFlag(InvisibleFlagLocation):
     _y_coord = 14
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _z_coord = 1
-    _clue_text = "\n     Mine is on a golden Goomba.[await]"
+    _clue_text = "\n[center]Mine is on a golden Goomba.[await]"
     _hint = [
+        JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -15037,6 +15112,7 @@ class NimbusInnLobbyFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine is under a stove with two\n pots.[await]"
     _hint = [
+        JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -15059,7 +15135,12 @@ class NimbusPlantFlag(InvisibleFlagLocation):
     _z_coord = 1
     _clue_text = " Mine is behind a big potted plant\n in a corner.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
+        JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_10"]),
+        JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_10"]),
+        StoreItemAmountTo7000(GoldPaintItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy_10"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -15079,7 +15160,18 @@ class NimbusBirdFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine is under a birdcage, in a\n restricted dead-end area.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
+        JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_11"]),
+        JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_11"]),
+        StoreItemAmountTo7000(GoldPaintItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_11"], identifier="nimbus_ck_dummy_11"),
+        StoreItemAmountTo7000(CastleKey1Item),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_ck_dummy3_11"], identifier="nimbus_ck_dummy2_11"),
+        StoreItemAmountTo7000(CastleKey2Item),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy3_11"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -15099,7 +15191,18 @@ class NimbusHotSpringsFlag(InvisibleFlagLocation):
     _z_coord = 5
     _clue_text = " Mine's on the right side of a\n hot pool.[await]"
     _hint = [
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
+        JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_12"]),
+        JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_12"]),
+        StoreItemAmountTo7000(GoldPaintItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_12"], identifier="nimbus_ck_dummy_12"),
+        StoreItemAmountTo7000(CastleKey1Item),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_ck_dummy3_12"], identifier="nimbus_ck_dummy2_12"),
+        StoreItemAmountTo7000(CastleKey2Item),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy3_12"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
     ]
@@ -15117,8 +15220,9 @@ class VolcanoShipsFlag(InvisibleFlagLocation):
     _y_coord = 61
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _z_coord = 2
-    _clue_text = "\n    Mine is between two vehicles.[await]"
+    _clue_text = "\n[center]Mine is between two vehicles.[await]"
     _hint = [
+        JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -15138,8 +15242,9 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _x_shift = 8
     _y_shift = 8
-    _clue_text = "\n    Mine is between two red doors.[await]"
+    _clue_text = "\n[center]Mine is between two red doors.[await]"
     _hint = [
+        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -15159,8 +15264,9 @@ class KeepThwompFlag(InvisibleFlagLocation):
     _x_coord = 19
     _y_coord = 47
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _clue_text = "\n      Mine is under a big thwomp.[await]"
+    _clue_text = "\n[center]Mine is under a big thwomp.[await]"
     _hint = [
+        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -15184,6 +15290,7 @@ class FactoryCanopyFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "  My item's under a bolted canopy.[await]"
     _hint = [
+        JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -15204,6 +15311,7 @@ class FactoryLugnutFlag(InvisibleFlagLocation):
     _z_coord = 7
     _clue_text = "    My item's underneath a lugnut.[await]"
     _hint = [
+        JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -15224,6 +15332,7 @@ class FactoryTrampolineFlag(InvisibleFlagLocation):
     _y_shift = 16
     _clue_text = " My item is with the world's\n loneliest trampoline.[await]"
     _hint = [
+        JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -15246,6 +15355,7 @@ class FactoryButtonFlag(InvisibleFlagLocation):
     _z_coord = 5
     _clue_text = " Mine is on a jammed machine\n button.[await]"
     _hint = [
+        JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])

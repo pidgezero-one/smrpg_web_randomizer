@@ -55,7 +55,7 @@ script = EventScript([
 	JmpIfComparisonResultIsLesser(["EVENT_1172_jmp_to_event_22"]),
 	CompareVarToConst(PRIMARY_TEMP_7000, 2400),
 	JmpIfComparisonResultIsLesser(["EVENT_1172_play_sound_23"]),
-	JmpToEvent(E1973_CLONE_RESERVED),
+	JmpToEvent(E1973_EMPTY),
 	PlaySound(sound=SO085_FLOWER, channel=6, identifier="EVENT_1172_play_sound_18"),
 	RunDialog(dialog_id=DI2939_RECEIVED_FLOWER_TAB, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	AddToInventory(FlowerTabItem),
