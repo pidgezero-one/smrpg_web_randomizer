@@ -1289,7 +1289,7 @@ class BelomeTempleGate(SelectOneFlag[BelomeTempleGating]):
 class MonstroTownGating(CategorizationOption):
     """Enumeration for Monstro Town gating flag option"""
 
-    LANDS_END = "Finish Land's End"
+    LANDS_END = "Finish Belome Temple"
     BELOME_2 = "Defeat Belome 2"
     OPEN = "Always open"
 

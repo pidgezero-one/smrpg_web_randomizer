@@ -118,6 +118,7 @@ script = EventScript([
     RemoveOneOfItemFromInventory(DryBonesFlagItem),
 	RemoveOneOfItemFromInventory(GreaperFlagItem),
 	RemoveOneOfItemFromInventory(BigBooFlagItem),
+    SetBit(MUSTY_FEARS_QUEST_COMPLETE),
 
 	SetSyncActionScript(NPC_0, A0569_MUSTY_FEARS_2, identifier="EVENT_2081_set_7000_to_tapped_button_98"),
 	SetSyncActionScript(NPC_1, A0569_MUSTY_FEARS_2),

@@ -94,6 +94,7 @@ script = EventScript([
 	SetBit(UNKNOWN_ROSE_TOWN_7060_7),
 	SetBit(MAP_MENU_UNLOCKED),
 	SetBit(MARRYMORE_UNKNOWN_7063_2),
+    SetBit(BELOME_TEMPLE_OPEN),
 	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
 	AddToInventory(WasteBasketItem),
 	RestoreAllHP(),

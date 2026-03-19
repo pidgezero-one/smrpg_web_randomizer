@@ -39,6 +39,7 @@ Boss-specific
 🚧 culex 3D sprite is broken. HUD disappears in phase 2
   - left 2 crystals bot hshowing up as water, right 2 showing up as wind
   - i moved them onto diff palette rows but now they just share with culex
+  - might have to switch back to how normal crystals do it
 - fancy bundt: 
   - raspberry moves forward to attack, should not be doing that
   - candles don't animate 
@@ -58,7 +59,6 @@ Boss-specific
 Mushroom Way 
 
 Mushroom kingdom
-🚧 Need to figure out what to do about the doorjamb chest++++++++++++++++++++
 🚧 wallet guy bad partition when birds are using good partition
 🚧 signal ring not working (there are 3 star pieces in the kingdom: shop, and 2 vault chests) while invaded
   🚧 might be too many sfx at once
@@ -76,20 +76,16 @@ Kero sewers
 midas river
 
 tadpole pond 
-- frogfucius telling me to go to kero sewers when i can't do that
 - hint builder engine should happen here
+  - remember to add some code for the invisible chest. a bit to flag if it has ever been checked. whichever check gets it needs to have that inserted into its hint
 
 Rose way
-- Gold coins take on weird palettes again, might happen when too many npc palette rows
-  - not really too concerned about this one
 
 
 Rose Town 
 - upper floor sonic cymbals not rendering
 
 Forest maze 
-- buzzer's default attack sound effect is wrong somehow
-  - hasn't happened again
 
 Pipe vault
 
@@ -178,6 +174,7 @@ Land's End
   - specifically the shy away chest. not even a slot machine room
 - floating chest in room 2 was a mimic. no reload prize
 🚧 shaman selling items to you: probably should be a slot machine
+- does troopa cliff work at all?
 
 Monstro Town
 🚧 terrain completely broken 
