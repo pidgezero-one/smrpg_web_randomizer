@@ -6112,7 +6112,7 @@ class FrogDiscipleLocation1(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         JmpIfBitSet(FROG_DISCIPLE_ITEM_1_PURCHASED, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["frog_disciple_hint_text"])
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_1_PURCHASED
 
@@ -6123,7 +6123,7 @@ class FrogDiscipleLocation2(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         JmpIfBitSet(FROG_DISCIPLE_ITEM_2_PURCHASED, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["frog_disciple_hint_text"])
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_2_PURCHASED
     # FROG_DISCIPLE_ITEM_1_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
@@ -6135,7 +6135,7 @@ class FrogDiscipleLocation3(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         JmpIfBitSet(FROG_DISCIPLE_ITEM_3_PURCHASED, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["frog_disciple_hint_text"])
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_3_PURCHASED
     # FROG_DISCIPLE_ITEM_2_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
@@ -6147,7 +6147,7 @@ class FrogDiscipleLocation4(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         JmpIfBitSet(FROG_DISCIPLE_ITEM_4_PURCHASED, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["frog_disciple_hint_text"])
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_4_PURCHASED
     # FROG_DISCIPLE_ITEM_3_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
@@ -6159,7 +6159,7 @@ class FrogDiscipleLocation5(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         JmpIfBitSet(FROG_DISCIPLE_ITEM_5_PURCHASED, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["frog_disciple_hint_text"])
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_5_PURCHASED
     # FROG_DISCIPLE_ITEM_4_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
@@ -9201,7 +9201,7 @@ class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
     _hint = [
         JmpIfBitSet(SUPER_JUMP_PRIZE_1_GRANTED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["super_jump_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9222,7 +9222,7 @@ class MonstroSecondSuperJumpRewardLocation(NPCLocationRow2):
     _hint = [
         JmpIfBitSet(SUPER_JUMP_PRIZE_2_GRANTED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["super_jump_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11375,7 +11375,7 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11395,7 +11395,7 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11415,7 +11415,7 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11435,7 +11435,7 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11454,7 +11454,7 @@ class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11473,7 +11473,7 @@ class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11492,7 +11492,7 @@ class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11511,7 +11511,7 @@ class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11531,7 +11531,7 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11551,7 +11551,7 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_11, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11571,7 +11571,7 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_12, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11591,7 +11591,7 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_13, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11611,7 +11611,7 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11631,7 +11631,7 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11651,7 +11651,7 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11671,7 +11671,7 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11691,7 +11691,7 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11711,7 +11711,7 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11730,7 +11730,7 @@ class KeepCannonballCoin1Location(StandingLocationRow1):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11749,7 +11749,7 @@ class KeepCannonballCoin2Location(StandingLocationRow2):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11768,7 +11768,7 @@ class KeepCannonballCoin3Location(StandingLocationRow3):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11787,7 +11787,7 @@ class KeepCannonballCoin4Location(StandingLocationRow4):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11806,7 +11806,7 @@ class KeepCannonballCoin5Location(StandingLocationRow5):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_12, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11825,7 +11825,7 @@ class KeepCannonballCoin6Location(StandingLocationRow6):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_13, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11844,7 +11844,7 @@ class KeepCannonballCoin7Location(StandingLocationRow7):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_14, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11863,7 +11863,7 @@ class KeepCannonballCoin8Location(StandingLocationRow8):
     _hint = [
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_15, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        # Jmp(["bowsers_keep_hint_text"])
+        # Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11885,7 +11885,7 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11907,7 +11907,7 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11929,7 +11929,7 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11951,7 +11951,7 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11973,7 +11973,7 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11995,7 +11995,7 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12018,10 +12018,6 @@ class ObstacleCourseFinalFight(BossFightLocation):
             NPC_4,
             sequence_setter_event_id=E0845_VOLCANO_BRIEF_HENCHMAN_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         )
-    ]
-    _hint = [
-        JmpIfBitSet(BATTLE_DOOR_BOSS_BIT, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -12083,7 +12079,7 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BATTLE_DOOR_BOSS_BIT, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["keep_obstacle_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
