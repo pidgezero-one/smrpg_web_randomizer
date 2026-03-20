@@ -1,4 +1,4 @@
-# E1939_KEEP_ROTATING_ROOM_CHEST_4
+# E1977_ANIMATED_CHEST_4
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -36,17 +36,6 @@ from ....variables.event_palette_names import *
 script = EventScript([
     JmpIfBitSet(BK_OBSTACLE_4_PRIZE_RETRIEVED, ["bke4"]),
     SetBit(BK_OBSTACLE_4_PRIZE_RETRIEVED),
-	JmpIfBitSet(UNIVERSAL_CHEST_ANIMATION_BIT, ["EVENT_1939_jmp_to_event_7"]),
-	SetBit(UNIVERSAL_CHEST_ANIMATION_BIT),
-	FreezeCamera(),
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_SetWalkingSpeed(VERY_FAST),
-		A_WalkNorthSteps(2),
-		A_SetWalkingSpeed(NORMAL)
-	]),
-	SetVarToConst(TIMER_701C, 40),
-	RunBackgroundEventWithPauseReturnOnExit(event_id=E1543_CHEST_CAMERA_SHIFT, timer_var=TIMER_701C, bit_4=True, bit_5=True),
-	ReactivateObject70A8TriggerIfMarioOnTopOfIt(),
-	JmpToEvent(E0175_CHEST_4_CONTAINER, identifier="EVENT_1939_jmp_to_event_7"),
+	JmpToEvent(E1977_ANIMATED_CHEST_4),
 	Return(identifier="bke4")
 ])

@@ -1,4 +1,4 @@
-# E1979_EMPTY
+# E1979_ANIMATED_CHEST_6
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,17 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	JmpIfBitSet(UNIVERSAL_CHEST_ANIMATION_BIT, ["EVENT_1941_jmp_to_event_7"]),
+	SetBit(UNIVERSAL_CHEST_ANIMATION_BIT),
+	FreezeCamera(),
+	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
+		A_SetWalkingSpeed(VERY_FAST),
+		A_WalkNorthSteps(2),
+		A_SetWalkingSpeed(NORMAL)
+	]),
+	SetVarToConst(TIMER_701C, 40),
+	RunBackgroundEventWithPauseReturnOnExit(event_id=E1543_CHEST_CAMERA_SHIFT, timer_var=TIMER_701C, bit_4=True, bit_5=True),
+	ReactivateObject70A8TriggerIfMarioOnTopOfIt(),
+	JmpToEvent(E0177_CHEST_6_CONTAINER, identifier="EVENT_1941_jmp_to_event_7"),
+	Return(identifier="bke6")
 ])

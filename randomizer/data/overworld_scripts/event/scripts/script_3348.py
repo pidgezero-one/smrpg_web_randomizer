@@ -51,10 +51,10 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 515, ["EVENT_3348_jmp_to_event_14"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 516, ["EVENT_3348_jmp_to_event_15"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 517, ["EVENT_3348_jmp_to_event_16"]),
-	JmpToEvent(E1936_KEEP_ROTATING_ROOM_CHEST_1),
-	JmpToEvent(E1937_KEEP_ROTATING_ROOM_CHEST_2, identifier="EVENT_3348_jmp_to_event_12"),
-	JmpToEvent(E1938_KEEP_ROTATING_ROOM_CHEST_3, identifier="EVENT_3348_jmp_to_event_13"),
-	JmpToEvent(E1939_KEEP_ROTATING_ROOM_CHEST_4, identifier="EVENT_3348_jmp_to_event_14"),
-	JmpToEvent(E1940_KEEP_ROTATING_ROOM_CHEST_5, identifier="EVENT_3348_jmp_to_event_15"),
-	JmpToEvent(E1941_KEEP_ROTATING_ROOM_CHEST_6, identifier="EVENT_3348_jmp_to_event_16")
+	JmpToEvent(E1936_KEEP_OBSTACLE_PRIZE_1),
+	JmpToEvent(E1937_KEEP_OBSTACLE_PRIZE_2, identifier="EVENT_3348_jmp_to_event_12"),
+	JmpToEvent(E1938_KEEP_OBSTACLE_PRIZE_3, identifier="EVENT_3348_jmp_to_event_13"),
+	JmpToEvent(E1939_KEEP_OBSTACLE_PRIZE_4, identifier="EVENT_3348_jmp_to_event_14"),
+	JmpToEvent(E1940_KEEP_OBSTACLE_PRIZE_5, identifier="EVENT_3348_jmp_to_event_15"),
+	JmpToEvent(E1941_KEEP_OBSTACLE_PRIZE_6, identifier="EVENT_3348_jmp_to_event_16")
 ])

@@ -91,7 +91,7 @@ room = Room(
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E1936_KEEP_ROTATING_ROOM_CHEST_1,
+            event_script=E1974_ANIMATED_CHEST_1,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=2,
             upper_70a7=0,
@@ -120,7 +120,7 @@ room = Room(
         ChestNPC( # 2
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E1937_KEEP_ROTATING_ROOM_CHEST_2,
+            event_script=E1975_ANIMATED_CHEST_2,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=2,
             upper_70a7=0,
@@ -149,7 +149,7 @@ room = Room(
         ChestNPC( # 3
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E1938_KEEP_ROTATING_ROOM_CHEST_3,
+            event_script=E1976_ANIMATED_CHEST_3,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=7,
             upper_70a7=0,
@@ -178,7 +178,7 @@ room = Room(
         ChestNPC( # 4
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E1939_KEEP_ROTATING_ROOM_CHEST_4,
+            event_script=E1977_ANIMATED_CHEST_4,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=6,
             upper_70a7=0,
@@ -207,7 +207,7 @@ room = Room(
         ChestNPC( # 5
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E1940_KEEP_ROTATING_ROOM_CHEST_5,
+            event_script=E1978_ANIMATED_CHEST_5,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=6,
             upper_70a7=0,
@@ -236,7 +236,7 @@ room = Room(
         ChestNPC( # 6
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E1941_KEEP_ROTATING_ROOM_CHEST_6,
+            event_script=E1979_ANIMATED_CHEST_6,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=6,
             upper_70a7=0,

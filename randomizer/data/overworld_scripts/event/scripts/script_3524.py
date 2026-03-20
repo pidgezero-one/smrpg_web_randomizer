@@ -35,6 +35,6 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfVarEqualsConst(ACTIVE_NPC, NPC_8, ["EVENT_3524_jmp_to_event_6"]),
-	JmpToEvent(E1937_KEEP_ROTATING_ROOM_CHEST_2),
-	JmpToEvent(E1936_KEEP_ROTATING_ROOM_CHEST_1, identifier="EVENT_3524_jmp_to_event_6"),
+	JmpToEvent(E1975_ANIMATED_CHEST_2),
+	JmpToEvent(E1974_ANIMATED_CHEST_1, identifier="EVENT_3524_jmp_to_event_6"),
 ])
