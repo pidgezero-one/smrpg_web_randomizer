@@ -1,217 +1,91 @@
-# Testing Patterns
+# Testing
 
-**Analysis Date:** 2026-03-20
+## Current State
 
-## Test Framework
+**Test coverage is essentially nonexistent.** The project has `pytest==8.3.5` in requirements but no meaningful test files.
 
-**Runner:**
-- Not detected - Django's default `TestCase` available via import
-- Two standalone test scripts exist: `tools/sni_test.py` and `tools/sni_mailbox_test.py`
-- No pytest, unittest, or vitest configuration files found
+### Existing Test Files
 
-**Assertion Library:**
-- Django `TestCase` class imported in `randomizer/tests.py`
-- Standard Python assertions used in test scripts (e.g., `assert readback[0] == 0xAA`)
+- `randomizer/tests.py` — Stub file, contains only `from django.test import TestCase` (60 bytes)
+- No `test_*.py` or `*_test.py` files found anywhere in the project
+- No `conftest.py` files
+- No test fixtures or factories
 
-**Run Commands:**
-```bash
-python manage.py test                    # Django test discovery (empty test file exists)
-python tools/sni_test.py                 # SNI direct read tests
-python tools/sni_mailbox_test.py         # NMI hook mailbox tests
-```
+### Test Framework
 
-## Test File Organization
+- **pytest** (8.3.5) — Listed in `requirements.txt` but unused
+- **Django TestCase** — Imported in stub but no tests written
+- No `pytest.ini`, `setup.cfg`, or `pyproject.toml` test configuration
+- `pyrightconfig.json` exists for type checking but is minimal
 
-**Location:**
-- Django test file at `randomizer/tests.py` (currently empty placeholder)
-- Standalone utility tests in `tools/` directory as executable scripts
-- Not co-located with source code
+## What Needs Testing
 
-**Naming:**
-- Django convention: `tests.py` at app level
-- Utility scripts: `sni_test.py`, `sni_mailbox_test.py` (prefix convention for test detection)
+### Critical Logic (No Tests)
 
-**Structure:**
+| Component | File | Risk |
+|---|---|---|
+| Prize placement algorithm | `randomizer/logic/placement.py` (14K) | Core correctness — determines if seeds are completable |
+| Progression validation | `randomizer/progression/prizelocations.py` (591K) | Ensures required items are reachable |
+| Item shuffling | `randomizer/logic/shufflers/items.py` (60K) | Largest shuffler, most complex logic |
+| GameWorld orchestration | `randomizer/types/gameworld.py` (82K) | Central coordinator, integrates all systems |
+| Flag parsing/serialization | `randomizer/types/flags.py` (111K) | User-facing configuration |
+| Settings deserialization | `randomizer/types/settings.py` (29K) | Converts flag strings to settings objects |
+| Partition calculator | `randomizer/logic/partition_calculator.py` (41K) | Sprite VRAM allocation — fragile |
+| VRAM calculator | `randomizer/logic/battle_vram_calculator.py` (8K) | Battle scene resource management |
+| Validation checks | `randomizer/logic/validation.py` (8K) | Post-generation validation |
+
+### Web Layer (No Tests)
+
+| Component | File | Risk |
+|---|---|---|
+| Seed generation endpoint | `randomizer/views.py` | Core user-facing functionality |
+| API endpoints | `randomizer/views.py` (APIGenerateView, APIFlags) | External consumers |
+| Hash-based seed lookup | `randomizer/views.py` (HashView) | URL-based seed sharing |
+| WAD packing | `randomizer/views.py` (PackingView) | File processing |
+
+## Testing Patterns to Follow
+
+### Recommended Structure
+
 ```
 randomizer/
-├── tests.py          # Django TestCase imports (empty)
-
-tools/
-├── sni_test.py       # SNI hardware integration tests
-└── sni_mailbox_test.py  # NMI mailbox integration tests
+  tests/
+    __init__.py
+    test_placement.py        # Placement algorithm
+    test_flags.py            # Flag parsing and serialization
+    test_settings.py         # Settings from flag strings
+    test_gameworld.py        # GameWorld creation and orchestration
+    test_views.py            # Web endpoints
+    test_api.py              # API endpoints
+    test_shufflers/
+      __init__.py
+      test_items.py          # Item shuffling
+      test_enemies.py        # Enemy shuffling
+      test_shops.py          # Shop shuffling
+    test_progression/
+      __init__.py
+      test_completability.py # Seed completability validation
 ```
 
-## Test Structure
+### Test Priorities
 
-**Suite Organization:**
+1. **Placement algorithm** — Can a seed be completed? Regression tests for known-broken seeds
+2. **Flag serialization** — Round-trip: flags string -> Settings -> flags string
+3. **Seed generation** — End-to-end: given seed + flags, does `create()` succeed?
+4. **API endpoints** — POST /api/v1/generate returns valid response
+5. **Progression validation** — Required items are always reachable
 
-The test utilities use modular test functions rather than class-based test suites. Example from `sni_test.py`:
+### Testing Challenges
 
-```python
-async def test_wram(channel: str, uri: str, verbose: bool) -> dict:
-    """Test WRAM reads via FxPakPro address space."""
-    print("=" * 60)
-    print("Test 1: WRAM via FxPakPro Address Space")
-    print("=" * 60)
-    results = {}
+- **Deep copy overhead**: `create()` deep-copies 20+ collections — tests need fresh copies per run
+- **ROM dependency**: Patch generation may need actual ROM data or mocks
+- **Large data files**: `progression/prizelocations.py` (591K) and `progression/prizes.py` (412K) are huge
+- **Non-deterministic output**: Randomizer uses `random` module — tests need fixed seeds
+- **No dependency injection**: `GameWorld` takes 20+ constructor args with concrete data
 
-    # Test specific operation
-    print("\n  Reading character stats ($7F:F800, 0xB9 bytes)...")
-    data = await read_fxpakpro(channel, uri, 0xF6F800, 0xB9)
-    if data is None:
-        print("  FAIL: Read returned None (gRPC error)")
-        results["character_stats"] = False
-    else:
-        validity = data_looks_valid(data)
-        results["character_stats"] = "OK" in validity
-        print(f"  Result: {validity}")
+## CI/CD
 
-    print()
-    return results
-```
-
-**Patterns:**
-- Setup: Connection and device discovery in `test_connection()` before other tests run
-- Test organization: Multiple test functions called sequentially from `main()`
-- Teardown: None; tests clean up resources via context managers (gRPC channels)
-- Assertions: Boolean result dictionaries returned: `results["test_name"] = True/False`
-
-## Mocking
-
-**Framework:**
-- Not used in existing tests
-- Real hardware integration tests (SNI communication with actual FxPakPro device)
-
-**Patterns:**
-- Test functions are async and communicate with real gRPC servers
-- No mock objects; uses real device URIs returned from SNI device enumeration
-- Optional retry logic for flaky hardware: `for attempt in range(retries): ...`
-
-**What to Mock:**
-- (Not applicable - integration tests only)
-
-**What NOT to Mock:**
-- Hardware communication (intentionally tests real device)
-- gRPC responses (tests expect real SNI protocol)
-
-## Fixtures and Factories
-
-**Test Data:**
-- Hardcoded test addresses and memory regions in test functions
-- Example from `sni_test.py`:
-```python
-test_addrs = [
-    (0xE00000, 0x100, "SRAM base $E00000 (first 256 bytes)"),
-    (0xE01040, 0x60,  "SRAM $E01040 (BW-RAM offset $1040 = $7040-$6000)"),
-    (0xE07040, 0x60,  "SRAM $E07040 (SA-1 addr $7040 direct)"),
-    # ...
-]
-```
-- Hardcoded character names: `CHARACTER_NAMES.get(i, f"Unknown({i})")`
-- Hardcoded game mode mappings: `mode_names = {0xC0: "overworld", 0xC3: "menu", 0xC1: "battle setup"}`
-
-**Location:**
-- Test data defined in test functions themselves
-- Device enumeration happens via SNI at runtime (not fixtures)
-
-## Coverage
-
-**Requirements:**
-- Not detected - no coverage configuration files found
-
-**View Coverage:**
-- Not applicable (integration tests only)
-
-## Test Types
-
-**Unit Tests:**
-- None currently implemented
-- Single placeholder file with Django TestCase import
-- Core logic lacks unit test coverage
-
-**Integration Tests:**
-- `sni_test.py` - Tests SNI protocol with real FxPakPro hardware
-  - Tests WRAM, BW-RAM, IRAM memory regions
-  - Tests event flag parsing
-  - Tests multiple address spaces (FxPakPro, SnesABus, Raw)
-  - Tests data validity heuristics and coherency
-
-- `sni_mailbox_test.py` - Tests NMI cooperative hook via mailbox
-  - Tests hook alive detection
-  - Tests state dump command
-  - Tests item giving, coin setting, character recruitment
-  - Tests spell learning and healing commands
-  - Diagnostic functions for hook failure investigation
-
-**E2E Tests:**
-- Not used - integration tests serve as E2E verification
-
-## Common Patterns
-
-**Async Testing:**
-```python
-async def main():
-    # ... setup ...
-    all_results = {}
-    all_results.update(await test_wram(channel, uri, args.verbose))
-    all_results.update(await test_bwram_snes_abus(channel, uri, args.verbose))
-    # ... collect all results ...
-```
-
-Async functions used for hardware I/O; results aggregated in dictionaries.
-
-**Error Testing:**
-```python
-if data is None:
-    print("  FAIL: Read returned None")
-    results["event_flags_abus"] = False
-else:
-    validity = data_looks_valid(data)
-    results["event_flags_abus"] = "OK" in validity
-```
-
-Tests check for `None` returns as error condition; helper function `data_looks_valid()` detects bad data patterns:
-- All zeros (uninitialized/unmapped)
-- All 0xFF (unmapped/bus noise)
-- Insufficient unique values
-- Invalid ranges for parsed values
-
-**Retry Logic:**
-```python
-def read_mailbox(host: str, uri: str, offset: int = 0, size: int = 0x100, retries: int = 3) -> bytes | None:
-    """Read from the mailbox region in FxPakPro SRAM space."""
-    addr = MAILBOX_FXPAK_BASE + offset
-    for attempt in range(retries):
-        try:
-            # ... read operation ...
-            return bytes(response.response.data)
-        except Exception as e:
-            if attempt < retries - 1:
-                time.sleep(0.5)
-            else:
-                print(f"  Read error at ${addr:06X}: {e}")
-    return None
-```
-
-Retries on hardware communication failures with sleep between attempts.
-
-**Polling/Timeout Patterns:**
-```python
-for _ in range(20):
-    time.sleep(0.05)
-    data = read_mailbox(host, uri, INBOX_COMMAND, 1)
-    if data and data[0] == 0x00:
-        # Command complete
-        result = read_mailbox(host, uri, OUTBOX_RESULT, 1)
-        if result:
-            return result[0]
-        return None
-print("  Timeout waiting for command to complete!")
-return None
-```
-
-Hardware tests poll for state changes with timeout; return `None` on timeout.
-
----
-
-*Testing analysis: 2026-03-20*
+- No CI/CD pipeline exists (no `.github/workflows/` directory)
+- No pre-commit hooks configured
+- No linting (no `.flake8`, ruff, or pylint config)
+- `pyrightconfig.json` exists but minimal

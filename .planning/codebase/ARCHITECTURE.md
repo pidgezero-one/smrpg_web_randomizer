@@ -4,182 +4,245 @@
 
 ## Pattern Overview
 
-**Overall:** Django web application with a complex game randomization engine
+**Overall:** Django-based ROM randomizer with plugin architecture
 
 **Key Characteristics:**
-- Django monolithic web server handling HTTP requests and form submission
-- Core randomization logic decoupled in `GameWorld` class that processes ROM patches
-- Data-driven design with extensive game data definitions (enemies, items, spells, rooms)
-- Multi-stage randomization pipeline: setup → validation → shuffling → rendering → BPS patch generation
-- Event-based streaming response generation for long-running operations
-- Database persistence of seed results and patches for reproducibility
+- Central `GameWorld` class manages all game state and data collections
+- Multi-phase randomization pipeline: setup → shuffle → apply → render
+- Settings-driven flag system controls all randomization parameters
+- Plugin pattern for data loading from smrpgpatchbuilder library
+- Stateless randomization functions that operate on deep copies
+- BPS patch generation as final output format
 
 ## Layers
 
-**Presentation Layer:**
-- Purpose: Handle HTTP requests, render templates, manage client-side flag UI
-- Location: `randomizer/views.py`, `randomizer/templates/`, `randomizer/static/`
-- Contains: Django CBVs (TemplateView, FormView), form handling, template rendering
-- Depends on: Django ORM, core randomization logic, settings
-- Used by: Browser clients via URL routing
+**Web Server (Django):**
+- Purpose: HTTP request routing, form validation, response handling
+- Location: `randomizer/views.py`, `randomizer/urls.py`, `randomizer/forms.py`
+- Contains: View classes (TemplateView, FormView), API endpoints, form validators
+- Depends on: Models (Seed, Patch), Settings, Randomizer logic
+- Used by: Frontend (HTML templates), API consumers
 
-**API Layer:**
-- Purpose: Expose JSON endpoints for programmatic seed generation and flag queries
-- Location: `randomizer/views.py` (APIGenerateView, APIFlags)
-- Contains: REST endpoints with JSON serialization
-- Depends on: Core randomization, flag system
-- Used by: External tools, web UI via AJAX
-
-**Core Randomization Engine:**
-- Purpose: Generate randomized game state by modifying ROM data
-- Location: `randomizer/main.py` (entry point), `randomizer/types/gameworld.py` (orchestrator)
-- Contains: GameWorld class that coordinates all randomization logic
-- Depends on: Data layer, shufflers, setup modules
-- Used by: Views, API endpoints
-
-**Shuffler Modules:**
-- Purpose: Implement domain-specific randomization logic
-- Location: `randomizer/logic/shufflers/` (items.py, enemies.py, shops.py, characters.py, equipment.py, minigames.py)
-- Contains: Shuffle algorithms for prizes, enemy stats/drops/formations, shop contents, character stats, equipment properties
-- Depends on: GameWorld state, type definitions, validation rules
-- Used by: GameWorld.__init__() and _shuffle_items()
-
-**Setup Modules:**
-- Purpose: Apply fixed transformations before shuffling begins
-- Location: `randomizer/logic/setup/` (pre_shuffler_settings.py, enemy_tweaks.py, equipment_setup.py, thresholds.py, cosmetics.py, prize_locations.py)
-- Contains: Early-stage modifications like gate logic, stat adjustments, minigame setup, palette selection
-- Depends on: GameWorld, flag values, data collections
-- Used by: GameWorld.__init__()
-
-**Data Layer:**
-- Purpose: Store immutable game data (enemies, items, spells, rooms, dialogs, etc.)
-- Location: `randomizer/data/` (enemies, items, spells, rooms, dialogs, overworld_scripts, battle_animation, etc.)
-- Contains: Collections of game entities defined via `smrpgpatchbuilder` datatypes
-- Depends on: None (data only)
-- Used by: main.py (deep copied), GameWorld, shufflers
-
-**Type System:**
-- Purpose: Define domain models and their relationships
-- Location: `randomizer/types/` (gameworld.py, flags.py, prizelocation.py, prize.py, item.py, enemy.py, etc.)
-- Contains: GameWorld, Flag hierarchy, PrizeLocation subtypes, Item/Prize/Spell wrappers, Settings
-- Depends on: smrpgpatchbuilder datatypes, data definitions
-- Used by: All layers
-
-**Persistence Layer:**
-- Purpose: Cache seeds and patches for reproducibility
-- Location: `randomizer/models.py` (Seed, Patch)
-- Contains: Django ORM models for database storage
+**Data Models (Django ORM):**
+- Purpose: Persistent storage of generated seeds and patch data
+- Location: `randomizer/models.py`
+- Contains: Seed (seed value, hash, flags, metadata), Patch (region-specific patch bytes)
 - Depends on: Django ORM
-- Used by: Views for hash lookups and patch caching
+- Used by: Views for caching and replay of previous seeds
 
-**Patch Generation:**
-- Purpose: Convert randomized game state to ROM patch format
-- Location: `randomizer/logic/renders.py`, `randomizer/logic/apply.py`
-- Contains: BPS (Binary Patch System) patch generation, ROM offset calculations
-- Depends on: GameWorld state, smrpgpatchbuilder serialization
-- Used by: GameWorld after shuffling complete
+**Randomizer Logic (Core):**
+- Purpose: Transform game world based on settings/flags
+- Location: `randomizer/types/`, `randomizer/logic/`
+- Contains: GameWorld state machine, shufflers, validators
+- Depends on: Data collections, smrpgpatchbuilder types
+- Used by: Views for seed generation
+
+**Data Collections (Game Content):**
+- Purpose: ROM data structures organized by game system
+- Location: `randomizer/data/`
+- Contains: Enemies, items, spells, dialogs, rooms, NPCs, sprites, palettes
+- Depends on: smrpgpatchbuilder (external library providing collection classes)
+- Used by: GameWorld initialization, shufflers for modifications
+
+**Type System (Domain Models):**
+- Purpose: Game-specific abstractions over raw ROM data
+- Location: `randomizer/types/`
+- Contains: GameWorld, Settings, PrizeLocation, Prize, Room, Enemy, Item, Ally
+- Depends on: smrpgpatchbuilder types, data collections, progression definitions
+- Used by: Shufflers, applies, validation logic
+
+**Progression/Logic (Randomization Rules):**
+- Purpose: Define constraints, randomization strategies, validation rules
+- Location: `randomizer/progression/`, `randomizer/logic/`
+- Contains: Prize locations, boss placement rules, item quality tiers, difficulty scaling
+- Depends on: Types, data collections, settings/flags
+- Used by: Shufflers and validators
 
 ## Data Flow
 
 **Seed Generation Request:**
 
-1. User submits form to `GenerateView` (views.py) with seed and flag selections
-2. View creates `Settings` object from POST data
-3. View calls `main.create(seed, settings)` which instantiates GameWorld
-4. GameWorld.__init__() executes in phases:
-   - Parse settings and validate combinations
-   - Apply setup modules (gates, stat tweaks, cosmetics)
-   - Build item impact categories and item→prize mappings
-   - Retry loop for item shuffling (handles placement failures)
-   - Shuffle other domains (enemies, shops, characters)
-   - Render ROM patches via renders.py
-5. GameWorld returns fully randomized game state
-6. View serializes result to JSON/database and returns to client
-7. Client downloads BPS patches via StreamingHttpResponse
+1. **HTTP Request** → GenerateView or APIGenerateView
+   - Receive: seed value, flags string, cosmetics string, debug/race mode flags
+   - Validate: Form validation with GenerateForm
+
+2. **Settings Parsing** → Settings.set_from_flag_string()
+   - Parse flag string into enabled flags
+   - Build Settings object with all flag values
+   - Validate: FlagError if invalid flag combination
+
+3. **GameWorld Creation** → randomizer.main.create()
+   - Deep copy all data collections (allies, enemies, items, dialogs, sprites, etc.)
+   - Initialize GameWorld with copies + seed + settings
+   - Establish empty prize locations mapping
+
+4. **Pre-Shuffle Setup** → apply_shuffler_independent_settings()
+   - Apply cosmetic settings (music, palettes, character names)
+   - Apply enemy stat tweaks and difficulty scaling
+   - Apply equipment restrictions and level-up modifications
+   - Set minigame-specific parameters
+
+5. **Location Setup** → set_locations()
+   - Enable/disable prize locations based on settings
+   - Initialize invisible item location markers
+   - Pre-allocate dummy NPCs for slot/flag mechanics
+
+6. **Prize Shuffling Pipeline** → shuffle_prizes()
+   - Quality-tier allocation of items to location types
+   - Bias-based distribution (favor harder locations with better items)
+   - Character spell assignment (SpellsAnywhere mode)
+   - Constraint satisfaction (key items, required progression)
+
+7. **Remaining Shuffles** (parallel/sequential):
+   - Enemies: randomize_enemy_stats, randomize_enemy_attacks_and_spells, randomize_enemy_drops, randomize_enemy_formations
+   - Shops: shuffle_shops with item quality tier rebalancing
+   - Characters: randomize_character_stats, randomize_levelup_xps, randomize_character_spell_stats
+   - Bosses: conditional on ShuffledBosses flag, stat scaling
+
+8. **Post-Shuffle Cleanup** → post_shuffle_cleanup()
+   - Validate item distribution integrity
+   - Resolve conflicts (duplicates, missing items)
+   - Update shop prices for rare items
+
+9. **Apply Shuffler Results** → apply_shuffler_results_to_game_data()
+   - Write shuffled prizes to TreasureChestLocation, StandingLocation, etc.
+   - Update NPC dialogue with prize locations
+   - Modify room objects with chest states
+   - Update boss formations and AI scripts
+
+10. **Render to Patch** → GameWorld.get_patch()
+    - smrpgpatchbuilder renders all modified collections to ROM addresses
+    - Patch data aggregated as {address: bytes} dictionary
+    - Optional: debug BPS patches for individual render stages
+
+11. **Compute Hash** → seed hash from spoiler
+    - Hash used as unique identifier for seed
+    - Enables replay of identical generation via hash lookup
+
+12. **Response** → JSON with patch data
+    - GenerateView: Immediate response with full patch
+    - GenerateStreamView: SSE stream with progress updates
+    - GenerateFromHashView: Replay from database
 
 **State Management:**
 
-- `GameWorld` instance is the central state container holding all game collections
-- Prize locations cache (`_prize_type_to_location`) tracks placement for dependency resolution
-- Rooms snapshot enables shuffle retries without data accumulation
-- Settings object immutable for reproducibility given seed + flag string
-- Each request creates fresh GameWorld with deep copies of data (no shared state)
+- **Immutable during generation**: Seed, Settings, flag strings
+- **Mutable during generation**: GameWorld and all collections (deep copied per seed)
+- **Cached per seed**: Generated patches in database (Seed, Patch models)
+- **Progress tracking**: Optional progress_callback during long-running generation
 
 ## Key Abstractions
 
 **GameWorld:**
-- Purpose: Central orchestrator holding all game state and coordinating randomization
-- Examples: `randomizer/types/gameworld.py` (2000+ lines)
-- Pattern: Singleton-per-request with deep-copied data; uses composition for collections
+- Purpose: Central state container representing the entire randomized game
+- Examples: `randomizer/types/gameworld.py` (2000+ lines, ~40 properties)
+- Pattern: Builder pattern - initialized with collections, modified via get_*/update_* methods
+- Responsibilities:
+  - Provides access to all game data (items, enemies, dialogs, etc.)
+  - Maintains prize location registry and placement cache
+  - Generates final patch via smrpgpatchbuilder renders
+  - Computes hash and spoiler log
 
-**PrizeLocation and subtypes:**
-- Purpose: Abstract different ways items can be placed (chests, NPC drops, spell slots, etc.)
-- Examples: `TreasureChestLocation`, `NPCLocationRow`, `SpellSlotLocation`, `BoosterHillLocation`
-- Pattern: Polymorphism with type-based dispatch in shufflers
+**PrizeLocation:**
+- Purpose: Represent a logical location where a prize can be placed
+- Examples: `randomizer/types/prizelocation.py` (TreasureChestLocation, StandingLocation, BossFightLocation, etc.)
+- Pattern: Polymorphic hierarchy with location-specific metadata
+- Responsibilities:
+  - Define where a prize appears in the game (room ID, NPC index, etc.)
+  - Control visibility based on settings (isflag_enabled checks)
+  - Track placed prize and notify GameWorld
 
-**Flag system:**
-- Purpose: User-facing randomization options with dependencies and validation
-- Examples: `randomizer/types/flags.py` (BooleanFlag, RangeFlag, SelectOneFlag, CategorizationFlag)
-- Pattern: Class hierarchy with metadata (requires_all, requires_any, disabled_if_all, modes)
+**Settings & Flags:**
+- Purpose: User-configurable options for randomization behavior
+- Examples: `randomizer/types/flags.py` (110KB), `randomizer/types/settings.py`
+- Pattern: Hierarchical flag system with dependencies and requirements
+- Responsibilities:
+  - Parse flag strings from UI or API
+  - Track enabled flags and their values
+  - Provide is_flag_enabled() checks throughout shufflers
 
-**Shuffler pattern:**
-- Purpose: Domain-specific randomization algorithms
-- Examples: `shuffle_prizes()`, `randomize_enemy_stats()`, `shuffle_shops()`
-- Pattern: Functions taking GameWorld, modifying state in-place, with validation
+**Shuffler Functions:**
+- Purpose: Transform specific game systems based on settings
+- Examples: `randomizer/logic/shufflers/items.py`, `enemies.py`, `shops.py`
+- Pattern: Pure functions receiving GameWorld, returning nothing (mutate in place)
+- Responsibilities:
+  - Implement randomization logic for one domain
+  - Respect enabled flags and constraints
+  - Coordinate with other shufflers via GameWorld state
 
-**Settings:**
-- Purpose: Immutable configuration object created from flag selections
-- Examples: `randomizer/types/settings.py`
-- Pattern: Dict-like access to flag values with isflag_enabled(FlagClass) and is_flag_value(FlagClass, value)
+**Patch:**
+- Purpose: Represent binary ROM modifications as address→data map
+- Examples: `randomizer/types/patch.py`
+- Pattern: Additive data structure with merging support
+- Responsibilities:
+  - Accumulate patch data from all shuffler operations
+  - Serialize to JSON for network transmission
+  - Support debug mode overlap detection
 
 ## Entry Points
 
-**Web Request:**
-- Location: `randomizer/views.py` (GenerateView, APIGenerateView)
-- Triggers: HTTP POST to /seed or /api/v1/generate
-- Responsibilities: Parse request, create Settings, call main.create(), serialize response
+**Web Application:**
+- Location: `manage.py`
+- Triggers: `python manage.py runserver` or gunicorn
+- Responsibilities: Django WSGI startup
 
-**Stream Generation:**
-- Location: `randomizer/views.py` (GenerateStreamView)
-- Triggers: HTTP GET to /seed/stream with query params
-- Responsibilities: Long-running seed generation with SSE progress updates
+**Seed Generation:**
+- Location: `randomizer/main.py:create()`
+- Triggers: FormView.form_valid() or API client POST to /seed or /seed/stream
+- Responsibilities: Orchestrate the full randomization pipeline
 
-**Patch Reconstruction:**
-- Location: `randomizer/views.py` (GenerateFromHashView)
-- Triggers: HTTP GET to /hash/{hash}/{region}
-- Responsibilities: Look up cached seed by hash, regenerate specific region patch
+**Hash Replay:**
+- Location: `randomizer/views.py:GenerateFromHashView.get()`
+- Triggers: GET /hash/<hash>/<region> or reverse lookup from database
+- Responsibilities: Retrieve previously generated seed from cache
+
+**WAD Packing:**
+- Location: `randomizer/views.py:PackingView.post()`
+- Triggers: POST /pack with ROM + WAD file uploads
+- Responsibilities: Embed randomized ROM into Wii WAD package
 
 **Management Commands:**
 - Location: `randomizer/management/commands/`
 - Triggers: `python manage.py [command]`
-- Responsibilities: Bulk operations (debug, testing, data migration)
+- Responsibilities: Database maintenance, bulk operations
 
 ## Error Handling
 
-**Strategy:** Fail-fast with specific exceptions, retry on placement failures
+**Strategy:** Exception-based with specific error types
 
 **Patterns:**
-- Settings validation in GameWorld.__init__() catches impossible flag combinations early
-- PlacementException triggers shuffle retry with fresh room state (max 5 retries per failure count)
-- WorldBuildingException raised after exhausting retries, indicates unsolvable settings
-- RandomizerSettingsException for user-provided invalid flag data
-- Form validation in GenerateForm catches basic client errors
+- `FlagError`: Flag parsing/validation fails → HTTP 400 with error message
+- `RandomizerSettingsException`: Settings logic error → HTTP 500 with details
+- `WorldBuildingException`: GameWorld construction fails → HTTP 500 with details
+- `ValidationError`: Prize distribution invalid → Logged, generation fails gracefully
+- Generic Exception: Catch-all logging in views with full context (seed, flags)
+
+**Database Integrity:**
+- Atomic transactions on seed/patch save with conflict resolution (delete existing by hash)
+- No cascading deletes from UI level - only through Django ORM on_delete=CASCADE
 
 ## Cross-Cutting Concerns
 
-**Logging:** Configured in settings.py with StreamHandler; randomizer logger at ERROR level in development
+**Logging:**
+- Use `logging.getLogger(__name__)` in all modules
+- Views log FormView and validation errors with full context
+- Shufflers and validation logic rarely log (rely on exception propagation)
 
 **Validation:**
-- Settings validation in `randomizer/logic/validation.py`
-- Prize placement validation in `randomizer/logic/placement.py`
-- Form validation in `randomizer/forms.py`
+- Flag validation: FlagError before world creation
+- Settings validation: RandomizerSettingsException during Settings construction
+- Prize distribution: validate_settings() post-shuffle with detailed error messages
+- Room/object state: Asserts in get_* methods (no silent failures)
 
-**Authentication:** None (stateless HTTP, seed hash is not authentication)
+**Authentication:**
+- @csrf_exempt on APIs (PackingView, APIGenerateView)
+- No per-user tracking or authentication in core logic
+- Race mode suppresses spoiler log
 
-**Caching:**
-- Prize location cache for quick lookups during shuffling
-- Cached patches in database (Seed.hash, Patch model)
-- Seed snapshot for deterministic retry
+**Concurrency:**
+- GenerateStreamView uses threading.Thread for background generation
+- Thread-safe queue.Queue for progress updates
+- No thread-local storage or global state mutations during generation
 
 ---
 

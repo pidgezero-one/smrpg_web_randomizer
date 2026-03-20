@@ -1,97 +1,126 @@
-# Integrations
+# External Integrations
 
-## Databases
+**Analysis Date:** 2026-03-20
 
-### PostgreSQL 17 (Production)
-- Configured via environment variables: `SQL_ENGINE`, `SQL_DATABASE`, `SQL_USER`, `SQL_PASSWORD`, `SQL_HOST`, `SQL_PORT`
-- Used in Docker production setup via `docker-compose.prod.yml`
-- Driver: `psycopg2-binary==2.9.10`
+## APIs & External Services
 
-### SQLite (Development)
-- Default fallback when no SQL_ENGINE env var or `local_settings.py` is present
-- File: `db.sqlite3` in project root
+**None Detected** - This is a standalone web application with no external API dependencies for its core web service functionality.
 
-### Database Models
-- `randomizer/models.py` — two models:
-  - `Seed` — stores generated seed metadata (hash, seed number, version, flags, spoiler JSON)
-  - `Patch` — stores generated ROM patches per region, linked to Seed via FK
+Game-related tools in the `tools/` directory support optional SNI (Serial Network Interface) protocol integration:
+- SNI Server - Optional gRPC-based communication for real hardware/emulator integration (used in development tools only, not web service)
+  - SDK/Client: `snirk` >=0.2.1
+  - Usage: Game state monitoring, item tracking for speedrunning/development (`tools/sni_test.py`, `tools/sni_monitor.py`, `tools/sni_autotracker.py`)
 
-## External Libraries (Non-PyPI)
+## Data Storage
 
-### python-bps
-- Git dependency: `git+https://gitlab.com/pidgezero_one/python-bps.git@0.1`
-- BPS patch format library for ROM patching
+**Databases:**
+- PostgreSQL 17 (production)
+  - Connection: Environment variables `SQL_ENGINE`, `SQL_DATABASE`, `SQL_USER`, `SQL_PASSWORD`, `SQL_HOST`, `SQL_PORT`
+  - Client: Django ORM via psycopg2-binary 2.9.10
+  - Configured in: `smrpg_web_randomizer/settings.py`
 
-### smrpgpatchbuilder
-- PyPI package (`smrpgpatchbuilder==4.1.18`)
-- Core patch building library — provides management commands and patch generation tools
-- Installed in `patchvenv/`
+- SQLite 3 (development fallback)
+  - Local file-based database at `db.sqlite3`
+  - Used when PostgreSQL is not configured
 
-### Wii.py
-- WAD file handling for Wii Virtual Console ROM packing
-- Used in `randomizer/views.py` for the pack endpoint
+**File Storage:**
+- Local filesystem only
+  - Static files: served by Nginx from `staticfiles/` volume
+  - Temporary files: generated during seed/patch creation (managed via `tempfile` module)
+  - ROM files: uploaded by user, processed, and discarded (no persistence)
 
-### nlzss
-- LZSS compression/decompression for SNES ROM data
-- Used in `randomizer/views.py`
+**Caching:**
+- Django in-memory caching via Django settings
+- No external cache service (Redis/Memcached) detected
 
-## Authentication
+## Authentication & Identity
 
-- Django built-in auth (included in INSTALLED_APPS)
-- No external auth providers (OAuth, SSO, etc.)
-- Admin interface available at standard Django admin URL
+**Auth Provider:**
+- Custom/Django built-in only
+  - Implementation: Django's built-in authentication system (`django.contrib.auth`)
+  - Uses Django admin for internal access
+  - CSRF protection enabled via `django.middleware.csrf.CsrfViewMiddleware`
+  - No external OAuth, SSO, or third-party authentication
 
-## API Endpoints
+## Monitoring & Observability
 
-### Web Routes (`randomizer/urls.py`)
-- `GET /` — About/home page
-- `GET /randomize` — Randomizer form page
-- `POST /seed` — Generate a new seed
-- `GET /seed/stream` — SSE stream for generation progress
-- `GET /h/<hash>` — View seed by hash
-- `GET /hash/<hash>/<region>` — Download patch for seed
-- `POST /pack` — Pack ROM into Wii WAD format
+**Error Tracking:**
+- None detected - No external error tracking service (Sentry, Rollbar, etc.) integrated
 
-### REST API
-- `POST /api/v1/generate` — Programmatic seed generation
-- `GET /api/v1/flags` — Get available flags/options
+**Logs:**
+- Python logging to stdout/stderr via `logging.StreamHandler`
+- Configured in `smrpg_web_randomizer/settings.py` (lines 129-163)
+- Development: Console output with debug filtering
+- Production: WARNING level and above logged to stdout for container log capture
+- Application-specific logging at `randomizer.*` package level
 
-## Infrastructure
+## CI/CD & Deployment
 
-### Docker
-- Development: `docker-compose.yml` (Django + SQLite)
-- Production: `docker-compose.prod.yml` (Django + Gunicorn + Nginx + PostgreSQL)
-- `Dockerfile` / `Dockerfile.prod` — Python 3.13-slim based images
-- `entrypoint.sh` / `entrypoint.prod.sh` — startup scripts
+**Hosting:**
+- Docker container-based deployment
+- Orchestrated via Docker Compose
+- Nginx + Gunicorn architecture
 
-### Nginx
-- Reverse proxy in production (`nginx/` directory)
-- Serves static files directly, proxies app requests to Gunicorn
+**CI Pipeline:**
+- None detected - No GitHub Actions, GitLab CI, or other CI service configured
 
-### Static Files
-- Served by Django in development, Nginx in production
-- `STATIC_ROOT` configurable via env var
-- Max upload size: 25 MB (for WAD file packing)
+**Containerization:**
+- Development: `docker-compose.yml` with volume mounts for hot-reload
+- Production: `docker-compose.prod.yml` with multi-stage builds
+- Nginx container for reverse proxy
+- PostgreSQL container with health checks
 
-## Environment Variables
+## Environment Configuration
 
-| Variable | Purpose |
-|---|---|
-| `SECRET_KEY` | Django secret key |
-| `DEBUG` | Debug mode toggle |
-| `DJANGO_ALLOWED_HOSTS` | Allowed host headers |
-| `CSRF_TRUSTED_ORIGINS` | Trusted CSRF origins |
-| `SQL_ENGINE` | Database engine (set to "postgresql" for prod) |
-| `SQL_DATABASE`, `SQL_USER`, `SQL_PASSWORD`, `SQL_HOST`, `SQL_PORT` | PostgreSQL connection |
-| `STATIC_URL`, `STATIC_ROOT` | Static file serving |
-| `TIME_ZONE` | Server timezone |
-| `BETA` | Beta site flag |
+**Required env vars (Production):**
+- `DJANGO_SETTINGS_MODULE=smrpg_web_randomizer.settings` (set in `wsgi.py`)
+- `SQL_ENGINE=postgresql` (to enable PostgreSQL)
+- `SQL_DATABASE` - Database name
+- `SQL_USER` - Database user
+- `SQL_PASSWORD` - Database password
+- `SQL_HOST` - Database hostname
+- `SQL_PORT` - Database port (default 5432)
+- `SECRET_KEY` - Django secret key for session/CSRF tokens
+- `DEBUG` - Debug mode flag (0/1, must be 0 in production)
+- `ALLOWED_HOSTS` - Comma/space-separated domain list
+- `STATIC_URL` - Static file URL prefix (default `/static/`)
+- `STATIC_ROOT` - Static file directory path
+- `CSRF_TRUSTED_ORIGINS` - Origins allowed for CSRF protection when behind proxy
 
-## What's NOT Integrated
-- No external monitoring (Sentry, Datadog, etc.)
-- No caching layer (Redis, Memcached)
-- No task queue (Celery)
-- No email sending
-- No CDN
-- No CI/CD pipeline (no GitHub Actions workflows found)
-- No external webhooks or third-party API calls
+**Optional env vars:**
+- `BETA` - Beta site flag (0/1)
+- `TIME_ZONE` - Application timezone (default UTC)
+
+**Secrets location:**
+- Environment variables passed via Docker `.env` files:
+  - `.env.dev` - Development Django settings
+  - `.env.dev.db` - Development database credentials
+  - `.env.prod` - Production Django settings
+  - `.env.prod.db` - Production database credentials
+  - `.env.prod.nginx` - Nginx environment (headers, cache settings, etc.)
+- Alternative: `local_settings.py` for local development (not committed)
+
+## Webhooks & Callbacks
+
+**Incoming:**
+- None detected - Web service does not accept incoming webhooks
+
+**Outgoing:**
+- None detected - Web service does not send webhooks to external services
+
+## Game ROM Processing
+
+**ROM Input/Output:**
+- Receives uploaded ROM files from users via HTTP POST (multipart/form-data)
+- Processes ROMs using custom game logic and patch builders
+- Returns patched ROM files or patches for user download
+- No external ROM storage or cloud service
+
+**Patch Storage:**
+- Seeds and patches stored in PostgreSQL database (models in `randomizer/models.py`):
+  - `Seed` model: seed value, hash, version, flags, spoiler data
+  - `Patch` model: region-specific BPS patches linked to seeds
+
+---
+
+*Integration audit: 2026-03-20*

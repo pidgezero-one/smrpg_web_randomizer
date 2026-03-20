@@ -5,142 +5,215 @@
 ## Naming Patterns
 
 **Files:**
-- Lowercase with underscores: `validation.py`, `placement.py`, `allied.py`
-- Type definition files in `randomizer/types/` directory: `flags.py`, `settings.py`, `ally.py`, `item.py`, `enemy.py`
-- Data files in `randomizer/data/` organized by category: `items/items.py`, `enemies/enemies.py`, `spells/spells.py`
-- Event scripts follow pattern `script_NNNN.py` where N is numeric ID: `script_1936.py`, `script_1937.py`
+- `snake_case.py` for all Python files
+- Example: `randomizer/views.py`, `randomizer/main.py`, `randomizer/forms.py`
+- Type/class files grouped by domain: `randomizer/types/patch.py`, `randomizer/types/flags.py`, `randomizer/types/logic.py`
 
-**Classes:**
-- PascalCase: `SettingsValidationError`, `Flag`, `Settings`, `GameWorld`, `Ally`, `Item`
-- Base classes use suffix: `Item` (extends `ItemBase`), `Ally` (extends `AllyBase`)
-- Enum classes extend standard enum types: `class SpriteAnimationState(str, Enum)`
-- Exception classes use `Error` suffix and inherit from `Exception`: `SettingsValidationError(Exception)`, `FlagError(ValueError)`
-
-**Functions:**
-- snake_case: `validate_settings()`, `mutate_normal()`, `_validate_character_requirements()`, `debug_time()`
-- Private/internal functions prefixed with single underscore: `_validate_character_requirements()`, `_add_desc_fields()`
-- Properties use `@property` decorator without underscore prefix
+**Functions and Methods:**
+- `snake_case()` for function/method names
+- Private methods prefixed with `_`: `_build_flag_json_data()`, `_serialize_requirements()`, `_get_option_text()`
+- Example from `randomizer/views.py`: `def _build_flag_json_data()`, `def _serialize_requirements()`, `def get_context_data()`
+- Example from `randomizer/types/patch.py`: `def add_data()`, `def get_data()`, `def for_json()`
 
 **Variables:**
-- snake_case for local variables: `gating_required_characters`, `disabled_char_names`, `all_required_characters`
-- CONSTANT_CASE for module-level constants: `VERSION = '9.0.0'`, `B64_TABLE`
-- Underscore prefix for private attributes: `_flags`, `_override`, `_debug_mode`, `_description`, `_default`
+- `snake_case` for local and instance variables
+- Private instance attributes prefixed with `_`: `self._data`, `self._debug_mode`, `self._name`, `self._requires_all`
+- Type-hinted class attributes with explicit types: `_requires_all: list = []`, `_disabled_if_all: list = []`
 
-**Types:**
-- PascalCase: `Settings`, `Flag`, `Ally`, `Item`, `Enemy`
-- TypeVar suffix `T`: `FlagT = TypeVar("FlagT", bound=Flag)`
-- Enum members use UPPERCASE: `FIRE`, `ICE`, `MALLOW`, `MARIO` (imported from external libs)
+**Classes:**
+- `PascalCase` for class names
+- Examples: `Patch`, `Flag`, `Spell`, `CharacterSpell`, `EnemySpell`, `Inventory`, `CategorizationFlag`, `GenerateForm`, `RandomizerView`
+- Classes inherit from specific base classes: `class Patch:`, `class CharacterSpell(CharacterSpellBase, Spell):`
+
+**Enums:**
+- `PascalCase` for enum classes: `FlagType`, `TreasureHunterNickname`
+- `UPPER_CASE` for enum values: `FlagType.BOOLEAN`, `FlagType.CATEGORIZATION`, `FlagType.RANGE`
+
+**Type Hints:**
+- Modern Python type hints used throughout: `def create(seed: int | str, settings: Settings, progress_callback: Callable[[str, int], None] | None = None) -> GameWorld:`
+- Union types using `|` operator instead of `Union[]`
+- `dict[K, V]` instead of `Dict[K, V]`
+- `list[T]` instead of `List[T]`
 
 ## Code Style
 
 **Formatting:**
-- No explicit formatter configured in repo
-- Consistent 4-space indentation observed
-- Line length varies; no strict limit visible
-- Type hints used throughout modern code
+- No explicit formatter detected (no .black, .prettier, or ruff config files)
+- Lines appear to follow standard Python conventions (no enforced line length limit visible)
+- Consistent 4-space indentation throughout
 
 **Linting:**
-- No `.eslintrc`, `.flake8`, or `pylint` config detected
-- Project has `.vscode/` settings directory
-- Type hints present in most files: `def function(param: Type) -> ReturnType`
+- `pytest` is installed (`pytest==8.3.5` in requirements.txt)
+- No `.flake8`, `.pylintrc`, or equivalent linting config files present
+- No automated linting enforcement configured
+
+**Line Length & Readability:**
+- Long type hints broken across lines when needed
+- Imports organized but not enforced by tool
+- Code favors explicit type hints over implicit typing
 
 ## Import Organization
 
 **Order:**
-1. Future imports: `from __future__ import annotations`
-2. Standard library imports: `import sys`, `import time`, `import random`, `from typing import TYPE_CHECKING`
-3. External library imports: `import grpc`, `import Wii`, `import nlzss`
-4. Framework imports: `from django.db import models`, `from django.http import JsonResponse`
-5. Third-party packages: `from smrpgpatchbuilder.datatypes.items.classes import Item`
-6. Local relative imports: `from ..types.flags import Flag`, `from .models import Seed`
+1. Standard library imports: `import binascii`, `import hashlib`, `import json`, `import logging`, `import os`, etc.
+2. Third-party imports: `import Wii`, `import nlzss`, `from django.*`, etc.
+3. Local/relative imports: `from .models import`, `from .types.flags import`, `from .main import`
 
-**Type Checking Guards:**
+**Pattern from `randomizer/views.py`:**
 ```python
-if TYPE_CHECKING:
-    from ..types.gameworld import GameWorld
+import binascii
+import hashlib
+import json
+import logging
+import os
+# ... more stdlib ...
+
+import Wii
+import nlzss
+
+from django.conf import settings
+from django.db import transaction
+from django.http import (
+    JsonResponse,
+    HttpResponseBadRequest,
+    HttpResponse,
+    HttpResponseNotFound,
+    QueryDict,
+    StreamingHttpResponse,
+)
+# ... more django imports ...
+
+from randomizer.types.flags import CATEGORIES, PRESETS, FlagError
+from randomizer.types.patch import PatchJSONEncoder
+
+from .models import Seed, Patch
+from .forms import GenerateForm
+from .main import create, VERSION
+from .types.settings import Settings
+from .types.flags import Flag, CategorizationFlag, CategorizationFlagWithOrdinance, BooleanFlag, RangeFlag, SelectOneFlag
 ```
-Used to avoid circular imports while maintaining type hints.
 
 **Path Aliases:**
-- Module structure uses relative imports: `from ..types.settings import Settings`
-- No path aliases configured in `sys.path` modifications visible (except temporary in test utilities)
+- No path aliases configured (no jsconfig or alias patterns observed)
+- Relative imports used within Django app: `from .models`, `from .types.flags`
+- Absolute imports for cross-module references: `from randomizer.types.flags import`
+
+**Conditional Imports:**
+- `TYPE_CHECKING` guard used for circular import prevention: `if TYPE_CHECKING: from .gameworld import GameWorld`
+- Example from `randomizer/types/prize.py` and `randomizer/types/logic.py`
 
 ## Error Handling
 
 **Patterns:**
-- Custom exceptions defined with docstrings: `class SettingsValidationError(Exception): """Raised when settings have an invalid combination."""`
-- Explicit exception raising with descriptive messages: `raise SettingsValidationError("...")`
-- Type-specific exception inheritance: `FlagError(ValueError)` for validation errors
-- Empty except blocks avoided; instead return `None` or use specific exception types
-- Functions catch and convert gRPC exceptions to return `None` (test utilities): `except Exception as e: return None`
-- No silent failures - errors should propagate or be logged
+- Custom exception classes created for domain-specific errors: `class FlagError(ValueError): pass` in `randomizer/types/flags.py`
+- Custom exceptions raised with descriptive messages: `raise FlagError(f"Option {option} is not a valid option for this flag.")`
+- Try-except blocks used selectively for external library operations
+- Example from `randomizer/types/gameworld.py`:
+  ```python
+  try:
+      # attempt operation
+  except IdentifierException:
+      try:
+          # fallback attempt
+      except IdentifierException:
+          raise WorldBuildingException("No battle animation banks found")
+  ```
+- No silent failures: CLAUDE.md explicitly states "NEVER resolve an issue by adding silent failure handling. Find the root cause instead."
+
+**Logging Errors:**
+- Logger initialized as module-level instance: `logger = logging.getLogger(__name__)` in `randomizer/views.py`
+- Error logging uses descriptive messages: `logger.error("Flag error during generation: %s", e.args[0])`
+- Exception context logged with `logger.exception()` for full stack traces
 
 ## Logging
 
-**Framework:**
-- Python `logging` module used in Django views: `logger = logging.getLogger(__name__)`
-- Called with descriptive messages in view handlers
+**Framework:** `logging` module (stdlib)
 
 **Patterns:**
-- Logger instance created once per module: `logger = logging.getLogger(__name__)`
-- Not used extensively in core logic; mainly in view layer (`randomizer/views.py`)
+- Module-level logger initialization: `logger = logging.getLogger(__name__)`
+- Log levels used: `logger.error()` for errors, `logger.exception()` for exceptions with traceback
+- Logging configuration in `smrpg_web_randomizer/settings.py`:
+  ```python
+  LOGGING = {
+      'version': 1,
+      'disable_existing_loggers': False,
+      'filters': {...},
+      'handlers': {'console': {...}, 'console_debug': {...}},
+      'loggers': {...}
+  }
+  ```
 
 ## Comments
 
 **When to Comment:**
-- Complex algorithms get descriptive docstrings (e.g., `mutate_normal()`)
-- Magic numbers explained inline
-- Import statements may have inline comments for clarity: `# holy shit i cannot deal with how slow pylance is, fuck it just import everything` (actual code)
-- Generally minimal inline comments; code is self-documenting
+- Docstrings on public methods and classes that need explanation
+- Inline comments for non-obvious logic or algorithm choices
+- TODO/FIXME comments marked with issue context
 
-**Docstrings/TSDoc:**
-- Functions use docstring format with Args, Returns, Raises sections:
-```python
-def validate_settings(settings: Settings) -> None:
-    """Validate that settings combinations are valid.
+**JSDoc/TSDoc:**
+- Python docstrings using triple quotes for methods/functions
+- Example from `randomizer/types/patch.py`:
+  ```python
+  def add_data(
+      self, addr: int, data: bytearray | bytes | list[int] | int | str, source: str = ""
+  ) -> None:
+      """Add data to the patch."""
+      # Convert all types to bytes/bytearray for consistent handling
+  ```
+- Example from `randomizer/main.py`:
+  ```python
+  def create(
+      seed: int | str,
+      settings: Settings,
+      progress_callback: Callable[[str, int], None] | None = None,
+      debug_bps_patches: bool = False,
+  ) -> GameWorld:
+      """Create a patch for the given seed.
 
-    This should be called before shuffle_items to catch invalid settings early.
+      Deep copies all mutable collections so modifications during randomization
+      don't affect subsequent seed generations.
 
-    Args:
-        settings: The settings object to validate
-
-    Raises:
-        SettingsValidationError: If settings have an invalid combination
-    """
-```
-- Multi-line docstrings use triple quotes: `"""..."""`
-- Class docstrings describe purpose: `"""Extended Ally class with _sprites_primary and _sprites_secondary support."""`
+      Args:
+          seed: The randomizer seed value.
+          settings: The randomizer settings/flags.
+          progress_callback: Optional callback for progress updates. Called with
+              (message: str, percent: int) during generation.
+          debug_bps_patches: If True, generate separate BPS patches for each render
+              stage (only works in debug/development environment).
+      """
+  ```
 
 ## Function Design
 
-**Size:**
-- Functions range from ~10 to 1000+ lines (see `randomizer/logic/apply.py` at 2000+ lines)
-- Larger functions broken into logical sections with helper functions prefixed with `_`
+**Size:** Functions range from single-operation to 50+ lines. Preference appears to be for focused, single-responsibility functions.
 
 **Parameters:**
-- Type hints on all parameters: `def function(param: Type, other: int | None = None) -> ReturnType`
-- Optional parameters use `| None` union type notation: `p3: int = 0`
-- Callbacks typed: `progress_callback: Callable[[str, int], None] | None = None`
+- Explicit parameter types required: `def create(seed: int | str, settings: Settings, ...)`
+- Default parameters provided where sensible: `debug_mode: bool = False`
+- Optional parameters use `| None` union syntax: `progress_callback: Callable[[str, int], None] | None = None`
 
 **Return Values:**
-- Explicit return types in function signature
-- Functions return specific types or `None`: `-> bool | None`, `-> dict`, `-> bytes | None`
-- Errors raised as exceptions rather than returning error codes
+- Explicit return type hints on all public functions: `-> GameWorld`, `-> list[int]`, `-> str`, `-> None`
+- Properties used for computed attributes: `@property def addresses(self) -> list[int]:`
+- Multiple return values returned as tuples or custom classes (not unpacking)
 
 ## Module Design
 
 **Exports:**
-- No explicit `__all__` declarations observed
-- Files export classes, functions, and constants directly
-- Top-level constants exported: `VERSION = '9.0.0'` in `main.py`
+- Classes and functions implicitly exported from modules (no `__all__` pattern observed)
+- Modules organize related functionality: `randomizer/types/` directory contains type definitions, `randomizer/data/` contains game data
 
 **Barrel Files:**
-- Not used; each file imported explicitly: `from randomizer.types.flags import Flag`
-- Type imports use full paths: `from ..types.ally import SpriteAnimationState`
+- No barrel files (index.py aggregation) used in this codebase
+- Each module imports directly from its source: `from randomizer.types.flags import Flag`, `from randomizer.types.patch import Patch`
 
-**Circular Import Prevention:**
-- Uses `TYPE_CHECKING` guards for type hints
-- Imports placed at function/method level when circular dependency unavoidable (CLAUDE.md warns against this, but example exists in `randomizer/logic/validation.py` line 44)
+**Organization:**
+- `randomizer/types/` - Type definitions and domain models (Patch, Flag, Spell, Prize, etc.)
+- `randomizer/data/` - Game data and assets
+- `randomizer/` - Views, forms, models, main generation logic
+- `randomizer/progression/` - Randomization logic and algorithms
+- `randomizer/logic/` - Game logic application
+- `randomizer/management/commands/` - Django management commands
 
 ---
 

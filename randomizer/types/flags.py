@@ -1844,19 +1844,24 @@ class ShopQualities(CategorizationOption):
     """Enumeration for shop shuffle quality option"""
 
     ORIGINAL = "Original shop pool"
-    COMPLETELY_RANDOM = "Completely random items"
+    COMPLETELY_RANDOM = "Random items"
     MOSTLY_RANDOM = "Random items, biased toward low-impact items"
+    ALL = "All items"
     EMPTY = "Completely empty"
 
 
 # ✅
 class ShopQuality(SelectOneFlag[ShopQualities]):
     _name = """Shop contents quality"""
-    _description = """Restricts the incidence of certain items in shops.
+    _description = """Controls the item distribution in shops.
 <br>
-<br>"Completely random" means that some items which originally did not appear in shops may now appear in shops, but only a small pool of items are guaranteed to appear. Some items will never appear in non-depletable shops.
+<br><b>Original shop pool</b>: The only items eligible to appear in shops are those also sold in shops in the original game.
 <br>
-<br>If "Completely empty" is selected, all shops will just sell the Goodie Bag."""
+<br><b>Random items</b>: Any item can appear in a shop, but not all items will appear in shops. Optionally, you can favour low-impact items (i.e. mid mushrooms) to prevent this feature from making the game too easy. Items which are meant to only be obtained once (Lucky Jewel, Mystery Egg, Star Egg, etc) will never appear in shops.
+<br>
+<br><b>All items</b>: Every non-key item in the game will appear in at least one shop. The Star Egg will not be purchaseable if "No Star Egg" is enabled.
+<br>
+<br><b>Completely empty</b>: All shops will just sell the Goodie Bag."""
     choices = [o for o in ShopQualities]
     _default = ShopQualities.ORIGINAL
     _id = "shopqual"
@@ -2971,7 +2976,7 @@ class LegacyQuick(Preset):
         "A preset that approximates the settings of the old 'Quick' preset from 8.x.x."
     )
     _flags: str = (
-        "P(rchars|starters:4:5:6)     Q(perms:random|props:random)     C(exp:triple|stats|charspells)     X(rstars|bosses:fzFu3Nfe)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:star_6)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     S(rshops|shopqual:completely_random|showperms|free)     B(rboss|pool:fz9v3N/P)     E(drops)"
+        "P(rchars|starters:4:5:6)     Q(perms:random|props:random)     C(exp:triple|stats|charspells)     X(rstars|bosses:fzFu3Nfe)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:star_6)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     S(rshops|shopqual:all|showperms|free)     B(rboss|pool:fz9v3N/P)     E(drops)"
     )
 
 
@@ -2981,7 +2986,7 @@ class LegacyCasual(Preset):
         "A preset that approximates the settings of the old 'Casual' preset from 8.x.x."
     )
     _flags: str = (
-        "P(rchars|starters:4:5:6)     Q(perms:random)     C(exp:double|stats)     X(rstars|bosses:f7/v3N/f)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace|xpstar:bosses)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:star_6)     O(doorcount:1|cwarp)     G(ball|button|quiz|doorshuffle)     S(rshops|shopqual:completely_random|showperms)     B(rboss|pool:fz9v3N/P)     E(drops|formations)"
+        "P(rchars|starters:4:5:6)     Q(perms:random)     C(exp:double|stats)     X(rstars|bosses:f7/v3N/f)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace|xpstar:bosses)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:star_6)     O(doorcount:1|cwarp)     G(ball|button|quiz|doorshuffle)     S(rshops|shopqual:all|showperms)     B(rboss|pool:fz9v3N/P)     E(drops|formations)"
     )
 
 
@@ -2991,7 +2996,7 @@ class LegacyIntermediate(Preset):
         "A preset that approximates the settings of the old 'Intermediate' preset from 8.x.x."
     )
     _flags: str = (
-        "P(rchars|starters:4:6:5)     Q(perms:random|props:random)     C(exp:double|stats|charspells|spellstats)     X(rstars|total_sp:7|bosses:/HE+//f+)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|endgame:7|doorcount:2|cwarp)     G(ball|button|quiz|doorshuffle)     S(rshops|shopqual:completely_random|showperms)     B(rboss|pool:fz9v3N/P)     E(drops|formations)"
+        "P(rchars|starters:4:6:5)     Q(perms:random|props:random)     C(exp:double|stats|charspells|spellstats)     X(rstars|total_sp:7|bosses:/HE+//f+)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|endgame:7|doorcount:2|cwarp)     G(ball|button|quiz|doorshuffle)     S(rshops|shopqual:all|showperms)     B(rboss|pool:fz9v3N/P)     E(drops|formations)"
     )
 
 
@@ -3021,7 +3026,7 @@ class LegacyAsyncTournament(Preset):
         "A preset that approximates the settings of the old '2021 Fall Async Tournament' preset from 8.x.x."
     )
     _flags: str = (
-        "P(rchars|starters:4)     Q(perms:random|props:random)     C(exp:double|stats|charspells|spellstats)     X(rstars|total_sp:7|bosses:f7Fu3Nfe)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace|fake)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open)     O(endgame:7|doorcount:2|cwarp)     G(button|doorshuffle)     S(rshops|shopqual:completely_random|showperms)     B(rboss|pool:/39////f)     E(enemystats:full_random|drops|formations|attacks)"
+        "P(rchars|starters:4)     Q(perms:random|props:random)     C(exp:double|stats|charspells|spellstats)     X(rstars|total_sp:7|bosses:f7Fu3Nfe)     T(ritems|itemqual:completely_random|restrict_monstro)     I(replace|fake)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open)     O(endgame:7|doorcount:2|cwarp)     G(button|doorshuffle)     S(rshops|shopqual:all|showperms)     B(rboss|pool:/39////f)     E(enemystats:full_random|drops|formations|attacks)"
     )
 
 
@@ -3031,7 +3036,7 @@ class LegacyBingo(Preset):
         "A preset that approximates the settings of the old 'Standard Bingo Flags' preset from 8.x.x."
     )
     _flags: str = (
-        "P(rchars|starters:4)     Q(perms:random|props:random)     C(exp:triple|stats|charspells|spellstats)     X(rstars|total_sp:7)     T(ritems|itemqual:completely_random|restrict_monstro)     L(keys_anywhere|chests:////////////////////////////////////f8//////////////v/////)     I(fake)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open)     O(seaside:open|endgame:7|doorcount:2|cwarp)     G(button|doorshuffle)     S(rshops|shopqual:completely_random)     B(rboss|pool:f79v3t/P)     E(enemystats:full_random|drops|formations|attacks)"
+        "P(rchars|starters:4)     Q(perms:random|props:random)     C(exp:triple|stats|charspells|spellstats)     X(rstars|total_sp:7)     T(ritems|itemqual:completely_random|restrict_monstro)     L(keys_anywhere|chests:////////////////////////////////////f8//////////////v/////)     I(fake)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open)     O(seaside:open|endgame:7|doorcount:2|cwarp)     G(button|doorshuffle)     S(rshops|shopqual:all)     B(rboss|pool:f79v3t/P)     E(enemystats:full_random|drops|formations|attacks)"
     )
 
 

@@ -67,6 +67,11 @@ def shuffle_shops(world: GameWorld) -> None:
         ExpBoosterItem,
         CoinTrickItem,
         ScroogeRingItem,
+        # Items excluded from FULL_RANDOM guarantee
+        FireworksItem,
+        ShinyStoneItem,
+        CarboCookieItem,
+        StarEggItem,
     )
     from ...types.flags import (
         ShopQuality,
@@ -84,6 +89,9 @@ def shuffle_shops(world: GameWorld) -> None:
         NimbusGating,
         BowsersKeepGate,
         BowsersKeepGating,
+        FireworksSetting,
+        FireworksOptions,
+        NoStarEgg,
     )
     from ...data.shops.shops import (
         SH03_FROG_DISCIPLE,
@@ -259,7 +267,7 @@ def shuffle_shops(world: GameWorld) -> None:
                 )
             elif quality == ShopQualities.MOSTLY_RANDOM:
                 return (low_impact_equip, high_impact_equip, [])
-            else:  # COMPLETELY_RANDOM
+            else:  # COMPLETELY_RANDOM_NORMAL or FULL_RANDOM
                 return (low_impact_equip, high_impact_equip, highest_impact_equip)
         else:
             if quality == ShopQualities.ORIGINAL:
@@ -278,7 +286,7 @@ def shuffle_shops(world: GameWorld) -> None:
                 )
             elif quality == ShopQualities.MOSTLY_RANDOM:
                 return (low_impact_items, high_impact_items, [])
-            else:  # COMPLETELY_RANDOM
+            else:  # COMPLETELY_RANDOM_NORMAL or FULL_RANDOM
                 return (low_impact_items, high_impact_items, highest_impact_items)
 
     low_consumables, high_consumables, highest_consumables = get_item_pool(
@@ -322,6 +330,11 @@ def shuffle_shops(world: GameWorld) -> None:
             if current_shops >= max_shops:
                 return False
         # Check type restrictions
+        # In COMPLETELY_RANDOM_NORMAL/FULL_RANDOM, Frog Coin Emporium can have any item type
+        if shop_idx == FROG_COIN_EMPORIUM and quality in (
+            ShopQualities.COMPLETELY_RANDOM, ShopQualities.ALL
+        ):
+            return True
         shop_data = original_shop_data.get(shop_idx, {})
         if issubclass(item_type, Weapon) and not shop_data.get("has_weapon", False):
             return False
@@ -504,30 +517,121 @@ def shuffle_shops(world: GameWorld) -> None:
         if s.index not in processed and s.index not in DUMMY_SHOPS
     ]
 
-    # First pass: ensure every non-dummy shop gets at least 1 item
-    for shop in remaining_shops:
-        item = select_item(shop.index, [])
-        if item:
-            shop.set_items([item])
-            current_item_shop_count[item] = current_item_shop_count.get(item, 0) + 1
-        else:
-            shop.set_items([])
+    # ALL mode: pre-distribute guaranteed unique items before random fill
+    if quality == ShopQualities.ALL:
+        # Build exclusion set
+        all_excluded: set[type[BaseItem]] = set()
+        if not world.settings.is_flag_value(FireworksSetting, FireworksOptions.VANILLA):
+            all_excluded.update([FireworksItem, ShinyStoneItem, CarboCookieItem])
+        if world.settings.isflag_enabled(NoStarEgg):
+            all_excluded.add(StarEggItem)
 
-    # Second pass: fill each shop to its target count
-    for shop in remaining_shops:
-        shop_data = original_shop_data.get(shop.index, {})
-        target_count = min(15, max(1, shop_data.get("original_count", 5)))
-        current_items: list[type[BaseItem] | None] = [
-            i for i in (shop.items or []) if i is not None
-        ]
+        # Collect all eligible items from pools
+        all_pool_items = set(
+            low_consumables + high_consumables + highest_consumables
+            + low_equip + high_equip + highest_equip
+        )
 
-        for _ in range(target_count - len(current_items)):
-            item = select_item(shop.index, current_items)
+        # Items already placed in Frog Coin Emporium or juice bars count as placed
+        items_already_placed: set[type[BaseItem]] = set()
+        for shop in world.shops.shops:
+            if shop is None or shop.index == FROG_DISCIPLE_SHOP or shop.index in DUMMY_SHOPS:
+                continue
+            if shop.index in processed:
+                for item in (shop.items or []):
+                    if item is not None:
+                        items_already_placed.add(item)
+
+        # Filter to items that still need placement
+        guarantee_items = []
+        for item_type in all_pool_items:
+            if item_type in items_already_placed:
+                continue
+            if item_type in all_excluded:
+                continue
+            if item_type in frog_emporium_items:
+                continue
+            if item_type in frog_disciple_set:
+                continue
+            item_inst = world.items.get_by_type(item_type)
+            if item_inst and item_inst.price == 0:
+                continue
+            guarantee_items.append(item_type)
+
+        random.shuffle(guarantee_items)
+
+        # Initialize remaining shops as empty
+        shop_contents: dict[int, list[type[BaseItem]]] = {
+            s.index: [] for s in remaining_shops
+        }
+
+        # Distribute guaranteed items across remaining shops, prioritizing emptiest
+        for item_type in guarantee_items:
+            eligible = []
+            for shop in remaining_shops:
+                items = shop_contents[shop.index]
+                if item_type in items:
+                    continue
+                if len(items) >= 15:
+                    continue
+                if not can_place_item(item_type, shop.index, items):
+                    continue
+                eligible.append((shop, len(items)))
+
+            if eligible:
+                eligible.sort(key=lambda x: x[1])
+                min_count = eligible[0][1]
+                emptiest = [s for s, c in eligible if c == min_count]
+                target = random.choice(emptiest)
+                shop_contents[target.index].append(item_type)
+                current_item_shop_count[item_type] = current_item_shop_count.get(item_type, 0) + 1
+
+        # Fill remaining capacity with random items
+        for shop in remaining_shops:
+            shop_data_entry = original_shop_data.get(shop.index, {})
+            target_count = min(15, max(1, shop_data_entry.get("original_count", 5)))
+            current_items = shop_contents[shop.index]
+
+            # Ensure target is at least as large as guaranteed items already placed
+            target_count = max(target_count, len(current_items))
+
+            attempts = 0
+            while len(current_items) < target_count and attempts < 100:
+                item = select_item(shop.index, current_items)
+                if item:
+                    current_items.append(item)
+                    current_item_shop_count[item] = current_item_shop_count.get(item, 0) + 1
+                attempts += 1
+
+            shop.set_items(current_items)
+
+    else:
+        # Non-ALL modes: original logic
+
+        # First pass: ensure every non-dummy shop gets at least 1 item
+        for shop in remaining_shops:
+            item = select_item(shop.index, [])
             if item:
-                current_items.append(item)
+                shop.set_items([item])
                 current_item_shop_count[item] = current_item_shop_count.get(item, 0) + 1
+            else:
+                shop.set_items([])
 
-        shop.set_items(current_items)
+        # Second pass: fill each shop to its target count
+        for shop in remaining_shops:
+            shop_data_entry = original_shop_data.get(shop.index, {})
+            target_count = min(15, max(1, shop_data_entry.get("original_count", 5)))
+            current_items: list[type[BaseItem] | None] = [
+                i for i in (shop.items or []) if i is not None
+            ]
+
+            for _ in range(target_count - len(current_items)):
+                item = select_item(shop.index, current_items)
+                if item:
+                    current_items.append(item)
+                    current_item_shop_count[item] = current_item_shop_count.get(item, 0) + 1
+
+            shop.set_items(current_items)
 
     # Validate: no regular shop should end up empty
     for shop in world.shops.shops:

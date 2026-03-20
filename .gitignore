@@ -115,6 +115,7 @@ smrpgr.code-workspace
 .vscode
 .claude
 CLAUDE.md
+/.planning
 patchvenv
 
 **/.DS_Store

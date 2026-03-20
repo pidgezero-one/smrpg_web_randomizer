@@ -170,6 +170,9 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         RegularClone(  # 1
             npc=npcs.SHYSTER_NPC,
@@ -181,6 +184,9 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         RegularClone(  # 2
             npc=npcs.SHYSTER_NPC,
@@ -192,6 +198,9 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHWEST,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         RegularNPC(  # 3
             npc=npcs.SHYSTER_NPC,
@@ -251,6 +260,9 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         RegularNPC(  # 5
             npc=npcs.TOAD_NPC,

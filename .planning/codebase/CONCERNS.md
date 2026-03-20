@@ -1,82 +1,92 @@
 # Concerns
 
-## Large File Sizes
+## Critical: No Test Coverage
 
-Several files are exceptionally large and may be difficult to maintain:
+- `randomizer/tests.py` is an empty stub (60 bytes)
+- Zero unit tests for placement algorithm, progression validation, shufflers, or any core logic
+- No integration tests for the generation pipeline
+- No CI/CD pipeline to run tests even if they existed
+
+## Large / Monolithic Files
 
 | File | Size | Concern |
 |---|---|---|
-| `randomizer/types/prizelocation.py` | 161K | Largest file — all prize location definitions in one module |
-| `randomizer/types/flags.py` | 111K | Every flag/option defined in a single file |
-| `randomizer/types/gameworld.py` | 82K | Central orchestrator, god-object pattern |
-| `randomizer/logic/apply.py` | 66K | All randomization application in one file |
-| `randomizer/logic/renders.py` | 59K | All rendering logic in one file |
+| `randomizer/progression/prizelocations.py` | 591K | Largest file — progression data |
+| `randomizer/progression/prizes.py` | 412K | Prize progression data |
+| `randomizer/types/prizelocation.py` | 161K | All prize location definitions |
+| `randomizer/types/flags.py` | 111K | Every flag/option in one file |
+| `randomizer/types/gameworld.py` | 82K | Central orchestrator — god object |
+| `randomizer/logic/apply.py` | 66K | All randomization application |
+| `randomizer/logic/renders.py` | 59K | All rendering logic |
 | `randomizer/logic/shufflers/items.py` | 60K | Item shuffling algorithm |
 | `randomizer/logic/partition_calculator.py` | 41K | Sprite partition calculations |
-| `randomizer/types/prize.py` | 37K | Prize definitions |
 | `randomizer/data/nmi_hook.py` | 35K | NMI hook data |
-| `randomizer/types/settings.py` | 29K | Settings type definitions |
 
-## God Object Pattern
+## God Object: GameWorld
 
-`GameWorld` in `randomizer/types/gameworld.py` is the central orchestrator that:
-- Receives deep copies of all game data collections (20+ parameters in constructor)
+`randomizer/types/gameworld.py` (82K) is the central orchestrator that:
+- Takes 20+ deep-copied collection parameters in its constructor
 - Manages all randomization state
 - Coordinates shufflers, setup, placement, validation, and rendering
-- At 82K, it likely handles too many responsibilities
+- Handles too many responsibilities for a single class
 
-## Test Coverage
+## Error Handling Issues
 
-- `randomizer/tests.py` exists but is essentially empty (60 bytes)
-- No unit tests for critical logic: placement algorithm, progression validation, shufflers
-- No integration tests for the generation pipeline
-- `pytest` is in requirements but no test files found beyond the stub
+### Bare except clause
+- `randomizer/logic/apply.py:724` — Bare `except:` catches all exceptions silently, masking real errors
 
-## Technical Debt Markers
+### Debug print statements
+- ~80 `print()` calls scattered across `randomizer/` source files
+- Mixed with production code — no separation of debug output
+- Should use `logging` module (which is configured in `settings.py` but underutilized)
 
-Files with TODO/FIXME markers:
-- `randomizer/types/gameworld.py`
-- `randomizer/logic/apply.py`
-- `randomizer/progression/prizelocations.py`
-- `randomizer/data/sprites/objects/sprite_146.py`
+### TODO/FIXME markers
+- `randomizer/types/gameworld.py` — 3 TODOs
+- `randomizer/progression/prizelocations.py` — 2 TODOs
+- `randomizer/logic/apply.py` — 1 TODO
+- `randomizer/data/sprites/objects/sprite_146.py` — 1 TODO
 
-## Debug Artifacts in Repository
+## Sprite/Partition Fragility
 
-- `debug_notes` (14.5K) — tracked debug notes with sprite/partition bug documentation (~130+ issues)
-- `debug_patches/` — debug output directory
-- `spoiler.json`, `spoiler_after_replacements.json` — committed spoiler files (106K each)
-- `repeated_sequences_report.txt` (3.5MB) — large analysis report committed to repo
-- `event_script_audit.txt` (19K) — audit file
-- `unreferenced_dialogs.txt` (61K) — analysis output
-- `smrpg.sfc` (4MB) — ROM file committed to repository
-- `db.sqlite3` (644K) — development database committed
+`debug_notes` (270 lines) documents extensive visual rendering bugs:
+- Sprite partition system has numerous documented issues
+- Boss replacement causes graphical glitches
+- VRAM constraints in battle scenes are tight
+- `partition_calculator.py` (41K) manages limited SNES sprite resources
+
+This appears to be the most fragile subsystem based on the volume of documented issues.
+
+## Performance Concerns
+
+- `create()` in `randomizer/main.py` does `deepcopy()` on 20+ large data collections per seed generation
+- No caching layer — every seed generation builds from scratch
+- Placement algorithm in `randomizer/logic/placement.py` uses retry loops
+- `progression/prizelocations.py` (591K) and `progression/prizes.py` (412K) loaded in memory
+- `DATA_UPLOAD_MAX_MEMORY_SIZE` set to 25MB for WAD packing
+
+## Debug Artifacts Committed to Repository
+
+- `debug_notes` (270 lines) — Debug notes tracking sprite/partition bugs
+- `debug_patches/` — Debug output directory
+- `spoiler.json`, `spoiler_after_replacements.json` — Spoiler files (~106K each)
+- `repeated_sequences_report.txt` (3.5MB) — Large analysis report
+- `event_script_audit.txt` (19K) — Audit file
+- `unreferenced_dialogs.txt` (61K) — Analysis output
+- `smrpg.sfc` (4MB) — ROM file (potential copyright concern)
+- `db.sqlite3` (644K) — Development database
 
 ## Security Considerations
 
-- `smrpg.sfc` ROM file committed to repo (potential copyright concern)
-- `.env` and `.env.dev` files are tracked (though they appear to contain non-secret dev defaults)
+- `smrpg.sfc` ROM file committed to repo (copyright concern)
+- `.env` and `.env.dev` files are tracked (contain dev defaults, not secrets)
 - `SECRET_KEY` falls back to `"change-me"` if no env var or local_settings
-- `DEBUG` defaults to 0 (safe), but configured via env var cast to int
-
-## Performance Considerations
-
-- `create()` in `main.py` does `deepcopy()` on 20+ large data collections per seed generation
-- Placement algorithm in `randomizer/logic/placement.py` uses retry loops
-- No caching layer — every seed generation builds from scratch
-- Streaming generation via SSE (`/seed/stream`) for long-running operations
-- `DATA_UPLOAD_MAX_MEMORY_SIZE` set to 25MB for WAD packing
-
-## Architectural Fragility
-
-- **Sprite partition system**: `debug_notes` documents 130+ visual rendering bugs related to sprite partitions — this appears to be the most fragile subsystem
-- **Event script space**: Overworld scripts have space constraints; `overworld_scripts/` has hundreds of individual script files that must fit within ROM limits
-- **VRAM constraints**: `battle_vram_calculator.py` manages limited SNES VRAM — changes to battle animations can break VRAM budgets
-- **Deep copy overhead**: The `create()` function's deep copy of all collections is a critical correctness mechanism — without it, concurrent generation would corrupt shared state
+- No rate limiting on seed generation endpoints
+- No input validation on API beyond Django form validation
 
 ## Missing Infrastructure
 
-- No CI/CD pipeline (no `.github/workflows/` found)
-- No linting configuration (no `.flake8`, `pyproject.toml` linting sections, etc.)
-- No type checking config beyond basic `pyrightconfig.json`
+- No CI/CD pipeline (no `.github/workflows/`)
+- No linting configuration
+- No pre-commit hooks
 - No monitoring or error tracking in production
-- No automated deployment process documented
+- No automated deployment process

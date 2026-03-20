@@ -84,13 +84,6 @@ def apply_minigame_settings(world: GameWorld) -> None:
                 "magic_buttons_puzzle_value"
             ),
         ).set_value_and_address(value=magic_buttons.get_puzzle_value())
-
-    # Minecart skip (if NOT enabled, delete the skip command)
-    if not world.settings.isflag_enabled(SkipMinecart):
-        world.event_scripts.delete_command_by_identifier(
-            "skip_moleville_minecart_sequence"
-        )
-
     # Tadpole pond song shuffle
     if world.settings.isflag_enabled(RandomTadpolePondSong):
         randomize_tadpole_pond(world)

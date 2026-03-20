@@ -1,4 +1,4 @@
-# E1979_ANIMATED_CHEST_6
+# E1941_KEEP_OBSTACLE_PRIZE_6
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript

@@ -28,6 +28,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.numbers.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *
@@ -230,6 +231,9 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         RegularClone(  # 1
             npc=npcs.SHYSTER_NPC,
@@ -241,6 +245,9 @@ room = Room(
             z=2,
             z_half=False,
             direction=NORTHWEST,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         RegularClone(  # 2
             npc=npcs.SHYSTER_NPC,
@@ -252,6 +259,9 @@ room = Room(
             z=4,
             z_half=False,
             direction=NORTHWEST,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         BattlePackNPC(  # 3
             npc=npcs.SHYSTER_NPC,
@@ -281,6 +291,9 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         BattlePackClone(  # 4
             npc=npcs.SHYSTER_NPC,
@@ -292,6 +305,9 @@ room = Room(
             z=4,
             z_half=False,
             direction=SOUTHWEST,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         RegularNPC(  # 5
             npc=npcs.SHYSTER_NPC,
@@ -320,6 +336,9 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         RegularNPC(  # 6
             npc=npcs.SHYSTER_NPC,
@@ -348,6 +367,9 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            acute_axis=UInt4(3),
+            obtuse_axis=UInt4(3),
+            height=UInt8(11),
         ),
         RegularNPC(  # 7
             npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,

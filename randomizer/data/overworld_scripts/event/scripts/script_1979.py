@@ -46,5 +46,5 @@ script = EventScript([
 	RunBackgroundEventWithPauseReturnOnExit(event_id=E1543_CHEST_CAMERA_SHIFT, timer_var=TIMER_701C, bit_4=True, bit_5=True),
 	ReactivateObject70A8TriggerIfMarioOnTopOfIt(),
 	JmpToEvent(E0177_CHEST_6_CONTAINER, identifier="EVENT_1941_jmp_to_event_7"),
-	Return(identifier="bke6")
+	Return()
 ])

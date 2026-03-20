@@ -5,225 +5,112 @@
 ## Languages
 
 **Primary:**
-- Python 3.13 - Backend application, randomizer logic, Django framework
-  - Location: `smrpg_web_randomizer/`, `randomizer/`
-  - Used for: Web application, patch generation, game data processing
+- Python 3.13.7 - Primary application language for the entire project
+- HTML/CSS - Frontend templates served by Django
 
 ## Runtime
 
 **Environment:**
-- Python 3.13-slim (Docker base image)
-- Virtual environment: `patchvenv/` (development)
+- Python 3.13 (specified in `Dockerfile` and `Dockerfile.prod`)
 
 **Package Manager:**
-- pip (Python Package Installer)
-- Lockfile: Not detected (direct requirements.txt used)
+- pip - Python dependency management
+- Lockfile: `requirements.txt` (pinned versions)
 
 ## Frameworks
 
-**Core Web Framework:**
-- Django 5.1.7 - Web application framework
-  - Configuration: `smrpg_web_randomizer/settings.py`
-  - Version requirement: 5.1.7
-  - WSGI application: `smrpg_web_randomizer/wsgi.py`
-
-**Application Server:**
-- Gunicorn 23.0.0 - Production WSGI HTTP server
-  - Command: `gunicorn smrpg_web_randomizer.wsgi:application --bind 0.0.0.0:8000`
-  - Used in production Docker deployment
+**Core:**
+- Django 5.1.7 - Web framework for URL routing, views, models, and templates
+- Configuration: `smrpg_web_randomizer/settings.py` with environment-based configuration
 
 **Testing:**
-- pytest 8.3.5 - Test runner framework
-  - Config: `pytest.ini` or command-line (not detected)
+- pytest 8.3.5 - Python test runner and framework
+- No test configuration file detected; tests run via `pytest` command
 
-**Database ORM:**
-- Django ORM (built-in) - Object-relational mapping
-  - Models: `randomizer/models.py` (Seed, Patch)
+**Build/Dev:**
+- gunicorn 23.0.0 - WSGI application server for production
+- Docker - Containerization for consistent deployment
 
 ## Key Dependencies
 
-**Critical Core:**
-- jsonfield2 4.0.0.post0 - JSON field support for Django models
-  - Location: `randomizer/models.py` (spoiler JSONField)
-- PyYAML 6.0.2 - YAML parsing and serialization
-  - Used for: Configuration, game data
-- Markdown 3.7 - Markdown parsing
-  - Used for: Documentation/help text rendering
+**Critical:**
+- Django 5.1.7 - Web framework with admin interface, ORM, authentication, and template system
+- psycopg2-binary 2.9.10 - PostgreSQL database adapter for production environment
+- gunicorn 23.0.0 - Production application server
 
-**Game Processing:**
-- smrpgpatchbuilder 4.1.18 - SMRPG patch building library
-  - Purpose: Generates patches for game ROM
-  - Custom package from project
-- Wii.py 0.1 - Wii-related utilities
-  - Purpose: Game file handling
-- nlzss 0.1.2 - NLZSS compression algorithm
-  - Purpose: Game data compression/decompression
-- python-bps 0.1 - BPS patching library
-  - Source: `git+https://gitlab.com/pidgezero_one/python-bps.git@0.1#egg=python-bps`
-  - Purpose: Binary patch creation and application
-
-**Cryptography & Security:**
-- pycryptodome 3.21.0 - Cryptographic library
-  - Purpose: Encryption/decryption for game data
-  - Provides AES, SHA, and other algorithms
+**Game/ROM Processing:**
+- Wii.py 0.1 - Nintendo Wii game/ROM manipulation
+- smrpgpatchbuilder 4.1.18 - Custom Super Mario RPG patch building utility
+- python-bps 0.1 - BPS (Binary Patch Script) patch application from GitLab
+- nlzss 0.1.2 - LZ77-based compression algorithm (used for Wii game data)
+- pycryptodome 3.21.0 - Cryptographic functions for ROM/patch handling
 
 **Data Processing:**
-- Pillow 10.4.0 - Python Imaging Library
-  - Purpose: Image processing for sprite/palette manipulation
-- scipy (no version pinned) - Scientific computing
-  - Purpose: Mathematical operations for randomization logic
+- PyYAML 6.0.2 - YAML parsing for configuration and data files
+- Markdown 3.7 - Markdown rendering for documentation
+- Pillow 10.4.0 - Image processing (likely for sprite/palette manipulation)
+- scipy - Scientific computing (used for randomization algorithms)
+- jsonfield2 4.0.0.post0 - Extended JSON field support for Django models
 
-**Utilities:**
-- Python standard library modules:
-  - binascii, hashlib, json, logging, queue, random, string, tempfile, shutil, threading, time
-  - urllib (network operations)
-  - copy, collections, os, sys, re
+**Tools (Optional):**
+- snirk >=0.2.1 - gRPC client for SNI protocol (real hardware/emulator communication) in `tools/`
+- websockets >=12.0 - WebSocket server support for SNI autotracker in `tools/`
 
 ## Configuration
 
-**Environment Variables (from settings.py):**
-- `DJANGO_SETTINGS_MODULE` - Points to `smrpg_web_randomizer.settings`
-- `SECRET_KEY` - Django secret key (required for production)
-- `DEBUG` - Debug mode flag (0 for production, 1 for development)
-- `DJANGO_ALLOWED_HOSTS` - Space-separated allowed hosts
-- `CSRF_TRUSTED_ORIGINS` - Space-separated CSRF trusted origins
-- `SQL_ENGINE` - Database engine (e.g., "postgresql")
-- `SQL_DATABASE` - Database name (default: "smrpg")
-- `SQL_USER` - Database user (default: "smrpg")
-- `SQL_PASSWORD` - Database password
-- `SQL_HOST` - Database host (default: "localhost")
-- `SQL_PORT` - Database port (default: "5432")
-- `STATIC_URL` - Static files URL (default: "/static/")
-- `STATIC_ROOT` - Static files directory (default: "staticfiles/")
-- `TIME_ZONE` - Application timezone (default: "UTC")
-- `BETA` - Beta site flag (0 or 1)
+**Environment:**
+- Configuration via environment variables (Docker) or `local_settings.py` (local development)
+- Key environment variables:
+  - `DJANGO_SETTINGS_MODULE` - Set to `smrpg_web_randomizer.settings`
+  - `DEBUG` - Enable/disable debug mode (0/1)
+  - `SECRET_KEY` - Django secret key
+  - `ALLOWED_HOSTS` - Space-separated list of allowed hosts
+  - `SQL_ENGINE` - Database engine (`postgresql` for production)
+  - `SQL_DATABASE`, `SQL_USER`, `SQL_PASSWORD`, `SQL_HOST`, `SQL_PORT` - PostgreSQL connection
+  - `STATIC_URL`, `STATIC_ROOT` - Static file configuration
+  - `BETA` - Beta site flag (0/1)
+  - `TIME_ZONE` - Application timezone
 
-**Local Development Alternative:**
-- `local_settings.py` - Optional Python module for development configuration
-  - Can override DATABASES, DEBUG, ALLOWED_HOSTS, etc.
-  - Loaded via try/except import in settings.py
-
-**Docker Configuration Files:**
-- `.env.dev` - Development environment variables
-- `.env.dev.db` - Development database configuration
-- `.env.prod` - Production environment variables
-- `.env.prod.db` - Production database configuration
-- `.env.prod.nginx` - Nginx proxy configuration
-
-**Build & Static Files:**
-- Dockerfile - Development Docker image (Python 3.13-slim)
-- Dockerfile.prod - Production Docker image with multi-stage build
-- entrypoint.sh - Development entry script
-- entrypoint.prod.sh - Production entry script
+**Build:**
+- `Dockerfile` - Development container (Python 3.13-slim, volume mounts)
+- `Dockerfile.prod` - Multi-stage production build with optimized layer caching
 
 ## Database
 
 **Development:**
-- SQLite 3 (default)
-  - File: `db.sqlite3` at project root
-  - Engine: `django.db.backends.sqlite3`
+- SQLite 3 (default fallback via `db.sqlite3`)
 
 **Production:**
-- PostgreSQL 17
-  - Via Docker service in compose files
-  - Connection pooling: Not detected (direct Django connection)
-  - Healthcheck: pg_isready command with 5s interval
-
-**ORM:**
-- Django ORM (built-in models and migrations)
-- Migrations: `randomizer/migrations/`
-
-**Models:**
-- `Seed` - Stores generated randomizer seeds with flags, version, hash, spoiler data
-- `Patch` - Stores ROM patches by region and SHA1
-- JSONField used for spoiler data storage
-
-## File Storage
-
-**Static Files:**
-- Location: `randomizer/static/randomizer/`
-  - CSS: `css/`
-  - JavaScript: `js/`
-  - Images: `images/`, `img/`, `patches/`
-  - Palette previews: Auto-generated in `images/palette_previews/`
-
-**Upload Handling:**
-- Max upload size: 25 MB (DATA_UPLOAD_MAX_MEMORY_SIZE)
-- Purpose: Support WAD file uploads
-
-**Generated Files:**
-- Patches: Stored in database, streamed as downloads
-- Temporary: `tempfile` module used during generation
-
-## Server & Proxy
-
-**Production Deployment:**
-- Gunicorn application server (Python WSGI)
-- Nginx reverse proxy (separate Docker service)
-- Both behind Docker compose networking
-- Static volume shared between Gunicorn and Nginx
-- HTTPS support via X-Forwarded-Proto header detection
-
-## Monitoring & Logging
-
-**Logging Configuration:**
-- Handler: Console/StreamHandler to stdout/stderr
-- Levels:
-  - Root logger: WARNING in production, DEBUG in development
-  - randomizer module: ERROR in development
-  - Console output captured by Docker
-- No external logging service configured
-
-**Observability:**
-- No error tracking service (Sentry, Rollbar, etc.) detected
-- No APM/performance monitoring detected
-- No metrics collection detected
-
-## CI/CD & Version Control
-
-**Version Control:**
-- Git repository (`.git/` directory present)
-- GitHub integration (`.github/` directory with workflows)
-- Current branch: `v9-wip`
-- Main branch: `master`
-
-**Versioning:**
-- Application version: `9.0.0` (from `randomizer/main.py`)
-- Semantic versioning used (MAJOR.MINOR.PATCH)
-
-**Build System:**
-- Docker/Docker Compose for containerization
-- No detected CI service integrations (GitHub Actions not fully explored)
-
-## Development Tools
-
-**Type Checking:**
-- Pyright configuration: `pyrightconfig.json`
-- Purpose: Python static type analysis
-
-**Code Quality:**
-- pytest for testing (framework installed, no config file detected)
+- PostgreSQL 17 - Specified in `docker-compose.prod.yml`
+- Connection via psycopg2-binary through Django ORM
+- Healthcheck configured for container orchestration
 
 ## Platform Requirements
 
 **Development:**
 - Python 3.13
-- Docker and Docker Compose
-- Git
-- Standard build tools (gcc for pip wheel compilation)
-- netcat-openbsd (for database healthchecks)
+- Virtual environment (patchvenv)
+- Docker and Docker Compose for containerized local development
+- System dependencies: gcc, git, netcat-openbsd (in containers)
 
 **Production:**
 - Docker and Docker Compose
-- PostgreSQL 17 database
-- 25 MB+ available memory for WAD uploads
-- Network access (reverse proxy to Gunicorn via Docker networking)
+- PostgreSQL 17 container
+- Nginx reverse proxy container (see `docker-compose.prod.yml`)
+- Multi-container orchestration with internal networking
 
-**Deployment Target:**
-- Docker containers (Linux-based)
-- Python 3.13-slim base image
-- Multi-stage Docker builds for optimized size
-- Non-root user execution (app user in production)
+## Deployment
+
+**Web Server:**
+- Nginx - Reverse proxy and static file serving (`nginx/nginx.conf`)
+- Gunicorn - WSGI application server bound to port 8000
+
+**Containerization:**
+- Docker Compose for local development (`docker-compose.yml`)
+- Docker Compose for production (`docker-compose.prod.yml`)
+- Multi-stage Dockerfile builds for production optimization
+- Volume mounting for development hot-reload
+- Internal networking for secure database communication
 
 ---
 
