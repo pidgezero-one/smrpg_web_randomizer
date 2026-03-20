@@ -644,8 +644,7 @@ dialog_data[211] = ''' Check at the top of Star Hill.
 dialog_data[212] = ''' Perhaps take some time to rest
  in Marrymore, and something may
  come to you.[await]'''
-dialog_data[213] = ''' An amphibian salesman in Seaside
- Town may be seeking your business.[await]'''
+dialog_data[213] = ''' My former student is seeking your business in Seaside Town.[await]'''
 dialog_data[214] = ''' There are some unopened chests
  remaining in the Sea.[await]'''
 dialog_data[215] = ''' The beanstalks may bring you some

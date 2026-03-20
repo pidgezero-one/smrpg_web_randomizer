@@ -35,7 +35,7 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0000_CURRENT,
-    entrance_event=E3677_EMPTY,
+    entrance_event=E0257_FADE_IN_ASYNC,
     events=[
         Event(
             event=E3777_ROYAL_BUS_PLATFORM_EXIT,

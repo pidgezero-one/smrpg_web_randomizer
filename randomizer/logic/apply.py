@@ -1291,9 +1291,11 @@ def apply_hint_text(world: GameWorld) -> None:
             flat_commands.append(done_dialog)
             flat_commands.append(done_return)
 
-        # Append copies of the area hint dialog commands so identifiers
-        # like "booster_tower_hint_text" resolve within this bank
-        flat_commands.extend(copy.deepcopy(hint_dialog_commands))
+        # E0947 is in the same bank as E0991 (hint dialogs), so identifiers
+        # like "booster_tower_hint_text" resolve naturally. The other scripts
+        # are in different banks and need copies of those dialog commands.
+        if script_ids[chunk_idx] != E0947_HINT_SYSTEM:
+            flat_commands.extend(copy.deepcopy(hint_dialog_commands))
 
         world.event_scripts.get_script_by_id(script_ids[chunk_idx]).set_contents(
             flat_commands
