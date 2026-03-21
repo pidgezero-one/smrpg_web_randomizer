@@ -454,5 +454,5 @@ script = AnimationScriptBlock(expected_size=1133, expected_beginning=0x351026, s
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=0, destinations=["command_0x35C686"]),
     Jmp(["moved_poison_code"]),
 	RunSubroutine(["command_0x3536F8"], identifier="caker_beam_spell"),
-    Jmp(["moved_spell_code"])
+    Jmp(["moved_spell_code"]),
 ])

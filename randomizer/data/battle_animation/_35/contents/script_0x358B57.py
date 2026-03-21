@@ -12,7 +12,7 @@ from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=149, expected_beginning=0x358B57, script=[
-	ResetTargetMappingMemory(identifier="command_0x358B57"),
+	ResetTargetMappingMemory(identifier="geno_weapon_wrapper"),
 	ResetObjectMappingMemory(),
 	SetAMEM60ToCurrentTarget(),
     RunSubroutine(["geno_wrapper_parent_subroutine"]),
@@ -68,4 +68,8 @@ script = AnimationScriptBlock(expected_size=149, expected_beginning=0x358B57, sc
 	RunSubroutine(["command_0x358072"]),
 	UnknownCommand(bytearray([0x6D])),
 	ReturnSubroutine(),	
+	SetAMEM16BitToOMEMMain(amem=0x60, omem=0x64, identifier="command_0x35A076"),
+	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=-10, y=-3, z=0, set_x=True, set_y=True, set_z=True),
+	RunSubroutine(["command_0x35A096"]),
+	ReturnObjectQueue(),
 ])

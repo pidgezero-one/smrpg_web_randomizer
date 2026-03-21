@@ -221,5 +221,8 @@ script = AnimationScriptBlock(expected_size=617, expected_beginning=0x357D0B, sc
 	SetAMEM40ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=8, y=-16, z=0, set_x=True, set_y=True, set_z=True),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_SHIFT, speed=1536, arch_height=0),
 	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
-	ReturnSubroutine()
+	ReturnSubroutine(),
+	SpriteSequence(sequence=0, identifier="command_0x358EB7"),
+	PlaySound(sound=S0013_COIN, identifier="command_0x358EB9"),
+	Jmp(["begin_attack_timer"]),
 ])

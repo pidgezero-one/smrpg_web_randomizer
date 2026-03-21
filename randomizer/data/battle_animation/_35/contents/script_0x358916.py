@@ -12,7 +12,7 @@ from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=191, expected_beginning=0x358916, script=[
-	ResetTargetMappingMemory(identifier="command_0x358916"),
+	ResetTargetMappingMemory(identifier="mario_weapon_wrapper"),
 	ResetObjectMappingMemory(),
 	SetAMEM60ToCurrentTarget(),
 	SetAMEM8BitTo7E5x(0x66, 0x7E002E),
@@ -78,5 +78,13 @@ script = AnimationScriptBlock(expected_size=191, expected_beginning=0x358916, sc
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0002_MARIO_WALKING_UP_RIGHT, sequence=0, store_to_vram=True, overlap_all_sprites=True, bit_4=True),
 	RunSubroutine(["command_0x358072"]),
 	UnknownCommand(bytearray([0x6D])),
+	ReturnSubroutine(),
+    ShineEffect(colour_count=6, starting_colour_index=1, glow_duration=1, east=True, identifier="command_0x359F08"),
+	PauseScriptUntilSpriteSequenceDone(),
+	RemoveObject(),
+	UnknownCommand(bytearray([0x81])),
+	SetAMEM8BitToOMEMMain(amem=0x6D, omem=0x6D),
+	IncAMEM8Bit(0x6D),
+	SetOMEMMainToAMEM8Bit(omem=0x6D, amem=0x6D),
 	ReturnSubroutine(),
 ])

@@ -98,5 +98,10 @@ script = AnimationScriptBlock(expected_size=245, expected_beginning=0x352475, sc
 	Pause1Frame(identifier="command_0x35255E"),
 	SetAMEM8BitToAMEM(amem=0x67, source_amem=0x67, upper=0x60),
 	JmpIfAMEM8BitNotEqualsConst(0x67, 1, ["command_0x35255E"]),
-	ReturnSubroutine()
+	ReturnSubroutine(),
+	IncAMEM8Bit(0x6B, identifier="command_0x359BC7"),
+	ClearAMEM8Bit(0x6F),
+	UnknownCommand(bytearray([0x3F, 0x80, 0x15, 0x00, 0x00, 0x84])),
+	RunSubroutine(["command_0x359BD5"]),
+	ReturnSubroutine(),
 ])

@@ -15,6 +15,8 @@ Rooms I need graphical advice on:
 - chesters large NPC in throne room: partially missing
 - slot machine in forest maze secret
 
+- It would be really funny if the hurly gloves threw whoever is to your left (or to your right if you're in slot 0) and animate accordingly, and just throw a mario doll if no other party members
+
 General
 🚧 crusher palettes not applyiong
 🚧 sage stick attack is a hard lock
@@ -26,7 +28,7 @@ General
 - it definitely loaded the wrong sprite for smithy in the dojo
 🚧 Too many treasure chests are using script 1396, which does nothing if a bowsers keep prize bit is set. that's bad. These should NOT be using that unless it is avtually that chest.
 🚧 Really need to do something about exp stars at level 30. Skip the whole packet thing? Just set the bits? (Does the levelup packet clear those bits?)
-- geno using super slap on greaper crashes game 
+🚧 geno using super slap on greaper crashes game 
 
 Boss-specific
 🚧 culex 3D sprite is broken. HUD disappears in phase 2

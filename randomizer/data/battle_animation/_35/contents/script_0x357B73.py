@@ -73,5 +73,7 @@ script = AnimationScriptBlock(expected_size=209, expected_beginning=0x357B73, sc
 	StopShakingObject(),
 	RunSubroutine(["command_0x352552"]),
 	ResetSpriteSequence(),
-	ReturnSubroutine()
+	ReturnSubroutine(),
+	NewEffectObject(effect=EF0069_SMITHY_TREASURE_HEAD_SPELL_RED, playback_off=True, identifier="command_0x35C6B0"),
+	Jmp(["command_0x35C6BF"]),
 ])

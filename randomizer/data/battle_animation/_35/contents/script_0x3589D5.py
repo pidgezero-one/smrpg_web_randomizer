@@ -12,7 +12,7 @@ from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=151, expected_beginning=0x3589D5, script=[
-	ResetTargetMappingMemory(identifier="command_0x3589D5"),
+	ResetTargetMappingMemory(identifier="toadstool_weapon_wrapper"),
 	ResetObjectMappingMemory(),
 	SetAMEM60ToCurrentTarget(),
 	UnknownCommand(bytearray([0x44, 0x55])),

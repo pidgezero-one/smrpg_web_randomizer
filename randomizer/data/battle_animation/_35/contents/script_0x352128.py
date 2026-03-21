@@ -194,5 +194,9 @@ script = AnimationScriptBlock(expected_size=725, expected_beginning=0x352128, sc
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=0, destinations=["command_0x355F1D"]),
 	PauseScriptUntilAMEMBitsSet(0x6F, [0]),
 	AttackTimerBegins(),
-	ReturnSubroutine()
+	ReturnSubroutine(),
+    NewEffectObject(effect=EF0036_BLANK_WHITE_FLASH_2BPP, playback_off=True, identifier="base_wpn_subroutine"),
+    SetAMEM8BitToConst(0x6F, 100),
+    Set7FToAMEM8Bit(0x7FFFB0, 0x6F),
+    ReturnSubroutine()
 ])

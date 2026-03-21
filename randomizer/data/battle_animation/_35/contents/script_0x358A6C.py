@@ -92,4 +92,12 @@ script = AnimationScriptBlock(expected_size=235, expected_beginning=0x358A6C, sc
 	RunSubroutine(["command_0x358072"]),
 	UnknownCommand(bytearray([0x6D])),
 	ReturnSubroutine(),
+	ResetTargetMappingMemory(identifier="command_0x358C4D"),
+	ResetObjectMappingMemory(),
+	SetOMEM60To072C(),
+	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35C992"]),
+	SpriteSequence(sequence=0, looping_off=True),
+	RunSubroutine(["command_0x358072"]),
+	UnknownCommand(bytearray([0x6D])),
+	ReturnSubroutine(),
 ])

@@ -1402,4 +1402,9 @@ script = AnimationScriptBlock(expected_size=4971, expected_beginning=0x35C992, s
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=0, destinations=["command_0x35D2D5"]),
 	PauseScriptUntilAMEMBitsSet(0x6F, [0]),
     ReturnSubroutine(),
+    RunSubroutine(["geno_wrapper_subroutine"], identifier="geno_wrapper_parent_subroutine"),
+    JmpIfAMEM8BitEqualsConst(0x66, Stella023Item().index, destinations=["stella_023_hitbox_position"]),
+	UnknownCommand(bytearray([0x44, 0x68])),
+	SpriteSequence(sequence=0, looping_off=True),
+	ReturnSubroutine(),
 ])

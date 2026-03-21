@@ -1251,4 +1251,8 @@ script = AnimationScriptBlock(expected_size=3221, expected_beginning=0x351493, s
     JmpIfAMEM8BitEqualsConst(amem=0x60, value=1, destinations=["peach_uses_group_hug"]),
     SpriteSequence(9),
     ReturnSubroutine(),
+	SetAMEM16BitToOMEMMain(amem=0x60, omem=0x64, identifier="command_0x35A066"),
+	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=0, y=-16, z=0, set_x=True, set_y=True, set_z=True),
+	RunSubroutine(["command_0x35A096"]),
+	ReturnObjectQueue(),
 ])
