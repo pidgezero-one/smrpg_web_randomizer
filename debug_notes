@@ -44,10 +44,13 @@ Boss-specific
 🚧 bowser clone disappears after doing claw attack, loading a bad peach sprite (IDs probably wrong)
 🚧 belome 2 shows empty dialog
   - game straight up crashes when belome 2 finishes with 2 bowser clones on field
-🚧 punchinello 2 broken, sprites are all messed up, doesn't summon bombs right away. whole fight doesnt work
-- chester sprite in mushroom kingdom loads incorrectly. probabkly not the right size
+🚧 punchinello 2 not working correctly
+  - bob-ombs are starting off already facing him, should not do that
+    🚧 actually they should! it's random
+  🚧 also are facing southeast, that's not right
 - smithy summoning a shyper animation is choppy for some reason\  - crashes the game when he starts moving forward with steaming head
 🚧 cloaker/domino locks with only 1 party members
+
 
 Mushroom Way 
 
@@ -56,7 +59,7 @@ Mushroom kingdom
 🚧 signal ring not working (there are 3 star pieces in the kingdom: shop, and 2 vault chests) while invaded
   🚧 might be too many sfx at once
 - dodo in throne room is very messed up
-- dingalings in hallway and outdoors are messing up the toad clone buffers, need to fix that 
+🚧 dingalings in hallway and outdoors are messing up the toad clone buffers, need to fix that 
   - liberated versions do not have this problem! for some reason!
 
 bandit's way
@@ -133,6 +136,7 @@ Marrymore
 🚧 frog coin items sold in room service menu are very cheap. should multiply by 5 first.
 🚧 kerokerocola room service is 75 coins, that calc seems incorrect
 🚧 innkeeper should not tell you you have a gift when youve surpassed the 6th check
+- hotel chest: was this preopened???
 
 star hill
 🚧 mallow using bad sprtie id 
@@ -197,6 +201,7 @@ Bean Valley
   - shy away is getting it
   - why? debug in lazy shell shows that there isnt even that layer effect applied!
   - this also breaks the clone buffers so that the smilaxes do not activate
+- johnny bad partition when replacing smilax
 
 - bad parititon for director
 Nimbus Land

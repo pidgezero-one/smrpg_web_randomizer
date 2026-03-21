@@ -449,7 +449,7 @@ class PunchGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
-    _packet_data = (SPR0208_GLOVE, 5)
+    _packet_data = (SPR0208_GLOVE, 0)
 
 
 class FingerShotPrize(ItemPrize):
@@ -516,7 +516,7 @@ class WhompGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
-    _packet_data = (SPR0208_GLOVE, 5)
+    _packet_data = (SPR0208_GLOVE, 0)
 
 
 class SlapGlovePrize(ItemPrize):
@@ -525,7 +525,7 @@ class SlapGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
-    _packet_data = (SPR0208_GLOVE, 5)
+    _packet_data = (SPR0208_GLOVE, 0)
 
 
 class TroopaShellPrize(ItemPrize):
@@ -550,7 +550,7 @@ class HurlyGlovesPrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
-    _packet_data = (SPR0208_GLOVE, 5)
+    _packet_data = (SPR0208_GLOVE, 0)
 
 
 class DoublePunchPrize(ItemPrize):
@@ -560,7 +560,7 @@ class DoublePunchPrize(ItemPrize):
         description="Be careful, it could take your\n hands clean off.",
     )
     _model = GloveObject
-    _packet_data = (SPR0208_GLOVE, 5)
+    _packet_data = (SPR0208_GLOVE, 0)
 
 
 class RibbitStickPrize(ItemPrize):
@@ -585,7 +585,7 @@ class MegaGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
-    _packet_data = (SPR0208_GLOVE, 5)
+    _packet_data = (SPR0208_GLOVE, 0)
 
 
 class WarFanPrize(ItemPrize):
@@ -609,7 +609,7 @@ class StickyGlovePrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
-    _packet_data = (SPR0208_GLOVE, 5)
+    _packet_data = (SPR0208_GLOVE, 0)
 
 
 class UltraHammerPrize(ItemPrize):
@@ -626,7 +626,7 @@ class SuperSlapPrize(ItemPrize):
         nickname="Glove", description="You don't drink water out of it."
     )
     _model = GloveObject
-    _packet_data = (SPR0208_GLOVE, 5)
+    _packet_data = (SPR0208_GLOVE, 0)
 
 
 class DrillClawPrize(ItemPrize):
@@ -636,7 +636,7 @@ class DrillClawPrize(ItemPrize):
         description="I bet you could do some real damage\n with this.",
     )
     _model = GloveObject
-    _packet_data = (SPR0208_GLOVE, 5)
+    _packet_data = (SPR0208_GLOVE, 0)
 
 
 class StarGunPrize(ItemPrize):
@@ -5985,7 +5985,7 @@ class SmithyBossFight(BossFightPrize):
         SMITHYTankEnemy,
     ]
 
-    _npc_models = [SmithyLargeObject, SmithyBodyOverworldObject, SmithySmallObject]
+    _npc_models = [SmithyLargeObject, SmithySmallObject]
     _statue_npc = SmithyStatueObject
 
     _dialog_replacements = {

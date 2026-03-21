@@ -32,6 +32,10 @@ script = MonsterScript([
 	SetUntargetable(SELF),
 	SetVarBits(BV7EE003, [3]),
 	Wait1TurnandRestartScript(),
+	IfHPBelow(0),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
 	IfTargetedByCommand([COMMAND_ATTACK]),
 	Attack(BodySlamAttack),
 	Wait1TurnandRestartScript()

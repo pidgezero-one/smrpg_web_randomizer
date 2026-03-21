@@ -1,4 +1,4 @@
-dialog_data = [""]*284
+dialog_data = [""]*288
 dialog_data[0] = ''' I slept like a baby.
  Thanks![await]'''
 dialog_data[1] = ''' That card you have there...[await]
@@ -862,3 +862,11 @@ dialog_data[282] = ''' Oh! You got your coin back!
  I promised you...[await]'''
 dialog_data[283] = '''GAZ: This is yours, so take it
  along with you.[await]'''
+dialog_data[284] = '''
+     Need the "Room Key" to get in[await]'''
+dialog_data[285] = '''
+    Need the "Elder Key" to get in[await]'''
+dialog_data[286] = '''
+   Need the "Castle Key 1" to get in[await]'''
+dialog_data[287] = '''
+   Need the "Castle Key 2" to get in[await]'''

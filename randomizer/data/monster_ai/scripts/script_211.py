@@ -36,5 +36,9 @@ script = MonsterScript([
 	IncreaseVarBy1(BV7EE00F),
 	SetUntargetable(SELF),
 	SetVarBits(BV7EE003, [4]),
-	Wait1TurnandRestartScript()
+	Wait1TurnandRestartScript(),
+	IfHPBelow(0),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
 ])

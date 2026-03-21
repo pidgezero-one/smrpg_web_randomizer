@@ -6,6 +6,7 @@ from uuid import uuid4
 import random
 import statistics
 
+from randomizer.types.gameworld import DI2730_FROGFUCIUS_OFFER_HINT
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_2, NPC_PALETTE_ROW_3 ,NPC_PALETTE_ROW_4,NPC_PALETTE_ROW_5,NPC_PALETTE_ROW_6, NPC_PALETTE_ROW_7
 
 from ..data.variables.event_palette_names import * # holy shit i cannot deal with how slow pylance is, fuck it just import everything
@@ -1296,6 +1297,8 @@ def apply_hint_text(world: GameWorld) -> None:
         # are in different banks and need copies of those dialog commands.
         if script_ids[chunk_idx] != E0947_HINT_SYSTEM:
             flat_commands.extend(copy.deepcopy(hint_dialog_commands))
+        else:
+            flat_commands.insert(0, RunDialog(dialog_id=DI2730_FROGFUCIUS_OFFER_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True))
 
         world.event_scripts.get_script_by_id(script_ids[chunk_idx]).set_contents(
             flat_commands
