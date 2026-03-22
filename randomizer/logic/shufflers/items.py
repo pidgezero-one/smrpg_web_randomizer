@@ -1301,6 +1301,38 @@ def shuffle_prizes(world: GameWorld) -> None:
             else:
                 pool[LOW_PRIORITY].append(pool_item)
 
+    # Apply debug overrides: place the specified prize at each override location
+    # and remove one instance of that prize class from the pool.
+    # This happens after pool building so all prizes are in the pool normally.
+    # The shuffler will see these locations as already occupied and skip them.
+    if world.settings.debug_mode:
+        from randomizer.debug import load_debug_config, get_prize_class, get_location_class
+        config = load_debug_config()
+        overrides = config.get("items", {}).get("override", {})
+        for location_name, prize_name in overrides.items():
+            location_cls = get_location_class(location_name)
+            prize_cls = get_prize_class(prize_name)
+            if location_cls is None:
+                raise ValueError(f"Invalid location name in debug config: '{location_name}'")
+            if prize_cls is None:
+                raise ValueError(f"Invalid prize name in debug config: '{prize_name}'")
+            # Place the override prize at the target location
+            for loc in world.locations.values():
+                if isinstance(loc, location_cls):
+                    loc.set_prize(prize_cls())
+                    break
+            # Remove one instance of this prize class from the pool
+            removed = False
+            for tier_list in pool.values():
+                for i, item in enumerate(tier_list):
+                    if type(item) == prize_cls:
+                        tier_list.pop(i)
+                        pulled_count -= 1
+                        removed = True
+                        break
+                if removed:
+                    break
+
     pool_total = sum(len(p) for p in pool.values())
     if pool_total != pre_seeded + spell_count + pulled_count:
         # Dump full pool contents to find the extras
@@ -1577,46 +1609,27 @@ def assign_spell_prize_models(world: GameWorld) -> None:
 
 
 def apply_debug_overrides(world: GameWorld) -> None:
-    """Apply debug item overrides and diagnostics after shuffling.
+    """Apply debug item diagnostics after shuffling.
 
-    This runs after the shuffler so that debug mode doesn't affect the shuffle
-    outcome. Overrides simply replace whatever the shuffler placed at the
-    configured locations.
+    Overrides are now applied BEFORE shuffling in shuffle_prizes() so that
+    overridden locations are excluded from the pool and don't cause duplicates.
+    This function only handles diagnostics.
     """
     from ..placement import diagnose_empty_locations
-    from randomizer.debug import load_debug_config, get_prize_class, get_location_class
-    from ...types.logic import Inventory
 
     if not world.settings.debug_mode:
         return
 
+    # Overrides are now applied pre-shuffle in shuffle_prizes().
+    # Just track which locations were overridden for diagnostics.
+    from randomizer.debug import load_debug_config, get_location_class
     config = load_debug_config()
     overrides = config.get("items", {}).get("override", {})
     debug_locations: set[type[PrizeLocation]] = set()
-
-    for location_name, prize_name in overrides.items():
+    for location_name in overrides.keys():
         location_cls = get_location_class(location_name)
-        if location_cls is None:
-            raise ValueError(
-                f"Invalid location name in debug config: '{location_name}'"
-            )
-        for loc in world.locations.values():
-            if isinstance(loc, location_cls):
-                debug_locations.add(type(loc))
-                prize_cls = get_prize_class(prize_name)
-                if prize_cls is None or not loc.can_accept(
-                    prize_cls(), Inventory(), world
-                ):
-                    if not loc.can_be_empty(world):
-                        raise ValueError(
-                            f"Invalid prize assigned to debug location '{location_name}' when it cannot be empty"
-                        )
-                    else:
-                        loc.set_prize(None)
-                else:
-                    loc.set_prize(prize_cls())
-                break
-
+        if location_cls is not None:
+            debug_locations.add(location_cls)
     world._debug_locations = debug_locations
     diagnose_empty_locations(world)
 

@@ -29,4 +29,3 @@ items:
     - SuperSlapItem
   override:
     MushrooomWayBossFight: KingCalamariBossFight
-    ForestMazeCharacter: MarioRecruitmentPrize

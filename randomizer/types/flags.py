@@ -2376,21 +2376,21 @@ class ToadstoolPaletteChoice(SelectOneFlag[ToadstoolPaletteOptions]):
 
 # ✅
 class ChangeNames(BooleanFlag):
-    _name = "Change character names"
-    _description = """Some palette swaps are references to other media. If this flag is enabled, the character's name will be changed to match the palette."""
+    _name = "Change character names to match palettes"
+    _description = """Some palette swaps are references to other media. If this flag is enabled, the character's name will be changed to match the palette if applicable."""
     _id = "names"
 
 
 # ✅
 class RemakeNames(BooleanFlag):
-    _name = "Use Remake Names"
+    _name = "Use Remake names"
     _description = "Spells, enemies, items, and attacks will use their names from the 2023 Switch remake (where space limits allow)."
     _id = "remake"
 
 
 # ✅
 class CanonNames(BooleanFlag):
-    _name = "Use Canon Names"
+    _name = "Use lore-compliant names"
     _description = "Magikoopa is renamed 'Kamek' and Birdo is renamed 'Birdetta'."
     _id = "canon"
 

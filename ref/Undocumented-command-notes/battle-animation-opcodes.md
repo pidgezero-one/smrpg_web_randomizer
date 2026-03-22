@@ -1,0 +1,2 @@
+Opcode 0x18 (3 bytes: 0x18 param1 param2)  
+It resets/reinitializes battle formation or menu state. $7E:0926 sits in a block of battle menu RAM ($7E:091C-0928: menu options, party member count, cursor position). The 0x18 0x00 0x80 command overwrites this region, resetting $7E:0926 to the formation's expected party count — which is always 3 in vanilla. The randomizer's actual party size gets clobbered. Params 0x00 0x80 likely mean: target=0 (all characters / start of range), mode=0x80 (full reset, bit 7 set).
