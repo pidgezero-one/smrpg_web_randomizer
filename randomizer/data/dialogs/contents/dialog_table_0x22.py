@@ -702,7 +702,7 @@ dialog_data[252] = ''' Ooh, you have a Carbo Cookie!
  May I have it, please?[await]
   [select]  (Sure)
   [select]  (Nope)[await]'''
-dialog_data[253] = ''' You're such a Scrooge![await]'''
+dialog_data[253] = ''' Oh, you found a Shiny Stone![await] My sister ate all of my carbo cookies, so I can't give you one.[await] Hope this is okay instead![await]'''
 dialog_data[254] = ''' Wow, thanks a lot!
  Here you can take this ...[await][page]
  Oops! I must have dropped it.
@@ -710,17 +710,15 @@ dialog_data[254] = ''' Wow, thanks a lot!
 dialog_data[255] = ''' Sorry, curatives are all gone.
 [end]'''
 dialog_data[256] = ''' Tank you, pweese come again![await]'''
-dialog_data[257] = '''      Received a “Shiny Stone”[await]'''
+dialog_data[257] = ''' Oooh, you found the Fireworks![await] I lost my Shiny Stone, though, so you can just take this.[await]'''
 dialog_data[258] = '''[center]
- I wanna ride the minecart![await]'''
-dialog_data[259] = ''' Hey `MAIN_CHARACTER_TITLE`! Have ya been to Land's End?[await][pause] I wanna go, but my ma's afraid I'm gonna fall in the dog pit.[await]'''
+ I wanna ride the trolley![await]'''
+dialog_data[259] = ''' Hey `MAIN_CHARACTER_TITLE`! Have ya been to Land's End?[await][pause] I wanna play on the Sky Bridge, but my ma's afraid I'm gonna fall in the dog pit.[await]'''
 dialog_data[260] = ''' What a nice “Shiny Stone”.
  I'll trade you my “Carbo Cookie”![await]
   [select]  (Okay)
   [select]  (No thanks)[await]'''
-dialog_data[261] = ''' Sowwy, my pur-tend store is closed
- today![await][pause] If ya want a “Shiny Stone”,
- ya gotta find one![await]'''
+dialog_data[261] = ''' Sowwy, my pur-tend store is all sold out today![await]'''
 dialog_data[262] = ''' Booster's a pretty absent-minded
  fella. He just leaves the door to
  his tower open all the time.[await]'''

@@ -73,6 +73,5 @@ script = EventScript([
     
 	Pause(10, identifier="EVENT_1645_pause_33"),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
-	RunDialog(dialog_id=DI1148_CARBO_COOKIE_DECLINE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return(),
 ])

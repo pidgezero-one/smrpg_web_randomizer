@@ -36,7 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
 	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6),
-	DisableTriggerOfObjectAt70A8InCurrentLevel(),
+	#DisableTriggerOfObjectAt70A8InCurrentLevel(),
 	SetSyncActionScript(MEM_70A8, A0007_HIT_TREASURE_CHEST_CONTENTS_DEPLETED),
 	Set70107015ToObjectXYZ(target=MEM_70A8),
 	CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),

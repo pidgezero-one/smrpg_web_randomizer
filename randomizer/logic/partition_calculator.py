@@ -517,10 +517,6 @@ COIN_SPRITE_IDS = frozenset({
     SPR0193_SMALL_COIN,
     SPR0194_FROG_COIN,
     SPR0211_SMALL_FROG_COIN,
-    SPR0234_STATIC_FROG_COIN,
-    SPR0235_STATIC_COIN,
-    SPR0236_COIN_STATIC_SMALL,
-    SPR0238_STATIC_FROG_COIN_SMALL,
 })
 
 CHEST_SPRITE_ID = SPR0094_TREASURE_CHEST
@@ -1022,3 +1018,74 @@ def analyze_room_partition(
         full_palette=full_palette,
         warnings=warnings,
     )
+
+
+def apply_partition_analysis(
+    world: GameWorld,
+    room_id: int,
+    analysis: PartitionAnalysis | None = None,
+    preserve_ally_buffer: bool = False,
+    preserve_extra_sprite_buffer: bool = False,
+    preserve_full_palette: bool = False,
+) -> PartitionAnalysis:
+    """Analyze a room's NPC objects and apply the optimal partition and cannot_clone overrides.
+
+    Computes the partition from scratch (or uses a provided analysis), sets it on the room,
+    and sets cannot_clone=True at the room object level for every non-gridplane NPC or NPC
+    that needs dedicated VRAM. cannot_clone is set on the room object (not the NPC definition)
+    so it acts as an override without affecting other rooms that share the same NPC.
+
+    Args:
+        world: The GameWorld instance with loaded sprite data.
+        room_id: The room index to analyze and update.
+        analysis: Optional pre-computed analysis. If None, calls analyze_room_partition().
+        preserve_ally_buffer: If True, keep the room's existing ally_sprite_buffer_size.
+        preserve_extra_sprite_buffer: If True, keep the room's existing
+            allow_extra_sprite_buffer and extra_sprite_buffer_size.
+        preserve_full_palette: If True, keep the room's existing full_palette_buffer.
+
+    Returns:
+        The PartitionAnalysis that was applied.
+    """
+    if analysis is None:
+        analysis = analyze_room_partition(world, room_id)
+
+    room = world.rooms._rooms[room_id]
+    assert room is not None, f"Room {room_id} not found"
+
+    existing_partition = room.partition
+
+    # Apply the partition
+    partition = analysis.to_partition()
+    partition._full_palette_buffer = analysis.full_palette
+
+    if existing_partition is not None:
+        if preserve_ally_buffer:
+            partition.set_ally_sprite_buffer_size(existing_partition.ally_sprite_buffer_size)
+        if preserve_extra_sprite_buffer:
+            partition.set_allow_extra_sprite_buffer(existing_partition.allow_extra_sprite_buffer)
+            partition.set_extra_sprite_buffer_size(existing_partition.extra_sprite_buffer_size)
+        if preserve_full_palette:
+            partition._full_palette_buffer = existing_partition._full_palette_buffer
+
+    room._partition = partition
+
+    # Determine which NPC indices are assigned to a buffer
+    buffered_indices: set[int] = set()
+    for assignment in analysis.buffers:
+        buffered_indices.update(assignment.npc_indices)
+
+    # Apply cannot_clone overrides at the room object level
+    for npc_analysis in analysis.npcs:
+        obj = room.objects[npc_analysis.index]
+        if isinstance(obj, Clone):
+            continue
+
+        if npc_analysis.cannot_clone or npc_analysis.buffer_type == BufferType.EMPTY_3:
+            # Non-gridplane or explicitly cannot_clone: needs dedicated VRAM
+            obj.set_cannot_clone(True)
+        elif npc_analysis.index in buffered_indices:
+            # Assigned to a buffer: ensure clone is allowed
+            obj.set_cannot_clone(False)
+
+    return analysis

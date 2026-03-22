@@ -175,5 +175,9 @@ room = Room(
             z=2,
             z_half=False,
             direction=NORTHWEST),
+        RegularNPC( # 5
+            npc=npcs.EMPTY_NPC,
+            visible=False,
+        )
     ]
 )

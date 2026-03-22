@@ -2070,7 +2070,7 @@ class ShuffledBosses(CategorizationFlag[ShuffledBossEnumType]):  # type: ignore[
 class EnemyStatsShuffleOptions(CategorizationOption):
     """Enumeration for enemy stat randomization option"""
 
-    DISABLED = "Original stats"
+    DISABLED = "Don't randomize"
     NUMBERS_ONLY = "Stat values only"
     FULL_RANDOM = "Everything"
 
@@ -2084,7 +2084,7 @@ class EnemyStats(SelectOneFlag[EnemyStatsShuffleOptions]):
 <br>
 <br><b>Everything</b>: Attack, defense, speed, and HP values are randomized. Elemental weaknesses/resistances and status immunities are also randomized.
 <br>
-<br><b>Original stats</b>: Enemy stats remain unchanged."""
+<br><b>Don't randomize</b>: Enemy stats remain unchanged."""
     _id = "enemystats"
     choices = [o for o in EnemyStatsShuffleOptions]
     _default = EnemyStatsShuffleOptions.DISABLED

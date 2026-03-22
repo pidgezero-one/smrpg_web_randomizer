@@ -42,7 +42,7 @@ script = EventScript([
 	Set70107015ToObjectXYZ(target=MARIO),
 	AddConstToVar(Z_COORD_1, 1024),
 	SetVarToConst(TEMP_7034, 52428),
-	CreatePacketAt7010WithEvent(packet=P032_BLUE_CLOUD, event_id=E1845_CLOUD_BOSS, destinations=["EVENT_1844_pause_3"]),
+	CreatePacketAt7010WithEvent(packet=P032_BLUE_CLOUD, event_id=E1845_CLOUD_BOSS, destinations=["mokura_fails_to_load"]),
 	PlaySound(sound=SO044_GHOST_FLOAT, channel=6),
-	Return()
+	Return(identifier="mokura_fails_to_load")
 ])

@@ -1020,7 +1020,7 @@ def _apply_stats_to_prize(
         new_hp = round(new_hp * slice_multiplier)
 
         # Apply ratio multiplier if defined on the enemy itself
-        new_hp = round(new_hp * enemy.ratio_hp)
+        new_hp = min(0xFFFF, round(new_hp * enemy.ratio_hp))
         enemy.set_hp(new_hp)
 
         # === Other Stats ===

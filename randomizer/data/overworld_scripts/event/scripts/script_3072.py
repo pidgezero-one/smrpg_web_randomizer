@@ -37,7 +37,7 @@ script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
 	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6),
 	CopyVarToVar(from_var=ITEM_ID, to_var=PRIMARY_TEMP_7000),
-	DisableTriggerOfObjectAt70A8InCurrentLevel(),
+	#DisableTriggerOfObjectAt70A8InCurrentLevel(),
 	Mem7000AndConst(0x00F0),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=CHEST_COIN_SIZE),
 	SetSyncActionScript(MEM_70A8, A0007_HIT_TREASURE_CHEST_CONTENTS_DEPLETED),

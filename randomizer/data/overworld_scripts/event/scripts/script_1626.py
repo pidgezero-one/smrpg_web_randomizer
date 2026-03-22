@@ -34,8 +34,8 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfBitClear(PROGRESSIVE_FIREWORKS_ENABLED, ["EVENT_1626_store_item_amount_7000_6"]),
     JmpIfBitSet(COOKIE_TRADER_CHECKED, ["EVENT_1626_run_dialog_8"]),
+	JmpIfBitClear(PROGRESSIVE_FIREWORKS_ENABLED, ["EVENT_1626_store_item_amount_7000_6"]),
 	JmpIfBitSet(CARBO_COOKIE_GIVEN, ["EVENT_1626_purtend_store_check_allowed"]),
 	StoreItemAmountTo7000(ShinyStoneItem),
     JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1626_purtend_store_check_allowed"]),
@@ -43,13 +43,14 @@ script = EventScript([
     JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1626_purtend_store_check_allowed"]),
     Jmp(["EVENT_1626_store_item_amount_7000_6"]),
     SetBit(COOKIE_TRADER_CHECKED, identifier="EVENT_1626_purtend_store_check_allowed"),
+	RunDialog(dialog_id=DI1148_FREE_ITEM, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
     RunEventAsSubroutine(E0180_NPC_QUEST_3_CONTAINER),
     Return(),
 	CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000, identifier="EVENT_1626_store_item_amount_7000_6"),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AE),
 	StoreItemAmountTo7000(ShinyStoneItem),
 	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1626_run_dialog_10"]),
-	RunDialog(dialog_id=DI1156_BEAN_VALLEY_PLATFORM_HINT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1626_run_dialog_8"),
+	RunDialog(dialog_id=DI1156_COOKIE_TRADER_DEFAULT_TEXT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1626_run_dialog_8"),
 	Return(),
 	RunDialog(dialog_id=DI1159_ASK_TO_TRADE_COOKIE_FOR_STONE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1626_run_dialog_10"),
 	JmpIfDialogOptionBSelected(["EVENT_1626_pause_18"]),
@@ -61,6 +62,7 @@ script = EventScript([
     JmpIfBitClear(SHUFFLE_ONE_FIREWORKS_ENABLED, ["traded_stone_for_cookie"]),
 	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),
 	RemoveObjectFromSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
+    SetBit(COOKIE_TRADER_CHECKED),
 	Return(identifier="traded_stone_for_cookie"),
 	Pause(10, identifier="EVENT_1626_pause_18"),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),

@@ -77,5 +77,7 @@ script = EventScript([
 	JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_2, ["EVENT_2808_ret_28"], identifier="grant_toad_2_rescue_if_not_done"),
     SetVarToConst(PRIMARY_TEMP_7000, R204_MUSHROOM_WAY_AREA_02),
 	RunEventAsSubroutine(E0251_NPC_QUEST_3_GRANT),
+    SetBit(TOAD_IN_MUSHROOM_WAY_1),
+	SetBit(TOAD_IN_MUSHROOM_WAY_2),
 	Return(identifier="EVENT_2808_ret_28")
 ])

@@ -34,5 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+    SetVarToConst(ACTIVE_NPC, NPC_5), # target a dummy invisible item for the animation, real benefit here is getting the sync dialog
 	JmpToEvent(E0241_FREESTANDING_1_GRANT)
 ])

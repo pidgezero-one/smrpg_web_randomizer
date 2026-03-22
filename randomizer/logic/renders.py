@@ -203,23 +203,28 @@ def render_forest_maze_character_empty(world: GameWorld) -> None:
 
 def render_forest_maze_character(world: GameWorld, prize: CharacterPrize) -> None:
     ally = prize.ally
+    # Mario uses protagonist sprite (0) at this location, so needs _sprites_primary
+    # which has sprite_offsets relative to sprite 0. Other allies use _sprites_secondary
+    # with offsets relative to their non-protagonist sprite IDs.
+    use_primary = isinstance(prize, MarioRecruitmentPrize)
+
     a1 = world.action_scripts.get_command_by_identifier("forest_character_animation_1", A_SetSpriteSequence)
-    update_ally_animation(a1, ally, SpriteAnimationState.SHAKING_HEAD)
+    update_ally_animation(a1, ally, SpriteAnimationState.SHAKING_HEAD, use_primary=use_primary)
     a3 = world.action_scripts.get_command_by_identifier("forest_character_animation_3", A_SetSpriteSequence)
-    update_ally_animation(a3, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD)
+    update_ally_animation(a3, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD, use_primary=use_primary)
     a5 = world.action_scripts.get_command_by_identifier("forest_character_animation_5", A_SetSpriteSequence)
-    update_ally_animation(a5, ally, SpriteAnimationState.LOOKING_DOWN)
+    update_ally_animation(a5, ally, SpriteAnimationState.LOOKING_DOWN, use_primary=use_primary)
     a7 = world.action_scripts.get_command_by_identifier("forest_character_animation_7", A_SetSpriteSequence)
-    update_ally_animation(a7, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD)
+    update_ally_animation(a7, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD, use_primary=use_primary)
     a8 = world.action_scripts.get_command_by_identifier("forest_character_animation_8", A_SetSpriteSequence)
-    update_ally_animation(a8, ally, SpriteAnimationState.SLEEPING)
+    update_ally_animation(a8, ally, SpriteAnimationState.SLEEPING, use_primary=use_primary)
     a9 = world.action_scripts.get_command_by_identifier("forest_character_animation_9", A_SetSpriteSequence)
-    update_ally_animation(a9, ally, SpriteAnimationState.SHOCKED_BACKWARDS_SEQUENCE)
+    update_ally_animation(a9, ally, SpriteAnimationState.SHOCKED_BACKWARDS_SEQUENCE, use_primary=use_primary)
 
     e1 = world.event_scripts.get_subscript_command_by_identifier("forest_character_animation_14", "forest_character_animation_13", A_SetSpriteSequence)
-    update_ally_animation(e1, ally, SpriteAnimationState.SOUTH)
+    update_ally_animation(e1, ally, SpriteAnimationState.SOUTH, use_primary=use_primary)
     e2 = world.event_scripts.get_subscript_command_by_identifier("forest_character_animation_14", "forest_character_animation_11", A_SetSpriteSequence)
-    update_ally_animation(e2, ally, SpriteAnimationState.DEFEND)
+    update_ally_animation(e2, ally, SpriteAnimationState.DEFEND, use_primary=use_primary)
     
 
 

@@ -2005,7 +2005,7 @@ class RoseWaySwingingPlatformRoomLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.ROSE_WAY_PLATFORM
     _world_area = WorldAreaEnum.ROSE_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS, ["next"]),
         Jmp(["rose_way_hint_text"])
@@ -2817,8 +2817,29 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
         if self.prize is None:
             render_forest_maze_character_empty(world)
         else:
-            render_forest_maze_character(world, cast(CharacterPrize, self.prize))
+            assert isinstance(self.prize, CharacterPrize)
+            self._apply_forest_maze_npc_overrides(world)
+            render_forest_maze_character(world, self.prize)
         return op
+
+    def _apply_forest_maze_npc_overrides(self, world: GameWorld) -> None:
+        """Apply Mario's eight-directional protagonist NPC model for forest maze.
+
+        Mario uses the protagonist sprite (0) instead of non-protagonist (990)
+        because animations use sprite_offset which shifts the sprite ID,
+        and the non-protagonist offset sprites cause crashes.
+        """
+        assert isinstance(self.prize, CharacterPrize)
+        if not isinstance(self.prize, MarioRecruitmentPrize):
+            return
+        from ..data.rooms.npcs import MARIO_WALKING_DOWN_LEFT_NPC
+        for npc_sub in self._npc_fills:
+            room = world.rooms._rooms[npc_sub.room_id]
+            if room is None:
+                continue
+            obj = room.get_npc_by_target_id(npc_sub.npc_id)
+            if obj is not None:
+                obj._npc = MARIO_WALKING_DOWN_LEFT_NPC
 
     # Flag as checked: FOREST_LIBERATED
 
@@ -3359,7 +3380,15 @@ class PurtendStoreLocation(KeyItemLocation, NPCLocationRow2):
     _hint = [
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(PURTEND_STORE_CHECK_DONE, ["next"]),
-        Jmp(["moleville_hint_text"])
+
+        JmpIfBitClear(PROGRESSIVE_FIREWORKS_ENABLED, ["next"]),
+        StoreItemAmountTo7000(FireworksItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
+        StoreItemAmountTo7000(ShinyStoneItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
+        StoreItemAmountTo7000(CarboCookieItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
+        JmpIfBitSet(CARBO_COOKIE_GIVEN, ["moleville_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3380,7 +3409,13 @@ class CookieTraderLocation(KeyItemLocation, NPCLocationRow4):
     _hint = [
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(COOKIE_TRADER_CHECKED, ["next"]),
-        Jmp(["moleville_hint_text"])
+
+        JmpIfBitClear(PROGRESSIVE_FIREWORKS_ENABLED, ["next"]),
+        StoreItemAmountTo7000(ShinyStoneItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
+        StoreItemAmountTo7000(CarboCookieItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
+        JmpIfBitSet(CARBO_COOKIE_GIVEN, ["moleville_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6621,7 +6656,7 @@ class ShipShopChestLocation(TreasureChestLocationRow1):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_sea(world, inventory)
+        return can_access_sea(world, inventory) and can_damage_enemies_with_spells(world, inventory)
 
     # flag as checked: npc 0 in room 169 has its object trigger disabled.
 
@@ -9936,7 +9971,7 @@ class GarroFreeItem(KeyItemLocation, NPCLocationRow1):
 class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
     _bias = True
     _originally_held = FeatherPrize
-    _rooms = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM]
+    _rooms = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT]
     _override_id = 520
     _id = ShuffleLocationSelector.DODO_REWARD
     _world_area = WorldAreaEnum.NIMBUS_LAND

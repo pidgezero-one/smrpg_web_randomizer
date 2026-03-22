@@ -27,3 +27,6 @@ items:
     - SafetyRingItem
     - BambinoBombItem
     - SuperSlapItem
+  override:
+    MushrooomWayBossFight: KingCalamariBossFight
+    ForestMazeCharacter: MarioRecruitmentPrize

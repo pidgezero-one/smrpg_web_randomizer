@@ -5,6 +5,10 @@ NEW FLAGSET:
 P(rchars)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|charspells|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg|sj1:5|sj2:10)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops|enemyspells)     F(skips|nowhirl|nobigbang|noko|seeya)
 
 
+High priority
+- smithy fight crashing
+- apply speeds properly to statue game aninations
+
 Rooms I need graphical advice on:
 - Booster's curtain room. Adding postgame NPCs almost always makes shadows overwrite 
 - Every room that can have a slot machine. Which ones can make it work? What partitions do they need? Cannot clone rules? 
@@ -68,16 +72,15 @@ bandit's way
 - flower jump chest showing sleepy bomb as yellow mushroom
 
 Kero sewers
-- double chest does not work. opening it first after lands end did not refill it
+🚧 double chest does not work. opening it first after lands end did not refill it
 - smithy as boss renders TOTALLY wrong
 🚧 smithy 1 finishing crashes battle, plays empty dialog
 - peach messes up palettes for npcs in any room that has water- this is because of the palette shifting that her pipe animation does, as well as the special palette treatment that water rooms get-un sure if there is a feasible fix without asm bullshit
 
 midas river
+- some of the coins in barrel section are appearing below the watr layer, but not all
 
 tadpole pond 
-- hint builder engine should happen here
-  - remember to add some code for the invisible chest. a bit to flag if it has ever been checked. whichever check gets it needs to have that inserted into its hint
 
 Rose way
 
@@ -94,8 +97,9 @@ Yoster
 - minor, but main area loads very slowly
 
 Moleville
-- shiny stone girl still asking for fireworks in progressive settings
-  - carbo cookie girl too
+🚧 shiny stone girl still asking for fireworks in progressive settings
+  🚧 carbo cookie girl too
+  🚧 these need you to have found at least one progressive item, or two
 🚧 circule path leading to traintrack room: fireball partition is wrong
   - try putting 3rd partition as 4x?
   🚧 512 bytes?
@@ -110,35 +114,21 @@ Moleville
 Booster Pass
 - red essence in right chest rendered as mushroom, see if the camera shift is messing with the 70a7 selector again
 - crystalline in rightmost secret room chest rendered as mushroom, same deal
-- carroboscis attacking you turns into mario clone and crashes game
+🚧 carroboscis attacking you turns into mario clone and crashes game
 
 Booster Tower
-- bottom left shuffled item is always reloading when booster tower checkerboard room reloads
+🚧 bottom left shuffled item is always reloading when booster tower checkerboard room reloads
 🚧 prize in elder key room moves when it shouldnt
 - top floor save chest has no shine when peach is protagonist
-- mimic as boss: still too low in tower door, cant see eyes
-- unrandomized snifit i think had a henchman sniffit in battle
+🚧 mimic as boss: still too low in tower door, cant see eyes
 
 Booster Hill
-- double punch packet looked broken, what was it?
-- so did MegaGlovePrize (while bowser was captive)
 
 Marrymore
 🚧 remake names are disabled but whenh mallow is recruitable character one of the npcs said "toad and comeon"
-🚧 one of the bloober sprites, when it goes very far to the right of the table and does its attack animation, is broken. doing this animation anywhere else is fine
-  🚧 tried adding extra buffer space to henchman partitions
 🚧 snifit sprites glitch out (overwritten by ally)
-🚧 crown replacement sinks into the floor
-🚧 plays DI4060_NEED_TO_DO_CHAPEL_CHECKS when you get a marrymore gift for some reason?! in hotel?!
 🚧 bellhop sidequest gets stuck on "please see our guest out"
-🚧 stay voucher can be used multiple times. should be taken away after first time
-  - it's being taken away but still detecting as present in inventory
-🚧 could use a dialog explaining why you're getting a gift
-🚧 dialogs seem wrong. both are attributed as torte in kitchen
-🚧 frog coin items sold in room service menu are very cheap. should multiply by 5 first.
-🚧 kerokerocola room service is 75 coins, that calc seems incorrect
 🚧 innkeeper should not tell you you have a gift when youve surpassed the 6th check
-- hotel chest: was this preopened???
 
 star hill
 🚧 mallow using bad sprtie id 
@@ -165,35 +155,28 @@ Sunken Ship
 - chester replacing johnny 1 uses bad sprite
 🚧 chester replacing johnny "how embarrassing" dialog is not formatted correctly
 🚧 clearing ship did not give seaside boss acces
-- trueform pin packet in staircase did not grant item
-- chest behind dry bones in shaman room: make sure that nothing is shuffled here unless it is behind a damage spell
+🚧 trueform pin packet in staircase did not grant item
+🚧 chest behind dry bones in shaman room: make sure that nothing is shuffled here unless it is behind a damage spell
 - booster in password room: bad partition
 
 
 Land's End
 🚧 belome fortune triggering after only 2 statues
   - trigger is fixed
-  - but pipe room breaks
+  🚧 but pipe room breaks
 🚧 chests in grotto don't render correctly
   - specifically the shy away chest. not even a slot machine room
 - floating chest in room 2 was a mimic. no reload prize
+  🚧 might have been mimic 3
 🚧 shaman selling items to you: probably should be a slot machine
 - does troopa cliff work at all?
+  🚧 need to beat temple boss
 
 Monstro Town
-🚧 terrain completely broken 
-  - this is because of mushroom kingdom mod
-🚧 count down in jagger spot but the battle is yaridovich? even though it's using count down's background?
-  🚧 yarid stats clearly meant for somewhere else. possibly dojo 
 🚧 what the hell did manager's last standing pounder do? glitched spell name, flame stone that did nothing
-🚧 boomer in dojo 3 is doing stances (when first introduced after dojo 2 fight) of sequences that dont exist
-  🚧 same with clerk. probably just forgot to identify detente animations and delete them
 🚧 piranha plant is invisible
-🚧 starslap song hint is wrong
 🚧 sleeping in the inn circle mask centers in the wrong place
 🚧 palettes on musty fears might be wrong
-🚧 musty fears should not say intro twice
-🚧 tramopline up to belome temple crashes game, never fades in
 
 Bean Valley
 - save deletion seems inconsistent. keep an eye on it
@@ -211,17 +194,14 @@ Nimbus Land
   - need more research
 🚧 frog coin in nimbus castle doesnt render in chest (bridge room)
 - croco as dodo: when you get caught, he doesnt face north when he runs into the other room. might have bad f coord 
-- still not granting prize when you beat statue game
+🚧 still not granting prize when you beat statue game
 🚧 hidon as statue keeper breaks when he moves upward, might be incorrect mold being set
-🚧 did not get statue prize from hidon and he still appeared in the next room, should not happen in these settings
-  - item problem is fixed, i think, but battle still required
 🚧 trueform pin packet did not appear in forkies room
 🚧 chests broken in post-birdo room
 🚧 bowsers keep condition not substituted in dialog
 🚧 garro partition is wrong when grate guy statue is loaded
 🚧 can't say no in nimbus inn
-🚧 need to actually disable the front door when blocked by guarss
-🚧 croco in statue room: molds moving forward are incorrect, but the game otherwise words correclty
+🚧 need to actually disable the front door when blocked by guarss 
 🚧 forkies is still overwriting chests in the staircase room
 🚧 croco in back hallway facing wrong direction (turn off f coord probably), was facing NW while walking NE
 🚧 castle final boss uses wrong room id in event 353
