@@ -1993,17 +1993,19 @@ class GameWorld:
         # moves to 0x1D97A6 (NOT the base ROM's 0x1D9823). Write room 17's exact
         # mod data: 2×2 at (10,17) with tile 706 (b0b7=0), which enables the
         # doorframe surface in the normal castle variant.
-        patch.add_data(0x1D97A6, bytearray([0x0A, 0x11, 0x11, 0xAA, 0xC2, 0xC2, 0xC2, 0xC2]))
+        #patch.add_data(0x1D97A6, bytearray([0x0A, 0x11, 0x11, 0xAA, 0xC2, 0xC2, 0xC2, 0xC2]))
 
-        # NMI cooperative hook for FxPakPro Archipelago support.
-        # Bridges WRAM (inaccessible on SA-1 FxPakPro) to BW-RAM mailbox.
-        patch.add_data(NMI_VECTOR_ROM_OFFSET, NMI_VECTOR_NEW)       # Native NMI → $FFE0
-        patch.add_data(EMU_NMI_VECTOR_ROM_OFFSET, EMU_NMI_VECTOR_NEW)  # Emu NMI → $FFE0
-        patch.add_data(TRAMPOLINE_ROM_OFFSET, TRAMPOLINE_CODE)      # JML $D5:F000
-        patch.add_data(HOOK_ROM_OFFSET, NMI_HOOK_CODE)              # Hook code
-        # Enable VBlank NMI during gameplay (bank C0 writes $01 → $81 to $4200).
-        for rom_offset, _old, new in NMITIMEN_PATCHES:
-            patch.add_data(rom_offset, bytes([new]))
+        # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).
+        # Enabling NMI ($4200 bit 7) during gameplay causes the vanilla NMI handler
+        # ($C0:0283) to fire every VBlank. That handler is NOT a no-op — it calls the
+        # SA-1 message dispatcher ($0691) which corrupts battle state including
+        # $7E0926 (party size). All FxPak/NMI patching is commented out.
+        # patch.add_data(NMI_VECTOR_ROM_OFFSET, NMI_VECTOR_NEW)
+        # patch.add_data(EMU_NMI_VECTOR_ROM_OFFSET, EMU_NMI_VECTOR_NEW)
+        # patch.add_data(TRAMPOLINE_ROM_OFFSET, TRAMPOLINE_CODE)
+        # patch.add_data(HOOK_ROM_OFFSET, NMI_HOOK_CODE)
+        # for rom_offset, _old, new in NMITIMEN_PATCHES:
+        #     patch.add_data(rom_offset, bytes([new]))
 
         # Update ROM title and version.
         title = "SMRPG-R {}".format(self.seed).ljust(20)
