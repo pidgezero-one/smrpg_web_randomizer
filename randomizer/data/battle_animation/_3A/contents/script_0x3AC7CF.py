@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -39,13 +41,13 @@ script = AnimationScriptBlock(expected_size=1249, expected_beginning=0x3AC7CF, s
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=60),
 	ResetObjectMappingMemory(),
 	ClearAMEM8Bit(0x60),
-	Set7E1xToAMEM8Bit(0x7EE00D, 0x60),
+	Set7E1xToAMEM8Bit(BV7EE00D, 0x60),
 	SetAMEM8BitTo7E1x(0x60, 0x7EFA00),
 	IncAMEM8Bit(0x60),
 	SetAMEM8BitToConst(0x61, 1),
 	UnknownCommand(bytearray([0x16]), identifier="command_0x3AC94B"),
 	Pause1Frame(),
-	JmpIfAMEM8BitEquals7E1x(0x61, 0x7EE00D, ["command_0x3AC959"]),
+	JmpIfAMEM8BitEquals7E1x(0x61, BV7EE00D, ["command_0x3AC959"]),
 	JmpIfAMEM8BitNotEquals7E1x(0x60, 0x7EFA00, ["command_0x3AC94B"]),
 	ResetTargetMappingMemory(identifier="command_0x3AC959"),
 	MoveObject(speed=65, start_position=1024, end_position=4096, apply_to_z=True, should_set_start_position=True, should_set_end_position=True, should_set_speed=True),
@@ -62,7 +64,7 @@ script = AnimationScriptBlock(expected_size=1249, expected_beginning=0x3AC7CF, s
 	ClearAMEMBits(0x60, [7]),
 	Set7E5xToAMEM8Bit(0x7E0000, 0x60),
 	ClearAMEM8Bit(0x60),
-	Set7E1xToAMEM8Bit(0x7EE008, 0x60),
+	Set7E1xToAMEM8Bit(BV7EE008, 0x60),
 	ReturnSpriteQueue(),
 	RunSubroutine(["command_0x3A756C"], identifier="command_0x3AC990"),
 	SpriteSequence(sequence=3),
@@ -299,7 +301,7 @@ script = AnimationScriptBlock(expected_size=1249, expected_beginning=0x3AC7CF, s
 	ClearAMEM8Bit(0x69, identifier="command_0x3ACC59"),
 	UnknownCommand(bytearray([0x16]), identifier="command_0x3ACC5B"),
 	Pause1Frame(),
-	SetAMEM8BitTo7E1x(0x68, 0x7EE007),
+	SetAMEM8BitTo7E1x(0x68, BV7EE007),
 	JmpIfAMEM8BitEqualsAMEM(amem=0x68, source_amem=0x69, upper=0x60, destinations=["command_0x3ACC5B"]),
 	SetAMEM8BitToAMEM(amem=0x69, source_amem=0x68, upper=0x60),
 	JmpIfAMEM8BitEqualsConst(0x68, 0, ["command_0x3ACC92"]),

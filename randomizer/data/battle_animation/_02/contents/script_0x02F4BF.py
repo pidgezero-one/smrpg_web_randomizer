@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -33,7 +35,7 @@ script = AnimationScriptBlock(expected_size=763, expected_beginning=0x02F4BF, sc
 	Jmp(["command_0x02F4F5"]),
 	SpriteSequence(sequence=1, looping_off=True, mirror=True, identifier="command_0x02F50E"),
 	Jmp(["command_0x02F4F5"]),
-	Set7E1xToAMEM8Bit(0x7EE000, 0x6A, identifier="command_0x02F513"),
+	Set7E1xToAMEM8Bit(BV7EE000, 0x6A, identifier="command_0x02F513"),
 	SpriteQueueReferenceEXPERIMENTAL(unknown_byte=8, destinations=["command_0x02F51E"]),
 	Jmp(["command_0x02F4F5"]),
 	DefineObjectQueue(["command_0x02F526", "command_0x02F560", "command_0x02F69E", "command_0x02F7A9"], identifier="command_0x02F51E"),

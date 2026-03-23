@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -46,7 +48,7 @@ script = AnimationScriptBlock(expected_size=1415, expected_beginning=0x3AC1F1, s
 	Jmp(["command_0x3AC2E3"]),
 	UnknownCommand(bytearray([0x16]), identifier="command_0x3AC25A"),
 	Pause1Frame(),
-	SetAMEM8BitTo7E1x(0x67, 0x7EE003),
+	SetAMEM8BitTo7E1x(0x67, BV7EE003),
 	JmpIfAMEMBitsSet(0x67, [0], ["command_0x3AC2A9"]),
 	Pause1Frame(),
 	SetAMEMToRandomByte(amem=0x68, upper_bound=100),
@@ -70,9 +72,9 @@ script = AnimationScriptBlock(expected_size=1415, expected_beginning=0x3AC1F1, s
 	SpriteSequence(sequence=12, mirror=True, identifier="command_0x3AC2A0"),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=16),
 	Jmp(["command_0x3AC25A"]),
-	SetAMEM8BitTo7E1x(0x60, 0x7EFA80, identifier="command_0x3AC2A9"),
+	SetAMEM8BitTo7E1x(0x60, ALLY_0_MORTAL_STATUS, identifier="command_0x3AC2A9"),
 	ClearAMEMBits(0x60, [7]),
-	Set7E1xToAMEM8Bit(0x7EFA80, 0x60),
+	Set7E1xToAMEM8Bit(ALLY_0_MORTAL_STATUS, 0x60),
 	SetAMEM8BitTo7E1x(0x60, 0x7EFB00),
 	ClearAMEMBits(0x60, [7]),
 	Set7E1xToAMEM8Bit(0x7EFB00, 0x60),
@@ -80,7 +82,7 @@ script = AnimationScriptBlock(expected_size=1415, expected_beginning=0x3AC1F1, s
 	RunSubroutine(["command_0x3A773F"], identifier="command_0x3AC2C0"),
 	ClearAMEM8Bit(0x60),
 	SetAMEM8BitToConst(0x60, 128),
-	Set7E1xToAMEM8Bit(0x7EFA80, 0x60),
+	Set7E1xToAMEM8Bit(ALLY_0_MORTAL_STATUS, 0x60),
 	SpriteSequence(sequence=0, looping_on=True),
 	RunSubroutine(["command_0x3A81C4"]),
 	RunSubroutine(["command_0x3A72E6"]),
@@ -90,7 +92,7 @@ script = AnimationScriptBlock(expected_size=1415, expected_beginning=0x3AC1F1, s
 	JmpIfAMEM8BitEqualsConst(0x60, 2, ["command_0x3AC25A"]),
 	UnknownCommand(bytearray([0x16]), identifier="command_0x3AC2E3"),
 	Pause1Frame(),
-	SetAMEM8BitTo7E1x(0x67, 0x7EE003),
+	SetAMEM8BitTo7E1x(0x67, BV7EE003),
 	JmpIfAMEMBitsSet(0x67, [0], ["command_0x3AC32E"]),
 	Pause1Frame(),
 	SetAMEMToRandomByte(amem=0x68, upper_bound=100),
@@ -113,9 +115,9 @@ script = AnimationScriptBlock(expected_size=1415, expected_beginning=0x3AC1F1, s
 	SpriteSequence(sequence=12, mirror=True, identifier="command_0x3AC325"),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=16),
 	Jmp(["command_0x3AC2E3"]),
-	SetAMEM8BitTo7E1x(0x60, 0x7EFA80, identifier="command_0x3AC32E"),
+	SetAMEM8BitTo7E1x(0x60, ALLY_0_MORTAL_STATUS, identifier="command_0x3AC32E"),
 	ClearAMEMBits(0x60, [7]),
-	Set7E1xToAMEM8Bit(0x7EFA80, 0x60),
+	Set7E1xToAMEM8Bit(ALLY_0_MORTAL_STATUS, 0x60),
 	SetAMEM8BitTo7E1x(0x60, 0x7EFB00),
 	ClearAMEMBits(0x60, [7]),
 	Set7E1xToAMEM8Bit(0x7EFB00, 0x60),

@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -246,24 +248,24 @@ script = AnimationScriptBlock(expected_size=792, expected_beginning=0x350737, sc
 	UnknownCommand(bytearray([0x3C, 0x00, 0x08]), identifier="command_0x350A4F"),
 	Jmp(["command_0x3509F7"]),
     Set7FToAMEM8Bit(amem=0x62, address=0x7FFFB0, identifier="bobomb_obj_seq_13"),
-    JmpIfAMEM8BitEqualsConst(0x62, 100, ["objs13_b1"]),
-    SetAMEM8BitTo7F(amem=0x66, address=0x7FFFF0),
-    JmpIfAMEM8BitEqualsConst(0x66, 1, ["objs13_shortcut"]),
-    RunSubroutine(["objs13_subroutine"]),
+    JmpIfAMEM8BitEqualsConst(0x62, 100, ["object_sequence_13_for_set_0-1-2-3_bobomb_s_159_b1"]),
+    SetAMEM8BitTo7F(amem=0x66, address=BOBOMB_S_159_DIRECTION),
+    JmpIfAMEM8BitEqualsConst(0x66, 1, ["object_sequence_13_for_set_0-1-2-3_bobomb_s_159_shortcut"]),
+    RunSubroutine(["object_sequence_13_for_set_0-1-2-3_bobomb_s_159_subroutine"]),
     Jmp(["command_0x3505D5"]),
-    SpriteSequence(0, looping_on=True, identifier="objs13_subroutine"),
+    SpriteSequence(0, looping_on=True, identifier="object_sequence_13_for_set_0-1-2-3_bobomb_s_159_subroutine"),
     SetAMEM8BitToConst(0x64, 0),
     Set7FToAMEM8Bit(0x7FFFB0, 0x64),
-    Set7FToAMEM8Bit(0x7FFFF0, 0x64),
+    Set7FToAMEM8Bit(BOBOMB_S_159_DIRECTION, 0x64),
     Jmp(["command_0x3505D5"]),
-    SetAMEM8BitTo7F(0x66, 0x7FFFE0, identifier="objs12_b1"),
-    JmpIfAMEM8BitEqualsConst(0x66, 1, ["objs12_b2"]),
+    SetAMEM8BitTo7F(0x66, BOBOMB_S_173_DIRECTION, identifier="object_sequence_12_for_set_0-1-2-3_bobomb_s_173_b1"),
+    JmpIfAMEM8BitEqualsConst(0x66, 1, ["object_sequence_12_for_set_0-1-2-3_bobomb_s_173_b2"]),
     SetAMEM8BitToConst(0x68  , 1),
-    Set7E1xToAMEM8Bit(0x7EE00C, 0x68),
-    SpriteSequence(1, looping_on=True, mirror=True, identifier="objs12_shortcut"),
+    Set7E1xToAMEM8Bit(BV7EE00C, 0x68),
+    SpriteSequence(1, looping_on=True, mirror=True, identifier="object_sequence_12_for_set_0-1-2-3_bobomb_s_173_shortcut"),
     Set7FToAMEM8Bit(0x7FFFB0, 0x64),
     SetAMEM8BitToConst(0x64, 1),
-    Set7FToAMEM8Bit(0x7FFFE0, 0x64),
+    Set7FToAMEM8Bit(BOBOMB_S_173_DIRECTION, 0x64),
     Jmp(["command_0x3505D5"]),
     SetAMEM8BitTo7F(0x62, 0x7FFFB0, identifier="jinx4_seq_14"),
     JmpIfAMEM8BitGreaterOrEqualThanConst(0x62, 100, ["jinx4_shortcut"]),

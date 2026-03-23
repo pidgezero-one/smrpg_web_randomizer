@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *

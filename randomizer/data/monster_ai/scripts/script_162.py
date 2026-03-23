@@ -18,7 +18,7 @@ script = MonsterScript([
 	IfTurnCounterEquals(2),
 	IfVarLessThan(BV7EE000, 2),
 	SetVarBits(BV7EE003, [0]),
-	ClearVar(BV7EE005_ATTACK_PHASE_COUNTER),
+	ClearVar(BV7EE006_ATTACK_PHASE_COUNTER),
 	IncreaseVarBy1(BV7EE000),
 	RunBattleEvent(BE0086_SMELTER_POURS_MOLTEN_LIQUID_SMITHY_WELDS),
 	Wait1TurnandRestartScript(),

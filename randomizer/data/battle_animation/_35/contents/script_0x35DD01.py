@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -654,7 +656,7 @@ script = AnimationScriptBlock(expected_size=4001, expected_beginning=0x35DD01, s
 	PauseScriptUntilDialogClosed(),
 	PauseScriptUntil(condition=UNKNOWN_PAUSE_2),
 	ResetObjectMappingMemory(),
-	SetAMEM8BitTo7E1x(0x6E, 0x7EE012),
+	SetAMEM8BitTo7E1x(0x6E, MYSTERY_EGG_LAMBS_LURE_COUNTER),
 	IncAMEM8Bit(0x6E),
 	JmpIfAMEM8BitLessThanConst(0x6E, 48, ["command_0x35E6A4"]),
 	RemoveItemFromStandardInventory(LambsLureItem),
@@ -662,7 +664,7 @@ script = AnimationScriptBlock(expected_size=4001, expected_beginning=0x35DD01, s
 	DisplayMessage(ITEM_NAME, 14),
 	PauseScriptUntilDialogClosed(),
 	ClearAMEM8Bit(0x6E),
-	Set7E1xToAMEM8Bit(0x7EE012, 0x6E, identifier="command_0x35E6A4"),
+	Set7E1xToAMEM8Bit(MYSTERY_EGG_LAMBS_LURE_COUNTER, 0x6E, identifier="command_0x35E6A4"),
 	Jmp(["command_0x35E6BC"]),
 	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=-16, y=-8, z=0, set_x=True, set_y=True, set_z=True, identifier="command_0x35E6AB"),
 	PlaySound(sound=S0115_TRANSFORM),
@@ -860,7 +862,7 @@ script = AnimationScriptBlock(expected_size=4001, expected_beginning=0x35DD01, s
 	SetOMEMMainToAMEM8Bit(omem=0x6E, amem=0x6E),
 	ReturnObjectQueue(),
 	SetAMEM8BitToUnknownShort(amem=0x6A, type=0x8, value=0x0001, identifier="command_0x35E980"),
-	SetAMEM8BitTo7E1x(0x6B, 0x7EE012),
+	SetAMEM8BitTo7E1x(0x6B, MYSTERY_EGG_LAMBS_LURE_COUNTER),
 	JmpIfAMEM8BitEqualsConst(0x6A, 1, ["command_0x35E99A"]),
 	Pause1Frame(),
 	JmpIfAMEM8BitLessThanConst(0x6B, 1, ["command_0x35E9C2"]),
@@ -877,7 +879,7 @@ script = AnimationScriptBlock(expected_size=4001, expected_beginning=0x35DD01, s
 	RemoveItemFromStandardInventory(MysteryEggItem),
 	AddItemToStandardInventory(LambsLureItem),
 	ClearAMEM8Bit(0x6B),
-	Set7E1xToAMEM8Bit(0x7EE012, 0x6B, identifier="command_0x35E9BE"),
+	Set7E1xToAMEM8Bit(MYSTERY_EGG_LAMBS_LURE_COUNTER, 0x6B, identifier="command_0x35E9BE"),
 	ReturnSubroutine(identifier="command_0x35E9C2"),
 	DefineObjectQueue(["command_0x35E9C5"], identifier="command_0x35E9C3"),
 	DefineObjectQueue(["command_0x35E9C7"], identifier="command_0x35E9C5"),
@@ -891,13 +893,13 @@ script = AnimationScriptBlock(expected_size=4001, expected_beginning=0x35DD01, s
 	SetAMEMBits(0x6F, [0]),
 	Set7E1xToAMEM8Bit(0x7EFA1F, 0x6F),
 	Pause1Frame(),
-	SetAMEM8BitTo7E1x(0x6F, 0x7EE014),
+	SetAMEM8BitTo7E1x(0x6F, LUCKY_JEWEL_COUNTER),
 	JmpIfAMEM8BitNotEqualsConst(0x6F, 0, ["command_0x35E9F3"]),
 	SetAMEM8BitToConst(0x6F, 11),
 	DecAMEM8Bit(0x6F, identifier="command_0x35E9F3"),
 	JmpIfAMEM8BitNotEqualsConst(0x6F, 1, ["command_0x35E9FE"]),
 	RemoveItemFromStandardInventory(LuckyJewelItem),
-	Set7E1xToAMEM8Bit(0x7EE014, 0x6F, identifier="command_0x35E9FE"),
+	Set7E1xToAMEM8Bit(LUCKY_JEWEL_COUNTER, 0x6F, identifier="command_0x35E9FE"),
 	Pause1Frame(),
 	Jmp(["command_0x35E015"]),
 	DefineObjectQueue(["command_0x35EA0E"], identifier="command_0x35EA0C"),

@@ -18,7 +18,7 @@ script = MonsterScript([
 	RunBattleEvent(BE0074_CULEX_SUMMONS_CRYSTALS),
 	Wait1TurnandRestartScript(),
 	IfTurnCounterEquals(3),
-	ClearVar(BV7EE005_ATTACK_PHASE_COUNTER),
+	ClearVar(BV7EE006_ATTACK_PHASE_COUNTER),
 	CastSpell(ShredderSpell),
 	Wait1TurnandRestartScript(),
 	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),

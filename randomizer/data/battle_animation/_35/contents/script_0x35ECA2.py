@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -1333,12 +1335,12 @@ script = AnimationScriptBlock(expected_size=4958, expected_beginning=0x35ECA2, s
     SetAMEM16BitToConst(0x6A, 1),
     Set7E1xToAMEM16Bit(0x7EFB11, 0x6A),
     UseSpriteQueue(field_object=1, destinations=["command_0x358251"], character_slot=True),
-	SetAMEM16BitTo7E1x(0x6B, 0x7EFA91, identifier="meteor_part_2"),
+	SetAMEM16BitTo7E1x(0x6B, ALLY_0_CURRENT_HP, identifier="meteor_part_2"),
     JmpIfAMEM16BitEqualsConst(0x6B, 0, ["meteor_part_3"]),
-    SetAMEM16BitTo7E1x(0x6B, 0x7EFA93),
-    JmpIfAMEM16BitNotEquals7E1x(0x6B, 0x7EFA91, ["meteor_part_6"]),
+    SetAMEM16BitTo7E1x(0x6B, ALLY_0_MAX_HP),
+    JmpIfAMEM16BitNotEquals7E1x(0x6B, ALLY_0_CURRENT_HP, ["meteor_part_6"]),
     SetAMEM16BitToConst(0x6B, 1),
-    Set7E1xToAMEM16Bit(0x7EFA91, 0x6B),
+    Set7E1xToAMEM16Bit(ALLY_0_CURRENT_HP, 0x6B),
     UseSpriteQueue(field_object=0, destinations=["command_0x358251"], character_slot=True),
     SetAMEM16BitTo7E1x(0x6C, 0x7EFB91, identifier="meteor_part_3"),
     JmpIfAMEM16BitEqualsConst(0x6C, 0, ["meteor_exit"]),
@@ -1359,7 +1361,7 @@ script = AnimationScriptBlock(expected_size=4958, expected_beginning=0x35ECA2, s
     VisibilityOn(0x0A),
     ReturnSpriteQueue(),
     SetAMEM16BitToConst(0x6B, 0, identifier="meteor_part_6"),
-    Set7E1xToAMEM16Bit(0x7EFA91, 0x6B),
+    Set7E1xToAMEM16Bit(ALLY_0_CURRENT_HP, 0x6B),
     UseSpriteQueue(field_object=0, destinations=["meteor_part_5"], character_slot=True),
     Jmp(["meteor_part_3"]),
     SetAMEM16BitToConst(0x6C, 0, identifier="meteor_part_7"),

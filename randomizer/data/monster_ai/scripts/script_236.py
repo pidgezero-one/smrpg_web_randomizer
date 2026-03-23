@@ -84,7 +84,7 @@ script = MonsterScript([
 	StartCounterCommands(),
 	IfHPBelow(0),
 	RunBattleDialog(224),
-	ClearVar(BV7EE005_ATTACK_PHASE_COUNTER),
+	ClearVar(BV7EE006_ATTACK_PHASE_COUNTER),
 	SetVarBits(BV7EE008, [7]),
 	ClearVarBits(BV7EE008, [6]),
 	SetUntargetable(SELF),

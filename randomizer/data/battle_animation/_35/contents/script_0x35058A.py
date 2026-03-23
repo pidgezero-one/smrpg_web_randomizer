@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -117,11 +119,11 @@ script = AnimationScriptBlock(expected_size=374, expected_beginning=0x35058A, sc
 	UnknownCommand(bytearray([0x98])),
 	GameOverIfNoAlliesStanding(identifier="command_0x3506FC"),
 	Jmp(["command_0x3505D5"]),
-    SetAMEM8BitToConst(0x68, 0, identifier="objs12_b2"),
-    Set7E1xToAMEM8Bit(0x7EE00C, 0x68),
+    SetAMEM8BitToConst(0x68, 0, identifier="object_sequence_12_for_set_0-1-2-3_bobomb_s_173_b2"),
+    Set7E1xToAMEM8Bit(BV7EE00C, 0x68),
     SpriteSequence(0, looping_on=True),
     SetAMEM8BitToConst(0x64, 0),
     Set7FToAMEM8Bit(0x7FFFB0, 0x64),
-    Set7FToAMEM8Bit(0x7FFFE0, 0x64),
+    Set7FToAMEM8Bit(BOBOMB_S_173_DIRECTION, 0x64),
     Jmp(["command_0x3505D5"]),
 ])

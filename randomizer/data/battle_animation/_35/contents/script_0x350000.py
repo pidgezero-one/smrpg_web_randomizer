@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -154,6 +156,6 @@ script = AnimationScriptBlock(expected_size=0x0202, expected_beginning=0x350000,
 	SetAMEM8BitToConst(0x62, 1),
 	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x35ECA2"]),
 	Jmp(["command_0x358ADC"]),
-    Set7E1xToAMEM8Bit(0x7EE003, 0x62, identifier="jinx4_shortcut"),
+    Set7E1xToAMEM8Bit(BV7EE003, 0x62, identifier="jinx4_shortcut"),
     Jmp(["command_0x3505D5"]),
 ])

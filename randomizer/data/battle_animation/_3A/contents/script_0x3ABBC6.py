@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -168,7 +170,7 @@ script = AnimationScriptBlock(expected_size=1409, expected_beginning=0x3ABBC6, s
 	RunSubroutine(["command_0x3A7374"]),
 	UnknownCommand(bytearray([0x16]), identifier="command_0x3AC0F9"),
 	Pause1Frame(),
-	SetAMEM8BitTo7E1x(0x67, 0x7EE003),
+	SetAMEM8BitTo7E1x(0x67, BV7EE003),
 	JmpIfAMEMBitsSet(0x67, [0], ["command_0x3AC141"]),
 	Pause1Frame(),
 	SetAMEMToRandomByte(amem=0x68, upper_bound=100),

@@ -22,7 +22,7 @@ script = MonsterScript([
 	IfVarBitsClear(BV7EE003, [7]),
 	IfVarLessThan(BV7EE000, 3),
 	SetVarBits(BV7EE003, [7]),
-	ClearVar(BV7EE005_ATTACK_PHASE_COUNTER),
+	ClearVar(BV7EE006_ATTACK_PHASE_COUNTER),
 	SetUntargetable(MONSTER_1_SET),
 	RunBattleEvent(BE0004_MACK_JUMPS_OUT_OF_BATTLE_OFF_SCREEN),
 	Wait1TurnandRestartScript(),

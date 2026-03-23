@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -78,7 +80,7 @@ script = AnimationScriptBlock(expected_size=725, expected_beginning=0x352128, sc
 	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
 	ResetObjectMappingMemory(),
 	ClearAMEM8Bit(0x61),
-	SetAMEM8BitTo7E1x(0x60, 0x7EE00D),
+	SetAMEM8BitTo7E1x(0x60, BV7EE00D),
 	JmpIfAMEM8BitEqualsConst(0x60, 1, ["command_0x352274"]),
 	Set7E5xToAMEM8Bit(0x7E0064, 0x61),
 	ReturnSubroutine(),
@@ -163,9 +165,9 @@ script = AnimationScriptBlock(expected_size=725, expected_beginning=0x352128, sc
 	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE, identifier="shift_sprite_and_remap"),
 	ResetObjectMappingMemory(),
 	ReturnSubroutine(),
-	SetAMEM8BitTo7E1x(0x68, 0x7EE00C, identifier="monster_entrance_15"),
+	SetAMEM8BitTo7E1x(0x68, BV7EE00C, identifier="monster_entrance_15"),
 	IncAMEM8Bit(0x68),
-	Set7E1xToAMEM8Bit(0x7EE00C, 0x68),
+	Set7E1xToAMEM8Bit(BV7EE00C, 0x68),
 	Set7E5xToAMEM8Bit(0x7E0064, 0x68),
 	SpriteSequence(sequence=5, looping_off=True),
 	UnknownCommand(bytearray([0x18, 0x00, 0x80])),

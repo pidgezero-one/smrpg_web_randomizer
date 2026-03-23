@@ -17,7 +17,7 @@ script = MonsterScript([
     IfCurrentlyInFormationID(286),
 	IfTurnCounterEquals(3),
 	SetTargetable(SELF),
-	ClearVar(BV7EE005_ATTACK_PHASE_COUNTER),
+	ClearVar(BV7EE006_ATTACK_PHASE_COUNTER),
 	Wait1TurnandRestartScript(),
     IfCurrentlyInFormationID(137),
 	SetUntargetable(SELF),

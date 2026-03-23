@@ -15,7 +15,7 @@ from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 script = MonsterScript([
 	IfTurnCounterEquals(3),
 	Attack(BlazerAttack),
-	ClearVar(BV7EE005_ATTACK_PHASE_COUNTER),
+	ClearVar(BV7EE006_ATTACK_PHASE_COUNTER),
 	Wait1TurnandRestartScript(),
 	Attack(Attack29, Attack29, DoNothing),
 	StartCounterCommands()

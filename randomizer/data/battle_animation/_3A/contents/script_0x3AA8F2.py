@@ -6,6 +6,8 @@ from ....variables.battle_sfx_names import *
 from ....variables.battle_effect_names import *
 from ....variables.battle_event_names import *
 from ....variables.screen_effect_names import *
+from ....variables.battle_animation_variable_names import *
+from ....variables.battle_variable_names import *
 from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
@@ -36,9 +38,9 @@ script = AnimationScriptBlock(expected_size=4816, expected_beginning=0x3AA8F2, s
 	RunSubroutine(["command_0x3A755E"]),
 	ReturnSpriteQueue(),
 	ClearAMEM8Bit(0x60, identifier="command_0x3AB8B3"),
-	SetAMEM8BitTo7E1x(0x60, 0x7EFA80),
+	SetAMEM8BitTo7E1x(0x60, ALLY_0_MORTAL_STATUS),
 	SetAMEMBits(0x60, [7]),
-	Set7E1xToAMEM8Bit(0x7EFA80, 0x60),
+	Set7E1xToAMEM8Bit(ALLY_0_MORTAL_STATUS, 0x60),
 	ResetTargetMappingMemory(),
 	MoveObject(speed=1, start_position=256, end_position=256, apply_to_x=True, should_set_end_position=True, should_set_speed=True),
 	MoveObject(speed=33, start_position=-513, end_position=256, apply_to_y=True, should_set_start_position=True, should_set_end_position=True, should_set_speed=True),
@@ -49,7 +51,7 @@ script = AnimationScriptBlock(expected_size=4816, expected_beginning=0x3AA8F2, s
 	Pause1Frame(identifier="command_0x3AB8E2"),
 	UnknownCommand(bytearray([0x16])),
 	Pause1Frame(),
-	JmpIfAMEM8BitEquals7E1x(0x60, 0x7EE003, ["command_0x3AB8EE"]),
+	JmpIfAMEM8BitEquals7E1x(0x60, BV7EE003, ["command_0x3AB8EE"]),
 	Jmp(["command_0x3AB8E2"]),
 	PlaySound(sound=S0000_SILENCE, identifier="command_0x3AB8EE"),
 	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=164, y=116, z=0, set_x=True, set_y=True, set_z=True),
@@ -71,10 +73,10 @@ script = AnimationScriptBlock(expected_size=4816, expected_beginning=0x3AA8F2, s
 	RunSubroutine(["command_0x3A711F"]),
 	SpriteSequence(sequence=0, looping_off=True),
 	ClearAMEM8Bit(0x60),
-	Set7E1xToAMEM8Bit(0x7EE003, 0x60),
-	SetAMEM8BitTo7E1x(0x60, 0x7EFA80),
+	Set7E1xToAMEM8Bit(BV7EE003, 0x60),
+	SetAMEM8BitTo7E1x(0x60, ALLY_0_MORTAL_STATUS),
 	ClearAMEMBits(0x60, [7]),
-	Set7E1xToAMEM8Bit(0x7EFA80, 0x60),
+	Set7E1xToAMEM8Bit(ALLY_0_MORTAL_STATUS, 0x60),
 	RunSubroutine(["command_0x3A7544"]),
 	RunSubroutine(["command_0x3A755E"]),
 	ReturnSpriteQueue(),
@@ -104,7 +106,7 @@ script = AnimationScriptBlock(expected_size=4816, expected_beginning=0x3AA8F2, s
 	PauseScriptUntilSpriteSequenceDone(),
 	ResetSpriteSequence(),
 	SetAMEM8BitToConst(0x60, 1),
-	Set7E1xToAMEM8Bit(0x7EE003, 0x60),
+	Set7E1xToAMEM8Bit(BV7EE003, 0x60),
 	RunSubroutine(["command_0x3A771E"]),
 	ReturnSpriteQueue(),
 	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=0, y=-256, z=0, set_y=True, identifier="command_0x3AB97E"),

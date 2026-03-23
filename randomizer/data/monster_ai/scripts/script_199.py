@@ -59,7 +59,7 @@ script = MonsterScript([
 	IfVarBitsSet(BV7EE000, [0]),
 	IfVarEqualOrGreaterThan(BV7EE001, 2),
 	ClearVarBits(BV7EE000, [0]),
-	ClearVar(BV7EE005_ATTACK_PHASE_COUNTER),
+	ClearVar(BV7EE006_ATTACK_PHASE_COUNTER),
 	RunBattleEvent(BE0006_BELOME_SPITS_OUT_MALLOW),
 	Wait1TurnandRestartScript(),
 	IfTargetedByCommand([COMMAND_SPECIAL]),
