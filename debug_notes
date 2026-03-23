@@ -39,10 +39,9 @@ Boss-specific
   - left 2 crystals bot hshowing up as water, right 2 showing up as wind
   - i moved them onto diff palette rows but now they just share with culex
   - might have to switch back to how normal crystals do it
-- fancy bundt: 
-  - raspberry moves forward to attack, should not be doing that
-  - candles don't animate 
-  - are you supposed to be able to KO it with not all candles lit?
+- fancy bundt
+  - 33% might be too low for solo
+  - test if counter is working, never used celebraton shot
 🚧 booster 2 "I'm gonna start working" after KOed
   - i think some thing are running when they should not be.
   - like he says im gonna start working when he already is
@@ -72,8 +71,6 @@ bandit's way
 - flower jump chest showing sleepy bomb as yellow mushroom
 
 Kero sewers
-🚧 double chest does not work. opening it first after lands end did not refill it
-- smithy as boss renders TOTALLY wrong
 🚧 smithy 1 finishing crashes battle, plays empty dialog
 - peach messes up palettes for npcs in any room that has water- this is because of the palette shifting that her pipe animation does, as well as the special palette treatment that water rooms get-un sure if there is a feasible fix without asm bullshit
 

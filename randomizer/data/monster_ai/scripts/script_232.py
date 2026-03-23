@@ -23,7 +23,9 @@ script = MonsterScript([
 	RunObjectSequence(4),
 	DecreaseVarBy1(BV7EE007),
 	Wait1TurnandRestartScript(),
+    
 	IfVarBitsClear(BV7EE001, [1]),
+	IfVarEqualOrGreaterThan(BV7EE00A, 3),
 	IncreaseVarBy1(BV7EE007),
 	IncreaseVarBy1(BV7EE007),
 	IncreaseVarBy1(BV7EE007),
@@ -34,6 +36,48 @@ script = MonsterScript([
 	DecreaseVarBy1(BV7EE007),
 	SetVarBits(BV7EE001, [1]),
 	Wait1TurnandRestartScript(),
+    
+	# Only 2 party members: 50/50 chance of lighting a candle
+	IfVarBitsClear(BV7EE001, [1]),
+	IfVarEqualOrGreaterThan(BV7EE00A, 2),
+	Set7EE005ToRandomNumber(upper_bound=2),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 1),
+	IncreaseVarBy1(BV7EE007),
+	IncreaseVarBy1(BV7EE007),
+	IncreaseVarBy1(BV7EE007),
+	IncreaseVarBy1(BV7EE007),
+	RunObjectSequence(4),
+	SetTarget(MONSTER_1_SET),
+	Attack(ATKMATK5Attack),
+	DecreaseVarBy1(BV7EE007),
+	SetVarBits(BV7EE001, [1]),
+	Wait1TurnandRestartScript(),
+	IfVarBitsClear(BV7EE001, [1]),
+	IfVarEqualOrGreaterThan(BV7EE00A, 2),
+	Wait1TurnandRestartScript(),
+    
+	# Only 1 party member: 33% chance of lighting a candle
+	IfVarBitsClear(BV7EE001, [1]),
+	IfVarEqualOrGreaterThan(BV7EE00A, 1),
+	Set7EE005ToRandomNumber(upper_bound=3),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 1),
+	IncreaseVarBy1(BV7EE007),
+	IncreaseVarBy1(BV7EE007),
+	IncreaseVarBy1(BV7EE007),
+	IncreaseVarBy1(BV7EE007),
+	RunObjectSequence(4),
+	SetTarget(MONSTER_1_SET),
+	Attack(ATKMATK5Attack),
+	DecreaseVarBy1(BV7EE007),
+	SetVarBits(BV7EE001, [1]),
+	Wait1TurnandRestartScript(),
+	IfVarBitsClear(BV7EE001, [1]),
+	IfVarEqualOrGreaterThan(BV7EE00A, 1),
+	Wait1TurnandRestartScript(),
+    
+
+    
+
 	IfVarEqualOrGreaterThan(BV7EE007, 1),
 	RunObjectSequence(4),
 	SetTarget(MONSTER_1_SET),

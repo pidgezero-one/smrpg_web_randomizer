@@ -29,4 +29,18 @@ items:
     - SuperSlapItem
   override:
     MushrooomWayBossFight: KingCalamariBossFight
+    BanditsWayBossFight: JohnnyBossFight
+    MushroomKingdomBossFight: Croco2BossFight
+    KeroSewersBossFight: Bundt2BossFight
+    ForestMazeBossFight: Punchinello2BossFight
+    OuterMinesBossFight: AxemRangersBossFight
+    ShipPasswordBossFight: Johnny2Fight
+    SeasideBeachBossFight: Culex3DBossFight
     LandsEndCloudBoss: ValentinaBossFight
+    DojoFirstFight: BundtBossFight
+    DojoSecondFight: CloakerDominoBossFight
+    DojoThirdFight: Jinx4BossFight
+    DojoFourthFight: Belome1BossFight
+    BeanValleyPlanterBossFight: SmithyBossFight
+    StatueRoomBossFight: Booster2BossFight
+    FactoryEntranceBossFight: Belome3Fight

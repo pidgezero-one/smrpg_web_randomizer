@@ -1989,11 +1989,11 @@ class GameWorld:
 
         # Make invaded mushroom kingdom's doorway chest accessible:
         # Room 325 shares LevelMap 17 / solidity map 5 with room 17.
-        # open_mode.json rebuilds the solidity mod pointer table; room 325's data
-        # moves to 0x1D97A6 (NOT the base ROM's 0x1D9823). Write room 17's exact
-        # mod data: 2×2 at (10,17) with tile 706 (b0b7=0), which enables the
-        # doorframe surface in the normal castle variant.
-        #patch.add_data(0x1D97A6, bytearray([0x0A, 0x11, 0x11, 0xAA, 0xC2, 0xC2, 0xC2, 0xC2]))
+        # The solidity mod pointer table starts at 0x1D8DA6 (512 rooms × 2 bytes).
+        # Room 325's pointer is at 0x1D9030, currently 0x9815 (shared with rooms
+        # 310-324). Redirect it to room 17's doorframe mod at 0x91C2, which is
+        # 2×2 at (10,17) with tile 706 — makes the doorframe surface jumpable.
+        #patch.add_data(0x1D9030, bytearray([0xC2, 0x91]))
 
         # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).
         # Enabling NMI ($4200 bit 7) during gameplay causes the vanilla NMI handler
