@@ -422,17 +422,20 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.settings.isflag_enabled(RemakeNames),
         world.settings.isflag_enabled(CanonNames),
     )
+    towerboss_gender = towerboss.gender
     # Special dialog replacements if Mallow is the Marrymore character
     # we're not including any randomized ship dialogs when the recruited character is canonically a kid
     chapelchar = world.get_location(MarrymoreCharacter).prize
     if isinstance(chapelchar, CharacterPrize) and chapelchar._ally.index == 4:
-        world.update_dialog(DI2112_RAZ_OCCUPIED, "RAZ: If there's one thing I know about `MARRYMORE_CHARACTER`, it's that he just HATES wedding rehearsals.[await]")
-        world.update_dialog(DI2114_MARRYMORE_BOSS_NAMES, " `TOWER_BOSS_1`'s fiance is busy today.[await] It was nice of `MARRYMORE_CHARACTER` to offer to step in and help with the rehearsal.[await]")
-        world.update_dialog(DI2115_MARRYMORE_SHITPOST, " Does anyone here even know who `TOWER_BOSS_1`'s fiance is? Is it `RANDOM_BOSS_NAME_1`?[await]")
-        world.update_dialog(DI2117_MARRYMORE_SHITPOST, " I'm not even invited to a wedding. I just needed to go for a walk.[await] My Discord has been full of drama since one guy posted ship art of `RANDOM_CHARACTER_NAME` and `TOWER_BOSS_1`.[await]")
+        world.update_dialog(DI2112_RAZ_OCCUPIED, "RAZ: If there's one thing I know about `MARRYMORE_CHARACTER`, it's that he ALWAYS cries at weddings.[await] The kid can barely make it through a rehearsal without blubbering.")
+        world.update_dialog(DI2114_MARRYMORE_BOSS_NAMES, " `TOWER_BOSS_1`'s fiance had something come up last minute.[await] `TOWER_BOSS_1` almost had to cancel the rehearsal.[await][page]\n It's nice that `MARRYMORE_CHARACTER` is stepping in to help carry it out.[await]")
+        world.update_dialog(DI2115_MARRYMORE_SHITPOST, " Does anyone here even know who `TOWER_BOSS_1`'s fiance is?[await][page]\n I thought it was `RANDOM_BOSS_NAME_1`, but I saw `RANDOM_BOSS_GENDER_1_OBJECTIVE` visiting Yo'ster Isle with `RANDOM_BOSS_NAME_4`...[await]")
+        world.update_dialog(DI2117_MARRYMORE_SHITPOST, " I'm not even invited to the wedding. I just needed to go for a walk.[await] My Discord has been full of drama since one guy posted ship art of `RANDOM_CHARACTER_NAME` and `RANDOM_BOSS_NAME_5`.[await]")
         world.update_dialog(DI2119_MARRYMORE_SHITPOST, " I heard that `TOWER_BOSS_1` proposed at a gas station. Who DOES that?![await]")
 
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1`", towerboss_name)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1_GENDER_POSSESSIVE`", towerboss_gender[2])
+    
     cc_name = world.allies._allies[chapelchar._ally.index].name if isinstance(chapelchar, CharacterPrize) else "Toad"
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MARRYMORE_CHARACTER`", cc_name)
     mallow_name = world.allies._allies[4].name  # Mallow is always index 4
@@ -444,14 +447,17 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
 
     bossfight_pool = [cast(BossFightPrize, l.prize) for l in world.locations.values() if isinstance(l, BossFightLocation) and isinstance(l.prize, BossFightPrize)]
-    boss_pool = [x.name(
+    boss_pool = list(set([(x.name(
         world.settings.isflag_enabled(RemakeNames),
         world.settings.isflag_enabled(CanonNames),
-    ) for x in bossfight_pool]
-    random_boss_names = random.sample([n for n in boss_pool  if n != towerboss_name], k=3)
-    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_1`", random_boss_names[0])
-    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_2`", random_boss_names[1])
-    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_3`", random_boss_names[2])
+    ), x.gender) for x in bossfight_pool]))
+    random_boss_names = random.sample([n for n in boss_pool  if n[0] != towerboss_name], k=5)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_1`", random_boss_names[0][0])
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_2`", random_boss_names[1][0])
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_3`", random_boss_names[2][0])
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_4`", random_boss_names[3][0])
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_5`", random_boss_names[4][0])
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_GENDER_1_OBJECTIVE`", random_boss_names[0][1][1])
 
     # Other settings
     sjc1 = cast(RangeFlag, world.settings.get_flag(SuperJump1Threshold)).value

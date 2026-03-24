@@ -67,11 +67,9 @@ dialog_data[20] = '''RAINI: I think the back door to the
 dialog_data[21] = ''' `TOWER_BOSS_1` and `MARRYMORE_CHARACTER` getting married sounds like a crack ship fanfic.[await]
  Even so, invites to this wedding
  are highly exclusive.[await]'''
-dialog_data[22] = ''' Don't listen to that guy, `MARRYMORE_CHARACTER` x `RANDOM_BOSS_NAME_1` is a much better ship.[await]'''
-dialog_data[23] = ''' We were about to begin the
- ceremony when some kids, wearing
- dark clothes, kicked us out![await]'''
-dialog_data[24] = ''' Don't listen to that guy, he's just
+dialog_data[22] = ''' Don't listen to any of these people.[await]\n `MARRYMORE_CHARACTER` x `RANDOM_BOSS_NAME_1` is a much better ship than whatever slop they're on about.[await]'''
+dialog_data[23] = '''[await]'''
+dialog_data[24] = ''' Don't listen to that guy. He's just
  mad because he ships `RANDOM_CHARACTER_NAME` and `TOWER_BOSS_1`.[await]'''
 dialog_data[25] = ''' I was hoping for this seed to solve
  the romantic tension between `RANDOM_BOSS_NAME_2` and `RANDOM_BOSS_NAME_3`.[await]
@@ -87,10 +85,8 @@ dialog_data[29] = '''[page]
  I see you have a Stay Voucher.[await]
  You're going to love our hotel's
  fine suite![await]'''
-dialog_data[30] = '''    Unlocked “Postgame” battles[await]'''
-dialog_data[31] = ''' Have you been to the hotel? I heard
- the SUITE has a new gift item and
- room service menu.[await]'''
+dialog_data[30] = '''[center]\nUnlocked “Postgame” battles[await]'''
+dialog_data[31] = ''' Have you been to the hotel? I heard the SUITE has a new room service menu.[await]'''
 dialog_data[32] = ''' I heard some strange rumours about
  today's wedding cake. But I'd have
  to visit the kitchen to confirm.[await]'''
@@ -98,15 +94,14 @@ dialog_data[33] = ''' Welcome to Marrymore![await]
  Have you visited our hotel?[await]
  Our Suite's room service menu has
  some new and exciting items.[await]'''
-dialog_data[34] = ''' I'm just glad it's not Sunday.
- I hate mowing the lawn on Sundays.[await]'''
+dialog_data[34] = ''' I'm just glad it's not Saturday. I hate mowing the lawn on Saturdays.[await]'''
 dialog_data[35] = ''' OK, get a little closer, now...[await]
  Ready? All right, 1..2..[await]
  Hey, you there![await]'''
 dialog_data[36] = ''' Why the long face?
  This isn't a funeral, you know.[await]'''
 dialog_data[37] = ''' These massage chairs they installed
- in the chapel pews are great![await]'''
+ in the pews are great![await]'''
 dialog_data[38] = '''
                    I do.[await]'''
 dialog_data[39] = ''' I came here to watch “Maria and
@@ -121,12 +116,7 @@ dialog_data[42] = ''' I'm a little worried about what
  wedding.[await]
  I can't Super Jump it if it turns
  out to be evil.[await]'''
-dialog_data[43] = ''' Have you been to Booster's Tower
- since before the previous wedding
- happened?[await]
- If not, you should go check it out.
- You might find something
- important.[await]'''
+dialog_data[43] = ''' Do you think `TOWER_BOSS_1` is worried about anyone looting `TOWER_BOSS_1_GENDER_POSSESSIVE` tower?[await] The door's wide open. Someone could even be in there right now![await]'''
 dialog_data[44] = '''
        Hey, what are you doing?[await]'''
 dialog_data[45] = ''' We're finally “man and wife”.[await]'''

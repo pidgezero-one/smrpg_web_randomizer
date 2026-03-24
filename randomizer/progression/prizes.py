@@ -3002,6 +3002,8 @@ class HammerBrosFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "two brothers dancing around"
     _seaside_letter_name_if_final_boss = "the Hammer Bros' pals."
 
+    _gender = ("they", "them", "their", "theirs", "themselves")
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """HAMMER BRO: Alright already, you won, now go away![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you figured it out... But you gotta get past my hammer to get through![await]""",
@@ -3211,6 +3213,8 @@ class PandoriteBossFight(BossFightPrize):
 
     _npc_models = [PandoriteLargeObject, PandoriteSmallObject]
     _statue_npc = MimicStatueObject
+
+    _gender = ("it", "it", "its", "its", "itself")
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """PANDORITE: That thing was making\n me sick...[await]""",
@@ -3673,6 +3677,8 @@ class KnifeGuyGrateGuyBossFight(BossFightPrize):
     _npc_models = [GrateGuyLargeObject, GrateGuySmallObject]
     _statue_npc = GrateGuyStatueObject
 
+    _gender = ("they", "them", "their", "theirs", "themselves")
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """GRATE GUY: Get lost, buddy, I'm\n busy![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, a patron![delay_30] Come on in and let's\n get this show on the road![await]""",
@@ -3736,6 +3742,8 @@ class BundtBossFight(BossFightPrize):
 
     _npc_models = [BundtLargeObject, BundtSmallObject]
     _statue_npc = BundtStatueObject
+
+    _gender = ("it", "it", "its", "its", "itself")
 
     _mook_henchmen = [
         BossFightHenchman(monster=TORTEEnemy, model=TorteHenchman),
@@ -3897,6 +3905,8 @@ class HidonBossFight(BossFightPrize):
 
     _npc_models = [HidonLargeObject, HidonSmallObject]
     _statue_npc = MimicStatueObject
+
+    _gender = ("it", "it", "its", "its", "itself")
 
     _mook_henchmen = [
         BossFightHenchman(monster=GOOMBETTEEnemy, model=GoombetteLowerHenchman),
@@ -4204,6 +4214,8 @@ class MokuraBossFight(BossFightPrize):
     _tiny_henchmen = [
         BossFightHenchman(monster=MOKURAEnemy, model=MokuraHenchman),
     ]
+
+    _gender = ("it", "it", "its", "its", "itself")
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """[center]\nMOKURA: Uhh... Go away![await]""",
@@ -4722,6 +4734,8 @@ class MegasmilaxBossFight(BossFightPrize):
     _npc_models = [MegasmilaxLargeObject, PiranhaPlantObject]
     _statue_npc = PiranhaPlantStatueObject
 
+    _gender = ("she", "her", "her", "hers", "herself")
+
     _mook_henchmen = [
         BossFightHenchman(
             monster=PIRANHAPLANTEnemyHenchman, model=PiranhaPlantHenchman
@@ -4875,6 +4889,8 @@ class BirdettaBossFight(BossFightPrize):
     _npc_models = [BirdettaLargeObject, BirdettaSmallObject]
     _statue_npc = BirdettaStatueObject
 
+    _gender = ("she", "her", "her", "hers", "herself")
+
     _mook_henchmen = [
         BossFightHenchman(monster=EGGBERTEnemy, model=EggbertHenchman),
     ]
@@ -4996,6 +5012,8 @@ class ValentinaBossFight(BossFightPrize):
         BossFightHenchman(monster=BLUEBIRDEnemyHenchman, model=BluebirdHenchman),
         BossFightHenchman(monster=BIRDYEnemyHenchman, model=BirdyHenchman),
     ]
+
+    _gender = ("she", "her", "her", "hers", "herself")
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """VALENTINA: ...What? You're STILL\n here?! Go AWAY!!![await]""",
@@ -5182,6 +5200,8 @@ class AxemRangersBossFight(BossFightPrize):
         BossFightHenchman(monster=AXEMYELLOWEnemy, model=AxemYellowHenchman),
         BossFightHenchman(monster=AXEMGREENEnemy, model=AxemGreenHenchman),
     ]
+
+    _gender = ("they", "them", "their", "theirs", "themselves")
 
     _npc_models = [AxemRedObject]
     _statue_npc = AxemRedStatueObject
@@ -5564,6 +5584,8 @@ class CountdownBossFight(BossFightPrize):
         BossFightHenchman(monster=DINGALINGEnemy, model=DingalingHenchman),
     ]
 
+    _gender = ("it", "it", "its", "its", "itself")
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """COUNT DOWN: Sometimes, even an\n alarm clock needs to sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ This is not good![delay_30]\n He figured out the password![delay_30]\n ...We better do something![await]""",
@@ -5647,6 +5669,8 @@ class CloakerDominoBossFight(BossFightPrize):
     _seaside_letter_name_if_seaside_boss = "the Snake"
     _seaside_letter_name_if_volcano_boss = "a snake slithering around"
     _seaside_letter_name_if_final_boss = "Domino's snakes."
+
+    _gender = ("they", "them", "their", "theirs", "themselves")
 
     _npc_models = [DominoLargeObject, DominoSmallObject]
     _statue_npc = DominoStatueObject
@@ -6153,6 +6177,8 @@ class Bundt2BossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a possessed cake walking"
     _seaside_letter_name_if_final_boss = "Bundt's dinner guests."
     _name = "Bundt"
+
+    _gender = ("it", "it", "its", "its", "itself")
 
     _npc_models = [Bundt2LargeObject, Bundt2SmallObject]
     _statue_npc = BundtStatueObject

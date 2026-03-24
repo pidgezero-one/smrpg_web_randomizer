@@ -609,6 +609,9 @@ class BossFightPrize(Prize):
     _dialog_replacements_if_mandatory_fights_changed_peach: dict[int, str] | None = None
     _dialog_replacements_canon_and_remake: dict[int, str] | None = None
 
+    # subject, object, possessive adjective, possessive pronoun, reflexive pronoun
+    _gender: tuple[str, str, str, str, str] = ("he", "him", "his", "his", "himself")
+
     @property
     def character_henchmen(self) -> list[BossFightHenchman] | None:
         return self._character_henchmen
@@ -890,6 +893,11 @@ class BossFightPrize(Prize):
         if remake:
             return self._remake_name or self._name or self._text
         return self._name or self._text
+
+    @property
+    def gender(self) -> tuple[str, str, str, str, str]:
+        """Returns a tuple of (subject, object, possessive adjective, possessive pronoun, reflexive pronoun)"""
+        return self._gender
 
     @property
     def formation(self) -> Formation | None:
