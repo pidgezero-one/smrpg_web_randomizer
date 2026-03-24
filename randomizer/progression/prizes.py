@@ -4987,6 +4987,7 @@ class ValentinaBossFight(BossFightPrize):
     # Dodo contributes 40% of his HP to the pie total, but gets 2.5x his calculated slice
     _hp_pie_contribution_multipliers = {DODOEnemy: 0.4}
     _hp_slice_multipliers = {DODOEnemy: 2.5}
+    _force_start_event = BE0038_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
 
     _npc_models = [ValentinaLargeObject, ValentinaSmallObject]
     _statue_npc = NimbusLandStatueObject
@@ -5987,6 +5988,8 @@ class SmithyBossFight(BossFightPrize):
 
     _npc_models = [SmithyLargeObject, SmithySmallObject]
     _statue_npc = SmithyStatueObject
+    
+    _force_start_event = BE0038_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """SMITHY: How utterly annoying!\n Leave me alone![await]""",
@@ -6295,6 +6298,8 @@ class Jinx4BossFight(BossFightPrize):
 
     _npc_models = [Jinx4SmallObject]
     _statue_npc = JinxStatueObject
+    
+    _force_start_event = BE0039_SET_7EE00B_TO_PARTY_SIZE_AT_START_OF_FIGHT
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JINX: Please do not disturb me.\n I am training in here.[await]""",
