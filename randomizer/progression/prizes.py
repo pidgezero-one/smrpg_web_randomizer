@@ -3315,7 +3315,7 @@ class BowyerBossFight(BossFightPrize):
     _members = [
         FormationMember(BOWYEREnemy, 183, 127),
     ]
-    _force_start_event = BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
+    _force_start_event = BE0038_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
     _additional_enemies_to_scale = [AEROEnemy]
 
     _seaside_letter_name_if_volcano_boss = "a longbow loosing arrows at"
@@ -3732,7 +3732,7 @@ class BundtBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a possessed cake walking"
     _seaside_letter_name_if_final_boss = "Bundt's dinner guests."
     _name = "Bundt"
-    _force_start_event = BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
+    _force_start_event = BE0014_SET_7EE001_TO_PARTY_SIZE_AT_START_OF_FIGHT
 
     _npc_models = [BundtLargeObject, BundtSmallObject]
     _statue_npc = BundtStatueObject
@@ -4987,7 +4987,6 @@ class ValentinaBossFight(BossFightPrize):
     # Dodo contributes 40% of his HP to the pie total, but gets 2.5x his calculated slice
     _hp_pie_contribution_multipliers = {DODOEnemy: 0.4}
     _hp_slice_multipliers = {DODOEnemy: 2.5}
-    _force_start_event = BE0030_UNUSED
 
     _npc_models = [ValentinaLargeObject, ValentinaSmallObject]
     _statue_npc = NimbusLandStatueObject

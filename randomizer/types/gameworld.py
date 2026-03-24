@@ -1993,7 +1993,7 @@ class GameWorld:
         # Room 325's pointer is at 0x1D9030, currently 0x9815 (shared with rooms
         # 310-324). Redirect it to room 17's doorframe mod at 0x91C2, which is
         # 2×2 at (10,17) with tile 706 — makes the doorframe surface jumpable.
-        #patch.add_data(0x1D9030, bytearray([0xC2, 0x91]))
+        patch.add_data(0x1D9030, bytearray([0xC2, 0x91]))
 
         # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).
         # Enabling NMI ($4200 bit 7) during gameplay causes the vanilla NMI handler
