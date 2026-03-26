@@ -95,11 +95,21 @@ However, a -sanity feature to add checks to these repeatable prize grants would 
 
 You can bring up the thing you plan to develop in the #snes-rando-feature-discussion channel of https://discord.smrpgspeedruns.com. Although, even if nobody would use the feature except you, you can still add it as long as it adheres to the above guidelines and does not upend any existing features. This randomizer is all about choice.
 
+## AI policy
+
+If you use assistive AI agents to help you learn the codebase and add code, write docstrings, etc, or if you have Github Copilot autocompletes installed in your vscode, or if you would prefer not to do any of that at all, I don't really care. This is a contentious topic in the hobbyist development community, but realistically I do not expect you as a volunteer contributor to feel obligated to spend more time manually working for free than you need to on a project rooted in highly esoteric domain knowledge that is already hurting for development interest. If you *want* to write all your volunteer contributor code by hand for free, please do, but I am in no position to demand that of you.
+
+If you do choose to use assistive AI, try to carpool or take the bus to work tomorrow instead of driving or avoid buying animal products on your next grocery run if you want to offset your carbon footprint. Don't submit any code if you could not have written it yourself, contributors will be trusted to abide by the honour system on this.
+
+AI or not, always thoroughly review and test what you're submitting before you submit it. And if you don't know how to do that, don't submit it. "Vibe coding" is not a good idea for production code, especially if you have no development or SMRPG modding experience. You will be better off learning your way around the codebase foundations using your own brain first.
+
+Do not commit any agent config files (i.e. .cursorrules, claude.md) to the codebase.
+
 ## Crediting
 
 Add yourself to credits.py. This project is a labour of love that nobody gets paid for, everyone who contributes to it deserves recognition. 
 * It's hard to tell from code alone how your changes to the credits screen will be aligned, so be sure to test the credits before submitting your PR.
-* Only capital letters A-Z, spaces, periods, and underscores are supported.
+* Only capital letters A-Z, spaces, periods, and underscores are supported. No numbers or other punctuation.
 * If you've just developed a new optional feature, i.e. adding Mushroom Boy as a check, add yourself to the "Development" list. If you've developed something foundational to how the randomizer works as a whole, i.e. creating an entrance randomizer, add yourself to the "Core Development" list.
 * Credit anybody who helped you on the feature whether they contributed code or research.
 * If you borrowed code from somebody else's romhack that was not explicitly developed for the randomizer, add them to the "Special Thanks" section.
