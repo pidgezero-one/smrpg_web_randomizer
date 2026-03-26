@@ -15,7 +15,7 @@ from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=7676, expected_beginning=0x3ACF48, script=[
 	RunSubroutine(["command_0x3A771E"], identifier="command_0x3ACF48"),
-    SetAMEM8BitTo7E1x(0x60, BV7EE00A, identifier="dodo_coord_selection_subroutine"),
+    SetAMEM8BitTo7E1x(0x60, PARTY_SIZE, identifier="dodo_coord_selection_subroutine"),
     JmpIfAMEM8BitEqualsConst(0x60, 2, destinations=["dodo_kidnap_party_of_2"]),
     SetAMEM40ToXYZCoords(origin=ABSOLUTE_POSITION, x=104, y=176, z=0, set_x=True, set_y=True, set_z=True),
     ReturnSubroutine(),
@@ -1787,24 +1787,12 @@ script = AnimationScriptBlock(expected_size=7676, expected_beginning=0x3ACF48, s
 	UseSpriteQueue(field_object=1, destinations=["command_0x3AE382"], bit_2=True, bit_4=True),
 	UseSpriteQueue(field_object=2, destinations=["command_0x3AE39B"], bit_2=True, bit_4=True),
 	Pause1Frame(),
-    
-    SetAMEM8BitToConst(0x60, 1),
-    SetTarget(CHARACTER_IN_SLOT_2),
-    JmpIfTargetEnabled(destinations=["party_size_2__"]),
-	Jmp(["finish_checking_party_size___"]),
-    SetAMEM8BitToConst(0x60, 2, identifier="party_size_2__"),
-    SetTarget(CHARACTER_IN_SLOT_3),
-    JmpIfTargetEnabled(destinations=["party_size_3__"]),
-	Jmp(["finish_checking_party_size___"]),
-    SetAMEM8BitToConst(0x60, 3, identifier="party_size_3__"),
-    ResetTargetMappingMemory(identifier="finish_checking_party_size___"),
-    ReturnSubroutine(),
-
 	UseSpriteQueue(field_object=0, destinations=["command_0x3AE3A2"], character_slot=True, bit_4=True),
+    SetAMEM8BitTo7E1x(0x60, PARTY_SIZE),
+
+    JmpIfAMEM8BitEqualsConst(0x60, 1, destinations=["smithy_fight_ends"]),
     JmpIfAMEM8BitEqualsConst(0x60, 2, destinations=["smithy_defeated_party_2"]),
-    JmpIfAMEM8BitLessThanConst(0x60, 6, destinations=["smithy_defeated_party_3"]),
-    Jmp(["smithy_fight_ends"]),
-	UseSpriteQueue(field_object=2, destinations=["command_0x3AE3A2"], character_slot=True, bit_4=True, identifier="smithy_defeated_party_3"),
+	UseSpriteQueue(field_object=2, destinations=["command_0x3AE3A2"], character_slot=True, bit_4=True),
 	UseSpriteQueue(field_object=1, destinations=["command_0x3AE3A2"], character_slot=True, bit_4=True, identifier="smithy_defeated_party_2"),
 	RunSubroutine(["command_0x3A7729"], identifier="smithy_fight_ends"),
 	SetAMEM16BitToConst(0x60, 12),

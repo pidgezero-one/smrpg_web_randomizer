@@ -1994,6 +1994,28 @@ class GameWorld:
         # doorframe mod (2×2 at (10,17) with tile 0xC2). Same 8-byte size.
         patch.add_data(0x1D9823, bytearray([0x0A, 0x11, 0x11, 0xAA, 0xC2, 0xC2, 0xC2, 0xC2]))
 
+        # Battle init: copy overworld party count ($00:303F) to battle party size ($00:0926).                                        
+        # Replaces the linear zero-fill at $C2:A2BD with a loop + party size copy.                                                   
+        # Original: 8 individual STA $7EE0xx instructions (39 bytes).                                                                
+        # New: loop to zero $7EE000-$7EE00E, then SEP/LDA $303F/STA $0926/REP/RTS (31 bytes + 8 NOP).                                
+        patch.add_data(0x02A2BD, bytes([                                                                                             
+            0xA9, 0x00, 0x00,        # LDA #$0000                                                                                    
+            0x8D, 0x24, 0x07,        # STA $0724                                                                                     
+            0xA2, 0x00, 0x00,        # LDX #$0000                                                                                    
+            0x9F, 0x00, 0xE0, 0x7E,  # STA $7EE000,x  (loop)       
+            0xE8,                    # INX                                                                                           
+            0xE8,                    # INX                         
+            0xE0, 0x10, 0x00,        # CPX #$0010                                                                                    
+            0x90, 0xF5,              # BCC loop                                                                                      
+            0xE2, 0x20,              # SEP #$20      
+            0xAD, 0x3F, 0x30,        # LDA $303F                                                                                     
+            0x8D, 0x26, 0x09,        # STA $0926                                                                                     
+            0xC2, 0x20,              # REP #$20      
+            0x60,                    # RTS                                                                                           
+            0xEA, 0xEA, 0xEA, 0xEA, # NOP padding                                                                                    
+            0xEA, 0xEA, 0xEA, 0xEA,                  
+        ]))       
+
         # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).
         # Enabling NMI ($4200 bit 7) during gameplay causes the vanilla NMI handler
         # ($C0:0283) to fire every VBlank. That handler is NOT a no-op — it calls the

@@ -28,20 +28,17 @@ General
 🚧 should be able to run away from mimic fights in mimics anywhere
 🚧 godmode and debug mode: always set exp pack to 0
 🚧 mimic chest packet disappears too quickly, like before the battle even starters
-🚧 belome has bad partition in moleville inner mines room 
-- it definitely loaded the wrong sprite for smithy in the dojo
+- belome has bad partition in moleville inner mines room 
+🚧 it definitely loaded the wrong sprite for smithy in the dojo
 🚧 Too many treasure chests are using script 1396, which does nothing if a bowsers keep prize bit is set. that's bad. These should NOT be using that unless it is avtually that chest.
 🚧 Really need to do something about exp stars at level 30. Skip the whole packet thing? Just set the bits? (Does the levelup packet clear those bits?)
 🚧 geno using super slap on greaper crashes game 
 
 Boss-specific
-🚧 culex 3D sprite is broken. HUD disappears in phase 2
-  - left 2 crystals bot hshowing up as water, right 2 showing up as wind
-  - i moved them onto diff palette rows but now they just share with culex
-  - might have to switch back to how normal crystals do it
+🚧 culex 3D 
+  - why is he using skewer? this fight is completely broken, just casting random spells, crystals disappear, the battle aborts
 - fancy bundt
-  - 33% might be too low for solo
-  - test if counter is working, never used celebraton shot
+  - caker beam is triggering way too early
 🚧 booster 2 "I'm gonna start working" after KOed
   - i think some thing are running when they should not be.
   - like he says im gonna start working when he already is
@@ -49,12 +46,15 @@ Boss-specific
 🚧 bowser clone disappears after doing claw attack, loading a bad peach sprite (IDs probably wrong)
 🚧 belome 2 shows empty dialog
   - game straight up crashes when belome 2 finishes with 2 bowser clones on field
-🚧 punchinello 2 not working correctly
-  - bob-ombs are starting off already facing him, should not do that
-    🚧 actually they should! it's random
-  🚧 also are facing southeast, that's not right
+- belome 1
+  - empty dialog when spits out mallow
+ punchinello 2 not working correctly
+  - last 2 bobombs are sharing coords?
+  - shuffling makes the strong bobombs not so strong. maybe keep their stats static
 - smithy summoning a shyper animation is choppy for some reason\  - crashes the game when he starts moving forward with steaming head
-🚧 cloaker/domino locks with only 1 party members
+  - animations during transition cutscene are very messed up
+  - needs static battlefields
+  - crashes after transforming to smithy 2
 
 
 Mushroom Way 
