@@ -35,7 +35,7 @@ script = AnimationScriptBlock(expected_size=168, expected_beginning=0x3AC148, sc
 	RunSubroutine(["command_0x3A7374"]),
 	UnknownCommand(bytearray([0x16]), identifier="command_0x3AC1A2"),
 	Pause1Frame(),
-	SetAMEM8BitTo7E1x(0x67, BV7EE003),
+	SetAMEM8BitToAbsolute7E(0x67, BV7EE003),
 	JmpIfAMEMBitsSet(0x67, [0], ["command_0x3AC1EA"]),
 	Pause1Frame(),
 	SetAMEMToRandomByte(amem=0x68, upper_bound=100),

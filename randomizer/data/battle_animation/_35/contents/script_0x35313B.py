@@ -91,7 +91,7 @@ script = AnimationScriptBlock(expected_size=179, expected_beginning=0x35313B, sc
 	SpriteSequence(sequence=6, identifier="command_0x3531C0"),
 	PauseScriptUntilSpriteSequenceDone(),
 	SetAMEM8BitToConst(0x64, 200),
-	Set7E5xToAMEM8Bit(0x7E001A, 0x64),
+	SetRAMRelative7EToAMEM8Bit(0x7E001A, 0x64),
 	Jmp(["command_0x350E93"]),
 	SpriteSequence(sequence=7, identifier="command_0x3531CE"),
 	PauseScriptUntilSpriteSequenceDone(),

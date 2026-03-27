@@ -19,7 +19,7 @@ script = AnimationScriptBlock(expected_size=292, expected_beginning=0x3A8698, sc
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=2),
 	StopShakingObject(),
 	ReturnSubroutine(),
-	SetAMEM8BitTo7E1x(0x60, BV7EE00E, identifier="command_0x3A86A7"),
+	SetAMEM8BitToAbsolute7E(0x60, BV7EE00E, identifier="command_0x3A86A7"),
 	JmpIfAMEM8BitEqualsConst(0x60, 1, ["command_0x3A86DB"]),
 	JmpIfAMEM8BitEqualsConst(0x60, 2, ["command_0x3A86EA"]),
 	JmpIfAMEM8BitEqualsConst(0x60, 3, ["command_0x3A86F9"]),

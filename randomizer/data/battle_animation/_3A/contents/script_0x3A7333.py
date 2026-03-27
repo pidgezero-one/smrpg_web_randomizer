@@ -54,7 +54,7 @@ script = AnimationScriptBlock(expected_size=488, expected_beginning=0x3A7333, sc
 	MoveObject(speed=1, start_position=1024, end_position=1024, apply_to_y=True, should_set_start_position=True, should_set_end_position=True, should_set_speed=True),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=4),
 	ResetObjectMappingMemory(),
-	SetAMEM8BitTo7E1x(0x68, 0x7EE01F),
+	SetAMEM8BitToAbsolute7E(0x68, 0x7EE01F),
 	JmpIfAMEMBitsClear(0x68, [0], ["command_0x3A73AC"]),
 	ReturnSubroutine()
 ])

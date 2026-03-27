@@ -15,11 +15,11 @@ from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=2096, expected_beginning=0x3A7868, script=[
 	Pause1Frame(identifier="command_0x3A7868"),
-	SetAMEM8BitTo7E1x(0x68, 0x7EE01C),
+	SetAMEM8BitToAbsolute7E(0x68, 0x7EE01C),
 	JmpIfAMEMBitsClear(0x68, [6], ["command_0x3A7868"]),
 	ReturnSubroutine(),
 	Pause1Frame(identifier="command_0x3A7873"),
-	SetAMEM8BitTo7E1x(0x68, 0x7EE01C),
+	SetAMEM8BitToAbsolute7E(0x68, 0x7EE01C),
 	JmpIfAMEMBitsClear(0x68, [7], ["command_0x3A7873"]),
 	ReturnSubroutine(),
 	SetAMEMToRandomShort(amem=0x60, upper_bound=25, identifier="command_0x3A787E"),
