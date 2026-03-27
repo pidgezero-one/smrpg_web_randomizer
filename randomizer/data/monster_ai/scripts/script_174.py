@@ -13,7 +13,6 @@ from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
 	IfVarBitsClear(BV7EE001, [0]),
-	RunBattleDialog(128),
 	RunBattleEvent(BE0077_CULEX_3D),
 	Attack(CULEXTURNSAttack),
 	SetTarget(AT_LEAST_ONE_OPPONENT),

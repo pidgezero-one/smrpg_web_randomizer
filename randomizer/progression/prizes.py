@@ -6371,7 +6371,7 @@ class Culex3DBossFight(BossFightPrize):
         FormationMember(FIRECRYS3DEnemy, 183, 135, hidden_at_start=True),
         FormationMember(FIRECRYS3DEnemy, 215, 143, hidden_at_start=True),
     ]
-    _force_start_event = BE0077_CULEX_3D
+    #_force_start_event = BE0077_CULEX_3D
     _anchor_enemy = CULEX3DEnemy
 
     _seaside_letter_name_if_volcano_boss = "an ethereal knight gliding"

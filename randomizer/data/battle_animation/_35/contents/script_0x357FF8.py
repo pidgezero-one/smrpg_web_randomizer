@@ -41,7 +41,7 @@ script = AnimationScriptBlock(expected_size=165, expected_beginning=0x357FF8, sc
 	ResetTargetMappingMemory(identifier="command_0x358072"),
 	SetAMEM40ToXYZCoords(origin=CASTER_INITIAL_POSITION, x=0, y=0, z=0, set_x=True, set_y=True, set_z=True),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=1792, arch_height=96),
-	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
+	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE, identifier="PauseUntilSpriteShiftComplete"),
 	ReturnSubroutine(),
 	SpriteSequence(sequence=0, looping_off=True, identifier="ally_spell_common_subroutine_1"),
 	SetAMEM40ToXYZCoords(origin=CASTER_INITIAL_POSITION, x=12, y=-6, z=0, set_x=True, set_y=True, set_z=True),

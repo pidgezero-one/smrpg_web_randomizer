@@ -189,7 +189,7 @@ script = AnimationScriptBlock(expected_size=872, expected_beginning=0x350202, sc
 		"monster_sprite_behaviour_0_no_movement_for_escape", # bahamutt (chester)
 		"monster_sprite_behaviour_1_slide_backward_when_hit", # mallow clone s
 		"monster_sprite_behaviour_0_no_movement_for_escape", # strong bobomb 4
-		"monster_sprite_behaviour_9_floating_slide_backward_when_hit_2", # culex 3D
+		"monster_sprite_behaviour_0_no_movement_for_escape", # culex 3D
 		"monster_sprite_behaviour_11_fade_out_death", # johnny 2
 		"monster_sprite_behaviour_5_sprite_shadow", # starslap
 		"monster_sprite_behaviour_0_no_movement_for_escape", # mukumuku
