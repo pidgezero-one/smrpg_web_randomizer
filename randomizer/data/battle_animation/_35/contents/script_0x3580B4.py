@@ -69,7 +69,7 @@ script = AnimationScriptBlock(expected_size=183, expected_beginning=0x3580B4, sc
 	SetAMEM16BitToConst(0x60, 28),
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=6, destinations=["command_0x353706"]),
     PauseScriptUntilAMEMBitsSet(0x6F, [0]),
-	RunSubroutine(["command_0x3536FF"]),
+	RunSubroutine(["command_0x359008"]),
 	ReturnSubroutine(),
 	PauseScriptUntilAMEMBitsSet(0x6F, [0], identifier="moved_poison_code"),
 	UnknownCommand(bytearray([0x8C])),

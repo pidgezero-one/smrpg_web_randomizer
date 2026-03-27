@@ -1794,7 +1794,7 @@ script = AnimationScriptBlock(expected_size=7842, expected_beginning=0x3A87CA, s
 	Layer3Off(property=OVERLAP_ALL, bpp2=True),
 	Pause2Frames(),
 	ClearEffectIndex(),
-	FadeInScreen(duration=1, identifier="command_0x3536FF"),
+	FadeInScreen(duration=1),
 	UnknownCommand(bytearray([0x74, 0x00, 0x04])),
 	ReturnObjectQueue(),
 	RunSubroutine(["command_0x3A773F"], identifier="command_0x3AA19F"),

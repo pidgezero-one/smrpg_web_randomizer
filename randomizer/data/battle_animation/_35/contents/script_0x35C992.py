@@ -1367,7 +1367,7 @@ script = AnimationScriptBlock(expected_size=4971, expected_beginning=0x35C992, s
 	SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
     RemoveObject(),
 	ReturnObjectQueue(),
-	FadeInScreen(duration=1, identifier="command_0x3536FF"),
+	FadeInScreen(duration=1),
 	UnknownCommand(bytearray([0x74, 0x00, 0x04])),
 	ReturnObjectQueue(),
 	SetAMEM16BitToOMEMMain(amem=0x60, omem=0x64, identifier="command_0x35A066"),
