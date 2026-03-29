@@ -89,6 +89,39 @@ class VanillaRoomState:
     chests: list[VanillaChestState]
 
 
+def snapshot_vanilla_room_states(world: GameWorld) -> None:
+    """Capture vanilla NPC sprite states for all rooms with partitions.
+
+    Must be called AFTER update_partition_by_protagonist but BEFORE any
+    NPC model shuffling (.render() calls). Stores result on
+    world._vanilla_room_states for later change detection.
+    """
+    states: dict[int, VanillaRoomState] = {}
+
+    for room_id, room in enumerate(world.rooms._rooms):
+        if room is None or room.partition is None:
+            continue
+
+        npc_states: list[VanillaNPCState] = []
+        for obj in room.objects:
+            if isinstance(obj, Clone):
+                continue
+            sprite_id = obj._npc.sprite_id
+            is_gridplane, gridplane_format = _get_npc_gridplane_info(world, sprite_id)
+            is_coin = sprite_id in COIN_SPRITE_IDS
+            npc_states.append(VanillaNPCState(
+                sprite_id=sprite_id,
+                is_gridplane=is_gridplane,
+                gridplane_format=gridplane_format,
+                is_coin=is_coin,
+            ))
+
+        chest_states: list[VanillaChestState] = []
+        states[room_id] = VanillaRoomState(npcs=npc_states, chests=chest_states)
+
+    world._vanilla_room_states = states
+
+
 # =============================================================================
 # Mapping from extra sprite action states to animation states needed for VRAM
 # Used to determine which ally animation states are needed for each room action
