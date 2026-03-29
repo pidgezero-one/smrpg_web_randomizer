@@ -193,6 +193,43 @@ def _apply_animation_vram_overrides(world: GameWorld, changed_rooms: set[int]) -
         npc_obj.set_min_vram_size(min_vram)
 
 
+def _detect_changed_rooms(world: GameWorld) -> set[int]:
+    """Compare current NPC sprite IDs against vanilla snapshot.
+
+    Returns set of room IDs where at least one NPC's sprite_id differs
+    from the snapshot taken before shuffling.
+    """
+    assert world._vanilla_room_states is not None, (
+        "snapshot_vanilla_room_states() must be called before change detection"
+    )
+
+    changed: set[int] = set()
+    for room_id, vanilla_state in world._vanilla_room_states.items():
+        room = world.rooms._rooms[room_id]
+        if room is None:
+            continue
+
+        # Enumerate current non-Clone NPCs
+        current_sprites: list[int] = []
+        for obj in room.objects:
+            if isinstance(obj, Clone):
+                continue
+            current_sprites.append(obj._npc.sprite_id)
+
+        # Compare against snapshot
+        if len(current_sprites) != len(vanilla_state.npcs):
+            # NPC count changed (e.g., dummies added) — mark as changed
+            changed.add(room_id)
+            continue
+
+        for current_sprite_id, vanilla_npc in zip(current_sprites, vanilla_state.npcs):
+            if current_sprite_id != vanilla_npc.sprite_id:
+                changed.add(room_id)
+                break
+
+    return changed
+
+
 # =============================================================================
 # Mapping from extra sprite action states to animation states needed for VRAM
 # Used to determine which ally animation states are needed for each room action
