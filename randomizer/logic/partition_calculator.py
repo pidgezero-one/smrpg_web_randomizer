@@ -539,6 +539,21 @@ class NPCAnalysis:
     buffer_type: BufferType
     clone_count: int
     force_cannot_clone: bool
+    bitmap_slots: int              # Extra sprite bitmap slots consumed by this parent NPC
+
+
+# VramStore → number of direction sequences loaded → bitmap slots consumed per parent NPC.
+# From ASM trace: each direction sequence takes 1 slot from the extra sprite bitmap at $01B2.
+VRAM_STORE_BITMAP_SLOTS: dict[VramStore, int] = {
+    VramStore.DIR0_SWSE_NWNE: 2,        # 2 sequences (seq 0, 1)
+    VramStore.DIR1_SWSE_NWNE_S: 3,      # 3 sequences (seq 0, 1, 10)
+    VramStore.DIR2_SWSE: 1,             # 1 sequence (seq 0)
+    VramStore.DIR3_SWSE_NWNE: 2,        # 2 sequences
+    VramStore.DIR4_ALL_DIRECTIONS: 5,    # 5 sequences (seq 0, 1, 10, 11, 12)
+    VramStore.DIR5_UNKNOWN: 5,           # Same as DIR4 in traced routines
+    VramStore.DIR6_UNKNOWN: 5,           # Same as DIR4 in traced routines
+    VramStore.DIR7_ALL_DIRECTIONS: 10,   # Up to 10 sequences (player chars only)
+}
 
 
 @dataclass
@@ -603,7 +618,8 @@ class PartitionAnalysis:
                 + f"  NPCs: [{npcs_str}]"
             )
 
-        lines.append(f"  VRAM: cursor={self.vram_cursor}, remaining={self.vram_remaining}")
+        lines.append(f"VRAM: cursor={self.vram_cursor}, remaining={self.vram_remaining}")
+        lines.append(f"Bitmap slots: {self.bitmap_slots_used}/{self.bitmap_slots_capacity} (remaining={self.bitmap_slots_remaining})")
 
         if self.npcs:
             lines.append("")
@@ -639,6 +655,21 @@ class PartitionAnalysis:
                 lines.append(f"  ! {warning}")
 
         return "\n".join(lines)
+
+    @property
+    def bitmap_slots_capacity(self) -> int:
+        """Total extra sprite bitmap slots available: (extra_buffer_size + 1) * 4."""
+        return (self.extra_buffer_size + 1) * 4
+
+    @property
+    def bitmap_slots_used(self) -> int:
+        """Total extra sprite bitmap slots consumed by all parent NPCs."""
+        return sum(npc.bitmap_slots for npc in self.npcs)
+
+    @property
+    def bitmap_slots_remaining(self) -> int:
+        """Extra sprite bitmap slots available for additional NPCs."""
+        return self.bitmap_slots_capacity - self.bitmap_slots_used
 
     @property
     def vram_cursor(self) -> int:
@@ -714,6 +745,7 @@ def _analyze_npc(
         buffer_type=buffer_type,
         clone_count=clone_count,
         force_cannot_clone=force_cannot_clone,
+        bitmap_slots=VRAM_STORE_BITMAP_SLOTS.get(vram_store, 1),
     )
 
 
@@ -1191,11 +1223,17 @@ def analyze_partition(
         warnings=warnings,
     )
 
-    # --- Step 6: Overflow check ---
+    # --- Step 6: Overflow checks ---
     if result.vram_cursor > 32:
         result.warnings.append(
             f"VRAM overflow: cursor={result.vram_cursor} exceeds 32 rows "
             f"(remaining={result.vram_remaining})"
+        )
+    if result.bitmap_slots_remaining < 0:
+        result.warnings.append(
+            f"Bitmap slot overflow: {result.bitmap_slots_used} slots used, "
+            f"capacity={result.bitmap_slots_capacity} "
+            f"(remaining={result.bitmap_slots_remaining})"
         )
 
     return result
@@ -1278,13 +1316,46 @@ def filter_fitting_models(
         obj._npc = model_instance.base
         try:
             analysis = analyze_partition(world, room_id, **analyze_kwargs)
-            if analysis.vram_remaining >= 0:
+            if analysis.vram_remaining >= 0 and analysis.bitmap_slots_remaining >= 0:
                 results.append((model_cls, analysis))
         finally:
             obj._npc = original_npc
 
     results.sort(key=lambda t: t[1].vram_cursor, reverse=prefer_largest)
     return results
+
+
+# Bitmap slot cost for the 3 parent slot machine NPCs (all DIR2_SWSE = 1 slot each)
+SLOT_MACHINE_BITMAP_COST = 3
+
+
+def can_room_support_slots(
+    world: GameWorld,
+    room_id: int,
+    **analyze_kwargs,
+) -> bool:
+    """Check if a room has enough bitmap slots for 5 slot machine NPCs.
+
+    The slot machine adds 3 parent NPCs (FLOWER_NPC_2, STATIC_FROG_COIN_NPC,
+    EXPLOSION_NPC) + 2 clones. All are DIR2_SWSE (1 bitmap slot each),
+    non-gridplane, cannot_clone=True. Clones share parent VRAM.
+
+    Only the 3 parents consume bitmap slots. Call this BEFORE the slot NPCs
+    are placed — it checks whether there's headroom for them.
+
+    Args:
+        world: GameWorld instance.
+        room_id: Room to test.
+        **analyze_kwargs: Passed to analyze_partition (protagonist, max_packets, etc.)
+
+    Returns:
+        True if the room can support slot machine NPCs without overflow.
+    """
+    analysis = analyze_partition(world, room_id, **analyze_kwargs)
+    return (
+        analysis.bitmap_slots_remaining >= SLOT_MACHINE_BITMAP_COST
+        and analysis.vram_remaining >= 0
+    )
 
 
 def analyze_room_partition(
