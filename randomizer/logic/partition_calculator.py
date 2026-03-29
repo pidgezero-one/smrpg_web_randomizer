@@ -333,8 +333,15 @@ def _log_slot_machine_support(world: GameWorld) -> None:
                 objects[idx]._npc = EMPTY_NPC
 
         try:
-            result = can_room_support_slots(world, room_id)
-            analysis = analyze_partition(world, room_id)
+            # Use the room's existing partition parameters for accurate capacity check
+            existing = room.partition
+            analyze_kwargs = dict(
+                max_packets=existing.extra_sprite_buffer_size,
+                allow_extra_sprite_buffer=existing.allow_extra_sprite_buffer,
+                water=not existing.full_palette_buffer,
+            )
+            result = can_room_support_slots(world, room_id, **analyze_kwargs)
+            analysis = analyze_partition(world, room_id, **analyze_kwargs)
             print(
                 f"[SLOT CHECK] Room {room_id}: support={result}"
                 f" bitmap_remaining={analysis.bitmap_slots_remaining}"
