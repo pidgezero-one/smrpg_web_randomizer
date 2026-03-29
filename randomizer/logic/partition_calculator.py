@@ -896,6 +896,110 @@ def _assign_buffers(
     return assignments, warnings
 
 
+# Protagonist name to CharacterPrize class mapping
+_PROTAGONIST_PRIZES: dict[str, type] = {}  # Populated lazily to avoid circular imports
+
+
+def _get_protagonist_prizes() -> dict[str, type]:
+    """Lazily load protagonist name → CharacterPrize mapping."""
+    if not _PROTAGONIST_PRIZES:
+        from ..progression.prizes import (
+            MarioRecruitmentPrize,
+            MallowRecruitmentPrize,
+            GenoRecruitmentPrize,
+            BowserRecruitmentPrize,
+            ToadstoolRecruitmentPrize,
+        )
+        _PROTAGONIST_PRIZES.update({
+            "mario": MarioRecruitmentPrize,
+            "mallow": MallowRecruitmentPrize,
+            "geno": GenoRecruitmentPrize,
+            "bowser": BowserRecruitmentPrize,
+            "peach": ToadstoolRecruitmentPrize,
+            "toadstool": ToadstoolRecruitmentPrize,
+        })
+    return _PROTAGONIST_PRIZES
+
+
+def _calculate_ally_buffer_size(
+    world: GameWorld,
+    room,
+    protagonist: str | None,
+) -> int:
+    """Calculate ally buffer size based on protagonist and room's extra_sprite_actions.
+
+    Args:
+        world: GameWorld instance (needed for sprite lookups).
+        room: Room instance (needed for extra_sprite_actions).
+        protagonist: Character name ("mario", "peach", "bowser", "geno", "mallow")
+            or None for default (size 1).
+
+    Returns:
+        Ally buffer size (1-3). Returns 1 if protagonist is None or no
+        extra sprite actions require larger buffer.
+    """
+    from ..types.room import Room
+
+    if protagonist is None:
+        return 1
+
+    prizes = _get_protagonist_prizes()
+    prize_cls = prizes.get(protagonist.lower())
+    if prize_cls is None:
+        return 1
+
+    character_model = prize_cls().character_model
+    if character_model is None:
+        return 1
+
+    if not isinstance(room, Room) or not room.extra_sprite_actions:
+        return 1
+
+    vram_values: list[int] = []
+
+    # Check default animation states
+    for state in DEFAULT_ANIMATION_STATES:
+        sprites_dict = character_model.ally._sprites_primary
+        if state in sprites_dict:
+            prop_id, offset, is_mold = sprites_dict[state]
+            if is_mold:
+                try:
+                    v = character_model._npc.min_vram_from_mold(world, prop_id, offset)
+                    vram_values.append(v)
+                except (IndexError, AssertionError):
+                    pass
+            else:
+                try:
+                    v = character_model._npc.min_vram_from_sequence(world, prop_id, offset)
+                    vram_values.append(v)
+                except (IndexError, AssertionError):
+                    pass
+
+    # Check room's extra_sprite_actions
+    for action in room.extra_sprite_actions:
+        anim_states = EXTRA_ACTION_TO_ANIMATION_STATE.get(action, [])
+        for state in anim_states:
+            sprites_dict = character_model.ally._sprites_primary
+            if state in sprites_dict:
+                prop_id, offset, is_mold = sprites_dict[state]
+                if is_mold:
+                    try:
+                        v = character_model._npc.min_vram_from_mold(world, prop_id, offset)
+                        vram_values.append(v)
+                    except (IndexError, AssertionError):
+                        pass
+                else:
+                    try:
+                        v = character_model._npc.min_vram_from_sequence(world, prop_id, offset)
+                        vram_values.append(v)
+                    except (IndexError, AssertionError):
+                        pass
+
+    if not vram_values:
+        return 1
+    return min(max(vram_values) + 1, 3)
+
+
 def analyze_room_partition(
     world: GameWorld,
     room_id: int,
