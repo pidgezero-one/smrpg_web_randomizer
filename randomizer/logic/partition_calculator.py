@@ -294,6 +294,70 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     apply_partition(world, room_id, analysis)
 
 
+def _log_slot_machine_support(world: GameWorld) -> None:
+    """Log can_room_support_slots results for all rooms with chests.
+
+    For rooms with slot machine dummy NPCs (last 5 objects with EMPTY_NPC_3
+    sprite ID), temporarily swaps them to EMPTY_NPC before checking.
+    Debug output only — does not modify any state.
+    """
+    import logging
+    logger = logging.getLogger(__name__)
+
+    from ..data.rooms.npcs import EMPTY_NPC
+
+    slot_dummy_sprite_id = SPR1023_EMPTY
+
+    for room_id, room in enumerate(world.rooms._rooms):
+        if room is None or room.partition is None:
+            continue
+
+        # Check if room has chests
+        has_chest = False
+        for obj in room.objects:
+            if isinstance(obj, Clone):
+                continue
+            if isinstance(obj, ChestNPC) or obj._npc.sprite_id == CHEST_SPRITE_ID:
+                has_chest = True
+                break
+
+        if not has_chest:
+            continue
+
+        # Check if last 5 objects are slot dummies (all have EMPTY sprite)
+        objects = room.objects
+        has_dummies = (
+            len(objects) >= 5
+            and all(
+                objects[len(objects) - 5 + j]._npc.sprite_id == slot_dummy_sprite_id
+                for j in range(5)
+            )
+        )
+
+        saved_npcs = []
+        if has_dummies:
+            # Temporarily swap dummy NPCs to EMPTY_NPC
+            for j in range(5):
+                idx = len(objects) - 5 + j
+                saved_npcs.append(objects[idx]._npc)
+                objects[idx]._npc = EMPTY_NPC
+
+        try:
+            result = can_room_support_slots(world, room_id)
+            # Run a quick analysis to get bitmap_slots_remaining
+            analysis = analyze_partition(world, room_id)
+            logger.info(
+                "Slot check room %d: support=%s bitmap_remaining=%d vram_remaining=%d",
+                room_id, result, analysis.bitmap_slots_remaining, analysis.vram_remaining,
+            )
+        finally:
+            # Restore original dummy NPCs
+            if has_dummies:
+                for j in range(5):
+                    idx = len(objects) - 5 + j
+                    objects[idx]._npc = saved_npcs[j]
+
+
 # =============================================================================
 # Mapping from extra sprite action states to animation states needed for VRAM
 # Used to determine which ally animation states are needed for each room action
