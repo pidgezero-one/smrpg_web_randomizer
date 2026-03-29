@@ -1,6 +1,6 @@
 # pyright: reportWildcardImportFromLibrary=false
 from __future__ import annotations
-from typing import Any, Callable, Type, TypeVar, cast
+from typing import TYPE_CHECKING, Any, Callable, Type, TypeVar, cast
 import json
 import random
 import hashlib
@@ -169,6 +169,9 @@ from ..data.enemies.enemies import DODOEnemy, SHELLYEnemy, RIGHTEYEEnemy
 PrizeLocationT = TypeVar("PrizeLocationT", bound=PrizeLocation)
 from .settings import Settings
 
+if TYPE_CHECKING:
+    from randomizer.logic.partition_calculator import VanillaRoomState
+
 
 class RandomizerSettingsException(Exception):
     pass
@@ -286,6 +289,10 @@ class GameWorld:
     # Pre-allocated once by _pre_allocate_dummy_npcs, then reused across shuffle retries
     _slot_dummy_indices: dict[int, int] | None = None   # room_id → starting object index of 5 slot dummies
     _flag_dummy_index: dict[int, int] | None = None     # room_id → object index of 1 flag dummy
+
+    # Vanilla room NPC states for change detection during partition recalculation
+    # Populated by snapshot_vanilla_room_states() before NPC shuffling begins
+    _vanilla_room_states: dict[int, "VanillaRoomState"] | None = None
 
     # Spell assignment tracking for SpellsAnywhere mode
     # Maps character prize type -> count of spells assigned to that character
