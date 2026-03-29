@@ -530,12 +530,15 @@ class NPCAnalysis:
     sprite_id: int
     vram_store: VramStore
     min_vram: int
+    max_sequence_vram: int
     cannot_clone: bool
     is_chest: bool
     is_coin: bool
-    buffer_type: BufferType
+    is_gridplane: bool
     gridplane_format: int | None
+    buffer_type: BufferType
     clone_count: int
+    force_cannot_clone: bool
 
 
 @dataclass
@@ -676,17 +679,22 @@ def _analyze_npc(
     else:
         buffer_type = BufferType.EMPTY_3
 
+    force_cannot_clone = not is_gridplane and not is_chest and not is_coin
+
     return NPCAnalysis(
         index=index,
         sprite_id=sprite_id,
         vram_store=vram_store,
         min_vram=min_vram,
+        max_sequence_vram=0,
         cannot_clone=cannot_clone,
         is_chest=is_chest,
         is_coin=is_coin,
-        buffer_type=buffer_type,
+        is_gridplane=is_gridplane,
         gridplane_format=gridplane_format,
+        buffer_type=buffer_type,
         clone_count=clone_count,
+        force_cannot_clone=force_cannot_clone,
     )
 
 
