@@ -557,7 +557,7 @@ class PartitionAnalysis:
     room_id: int
     npcs: list[NPCAnalysis]
     ally_buffer_size: int
-    extra_buffer_needed: bool
+    allow_extra_sprite_buffer: bool
     extra_buffer_size: int
     buffers: list[BufferAssignment]
     full_palette: bool
@@ -567,7 +567,7 @@ class PartitionAnalysis:
         """Convert this analysis to a Partition object."""
         partition = Partition()
         partition.set_ally_sprite_buffer_size(self.ally_buffer_size)
-        partition.set_allow_extra_sprite_buffer(self.extra_buffer_needed)
+        partition.set_allow_extra_sprite_buffer(self.allow_extra_sprite_buffer)
         partition.set_extra_sprite_buffer_size(self.extra_buffer_size)
 
         buffers = []
@@ -584,8 +584,8 @@ class PartitionAnalysis:
         lines = [f"=== Room {self.room_id} Partition Analysis ==="]
         lines.append(f"Ally buffer size: {self.ally_buffer_size}")
         lines.append(
-            f"Extra sprite buffer: {'yes' if self.extra_buffer_needed else 'no'}"
-            + (f" (size={self.extra_buffer_size})" if self.extra_buffer_needed else "")
+            f"Extra sprite buffer: {'yes' if self.allow_extra_sprite_buffer else 'no'}"
+            + (f" (size={self.extra_buffer_size})" if self.allow_extra_sprite_buffer else "")
         )
         lines.append(f"Full palette: {self.full_palette}")
 
@@ -602,6 +602,8 @@ class PartitionAnalysis:
                 + (f" ({space_bytes} bytes)" if space_bytes > 0 else "")
                 + f"  NPCs: [{npcs_str}]"
             )
+
+        lines.append(f"  VRAM: cursor={self.vram_cursor}, remaining={self.vram_remaining}")
 
         if self.npcs:
             lines.append("")
@@ -637,6 +639,23 @@ class PartitionAnalysis:
                 lines.append(f"  ! {warning}")
 
         return "\n".join(lines)
+
+    @property
+    def vram_cursor(self) -> int:
+        """Total VRAM rows consumed by this partition."""
+        cursor = self.ally_buffer_size * 4
+        cursor += self.extra_buffer_size
+        for buf in self.buffers:
+            cursor += buf.buffer_space
+        for npc in self.npcs:
+            if npc.force_cannot_clone:
+                cursor += npc.max_sequence_vram
+        return cursor
+
+    @property
+    def vram_remaining(self) -> int:
+        """VRAM rows available for additional NPCs (32 - vram_cursor)."""
+        return 32 - self.vram_cursor
 
 
 def _analyze_npc(
@@ -977,9 +996,9 @@ def analyze_room_partition(
 
     # Calculate extra sprite buffer (for chest packet sprites)
     chest_count = sum(1 for n in npc_analyses if n.is_chest)
-    extra_buffer_needed = chest_count > 0
+    allow_extra_sprite_buffer = chest_count > 0
     extra_buffer_size = 0
-    if extra_buffer_needed:
+    if allow_extra_sprite_buffer:
         if room_id in CLOSE_CHEST_ROOMS:
             extra_buffer_size = CLOSE_CHEST_ROOMS[room_id]
         else:
@@ -987,11 +1006,11 @@ def analyze_room_partition(
 
     # Special case: triple empty rooms
     if room_id in TRIPLE_EMPTY_EX1_ROOMS:
-        extra_buffer_needed = True
+        allow_extra_sprite_buffer = True
         extra_buffer_size = 1
 
     if room_id in TRIPLE_EMPTY_EX0_ROOMS:
-        extra_buffer_needed = False
+        allow_extra_sprite_buffer = False
         extra_buffer_size = 0
 
     # Determine full palette
@@ -1020,7 +1039,7 @@ def analyze_room_partition(
         room_id=room_id,
         npcs=npc_analyses,
         ally_buffer_size=ally_buffer_size,
-        extra_buffer_needed=extra_buffer_needed,
+        allow_extra_sprite_buffer=allow_extra_sprite_buffer,
         extra_buffer_size=extra_buffer_size,
         buffers=buffer_assignments,
         full_palette=full_palette,
