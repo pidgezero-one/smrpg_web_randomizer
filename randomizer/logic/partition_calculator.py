@@ -1092,6 +1092,117 @@ def _calculate_ally_buffer_size(
     return min(max(vram_values) + 1, 3)
 
 
+def analyze_partition(
+    world: GameWorld,
+    room_id: int,
+    *,
+    protagonist: str | None = None,
+    max_packets: int = 0,
+    allow_extra_sprite_buffer: bool | None = None,
+    water: bool = False,
+    npc_sequence_overrides: dict[int, list[int]] | None = None,
+) -> PartitionAnalysis:
+    """Analyze a room and compute optimal partition configuration.
+
+    Pure computation — no side effects. Deterministic for identical inputs.
+
+    Args:
+        world: GameWorld with loaded sprite data.
+        room_id: Room index to analyze.
+        protagonist: Character name ("mario", "peach", "bowser", "geno", "mallow")
+            for ally buffer sizing. Default None uses ally_buffer_size=1.
+        max_packets: Maximum packet sprites active simultaneously. Sets
+            extra_sprite_buffer_size directly (1 packet = 1 cursor row).
+        allow_extra_sprite_buffer: Whether packet sprites can be created.
+            Defaults to True when max_packets > 0, False otherwise.
+        water: If True, sets full_palette_buffer=False. Default False.
+        npc_sequence_overrides: Per-NPC sequence IDs the NPC will use.
+            {npc_object_index: [sequence_id, ...]}. Used to compute buffer
+            space from non-gridplane molds in those sequences.
+
+    Returns:
+        PartitionAnalysis with computed partition, buffer assignments, and
+        force_cannot_clone recommendations.
+    """
+    from ..types.room import Room
+
+    room = world.rooms._rooms[room_id]
+    assert room is not None, f"Room {room_id} not found"
+
+    if allow_extra_sprite_buffer is None:
+        allow_extra_sprite_buffer = max_packets > 0
+
+    # --- Step 1: Enumerate NPCs ---
+    objects = room.objects
+    npc_analyses: list[NPCAnalysis] = []
+    i = 0
+    while i < len(objects):
+        obj = objects[i]
+        if isinstance(obj, Clone):
+            i += 1
+            continue
+
+        # Count consecutive Clone objects following this NPC
+        clone_count = 0
+        j = i + 1
+        while j < len(objects) and isinstance(objects[j], Clone):
+            clone_count += 1
+            j += 1
+
+        npc_analysis = _analyze_npc(world, obj, i, clone_count)
+
+        # Apply sequence overrides for buffer space calculation
+        if npc_sequence_overrides and i in npc_sequence_overrides:
+            seq_ids = npc_sequence_overrides[i]
+            max_seq_vram = 0
+            npc = obj._npc
+            for seq_id in seq_ids:
+                try:
+                    v = npc.min_vram_from_sequence(world, seq_id)
+                    max_seq_vram = max(max_seq_vram, v)
+                except (IndexError, AssertionError):
+                    pass
+            npc_analysis.max_sequence_vram = max_seq_vram
+
+        npc_analyses.append(npc_analysis)
+        i = j
+
+    # --- Step 2: Compute ally buffer size ---
+    ally_buffer_size = _calculate_ally_buffer_size(world, room, protagonist)
+
+    # --- Step 3: Assign buffer slots ---
+    buffer_assignments, warnings = _assign_buffers_v2(npc_analyses, room_id)
+
+    # --- Step 4: Compute buffer space from sequence overrides ---
+    for assignment in buffer_assignments:
+        if assignment.buffer_type in (BufferType.FOUR_SPRITES_PER_ROW, BufferType.THREE_SPRITES_PER_ROW):
+            assigned_npcs = [n for n in npc_analyses if n.index in assignment.npc_indices]
+            if assigned_npcs:
+                max_space = max(n.max_sequence_vram for n in assigned_npcs)
+                assignment.buffer_space = BufferSpace(min(max_space, 7))
+
+    # --- Step 5: Build result ---
+    result = PartitionAnalysis(
+        room_id=room_id,
+        npcs=npc_analyses,
+        ally_buffer_size=ally_buffer_size,
+        allow_extra_sprite_buffer=allow_extra_sprite_buffer,
+        extra_buffer_size=max_packets,
+        buffers=buffer_assignments,
+        full_palette=not water,
+        warnings=warnings,
+    )
+
+    # --- Step 6: Overflow check ---
+    if result.vram_cursor > 32:
+        result.warnings.append(
+            f"VRAM overflow: cursor={result.vram_cursor} exceeds 32 rows "
+            f"(remaining={result.vram_remaining})"
+        )
+
+    return result
+
+
 def analyze_room_partition(
     world: GameWorld,
     room_id: int,
