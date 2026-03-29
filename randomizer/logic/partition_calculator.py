@@ -1124,8 +1124,6 @@ def analyze_partition(
         PartitionAnalysis with computed partition, buffer assignments, and
         force_cannot_clone recommendations.
     """
-    from ..types.room import Room
-
     room = world.rooms._rooms[room_id]
     assert room is not None, f"Room {room_id} not found"
 
@@ -1201,6 +1199,42 @@ def analyze_partition(
         )
 
     return result
+
+
+def apply_partition(
+    world: GameWorld,
+    room_id: int,
+    analysis: PartitionAnalysis,
+) -> None:
+    """Apply a computed partition analysis to a room.
+
+    Sets the room's partition and force_cannot_clone flags on each parent NPC.
+    Clones are skipped (they inherit from parent).
+
+    Args:
+        world: GameWorld instance.
+        room_id: Room index to update.
+        analysis: Result from analyze_partition().
+    """
+    room = world.rooms._rooms[room_id]
+    assert room is not None, f"Room {room_id} not found"
+
+    partition = analysis.to_partition()
+    partition._full_palette_buffer = analysis.full_palette
+    room._partition = partition
+
+    buffered_indices: set[int] = set()
+    for assignment in analysis.buffers:
+        buffered_indices.update(assignment.npc_indices)
+
+    for npc_analysis in analysis.npcs:
+        obj = room.objects[npc_analysis.index]
+        if isinstance(obj, Clone):
+            continue
+        if npc_analysis.force_cannot_clone:
+            obj.set_cannot_clone(True)
+        elif npc_analysis.index in buffered_indices:
+            obj.set_cannot_clone(False)
 
 
 def analyze_room_partition(
