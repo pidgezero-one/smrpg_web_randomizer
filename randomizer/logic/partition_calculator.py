@@ -896,6 +896,98 @@ def _assign_buffers(
     return assignments, warnings
 
 
+def _assign_buffers_v2(
+    npc_analyses: list[NPCAnalysis],
+    room_id: int,
+) -> tuple[list[BufferAssignment], list[str]]:
+    """Assign NPCs to 3 buffer slots with strict format matching.
+
+    Rules:
+    - TREASURE_CHEST -> buffer A (index 0) if any chests present
+    - COINS -> buffer C (index 2) if any animated coins present
+    - Format 0-1 gridplane NPCs -> FOUR_SPRITES_PER_ROW buffer
+    - Format 2-3 gridplane NPCs -> THREE_SPRITES_PER_ROW buffer
+    - Non-gridplane NPCs already have force_cannot_clone=True (from _analyze_npc)
+    - If both gridplane formats exist but only one buffer slot remains,
+      majority format gets the slot, minority format NPCs get force_cannot_clone=True
+    - No hardcoded room-specific logic (caller handles special cases like Midas River)
+    - Remaining empty slots filled with EMPTY_3
+    """
+    warnings: list[str] = []
+
+    # Separate NPCs into groups (only considering assignable NPCs)
+    chest_npcs = [n for n in npc_analyses if n.is_chest and not n.force_cannot_clone]
+    coin_npcs = [n for n in npc_analyses if n.is_coin and not n.force_cannot_clone]
+    four_npcs = [
+        n
+        for n in npc_analyses
+        if n.buffer_type == BufferType.FOUR_SPRITES_PER_ROW and not n.force_cannot_clone
+    ]
+    three_npcs = [
+        n
+        for n in npc_analyses
+        if n.buffer_type == BufferType.THREE_SPRITES_PER_ROW and not n.force_cannot_clone
+    ]
+
+    # Start with 3 empty buffer slots
+    assignments: list[BufferAssignment] = [
+        BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
+        BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
+        BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
+    ]
+
+    # Assign TREASURE_CHEST to buffer A (index 0) if needed
+    if chest_npcs:
+        assignments[0] = BufferAssignment(
+            BufferType.TREASURE_CHEST,
+            BufferSpace.BYTES_0,
+            [n.index for n in chest_npcs],
+        )
+
+    # Assign COINS to buffer C (index 2) if needed
+    if coin_npcs:
+        assignments[2] = BufferAssignment(
+            BufferType.COINS,
+            BufferSpace.BYTES_0,
+            [n.index for n in coin_npcs],
+        )
+
+    # Collect gridplane groups sorted by count descending (majority first)
+    gridplane_groups = []
+    if four_npcs:
+        gridplane_groups.append(
+            (BufferType.FOUR_SPRITES_PER_ROW, four_npcs)
+        )
+    if three_npcs:
+        gridplane_groups.append(
+            (BufferType.THREE_SPRITES_PER_ROW, three_npcs)
+        )
+    gridplane_groups.sort(key=lambda g: len(g[1]), reverse=True)
+
+    # Assign each gridplane group to the first available empty slot
+    for buf_type, npcs in gridplane_groups:
+        placed = False
+        for i in range(3):
+            if assignments[i].buffer_type == BufferType.EMPTY_3:
+                assignments[i] = BufferAssignment(
+                    buf_type,
+                    BufferSpace.BYTES_0,
+                    [n.index for n in npcs],
+                )
+                placed = True
+                break
+        if not placed:
+            # No empty slot available — force all NPCs in this group to cannot_clone
+            for npc in npcs:
+                npc.force_cannot_clone = True
+            warnings.append(
+                f"Room {room_id}: No buffer slot for {buf_type.name} NPCs "
+                f"(indices: {[n.index for n in npcs]}), forced cannot_clone"
+            )
+
+    return assignments, warnings
+
+
 # Protagonist name to CharacterPrize class mapping
 _PROTAGONIST_PRIZES: dict[str, type] = {}  # Populated lazily to avoid circular imports
 
