@@ -122,6 +122,77 @@ def snapshot_vanilla_room_states(world: GameWorld) -> None:
     world._vanilla_room_states = states
 
 
+@dataclass
+class AnimationVramOverride:
+    """Declarative animation-based min_vram override for NPC objects.
+
+    Before partition recalculation, if the boss placed at location_class
+    has the named animation, compute min_vram from its sequence and set it
+    on the room NPC.
+    """
+    location_class: type    # e.g., InnerMinesBossFight
+    room_id: int            # room where NPC appears
+    npc_id: AreaObject      # which NPC in the room
+    animation_attr: str     # attribute name on boss.animations, e.g. "mines_punch"
+
+
+def _get_animation_vram_overrides() -> list[AnimationVramOverride]:
+    """Build the animation VRAM override registry.
+
+    Imports are deferred to avoid circular dependencies with prizelocation modules.
+    """
+    from ..progression.prizelocations import InnerMinesBossFight
+
+    return [
+        AnimationVramOverride(
+            location_class=InnerMinesBossFight,
+            room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
+            npc_id=NPC_0,
+            animation_attr="mines_punch",
+        ),
+    ]
+
+
+def _apply_animation_vram_overrides(world: GameWorld, changed_rooms: set[int]) -> None:
+    """Apply animation-based min_vram overrides to NPCs in changed rooms.
+
+    For each override whose room is in the changed set, look up the boss
+    model's animation sequence and compute the min_vram requirement.
+    Must run BEFORE partition recalculation.
+    """
+    from ..utils.npcs import min_vram_from_sequence_for_sprite
+    from ..types.prize import BossFightPrize
+
+    overrides = _get_animation_vram_overrides()
+
+    for override in overrides:
+        if override.room_id not in changed_rooms:
+            continue
+
+        location = world.locations.get(override.location_class)
+        if location is None:
+            continue
+
+        assert isinstance(location.prize, BossFightPrize)
+        npc_model = location.prize.get_npc_for_slot(world, 4096)
+        boss = npc_model()
+
+        if boss.animations is None:
+            continue
+        animation = getattr(boss.animations, override.animation_attr, None)
+        if animation is None:
+            continue
+
+        sequence_id = animation.sequence_id
+        sprite_id = boss.base.sprite_id
+        min_vram = min_vram_from_sequence_for_sprite(world, sprite_id, sequence_id)
+
+        room = world.rooms._rooms[override.room_id]
+        assert room is not None
+        npc_obj = room.get_npc_by_target_id(override.npc_id)
+        npc_obj.set_min_vram_size(min_vram)
+
+
 # =============================================================================
 # Mapping from extra sprite action states to animation states needed for VRAM
 # Used to determine which ally animation states are needed for each room action
