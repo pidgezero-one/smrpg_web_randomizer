@@ -1358,7 +1358,7 @@ script = AnimationScriptBlock(expected_size=4971, expected_beginning=0x35C992, s
     Layer3On(property=OVERLAP_ALL, bpp4=True),
     PauseScriptUntil(condition=FRAMES_ELAPSED, frames=60),
 	FadeOutObject(duration=2),
-    PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
+    PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
 	Layer3Off(property=OVERLAP_ALL, bpp4=True),
     Pause2Frames(),
 	ClearEffectIndex(),

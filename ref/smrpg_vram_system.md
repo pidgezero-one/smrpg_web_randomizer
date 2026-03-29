@@ -1018,6 +1018,166 @@ This room is a textbook example of the partition system's design: each buffer ty
 
 - **Empty buffers**: EMPTY (`$FF`) clone buffers allocate no cursor space and no NPC slots. They effectively disable that buffer position.
 
+### $B879 — Clone Buffer Assignment Stub (Traced March 2026)
+
+The function at `$C0:B879` is **a 2-byte no-op stub**: `CLC; RTS` ($18 $60). It always returns carry clear ("no buffer available").
+
+**Call sites that reference $B879:**
+
+1. **`$C0:848E`** (NPC initialization path):
+```
+$848E: LDA $59,X        ; Load NPC flags
+$8490: BIT #$08         ; Test bit 3 (cannot_clone)
+$8492: BNE $84A1        ; If cannot_clone → skip
+$8494: JSR $B879        ; Attempt clone buffer assignment → always CLC
+$8497: BCC $84A1        ; Carry clear → always takes this branch
+$8499: LDA $06,X        ; (DEAD CODE — never reached)
+$849B: AND #$27
+$849D: ORA #$80         ; Would set object+$06 bit 7 = "in clone buffer"
+$849F: BRA $84A5
+$84A1: LDA $06,X        ; Always arrives here
+$84A3: AND #$27         ; Clears bits 7,6,4,3 of object+$06
+$84A5: STA $06,X
+```
+
+2. **`$C0:0FBB`** (sprite direction change path):
+```
+$0FBB: LDA $59,X        ; NPC flags
+$0FBD: BIT #$08         ; cannot_clone check
+$0FBF: BNE $0FD2        ; skip if set
+$0FC1: LDA $30,X        ; additional state check
+$0FC3: BMI $0FD2        ; skip if bit 7 set
+$0FC5: JSR $B879        ; → always CLC
+$0FC8: BCC $0FD2        ; always branches
+```
+
+**Consequence:** Object+$06 bit 7 ("NPC assigned to clone buffer") is **never set** for any NPC. The explicit clone buffer assignment mechanism is dead code. This appears to be the vanilla state — neither `open_mode.ips`, `open_mode.json`, nor the patchbuilder write to address `$B879`.
+
+**Implication for the randomizer:** The runtime clone buffer system works purely through **implicit sprite sharing** via the sprite table at `$0490` (`$C0:9C4A`), not through explicit NPC-to-buffer assignment. When multiple NPCs reference the same sprite ID, the sprite table lookup finds the existing entry and shares it. The buffer REGIONS are still allocated in VRAM by `$90B0`, but NPC sprites are loaded into them organically based on the cursor position at creation time, not by explicit assignment.
+
+**Resolved:** Changing buffer C from EMPTY to THREE_SPRITES_PER_ROW (with `BufferSpace.BYTES_0`) has **no runtime effect**. Both produce `buffer[2] = $00` (inactive). The gridplane rendering handler at `$A1FE` is only called when `buffer[1] != $FF` ($85F6:$8614), and `buffer[1]` stays $FF forever for gridplane buffers with space=0 (only chest at $9156 and coin at $9171 write to buffer[1]). The row format variable `$77` is only loaded from buffer[0] inside $A1FE, so it never executes for space=0 buffers. Any observed NPC-to-buffer assignment differences from changing buffer types are artifacts of the **Python partition calculator**, not the game engine.
+
+### $90B0 — Clone Buffer Processing (Fully Traced)
+
+Each clone buffer byte is processed as follows:
+
+```
+$90B0: STA $80           ; Store original type byte
+$90B2: AND #$07          ; Extract buffer type (bits 0-2)
+$90B4: BEQ $90E4         ; type=0 → THREE_SPRITES_PER_ROW
+$90B6: CMP #$01
+$90B8: BEQ $90E8         ; type=1 → FOUR_SPRITES_PER_ROW
+$90BA: CMP #$07
+$90BC: BEQ $90D9         ; type=7 → EMPTY (no allocation)
+$90BE: CLC
+$90BF: ADC #$06          ; type + 6
+$90C1: STA $00,X         ; buffer[0] = type + 6
+$90C3: CMP #$08
+$90C5: BEQ $9122         ; type=2 → TREASURE_CHEST handler
+$90C7: CMP #$09
+$90C9: BEQ $9142         ; type=3 → EMPTY_TREASURE_CHEST handler
+$90CB: CMP #$0A
+$90CD: BNE $90D2         ; type=4 → COINS handler at $915D
+```
+
+**For gridplane buffers (THREE/FOUR), type=0 or type=1:**
+```
+$90E4/$90E8: Load A = 3 (THREE) or 1 (FOUR)
+$90EA: STA $00,X         ; buffer[0] = row format (1 or 3)
+$90EC: LDA #$FF
+$90EE: STA $01,X         ; buffer[1] = $FF (no sprite yet)
+$90F0: LDA $80           ; reload original byte
+$90F2: AND #$70          ; extract bits 6-4 = BufferSpace
+$90F4: LSR A × 2         ; shift to bits 4-2
+$90F6: STA $81            ; $81 = space value
+$90F8: STA $03,X         ; buffer[3] = space
+$90FA: BEQ $911E         ; if space=0 → skip cursor advance, buffer[2]=0
+
+; If space > 0:
+$90FC-$9110: Record cursor position in buffer[4], advance cursor by space
+$9114: LDA $80
+$9116: BMI $911E         ; if bit 7 set (coins) → buffer[2]=0
+$9118: LDA #$80
+$911A: STA $02,X         ; buffer[2] = $80 (ACTIVE gridplane flag)
+$911C: BRA end
+
+; Space = 0 or bit 7 set:
+$911E: STZ $02,X         ; buffer[2] = 0
+```
+
+**Critical detail:** Gridplane buffers with `BufferSpace.BYTES_0` set `buffer[2] = 0`, same as EMPTY buffers. Only gridplane buffers with `BufferSpace > 0` set `buffer[2] = $80`. The `$80` flag in `buffer[2]` marks the buffer as "active with allocated VRAM."
+
+**Buffer working area layout (6 bytes per buffer):**
+
+| Offset | Gridplane (space>0) | Gridplane (space=0) | EMPTY | Chest/Coin |
+|--------|-------------------|---------------------|-------|------------|
+| [0] | Row format (1/3) | Row format (1/3) | $FF | Type-specific |
+| [1] | $FF (no sprite) | $FF | — | Sprite ID |
+| [2] | $80 (active) | $00 | $00 | $80/$00 |
+| [3] | Space value | $00 | $00 | $00 |
+| [4] | Cursor position | — | — | Cursor position |
+| [5] | $00 | — | — | $00 |
+
+### $9C4A — Sprite Table Management (Fully Traced)
+
+Maintains sprite lookup table at `$0490` with 12-byte entries. `$0102` = loaded sprite count.
+
+```
+$9C4A: Set data bank to $00
+$9C50: X = $0490 (table start)
+$9C53: $80 = 0 (search index)
+$9C55: Load sprite count from $0102
+$9C58: If 0 → skip search, allocate new
+
+; Search loop:
+$9C60: Compare table entry [0:1] with requested sprite ($70)
+$9C64: If match → sprite already loaded, reuse (→ $9CA1)
+$9C6A: Advance X by 12 (next entry)
+$9C70: Loop until all entries checked
+
+; New allocation:
+$9C74: Increment sprite count ($0102)
+$9C79: Store sprite ID, VRAM info ($70-$7E) into 12-byte table entry
+
+; Return
+$9CA3: Restore X, return
+```
+
+This is the **implicit clone mechanism**: multiple NPCs sharing the same sprite ID will find the same table entry and share VRAM. No explicit buffer assignment needed.
+
+### $9547 — Extra Sprite Slot Allocator (Traced March 2026)
+
+Allocates consecutive slots from the **extra sprite bitmap at $01B2** for NPC direction sprites. Total available slots = `$01D7` = `(extra_sprite_buffer_size + 1) * 4`.
+
+Called from `$C0:93B7` during NPC creation. Input: `$80` = number of additional direction slots needed (from NPC property bits). Returns carry clear on success, carry set on overflow.
+
+The bitmap at `$01B2` tracks allocation state (1 = occupied, 0 = free). Each NPC takes 1+ consecutive bits based on its VramStore (direction count).
+
+### $9D21 — Direction Table Manager (Traced March 2026)
+
+Manages the direction sprite table at `$01F0` (2-byte entries, `$01D0` = count). Called from `$C0:94C5` after sprite graphics loading.
+
+The table has two regions:
+- **Entries 0 to ($01D8-1)**: Reserved by partition buffers (ally directions, chest sprites, coin sprites)
+- **Entries $01D8+**: Dynamic NPC sprites
+
+`$01D8` is set at `$C0:8C31` to the value of `$01D0` after partition buffer setup completes. This creates the boundary between buffer-reserved and dynamic entries.
+
+**Deduplication**: When a sprite address ($7A/$7B) already exists in the table, the NPC shares that entry (implicit cloning). New sprites get new entries.
+
+### Key Architecture Insight: Gridplane Buffer Types DO Affect Tile Layout Even at Space=0
+
+**CORRECTION (March 2026):** Initial trace concluded buffer types were cosmetic at space=0, but in-game testing shows they ARE NOT. Changing a buffer from EMPTY_3 to THREE_SPRITES_PER_ROW (with space=0) caused a FOUR_SPRITES_PER_ROW NPC (Toad, sprite 64) to render with wrong tile offsets — tiles arranged for 3-per-row spacing when 4-per-row was needed.
+
+The traced code paths ($85D7→$85F6→$A1FE) appear to gate on `buffer[1] != $FF`, which should never fire for space=0 gridplane buffers. However, the visual corruption proves there is an **untraced code path** that reads `buffer[0]` (row format) and uses it for tile layout calculations, even when `buffer[1]` is $FF and `buffer[2]` is $00.
+
+**Practical rule:** Buffer types matter at ALL buffer space levels. Match buffer types to NPC gridplane formats, or use EMPTY_3 for unused buffer slots to avoid format mismatches. Do NOT set a buffer to THREE_SPRITES_PER_ROW or FOUR_SPRITES_PER_ROW unless NPCs of that format will be assigned to it.
+
+When `BufferSpace > 0`, additional effects kick in:
+- `buffer[2] = $80` (active flag set at $9118)
+- `buffer[4]` = VRAM cursor position recorded
+- `$A1FE` gets called during $85D7 post-processing, using `buffer[0]` (row format) for tile layout
+
 ### Requires Further Investigation
 
 - **SA-1 command $8D payload**: The exact tile transfer logic inside the SA-1 for sprite DMA has not been fully traced. The SA-1 reads parameters from I-RAM `$0050-$0051` and performs the VRAM tile copy, but the decompression/transfer algorithm is inside SA-1-side code.
@@ -1026,6 +1186,8 @@ This room is a textbook example of the partition system's design: each buffer ty
 
 - **8 unknown NPC checkboxes in Lazy Shell**: These likely correspond to flag bits in the 7-byte NPC entry that control behavior flags (event triggers, interaction modes, etc.) rather than VRAM allocation.
 
+- **$B879 vanilla verification**: Confirmed as `CLC; RTS` in the randomized ROM. Not patched by open_mode or the patchbuilder. Likely vanilla behavior, but should be verified against an unmodified ROM dump.
+
 ---
 
-*Document generated from ROM disassembly, March 2026. Key routines verified against Lazy Shell editor source (`Partitions.cs`, `NPCProperties.cs`, `SpritePartitions.cs`) and SMRPG reference documentation.*
+*Document generated from ROM disassembly, March 2026. Key routines verified against Lazy Shell editor source (`Partitions.cs`, `NPCProperties.cs`, `SpritePartitions.cs`) and SMRPG reference documentation. $B879/$90B0/$9C4A/$9547/$9D21 sections added from ASM trace, March 2026.*

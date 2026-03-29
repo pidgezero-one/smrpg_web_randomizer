@@ -53,7 +53,7 @@ room = Room(
                 index_in_main_buffer=True,
             ),
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
+                buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
@@ -342,6 +342,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True,
         ),
         RegularNPC(  # 8
             npc=npcs.SKY_TROOPA_NPC,
@@ -427,6 +428,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True
         ),
         RegularClone(  # 11
             npc=npcs.ITEM_BAG_NPC,
@@ -438,6 +440,7 @@ room = Room(
             z=3,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=True
         ),
     ],
 )

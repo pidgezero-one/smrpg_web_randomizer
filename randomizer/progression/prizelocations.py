@@ -688,6 +688,7 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
             prize.set_starting_level(2)
         return super().set_prize(prize)
 
+
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
 
