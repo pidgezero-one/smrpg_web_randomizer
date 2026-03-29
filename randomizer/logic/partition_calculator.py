@@ -230,6 +230,70 @@ def _detect_changed_rooms(world: GameWorld) -> set[int]:
     return changed
 
 
+def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
+    """Recalculate and apply a room's partition, preserving BufferSpace values.
+
+    Steps:
+    1. Extract preservation params from existing partition
+    2. Run analyze_partition with preserved params
+    3. Overlay preserved BufferSpace values onto the analysis result
+    4. Apply the partition
+    """
+    room = world.rooms._rooms[room_id]
+    assert room is not None
+    assert room.partition is not None
+
+    existing = room.partition
+
+    # --- Extract preservation params ---
+    allow_extra = existing.allow_extra_sprite_buffer
+    max_packets = existing.extra_sprite_buffer_size
+    water = not existing.full_palette_buffer
+
+    # Build buffer space preservation map: {buffer_type: max BufferSpace}
+    # Also track per-index for the "same role" fallback
+    preserved_by_type: dict[BufferType, BufferSpace] = {}
+    preserved_by_index: list[BufferSpace] = []
+    for buf in existing.buffers:
+        space = buf.main_buffer_space
+        preserved_by_index.append(space)
+        if space != BufferSpace.BYTES_0:
+            btype = buf.buffer_type
+            if btype not in preserved_by_type or space.value > preserved_by_type[btype].value:
+                preserved_by_type[btype] = space
+
+    # --- Run analyze_partition ---
+    # Do NOT pass protagonist — ally buffer already set by update_partition_by_protagonist
+    analysis = analyze_partition(
+        world,
+        room_id,
+        max_packets=max_packets,
+        allow_extra_sprite_buffer=allow_extra,
+        water=water,
+    )
+
+    # --- Preserve ally buffer size from existing partition ---
+    # update_partition_by_protagonist already computed the correct value
+    analysis.ally_buffer_size = existing.ally_sprite_buffer_size
+
+    # --- Overlay preserved BufferSpace ---
+    for i, assignment in enumerate(analysis.buffers):
+        computed_space = assignment.buffer_space
+
+        # Check 1: type match in preservation map
+        type_preserved = preserved_by_type.get(assignment.buffer_type, BufferSpace.BYTES_0)
+
+        # Check 2: same-index fallback (buffer type changed but same role)
+        index_preserved = preserved_by_index[i] if i < len(preserved_by_index) else BufferSpace.BYTES_0
+
+        # Take the max of: what analysis computed, type-matched preservation, index-based preservation
+        best = max(computed_space, type_preserved, index_preserved, key=lambda s: s.value)
+        assignment.buffer_space = best
+
+    # --- Apply ---
+    apply_partition(world, room_id, analysis)
+
+
 # =============================================================================
 # Mapping from extra sprite action states to animation states needed for VRAM
 # Used to determine which ally animation states are needed for each room action
