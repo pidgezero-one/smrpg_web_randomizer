@@ -1237,6 +1237,56 @@ def apply_partition(
             obj.set_cannot_clone(False)
 
 
+def filter_fitting_models(
+    world: GameWorld,
+    room_id: int,
+    npc_index: int,
+    candidate_models: list,
+    *,
+    prefer_largest: bool = True,
+    **analyze_kwargs,
+) -> list[tuple]:
+    """Filter and rank NPC models that fit in a room's VRAM budget.
+
+    For each candidate model (a BossNPC subclass with a no-arg constructor and
+    a .base attribute returning the NPC definition), temporarily substitutes it
+    into the room's NPC slot, runs analyze_partition, and checks vram_remaining >= 0.
+
+    Args:
+        world: GameWorld instance.
+        room_id: Room to test against.
+        npc_index: Object index where the boss NPC sits.
+        candidate_models: List of BossNPC subclasses (from prize._npc_models).
+            Each must support no-arg construction and have a .base attribute.
+        prefer_largest: If True (default), returns sorted largest VRAM first.
+            If False, sorted smallest first (for tight rooms).
+        **analyze_kwargs: Passed through to analyze_partition (protagonist,
+            max_packets, water, npc_sequence_overrides).
+
+    Returns:
+        List of (model_class, analysis) tuples for models that fit, sorted by
+        VRAM consumption. Empty if nothing fits.
+    """
+    room = world.rooms._rooms[room_id]
+    assert room is not None, f"Room {room_id} not found"
+    obj = room.objects[npc_index]
+    original_npc = obj._npc
+
+    results = []
+    for model_cls in candidate_models:
+        model_instance = model_cls()
+        obj._npc = model_instance.base
+        try:
+            analysis = analyze_partition(world, room_id, **analyze_kwargs)
+            if analysis.vram_remaining >= 0:
+                results.append((model_cls, analysis))
+        finally:
+            obj._npc = original_npc
+
+    results.sort(key=lambda t: t[1].vram_cursor, reverse=prefer_largest)
+    return results
+
+
 def analyze_room_partition(
     world: GameWorld,
     room_id: int,
