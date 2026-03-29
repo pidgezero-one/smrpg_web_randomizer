@@ -10,7 +10,7 @@ from randomizer.types.gameworld import DI2730_FROGFUCIUS_OFFER_HINT
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_2, NPC_PALETTE_ROW_3 ,NPC_PALETTE_ROW_4,NPC_PALETTE_ROW_5,NPC_PALETTE_ROW_6, NPC_PALETTE_ROW_7
 
 from ..data.variables.event_palette_names import * # holy shit i cannot deal with how slow pylance is, fuck it just import everything
-from randomizer.logic.partition_calculator import update_shuffed_boss_partitions
+from randomizer.logic.partition_calculator import snapshot_vanilla_room_states, update_changed_room_partitions
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -346,6 +346,9 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     ] = {}
     # Collect all henchman container events used
     henchman_container_events: set[int] = set()
+    # Snapshot vanilla NPC states before any shuffling modifies room objects
+    snapshot_vanilla_room_states(world)
+
     for place in world.locations.values():
         # Construct prize granter hub events
         # skip frog disciple locations, they're set in shop shuffler
@@ -546,7 +549,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     apply_boss_stat_scaling(world)
 
     # Update partition buffers for rooms with shuffled sprites
-    update_shuffed_boss_partitions(world)
+    update_changed_room_partitions(world)
 
     # Update freestanding frog coin NPCs in rooms with Coins partition
     # to use the animated frog coin NPC and spinning action script

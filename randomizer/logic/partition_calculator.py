@@ -358,6 +358,32 @@ def _log_slot_machine_support(world: GameWorld) -> None:
                     objects[idx]._npc = saved_npcs[j]
 
 
+def update_changed_room_partitions(world: GameWorld) -> None:
+    """Recalculate partitions for rooms where NPC models changed.
+
+    Replaces update_shuffed_boss_partitions. Call order:
+    1. Detect changed rooms via snapshot diff
+    2. Apply animation VRAM overrides (min_vram_size pre-pass)
+    3. Recalculate partition for each changed room
+    4. Log slot machine support for all chest rooms
+    """
+    import logging
+    logger = logging.getLogger(__name__)
+
+    changed_rooms = _detect_changed_rooms(world)
+    logger.info("Partition orchestrator: %d rooms changed", len(changed_rooms))
+
+    # Pre-pass: animation VRAM overrides
+    _apply_animation_vram_overrides(world, changed_rooms)
+
+    # Recalculate partitions
+    for room_id in sorted(changed_rooms):
+        _recalculate_room_partition(world, room_id)
+
+    # Final pass: slot machine support check (all chest rooms, not just changed)
+    _log_slot_machine_support(world)
+
+
 # =============================================================================
 # Mapping from extra sprite action states to animation states needed for VRAM
 # Used to determine which ally animation states are needed for each room action
