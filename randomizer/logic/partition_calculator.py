@@ -294,9 +294,6 @@ def _log_slot_machine_support(world: GameWorld) -> None:
     sprite ID), temporarily swaps them to EMPTY_NPC before checking.
     Debug output only — does not modify any state.
     """
-    import logging
-    logger = logging.getLogger(__name__)
-
     from ..data.rooms.npcs import EMPTY_NPC
 
     slot_dummy_sprite_id = SPR1023_EMPTY
@@ -337,11 +334,11 @@ def _log_slot_machine_support(world: GameWorld) -> None:
 
         try:
             result = can_room_support_slots(world, room_id)
-            # Run a quick analysis to get bitmap_slots_remaining
             analysis = analyze_partition(world, room_id)
-            logger.info(
-                "Slot check room %d: support=%s bitmap_remaining=%d vram_remaining=%d",
-                room_id, result, analysis.bitmap_slots_remaining, analysis.vram_remaining,
+            print(
+                f"[SLOT CHECK] Room {room_id}: support={result}"
+                f" bitmap_remaining={analysis.bitmap_slots_remaining}"
+                f" vram_remaining={analysis.vram_remaining}"
             )
         finally:
             # Restore original dummy NPCs
@@ -360,11 +357,8 @@ def update_changed_room_partitions(world: GameWorld) -> None:
     3. Recalculate partition for each changed room
     4. Log slot machine support for all chest rooms
     """
-    import logging
-    logger = logging.getLogger(__name__)
-
     changed_rooms = _detect_changed_rooms(world)
-    logger.info("Partition orchestrator: %d rooms changed", len(changed_rooms))
+    print(f"[PARTITION] Orchestrator: {len(changed_rooms)} rooms changed")
 
     # Pre-pass: animation VRAM overrides
     _apply_animation_vram_overrides(world, changed_rooms)
