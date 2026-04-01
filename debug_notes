@@ -18,6 +18,7 @@ Rooms I need graphical advice on:
 - chester's large NPC in seaside: partially overwritten by boster (replacing johnny)
 - chesters large NPC in throne room: partially missing
 - slot machine in forest maze secret
+- Room 205: Mario as recruit, Bloober as boss. I see the 4 sprite buffer was switched to be index 0 and the empty sprite buffer was switched to be index 2, index 1 has indexing in main buffer turned on when it is originally turned off, and npc 6 has cannot clone turned off when originally turned on. As a result, npc 6 looks fine, but npc 0-5 are trying to load in the 4 sprite buffer while npc 5 is loading into the 3 sprite buffer. NPC 7 in the original game is also cannot_clone while the bloober sprite incoming is not cannot_clone (this is not necessarily wrong, just explaining what i see) and loads correctly into the buffer.
 
 - It would be really funny if the hurly gloves threw whoever is to your left (or to your right if you're in slot 0) and animate accordingly, and just throw a mario doll if no other party members
 
