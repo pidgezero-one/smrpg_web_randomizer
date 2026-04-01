@@ -334,27 +334,31 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             vanilla_npc_idx += 1
 
     # =========================================================================
-    # Step 3: Determine buffer needs from current NPCs
+    # Step 3: Determine buffer needs — one buffer per unique sprite ID
     # =========================================================================
+    # At runtime, each unique sprite ID gets its own VRAM allocation via
+    # the sprite table at $9C4A. Different sprites with the same format
+    # do NOT share a buffer — each needs its own slot.
     has_chest = any(n.is_chest for n in npc_infos)
     has_coin = any(n.is_coin for n in npc_infos)
 
-    # Group gridplane NPCs by sprite ID, count frequency
+    # Build sprite groups: sprite_id → (buffer_type, npc_count, first_obj_index)
     from collections import Counter
-    gridplane_sprites: dict[int, BufferType] = {}  # sprite_id → needed buffer type
+    sprite_to_type: dict[int, BufferType] = {}  # sprite_id → needed buffer type
     sprite_counts: Counter[int] = Counter()
+    sprite_first_appearance: dict[int, int] = {}  # sprite_id → first obj_index
     for npc in npc_infos:
-        if npc.is_chest or npc.is_coin:
-            continue
-        if not npc.is_gridplane:
+        if npc.is_chest or npc.is_coin or not npc.is_gridplane:
             continue
         if npc.gridplane_format in (0, 1):
-            gridplane_sprites[npc.sprite_id] = BufferType.FOUR_SPRITES_PER_ROW
+            sprite_to_type[npc.sprite_id] = BufferType.FOUR_SPRITES_PER_ROW
         elif npc.gridplane_format in (2, 3):
-            gridplane_sprites[npc.sprite_id] = BufferType.THREE_SPRITES_PER_ROW
+            sprite_to_type[npc.sprite_id] = BufferType.THREE_SPRITES_PER_ROW
         else:
             continue
         sprite_counts[npc.sprite_id] += 1
+        if npc.sprite_id not in sprite_first_appearance:
+            sprite_first_appearance[npc.sprite_id] = npc.obj_index
 
     # Count available buffer slots (after reserving for chest/coin)
     available_slots = 3
@@ -363,54 +367,34 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     if has_coin:
         available_slots -= 1
 
-    # Group sprites by buffer type, rank by total NPC count per type
-    type_groups: dict[BufferType, list[int]] = {}  # buffer_type → [sprite_ids]
-    for sprite_id, btype in gridplane_sprites.items():
-        if btype not in type_groups:
-            type_groups[btype] = []
-        type_groups[btype].append(sprite_id)
+    # Rank unique sprite IDs by NPC count (most frequent first)
+    # Each unique sprite needs its own buffer slot
+    ranked_sprites = sorted(
+        sprite_to_type.keys(),
+        key=lambda sid: sprite_counts[sid],
+        reverse=True,
+    )
 
-    # Rank buffer types by total NPC count (most NPCs first)
-    ranked_types: list[tuple[BufferType, int]] = []
-    for btype, sprite_ids in type_groups.items():
-        total_count = sum(sprite_counts[sid] for sid in sprite_ids)
-        ranked_types.append((btype, total_count))
-    ranked_types.sort(key=lambda x: x[1], reverse=True)
-
-    # Select which buffer types get slots (up to available_slots)
-    selected_types: list[BufferType] = []
-    for btype, _ in ranked_types:
-        if len(selected_types) >= available_slots:
-            break
-        selected_types.append(btype)
-
-    # Determine which sprite IDs get buffers
+    # Select which sprite IDs get buffer slots (up to available_slots)
     buffered_sprite_ids: set[int] = set()
-    for btype in selected_types:
-        for sprite_id in type_groups[btype]:
-            buffered_sprite_ids.add(sprite_id)
+    # Each selected sprite claims one buffer slot
+    selected_buffers: list[tuple[int, BufferType]] = []  # (sprite_id, buffer_type)
+    for sprite_id in ranked_sprites:
+        if len(selected_buffers) >= available_slots:
+            break
+        selected_buffers.append((sprite_id, sprite_to_type[sprite_id]))
+        buffered_sprite_ids.add(sprite_id)
 
     # =========================================================================
     # Step 4: Order buffers respecting NPC object order
     # =========================================================================
-    # Gridplane buffers should appear in the order their first NPC appears
-    # in the object list.
-    first_appearance: dict[BufferType, int] = {}
-    for npc in npc_infos:
-        if npc.sprite_id in buffered_sprite_ids:
-            btype = gridplane_sprites[npc.sprite_id]
-            if btype not in first_appearance:
-                first_appearance[btype] = npc.obj_index
-
-    ordered_gridplane_types = sorted(
-        selected_types,
-        key=lambda bt: first_appearance.get(bt, 999),
+    # Buffers must appear in the order their first NPC appears in the
+    # object list, because the game assigns NPCs to buffers sequentially.
+    selected_buffers.sort(
+        key=lambda sb: sprite_first_appearance.get(sb[0], 999),
     )
 
     # Build the 3-slot buffer assignment
-    # Slot 0: CHEST if needed, else first gridplane type
-    # Slot 2: COINS if needed, else last gridplane type or EMPTY
-    # Remaining slots: gridplane types in order
     new_buffer_types: list[BufferType] = [BufferType.EMPTY_3] * 3
 
     if has_chest:
@@ -418,13 +402,17 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     if has_coin:
         new_buffer_types[2] = BufferType.COINS
 
-    # Fill remaining slots with ordered gridplane types
-    gridplane_queue = list(ordered_gridplane_types)
+    # Fill remaining slots with ordered sprite buffers
+    buffer_queue = list(selected_buffers)
+    # Track which sprite_id is in which new buffer index
+    sprite_to_new_buffer: dict[int, int] = {}
     for i in range(3):
         if new_buffer_types[i] != BufferType.EMPTY_3:
             continue  # Already assigned (chest or coin)
-        if gridplane_queue:
-            new_buffer_types[i] = gridplane_queue.pop(0)
+        if buffer_queue:
+            sprite_id, btype = buffer_queue.pop(0)
+            new_buffer_types[i] = btype
+            sprite_to_new_buffer[sprite_id] = i
 
     # =========================================================================
     # Step 5: Carry over main_buffer_space and index_in_main_buffer
@@ -435,7 +423,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     new_index_in_main: list[bool] = [True] * 3  # Default is True
 
     for i, btype in enumerate(new_buffer_types):
-        # Find NPCs that will use this buffer
         if btype in (BufferType.TREASURE_CHEST, BufferType.COINS, BufferType.EMPTY_3):
             # For chest/coin/empty, check if original had same type and carry over
             for orig_i, orig_buf in enumerate(existing.buffers):
@@ -446,11 +433,11 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     new_index_in_main[i] = index_flag
                     break
         else:
-            # Gridplane buffer — find NPCs assigned to this buffer
+            # Gridplane buffer — find NPCs whose sprite_id is assigned to this slot
             for npc in npc_infos:
                 if npc.sprite_id not in buffered_sprite_ids:
                     continue
-                if gridplane_sprites.get(npc.sprite_id) != btype:
+                if sprite_to_new_buffer.get(npc.sprite_id) != i:
                     continue
                 # This NPC uses the new buffer. Check its original buffer settings.
                 orig_buf_idx = obj_to_original_buffer.get(npc.obj_index)
