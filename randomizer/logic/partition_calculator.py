@@ -392,6 +392,13 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     if has_coin:
         available_slots -= 1
 
+    # DEBUG: log sprite analysis for changed rooms
+    if sprite_to_type:
+        print(f"[PARTITION DEBUG] Room {room_id}:")
+        print(f"  sprite_counts (all objects): {dict(sprite_counts)}")
+        print(f"  sprite_to_type (parent NPCs): {sprite_to_type}")
+        print(f"  sprite_first_appearance: {sprite_first_appearance}")
+
     # Rank unique sprite IDs by NPC count (most frequent first)
     # Each unique sprite needs its own buffer slot
     ranked_sprites = sorted(
@@ -415,9 +422,16 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     # Buffers must appear in the order their first NPC appears in the
     # object list, because the game assigns NPCs to buffers sequentially.
+    if sprite_to_type:
+        print(f"  ranked_sprites: {ranked_sprites}")
+        print(f"  selected_buffers (before sort): {selected_buffers}")
+
     selected_buffers.sort(
         key=lambda sb: sprite_first_appearance.get(sb[0], 999),
     )
+
+    if sprite_to_type:
+        print(f"  selected_buffers (after sort): {selected_buffers}")
 
     # Build the 3-slot buffer assignment
     new_buffer_types: list[BufferType] = [BufferType.EMPTY_3] * 3
