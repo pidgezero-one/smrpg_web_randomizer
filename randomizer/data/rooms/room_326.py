@@ -190,7 +190,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularNPC(  # 1
-            npc=npcs.BLUE_STAR_PIECE_NPC,
+            npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
             action_script=A0120_EMBEDDED_ROUTINE,
@@ -218,7 +218,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularNPC(  # 2
-            npc=npcs.SPARKLE_DOWNWARDS_NPC,
+            npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
