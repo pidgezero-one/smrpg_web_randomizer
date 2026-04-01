@@ -30,13 +30,13 @@ items:
   override:
     MushrooomWayBossFight: KingCalamariBossFight
     BanditsWayBossFight: JohnnyBossFight
-    MushroomKingdomBossFight: Croco2BossFight
+    MushroomKingdomBossFight: ValentinaBossFight
     KeroSewersBossFight: Bundt2BossFight
     ForestMazeBossFight: Punchinello2BossFight
     OuterMinesBossFight: AxemRangersBossFight
     ShipPasswordBossFight: Johnny2Fight
     SeasideBeachBossFight: Culex3DBossFight
-    LandsEndCloudBoss: ValentinaBossFight
+    LandsEndCloudBoss: Croco2BossFight
     DojoFirstFight: BundtBossFight
     DojoSecondFight: CloakerDominoBossFight
     DojoThirdFight: Jinx4BossFight
