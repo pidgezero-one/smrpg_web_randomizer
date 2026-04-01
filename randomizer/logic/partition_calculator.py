@@ -365,25 +365,37 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     sprite_to_type: dict[int, BufferType] = {}  # sprite_id → needed buffer type
     sprite_counts: Counter[int] = Counter()  # includes clones for ranking
     sprite_first_appearance: dict[int, int] = {}  # sprite_id → first obj_index
-    # Count clones toward sprite frequency (they share VRAM with parent)
+
+    # Count ALL objects (including clones) and register their sprite types.
+    # Clones can have different sprites than their parent after shuffling,
+    # and still need buffer consideration.
     for i, obj in enumerate(room.objects):
         sprite_id = obj._npc.sprite_id
         is_gp, fmt = _get_npc_gridplane_info(world, sprite_id)
-        if is_gp and fmt is not None:
-            sprite_counts[sprite_id] += 1
-    # Build type mapping and first appearance from parent NPCs only
+        if not is_gp or fmt is None:
+            continue
+        sprite_counts[sprite_id] += 1
+        if sprite_id not in sprite_to_type:
+            if fmt in (0, 1):
+                sprite_to_type[sprite_id] = BufferType.FOUR_SPRITES_PER_ROW
+            elif fmt in (2, 3):
+                sprite_to_type[sprite_id] = BufferType.THREE_SPRITES_PER_ROW
+        if sprite_id not in sprite_first_appearance:
+            sprite_first_appearance[sprite_id] = i
+
+    # Remove sprites whose parent NPC has force_cannot_clone
     for npc in npc_infos:
-        if npc.force_cannot_clone or npc.is_chest or npc.is_coin or not npc.is_gridplane:
-            continue
-        if npc.gridplane_format in (0, 1):
-            sprite_to_type[npc.sprite_id] = BufferType.FOUR_SPRITES_PER_ROW
-        elif npc.gridplane_format in (2, 3):
-            sprite_to_type[npc.sprite_id] = BufferType.THREE_SPRITES_PER_ROW
-        else:
-            continue
-        sprite_counts[npc.sprite_id] += 1
-        if npc.sprite_id not in sprite_first_appearance:
-            sprite_first_appearance[npc.sprite_id] = npc.obj_index
+        if npc.force_cannot_clone and npc.sprite_id in sprite_to_type:
+            del sprite_to_type[npc.sprite_id]
+            sprite_counts.pop(npc.sprite_id, None)
+            sprite_first_appearance.pop(npc.sprite_id, None)
+
+    # Also remove chest/coin sprites from gridplane consideration
+    for npc in npc_infos:
+        if (npc.is_chest or npc.is_coin) and npc.sprite_id in sprite_to_type:
+            del sprite_to_type[npc.sprite_id]
+            sprite_counts.pop(npc.sprite_id, None)
+            sprite_first_appearance.pop(npc.sprite_id, None)
 
     # Count available buffer slots (after reserving for chest/coin)
     available_slots = 3
