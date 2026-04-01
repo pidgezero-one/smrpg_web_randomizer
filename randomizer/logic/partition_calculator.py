@@ -348,7 +348,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                         break
                 if not placed:
                     for i, buf in enumerate(existing.buffers):
-                        if buf.buffer_type in (BufferType.EMPTY_3, BufferType.EMPTY_0):
+                        if buf.buffer_type == BufferType.EMPTY_3:
                             buf.set_buffer_type(new_buffer_type)
                             npc_min_vram = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
                             needed_space = BufferSpace(min(npc_min_vram, 7))
