@@ -107,6 +107,7 @@ room = Room(
             acute_axis=UInt4(7),
             obtuse_axis=UInt4(7),
             height=UInt8(13),
+            cannot_clone=True,
         ),
         RegularNPC( # 1
             npc=npcs.GREAPER_NPC,
@@ -134,7 +135,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         ChestNPC( # 2
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -163,7 +165,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 3
             npc=npcs.J_PUZZLE_BLOCK_NPC_5,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -190,6 +193,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ]
 )

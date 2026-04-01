@@ -203,6 +203,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularClone(  # 1
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
@@ -214,6 +215,7 @@ room = Room(
             z=10,
             z_half=True,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
         BattlePackNPC(  # 2
             npc=npcs.LI_XX_L_BOO_NPC,
@@ -243,6 +245,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         BattlePackClone(  # 3
             npc=npcs.LI_XX_L_BOO_NPC,
@@ -254,6 +257,7 @@ room = Room(
             z=9,
             z_half=True,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         BattlePackClone(  # 4
             npc=npcs.LI_XX_L_BOO_NPC,
@@ -265,6 +269,7 @@ room = Room(
             z=11,
             z_half=True,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         BattlePackClone(  # 5
             npc=npcs.LI_XX_L_BOO_NPC,
@@ -276,6 +281,7 @@ room = Room(
             z=11,
             z_half=True,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         BattlePackClone(  # 6
             npc=npcs.LI_XX_L_BOO_NPC,
@@ -287,6 +293,7 @@ room = Room(
             z=12,
             z_half=True,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         BattlePackClone(  # 7
             npc=npcs.LI_XX_L_BOO_NPC,
@@ -298,6 +305,7 @@ room = Room(
             z=12,
             z_half=True,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         ChestNPC(  # 8
             npc=npcs.TREASURE_CHEST_NPC_2,
@@ -328,6 +336,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         ChestClone(  # 9
             npc=npcs.TREASURE_CHEST_NPC_2,
@@ -339,6 +348,7 @@ room = Room(
             z=15,
             z_half=True,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
     ],
 )

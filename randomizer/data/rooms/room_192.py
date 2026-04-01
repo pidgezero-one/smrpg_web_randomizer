@@ -230,7 +230,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 5
             npc=npcs.MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC,
             initiator=EventInitiator.NONE,
@@ -257,7 +258,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 6
             npc=npcs.TOADSTOOL_DOLL_NPC,
             initiator=EventInitiator.NONE,
@@ -284,7 +286,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 7
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -311,7 +314,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 8
             npc=npcs.EMPTY_NPC_3,
             event_script=E1928_BALCONY_IS_LOCKED,
@@ -321,7 +325,8 @@ room = Room(
             y=27,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 9
             npc=npcs.BOOSTER_NPC_3,
             initiator=EventInitiator.DO_ANYTHING,
@@ -348,7 +353,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SURPRISE_FRAME,

@@ -96,7 +96,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 1
             npc=npcs.TOAD_NPC,
             event_script=E0326_MUSHROOM_KINGDOM_CASTLE_GENERIC_TOAD,
@@ -106,6 +107,7 @@ room = Room(
             y=95,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ]
 )

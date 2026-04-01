@@ -101,7 +101,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 1
             npc=npcs.CROOK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -128,7 +129,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 2
             npc=npcs.MAGMITE_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -156,7 +158,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.MAGMITE_NPC,
             battle_pack=40,
@@ -166,6 +169,7 @@ room = Room(
             y=17,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
     ]
 )

@@ -129,7 +129,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 1
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             event_script=E1549_SKY_BRIDGE_DONUT_LIFT,
@@ -139,7 +140,8 @@ room = Room(
             y=97,
             z=9,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -166,7 +168,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             event_script=E1737_SKY_BRIDGE_DONUT_LIFT,
@@ -176,7 +179,8 @@ room = Room(
             y=81,
             z=9,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 4
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -203,7 +207,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 5
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             event_script=E1549_SKY_BRIDGE_DONUT_LIFT,
@@ -213,7 +218,8 @@ room = Room(
             y=93,
             z=9,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 6
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             event_script=E1549_SKY_BRIDGE_DONUT_LIFT,
@@ -223,7 +229,8 @@ room = Room(
             y=91,
             z=9,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 7
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             event_script=E1549_SKY_BRIDGE_DONUT_LIFT,
@@ -233,7 +240,8 @@ room = Room(
             y=89,
             z=9,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 8
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             event_script=E1549_SKY_BRIDGE_DONUT_LIFT,
@@ -243,7 +251,8 @@ room = Room(
             y=87,
             z=9,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 9
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             event_script=E1549_SKY_BRIDGE_DONUT_LIFT,
@@ -253,7 +262,8 @@ room = Room(
             y=85,
             z=9,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 10
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC,
             event_script=E1549_SKY_BRIDGE_DONUT_LIFT,
@@ -263,7 +273,8 @@ room = Room(
             y=83,
             z=9,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 11
             npc=npcs.BULLET_BILL_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -290,7 +301,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 12
             npc=npcs.BULLET_BILL_NPC_2,
             event_script=E1772_LANDS_END_BULLET_BILL,
@@ -300,7 +312,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 13
             npc=npcs.BULLET_BILL_NPC_2,
             event_script=E1772_LANDS_END_BULLET_BILL,
@@ -310,7 +323,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 14
             npc=npcs.BULLET_BILL_NPC_2,
             event_script=E1772_LANDS_END_BULLET_BILL,
@@ -320,7 +334,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularNPC( # 15
             npc=npcs.LAND_S_END_CANNON_NPC,
             initiator=EventInitiator.NONE,
@@ -347,7 +362,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 16
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -374,7 +390,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 17
             npc=npcs.SHAMAN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_TOUCH_SIDE,
@@ -401,7 +418,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 18
             npc=npcs.SHAMAN_NPC,
             event_script=E1853_SKY_BRIDGE_RIDE_SHAMAN,
@@ -411,7 +429,8 @@ room = Room(
             y=112,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 19
             npc=npcs.ITEM_BAG_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -438,7 +457,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.WHIRL,

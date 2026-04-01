@@ -63,7 +63,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularClone( # 1
             npc=npcs.WHIRLPOOL_DESERT_NPC,
             event_script=E1759_LANDS_END_PENULTIMATE_WHIRLPOOL_2,
@@ -73,7 +74,8 @@ room = Room(
             y=60,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=True),
         RegularNPC( # 2
             npc=npcs.SHOGUN_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -100,7 +102,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 3
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -127,7 +130,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 4
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -155,7 +159,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.WHIRL,

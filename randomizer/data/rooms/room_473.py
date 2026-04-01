@@ -126,7 +126,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 1
             npc=npcs.MACHINE_MADE_AXEM_RED_NPC,
             battle_pack=214,
@@ -136,7 +137,8 @@ room = Room(
             y=86,
             z=7,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 2
             npc=npcs.MACHINE_MADE_AXEM_RED_NPC,
             battle_pack=214,
@@ -146,7 +148,8 @@ room = Room(
             y=81,
             z=7,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.MACHINE_MADE_AXEM_RED_NPC,
             battle_pack=214,
@@ -156,7 +159,8 @@ room = Room(
             y=80,
             z=7,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 4
             npc=npcs.MACHINE_MADE_AXEM_RED_NPC,
             battle_pack=214,
@@ -166,7 +170,8 @@ room = Room(
             y=75,
             z=7,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 5
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -193,7 +198,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 6
             npc=npcs.MACHINE_MADE_BOWYER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -220,6 +226,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ]
 )

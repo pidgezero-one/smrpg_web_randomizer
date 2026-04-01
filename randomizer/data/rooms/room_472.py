@@ -143,6 +143,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularNPC(  # 1
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
@@ -171,6 +172,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularClone(  # 2
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
@@ -182,6 +184,7 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         RegularClone(  # 3
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
@@ -193,6 +196,7 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         RegularClone(  # 4
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
@@ -204,6 +208,7 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         RegularClone(  # 5
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
@@ -215,6 +220,7 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         RegularClone(  # 6
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
@@ -226,6 +232,7 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         RegularNPC(  # 7
             npc=npcs.POUNDETTE_NPC_2,
@@ -254,6 +261,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True,
         ),
         RegularClone(  # 8
             npc=npcs.POUNDETTE_NPC_2,
@@ -265,6 +273,7 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=True,
         ),
         RegularClone(  # 9
             npc=npcs.POUNDETTE_NPC_2,
@@ -276,6 +285,7 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=True,
         ),
         RegularNPC(  # 10
             npc=npcs.FACTORY_DIRECTOR_RED_NPC,
@@ -305,6 +315,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
     ],
     effects_npc=EffectsNpc.UNKNOWN_1E,

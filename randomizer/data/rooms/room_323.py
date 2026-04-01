@@ -134,6 +134,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         BattlePackNPC(  # 1
             npc=npcs.SHYSTER_NPC,
@@ -166,6 +167,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
     ],
 )

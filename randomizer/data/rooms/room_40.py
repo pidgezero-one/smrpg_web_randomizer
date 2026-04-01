@@ -102,7 +102,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         BattlePackClone( # 1
             npc=npcs.CHOMP_FRONT_NPC,
             battle_pack=50,
@@ -112,7 +113,8 @@ room = Room(
             y=117,
             z=4,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=True),
         BattlePackClone( # 2
             npc=npcs.CHOMP_FRONT_NPC,
             battle_pack=50,
@@ -122,6 +124,7 @@ room = Room(
             y=122,
             z=5,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=True),
     ]
 )

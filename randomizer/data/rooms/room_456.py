@@ -87,7 +87,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 1
             npc=npcs.SPARKY_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -97,7 +98,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.ROLLING_BARREL_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -124,7 +126,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.ROLLING_BARREL_NPC_2,
             event_script=E1855_KEEP_DONKEY_ROOM_BARREL,
@@ -134,7 +137,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 4
             npc=npcs.ROLLING_BARREL_NPC_2,
             event_script=E1855_KEEP_DONKEY_ROOM_BARREL,
@@ -144,7 +148,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 5
             npc=npcs.ROLLING_BARREL_NPC_2,
             event_script=E1855_KEEP_DONKEY_ROOM_BARREL,
@@ -154,7 +159,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 6
             npc=npcs.ROLLING_BARREL_NPC_2,
             event_script=E1855_KEEP_DONKEY_ROOM_BARREL,
@@ -164,7 +170,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 7
             npc=npcs.ROLLING_BARREL_NPC_2,
             event_script=E1855_KEEP_DONKEY_ROOM_BARREL,
@@ -174,7 +181,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularNPC( # 8
             npc=npcs.GUERRILLA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -201,7 +209,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 9
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -228,7 +237,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 10
             npc=npcs.EMPTY_NPC_2,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -238,7 +248,8 @@ room = Room(
             y=105,
             z=19,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.TUMBLE_BACK,

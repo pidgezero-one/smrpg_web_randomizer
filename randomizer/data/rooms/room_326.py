@@ -188,6 +188,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularNPC(  # 1
             npc=npcs.BLUE_STAR_PIECE_NPC,
@@ -216,6 +217,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=True,
         ),
         RegularNPC(  # 2
             npc=npcs.SPARKLE_DOWNWARDS_NPC,
@@ -244,6 +246,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=True,
         ),
         RegularNPC(  # 3
             npc=npcs.MACK_NPC,
@@ -304,6 +307,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularClone(  # 5
             npc=npcs.SHYSTER_NPC,
@@ -318,6 +322,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularClone(  # 6
             npc=npcs.SHYSTER_NPC,
@@ -332,6 +337,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularClone(  # 7
             npc=npcs.SHYSTER_NPC,
@@ -346,6 +352,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularNPC(  # 8
             npc=npcs.SHYSTER_NPC_5,
@@ -377,6 +384,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularClone(  # 9
             npc=npcs.SHYSTER_NPC_5,
@@ -391,6 +399,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularNPC(  # 10
             npc=npcs.CHANCELLOR_NPC,
@@ -419,6 +428,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
     ],
 )

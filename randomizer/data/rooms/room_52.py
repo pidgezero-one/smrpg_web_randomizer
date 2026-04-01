@@ -129,7 +129,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SLEEP,

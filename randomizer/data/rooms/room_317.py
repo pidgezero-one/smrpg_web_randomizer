@@ -101,7 +101,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 1
             npc=npcs.RAT_FUNK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_TOUCH_SIDE,
@@ -128,7 +129,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.WHIRLPOOL_DESERT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -155,7 +157,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularClone( # 3
             npc=npcs.WHIRLPOOL_DESERT_NPC,
             event_script=E1752_LANDS_END_DESERT_1_RIGHT_WHIRLPOOL,
@@ -165,7 +168,8 @@ room = Room(
             y=17,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=True),
         RegularNPC( # 4
             npc=npcs.TRAMPOLINE_JUMP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -192,7 +196,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.WHIRL,

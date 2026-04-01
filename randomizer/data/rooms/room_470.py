@@ -98,7 +98,8 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            directions=VramStore.DIR2_SWSE),
+            directions=VramStore.DIR2_SWSE,
+            cannot_clone=False),
         RegularClone( # 1
             npc=npcs.GUNYOLK_TOP_SECTION_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -109,7 +110,8 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            directions=VramStore.DIR2_SWSE),
+            directions=VramStore.DIR2_SWSE,
+            cannot_clone=False),
         RegularClone( # 2
             npc=npcs.GUNYOLK_TOP_SECTION_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -120,7 +122,8 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            directions=VramStore.DIR2_SWSE),
+            directions=VramStore.DIR2_SWSE,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.GUNYOLK_TOP_SECTION_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -131,7 +134,8 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            directions=VramStore.DIR2_SWSE),
+            directions=VramStore.DIR2_SWSE,
+            cannot_clone=False),
         RegularClone( # 4
             npc=npcs.GUNYOLK_OUTER_SECTION_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -142,7 +146,8 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            directions=VramStore.DIR2_SWSE),
+            directions=VramStore.DIR2_SWSE,
+            cannot_clone=True),
         RegularClone( # 5
             npc=npcs.GUNYOLK_TOP_SECTION_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -153,7 +158,8 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            directions=VramStore.DIR2_SWSE),
+            directions=VramStore.DIR2_SWSE,
+            cannot_clone=False),
         RegularClone( # 6
             npc=npcs.GUNYOLK_TOP_SECTION_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -164,7 +170,8 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            directions=VramStore.DIR2_SWSE),
+            directions=VramStore.DIR2_SWSE,
+            cannot_clone=False),
         RegularNPC( # 7
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
             initiator=EventInitiator.NONE,
@@ -191,7 +198,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 8
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -201,7 +209,8 @@ room = Room(
             y=78,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 9
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -211,7 +220,8 @@ room = Room(
             y=84,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 10
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -221,7 +231,8 @@ room = Room(
             y=90,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 11
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -231,7 +242,8 @@ room = Room(
             y=31,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularNPC( # 12
             npc=npcs.FACTORY_CHIEF_NPC,
             initiator=EventInitiator.NONE,
@@ -259,7 +271,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 13
             npc=npcs.FACTORY_CRANE_NPC,
             initiator=EventInitiator.NONE,
@@ -287,7 +300,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 14
             npc=npcs.GREEN_SWITCH_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -314,7 +328,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 15
             npc=npcs.MACHINE_MADE_DRILL_BIT_NPC,
             initiator=EventInitiator.NONE,
@@ -341,7 +356,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.LEAN_BACK,

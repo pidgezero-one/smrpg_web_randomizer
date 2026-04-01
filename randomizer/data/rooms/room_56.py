@@ -129,7 +129,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 1
             npc=npcs.GOBY_NPC,
             event_script=E3119_GOBY_BATTLE,
@@ -139,7 +140,8 @@ room = Room(
             y=34,
             z=1,
             z_half=True,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackNPC( # 2
             npc=npcs.RAT_FUNK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -167,7 +169,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

@@ -63,7 +63,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularClone( # 1
             npc=npcs.MALLOW_ENDING,
             event_script=E0256_RETURN,
@@ -73,7 +74,8 @@ room = Room(
             y=67,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=True),
         RegularClone( # 2
             npc=npcs.GENO_ENDING,
             event_script=E0256_RETURN,
@@ -83,7 +85,8 @@ room = Room(
             y=69,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=True),
         RegularNPC( # 3
             npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -110,7 +113,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 4
             npc=npcs.SMITHY_S_HAMMER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -137,7 +141,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 5
             npc=npcs.SMITHY_S_HAMMER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -164,7 +169,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 6
             npc=npcs.SMITHY_S_CHEST_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -191,7 +197,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 7
             npc=npcs.SMITHY_S_CHEST_NPC,
             event_script=E0256_RETURN,
@@ -201,7 +208,8 @@ room = Room(
             y=18,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 8
             npc=npcs.SMITHY_S_CHEST_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -228,7 +236,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 9
             npc=npcs.SMITHY_S_CHEST_NPC,
             event_script=E0256_RETURN,
@@ -238,7 +247,8 @@ room = Room(
             y=19,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 10
             npc=npcs.SMELTER_BACK_SECTION_NPC,
             initiator=EventInitiator.NONE,
@@ -265,7 +275,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 11
             npc=npcs.SMELTER_BACK_SECTION_NPC,
             event_script=E0256_RETURN,
@@ -275,7 +286,8 @@ room = Room(
             y=16,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 12
             npc=npcs.SMELTER_BACK_SECTION_NPC,
             event_script=E0256_RETURN,
@@ -285,7 +297,8 @@ room = Room(
             y=18,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 13
             npc=npcs.SMELTER_BACK_SECTION_NPC,
             event_script=E0256_RETURN,
@@ -295,7 +308,8 @@ room = Room(
             y=18,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 14
             npc=npcs.SMELTER_BACK_SECTION_NPC,
             event_script=E0256_RETURN,
@@ -305,7 +319,8 @@ room = Room(
             y=18,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.CROUCH,

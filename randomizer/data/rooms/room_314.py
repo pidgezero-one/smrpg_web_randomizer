@@ -83,7 +83,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 1
             npc=npcs.MARRYMORE_KID_BLUE_GREEN_NPC,
             initiator=EventInitiator.NONE,
@@ -110,7 +111,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.SEASIDE_TOWN_ELDER_YELLOW_GREEN_NPC,
             initiator=EventInitiator.NONE,
@@ -137,7 +139,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 3
             npc=npcs.MA_MOLE_NPC,
             initiator=EventInitiator.NONE,
@@ -164,7 +167,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 4
             npc=npcs.OLD_WOMAN_GREEN_GREY_NPC,
             initiator=EventInitiator.NONE,
@@ -191,7 +195,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 5
             npc=npcs.MARRYMORE_WOMAN_GREEN_NPC,
             initiator=EventInitiator.NONE,
@@ -218,7 +223,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 6
             npc=npcs.ROSE_TOWN_TREASURE_HOLDER_NPC,
             initiator=EventInitiator.NONE,
@@ -245,6 +251,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ]
 )

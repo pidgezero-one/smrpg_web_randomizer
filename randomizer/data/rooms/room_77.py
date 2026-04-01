@@ -103,7 +103,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 1
             npc=npcs.SPIKEY_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -131,7 +132,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 2
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=3,
@@ -141,7 +143,8 @@ room = Room(
             y=65,
             z=0,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=3,
@@ -151,7 +154,8 @@ room = Room(
             y=23,
             z=0,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=False),
         BattlePackNPC( # 4
             npc=npcs.GOOMBA_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -179,7 +183,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 5
             npc=npcs.GOOMBA_NPC_2,
             battle_pack=7,
@@ -189,7 +194,8 @@ room = Room(
             y=102,
             z=0,
             z_half=False,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 6
             npc=npcs.GOOMBA_NPC_2,
             battle_pack=7,
@@ -199,7 +205,8 @@ room = Room(
             y=56,
             z=0,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=False),
         BattlePackNPC( # 7
             npc=npcs.K_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -227,7 +234,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 8
             npc=npcs.CROCO_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -254,6 +262,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ]
 )

@@ -96,7 +96,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 1
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -106,7 +107,8 @@ room = Room(
             y=24,
             z=1,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 2
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -116,7 +118,8 @@ room = Room(
             y=24,
             z=1,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -126,7 +129,8 @@ room = Room(
             y=24,
             z=1,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 4
             npc=npcs.SMALL_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -153,7 +157,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 5
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -181,7 +186,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 6
             npc=npcs.AMANITA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -208,7 +214,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 7
             npc=npcs.AMANITA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -236,7 +243,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

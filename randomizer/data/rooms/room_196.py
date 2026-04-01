@@ -102,7 +102,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 1
             npc=npcs.SPOOKUM_NPC,
             battle_pack=47,
@@ -112,7 +113,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         BattlePackClone( # 2
             npc=npcs.SPOOKUM_NPC,
             battle_pack=46,
@@ -122,7 +124,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.SPOOKUM_NPC,
             battle_pack=47,
@@ -132,7 +135,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         BattlePackClone( # 4
             npc=npcs.SPOOKUM_NPC,
             battle_pack=46,
@@ -142,7 +146,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         BattlePackClone( # 5
             npc=npcs.SPOOKUM_NPC,
             battle_pack=47,
@@ -152,7 +157,8 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         ChestNPC( # 6
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -181,6 +187,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ]
 )

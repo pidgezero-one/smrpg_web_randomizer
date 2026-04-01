@@ -101,7 +101,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 1
             npc=npcs.STATIC_FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -128,7 +129,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 2
             npc=npcs.MAGMUS_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -156,7 +158,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.MAGMUS_NPC,
             battle_pack=102,
@@ -166,7 +169,8 @@ room = Room(
             y=108,
             z=1,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 4
             npc=npcs.MAGMUS_NPC,
             battle_pack=102,
@@ -176,7 +180,8 @@ room = Room(
             y=97,
             z=1,
             z_half=False,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=False),
         BattlePackNPC( # 5
             npc=npcs.SPARKY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -204,7 +209,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 6
             npc=npcs.SPARKY_NPC,
             battle_pack=106,
@@ -214,7 +220,8 @@ room = Room(
             y=117,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SURPRISE_FRAME,

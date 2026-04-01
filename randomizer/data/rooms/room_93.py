@@ -103,7 +103,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -132,7 +133,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.ROSE_TOWN_TREASURE_HOLDER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -159,7 +161,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             event_script=E0535_ROSE_TOWN_SON,
@@ -169,6 +172,7 @@ room = Room(
             y=64,
             z=0,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
     ]
 )

@@ -107,7 +107,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 1
             npc=npcs.HANGIN_XX_SHY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -134,7 +135,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularClone( # 2
             npc=npcs.HANGIN_XX_SHY_NPC,
             event_script=E0256_RETURN,
@@ -144,7 +146,8 @@ room = Room(
             y=30,
             z=0,
             z_half=False,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=True),
         RegularNPC( # 3
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -172,7 +175,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 4
             npc=npcs.EMPTY_NPC_2,
             event_script=E0256_RETURN,
@@ -182,7 +186,8 @@ room = Room(
             y=44,
             z=3,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.RECOIL,

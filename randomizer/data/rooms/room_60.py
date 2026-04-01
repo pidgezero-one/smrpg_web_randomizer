@@ -100,7 +100,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -129,7 +130,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 2
             npc=npcs.RAT_FUNK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -157,7 +159,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=12,
@@ -167,7 +170,8 @@ room = Room(
             y=45,
             z=7,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 4
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=12,
@@ -177,7 +181,8 @@ room = Room(
             y=39,
             z=7,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 5
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=12,
@@ -187,7 +192,8 @@ room = Room(
             y=39,
             z=10,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 6
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=13,
@@ -197,7 +203,8 @@ room = Room(
             y=45,
             z=10,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

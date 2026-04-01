@@ -109,7 +109,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         BattlePackNPC( # 1
             npc=npcs.GECKIT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -137,7 +138,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 2
             npc=npcs.GECKIT_NPC,
             battle_pack=90,
@@ -147,7 +149,8 @@ room = Room(
             y=50,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.GECKIT_NPC,
             battle_pack=90,
@@ -157,7 +160,8 @@ room = Room(
             y=44,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 4
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_4,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -184,7 +188,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 5
             npc=npcs.GOLDEN_CHOMP_BACK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -212,6 +217,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ]
 )

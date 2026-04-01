@@ -173,7 +173,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 1
             npc=npcs.GECKIT_NPC,
             battle_pack=91,
@@ -183,7 +184,8 @@ room = Room(
             y=100,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 2
             npc=npcs.GECKIT_NPC,
             battle_pack=91,
@@ -193,7 +195,8 @@ room = Room(
             y=95,
             z=4,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         BattlePackNPC( # 3
             npc=npcs.CHOW_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -221,7 +224,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 4
             npc=npcs.CHOW_NPC,
             battle_pack=83,
@@ -231,7 +235,8 @@ room = Room(
             y=94,
             z=4,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=False),
         BattlePackClone( # 5
             npc=npcs.CHOW_NPC,
             battle_pack=83,
@@ -241,7 +246,8 @@ room = Room(
             y=93,
             z=6,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=False),
         BattlePackClone( # 6
             npc=npcs.CHOW_NPC,
             battle_pack=83,
@@ -251,6 +257,7 @@ room = Room(
             y=94,
             z=6,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=False),
     ]
 )

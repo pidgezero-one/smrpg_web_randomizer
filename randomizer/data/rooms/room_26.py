@@ -133,7 +133,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 1
             npc=npcs.MR_KIPPER_NPC,
             battle_pack=67,
@@ -143,7 +144,8 @@ room = Room(
             y=34,
             z=1,
             z_half=True,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=False),
         BattlePackNPC( # 2
             npc=npcs.ZEOSTAR_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -171,7 +173,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=63,
@@ -181,7 +184,8 @@ room = Room(
             y=32,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 4
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -191,7 +195,8 @@ room = Room(
             y=29,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 5
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -201,6 +206,7 @@ room = Room(
             y=26,
             z=3,
             z_half=True,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ]
 )

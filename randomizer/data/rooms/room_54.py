@@ -90,6 +90,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularClone(  # 1
             npc=npcs.ROLLING_BARREL_NPC,
@@ -101,6 +102,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
         RegularClone(  # 2
             npc=npcs.ROLLING_BARREL_NPC,
@@ -112,6 +114,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
         RegularNPC(  # 3
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
@@ -144,6 +147,7 @@ room = Room(
             obtuse_axis=UInt4(5),
             height=UInt8(11),
             vram_size=0,
+            cannot_clone=False,
         ),
         RegularClone(  # 4
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
@@ -159,6 +163,7 @@ room = Room(
             obtuse_axis=UInt4(5),
             height=UInt8(11),
             vram_size=0,
+            cannot_clone=False,
         ),
         RegularClone(  # 5
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
@@ -174,6 +179,7 @@ room = Room(
             obtuse_axis=UInt4(5),
             height=UInt8(11),
             vram_size=0,
+            cannot_clone=False,
         ),
         RegularNPC(  # 6
             npc=npcs.EMPTY_NPC,
@@ -202,6 +208,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularNPC(  # 7
             npc=npcs.BOOSTER_NPC,
@@ -230,6 +237,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularNPC(  # 8
             npc=npcs.TOAD_NPC,
@@ -261,6 +269,7 @@ room = Room(
             acute_axis=UInt4(6),
             obtuse_axis=UInt4(5),
             height=UInt8(12),
+            cannot_clone=False,
         ),
     ],
     extra_sprite_actions=[

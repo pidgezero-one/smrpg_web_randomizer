@@ -120,7 +120,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 1
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -130,7 +131,8 @@ room = Room(
             y=71,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 2
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -140,7 +142,8 @@ room = Room(
             y=65,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -150,7 +153,8 @@ room = Room(
             y=65,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 4
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -160,6 +164,7 @@ room = Room(
             y=74,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ]
 )

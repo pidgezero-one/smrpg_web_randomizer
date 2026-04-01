@@ -107,7 +107,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 1
             npc=npcs.CHOW_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -134,7 +135,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.PIRANHA_PLANT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -162,6 +164,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            priority_2=True),
+            priority_2=True,
+            cannot_clone=False),
     ]
 )

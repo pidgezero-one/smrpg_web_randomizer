@@ -115,7 +115,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 1
             npc=npcs.GREAPER_NPC,
             battle_pack=76,
@@ -125,7 +126,8 @@ room = Room(
             y=80,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.DRY_BONES_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -152,7 +154,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularClone( # 3
             npc=npcs.DRY_BONES_NPC,
             event_script=E3246_DRY_BONES_FIGHT,
@@ -162,7 +165,8 @@ room = Room(
             y=78,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=True),
         RegularNPC( # 4
             npc=npcs.DRY_BONES_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -189,7 +193,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 5
             npc=npcs.YELLOW_LETTER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -216,6 +221,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ]
 )

@@ -198,7 +198,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 1
             npc=npcs.PIRANHA_PLANT_NPC,
             battle_pack=35,
@@ -208,7 +209,8 @@ room = Room(
             y=94,
             z=0,
             z_half=True,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.CHOMPWEED_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -235,7 +237,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.CHOMPWEED_NPC,
             event_script=E0433_PIPE_VAULT_CHOMPWEED,
@@ -245,7 +248,8 @@ room = Room(
             y=92,
             z=2,
             z_half=True,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularNPC( # 4
             npc=npcs.SMALL_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -272,7 +276,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 5
             npc=npcs.SMALL_COIN_NPC,
             event_script=E0256_RETURN,
@@ -282,6 +287,7 @@ room = Room(
             y=112,
             z=1,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
     ]
 )

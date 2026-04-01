@@ -173,6 +173,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularClone(  # 1
             npc=npcs.SHYSTER_NPC,
@@ -187,6 +188,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularClone(  # 2
             npc=npcs.SHYSTER_NPC,
@@ -201,6 +203,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularNPC(  # 3
             npc=npcs.SHYSTER_NPC,
@@ -232,6 +235,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularNPC(  # 4
             npc=npcs.SHYSTER_NPC,
@@ -263,6 +267,7 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
+            cannot_clone=False,
         ),
         RegularNPC(  # 5
             npc=npcs.TOAD_NPC,
@@ -291,6 +296,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         ChestNPC(  # 6
             npc=npcs.TREASURE_CHEST_NPC,
@@ -321,6 +327,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
     ],
 )

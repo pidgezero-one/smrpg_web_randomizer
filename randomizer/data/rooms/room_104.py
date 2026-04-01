@@ -101,7 +101,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 1
             npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
             event_script=E2636_CASINO_GUARD,
@@ -111,6 +112,7 @@ room = Room(
             y=14,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ]
 )

@@ -101,7 +101,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 1
             npc=npcs.OERLIKON_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -128,7 +129,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 2
             npc=npcs.OERLIKON_NPC,
             event_script=E3318_SET_OERLIKON_PACK,
@@ -138,7 +140,8 @@ room = Room(
             y=25,
             z=5,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.OERLIKON_NPC,
             event_script=E3318_SET_OERLIKON_PACK,
@@ -148,7 +151,8 @@ room = Room(
             y=25,
             z=5,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 4
             npc=npcs.OERLIKON_NPC,
             event_script=E3318_SET_OERLIKON_PACK,
@@ -158,7 +162,8 @@ room = Room(
             y=25,
             z=5,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
     ],
     effects_npc=EffectsNpc.GLOWING_MAGMA,
 )

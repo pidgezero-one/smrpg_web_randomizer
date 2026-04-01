@@ -169,7 +169,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 1
             npc=npcs.HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -196,7 +197,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularClone( # 2
             npc=npcs.HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2,
             event_script=E0256_RETURN,
@@ -206,7 +208,8 @@ room = Room(
             y=61,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=True),
         RegularClone( # 3
             npc=npcs.HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2,
             event_script=E0256_RETURN,
@@ -216,7 +219,8 @@ room = Room(
             y=62,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=True),
     ],
     effects_npc=EffectsNpc.GLOWING_MAGMA,
 )

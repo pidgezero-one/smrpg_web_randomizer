@@ -126,6 +126,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         ChestClone(  # 1
             npc=npcs.TREASURE_CHEST_NPC,
@@ -137,6 +138,7 @@ room = Room(
             z=3,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
         BattlePackNPC(  # 2
             npc=npcs.GOOMBA_NPC_2,
@@ -166,6 +168,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         BattlePackClone(  # 3
             npc=npcs.GOOMBA_NPC_2,
@@ -177,6 +180,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         BattlePackClone(  # 4
             npc=npcs.GOOMBA_NPC_2,
@@ -188,6 +192,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
         BattlePackClone(  # 5
             npc=npcs.GOOMBA_NPC_2,
@@ -199,6 +204,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=NORTHWEST,
+            cannot_clone=False,
         ),
         BattlePackNPC(  # 6
             npc=npcs.SKY_TROOPA_NPC,
@@ -228,6 +234,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         BattlePackClone(  # 7
             npc=npcs.SKY_TROOPA_NPC,
@@ -239,6 +246,7 @@ room = Room(
             z=1,
             z_half=False,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         RegularNPC(  # 8
             npc=npcs.TOAD_NPC,
@@ -267,6 +275,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularNPC(  # 9
             npc=npcs.GOOMBA_NPC_2,
@@ -295,6 +304,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
     ],
 )

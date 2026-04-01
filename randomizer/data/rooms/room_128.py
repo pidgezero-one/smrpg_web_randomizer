@@ -89,7 +89,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -118,7 +119,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.CHOMPWEED_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -145,7 +147,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.CHOMPWEED_NPC,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
@@ -155,7 +158,8 @@ room = Room(
             y=67,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 4
             npc=npcs.CHOMPWEED_NPC,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
@@ -165,7 +169,8 @@ room = Room(
             y=68,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 5
             npc=npcs.CHOMPWEED_NPC,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
@@ -175,7 +180,8 @@ room = Room(
             y=66,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 6
             npc=npcs.CHOMPWEED_NPC,
             event_script=E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS,
@@ -185,7 +191,8 @@ room = Room(
             y=65,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 7
             npc=npcs.CHOMPWEED_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -212,7 +219,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 8
             npc=npcs.SMALL_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -239,7 +247,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 9
             npc=npcs.SMALL_COIN_NPC,
             event_script=E0256_RETURN,
@@ -249,7 +258,8 @@ room = Room(
             y=112,
             z=1,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularNPC( # 10
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_3,
             initiator=EventInitiator.NONE,
@@ -276,7 +286,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 11
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_3,
             initiator=EventInitiator.NONE,
@@ -303,7 +314,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         BattlePackNPC( # 12
             npc=npcs.GOOMBA_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -331,7 +343,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         BattlePackClone( # 13
             npc=npcs.GOOMBA_NPC_3,
             battle_pack=7,
@@ -341,6 +354,7 @@ room = Room(
             y=79,
             z=0,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=True),
     ]
 )

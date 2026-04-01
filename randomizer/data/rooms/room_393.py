@@ -83,7 +83,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 1
             npc=npcs.AXEM_RED_NPC,
             initiator=EventInitiator.NONE,
@@ -110,7 +111,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.AXEM_GREEN_NPC,
             initiator=EventInitiator.NONE,
@@ -137,7 +139,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 3
             npc=npcs.AXEM_YELLOW_NPC,
             initiator=EventInitiator.NONE,
@@ -164,7 +167,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 4
             npc=npcs.AXEM_PINK_NPC,
             initiator=EventInitiator.NONE,
@@ -191,7 +195,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 5
             npc=npcs.AXEM_BLACK_NPC,
             initiator=EventInitiator.NONE,
@@ -218,7 +223,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ],
     effects_npc=EffectsNpc.GLOWING_MAGMA,
 )

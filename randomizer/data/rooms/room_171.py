@@ -83,7 +83,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 1
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -93,7 +94,8 @@ room = Room(
             y=13,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 2
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -103,7 +105,8 @@ room = Room(
             y=10,
             z=3,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -113,7 +116,8 @@ room = Room(
             y=12,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 4
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -123,7 +127,8 @@ room = Room(
             y=14,
             z=1,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 5
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -133,7 +138,8 @@ room = Room(
             y=12,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 6
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -143,7 +149,8 @@ room = Room(
             y=16,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 7
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -153,7 +160,8 @@ room = Room(
             y=18,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 8
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -163,7 +171,8 @@ room = Room(
             y=21,
             z=3,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 9
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -173,7 +182,8 @@ room = Room(
             y=24,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 10
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -183,7 +193,8 @@ room = Room(
             y=27,
             z=1,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 11
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -193,7 +204,8 @@ room = Room(
             y=26,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 12
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -203,7 +215,8 @@ room = Room(
             y=23,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 13
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -213,7 +226,8 @@ room = Room(
             y=21,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 14
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -240,7 +254,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 15
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -250,7 +265,8 @@ room = Room(
             y=24,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 16
             npc=npcs.COIN_NPC,
             event_script=E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN,
@@ -260,7 +276,8 @@ room = Room(
             y=21,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 17
             npc=npcs.J_PUZZLE_BLOCK_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -287,6 +304,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ]
 )

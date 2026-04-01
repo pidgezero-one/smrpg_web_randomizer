@@ -85,7 +85,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 1
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_4,
             initiator=EventInitiator.NONE,
@@ -112,7 +113,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 2
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_4,
             event_script=E0256_RETURN,
@@ -122,7 +124,8 @@ room = Room(
             y=22,
             z=3,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         BattlePackNPC( # 3
             npc=npcs.SHY_GUY_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -150,7 +153,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 4
             npc=npcs.SHY_GUY_NPC_2,
             battle_pack=20,
@@ -160,6 +164,7 @@ room = Room(
             y=22,
             z=3,
             z_half=True,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
     ]
 )

@@ -115,7 +115,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 1
             npc=npcs.GU_GOOMBA_NPC,
             battle_pack=115,
@@ -125,7 +126,8 @@ room = Room(
             y=69,
             z=0,
             z_half=False,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=False),
         BattlePackNPC( # 2
             npc=npcs.MALAKOOPA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -153,7 +155,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackClone( # 3
             npc=npcs.MALAKOOPA_NPC,
             battle_pack=112,
@@ -163,7 +166,8 @@ room = Room(
             y=59,
             z=1,
             z_half=False,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 4
             npc=npcs.MALAKOOPA_NPC,
             battle_pack=112,
@@ -173,7 +177,8 @@ room = Room(
             y=55,
             z=1,
             z_half=False,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=False),
         BattlePackClone( # 5
             npc=npcs.MALAKOOPA_NPC,
             battle_pack=112,
@@ -183,7 +188,8 @@ room = Room(
             y=48,
             z=1,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularNPC( # 6
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -211,7 +217,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 7
             npc=npcs.EMPTY_NPC_2,
             event_script=E0256_RETURN,
@@ -221,7 +228,8 @@ room = Room(
             y=44,
             z=3,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
     ],
     effects_npc=EffectsNpc.FLASHING_CHANDELIER,
 )

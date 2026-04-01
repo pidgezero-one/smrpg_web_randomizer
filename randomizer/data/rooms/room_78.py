@@ -131,6 +131,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         ChestClone(  # 1
             npc=npcs.TREASURE_CHEST_NPC,
@@ -142,6 +143,7 @@ room = Room(
             z=6,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
         RegularNPC(  # 2
             npc=npcs.K_NPC,
@@ -170,6 +172,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularClone(  # 3
             npc=npcs.K_NPC,
@@ -181,6 +184,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHEAST,
+            cannot_clone=False,
         ),
         RegularClone(  # 4
             npc=npcs.K_NPC,
@@ -192,6 +196,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
         RegularClone(  # 5
             npc=npcs.K_NPC,
@@ -203,6 +208,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=NORTHWEST,
+            cannot_clone=False,
         ),
         RegularNPC(  # 6
             npc=npcs.EMPTY_NPC_3,
@@ -231,6 +237,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularClone(  # 7
             npc=npcs.EMPTY_NPC_3,
@@ -242,6 +249,7 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
         RegularNPC(  # 8
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_2,
@@ -270,6 +278,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
         RegularClone(  # 9
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_2,
@@ -281,6 +290,7 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False,
         ),
         RegularNPC(  # 10
             npc=npcs.BLOCK_SHADOW_NPC,
@@ -309,6 +319,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True,
         ),
         RegularClone(  # 11
             npc=npcs.BLOCK_SHADOW_NPC,
@@ -320,6 +331,7 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=True,
         ),
         RegularNPC(  # 12
             npc=npcs.CROCO_NPC_2,
@@ -348,6 +360,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False,
         ),
     ],
 )

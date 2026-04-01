@@ -87,7 +87,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 1
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             initiator=EventInitiator.JUMP_ON,
@@ -114,7 +115,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 2
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1840_PLATFORM_SUBROUTINE,
@@ -124,7 +126,8 @@ room = Room(
             y=109,
             z=2,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1840_PLATFORM_SUBROUTINE,
@@ -134,7 +137,8 @@ room = Room(
             y=109,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 4
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1840_PLATFORM_SUBROUTINE,
@@ -144,7 +148,8 @@ room = Room(
             y=106,
             z=2,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=False),
         RegularClone( # 5
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1840_PLATFORM_SUBROUTINE,
@@ -154,7 +159,8 @@ room = Room(
             y=100,
             z=2,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False),
         RegularClone( # 6
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1840_PLATFORM_SUBROUTINE,
@@ -164,7 +170,8 @@ room = Room(
             y=99,
             z=2,
             z_half=False,
-            direction=NORTHEAST),
+            direction=NORTHEAST,
+            cannot_clone=False),
         RegularClone( # 7
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1840_PLATFORM_SUBROUTINE,
@@ -174,7 +181,8 @@ room = Room(
             y=97,
             z=2,
             z_half=False,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=False),
         RegularClone( # 8
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1840_PLATFORM_SUBROUTINE,
@@ -184,7 +192,8 @@ room = Room(
             y=95,
             z=2,
             z_half=False,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=False),
         RegularClone( # 9
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1840_PLATFORM_SUBROUTINE,
@@ -194,7 +203,8 @@ room = Room(
             y=98,
             z=2,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         ChestNPC( # 10
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -223,7 +233,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         ChestNPC( # 11
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -252,7 +263,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         ChestNPC( # 12
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -281,7 +293,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         ChestNPC( # 13
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -310,7 +323,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.WOBBLE,

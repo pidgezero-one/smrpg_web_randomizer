@@ -119,7 +119,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 1
             npc=npcs.VALENTINA_STATUE_NPC,
             event_script=E0470_GREEN_YOSHI,
@@ -129,7 +130,8 @@ room = Room(
             y=18,
             z=1,
             z_half=False,
-            direction=NORTHWEST,),
+            direction=NORTHWEST,
+            cannot_clone=False),
         RegularNPC( # 2
             npc=npcs.STAR_EGG_LITTLE_BROWN_BIRD_NPC_2,
             initiator=EventInitiator.NONE,
@@ -156,7 +158,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.STAR_EGG_LITTLE_BROWN_BIRD_NPC_2,
             event_script=E0256_RETURN,
@@ -166,6 +169,7 @@ room = Room(
             y=23,
             z=2,
             z_half=False,
-            direction=SOUTHEAST),
+            direction=SOUTHEAST,
+            cannot_clone=False),
     ]
 )

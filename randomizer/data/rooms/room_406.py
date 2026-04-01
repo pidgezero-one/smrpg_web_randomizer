@@ -96,7 +96,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 1
             npc=npcs.JABIT_NPC,
             initiator=EventInitiator.NONE,
@@ -123,7 +124,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularClone( # 2
             npc=npcs.JABIT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -133,7 +135,8 @@ room = Room(
             y=43,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 3
             npc=npcs.JABIT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -143,7 +146,8 @@ room = Room(
             y=39,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 4
             npc=npcs.JABIT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -153,7 +157,8 @@ room = Room(
             y=35,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 5
             npc=npcs.JABIT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -163,7 +168,8 @@ room = Room(
             y=31,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularClone( # 6
             npc=npcs.JABIT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -173,7 +179,8 @@ room = Room(
             y=27,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,),
+            direction=SOUTHEAST,
+            cannot_clone=False),
         RegularNPC( # 7
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -200,7 +207,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 8
             npc=npcs.TRAMPOLINE_WARP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -227,7 +235,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ],
     effects_npc=EffectsNpc.UNKNOWN_22,
 )

@@ -175,7 +175,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -204,7 +205,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 2
             npc=npcs.BLUEBIRD_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -232,7 +234,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 3
             npc=npcs.BLUEBIRD_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -260,7 +263,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 4
             npc=npcs.BLUEBIRD_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -288,7 +292,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         BattlePackNPC( # 5
             npc=npcs.BLUEBIRD_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -316,7 +321,8 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False),
         RegularNPC( # 6
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_3,
             initiator=EventInitiator.NONE,
@@ -343,7 +349,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 7
             npc=npcs.BLOCK_SHADOW_NPC,
             initiator=EventInitiator.NONE,
@@ -370,6 +377,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ]
 )
