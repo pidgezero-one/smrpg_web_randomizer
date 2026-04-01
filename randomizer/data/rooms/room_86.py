@@ -101,8 +101,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.GAZ_PURPLE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -129,8 +128,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.BOWSER_DOLL_NPC,
             initiator=EventInitiator.NONE,
@@ -157,8 +155,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC,
             event_script=E0256_RETURN,
@@ -168,8 +165,7 @@ room = Room(
             y=19,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=True),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.TOADSTOOL_DOLL_NPC,
             event_script=E0256_RETURN,
@@ -179,8 +175,7 @@ room = Room(
             y=20,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=True),
+            direction=NORTHEAST),
         RegularNPC( # 5
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -207,8 +202,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

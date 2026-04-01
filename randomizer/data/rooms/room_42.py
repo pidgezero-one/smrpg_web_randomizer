@@ -147,8 +147,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -176,8 +175,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.EMPTY_NPC_3,
             event_script=E2575_TOWER_8BIT_MUSIC,
@@ -187,8 +185,7 @@ room = Room(
             y=65,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.EMPTY_NPC_3,
             event_script=E2575_TOWER_8BIT_MUSIC,
@@ -198,8 +195,7 @@ room = Room(
             y=66,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.EMPTY_NPC_3,
             event_script=E2575_TOWER_8BIT_MUSIC,
@@ -209,7 +205,6 @@ room = Room(
             y=65,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ]
 )

@@ -98,8 +98,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS_NPC,
             event_script=E0526_ROSE_TOWN_EQUIP_SHOP,
@@ -109,8 +108,7 @@ room = Room(
             y=67,
             z=0,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.MARRYMORE_WOMAN_YELLOW_NPC,
             event_script=E0528_ROSE_TOWN_SHOP_YELLOW_TOAD,
@@ -120,8 +118,7 @@ room = Room(
             y=65,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 3
             npc=npcs.ROSE_TOWN_TREASURE_HOLDER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -148,8 +145,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         ChestNPC( # 4
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -178,8 +174,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         ChestNPC( # 5
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -208,8 +203,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -236,8 +230,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.EMPTY_NPC_2,
             event_script=E0526_ROSE_TOWN_EQUIP_SHOP,
@@ -247,7 +240,6 @@ room = Room(
             y=68,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ]
 )

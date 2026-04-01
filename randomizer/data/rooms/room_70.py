@@ -63,8 +63,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.THE_BIG_BOO_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -74,8 +73,7 @@ room = Room(
             y=15,
             z=1,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.THE_BIG_BOO_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -85,8 +83,7 @@ room = Room(
             y=16,
             z=1,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.THE_BIG_BOO_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -96,8 +93,7 @@ room = Room(
             y=17,
             z=1,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.GOOMBA_NPC_2,
             initiator=EventInitiator.NONE,
@@ -124,8 +120,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.SHY_GUY_NPC,
             initiator=EventInitiator.NONE,
@@ -152,8 +147,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.SKY_TROOPA_NPC,
             initiator=EventInitiator.NONE,
@@ -180,8 +174,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.GOBY_NPC,
             initiator=EventInitiator.NONE,
@@ -208,8 +201,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.K_NPC,
             initiator=EventInitiator.NONE,
@@ -236,8 +228,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.SPIKEY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -264,8 +255,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SWIM,

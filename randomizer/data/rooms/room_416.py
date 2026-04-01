@@ -303,7 +303,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularClone(  # 1
             npc=npcs.NIMBUSITE_BLUE_NPC,
@@ -315,7 +314,6 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHEAST,
-            cannot_clone=False,
         ),
         RegularNPC(  # 2
             npc=npcs.NIMBUSITE_BLUE_NPC,
@@ -344,7 +342,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 3
             npc=npcs.NIMBUSITE_BLUE_NPC,
@@ -373,7 +370,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 4
             npc=npcs.NIMBUSITE_BLUE_NPC,
@@ -402,7 +398,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 5
             npc=npcs.NIMBUSITE_RED_NPC_2,
@@ -431,7 +426,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularClone(  # 6
             npc=npcs.NIMBUSITE_RED_NPC_2,
@@ -443,7 +437,6 @@ room = Room(
             z=2,
             z_half=False,
             direction=NORTHEAST,
-            cannot_clone=False,
         ),
         RegularNPC(  # 7
             npc=npcs.NIMBUSITE_RED_NPC_2,
@@ -472,7 +465,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 8
             npc=npcs.NIMBUS_GUARD_NPC,
@@ -501,7 +493,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 9
             npc=npcs.NIMBUS_GUARD_NPC,
@@ -530,7 +521,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 10
             npc=npcs.NIMBUSITE_YELLOW_GREEN_NPC,
@@ -559,7 +549,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 11
             npc=npcs.BIRDY_NPC_3,
@@ -588,7 +577,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularClone(  # 12
             npc=npcs.BIRDY_NPC_3,
@@ -600,7 +588,6 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
     ],
 )

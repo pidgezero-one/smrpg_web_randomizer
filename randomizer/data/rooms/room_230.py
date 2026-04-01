@@ -111,8 +111,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.AMANITA_NPC,
             battle_pack=26,
@@ -122,8 +121,7 @@ room = Room(
             y=53,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 2
             npc=npcs.AMANITA_NPC,
             battle_pack=26,
@@ -133,8 +131,7 @@ room = Room(
             y=52,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackNPC( # 3
             npc=npcs.AMANITA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -162,8 +159,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 4
             npc=npcs.AMANITA_NPC,
             battle_pack=26,
@@ -173,8 +169,7 @@ room = Room(
             y=53,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 5
             npc=npcs.AMANITA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -201,8 +196,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 6
             npc=npcs.AMANITA_NPC,
             event_script=E2426_FOREST_MUSHROOM_PICKUP,
@@ -212,8 +206,7 @@ room = Room(
             y=53,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackNPC( # 7
             npc=npcs.BUZZER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -241,8 +234,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 8
             npc=npcs.BUZZER_NPC,
             battle_pack=29,
@@ -252,8 +244,7 @@ room = Room(
             y=58,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 9
             npc=npcs.BUZZER_NPC,
             battle_pack=28,
@@ -263,8 +254,7 @@ room = Room(
             y=50,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 10
             npc=npcs.BUZZER_NPC,
             battle_pack=28,
@@ -274,8 +264,7 @@ room = Room(
             y=58,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 11
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
@@ -306,8 +295,7 @@ room = Room(
             byte5_bit6=False,
             byte5_bit7=False,
             byte6_bit2=False,
-            show_shadow=True,
-            cannot_clone=False),
+            show_shadow=True),
         RegularClone( # 12
             npc=npcs.TOAD_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -352,7 +340,6 @@ room = Room(
             byte7_upper2=3,
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
-            height=UInt8(13),
-            cannot_clone=False),
+            height=UInt8(13)),
     ]
 )

@@ -63,8 +63,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.THWOMP_NPC,
             initiator=EventInitiator.NONE,
@@ -91,8 +90,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.THWOMP_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -102,8 +100,7 @@ room = Room(
             y=90,
             z=4,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 3
             npc=npcs.CROOK_NPC,
             initiator=EventInitiator.NONE,
@@ -130,8 +127,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.BIG_FLOWER_NPC,
             initiator=EventInitiator.NONE,
@@ -158,8 +154,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.K_NPC,
             initiator=EventInitiator.NONE,
@@ -186,8 +181,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SWIM,

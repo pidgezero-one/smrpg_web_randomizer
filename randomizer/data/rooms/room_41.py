@@ -390,7 +390,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 1
             npc=npcs.SMALL_FROG_COIN_NPC,
@@ -419,7 +418,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 2
             npc=npcs.SMALL_FROG_COIN_NPC,
@@ -448,7 +446,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 3
             npc=npcs.SMALL_FROG_COIN_NPC,
@@ -477,7 +474,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 4
             npc=npcs.FIREBALL_NPC,
@@ -506,7 +502,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 5
             npc=npcs.BIG_FLOWER_NPC,
@@ -535,7 +530,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=True,
         ),
         RegularNPC(  # 6
             npc=npcs.EMPTY_NPC_3,
@@ -565,7 +559,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 7
             npc=npcs.SMALL_COIN_NPC,
@@ -594,7 +587,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularClone(  # 8
             npc=npcs.SMALL_COIN_NPC,
@@ -606,7 +598,6 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 9
             npc=npcs.SMALL_COIN_NPC,
@@ -618,7 +609,6 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 10
             npc=npcs.SMALL_COIN_NPC,
@@ -630,7 +620,6 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 11
             npc=npcs.SMALL_COIN_NPC,
@@ -642,7 +631,6 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 12
             npc=npcs.SMALL_COIN_NPC,
@@ -654,7 +642,6 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 13
             npc=npcs.SMALL_COIN_NPC,
@@ -666,7 +653,6 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 14
             npc=npcs.SMALL_COIN_NPC,
@@ -678,7 +664,6 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 15
             npc=npcs.SMALL_COIN_NPC,
@@ -690,7 +675,6 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
     ],
 )

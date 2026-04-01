@@ -96,8 +96,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             event_script=E0256_RETURN,
@@ -107,8 +106,7 @@ room = Room(
             y=119,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.WHIRL,

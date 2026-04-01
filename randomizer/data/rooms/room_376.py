@@ -120,8 +120,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.CHEWY_NPC,
             initiator=EventInitiator.NONE,
@@ -148,8 +147,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.MR_KIPPER_NPC,
             initiator=EventInitiator.NONE,
@@ -176,8 +174,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.AMANITA_NPC,
             initiator=EventInitiator.NONE,
@@ -204,8 +201,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.GLUM_REAPER_NPC,
             initiator=EventInitiator.NONE,
@@ -232,7 +228,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

@@ -119,8 +119,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.MAGMUS_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -148,8 +147,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.MAGMUS_NPC,
             battle_pack=102,
@@ -159,8 +157,7 @@ room = Room(
             y=29,
             z=5,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SURPRISE_FRAME,

@@ -83,8 +83,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.NIMBUS_GUARD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -111,8 +110,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.NIMBUS_GUARD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -139,8 +137,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.NIMBUSITE_RED_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -167,8 +164,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.NIMBUSITE_RED_NPC_2,
             event_script=E3722_NIMBUS_CASTLE_LEFT_CELLAR_WOMAN,
@@ -178,8 +174,7 @@ room = Room(
             y=76,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 5
             npc=npcs.SAVE_POINT_NPC_2,
             initiator=EventInitiator.JUMP_ON,
@@ -206,8 +201,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.BLOCK_SHADOW_NPC,
             initiator=EventInitiator.NONE,
@@ -234,8 +228,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ],
     effects_npc=EffectsNpc.UNKNOWN_17,
 )

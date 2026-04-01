@@ -107,8 +107,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.J_PUZZLE_BLOCK_NPC_2,
             event_script=E3233_SHIP_PASSWORD_BOX_2,
@@ -118,8 +117,7 @@ room = Room(
             y=52,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.J_PUZZLE_BLOCK_NPC_2,
             event_script=E3234_SHIP_PASSWORD_BOX_3,
@@ -129,8 +127,7 @@ room = Room(
             y=54,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.J_PUZZLE_BLOCK_NPC_2,
             event_script=E3235_SHIP_PASSWORD_BOX_4,
@@ -140,8 +137,7 @@ room = Room(
             y=52,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.J_PUZZLE_BLOCK_NPC_2,
             event_script=E3236_SHIP_PASSWORD_BOX_5,
@@ -151,8 +147,7 @@ room = Room(
             y=50,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.J_PUZZLE_BLOCK_NPC_2,
             event_script=E3237_SHIP_PASSWORD_BOX_6,
@@ -162,8 +157,7 @@ room = Room(
             y=48,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 6
             npc=npcs.YELLOW_LETTER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -190,8 +184,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.TENTACLE_EXTENDING_NPC,
             initiator=EventInitiator.NONE,
@@ -246,7 +239,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

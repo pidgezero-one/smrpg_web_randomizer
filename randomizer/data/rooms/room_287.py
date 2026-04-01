@@ -119,8 +119,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.BOB_OMB_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -148,8 +147,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.BOB_OMB_NPC_2,
             battle_pack=36,
@@ -159,8 +157,7 @@ room = Room(
             y=64,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.BOB_OMB_NPC_2,
             battle_pack=36,
@@ -170,8 +167,7 @@ room = Room(
             y=68,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -198,7 +194,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

@@ -119,8 +119,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.PA_MOLE_NPC,
             event_script=E3186_MOLES_IN_FIRST_MINES_ROOM,
@@ -130,7 +129,6 @@ room = Room(
             y=29,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
     ]
 )

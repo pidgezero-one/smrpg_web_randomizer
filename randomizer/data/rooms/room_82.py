@@ -101,8 +101,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.SHY_GUY_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -129,8 +128,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.SHY_GUY_NPC_2,
             event_script=E3151_ROSE_WAY_TOSSED_SHYGUYS,
@@ -140,8 +138,7 @@ room = Room(
             y=93,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.SHY_GUY_NPC_2,
             event_script=E3151_ROSE_WAY_TOSSED_SHYGUYS,
@@ -151,8 +148,7 @@ room = Room(
             y=93,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.SHY_GUY_NPC_2,
             event_script=E3151_ROSE_WAY_TOSSED_SHYGUYS,
@@ -162,8 +158,7 @@ room = Room(
             y=93,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackNPC( # 5
             npc=npcs.CROOK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -191,8 +186,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 6
             npc=npcs.CROOK_NPC,
             battle_pack=18,
@@ -202,7 +196,6 @@ room = Room(
             y=109,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
     ]
 )

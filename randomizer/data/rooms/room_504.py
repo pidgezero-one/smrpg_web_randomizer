@@ -63,8 +63,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.TORTE_NPC,
             event_script=E0631_MARRYMORE_KITCHEN_CHEF_2,
@@ -74,8 +73,7 @@ room = Room(
             y=84,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=True),
+            direction=SOUTHEAST),
         RegularClone( # 2
             npc=npcs.TORTE_NPC,
             event_script=E0631_MARRYMORE_KITCHEN_CHEF_2,
@@ -85,8 +83,7 @@ room = Room(
             y=88,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=True),
+            direction=SOUTHWEST),
         RegularNPC( # 3
             npc=npcs.TORTE_NPC_2,
             initiator=EventInitiator.NONE,
@@ -113,8 +110,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.TORTE_NPC_2,
             initiator=EventInitiator.NONE,
@@ -141,8 +137,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.TORTE_NPC_2,
             initiator=EventInitiator.NONE,
@@ -169,8 +164,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SLEEP,

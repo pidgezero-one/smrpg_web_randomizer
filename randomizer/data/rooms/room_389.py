@@ -101,8 +101,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             initiator=EventInitiator.JUMP_ON,
@@ -129,8 +128,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E3370_VOLCANO_BRIDGE_DONUT_LIFT,
@@ -140,8 +138,7 @@ room = Room(
             y=115,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularClone( # 3
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E3370_VOLCANO_BRIDGE_DONUT_LIFT,
@@ -151,8 +148,7 @@ room = Room(
             y=113,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularClone( # 4
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E3370_VOLCANO_BRIDGE_DONUT_LIFT,
@@ -162,8 +158,7 @@ room = Room(
             y=111,
             z=3,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularClone( # 5
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E3370_VOLCANO_BRIDGE_DONUT_LIFT,
@@ -173,8 +168,7 @@ room = Room(
             y=109,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularClone( # 6
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E3370_VOLCANO_BRIDGE_DONUT_LIFT,
@@ -184,8 +178,7 @@ room = Room(
             y=107,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularClone( # 7
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E3370_VOLCANO_BRIDGE_DONUT_LIFT,
@@ -195,8 +188,7 @@ room = Room(
             y=105,
             z=3,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularClone( # 8
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E3370_VOLCANO_BRIDGE_DONUT_LIFT,
@@ -206,8 +198,7 @@ room = Room(
             y=103,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackNPC( # 9
             npc=npcs.SPARKY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -235,8 +226,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 10
             npc=npcs.SPARKY_NPC,
             battle_pack=106,
@@ -246,8 +236,7 @@ room = Room(
             y=112,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 11
             npc=npcs.SPARKY_NPC,
             battle_pack=106,
@@ -257,8 +246,7 @@ room = Room(
             y=108,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 12
             npc=npcs.SPARKY_NPC,
             battle_pack=106,
@@ -268,8 +256,7 @@ room = Room(
             y=106,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SURPRISE_FRAME,

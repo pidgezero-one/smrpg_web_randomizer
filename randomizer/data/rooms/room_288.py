@@ -109,8 +109,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -139,8 +138,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 2
             npc=npcs.BOB_OMB_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -168,8 +166,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 3
             npc=npcs.BOB_OMB_NPC_2,
             battle_pack=37,
@@ -179,8 +176,7 @@ room = Room(
             y=111,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 4
             npc=npcs.BOB_OMB_NPC_2,
             battle_pack=37,
@@ -190,8 +186,7 @@ room = Room(
             y=111,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 5
             npc=npcs.BOB_OMB_NPC_2,
             battle_pack=37,
@@ -201,8 +196,7 @@ room = Room(
             y=110,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 6
             npc=npcs.SAVE_POINT_NPC_3,
             initiator=EventInitiator.JUMP_ON,
@@ -229,8 +223,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     effects_npc=EffectsNpc.SAVE_POINT_NPC2,
 )

@@ -103,8 +103,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.AERO_UPRIGHT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -114,8 +113,7 @@ room = Room(
             y=33,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularClone( # 2
             npc=npcs.AERO_UPRIGHT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -125,8 +123,7 @@ room = Room(
             y=34,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularClone( # 3
             npc=npcs.AERO_UPRIGHT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -136,8 +133,7 @@ room = Room(
             y=35,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularClone( # 4
             npc=npcs.AERO_UPRIGHT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -147,8 +143,7 @@ room = Room(
             y=31,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularNPC( # 5
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -175,8 +170,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 6
             npc=npcs.AERO_UPRIGHT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -186,8 +180,7 @@ room = Room(
             y=18,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.AERO_UPRIGHT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -197,8 +190,7 @@ room = Room(
             y=19,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 8
             npc=npcs.AERO_UPRIGHT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -208,8 +200,7 @@ room = Room(
             y=20,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST,),
         RegularClone( # 9
             npc=npcs.AERO_UPRIGHT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -219,8 +210,7 @@ room = Room(
             y=21,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 10
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
@@ -275,8 +265,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.RECOIL,

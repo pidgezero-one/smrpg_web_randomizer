@@ -96,8 +96,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -107,8 +106,7 @@ room = Room(
             y=113,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         RegularClone( # 2
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -118,8 +116,7 @@ room = Room(
             y=113,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         RegularClone( # 3
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -129,8 +126,7 @@ room = Room(
             y=113,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

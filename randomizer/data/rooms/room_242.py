@@ -76,8 +76,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.WIGGLER_NPC,
             initiator=EventInitiator.NONE,
@@ -105,8 +104,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         ChestNPC( # 2
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -135,8 +133,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         ChestClone( # 3
             npc=npcs.TREASURE_CHEST_NPC_2,
             lower_70a7=0,
@@ -147,7 +144,6 @@ room = Room(
             z=3,
             z_half=False,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         ChestClone( # 4
             npc=npcs.TREASURE_CHEST_NPC_2,
@@ -159,7 +155,6 @@ room = Room(
             z=3,
             z_half=False,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         BattlePackNPC( # 5
             npc=npcs.AMANITA_NPC,
@@ -188,8 +183,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 6
             npc=npcs.AMANITA_NPC,
             battle_pack=27,
@@ -199,8 +193,7 @@ room = Room(
             y=81,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 7
             npc=npcs.AMANITA_NPC,
             battle_pack=26,
@@ -210,8 +203,7 @@ room = Room(
             y=88,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackNPC( # 8
             npc=npcs.BUZZER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -239,8 +231,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 9
             npc=npcs.BUZZER_NPC,
             battle_pack=28,
@@ -250,8 +241,7 @@ room = Room(
             y=83,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 10
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             initiator=EventInitiator.NONE,
@@ -279,8 +269,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SURPRISE_FRAME,

@@ -87,8 +87,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.SHY_AWAY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -115,8 +114,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -143,8 +141,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.EMPTY_NPC,
             event_script=E3680_NIMBUS_CASTLE_EGG_POST_DEFEAT,
@@ -154,8 +151,7 @@ room = Room(
             y=55,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.EMPTY_NPC,
             event_script=E3680_NIMBUS_CASTLE_EGG_POST_DEFEAT,
@@ -165,8 +161,7 @@ room = Room(
             y=53,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.EMPTY_NPC,
             event_script=E3680_NIMBUS_CASTLE_EGG_POST_DEFEAT,
@@ -176,8 +171,7 @@ room = Room(
             y=52,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 6
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -204,8 +198,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.EMPTY_NPC_3,
             event_script=E0607_LOCKED_DOOR,
@@ -215,8 +208,7 @@ room = Room(
             y=49,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 8
             npc=npcs.DODO_ND_TIME_NPC,
             initiator=EventInitiator.NONE,
@@ -243,7 +235,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ]
 )

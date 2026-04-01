@@ -107,8 +107,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.VALENTINA_STATUE_NPC,
             event_script=E0256_RETURN,
@@ -118,8 +117,7 @@ room = Room(
             y=23,
             z=3,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST,),
         RegularClone( # 2
             npc=npcs.VALENTINA_STATUE_NPC,
             event_script=E0256_RETURN,
@@ -129,8 +127,7 @@ room = Room(
             y=19,
             z=3,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST,),
         RegularClone( # 3
             npc=npcs.VALENTINA_STATUE_NPC,
             event_script=E0256_RETURN,
@@ -140,8 +137,7 @@ room = Room(
             y=31,
             z=3,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST,),
         RegularClone( # 4
             npc=npcs.VALENTINA_STATUE_NPC,
             event_script=E0256_RETURN,
@@ -151,8 +147,7 @@ room = Room(
             y=28,
             z=3,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST,),
         RegularClone( # 5
             npc=npcs.VALENTINA_STATUE_NPC,
             event_script=E0256_RETURN,
@@ -162,8 +157,7 @@ room = Room(
             y=22,
             z=3,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST,),
         RegularNPC( # 6
             npc=npcs.NIMBUSITE_RED_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -190,8 +184,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.NIMBUSITE_BROWN_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -218,7 +211,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

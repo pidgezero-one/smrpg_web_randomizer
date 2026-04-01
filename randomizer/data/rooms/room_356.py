@@ -102,8 +102,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.VOMER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -130,8 +129,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.VOMER_NPC,
             event_script=E3319_SET_VOMER_PACK,
@@ -141,8 +139,7 @@ room = Room(
             y=14,
             z=1,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
     ],
     effects_npc=EffectsNpc.GLOWING_MAGMA,
 )

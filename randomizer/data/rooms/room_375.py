@@ -63,8 +63,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.MALLOW_ENDING,
             event_script=E0256_RETURN,
@@ -74,8 +73,7 @@ room = Room(
             y=93,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=True),
+            direction=NORTHWEST,),
         RegularNPC( # 2
             npc=npcs.GENO_DOLL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -102,8 +100,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.GENO_REDEMPTION_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -130,8 +127,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -158,7 +154,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ]
 )

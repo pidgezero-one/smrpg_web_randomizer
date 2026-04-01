@@ -63,8 +63,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.SNIFIT_NPC_2,
             initiator=EventInitiator.NONE,
@@ -91,8 +90,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.SNIFIT_NPC_2,
             event_script=E0256_RETURN,
@@ -102,8 +100,7 @@ room = Room(
             y=74,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularClone( # 3
             npc=npcs.SNIFIT_NPC_2,
             event_script=E0256_RETURN,
@@ -113,8 +110,7 @@ room = Room(
             y=79,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularClone( # 4
             npc=npcs.SNIFIT_NPC_2,
             event_script=E0256_RETURN,
@@ -124,8 +120,7 @@ room = Room(
             y=81,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularClone( # 5
             npc=npcs.SNIFIT_NPC_2,
             event_script=E0256_RETURN,
@@ -135,8 +130,7 @@ room = Room(
             y=75,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularClone( # 6
             npc=npcs.SNIFIT_NPC_2,
             event_script=E0256_RETURN,
@@ -146,8 +140,7 @@ room = Room(
             y=77,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularClone( # 7
             npc=npcs.SNIFIT_NPC_2,
             event_script=E0256_RETURN,
@@ -157,8 +150,7 @@ room = Room(
             y=82,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularClone( # 8
             npc=npcs.SNIFIT_NPC_2,
             event_script=E0256_RETURN,
@@ -168,8 +160,7 @@ room = Room(
             y=84,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularNPC( # 9
             npc=npcs.VALENTINA_NPC,
             initiator=EventInitiator.NONE,
@@ -196,8 +187,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 10
             npc=npcs.BOOSTER_NPC,
             initiator=EventInitiator.NONE,
@@ -224,7 +214,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

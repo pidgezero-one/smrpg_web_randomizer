@@ -154,8 +154,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.TADPOLE_NPC,
             event_script=E1116_JUICE_BAR,
@@ -165,8 +164,7 @@ room = Room(
             y=49,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.TADPOLE_NPC,
             event_script=E1113_SONG_HINT_TADPOLE,
@@ -176,8 +174,7 @@ room = Room(
             y=43,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -187,8 +184,7 @@ room = Room(
             y=45,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -198,8 +194,7 @@ room = Room(
             y=39,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -209,8 +204,7 @@ room = Room(
             y=41,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -220,8 +214,7 @@ room = Room(
             y=35,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -231,8 +224,7 @@ room = Room(
             y=37,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 8
             npc=npcs.FROGFUCIUS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -259,8 +251,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -288,7 +279,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

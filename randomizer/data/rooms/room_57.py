@@ -162,8 +162,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.RAT_FUNK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -191,8 +190,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=12,
@@ -202,8 +200,7 @@ room = Room(
             y=103,
             z=9,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         BattlePackClone( # 3
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=13,
@@ -213,8 +210,7 @@ room = Room(
             y=94,
             z=11,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         BattlePackClone( # 4
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=13,
@@ -224,8 +220,7 @@ room = Room(
             y=104,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackNPC( # 5
             npc=npcs.RAT_FUNK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -253,8 +248,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

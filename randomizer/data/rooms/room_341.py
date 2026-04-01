@@ -103,7 +103,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 1
             npc=npcs.VALENTINA_STATUE_NPC,
@@ -132,7 +131,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularClone(  # 2
             npc=npcs.VALENTINA_STATUE_NPC,
@@ -144,7 +142,6 @@ room = Room(
             z=0,
             z_half=False,
             direction=NORTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 3
             npc=npcs.VALENTINA_STATUE_NPC,
@@ -156,7 +153,6 @@ room = Room(
             z=0,
             z_half=False,
             direction=NORTHWEST,
-            cannot_clone=False,
         ),
         RegularNPC(  # 4
             npc=npcs.MALLOW_STATUE_NPC,
@@ -185,7 +181,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 5
             npc=npcs.GOLD_GOOMBA_NPC_2,

@@ -187,8 +187,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.MA_MOLE_NPC,
             event_script=E1620_OCCUPIED_MOLEVILLE_EXTERIOR_NPC_AT_MTN_BASE,
@@ -198,8 +197,7 @@ room = Room(
             y=48,
             z=4,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularNPC( # 2
             npc=npcs.MA_MOLE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -226,7 +224,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

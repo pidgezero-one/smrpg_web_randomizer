@@ -153,8 +153,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.ROLLING_BARREL_NPC,
             initiator=EventInitiator.NONE,
@@ -181,8 +180,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.ROLLING_BARREL_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -192,8 +190,7 @@ room = Room(
             y=26,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 3
             npc=npcs.SMALL_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -220,8 +217,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -231,8 +227,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -242,8 +237,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -253,8 +247,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -264,8 +257,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 8
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -275,8 +267,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 9
             npc=npcs.SPLASH_WATER_GEYSER_NPC,
             initiator=EventInitiator.NONE,
@@ -303,8 +294,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularClone( # 10
             npc=npcs.SPLASH_WATER_GEYSER_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -314,8 +304,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=True),
+            direction=SOUTHWEST),
         RegularNPC( # 11
             npc=npcs.SPLASH_WATER_DROPLETS_NPC,
             initiator=EventInitiator.NONE,
@@ -342,8 +331,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 12
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
@@ -370,8 +358,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.TUMBLE_FRONT,

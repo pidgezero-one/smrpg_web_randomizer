@@ -101,8 +101,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.SNIFIT_NPC,
             event_script=E2588_SNIFIT_5,
@@ -112,8 +111,7 @@ room = Room(
             y=40,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.SNIFIT_NPC,
             event_script=E2589_SNIFIT_6,
@@ -123,8 +121,7 @@ room = Room(
             y=43,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.SNIFIT_NPC,
             event_script=E2590_SNIFIT_7,
@@ -134,8 +131,7 @@ room = Room(
             y=44,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.SPOOKUM_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -162,8 +158,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 5
             npc=npcs.CHOMP_BEHIND_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -191,7 +186,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ]
 )

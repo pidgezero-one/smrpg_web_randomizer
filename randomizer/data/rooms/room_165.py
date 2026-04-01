@@ -307,8 +307,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.GREAPER_NPC,
             battle_pack=76,
@@ -318,8 +317,7 @@ room = Room(
             y=76,
             z=6,
             z_half=True,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 2
             npc=npcs.GREAPER_NPC,
             battle_pack=76,
@@ -329,8 +327,7 @@ room = Room(
             y=82,
             z=6,
             z_half=True,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 3
             npc=npcs.GREAPER_NPC,
             battle_pack=76,
@@ -340,8 +337,7 @@ room = Room(
             y=84,
             z=1,
             z_half=True,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 4
             npc=npcs.GREAPER_NPC,
             battle_pack=76,
@@ -351,8 +347,7 @@ room = Room(
             y=76,
             z=1,
             z_half=True,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 5
             npc=npcs.GREAPER_NPC,
             battle_pack=76,
@@ -362,7 +357,6 @@ room = Room(
             y=71,
             z=1,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ]
 )

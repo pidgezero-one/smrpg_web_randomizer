@@ -83,8 +83,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.VALENTINA_STATUE_NPC,
             event_script=E2104_EMPTY,
@@ -94,8 +93,7 @@ room = Room(
             y=65,
             z=1,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularClone( # 2
             npc=npcs.VALENTINA_STATUE_NPC,
             event_script=E2104_EMPTY,
@@ -105,8 +103,7 @@ room = Room(
             y=71,
             z=1,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST,),
         RegularNPC( # 3
             npc=npcs.DODO_ND_TIME_NPC_2,
             initiator=EventInitiator.NONE,
@@ -133,8 +130,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SALUTE,

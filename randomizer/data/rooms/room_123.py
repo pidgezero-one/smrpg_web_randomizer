@@ -76,8 +76,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.FIREBALL_SURFACE_FROM_LAVA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -104,8 +103,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.FIREBALL_SURFACE_FROM_LAVA_NPC,
             event_script=E0437_PIPE_VAULT_FIREBALL_2,
@@ -115,8 +113,7 @@ room = Room(
             y=17,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.FIREBALL_SURFACE_FROM_LAVA_NPC,
             event_script=E0438_PIPE_VAULT_FIREBALL_3,
@@ -126,8 +123,7 @@ room = Room(
             y=14,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.FIREBALL_SURFACE_FROM_LAVA_NPC,
             event_script=E0439_PIPE_VAULT_FIREBALL_4,
@@ -137,8 +133,7 @@ room = Room(
             y=11,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 5
             npc=npcs.TRAMPOLINE_JUMP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -165,7 +160,6 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ]
 )

@@ -222,8 +222,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.MA_MOLE_NPC,
             event_script=E1639_MOLEVILLE_LIBERATED_NPC_AT_MTN_BASE_2,
@@ -233,8 +232,7 @@ room = Room(
             y=48,
             z=4,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         RegularNPC( # 2
             npc=npcs.PA_MOLE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -261,8 +259,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.PA_MOLE_NPC,
             event_script=E1641_TELLS_YOU_MINECART_PB,
@@ -272,8 +269,7 @@ room = Room(
             y=40,
             z=4,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 4
             npc=npcs.PA_MOLE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -300,8 +296,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.GIRL_MOLE_YELLOW_BOW_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -328,8 +323,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.GIRL_MOLE_PINK_BOW_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -356,8 +350,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.GIRL_MOLE_YELLOW_BOW_NPC,
             event_script=E1645_BUCKET_GIRL,
@@ -367,8 +360,7 @@ room = Room(
             y=62,
             z=1,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 8
             npc=npcs.MINE_CART_BAD_PALETTE_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -395,8 +387,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SURPRISE_FRAME,

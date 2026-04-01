@@ -118,8 +118,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.NINJA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -147,8 +146,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.NINJA_NPC,
             battle_pack=121,
@@ -158,8 +156,7 @@ room = Room(
             y=25,
             z=8,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 3
             npc=npcs.NINJA_NPC,
             battle_pack=120,
@@ -169,8 +166,7 @@ room = Room(
             y=36,
             z=8,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -197,8 +193,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.TUMBLE_BACK,

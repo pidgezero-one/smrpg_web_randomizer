@@ -180,8 +180,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -191,8 +190,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -202,8 +200,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -213,8 +210,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.WIGGLER_HEAD_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -224,8 +220,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -235,8 +230,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -246,8 +240,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.WIGGLER_BODY_SEGMENT_NPC,
             event_script=E1556_WIGGLER_JUMP,
@@ -257,8 +250,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 8
             npc=npcs.SMALL_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -285,8 +277,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -314,8 +305,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

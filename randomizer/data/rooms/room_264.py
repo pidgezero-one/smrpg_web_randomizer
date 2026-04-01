@@ -102,8 +102,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.GECKIT_NPC,
             battle_pack=91,
@@ -113,8 +112,7 @@ room = Room(
             y=21,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.GECKIT_NPC,
             battle_pack=91,
@@ -124,8 +122,7 @@ room = Room(
             y=18,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackNPC( # 3
             npc=npcs.CHOW_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -153,8 +150,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 4
             npc=npcs.CHOW_NPC,
             battle_pack=83,
@@ -164,8 +160,7 @@ room = Room(
             y=14,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         BattlePackClone( # 5
             npc=npcs.CHOW_NPC,
             battle_pack=83,
@@ -175,8 +170,7 @@ room = Room(
             y=13,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         BattlePackClone( # 6
             npc=npcs.CHOW_NPC,
             battle_pack=83,
@@ -186,7 +180,6 @@ room = Room(
             y=14,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
     ]
 )

@@ -63,8 +63,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.ROLLING_BARREL_NPC,
             event_script=E3501_BOOSTER_HILL_BARREL_INTERACTION,
@@ -74,8 +73,7 @@ room = Room(
             y=48,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.ROLLING_BARREL_NPC,
             event_script=E3501_BOOSTER_HILL_BARREL_INTERACTION,
@@ -85,8 +83,7 @@ room = Room(
             y=46,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 3
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -113,8 +110,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
             event_script=E3504_BOOSTER_HILL_HENCHMAN_INTERACTION,
@@ -124,8 +120,7 @@ room = Room(
             y=69,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         RegularClone( # 5
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
             event_script=E3504_BOOSTER_HILL_HENCHMAN_INTERACTION,
@@ -135,8 +130,7 @@ room = Room(
             y=67,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         RegularNPC( # 6
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
@@ -163,8 +157,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.EMPTY_ENEMY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -191,8 +184,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.EMPTY_ENEMY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -219,8 +211,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.TUMBLE_BACK,

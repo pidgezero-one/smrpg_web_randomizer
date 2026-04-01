@@ -111,8 +111,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         ChestClone( # 1
             npc=npcs.TREASURE_CHEST_NPC_2,
             lower_70a7=2,
@@ -122,8 +121,7 @@ room = Room(
             y=108,
             z=17,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 2
             npc=npcs.SAVE_POINT_NPC_3,
             initiator=EventInitiator.JUMP_ON,
@@ -150,8 +148,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 3
             npc=npcs.THE_BIG_BOO_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -179,8 +176,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         BattlePackClone( # 4
             npc=npcs.THE_BIG_BOO_NPC_2,
             battle_pack=15,
@@ -190,8 +186,7 @@ room = Room(
             y=111,
             z=9,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=True),
+            direction=SOUTHEAST),
         BattlePackClone( # 5
             npc=npcs.THE_BIG_BOO_NPC_2,
             battle_pack=15,
@@ -201,8 +196,7 @@ room = Room(
             y=115,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=True),
+            direction=SOUTHWEST),
         RegularNPC( # 6
             npc=npcs.TRAMPOLINE_WARP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -229,8 +223,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.GREEN_SWITCH_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -257,8 +250,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

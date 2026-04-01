@@ -143,8 +143,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.DRY_BONES_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -171,8 +170,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.DRY_BONES_NPC,
             event_script=E3246_DRY_BONES_FIGHT,
@@ -182,8 +180,7 @@ room = Room(
             y=89,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=True),
+            direction=SOUTHEAST),
         RegularClone( # 3
             npc=npcs.DRY_BONES_NPC,
             event_script=E3246_DRY_BONES_FIGHT,
@@ -193,7 +190,6 @@ room = Room(
             y=98,
             z=2,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=True),
+            direction=NORTHWEST),
     ]
 )

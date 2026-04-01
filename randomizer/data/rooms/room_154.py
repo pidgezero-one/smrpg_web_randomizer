@@ -103,7 +103,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularClone(  # 1
             npc=npcs.SNIFIT_NPC,
@@ -115,7 +114,6 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 2
             npc=npcs.SNIFIT_NPC,
@@ -127,7 +125,6 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
 
         RegularNPC(  # 3
@@ -157,7 +154,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularClone(  # 4
             npc=npcs.TORTE_NPC_2,
@@ -169,7 +165,6 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
 
         RegularNPC(  # 5
@@ -199,7 +194,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularClone(  # 6
             npc=npcs.SHOES_NPC,
@@ -211,7 +205,6 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 7
             npc=npcs.CROWN_NPC,
@@ -223,7 +216,6 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularClone(  # 8
             npc=npcs.BROOCH_NPC,
@@ -235,7 +227,6 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            cannot_clone=False,
         ),
         RegularNPC(  # 9
             npc=npcs.BOOSTER_NPC,
@@ -264,7 +255,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 10
             npc=npcs.TOAD_NPC,
@@ -293,7 +283,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularNPC(  # 11
             npc=npcs.BUNDT_OBJECT_NPC,
@@ -322,8 +311,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            directions=VramStore.DIR2_SWSE,
-            cannot_clone=True,
+            directions=VramStore.DIR2_SWSE
         ),
         RegularNPC(  # 12
             npc=npcs.BUNDT_OBJECT_NPC_2,
@@ -352,8 +340,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            directions=VramStore.DIR2_SWSE,
-            cannot_clone=True,
+            directions=VramStore.DIR2_SWSE
         ),
     ],
 )

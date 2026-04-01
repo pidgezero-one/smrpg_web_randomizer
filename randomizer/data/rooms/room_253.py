@@ -76,8 +76,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.GROWING_VINE_BEANSTALK_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -87,8 +86,7 @@ room = Room(
             y=27,
             z=7,
             z_half=True,
-            direction=SOUTHEAST,
-            cannot_clone=True),
+            direction=SOUTHEAST),
         RegularNPC( # 2
             npc=npcs.BRICK_BEANSTALK_BLOCK_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -115,8 +113,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.RECOIL,

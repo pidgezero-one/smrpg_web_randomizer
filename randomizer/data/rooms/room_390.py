@@ -101,8 +101,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.STUMPET_ROOTS_RIGHT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -129,8 +128,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.STUMPET_ROOTS_RIGHT_NPC,
             event_script=E3327_STUMPET_FIGHT,
@@ -140,8 +138,7 @@ room = Room(
             y=8,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.STUMPET_ROOTS_RIGHT_NPC,
             event_script=E3327_STUMPET_FIGHT,
@@ -151,8 +148,7 @@ room = Room(
             y=8,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.STUMPET_ROOTS_RIGHT_NPC,
             event_script=E3327_STUMPET_FIGHT,
@@ -162,8 +158,7 @@ room = Room(
             y=8,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.STUMPET_ROOTS_RIGHT_NPC,
             event_script=E3327_STUMPET_FIGHT,
@@ -173,8 +168,7 @@ room = Room(
             y=8,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackNPC( # 6
             npc=npcs.MAGMUS_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -202,8 +196,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 7
             npc=npcs.MAGMUS_NPC,
             battle_pack=103,
@@ -213,8 +206,7 @@ room = Room(
             y=8,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 8
             npc=npcs.MAGMUS_NPC,
             battle_pack=103,
@@ -224,8 +216,7 @@ room = Room(
             y=8,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 9
             npc=npcs.MAGMUS_NPC,
             battle_pack=103,
@@ -235,8 +226,7 @@ room = Room(
             y=8,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ],
     effects_npc=EffectsNpc.GLOWING_MAGMA,
 )

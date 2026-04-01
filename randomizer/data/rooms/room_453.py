@@ -138,8 +138,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.GU_GOOMBA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -167,8 +166,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.GU_GOOMBA_NPC,
             battle_pack=115,
@@ -178,8 +176,7 @@ room = Room(
             y=32,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 3
             npc=npcs.GU_GOOMBA_NPC,
             battle_pack=115,
@@ -189,8 +186,7 @@ room = Room(
             y=29,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         BattlePackClone( # 4
             npc=npcs.GU_GOOMBA_NPC,
             battle_pack=115,
@@ -200,8 +196,7 @@ room = Room(
             y=25,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 5
             npc=npcs.GU_GOOMBA_NPC,
             battle_pack=115,
@@ -211,8 +206,7 @@ room = Room(
             y=22,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackNPC( # 6
             npc=npcs.MALAKOOPA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -240,7 +234,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

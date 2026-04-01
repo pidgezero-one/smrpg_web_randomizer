@@ -83,8 +83,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.J_PUZZLE_BLOCK_NPC_2,
             event_script=E3231_SHIP_CANNONBALL_PUZZLE_INITIATOR_BLOCK,
@@ -94,8 +93,7 @@ room = Room(
             y=68,
             z=7,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.J_PUZZLE_BLOCK_NPC_2,
             event_script=E3231_SHIP_CANNONBALL_PUZZLE_INITIATOR_BLOCK,
@@ -105,8 +103,7 @@ room = Room(
             y=64,
             z=7,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.J_PUZZLE_BLOCK_NPC_2,
             event_script=E3231_SHIP_CANNONBALL_PUZZLE_INITIATOR_BLOCK,
@@ -116,8 +113,7 @@ room = Room(
             y=60,
             z=7,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.J_PUZZLE_BLOCK_NPC_4,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -144,8 +140,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 5
             npc=npcs.J_PUZZLE_BLOCK_NPC_4,
             event_script=E3217_SHIP_CANNONBALL_PUZZLE_CANNONBALL,
@@ -155,8 +150,7 @@ room = Room(
             y=61,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularClone( # 6
             npc=npcs.J_PUZZLE_BLOCK_NPC_4,
             event_script=E3217_SHIP_CANNONBALL_PUZZLE_CANNONBALL,
@@ -166,8 +160,7 @@ room = Room(
             y=57,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 7
             npc=npcs.J_PUZZLE_BLOCK_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -194,7 +187,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

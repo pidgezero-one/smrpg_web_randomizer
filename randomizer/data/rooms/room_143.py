@@ -63,8 +63,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.GOOMBA_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -91,8 +90,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.GOOMBA_NPC,
             event_script=E0449_GOOMBA_THUMPIN_GOOMBA_2,
@@ -102,8 +100,7 @@ room = Room(
             y=60,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.GOOMBA_NPC,
             event_script=E0450_GOOMBA_THUMPIN_GOOMBA_3,
@@ -113,8 +110,7 @@ room = Room(
             y=60,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.GOOMBA_NPC,
             event_script=E0451_GOOMBA_THUMPIN_GOOMBA_4,
@@ -124,8 +120,7 @@ room = Room(
             y=60,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 5
             npc=npcs.GOOMBA_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -152,8 +147,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 6
             npc=npcs.GOOMBA_NPC,
             event_script=E0453_GOOMBA_THUMPIN_GOLD_GOOMBA_2,
@@ -163,8 +157,7 @@ room = Room(
             y=62,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.GOOMBA_NPC,
             event_script=E0454_GOOMBA_THUMPIN_GOLD_GOOMBA_3,
@@ -174,8 +167,7 @@ room = Room(
             y=62,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 8
             npc=npcs.GOOMBA_NPC,
             event_script=E0455_GOOMBA_THUMPIN_GOLD_GOOMBA_4,
@@ -185,8 +177,7 @@ room = Room(
             y=62,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 9
             npc=npcs.TOADSTOOL_ENDING,
             initiator=EventInitiator.JUMP_ON,
@@ -213,8 +204,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 10
             npc=npcs.SPIKEY_NPC_2,
             initiator=EventInitiator.JUMP_ON,
@@ -241,8 +231,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 11
             npc=npcs.SPIKEY_NPC_2,
             event_script=E0589_GOOMBA_THUMPIN_SPINY_2,
@@ -252,8 +241,7 @@ room = Room(
             y=64,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 12
             npc=npcs.SPIKEY_NPC_2,
             event_script=E0590_GOOMBA_THUMPIN_SPINY_3,
@@ -263,8 +251,7 @@ room = Room(
             y=64,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 13
             npc=npcs.SPIKEY_NPC_2,
             event_script=E0591_GOOMBA_THUMPIN_SPINY_4,
@@ -274,8 +261,7 @@ room = Room(
             y=64,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 14
             npc=npcs.TRAMPOLINE_JUMP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -302,7 +288,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
     ]
 )

@@ -84,8 +84,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.SHY_AWAY_NPC,
             battle_pack=86,
@@ -95,8 +94,7 @@ room = Room(
             y=16,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.SHY_AWAY_NPC,
             battle_pack=86,
@@ -106,8 +104,7 @@ room = Room(
             y=25,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 3
             npc=npcs.WHIRLPOOL_DESERT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -134,8 +131,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.WHIRLPOOL_DESERT_NPC,
             event_script=E1756_LANDS_END_SHY_AWAY_WHIRLPOOL_2,
@@ -145,8 +141,7 @@ room = Room(
             y=18,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=True),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.WHIRLPOOL_DESERT_NPC,
             event_script=E1757_LANDS_END_SHY_AWAY_WHIRLPOOL_3,
@@ -156,8 +151,7 @@ room = Room(
             y=22,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=True),
+            direction=SOUTHWEST),
         RegularNPC( # 6
             npc=npcs.SHOGUN_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -184,8 +178,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -212,8 +205,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -241,8 +233,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.WHIRL,

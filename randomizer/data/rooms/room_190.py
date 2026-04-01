@@ -234,7 +234,6 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
-            cannot_clone=False,
         ),
         RegularClone(  # 1
             npc=npcs.SHYSTER_NPC,
@@ -249,7 +248,6 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
-            cannot_clone=False,
         ),
         RegularClone(  # 2
             npc=npcs.SHYSTER_NPC,
@@ -264,7 +262,6 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
-            cannot_clone=False,
         ),
         BattlePackNPC(  # 3
             npc=npcs.SHYSTER_NPC,
@@ -297,7 +294,6 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
-            cannot_clone=False,
         ),
         BattlePackClone(  # 4
             npc=npcs.SHYSTER_NPC,
@@ -312,7 +308,6 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
-            cannot_clone=False,
         ),
         RegularNPC(  # 5
             npc=npcs.SHYSTER_NPC,
@@ -344,7 +339,6 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
-            cannot_clone=False,
         ),
         RegularNPC(  # 6
             npc=npcs.SHYSTER_NPC,
@@ -376,7 +370,6 @@ room = Room(
             acute_axis=UInt4(3),
             obtuse_axis=UInt4(3),
             height=UInt8(11),
-            cannot_clone=False,
         ),
         RegularNPC(  # 7
             npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
@@ -405,7 +398,6 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
         RegularClone(  # 8
             npc=npcs.RAINI_NPC,
@@ -417,7 +409,6 @@ room = Room(
             z=4,
             z_half=False,
             direction=NORTHEAST,
-            cannot_clone=False,
         ),
         RegularNPC(  # 9
             npc=npcs.TOAD_NPC,
@@ -432,7 +423,6 @@ room = Room(
             direction=NORTHWEST,
             face_on_trigger=True,
             set_sequence_playback=True,
-            cannot_clone=False,
         ),
         RegularNPC(  # 10
             npc=npcs.EMPTY_NPC_3,
@@ -461,7 +451,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=False,
         ),
     ],
 )

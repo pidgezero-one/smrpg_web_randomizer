@@ -119,8 +119,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.SLING_SHY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -148,8 +147,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.SLING_SHY_NPC,
             battle_pack=100,
@@ -159,8 +157,7 @@ room = Room(
             y=49,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularNPC( # 3
             npc=npcs.PINWHEEL_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -187,8 +184,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.STAR_EGG_LITTLE_BROWN_BIRD_NPC_2,
             initiator=EventInitiator.NONE,
@@ -215,8 +211,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 5
             npc=npcs.STAR_EGG_LITTLE_BROWN_BIRD_NPC_2,
             event_script=E3698_NIMBUS_CASTLE_WEST_LOWER_HALL_PINWHEEL,
@@ -226,7 +221,6 @@ room = Room(
             y=54,
             z=1,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ]
 )

@@ -83,21 +83,18 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.NONE,
             event_script=E1551_BANK_1F_RETURN_EVENT,
             action_script=A0160_SEQUENCE_LOOPING_ON,
-            visible=False,
-            cannot_clone=False),
+            visible=False),
         RegularClone( # 2
             npc=npcs.EMPTY_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
             action_script=A0160_SEQUENCE_LOOPING_ON,
-            visible=False,
-            cannot_clone=False),
+            visible=False),
         RegularNPC( # 3
             npc=npcs.TRAMPOLINE_JUMP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -124,8 +121,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.BELOME_ST_TIME_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -152,8 +148,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.BELOME_3_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -180,7 +175,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

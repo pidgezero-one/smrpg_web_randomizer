@@ -101,8 +101,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.TOUCH_ANY_SIDE,
@@ -129,8 +128,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.EMPTY_NPC_3,
             event_script=E2674_TOWER_KNIFE_GUY_MINIGAME_BUSINESS_LOGIC_SUBROUTINE,
@@ -140,8 +138,7 @@ room = Room(
             y=117,
             z=4,
             z_half=False,
-            direction=SOUTH,
-            cannot_clone=False),
+            direction=SOUTH),
         BattlePackNPC( # 3
             npc=npcs.ROB_OMB_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -169,8 +166,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 4
             npc=npcs.ROB_OMB_NPC,
             battle_pack=49,
@@ -180,8 +176,7 @@ room = Room(
             y=120,
             z=2,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         BattlePackClone( # 5
             npc=npcs.ROB_OMB_NPC,
             battle_pack=48,
@@ -191,8 +186,7 @@ room = Room(
             y=122,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 6
             npc=npcs.ROB_OMB_NPC,
             battle_pack=48,
@@ -202,7 +196,6 @@ room = Room(
             y=120,
             z=5,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
     ]
 )

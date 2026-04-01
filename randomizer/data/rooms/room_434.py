@@ -125,8 +125,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1901_ABYSS_AXEM_PIT_PLATFORMS,
@@ -136,8 +135,7 @@ room = Room(
             y=27,
             z=4,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 2
             npc=npcs.MACHINE_MADE_AXEM_RED_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -164,8 +162,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.MACHINE_MADE_AXEM_RED_NPC,
             event_script=E1908_ABYSS_MACHINE_AXEM_RED,
@@ -175,8 +172,7 @@ room = Room(
             y=39,
             z=17,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackNPC( # 4
             npc=npcs.AMEBOID_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -204,8 +200,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 5
             npc=npcs.AMEBOID_NPC,
             battle_pack=131,
@@ -215,8 +210,7 @@ room = Room(
             y=17,
             z=5,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         ChestNPC( # 6
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -245,7 +239,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

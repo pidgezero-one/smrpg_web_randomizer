@@ -200,8 +200,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS_NPC,
             event_script=E0520_ROSE_TOWN_OCCUPIED_EXTERIOR_PINK_TOAD,
@@ -211,8 +210,7 @@ room = Room(
             y=37,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 2
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -239,8 +237,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             event_script=E0564_ROSE_TOWN_LIBERATED_KID_OUTDOORS,
@@ -250,8 +247,7 @@ room = Room(
             y=85,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             event_script=E0565_ROSE_TOWN_LIBERATED_3RD_KID_OUTDOORS,
@@ -261,8 +257,7 @@ room = Room(
             y=85,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.ROSE_TOWN_OLD_MAN_BLUE_GREY_NPC,
             event_script=E0566_ROSE_TOWN_LIBERATED_GRANDPA,
@@ -272,8 +267,7 @@ room = Room(
             y=85,
             z=1,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 6
             npc=npcs.MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -300,8 +294,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -328,8 +321,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 8
             npc=npcs.ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS_NPC,
             event_script=E0569_ROSE_TOWN_LIBERATED_PINK_TOAD,
@@ -339,8 +331,7 @@ room = Room(
             y=41,
             z=1,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         RegularNPC( # 9
             npc=npcs.MARRYMORE_WOMAN_YELLOW_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -367,8 +358,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 10
             npc=npcs.ROSE_TOWN_TREASURE_HOLDER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -395,8 +385,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 11
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -423,8 +412,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 12
             npc=npcs.EMPTY_NPC_3,
             event_script=E0581_ROSE_TOWN_LIBERATED_LOWER_HIDDEN_NPC,
@@ -434,8 +422,7 @@ room = Room(
             y=31,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 13
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -462,8 +449,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

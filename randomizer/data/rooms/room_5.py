@@ -153,8 +153,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.MARRYMORE_WOMAN_YELLOW_NPC,
             event_script=E0696_MARRYMORE_YELLOW_TOAD_2,
@@ -164,8 +163,7 @@ room = Room(
             y=67,
             z=6,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularClone( # 2
             npc=npcs.MUSHROOM_BOY_NPC,
             event_script=E0694_MARRYMORE_RED_TOAD_2,
@@ -175,8 +173,7 @@ room = Room(
             y=71,
             z=4,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularClone( # 3
             npc=npcs.MARRYMORE_WOMAN_YELLOW_NPC,
             event_script=E0691_MARRYMORE_YELLOW_TOAD_1,
@@ -186,8 +183,7 @@ room = Room(
             y=73,
             z=4,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularNPC( # 4
             npc=npcs.MARRYMORE_WOMAN_YELLOW_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -214,8 +210,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -242,8 +237,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 6
             npc=npcs.RAINI_NPC,
             event_script=E0689_MARRYMORE_RAINI,
@@ -253,8 +247,7 @@ room = Room(
             y=71,
             z=4,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularClone( # 7
             npc=npcs.OLD_WOMAN_NPC,
             event_script=E0693_MARRYMORE_GREY_TOAD,
@@ -264,8 +257,7 @@ room = Room(
             y=69,
             z=4,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularClone( # 8
             npc=npcs.GREEN_BROWN_TOAD_NPC,
             event_script=E0695_MARRYMORE_GREEN_KID,
@@ -275,8 +267,7 @@ room = Room(
             y=68,
             z=4,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         RegularNPC( # 9
             npc=npcs.MUSHROOM_BOY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -303,8 +294,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 10
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -331,8 +321,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 11
             npc=npcs.EMPTY_NPC_3,
             event_script=E0632_MARRYMORE_EXTERIOR_CHAPEL_LOCKED_FRONT_DOOR,
@@ -342,7 +331,6 @@ room = Room(
             y=64,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ]
 )

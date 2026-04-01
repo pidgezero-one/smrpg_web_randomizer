@@ -276,8 +276,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.SPIKESTER_NPC,
             battle_pack=45,
@@ -287,8 +286,7 @@ room = Room(
             y=107,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.SPIKESTER_NPC,
             battle_pack=45,
@@ -298,8 +296,7 @@ room = Room(
             y=107,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.SPIKESTER_NPC,
             battle_pack=45,
@@ -309,8 +306,7 @@ room = Room(
             y=95,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -337,8 +333,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.GREEN_SWITCH_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -365,8 +360,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.RING_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -393,8 +387,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.FLOP,

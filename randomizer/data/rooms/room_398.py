@@ -83,8 +83,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.GOOMBETTE_LOWER_NPC,
             event_script=E2053_MONSTRO_GOOMBETTE_SHOP,
@@ -94,8 +93,7 @@ room = Room(
             y=18,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.GOOMBETTE_LOWER_NPC,
             event_script=E2053_MONSTRO_GOOMBETTE_SHOP,
@@ -105,8 +103,7 @@ room = Room(
             y=19,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 3
             npc=npcs.GOOMBA_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -133,8 +130,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -162,7 +158,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

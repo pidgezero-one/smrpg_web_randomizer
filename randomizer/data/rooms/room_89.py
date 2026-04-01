@@ -107,8 +107,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.OLD_WOMAN_GREY_RED_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -135,8 +134,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -163,8 +161,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             event_script=E0545_ROSE_TOWN_OCCUPIED_KID_3,
@@ -174,8 +171,7 @@ room = Room(
             y=14,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         RegularClone( # 4
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             event_script=E0543_ROSE_TOWN_OCCUPIED_KID_1,
@@ -185,7 +181,6 @@ room = Room(
             y=10,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ]
 )

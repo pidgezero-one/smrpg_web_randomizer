@@ -102,8 +102,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -113,8 +112,7 @@ room = Room(
             y=87,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         BattlePackClone( # 2
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -124,8 +122,7 @@ room = Room(
             y=81,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 3
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -135,8 +132,7 @@ room = Room(
             y=83,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
         BattlePackClone( # 4
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -146,8 +142,7 @@ room = Room(
             y=77,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackClone( # 5
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -157,7 +152,6 @@ room = Room(
             y=79,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST),
     ]
 )

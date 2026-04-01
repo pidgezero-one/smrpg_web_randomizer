@@ -213,8 +213,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2370_ABYSS_BOLT,
@@ -224,8 +223,7 @@ room = Room(
             y=120,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2369_ABYSS_BOLT,
@@ -235,8 +233,7 @@ room = Room(
             y=108,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2369_ABYSS_BOLT,
@@ -246,8 +243,7 @@ room = Room(
             y=107,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2371_ABYSS_BOLT,
@@ -257,8 +253,7 @@ room = Room(
             y=118,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2371_ABYSS_BOLT,
@@ -268,8 +263,7 @@ room = Room(
             y=117,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 6
             npc=npcs.FACTORY_HEX_NUT_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -296,8 +290,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2372_ABYSS_BOLT,
@@ -307,8 +300,7 @@ room = Room(
             y=117,
             z=10,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         RegularNPC( # 8
             npc=npcs.FACTORY_HEX_NUT_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -335,8 +327,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 9
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2386_ABYSS_FOUR_BOLT_ROOM_BOLT,
@@ -346,8 +337,7 @@ room = Room(
             y=105,
             z=10,
             z_half=False,
-            direction=SOUTHEAST,
-            cannot_clone=False),
+            direction=SOUTHEAST),
         BattlePackNPC( # 10
             npc=npcs.GLUM_REAPER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -376,8 +366,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 11
             npc=npcs.GLUM_REAPER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -405,8 +394,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 12
             npc=npcs.GLUM_REAPER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -435,8 +423,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 13
             npc=npcs.AMEBOID_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -465,8 +452,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 14
             npc=npcs.AMEBOID_NPC,
             battle_pack=131,
@@ -476,8 +462,7 @@ room = Room(
             y=102,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 15
             npc=npcs.AMEBOID_NPC,
             battle_pack=130,
@@ -487,7 +472,6 @@ room = Room(
             y=123,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ]
 )

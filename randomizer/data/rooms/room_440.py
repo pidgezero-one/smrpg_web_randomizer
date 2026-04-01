@@ -114,8 +114,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.VALENTINA_STATUE_NPC,
             event_script=E0470_GREEN_YOSHI,
@@ -125,8 +124,7 @@ room = Room(
             y=63,
             z=1,
             z_half=False,
-            direction=NORTHWEST,
-            cannot_clone=False),
+            direction=NORTHWEST,),
         RegularNPC( # 2
             npc=npcs.KING_NIMBUS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -153,8 +151,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.QUEEN_NIMBUS_NPC,
             event_script=E3758_QUEEN_NIMBUS,
@@ -164,7 +161,6 @@ room = Room(
             y=53,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ]
 )

@@ -102,8 +102,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.GU_GOOMBA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -131,8 +130,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.GU_GOOMBA_NPC,
             battle_pack=114,
@@ -142,8 +140,7 @@ room = Room(
             y=57,
             z=5,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         BattlePackClone( # 3
             npc=npcs.GU_GOOMBA_NPC,
             battle_pack=114,
@@ -153,8 +150,7 @@ room = Room(
             y=53,
             z=5,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 4
             npc=npcs.GU_GOOMBA_NPC,
             battle_pack=114,
@@ -164,8 +160,7 @@ room = Room(
             y=59,
             z=5,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 5
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             initiator=EventInitiator.JUMP_ON,
@@ -192,8 +187,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularClone( # 6
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E2146_KEEP_DONUT_LIFT,
@@ -203,8 +197,7 @@ room = Room(
             y=46,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E2146_KEEP_DONUT_LIFT,
@@ -214,8 +207,7 @@ room = Room(
             y=44,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackNPC( # 8
             npc=npcs.MALAKOOPA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -243,8 +235,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 9
             npc=npcs.MALAKOOPA_NPC,
             battle_pack=112,
@@ -254,8 +245,7 @@ room = Room(
             y=46,
             z=5,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SURPRISE_FRAME,

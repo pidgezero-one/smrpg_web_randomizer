@@ -170,8 +170,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.BULLET_BILL_NPC,
             battle_pack=52,
@@ -181,8 +180,7 @@ room = Room(
             y=35,
             z=10,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.BULLET_BILL_NPC,
             battle_pack=52,
@@ -192,8 +190,7 @@ room = Room(
             y=35,
             z=10,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.BULLET_BILL_NPC,
             battle_pack=52,
@@ -203,8 +200,7 @@ room = Room(
             y=35,
             z=10,
             z_half=True,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackNPC( # 4
             npc=npcs.SPOOKUM_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -232,8 +228,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 5
             npc=npcs.SPOOKUM_NPC,
             battle_pack=46,
@@ -243,8 +238,7 @@ room = Room(
             y=44,
             z=5,
             z_half=False,
-            direction=NORTHEAST,
-            cannot_clone=False),
+            direction=NORTHEAST),
         BattlePackClone( # 6
             npc=npcs.SPOOKUM_NPC,
             battle_pack=46,
@@ -254,8 +248,7 @@ room = Room(
             y=39,
             z=3,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         RegularNPC( # 7
             npc=npcs.MOKURA_S_CLOUD_BLUE_NPC,
             initiator=EventInitiator.NONE,
@@ -282,8 +275,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.SNIFIT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -310,7 +302,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ]
 )

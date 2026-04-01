@@ -166,8 +166,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.STINGER_NPC,
             battle_pack=80,
@@ -177,8 +176,7 @@ room = Room(
             y=46,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.STINGER_NPC,
             battle_pack=80,
@@ -188,8 +186,7 @@ room = Room(
             y=41,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.STINGER_NPC,
             battle_pack=80,
@@ -199,8 +196,7 @@ room = Room(
             y=38,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 4
             npc=npcs.STINGER_NPC,
             battle_pack=80,
@@ -210,8 +206,7 @@ room = Room(
             y=34,
             z=7,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         BattlePackClone( # 5
             npc=npcs.STINGER_NPC,
             battle_pack=81,
@@ -221,8 +216,7 @@ room = Room(
             y=30,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-            cannot_clone=False),
+            direction=SOUTHWEST),
         ChestNPC( # 6
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -251,8 +245,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.SAVE_POINT_NPC_3,
             initiator=EventInitiator.JUMP_ON,
@@ -279,8 +272,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=False),
+            byte7_upper2=3),
     ],
     effects_npc=EffectsNpc.SAVE_POINT_NPC2,
 )
