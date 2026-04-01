@@ -339,7 +339,7 @@ class EggbertHenchman(HenchmanNPC):
 class BluebirdHenchman(HenchmanNPC):
     """Bluebird henchman NPC for boss fights."""
 
-    _base = BLUEBIRD_NPC
+    _base = BLUEBIRD_NPC_STATIC
     _animations = SpriteAnimationCollection(
         tower_bullet=bird_attack,
         kitchen_prep=bird_attack,

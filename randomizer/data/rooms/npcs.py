@@ -8547,6 +8547,29 @@ BLUEBIRD_NPC = NPC(
     byte5_bit7=False,
     byte6_bit2=False,
 )
+BLUEBIRD_NPC_STATIC = NPC(
+    sprite_id=SPR0333_BLUEBIRD,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=5,
+    obtuse_axis=5,
+    height=10,
+    y_shift=1,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
 
 BLUEBIRD_NPC_2 = NPC(
     sprite_id=SPR0333_BLUEBIRD,
