@@ -261,12 +261,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         is_coin: bool
         force_cannot_clone: bool  # Room-level override — orchestrator must respect
 
-    # We need the vanilla snapshot to check if sprites changed
-    assert world._vanilla_room_states is not None
-    vanilla_state = world._vanilla_room_states.get(room_id)
-
     npc_infos: list[NPCInfo] = []
-    vanilla_npc_idx = 0
     for i, obj in enumerate(room.objects):
         if isinstance(obj, Clone):
             continue
@@ -275,16 +270,11 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         is_chest = isinstance(obj, ChestNPC) or sprite_id == CHEST_SPRITE_ID
         is_coin = sprite_id in COIN_SPRITE_IDS
 
-        # Room-level cannot_clone=True is a "don't touch" signal, BUT only
-        # if the sprite hasn't changed. If the sprite was shuffled, the old
-        # cannot_clone is irrelevant — the orchestrator decides fresh.
-        sprite_changed = False
-        if vanilla_state is not None and vanilla_npc_idx < len(vanilla_state.npcs):
-            if sprite_id != vanilla_state.npcs[vanilla_npc_idx].sprite_id:
-                sprite_changed = True
-            vanilla_npc_idx += 1
-
-        force_cc = obj.cannot_clone is True and not sprite_changed
+        # Room-level cannot_clone=True is always respected. It signals that
+        # this NPC slot uses animation sequences beyond basic directional
+        # walking, which require dedicated VRAM regardless of sprite format.
+        # Clone buffers only have space for directional sprites.
+        force_cc = obj.cannot_clone is True
 
         npc_infos.append(NPCInfo(
             obj_index=i,
@@ -300,6 +290,9 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # Step 2: Map original buffers → NPC indices they served
     # =========================================================================
     # For carryover of main_buffer_space and index_in_main_buffer.
+
+    assert world._vanilla_room_states is not None
+    vanilla_state = world._vanilla_room_states.get(room_id)
 
     # original_buffer_settings[buffer_index] = (main_buffer_space, index_in_main_buffer)
     original_buffer_settings: list[tuple[BufferSpace, bool]] = [
