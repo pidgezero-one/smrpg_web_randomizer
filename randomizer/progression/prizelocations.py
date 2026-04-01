@@ -2422,7 +2422,7 @@ class ForestMazeFirstUndergroundExitLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_2
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R228_FOREST_MAZE_AREA_04, ["next"]),
@@ -7818,7 +7818,7 @@ class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_1
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
@@ -7838,7 +7838,7 @@ class BelomeBeforeBossLowerLeftChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_2
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
@@ -7858,7 +7858,7 @@ class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
@@ -7878,7 +7878,7 @@ class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_4
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
@@ -12481,7 +12481,7 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MAGIKOOPA
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, RecoveryMushroomPrize]
+    _blacklist = [EXPStarPrize, RecoveryMushroomPrize, SlotsPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, ["next"]),
