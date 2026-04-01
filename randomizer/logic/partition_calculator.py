@@ -498,8 +498,14 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     # If the room declares expected_animations for any NPC slot, look up
     # the current sprite's animation sequences and compute needed VRAM.
-    # For buffered NPCs: increase main_buffer_space on their buffer.
-    # For cannot_clone NPCs: increase min_vram_size on the NPC object.
+    #
+    # Hierarchy:
+    # 1. Room-level cannot_clone=True → already respected (force_cannot_clone),
+    #    just set min_vram_size for the animation
+    # 2. Unique sprite (count=1) with extra animations → set cannot_clone=True
+    #    + min_vram_size (cheaper than inflating a whole buffer)
+    # 3. Shared sprite (count>1) with extra animations → keep in buffer,
+    #    increase main_buffer_space (more efficient than N dedicated allocations)
     from ..types.room import Room as ExtRoom
     if isinstance(room, ExtRoom) and room.npc_expected_animations:
         from ..utils.npcs import min_vram_from_sequence_for_sprite
@@ -507,12 +513,11 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         for obj_idx, anim_attrs in room.npc_expected_animations.items():
             obj = room.objects[obj_idx]
             sprite_id = obj._npc.sprite_id
+            npc_info = next((n for n in npc_infos if n.obj_index == obj_idx), None)
+
             # Find the boss model to get animation sequence IDs
-            # The NPC might have been shuffled — get animations from its current model
             max_vram_needed = 0
             for anim_attr in anim_attrs:
-                # Try to get the animation from the NPC's boss model
-                # Look through all locations to find which boss was placed here
                 for location in world.locations.values():
                     from ..types.prize import BossFightPrize
                     if not hasattr(location, 'prize') or not isinstance(location.prize, BossFightPrize):
@@ -534,21 +539,46 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     except Exception:
                         continue
 
-            if max_vram_needed > 0:
-                # Check if this NPC is in a buffer or is cannot_clone
-                npc_info = next((n for n in npc_infos if n.obj_index == obj_idx), None)
+            if max_vram_needed == 0:
+                continue
+
+            # Case 1: Room-level cannot_clone=True — already force_cannot_clone,
+            # just ensure min_vram_size is sufficient
+            if npc_info and npc_info.force_cannot_clone:
+                current_min = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
+                if max_vram_needed > current_min:
+                    obj.set_min_vram_size(max_vram_needed)
+                continue
+
+            # Case 2: Unique sprite (only 1 NPC with this sprite) — cheaper
+            # to use cannot_clone=True + min_vram_size than inflate a buffer
+            if sprite_counts.get(sprite_id, 0) <= 1:
+                # Pull from buffer if it was assigned one
                 if npc_info and npc_info.sprite_id in buffered_sprite_ids:
-                    # Increase buffer's main_buffer_space
-                    buf_idx = sprite_to_new_buffer.get(npc_info.sprite_id)
+                    buffered_sprite_ids.discard(npc_info.sprite_id)
+                    buf_idx = sprite_to_new_buffer.pop(npc_info.sprite_id, None)
                     if buf_idx is not None:
-                        needed_space = BufferSpace(min(max_vram_needed, 7))
-                        if needed_space.value > new_buffer_space[buf_idx].value:
-                            new_buffer_space[buf_idx] = needed_space
-                else:
-                    # cannot_clone NPC — set min_vram_size
-                    current_min = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
-                    if max_vram_needed > current_min:
-                        obj.set_min_vram_size(max_vram_needed)
+                        new_buffer_types[buf_idx] = BufferType.EMPTY_3
+                obj.set_cannot_clone(True)
+                obj.set_min_vram_size(max_vram_needed)
+                # Update npc_info so step 7 doesn't override
+                if npc_info:
+                    npc_info.force_cannot_clone = True
+                continue
+
+            # Case 3: Shared sprite (multiple NPCs) — increase buffer space
+            if npc_info and npc_info.sprite_id in buffered_sprite_ids:
+                buf_idx = sprite_to_new_buffer.get(npc_info.sprite_id)
+                if buf_idx is not None:
+                    needed_space = BufferSpace(min(max_vram_needed, 7))
+                    if needed_space.value > new_buffer_space[buf_idx].value:
+                        new_buffer_space[buf_idx] = needed_space
+            else:
+                # Shared but not in buffer (no slot available) — set min_vram
+                obj.set_cannot_clone(True)
+                obj.set_min_vram_size(max_vram_needed)
+                if npc_info:
+                    npc_info.force_cannot_clone = True
 
     # =========================================================================
     # Step 6: Apply buffer changes to the existing partition
