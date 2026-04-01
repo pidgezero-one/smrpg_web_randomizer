@@ -26,21 +26,24 @@ class AllyContainerNPC(NPC):
 
 
 class Room(RoomBase):
-    """Extended Room class with extra_sprite_actions and adjacent_rooms support."""
+    """Extended Room class with extra_sprite_actions, adjacent_rooms, and npc_expected_animations support."""
 
     extra_sprite_actions: list[SpriteAnimationState]
     adjacent_rooms: list[int]  # List of adjacent room indices for EXP star buffer propagation
+    npc_expected_animations: dict[int, list[str]]  # NPC obj index → list of SpriteAnimationCollection attribute names
 
     def __init__(
         self,
         *args,
         extra_sprite_actions: list[SpriteAnimationState] | None = None,
         adjacent_rooms: list[int] | None = None,
+        npc_expected_animations: dict[int, list[str]] | None = None,
         **kwargs,
     ):
         super().__init__(*args, **kwargs)
         self.extra_sprite_actions = extra_sprite_actions or []
         self.adjacent_rooms = adjacent_rooms or []
+        self.npc_expected_animations = npc_expected_animations or {}
 
     def update_partition_by_protagonist(self, world: GameWorld) -> None:
         if self.partition is None:
