@@ -359,10 +359,19 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     has_coin = any(n.is_coin for n in npc_infos)
 
     # Build sprite groups: sprite_id → (buffer_type, npc_count, first_obj_index)
+    # Count ALL objects (including clones) per sprite for frequency ranking,
+    # since clones with the same sprite ID share VRAM and benefit from buffers.
     from collections import Counter
     sprite_to_type: dict[int, BufferType] = {}  # sprite_id → needed buffer type
-    sprite_counts: Counter[int] = Counter()
+    sprite_counts: Counter[int] = Counter()  # includes clones for ranking
     sprite_first_appearance: dict[int, int] = {}  # sprite_id → first obj_index
+    # Count clones toward sprite frequency (they share VRAM with parent)
+    for i, obj in enumerate(room.objects):
+        sprite_id = obj._npc.sprite_id
+        is_gp, fmt = _get_npc_gridplane_info(world, sprite_id)
+        if is_gp and fmt is not None:
+            sprite_counts[sprite_id] += 1
+    # Build type mapping and first appearance from parent NPCs only
     for npc in npc_infos:
         if npc.force_cannot_clone or npc.is_chest or npc.is_coin or not npc.is_gridplane:
             continue
