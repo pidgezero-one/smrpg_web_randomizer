@@ -224,67 +224,148 @@ def _detect_changed_rooms(world: GameWorld) -> set[int]:
 
 
 def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
-    """Recalculate and apply a room's partition, preserving BufferSpace values.
+    """Surgically update a room's partition buffers for changed NPCs.
+
+    Unlike analyze_partition + apply_partition (which replaces the whole
+    partition from scratch), this preserves the existing buffer layout,
+    index_in_main_buffer, and only changes cannot_clone for NPCs whose
+    sprites actually changed.
 
     Steps:
-    1. Extract preservation params from existing partition
-    2. Run analyze_partition with preserved params
-    3. Overlay preserved BufferSpace values onto the analysis result
-    4. Apply the partition
+    1. Compare current NPCs to vanilla snapshot to find which changed
+    2. For each changed NPC, determine its new buffer type from sprite
+    3. Update the existing buffer that served that NPC's role
+    4. Overlay preserved BufferSpace values
+    5. Set cannot_clone only for changed NPCs
     """
     room = world.rooms._rooms[room_id]
     assert room is not None
     assert room.partition is not None
+    assert world._vanilla_room_states is not None
 
     existing = room.partition
+    vanilla_state = world._vanilla_room_states.get(room_id)
+    if vanilla_state is None:
+        return
 
-    # --- Extract preservation params ---
-    allow_extra = existing.allow_extra_sprite_buffer
-    max_packets = existing.extra_sprite_buffer_size
-    water = not existing.full_palette_buffer
+    # --- Build vanilla NPC → buffer index mapping ---
+    # For each vanilla NPC, determine which buffer type it needed,
+    # then find which buffer index in the existing partition has that type.
+    # This tells us which buffer index serves each NPC's role.
+    vanilla_npc_buffer_index: dict[int, int] = {}
+    # Track which buffer indices have been claimed by type
+    type_to_indices: dict[BufferType, list[int]] = {}
+    for i, buf in enumerate(existing.buffers):
+        btype = buf.buffer_type
+        if btype not in type_to_indices:
+            type_to_indices[btype] = []
+        type_to_indices[btype].append(i)
 
-    # Build buffer space preservation map: {buffer_type: max BufferSpace}
-    # Also track per-index for the "same role" fallback
-    preserved_by_type: dict[BufferType, BufferSpace] = {}
-    preserved_by_index: list[BufferSpace] = []
-    for buf in existing.buffers:
-        space = buf.main_buffer_space
-        preserved_by_index.append(space)
-        if space != BufferSpace.BYTES_0:
-            btype = buf.buffer_type
-            if btype not in preserved_by_type or space.value > preserved_by_type[btype].value:
-                preserved_by_type[btype] = space
+    # Enumerate vanilla non-Clone NPCs and match to buffer types
+    obj_idx = 0
+    vanilla_npc_idx = 0
+    while obj_idx < len(room.objects) and vanilla_npc_idx < len(vanilla_state.npcs):
+        obj = room.objects[obj_idx]
+        if isinstance(obj, Clone):
+            obj_idx += 1
+            continue
+        vanilla_npc = vanilla_state.npcs[vanilla_npc_idx]
 
-    # --- Run analyze_partition ---
-    # Do NOT pass protagonist — ally buffer already set by update_partition_by_protagonist
-    analysis = analyze_partition(
-        world,
-        room_id,
-        max_packets=max_packets,
-        allow_extra_sprite_buffer=allow_extra,
-        water=water,
-    )
+        # Determine what buffer type this vanilla NPC needed
+        if vanilla_npc.is_gridplane:
+            if vanilla_npc.gridplane_format in (0, 1):
+                needed_type = BufferType.FOUR_SPRITES_PER_ROW
+            elif vanilla_npc.gridplane_format in (2, 3):
+                needed_type = BufferType.THREE_SPRITES_PER_ROW
+            else:
+                needed_type = None
+        elif vanilla_npc.is_coin:
+            needed_type = BufferType.COINS
+        elif vanilla_npc.sprite_id == CHEST_SPRITE_ID:
+            needed_type = BufferType.TREASURE_CHEST
+        else:
+            needed_type = None  # Non-gridplane, uses dedicated VRAM
 
-    # --- Preserve ally buffer size from existing partition ---
-    # update_partition_by_protagonist already computed the correct value
-    analysis.ally_buffer_size = existing.ally_sprite_buffer_size
+        if needed_type is not None and needed_type in type_to_indices:
+            indices = type_to_indices[needed_type]
+            if indices:
+                vanilla_npc_buffer_index[obj_idx] = indices[0]
 
-    # --- Overlay preserved BufferSpace ---
-    for i, assignment in enumerate(analysis.buffers):
-        computed_space = assignment.buffer_space
+        obj_idx += 1
+        vanilla_npc_idx += 1
 
-        # Check 1: type match in preservation map
-        type_preserved = preserved_by_type.get(assignment.buffer_type, BufferSpace.BYTES_0)
+    # --- Find changed NPCs and update their buffers ---
+    obj_idx = 0
+    vanilla_npc_idx = 0
+    while obj_idx < len(room.objects) and vanilla_npc_idx < len(vanilla_state.npcs):
+        obj = room.objects[obj_idx]
+        if isinstance(obj, Clone):
+            obj_idx += 1
+            continue
+        vanilla_npc = vanilla_state.npcs[vanilla_npc_idx]
+        current_sprite_id = obj._npc.sprite_id
 
-        # Check 2: same-index fallback (buffer type changed but same role)
-        index_preserved = preserved_by_index[i] if i < len(preserved_by_index) else BufferSpace.BYTES_0
+        if current_sprite_id != vanilla_npc.sprite_id:
+            # This NPC changed — determine its new buffer type
+            new_is_gridplane, new_format = _get_npc_gridplane_info(world, current_sprite_id)
 
-        # Take the max of: what analysis computed, type-matched preservation, index-based preservation
-        best = max(computed_space, type_preserved, index_preserved, key=lambda s: s.value)
-        assignment.buffer_space = best
+            if new_is_gridplane:
+                if new_format in (0, 1):
+                    new_buffer_type = BufferType.FOUR_SPRITES_PER_ROW
+                elif new_format in (2, 3):
+                    new_buffer_type = BufferType.THREE_SPRITES_PER_ROW
+                else:
+                    new_buffer_type = None
+            else:
+                new_buffer_type = None  # Non-gridplane → cannot_clone
 
-    # --- Apply ---
-    apply_partition(world, room_id, analysis)
+            # Find which buffer index this NPC was using
+            buffer_idx = vanilla_npc_buffer_index.get(obj_idx)
+
+            if new_buffer_type is not None and buffer_idx is not None:
+                # Update the buffer type at the same index
+                existing.buffers[buffer_idx].set_buffer_type(new_buffer_type)
+                # Preserve or upgrade BufferSpace
+                current_space = existing.buffers[buffer_idx].main_buffer_space
+                npc_min_vram = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
+                needed_space = BufferSpace(min(npc_min_vram, 7))
+                if needed_space.value > current_space.value:
+                    existing.buffers[buffer_idx].set_main_buffer_space(needed_space)
+                obj.set_cannot_clone(False)
+            elif new_buffer_type is None and buffer_idx is not None:
+                # Was in a buffer but new sprite is non-gridplane → set cannot_clone
+                # Set the buffer to EMPTY_3 since nothing needs it anymore
+                # (unless other NPCs still use this buffer)
+                obj.set_cannot_clone(True)
+            elif new_buffer_type is not None and buffer_idx is None:
+                # Vanilla NPC was cannot_clone (dedicated VRAM) but new sprite is gridplane.
+                # Find a buffer with matching type, or an EMPTY buffer to claim.
+                placed = False
+                for i, buf in enumerate(existing.buffers):
+                    if buf.buffer_type == new_buffer_type:
+                        placed = True
+                        obj.set_cannot_clone(False)
+                        break
+                if not placed:
+                    for i, buf in enumerate(existing.buffers):
+                        if buf.buffer_type in (BufferType.EMPTY_3, BufferType.EMPTY_0):
+                            buf.set_buffer_type(new_buffer_type)
+                            npc_min_vram = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
+                            needed_space = BufferSpace(min(npc_min_vram, 7))
+                            if needed_space.value > buf.main_buffer_space.value:
+                                buf.set_main_buffer_space(needed_space)
+                            placed = True
+                            obj.set_cannot_clone(False)
+                            break
+                if not placed:
+                    # No buffer available, keep as cannot_clone
+                    obj.set_cannot_clone(True)
+            else:
+                # Was cannot_clone, still non-gridplane → keep cannot_clone
+                obj.set_cannot_clone(True)
+
+        obj_idx += 1
+        vanilla_npc_idx += 1
 
 
 def _log_slot_machine_support(world: GameWorld) -> None:
