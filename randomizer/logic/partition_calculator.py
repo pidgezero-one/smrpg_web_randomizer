@@ -270,11 +270,38 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         is_chest = isinstance(obj, ChestNPC) or sprite_id == CHEST_SPRITE_ID
         is_coin = sprite_id in COIN_SPRITE_IDS
 
-        # Room-level cannot_clone=True is always respected. It signals that
-        # this NPC slot uses animation sequences beyond basic directional
-        # walking, which require dedicated VRAM regardless of sprite format.
-        # Clone buffers only have space for directional sprites.
-        force_cc = obj.cannot_clone is True
+        # Room-level cannot_clone=True handling:
+        # - If this NPC has npc_expected_animations, the cannot_clone was set
+        #   FOR those animations. If the placed sprite doesn't have them,
+        #   the reason is gone — let the orchestrator decide.
+        # - If no npc_expected_animations, always respect it (other reasons).
+        from ..types.room import Room as ExtRoom
+        force_cc = False
+        if obj.cannot_clone is True:
+            if isinstance(room, ExtRoom) and i in room.npc_expected_animations:
+                # Check if sprite actually has any of the expected animations
+                has_any_animation = False
+                for anim_attr in room.npc_expected_animations[i]:
+                    for location in world.locations.values():
+                        from ..types.prize import BossFightPrize
+                        if not hasattr(location, 'prize') or not isinstance(location.prize, BossFightPrize):
+                            continue
+                        try:
+                            npc_model = location.prize.get_npc_for_slot(world, 4096)
+                            boss = npc_model()
+                            if boss.base.sprite_id != sprite_id:
+                                continue
+                            if boss.animations and getattr(boss.animations, anim_attr, None) is not None:
+                                has_any_animation = True
+                                break
+                        except Exception:
+                            continue
+                    if has_any_animation:
+                        break
+                force_cc = has_any_animation
+            else:
+                # No expected_animations declared — always respect cannot_clone=True
+                force_cc = True
 
         npc_infos.append(NPCInfo(
             obj_index=i,
