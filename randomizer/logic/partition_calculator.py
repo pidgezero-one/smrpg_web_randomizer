@@ -281,21 +281,37 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             if isinstance(room, ExtRoom) and i in room.npc_expected_animations:
                 # Check if sprite actually has any of the expected animations
                 has_any_animation = False
-                for anim_attr in room.npc_expected_animations[i]:
-                    for location in world.locations.values():
-                        from ..types.prize import BossFightPrize
-                        if not hasattr(location, 'prize') or not isinstance(location.prize, BossFightPrize):
-                            continue
-                        try:
-                            npc_model = location.prize.get_npc_for_slot(world, 4096)
-                            boss = npc_model()
-                            if boss.base.sprite_id != sprite_id:
+                for anim_entry in room.npc_expected_animations[i]:
+                    if isinstance(anim_entry, tuple) and len(anim_entry) == 2 and anim_entry[0] == "character":
+                        # Character animation — check if any CharacterPrize has this sprite + state
+                        from ..types.prize import CharacterPrize
+                        anim_state = anim_entry[1]
+                        for location in world.locations.values():
+                            if not hasattr(location, 'prize') or not isinstance(location.prize, CharacterPrize):
                                 continue
-                            if boss.animations and getattr(boss.animations, anim_attr, None) is not None:
+                            if location.prize.character_model.base.sprite_id != sprite_id:
+                                continue
+                            ally = location.prize.ally
+                            sprites_dict = ally._sprites_primary if ally.index == 0 else ally._sprites_secondary
+                            if anim_state in sprites_dict:
                                 has_any_animation = True
                                 break
-                        except Exception:
-                            continue
+                    elif isinstance(anim_entry, str):
+                        # Boss animation attr
+                        for location in world.locations.values():
+                            from ..types.prize import BossFightPrize
+                            if not hasattr(location, 'prize') or not isinstance(location.prize, BossFightPrize):
+                                continue
+                            try:
+                                npc_model = location.prize.get_npc_for_slot(world, 4096)
+                                boss = npc_model()
+                                if boss.base.sprite_id != sprite_id:
+                                    continue
+                                if boss.animations and getattr(boss.animations, anim_entry, None) is not None:
+                                    has_any_animation = True
+                                    break
+                            except Exception:
+                                continue
                     if has_any_animation:
                         break
                 force_cc = has_any_animation
@@ -542,29 +558,63 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             sprite_id = obj._npc.sprite_id
             npc_info = next((n for n in npc_infos if n.obj_index == obj_idx), None)
 
-            # Find the boss model to get animation sequence IDs
+            # Compute max VRAM needed across all expected animations.
+            # Two types of entries:
+            #   str → boss animation attr (e.g., "bandits_way_distracted")
+            #   ("character", SpriteAnimationState) → character animation state
             max_vram_needed = 0
-            for anim_attr in anim_attrs:
-                for location in world.locations.values():
-                    from ..types.prize import BossFightPrize
-                    if not hasattr(location, 'prize') or not isinstance(location.prize, BossFightPrize):
-                        continue
-                    try:
-                        npc_model = location.prize.get_npc_for_slot(world, 4096)
-                        boss = npc_model()
-                        if boss.base.sprite_id != sprite_id:
+            for anim_entry in anim_attrs:
+                if isinstance(anim_entry, tuple) and len(anim_entry) == 2 and anim_entry[0] == "character":
+                    # Character animation — look up via CharacterPrize ally sprites
+                    from ..types.prize import CharacterPrize
+                    anim_state = anim_entry[1]
+                    for location in world.locations.values():
+                        if not hasattr(location, 'prize') or not isinstance(location.prize, CharacterPrize):
                             continue
-                        if boss.animations is None:
+                        char_prize = location.prize
+                        if char_prize.character_model.base.sprite_id != sprite_id:
                             continue
-                        animation = getattr(boss.animations, anim_attr, None)
-                        if animation is None:
+                        # Use _sprites_secondary for recruited NPCs (they're not the protagonist)
+                        # Use _sprites_primary if the character is Mario (ally index 0)
+                        if char_prize.ally.index == 0:
+                            sprites_dict = char_prize.ally._sprites_primary
+                        else:
+                            sprites_dict = char_prize.ally._sprites_secondary
+                        if anim_state not in sprites_dict:
                             continue
-                        seq_id = animation.sequence_id
-                        vram = min_vram_from_sequence_for_sprite(world, sprite_id, seq_id)
-                        max_vram_needed = max(max_vram_needed, vram)
+                        prop_id, offset, is_mold = sprites_dict[anim_state]
+                        try:
+                            npc_model = char_prize.character_model
+                            if is_mold:
+                                vram = npc_model._npc.min_vram_from_mold(world, prop_id, offset)
+                            else:
+                                vram = npc_model._npc.min_vram_from_sequence(world, prop_id, offset)
+                            max_vram_needed = max(max_vram_needed, vram)
+                        except (IndexError, AssertionError):
+                            pass
                         break
-                    except Exception:
-                        continue
+                elif isinstance(anim_entry, str):
+                    # Boss animation attr — search locations for matching sprite
+                    for location in world.locations.values():
+                        from ..types.prize import BossFightPrize
+                        if not hasattr(location, 'prize') or not isinstance(location.prize, BossFightPrize):
+                            continue
+                        try:
+                            npc_model = location.prize.get_npc_for_slot(world, 4096)
+                            boss = npc_model()
+                            if boss.base.sprite_id != sprite_id:
+                                continue
+                            if boss.animations is None:
+                                continue
+                            animation = getattr(boss.animations, anim_entry, None)
+                            if animation is None:
+                                continue
+                            seq_id = animation.sequence_id
+                            vram = min_vram_from_sequence_for_sprite(world, sprite_id, seq_id)
+                            max_vram_needed = max(max_vram_needed, vram)
+                            break
+                        except Exception:
+                            continue
 
             if max_vram_needed == 0:
                 continue
