@@ -259,6 +259,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         gridplane_format: int | None  # 0-1 = FOUR, 2-3 = THREE
         is_chest: bool
         is_coin: bool
+        force_cannot_clone: bool  # Room-level override — orchestrator must respect
 
     npc_infos: list[NPCInfo] = []
     for i, obj in enumerate(room.objects):
@@ -268,6 +269,9 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         is_gridplane, fmt = _get_npc_gridplane_info(world, sprite_id)
         is_chest = isinstance(obj, ChestNPC) or sprite_id == CHEST_SPRITE_ID
         is_coin = sprite_id in COIN_SPRITE_IDS
+        # Room-level cannot_clone=True is a signal to always use dedicated VRAM
+        # (e.g., NPCs with non-gridplane animation sequences despite gridplane mold 0)
+        force_cc = obj.cannot_clone is True
         npc_infos.append(NPCInfo(
             obj_index=i,
             sprite_id=sprite_id,
@@ -275,6 +279,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             gridplane_format=fmt,
             is_chest=is_chest,
             is_coin=is_coin,
+            force_cannot_clone=force_cc,
         ))
 
     # =========================================================================
@@ -348,7 +353,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     sprite_counts: Counter[int] = Counter()
     sprite_first_appearance: dict[int, int] = {}  # sprite_id → first obj_index
     for npc in npc_infos:
-        if npc.is_chest or npc.is_coin or not npc.is_gridplane:
+        if npc.force_cannot_clone or npc.is_chest or npc.is_coin or not npc.is_gridplane:
             continue
         if npc.gridplane_format in (0, 1):
             sprite_to_type[npc.sprite_id] = BufferType.FOUR_SPRITES_PER_ROW
@@ -462,7 +467,10 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     for npc in npc_infos:
         obj = room.objects[npc.obj_index]
-        if npc.is_chest or npc.is_coin:
+        if npc.force_cannot_clone:
+            # Room-level override — always dedicated VRAM, don't touch
+            pass
+        elif npc.is_chest or npc.is_coin:
             obj.set_cannot_clone(False)
         elif npc.sprite_id in buffered_sprite_ids:
             obj.set_cannot_clone(False)
@@ -474,6 +482,8 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     # Check for sprites that needed a buffer but didn't get one
     for npc in npc_infos:
+        if npc.force_cannot_clone:
+            continue  # Intentionally excluded from buffers
         if npc.is_gridplane and npc.sprite_id not in buffered_sprite_ids and not npc.is_chest and not npc.is_coin:
             print(
                 f"[PARTITION WARN] Room {room_id}: NPC {npc.obj_index} "
