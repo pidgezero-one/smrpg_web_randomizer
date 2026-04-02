@@ -134,6 +134,8 @@ class SpriteAnimationCollection:
     _look_at_ceiling_mold_id: int | None
     _tpose_mold_id: int | None
     _tower_toss: SpriteAnimation | None
+    _tpose: SpriteAnimation | None
+    _look_at_ceiling: SpriteAnimation | None
 
     @property
     def tower_crying(self) -> SpriteAnimation | None:
@@ -404,6 +406,22 @@ class SpriteAnimationCollection:
         Set the animation to use when tossing objects in the second tower henchman room.
         """
         self._tower_toss = tower_toss
+    
+    @property
+    def tpose(self) -> SpriteAnimation | None:
+        """The animation to use when the NPC is in a T-pose."""
+        return self._tpose
+    def set_tpose(self, tpose: SpriteAnimation | None = None) -> None:
+        """Set the animation to use when the NPC is in a T-pose."""
+        self._tpose = tpose
+
+    @property
+    def look_at_ceiling(self) -> SpriteAnimation | None:
+        """The animation to use when the NPC is looking at the ceiling."""
+        return self._look_at_ceiling
+    def set_look_at_ceiling(self, look_at_ceiling: SpriteAnimation | None = None) -> None:
+        """Set the animation to use when the NPC is looking at the ceiling."""
+        self._look_at_ceiling = look_at_ceiling
 
     def __init__(
         self,
@@ -428,6 +446,8 @@ class SpriteAnimationCollection:
         endgame_challenge: SpriteAnimation | None = None,
         look_at_ceiling_mold_id: int | None = None,
         tpose_mold_id: int | None = None,
+        tpose: SpriteAnimation | None = None,
+        look_at_ceiling: SpriteAnimation | None = None,
     ):
         self.set_recoil(recoil)
         self.set_tower_crying(tower_crying)
@@ -450,7 +470,8 @@ class SpriteAnimationCollection:
         self.set_look_at_ceiling_mold_id(look_at_ceiling_mold_id)
         self.set_tpose_mold_id(tpose_mold_id)
         self.set_tower_toss(tower_toss)
-
+        self.set_tpose(tpose)
+        self.set_look_at_ceiling(look_at_ceiling)
 
 class NPC:
     _base: NPCBase

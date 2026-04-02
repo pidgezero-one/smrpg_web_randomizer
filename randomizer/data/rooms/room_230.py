@@ -295,9 +295,10 @@ room = Room(
             byte5_bit6=False,
             byte5_bit7=False,
             byte6_bit2=False,
-            show_shadow=True),
+            show_shadow=True,
+            cannot_clone=True),
         RegularClone( # 12
-            npc=npcs.TOAD_NPC,
+            npc=npcs.EMPTY_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0488_FOREST_MAZE_AREA_RECRUITABLE_CHARACTER,
             visible=False,
@@ -309,8 +310,7 @@ room = Room(
             byte5_bit6=False,
             byte5_bit7=False,
             byte6_bit2=False,
-            show_shadow=True,
-            cannot_clone=False),
+            show_shadow=True),
         RegularNPC( # 13
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,

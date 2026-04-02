@@ -2789,10 +2789,6 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
             NPC_11,
         ),
         AllyNPCSub(
-            R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09,
-            NPC_12,
-        ),
-        AllyNPCSub(
             R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
             NPC_10,
         ),

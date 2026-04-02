@@ -350,4 +350,7 @@ room = Room(
             byte7_upper2=3,
         ),
     ],
+    npc_expected_animations={
+        12: ["bandits_way_distracted"]
+    }
 )

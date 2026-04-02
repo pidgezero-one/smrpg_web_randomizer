@@ -551,10 +551,12 @@ sprite = CompleteSprite(
                 ),
                 AnimationSequence(
                     frames=[
+                        AnimationSequenceFrame(duration=12, mold_id=2),
                     ]
                 ),
                 AnimationSequence(
                     frames=[
+                        AnimationSequenceFrame(duration=12, mold_id=1),
                     ]
                 ),
                 AnimationSequence(

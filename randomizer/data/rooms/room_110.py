@@ -130,11 +130,15 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SALUTE,
         SpriteAnimationState.RECOIL,
         SpriteAnimationState.DIZZY,
-    ]
+    ],
+    npc_expected_animations={
+        3: ["statue_peck", "statue_flustered"]
+    }
 )

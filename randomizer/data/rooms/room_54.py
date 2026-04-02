@@ -261,6 +261,7 @@ room = Room(
             acute_axis=UInt4(6),
             obtuse_axis=UInt4(5),
             height=UInt8(12),
+            cannot_clone=True
         ),
     ],
     extra_sprite_actions=[

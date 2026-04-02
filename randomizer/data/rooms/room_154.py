@@ -283,6 +283,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True
         ),
         RegularNPC(  # 11
             npc=npcs.BUNDT_OBJECT_NPC,
@@ -343,4 +344,7 @@ room = Room(
             directions=VramStore.DIR2_SWSE
         ),
     ],
+    npc_expected_animations={
+        9: ["chapel_laugh", "tpose", "look_at_ceiling"]
+    }
 )

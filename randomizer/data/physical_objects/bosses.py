@@ -499,6 +499,7 @@ class ValentinaSmallObject(BossNPC):
         chandelier_challenge=valentina_laugh,
         endgame_challenge=valentina_laugh,
         look_at_ceiling_mold_id=8,
+        look_at_ceiling=SpriteAnimation(sequence_id=10)
     )
 
 
@@ -592,7 +593,8 @@ class ClerkSmallObject(BossNPC):
         chandelier_challenge=shovelknight_tile,
         endgame_challenge=shovelknight_tile,
         look_at_ceiling_mold_id=1,
-        tower_toss=shovelknight_tile
+        tower_toss=shovelknight_tile,
+        look_at_ceiling=SpriteAnimation(sequence_id=2)
     )
 
 
@@ -612,7 +614,8 @@ class ManagerSmallObject(BossNPC):
         chandelier_challenge=shovelknight_tile,
         endgame_challenge=shovelknight_tile,
         look_at_ceiling_mold_id=1,
-        tower_toss=shovelknight_tile
+        tower_toss=shovelknight_tile,
+        look_at_ceiling=SpriteAnimation(sequence_id=2)
     )
 
 
@@ -632,7 +635,8 @@ class DirectorSmallObject(BossNPC):
         chandelier_challenge=shovelknight_tile,
         endgame_challenge=shovelknight_tile,
         look_at_ceiling_mold_id=1,
-        tower_toss=shovelknight_tile
+        tower_toss=shovelknight_tile,
+        look_at_ceiling=SpriteAnimation(sequence_id=2)
     )
 
 
@@ -770,7 +774,9 @@ class BoosterObject(BossNPC):
         chandelier_challenge=booster_punch,
         endgame_challenge=booster_punch,
         tpose_mold_id=12,
-        tower_toss=booster_laugh
+        tower_toss=booster_laugh,
+        tpose=SpriteAnimation(sequence_id=15, total_duration=16)
+
     )
 
 
@@ -854,7 +860,8 @@ class TerrapinObject(BossNPC):
         chandelier_challenge=jagger_punch,
         endgame_challenge=jagger_punch,
         look_at_ceiling_mold_id=6,
-        tower_toss=jagger_punch
+        tower_toss=jagger_punch,
+        look_at_ceiling=SpriteAnimation(sequence_id=6)
     )
 
 
@@ -884,7 +891,8 @@ class PiranhaPlantObject(BossNPC):
         chandelier_challenge=piranha_bite,
         endgame_challenge=piranha_bite,
         tpose_mold_id=3,
-        tower_toss=piranha_bite
+        tower_toss=piranha_bite,
+        tpose=SpriteAnimation(sequence_id=6, total_duration=16)
     )
 
 
@@ -919,7 +927,9 @@ class BlooberObject(BossNPC):
         chapel_laugh=squid_default, 
         look_at_ceiling_mold_id=1,
         tpose_mold_id=2,
-        tower_toss=squid_hit
+        tower_toss=squid_hit,
+        tpose=SpriteAnimation(sequence_id=5, total_duration=12),
+        look_at_ceiling=SpriteAnimation(sequence_id=6)
     )
 
 
@@ -961,7 +971,8 @@ class FactoryChiefObject(BossNPC):
         chandelier_challenge=chief_stab,
         endgame_challenge=chief_stab,
         look_at_ceiling_mold_id=17,
-        tower_toss=chief_cast
+        tower_toss=chief_cast,
+        look_at_ceiling=SpriteAnimation(sequence_id=5)
     )
 
 red_recoil=SpriteAnimation(sequence_id=2, total_duration=22)

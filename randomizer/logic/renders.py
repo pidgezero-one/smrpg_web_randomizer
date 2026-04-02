@@ -9,7 +9,10 @@ from __future__ import annotations
 from ast import Return
 from typing import TYPE_CHECKING, cast
 
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import A_FixedFCoordOn, A_TransferXYZFPixels
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
+    A_FixedFCoordOn,
+    A_TransferXYZFPixels,
+)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST
 
 from randomizer.progression.prizes import (
@@ -19,7 +22,11 @@ from randomizer.progression.prizes import (
     ManagerBossFight,
     MarioRecruitmentPrize,
 )
-from randomizer.utils.tower_access_scripts import A_EndLoop, A_JmpIfRandom1of2, A_VisibilityOn
+from randomizer.utils.tower_access_scripts import (
+    A_EndLoop,
+    A_JmpIfRandom1of2,
+    A_VisibilityOn,
+)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
     ActionScript,
 )
@@ -112,7 +119,14 @@ from ..types.ally import Ally, SpriteAnimationState
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
 
-def update_ally_animation(seq: A_SetSpriteSequence, ally: Ally, anim: SpriteAnimationState, *, use_primary: bool = False) -> None:
+
+def update_ally_animation(
+    seq: A_SetSpriteSequence,
+    ally: Ally,
+    anim: SpriteAnimationState,
+    *,
+    use_primary: bool = False,
+) -> None:
     """Update an ally animation sequence command with the given animation.
 
     If no animation is provided, replace the command with a face direction
@@ -201,6 +215,7 @@ def render_forest_maze_character_empty(world: GameWorld) -> None:
     )
     e.set_subscript(ss.contents)
 
+
 def render_forest_maze_character(world: GameWorld, prize: CharacterPrize) -> None:
     ally = prize.ally
     # Mario uses protagonist sprite (0) at this location, so needs _sprites_primary
@@ -208,25 +223,60 @@ def render_forest_maze_character(world: GameWorld, prize: CharacterPrize) -> Non
     # with offsets relative to their non-protagonist sprite IDs.
     use_primary = isinstance(prize, MarioRecruitmentPrize)
 
-    a1 = world.action_scripts.get_command_by_identifier("forest_character_animation_1", A_SetSpriteSequence)
-    update_ally_animation(a1, ally, SpriteAnimationState.SHAKING_HEAD, use_primary=use_primary)
-    a3 = world.action_scripts.get_command_by_identifier("forest_character_animation_3", A_SetSpriteSequence)
-    update_ally_animation(a3, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD, use_primary=use_primary)
-    a5 = world.action_scripts.get_command_by_identifier("forest_character_animation_5", A_SetSpriteSequence)
-    update_ally_animation(a5, ally, SpriteAnimationState.LOOKING_DOWN, use_primary=use_primary)
-    a7 = world.action_scripts.get_command_by_identifier("forest_character_animation_7", A_SetSpriteSequence)
-    update_ally_animation(a7, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD, use_primary=use_primary)
-    a8 = world.action_scripts.get_command_by_identifier("forest_character_animation_8", A_SetSpriteSequence)
-    update_ally_animation(a8, ally, SpriteAnimationState.SLEEPING, use_primary=use_primary)
-    a9 = world.action_scripts.get_command_by_identifier("forest_character_animation_9", A_SetSpriteSequence)
-    update_ally_animation(a9, ally, SpriteAnimationState.SHOCKED_BACKWARDS_SEQUENCE, use_primary=use_primary)
+    a1 = world.action_scripts.get_command_by_identifier(
+        "forest_character_animation_1", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a1, ally, SpriteAnimationState.SHAKING_HEAD, use_primary=use_primary
+    )
+    a3 = world.action_scripts.get_command_by_identifier(
+        "forest_character_animation_3", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a3, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD, use_primary=use_primary
+    )
+    a5 = world.action_scripts.get_command_by_identifier(
+        "forest_character_animation_5", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a5, ally, SpriteAnimationState.LOOKING_DOWN, use_primary=use_primary
+    )
+    a7 = world.action_scripts.get_command_by_identifier(
+        "forest_character_animation_7", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a7, ally, SpriteAnimationState.SHAKING_HEAD_BACKWARD, use_primary=use_primary
+    )
+    a8 = world.action_scripts.get_command_by_identifier(
+        "forest_character_animation_8", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a8, ally, SpriteAnimationState.SLEEPING, use_primary=use_primary
+    )
+    a9 = world.action_scripts.get_command_by_identifier(
+        "forest_character_animation_9", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a9,
+        ally,
+        SpriteAnimationState.SHOCKED_BACKWARDS_SEQUENCE,
+        use_primary=use_primary,
+    )
 
-    e1 = world.event_scripts.get_subscript_command_by_identifier("forest_character_animation_14", "forest_character_animation_13", A_SetSpriteSequence)
+    e1 = world.event_scripts.get_subscript_command_by_identifier(
+        "forest_character_animation_14",
+        "forest_character_animation_13",
+        A_SetSpriteSequence,
+    )
     update_ally_animation(e1, ally, SpriteAnimationState.SOUTH, use_primary=use_primary)
-    e2 = world.event_scripts.get_subscript_command_by_identifier("forest_character_animation_14", "forest_character_animation_11", A_SetSpriteSequence)
-    update_ally_animation(e2, ally, SpriteAnimationState.DEFEND, use_primary=use_primary)
-    
-
+    e2 = world.event_scripts.get_subscript_command_by_identifier(
+        "forest_character_animation_14",
+        "forest_character_animation_11",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        e2, ally, SpriteAnimationState.DEFEND, use_primary=use_primary
+    )
 
 
 # =============================================================================
@@ -306,14 +356,14 @@ def render_booster_tower_indoor_boss(
     cry = m.animations.tower_crying
     if cry:
         e = world.event_scripts.get_subscript_command_by_identifier(
-           "tower_boss_crying_aq_1", "tower_boss_crying_1", A_SetSpriteSequence
+            "tower_boss_crying_aq_1", "tower_boss_crying_1", A_SetSpriteSequence
         )
         e.set_index(cry.sequence_id)
     else:
         world.event_scripts.delete_subscript_command_by_identifier(
             "tower_boss_crying_aq_1", "tower_boss_crying_1"
         )
-        
+
     # Delete henchman curtain animations
     deletions = [
         ("tower_henchman_curtain_aqueue_1", "tower_henchman_curtain_1"),
@@ -355,7 +405,6 @@ def render_booster_tower_indoor_boss(
         ("tower_henchman_curtain_aqueue_37", "tower_henchman_curtain_37"),
         ("tower_henchman_curtain_aqueue_38", "tower_henchman_curtain_38"),
         ("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_39"),
-        ("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_40"),
     ]
     as_deletions = [
         "EVENT_576_open_curtain_async_26",
@@ -373,7 +422,10 @@ def render_booster_tower_indoor_boss(
             world.action_scripts.delete_command_by_identifier(aid)
 
     # T-pose replacements
-    tpose_replacements = [("chapel_tpose_queue_1", "chapel_tpose_1")]
+    tpose_replacements = [
+        ("chapel_tpose_queue_1", "chapel_tpose_1"),
+        ("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_40"),
+    ]
     for eid, aid in tpose_replacements:
         a = world.event_scripts.get_subscript_command_by_identifier(
             eid, aid, A_SetSpriteSequence
@@ -443,7 +495,9 @@ def render_booster_tower_indoor_boss(
             ),
         )
     else:
-        world.event_scripts.delete_subscript_command_by_identifier("tower_toss_aqueue", "tower_toss")
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "tower_toss_aqueue", "tower_toss"
+        )
 
     # Door height adjustment
     door_height = 15 - m.eye_height
@@ -681,7 +735,8 @@ def render_marrymore_character_empty(world: GameWorld) -> None:
                 idx = ss.get_index_of_identifier(action)
                 ss.delete_at_index(idx)
             e.set_subscript(ss.contents)
-            
+
+
 def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
     ally = prize.ally
     # Mario uses protagonist sprite (0) at this location, so needs _sprites_primary
@@ -689,51 +744,154 @@ def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
     # with offsets relative to their non-protagonist sprite IDs.
     use_primary = isinstance(prize, MarioRecruitmentPrize)
 
-    a1 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_1", "chapel_character_animation_1", A_SetSpriteSequence)
-    update_ally_animation(a1, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
-    a2 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_1", "chapel_character_animation_2", A_SetSpriteSequence)
-    update_ally_animation(a2, ally, SpriteAnimationState.FLOORED, use_primary=use_primary)
-    a3 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_2", "chapel_character_animation_3", A_SetSpriteSequence)
+    a1 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_1", "chapel_character_animation_1", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a1, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary
+    )
+    a2 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_1", "chapel_character_animation_2", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a2, ally, SpriteAnimationState.FLOORED, use_primary=use_primary
+    )
+    a3 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_2", "chapel_character_animation_3", A_SetSpriteSequence
+    )
     update_ally_animation(a3, ally, SpriteAnimationState.HURT, use_primary=use_primary)
-    a4 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_3", "chapel_character_queue_3_", A_SetSpriteSequence)
-    update_ally_animation(a4, ally, SpriteAnimationState.LOOKING_DOWN_STATIC, use_primary=use_primary)
-    a5 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_4", "chapel_character_animation_4", A_SetSpriteSequence)
-    update_ally_animation(a5, ally, SpriteAnimationState.SHAKING_HEAD, use_primary=use_primary)
-    a6 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_4", "chapel_character_animation_5", A_SetSpriteSequence)
-    update_ally_animation(a6, ally, SpriteAnimationState.LOOKING_DOWN_STATIC, use_primary=use_primary)
-    a7 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_5", "chapel_character_animation_6", A_SetSpriteSequence)
-    update_ally_animation(a7, ally, SpriteAnimationState.CRYING, use_primary=use_primary)
-    a8 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_6", "chapel_character_animation_7", A_SetSpriteSequence)
-    update_ally_animation(a8, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
-    a9 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_7", "chapel_character_animation_9", A_SetSpriteSequence)
-    update_ally_animation(a9, ally, SpriteAnimationState.LOOKING_DOWN_STATIC, use_primary=use_primary)
-    a10 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_7", "chapel_character_animation_8", A_SetSpriteSequence)
-    update_ally_animation(a10, ally, SpriteAnimationState.CRYING, use_primary=use_primary)
-    a11 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_8", "chapel_character_animation_10", A_SetSpriteSequence)
-    update_ally_animation(a11, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
-    a12 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_8", "chapel_character_animation_11", A_SetSpriteSequence)
-    update_ally_animation(a12, ally, SpriteAnimationState.CRYING_BACKWARDS, use_primary=use_primary)
-    a13 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_9", "chapel_character_animation_12", A_SetSpriteSequence)
-    update_ally_animation(a13, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
-    a14 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_42", "chapel_character_animation_13", A_SetSpriteSequence)
-    update_ally_animation(a14, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
-    a15 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_42", "chapel_character_animation_14", A_SetSpriteSequence)
-    update_ally_animation(a15, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
-    a16 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_45", "chapel_character_animation_15", A_SetSpriteSequence)
-    update_ally_animation(a16, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
-    a17 = world.event_scripts.get_subscript_command_by_identifier("EVENT_3499_action_queue_45", "chapel_character_animation_16", A_SetSpriteSequence)
-    update_ally_animation(a17, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
-    a18 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_10", "chapel_character_animation_17", A_SetSpriteSequence)
-    update_ally_animation(a18, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
-    a19 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_11", "chapel_character_animation_18", A_SetSpriteSequence)
-    update_ally_animation(a19, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
-    a20 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_11", "chapel_character_animation_19", A_SetSpriteSequence)
-    update_ally_animation(a20, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
-    a21 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_12", "chapel_character_animation_20", A_SetSpriteSequence)
-    update_ally_animation(a21, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary)
-    a22 = world.event_scripts.get_subscript_command_by_identifier("chapel_character_queue_12", "chapel_character_animation_21", A_SetSpriteSequence)
-    update_ally_animation(a22, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary)
-    
+    a4 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_3", "chapel_character_queue_3_", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a4, ally, SpriteAnimationState.LOOKING_DOWN_STATIC, use_primary=use_primary
+    )
+    a5 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_4", "chapel_character_animation_4", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a5, ally, SpriteAnimationState.SHAKING_HEAD, use_primary=use_primary
+    )
+    a6 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_4", "chapel_character_animation_5", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a6, ally, SpriteAnimationState.LOOKING_DOWN_STATIC, use_primary=use_primary
+    )
+    a7 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_5", "chapel_character_animation_6", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a7, ally, SpriteAnimationState.CRYING, use_primary=use_primary
+    )
+    a8 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_6", "chapel_character_animation_7", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a8, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary
+    )
+    a9 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_7", "chapel_character_animation_9", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a9, ally, SpriteAnimationState.LOOKING_DOWN_STATIC, use_primary=use_primary
+    )
+    a10 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_7", "chapel_character_animation_8", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a10, ally, SpriteAnimationState.CRYING, use_primary=use_primary
+    )
+    a11 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_8", "chapel_character_animation_10", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a11, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary
+    )
+    a12 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_8", "chapel_character_animation_11", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a12, ally, SpriteAnimationState.CRYING_BACKWARDS, use_primary=use_primary
+    )
+    a13 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_9", "chapel_character_animation_12", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a13, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary
+    )
+    a14 = world.event_scripts.get_subscript_command_by_identifier(
+        "EVENT_3499_action_queue_42",
+        "chapel_character_animation_13",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a14, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary
+    )
+    a15 = world.event_scripts.get_subscript_command_by_identifier(
+        "EVENT_3499_action_queue_42",
+        "chapel_character_animation_14",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a15, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary
+    )
+    a16 = world.event_scripts.get_subscript_command_by_identifier(
+        "EVENT_3499_action_queue_45",
+        "chapel_character_animation_15",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a16, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary
+    )
+    a17 = world.event_scripts.get_subscript_command_by_identifier(
+        "EVENT_3499_action_queue_45",
+        "chapel_character_animation_16",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a17, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary
+    )
+    a18 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_10",
+        "chapel_character_animation_17",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a18, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary
+    )
+    a19 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_11",
+        "chapel_character_animation_18",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a19, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary
+    )
+    a20 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_11",
+        "chapel_character_animation_19",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a20, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary
+    )
+    a21 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_12",
+        "chapel_character_animation_20",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a21, ally, SpriteAnimationState.SHOCKED_LOOP_BACKWARDS, use_primary=use_primary
+    )
+    a22 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_character_queue_12",
+        "chapel_character_animation_21",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a22, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary
+    )
 
 
 # =============================================================================
@@ -854,14 +1012,16 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
             "dojo_boss_1_initiate_aq", "dojo_boss_1_initiate"
         )
     if m.animations.recoil is not None:
-        world.event_scripts.get_subscript_command_by_identifier("dojo_boss_1_recoil_aq", "dojo_boss_1_recoil", A_SetSpriteSequence).set_index(m.animations.recoil.sequence_id)
+        world.event_scripts.get_subscript_command_by_identifier(
+            "dojo_boss_1_recoil_aq", "dojo_boss_1_recoil", A_SetSpriteSequence
+        ).set_index(m.animations.recoil.sequence_id)
     else:
-        world.event_scripts.delete_subscript_command_by_identifier("dojo_boss_1_recoil_aq", "dojo_boss_1_recoil")
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "dojo_boss_1_recoil_aq", "dojo_boss_1_recoil"
+        )
     world.event_scripts.replace_subscript_command_by_identifier(
         "EVENT_2067_action_queue_0", "jagger_looks_around", A_FaceNorthwest()
     )
-    
-
 
 
 def render_dojo_fight(
@@ -928,51 +1088,104 @@ def render_bean_valley_planter_boss(world: GameWorld, prize: BossFightPrize) -> 
     if len(seqs) > 0 and len(seqs[0].frames) >= 3:
         mold_0 = seqs[0].frames[0].mold_id
         mold_1 = seqs[0].frames[1].mold_id
-        mold_2 = seqs[0].frames[2].mold_id 
+        mold_2 = seqs[0].frames[2].mold_id
 
-        world.action_scripts.scripts[A0845_ACTIVATE_PIRANHA_PLANT_IN_PIPE] = ActionScript([
-            A_VisibilityOn(),
-            A_Pause(32),
-            A_JmpIfRandom1of2(["ACTION_845_pause_6"]),
-            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True),
-            A_Jmp(["ACTION_845_pause_8"]),
-            A_Pause(1, identifier="ACTION_845_pause_6"),
-            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-            A_Pause(48, identifier="ACTION_845_pause_8"),
-            A_JmpIfRandom1of2(["ACTION_845_start_loop_n_times_23"], identifier="ACTION_845_jmp_if_random_above_128_9"),
-            A_StartLoopNTimes(2),
-            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True),
-            A_Pause(2),
-            A_SetSpriteSequence(index=mold_1, is_mold=True, is_sequence=True, looping=True),
-            A_Pause(4),
-            A_SetSpriteSequence(index=mold_2, is_mold=True, is_sequence=True, looping=True),
-            A_Pause(8),
-            A_SetSpriteSequence(index=mold_1, is_mold=True, is_sequence=True, looping=True),
-            A_Pause(2),
-            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True),
-            A_Pause(4),
-            A_EndLoop(),
-            A_Jmp(["ACTION_845_jmp_if_random_above_128_9"]),
-            A_StartLoopNTimes(2, identifier="ACTION_845_start_loop_n_times_23"),
-            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-            A_Pause(2),
-            A_SetSpriteSequence(index=mold_1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-            A_Pause(4),
-            A_SetSpriteSequence(index=mold_2, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-            A_Pause(8),
-            A_SetSpriteSequence(index=mold_1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-            A_Pause(2),
-            A_SetSpriteSequence(index=mold_0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-            A_Pause(4),
-            A_EndLoop(),
-            A_Jmp(["ACTION_845_jmp_if_random_above_128_9"])
-        ])
+        world.action_scripts.scripts[A0845_ACTIVATE_PIRANHA_PLANT_IN_PIPE] = (
+            ActionScript(
+                [
+                    A_VisibilityOn(),
+                    A_Pause(32),
+                    A_JmpIfRandom1of2(["ACTION_845_pause_6"]),
+                    A_SetSpriteSequence(
+                        index=mold_0, is_mold=True, is_sequence=True, looping=True
+                    ),
+                    A_Jmp(["ACTION_845_pause_8"]),
+                    A_Pause(1, identifier="ACTION_845_pause_6"),
+                    A_SetSpriteSequence(
+                        index=mold_0,
+                        is_mold=True,
+                        is_sequence=True,
+                        looping=True,
+                        mirror_sprite=True,
+                    ),
+                    A_Pause(48, identifier="ACTION_845_pause_8"),
+                    A_JmpIfRandom1of2(
+                        ["ACTION_845_start_loop_n_times_23"],
+                        identifier="ACTION_845_jmp_if_random_above_128_9",
+                    ),
+                    A_StartLoopNTimes(2),
+                    A_SetSpriteSequence(
+                        index=mold_0, is_mold=True, is_sequence=True, looping=True
+                    ),
+                    A_Pause(2),
+                    A_SetSpriteSequence(
+                        index=mold_1, is_mold=True, is_sequence=True, looping=True
+                    ),
+                    A_Pause(4),
+                    A_SetSpriteSequence(
+                        index=mold_2, is_mold=True, is_sequence=True, looping=True
+                    ),
+                    A_Pause(8),
+                    A_SetSpriteSequence(
+                        index=mold_1, is_mold=True, is_sequence=True, looping=True
+                    ),
+                    A_Pause(2),
+                    A_SetSpriteSequence(
+                        index=mold_0, is_mold=True, is_sequence=True, looping=True
+                    ),
+                    A_Pause(4),
+                    A_EndLoop(),
+                    A_Jmp(["ACTION_845_jmp_if_random_above_128_9"]),
+                    A_StartLoopNTimes(2, identifier="ACTION_845_start_loop_n_times_23"),
+                    A_SetSpriteSequence(
+                        index=mold_0,
+                        is_mold=True,
+                        is_sequence=True,
+                        looping=True,
+                        mirror_sprite=True,
+                    ),
+                    A_Pause(2),
+                    A_SetSpriteSequence(
+                        index=mold_1,
+                        is_mold=True,
+                        is_sequence=True,
+                        looping=True,
+                        mirror_sprite=True,
+                    ),
+                    A_Pause(4),
+                    A_SetSpriteSequence(
+                        index=mold_2,
+                        is_mold=True,
+                        is_sequence=True,
+                        looping=True,
+                        mirror_sprite=True,
+                    ),
+                    A_Pause(8),
+                    A_SetSpriteSequence(
+                        index=mold_1,
+                        is_mold=True,
+                        is_sequence=True,
+                        looping=True,
+                        mirror_sprite=True,
+                    ),
+                    A_Pause(2),
+                    A_SetSpriteSequence(
+                        index=mold_0,
+                        is_mold=True,
+                        is_sequence=True,
+                        looping=True,
+                        mirror_sprite=True,
+                    ),
+                    A_Pause(4),
+                    A_EndLoop(),
+                    A_Jmp(["ACTION_845_jmp_if_random_above_128_9"]),
+                ]
+            )
+        )
     else:
-        world.action_scripts.scripts[A0845_ACTIVATE_PIRANHA_PLANT_IN_PIPE] = ActionScript([
-            A_VisibilityOn(),
-            A_ReturnQueue()
-        ])
-
+        world.action_scripts.scripts[A0845_ACTIVATE_PIRANHA_PLANT_IN_PIPE] = (
+            ActionScript([A_VisibilityOn(), A_ReturnQueue()])
+        )
 
 
 # =============================================================================
@@ -1019,9 +1232,7 @@ def render_statue_room_boss(
         ).set_contents(gen_peck_left_subroutine(m.animations.statue_peck).contents)
         world.event_scripts.get_script_by_id(
             E0937_PECK_SUBROUTINE_MIDDLE_STATUE
-        ).set_contents(
-            gen_peck_middle_subroutine(m.animations.statue_peck).contents
-        )
+        ).set_contents(gen_peck_middle_subroutine(m.animations.statue_peck).contents)
         cast(
             ActionQueueSync,
             world.event_scripts.get_command_by_identifier("dodo_starts_battle"),
@@ -1089,19 +1300,25 @@ def render_statue_room_boss(
 
     if not isinstance(prize, DodoBossFight):
         if has_back_walking_sequence:
-            dodo_replacement_faces_wrong_direction = world.event_scripts.get_subscript_command_by_identifier(
-                "dodo_hallway_mirror_sprite_if_not_vanilla_container", "dodo_hallway_mirror_sprite_if_not_vanilla", A_SetSpriteSequence
+            dodo_replacement_faces_wrong_direction = (
+                world.event_scripts.get_subscript_command_by_identifier(
+                    "dodo_hallway_mirror_sprite_if_not_vanilla_container",
+                    "dodo_hallway_mirror_sprite_if_not_vanilla",
+                    A_SetSpriteSequence,
+                )
             )
             dodo_replacement_faces_wrong_direction.set_mirror_sprite(True)
         else:
-            dodo_hallway_action_script = world.event_scripts.get_command_by_identifier("dodo_hallway_mirror_sprite_if_not_vanilla_container", ActionQueueAsync)
+            dodo_hallway_action_script = world.event_scripts.get_command_by_identifier(
+                "dodo_hallway_mirror_sprite_if_not_vanilla_container", ActionQueueAsync
+            )
             dodo_hallway_action_script.set_subscript(
                 [
                     A_TransferXYZFPixels(x=252, y=252, z=0, direction=EAST),
                     A_FixedFCoordOn(),
-                    A_SetSpriteSequence(index=0, is_sequence=True, looping=True)
-                ])
-
+                    A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
+                ]
+            )
 
     # walking from statue to statue
     for aq, id in [("EVENT_3640_action_queue_271", "dodo_extra_sprite_1")]:
@@ -1208,9 +1425,15 @@ def render_volcano_exit_boss(
         world.event_scripts.delete_command_by_identifier("axem_henchman_1_aq")
         world.event_scripts.delete_command_by_identifier("axem_henchman_1_aq_2")
         world.event_scripts.delete_command_by_identifier("axem_henchman_1_aq_3")
-        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(NPC_1).set_visible(False)
-        world.get_room(R391_VOLCANO_POSTCD_AREA_04).get_npc_by_target_id(NPC_0).set_visible(False)
-        world.get_room(R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP).get_npc_by_target_id(NPC_2).set_visible(False)
+        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(
+            NPC_1
+        ).set_visible(False)
+        world.get_room(R391_VOLCANO_POSTCD_AREA_04).get_npc_by_target_id(
+            NPC_0
+        ).set_visible(False)
+        world.get_room(
+            R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP
+        ).get_npc_by_target_id(NPC_2).set_visible(False)
     else:
         loops += 1
 
@@ -1218,8 +1441,12 @@ def render_volcano_exit_boss(
     if not slot_has_henchman(1):
         world.event_scripts.delete_command_by_identifier("axem_henchman_2_aq")
         world.event_scripts.delete_command_by_identifier("axem_henchman_2_aq_2")
-        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(NPC_2).set_visible(False)
-        world.get_room(R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP).get_npc_by_target_id(NPC_3).set_visible(False)
+        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(
+            NPC_2
+        ).set_visible(False)
+        world.get_room(
+            R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP
+        ).get_npc_by_target_id(NPC_3).set_visible(False)
     else:
         loops += 1
 
@@ -1227,9 +1454,15 @@ def render_volcano_exit_boss(
     if not slot_has_henchman(2):
         world.event_scripts.delete_command_by_identifier("axem_henchman_3_aq")
         world.event_scripts.delete_command_by_identifier("axem_henchman_3_aq_2")
-        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(NPC_3).set_visible(False)
-        world.get_room(R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP).get_npc_by_target_id(NPC_4).set_visible(False)
-        world.get_room(R394_VOLCANO_POSTCD_AREA_05).get_npc_by_target_id(NPC_1).set_visible(False)
+        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(
+            NPC_3
+        ).set_visible(False)
+        world.get_room(
+            R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP
+        ).get_npc_by_target_id(NPC_4).set_visible(False)
+        world.get_room(R394_VOLCANO_POSTCD_AREA_05).get_npc_by_target_id(
+            NPC_1
+        ).set_visible(False)
     else:
         loops += 1
 
@@ -1237,9 +1470,15 @@ def render_volcano_exit_boss(
     if not slot_has_henchman(3):
         world.event_scripts.delete_command_by_identifier("axem_henchman_4_aq")
         world.event_scripts.delete_command_by_identifier("axem_henchman_4_aq_2")
-        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(NPC_4).set_visible(False)
-        world.get_room(R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP).get_npc_by_target_id(NPC_5).set_visible(False)
-        world.get_room(R394_VOLCANO_POSTCD_AREA_05).get_npc_by_target_id(NPC_0).set_visible(False)
+        world.get_room(R392_VOLCANO_POSTCD_AREA_06).get_npc_by_target_id(
+            NPC_4
+        ).set_visible(False)
+        world.get_room(
+            R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP
+        ).get_npc_by_target_id(NPC_5).set_visible(False)
+        world.get_room(R394_VOLCANO_POSTCD_AREA_05).get_npc_by_target_id(
+            NPC_0
+        ).set_visible(False)
     else:
         loops += 1
 
@@ -1334,10 +1573,14 @@ def render_inner_factory_third_fight_slot(
 def render_inner_factory_fourth_fight(world: GameWorld) -> None:
     """Hide NPCs 0-6 in Gun Yolk's room for non-vanilla boss."""
     room = world.rooms._rooms[R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
-    assert room is not None, f"Room {R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM} not found"
+    assert (
+        room is not None
+    ), f"Room {R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM} not found"
     for npc_id in [NPC_0, NPC_1, NPC_2, NPC_3, NPC_4, NPC_5, NPC_6]:
         obj = room.get_npc_by_target_id(npc_id)
-        assert obj is not None, f"NPC {npc_id} not found in room {R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM}"
+        assert (
+            obj is not None
+        ), f"NPC {npc_id} not found in room {R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM}"
         obj.set_visible(False)
 
 

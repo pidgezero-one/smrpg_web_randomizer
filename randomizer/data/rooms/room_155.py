@@ -160,5 +160,9 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
             cannot_clone=True),
-    ]
+    ],
+    npc_expected_animations={
+        1: ["kitchen_prep"],
+        2: ["kitchen_prep"]
+    }
 )

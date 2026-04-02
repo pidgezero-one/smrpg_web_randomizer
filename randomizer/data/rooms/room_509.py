@@ -309,5 +309,8 @@ room = Room(
     ],
     extra_sprite_actions=[
         SpriteAnimationState.CROUCH,
-    ]
+    ],
+    npc_expected_animations={
+        4: ["endgame_challenge"]
+    }
 )

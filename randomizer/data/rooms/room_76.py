@@ -205,4 +205,7 @@ room = Room(
             cannot_clone=True),
     ],
     effects_npc=EffectsNpc.SAVE_POINT_NPC0,
+    npc_expected_animations={
+        5: ["bandits_way_distracted"]
+    }
 )

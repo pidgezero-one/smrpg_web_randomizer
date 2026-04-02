@@ -195,5 +195,12 @@ room = Room(
     ],
     extra_sprite_actions=[
         SpriteAnimationState.CHALLENGE,
-    ]
+    ],
+    npc_expected_animations={
+        0: ["dojo_challenge"],
+        1: ["dojo_challenge", "recoil"],
+        2: ["dojo_challenge"],
+        3: ["dojo_challenge"],
+        4: ["dojo_challenge"],
+    }
 )

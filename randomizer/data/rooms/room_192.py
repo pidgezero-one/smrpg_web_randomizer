@@ -352,5 +352,8 @@ room = Room(
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SURPRISE_FRAME,
-    ]
+    ],
+    npc_expected_animations={
+        0: ["chapel_laugh", "tower_crying", "tpose"]
+    }
 )
