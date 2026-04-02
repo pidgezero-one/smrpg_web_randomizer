@@ -136,7 +136,6 @@ script = EventScript([
 		A_ClearSolidityBits(cant_pass_walls=True)
 	]),
 	ActionQueueAsync(target=NPC_12, subscript=[
-		A_SetSpriteSequence(index=12, is_sequence=True, looping=True),
 		A_SetPriority(3),
 		A_VisibilityOff()
 	]),

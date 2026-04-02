@@ -402,7 +402,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 12
-            npc=npcs.GREEN_YOSHI_WALK_NPC,
+            npc=npcs.YOSHI_COOKIE_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
