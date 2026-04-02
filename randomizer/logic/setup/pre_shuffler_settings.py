@@ -508,7 +508,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
                     use_background=True,
                     identifier="EVENT_464_pause_11",
                 ),
-                JmpIfBitSet(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_12"]),
+                JmpIfBitSet(YOSHI_ITEM_GRANTED, ["EVENT_464_pause_10"]),
                 SetBit(YOSHI_ITEM_GRANTED),
                 RunDialog(
                     dialog_id=DI4059_SHUFFLE_COOKIES_2,
@@ -520,7 +520,6 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
                 ),
                 JmpToEvent(E0182_NPC_QUEST_5_CONTAINER),
                 Return(identifier="EVENT_464_pause_10"),
-                ReturnAll(identifier="EVENT_464_pause_12"),
             ]
         )
     if world.settings.isflag_enabled(ShuffleMarioDoll):
