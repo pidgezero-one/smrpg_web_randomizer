@@ -763,17 +763,49 @@ def _log_slot_machine_support(world: GameWorld) -> None:
                     objects[idx]._npc = saved_npcs[j]
 
 
-def update_changed_room_partitions(world: GameWorld) -> None:
-    """Recalculate partitions for rooms where NPC models changed.
+def _get_boss_henchman_rooms(world: GameWorld) -> set[int]:
+    """Collect room IDs that have boss, henchman, or statue NPC placements.
 
-    Replaces update_shuffed_boss_partitions. Call order:
-    1. Detect changed rooms via snapshot diff
+    Only these rooms need partition recalculation — other rooms with NPC
+    changes (character recruitment, credits, etc.) have stable partitions.
+    """
+    from ..types.prizelocation import BossFightLocation
+
+    rooms: set[int] = set()
+    for location in world.locations.values():
+        if not isinstance(location, BossFightLocation):
+            continue
+        # Collect rooms from all NPC slot types
+        for slot_attr in ('_npc_slots', '_henchman_slots', '_statue_slots'):
+            slots = getattr(location, slot_attr, None)
+            if slots is None:
+                continue
+            for slot in slots:
+                if hasattr(slot, 'room_ids'):
+                    for r in slot.room_ids:
+                        rooms.add(r)
+                elif hasattr(slot, 'room_id'):
+                    rooms.add(slot.room_id)
+    return rooms
+
+
+def update_changed_room_partitions(world: GameWorld) -> None:
+    """Recalculate partitions for boss/henchman rooms where NPC models changed.
+
+    Replaces update_shuffed_boss_partitions. Only recalculates rooms that
+    have boss, henchman, or statue placements — other rooms with NPC changes
+    have stable partitions that shouldn't be touched.
+
+    Call order:
+    1. Detect changed rooms via snapshot diff, filtered to boss/henchman rooms
     2. Apply animation VRAM overrides (min_vram_size pre-pass)
     3. Recalculate partition for each changed room
     4. Log slot machine support for all chest rooms
     """
-    changed_rooms = _detect_changed_rooms(world)
-    print(f"[PARTITION] Orchestrator: {len(changed_rooms)} rooms changed")
+    all_changed = _detect_changed_rooms(world)
+    boss_rooms = _get_boss_henchman_rooms(world)
+    changed_rooms = all_changed & boss_rooms
+    print(f"[PARTITION] Orchestrator: {len(changed_rooms)} boss/henchman rooms changed (of {len(all_changed)} total changed)")
 
     # Pre-pass: animation VRAM overrides
     _apply_animation_vram_overrides(world, changed_rooms)
