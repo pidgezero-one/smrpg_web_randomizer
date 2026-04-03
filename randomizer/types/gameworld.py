@@ -2076,11 +2076,69 @@ class GameWorld:
             P105_MARIO_DOLL.packet_id,
         }
 
-        # Packet allocation patch: raise the NPC slot path threshold from 8 to 107.
-        # Vanilla: CMP #$08 at ROM 0x009368. Change to CMP #$6B.
-        # This makes packets 0-106 use the NPC slot path (no extra sprite buffer needed).
-        # Just a 1-byte patch — no JML, no bank change.
-        patch.add_data(0x009368, bytes([0x6B]))
+        # Packet allocation patch: replace the bitmap allocator call (JSR $9547)
+        # with JSR to our routine at C1:80C8 (repurposed debug string area).
+        # Our routine does a table lookup: if the packet is in our low-VRAM list,
+        # call the NPC slot allocator ($95DD) instead of the bitmap allocator.
+        # Otherwise call the original bitmap allocator ($9547).
+        #
+        # Same bank (C1), no JML, no cross-bank issues.
+        # Space: debug string at ROM 0x0080C8-0x008166 (159 bytes available).
+        #
+        # Packet allocation patch: replace the inline CMP #$08; BCS $9381 with
+        # JSR $80C8; BCS $9381. Our routine at $80C8 does a table lookup and
+        # sets/clears carry accordingly, then RTS. The BCS at C1:936B is kept
+        # with adjusted offset, preserving the natural code flow.
+        #
+        # Original 6 bytes at C1:9365:
+        #   A5 1C     LDA $1C       (2)
+        #   C9 08     CMP #$08      (2)
+        #   B0 16     BCS $9381     (2)
+        #
+        # Patched 6 bytes:
+        #   20 C8 80  JSR $80C8     (3) — sets carry based on table
+        #   B0 13     BCS $9381     (2) — bitmap path if carry set
+        #   EA        NOP           (1)
+        #
+        # BCS offset: from C1:936B to C1:9381 = 0x16. But we moved BCS to
+        # C1:9368, so offset = $9381 - $936A = 0x17... let me compute:
+        # BCS is at C1:9368. Target $9381. Offset = $9381 - ($9368 + 2) = $9381 - $936A = $17.
+        # Wait: original BCS at 9369, target 9381, offset = 9381-(9369+2) = 0x16.
+        # New BCS at 936B (after 3-byte JSR), target 9381, offset = 9381-(936B+2) = 0x14.
+        # Hmm, let me just compute carefully.
+        # JSR $80C8 = 20 C8 80 at C1:9365-9367 (3 bytes)
+        # BCS at C1:9368. BCS operand = target - (addr+2) = $9381 - $936A = $0017.
+        # But $17 > what fits? BCS range is ±127. $17 = 23. That's fine.
+        # Wait: $9381 - $936A = $9381 - $936A. $9381 - $936A = $17. ✓
+        # Packet allocation patch: route packets based on their vram_size field
+        # instead of packet ID. Packets with vram_size=0 (1 VRAM unit — all chest
+        # items) use the NPC slot path which works without extra_sprite_buffer.
+        # Packets with vram_size>0 (water splash, coins, etc) use the bitmap path.
+        #
+        # Patch at C1:9365 (6 bytes): replace LDA $1C; CMP #$08; BCS $9381
+        # with JSR $80C8; BCS $9381; NOP
+        # BCS offset: $9381 - ($9368 + 2) = $17
+        patch.add_data(0x009365, bytes([
+            0x20, 0xC8, 0x80,              # JSR $80C8     ; check vram_size, set carry
+            0xB0, 0x17,                    # BCS $9381     ; vram_size>0 → bitmap path
+            0xEA,                          # NOP
+        ]))
+
+        # Routine at C1:80C8 (debug string area, 13 bytes):
+        # Reads packet byte 1, checks vram_size (bits 0-2).
+        # Returns carry clear (NPC slot) if vram_size=0, carry set (bitmap) otherwise.
+        # Restores A = packet ID before returning.
+        patch.add_data(0x0080C8, bytes([
+            0xB9, 0x01, 0xB0,              # LDA $B001,Y   ; packet byte 1 (DBR=$DD)
+            0x29, 0x07,                    # AND #$07      ; mask vram_size
+            0xD0, 0x03,                    # BNE .bitmap   ; vram_size>0 → SEC (+3)
+            0xA5, 0x1C,                    # LDA $1C       ; restore A = packet ID
+            0x60,                          # RTS           ; carry clear (AND result was 0)
+            # .bitmap:
+            0xA5, 0x1C,                    # LDA $1C       ; restore A = packet ID
+            0x38,                          # SEC
+            0x60,                          # RTS
+        ]))
 
         # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).
         # Enabling NMI ($4200 bit 7) during gameplay causes the vanilla NMI handler

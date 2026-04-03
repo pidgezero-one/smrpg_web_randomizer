@@ -1987,14 +1987,14 @@ def analyze_room_partition(
                 ally_buffer_size = min(max(vram_values) + 1, 3)
 
     # Calculate extra sprite buffer (for chest packet sprites)
-    chest_count = sum(1 for n in npc_analyses if n.is_chest)
-    allow_extra_sprite_buffer = chest_count > 0
-    extra_buffer_size = 0
-    if allow_extra_sprite_buffer:
-        if room_id in CLOSE_CHEST_ROOMS:
-            extra_buffer_size = CLOSE_CHEST_ROOMS[room_id]
-        else:
-            extra_buffer_size = min(chest_count, 1)
+    #chest_count = sum(1 for n in npc_analyses if n.is_chest)
+    #allow_extra_sprite_buffer = chest_count > 0
+    # extra_buffer_size = 0
+    # if allow_extra_sprite_buffer:
+    #     if room_id in CLOSE_CHEST_ROOMS:
+    #         extra_buffer_size = CLOSE_CHEST_ROOMS[room_id]
+    #     else:
+    #         extra_buffer_size = min(chest_count, 1)
 
     # Special case: triple empty rooms
     if room_id in TRIPLE_EMPTY_EX1_ROOMS:
