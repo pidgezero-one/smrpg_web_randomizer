@@ -18,7 +18,7 @@ from ....items import *
 script = ActionScript([
 	A_ShadowOn(),
 	A_FloatingOff(),
-	#A_SetVRAMPriority(PRIORITY_3),
+	A_SetVRAMPriority(PRIORITY_3),
     A_JmpIfVarEqualsConst(ITEM_ID, HoneySyrupItem().item_id, ["A0992_syrup"]),
     A_JmpIfVarEqualsConst(ITEM_ID, MapleSyrupItem().item_id, ["A0992_syrup"]),
     A_JmpIfVarEqualsConst(ITEM_ID, RoyalSyrupItem().item_id, ["A0992_syrup"]),

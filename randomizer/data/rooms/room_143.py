@@ -63,7 +63,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 1
             npc=npcs.GOOMBA_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -122,7 +123,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularNPC( # 5
-            npc=npcs.GOOMBA_NPC,
+            npc=npcs.GOLD_GOOMBA_NPC,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0452_GOOMBA_THUMPIN_GOLD_GOOMBA_1,
             action_script=A0000_DO_NOTHING,
@@ -149,7 +150,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularClone( # 6
-            npc=npcs.GOOMBA_NPC,
+            npc=npcs.GOLD_GOOMBA_NPC,
             event_script=E0453_GOOMBA_THUMPIN_GOLD_GOOMBA_2,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -159,7 +160,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularClone( # 7
-            npc=npcs.GOOMBA_NPC,
+            npc=npcs.GOLD_GOOMBA_NPC,
             event_script=E0454_GOOMBA_THUMPIN_GOLD_GOOMBA_3,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -169,7 +170,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularClone( # 8
-            npc=npcs.GOOMBA_NPC,
+            npc=npcs.GOLD_GOOMBA_NPC,
             event_script=E0455_GOOMBA_THUMPIN_GOLD_GOOMBA_4,
             action_script=A0000_DO_NOTHING,
             visible=True,
@@ -179,7 +180,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularNPC( # 9
-            npc=npcs.TOADSTOOL_ENDING,
+            npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0432_PIPE_VAULT_GOOMBA_THUMPIN_EXIT_TRAMPOLINE,
             action_script=A0015_DO_NOTHING,
@@ -288,6 +289,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ]
 )

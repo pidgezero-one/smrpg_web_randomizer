@@ -44,3 +44,6 @@ items:
     BeanValleyPlanterBossFight: SmithyBossFight
     StatueRoomBossFight: Booster2BossFight
     FactoryEntranceBossFight: Belome3Fight
+    BoosterTowerIndoorBossFight: MegasmilaxBossFight
+    MarrymoreCharacter: BowserRecruitmentPrize
+    MushroomKingdomLiberatedVaultRight: SlotsPrize1

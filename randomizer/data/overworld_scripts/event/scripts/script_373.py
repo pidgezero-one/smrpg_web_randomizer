@@ -89,11 +89,11 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(30),
-		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="main_hall_lean_back"),
 		A_Pause(150),
-		A_SetSpriteSequence(index=7, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=7, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="main_hall_lean_back_surprised"),
 		A_JumpToHeight(height=108, silent=True)
-	]),
+	], identifier="main_hall_lean_back_aq"),
 	PlaySound(sound=SO019_LONG_FALL, channel=6),
 	Pause(180),
 	SetBit(TEMP_7043_5),

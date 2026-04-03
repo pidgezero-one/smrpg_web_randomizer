@@ -262,6 +262,9 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         force_cannot_clone: bool  # Room-level override — orchestrator must respect
 
     npc_infos: list[NPCInfo] = []
+    if room_id in (31, 331):
+        for i, obj in enumerate(room.objects):
+            print(f"  obj[{i}]: type={type(obj).__name__}, sprite={obj._npc.sprite_id}, cannot_clone={obj.cannot_clone}")
     for i, obj in enumerate(room.objects):
         if isinstance(obj, Clone):
             continue
@@ -439,13 +442,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         available_slots -= 1
     if has_coin:
         available_slots -= 1
-
-    # DEBUG: log sprite analysis for changed rooms
-    if sprite_to_type:
-        print(f"[PARTITION DEBUG] Room {room_id}:")
-        print(f"  sprite_counts (all objects): {dict(sprite_counts)}")
-        print(f"  sprite_to_type (parent NPCs): {sprite_to_type}")
-        print(f"  sprite_first_appearance: {sprite_first_appearance}")
 
     # Rank unique sprite IDs by NPC count (most frequent first)
     # Each unique sprite needs its own buffer slot
@@ -666,7 +662,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         existing.buffers[i].set_index_in_main_buffer(new_index_in_main[i])
 
     # =========================================================================
-    # Step 7: Set cannot_clone on all NPCs
+    # Step 7: Set cannot_clone and min_vram_size on all NPCs
     # =========================================================================
     for npc in npc_infos:
         obj = room.objects[npc.obj_index]
@@ -679,6 +675,19 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             obj.set_cannot_clone(False)
         else:
             obj.set_cannot_clone(True)
+            # Non-gridplane cannot_clone NPCs need min_vram_size set based on
+            # their sprite's largest mold. Without this, the game allocates 0
+            # extra VRAM rows and they overwrite other sprites.
+            if not npc.is_gridplane:
+                from ..utils.npcs import min_vram_from_sequence_for_sprite
+                max_vram = 0
+                sprite = world.get_sprite(npc.sprite_id)
+                for seq_idx in range(len(sprite.animation.properties.sequences)):
+                    vram = min_vram_from_sequence_for_sprite(world, npc.sprite_id, seq_idx)
+                    if vram > max_vram:
+                        max_vram = vram
+                if max_vram > 0:
+                    obj.set_min_vram_size(max_vram)
 
     # =========================================================================
     # Step 8: Log warnings
@@ -750,11 +759,6 @@ def _log_slot_machine_support(world: GameWorld) -> None:
             )
             result = can_room_support_slots(world, room_id, **analyze_kwargs)
             analysis = analyze_partition(world, room_id, **analyze_kwargs)
-            print(
-                f"[SLOT CHECK] Room {room_id}: support={result}"
-                f" bitmap_remaining={analysis.bitmap_slots_remaining}"
-                f" vram_remaining={analysis.vram_remaining}"
-            )
         finally:
             # Restore original dummy NPCs
             if has_dummies:
@@ -789,30 +793,51 @@ def _get_boss_henchman_rooms(world: GameWorld) -> set[int]:
     return rooms
 
 
-def update_changed_room_partitions(world: GameWorld) -> None:
-    """Recalculate partitions for boss/henchman rooms where NPC models changed.
+def _detect_slot_machine_rooms(world: GameWorld) -> set[int]:
+    """Return room IDs where a SlotsPrize was placed.
 
-    Replaces update_shuffed_boss_partitions. Only recalculates rooms that
-    have boss, henchman, or statue placements — other rooms with NPC changes
-    have stable partitions that shouldn't be touched.
+    SlotsPrize replaces 5 dummy EMPTY_NPCs with actual slot machine sprites
+    (flower, frog coin, explosion). These rooms need partition recalculation
+    even though they aren't boss/henchman rooms.
+    """
+    from ..data.rooms.npcs import FLOWER_NPC_2, EXPLOSION_NPC
+    slot_sprite_ids = {FLOWER_NPC_2.sprite_id, EXPLOSION_NPC.sprite_id}
+
+    rooms: set[int] = set()
+    for room_id in world._vanilla_room_states:
+        room = world.rooms._rooms[room_id]
+        if room is None:
+            continue
+        for obj in room.objects:
+            if isinstance(obj, Clone):
+                continue
+            if obj._npc.sprite_id in slot_sprite_ids:
+                rooms.add(room_id)
+                break
+
+    return rooms
+
+
+def update_changed_room_partitions(world: GameWorld) -> None:
+    """Recalculate partitions for rooms where NPC models changed.
+
+    Recalculates boss/henchman rooms where sprites changed, plus any room
+    that received slot machine NPCs (SlotsPrize).
 
     Call order:
-    1. Detect changed rooms via snapshot diff, filtered to boss/henchman rooms
-    2. Apply animation VRAM overrides (min_vram_size pre-pass)
-    3. Recalculate partition for each changed room
-    4. Log slot machine support for all chest rooms
+    1. Detect changed rooms via snapshot diff
+    2. Filter to boss/henchman rooms + slot machine rooms
+    3. Apply animation VRAM overrides (min_vram_size pre-pass)
+    4. Recalculate partition for each changed room
+    5. Log slot machine support for all chest rooms
     """
     all_changed = _detect_changed_rooms(world)
     boss_rooms = _get_boss_henchman_rooms(world)
-    changed_rooms = all_changed & boss_rooms
-    print(f"[PARTITION] Orchestrator: {len(changed_rooms)} boss/henchman rooms changed (of {len(all_changed)} total changed)")
+    slot_rooms = _detect_slot_machine_rooms(world)
+    changed_rooms = (all_changed & boss_rooms) | (all_changed & slot_rooms)
 
     # Pre-pass: animation VRAM overrides
     _apply_animation_vram_overrides(world, changed_rooms)
-
-    # Recalculate partitions
-    for room_id in sorted(changed_rooms):
-        _recalculate_room_partition(world, room_id)
 
     # Final pass: slot machine support check (all chest rooms, not just changed)
     _log_slot_machine_support(world)

@@ -2450,7 +2450,6 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
         CoinPrize,
         SlotsPrize,
     ]
-    _model_allowlist = [FlowerObject, RecoveryMushroomObject, KeyObject, DefaultItem]
     _hint = [
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]),
@@ -2477,7 +2476,6 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
         CoinPrize,
         SlotsPrize,
     ]
-    _model_allowlist = [FlowerObject, RecoveryMushroomObject, KeyObject, DefaultItem]
     _hint = [
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]),
@@ -2505,7 +2503,6 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
         CoinPrize,
         SlotsPrize,
     ]
-    _model_allowlist = [FlowerObject, RecoveryMushroomObject, KeyObject, DefaultItem]
     _hint = [
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]),

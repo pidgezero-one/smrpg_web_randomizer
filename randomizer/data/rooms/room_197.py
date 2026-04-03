@@ -230,5 +230,7 @@ room = Room(
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SALUTE,
+        SpriteAnimationState.LEAN_BACK,
+        SpriteAnimationState.LEAN_BACK_2,
     ]
 )

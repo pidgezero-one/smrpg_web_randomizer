@@ -2023,6 +2023,65 @@ class GameWorld:
             0xEA, 0xEA, 0xEA, 0xEA,                  
         ]))       
 
+        # Packet allocation patch: allow low-VRAM packets to use the NPC slot
+        # allocation path instead of requiring the extra sprite buffer.
+        #
+        # Vanilla checks packet_id < 8 at SNES C1:9365. We replace with a
+        # JML to a trampoline that does a table lookup, so any packet ID can
+        # use the cheaper NPC slot path (which doesn't check $01D7).
+        from ..data.packets.packets import (
+            P008_RED_CHEST_ITEM, P009_GREEN_CHEST_ITEM,
+            P010_BLUE_CHEST_ITEM, P011_YELLOW_CHEST_ITEM,
+            P025_RING_CHEST, P040_BROOCH_CHEST, P043_SHOES_CHEST,
+            P053_CROWN_CHEST, P064_FROG_COIN_CHEST_STILL,
+            P067_BOMB_CHEST, P070_EGG_CHEST, P073_COOKIE_CHEST,
+            P076_BERRY_CHEST, P079_CARD_CHEST, P089_BEETLE_CHEST,
+            P090_SMALL_COIN_STILL, P091_CHEST_COIN_STILL,
+            P092_GLOVE_CHEST, P093_CRYSTAL_CHEST,
+            P094_FIRE_SPELL_CHEST, P095_BLUE_SPELL_CHEST,
+            P096_GREEN_SPELL_CHEST, P097_YELLOW_SPELL_CHEST,
+            P098_GRAY_SPELL_CHEST,
+            P102_SMALL_FROG_COIN_STILL,
+            P103_MIMIC_1_POOF_ON_DEFEAT, P104_MIMIC_2_POOF_ON_DEFEAT,
+            P105_MARIO_DOLL,
+        )
+        npc_slot_packet_ids: set[int] = {
+            P008_RED_CHEST_ITEM.packet_id,
+            P009_GREEN_CHEST_ITEM.packet_id,
+            P010_BLUE_CHEST_ITEM.packet_id,
+            P011_YELLOW_CHEST_ITEM.packet_id,
+            P025_RING_CHEST.packet_id,
+            P040_BROOCH_CHEST.packet_id,
+            P043_SHOES_CHEST.packet_id,
+            P053_CROWN_CHEST.packet_id,
+            P064_FROG_COIN_CHEST_STILL.packet_id,
+            P067_BOMB_CHEST.packet_id,
+            P070_EGG_CHEST.packet_id,
+            P073_COOKIE_CHEST.packet_id,
+            P076_BERRY_CHEST.packet_id,
+            P079_CARD_CHEST.packet_id,
+            P089_BEETLE_CHEST.packet_id,
+            P090_SMALL_COIN_STILL.packet_id,
+            P091_CHEST_COIN_STILL.packet_id,
+            P092_GLOVE_CHEST.packet_id,
+            P093_CRYSTAL_CHEST.packet_id,
+            P094_FIRE_SPELL_CHEST.packet_id,
+            P095_BLUE_SPELL_CHEST.packet_id,
+            P096_GREEN_SPELL_CHEST.packet_id,
+            P097_YELLOW_SPELL_CHEST.packet_id,
+            P098_GRAY_SPELL_CHEST.packet_id,
+            P102_SMALL_FROG_COIN_STILL.packet_id,
+            P103_MIMIC_1_POOF_ON_DEFEAT.packet_id,
+            P104_MIMIC_2_POOF_ON_DEFEAT.packet_id,
+            P105_MARIO_DOLL.packet_id,
+        }
+
+        # Packet allocation patch: raise the NPC slot path threshold from 8 to 107.
+        # Vanilla: CMP #$08 at ROM 0x009368. Change to CMP #$6B.
+        # This makes packets 0-106 use the NPC slot path (no extra sprite buffer needed).
+        # Just a 1-byte patch — no JML, no bank change.
+        patch.add_data(0x009368, bytes([0x6B]))
+
         # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).
         # Enabling NMI ($4200 bit 7) during gameplay causes the vanilla NMI handler
         # ($C0:0283) to fire every VBlank. That handler is NOT a no-op — it calls the

@@ -421,4 +421,9 @@ room = Room(
             byte7_upper2=3,
         ),
     ],
+    extra_sprite_actions=[
+        SpriteAnimationState.LEAN_BACK,
+        SpriteAnimationState.LEAN_BACK_2,
+        SpriteAnimationState.SHOCKED_SHADOW_BACKWARDS,
+    ]
 )

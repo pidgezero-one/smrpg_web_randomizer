@@ -716,12 +716,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_subscript_command_by_identifier("tower_lean_back_aq", "tower_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("tower_lean_back_aq", "tower_lean_back_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("tower_lean_back_aq", "tower_lean_back_full", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK_2)[1])
+        world.event_scripts.get_subscript_command_by_identifier("main_hall_lean_back_aq", "main_hall_lean_back", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
+        world.event_scripts.get_subscript_command_by_identifier("main_hall_lean_back_aq", "main_hall_lean_back_surprised", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.SHOCKED_SHADOW_BACKWARDS)[1])
     # Set palettes that change when the protagonist changes.
     if ally.index == 2: # bowser shifts a lot of stuff...
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
         world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
         world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
-        world.event_scripts.get_command_by_identifier("goomba_thumpin_gold", PaletteSet).set_palette_set_starts_at(NPC_PALETTE_ROW_4)
         try:
             world.event_scripts.get_command_by_identifier("kamek_palette", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("infinite_coin_chest_palette", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_2)
