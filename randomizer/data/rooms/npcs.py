@@ -1903,6 +1903,29 @@ WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC = NPC(
     byte5_bit7=True,
     byte6_bit2=False,
 )
+CASINO_ASSISTANTS_NPC = NPC(
+    sprite_id=SPR0827_CASINO_ASSISTANTS,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=4,
+    obtuse_axis=4,
+    height=9,
+    y_shift=1,
+    show_shadow=True,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=True,
+    byte6_bit2=False,
+)
 
 RAINI_NPC = NPC(
     sprite_id=SPR0066_RAINI,

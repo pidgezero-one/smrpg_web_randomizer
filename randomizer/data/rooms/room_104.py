@@ -76,7 +76,7 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
+            npc=npcs.CASINO_ASSISTANTS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E2636_CASINO_GUARD,
             action_script=A0015_DO_NOTHING,
@@ -103,7 +103,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularClone( # 1
-            npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
+            npc=npcs.CASINO_ASSISTANTS_NPC,
             event_script=E2636_CASINO_GUARD,
             action_script=A0015_DO_NOTHING,
             visible=True,

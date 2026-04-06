@@ -324,7 +324,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         ChestNPC( # 13
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -380,7 +381,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,

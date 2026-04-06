@@ -35,20 +35,20 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	ActionQueueSync(target=NPC_0, subscript=[
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=True),
 		A_VisibilityOn()
 	]),
 	ActionQueueAsync(target=NPC_1, subscript=[
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=True),
 		A_VisibilityOn()
 	]),
 	JmpIfBitClear(DIRECTIONAL_7046_1, ["EVENT_2635_fade_in_from_black_async_7"]),
 	ApplySolidityModToLevel(permanent=True, room_id=R104_GRATE_GUYS_CASINO_FRONT_DOOR, mod_id=0),
 	ActionQueueSync(target=NPC_0, subscript=[
+        A_FixedFCoordOn(),
 		A_SetWalkingSpeed(FASTEST),
 		A_WalkNorthwestPixels(8)
 	]),
 	ActionQueueSync(target=NPC_1, subscript=[
+        A_FixedFCoordOn(),
 		A_SetWalkingSpeed(FASTEST),
 		A_WalkSoutheastPixels(8)
 	]),

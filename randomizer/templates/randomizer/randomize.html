@@ -883,6 +883,14 @@
             }
 
             $('body').on('change', '.flag-form-input:not(".ordinance-checkbox")', function() {
+                // Clamp number inputs to their min/max
+                if ($(this).attr('type') === 'number') {
+                    let val = parseInt($(this).val());
+                    let min = parseInt($(this).attr('min'));
+                    let max = parseInt($(this).attr('max'));
+                    if (!isNaN(min) && val < min) $(this).val(min);
+                    if (!isNaN(max) && val > max) $(this).val(max);
+                }
                 buildFlagString();
             })
 

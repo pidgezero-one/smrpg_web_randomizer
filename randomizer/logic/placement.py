@@ -95,7 +95,10 @@ def _diagnose_placement_failure(
     pending: list["Prize"],
     candidate_locations: list["PrizeLocation"],
 ) -> None:
-    """Print diagnostic info when placement gets stuck."""
+    """Print diagnostic info when placement gets stuck (debug mode only)."""
+    if not world.settings.debug_mode:
+        return
+
     player_has = collect_accessible_items(world)
 
     # Show what's already placed

@@ -1354,7 +1354,7 @@ script = AnimationScriptBlock(expected_size=4971, expected_beginning=0x35C992, s
     DefineObjectQueue(["meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_", "meteor_subroutine_"], identifier="meteor_subroutine"),
 	
 	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=0, y=0, z=0, set_x=True, set_y=True, set_z=True, identifier="meteor_subroutine_"),
-	NewEffectObject(effect=EF0021_METEOR, looping_off=True),
+	NewEffectObject(effect=EF0021_METEOR, looping_on=True),
     Layer3On(property=OVERLAP_ALL, bpp4=True),
     PauseScriptUntil(condition=FRAMES_ELAPSED, frames=60),
 	FadeOutObject(duration=2),

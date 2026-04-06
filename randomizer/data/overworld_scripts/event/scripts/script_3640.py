@@ -359,7 +359,7 @@ script = EventScript([
 	UnfreezeCamera(),
     
 	SetVarToConst(PRIMARY_TEMP_7000, 520),
-	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),
     SetBit(STATUE_GAME_DONE),
     
 	JmpIfBitSet(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_3640_set_bit_204"]),
@@ -480,7 +480,7 @@ script = EventScript([
 	RestoreAllHP(),
 	RestoreAllFP(),
 	SetVarToConst(PRIMARY_TEMP_7000, 520),
-	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),
     SetBit(STATUE_GAME_DONE),
 	JmpIfBitSet(NIMBUS_LAND_LIBERATED, ["EVENT_3640_play_music_default_volume_254"]),
 	PlayMusicAtDefaultVolume(M0061_VALENTINA),

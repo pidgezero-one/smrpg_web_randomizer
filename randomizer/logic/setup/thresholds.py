@@ -118,7 +118,7 @@ def apply_threshold_settings(world: GameWorld) -> None:
 
     # Star pieces required for boss access
     cast(
-        JmpIfVarEqualsConst,
+        CompareVarToConst,
         world.event_scripts.get_command_by_identifier("enable_boss_access_1"),
     ).set_value(world.settings.get_flag(StarPiecesRequired).value)
     cast(

@@ -22,7 +22,7 @@ room = Room(
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),

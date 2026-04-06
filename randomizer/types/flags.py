@@ -386,14 +386,17 @@ class RangeFlag(Flag):
     def default(self) -> int:
         return self._default
 
+    _value_set: bool = False
+
     @property
     def value(self) -> int:
-        return self._value or self.default
+        return self._value if self._value_set else self.default
 
     def set_value(self, value: int):
         if value < self.min_value or value > self.max_value:
             raise FlagError(f"Value {value} is out of range for this flag.")
         self._value = value
+        self._value_set = True
 
     def reset(self):
         self._value = self.default

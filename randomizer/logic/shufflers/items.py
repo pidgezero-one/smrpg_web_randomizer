@@ -505,7 +505,8 @@ def _dump_placement_failure(
     with open(filepath, "w") as f:
         f.write(text)
 
-    print(f"[DEBUG] Placement failure dump written to: {filepath}")
+    if world.settings.debug_mode:
+        print(f"[DEBUG] Placement failure dump written to: {filepath}")
     return filepath
 
 
@@ -1341,7 +1342,8 @@ def shuffle_prizes(world: GameWorld) -> None:
             for p in tier_prizes:
                 name = type(p).__name__
                 pool_contents[name] = pool_contents.get(name, 0) + 1
-        print(f"[DEBUG] Full pool contents: {dict(sorted(pool_contents.items()))}")
+        if world.settings.debug_mode:
+            print(f"[DEBUG] Full pool contents: {dict(sorted(pool_contents.items()))}")
     # remove slot machine npcs from their original rooms
     room_334 = world.rooms._rooms[334]
     assert room_334 is not None, "Room 334 not found"
@@ -1485,16 +1487,17 @@ def shuffle_prizes(world: GameWorld) -> None:
         non_spell_inaccessible = [
             l for l in inaccessible if not isinstance(l, SpellSlotLocation)
         ]
-        if non_spell_inaccessible:
-            print(
-                f"[DEBUG] After progression placement: {len(non_spell_inaccessible)} non-SpellSlot locations still inaccessible:"
-            )
-            for loc in non_spell_inaccessible:
-                print(f"[DEBUG]   {type(loc).__name__}")
-        else:
-            print(
-                f"[DEBUG] After progression placement: {len(inaccessible)} inaccessible locations, all SpellSlotLocations"
-            )
+        if world.settings.debug_mode:
+            if non_spell_inaccessible:
+                print(
+                    f"[DEBUG] After progression placement: {len(non_spell_inaccessible)} non-SpellSlot locations still inaccessible:"
+                )
+                for loc in non_spell_inaccessible:
+                    print(f"[DEBUG]   {type(loc).__name__}")
+            else:
+                print(
+                    f"[DEBUG] After progression placement: {len(inaccessible)} inaccessible locations, all SpellSlotLocations"
+                )
 
         place(
             world,
@@ -1527,23 +1530,24 @@ def shuffle_prizes(world: GameWorld) -> None:
             name = type(loc.prize).__name__
             placed_items[name] = placed_items.get(name, 0) + 1
     total_after = sum(placed_items.values())
-    print(f"[DEBUG] Items in locations after placement: {total_after}")
+    if world.settings.debug_mode:
+        print(f"[DEBUG] Items in locations after placement: {total_after}")
 
-    all_keys = sorted(set(pool_plus_static.keys()) | set(placed_items.keys()))
-    diffs: list[str] = []
-    for key in all_keys:
-        before = pool_plus_static.get(key, 0)
-        after = placed_items.get(key, 0)
-        if before != after:
-            diffs.append(
-                f"  {key}: pool+static={before}, placed={after} (diff={after - before:+d})"
-            )
-    if diffs:
-        print(f"[DEBUG] POOL vs PLACED DIFF ({len(diffs)} mismatches):")
-        for d in diffs:
-            print(f"[DEBUG] {d}")
-    else:
-        print(f"[DEBUG] Pool and placed items match perfectly.")
+        all_keys = sorted(set(pool_plus_static.keys()) | set(placed_items.keys()))
+        diffs: list[str] = []
+        for key in all_keys:
+            before = pool_plus_static.get(key, 0)
+            after = placed_items.get(key, 0)
+            if before != after:
+                diffs.append(
+                    f"  {key}: pool+static={before}, placed={after} (diff={after - before:+d})"
+                )
+        if diffs:
+            print(f"[DEBUG] POOL vs PLACED DIFF ({len(diffs)} mismatches):")
+            for d in diffs:
+                print(f"[DEBUG] {d}")
+        else:
+            print(f"[DEBUG] Pool and placed items match perfectly.")
 
 
 def assign_spell_prize_models(world: GameWorld) -> None:

@@ -507,16 +507,7 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_3
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize, FrogCoinPrize, EXPStarPrize,]
-    _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        BigCoinObject,
-        SmallCoinObject,
-        KeyObject,
-        SmallCoinObject,
-        DefaultItem,
-    ]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, EXPStarPrize,]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R204_MUSHROOM_WAY_AREA_02, ["next"]),
         Jmp(["mushroom_way_hint_text"])
@@ -547,15 +538,6 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
         SlotsPrize, FrogCoinPrize
-    ]
-    _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        BigCoinObject,
-        SmallCoinObject,
-        KeyObject,
-        SmallCoinObject,
-        DefaultItem,
     ]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R204_MUSHROOM_WAY_AREA_02, ["next"]),
@@ -764,7 +746,7 @@ class MushroomKingdomMainHall(TreasureChestLocationRow1):
     _npc_ids = [NPC_2, NPC_6]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_HALLWAY
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"])
@@ -778,7 +760,7 @@ class MushroomKingdomLiberatedVaultLeft(TreasureChestLocationRow1):
         R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
         R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT,
     ]
-    _npc_ids = [NPC_0, NPC_0]
+    _npc_ids = [NPC_0, NPC_2]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_1
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
@@ -795,7 +777,7 @@ class MushroomKingdomLiberatedVaultRight(TreasureChestLocationRow2):
         R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
         R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT,
     ]
-    _npc_ids = [NPC_1, NPC_1]
+    _npc_ids = [NPC_1, NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_2
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
@@ -812,7 +794,7 @@ class MushroomKingdomLiberatedVaultMiddle(TreasureChestLocationRow3):
         R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
         R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT,
     ]
-    _npc_ids = [NPC_2, NPC_2]
+    _npc_ids = [NPC_2, NPC_1]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_3
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
@@ -1253,7 +1235,7 @@ class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BANDITS_WAY_1
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R207_BANDITS_WAY_AREA_02, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
@@ -1330,7 +1312,7 @@ class BanditsWayDogChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_2
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R077_BANDITS_WAY_AREA_03, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
@@ -1350,7 +1332,7 @@ class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_CHEST
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R078_BANDITS_WAY_AREA_04, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
@@ -1379,7 +1361,7 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BANDITS_WAY_DOG_JUMP
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R078_BANDITS_WAY_AREA_04, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
@@ -1556,7 +1538,7 @@ class KeroSewersStairRoomLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_PANDORITE_ROOM
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_1"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
@@ -1577,7 +1559,7 @@ class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PANDORITE_CHEST
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_2"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
@@ -1678,7 +1660,7 @@ class KeroSewersFourRatRoomChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_STAR_CHEST
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_3"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
@@ -1699,16 +1681,7 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_LOWER
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, SlotsPrize]
-    _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        BigCoinObject,
-        SmallCoinObject,
-        KeyObject,
-        SmallCoinObject,
-        DefaultItem,
-    ]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize]
     _hint = [
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_4"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
@@ -1729,16 +1702,7 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_1
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, SlotsPrize]
-    _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        BigCoinObject,
-        SmallCoinObject,
-        KeyObject,
-        SmallCoinObject,
-        DefaultItem,
-    ]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize]
     _hint = [
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_5"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
@@ -1761,15 +1725,6 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_2
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [EXPStarPrize, FrogCoinPrize]
-    _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        BigCoinObject,
-        SmallCoinObject,
-        KeyObject,
-        SmallCoinObject,
-        DefaultItem,
-    ]
     _hint = [
         JmpIfBitSet(SEWERS_FLIPPED_CHEST_OPENED, ["next"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
@@ -2006,7 +1961,7 @@ class RoseWaySwingingPlatformRoomLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.ROSE_WAY_PLATFORM
     _world_area = WorldAreaEnum.ROSE_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize] # SlotsPrize can go here graphically, it's just too annoying to hit 4 times
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS, ["next"]),
         Jmp(["rose_way_hint_text"])
@@ -2111,7 +2066,7 @@ class RoseWayFiveChestRoomTopLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_1
     _world_area = WorldAreaEnum.ROSE_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
         Jmp(["rose_way_hint_text"])
@@ -2125,7 +2080,7 @@ class RoseWayFiveChestRoomBottomLeftLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_2
     _world_area = WorldAreaEnum.ROSE_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
         Jmp(["rose_way_hint_text"])
@@ -2139,7 +2094,7 @@ class RoseWayFiveChestRoomRightLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_3
     _world_area = WorldAreaEnum.ROSE_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
         Jmp(["rose_way_hint_text"])
@@ -2153,7 +2108,7 @@ class RoseWayFiveChestRoomLeftLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_4
     _world_area = WorldAreaEnum.ROSE_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
         Jmp(["rose_way_hint_text"])
@@ -2167,7 +2122,7 @@ class RoseWayFiveChestRoomBottomRightLocation(TreasureChestLocationRow5):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_5
     _world_area = WorldAreaEnum.ROSE_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
         Jmp(["rose_way_hint_text"])
@@ -2184,7 +2139,7 @@ class RoseTownShopLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_2
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R087_ROSE_TOWN_ITEM_SHOP, ["next"]),
         Jmp(["rose_town_hint_text"])
@@ -2198,7 +2153,7 @@ class RoseTownShopRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_1
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R087_ROSE_TOWN_ITEM_SHOP, ["next"]),
         Jmp(["rose_town_hint_text"])
@@ -2213,7 +2168,7 @@ class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.GARDENER_CLOUD_1
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _monstro_shuffle = True
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R419_LAZY_SHELL_CLOUD, ["next"]),
@@ -2247,7 +2202,7 @@ class RoseTownCloudLeftChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.GARDENER_CLOUD_2
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _monstro_shuffle = True
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R419_LAZY_SHELL_CLOUD, ["next"]),
@@ -2402,7 +2357,7 @@ class ForestMazeFirstRoomLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_1
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R224_FOREST_MAZE_AREA_01, ["next"]),
@@ -2422,7 +2377,7 @@ class ForestMazeFirstUndergroundExitLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_2
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R228_FOREST_MAZE_AREA_04, ["next"]),
@@ -2522,7 +2477,7 @@ class ForestMazeInnerMazeEntranceLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.FOREST_MAZE_RED_ESSENCE
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, ["next"]),
@@ -2909,7 +2864,7 @@ class PipeVaultSlidingCoinRoomBackChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_1
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
@@ -2929,7 +2884,7 @@ class PipeVaultSlidingCoinRoomMiddleChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_2
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
@@ -2949,7 +2904,7 @@ class PipeVaultSlidingCoinRoomFrontChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_3
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
@@ -3114,7 +3069,7 @@ class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_1
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]),
@@ -3134,7 +3089,7 @@ class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_2
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]),
@@ -3655,7 +3610,7 @@ class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_STAR_CHEST
     _world_area = WorldAreaEnum.MOLEVILLE
-    _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, ["next"]),
@@ -3748,7 +3703,7 @@ class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_2
     _world_area = WorldAreaEnum.MOLEVILLE
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, ["next"]),
@@ -4141,7 +4096,7 @@ class BoosterPassSecretMiddleChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOOSTER_PASS_SECRET_1
     _world_area = WorldAreaEnum.BOOSTER_PASS
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R405_BOOSTER_PASS_SECRET, ["next"]),
         JmpIfBitSet(BOOSTER_PASS_SECRET_OPEN, ["booster_pass_hint_text"]),
@@ -4162,7 +4117,7 @@ class BoosterPassSecretRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOOSTER_PASS_SECRET_2
     _world_area = WorldAreaEnum.BOOSTER_PASS
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_11, R405_BOOSTER_PASS_SECRET, ["next"]),
         JmpIfBitSet(BOOSTER_PASS_SECRET_OPEN, ["booster_pass_hint_text"]),
@@ -4183,7 +4138,7 @@ class BoosterPassSecretLeftChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOOSTER_PASS_SECRET_3
     _world_area = WorldAreaEnum.BOOSTER_PASS
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_12, R405_BOOSTER_PASS_SECRET, ["next"]),
         JmpIfBitSet(BOOSTER_PASS_SECRET_OPEN, ["booster_pass_hint_text"]),
@@ -4381,7 +4336,7 @@ class BoosterTowerParachuteRoomChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, ["next"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
@@ -4739,7 +4694,7 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
@@ -4759,7 +4714,7 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
@@ -4779,7 +4734,7 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
@@ -6643,7 +6598,7 @@ class ShipShopChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_SHOP
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN, ["next"]),
@@ -6819,7 +6774,7 @@ class EarlyInnerShipLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_1
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM, ["next"]),
@@ -6839,7 +6794,7 @@ class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM, ["next"]),
@@ -6859,7 +6814,7 @@ class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_CLONE_ROOM
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [SlotsPrize, ThirdMimicFightLauncher]
+    _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, ["next"]),
@@ -7160,7 +7115,7 @@ class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BANDANA_REDS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, ["next"]),
@@ -7404,7 +7359,7 @@ class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.LANDS_END_RED_ESSENCE
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R137_LANDS_END_AREA_01, ["next"]),
@@ -7424,7 +7379,7 @@ class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_1
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [SlotsPrize]
+    _blacklist = []
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R138_LANDS_END_AREA_02, ["next"]),
@@ -7444,7 +7399,7 @@ class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_2
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [SlotsPrize]
+    _blacklist = [SlotsPrize] # SlotsPrize can go here graphically, it's just too annoying to hit 4 times
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R138_LANDS_END_AREA_02, ["next"]),
@@ -7505,7 +7460,7 @@ class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_1
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [SlotsPrize]
+    _blacklist = []
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, ["next"]),
@@ -7525,7 +7480,7 @@ class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_2
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, ["next"]),
@@ -7546,17 +7501,6 @@ class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.LANDS_END_SHY_AWAY
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [EXPStarPrize, SlotsPrize]
-    _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
-        DefaultItem,
-    ]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS, ["next"]),
@@ -7576,7 +7520,7 @@ class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_1
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [SlotsPrize]
+    _blacklist = []
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R263_LANDS_END_UNDERGROUND_AREA_01, ["next"]),
@@ -7596,7 +7540,7 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_18]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_2
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [SlotsPrize]
+    _blacklist = []
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_18, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]),
@@ -7616,7 +7560,7 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_19]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_3
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [SlotsPrize]
+    _blacklist = []
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_19, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]),
@@ -7711,7 +7655,7 @@ class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_TELLER
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM, ["next"]),
@@ -7731,7 +7675,7 @@ class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_1
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
@@ -7751,7 +7695,7 @@ class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_2
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
@@ -7771,7 +7715,7 @@ class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_3
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
@@ -7791,7 +7735,7 @@ class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_4
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
@@ -7811,7 +7755,7 @@ class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_1
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
@@ -7831,7 +7775,7 @@ class BelomeBeforeBossLowerLeftChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_2
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
@@ -7851,7 +7795,7 @@ class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
@@ -7871,7 +7815,7 @@ class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_4
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
@@ -8573,7 +8517,7 @@ class MonstroEntranceLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MONSTRO_TOWN_ENTRANCE
     _world_area = WorldAreaEnum.MONSTRO_TOWN
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R267_MONSTRO_TOWN_ENTRANCE, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
@@ -9305,7 +9249,7 @@ class BeanValleyFirstDeadEndLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BEAN_VALLEY_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R252_BEAN_VALLEY_MAIN_AREA, ["next"]),
         Jmp(["bean_valley_hint_text"])
@@ -9319,7 +9263,7 @@ class BeanValleyFirstProgressChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R252_BEAN_VALLEY_MAIN_AREA, ["next"]),
         Jmp(["bean_valley_hint_text"])
@@ -9389,7 +9333,7 @@ class BeanValleyRightPipeLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]),
         Jmp(["bean_valley_hint_text"])
@@ -9447,7 +9391,7 @@ class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]),
         Jmp(["bean_valley_hint_text"])
@@ -9474,7 +9418,7 @@ class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BEAN_VALLEY_PIRANHA_PLANTS
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_13, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["next"]),
         Jmp(["bean_valley_hint_text"])
@@ -10167,17 +10111,6 @@ class NimbusCastleCornerBridgeChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_LAND_BEFORE_BIRDETTA_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [SlotsPrize]
-    _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
-        DefaultItem,
-    ]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
@@ -10256,7 +10189,7 @@ class NimbusCastleSingleGoldBirdChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_SINGLE_GOLD_BIRD
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [SlotsPrize]
+    _blacklist = []
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
@@ -10431,7 +10364,7 @@ class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_CHEST
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [SlotsPrize]
+    _blacklist = []
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
@@ -10766,7 +10699,7 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
@@ -10797,7 +10730,7 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
@@ -10960,7 +10893,7 @@ class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R384_VOLCANO_AREA_05, ["next"]),
@@ -10980,7 +10913,7 @@ class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R384_VOLCANO_AREA_05, ["next"]),
@@ -11135,7 +11068,7 @@ class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_HINOPIO
     _world_area = WorldAreaEnum.BARREL_VOLCANO
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP, ["next"]),
@@ -11409,7 +11342,7 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
@@ -11429,7 +11362,7 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
@@ -11449,7 +11382,7 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
@@ -11469,7 +11402,7 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
@@ -11565,7 +11498,7 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
@@ -11585,7 +11518,7 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_11, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
@@ -11605,7 +11538,7 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_12, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
@@ -11625,7 +11558,7 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_13, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
@@ -11645,7 +11578,7 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ELEVATOR_PLATFORMS
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS, ["next"]),
@@ -11665,7 +11598,7 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
@@ -11685,7 +11618,7 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
@@ -11705,7 +11638,7 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
@@ -11725,7 +11658,7 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
@@ -11745,7 +11678,7 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
@@ -11919,7 +11852,7 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
@@ -11941,7 +11874,7 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
@@ -11963,7 +11896,7 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
@@ -11985,7 +11918,7 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
@@ -12007,7 +11940,7 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
@@ -12029,7 +11962,7 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_6
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
@@ -12474,7 +12407,7 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MAGIKOOPA
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, RecoveryMushroomPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize, RecoveryMushroomPrize]
     _hint = [
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, ["next"]),
@@ -12763,7 +12696,7 @@ class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.FACTORY_FALLING_AXEMS
     _world_area = WorldAreaEnum.FACTORY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS, ["next"]),
@@ -12785,7 +12718,7 @@ class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.FACTORY_TREASURE_PIT_1
     _world_area = WorldAreaEnum.FACTORY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
@@ -12807,7 +12740,7 @@ class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FACTORY_TREASURE_PIT_2
     _world_area = WorldAreaEnum.FACTORY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
@@ -12873,7 +12806,7 @@ class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_1
     _world_area = WorldAreaEnum.FACTORY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
@@ -12895,7 +12828,7 @@ class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_2
     _world_area = WorldAreaEnum.FACTORY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
@@ -13277,14 +13210,14 @@ class FinalBossFight(BossFightLocation):
     _originally_held = SmithyBossFight
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_FINAL
     _world_area = WorldAreaEnum.INNER_FACTORY
-    _rooms = [R509_FACTORY_GROUNDS_SMITHYS_PAD]
+    _rooms = [R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE]
     _pack_id = PACK185_FINAL_BOSS
     _force_battlefield = BF44_FACTORY_GROUNDS_SMITHYS_PAD
     _post_unlocks_event_id = E1245_INNER_FACTORY_5_BOSS_UNLOCKS
     _npc_slots = [
         BossFightLocationNPC(
             R509_FACTORY_GROUNDS_SMITHYS_PAD,
-            NPC_4,
+            NPC_8,
             sequence_setter_event_id=E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]

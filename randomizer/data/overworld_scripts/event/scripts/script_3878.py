@@ -34,17 +34,17 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	ActionQueueAsync(target=NPC_1, subscript=[
-		A_FaceNorthwest()
+	ActionQueueAsync(target=NPC_3, subscript=[
+		A_FaceMario()
 	]),
 	Pause(10),
 	RunDialog(dialog_id=DI1207_GRATE_GUY_WARNS_YOU_ABOUT_FACTORY_TRAMPOLINE, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
 	JmpIfDialogOptionBSelected(["EVENT_3878_action_queue_7"]),
-	RunEventAsSubroutine(E0065_TRAMPOLINE_SUBROUTINE),
+	Pause(10),
 	SetBit(CASINO_WARP_DIRECTIONAL_BIT),
 	JmpToEvent(E3791_OPEN_FACTORY_FINAL_BOSS_ROOM),
-	ActionQueueAsync(target=NPC_1, subscript=[
-		A_FaceSouthwest()
+	ActionQueueAsync(target=NPC_3, subscript=[
+		A_ResetProperties()
 	], identifier="EVENT_3878_action_queue_7"),
 	Return()
 ])

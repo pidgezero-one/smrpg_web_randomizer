@@ -36,9 +36,11 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	JmpIfBitSet(FACTORY_BOSS_DEFEATED, ["EVENT_2645_remove_from_current_level_3"]),
 	JmpIfBitClear(CASINO_WARP_ENABLED, ["EVENT_2645_remove_from_current_level_3"]),
-	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_2645_summon_to_current_level_5"], identifier="enable_boss_access_1"),
-	RemoveObjectFromCurrentLevel(NPC_0, identifier="EVENT_2645_remove_from_current_level_3"),
+	CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
+	CompareVarToConst(PRIMARY_TEMP_7000, 6, identifier="enable_boss_access_1"),
+    JmpIfComparisonResultIsGreaterOrEqual(["EVENT_2645_summon_to_current_level_5"]),
+	RemoveObjectFromCurrentLevel(NPC_3, identifier="EVENT_2645_remove_from_current_level_3"),
 	Return(),
-	SummonObjectToCurrentLevel(NPC_0, identifier="EVENT_2645_summon_to_current_level_5"),
+	SummonObjectToCurrentLevel(NPC_3, identifier="EVENT_2645_summon_to_current_level_5"),
 	Return()
 ])

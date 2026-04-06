@@ -5,6 +5,9 @@ These scripts are used when the final boss is not Smithy.
 - es_non_smithy_3794: Battle initiation script
 """
 
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import A_SetPriority, A_SetVRAMPriority, A_TransferXYZFPixels
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST, NPC_10, NPC_11, NPC_12, NPC_13, NPC_14
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import (
     ActionQueueAsync,
@@ -77,6 +80,32 @@ es_non_smithy_3792 = EventScript([
         ],
         identifier="EVENT_3792_action_queue_sync_5",
     ),
+	ActionQueueSync(target=NPC_10, subscript=[
+		A_SetPriority(3),
+		A_TransferXYZFPixels(x=0, y=8, z=0, direction=EAST),
+		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES)
+	]),
+	ActionQueueSync(target=NPC_11, subscript=[
+		A_SetPriority(3),
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
+		A_TransferXYZFPixels(x=0, y=8, z=0, direction=EAST)
+	]),
+	ActionQueueSync(target=NPC_12, subscript=[
+		A_SetPriority(3),
+		A_SetSpriteSequence(index=2, is_sequence=True, looping=True),
+		A_TransferXYZFPixels(x=0, y=24, z=0, direction=EAST)
+	]),
+	ActionQueueSync(target=NPC_13, subscript=[
+		A_SetPriority(3),
+		A_SetSpriteSequence(index=3, is_sequence=True, looping=True),
+		A_TransferXYZFPixels(x=0, y=24, z=0, direction=EAST)
+	]),
+	ActionQueueSync(target=NPC_14, subscript=[
+		A_SetPriority(3),
+		A_SetSpriteSequence(index=4, is_sequence=True, looping=True),
+		A_TransferXYZFPixels(x=234, y=19, z=0, direction=EAST),
+		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES)
+	]),
     FreezeCamera(identifier="EVENT_3792_freeze_camera_6"),
     ClearBit(TEMP_7043_1, identifier="EVENT_3792_clear_bit_29"),
     ClearBit(TEMP_7043_5, identifier="EVENT_3792_clear_bit_30"),

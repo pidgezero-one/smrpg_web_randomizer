@@ -144,7 +144,7 @@ script = EventScript([
 	Inc(TEMP_70AE, identifier="EVENT_2630_inc_105"),
 	AddConstToVar(TEMP_70AC, 1),
 	RunDialog(dialog_id=DI3291_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="EVENT_2630_run_dialog_107"),
-	ActionQueueAsync(target=NPC_2, subscript=[
+	ActionQueueAsync(target=NPC_1, subscript=[
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=True),
 		A_PlaySound(sound=SO152_SLIP_HIT, channel=4),
 		A_Pause(16),
@@ -211,7 +211,7 @@ script = EventScript([
 	CopyVarToVar(from_var=UNKNOWN_70AD, to_var=PRIMARY_TEMP_7000, identifier="EVENT_2630_copy_var_to_var_150"),
 	RunDialog(dialog_id=DI3281_BLACKJACK, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
 	RunDialog(dialog_id=DI3292_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	ActionQueueAsync(target=NPC_2, subscript=[
+	ActionQueueAsync(target=NPC_1, subscript=[
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=True),
 		A_PlaySound(sound=SO152_SLIP_HIT, channel=4),
 		A_Pause(16),
@@ -301,7 +301,7 @@ script = EventScript([
 	AddConstToVar(UNKNOWN_70AD, 1),
 	SetVarToConst(PRIMARY_TEMP_7000, 1),
 	RunDialog(dialog_id=DI3281_BLACKJACK, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
-	StopEmbeddedActionScript(NPC_2, identifier="EVENT_2630_stop_embedded_action_script_215"),
+	StopEmbeddedActionScript(NPC_1, identifier="EVENT_2630_stop_embedded_action_script_215"),
 	StopEmbeddedActionScript(MARIO),
 	JmpIfBitSet(DIRECTIONAL_7045_0, ["EVENT_2630_jmp_if_bit_set_359"]),
 	JmpIfVarEqualsConst(TEMP_70AC, 21, ["EVENT_2630_set_bit_357"]),
@@ -311,7 +311,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(TEMP_70AC, 17, ["EVENT_2630_set_var_to_random_353"]),
 	JmpIfVarEqualsConst(TEMP_70AC, 16, ["EVENT_2630_set_var_to_random_353"]),
 	RunDialog(dialog_id=DI3276_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="EVENT_2630_run_dialog_224"),
-	ActionQueueSync(target=NPC_2, subscript=[
+	ActionQueueSync(target=NPC_1, subscript=[
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=True),
 		A_PlaySound(sound=SO152_SLIP_HIT, channel=4),
 		A_Pause(16),
@@ -458,7 +458,7 @@ script = EventScript([
 	SetBit(DIRECTIONAL_7045_0, identifier="EVENT_2630_set_bit_357"),
 	RunDialog(dialog_id=DI3277_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	JmpIfBitSet(DIRECTIONAL_7045_1, ["EVENT_2630_set_bit_466"], identifier="EVENT_2630_jmp_if_bit_set_359"),
-	StopEmbeddedActionScript(NPC_2),
+	StopEmbeddedActionScript(NPC_1),
 	RunDialog(dialog_id=DI3278_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	CopyVarToVar(from_var=UNKNOWN_70AD, to_var=PRIMARY_TEMP_7000),
 	RunDialog(dialog_id=DI3279_BLACKJACK, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
@@ -589,8 +589,8 @@ script = EventScript([
 	], identifier="EVENT_2630_action_queue_471"),
 	RunDialog(dialog_id=DI3282_BLACKJACK, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	ActionQueueSync(target=NPC_2, subscript=[
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=True)
+	ActionQueueSync(target=NPC_1, subscript=[
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True)
 	]),
 	Jmp(["EVENT_2630_run_dialog_495"]),
 	RunDialog(dialog_id=DI3283_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False, identifier="EVENT_2630_run_dialog_476"),
@@ -598,7 +598,7 @@ script = EventScript([
 	CompareVarToConst(PRIMARY_TEMP_7000, 22),
 	JmpIfComparisonResultIsGreaterOrEqual(["EVENT_2630_action_queue_505"]),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=SECONDARY_TEMP_7024),
-	ActionQueueAsync(target=NPC_2, subscript=[
+	ActionQueueAsync(target=NPC_1, subscript=[
 		A_PlaySound(sound=SO152_SLIP_HIT, channel=4),
 		A_SetSpriteSequence(index=3, is_sequence=True, looping=True)
 	]),
@@ -609,8 +609,8 @@ script = EventScript([
 		A_SetSpriteSequence(index=10, sprite_offset=6, is_sequence=True, looping=True)
 	]),
 	RunDialog(dialog_id=DI3285_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	ActionQueueSync(target=NPC_2, subscript=[
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=True)
+	ActionQueueSync(target=NPC_1, subscript=[
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True)
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_ResetProperties()
@@ -632,8 +632,8 @@ script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 1),
 	Dec7000FromFrogCoins(),
 	Jmp(["EVENT_2630_run_dialog_512"]),
-	ActionQueueSync(target=NPC_2, subscript=[
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=True)
+	ActionQueueSync(target=NPC_1, subscript=[
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True)
 	], identifier="EVENT_2630_action_queue_505"),
 	RunDialog(dialog_id=DI3284_BLACKJACK, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

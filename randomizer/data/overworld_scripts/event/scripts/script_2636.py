@@ -43,9 +43,11 @@ script = EventScript([
 	SetBit(TEMP_7043_0),
 	ApplySolidityModToLevel(permanent=True, room_id=R104_GRATE_GUYS_CASINO_FRONT_DOOR, mod_id=0),
 	ActionQueueSync(target=NPC_0, subscript=[
+        A_FixedFCoordOn(),
 		A_WalkNorthwestPixels(8)
 	]),
 	ActionQueueAsync(target=NPC_1, subscript=[
+        A_FixedFCoordOn(),
 		A_WalkSoutheastPixels(8)
 	]),
 	Return(identifier="EVENT_2636_ret_10"),

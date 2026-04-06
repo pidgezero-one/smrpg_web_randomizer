@@ -25,9 +25,22 @@ starting_frog_coins: 99
 items:
   start:
     - SafetyRingItem
-    - BambinoBombItem
-    - SuperSlapItem
+    - RockCandyItem
+    - RockCandyItem
+    - RockCandyItem
+    - RockCandyItem
+    - RockCandyItem
+    - RockCandyItem
+    - RockCandyItem
+    - RockCandyItem
+    - RockCandyItem
+    - RockCandyItem
   override:
+    StartingItem1Location: BrightCardPrize
+    StartingItem2Location: ProgressiveEggPrize
+    StartingItem3Location: ProgressiveEggPrize
+    StartingItem4Location: ProgressiveEggPrize
+    MushroomWay1LowerChest: BambinoBombPrize
     MushrooomWayBossFight: KingCalamariBossFight
     BanditsWayBossFight: JohnnyBossFight
     MushroomKingdomBossFight: ValentinaBossFight

@@ -36,7 +36,10 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	JmpIfBitSet(RUN_AWAY, ["EVENT_1008_set_temp_action_script_7"]),
 	JmpIfBitSet(GAME_OVER, ["EVENT_287_reset_and_choose_game_0"]),
-	JmpIfBitSet(TEMP_704A_2, ["EVENT_1010_clear_bit_7"]),
+	JmpIfBitSet(TEMP_704A_2, ["EVENT_1011_clear_bit_7"]),
 	FadeInFromBlack(sync=False),
+	Return(),
+	Set0158Bit7Offset(0x015E, identifier="EVENT_1011_clear_bit_7"),
+	ClearBit(TEMP_704A_2),
 	Return()
 ])

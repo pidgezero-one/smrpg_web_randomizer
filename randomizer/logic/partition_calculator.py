@@ -97,8 +97,6 @@ def snapshot_vanilla_room_states(world: GameWorld) -> None:
 
         npc_states: list[VanillaNPCState] = []
         for obj in room.objects:
-            if isinstance(obj, Clone):
-                continue
             sprite_id = obj._npc.sprite_id
             is_gridplane, gridplane_format = _get_npc_gridplane_info(world, sprite_id)
             is_coin = sprite_id in COIN_SPRITE_IDS
@@ -202,11 +200,9 @@ def _detect_changed_rooms(world: GameWorld) -> set[int]:
         if room is None:
             continue
 
-        # Enumerate current non-Clone NPCs
+        # Enumerate current NPC sprites (all objects, Clone is just serialization)
         current_sprites: list[int] = []
         for obj in room.objects:
-            if isinstance(obj, Clone):
-                continue
             current_sprites.append(obj._npc.sprite_id)
 
         # Compare against snapshot
@@ -262,12 +258,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         force_cannot_clone: bool  # Room-level override — orchestrator must respect
 
     npc_infos: list[NPCInfo] = []
-    if room_id in (31, 331):
-        for i, obj in enumerate(room.objects):
-            print(f"  obj[{i}]: type={type(obj).__name__}, sprite={obj._npc.sprite_id}, cannot_clone={obj.cannot_clone}")
     for i, obj in enumerate(room.objects):
-        if isinstance(obj, Clone):
-            continue
         sprite_id = obj._npc.sprite_id
         is_gridplane, fmt = _get_npc_gridplane_info(world, sprite_id)
         is_chest = isinstance(obj, ChestNPC) or sprite_id == CHEST_SPRITE_ID
@@ -331,62 +322,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             is_coin=is_coin,
             force_cannot_clone=force_cc,
         ))
-
-    # =========================================================================
-    # Step 2: Map original buffers → NPC indices they served
-    # =========================================================================
-    # For carryover of main_buffer_space and index_in_main_buffer.
-
-    assert world._vanilla_room_states is not None
-    vanilla_state = world._vanilla_room_states.get(room_id)
-
-    # original_buffer_settings[buffer_index] = (main_buffer_space, index_in_main_buffer)
-    original_buffer_settings: list[tuple[BufferSpace, bool]] = [
-        (buf.main_buffer_space, buf.index_in_main_buffer)
-        for buf in existing.buffers
-    ]
-
-    # Map: obj_index → original buffer index (for carryover tracking)
-    obj_to_original_buffer: dict[int, int] = {}
-    if vanilla_state is not None:
-        # Build type → buffer indices map from original partition
-        type_to_indices: dict[BufferType, list[int]] = {}
-        for i, buf in enumerate(existing.buffers):
-            btype = buf.buffer_type
-            if btype not in type_to_indices:
-                type_to_indices[btype] = []
-            type_to_indices[btype].append(i)
-
-        obj_idx = 0
-        vanilla_npc_idx = 0
-        while obj_idx < len(room.objects) and vanilla_npc_idx < len(vanilla_state.npcs):
-            obj = room.objects[obj_idx]
-            if isinstance(obj, Clone):
-                obj_idx += 1
-                continue
-            vanilla_npc = vanilla_state.npcs[vanilla_npc_idx]
-
-            if vanilla_npc.is_gridplane:
-                if vanilla_npc.gridplane_format in (0, 1):
-                    needed = BufferType.FOUR_SPRITES_PER_ROW
-                elif vanilla_npc.gridplane_format in (2, 3):
-                    needed = BufferType.THREE_SPRITES_PER_ROW
-                else:
-                    needed = None
-            elif vanilla_npc.is_coin:
-                needed = BufferType.COINS
-            elif vanilla_npc.sprite_id == CHEST_SPRITE_ID:
-                needed = BufferType.TREASURE_CHEST
-            else:
-                needed = None
-
-            if needed is not None and needed in type_to_indices:
-                indices = type_to_indices[needed]
-                if indices:
-                    obj_to_original_buffer[obj_idx] = indices[0]
-
-            obj_idx += 1
-            vanilla_npc_idx += 1
 
     # =========================================================================
     # Step 3: Determine buffer needs — one buffer per unique sprite ID
@@ -466,16 +401,9 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     # Buffers must appear in the order their first NPC appears in the
     # object list, because the game assigns NPCs to buffers sequentially.
-    if sprite_to_type:
-        print(f"  ranked_sprites: {ranked_sprites}")
-        print(f"  selected_buffers (before sort): {selected_buffers}")
-
     selected_buffers.sort(
         key=lambda sb: sprite_first_appearance.get(sb[0], 999),
     )
-
-    if sprite_to_type:
-        print(f"  selected_buffers (after sort): {selected_buffers}")
 
     # Build the 3-slot buffer assignment
     new_buffer_types: list[BufferType] = [BufferType.EMPTY_3] * 3
@@ -498,39 +426,74 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             sprite_to_new_buffer[sprite_id] = i
 
     # =========================================================================
-    # Step 5: Carry over main_buffer_space and index_in_main_buffer
+    # Step 5: Carry over buffer space and index_in_main_buffer
     # =========================================================================
-    # For each new buffer slot, check if any of its NPCs had an original
-    # buffer with non-default settings. Carry those forward.
+    # Map vanilla sprites to their original buffer index.  The game engine
+    # assigns NPCs to clone buffers by matching sprite ID — the first NPC
+    # with a new sprite claims the next available buffer of the right type.
+    # We replicate that walk to build vanilla_sprite_to_buffer.
+    assert world._vanilla_room_states is not None
+    vanilla_state = world._vanilla_room_states.get(room_id)
+
+    vanilla_sprite_to_buffer: dict[int, int] = {}  # vanilla sprite_id → buffer index
+    if vanilla_state is not None:
+        # Available buffer indices per type (consumed as sprites claim them)
+        avail_by_type: dict[BufferType, list[int]] = {}
+        for buf_i, buf in enumerate(existing.buffers):
+            bt = buf.buffer_type
+            if bt not in avail_by_type:
+                avail_by_type[bt] = []
+            avail_by_type[bt].append(buf_i)
+
+        for vnpc in vanilla_state.npcs:
+            if vnpc.sprite_id in vanilla_sprite_to_buffer:
+                continue  # Already assigned (shares buffer with earlier NPC)
+            if vnpc.is_gridplane and vnpc.gridplane_format is not None:
+                if vnpc.gridplane_format in (0, 1):
+                    needed = BufferType.FOUR_SPRITES_PER_ROW
+                else:
+                    needed = BufferType.THREE_SPRITES_PER_ROW
+                indices = avail_by_type.get(needed, [])
+                if indices:
+                    vanilla_sprite_to_buffer[vnpc.sprite_id] = indices.pop(0)
+
     new_buffer_space: list[BufferSpace] = [BufferSpace.BYTES_0] * 3
     new_index_in_main: list[bool] = [True] * 3  # Default is True
 
     for i, btype in enumerate(new_buffer_types):
         if btype in (BufferType.TREASURE_CHEST, BufferType.COINS, BufferType.EMPTY_3):
-            # For chest/coin/empty, check if original had same type and carry over
-            for orig_i, orig_buf in enumerate(existing.buffers):
+            # For chest/coin/empty, carry over from original matching buffer
+            for orig_buf in existing.buffers:
                 if orig_buf.buffer_type == btype:
-                    space, index_flag = original_buffer_settings[orig_i]
-                    if space.value > new_buffer_space[i].value:
-                        new_buffer_space[i] = space
-                    new_index_in_main[i] = index_flag
+                    new_buffer_space[i] = orig_buf.main_buffer_space
+                    new_index_in_main[i] = orig_buf.index_in_main_buffer
                     break
         else:
-            # Gridplane buffer — find NPCs whose sprite_id is assigned to this slot
+            # Gridplane buffer — find which sprites are assigned here and
+            # carry over buffer space from their VANILLA buffer (if the same
+            # sprite was present in vanilla).  For new sprites not in vanilla,
+            # use the NPC's min_vram_size as a baseline.
+            max_space = 0
             for npc in npc_infos:
                 if npc.sprite_id not in buffered_sprite_ids:
                     continue
                 if sprite_to_new_buffer.get(npc.sprite_id) != i:
                     continue
-                # This NPC uses the new buffer. Check its original buffer settings.
-                orig_buf_idx = obj_to_original_buffer.get(npc.obj_index)
+                # Check if this sprite was in a vanilla buffer
+                orig_buf_idx = vanilla_sprite_to_buffer.get(npc.sprite_id)
                 if orig_buf_idx is not None:
-                    space, index_flag = original_buffer_settings[orig_buf_idx]
-                    if space.value > new_buffer_space[i].value:
-                        new_buffer_space[i] = space
-                    # Carry index_in_main_buffer from original (use first match)
-                    if new_index_in_main[i] is True and index_flag is not True:
-                        new_index_in_main[i] = index_flag
+                    # Same sprite in vanilla — carry over its buffer space
+                    orig_space = existing.buffers[orig_buf_idx].main_buffer_space.value
+                    if orig_space > max_space:
+                        max_space = orig_space
+                # New sprites default to BYTES_0; animation overrides
+                # in Step 5b will increase if needed.
+            new_buffer_space[i] = BufferSpace(min(max_space, 7))
+            # Carry over index_in_main_buffer from original buffer of same type
+            for orig_buf in existing.buffers:
+                if orig_buf.buffer_type == btype:
+                    new_index_in_main[i] = orig_buf.index_in_main_buffer
+                    break
 
     # =========================================================================
     # Step 5b: Compute animation-based buffer space / min_vram_size
@@ -656,6 +619,19 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     # Step 6: Apply buffer changes to the existing partition
     # =========================================================================
+    if world.settings.debug_mode and room_id == 254:
+        print(f"[PARTITION DBG] Room 254:")
+        for i, obj in enumerate(room.objects):
+            npc_info = next((n for n in npc_infos if n.obj_index == i), None)
+            fc = npc_info.force_cannot_clone if npc_info else "?"
+            gp = npc_info.is_gridplane if npc_info else "?"
+            fmt = npc_info.gridplane_format if npc_info else "?"
+            buffered = npc_info.sprite_id in buffered_sprite_ids if npc_info else "?"
+            print(f"  obj[{i}]: sprite={obj._npc.sprite_id} force_cc={fc} gridplane={gp} fmt={fmt} buffered={buffered}")
+        print(f"  buffers: {[(bt.name, bs.name) for bt, bs in zip(new_buffer_types, new_buffer_space)]}")
+        print(f"  buffered_sprite_ids: {buffered_sprite_ids}")
+        print(f"  sprite_to_new_buffer: {sprite_to_new_buffer}")
+
     for i in range(3):
         existing.buffers[i].set_buffer_type(new_buffer_types[i])
         existing.buffers[i].set_main_buffer_space(new_buffer_space[i])
@@ -683,6 +659,14 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                 max_vram = 0
                 sprite = world.get_sprite(npc.sprite_id)
                 for seq_idx in range(len(sprite.animation.properties.sequences)):
+                    seq = sprite.animation.properties.sequences[seq_idx]
+                    for frame in seq.frames:
+                        if frame.mold_id >= len(sprite.animation.properties.molds):
+                            raise IndexError(
+                                f"Room {room_id} NPC {npc.obj_index} (sprite {npc.sprite_id}): "
+                                f"sequence {seq_idx} frame references mold_id {frame.mold_id} "
+                                f"but sprite only has {len(sprite.animation.properties.molds)} molds"
+                            )
                     vram = min_vram_from_sequence_for_sprite(world, npc.sprite_id, seq_idx)
                     if vram > max_vram:
                         max_vram = vram
@@ -693,78 +677,16 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # Step 8: Log warnings
     # =========================================================================
     # Check for sprites that needed a buffer but didn't get one
-    for npc in npc_infos:
-        if npc.force_cannot_clone:
-            continue  # Intentionally excluded from buffers
-        if npc.is_gridplane and npc.sprite_id not in buffered_sprite_ids and not npc.is_chest and not npc.is_coin:
-            print(
-                f"[PARTITION WARN] Room {room_id}: NPC {npc.obj_index} "
-                f"(sprite {npc.sprite_id}, format {npc.gridplane_format}) "
-                f"has no matching buffer, set to cannot_clone=True"
-            )
-
-
-def _log_slot_machine_support(world: GameWorld) -> None:
-    """Log can_room_support_slots results for all rooms with chests.
-
-    For rooms with slot machine dummy NPCs (last 5 objects with EMPTY_NPC_3
-    sprite ID), temporarily swaps them to EMPTY_NPC before checking.
-    Debug output only — does not modify any state.
-    """
-    from ..data.rooms.npcs import EMPTY_NPC
-
-    slot_dummy_sprite_id = SPR1023_EMPTY
-
-    for room_id, room in enumerate(world.rooms._rooms):
-        if room is None or room.partition is None:
-            continue
-
-        # Check if room has chests
-        has_chest = False
-        for obj in room.objects:
-            if isinstance(obj, Clone):
-                continue
-            if isinstance(obj, ChestNPC) or obj._npc.sprite_id == CHEST_SPRITE_ID:
-                has_chest = True
-                break
-
-        if not has_chest:
-            continue
-
-        # Check if last 5 objects are slot dummies (all have EMPTY sprite)
-        objects = room.objects
-        has_dummies = (
-            len(objects) >= 5
-            and all(
-                objects[len(objects) - 5 + j]._npc.sprite_id == slot_dummy_sprite_id
-                for j in range(5)
-            )
-        )
-
-        saved_npcs = []
-        if has_dummies:
-            # Temporarily swap dummy NPCs to EMPTY_NPC
-            for j in range(5):
-                idx = len(objects) - 5 + j
-                saved_npcs.append(objects[idx]._npc)
-                objects[idx]._npc = EMPTY_NPC
-
-        try:
-            # Use the room's existing partition parameters for accurate capacity check
-            existing = room.partition
-            analyze_kwargs = dict(
-                max_packets=existing.extra_sprite_buffer_size,
-                allow_extra_sprite_buffer=existing.allow_extra_sprite_buffer,
-                water=not existing.full_palette_buffer,
-            )
-            result = can_room_support_slots(world, room_id, **analyze_kwargs)
-            analysis = analyze_partition(world, room_id, **analyze_kwargs)
-        finally:
-            # Restore original dummy NPCs
-            if has_dummies:
-                for j in range(5):
-                    idx = len(objects) - 5 + j
-                    objects[idx]._npc = saved_npcs[j]
+    if world.settings.debug_mode:
+        for npc in npc_infos:
+            if npc.force_cannot_clone:
+                continue  # Intentionally excluded from buffers
+            if npc.is_gridplane and npc.sprite_id not in buffered_sprite_ids and not npc.is_chest and not npc.is_coin:
+                print(
+                    f"[PARTITION WARN] Room {room_id}: NPC {npc.obj_index} "
+                    f"(sprite {npc.sprite_id}, format {npc.gridplane_format}) "
+                    f"has no matching buffer, set to cannot_clone=True"
+                )
 
 
 def _get_boss_henchman_rooms(world: GameWorld) -> set[int]:
@@ -780,7 +702,7 @@ def _get_boss_henchman_rooms(world: GameWorld) -> set[int]:
         if not isinstance(location, BossFightLocation):
             continue
         # Collect rooms from all NPC slot types
-        for slot_attr in ('_npc_slots', '_henchman_slots', '_statue_slots'):
+        for slot_attr in ('_npc_slots', '_character_henchman_slots', '_mook_henchman_slots', '_tiny_henchman_slots', '_statue_slots'):
             slots = getattr(location, slot_attr, None)
             if slots is None:
                 continue
@@ -829,18 +751,24 @@ def update_changed_room_partitions(world: GameWorld) -> None:
     2. Filter to boss/henchman rooms + slot machine rooms
     3. Apply animation VRAM overrides (min_vram_size pre-pass)
     4. Recalculate partition for each changed room
-    5. Log slot machine support for all chest rooms
     """
     all_changed = _detect_changed_rooms(world)
     boss_rooms = _get_boss_henchman_rooms(world)
     slot_rooms = _detect_slot_machine_rooms(world)
     changed_rooms = (all_changed & boss_rooms) | (all_changed & slot_rooms)
 
+    if world.settings.debug_mode:
+        print(f"[PARTITION] all_changed={len(all_changed)} boss_rooms={len(boss_rooms)} "
+              f"slot_rooms={len(slot_rooms)} recalculating={len(changed_rooms)}")
+        if changed_rooms:
+            print(f"[PARTITION] rooms: {sorted(changed_rooms)}")
+
     # Pre-pass: animation VRAM overrides
     _apply_animation_vram_overrides(world, changed_rooms)
 
-    # Final pass: slot machine support check (all chest rooms, not just changed)
-    _log_slot_machine_support(world)
+    # Main pass: recalculate partition for each changed room
+    for room_id in changed_rooms:
+        _recalculate_room_partition(world, room_id)
 
 
 # =============================================================================
@@ -1193,8 +1121,13 @@ class PartitionAnalysis:
 
     @property
     def bitmap_slots_used(self) -> int:
-        """Total extra sprite bitmap slots consumed by all parent NPCs."""
-        return sum(npc.bitmap_slots for npc in self.npcs)
+        """Extra sprite bitmap slots consumed by dynamic (non-clone-buffer) NPCs.
+
+        Only force_cannot_clone NPCs allocate from the extra sprite bitmap at
+        $01B2.  Gridplane NPCs in clone buffers, chest NPCs, and coin NPCs use
+        the buffer system and never touch the bitmap.
+        """
+        return sum(npc.bitmap_slots for npc in self.npcs if npc.force_cannot_clone)
 
     @property
     def bitmap_slots_remaining(self) -> int:
@@ -1602,9 +1535,9 @@ def _calculate_ally_buffer_size(
     if prize_cls is None:
         return 1
 
-    character_model = prize_cls().character_model
-    if character_model is None:
-        return 1
+    prize = prize_cls()
+    npc = prize.character_model
+    ally = prize.ally
 
     if not isinstance(room, Room) or not room.extra_sprite_actions:
         return 1
@@ -1613,18 +1546,18 @@ def _calculate_ally_buffer_size(
 
     # Check default animation states
     for state in DEFAULT_ANIMATION_STATES:
-        sprites_dict = character_model.ally._sprites_primary
+        sprites_dict = ally._sprites_primary
         if state in sprites_dict:
             prop_id, offset, is_mold = sprites_dict[state]
             if is_mold:
                 try:
-                    v = character_model._npc.min_vram_from_mold(world, prop_id, offset)
+                    v = npc.min_vram_from_mold(world, prop_id, offset)
                     vram_values.append(v)
                 except (IndexError, AssertionError):
                     pass
             else:
                 try:
-                    v = character_model._npc.min_vram_from_sequence(world, prop_id, offset)
+                    v = npc.min_vram_from_sequence(world, prop_id, offset)
                     vram_values.append(v)
                 except (IndexError, AssertionError):
                     pass
@@ -1633,18 +1566,18 @@ def _calculate_ally_buffer_size(
     for action in room.extra_sprite_actions:
         anim_states = EXTRA_ACTION_TO_ANIMATION_STATE.get(action, [])
         for state in anim_states:
-            sprites_dict = character_model.ally._sprites_primary
+            sprites_dict = ally._sprites_primary
             if state in sprites_dict:
                 prop_id, offset, is_mold = sprites_dict[state]
                 if is_mold:
                     try:
-                        v = character_model._npc.min_vram_from_mold(world, prop_id, offset)
+                        v = npc.min_vram_from_mold(world, prop_id, offset)
                         vram_values.append(v)
                     except (IndexError, AssertionError):
                         pass
                 else:
                     try:
-                        v = character_model._npc.min_vram_from_sequence(world, prop_id, offset)
+                        v = npc.min_vram_from_sequence(world, prop_id, offset)
                         vram_values.append(v)
                     except (IndexError, AssertionError):
                         pass
@@ -1859,6 +1792,7 @@ def filter_fitting_models(
 SLOT_MACHINE_BITMAP_COST = 3
 
 
+
 def can_room_support_slots(
     world: GameWorld,
     room_id: int,
@@ -1936,26 +1870,24 @@ def analyze_room_partition(
     # Calculate ally buffer size from room's extra_sprite_actions
     ally_buffer_size = 1  # default minimum
     if isinstance(room, Room) and room.extra_sprite_actions:
-        character_model = world.overworld_character.character_model
-        if character_model is not None:
+        overworld_prize = world.overworld_character
+        npc = overworld_prize.character_model
+        ally = overworld_prize.ally
+        if npc is not None:
             vram_values = []
             for state in DEFAULT_ANIMATION_STATES:
-                sprites_dict = character_model.ally._sprites_primary
+                sprites_dict = ally._sprites_primary
                 if state in sprites_dict:
                     prop_id, offset, is_mold = sprites_dict[state]
                     if is_mold:
                         try:
-                            v = character_model._npc.min_vram_from_mold(
-                                world, prop_id, offset
-                            )
+                            v = npc.min_vram_from_mold(world, prop_id, offset)
                             vram_values.append(v)
                         except (IndexError, AssertionError):
                             pass
                     else:
                         try:
-                            v = character_model._npc.min_vram_from_sequence(
-                                world, prop_id, offset
-                            )
+                            v = npc.min_vram_from_sequence(world, prop_id, offset)
                             vram_values.append(v)
                         except (IndexError, AssertionError):
                             pass
@@ -1963,22 +1895,18 @@ def analyze_room_partition(
             for action in room.extra_sprite_actions:
                 anim_states = EXTRA_ACTION_TO_ANIMATION_STATE.get(action, [])
                 for state in anim_states:
-                    sprites_dict = character_model.ally._sprites_primary
+                    sprites_dict = ally._sprites_primary
                     if state in sprites_dict:
                         prop_id, offset, is_mold = sprites_dict[state]
                         if is_mold:
                             try:
-                                v = character_model._npc.min_vram_from_mold(
-                                    world, prop_id, offset
-                                )
+                                v = npc.min_vram_from_mold(world, prop_id, offset)
                                 vram_values.append(v)
                             except (IndexError, AssertionError):
                                 pass
                         else:
                             try:
-                                v = character_model._npc.min_vram_from_sequence(
-                                    world, prop_id, offset
-                                )
+                                v = npc.min_vram_from_sequence(world, prop_id, offset)
                                 vram_values.append(v)
                             except (IndexError, AssertionError):
                                 pass
@@ -1986,15 +1914,17 @@ def analyze_room_partition(
             if vram_values:
                 ally_buffer_size = min(max(vram_values) + 1, 3)
 
-    # Calculate extra sprite buffer (for chest packet sprites)
-    #chest_count = sum(1 for n in npc_analyses if n.is_chest)
-    #allow_extra_sprite_buffer = chest_count > 0
-    # extra_buffer_size = 0
-    # if allow_extra_sprite_buffer:
-    #     if room_id in CLOSE_CHEST_ROOMS:
-    #         extra_buffer_size = CLOSE_CHEST_ROOMS[room_id]
-    #     else:
-    #         extra_buffer_size = min(chest_count, 1)
+    # Preserve extra sprite buffer and full palette from the room's existing
+    # partition — other things besides chests (water splash, coins, explosions)
+    # can use packets, so don't override the room definition.
+    allow_extra_sprite_buffer = False
+    extra_buffer_size = 0
+    full_palette = True
+    if isinstance(room, Room) and room.partition is not None:
+        current_partition = room.partition
+        allow_extra_sprite_buffer = current_partition.allow_extra_sprite_buffer
+        extra_buffer_size = current_partition.extra_sprite_buffer_size
+        full_palette = current_partition._full_palette_buffer
 
     # Special case: triple empty rooms
     if room_id in TRIPLE_EMPTY_EX1_ROOMS:
@@ -2004,13 +1934,6 @@ def analyze_room_partition(
     if room_id in TRIPLE_EMPTY_EX0_ROOMS:
         allow_extra_sprite_buffer = False
         extra_buffer_size = 0
-
-    # Determine full palette
-    full_palette = True
-    if isinstance(room, Room):
-        current_partition = room.partition
-        if current_partition is not None:
-            full_palette = current_partition._full_palette_buffer
 
     # Assign NPCs to buffers
     buffer_assignments, warnings = _assign_buffers(npc_analyses, room_id)

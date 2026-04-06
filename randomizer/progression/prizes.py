@@ -11,6 +11,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import 
     UsableEventScriptCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    JmpIfBitClear,
     Return,
     SetVarToConst,
     JmpToEvent,
@@ -364,6 +365,8 @@ def _get_gating_flags():
             BowsersKeepGating,
             FactoryGate,
             FactoryGating,
+            WinCondition,
+            WinConditions
         )
 
         _gating_flags_cache = {
@@ -401,6 +404,8 @@ def _get_gating_flags():
             "BowsersKeepGating": BowsersKeepGating,
             "FactoryGate": FactoryGate,
             "FactoryGating": FactoryGating,
+            "WinCondition": WinCondition,
+            "WinConditions": WinConditions
         }
     return _gating_flags_cache
 
@@ -6002,7 +6007,6 @@ class SmithyBossFight(BossFightPrize):
     ]
     _extra_hp_enemies = [SMITHY2Enemy]
     _additional_enemies_to_scale = [
-        SMITHY2Enemy,
         SMITHYBodyEnemy,
         SMITHYChestEnemy,
         SMITHYMageEnemy,
@@ -6013,7 +6017,7 @@ class SmithyBossFight(BossFightPrize):
     _npc_models = [SmithyLargeObject, SmithySmallObject]
     _statue_npc = SmithyStatueObject
     
-    _force_start_event = BE0038_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
+    _force_battlefield = BF44_FACTORY_GROUNDS_SMITHYS_PAD
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """SMITHY: How utterly annoying!\n Leave me alone![await]""",
@@ -6048,6 +6052,7 @@ class SmithyBossFight(BossFightPrize):
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Smithy's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Smithy.[await]""",
     }
+    
 
 
 class Punchinello2BossFight(BossFightPrize):

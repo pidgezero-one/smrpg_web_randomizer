@@ -343,6 +343,12 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             for formation in pack.formations:
                 formation.set_music(random.choice(music_instances))
 
+        # Randomize Smithy 2 phase transition music (battle animation script)
+        from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import PlayMusicAtVolume
+        smithy_2_cmd = world.get_battle_animation_command_by_name("smithy_2_music")
+        assert isinstance(smithy_2_cmd, PlayMusicAtVolume)
+        smithy_2_cmd.set_music(random.choice(enabled_tracks).music_id)
+
     # Random Star Hill wishes (truly random, not tied to seed)
     wishes = zip(WISH_DIALOG_IDS, random.sample(WISH_POOL, len(WISH_DIALOG_IDS)))
     for dialog_id, wish in wishes:

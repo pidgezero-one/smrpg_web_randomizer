@@ -1,7 +1,6 @@
-# SPR0490_SMITHY_1ST_FORM
+# SPR0490_SMITHY_ST_FORM
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-from randomizer.data.variables.sprite_palette_names import SPAL620_SMITHY_S_HAMMER
 sprite = CompleteSprite(
     animation=AnimationPack(137, length=1163, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=8192,
@@ -3446,7 +3445,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=SPAL620_SMITHY_S_HAMMER,
+    palette_id=620,
     palette_offset=0,
     unknown_num=8
 )

@@ -820,7 +820,7 @@ class ScytheAttack(EnemyAttack):
 
 class MoralSupportAttack(EnemyAttack):
     _index = 74
-    _name = ' Moral Support'
+    _name = 'Moral Support'
     _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False

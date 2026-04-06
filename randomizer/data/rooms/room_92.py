@@ -13,11 +13,11 @@ from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
-        allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=1,
+        allow_extra_sprite_buffer=False,
+        extra_sprite_buffer_size=0,
         buffers = [
             Buffer(
-                buffer_type=BufferType.EMPTY_1,
+                buffer_type=BufferType.TREASURE_CHEST,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
@@ -27,10 +27,10 @@ room = Room(
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
-                main_buffer_space=BufferSpace.BYTES_0,
+                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                main_buffer_space=BufferSpace.BYTES_512,
                 index_in_main_buffer=True
-            )
+            ),
         ],
         full_palette_buffer=True
     ),
@@ -58,33 +58,6 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            npc=npcs.TRAMPOLINE_WARP_NPC,
-            initiator=EventInitiator.JUMP_ON,
-            event_script=E3878_CASINO_TRAMPOLINE,
-            action_script=A0015_DO_NOTHING,
-            visible=False,
-            x=3,
-            y=13,
-            z=0,
-            z_half=False,
-            direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=True,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=True,
-            cant_walk_up_stairs=False,
-            cant_walk_under=True,
-            cant_pass_walls=True,
-            cant_jump_through=False,
-            cant_pass_npcs=True,
-            byte3_bit5=True,
-            cant_walk_through=True,
-            byte3_bit7=True,
-            slidable_along_walls=False,
-            cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 1
             npc=npcs.GRATE_GUY_FROM_CASINO_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E2637_CASINO_GRATE_GUY,
@@ -111,8 +84,8 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        RegularNPC( # 2
-            npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
+        RegularNPC( # 1
+            npc=npcs.CASINO_ASSISTANTS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E2632_BLACKJACK_GUY,
             action_script=A0015_DO_NOTHING,
@@ -138,8 +111,8 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        RegularClone( # 3
-            npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
+        RegularClone( # 2
+            npc=npcs.CASINO_ASSISTANTS_NPC,
             event_script=E2631_CASINO_SLOT_MACHINE,
             action_script=A0015_DO_NOTHING,
             visible=True,
@@ -148,7 +121,34 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST),
-        RegularNPC( # 4
+        RegularNPC( # 3
+            npc=npcs.CASINO_ASSISTANTS_NPC,
+            event_script=E3878_CASINO_TRAMPOLINE,
+            action_script=A0015_DO_NOTHING,
+            visible=False,
+            x=3,
+            y=13,
+            z=0,
+            z_half=False,
+            direction=SOUTHEAST,
+            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            face_on_trigger=False,
+            cant_enter_doors=False,
+            byte2_bit5=False,
+            set_sequence_playback=True,
+            cant_float=False,
+            cant_walk_up_stairs=False,
+            cant_walk_under=False,
+            cant_pass_walls=False,
+            cant_jump_through=False,
+            cant_pass_npcs=False,
+            byte3_bit5=False,
+            cant_walk_through=True,
+            byte3_bit7=False,
+            slidable_along_walls=True,
+            cant_move_if_in_air=True,
+            byte7_upper2=3),
+        ChestNPC( # 4
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
             event_script=E2634_CASINO_SLOT_MACHINE,
@@ -176,7 +176,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 5
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC_2,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
@@ -201,9 +201,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=False,),
         RegularClone( # 6
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC_2,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
             visible=False,
@@ -211,9 +212,10 @@ room = Room(
             y=17,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False,),
         RegularClone( # 7
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC_2,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
             visible=False,
@@ -221,7 +223,8 @@ room = Room(
             y=17,
             z=4,
             z_half=False,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            cannot_clone=False,),
         RegularNPC( # 8
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,

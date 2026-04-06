@@ -1225,7 +1225,8 @@ class GameWorld:
                 # Reset dummy indices so _pre_allocate_dummy_npcs reruns with fresh rooms
                 self._slot_dummy_indices = None
                 self._flag_dummy_index = None
-                print(f"[DEBUG] Placement failed with {e.unplaced_count} unplaced items, retrying...")
+                if self.settings.debug_mode:
+                    print(f"[DEBUG] Placement failed with {e.unplaced_count} unplaced items, retrying...")
 
                 # Track this failure count
                 count = e.unplaced_count
@@ -1797,7 +1798,11 @@ class GameWorld:
         # Sprite graphics patch (now has access to reclaimed animation banks)
         self._report_progress("Assembling graphics...", progress)
 
-        for p in self.sprites.render():
+        # Sprites 490 (Smithy) and 491 (Smithy extended/"Shyper") must share
+        # the same tile group so their subtile ordering matches — battle
+        # animation events 82/86 use sprite 491's sequences interchangeably
+        # with sprite 490's during the Smithy fight.
+        for p in self.sprites.render(shared_image_groups=[[490, 491]]):
             patch.add_data(p[0], p[1], source="sprites")
         progress += 3
 

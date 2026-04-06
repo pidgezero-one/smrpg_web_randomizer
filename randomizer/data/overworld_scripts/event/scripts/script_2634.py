@@ -167,8 +167,8 @@ script = EventScript([
 	CompareVarToConst(PRIMARY_TEMP_7000, 10),
 	JmpIfComparisonResultIsGreaterOrEqual(["EVENT_2634_set_bit_108"]),
 	RunDialog(dialog_id=DI3316_CASINO_SLOTS, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	ActionQueueSync(target=NPC_3, subscript=[
-		A_SetSpriteSequence(index=10, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
+	ActionQueueSync(target=NPC_2, subscript=[
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
 	Return(),
@@ -180,8 +180,8 @@ script = EventScript([
 	Pause(10, identifier="EVENT_2634_pause_113"),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	ActionQueueSync(target=NPC_3, subscript=[
-		A_SetSpriteSequence(index=10, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
+	ActionQueueSync(target=NPC_2, subscript=[
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
 	Return()

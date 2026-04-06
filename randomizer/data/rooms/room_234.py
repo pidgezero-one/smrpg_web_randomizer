@@ -14,7 +14,7 @@ room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=3,
+        extra_sprite_buffer_size=2,
         buffers = [
             Buffer(
                 buffer_type=BufferType.TREASURE_CHEST,
@@ -22,7 +22,7 @@ room = Room(
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),

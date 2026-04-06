@@ -17,6 +17,8 @@ from ...data.variables.room_names import (
 from ...data.variables.variable_names import (
     COMPLETED_MUSHROOM_DERBY,
     ITEM_ID,
+    MAP_CASINO,
+    MAP_DIRECTIONAL_BEAN_VALLEY_CASINO,
     PRIMARY_TEMP_7000,
     RETURNED_MARIO_DOLL,
     YOSHI_ITEM_GRANTED,
@@ -172,6 +174,9 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         E1329_HILL_UNLOCKS,
         E1169_OPEN_LANDS_END_IF_GATED_BY_ELDER,
     )
+
+    world.event_2496_startup += [SetBit(MAP_CASINO)]
+    world.event_2496_startup += [SetBit(MAP_DIRECTIONAL_BEAN_VALLEY_CASINO)]
 
     # Win conditions
     if world.settings.is_flag_value(WinCondition, WinConditions.SMITHY):

@@ -37,19 +37,18 @@ script = EventScript([
 	JmpIfBitClear(CASINO_WARP_ENABLED, ["EVENT_2633_set_bit_2"]),
 	RunEventAsSubroutine(E2645_CASINO_SUBROUTINE),
 	SetBit(DIRECTIONAL_7046_1, identifier="EVENT_2633_set_bit_2"),
-	ActionQueueSync(target=NPC_1, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetWalkingSpeed(FASTEST),
 		A_WalkWestPixels(5)
 	]),
-	ActionQueueSync(target=NPC_2, subscript=[
+	ActionQueueSync(target=NPC_1, subscript=[
 		A_SetWalkingSpeed(FASTEST),
 		A_WalkNorthPixels(8),
-		A_SetSpriteSequence(index=10, is_mold=True, is_sequence=True, looping=True)
 	]),
-	ActionQueueSync(target=NPC_3, subscript=[
+	ActionQueueSync(target=NPC_2, subscript=[
 		A_SetWalkingSpeed(FASTEST),
 		A_WalkWestPixels(16),
-		A_SetSpriteSequence(index=10, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_SetWalkingSpeed(FASTEST),
@@ -72,7 +71,21 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_VisibilityOff()
 	]),
-	FadeInFromBlack(sync=False),
+	JmpIfBitClear(CASINO_WARP_ENABLED, ["load_the_Casino_Room"]),
+	JmpIfBitClear(CASINO_WARP_DIRECTIONAL_BIT, ["load_the_Casino_Room"]),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_VisibilityOff(),
+	]),
+	FadeInFromBlack(sync=False, identifier="load_the_Casino_Room"),
+	JmpIfBitClear(CASINO_WARP_ENABLED, ["EVENT_2633_ret_16"]),
+	JmpIfBitClear(CASINO_WARP_DIRECTIONAL_BIT, ["EVENT_2633_ret_16"]),
+	EnableControlsUntilReturn([]),
+	ActionQueueAsync(target=MARIO, subscript=[
+        A_TransferToXYZF(direction=SOUTH, x=3, y=13, z=6),
+		A_VisibilityOn(),
+		A_JumpToHeight(height=0, silent=True)
+	]),
+    ClearBit(CASINO_WARP_DIRECTIONAL_BIT),
 	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_2633_ret_16"]),
 	SetVarToConst(PRIMARY_TEMP_7000, 523),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),

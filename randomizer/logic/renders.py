@@ -62,6 +62,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_5,
     NPC_6,
     NPC_7,
+    NPC_8,
+    NPC_9
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import (
     ActionQueueAsync,
@@ -78,6 +80,7 @@ from ..data.variables.action_script_names import (
     A0962_FACTORY_3RD_BOSS_LEFT_HAMMER,
     A0963_FACTORY_3RD_BOSS_MID_HAMMER,
     A0964_FACTORY_3RD_BOSS_RIGHT_HAMMER,
+    A0015_DO_NOTHING
 )
 from ..data.variables.event_script_names import (
     E0817_BEAN_VALLEY_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -96,6 +99,7 @@ from ..data.variables.room_names import (
     R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
     R394_VOLCANO_POSTCD_AREA_05,
     R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+    R509_FACTORY_GROUNDS_SMITHYS_PAD,
 )
 from ..data.variables.variable_names import TEMP_7043_3
 from ..types.physical_objects import BossNPC, SpriteAnimation
@@ -1619,3 +1623,18 @@ def render_final_boss_fight(
                 ],
             ),
         )
+
+        
+    room = world.rooms._rooms[R509_FACTORY_GROUNDS_SMITHYS_PAD]
+    assert (
+        room is not None
+    ), f"Room {R509_FACTORY_GROUNDS_SMITHYS_PAD} not found"
+    for npc_id in [NPC_4, NPC_5, NPC_6, NPC_7, NPC_9]:
+        obj = room.get_npc_by_target_id(npc_id)
+        assert (
+            obj is not None
+        ), f"NPC {npc_id} not found in room {R509_FACTORY_GROUNDS_SMITHYS_PAD}"
+        obj.set_visible(False)
+    obj = room.get_npc_by_target_id(NPC_8)
+    obj.set_z(0)
+    obj.set_action_script(A0015_DO_NOTHING)

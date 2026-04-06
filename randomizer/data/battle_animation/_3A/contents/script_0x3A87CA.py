@@ -1871,7 +1871,7 @@ script = AnimationScriptBlock(expected_size=7842, expected_beginning=0x3A87CA, s
 	RemoveObject(),
 	ReturnObjectQueue(),
 	SetAMEM32ToXYZCoords(origin=CASTER_CURRENT_POSITION, x=-64, y=-128, z=0, set_x=True, set_y=True, set_z=True, identifier="command_0x3AA288"),
-	NewSpriteAtCoords(sprite_id=SPR0717_AERO_CHARACTER, sequence=0, priority=3, vram_address=0x6200, palette_row=8, overwrite_vram=True, param_2_and_0x10=True, overwrite_palette=True, overlap_all_sprites=True),
+	NewSpriteAtCoords(sprite_id=SPR0174_AERO_OBJECT, sequence=0, priority=3, vram_address=0x6200, palette_row=8, overwrite_vram=True, param_2_and_0x10=True, overwrite_palette=True, overlap_all_sprites=True),
 	RunSubroutine(["command_0x3A8282"]),
 	RunSubroutine(["command_0x3A72CE"]),
 	SpriteSequence(sequence=0),

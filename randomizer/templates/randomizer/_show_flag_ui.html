@@ -15,9 +15,9 @@
     <div class="flag-container flag-container-number {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag.description }}">
         <label for="{{ subcategory.id }}.{{ flag.id }}" >{{ flag.name }}:</label>
         <input type="number" class="flag-form-input form-control flag-form-input-number flag-{{ subcategory.id }}-{{ flag.id }}"
-                id="{{ subcategory.id }}.{{ flag.id }}" 
-                max="{{ flag.max }}"
-                min="{{ flag.min }}"
+                id="{{ subcategory.id }}.{{ flag.id }}"
+                max="{{ flag.max_value }}"
+                min="{{ flag.min_value }}"
                 value="{{ flag.default }}"
                 name="{{ subcategory.id }}.{{ flag.id }}">
     </div>

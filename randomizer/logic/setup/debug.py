@@ -67,7 +67,6 @@ def apply_debug_max_stats(world: GameWorld) -> None:
         ally.starting_defense = 255
         ally.starting_mg_attack = 255
         ally.starting_mg_defense = 255
-        ally.starting_speed = 255
         ally.starting_level = 30
         ally.starting_experience = 9999
 

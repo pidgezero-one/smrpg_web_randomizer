@@ -35,15 +35,19 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.
     UsableEventScriptCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    JmpIfBitClear,
     PaletteSet,
     PaletteSetMorphs,
     Return,
     ClearBit,
+    SetBit,
     Inc,
     Set7000ToCurrentLevel,
     SummonObjectToSpecificLevel,
     JmpIfVarEqualsConst,
+    JmpToEvent,
     StartBattleAtBattlefield,
+    EnterArea
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
     A_SetSpriteSequence,
@@ -56,10 +60,13 @@ from smrpgpatchbuilder.datatypes.levels.classes import BaseRoomObject, ChestNPC,
 from ..data.variables.event_script_names import *
 from ..data.variables.variable_names import (
     PRIMARY_TEMP_7000,
+    SMITHY_BOSS_HUNT_WIN_CONDITION,
     STAR_PIECE_GRANT_DIRECTIONAL_BIT,
     STAR_PIECE_GRANT_DIRECTIONAL_BIT_2,
     BOSS_VICTORY_COUNTER,
+    TEMP_704A_2,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NORTHWEST
 from ..data.variables.room_names import *
 from ..data.rooms.npcs import ALLY_CLONE_NPC, BOWSER_WALKING_DOWN_LEFT_NPC, BOWSER_WALKING_DOWN_LEFT_NPC_2, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE, MALLOW_WALKING_DOWN_LEFT_NPC_2, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM
 from ..types.flags import CharacterStats
@@ -375,6 +382,26 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                 decision, execution = place.render(world)
             d_flat = [cmd for l in decision for cmd in l]
             builders[ctr][0].extend(d_flat)
+
+            # Smithy fight needs special post-battle handling: set TEMP_704A_2
+            # and jump to E1011 instead of returning, so the game over / run away
+            # check works correctly for multi-phase Smithy battles.
+            if isinstance(place.prize, SmithyBossFight):
+                patched: list[UsableEventScriptCommand] = []
+                for i, cmd in enumerate(execution):
+                    patched.append(cmd)
+                    if isinstance(cmd, StartBattleAtBattlefield) and i + 1 < len(execution) and isinstance(execution[i + 1], Return):
+                        patched.extend([
+                            JmpIfBitClear(SMITHY_BOSS_HUNT_WIN_CONDITION, ["smithy_boss_hunt_disabled"]),
+	                        EnterArea(room_id=R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, face_direction=NORTHWEST, x=4, y=48, z=0, run_entrance_event=False),
+                            JmpToEvent(E3885_END_GAME),
+                            SetBit(TEMP_704A_2, identifier="smithy_boss_hunt_disabled"),
+                            JmpToEvent(E1011_POST_MINES_BOSS_CHECK_IF_WON)
+                        ])
+                    elif isinstance(cmd, Return) and i > 0 and isinstance(execution[i - 1], StartBattleAtBattlefield):
+                        continue  # Skip the Return that follows StartBattle
+                execution = patched
+
             builders[ctr][1].extend(execution)
 
             if isinstance(place.prize, SlotsPrize):

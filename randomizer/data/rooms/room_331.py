@@ -22,7 +22,7 @@ room = Room(
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
@@ -89,7 +89,7 @@ room = Room(
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E0173_CHEST_2_CONTAINER,
+            event_script=E0174_CHEST_3_CONTAINER,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=2,
             upper_70a7=0,
@@ -118,7 +118,7 @@ room = Room(
         ChestNPC( # 2
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
-            event_script=E0174_CHEST_3_CONTAINER,
+            event_script=E0173_CHEST_2_CONTAINER,
             action_script=A0014_FLOATING_CHEST,
             lower_70a7=0,
             upper_70a7=0,

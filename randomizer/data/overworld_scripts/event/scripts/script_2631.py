@@ -74,8 +74,8 @@ script = EventScript([
 	]),
 	EnableControls([B]),
 	SetSyncActionScript(NPC_4, A0014_FLOATING_CHEST),
-	ActionQueueSync(target=NPC_3, subscript=[
-		A_SetSpriteSequence(index=10, is_mold=True, is_sequence=True, looping=True)
+	ActionQueueSync(target=NPC_2, subscript=[
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True)
 	]),
 	Return()
 ])
