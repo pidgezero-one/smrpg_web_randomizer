@@ -41,6 +41,9 @@ items:
     StartingItem3Location: ProgressiveEggPrize
     StartingItem4Location: ProgressiveEggPrize
     MushroomWay1LowerChest: BambinoBombPrize
+    RoseTownTreasureHouseLeftChestLocation: ProgressiveFireworksPrize
+    RoseTownTreasureHouseRightChestLocation: ProgressiveFireworksPrize
+    RoseTownTreasureHouseUpperChestLocation: ProgressiveFireworksPrize
     MushrooomWayBossFight: KingCalamariBossFight
     BanditsWayBossFight: JohnnyBossFight
     MushroomKingdomBossFight: ValentinaBossFight

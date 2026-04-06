@@ -1,6 +1,7 @@
 # R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL
 # pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize, Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, EffectsNpc
+from smrpgpatchbuilder.datatypes.numbers.classes import UInt4, UInt8
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -101,7 +102,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            acute_axis=UInt4(4),
+            obtuse_axis=UInt4(4),
+            height=UInt8(10)),
         RegularNPC( # 1
             npc=npcs.BANDANA_RED_NPC,
             initiator=EventInitiator.NONE,
@@ -128,7 +132,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            acute_axis=UInt4(4),
+            obtuse_axis=UInt4(4),
+            height=UInt8(10)),
         RegularNPC( # 2
             npc=npcs.BANDANA_RED_NPC,
             initiator=EventInitiator.NONE,
@@ -155,7 +162,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            acute_axis=UInt4(4),
+            obtuse_axis=UInt4(4),
+            height=UInt8(10)),
         RegularNPC( # 3
             npc=npcs.BANDANA_RED_NPC,
             initiator=EventInitiator.NONE,
@@ -182,7 +192,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            acute_axis=UInt4(4),
+            obtuse_axis=UInt4(4),
+            height=UInt8(10)),
         ChestNPC( # 4
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,

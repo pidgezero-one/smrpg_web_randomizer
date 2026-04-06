@@ -4633,8 +4633,8 @@ class CulexBossFight(BossFightPrize):
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CULEX: It will be quite difficult to\n claim victory over the dojo master.\n I wish you luck.[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
-        DI1120_NIMBUS_BIRD_GUARD: """FIRE CRYSTAL: This area is\n off-limits.[await]""",
-        DI1945_NIMBUS_GUARD: """WIBD CRYSTAL: Are you sure you\n want to mess with a water crystal\n in a cloud kingdom?[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """WATER CRYSTAL: This area is\n off-limits.[await]""",
+        DI1945_NIMBUS_GUARD: """EARTH CRYSTAL: Are you sure you\n want to mess with a water crystal\n in a cloud kingdom?[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """CRYSTAL: Proceed forth. Culex\n awaits you.[await]""",

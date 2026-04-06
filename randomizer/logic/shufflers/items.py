@@ -1102,10 +1102,10 @@ def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
         else:
             prize = RandomPrizeSubstitute().generate(world, location)
 
-        if world.settings.isflag_enabled(ReplaceItems) and issubclass(
-            location.originally_held, ItemPrize
+        if world.settings.isflag_enabled(ReplaceItems) and isinstance(
+            prize, ItemPrize
         ):
-            item = location.originally_held().item
+            item = prize.item
             if issubclass(
                 item,
                 (

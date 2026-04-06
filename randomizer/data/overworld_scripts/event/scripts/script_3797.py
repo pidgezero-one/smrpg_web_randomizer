@@ -54,6 +54,6 @@ script = EventScript([
 	EnterArea(room_id=R108_MOLEVILLE_OUTSIDE, face_direction=SOUTH, x=3, y=62, z=1, run_entrance_event=False),
 	JmpToEvent(E1649_MOLEVILLE_LIBERATED_EXTERIOR_LOADER),
 	ClearBit(BUCKET_WARP_DIRECTIONAL_BIT, identifier="EVENT_3797_clear_bit_17"),
-	EnterArea(room_id=R092_GRATE_GUYS_CASINO_INSIDE_CASINO, face_direction=NORTHEAST, x=1, y=21, z=0, run_entrance_event=False),
+	EnterArea(room_id=R092_GRATE_GUYS_CASINO_INSIDE_CASINO, face_direction=SOUTH, x=3, y=13, z=6, run_entrance_event=False),
 	JmpToEvent(E2633_CASINO_INTERIOR_LOADER),
 ])

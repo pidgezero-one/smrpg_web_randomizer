@@ -99,9 +99,8 @@ dialog_data[37] = '''MALLOW:
  This isn't the time to be crying![await]
  They're waiting for me to come
  home![await]'''
-dialog_data[38] = '''MALLOW: Come on Mario, we've got
- a busy schedule to keep. I'll make
- you eat dust if you don't hurry.[await]'''
+dialog_data[38] = '''MALLOW: Come on `MAIN_CHARACTER_NAME`, we've got a busy schedule to keep.[await]
+ I'll make you eat dust if you don't hurry.[await]'''
 dialog_data[39] = '''MALLOW: 
                 Sniffle...[await]'''
 dialog_data[40] = ''' What was that loud noise outside?
