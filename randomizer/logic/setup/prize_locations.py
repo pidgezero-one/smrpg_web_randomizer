@@ -969,18 +969,24 @@ def set_locations(world: GameWorld) -> None:
         # Check for debug override of invisible flags
         debug_invisible_flags: list[type] | None = None
         if world.settings.debug_mode:
-            from randomizer.debug import load_debug_config, get_location_class
-            config = load_debug_config()
-            flag_names = config.get("invisible_flags", [])
-            if len(flag_names) == 3:
-                debug_invisible_flags = []
-                for name in flag_names:
-                    cls = get_location_class(name)
-                    if cls is not None:
-                        debug_invisible_flags.append(cls)
-                    else:
-                        debug_invisible_flags = None
-                        break
+            # Prize offset takes precedence over config.yml for invisible flags
+            if world.settings.prize_offset is not None:
+                from randomizer.debug.offset_preview import compute_offset_assignments
+                offset_result = compute_offset_assignments(world.settings.prize_offset)
+                debug_invisible_flags = offset_result["flag_classes"]
+            else:
+                from randomizer.debug import load_debug_config, get_location_class
+                config = load_debug_config()
+                flag_names = config.get("invisible_flags", [])
+                if len(flag_names) == 3:
+                    debug_invisible_flags = []
+                    for name in flag_names:
+                        cls = get_location_class(name)
+                        if cls is not None:
+                            debug_invisible_flags.append(cls)
+                        else:
+                            debug_invisible_flags = None
+                            break
 
         used_flag_rooms: set[int] = set()
         for i in range(0, 3):
