@@ -1306,6 +1306,13 @@ def shuffle_prizes(world: GameWorld) -> None:
     # assignments from the offset and pre-place them. This runs before config.yml
     # overrides so offset takes precedence for boss fights and slots.
     if world.settings.debug_mode and world.settings.prize_offset is not None:
+        # Force-enable location-freeing flags so offset can place items anywhere
+        # without being blocked by location-specific restrictions.
+        world.settings._flags[SlotsAnywhere] = SlotsAnywhere(True)
+        world.settings._flags[EXPStarsAnywhere] = EXPStarsAnywhere(True)
+        world.settings._flags[ShuffleMagikoopaChest] = ShuffleMagikoopaChest(True)
+        world.settings._is_flag_value_cache.clear()
+
         from randomizer.debug.offset_preview import compute_offset_assignments
         offset_result = compute_offset_assignments(world.settings.prize_offset)
 
