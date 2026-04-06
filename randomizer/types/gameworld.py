@@ -1987,6 +1987,13 @@ class GameWorld:
             val = name.encode().ljust(7, b"\x00")
             patch.add_data(addr, val)
 
+        # Fix invincibility dispel: prevent Group Hug/Therapy from clearing
+        # the Red Essence invincibility timer when dispelling status ailments
+        if self.settings.isflag_enabled(FixInvincibility):
+            from ..patches.invincibility_fix import HOOK_OFFSET, HOOK_BYTES, PATCH_OFFSET, PATCH_BYTES
+            patch.add_data(HOOK_OFFSET, HOOK_BYTES)
+            patch.add_data(PATCH_OFFSET, PATCH_BYTES)
+
         # Debug mode: Set starting FP and max FP to 99
         if self.settings.debug_mode:
             patch.add_data(0x3A00DD, bytes([99]))  # Starting current FP

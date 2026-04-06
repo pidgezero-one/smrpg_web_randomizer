@@ -2167,6 +2167,13 @@ class FixMagikoopa(BooleanFlag):
 
 
 # ✅
+class FixInvincibility(BooleanFlag):
+    _name = "Fix Ally Invincibility"
+    _description = "If enabled, healing spells like Group Hug and Therapy will no longer prematurely dispel ally invincibility (i.e. from Red Essence)."
+    _id = "fixinv"
+
+
+# ✅
 class NoOHKO(BooleanFlag):
     _name = "No instant KOs on boss allies"
     _description = (
@@ -2777,6 +2784,7 @@ class BossCheeseSubcategory(FlagCategory):
         NoGenoWhirlExor,
         FixMagikoopa,
         NoOHKO,
+        FixInvincibility,
         SeeYa,
     ]
     _size: int = 4
@@ -2786,7 +2794,7 @@ class BossCheeseSubcategory(FlagCategory):
 class BossCategory(FlagCategory):
     """Pan-collection of settings related to bosses."""
 
-    _name: str = "Enemies & Boss Fights"
+    _name: str = "Battles & Boss Fights"
     _subcategories: list[type[FlagCategory]] = [
         BossPositionSubcategory,
         BossStatSubcategory,

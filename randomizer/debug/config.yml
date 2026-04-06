@@ -37,9 +37,7 @@ items:
     - RockCandyItem
   override:
     StartingItem1Location: BrightCardPrize
-    StartingItem2Location: ProgressiveEggPrize
-    StartingItem3Location: ProgressiveEggPrize
-    StartingItem4Location: ProgressiveEggPrize
+    StartingItem2Location: RedEssencePrize
     MushroomWay1LowerChest: BambinoBombPrize
     RoseTownTreasureHouseLeftChestLocation: ProgressiveFireworksPrize
     RoseTownTreasureHouseRightChestLocation: ProgressiveFireworksPrize
