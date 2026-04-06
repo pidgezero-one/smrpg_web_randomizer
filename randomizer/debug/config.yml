@@ -38,6 +38,7 @@ items:
   override:
     StartingItem1Location: BrightCardPrize
     StartingItem2Location: RedEssencePrize
+    StartingItem3Location: MukuCookiePrize
     MushroomWay1LowerChest: BambinoBombPrize
     RoseTownTreasureHouseLeftChestLocation: ProgressiveFireworksPrize
     RoseTownTreasureHouseRightChestLocation: ProgressiveFireworksPrize

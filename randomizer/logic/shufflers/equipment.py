@@ -393,11 +393,14 @@ def build_item_impact_categories(world: GameWorld) -> None:
     high_cutoff = int(total_equip * 0.5)
 
     from ...types.gameworld import GameWorld as GW
+    from ...data.items.items import WeaponItem, ArmorItem, AccessoryItem, SpaceItem, SpaceItem2
+    dummy_weapons: set[type] = {WeaponItem, ArmorItem, AccessoryItem, SpaceItem, SpaceItem2}
 
     world.highest_impact_equip = [
         e[0]
         for e in world.equipment_ranks[:highest_cutoff]
-        if not (
+        if e[0] not in dummy_weapons
+        and not (
             world.settings.isflag_enabled(RestrictSpecialEquips)
             and GW.is_monstro_item(e[0])
         )
@@ -409,7 +412,8 @@ def build_item_impact_categories(world: GameWorld) -> None:
     world.high_impact_equip = [
         e[0]
         for e in world.equipment_ranks[highest_cutoff:high_cutoff]
-        if not (
+        if e[0] not in dummy_weapons
+        and not (
             world.settings.isflag_enabled(RestrictSpecialEquips)
             and GW.is_monstro_item(e[0])
         )
@@ -421,7 +425,8 @@ def build_item_impact_categories(world: GameWorld) -> None:
     world.low_impact_equip = [
         e[0]
         for e in world.equipment_ranks[high_cutoff:]
-        if not (
+        if e[0] not in dummy_weapons
+        and not (
             world.settings.isflag_enabled(RestrictSpecialEquips)
             and GW.is_monstro_item(e[0])
         )

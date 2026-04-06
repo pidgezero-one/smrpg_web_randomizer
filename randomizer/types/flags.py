@@ -491,8 +491,12 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
         # Get all available allies
         available_allies = list(ally_collection._allies)
 
-        # Track which allies have already been selected
-        used_allies: list = []
+        # Pre-populate used_allies with all explicitly selected allies
+        # so random picks never duplicate a hard-set character
+        used_allies: list = [
+            option.value for option in self.enabled
+            if not (isinstance(option.value, str) and option.value.startswith("Random_"))
+        ]
         result: list = []
 
         for option in self.enabled:
@@ -507,7 +511,6 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
                     result.append(chosen)
             else:
                 # This is an actual ally instance
-                used_allies.append(value)
                 result.append(value)
 
         return result
