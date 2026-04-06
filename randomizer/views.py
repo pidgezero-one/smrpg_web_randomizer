@@ -191,6 +191,10 @@ class RandomizerView(TemplateView):
         context["presets"] = PRESETS
         context["flags"] = FLAGS
 
+        if settings.DEBUG:
+            from randomizer.debug.offset_preview import get_ordered_lists
+            context["offset_preview_data"] = json.dumps(get_ordered_lists())
+
         return context
 
 
@@ -276,6 +280,7 @@ class GenerateView(FormView):
         race_mode = bool(data["race_mode"])
         # Debug BPS patches only work in development mode
         debug_bps_patches = bool(data.get("debug_bps_patches", False)) and settings.DEBUG
+        prize_offset = data.get("prize_offset") if settings.DEBUG else None
 
         try:
             # Build game world, randomize it, and generate the patch.
@@ -284,6 +289,7 @@ class GenerateView(FormView):
             full_flag_string = (data["flags"] or "") + "     " + (data["cosmetics"] or "")
             s.set_from_flag_string(full_flag_string.strip())
             s.debug_mode = debug_mode
+            s.prize_offset = prize_offset
 
             world = create(
                 seed,
@@ -406,6 +412,7 @@ class GenerateStreamView(View):
         race_mode = bool(data["race_mode"])
         # Debug BPS patches only work in development mode
         debug_bps_patches = bool(data.get("debug_bps_patches", False)) and settings.DEBUG
+        prize_offset = data.get("prize_offset") if settings.DEBUG else None
 
         def generate_events() -> Iterator[bytes]:
             progress_queue: queue.Queue = queue.Queue()
@@ -422,6 +429,7 @@ class GenerateStreamView(View):
                     s = Settings()
                     s.set_from_flag_string(full_flag_string.strip())
                     s.debug_mode = debug_mode
+                    s.prize_offset = prize_offset
 
                     # Create world with progress callback
                     world = create(seed, s, progress_callback=on_progress, debug_bps_patches=debug_bps_patches)
