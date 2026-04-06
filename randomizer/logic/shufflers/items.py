@@ -999,7 +999,10 @@ def should_shuffle(location: PrizeLocation, world: GameWorld) -> bool:
         if issubclass(
             location.originally_held, SlotsPrize
         ) and not world.settings.isflag_enabled(SlotsAnywhere):
-            return False
+            # When prize_offset redirects slots to new locations, the original
+            # slot locations must become eligible to receive regular items.
+            if world.settings.prize_offset is None:
+                return False
         if issubclass(
             location.originally_held, EXPStarPrize
         ) and not world.settings.isflag_enabled(EXPStarsAnywhere):
