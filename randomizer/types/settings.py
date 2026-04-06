@@ -14,6 +14,7 @@ FlagT = TypeVar("FlagT", bound=Flag)
 
 class Settings:
     _debug_mode: bool = False
+    _prize_offset: int | None = None
     _flags: dict[type[Flag], Flag]
     _override: dict = {}
     _is_flag_value_cache: dict[tuple[type[Flag], Any], bool]
@@ -26,6 +27,15 @@ class Settings:
     @debug_mode.setter
     def debug_mode(self, value: bool) -> None:
         self._debug_mode = value
+
+    @property
+    def prize_offset(self) -> int | None:
+        """Prize offset for deterministic placement (dev-only). None means disabled."""
+        return self._prize_offset
+
+    @prize_offset.setter
+    def prize_offset(self, value: int | None) -> None:
+        self._prize_offset = value
 
     @property
     def override(self) -> dict:
