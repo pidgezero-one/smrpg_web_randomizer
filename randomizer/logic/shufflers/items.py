@@ -1302,6 +1302,49 @@ def shuffle_prizes(world: GameWorld) -> None:
             else:
                 pool[LOW_PRIORITY].append(pool_item)
 
+    # Apply offset-based overrides: when prize_offset is set, compute boss and slot
+    # assignments from the offset and pre-place them. This runs before config.yml
+    # overrides so offset takes precedence for boss fights and slots.
+    if world.settings.debug_mode and world.settings.prize_offset is not None:
+        from randomizer.debug.offset_preview import compute_offset_assignments
+        offset_result = compute_offset_assignments(world.settings.prize_offset)
+
+        # Boss overrides: {location_class_name: prize_class}
+        for loc_name, prize_cls in offset_result["boss_overrides"].items():
+            for loc in world.locations.values():
+                if type(loc).__name__ == loc_name:
+                    loc.set_prize(prize_cls())
+                    break
+            # Remove one instance of this prize class from the pool
+            removed = False
+            for tier_list in pool.values():
+                for i, item in enumerate(tier_list):
+                    if type(item) == prize_cls:
+                        tier_list.pop(i)
+                        pulled_count -= 1
+                        removed = True
+                        break
+                if removed:
+                    break
+
+        # Slot overrides: [(chest_class, slots_prize_class), ...]
+        for chest_cls, slots_prize_cls in offset_result["slot_overrides"]:
+            for loc in world.locations.values():
+                if isinstance(loc, chest_cls):
+                    loc.set_prize(slots_prize_cls())
+                    break
+            # Remove one instance of this prize class from the pool
+            removed = False
+            for tier_list in pool.values():
+                for i, item in enumerate(tier_list):
+                    if type(item) == slots_prize_cls:
+                        tier_list.pop(i)
+                        pulled_count -= 1
+                        removed = True
+                        break
+                if removed:
+                    break
+
     # Apply debug overrides: place the specified prize at each override location
     # and remove one instance of that prize class from the pool.
     # This happens after pool building so all prizes are in the pool normally.
@@ -1317,6 +1360,12 @@ def shuffle_prizes(world: GameWorld) -> None:
                 raise ValueError(f"Invalid location name in debug config: '{location_name}'")
             if prize_cls is None:
                 raise ValueError(f"Invalid prize name in debug config: '{prize_name}'")
+            # Skip boss/slot overrides if prize_offset is active (offset takes precedence)
+            if world.settings.prize_offset is not None:
+                from randomizer.types.prizelocation import BossFightLocation
+                from randomizer.types.prize import SlotsPrize as SlotsPrizeBase
+                if issubclass(location_cls, BossFightLocation) or issubclass(prize_cls, SlotsPrizeBase):
+                    continue
             # Place the override prize at the target location
             for loc in world.locations.values():
                 if isinstance(loc, location_cls):
