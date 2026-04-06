@@ -52,9 +52,11 @@
 
         <div id="prize-offset-controls" style="display: none;">
             <div class="form-group">
-                <label for="prize-offset-slider">
-                    Offset: <span id="prize-offset-display">0</span>
-                </label>
+                <div class="d-flex align-items-center mb-1">
+                    <label class="mr-2 mb-0">Offset:</label>
+                    <input type="number" class="form-control form-control-sm" id="prize-offset-number"
+                           min="0" max="46" value="0" style="width: 70px;">
+                </div>
                 <input type="range" class="form-control-range" id="prize-offset-slider"
                        min="0" max="46" value="0">
             </div>
@@ -157,13 +159,25 @@
                 }
             }
 
-            // Slider input handler
-            $('#prize-offset-slider').on('input', function() {
-                var val = parseInt($(this).val(), 10);
-                $('#prize-offset-display').text(val);
+            function setOffset(val) {
+                $('#prize-offset-slider').val(val);
+                $('#prize-offset-number').val(val);
                 $('#prize-offset-hidden').val(val);
                 localforage.setItem("rom.prize_offset_value", val);
                 updatePreview(val);
+            }
+
+            // Slider input handler
+            $('#prize-offset-slider').on('input', function() {
+                setOffset(parseInt($(this).val(), 10));
+            });
+
+            // Number input handler
+            $('#prize-offset-number').on('input', function() {
+                var val = parseInt($(this).val(), 10);
+                if (isNaN(val)) return;
+                val = Math.max(0, Math.min(46, val));
+                setOffset(val);
             });
 
             // Toggle checkbox handler
@@ -185,7 +199,7 @@
                 if (value !== null) {
                     var val = parseInt(value, 10);
                     $('#prize-offset-slider').val(val);
-                    $('#prize-offset-display').text(val);
+                    $('#prize-offset-number').val(val);
                     $('#prize-offset-hidden').val(val);
                 }
                 // After restoring value, restore toggle state
