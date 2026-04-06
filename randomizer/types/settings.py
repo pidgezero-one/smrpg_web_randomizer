@@ -166,6 +166,7 @@ class Settings:
             FixMagikoopa: FixMagikoopa(),
             NoOHKO: NoOHKO(),
             SeeYa: SeeYa(),
+            FixInvincibility: FixInvincibility(),
             MarioPaletteChoice: MarioPaletteChoice(),
             MallowPaletteChoice: MallowPaletteChoice(),
             GenoPaletteChoice: GenoPaletteChoice(),

@@ -491,8 +491,12 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
         # Get all available allies
         available_allies = list(ally_collection._allies)
 
-        # Track which allies have already been selected
-        used_allies: list = []
+        # Pre-populate used_allies with all explicitly selected allies
+        # so random picks never duplicate a hard-set character
+        used_allies: list = [
+            option.value for option in self.enabled
+            if not (isinstance(option.value, str) and option.value.startswith("Random_"))
+        ]
         result: list = []
 
         for option in self.enabled:
@@ -507,7 +511,6 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
                     result.append(chosen)
             else:
                 # This is an actual ally instance
-                used_allies.append(value)
                 result.append(value)
 
         return result
@@ -2167,6 +2170,13 @@ class FixMagikoopa(BooleanFlag):
 
 
 # ✅
+class FixInvincibility(BooleanFlag):
+    _name = "Fix ally invincibility"
+    _description = "If enabled, healing spells like Group Hug and Therapy will no longer prematurely dispel ally invincibility (i.e. from Red Essence)."
+    _id = "fixinv"
+
+
+# ✅
 class NoOHKO(BooleanFlag):
     _name = "No instant KOs on boss allies"
     _description = (
@@ -2777,6 +2787,7 @@ class BossCheeseSubcategory(FlagCategory):
         NoGenoWhirlExor,
         FixMagikoopa,
         NoOHKO,
+        FixInvincibility,
         SeeYa,
     ]
     _size: int = 4
@@ -2786,7 +2797,7 @@ class BossCheeseSubcategory(FlagCategory):
 class BossCategory(FlagCategory):
     """Pan-collection of settings related to bosses."""
 
-    _name: str = "Enemies & Boss Fights"
+    _name: str = "Battles & Boss Fights"
     _subcategories: list[type[FlagCategory]] = [
         BossPositionSubcategory,
         BossStatSubcategory,
