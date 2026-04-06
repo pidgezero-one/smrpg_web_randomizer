@@ -60,6 +60,7 @@ from randomizer.progression.prizelocations import (
 from randomizer.progression import prizelocations as _prizelocations_module
 from randomizer.progression.prizes import (
     ALL_BOSS_FIGHTS,
+    MokuraBossFight,
     SlotsPrize1,
     SlotsPrize2,
     SlotsPrize3,
@@ -122,7 +123,10 @@ BOSS_LOCATIONS: list[type] = [
     FinalBossFight,
 ]
 
-BOSS_PRIZES: list[type] = ALL_BOSS_FIGHTS
+# ALL_BOSS_FIGHTS is missing MokuraBossFight (46 entries). Build full 47-entry list.
+BOSS_PRIZES: list[type] = (
+    ALL_BOSS_FIGHTS[:15] + [MokuraBossFight] + ALL_BOSS_FIGHTS[15:]
+)
 
 SLOTS_PRIZES: list[type] = [SlotsPrize1, SlotsPrize2, SlotsPrize3]
 
@@ -137,19 +141,19 @@ def _get_classes_in_definition_order(base_class: type) -> list[type]:
     rather than alphabetical order (which is what inspect.getmembers returns).
     """
     classes = []
-    for _name, cls in inspect.getmembers(_prizelocations_module, inspect.isclass):
+    for _, cls in inspect.getmembers(_prizelocations_module, inspect.isclass):
         if cls is base_class:
             continue
         if not issubclass(cls, base_class):
             continue
         try:
-            _source, lineno = inspect.getsourcelines(cls)
+            _, lineno = inspect.getsourcelines(cls)
         except (OSError, TypeError):
             lineno = float("inf")
         classes.append((lineno, cls))
 
     classes.sort(key=lambda pair: pair[0])
-    return [cls for _lineno, cls in classes]
+    return [cls for _, cls in classes]
 
 
 def _get_eligible_chest_rooms() -> list[type]:
