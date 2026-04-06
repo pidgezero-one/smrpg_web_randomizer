@@ -2168,7 +2168,7 @@ class FixMagikoopa(BooleanFlag):
 
 # ✅
 class FixInvincibility(BooleanFlag):
-    _name = "Fix Ally Invincibility"
+    _name = "Fix ally invincibility"
     _description = "If enabled, healing spells like Group Hug and Therapy will no longer prematurely dispel ally invincibility (i.e. from Red Essence)."
     _id = "fixinv"
 
