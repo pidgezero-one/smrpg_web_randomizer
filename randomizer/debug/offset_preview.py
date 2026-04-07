@@ -59,8 +59,6 @@ from randomizer.progression.prizelocations import (
 )
 from randomizer.progression import prizelocations as _prizelocations_module
 from randomizer.progression.prizes import (
-    ALL_BOSS_FIGHTS,
-    MokuraBossFight,
     SlotsPrize1,
     SlotsPrize2,
     SlotsPrize3,
@@ -123,10 +121,8 @@ BOSS_LOCATIONS: list[type] = [
     FinalBossFight,
 ]
 
-# ALL_BOSS_FIGHTS is missing MokuraBossFight (46 entries). Build full 47-entry list.
-BOSS_PRIZES: list[type] = (
-    ALL_BOSS_FIGHTS[:15] + [MokuraBossFight] + ALL_BOSS_FIGHTS[15:]
-)
+# Derive prize order from locations' vanilla assignments so offset 0 = vanilla.
+BOSS_PRIZES: list[type] = [loc._originally_held for loc in BOSS_LOCATIONS]
 
 SLOTS_PRIZES: list[type] = [SlotsPrize1, SlotsPrize2, SlotsPrize3]
 
