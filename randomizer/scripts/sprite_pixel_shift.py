@@ -4,13 +4,15 @@ This module provides functions to decode SNES 4bpp planar tile data,
 shift pixels by arbitrary offsets, and re-encode back to 4bpp format.
 
 Usage:
-    python -m randomizer.scripts.sprite_pixel_shift <sprite_id> <dx> <dy>
+    python -m randomizer.scripts.sprite_pixel_shift <sprite_id> <dx> <dy> [--molds 0,1,5]
 
-Example:
+Examples:
     python -m randomizer.scripts.sprite_pixel_shift 960 4 7
+    python -m randomizer.scripts.sprite_pixel_shift 960 4 7 --molds 0,2,5
 
-This will output the shifted subtile_bytes for all gridplane molds in the
-specified sprite, which can be copied into the sprite file.
+This will output the shifted subtile_bytes for gridplane molds in the
+specified sprite, which can be copied into the sprite file. Use --molds
+to target specific mold indices (comma-separated) instead of all molds.
 """
 
 from __future__ import annotations
@@ -277,13 +279,14 @@ def mirror_gridplane_mold(mold: Mold) -> None:
     tile.mirror = False
 
 
-def print_shifted_sprite(sprite_id: int, dx: int, dy: int) -> None:
+def print_shifted_sprite(sprite_id: int, dx: int, dy: int, mold_ids: set[int] | None = None) -> None:
     """Load a sprite, shift its gridplane molds, and print the new subtile_bytes.
 
     Args:
         sprite_id: The sprite ID to load (e.g., 960)
         dx: Pixels to shift right (positive) or left (negative)
         dy: Pixels to shift down (positive) or up (negative)
+        mold_ids: If provided, only shift molds with these indices. If None, shift all.
     """
     import copy
     import importlib
@@ -299,11 +302,16 @@ def print_shifted_sprite(sprite_id: int, dx: int, dy: int) -> None:
     sprite = copy.deepcopy(sprite_module.sprite)
     molds = sprite.animation.properties.molds
 
-    print(f"# Sprite {sprite_id} - shifted by ({dx}, {dy}) pixels")
+    if mold_ids is not None:
+        print(f"# Sprite {sprite_id} - shifted by ({dx}, {dy}) pixels (molds: {sorted(mold_ids)})")
+    else:
+        print(f"# Sprite {sprite_id} - shifted by ({dx}, {dy}) pixels")
     print(f"# Gridplane molds only; non-gridplane molds unchanged")
     print()
 
     for i, mold in enumerate(molds):
+        if mold_ids is not None and i not in mold_ids:
+            continue
         if mold.gridplane:
             shift_gridplane_mold(mold, dx, dy)
             tile = mold.tiles[0]
@@ -384,11 +392,12 @@ if __name__ == "__main__":
 
     if len(sys.argv) < 2:
         print("Usage:")
-        print("  python -m randomizer.scripts.sprite_pixel_shift <sprite_id> <dx> <dy>")
+        print("  python -m randomizer.scripts.sprite_pixel_shift <sprite_id> <dx> <dy> [--molds 0,1,5]")
         print("  python -m randomizer.scripts.sprite_pixel_shift --visualize <sprite_id> <mold_index> [dx] [dy]")
         print()
         print("Examples:")
         print("  python -m randomizer.scripts.sprite_pixel_shift 960 4 7")
+        print("  python -m randomizer.scripts.sprite_pixel_shift 960 4 7 --molds 0,2,5")
         print("  python -m randomizer.scripts.sprite_pixel_shift --visualize 960 0 4 7")
         sys.exit(1)
 
@@ -403,9 +412,16 @@ if __name__ == "__main__":
         visualize_mold(sprite_id, mold_index, dx, dy)
     else:
         if len(sys.argv) < 4:
-            print("Usage: <sprite_id> <dx> <dy>")
+            print("Usage: <sprite_id> <dx> <dy> [--molds 0,1,5]")
             sys.exit(1)
         sprite_id = int(sys.argv[1])
         dx = int(sys.argv[2])
         dy = int(sys.argv[3])
-        print_shifted_sprite(sprite_id, dx, dy)
+
+        mold_ids: set[int] | None = None
+        if "--molds" in sys.argv:
+            molds_idx = sys.argv.index("--molds")
+            if molds_idx + 1 < len(sys.argv):
+                mold_ids = {int(m) for m in sys.argv[molds_idx + 1].split(",")}
+
+        print_shifted_sprite(sprite_id, dx, dy, mold_ids=mold_ids)
