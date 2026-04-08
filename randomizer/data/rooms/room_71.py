@@ -38,7 +38,7 @@ room = Room(
     entrance_event=E3483_MIDAS_RIVER_MID_LEFT_OR_MID_RIGHT_LOADER,
     objects=[
         RegularNPC( # 0
-            npc=npcs.PIRANHA_PLANT_NPC,
+            npc=npcs.PIRANHA_PLANT_NPC_3,
             initiator=EventInitiator.NONE,
             event_script=E1551_BANK_1F_RETURN_EVENT,
             action_script=A0640_MIDAS_2ND_TUNNELS_PIRANHA,
@@ -65,7 +65,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularClone( # 1
-            npc=npcs.PIRANHA_PLANT_NPC,
+            npc=npcs.PIRANHA_PLANT_NPC_3,
             event_script=E1551_BANK_1F_RETURN_EVENT,
             action_script=A0641_MIDAS_2ND_TUNNELS_PIRANHA,
             visible=True,
@@ -181,7 +181,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 6
             npc=npcs.JAWFUL_NPC,
             initiator=EventInitiator.NONE,

@@ -37,8 +37,6 @@ script = EventScript([
 	SetBit(TEMP_707C_7),
 	SetBit(TEMP_707C_6),
 	RunEventAsSubroutine(E0051_HENCHMAN_CONTAINER_1),
-	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
-	StopAllBackgroundEvents(),
 	PauseActionScript(NPC_5),
 	ActionQueueAsync(target=NPC_5, subscript=[
 		A_TransferToXYZF(x=4, y=25, z=4, direction=EAST),
@@ -49,6 +47,8 @@ script = EventScript([
 		A_TransferToXYZF(x=5, y=24, z=4, direction=EAST),
 		A_FaceSouthwest()
 	]),
+	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+	StopAllBackgroundEvents(),
 	SetBit(TEMP_7049_6),
 	ActionQueueAsync(target=NPC_5, subscript=[
 		A_SetWalkingSpeed(NORMAL),

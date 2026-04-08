@@ -255,7 +255,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True,
+            directions=VramStore.DIR2_SWSE),
         RegularNPC( # 6
             npc=npcs.LAKITU_NPC_2,
             initiator=EventInitiator.NONE,
@@ -282,7 +284,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 7
             npc=npcs.HAMMER_BRO_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,

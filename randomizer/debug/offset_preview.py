@@ -62,6 +62,9 @@ from randomizer.progression.prizes import (
     SlotsPrize1,
     SlotsPrize2,
     SlotsPrize3,
+    FirstMimicFightLauncher,
+    SecondMimicFightLauncher,
+    ThirdMimicFightLauncher,
 )
 from randomizer.types.prizelocation import (
     TreasureChestLocationRow,
@@ -126,6 +129,12 @@ BOSS_PRIZES: list[type] = [loc._originally_held for loc in BOSS_LOCATIONS]
 
 SLOTS_PRIZES: list[type] = [SlotsPrize1, SlotsPrize2, SlotsPrize3]
 
+MIMIC_PRIZES: list[type] = [
+    FirstMimicFightLauncher,
+    SecondMimicFightLauncher,
+    ThirdMimicFightLauncher,
+]
+
 
 # --- Helper Functions ---
 
@@ -181,6 +190,27 @@ def _get_eligible_chest_rooms() -> list[type]:
     return eligible
 
 
+def _get_eligible_mimic_chests() -> list[type]:
+    """Return TreasureChestLocationRow subclasses eligible for mimic placement.
+
+    All treasure chests are eligible (blacklists are ignored for debug offset mode).
+    Deduplicated to one per room set (first encountered in definition order wins).
+    Classes are returned in source definition order from prizelocations.py.
+    """
+    seen_room_sets: set[frozenset[int]] = set()
+    eligible: list[type] = []
+
+    for cls in _get_classes_in_definition_order(TreasureChestLocationRow):
+        rooms = getattr(cls, "_rooms", None) or []
+        room_key = frozenset(rooms)
+        if room_key in seen_room_sets:
+            continue
+        seen_room_sets.add(room_key)
+        eligible.append(cls)
+
+    return eligible
+
+
 def _get_invisible_flag_locations() -> list[type]:
     """Return all InvisibleFlagLocation subclasses in definition order from prizelocations.py.
 
@@ -198,12 +228,14 @@ def get_ordered_lists() -> dict[str, list[str]]:
         "boss_locations": [cls.__name__ for cls in BOSS_LOCATIONS],
         "boss_prizes": [cls.__name__ for cls in BOSS_PRIZES],
         "eligible_chests": [cls.__name__ for cls in _get_eligible_chest_rooms()],
+        "eligible_mimics": [cls.__name__ for cls in _get_eligible_mimic_chests()],
+        "mimic_prizes": [cls.__name__ for cls in MIMIC_PRIZES],
         "invisible_flags": [cls.__name__ for cls in _get_invisible_flag_locations()],
     }
 
 
 def compute_offset_assignments(offset: int) -> dict:
-    """Compute offset-based assignments for bosses, slots, and flags.
+    """Compute offset-based assignments for bosses, slots, mimics, and flags.
 
     Args:
         offset: The offset value to apply for rotating assignments.
@@ -212,12 +244,15 @@ def compute_offset_assignments(offset: int) -> dict:
         A dict with:
         - bosses: list of (location_name, prize_name) tuples
         - slots: list of 3 (chest_name, slots_prize_name) tuples
+        - mimics: list of 3 (chest_name, mimic_prize_name) tuples
         - flags: list of 3 flag_name strings
         - boss_overrides: dict of {location_name: prize_class} for backend
         - slot_overrides: list of (chest_class, slots_prize_class) for backend
+        - mimic_overrides: list of (chest_class, mimic_prize_class) for backend
         - flag_classes: list of 3 flag location classes for backend
     """
     eligible_chests = _get_eligible_chest_rooms()
+    mimic_chests = _get_eligible_mimic_chests()
     invisible_flags = _get_invisible_flag_locations()
 
     # Boss assignments: location[i] gets prize[(i + offset) % num_prizes]
@@ -240,6 +275,24 @@ def compute_offset_assignments(offset: int) -> dict:
         slot_assignments.append((chest.__name__, prize.__name__))
         slot_overrides.append((chest, prize))
 
+    # Mimic assignments: 3 chests starting at (offset * 3) % len(mimic_chests),
+    # skipping any chest already used by slots.
+    slot_classes = {chest_cls for chest_cls, _ in slot_overrides}
+    num_mimic_chests = len(mimic_chests)
+    mimic_start = (offset * 3) % num_mimic_chests if num_mimic_chests > 0 else 0
+    mimic_assignments = []
+    mimic_overrides = []
+    idx = mimic_start
+    picked = 0
+    while picked < 3 and idx < mimic_start + num_mimic_chests:
+        chest = mimic_chests[idx % num_mimic_chests]
+        if chest not in slot_classes:
+            prize = MIMIC_PRIZES[picked]
+            mimic_assignments.append((chest.__name__, prize.__name__))
+            mimic_overrides.append((chest, prize))
+            picked += 1
+        idx += 1
+
     # Flag assignments: 3 flags starting at (3 * offset) % len(flags)
     num_flags = len(invisible_flags)
     flags_start = (3 * offset) % num_flags if num_flags > 0 else 0
@@ -253,8 +306,10 @@ def compute_offset_assignments(offset: int) -> dict:
     return {
         "bosses": boss_assignments,
         "slots": slot_assignments,
+        "mimics": mimic_assignments,
         "flags": flag_assignments,
         "boss_overrides": boss_overrides,
         "slot_overrides": slot_overrides,
+        "mimic_overrides": mimic_overrides,
         "flag_classes": flag_classes,
     }

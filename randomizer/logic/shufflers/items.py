@@ -1352,6 +1352,24 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if removed:
                     break
 
+        # Mimic overrides: [(chest_class, mimic_prize_class), ...]
+        for chest_cls, mimic_prize_cls in offset_result["mimic_overrides"]:
+            for loc in world.locations.values():
+                if isinstance(loc, chest_cls):
+                    loc.set_prize(mimic_prize_cls())
+                    break
+            # Remove one instance of this prize class from the pool
+            removed = False
+            for tier_list in pool.values():
+                for i, item in enumerate(tier_list):
+                    if type(item) == mimic_prize_cls:
+                        tier_list.pop(i)
+                        pulled_count -= 1
+                        removed = True
+                        break
+                if removed:
+                    break
+
     # Apply debug overrides: place the specified prize at each override location
     # and remove one instance of that prize class from the pool.
     # This happens after pool building so all prizes are in the pool normally.
@@ -1367,11 +1385,14 @@ def shuffle_prizes(world: GameWorld) -> None:
                 raise ValueError(f"Invalid location name in debug config: '{location_name}'")
             if prize_cls is None:
                 raise ValueError(f"Invalid prize name in debug config: '{prize_name}'")
-            # Skip boss/slot overrides if prize_offset is active (offset takes precedence)
+            # Skip boss/slot/mimic overrides if prize_offset is active (offset takes precedence)
             if world.settings.prize_offset is not None:
                 from randomizer.types.prizelocation import BossFightLocation
                 from randomizer.types.prize import SlotsPrize as SlotsPrizeBase
-                if issubclass(location_cls, BossFightLocation) or issubclass(prize_cls, SlotsPrizeBase):
+                from randomizer.types.prize import MimicFightInitiatorPrize as MimicBase
+                if (issubclass(location_cls, BossFightLocation)
+                        or issubclass(prize_cls, SlotsPrizeBase)
+                        or issubclass(prize_cls, MimicBase)):
                     continue
             # Place the override prize at the target location
             for loc in world.locations.values():

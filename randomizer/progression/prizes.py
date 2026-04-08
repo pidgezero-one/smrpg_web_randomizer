@@ -427,7 +427,7 @@ class HammerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
-    _model = HammerObject
+    #_model = HammerObject
 
 
 class FroggiestickPrize(ItemPrize):
@@ -445,7 +445,7 @@ class NokNokShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Shell", description="There's no turtle inside of it."
     )
-    _model = GreenShellObject
+    #_model = GreenShellObject
 
 
 class PunchGlovePrize(ItemPrize):
@@ -480,7 +480,7 @@ class ChompPrize(ItemPrize):
         nickname="Chain Chomp", description="It's hungry to stir up some trouble."
     )
     _monstro_shuffle = True
-    _model = ChompObject
+    #_model = ChompObject
 
 
 class MasherPrize(ItemPrize):
@@ -488,7 +488,7 @@ class MasherPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
-    _model = HammerObject
+    #_model = HammerObject
 
 
 class ChompShellPrize(ItemPrize):
@@ -497,7 +497,7 @@ class ChompShellPrize(ItemPrize):
         nickname="Chomp Exoskeleton",
         description="I didn't even know those things\n could shed their skin.",
     )
-    _model = ChompObject
+    #_model = ChompObject
 
 
 class SuperHammerPrize(ItemPrize):
@@ -505,7 +505,7 @@ class SuperHammerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
-    _model = HammerObject
+    #_model = HammerObject
 
 
 class HandGunPrize(ItemPrize):
@@ -538,7 +538,7 @@ class TroopaShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Shell", description="There's no turtle inside of it."
     )
-    _model = RedShellObject
+    #_model = RedShellObject
 
 
 class ParasolPrize(ItemPrize):
@@ -581,7 +581,7 @@ class SpikedLinkPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Chain Chomp", description="This one's got thorns on it."
     )
-    _model = ChompObject
+    #_model = ChompObject
 
 
 class MegaGlovePrize(ItemPrize):
@@ -598,7 +598,7 @@ class WarFanPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Spiked Fan", description="Pretty, but deadly!"
     )
-    _model = FanObject
+    #_model = FanObject
 
 
 class HandCannonPrize(ItemPrize):
@@ -622,7 +622,7 @@ class UltraHammerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
-    _model = HammerObject
+    #_model = HammerObject
 
 
 class SuperSlapPrize(ItemPrize):
@@ -671,7 +671,7 @@ class LazyShellWeaponPrize(ItemPrize):
         nickname="Red Shell", description="There's no turtle inside of it."
     )
     _monstro_shuffle = True
-    _model = RedShellObject
+    #_model = RedShellObject
 
 
 class FryingPanPrize(ItemPrize):
@@ -679,7 +679,7 @@ class FryingPanPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Metal Plate", description="Don't know what it’s used for."
     )
-    _model = FryingPanObject
+    #_model = FryingPanObject
 
 
 class WonderChompPrize(ItemPrize):
@@ -690,7 +690,7 @@ class WonderChompPrize(ItemPrize):
     )
     remake_only = True
     _monstro_shuffle = True
-    _model = ChompObject
+    #_model = ChompObject
 
 
 class Stella023Prize(ItemPrize):
@@ -719,7 +719,7 @@ class LuckyHammerPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
-    _model = HammerObject
+    #_model = HammerObject
 
 
 class ShirtPrize(ItemPrize):
@@ -805,7 +805,7 @@ class HappyShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Shell", description="There's no turtle inside of it."
     )
-    _model = GreenShellObject
+    #_model = GreenShellObject
 
 
 class PolkaDressPrize(ItemPrize):
@@ -848,7 +848,7 @@ class CourageShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Shell", description="There's no turtle inside of it."
     )
-    _model = GreenShellObject
+    #_model = GreenShellObject
 
 
 class FuzzyShirtPrize(ItemPrize):
@@ -906,7 +906,7 @@ class FireShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Red Shell", description="There's no turtle inside of it."
     )
-    _model = RedShellObject
+    #_model = RedShellObject
 
 
 class FireDressPrize(ItemPrize):
@@ -944,7 +944,7 @@ class HealShellPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Green Shell", description="There's no turtle inside of it."
     )
-    _model = GreenShellObject
+    #_model = GreenShellObject
 
 
 class RoyalDressPrize(ItemPrize):
