@@ -596,7 +596,8 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     if buf_idx is not None:
                         new_buffer_types[buf_idx] = BufferType.EMPTY_3
                 obj.set_cannot_clone(True)
-                obj.set_min_vram_size(max_vram_needed)
+                current_min = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
+                obj.set_min_vram_size(max(max_vram_needed, current_min))
                 # Update npc_info so step 7 doesn't override
                 if npc_info:
                     npc_info.force_cannot_clone = True
@@ -612,7 +613,8 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             else:
                 # Shared but not in buffer (no slot available) — set min_vram
                 obj.set_cannot_clone(True)
-                obj.set_min_vram_size(max_vram_needed)
+                current_min = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
+                obj.set_min_vram_size(max(max_vram_needed, current_min))
                 if npc_info:
                     npc_info.force_cannot_clone = True
 
