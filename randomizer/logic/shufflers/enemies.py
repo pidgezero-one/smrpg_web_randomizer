@@ -411,7 +411,10 @@ def generate_formation_coordinates(
             # Subsequent: weighted random using collective distance as weights
             used_points = [p[0] for p in placed]
             weights = [_get_collective_distance(x, y, used_points) for x, y in valid]
-            coord = random.choices(valid, weights=weights, k=1)[0]
+            if any(w > 0 for w in weights):
+                coord = random.choices(valid, weights=weights, k=1)[0]
+            else:
+                coord = random.choice(valid)
 
         result.append(coord)
         placed.append((coord, footprint))
