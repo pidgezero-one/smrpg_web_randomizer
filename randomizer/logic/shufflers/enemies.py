@@ -429,6 +429,9 @@ def randomize_enemy_formations(world: GameWorld) -> None:
     """
     from randomizer.types.prize import BossFightPrize
     from randomizer.types.prizelocation import BossFightLocation
+    from randomizer.logic.scanline_calculator import clear_footprint_cache
+
+    clear_footprint_cache()
 
     max_enemies = 6
 
