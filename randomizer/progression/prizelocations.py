@@ -507,7 +507,7 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_3
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, EXPStarPrize,]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, EXPStarPrize, SlotsPrize]
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R204_MUSHROOM_WAY_AREA_02, ["next"]),
         Jmp(["mushroom_way_hint_text"])
@@ -1681,7 +1681,7 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_LOWER
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, SlotsPrize]
     _hint = [
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_4"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
@@ -1702,7 +1702,7 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_1
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, SlotsPrize]
     _hint = [
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_5"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
@@ -1724,7 +1724,7 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_2
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, FrogCoinPrize]
+    _blacklist = [EXPStarPrize, FrogCoinPrize, SlotsPrize]
     _hint = [
         JmpIfBitSet(SEWERS_FLIPPED_CHEST_OPENED, ["next"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
@@ -6814,7 +6814,7 @@ class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_CLONE_ROOM
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [ThirdMimicFightLauncher]
+    _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, ["next"]),
@@ -7460,7 +7460,7 @@ class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_1
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = []
+    _blacklist = [SlotsPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, ["next"]),
@@ -7480,7 +7480,7 @@ class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_2
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, ["next"]),
@@ -7520,7 +7520,7 @@ class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_1
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = []
+    _blacklist = [SlotsPrize]
     _hint = [
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R263_LANDS_END_UNDERGROUND_AREA_01, ["next"]),
