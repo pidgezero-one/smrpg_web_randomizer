@@ -133,6 +133,9 @@ def get_scanline_footprint(enemy_type: type, world: GameWorld) -> dict[int, int]
 
     if mold.gridplane:
         tile = mold.tiles[0]
+        if isinstance(tile, Clone):
+            _footprint_cache[sprite_id] = {}
+            return {}
         footprint = _compute_footprint_gridplane(tile, tile.format)
     else:
         footprint = _compute_footprint_non_gridplane(mold.tiles)
