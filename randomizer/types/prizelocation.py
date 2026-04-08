@@ -1951,7 +1951,7 @@ class BossFightLocation(PrizeLocation):
                     ]
                     if henchman.monster is not None:
                         members.append(henchman.monster)
-                    coords = generate_formation_coordinates(len(members))
+                    coords = generate_formation_coordinates(members, world)
                     formation_members: list[FormationMember | None] = [
                         FormationMember(
                             m,
@@ -1960,6 +1960,7 @@ class BossFightLocation(PrizeLocation):
                             hidden_at_start=self.prize.henchmen_hidden_at_start,
                         )
                         for m, c in zip(members, coords)
+                        if c is not None
                     ]
                     # Set the formation on the henchman pack with a new Formation
                     # to avoid mutating shared Formation objects
@@ -2032,7 +2033,7 @@ class BossFightLocation(PrizeLocation):
                     ]
                     if henchman.monster is not None:
                         members.append(henchman.monster)
-                    coords = generate_formation_coordinates(len(members))
+                    coords = generate_formation_coordinates(members, world)
                     formation_members: list[FormationMember | None] = [
                         FormationMember(
                             m,
@@ -2041,6 +2042,7 @@ class BossFightLocation(PrizeLocation):
                             hidden_at_start=self.prize.henchmen_hidden_at_start,
                         )
                         for m, c in zip(members, coords)
+                        if c is not None
                     ]
                     # Set the formation on the henchman pack with a new Formation
                     # to avoid mutating shared Formation objects
