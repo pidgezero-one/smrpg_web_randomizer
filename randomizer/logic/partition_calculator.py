@@ -654,9 +654,13 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             # Non-gridplane cannot_clone NPCs need min_vram_size set based on
             # their sprite's largest mold. Without this, the game allocates 0
             # extra VRAM rows and they overwrite other sprites.
+            # NOTE: Only increase min_vram, never decrease — the NPC default
+            # may be hand-tuned to a value higher than what the formula computes
+            # (the formula's baseline assumption can underestimate).
             if not npc.is_gridplane:
                 from ..utils.npcs import min_vram_from_sequence_for_sprite
-                max_vram = 0
+                current_min = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
+                max_vram = current_min
                 sprite = world.get_sprite(npc.sprite_id)
                 for seq_idx in range(len(sprite.animation.properties.sequences)):
                     seq = sprite.animation.properties.sequences[seq_idx]
@@ -670,7 +674,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     vram = min_vram_from_sequence_for_sprite(world, npc.sprite_id, seq_idx)
                     if vram > max_vram:
                         max_vram = vram
-                if max_vram > 0:
+                if max_vram > current_min:
                     obj.set_min_vram_size(max_vram)
 
     # =========================================================================
