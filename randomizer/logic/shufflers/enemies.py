@@ -367,39 +367,54 @@ def _select_most_distant(
 
 
 def generate_formation_coordinates(
-    count: int,
-    valid_coordinates: list[tuple[int, int]] | None = None,
-) -> list[tuple[int, int]]:
+    enemy_types: list[type],
+    world: GameWorld,
+) -> list[tuple[int, int] | None]:
     """
-    Generate a list of formation coordinates that are well-spaced from each other.
+    Generate scanline-aware formation coordinates that are well-spaced from each other.
+
+    For each enemy type, computes the scanline footprint and filters valid coordinates
+    to those that won't exceed the OAM scanline budget. Coordinates are chosen with
+    weighted randomness favoring positions distant from already-placed enemies.
 
     Args:
-        count: The number of coordinates to generate.
-        valid_coordinates: Optional list of valid coordinate positions to choose from.
-                          Defaults to VALID_FORMATION_COORDINATES.
+        enemy_types: The enemy class types to place.
+        world: The game world instance for sprite lookups.
 
     Returns:
-        A list of (x, y) coordinate tuples.
+        A list of (x, y) coordinate tuples or None for enemies that can't fit.
     """
-    if valid_coordinates is None:
-        valid_coordinates = VALID_FORMATION_COORDINATES
+    # Lazy import to avoid circular dependency
+    from randomizer.logic.scanline_calculator import (
+        get_scanline_footprint,
+        find_valid_coordinates,
+    )
 
-    if count <= 0:
+    if not enemy_types:
         return []
 
-    result: list[tuple[int, int]] = []
+    result: list[tuple[int, int] | None] = []
+    placed: list[tuple[tuple[int, int], dict[int, int]]] = []
 
-    for i in range(count):
-        if not result:
-            # First coordinate: pick randomly
-            x, y = random.choice(valid_coordinates)
+    for enemy_type in enemy_types:
+        footprint = get_scanline_footprint(enemy_type, world)
+        valid = find_valid_coordinates(placed, footprint, VALID_FORMATION_COORDINATES)
+
+        if not valid:
+            result.append(None)
+            continue
+
+        if not placed:
+            # First enemy: uniform random from valid coords
+            coord = random.choice(valid)
         else:
-            # Subsequent coordinates: maximize distance from already-chosen ones
-            sample_size = min(len(valid_coordinates), count * 2)
-            candidate_coords = random.sample(valid_coordinates, sample_size)
-            x, y = _select_most_distant(candidate_coords, result)
+            # Subsequent: weighted random using collective distance as weights
+            used_points = [p[0] for p in placed]
+            weights = [_get_collective_distance(x, y, used_points) for x, y in valid]
+            coord = random.choices(valid, weights=weights, k=1)[0]
 
-        result.append((x, y))
+        result.append(coord)
+        placed.append((coord, footprint))
 
     return result
 
@@ -558,12 +573,21 @@ def randomize_enemy_formations(world: GameWorld) -> None:
 
             random.shuffle(chosen_enemies)
 
-            coordinates = generate_formation_coordinates(len(chosen_enemies))
+            coordinates = generate_formation_coordinates(chosen_enemies, world)
 
             new_members: list[FormationMember | None] = []
-            for enemy_type, (x, y) in zip(chosen_enemies, coordinates):
+            for enemy_type, coord in zip(chosen_enemies, coordinates):
+                if coord is None:
+                    continue
+                x, y = coord
                 new_members.append(
                     FormationMember(enemy=enemy_type, x_pos=x, y_pos=y, hidden_at_start=False)
+                )
+
+            if not new_members:
+                x, y = random.choice(VALID_FORMATION_COORDINATES)
+                new_members.append(
+                    FormationMember(enemy=chosen_enemies[0], x_pos=x, y_pos=y, hidden_at_start=False)
                 )
 
             formation.set_members(new_members)
