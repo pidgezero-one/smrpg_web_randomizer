@@ -1235,7 +1235,7 @@ class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BANDITS_WAY_1
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize] # slots can work here graphically but this is a stupid place for it
     _hint = [
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R207_BANDITS_WAY_AREA_02, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
