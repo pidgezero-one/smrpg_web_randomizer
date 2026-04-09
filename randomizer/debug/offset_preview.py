@@ -219,18 +219,23 @@ def _get_invisible_flag_locations() -> list[type]:
     return _get_classes_in_definition_order(InvisibleFlagLocation)
 
 
-def get_ordered_lists() -> dict[str, list[str]]:
+def get_ordered_lists() -> dict:
     """Return a dict with ordered lists of class name strings.
 
-    Keys: boss_locations, boss_prizes, eligible_chests, invisible_flags
+    Keys: boss_locations, boss_prizes, eligible_chests, eligible_mimics,
+    mimic_prizes, invisible_flags, flag_rooms
     """
+    invisible_flags = _get_invisible_flag_locations()
     return {
         "boss_locations": [cls.__name__ for cls in BOSS_LOCATIONS],
         "boss_prizes": [cls.__name__ for cls in BOSS_PRIZES],
         "eligible_chests": [cls.__name__ for cls in _get_eligible_chest_rooms()],
         "eligible_mimics": [cls.__name__ for cls in _get_eligible_mimic_chests()],
         "mimic_prizes": [cls.__name__ for cls in MIMIC_PRIZES],
-        "invisible_flags": [cls.__name__ for cls in _get_invisible_flag_locations()],
+        "invisible_flags": [cls.__name__ for cls in invisible_flags],
+        "flag_rooms": [
+            sorted(list(getattr(cls, "_rooms", None) or [])) for cls in invisible_flags
+        ],
     }
 
 
@@ -293,15 +298,34 @@ def compute_offset_assignments(offset: int) -> dict:
             picked += 1
         idx += 1
 
-    # Flag assignments: 3 flags starting at (3 * offset) % len(flags)
+    # Flag assignments: pick 3 flags using a stride of num_flags // 3 starting
+    # at index `offset`. This spreads the picks across the list so all flags
+    # can be tested within ~num_flags / 3 offsets, and naturally avoids room
+    # collisions because the stride exceeds the typical same-room clustering.
+    # If a stride pick happens to collide, walk forward until a non-colliding
+    # flag is found.
     num_flags = len(invisible_flags)
-    flags_start = (3 * offset) % num_flags if num_flags > 0 else 0
     flag_assignments = []
     flag_classes = []
-    for i in range(3):
-        flag = invisible_flags[(flags_start + i) % num_flags]
-        flag_assignments.append(flag.__name__)
-        flag_classes.append(flag)
+    picked_rooms: set[int] = set()
+    picked_indices: set[int] = set()
+    if num_flags > 0:
+        stride = max(1, num_flags // 3)
+        for k in range(3):
+            base = (offset + k * stride) % num_flags
+            for w in range(num_flags):
+                idx = (base + w) % num_flags
+                if idx in picked_indices:
+                    continue
+                flag = invisible_flags[idx]
+                flag_room_set = set(getattr(flag, "_rooms", None) or [])
+                if flag_room_set & picked_rooms:
+                    continue
+                flag_assignments.append(flag.__name__)
+                flag_classes.append(flag)
+                picked_rooms |= flag_room_set
+                picked_indices.add(idx)
+                break
 
     return {
         "bosses": boss_assignments,

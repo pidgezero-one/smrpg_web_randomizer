@@ -133,6 +133,7 @@
             var mimicChests = previewData.eligible_mimics;
             var mimicPrizes = previewData.mimic_prizes;
             var invisibleFlags = previewData.invisible_flags;
+            var flagRooms = previewData.flag_rooms;
 
             function updatePreview(offset) {
                 var numBosses = bossPrizes.length;
@@ -172,13 +173,34 @@
                     }
                 }
 
-                // Invisible flag assignments
+                // Invisible flag assignments: pick 3 using stride of numFlags/3
+                // starting at `offset`, skipping any flag that shares a room
+                // with a flag already picked in this offset.
                 var flagsBody = $('#prize-flags-table tbody');
                 flagsBody.empty();
-                var flagStart = (3 * offset) % numFlags;
+                var flagStride = Math.max(1, Math.floor(numFlags / 3));
+                var flagPickedRooms = {};
+                var flagPickedIndices = {};
+                var flagPickedCount = 0;
                 for (var k = 0; k < 3; k++) {
-                    var flagIdx = (flagStart + k) % numFlags;
-                    flagsBody.append('<tr><td>' + (k + 1) + '</td><td>' + invisibleFlags[flagIdx] + '</td></tr>');
+                    var base = (offset + k * flagStride) % numFlags;
+                    for (var w = 0; w < numFlags; w++) {
+                        var fIdx = (base + w) % numFlags;
+                        if (flagPickedIndices[fIdx]) continue;
+                        var rooms = flagRooms[fIdx];
+                        var collision = false;
+                        for (var r = 0; r < rooms.length; r++) {
+                            if (flagPickedRooms[rooms[r]]) { collision = true; break; }
+                        }
+                        if (collision) continue;
+                        flagPickedCount++;
+                        flagsBody.append('<tr><td>' + flagPickedCount + '</td><td>' + invisibleFlags[fIdx] + '</td></tr>');
+                        flagPickedIndices[fIdx] = true;
+                        for (var r2 = 0; r2 < rooms.length; r2++) {
+                            flagPickedRooms[rooms[r2]] = true;
+                        }
+                        break;
+                    }
                 }
             }
 
