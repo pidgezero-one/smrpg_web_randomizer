@@ -6,6 +6,12 @@ This web version is a Django-powered site in a Docker container.  It is assumed 
 
 If you came here just looking to use the randomizer to generate games, head to [the official community website](http://randomizer.smrpgspeedruns.com) where we host this for everyone.  This repository is only needed if you want to contribute to the development of the randomizer.
 
+## Install git
+
+You will need this to do anything with this repository. [Download here](https://git-scm.com/install/) and then clone the repo.
+
+**Windows users**: When installing Git for Windows, during setup there is a screen labelled "Configuring the line ending conversion".  On this screen, select "Checkout as-is, commit as-is" (bottom option).  This should prevent Git on Windows from changing the line endings of the code files, which apparently can cause issues with Docker on Windows. If you already installed Git and did not do this during installation, you should run the command `git config --global core.autocrlf false` before cloning this repository to get the same effect.
+
 ## Install Docker
 
 You will need to install Docker on your system.  Instructions for this are available on the [official Docker site](https://docs.docker.com/get-docker/).

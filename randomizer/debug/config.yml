@@ -37,27 +37,6 @@ items:
     - RockCandyItem
   override:
     StartingItem1Location: BrightCardPrize
-    StartingItem2Location: RedEssencePrize
-    StartingItem3Location: MukuCookiePrize
-    MushroomWay1LowerChest: BambinoBombPrize
-    RoseTownTreasureHouseLeftChestLocation: ProgressiveFireworksPrize
-    RoseTownTreasureHouseRightChestLocation: ProgressiveFireworksPrize
-    RoseTownTreasureHouseUpperChestLocation: ProgressiveFireworksPrize
-    MushrooomWayBossFight: KingCalamariBossFight
-    BanditsWayBossFight: JohnnyBossFight
-    MushroomKingdomBossFight: ValentinaBossFight
-    KeroSewersBossFight: Bundt2BossFight
-    ForestMazeBossFight: Punchinello2BossFight
-    OuterMinesBossFight: AxemRangersBossFight
-    ShipPasswordBossFight: Johnny2Fight
-    SeasideBeachBossFight: Culex3DBossFight
-    LandsEndCloudBoss: Croco2BossFight
-    DojoFirstFight: BundtBossFight
-    DojoSecondFight: CloakerDominoBossFight
-    DojoThirdFight: Jinx4BossFight
-    DojoFourthFight: Belome1BossFight
-    BeanValleyPlanterBossFight: SmithyBossFight
-    StatueRoomBossFight: Booster2BossFight
-    FactoryEntranceBossFight: Belome3Fight
-    BoosterTowerIndoorBossFight: MegasmilaxBossFight
-    MarrymoreCharacter: BowserRecruitmentPrize
+    StartingItem2Location: BambinoBombPrize
+    StartingItem3Location: CastleKey1Prize
+    StartingItem4Location: CastleKey2Prize

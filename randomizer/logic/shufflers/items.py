@@ -1242,6 +1242,18 @@ def _build_priority_classes(world: GameWorld) -> set[type[Prize]]:
 
 
 def shuffle_prizes(world: GameWorld) -> None:
+    # Force-enable location-freeing flags for prize offset mode BEFORE the pool
+    # is built, so non-shuffled vanilla mimic/slot/etc. chests become shuffled
+    # and the pool builder doesn't pre-bind their originally-held prizes to them.
+    if world.settings.debug_mode and world.settings.prize_offset is not None:
+        # MimicsAnywhere must be enabled BEFORE the pool builder runs so the
+        # vanilla mimic chests (e.g., KeroSewersStairRoomRightChestLocation)
+        # are treated as shuffleable. Otherwise the pool builder binds
+        # FirstMimicFightLauncher to the vanilla chest, and after our mimic
+        # override steals it, the vanilla chest is left empty.
+        world.settings._flags[MimicsAnywhere] = MimicsAnywhere(True)
+        world.settings._is_flag_value_cache.clear()
+
     pool: dict[int, list[Prize]] = {
         PROGRESSION_PRIZES: [],
         RESTRICTED_PRIZES: [],
@@ -1302,17 +1314,17 @@ def shuffle_prizes(world: GameWorld) -> None:
             else:
                 pool[LOW_PRIORITY].append(pool_item)
 
+    # Track chest location classes that got offset-placed slot/mimic prizes, so
+    # config.yml overrides later can skip these locations (otherwise config.yml
+    # would overwrite the offset placements).
+    offset_reserved_chest_classes: set[type] = set()
+
     # Apply offset-based overrides: when prize_offset is set, compute boss and slot
     # assignments from the offset and pre-place them. This runs before config.yml
     # overrides so offset takes precedence for boss fights and slots.
+    # (Flag overrides for this mode were already applied at the top of shuffle_prizes
+    # so the pool builder treats mimic/slot/etc. vanilla chests as shuffleable.)
     if world.settings.debug_mode and world.settings.prize_offset is not None:
-        # Force-enable location-freeing flags so offset can place items anywhere
-        # without being blocked by location-specific restrictions.
-        world.settings._flags[SlotsAnywhere] = SlotsAnywhere(True)
-        world.settings._flags[EXPStarsAnywhere] = EXPStarsAnywhere(True)
-        world.settings._flags[ShuffleMagikoopaChest] = ShuffleMagikoopaChest(True)
-        world.settings._is_flag_value_cache.clear()
-
         from randomizer.debug.offset_preview import compute_offset_assignments
         offset_result = compute_offset_assignments(world.settings.prize_offset)
 
@@ -1336,6 +1348,7 @@ def shuffle_prizes(world: GameWorld) -> None:
 
         # Slot overrides: [(chest_class, slots_prize_class), ...]
         for chest_cls, slots_prize_cls in offset_result["slot_overrides"]:
+            offset_reserved_chest_classes.add(chest_cls)
             for loc in world.locations.values():
                 if isinstance(loc, chest_cls):
                     loc.set_prize(slots_prize_cls())
@@ -1353,11 +1366,20 @@ def shuffle_prizes(world: GameWorld) -> None:
                     break
 
         # Mimic overrides: [(chest_class, mimic_prize_class), ...]
+        # Mimic launcher placement requires _on_item_placed() to update the
+        # _world_area on Mimic1BossFight / DropReward / StarPiece / ReloadReward
+        # locations, which affects accessibility.
         for chest_cls, mimic_prize_cls in offset_result["mimic_overrides"]:
+            offset_reserved_chest_classes.add(chest_cls)
+            placed_prize = mimic_prize_cls()
+            placed_at = None
             for loc in world.locations.values():
                 if isinstance(loc, chest_cls):
-                    loc.set_prize(mimic_prize_cls())
+                    loc.set_prize(placed_prize)
+                    placed_at = loc
                     break
+            if placed_at is not None:
+                _on_item_placed(world, placed_prize, placed_at)
             # Remove one instance of this prize class from the pool
             removed = False
             for tier_list in pool.values():
@@ -1393,6 +1415,11 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if (issubclass(location_cls, BossFightLocation)
                         or issubclass(prize_cls, SlotsPrizeBase)
                         or issubclass(prize_cls, MimicBase)):
+                    continue
+                # Also skip locations where the offset code already placed a
+                # slot or mimic prize — otherwise config.yml would overwrite
+                # that placement with a different prize.
+                if location_cls in offset_reserved_chest_classes:
                     continue
             # Place the override prize at the target location
             for loc in world.locations.values():
