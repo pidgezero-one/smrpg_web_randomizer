@@ -328,7 +328,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R390_VOLCANO_AREA_16_ERUPTING_STUMPET, ["EVENT_3400_play_music_default_volume_467"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R391_VOLCANO_POSTCD_AREA_04, ["EVENT_3400_play_music_default_volume_473"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R392_VOLCANO_POSTCD_AREA_06, ["EVENT_3400_play_music_default_volume_473"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP, ["EVENT_3400_play_music_default_volume_467"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP, ["EVENT_3400_exit_to_world_map_from_volcano"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R394_VOLCANO_POSTCD_AREA_05, ["EVENT_3400_play_music_default_volume_473"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F, ["EVENT_3400_play_music_default_volume_465"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R397_MONSTRO_TOWN_SUPERJUMPING_ROOM, ["EVENT_3400_play_music_default_volume_465"]),
@@ -526,6 +526,9 @@ script = EventScript([
     
 	SetVarToConst(TEMP_7032, 0, identifier="EVENT_3400_hill"),
 	ExitToWorldMap(area=OW27_BOOSTER_HILL, bit_6=True, bit_7=True),
+	Return(),
+    
+	ExitToWorldMap(area=OW50_BARREL_VOLCANO, bit_6=True, bit_7=True, identifier="EVENT_3400_exit_to_world_map_from_volcano"),
 	Return(),
     #JmpIfBitSet(EXP_STAR_BIT_5, ["3400_ret"], identifier="EVENT_3400_resume_exp_star"),
     #MarioGlows(),

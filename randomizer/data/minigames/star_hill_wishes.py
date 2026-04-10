@@ -51,7 +51,7 @@ WISH_POOL = wish_strings = [
     "[center]\n\nI wish Link would find\nmy Varia Suit.",
     "[center]\n\nI wish Samus would find\nmy Cane of Somaria.",
     "[center]\n\nI wish you wouldn't read my mind...",
-    "[center]\nI wish SMRPG was remade\nfor the GBA...",
+    "[center]\n\nI wish SMRPG was remade\nfor the GBA...",
     "[center]\n\nI wish Luigi was playable.",
 ]
 WISH_DIALOG_IDS = [

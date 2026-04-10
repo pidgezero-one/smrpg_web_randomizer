@@ -16,6 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
+	A_ClearBit(RUN_AWAY),
 	A_FloatingOff(),
 	A_VisibilityOff(),
 	A_SetSpriteSequence(index=4, is_sequence=True, looping=True),
@@ -25,7 +26,7 @@ script = ActionScript([
 	A_JmpIfBitSet(RUN_AWAY, ["ACTION_1018_pause_10"]),
 	A_JmpIfBitSet(MIMIC_2_CLEARED, ["ACTION_1018_pause_10"]),
     A_Jmp(["ACTION_1018_pause_5"]),
-	A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="ACTION_1018_pause_10"),
+	A_SetSpriteSequence(index=6, is_sequence=True, looping=False, identifier="ACTION_1018_pause_10"),
 	A_Pause(18),
 	A_Pause(6),
 	A_VisibilityOff(),

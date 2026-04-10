@@ -418,7 +418,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3),
         RegularNPC( # 7
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_DEFAULT_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -448,7 +448,7 @@ room = Room(
             obtuse_axis=UInt4(3),
             height=UInt8(13)),
         RegularClone( # 8
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_DEFAULT_NPC,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,

@@ -348,6 +348,7 @@ script = EventScript([
 	FadeOutMusicToVolume(duration=0, volume=1),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER, identifier="EVENT_373_run_event_as_subroutine_93"),
 	ReturnFD(),
+	JmpIfBitSet(GAME_OVER, ["EVENT_287_reset_and_choose_game_0"]),
 	RestoreAllHP(),
 	RestoreAllFP(),
 	RemoveObjectFromCurrentLevel(NPC_3),

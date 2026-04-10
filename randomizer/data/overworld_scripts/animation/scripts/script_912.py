@@ -26,7 +26,7 @@ script = ActionScript([
 	A_JmpIfBitSet(RUN_AWAY, ["ACTION_912_pause_10"]),
 	A_JmpIfBitSet(MIMIC_3_CLEARED, ["ACTION_912_pause_10"]),
     A_Jmp(["ACTION_912_pause_5"]),
-	A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="ACTION_912_pause_10"),
+	A_SetSpriteSequence(index=6, is_sequence=True, looping=False, identifier="ACTION_912_pause_10"),
 	A_Pause(18),
 	A_Pause(6),
 	A_VisibilityOff(),

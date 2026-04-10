@@ -139,7 +139,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
     """
     from ...types.flags import (
         PoisonMushroom, UncapSuperJumps, NoGenoWhirlExor, FixMagikoopa,
-        NoOHKO, EnemySpells, MimicsAnywhere
+        NoOHKO, EnemySpells,
     )
     from ...data.items.items import MushroomItem2, CarboCookieItem
     from ...data.enemies.enemies import KINGBOMBEnemy
@@ -238,10 +238,3 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
                         cmd.set_spell_2(random.choice(spell_pool))
                     if cmd.spell_3 is not None and cmd.spell_3 not in excluded_spells:
                         cmd.set_spell_3(random.choice(spell_pool))
-
-    # Allow running away from mimics if MimicsAnywhere is enabled
-    if world.settings.isflag_enabled(MimicsAnywhere):
-        for id in [PACK156_SEWER_CHEST_FIGHT, PACK157_SHIP_CHEST_FIGHT, PACK158_VALLEY_CHEST_FIGHT]:
-            pack = world.get_battle_pack(id)
-            for formation in pack.formations:
-                formation.set_can_run_away(True)

@@ -312,7 +312,7 @@ room = Room(
             byte6_bit2=False,
             show_shadow=True),
         RegularNPC( # 13
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_DEFAULT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E2424_FOREST_ARROW_HITS_YOU,
             action_script=A0178_FOREST_ARROW,

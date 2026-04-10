@@ -258,7 +258,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularNPC( # 8
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_DEFAULT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E1912_ABYSS_MACHINE_ARROW_HIT,
             action_script=A0161_SEQUENCE_LOOPING_OFF,

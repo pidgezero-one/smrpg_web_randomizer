@@ -78,7 +78,7 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
@@ -105,7 +105,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularClone( # 1
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
             visible=True,
@@ -115,7 +115,7 @@ room = Room(
             z_half=False,
             direction=NORTHEAST),
         RegularClone( # 2
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
             visible=True,
@@ -125,7 +125,7 @@ room = Room(
             z_half=False,
             direction=NORTHEAST),
         RegularClone( # 3
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
             visible=True,
@@ -135,7 +135,7 @@ room = Room(
             z_half=False,
             direction=NORTHEAST,),
         RegularClone( # 4
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
             visible=True,
@@ -145,7 +145,7 @@ room = Room(
             z_half=False,
             direction=NORTHEAST,),
         RegularNPC( # 5
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
@@ -172,7 +172,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularClone( # 6
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
             visible=True,
@@ -182,7 +182,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularClone( # 7
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
             visible=True,
@@ -192,7 +192,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularClone( # 8
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
             visible=True,
@@ -202,7 +202,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,),
         RegularClone( # 9
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0486_FOREST_BOSS_ROOM_HENCHMEN_STATIC,
             visible=True,

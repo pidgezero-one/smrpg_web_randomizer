@@ -12242,7 +12242,7 @@ POISON_TOXIC_GAS_NPC = NPC(
     byte6_bit2=False,
 )
 
-AERO_UPRIGHT_NPC = NPC(
+AERO_DEFAULT_NPC = NPC(
     sprite_id=SPR0174_AERO_OBJECT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,

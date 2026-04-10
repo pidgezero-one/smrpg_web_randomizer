@@ -100,7 +100,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 1
-            npc=npcs.AERO_UPRIGHT_NPC,
+            npc=npcs.AERO_DEFAULT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E2424_FOREST_ARROW_HITS_YOU,
             action_script=A0177_FOREST_ARROW,

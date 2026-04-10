@@ -47,6 +47,7 @@ from ..data.variables.variable_names import (
     BOOSTER_HILL_FLOWER_COUNTER,
     LANDS_END_GROTTO_BARREL_FLIPPED,
     MIMIC_1_CLEARED,
+    MIMIC_2_CLEARED,
     PRIMARY_TEMP_7000,
 )
 from ..data.variables.battlefield_names import *
@@ -1110,7 +1111,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
     def __repr__(self) -> str:
         prize_name = type(self._prize).__name__ if self._prize else "None"
         return f"{self.__class__.__name__}(prize={prize_name})"
-    
+
     def hint(self, world: GameWorld) -> list[UsableEventScriptCommand]:
         return self._hint or []
 
@@ -1425,12 +1426,16 @@ class TreasureChestLocation(StandardPrizeLocation):
         for npc, room in zip(self._npc_ids, self._rooms):
             # If npc is already an AreaObject, use it directly; otherwise convert from raw index
             ao = npc if isinstance(npc, AreaObject) else AreaObject(npc + 14)
-            if isinstance(
-                self.prize, (FirstMimicFightLauncher, SecondMimicFightLauncher)
-            ):
+            if isinstance(self.prize, (FirstMimicFightLauncher)):
                 # Account for mimic chests needing to be opened twice
                 itemgrant = [
                     JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]),
+                    DisableObjectTriggerInSpecificLevel(ao, room),
+                ] + itemgrant
+            if isinstance(self.prize, (SecondMimicFightLauncher)):
+                # Account for mimic chests needing to be opened twice
+                itemgrant = [
+                    JmpIfBitClear(MIMIC_2_CLEARED, [itemgrant[0].identifier.label]),
                     DisableObjectTriggerInSpecificLevel(ao, room),
                 ] + itemgrant
             else:

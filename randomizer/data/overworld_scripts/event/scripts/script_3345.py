@@ -41,11 +41,7 @@ script = EventScript([
 	Jmp(["EVENT_3345_pause_5"]),
 	RemoveObjectFromCurrentLevel(NPC_0, identifier="EVENT_3345_remove_from_current_level_8"),
 	RemoveObjectFromSpecificLevel(NPC_0, R394_VOLCANO_POSTCD_AREA_05),
-	CreatePacketAtObjectCoords(packet=P045_TELEPORTATION_SHINE, target_npc=NPC_0, destinations=["EVENT_3345_pause_11"]),
-    
-	Pause(1, identifier="EVENT_3345_pause_11"),
-	JmpIfObjectsAreLessThanXYStepsApart(MARIO, NPC_0, 0, 2, ["EVENT_3345_pause_14"]),
-	Jmp(["EVENT_3345_pause_11"]),
+	CreatePacketAtObjectCoords(packet=P045_TELEPORTATION_SHINE, target_npc=NPC_0, destinations=["EVENT_3345_pause_141"]),
     JmpIfObjectNotInSpecificLevel(NPC_1, R394_VOLCANO_POSTCD_AREA_05, ["EVENT_3345_pause_20"], identifier="EVENT_3345_pause_141"),
 	Pause(1, identifier="EVENT_3345_pause_14"),
 	JmpIfObjectsAreLessThanXYStepsApart(MARIO, NPC_1, 0, 4, ["EVENT_3345_remove_from_current_level_17"]),
@@ -58,7 +54,6 @@ script = EventScript([
 	Jmp(["EVENT_3345_pause_20"]),
 	RemoveObjectFromCurrentLevel(NPC_2, identifier="EVENT_3345_remove_from_current_level_23"),
 	RemoveObjectFromSpecificLevel(NPC_2, R394_VOLCANO_POSTCD_AREA_05),
-	CreatePacketAtObjectCoords(packet=P045_TELEPORTATION_SHINE, target_npc=NPC_2, destinations=["EVENT_3345_create_packet_at_npc_coords_26"]),
-	CreatePacketAtObjectCoords(packet=P045_TELEPORTATION_SHINE, target_npc=NPC_0, destinations=["EVENT_3345_ret_27"], identifier="EVENT_3345_create_packet_at_npc_coords_26"),
+	CreatePacketAtObjectCoords(packet=P045_TELEPORTATION_SHINE, target_npc=NPC_2, destinations=["EVENT_3345_ret_27"]),
 	Return(identifier="EVENT_3345_ret_27")
 ])

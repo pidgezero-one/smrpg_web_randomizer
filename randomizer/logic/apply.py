@@ -618,6 +618,29 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             for formation in pack.formations:
                 formation.set_can_run_away(location.allow_run_away)
 
+    # Allow running away from the three mimic-reserved packs when MimicsAnywhere
+    # is enabled, and from the slots-specific mimic 3 pack when SlotsAnywhere is
+    # enabled. Clearing both bits 0 and 1 of formation meta byte 3 ($7EFA1E) puts
+    # the formation in the 80% flee-success bucket (vs 50% with only can_run_away
+    # cleared). Must run after the loop above, which otherwise resets
+    # can_run_away to location.allow_run_away (False for mimic locations).
+    from ..types.flags import MimicsAnywhere, SlotsAnywhere
+    from ..data.variables.pack_names import (
+        PACK156_SEWER_CHEST_FIGHT,
+        PACK157_SHIP_CHEST_FIGHT,
+        PACK158_VALLEY_CHEST_FIGHT,
+        PACK160_SLOTS_CHEST_FIGHT,
+    )
+    if world.settings.isflag_enabled(MimicsAnywhere):
+        for pack_id in (PACK156_SEWER_CHEST_FIGHT, PACK157_SHIP_CHEST_FIGHT, PACK158_VALLEY_CHEST_FIGHT):
+            for formation in world.battle_packs._packs[pack_id].formations:
+                formation.set_can_run_away(True)
+                formation.set_unknown_bit(False)
+    if world.settings.isflag_enabled(SlotsAnywhere):
+        for formation in world.battle_packs._packs[PACK160_SLOTS_CHEST_FIGHT].formations:
+            formation.set_can_run_away(True)
+            formation.set_unknown_bit(False)
+
     # put the right character clone in the sunken ship mirror room
     # and also sub character sprites in overworld where appropriate
     # some other edge case logic for character-specific stuff could go here too
@@ -745,6 +768,9 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_subscript_command_by_identifier("tower_lean_back_aq", "tower_lean_back_full", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK_2)[1])
         world.event_scripts.get_subscript_command_by_identifier("main_hall_lean_back_aq", "main_hall_lean_back", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("main_hall_lean_back_aq", "main_hall_lean_back_surprised", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.SHOCKED_SHADOW_BACKWARDS)[1])
+        world.event_scripts.get_subscript_command_by_identifier("green_kid_lean_forward_aq", "green_kid_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
+        world.event_scripts.get_subscript_command_by_identifier("green_kid_lean_forward_aq", "green_kid_lean_forward_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_FORWARD)[1])
+        world.event_scripts.get_subscript_command_by_identifier("green_kid_lean_forward_aq", "green_kid_lean_forward_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_FORWARD)[1])
     # Set palettes that change when the protagonist changes.
     if ally.index == 2: # bowser shifts a lot of stuff...
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
