@@ -183,27 +183,87 @@ def check_scanline_budget(
     return True
 
 
+def _footprint_range(
+    coord: tuple[int, int], footprint: dict[int, int]
+) -> tuple[int, int] | None:
+    """Return the (min_abs_scanline, max_abs_scanline) covered by a placed enemy."""
+    if not footprint:
+        return None
+    y = coord[1]
+    return (y + min(footprint.keys()), y + max(footprint.keys()))
+
+
+def _has_significant_visual_overlap(
+    coord_a: tuple[int, int],
+    footprint_a: dict[int, int],
+    coord_b: tuple[int, int],
+    footprint_b: dict[int, int],
+    overlap_fraction: float = 0.5,
+) -> bool:
+    """Check whether two placed enemies visually overlap by more than `overlap_fraction`
+    of the shorter sprite's scanline height.
+
+    This is a separate, stricter check from the OAM budget: even if two sprites
+    don't overflow the per-scanline OAM limit, having their bodies mostly
+    overlapping looks wrong and wastes the formation. E.g., two Reachers
+    (~69 scanlines tall) placed 16 scanlines apart still visually overlap on
+    53 scanlines, which is >50% of each body.
+    """
+    range_a = _footprint_range(coord_a, footprint_a)
+    range_b = _footprint_range(coord_b, footprint_b)
+    if range_a is None or range_b is None:
+        return False
+    overlap_start = max(range_a[0], range_b[0])
+    overlap_end = min(range_a[1], range_b[1])
+    if overlap_start > overlap_end:
+        return False
+    overlap_scanlines = overlap_end - overlap_start + 1
+    height_a = range_a[1] - range_a[0] + 1
+    height_b = range_b[1] - range_b[0] + 1
+    shorter = min(height_a, height_b)
+    if shorter <= 0:
+        return False
+    return overlap_scanlines > shorter * overlap_fraction
+
+
 def find_valid_coordinates(
     placed_enemies: list[tuple[tuple[int, int], dict[int, int]]],
     candidate_footprint: dict[int, int],
     valid_coordinates: list[tuple[int, int]],
     threshold: int = OAM_SCANLINE_THRESHOLD,
+    overlap_fraction: float = 0.5,
 ) -> list[tuple[int, int]]:
-    """Filter coordinates to those that pass the scanline budget check.
+    """Filter coordinates to those that pass the scanline budget check AND don't
+    significantly visually overlap any already-placed enemy.
 
     Args:
         placed_enemies: List of ((x, y), footprint) tuples for already-placed enemies.
         candidate_footprint: The scanline footprint dict for the candidate enemy.
         valid_coordinates: List of (x, y) coordinates to evaluate.
         threshold: Max OAM entries per scanline (default 28).
+        overlap_fraction: Max allowed visual overlap as a fraction of the shorter
+            sprite's height (default 0.5 = 50%).
 
     Returns:
-        List of coordinates from valid_coordinates that pass the budget check.
+        List of coordinates from valid_coordinates that pass both checks. Already-
+        placed coordinates are also excluded to prevent exact-coordinate overlap.
     """
-    return [
-        coord for coord in valid_coordinates
-        if check_scanline_budget(placed_enemies, coord, candidate_footprint, threshold)
-    ]
+    placed_coords = {c for c, _ in placed_enemies}
+    result: list[tuple[int, int]] = []
+    for coord in valid_coordinates:
+        if coord in placed_coords:
+            continue
+        if not check_scanline_budget(placed_enemies, coord, candidate_footprint, threshold):
+            continue
+        if any(
+            _has_significant_visual_overlap(
+                coord, candidate_footprint, p_coord, p_fp, overlap_fraction
+            )
+            for p_coord, p_fp in placed_enemies
+        ):
+            continue
+        result.append(coord)
+    return result
 
 
 def clear_footprint_cache() -> None:

@@ -58,6 +58,18 @@ def _validate_character_requirements(settings: Settings) -> None:
     if not settings.isflag_enabled(ShuffleCharacters):
         return
 
+    # There are exactly 5 StartingCharacter slots in the game. The UI already
+    # instructs users not to select more than 5, but validate it here too so a
+    # malformed flag string (e.g., direct URL edit) produces a clear error
+    # instead of a crash during placement.
+    starting_chars_flag = settings.get_flag(StartingCharacters)
+    num_starters = len(starting_chars_flag.enabled)
+    if num_starters > 5:
+        raise SettingsValidationError(
+            f"Too many starting characters selected ({num_starters}). "
+            f"You can choose at most 5 starting characters."
+        )
+
     # Collect characters required by gating settings
     gating_required_characters: set[str] = set()
     gating_checks: list[tuple[type, object, str]] = [
@@ -77,7 +89,6 @@ def _validate_character_requirements(settings: Settings) -> None:
             gating_required_characters.add(char_name)
 
     # Collect explicitly set starting characters (non-random)
-    starting_chars_flag = settings.get_flag(StartingCharacters)
     explicitly_set_starting_chars: set[str] = set()
     for option in starting_chars_flag.enabled:
         value = option.value

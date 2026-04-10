@@ -1,7 +1,6 @@
 """Enemy randomization logic."""
 from __future__ import annotations
 import random
-from functools import reduce
 from typing import TYPE_CHECKING, cast
 
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status
@@ -348,24 +347,6 @@ def _get_distance(x1: int, y1: int, x2: int, y2: int) -> float:
     return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
 
 
-def _get_collective_distance(x1: int, y1: int, points: list[tuple[int, int]]) -> float:
-    """Calculate the product of distances from a point to all other points."""
-    if not points:
-        return 1.0
-    distances = [_get_distance(x1, y1, x2, y2) for x2, y2 in points]
-    return reduce(lambda a, b: a * b, distances, 1.0)
-
-
-def _select_most_distant(
-    possible_points: list[tuple[int, int]], used_points: list[tuple[int, int]]
-) -> tuple[int, int]:
-    """Select the point from possible_points that is most distant from used_points."""
-    available = [p for p in possible_points if p not in used_points]
-    if not available:
-        available = possible_points
-    return max(available, key=lambda c: _get_collective_distance(c[0], c[1], used_points))
-
-
 def generate_formation_coordinates(
     enemy_types: list[type],
     world: GameWorld,
@@ -373,9 +354,15 @@ def generate_formation_coordinates(
     """
     Generate scanline-aware formation coordinates that are well-spaced from each other.
 
-    For each enemy type, computes the scanline footprint and filters valid coordinates
-    to those that won't exceed the OAM scanline budget. Coordinates are chosen with
-    weighted randomness favoring positions distant from already-placed enemies.
+    For each enemy type, computes the scanline footprint and filters candidate
+    coordinates by (a) not matching an already-placed coord, (b) respecting the
+    per-scanline OAM budget, and (c) not significantly visually overlapping any
+    already-placed enemy. Prefers <= 50% sprite overlap; falls back to <= 85%
+    if no spot qualifies; otherwise returns None for this enemy.
+
+    For each subsequent enemy, picks the coord that maximizes the minimum
+    Euclidean distance to already-placed enemies (greedy farthest-point). Ties
+    are broken randomly.
 
     Args:
         enemy_types: The enemy class types to place.
@@ -398,7 +385,19 @@ def generate_formation_coordinates(
 
     for enemy_type in enemy_types:
         footprint = get_scanline_footprint(enemy_type, world)
-        valid = find_valid_coordinates(placed, footprint, VALID_FORMATION_COORDINATES)
+
+        # Require that the candidate coord does not visually overlap any
+        # already-placed enemy by more than 50% of the shorter sprite's body.
+        # If no such coord exists (e.g., two tall sprites can't fit in the
+        # tight coord grid at <= 50% overlap), drop this enemy — caller will
+        # handle the None and exclude it from the formation. Producing a
+        # "mostly overlapping" placement just looks like a bug to the player.
+        valid = find_valid_coordinates(
+            placed,
+            footprint,
+            VALID_FORMATION_COORDINATES,
+            overlap_fraction=0.5,
+        )
 
         if not valid:
             result.append(None)
@@ -408,13 +407,21 @@ def generate_formation_coordinates(
             # First enemy: uniform random from valid coords
             coord = random.choice(valid)
         else:
-            # Subsequent: weighted random using collective distance as weights
+            # Subsequent: greedy farthest-point. Pick the coord whose minimum
+            # distance to any already-placed enemy is largest. This spreads
+            # more aggressively than product-of-distances weighting, which
+            # could pick a candidate close to one enemy but far from another.
             used_points = [p[0] for p in placed]
-            weights = [_get_collective_distance(x, y, used_points) for x, y in valid]
-            if any(w > 0 for w in weights):
-                coord = random.choices(valid, weights=weights, k=1)[0]
-            else:
-                coord = random.choice(valid)
+            best_min_distance = -1.0
+            best_candidates: list[tuple[int, int]] = []
+            for c in valid:
+                min_d = min(_get_distance(c[0], c[1], px, py) for px, py in used_points)
+                if min_d > best_min_distance:
+                    best_min_distance = min_d
+                    best_candidates = [c]
+                elif min_d == best_min_distance:
+                    best_candidates.append(c)
+            coord = random.choice(best_candidates)
 
         result.append(coord)
         placed.append((coord, footprint))
