@@ -37,7 +37,7 @@ script = EventScript([
 	JmpIfBitSet(KEEP_BOSS_1_DEFEATED, ["kamek_palette_2"]),
 	RunEventAsSubroutine(E0847_KEEP_FIRST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False),
-	Jmp(["kamek_palette_3"]),
+	JmpToEvent(E2209_KEEP_1ST_BOSS_FIGHT),
 	Return(),
 	PaletteSet(palette_set_starts_at=EPAL0138_KAMEK_BLUE, from_row=NPC_PALETTE_ROW_2, identifier="kamek_palette_2"),
 	PaletteSet(palette_set_starts_at=EPAL0139_GOLD_CHEST, from_row=NPC_PALETTE_ROW_1, identifier="infinite_coin_chest_palette_2"),

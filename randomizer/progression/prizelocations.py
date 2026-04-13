@@ -13278,7 +13278,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                     "keep_battle_room_summon"
                 )
         else:
-            world.action_scripts.delete_command_by_identifier(
+            world.event_scripts.delete_command_by_identifier(
                 "kamek_palette_3"
             )
 

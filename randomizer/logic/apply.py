@@ -377,6 +377,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             (583, 586),
             (584, 586),
             (585, 586),
+            (753, 392),
+            (755, 457),
+            (757, 470),
+            (759, 431),
         ]
         for target_id, source_id in sprite_palette_copies:
             source_palette_id = world.get_sprite(source_id).palette_id

@@ -38,53 +38,53 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
 )
 from ..data.packs.pack_collection import (
-    FORM0055,
-    FORM0096,
-    FORM0123,
-    FORM0124,
-    FORM0137,
-    FORM0216,
-    FORM0217,
-    FORM0251,
-    FORM0258,
-    FORM0259,
-    FORM0260,
-    FORM0261,
-    FORM0266,
-    FORM0267,
-    FORM0268,
-    FORM0269,
-    FORM0271,
-    FORM0273,
-    FORM0274,
-    FORM0276,
-    FORM0277,
-    FORM0278,
-    FORM0279,
-    FORM0281,
-    FORM0282,
-    FORM0283,
-    FORM0284,
-    FORM0285,
-    FORM0286,
-    FORM0287,
-    FORM0288,
-    FORM0289,
-    FORM0290,
-    FORM0291,
-    FORM0292,
-    FORM0293,
-    FORM0294,
-    FORM0295,
-    FORM0296,
-    FORM0297,
-    FORM0298,
-    FORM0299,
-    FORM0314,
-    FORM0315,
-    FORM0316,
-    FORM0317,
-    FORM0322,
+    FORM0055_ONE_BELOMEENEMY3_ONE_MARIOCLONES_ONE_TOADSTOOL3,
+    FORM0096_ONE_CULEX3D_ONE_FIRECRYS3D_ONE_WATERCRYS3D_ONE_EARTHCRYS3D_ONE_WINDCRYS3D,
+    FORM0123_ONE_BOOSTERENEMY2_THREE_SNIFIT2_ONE_BOOSTERDUMMY,
+    FORM0124_ONE_PUNCHINELLO2_ONE_STRONGBOBOMB3_ONE_STRONGBOBOMB1_ONE_STRONGBOBOMB4_ONE_STRONGBOBOMB2,
+    FORM0137_ONE_BUNDT2_ONE_RASPBERRY2_TWO_TORTE2_ONE_CANDLE,
+    FORM0216_ONE_JOHNNYENEMY2,
+    FORM0217_ONE_JINXENEMY4_ONE_TEAMGAUGE,
+    FORM0251_ONE_PUNCHINELLO_FOUR_MICROBOMB,
+    FORM0258_ONE_CLERK_TWO_MADMALLETENEMYHENCHMAN,
+    FORM0259_ONE_MANAGER_THREE_POUNDERENEMYHENCHMAN,
+    FORM0260_ONE_DIRECTOR_FOUR_POUNDETTEENEMYHENCHMAN,
+    FORM0261_ONE_GUNYOLK_ONE_FACTORYCHIEF,
+    FORM0266_ONE_PANDORITE,
+    FORM0267_ONE_HIDON_FOUR_GOOMBETTE,
+    FORM0268_ONE_BOXBOY_ONE_FAUTSO,
+    FORM0269_ONE_CHESTER_ONE_BAHAMUTTENEMY2,
+    FORM0271_ONE_BOOSTER_THREE_SNIFITENEMYHENCHMAN,
+    FORM0273_ONE_CROCO1,
+    FORM0274_ONE_CROCO2,
+    FORM0276_ONE_JOHNNY_FOUR_BANDANABLUE_TWO_WATERCRYSTAL,
+    FORM0277_ONE_KINGCALAMARI_TWO_TENTACLESENEMY2_THREE_TENTACLES,
+    FORM0278_ONE_BELOME1,
+    FORM0279_ONE_BELOME2_ONE_MARIOCLONE_ONE_TOADSTOOL2,
+    FORM0281_ONE_VALENTINA_ONE_DODO,
+    FORM0282_ONE_CZARDRAGON_ONE_ZOMBONE_FOUR_HELIO,
+    FORM0283_FIVE_SMILAX_ONE_MEGASMILAX,
+    FORM0284_ONE_COUNTDOWN_TWO_DINGALING,
+    FORM0285_ONE_BIRDETTA_ONE_SHELLY_FOUR_EGGBERT,
+    FORM0286_ONE_BUNDT_ONE_RASPBERRY_TWO_TORTE,
+    FORM0287_ONE_KNIFEGUY_ONE_GRATEGUY,
+    FORM0288_ONE_JINX1,
+    FORM0289_ONE_MACK_FOUR_BODYGUARD,
+    FORM0290_ONE_YARIDOVICH_ONE_YARIDOVICHMIRAGE,
+    FORM0291_ONE_BOWYER,
+    FORM0292_ONE_AXEMRANGERS_ONE_AXEMRED_ONE_AXEMBLACK_ONE_AXEMPINK_ONE_AXEMGREEN_ONE_AXEMYELLOW,
+    FORM0293_TWO_HAMMERBRO,
+    FORM0294_ONE_CLOAKER_ONE_DOMINO_ONE_MADADDER,
+    FORM0295_ONE_SMITHY1_ONE_SMELTER_TWO_MACHINEMADEBODYGUARD,
+    FORM0296_ONE_EXOR_ONE_NEOSQUID_ONE_RIGHTEYE_ONE_LEFTEYE,
+    FORM0297_ONE_JINX2,
+    FORM0298_ONE_JINX3,
+    FORM0299_ONE_JAGGER,
+    FORM0314_ONE_FORMLESS_ONE_MOKURA,
+    FORM0315_ONE_DODOENEMYSOLO,
+    FORM0316_ONE_KAMEK_ONE_TERRAPIN,
+    FORM0317_ONE_BOOMER_TWO_HANGINSHY,
+    FORM0322_ONE_CULEX_ONE_FIRECRYSTAL_ONE_WATERCRYSTAL_ONE_EARTHCRYSTAL_ONE_WINDCRYSTAL,
 )
 from ..data.items.items import (
     CrystalShardItem,
@@ -2981,7 +2981,7 @@ class ToadstoolRecruitmentPrize(CharacterPrize):
 
 class HammerBrosFight(BossFightPrize):
     _text = "Hammer Bros."
-    _formation = FORM0293
+    _formation = FORM0293_TWO_HAMMERBRO
     _members = [
         FormationMember(HAMMERBROEnemy, 135, 127),
         FormationMember(HAMMERBROEnemy, 199, 143),
@@ -3046,7 +3046,7 @@ class HammerBrosFight(BossFightPrize):
 
 class Croco1BossFight(BossFightPrize):
     _text = "Croco 1"
-    _formation = FORM0273
+    _formation = FORM0273_ONE_CROCO1
     _members = [
         FormationMember(CROCO1Enemy, 183, 127),
     ]
@@ -3094,7 +3094,7 @@ class Croco1BossFight(BossFightPrize):
 
 class MackBossFight(BossFightPrize):
     _text = "Mack"
-    _formation = FORM0289
+    _formation = FORM0289_ONE_MACK_FOUR_BODYGUARD
     _members = [
         FormationMember(MACKEnemy, 199, 119),
         FormationMember(BODYGUARDEnemy, 135, 111),
@@ -3207,7 +3207,7 @@ class MackBossFight(BossFightPrize):
 
 class PandoriteBossFight(BossFightPrize):
     _text = "Pandorite"
-    _formation = FORM0266
+    _formation = FORM0266_ONE_PANDORITE
     _members = [
         FormationMember(PANDORITEEnemy, 183, 127),
     ]
@@ -3272,7 +3272,7 @@ class PandoriteBossFight(BossFightPrize):
 
 class Belome1BossFight(BossFightPrize):
     _text = "Belome 1"
-    _formation = FORM0278
+    _formation = FORM0278_ONE_BELOME1
     _members = [
         FormationMember(BELOME1Enemy, 183, 127),
     ]
@@ -3320,7 +3320,7 @@ class Belome1BossFight(BossFightPrize):
 
 class BowyerBossFight(BossFightPrize):
     _text = "Bowyer"
-    _formation = FORM0291
+    _formation = FORM0291_ONE_BOWYER
     _members = [
         FormationMember(BOWYEREnemy, 183, 127),
     ]
@@ -3412,7 +3412,7 @@ class BowyerBossFight(BossFightPrize):
 
 class Croco2BossFight(BossFightPrize):
     _text = "Croco 2"
-    _formation = FORM0274
+    _formation = FORM0274_ONE_CROCO2
     _members = [
         FormationMember(CROCO2Enemy, 183, 127),
     ]
@@ -3487,7 +3487,7 @@ class Croco2BossFight(BossFightPrize):
 
 class PunchinelloBossFight(BossFightPrize):
     _text = "Punchinello 1"
-    _formation = FORM0251
+    _formation = FORM0251_ONE_PUNCHINELLO_FOUR_MICROBOMB
     _members = [
         FormationMember(PUNCHINELLOEnemy, 199, 119),
         FormationMember(MICROBOMBEnemy, 135, 119, hidden_at_start=True),
@@ -3591,7 +3591,7 @@ class PunchinelloBossFight(BossFightPrize):
 
 class BoosterBossFight(BossFightPrize):
     _text = "Booster 1"
-    _formation = FORM0271
+    _formation = FORM0271_ONE_BOOSTER_THREE_SNIFITENEMYHENCHMAN
     _force_start_event = BE0012_DIALOGUE_FROM_BOOSTER_FIGHT
     _members = [
         FormationMember(BOOSTEREnemy, 183, 127),
@@ -3670,7 +3670,7 @@ class BoosterBossFight(BossFightPrize):
 
 class KnifeGuyGrateGuyBossFight(BossFightPrize):
     _text = "Knife Guy & Grate Guy"
-    _formation = FORM0287
+    _formation = FORM0287_ONE_KNIFEGUY_ONE_GRATEGUY
     _members = [
         FormationMember(KNIFEGUYEnemy, 151, 119),
         FormationMember(GRATEGUYEnemy, 199, 143),
@@ -3730,7 +3730,7 @@ class KnifeGuyGrateGuyBossFight(BossFightPrize):
 
 class BundtBossFight(BossFightPrize):
     _text = "Bundt 1"
-    _formation = FORM0286
+    _formation = FORM0286_ONE_BUNDT_ONE_RASPBERRY_TWO_TORTE
     _members = [
         FormationMember(BUNDTEnemy, 199, 127),
         FormationMember(RASPBERRYEnemy, 199, 119),
@@ -3813,7 +3813,7 @@ class BundtBossFight(BossFightPrize):
 
 class KingCalamariBossFight(BossFightPrize):
     _text = "King Calamari"
-    _formation = FORM0277
+    _formation = FORM0277_ONE_KINGCALAMARI_TWO_TENTACLESENEMY2_THREE_TENTACLES
     _members = [
         FormationMember(KINGCALAMARIEnemy, 222, 94, hidden_at_start=True),
         FormationMember(TENTACLESEnemy2, 136, 115, hidden_at_start=True),
@@ -3887,7 +3887,7 @@ class KingCalamariBossFight(BossFightPrize):
 
 class HidonBossFight(BossFightPrize):
     _text = "Hidon"
-    _formation = FORM0267
+    _formation = FORM0267_ONE_HIDON_FOUR_GOOMBETTE
     _members = [
         FormationMember(HIDONEnemy, 167, 119),
         FormationMember(GOOMBETTEEnemy, 135, 111, hidden_at_start=True),
@@ -4013,7 +4013,7 @@ class HidonBossFight(BossFightPrize):
 
 class JohnnyBossFight(BossFightPrize):
     _text = "Johnny 1"
-    _formation = FORM0276
+    _formation = FORM0276_ONE_JOHNNY_FOUR_BANDANABLUE_TWO_WATERCRYSTAL
     _members = [
         FormationMember(JOHNNYEnemy, 183, 127),
         FormationMember(BANDANABLUEEnemy, 135, 111),
@@ -4106,7 +4106,7 @@ class JohnnyBossFight(BossFightPrize):
 
 class YaridovichBossFight(BossFightPrize):
     _text = "Yaridovich"
-    _formation = FORM0290
+    _formation = FORM0290_ONE_YARIDOVICH_ONE_YARIDOVICHMIRAGE
     _members = [
         FormationMember(YARIDOVICHEnemy, 183, 127),
         FormationMember(YARIDOVICHMirageEnemy, 183, 127, hidden_at_start=True),
@@ -4201,7 +4201,7 @@ class YaridovichBossFight(BossFightPrize):
 
 class MokuraBossFight(BossFightPrize):
     _text = "Mokura"
-    _formation = FORM0314
+    _formation = FORM0314_ONE_FORMLESS_ONE_MOKURA
     _members = [
         FormationMember(FORMLESSEnemy, 167, 135),
         FormationMember(MOKURAEnemy, 167, 135, hidden_at_start=True),
@@ -4273,7 +4273,7 @@ class MokuraBossFight(BossFightPrize):
 
 class Belome2BossFight(BossFightPrize):
     _text = "Belome 2"
-    _formation = FORM0279
+    _formation = FORM0279_ONE_BELOME2_ONE_MARIOCLONE_ONE_TOADSTOOL2
     _members = [
         FormationMember(BELOME2Enemy, 183, 127),
         FormationMember(MARIOCLONEEnemy, 135, 119, hidden_at_start=True),
@@ -4371,7 +4371,7 @@ class Belome2BossFight(BossFightPrize):
 
 class JaggerBossFight(BossFightPrize):
     _text = "Jagger"
-    _formation = FORM0299
+    _formation = FORM0299_ONE_JAGGER
     _members = [
         FormationMember(JAGGEREnemy, 183, 127),
     ]
@@ -4416,7 +4416,7 @@ class JaggerBossFight(BossFightPrize):
 
 class Jinx1BossFight(BossFightPrize):
     _text = "Jinx 1"
-    _formation = FORM0288
+    _formation = FORM0288_ONE_JINX1
     _members = [
         FormationMember(JINX1Enemy, 183, 127),
     ]
@@ -4464,7 +4464,7 @@ class Jinx1BossFight(BossFightPrize):
 
 class Jinx2BossFight(BossFightPrize):
     _text = "Jinx 2"
-    _formation = FORM0297
+    _formation = FORM0297_ONE_JINX2
     _members = [
         FormationMember(JINX2Enemy, 183, 127),
     ]
@@ -4512,7 +4512,7 @@ class Jinx2BossFight(BossFightPrize):
 
 class Jinx3BossFight(BossFightPrize):
     _text = "Jinx 3"
-    _formation = FORM0298
+    _formation = FORM0298_ONE_JINX3
     _members = [
         FormationMember(JINX3Enemy, 183, 127),
     ]
@@ -4560,7 +4560,7 @@ class Jinx3BossFight(BossFightPrize):
 
 class CulexBossFight(BossFightPrize):
     _text = "Culex 1"
-    _formation = FORM0322
+    _formation = FORM0322_ONE_CULEX_ONE_FIRECRYSTAL_ONE_WATERCRYSTAL_ONE_EARTHCRYSTAL_ONE_WINDCRYSTAL
     _members = [
         FormationMember(CULEXEnemy, 183, 103),
         FormationMember(FIRECRYSTALEnemy, 135, 103, hidden_at_start=True),
@@ -4652,7 +4652,7 @@ class CulexBossFight(BossFightPrize):
 
 class BoxBoyBossFight(BossFightPrize):
     _text = "Box Boy"
-    _formation = FORM0268
+    _formation = FORM0268_ONE_BOXBOY_ONE_FAUTSO
     _members = [
         FormationMember(BOXBOYEnemy, 183, 127),
         FormationMember(FAUTSOEnemy, 151, 111, hidden_at_start=True),
@@ -4719,7 +4719,7 @@ class BoxBoyBossFight(BossFightPrize):
 
 class MegasmilaxBossFight(BossFightPrize):
     _text = "Megasmilax"
-    _formation = FORM0283
+    _formation = FORM0283_FIVE_SMILAX_ONE_MEGASMILAX
     _members = [
         FormationMember(SMILAXEnemy, 180, 157),
         FormationMember(SMILAXEnemy, 164, 175, hidden_at_start=True),
@@ -4819,7 +4819,7 @@ class MegasmilaxBossFight(BossFightPrize):
 
 class DodoBossFight(BossFightPrize):
     _text = "Dodo"
-    _formation = FORM0315
+    _formation = FORM0315_ONE_DODOENEMYSOLO
     _members = [
         FormationMember(DODOEnemySolo, 183, 127),
     ]
@@ -4871,7 +4871,7 @@ class DodoBossFight(BossFightPrize):
 
 class BirdettaBossFight(BossFightPrize):
     _text = "Birdo"
-    _formation = FORM0285
+    _formation = FORM0285_ONE_BIRDETTA_ONE_SHELLY_FOUR_EGGBERT
     _members = [
         FormationMember(BIRDETTAEnemy, 167, 118, hidden_at_start=True),
         FormationMember(SHELLYEnemy, 171, 103),
@@ -4996,7 +4996,7 @@ class BirdettaBossFight(BossFightPrize):
 
 class ValentinaBossFight(BossFightPrize):
     _text = "Valentina"
-    _formation = FORM0281
+    _formation = FORM0281_ONE_VALENTINA_ONE_DODO
     _members = [
         FormationMember(VALENTINAEnemy, 183, 127),
         FormationMember(DODOEnemy, 199, 151, hidden_at_start=True),
@@ -5090,7 +5090,7 @@ class ValentinaBossFight(BossFightPrize):
 
 class CzarDragonBossFight(BossFightPrize):
     _text = "Czar Dragon"
-    _formation = FORM0282
+    _formation = FORM0282_ONE_CZARDRAGON_ONE_ZOMBONE_FOUR_HELIO
     _members = [
         FormationMember(CZARDRAGONEnemy, 183, 143),
         FormationMember(ZOMBONEEnemy, 183, 143, hidden_at_start=True),
@@ -5176,7 +5176,7 @@ class CzarDragonBossFight(BossFightPrize):
 
 class AxemRangersBossFight(BossFightPrize):
     _text = "Axem Rangers"
-    _formation = FORM0292
+    _formation = FORM0292_ONE_AXEMRANGERS_ONE_AXEMRED_ONE_AXEMBLACK_ONE_AXEMPINK_ONE_AXEMGREEN_ONE_AXEMYELLOW
     _members = [
         FormationMember(AXEMRANGERSEnemy, 201, 79),
         FormationMember(AXEMREDEnemy, 135, 111, hidden_at_start=True),
@@ -5282,7 +5282,7 @@ class AxemRangersBossFight(BossFightPrize):
 
 class ChesterBossFight(BossFightPrize):
     _text = "Chester"
-    _formation = FORM0269
+    _formation = FORM0269_ONE_CHESTER_ONE_BAHAMUTTENEMY2
     _members = [
         FormationMember(CHESTEREnemy, 183, 127),
         FormationMember(BAHAMUTTEnemy, 135, 119, hidden_at_start=True),
@@ -5349,7 +5349,7 @@ class ChesterBossFight(BossFightPrize):
 
 class KamekBossFight(BossFightPrize):
     _text = "Magikoopa"
-    _formation = FORM0316
+    _formation = FORM0316_ONE_KAMEK_ONE_TERRAPIN
     _members = [
         FormationMember(KAMEKEnemy, 215, 111),
         FormationMember(TERRAPINEnemy, 167, 135, hidden_at_start=True),
@@ -5449,7 +5449,7 @@ class KamekBossFight(BossFightPrize):
 
 class BoomerBossFight(BossFightPrize):
     _text = "Boomer"
-    _formation = FORM0317
+    _formation = FORM0317_ONE_BOOMER_TWO_HANGINSHY
     _members = [
         FormationMember(BOOMEREnemy, 215, 143),
         FormationMember(HANGINSHYEnemy, 66, 115),
@@ -5500,7 +5500,7 @@ class BoomerBossFight(BossFightPrize):
 
 class ExorBossFight(BossFightPrize):
     _text = "Exor"
-    _formation = FORM0296
+    _formation = FORM0296_ONE_EXOR_ONE_NEOSQUID_ONE_RIGHTEYE_ONE_LEFTEYE
     _members = [
         FormationMember(EXOREnemy, 193, 64),
         FormationMember(NEOSQUIDEnemy, 187, 136),
@@ -5569,7 +5569,7 @@ class ExorBossFight(BossFightPrize):
 
 class CountdownBossFight(BossFightPrize):
     _text = "Count Down"
-    _formation = FORM0284
+    _formation = FORM0284_ONE_COUNTDOWN_TWO_DINGALING
     _members = [
         FormationMember(COUNTDOWNEnemy, 150, 93),
         FormationMember(DINGALINGEnemy, 158, 52),
@@ -5657,7 +5657,7 @@ class CountdownBossFight(BossFightPrize):
 
 class CloakerDominoBossFight(BossFightPrize):
     _text = "Cloaker & Domino"
-    _formation = FORM0294
+    _formation = FORM0294_ONE_CLOAKER_ONE_DOMINO_ONE_MADADDER
     _members = [
         FormationMember(CLOAKEREnemy, 151, 111),
         FormationMember(DOMINOEnemy, 215, 159),
@@ -5717,7 +5717,7 @@ class CloakerDominoBossFight(BossFightPrize):
 
 class ClerkBossFight(BossFightPrize):
     _text = "Clerk"
-    _formation = FORM0258
+    _formation = FORM0258_ONE_CLERK_TWO_MADMALLETENEMYHENCHMAN
     _members = [
         FormationMember(CLERKEnemy, 199, 119),
         FormationMember(MADMALLETEnemyHenchman, 135, 119),
@@ -5791,7 +5791,7 @@ class ClerkBossFight(BossFightPrize):
 
 class ManagerBossFight(BossFightPrize):
     _text = "Manager"
-    _formation = FORM0259
+    _formation = FORM0259_ONE_MANAGER_THREE_POUNDERENEMYHENCHMAN
     _members = [
         FormationMember(MANAGEREnemy, 199, 119),
         FormationMember(POUNDEREnemyHenchman, 151, 111),
@@ -5866,7 +5866,7 @@ class ManagerBossFight(BossFightPrize):
 
 class DirectorBossFight(BossFightPrize):
     _text = "Director"
-    _formation = FORM0260
+    _formation = FORM0260_ONE_DIRECTOR_FOUR_POUNDETTEENEMYHENCHMAN
     _members = [
         FormationMember(DIRECTOREnemy, 183, 127),
         FormationMember(POUNDETTEEnemyHenchman, 135, 119),
@@ -5942,7 +5942,7 @@ class DirectorBossFight(BossFightPrize):
 
 class GunyolkBossFight(BossFightPrize):
     _text = "Gunyolk"
-    _formation = FORM0261
+    _formation = FORM0261_ONE_GUNYOLK_ONE_FACTORYCHIEF
     _members = [
         FormationMember(GUNYOLKEnemy, 199, 103),
         FormationMember(FACTORYCHIEFEnemy, 231, 151),
@@ -5991,7 +5991,7 @@ class GunyolkBossFight(BossFightPrize):
 
 class SmithyBossFight(BossFightPrize):
     _text = "Smithy"
-    _formation = FORM0295
+    _formation = FORM0295_ONE_SMITHY1_ONE_SMELTER_TWO_MACHINEMADEBODYGUARD
     _members = [
         FormationMember(SMITHY1Enemy, 199, 127),
         FormationMember(SMELTEREnemy, 87, 87),
@@ -6057,7 +6057,7 @@ class SmithyBossFight(BossFightPrize):
 
 class Punchinello2BossFight(BossFightPrize):
     _text = "Punchinello 2"
-    _formation = FORM0124
+    _formation = FORM0124_ONE_PUNCHINELLO2_ONE_STRONGBOBOMB3_ONE_STRONGBOBOMB1_ONE_STRONGBOBOMB4_ONE_STRONGBOBOMB2
     _members = [
         FormationMember(PUNCHINELLO2Enemy, 188, 116),
         FormationMember(STRONGBOBOMB3Enemy, 145, 103, hidden_at_start=True),
@@ -6118,7 +6118,7 @@ class Punchinello2BossFight(BossFightPrize):
 
 class Booster2BossFight(BossFightPrize):
     _text = "Booster 2"
-    _formation = FORM0123
+    _formation = FORM0123_ONE_BOOSTERENEMY2_THREE_SNIFIT2_ONE_BOOSTERDUMMY
     _members = [
         FormationMember(BOOSTEREnemy2, 184, 116),
         FormationMember(SNIFIT2Enemy, 156, 132),
@@ -6168,7 +6168,7 @@ class Booster2BossFight(BossFightPrize):
 
 class Bundt2BossFight(BossFightPrize):
     _text = "Bundt 2"
-    _formation = FORM0137
+    _formation = FORM0137_ONE_BUNDT2_ONE_RASPBERRY2_TWO_TORTE2_ONE_CANDLE
     _members = [
         FormationMember(BUNDT2Enemy, 199, 127),
         FormationMember(RASPBERRY2Enemy, 199, 119),
@@ -6226,7 +6226,7 @@ class Bundt2BossFight(BossFightPrize):
 
 class Johnny2Fight(BossFightPrize):
     _text = "Johnny 2"
-    _formation = FORM0216
+    _formation = FORM0216_ONE_JOHNNYENEMY2
     _members = [
         FormationMember(JOHNNYEnemy2, 165, 121),
     ]
@@ -6261,7 +6261,7 @@ class Johnny2Fight(BossFightPrize):
 
 class Belome3Fight(BossFightPrize):
     _text = "Belome 3"
-    _formation = FORM0055
+    _formation = FORM0055_ONE_BELOMEENEMY3_ONE_MARIOCLONES_ONE_TOADSTOOL3
     _members = [
         FormationMember(BELOMEEnemy3, 183, 127),
         FormationMember(MARIOCLONESEnemy, 135, 119, hidden_at_start=True),
@@ -6315,7 +6315,7 @@ class Belome3Fight(BossFightPrize):
 
 class Jinx4BossFight(BossFightPrize):
     _text = "Jinx 4"
-    _formation = FORM0217
+    _formation = FORM0217_ONE_JINXENEMY4_ONE_TEAMGAUGE
     _members = [
         FormationMember(JINXEnemy4, 181, 122),
         FormationMember(TeamGaugeEnemy, 36, 200),
@@ -6368,7 +6368,7 @@ class Jinx4BossFight(BossFightPrize):
 
 class Culex3DBossFight(BossFightPrize):
     _text = "Culex 2"
-    _formation = FORM0096
+    _formation = FORM0096_ONE_CULEX3D_ONE_FIRECRYS3D_ONE_WATERCRYS3D_ONE_EARTHCRYS3D_ONE_WINDCRYS3D
     _members = [
         FormationMember(CULEX3DEnemy, 183, 103),
         FormationMember(FIRECRYS3DEnemy, 135, 103, hidden_at_start=True),
