@@ -36,6 +36,8 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	JmpIfBitSet(BATTLE_DOOR_STAR_PIECE, ["EVENT_3400_clear_bit_485"]),
 	JmpIfBitSet(RETURN_TO_OVERWORLD_AFTER_VOLCANO_STAR_PIECE, ["EVENT_3400_clear_bit_481"]),
+	JmpIfBitSet(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, ["EVENT_3400_do_2nd_keep_boss_fight"]),
+	JmpIfBitSet(RETURN_TO_OVERWORLD_AFTER_KEEP_STAR_PIECE, ["EVENT_3400_do_3rd_keep_boss_fight"]),
 	Set7000ToCurrentLevel(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R005_MARRYMORE_OUTSIDE_DURING_BOOSTER, ["EVENT_3400_play_music_current_volume_390"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R007_MARRYMORE_INN_1F, ["EVENT_3400_fade_out_music_to_volume_389"]),
@@ -530,6 +532,8 @@ script = EventScript([
     
 	ExitToWorldMap(area=OW50_BARREL_VOLCANO, bit_6=True, bit_7=True, identifier="EVENT_3400_exit_to_world_map_from_volcano"),
 	Return(),
+    JmpToEvent(E2226_KEEP_3RD_BOSS, identifier="EVENT_3400_do_2nd_keep_boss_fight"),
+    JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT, identifier="EVENT_3400_do_3rd_keep_boss_fight"),
     #JmpIfBitSet(EXP_STAR_BIT_5, ["3400_ret"], identifier="EVENT_3400_resume_exp_star"),
     #MarioGlows(),
 	Return(identifier="EVENT_3400_resume_exp_star"),

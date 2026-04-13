@@ -154,7 +154,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
         PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
         MeteorSwarmSpell, WeirdMushroomSpell, BreakerBeamSpell, ShredderSpell,
         SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell, BigBangSpell,
-        EnemySpell, EscapeSpell, Engine023Spell,
+        EnemySpell, EscapeSpell, Engine023Spell, WeirdMushroomSpell
     )
     from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import (
         DoNothing,
@@ -231,7 +231,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             for cmd in script.contents:
                 if isinstance(cmd, CastSpell):
                     # Skip special spells - spell slots contain types, not instances
-                    excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell, RecoverSpell, MegaRecoverSpell, CakerBeamSpell)
+                    excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell, RecoverSpell, MegaRecoverSpell, CakerBeamSpell, WeirdMushroomSpell)
                     if cmd.spell_1 is not None and cmd.spell_1 not in excluded_spells:
                         cmd.set_spell_1(random.choice(spell_pool))
                     if cmd.spell_2 is not None and cmd.spell_2 not in excluded_spells:

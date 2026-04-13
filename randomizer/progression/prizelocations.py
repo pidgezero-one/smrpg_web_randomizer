@@ -13462,6 +13462,25 @@ class KeepChandelierStarPiece(StarPieceLocation):
             world, inventory
         )
 
+    def render(
+        self, world: GameWorld
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        if self.prize is None:
+            identifier = str(uuid4())
+            return (
+                [
+                    [
+                        JmpIfVarEqualsConst(
+                            PRIMARY_TEMP_7000, self.override_id, [identifier]
+                        )
+                    ]
+                ],
+                [
+	                JmpToEvent(E2226_KEEP_3RD_BOSS, identifier=identifier),
+                ],
+            )
+        else:
+            return super().render(world)
     # Flag as checked: KEEP_BOSS_2_DEFEATED
 
 
@@ -13523,6 +13542,25 @@ class KeepFinalStarPiece(StarPieceLocation):
             world, inventory
         )
 
+    def render(
+        self, world: GameWorld
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        if self.prize is None:
+            identifier = str(uuid4())
+            return (
+                [
+                    [
+                        JmpIfVarEqualsConst(
+                            PRIMARY_TEMP_7000, self.override_id, [identifier]
+                        )
+                    ]
+                ],
+                [
+	                JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT, identifier=identifier),
+                ],
+            )
+        else:
+            return super().render(world)
     # Flag as checked: KEEP_BOSS_3_DEFEATED
 
 

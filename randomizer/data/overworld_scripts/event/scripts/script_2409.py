@@ -139,7 +139,7 @@ script = EventScript([
 	UnfreezeCamera(),
 	RunBackgroundEvent(event_id=E2592_ABYSS_FALL_OFF_BEFORE_FIRST_BOSS, return_on_level_exit=True),
 	Return(),
-	JmpIfBitClear(UNUSED_708F_5, ["EVENT_2409_set_var_to_const_52"], identifier="EVENT_2409_jmp_if_bit_clear_50"),
+	JmpIfBitClear(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, ["EVENT_2409_set_var_to_const_52"], identifier="EVENT_2409_jmp_if_bit_clear_50"),
 	SetSyncActionScript(NPC_7, A0690_OPENING_CHEST),
 	SetVarToConst(FACTORY_FALL_1, 239, identifier="EVENT_2409_set_var_to_const_52"),
 	SetVarToConst(FACTORY_FALL_2, 0),
