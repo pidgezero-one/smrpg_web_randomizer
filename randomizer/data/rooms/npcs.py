@@ -11691,31 +11691,6 @@ PUNCHINELLO_POSTGAME_NPC = NPC(
 )
 
 
-PUNCHINELLO_LARGE_2_NPC = NPC(
-    sprite_id=SPR0752_PUNCHINELLO_LARGE_2,
-    shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=11,
-    obtuse_axis=8,
-    height=19,
-    y_shift=1,
-    show_shadow=False,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=2,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
-
 PUNCHINELLO_POSTGAME_2_NPC = NPC(
     sprite_id=SPR0753_PUNCHINELLO_POSTGAME_2,
     shadow_size=ShadowSize.OVAL_SMALL,
@@ -11730,31 +11705,6 @@ PUNCHINELLO_POSTGAME_2_NPC = NPC(
     priority_1=False,
     priority_2=True,
     cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
-
-BELOME_LARGE_2_NPC = NPC(
-    sprite_id=SPR0754_BELOME_LARGE_2,
-    shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=10,
-    obtuse_axis=10,
-    height=18,
-    y_shift=2,
-    show_shadow=False,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=5,
-    priority_0=True,
-    priority_1=True,
-    priority_2=False,
-    cannot_clone=False,
     byte2_bit0=False,
     byte2_bit1=False,
     byte2_bit2=False,
@@ -11791,58 +11741,8 @@ BELOME_3_LARGE_2_NPC = NPC(
 )
 
 
-BUNDT_LARGE_2_NPC = NPC(
-    sprite_id=SPR0756_BUNDT_LARGE_2,
-    shadow_size=ShadowSize.OVAL_BIG,
-    acute_axis=13,
-    obtuse_axis=13,
-    height=23,
-    y_shift=1,
-    show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=3,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
-
 BUNDT_2_LARGE_2_NPC = NPC(
     sprite_id=SPR0757_BUNDT_2_LARGE_2,
-    shadow_size=ShadowSize.OVAL_BIG,
-    acute_axis=13,
-    obtuse_axis=13,
-    height=23,
-    y_shift=1,
-    show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=3,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
-
-JOHNNY_LARGE_2_NPC = NPC(
-    sprite_id=SPR0758_JOHNNY_LARGE_2,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -11876,31 +11776,6 @@ JOHNNY_2_LARGE_2_NPC = NPC(
     show_shadow=True,
     directions=VramStore.DIR2_SWSE,
     min_vram_size=3,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
-
-CULEX_LARGE_2_NPC = NPC(
-    sprite_id=SPR0760_CULEX_LARGE_2,
-    shadow_size=ShadowSize.OVAL_MED,
-    acute_axis=4,
-    obtuse_axis=4,
-    height=8,
-    y_shift=1,
-    show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=0,
     priority_0=False,
     priority_1=False,
     priority_2=True,

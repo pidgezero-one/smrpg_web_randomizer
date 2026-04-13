@@ -1,7 +1,7 @@
 # SPR0757_BUNDT_2_LARGE_2
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-from randomizer.data.variables.sprite_palette_names import SPAL165_BUNDT_LARGE_2
+from randomizer.data.variables.sprite_palette_names import SPAL165_BUNDT_2_LARGE_2
 sprite = CompleteSprite(
     animation=AnimationPack(98, length=405, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=4096,
@@ -1040,7 +1040,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=SPAL165_BUNDT_LARGE_2,
+    palette_id=SPAL165_BUNDT_2_LARGE_2,
     palette_offset=0,
     unknown_num=0
 )

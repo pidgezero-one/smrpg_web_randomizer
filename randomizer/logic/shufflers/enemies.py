@@ -429,6 +429,23 @@ def generate_formation_coordinates(
     return result
 
 
+FORMATION_FORCED_ENEMIES: dict[int, list[type]] = {
+    # Map formation_id (0-511) -> list of Enemy classes that MUST appear in
+    # that formation when "randomize formations" is enabled. The randomizer
+    # will guarantee each listed class is present at least once, even if the
+    # class falls outside the normal stat-similarity pool. Forced enemies
+    # still respect the per-formation VRAM budget (they are added first and
+    # subsequent random additions get pruned to fit).
+    #
+    # Example:
+    #   from randomizer.data.enemies.enemies import TERRAPINEnemy, GOOMBAEnemy
+    #   FORMATION_FORCED_ENEMIES = {
+    #       42: [TERRAPINEnemy],
+    #       57: [GOOMBAEnemy, TERRAPINEnemy],
+    #   }
+}
+
+
 def randomize_enemy_formations(world: GameWorld) -> None:
     """Randomize enemy formations.
 
@@ -436,6 +453,9 @@ def randomize_enemy_formations(world: GameWorld) -> None:
     - Monsters that appear in boss fight formations are excluded from the candidate pool
     - Monsters are matched by stat similarity: sum of (attack + defense + magic_attack + magic_defense)
       must be within ±20% of the formation's average
+    - Per-formation forced enemies declared in FORMATION_FORCED_ENEMIES are
+      always included in the resulting formation, even when they fall outside
+      the stat-similarity candidate pool.
     """
     from randomizer.types.prize import BossFightPrize
     from randomizer.types.prizelocation import BossFightLocation
@@ -521,7 +541,18 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             if any(e in boss_enemy_types for e in current_enemy_types):
                 continue
 
+            # Forced enemies for this specific formation_id (user-configured).
+            # These must appear in the final formation regardless of stat similarity.
+            forced_enemies: list[type] = []
+            if formation.formation_id is not None:
+                forced_enemies = list(
+                    FORMATION_FORCED_ENEMIES.get(formation.formation_id, [])
+                )
+
             candidates = list(current_enemy_types)
+            for fe in forced_enemies:
+                if fe not in candidates:
+                    candidates.append(fe)
 
             # Calculate average stat sum of unique monsters in the formation
             current_enemies_objs = [world.enemies.get_by_type(e) for e in current_enemy_types]
@@ -553,11 +584,16 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                 candidates.append(random.choice(remaining_unique))
 
             num_enemies = random.randint(1, random.randint(3, max_enemies))
-            num_enemies = max(num_enemies, len(current_enemy_types))
+            num_enemies = max(num_enemies, len(current_enemy_types), len(forced_enemies))
 
             # Build formation while respecting VRAM constraint.
             # Duplicate enemies share sprite VRAM, so track unique sprites only.
+            # Seed with original members plus any user-forced enemies so they are
+            # guaranteed to appear in the final formation.
             chosen_enemies: list[type] = list(current_enemy_types)
+            for fe in forced_enemies:
+                if fe not in chosen_enemies:
+                    chosen_enemies.append(fe)
             unique_vram: dict[type, int] = {e: get_vram_size(e) for e in set(chosen_enemies)}
             current_vram = sum(unique_vram.values())
 

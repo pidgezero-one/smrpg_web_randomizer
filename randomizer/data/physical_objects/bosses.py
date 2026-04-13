@@ -276,7 +276,7 @@ belome_animations = SpriteAnimationCollection(
 class Belome1LargeObject(BossNPC):
     """Large Belome 1 object in Mushroom Way Area 03."""
 
-    _base = BELOME_LARGE_2_NPC
+    _base = BELOME_ST_TIME_NPC
     _animations = belome_animations
     _evil_palette = [
         0xFFFFFF, 0xF8A8A8, 0xFFD663, 0xF84848, 0xFFB510,
@@ -385,7 +385,7 @@ class PunchinelloSmallObject(BossNPC):
 class PunchinelloLargeObject(BossNPC):
     """Large Punchinello object."""
 
-    _base = PUNCHINELLO_LARGE_2_NPC
+    _base = PUNCHINELLO_NPC
     _animations=punchinello_animations
     _evil_palette = [
         0xFFFFFF, 0xF7EF63, 0xD0D8C0, 0xB5B58C, 0x808068,
@@ -555,7 +555,7 @@ class CulexSmallObject(BossNPC):
 class CulexLargeObject(BossNPC):
     """Large Culex object."""
 
-    _base = CULEX_LARGE_2_NPC
+    _base = CULEX_NPC
     _evil_palette = [
         0x180808, 0x585858, 0x383838, 0x101010, 0xC69C4A,
         0xFFD66B, 0x000000, 0x9C2918, 0x522110, 0xBD6329,
@@ -579,7 +579,7 @@ class BundtSmallObject(BossNPC):
 class BundtLargeObject(BossNPC):
     """Large Bundt object."""
 
-    _base = BUNDT_LARGE_2_NPC
+    _base = BUNDT_NPC
     _evil_palette = [
         0xFFFFFF, 0xF85050, 0xF88080, 0xF88080, 0xF88080,
         0xF83030, 0xB80000, 0xB80000, 0xB80000, 0x700000,
@@ -626,7 +626,7 @@ class JohnnySmallObject(BossNPC):
 class JohnnyLargeObject(BossNPC):
     """Large Johnny object."""
 
-    _base = JOHNNY_LARGE_2_NPC
+    _base = JOHNNY_NPC
     _evil_palette = [
         0xFFFFFF, 0x7B3118, 0xEFFF42, 0x524A21, 0x423939,
         0xFFCE94, 0xA59442, 0xB55A39, 0xA50000, 0x5A634A,
