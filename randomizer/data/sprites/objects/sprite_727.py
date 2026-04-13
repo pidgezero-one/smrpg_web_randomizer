@@ -1,7 +1,7 @@
 # SPR0727_JINX_OVERWORLD_4
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-from randomizer.data.variables.sprite_palette_names import SPAL000_NOTHING, SPAL649_JINX_OVERWORLD_1
+from randomizer.data.variables.sprite_palette_names import SPAL000_NOTHING, SPAL453_JINX_OVERWORLD_4
 sprite = CompleteSprite(
     animation=AnimationPack(385, length=130, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -231,7 +231,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=SPAL649_JINX_OVERWORLD_1,
+    palette_id=SPAL453_JINX_OVERWORLD_4,
     palette_offset=0,
     unknown_num=8
 )

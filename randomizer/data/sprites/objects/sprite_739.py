@@ -1,7 +1,7 @@
 # SPR0739_JOHNNY_2_SMALL
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-from randomizer.data.variables.sprite_palette_names import SPAL414_JONATHAN_JONES
+from randomizer.data.variables.sprite_palette_names import SPAL700_JOHNNY_2
 sprite = CompleteSprite(
     animation=AnimationPack(294, length=302, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -338,7 +338,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=SPAL414_JONATHAN_JONES,
+    palette_id=SPAL700_JOHNNY_2,
     palette_offset=0,
     unknown_num=0
 )

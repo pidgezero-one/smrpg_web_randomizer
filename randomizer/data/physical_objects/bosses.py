@@ -111,6 +111,12 @@ class HammerBroSmallObject(BossNPC):
     """Small Hammer Bro object in Mushroom Way Area 03."""
 
     _base = HAMMER_BRO_SMALL_NPC
+    _eye_height = 20
+    _evil_palette = [
+        0x393939, 0xA5A5AD, 0x736B7B, 0xFFFFFF, 0x000010,
+        0xF8A8A8, 0xF88888, 0xC80808, 0xD00808, 0xF05858,
+        0xC00808, 0xE80808, 0x580000, 0x280000, 0x100000,
+    ]
 
 
 class HammerBroStatueObject(BossNPC):
@@ -124,6 +130,11 @@ class Croco1Object(BossNPC):
 
     _base = CROCO_1_NPC
     _eye_height = 16
+    _evil_palette = [
+        0xBDD6CE, 0x8CC694, 0xF86868, 0xFFFFFF, 0x7B8484,
+        0xF85050, 0xF80808, 0xC00000, 0xE80000, 0xD80000,
+        0xB00000, 0x800000, 0x700000, 0x580000, 0x181818,
+    ]
     _tower_entrance_horizontal_shift = 9
     _animations = SpriteAnimationCollection(
         recoil=croco_recoil,
@@ -146,6 +157,12 @@ class Croco2Object(BossNPC):
 
     _base = CROCO_2_NPC
     _eye_height = 16
+    _evil_palette = [
+        0xBDD6CE, 0x8CC694, 0xF86868, 0xFFFFFF, 0x7B8484,
+        0xF85050, 0xF80808, 0xC00000, 0xE80000, 0xD80000,
+        0xB00000, 0x800000, 0x700000, 0x580000, 0x181818,
+    ]
+    _tower_entrance_horizontal_shift = 9
     _animations = SpriteAnimationCollection(
         recoil=croco_recoil,
         tower_crying=croco_bag_loop,
@@ -173,7 +190,12 @@ class MackSmallObject(BossNPC):
     """Small Mack object in Mushroom Way Area 03."""
 
     _base = MACK_SMALL_NPC
-    _eye_height = 19
+    _eye_height = 21
+    _evil_palette = [
+        0x383838, 0x181818, 0x282838, 0x787878, 0x202020,
+        0xB0B8A8, 0x181818, 0xF8F8F8, 0x504040, 0x000000,
+        0x706878, 0xE8E8E8, 0xE82020, 0xF8F8F8, 0xE01010,
+    ]
 
 
 class MackMediumObject(BossNPC):
@@ -205,6 +227,11 @@ class PandoriteSmallObject(BossNPC):
     """Small Pandorite object in Mushroom Way Area 03."""
 
     _base = PANDORITE_SMALL_NPC
+    _evil_palette = [
+        0xFFF7DE, 0xFFFF63, 0xFFEF63, 0x00FFAD, 0xFFEF00,
+        0xFFE7B5, 0xF7BD8C, 0xE7A531, 0xF80000, 0xC00000,
+        0xEF0000, 0xA00000, 0x089400, 0x085A00, 0x680000,
+    ]
     _eye_height = 8
     _crown_height = 1
 
@@ -225,6 +252,13 @@ class MimicStatueObject(BossNPC):
 
 class Belome1SmallObject(BossNPC):
     """Small Belome 1 object in Mushroom Way Area 03."""
+    _tower_entrance_horizontal_shift = -4
+    _eye_height = 14
+    _evil_palette = [
+        0xF84848, 0xE00000, 0xF8A8A8, 0x680000, 0xFFFFFF,
+        0x181818, 0xFFB510, 0x280000, 0xFFD608, 0xFFFFB5,
+        0x5A2100, 0xCE8408, 0xFFD663, 0xF03030, 0x210000,
+    ]
 
     _base = BELOME_SMALL_NPC
 
@@ -244,12 +278,24 @@ class Belome1LargeObject(BossNPC):
 
     _base = BELOME_ST_TIME_NPC
     _animations = belome_animations
+    _evil_palette = [
+        0xFFFFFF, 0xF8A8A8, 0xFFD663, 0xF84848, 0xFFB510,
+        0xFFFFB5, 0xFFD608, 0xE00000, 0xCE8408, 0x5A2100,
+        0xF03030, 0x680000, 0x280000, 0x210000, 0x181818,
+    ]
 
 
 class Belome2SmallObject(BossNPC):
     """Small Belome 2 object in Mushroom Way Area 03."""
 
     _base = BELOME_2_SMALL_NPC
+    _tower_entrance_horizontal_shift = -4
+    _eye_height = 14
+    _evil_palette = [
+        0xF84848, 0xE00000, 0xF8A8A8, 0x680000, 0xFFFFFF,
+        0x181818, 0xFFB510, 0x280000, 0xFFD608, 0xFFFFB5,
+        0x5A2100, 0xCE8408, 0xFFD663, 0xF03030, 0x210000,
+    ]
 
 
 class Belome2LargeObject(BossNPC):
@@ -257,12 +303,24 @@ class Belome2LargeObject(BossNPC):
 
     _base = GOLDEN_BELOME_NPC
     _animations = belome_animations
+    _evil_palette = [
+        0xFFFFFF, 0xF8A8A8, 0xFFD663, 0xF84848, 0xFFB510,
+        0xFFFFB5, 0xF84848, 0xE00000, 0xCE8408, 0xF03030,
+        0xF03030, 0x680000, 0x280000, 0xCE8408, 0x210000,
+    ]
 
 
 class Belome3SmallObject(BossNPC):
     """Small Belome 3 object in Mushroom Way Area 03."""
 
     _base = BELOME_3_SMALL_NPC
+    _tower_entrance_horizontal_shift = -4
+    _eye_height = 14
+    _evil_palette = [
+        0xF84848, 0xE00000, 0xF8A8A8, 0x680000, 0xFFFFFF,
+        0x181818, 0xFFB510, 0x280000, 0xFFD608, 0xFFFFB5,
+        0x5A2100, 0xCE8408, 0xFFD663, 0xF03030, 0x210000,
+    ]
 
 
 class Belome3LargeObject(BossNPC):
@@ -270,12 +328,22 @@ class Belome3LargeObject(BossNPC):
 
     _base = BELOME_3_NPC
     _animations = belome_animations
+    _evil_palette = [
+        0xFFFFFF, 0xF8A8A8, 0xF84848, 0xFFB510, 0xF84848,
+        0xFFFFB5, 0xFFFFB5, 0xE00000, 0xCE8408, 0x5A2100,
+        0xCE8408, 0x680000, 0x280000, 0x210000, 0x280000,
+    ]
 
 
 class BelomeSmallStatueObject(BossNPC):
     """Small Belome statue object in Mushroom Way Area 03."""
 
     _base = BELOME_SMALL_STATUE
+    _evil_palette = [
+        0xF84848, 0xFFD608, 0xF8A8A8, 0x5A2100, 0xFFFFFF,
+        0x181818, 0xF84848, 0x280000, 0xF84848, 0xF8A8A8,
+        0x5A2100, 0xE00000, 0xF84848, 0x5A2100, 0x210000,
+    ]
 
 
 class BowyerSmallObject(BossNPC):
@@ -283,6 +351,11 @@ class BowyerSmallObject(BossNPC):
 
     _base = BOWYER_SMALL_NPC
     _eye_height = 16
+    _evil_palette = [
+        0x303030, 0x181818, 0x101010, 0x000000, 0x000018,
+        0xA00000, 0xF80000, 0x401010, 0xFFFFFF, 0xBDBDCE,
+        0x7B1842, 0x6B7363, 0xFF73E7, 0xF80000, 0xA80000,
+    ]
 
 
 class BowyerStatueObject(BossNPC):
@@ -302,6 +375,11 @@ class PunchinelloSmallObject(BossNPC):
     """Small Punchinello object."""
 
     _base = PUNCHINELLO_SMALL_NPC
+    _evil_palette = [
+        0x181818, 0x101010, 0x000000, 0xA81818, 0xF80000,
+        0x480000, 0x580000, 0x808068, 0xFFFFFF, 0xD0D8C0,
+        0xB5B58C, 0xF7EF63, 0x9C6300, 0x303030, 0x000000,
+    ]
 
 
 class PunchinelloLargeObject(BossNPC):
@@ -309,6 +387,11 @@ class PunchinelloLargeObject(BossNPC):
 
     _base = PUNCHINELLO_NPC
     _animations=punchinello_animations
+    _evil_palette = [
+        0xFFFFFF, 0xF7EF63, 0xD0D8C0, 0xB5B58C, 0x808068,
+        0xF80000, 0x9C6300, 0x303030, 0x480000, 0x480000,
+        0x181818, 0xA81818, 0x101010, 0x580000, 0x000000,
+    ]
 
 
 class Punchinello2LargeObject(BossNPC):
@@ -316,6 +399,11 @@ class Punchinello2LargeObject(BossNPC):
 
     _base = PUNCHINELLO_POSTGAME_NPC
     _animations=punchinello_animations
+    _evil_palette = [
+        0xFFFFFF, 0xF7EF63, 0xD0D8C0, 0xB5B58C, 0x808068,
+        0xF80000, 0x9C6300, 0x303030, 0x480000, 0x480000,
+        0x181818, 0xA81818, 0x101010, 0x580000, 0x000000,
+    ]
 
 
 # Dodo
@@ -324,6 +412,11 @@ class DodoSmallObject(BossNPC):
 
     _base = DODO_SMALL_NPC
     _eye_height = 16
+    _evil_palette = [
+        0x181818, 0xF8F828, 0x4A524A, 0xC8A008, 0x883800,
+        0x8C8C8C, 0xE7DEDE, 0xFFFFFF, 0x737373, 0xADADAD,
+        0x292910, 0xE00808, 0x800008, 0xFFFFFF, 0x480000,
+    ]
 
 
 class DodoLargeObject(BossNPC):
@@ -338,6 +431,11 @@ class BirdettaSmallObject(BossNPC):
 
     _base = BIRDETTA_SMALL_NPC
     _eye_height = 6
+    _evil_palette = [
+        0xA85818, 0xF87820, 0x002000, 0x005000, 0x007038,
+        0x000000, 0x00F8C8, 0x181818, 0x00D058, 0x00F858,
+        0xF8F8F8, 0x00A048, 0x909090, 0x484848, 0x806060,
+    ]
 
 
 class BirdettaLargeObject(BossNPC):
@@ -352,6 +450,11 @@ class CzarDragonSmallObject(BossNPC):
 
     _base = CZAR_DRAGON_SMALL_NPC
     _eye_height = 3
+    _evil_palette = [
+        0xF0F8F8, 0x00B0B8, 0x88F8F8, 0x002828, 0x08C8C8, 
+        0x007070, 0x40F0F0, 0x009090, 0x003838, 0x08C8C8,
+        0x002828, 0x003030, 0x009090, 0x006868, 0x003838
+    ]
 
 
 class CzarDragonMediumObject(BossNPC):
@@ -371,6 +474,11 @@ class BoomerSmallObject(BossNPC):
     """Small Boomer object."""
 
     _base = BOOMER_SMALL_NPC
+    _evil_palette = [
+        0x000078, 0x423131, 0x1000BD, 0x9C8C8C, 0x000021,
+        0x100808, 0x6B636B, 0x4284CE, 0x212121, 0x635A39,
+        0x2929F7, 0xEFC6C6, 0xFFFFFF, 0x000000, 0x000000,
+    ]
 
 
 class BoomerLargeObject(BossNPC):
@@ -384,6 +492,11 @@ class ExorSmallObject(BossNPC):
     """Small Exor object."""
 
     _base = EXOR_SMALL_NPC
+    _evil_palette = [
+        0xF8C0C0, 0xF86868, 0xC00000, 0xF80000, 0xD80000,
+        0x000000, 0xB80000, 0xF80000, 0xF85050, 0xC00000,
+        0x980000, 0x480000, 0xF88080, 0xB00000, 0xD00000
+    ]
 
 
 # Domino
@@ -392,6 +505,11 @@ class DominoSmallObject(BossNPC):
 
     _base = DOMINO_SMALL_NPC
     _eye_height = 12
+    _evil_palette = [
+        0xF7E710, 0x52FFBD, 0x9C734A, 0xFFFF94, 0xFFFFDE,
+        0x089431, 0x001000, 0xC80808, 0xA00808, 0xE80808,
+        0x680000, 0xC80808, 0xF02828, 0x392908, 0x181818,
+    ]
 
 
 # Cloaker
@@ -406,6 +524,13 @@ class SmithySmallObject(BossNPC):
     """Small Smithy object."""
 
     _base = SMITHY_SMALL_NPC
+    _eye_height = 14
+    _tower_entrance_horizontal_shift = -4
+    _evil_palette = [
+        0x080000, 0x7B848C, 0xF80000, 0x391008, 0x212121,
+        0x6B6B63, 0xA80000, 0x525A6B, 0xFFFFFF, 0xBDBDAD,
+        0xA81010, 0xCEEFFF, 0x4A4A42, 0x000000, 0x000000,
+    ]
 
 
 class SmithyLargeObject(BossNPC):
@@ -420,12 +545,22 @@ class CulexSmallObject(BossNPC):
 
     _base = CULEX_SMALL_NPC
     _eye_height = 11
+    _evil_palette = [
+        0x180808, 0x585858, 0x383838, 0x101010, 0xC69C4A,
+        0xFFD66B, 0x000000, 0x9C2918, 0x522110, 0xBD6329,
+        0xF81818, 0x380000, 0xA80000, 0x780000, 0xF8A8A8,
+    ]
 
 
 class CulexLargeObject(BossNPC):
     """Large Culex object."""
 
     _base = CULEX_NPC
+    _evil_palette = [
+        0x180808, 0x585858, 0x383838, 0x101010, 0xC69C4A,
+        0xFFD66B, 0x000000, 0x9C2918, 0x522110, 0xBD6329,
+        0xF81818, 0x380000, 0xA80000, 0x780000, 0xF8A8A8,
+    ]
 
 
 # Bundt
@@ -434,18 +569,33 @@ class BundtSmallObject(BossNPC):
 
     _base = BUNDT_OBJECT_NPC
     _eye_height = 8
+    _evil_palette = [
+        0xFFFFFF, 0xF8B8B8, 0xF85050, 0xF88080, 0xF80000,
+        0xF83030, 0xF80808, 0xF80000, 0xB80000, 0xF80000,
+        0x700000, 0xC80000, 0x480000, 0xF88888, 0x300000,
+    ]
 
 
 class BundtLargeObject(BossNPC):
     """Large Bundt object."""
 
     _base = BUNDT_NPC
+    _evil_palette = [
+        0xFFFFFF, 0xF85050, 0xF88080, 0xF88080, 0xF88080,
+        0xF83030, 0xB80000, 0xB80000, 0xB80000, 0x700000,
+        0x700000, 0xC80000, 0x480000, 0xF85050, 0x300000,
+    ]
 
 
 class Bundt2LargeObject(BossNPC):
     """Large Bundt object."""
 
     _base = BUNDT_2_NPC
+    _evil_palette = [
+        0xFFFFFF, 0xF85050, 0xF88080, 0xF88080, 0xF88080,
+        0xF83030, 0xB80000, 0xB80000, 0xB80000, 0x700000,
+        0x700000, 0xC80000, 0x480000, 0xF85050, 0x300000,
+    ]
 
 
 # Johnny (Jonathan Jones)
@@ -466,18 +616,33 @@ class JohnnySmallObject(BossNPC):
         chandelier_challenge=small_johnny_sit,
         endgame_challenge=small_johnny_sit,
     )
+    _evil_palette = [
+        0xFFFFFF, 0xEFFF42, 0xFFCE94, 0xA59442, 0xB55A39,
+        0x7B3118, 0x524A21, 0x423939, 0x6B3921, 0xA50000,
+        0x310010, 0x5A634A, 0x422921, 0x5A0000, 0x181818,
+    ]
 
 
 class JohnnyLargeObject(BossNPC):
     """Large Johnny object."""
 
     _base = JOHNNY_NPC
+    _evil_palette = [
+        0xFFFFFF, 0x7B3118, 0xEFFF42, 0x524A21, 0x423939,
+        0xFFCE94, 0xA59442, 0xB55A39, 0xA50000, 0x5A634A,
+        0x310010, 0xA59442, 0xB55A39, 0x5A0000, 0x181818,
+    ]
 
 
 class Johnny2LargeObject(BossNPC):
     """Large Johnny object."""
 
     _base = JOHNNY_NPC_2
+    _evil_palette = [
+        0xFFFFFF, 0x7B3118, 0xEFFF42, 0x524A21, 0x423939,
+        0xFFCE94, 0xA59442, 0xB55A39, 0xA50000, 0x5A634A,
+        0x310010, 0xA59442, 0xB55A39, 0x5A0000, 0x181818,
+    ]
 
 
 # Valentina
@@ -486,6 +651,11 @@ class ValentinaSmallObject(BossNPC):
 
     _base = VALENTINA_NPC_2
     _eye_height = 16
+    _evil_palette = [
+        0xF8F8F8, 0xF87800, 0xB84800, 0xF81010, 0xA00000,
+        0x500000, 0x70F8F8, 0xF8B0D8, 0xB06880, 0xC0B880,
+        0x807050, 0x584828, 0x282828, 0x000000, 0x181818
+    ]
     _animations = SpriteAnimationCollection(
         bandits_way_distracted=valentina_stand,
         tower_crying=valentina_stand,
@@ -528,6 +698,11 @@ class GrateGuySmallObject(BossNPC):
 
     _base = GRATE_GUY_FROM_CASINO_NPC
     _eye_height = 16
+    _evil_palette = [
+        0xFFFFFF, 0xADBDAD, 0x8C8484, 0x6B5263, 0xF8F8F8,
+        0xB8B8B8, 0x888888, 0x484848, 0x101010, 0xF80000,
+        0xE80000, 0xC00000, 0x800000, 0x380000, 0x181818,
+    ]
 
 
 class GrateGuyLargeObject(BossNPC):
@@ -549,6 +724,11 @@ class MokuraSmallObject(BossNPC):
     _base = MOKURA_S_CLOUD_BLUE_NPC_2
     _eye_height = 4
     _crown_height = 1
+    _evil_palette = [
+        0xF8F0F0, 0xF8D8D8, 0xF8C0C0, 0xF8A8A8, 0xF88888,
+        0xF87070, 0xF85050, 0xF82020, 0xF82020, 0xF80000,
+        0xE00000, 0x000000, 0x000000, 0x000000, 0x300000,
+    ]
 
 
 # Yaridovich
@@ -575,6 +755,11 @@ class MagikoopaSmallObject(BossNPC):
         endgame_challenge=small_magikoopa_hit,
         tower_toss=small_magikoopa_hit
     )
+    _evil_palette = [
+        0xFFFFFF, 0xB59C9C, 0x7B5A63, 0xB56329, 0xC60029,
+        0x8C0029, 0x5A0018, 0x310042, 0x00FF00, 0xFFFF00,
+        0xFFB500, 0x8C3900, 0xDE0800, 0x4A1000, 0x181818,
+    ]
 
 
 class ClerkSmallObject(BossNPC):
@@ -596,6 +781,11 @@ class ClerkSmallObject(BossNPC):
         tower_toss=shovelknight_tile,
         look_at_ceiling=SpriteAnimation(sequence_id=2)
     )
+    _evil_palette = [
+        0xE7EFEF, 0xBDC6CE, 0x9C9C9C, 0x736B6B, 0x525252,
+        0x424242, 0x313131, 0x383838, 0x181818, 0xF81818,
+        0xC00000, 0x980000, 0x312118, 0x300000, 0x101010,
+    ]
 
 
 class ManagerSmallObject(BossNPC):
@@ -617,6 +807,11 @@ class ManagerSmallObject(BossNPC):
         tower_toss=shovelknight_tile,
         look_at_ceiling=SpriteAnimation(sequence_id=2)
     )
+    _evil_palette = [
+        0xE7EFEF, 0xBDC6CE, 0x9C9C9C, 0x736B6B, 0x525252,
+        0x424242, 0x313131, 0x383838, 0x181818, 0xF81818,
+        0xC00000, 0x980000, 0x312118, 0x300000, 0x101010,
+    ]
 
 
 class DirectorSmallObject(BossNPC):
@@ -638,6 +833,11 @@ class DirectorSmallObject(BossNPC):
         tower_toss=shovelknight_tile,
         look_at_ceiling=SpriteAnimation(sequence_id=2)
     )
+    _evil_palette = [
+        0xE7EFEF, 0xBDC6CE, 0x9C9C9C, 0x736B6B, 0x525252,
+        0x424242, 0x313131, 0x383838, 0x181818, 0xF81818,
+        0xC00000, 0x980000, 0x312118, 0x300000, 0x101010,
+    ]
 
 
 class HidonSmallObject(BossNPC):
@@ -646,6 +846,11 @@ class HidonSmallObject(BossNPC):
     _base = HIDON_SMALL_NPC
     _eye_height = 8
     _crown_height = 1
+    _evil_palette = [
+        0xFFF7DE, 0xFFFF63, 0xFFEF63, 0x00FFAD, 0xFFEF00,
+        0xFFE7B5, 0xF7BD8C, 0xE7A531, 0xF80000, 0xC00000,
+        0xEF0000, 0xA00000, 0x089400, 0x085A00, 0x680000,
+    ]
 
 
 class ChesterSmallObject(BossNPC):
@@ -654,6 +859,11 @@ class ChesterSmallObject(BossNPC):
     _base = CHESTER_SMALL_NPC
     _eye_height = 8
     _crown_height = 1
+    _evil_palette = [
+        0xFFF7DE, 0xFFFF63, 0xFFEF63, 0x00FFAD, 0xFFEF00,
+        0xFFE7B5, 0xF7BD8C, 0xE7A531, 0xF80000, 0xC00000,
+        0xEF0000, 0xA00000, 0x089400, 0x085A00, 0x680000,
+    ]
 
 
 class BoxBoySmallObject(BossNPC):
@@ -662,6 +872,11 @@ class BoxBoySmallObject(BossNPC):
     _base = BOX_BOY_SMALL_NPC
     _eye_height = 8
     _crown_height = 1
+    _evil_palette = [
+        0xFFF7DE, 0xFFFF63, 0xFFEF63, 0x00FFAD, 0xFFEF00,
+        0xFFE7B5, 0xF7BD8C, 0xE7A531, 0xF80000, 0xC00000,
+        0xEF0000, 0xA00000, 0x089400, 0x085A00, 0x680000,
+    ]
 
 
 # Missing Large Classes
@@ -778,6 +993,11 @@ class BoosterObject(BossNPC):
         tpose=SpriteAnimation(sequence_id=15, total_duration=16)
 
     )
+    _evil_palette = [
+        0xFFFFFF, 0xADADCE, 0xEF5252, 0xC62129, 0x8C0000,
+        0x4A0000, 0xF80000, 0x600000, 0x6B8CFF, 0xFFCE94,
+        0xB58452, 0x7B5229, 0x393131, 0x5A5273, 0x181818,
+    ]
 
 
 class BoosterStatueObject(BossNPC):
@@ -863,6 +1083,11 @@ class TerrapinObject(BossNPC):
         tower_toss=jagger_punch,
         look_at_ceiling=SpriteAnimation(sequence_id=6)
     )
+    _evil_palette = [
+        0xFFFFFF, 0xFFEF73, 0xC69431, 0x734A08, 0x423910,
+        0xDE845A, 0xB51839, 0x5A0000, 0x290000, 0xE7E7EF,
+        0xBDBDC6, 0x73737B, 0x4A4242, 0x312939, 0x181818,
+    ]
 
 
 class TerrapinStatueObject(BossNPC):
@@ -894,6 +1119,11 @@ class PiranhaPlantObject(BossNPC):
         tower_toss=piranha_bite,
         tpose=SpriteAnimation(sequence_id=6, total_duration=16)
     )
+    _evil_palette = [
+        0xFFFFFF, 0xD6D6D6, 0xA5A5AD, 0x7B7B73, 0x636B63,
+        0x4A4A4A, 0x212929, 0x008400, 0x003900, 0xFF00FF,
+        0xC600C6, 0x730073, 0x290029, 0x00D600, 0x181818,
+    ]
 
 
 class PiranhaPlantStatueObject(BossNPC):
@@ -931,6 +1161,11 @@ class BlooberObject(BossNPC):
         tpose=SpriteAnimation(sequence_id=5, total_duration=12),
         look_at_ceiling=SpriteAnimation(sequence_id=6)
     )
+    _evil_palette = [
+        0xF80000, 0xF80000, 0xF00000, 0xF00000, 0xE80000,
+        0xE00000, 0xC00000, 0xA00000, 0x900000, 0x780000,
+        0x600000, 0x300000, 0x000000, 0x000000, 0x180000,
+    ]
 
 
 class BlooberStatueObject(BossNPC):
@@ -974,6 +1209,11 @@ class FactoryChiefObject(BossNPC):
         tower_toss=chief_cast,
         look_at_ceiling=SpriteAnimation(sequence_id=5)
     )
+    _evil_palette = [
+        0xADB5AD, 0xFF6329, 0xF74210, 0xAD5A29, 0xFFFFFF,
+        0x526352, 0xFF00FF, 0xC61810, 0x941008, 0x293110,
+        0x311008, 0x001000, 0x210000, 0x001000, 0x000000,
+    ]
 
 red_recoil=SpriteAnimation(sequence_id=2, total_duration=22)
 red_attack=SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=66)
@@ -1001,6 +1241,11 @@ class AxemRedObject(BossNPC):
         endgame_challenge=red_cast,
         tower_toss=red_attack
     )
+    _evil_palette = [
+        0xFFFFFF, 0xD6D6DE, 0xADADB5, 0x73737B, 0x4A4242,
+        0x293131, 0xADADB5, 0x73737B, 0x524A4A, 0x313131,
+        0xCECED6, 0x9C9CA5, 0x6B6B73, 0x313139, 0x181818,
+    ]
 
 
 class AxemRedStatueObject(BossNPC):
@@ -1022,6 +1267,11 @@ class CountDownGridplaneObject(BossNPC):
 
     _base = COUNT_DOWN_GRIDPLANE_NPC
     _eye_height = 6
+    _evil_palette = [
+        0x2858F8, 0xD06870, 0xE04838, 0x1848F8, 0x484878,
+        0xE82008, 0x1028A8, 0x4858C8, 0x000000, 0x382828,
+        0x982820, 0x402008, 0xF8A820, 0xF8D820, 0x98A0B0,
+    ]
 
 
 class CountDownStatueObject(BossNPC):
@@ -1119,6 +1369,11 @@ class YaridovichSmallObject(BossNPC):
 
     _base = SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC
     _eye_height = 10
+    _evil_palette = [
+        0xFFFFFF, 0xFFCEA5, 0xB57B5A, 0xBD4A42, 0x8C1810,
+        0x310800, 0xE79C00, 0xC66B00, 0x943900, 0xCECECE,
+        0xADCE94, 0x7B9C42, 0x427300, 0x294A00, 0x181818,
+    ]
 
 
 class YaridOverworldObject(BossNPC):
@@ -1138,24 +1393,58 @@ class Punchinello2SmallObject(BossNPC):
     """Small Punchinello 2 object."""
 
     _base = PUNCHINELLO_2_SMALL_NPC
+    _evil_palette = [
+        0x181818, 0x101010, 0x000000, 0xA81818, 0xF80000,
+        0x480000, 0x580000, 0x808068, 0xFFFFFF, 0xD0D8C0,
+        0xB5B58C, 0xF7EF63, 0x9C6300, 0x303030, 0x000000,
+    ]
 
 
 class Booster2SmallObject(BossNPC):
     """Small Booster 2 object."""
 
     _base = BOOSTER_2_SMALL_NPC
+    _evil_palette = [
+        0xFFFFFF, 0xADADCE, 0xEF5252, 0xC62129, 0x8C0000,
+        0x4A0000, 0xF80000, 0x600000, 0x6B8CFF, 0xFFCE94,
+        0xB58452, 0x7B5229, 0x393131, 0x5A5273, 0x181818,
+    ]
 
 
 class Bundt2SmallObject(BossNPC):
     """Small Bundt 2 object."""
 
     _base = BUNDT_2_SMALL_NPC
+    _eye_height = 8
+    _evil_palette = [
+        0xFFFFFF, 0xF8B8B8, 0xF85050, 0xF88080, 0xF80000,
+        0xF83030, 0xF80808, 0xF80000, 0xB80000, 0xF80000,
+        0x700000, 0xC80000, 0x480000, 0xF88888, 0x300000,
+    ]
 
 
 class Johnny2SmallObject(BossNPC):
     """Small Johnny 2 object."""
 
     _base = JOHNNY_2_SMALL_NPC
+    _eye_height = 20
+    _animations = SpriteAnimationCollection(
+        bandits_way_distracted=small_johnny_sit,
+        tower_crying=small_johnny_sit,
+        chapel_laugh=small_johnny_sit,
+        ship_beckon=small_johnny_sit,
+        ship_chair=small_johnny_sit,
+        statue_intro=small_johnny_sit,
+        dojo_challenge=small_johnny_sit,
+        keep_challenge=small_johnny_sit,
+        chandelier_challenge=small_johnny_sit,
+        endgame_challenge=small_johnny_sit,
+    )
+    _evil_palette = [
+        0xFFFFFF, 0xEFFF42, 0xFFCE94, 0xA59442, 0xB55A39,
+        0x7B3118, 0x524A21, 0x423939, 0x6B3921, 0xA50000,
+        0x310010, 0x5A634A, 0x422921, 0x5A0000, 0x181818,
+    ]
 
 
 jinx_animations = SpriteAnimationCollection(
@@ -1180,6 +1469,11 @@ class Jinx1SmallObject(BossNPC):
     _eye_height = 4
     _crown_height = 1
     _animations = jinx_animations
+    _evil_palette = [
+        0xFFFFFF, 0xE7B56B, 0x9C5242, 0x6B294A, 0x5A1829,
+        0xC60000, 0x6B0000, 0x310000, 0xFFFF00, 0xF80000,
+        0x480000, 0x181818, 0xE7DEDE, 0x9C8C8C, 0x181818,
+    ]
 
 
 class Jinx2SmallObject(BossNPC):
@@ -1189,6 +1483,11 @@ class Jinx2SmallObject(BossNPC):
     _eye_height = 4
     _crown_height = 1
     _animations = jinx_animations
+    _evil_palette = [
+        0xFFFFFF, 0xE7B56B, 0x9C5242, 0x6B294A, 0x5A1829,
+        0xC60000, 0x6B0000, 0x310000, 0xFFFF00, 0xF80000,
+        0x480000, 0x181818, 0xE7DEDE, 0x9C8C8C, 0x181818,
+    ]
 
 
 class Jinx3SmallObject(BossNPC):
@@ -1198,6 +1497,11 @@ class Jinx3SmallObject(BossNPC):
     _eye_height = 4
     _crown_height = 1
     _animations = jinx_animations
+    _evil_palette = [
+        0xFFFFFF, 0xE7B56B, 0x9C5242, 0x6B294A, 0x5A1829,
+        0xC60000, 0x6B0000, 0x310000, 0xFFFF00, 0xF80000,
+        0x480000, 0x181818, 0xE7DEDE, 0x9C8C8C, 0x181818,
+    ]
 
 
 class Jinx4SmallObject(BossNPC):
@@ -1207,9 +1511,20 @@ class Jinx4SmallObject(BossNPC):
     _eye_height = 4
     _crown_height = 1
     _animations = jinx_animations
+    _evil_palette = [
+        0xFFFFFF, 0xE7B56B, 0x9C5242, 0x6B294A, 0x5A1829,
+        0xC60000, 0x6B0000, 0x310000, 0xFFFF00, 0xF80000,
+        0x480000, 0x181818, 0xE7DEDE, 0x9C8C8C, 0x181818,
+    ]
 
 
 class Culex3DSmallObject(BossNPC):
     """Small Culex 3D object."""
 
     _base = CULEX_2_SMALL_NPC
+    _eye_height = 11
+    _evil_palette = [
+        0x180808, 0x585858, 0x383838, 0x101010, 0xC69C4A,
+        0xFFD66B, 0x000000, 0x9C2918, 0x522110, 0xBD6329,
+        0xF81818, 0x380000, 0xA80000, 0x780000, 0xF8A8A8,
+    ]

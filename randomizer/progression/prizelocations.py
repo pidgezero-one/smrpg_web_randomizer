@@ -78,6 +78,10 @@ from ..data.variables.action_script_names import *
 from ..data.variables.pack_names import *
 from ..data.variables.variable_names import YOSHI_ITEM_GRANTED, PRIMARY_TEMP_7000
 from ..data.variables.dialog_names import DI2010_DEBUG_7000
+from ..data.variables.event_palette_names import (
+    EPAL0024_KEEP_BOSS_1_EVIL,
+    EPAL0025_KEEP_BOSS_1_REFORMED,
+)
 from .prizes import *
 from ..types.prize import (
     FPFlowerPrize,
@@ -12887,8 +12891,8 @@ class ObstacleCourseFinalFight(BossFightLocation):
             (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight),
         ):
             m = self.prize.smallest_npc()
-            if m.animations.dojo_challenge is not None:
-                a = m.animations.dojo_challenge
+            a = m.animations.dojo_challenge
+            if a is not None and a.total_duration is not None:
                 cast(
                     ActionQueueAsync,
                     world.event_scripts.get_command_by_identifier(
@@ -12898,15 +12902,26 @@ class ObstacleCourseFinalFight(BossFightLocation):
                     [
                         A_FaceSouthwest(),
                         A_VisibilityOn(),
-                        A_Pause(35),
+                        A_Pause(40),
                         A_SetSpriteSequence(
                             index=a.sequence_id, looping=False, is_sequence=True
                         ),
+                        A_Pause(a.total_duration),
                     ]
                 )
             else:
-                world.event_scripts.delete_command_by_identifier(
-                    "keep_obstacle_boss_intro"
+                cast(
+                    ActionQueueAsync,
+                    world.event_scripts.get_command_by_identifier(
+                        "keep_obstacle_boss_intro",
+                    ),
+                ).set_subscript(
+                    [
+                        A_FaceSouthwest(),
+                        A_VisibilityOn(),
+                        A_Pause(40),
+                        A_Pause(50),
+                    ]
                 )
         return op
 
@@ -13182,7 +13197,8 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, KamekBossFight):
-            world.event_scripts.delete_command_by_identifier("kamek_palette")
+            world.event_scripts.get_command_by_identifier("kamek_palette", PaletteSetMorphs).set_palette_set(EPAL0025_KEEP_BOSS_1_REFORMED)
+            world.event_scripts.get_command_by_identifier("kamek_palette_2", PaletteSet).set_palette_set_starts_at(EPAL0025_KEEP_BOSS_1_REFORMED)
             m = self.prize.smallest_npc()
             if isinstance(
                 self.prize,
@@ -13261,6 +13277,35 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                 world.action_scripts.delete_command_by_identifier(
                     "keep_battle_room_summon"
                 )
+        else:
+            world.action_scripts.delete_command_by_identifier(
+                "kamek_palette_3"
+            )
+
+        # Substitute event palettes 24 (evil) and 25 (reformed) with the
+        # chosen boss's sprite palette so the pre/post-reformation scene
+        # shows the correct colors for the shuffled boss.
+        selected_npc = self.prize.smallest_npc()
+        selected_sprite = world.get_sprite(selected_npc.base.sprite_id)
+        default_palette_index = (
+            selected_sprite.palette_id + selected_sprite.palette_offset
+        )
+        default_colors = list(
+            world.sprite_palettes.get_palette(default_palette_index).colors
+        )
+        world.event_palettes.get_palette(
+            EPAL0025_KEEP_BOSS_1_REFORMED
+        ).set_colors(default_colors)
+
+        evil_palette_colors = selected_npc.evil_palette
+        if evil_palette_colors is None:
+            evil_colors = default_colors
+        else:
+            evil_colors = list(evil_palette_colors)
+        world.event_palettes.get_palette(
+            EPAL0024_KEEP_BOSS_1_EVIL
+        ).set_colors(evil_colors)
+
         return op
 
     # Flag as checked: KEEP_BOSS_1_DEFEATED
@@ -13319,6 +13364,9 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
             # only colour the chest gold if it's vanilla
             world.event_scripts.delete_command_by_identifier(
                 "infinite_coin_chest_palette"
+            )
+            world.event_scripts.delete_command_by_identifier(
+                "infinite_coin_chest_palette_2"
             )
             # give it a random sound effect
             world.event_scripts.get_subscript_command_by_identifier(

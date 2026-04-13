@@ -3300,7 +3300,7 @@ class Belome1BossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big dog! It is...\n masterpiece![await]""",
         DI2180_CHAPEL_NPC: """ Reverend Belome must have gotten\n lost on his way here.""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BELOME: Oh, no, you're still\n missing [0x7024] item(s).[await][pause] I can't wait any\n longer to see what today's cake\n will be.[await][pause] I'm STARVING![await]""",
-        DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BELOME: Mmm, you've found all of `MARRYMORE_CHARACTER`'s things![await] But they won't bring the cake in here until we clean the place up. Go grab the leftover items, please.[await]""",
+        DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BELOME: Mmm, you've found all of `MARRYMORE_CHARACTER`'s things![await] But they won't bring the cake in here until we AERO_NPclean the place up.[await] Go Cgrab the leftover items, please.[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Belome.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """BELOME: It's dreadfully boring\n around here~![await]""",
@@ -3743,7 +3743,7 @@ class BundtBossFight(BossFightPrize):
     _seaside_letter_name_if_volcano_boss = "a possessed cake walking"
     _seaside_letter_name_if_final_boss = "Bundt's dinner guests."
     _name = "Bundt"
-    _force_start_event = BE0014_SET_7EE001_TO_PARTY_SIZE_AT_START_OF_FIGHT
+    _force_start_event = BE0038_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
 
     _npc_models = [BundtLargeObject, BundtSmallObject]
     _statue_npc = BundtStatueObject
@@ -4322,7 +4322,7 @@ class Belome2BossFight(BossFightPrize):
         DI2062_APPRENTICE_CHEF: " I've baked a cake for you.[await][pause]\n It just happens to look\n like a dog.[await]",
         DI2180_CHAPEL_NPC: """ Reverend Belome must have gotten\n lost on his way here.""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BELOME: Oh, no, you're still\n missing [0x7024] item(s).[await][pause] I can't wait any\n longer to see what today's cake\n will be.[await][pause] I'm STARVING![await]""",
-        DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BELOME: Mmm, you've found all of `MARRYMORE_CHARACTER`'s things![await] But they won't bring the cake in here until we clean the place up. Go grab the leftover items, please.[await]""",
+        DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BELOME: Mmm, you've found all of `MARRYMORE_CHARACTER`'s things![await] But they won't bring the cake in here until we AERO_NPclean the place up.[await] Go Cgrab the leftover items, please.[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Belome.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """BELOME: It's dreadfully boring\n around here~![await]""",
@@ -6295,7 +6295,7 @@ class Belome3Fight(BossFightPrize):
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big dog! It is...\n masterpiece![await]""",
         DI2180_CHAPEL_NPC: """ Reverend Belome must have gotten\n lost on his way here.""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BELOME: Oh, no, you're still\n missing [0x7024] item(s).[await][pause] I can't wait any\n longer to see what today's cake\n will be.[await][pause] I'm STARVING![await]""",
-        DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BELOME: Mmm, you've found all of `MARRYMORE_CHARACTER`'s things![await] But they won't bring the cake in here until we clean the place up. Go grab the leftover items, please.[await]""",
+        DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BELOME: Mmm, you've found all of `MARRYMORE_CHARACTER`'s things![await] But they won't bring the cake in here until we AERO_NPclean the place up.[await] Go Cgrab the leftover items, please.[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Belome.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """BELOME: It's dreadfully boring\n around here~![await]""",

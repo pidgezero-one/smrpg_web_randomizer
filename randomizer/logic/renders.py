@@ -503,21 +503,6 @@ def render_booster_tower_indoor_boss(
             "tower_toss_aqueue", "tower_toss"
         )
 
-    # Door height adjustment
-    door_height = 15 - m.eye_height
-    if door_height < 0:
-        world.event_scripts.get_script_by_id(
-            E0878_TOWER_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER
-        ).insert_before_nth_command(
-            0, ActionQueueAsync(NPC_1, [A_WalkSouthPixels(door_height * -1)])
-        )
-    elif door_height > 0:
-        world.event_scripts.get_script_by_id(
-            E0878_TOWER_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER
-        ).insert_before_nth_command(
-            0, ActionQueueAsync(NPC_1, [A_WalkNorthPixels(door_height)])
-        )
-
 
 def render_booster_tower_henchman_scripts(
     world: GameWorld,

@@ -30,7 +30,7 @@ from ..types.prizelocation import (
     TreasureShopLocation,
     ROOM_TO_BATTLEFIELD
 )
-from ..types.flags import BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating, CharacterLearnedSpells, SpellsAnywhere
+from ..types.flags import BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating, CharacterLearnedSpells, DifferentiateRepeatedBosses, SpellsAnywhere
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
     UsableEventScriptCommand,
 )
@@ -355,6 +355,32 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     henchman_container_events: set[int] = set()
     # Snapshot vanilla NPC states before any shuffling modifies room objects
     snapshot_vanilla_room_states(world)
+
+    # When repeated bosses shouldn't be visually differentiated, copy palette
+    # IDs from a canonical source sprite onto each duplicate/variant sprite
+    # so they share overworld coloring. Must run before location render so
+    # downstream renderers (e.g. KeepAfterObstaclesBossFight setting event
+    # palettes 24/25) read the unified palette IDs.
+    if not world.settings.isflag_enabled(DifferentiateRepeatedBosses):
+        sprite_palette_copies: list[tuple[int, int]] = [
+            (190, 189),
+            (607, 191),
+            (608, 191),
+            (727, 191),
+            (590, 589),
+            (736, 589),
+            (739, 55),
+            (737, 592),
+            (740, 721),
+            (742, 633),
+            (738, 50),
+            (583, 586),
+            (584, 586),
+            (585, 586),
+        ]
+        for target_id, source_id in sprite_palette_copies:
+            source_palette_id = world.get_sprite(source_id).palette_id
+            world.get_sprite(target_id).palette_id = source_palette_id
 
     for place in world.locations.values():
         # Construct prize granter hub events
@@ -778,7 +804,15 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
         try:
             world.event_scripts.get_command_by_identifier("kamek_palette", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
-            world.event_scripts.get_command_by_identifier("infinite_coin_chest_palette", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("infinite_coin_chest_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_2", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("infinite_coin_chest_palette_2", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_1", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_2", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_3", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_4", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_5", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_6", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
         except:
             pass
     # statue minigame

@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	PaletteSet(palette_set_starts_at=EPAL0024_KEEP_BOSS_1_EVIL, from_row=NPC_PALETTE_ROW_2, identifier="kamek_palette_3"),
 	Pause(30, identifier="EVENT_2209_pause_0"),
 	FadeOutMusicToVolume(duration=7, volume=0),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[

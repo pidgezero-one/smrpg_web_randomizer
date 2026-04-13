@@ -39,6 +39,7 @@ script = EventScript([
 	ClearBit(TEMP_7043_3),
 	ClearBit(TEMP_7043_4),
 	RunEventAsSubroutine(E0851_KEEP_BATTLE_DOOR_1B_SHUFFLED_NPC_ANIMATION_LOADER),
+	PaletteSet(palette_set_starts_at=EPAL0024_KEEP_BOSS_1_EVIL, from_row=NPC_PALETTE_ROW_1, identifier="kamek_palette_br_4"),
 	FadeInFromBlack(sync=False),
 	Return()
 ])

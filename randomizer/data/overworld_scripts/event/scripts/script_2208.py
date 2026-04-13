@@ -34,18 +34,21 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfBitSet(KEEP_BOSS_1_DEFEATED, ["EVENT_2208_set_action_script_5"]),
+	JmpIfBitSet(KEEP_BOSS_1_DEFEATED, ["kamek_palette_2"]),
 	RunEventAsSubroutine(E0847_KEEP_FIRST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False),
-	Jmp(["EVENT_2209_pause_0"]),
+	Jmp(["kamek_palette_3"]),
 	Return(),
-	SetSyncActionScript(NPC_0, A0014_FLOATING_CHEST, identifier="EVENT_2208_set_action_script_5"),
+	PaletteSet(palette_set_starts_at=EPAL0138_KAMEK_BLUE, from_row=NPC_PALETTE_ROW_2, identifier="kamek_palette_2"),
+	PaletteSet(palette_set_starts_at=EPAL0139_GOLD_CHEST, from_row=NPC_PALETTE_ROW_1, identifier="infinite_coin_chest_palette_2"),
+    JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, ["move_magikoopa_to_defeated_position"]),
+	SetSyncActionScript(NPC_0, A0014_FLOATING_CHEST),
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_ShiftToXYCoords(x=24, y=98),
 		A_VisibilityOn(),
 		A_FaceSoutheast(),
 		A_SequenceLoopingOn()
-	]),
+	], identifier="move_magikoopa_to_defeated_position"),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_TransferToXYZF(x=27, y=104, z=7, direction=EAST),
 		A_VisibilityOn()

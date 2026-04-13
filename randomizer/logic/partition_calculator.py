@@ -397,10 +397,15 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         buffered_sprite_ids.add(sprite_id)
 
     # =========================================================================
-    # Step 4: Order buffers respecting NPC object order
+    # Step 4: Assign buffers, preserving vanilla slot positions
     # =========================================================================
-    # Buffers must appear in the order their first NPC appears in the
-    # object list, because the game assigns NPCs to buffers sequentially.
+    # An untraced code path in the game engine reads the buffer type (row
+    # format) from buffer working areas — particularly buffer A — and uses
+    # it for tile layout calculations, even when the buffer has space=0.
+    # Moving a gridplane buffer to a different slot than vanilla can cause
+    # cannot_clone NPCs to render with wrong tile offsets, overwriting
+    # adjacent sprites.  To avoid this, we prefer placing each buffer type
+    # in the same slot it occupied in the vanilla partition.
     selected_buffers.sort(
         key=lambda sb: sprite_first_appearance.get(sb[0], 999),
     )
@@ -413,17 +418,40 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     if has_coin:
         new_buffer_types[2] = BufferType.COINS
 
-    # Fill remaining slots with ordered sprite buffers
+    # Map vanilla buffer types → available slot indices (excluding chest/coin slots)
+    vanilla_slots_by_type: dict[BufferType, list[int]] = {}
+    for slot_i, buf in enumerate(existing.buffers):
+        if new_buffer_types[slot_i] != BufferType.EMPTY_3:
+            continue  # Slot already claimed by chest or coin
+        bt = buf.buffer_type
+        if bt not in vanilla_slots_by_type:
+            vanilla_slots_by_type[bt] = []
+        vanilla_slots_by_type[bt].append(slot_i)
+
+    # First pass: place buffers in their vanilla slot positions
     buffer_queue = list(selected_buffers)
-    # Track which sprite_id is in which new buffer index
     sprite_to_new_buffer: dict[int, int] = {}
-    for i in range(3):
-        if new_buffer_types[i] != BufferType.EMPTY_3:
-            continue  # Already assigned (chest or coin)
-        if buffer_queue:
-            sprite_id, btype = buffer_queue.pop(0)
-            new_buffer_types[i] = btype
-            sprite_to_new_buffer[sprite_id] = i
+    remaining_queue: list[tuple[int, BufferType]] = []
+
+    for sprite_id, btype in buffer_queue:
+        placed = False
+        slots = vanilla_slots_by_type.get(btype)
+        if slots:
+            slot = slots.pop(0)
+            if new_buffer_types[slot] == BufferType.EMPTY_3:
+                new_buffer_types[slot] = btype
+                sprite_to_new_buffer[sprite_id] = slot
+                placed = True
+        if not placed:
+            remaining_queue.append((sprite_id, btype))
+
+    # Second pass: place remaining buffers in first available empty slot
+    for sprite_id, btype in remaining_queue:
+        for i in range(3):
+            if new_buffer_types[i] == BufferType.EMPTY_3:
+                new_buffer_types[i] = btype
+                sprite_to_new_buffer[sprite_id] = i
+                break
 
     # =========================================================================
     # Step 5: Carry over buffer space and index_in_main_buffer
@@ -1198,14 +1226,17 @@ def _analyze_npc(
     else:
         buffer_type = BufferType.EMPTY_3
 
-    force_cannot_clone = not is_gridplane and not is_chest and not is_coin
+    # NPCs that get dedicated VRAM outside the buffer system:
+    # - cannot_clone NPCs (gridplane or not) — the game allocates dedicated VRAM
+    # - non-gridplane NPCs — can't share a clone buffer row
+    force_cannot_clone = cannot_clone or (not is_gridplane and not is_chest and not is_coin)
 
     return NPCAnalysis(
         index=index,
         sprite_id=sprite_id,
         vram_store=vram_store,
         min_vram=min_vram,
-        max_sequence_vram=0,
+        max_sequence_vram=min_vram,
         cannot_clone=cannot_clone,
         is_chest=is_chest,
         is_coin=is_coin,

@@ -153,6 +153,7 @@ class Settings:
             BossShuffle: BossShuffle(),
             BossShuffleScaleStats: BossShuffleScaleStats(),
             KeepMinigameSpritesIntact: KeepMinigameSpritesIntact(),
+            DifferentiateRepeatedBosses: DifferentiateRepeatedBosses(),
             ShuffledBosses: ShuffledBosses(),
             EnemyStats: EnemyStats(),
             EnemyDrops: EnemyDrops(),

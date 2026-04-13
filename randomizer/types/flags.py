@@ -1962,31 +1962,11 @@ class KeepMinigameSpritesIntact(BooleanFlag):
     _requires_all = [(BossShuffle(), True)]
 
 
-# Leaving this out of 9.0.0 because not sure what palettes we have available to us that might be unused in order to expand it to remake bosses.
-# Probably a good dedicated project for someone who wants to develop for this.
-# class DifferentiateRepeatedBosses(BooleanFlag):
-#     _name = "Differentiate similar bosses"
-#     _description = """If enabled, Croco, Jinx, Belome, and the four mimics (as well as Punchinello, Johnny, Bundt, Culex, and Booster if remake content is enabled) will look slightly different in the overworld depending on which version of the fight it is.
-# <br>
-# <br>Croco 2 will have a darker hat.
-# <br>
-# <br>Jinx 2/3's hair will be black/white respectively.
-# <br>
-# <br>Belome 2 will be more subdued, and coloured like the golden Belome statue.
-# <br>
-# <br>Pandorite will be tinted orange, Hidon will be tinted green, and Chester will be tinted purple."""
-#     _id = "diff"
-#     _requires_all = [(BossShuffle(), True)]
-# This is NOT considered a cosmetic because it reveals information that otherwise would only be seen in batte.
-# Ideas:
-# move chocolate cake palette to postgame bundt
-# blue shirt booster (not purple-y)
-# blue hat punchinello (not purple-y)
-# invert johnny blue and red
-# make culex purple lighter
-# blue hair jinx
-# silver belome
-# ^ The above were all suggested based on accessibility for colour-blind players.
+class DifferentiateRepeatedBosses(BooleanFlag):
+    _name = "Differentiate similar bosses"
+    _description = """If enabled, the refights for Croco, Jinx, Belome, Punchinello, Johnny, Bundt, Culex, and Booster will look slightly different in the overworld depending on which version of the fight it is. Pandorite, Hidon, and Chester's small sprites will also be slightly tinted."""
+    _id = "diff"
+    _requires_all = [(BossShuffle(), True)]
 
 
 # ShuffledBossEnum is created lazily to avoid circular import with prizes module
@@ -2754,7 +2734,7 @@ class BossPositionSubcategory(FlagCategory):
         BossShuffle,
         BossShuffleScaleStats,
         KeepMinigameSpritesIntact,
-        # DifferentiateRepeatedBosses,
+        DifferentiateRepeatedBosses,
         ShuffledBosses,
     ]
     _size: int = 4

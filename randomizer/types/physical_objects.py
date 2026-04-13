@@ -615,10 +615,24 @@ class BossNPC(NPC):
     _north_facing_horizontal_pixel_shift: int = 0
     _north_facing_vertical_pixel_shift: int = 0
 
+    # Palette data (15 24-bit RGB colors) to use as this boss's "evil"
+    # palette variant (e.g. for the Keep boss 1 pre-reformation scene).
+    # None means no dedicated evil palette is defined; callers should
+    # fall back to the sprite's default palette.
+    _evil_palette: list[int] | None = None
+
     @property
     def animations(self) -> SpriteAnimationCollection:
         """The collection of specially flagged sprite animations for this NPC."""
         return self._animations
+
+    @property
+    def evil_palette(self) -> list[int] | None:
+        """The 15-color palette (as 24-bit hex RGB ints) to use as this
+        boss's 'evil' palette variant. Returns None if this boss has no
+        dedicated evil palette, in which case callers should fall back
+        to the sprite's default palette (palette_id + palette_offset)."""
+        return self._evil_palette
 
     @property
     def horizontal_pixel_shift(self) -> int:
