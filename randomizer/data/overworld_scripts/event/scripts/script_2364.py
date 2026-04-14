@@ -34,26 +34,27 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	ActionQueueSync(target=NPC_0, subscript=[
-		A_SetWalkingSpeed(FASTEST),
-		A_WalkSouthPixels(8),
-		A_SetWalkingSpeed(NORMAL),
-		A_FaceSouthwest()
-	]),
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_SetWalkingSpeed(FASTEST),
 		A_WalkSouthPixels(8),
 		A_SetWalkingSpeed(NORMAL),
 		A_FaceSouthwest()
 	]),
-	ActionQueueSync(target=NPC_5, subscript=[
+	ActionQueueSync(target=NPC_2, subscript=[
+		A_SetWalkingSpeed(FASTEST),
 		A_WalkSouthPixels(8),
+		A_SetWalkingSpeed(NORMAL),
+		A_FaceSouthwest()
+	]),
+	ActionQueueSync(target=NPC_5, subscript=[
+		A_WalkSouthPixels(10),
+	]),
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_WalkNorthwestPixels(1),
 		A_WalkSouthwestPixels(3)
 	]),
 	ActionQueueSync(target=NPC_4, subscript=[
-		A_WalkNorthwestPixels(1),
-		A_WalkSouthwestPixels(3)
+		A_WalkSouthPixels(4)
 	]),
 	JmpIfBitClear(TEMP_7044_7, ["EVENT_2364_fade_in_from_black_async_10"]),
 	RunEventAsSubroutine(E0081_MARIO_LANDS_SUBROUTINE),

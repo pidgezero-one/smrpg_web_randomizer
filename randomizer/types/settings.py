@@ -15,6 +15,7 @@ FlagT = TypeVar("FlagT", bound=Flag)
 class Settings:
     _debug_mode: bool = False
     _prize_offset: int | None = None
+    _mimic_offset: int | None = None
     _flags: dict[type[Flag], Flag]
     _override: dict = {}
     _is_flag_value_cache: dict[tuple[type[Flag], Any], bool]
@@ -36,6 +37,16 @@ class Settings:
     @prize_offset.setter
     def prize_offset(self, value: int | None) -> None:
         self._prize_offset = value
+
+    @property
+    def mimic_offset(self) -> int | None:
+        """Independent offset for mimic fight placement (dev-only). None means
+        fall back to ``prize_offset`` for mimics."""
+        return self._mimic_offset
+
+    @mimic_offset.setter
+    def mimic_offset(self, value: int | None) -> None:
+        self._mimic_offset = value
 
     @property
     def override(self) -> dict:

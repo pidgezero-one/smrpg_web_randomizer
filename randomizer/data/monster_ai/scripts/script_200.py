@@ -16,7 +16,6 @@ script = MonsterScript([
 	IfVarBitsClear(BV7EE004, [7]),
 	IfVarBitsSet(BV7EE004, [0]),
 	SetVarBits(BV7EE004, [7]),
-	RunBattleDialog(175),
 	RunBattleEvent(BE0059_BELOME_CONFRONTS_A_CHARACTER_YOU_ALL_LOOK_DELICIOUS),
 	RunBattleEvent(BE0060_BELOME_CLONES_SOMEONE),
 	IncreaseVarBy1(BV7EE000),

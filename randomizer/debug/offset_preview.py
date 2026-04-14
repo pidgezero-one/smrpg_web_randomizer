@@ -194,21 +194,11 @@ def _get_eligible_mimic_chests() -> list[type]:
     """Return TreasureChestLocationRow subclasses eligible for mimic placement.
 
     All treasure chests are eligible (blacklists are ignored for debug offset mode).
-    Deduplicated to one per room set (first encountered in definition order wins).
+    No room deduplication: chests that share a room with another testable chest
+    are still included so the mimic offset slider can target them individually.
     Classes are returned in source definition order from prizelocations.py.
     """
-    seen_room_sets: set[frozenset[int]] = set()
-    eligible: list[type] = []
-
-    for cls in _get_classes_in_definition_order(TreasureChestLocationRow):
-        rooms = getattr(cls, "_rooms", None) or []
-        room_key = frozenset(rooms)
-        if room_key in seen_room_sets:
-            continue
-        seen_room_sets.add(room_key)
-        eligible.append(cls)
-
-    return eligible
+    return _get_classes_in_definition_order(TreasureChestLocationRow)
 
 
 def _get_invisible_flag_locations() -> list[type]:
@@ -239,11 +229,16 @@ def get_ordered_lists() -> dict:
     }
 
 
-def compute_offset_assignments(offset: int) -> dict:
+def compute_offset_assignments(offset: int, mimic_offset: int | None = None) -> dict:
     """Compute offset-based assignments for bosses, slots, mimics, and flags.
 
     Args:
-        offset: The offset value to apply for rotating assignments.
+        offset: The offset value to apply for rotating boss/slot/flag assignments.
+        mimic_offset: Independent offset for mimic fight placement. When None
+            the main ``offset`` is reused. With ``stride=1`` and the
+            undeduplicated chest list, successive values of ``mimic_offset``
+            slide each mimic fight through every individual chest (including
+            chests that share a room with another testable chest).
 
     Returns:
         A dict with:
@@ -256,6 +251,8 @@ def compute_offset_assignments(offset: int) -> dict:
         - mimic_overrides: list of (chest_class, mimic_prize_class) for backend
         - flag_classes: list of 3 flag location classes for backend
     """
+    if mimic_offset is None:
+        mimic_offset = offset
     eligible_chests = _get_eligible_chest_rooms()
     mimic_chests = _get_eligible_mimic_chests()
     invisible_flags = _get_invisible_flag_locations()
@@ -280,11 +277,13 @@ def compute_offset_assignments(offset: int) -> dict:
         slot_assignments.append((chest.__name__, prize.__name__))
         slot_overrides.append((chest, prize))
 
-    # Mimic assignments: 3 chests starting at (offset * 3) % len(mimic_chests),
-    # skipping any chest already used by slots.
+    # Mimic assignments: 3 consecutive chests starting at mimic_offset,
+    # stepping by 1 (not 3) so each individual mimic fight can be dialed
+    # into any individual chest via the mimic_offset slider. Chests already
+    # used by slots are skipped (a single chest can't hold two prizes).
     slot_classes = {chest_cls for chest_cls, _ in slot_overrides}
     num_mimic_chests = len(mimic_chests)
-    mimic_start = (offset * 3) % num_mimic_chests if num_mimic_chests > 0 else 0
+    mimic_start = mimic_offset % num_mimic_chests if num_mimic_chests > 0 else 0
     mimic_assignments = []
     mimic_overrides = []
     idx = mimic_start

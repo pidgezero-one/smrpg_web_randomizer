@@ -281,6 +281,7 @@ class GenerateView(FormView):
         # Debug BPS patches only work in development mode
         debug_bps_patches = bool(data.get("debug_bps_patches", False)) and settings.DEBUG
         prize_offset = data.get("prize_offset") if settings.DEBUG else None
+        mimic_offset = data.get("mimic_offset") if settings.DEBUG else None
 
         try:
             # Build game world, randomize it, and generate the patch.
@@ -290,6 +291,7 @@ class GenerateView(FormView):
             s.set_from_flag_string(full_flag_string.strip())
             s.debug_mode = debug_mode
             s.prize_offset = prize_offset
+            s.mimic_offset = mimic_offset
 
             world = create(
                 seed,
@@ -413,6 +415,7 @@ class GenerateStreamView(View):
         # Debug BPS patches only work in development mode
         debug_bps_patches = bool(data.get("debug_bps_patches", False)) and settings.DEBUG
         prize_offset = data.get("prize_offset") if settings.DEBUG else None
+        mimic_offset = data.get("mimic_offset") if settings.DEBUG else None
 
         def generate_events() -> Iterator[bytes]:
             progress_queue: queue.Queue = queue.Queue()
@@ -430,6 +433,7 @@ class GenerateStreamView(View):
                     s.set_from_flag_string(full_flag_string.strip())
                     s.debug_mode = debug_mode
                     s.prize_offset = prize_offset
+                    s.mimic_offset = mimic_offset
 
                     # Create world with progress callback
                     world = create(seed, s, progress_callback=on_progress, debug_bps_patches=debug_bps_patches)

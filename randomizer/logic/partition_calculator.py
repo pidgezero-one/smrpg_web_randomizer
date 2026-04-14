@@ -264,54 +264,12 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         is_chest = isinstance(obj, ChestNPC) or sprite_id == CHEST_SPRITE_ID
         is_coin = sprite_id in COIN_SPRITE_IDS
 
-        # Room-level cannot_clone=True handling:
-        # - If this NPC has npc_expected_animations, the cannot_clone was set
-        #   FOR those animations. If the placed sprite doesn't have them,
-        #   the reason is gone — let the orchestrator decide.
-        # - If no npc_expected_animations, always respect it (other reasons).
-        from ..types.room import Room as ExtRoom
-        force_cc = False
-        if obj.cannot_clone is True:
-            if isinstance(room, ExtRoom) and i in room.npc_expected_animations:
-                # Check if sprite actually has any of the expected animations
-                has_any_animation = False
-                for anim_entry in room.npc_expected_animations[i]:
-                    if isinstance(anim_entry, tuple) and len(anim_entry) == 2 and anim_entry[0] == "character":
-                        # Character animation — check if any CharacterPrize has this sprite + state
-                        from ..types.prize import CharacterPrize
-                        anim_state = anim_entry[1]
-                        for location in world.locations.values():
-                            if not hasattr(location, 'prize') or not isinstance(location.prize, CharacterPrize):
-                                continue
-                            if location.prize.character_model.base.sprite_id != sprite_id:
-                                continue
-                            ally = location.prize.ally
-                            sprites_dict = ally._sprites_primary if ally.index == 0 else ally._sprites_secondary
-                            if anim_state in sprites_dict:
-                                has_any_animation = True
-                                break
-                    elif isinstance(anim_entry, str):
-                        # Boss animation attr
-                        for location in world.locations.values():
-                            from ..types.prize import BossFightPrize
-                            if not hasattr(location, 'prize') or not isinstance(location.prize, BossFightPrize):
-                                continue
-                            try:
-                                npc_model = location.prize.get_npc_for_slot(world, 4096)
-                                boss = npc_model()
-                                if boss.base.sprite_id != sprite_id:
-                                    continue
-                                if boss.animations and getattr(boss.animations, anim_entry, None) is not None:
-                                    has_any_animation = True
-                                    break
-                            except Exception:
-                                continue
-                    if has_any_animation:
-                        break
-                force_cc = has_any_animation
-            else:
-                # No expected_animations declared — always respect cannot_clone=True
-                force_cc = True
+        # Room-level cannot_clone=True is a hard structural constraint: the
+        # NPC goes in dedicated VRAM regardless of what sprite lands here
+        # after shuffling. `npc_expected_animations` only influences the
+        # min_vram_size sizing for that dedicated allocation (handled in
+        # step 5b / step 7), not whether the NPC clones.
+        force_cc = obj.cannot_clone is True
 
         npc_infos.append(NPCInfo(
             obj_index=i,
@@ -397,15 +355,25 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         buffered_sprite_ids.add(sprite_id)
 
     # =========================================================================
-    # Step 4: Assign buffers, preserving vanilla slot positions
+    # Step 4: Assign buffers, respecting NPC object-list order
     # =========================================================================
-    # An untraced code path in the game engine reads the buffer type (row
-    # format) from buffer working areas — particularly buffer A — and uses
-    # it for tile layout calculations, even when the buffer has space=0.
-    # Moving a gridplane buffer to a different slot than vanilla can cause
-    # cannot_clone NPCs to render with wrong tile offsets, overwriting
-    # adjacent sprites.  To avoid this, we prefer placing each buffer type
-    # in the same slot it occupied in the vanilla partition.
+    # Two invariants drive slot assignment:
+    #
+    #   (A) NPC object order ⇒ slot order.  The game engine walks NPCs in
+    #       object-list order and binds each to the next-available buffer
+    #       slot.  If NPC_i appears before NPC_j and both get buffered,
+    #       NPC_i's slot index must be <= NPC_j's.
+    #
+    #   (B) Avoid changing slot 0's row format when possible.  An untraced
+    #       code path in the engine reads buffer A's format for cannot_clone
+    #       NPC tile layout and applies it globally; changing slot 0 from
+    #       EMPTY_3/3-per-row to a different type can corrupt cannot_clone
+    #       renders (see rooms 205/232 regression history).
+    #
+    # Greedy algorithm: iterate buffers in NPC-appearance order; for each,
+    # pick the lowest-index empty slot >= last-assigned slot, preferring
+    # one whose vanilla buffer_type matches, while leaving enough room for
+    # the remaining buffers behind it.
     selected_buffers.sort(
         key=lambda sb: sprite_first_appearance.get(sb[0], 999),
     )
@@ -418,40 +386,46 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     if has_coin:
         new_buffer_types[2] = BufferType.COINS
 
-    # Map vanilla buffer types → available slot indices (excluding chest/coin slots)
-    vanilla_slots_by_type: dict[BufferType, list[int]] = {}
-    for slot_i, buf in enumerate(existing.buffers):
-        if new_buffer_types[slot_i] != BufferType.EMPTY_3:
-            continue  # Slot already claimed by chest or coin
-        bt = buf.buffer_type
-        if bt not in vanilla_slots_by_type:
-            vanilla_slots_by_type[bt] = []
-        vanilla_slots_by_type[bt].append(slot_i)
-
-    # First pass: place buffers in their vanilla slot positions
-    buffer_queue = list(selected_buffers)
     sprite_to_new_buffer: dict[int, int] = {}
-    remaining_queue: list[tuple[int, BufferType]] = []
+    next_slot = 0
 
-    for sprite_id, btype in buffer_queue:
-        placed = False
-        slots = vanilla_slots_by_type.get(btype)
-        if slots:
-            slot = slots.pop(0)
-            if new_buffer_types[slot] == BufferType.EMPTY_3:
-                new_buffer_types[slot] = btype
-                sprite_to_new_buffer[sprite_id] = slot
-                placed = True
-        if not placed:
-            remaining_queue.append((sprite_id, btype))
+    for idx, (sprite_id, btype) in enumerate(selected_buffers):
+        # Slots that are empty AND at or after next_slot
+        candidates = [
+            s for s in range(next_slot, 3)
+            if new_buffer_types[s] == BufferType.EMPTY_3
+        ]
+        if not candidates:
+            # Out of slots — this sprite cannot be buffered. Mark it as
+            # unbuffered so step 7 falls back to cannot_clone + min_vram_size.
+            buffered_sprite_ids.discard(sprite_id)
+            continue
 
-    # Second pass: place remaining buffers in first available empty slot
-    for sprite_id, btype in remaining_queue:
-        for i in range(3):
-            if new_buffer_types[i] == BufferType.EMPTY_3:
-                new_buffer_types[i] = btype
-                sprite_to_new_buffer[sprite_id] = i
-                break
+        # Reserve space for remaining buffers: each still-to-be-placed
+        # buffer needs its own slot strictly after `chosen`.
+        remaining_after_this = len(selected_buffers) - idx - 1
+
+        def free_after(s: int) -> int:
+            return sum(
+                1 for s2 in range(s + 1, 3)
+                if new_buffer_types[s2] == BufferType.EMPTY_3
+            )
+
+        safe_candidates = [s for s in candidates if free_after(s) >= remaining_after_this]
+        if not safe_candidates:
+            # Shouldn't happen (selected_buffers capped at available_slots),
+            # but degrade gracefully: take the lowest candidate.
+            safe_candidates = [candidates[0]]
+
+        # Prefer a slot whose VANILLA buffer_type matches the needed type
+        # (preserves slot 0's row format when the first buffer matches).
+        chosen = next(
+            (s for s in safe_candidates if existing.buffers[s].buffer_type == btype),
+            safe_candidates[0],
+        )
+        new_buffer_types[chosen] = btype
+        sprite_to_new_buffer[sprite_id] = chosen
+        next_slot = chosen + 1
 
     # =========================================================================
     # Step 5: Carry over buffer space and index_in_main_buffer

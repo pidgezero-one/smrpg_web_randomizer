@@ -1326,7 +1326,10 @@ def shuffle_prizes(world: GameWorld) -> None:
     # so the pool builder treats mimic/slot/etc. vanilla chests as shuffleable.)
     if world.settings.debug_mode and world.settings.prize_offset is not None:
         from randomizer.debug.offset_preview import compute_offset_assignments
-        offset_result = compute_offset_assignments(world.settings.prize_offset)
+        offset_result = compute_offset_assignments(
+            world.settings.prize_offset,
+            mimic_offset=world.settings.mimic_offset,
+        )
 
         # Boss overrides: {location_class_name: prize_class}
         for loc_name, prize_cls in offset_result["boss_overrides"].items():

@@ -1451,7 +1451,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                         ),
                         DisableObjectTriggerInSpecificLevel(ao, room),
                     ] + itemgrant
-                elif not isinstance(self.prize, InfiniteCoinsPrize):
+                elif not isinstance(self.prize, (InfiniteCoinsPrize, MimicFightInitiatorPrize)):
                     itemgrant.insert(0, DisableObjectTriggerInSpecificLevel(ao, room))
         return EventScript(itemgrant)
 

@@ -11,6 +11,7 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
 )
 
 from randomizer.data.packs.pack_collection import (
+    FORM0000_ONE_SNIFIT,
     FORM0001_TWO_SPIKEY,
     FORM0002_ONE_SPIKEY_ONE_SKYTROOPA,
     FORM0003_THREE_SPIKEY,
@@ -108,6 +109,8 @@ from randomizer.data.packs.pack_collection import (
     FORM0118_TWO_MRKIPPER_ONE_CRUSTY,
     FORM0119_TWO_MRKIPPER_ONE_CRUSTY,
     FORM0120_FOUR_MRKIPPER,
+    FORM0121_FOUR_BANDANARED,
+    FORM0122_FIVE_BANDANARED,
     FORM0129_ONE_ALLEYRAT_ONE_GORGON,
     FORM0130_TWO_ALLEYRAT_TWO_GREAPER,
     FORM0131_TWO_ALLEYRAT_TWO_GORGON,
@@ -224,6 +227,7 @@ from randomizer.data.enemies.enemies import (
     ALLEYRATEnemy,
     AMANITAEnemy,
     AMEBOIDEnemy,
+    BANDANAREDEnemy,
     BIRDYEnemyStatic,
     BLOOBEREnemyStatic,
     BLUEBIRDEnemyStatic,
@@ -262,6 +266,7 @@ from randomizer.data.enemies.enemies import (
     SHYSTEREnemy,
     SKYTROOPAEnemy,
     SLINGSHYEnemy,
+    SNIFITEnemyStatic,
     SPARKYEnemy,
     SPIKESTEREnemy,
     SPIKEYEnemy,
@@ -708,6 +713,7 @@ FORMATION_FORCED_ENEMIES: dict[Formation, list[type]] = {
     # specific enemy (sprite_id 256-511 map directly to monster_id 0-255),
     # so the corresponding enemy is forced into every formation the
     # battle_pack can roll into.
+    FORM0000_ONE_SNIFIT: [SNIFITEnemyStatic],
     FORM0001_TWO_SPIKEY: [SPIKEYEnemy],
     FORM0002_ONE_SPIKEY_ONE_SKYTROOPA: [SPIKEYEnemy],
     FORM0003_THREE_SPIKEY: [SPIKEYEnemy],
@@ -805,6 +811,8 @@ FORMATION_FORCED_ENEMIES: dict[Formation, list[type]] = {
     FORM0118_TWO_MRKIPPER_ONE_CRUSTY: [MRKIPPEREnemy],
     FORM0119_TWO_MRKIPPER_ONE_CRUSTY: [MRKIPPEREnemy],
     FORM0120_FOUR_MRKIPPER: [MRKIPPEREnemy],
+    FORM0121_FOUR_BANDANARED: [BANDANAREDEnemy],
+    FORM0122_FIVE_BANDANARED: [BANDANAREDEnemy],
     FORM0129_ONE_ALLEYRAT_ONE_GORGON: [ALLEYRATEnemy],
     FORM0130_TWO_ALLEYRAT_TWO_GREAPER: [ALLEYRATEnemy],
     FORM0131_TWO_ALLEYRAT_TWO_GORGON: [ALLEYRATEnemy],

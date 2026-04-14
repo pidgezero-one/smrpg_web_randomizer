@@ -34,11 +34,19 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	MoveScriptToBackgroundThread2(),
+	JmpIfBitSet(TEMP_7043_2, ["EVENT_1362_mario_doll_check"]),
 	SetBit(TEMP_7043_2),
-    JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["EVENT_1362_bg_thread"]),
-    JmpIfObjectNotInSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, ["EVENT_1362_bg_thread"]),
+	ClearBit(TEMP_7043_0),
+	ClearBit(TEMP_7043_1),
+	ClearBit(TEMP_7043_3),
+    
+    JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["EVENT_1362_ret_6"], identifier="EVENT_1362_mario_doll_check"),
+	JmpIfBitSet(CURTAIN_MINIGAME_COMPLETED, ["EVENT_1362_ret_6"]),
+    MoveScriptToMainThread(),
+    JmpIfObjectNotInSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, ["EVENT_1362_ret_6"]),
     Set7016701BToObjectXYZ(NPC_5),
-    JmpIfVarEqualsConst(Z_COORD_1, 0, ["EVENT_1362_bg_thread"]),
+    JmpIfVarEqualsConst(Z_COORD_1, 0, ["EVENT_1362_ret_6"]),
     JmpIfBitClear(TEMP_7043_2, ["EVENT_1362_ret_6"], identifier="EVENT_1362_jump_check_loop"),
 	Set7000ToTappedButton(),
     Pause(1),
@@ -60,12 +68,6 @@ script = EventScript([
 		A_JumpToHeight(height=64, silent=True),
 		A_WalkSoutheastSteps(3)
 	]),
-    Return(),
+	Return(identifier="EVENT_1362_ret_6"),
     
-	MoveScriptToBackgroundThread2(identifier="EVENT_1362_bg_thread"),
-	JmpIfBitSet(TEMP_7043_2, ["EVENT_1362_ret_6"]),
-	ClearBit(TEMP_7043_0),
-	ClearBit(TEMP_7043_1),
-	ClearBit(TEMP_7043_3),
-	Return(identifier="EVENT_1362_ret_6")
 ])

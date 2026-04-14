@@ -253,7 +253,7 @@ class MimicStatueObject(BossNPC):
 class Belome1SmallObject(BossNPC):
     """Small Belome 1 object in Mushroom Way Area 03."""
     _tower_entrance_horizontal_shift = -4
-    _eye_height = 14
+    _eye_height = 12
     _evil_palette = [
         0xF84848, 0xE00000, 0xF8A8A8, 0x680000, 0xFFFFFF,
         0x181818, 0xFFB510, 0x280000, 0xFFD608, 0xFFFFB5,
@@ -290,7 +290,7 @@ class Belome2SmallObject(BossNPC):
 
     _base = BELOME_2_SMALL_NPC
     _tower_entrance_horizontal_shift = -4
-    _eye_height = 14
+    _eye_height = 12
     _evil_palette = [
         0xF84848, 0xE00000, 0xF8A8A8, 0x680000, 0xFFFFFF,
         0x181818, 0xFFB510, 0x280000, 0xFFD608, 0xFFFFB5,
@@ -315,7 +315,7 @@ class Belome3SmallObject(BossNPC):
 
     _base = BELOME_3_SMALL_NPC
     _tower_entrance_horizontal_shift = -4
-    _eye_height = 14
+    _eye_height = 12
     _evil_palette = [
         0xF84848, 0xE00000, 0xF8A8A8, 0x680000, 0xFFFFFF,
         0x181818, 0xFFB510, 0x280000, 0xFFD608, 0xFFFFB5,

@@ -5048,7 +5048,7 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
     _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
-    _npc_ids = [NPC_0]
+    _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
@@ -5070,7 +5070,7 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
     _bias = True
     _originally_held = GoodieBagPrize
     _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
-    _npc_ids = [NPC_1]
+    _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
@@ -5092,7 +5092,7 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
     _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
-    _npc_ids = [NPC_9]
+    _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_TOP_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]

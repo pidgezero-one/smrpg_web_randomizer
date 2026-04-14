@@ -49,6 +49,7 @@
             </label>
         </div>
         <input type="hidden" name="prize_offset" id="prize-offset-hidden" value="0" disabled>
+        <input type="hidden" name="mimic_offset" id="mimic-offset-hidden" value="0" disabled>
 
         <div id="prize-offset-controls" style="display: none;">
             <div class="form-group">
@@ -59,6 +60,16 @@
                 </div>
                 <input type="range" class="form-control-range" id="prize-offset-slider"
                        min="0" max="46" value="0">
+            </div>
+            <div class="form-group">
+                <div class="d-flex align-items-center mb-1">
+                    <label class="mr-2 mb-0">Mimic Offset:</label>
+                    <input type="number" class="form-control form-control-sm" id="mimic-offset-number"
+                           min="0" max="182" value="0" style="width: 70px;">
+                </div>
+                <input type="range" class="form-control-range" id="mimic-offset-slider"
+                       min="0" max="182" value="0">
+                <small class="text-muted">Step through every individual chest (no room deduplication).</small>
             </div>
 
             <div class="row mt-3">
@@ -135,7 +146,7 @@
             var invisibleFlags = previewData.invisible_flags;
             var flagRooms = previewData.flag_rooms;
 
-            function updatePreview(offset) {
+            function updatePreview(offset, mimicOffset) {
                 var numBosses = bossPrizes.length;
                 var numChests = slotChests.length;
                 var numFlags = invisibleFlags.length;
@@ -159,11 +170,13 @@
                     slotsBody.append('<tr><td>SlotsPrize' + (j + 1) + '</td><td>' + slotChests[chestIdx] + '</td></tr>');
                 }
 
-                // Mimic fight assignments (skip chests already used by slots)
+                // Mimic fight assignments: independent mimicOffset with stride 1
+                // so each slider click advances by a single chest. Skip chests
+                // already used by slots (a single chest can't hold two prizes).
                 var numMimicChests = mimicChests.length;
                 var mimicsBody = $('#prize-mimics-table tbody');
                 mimicsBody.empty();
-                var mimicStart = (offset * 3) % numMimicChests;
+                var mimicStart = mimicOffset % numMimicChests;
                 var picked = 0;
                 for (var m = 0; m < numMimicChests && picked < 3; m++) {
                     var mIdx = (mimicStart + m) % numMimicChests;
@@ -204,25 +217,56 @@
                 }
             }
 
+            function currentOffsets() {
+                return {
+                    offset: parseInt($('#prize-offset-slider').val(), 10) || 0,
+                    mimicOffset: parseInt($('#mimic-offset-slider').val(), 10) || 0,
+                };
+            }
+
+            function refreshPreview() {
+                var o = currentOffsets();
+                updatePreview(o.offset, o.mimicOffset);
+            }
+
             function setOffset(val) {
                 $('#prize-offset-slider').val(val);
                 $('#prize-offset-number').val(val);
                 $('#prize-offset-hidden').val(val);
                 localforage.setItem("rom.prize_offset_value", val);
-                updatePreview(val);
+                refreshPreview();
             }
 
-            // Slider input handler
+            function setMimicOffset(val) {
+                $('#mimic-offset-slider').val(val);
+                $('#mimic-offset-number').val(val);
+                $('#mimic-offset-hidden').val(val);
+                localforage.setItem("rom.mimic_offset_value", val);
+                refreshPreview();
+            }
+
+            var mimicMax = parseInt($('#mimic-offset-slider').attr('max'), 10);
+
+            // Slider input handlers
             $('#prize-offset-slider').on('input', function() {
                 setOffset(parseInt($(this).val(), 10));
             });
+            $('#mimic-offset-slider').on('input', function() {
+                setMimicOffset(parseInt($(this).val(), 10));
+            });
 
-            // Number input handler
+            // Number input handlers
             $('#prize-offset-number').on('input', function() {
                 var val = parseInt($(this).val(), 10);
                 if (isNaN(val)) return;
                 val = Math.max(0, Math.min(46, val));
                 setOffset(val);
+            });
+            $('#mimic-offset-number').on('input', function() {
+                var val = parseInt($(this).val(), 10);
+                if (isNaN(val)) return;
+                val = Math.max(0, Math.min(mimicMax, val));
+                setMimicOffset(val);
             });
 
             // Toggle checkbox handler
@@ -232,14 +276,16 @@
                 if (enabled) {
                     $('#prize-offset-controls').show();
                     $('#prize-offset-hidden').prop('disabled', false);
-                    updatePreview(parseInt($('#prize-offset-slider').val(), 10));
+                    $('#mimic-offset-hidden').prop('disabled', false);
+                    refreshPreview();
                 } else {
                     $('#prize-offset-controls').hide();
                     $('#prize-offset-hidden').prop('disabled', true);
+                    $('#mimic-offset-hidden').prop('disabled', true);
                 }
             });
 
-            // Restore prize offset state from localStorage
+            // Restore prize/mimic offset state from localStorage
             localforage.getItem("rom.prize_offset_value").then((value) => {
                 if (value !== null) {
                     var val = parseInt(value, 10);
@@ -247,7 +293,15 @@
                     $('#prize-offset-number').val(val);
                     $('#prize-offset-hidden').val(val);
                 }
-                // After restoring value, restore toggle state
+                return localforage.getItem("rom.mimic_offset_value");
+            }).then((value) => {
+                if (value !== null) {
+                    var val = parseInt(value, 10);
+                    $('#mimic-offset-slider').val(val);
+                    $('#mimic-offset-number').val(val);
+                    $('#mimic-offset-hidden').val(val);
+                }
+                // After restoring values, restore toggle state
                 return localforage.getItem("rom.prize_offset_enabled");
             }).then((enabled) => {
                 if (enabled === true) {
