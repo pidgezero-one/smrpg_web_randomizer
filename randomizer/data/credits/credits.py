@@ -443,6 +443,15 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
 
     # 26
     credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, "BINGO DESIGN")
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x40, 0x81, "CYNAS")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    # 26
+    credits.begin_titles(BEGIN_TITLES_DELAY)
     credits.add_title(0x80, 0x00, 0x08, "TEST WRITING")
     credits.end_titles(END_TITLES_DELAY)
 
@@ -504,20 +513,26 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "TINYWETBLANKET   SEANCASS")
+    credits.add_credit(0x80, 0x80, 0xC0, "TINYWETBLANKET      MADDI")
     credits.add_credit(0x80, 0x40, 0x81, "WEFFJEBSTER     BROATMEAL")
-    credits.add_credit(0x80, 0x00, 0xC2, "CYNAS        SNESCHALMERS")
+    credits.add_credit(0x80, 0x00, 0xC2, "SNESCHALMERS     SEANCASS")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "GUNTHERRIDEL     XELECIUM")
+    credits.add_credit(0x80, 0x80, 0xC0, "KATSTASAPH          OXWAS")
+    credits.add_credit(0x80, 0x40, 0x81, "CYNAS            XELECIUM")
+    credits.add_credit(0x80, 0x00, 0xC2, "AWILLSANDWICH")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xC0, "GUNTHERRIDEL     INVARIEL")
     credits.add_credit(0x80, 0x40, 0x81, "MINAMIYO       CALERELIYA")
     credits.add_credit(0x80, 0x00, 0xC2, "SPACE COW      SAXXON FOX")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "ATEATREE         INVARIEL")
-    credits.add_credit(0x80, 0x40, 0x81, "GOODMORNINGCRONO  LYLOVIR")
+    credits.add_credit(0x80, 0x80, 0xC0, "ATEATREE          LYLOVIR")
+    credits.add_credit(0x80, 0x40, 0x81, "GOODMORNINGCRONO")
     credits.add_credit(0x80, 0x00, 0xC2, "ANTHONY MULBERRY")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
