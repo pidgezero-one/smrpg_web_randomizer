@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 4),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW04_BOWSERS_KEEP),
 	SetVarToConst(KEEP_DOORS_EXIT_TYPE_1, 0),
 	SetVarToConst(KEEP_DOORS_EXIT_TYPE_2, 0),
 	SetVarToConst(UNKNOWN_70E7, 0),

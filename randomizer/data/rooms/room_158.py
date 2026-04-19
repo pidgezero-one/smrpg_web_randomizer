@@ -342,7 +342,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularClone( # 16
             npc=npcs.GENO_WALKING_DOWN_LEFT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -362,7 +363,8 @@ room = Room(
             y=0,
             z=2,
             z_half=False,
-            direction=NORTHWEST),
+            direction=NORTHWEST,
+            cannot_clone=True),
         BattlePackNPC( # 18
             npc=npcs.MUKUMUKU_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,

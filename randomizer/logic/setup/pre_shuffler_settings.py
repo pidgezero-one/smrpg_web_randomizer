@@ -9,6 +9,8 @@ from ...data.variables.event_script_names import (
     E0241_FREESTANDING_1_GRANT,
     E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE,
     E1357_USE_MARIO_DOLL,
+    E1928_BALCONY_IS_LOCKED,
+    E2191_MARIO_DOLL_ERROR_MSG,
 )
 from ...data.variables.overworld_sfx_names import SO063_YOSHI_TALK
 from ...data.variables.room_names import (
@@ -35,6 +37,8 @@ from ...data.variables.dialog_names import (
     DI4059_SHUFFLE_COOKIES_2,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    DisableObjectTrigger,
+    RunEventAsSubroutine,
     SetBit,
     ClearBit,
     ApplySolidityModToLevel,
@@ -63,6 +67,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import (
     NPC_3,
     NPC_5,
 )
+from smrpgpatchbuilder.datatypes.levels.classes import EventInitiator
 
 from ...types.flags import BossScaleOptions, BossShuffleScaleStats, EnemySpells, ShuffleCookies, ShuffleMarioDoll
 
@@ -534,14 +539,22 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
                 StoreItemAmountTo7000(MarioDollItem),
                 JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1357_pause_12"]),
                 SetBit(RETURNED_MARIO_DOLL),
+                DisableObjectTrigger(NPC_5),
                 RemoveOneOfItemFromInventory(MarioDollItem),
                 Return(identifier="EVENT_1357_pause_10"),
                 ReturnAll(identifier="EVENT_1357_pause_12"),
             ]
         )
-        world.get_room(
+        bdoor_e = world.event_scripts.get_script_by_id(E1928_BALCONY_IS_LOCKED)
+        bdoor_e.set_contents([
+            *bdoor_e.contents,
+            RunEventAsSubroutine(E2191_MARIO_DOLL_ERROR_MSG),
+        ])
+        _curtain_npc = world.get_room(
             R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM
-        ).get_npc_by_target_id(NPC_5).set_event_script(E0241_FREESTANDING_1_GRANT)
+        ).get_npc_by_target_id(NPC_5)
+        _curtain_npc.set_event_script(E0241_FREESTANDING_1_GRANT)
+        _curtain_npc.set_initiator(EventInitiator.ANYTHING_EXCEPT_PRESS_A)
 
     # For safety, delete Breaker Beam caster animations in case an enemy uses it that doesn't have a sequence 3
     if world.settings.isflag_enabled(EnemySpells):

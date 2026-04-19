@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 5),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW05_GATE),
 	SetVarToConst(FACTORY_FALL_1, 219),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_WalkNorthwestPixels(12)

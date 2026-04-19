@@ -173,6 +173,7 @@ class Settings:
             EnemySpells: EnemySpells(),
             ExperienceNoRegular: ExperienceNoRegular(),
             ExperienceNoBosses: ExperienceNoBosses(),
+            Punchinello2BobombDifficulty: Punchinello2BobombDifficulty(),
             SkipBossFights: SkipBossFights(),
             NoGenoWhirlExor: NoGenoWhirlExor(),
             FixMagikoopa: FixMagikoopa(),

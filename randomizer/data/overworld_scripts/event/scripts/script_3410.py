@@ -50,7 +50,7 @@ script = EventScript([
 	Dec(COIN_CHEST_MULTIPLIER),
 	Jmp(["EVENT_3410_jmp_if_var_equals_const_11"]),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=CURRENT_OVERWORLD_MARKER_ID, identifier="EVENT_3410_copy_var_to_var_15"),
-	JmpIfVarNotEqualsConst(CURRENT_OVERWORLD_MARKER_ID, 1, ["EVENT_3410_set_temp_action_script_21"], identifier="EVENT_3410_jmp_if_var_not_equals_const_16"),
+	JmpIfVarNotEqualsConst(CURRENT_OVERWORLD_MARKER_ID, OW01_INNER_FACTORY, ["EVENT_3410_set_temp_action_script_21"], identifier="EVENT_3410_jmp_if_var_not_equals_const_16"),
 	SetSyncActionScript(MEM_70AA, A0007_HIT_TREASURE_CHEST_CONTENTS_DEPLETED),
 	SetVarToConst(PRIMARY_TEMP_7000, 293),
 	ClearMem704XAt7000Bit(),

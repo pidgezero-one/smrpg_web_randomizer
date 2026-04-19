@@ -34,11 +34,18 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	SummonObjectToSpecificLevel(NPC_0, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_1, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_3, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_4, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_5, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_6, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_7, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_9, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_10, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_11, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
 	SetBit(MAP_CASINO),
 	SetBit(MAP_DIRECTIONAL_BEAN_VALLEY_CASINO),
-	JmpIfBitSet(TEMP_708C_4, ["EVENT_2801_open_location_5"]),
-	ExitToWorldMap(area=OW39_BEAN_VALLEY, bit_6=True, bit_7=True),
-	Return(),
 	ExitToWorldMap(area=OW45_BEAN_VALLEY, bit_6=True, bit_7=True, identifier="EVENT_2801_open_location_5"),
 	Return()
 ])

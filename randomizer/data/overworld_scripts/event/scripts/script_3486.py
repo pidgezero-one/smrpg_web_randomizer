@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 15),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW15_MIDAS_RIVER),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x0B, bits=[3])
 	]),

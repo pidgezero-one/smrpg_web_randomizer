@@ -32,7 +32,5 @@ script = ActionScript([
 	A_ShiftZDownPixels(1),
 	A_Pause(4),
 	A_ShiftZDownPixels(1),
-	A_JmpIfBitSet(TEMP_708C_4, ["ACTION_849_ret_18"]),
-	A_Jmp(["ACTION_849_pause_0"]),
 	A_ReturnQueue(identifier="ACTION_849_ret_18")
 ])

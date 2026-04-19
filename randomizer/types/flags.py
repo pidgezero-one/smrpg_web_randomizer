@@ -2119,6 +2119,26 @@ class ExperienceNoBosses(BooleanFlag):
 
 
 # ✅
+class Punchinello2BobombDifficultyOptions(CategorizationOption):
+    """Enumeration for Punchinello 2 Strong Bob-Omb facing-direction likelihood."""
+
+    PERCENT_0 = "0%"
+    PERCENT_25 = "25%"
+    PERCENT_50 = "50%"
+    PERCENT_75 = "75%"
+    PERCENT_100 = "100%"
+
+
+# ✅
+class Punchinello2BobombDifficulty(SelectOneFlag[Punchinello2BobombDifficultyOptions]):
+    _name = "Punchinello 2 difficulty"
+    _description = "This is the likelihood that the Strong Bob-Ombs will spawn already facing Punchinello. This setting does nothing if remake content is turned off."
+    choices = [o for o in Punchinello2BobombDifficultyOptions]
+    _default = Punchinello2BobombDifficultyOptions.PERCENT_50
+    _id = "p2bobomb"
+
+
+# ✅
 class SkipBossFights(BooleanFlag):
     _name = "Allow alternate boss fight win conditions"
     _description = """If the relevant boss has a star piece, the following actions will be valid to obtain the star piece: 
@@ -2767,6 +2787,7 @@ class BossCheeseSubcategory(FlagCategory):
         NoGenoWhirlExor,
         FixMagikoopa,
         NoOHKO,
+        Punchinello2BobombDifficulty,
         FixInvincibility,
         SeeYa,
     ]

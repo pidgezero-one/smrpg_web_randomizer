@@ -43,7 +43,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 167, ["EVENT_3226_apply_tile_mod_30"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 172, ["EVENT_3226_apply_tile_mod_32"]),
 	ApplyTileModToLevel(use_alternate=True, room_id=R160_SUNKEN_SHIP_AREA_01, mod_id=34, identifier="EVENT_3226_apply_tile_mod_8"),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 34),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW34_SUNKEN_SHIP),
 	JmpIfBitSet(TEMP_7042_0, ["EVENT_3226_run_event_as_subroutine_13"]),
 	JmpToSubroutine(["EVENT_3225_set_bit_123"]),
 	SetBit(TEMP_7042_0),

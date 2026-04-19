@@ -4288,9 +4288,9 @@ class Belome2BossFight(BossFightPrize):
     _additional_enemies_to_scale = [MALLOWCLONEEnemy, GENOCLONEEnemy, BOWSERCLONEEnemy]
     _character_henchmen = [
         BossFightHenchman(monster=MARIOCLONEEnemy, model=MariocloneHenchman),
-        BossFightHenchman(monster=MALLOWCLONEEnemy, model=MallowcloneHenchman),
-        BossFightHenchman(monster=GENOCLONEEnemy, model=GenocloneHenchman),
         BossFightHenchman(monster=TOADSTOOL2Enemy, model=PeachcloneHenchman),
+        BossFightHenchman(monster=GENOCLONEEnemy, model=GenocloneHenchman),
+        BossFightHenchman(monster=MALLOWCLONEEnemy, model=MallowcloneHenchman),
     ]
 
     _mook_henchmen = [
@@ -4313,13 +4313,13 @@ class Belome2BossFight(BossFightPrize):
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """BELOME: Oh, you're back![await]\n Did you bring any food?[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """BELOME: Say, it's past my bedtime.\n Can you get off of my head?[await]""",
         DI1782_SHIP_BOSS_DRINK: """ Woof, I ate too many Mallows~![await]\n I should wash it down with Tonic~![await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: "[center]\n••••••[await]",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hey `MAIN_CHARACTER_TITLE`, have\n you seen my parents?[await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """MARIO CLONE:\n[center]••••••[await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """MALLOW CLONE: Hey `MAIN_CHARACTER_TITLE`, have you seen my parents?[await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """ (It's a damp, slimy looking note. Did Belome LICK this?[await][page]\n A paw print and a crudely drawn image of `VOLCANO_BOSS_DESCRIPTION` are etched on the paper.[await] This is probably one of `FINAL_BOSS_NAME`[await] Belome likely headed down to find more snacks, so it's time to move on.)[await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ If you find any Star\n Pieces, think you could hand them\n over?[await][page]\n No? [delay]...Oh well, I tried.[await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Take the trampoline in the next\n room. Go on, get outta here![await]""",
-        DI2061_HEAD_CHEF: "[center]\n••••••[await]",
-        DI2062_APPRENTICE_CHEF: " I've baked a cake for you.[await][pause]\n It just happens to look\n like a dog.[await]",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """GENO CLONE: If you find any Star Pieces, think you could hand them over to me?[await][page] No? [delay]...Oh well, I tried.[await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """TOADSTOOL 2: Take the trampoline in the next room. Go on, get outta here![await]""",
+        DI2061_HEAD_CHEF: """MARIO CLONE:\n[center]••••••[await]""",
+        DI2062_APPRENTICE_CHEF: "TOADSTOOL 2: I've baked a cake for you.[await][pause] It just happens to look like a dog.[await]",
         DI2180_CHAPEL_NPC: """ Reverend Belome must have gotten\n lost on his way here.""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BELOME: Oh, no, you're still\n missing [0x7024] item(s).[await][pause] I can't wait any\n longer to see what today's cake\n will be.[await][pause] I'm STARVING![await]""",
         DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BELOME: Mmm, you've found all of `MARRYMORE_CHARACTER`'s things![await] But they won't bring the cake in here until we AERO_NPclean the place up.[await] Go Cgrab the leftover items, please.[await]""",
@@ -4333,23 +4333,19 @@ class Belome2BossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
-        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "[center]\n••••••[await]",
-        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """TOADSTOOL 2: Yuck, I don't want\n to play ANYTHING with you![await]""",
-        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ Need a nap?\n You can stay here for free.[await][pause] No dolls will\n wander around overnight, I swear.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
-        DI1120_NIMBUS_BIRD_GUARD: """[center]\n••••••[await]""",
-        DI1945_NIMBUS_GUARD: """ There's nothing unusual about\n someone as pretty as me being a\n security guard![await]""",
-    }
-    _dialog_replacements_remake = {
-        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Belome's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
-        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Belome.[await]""",
+        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """MARIO CLONE:\n[center]••••••[await]""",
+        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """TOADSTOOL 2: Yuck, I don't want to play ANYTHING with you![await]""",
+        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """GENO CLONE: Need a nap? You can stay here for free.[await][pause] No dolls will wander around overnight, I swear.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """MARIO CLONE:\n[center]••••••[await]""",
+        DI1945_NIMBUS_GUARD: """TOADSTOOL 2: There's nothing illegal going on here.[await][pause] But it should be a crime to be so beautiful.[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: "[center]\n••••••[await]",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: "[center]\n••••••[await]",
-        DI2560_TOWER_HENCHMAN_1: "[center]\n••••••[await]",
-        DI2572_TOWER_HENCHMAN_2: """ If you aren't here to tell us about\n a really great cake recipe, then\n shoo![await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """(What do Star Pieces even look\n like...?)[await]""",
-        DI3073_TOWER_HENCHMAN_3: """[center]\nI serve...a higher authority...[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """[center]\n••••••[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """[center]\n••••••[await]""",
+        DI2560_TOWER_HENCHMAN_1: """MARIO CLONE:\n[center]••••••[await]""",
+        DI2572_TOWER_HENCHMAN_2: """TOADSTOOL 2: If you aren't here to tell us about a good cake recipe, then shoo![await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """GENO CLONE: (What do Star Pieces even look like...?)[await]""",
+        DI3073_TOWER_HENCHMAN_3: """GENO CLONE: I serve...a higher authority...[await]""",
     }
 
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:

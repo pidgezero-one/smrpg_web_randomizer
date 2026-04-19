@@ -47,7 +47,7 @@ script = EventScript([
 		A_WalkSouthwestPixels(20)
 	]),
 	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 49),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW49_NIMBUS_LAND),
 	PauseScriptUntilEffectDone(),
 	Return(),
 	RunEventAsSubroutine(E0065_TRAMPOLINE_SUBROUTINE, identifier="EVENT_3746_run_event_as_subroutine_9"),

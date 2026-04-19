@@ -83,7 +83,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 1
             npc=npcs.TERRAPIN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -110,7 +111,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 2
             npc=npcs.JINX_2_OVERWORLD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -137,7 +139,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 3
             npc=npcs.JINX_3_OVERWORLD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -164,7 +167,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 4
             npc=npcs.JINX_4_OVERWORLD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -191,7 +195,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.CHALLENGE,

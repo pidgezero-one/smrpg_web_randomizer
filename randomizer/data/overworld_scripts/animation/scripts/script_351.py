@@ -9,6 +9,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.event_script_names import *
+from ....variables.overworld_area_names import *
 from ....variables.overworld_sfx_names import *
 from ....variables.room_names import *
 from ....variables.variable_names import *
@@ -16,7 +17,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_JmpIfVarEqualsConst(CURRENT_OVERWORLD_MARKER_ID, 50, ["ACTION_351_set_animation_speed_10"]),
+	A_JmpIfVarEqualsConst(CURRENT_OVERWORLD_MARKER_ID, OW50_BARREL_VOLCANO, ["ACTION_351_set_animation_speed_10"]),
 	A_UnknownCommand(bytearray([0xC8, 0x00])),
 	A_TransferTo70167018(),
 	A_SetPriority(3),

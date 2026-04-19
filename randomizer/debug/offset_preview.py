@@ -151,6 +151,11 @@ def _get_classes_in_definition_order(base_class: type) -> list[type]:
             continue
         if not issubclass(cls, base_class):
             continue
+        # Skip abstract row classes re-exported from types.prizelocation
+        # (e.g. TreasureChestLocationRow1..6) — they have no _rooms of their own
+        # and must not be treated as concrete placement targets.
+        if cls.__module__ != _prizelocations_module.__name__:
+            continue
         try:
             _, lineno = inspect.getsourcelines(cls)
         except (OSError, TypeError):

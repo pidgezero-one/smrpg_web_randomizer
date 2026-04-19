@@ -61,8 +61,8 @@ script = MonsterScript([
 	ClearVarBits(BV7EE003, [1]),
 	Wait1TurnandRestartScript(),
 	IfTargetedByRegularAttack(),
-	IfVarBitsSet(BV7EE004, [1]),
+	IfVarBitsSet(BV7EE008, [1]),
 	RemoveTarget(MONSTER_5_SET),
-	ClearVarBits(BV7EE004, [1]),
+	ClearVarBits(BV7EE008, [1]),
 	Wait1TurnandRestartScript()
 ])

@@ -294,8 +294,18 @@ def place(
             if not can_overflow:
                 _diagnose_placement_failure(world, pending, candidate_locations)
                 raise PlacementException(len(pending), [type(p).__name__ for p in pending])
-            else:
-                break
+            # Overflow is only safe once every must-fill location is filled.
+            # If any candidate location that cannot be empty is still missing a
+            # prize, report it as a real placement failure instead of silently
+            # dropping pending items.
+            unfilled_must_fill = [
+                l for l in candidate_locations
+                if not l.has_item and not l.can_be_empty(world)
+            ]
+            if unfilled_must_fill:
+                _diagnose_placement_failure(world, pending, candidate_locations)
+                raise PlacementException(len(pending), [type(p).__name__ for p in pending])
+            break
 
 
 def diagnose_empty_locations(world: "GameWorld") -> None:

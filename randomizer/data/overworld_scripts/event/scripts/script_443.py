@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	ClearBit(TEMP_707C_0),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 20),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW20_PIPE_VAULT),
 	RunEventAsSubroutine(E0281_CLEAR_EXP_STAR_BITS),
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_SetPriority(2)

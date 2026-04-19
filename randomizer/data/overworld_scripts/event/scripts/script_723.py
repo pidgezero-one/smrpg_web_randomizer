@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	Set0158Bit7Offset(0x0158),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 10),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW10_MUSHROOM_KINGDOM),
 	PlaySound(sound=SO000_SILENCE, channel=4),
 	FadeOutMusicToVolume(duration=1, volume=127),
 	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["EVENT_723_run_event_as_subroutine_20"]),

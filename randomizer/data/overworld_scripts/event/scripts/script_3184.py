@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 54),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW54_COAL_MINES_NAME_ONLY),
 	JmpIfBitSet(TEMP_7042_0, ["EVENT_3184_set_bit_3"]),
 	JmpToSubroutine(["EVENT_3183_jmp_if_bit_set_4"]),
 	SetBit(TEMP_7042_0, identifier="EVENT_3184_set_bit_3"),

@@ -1,4 +1,4 @@
-# E2191_EMPTY
+# E2191_MARIO_DOLL_ERROR_MSG
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,8 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    JmpIfBitSet(RETURNED_MARIO_DOLL, ["EVENT_2191_end"]),
+	RunDialog(dialog_id=DI2022_NEED_MARIO_DOLL, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	ReturnAll(),
+    Return(identifier="EVENT_2191_end"),
 ])

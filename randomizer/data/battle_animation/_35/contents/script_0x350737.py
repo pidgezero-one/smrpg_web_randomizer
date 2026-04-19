@@ -244,7 +244,7 @@ script = AnimationScriptBlock(expected_size=792, expected_beginning=0x350737, sc
 	Jmp(["command_0x3509AE"]),
 	UnknownCommand(bytearray([0x3C, 0x00, 0x08]), identifier="command_0x350A4F"),
 	Jmp(["command_0x3509F7"]),
-    Set7FToAMEM8Bit(amem=0x62, address=0x7FFFB0, identifier="bobomb_obj_seq_13"),
+    SetAMEM8BitTo7F(amem=0x62, address=0x7FFFB0, identifier="bobomb_obj_seq_13"),
     JmpIfAMEM8BitEqualsConst(0x62, 100, ["object_sequence_13_for_set_0-1-2-3_bobomb_s_159_b1"]),
     SetAMEM8BitTo7F(amem=0x66, address=BOBOMB_S_159_DIRECTION),
     JmpIfAMEM8BitEqualsConst(0x66, 1, ["object_sequence_13_for_set_0-1-2-3_bobomb_s_159_shortcut"]),

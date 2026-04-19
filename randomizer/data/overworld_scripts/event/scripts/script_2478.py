@@ -34,28 +34,15 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 39),
-	SummonObjectToSpecificLevel(NPC_0, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_1, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_3, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_4, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_5, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_6, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_7, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_9, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_10, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_11, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW45_BEAN_VALLEY),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetWalkingSpeed(FASTEST),
 		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
 		A_WalkNortheastPixels(5),
 		A_WalkNorthPixels(5),
 		A_WalkWestPixels(2),
-		A_JmpIfBitClear(TEMP_708C_4, ["EVENT_2478_action_queue_11_SUBSCRIPT_set_sprite_sequence_8"]),
 		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True),
 		A_ReturnQueue(),
-		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True, identifier="EVENT_2478_action_queue_11_SUBSCRIPT_set_sprite_sequence_8"),
-		A_VisibilityOff()
 	]),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_SetWalkingSpeed(FASTEST),
@@ -64,13 +51,9 @@ script = EventScript([
 		A_WalkEastPixels(4),
 		A_WalkNorthPixels(1),
 		A_WalkWestPixels(2),
-		A_JmpIfBitClear(TEMP_708C_4, ["EVENT_2478_action_queue_12_SUBSCRIPT_set_sprite_sequence_9"]),
 		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True),
 		A_ReturnQueue(),
-		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True, identifier="EVENT_2478_action_queue_12_SUBSCRIPT_set_sprite_sequence_9"),
-		A_VisibilityOff()
 	]),
-	JmpIfBitClear(TEMP_708C_4, ["EVENT_2478_set_7000_to_object_coord_15"]),
 	SetSyncActionScript(NPC_2, A0015_DO_NOTHING),
 	Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Y, pixel=True, bit_7=True, identifier="EVENT_2478_set_7000_to_object_coord_15"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 27, ["EVENT_2478_freeze_camera_19"]),

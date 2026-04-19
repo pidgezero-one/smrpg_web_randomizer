@@ -38,6 +38,6 @@ script = EventScript([
 	RunEventAtReturn(E1894_ABYSS_BOSS_2),
 	Return(),
 	FadeInFromBlack(sync=False, identifier="EVENT_1893_fade_in_from_black_async_3"),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 5),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW05_GATE),
 	Return()
 ])

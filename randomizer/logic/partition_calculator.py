@@ -270,6 +270,8 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         # min_vram_size sizing for that dedicated allocation (handled in
         # step 5b / step 7), not whether the NPC clones.
         force_cc = obj.cannot_clone is True
+        if room_id == 255:
+            print(f"[PARTITION DBG] Room 255 INPUT: obj[{i}] sprite={sprite_id} obj.cannot_clone={obj.cannot_clone!r} type={type(obj).__name__} force_cc={force_cc}")
 
         npc_infos.append(NPCInfo(
             obj_index=i,
@@ -387,9 +389,49 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         new_buffer_types[2] = BufferType.COINS
 
     sprite_to_new_buffer: dict[int, int] = {}
+    # main_buffer_space overrides produced by vanilla_sprite_buffer_pins
+    pinned_slot_bufspace: dict[int, BufferSpace] = {}
+
+    # Step 4a: Apply vanilla_sprite_buffer_pins — if an NPC's current sprite
+    # matches its vanilla sprite, force that sprite into the pinned slot
+    # before the greedy loop runs.  These overrides bypass NPC-order sorting
+    # because the room explicitly declares the desired placement.
+    from ..types.room import Room as ExtRoomForPins
+    if isinstance(room, ExtRoomForPins) and room.vanilla_sprite_buffer_pins:
+        assert world._vanilla_room_states is not None
+        vanilla_state_for_pins = world._vanilla_room_states.get(room_id)
+        if vanilla_state_for_pins is not None:
+            for npc_idx, (slot_idx, bufspace) in room.vanilla_sprite_buffer_pins.items():
+                if npc_idx >= len(room.objects) or npc_idx >= len(vanilla_state_for_pins.npcs):
+                    continue
+                if slot_idx < 0 or slot_idx >= 3:
+                    continue
+                current_sprite = room.objects[npc_idx]._npc.sprite_id
+                vanilla_sprite = vanilla_state_for_pins.npcs[npc_idx].sprite_id
+                if current_sprite != vanilla_sprite:
+                    continue  # Sprite replaced — pin is ignored
+                if current_sprite not in sprite_to_type:
+                    continue  # Not a gridplane sprite we can pin
+                if new_buffer_types[slot_idx] != BufferType.EMPTY_3:
+                    continue  # Slot reserved (chest/coin) or already pinned
+                btype = sprite_to_type[current_sprite]
+                new_buffer_types[slot_idx] = btype
+                sprite_to_new_buffer[current_sprite] = slot_idx
+                buffered_sprite_ids.add(current_sprite)
+                pinned_slot_bufspace[slot_idx] = bufspace
+
+    # Step 4b: Greedy placement of the remaining unplaced buffers,
+    # tracking `next_slot` to enforce NPC-order → slot-order for non-pinned
+    # sprites.  The initial `next_slot` starts past any pinned slot so we
+    # don't disturb pin placements; sprites whose first NPC appears before
+    # all pins still get to use earlier empty slots via their own iteration.
+    unplaced_buffers = [
+        (sid, bt) for sid, bt in selected_buffers
+        if sid not in sprite_to_new_buffer
+    ]
     next_slot = 0
 
-    for idx, (sprite_id, btype) in enumerate(selected_buffers):
+    for idx, (sprite_id, btype) in enumerate(unplaced_buffers):
         # Slots that are empty AND at or after next_slot
         candidates = [
             s for s in range(next_slot, 3)
@@ -403,7 +445,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
 
         # Reserve space for remaining buffers: each still-to-be-placed
         # buffer needs its own slot strictly after `chosen`.
-        remaining_after_this = len(selected_buffers) - idx - 1
+        remaining_after_this = len(unplaced_buffers) - idx - 1
 
         def free_after(s: int) -> int:
             return sum(
@@ -496,6 +538,13 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                 if orig_buf.buffer_type == btype:
                     new_index_in_main[i] = orig_buf.index_in_main_buffer
                     break
+
+    # Apply vanilla_sprite_buffer_pins buffer_space overrides (step 4a pins).
+    # These take precedence over vanilla-carry-over but lose to step 5b's
+    # animation-based sizing if that computes a larger value.
+    for slot_idx, pinned_space in pinned_slot_bufspace.items():
+        if pinned_space.value > new_buffer_space[slot_idx].value:
+            new_buffer_space[slot_idx] = pinned_space
 
     # =========================================================================
     # Step 5b: Compute animation-based buffer space / min_vram_size
@@ -623,8 +672,8 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     # Step 6: Apply buffer changes to the existing partition
     # =========================================================================
-    if world.settings.debug_mode and room_id == 254:
-        print(f"[PARTITION DBG] Room 254:")
+    if room_id == 255:
+        print(f"[PARTITION DBG] Room 255:")
         for i, obj in enumerate(room.objects):
             npc_info = next((n for n in npc_infos if n.obj_index == i), None)
             fc = npc_info.force_cannot_clone if npc_info else "?"

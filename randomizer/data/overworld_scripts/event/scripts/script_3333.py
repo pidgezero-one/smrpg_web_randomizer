@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 50, identifier="EVENT_3333_set_var_to_const_0"),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW50_BARREL_VOLCANO, identifier="EVENT_3333_set_var_to_const_0"),
 	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
 	Set7000ToCurrentLevel(),
 	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 361, ["EVENT_3333_jmp_if_var_not_equals_short_5"]),

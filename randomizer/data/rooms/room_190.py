@@ -207,7 +207,7 @@ room = Room(
         RegularNPC(  # 0
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E0411_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_REPEATING_SHYSTERS,
+            event_script=E0412_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_REPEATING_SHYSTERS,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=2,
@@ -235,9 +235,9 @@ room = Room(
             obtuse_axis=UInt4(3),
             height=UInt8(11),
         ),
-        RegularClone(  # 1
+        RegularNPC(  # 1
             npc=npcs.SHYSTER_NPC,
-            event_script=E1278_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_HENCHMAN,
+            event_script=E0412_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_REPEATING_SHYSTERS,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=2,
@@ -249,9 +249,9 @@ room = Room(
             obtuse_axis=UInt4(3),
             height=UInt8(11),
         ),
-        RegularClone(  # 2
+        RegularNPC(  # 2
             npc=npcs.SHYSTER_NPC,
-            event_script=E1277_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_HENCHMAN,
+            event_script=E0412_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_REPEATING_SHYSTERS,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=6,

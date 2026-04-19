@@ -347,7 +347,6 @@ script = EventScript([
 	RemoveObjectFromCurrentLevel(NPC_2),
 	RemoveObjectFromCurrentLevel(NPC_3),
 	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=1),
-	SetBit(CURTAIN_MINIGAME_COMPLETED),
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	UnfreezeCamera(),
 	JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_1368_summon_to_level_94"]),

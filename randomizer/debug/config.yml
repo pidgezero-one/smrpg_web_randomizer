@@ -36,7 +36,7 @@ items:
     - RockCandyItem
     - RockCandyItem
   override:
-    StartingItem1Location: MarioDollPrize
+    StartingItem1Location: BrightCardPrize
     StartingItem2Location: BambinoBombPrize
     StartingItem3Location: CastleKey1Prize
     StartingItem4Location: CastleKey2Prize

@@ -175,7 +175,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3),
-        RegularClone( # 3
+        RegularNPC( # 3
             npc=npcs.NIMBUS_GUARD_NPC,
             event_script=E3928_NIMBUS_CASTLLE_4_WAY_PATH_RIGHT_GUARD,
             action_script=A0119_SLOW_SEQUENCE_LOOP,

@@ -34,55 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfBitSet(TEMP_708C_4, ["EVENT_2563_freeze_camera_28"]),
-	SetBit(TEMP_708C_4),
-	SetBit(UNKNOWN_BEANSTALK_707F_1),
-	PlaySound(sound=SO049_BIG_SHELL_HIT, channel=6),
-	FreezeCamera(),
-	Pause(32),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_WalkToXYCoords(x=26, y=29),
-		A_FaceNortheast()
-	]),
-	Pause(80),
-	PlaySound(sound=SO127_LIGHT_RATTLE, channel=6),
-	SummonObjectToCurrentLevel(NPC_0),
-	SetSyncActionScript(NPC_2, A0015_DO_NOTHING),
-	PlaySound(sound=SO128_FLOATING_HOVERING, channel=6),
-	ActionQueueSync(target=NPC_0, subscript=[
-		A_SetSpriteSequence(index=0, looping=False),
-		A_Pause(64),
-		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True)
-	]),
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_WalkNorthSteps(6)
-	]),
-	ActionQueueSync(target=MARIO, subscript=[
-		A_Pause(16),
-		A_SetSpriteSequence(index=3, sprite_offset=2, is_sequence=True, looping=True)
-	]),
-	Pause(40),
-	SummonObjectToCurrentLevel(NPC_1),
-	ActionQueueAsync(target=NPC_1, subscript=[
-		A_SetSpriteSequence(index=0, looping=False),
-		A_Pause(64),
-		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True)
-	]),
-	Pause(8),
-	PlaySound(sound=SO000_SILENCE, channel=6),
-	Pause(48),
-	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
-		A_WalkSouthSteps(7)
-	]),
-	Pause(16),
-	ActionQueueSync(target=MARIO, subscript=[
-		A_Pause(56),
-		A_ResetProperties()
-	]),
-	StopEmbeddedActionScript(MARIO),
-	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	UnfreezeCamera(),
-	Jmp(["EVENT_2563_ret_37"]),
 	FreezeCamera(identifier="EVENT_2563_freeze_camera_28"),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetVRAMPriority(NORMAL_PRIORITY)

@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 49),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW49_NIMBUS_LAND),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_TransferXYZFPixels(x=0, y=0, z=2, direction=EAST)
 	]),

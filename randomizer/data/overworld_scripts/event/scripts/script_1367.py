@@ -493,6 +493,7 @@ script = EventScript([
 	JmpIfBitSet(TEMP_7043_1, ["EVENT_1367_stop_music_FDA2_273"]),
 	Pause(1),
 	EndLoop(),
+    EnableObjectTrigger(NPC_5),
 	EnableControlsUntilReturn([]),
 	Jmp(["EVENT_1368_stop_music_FDA2_0"]),
 	StopMusicFDA2(identifier="EVENT_1367_stop_music_FDA2_273"),

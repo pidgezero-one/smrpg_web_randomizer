@@ -8,6 +8,7 @@ from ..data.rooms.npcs import ALLY_CLONE_NPC
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 from smrpgpatchbuilder.datatypes.levels.classes import (
+    BufferSpace,
     EffectsNpc,
     GLOWING_SAVE_POINT_NPC_BYTES,
     GLOWING_SAVE_POINT_NPC_INDEX,
@@ -31,6 +32,11 @@ class Room(RoomBase):
     extra_sprite_actions: list[SpriteAnimationState]
     adjacent_rooms: list[int]  # List of adjacent room indices for EXP star buffer propagation
     npc_expected_animations: dict[int, list[str]]  # NPC obj index → list of SpriteAnimationCollection attribute names
+    # If the NPC at obj_index still has its vanilla sprite after shuffling,
+    # pin that sprite into (slot_index, main_buffer_space) with cannot_clone=False.
+    # If the NPC's sprite was replaced, the pin is ignored and the partition
+    # calculator proceeds normally.
+    vanilla_sprite_buffer_pins: dict[int, tuple[int, BufferSpace]]
 
     def __init__(
         self,
@@ -38,12 +44,14 @@ class Room(RoomBase):
         extra_sprite_actions: list[SpriteAnimationState] | None = None,
         adjacent_rooms: list[int] | None = None,
         npc_expected_animations: dict[int, list[str]] | None = None,
+        vanilla_sprite_buffer_pins: dict[int, tuple[int, BufferSpace]] | None = None,
         **kwargs,
     ):
         super().__init__(*args, **kwargs)
         self.extra_sprite_actions = extra_sprite_actions or []
         self.adjacent_rooms = adjacent_rooms or []
         self.npc_expected_animations = npc_expected_animations or {}
+        self.vanilla_sprite_buffer_pins = vanilla_sprite_buffer_pins or {}
 
     def update_partition_by_protagonist(self, world: GameWorld) -> None:
         if self.partition is None:

@@ -226,6 +226,11 @@ class MariocloneHenchman(HenchmanNPC):
     """Mario clone henchman NPC for boss fights."""
 
     _base = MARIO_CLONE_WALKING_DOWN_LEFT_NPC
+    _animations = SpriteAnimationCollection(
+        tower_bullet=SpriteAnimation(sequence_id=5, contact_frame=0, total_duration=16),
+        kitchen_prep=SpriteAnimation(sequence_id=14, contact_frame=0, total_duration=36),
+        factory_pierce=SpriteAnimation(sequence_id=14, contact_frame=0, total_duration=36),
+    )
 
 
 class MallowcloneHenchman(HenchmanNPC):

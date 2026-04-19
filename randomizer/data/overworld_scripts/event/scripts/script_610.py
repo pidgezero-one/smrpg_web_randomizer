@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 28),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW28_MARRYMORE),
 	Set0158Bit7Offset(0x0158),
 	ClearBit(TEMP_7042_0),
 	ClearBit(TEMP_7042_1),

@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 24),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW24_MOLEVILLE),
 	FadeOutMusicToVolume(duration=1, volume=127),
 	JmpIfBitSet(MINECART_CLEARED, ["EVENT_1644_enter_area_7"]),
 	JmpIfBitSet(MOLE_DESCENDED, ["EVENT_1644_jmp_6"]),

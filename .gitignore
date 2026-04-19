@@ -149,3 +149,6 @@ lazyshell/Lunar Compress.dll
 
 # Placement debug logs
 randomizer/debug/placement_logs/
+
+# Terminal Paste Image folder
+.cp-images/

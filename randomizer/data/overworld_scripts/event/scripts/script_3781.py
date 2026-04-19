@@ -47,7 +47,7 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	Pause(1, identifier="EVENT_3781_pause_5"),
 	JmpIfMarioInAir(["EVENT_3781_pause_5"]),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 49),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW49_NIMBUS_LAND),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3781_ret_11"]),
 	RunEventAsSubroutine(E3912_NIMBUS_STAR_PIECE_SIGNAL),

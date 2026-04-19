@@ -131,7 +131,7 @@ MARIO_WALKING_DOWN_LEFT_NPC = NPC(
     byte6_bit2=False,
 )
 MARIO_CLONE_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=SPR0990_MARIO_NONPROTAGONIST_1,
+    sprite_id=SPR0409_MARIO_CLONE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,

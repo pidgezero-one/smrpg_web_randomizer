@@ -139,7 +139,11 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
     """
     from ...types.flags import (
         PoisonMushroom, UncapSuperJumps, NoGenoWhirlExor, FixMagikoopa,
-        NoOHKO, EnemySpells,
+        NoOHKO, EnemySpells, Punchinello2BobombDifficulty,
+        Punchinello2BobombDifficultyOptions,
+    )
+    from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands import (
+        JmpIfAMEM8BitLessThanConst,
     )
     from ...data.items.items import MushroomItem2, CarboCookieItem
     from ...data.enemies.enemies import KINGBOMBEnemy
@@ -154,7 +158,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
         PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
         MeteorSwarmSpell, WeirdMushroomSpell, BreakerBeamSpell, ShredderSpell,
         SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell, BigBangSpell,
-        EnemySpell, EscapeSpell, Engine023Spell, WeirdMushroomSpell
+        EnemySpell, EscapeSpell, Engine023Spell
     )
     from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import (
         DoNothing,
@@ -224,7 +228,7 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             StaticESpell, SandStormSpell, BlizzardSpell, DrainBeamSpell,
             MeteorBlastSpell, LightBeamSpell, WaterBlastSpell, SolidifySpell,
             PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
-            MeteorSwarmSpell, WeirdMushroomSpell, BreakerBeamSpell, ShredderSpell,
+            MeteorSwarmSpell, BreakerBeamSpell, ShredderSpell,
             SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell,
         ]
         for script in world.monster_scripts.scripts:
@@ -238,3 +242,24 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
                         cmd.set_spell_2(random.choice(spell_pool))
                     if cmd.spell_3 is not None and cmd.spell_3 not in excluded_spells:
                         cmd.set_spell_3(random.choice(spell_pool))
+
+    # Punchinello 2 Strong Bob-Omb facing-direction likelihood
+    p2bobomb_value_map = {
+        Punchinello2BobombDifficultyOptions.PERCENT_0: 0,
+        Punchinello2BobombDifficultyOptions.PERCENT_25: 1,
+        Punchinello2BobombDifficultyOptions.PERCENT_50: 2,
+        Punchinello2BobombDifficultyOptions.PERCENT_75: 3,
+        Punchinello2BobombDifficultyOptions.PERCENT_100: 4,
+    }
+    for option, value in p2bobomb_value_map.items():
+        if world.settings.is_flag_value(Punchinello2BobombDifficulty, option):
+            for identifier in (
+                "bobomb_roll_output_1",
+                "bobomb_roll_output_2",
+                "bobomb_roll_output_3",
+                "bobomb_roll_output_4",
+            ):
+                world.battle_animations[0x3A].get_command_by_name(
+                    identifier, JmpIfAMEM8BitLessThanConst
+                ).set_value(value)
+            break

@@ -1,4 +1,4 @@
-dialog_data = [""]*633
+dialog_data = [""]*634
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -1709,3 +1709,4 @@ dialog_data[629] = '''[center]Got the “[0x70A7]”![await]'''
 dialog_data[630] = '''   Found the “[0x70A7]”![end]'''
 dialog_data[631] = '''Got “[0x70A7]”![end]'''
 dialog_data[632] = '''Got the “[0x70A7]”![end]'''
+dialog_data[633] = '''[center]Need the “Mario Doll” to unlock[await]'''

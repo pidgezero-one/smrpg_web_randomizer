@@ -34,11 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfBitClear(TEMP_708C_4, ["EVENT_1601_set_var_to_const_4"]),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 43),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW43_LANDS_END),
 	ExitToWorldMap(area=OW43_LANDS_END, bit_6=True, bit_7=True),
 	Return(),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 37, identifier="EVENT_1601_set_var_to_const_4"),
-	ExitToWorldMap(area=OW37_LANDS_END, bit_6=True, bit_7=True),
-	Return()
 ])

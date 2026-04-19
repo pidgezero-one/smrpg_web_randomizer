@@ -152,7 +152,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=False,
+            cannot_clone=True,
             show_shadow=True),
         RegularNPC( # 1
             npc=npcs.SNIFIT_NPC_2,
@@ -234,7 +234,7 @@ room = Room(
         RegularNPC( # 5
             npc=npcs.MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E1360_CURTAIN_1,
+            event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=3,
@@ -354,6 +354,13 @@ room = Room(
         SpriteAnimationState.SURPRISE_FRAME,
     ],
     npc_expected_animations={
-        0: ["chapel_laugh", "tower_crying", "tpose"]
+        0: ["chapel_laugh", "tower_crying", "tpose"],
+    },
+    vanilla_sprite_buffer_pins={
+        # Snifit curtain-game animations need 768 bytes of extra VRAM in the
+        # snifit sprite's clone buffer. Only applies when NPCs 1-3 still have
+        # the vanilla SNIFIT_NPC_2 sprite; if shuffled out, normal partition
+        # calculation takes over.
+        1: (0, BufferSpace.BYTES_768),
     }
 )

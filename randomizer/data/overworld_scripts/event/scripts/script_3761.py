@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 49),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW49_NIMBUS_LAND),
     JmpIfBitSet(NIMBUS_MAINLAND_UNLOCKED, ["EVENT_3761_s"]),
     SummonObjectToCurrentLevel(NPC_2),
 	ActionQueueAsync(target=NPC_2, subscript=[

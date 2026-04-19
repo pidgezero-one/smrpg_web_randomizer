@@ -1039,6 +1039,15 @@ class FrogCoinPrize(StandardPrize):
         )
 
     @property
+    def hill_grant(self) -> EventScript:
+        return EventScript(
+            [
+                SetVarToConst(PRIMARY_TEMP_7000, self.amount),
+                JmpToEvent(E0211_HILL_GET_FROG_COINS),
+            ]
+        )
+
+    @property
     def amount(self) -> int:
         return self._amount
 

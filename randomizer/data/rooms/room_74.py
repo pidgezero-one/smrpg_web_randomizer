@@ -225,7 +225,7 @@ room = Room(
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SWIM,
-        SpriteAnimationState.DISPLEASED_FRONT,
+        SpriteAnimationState.AWAIT_TADPOLE,
     ],
     effects_npc=EffectsNpc.SAVE_POINT_NPC3,
 )

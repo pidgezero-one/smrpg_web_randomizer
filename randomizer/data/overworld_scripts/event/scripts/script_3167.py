@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 24),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW24_MOLEVILLE),
 	JmpIfBitClear(TEMP_7044_7, ["EVENT_3167_stop_sound_3"]),
 	SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	StopSound(identifier="EVENT_3167_stop_sound_3"),

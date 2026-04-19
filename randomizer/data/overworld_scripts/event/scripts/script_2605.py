@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 1),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW01_INNER_FACTORY),
 	JmpIfBitClear(FAST_TRAVEL_ENABLED, ["EVENT_2605_run_event_as_subroutine_3"]),
 	SummonObjectToCurrentLevel(NPC_9),
 	RunEventAsSubroutine(E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_2605_run_event_as_subroutine_3"),

@@ -37,7 +37,7 @@ script = EventScript([
 	JmpIfBitClear(CARBO_COOKIE_GIVEN, ["EVENT_1649_set_var_to_const_6"]),
 	RemoveObjectFromCurrentLevel(NPC_7),
 	RemoveObjectFromSpecificLevel(NPC_7, R108_MOLEVILLE_OUTSIDE),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 24, identifier="EVENT_1649_set_var_to_const_6"),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW24_MOLEVILLE, identifier="EVENT_1649_set_var_to_const_6"),
 	FadeOutMusicToVolume(duration=1, volume=127),
 	ActionQueueSync(target=NPC_7, subscript=[
 		A_ShiftZDownPixels(5)

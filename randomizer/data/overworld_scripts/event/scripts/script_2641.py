@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 1),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW01_INNER_FACTORY),
 	JmpIfBitClear(FAST_TRAVEL_ENABLED, ["EVENT_2641_action_queue_3"]),
 	SummonObjectToCurrentLevel(NPC_8),
 	ActionQueueAsync(target=NPC_7, subscript=[

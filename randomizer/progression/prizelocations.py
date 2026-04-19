@@ -1823,7 +1823,7 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_2
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, FrogCoinPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize, FrogCoinPrize, SlotsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 45),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -8043,8 +8043,9 @@ class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 254),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS, ["next"]),
+        JmpIfBitClear(LANDS_END_GATED, ["lands_end_grotto_end_chest_sewers_closed"]),
+        JmpIfBitSet(SEWERS_CLOSED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS, ["next"], identifier="lands_end_grotto_end_chest_sewers_closed"),
         Jmp(["lands_end_grotto_hint_text"])
     ]
 
@@ -10807,7 +10808,7 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_BUSINESS_CENTRE
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [SlotsPrize]
+    _blacklist = [SlotsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 347),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -11107,7 +11108,7 @@ class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_CHEST
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = []
+    _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 356),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -11446,7 +11447,7 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 358),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -11479,7 +11480,7 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 359),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),

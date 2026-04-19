@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 24),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW24_MOLEVILLE),
 	JmpIfBitSet(TEMP_7044_6, ["EVENT_1648_set_bit_15"]),
 	JmpIfBitSet(TEMP_7044_7, ["EVENT_1648_fade_in_from_black_sync_9"]),
 	FadeInFromBlack(sync=False),

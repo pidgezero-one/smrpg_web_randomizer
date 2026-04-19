@@ -345,6 +345,10 @@ def randomize_enemy_attacks_and_spells(world: GameWorld) -> None:
         new_hit_rate = mutate_normal(int(attack.hit_rate), minimum=1, maximum=max_hit)
         attack.set_hit_rate(new_hit_rate)
 
+        # Punchinello 2 Bob-Omb Blast (attack 78) must always hit
+        if int(attack.index) == 78:
+            attack.set_hit_rate(100)
+
 
 def randomize_enemy_stats(world: GameWorld) -> None:
     """Randomize enemy stats based on EnemyStats flag setting."""
@@ -354,6 +358,14 @@ def randomize_enemy_stats(world: GameWorld) -> None:
         SMITHYSafeEnemy2,
         SMITHYMageEnemy,
         SMITHYChestEnemy,
+        STRONGBOBOMB1Enemy,
+        STRONGBOBOMB2Enemy,
+        STRONGBOBOMB3Enemy,
+        STRONGBOBOMB4Enemy,
+    )
+    strong_bobomb_types = (
+        STRONGBOBOMB1Enemy, STRONGBOBOMB2Enemy,
+        STRONGBOBOMB3Enemy, STRONGBOBOMB4Enemy,
     )
     from randomizer.types.flags import EnemyStats, EnemyStatsShuffleOptions
     from randomizer.types.enemy import Enemy as CustomEnemy
@@ -469,6 +481,15 @@ def randomize_enemy_stats(world: GameWorld) -> None:
                 clamped_val = max(min_allowed, min(max_allowed, current_val))
                 setter = getattr(enemy, f"set_{attr}")
                 setter(clamped_val)
+
+            # Strong Bob-Ombs in Punchinello 2: hp/attack/defense can rise but never drop
+            if isinstance(enemy, strong_bobomb_types):
+                for attr in ("hp", "attack", "defense"):
+                    original_val = orig[attr]
+                    current_val = int(getattr(enemy, attr))
+                    if current_val < original_val:
+                        setter = getattr(enemy, f"set_{attr}")
+                        setter(original_val)
 
             # For bosses, don't let stats go below vanilla values
             if enemy.ohko_immune:

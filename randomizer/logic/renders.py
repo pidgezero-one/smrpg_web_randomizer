@@ -408,7 +408,6 @@ def render_booster_tower_indoor_boss(
         ("tower_henchman_curtain_aqueue_36", "tower_henchman_curtain_36"),
         ("tower_henchman_curtain_aqueue_37", "tower_henchman_curtain_37"),
         ("tower_henchman_curtain_aqueue_38", "tower_henchman_curtain_38"),
-        ("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_39"),
     ]
     as_deletions = [
         "EVENT_576_open_curtain_async_26",
@@ -424,6 +423,8 @@ def render_booster_tower_indoor_boss(
             world.event_scripts.delete_subscript_command_by_identifier(eid, aid)
         for aid in as_deletions:
             world.action_scripts.delete_command_by_identifier(aid)
+    if not is_vanilla:
+        world.event_scripts.delete_subscript_command_by_identifier("tower_henchman_curtain_aqueue_39", "tower_henchman_curtain_39")
 
     # T-pose replacements
     tpose_replacements = [

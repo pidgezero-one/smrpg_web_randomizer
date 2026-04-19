@@ -46,7 +46,7 @@ script = EventScript([
 	]),
 	Pause(2),
 	FadeInFromBlack(sync=False),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 39),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW45_BEAN_VALLEY),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3787_ret_9"]),
 	RunEventAsSubroutine(E3911_BEAN_VALLEY_STAR_PIECE_SIGNAL),

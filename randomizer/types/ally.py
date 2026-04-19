@@ -55,6 +55,7 @@ class SpriteAnimationState(str, Enum):
     PRINCE_JOY = "prince_joy"
     HAMMER = "hammer"
     HAMMER_STATIC = "hammer_static"
+    AWAIT_TADPOLE = "await_tadpole"
     # Extra sprite actions (merged from ExtraSpriteActions)
     SWIM = "swim"
     WHIRL = "whirl"

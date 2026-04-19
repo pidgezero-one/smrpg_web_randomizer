@@ -56,7 +56,7 @@ script = EventScript([
 	SummonObjectToSpecificLevel(NPC_13, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS),
 	Set7000ToCurrentLevel(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 33, ["EVENT_455_set_var_to_const_40"]),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 20),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW20_PIPE_VAULT),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_WalkEastPixels(11),
 		A_WalkNortheastPixels(4),
@@ -81,7 +81,7 @@ script = EventScript([
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_455_ret_39"]),
 	RunEventAsSubroutine(E3901_YOSTER_ISLE_STAR_PIECE_SIGNAL),
 	Return(identifier="EVENT_455_ret_39"),
-	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 52, identifier="EVENT_455_set_var_to_const_40"),
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW52_YOSTER_ISLE, identifier="EVENT_455_set_var_to_const_40"),
 	JmpIfBitSet(TEMP_7044_7, ["EVENT_455_run_event_as_subroutine_35"]),
 	FadeInFromBlack(sync=False),
 	Return()

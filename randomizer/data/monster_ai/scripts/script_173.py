@@ -1,4 +1,4 @@
-# 185 - STRONGBOBOMB4Enemy
+# 173 - STRONGBOBOMB4Enemy
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
