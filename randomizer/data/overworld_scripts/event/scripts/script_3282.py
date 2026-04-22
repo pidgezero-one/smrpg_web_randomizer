@@ -93,7 +93,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1208_SHIP_END_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(),
-	JmpIfBitClear(JOHNNY_POSITION, ["ship_postgame_check"], identifier="EVENT_3282_jmp_if_bit_clear_27"),
+	JmpIfBitClear(JOHNNY_POSITION, ["EVENT_3282_jmp_to_event_30"], identifier="EVENT_3282_jmp_if_bit_clear_27"),
 	SetSyncActionScript(NPC_0, A0015_DO_NOTHING),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_ShiftToXYCoords(x=24, y=110),
@@ -102,12 +102,4 @@ script = EventScript([
 		A_FaceNorthwest()
 	]),
 	JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_3282_jmp_to_event_30"),
-    JmpIfBitSet(POSTGAME_SHIP_COMPLETED, ["bring_back_original_npc"], identifier="ship_postgame_check"),
-	JmpIfBitClear(STAY_VOUCHER_USED, ["EVENT_3282_jmp_to_event_30"]),
-    RemoveObjectFromCurrentLevel(NPC_0),
-    SummonObjectToCurrentLevel(NPC_7),
-    Jmp(["EVENT_3282_jmp_to_event_30"]),
-    RemoveObjectFromCurrentLevel(NPC_7, identifier="bring_back_original_npc"),
-    SummonObjectToCurrentLevel(NPC_0),
-    Jmp(["EVENT_3282_jmp_to_event_30"]),
 ])

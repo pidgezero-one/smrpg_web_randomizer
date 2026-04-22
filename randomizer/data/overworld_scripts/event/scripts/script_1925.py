@@ -35,16 +35,19 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 528),
+    SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	RestoreAllHP(),
 	RestoreAllFP(),
-	RemoveObjectFromCurrentLevel(NPC_10),
-	FadeInFromBlack(sync=False),
 	SetBit(POSTGAME_TOWER_COMPLETED),
-	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
-	RunEventAsSubroutine(E1202_POSTGAME_TOWER_CURTAIN_BOSS_UNLOCKS),
-	SetVarToConst(PRIMARY_TEMP_7000, 528),
-	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
+	EnterArea(
+        room_id=R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
+        face_direction=NORTHEAST,
+        x=27,
+        y=91,
+        z=0,
+        run_entrance_event=True,
+	)
 ])
 

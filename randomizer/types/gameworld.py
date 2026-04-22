@@ -1181,9 +1181,9 @@ class GameWorld:
                 SetBit(SHOGUN_4_CLEARED),
                 SetBit(SHOGUN_5_CLEARED),
             ]
-        if not self.settings.isflag_enabled(ShuffleMarioDoll):
+        if self.settings.isflag_enabled(ShuffleMarioDoll):
             self.event_2496_startup += [
-                SetBit(RETURNED_MARIO_DOLL),
+                SetBit(MARIO_DOLL_SHUFFLE_ENABLED),
             ]
 
         # Apply progression gating settings (win conditions, area gates, travel)
@@ -2013,6 +2013,14 @@ class GameWorld:
         # doorframe mod (2×2 at (10,17) with tile 0xC2). Same 8-byte size.
         patch.add_data(0x1D9823, bytearray([0x0A, 0x11, 0x11, 0xAA, 0xC2, 0xC2, 0xC2, 0xC2]))
 
+        # Ending credits star piece sequence #8 hardcodes sprite 388 at $C3/5516
+        # (LDX #$0184; STX $74), which in v9 now lives in the enemy-reserved range
+        # and renders Poundette. Redirect the load to sprite 725 (Geno Redemption).
+        patch.add_data(0x035517, bytes([
+            SPR0725_GENO_REDEMPTION & 0xFF,
+            (SPR0725_GENO_REDEMPTION >> 8) & 0xFF,
+        ]))
+
         # Battle init: copy overworld party count ($00:303F) to battle party size ($00:0926).                                        
         # Replaces the linear zero-fill at $C2:A2BD with a loop + party size copy.                                                   
         # Original: 8 individual STA $7EE0xx instructions (39 bytes).                                                                
@@ -2152,6 +2160,44 @@ class GameWorld:
             0xA5, 0x1C,                    # LDA $1C       ; restore A = packet ID
             0x38,                          # SEC
             0x60,                          # RTS
+        ]))
+
+        # Room area-layout rewrites (18-byte records at $1D0040 + room_id * 18).
+        # Byte layout matches LAZYSHELL-UPDATED LevelLayer.cs:
+        #   0  map ID  (MAPS panel)
+        #   1  message box (0xFE = {NONE}; non-zero uses ((msg-1)<<1))
+        #   2  mask left (bits 0-6) | lock-scrolling (bit 7)
+        #   3  mask top
+        #   4  mask right
+        #   5  mask bottom
+        #   6  L2 -X shift
+        #   7  L2 +Y shift
+        #   8  L3 -X shift
+        #   9  L3 +Y shift (bits 0-6) | infinite-scrolling (bit 7)
+        #   10 scroll-wrap bits (L1HZ,L1VT,culexA,L2HZ,L2VT,culexB,L3HZ,L3VT)
+        #   11 scroll-sync bits (2 bits per L2HZ/L2VT/L3HZ/L3VT)
+        #   12 L2 auto-scroll (dir bits 3-5, speed bits 0-2, bit 7)
+        #   13 L3 auto-scroll
+        #   14 priority set (bits 0-3) | rippling-water (bit 4)
+        #   15 L3 animation effect (byte-valued per doc_area-layout.txt)
+        #   16 effects-NPC (byte-valued; RoomCollection only writes when != 0,
+        #      so explicitly zeroing here is safe)
+        # RoomCollection.render() otherwise doesn't touch this record.
+
+        # Room 3 — map 107, priority set 10, mask L=40/T=48/R=63/B=63, rippling pond water on L3
+        patch.add_data(0x1D0076, bytes([
+            0x6B, 0xFE, 0x28, 0x30, 0x3F, 0x3F, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x05, 0x00,
+        ]))
+        # Room 4 — map 13, priority set 10, mask L=40/T=48/R=63/B=63, rippling pond water on L3
+        patch.add_data(0x1D0088, bytes([
+            0x0D, 0xFE, 0x28, 0x30, 0x3F, 0x3F, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x05, 0x00,
+        ]))
+        # Room 50 — map 79 (same as room 154), priority set 0, mask R=63/B=63, talking organ pipes on L3
+        patch.add_data(0x1D03C4, bytes([
+            0x4F, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00,
         ]))
 
         # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).

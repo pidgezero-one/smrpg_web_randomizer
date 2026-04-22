@@ -285,6 +285,7 @@ script = EventScript([
 	]),
 	Pause(20),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+    SetBit(CURTAIN_MINIGAME_COMPLETED),
 	Pause(45),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_FaceSoutheast()

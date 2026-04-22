@@ -40,14 +40,22 @@ script = EventScript([
 		A_TransferXYZFPixels(x=0, y=3, z=0, direction=EAST)
 	]),
 	ApplySolidityModToLevel(permanent=True, room_id=R153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY, mod_id=0),
-	JmpIfBitSet(TEMP_7044_7, ["EVENT_641_run_event_as_subroutine_7"]),
 	FadeInFromBlack(sync=False),
-	JmpIfBitSet(MARRYMORE_LIBERATED, ["EVENT_256_ret_0"]),
+	JmpIfBitSet(TEMP_7044_7, ["EVENT_641_run_event_as_subroutine_7"]),
+	JmpIfBitSet(MARRYMORE_LIBERATED, ["EVENT_641_fade_in_from_black_async_10"]),
 	SetBit(SANCTUARY_LOCKED),
 	Return(),
 	RunEventAsSubroutine(E0081_MARIO_LANDS_SUBROUTINE, identifier="EVENT_641_run_event_as_subroutine_7"),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_641_ret_11"]),
 	RunEventAsSubroutine(E3902_MARRYMORE_STAR_PIECE_SIGNAL),
-	Return(identifier="EVENT_641_ret_11")
+	Return(identifier="EVENT_641_ret_11"),
+    JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_641_ret_11"], identifier="EVENT_641_fade_in_from_black_async_10"),
+    
+	SetVarToConst(PRIMARY_TEMP_7000, 529),
+	RunEventAsSubroutine(E0181_NPC_QUEST_4_CONTAINER),
+	RunEventAsSubroutine(E1205_POSTGAME_CHAPEL_BOSS_UNLOCKS),
+	SetVarToConst(PRIMARY_TEMP_7000, 529),
+	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
+    
 ])

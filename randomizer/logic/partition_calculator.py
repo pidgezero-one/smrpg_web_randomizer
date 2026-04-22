@@ -270,8 +270,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         # min_vram_size sizing for that dedicated allocation (handled in
         # step 5b / step 7), not whether the NPC clones.
         force_cc = obj.cannot_clone is True
-        if room_id == 255:
-            print(f"[PARTITION DBG] Room 255 INPUT: obj[{i}] sprite={sprite_id} obj.cannot_clone={obj.cannot_clone!r} type={type(obj).__name__} force_cc={force_cc}")
 
         npc_infos.append(NPCInfo(
             obj_index=i,
@@ -672,8 +670,8 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     # Step 6: Apply buffer changes to the existing partition
     # =========================================================================
-    if room_id == 255:
-        print(f"[PARTITION DBG] Room 255:")
+    if world.settings.debug_mode and room_id == 254:
+        print(f"[PARTITION DBG] Room 254:")
         for i, obj in enumerate(room.objects):
             npc_info = next((n for n in npc_infos if n.obj_index == i), None)
             fc = npc_info.force_cannot_clone if npc_info else "?"

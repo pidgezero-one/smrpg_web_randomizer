@@ -1,4 +1,4 @@
-# E0718_EMPTY
+# E0718_ENTER_JOHNNY_ROOM_FROM_WARP
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,18 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+    JmpIfBitSet(POSTGAME_SHIP_COMPLETED, ["EVENT_718_enter_ship"]),
+    JmpIfBitClear(STAY_VOUCHER_USED, ["EVENT_718_enter_ship"]),
+    JmpIfBitClear(SHIP_LIBERATED, ["EVENT_718_enter_ship"]),
+    EnterArea(room_id=R003_POSTGAME_SHIP, face_direction=SOUTHWEST, 
+            x=19,
+            y=117,
+            z=0, run_entrance_event=True),
+    Return(),
+    EnterArea(room_id=R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM, face_direction=SOUTHWEST, 
+            x=19,
+            y=117,
+            z=0, run_entrance_event=True, identifier="EVENT_718_enter_ship"),
+    Return(),
 
 ])

@@ -1,4 +1,4 @@
-# E0703_EMPTY
+# E0703_BOOSTER_TOWER_ENTER_CURTAIN_ROOM
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,28 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["EVENT_703_enter_default_curtain_room"]),
 
+    JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["EVENT_703_jmp_if_bit_clear_26"]),
+    JmpIfBitClear(RETURNED_MARIO_DOLL, ["EVENT_703_enter_default_curtain_room"]),
+
+
+    
+	JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["EVENT_703_enter_default_curtain_room"], identifier="EVENT_703_jmp_if_bit_clear_26"),
+	JmpIfBitClear(STAY_VOUCHER_USED, ["EVENT_703_enter_default_curtain_room"]),
+    
+            
+            
+    EnterArea(room_id=R004_POSTGAME_TOWER, face_direction=SOUTHWEST, x=7,
+            y=19,
+            z=0, run_entrance_event=True, identifier="EVENT_703_enter_postgame_curtain_room"),
+    Return(),
+
+
+    EnterArea(room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, face_direction=SOUTHWEST, x=7,
+            y=19,
+            z=0, run_entrance_event=True, identifier="EVENT_703_enter_default_curtain_room"),
+    Return(),
+            
+	
 ])

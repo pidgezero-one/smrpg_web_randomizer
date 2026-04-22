@@ -48,7 +48,7 @@ script = EventScript([
 	RestoreAllHP(),
 	RestoreAllFP(),
 	RunEventAsSubroutine(E0208_UNLOCK_KEEP_IF_GATED_BY_VOLCANO_BOSS),
-	SetBit(RETURN_TO_OVERWORLD_AFTER_VOLCANO_STAR_PIECE),
+	SetBit(STAR_PIECE_TRIGGER_EVENT),
 	RunEventAsSubroutine(E1234_VOLCANO_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	ExitToWorldMap(area=OW50_BARREL_VOLCANO, bit_6=True, bit_7=True, identifier="EVENT_3338_open_location_16"),

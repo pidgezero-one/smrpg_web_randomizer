@@ -1,4 +1,4 @@
-# E0725_EMPTY
+# E0725_CHAPEL_POSTGAME_LOADER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,12 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+	ActionQueueAsync(target=NPC_0, subscript=[
+		A_SequenceLoopingOn(),
+        A_FixedFCoordOn(),
+		A_WalkSouthPixels(4),
+		A_WalkEastPixels(8),
+        A_FixedFCoordOff(),
+	], identifier="EVENT_725_action_queue_sync_0"),
+    JmpToEvent(E0015_STANDARD_ROOM_LOADER)
 ])

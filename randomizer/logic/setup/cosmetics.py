@@ -59,7 +59,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     between generations with the same seed.
     """
     from ...types.flags import (
-        CanonNames, Peach, RemakeNames, RemoveFlashes,
+        CanonNames, Peach, RemakeNames, RemoveFlashes, Remake,
         ChangeNames, BossShuffleMusic, ShuffledMusic, MarioPaletteChoice,
         MallowPaletteChoice, GenoPaletteChoice, ToadstoolPaletteChoice, BowserPaletteChoice,
     )
@@ -70,6 +70,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         BOWSERCLONEEnemy, BOWSERCOPYSEnemy,
         GENOCLONEEnemy, GENOCLONESEnemy,
         MALLOWCLONEEnemy, MALLOWCOPYSEnemy,
+        PUNCHINELLOEnemy, JOHNNYEnemy, BOOSTEREnemy, BUNDTEnemy,
     )
     from ...data.allies.palettes.mario import all_palettes as MARIO_PALETTES
     from ...data.allies.palettes.mallow import all_palettes as MALLOW_PALETTES
@@ -106,6 +107,14 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.allies._allies[1].name = "Peach"
         world.enemies.get_by_type(TOADSTOOL2Enemy).set_name("PEACH CLONE")
         world.enemies.get_by_type(TOADSTOOL3Enemy).set_name("PEACH CLONE S")
+
+    # Distinguish OGs from refights when remake is enabled
+    # Doesn't apply to Culex, Jinx, or Belome, they already are distinguished
+    if world.settings.isflag_enabled(Remake):
+        world.enemies.get_by_type(PUNCHINELLOEnemy).set_name("PUNCHINELLO 1")
+        world.enemies.get_by_type(JOHNNYEnemy).set_name("JOHNNY 1")
+        world.enemies.get_by_type(BOOSTEREnemy).set_name("BOOSTER 1")
+        world.enemies.get_by_type(BUNDTEnemy).set_name("BUNDT 1")
 
     # Remake names
     if world.settings.isflag_enabled(RemakeNames):

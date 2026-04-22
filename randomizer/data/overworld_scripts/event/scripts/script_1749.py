@@ -39,12 +39,10 @@ script = EventScript([
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	RestoreAllHP(),
 	RestoreAllFP(),
-	RemoveObjectFromCurrentLevel(NPC_7),
-    SummonObjectToCurrentLevel(NPC_0),
-	FadeInFromBlack(sync=False),
-	SetBit(POSTGAME_SHIP_COMPLETED),
-	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
-	RunEventAsSubroutine(E1209_POSTGAME_SHIP_END_BOSS_UNLOCKS),
-	SetVarToConst(PRIMARY_TEMP_7000, 526),
-	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
+    SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
+    EnterArea(room_id=R186_SUNKEN_SHIP_POSTKC_AREA_18_WARP_ROOM_FROM_JOHNNYS_ROOM, face_direction=NORTHEAST, 
+            x=30,
+            y=115,
+            z=0, run_entrance_event=True),
+    Return(),
 ])

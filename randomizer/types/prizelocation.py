@@ -2290,6 +2290,8 @@ class BossFightLocation(PrizeLocation):
         # Skip NPC replacements if the prize matches the original (no shuffle occurred)
         prize_matches_original = isinstance(self.prize, self._originally_held)
 
+        KamekBossFight = _get_cached_import("KamekBossFight")
+
         # Set NPC slots with boss models (using VRAM-based selection)
         if self.npc_slots is not None and not prize_matches_original:
             for slot in self.npc_slots:
@@ -2311,6 +2313,10 @@ class BossFightLocation(PrizeLocation):
                     world, max_vram, max_min_vram, max_min_vram_seq0
                 )
                 obj._npc = m().base
+                if isinstance(self.prize, KamekBossFight):
+                    override = self.prize.get_slot_base_override(self, slot, m)
+                    if override is not None:
+                        obj._npc = override
 
         # Set statue slots with statue models
         if self.statue_slots is not None and not prize_matches_original:
@@ -3102,8 +3108,8 @@ ROOM_TO_BATTLEFIELD: dict[int, Battlefield] = {
     R000_DEBUG_ROOM: BF09_GRASSLANDS,
     R001_BLUE_BG_NOTHING_THERE: BF09_GRASSLANDS,
     R002_BOWSERS_KEEP_OUTSIDE_MARIO_ENTERS_AT_BEGINNING_OF_GAME: BF10_MOUNTAINS,
-    R003_BOWSERS_KEEP_1ST_TIME_AREA_01: BF07_BOWSERS_KEEP,
-    R004_BOWSERS_KEEP_1ST_TIME_AREA_02: BF07_BOWSERS_KEEP,
+    R003_POSTGAME_SHIP: BF07_BOWSERS_KEEP,
+    R004_POSTGAME_TOWER: BF07_BOWSERS_KEEP,
     R005_MARRYMORE_OUTSIDE_DURING_BOOSTER: BF28_MUSHROOM_KINGDOM,
     R006_MARRYMORE_INN_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
     R007_MARRYMORE_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
@@ -3149,7 +3155,7 @@ ROOM_TO_BATTLEFIELD: dict[int, Battlefield] = {
     R047_MUSHROOM_KINGDOM_BEFORE_CROCO_ITEM_SHOP_TOP_FLOOR: BF11_MUSHROOM_KINGDOM_HOUSE,
     R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM: BF12_BOOSTER_TOWER,
     R049_MUSHROOM_KINGDOM_BEFORE_CROCO_INN_1F: BF11_MUSHROOM_KINGDOM_HOUSE,
-    R050_BLUE_BG_NOTHING_THERE: BF09_GRASSLANDS,
+    R050_POSTGAME_CHAPEL: BF09_GRASSLANDS,
     R051_MUSHROOM_KINGDOM_BEFORE_CROCO_RUNNING_KIDS_HOUSE: BF11_MUSHROOM_KINGDOM_HOUSE,
     R052_MUSHROOM_KINGDOM_INN_2F: BF11_MUSHROOM_KINGDOM_HOUSE,
     R053_MUSHROOM_KINGDOM_BEFORE_CROCO_ITEM_SHOP_BASEMENT: BF11_MUSHROOM_KINGDOM_HOUSE,

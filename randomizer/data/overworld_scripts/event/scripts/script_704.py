@@ -1,4 +1,4 @@
-# E0704_EMPTY
+# E0704_BOOSTER_TOWER_POSTGAME_LOADER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,24 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+	ActionQueueAsync(target=NPC_0, subscript=[
+		A_SetSpriteSequence(2, is_sequence=True, identifier="EVENT_704_set_sprite_sequence_0"),
+        A_SequenceLoopingOn(),
+        A_FixedFCoordOn(),
+		A_WalkNorthPixels(8),
+		A_WalkWestPixels(8),
+        A_FixedFCoordOff(),
+	], identifier="EVENT_704_action_queue_sync_0"),
+	ActionQueueAsync(target=LAYER_1, subscript=[
+		A_WalkEastPixels(8),
+		A_WalkNorthPixels(8)
+	]),
+	ActionQueueAsync(target=NPC_4, subscript=[
+		A_WalkSouthPixels(22),
+		A_WalkEastPixels(7),
+		A_SetPriority(2),
+		A_SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES)
+	]),
+    FadeInFromBlack(sync=False),
+	Return()
 ])

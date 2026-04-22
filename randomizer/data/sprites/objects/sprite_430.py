@@ -1,11 +1,25 @@
 # SPR0430_CULEX_3D
+from copy import deepcopy
+
 from randomizer.data.variables.sprite_palette_names import SPAL285_CULEX_3D
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-sprite = CompleteSprite(
-    animation=AnimationPack(135, length=375, unknown=0x0000,
-        properties=AnimationPackProperties(vram_size=8192,
-            molds=[
-                Mold(0, gridplane=False,
+
+
+def _shift_mold(source: Mold, new_index: int, dx: int) -> Mold:
+    """Clone ``source`` at ``new_index`` with every tile's x shifted by ``dx``.
+
+    deepcopy isolates the tile's subtile_bytes so shifted molds never share
+    mutable byte arrays with mold 0.
+    """
+    shifted_tiles: list[Tile | Clone] = []
+    for t in source.tiles:
+        copied = deepcopy(t)
+        copied.x += dx
+        shifted_tiles.append(copied)
+    return Mold(new_index, gridplane=source.gridplane, tiles=shifted_tiles)
+
+
+_mold_0 = Mold(0, gridplane=False,
                     tiles=[
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x02\x03\x00\x00\x00\x02\x00\x02\x00\x02\x00\x00\x00\x00\x00\x00\x00\x06\x01\x07\x02\x05\x02\x05\x02\x05\x00\x07'),
@@ -182,9 +196,38 @@ sprite = CompleteSprite(
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=176, y=176),
                     ]
-                ),
-            ],
+                )
+
+_mold_1 = _shift_mold(_mold_0, 1, 1)
+_mold_2 = _shift_mold(_mold_0, 2, -1)
+
+sprite = CompleteSprite(
+    animation=AnimationPack(135, length=375, unknown=0x0000,
+        properties=AnimationPackProperties(vram_size=8192,
+            molds=[_mold_0, _mold_1, _mold_2],
             sequences=[
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                        AnimationSequenceFrame(duration=2, mold_id=1),
+                        AnimationSequenceFrame(duration=2, mold_id=2),
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                    ]
+                ),
                 AnimationSequence(
                     frames=[
                         AnimationSequenceFrame(duration=2, mold_id=0),

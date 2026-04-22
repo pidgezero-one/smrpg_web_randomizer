@@ -259,11 +259,11 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 6
-            npc=npcs.TOADSTOOL_DOLL_NPC,
+            npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.NONE,
             event_script=E1360_CURTAIN_1,
             action_script=A0000_DO_NOTHING,
-            visible=True,
+            visible=False,
             x=6,
             y=25,
             z=0,

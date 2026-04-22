@@ -52,12 +52,12 @@ script = EventScript([
 		A_TransferToXYZF(x=9, y=97, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=16, y=8, z=0, direction=EAST)
 	]),
-	ActionQueueSync(target=NPC_9, subscript=[
+	ActionQueueSync(target=NPC_4, subscript=[
 		A_TransferToXYZF(x=9, y=98, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=8, y=4, z=0, direction=EAST),
 		A_FaceNortheast()
 	]),
-	ActionQueueAsync(target=NPC_10, subscript=[
+	ActionQueueAsync(target=NPC_3, subscript=[
 		A_TransferToXYZF(x=10, y=95, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=254, y=4, z=0, direction=EAST),
 		A_FaceNortheast()

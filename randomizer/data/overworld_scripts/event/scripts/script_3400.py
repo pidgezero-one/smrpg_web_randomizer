@@ -34,9 +34,9 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfBitSet(BATTLE_DOOR_STAR_PIECE, ["EVENT_3400_clear_bit_485"]),
-	JmpIfBitSet(RETURN_TO_OVERWORLD_AFTER_VOLCANO_STAR_PIECE, ["EVENT_3400_clear_bit_481"]),
+    # boomer
 	JmpIfBitSet(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, ["EVENT_3400_do_2nd_keep_boss_fight"]),
+    # exor
 	JmpIfBitSet(RETURN_TO_OVERWORLD_AFTER_KEEP_STAR_PIECE, ["EVENT_3400_do_3rd_keep_boss_fight"]),
 	Set7000ToCurrentLevel(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R005_MARRYMORE_OUTSIDE_DURING_BOOSTER, ["EVENT_3400_play_music_current_volume_390"]),
@@ -519,12 +519,8 @@ script = EventScript([
 	Jmp(["EVENT_3400_resume_exp_star"]),
 	PlayMusicAtDefaultVolume(M0034_STARHILL, identifier="EVENT_3400_play_music_default_volume_479"),
 	Jmp(["EVENT_3400_resume_exp_star"]),
-	ClearBit(RETURN_TO_OVERWORLD_AFTER_VOLCANO_STAR_PIECE, identifier="EVENT_3400_clear_bit_481"),
-	ExitToWorldMap(area=OW50_BARREL_VOLCANO, bit_6=True, bit_7=True),
-	Return(),
 	JmpToEvent(E2226_KEEP_3RD_BOSS, identifier="EVENT_3400_jmp_to_event_484"),
-	ClearBit(BATTLE_DOOR_STAR_PIECE, identifier="EVENT_3400_clear_bit_485"),
-	JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT),
+    
     
 	SetVarToConst(TEMP_7032, 0, identifier="EVENT_3400_hill"),
 	ExitToWorldMap(area=OW27_BOOSTER_HILL, bit_6=True, bit_7=True),
@@ -532,9 +528,14 @@ script = EventScript([
     
 	ExitToWorldMap(area=OW50_BARREL_VOLCANO, bit_6=True, bit_7=True, identifier="EVENT_3400_exit_to_world_map_from_volcano"),
 	Return(),
-    JmpToEvent(E2226_KEEP_3RD_BOSS, identifier="EVENT_3400_do_2nd_keep_boss_fight"),
-    JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT, identifier="EVENT_3400_do_3rd_keep_boss_fight"),
+    ClearBit(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, identifier="EVENT_3400_do_2nd_keep_boss_fight"),
+    JmpToEvent(E2226_KEEP_3RD_BOSS),
+    ClearBit(RETURN_TO_OVERWORLD_AFTER_KEEP_STAR_PIECE, identifier="EVENT_3400_do_3rd_keep_boss_fight"),
+    JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT),
     #JmpIfBitSet(EXP_STAR_BIT_5, ["3400_ret"], identifier="EVENT_3400_resume_exp_star"),
     #MarioGlows(),
+    
+
+	#"EVENT_3400_tower_postgame"
 	Return(identifier="EVENT_3400_resume_exp_star"),
 ])

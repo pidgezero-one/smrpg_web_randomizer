@@ -2131,7 +2131,7 @@ class Punchinello2BobombDifficultyOptions(CategorizationOption):
 
 # ✅
 class Punchinello2BobombDifficulty(SelectOneFlag[Punchinello2BobombDifficultyOptions]):
-    _name = "Punchinello 2 difficulty"
+    _name = "Punchinello 2 balance"
     _description = "This is the likelihood that the Strong Bob-Ombs will spawn already facing Punchinello. This setting does nothing if remake content is turned off."
     choices = [o for o in Punchinello2BobombDifficultyOptions]
     _default = Punchinello2BobombDifficultyOptions.PERCENT_50

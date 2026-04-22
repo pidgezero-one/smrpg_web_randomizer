@@ -36,8 +36,9 @@ room = Room(
     ),
     music=M0032_ANDMYNAME_SBOOSTER,
     entrance_event=E2364_TOWER_TOP_FLOOR_CHEST_ROOM_LOADER,
-    exits=[
-        RoomExit(
+    events=[
+        Event(
+            event=E0703_BOOSTER_TOWER_ENTER_CURTAIN_ROOM,
             x=27,
             y=92,
             z=0,
@@ -46,15 +47,9 @@ room = Room(
             height=0,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_2_bit_2=False,
-            destination=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            show_message=False,
-            dst_x=7,
-            dst_y=19,
-            dst_z=0,
-            dst_z_half=False,
-            dst_f=SOUTHWEST,
-            x_bit_7=False),
+            byte_8_bit_4=False),
+    ],
+    exits=[
         RoomExit(
             x=23,
             y=84,

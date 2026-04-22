@@ -4238,5 +4238,4 @@ script = AnimationScriptBlock(expected_size=15142, expected_beginning=0x358BEC, 
 	JmpIfAMEM8BitEqualsConst(0x60, SageStickItem().index, ["mallow_weapon_wrapper"]),
 	JmpIfAMEM8BitEqualsConst(0x60, LuckyHammerItem().index, ["mario_weapon_wrapper"]),
 	ReturnSubroutine(),
-
 ])

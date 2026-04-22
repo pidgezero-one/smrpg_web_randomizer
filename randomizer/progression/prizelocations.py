@@ -149,6 +149,7 @@ from ..data.physical_objects.items import (
 
 from ..logic.renders import (
     render_bandits_way_boss,
+    render_booster_tower_indoor_boss_postgame,
     render_forest_maze_character_empty,
     render_forest_maze_character,
     render_booster_tower_indoor_boss,
@@ -162,6 +163,7 @@ from ..logic.renders import (
     render_dojo_first_fight,
     render_dojo_fight,
     render_bean_valley_planter_boss,
+    render_ship_postgame_boss,
     render_statue_room_boss,
     render_volcano_exit_boss,
     render_inner_factory_second_fight,
@@ -2843,6 +2845,8 @@ class ForestMazeBossFight(BossFightLocation):
         # super().render() only runs _on_henchmen_assigned when the prize
         # differs from the original, but the vanilla Aero NPCs also face
         # NORTHEAST/SOUTHWEST despite being SWSE-only sprites.
+        if self._character_henchman_slots is None:
+            return result
         for slot in self._character_henchman_slots:
             for npc_id, room_id in zip(slot.npc_ids, slot.room_ids):
                 room = world.rooms._rooms[room_id]
@@ -4563,7 +4567,8 @@ class BoosterTowerKnifeGuyPrizeLocation(KeyItemLocation, NPCLocationRow1):
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check"]),
         Jmp(["next"]),
-        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check"], identifier="returned_mario_doll_check"),
+        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check"], identifier="returned_mario_doll_check"),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         JmpIfBitSet(KNIFE_GUY_PRIZE_GRANTED, ["next"], identifier="tower_boss_2_check"),
@@ -4589,7 +4594,8 @@ class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_"]),
         Jmp(["next"]),
-        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_"], identifier="returned_mario_doll_check_"),
+        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check_"], identifier="returned_mario_doll_check_"),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         JmpIfBitSet(KNIFE_GUY_SECOND_PRIZE_AWARDED, ["next"], identifier="tower_boss_2_check_"),
@@ -5123,7 +5129,8 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check__"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check__"]),
         Jmp(["next"]),
-        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check__"], identifier="returned_mario_doll_check__"),
+        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check__"], identifier="returned_mario_doll_check__"),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check__"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check__"),
@@ -5150,7 +5157,8 @@ class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check___"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check___"]),
         Jmp(["next"]),
-        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check___"], identifier="returned_mario_doll_check___"),
+        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check___"], identifier="returned_mario_doll_check___"),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check___"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, ["next"], identifier="tower_boss_2_check___"),
@@ -5363,7 +5371,8 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check____"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check____"]),
         Jmp(["next"]),
-        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check____"], identifier="returned_mario_doll_check____"),
+        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check____"], identifier="returned_mario_doll_check____"),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check____"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check____"),
@@ -5381,7 +5390,7 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
 class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     _bias = True
     _originally_held = Booster2BossFight
-    _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _rooms = [R004_POSTGAME_TOWER]
     _override_id = 528
     _default_battlefield = BF12_BOOSTER_TOWER
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_3
@@ -5391,8 +5400,22 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     _post_unlocks_event_id = E1202_POSTGAME_TOWER_CURTAIN_BOSS_UNLOCKS
     _npc_slots = [
         BossFightLocationNPC(
-            R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            NPC_9,
+            R004_POSTGAME_TOWER,
+            NPC_0,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R004_POSTGAME_TOWER],
+            [NPC_1],
+        ),
+        BossFightLocationHenchmanNPC(
+            [R004_POSTGAME_TOWER],
+            [NPC_2],
+        ),
+        BossFightLocationHenchmanNPC(
+            [R004_POSTGAME_TOWER],
+            [NPC_3],
         ),
     ]
 
@@ -5405,13 +5428,39 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower_postgame_boss(world, inventory)
 
+
+    def render(self, world: GameWorld):
+        op = super().render(world)
+        if self.npc_slots and self.prize and self.prize.model:
+            render_booster_tower_indoor_boss_postgame(
+                world,
+                self.prize,
+            )
+        assert isinstance(self.prize, BossFightPrize)
+        is_vanilla = isinstance(self.prize, (BoosterBossFight, Booster2BossFight))
+        has_henchmen_substitutions = (
+            self.prize.character_henchmen is not None
+            and len(self.prize.character_henchmen) > 0
+        ) or (
+            self.prize.mook_henchmen is not None
+            and len(self.prize.mook_henchmen) > 0
+        )
+        if not is_vanilla and not has_henchmen_substitutions:
+            room = world.rooms._rooms[R004_POSTGAME_TOWER]
+            assert room is not None
+            room.get_npc_by_target_id(NPC_1).set_visible(False)
+            room.get_npc_by_target_id(NPC_2).set_visible(False)
+            room.get_npc_by_target_id(NPC_3).set_visible(False)
+
+        return op
+
     # Flag as checked: POSTGAME_TOWER_COMPLETED
 
 
 class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _bias = True
     _originally_held = None
-    _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     _override_id = 528
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
@@ -5423,7 +5472,8 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_____"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_____"]),
         Jmp(["next"]),
-        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_____"], identifier="returned_mario_doll_check_____"),
+        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check_____"], identifier="returned_mario_doll_check_____"),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_____"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_____"),
@@ -5441,10 +5491,10 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     # Flag as checked: POSTGAME_TOWER_COMPLETED
 
 
-class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow2):
+class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow1):
     _bias = True
     _originally_held = Stella023Prize
-    _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _rooms = [R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_POSTGAME_DROP
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _remake_only = True
@@ -5456,7 +5506,8 @@ class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow2):
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_______"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_______"]),
         Jmp(["next"]),
-        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_______"], identifier="returned_mario_doll_check_______"),
+        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check_______"], identifier="returned_mario_doll_check_______"),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_______"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_______"),
@@ -5517,7 +5568,8 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check______"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check______"]),
         Jmp(["next"]),
-        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check______"], identifier="returned_mario_doll_check______"),
+        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check______"], identifier="returned_mario_doll_check______"),
+        JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check______"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         JmpIfBitSet(TOWER_BOSS_2_DEFEATED, ["next"], identifier="tower_boss_2_check______"),
@@ -6427,7 +6479,7 @@ class ToadstoolSpell6(SpellSlotLocation):
 class MarrymoreBossFightRemake(BossFightLocation):
     _bias = True
     _originally_held = Bundt2BossFight
-    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _rooms = [R050_POSTGAME_CHAPEL]
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_BOSS_FIGHT
     _world_area = WorldAreaEnum.MARRYMORE
     _override_id = 529
@@ -6438,8 +6490,18 @@ class MarrymoreBossFightRemake(BossFightLocation):
 
     _npc_slots = [
         BossFightLocationNPC(
-            R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
-            NPC_12,
+            R050_POSTGAME_CHAPEL,
+            NPC_0,
+        ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R050_POSTGAME_CHAPEL],
+            [NPC_1],
+        ),
+        BossFightLocationHenchmanNPC(
+            [R050_POSTGAME_CHAPEL],
+            [NPC_2],
         ),
     ]
 
@@ -6452,13 +6514,31 @@ class MarrymoreBossFightRemake(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel_postgame_boss(world, inventory)
 
+    def render(self, world: GameWorld):
+        op = super().render(world)
+        assert isinstance(self.prize, BossFightPrize)
+        is_vanilla = isinstance(self.prize, (BundtBossFight, Bundt2BossFight))
+        has_henchmen_substitutions = (
+            self.prize.character_henchmen is not None
+            and len(self.prize.character_henchmen) > 0
+        ) or (
+            self.prize.mook_henchmen is not None
+            and len(self.prize.mook_henchmen) > 0
+        )
+        if not is_vanilla and not has_henchmen_substitutions:
+            room = world.rooms._rooms[R050_POSTGAME_CHAPEL]
+            assert room is not None
+            room.get_npc_by_target_id(NPC_1).set_visible(False)
+            room.get_npc_by_target_id(NPC_2).set_visible(False)
+        return op
+
     # Flag as checked: POSTGAME_CHAPEL_COMPLETE
 
 
 class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
     _bias = True
     _originally_held = None
-    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _rooms = [R153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_STAR_PIECE
     _world_area = WorldAreaEnum.MARRYMORE
     _override_id = 529
@@ -6487,7 +6567,7 @@ class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
 class MarrymoreBossFightRemakeItemDrop(NPCLocationRow4):
     _bias = True
     _originally_held = EnduringBroochPrize
-    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _rooms = [R153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_ITEM_DROP
     _world_area = WorldAreaEnum.MARRYMORE
     _remake_only = True
@@ -7792,7 +7872,7 @@ class ShipFinalStarPiece(StarPieceLocation):
 class ShipPostgameBossFight(BossFightLocation):
     _bias = True
     _originally_held = Johnny2Fight
-    _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+    _rooms = [R003_POSTGAME_SHIP]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_BOSS_FIGHT
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 526
@@ -7803,10 +7883,31 @@ class ShipPostgameBossFight(BossFightLocation):
 
     _npc_slots = [
         BossFightLocationNPC(
-            R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
-            NPC_7,
+            R003_POSTGAME_SHIP,
+            NPC_0,
             sequence_setter_event_id=E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
+    ]
+    _character_henchman_slots = [
+        BossFightLocationHenchmanNPC(
+            [R003_POSTGAME_SHIP],
+            [NPC_1],
+        ),
+        BossFightLocationHenchmanNPC(
+            [R003_POSTGAME_SHIP],
+            [NPC_2],
+        ),
+        BossFightLocationHenchmanNPC(
+            [R003_POSTGAME_SHIP],
+            [NPC_3],
+        ),
+        BossFightLocationHenchmanNPC(
+            [R003_POSTGAME_SHIP],
+            [NPC_4],
+        ),
+    ]
+    _dialogs_expecting_replacement = [
+        DI2023_SHIP_BOSS_2_DRINK,
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -7818,13 +7919,23 @@ class ShipPostgameBossFight(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_ship_postgame_boss(world, inventory)
 
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int, int]],
+    ]:
+        assert self.prize is not None
+        op = super().render(world)
+        render_ship_postgame_boss(world, self.prize)
+        return op
+    
     # Flag as checked: POSTGAME_SHIP_COMPLETED
 
 
 class ShipPostgameFightItemDrop(KeyItemLocation, NPCLocationRow1):
     _bias = True
     _originally_held = ExtraShinyStonePrize
-    _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+    _rooms = [R186_SUNKEN_SHIP_POSTKC_AREA_18_WARP_ROOM_FROM_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_DROP
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _remake_only = True
@@ -7850,7 +7961,7 @@ class ShipPostgameFightItemDrop(KeyItemLocation, NPCLocationRow1):
 class ShipPostgameStarPiece(StarPieceLocation):
     _bias = True
     _originally_held = None
-    _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+    _rooms = [R186_SUNKEN_SHIP_POSTKC_AREA_18_WARP_ROOM_FROM_JOHNNYS_ROOM]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_BOSS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 526
@@ -12025,7 +12136,22 @@ class VolcanoExitBossFight(BossFightLocation):
         list[UsableEventScriptCommand],
         list[tuple[int, int, int]],
     ]:
+        # STAR_PIECE_TRIGGER_EVENT
         op = super().render(world)
+        if self.prize is None:
+            identifier = str(uuid4())
+            first: list[list[UsableEventScriptCommand]] = [
+                [
+                    JmpIfVarEqualsConst(
+                        PRIMARY_TEMP_7000, R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP, [identifier]
+                    )
+                ]
+            ]
+            second: list[UsableEventScriptCommand] = [
+                ExitToWorldMap(area=OW50_BARREL_VOLCANO, bit_6=True, bit_7=True),
+                Return(),
+            ]
+            op = (first, second, op[2])
         if isinstance(self.prize, AxemRangersBossFight):
             return op
         assert isinstance(self.prize, BossFightPrize)
@@ -12948,7 +13074,7 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
         return can_pass_obstacle_courses(world, inventory) and not_earlygame(
             world, inventory
         )
-
+    
     # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
 
@@ -13197,6 +13323,18 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
+        if isinstance(self.prize, KamekBossFight):
+            # Vanilla Kamek: super().render skips npc_slots swapping, so apply
+            # the R435 ending-credits base override manually here.
+            from ..data.rooms.npcs import MAGIKOOPA_NPC_2
+
+            credits_room = world.rooms._rooms[
+                R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR
+            ]
+            assert credits_room is not None
+            credits_obj = credits_room.get_npc_by_target_id(NPC_6)
+            assert credits_obj is not None
+            credits_obj._npc = MAGIKOOPA_NPC_2
         if not isinstance(self.prize, KamekBossFight):
             world.event_scripts.get_command_by_identifier("kamek_palette", PaletteSetMorphs).set_palette_set(EPAL0025_KEEP_BOSS_1_REFORMED)
             world.event_scripts.get_command_by_identifier("kamek_palette_2", PaletteSet).set_palette_set_starts_at(EPAL0025_KEEP_BOSS_1_REFORMED)
@@ -13468,18 +13606,19 @@ class KeepChandelierStarPiece(StarPieceLocation):
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         if self.prize is None:
             identifier = str(uuid4())
-            return (
+            assert self.override_id is not None
+            first: list[list[UsableEventScriptCommand]] = [
                 [
-                    [
-                        JmpIfVarEqualsConst(
-                            PRIMARY_TEMP_7000, self.override_id, [identifier]
-                        )
-                    ]
-                ],
-                [
-	                JmpToEvent(E2226_KEEP_3RD_BOSS, identifier=identifier),
-                ],
-            )
+                    JmpIfVarEqualsConst(
+                        PRIMARY_TEMP_7000, self.override_id, [identifier]
+                    )
+                ]
+            ]
+            second: list[UsableEventScriptCommand] = [
+                ClearBit(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, identifier=identifier),
+                JmpToEvent(E2226_KEEP_3RD_BOSS),
+            ]
+            return (first, second)
         else:
             return super().render(world)
     # Flag as checked: KEEP_BOSS_2_DEFEATED
@@ -13548,18 +13687,19 @@ class KeepFinalStarPiece(StarPieceLocation):
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         if self.prize is None:
             identifier = str(uuid4())
-            return (
+            assert self.override_id is not None
+            first: list[list[UsableEventScriptCommand]] = [
                 [
-                    [
-                        JmpIfVarEqualsConst(
-                            PRIMARY_TEMP_7000, self.override_id, [identifier]
-                        )
-                    ]
-                ],
-                [
-	                JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT, identifier=identifier),
-                ],
-            )
+                    JmpIfVarEqualsConst(
+                        PRIMARY_TEMP_7000, self.override_id, [identifier]
+                    )
+                ]
+            ]
+            second: list[UsableEventScriptCommand] = [
+                ClearBit(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, identifier=identifier),
+                JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT),
+            ]
+            return (first, second)
         else:
             return super().render(world)
     # Flag as checked: KEEP_BOSS_3_DEFEATED

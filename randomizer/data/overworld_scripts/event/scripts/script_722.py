@@ -1,4 +1,4 @@
-# E0722_EMPTY
+# E0722_SHIP_POSTGAME_LOADER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,10 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    ActionQueueAsync(NPC_0, [
+        A_SetPriority(3),
+        A_SetSpriteSequence(index=10, is_sequence=True, looping=True, identifier="ship_boss_idle_sequence_2"),
+        A_SequenceLoopingOn(identifier="ship_boss_idle_sequence_loop_2"),
+    ], identifier="ship_boss_idle_script_2"),
+	JmpToEvent(E0015_STANDARD_ROOM_LOADER),
 ])

@@ -4,6 +4,12 @@
 NEW FLAGSET:
 P(rchars)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|charspells|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg|sj1:5|sj2:10)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops|enemyspells)     F(skips|nowhirl|nobigbang|noko|seeya)
 
+TODO April 19
+- dredge up old raw sprites from the previous version of the ending credits i abandoned
+- fix booster 2
+- do other bosses need fixing? jinx is probably fine, bundt is probably fine, johnny is probably fine, unsure about belome
+- room 50 still broken
+
 
 High priority
 - apply speeds properly to statue game aninations
@@ -14,8 +20,11 @@ High priority
 - test if mimic chest packet looks ok
 - test bundt 2. using caker beam too early?
 - test booster 2 thoroughly, make sure he doesn't continue working after KOed
-- belome 2 with bowser clones: does game still crash when belome KOed before clones?
+- belome 2: game crashes when making second peach clone, displays empty dialog
 - test all possible invisible flag locations
+- shuffled mario doll works, but turning that setting off is broken now - curtains pre-opened when you enter the room, and going to the door will start the minigame again
+  - can just not set RETURNED_MARIO_DOLL at start of seed, but this will break some hints
+  - locked door text does not work, likely bc the npcs arent present yet
 
 Med priority
 - Need to test all 47 boss orders

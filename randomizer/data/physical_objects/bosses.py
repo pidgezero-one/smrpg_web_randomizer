@@ -22,10 +22,7 @@ mack_hit_fast = SpriteAnimation(
 mack_challenge = SpriteAnimation(sequence_id=2, total_duration=12)
 
 # Booster animations
-booster_laugh = SpriteAnimation(sequence_id=2)
-booster_punch = SpriteAnimation(
-    sequence_id=3, contact_frame=74, total_duration=92, new_sprite_id=502
-)
+booster_laugh = SpriteAnimation(sequence_id=2, total_duration=20, contact_frame=20)
 booster_jump = SpriteAnimation(sequence_id=4)
 booster_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 booster_cry = SpriteAnimation(sequence_id=13, total_duration=20)
@@ -977,7 +974,7 @@ class BoosterObject(BossNPC):
         recoil=booster_recoil,
         tower_crying=booster_cry,
         bandits_way_distracted=booster_laugh,
-        mines_punch=booster_punch,
+        mines_punch=booster_laugh,
         chapel_laugh=booster_laugh,
         ship_beckon=booster_laugh,
         ship_chair=booster_laugh,
@@ -986,12 +983,11 @@ class BoosterObject(BossNPC):
         statue_flustered=booster_jump,
         keep_challenge=booster_jump,
         keep_summon=booster_laugh,
-        chandelier_challenge=booster_punch,
-        endgame_challenge=booster_punch,
+        chandelier_challenge=booster_jump,
+        endgame_challenge=booster_jump,
         tpose_mold_id=12,
         tower_toss=booster_laugh,
         tpose=SpriteAnimation(sequence_id=15, total_duration=16)
-
     )
     _evil_palette = [
         0xFFFFFF, 0xADADCE, 0xEF5252, 0xC62129, 0x8C0000,
@@ -1409,6 +1405,26 @@ class Booster2SmallObject(BossNPC):
         0x4A0000, 0xF80000, 0x600000, 0x6B8CFF, 0xFFCE94,
         0xB58452, 0x7B5229, 0x393131, 0x5A5273, 0x181818,
     ]
+    _animations = SpriteAnimationCollection(
+        recoil=booster_recoil,
+        tower_crying=booster_cry,
+        bandits_way_distracted=booster_laugh,
+        mines_punch=booster_laugh,
+        chapel_laugh=booster_laugh,
+        ship_beckon=booster_laugh,
+        ship_chair=booster_laugh,
+        dojo_challenge=booster_jump,
+        statue_intro=booster_laugh,
+        statue_flustered=booster_jump,
+        keep_challenge=booster_jump,
+        keep_summon=booster_laugh,
+        chandelier_challenge=booster_jump,
+        endgame_challenge=booster_jump,
+        tpose_mold_id=12,
+        tower_toss=booster_laugh,
+        tpose=SpriteAnimation(sequence_id=15, total_duration=16)
+
+    )
 
 
 class Bundt2SmallObject(BossNPC):

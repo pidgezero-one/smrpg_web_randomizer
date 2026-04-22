@@ -34,6 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	RunDialog(dialog_id=DI1783_DUPLICATE, above_object=MEM_70A8, closable=True, sync=False, multiline=False, use_background=True),
+	RunDialog(dialog_id=DI1782_SHIP_BOSS_DRINK, above_object=MEM_70A8, closable=True, sync=False, multiline=False, use_background=True),
 	Return()
 ])

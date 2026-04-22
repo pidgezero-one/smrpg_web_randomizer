@@ -91,10 +91,12 @@ script = EventScript([
 	]),
 	UnfreezeCamera(),
 	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=2),
-    JmpIfBitClear(RETURNED_MARIO_DOLL, ["EVENT_1369_set_tower_boss_1_defeated_bit_80"]),
-	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=1),
+    JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["EVENT_1369_set_tower_boss_1_defeated_bit_80_"]),
+	JmpIfBitClear(RETURNED_MARIO_DOLL, ["EVENT_1369_set_tower_boss_1_defeated_bit_80"]),
+	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=1, identifier="EVENT_1369_set_tower_boss_1_defeated_bit_80_"),
     EnableObjectTrigger(NPC_5),
 	SetBit(TOWER_BOSS_1_DEFEATED, identifier="EVENT_1369_set_tower_boss_1_defeated_bit_80"),
+    EnableControls([]),
 	FadeInFromBlack(sync=False),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_WalkSouthwestSteps(4)
@@ -149,6 +151,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	RunEventAsSubroutine(E1201_TOWER_CURTAIN_BOSS_UNLOCKS),
     SetBit(TOWER_BOSS_1_STAR_PIECE, identifier="EVENT_1369_failed_spgrant"),
+    EnableControls([A, B, X, Y, LEFT, RIGHT, UP, DOWN]),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

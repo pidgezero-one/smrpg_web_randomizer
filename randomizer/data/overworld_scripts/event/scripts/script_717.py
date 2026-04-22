@@ -1,4 +1,4 @@
-# E0717_EMPTY
+# E0717_SHIP_WARP_LOADER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,13 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+    RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
+    JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_717_empty_return"]),
+	SetBit(POSTGAME_SHIP_COMPLETED),
+	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E1209_POSTGAME_SHIP_END_BOSS_UNLOCKS),
+	SetVarToConst(PRIMARY_TEMP_7000, 526),
+	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
+    Return(identifier="EVENT_717_empty_return")
 
 ])

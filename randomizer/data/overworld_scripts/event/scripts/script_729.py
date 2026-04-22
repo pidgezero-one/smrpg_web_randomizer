@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	Set7000ToCurrentLevel(),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 153, ["EVENT_729_apply_tile_mod_5"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY, ["EVENT_729_apply_tile_mod_5"]),
 	ApplySolidityModToLevel(permanent=True, room_id=R152_MARRYMORE_CHAPEL_MAIN_HALL, mod_id=1),
 	ApplyTileModToLevel(use_alternate=True, room_id=R152_MARRYMORE_CHAPEL_MAIN_HALL, mod_id=0),
 	JmpToEvent(E0015_STANDARD_ROOM_LOADER),

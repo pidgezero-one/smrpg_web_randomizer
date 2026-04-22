@@ -31,6 +31,19 @@ END_CREDITS_DELAY_2 = 40
 BEGIN_TITLES_DELAY = 50
 END_TITLES_DELAY = 40
 
+# Tune the dedication panel's fade-in time: raising each of these by 1 pushes
+# the dedication ~0.73 seconds later (FIXED_FILLER_BLOCKS * 2 frames / 60 fps).
+# Lower them to pull it earlier. Current values land the fade-in at ~4:37.60.
+FILLER_DELAY_1 = 23
+FILLER_DELAY_2 = 23
+
+# Locked filler block count. finalize() auto-pads the remaining byte budget
+# with cheap 7-byte add(EMPTY_STRING) writes so this count is ALWAYS achieved
+# regardless of how many real panels sit above the dedication. That keeps the
+# dedication's wall-clock start time invariant to text/name additions — only
+# panel add/remove or FILLER_DELAY_* changes will shift it.
+FIXED_FILLER_BLOCKS = 22
+
 def to_str(string):
     return (
         "".join([chr(i + ord("A") - 1) for i in string])
@@ -67,10 +80,29 @@ class Credits(object):
     def __init__(self, table_offset=0):
         self.strings = {}
         self.inv_strings = {}
-        self.acc = []
+        self.acc: list[int] = []
+        self.tail: list[int] = []
+        self._saved_acc: list[int] | None = None
         self.table_offset = table_offset
         self.current_credits = []
         self.current_titles = []
+
+    def begin_tail(self):
+        """Redirect subsequent builder calls into the tail buffer.
+
+        Tail content is emitted by finalize() after the invisible filler
+        padding, so it plays as the very last real panel of the credits.
+        """
+        assert self._saved_acc is None, "begin_tail already active"
+        assert not self.tail, "tail already populated"
+        self._saved_acc = self.acc
+        self.acc = self.tail
+
+    def end_tail(self):
+        """Stop redirecting to the tail; restore the main accumulator."""
+        assert self._saved_acc is not None, "begin_tail not active"
+        self.acc = self._saved_acc
+        self._saved_acc = None
 
     def add(self, x, y, font, string, scroll=0):
         assert len(string) <= len(EMPTY_STRING)
@@ -183,25 +215,44 @@ class Credits(object):
         self.acc += [0xE3, 0, 0, 0, 0, 0, 0]
 
     def finalize(self) -> dict[int, bytearray]:
+        assert self._saved_acc is None, "begin_tail never closed before finalize"
         credit_start = 0x3FDBB0
         credit_len = 3380
         string_table_start = 0x3FE8E4
         string_table_size = len(self.strings) * 2
-        assert len(self.acc) <= credit_len
-        # Pad unused credit script space with complete invisible credit blocks.
-        # The SNES credits engine processes all 3380 bytes sequentially, and
-        # large blocks of zero bytes (>~200) cause the engine to crash.
-        # Since our content is shorter than the original game's credits,
-        # we fill the gap with properly-structured but invisible credit blocks.
-        # The last slide is already cleared in update_credits() so a single
-        # EMPTY_STRING per block keeps the screen blank. Each block is 40
-        # bytes: add_credit(7) + end_thing(13) + end_thing_2(13) + clear(7).
+
+        # Layout plan (deterministic):
+        #   [main content] [cheap pad] [fixed filler] [tail] [small zero tail]
+        # The cheap pad absorbs byte variation in main so the filler block
+        # count — and therefore the pre-dedication time — is always constant.
+        # Cheap pad = 7-byte add(EMPTY_STRING) no-op writes; they have
+        # negligible display time vs. filler blocks which carry the real delay.
+        filler_bytes = FIXED_FILLER_BLOCKS * 40
+        main_and_pad_budget = credit_len - filler_bytes - len(self.tail)
+        cheap_pad_bytes = main_and_pad_budget - len(self.acc)
+        assert cheap_pad_bytes >= 0, (
+            f"main ({len(self.acc)}) + tail ({len(self.tail)}) + "
+            f"{FIXED_FILLER_BLOCKS} filler blocks exceeds {credit_len} bytes; "
+            f"reduce FIXED_FILLER_BLOCKS or main content"
+        )
+        cheap_writes = cheap_pad_bytes // 7
+        cheap_remainder = cheap_pad_bytes % 7
+        for _ in range(cheap_writes):
+            self.add(0x80, 0x40, 0x81, EMPTY_STRING)
+        # Residual <7 bytes — well under the ~200-byte zero-run crash threshold.
+        self.acc += cheap_remainder * [0]
+
+        # Emit the fixed-count filler. Large runs of zero bytes (>~200) crash
+        # the SNES credits engine, so we use structured invisible credit blocks.
         self.current_credits.clear()
         self.current_titles.clear()
-        while credit_len - len(self.acc) >= 40:
+        for _ in range(FIXED_FILLER_BLOCKS):
             self.begin_credits()
             self.add_credit(0x80, 0x40, 0x81, EMPTY_STRING)
-            self.end_credits(1, 1)
+            self.end_credits(FILLER_DELAY_1, FILLER_DELAY_2)
+
+        # Tail runs last (dedication panel).
+        self.acc += self.tail
         self.acc += (credit_len - len(self.acc)) * [0]
 
         free_list = {
@@ -624,7 +675,14 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.add_credit(0x80, 0x00, 0xC2, "NONE OF THIS WOULD BE POSSIBLE.")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
-    # 38
+    # Redirect dedication into the tail buffer so the filler plays BEFORE
+    # it and the dedication panel is the final real content the engine
+    # processes. Timing is controlled by FILLER_DELAY_1 / FILLER_DELAY_2 at
+    # the top of the file — finalize() emits a fixed FIXED_FILLER_BLOCKS
+    # count regardless of main content size, so text/name edits don't shift
+    # the dedication's start time.
+    credits.begin_tail()
+
     credits.begin_titles(BEGIN_TITLES_DELAY)
     credits.add_title(0x80, 0x00, 0x08, "DEDICATED TO")
     credits.end_titles(END_TITLES_DELAY)
@@ -635,9 +693,11 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.add_credit(0x80, 0x00, 0xC2, "WE MISS YOU")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
-    # Clear the "DEDICATED TO" title from VRAM so filler transitions
-    # don't flicker stale text back onto the screen.
+    # Fade the "DEDICATED TO" title so it exits alongside the dedication
+    # text instead of lingering on screen during the final zero tail.
     credits.begin_titles(1)
     credits.end_titles(1)
+
+    credits.end_tail()
 
     return credits.finalize()

@@ -315,7 +315,7 @@ room = Room(
             directions=VramStore.DIR2_SWSE
         ),
         RegularNPC(  # 12
-            npc=npcs.BUNDT_OBJECT_NPC_2,
+            npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.DO_ANYTHING,
             event_script=E2052_CHAPEL_POSTGAME_BOSS,
             action_script=A0015_DO_NOTHING,

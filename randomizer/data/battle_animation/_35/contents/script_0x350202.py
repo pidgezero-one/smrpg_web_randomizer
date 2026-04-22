@@ -384,5 +384,4 @@ script = AnimationScriptBlock(expected_size=872, expected_beginning=0x350202, sc
 	ReturnSubroutine(),
 	NewEffectObject(effect=EF0071_SMITHY_TREASURE_HEAD_SPELL_BLUE, playback_off=True, identifier="command_0x35C6B6"),
 	Jmp(["command_0x35C6BF"]),
-
 ])

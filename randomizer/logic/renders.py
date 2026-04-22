@@ -503,7 +503,31 @@ def render_booster_tower_indoor_boss(
         world.event_scripts.delete_subscript_command_by_identifier(
             "tower_toss_aqueue", "tower_toss"
         )
+        
 
+def render_booster_tower_indoor_boss_postgame(
+    world: GameWorld,
+    prize: BossFightPrize,
+) -> None:
+    m = prize.smallest_npc()
+    anim = m.animations.chapel_laugh
+    seq_id_replacements = [
+        ("EVENT_704_action_queue_sync_0", "EVENT_704_set_sprite_sequence_0"),
+    ]
+    for eid, aid in seq_id_replacements:
+        e = world.event_scripts.get_subscript_command_by_identifier(
+            eid, aid, A_SetSpriteSequence
+        )
+        if anim:
+            e.set_index(anim.sequence_id)
+        elif e.mirror_sprite:
+            world.event_scripts.replace_subscript_command_by_identifier(
+                eid, aid, A_FaceSoutheast()
+            )
+        else:
+            world.event_scripts.replace_subscript_command_by_identifier(
+                eid, aid, A_FaceSouthwest()
+            )
 
 def render_booster_tower_henchman_scripts(
     world: GameWorld,
@@ -963,7 +987,23 @@ def render_ship_final_boss(world: GameWorld, prize: BossFightPrize) -> None:
         if assigned_count < 2:
             world.event_scripts.delete_command_by_identifier("ship_henchman_2_beach_1")
 
-
+def render_ship_postgame_boss(world: GameWorld, prize: BossFightPrize) -> None:
+    """Apply animation changes for Ship Final boss fight."""
+    m = prize.smallest_npc()
+    # boss room on revisit
+    if m.animations.ship_chair is not None:
+        c = world.event_scripts.get_subscript_command_by_identifier(
+            "ship_boss_idle_script_2", "ship_boss_idle_sequence_2", A_SetSpriteSequence
+        )
+        c.set_index(m.animations.ship_chair.sequence_id)
+    else:
+        world.event_scripts.replace_subscript_command_by_identifier(
+            "ship_boss_idle_script_2", "ship_boss_idle_sequence_2", A_FaceSouthwest()
+        )
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "ship_boss_idle_script_2", "ship_boss_idle_sequence_loop_2"
+        )
+        
 # =============================================================================
 # Dojo
 # =============================================================================
@@ -987,20 +1027,23 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
             ActionQueueAsync,
             world.event_scripts.get_command_by_identifier("dojo_boss_1_initiate_aq"),
         ).set_subscript(get_mimic_rise_dojo())
-    elif m.animations.dojo_challenge is not None:
-        world.event_scripts.get_subscript_command_by_identifier(
-            "dojo_boss_1_initiate_aq",
-            "dojo_boss_1_initiate",
-            A_SetSpriteSequence,
-        ).set_index(m.animations.dojo_challenge.sequence_id)
-        if m.animations.dojo_challenge.contact_frame is not None:
-            world.event_scripts.get_subscript_command_by_identifier(
-                "dojo_boss_1_initiate_aq", "dojo_boss_1_pause", A_Pause
-            ).set_length(m.animations.dojo_challenge.contact_frame)
     else:
-        world.event_scripts.delete_subscript_command_by_identifier(
-            "dojo_boss_1_initiate_aq", "dojo_boss_1_initiate"
-        )
+        if m.animations.dojo_challenge is not None:
+            world.event_scripts.get_subscript_command_by_identifier(
+                "dojo_boss_1_initiate_aq",
+                "dojo_boss_1_initiate",
+                A_SetSpriteSequence,
+            ).set_index(m.animations.dojo_challenge.sequence_id)
+            if m.animations.dojo_challenge.contact_frame is not None:
+                world.event_scripts.get_subscript_command_by_identifier(
+                    "dojo_boss_1_initiate_aq", "dojo_boss_1_pause", A_Pause
+                ).set_length(m.animations.dojo_challenge.contact_frame)
+        else:
+            world.event_scripts.get_subscript_command_by_identifier(
+                "dojo_boss_1_initiate_aq",
+                "dojo_boss_1_initiate",
+                A_SetSpriteSequence,
+            ).set_index(0)
     if m.animations.recoil is not None:
         world.event_scripts.get_subscript_command_by_identifier(
             "dojo_boss_1_recoil_aq", "dojo_boss_1_recoil", A_SetSpriteSequence
@@ -1039,30 +1082,33 @@ def render_dojo_fight(
             ActionQueueAsync,
             world.event_scripts.get_command_by_identifier(initiate_aq_id),
         ).set_subscript(get_mimic_rise_dojo())
-    elif m.animations.dojo_challenge is not None:
-        world.event_scripts.get_subscript_command_by_identifier(
-            initiate_aq_id,
-            initiate_id,
-            A_SetSpriteSequence,
-        ).set_index(m.animations.dojo_challenge.sequence_id)
-        if m.animations.dojo_challenge.contact_frame is not None:
+    else:
+        if m.animations.dojo_challenge is not None:
             world.event_scripts.get_subscript_command_by_identifier(
-                initiate_aq_id, pause_id, A_Pause
-            ).set_length(m.animations.dojo_challenge.contact_frame)
-        if deescalate_aq_id is not None and deescalate_id is not None:
-            world.event_scripts.get_subscript_command_by_identifier(
-                deescalate_aq_id,
-                deescalate_id,
+                initiate_aq_id,
+                initiate_id,
                 A_SetSpriteSequence,
             ).set_index(m.animations.dojo_challenge.sequence_id)
-    else:
-        world.event_scripts.delete_subscript_command_by_identifier(
-            initiate_aq_id, initiate_id
-        )
-        if deescalate_aq_id is not None and deescalate_id is not None:
-            world.event_scripts.delete_subscript_command_by_identifier(
-                deescalate_aq_id, deescalate_id
-            )
+            if m.animations.dojo_challenge.contact_frame is not None:
+                world.event_scripts.get_subscript_command_by_identifier(
+                    initiate_aq_id, pause_id, A_Pause
+                ).set_length(m.animations.dojo_challenge.contact_frame)
+            if deescalate_aq_id is not None and deescalate_id is not None:
+                world.event_scripts.get_subscript_command_by_identifier(
+                    deescalate_aq_id,
+                    deescalate_id,
+                    A_SetSpriteSequence,
+                ).set_index(m.animations.dojo_challenge.sequence_id)
+        else:
+            world.event_scripts.get_subscript_command_by_identifier(
+                initiate_aq_id,
+                initiate_id,
+                A_SetSpriteSequence,
+            ).set_index(0)
+            if deescalate_aq_id is not None and deescalate_id is not None:
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    deescalate_aq_id, deescalate_id
+                )
 
 
 # =============================================================================

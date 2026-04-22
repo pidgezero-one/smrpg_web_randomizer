@@ -42,7 +42,6 @@ script = EventScript([
 	RestoreAllHP(identifier="EVENT_2226_restore_all_hp_5"),
 	RestoreAllFP(),
 	SetBit(KEEP_BOSS_3_DEFEATED),
-	SetBit(BATTLE_DOOR_STAR_PIECE),
 	SetVarToConst(PRIMARY_TEMP_7000, 522),
 	SetBit(RETURN_TO_OVERWORLD_AFTER_KEEP_STAR_PIECE),
 	RunEventAsSubroutine(E1238_KEEP_EXIT_BOSS_UNLOCKS),

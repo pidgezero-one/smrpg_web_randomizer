@@ -41,7 +41,8 @@ script = EventScript([
     JmpIfBitSet(STAY_VOUCHER_USED, ["EVENT_2124_summon_object_4"]),
 	EnterArea(room_id=R065_MARRYMORE_CHAPEL_SANCTUARY, face_direction=NORTHEAST, x=9, y=98, z=0, run_entrance_event=True, identifier="EVENT_2124_enter_area_3"),
 	Return(),
-    SummonObjectToSpecificLevel(NPC_12, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, identifier="EVENT_2124_summon_object_4"),
+    EnterArea(room_id=R050_POSTGAME_CHAPEL, face_direction=NORTHEAST, x=9, y=98, z=0, run_entrance_event=True, identifier="EVENT_2124_summon_object_4"),
+	Return(),
 	EnterArea(room_id=R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, face_direction=NORTHEAST, x=9, y=98, z=0, run_entrance_event=True, identifier="EVENT_2124_enter_area_5"),
 	Return()
 ])

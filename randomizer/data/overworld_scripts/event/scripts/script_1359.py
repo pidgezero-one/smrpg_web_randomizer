@@ -56,9 +56,11 @@ script = EventScript([
 		A_WalkEastPixels(8),
 		A_WalkNorthPixels(8)
 	]),
-	JmpIfBitSet(FAST_TRAVEL_ENABLED, ["EVENT_1359_jmp_if_bit_set_12"]),
+    JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["EVENT_1359_jmp_if_bit_clear_11_"]),
+    JmpIfBitClear(RETURNED_MARIO_DOLL, ["EVENT_1359_summon_npc_7"]),
+	JmpIfBitSet(FAST_TRAVEL_ENABLED, ["EVENT_1359_jmp_if_bit_set_12"], identifier="EVENT_1359_jmp_if_bit_clear_11_"),
 	JmpIfBitClear(TOWER_BOSS_2_DEFEATED, ["EVENT_1359_jmp_if_bit_set_12"]),
-	SummonObjectToCurrentLevel(NPC_7),
+	SummonObjectToCurrentLevel(NPC_7, identifier="EVENT_1359_summon_npc_7"),
 	SummonObjectToCurrentLevel(NPC_8),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_WalkWestPixels(8),
@@ -69,8 +71,9 @@ script = EventScript([
 		A_WalkSouthPixels(8)
 	]),
 	JmpIfBitSet(CURTAIN_MINIGAME_COMPLETED, ["EVENT_1359_apply_tile_mod_17"], identifier="EVENT_1359_jmp_if_bit_set_12"),
-    JmpIfBitSet(RETURNED_MARIO_DOLL, ["EVENT_1359_apply_tile_mod_17"]),
-	JmpIfBitSet(TOWER_BOSS_1_DEFEATED, ["EVENT_1359_apply_solidity_mod_28"]),
+	JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["EVENT_1359_jmp_if_bit_set_14"]),
+	JmpIfBitSet(RETURNED_MARIO_DOLL, ["EVENT_1359_apply_tile_mod_17"]),
+	JmpIfBitSet(TOWER_BOSS_1_DEFEATED, ["EVENT_1359_apply_solidity_mod_28"], identifier="EVENT_1359_jmp_if_bit_set_14"),
 	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=2),
 	RunEventAsSubroutine(E0789_TOWER_CURTAIN_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False),
@@ -79,19 +82,17 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=39),
 	ApplyTileModToLevel(use_alternate=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=43),
 	ApplyTileModToLevel(use_alternate=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=47),
-    JmpIfBitSet(RETURNED_MARIO_DOLL, ["EVENT_1359_set_curtain_minigame_completed_bit_79"]),
+	JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["EVENT_1359_transfer_npc_5_to_curtain_game"]),
+	JmpIfBitSet(RETURNED_MARIO_DOLL, ["EVENT_1359_set_curtain_minigame_completed_bit_79"]),
 	ActionQueueAsync(target=NPC_5, subscript=[
 		A_TransferToXYZF(x=3, y=21, z=0, direction=EAST)
-	]),
+	], identifier="EVENT_1359_transfer_npc_5_to_curtain_game"),
 	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=1, identifier="EVENT_1359_set_curtain_minigame_completed_bit_79"),
 	JmpIfBitClear(UNKNOWN_7054_4, ["EVENT_1359_fade_in_from_black_async_26"]),
 	ApplyTileModToLevel(use_alternate=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=33),
 	Jmp(["EVENT_1359_fade_in_from_black_async_26"]),
 	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=2, identifier="EVENT_1359_apply_solidity_mod_28"),
 	RunEventAsSubroutine(E0789_TOWER_CURTAIN_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_1359_fade_in_from_black_async_26"),
-    JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["curtain_room_end"]),
-    JmpIfBitClear(STAY_VOUCHER_USED, ["curtain_room_end"]),
-    SummonObjectToCurrentLevel(NPC_9),
 	FadeInFromBlack(sync=False, identifier="curtain_room_end"),
 	Return()
 ])

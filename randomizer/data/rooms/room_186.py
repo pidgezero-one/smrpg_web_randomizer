@@ -35,9 +35,10 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0041_SUNKENSHIP,
-    entrance_event=E0015_STANDARD_ROOM_LOADER,
-    exits=[
-        RoomExit(
+    entrance_event=E0717_SHIP_WARP_LOADER,
+    events=[
+        Event(
+            event=E0718_ENTER_JOHNNY_ROOM_FROM_WARP,
             x=28,
             y=71,
             z=0,
@@ -46,15 +47,10 @@ room = Room(
             height=0,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_2_bit_2=False,
-            destination=R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
-            show_message=False,
-            dst_x=29,
-            dst_y=117,
-            dst_z=0,
-            dst_z_half=False,
-            dst_f=SOUTHWEST,
-            x_bit_7=False),
+            byte_8_bit_4=False,
+        ),
+    ],
+    exits=[
     ],
     objects=[
         RegularNPC( # 0
