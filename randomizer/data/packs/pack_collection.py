@@ -1084,7 +1084,6 @@ FORM0096_ONE_CULEX3D_ONE_FIRECRYS3D_ONE_WATERCRYS3D_ONE_EARTHCRYS3D_ONE_WINDCRYS
     ],
     music=CulexMusic(),
     unknown_bit=True,
-    run_event_at_load=77,
 )
 
 FORM0097_ONE_MUKUMUKU = Formation(

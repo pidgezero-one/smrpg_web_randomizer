@@ -6517,6 +6517,9 @@ class Culex3DBossFight(BossFightPrize):
     _npc_models = [Culex3DSmallObject]
     _statue_npc = CulexStatueObject
 
+    _force_battlefield = BF47_CULEX
+
+
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It is not an effective way to\n grind experience points.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ You have passed the first test.\n But you're not finished yet!\n Please enter.[await]""",
