@@ -84,6 +84,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
     A_WalkSouthPixels,
     A_ReturnQueue,
     A_ShiftXYPixels,
+    A_FixedFCoordOn,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
     AreaObject,
@@ -119,6 +120,8 @@ from ..data.variables.variable_names import (
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import Packet
 from ..data.physical_objects.items import DefaultItem
 from ..types.prize import TOriginallyHeld
+
+from ..types.physical_objects import PixelShift
 
 if TYPE_CHECKING:
     from ..types.logic import Inventory
@@ -2338,56 +2341,28 @@ class BossFightLocation(PrizeLocation):
                 base = model.base
                 obj._npc = base
                 set_npc_direction_if_swse_only(world, slot.room_id, slot.npc_id, base)
-                # Adjust statue sprite positioning
-                if (
-                    obj.direction in [SOUTHWEST, SOUTHEAST]
-                    and slot.sequence_setter_event_id is not None
-                ):
-                    ev = world.event_scripts.get_script_by_id(
-                        slot.sequence_setter_event_id
-                    )
-                    if (
-                        model.horizontal_pixel_shift != 0
-                        or model.vertical_pixel_shift != 0
-                    ):
-                        ev.set_contents(
-                            [
-                                ActionQueueAsync(
-                                    slot.npc_id,
-                                    [
-                                        A_ShiftXYPixels(
-                                            model.horizontal_pixel_shift,
-                                            model.vertical_pixel_shift,
-                                        )
-                                    ],
-                                ),
-                                *ev.contents,
-                            ]
+                # Adjust statue sprite positioning per facing direction.
+                if slot.sequence_setter_event_id is not None:
+                    shift: PixelShift | None = None
+                    if obj.direction == SOUTHWEST:
+                        shift = model.southwest_facing_shift
+                    elif obj.direction == SOUTHEAST:
+                        shift = model.southeast_facing_shift
+                    elif obj.direction == NORTHWEST:
+                        shift = model.northwest_facing_shift
+                    elif obj.direction == NORTHEAST:
+                        shift = model.northeast_facing_shift
+                    if shift is not None and (shift.right != 0 or shift.down != 0):
+                        ev = world.event_scripts.get_script_by_id(
+                            slot.sequence_setter_event_id
                         )
-                elif (
-                    obj.direction in [NORTHEAST, NORTHWEST]
-                    and slot.sequence_setter_event_id is not None
-                ):
-                    ev = world.event_scripts.get_script_by_id(
-                        slot.sequence_setter_event_id
-                    )
-                    if (
-                        model.horizontal_pixel_shift != 0
-                        or model.vertical_pixel_shift != 0
-                    ):
                         ev.set_contents(
                             [
                                 ActionQueueAsync(
                                     slot.npc_id,
                                     [
-                                        A_ShiftXYPixels(
-                                            (
-                                                model.horizontal_pixel_shift * -1
-                                                if obj.direction == NORTHEAST
-                                                else model.horizontal_pixel_shift
-                                            ),
-                                            model.vertical_pixel_shift,
-                                        )
+                                        A_FixedFCoordOn(),
+                                        A_ShiftXYPixels(-shift.right, shift.down)
                                     ],
                                 ),
                                 *ev.contents,

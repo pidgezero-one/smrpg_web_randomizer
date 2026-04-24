@@ -381,6 +381,7 @@ script = EventScript([
 	StopMusic(identifier="EVENT_3640_stop_music_207"),
 	RunEventAsSubroutine(E0940_STATUE_SUBROUTINE_2),
 	ActionQueueSync(target=NPC_3, subscript=[
+		A_FixedFCoordOff(),
 		A_SequenceLoopingOn(),
 		A_SequencePlaybackOn(),
 		A_SetAllSpeeds(VERY_FAST),
@@ -464,6 +465,7 @@ script = EventScript([
 	]),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=NPC_3, subscript=[
+		A_FixedFCoordOff(),
 		A_Pause(60),
 		A_ResetProperties(),
 		A_FaceNorthwest(),

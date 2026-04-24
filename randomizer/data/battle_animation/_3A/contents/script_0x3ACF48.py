@@ -1810,6 +1810,7 @@ script = AnimationScriptBlock(expected_size=7676, expected_beginning=0x3ACF48, s
     UseSpriteQueue(field_object=2, destinations=["punchinello_2_sprq4"], bit_2=True, bit_4=True),
     UseSpriteQueue(field_object=3, destinations=["punchinello_2_sprq7"], bit_2=True, bit_4=True),
     UseSpriteQueue(field_object=4, destinations=["punchinello_2_sprq10"], bit_2=True, bit_4=True),
+    RunSubroutine(["command_0x3A755E"]),
 	RunSubroutine(["command_0x3A771E"]),
 	Jmp(["command_0x3A7550"]),
     SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=135, y=119, z=0, set_x=True, set_y=True, set_z=True, identifier="punchinello_2_sprq"),

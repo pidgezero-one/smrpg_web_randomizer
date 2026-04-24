@@ -1,7 +1,17 @@
 """Various representations of an immutable object, like a mushroom, flower, shell, etc"""
 
+from dataclasses import dataclass
 from math import ceil
 from smrpgpatchbuilder.datatypes.levels.classes import NPC as NPCBase
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
+    SOUTHEAST,
+    SOUTHWEST,
+    NORTHEAST,
+    NORTHWEST,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.direction import (
+    Direction,
+)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.types.classes import (
     SequenceSpeed,
 )
@@ -605,15 +615,25 @@ class NPC:
         )
 
 
+@dataclass(frozen=True)
+class PixelShift:
+    """A signed pixel offset applied to a statue sprite when spawned.
+
+    right: positive = shift right, negative = shift left (in pixels).
+    down: positive = shift down, negative = shift up (in pixels).
+    """
+
+    right: int
+    down: int
+
+
 class BossNPC(NPC):
 
     _animations: SpriteAnimationCollection = SpriteAnimationCollection()
 
-    # Statue pixel shift attributes (for statues to align properly when spawned)
-    _horizontal_pixel_shift: int = 0
-    _vertical_pixel_shift: int = 0
-    _north_facing_horizontal_pixel_shift: int = 0
-    _north_facing_vertical_pixel_shift: int = 0
+    # Per-direction statue pixel shifts. Missing keys (or None) mean no shift
+    # is applied for that direction. Keys: SOUTHWEST, SOUTHEAST, NORTHWEST, NORTHEAST.
+    _facing_shifts: dict[Direction, PixelShift] = {}
 
     # Palette data (15 24-bit RGB colors) to use as this boss's "evil"
     # palette variant (e.g. for the Keep boss 1 pre-reformation scene).
@@ -635,24 +655,24 @@ class BossNPC(NPC):
         return self._evil_palette
 
     @property
-    def horizontal_pixel_shift(self) -> int:
-        """The horizontal pixel shift to apply to this statue when spawned."""
-        return self._horizontal_pixel_shift
+    def southwest_facing_shift(self) -> PixelShift | None:
+        """Pixel shift applied when this statue is spawned facing southwest."""
+        return self._facing_shifts.get(SOUTHWEST)
 
     @property
-    def vertical_pixel_shift(self) -> int:
-        """The vertical pixel shift to apply to this statue when spawned."""
-        return self._vertical_pixel_shift
+    def southeast_facing_shift(self) -> PixelShift | None:
+        """Pixel shift applied when this statue is spawned facing southeast."""
+        return self._facing_shifts.get(SOUTHEAST)
 
     @property
-    def north_facing_horizontal_pixel_shift(self) -> int:
-        """The horizontal pixel shift to apply to this statue when spawned facing north."""
-        return self._north_facing_horizontal_pixel_shift
+    def northwest_facing_shift(self) -> PixelShift | None:
+        """Pixel shift applied when this statue is spawned facing northwest."""
+        return self._facing_shifts.get(NORTHWEST)
 
     @property
-    def north_facing_vertical_pixel_shift(self) -> int:
-        """The vertical pixel shift to apply to this statue when spawned facing north."""
-        return self._north_facing_vertical_pixel_shift
+    def northeast_facing_shift(self) -> PixelShift | None:
+        """Pixel shift applied when this statue is spawned facing northeast."""
+        return self._facing_shifts.get(NORTHEAST)
 
     @classmethod
     def get_vram_size(cls, world: "GameWorld") -> int:

@@ -4525,6 +4525,8 @@ class STRONGBOBOMB1Enemy(Enemy):
     _defense: int = 68
     _magic_attack: int = 1
     _magic_defense: int = 10
+    _max_shuffled_attack: int = 155
+    _max_shuffled_magic_attack: int = 155
     _speed: int = 2
     _evade: int = 0
     _magic_evade: int = 0
@@ -5104,6 +5106,8 @@ class STRONGBOBOMB2Enemy(Enemy):
     _defense: int = 68
     _magic_attack: int = 1
     _magic_defense: int = 10
+    _max_shuffled_attack: int = 155
+    _max_shuffled_magic_attack: int = 155
     _speed: int = 2
     _evade: int = 0
     _magic_evade: int = 0
@@ -5133,6 +5137,8 @@ class STRONGBOBOMB3Enemy(Enemy):
     _defense: int = 68
     _magic_attack: int = 1
     _magic_defense: int = 10
+    _max_shuffled_attack: int = 155
+    _max_shuffled_magic_attack: int = 155
     _speed: int = 2
     _evade: int = 0
     _magic_evade: int = 0
@@ -5547,6 +5553,8 @@ class STRONGBOBOMB4Enemy(Enemy):
     _defense: int = 68
     _magic_attack: int = 1
     _magic_defense: int = 10
+    _max_shuffled_attack: int = 155
+    _max_shuffled_magic_attack: int = 155
     _speed: int = 2
     _evade: int = 0
     _magic_evade: int = 0
@@ -6889,6 +6897,8 @@ class BUNDT2Enemy(Enemy):
     _defense: int = 110
     _magic_attack: int = 170
     _magic_defense: int = 100
+    _max_shuffled_attack: int = 230
+    _max_shuffled_magic_attack: int = 230
     _speed: int = 16
     _evade: int = 0
     _magic_evade: int = 0

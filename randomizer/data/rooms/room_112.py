@@ -99,7 +99,7 @@ room = Room(
             byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.DODO_ND_TIME_NPC,
-            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            initiator=EventInitiator.DO_ANYTHING,
             event_script=E2118_INITIATE_STATUE_POLISHER_MANUAL_BOSS_FIGHT,
             action_script=A0000_DO_NOTHING,
             visible=False,

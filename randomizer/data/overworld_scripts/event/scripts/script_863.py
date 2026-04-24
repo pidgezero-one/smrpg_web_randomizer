@@ -43,5 +43,8 @@ script = EventScript([
 		A_SetSpriteSequence(index=3, is_sequence=True, looping=False, identifier="dojo_boss_3_deescalate"),
 		A_Pause(18)
 	], identifier="dojo_boss_3_deescalate_aq"),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_SetSpriteSequence(index=0, sprite_offset=0, is_mold=True, is_sequence=True, looping=False, identifier="dojo_fight_2_mario_challenge_mold")
+	], identifier="dojo_fight_2_mario_challenge_mold_aq"),
 	Return()
 ])

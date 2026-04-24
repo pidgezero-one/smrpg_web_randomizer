@@ -24,6 +24,7 @@ from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands impo
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.types.classes import (
     UsableAnimationScriptCommand,
 )
+from smrpgpatchbuilder.datatypes.scripts_common.classes import TransformableIdentifier
 
 
 @dataclass
@@ -60,17 +61,37 @@ class SequenceInfo:
         return (self.total_bytes * (self.occurrence_count - 1)) - (3 * (self.occurrence_count - 1))
 
 
-def get_command_signature(cmd: UsableAnimationScriptCommand) -> str:
-    """Get a signature string for a command that can be used for comparison."""
-    cmd_type = type(cmd).__name__
+def _normalize_arg_value(value) -> str:
+    """Normalize a command's attribute value into a stable string form.
 
-    try:
-        # Render the command to get its actual bytes - this is the most accurate comparison
-        rendered = cmd.render()
-        return f"{cmd_type}:{rendered.hex()}"
-    except Exception:
-        # Fallback to repr if render fails
-        return repr(cmd)
+    TransformableIdentifier values are reduced to their label (so the command's
+    own identifier — excluded upstream — and destination labels render
+    deterministically). Lists/tuples recurse. Everything else falls back to repr.
+    """
+    if isinstance(value, TransformableIdentifier):
+        return f"TI:{value.label}"
+    if isinstance(value, list):
+        return "[" + ",".join(_normalize_arg_value(v) for v in value) + "]"
+    if isinstance(value, tuple):
+        return "(" + ",".join(_normalize_arg_value(v) for v in value) + ")"
+    return repr(value)
+
+
+def get_command_signature(cmd: UsableAnimationScriptCommand) -> str:
+    """Signature of a command based on its class and arguments.
+
+    Two commands are considered equal iff they are the same class and their
+    constructor arguments match — EXCEPT `identifier`, which is always ignored
+    (so two commands that differ only by label compare equal).
+    """
+    cmd_type = type(cmd).__name__
+    parts: list[str] = []
+    state = vars(cmd)
+    for key in sorted(state.keys()):
+        if key == "_identifier":
+            continue
+        parts.append(f"{key}={_normalize_arg_value(state[key])}")
+    return f"{cmd_type}({','.join(parts)})"
 
 
 def find_sequences_in_script(
@@ -212,7 +233,7 @@ def generate_report(sequences: dict[tuple, SequenceInfo], output_path: Path) -> 
 
     # Sort by potential savings (highest first), then by occurrence count
     sorted_sequences = sorted(
-        bank_sequences,
+        (bs for bs in bank_sequences if bs.potential_savings > 0),
         key=lambda x: (x.potential_savings, x.occurrence_count),
         reverse=True
     )

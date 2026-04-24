@@ -15,6 +15,11 @@ class Enemy(EnemyBase):
     _ratio_evade: float = 1.0
     _ratio_magic_evade: float = 1.0
 
+    # Per-enemy ceilings for scaled attack/magic_attack. Leaves headroom for in-battle
+    # buffs like ATKMATK5 (+5) so the working 16-bit stat doesn't pin at 255 and overflow.
+    _max_shuffled_attack: int = 255
+    _max_shuffled_magic_attack: int = 255
+
     @property
     def ratio_hp(self) -> float:
         return self._ratio_hp
@@ -42,6 +47,14 @@ class Enemy(EnemyBase):
     @property
     def ratio_magic_evade(self) -> float:
         return self._ratio_magic_evade
+
+    @property
+    def max_shuffled_attack(self) -> int:
+        return self._max_shuffled_attack
+
+    @property
+    def max_shuffled_magic_attack(self) -> int:
+        return self._max_shuffled_magic_attack
 
     @property
     def remake_name(self) -> str:

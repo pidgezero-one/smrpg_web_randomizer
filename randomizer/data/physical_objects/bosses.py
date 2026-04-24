@@ -1,8 +1,15 @@
 from typing import Sequence
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import FASTEST
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
+    SOUTHEAST,
+    SOUTHWEST,
+    NORTHEAST,
+    NORTHWEST,
+)
 from ...types.physical_objects import (
     BossNPC,
+    PixelShift,
     SpriteAnimation,
     SpriteAnimationCollection,
 )
@@ -180,7 +187,10 @@ class CrocoStatueObject(BossNPC):
     """Croco statue object in Mushroom Way Area 03."""
 
     _base = CROCO_STATUE_NPC
-    _horizontal_pixel_shift = -3
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(3, 0),
+        SOUTHEAST: PixelShift(-3, 0),
+    }
 
 
 class MackSmallObject(BossNPC):
@@ -334,6 +344,10 @@ class Belome3LargeObject(BossNPC):
 
 class BelomeSmallStatueObject(BossNPC):
     """Small Belome statue object in Mushroom Way Area 03."""
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(3, 2),
+        SOUTHEAST: PixelShift(-3, 2),
+    }
 
     _base = BELOME_SMALL_STATUE
     _evil_palette = [
@@ -1012,9 +1026,12 @@ class MagikoopaStatueObject(BossNPC):
     """Magikoopa statue object."""
 
     _base = MAGIKOOPA_STATUE_NPC
-    _horizontal_pixel_shift = 2
-    _north_facing_horizontal_pixel_shift = -4
-    _north_facing_vertical_pixel_shift = -1
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(-2, 0),
+        SOUTHEAST: PixelShift(2, 0),
+        NORTHWEST: PixelShift(4, -1),
+        NORTHEAST: PixelShift(4, -1),
+    }
 
 
 class ValentinaStatueObject(BossNPC):
@@ -1027,8 +1044,12 @@ class ShovelKnightStatueObject(BossNPC):
     """Shovel Knight statue object (Clerk/Manager/Director)."""
 
     _base = SHOVEL_KNIGHT_STATUE_NPC
-    _horizontal_pixel_shift = -3
-    _north_facing_horizontal_pixel_shift = -5
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(3, 0),
+        SOUTHEAST: PixelShift(-3, 0),
+        NORTHWEST: PixelShift(5, 0),
+        NORTHEAST: PixelShift(5, 0),
+    }
 
 
 class YaridovichStatueObject(BossNPC):
@@ -1041,8 +1062,12 @@ class GrateGuyStatueObject(BossNPC):
     """Grate Guy statue object."""
 
     _base = GRATE_GUY_STATUE_NPC
-    _horizontal_pixel_shift = -3
-    _north_facing_horizontal_pixel_shift = -2
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(3, 0),
+        SOUTHEAST: PixelShift(-3, 0),
+        NORTHWEST: PixelShift(5, 0),
+        NORTHEAST: PixelShift(5, 0),
+    }
 
 
 class JinxStatueObject(BossNPC):
@@ -1174,7 +1199,10 @@ class FactoryChiefStatueObject(BossNPC):
     """Factory Chief statue object."""
 
     _base = FACTORY_CHIEF_STATUE_NPC
-    _horizontal_pixel_shift = -1
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(1, 0),
+        SOUTHEAST: PixelShift(-1, 0),
+    }
 
 
 chief_stab = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=38)
@@ -1248,14 +1276,20 @@ class AxemRedStatueObject(BossNPC):
     """Axem Red statue object."""
 
     _base = AXEM_RED_STATUE_NPC
-    _horizontal_pixel_shift = -6
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(6, 0),
+        SOUTHEAST: PixelShift(-6, 0),
+    }
 
 
 class BundtStatueObject(BossNPC):
     """Bundt statue object."""
 
     _base = BUNDT_STATUE_NPC
-    _horizontal_pixel_shift = -3
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(3, 0),
+        SOUTHEAST: PixelShift(-3, 0),
+    }
 
 
 class CountDownGridplaneObject(BossNPC):
@@ -1274,8 +1308,10 @@ class CountDownStatueObject(BossNPC):
     """Count Down statue object."""
 
     _base = COUNT_DOWN_STATUE_NPC
-    _horizontal_pixel_shift = 4
-    _vertical_pixel_shift = -1
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(-4, -1),
+        SOUTHEAST: PixelShift(4, -1),
+    }
 
 
 class PunchinelloStatueObject(BossNPC):
@@ -1324,7 +1360,10 @@ class SmithyStatueObject(BossNPC):
     """Smithy statue object."""
 
     _base = SMITHY_STATUE_NPC
-    _horizontal_pixel_shift = -8
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(8, 0),
+        SOUTHEAST: PixelShift(-8, 0),
+    }
 
 
 class CulexStatueObject(BossNPC):

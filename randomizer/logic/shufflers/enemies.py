@@ -362,6 +362,7 @@ def randomize_enemy_stats(world: GameWorld) -> None:
         STRONGBOBOMB2Enemy,
         STRONGBOBOMB3Enemy,
         STRONGBOBOMB4Enemy,
+        BOOSTERDUMMY,
     )
     strong_bobomb_types = (
         STRONGBOBOMB1Enemy, STRONGBOBOMB2Enemy,
@@ -452,6 +453,10 @@ def randomize_enemy_stats(world: GameWorld) -> None:
         # Mutate individual enemy stats
         # Cap changes at ±50% to prevent wild swings, especially for scaled boss stats
         for enemy in all_enemies:
+            # BOOSTERDUMMY is an internal mechanic actor, not a real combatant —
+            # never mutate its stats.
+            if isinstance(enemy, BOOSTERDUMMY):
+                continue
             orig = original_stats[id(enemy)]
 
             # Mutate numeric stats with ±50% cap relative to current (post-shuffle) value

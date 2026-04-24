@@ -3760,7 +3760,7 @@ class BundtBossFight(BossFightPrize):
         FormationMember(TORTEEnemy, 199, 151),
         FormationMember(TORTEEnemy, 135, 119),
     ]
-    _anchor_enemy = BUNDTEnemy
+    _anchor_enemy = [BUNDTEnemy, RASPBERRYEnemy]
     _hp_slice_excluded_enemies = [TORTEEnemy, TORTEEnemy]
     _seaside_letter_name_if_seaside_boss = "the Cake"
     _seaside_letter_name_if_volcano_boss = "a possessed cake walking"
@@ -6253,11 +6253,12 @@ class Booster2BossFight(BossFightPrize):
         FormationMember(SNIFIT2Enemy, 212, 138),
         FormationMember(BOOSTERDUMMY, 0, 0),
     ]
+    _anchor_enemy = BOOSTEREnemy2
 
     _seaside_letter_name_if_volcano_boss = "a viking riding trains"
     _seaside_letter_name_if_final_boss = "Booster's frenemies."
     _name = "Booster"
-    _hp_slice_excluded_enemies = [BOOSTERDUMMY]
+    _scaling_excluded_enemies = [BOOSTERDUMMY]
 
     _npc_models = [Booster2SmallObject]
     _statue_npc = BoosterStatueObject
@@ -6304,6 +6305,7 @@ class Bundt2BossFight(BossFightPrize):
         FormationMember(TORTE2Enemy, 135, 119),
         FormationMember(CANDLEEnemy, 0, 0),
     ]
+    _anchor_enemy = BUNDT2Enemy
     _force_start_event = BE0017_BEGIN_BUNDT_POSTGAME
 
     _seaside_letter_name_if_seaside_boss = "the Cake"

@@ -459,7 +459,7 @@ script = EventScript([
 	RestoreAllHP(),
 	RestoreAllFP(),
 	JmpIfBitClear(STATUE_KEEPER_FIGHT_PRESENT, ["EVENT_738_enter_area_116"]),
-	SummonObjectToSpecificLevel(NPC_2, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT, identifier="EVENT_738_summon_to_level_115"),
+	SummonObjectToSpecificLevel(NPC_1, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT, identifier="EVENT_738_summon_to_level_115"),
 	EnterArea(room_id=R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, face_direction=SOUTH, x=15, y=46, z=2, run_entrance_event=True, identifier="EVENT_738_enter_area_116"),
 	RunEventAsSubroutine(E3660_NIMBUS_REPOPULATE_CASTLE_UPON_LIBERATION),
 	FadeInFromBlack(sync=True),

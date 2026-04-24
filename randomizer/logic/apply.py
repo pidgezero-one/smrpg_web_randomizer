@@ -791,6 +791,26 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             A_SetSpriteSequence,
         )
         hide_cmd.set_index(defend_mold[1])
+    # Dojo post-battle "challenge hold": freeze MARIO on the final mold of the
+    # protagonist's challenge sequence so they stay in the fighting pose through
+    # the deescalate cutscene.
+    challenge = ally._sprites_primary[SpriteAnimationState.CHALLENGE]
+    challenge_offset = challenge[0]
+    challenge_seq = challenge[1]
+    challenge_base_sprite = 0 if ally.index == 0 else SPR0031_ALT_PROTAGONIST_1
+    challenge_sprite = world.get_sprite(challenge_base_sprite + challenge_offset)
+    challenge_final_mold = challenge_sprite.animation.properties.sequences[challenge_seq].frames[-1].mold_id
+    for aq_id, cmd_id in (
+        ("dojo_fight_2_mario_challenge_mold_aq", "dojo_fight_2_mario_challenge_mold"),
+        ("dojo_fight_3_mario_challenge_mold_aq", "dojo_fight_3_mario_challenge_mold"),
+        ("dojo_fight_5_mario_challenge_mold_aq", "dojo_fight_5_mario_challenge_mold"),
+    ):
+        cmd = world.event_scripts.get_subscript_command_by_identifier(
+            aq_id, cmd_id, A_SetSpriteSequence
+        )
+        cmd.set_index(challenge_final_mold)
+        cmd.set_sprite_offset(challenge_offset)
+
     # masher animation
     if ally.index != 0:
         world.event_scripts.get_subscript_command_by_identifier("tower_lean_back_aq", "tower_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
@@ -1120,9 +1140,9 @@ def _apply_stats_to_prize(
 
         # === Other Stats ===
         # All enemies scale relative to reference (average or anchor)
-        enemy.set_attack(scale_stat(attack, original.attack, ref_attack, enemy.ratio_attack))
+        enemy.set_attack(min(enemy.max_shuffled_attack, scale_stat(attack, original.attack, ref_attack, enemy.ratio_attack)))
         enemy.set_defense(scale_stat(defense, original.defense, ref_defense, enemy.ratio_defense))
-        enemy.set_magic_attack(scale_stat(magic_attack, original.magic_attack, ref_magic_attack, enemy.ratio_magic_attack))
+        enemy.set_magic_attack(min(enemy.max_shuffled_magic_attack, scale_stat(magic_attack, original.magic_attack, ref_magic_attack, enemy.ratio_magic_attack)))
         enemy.set_magic_defense(scale_stat(magic_defense, original.magic_defense, ref_magic_defense, enemy.ratio_magic_defense))
         enemy.set_evade(min(100, scale_stat(evade, original.evade, ref_evade, enemy.ratio_evade)))
         enemy.set_magic_evade(min(100, scale_stat(magic_evade, original.magic_evade, ref_magic_evade, enemy.ratio_magic_evade)))

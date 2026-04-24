@@ -109,7 +109,7 @@ script = EventScript([
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_ShiftToXYCoords(x=5, y=9),
 		A_FaceSoutheast(),
-		A_VisibilityOn()
+		A_VisibilityOff()
 	]),
 	ActionQueueAsync(target=NPC_4, subscript=[
 		A_TransferToXYZF(x=5, y=15, z=0, direction=EAST),

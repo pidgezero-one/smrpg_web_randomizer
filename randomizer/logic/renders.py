@@ -9,6 +9,7 @@ from __future__ import annotations
 from ast import Return
 from typing import TYPE_CHECKING, cast
 
+from smrpgpatchbuilder.datatypes.levels.classes import VramStore
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
     A_FixedFCoordOn,
     A_TransferXYZFPixels,
@@ -1305,6 +1306,8 @@ def render_statue_room_boss(
     has_walking_sequence = True
     has_back_walking_sequence = True
 
+    swse_only = is_swse_only(spr) or m.base.directions == VramStore.DIR2_SWSE
+
     south_mold_map = {}
     walking_molds = []
     for frame in spr.animation.properties.sequences[0].frames:
@@ -1314,14 +1317,14 @@ def render_statue_room_boss(
     for mold_id, count in south_mold_map.items():
         if count == 1:
             walking_molds.append(mold_id)
-            if len(walking_molds) == 2:
-                break
     if len(walking_molds) < 2:
         has_walking_sequence = False
+    else:
+        walking_molds = walking_molds[-2:]
 
     north_mold_map = {}
     back_walking_molds = []
-    if not is_swse_only(spr):
+    if not swse_only:
         for frame in spr.animation.properties.sequences[1].frames:
             if north_mold_map.get(frame.mold_id) is None:
                 north_mold_map[frame.mold_id] = 0
@@ -1329,10 +1332,10 @@ def render_statue_room_boss(
         for mold_id, count in north_mold_map.items():
             if count == 1:
                 back_walking_molds.append(mold_id)
-                if len(back_walking_molds) == 2:
-                    break
     if len(back_walking_molds) < 2:
         has_back_walking_sequence = False
+    else:
+        back_walking_molds = back_walking_molds[-2:]
 
     if not isinstance(prize, DodoBossFight):
         if has_back_walking_sequence:
@@ -1435,6 +1438,10 @@ def render_statue_room_boss(
     world.event_scripts.delete_subscript_command_by_identifier(
         "final_statue_peck_aq", "dodo_fakeout_2"
     )
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "statue_keeper_introduced_aq", "statue_keeper_introduced_2"
+    )
+
 
 
 # =============================================================================
