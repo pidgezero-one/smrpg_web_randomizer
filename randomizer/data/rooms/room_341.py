@@ -210,7 +210,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=True
+            cannot_clone=False
         ),
 
     ],

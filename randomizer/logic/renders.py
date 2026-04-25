@@ -1291,8 +1291,6 @@ def render_statue_room_boss(
     else:
         back_walking_molds = back_walking_molds[-2:]
 
-    print(m.base.sprite_id, len(spr.animation.properties.sequences), [f.mold_id for f in spr.animation.properties.sequences[0].frames])
-
     if m.animations.statue_peck is None:
         world.event_scripts.get_script_by_id(
             E0936_PECK_SUBROUTINE_LEFT_STATUE

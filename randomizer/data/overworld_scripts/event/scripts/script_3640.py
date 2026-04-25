@@ -457,7 +457,9 @@ script = EventScript([
 	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE, identifier="remove_statue_palette_2"),
 	ActionQueueAsync(target=NPC_3, subscript=[
 		A_SetSequenceSpeed(FAST),
-        A_TransferToXYZF(x=7, y=66, z=0, direction=SOUTHEAST),
+        A_WalkToXYCoords(x=7, y=66),
+        A_FaceSouthwest(),
+        A_VisibilityOn(),
 		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="dodo_finished_3")
 	], identifier="dodo_finished_aq_3"),
 	ActionQueueAsync(target=MARIO, subscript=[
