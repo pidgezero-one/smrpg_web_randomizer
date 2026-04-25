@@ -153,6 +153,7 @@ def _apply_animation_vram_overrides(world: GameWorld, changed_rooms: set[int]) -
     """
     from ..utils.npcs import min_vram_from_sequence_for_sprite
     from ..types.prize import BossFightPrize
+    from ..types.prizelocation import BossFightLocation
 
     overrides = _get_animation_vram_overrides()
 
@@ -165,7 +166,13 @@ def _apply_animation_vram_overrides(world: GameWorld, changed_rooms: set[int]) -
             continue
 
         assert isinstance(location.prize, BossFightPrize)
-        npc_model = location.prize.get_npc_for_slot(world, 4096)
+        # Prefer the model the placement layer chose for this room; otherwise
+        # fall back to a 4096-cap selection that mirrors the legacy behavior.
+        npc_model: type | None = None
+        if isinstance(location, BossFightLocation):
+            npc_model = location.get_chosen_npc_model_for_room(override.room_id)
+        if npc_model is None:
+            npc_model = location.prize.get_npc_for_slot(world, 4096)
         boss = npc_model()
 
         if boss.animations is None:
@@ -602,27 +609,42 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                             pass
                         break
                 elif isinstance(anim_entry, str):
-                    # Boss animation attr — search locations for matching sprite
+                    # Boss animation attr — search locations for matching sprite.
+                    # Read placement-cached models so we see exactly the boss the
+                    # placement layer chose, not a different one re-derived here.
+                    from ..types.prize import BossFightPrize
+                    from ..types.prizelocation import BossFightLocation
+                    matched = False
                     for location in world.locations.values():
-                        from ..types.prize import BossFightPrize
-                        if not hasattr(location, 'prize') or not isinstance(location.prize, BossFightPrize):
+                        if not isinstance(location, BossFightLocation):
                             continue
-                        try:
-                            npc_model = location.prize.get_npc_for_slot(world, 4096)
-                            boss = npc_model()
-                            if boss.base.sprite_id != sprite_id:
+                        if not isinstance(location.prize, BossFightPrize):
+                            continue
+                        candidates = location.get_all_chosen_npc_models()
+                        if not candidates:
+                            try:
+                                candidates = [location.prize.get_npc_for_slot(world, 4096)]
+                            except Exception:
                                 continue
-                            if boss.animations is None:
+                        for npc_model in candidates:
+                            try:
+                                boss = npc_model()
+                                if boss.base.sprite_id != sprite_id:
+                                    continue
+                                if boss.animations is None:
+                                    continue
+                                animation = getattr(boss.animations, anim_entry, None)
+                                if animation is None:
+                                    continue
+                                seq_id = animation.sequence_id
+                                vram = min_vram_from_sequence_for_sprite(world, sprite_id, seq_id)
+                                max_vram_needed = max(max_vram_needed, vram)
+                                matched = True
+                                break
+                            except Exception:
                                 continue
-                            animation = getattr(boss.animations, anim_entry, None)
-                            if animation is None:
-                                continue
-                            seq_id = animation.sequence_id
-                            vram = min_vram_from_sequence_for_sprite(world, sprite_id, seq_id)
-                            max_vram_needed = max(max_vram_needed, vram)
+                        if matched:
                             break
-                        except Exception:
-                            continue
 
             if max_vram_needed == 0:
                 continue

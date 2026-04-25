@@ -158,7 +158,7 @@ room = Room(
             npc=npcs.MALLOW_STATUE_NPC,
             initiator=EventInitiator.NONE,
             event_script=E3584_BANK_20_RETURN_EVENT,
-            action_script=A0803_INC_PALETTE_ROW,
+            action_script=A0015_DO_NOTHING,
             visible=True,
             x=4,
             y=16,
@@ -181,6 +181,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=True
         ),
         RegularNPC(  # 5
             npc=npcs.GOLD_GOOMBA_NPC_2,

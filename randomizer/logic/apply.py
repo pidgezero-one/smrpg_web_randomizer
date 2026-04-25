@@ -68,7 +68,7 @@ from ..data.variables.variable_names import (
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NORTHWEST
 from ..data.variables.room_names import *
-from ..data.rooms.npcs import ALLY_CLONE_NPC, BOWSER_WALKING_DOWN_LEFT_NPC, BOWSER_WALKING_DOWN_LEFT_NPC_2, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE, MALLOW_WALKING_DOWN_LEFT_NPC_2, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM
+from ..data.rooms.npcs import ALLY_CLONE_NPC, BOWSER_WALKING_DOWN_LEFT_NPC, BOWSER_WALKING_DOWN_LEFT_NPC_2, EMPTY_NPC, GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE, MALLOW_WALKING_DOWN_LEFT_NPC_2, MARIO_WALKING_DOWN_LEFT_NPC, TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM, MARIO_STATUE_NPC, TOADSTOOL_STATUE_NPC, BOWSER_STATUE_NPC, GENO_STATUE_NPC, TOAD_STATUE_NPC
 from ..types.flags import CharacterStats
 from ..types.prize import BossFightPrize, ItemPrize, SlotsPrize, SpellPrize, CharacterPrize, StandardPrize
 from ..types.enemy import Enemy
@@ -856,6 +856,38 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_command_by_identifier(reset, PaletteSet).set_palette_set_starts_at(EPAL0086_GENO_ENDING)
         elif ally.index == 4:
             world.event_scripts.get_command_by_identifier(reset, PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
+
+    # Garros's house statue (room 341 NPC 4) reflects whoever was recruited at Mushroom Way.
+    # Recruit ally indices: 0=Mario, 1=Toadstool, 2=Bowser, 3=Geno, 4=Mallow.
+    # No prize at all → location is filled with the Toad placeholder (e.g. fewer recruits than slots).
+    if MushroomWayCharacter in world.locations:
+        mw_loc = cast(CharacterRecruitmentLocation, world.get_location(MushroomWayCharacter))
+        statue_npc = None
+        statue_palette = None
+        if mw_loc.prize is None:
+            statue_npc = TOAD_STATUE_NPC
+            statue_palette = EPAL0104_GOLD_TOAD
+        else:
+            mw_index = cast(CharacterPrize, mw_loc.prize).ally.index
+            statue_npc_by_index = {
+                0: MARIO_STATUE_NPC,
+                1: TOADSTOOL_STATUE_NPC,
+                2: BOWSER_STATUE_NPC,
+                3: GENO_STATUE_NPC,
+            }
+            statue_palette_by_index = {
+                0: EPAL0111_GOLD_MARIO_BOWSER,
+                1: EPAL0109_GENO_PEACH_STATUE,
+                2: EPAL0111_GOLD_MARIO_BOWSER,
+                3: EPAL0109_GENO_PEACH_STATUE,
+            }
+            statue_npc = statue_npc_by_index.get(mw_index)
+            statue_palette = statue_palette_by_index.get(mw_index)
+        if statue_npc is not None:
+            statue_obj = world.get_room(R341_NIMBUS_LAND_GARROS_HOUSE).get_npc_by_target_id(NPC_4)
+            cast(BaseRoomObject, statue_obj)._npc = statue_npc
+        if statue_palette is not None:
+            world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_palette_set_starts_at(statue_palette)
 
     # TODO: ending credits bullshittery
 

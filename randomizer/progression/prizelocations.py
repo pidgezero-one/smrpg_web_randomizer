@@ -4102,8 +4102,9 @@ class InnerMinesBossFight(BossFightLocation):
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        # Use VRAM-constrained selection (max 4096 for mines boss room)
-        npc_model = self.prize.get_npc_for_slot(world, 4096)
+        assert self._npc_slots is not None
+        # Read the NPC model placement chose (cached on the location).
+        npc_model = self.resolve_npc_model_for_slot(world, self._npc_slots[0])
         set_mines_punch_command(world, npc_model())
         return op
 
@@ -10822,10 +10823,26 @@ class StatueRoomBossFight(BossFightLocation):
         if not isinstance(self.prize, (DodoBossFight)):
             from ..types.flags import KeepMinigameSpritesIntact
 
+            assert self._npc_slots is not None
+            statue_slot = next(
+                (
+                    s
+                    for s in self._npc_slots
+                    if s.room_id
+                    == R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM
+                ),
+                None,
+            )
+            chosen = (
+                self.resolve_npc_model_for_slot(world, statue_slot)
+                if statue_slot is not None
+                else None
+            )
             render_statue_room_boss(
                 world,
                 self.prize,
                 world.settings.isflag_enabled(KeepMinigameSpritesIntact),
+                chosen_npc_model=chosen,
             )
         return op
 
@@ -13553,8 +13570,9 @@ class KeepChandelierBossFight(BossFightLocation):
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
         if not isinstance(self.prize, BoomerBossFight):
-            # Use VRAM-constrained selection (max 4096 for chandelier room)
-            npc_model = self.prize.get_npc_for_slot(world, 4096)
+            assert self._npc_slots is not None
+            # Read the NPC model placement chose (cached on the location).
+            npc_model = self.resolve_npc_model_for_slot(world, self._npc_slots[0])
             m = npc_model()
             if (
                 m.animations.chandelier_challenge is not None

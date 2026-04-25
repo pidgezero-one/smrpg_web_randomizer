@@ -128,7 +128,7 @@ if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
     from ..progression.prizes import SmithyBossFight
     from ..types.enemy import Enemy
-    from ..types.physical_objects import ItemNPC
+    from ..types.physical_objects import ItemNPC, BossNPC
 
 # Module-level cache for lazy imports to avoid repeated import overhead in hot paths
 # These are populated on first access to avoid circular import issues
@@ -1827,6 +1827,48 @@ class BossFightLocation(PrizeLocation):
     _tiny_henchman_slots: list[BossFightLocationHenchmanNPC] | None = None
     _statue_slots: list[BossFightLocationNPC] | None = None
 
+    _chosen_npc_models_by_room: dict[int, type["BossNPC"]] | None = None
+
+    def get_chosen_npc_model_for_room(
+        self, room_id: int
+    ) -> type["BossNPC"] | None:
+        """Return the NPC model selected at placement for the slot in `room_id`.
+
+        Falls back to None if placement was skipped (e.g. prize matched original)
+        or no slot for that room exists. Renders should re-run selection with
+        slot-specific constraints in that case to stay consistent with placement.
+        """
+        if self._chosen_npc_models_by_room is None:
+            return None
+        return self._chosen_npc_models_by_room.get(room_id)
+
+    def get_all_chosen_npc_models(self) -> list[type["BossNPC"]]:
+        """Return every NPC model selected at placement across all slots."""
+        if self._chosen_npc_models_by_room is None:
+            return []
+        return list(self._chosen_npc_models_by_room.values())
+
+    def resolve_npc_model_for_slot(
+        self,
+        world: "GameWorld",
+        slot: BossFightLocationNPC,
+    ) -> type["BossNPC"]:
+        """Return the chosen model for `slot`, computing it on-demand if placement
+        was skipped (prize matched original). Uses the same constraints placement
+        would have used so the render and placement layers always agree.
+        """
+        cached = self.get_chosen_npc_model_for_room(slot.room_id)
+        if cached is not None:
+            return cached
+        from .prize import BossFightPrize
+        assert isinstance(self.prize, BossFightPrize)
+        return self.prize.get_npc_for_slot(
+            world,
+            slot.get_max_vram_size(world),
+            slot.get_original_min_vram_size(world),
+            slot.get_original_min_vram_from_sequence_0(world),
+        )
+
     # Whether the player can run away from battles at this location
     # Set to True for dojo fights, mimic fights with mimics anywhere, etc.
     _allow_run_away: bool = False
@@ -2315,6 +2357,9 @@ class BossFightLocation(PrizeLocation):
                 m = self.prize.get_npc_for_slot(
                     world, max_vram, max_min_vram, max_min_vram_seq0
                 )
+                if self._chosen_npc_models_by_room is None:
+                    self._chosen_npc_models_by_room = {}
+                self._chosen_npc_models_by_room[slot.room_id] = m
                 obj._npc = m().base
                 if isinstance(self.prize, KamekBossFight):
                     override = self.prize.get_slot_base_override(self, slot, m)
@@ -2362,7 +2407,7 @@ class BossFightLocation(PrizeLocation):
                                     slot.npc_id,
                                     [
                                         A_FixedFCoordOn(),
-                                        A_ShiftXYPixels(-shift.right, shift.down)
+                                        A_ShiftXYPixels(shift.right, shift.down)
                                     ],
                                 ),
                                 *ev.contents,

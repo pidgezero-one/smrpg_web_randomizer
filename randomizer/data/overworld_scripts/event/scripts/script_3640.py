@@ -455,8 +455,9 @@ script = EventScript([
 	ResetAndChooseGame(),
 	UnfreezeCamera(identifier="EVENT_3640_unfreeze_camera_233"),
 	PaletteSet(palette_set_starts_at=EPAL0084_MARIO_ENDING, from_row=MARIO_PALETTE, identifier="remove_statue_palette_2"),
-	ActionQueueSync(target=NPC_3, subscript=[
+	ActionQueueAsync(target=NPC_3, subscript=[
 		A_SetSequenceSpeed(FAST),
+        A_TransferToXYZF(x=7, y=66, z=0, direction=SOUTHEAST),
 		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="dodo_finished_3")
 	], identifier="dodo_finished_aq_3"),
 	ActionQueueAsync(target=MARIO, subscript=[
@@ -477,13 +478,13 @@ script = EventScript([
 	PlaySound(sound=SO016_OPEN_DOOR, channel=6),
 	Pause(10),
 	RemoveObjectFromSpecificLevel(NPC_1, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT),
+    SetBit(STATUE_GAME_DONE),
+	SetVarToConst(PRIMARY_TEMP_7000, 520),
+	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
 	RestoreAllHP(),
 	RestoreAllFP(),
-	SetVarToConst(PRIMARY_TEMP_7000, 520),
-	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),
-    SetBit(STATUE_GAME_DONE),
 	JmpIfBitSet(NIMBUS_LAND_LIBERATED, ["EVENT_3640_play_music_default_volume_254"]),
 	PlayMusicAtDefaultVolume(M0061_VALENTINA),
 	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_3640_ret_253"]),
@@ -588,9 +589,10 @@ script = EventScript([
 		A_SetAllSpeeds(VERY_FAST),
 		A_ResetProperties(),
 		A_FaceNorthwest(),
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=True, mirror_sprite=True, identifier="dodo_main_nw_walk"),
 		A_WalkNorthwestSteps(11),
 		A_VisibilityOff()
-	]),
+	], identifier="dodo_main_nw_walk_aq"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_Pause(60),
 		A_SetSpriteSequence(index=10, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)

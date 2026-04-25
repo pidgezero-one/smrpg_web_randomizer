@@ -13,6 +13,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import VramStore
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
     A_FixedFCoordOn,
     A_TransferXYZFPixels,
+    A_WalkNortheastPixels,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST
 
@@ -1234,6 +1235,7 @@ def render_statue_room_boss(
     world: GameWorld,
     prize: BossFightPrize,
     keep_minigame_sprites: bool,
+    chosen_npc_model: type[BossNPC] | None = None,
 ) -> None:
     """Apply animation changes for Statue Room boss fight."""
     # wedding ending
@@ -1243,10 +1245,54 @@ def render_statue_room_boss(
     if keep_minigame_sprites:
         return
 
-    # statue game
-    # Use VRAM-constrained selection (max 6144 for statue room)
-    mo = prize.get_npc_for_slot(world, 6144)
+    # Prefer the model the placement layer cached; fall back to a generous
+    # 6144-cap selection so callers that haven't migrated still work.
+    if chosen_npc_model is not None:
+        mo = chosen_npc_model
+    else:
+        mo = prize.get_npc_for_slot(world, 6144)
     m = mo()
+
+    spr = world.sprites.sprites[m.base.sprite_id]
+    assert spr is not None
+    has_walking_sequence = True
+    has_back_walking_sequence = True
+
+    swse_only = is_swse_only(spr) or m.base.directions == VramStore.DIR2_SWSE
+
+    south_mold_map = {}
+    walking_molds = []
+    for frame in spr.animation.properties.sequences[0].frames:
+        if south_mold_map.get(frame.mold_id) is None:
+            south_mold_map[frame.mold_id] = 0
+        south_mold_map[frame.mold_id] += 1
+    for mold_id, count in south_mold_map.items():
+        if count == 1:
+            walking_molds.append(mold_id)
+    if len(walking_molds) < 2:
+        has_walking_sequence = False
+        walking_molds = []
+    else:
+        walking_molds = walking_molds[-2:]
+
+    north_mold_map = {}
+    back_walking_molds = []
+    if not swse_only:
+        for frame in spr.animation.properties.sequences[1].frames:
+            if north_mold_map.get(frame.mold_id) is None:
+                north_mold_map[frame.mold_id] = 0
+            north_mold_map[frame.mold_id] += 1
+        for mold_id, count in north_mold_map.items():
+            if count == 1:
+                back_walking_molds.append(mold_id)
+    if len(back_walking_molds) < 2:
+        has_back_walking_sequence = False
+        back_walking_molds = []
+    else:
+        back_walking_molds = back_walking_molds[-2:]
+
+    print(m.base.sprite_id, len(spr.animation.properties.sequences), [f.mold_id for f in spr.animation.properties.sequences[0].frames])
+
     if m.animations.statue_peck is None:
         world.event_scripts.get_script_by_id(
             E0936_PECK_SUBROUTINE_LEFT_STATUE
@@ -1254,15 +1300,23 @@ def render_statue_room_boss(
         world.event_scripts.get_script_by_id(
             E0937_PECK_SUBROUTINE_MIDDLE_STATUE
         ).set_contents(bonk_mario.contents)
+        start_battle_subscript: list = [A_FixedFCoordOn()]
+        for i in range(4):
+            if has_walking_sequence:
+                start_battle_subscript.append(
+                    A_SetSpriteSequence(
+                        index=walking_molds[i % 2],
+                        is_mold=True,
+                        looping=False,
+                        mirror_sprite=False,
+                    )
+                )
+            start_battle_subscript.append(A_WalkNortheastPixels(3))
+            start_battle_subscript.append(A_Pause(40))
         cast(
             ActionQueueSync,
             world.event_scripts.get_command_by_identifier("dodo_starts_battle"),
-        ).set_subscript(
-            [
-                A_FaceSouthwest(),
-                A_Pause(160),
-            ]
-        )
+        ).set_subscript(start_battle_subscript)
     else:
         world.event_scripts.get_script_by_id(
             E0936_PECK_SUBROUTINE_LEFT_STATUE
@@ -1300,42 +1354,6 @@ def render_statue_room_boss(
         world.event_scripts.delete_subscript_command_by_identifier(
             "statue_keeper_flustered_aq", "statue_keeper_flustered_1"
         )
-
-    spr = world.sprites.sprites[m.base.sprite_id]
-    assert spr is not None
-    has_walking_sequence = True
-    has_back_walking_sequence = True
-
-    swse_only = is_swse_only(spr) or m.base.directions == VramStore.DIR2_SWSE
-
-    south_mold_map = {}
-    walking_molds = []
-    for frame in spr.animation.properties.sequences[0].frames:
-        if south_mold_map.get(frame.mold_id) is None:
-            south_mold_map[frame.mold_id] = 0
-        south_mold_map[frame.mold_id] += 1
-    for mold_id, count in south_mold_map.items():
-        if count == 1:
-            walking_molds.append(mold_id)
-    if len(walking_molds) < 2:
-        has_walking_sequence = False
-    else:
-        walking_molds = walking_molds[-2:]
-
-    north_mold_map = {}
-    back_walking_molds = []
-    if not swse_only:
-        for frame in spr.animation.properties.sequences[1].frames:
-            if north_mold_map.get(frame.mold_id) is None:
-                north_mold_map[frame.mold_id] = 0
-            north_mold_map[frame.mold_id] += 1
-        for mold_id, count in north_mold_map.items():
-            if count == 1:
-                back_walking_molds.append(mold_id)
-    if len(back_walking_molds) < 2:
-        has_back_walking_sequence = False
-    else:
-        back_walking_molds = back_walking_molds[-2:]
 
     if not isinstance(prize, DodoBossFight):
         if has_back_walking_sequence:
@@ -1407,6 +1425,18 @@ def render_statue_room_boss(
             )
         else:
             world.event_scripts.delete_subscript_command_by_identifier(aq, id)
+
+    # main 11-step NW walk — base script sets sequence 1 mirrored for Dodo;
+    # for non-Dodo shuffles, use sequence 1 un-mirrored when back-walking exists,
+    # otherwise drop the command.
+    if has_back_walking_sequence:
+        world.event_scripts.get_subscript_command_by_identifier(
+            "dodo_main_nw_walk_aq", "dodo_main_nw_walk", A_SetSpriteSequence
+        ).set_mirror_sprite(False)
+    else:
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "dodo_main_nw_walk_aq", "dodo_main_nw_walk"
+        )
 
     # head-shake
     for aq, id in [

@@ -1063,10 +1063,9 @@ class GrateGuyStatueObject(BossNPC):
 
     _base = GRATE_GUY_STATUE_NPC
     _facing_shifts = {
-        SOUTHWEST: PixelShift(3, 0),
-        SOUTHEAST: PixelShift(-3, 0),
-        NORTHWEST: PixelShift(5, 0),
-        NORTHEAST: PixelShift(5, 0),
+        NORTHEAST: PixelShift(-5, 0),
+        NORTHWEST: PixelShift(-2, 0),
+        SOUTHEAST: PixelShift(-5, 0),
     }
 
 
@@ -1074,6 +1073,10 @@ class JinxStatueObject(BossNPC):
     """Jinx statue object."""
 
     _base = JINX_STATUE_NPC
+    _facing_shifts = {
+        NORTHEAST: PixelShift(0, 1),
+        NORTHWEST: PixelShift(0, 1),
+    }
 
 
 class MokuraStatueObject(BossNPC):
