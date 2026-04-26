@@ -1,6 +1,5 @@
 from typing import Sequence
 
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import FASTEST
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
     SOUTHEAST,
     SOUTHWEST,
@@ -1027,10 +1026,9 @@ class MagikoopaStatueObject(BossNPC):
 
     _base = MAGIKOOPA_STATUE_NPC
     _facing_shifts = {
-        SOUTHWEST: PixelShift(-2, 0),
         SOUTHEAST: PixelShift(2, 0),
-        NORTHWEST: PixelShift(4, -1),
-        NORTHEAST: PixelShift(4, -1),
+        NORTHWEST: PixelShift(-3, 0),
+        NORTHEAST: PixelShift(3, 0),
     }
 
 
@@ -1074,8 +1072,9 @@ class JinxStatueObject(BossNPC):
 
     _base = JINX_STATUE_NPC
     _facing_shifts = {
-        NORTHEAST: PixelShift(0, 1),
-        NORTHWEST: PixelShift(0, 1),
+        NORTHEAST: PixelShift(-2, -1),
+        NORTHWEST: PixelShift(3, -1),
+        SOUTHEAST: PixelShift(-2, -2),
     }
 
 
@@ -1105,7 +1104,8 @@ class TerrapinObject(BossNPC):
         endgame_challenge=jagger_punch,
         look_at_ceiling_mold_id=6,
         tower_toss=jagger_punch,
-        look_at_ceiling=SpriteAnimation(sequence_id=6)
+        look_at_ceiling=SpriteAnimation(sequence_id=6),
+        look_at_camera=SpriteAnimation(sequence_id=6)
     )
     _evil_palette = [
         0xFFFFFF, 0xFFEF73, 0xC69431, 0x734A08, 0x423910,
@@ -1243,8 +1243,8 @@ class FactoryChiefObject(BossNPC):
     ]
 
 red_recoil=SpriteAnimation(sequence_id=2, total_duration=22)
-red_attack=SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=66)
-red_attack_fast=SpriteAnimation(sequence_id=3, contact_frame=9, total_duration=22, speed=FASTEST)
+red_attack=SpriteAnimation(sequence_id=8, contact_frame=26, total_duration=66)
+red_attack_fast=SpriteAnimation(sequence_id=8, contact_frame=18, total_duration=44, speed=FAST)
 red_cast=SpriteAnimation(sequence_id=4, contact_frame=82, total_duration=120)
 
 
@@ -1280,8 +1280,7 @@ class AxemRedStatueObject(BossNPC):
 
     _base = AXEM_RED_STATUE_NPC
     _facing_shifts = {
-        SOUTHWEST: PixelShift(6, 0),
-        SOUTHEAST: PixelShift(-6, 0),
+        SOUTHWEST: PixelShift(-5, 0),
     }
 
 

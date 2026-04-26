@@ -5281,8 +5281,8 @@ class AxemRangersBossFight(BossFightPrize):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Shades-this and Makeup-that.[await][page]\n Sometimes I'd like to ask them what\n they're babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """[center]\nAXEM RED: I'm way outta shape![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """[center]\nAXEM RED: I'm way outta shape![await]""",
-        DI1120_NIMBUS_BIRD_GUARD: """[center]\nAXEM BLACK: Beat it, clod![await]""",
-        DI1945_NIMBUS_GUARD: """[center]\nAXEM PINK: Get lost, jerk![await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """[center]\nAXEM PINK: Get lost, jerk![await]""", 
+        DI1945_NIMBUS_GUARD: """[center]\nAXEM BLACK: Beat it, clod![await]""",
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Axem Rangers are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",

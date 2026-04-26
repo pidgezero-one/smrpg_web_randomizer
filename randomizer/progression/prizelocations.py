@@ -11287,7 +11287,7 @@ class NimbusFinalBossFight(BossFightLocation):
             sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
-    _mook_henchman_slots = [
+    _character_henchman_slots = [
         BossFightLocationHenchmanNPC(
             [
                 R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA,

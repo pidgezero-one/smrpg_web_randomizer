@@ -1,4 +1,4 @@
-# E0938_PECK_SUBROUTINE_RIGHT_STATUE
+# E0938_FACE_TOWARD_PLAYER_BEFORE_PECK
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript

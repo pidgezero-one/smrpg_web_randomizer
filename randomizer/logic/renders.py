@@ -1238,6 +1238,8 @@ def render_statue_room_boss(
     chosen_npc_model: type[BossNPC] | None = None,
 ) -> None:
     """Apply animation changes for Statue Room boss fight."""
+    if isinstance(prize, DodoBossFight):
+        return
     # wedding ending
     world.event_scripts.delete_subscript_command_by_identifier(
         "wedding_ending_aq", "wedding_ending_shift"
@@ -1277,17 +1279,22 @@ def render_statue_room_boss(
 
     north_mold_map = {}
     back_walking_molds = []
+    north_idle_mold = 0
     if not swse_only:
         for frame in spr.animation.properties.sequences[1].frames:
+            if north_idle_mold == 0:
+                north_idle_mold = frame.mold_id
             if north_mold_map.get(frame.mold_id) is None:
                 north_mold_map[frame.mold_id] = 0
             north_mold_map[frame.mold_id] += 1
         for mold_id, count in north_mold_map.items():
             if count == 1:
                 back_walking_molds.append(mold_id)
-    if len(back_walking_molds) < 2:
+    if len(back_walking_molds) == 0:
         has_back_walking_sequence = False
         back_walking_molds = []
+    elif len(back_walking_molds) < 2:
+        back_walking_molds = [back_walking_molds[0], back_walking_molds[0]]
     else:
         back_walking_molds = back_walking_molds[-2:]
 
@@ -1315,6 +1322,12 @@ def render_statue_room_boss(
             ActionQueueSync,
             world.event_scripts.get_command_by_identifier("dodo_starts_battle"),
         ).set_subscript(start_battle_subscript)
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "final_statue_peck_aq", "dodo_fakeout_1"
+        )
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "final_statue_peck_aq", "dodo_fakeout_2"
+        )
     else:
         world.event_scripts.get_script_by_id(
             E0936_PECK_SUBROUTINE_LEFT_STATUE
@@ -1330,6 +1343,39 @@ def render_statue_room_boss(
                 world.get_sprite(m.base.sprite_id), m.animations.statue_peck
             )
         )
+        benchmark = 16 + 9 + 8
+        shortened_animation = m.animations.statue_peck.contact_frame - 3 # pyright: ignore
+        pause_1 = benchmark - shortened_animation
+        pause_3 = min(1, shortened_animation // 2)
+        pause_2 = min(shortened_animation - pause_3, 1)
+        
+        world.event_scripts.get_subscript_command_by_identifier(
+            "final_statue_peck_aq",
+            "dodo_fakeout_pause_1",
+            A_Pause,
+        ).set_length(pause_1)
+        world.event_scripts.get_subscript_command_by_identifier(
+            "final_statue_peck_aq",
+            "dodo_fakeout_pause_2",
+            A_Pause,
+        ).set_length(pause_2)
+        world.event_scripts.get_subscript_command_by_identifier(
+            "final_statue_peck_aq",
+            "dodo_fakeout_pause_3",
+            A_Pause,
+        ).set_length(pause_3)
+        world.event_scripts.get_subscript_command_by_identifier(
+            "final_statue_peck_aq", "dodo_fakeout_1",
+            A_SetSpriteSequence,
+        ).set_index(m.animations.statue_peck.sequence_id)
+        world.event_scripts.get_subscript_command_by_identifier(
+            "final_statue_peck_aq", "dodo_fakeout_2",
+            A_SetSpriteSequence,
+        ).set_index(north_idle_mold)
+        world.event_scripts.get_subscript_command_by_identifier(
+            "final_statue_peck_aq", "dodo_fakeout_2",
+            A_SetSpriteSequence,
+        ).set_mirror_sprite(False)
 
     if m.animations.look_at_ceiling_mold_id is not None:
         world.event_scripts.get_subscript_command_by_identifier(
@@ -1353,30 +1399,29 @@ def render_statue_room_boss(
             "statue_keeper_flustered_aq", "statue_keeper_flustered_1"
         )
 
-    if not isinstance(prize, DodoBossFight):
-        if has_back_walking_sequence:
-            dodo_replacement_faces_wrong_direction = (
-                world.event_scripts.get_subscript_command_by_identifier(
-                    "dodo_hallway_mirror_sprite_if_not_vanilla_container",
-                    "dodo_hallway_mirror_sprite_if_not_vanilla",
-                    A_SetSpriteSequence,
-                )
+    if has_back_walking_sequence:
+        dodo_replacement_faces_wrong_direction = (
+            world.event_scripts.get_subscript_command_by_identifier(
+                "dodo_hallway_mirror_sprite_if_not_vanilla_container",
+                "dodo_hallway_mirror_sprite_if_not_vanilla",
+                A_SetSpriteSequence,
             )
-            dodo_replacement_faces_wrong_direction.set_mirror_sprite(True)
-        else:
-            dodo_hallway_action_script = world.event_scripts.get_command_by_identifier(
-                "dodo_hallway_mirror_sprite_if_not_vanilla_container", ActionQueueAsync
-            )
-            dodo_hallway_action_script.set_subscript(
-                [
-                    A_TransferXYZFPixels(x=252, y=252, z=0, direction=EAST),
-                    A_FixedFCoordOn(),
-                    A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
-                ]
-            )
+        )
+        dodo_replacement_faces_wrong_direction.set_mirror_sprite(True)
+    else:
+        dodo_hallway_action_script = world.event_scripts.get_command_by_identifier(
+            "dodo_hallway_mirror_sprite_if_not_vanilla_container", ActionQueueAsync
+        )
+        dodo_hallway_action_script.set_subscript(
+            [
+                A_TransferXYZFPixels(x=252, y=252, z=0, direction=EAST),
+                A_FixedFCoordOn(),
+                A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
+            ]
+        )
 
     # walking from statue to statue
-    for aq, id in [("EVENT_3640_action_queue_271", "dodo_extra_sprite_1")]:
+    for aq, id in [("dodo_left_foot_forward_subroutine", "dodo_extra_sprite_1")]:
         if has_walking_sequence:
             world.event_scripts.replace_subscript_command_by_identifier(
                 aq,
@@ -1392,7 +1437,7 @@ def render_statue_room_boss(
         else:
             world.event_scripts.delete_subscript_command_by_identifier(aq, id)
 
-    for aq, id in [("EVENT_3640_action_queue_273", "dodo_extra_sprite_2")]:
+    for aq, id in [("dodo_right_foot_forward_subroutine", "dodo_extra_sprite_2")]:
         if has_walking_sequence:
             world.event_scripts.replace_subscript_command_by_identifier(
                 aq,
@@ -1408,18 +1453,18 @@ def render_statue_room_boss(
         else:
             world.event_scripts.delete_subscript_command_by_identifier(aq, id)
 
-    for aq, id in [("EVENT_3640_action_queue_304", "dodo_left_forward")]:
+    for aq, id in [("dodo_left_foot_backward_subroutine", "dodo_left_forward")]:
         if has_back_walking_sequence:
             world.event_scripts.replace_subscript_command_by_identifier(
-                aq, id, A_SetSpriteSequence(index=back_walking_molds[0], is_mold=True)
+                aq, id, A_SetSpriteSequence(index=back_walking_molds[0], is_mold=True, looping=True)
             )
         else:
             world.event_scripts.delete_subscript_command_by_identifier(aq, id)
 
-    for aq, id in [("EVENT_3640_action_queue_306", "dodo_right_forward")]:
+    for aq, id in [("dodo_right_foot_backward_subroutine", "dodo_right_forward")]:
         if has_back_walking_sequence:
             world.event_scripts.replace_subscript_command_by_identifier(
-                aq, id, A_SetSpriteSequence(index=back_walking_molds[1], is_mold=True)
+                aq, id, A_SetSpriteSequence(index=back_walking_molds[1], is_mold=True, looping=True)
             )
         else:
             world.event_scripts.delete_subscript_command_by_identifier(aq, id)
@@ -1441,13 +1486,18 @@ def render_statue_room_boss(
         ("dodo_shake_head_aq", "dodo_shake_head_1"),
         ("dodo_shake_head_aq", "dodo_shake_head_2"),
     ]:
-        world.event_scripts.replace_subscript_command_by_identifier(
-            aq,
-            id,
-            A_SetSpriteSequence(index=0, is_mold=True, mirror_sprite=True),
-        )
-
-    # finished deletions
+        if m.animations.look_at_camera is None:
+            world.event_scripts.replace_subscript_command_by_identifier(
+                aq,
+                id,
+                A_SetSpriteSequence(index=0, is_mold=True, mirror_sprite=True),
+            )
+        else:
+            world.event_scripts.get_subscript_command_by_identifier(
+                aq,
+                id, A_SetSpriteSequence
+            ).set_index(m.animations.look_at_camera.sequence_id)
+            
     world.event_scripts.delete_subscript_command_by_identifier(
         "dodo_finished_aq", "dodo_finished_1"
     )
@@ -1459,12 +1509,6 @@ def render_statue_room_boss(
     )
     world.event_scripts.delete_subscript_command_by_identifier(
         "dodo_possibly_unused_aq", "dodo_possibly_unused"
-    )
-    world.event_scripts.delete_subscript_command_by_identifier(
-        "final_statue_peck_aq", "dodo_fakeout_1"
-    )
-    world.event_scripts.delete_subscript_command_by_identifier(
-        "final_statue_peck_aq", "dodo_fakeout_2"
     )
     world.event_scripts.delete_subscript_command_by_identifier(
         "statue_keeper_introduced_aq", "statue_keeper_introduced_2"

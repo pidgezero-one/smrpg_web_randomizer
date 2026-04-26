@@ -35,8 +35,9 @@ from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite
 
 def gen_peck_left_subroutine(animation: SpriteAnimation) -> EventScript:
     peck_duration = 0
-    assert animation.contact_frame is not None and animation.contact_frame < 19
+    assert animation.contact_frame is not None
     peck_duration = animation.contact_frame
+    assert peck_duration <= 20
     return EventScript(
         [
             ActionQueueAsync(
@@ -58,8 +59,6 @@ def gen_peck_left_subroutine(animation: SpriteAnimation) -> EventScript:
                         index=animation.sequence_id, looping=False
                     ),
                     A_Pause(peck_duration + 3),
-		            A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, mirror_sprite=True),
-                    A_FaceSoutheast()
                 ],
             ),
             Return(),
@@ -68,23 +67,19 @@ def gen_peck_left_subroutine(animation: SpriteAnimation) -> EventScript:
 
 def gen_peck_middle_subroutine(animation: SpriteAnimation) -> EventScript:
     peck_duration = 0
-    assert animation.contact_frame is not None and animation.contact_frame < 19
+    assert animation.contact_frame is not None
     peck_duration = animation.contact_frame
-    assert peck_duration <= 19
-    wait = max(16 - peck_duration, 0)
+    assert peck_duration <= 20
+    wait = max(20 - peck_duration, 0)
+    post = (animation.total_duration or peck_duration) - peck_duration
     return EventScript(
         [
-            ActionQueueAsync(
+            ActionQueueSync(
                 target=NPC_3,
                 subscript=[
                     A_SequencePlaybackOn(),
                     A_SequenceLoopingOn(),
                     A_SetAllSpeeds(NORMAL),
-                    *(
-                        [A_Pause(wait)]
-                        if wait > 0
-                        else []
-                    ),
                     *(
                         []
                         if animation.speed == NORMAL
@@ -94,12 +89,24 @@ def gen_peck_middle_subroutine(animation: SpriteAnimation) -> EventScript:
                         index=animation.sequence_id, is_sequence=True
                     ),
                     A_FaceSouthwest(),
+                    A_FixedFCoordOn(),
                     A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True),
-                    A_Pause(31 - peck_duration),
+                    *(
+                        [A_Pause(wait)]
+                        if wait > 0
+                        else []
+                    ),
                     A_SetSpriteSequence(
                         index=animation.sequence_id, looping=False
                     ),
-                    A_Pause(20 - wait),
+                    A_Pause(peck_duration),
+                    *(
+                        []
+                        if post == 0
+                        else [A_Pause(post)]
+                    ),
+                    A_SetSpriteSequence(index=0, is_mold=True),
+                    A_FixedFCoordOff(),
                     A_SequenceLoopingOff(),
                 ],
             ),
