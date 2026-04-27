@@ -39,6 +39,8 @@ script = EventScript([
 		A_VisibilityOff(),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True)
 	]),
+    SetTempSyncActionScript(NPC_3, A0803_INC_PALETTE_ROW),
+    SetTempAsyncActionScript(NPC_2, A0803_INC_PALETTE_ROW),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_SetPriority(3),
 		A_SetSpriteSequence(index=1, is_mold=True, is_sequence=True, looping=True),
