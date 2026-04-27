@@ -20,12 +20,12 @@ script = ActionScript([
 	A_Walk1StepNorthwest(),
 	A_Walk1StepNortheast(),
 	A_StartLoopNTimes(5),
-	A_SetSpriteSequence(index=4, sprite_offset=2, looping=False),
+	A_SetSpriteSequence(index=4, sprite_offset=2, looping=False, identifier="mines_character_hammering"),
 	A_Pause(46),
 	A_EndLoop(),
-	A_SetSpriteSequence(index=13, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+	A_SetSpriteSequence(index=13, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="mines_character_hammering_stop"),
 	A_Pause(32),
-	A_SetSpriteSequence(index=18, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+	A_SetSpriteSequence(index=18, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="mines_character_hammering_look_away"),
 	A_Pause(56),
 	A_ResetProperties(),
 	A_SetWalkingSpeed(FAST),
@@ -35,6 +35,6 @@ script = ActionScript([
 	A_Walk1StepNorthwest(),
 	A_Pause(64),
 	A_SetSequenceSpeed(NORMAL),
-	A_SetSpriteSequence(index=5, is_sequence=True, looping=True),
+	A_SetSpriteSequence(index=5, is_sequence=True, looping=True, identifier="mines_character_hammering_mad"),
 	A_ReturnQueue()
 ])

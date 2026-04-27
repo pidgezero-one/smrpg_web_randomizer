@@ -63,7 +63,11 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True,
+            priority_0=True,
+            priority_1=True,
+            priority_2=False),
         RegularNPC( # 1
             npc=npcs.SPARKLE_DOWNWARDS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -117,7 +121,11 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True,
+            priority_0=True,
+            priority_1=True,
+            priority_2=False),
         RegularNPC( # 3
             npc=npcs.GENO_DOLL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -144,7 +152,11 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True,
+            priority_0=False,
+            priority_1=False,
+            priority_2=True),
         RegularNPC( # 4
             npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -171,7 +183,11 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True,
+            priority_0=False,
+            priority_1=False,
+            priority_2=True),
         RegularNPC( # 5
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -230,5 +246,12 @@ room = Room(
     extra_sprite_actions=[
         SpriteAnimationState.LOOK_AT_DOLL,
         SpriteAnimationState.PRAISE_FRONT,
-    ]
+        SpriteAnimationState.LOOK_TO_SIDE,
+        SpriteAnimationState.LOOK_TO_DOWN
+    ],
+    npc_expected_animations={
+        0: [SpriteAnimationState.LEAN_BACK_2, SpriteAnimationState.LOOKING_DOWN_AWAY, SpriteAnimationState.LEAN_BACK, SpriteAnimationState.LOOK_TO_SIDE_BEHIND, SpriteAnimationState.JOY_JUMP_BEHIND, SpriteAnimationState.JOY_BEHIND],
+        2: [SpriteAnimationState.LOOKING_DOWN, SpriteAnimationState.SEES_GENO, SpriteAnimationState.JOY],
+        4: [SpriteAnimationState.LOOKING_DOWN_AWAY, SpriteAnimationState.LEAN_BACK, SpriteAnimationState.LEAN_BACK_2, SpriteAnimationState.DISTRACTED, SpriteAnimationState.JOY_BEHIND],
+    },
 )

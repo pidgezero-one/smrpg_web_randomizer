@@ -201,7 +201,7 @@ def _detect_changed_rooms(world: GameWorld) -> set[int]:
         "snapshot_vanilla_room_states() must be called before change detection"
     )
 
-    changed: set[int] = set()
+    changed: set[int] = set([R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY])
     for room_id, vanilla_state in world._vanilla_room_states.items():
         room = world.rooms._rooms[room_id]
         if room is None:
@@ -579,10 +579,19 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             #   ("character", SpriteAnimationState) → character animation state
             max_vram_needed = 0
             for anim_entry in anim_attrs:
-                if isinstance(anim_entry, tuple) and len(anim_entry) == 2 and anim_entry[0] == "character":
+                # Normalize entry shapes:
+                #   bare SpriteAnimationState  → treat as ally character animation
+                #   ("character", state)       → explicit ally character animation
+                #   str                        → boss SpriteAnimationCollection attr
+                anim_state: SpriteAnimationState | None = None
+                if isinstance(anim_entry, SpriteAnimationState):
+                    anim_state = anim_entry
+                elif isinstance(anim_entry, tuple) and len(anim_entry) == 2 and anim_entry[0] == "character":
+                    anim_state = anim_entry[1]
+
+                if anim_state is not None:
                     # Character animation — look up via CharacterPrize ally sprites
                     from ..types.prize import CharacterPrize
-                    anim_state = anim_entry[1]
                     for location in world.locations.values():
                         if not hasattr(location, 'prize') or not isinstance(location.prize, CharacterPrize):
                             continue
@@ -601,9 +610,9 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                         try:
                             npc_model = char_prize.character_model
                             if is_mold:
-                                vram = npc_model._npc.min_vram_from_mold(world, prop_id, offset)
+                                vram = npc_model.min_vram_from_mold(world, prop_id, offset)
                             else:
-                                vram = npc_model._npc.min_vram_from_sequence(world, prop_id, offset)
+                                vram = npc_model.min_vram_from_sequence(world, prop_id, offset)
                             max_vram_needed = max(max_vram_needed, vram)
                         except (IndexError, AssertionError):
                             pass

@@ -517,6 +517,7 @@ MARIO_Ally = Ally(
         SpriteAnimationState.PRINCE_JOY: (2, 9, False),
         SpriteAnimationState.HAMMER: (2, 3, True),
         SpriteAnimationState.HAMMER_STATIC: (2, 3, True),
+        SpriteAnimationState.SPIN: (3, 11, False),
         # Extra sprite actions
         SpriteAnimationState.SWIM: (1, 10, False),
         SpriteAnimationState.WHIRL: (1, 15, False),
@@ -548,6 +549,11 @@ MARIO_Ally = Ally(
         SpriteAnimationState.HOLD_STAR: (0, 5, False),
         SpriteAnimationState.MUTE: (2, 12, False),
         SpriteAnimationState.DEFEND_MOLD: (2, 16, True),
+        SpriteAnimationState.SEES_GENO: (2, 9, False),
+        SpriteAnimationState.SPELL_FRAME_3: (2, 12, True),
+        SpriteAnimationState.SPELL_FRAME_4: (2, 13, True),
+        SpriteAnimationState.SPELL_FRAME_5: (2, 14, True),
+        SpriteAnimationState.SPELL_FRAME_6: (2, 15, True),
     },
     _sprites_secondary={
         SpriteAnimationState.SOUTH: (0, 20, True),
@@ -1185,6 +1191,14 @@ TOADSTOOL_Ally = Ally(
         SpriteAnimationState.PRINCE_JOY: (1, 9, False),
         SpriteAnimationState.HAMMER: (1, 3, True),
         SpriteAnimationState.HAMMER_STATIC: (1, 3, True),
+        SpriteAnimationState.SPIN: (2, 10, False),
+        SpriteAnimationState.SEES_GENO: (0, 6, True),
+        SpriteAnimationState.SPELL_FRAME_3: (1, 14, True),
+        SpriteAnimationState.SPELL_FRAME_4: (1, 11, True),
+        SpriteAnimationState.SPELL_FRAME_5: (1, 12, True),
+        SpriteAnimationState.SPELL_FRAME_6: (1, 10, True),
+        SpriteAnimationState.LEAN_BACK: (1, 22, True),
+        SpriteAnimationState.LEAN_BACK_2: (1, 23, True),
     },
 )
 
@@ -1777,6 +1791,14 @@ BOWSER_Ally = Ally(
         SpriteAnimationState.PRINCE_JOY: (1, 9, False),
         SpriteAnimationState.HAMMER: (2, 4, False),
         SpriteAnimationState.HAMMER_STATIC: (2, 13, True),
+        SpriteAnimationState.SPIN: (2, 10, False),
+        SpriteAnimationState.SEES_GENO: (0, 6, True),
+        SpriteAnimationState.SPELL_FRAME_3: (1, 10, True),
+        SpriteAnimationState.SPELL_FRAME_4: (1, 14, True),
+        SpriteAnimationState.SPELL_FRAME_5: (1, 15, True),
+        SpriteAnimationState.SPELL_FRAME_6: (1, 16, True),
+        SpriteAnimationState.LEAN_BACK: (1, 24, True),
+        SpriteAnimationState.LEAN_BACK_2: (1, 25, True),
     },
 )
 
@@ -2369,6 +2391,14 @@ GENO_Ally = Ally(
         SpriteAnimationState.PRINCE_JOY: (0, 7, True),
         SpriteAnimationState.HAMMER: (1, 3, True),
         SpriteAnimationState.HAMMER_STATIC: (1, 3, True),
+        SpriteAnimationState.SPIN: (2, 3, False),
+        SpriteAnimationState.SEES_GENO: (0, 6, True),
+        SpriteAnimationState.SPELL_FRAME_3: (1, 12, True),
+        SpriteAnimationState.SPELL_FRAME_4: (1, 13, True),
+        SpriteAnimationState.SPELL_FRAME_5: (1, 14, True),
+        SpriteAnimationState.SPELL_FRAME_6: (1, 15, True),
+        SpriteAnimationState.LEAN_BACK: (1, 23, True),
+        SpriteAnimationState.LEAN_BACK_2: (1, 24, True),
     },
 )
 
@@ -2961,7 +2991,15 @@ MALLOW_Ally = Ally(
         SpriteAnimationState.PRINCE_JOY: (2, 17, True),
         SpriteAnimationState.HAMMER: (1, 3, True),
         SpriteAnimationState.HAMMER_STATIC: (1, 3, True),
-    },
+        SpriteAnimationState.SEES_GENO: (0, 6, True),
+        SpriteAnimationState.SPELL_FRAME_3: (1, 10, True),
+        SpriteAnimationState.SPELL_FRAME_4: (1, 12, True),
+        SpriteAnimationState.SPELL_FRAME_5: (1, 13, True),
+        SpriteAnimationState.SPELL_FRAME_6: (1, 14, True),
+        SpriteAnimationState.LEAN_BACK: (1, 22, True),
+        SpriteAnimationState.LEAN_BACK_2: (1, 23, True),
+        SpriteAnimationState.SPIN: (2, 10, False),
+    }
 )
 
 ally_collection = AllyCollection(

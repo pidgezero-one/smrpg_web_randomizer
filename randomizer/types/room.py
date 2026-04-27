@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 from ..data.rooms.npcs import ALLY_CLONE_NPC
 
 if TYPE_CHECKING:
+    from collections.abc import Sequence
     from randomizer.types.gameworld import GameWorld
 from smrpgpatchbuilder.datatypes.levels.classes import (
     BufferSpace,
@@ -31,7 +32,11 @@ class Room(RoomBase):
 
     extra_sprite_actions: list[SpriteAnimationState]
     adjacent_rooms: list[int]  # List of adjacent room indices for EXP star buffer propagation
-    npc_expected_animations: dict[int, list[str]]  # NPC obj index → list of SpriteAnimationCollection attribute names
+    # NPC obj index → list of expected animations. Each entry is one of:
+    #   - str: SpriteAnimationCollection attribute name (boss sprites)
+    #   - SpriteAnimationState: ally character animation state
+    #   - ("character", SpriteAnimationState): explicit ally form (legacy)
+    npc_expected_animations: dict[int, Sequence[str | SpriteAnimationState | tuple[str, SpriteAnimationState]]]
     # If the NPC at obj_index still has its vanilla sprite after shuffling,
     # pin that sprite into (slot_index, main_buffer_space) with cannot_clone=False.
     # If the NPC's sprite was replaced, the pin is ignored and the partition
@@ -43,7 +48,7 @@ class Room(RoomBase):
         *args,
         extra_sprite_actions: list[SpriteAnimationState] | None = None,
         adjacent_rooms: list[int] | None = None,
-        npc_expected_animations: dict[int, list[str]] | None = None,
+        npc_expected_animations: dict[int, Sequence[str | SpriteAnimationState | tuple[str, SpriteAnimationState]]] | None = None,
         vanilla_sprite_buffer_pins: dict[int, tuple[int, BufferSpace]] | None = None,
         **kwargs,
     ):

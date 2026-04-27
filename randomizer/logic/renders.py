@@ -6,6 +6,7 @@ in prizelocations.py, organized by location/area.
 
 from __future__ import annotations
 
+import random
 from ast import Return
 from typing import TYPE_CHECKING, cast
 
@@ -18,11 +19,15 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST
 
 from randomizer.progression.prizes import (
+    BowserRecruitmentPrize,
     ClerkBossFight,
     DirectorBossFight,
     DodoBossFight,
+    GenoRecruitmentPrize,
+    MallowRecruitmentPrize,
     ManagerBossFight,
     MarioRecruitmentPrize,
+    ToadstoolRecruitmentPrize,
 )
 from randomizer.utils.tower_access_scripts import (
     A_EndLoop,
@@ -55,23 +60,26 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import (
     NORMAL,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
-    NPC_0,
-    NPC_1,
-    NPC_2,
-    NPC_3,
-    NPC_4,
-    NPC_5,
-    NPC_6,
-    NPC_7,
-    NPC_8,
-    NPC_9
-)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import (
     ActionQueueAsync,
     ActionQueueSync,
+    PaletteSet,
+    PaletteSetMorphs,
     RemoveObjectFromSpecificLevel,
     Pause,
+)
+from ..data.variables.event_palette_names import (
+    EPAL0084_MARIO_ENDING,
+    EPAL0085_MALLOW_ENDING,
+    EPAL0086_GENO_ENDING,
+    EPAL0140_BOWSER_ENDING,
+    EPAL0141_TOADSTOOL_ENDING,
+    EPAL0163_MARIO_ENDING_DARK,
+    EPAL0164_TOADSTOOL_ENDING_DARK,
+    EPAL0165_BOWSER_ENDING_DARK,
+    EPAL0166_MALLOW_ENDING_DARK,
+    EPAL0167_GENO_ENDING_DARK,
 )
 
 from ..data.variables.action_script_names import (
@@ -94,19 +102,32 @@ from ..data.variables.event_script_names import (
     E3794_FACTORY_FINAL_BOSS_FIGHT,
 )
 from ..data.variables.room_names import (
+    R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
     R202_BOOSTER_TOWER_ENTRANCE,
     R254_BEAN_VALLEY_SMILAX_AREA,
+    R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW,
+    R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
     R391_VOLCANO_POSTCD_AREA_04,
     R392_VOLCANO_POSTCD_AREA_06,
     R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
     R394_VOLCANO_POSTCD_AREA_05,
+    R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR,
     R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+    R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
     R509_FACTORY_GROUNDS_SMITHYS_PAD,
 )
 from ..data.variables.variable_names import TEMP_7043_3
+from smrpgpatchbuilder.datatypes.levels.classes import NPC as NPCBase
+from ..data.rooms.npcs import (
+    BOWSER_DOLL_NPC,
+    MALLOW_DOLL_NPC,
+    MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC,
+    MARIO_WALKING_DOWN_LEFT_NPC,
+    TOADSTOOL_DOLL_NPC,
+)
 from ..types.physical_objects import BossNPC, SpriteAnimation
 from ..types.prize import BossFightHenchman, BossFightPrize, CharacterPrize
-from ..types.prizelocation import BossFightLocationNPC
+from ..types.prizelocation import AllyNPCSub, BossFightLocationNPC
 from ..utils.npcs import is_swse_only
 from ..utils.snippets.es_castle_statue_room_bonk import script as bonk
 from ..utils.snippets.es_castle_statue_room_bonk_mario import script as bonk_mario
@@ -908,6 +929,647 @@ def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
     update_ally_animation(
         a22, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary
     )
+
+# NPC fills for each ending-cutscene render. Each AllyNPCSub here points at an
+# NPC in an ending-cutscene room (e.g. R496, R088) that should be replaced with
+# the chosen character's overworld model. These are populated independently of
+# the recruitment location's own _npc_fills.
+_ENDING_CHARACTER_2_NPC_FILLS: list[AllyNPCSub] = [
+    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_20),
+    AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_2),
+    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_1),
+    AllyNPCSub(R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, NPC_0),
+]
+
+_ENDING_CHARACTER_3_NPC_FILLS: list[AllyNPCSub] = [
+    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_21),
+]
+
+# NPCs that should be replaced with the doll variant matching the chosen
+# character in the Forest Maze ending cutscene (render_ending_character_3).
+# Geno is intentionally absent from the doll mapping below — render_ending_character_3
+# returns early when the prize is GenoRecruitmentPrize, so these substitutions
+# are never applied for Geno.
+_ENDING_CHARACTER_3_DOLL_FILLS: list[AllyNPCSub] = [
+    AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_3),
+    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_22),
+    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_2),
+]
+
+_ENDING_CHARACTER_4_NPC_FILLS: list[AllyNPCSub] = [
+    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_23),
+    AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_4),
+    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_4),
+    AllyNPCSub(R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_7),
+    AllyNPCSub(R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_8),
+]
+
+_ENDING_CHARACTER_5_NPC_FILLS: list[AllyNPCSub] = [
+    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_19),
+    AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_0),
+    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_0),
+]
+
+
+def _doll_for_prize(prize: CharacterPrize) -> NPCBase | None:
+    """Return the doll NPC matching `prize` for the render_ending_character_3
+    cutscene, or None if no doll variant exists for this character."""
+    if isinstance(prize, MallowRecruitmentPrize):
+        return MALLOW_DOLL_NPC
+    if isinstance(prize, BowserRecruitmentPrize):
+        return BOWSER_DOLL_NPC
+    if isinstance(prize, ToadstoolRecruitmentPrize):
+        return TOADSTOOL_DOLL_NPC
+    if isinstance(prize, MarioRecruitmentPrize):
+        return MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC
+    return None
+
+
+def _apply_ending_character_npc_fills(
+    world: GameWorld, prize: CharacterPrize, fills: list[AllyNPCSub]
+) -> None:
+    """Replace each NPC listed in `fills` with the model corresponding to `prize`.
+
+    Mirrors the AllyNPCSub loop in CharacterRecruitmentLocation.render() so
+    that ending-cutscene rooms can be populated with the chosen character
+    independently of the recruitment location's own _npc_fills.
+
+    For MarioRecruitmentPrize, MARIO_WALKING_DOWN_LEFT_NPC is used instead of
+    `prize.character_model.base` (which would resolve to the SPR0409_MARIO_CLONE
+    sprite). The clone sprite uses sprite_offset shifts that crash in many
+    cutscene contexts; MARIO_WALKING_DOWN_LEFT_NPC uses the protagonist sprite
+    (0) and avoids that problem."""
+    if isinstance(prize, MarioRecruitmentPrize):
+        model = MARIO_WALKING_DOWN_LEFT_NPC
+    else:
+        model = prize.character_model.base
+    for npc_sub in fills:
+        room = world.rooms._rooms[npc_sub.room_id]
+        if room is None:
+            raise ValueError(
+                f"Room ID {npc_sub.room_id} not found while applying ending character NPC fills."
+            )
+        obj = room.get_npc_by_target_id(npc_sub.npc_id)
+        if obj is None:
+            raise ValueError(
+                f"NPC ID {npc_sub.npc_id} not found in room {npc_sub.room_id} while applying ending character NPC fills."
+            )
+        obj._npc = model
+
+
+def _apply_ending_character_3_doll_fills(
+    world: GameWorld, prize: CharacterPrize, fills: list[AllyNPCSub]
+) -> None:
+    """Replace each NPC listed in `fills` with the doll variant matching `prize`."""
+    doll = _doll_for_prize(prize)
+    if doll is None:
+        return
+    for npc_sub in fills:
+        room = world.rooms._rooms[npc_sub.room_id]
+        if room is None:
+            raise ValueError(
+                f"Room ID {npc_sub.room_id} not found while applying ending character 3 doll fills."
+            )
+        obj = room.get_npc_by_target_id(npc_sub.npc_id)
+        if obj is None:
+            raise ValueError(
+                f"NPC ID {npc_sub.npc_id} not found in room {npc_sub.room_id} while applying ending character 3 doll fills."
+            )
+        obj._npc = doll
+
+
+def render_ending_character_2(world: GameWorld, prize: CharacterPrize) -> None:
+    if isinstance(prize, MallowRecruitmentPrize):
+        return
+    _apply_ending_character_npc_fills(world, prize, _ENDING_CHARACTER_2_NPC_FILLS)
+    ally = prize.ally
+    use_primary = isinstance(prize, MarioRecruitmentPrize)
+    a0 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_prince_aq_1",
+        "ending_prince_aq_1_1",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a0, ally, SpriteAnimationState.PRINCE_NEUTRAL, use_primary=use_primary
+    )
+    a1 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_prince_aq_2",
+        "ending_prince_aq_2_1",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a1, ally, SpriteAnimationState.PRINCE_DOWN, use_primary=use_primary
+    )
+    a2 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_prince_aq_2",
+        "ending_prince_aq_2_2",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a2, ally, SpriteAnimationState.PRINCE_NEUTRAL, use_primary=use_primary
+    )
+    a3 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_prince_aq_2",
+        "ending_prince_aq_2_3",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a3, ally, SpriteAnimationState.PRINCE_LEFT, use_primary=use_primary
+    )
+    a4 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_prince_aq_2",
+        "ending_prince_aq_2_4",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a4, ally, SpriteAnimationState.PRINCE_NEUTRAL, use_primary=use_primary
+    )
+    a5 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_prince_aq_2",
+        "ending_prince_aq_2_5",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a5, ally, SpriteAnimationState.PRINCE_JOY, use_primary=use_primary
+    )
+    a6 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mway_character_looks_south_aq",
+        "ending_mway_character_looks_south",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a6, ally, SpriteAnimationState.LOOK_TO_DOWN, use_primary=use_primary
+    )
+    a7 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mway_character_looks_down_aq",
+        "ending_mway_character_looks_down",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a7, ally, SpriteAnimationState.LOOKING_DOWN, use_primary=use_primary
+    )
+    a8 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mway_character_shocked_fwd_aq",
+        "ending_mway_character_shocked_fwd",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a8, ally, SpriteAnimationState.SHOCKED_SHADOW, use_primary=use_primary
+    )
+    a9 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mway_character_look_down_2_aq",
+        "ending_mway_character_look_down_2",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a9, ally, SpriteAnimationState.LOOKING_DOWN, use_primary=use_primary
+    )
+    a10 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mway_character_sees_geno_aq",
+        "ending_mway_character_sees_geno",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a10, ally, SpriteAnimationState.SEES_GENO, use_primary=use_primary
+    )
+    a11 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mway_character_geno_joy_aq",
+        "ending_mway_character_geno_joy",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a11, ally, SpriteAnimationState.JOY, use_primary=use_primary
+    )
+
+
+def render_ending_character_3(world: GameWorld, prize: CharacterPrize) -> None:
+    if isinstance(prize, GenoRecruitmentPrize):
+        return
+    _apply_ending_character_npc_fills(world, prize, _ENDING_CHARACTER_3_NPC_FILLS)
+    _apply_ending_character_3_doll_fills(world, prize, _ENDING_CHARACTER_3_DOLL_FILLS)
+    ally = prize.ally
+    use_primary = isinstance(prize, MarioRecruitmentPrize)
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "ending_doll_aq_a",
+        "ending_doll_",
+    )
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "ending_doll_cliff_seq_aq",
+        "ending_doll_cliff_seq",
+    )
+    a0 = world.action_scripts.get_command_by_identifier(
+        "ending_forest_char_spin",
+        A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a0, ally, SpriteAnimationState.SPIN, use_primary=use_primary
+    )
+    a1 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mway_character_geno_joy_aq",
+        "ending_mway_character_geno_joy",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a1, ally, SpriteAnimationState.JOY, use_primary=use_primary
+    )
+    a2 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_forest_character_spell_frame_3_aq",
+        "ending_forest_character_spell_frame_3",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a2, ally, SpriteAnimationState.SPELL_FRAME_3, use_primary=use_primary
+    )
+    a3 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_forest_character_spell_frames_aq",
+        "ending_forest_character_spell_frame_3_",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a3, ally, SpriteAnimationState.SPELL_FRAME_3, use_primary=use_primary
+    )
+    a4 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_forest_character_spell_frames_aq",
+        "ending_forest_character_spell_frame_4",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a4, ally, SpriteAnimationState.SPELL_FRAME_4, use_primary=use_primary
+    )
+    a5 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_forest_character_spell_frames_aq",
+        "ending_forest_character_spell_frame_5",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a5, ally, SpriteAnimationState.SPELL_FRAME_5, use_primary=use_primary
+    )
+    a6 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_forest_character_spell_frames_aq",
+        "ending_forest_character_spell_frame_6",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a6, ally, SpriteAnimationState.SPELL_FRAME_6, use_primary=use_primary
+    )
+    a7 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_forest_character_looks_down_aq",
+        "ending_forest_character_looks_down",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a7, ally, SpriteAnimationState.LOOKING_DOWN_AWAY, use_primary=use_primary
+    )
+    a8 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_forest_character_victory_pose_aq",
+        "ending_forest_character_victory_pose",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a8, ally, SpriteAnimationState.VICTORY_POSE, use_primary=use_primary
+    )
+
+
+def render_ending_character_4(world: GameWorld, prize: CharacterPrize) -> None:
+    if isinstance(prize, BowserRecruitmentPrize):
+        return
+    _apply_ending_character_npc_fills(world, prize, _ENDING_CHARACTER_4_NPC_FILLS)
+    ally = prize.ally
+    use_primary = isinstance(prize, MarioRecruitmentPrize)
+    a0 = world.action_scripts.get_command_by_identifier(
+        "mines_character_hammering",
+        A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a0, ally, SpriteAnimationState.HAMMER, use_primary=use_primary
+    )
+    a1 = world.action_scripts.get_command_by_identifier(
+        "mines_character_hammering_stop",
+        A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a1, ally, SpriteAnimationState.HAMMER_STATIC, use_primary=use_primary
+    )
+    a2 = world.action_scripts.get_command_by_identifier(
+        "mines_character_hammering_look_away",
+        A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a2, ally, SpriteAnimationState.DISTRACTED, use_primary=use_primary
+    )
+    a3 = world.action_scripts.get_command_by_identifier(
+        "mines_character_hammering_mad",
+        A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a3, ally, SpriteAnimationState.DISPLEASED, use_primary=use_primary
+    )
+    a4 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mines_character_looks_left_aq",
+        "ending_mines_character_looks_left",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a4, ally, SpriteAnimationState.LOOK_TO_SIDE_BEHIND, use_primary=use_primary
+    )
+    a5 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mines_character_looks_down_aq",
+        "ending_mines_character_looks_down",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a5, ally, SpriteAnimationState.LOOKING_DOWN_AWAY, use_primary=use_primary
+    )
+    a6 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mines_character_shocked_bwd_aq",
+        "ending_mines_character_shocked_bwd",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a6, ally, SpriteAnimationState.SHOCKED_SHADOW_BACKWARDS, use_primary=use_primary
+    )
+    a7 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mines_character_look_down_2_aq",
+        "ending_mines_character_look_down_2",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a7, ally, SpriteAnimationState.LOOKING_DOWN_AWAY, use_primary=use_primary
+    )
+    a8 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mines_character_lean_2_aq",
+        "ending_mines_character_lean_2_1",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a8, ally, SpriteAnimationState.LEAN_BACK, use_primary=use_primary
+    )
+    a9 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mines_character_lean_2_aq",
+        "ending_mines_character_lean_2_2",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a9, ally, SpriteAnimationState.LEAN_BACK_2, use_primary=use_primary
+    )
+    a10 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mines_character_looks_upward_aq",
+        "ending_mines_character_looks_upward",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a10, ally, SpriteAnimationState.DISTRACTED, use_primary=use_primary
+    )
+    a11 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mines_character_raised_arms_aq",
+        "ending_mines_character_raised_arms",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a11, ally, SpriteAnimationState.JOY_BEHIND, use_primary=use_primary
+    )
+
+
+def render_ending_character_5(world: GameWorld, prize: CharacterPrize) -> None:
+    if isinstance(prize, ToadstoolRecruitmentPrize):
+        return
+    _apply_ending_character_npc_fills(world, prize, _ENDING_CHARACTER_5_NPC_FILLS)
+    ally = prize.ally
+    use_primary = isinstance(prize, MarioRecruitmentPrize)
+    a23 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mmr_character_looks_north_aq",
+        "ending_mmr_character_looks_north",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a23, ally, SpriteAnimationState.DISTRACTED, use_primary=use_primary
+    )
+    a24 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mmr_character_looks_down_aq",
+        "ending_mmr_character_looks_down",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a24, ally, SpriteAnimationState.LOOKING_DOWN_AWAY, use_primary=use_primary
+    )
+    a25 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mmr_character_shocked_bwd_aq",
+        "ending_mmr_character_shocked_bwd",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a25, ally, SpriteAnimationState.SHOCKED_SHADOW_BACKWARDS, use_primary=use_primary
+    )
+    a26 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mmr_character_lean_far_aq",
+        "ending_mmr_character_lean_far",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a26, ally, SpriteAnimationState.LEAN_BACK_2, use_primary=use_primary
+    )
+    a27 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_marrymore_char_look_down_2_aq",
+        "ending_marrymore_char_look_down_2",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a27, ally, SpriteAnimationState.LOOKING_DOWN_AWAY, use_primary=use_primary
+    )
+    a28 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mmr_character_lean_2_aq",
+        "ending_mmr_character_lean_far_2_partial",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a28, ally, SpriteAnimationState.LEAN_BACK, use_primary=use_primary
+    )
+    a29 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_mmr_character_lean_2_aq",
+        "ending_mmr_character_lean_far_2_full",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a29, ally, SpriteAnimationState.LEAN_BACK_2, use_primary=use_primary
+    )
+    a30 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_marrymore_char_look_left_aq",
+        "ending_marrymore_char_look_left",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a30, ally, SpriteAnimationState.LOOK_TO_SIDE_BEHIND, use_primary=use_primary
+    )
+    a31 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_marrymore_char_joy_jump_aq",
+        "ending_marrymore_char_joy_jump_1",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a31, ally, SpriteAnimationState.JOY_JUMP_BEHIND, use_primary=use_primary
+    )
+    a32 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_marrymore_char_joy_jump_aq",
+        "ending_marrymore_char_joy_jump_2",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a32, ally, SpriteAnimationState.JOY_BEHIND, use_primary=use_primary
+    )
+
+def _ending_palette_for_prize(prize: CharacterPrize) -> int:
+    """Return the light ending-credits palette ID for `prize`."""
+    if isinstance(prize, MarioRecruitmentPrize):
+        return EPAL0084_MARIO_ENDING
+    if isinstance(prize, MallowRecruitmentPrize):
+        return EPAL0085_MALLOW_ENDING
+    if isinstance(prize, GenoRecruitmentPrize):
+        return EPAL0086_GENO_ENDING
+    if isinstance(prize, ToadstoolRecruitmentPrize):
+        return EPAL0141_TOADSTOOL_ENDING
+    if isinstance(prize, BowserRecruitmentPrize):
+        return EPAL0140_BOWSER_ENDING
+    raise ValueError(f"No light ending palette mapping for {type(prize).__name__}")
+
+
+def _ending_dark_palette_for_prize(prize: CharacterPrize) -> int:
+    """Return the dark ending-credits palette ID for `prize`."""
+    if isinstance(prize, MarioRecruitmentPrize):
+        return EPAL0163_MARIO_ENDING_DARK
+    if isinstance(prize, ToadstoolRecruitmentPrize):
+        return EPAL0164_TOADSTOOL_ENDING_DARK
+    if isinstance(prize, MallowRecruitmentPrize):
+        return EPAL0166_MALLOW_ENDING_DARK
+    if isinstance(prize, GenoRecruitmentPrize):
+        return EPAL0167_GENO_ENDING_DARK
+    if isinstance(prize, BowserRecruitmentPrize):
+        return EPAL0165_BOWSER_ENDING_DARK
+    raise ValueError(f"No dark ending palette mapping for {type(prize).__name__}")
+
+
+# Identifiers for the light/dark PaletteSetMorphs and PaletteSet commands in
+# script_3951. The light commands are PaletteSetMorphs (use set_palette_set);
+# the dark commands are PaletteSet (use set_palette_set_starts_at).
+_ENDING_PALETTE_IDS_PROTAGONIST = ("ending_protagonist_palette", "ending_protagonist_palette_dark")
+_ENDING_PALETTE_IDS_2 = ("ending_mushroom_way_char_palette", "ending_mushroom_way_char_palette_dark")
+_ENDING_PALETTE_IDS_3 = ("ending_forest_maze_char_palette", "ending_forest_character_dark")
+_ENDING_PALETTE_IDS_4 = ("ending_inner_mines_char_palette", "ending_inner_mines_palette_dark")
+_ENDING_PALETTE_IDS_5 = ("ending_marrymore_char_palette", "ending_marrymore_char_palette_dark")
+
+
+def _set_ending_palette_pair(
+    world: GameWorld, ids: tuple[str, str], prize: CharacterPrize
+) -> None:
+    """Update the (light, dark) palette command pair identified by `ids` so
+    that they show `prize`'s ending palette."""
+    light_id, dark_id = ids
+    world.event_scripts.get_command_by_identifier(
+        light_id, PaletteSetMorphs
+    ).set_palette_set(_ending_palette_for_prize(prize))
+    world.event_scripts.get_command_by_identifier(
+        dark_id, PaletteSet
+    ).set_palette_set_starts_at(_ending_dark_palette_for_prize(prize))
+
+
+def apply_ending_characters(
+    world: GameWorld,
+    *,
+    mushroom_way_prize: CharacterPrize | None,
+    forest_maze_prize: CharacterPrize | None,
+    inner_mines_prize: CharacterPrize | None,
+    marrymore_prize: CharacterPrize | None,
+    substitute_prizes: list[CharacterPrize],
+    mario_override: CharacterPrize | None = None,
+) -> None:
+    """Resolve the four ending-cutscene character prizes plus the protagonist
+    and dispatch to the matching render_ending_character_N function.
+
+    Mapping of named recruitment slot to ending-cutscene function:
+        MushroomWayCharacter -> render_ending_character_2
+        ForestMazeCharacter  -> render_ending_character_3
+        InnerMinesCharacter  -> render_ending_character_4
+        MarrymoreCharacter   -> render_ending_character_5
+
+    `substitute_prizes` is the pool of CharacterPrize instances that are not
+    placed in any of the named recruitment slots above — i.e. the StartingCharacterX
+    prizes plus stand-in prizes for any character excluded from the seed via
+    the AvailableCharacters flag. The pool is shuffled and drained without
+    replacement: each empty named slot pops one prize, and the single remaining
+    prize is used as the protagonist (whose palette goes into the
+    "ending_protagonist_palette" pair).
+
+    `mario_override`, when provided, replaces every MarioRecruitmentPrize among
+    the inputs (the four named-slot prizes and the substitute pool) with the
+    given prize. This is used when PlayAsStarter is disabled and Mario is not
+    the starter: the player visually plays as the starter character but Mario
+    is conceptually the protagonist, so any Mario placement in the ending
+    cutscene should display the starter instead.
+
+    Side effects:
+      - The five ending-cutscene PaletteSetMorphs / PaletteSet command pairs
+        in script_3951 are updated to match each character's actual ending
+        slot.
+      - Each render_ending_character_N function is called with its resolved
+        prize."""
+
+    def _apply_mario_override(p: CharacterPrize | None) -> CharacterPrize | None:
+        if mario_override is None or p is None:
+            return p
+        if isinstance(p, MarioRecruitmentPrize):
+            return mario_override
+        return p
+
+    ending_prizes: list[CharacterPrize | None] = [
+        _apply_mario_override(mushroom_way_prize),
+        _apply_mario_override(forest_maze_prize),
+        _apply_mario_override(inner_mines_prize),
+        _apply_mario_override(marrymore_prize),
+    ]
+    empty_indexes = [i for i, p in enumerate(ending_prizes) if p is None]
+
+    pool: list[CharacterPrize] = []
+    for sp in substitute_prizes:
+        overridden = _apply_mario_override(sp)
+        assert isinstance(overridden, CharacterPrize)
+        pool.append(overridden)
+    random.shuffle(pool)
+
+    for i in empty_indexes:
+        if not pool:
+            raise RuntimeError(
+                "Cannot resolve ending character slots: not enough substitute "
+                "prizes to cover every empty named recruitment slot."
+            )
+        ending_prizes[i] = pool.pop()
+
+    if not pool:
+        raise RuntimeError(
+            "Cannot resolve protagonist for ending cutscene: substitute pool "
+            "is empty after filling named slots."
+        )
+    # Whoever is left in the pool is the protagonist. If somehow more than one
+    # character is left (shouldn't happen with five total characters mapped
+    # across nine recruitment slots), pick one at random.
+    protagonist_prize = pool.pop() if len(pool) == 1 else random.choice(pool)
+
+    p2, p3, p4, p5 = ending_prizes
+    assert (
+        isinstance(p2, CharacterPrize)
+        and isinstance(p3, CharacterPrize)
+        and isinstance(p4, CharacterPrize)
+        and isinstance(p5, CharacterPrize)
+    )
+
+    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_PROTAGONIST, protagonist_prize)
+    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_2, p2)
+    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_3, p3)
+    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_4, p4)
+    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_5, p5)
+
+    render_ending_character_2(world, p2)
+    render_ending_character_3(world, p3)
+    render_ending_character_4(world, p4)
+    render_ending_character_5(world, p5)
 
 
 # =============================================================================

@@ -33,6 +33,11 @@ from ....packets import *
 from ....spells.spells import *
 from ....variables.event_palette_names import *
 
+MARRYMORE_CHARACTER = NPC_19
+MWAY_CHARACTER = NPC_20
+FOREST_CHARACTER = NPC_21
+MINES_CHARACTER = NPC_23
+
 script = EventScript([
 	FreezeCamera(),
 	Set0158Bit7Offset(0x0158, True),
@@ -56,24 +61,24 @@ script = EventScript([
 		A_TransferToXYZF(x=3, y=53, z=0, direction=EAST),
 		A_FaceEast()
 	]),
-	ActionQueueSync(target=NPC_20, subscript=[
+	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
 		A_TransferToXYZF(x=1, y=54, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=16, y=0, z=0, direction=EAST),
 		A_FaceSoutheast()
 	]),
-	ActionQueueSync(target=NPC_21, subscript=[
+	ActionQueueSync(target=FOREST_CHARACTER, subscript=[
 		A_TransferToXYZF(x=2, y=59, z=0, direction=EAST),
 		A_FaceNortheast(),
-		A_SetSpriteSequence(index=12, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=12, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, identifier="ending_forest_character_spell_frame_3"),
 		A_Pause(1),
 		A_ResetProperties()
-	]),
-	ActionQueueSync(target=NPC_19, subscript=[
+	], identifier="ending_forest_character_spell_frame_3_aq"),
+	ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
 		A_TransferToXYZF(x=3, y=58, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=8, y=4, z=0, direction=EAST),
 		A_FaceNortheast()
 	]),
-	ActionQueueSync(target=NPC_23, subscript=[
+	ActionQueueSync(target=MINES_CHARACTER, subscript=[
 		A_TransferToXYZF(x=1, y=57, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=16, y=0, z=0, direction=EAST),
 		A_FaceNortheast()
@@ -110,8 +115,8 @@ script = EventScript([
 		A_SetWalkingSpeed(SLOW),
 		A_WalkEastPixels(16),
 		A_FaceNortheast(),
-		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_protag_lean_back_1")
+	], identifier="ending_protag_lean_back_1_aq"),
 	RememberLastObject(),
 	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
 	Pause(60),
@@ -123,42 +128,42 @@ script = EventScript([
 		A_Pause(2),
 		A_EndLoop()
 	]),
-	ActionQueueSync(target=NPC_19, subscript=[
-		A_SetSpriteSequence(index=18, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
-	ActionQueueSync(target=NPC_23, subscript=[
-		A_SetSpriteSequence(index=19, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
-	ActionQueueSync(target=NPC_20, subscript=[
-		A_SetSpriteSequence(index=16, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+	ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
+		A_SetSpriteSequence(index=18, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mmr_character_looks_north")
+	], identifier="ending_mmr_character_looks_north_aq"),
+	ActionQueueSync(target=MINES_CHARACTER, subscript=[
+		A_SetSpriteSequence(index=19, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mines_character_looks_left")
+	], identifier="ending_mines_character_looks_left_aq"),
+	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
+		A_SetSpriteSequence(index=16, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mway_character_looks_south")
+	], identifier="ending_mway_character_looks_south_aq"),
 	RememberLastObject(),
 	Pause(10),
-	ActionQueueAsync(target=NPC_21, subscript=[
+	ActionQueueAsync(target=FOREST_CHARACTER, subscript=[
 		A_ResetProperties(),
 		A_Pause(2),
-		A_SetSpriteSequence(index=12, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=12, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, identifier="ending_forest_character_spell_frame_3_"),
 		A_Pause(8),
-		A_SetSpriteSequence(index=13, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=13, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, identifier="ending_forest_character_spell_frame_4"),
 		A_Pause(4),
-		A_SetSpriteSequence(index=14, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=14, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, identifier="ending_forest_character_spell_frame_5"),
 		A_Pause(4),
-		A_SetSpriteSequence(index=15, sprite_offset=1, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=15, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, identifier="ending_forest_character_spell_frame_6")
+	], identifier="ending_forest_character_spell_frames_aq"),
 	Pause(10),
 	Pause(10),
 	SetAsyncActionScript(MARIO, A0670_NOD_YES),
 	Pause(30),
-	ActionQueueSync(target=NPC_21, subscript=[
+	ActionQueueSync(target=FOREST_CHARACTER, subscript=[
 		A_ResetProperties()
 	]),
-	ActionQueueSync(target=NPC_20, subscript=[
+	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
 		A_ResetProperties()
 	]),
-	ActionQueueSync(target=NPC_23, subscript=[
+	ActionQueueSync(target=MINES_CHARACTER, subscript=[
 		A_ResetProperties()
 	]),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
 		A_ResetProperties()
 	]),
 	RememberLastObject(),
@@ -171,8 +176,8 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(8),
-		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_protag_lean_back_2"),
+	], identifier="ending_protag_lean_back_2_aq"),
 	Pause(6),
 	PlayMusicAtDefaultVolume(M0023_GOTASTARPIECE_PART1),
 	RememberLastObject(),
@@ -209,7 +214,7 @@ script = EventScript([
 		A_Pause(4),
 		A_EndLoop()
 	]),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
 		A_SequenceLoopingOn(),
 		A_UnknownCommand(bytearray([0x20, 0x03])),
 		A_UnknownCommand(bytearray([0x24, 0x80, 0x00, 0xE0, 0xFF])),
@@ -218,7 +223,7 @@ script = EventScript([
 		A_SequenceLoopingOff(),
 		A_FaceNorthwest()
 	]),
-	ActionQueueSync(target=NPC_20, subscript=[
+	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
 		A_FaceNortheast(),
 		A_SetSequenceSpeed(FAST),
 		A_FixedFCoordOn(),
@@ -338,7 +343,7 @@ script = EventScript([
 		A_WalkNorthSteps(2),
 		A_WalkWestPixels(8)
 	]),
-	ActionQueueSync(target=NPC_21, subscript=[
+	ActionQueueSync(target=FOREST_CHARACTER, subscript=[
 		A_SetSequenceSpeed(NORMAL),
 		A_SequenceLoopingOn(),
 		A_UnknownCommand(bytearray([0x20, 0x03])),
@@ -354,81 +359,81 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSouthwest(),
 		A_Pause(30),
-		A_SetSpriteSequence(index=6, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=6, is_sequence=True, looping=True),
 		A_Pause(8),
 		A_ResetProperties()
 	]),
 	Pause(30),
-	ActionQueueAsync(target=NPC_21, subscript=[
-		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+	ActionQueueAsync(target=FOREST_CHARACTER, subscript=[
+		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_forest_character_looks_down"),
 		A_Pause(8),
 		A_ResetProperties(),
 		A_Pause(30),
 		A_FaceSoutheast(),
 		A_Pause(2),
 		A_FaceSouthwest()
-	]),
+	], identifier="ending_forest_character_looks_down_aq"),
 	Pause(60),
-	ActionQueueSync(target=NPC_20, subscript=[
-		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
+		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mway_character_looks_down"),
 		A_Pause(8),
 		A_ResetProperties()
-	]),
-	ActionQueueSync(target=NPC_19, subscript=[
-		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True),
+	], identifier="ending_mway_character_looks_down_aq"),
+	ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
+		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True, identifier="ending_mmr_character_looks_down"),
 		A_Pause(8),
 		A_ResetProperties()
-	]),
-	ActionQueueSync(target=NPC_23, subscript=[
-		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+	], identifier="ending_mmr_character_looks_down_aq"),
+	ActionQueueSync(target=MINES_CHARACTER, subscript=[
+		A_SetSpriteSequence(index=15, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mines_character_looks_down"),
 		A_Pause(8),
 		A_ResetProperties()
-	]),
+	], identifier="ending_mines_character_looks_down_aq"),
 	RememberLastObject(),
 	Pause(30),
-	ActionQueueAsync(target=NPC_21, subscript=[
+	ActionQueueAsync(target=FOREST_CHARACTER, subscript=[
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=10, sprite_offset=1, is_sequence=True, looping=False)
-	]),
+		A_SetSpriteSequence(index=10, sprite_offset=1, is_sequence=True, looping=False, identifier="ending_forest_character_victory_pose")
+	], identifier="ending_forest_character_victory_pose_aq"),
 	Pause(60),
 	PlayMusicAtDefaultVolume(M0070_ENDINGPART1),
-	ActionQueueAsync(target=NPC_21, subscript=[
+	ActionQueueAsync(target=FOREST_CHARACTER, subscript=[
 		A_ResetProperties()
 	]),
 	Pause(30),
-	ActionQueueSync(target=NPC_20, subscript=[
+	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
 		A_SetWalkingSpeed(VERY_SLOW),
 		A_Walk1StepSoutheast(),
-		A_SetSpriteSequence(index=0, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=0, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mway_character_shocked_fwd"),
 		A_JumpToHeight(height=64, silent=True),
 		A_SetWalkingSpeed(NORMAL),
 		A_Walk1StepNorthwest(),
 		A_Pause(60),
 		A_FaceSoutheast(),
 		A_ResetProperties()
-	]),
-	ActionQueueSync(target=NPC_23, subscript=[
+	], identifier="ending_mway_character_shocked_fwd_aq"),
+	ActionQueueSync(target=MINES_CHARACTER, subscript=[
 		A_SetWalkingSpeed(VERY_SLOW),
 		A_Walk1StepNortheast(),
-		A_SetSpriteSequence(index=8, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=8, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, identifier="ending_mines_character_shocked_bwd"),
 		A_SetWalkingSpeed(NORMAL),
 		A_JumpToHeight(height=64, silent=True),
 		A_Walk1StepSouthwest(),
 		A_Pause(60),
 		A_FaceNortheast(),
 		A_ResetProperties()
-	]),
-	ActionQueueSync(target=NPC_19, subscript=[
+	], identifier="ending_mines_character_shocked_bwd_aq"),
+	ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
 		A_SetWalkingSpeed(VERY_SLOW),
 		A_Walk1StepNorthwest(),
-		A_SetSpriteSequence(index=8, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=8, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mmr_character_shocked_bwd"),
 		A_SetWalkingSpeed(NORMAL),
 		A_JumpToHeight(height=64, silent=True),
 		A_Walk1StepSoutheast(),
 		A_Pause(60),
 		A_FaceNorthwest(),
 		A_ResetProperties()
-	]),
+	], identifier="ending_mmr_character_shocked_bwd_aq"),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(60),
 		A_SetSpriteSequence(index=0, sprite_offset=3, is_sequence=True, looping=True),
@@ -528,7 +533,7 @@ script = EventScript([
 	SetSyncActionScript(NPC_10, A0226_ENDING_CUTSCENE_EFFECT),
 	SetSyncActionScript(NPC_11, A0226_ENDING_CUTSCENE_EFFECT),
 	Pause(420),
-	SetSyncActionScript(NPC_21, A0227_ENDING_CUTSCENE_EFFECT),
+	SetSyncActionScript(FOREST_CHARACTER, A0227_ENDING_CUTSCENE_EFFECT),
 	Pause(1, identifier="EVENT_3885_pause_168"),
 	JmpIfBitSet(TEMP_7043_0, ["EVENT_3885_action_queue_171"]),
 	Jmp(["EVENT_3885_pause_168"]),

@@ -38,7 +38,7 @@ room = Room(
     entrance_event=E2294_ENDING_CREDITS_WEDDING_LOADER,
     objects=[
         RegularNPC( # 0
-            npc=npcs.DODO_ND_TIME_NPC,
+            npc=npcs.DODO_AS_PARSON_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -63,7 +63,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 1
             npc=npcs.SNIFIT_NPC_2,
             initiator=EventInitiator.NONE,
@@ -187,7 +188,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 10
             npc=npcs.BOOSTER_NPC,
             initiator=EventInitiator.NONE,
@@ -214,6 +216,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ]
 )

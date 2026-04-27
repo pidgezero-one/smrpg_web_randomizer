@@ -33,6 +33,8 @@ from ....packets import *
 from ....spells.spells import *
 from ....variables.event_palette_names import *
 
+MWAY_CHARACTER = NPC_0
+
 script = EventScript([
 	ActionQueueSync(target=MARIO, subscript=[
 		A_VisibilityOff()
@@ -42,9 +44,9 @@ script = EventScript([
 	SetTempSyncActionScript(NPC_7, A0804_INC_PALETTE_ROW_15),
 	SetTempSyncActionScript(NPC_9, A0803_INC_PALETTE_ROW),
 	SetTempSyncActionScript(NPC_5, A0807_INC_PALETTE_ROW_2),
-	ActionQueueAsync(target=NPC_0, subscript=[
-		A_SetSpriteSequence(index=14, sprite_offset=2, is_mold=True, is_sequence=True, looping=True)
-	]),
+	ActionQueueAsync(target=MWAY_CHARACTER, subscript=[
+		A_SetSpriteSequence(index=14, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_prince_aq_1_1")
+	], identifier="ending_prince_aq_1"),
 	StarMaskExpandFromScreenCenter(),
 	Pause(60),
 	SetTempSyncActionScript(NPC_8, A0238_CHEERING_NIMBITES),
@@ -81,17 +83,17 @@ script = EventScript([
 	Pause(18),
 	SetTempSyncActionScript(NPC_8, A0238_CHEERING_NIMBITES),
 	Pause(65),
-	ActionQueueAsync(target=NPC_0, subscript=[
-		A_SetSpriteSequence(index=15, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+	ActionQueueAsync(target=MWAY_CHARACTER, subscript=[
+		A_SetSpriteSequence(index=15, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_prince_aq_2_1"),
 		A_Pause(20),
-		A_SetSpriteSequence(index=14, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=14, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_prince_aq_2_2"),
 		A_Pause(20),
-		A_SetSpriteSequence(index=16, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=16, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_prince_aq_2_3"),
 		A_Pause(20),
-		A_SetSpriteSequence(index=14, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=14, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_prince_aq_2_4"),
 		A_Pause(60),
-		A_SetSpriteSequence(index=17, sprite_offset=2, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=17, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_prince_aq_2_5")
+	], identifier="ending_prince_aq_2"),
 	Pause(95),
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=True, mirror_sprite=True)

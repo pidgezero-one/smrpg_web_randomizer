@@ -30,7 +30,7 @@ from ..types.prizelocation import (
     TreasureShopLocation,
     ROOM_TO_BATTLEFIELD
 )
-from ..types.flags import BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating, CharacterLearnedSpells, DifferentiateRepeatedBosses, SpellsAnywhere
+from ..types.flags import AvailableCharacters, BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating, CharacterLearnedSpells, DifferentiateRepeatedBosses, PlayAsStarter, SpellsAnywhere
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
     UsableEventScriptCommand,
 )
@@ -129,6 +129,11 @@ from ..progression.prizes import (
     Belome3Fight,
     Jinx4BossFight,
     Culex3DBossFight,
+    MarioRecruitmentPrize,
+    MallowRecruitmentPrize,
+    GenoRecruitmentPrize,
+    BowserRecruitmentPrize,
+    ToadstoolRecruitmentPrize,
 )
 
 from ..data.rooms.npcs import EMPTY_NPC
@@ -182,6 +187,7 @@ from ..data.sprites.subs.geno.sprite_987 import sprite as GENO_987
 from ..data.sprites.subs.geno.sprite_988 import sprite as GENO_988
 from ..data.sprites.subs.geno.sprite_989 import sprite as GENO_989
 from ..utils.tower_access_scripts import mario_script, mario_self_script, mallow_script, mallow_self_script, geno_script, geno_self_script, bowser_script, bowser_self_script, toadstool_script, toadstool_self_script
+from .renders import apply_ending_characters
 
 
 def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
@@ -503,6 +509,73 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         elif isinstance(place, CharacterRecruitmentLocation):
             # this takes care of everything for character gating and recruitment
             place.render(world)
+
+    # Render the four ending-cutscene character slots. Each named recruitment
+    # location maps to a render_ending_character_N function; empty named slots
+    # are filled from a substitute pool that combines StartingCharacterX prizes
+    # with stand-in prizes for any character excluded from the seed via the
+    # AvailableCharacters flag.
+    def _char_prize(loc_class: type) -> CharacterPrize | None:
+        if loc_class not in world.locations:
+            return None
+        loc = world.get_location(loc_class)
+        if loc is None or loc.prize is None:
+            return None
+        assert isinstance(loc.prize, CharacterPrize)
+        return loc.prize
+
+    starter_prizes: list[CharacterPrize] = [
+        p
+        for p in (
+            _char_prize(StartingCharacter1),
+            _char_prize(StartingCharacter2),
+            _char_prize(StartingCharacter3),
+            _char_prize(StartingCharacter4),
+            _char_prize(StartingCharacter5),
+        )
+        if p is not None
+    ]
+
+    # Excluded characters have no prize anywhere in the world, so we
+    # instantiate a stand-in CharacterPrize for each one and add it to the
+    # substitute pool. This way they still get a slot (and palette) in the
+    # ending cutscene.
+    excluded_prize_classes_by_ally_name: dict[str, type[CharacterPrize]] = {
+        "Mario": MarioRecruitmentPrize,
+        "Mallow": MallowRecruitmentPrize,
+        "Geno": GenoRecruitmentPrize,
+        "Bowser": BowserRecruitmentPrize,
+        "Toadstool": ToadstoolRecruitmentPrize,
+    }
+    excluded_prizes: list[CharacterPrize] = []
+    for member in world.settings.get_flag(AvailableCharacters).disabled:
+        ally = member.value
+        prize_cls = excluded_prize_classes_by_ally_name.get(ally.name)
+        if prize_cls is not None:
+            excluded_prizes.append(prize_cls())
+
+    # When PlayAsStarter is disabled, the player visually plays as Mario
+    # everywhere outside of battle regardless of who the actual starter is.
+    # If the starter (StartingCharacter1) is anyone but Mario, the ending
+    # cutscene needs Mario's slot to render as the starter instead.
+    mario_override: CharacterPrize | None = None
+    if not world.settings.isflag_enabled(PlayAsStarter):
+        starter_1_prize = _char_prize(StartingCharacter1)
+        if starter_1_prize is not None and not isinstance(
+            starter_1_prize, MarioRecruitmentPrize
+        ):
+            mario_override = starter_1_prize
+
+    apply_ending_characters(
+        world,
+        mushroom_way_prize=_char_prize(MushroomWayCharacter),
+        forest_maze_prize=_char_prize(ForestMazeCharacter),
+        inner_mines_prize=_char_prize(InnerMinesCharacter),
+        marrymore_prize=_char_prize(MarrymoreCharacter),
+        substitute_prizes=starter_prizes + excluded_prizes,
+        mario_override=mario_override,
+    )
+
     # Insert Set7000ToCurrentLevel at the beginning of all henchman container events
     for henchman_event in henchman_container_events:
         builders[henchman_event][0].insert(0,
@@ -825,6 +898,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_back_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_forward_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_FORWARD)[1])
+        world.event_scripts.get_subscript_command_by_identifier("ending_protag_lean_back_1_aq", "ending_protag_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
+        world.event_scripts.get_subscript_command_by_identifier("ending_protag_lean_back_2_aq", "ending_protag_lean_back_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
     # Set palettes that change when the protagonist changes.
     if ally.index == 2: # bowser shifts a lot of stuff...
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
@@ -841,6 +916,14 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_command_by_identifier("kamek_palette_br_4", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
             world.event_scripts.get_command_by_identifier("kamek_palette_br_5", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
             world.event_scripts.get_command_by_identifier("kamek_palette_br_6", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("ending_mushroom_way_char_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("ending_forest_maze_char_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
+            world.event_scripts.get_command_by_identifier("ending_marrymore_char_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("ending_inner_mines_char_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_6)
+            world.event_scripts.get_command_by_identifier("ending_mushroom_way_char_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("ending_forest_character_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
+            world.event_scripts.get_command_by_identifier("ending_marrymore_char_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("ending_inner_mines_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_6)
         except:
             pass
     # statue minigame
