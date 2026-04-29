@@ -37,6 +37,12 @@ class Room(RoomBase):
     #   - SpriteAnimationState: ally character animation state
     #   - ("character", SpriteAnimationState): explicit ally form (legacy)
     npc_expected_animations: dict[int, Sequence[str | SpriteAnimationState | tuple[str, SpriteAnimationState]]]
+    # Role → expected animations, for ending cutscene rooms where the NPC slot a
+    # role lands on depends on per-seed recruit assignment. Apply-time code
+    # resolves role → character → native NPC slot and writes the corresponding
+    # entries into npc_expected_animations before the partition orchestrator runs.
+    # Role keys: "marrymore", "mushroom_way", "forest_maze", "inner_mines", "protagonist".
+    role_expected_animations: dict[str, Sequence[str | SpriteAnimationState | tuple[str, SpriteAnimationState]]]
     # If the NPC at obj_index still has its vanilla sprite after shuffling,
     # pin that sprite into (slot_index, main_buffer_space) with cannot_clone=False.
     # If the NPC's sprite was replaced, the pin is ignored and the partition
@@ -49,6 +55,7 @@ class Room(RoomBase):
         extra_sprite_actions: list[SpriteAnimationState] | None = None,
         adjacent_rooms: list[int] | None = None,
         npc_expected_animations: dict[int, Sequence[str | SpriteAnimationState | tuple[str, SpriteAnimationState]]] | None = None,
+        role_expected_animations: dict[str, Sequence[str | SpriteAnimationState | tuple[str, SpriteAnimationState]]] | None = None,
         vanilla_sprite_buffer_pins: dict[int, tuple[int, BufferSpace]] | None = None,
         **kwargs,
     ):
@@ -56,6 +63,7 @@ class Room(RoomBase):
         self.extra_sprite_actions = extra_sprite_actions or []
         self.adjacent_rooms = adjacent_rooms or []
         self.npc_expected_animations = npc_expected_animations or {}
+        self.role_expected_animations = role_expected_animations or {}
         self.vanilla_sprite_buffer_pins = vanilla_sprite_buffer_pins or {}
 
     def update_partition_by_protagonist(self, world: GameWorld) -> None:

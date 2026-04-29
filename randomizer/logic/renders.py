@@ -935,14 +935,14 @@ def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
 # the chosen character's overworld model. These are populated independently of
 # the recruitment location's own _npc_fills.
 _ENDING_CHARACTER_2_NPC_FILLS: list[AllyNPCSub] = [
-    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_20),
+    # R496 NPC_20 removed — handled by _apply_r496_role_assignments (coord/retarget swap)
     AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_2),
     AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_1),
     AllyNPCSub(R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, NPC_0),
 ]
 
 _ENDING_CHARACTER_3_NPC_FILLS: list[AllyNPCSub] = [
-    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_21),
+    # R496 NPC_21 removed — handled by _apply_r496_role_assignments (coord/retarget swap)
 ]
 
 # NPCs that should be replaced with the doll variant matching the chosen
@@ -951,12 +951,13 @@ _ENDING_CHARACTER_3_NPC_FILLS: list[AllyNPCSub] = [
 # returns early when the prize is GenoRecruitmentPrize, so these substitutions
 # are never applied for Geno.
 _ENDING_CHARACTER_3_DOLL_FILLS: list[AllyNPCSub] = [
+    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_22),
     AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_3),
     AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_2),
 ]
 
 _ENDING_CHARACTER_4_NPC_FILLS: list[AllyNPCSub] = [
-    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_22),
+    # R496 NPC_22 (vanilla mines) removed — handled by _apply_r496_role_assignments (coord/retarget swap)
     AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_4),
     AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_4),
     AllyNPCSub(R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_7),
@@ -964,10 +965,172 @@ _ENDING_CHARACTER_4_NPC_FILLS: list[AllyNPCSub] = [
 ]
 
 _ENDING_CHARACTER_5_NPC_FILLS: list[AllyNPCSub] = [
-    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_19),
+    # R496 NPC_19 removed — handled by _apply_r496_role_assignments (coord/retarget swap)
     AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_0),
     AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_0),
 ]
+
+
+# =============================================================================
+# R496 ending cutscene: role/coord-swap (replaces NPC model swap)
+# =============================================================================
+# Each character has a permanent NPC slot in R496. The cutscene script targets
+# vanilla-role NPC slots (NPC_19=marrymore, NPC_20=mway, NPC_21=forest,
+# NPC_23=mines, MARIO=protagonist). At apply time we walk script_3885 and
+# retarget each role's NPC reference to whichever character's native slot
+# now plays that role. Sprite models are NOT swapped (avoiding partition
+# VRAM-overflow issues from mismatched sprite sizes).
+
+R496_NATIVE_SLOT_FOR_PRIZE: dict[type, AreaObject] = {
+    ToadstoolRecruitmentPrize: NPC_19,
+    MallowRecruitmentPrize:    NPC_20,
+    GenoRecruitmentPrize:      NPC_21,
+    BowserRecruitmentPrize:    NPC_23,
+    MarioRecruitmentPrize:     NPC_24,
+}
+
+R496_VANILLA_ROLE_NPCS: dict[str, AreaObject] = {
+    "marrymore":    NPC_19,
+    "mushroom_way": NPC_20,
+    "forest_maze":  NPC_21,
+    "inner_mines":  NPC_23,
+}
+
+# Identifiers of script commands the retarget walker must NOT touch (they
+# reference the ally-buffer-rendered avatar, not the protagonist's NPC slot).
+R496_RETARGET_SKIP_IDENTIFIERS: frozenset[str] = frozenset({
+    "hide_player_avatar",
+})
+
+
+def _retarget_event_script_targets(
+    contents,
+    target_map: dict,
+    *,
+    skip_identifiers: frozenset[str] = frozenset(),
+) -> None:
+    """Recursively walk an event-script command list (and ActionQueue subscripts)
+    and replace each command's `target` according to target_map. Commands
+    whose `identifier` is in skip_identifiers are left untouched.
+    """
+    iterable = contents if isinstance(contents, list) else getattr(contents, "contents", [])
+    for cmd in iterable:
+        ident = getattr(cmd, "identifier", None)
+        ident_label = getattr(ident, "label", None) if ident is not None else None
+        if ident_label not in skip_identifiers:
+            cmd_target = getattr(cmd, "target", None)
+            if cmd_target is not None and cmd_target in target_map:
+                cmd.set_target(target_map[cmd_target])
+        sub = getattr(cmd, "subscript", None)
+        if sub is not None:
+            _retarget_event_script_targets(
+                sub, target_map, skip_identifiers=skip_identifiers
+            )
+
+
+def _make_protagonist_sprite_31_variant(base: NPCBase) -> NPCBase:
+    """Return a copy of `base` with sprite_id set to SPR0031_ALT_PROTAGONIST_1.
+
+    Sprite 31 is the post-cosmetics protagonist sprite; the cosmetics layer
+    overwrites sprites 31-37 with the protagonist character's full animation
+    set, so any NPC slot using sprite 31 has access to the same animations
+    as the protagonist. We use this on the protagonist's native slot when
+    the protagonist is not Mario, so the recruit-only sprite at that slot
+    is replaced with the full protagonist sprite.
+    """
+    from ..data.variables.sprite_names import SPR0031_ALT_PROTAGONIST_1
+    return NPCBase(
+        sprite_id=SPR0031_ALT_PROTAGONIST_1,
+        shadow_size=base.shadow_size,
+        acute_axis=base.acute_axis,
+        obtuse_axis=base.obtuse_axis,
+        height=base.height,
+        y_shift=base.y_shift,
+        show_shadow=base.show_shadow,
+        directions=base.directions,
+        min_vram_size=base.min_vram_size,
+        priority_0=base.priority_0,
+        priority_1=base.priority_1,
+        priority_2=base.priority_2,
+        cannot_clone=base.cannot_clone,
+        byte2_bit0=base.byte2_bit0,
+        byte2_bit1=base.byte2_bit1,
+        byte2_bit2=base.byte2_bit2,
+        byte2_bit3=base.byte2_bit3,
+        byte2_bit4=base.byte2_bit4,
+        byte5_bit6=base.byte5_bit6,
+        byte5_bit7=base.byte5_bit7,
+        byte6_bit2=base.byte6_bit2,
+    )
+
+
+def _apply_r496_role_assignments(
+    world: GameWorld,
+    *,
+    marrymore_prize: CharacterPrize,
+    mushroom_way_prize: CharacterPrize,
+    forest_maze_prize: CharacterPrize,
+    inner_mines_prize: CharacterPrize,
+    protagonist_prize: CharacterPrize,
+) -> None:
+    """For room 496 (the post-final-boss cutscene): keep each character's
+    native sprite at its native slot, retarget script_3885 commands so each
+    role's vanilla-NPC reference is redirected to whichever character's slot
+    plays that role this seed, override sprite_id on the protagonist's slot
+    to sprite 31 (when protagonist isn't Mario), and rebuild
+    npc_expected_animations from the room's role_expected_animations plus
+    extra_sprite_actions for the protagonist slot.
+    """
+    from ..data.variables.event_script_names import E3885_END_GAME
+    from ..types.room import Room as ExtRoom
+
+    room = world.rooms._rooms[R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE]
+    if not isinstance(room, ExtRoom):
+        return
+
+    role_to_slot: dict[str, AreaObject] = {
+        "marrymore":    R496_NATIVE_SLOT_FOR_PRIZE[type(marrymore_prize)],
+        "mushroom_way": R496_NATIVE_SLOT_FOR_PRIZE[type(mushroom_way_prize)],
+        "forest_maze":  R496_NATIVE_SLOT_FOR_PRIZE[type(forest_maze_prize)],
+        "inner_mines":  R496_NATIVE_SLOT_FOR_PRIZE[type(inner_mines_prize)],
+    }
+    protagonist_slot = R496_NATIVE_SLOT_FOR_PRIZE[type(protagonist_prize)]
+
+    target_map: dict = {}
+    for role, slot in role_to_slot.items():
+        vanilla_npc = R496_VANILLA_ROLE_NPCS[role]
+        if int(vanilla_npc) != int(slot):
+            target_map[vanilla_npc] = slot
+    if int(protagonist_slot) != int(MARIO):
+        target_map[MARIO] = protagonist_slot
+
+    if target_map:
+        script = world.event_scripts.get_script_by_id(E3885_END_GAME)
+        _retarget_event_script_targets(
+            script.contents,
+            target_map,
+            skip_identifiers=R496_RETARGET_SKIP_IDENTIFIERS,
+        )
+
+    if not isinstance(protagonist_prize, MarioRecruitmentPrize):
+        obj = room.get_npc_by_target_id(protagonist_slot)
+        if obj is not None:
+            obj._npc = _make_protagonist_sprite_31_variant(obj._npc)
+
+    role_anims = getattr(room, "role_expected_animations", {}) or {}
+    rebuilt: dict[int, list] = {}
+    for role, anims in role_anims.items():
+        slot = role_to_slot.get(role)
+        if slot is None:
+            continue
+        idx = int(slot) - 20  # AreaObject NPC_X = X + 20; convert back to room object index
+        rebuilt[idx] = list(anims)
+    extra_anims = list(getattr(room, "extra_sprite_actions", []) or [])
+    if extra_anims:
+        proto_idx = int(protagonist_slot) - 20
+        existing = rebuilt.get(proto_idx, [])
+        rebuilt[proto_idx] = list(existing) + extra_anims
+    room.npc_expected_animations = rebuilt
 
 
 def _doll_for_prize(prize: CharacterPrize) -> NPCBase | None:
@@ -1037,12 +1200,23 @@ def _apply_ending_character_3_doll_fills(
         obj._npc = doll
 
 
-def render_ending_character_2(world: GameWorld, prize: CharacterPrize) -> None:
+def render_ending_character_2(
+    world: GameWorld,
+    prize: CharacterPrize,
+    *,
+    protagonist_prize: CharacterPrize | None = None,
+) -> None:
     if isinstance(prize, MallowRecruitmentPrize):
         return
     _apply_ending_character_npc_fills(world, prize, _ENDING_CHARACTER_2_NPC_FILLS)
     ally = prize.ally
-    use_primary = isinstance(prize, MarioRecruitmentPrize)
+    # use_primary: Mario always uses sprite 0 (_sprites_primary). Non-Mario
+    # protagonists use sprite 31 in their R496 slot, which also has full
+    # protagonist data → also _sprites_primary. Recruits with their native
+    # sprite use _sprites_secondary.
+    use_primary = isinstance(prize, MarioRecruitmentPrize) or (
+        protagonist_prize is not None and prize is protagonist_prize
+    )
     a0 = world.event_scripts.get_subscript_command_by_identifier(
         "ending_prince_aq_1",
         "ending_prince_aq_1_1",
@@ -1141,13 +1315,20 @@ def render_ending_character_2(world: GameWorld, prize: CharacterPrize) -> None:
     )
 
 
-def render_ending_character_3(world: GameWorld, prize: CharacterPrize) -> None:
+def render_ending_character_3(
+    world: GameWorld,
+    prize: CharacterPrize,
+    *,
+    protagonist_prize: CharacterPrize | None = None,
+) -> None:
     if isinstance(prize, GenoRecruitmentPrize):
         return
     _apply_ending_character_npc_fills(world, prize, _ENDING_CHARACTER_3_NPC_FILLS)
     _apply_ending_character_3_doll_fills(world, prize, _ENDING_CHARACTER_3_DOLL_FILLS)
     ally = prize.ally
-    use_primary = isinstance(prize, MarioRecruitmentPrize)
+    use_primary = isinstance(prize, MarioRecruitmentPrize) or (
+        protagonist_prize is not None and prize is protagonist_prize
+    )
     world.event_scripts.delete_subscript_command_by_identifier(
         "ending_doll_aq_a",
         "ending_doll_",
@@ -1229,12 +1410,19 @@ def render_ending_character_3(world: GameWorld, prize: CharacterPrize) -> None:
     )
 
 
-def render_ending_character_4(world: GameWorld, prize: CharacterPrize) -> None:
+def render_ending_character_4(
+    world: GameWorld,
+    prize: CharacterPrize,
+    *,
+    protagonist_prize: CharacterPrize | None = None,
+) -> None:
     if isinstance(prize, BowserRecruitmentPrize):
         return
     _apply_ending_character_npc_fills(world, prize, _ENDING_CHARACTER_4_NPC_FILLS)
     ally = prize.ally
-    use_primary = isinstance(prize, MarioRecruitmentPrize)
+    use_primary = isinstance(prize, MarioRecruitmentPrize) or (
+        protagonist_prize is not None and prize is protagonist_prize
+    )
     a0 = world.action_scripts.get_command_by_identifier(
         "mines_character_hammering",
         A_SetSpriteSequence
@@ -1329,12 +1517,19 @@ def render_ending_character_4(world: GameWorld, prize: CharacterPrize) -> None:
     )
 
 
-def render_ending_character_5(world: GameWorld, prize: CharacterPrize) -> None:
+def render_ending_character_5(
+    world: GameWorld,
+    prize: CharacterPrize,
+    *,
+    protagonist_prize: CharacterPrize | None = None,
+) -> None:
     if isinstance(prize, ToadstoolRecruitmentPrize):
         return
     _apply_ending_character_npc_fills(world, prize, _ENDING_CHARACTER_5_NPC_FILLS)
     ally = prize.ally
-    use_primary = isinstance(prize, MarioRecruitmentPrize)
+    use_primary = isinstance(prize, MarioRecruitmentPrize) or (
+        protagonist_prize is not None and prize is protagonist_prize
+    )
     a23 = world.event_scripts.get_subscript_command_by_identifier(
         "ending_mmr_character_looks_north_aq",
         "ending_mmr_character_looks_north",
@@ -1565,10 +1760,22 @@ def apply_ending_characters(
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_4, p4)
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_5, p5)
 
-    render_ending_character_2(world, p2)
-    render_ending_character_3(world, p3)
-    render_ending_character_4(world, p4)
-    render_ending_character_5(world, p5)
+    # R496 ending cutscene: NPC sprites stay at their native slots; we retarget
+    # the cutscene script's role-NPC references to whichever character is
+    # playing each role this seed. See _apply_r496_role_assignments.
+    _apply_r496_role_assignments(
+        world,
+        marrymore_prize=p5,
+        mushroom_way_prize=p2,
+        forest_maze_prize=p3,
+        inner_mines_prize=p4,
+        protagonist_prize=protagonist_prize,
+    )
+
+    render_ending_character_2(world, p2, protagonist_prize=protagonist_prize)
+    render_ending_character_3(world, p3, protagonist_prize=protagonist_prize)
+    render_ending_character_4(world, p4, protagonist_prize=protagonist_prize)
+    render_ending_character_5(world, p5, protagonist_prize=protagonist_prize)
 
 
 # =============================================================================

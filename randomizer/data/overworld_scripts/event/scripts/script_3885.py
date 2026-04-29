@@ -33,10 +33,11 @@ from ....packets import *
 from ....spells.spells import *
 from ....variables.event_palette_names import *
 
+PLAYER = MARIO
 MARRYMORE_CHARACTER = NPC_19
 MWAY_CHARACTER = NPC_20
 FOREST_CHARACTER = NPC_21
-MINES_CHARACTER = NPC_22
+MINES_CHARACTER = NPC_23
 
 script = EventScript([
 	FreezeCamera(),
@@ -85,6 +86,9 @@ script = EventScript([
 	]),
 	RememberLastObject(),
 	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
+	ActionQueueSync(target=PLAYER, subscript=[
+        A_VisibilityOff(),
+	], identifier="hide_player_avatar"),
 	# PaletteSet(palette_set_starts_at=EPAL0086_GENO_ENDING, from_row=NPC_PALETTE_ROW_1),
 	FadeInFromColour(duration=90, colour=WHITE),
 	PauseScriptUntilEffectDone(),

@@ -18144,6 +18144,30 @@ BOWSER_ENDING = NPC(
     byte6_bit2=False,
 )
 
+MARIO_ENDING = NPC(
+    sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=3,
+    obtuse_axis=3,
+    height=12,
+    y_shift=0,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=True,
+    priority_1=True,
+    priority_2=False,
+    cannot_clone=True,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 FIRE_CRYSTAL_GRIDPLANE_NPC = NPC(
     sprite_id=SPR0644_FIRE_CRYSTAL_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
