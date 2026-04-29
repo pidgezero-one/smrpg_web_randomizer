@@ -1764,6 +1764,27 @@ def apply_ending_characters(
         and isinstance(p5, CharacterPrize)
     )
 
+    # DEBUG OVERRIDE: force vanilla cutscene assignment regardless of recruit
+    # shuffle. Set R496_FORCE_VANILLA_CUTSCENE_ASSIGNMENT = False to disable.
+    # When enabled, Peach is marrymore (p5), Mallow is mushroom_way (p2),
+    # Geno is forest (p3), Bowser is inner_mines (p4), Mario is protagonist —
+    # so the only non-trivial retarget in _apply_r496_role_assignments is
+    # MARIO → NPC_19 (Mario's native slot). Recruit-room placements are
+    # untouched; only the ending cutscene is reassigned. Useful for
+    # isolating Mario-NPC-as-protagonist behavior from the role-swap path.
+    R496_FORCE_VANILLA_CUTSCENE_ASSIGNMENT = True
+    if R496_FORCE_VANILLA_CUTSCENE_ASSIGNMENT:
+        all_five: list[CharacterPrize] = [p2, p3, p4, p5, protagonist_prize]
+        by_type: dict[type, CharacterPrize] = {type(p): p for p in all_five}
+        if len(by_type) == 5:
+            p2 = by_type[MallowRecruitmentPrize]
+            p3 = by_type[GenoRecruitmentPrize]
+            p4 = by_type[BowserRecruitmentPrize]
+            p5 = by_type[ToadstoolRecruitmentPrize]
+            protagonist_prize = by_type[MarioRecruitmentPrize]
+        # If fewer than 5 distinct character types are present (excluded char,
+        # duplicate stand-ins), leave the random assignment alone.
+
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_PROTAGONIST, protagonist_prize)
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_2, p2)
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_3, p3)
