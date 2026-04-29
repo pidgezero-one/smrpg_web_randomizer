@@ -42,7 +42,7 @@ DOLL = NPC_4
 script = EventScript([
 	EnterArea(room_id=R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, face_direction=SOUTHWEST, x=4, y=51, z=0),
 	FreezeCamera(),
-	RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar"),
+	RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar2"),
 	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
 		A_TransferToXYZF(x=3, y=50, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=248, y=0, z=0, direction=EAST),

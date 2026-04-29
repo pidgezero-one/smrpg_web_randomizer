@@ -41,7 +41,7 @@ DOLL = NPC_3
 
 script = EventScript([
 	EnterArea(room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, face_direction=NORTHWEST, x=4, y=48, z=0),
-	RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar"),
+	RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar3"),
 	RunStarPieceSequence(8),
 	PaletteSet(palette_set_starts_at=EPAL0163_MARIO_ENDING_DARK, from_row=MARIO_PALETTE, identifier="ending_protagonist_palette_dark"),
 	PaletteSet(palette_set_starts_at=EPAL0164_TOADSTOOL_ENDING_DARK, from_row=NPC_PALETTE_ROW_1, identifier="ending_marrymore_char_palette_dark"),

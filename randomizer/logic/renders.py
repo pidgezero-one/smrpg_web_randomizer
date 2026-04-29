@@ -1007,6 +1007,8 @@ R496_VANILLA_ROLE_NPCS: dict[str, AreaObject] = {
 # reference the ally-buffer-rendered avatar, not the protagonist's NPC slot).
 R496_RETARGET_SKIP_IDENTIFIERS: frozenset[str] = frozenset({
     "hide_player_avatar",
+    "hide_player_avatar2",
+    "hide_player_avatar3",
 })
 
 

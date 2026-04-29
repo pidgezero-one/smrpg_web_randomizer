@@ -939,8 +939,14 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_back_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_forward_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_FORWARD)[1])
-        world.event_scripts.get_subscript_command_by_identifier("ending_protag_lean_back_1_aq", "ending_protag_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
-        world.event_scripts.get_subscript_command_by_identifier("ending_protag_lean_back_2_aq", "ending_protag_lean_back_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
+        # ending_protag_lean_back_1/2 target the Mario NPC (NPC_19) in R496, which
+        # always uses sprite 0 (Mario) regardless of starter character. The script
+        # source already hardcodes the correct mold (index=23, sprite_offset=2),
+        # so don't overwrite with the starter's mold_id — that would render
+        # Toadstool's/Bowser's/etc. lean-back mold using Mario's sprite 2 layout
+        # and produce a garbled mold.
+        # world.event_scripts.get_subscript_command_by_identifier("ending_protag_lean_back_1_aq", "ending_protag_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
+        # world.event_scripts.get_subscript_command_by_identifier("ending_protag_lean_back_2_aq", "ending_protag_lean_back_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
     # Set palettes that change when the protagonist changes.
     if ally.index == 2: # bowser shifts a lot of stuff...
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
