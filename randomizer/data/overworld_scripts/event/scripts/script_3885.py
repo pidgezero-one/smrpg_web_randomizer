@@ -34,10 +34,10 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 PLAYER = MARIO
-MARRYMORE_CHARACTER = NPC_19
-MWAY_CHARACTER = NPC_20
-FOREST_CHARACTER = NPC_21
-MINES_CHARACTER = NPC_23
+MARRYMORE_CHARACTER = NPC_20
+MWAY_CHARACTER = NPC_21
+FOREST_CHARACTER = NPC_22
+MINES_CHARACTER = NPC_24
 
 script = EventScript([
 	FreezeCamera(),

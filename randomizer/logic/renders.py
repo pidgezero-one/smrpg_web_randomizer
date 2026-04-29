@@ -951,7 +951,7 @@ _ENDING_CHARACTER_3_NPC_FILLS: list[AllyNPCSub] = [
 # returns early when the prize is GenoRecruitmentPrize, so these substitutions
 # are never applied for Geno.
 _ENDING_CHARACTER_3_DOLL_FILLS: list[AllyNPCSub] = [
-    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_22),
+    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_23),
     AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_3),
     AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_2),
 ]
@@ -975,25 +975,35 @@ _ENDING_CHARACTER_5_NPC_FILLS: list[AllyNPCSub] = [
 # R496 ending cutscene: role/coord-swap (replaces NPC model swap)
 # =============================================================================
 # Each character has a permanent NPC slot in R496. The cutscene script targets
-# vanilla-role NPC slots (NPC_19=marrymore, NPC_20=mway, NPC_21=forest,
-# NPC_23=mines, MARIO=protagonist). At apply time we walk script_3885 and
-# retarget each role's NPC reference to whichever character's native slot
-# now plays that role. Sprite models are NOT swapped (avoiding partition
-# VRAM-overflow issues from mismatched sprite sizes).
+# the script's vanilla-role NPC slots (MARRYMORE_CHARACTER=NPC_20,
+# MWAY_CHARACTER=NPC_21, FOREST_CHARACTER=NPC_22, MINES_CHARACTER=NPC_24,
+# MARIO=protagonist). At apply time we walk script_3885 and retarget each
+# role's NPC reference to whichever character's native slot now plays that
+# role. Sprite models are NOT swapped (avoiding partition VRAM-overflow
+# issues from mismatched sprite sizes).
+#
+# R496 NPC layout (Mario placed before the recruits so he allocates first
+# in the dynamic VRAM region):
+#   NPC_19 = Mario  (sprite 0 always)
+#   NPC_20 = Peach
+#   NPC_21 = Mallow
+#   NPC_22 = Geno
+#   NPC_23 = Geno doll  (model-swapped per forest character via _ENDING_CHARACTER_3_DOLL_FILLS)
+#   NPC_24 = Bowser
 
 R496_NATIVE_SLOT_FOR_PRIZE: dict[type, AreaObject] = {
-    ToadstoolRecruitmentPrize: NPC_19,
-    MallowRecruitmentPrize:    NPC_20,
-    GenoRecruitmentPrize:      NPC_21,
-    BowserRecruitmentPrize:    NPC_23,
-    MarioRecruitmentPrize:     NPC_24,
+    MarioRecruitmentPrize:     NPC_19,
+    ToadstoolRecruitmentPrize: NPC_20,
+    MallowRecruitmentPrize:    NPC_21,
+    GenoRecruitmentPrize:      NPC_22,
+    BowserRecruitmentPrize:    NPC_24,
 }
 
 R496_VANILLA_ROLE_NPCS: dict[str, AreaObject] = {
-    "marrymore":    NPC_19,
-    "mushroom_way": NPC_20,
-    "forest_maze":  NPC_21,
-    "inner_mines":  NPC_23,
+    "marrymore":    NPC_20,
+    "mushroom_way": NPC_21,
+    "forest_maze":  NPC_22,
+    "inner_mines":  NPC_24,
 }
 
 # Identifiers of script commands the retarget walker must NOT touch (they
