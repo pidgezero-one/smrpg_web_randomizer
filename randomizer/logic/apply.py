@@ -966,44 +966,9 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         cmd = world.event_scripts.get_command_by_identifier(darken_id, DarkenLayersExceptPaletteRows)
         cmd.set_preserve_rows(ending_darken_preserve)
 
-    # script_3951 (R375 ending credits) palette-row swap based on overworld
-    # character. The engine assigns one NPC slot to share MARIO_PALETTE (the
-    # protagonist slot) and the other recruits to NPC_PALETTE_ROW_X based on
-    # their slot order. With Mario at NPC_0 + recruits at NPC_1 (Toadstool),
-    # NPC_2 (Mallow), NPC_3 (Geno doll), NPC_4 (Geno redemption — non-player),
-    # NPC_5 (Bowser), the slot→row mapping is:
-    #   Mario    → MARIO_PALETTE (Mario protagonist) or NPC_PALETTE_ROW_1
-    #              (when whichever recruit is protagonist takes MARIO_PALETTE)
-    #   Toadstool → NPC_PALETTE_ROW_1
-    #   Mallow    → NPC_PALETTE_ROW_2
-    #   Geno doll → NPC_PALETTE_ROW_3
-    #   Bowser    → NPC_PALETTE_ROW_5  (NPC_4 = Geno redemption takes ROW_4)
-    # Whichever character is protagonist gets their slot moved to MARIO_PALETTE
-    # and the Mario NPC's protagonist palette commands go to that slot's row.
-    _RECRUIT_PALETTE: dict[int, tuple[str, str, "int"]] = {
-        # ally.index → (light morph id, dark set id, the recruit's default row)
-        1: ("ending_marrymore_char_palette",   "ending_marrymore_char_palette_dark",    NPC_PALETTE_ROW_1),  # Toadstool
-        2: ("ending_inner_mines_char_palette", "ending_inner_mines_palette_dark",       NPC_PALETTE_ROW_5),  # Bowser
-        3: ("ending_forest_maze_char_palette", "ending_forest_character_dark",          NPC_PALETTE_ROW_3),  # Geno
-        4: ("ending_mushroom_way_char_palette", "ending_mushroom_way_char_palette_dark", NPC_PALETTE_ROW_2),  # Mallow
-    }
-    proto_light = world.event_scripts.get_command_by_identifier("ending_protagonist_palette", PaletteSetMorphs)
-    proto_dark  = world.event_scripts.get_command_by_identifier("ending_protagonist_palette_dark", PaletteSet)
-    if overworld_ally.index == 0:
-        # Mario protagonist: protagonist palette goes to MARIO_PALETTE; recruit
-        # palette commands keep their default rows (Toadstool=1, Mallow=2,
-        # Geno=3, Bowser=5).
-        proto_light.set_row(MARIO_PALETTE)
-        proto_dark.set_from_row(MARIO_PALETTE)
-    elif overworld_ally.index in _RECRUIT_PALETTE:
-        # Non-Mario protagonist: that character's palette commands go to
-        # MARIO_PALETTE; the Mario NPC's protagonist palette takes the
-        # protagonist character's vacated row.
-        light_id, dark_id, vacated_row = _RECRUIT_PALETTE[overworld_ally.index]
-        world.event_scripts.get_command_by_identifier(light_id, PaletteSetMorphs).set_row(MARIO_PALETTE)
-        world.event_scripts.get_command_by_identifier(dark_id,  PaletteSet     ).set_from_row(MARIO_PALETTE)
-        proto_light.set_row(vacated_row)
-        proto_dark.set_from_row(vacated_row)
+    # script_3951 (R375 ending credits) per-NPC palette-row swap is handled
+    # in renders.py via _apply_r375_protagonist_palette_rows, called from
+    # apply_ending_characters.
 
     # Set palettes that change when the protagonist changes.
     if ally.index == 2: # bowser shifts a lot of stuff...

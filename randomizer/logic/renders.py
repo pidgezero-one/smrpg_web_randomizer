@@ -17,6 +17,17 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
     A_WalkNortheastPixels,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import (
+    MARIO_PALETTE,
+    NPC_PALETTE_ROW_1,
+    NPC_PALETTE_ROW_2,
+    NPC_PALETTE_ROW_3,
+    NPC_PALETTE_ROW_4,
+    NPC_PALETTE_ROW_6,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.palette_row import (
+    PaletteRow,
+)
 
 from randomizer.progression.prizes import (
     BowserRecruitmentPrize,
@@ -1674,6 +1685,58 @@ def _set_ending_palette_pair(
     ).set_palette_set_starts_at(_ending_dark_palette_for_prize(prize))
 
 
+# script_3951 (R375 ending credits) per-NPC palette command identifiers and
+# their default palette rows when no protagonist consideration applies.
+# NPC slot order in the room: Mario=NPC_0, Peach=NPC_1, Mallow=NPC_2,
+# Geno=NPC_3, Bowser=NPC_5 (NPC_4 = Geno-redemption stays at NPC_PALETTE_ROW_5
+# and is unaffected by these commands). Each tuple is
+# (overworld-character class, light morph id, dark set id, default row).
+_R375_PROTAGONIST_PALETTE_PAIRS: list[
+    tuple[type[CharacterPrize], str, str, PaletteRow]
+] = [
+    (MarioRecruitmentPrize,
+     "ending_protagonist_palette",       "ending_protagonist_palette_dark",       NPC_PALETTE_ROW_1),
+    (ToadstoolRecruitmentPrize,
+     "ending_marrymore_char_palette",    "ending_marrymore_char_palette_dark",    NPC_PALETTE_ROW_2),
+    (MallowRecruitmentPrize,
+     "ending_mushroom_way_char_palette", "ending_mushroom_way_char_palette_dark", NPC_PALETTE_ROW_3),
+    (GenoRecruitmentPrize,
+     "ending_forest_maze_char_palette",  "ending_forest_character_dark",          NPC_PALETTE_ROW_4),
+    (BowserRecruitmentPrize,
+     "ending_inner_mines_char_palette",  "ending_inner_mines_palette_dark",       NPC_PALETTE_ROW_6),
+]
+
+
+def _apply_r375_protagonist_palette_rows(world: GameWorld) -> None:
+    """Retarget script_3951's per-NPC PaletteSet/PaletteSetMorphs commands so
+    that the overworld protagonist's NPC reads from MARIO_PALETTE and every
+    other NPC whose default row is higher than the protagonist's shifts down
+    one row to fill the vacated slot. NPCs with default rows lower than or
+    equal to the protagonist's keep their default row.
+
+    Driven by `world.overworld_character` (always — independent of how the
+    cutscene-role substitutions resolved).
+    """
+    proto = world.overworld_character
+    proto_default_row = next(
+        row for cls, _, _, row in _R375_PROTAGONIST_PALETTE_PAIRS
+        if isinstance(proto, cls)
+    )
+    for cls, light_id, dark_id, default_row in _R375_PROTAGONIST_PALETTE_PAIRS:
+        if isinstance(proto, cls):
+            new_row: PaletteRow = MARIO_PALETTE
+        elif int(default_row) > int(proto_default_row):
+            new_row = PaletteRow(int(default_row) - 1)
+        else:
+            new_row = default_row
+        world.event_scripts.get_command_by_identifier(
+            light_id, PaletteSetMorphs
+        ).set_row(new_row)
+        dark_cmd = world.event_scripts.get_command_by_identifier(dark_id, PaletteSet)
+        dark_cmd.set_from_row(new_row)
+        dark_cmd.set_to_row(new_row)
+
+
 def apply_ending_characters(
     world: GameWorld,
     *,
@@ -1789,6 +1852,8 @@ def apply_ending_characters(
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_3, p3)
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_4, p4)
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_5, p5)
+
+    _apply_r375_protagonist_palette_rows(world)
 
     # R496 ending cutscene role-swap path is disabled by default. With Mario at
     # NPC_19 and target=MARIO references hardcoded to target=NPC_19 in
