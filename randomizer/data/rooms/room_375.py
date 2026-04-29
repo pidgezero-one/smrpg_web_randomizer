@@ -12,7 +12,7 @@ from ..variables.event_script_names import *
 from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
-        ally_sprite_buffer_size=0,
+        ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
         buffers = [

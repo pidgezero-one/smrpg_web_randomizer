@@ -1722,8 +1722,18 @@ class GameWorld:
         # Partition + palette-row fixups must run BEFORE event scripts render —
         # the fixup mutates DarkenLayersExceptPaletteRows commands in event scripts,
         # so any post-render mutation would be lost.
-        for r in self.rooms._rooms:
-            if r is not None and isinstance(r, Room):
+        # Ending cutscene rooms (R496/R088/R375) keep a static partition because
+        # the protagonist is rendered through a Mario NPC slot at NPC_0/NPC_19
+        # rather than the ally buffer; allowing update_partition_by_protagonist
+        # to grow ally_buffer (e.g. to 2 for Bowser) would shift palette rows
+        # the ending cutscene scripts have hardcoded references to.
+        _STATIC_PARTITION_ROOM_IDS = frozenset({
+            496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE
+            88,   # R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION
+            375,  # R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY
+        })
+        for room_id, r in enumerate(self.rooms._rooms):
+            if r is not None and isinstance(r, Room) and room_id not in _STATIC_PARTITION_ROOM_IDS:
                 r.update_partition_by_protagonist(self)
 
         _shift_palette_row_masks_for_ally_buffer_growth(self)
