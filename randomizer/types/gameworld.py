@@ -1738,8 +1738,8 @@ class GameWorld:
             441,
             486,
             496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE
+            505,
             506,
-            595,
         })
         for room_id, r in enumerate(self.rooms._rooms):
             if r is not None and isinstance(r, Room) and room_id not in _STATIC_PARTITION_ROOM_IDS:
