@@ -45,13 +45,13 @@ script = EventScript([
 	SetAsyncActionScript(NPC_7, A0015_DO_NOTHING, identifier="EVENT_1422_set_action_script_8"),
 	SetAsyncActionScript(NPC_8, A0015_DO_NOTHING),
 	ActionQueueSync(target=NPC_7, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_TransferToXYZF(x=13, y=28, z=12, direction=EAST),
 		A_FaceSoutheast(),
 		A_ReturnQueue()
 	]),
 	ActionQueueSync(target=NPC_8, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_TransferToXYZF(x=13, y=28, z=14, direction=EAST),
 		A_FaceSoutheast(),
 		A_ReturnQueue()
@@ -67,7 +67,7 @@ script = EventScript([
 	FreezeAllNPCsUntilReturn(identifier="EVENT_1422_freeze_all_npcs_until_return_16"),
 	ActionQueueSync(target=NPC_7, subscript=[
 		A_FloatingOn(),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetPriority(3),
 		A_SetVRAMPriority(NORMAL_PRIORITY),
 		A_TransferToXYZF(x=14, y=28, z=6, direction=EAST),

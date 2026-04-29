@@ -41,7 +41,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	PauseActionScript(MEM_70A8),
 	ActionQueueAsync(target=MEM_70A8, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_VisibilityOff(),
 		A_TransferToXYZF(x=11, y=18, z=4, direction=EAST),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True)

@@ -65,44 +65,90 @@ class Room(RoomBase):
             return
 
         ally = world.overworld_character.ally
-        m = world.overworld_character.character_model
 
-        # Base animation sequences to always check
-        vram_values = [
-            m.min_vram_from_sequence(world, a[0], a[1])
-            for a in [
-                (0, 0),
-                (1, 0),
-                (0, 1),
-                (1, 1),
-                (2, 1),
-                (3, 1),
-                (4, 1),
-                (5, 1),
-                (6, 1),
-                (7, 1),
-                (8, 1),
-                (9, 1),
-            ]
+        # The protagonist sprite the engine actually renders is NOT the
+        # character_model.base.sprite_id. It's sprite 0 for Mario protagonist or
+        # sprite 31 (post-remap) for any other protagonist. Offsets in
+        # `_sprites_primary` are defined relative to that base, but only the first
+        # 7 sprites in that range (offsets 0-6) actually belong to the protagonist
+        # — offsets >= 7 reference unrelated NPC sprites and shouldn't contribute
+        # to partition sizing. See `utils/npcs.py:get_protagonist_sprite`.
+        from ..utils.npcs import (
+            PROTAGONIST_BASE_SPRITE_ID,
+            PROTAGONIST_SPRITE_RANGE,
+            get_protagonist_sprite,
+            min_vram_from_sequence_for_sprite,
+            min_vram_from_mold_for_sprite,
+        )
+        if ally.index not in PROTAGONIST_BASE_SPRITE_ID:
+            return
+        protagonist_base = PROTAGONIST_BASE_SPRITE_ID[ally.index]
+
+        # Base animation sequences to always check (offset, sequence_id, label).
+        DEFAULT_CHECKS = [
+            (0, 0, "base seq 0"),
+            (0, 1, "base seq 1"),
+            (1, 0, "+1 seq 0"),
+            (1, 1, "+1 seq 1"),
+            (1, 2, "+1 seq 2"),
+            (1, 3, "+1 seq 3"),
+            (1, 4, "+1 seq 4"),
+            (1, 5, "+1 seq 5"),
+            (1, 6, "+1 seq 6"),
+            (1, 7, "+1 seq 7"),
+            (1, 8, "+1 seq 8"),
+            (1, 9, "+1 seq 9"),
         ]
 
-        # Check extra sprite actions required by this room
+        labelled_values: list[tuple[int, str]] = []
+        for offset, seq_id, label in DEFAULT_CHECKS:
+            sprite = get_protagonist_sprite(world, ally.index, offset)
+            if sprite is None:
+                continue
+            sid = protagonist_base + offset
+            try:
+                v = min_vram_from_sequence_for_sprite(world, sid, seq_id)
+            except (IndexError, AssertionError):
+                continue
+            labelled_values.append((v, f"default {label} (sprite {sid})"))
+
+        # Extra sprite actions — skip those whose offset falls outside the protagonist
+        # sprite range (offset >= 7), since those reference unrelated NPC sprites
+        # rather than protagonist animations.
         for state in self.extra_sprite_actions:
             if state not in ally._sprites_primary:
                 continue
-            tup = ally._sprites_primary[state]
-            # Validate the sprite reference before using it
-            sprite = world.get_sprite(m.base.sprite_id + tup[1])
+            prop_id, offset, is_mold = ally._sprites_primary[state]
+            if offset >= PROTAGONIST_SPRITE_RANGE:
+                continue
+            sprite = get_protagonist_sprite(world, ally.index, offset)
+            if sprite is None:
+                continue
+            sid = protagonist_base + offset
             props = sprite.animation.properties
-            if tup[2]:  # is_mold
-                if tup[0] < len(props.molds):
-                    vram_values.append(m.min_vram_from_mold(world, tup[0], tup[1]))
+            if is_mold:
+                if prop_id < len(props.molds):
+                    v = min_vram_from_mold_for_sprite(world, sid, prop_id)
+                    labelled_values.append((v, f"extra {state.name} mold {prop_id} sprite {sid}"))
             else:
-                if tup[0] < len(props.sequences):
-                    vram_values.append(m.min_vram_from_sequence(world, tup[0], tup[1]))
+                if prop_id < len(props.sequences):
+                    v = min_vram_from_sequence_for_sprite(world, sid, prop_id)
+                    labelled_values.append((v, f"extra {state.name} seq {prop_id} sprite {sid}"))
 
-        min_vram = max(vram_values) + 1
-        self.partition.set_ally_sprite_buffer_size(max(min_vram, self.partition.ally_sprite_buffer_size))
+        if not labelled_values:
+            return
+        max_v, max_label = max(labelled_values, key=lambda x: x[0])
+        min_vram = max_v + 1
+        new_buffer_size = max(min_vram, self.partition.ally_sprite_buffer_size)
+        if new_buffer_size > 3:
+            raise ValueError(
+                f"Room produced ally_sprite_buffer_size={new_buffer_size} (>3 — not representable in 2-bit partition field). "
+                f"Worst contributor: {max_label} with min_vram_from={max_v} subtile-rows. "
+                f"Protagonist={ally.index} (rendered base sprite={protagonist_base}). "
+                f"This indicates either a sprite-data bug (mold has too many subtiles) or that this character "
+                f"genuinely cannot fit this room's animation set."
+            )
+        self.partition.set_ally_sprite_buffer_size(new_buffer_size)
 
         # Shift glowing save point NPC index if buffer size increased from original
         buffer_increase = self.partition.ally_sprite_buffer_size - self.partition.original_ally_sprite_buffer_size

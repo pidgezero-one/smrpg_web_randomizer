@@ -71,11 +71,11 @@ script = EventScript([
 	JmpToSubroutine(["EVENT_3480_action_queue_40"]),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x80, 0x02, 0xEC, 0xFF])),
 		A_SetWalkingSpeed(SLOW),
 		A_WalkSouthwestSteps(2),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True)
 	]),
 	SetSyncActionScript(MARIO, A0466_MIDAS_RIVER_TUNNEL_LEAVE),

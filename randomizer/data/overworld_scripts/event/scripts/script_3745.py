@@ -55,14 +55,14 @@ script = EventScript([
 		A_SetSpriteSequence(index=10, sprite_offset=3, is_sequence=True, looping=True),
 		A_ShadowOn(),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x00, 0x08, 0x00]))
 	]),
 	FadeInFromBlack(sync=True),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_Pause(1, identifier="EVENT_3745_action_queue_9_SUBSCRIPT_pause_0"),
 		A_JmpIfMarioInAir(["EVENT_3745_action_queue_9_SUBSCRIPT_pause_0"]),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_FloatingOn()
 	]),
@@ -76,14 +76,14 @@ script = EventScript([
 		A_TransferToXYZF(x=27, y=91, z=16, direction=SOUTHEAST),
 		A_SetSpriteSequence(index=30, sprite_offset=2, is_mold=True, is_sequence=True, looping=True),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x00, 0x0C, 0x00]))
 	]),
 	FadeInFromBlack(sync=True),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_Pause(1, identifier="EVENT_3745_action_queue_17_SUBSCRIPT_pause_0"),
 		A_JmpIfMarioInAir(["EVENT_3745_action_queue_17_SUBSCRIPT_pause_0"]),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_FloatingOn(),
 		A_ShadowOn()
@@ -99,7 +99,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=0, sprite_offset=3, is_sequence=True, looping=True),
 		A_VisibilityOn(),
 		A_ShadowOn(),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x00, 0x0E, 0x00]))
 	]),
 	FadeInFromBlack(sync=True),
@@ -120,7 +120,7 @@ script = EventScript([
 		A_Pause(1, identifier="EVENT_3745_action_queue_32_SUBSCRIPT_pause_0"),
 		A_JmpIfMarioInAir(["EVENT_3745_action_queue_32_SUBSCRIPT_pause_0"]),
 		A_StopSound(),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_JumpToHeight(height=108, silent=True)
 	]),
 	SetSyncActionScript(NPC_0, A0976_CLOUD_LANDING_BLUE_PUFF_SPAWNER),

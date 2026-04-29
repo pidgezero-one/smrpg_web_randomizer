@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_ToggleSubroutineSlots(mask=0x04),
 	A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x06, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80])),
 	A_SetSequenceSpeed(FAST, identifier="ACTION_532_set_animation_speed_2"),
 	A_SetWalkingSpeed(NORMAL),

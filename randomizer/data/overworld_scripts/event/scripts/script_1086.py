@@ -39,10 +39,10 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNortheast(),
 		A_JumpToHeight(64),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0x02, 0x00, 0xFF])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0200, slot_27_x=0xFF00),
 		A_Pause(16),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetSpriteSequence(index=14, sprite_offset=1, is_sequence=True, looping=True, mirror_sprite=True)
@@ -56,10 +56,10 @@ script = EventScript([
 		A_FaceNortheast(),
 		A_Pause(10),
 		A_JumpToHeight(64),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0x02, 0x00, 0xFF])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0200, slot_27_x=0xFF00),
 		A_Pause(16),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return()
 ])

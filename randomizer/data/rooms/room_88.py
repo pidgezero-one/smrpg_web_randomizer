@@ -136,7 +136,7 @@ room = Room(
             y=93,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
+            direction=SOUTHEAST,
             face_on_trigger=True,
             cant_enter_doors=False,
             byte2_bit5=False,
@@ -156,7 +156,8 @@ room = Room(
             cannot_clone=True,
             priority_0=False,
             priority_1=False,
-            priority_2=True),
+            priority_2=True,
+            directions=VramStore.DIR2_SWSE),
         RegularNPC( # 4
             npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -241,7 +242,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.LOOK_AT_DOLL,

@@ -71,11 +71,11 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_ShadowOn(),
-		A_UnknownCommand(bytearray([0x20, 0x07])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0xFF, 0x00, 0xFF])),
+		A_ToggleSubroutineSlots(mask=0x07),
+		A_SetSubroutineXTargets(slot_26_x=0xFF00, slot_27_x=0xFF00),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x0C, 0xF0, 0xFF])),
 		A_Pause(32),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Pause(24),
 	FadeOutToBlack(sync=False, duration=16),

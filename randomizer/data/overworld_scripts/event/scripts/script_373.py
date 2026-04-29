@@ -75,10 +75,10 @@ script = EventScript([
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_PlaySound(sound=SO086_BIG_BOUNCE, channel=6),
 		A_SetWalkingSpeed(SLOW),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x0A, 0xE0, 0xFF])),
 		A_Walk1StepSouthwest(),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_TransferToXYZF(x=18, y=26, z=20, direction=EAST),
 		A_Pause(120),
 		A_FloatingOn(),
@@ -289,22 +289,22 @@ script = EventScript([
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_FloatingOff(),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x08, 0x84, 0xFF])),
 		A_SetWalkingSpeed(SLOW),
 		A_Walk1StepSoutheast(),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueSync(target=NPC_5, subscript=[
 		A_Pause(20),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_FloatingOff(),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x08, 0x84, 0xFF])),
 		A_SetWalkingSpeed(SLOW),
 		A_Walk1StepNortheast(),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueSync(target=NPC_6, subscript=[
 		A_Pause(20),
@@ -313,35 +313,35 @@ script = EventScript([
 		A_FloatingOff(),
 		A_SetPriority(3),
 		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x08, 0x84, 0xFF])),
 		A_SetWalkingSpeed(SLOW),
 		A_Walk1StepNortheast(),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueSync(target=NPC_7, subscript=[
 		A_Pause(20),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_FloatingOff(),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x08, 0x84, 0xFF])),
 		A_SetWalkingSpeed(SLOW),
 		A_Walk1StepNorthwest(),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_FloatingOff(),
 		A_Pause(20),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x40, 0x08, 0x84, 0xFF])),
 		A_SetWalkingSpeed(SLOW),
 		A_WalkSouthwestPixels(8),
 		A_SetWalkingSpeed(NORMAL),
 		A_Walk1StepSouthwest(),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	PlaySound(sound=SO000_SILENCE, channel=6),
 	RememberLastObject(),

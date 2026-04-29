@@ -279,35 +279,35 @@ script = EventScript([
 	PauseScriptUntilEffectDone(),
 	ActionQueueSync(target=LAYER_1, subscript=[
 		A_SetWalkingSpeed(SLOW),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80])),
 		A_WalkEastSteps(7),
 		A_WalkEastPixels(16),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetWalkingSpeed(SLOW),
 		A_FloatingOff(),
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_SetPriority(3),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80])),
 		A_WalkWestSteps(7),
 		A_WalkWestPixels(16),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Pause(120),
 	ActionQueueSync(target=LAYER_1, subscript=[
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80])),
 		A_WalkEastSteps(6),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80])),
 		A_WalkWestSteps(6),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	FadeOutToBlack(sync=True, duration=90),
 	PauseScriptUntilEffectDone(),

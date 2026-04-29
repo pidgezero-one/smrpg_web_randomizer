@@ -129,24 +129,24 @@ script = EventScript([
 	ActionQueueSync(target=MARIO, subscript=[
 		A_SetSpriteSequence(index=3, sprite_offset=1, is_sequence=True, looping=True),
 		A_PlaySound(sound=SO004_JUMP, channel=4),
-		A_UnknownCommand(bytearray([0x20, 0x07])),
-		A_UnknownCommand(bytearray([0x24, 0xD0, 0xFD, 0xB0, 0x01])),
+		A_ToggleSubroutineSlots(mask=0x07),
+		A_SetSubroutineXTargets(slot_26_x=0xFDD0, slot_27_x=0x01B0),
 		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0xA0, 0xFF])),
 		A_Pause(27),
 		A_PlaySound(sound=SO019_LONG_FALL, channel=4),
-		A_UnknownCommand(bytearray([0x24, 0x40, 0x00, 0x00, 0x00])),
+		A_SetSubroutineXTargets(slot_26_x=0x0040, slot_27_x=0x0000),
 		A_Pause(16),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0x00, 0x00, 0x00])),
+		A_SetSubroutineXTargets(slot_26_x=0x0000, slot_27_x=0x0000),
 		A_Pause(1),
 		A_SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
 		A_Pause(1),
 		A_SetPriority(1),
 		A_Pause(6),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
 		A_Pause(37),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x00, 0xD0, 0xFF])),
 		A_Pause(59)
 	]),

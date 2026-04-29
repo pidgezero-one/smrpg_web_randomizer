@@ -26,7 +26,7 @@ script = ActionScript([
 	A_SummonObjectAt70A8ToCurrentLevel(),
 	A_ReturnAll(),
 	A_Pause(64),
-	A_BPL262728(),
+	A_KillAllSubroutineSlots(),
 	A_VisibilityOff(),
 	A_ReturnAll(),
 	A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),

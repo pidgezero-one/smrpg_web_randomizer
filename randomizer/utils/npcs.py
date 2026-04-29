@@ -39,6 +39,79 @@ def min_vram_from_sequence_for_sprite(world: "GameWorld", sprite_id: int, sequen
     return min_vram
 
 
+def min_vram_from_mold_for_sprite(world: "GameWorld", sprite_id: int, mold_id: int) -> int:
+    """Compute min_vram_from_mold for a given sprite ID and mold ID.
+
+    Standalone version of NPC.min_vram_from_mold — works from a sprite_id
+    rather than requiring an NPC instance. Returns 0 for gridplane molds
+    or if mold_id is out of range.
+    """
+    sprite = world.get_sprite(sprite_id)
+    if mold_id >= len(sprite.animation.properties.molds):
+        return 0
+    mold = sprite.animation.properties.molds[mold_id]
+    if mold.gridplane:
+        return 0
+    truthy_subtiles = 0
+    for t in mold.tiles:
+        if isinstance(t, Tile):
+            truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
+    return ceil(max(0, truthy_subtiles - 16) / 16)
+
+
+# Per-character protagonist sprite base IDs.
+#
+# When the engine renders the active protagonist, it uses:
+#   - Mario protagonist (ally.index=0): sprite 0 (SPR0000_MARIO_WALKING_DOWN_LEFT — the
+#     real protagonist sprite, NOT the Mario clone monster sprite at SPR0409 used by
+#     MarioCharacterNPC._base).
+#   - Any non-Mario protagonist (ally.index 1-4): sprite 31 (SPR0031_ALT_PROTAGONIST_1)
+#     after the per-character protagonist remap fills sprites 31-37 with that
+#     character's protagonist data via apply.py / cosmetics.py.
+#
+# This is what `update_partition_by_protagonist` and `_calculate_ally_buffer_size` should
+# use for VRAM calculations — NOT character_model.base.sprite_id, which points at the
+# per-character non-protagonist sprite (sprite 7 for Toadstool, sprite 13 for Bowser, etc.)
+# or at the Mario clone monster sprite (sprite 409). Those are placeholders for when the
+# character appears as an NPC, not for partition sizing.
+PROTAGONIST_BASE_SPRITE_ID: dict[int, int] = {
+    0: 0,    # Mario   — SPR0000_MARIO_WALKING_DOWN_LEFT
+    1: 31,   # Toadstool — SPR0031_ALT_PROTAGONIST_1 (post-remap with TOADSTOOL_962-968)
+    2: 31,   # Bowser    — SPR0031_ALT_PROTAGONIST_1 (post-remap with BOWSER_969-975)
+    3: 31,   # Geno      — SPR0031_ALT_PROTAGONIST_1 (post-remap with GENO_983-989)
+    4: 31,   # Mallow    — SPR0031_ALT_PROTAGONIST_1 (post-remap with MALLOW_976-982)
+}
+
+# The protagonist sprite range is 7 sprites (offsets 0-6 from the base). Offsets >= 7
+# in the per-ally `_sprites_primary` dicts reference NON-protagonist sprites — typically
+# extended NPC sprites that the engine references in specific cutscene contexts, not
+# protagonist animations. They should NOT contribute to partition VRAM sizing because
+# they aren't loaded into the protagonist sprite slot.
+PROTAGONIST_SPRITE_RANGE = 7  # offsets 0..6 valid
+
+
+def get_protagonist_sprite(world: "GameWorld", ally_index: int, offset: int):
+    """Return the sprite at `protagonist_base + offset`, but only if it's actually
+    within the protagonist sprite range. Returns None for offsets outside the range
+    (those refer to unrelated sprites that shouldn't contribute to partition calc).
+
+    This goes through `world.get_sprite()`, so for non-Mario protagonists it will
+    return the post-remap protagonist sprite — but ONLY if cosmetics.py has already
+    written sprites 31-37 by the time this is called. Callers that need to run
+    before that remap should pass through this helper *after* the remap, or the
+    sprite data will be the default empty placeholder.
+    """
+    if offset >= PROTAGONIST_SPRITE_RANGE:
+        return None
+    if ally_index not in PROTAGONIST_BASE_SPRITE_ID:
+        return None
+    base = PROTAGONIST_BASE_SPRITE_ID[ally_index]
+    try:
+        return world.get_sprite(base + offset)
+    except (IndexError, AssertionError):
+        return None
+
+
 def is_swse_only(sprite: CompleteSprite):
     sequences = sprite.animation.properties.sequences
     if len(sequences) < 2:

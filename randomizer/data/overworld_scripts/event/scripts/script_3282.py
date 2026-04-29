@@ -81,7 +81,7 @@ script = EventScript([
 	RestoreAllFP(),
 	SetBit(SHIP_LIBERATED),
     RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
-	UnknownCommand(bytearray([0xFD, 0x8E, 0x72, 0x00, 0x28])),
+	DarkenLayersExceptPaletteRows(fade_depth=50, duration_frames=1, preserve_rows=[NPC_PALETTE_ROW_3, NPC_PALETTE_ROW_5]),
 	Pause(30),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_WalkNorthwestSteps(6),

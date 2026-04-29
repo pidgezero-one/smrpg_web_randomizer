@@ -57,7 +57,7 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_Pause(1, identifier="EVENT_3766_action_queue_10_SUBSCRIPT_pause_0"),
 		A_JmpIfMarioInAir(["EVENT_3766_action_queue_10_SUBSCRIPT_pause_0"]),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_JumpToHeight(height=80, silent=True)
 	]),
 	SetSyncActionScript(NPC_0, A0976_CLOUD_LANDING_BLUE_PUFF_SPAWNER),

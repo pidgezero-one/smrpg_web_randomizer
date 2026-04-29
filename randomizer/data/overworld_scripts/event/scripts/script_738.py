@@ -126,7 +126,7 @@ script = EventScript([
 	Pause(1),
 	PauseActionScript(NPC_0),
 	ActionQueueAsync(target=NPC_0, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOn(),
 		A_Pause(1, identifier="EVENT_738_action_queue_24_SUBSCRIPT_pause_3"),
@@ -144,7 +144,7 @@ script = EventScript([
 	Pause(1),
 	PauseActionScript(NPC_7),
 	ActionQueueAsync(target=NPC_7, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOn(),
 		A_Pause(1, identifier="EVENT_738_action_queue_31_SUBSCRIPT_pause_3"),
@@ -162,7 +162,7 @@ script = EventScript([
 	Pause(1),
 	PauseActionScript(NPC_4),
 	ActionQueueAsync(target=NPC_4, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOn(),
 		A_Pause(1, identifier="EVENT_738_action_queue_38_SUBSCRIPT_pause_3"),
@@ -255,7 +255,7 @@ script = EventScript([
 	PauseActionScript(NPC_8),
 	PauseActionScript(NPC_2),
 	ActionQueueSync(target=NPC_0, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOn(),
 		A_JumpToHeight(height=112, silent=True),
@@ -265,7 +265,7 @@ script = EventScript([
 		A_WalkNortheastPixels(4)
 	]),
 	ActionQueueSync(target=NPC_2, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOn(),
 		A_JumpToHeight(height=112, silent=True),
@@ -275,7 +275,7 @@ script = EventScript([
 		A_WalkSouthwestPixels(4)
 	]),
 	ActionQueueSync(target=NPC_4, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOn(),
 		A_JumpToHeight(height=112, silent=True),
@@ -285,7 +285,7 @@ script = EventScript([
 		A_WalkSoutheastPixels(4)
 	]),
 	ActionQueueSync(target=NPC_7, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOn(),
 		A_JumpToHeight(height=112, silent=True),
@@ -296,7 +296,7 @@ script = EventScript([
 		A_WalkSouthPixels(4)
 	]),
 	ActionQueueSync(target=NPC_8, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOn(),
 		A_JumpToHeight(height=112, silent=True),

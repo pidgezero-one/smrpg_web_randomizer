@@ -23,7 +23,7 @@ script = ActionScript([
 	A_Pause(3),
 	A_EndLoop(),
 	A_ShadowOff(),
-	A_UnknownCommand(bytearray([0x20, 0x05])),
+	A_ToggleSubroutineSlots(mask=0x05),
 	A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80])),
 	A_WalkNorthwestSteps(14, identifier="ACTION_473_shift_northwest_steps_9"),
 	A_Walk1StepNortheast(),

@@ -129,13 +129,13 @@ script = EventScript([
 		A_VisibilityOn(),
 		A_Pause(2),
 		A_EndLoop(),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x02, 0xF0, 0xFF])),
 		A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
 		A_WalkSouthwestSteps(2),
 		A_SetWalkingSpeed(NORMAL),
 		A_WalkSouthSteps(3),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_FixedFCoordOff()
 	], identifier="EVENT_3480_action_queue_32"),
 	Jmp(["EVENT_3480_set_action_script_36"]),
@@ -151,12 +151,12 @@ script = EventScript([
 		A_EndLoop(),
 		A_SetWalkingSpeed(NORMAL),
 		A_WalkSouthSteps(6),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x70, 0x02, 0xF5, 0xFF])),
 		A_PlaySound(sound=SO010_TRAMPOLINE, channel=4),
 		A_WalkNortheastSteps(6),
 		A_Walk1StepNorth(),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	], identifier="EVENT_3480_action_queue_34"),
 	ActionQueueSync(target=NPC_16, subscript=[
 		A_TransferToObjectXY(NPC_1),

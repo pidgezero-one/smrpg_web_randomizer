@@ -36,7 +36,7 @@ from ....variables.event_palette_names import *
 MARRYMORE_CHARACTER = NPC_19
 MWAY_CHARACTER = NPC_20
 FOREST_CHARACTER = NPC_21
-MINES_CHARACTER = NPC_23
+MINES_CHARACTER = NPC_22
 
 script = EventScript([
 	FreezeCamera(),
@@ -85,13 +85,14 @@ script = EventScript([
 	]),
 	RememberLastObject(),
 	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
+	# PaletteSet(palette_set_starts_at=EPAL0086_GENO_ENDING, from_row=NPC_PALETTE_ROW_1),
 	FadeInFromColour(duration=90, colour=WHITE),
 	PauseScriptUntilEffectDone(),
 	Pause(120),
 	PauseActionScript(NPC_7),
 	ActionQueueSync(target=NPC_7, subscript=[
 		A_ShadowOn(),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_ShiftZUpPixels(4),
 		A_SetWalkingSpeed(FAST),
 		A_ShiftZUpPixels(8),
@@ -184,7 +185,7 @@ script = EventScript([
 	Pause(60),
 	PauseActionScript(NPC_7),
 	ActionQueueAsync(target=NPC_7, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetWalkingSpeed(VERY_SLOW),
 		A_BounceToXYWithHeight(x=6, y=50, height=10),
 		A_SetSpriteSequence(index=0, is_sequence=True, looping=True)
@@ -200,10 +201,10 @@ script = EventScript([
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0, 1, 2])
 	]),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0xF0, 0xFF, 0xC0, 0xFF])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0xFFF0, slot_27_x=0xFFC0),
 		A_Pause(64),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(60),
@@ -216,10 +217,10 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
 		A_SequenceLoopingOn(),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x80, 0x00, 0xE0, 0xFF])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0080, slot_27_x=0xFFE0),
 		A_Pause(140),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SequenceLoopingOff(),
 		A_FaceNorthwest()
 	]),
@@ -228,15 +229,15 @@ script = EventScript([
 		A_SetSequenceSpeed(FAST),
 		A_FixedFCoordOn(),
 		A_SequenceLoopingOn(),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x30, 0x00, 0x80, 0xFF])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0030, slot_27_x=0xFF80),
 		A_Pause(64),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_FixedFCoordOff(),
 		A_SequenceLoopingOff(),
 		A_FaceSoutheast()
 	]),
-	UnknownCommand(bytearray([0xFD, 0x8E, 0x16, 0x0A, 0x0B])),
+	DarkenLayersExceptPaletteRows(fade_depth=22, duration_frames=40, preserve_rows=[MARIO_PALETTE, NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_3]),
 	RememberLastObject(),
 	UnsyncActionScript(NPC_0),
 	ActionQueueAsync(target=NPC_7, subscript=[
@@ -246,7 +247,7 @@ script = EventScript([
 	Pause(120),
 	PauseActionScript(NPC_7),
 	StartSyncEmbeddedActionScript(target=NPC_7, prefix=0xF1, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetWalkingSpeed(NORMAL),
 		A_ShiftZUpPixels(7),
 		A_SetWalkingSpeed(FAST),
@@ -272,7 +273,7 @@ script = EventScript([
 	Pause(120),
 	PauseActionScript(NPC_7),
 	StartAsyncEmbeddedActionScript(target=NPC_7, prefix=0xF1, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSequenceSpeed(FAST),
 		A_Pause(30),
 		A_SetSequenceSpeed(VERY_FAST),
@@ -308,13 +309,13 @@ script = EventScript([
 		A_AddZCoord1Step()
 	]),
 	Pause(100),
-	UnknownCommand(bytearray([0xFD, 0x8E, 0x00, 0x0A, 0x0A])),
+	DarkenLayersExceptPaletteRows(fade_depth=0, duration_frames=40, preserve_rows=[NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_3]),
 	RememberLastObject(),
 	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
 	Pause(98),
 	PauseActionScript(NPC_7),
 	ActionQueueSync(target=NPC_7, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetWalkingSpeed(FASTEST),
 		A_ShiftZUpSteps(8)
 	]),
@@ -327,7 +328,7 @@ script = EventScript([
 	]),
 	RememberLastObject(),
 	RunStarPieceSequence(7),
-	UnknownCommand(bytearray([0xFD, 0x8E, 0x72, 0x00, 0x00])),
+	DarkenLayersExceptPaletteRows(fade_depth=50, duration_frames=1, preserve_rows=[]),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ResetProperties(),
 		A_TransferXYZFPixels(x=0, y=16, z=0, direction=EAST)
@@ -346,10 +347,10 @@ script = EventScript([
 	ActionQueueSync(target=FOREST_CHARACTER, subscript=[
 		A_SetSequenceSpeed(NORMAL),
 		A_SequenceLoopingOn(),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x80, 0x00, 0x80, 0xFF])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0080, slot_27_x=0xFF80),
 		A_Pause(88),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SequenceLoopingOff()
 	]),
 	Clear0158Bit7Offset(0x0158, True),
@@ -570,10 +571,10 @@ script = EventScript([
 		A_TransferXYZFPixels(x=250, y=12, z=0, direction=EAST),
 		A_SetSequenceSpeed(FAST),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0xFA, 0x00, 0xFA])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0xFA00, slot_27_x=0xFA00),
 		A_Pause(32),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_VisibilityOff()
 	], identifier="EVENT_3885_action_queue_179"),
 	Pause(1, identifier="EVENT_3885_pause_180"),
@@ -585,10 +586,10 @@ script = EventScript([
 		A_TransferXYZFPixels(x=6, y=244, z=0, direction=EAST),
 		A_SetSequenceSpeed(FAST),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x20, 0xFC, 0xE0, 0xFB])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0xFC20, slot_27_x=0xFBE0),
 		A_Pause(32),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_VisibilityOff()
 	], identifier="EVENT_3885_action_queue_183"),
 	Pause(1, identifier="EVENT_3885_pause_184"),
@@ -602,10 +603,10 @@ script = EventScript([
 		A_VisibilityOn(),
 		A_SetWalkingSpeed(VERY_FAST),
 		A_WalkNortheastPixels(8),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0xE0, 0x05, 0xE0, 0xF8])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x05E0, slot_27_x=0xF8E0),
 		A_Pause(32),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_VisibilityOff()
 	], identifier="EVENT_3885_action_queue_187"),
 	Pause(1, identifier="EVENT_3885_pause_188"),
@@ -615,10 +616,10 @@ script = EventScript([
 		A_TransferToXYZF(x=4, y=49, z=0, direction=EAST),
 		A_SetSequenceSpeed(FAST),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0xFE, 0x00, 0xF8])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0xFE00, slot_27_x=0xF800),
 		A_Pause(32),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_VisibilityOff()
 	], identifier="EVENT_3885_action_queue_191"),
 	Pause(1, identifier="EVENT_3885_pause_192"),
@@ -629,10 +630,10 @@ script = EventScript([
 		A_TransferXYZFPixels(x=232, y=4, z=0, direction=EAST),
 		A_SetSequenceSpeed(FAST),
 		A_VisibilityOn(),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0xFE, 0x00, 0xF8])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0xFE00, slot_27_x=0xF800),
 		A_Pause(32),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_VisibilityOff()
 	], identifier="EVENT_3885_action_queue_195"),
 	Pause(180),

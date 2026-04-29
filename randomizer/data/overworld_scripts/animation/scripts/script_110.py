@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_BPL262728(),
+	A_KillAllSubroutineSlots(),
 	A_VisibilityOff(),
 	A_TransferToXYZF(x=11, y=18, z=4, direction=EAST),
 	A_ClearSolidityBits(bit_4=True),
@@ -30,11 +30,11 @@ script = ActionScript([
 	A_ClearSolidityBits(cant_pass_walls=True),
 	A_StartLoopNTimes(6),
 	A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
-	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_ToggleSubroutineSlots(mask=0x04),
 	A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 	A_Walk1StepSouthwest(),
 	A_WalkSouthwestPixels(11),
-	A_BPL262728(),
+	A_KillAllSubroutineSlots(),
 	A_Pause(2),
 	A_EndLoop(),
 	A_SetSolidityBits(cant_pass_walls=True),
@@ -44,11 +44,11 @@ script = ActionScript([
 	A_WalkSouthwestPixels(14),
 	A_Pause(2),
 	A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
-	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_ToggleSubroutineSlots(mask=0x04),
 	A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 	A_Walk1StepSouthwest(),
 	A_WalkSouthwestPixels(11),
-	A_BPL262728(),
+	A_KillAllSubroutineSlots(),
 	A_WalkSouthwestPixels(8),
 	A_VisibilityOff(),
 	A_ReturnQueue()

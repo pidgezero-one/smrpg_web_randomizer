@@ -104,7 +104,7 @@ script = EventScript([
 		A_SetPriority(3),
 		A_SetWalkingSpeed(FAST),
 		A_WalkSouthwestSteps(19),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x01, 0x00, 0xE0, 0xFF])),
 		A_SetWalkingSpeed(NORMAL),
 		A_Walk1StepSouthwest(),
@@ -116,7 +116,7 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_Walk1StepSouthwest(),
 		A_FloatingOff(),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	RunEventAtReturn(E1650_MOLEVILLE_LIBERATED_EXTERIOR_LOADER_CONTD),
 	Return(),

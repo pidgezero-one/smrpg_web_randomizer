@@ -41,7 +41,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 7, ["EVENT_3092_a"], identifier="EVENT_3092_jmp_if_var_equals_const_4"),
 	Inc(STAR_PIECE_COUNTER),
 	PlayMusicAtCurrentVolume(M0024_GOTASTARPIECE_PART2, identifier="EVENT_3092_a"),
-	UnknownCommand(bytearray([0xFD, 0x8E, 0x80, 0x07, 0x01])),
+	DarkenLayersExceptPaletteRows(fade_depth=0, duration_frames=30, preserve_rows=[MARIO_PALETTE]),
 	PauseScriptUntilEffectDone(),
 	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 7, ["EVENT_3092_run_star_piece_sequence_29"]),
 	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_3092_run_star_piece_sequence_27"]),
@@ -64,7 +64,7 @@ script = EventScript([
 	RunStarPieceSequence(6, identifier="EVENT_3092_run_star_piece_sequence_27"),
 	Jmp(["EVENT_3092_db_30"]),
 	RunStarPieceSequence(7, identifier="EVENT_3092_run_star_piece_sequence_29"),
-	UnknownCommand(bytearray([0xFD, 0x8E, 0xB2, 0x07, 0x01]), identifier="EVENT_3092_db_30"),
+	DarkenLayersExceptPaletteRows(fade_depth=50, duration_frames=30, preserve_rows=[MARIO_PALETTE], identifier="EVENT_3092_db_30"),
 	PauseScriptUntilEffectDone(),
 	JmpToEvent(E3101_STAR_PIECE_HUNT_END_GAME),
 	Return(identifier="EVENT_3092_ret_33")

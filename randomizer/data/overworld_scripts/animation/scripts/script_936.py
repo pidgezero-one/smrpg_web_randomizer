@@ -20,7 +20,7 @@ script = ActionScript([
 	A_FixedFCoordOn(),
 	A_SequenceLoopingOn(),
 	A_SetPriority(3),
-	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_ToggleSubroutineSlots(mask=0x04),
 	A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80])),
 	A_SetWalkingSpeed(VERY_SLOW),
 	A_Set700CToPressedButton(),

@@ -54,11 +54,11 @@ script = ActionScript([
 	A_Jmp(["ACTION_942_pause_13"]),
 	A_Set700CToPressedButton(identifier="ACTION_942_set_700C_to_pressed_button_36"),
 	A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 21, ["ACTION_942_db_42"]),
-	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_ToggleSubroutineSlots(mask=0x04),
 	A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x80])),
 	A_Pause(1, identifier="ACTION_942_pause_40"),
 	A_Jmp(["ACTION_942_pause_40"]),
-	A_UnknownCommand(bytearray([0x20, 0x04]), identifier="ACTION_942_db_42"),
+	A_ToggleSubroutineSlots(mask=0x04, identifier="ACTION_942_db_42"),
 	A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x80])),
 	A_Pause(1, identifier="ACTION_942_pause_44"),
 	A_Jmp(["ACTION_942_pause_44"])

@@ -30,6 +30,9 @@ from randomizer.data.variables.sprite_palette_names import (
     SPAL379_ABXY_BUTTONS_FROM_BOWYER_S_BUTTON_LOCK,
 )
 from randomizer.utils.tower_access_scripts import AddToInventory
+from randomizer.logic.credits_palette_fix import (
+    shift_palette_row_masks_for_ally_buffer_growth as _shift_palette_row_masks_for_ally_buffer_growth,
+)
 
 from .flags import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
@@ -1716,6 +1719,15 @@ class GameWorld:
         # Render scripts and dialogs FIRST to reclaim unused space for animations
         # ========================================================================
 
+        # Partition + palette-row fixups must run BEFORE event scripts render —
+        # the fixup mutates DarkenLayersExceptPaletteRows commands in event scripts,
+        # so any post-render mutation would be lost.
+        for r in self.rooms._rooms:
+            if r is not None and isinstance(r, Room):
+                r.update_partition_by_protagonist(self)
+
+        _shift_palette_row_masks_for_ally_buffer_growth(self)
+
         # Event scripts patch
         # NOTE: render() returns pointer_table + script_content combined,
         # so we must write to pointer_table_start, not start
@@ -1815,10 +1827,6 @@ class GameWorld:
             patch.add_data(0x3E90AA, GENO_OVERWORLD)
         elif self.overworld_character.ally.index == 4:
             patch.add_data(0x3E90AA, MALLOW_OVERWORLD)
-
-        for r in self.rooms._rooms:
-            if r is not None and isinstance(r, Room):
-                r.update_partition_by_protagonist(self)
 
         # fuck you
         if random.randint(0, 100) < 10:

@@ -714,6 +714,18 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         print(f"  buffered_sprite_ids: {buffered_sprite_ids}")
         print(f"  sprite_to_new_buffer: {sprite_to_new_buffer}")
 
+    # Rooms whose buffer TYPES must always be preserved from the source partition,
+    # regardless of what the orchestrator's analysis would otherwise pick. The
+    # orchestrator still updates `main_buffer_space`, `index_in_main_buffer`, and
+    # per-NPC `cannot_clone` / `min_vram_size`, but the buffer-type sequence
+    # (THREE_SPRITES_PER_ROW / FOUR_SPRITES_PER_ROW / etc.) stays as authored.
+    PRESERVE_BUFFER_TYPES_ROOMS: set[int] = {
+        496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE — ending cutscene
+              # has a hand-tuned 3/4/4 layout that must survive ally_buffer growth.
+    }
+    if room_id in PRESERVE_BUFFER_TYPES_ROOMS:
+        new_buffer_types = [b.buffer_type for b in existing.buffers]
+
     for i in range(3):
         existing.buffers[i].set_buffer_type(new_buffer_types[i])
         existing.buffers[i].set_main_buffer_space(new_buffer_space[i])
@@ -826,26 +838,61 @@ def _detect_slot_machine_rooms(world: GameWorld) -> set[int]:
     return rooms
 
 
+def _detect_ending_character_rooms() -> set[int]:
+    """Return the set of rooms where ending-cutscene NPC slots get sprite-substituted
+    by `_apply_ending_character_npc_fills` based on which character landed in each
+    recruitment slot. The shuffle puts any of {Toadstool, Mallow, Geno, Bowser, Mario}
+    minus the protagonist into NPC slots 19-23 of room 496 (and corresponding slots in
+    rooms 88, 269, 375, 435, etc.), so the partition for each of these rooms must be
+    recalculated post-shuffle to size min_vram_size for whichever sprite actually
+    landed there.
+    """
+    from .renders import (
+        _ENDING_CHARACTER_2_NPC_FILLS,
+        _ENDING_CHARACTER_3_NPC_FILLS,
+        _ENDING_CHARACTER_3_DOLL_FILLS,
+        _ENDING_CHARACTER_4_NPC_FILLS,
+        _ENDING_CHARACTER_5_NPC_FILLS,
+    )
+    rooms: set[int] = set()
+    for fills in (
+        _ENDING_CHARACTER_2_NPC_FILLS,
+        _ENDING_CHARACTER_3_NPC_FILLS,
+        _ENDING_CHARACTER_3_DOLL_FILLS,
+        _ENDING_CHARACTER_4_NPC_FILLS,
+        _ENDING_CHARACTER_5_NPC_FILLS,
+    ):
+        for sub in fills:
+            rooms.add(sub.room_id)
+    return rooms
+
+
 def update_changed_room_partitions(world: GameWorld) -> None:
     """Recalculate partitions for rooms where NPC models changed.
 
-    Recalculates boss/henchman rooms where sprites changed, plus any room
-    that received slot machine NPCs (SlotsPrize).
+    Recalculates boss/henchman rooms where sprites changed, slot machine rooms,
+    and ending-cutscene rooms (whose NPC slots get sprite-substituted post-shuffle).
 
     Call order:
     1. Detect changed rooms via snapshot diff
-    2. Filter to boss/henchman rooms + slot machine rooms
+    2. Filter to boss/henchman rooms + slot machine rooms + ending-character rooms
     3. Apply animation VRAM overrides (min_vram_size pre-pass)
     4. Recalculate partition for each changed room
     """
     all_changed = _detect_changed_rooms(world)
     boss_rooms = _get_boss_henchman_rooms(world)
     slot_rooms = _detect_slot_machine_rooms(world)
-    changed_rooms = (all_changed & boss_rooms) | (all_changed & slot_rooms)
+    ending_rooms = _detect_ending_character_rooms()
+    changed_rooms = (
+        (all_changed & boss_rooms)
+        | (all_changed & slot_rooms)
+        | (all_changed & ending_rooms)
+    )
 
     if world.settings.debug_mode:
         print(f"[PARTITION] all_changed={len(all_changed)} boss_rooms={len(boss_rooms)} "
-              f"slot_rooms={len(slot_rooms)} recalculating={len(changed_rooms)}")
+              f"slot_rooms={len(slot_rooms)} ending_rooms={len(ending_rooms)} "
+              f"recalculating={len(changed_rooms)}")
         if changed_rooms:
             print(f"[PARTITION] rooms: {sorted(changed_rooms)}")
 
@@ -1625,55 +1672,76 @@ def _calculate_ally_buffer_size(
         return 1
 
     prize = prize_cls()
-    npc = prize.character_model
     ally = prize.ally
 
     if not isinstance(room, Room) or not room.extra_sprite_actions:
         return 1
 
+    # Use the engine-rendered protagonist sprite, NOT character_model.base.sprite_id.
+    # See PROTAGONIST_BASE_SPRITE_ID for the rationale (Mario protagonist = sprite 0,
+    # non-Mario = sprite 31 post-remap; character_model.base points at non-protagonist
+    # placeholder sprites and is wrong for VRAM partition calculations).
+    from ..utils.npcs import (
+        PROTAGONIST_BASE_SPRITE_ID,
+        PROTAGONIST_SPRITE_RANGE,
+        get_protagonist_sprite,
+        min_vram_from_sequence_for_sprite,
+        min_vram_from_mold_for_sprite,
+    )
+    if ally.index not in PROTAGONIST_BASE_SPRITE_ID:
+        return 1
+    protagonist_base = PROTAGONIST_BASE_SPRITE_ID[ally.index]
+
     vram_values: list[int] = []
+
+    def _add_state_vram(state):
+        sprites_dict = ally._sprites_primary
+        if state not in sprites_dict:
+            return
+        prop_id, offset, is_mold = sprites_dict[state]
+        # Skip offsets outside the protagonist sprite range (those reference
+        # unrelated NPC sprites, not protagonist animations).
+        if offset >= PROTAGONIST_SPRITE_RANGE:
+            return
+        # Verify the sprite actually exists at the time of this call. If
+        # cosmetics.py hasn't yet written sprites 31-37 with the per-character
+        # protagonist data, get_protagonist_sprite returns None / placeholder.
+        # Caller should ensure this runs after the remap (see apply.py).
+        if get_protagonist_sprite(world, ally.index, offset) is None:
+            return
+        sid = protagonist_base + offset
+        try:
+            if is_mold:
+                v = min_vram_from_mold_for_sprite(world, sid, prop_id)
+            else:
+                v = min_vram_from_sequence_for_sprite(world, sid, prop_id)
+            vram_values.append(v)
+        except (IndexError, AssertionError):
+            pass
 
     # Check default animation states
     for state in DEFAULT_ANIMATION_STATES:
-        sprites_dict = ally._sprites_primary
-        if state in sprites_dict:
-            prop_id, offset, is_mold = sprites_dict[state]
-            if is_mold:
-                try:
-                    v = npc.min_vram_from_mold(world, prop_id, offset)
-                    vram_values.append(v)
-                except (IndexError, AssertionError):
-                    pass
-            else:
-                try:
-                    v = npc.min_vram_from_sequence(world, prop_id, offset)
-                    vram_values.append(v)
-                except (IndexError, AssertionError):
-                    pass
+        _add_state_vram(state)
 
     # Check room's extra_sprite_actions
     for action in room.extra_sprite_actions:
-        anim_states = EXTRA_ACTION_TO_ANIMATION_STATE.get(action, [])
-        for state in anim_states:
-            sprites_dict = ally._sprites_primary
-            if state in sprites_dict:
-                prop_id, offset, is_mold = sprites_dict[state]
-                if is_mold:
-                    try:
-                        v = npc.min_vram_from_mold(world, prop_id, offset)
-                        vram_values.append(v)
-                    except (IndexError, AssertionError):
-                        pass
-                else:
-                    try:
-                        v = npc.min_vram_from_sequence(world, prop_id, offset)
-                        vram_values.append(v)
-                    except (IndexError, AssertionError):
-                        pass
+        for state in EXTRA_ACTION_TO_ANIMATION_STATE.get(action, []):
+            _add_state_vram(state)
 
     if not vram_values:
         return 1
-    return min(max(vram_values) + 1, 3)
+    needed = max(vram_values) + 1
+    if needed > 3:
+        # ally_sprite_buffer_size is a 2-bit partition field (0-3). >3 is not
+        # representable. Previous behavior silently capped at 3, masking data
+        # bugs. Raise instead so the offending sprite/sequence is identifiable.
+        raise ValueError(
+            f"_calculate_ally_buffer_size produced needed={needed} (>3). "
+            f"vram_values={vram_values}. protagonist={protagonist!r}. "
+            f"Either a sprite mold has too many subtiles, or this protagonist "
+            f"genuinely cannot fit this room's animation set."
+        )
+    return needed
 
 
 def analyze_partition(

@@ -17,12 +17,12 @@ from ....items import *
 
 script = ActionScript([
 	A_SetWalkingSpeed(NORMAL, identifier="ACTION_107_set_animation_speed_0"),
-	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_ToggleSubroutineSlots(mask=0x04),
 	A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 	A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=6),
 	A_Walk1StepSoutheast(),
 	A_WalkSoutheastPixels(11),
-	A_BPL262728(),
+	A_KillAllSubroutineSlots(),
 	A_Pause(2),
 	A_ReturnQueue()
 ])

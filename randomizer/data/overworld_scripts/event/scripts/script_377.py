@@ -37,13 +37,13 @@ script = EventScript([
 	SetSyncActionScript(NPC_2, A0108_MK_HALL_REPEATING_HENCHMEN),
 	PauseActionScript(NPC_0, identifier="EVENT_377_pause_action_script_1"),
 	StartAsyncEmbeddedActionScript(target=NPC_0, prefix=0xF1, subscript=[
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	SetSyncActionScript(NPC_0, A0110_MK_HALL_REPEATING_HENCHMEN),
 	Pause(150),
 	PauseActionScript(NPC_1),
 	StartAsyncEmbeddedActionScript(target=NPC_1, prefix=0xF1, subscript=[
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	SetSyncActionScript(NPC_1, A0110_MK_HALL_REPEATING_HENCHMEN),
 	Pause(150),

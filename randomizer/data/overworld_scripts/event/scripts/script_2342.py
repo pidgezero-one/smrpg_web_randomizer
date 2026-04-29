@@ -41,12 +41,12 @@ script = EventScript([
 	SetSyncActionScript(NPC_4, A0738_TOWER_CHEST_SEESAW_WHEN_ACTIVATED),
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x0F, 0xE1, 0xFF])),
 		A_Pause(56),
 		A_PlaySound(sound=SO019_LONG_FALL, channel=4),
 		A_Pause(199),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_PlaySound(sound=SO022_CLOSE_DOOR, channel=6),
 		A_ShiftZUpPixels(12)
 	]),
@@ -69,10 +69,10 @@ script = EventScript([
 		A_Pause(16),
 		A_SetSpriteSequence(index=4, sprite_offset=1, is_sequence=True, looping=True, mirror_sprite=True),
 		A_PlaySound(sound=SO004_JUMP, channel=4),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x50, 0x0F, 0x80, 0xFF])),
 		A_Pause(74),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_ShiftToXYCoords(x=18, y=121),
 		A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
 	], identifier="tower_lean_back_aq"),

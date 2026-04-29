@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_BPL262728(),
+	A_KillAllSubroutineSlots(),
 	A_SetWalkingSpeed(NORMAL),
 	A_StartLoopNTimes(2),
 	A_JumpToHeight(height=64, silent=True),

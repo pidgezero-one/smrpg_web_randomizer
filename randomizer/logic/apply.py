@@ -678,8 +678,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # Apply boss stat scaling after all prizes are set
     apply_boss_stat_scaling(world)
 
-    # Update partition buffers for rooms with shuffled sprites
-    update_changed_room_partitions(world)
+    # NOTE: update_changed_room_partitions(world) used to be here but was moved
+    # to after the protagonist sprite remap below — the orchestrator reads
+    # sprite data from world.sprites for VRAM calculations, and the per-character
+    # protagonist sprites aren't written to slots 31-37 until after this point.
 
     # Update freestanding frog coin NPCs in rooms with Coins partition
     # to use the animated frog coin NPC and spinning action script
@@ -846,6 +848,45 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
         clone_room_npc_0._npc = ALLY_CLONE_NPC
+
+    # Room 496 ending cutscene: pick the first non-Bowser slot among the four
+    # character recruit positions (19/20/21/22) and demote it to cannot_clone=False
+    # so the partition orchestrator can place it in a clone buffer.
+    #
+    # KILL-SWITCH: set R496_DEMOTE_FIRST_NON_BOWSER = False to disable.
+    # When disabled, all four slots stay cannot_clone=True per the room source file,
+    # and the orchestrator at update_changed_room_partitions handles buffer/min_vram
+    # sizing entirely on its own.
+    #
+    # NOTE on buffer space: the demoted NPC's clone-buffer slot needs enough
+    # `main_buffer_space` to fit any non-walk sequences declared in the room's
+    # `npc_expected_animations` for that slot. That sizing is computed by
+    # `_recalculate_room_partition` in `partition_calculator.py` (step ~568+,
+    # `npc_expected_animations` consumer block), which adjusts the buffer's
+    # `main_buffer_space` field based on each animation state's `max_sequence_vram`.
+    # If that step is undersizing the buffer, fix is in partition_calculator.py
+    # NOT here — this hook only flips the cannot_clone bit.
+    R496_DEMOTE_FIRST_NON_BOWSER = False
+    if R496_DEMOTE_FIRST_NON_BOWSER:
+        from ..data.rooms.npcs import BOWSER_ENDING
+        r496 = world.rooms._rooms[R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE]
+        if r496 is not None:
+            bowser_sprite_id = BOWSER_ENDING.sprite_id
+            candidate_slots = (19, 20, 21, 22)
+            for slot in candidate_slots:
+                if slot >= len(r496.objects):
+                    continue
+                obj = r496.objects[slot]
+                if obj._npc.sprite_id == bowser_sprite_id:
+                    continue  # Bowser must stay cannot_clone (non-gridplane sprite)
+                obj.set_cannot_clone(False)
+                break  # only demote one slot
+
+    # Update partition buffers for rooms with shuffled sprites.
+    # MUST run after the per-character protagonist sprite remap above, since
+    # the orchestrator reads sprite data at slots 31-37 for VRAM calculations
+    # — those slots are empty placeholders until cosmetics writes them.
+    update_changed_room_partitions(world)
 
     # Update the "hide from Toad" animation to use the overworld character's
     # defend mold, so the correct sprite frame shows when cowering.

@@ -135,24 +135,24 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=NPC_13, subscript=[
 		A_SetWalkingSpeed(VERY_SLOW),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80])),
 		A_WalkSouthwestPixels(8),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_FloatingOn()
 	]),
 	ActionQueueSync(target=NPC_14, subscript=[
 		A_SetWalkingSpeed(VERY_SLOW),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80])),
 		A_WalkSouthwestPixels(8),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Pause(45),
 	ActionQueueSync(target=NPC_12, subscript=[
 		A_SetWalkingSpeed(SLOW),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80])),
 		A_WalkNorthwestSteps(5)
 	]),

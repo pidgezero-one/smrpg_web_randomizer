@@ -16,9 +16,9 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_UnknownCommand(bytearray([0x20, 0x03])),
-	A_UnknownCommand(bytearray([0x24, 0xE0, 0x00, 0x90, 0xFF])),
+	A_ToggleSubroutineSlots(mask=0x03),
+	A_SetSubroutineXTargets(slot_26_x=0x00E0, slot_27_x=0xFF90),
 	A_Pause(4),
-	A_UnknownCommand(bytearray([0x24, 0x40, 0x00, 0xE0, 0xFF])),
+	A_SetSubroutineXTargets(slot_26_x=0x0040, slot_27_x=0xFFE0),
 	A_Pause(2)
 ])

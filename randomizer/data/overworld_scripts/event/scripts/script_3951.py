@@ -77,6 +77,7 @@ script = EventScript([
 	ActionQueueSync(target=DOLL, subscript=[
 		A_TransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
 		A_SetPriority(3),
+        A_FaceSoutheast(),
 		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_doll_cliff_seq")
 	], identifier="ending_doll_cliff_seq_aq"),
 	ActionQueueAsync(target=NPC_3, subscript=[

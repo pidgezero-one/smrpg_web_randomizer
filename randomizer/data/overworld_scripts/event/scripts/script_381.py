@@ -72,25 +72,25 @@ script = EventScript([
 		A_ClearSolidityBits(bit_4=True),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_SetWalkingSpeed(NORMAL),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x60, 0xFF])),
 		A_WalkSoutheastPixels(11),
 		A_SetWalkingSpeed(SLOW),
 		A_WalkSoutheastPixels(4),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_SetWalkingSpeed(NORMAL),
 		A_ClearSolidityBits(bit_4=True),
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_SetWalkingSpeed(NORMAL),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x60, 0xFF])),
 		A_PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=6),
 		A_WalkNorthwestPixels(11),
 		A_SetWalkingSpeed(SLOW),
 		A_WalkNorthwestPixels(4),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	RememberLastObject(),
 	RunEventAsSubroutine(E1186_HENCHMAN_BATTLE_PACK_SELECTOR),

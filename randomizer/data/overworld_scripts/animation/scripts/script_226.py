@@ -16,7 +16,7 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_BPL262728(),
+	A_KillAllSubroutineSlots(),
 	A_FloatingOff(),
 	A_SetObjectMemoryBits(arg_1=0x0E, bits=[3]),
 	A_ReturnQueue()

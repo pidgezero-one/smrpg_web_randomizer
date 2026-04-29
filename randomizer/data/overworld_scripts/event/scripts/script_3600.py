@@ -43,7 +43,7 @@ script = EventScript([
 	UnknownCommand(bytearray([0xFD, 0x45])),
 	PauseActionScript(MARIO),
 	StartSyncEmbeddedActionScript(target=MARIO, prefix=0xF1, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_WalkToXYCoords(x=20, y=61)
 	]),
 	CloseDialog(),

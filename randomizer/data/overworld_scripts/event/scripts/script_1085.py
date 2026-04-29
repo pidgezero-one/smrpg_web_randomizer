@@ -51,130 +51,130 @@ script = EventScript([
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNortheast(),
 		A_JumpToHeight(height=64, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0x02, 0x00, 0xFF])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0200, slot_27_x=0xFF00),
 		A_Pause(16),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_16"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNortheast(),
 		A_JumpToHeight(height=64, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0x01, 0x80, 0xFE])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0100, slot_27_x=0xFE80),
 		A_Pause(16),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_19"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorth(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0x00, 0xAB, 0xFE])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0000, slot_27_x=0xFEAB),
 		A_Pause(24),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_22"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorth(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x56, 0xFF, 0x56, 0xFE])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0xFF56, slot_27_x=0xFE56),
 		A_Pause(24),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_25"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorthwest(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0xAB, 0xFE, 0x00, 0xFE])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0xFEAB, slot_27_x=0xFE00),
 		A_Pause(24),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_28"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorthwest(),
 		A_JumpToHeight(height=128, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x80, 0xFE, 0x40, 0xFE])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0xFE80, slot_27_x=0xFE40),
 		A_Pause(32),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_31"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorthwest(),
 		A_JumpToHeight(height=128, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0xFE, 0x00, 0xFE])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0xFE00, slot_27_x=0xFE00),
 		A_Pause(32),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_34"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNortheast(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0x02, 0xAB, 0xFF])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0200, slot_27_x=0xFFAB),
 		A_Pause(24),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_37"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceEast(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0xAA, 0x02, 0x00, 0x00])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x02AA, slot_27_x=0x0000),
 		A_Pause(24),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_40"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceEast(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x55, 0x03, 0x55, 0x00])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0355, slot_27_x=0x0055),
 		A_Pause(24),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_43"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSoutheast(),
 		A_JumpToHeight(height=96, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0x04, 0xAA, 0x00])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0400, slot_27_x=0x00AA),
 		A_Pause(24),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_46"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSoutheast(),
 		A_JumpToHeight(height=128, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x80, 0x03, 0xC0, 0x00])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0380, slot_27_x=0x00C0),
 		A_Pause(32),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return(),
 	PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_49"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceSoutheast(),
 		A_JumpToHeight(height=128, silent=True),
-		A_UnknownCommand(bytearray([0x20, 0x03])),
-		A_UnknownCommand(bytearray([0x24, 0x00, 0x04, 0x00, 0x01])),
+		A_ToggleSubroutineSlots(mask=0x03),
+		A_SetSubroutineXTargets(slot_26_x=0x0400, slot_27_x=0x0100),
 		A_Pause(32),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Return()
 ])

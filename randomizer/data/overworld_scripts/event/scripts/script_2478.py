@@ -79,10 +79,10 @@ script = EventScript([
 	]),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_UnknownCommand(bytearray([0x20, 0x01])),
-		A_UnknownCommand(bytearray([0x24, 0xE3, 0xFF, 0x00, 0x00])),
+		A_ToggleSubroutineSlots(mask=0x01),
+		A_SetSubroutineXTargets(slot_26_x=0xFFE3, slot_27_x=0x0000),
 		A_ShiftZDownSteps(8),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True),
 		A_Pause(16)
 	]),
@@ -90,11 +90,11 @@ script = EventScript([
 		A_SetSpriteSequence(index=3, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
 		A_FaceSouthwest(),
 		A_PlaySound(sound=SO004_JUMP, channel=4),
-		A_UnknownCommand(bytearray([0x20, 0x07])),
-		A_UnknownCommand(bytearray([0x24, 0x80, 0xFE, 0xB0, 0x00])),
+		A_ToggleSubroutineSlots(mask=0x07),
+		A_SetSubroutineXTargets(slot_26_x=0xFE80, slot_27_x=0x00B0),
 		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
 		A_Pause(37),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(FAST),

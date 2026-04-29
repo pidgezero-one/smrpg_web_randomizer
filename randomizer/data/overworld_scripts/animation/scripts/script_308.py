@@ -19,7 +19,7 @@ script = ActionScript([
 	A_SetMovementsBits(bit_0=True, cant_walk_under=True),
 	A_SetWalkingSpeed(SLOW),
 	A_SequenceLoopingOn(),
-	A_UnknownCommand(bytearray([0x20, 0x04])),
+	A_ToggleSubroutineSlots(mask=0x04),
 	A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x80, 0x00, 0x80])),
 	A_TurnRandomDirection(identifier="ACTION_308_turn_random_direction_5"),
 	A_WalkFDirectionSteps(2),

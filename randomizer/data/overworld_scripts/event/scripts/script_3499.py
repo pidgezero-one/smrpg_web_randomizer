@@ -52,7 +52,7 @@ script = EventScript([
 	]),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=NPC_8, subscript=[
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x20, 0x80])),
 		A_FixedFCoordOn(),
 		A_SequenceLoopingOn(),

@@ -136,11 +136,11 @@ script = EventScript([
 		A_Mem700CXorConst(0x0004),
 		A_FaceEast7C(),
 		A_FloatingOff(),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x08, 0xB0, 0xFF])),
 		A_Walk1StepFDirection(),
 		A_VisibilityOff(),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_JumpToHeight(height=108, silent=True),

@@ -16,10 +16,10 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_BPL262728(),
+	A_KillAllSubroutineSlots(),
 	A_SetSequenceSpeed(VERY_FAST),
-	A_UnknownCommand(bytearray([0x20, 0x03])),
-	A_UnknownCommand(bytearray([0x24, 0x40, 0x01, 0x60, 0xFF])),
+	A_ToggleSubroutineSlots(mask=0x03),
+	A_SetSubroutineXTargets(slot_26_x=0x0140, slot_27_x=0xFF60),
 	A_Pause(14),
 	A_SetBit(TEMP_7043_2),
 	A_Jmp(["ACTION_500_db_0"])

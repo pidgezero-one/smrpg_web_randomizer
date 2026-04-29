@@ -44,10 +44,10 @@ script = EventScript([
 		A_Pause(64),
 		A_SetVRAMPriority(PRIORITY_3),
 		A_SetSpriteSequence(index=3, is_sequence=True, looping=True),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0xC0, 0xFF])),
 		A_Pause(54),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_Pause(16),
 		A_SetVRAMPriority(NORMAL_PRIORITY),
 		A_SetSpriteSequence(index=4, is_sequence=True, looping=True)

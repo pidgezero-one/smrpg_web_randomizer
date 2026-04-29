@@ -164,12 +164,12 @@ script = EventScript([
 	PauseActionScript(NPC_6),
 	StartAsyncEmbeddedActionScript(target=NPC_6, prefix=0xF1, subscript=[
 		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-		A_BPL262728(),
-		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_KillAllSubroutineSlots(),
+		A_ToggleSubroutineSlots(mask=0x07),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x07, 0x80, 0xFF])),
-		A_UnknownCommand(bytearray([0x24, 0x98, 0xFF, 0xC8, 0xFF])),
+		A_SetSubroutineXTargets(slot_26_x=0xFF98, slot_27_x=0xFFC8),
 		A_Pause(30),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	SetSyncActionScript(NPC_6, A0120_EMBEDDED_ROUTINE),
 	ActionQueueSync(target=MINES_CHARACTER, subscript=[
@@ -187,10 +187,10 @@ script = EventScript([
 	Pause(60),
 	PauseActionScript(NPC_6),
 	StartAsyncEmbeddedActionScript(target=NPC_6, prefix=0xF1, subscript=[
-		A_BPL262728(),
-		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_KillAllSubroutineSlots(),
+		A_ToggleSubroutineSlots(mask=0x07),
 		A_UnknownCommand(bytearray([0x25, 0x80, 0x06, 0xA0, 0xFF])),
-		A_UnknownCommand(bytearray([0x24, 0x90, 0xFF, 0x00, 0x01])),
+		A_SetSubroutineXTargets(slot_26_x=0xFF90, slot_27_x=0x0100),
 		A_Pause(30)
 	]),
 	SetSyncActionScript(NPC_6, A0120_EMBEDDED_ROUTINE),
@@ -206,10 +206,10 @@ script = EventScript([
 	Pause(60),
 	PauseActionScript(NPC_6),
 	StartAsyncEmbeddedActionScript(target=NPC_6, prefix=0xF1, subscript=[
-		A_BPL262728(),
-		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_KillAllSubroutineSlots(),
+		A_ToggleSubroutineSlots(mask=0x07),
 		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x88, 0xFF])),
-		A_UnknownCommand(bytearray([0x24, 0x78, 0x01, 0x00, 0x00])),
+		A_SetSubroutineXTargets(slot_26_x=0x0178, slot_27_x=0x0000),
 		A_Pause(28)
 	]),
 	SetSyncActionScript(NPC_6, A0120_EMBEDDED_ROUTINE),
@@ -226,10 +226,10 @@ script = EventScript([
 	Pause(60),
 	PauseActionScript(NPC_6),
 	StartAsyncEmbeddedActionScript(target=NPC_6, prefix=0xF1, subscript=[
-		A_BPL262728(),
-		A_UnknownCommand(bytearray([0x20, 0x07])),
+		A_KillAllSubroutineSlots(),
+		A_ToggleSubroutineSlots(mask=0x07),
 		A_UnknownCommand(bytearray([0x25, 0x80, 0x06, 0x90, 0xFF])),
-		A_UnknownCommand(bytearray([0x24, 0x20, 0x00, 0x30, 0xFF])),
+		A_SetSubroutineXTargets(slot_26_x=0x0020, slot_27_x=0xFF30),
 		A_Pause(30)
 	]),
 	SetSyncActionScript(NPC_6, A0120_EMBEDDED_ROUTINE),
@@ -245,7 +245,7 @@ script = EventScript([
 	Pause(2),
 	PauseActionScript(NPC_6),
 	ActionQueueAsync(target=NPC_6, subscript=[
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0])
 	]),
 	Pause(230),

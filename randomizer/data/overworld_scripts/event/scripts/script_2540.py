@@ -50,10 +50,10 @@ script = EventScript([
 	PlaySound(sound=SO010_TRAMPOLINE, channel=6),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(4),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0x00, 0x0F, 0xF0, 0xFF])),
 		A_Pause(48),
-		A_BPL262728()
+		A_KillAllSubroutineSlots()
 	]),
 	Pause(24),
 	FadeOutToBlack(sync=False, duration=8),

@@ -39,12 +39,12 @@ script = EventScript([
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_SetPaletteRow(row=2),
 		A_UnknownCommand(bytearray([0xFD, 0x9C, 0x05])),
-		A_UnknownCommand(bytearray([0x20, 0x04])),
+		A_ToggleSubroutineSlots(mask=0x04),
 		A_UnknownCommand(bytearray([0x25, 0xC0, 0x03, 0x80, 0xFF])),
 		A_Pause(8),
 		A_UnknownCommand(bytearray([0x25, 0x40, 0x00, 0x80, 0xFF])),
 		A_Pause(8),
-		A_BPL262728(),
+		A_KillAllSubroutineSlots(),
 		A_SetPaletteRow(row=1),
 		A_ReturnQueue()
 	]),
