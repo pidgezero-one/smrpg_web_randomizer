@@ -1722,15 +1722,24 @@ class GameWorld:
         # Partition + palette-row fixups must run BEFORE event scripts render —
         # the fixup mutates DarkenLayersExceptPaletteRows commands in event scripts,
         # so any post-render mutation would be lost.
-        # Ending cutscene rooms (R496/R088/R375) keep a static partition because
-        # the protagonist is rendered through a Mario NPC slot at NPC_0/NPC_19
-        # rather than the ally buffer; allowing update_partition_by_protagonist
-        # to grow ally_buffer (e.g. to 2 for Bowser) would shift palette rows
-        # the ending cutscene scripts have hardcoded references to.
+        # Ending cutscene rooms keep a static ally_buffer regardless of
+        # protagonist. R088/R375/R496 use the Mario-NPC-at-front pattern where
+        # the protagonist is rendered through a fixed NPC slot rather than the
+        # ally buffer, so growing ally_buffer (e.g. to 2 for Bowser) would
+        # only shift palette rows the cutscene scripts hardcoded references to.
+        # R269/R432/R435/R441/R486/R506/R595 are other ending credits rooms
+        # whose palette/layout assumptions also break under ally_buffer growth.
         _STATIC_PARTITION_ROOM_IDS = frozenset({
-            496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE
             88,   # R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION
+            269,  # R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW
             375,  # R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY
+            432,
+            435,  # R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR
+            441,
+            486,
+            496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE
+            506,
+            595,
         })
         for room_id, r in enumerate(self.rooms._rooms):
             if r is not None and isinstance(r, Room) and room_id not in _STATIC_PARTITION_ROOM_IDS:
