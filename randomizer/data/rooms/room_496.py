@@ -343,9 +343,10 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
             cannot_clone=True,
-            priority_0=True,
-            priority_1=True,
-            priority_2=False),
+            #priority_0=True,
+            #priority_1=True,
+            #priority_2=False
+            ),
         RegularNPC( # 20 — Peach
             npc=npcs.TOADSTOOL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -374,9 +375,10 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
             cannot_clone=True,
-            priority_0=True,
-            priority_1=True,
-            priority_2=False),
+            #priority_0=True,
+            #priority_1=True,
+            #priority_2=False
+            ),
         RegularNPC( # 21 — Mallow
             npc=npcs.MALLOW_ENDING,
             event_script=E0256_RETURN,
@@ -388,9 +390,10 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
             cannot_clone=True,
-            priority_0=True,
-            priority_1=True,
-            priority_2=False),
+            #priority_0=True,
+            #priority_1=True,
+            #priority_2=False
+            ),
         RegularNPC( # 22 — Geno
             npc=npcs.GENO_ENDING,
             event_script=E0256_RETURN,
@@ -402,9 +405,10 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
             cannot_clone=True,
-            priority_0=True,
-            priority_1=True,
-            priority_2=False),
+            #priority_0=True,
+            #priority_1=True,
+            #priority_2=False
+            ),
         RegularNPC( # 23 — Geno doll
             npc=npcs.GENO_DOLL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -465,9 +469,10 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
             cannot_clone=True,
-            priority_0=False,
-            priority_1=False,
-            priority_2=True),
+            #priority_0=False,
+            #priority_1=False,
+            #priority_2=True
+            ),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.HOLD_STAR,

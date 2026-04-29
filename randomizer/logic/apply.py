@@ -966,6 +966,26 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         cmd = world.event_scripts.get_command_by_identifier(darken_id, DarkenLayersExceptPaletteRows)
         cmd.set_preserve_rows(ending_darken_preserve)
 
+    # script_3951 redirects: when the overworld character is one of the four
+    # recruit characters, that character occupies BOTH their default recruit
+    # palette row AND MARIO_PALETTE (the protagonist row the engine auto-fills).
+    # Redirect the recruit-slot's PaletteSet/PaletteSetMorphs so its palette
+    # data lands in MARIO_PALETTE instead. NPCs aren't moving anymore so
+    # the recruit slot's NPC reads its color from whichever palette row the
+    # engine assigned to it for protagonist; keeping the row pointed at
+    # MARIO_PALETTE ensures the protagonist's palette is what shows.
+    _PROTAGONIST_PALETTE_REDIRECTS: dict[int, tuple[str, str]] = {
+        # ally.index → (light PaletteSetMorphs id, dark PaletteSet id)
+        1: ("ending_marrymore_char_palette",   "ending_marrymore_char_palette_dark"),    # Toadstool
+        2: ("ending_inner_mines_char_palette", "ending_inner_mines_palette_dark"),       # Bowser
+        3: ("ending_forest_maze_char_palette", "ending_forest_character_dark"),          # Geno
+        4: ("ending_mushroom_way_char_palette", "ending_mushroom_way_char_palette_dark"),# Mallow
+    }
+    if overworld_ally.index in _PROTAGONIST_PALETTE_REDIRECTS:
+        light_id, dark_id = _PROTAGONIST_PALETTE_REDIRECTS[overworld_ally.index]
+        world.event_scripts.get_command_by_identifier(light_id, PaletteSetMorphs).set_row(MARIO_PALETTE)
+        world.event_scripts.get_command_by_identifier(dark_id, PaletteSet).set_from_row(MARIO_PALETTE)
+
     # Set palettes that change when the protagonist changes.
     if ally.index == 2: # bowser shifts a lot of stuff...
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
