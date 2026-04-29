@@ -86,9 +86,7 @@ script = EventScript([
 	]),
 	RememberLastObject(),
 	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
-	ActionQueueSync(target=PLAYER, subscript=[
-        A_VisibilityOff(),
-	], identifier="hide_player_avatar"),
+    RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar"),
 	# PaletteSet(palette_set_starts_at=EPAL0086_GENO_ENDING, from_row=NPC_PALETTE_ROW_1),
 	FadeInFromColour(duration=90, colour=WHITE),
 	PauseScriptUntilEffectDone(),
@@ -338,7 +336,23 @@ script = EventScript([
 		A_TransferXYZFPixels(x=0, y=16, z=0, direction=EAST)
 	]),
 	SetBit(TEMP_7049_6),
-	RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
+	Set7016701BToObjectXYZ(target=MARIO),
+	AddConstToVar(X_COORD_2, 63744),
+	AddConstToVar(Y_COORD_2, 63744),
+	UnknownCommand(bytearray([0xFD, 0xC7])),
+	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
+		A_JmpIfBitSet(TEMP_7049_2, ["EVENT_3885_action_queue_4_SUBSCRIPT_set_animation_speed_6"]),
+		A_JmpIfBitSet(TEMP_7049_6, ["EVENT_3885_action_queue_4_SUBSCRIPT_set_animation_speed_4"]),
+		A_SetWalkingSpeed(FAST),
+		A_Jmp(["EVENT_3885_action_queue_4_SUBSCRIPT_db_7"]),
+		A_SetWalkingSpeed(FASTEST, identifier="EVENT_3885_action_queue_4_SUBSCRIPT_set_animation_speed_4"),
+		A_Jmp(["EVENT_3885_action_queue_4_SUBSCRIPT_db_7"]),
+		A_SetWalkingSpeed(NORMAL, identifier="EVENT_3885_action_queue_4_SUBSCRIPT_set_animation_speed_6"),
+		A_UnknownCommand(bytearray([0x98]), identifier="EVENT_3885_action_queue_4_SUBSCRIPT_db_7"),
+		A_SetWalkingSpeed(NORMAL)
+	]),
+	ClearBit(TEMP_7049_2),
+	ClearBit(TEMP_7049_6),
 	FreezeCamera(),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_TransferToXYZF(x=4, y=51, z=0, direction=EAST)
@@ -351,10 +365,12 @@ script = EventScript([
 	ActionQueueSync(target=FOREST_CHARACTER, subscript=[
 		A_SetSequenceSpeed(NORMAL),
 		A_SequenceLoopingOn(),
+        A_SetSpriteSequence(index=1, sprite_offset=0, is_sequence=True, looping=True, mirror_sprite=True),
 		A_ToggleSubroutineSlots(mask=0x03),
 		A_SetSubroutineXTargets(slot_26_x=0x0080, slot_27_x=0xFF80),
 		A_Pause(88),
 		A_KillAllSubroutineSlots(),
+		A_SetSpriteSequence(index=3, sprite_offset=0, is_mold=True, looping=False, mirror_sprite=True),
 		A_SequenceLoopingOff()
 	]),
 	Clear0158Bit7Offset(0x0158, True),

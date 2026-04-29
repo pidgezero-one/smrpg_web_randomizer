@@ -158,7 +158,8 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=True),
+            cannot_clone=True,
+            show_shadow=False,),
         RegularNPC( # 8
             npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
