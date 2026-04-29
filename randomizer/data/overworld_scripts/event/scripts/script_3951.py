@@ -33,13 +33,15 @@ from ....packets import *
 from ....spells.spells import *
 from ....variables.event_palette_names import *
 
-MARRYMORE_CHARACTER = NPC_0
-MWAY_CHARACTER = NPC_1
-MINES_CHARACTER = NPC_4
-DOLL = NPC_2
+PLAYER = MARIO
+MARRYMORE_CHARACTER = NPC_1
+MWAY_CHARACTER = NPC_2
+MINES_CHARACTER = NPC_5
+DOLL = NPC_3
 
 script = EventScript([
 	EnterArea(room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, face_direction=NORTHWEST, x=4, y=48, z=0),
+	RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar"),
 	RunStarPieceSequence(8),
 	PaletteSet(palette_set_starts_at=EPAL0163_MARIO_ENDING_DARK, from_row=MARIO_PALETTE, identifier="ending_protagonist_palette_dark"),
 	PaletteSet(palette_set_starts_at=EPAL0164_TOADSTOOL_ENDING_DARK, from_row=NPC_PALETTE_ROW_1, identifier="ending_marrymore_char_palette_dark"),
@@ -56,7 +58,7 @@ script = EventScript([
 		A_Walk1StepWest(),
 		A_WalkNorthwestSteps(2)
 	]),
-	ActionQueueSync(target=MARIO, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_TransferToXYZF(x=5, y=90, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=8, y=4, z=0, direction=EAST),
 		A_SetPriority(3),
@@ -80,7 +82,7 @@ script = EventScript([
         A_FaceSoutheast(),
 		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_doll_cliff_seq")
 	], identifier="ending_doll_cliff_seq_aq"),
-	ActionQueueAsync(target=NPC_3, subscript=[
+	ActionQueueAsync(target=NPC_4, subscript=[
 		A_TransferXYZFPixels(x=4, y=208, z=0, direction=EAST),
 		A_SetSpriteSequence(index=1, is_sequence=True, looping=True)
 	]),
@@ -102,7 +104,7 @@ script = EventScript([
 		A_Walk1StepSoutheast()
 	]),
 	Pause(2),
-	SetSyncActionScript(MARIO, A0229_ENDING_CUTSCENE_EFFECT),
+	SetSyncActionScript(NPC_0, A0229_ENDING_CUTSCENE_EFFECT),
 	SetSyncActionScript(MARRYMORE_CHARACTER, A0229_ENDING_CUTSCENE_EFFECT),
 	SetSyncActionScript(MWAY_CHARACTER, A0229_ENDING_CUTSCENE_EFFECT),
 	SetSyncActionScript(DOLL, A0229_ENDING_CUTSCENE_EFFECT),

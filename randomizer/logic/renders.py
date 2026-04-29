@@ -935,39 +935,36 @@ def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
 # the chosen character's overworld model. These are populated independently of
 # the recruitment location's own _npc_fills.
 _ENDING_CHARACTER_2_NPC_FILLS: list[AllyNPCSub] = [
-    # R496 NPC_20 removed — handled by _apply_r496_role_assignments (coord/retarget swap)
-    AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_2),
-    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_1),
+    # R496/R088/R375 entries removed — those rooms have a Mario NPC at the
+    # front and recruits stay at their native slots (no model swap). Only
+    # R269 keeps the model-swap for its single Prince Mallow scene.
     AllyNPCSub(R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, NPC_0),
 ]
 
 _ENDING_CHARACTER_3_NPC_FILLS: list[AllyNPCSub] = [
-    # R496 NPC_21 removed — handled by _apply_r496_role_assignments (coord/retarget swap)
+    # R496/R088/R375 entries removed — see _ENDING_CHARACTER_2_NPC_FILLS comment.
 ]
 
 # NPCs that should be replaced with the doll variant matching the chosen
 # character in the Forest Maze ending cutscene (render_ending_character_3).
 # Geno is intentionally absent from the doll mapping below — render_ending_character_3
 # returns early when the prize is GenoRecruitmentPrize, so these substitutions
-# are never applied for Geno.
+# are never applied for Geno. Indices reflect the post-Mario-NPC layout
+# (R088 NPC_3 → NPC_4, R375 NPC_2 → NPC_3, R496 NPC_22 → NPC_23).
 _ENDING_CHARACTER_3_DOLL_FILLS: list[AllyNPCSub] = [
     AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_23),
-    AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_3),
-    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_2),
+    AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_4),
+    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_3),
 ]
 
 _ENDING_CHARACTER_4_NPC_FILLS: list[AllyNPCSub] = [
-    # R496 NPC_22 (vanilla mines) removed — handled by _apply_r496_role_assignments (coord/retarget swap)
-    AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_4),
-    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_4),
+    # R496/R088/R375 entries removed — see _ENDING_CHARACTER_2_NPC_FILLS comment.
     AllyNPCSub(R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_7),
     AllyNPCSub(R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_8),
 ]
 
 _ENDING_CHARACTER_5_NPC_FILLS: list[AllyNPCSub] = [
-    # R496 NPC_19 removed — handled by _apply_r496_role_assignments (coord/retarget swap)
-    AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_0),
-    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_0),
+    # R496/R088/R375 entries removed — see _ENDING_CHARACTER_2_NPC_FILLS comment.
 ]
 
 
@@ -1791,17 +1788,23 @@ def apply_ending_characters(
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_4, p4)
     _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_5, p5)
 
-    # R496 ending cutscene: NPC sprites stay at their native slots; we retarget
-    # the cutscene script's role-NPC references to whichever character is
-    # playing each role this seed. See _apply_r496_role_assignments.
-    _apply_r496_role_assignments(
-        world,
-        marrymore_prize=p5,
-        mushroom_way_prize=p2,
-        forest_maze_prize=p3,
-        inner_mines_prize=p4,
-        protagonist_prize=protagonist_prize,
-    )
+    # R496 ending cutscene role-swap path is disabled by default. With Mario at
+    # NPC_19 and target=MARIO references hardcoded to target=NPC_19 in
+    # script_3885 (similarly NPC_0 in script_3950 / script_3951 for R088 / R375),
+    # no apply-time retargeting is needed for the vanilla cutscene assignments.
+    # The helper and its support code are kept around to revisit shuffled-recruit
+    # cutscene assignments later, where we'll need a way to lock per-NPC vram
+    # sizes so the partition orchestrator doesn't over-size animations.
+    R496_USE_ROLE_SWAP_PATH = False
+    if R496_USE_ROLE_SWAP_PATH:
+        _apply_r496_role_assignments(
+            world,
+            marrymore_prize=p5,
+            mushroom_way_prize=p2,
+            forest_maze_prize=p3,
+            inner_mines_prize=p4,
+            protagonist_prize=protagonist_prize,
+        )
 
     render_ending_character_2(world, p2, protagonist_prize=protagonist_prize)
     render_ending_character_3(world, p3, protagonist_prize=protagonist_prize)

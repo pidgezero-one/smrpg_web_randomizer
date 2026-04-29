@@ -33,14 +33,16 @@ from ....packets import *
 from ....spells.spells import *
 from ....variables.event_palette_names import *
 
-MARRYMORE_CHARACTER = NPC_0
-MWAY_CHARACTER = NPC_2
-MINES_CHARACTER = NPC_4
-DOLL = NPC_3
+PLAYER = MARIO
+MARRYMORE_CHARACTER = NPC_1
+MWAY_CHARACTER = NPC_3
+MINES_CHARACTER = NPC_5
+DOLL = NPC_4
 
 script = EventScript([
 	EnterArea(room_id=R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, face_direction=SOUTHWEST, x=4, y=51, z=0),
 	FreezeCamera(),
+	RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar"),
 	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
 		A_TransferToXYZF(x=3, y=50, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=248, y=0, z=0, direction=EAST),
@@ -64,13 +66,13 @@ script = EventScript([
 		A_TransferXYZFPixels(x=242, y=252, z=0, direction=EAST),
 		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, identifier="ending_doll_"),
 	], identifier="ending_doll_aq_a"),
-	ActionQueueAsync(target=MARIO, subscript=[
+	ActionQueueAsync(target=NPC_0, subscript=[
 		A_TransferToXYZF(x=6, y=50, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=240, y=254, z=0, direction=EAST)
 	]),
 	FadeInFromColour(duration=40, colour=WHITE),
 	PauseScriptUntilEffectDone(),
-	ActionQueueAsync(target=MARIO, subscript=[
+	ActionQueueAsync(target=NPC_0, subscript=[
 		A_SetWalkingSpeed(SLOW),
 		A_SetSequenceSpeed(FAST),
 		A_Walk1StepSouthwest(),
@@ -105,7 +107,7 @@ script = EventScript([
 	], identifier="ending_mines_character_look_down_2_aq"),
 	RememberLastObject(),
 	Pause(120),
-	ActionQueueSync(target=NPC_6, subscript=[
+	ActionQueueSync(target=NPC_7, subscript=[
 		A_VisibilityOff(),
 		A_TransferToXYZF(x=4, y=56, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=2, y=220, z=0, direction=EAST),
@@ -130,7 +132,7 @@ script = EventScript([
 		A_SetPriority(2),
 		A_SetVRAMPriority(NORMAL_PRIORITY)
 	]),
-	ActionQueueSync(target=MARIO, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_Pause(90),
 		A_ResetProperties(),
 		A_Pause(150),
@@ -159,10 +161,10 @@ script = EventScript([
 		A_SetSpriteSequence(index=23, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mmr_character_lean_far_2_full")
 	], identifier="ending_mmr_character_lean_2_aq"),
 	RememberLastObject(),
-	SetSyncActionScript(NPC_6, A0120_EMBEDDED_ROUTINE),
+	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
 	Pause(90),
-	PauseActionScript(NPC_6),
-	StartAsyncEmbeddedActionScript(target=NPC_6, prefix=0xF1, subscript=[
+	PauseActionScript(NPC_7),
+	StartAsyncEmbeddedActionScript(target=NPC_7, prefix=0xF1, subscript=[
 		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
 		A_KillAllSubroutineSlots(),
 		A_ToggleSubroutineSlots(mask=0x07),
@@ -171,7 +173,7 @@ script = EventScript([
 		A_Pause(30),
 		A_KillAllSubroutineSlots()
 	]),
-	SetSyncActionScript(NPC_6, A0120_EMBEDDED_ROUTINE),
+	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
 	ActionQueueSync(target=MINES_CHARACTER, subscript=[
 		A_SetSpriteSequence(index=18, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mines_character_looks_upward"),
 	], identifier="ending_mines_character_looks_upward_aq"),
@@ -181,39 +183,39 @@ script = EventScript([
 	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
 		A_SetSpriteSequence(index=9, sprite_offset=1, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mway_character_geno_joy"),
 	], identifier="ending_mway_character_geno_joy_aq"),
-	ActionQueueAsync(target=MARIO, subscript=[
+	ActionQueueAsync(target=NPC_0, subscript=[
 		A_SetSpriteSequence(index=8, is_mold=True, is_sequence=True, looping=True)
 	]),
 	Pause(60),
-	PauseActionScript(NPC_6),
-	StartAsyncEmbeddedActionScript(target=NPC_6, prefix=0xF1, subscript=[
+	PauseActionScript(NPC_7),
+	StartAsyncEmbeddedActionScript(target=NPC_7, prefix=0xF1, subscript=[
 		A_KillAllSubroutineSlots(),
 		A_ToggleSubroutineSlots(mask=0x07),
 		A_UnknownCommand(bytearray([0x25, 0x80, 0x06, 0xA0, 0xFF])),
 		A_SetSubroutineXTargets(slot_26_x=0xFF90, slot_27_x=0x0100),
 		A_Pause(30)
 	]),
-	SetSyncActionScript(NPC_6, A0120_EMBEDDED_ROUTINE),
+	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
 	ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
 		A_SetSpriteSequence(index=19, is_mold=True, is_sequence=True, looping=True, identifier="ending_marrymore_char_look_left")
 	], identifier="ending_marrymore_char_look_left_aq"),
-	ActionQueueSync(target=MARIO, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_ResetProperties()
 	]),
 	ActionQueueAsync(target=MINES_CHARACTER, subscript=[
 		A_SetSpriteSequence(index=12, sprite_offset=0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mines_character_raised_arms"),
 	], identifier="ending_mines_character_raised_arms_aq"),
 	Pause(60),
-	PauseActionScript(NPC_6),
-	StartAsyncEmbeddedActionScript(target=NPC_6, prefix=0xF1, subscript=[
+	PauseActionScript(NPC_7),
+	StartAsyncEmbeddedActionScript(target=NPC_7, prefix=0xF1, subscript=[
 		A_KillAllSubroutineSlots(),
 		A_ToggleSubroutineSlots(mask=0x07),
 		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x88, 0xFF])),
 		A_SetSubroutineXTargets(slot_26_x=0x0178, slot_27_x=0x0000),
 		A_Pause(28)
 	]),
-	SetSyncActionScript(NPC_6, A0120_EMBEDDED_ROUTINE),
-	ActionQueueSync(target=MARIO, subscript=[
+	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetSpriteSequence(index=9, is_mold=True, is_sequence=True, looping=True)
 	]),
 	ActionQueueAsync(target=MARRYMORE_CHARACTER, subscript=[
@@ -224,27 +226,27 @@ script = EventScript([
 		A_SetSpriteSequence(index=2, sprite_offset=2, is_sequence=True, looping=True, identifier="ending_marrymore_char_joy_jump_2"),
 	], identifier="ending_marrymore_char_joy_jump_aq"),
 	Pause(60),
-	PauseActionScript(NPC_6),
-	StartAsyncEmbeddedActionScript(target=NPC_6, prefix=0xF1, subscript=[
+	PauseActionScript(NPC_7),
+	StartAsyncEmbeddedActionScript(target=NPC_7, prefix=0xF1, subscript=[
 		A_KillAllSubroutineSlots(),
 		A_ToggleSubroutineSlots(mask=0x07),
 		A_UnknownCommand(bytearray([0x25, 0x80, 0x06, 0x90, 0xFF])),
 		A_SetSubroutineXTargets(slot_26_x=0x0020, slot_27_x=0xFF30),
 		A_Pause(30)
 	]),
-	SetSyncActionScript(NPC_6, A0120_EMBEDDED_ROUTINE),
-	ActionQueueAsync(target=MARIO, subscript=[
+	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
+	ActionQueueAsync(target=NPC_0, subscript=[
 		A_SetSpriteSequence(index=9, sprite_offset=2, is_sequence=True, looping=True)
 	]),
 	Pause(60),
-	ActionQueueAsync(target=NPC_5, subscript=[
+	ActionQueueAsync(target=NPC_6, subscript=[
 		A_TransferToXYZF(x=4, y=52, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=242, y=252, z=0, direction=EAST)
 	]),
-	SetSyncActionScript(NPC_5, A0228_ENDING_CUTSCENE_EFFECT),
+	SetSyncActionScript(NPC_6, A0228_ENDING_CUTSCENE_EFFECT),
 	Pause(2),
-	PauseActionScript(NPC_6),
-	ActionQueueAsync(target=NPC_6, subscript=[
+	PauseActionScript(NPC_7),
+	ActionQueueAsync(target=NPC_7, subscript=[
 		A_KillAllSubroutineSlots(),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0])
 	]),
