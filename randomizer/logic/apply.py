@@ -7,7 +7,7 @@ import random
 import statistics
 
 from randomizer.types.gameworld import DI2730_FROGFUCIUS_OFFER_HINT
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_2, NPC_PALETTE_ROW_3 ,NPC_PALETTE_ROW_4,NPC_PALETTE_ROW_5,NPC_PALETTE_ROW_6, NPC_PALETTE_ROW_7
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import MARIO_PALETTE, NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_2, NPC_PALETTE_ROW_3 ,NPC_PALETTE_ROW_4,NPC_PALETTE_ROW_5,NPC_PALETTE_ROW_6, NPC_PALETTE_ROW_7
 
 from ..data.variables.event_palette_names import * # holy shit i cannot deal with how slow pylance is, fuck it just import everything
 from randomizer.logic.partition_calculator import snapshot_vanilla_room_states, update_changed_room_partitions
@@ -947,6 +947,25 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         # and produce a garbled mold.
         # world.event_scripts.get_subscript_command_by_identifier("ending_protag_lean_back_1_aq", "ending_protag_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         # world.event_scripts.get_subscript_command_by_identifier("ending_protag_lean_back_2_aq", "ending_protag_lean_back_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
+
+    # script_3885 darken-layers preserve_rows depend on the overworld character.
+    # The protagonist palette gets loaded into MARIO_PALETTE row regardless of
+    # ally_buffer state, AND the same character is also in NPC_PALETTE_ROW_1 (or
+    # whichever row their recruit slot uses). For non-Mario starters, preserving
+    # MARIO_PALETTE leaves the recruit-slot version of the protagonist character
+    # un-darkened too because the palette colors match. For Mario starter, the
+    # recruit-slot version (Toadstool at NPC_PALETTE_ROW_1) is the marrymore
+    # character, who should also stay un-darkened during this scene.
+    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import DarkenLayersExceptPaletteRows
+    overworld_ally = world.overworld_character.ally
+    if overworld_ally.index == 0:  # Mario protagonist
+        ending_darken_preserve = [MARIO_PALETTE, NPC_PALETTE_ROW_1]
+    else:                          # non-Mario protagonist
+        ending_darken_preserve = [NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_4]
+    for darken_id in ("ending_darken_1", "ending_darken_2"):
+        cmd = world.event_scripts.get_command_by_identifier(darken_id, DarkenLayersExceptPaletteRows)
+        cmd.set_preserve_rows(ending_darken_preserve)
+
     # Set palettes that change when the protagonist changes.
     if ally.index == 2: # bowser shifts a lot of stuff...
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)

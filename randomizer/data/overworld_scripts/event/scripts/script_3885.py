@@ -239,7 +239,7 @@ script = EventScript([
 		A_SequenceLoopingOff(),
 		A_FaceSoutheast()
 	]),
-	DarkenLayersExceptPaletteRows(fade_depth=22, duration_frames=40, preserve_rows=[MARIO_PALETTE, NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_3]),
+	DarkenLayersExceptPaletteRows(fade_depth=22, duration_frames=40, preserve_rows=[NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_3], identifier="ending_darken_1"),
 	RememberLastObject(),
 	UnsyncActionScript(NPC_0),
 	ActionQueueAsync(target=NPC_7, subscript=[
@@ -311,7 +311,7 @@ script = EventScript([
 		A_AddZCoord1Step()
 	]),
 	Pause(100),
-	DarkenLayersExceptPaletteRows(fade_depth=0, duration_frames=40, preserve_rows=[NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_3]),
+	DarkenLayersExceptPaletteRows(fade_depth=0, duration_frames=40, preserve_rows=[NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_3], identifier="ending_darken_2"),
 	RememberLastObject(),
 	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
 	Pause(98),
