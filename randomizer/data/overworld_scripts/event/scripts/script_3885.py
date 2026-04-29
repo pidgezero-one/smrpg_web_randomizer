@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 PLAYER = MARIO
+PROTAGONIST_CHARACTER = NPC_19
 MARRYMORE_CHARACTER = NPC_20
 MWAY_CHARACTER = NPC_21
 FOREST_CHARACTER = NPC_22
@@ -58,7 +59,7 @@ script = EventScript([
 		A_TransferToXYZF(x=6, y=50, z=0, direction=EAST),
 		A_SetSpriteSequence(index=1, is_sequence=True, looping=True)
 	]),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_TransferToXYZF(x=3, y=53, z=0, direction=EAST),
 		A_FaceEast()
 	]),
@@ -114,7 +115,7 @@ script = EventScript([
 		A_ShiftZUpSteps(2),
 		A_VisibilityOff()
 	]),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_SetWalkingSpeed(SLOW),
 		A_WalkEastPixels(16),
 		A_FaceNortheast(),
@@ -124,7 +125,7 @@ script = EventScript([
 	SetSyncActionScript(NPC_7, A0120_EMBEDDED_ROUTINE),
 	Pause(60),
 	Pause(10),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_ResetProperties(),
 		A_StartLoopNTimes(3),
 		A_TurnClockwise45DegreesNTimes(1),
@@ -155,7 +156,7 @@ script = EventScript([
 	], identifier="ending_forest_character_spell_frames_aq"),
 	Pause(10),
 	Pause(10),
-	SetAsyncActionScript(NPC_19, A0670_NOD_YES),
+	SetAsyncActionScript(PROTAGONIST_CHARACTER, A0670_NOD_YES),
 	Pause(30),
 	ActionQueueSync(target=FOREST_CHARACTER, subscript=[
 		A_ResetProperties()
@@ -171,13 +172,13 @@ script = EventScript([
 	]),
 	RememberLastObject(),
 	Pause(10),
-	ActionQueueAsync(target=NPC_19, subscript=[
+	ActionQueueAsync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_StartLoopNTimes(3),
 		A_TurnClockwise45DegreesNTimes(1),
 		A_Pause(2),
 		A_EndLoop()
 	]),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_Pause(8),
 		A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_protag_lean_back_2"),
 	], identifier="ending_protag_lean_back_2_aq"),
@@ -208,7 +209,7 @@ script = EventScript([
 		A_Pause(64),
 		A_KillAllSubroutineSlots()
 	]),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_Pause(60),
 		A_ResetProperties(),
 		A_Pause(4),
@@ -291,7 +292,7 @@ script = EventScript([
 		A_ShiftZDownPixels(4),
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=True)
 	]),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_Pause(16),
 		A_SetSpriteSequence(index=5, is_sequence=True, looping=True)
 	]),
@@ -331,12 +332,12 @@ script = EventScript([
 	RememberLastObject(),
 	RunStarPieceSequence(7),
 	DarkenLayersExceptPaletteRows(fade_depth=50, duration_frames=1, preserve_rows=[]),
-	ActionQueueAsync(target=NPC_19, subscript=[
+	ActionQueueAsync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_ResetProperties(),
 		A_TransferXYZFPixels(x=0, y=16, z=0, direction=EAST)
 	]),
 	SetBit(TEMP_7049_6),
-	Set7016701BToObjectXYZ(target=NPC_19),
+	Set7016701BToObjectXYZ(target=PROTAGONIST_CHARACTER),
 	AddConstToVar(X_COORD_2, 63744),
 	AddConstToVar(Y_COORD_2, 63744),
 	UnknownCommand(bytearray([0xFD, 0xC7])),
@@ -354,7 +355,7 @@ script = EventScript([
 	ClearBit(TEMP_7049_2),
 	ClearBit(TEMP_7049_6),
 	FreezeCamera(),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_TransferToXYZF(x=4, y=51, z=0, direction=EAST)
 	]),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
@@ -377,7 +378,7 @@ script = EventScript([
 	FadeInFromBlack(sync=True, duration=60),
 	PauseScriptUntilEffectDone(),
 	RememberLastObject(),
-	ActionQueueAsync(target=NPC_19, subscript=[
+	ActionQueueAsync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_FaceSouthwest(),
 		A_Pause(30),
 		A_SetSpriteSequence(index=6, is_sequence=True, looping=True),
@@ -455,7 +456,7 @@ script = EventScript([
 		A_FaceNorthwest(),
 		A_ResetProperties()
 	], identifier="ending_mmr_character_shocked_bwd_aq"),
-	ActionQueueSync(target=NPC_19, subscript=[
+	ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 		A_Pause(60),
 		A_SetSpriteSequence(index=0, sprite_offset=3, is_sequence=True, looping=True),
 		A_SetWalkingSpeed(NORMAL),
