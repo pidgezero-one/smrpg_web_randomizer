@@ -574,6 +574,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         marrymore_prize=_char_prize(MarrymoreCharacter),
         substitute_prizes=starter_prizes + excluded_prizes,
         mario_override=mario_override,
+        # Lock the cutscene protagonist to `world.overworld_character` — the
+        # same source `_apply_overworld_character_sprite_swap` uses to pick
+        # which NPC slot gets sprite 31. Both the script's protagonist-role
+        # animations and the sprite-31 swap MUST target the same NPC slot,
+        # otherwise the script animates one slot while sprite 31 lives on
+        # another.
+        protagonist_override=world.overworld_character,
     )
 
     # Insert Set7000ToCurrentLevel at the beginning of all henchman container events

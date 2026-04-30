@@ -94,7 +94,8 @@ def build_contents(
 		], identifier="ending_doll_aq_a"),
 		ActionQueueAsync(target=PROTAGONIST_CHARACTER, subscript=[
 			A_TransferToXYZF(x=6, y=50, z=0, direction=EAST),
-			A_TransferXYZFPixels(x=240, y=254, z=0, direction=EAST)
+			A_TransferXYZFPixels(x=240, y=254, z=0, direction=EAST),
+			A_FaceSouthwest(),
 		]),
 		FadeInFromColour(duration=40, colour=WHITE),
 		PauseScriptUntilEffectDone(),

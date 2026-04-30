@@ -1161,31 +1161,50 @@ def _swap_room_npc_coords(
         obj.set_direction(direction)
 
 
-def _apply_protagonist_sprite_swaps(
+def _apply_overworld_character_sprite_swap(
     world: GameWorld,
     room_id: int,
-    protagonist_slot: AreaObject,
-    is_mario_protagonist: bool,
-    mario_slot: AreaObject,
+    slot_for_prize: "dict[type, AreaObject]",
 ) -> None:
-    """When protagonist is not Mario, override the protagonist's NPC slot to
-    sprite 31 (the cosmetics-remapped protagonist sprite) and DIR4_ALL_DIRECTIONS,
-    and reduce Mario's NPC slot's VRAM-store directions to DIR0_SWSE_NWNE.
+    """Swap the overworld character's NPC slot to sprite 31.
+
+    Cosmetics writes sprite 31-37 with the **overworld character**'s sprite
+    data (driven by `world.overworld_character.ally`, which is StartingCharacter1
+    by default). Whichever NPC slot belongs to that character — Toadstool's,
+    Mallow's, Geno's, or Bowser's — needs to render via sprite 31 so its
+    cosmetic data lands. The cutscene "protagonist" role is unrelated; that
+    role can be played by any character.
+
+    No-op for Mario, since Mario's slot already uses sprite 0 and cosmetics
+    doesn't remap it.
+
+    Also reduces Mario's NPC slot's VRAM-store directions to DIR0_SWSE_NWNE
+    when the overworld character isn't Mario, since Mario's slot won't run
+    the full DIR4 animation set.
     """
-    if is_mario_protagonist:
-        return
+    ally_index = world.overworld_character.ally.index
+    if ally_index == 0:
+        return  # Mario — no swap needed
+    ally_index_to_prize_class: dict[int, type[CharacterPrize]] = {
+        1: ToadstoolRecruitmentPrize,
+        2: BowserRecruitmentPrize,
+        3: GenoRecruitmentPrize,
+        4: MallowRecruitmentPrize,
+    }
+    overworld_prize_class = ally_index_to_prize_class[ally_index]
+    overworld_slot = slot_for_prize[overworld_prize_class]
+    mario_slot = slot_for_prize[MarioRecruitmentPrize]
+
     room = world.rooms._rooms[room_id]
     if room is None:
         return
-    proto_obj = room.get_npc_by_target_id(protagonist_slot)
-    if proto_obj is not None:
-        proto_obj._npc = _make_protagonist_sprite_31_variant(
-            proto_obj._npc, directions=VramStore.DIR4_ALL_DIRECTIONS
+    overworld_obj = room.get_npc_by_target_id(overworld_slot)
+    if overworld_obj is not None:
+        overworld_obj._npc = _make_protagonist_sprite_31_variant(
+            overworld_obj._npc, directions=VramStore.DIR4_ALL_DIRECTIONS
         )
     mario_obj = room.get_npc_by_target_id(mario_slot)
     if mario_obj is not None:
-        # Make a Mario-NPC variant restricted to SWSE/NWNE so VRAM stays compact.
-        from ..data.rooms.npcs import MARIO_ENDING
         mario_obj._npc = _swap_npc_directions(
             mario_obj._npc, VramStore.DIR0_SWSE_NWNE
         )
@@ -1305,8 +1324,6 @@ def _apply_ending_cutscene_assignments(
         ),
     )
 
-    is_mario_protagonist = isinstance(protagonist_prize, MarioRecruitmentPrize)
-
     for (
         room_id,
         slot_for_prize,
@@ -1347,34 +1364,42 @@ def _apply_ending_cutscene_assignments(
         }
         _swap_room_npc_coords(world, room_id, active_role_slots, coords)
 
-        # 3. Sprite 31 + direction VRAM-store swaps.
-        _apply_protagonist_sprite_swaps(
-            world,
-            room_id,
-            protagonist_slot,
-            is_mario_protagonist,
-            mario_slot,
-        )
+        # 3. Sprite 31 swap on the OVERWORLD CHARACTER's NPC slot. Cosmetics
+        # has written that character's sprite data to sprite 31, so it must
+        # be the slot belonging to the overworld character — not whatever
+        # the cutscene's protagonist role happens to be (those can differ).
+        _apply_overworld_character_sprite_swap(world, room_id, slot_for_prize)
 
-        # 4. Bump min_vram_size on the forest role's NPC slot.
-        # The forest role plays sprite_offset=1 spell frames (sprite N+1) and
-        # the post-RunStarPieceSequence victory_pose. When the base character's
-        # sprite is entirely gridplane (e.g. Toadstool's sprite 7), the slot's
-        # tilemap allocation is 0 subtiles per direction and the alt sprite
-        # overflows into the next NPC's slot. min_vram_size=1 adds one
-        # 16-subtile row so the alt sprite molds fit.
-        # R496: always applied. R292: gated by R292_FOREST_MIN_VRAM_BUMP toggle
-        # at the top of this function.
-        apply_forest_bump = (
-            room_id == R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE
-            or (room_id == R292_UNMAPPED_HOUSE_ROOM and R292_FOREST_MIN_VRAM_BUMP)
-        )
-        if apply_forest_bump:
+        # 4. Bump min_vram_size on the slot whose role uses sprite_offset alt
+        # sprites. Adds one 16-subtile row so the alt sprite molds fit when
+        # the base character's sprite is gridplane-only (e.g. Toadstool's
+        # sprite 7) and the slot's tilemap allocation would otherwise be 0
+        # subtiles per direction.
+        #   R496: forest role (spell frames pre-sequence). Always applied.
+        #   R292: forest role (victory_pose post-sequence). Gated by toggle.
+        #   R088: mines role (shocked_bwd sprite_offset=1).
+        #     Special case: if mines is Bowser, Bowser's NPC is already
+        #     min_vram_size=1 by default — bumping it is a no-op. Bump the
+        #     marrymore slot instead so its sprite_offset=1 frames have
+        #     headroom too.
+        #   R375: no bump (no sprite_offset alts in that cutscene).
+        bump_slot: AreaObject | None = None
+        if room_id == R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE:
+            bump_slot = forest_slot
+        elif room_id == R292_UNMAPPED_HOUSE_ROOM and R292_FOREST_MIN_VRAM_BUMP:
+            bump_slot = forest_slot
+        elif room_id == R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION:
+            if isinstance(inner_mines_prize, BowserRecruitmentPrize):
+                bump_slot = marrymore_slot
+            else:
+                bump_slot = mines_slot
+
+        if bump_slot is not None:
             room = world.rooms._rooms[room_id]
             if room is not None:
-                forest_obj = room.get_npc_by_target_id(forest_slot)
-                if forest_obj is not None:
-                    forest_obj.set_min_vram_size(1)
+                obj = room.get_npc_by_target_id(bump_slot)
+                if obj is not None:
+                    obj.set_min_vram_size(1)
 
 
 def _doll_for_prize(prize: CharacterPrize) -> NPCBase | None:
@@ -2092,6 +2117,7 @@ def apply_ending_characters(
     marrymore_prize: CharacterPrize | None,
     substitute_prizes: list[CharacterPrize],
     mario_override: CharacterPrize | None = None,
+    protagonist_override: CharacterPrize | None = None,
 ) -> None:
     """Resolve the four ending-cutscene character prizes plus the protagonist
     and dispatch to the matching render_ending_character_N function.
@@ -2116,6 +2142,13 @@ def apply_ending_characters(
     the starter: the player visually plays as the starter character but Mario
     is conceptually the protagonist, so any Mario placement in the ending
     cutscene should display the starter instead.
+
+    `protagonist_override`, when provided, locks the cutscene protagonist to
+    that prize regardless of pool draw. Required because the cutscene script
+    targets the protagonist-role NPC for the player-character animations
+    (lean back, hold star, etc.) — that NPC must be the slot that belongs to
+    the actual overworld character, not whoever happens to be left in the
+    pool after filling empty named slots.
 
     Side effects:
       - The five ending-cutscene PaletteSetMorphs / PaletteSet command pairs
@@ -2144,6 +2177,19 @@ def apply_ending_characters(
         overridden = _apply_mario_override(sp)
         assert isinstance(overridden, CharacterPrize)
         pool.append(overridden)
+
+    # Lock the protagonist to the override (the overworld character). Remove
+    # one matching prize from the pool so it doesn't get popped into a named
+    # slot, leaving someone else stranded as protagonist.
+    locked_protagonist: CharacterPrize | None = None
+    if protagonist_override is not None:
+        locked_protagonist = _apply_mario_override(protagonist_override)
+        assert isinstance(locked_protagonist, CharacterPrize)
+        for i, sp in enumerate(pool):
+            if type(sp) is type(locked_protagonist):
+                pool.pop(i)
+                break
+
     random.shuffle(pool)
 
     for i in empty_indexes:
@@ -2154,15 +2200,17 @@ def apply_ending_characters(
             )
         ending_prizes[i] = pool.pop()
 
-    if not pool:
-        raise RuntimeError(
-            "Cannot resolve protagonist for ending cutscene: substitute pool "
-            "is empty after filling named slots."
-        )
-    # Whoever is left in the pool is the protagonist. If somehow more than one
-    # character is left (shouldn't happen with five total characters mapped
-    # across nine recruitment slots), pick one at random.
-    protagonist_prize = pool.pop() if len(pool) == 1 else random.choice(pool)
+    if locked_protagonist is not None:
+        protagonist_prize = locked_protagonist
+    else:
+        if not pool:
+            raise RuntimeError(
+                "Cannot resolve protagonist for ending cutscene: substitute pool "
+                "is empty after filling named slots."
+            )
+        # Whoever is left in the pool is the protagonist. If somehow more than
+        # one character is left, pick one at random.
+        protagonist_prize = pool.pop() if len(pool) == 1 else random.choice(pool)
 
     # Dedupe character types across the 5 final ending slots.
     # `_apply_mario_override` can replace a real Mario prize with the starter
@@ -2185,8 +2233,17 @@ def apply_ending_characters(
     _five_slots: list[CharacterPrize | None] = list(ending_prizes) + [protagonist_prize]
     _present = {type(p) for p in _five_slots if p is not None}
     _missing = [cls for cls in _all_ending_prize_classes if cls not in _present]
+    # Process the protagonist slot (position 4) FIRST so its type is locked in
+    # _seen — duplicates in named slots (positions 0-3) get replaced instead.
+    # Without this protection, `_apply_mario_override` rewriting a real Mario
+    # prize into the starter could create a duplicate that gets resolved by
+    # replacing the protagonist (since the loop processes indices in order),
+    # which silently breaks the protagonist_override lock.
     _seen: set[type] = set()
-    for i, p in enumerate(_five_slots):
+    if _five_slots[4] is not None:
+        _seen.add(type(_five_slots[4]))
+    for i in range(4):
+        p = _five_slots[i]
         if p is None:
             continue
         t = type(p)
