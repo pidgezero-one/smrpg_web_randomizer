@@ -2382,6 +2382,29 @@ YELLOW_STAR_PIECE_NPC = NPC(
     byte5_bit7=False,
     byte6_bit2=False,
 )
+YELLOW_STAR_PIECE_NPC_2 = NPC(
+    sprite_id=SPR0811_YELLOW_STAR_GRIDPLANE,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=7,
+    obtuse_axis=7,
+    height=13,
+    y_shift=-12,
+    show_shadow=True,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
 
 GREEN_STAR_PIECE_NPC = NPC(
     sprite_id=SPR0086_GREEN_STAR_PIECE,

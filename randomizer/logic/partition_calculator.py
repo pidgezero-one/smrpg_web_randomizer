@@ -201,7 +201,7 @@ def _detect_changed_rooms(world: GameWorld) -> set[int]:
         "snapshot_vanilla_room_states() must be called before change detection"
     )
 
-    changed: set[int] = set([R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY])
+    changed: set[int] = set([R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, R292_UNMAPPED_HOUSE_ROOM])
     for room_id, vanilla_state in world._vanilla_room_states.items():
         room = world.rooms._rooms[room_id]
         if room is None:
@@ -720,6 +720,8 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # per-NPC `cannot_clone` / `min_vram_size`, but the buffer-type sequence
     # (THREE_SPRITES_PER_ROW / FOUR_SPRITES_PER_ROW / etc.) stays as authored.
     PRESERVE_BUFFER_TYPES_ROOMS: set[int] = {
+        292,  # R292 — split second-half of the R496 ending cutscene; mirrors
+              # R496's hand-tuned 3/4/4 layout.
         496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE — ending cutscene
               # has a hand-tuned 3/4/4 layout that must survive ally_buffer growth.
     }
@@ -871,7 +873,7 @@ def _detect_ending_character_rooms() -> set[int]:
 # ending-cutscene rooms (88/375/496) where NPC slots, vram sizes, and buffer
 # layout are all hand-frozen — the role-swap path keeps each character at
 # their permanent NPC slot and only retargets script commands + swaps coords.
-_NEVER_RECALCULATE_PARTITION_ROOMS: set[int] = {88, 375, 496}
+_NEVER_RECALCULATE_PARTITION_ROOMS: set[int] = {88, 292, 375, 496}
 
 
 def update_changed_room_partitions(world: GameWorld) -> None:

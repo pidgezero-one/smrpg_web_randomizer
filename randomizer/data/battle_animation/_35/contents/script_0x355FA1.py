@@ -200,7 +200,7 @@ script = AnimationScriptBlock(expected_size=6419, expected_beginning=0x355FA1, s
 	SetAMEM60ToCurrentTarget(identifier="command_0x356213"),
 	SetAMEM32ToXYZCoords(origin=CASTER_CURRENT_POSITION, x=-4, y=-16, z=0, set_x=True, set_y=True, set_z=True),
 	EnableSpritesOnSubscreen(),
-	NewSpriteAtCoords(sprite_id=SPR0811_EMPTY, sequence=0, priority=0, vram_address=0x6200, palette_row=8, overwrite_palette=True, overlap_all_sprites=True),
+	NewSpriteAtCoords(sprite_id=SPR0811_YELLOW_STAR_GRIDPLANE, sequence=0, priority=0, vram_address=0x6200, palette_row=8, overwrite_palette=True, overlap_all_sprites=True),
 	FadeInSprite(duration=1),
 	VisibilityOn(unknown_byte=0x01),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=8),

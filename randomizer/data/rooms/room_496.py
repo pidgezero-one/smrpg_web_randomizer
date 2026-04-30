@@ -17,7 +17,7 @@ room = Room(
         extra_sprite_buffer_size=0,
         buffers = [
             Buffer(
-                buffer_type=BufferType.THREE_SPRITES_PER_ROW,
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
@@ -27,7 +27,7 @@ room = Room(
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             )
@@ -160,9 +160,14 @@ room = Room(
             byte7_upper2=3,
             cannot_clone=True,
             show_shadow=False,),
-        RegularNPC( # 8
-            npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
-            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+        # NPC_8-14 are spinning blue/green star pieces in vanilla R496. They are
+        # only used post-RunStarPieceSequence(7), so script_3885 transitions to
+        # R292 (a R496 clone) at that point and the spinning stars live there.
+        # Slots 8-14 stay as placeholders so script NPC_8..NPC_14 references
+        # remain valid in R496 (they're not targeted in R496's half of 3885).
+        RegularNPC( # 8 — placeholder; spinning stars live in R292
+            npc=npcs.EMPTY_NPC_3,
+            initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
             visible=True,
@@ -174,7 +179,7 @@ room = Room(
             face_on_trigger=False,
             cant_enter_doors=False,
             byte2_bit5=False,
-            set_sequence_playback=True,
+            set_sequence_playback=False,
             cant_float=False,
             cant_walk_up_stairs=False,
             cant_walk_under=False,
@@ -188,8 +193,8 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
             cannot_clone=False),
-        RegularClone( # 9
-            npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
+        RegularClone( # 9 — placeholder
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
             visible=True,
@@ -199,8 +204,8 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 10
-            npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
+        RegularClone( # 10 — placeholder
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
             visible=True,
@@ -210,8 +215,8 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 11
-            npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
+        RegularClone( # 11 — placeholder
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
             visible=True,
@@ -221,8 +226,8 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 12
-            npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
+        RegularClone( # 12 — placeholder
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
             visible=True,
@@ -232,8 +237,8 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 13
-            npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
+        RegularClone( # 13 — placeholder
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
             visible=True,
@@ -243,8 +248,8 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 14
-            npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
+        RegularClone( # 14 — placeholder
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
             visible=True,

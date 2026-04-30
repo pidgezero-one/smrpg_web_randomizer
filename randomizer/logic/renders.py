@@ -114,6 +114,7 @@ from ..data.variables.room_names import (
     R202_BOOSTER_TOWER_ENTRANCE,
     R254_BEAN_VALLEY_SMILAX_AREA,
     R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW,
+    R292_UNMAPPED_HOUSE_ROOM,
     R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
     R391_VOLCANO_POSTCD_AREA_04,
     R392_VOLCANO_POSTCD_AREA_06,
@@ -1021,6 +1022,18 @@ _R496_COORDS = {
     "inner_mines":  (6, 20, 0, SOUTHWEST),
 }
 
+# R292 — second-half of the R496 ending cutscene (post-RunStarPieceSequence).
+# NPC IDs match R496 exactly so script_3885 references resolve consistently
+# across the EnterArea(R292) transition.
+R292_NATIVE_SLOT_FOR_PRIZE: dict[type, AreaObject] = {
+    MarioRecruitmentPrize:     NPC_19,
+    ToadstoolRecruitmentPrize: NPC_20,
+    MallowRecruitmentPrize:    NPC_21,
+    GenoRecruitmentPrize:      NPC_22,
+    BowserRecruitmentPrize:    NPC_24,
+}
+_R292_COORDS = dict(_R496_COORDS)
+
 # R088 (script_3950 / E3950_POST_FINAL_BOSS_INIT). Bowser moved to last object
 # slot (NPC_8); a new GENO_ENDING NPC inserted at NPC_5 anchors palette row 4
 # next to the doll at NPC_4.
@@ -1231,6 +1244,16 @@ def _apply_ending_cutscene_assignments(
     character's model regardless of cutscene role. The slot is moved to a
     role-specific coord so the same slot can play different roles per seed.
     """
+    # =========================================================================
+    # TOGGLE: bump R292 forest NPC min_vram_size to 1.
+    # Set True to apply, False to skip. R496 forest is bumped unconditionally
+    # below; this flag only gates the R292 bump (which we currently leave off
+    # because R292's cannot_clone budget is tight and the bump can push
+    # NPC_24/Bowser into the spinning-stars buffer).
+    # =========================================================================
+    R292_FOREST_MIN_VRAM_BUMP = True
+    # =========================================================================
+
     from ..data.variables.event_script_names import (
         E3885_END_GAME,
         E3950_POST_FINAL_BOSS_INIT,
@@ -1247,6 +1270,19 @@ def _apply_ending_cutscene_assignments(
             R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
             R496_NATIVE_SLOT_FOR_PRIZE,
             _R496_COORDS,
+            E3885_END_GAME,
+            script_3885.build_contents,
+            ("marrymore", "mushroom_way", "forest_maze", "inner_mines"),
+        ),
+        # R292 shares script_3885 with R496 (same E3885_END_GAME). Re-running
+        # build_contents is idempotent — the second call overwrites with the
+        # same content. The coord-swap and sprite-31 logic must apply to R292
+        # too so the post-RunStarPieceSequence half of the cutscene renders
+        # correctly after EnterArea(R292).
+        (
+            R292_UNMAPPED_HOUSE_ROOM,
+            R292_NATIVE_SLOT_FOR_PRIZE,
+            _R292_COORDS,
             E3885_END_GAME,
             script_3885.build_contents,
             ("marrymore", "mushroom_way", "forest_maze", "inner_mines"),
@@ -1319,6 +1355,26 @@ def _apply_ending_cutscene_assignments(
             is_mario_protagonist,
             mario_slot,
         )
+
+        # 4. Bump min_vram_size on the forest role's NPC slot.
+        # The forest role plays sprite_offset=1 spell frames (sprite N+1) and
+        # the post-RunStarPieceSequence victory_pose. When the base character's
+        # sprite is entirely gridplane (e.g. Toadstool's sprite 7), the slot's
+        # tilemap allocation is 0 subtiles per direction and the alt sprite
+        # overflows into the next NPC's slot. min_vram_size=1 adds one
+        # 16-subtile row so the alt sprite molds fit.
+        # R496: always applied. R292: gated by R292_FOREST_MIN_VRAM_BUMP toggle
+        # at the top of this function.
+        apply_forest_bump = (
+            room_id == R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE
+            or (room_id == R292_UNMAPPED_HOUSE_ROOM and R292_FOREST_MIN_VRAM_BUMP)
+        )
+        if apply_forest_bump:
+            room = world.rooms._rooms[room_id]
+            if room is not None:
+                forest_obj = room.get_npc_by_target_id(forest_slot)
+                if forest_obj is not None:
+                    forest_obj.set_min_vram_size(1)
 
 
 def _doll_for_prize(prize: CharacterPrize) -> NPCBase | None:

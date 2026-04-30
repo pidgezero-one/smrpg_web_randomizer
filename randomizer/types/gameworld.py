@@ -1737,6 +1737,7 @@ class GameWorld:
             435,  # R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR
             441,
             486,
+            292,  # R292 — split second-half of the R496 ending cutscene
             496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE
             505,
             506,
@@ -2225,6 +2226,15 @@ class GameWorld:
         patch.add_data(0x1D03C4, bytes([
             0x4F, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00,
+        ]))
+        # Room 292 — clone of R496's layout (map 145, priority set 1, effects-NPC
+        # 0x1B = UNKNOWN_1B). R292 is the post-RunStarPieceSequence half of the
+        # R496 ending cutscene; map data is shared with R496. Bytes are R496's
+        # vanilla 18-byte record (read from $1D2320) written at R292's offset
+        # ($1D14C8 = 0x1D0040 + 292*18). 18 bytes, not 17 — final byte stays 0.
+        patch.add_data(0x1D14C8, bytes([
+            0x91, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1B, 0x00,
         ]))
 
         # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).

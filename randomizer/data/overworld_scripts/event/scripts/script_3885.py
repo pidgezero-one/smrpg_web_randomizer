@@ -68,7 +68,9 @@ def build_contents(
 		StopMusicFDA2(),
 		ActionQueueSync(target=SCREEN_FOCUS, subscript=[
 			A_SetWalkingSpeed(FASTEST),
-			A_WalkWestPixels(8)
+			A_WalkWestPixels(8),
+			A_WalkSouthPixels(30),
+			A_WalkEastPixels(28),
 		]),
 		ActionQueueSync(target=LAYER_3, subscript=[
 			A_SetWalkingSpeed(FASTEST),
@@ -137,7 +139,10 @@ def build_contents(
 		]),
 		ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 			A_SetWalkingSpeed(SLOW),
+			A_SequenceLoopingOn(),
+			A_SetSpriteSequence(index=12, is_sequence=True, looping=True, mirror_sprite=True),
 			A_WalkEastPixels(16),
+			A_SequenceLoopingOff(),
 			A_FaceNortheast(),
 			A_SetSpriteSequence(index=23, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="ending_protag_lean_back_1")
 		], identifier="ending_protag_lean_back_1_aq"),
@@ -150,7 +155,8 @@ def build_contents(
 			A_StartLoopNTimes(3),
 			A_TurnClockwise45DegreesNTimes(1),
 			A_Pause(2),
-			A_EndLoop()
+			A_EndLoop(),
+			A_FaceSouthwest(),
 		]),
 		ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
 			A_SetSpriteSequence(index=18, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mmr_character_looks_north")
@@ -176,7 +182,17 @@ def build_contents(
 		], identifier="ending_geno_palette_spell_frames_aq"),
 		Pause(10),
 		Pause(10),
-		SetAsyncActionScript(PROTAGONIST_CHARACTER, A0670_NOD_YES),
+		ActionQueueAsync(target=PROTAGONIST_CHARACTER, subscript=[
+			A_StartLoopNTimes(2),
+			A_SetSpriteSequence(index=6, is_mold=True, looping=True),
+			A_Pause(5),
+			A_SetSpriteSequence(index=0, is_mold=True, looping=True),
+			A_Pause(5),
+			A_EndLoop(),
+			A_ResetProperties(),
+			A_FaceEast7C(),
+			A_ReturnQueue()
+		]),
 		Pause(30),
 		ActionQueueSync(target=FOREST_CHARACTER, subscript=[
 			A_ResetProperties()
@@ -351,12 +367,62 @@ def build_contents(
 			A_ShiftZUpSteps(4)
 		]),
 		RememberLastObject(),
+		Set70107015ToObjectXYZ(MWAY_CHARACTER),
+		Set7016701BToObjectXYZ(MARRYMORE_CHARACTER),
+
+
+
+
+
+
+
 		RunStarPieceSequence(7),
+
+
+
+		EnterArea(room_id=R292_UNMAPPED_HOUSE_ROOM, face_direction=SOUTHWEST, x=4, y=48, z=0, run_entrance_event=False),
+		RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar_post_split"),
+		# Camera setup. SCREEN_FOCUS.TransferToXYZF isn't a usage pattern that
+		# appears anywhere else in the codebase — its X/Y interpretation
+		# doesn't match tile coords (camera ended up way northwest when tried).
+		# Instead let the existing state machine below (Set7016701BToObjectXYZ +
+		# AddConstToVar + the post-FreezeCamera relative walk) drive camera
+		# positioning, the same way it works in vanilla R496.
+		FreezeCamera(),
+		ActionQueueSync(target=LAYER_3, subscript=[
+			A_SetWalkingSpeed(FASTEST),
+			A_WalkEastPixels(22),
+			A_WalkNorthSteps(16),
+		]),
 		DarkenLayersExceptPaletteRows(fade_depth=50, duration_frames=1, preserve_rows=[]),
-		ActionQueueAsync(target=PROTAGONIST_CHARACTER, subscript=[
+		# get all characters in position
+		ActionQueueSync(target=FOREST_CHARACTER, subscript=[
+			A_TransferToXYZF(x=2, y=59, z=0, direction=EAST),
+			A_ResetProperties()
+		]),
+		ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 			A_ResetProperties(),
 			A_TransferXYZFPixels(x=0, y=16, z=0, direction=EAST)
 		]),
+		ActionQueueSync(target=MINES_CHARACTER, subscript=[
+			A_TransferToXYZF(x=1, y=57, z=0, direction=EAST),
+			A_TransferXYZFPixels(x=16, y=0, z=0, direction=EAST),
+			A_FaceNortheast()
+		]),
+		ActionQueueAsync(target=MARRYMORE_CHARACTER, subscript=[
+			A_TransferToXYZF(x=3, y=58, z=0, direction=EAST),
+			A_TransferXYZFPixels(x=8, y=4, z=0, direction=EAST),
+			A_TransferTo70167018(),
+			A_FaceNorthwest()
+		]),
+		Move70107015To7016701B(),
+		ActionQueueAsync(target=MWAY_CHARACTER, subscript=[
+			A_TransferToXYZF(x=1, y=54, z=0, direction=EAST),
+			A_TransferXYZFPixels(x=16, y=0, z=0, direction=EAST),
+			A_TransferTo70167018(),
+			A_FaceSoutheast()
+		]),
+
 		SetBit(TEMP_7049_6),
 		Set7016701BToObjectXYZ(target=PROTAGONIST_CHARACTER),
 		AddConstToVar(X_COORD_2, 63744),
@@ -379,10 +445,15 @@ def build_contents(
 		ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
 			A_TransferToXYZF(x=4, y=51, z=0, direction=EAST)
 		]),
+		# Final camera nudge that ran in R496 between FreezeCamera and FOREST
+		# setup (originally lines 444-446). The state machine above leaves the
+		# camera centered on the protagonist focus point; this shifts it slightly
+		# so the layer-3 beam frames correctly relative to the characters.
 		ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 			A_SetWalkingSpeed(FASTEST),
 			A_WalkNorthSteps(2),
-			A_WalkWestPixels(8)
+			A_WalkWestPixels(8),
+			A_WalkSouthPixels(30),
 		]),
 		ActionQueueSync(target=FOREST_CHARACTER, subscript=[
 			A_SetSequenceSpeed(NORMAL),
@@ -396,6 +467,9 @@ def build_contents(
 			A_SequenceLoopingOff()
 		]),
 		Clear0158Bit7Offset(0x0158, True),
+
+
+
 		FadeInFromBlack(sync=True, duration=60),
 		PauseScriptUntilEffectDone(),
 		RememberLastObject(),
@@ -445,21 +519,27 @@ def build_contents(
 		]),
 		Pause(30),
 		ActionQueueSync(target=MWAY_CHARACTER, subscript=[
-			A_SetWalkingSpeed(VERY_SLOW),
+			A_SetAllSpeeds(VERY_SLOW),
+			A_SequenceLoopingOn(),
+			A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True),
 			A_Walk1StepSoutheast(),
+			A_SequenceLoopingOff(),
 			A_SetSpriteSequence(index=0, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mway_character_shocked_fwd"),
 			A_JumpToHeight(height=64, silent=True),
-			A_SetWalkingSpeed(NORMAL),
+			A_SetAllSpeeds(NORMAL),
 			A_Walk1StepNorthwest(),
 			A_Pause(60),
 			A_FaceSoutheast(),
 			A_ResetProperties()
 		], identifier="ending_mway_character_shocked_fwd_aq"),
 		ActionQueueSync(target=MINES_CHARACTER, subscript=[
-			A_SetWalkingSpeed(VERY_SLOW),
+			A_SetAllSpeeds(VERY_SLOW),
+			A_SequenceLoopingOn(),
+			A_SetSpriteSequence(index=1, is_sequence=True, looping=True, mirror_sprite=True),
 			A_Walk1StepNortheast(),
+			A_SequenceLoopingOff(),
 			A_SetSpriteSequence(index=8, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, identifier="ending_mines_character_shocked_bwd"),
-			A_SetWalkingSpeed(NORMAL),
+			A_SetAllSpeeds(NORMAL),
 			A_JumpToHeight(height=64, silent=True),
 			A_Walk1StepSouthwest(),
 			A_Pause(60),
@@ -467,10 +547,13 @@ def build_contents(
 			A_ResetProperties()
 		], identifier="ending_mines_character_shocked_bwd_aq"),
 		ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
-			A_SetWalkingSpeed(VERY_SLOW),
+			A_SetAllSpeeds(VERY_SLOW),
+			A_SequenceLoopingOn(),
+			A_SetSpriteSequence(index=1, is_sequence=True, looping=True, mirror_sprite=False),
 			A_Walk1StepNorthwest(),
+			A_SequenceLoopingOff(),
 			A_SetSpriteSequence(index=8, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mmr_character_shocked_bwd"),
-			A_SetWalkingSpeed(NORMAL),
+			A_SetAllSpeeds(NORMAL),
 			A_JumpToHeight(height=64, silent=True),
 			A_Walk1StepSoutheast(),
 			A_Pause(60),
