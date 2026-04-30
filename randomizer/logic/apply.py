@@ -962,9 +962,9 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         ending_darken_preserve = [MARIO_PALETTE, NPC_PALETTE_ROW_1]
     else:                          # non-Mario protagonist
         ending_darken_preserve = [NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_4]
-    for darken_id in ("ending_darken_1", "ending_darken_2"):
-        cmd = world.event_scripts.get_command_by_identifier(darken_id, DarkenLayersExceptPaletteRows)
-        cmd.set_preserve_rows(ending_darken_preserve)
+    # for darken_id in ("ending_darken_1", "ending_darken_2"):
+    #     cmd = world.event_scripts.get_command_by_identifier(darken_id, DarkenLayersExceptPaletteRows)
+    #     cmd.set_preserve_rows(ending_darken_preserve)
 
     # script_3951 (R375 ending credits) per-NPC palette-row swap is handled
     # in renders.py via _apply_r375_protagonist_palette_rows, called from
@@ -986,14 +986,14 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_command_by_identifier("kamek_palette_br_4", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
             world.event_scripts.get_command_by_identifier("kamek_palette_br_5", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
             world.event_scripts.get_command_by_identifier("kamek_palette_br_6", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
-            world.event_scripts.get_command_by_identifier("ending_mushroom_way_char_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
-            world.event_scripts.get_command_by_identifier("ending_forest_maze_char_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
-            world.event_scripts.get_command_by_identifier("ending_marrymore_char_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
-            world.event_scripts.get_command_by_identifier("ending_inner_mines_char_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_6)
-            world.event_scripts.get_command_by_identifier("ending_mushroom_way_char_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
-            world.event_scripts.get_command_by_identifier("ending_forest_character_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
-            world.event_scripts.get_command_by_identifier("ending_marrymore_char_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
-            world.event_scripts.get_command_by_identifier("ending_inner_mines_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_6)
+            world.event_scripts.get_command_by_identifier("ending_mallow_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("ending_geno_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
+            world.event_scripts.get_command_by_identifier("ending_toadstool_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("ending_bowser_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_6)
+            world.event_scripts.get_command_by_identifier("ending_mallow_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("ending_geno_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
+            world.event_scripts.get_command_by_identifier("ending_toadstool_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("ending_bowser_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_6)
         except:
             pass
     # statue minigame

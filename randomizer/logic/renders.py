@@ -8,7 +8,8 @@ from __future__ import annotations
 
 import random
 from ast import Return
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Mapping, cast
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import Direction
 
 from smrpgpatchbuilder.datatypes.levels.classes import VramStore
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
@@ -16,14 +17,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
     A_TransferXYZFPixels,
     A_WalkNortheastPixels,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST, NORTHWEST, SOUTHWEST
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import (
     MARIO_PALETTE,
     NPC_PALETTE_ROW_1,
-    NPC_PALETTE_ROW_2,
-    NPC_PALETTE_ROW_3,
-    NPC_PALETTE_ROW_4,
-    NPC_PALETTE_ROW_6,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.palette_row import (
     PaletteRow,
@@ -945,6 +942,12 @@ def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
 # NPC in an ending-cutscene room (e.g. R496, R088) that should be replaced with
 # the chosen character's overworld model. These are populated independently of
 # the recruitment location's own _npc_fills.
+_ENDING_CHARACTER_1_NPC_FILLS: list[AllyNPCSub] = [
+    # Protagonist's Mario-NPC slot stays Mario (sprite 0) for Mario protagonist
+    # and is cosmetics-remapped to sprite 31 for non-Mario protagonists, so no
+    # NPC model swap is needed here.
+]
+
 _ENDING_CHARACTER_2_NPC_FILLS: list[AllyNPCSub] = [
     # R496/R088/R375 entries removed — those rooms have a Mario NPC at the
     # front and recruits stay at their native slots (no model swap). Only
@@ -960,12 +963,12 @@ _ENDING_CHARACTER_3_NPC_FILLS: list[AllyNPCSub] = [
 # character in the Forest Maze ending cutscene (render_ending_character_3).
 # Geno is intentionally absent from the doll mapping below — render_ending_character_3
 # returns early when the prize is GenoRecruitmentPrize, so these substitutions
-# are never applied for Geno. Indices reflect the post-Mario-NPC layout
-# (R088 NPC_3 → NPC_4, R375 NPC_2 → NPC_3, R496 NPC_22 → NPC_23).
+# are never applied for Geno. R375 doll lives at NPC_4 (between Geno=NPC_3
+# and Bowser=NPC_6) so its palette is engine-assigned implicitly.
 _ENDING_CHARACTER_3_DOLL_FILLS: list[AllyNPCSub] = [
-    AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_23),
+    # AllyNPCSub(R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, NPC_23),
     AllyNPCSub(R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, NPC_4),
-    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_3),
+    AllyNPCSub(R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, NPC_4),
 ]
 
 _ENDING_CHARACTER_4_NPC_FILLS: list[AllyNPCSub] = [
@@ -1007,20 +1010,52 @@ R496_NATIVE_SLOT_FOR_PRIZE: dict[type, AreaObject] = {
     BowserRecruitmentPrize:    NPC_24,
 }
 
-R496_VANILLA_ROLE_NPCS: dict[str, AreaObject] = {
-    "marrymore":    NPC_20,
-    "mushroom_way": NPC_21,
-    "forest_maze":  NPC_22,
-    "inner_mines":  NPC_24,
+# Native (x, y, z, direction) per role in R496. Each role-character's NPC slot
+# moves to that role's coord, so the visible character at e.g. Mario's coord is
+# always whoever is currently the protagonist.
+_R496_COORDS = {
+    "protagonist":  (4, 48, 0, SOUTHWEST),
+    "marrymore":    (6, 12, 0, SOUTHWEST),
+    "mushroom_way": (6, 14, 0, SOUTHWEST),
+    "forest_maze":  (6, 16, 0, SOUTHWEST),
+    "inner_mines":  (6, 20, 0, SOUTHWEST),
 }
 
-# Identifiers of script commands the retarget walker must NOT touch (they
-# reference the ally-buffer-rendered avatar, not the protagonist's NPC slot).
-R496_RETARGET_SKIP_IDENTIFIERS: frozenset[str] = frozenset({
-    "hide_player_avatar",
-    "hide_player_avatar2",
-    "hide_player_avatar3",
-})
+# R088 (script_3950 / E3950_POST_FINAL_BOSS_INIT). Bowser moved to last object
+# slot (NPC_8); a new GENO_ENDING NPC inserted at NPC_5 anchors palette row 4
+# next to the doll at NPC_4.
+R88_NATIVE_SLOT_FOR_PRIZE: dict[type, AreaObject] = {
+    MarioRecruitmentPrize:     NPC_0,
+    ToadstoolRecruitmentPrize: NPC_1,
+    MallowRecruitmentPrize:    NPC_3,
+    GenoRecruitmentPrize:      NPC_5,
+    BowserRecruitmentPrize:    NPC_8,
+}
+_R88_COORDS = {
+    "protagonist":  (5, 90, 0, NORTHWEST),
+    "marrymore":    (5, 90, 0, NORTHWEST),
+    "mushroom_way": (6, 92, 0, NORTHWEST),
+    "inner_mines":  (4, 93, 0, NORTHWEST),
+    # forest character is removed before fade-in; coord doesn't matter
+}
+
+# R375 (script_3951 / E3951_STAR_PIECE_CREDITS_INIT). Layout reads
+# Mario/Peach/Mallow/Geno/Doll/GenoRedemption/Bowser; the doll sits between
+# Geno (NPC_3) and Bowser (NPC_6) so its palette is implicitly assigned by
+# the engine — see _apply_r375_protagonist_palette_rows.
+R375_NATIVE_SLOT_FOR_PRIZE: dict[type, AreaObject] = {
+    MarioRecruitmentPrize:     NPC_0,
+    ToadstoolRecruitmentPrize: NPC_1,
+    MallowRecruitmentPrize:    NPC_2,
+    GenoRecruitmentPrize:      NPC_3,
+    BowserRecruitmentPrize:    NPC_6,
+}
+_R375_COORDS = {
+    "protagonist":  (5, 91, 0, NORTHWEST),
+    "marrymore":    (5, 91, 0, NORTHWEST),
+    "mushroom_way": (6, 93, 0, NORTHWEST),
+    "inner_mines":  (5, 94, 0, NORTHWEST),
+}
 
 
 def _retarget_event_script_targets(
@@ -1048,7 +1083,9 @@ def _retarget_event_script_targets(
             )
 
 
-def _make_protagonist_sprite_31_variant(base: NPCBase) -> NPCBase:
+def _make_protagonist_sprite_31_variant(
+    base: NPCBase, directions: VramStore | None = None
+) -> NPCBase:
     """Return a copy of `base` with sprite_id set to SPR0031_ALT_PROTAGONIST_1.
 
     Sprite 31 is the post-cosmetics protagonist sprite; the cosmetics layer
@@ -1057,6 +1094,9 @@ def _make_protagonist_sprite_31_variant(base: NPCBase) -> NPCBase:
     as the protagonist. We use this on the protagonist's native slot when
     the protagonist is not Mario, so the recruit-only sprite at that slot
     is replaced with the full protagonist sprite.
+
+    Pass `directions` (e.g. VramStore.DIR4_ALL_DIRECTIONS) to also override
+    the VRAM-store directions; defaults to copying base's existing value.
     """
     from ..data.variables.sprite_names import SPR0031_ALT_PROTAGONIST_1
     return NPCBase(
@@ -1067,7 +1107,7 @@ def _make_protagonist_sprite_31_variant(base: NPCBase) -> NPCBase:
         height=base.height,
         y_shift=base.y_shift,
         show_shadow=base.show_shadow,
-        directions=base.directions,
+        directions=directions if directions is not None else base.directions,
         min_vram_size=base.min_vram_size,
         priority_0=base.priority_0,
         priority_1=base.priority_1,
@@ -1084,7 +1124,88 @@ def _make_protagonist_sprite_31_variant(base: NPCBase) -> NPCBase:
     )
 
 
-def _apply_r496_role_assignments(
+def _swap_room_npc_coords(
+    world: GameWorld,
+    room_id: int,
+    role_slots: "dict[str, AreaObject]",
+    coords: "Mapping[str, tuple[int, int, int, Direction]]",
+) -> None:
+    """Move each role's NPC slot to that role's native (x, y, z, direction)."""
+    room = world.rooms._rooms[room_id]
+    if room is None:
+        return
+    for role, slot in role_slots.items():
+        c = coords.get(role)
+        if c is None:
+            continue
+        obj = room.get_npc_by_target_id(slot)
+        if obj is None:
+            continue
+        x, y, z, direction = c
+        obj.set_x(x)
+        obj.set_y(y)
+        obj.set_z(z)
+        obj.set_direction(direction)
+
+
+def _apply_protagonist_sprite_swaps(
+    world: GameWorld,
+    room_id: int,
+    protagonist_slot: AreaObject,
+    is_mario_protagonist: bool,
+    mario_slot: AreaObject,
+) -> None:
+    """When protagonist is not Mario, override the protagonist's NPC slot to
+    sprite 31 (the cosmetics-remapped protagonist sprite) and DIR4_ALL_DIRECTIONS,
+    and reduce Mario's NPC slot's VRAM-store directions to DIR0_SWSE_NWNE.
+    """
+    if is_mario_protagonist:
+        return
+    room = world.rooms._rooms[room_id]
+    if room is None:
+        return
+    proto_obj = room.get_npc_by_target_id(protagonist_slot)
+    if proto_obj is not None:
+        proto_obj._npc = _make_protagonist_sprite_31_variant(
+            proto_obj._npc, directions=VramStore.DIR4_ALL_DIRECTIONS
+        )
+    mario_obj = room.get_npc_by_target_id(mario_slot)
+    if mario_obj is not None:
+        # Make a Mario-NPC variant restricted to SWSE/NWNE so VRAM stays compact.
+        from ..data.rooms.npcs import MARIO_ENDING
+        mario_obj._npc = _swap_npc_directions(
+            mario_obj._npc, VramStore.DIR0_SWSE_NWNE
+        )
+
+
+def _swap_npc_directions(base: NPCBase, directions: VramStore) -> NPCBase:
+    """Return a copy of `base` with the given VramStore directions value."""
+    return NPCBase(
+        sprite_id=base.sprite_id,
+        shadow_size=base.shadow_size,
+        acute_axis=base.acute_axis,
+        obtuse_axis=base.obtuse_axis,
+        height=base.height,
+        y_shift=base.y_shift,
+        show_shadow=base.show_shadow,
+        directions=directions,
+        min_vram_size=base.min_vram_size,
+        priority_0=base.priority_0,
+        priority_1=base.priority_1,
+        priority_2=base.priority_2,
+        cannot_clone=base.cannot_clone,
+        byte2_bit0=base.byte2_bit0,
+        byte2_bit1=base.byte2_bit1,
+        byte2_bit2=base.byte2_bit2,
+        byte2_bit3=base.byte2_bit3,
+        byte2_bit4=base.byte2_bit4,
+        byte5_bit6=base.byte5_bit6,
+        byte5_bit7=base.byte5_bit7,
+        byte6_bit2=base.byte6_bit2,
+    )
+
+
+def _apply_ending_cutscene_assignments(
     world: GameWorld,
     *,
     marrymore_prize: CharacterPrize,
@@ -1093,64 +1214,111 @@ def _apply_r496_role_assignments(
     inner_mines_prize: CharacterPrize,
     protagonist_prize: CharacterPrize,
 ) -> None:
-    """For room 496 (the post-final-boss cutscene): keep each character's
-    native sprite at its native slot, retarget script_3885 commands so each
-    role's vanilla-NPC reference is redirected to whichever character's slot
-    plays that role this seed, override sprite_id on the protagonist's slot
-    to sprite 31 (when protagonist isn't Mario), and rebuild
-    npc_expected_animations from the room's role_expected_animations plus
-    extra_sprite_actions for the protagonist slot.
+    """Per-seed ending-cutscene plumbing for R496/R088/R375.
+
+    For each of the three rooms:
+      1. Rebuild the cutscene event script via its `build_contents` factory,
+         passing the role NPC slots so script-internal references resolve to
+         the right NPC for whichever character now plays each role.
+      2. Move each character's NPC slot to its role's native (x, y, z,
+         direction) so the cutscene visuals line up.
+      3. When the protagonist isn't Mario, swap that NPC's sprite_id to
+         sprite 31 and grow its VRAM directions to DIR4_ALL_DIRECTIONS;
+         reduce the Mario NPC's directions to DIR0_SWSE_NWNE so its VRAM
+         footprint stays compact.
+
+    Per-character "native NPC slot" is the slot that always renders that
+    character's model regardless of cutscene role. The slot is moved to a
+    role-specific coord so the same slot can play different roles per seed.
     """
-    from ..data.variables.event_script_names import E3885_END_GAME
-    from ..types.room import Room as ExtRoom
+    from ..data.variables.event_script_names import (
+        E3885_END_GAME,
+        E3950_POST_FINAL_BOSS_INIT,
+        E3951_STAR_PIECE_CREDITS_INIT,
+    )
+    from ..data.overworld_scripts.event.scripts import (
+        script_3885,
+        script_3950,
+        script_3951,
+    )
 
-    room = world.rooms._rooms[R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE]
-    if not isinstance(room, ExtRoom):
-        return
+    rooms = (
+        (
+            R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
+            R496_NATIVE_SLOT_FOR_PRIZE,
+            _R496_COORDS,
+            E3885_END_GAME,
+            script_3885.build_contents,
+            ("marrymore", "mushroom_way", "forest_maze", "inner_mines"),
+        ),
+        (
+            R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
+            R88_NATIVE_SLOT_FOR_PRIZE,
+            _R88_COORDS,
+            E3950_POST_FINAL_BOSS_INIT,
+            script_3950.build_contents,
+            ("marrymore", "mushroom_way", "inner_mines"),  # forest is removed in 3950
+        ),
+        (
+            R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
+            R375_NATIVE_SLOT_FOR_PRIZE,
+            _R375_COORDS,
+            E3951_STAR_PIECE_CREDITS_INIT,
+            script_3951.build_contents,
+            ("marrymore", "mushroom_way", "inner_mines"),  # forest is removed in 3951
+        ),
+    )
 
-    role_to_slot: dict[str, AreaObject] = {
-        "marrymore":    R496_NATIVE_SLOT_FOR_PRIZE[type(marrymore_prize)],
-        "mushroom_way": R496_NATIVE_SLOT_FOR_PRIZE[type(mushroom_way_prize)],
-        "forest_maze":  R496_NATIVE_SLOT_FOR_PRIZE[type(forest_maze_prize)],
-        "inner_mines":  R496_NATIVE_SLOT_FOR_PRIZE[type(inner_mines_prize)],
-    }
-    protagonist_slot = R496_NATIVE_SLOT_FOR_PRIZE[type(protagonist_prize)]
+    is_mario_protagonist = isinstance(protagonist_prize, MarioRecruitmentPrize)
 
-    target_map: dict = {}
-    for role, slot in role_to_slot.items():
-        vanilla_npc = R496_VANILLA_ROLE_NPCS[role]
-        if int(vanilla_npc) != int(slot):
-            target_map[vanilla_npc] = slot
-    if int(protagonist_slot) != int(MARIO):
-        target_map[MARIO] = protagonist_slot
+    for (
+        room_id,
+        slot_for_prize,
+        coords,
+        script_id,
+        build_contents,
+        coord_roles,
+    ) in rooms:
+        protagonist_slot = slot_for_prize[type(protagonist_prize)]
+        marrymore_slot = slot_for_prize[type(marrymore_prize)]
+        mway_slot = slot_for_prize[type(mushroom_way_prize)]
+        forest_slot = slot_for_prize[type(forest_maze_prize)]
+        mines_slot = slot_for_prize[type(inner_mines_prize)]
+        mario_slot = slot_for_prize[MarioRecruitmentPrize]
 
-    if target_map:
-        script = world.event_scripts.get_script_by_id(E3885_END_GAME)
-        _retarget_event_script_targets(
-            script.contents,
-            target_map,
-            skip_identifiers=R496_RETARGET_SKIP_IDENTIFIERS,
+        # 1. Rebuild script and replace contents in-place.
+        new_contents = build_contents(
+            protagonist=protagonist_slot,
+            marrymore=marrymore_slot,
+            mway=mway_slot,
+            forest=forest_slot,
+            mines=mines_slot,
         )
+        world.event_scripts.get_script_by_id(script_id).set_contents(new_contents)
 
-    if not isinstance(protagonist_prize, MarioRecruitmentPrize):
-        obj = room.get_npc_by_target_id(protagonist_slot)
-        if obj is not None:
-            obj._npc = _make_protagonist_sprite_31_variant(obj._npc)
+        # 2. Coord swap. Compose role → slot only for roles this room cares
+        # about; protagonist always gets coord-swapped too.
+        full_role_to_slot: dict[str, AreaObject] = {
+            "protagonist":  protagonist_slot,
+            "marrymore":    marrymore_slot,
+            "mushroom_way": mway_slot,
+            "forest_maze":  forest_slot,
+            "inner_mines":  mines_slot,
+        }
+        active_role_slots = {
+            r: full_role_to_slot[r]
+            for r in ("protagonist",) + coord_roles
+        }
+        _swap_room_npc_coords(world, room_id, active_role_slots, coords)
 
-    role_anims = getattr(room, "role_expected_animations", {}) or {}
-    rebuilt: dict[int, list] = {}
-    for role, anims in role_anims.items():
-        slot = role_to_slot.get(role)
-        if slot is None:
-            continue
-        idx = int(slot) - 20  # AreaObject NPC_X = X + 20; convert back to room object index
-        rebuilt[idx] = list(anims)
-    extra_anims = list(getattr(room, "extra_sprite_actions", []) or [])
-    if extra_anims:
-        proto_idx = int(protagonist_slot) - 20
-        existing = rebuilt.get(proto_idx, [])
-        rebuilt[proto_idx] = list(existing) + extra_anims
-    room.npc_expected_animations = rebuilt
+        # 3. Sprite 31 + direction VRAM-store swaps.
+        _apply_protagonist_sprite_swaps(
+            world,
+            room_id,
+            protagonist_slot,
+            is_mario_protagonist,
+            mario_slot,
+        )
 
 
 def _doll_for_prize(prize: CharacterPrize) -> NPCBase | None:
@@ -1218,6 +1386,56 @@ def _apply_ending_character_3_doll_fills(
                 f"NPC ID {npc_sub.npc_id} not found in room {npc_sub.room_id} while applying ending character 3 doll fills."
             )
         obj._npc = doll
+
+
+def render_ending_character_1(
+    world: GameWorld,
+    prize: CharacterPrize,
+    *,
+    protagonist_prize: CharacterPrize | None = None,
+) -> None:
+    """Apply animation/sprite changes for the protagonist's NPC slot in the
+    ending cutscenes (the Mario-NPC slot at the front of R088/R375/R496).
+
+    For Mario protagonist this is a no-op — the script source already hardcodes
+    Mario's correct mold (index=23, sprite_offset=2). For non-Mario protagonists
+    the cosmetics layer remaps sprite 31 to the protagonist character's full
+    sprite, so the LEAN_BACK mold-id refs in script_3885 must come from
+    `_sprites_primary` (the protagonist character's full sprite data).
+    """
+    if isinstance(prize, MarioRecruitmentPrize):
+        return
+    _apply_ending_character_npc_fills(world, prize, _ENDING_CHARACTER_1_NPC_FILLS)
+    ally = prize.ally
+    # The protagonist's NPC slot is rendered through sprite 31 = the cosmetics-
+    # remapped full protagonist sprite, so always use _sprites_primary here.
+    use_primary = isinstance(prize, MarioRecruitmentPrize) or (
+        protagonist_prize is not None and prize is protagonist_prize
+    )
+    a0 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_protag_lean_back_1_aq",
+        "ending_protag_lean_back_1",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a0, ally, SpriteAnimationState.LEAN_BACK, use_primary=use_primary
+    )
+    a1 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_protag_lean_back_2_aq",
+        "ending_protag_lean_back_2",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a1, ally, SpriteAnimationState.LEAN_BACK, use_primary=use_primary
+    )
+    a2 = world.event_scripts.get_subscript_command_by_identifier(
+        "ending_protag_look_at_doll_aq",
+        "ending_protag_look_at_doll",
+        A_SetSpriteSequence,
+    )
+    update_ally_animation(
+        a2, ally, SpriteAnimationState.LOOK_AT_DOLL, use_primary=use_primary
+    )
 
 
 def render_ending_character_2(
@@ -1364,65 +1582,65 @@ def render_ending_character_3(
     update_ally_animation(
         a0, ally, SpriteAnimationState.SPIN, use_primary=use_primary
     )
-    a1 = world.event_scripts.get_subscript_command_by_identifier(
-        "ending_mway_character_geno_joy_aq",
-        "ending_mway_character_geno_joy",
-        A_SetSpriteSequence,
-    )
-    update_ally_animation(
-        a1, ally, SpriteAnimationState.JOY, use_primary=use_primary
-    )
+    # a1 = world.event_scripts.get_subscript_command_by_identifier(
+    #     "ending_mway_character_geno_joy_aq",
+    #     "ending_mway_character_geno_joy",
+    #     A_SetSpriteSequence,
+    # )
+    # update_ally_animation(
+    #     a1, ally, SpriteAnimationState.JOY, use_primary=use_primary
+    # )
     a2 = world.event_scripts.get_subscript_command_by_identifier(
-        "ending_forest_character_spell_frame_3_aq",
-        "ending_forest_character_spell_frame_3",
+        "ending_geno_palette_spell_frame_3_aq",
+        "ending_geno_palette_spell_frame_3",
         A_SetSpriteSequence,
     )
     update_ally_animation(
         a2, ally, SpriteAnimationState.SPELL_FRAME_3, use_primary=use_primary
     )
     a3 = world.event_scripts.get_subscript_command_by_identifier(
-        "ending_forest_character_spell_frames_aq",
-        "ending_forest_character_spell_frame_3_",
+        "ending_geno_palette_spell_frames_aq",
+        "ending_geno_palette_spell_frame_3_",
         A_SetSpriteSequence,
     )
     update_ally_animation(
         a3, ally, SpriteAnimationState.SPELL_FRAME_3, use_primary=use_primary
     )
     a4 = world.event_scripts.get_subscript_command_by_identifier(
-        "ending_forest_character_spell_frames_aq",
-        "ending_forest_character_spell_frame_4",
+        "ending_geno_palette_spell_frames_aq",
+        "ending_geno_palette_spell_frame_4",
         A_SetSpriteSequence,
     )
     update_ally_animation(
         a4, ally, SpriteAnimationState.SPELL_FRAME_4, use_primary=use_primary
     )
     a5 = world.event_scripts.get_subscript_command_by_identifier(
-        "ending_forest_character_spell_frames_aq",
-        "ending_forest_character_spell_frame_5",
+        "ending_geno_palette_spell_frames_aq",
+        "ending_geno_palette_spell_frame_5",
         A_SetSpriteSequence,
     )
     update_ally_animation(
         a5, ally, SpriteAnimationState.SPELL_FRAME_5, use_primary=use_primary
     )
     a6 = world.event_scripts.get_subscript_command_by_identifier(
-        "ending_forest_character_spell_frames_aq",
-        "ending_forest_character_spell_frame_6",
+        "ending_geno_palette_spell_frames_aq",
+        "ending_geno_palette_spell_frame_6",
         A_SetSpriteSequence,
     )
     update_ally_animation(
         a6, ally, SpriteAnimationState.SPELL_FRAME_6, use_primary=use_primary
     )
     a7 = world.event_scripts.get_subscript_command_by_identifier(
-        "ending_forest_character_looks_down_aq",
-        "ending_forest_character_looks_down",
+        "ending_geno_palette_looks_down_aq",
+        "ending_geno_palette_looks_down",
         A_SetSpriteSequence,
     )
     update_ally_animation(
         a7, ally, SpriteAnimationState.LOOKING_DOWN_AWAY, use_primary=use_primary
     )
     a8 = world.event_scripts.get_subscript_command_by_identifier(
-        "ending_forest_character_victory_pose_aq",
-        "ending_forest_character_victory_pose",
+        "ending_geno_palette_victory_pose_aq",
+        "ending_geno_palette_victory_pose",
         A_SetSpriteSequence,
     )
     update_ally_animation(
@@ -1664,11 +1882,11 @@ def _ending_dark_palette_for_prize(prize: CharacterPrize) -> int:
 # Identifiers for the light/dark PaletteSetMorphs and PaletteSet commands in
 # script_3951. The light commands are PaletteSetMorphs (use set_palette_set);
 # the dark commands are PaletteSet (use set_palette_set_starts_at).
-_ENDING_PALETTE_IDS_PROTAGONIST = ("ending_protagonist_palette", "ending_protagonist_palette_dark")
-_ENDING_PALETTE_IDS_2 = ("ending_mushroom_way_char_palette", "ending_mushroom_way_char_palette_dark")
-_ENDING_PALETTE_IDS_3 = ("ending_forest_maze_char_palette", "ending_forest_character_dark")
-_ENDING_PALETTE_IDS_4 = ("ending_inner_mines_char_palette", "ending_inner_mines_palette_dark")
-_ENDING_PALETTE_IDS_5 = ("ending_marrymore_char_palette", "ending_marrymore_char_palette_dark")
+_ENDING_PALETTE_IDS_PROTAGONIST = ("ending_mario_palette", "ending_mario_palette_dark")
+_ENDING_PALETTE_IDS_2 = ("ending_mallow_palette", "ending_mallow_palette_dark")
+_ENDING_PALETTE_IDS_3 = ("ending_geno_palette", "ending_geno_palette_dark")
+_ENDING_PALETTE_IDS_4 = ("ending_bowser_palette", "ending_bowser_palette_dark")
+_ENDING_PALETTE_IDS_5 = ("ending_toadstool_palette", "ending_toadstool_palette_dark")
 
 
 def _set_ending_palette_pair(
@@ -1685,56 +1903,128 @@ def _set_ending_palette_pair(
     ).set_palette_set_starts_at(_ending_dark_palette_for_prize(prize))
 
 
-# script_3951 (R375 ending credits) per-NPC palette command identifiers and
-# their default palette rows when no protagonist consideration applies.
-# NPC slot order in the room: Mario=NPC_0, Peach=NPC_1, Mallow=NPC_2,
-# Geno=NPC_3, Bowser=NPC_5 (NPC_4 = Geno-redemption stays at NPC_PALETTE_ROW_5
-# and is unaffected by these commands). Each tuple is
-# (overworld-character class, light morph id, dark set id, default row).
-_R375_PROTAGONIST_PALETTE_PAIRS: list[
-    tuple[type[CharacterPrize], str, str, PaletteRow]
+# script_3951 (R375 ending credits) per-NPC palette command info. Each tuple is
+# (character class, light morph id, dark set id, light palette id, dark palette id).
+# Every NPC slot in R375 has a static sprite, so each command's palette content
+# is fixed by character — only the target row varies based on the protagonist
+# and forest character's identity (see _apply_r375_protagonist_palette_rows).
+_R375_CHARACTER_PALETTE_INFO: list[
+    tuple[type[CharacterPrize], str, str, int, int]
 ] = [
     (MarioRecruitmentPrize,
-     "ending_protagonist_palette",       "ending_protagonist_palette_dark",       NPC_PALETTE_ROW_1),
+     "ending_mario_palette",     "ending_mario_palette_dark",
+     EPAL0084_MARIO_ENDING,      EPAL0163_MARIO_ENDING_DARK),
     (ToadstoolRecruitmentPrize,
-     "ending_marrymore_char_palette",    "ending_marrymore_char_palette_dark",    NPC_PALETTE_ROW_2),
+     "ending_toadstool_palette", "ending_toadstool_palette_dark",
+     EPAL0141_TOADSTOOL_ENDING,  EPAL0164_TOADSTOOL_ENDING_DARK),
     (MallowRecruitmentPrize,
-     "ending_mushroom_way_char_palette", "ending_mushroom_way_char_palette_dark", NPC_PALETTE_ROW_3),
+     "ending_mallow_palette",    "ending_mallow_palette_dark",
+     EPAL0085_MALLOW_ENDING,     EPAL0166_MALLOW_ENDING_DARK),
     (GenoRecruitmentPrize,
-     "ending_forest_maze_char_palette",  "ending_forest_character_dark",          NPC_PALETTE_ROW_4),
+     "ending_geno_palette",      "ending_geno_palette_dark",
+     EPAL0086_GENO_ENDING,       EPAL0167_GENO_ENDING_DARK),
     (BowserRecruitmentPrize,
-     "ending_inner_mines_char_palette",  "ending_inner_mines_palette_dark",       NPC_PALETTE_ROW_6),
+     "ending_bowser_palette",    "ending_bowser_palette_dark",
+     EPAL0140_BOWSER_ENDING,     EPAL0165_BOWSER_ENDING_DARK),
+]
+
+_R375_DOLL_LIGHT_ID = "ending_doll_palette"
+_R375_DOLL_DARK_ID = "ending_doll_palette_dark"
+
+# NPC slot order in R375 with each slot's "kind" used by the row-allocation
+# walk. "DOLL" = NPC_4 (palette tracks forest character; Mario doll has its
+# own unique palette). "FILLER" = NPC_5 Geno_redemption (non-ally, consumes a
+# row but receives no PaletteSet command).
+_R375_SLOT_ORDER: list[tuple[int, "type[CharacterPrize] | str"]] = [
+    (0, MarioRecruitmentPrize),
+    (1, ToadstoolRecruitmentPrize),
+    (2, MallowRecruitmentPrize),
+    (3, GenoRecruitmentPrize),
+    (4, "DOLL"),
+    (5, "FILLER"),
+    (6, BowserRecruitmentPrize),
 ]
 
 
-def _apply_r375_protagonist_palette_rows(world: GameWorld) -> None:
-    """Retarget script_3951's per-NPC PaletteSet/PaletteSetMorphs commands so
-    that the overworld protagonist's NPC reads from MARIO_PALETTE and every
-    other NPC whose default row is higher than the protagonist's shifts down
-    one row to fill the vacated slot. NPCs with default rows lower than or
-    equal to the protagonist's keep their default row.
+def _apply_r375_protagonist_palette_rows(
+    world: GameWorld, forest_maze_prize: CharacterPrize
+) -> None:
+    """Assign rows + palette content to script_3951's per-character palette
+    commands based on the overworld protagonist and the forest character.
 
-    Driven by `world.overworld_character` (always — independent of how the
-    cutscene-role substitutions resolved).
+    Walking NPC slots 0–6 in order with a counter starting at NPC_PALETTE_ROW_1:
+    the protagonist's NPC takes MARIO_PALETTE without consuming the counter;
+    every other unique palette gets the next NPC_PALETTE_ROW. Repeated palettes
+    (e.g. a non-Mario doll matching its character) reuse the existing row. The
+    Mario doll has a unique palette ID so it always consumes its own row when
+    Mario is the forest character; in every other case the doll's palette is
+    provided by its character's command, so `ending_doll_palette[/_dark]` are
+    deleted from the script.
     """
     proto = world.overworld_character
-    proto_default_row = next(
-        row for cls, _, _, row in _R375_PROTAGONIST_PALETTE_PAIRS
-        if isinstance(proto, cls)
-    )
-    for cls, light_id, dark_id, default_row in _R375_PROTAGONIST_PALETTE_PAIRS:
-        if isinstance(proto, cls):
-            new_row: PaletteRow = MARIO_PALETTE
-        elif int(default_row) > int(proto_default_row):
-            new_row = PaletteRow(int(default_row) - 1)
+    is_mario_forest = isinstance(forest_maze_prize, MarioRecruitmentPrize)
+    forest_class = type(forest_maze_prize)
+
+    counter = 1
+    palette_to_row: dict[str, PaletteRow] = {}
+
+    def _next_npc_row() -> PaletteRow:
+        nonlocal counter
+        row = PaletteRow(int(NPC_PALETTE_ROW_1) + (counter - 1))
+        counter += 1
+        return row
+
+    for _slot, kind in _R375_SLOT_ORDER:
+        if isinstance(kind, str) and kind == "DOLL":
+            if is_mario_forest:
+                pal_key = "MARIO_DOLL"
+                is_proto_pal = False
+            else:
+                pal_key = forest_class.__name__
+                is_proto_pal = isinstance(proto, forest_class)
+        elif isinstance(kind, str) and kind == "FILLER":
+            pal_key = "GENO_REDEMPTION"
+            is_proto_pal = False
         else:
-            new_row = default_row
-        world.event_scripts.get_command_by_identifier(
+            assert isinstance(kind, type)
+            pal_key = kind.__name__
+            is_proto_pal = isinstance(proto, kind)
+
+        if pal_key in palette_to_row:
+            continue
+        if is_proto_pal:
+            palette_to_row[pal_key] = MARIO_PALETTE
+        else:
+            palette_to_row[pal_key] = _next_npc_row()
+
+    for cls, light_id, dark_id, light_pal, dark_pal in _R375_CHARACTER_PALETTE_INFO:
+        row = palette_to_row[cls.__name__]
+        light_cmd = world.event_scripts.get_command_by_identifier(
             light_id, PaletteSetMorphs
-        ).set_row(new_row)
+        )
+        light_cmd.set_row(row)
+        light_cmd.set_palette_set(light_pal)
         dark_cmd = world.event_scripts.get_command_by_identifier(dark_id, PaletteSet)
-        dark_cmd.set_from_row(new_row)
-        dark_cmd.set_to_row(new_row)
+        dark_cmd.set_from_row(row)
+        dark_cmd.set_to_row(row)
+        dark_cmd.set_palette_set_starts_at(dark_pal)
+
+    if is_mario_forest:
+        row = palette_to_row["MARIO_DOLL"]
+        light_cmd = world.event_scripts.get_command_by_identifier(
+            _R375_DOLL_LIGHT_ID, PaletteSetMorphs
+        )
+        light_cmd.set_row(row)
+        light_cmd.set_palette_set(EPAL0084_MARIO_ENDING)
+        dark_cmd = world.event_scripts.get_command_by_identifier(
+            _R375_DOLL_DARK_ID, PaletteSet
+        )
+        dark_cmd.set_from_row(row)
+        dark_cmd.set_to_row(row)
+        dark_cmd.set_palette_set_starts_at(EPAL0163_MARIO_ENDING_DARK)
+    else:
+        world.event_scripts.delete_command_by_identifier(_R375_DOLL_LIGHT_ID)
+        world.event_scripts.delete_command_by_identifier(_R375_DOLL_DARK_ID)
 
 
 def apply_ending_characters(
@@ -1762,7 +2052,7 @@ def apply_ending_characters(
     the AvailableCharacters flag. The pool is shuffled and drained without
     replacement: each empty named slot pops one prize, and the single remaining
     prize is used as the protagonist (whose palette goes into the
-    "ending_protagonist_palette" pair).
+    "ending_mario_palette" pair).
 
     `mario_override`, when provided, replaces every MarioRecruitmentPrize among
     the inputs (the four named-slot prizes and the substitute pool) with the
@@ -1834,7 +2124,7 @@ def apply_ending_characters(
     # MARIO → NPC_19 (Mario's native slot). Recruit-room placements are
     # untouched; only the ending cutscene is reassigned. Useful for
     # isolating Mario-NPC-as-protagonist behavior from the role-swap path.
-    R496_FORCE_VANILLA_CUTSCENE_ASSIGNMENT = True
+    R496_FORCE_VANILLA_CUTSCENE_ASSIGNMENT = False
     if R496_FORCE_VANILLA_CUTSCENE_ASSIGNMENT:
         all_five: list[CharacterPrize] = [p2, p3, p4, p5, protagonist_prize]
         by_type: dict[type, CharacterPrize] = {type(p): p for p in all_five}
@@ -1847,32 +2137,23 @@ def apply_ending_characters(
         # If fewer than 5 distinct character types are present (excluded char,
         # duplicate stand-ins), leave the random assignment alone.
 
-    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_PROTAGONIST, protagonist_prize)
-    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_2, p2)
-    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_3, p3)
-    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_4, p4)
-    _set_ending_palette_pair(world, _ENDING_PALETTE_IDS_5, p5)
+    # Rebuild scripts 3885/3950/3951 with role NPCs baked in, swap room NPC
+    # coords/directions, and apply sprite-31 + VRAM-store overrides. This MUST
+    # run before the palette pair / palette-row logic below so the rebuilt
+    # script contents (carrying the same identifiers) are what subsequent
+    # `get_command_by_identifier` calls operate on.
+    _apply_ending_cutscene_assignments(
+        world,
+        marrymore_prize=p5,
+        mushroom_way_prize=p2,
+        forest_maze_prize=p3,
+        inner_mines_prize=p4,
+        protagonist_prize=protagonist_prize,
+    )
 
-    _apply_r375_protagonist_palette_rows(world)
+    _apply_r375_protagonist_palette_rows(world, p3)
 
-    # R496 ending cutscene role-swap path is disabled by default. With Mario at
-    # NPC_19 and target=MARIO references hardcoded to target=NPC_19 in
-    # script_3885 (similarly NPC_0 in script_3950 / script_3951 for R088 / R375),
-    # no apply-time retargeting is needed for the vanilla cutscene assignments.
-    # The helper and its support code are kept around to revisit shuffled-recruit
-    # cutscene assignments later, where we'll need a way to lock per-NPC vram
-    # sizes so the partition orchestrator doesn't over-size animations.
-    R496_USE_ROLE_SWAP_PATH = False
-    if R496_USE_ROLE_SWAP_PATH:
-        _apply_r496_role_assignments(
-            world,
-            marrymore_prize=p5,
-            mushroom_way_prize=p2,
-            forest_maze_prize=p3,
-            inner_mines_prize=p4,
-            protagonist_prize=protagonist_prize,
-        )
-
+    render_ending_character_1(world, protagonist_prize, protagonist_prize=protagonist_prize)
     render_ending_character_2(world, p2, protagonist_prize=protagonist_prize)
     render_ending_character_3(world, p3, protagonist_prize=protagonist_prize)
     render_ending_character_4(world, p4, protagonist_prize=protagonist_prize)

@@ -34,107 +34,144 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 PLAYER = MARIO
-MARRYMORE_CHARACTER = NPC_1
-MWAY_CHARACTER = NPC_2
-MINES_CHARACTER = NPC_5
-DOLL = NPC_3
+DEFAULT_PROTAGONIST_CHARACTER = NPC_0
+DEFAULT_MARRYMORE_CHARACTER = NPC_1
+DEFAULT_MWAY_CHARACTER = NPC_2
+# Forest character is the Geno-ending NPC at R375 object index 3
+# (immediately before the doll at NPC_4).
+DEFAULT_FOREST_CHARACTER = NPC_3
+# Bowser is at the last object slot (index 6) so the layout reads
+# Mario/Peach/Mallow/Geno/Doll/GenoRedemption/Bowser.
+DEFAULT_MINES_CHARACTER = NPC_6
+# Doll sits between Geno (NPC_3) and Bowser (NPC_6); its palette is provided
+# implicitly by the engine — see _apply_r375_protagonist_palette_rows.
+DOLL = NPC_4
+# The Geno-redemption NPC (used for the cliff-side flying-sparkle effect)
+# stays at NPC_5.
+GENO_REDEMPTION_NPC = NPC_5
 
-script = EventScript([
-	EnterArea(room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, face_direction=NORTHWEST, x=4, y=48, z=0),
-	RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar3"),
-	RunStarPieceSequence(8),
-	PaletteSet(palette_set_starts_at=EPAL0163_MARIO_ENDING_DARK, from_row=NPC_PALETTE_ROW_1, identifier="ending_protagonist_palette_dark"),
-	PaletteSet(palette_set_starts_at=EPAL0164_TOADSTOOL_ENDING_DARK, from_row=NPC_PALETTE_ROW_2, identifier="ending_marrymore_char_palette_dark"),
-	PaletteSet(palette_set_starts_at=EPAL0166_MALLOW_ENDING_DARK, from_row=NPC_PALETTE_ROW_3, identifier="ending_mushroom_way_char_palette_dark"),
-	PaletteSet(palette_set_starts_at=EPAL0167_GENO_ENDING_DARK, from_row=NPC_PALETTE_ROW_4, identifier="ending_forest_character_dark"),
-	PaletteSet(palette_set_starts_at=EPAL0165_BOWSER_ENDING_DARK, from_row=NPC_PALETTE_ROW_6, identifier="ending_inner_mines_palette_dark"),
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_SetWalkingSpeed(FASTEST),
-		A_WalkEastPixels(16),
-		A_Walk1StepNorth()
-	]),
-	ActionQueueSync(target=LAYER_2, subscript=[
-		A_SetWalkingSpeed(FASTEST),
-		A_Walk1StepWest(),
-		A_WalkNorthwestSteps(2)
-	]),
-	ActionQueueSync(target=NPC_0, subscript=[
-		A_TransferToXYZF(x=5, y=90, z=0, direction=EAST),
-		A_TransferXYZFPixels(x=8, y=4, z=0, direction=EAST),
-		A_SetPriority(3),
-		A_FaceNorthwest()
-	]),
-	ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
-		A_TransferXYZFPixels(x=16, y=4, z=0, direction=EAST),
-		A_SetPriority(3)
-	]),
-	ActionQueueSync(target=MWAY_CHARACTER, subscript=[
-		A_TransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
-		A_SetPriority(3)
-	]),
-	ActionQueueSync(target=MINES_CHARACTER, subscript=[
-		A_TransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
-		A_SetPriority(3)
-	]),
-	ActionQueueSync(target=DOLL, subscript=[
-		A_TransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
-		A_SetPriority(3),
-        A_FaceSoutheast(),
-		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_doll_cliff_seq")
-	], identifier="ending_doll_cliff_seq_aq"),
-	ActionQueueAsync(target=NPC_4, subscript=[
-		A_TransferXYZFPixels(x=4, y=208, z=0, direction=EAST),
-		A_SetSpriteSequence(index=1, is_sequence=True, looping=True)
-	]),
-	Pause(30),
-	FadeInFromColour(duration=60, colour=WHITE),
-	PauseScriptUntilEffectDone(),
-	Pause(170),
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
-		A_SetWalkingSpeed(SLOW),
-		A_WalkSouthSteps(6),
-		A_WalkSouthPixels(12),
-		A_SetWalkingSpeed(NORMAL),
-		A_WalkSouthPixels(4),
-		A_WalkSouthSteps(11)
-	]),
-	Pause(328),
-	ActionQueueSync(target=LAYER_2, subscript=[
-		A_SetWalkingSpeed(VERY_SLOW),
-		A_Walk1StepSoutheast()
-	]),
-	Pause(2),
-	SetSyncActionScript(NPC_0, A0229_ENDING_CUTSCENE_EFFECT),
-	SetSyncActionScript(MARRYMORE_CHARACTER, A0229_ENDING_CUTSCENE_EFFECT),
-	SetSyncActionScript(MWAY_CHARACTER, A0229_ENDING_CUTSCENE_EFFECT),
-	SetSyncActionScript(DOLL, A0229_ENDING_CUTSCENE_EFFECT),
-	SetSyncActionScript(MINES_CHARACTER, A0229_ENDING_CUTSCENE_EFFECT),
-	RememberLastObject(),
-	ApplyTileModToLevel(use_alternate=True, room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, mod_id=1),
-	Pause(1),
-	ApplyTileModToLevel(use_alternate=True, room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, mod_id=0),
-	Pause(180),
-	UnknownCommand(bytearray([0x5F])),
-	Pause(404),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0161, row=LEVEL_PALETTE_1),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0162, row=LEVEL_PALETTE_5),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0084_MARIO_ENDING, row=NPC_PALETTE_ROW_1, identifier="ending_protagonist_palette"),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0141_TOADSTOOL_ENDING, row=NPC_PALETTE_ROW_2, identifier="ending_marrymore_char_palette"),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0085_MALLOW_ENDING, row=NPC_PALETTE_ROW_3, identifier="ending_mushroom_way_char_palette"),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0086_GENO_ENDING, row=NPC_PALETTE_ROW_4, identifier="ending_forest_maze_char_palette"),
-	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0140_BOWSER_ENDING, row=NPC_PALETTE_ROW_6, identifier="ending_inner_mines_char_palette"),
-	PauseScriptUntilEffectDone(),
-	Pause(216),
-	ApplyTileModToLevel(use_alternate=True, room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, mod_id=0),
-	ApplyTileModToLevel(use_alternate=True, room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, mod_id=1),
-	ApplyTileModToLevel(use_alternate=True, room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, mod_id=2),
-	FadeOutToBlack(sync=True, duration=120),
-	PauseScriptUntilEffectDone(),
-	Pause(60, identifier="EVENT_3951_pause_49"),
-	PlayMusicAtDefaultVolume(M0071_ENDINGPART2),
-	Pause(130),
-	RunEventSequence(scene=SC13_RUN_STAR_PIECE_END_SEQUENCE, value=0),
-	Pause(8),
-	EnterArea(room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, face_direction=SOUTHWEST, x=17, y=40, z=2),
-	JmpToEvent(E3804_ENDING_CREDITS_CORONATION_NPCS)
-])
+
+def build_contents(
+	protagonist=DEFAULT_PROTAGONIST_CHARACTER,
+	marrymore=DEFAULT_MARRYMORE_CHARACTER,
+	mway=DEFAULT_MWAY_CHARACTER,
+	forest=DEFAULT_FOREST_CHARACTER,
+	mines=DEFAULT_MINES_CHARACTER,
+):
+	"""Build the contents list for E3951_STAR_PIECE_CREDITS_INIT.
+
+	The forest character is removed before the fade-in: in R375 the cutscene
+	doesn't feature a forest role visually (Geno is the doll), so whoever's
+	been assigned to the forest role just needs to be cleared from the level.
+	"""
+	PROTAGONIST_CHARACTER = protagonist
+	MARRYMORE_CHARACTER = marrymore
+	MWAY_CHARACTER = mway
+	FOREST_CHARACTER = forest
+	MINES_CHARACTER = mines
+	return [
+		EnterArea(room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, face_direction=NORTHWEST, x=4, y=48, z=0),
+		RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar3"),
+		RemoveObjectFromCurrentLevel(FOREST_CHARACTER, identifier="hide_forest_character_3951"),
+		RunStarPieceSequence(8),
+		PaletteSet(palette_set_starts_at=EPAL0163_MARIO_ENDING_DARK, from_row=MARIO_PALETTE, identifier="ending_mario_palette_dark"),
+		PaletteSet(palette_set_starts_at=EPAL0164_TOADSTOOL_ENDING_DARK, from_row=NPC_PALETTE_ROW_1, identifier="ending_toadstool_palette_dark"),
+		PaletteSet(palette_set_starts_at=EPAL0166_MALLOW_ENDING_DARK, from_row=NPC_PALETTE_ROW_2, identifier="ending_mallow_palette_dark"),
+		PaletteSet(palette_set_starts_at=EPAL0167_GENO_ENDING_DARK, from_row=NPC_PALETTE_ROW_3, identifier="ending_geno_palette_dark"),
+		PaletteSet(palette_set_starts_at=EPAL0163_MARIO_ENDING_DARK, from_row=NPC_PALETTE_ROW_4, identifier="ending_doll_palette_dark"),
+		PaletteSet(palette_set_starts_at=EPAL0165_BOWSER_ENDING_DARK, from_row=NPC_PALETTE_ROW_6, identifier="ending_bowser_palette_dark"),
+		ActionQueueSync(target=SCREEN_FOCUS, subscript=[
+			A_SetWalkingSpeed(FASTEST),
+			A_WalkEastPixels(16),
+			A_Walk1StepNorth()
+		]),
+		ActionQueueSync(target=LAYER_2, subscript=[
+			A_SetWalkingSpeed(FASTEST),
+			A_Walk1StepWest(),
+			A_WalkNorthwestSteps(2)
+		]),
+		ActionQueueSync(target=PROTAGONIST_CHARACTER, subscript=[
+			A_TransferToXYZF(x=5, y=90, z=0, direction=EAST),
+			A_TransferXYZFPixels(x=8, y=4, z=0, direction=EAST),
+			A_SetPriority(3),
+			A_FaceNorthwest()
+		]),
+		ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
+			A_TransferXYZFPixels(x=16, y=4, z=0, direction=EAST),
+			A_SetPriority(3)
+		]),
+		ActionQueueSync(target=MWAY_CHARACTER, subscript=[
+			A_TransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
+			A_SetPriority(3)
+		]),
+		ActionQueueSync(target=MINES_CHARACTER, subscript=[
+			A_TransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
+			A_SetPriority(3)
+		]),
+		ActionQueueSync(target=DOLL, subscript=[
+			A_TransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
+			A_SetPriority(3),
+			A_FaceSoutheast(),
+			A_SetSpriteSequence(index=6, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_doll_cliff_seq")
+		], identifier="ending_doll_cliff_seq_aq"),
+		ActionQueueAsync(target=GENO_REDEMPTION_NPC, subscript=[
+			A_TransferXYZFPixels(x=4, y=208, z=0, direction=EAST),
+			A_SetSpriteSequence(index=1, is_sequence=True, looping=True)
+		]),
+		Pause(30),
+		FadeInFromColour(duration=60, colour=WHITE),
+		PauseScriptUntilEffectDone(),
+		Pause(170),
+		ActionQueueSync(target=SCREEN_FOCUS, subscript=[
+			A_SetWalkingSpeed(SLOW),
+			A_WalkSouthSteps(6),
+			A_WalkSouthPixels(12),
+			A_SetWalkingSpeed(NORMAL),
+			A_WalkSouthPixels(4),
+			A_WalkSouthSteps(11)
+		]),
+		Pause(328),
+		ActionQueueSync(target=LAYER_2, subscript=[
+			A_SetWalkingSpeed(VERY_SLOW),
+			A_Walk1StepSoutheast()
+		]),
+		Pause(2),
+		SetSyncActionScript(PROTAGONIST_CHARACTER, A0229_ENDING_CUTSCENE_EFFECT),
+		SetSyncActionScript(MARRYMORE_CHARACTER, A0229_ENDING_CUTSCENE_EFFECT),
+		SetSyncActionScript(MWAY_CHARACTER, A0229_ENDING_CUTSCENE_EFFECT),
+		SetSyncActionScript(DOLL, A0229_ENDING_CUTSCENE_EFFECT),
+		SetSyncActionScript(MINES_CHARACTER, A0229_ENDING_CUTSCENE_EFFECT),
+		RememberLastObject(),
+		ApplyTileModToLevel(use_alternate=True, room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, mod_id=1),
+		Pause(1),
+		ApplyTileModToLevel(use_alternate=True, room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY, mod_id=0),
+		Pause(180),
+		UnknownCommand(bytearray([0x5F])),
+		Pause(404),
+		PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0161, row=LEVEL_PALETTE_1),
+		PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0162, row=LEVEL_PALETTE_5),
+		PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0084_MARIO_ENDING, row=MARIO_PALETTE, identifier="ending_mario_palette"),
+		PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0141_TOADSTOOL_ENDING, row=NPC_PALETTE_ROW_1, identifier="ending_toadstool_palette"),
+		PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0085_MALLOW_ENDING, row=NPC_PALETTE_ROW_2, identifier="ending_mallow_palette"),
+		PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0086_GENO_ENDING, row=NPC_PALETTE_ROW_3, identifier="ending_geno_palette"),
+		PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0086_GENO_ENDING, row=NPC_PALETTE_ROW_4, identifier="ending_doll_palette"),
+		PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0140_BOWSER_ENDING, row=NPC_PALETTE_ROW_6, identifier="ending_bowser_palette"),
+		
+		PauseScriptUntilEffectDone(),
+		Pause(216),
+		ApplyTileModToLevel(use_alternate=True, room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, mod_id=0),
+		ApplyTileModToLevel(use_alternate=True, room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, mod_id=1),
+		ApplyTileModToLevel(use_alternate=True, room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, mod_id=2),
+		FadeOutToBlack(sync=True, duration=120),
+		PauseScriptUntilEffectDone(),
+		Pause(60, identifier="EVENT_3951_pause_49"),
+		PlayMusicAtDefaultVolume(M0071_ENDINGPART2),
+		Pause(130),
+		RunEventSequence(scene=SC13_RUN_STAR_PIECE_END_SEQUENCE, value=0),
+		Pause(8),
+		EnterArea(room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, face_direction=SOUTHWEST, x=17, y=40, z=2),
+		JmpToEvent(E3804_ENDING_CREDITS_CORONATION_NPCS)
+	]
+
+
+script = EventScript(build_contents())

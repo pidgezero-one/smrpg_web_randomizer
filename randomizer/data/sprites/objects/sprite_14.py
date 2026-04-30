@@ -16,7 +16,7 @@ from smrpgpatchbuilder.datatypes.graphics.classes import (
 
 sprite = CompleteSprite(
     animation=AnimationPack(255, length=1421, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=4096,
+        properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
                     tiles=[

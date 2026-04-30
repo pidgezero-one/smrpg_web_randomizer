@@ -867,6 +867,13 @@ def _detect_ending_character_rooms() -> set[int]:
     return rooms
 
 
+# Rooms whose partition must NEVER be recalculated. These are the three
+# ending-cutscene rooms (88/375/496) where NPC slots, vram sizes, and buffer
+# layout are all hand-frozen — the role-swap path keeps each character at
+# their permanent NPC slot and only retargets script commands + swaps coords.
+_NEVER_RECALCULATE_PARTITION_ROOMS: set[int] = {88, 375, 496}
+
+
 def update_changed_room_partitions(world: GameWorld) -> None:
     """Recalculate partitions for rooms where NPC models changed.
 
@@ -888,6 +895,7 @@ def update_changed_room_partitions(world: GameWorld) -> None:
         | (all_changed & slot_rooms)
         | (all_changed & ending_rooms)
     )
+    changed_rooms -= _NEVER_RECALCULATE_PARTITION_ROOMS
 
     if world.settings.debug_mode:
         print(f"[PARTITION] all_changed={len(all_changed)} boss_rooms={len(boss_rooms)} "
