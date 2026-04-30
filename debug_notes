@@ -11,6 +11,14 @@ TODO April 19
 - room 50 still broken
 
 
+
+SMRPG_US_9.0.0_open_d9609702681ee354b56f235a10871276_1376076938_DEBUG.sfc
+1376076938
+P(rchars|max:3|avail_chars:Z|starters:4)     Q(perms:equip_all|props:some|hints)     C(stats|infuse|spellelements)     X(rstars|total_sp:7)     T(ritems|xpstars|hill|mimics|slots|beetle|kamek|cookies)     L(keys_anywhere|stars_anywhere|moveflags|postgame|chests://////////3/////////////9/7///////////////////////////////B)     I(replace|fake|xpstar:none|fix_kg|sj1:10|sj2:20)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(endgame:0|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     G(rng)     S(rshops|shopqual:completely_random|showperms)     B(rboss|diff)     E(drops|formations|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko|p2bobomb:percent_0|fixinv|seeya)
+DEBUG offset 39 & 0
+- room 88: star overwrites mario instead of geno. How to predict who it will affect?
+
+
 High priority
 - apply speeds properly to statue game aninations
 - finish testing remake weapons

@@ -2164,6 +2164,42 @@ def apply_ending_characters(
     # across nine recruitment slots), pick one at random.
     protagonist_prize = pool.pop() if len(pool) == 1 else random.choice(pool)
 
+    # Dedupe character types across the 5 final ending slots.
+    # `_apply_mario_override` can replace a real Mario prize with the starter
+    # character — and if that starter is already present somewhere else (as a
+    # real recruit or another starter slot), we end up with two prizes of the
+    # same type. The role-to-NPC slot mapping (R{496,292,88,375}_NATIVE_SLOT_FOR_PRIZE)
+    # is keyed by prize TYPE, so duplicates collapse two cutscene roles onto
+    # the same NPC slot, leaving the missing character type entirely absent
+    # from the cutscene.
+    #
+    # Fix: walk the 5 final prizes; for each duplicate type beyond the first,
+    # swap it with a stand-in for whichever character type is currently absent.
+    _all_ending_prize_classes: tuple[type[CharacterPrize], ...] = (
+        MarioRecruitmentPrize,
+        ToadstoolRecruitmentPrize,
+        MallowRecruitmentPrize,
+        GenoRecruitmentPrize,
+        BowserRecruitmentPrize,
+    )
+    _five_slots: list[CharacterPrize | None] = list(ending_prizes) + [protagonist_prize]
+    _present = {type(p) for p in _five_slots if p is not None}
+    _missing = [cls for cls in _all_ending_prize_classes if cls not in _present]
+    _seen: set[type] = set()
+    for i, p in enumerate(_five_slots):
+        if p is None:
+            continue
+        t = type(p)
+        if t in _seen and _missing:
+            stand_in = _missing.pop(0)()
+            _five_slots[i] = stand_in
+            _seen.add(type(stand_in))
+        else:
+            _seen.add(t)
+    ending_prizes = _five_slots[:4]
+    protagonist_prize = _five_slots[4]
+    assert protagonist_prize is not None
+
     p2, p3, p4, p5 = ending_prizes
     assert (
         isinstance(p2, CharacterPrize)

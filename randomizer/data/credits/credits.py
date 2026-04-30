@@ -278,7 +278,7 @@ class Credits(object):
 DEV_MESSAGES = [
     ("DONT TRY IT...ALANIM.", "I ALREADY DID IT.", "   PAST ALANIM"),
     ("NOW TRY IT", "BLINDFOLDED", "     PATCDR"),
-    ("IF YOU CAN READ THIS", "IT MEANS I FIXED IT", "       PIDGEZERO_ONE"),
+    ("IF YOU CAN READ THIS", "IT MEANS I FIXED IT", "...MAYBE. PIDGEZERO_ONE"),
     ("OHH I GOTTA THINK", "OF SOMETHING FUNNY", "       YAKI"),
     ("WHY ARE YOU", "USING ZSNES", "    DORKMASTER FLEK"),
 ]
@@ -513,7 +513,7 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
 
     # 26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "ARTWORK")
+    credits.add_title(0x80, 0x00, 0x08, "SPRITE DESIGN")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
