@@ -51,7 +51,8 @@ script = EventScript([
 	RunEventAsSubroutine(E3902_MARRYMORE_STAR_PIECE_SIGNAL),
 	Return(identifier="EVENT_641_ret_11"),
     JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_641_ret_11"], identifier="EVENT_641_fade_in_from_black_async_10"),
-    
+    JmpIfBitSet(POSTGAME_CHAPEL_COMPLETE, ["EVENT_641_ret_11"]),
+    SetBit(POSTGAME_CHAPEL_COMPLETE),
 	SetVarToConst(PRIMARY_TEMP_7000, 529),
 	RunEventAsSubroutine(E0181_NPC_QUEST_4_CONTAINER),
 	RunEventAsSubroutine(E1205_POSTGAME_CHAPEL_BOSS_UNLOCKS),

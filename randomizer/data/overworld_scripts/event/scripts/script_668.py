@@ -62,13 +62,74 @@ script = EventScript([
 		A_TransferXYZFPixels(x=254, y=4, z=0, direction=EAST),
 		A_FaceNortheast()
 	]),
-	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
+	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(FAST),
 		A_WalkToXYCoords(x=5, y=85)
 	]),
-	RememberLastObject(),
-	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
+	Pause(10),
+	SetSyncActionScript(NPC_3, A0636_54_VELOCITY_SINGLE_JUMP),
 	Pause(30),
+	SetSyncActionScript(NPC_4, A0636_54_VELOCITY_SINGLE_JUMP),
+	Pause(30),
+	ActionQueueSync(target=NPC_3, subscript=[
+		A_SetWalkingSpeed(FAST),
+		A_SetSequenceSpeed(VERY_FAST),
+		A_WalkNortheastSteps(19)
+	]),
+	ActionQueueSync(target=NPC_11, subscript=[
+		A_SetWalkingSpeed(FAST),
+        A_SequenceLoopingOff(),
+        A_FixedFCoordOn(),
+		A_WalkNortheastSteps(19)
+	]),
+	ActionQueueSync(target=NPC_4, subscript=[
+		A_SetWalkingSpeed(FAST),
+		A_SetSequenceSpeed(VERY_FAST),
+		A_WalkNortheastSteps(19)
+	]),
+	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
+	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
+		A_WalkNortheastSteps(22),
+		A_Walk1StepNorth()
+	]),
+	SetSyncActionScript(NPC_3, A0099_LOOPED_JUMPING),
+	SetBit(TEMP_7043_1),
+	Pause(60),
+	ClearBit(TEMP_7043_1),
+	SetSyncActionScript(NPC_4, A0376_TURN_RANDOMLY_IN_PLACE),
+	Pause(30),
+    PauseActionScript(NPC_4),
+	StartAsyncEmbeddedActionScript(target=NPC_4, prefix=0xF1, subscript=[
+		A_FaceNortheast()
+	]),
+	Pause(10),
+	SetSyncActionScript(NPC_3, A0099_LOOPED_JUMPING),
+    SetBit(TEMP_7043_1),
+	Pause(30),
+	ClearBit(TEMP_7043_1),
+	ActionQueueAsync(target=NPC_4, subscript=[
+		A_FaceSouthwest()
+	]),
+	Pause(60),
+	ActionQueueAsync(target=NPC_4, subscript=[
+		A_FaceNortheast()
+	]),
+	Pause(30),
+	StartSyncEmbeddedActionScript(target=NPC_4, prefix=0xF1, subscript=[
+		A_SequencePlaybackOn(),
+		A_SetSequenceSpeed(VERY_FAST),
+		A_SequenceLoopingOn()
+	]),
+	StartSyncEmbeddedActionScript(target=NPC_3, prefix=0xF1, subscript=[
+		A_SequencePlaybackOn(),
+		A_SetSequenceSpeed(VERY_FAST),
+		A_SequenceLoopingOn()
+	]),
+	ActionQueueSync(target=MARIO, subscript=[
+		A_SetSpriteSequence(index=0, sprite_offset=3, is_sequence=True, looping=True)
+	]),
+	Pause(60),
+    
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	JmpIfBitSet(GAME_OVER, ["EVENT_287_reset_and_choose_game_0"]),
 	RestoreAllHP(),
@@ -78,6 +139,8 @@ script = EventScript([
 	RemoveObjectFromCurrentLevel(NPC_0),
 	RemoveObjectFromCurrentLevel(NPC_1),
 	RemoveObjectFromCurrentLevel(NPC_2),
+	RemoveObjectFromCurrentLevel(NPC_3),
+	RemoveObjectFromCurrentLevel(NPC_4),
 	RemoveObjectFromCurrentLevel(NPC_7),
 	RemoveObjectFromCurrentLevel(NPC_8),
 	RemoveObjectFromCurrentLevel(NPC_9),
@@ -86,11 +149,16 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_0, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
 	RemoveObjectFromSpecificLevel(NPC_1, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
 	RemoveObjectFromSpecificLevel(NPC_2, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
+	RemoveObjectFromSpecificLevel(NPC_3, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
+	RemoveObjectFromSpecificLevel(NPC_4, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
 	RemoveObjectFromSpecificLevel(NPC_7, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
 	RemoveObjectFromSpecificLevel(NPC_8, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
 	RemoveObjectFromSpecificLevel(NPC_9, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
 	RemoveObjectFromSpecificLevel(NPC_10, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
 	RemoveObjectFromSpecificLevel(NPC_11, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_ResetProperties(),
+	]),
 	FadeInFromBlack(sync=False),
 	ClearBit(TEMP_704C_0),
     RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),

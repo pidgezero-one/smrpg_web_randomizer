@@ -35,8 +35,10 @@ items:
     - RockCandyItem
     - RockCandyItem
     - RockCandyItem
+    - SignalRingItem
   override:
     StartingItem1Location: StayVoucherPrize
     StartingItem2Location: BambinoBombPrize
     StartingItem3Location: CastleKey1Prize
     StartingItem4Location: CastleKey2Prize
+    MushroomKingdomStarPiece: StarPiece1

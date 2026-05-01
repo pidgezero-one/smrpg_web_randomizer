@@ -1091,8 +1091,10 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                     break  # No more unique enemies available
                 candidates.append(random.choice(remaining_unique))
 
-            num_enemies = random.randint(1, random.randint(3, max_enemies))
-            num_enemies = max(num_enemies, len(current_enemy_types), len(forced_enemies))
+            # Bias toward multi-enemy formations: floor at 2 so single-enemy
+            # rolls are only possible when vanilla itself had a single member.
+            num_enemies = random.randint(2, random.randint(3, max_enemies))
+            num_enemies = max(num_enemies, len(current_members), len(forced_enemies))
 
             # Build formation while respecting VRAM constraint.
             # Duplicate enemies share sprite VRAM, so track unique sprites only.
@@ -1128,7 +1130,22 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                     unique_vram[new_enemy] = vram_cost
                     current_vram += vram_cost
 
+            # Shuffle for visual variety, then re-prioritize: forced enemies
+            # first, then vanilla originals, then random additions. Coord
+            # placement is greedy and earlier entries get first pick of the
+            # grid, so high-priority enemies must lead — otherwise a
+            # randomly-added sprite can claim the only viable spot and force
+            # a forced/original enemy to be dropped as None.
             random.shuffle(chosen_enemies)
+            forced_set = set(forced_enemies)
+            originals_set = set(current_enemy_types)
+            chosen_enemies.sort(
+                key=lambda e: (
+                    0 if e in forced_set
+                    else 1 if e in originals_set
+                    else 2
+                )
+            )
 
             coordinates = generate_formation_coordinates(chosen_enemies, world)
 

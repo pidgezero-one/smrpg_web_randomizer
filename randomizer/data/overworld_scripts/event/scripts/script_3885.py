@@ -71,6 +71,7 @@ def build_contents(
 			A_WalkWestPixels(8),
 			A_WalkSouthPixels(30),
 			A_WalkEastPixels(28),
+			A_WalkNorthPixels(16),
 		]),
 		ActionQueueSync(target=LAYER_3, subscript=[
 			A_SetWalkingSpeed(FASTEST),
@@ -257,11 +258,13 @@ def build_contents(
 		]),
 		ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
 			A_SequenceLoopingOn(),
+			A_SetSpriteSequence(index=1, sprite_offset=0, is_sequence=True, looping=True, mirror_sprite=True),
 			A_ToggleSubroutineSlots(mask=0x03),
 			A_SetSubroutineXTargets(slot_26_x=0x0080, slot_27_x=0xFFE0),
 			A_Pause(140),
 			A_KillAllSubroutineSlots(),
 			A_SequenceLoopingOff(),
+			A_ResetProperties(),
 			A_FaceNorthwest()
 		]),
 		ActionQueueSync(target=MWAY_CHARACTER, subscript=[
@@ -269,12 +272,14 @@ def build_contents(
 			A_SetSequenceSpeed(FAST),
 			A_FixedFCoordOn(),
 			A_SequenceLoopingOn(),
+			A_SetSpriteSequence(index=1, sprite_offset=0, is_sequence=True, looping=True, mirror_sprite=True),
 			A_ToggleSubroutineSlots(mask=0x03),
 			A_SetSubroutineXTargets(slot_26_x=0x0030, slot_27_x=0xFF80),
 			A_Pause(64),
 			A_KillAllSubroutineSlots(),
 			A_FixedFCoordOff(),
 			A_SequenceLoopingOff(),
+			A_ResetProperties(),
 			A_FaceSoutheast()
 		]),
 		DarkenLayersExceptPaletteRows(fade_depth=22, duration_frames=40, preserve_rows=[NPC_PALETTE_ROW_1, MARIO_PALETTE], identifier="ending_darken_1"),

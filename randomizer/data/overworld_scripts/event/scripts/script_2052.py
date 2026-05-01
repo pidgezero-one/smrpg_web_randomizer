@@ -36,15 +36,10 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 529),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
-	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+	JmpIfBitSet(GAME_OVER, ["EVENT_2052_reset_and_choose_game_17"]),
 	RestoreAllHP(),
 	RestoreAllFP(),
     SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	EnterArea(room_id=R153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY, face_direction=SOUTHWEST, x=20, y=16, z=0, run_entrance_event=True, identifier="EVENT_627_enter_area_2"),
-	FadeInFromBlack(sync=False),
-	SetBit(POSTGAME_CHAPEL_COMPLETE),
-	RunEventAsSubroutine(E0181_NPC_QUEST_4_CONTAINER),
-	RunEventAsSubroutine(E1205_POSTGAME_CHAPEL_BOSS_UNLOCKS),
-	SetVarToConst(PRIMARY_TEMP_7000, 529),
-	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
+    Return(identifier="EVENT_2052_ret_0"),
 ])

@@ -1921,7 +1921,7 @@ def render_ending_character_5(
         A_SetSpriteSequence,
     )
     update_ally_animation(
-        a31, ally, SpriteAnimationState.JOY_JUMP_BEHIND, use_primary=use_primary
+        a31, ally, SpriteAnimationState.JOY_JUMP, use_primary=use_primary
     )
     a32 = world.event_scripts.get_subscript_command_by_identifier(
         "ending_marrymore_char_joy_jump_aq",

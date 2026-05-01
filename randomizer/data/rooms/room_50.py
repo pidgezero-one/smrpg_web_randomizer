@@ -114,7 +114,7 @@ room = Room(
         
         RegularNPC(  # 1
             npc=npcs.TORTE_NPC_2,
-            initiator=EventInitiator.NONE,
+            initiator=EventInitiator.DO_ANYTHING,
             event_script=E2052_CHAPEL_POSTGAME_BOSS,
             action_script=A0015_DO_NOTHING,
             visible=True,
