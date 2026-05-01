@@ -2973,7 +2973,7 @@ MALLOW_Ally = Ally(
         SpriteAnimationState.JOY: (1, 9, False),
         SpriteAnimationState.JOY_BEHIND: (2, 2, False),
         SpriteAnimationState.JOY_JUMP: (2, 2, False),
-        SpriteAnimationState.JOY_JUMP_BEHIND: (1, 4, True),
+        SpriteAnimationState.JOY_JUMP_BEHIND: (1, 4, False),
         SpriteAnimationState.LAUGHING: (0, 2, False),
         SpriteAnimationState.LAUGHING_BACKWARDS: (0, 3, False),
         SpriteAnimationState.DISTRACTED: (0, 18, True),

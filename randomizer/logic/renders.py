@@ -1377,11 +1377,13 @@ def _apply_ending_cutscene_assignments(
         # subtiles per direction.
         #   R496: forest role (spell frames pre-sequence). Always applied.
         #   R292: forest role (victory_pose post-sequence). Gated by toggle.
-        #   R088: mines role (shocked_bwd sprite_offset=1).
-        #     Special case: if mines is Bowser, Bowser's NPC is already
-        #     min_vram_size=1 by default — bumping it is a no-op. Bump the
-        #     marrymore slot instead so its sprite_offset=1 frames have
-        #     headroom too.
+        #   R088: mines role (shocked_bwd sprite_offset=1) by default.
+        #     Special case: if mines is Bowser, his NPC default is already
+        #     min_vram_size=1 — bumping is a no-op. Bump the marrymore slot
+        #     instead so its sprite_offset=1 frames have headroom too.
+        #     Note: the cannot_clone region in R088 is tight; this bump is
+        #     only safe because NPC_2 (Sparkle) is now cannot_clone=False,
+        #     freeing space that the bump's growth consumes.
         #   R375: no bump (no sprite_offset alts in that cutscene).
         bump_slot: AreaObject | None = None
         if room_id == R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE:

@@ -519,7 +519,7 @@ def build_contents(
 		]),
 		Pause(30),
 		ActionQueueSync(target=MWAY_CHARACTER, subscript=[
-			A_SetAllSpeeds(VERY_SLOW),
+			A_SetWalkingSpeed(VERY_SLOW),
 			A_SequenceLoopingOn(),
 			A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True),
 			A_Walk1StepSoutheast(),
@@ -533,7 +533,7 @@ def build_contents(
 			A_ResetProperties()
 		], identifier="ending_mway_character_shocked_fwd_aq"),
 		ActionQueueSync(target=MINES_CHARACTER, subscript=[
-			A_SetAllSpeeds(VERY_SLOW),
+			A_SetWalkingSpeed(VERY_SLOW),
 			A_SequenceLoopingOn(),
 			A_SetSpriteSequence(index=1, is_sequence=True, looping=True, mirror_sprite=True),
 			A_Walk1StepNortheast(),
@@ -547,7 +547,7 @@ def build_contents(
 			A_ResetProperties()
 		], identifier="ending_mines_character_shocked_bwd_aq"),
 		ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
-			A_SetAllSpeeds(VERY_SLOW),
+			A_SetWalkingSpeed(VERY_SLOW),
 			A_SequenceLoopingOn(),
 			A_SetSpriteSequence(index=1, is_sequence=True, looping=True, mirror_sprite=False),
 			A_Walk1StepNorthwest(),
