@@ -631,10 +631,25 @@ def randomize_enemy_drops(
 
 
 VALID_FORMATION_COORDINATES = [
+    # Coords on the "ally side" of the diagonal axis through the problem
+    # (135, 143) Sparky have been shifted +5 right, -5 up to avoid producing
+    # a near-vertical bullet trajectory from caster to target. The SA-1
+    # motion-normalization routine produces a ~1 sub-pixel/frame minor-axis
+    # step for very lopsided delta ratios, stalling Finger Shot (and other
+    # projectile-bullet weapons) in PauseScriptUntil(UNKNOWN_PAUSE_7) for
+    # several real-world minutes.
+    #
+    # Allies sit at roughly (54,184), (88,205), (120,220). Slope between
+    # the front and back ally ≈ (220-184)/(120-54) = 36/66 ≈ 0.545. The
+    # boundary line is that slope drawn through the original problem coord
+    # (135, 143): y = 0.545·(x − 135) + 143. Any coord with y >= line_y
+    # (i.e. closer to the ally line on screen) has been shifted (+5, -5):
+    #   (103, 127) → (108, 122)
+    #   (119, 135) → (124, 130)
+    #   (135, 143) → (140, 138)
     (135, 111), (151, 119), (167, 127),
     (119, 119), (135, 127), (151, 135),
-    (103, 127), (119, 135), (135, 143),
-    
+    (108, 122), (124, 130), (140, 138),
 ]
 
 

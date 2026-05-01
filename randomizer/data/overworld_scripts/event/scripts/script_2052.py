@@ -42,4 +42,5 @@ script = EventScript([
     SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	EnterArea(room_id=R153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY, face_direction=SOUTHWEST, x=20, y=16, z=0, run_entrance_event=True, identifier="EVENT_627_enter_area_2"),
     Return(identifier="EVENT_2052_ret_0"),
+	ResetAndChooseGame(identifier="EVENT_2052_reset_and_choose_game_17"),
 ])

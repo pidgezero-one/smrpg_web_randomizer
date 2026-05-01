@@ -1332,13 +1332,34 @@ def _analyze_npc(
             buffer_type = BufferType.THREE_SPRITES_PER_ROW
         else:
             buffer_type = BufferType.EMPTY_3
+    elif clone_count > 0:
+        # Shared tilemap (non-gridplane) sprite — multiple NPCs reference
+        # one VRAM copy from a clone buffer. Default to FOUR_SPRITES_PER_ROW
+        # (the most flexible buffer format for tilemap; engine accepts
+        # tilemap data into either FOUR/THREE-per-row buffers, but
+        # FOUR-per-row gives more headroom for variable-size molds).
+        buffer_type = BufferType.FOUR_SPRITES_PER_ROW
     else:
         buffer_type = BufferType.EMPTY_3
 
     # NPCs that get dedicated VRAM outside the buffer system:
     # - cannot_clone NPCs (gridplane or not) — the game allocates dedicated VRAM
-    # - non-gridplane NPCs — can't share a clone buffer row
-    force_cannot_clone = cannot_clone or (not is_gridplane and not is_chest and not is_coin)
+    # - non-gridplane NPCs that are the SOLE user of their sprite_id —
+    #   they can't be referenced from a shared clone-buffer slot, so they
+    #   need their own VRAM allocation.
+    #
+    # Multiple non-gridplane NPCs that share the same sprite_id can ride a
+    # single clone-buffer slot (the engine references one VRAM copy from N
+    # NPCs, same as gridplane). Forcing those into cannot_clone wastes
+    # dedicated slots and corrupts the buffer-allocation calculation.
+    # Empirically verified in R232 where ~10 NPCs sharing one tilemap sprite
+    # render correctly only when set to cannot_clone=False.
+    force_cannot_clone = cannot_clone or (
+        not is_gridplane
+        and not is_chest
+        and not is_coin
+        and clone_count == 0
+    )
 
     return NPCAnalysis(
         index=index,
