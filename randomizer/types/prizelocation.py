@@ -1506,7 +1506,6 @@ class TreasureChestLocation(StandardPrizeLocation):
                     slidable_along_walls=True,
                     cant_move_if_in_air=True,
                     byte7_upper2=3,
-                    cannot_clone=True,
                 )
                 room._objects[start + 1] = RegularClone(
                     npc=FLOWER_NPC_2,
@@ -1518,7 +1517,6 @@ class TreasureChestLocation(StandardPrizeLocation):
                     z=5,
                     z_half=False,
                     direction=SOUTHWEST,
-                    cannot_clone=True,
                 )
                 room._objects[start + 2] = RegularClone(
                     npc=FLOWER_NPC_2,
@@ -1530,7 +1528,6 @@ class TreasureChestLocation(StandardPrizeLocation):
                     z=5,
                     z_half=False,
                     direction=SOUTHWEST,
-                    cannot_clone=True,
                 )
                 room._objects[start + 3] = RegularNPC(
                     npc=STATIC_FROG_COIN_NPC,
@@ -1559,7 +1556,6 @@ class TreasureChestLocation(StandardPrizeLocation):
                     slidable_along_walls=True,
                     cant_move_if_in_air=True,
                     byte7_upper2=3,
-                    cannot_clone=True,
                 )
                 room._objects[start + 4] = RegularNPC(
                     npc=EXPLOSION_NPC,
@@ -1589,7 +1585,6 @@ class TreasureChestLocation(StandardPrizeLocation):
                     slidable_along_walls=True,
                     cant_move_if_in_air=True,
                     byte7_upper2=3,
-                    cannot_clone=True,
                 )
 
 

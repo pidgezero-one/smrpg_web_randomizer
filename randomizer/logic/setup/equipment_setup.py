@@ -6,8 +6,35 @@ from typing import TYPE_CHECKING, cast
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
 from ...types.item import Equipment
 
-from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands import ScreenFlash
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands import PlaySound, ScreenFlash
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.flash_colours import WHITE, RED, AQUA, YELLOW
+
+from ...data.variables.battle_sfx_names import (
+    S0018_SUPER_JUMP_HIT_1,
+    S0029_FIRE_SHOOT,
+    S0078_TIMED_STAT_BOOST,
+    S0095_BOWSERS_CRUSHER,
+    S0100_ELECTROSHOCK_SPARKS,
+    S0103_CRYSTAL_HITS,
+)
+
+JUMP_HIT_SOUND_BY_ELEMENT = {
+    Element.FIRE: S0029_FIRE_SHOOT,
+    Element.THUNDER: S0100_ELECTROSHOCK_SPARKS,
+    Element.ICE: S0103_CRYSTAL_HITS,
+}
+
+FIRE_ORB_HIT_SOUND_BY_ELEMENT = {
+    Element.ICE: S0103_CRYSTAL_HITS,
+    Element.THUNDER: S0100_ELECTROSHOCK_SPARKS,
+    Element.JUMP: S0018_SUPER_JUMP_HIT_1,
+}
+
+FLAME_HIT_SOUND_BY_ELEMENT = {
+    Element.ICE: S0103_CRYSTAL_HITS,
+    Element.THUNDER: S0078_TIMED_STAT_BOOST,
+    Element.JUMP: S0095_BOWSERS_CRUSHER,
+}
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -31,6 +58,8 @@ def apply_equipment_settings(world: GameWorld) -> None:
     )
     from ...data.spells.spells import (
         GenoBeamSpell, GenoFlashSpell, PsychBombSpell, CrusherSpell, BowserCrushSpell,
+        SuperJumpSpell, UltraJumpSpell,
+        FireOrbSpell, SuperFlameSpell, UltraFlameSpell,
     )
     from ...data.items.items import (
         # Armor sets
@@ -75,6 +104,29 @@ def apply_equipment_settings(world: GameWorld) -> None:
                     RED if spell.element == Element.FIRE else
                     WHITE if spell.element == Element.THUNDER else YELLOW
                 )
+            elif isinstance(spell, (SuperJumpSpell, UltraJumpSpell)):
+                new_sound = JUMP_HIT_SOUND_BY_ELEMENT.get(spell.element)
+                if new_sound is not None:
+                    prefix = "super_jump" if isinstance(spell, SuperJumpSpell) else "ultra_jump"
+                    for i in range(1, 6):
+                        world.battle_animations[0x35].get_command_by_name(
+                            f"{prefix}_hit_{i}_sound", PlaySound
+                        ).set_sound(new_sound)
+            elif isinstance(spell, FireOrbSpell):
+                new_sound = FIRE_ORB_HIT_SOUND_BY_ELEMENT.get(spell.element)
+                if new_sound is not None:
+                    for i in range(1, 3):
+                        world.battle_animations[0x35].get_command_by_name(
+                            f"fire_orb_hit_{i}_sound", PlaySound
+                        ).set_sound(new_sound)
+            elif isinstance(spell, (SuperFlameSpell, UltraFlameSpell)):
+                new_sound = FLAME_HIT_SOUND_BY_ELEMENT.get(spell.element)
+                if new_sound is not None:
+                    prefix = "super_flame" if isinstance(spell, SuperFlameSpell) else "ultra_flame"
+                    for i in range(1, 3):
+                        world.battle_animations[0x35].get_command_by_name(
+                            f"{prefix}_hit_{i}_sound", PlaySound
+                        ).set_sound(new_sound)
 
     # Equipment properties - SOME mode (specific enhancements)
     if world.settings.is_flag_value(
