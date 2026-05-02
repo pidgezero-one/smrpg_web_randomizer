@@ -8,7 +8,7 @@ PyYAML==6.0.2
 scipy
 Wii.py==0.1
 pycryptodome==3.21.0
-smrpgpatchbuilder==6.2.1
+smrpgpatchbuilder==6.2.2
 git+https://gitlab.com/pidgezero_one/python-bps.git@0.1#egg=python-bps
 gunicorn==23.0.0
 psycopg2-binary==2.9.10

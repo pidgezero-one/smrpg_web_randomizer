@@ -554,6 +554,21 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         if prize_cls is not None:
             excluded_prizes.append(prize_cls())
 
+    # MaxCharacters can also drop characters from the seed (the items shuffler
+    # picks at most N character prizes, leaving the rest unplaced). Those don't
+    # show up in AvailableCharacters.disabled, so detect them by scanning every
+    # location in the world and adding a stand-in for any character class that
+    # has no prize anywhere.
+    placed_character_classes: set[type[CharacterPrize]] = set()
+    for loc in world.locations.values():
+        if loc.prize is not None and isinstance(loc.prize, CharacterPrize):
+            placed_character_classes.add(type(loc.prize))
+    already_subbed = {type(p) for p in excluded_prizes}
+    for prize_cls in excluded_prize_classes_by_ally_name.values():
+        if prize_cls in placed_character_classes or prize_cls in already_subbed:
+            continue
+        excluded_prizes.append(prize_cls())
+
     # When PlayAsStarter is disabled, the player visually plays as Mario
     # everywhere outside of battle regardless of who the actual starter is.
     # If the starter (StartingCharacter1) is anyone but Mario, the ending

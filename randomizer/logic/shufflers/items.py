@@ -714,12 +714,54 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
             "No non-elemental spells are available to assign to progress rules. At least one non-elemental spell must be included in the seed for progression purposes."
         )
 
-    # Place up to 3 non-elemental spells in progression tier to ensure
+    # Map non-elemental spells to their owning character. Used both to bias
+    # spell selection toward explicit starters and to compute the resulting
+    # spell_required_chars set after selection.
+    spell_to_character: dict[type[Prize], type[CharacterPrize]] = {
+        StarRainSpellPrize: MallowRecruitmentPrize,
+        GenoWhirlSpellPrize: GenoRecruitmentPrize,
+        GenoBlastSpellPrize: GenoRecruitmentPrize,
+        TerrorizeSpellPrize: BowserRecruitmentPrize,
+        PoisonGasSpellPrize: BowserRecruitmentPrize,
+        GenoBeamSpellPrize: GenoRecruitmentPrize,
+        GenoFlashSpellPrize: GenoRecruitmentPrize,
+        CrusherSpellPrize: BowserRecruitmentPrize,
+        BowserCrushSpellPrize: BowserRecruitmentPrize,
+        PsychBombSpellPrize: ToadstoolRecruitmentPrize,
+    }
+
+    # Compute the characters explicitly chosen as starters so the non-elemental
+    # spell selection can prefer spells those characters already own. Without
+    # this bias a small max_characters budget can pick spells whose owners
+    # collide with the explicit starter and silently drop the starter from the
+    # seed.
+    starting_chars_flag = world.settings.get_flag(StartingCharacters)
+    explicit_starter_prizes: set[type[CharacterPrize]] = set()
+    for option in starting_chars_flag.enabled:
+        value = option.value
+        if isinstance(value, str):
+            continue
+        prize_cls = all_character_prizes.get(value.name)
+        if prize_cls is not None:
+            explicit_starter_prizes.add(prize_cls)
+
+    # Place up to 2 non-elemental spells in progression tier to ensure
     # MokuraBossFight (and similar) can be placed (they require a non-elemental
     # spell to be accessible). Use fewer if not enough are available.
-    random.shuffle(non_elemental_spell_prizes)
-    progression_nonelementals = non_elemental_spell_prizes[
-        : min(2, len(non_elemental_spell_prizes))
+    # Prefer spells owned by explicit starters so spell-progression doesn't
+    # force in additional characters and bust the max_characters budget.
+    preferred_spells = [
+        s for s in non_elemental_spell_prizes
+        if spell_to_character.get(s) in explicit_starter_prizes
+    ]
+    other_spells = [
+        s for s in non_elemental_spell_prizes if s not in preferred_spells
+    ]
+    random.shuffle(preferred_spells)
+    random.shuffle(other_spells)
+    ordered_non_elementals = preferred_spells + other_spells
+    progression_nonelementals = ordered_non_elementals[
+        : min(2, len(ordered_non_elementals))
     ]
 
     # Characters required for spell progression (when spells are vanilla)
@@ -730,18 +772,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         # Mario must be in progression (always has Jump for combat)
         spell_required_chars.add(MarioRecruitmentPrize)
         # Characters who learn the selected progression non-elemental spells
-        spell_to_character: dict[type[Prize], type[CharacterPrize]] = {
-            StarRainSpellPrize: MallowRecruitmentPrize,
-            GenoWhirlSpellPrize: GenoRecruitmentPrize,
-            GenoBlastSpellPrize: GenoRecruitmentPrize,
-            TerrorizeSpellPrize: BowserRecruitmentPrize,
-            PoisonGasSpellPrize: BowserRecruitmentPrize,
-            GenoBeamSpellPrize: GenoRecruitmentPrize,
-            GenoFlashSpellPrize: GenoRecruitmentPrize,
-            CrusherSpellPrize: BowserRecruitmentPrize,
-            BowserCrushSpellPrize: BowserRecruitmentPrize,
-            PsychBombSpellPrize: ToadstoolRecruitmentPrize,
-        }
         for spell in progression_nonelementals:
             char = spell_to_character.get(spell)
             if char is not None:
@@ -793,6 +823,19 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
 
     # Add characters required by spell progression (vanilla spells)
     progression_required_chars |= spell_required_chars
+
+    # Add characters explicitly selected as starters. They must be present in
+    # the pool, otherwise StartingCharacter1's placement falls back to a
+    # filler character and the user's chosen starter silently disappears.
+    starting_chars_flag = world.settings.get_flag(StartingCharacters)
+    for option in starting_chars_flag.enabled:
+        value = option.value
+        # Skip Random_X placeholders — those are meant to be resolved randomly
+        if isinstance(value, str):
+            continue
+        prize_cls = all_character_prizes.get(value.name)
+        if prize_cls is not None:
+            progression_required_chars.add(prize_cls)
 
     # Map prize class to character name for validation
     prize_to_name: dict[type[CharacterPrize], str] = {
