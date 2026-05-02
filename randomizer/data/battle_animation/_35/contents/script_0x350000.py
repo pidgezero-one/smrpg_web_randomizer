@@ -89,7 +89,7 @@ script = AnimationScriptBlock(expected_size=0x0202, expected_beginning=0x350000,
     SetAMEM8BitToOMEMMain(amem=0x63, omem=0x63),
     JmpIfAMEM8BitNotEqualsConst(amem=0x63, value=1, destinations=["sagestick_pause_loop_3"]),
     RemoveObject(),
-    SetOMEMCurrentToAMEM8Bit(omem=0x64, amem=0x63),
+    SetOMEMMainToAMEM8Bit(omem=0x64, amem=0x63),
     ReturnObjectQueue(),
 	# stella 023 starts
 	ClearAMEM16Bit(0x60, identifier="stella023_weapon"),
