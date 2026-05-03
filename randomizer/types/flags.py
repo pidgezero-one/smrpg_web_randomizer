@@ -2550,6 +2550,7 @@ class CharacterStatsSpellsSubcategory(FlagCategory):
         InfuseSpellElements,
         CharacterSpellElements,
         UncapSuperJumps,
+        UncapMaxFP,
         AvailableSpells,
     ]
     _size: int = 4
