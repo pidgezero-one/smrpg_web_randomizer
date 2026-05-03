@@ -662,7 +662,9 @@ class UncapSuperJumps(BooleanFlag):
 
 class UncapMaxFP(BooleanFlag):
     _name = "Uncap maximum FP"
-    _description = "If enabled, allies' max FP threshold can exceed 99 (capped at 255)."
+    _description = """If enabled, allies' max FP threshold can exceed 99 (capped at 255).
+<br>
+<br>Note: HUD displays may visually overflow when FP exceeds 99."""
     _id = "uncapfp"
 
 

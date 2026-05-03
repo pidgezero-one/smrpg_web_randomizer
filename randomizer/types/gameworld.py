@@ -1923,6 +1923,13 @@ class GameWorld:
             patch.add_data(0xC4CC, [0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF])
             # Battle bump-max-FP handler ($C2:C14F): same fix, identical bytes.
             patch.add_data(0x2C14F, [0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF])
+            # TODO(uncapfp follow-up): widen X-menu FP display (bank $C3, ~$1626)
+            #   Renderer at $C3:1626-163E prints curFP/maxFP via JSR $78D2 (2-digit).
+            #   A 3-digit print routine already exists at $C3:78EC, so the code
+            #   change is trivial (2 bytes), but the X-menu tilemap allocates 5
+            #   tiles for "XX/XX" and widening to "XXX/XXX" shifts the slash and
+            #   max-FP digits into adjacent positions, requiring tilemap layout
+            #   rework. Deferred per plan's cut criteria.
 
         # Battle music IDs - write 8 selected music IDs to the music pointer table
         if self.selected_music_ids:
