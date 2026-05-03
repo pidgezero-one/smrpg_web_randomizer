@@ -307,6 +307,7 @@ script = EventScript([
 		A_Pause(20),
 		A_ResetProperties(),
 		A_FaceNorthwest(),
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=False, mirror_sprite=True, identifier="dodo_circle_around"),
 		A_WalkNorthwestSteps(9),
 		A_SetWalkingSpeed(VERY_FAST),
 		A_SetSequenceSpeed(VERY_FAST),
@@ -361,12 +362,13 @@ script = EventScript([
 		A_FixedFCoordOff(),
 		A_ResetProperties(),
 		A_FaceNorthwest(),
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=False, mirror_sprite=True, identifier="dodo_circle_around_2"),
 		A_SetAllSpeeds(FAST),
 		A_WalkNorthwestSteps(11),
 		A_VisibilityOff(),
 		A_SequenceLoopingOff(),
 		A_StopSound()
-	]),
+	], identifier="dodo_circle_around_aq"),
 	Pause(60),
 	PlaySound(sound=SO000_SILENCE, channel=6),
 	Pause(30),
@@ -644,11 +646,11 @@ script = EventScript([
 		A_ResetProperties(),
 		A_FaceNorthwest(),
 		A_Pause(12),
-        A_FixedFCoordOn(),
+        A_FixedFCoordOn(identifier="dodo_no_fixed_back_coord_1"),
 		A_SetSpriteSequence(index=10, is_sequence=True, looping=False, mirror_sprite=True, identifier="dodo_left_forward"),
 		A_Walk1StepNorthwest(),
 		A_FaceNorthwest(),
-        A_FixedFCoordOff()
+        A_FixedFCoordOff(identifier="dodo_no_fixed_back_coord_2")
 	], identifier="dodo_left_foot_backward_subroutine"),
 	Return(),
 	ActionQueueAsync(target=NPC_3, subscript=[
@@ -658,11 +660,11 @@ script = EventScript([
 		A_ResetProperties(),
 		A_FaceNorthwest(),
 		A_Pause(12),
-        A_FixedFCoordOn(),
+        A_FixedFCoordOn(identifier="dodo_no_fixed_back_coord_3"),
 		A_SetSpriteSequence(index=11, is_sequence=True, looping=False, mirror_sprite=True, identifier="dodo_right_forward"),
 		A_Walk1StepNorthwest(),
 		A_FaceNorthwest(),
-        A_FixedFCoordOff()
+        A_FixedFCoordOff(identifier="dodo_no_fixed_back_coord_4")
 	], identifier="dodo_right_foot_backward_subroutine"),
 	Return(),
 	RunDialog(dialog_id=DI3787_DODO_MINIGAME_HINT, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_3640_over"),

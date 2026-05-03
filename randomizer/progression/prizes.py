@@ -4924,6 +4924,7 @@ class BirdettaBossFight(BossFightPrize):
     _force_battlefield = BF23_NIMBUS_CASTLE_BIRDOS_ROOM
     _seaside_letter_name_if_volcano_boss = "a giant egg rolling"
     _seaside_letter_name_if_final_boss = "Birdo's bad eggs."
+    _seaside_letter_name_if_seaside_boss_canon = "Birdetta's bad eggs."
 
     _npc_models = [BirdettaLargeObject, BirdettaSmallObject]
     _statue_npc = BirdettaStatueObject
@@ -5143,6 +5144,7 @@ class CzarDragonBossFight(BossFightPrize):
     _seaside_letter_name_if_seaside_boss = "the Dragon"
     _seaside_letter_name_if_volcano_boss = "a huge dragon blazing"
     _seaside_letter_name_if_final_boss = "the Czar Dragon's spawn."
+    _seaside_letter_name_if_seaside_boss_canon = "Blargg's spawn."
 
     _npc_models = [CzarDragonLargeObject, CzarDragonMediumObject, CzarDragonSmallObject]
     _statue_npc = CzarStatueObject
@@ -5197,9 +5199,32 @@ class CzarDragonBossFight(BossFightPrize):
         DI1120_NIMBUS_BIRD_GUARD: "[center]\n••••••[await]",
         DI1945_NIMBUS_GUARD: "[center]\n••••••[await]",
     }
+    _dialog_replacements_canon = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """[center]\nBLARGG: BLARRGGGG[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`. All right. I'll let you through to Blargg's place.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n BLARGG!![await]""",
+        DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """[center]\nBLARGG: BLARRGGGG[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """[center]\nBLARGG: BLARRGGGG[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """[center]\nBLARGG: BLARRGGGG[await]""",
+        DI2180_CHAPEL_NPC: """ Reverend Blargg must have gotten\n lost on his way here.""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """\n    BLARGG: BLARRGGGG[await][page]\n (He means to say you are missing\n [0x7024] more items.)[await]""",
+        DI4060_NEED_TO_DO_CHAPEL_CHECKS: """\n    BLARGG: BLARRGGGGRRGGG[await][page]\n (He means to say you should grab\n the last few items in this room\n before proceeding.)[await]""",
+        DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Blargg is busy right now,\n so he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Blargg.[await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """[center]\nBLARGG: BLAAARRRGGGG[await]""",
+        DI3044_DOJO_BOSS_1_AFTER_DEFEAT: "[center]\nBLARGG: BLAAARRRGGGG[await]",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: "[center]\nBLARGG: BLAAARRRGGGG\n  [select] (I agree, let's fight)\n  [select] (Uh...)[await]",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: "[center]\nBLARGG: BLAAARRRGGGG\n  [select] (I agree, let's fight)\n  [select] (Uh...)[await]",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: "[center]\nBLARGG: BLAAARRRGGGG[await]",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: "[center]\nBLARGG: BLAAARRRGGGG[await]",
+    }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n The Czar Dragon is busy right now,\n so he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering the Czar Dragon.[await]""",
+    }
+    _dialog_replacements_canon_and_remake = {
+        DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Blargg is busy right now,\n so he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
+        DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Blargg.[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI2560_TOWER_HENCHMAN_1: "[center]\n••••••[await]",

@@ -42,7 +42,7 @@ script = EventScript([
 		A_SequenceLoopingOn(),
 		A_SetSpriteSequence(index=3, looping=False),
 		A_Pause(19),
-		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True),
 		A_FaceSoutheast()
 	]),
 	Return()

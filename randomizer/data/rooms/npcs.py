@@ -43,7 +43,7 @@ RED_SHELL_BASE = _item_npc_base(
 PARASOL_BASE = _item_npc_base(SPR0821_PARASOL_PACKET)
 FAN_BASE = _item_npc_base(SPR0131_FAN_PACKET)
 TINY_STAR_BASE = _item_npc_base(SPR0226_TINY_STAR)
-PAN_BASE = _item_npc_base(SPR0199_FRYING_PAN_PACKET)
+PAN_BASE = _item_npc_base(SPR0081_FRYING_PAN_STATIC)
 CROWN_BASE = _item_npc_base(SPR0216_CROWN)
 SHOES_BASE = _item_npc_base(SPR0202_SHOES)
 BROOCH_BASE = _item_npc_base(SPR0207_BROOCH)
@@ -56,13 +56,13 @@ RED_SYRUP_BASE = _item_npc_base(SPR0567_RED_SYRUP)
 GREEN_SYRUP_BASE = _item_npc_base(SPR0566_GREEN_SYRUP)
 YELLOW_SYRUP_BASE = _item_npc_base(SPR0569_YELLOW_SYRUP)
 STAR_DRINK_BASE = _item_npc_base(SPR0248_RED_STAR_DRINK)
-R_DRINK_BASE = _item_npc_base(SPR0239_BLUE_R_DRINK)
-D_DRINK_BASE = _item_npc_base(SPR0240_YELLOW_D_DRINK)
-P_DRINK_BASE = _item_npc_base(SPR0241_GREEN_P_DRINK)
+R_DRINK_BASE = _item_npc_base(SPR0089_BLUE_R_DRINK)
+D_DRINK_BASE = _item_npc_base(SPR0092_YELLOW_D_DRINK)
+P_DRINK_BASE = _item_npc_base(SPR0090_GREEN_P_DRINK)
 GREEN_JUICE_BASE = _item_npc_base(SPR0824_GREEN_JUICE)
 RED_JUICE_BASE = _item_npc_base(SPR0825_RED_JUICE)
 YELLOW_JUICE_BASE = _item_npc_base(SPR0047_YELLOW_JUICE)
-FROG_DRINK_BASE = _item_npc_base(SPR0244_GREEN_FROG_DRINK)
+FROG_DRINK_BASE = _item_npc_base(SPR0582_GREEN_FROG_DRINK)
 COOKIE_BASE = _item_npc_base(SPR0254_YOSHI_COOKIE)
 BLUE_SYRUP_BASE = _item_npc_base(SPR0568_BLUE_SYRUP)
 YELLOW_BOMB_BASE = _item_npc_base(SPR0822_YELLOW_BOMB)
@@ -1065,7 +1065,7 @@ TOADSTOOL_S_PARACHUTE_NPC = NPC(
 )
 
 MALLOW_DOLL_NPC = NPC(
-    sprite_id=SPR0081_MALLOW_DOLL,
+    sprite_id=SPR0199_MALLOW_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2503,7 +2503,7 @@ PURPLE_STAR_PIECE_NPC = NPC(
 )
 
 GENO_DOLL_NPC = NPC(
-    sprite_id=SPR0089_GENO_DOLL,
+    sprite_id=SPR0239_GENO_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2527,7 +2527,7 @@ GENO_DOLL_NPC = NPC(
 )
 
 BOWSER_DOLL_NPC = NPC(
-    sprite_id=SPR0090_BOWSER_DOLL,
+    sprite_id=SPR0241_BOWSER_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2575,7 +2575,7 @@ MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC = NPC(
 )
 
 TOADSTOOL_DOLL_NPC = NPC(
-    sprite_id=SPR0092_TOADSTOOL_DOLL,
+    sprite_id=SPR0240_TOADSTOOL_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,

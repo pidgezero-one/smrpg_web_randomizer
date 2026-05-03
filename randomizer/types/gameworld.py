@@ -2010,6 +2010,90 @@ class GameWorld:
             # $17BE and $1A56 pass sound command type $00 to play water SFX —
             # do NOT patch those bytes.
 
+            # Fix protagonist fade-in sprite corruption for tilemap-mold
+            # sprites. Bowser's BOWSER_969 uses gridplane=False molds and the
+            # protagonist's overworld sprite spans TWO sprite IDs (sprite 31
+            # for the top half, sprite 32 for the bottom half). The partition
+            # ally buffer is sized 2 to allocate VRAM rows for both sprites.
+            #
+            # Bug: the fade-in synchronous tile DMA at
+            #   $C0:8554 -> $C0:861E -> $C0:8659 -> $C0:A2B5
+            # uploads only sprite-table entry +0 (sprite 31, top half) into
+            # the first chunk of VRAM. Sprite 32's rows are left as garbage,
+            # so OAM tiles that read from those rows show whatever was there
+            # (the bottom half of sprite 31, since both halves share the same
+            # bank). Visible as "top of sprite overwritten by bottom" until
+            # the player takes one step.
+            #
+            # The per-step "$69" command consumer at $C0:1370-1390 runs the
+            # upload routine but with $74 = 1 (from $10,X & 7), causing
+            # $C0:A2B5 -> $C0:9CAA to compute sprite-table-entry pointer at
+            # +1 instead of +0. That uploads sprite 32 into the second VRAM
+            # chunk, restoring the bottom half. The only writer of $10,X =
+            # $69 in the entire ROM is at $C0:1979-197B inside the
+            # VramStore-7 movement handler $C0:18D7, called by the position
+            # update path $C0:1831 during walking. We synthesize that command
+            # at fade-in completion by hooking $C0:83CE (called by every
+            # fade-in dispatcher: $821F / $81F6 / $8222) and tail-calling
+            # $C0:1908 (the post-gate body of $18D7) for the protagonist.
+            #
+            # Side effect to neutralize: the $69 consumer at $C0:1370-1374
+            # writes $12,$6000 = $C9 = bits 7/6/3 all set. Those bits block
+            # the walk-cycle handler at $C0:1336 (bit 3 → BNE $139F skip
+            # animation), $C0:133A (bit 6 → BNE $1355 preset), and $C0:1344
+            # (bit 7 → BMI $1359 preset). Walking input continues to advance
+            # the entity's position (sliding) but no walk-cycle frame
+            # advances. Jumping clears the taint via the landing handler at
+            # $C0:186E writing $10,X = $80 → $C0:9EBF walk dispatch →
+            # $C0:9F60 ends with AND #$07; STA $12,X. We replicate that
+            # clear by hooking the consumer's $C0:1395: JSR $9F9A — the
+            # bit-3 path's mold loader entry — to a wrapper that calls
+            # $9F9A then masks $12,X &= $07 if X == $6000 (protagonist).
+            # NPCs sharing the bit-3 dispatch are unaffected by the gating
+            # CPX check.
+            #
+            # Wrapper byte map at $C0:8140 (28 bytes total, fits in the
+            # 39-byte tail reserved by the packet-allocation patch above):
+            #   $C0:8140-$C0:814C (13 bytes): $C0:83CE entry hook wrapper
+            #   $C0:814D-$C0:815B (15 bytes): $C0:1395 consumer hook wrapper
+            #
+            # Bowser-only (ally.index == 2). Mallow/Geno/Toadstool overworld
+            # sprites are all gridplane=True and load cleanly via the
+            # vanilla single-entry path — applying these hooks for them
+            # would unnecessarily redirect $C0:1395 (used by all bit-3
+            # consumers, gated to protagonist only by the CPX) and queue
+            # an extra $10,X=$69 at fade-in, both of which they don't need
+            # and could regress.
+            if i == 2:
+                patch.add_data(0x008140, bytes([
+                    # Entry hook for $C0:83CE — runs once per fade-in
+                    0x9C, 0x09, 0x01,   # STZ $0109     ; displaced from $C0:83CE
+                    0x20, 0xD1, 0x83,   # JSR $83D1     ; rest of original $83CE
+                    0xA2, 0x00, 0x60,   # LDX #$6000    ; protagonist slot (X16)
+                    0x20, 0x08, 0x19,   # JSR $1908     ; $18D7 post-gate → $10,X = $69
+                    0x60,               # RTS
+
+                    # Consumer hook for $C0:1395 — runs every frame the consumer
+                    # takes the bit-3 path. Calls original $9F9A then clears
+                    # $12,X upper bits ONLY for the protagonist.
+                    0x20, 0x9A, 0x9F,   # JSR $9F9A     ; original mold setup
+                    0xE0, 0x00, 0x60,   # CPX #$6000    ; protagonist? (X16 assumed)
+                    0xD0, 0x06,         # BNE +6        ; not protagonist → skip clear
+                    0xB5, 0x12,         # LDA $12,X
+                    0x29, 0x07,         # AND #$07      ; clear bits 7/6/5/4/3
+                    0x95, 0x12,         # STA $12,X     ; $12,X = low 3 bits only
+                    0x60,               # RTS
+                ]))
+                # Hook $C0:83CE entry → wrapper at $C0:8140
+                patch.add_data(0x0083CE, bytes([
+                    0x4C, 0x40, 0x81,   # JMP $8140     ; replaces STZ $0109
+                ]))
+                # Hook consumer's $C0:1395 → wrapper at $C0:814D (replaces
+                # JSR $9F9A; same 3-byte length, drop-in JSR target swap)
+                patch.add_data(0x001395, bytes([
+                    0x20, 0x4D, 0x81,   # JSR $814D     ; was JSR $9F9A
+                ]))
+
         for i, name in enumerate(self.file_select_names):
             addr = 0x3EF528 + (i * 7)
             val = name.encode().ljust(7, b"\x00")
@@ -2075,120 +2159,149 @@ class GameWorld:
         # allocation path instead of requiring the extra sprite buffer.
         #
         # Vanilla checks packet_id < 8 at SNES C1:9365. We replace with a
-        # JML to a trampoline that does a table lookup, so any packet ID can
-        # use the cheaper NPC slot path (which doesn't check $01D7).
-        from ..data.packets.packets import (
-            P008_RED_CHEST_ITEM, P009_GREEN_CHEST_ITEM,
-            P010_BLUE_CHEST_ITEM, P011_YELLOW_CHEST_ITEM,
-            P025_RING_CHEST, P040_BROOCH_CHEST, P043_SHOES_CHEST,
-            P053_CROWN_CHEST, P064_FROG_COIN_CHEST_STILL,
-            P067_BOMB_CHEST, P070_EGG_CHEST, P073_COOKIE_CHEST,
-            P076_BERRY_CHEST, P079_CARD_CHEST, P089_BEETLE_CHEST,
-            P090_SMALL_COIN_STILL, P091_CHEST_COIN_STILL,
-            P092_GLOVE_CHEST, P093_CRYSTAL_CHEST,
-            P094_FIRE_SPELL_CHEST, P095_BLUE_SPELL_CHEST,
-            P096_GREEN_SPELL_CHEST, P097_YELLOW_SPELL_CHEST,
-            P098_GRAY_SPELL_CHEST,
-            P101_FLOWER_COLLECTION,
-            P102_SMALL_FROG_COIN_STILL,
-            P103_MIMIC_1_POOF_ON_DEFEAT, P104_MIMIC_2_POOF_ON_DEFEAT,
-            P105_MARIO_DOLL,
-        )
+        # JSR to a routine at C1:80C8 that does a range-check against an
+        # allowlist built from `Packet.goes_to_npc_slot_buffer`.
+        #
+        # Source of truth lives on the packet classes in
+        # randomizer/data/packets/packets.py: `ChestPacket` and
+        # `BoosterHillPacket` set the flag to True. To change which packets
+        # take the NPC slot path, edit those class flags or override per
+        # instance — don't maintain a parallel ID list here.
+        from ..data.packets.packets import Packet
         npc_slot_packet_ids: set[int] = {
-            P008_RED_CHEST_ITEM.packet_id,
-            P009_GREEN_CHEST_ITEM.packet_id,
-            P010_BLUE_CHEST_ITEM.packet_id,
-            P011_YELLOW_CHEST_ITEM.packet_id,
-            P025_RING_CHEST.packet_id,
-            P040_BROOCH_CHEST.packet_id,
-            P043_SHOES_CHEST.packet_id,
-            P053_CROWN_CHEST.packet_id,
-            P064_FROG_COIN_CHEST_STILL.packet_id,
-            P067_BOMB_CHEST.packet_id,
-            P070_EGG_CHEST.packet_id,
-            P073_COOKIE_CHEST.packet_id,
-            P076_BERRY_CHEST.packet_id,
-            P079_CARD_CHEST.packet_id,
-            P089_BEETLE_CHEST.packet_id,
-            P090_SMALL_COIN_STILL.packet_id,
-            P091_CHEST_COIN_STILL.packet_id,
-            P092_GLOVE_CHEST.packet_id,
-            P093_CRYSTAL_CHEST.packet_id,
-            P094_FIRE_SPELL_CHEST.packet_id,
-            P095_BLUE_SPELL_CHEST.packet_id,
-            P096_GREEN_SPELL_CHEST.packet_id,
-            P097_YELLOW_SPELL_CHEST.packet_id,
-            P098_GRAY_SPELL_CHEST.packet_id,
-            P101_FLOWER_COLLECTION.packet_id,
-            P102_SMALL_FROG_COIN_STILL.packet_id,
-            P103_MIMIC_1_POOF_ON_DEFEAT.packet_id,
-            P104_MIMIC_2_POOF_ON_DEFEAT.packet_id,
-            P105_MARIO_DOLL.packet_id,
+            packet.packet_id
+            for packet in self.packets.packets
+            if isinstance(packet, Packet) and packet.goes_to_npc_slot_buffer
         }
 
-        # Packet allocation patch: replace the bitmap allocator call (JSR $9547)
-        # with JSR to our routine at C1:80C8 (repurposed debug string area).
-        # Our routine does a table lookup: if the packet is in our low-VRAM list,
-        # call the NPC slot allocator ($95DD) instead of the bitmap allocator.
-        # Otherwise call the original bitmap allocator ($9547).
+        # Patch at C1:9365 (6 bytes): replace vanilla
+        #   A5 1C  LDA $1C
+        #   C9 08  CMP #$08
+        #   B0 16  BCS $9381
+        # with
+        #   20 C8 80  JSR $80C8     ; sets carry based on allowlist
+        #   B0 17     BCS $9381     ; not in list → bitmap path ($9547)
+        #   EA        NOP
+        # BCS operand = $9381 - ($9368 + 2) = $17.
         #
-        # Same bank (C1), no JML, no cross-bank issues.
-        # Space: debug string at ROM 0x0080C8-0x008166 (159 bytes available).
-        #
-        # Packet allocation patch: replace the inline CMP #$08; BCS $9381 with
-        # JSR $80C8; BCS $9381. Our routine at $80C8 does a table lookup and
-        # sets/clears carry accordingly, then RTS. The BCS at C1:936B is kept
-        # with adjusted offset, preserving the natural code flow.
-        #
-        # Original 6 bytes at C1:9365:
-        #   A5 1C     LDA $1C       (2)
-        #   C9 08     CMP #$08      (2)
-        #   B0 16     BCS $9381     (2)
-        #
-        # Patched 6 bytes:
-        #   20 C8 80  JSR $80C8     (3) — sets carry based on table
-        #   B0 13     BCS $9381     (2) — bitmap path if carry set
-        #   EA        NOP           (1)
-        #
-        # BCS offset: from C1:936B to C1:9381 = 0x16. But we moved BCS to
-        # C1:9368, so offset = $9381 - $936A = 0x17... let me compute:
-        # BCS is at C1:9368. Target $9381. Offset = $9381 - ($9368 + 2) = $9381 - $936A = $17.
-        # Wait: original BCS at 9369, target 9381, offset = 9381-(9369+2) = 0x16.
-        # New BCS at 936B (after 3-byte JSR), target 9381, offset = 9381-(936B+2) = 0x14.
-        # Hmm, let me just compute carefully.
-        # JSR $80C8 = 20 C8 80 at C1:9365-9367 (3 bytes)
-        # BCS at C1:9368. BCS operand = target - (addr+2) = $9381 - $936A = $0017.
-        # But $17 > what fits? BCS range is ±127. $17 = 23. That's fine.
-        # Wait: $9381 - $936A = $9381 - $936A. $9381 - $936A = $17. ✓
-        # Packet allocation patch: route packets based on their vram_size field
-        # instead of packet ID. Packets with vram_size=0 (1 VRAM unit — all chest
-        # items) use the NPC slot path which works without extra_sprite_buffer.
-        # Packets with vram_size>0 (water splash, coins, etc) use the bitmap path.
-        #
-        # Patch at C1:9365 (6 bytes): replace LDA $1C; CMP #$08; BCS $9381
-        # with JSR $80C8; BCS $9381; NOP
-        # BCS offset: $9381 - ($9368 + 2) = $17
+        # Packets with carry clear continue to the NPC slot allocator at
+        # $95DD; packets with carry set fall through to the bitmap allocator
+        # at $9547. Our routine lives at $C1:80C8 in repurposed debug-string
+        # space — same bank, no cross-bank JSL needed.
         patch.add_data(0x009365, bytes([
-            0x20, 0xC8, 0x80,              # JSR $80C8     ; check vram_size, set carry
-            0xB0, 0x17,                    # BCS $9381     ; vram_size>0 → bitmap path
+            0x20, 0xC8, 0x80,              # JSR $80C8     ; lookup packet ID, set carry
+            0xB0, 0x17,                    # BCS $9381     ; not in list → bitmap path
             0xEA,                          # NOP
         ]))
 
-        # Routine at C1:80C8 (debug string area, 13 bytes):
-        # Reads packet byte 1, checks vram_size (bits 0-2).
-        # Returns carry clear (NPC slot) if vram_size=0, carry set (bitmap) otherwise.
-        # Restores A = packet ID before returning.
-        patch.add_data(0x0080C8, bytes([
-            0xB9, 0x01, 0xB0,              # LDA $B001,Y   ; packet byte 1 (DBR=$DD)
-            0x29, 0x07,                    # AND #$07      ; mask vram_size
-            0xD0, 0x03,                    # BNE .bitmap   ; vram_size>0 → SEC (+3)
-            0xA5, 0x1C,                    # LDA $1C       ; restore A = packet ID
-            0x60,                          # RTS           ; carry clear (AND result was 0)
-            # .bitmap:
-            0xA5, 0x1C,                    # LDA $1C       ; restore A = packet ID
-            0x38,                          # SEC
-            0x60,                          # RTS
-        ]))
+        # Routine at C1:80C8 (debug-string area). Inline range-check ASM,
+        # generated from `npc_slot_packet_ids` at patch time — consecutive
+        # IDs collapse into one CMP/BCC/CMP/BCC range test, isolated IDs
+        # become CMP/BEQ. The routine touches only A and flags (no PHP/PHX/
+        # SEP/REP) — same minimal register footprint as the original
+        # vram_size routine, so it can't disturb the surrounding packet
+        # allocator state.
+        #
+        # An earlier version of this patch saved/restored X around a
+        # SEP #$10 to allow indexing a packet-ID list. That extra register
+        # manipulation broke downstream allocation for some chest packets
+        # in some seeds. Inline checks avoid it entirely.
+        #
+        # Source of truth: the `goes_to_npc_slot_buffer` class flag on
+        # `Packet` subclasses (see randomizer/data/packets/packets.py). This
+        # ASM is regenerated each build from `npc_slot_packet_ids` above.
+        def _build_npc_slot_lookup_routine(packet_ids: set[int]) -> bytes:
+            sorted_ids = sorted(packet_ids)
+            assert all(0 <= pid <= 0xFE for pid in sorted_ids), (
+                "Packet IDs in npc_slot_packet_ids must be in [0, 254] "
+                "(255 cannot be in the list — range upper bound would overflow)"
+            )
+
+            # Group consecutive IDs into [lo, hi] runs.
+            runs: list[tuple[int, int]] = []
+            if sorted_ids:
+                start = prev = sorted_ids[0]
+                for x in sorted_ids[1:]:
+                    if x == prev + 1:
+                        prev = x
+                    else:
+                        runs.append((start, prev))
+                        start = prev = x
+                runs.append((start, prev))
+
+            # Sizes: singleton = 4 bytes (CMP/BEQ), range = 8 bytes (CMP/BCC/CMP/BCC).
+            check_sizes = [4 if lo == hi else 8 for lo, hi in runs]
+            prelude_size = 2  # LDA $1C
+            # Each tail does SEC/CLC + LDA $1C + RTS = 4 bytes. The trailing
+            # LDA $1C exists to normalize N/Z flags on exit so callers see the
+            # same flag state vanilla left after `LDA $1C; CMP #$08` (A loaded
+            # from $1C, N reflecting bit 7 of packet_id rather than whatever
+            # the last range-check CMP set). The OLD vram_size routine ended
+            # with LDA $1C for the same reason.
+            miss_pos = prelude_size + sum(check_sizes)
+            hit_pos = miss_pos + 4  # SEC; LDA $1C; RTS = 4 bytes
+
+            buf = bytearray()
+            # Prelude — load packet ID into A. CMPs below all reference $1C
+            # too so the preserved A on exit equals packet ID either way.
+            buf.append(0xA5)
+            buf.append(0x1C)
+
+            # Pre-compute where each check starts so range tests can branch
+            # over their own block to the next check.
+            check_starts = []
+            cur = prelude_size
+            for sz in check_sizes:
+                check_starts.append(cur)
+                cur += sz
+
+            def _signed_byte(off: int, what: str) -> int:
+                assert -128 <= off <= 127, f"{what} branch offset {off} out of 8-bit range"
+                return off & 0xFF
+
+            for i, (lo, hi) in enumerate(runs):
+                if lo == hi:
+                    # CMP #lo / BEQ .hit
+                    buf.append(0xC9)
+                    buf.append(lo)
+                    buf.append(0xF0)
+                    buf.append(_signed_byte(hit_pos - (len(buf) + 1), "BEQ .hit"))
+                else:
+                    # CMP #lo / BCC .next / CMP #(hi+1) / BCC .hit
+                    next_pos = check_starts[i] + 8  # byte after this 8-byte block
+                    buf.append(0xC9)
+                    buf.append(lo)
+                    buf.append(0x90)
+                    buf.append(_signed_byte(next_pos - (len(buf) + 1), "BCC .next"))
+                    buf.append(0xC9)
+                    buf.append(hi + 1)
+                    buf.append(0x90)
+                    buf.append(_signed_byte(hit_pos - (len(buf) + 1), "BCC .hit"))
+
+            assert len(buf) == miss_pos
+            buf.append(0x38)        # SEC          — not in list → bitmap path
+            buf.append(0xA5)        # LDA $1C      — normalize A and N/Z flags
+            buf.append(0x1C)
+            buf.append(0x60)        # RTS
+
+            assert len(buf) == hit_pos
+            buf.append(0x18)        # CLC          — in list → NPC slot path
+            buf.append(0xA5)        # LDA $1C      — normalize A and N/Z flags
+            buf.append(0x1C)
+            buf.append(0x60)        # RTS
+
+            return bytes(buf)
+
+        npc_slot_routine = _build_npc_slot_lookup_routine(npc_slot_packet_ids)
+        # Routine starts at $C1:80C8; the 39-byte tail $C1:8140-$C1:8166 is
+        # reserved for the protagonist fade-in $69-queue stub. Routine has
+        # ($8140 - $80C8) = 120 bytes available.
+        assert len(npc_slot_routine) <= 120, (
+            f"npc_slot lookup routine is {len(npc_slot_routine)} bytes; "
+            f"max 120 (rest of $C1:80C8-$C1:8166 reserved). Reduce "
+            f"npc_slot_packet_ids or split into a separate ROM region."
+        )
+        patch.add_data(0x0080C8, npc_slot_routine)
 
         # Room area-layout rewrites (18-byte records at $1D0040 + room_id * 18).
         # Byte layout matches LAZYSHELL-UPDATED LevelLayer.cs:

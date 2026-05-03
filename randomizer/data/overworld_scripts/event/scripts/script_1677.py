@@ -36,10 +36,11 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	JmpIfObjectInSpecificLevel(NPC_3, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN, ["EVENT_1677_ret_15"]),
 	SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
+	JmpIfObjectInSpecificLevel(NPC_1, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN, ["EVENT_1677_set_x_coord_2_14"]),
 	RemoveObjectFromSpecificLevel(NPC_1, R317_LANDS_END_DESERT_AREA_01),
 	RemoveObjectFromSpecificLevel(NPC_0, R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS),
 	RemoveObjectFromSpecificLevel(NPC_0, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN),
-	SetVarToConst(X_COORD_2, 7470),
+	SetVarToConst(X_COORD_2, 7470, identifier="EVENT_1677_set_x_coord_2_14"),
 	RunEventAsSubroutine(E0066_PIPE_DOWN_SUBROUTINE),
 	EnterArea(room_id=R324_MONSTRO_TOWN_OUTSIDE, face_direction=SOUTH, x=2, y=47, z=16, show_banner=True),
 	SetBit(DIRECTIONAL_7049_0),

@@ -452,6 +452,11 @@ class BirdettaLargeObject(BossNPC):
     """Large Birdetta object."""
 
     _base = BIRDETTA_NPC
+    _animations = SpriteAnimationCollection(
+        statue_intro=SpriteAnimation(sequence_id=4),
+        statue_peck=SpriteAnimation(sequence_id=3, contact_frame=20, total_duration=25, speed=FAST),
+        statue_flustered=SpriteAnimation(sequence_id=2, total_duration=18)
+    )
 
 
 # Czar Dragon
@@ -1036,6 +1041,11 @@ class ValentinaStatueObject(BossNPC):
     """Valentina statue object."""
 
     _base = VALENTINA_STATUE_NPC
+    _facing_shifts = {
+        SOUTHEAST: PixelShift(-3, 0),
+        NORTHWEST: PixelShift(-3, 0),
+        NORTHEAST: PixelShift(-3, 0),
+    }
 
 
 class ShovelKnightStatueObject(BossNPC):
@@ -1338,6 +1348,9 @@ class CzarStatueObject(BossNPC):
     """Czar Dragon statue object."""
 
     _base = CZAR_DRAGON_STATUE_NPC
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(-7, 1),
+    }
 
 
 class BoomerStatueObject(BossNPC):

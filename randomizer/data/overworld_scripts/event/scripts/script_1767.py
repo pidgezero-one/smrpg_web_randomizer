@@ -37,6 +37,7 @@ script = EventScript([
 	EnableControlsUntilReturn([]),
 	SetBit(HAS_A_PRIZE_FORTUNE),
 	ClearBit(BELOME_FORTUNE_1),
+	SetVarToConst(TEMP_70AC, 0),
 	ApplySolidityModToLevel(permanent=True, room_id=R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, mod_id=0),
 	PlaySound(sound=SO017_OPEN_FRONT_GATE, channel=6),
 	ActionQueueAsync(target=LAYER_1, subscript=[

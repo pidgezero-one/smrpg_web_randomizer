@@ -1,5 +1,4 @@
 # E1805_TEMPLE_3_FORTUNE_SHAMAN
-# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -12,10 +11,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.coords import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.intro_title_text import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,18 +29,16 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
-from ....spells.spells import *
-from ....variables.event_palette_names import *
 
 script = EventScript([
 	CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AE),
-	JmpIfMarioOnAnObjectOrNot(['EVENT_1805_set_var_to_const_42', 'EVENT_1805_set_var_to_const_42']),
+	JmpIfMarioOnAnObjectOrNot(['EVENT_1805_set_var_to_const_41', 'EVENT_1805_set_var_to_const_41']),
 	StoreCoinCountTo7000(),
 	CompareVarToConst(PRIMARY_TEMP_7000, 50),
-	JmpIfComparisonResultIsLesser(["EVENT_1805_run_dialog_40"]),
+	JmpIfComparisonResultIsLesser(["EVENT_1805_run_dialog_39"]),
 	RunDialog(dialog_id=DI1240_FORTUNE_SHAMAN_PROMPT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	JmpIfDialogOptionBSelected(["EVENT_1805_pause_45"]),
+	JmpIfDialogOptionBSelected(["EVENT_1805_pause_44"]),
 	Pause(10),
 	SetAsyncActionScript(MARIO, A0670_NOD_YES),
 	ActionQueueAsync(target=MEM_70A8, subscript=[
@@ -56,16 +53,10 @@ script = EventScript([
 	RunDialog(dialog_id=DI1241_FORTUNE_SHAMAN_INSTRUCTIONS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	SetVarToConst(TEMP_70AA, 23),
 	JmpToSubroutine(["EVENT_1794_action_queue_69"]),
-	SetVarToConst(TEMP_70AC, 0),
-	SetVarToConst(SECONDARY_TEMP_7024, 0),
-	SetVarToConst(TEMP_7026, 0),
-	ClearBit(BELOME_HEAD_1),
-	ClearBit(BELOME_HEAD_2),
-	ClearBit(BELOME_HEAD_3),
 	SetBit(BELOME_FORTUNE_1),
 	ClearBit(UNKNOWN_BELOME_FORTUNE),
 	Inc(UNKNOWN_70AD),
-	JmpIfBitClear(HAS_A_PRIZE_FORTUNE, ["EVENT_1805_ret_39"]),
+	JmpIfBitClear(HAS_A_PRIZE_FORTUNE, ["EVENT_1805_ret_38"]),
 	Pause(16),
 	SetVarToConst(TEMP_70AB, 24),
 	RunEventAsSubroutine(E1739_REFOCUS_CAMERA),
@@ -89,14 +80,13 @@ script = EventScript([
 	EndLoop(),
 	SetVarToConst(TEMP_70AB, 0),
 	RunEventAsSubroutine(E1739_REFOCUS_CAMERA),
-	RemoveObjectFromSpecificLevel(NPC_3, R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM),
-	Return(identifier="EVENT_1805_ret_39"),
-	RunDialog(dialog_id=DI1239_FORTUNE_SHAMAN_NOT_ENOUGH_COINS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1805_run_dialog_40"),
+	Return(identifier="EVENT_1805_ret_38"),
+	RunDialog(dialog_id=DI1239_FORTUNE_SHAMAN_NOT_ENOUGH_COINS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1805_run_dialog_39"),
 	Return(),
-	SetVarToConst(TEMP_70AA, 23, identifier="EVENT_1805_set_var_to_const_42"),
+	SetVarToConst(TEMP_70AA, 23, identifier="EVENT_1805_set_var_to_const_41"),
 	JmpToSubroutine(["EVENT_1794_action_queue_69"]),
 	Return(),
-	Pause(10, identifier="EVENT_1805_pause_45"),
+	Pause(10, identifier="EVENT_1805_pause_44"),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
 	Return()
 ])

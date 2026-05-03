@@ -1,21 +1,21 @@
-# SPR0244_GREEN_FROG_DRINK
+# SPR0244_JINX_PACKET
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-from randomizer.data.variables.sprite_palette_names import SPAL384_YELLOW_JUICE
+from randomizer.data.variables.sprite_palette_names import SPAL581_JINX_CLONE
 sprite = CompleteSprite(
-    animation=AnimationPack(163, length=121, unknown=0x0002,
+    animation=AnimationPack(66, length=193, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
                     tiles=[
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
-                            bytearray(b'x\x00\x06\x02\x07\x02\x1f\x03\x19\x00\x0f\x00\n\x06\x0f\x00\x00|\x02\x04\x02\x05\x03\x1c\x00\x1f\x00\x07\x01\x00\x00\x07'),
-                            bytearray(b'\x00\x00\x00\x00\xf0\x00|\x00\xfc\x00\xf0\x08\x80x\x908\x00\x00\x00\x00\x00\xf0\x00\xfc\x00\xfc\x08\xf0\xf8\x008\xe0'),
-                            bytearray(b'\x0f\x00\x0f\x00\x0e\x00\x0f\x00\x0f\x00\r\x03\r\x03\x05\x03\x00\x07\x02\x05\x01\x06\x00\x07\x00\x07\x00\x00\x00\x00\x00\x00'),
-                            bytearray(b'\x908\x108P8\x108\x908@8@8`\x10\xb8`\xb8@\xf8 \xb8`8\xe0\xf8\x00\xf8\x00\xf0\x00'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                            bytearray(b'\x00\x01\x00\x03\x01\x07\x01\x07\x03\x07\x02\x07\x02\x0f\t\x07\x00\x01\x00\x03\x00\x07\x01\x07\x01\x07\x00\x06\x00\x06\x00\x01'),
+                            bytearray(b' \xe0\xc0\xc0\x00\x00\x00\x00\x00\x00\x80\x80@\xc0\x00\x80\x00\xe0\x00\xc0\x00\x80\x00\x80\x00\x00\x00\x00\x00\x00@\x00'),
+                            bytearray(b'\t\x04\x01\x07\x02\x1f\x05\x17\x00\x07\x02\x02\x01\r\x07\x07\x02\x02\x00\x00\x07\x00\r\x00\x00\x00\x01\x00\x03\x01\x07\x07'),
+                            bytearray(b'  Pp\xcc\xfc0~L|hhpp \xe0\xe0\x00\xf0\x0c\xfc\x02\xbe\x11\xcc\x0f\xd8\x00\xf0p  '),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=114),
                     ]
-                )
+                ),
             ],
             sequences=[
                 AnimationSequence(
@@ -26,7 +26,8 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=SPAL384_YELLOW_JUICE,
+    palette_id=SPAL581_JINX_CLONE,
     palette_offset=0,
-    unknown_num=0
+    unknown_num=8
 )
+

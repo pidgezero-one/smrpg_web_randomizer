@@ -34,7 +34,9 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfBitClear(HAS_A_PRIZE_FORTUNE, ["EVENT_1770_remove_from_current_level_4"]),
+	ClearBit(BELOME_FORTUNE_1),
+	SetVarToConst(TEMP_70AC, 0),
+	JmpIfBitClear(HAS_A_PRIZE_FORTUNE, ["EVENT_1770_remove_from_current_level_4"], identifier="EVENT_1770_jmp_to_event_1"),
 	ApplySolidityModToLevel(permanent=True, room_id=R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, mod_id=0),
 	ActionQueueAsync(target=LAYER_1, subscript=[
 		A_SetWalkingSpeed(FASTEST),
@@ -43,5 +45,6 @@ script = EventScript([
 	]),
 	Jmp(["EVENT_1770_jmp_to_event_5"]),
 	RemoveObjectFromCurrentLevel(NPC_4, identifier="EVENT_1770_remove_from_current_level_4"),
+    ClearBit(TEMP_7043_7),
 	JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_1770_jmp_to_event_5")
 ])

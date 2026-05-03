@@ -10820,30 +10820,29 @@ class StatueRoomBossFight(BossFightLocation):
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if not isinstance(self.prize, (DodoBossFight)):
-            from ..types.flags import KeepMinigameSpritesIntact
+        from ..types.flags import KeepMinigameSpritesIntact
 
-            assert self._npc_slots is not None
-            statue_slot = next(
-                (
-                    s
-                    for s in self._npc_slots
-                    if s.room_id
-                    == R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM
-                ),
-                None,
-            )
-            chosen = (
-                self.resolve_npc_model_for_slot(world, statue_slot)
-                if statue_slot is not None
-                else None
-            )
-            render_statue_room_boss(
-                world,
-                self.prize,
-                world.settings.isflag_enabled(KeepMinigameSpritesIntact),
-                chosen_npc_model=chosen,
-            )
+        assert self._npc_slots is not None
+        statue_slot = next(
+            (
+                s
+                for s in self._npc_slots
+                if s.room_id
+                == R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM
+            ),
+            None,
+        )
+        chosen = (
+            self.resolve_npc_model_for_slot(world, statue_slot)
+            if statue_slot is not None
+            else None
+        )
+        render_statue_room_boss(
+            world,
+            self.prize,
+            world.settings.isflag_enabled(KeepMinigameSpritesIntact),
+            chosen_npc_model=chosen,
+        )
         return op
 
     # Flag as checked: STATUE_KEEPER_STAR_PIECE

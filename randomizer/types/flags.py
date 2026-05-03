@@ -2404,7 +2404,7 @@ class RemakeNames(BooleanFlag):
 # ✅
 class CanonNames(BooleanFlag):
     _name = "Use lore-compliant names"
-    _description = "Magikoopa is renamed 'Kamek' and Birdo is renamed 'Birdetta'."
+    _description = "Magikoopa is renamed 'Kamek', Birdo is renamed 'Birdetta', and Czar Dragon is renamed 'Blargg'."
     _id = "canon"
 
 

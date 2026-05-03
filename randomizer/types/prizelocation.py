@@ -2362,7 +2362,7 @@ class BossFightLocation(PrizeLocation):
                         obj._npc = override
 
         # Set statue slots with statue models
-        if self.statue_slots is not None and not prize_matches_original:
+        if self.statue_slots is not None:
             for slot in self.statue_slots:
                 room = world.rooms._rooms[slot.room_id]
                 assert room is not None, f"Room {slot.room_id} not found"

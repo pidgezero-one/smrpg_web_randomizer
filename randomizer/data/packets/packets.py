@@ -1,220 +1,182 @@
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import (
-    Packet,
+    Packet as PacketBase,
     PacketCollection,
 )
 from ..variables.sprite_names import *
 from ..variables.action_script_names import *
 
+class Packet(PacketBase):
+    # Whether this packet should be allocated through the NPC-slot path at
+    # $C1:95DD instead of the bitmap allocator at $C1:9547. Packets in vanilla
+    # with id < 8 took the NPC slot path; the SMRPG-web patch widens that
+    # gate. Subclasses override to opt in. Read by `GameWorld.build_patch`
+    # which iterates `self.packets.packets` to assemble the allowlist for
+    # the inline range-check ASM at $C1:80C8.
+    #
+    # Why a class flag (not a hardcoded ID list): packet IDs can shuffle, and
+    # editing one place (the class) keeps source-of-truth co-located with the
+    # packet definition rather than a parallel allowlist.
+    goes_to_npc_slot_buffer: bool = False
 
-P000_FLASHING_POOF_FLOWER = Packet(
+
+class BoosterHillPacket(Packet):
+    # Booster Hill prize packets (both falling room-54 variants spawned by
+    # CreatePacketAtObjectCoords and standing room-14 variants spawned by
+    # CreatePacketAt7010WithEvent). Both stay on the vanilla bitmap path
+    # at $C1:9547 — `goes_to_npc_slot_buffer = False` (inherited).
+    #
+    # An earlier vram_size-based routing patch incorrectly swept these onto
+    # the NPC slot path because they share vram_size=0 with chest items,
+    # which is what made them invisible in the original bug report. Routing
+    # standing variants to NPC slot path was also tried and confirmed to
+    # leave them invisible — chest-style allocation isn't applicable here.
+    def __init__(self, packet_id: int, sprite_id: int, action_script_id: int) -> None:
+        super().__init__(
+            packet_id,
+            sprite_id,
+            action_script_id,
+            0,
+            0,
+            1,
+            4,
+            False,
+            True,
+            False,
+            False,
+            0,
+            0,
+        )
+
+
+class ChestPacket(Packet):
+    # Chest item/coin/spell packets all share the small-VRAM footprint that
+    # makes the NPC slot allocator path safe and avoids the bitmap-allocator
+    # corruption seen on chest spawns.
+    goes_to_npc_slot_buffer: bool = True
+
+    def __init__(
+        self,
+        packet_id: int,
+        sprite_id: int,
+        action_script_id: int,
+        b0: int = 0,
+        vram_size: int = 0,
+        sprite_priority: int = 3,
+        layer_priority: int = 3,
+        b2b2: bool = False,
+        b2b3: bool = False,
+        b2b4: bool = False,
+        show_shadow: bool = False,
+        b2: int = 0,
+        b4: int = 0,
+    ) -> None:
+        super().__init__(
+            packet_id,
+            sprite_id,
+            action_script_id,
+            b0,
+            vram_size,
+            sprite_priority,
+            layer_priority,
+            b2b2,
+            b2b3,
+            b2b4,
+            show_shadow,
+            b2,
+            b4,
+        )
+
+
+class ShipPrizePacket(Packet):
+    def __init__(self, packet_id: int, sprite_id: int, action_script_id: int) -> None:
+        super().__init__(
+            packet_id,
+            sprite_id,
+            action_script_id,
+            0,
+            0,
+            1,
+            4,
+            False,
+            True,
+            False,
+            True,
+            0,
+            0,
+        )
+
+
+P000_FLASHING_POOF_FLOWER = ChestPacket(
     packet_id=0,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0910_FLOWER_FLASH_THEN_POOF,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P001_FLASHING_POOF_MUSHROOM = Packet(
+P001_FLASHING_POOF_MUSHROOM = ChestPacket(
     packet_id=1,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0908_MUSHROOM_FLASH_THEN_POOF,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P002_FLOWER_PACK_CHEST_ITEM = Packet(
+P002_FLOWER_PACK_CHEST_ITEM = ChestPacket(
     packet_id=2,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0992_CHEST_ITEMS_WITH_SPECIFIC_IDS,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P003_BRIEF_STAR = Packet(
+P003_BRIEF_STAR = ChestPacket(
     packet_id=3,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0909_STAR_APPEARS_BRIEFLY,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
     sprite_priority=2,
     layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P004_MIMIC_3_POOF_ON_DEFEAT = Packet(
+P004_MIMIC_3_POOF_ON_DEFEAT = ChestPacket(
     packet_id=4,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0912_POOF_WHEN_MIMIC_3_DEFEATED,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P005_BRIEF_POOF_BAG = Packet(
+P005_BRIEF_POOF_BAG = ChestPacket(
     packet_id=5,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0127_BAG_APPEARS_BRIEFLY_THEN_POOFS,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P006_FEATHER_CHEST = Packet(
+P006_FEATHER_CHEST = ChestPacket(
     packet_id=6,
     sprite_id=SPR0252_FEATHER,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P007_STAR_PIECE_CHEST = Packet(
+P007_STAR_PIECE_CHEST = ChestPacket(
     packet_id=7,
     sprite_id=SPR0226_TINY_STAR,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P008_RED_CHEST_ITEM = Packet(
+P008_RED_CHEST_ITEM = ChestPacket(
     packet_id=8,
     sprite_id=SPR0219_RED_ITEM_COLLECTION,
     action_script_id=A0992_CHEST_ITEMS_WITH_SPECIFIC_IDS,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P009_GREEN_CHEST_ITEM = Packet(
+P009_GREEN_CHEST_ITEM = ChestPacket(
     packet_id=9,
     sprite_id=SPR0220_GREEN_ITEM_COLLECTION,
     action_script_id=A0992_CHEST_ITEMS_WITH_SPECIFIC_IDS,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P010_BLUE_CHEST_ITEM = Packet(
+P010_BLUE_CHEST_ITEM = ChestPacket(
     packet_id=10,
     sprite_id=SPR0223_BLUE_ITEM_COLLECTION,
     action_script_id=A0992_CHEST_ITEMS_WITH_SPECIFIC_IDS,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P011_YELLOW_CHEST_ITEM = Packet(
+P011_YELLOW_CHEST_ITEM = ChestPacket(
     packet_id=11,
     sprite_id=SPR0221_YELLOW_ITEM_COLLECTION,
     action_script_id=A0992_CHEST_ITEMS_WITH_SPECIFIC_IDS,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P012_FLOWER_STATIC = Packet(
+P012_FLOWER_STATIC = ChestPacket(
     packet_id=12,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0793_DEFAULT_SEQUENCE_STATIC,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P013_MUSHROOM_STATIC = Packet(
+P013_MUSHROOM_STATIC = ChestPacket(
     packet_id=13,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0581_SEQUENCE_1_STATIC,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
 P014_PLAYER_ENTERS_WATER = Packet(
     packet_id=14,
@@ -381,50 +343,20 @@ P024_REGULAR_SOUND_EXPLOSION = Packet(
     b2=0,
     b4=0,
 )
-P025_RING_CHEST = Packet(
+P025_RING_CHEST = ChestPacket(
     packet_id=25,
     sprite_id=SPR0196_RING,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P026_SUNKEN_SHIP_TRAMPOLINE_PUZZLE = Packet(
+P026_SUNKEN_SHIP_TRAMPOLINE_PUZZLE = ShipPrizePacket(
     packet_id=26,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0870_SUNKEN_SHIP_TRAMPOLINE_PUZZLE,
-    show_shadow=True,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P027_SUNKEN_SHIP_TROOPA_PUZZLE = Packet(
+P027_SUNKEN_SHIP_TROOPA_PUZZLE = ShipPrizePacket(
     packet_id=27,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0871_SUNKEN_SHIP_TROOPA_PUZZLE,
-    show_shadow=True,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
 P028_MUSHROOM_THROWN_SOUTHWEST = Packet(
     packet_id=28,
@@ -441,20 +373,10 @@ P028_MUSHROOM_THROWN_SOUTHWEST = Packet(
     b2=0,
     b4=0,
 )
-P029_SUNKEN_SHIP_3D_MAZE = Packet(
+P029_SUNKEN_SHIP_3D_MAZE = ShipPrizePacket(
     packet_id=29,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0872_SUNKEN_SHIP_3D_MAZE_PRIZE,
-    show_shadow=True,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
 P030_WATER_SPLASH_DROPS_SFX = Packet(
     packet_id=30,
@@ -531,155 +453,55 @@ P034_GREY_EXPLOSION_SFX = Packet(
     b2=0,
     b4=0,
 )
-P035_SUNKEN_SHIP_CANNONBALL_PUZZLE = Packet(
+P035_SUNKEN_SHIP_CANNONBALL_PUZZLE = ShipPrizePacket(
     packet_id=35,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0874_SUNKEN_SHIP_CANNONBALL,
-    show_shadow=True,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P036_BARREL_PUZZLE_PRIZE = Packet(
+P036_BARREL_PUZZLE_PRIZE = ShipPrizePacket(
     packet_id=36,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0873_BARREL_PUZZLE,
-    show_shadow=True,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P037_SHIP_STAIRCASE = Packet(
+P037_SHIP_STAIRCASE = ShipPrizePacket(
     packet_id=37,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0875_SHIP_STAIRCASE,
-    show_shadow=True,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P038_BOOSTER_HILL_PRIZE_0 = Packet(
+P038_BOOSTER_HILL_PRIZE_0 = BoosterHillPacket(
     packet_id=38,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0065_BOOSTER_HILL_PRIZE_0,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P039_BOOSTER_HILL_PRIZE_1 = Packet(
+P039_BOOSTER_HILL_PRIZE_1 = BoosterHillPacket(
     packet_id=39,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0066_BOOSTER_HILL_PRIZE_1,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P040_BROOCH_CHEST = Packet(
+P040_BROOCH_CHEST = ChestPacket(
     packet_id=40,
     sprite_id=SPR0207_BROOCH,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P041_BOOSTER_HILL_PRIZE_2 = Packet(
+P041_BOOSTER_HILL_PRIZE_2 = BoosterHillPacket(
     packet_id=41,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0067_BOOSTER_HILL_PRIZE_2,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P042_BOOSTER_HILL_PRIZE_3 = Packet(
+P042_BOOSTER_HILL_PRIZE_3 = BoosterHillPacket(
     packet_id=42,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0068_BOOSTER_HILL_PRIZE_3,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P043_SHOES_CHEST = Packet(
+P043_SHOES_CHEST = ChestPacket(
     packet_id=43,
     sprite_id=SPR0202_SHOES,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P044_BOOSTER_HILL_PRIZE_4 = Packet(
+P044_BOOSTER_HILL_PRIZE_4 = BoosterHillPacket(
     packet_id=44,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0069_BOOSTER_HILL_PRIZE_4,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
 P045_TELEPORTATION_SHINE = Packet(
     packet_id=45,
@@ -696,20 +518,10 @@ P045_TELEPORTATION_SHINE = Packet(
     b2=0,
     b4=0,
 )
-P046_BOOSTER_HILL_PRIZE_5 = Packet(
+P046_BOOSTER_HILL_PRIZE_5 = BoosterHillPacket(
     packet_id=46,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0070_BOOSTER_HILL_PRIZE_5,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
 P047_BLUE_FIRE_TRAIL = Packet(
     packet_id=47,
@@ -726,20 +538,10 @@ P047_BLUE_FIRE_TRAIL = Packet(
     b2=0,
     b4=0,
 )
-P048_BANANA_CHEST = Packet(
+P048_BANANA_CHEST = ChestPacket(
     packet_id=48,
     sprite_id=SPR0222_BANANA_PEEL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
 P049_HAMMER_SPARKS_SFX = Packet(
     packet_id=49,
@@ -801,20 +603,10 @@ P052_BOMB_EXPLOSION_FASTER = Packet(
     b2=0,
     b4=0,
 )
-P053_CROWN_CHEST = Packet(
+P053_CROWN_CHEST = ChestPacket(
     packet_id=53,
     sprite_id=SPR0216_CROWN,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
 P054_LEVELUP_BONUS_POW = Packet(
     packet_id=54,
@@ -861,80 +653,30 @@ P056_LEVELUP_BONUS_HP = Packet(
     b2=0,
     b4=0,
 )
-P057_BOOSTER_HILL_PRIZE_6 = Packet(
+P057_BOOSTER_HILL_PRIZE_6 = BoosterHillPacket(
     packet_id=57,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0071_BOOSTER_HILL_PRIZE_6,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P058_BOOSTER_HILL_PRIZE_7 = Packet(
+P058_BOOSTER_HILL_PRIZE_7 = BoosterHillPacket(
     packet_id=58,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0072_BOOSTER_HILL_PRIZE_7,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P059_BOOSTER_HILL_PRIZE_8 = Packet(
+P059_BOOSTER_HILL_PRIZE_8 = BoosterHillPacket(
     packet_id=59,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0073_BOOSTER_HILL_PRIZE_8,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P060_BOOSTER_HILL_PRIZE_9 = Packet(
+P060_BOOSTER_HILL_PRIZE_9 = BoosterHillPacket(
     packet_id=60,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0074_BOOSTER_HILL_PRIZE_9,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P061_BOOSTER_HILL_PRIZE_10 = Packet(
+P061_BOOSTER_HILL_PRIZE_10 = BoosterHillPacket(
     packet_id=61,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0075_BOOSTER_HILL_PRIZE_10,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
 P062_SPLASH = Packet(
     packet_id=62,
@@ -951,547 +693,187 @@ P062_SPLASH = Packet(
     b2=0,
     b4=0,
 )
-P063_BOOSTER_HILL_PRIZE_12 = Packet(
+P063_BOOSTER_HILL_PRIZE_12 = BoosterHillPacket(
     packet_id=63,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0077_BOOSTER_HILL_PRIZE_12,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P064_FROG_COIN_CHEST_STILL = Packet(
+P064_FROG_COIN_CHEST_STILL = ChestPacket(
     packet_id=64,
     sprite_id=SPR0234_STATIC_FROG_COIN,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P065_BOOSTER_HILL_PRIZE_13 = Packet(
+P065_BOOSTER_HILL_PRIZE_13 = BoosterHillPacket(
     packet_id=65,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0082_BOOSTER_HILL_PRIZE_13,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P066_BOOSTER_HILL_PRIZE_14 = Packet(
+P066_BOOSTER_HILL_PRIZE_14 = BoosterHillPacket(
     packet_id=66,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0083_BOOSTER_HILL_PRIZE_14,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P067_BOMB_CHEST = Packet(
+P067_BOMB_CHEST = ChestPacket(
     packet_id=67,
     sprite_id=SPR0205_MICROBOMB_PACKET,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P068_BOOSTER_HILL_PRIZE_15 = Packet(
+P068_BOOSTER_HILL_PRIZE_15 = BoosterHillPacket(
     packet_id=68,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0084_BOOSTER_HILL_PRIZE_15,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P069_BOOSTER_HILL_PRIZE_STANDING_0 = Packet(
+P069_BOOSTER_HILL_PRIZE_STANDING_0 = BoosterHillPacket(
     packet_id=69,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0143_BOOSTER_HILL_PRIZE_STANDING_0,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P070_EGG_CHEST = Packet(
+P070_EGG_CHEST = ChestPacket(
     packet_id=70,
     sprite_id=SPR0237_EGG,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P071_BOOSTER_HILL_PRIZE_STANDING_1 = Packet(
+P071_BOOSTER_HILL_PRIZE_STANDING_1 = BoosterHillPacket(
     packet_id=71,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0086_BOOSTER_HILL_PRIZE_STANDING_2,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P072_BOOSTER_HILL_PRIZE_STANDING_2 = Packet(
+P072_BOOSTER_HILL_PRIZE_STANDING_2 = BoosterHillPacket(
     packet_id=72,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0085_BOOSTER_HILL_PRIZE_STANDING_1,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P073_COOKIE_CHEST = Packet(
+P073_COOKIE_CHEST = ChestPacket(
     packet_id=73,
     sprite_id=SPR0254_YOSHI_COOKIE,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P074_BOOSTER_HILL_PRIZE_STANDING_3 = Packet(
+P074_BOOSTER_HILL_PRIZE_STANDING_3 = BoosterHillPacket(
     packet_id=74,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0089_BOOSTER_HILL_PRIZE_STANDING_3,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P075_BOOSTER_HILL_PRIZE_STANDING_4 = Packet(
+P075_BOOSTER_HILL_PRIZE_STANDING_4 = BoosterHillPacket(
     packet_id=75,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0090_BOOSTER_HILL_PRIZE_STANDING_4,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P076_BERRY_CHEST = Packet(
+P076_BERRY_CHEST = ChestPacket(
     packet_id=76,
     sprite_id=SPR0253_BERRY,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P077_BOOSTER_HILL_PRIZE_STANDING_5 = Packet(
+P077_BOOSTER_HILL_PRIZE_STANDING_5 = BoosterHillPacket(
     packet_id=77,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0093_BOOSTER_HILL_PRIZE_STANDING_5,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P078_BOOSTER_HILL_PRIZE_STANDING_6 = Packet(
+P078_BOOSTER_HILL_PRIZE_STANDING_6 = BoosterHillPacket(
     packet_id=78,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0094_BOOSTER_HILL_PRIZE_STANDING_6,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P079_CARD_CHEST = Packet(
+P079_CARD_CHEST = ChestPacket(
     packet_id=79,
     sprite_id=SPR0206_CARD,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P080_BOOSTER_HILL_PRIZE_STANDING_7 = Packet(
+P080_BOOSTER_HILL_PRIZE_STANDING_7 = BoosterHillPacket(
     packet_id=80,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0096_BOOSTER_HILL_PRIZE_STANDING_7,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P081_BOOSTER_HILL_PRIZE_STANDING_8 = Packet(
+P081_BOOSTER_HILL_PRIZE_STANDING_8 = BoosterHillPacket(
     packet_id=81,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0097_BOOSTER_HILL_PRIZE_STANDING_8,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P082_BOOSTER_HILL_PRIZE_STANDING_9 = Packet(
+P082_BOOSTER_HILL_PRIZE_STANDING_9 = BoosterHillPacket(
     packet_id=82,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0100_BOOSTER_HILL_PRIZE_STANDING_9,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P083_BOOSTER_HILL_PRIZE_STANDING_10 = Packet(
+P083_BOOSTER_HILL_PRIZE_STANDING_10 = BoosterHillPacket(
     packet_id=83,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0114_BOOSTER_HILL_PRIZE_STANDING_10,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P084_BOOSTER_HILL_PRIZE_STANDING_11 = Packet(
+P084_BOOSTER_HILL_PRIZE_STANDING_11 = BoosterHillPacket(
     packet_id=84,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0137_BOOSTER_HILL_PRIZE_STANDING_11,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P085_BOOSTER_HILL_PRIZE_STANDING_12 = Packet(
+P085_BOOSTER_HILL_PRIZE_STANDING_12 = BoosterHillPacket(
     packet_id=85,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0139_BOOSTER_HILL_PRIZE_STANDING_12,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P086_BOOSTER_HILL_PRIZE_STANDING_13 = Packet(
+P086_BOOSTER_HILL_PRIZE_STANDING_13 = BoosterHillPacket(
     packet_id=86,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0140_BOOSTER_HILL_PRIZE_STANDING_13,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P087_BOOSTER_HILL_PRIZE_STANDING_14 = Packet(
+P087_BOOSTER_HILL_PRIZE_STANDING_14 = BoosterHillPacket(
     packet_id=87,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0141_BOOSTER_HILL_PRIZE_STANDING_14,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P088_BOOSTER_HILL_PRIZE_STANDING_15 = Packet(
+P088_BOOSTER_HILL_PRIZE_STANDING_15 = BoosterHillPacket(
     packet_id=88,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0142_BOOSTER_HILL_PRIZE_STANDING_15,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P089_BEETLE_CHEST = Packet(
+P089_BEETLE_CHEST = ChestPacket(
     packet_id=89,
     sprite_id=SPR0251_BEETLE_PACKET_COPY,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P090_SMALL_COIN_STILL = Packet(
+P090_SMALL_COIN_STILL = ChestPacket(
     packet_id=90,
     sprite_id=SPR0236_COIN_STATIC_SMALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P091_CHEST_COIN_STILL = Packet(
+P091_CHEST_COIN_STILL = ChestPacket(
     packet_id=91,
     sprite_id=SPR0235_STATIC_COIN,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P092_GLOVE_CHEST = Packet(
+P092_GLOVE_CHEST = ChestPacket(
     packet_id=92,
     sprite_id=SPR0208_GLOVE,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P093_CRYSTAL_CHEST = Packet(
+P093_CRYSTAL_CHEST = ChestPacket(
     packet_id=93,
     sprite_id=SPR0209_SHINY_STONE,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P094_FIRE_SPELL_CHEST = Packet(
+P094_FIRE_SPELL_CHEST = ChestPacket(
     packet_id=94,
     sprite_id=SPR0214_RED_BALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P095_BLUE_SPELL_CHEST = Packet(
+P095_BLUE_SPELL_CHEST = ChestPacket(
     packet_id=95,
     sprite_id=SPR0215_BLUE_BALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P096_GREEN_SPELL_CHEST = Packet(
+P096_GREEN_SPELL_CHEST = ChestPacket(
     packet_id=96,
     sprite_id=SPR0217_GREEN_BALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P097_YELLOW_SPELL_CHEST = Packet(
+P097_YELLOW_SPELL_CHEST = ChestPacket(
     packet_id=97,
     sprite_id=SPR0218_YELLOW_BALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P098_GRAY_SPELL_CHEST = Packet(
+P098_GRAY_SPELL_CHEST = ChestPacket(
     packet_id=98,
     sprite_id=SPR0224_GRAY_BALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P099_BAG_STATIC =  Packet(
+P099_BAG_STATIC = Packet(
     packet_id=99,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0545_SEQUENCE_5_STATIC,
@@ -1506,103 +888,72 @@ P099_BAG_STATIC =  Packet(
     b2=0,
     b4=0,
 )
-P100_BOOSTER_HILL_PRIZE_11 = Packet(
+P100_BOOSTER_HILL_PRIZE_11 = BoosterHillPacket(
     packet_id=100,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0076_BOOSTER_HILL_PRIZE_11,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=1,
-    layer_priority=4,
-    b2b2=False,
-    b2b3=True,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P101_FLOWER_COLLECTION = Packet(
+P101_FLOWER_COLLECTION = ChestPacket(
     packet_id=101,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0992_CHEST_ITEMS_WITH_SPECIFIC_IDS,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P102_SMALL_FROG_COIN_STILL = Packet(
+P102_SMALL_FROG_COIN_STILL = ChestPacket(
     packet_id=102,
     sprite_id=SPR0238_STATIC_FROG_COIN_SMALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P103_MIMIC_1_POOF_ON_DEFEAT = Packet(
+P103_MIMIC_1_POOF_ON_DEFEAT = ChestPacket(
     packet_id=103,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A1017_MIMIC_1_POOF_WHEN_DEFEATED,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P104_MIMIC_2_POOF_ON_DEFEAT = Packet(
+P104_MIMIC_2_POOF_ON_DEFEAT = ChestPacket(
     packet_id=104,
     sprite_id=SPR0195_FLOWER,
     action_script_id=A1018_MIMIC_2_POOF_WHEN_DEFEATED,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P105_MARIO_DOLL = Packet(
+P105_MARIO_DOLL = ChestPacket(
     packet_id=105,
     sprite_id=SPR0233_MARIO_DOLL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
-    show_shadow=False,
-    b0=0,
-    vram_size=0,
-    sprite_priority=3,
-    layer_priority=3,
-    b2b2=False,
-    b2b3=False,
-    b2b4=False,
-    b2=0,
-    b4=0,
 )
-P106_UNUSED = None
-P107_UNUSED = None
-P108_UNUSED = None
-P109_UNUSED = None
-P110_UNUSED = None
-P111_UNUSED = None
-P112_UNUSED = None
+P106_MALLOW_DOLL = ChestPacket(
+    packet_id=106,
+    sprite_id=SPR0199_MALLOW_DOLL,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P107_GENO_DOLL = ChestPacket(
+    packet_id=107,
+    sprite_id=SPR0239_GENO_DOLL,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P108_TOADSTOOL_DOLL = ChestPacket(
+    packet_id=108,
+    sprite_id=SPR0240_TOADSTOOL_DOLL,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P109_BOWSER_DOLL = ChestPacket(
+    packet_id=109,
+    sprite_id=SPR0241_BOWSER_DOLL,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+    vram_size=1
+)
+P110_MOKURA_CHEST = ChestPacket(
+    packet_id=110,
+    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P111_BLUE_CLOUD_CHEST = ChestPacket(
+    packet_id=111,
+    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P111_JINX_CHEST = ChestPacket(
+    packet_id=112,
+    sprite_id=SPR0244_JINX_PACKET,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
 P113_UNUSED = None
 P114_UNUSED = None
 P115_UNUSED = None
@@ -1750,8 +1101,6 @@ P255_UNUSED = None
 # Packet Collection
 ALL_PACKETS = PacketCollection(
     [
-
-
         P000_FLASHING_POOF_FLOWER,
         P001_FLASHING_POOF_MUSHROOM,
         P002_FLOWER_PACK_CHEST_ITEM,
@@ -1858,13 +1207,13 @@ ALL_PACKETS = PacketCollection(
         P103_MIMIC_1_POOF_ON_DEFEAT,
         P104_MIMIC_2_POOF_ON_DEFEAT,
         P105_MARIO_DOLL,
-        P106_UNUSED,
-        P107_UNUSED,
-        P108_UNUSED,
-        P109_UNUSED,
-        P110_UNUSED,
-        P111_UNUSED,
-        P112_UNUSED,
+        P106_MALLOW_DOLL,
+        P107_GENO_DOLL,
+        P108_TOADSTOOL_DOLL,
+        P109_BOWSER_DOLL,
+        P110_MOKURA_CHEST,
+        P111_BLUE_CLOUD_CHEST,
+        P111_JINX_CHEST,
         P113_UNUSED,
         P114_UNUSED,
         P115_UNUSED,

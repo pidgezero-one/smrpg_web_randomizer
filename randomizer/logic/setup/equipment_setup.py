@@ -6,12 +6,12 @@ from typing import TYPE_CHECKING, cast
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
 from ...types.item import Equipment
 
-from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands import PlaySound, ScreenFlash
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands import PlaySound, ScreenFlash, UnknownCommand
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.flash_colours import WHITE, RED, AQUA, YELLOW
 
 from ...data.variables.battle_sfx_names import (
     S0018_SUPER_JUMP_HIT_1,
-    S0029_FIRE_SHOOT,
+    S0032_FIRE_BURN,
     S0078_TIMED_STAT_BOOST,
     S0095_BOWSERS_CRUSHER,
     S0100_ELECTROSHOCK_SPARKS,
@@ -19,7 +19,7 @@ from ...data.variables.battle_sfx_names import (
 )
 
 JUMP_HIT_SOUND_BY_ELEMENT = {
-    Element.FIRE: S0029_FIRE_SHOOT,
+    Element.FIRE: S0032_FIRE_BURN,
     Element.THUNDER: S0100_ELECTROSHOCK_SPARKS,
     Element.ICE: S0103_CRYSTAL_HITS,
 }
@@ -58,7 +58,7 @@ def apply_equipment_settings(world: GameWorld) -> None:
     )
     from ...data.spells.spells import (
         GenoBeamSpell, GenoFlashSpell, PsychBombSpell, CrusherSpell, BowserCrushSpell,
-        SuperJumpSpell, UltraJumpSpell,
+        JumpSpell, SuperJumpSpell, UltraJumpSpell,
         FireOrbSpell, SuperFlameSpell, UltraFlameSpell,
     )
     from ...data.items.items import (
@@ -104,6 +104,19 @@ def apply_equipment_settings(world: GameWorld) -> None:
                     RED if spell.element == Element.FIRE else
                     WHITE if spell.element == Element.THUNDER else YELLOW
                 )
+                if spell.element != Element.JUMP:
+                    # Neutralize green color-math tint for non-JUMP elements;
+                    # BowserCrushSpell.palette_patch colors the figure directly.
+                    # world.battle_animations[0x35].get_command_by_name(
+                    #     "bowser_crush_color_math", UnknownCommand
+                    # ).set_contents(bytearray([0xDD, 0xFF, 0x05, 0xEE, 0x02, 0x01]))
+                    pass
+            elif isinstance(spell, JumpSpell):
+                new_sound = JUMP_HIT_SOUND_BY_ELEMENT.get(spell.element)
+                if new_sound is not None:
+                    world.battle_animations[0x35].get_command_by_name(
+                        "jump_hit_sound", PlaySound
+                    ).set_sound(new_sound)
             elif isinstance(spell, (SuperJumpSpell, UltraJumpSpell)):
                 new_sound = JUMP_HIT_SOUND_BY_ELEMENT.get(spell.element)
                 if new_sound is not None:

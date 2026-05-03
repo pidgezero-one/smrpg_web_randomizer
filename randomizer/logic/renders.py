@@ -2640,6 +2640,24 @@ def render_statue_room_boss(
 ) -> None:
     """Apply animation changes for Statue Room boss fight."""
     if isinstance(prize, DodoBossFight):
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "dodo_left_foot_backward_subroutine", "dodo_no_fixed_back_coord_1"
+        )
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "dodo_left_foot_backward_subroutine", "dodo_no_fixed_back_coord_2"
+        )
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "dodo_left_foot_backward_subroutine", "dodo_no_fixed_back_coord_5"
+        )
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "dodo_right_foot_backward_subroutine", "dodo_no_fixed_back_coord_3"
+        )
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "dodo_right_foot_backward_subroutine", "dodo_no_fixed_back_coord_4"
+        )
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "dodo_right_foot_backward_subroutine", "dodo_no_fixed_back_coord_6"
+        )
         return
     # wedding ending
     world.event_scripts.delete_subscript_command_by_identifier(
@@ -2800,6 +2818,18 @@ def render_statue_room_boss(
             "statue_keeper_flustered_aq", "statue_keeper_flustered_1"
         )
 
+    dodo_replacement_faces_wrong_direction_2 = world.event_scripts.get_subscript_command_by_identifier(
+        "final_statue_peck_aq",
+        "dodo_circle_around",
+        A_SetSpriteSequence,
+    )
+    dodo_replacement_faces_wrong_direction_2.set_mirror_sprite(False)
+    dodo_replacement_faces_wrong_direction_3 = world.event_scripts.get_subscript_command_by_identifier(
+        "dodo_circle_around_aq",
+        "dodo_circle_around_2",
+        A_SetSpriteSequence,
+    )
+    dodo_replacement_faces_wrong_direction_3.set_mirror_sprite(False)
     if has_back_walking_sequence:
         dodo_replacement_faces_wrong_direction = (
             world.event_scripts.get_subscript_command_by_identifier(
@@ -2809,6 +2839,17 @@ def render_statue_room_boss(
             )
         )
         dodo_replacement_faces_wrong_direction.set_mirror_sprite(True)
+        world.event_scripts.replace_subscript_command_by_identifier(
+            "dodo_left_foot_backward_subroutine",
+            "dodo_no_fixed_back_coord_face_nw_1",
+            A_SetSpriteSequence(index=back_walking_molds[0], is_mold=True, looping=False),
+        )
+        world.event_scripts.replace_subscript_command_by_identifier(
+            "dodo_right_foot_backward_subroutine",
+            "dodo_no_fixed_back_coord_face_nw_2",
+            A_SetSpriteSequence(index=back_walking_molds[0], is_mold=True, looping=False),
+        )
+        
     else:
         dodo_hallway_action_script = world.event_scripts.get_command_by_identifier(
             "dodo_hallway_mirror_sprite_if_not_vanilla_container", ActionQueueAsync
@@ -2819,6 +2860,18 @@ def render_statue_room_boss(
                 A_FixedFCoordOn(),
                 A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
             ]
+        )
+        dodo_replacement_faces_wrong_direction_2.set_index(0)
+        dodo_replacement_faces_wrong_direction_3.set_index(0)
+        world.event_scripts.replace_subscript_command_by_identifier(
+            "dodo_left_foot_backward_subroutine",
+            "dodo_no_fixed_back_coord_face_nw_1",
+            A_SetSpriteSequence(index=0, is_mold=True, looping=False),
+        )
+        world.event_scripts.replace_subscript_command_by_identifier(
+            "dodo_right_foot_backward_subroutine",
+            "dodo_no_fixed_back_coord_face_nw_2",
+            A_SetSpriteSequence(index=0, is_mold=True, looping=False),
         )
 
     # walking from statue to statue

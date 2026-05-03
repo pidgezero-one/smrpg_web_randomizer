@@ -70,6 +70,20 @@ def _validate_character_requirements(settings: Settings) -> None:
             f"You can choose at most 5 starting characters."
         )
 
+    # Each starter slot (explicit ally or Random_X) consumes one distinct ally
+    # in the seed, so the number of starter slots cannot exceed the
+    # 'Total playable allies' setting. This catches cases like 5 Random_X
+    # starters with max=3, which would otherwise silently produce more
+    # starters than max allows.
+    max_char_count = settings.get_flag(MaxCharacters).value
+    if num_starters > max_char_count:
+        raise SettingsValidationError(
+            f"{num_starters} starting characters are selected, "
+            f"but 'Total playable allies' is set to {max_char_count}. "
+            f"Either reduce the number of starting characters or increase "
+            f"'Total playable allies'."
+        )
+
     # Collect characters required by gating settings
     gating_required_characters: set[str] = set()
     gating_checks: list[tuple[type, object, str]] = [
@@ -100,10 +114,9 @@ def _validate_character_requirements(settings: Settings) -> None:
         if ally_name:
             explicitly_set_starting_chars.add(ally_name)
 
-    # Get available characters and max count
+    # Get available characters
     available_chars_flag = settings.get_flag(AvailableCharacters)
     disabled_char_names = {m.value.name for m in available_chars_flag.disabled}
-    max_char_count = settings.get_flag(MaxCharacters).value
 
     # Combine gating-required and explicitly set starting characters
     all_required_characters = gating_required_characters | explicitly_set_starting_chars

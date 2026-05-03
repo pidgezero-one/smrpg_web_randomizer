@@ -1,5 +1,4 @@
 # E1685_TEMPLE_FORTUNE_HEAD_1
-# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -12,10 +11,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.coords import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.intro_title_text import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
 from ....variables.action_script_names import *
 from ....variables.battlefield_names import *
@@ -30,8 +29,6 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
-from ....spells.spells import *
-from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfBitClear(BELOME_FORTUNE_1, ["EVENT_1685_ret_45"]),
@@ -40,7 +37,7 @@ script = EventScript([
 	ActionQueueSync(target=MARIO, subscript=[
 		A_JumpToHeight(64)
 	]),
-	JmpIfBitSet(BELOME_HEAD_1, ["EVENT_1685_ret_45"]),
+	JmpIfBitSet(TEMP_7043_0, ["EVENT_1685_ret_45"]),
 	Pause(1, identifier="EVENT_1685_pause_5"),
 	JmpIfMarioInAir(["EVENT_1685_pause_5"]),
 	PlaySound(sound=SO154_BIG_SQUISH, channel=6),
@@ -49,7 +46,7 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM, mod_id=32),
 	Store00To0248(),
 	Pause(1),
-	SetBit(BELOME_HEAD_1),
+	SetBit(TEMP_7043_0),
 	JmpIfVarNotEqualsConst(SECONDARY_TEMP_7024, 0, ["EVENT_1685_jmp_if_var_not_equals_const_20"]),
 	SetVarToConst(SECONDARY_TEMP_7024, 1),
 	CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),

@@ -937,14 +937,21 @@ class PsychBombSpell(CharacterSpell):
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
-        d = {}
-        if self.element == Element.JUMP:
-            d[0x334C14] = bytearray([0x80, 0x05, 0xA0, 0x05, 0x40, 0x06, 0xC0, 0x06, 0x60, 0x07, 0xE0, 0x07, 0x60, 0x07, 0xC0, 0x06, 0x40, 0x06, 0xA0, 0x05, 0x80, 0x05, 0x40, 0x01])
+        # Dome palette at ROM 0x334C34 (relocated by move_spell_gfx; vanilla 0x33510C is dead).
+        # 32 bytes / 16 colors. Layout: c0=bright flash, c1..c11=11-step gradient, c12=dim,
+        # c13..c15=bright flash. Verified by CGRAM dump during cast.
+        base = 0x334C34
+        intensities = [96, 104, 144, 176, 216, 248, 216, 176, 144, 104, 96]
+        if self.element == Element.THUNDER:
+            channels = lambda v: (v << 16) | (v << 8)  # R&G
         elif self.element == Element.ICE:
-            d[0x334C12] = bytearray([0xE1, 0x7F, 0x01, 0x30, 0x01, 0x34, 0x01, 0x48, 0x01, 0x58, 0x01, 0x6C, 0x01, 0x7C, 0x01, 0x6C, 0x01, 0x58, 0x01, 0x48, 0x01, 0x34, 0x01, 0x30, 0x00, 0x28, 0xE1, 0x7F, 0xE1, 0x7F, 0xE1, 0x7F])
-        elif self.element == Element.FIRE:
-            d[0x334C14] = bytearray([0x8C, 0x05, 0xAD, 0x05, 0x52, 0x06, 0xD6, 0x06, 0x7B, 0x07, 0xFF, 0x07, 0x7B, 0x07, 0xD6, 0x06, 0x52, 0x06, 0xAD, 0x05, 0x8C, 0x05, 0x4A, 0x01])
-        return d
+            channels = lambda v: (v << 8) | v          # G&B
+        elif self.element == Element.JUMP:
+            channels = lambda v: v << 8                # G
+        else:
+            return {}
+        colors = [channels(248)] + [channels(i) for i in intensities] + [channels(80)] + [channels(248)] * 3
+        return {base: palette_to_bytes(colors)}
 
 
 class TerrorizeSpell(CharacterSpell):
@@ -1121,8 +1128,24 @@ class BowserCrushSpell(CharacterSpell):
             return " Bowser's\n ultimate thunder\n weapon!"
         else:
             return self._description
-        
-    # honestly cant figure out where the colour is here
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        # BG3 figure palette at ROM 0x3336B4 (relocated by move_spell_gfx).
+        # Vanilla c1-c3 are dark/med/bright gray; c15 is a small dark gray that
+        # may be load-bearing for the engine, so we ONLY rewrite c1-c3 (bytes
+        # 2..7 of the palette, leaving c0 transparent and c4-c15 untouched).
+        # Green tint comes from 0xDD color-math; equipment_setup.py neutralizes
+        # it to FF 05 EE 02 01 for non-JUMP.
+        if self.element == Element.FIRE:
+            shades = [0x600000, 0xA00000, 0xF80000]
+        elif self.element == Element.ICE:
+            shades = [0x000060, 0x0000A0, 0x0000F8]
+        elif self.element == Element.THUNDER:
+            shades = [0x606000, 0xA0A000, 0xF8F800]
+        else:
+            return {}
+        return {0x3336B4 + 2: palette_to_bytes(shades)}
 
 
 class GenoBeamSpell(CharacterSpell):
@@ -1312,6 +1335,13 @@ class GenoFlashSpell(CharacterSpell):
             return ' Build power!\n Thunder beam hits\n all foes!'
         else:
             return self._description
+
+    @property
+    def palette_patch(self) -> dict[int, bytearray]:
+        # TODO: 0x3DFF10 was the dialogue-box palette, NOT the sun-rays palette.
+        # Real sun palette location still needs to be found via CGRAM diff or
+        # bsnes-plus CGRAM-write watchpoint.
+        return {}
 
 
 class ThunderboltSpell(CharacterSpell):
