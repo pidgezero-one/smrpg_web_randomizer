@@ -1917,6 +1917,11 @@ class GameWorld:
         if self.settings.isflag_enabled(ShowEquips):
             patch.add_data(0x033B6D, bytes([0x29, 0x1F, 0xEA]))
 
+        if self.settings.isflag_enabled(UncapMaxFP):
+            # Add7000ToMaxFP handler ($C0:C4CC): replace 99-cap with 255-cap.
+            # BCS catches 8-bit ADC overflow so a wrap cannot regress max FP.
+            patch.add_data(0xC4CC, [0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF])
+
         # Battle music IDs - write 8 selected music IDs to the music pointer table
         if self.selected_music_ids:
             patch.add_data(0x029F51, bytes(self.selected_music_ids))
