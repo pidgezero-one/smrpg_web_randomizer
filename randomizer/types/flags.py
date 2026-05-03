@@ -660,6 +660,12 @@ class UncapSuperJumps(BooleanFlag):
     _id = "uncap"
 
 
+class UncapMaxFP(BooleanFlag):
+    _name = "Uncap maximum FP"
+    _description = "If enabled, allies' max FP threshold can exceed 99 (capped at 255)."
+    _id = "uncapfp"
+
+
 # ✅
 # Build LearnableSpellEnum members dynamically
 _learnable_spell_members = {}
