@@ -76,6 +76,7 @@ class Settings:
             InfuseSpellElements: InfuseSpellElements(),
             CharacterSpellElements: CharacterSpellElements(),
             UncapSuperJumps: UncapSuperJumps(),
+            UncapMaxFP: UncapMaxFP(),
             AvailableSpells: AvailableSpells(),
             AvailableCharacters: AvailableCharacters(),
             ShuffleStarPieces: ShuffleStarPieces(),
