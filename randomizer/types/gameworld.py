@@ -1930,6 +1930,19 @@ class GameWorld:
             #   tiles for "XX/XX" and widening to "XXX/XXX" shifts the slash and
             #   max-FP digits into adjacent positions, requiring tilemap layout
             #   rework. Deferred per plan's cut criteria.
+            # TODO(uncapfp follow-up): widen battle spell-menu FP display (bank $C1, ~$62F6)
+            #   Renderer at $C1:62F6-630D prints curFP/maxFP, and $C1:635B prints
+            #   per-spell FP cost, all via JSR $6378 (2-digit converter at
+            #   $C1:6378-639C). The converter divides by 100, drops the quotient,
+            #   and returns only tens/units tiles -- no 3-digit variant exists
+            #   nearby. All three call sites would need updating, and the
+            #   tilemap stores tens/units at fixed adjacent slots ($7024/$7026
+            #   for cost, $702C/$702E for current FP, $7032/$7034 for max FP)
+            #   with the "/" separator at $7030, so widening to 3 digits would
+            #   overlap the slash and the spell-name/flower-icon tiles.
+            #   Deferred per plan's cut criteria. (Note: spell FP cost is
+            #   capped at 99 in the spell stat table, so only the curFP/maxFP
+            #   header can actually overflow under UncapMaxFP.)
 
         # Battle music IDs - write 8 selected music IDs to the music pointer table
         if self.selected_music_ids:
