@@ -1923,13 +1923,15 @@ class GameWorld:
             patch.add_data(0xC4CC, [0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF])
             # Battle bump-max-FP handler ($C2:C14F): same fix, identical bytes.
             patch.add_data(0x2C14F, [0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF])
-            # TODO(uncapfp follow-up): widen X-menu FP display (bank $C3, ~$1626)
-            #   Renderer at $C3:1626-163E prints curFP/maxFP via JSR $78D2 (2-digit).
-            #   A 3-digit print routine already exists at $C3:78EC, so the code
-            #   change is trivial (2 bytes), but the X-menu tilemap allocates 5
-            #   tiles for "XX/XX" and widening to "XXX/XXX" shifts the slash and
-            #   max-FP digits into adjacent positions, requiring tilemap layout
-            #   rework. Deferred per plan's cut criteria.
+            # X-menu FP display: switch 2-digit print ($C3:78D2) -> 3-digit print
+            # ($C3:78EC) so values >99 don't junk the tens-digit tile (vanilla
+            # converter divides by 10 with no mod, rendering quotient 10 as a
+            # garbage glyph). The 3-digit routine produces a leading blank for
+            # values <100, so 99 still reads naturally as " 99". Both call sites
+            # are JSR abs (3-byte opcode 20 D2 78); patching only the operand low
+            # byte (D2 -> EC) is sufficient.
+            patch.add_data(0x3162F, [0xEC])
+            patch.add_data(0x3163F, [0xEC])
             # TODO(uncapfp follow-up): widen battle spell-menu FP display (bank $C1, ~$62F6)
             #   Renderer at $C1:62F6-630D prints curFP/maxFP, and $C1:635B prints
             #   per-spell FP cost, all via JSR $6378 (2-digit converter at
