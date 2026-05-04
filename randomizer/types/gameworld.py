@@ -1932,19 +1932,60 @@ class GameWorld:
             # byte (D2 -> EC) is sufficient.
             patch.add_data(0x3162F, [0xEC])
             patch.add_data(0x3163F, [0xEC])
-            # TODO(uncapfp follow-up): widen battle spell-menu FP display (bank $C1, ~$62F6)
-            #   Renderer at $C1:62F6-630D prints curFP/maxFP, and $C1:635B prints
-            #   per-spell FP cost, all via JSR $6378 (2-digit converter at
-            #   $C1:6378-639C). The converter divides by 100, drops the quotient,
-            #   and returns only tens/units tiles -- no 3-digit variant exists
-            #   nearby. All three call sites would need updating, and the
-            #   tilemap stores tens/units at fixed adjacent slots ($7024/$7026
-            #   for cost, $702C/$702E for current FP, $7032/$7034 for max FP)
-            #   with the "/" separator at $7030, so widening to 3 digits would
-            #   overlap the slash and the spell-name/flower-icon tiles.
-            #   Deferred per plan's cut criteria. (Note: spell FP cost is
-            #   capped at 99 in the spell stat table, so only the curFP/maxFP
-            #   header can actually overflow under UncapMaxFP.)
+            # Battle spell-menu FP display: vanilla converter at $C1:6378
+            # drops the /100 quotient, so maxFP=100 renders as "99/00". Add a
+            # 3-digit converter in free space at $C1:9564 (leading-blank for
+            # hundreds), rewrite the curFP/maxFP renderer at $C1:62F6 to call
+            # it with cur-buffer base $702A and max-buffer base $7032, and
+            # widen the tilemap DMA upload from 22 to 24 bytes (CPX #$16 ->
+            # #$18 at $C1:62D7) so max-units at $7036 is included. Per-spell
+            # cost site at $C1:635B is left alone (cap 99, no overflow).
+            patch.add_data(
+                0x19564,
+                [
+                    0x29, 0xFF, 0x00,        # AND #$00FF
+                    0xA8,                    # TAY
+                    0xA9, 0x64, 0x00,        # LDA #$0064 (100)
+                    0x20, 0x53, 0x0E,        # JSR $0E53 (divide)
+                    0xC9, 0x00, 0x00,        # CMP #$0000
+                    0xF0, 0x05,              # BEQ +5 -> blank tile
+                    0x09, 0x30, 0x24,        # ORA #$2430 (hundreds digit tile)
+                    0x80, 0x03,              # BRA +3 -> store
+                    0xA9, 0x00, 0x24,        # LDA #$2400 (blank tile)
+                    0x9D, 0x00, 0x70,        # STA $7000,X (hundreds slot)
+                    0xAF, 0x16, 0x42, 0x00,  # LDA $004216 (remainder)
+                    0xA8,                    # TAY
+                    0xA9, 0x0A, 0x00,        # LDA #$000A (10)
+                    0x20, 0x53, 0x0E,        # JSR $0E53 (divide)
+                    0x09, 0x30, 0x24,        # ORA #$2430 (tens digit)
+                    0x9D, 0x02, 0x70,        # STA $7002,X (tens slot)
+                    0xAF, 0x16, 0x42, 0x00,  # LDA $004216 (units)
+                    0x09, 0x30, 0x24,        # ORA #$2430
+                    0x9D, 0x04, 0x70,        # STA $7004,X (units slot)
+                    0x60,                    # RTS
+                ],
+            )
+            # Rewrite curFP/maxFP renderer at $C1:62F6-630F (26 bytes) to use
+            # the 3-digit converter. cur slot starts at $702A (3 tiles up to
+            # $702E); max slot at $7032 (3 tiles up to $7036). Slash at $7030
+            # is preserved. Trailing NOPs pad to original 26-byte block.
+            patch.add_data(
+                0x162F6,
+                [
+                    0xC2, 0x30,              # REP #$30
+                    0xAD, 0x0C, 0xFA,        # LDA $FA0C (curFP)
+                    0xA2, 0x2A, 0x00,        # LDX #$002A
+                    0x20, 0x64, 0x95,        # JSR $9564
+                    0xAD, 0x0D, 0xFA,        # LDA $FA0D (maxFP)
+                    0xA2, 0x32, 0x00,        # LDX #$0032
+                    0x20, 0x64, 0x95,        # JSR $9564
+                    0xEA, 0xEA, 0xEA,        # padding
+                    0xEA, 0xEA, 0xEA,        # padding
+                ],
+            )
+            # Extend tilemap DMA upload from 22 -> 24 bytes (11 -> 12 tiles)
+            # so the max-units slot at $7036 is included.
+            patch.add_data(0x162D7, [0x18])
 
         # Battle music IDs - write 8 selected music IDs to the music pointer table
         if self.selected_music_ids:
