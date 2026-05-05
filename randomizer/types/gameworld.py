@@ -1855,6 +1855,14 @@ class GameWorld:
         # Dialogs, enemies, items, packets, battle packs, rooms, shops, spells
         # (Note: overworld_dialogs and action_scripts are rendered earlier for space reclamation)
 
+        # UncapMaxFP: Royal Syrup's vanilla _inflict=99 caps the heal at 99 FP
+        # even though the item description reads "Recovers all Flower Pts." Bump
+        # to 255 so the heal saturates at whatever max FP the player has (the
+        # battle engine clamps at max FP, like Max Mushroom's _inflict=255 does
+        # for HP). Must run before self.items.render() below.
+        if self.settings.isflag_enabled(UncapMaxFP):
+            self.get_item(RoyalSyrupItem).set_inflict(255)
+
         # Run all render() calls in parallel
         with ThreadPoolExecutor() as executor:
             futures = {
