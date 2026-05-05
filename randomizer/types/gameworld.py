@@ -2015,8 +2015,16 @@ class GameWorld:
             # because spell costs are capped at 99 in the spell stat
             # table even under UncapMaxFP.
 
-            # Custom 3-digit converter at $C1:9564 (45 bytes):
+            # Custom 3-digit converter at $C1:9564 (57 bytes). Saves and
+            # restores $80 and $86 around the converter body so no other
+            # bank-C1 code that uses them as state (HP rendering, HUD,
+            # action menu, sprite logic -- 19 LDA $86 readers in bank
+            # C1) sees clobbered scratch. Earlier versions left $80/$86
+            # mutated, which caused accumulating tile and sprite artifacts
+            # during menu transitions and casting:
             #   PHX                       ; preserve caller's X
+            #   LDX $86 / PHX             ; save $86:$87 onto stack
+            #   LDX $80 / PHX             ; save $80:$81 onto stack
             #   AND #$00FF                ; mask high byte from m16 LDA
             #   STZ $86                   ; clear leading-zero flag (m16)
             #   PHA / TYA / TAX / PLA / TAY  ; swap A,Y -> X=offset, Y=value
@@ -2028,11 +2036,15 @@ class GameWorld:
             #   INC $86                   ; force ones (no leading-zero
             #                               suppression for the ones digit)
             #   LDA $004216 / JSR $5D98   ; emit ones
+            #   PLX / STX $80             ; restore $80:$81
+            #   PLX / STX $86             ; restore $86:$87
             #   PLX                       ; restore caller's X
             #   RTS
             patch.add_data(
                 0x19564,
                 [0xDA,
+                 0xA6, 0x86, 0xDA,
+                 0xA6, 0x80, 0xDA,
                  0x29, 0xFF, 0x00,
                  0x64, 0x86,
                  0x48, 0x98, 0xAA, 0x68, 0xA8,
@@ -2043,6 +2055,8 @@ class GameWorld:
                  0x20, 0x98, 0x5D,
                  0xE6, 0x86,
                  0xAF, 0x16, 0x42, 0x00, 0x20, 0x98, 0x5D,
+                 0xFA, 0x86, 0x80,
+                 0xFA, 0x86, 0x86,
                  0xFA,
                  0x60],
             )
