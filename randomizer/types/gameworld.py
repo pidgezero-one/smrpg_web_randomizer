@@ -1973,23 +1973,14 @@ class GameWorld:
             # at $7040, only 6 bytes past $7034) and with the per-spell FP
             # cost renderer (which writes $7024/$7026 each frame).
             #
-            # The HP 3-digit converter at $C1:5D6A computes its destination
-            # as $7000 + Y + $8C and emits via STA $7000,X with leading-zero
-            # suppression. We reuse it for FP. Critical detail: $8C is *also*
-            # the dialog-text tilemap cursor ($C1:25D2 / $C1:2610 read and
-            # advance it across battle messages), and battle init renders
-            # the spell-menu FP at the same time as the "Hold Y for ..."
-            # dialog -- if we clobber $8C in-place, the dialog text drawing
-            # writes to the wrong tilemap address and produces truncated
-            # / artifacted text. So the renderer must save and restore
-            # $8C (and $8E, which the converter uses as a value-stash
-            # scratch -- and which is also part of the dialog state).
-            #
-            # The save/restore pushes us over the 26-byte in-place budget,
-            # so we relocate the entire renderer to bank-C1 free space at
-            # $C1:9564 (43 bytes) and replace the in-place site with a
-            # bare JSR + NOPs (26 bytes total, falls through to $C1:6310
-            # the same as vanilla).
+            # This implementation reuses the battle HP 3-digit converter at
+            # $C1:5D6A (which writes 3 tiles via $7000+Y with leading-zero
+            # suppression and $2400 attribute prefix) via a 6-byte trampoline
+            # at $C1:9564 that masks A's high byte first ($FA0C/$FA0D are
+            # 1-byte values; m16 LDA reads the adjacent byte as garbage in
+            # the high half). The renderer is rewritten in-place at $C1:62F6
+            # in exactly 26 bytes, ending without RTS to preserve the
+            # fall-through to the F-tile animator at $C1:6310.
             #
             # New layout in the existing 11-tile $7020-$7034 window:
             #   $7020 F | $7022 P | $7024-$7026 spell cost (untouched)
@@ -1999,54 +1990,47 @@ class GameWorld:
             # Per-spell FP cost renderer at $C1:635B is NOT modified
             # because spell costs are capped at 99 in the spell stat
             # table even under UncapMaxFP.
+            #
+            # KNOWN LIMITATION: STZ $8C clobbers the dialog tilemap
+            # cursor ($C1:25D2 / $C1:2610 use $8C as a persistent
+            # advancing cursor for dialog text). This causes the
+            # "Hold Y for ..." battle-start dialog to render with a
+            # truncated text run and an unexpected right-edge tile
+            # pattern. A prior attempt to relocate the renderer with
+            # $8C/$8E save/restore introduced its own spell-menu tile
+            # artifacts (likely a timing or stack interaction with
+            # the F-tile animator at $C1:6310 that we have not yet
+            # root-caused), so we accept the dialog regression for
+            # now in exchange for clean spell-menu rendering. Followup:
+            # diagnose why save/restore broke the menu rendering
+            # before re-attempting the dialog fix.
 
-            # Relocated renderer at $C1:9564 (41 bytes; free space has
-            # 2049 bytes available so this fits easily). NO flag
-            # save/restore -- vanilla's REP #$30 at $C1:62F6 set m16/x16
-            # and the renderer fell through to $C1:6310 (F-tile animator)
-            # in m16/x16 mode. Our renderer must exit in m16/x16 too,
-            # otherwise the animator runs in the caller's mode and
-            # produces tile artifacts in the spell menu. Setting
-            # m16/x16 inside the renderer and leaving them set on RTS
-            # matches vanilla's contract:
-            #   REP #$30                  -- m16/x16 (will persist)
-            #   LDA $8C / PHA             -- preserve dialog cursor
-            #   LDA $8E / PHA             -- preserve dialog scratch
-            #   STZ $8C                   -- partition offset = 0
-            #   LDA $FA0C / AND #$00FF    -- cur FP value (mask high byte
-            #                                from m16 read; $FA0C is 1 byte)
-            #   LDY #$0028 / JSR $5D6A    -- emit 3 cur digits at $7028+
-            #   LDA $FA0D / AND #$00FF    -- max FP value
-            #   LDY #$0030 / JSR $5D6A    -- emit 3 max digits at $7030+
-            #   PLA / STA $8E             -- restore dialog scratch
-            #   PLA / STA $8C             -- restore dialog cursor
-            #   RTS                       -- return in m16/x16
+            # Trampoline at $C1:9564 (free space, 2049 bytes available):
+            #   AND #$00FF                -- mask high byte from m16 LDA
+            #   JMP $5D6A                 -- tail-call HP 3-digit converter
             patch.add_data(
                 0x19564,
-                [0xC2, 0x30,
-                 0xA5, 0x8C, 0x48,
-                 0xA5, 0x8E, 0x48,
-                 0x64, 0x8C,
-                 0xAD, 0x0C, 0xFA, 0x29, 0xFF, 0x00,
-                 0xA0, 0x28, 0x00, 0x20, 0x6A, 0x5D,
-                 0xAD, 0x0D, 0xFA, 0x29, 0xFF, 0x00,
-                 0xA0, 0x30, 0x00, 0x20, 0x6A, 0x5D,
-                 0x68, 0x85, 0x8E,
-                 0x68, 0x85, 0x8C,
-                 0x60],
+                [0x29, 0xFF, 0x00, 0x4C, 0x6A, 0x5D],
             )
-            # In-place renderer at $C1:62F6 (26 bytes -- preserves the
-            # original code length so fall-through to $C1:6310 (F-tile
-            # animator) lands on the correct opcode):
-            #   JSR $9564                 -- relocated renderer (handles
-            #                                save/restore + 3-digit emit)
-            #   NOP x23                   -- pad to 26 bytes
+            # Renderer at $C1:62F6 (in-place 26-byte replacement):
+            #   REP #$30                  -- m16/x16
+            #   STZ $8C                   -- partition offset = 0; $5D6A
+            #                                does STA $7000,X with X = Y+$8C,
+            #                                so $8C must be the offset from
+            #                                $7000 (not absolute address).
+            #   LDA $FA0C / LDY #$0028    -- cur FP value, dest offset
+            #   JSR $9564                 -- emit 3 cur digits at $7028+
+            #   LDA $FA0D / LDY #$0030    -- max FP value, dest offset
+            #   JSR $9564                 -- emit 3 max digits at $7030+
+            #   NOP x4                    -- pad to 26 bytes; falls through
+            #                                to $C1:6310 (F-tile animator).
             patch.add_data(
                 0x162F6,
-                [0x20, 0x64, 0x95,
-                 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA,
-                 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA,
-                 0xEA, 0xEA, 0xEA, 0xEA, 0xEA],
+                [0xC2, 0x30,
+                 0x64, 0x8C,
+                 0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, 0x64, 0x95,
+                 0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0x64, 0x95,
+                 0xEA, 0xEA, 0xEA, 0xEA],
             )
             # Static MVN tilemap source at $C1:639D (22 bytes, same length):
             # Move '/' from byte 16 ($7030) to byte 14 ($702E) and zero the
