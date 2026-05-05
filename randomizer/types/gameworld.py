@@ -1935,15 +1935,19 @@ class GameWorld:
             # X-menu party-total "Flowers" line at $C3:35FF: cur and max
             # also use the 2-digit converter at $C3:78D2 (call sites at
             # $C3:3605 / $C3:3615), with the field starting at tilemap
-            # slot $44B2. Switch both calls to the 3-digit converter and
-            # shift the field 1 tile left by changing LDX #$44B2 to
-            # LDX #$44B0 -- $44B0 is the trailing-space slot of the
-            # "Flowers " label, which the leading-blank padding from the
-            # 3-digit converter restores when cur/max < 100. After the
-            # cur converter advances $62 by 6 bytes, "/" lands at $44B6
-            # (vanilla position), and max occupies $44B8/$44BA/$44BC
-            # ($44BC was previously unused).
-            patch.add_data(0x335EB, [0xB0])
+            # slot $44B2. The inner routine has no separate LDX for the
+            # slash or max -- both ride on $62, which each subroutine
+            # advances (2-digit converter += 4, slash writer += 2,
+            # 3-digit converter += 6). Switching both converters to
+            # 3-digit widens the field by 2 tiles (1 leading blank for
+            # cur, 1 leading blank for max), so we shift the LDX start
+            # 2 tiles left ($44B2 -> $44AE) to land max-ones at $44BA
+            # (vanilla position). New layout: cur hundreds/tens/ones at
+            # $44AE/$44B0/$44B2, slash at $44B4, max hundreds/tens/ones
+            # at $44B6/$44B8/$44BA. Leading-blank padding from the
+            # 3-digit converter restores the visual space when value
+            # < 100.
+            patch.add_data(0x335EB, [0xAE])
             patch.add_data(0x33606, [0xEC])
             patch.add_data(0x33616, [0xEC])
             # TODO(uncapfp follow-up): widen battle spell-menu FP display (bank $C1, ~$62F6)
