@@ -1950,19 +1950,68 @@ class GameWorld:
             patch.add_data(0x335EB, [0xAE])
             patch.add_data(0x33606, [0xEC])
             patch.add_data(0x33616, [0xEC])
-            # TODO(uncapfp follow-up): widen battle spell-menu FP display (bank $C1, ~$62F6)
-            #   Renderer at $C1:62F6-630D prints curFP/maxFP, and $C1:635B prints
-            #   per-spell FP cost, all via JSR $6378 (2-digit converter at
-            #   $C1:6378-639C). The converter divides by 100, drops the quotient,
-            #   and returns only tens/units tiles -- no 3-digit variant exists
-            #   nearby. All three call sites would need updating, and the
-            #   tilemap stores tens/units at fixed adjacent slots ($7024/$7026
-            #   for cost, $702C/$702E for current FP, $7032/$7034 for max FP)
-            #   with the "/" separator at $7030, so widening to 3 digits would
-            #   overlap the slash and the spell-name/flower-icon tiles.
-            #   Deferred per plan's cut criteria. (Note: spell FP cost is
-            #   capped at 99 in the spell stat table, so only the curFP/maxFP
-            #   header can actually overflow under UncapMaxFP.)
+            # Battle spell-menu FP header (bank $C1) -- widen to 3 digits.
+            # Vanilla renderer at $C1:62F6-$C1:630F (26 bytes) writes 2-digit
+            # cur/max via JSR $C1:6378 ("F P _ _ _ _ TT/TT"). The 11-tile
+            # window $7020-$7034 is shared with the spell list (which begins
+            # at $7040, only 6 bytes past $7034) and with the per-spell FP
+            # cost renderer (which writes $7024/$7026 each frame). Two prior
+            # widening attempts that extended the DMA window or shifted the
+            # source MVN at $C1:639D produced cross-tilemap corruption.
+            #
+            # This implementation reuses the battle HP 3-digit converter at
+            # $C1:5D6A (which writes 3 tiles via $7000+Y with leading-zero
+            # suppression and $2400 attribute prefix) via a 6-byte trampoline
+            # at $C1:9564 that masks A's high byte first ($FA0C/$FA0D are
+            # 1-byte values; m16 LDA reads the adjacent byte as garbage in
+            # the high half). The renderer is rewritten in-place at $C1:62F6
+            # in exactly 26 bytes, ending without RTS to preserve the
+            # fall-through to the F-tile animator at $C1:6310.
+            #
+            # New layout in the existing 11-tile $7020-$7034 window:
+            #   $7020 F | $7022 P | $7024-$7026 spell cost (untouched)
+            #   $7028-$702C cur FP (3 digits) | $702E '/' (static)
+            #   $7030-$7034 max FP (3 digits)
+            # Highest write is $7034 -- vanilla parity, no DMA changes.
+            # Per-spell FP cost renderer at $C1:635B is NOT modified
+            # because spell costs are capped at 99 in the spell stat
+            # table even under UncapMaxFP.
+
+            # Trampoline at $C1:9564 (free space, 2049 bytes available):
+            #   AND #$00FF                -- mask high byte from m16 LDA
+            #   JMP $5D6A                 -- tail-call HP 3-digit converter
+            patch.add_data(
+                0x19564,
+                [0x29, 0xFF, 0x00, 0x4C, 0x6A, 0x5D],
+            )
+            # Renderer at $C1:62F6 (in-place 26-byte replacement):
+            #   REP #$30                  -- m16/x16
+            #   LDA #$7000 / STA $8C      -- partition base for $5D6A
+            #   LDA $FA0C / LDY #$0028    -- cur FP value, dest offset
+            #   JSR $9564                 -- emit 3 cur digits at $7028+
+            #   LDA $FA0D / LDY #$0030    -- max FP value, dest offset
+            #   JSR $9564                 -- emit 3 max digits at $7030+
+            #   NOP                       -- pad to 26 bytes; falls through
+            #                                to $C1:6310 (F-tile animator).
+            patch.add_data(
+                0x162F6,
+                [0xC2, 0x30,
+                 0xA9, 0x00, 0x70, 0x85, 0x8C,
+                 0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, 0x64, 0x95,
+                 0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0x64, 0x95,
+                 0xEA],
+            )
+            # Static MVN tilemap source at $C1:639D (22 bytes, same length):
+            # Move '/' from byte 16 ($7030) to byte 14 ($702E) and zero the
+            # digit slots so they idle as blanks before the renderer runs.
+            #   $7020 F | $7022 P | $7024-$702C blanks | $702E '/'
+            #   $7030-$7034 blanks
+            patch.add_data(
+                0x1639D,
+                [0x14, 0x24, 0x15, 0x24, 0x00, 0x24, 0x00, 0x24,
+                 0x00, 0x24, 0x00, 0x24, 0x00, 0x24, 0x16, 0x24,
+                 0x00, 0x24, 0x00, 0x24, 0x00, 0x24],
+            )
 
         # Battle music IDs - write 8 selected music IDs to the music pointer table
         if self.selected_music_ids:
