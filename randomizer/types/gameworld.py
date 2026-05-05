@@ -1969,12 +1969,15 @@ class GameWorld:
             # X-menu item-submenu Flowers display ($C3:2CC0) -- third
             # call site that targets the same shared inner subroutine
             # ($C3:35FF), so the JSR target swaps above already make
-            # this site emit 3-digit. Just shift the LDX dest pointer
-            # 2 tiles left ($4694 -> $4690) so max-ones lands at vanilla
-            # $469C and the field stays inside the description box's
-            # right border. New layout: cur h/t/o at $4690/$4692/$4694,
-            # slash at $4696, max h/t/o at $4698/$469A/$469C.
-            patch.add_data(0x32CC1, [0x90])
+            # this site emit 3-digit. Shift the LDX dest pointer 4
+            # tiles left ($4694 -> $468C) so max-ones moves from
+            # vanilla $469C to $4698 (2 tiles inside the right border
+            # of the description box). A 2-tile shift was insufficient
+            # because it kept max-ones at the vanilla position; only
+            # the cur side moved. New layout: cur h/t/o at
+            # $468C/$468E/$4690, slash at $4692, max h/t/o at
+            # $4694/$4696/$4698.
+            patch.add_data(0x32CC1, [0x8C])
             # Battle spell-menu FP header (bank $C1) -- widen to 3 digits.
             # Vanilla renderer at $C1:62F6-$C1:630F (26 bytes) writes 2-digit
             # cur/max via JSR $C1:6378 ("F P _ _ _ _ TT/TT"). The 11-tile
