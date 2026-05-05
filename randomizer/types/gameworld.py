@@ -1932,6 +1932,20 @@ class GameWorld:
             # byte (D2 -> EC) is sufficient.
             patch.add_data(0x3162F, [0xEC])
             patch.add_data(0x3163F, [0xEC])
+            # X-menu party-total "Flowers" line at $C3:35FF: cur and max
+            # also use the 2-digit converter at $C3:78D2 (call sites at
+            # $C3:3605 / $C3:3615), with the field starting at tilemap
+            # slot $44B2. Switch both calls to the 3-digit converter and
+            # shift the field 1 tile left by changing LDX #$44B2 to
+            # LDX #$44B0 -- $44B0 is the trailing-space slot of the
+            # "Flowers " label, which the leading-blank padding from the
+            # 3-digit converter restores when cur/max < 100. After the
+            # cur converter advances $62 by 6 bytes, "/" lands at $44B6
+            # (vanilla position), and max occupies $44B8/$44BA/$44BC
+            # ($44BC was previously unused).
+            patch.add_data(0x335EB, [0xB0])
+            patch.add_data(0x33606, [0xEC])
+            patch.add_data(0x33616, [0xEC])
             # TODO(uncapfp follow-up): widen battle spell-menu FP display (bank $C1, ~$62F6)
             #   Renderer at $C1:62F6-630D prints curFP/maxFP, and $C1:635B prints
             #   per-spell FP cost, all via JSR $6378 (2-digit converter at
