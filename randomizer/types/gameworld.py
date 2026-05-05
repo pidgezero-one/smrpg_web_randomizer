@@ -1932,80 +1932,19 @@ class GameWorld:
             # byte (D2 -> EC) is sufficient.
             patch.add_data(0x3162F, [0xEC])
             patch.add_data(0x3163F, [0xEC])
-            # Battle spell-menu FP display: vanilla 2-digit converter at
-            # $C1:6378 drops the /100 quotient, so maxFP=100 renders as
-            # "99/00". Widen both cur and max to 3 digits while staying
-            # within the original 22-byte tilemap DMA window ($7020-$7035)
-            # -- a previous attempt extended DMA by 2 bytes and corrupted
-            # an adjacent VRAM slot used by another BG layer. The vanilla
-            # layout reserves 2 unused tiles before curFP at $7028/$702A,
-            # so we shift everything left by 2:
-            #
-            #   tile slot | vanilla    | uncap layout
-            #   $7028     | unused     | cur hundreds
-            #   $702A     | unused     | cur tens
-            #   $702C     | cur tens   | cur units
-            #   $702E     | cur units  | '/'
-            #   $7030     | '/'        | max hundreds
-            #   $7032     | max tens   | max tens
-            #   $7034     | max units  | max units
-            #
-            # The '/' is initialised once via MVN block-copy at $C1:6013
-            # from a 22-byte source table at ROM $C1:639D (slash tile
-            # $2416 at offset +$10 -> $7030 dest). Move the slash entry
-            # to offset +$0E (-> $702E dest) by patching the source-table
-            # byte; the new renderer never overwrites $702E, so the init
-            # value persists. The +$10 slot still holds slash in the
-            # table but the renderer overwrites $7030 with max-hundreds
-            # before the frame is presented.
-            patch.add_data(0x163AB, [0x16, 0x24])
-            # 3-digit converter at $C1:9564 (free space, all-zero region).
-            # Writes hundreds (or blank if zero) to $7000+X, tens to
-            # $7002+X, units to $7004+X. Caller passes X = output base.
-            patch.add_data(
-                0x19564,
-                [
-                    0x29, 0xFF, 0x00,        # AND #$00FF (truncate to 8-bit)
-                    0xA8,                    # TAY (save dividend)
-                    0xA9, 0x64, 0x00,        # LDA #$0064 (100)
-                    0x20, 0x53, 0x0E,        # JSR $0E53 (divide -> A=q, $4216=r)
-                    0xC9, 0x00, 0x00,        # CMP #$0000
-                    0xF0, 0x05,              # BEQ +5 -> blank
-                    0x09, 0x30, 0x24,        # ORA #$2430 (digit tile)
-                    0x80, 0x03,              # BRA +3 -> store
-                    0xA9, 0x00, 0x24,        # LDA #$2400 (blank tile)
-                    0x9D, 0x00, 0x70,        # STA $7000,X (hundreds slot)
-                    0xAF, 0x16, 0x42, 0x00,  # LDA $004216 (remainder)
-                    0xA8,                    # TAY
-                    0xA9, 0x0A, 0x00,        # LDA #$000A (10)
-                    0x20, 0x53, 0x0E,        # JSR $0E53 (divide)
-                    0x09, 0x30, 0x24,        # ORA #$2430
-                    0x9D, 0x02, 0x70,        # STA $7002,X (tens slot)
-                    0xAF, 0x16, 0x42, 0x00,  # LDA $004216 (units)
-                    0x09, 0x30, 0x24,        # ORA #$2430
-                    0x9D, 0x04, 0x70,        # STA $7004,X (units slot)
-                    0x60,                    # RTS
-                ],
-            )
-            # Rewrite curFP/maxFP renderer at $C1:62F6 (26 bytes). Calls
-            # the 3-digit converter twice: cur with X=$0028 -> writes to
-            # $7028/$702A/$702C; max with X=$0030 -> writes to $7030/
-            # $7032/$7034. DMA stays at 22 bytes (no VRAM regression).
-            # Trailing NOPs pad to the original block size.
-            patch.add_data(
-                0x162F6,
-                [
-                    0xC2, 0x30,              # REP #$30 (16-bit A/X)
-                    0xAD, 0x0C, 0xFA,        # LDA $FA0C (cur FP)
-                    0xA2, 0x28, 0x00,        # LDX #$0028
-                    0x20, 0x64, 0x95,        # JSR $9564
-                    0xAD, 0x0D, 0xFA,        # LDA $FA0D (max FP)
-                    0xA2, 0x30, 0x00,        # LDX #$0030
-                    0x20, 0x64, 0x95,        # JSR $9564
-                    0xEA, 0xEA, 0xEA,        # padding
-                    0xEA, 0xEA, 0xEA,        # padding
-                ],
-            )
+            # TODO(uncapfp follow-up): widen battle spell-menu FP display (bank $C1, ~$62F6)
+            #   Renderer at $C1:62F6-630D prints curFP/maxFP, and $C1:635B prints
+            #   per-spell FP cost, all via JSR $6378 (2-digit converter at
+            #   $C1:6378-639C). The converter divides by 100, drops the quotient,
+            #   and returns only tens/units tiles -- no 3-digit variant exists
+            #   nearby. All three call sites would need updating, and the
+            #   tilemap stores tens/units at fixed adjacent slots ($7024/$7026
+            #   for cost, $702C/$702E for current FP, $7032/$7034 for max FP)
+            #   with the "/" separator at $7030, so widening to 3 digits would
+            #   overlap the slash and the spell-name/flower-icon tiles.
+            #   Deferred per plan's cut criteria. (Note: spell FP cost is
+            #   capped at 99 in the spell stat table, so only the curFP/maxFP
+            #   header can actually overflow under UncapMaxFP.)
 
         # Battle music IDs - write 8 selected music IDs to the music pointer table
         if self.selected_music_ids:
