@@ -1926,13 +1926,13 @@ class GameWorld:
             # X-menu per-character FP display ($C3:1621-$C3:163E -- the
             # actual visible "Flowers" line in the X-menu): switch
             # 2-digit print ($C3:78D2) -> 3-digit print ($C3:78EC) and
-            # shift the LDX dest pointer 4 tiles left ($4630 -> $4628)
-            # to absorb the +2-tile widening (1 leading-blank for cur,
-            # 1 leading-blank for max). New layout: cur h/t/o at
-            # $4628/$462A/$462C, slash at $462E, max h/t/o at
-            # $4630/$4632/$4634. Vanilla last digit was at $4638; new
-            # last digit is at $4634 (2 tiles further left).
-            patch.add_data(0x31622, [0x28])
+            # shift the LDX dest pointer 2 tiles left ($4630 -> $462C)
+            # to absorb the leading-blank padding from the cur 3-digit
+            # converter while keeping max-ones at vanilla $4638 so it
+            # right-aligns with the "Coins" line below. New layout:
+            # cur h/t/o at $462C/$462E/$4630, slash at $4632, max
+            # h/t/o at $4634/$4636/$4638.
+            patch.add_data(0x31622, [0x2C])
             patch.add_data(0x3162F, [0xEC])
             patch.add_data(0x3163F, [0xEC])
             # X-menu party-total "Flowers" line at $C3:35FF: cur and max
@@ -1992,9 +1992,16 @@ class GameWorld:
             # because spell costs are capped at 99 in the spell stat
             # table even under UncapMaxFP.
 
-            # Relocated renderer at $C1:9564 (43 bytes; free space has
-            # 2049 bytes available so this fits easily):
-            #   PHP / REP #$30            -- save flags, force m16/x16
+            # Relocated renderer at $C1:9564 (41 bytes; free space has
+            # 2049 bytes available so this fits easily). NO flag
+            # save/restore -- vanilla's REP #$30 at $C1:62F6 set m16/x16
+            # and the renderer fell through to $C1:6310 (F-tile animator)
+            # in m16/x16 mode. Our renderer must exit in m16/x16 too,
+            # otherwise the animator runs in the caller's mode and
+            # produces tile artifacts in the spell menu. Setting
+            # m16/x16 inside the renderer and leaving them set on RTS
+            # matches vanilla's contract:
+            #   REP #$30                  -- m16/x16 (will persist)
             #   LDA $8C / PHA             -- preserve dialog cursor
             #   LDA $8E / PHA             -- preserve dialog scratch
             #   STZ $8C                   -- partition offset = 0
@@ -2005,10 +2012,10 @@ class GameWorld:
             #   LDY #$0030 / JSR $5D6A    -- emit 3 max digits at $7030+
             #   PLA / STA $8E             -- restore dialog scratch
             #   PLA / STA $8C             -- restore dialog cursor
-            #   PLP / RTS                 -- restore flags, return
+            #   RTS                       -- return in m16/x16
             patch.add_data(
                 0x19564,
-                [0x08, 0xC2, 0x30,
+                [0xC2, 0x30,
                  0xA5, 0x8C, 0x48,
                  0xA5, 0x8E, 0x48,
                  0x64, 0x8C,
@@ -2018,7 +2025,7 @@ class GameWorld:
                  0xA0, 0x30, 0x00, 0x20, 0x6A, 0x5D,
                  0x68, 0x85, 0x8E,
                  0x68, 0x85, 0x8C,
-                 0x28, 0x60],
+                 0x60],
             )
             # In-place renderer at $C1:62F6 (26 bytes -- preserves the
             # original code length so fall-through to $C1:6310 (F-tile
