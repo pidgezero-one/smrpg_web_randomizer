@@ -1986,25 +1986,14 @@ class GameWorld:
             # at $7040, only 6 bytes past $7034) and with the per-spell FP
             # cost renderer (which writes $7024/$7026 each frame).
             #
-            # Earlier attempts reused the HP 3-digit converter at $C1:5D6A,
-            # which uses $8C as a partition base via "X = Y + $8C" before
-            # writing tiles via STA $7000,X. The caller had to STZ $8C to
-            # treat Y as an absolute offset from $7000. But $8C is heavily
-            # shared in bank C1 (23 LDA $8C readers across HP rendering,
-            # dialog text rendering, HUD code), so clobbering it caused
-            # collateral damage: the "Hold Y for ..." battle-start dialog
-            # truncated mid-text, and a fragment of the A-button HUD
-            # sprite would appear in the wrong place during action
-            # selection.
-            #
-            # This implementation writes a custom 3-digit converter in
-            # bank-C1 free space at $C1:9564 (45 bytes) that uses ONLY
-            # $86 (leading-zero flag, same as the HP converter) and $80
-            # (digit emit scratch, also via the shared HP digit emitter
-            # at $C1:5D98). It does NOT touch $8C, $8D, or $8E, so no
-            # collateral state is corrupted. The converter takes A =
-            # value (low byte) and Y = dest offset (e.g., $0028) and
-            # writes 3 tiles via the existing HP digit emitter $5D98.
+            # This implementation reuses the battle HP 3-digit converter at
+            # $C1:5D6A (which writes 3 tiles via $7000+Y with leading-zero
+            # suppression and $2400 attribute prefix) via a 6-byte trampoline
+            # at $C1:9564 that masks A's high byte first ($FA0C/$FA0D are
+            # 1-byte values; m16 LDA reads the adjacent byte as garbage in
+            # the high half). The renderer is rewritten in-place at $C1:62F6
+            # in exactly 26 bytes, ending without RTS to preserve the
+            # fall-through to the F-tile animator at $C1:6310.
             #
             # New layout in the existing 11-tile $7020-$7034 window:
             #   $7020 F | $7022 P | $7024-$7026 spell cost (untouched)
@@ -2014,67 +2003,54 @@ class GameWorld:
             # Per-spell FP cost renderer at $C1:635B is NOT modified
             # because spell costs are capped at 99 in the spell stat
             # table even under UncapMaxFP.
+            #
+            # KNOWN LIMITATIONS (accepted tradeoffs vs alternative
+            # implementations that produced worse artifacts):
+            # 1. STZ $8C clobbers the dialog-text tilemap cursor used by
+            #    $C1:25D2 / $C1:2610. The "Hold Y for ..." battle-start
+            #    dialog renders with truncated text and an unexpected
+            #    right-edge tile pattern.
+            # 2. A small fragment of the A-button HUD sprite occasionally
+            #    appears in the wrong place during action selection
+            #    (likely a downstream effect of $8C clobber on HUD
+            #    sprite-table state).
+            # Two earlier attempts to fix these (relocating the renderer
+            # with $8C save/restore, and writing a custom converter using
+            # only $80/$86 with save/restore) introduced more visible
+            # accumulating tile and sprite artifacts during menu
+            # transitions and spell casting. Without bsnes runtime
+            # tracing we cannot pinpoint the exact mechanism, so the
+            # in-place trampoline approach is the best static-analysis
+            # option for now. Followup: instrument with bsnes to trace
+            # what reads $8C / $86 / $80 at the moment of artifact
+            # appearance.
 
-            # Custom 3-digit converter at $C1:9564 (57 bytes). Saves and
-            # restores $80 and $86 around the converter body so no other
-            # bank-C1 code that uses them as state (HP rendering, HUD,
-            # action menu, sprite logic -- 19 LDA $86 readers in bank
-            # C1) sees clobbered scratch. Earlier versions left $80/$86
-            # mutated, which caused accumulating tile and sprite artifacts
-            # during menu transitions and casting:
-            #   PHX                       ; preserve caller's X
-            #   LDX $86 / PHX             ; save $86:$87 onto stack
-            #   LDX $80 / PHX             ; save $80:$81 onto stack
-            #   AND #$00FF                ; mask high byte from m16 LDA
-            #   STZ $86                   ; clear leading-zero flag (m16)
-            #   PHA / TYA / TAX / PLA / TAY  ; swap A,Y -> X=offset, Y=value
-            #   LDA #$0064 / JSR $0E53    ; Y / 100; A = hundreds quotient
-            #   JSR $5D98                 ; emit hundreds at $7000,X (X+=2)
-            #   LDA $004216 / TAY         ; Y = remainder
-            #   LDA #$000A / JSR $0E53    ; Y / 10; A = tens quotient
-            #   JSR $5D98                 ; emit tens
-            #   INC $86                   ; force ones (no leading-zero
-            #                               suppression for the ones digit)
-            #   LDA $004216 / JSR $5D98   ; emit ones
-            #   PLX / STX $80             ; restore $80:$81
-            #   PLX / STX $86             ; restore $86:$87
-            #   PLX                       ; restore caller's X
-            #   RTS
+            # Trampoline at $C1:9564 (free space, 2049 bytes available):
+            #   AND #$00FF                -- mask high byte from m16 LDA
+            #   JMP $5D6A                 -- tail-call HP 3-digit converter
             patch.add_data(
                 0x19564,
-                [0xDA,
-                 0xA6, 0x86, 0xDA,
-                 0xA6, 0x80, 0xDA,
-                 0x29, 0xFF, 0x00,
-                 0x64, 0x86,
-                 0x48, 0x98, 0xAA, 0x68, 0xA8,
-                 0xA9, 0x64, 0x00, 0x20, 0x53, 0x0E,
-                 0x20, 0x98, 0x5D,
-                 0xAF, 0x16, 0x42, 0x00, 0xA8,
-                 0xA9, 0x0A, 0x00, 0x20, 0x53, 0x0E,
-                 0x20, 0x98, 0x5D,
-                 0xE6, 0x86,
-                 0xAF, 0x16, 0x42, 0x00, 0x20, 0x98, 0x5D,
-                 0xFA, 0x86, 0x80,
-                 0xFA, 0x86, 0x86,
-                 0xFA,
-                 0x60],
+                [0x29, 0xFF, 0x00, 0x4C, 0x6A, 0x5D],
             )
-            # Renderer at $C1:62F6 (in-place 26-byte replacement, NO STZ
-            # $8C since the new converter does not need it):
+            # Renderer at $C1:62F6 (in-place 26-byte replacement):
             #   REP #$30                  -- m16/x16
+            #   STZ $8C                   -- partition offset = 0; $5D6A
+            #                                does STA $7000,X with X = Y+$8C,
+            #                                so $8C must be the offset from
+            #                                $7000 (not absolute address).
             #   LDA $FA0C / LDY #$0028    -- cur FP value, dest offset
             #   JSR $9564                 -- emit 3 cur digits at $7028+
             #   LDA $FA0D / LDY #$0030    -- max FP value, dest offset
             #   JSR $9564                 -- emit 3 max digits at $7030+
-            #   NOP x6                    -- pad to 26 bytes; falls through
+            #   NOP x4                    -- pad to 26 bytes; falls through
             #                                to $C1:6310 (F-tile animator).
             patch.add_data(
                 0x162F6,
                 [0xC2, 0x30,
+                 0x64, 0x8C,
                  0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, 0x64, 0x95,
                  0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0x64, 0x95,
-                 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA],
+                 0xEA, 0xEA, 0xEA, 0xEA],
             )
             # Static MVN tilemap source at $C1:639D (22 bytes, same length):
             # Move '/' from byte 16 ($7030) to byte 14 ($702E) and zero the
