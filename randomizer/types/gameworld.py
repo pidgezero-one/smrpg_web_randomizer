@@ -1939,15 +1939,20 @@ class GameWorld:
             # slash or max -- both ride on $62, which each subroutine
             # advances (2-digit converter += 4, slash writer += 2,
             # 3-digit converter += 6). Switching both converters to
-            # 3-digit widens the field by 2 tiles (1 leading blank for
-            # cur, 1 leading blank for max), so we shift the LDX start
-            # 2 tiles left ($44B2 -> $44AE) to land max-ones at $44BA
-            # (vanilla position). New layout: cur hundreds/tens/ones at
-            # $44AE/$44B0/$44B2, slash at $44B4, max hundreds/tens/ones
-            # at $44B6/$44B8/$44BA. Leading-blank padding from the
-            # 3-digit converter restores the visual space when value
-            # < 100.
-            patch.add_data(0x335EB, [0xAE])
+            # 3-digit widens the field, so we shift the LDX start
+            # 4 tiles left ($44B2 -> $44AA) to bring the digits inside
+            # the menu box (the menu 3-digit converter at $C3:78EC may
+            # not suppress leading zeros the same way the battle
+            # converter does, and the box was sized for vanilla 5-tile
+            # "TT/TT" -- shifting the start past where vanilla
+            # "Flowers " ended is required to fit "TTT/TTT" in 7 tiles
+            # without overflowing the right edge). New layout: cur
+            # hundreds/tens/ones at $44AA/$44AC/$44AE, slash at $44B0,
+            # max hundreds/tens/ones at $44B2/$44B4/$44B6. Writes hit
+            # the BG2 tilemap mirror; the "Flowers" label sits on a
+            # different BG layer so left-shift past the visual label
+            # boundary does not corrupt it.
+            patch.add_data(0x335EB, [0xAA])
             patch.add_data(0x33606, [0xEC])
             patch.add_data(0x33616, [0xEC])
             # Battle spell-menu FP header (bank $C1) -- widen to 3 digits.
@@ -1986,20 +1991,23 @@ class GameWorld:
             )
             # Renderer at $C1:62F6 (in-place 26-byte replacement):
             #   REP #$30                  -- m16/x16
-            #   LDA #$7000 / STA $8C      -- partition base for $5D6A
+            #   STZ $8C                   -- partition offset = 0; $5D6A
+            #                                does STA $7000,X with X = Y+$8C,
+            #                                so $8C must be the offset from
+            #                                $7000 (not absolute address).
             #   LDA $FA0C / LDY #$0028    -- cur FP value, dest offset
             #   JSR $9564                 -- emit 3 cur digits at $7028+
             #   LDA $FA0D / LDY #$0030    -- max FP value, dest offset
             #   JSR $9564                 -- emit 3 max digits at $7030+
-            #   NOP                       -- pad to 26 bytes; falls through
+            #   NOP x4                    -- pad to 26 bytes; falls through
             #                                to $C1:6310 (F-tile animator).
             patch.add_data(
                 0x162F6,
                 [0xC2, 0x30,
-                 0xA9, 0x00, 0x70, 0x85, 0x8C,
+                 0x64, 0x8C,
                  0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, 0x64, 0x95,
                  0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0x64, 0x95,
-                 0xEA],
+                 0xEA, 0xEA, 0xEA, 0xEA],
             )
             # Static MVN tilemap source at $C1:639D (22 bytes, same length):
             # Move '/' from byte 16 ($7030) to byte 14 ($702E) and zero the
