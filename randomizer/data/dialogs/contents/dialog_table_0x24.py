@@ -372,9 +372,7 @@ dialog_data[125] = '''QUEEN NIMBUS: If you haven't been
  to the Volcano yet, you can get
  there via our Hot Springs. [await]'''
 dialog_data[126] = ''' The hot springs are ahead.[await]
- But while the castle is occupied by
- invaders, we're under strict
- orders to forbid entry.[await]
+ But `VOLCANO_CONDITION`[await]
  Sorry about that...[await]'''
 dialog_data[127] = ''' You won't have to wait for the
  Royal Bus to be repaired if you

@@ -12,7 +12,7 @@ from ..variables.event_script_names import *
 from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
-        ally_sprite_buffer_size=1,
+        ally_sprite_buffer_size=2,
         allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
         buffers = [
@@ -306,9 +306,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
     ],
     extra_sprite_actions=[
-        SpriteAnimationState.CHALLENGE_NIMBUS,
+        SpriteAnimationState.CHALLENGE,
     ]
 )

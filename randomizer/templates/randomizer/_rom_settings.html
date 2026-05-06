@@ -93,6 +93,12 @@
                         <thead><tr><th>Mimic</th><th>Chest</th></tr></thead>
                         <tbody></tbody>
                     </table>
+                    <h6 class="mt-3">Star Piece Assignments</h6>
+                    <table class="table table-sm table-striped" id="prize-star-pieces-table">
+                        <thead><tr><th>Star Piece</th><th>Boss Location</th><th>World Area</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                    <small class="text-muted">Driven by the "Total Star Pieces available" flag. Picks are constrained to distinct world areas per offset.</small>
                     <h6 class="mt-3">Invisible Flag Locations</h6>
                     <table class="table table-sm table-striped" id="prize-flags-table">
                         <thead><tr><th>#</th><th>Flag</th></tr></thead>
@@ -145,6 +151,18 @@
             var mimicPrizes = previewData.mimic_prizes;
             var invisibleFlags = previewData.invisible_flags;
             var flagRooms = previewData.flag_rooms;
+            var starPieceLocations = previewData.star_piece_locations || [];
+            var starPieceWorldAreas = previewData.star_piece_world_areas || [];
+            var starPiecePrizes = previewData.star_piece_prizes || [];
+
+            function readTotalStarPieces() {
+                // The TotalStarPieces flag input is named "X.total_sp" via _show_flag_ui.html.
+                var input = document.querySelector('input[name="X.total_sp"]');
+                if (!input) return 0;
+                var v = parseInt(input.value, 10);
+                if (isNaN(v) || v < 0) return 0;
+                return Math.min(v, starPiecePrizes.length, starPieceLocations.length);
+            }
 
             function updatePreview(offset, mimicOffset) {
                 var numBosses = bossPrizes.length;
@@ -183,6 +201,37 @@
                     if (!slotChosen[mimicChests[mIdx]]) {
                         mimicsBody.append('<tr><td>' + mimicPrizes[picked] + '</td><td>' + mimicChests[mIdx] + '</td></tr>');
                         picked++;
+                    }
+                }
+
+                // Star piece assignments: pick N=TotalStarPieces locations from
+                // the boss-fight star piece pool such that all picks within an
+                // offset are in distinct WorldAreaEnums. Mirrors
+                // compute_star_piece_assignments() in offset_preview.py.
+                var spBody = $('#prize-star-pieces-table tbody');
+                spBody.empty();
+                var totalSp = readTotalStarPieces();
+                var numSpLocs = starPieceLocations.length;
+                if (totalSp > 0 && numSpLocs > 0) {
+                    var spStride = Math.max(1, Math.floor(numSpLocs / totalSp));
+                    var spUsedAreas = {};
+                    var spUsedIndices = {};
+                    for (var sk = 0; sk < totalSp; sk++) {
+                        var spBase = (offset + sk * spStride) % numSpLocs;
+                        for (var sw = 0; sw < numSpLocs; sw++) {
+                            var spIdx = (spBase + sw) % numSpLocs;
+                            if (spUsedIndices[spIdx]) continue;
+                            var area = starPieceWorldAreas[spIdx];
+                            if (area && spUsedAreas[area]) continue;
+                            spBody.append(
+                                '<tr><td>' + starPiecePrizes[sk] +
+                                '</td><td>' + starPieceLocations[spIdx] +
+                                '</td><td>' + (area || '—') + '</td></tr>'
+                            );
+                            if (area) spUsedAreas[area] = true;
+                            spUsedIndices[spIdx] = true;
+                            break;
+                        }
                     }
                 }
 
@@ -254,6 +303,10 @@
             $('#mimic-offset-slider').on('input', function() {
                 setMimicOffset(parseInt($(this).val(), 10));
             });
+
+            // Re-render when the TotalStarPieces flag changes so the Star Piece
+            // table reflects the current N selection live.
+            $(document).on('input change', 'input[name="X.total_sp"]', refreshPreview);
 
             // Number input handlers
             $('#prize-offset-number').on('input', function() {

@@ -37,7 +37,7 @@ script = EventScript([
 	SetVarToConst(ITEM_ID, RoomKeyItem),
 	StoreItemAt70A7QuantityTo7000(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1311_apply_tile_mod_5"]),
-	RunDialog(dialog_id=DI2801_NEED_THE_KEY, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI3067_NEED_THE_ROOM_KEY, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	Return(),
 	ApplyTileModToLevel(use_alternate=True, room_id=R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, mod_id=32, identifier="EVENT_1311_apply_tile_mod_5"),
 	ApplySolidityModToLevel(permanent=True, room_id=R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, mod_id=0),

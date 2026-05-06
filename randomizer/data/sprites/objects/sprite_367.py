@@ -324,25 +324,6 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=4, mold_id=9),
                     ]
                 ),
-                AnimationSequence(
-                    frames=[
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=13),
-                        AnimationSequenceFrame(duration=2, mold_id=11),
-                        AnimationSequenceFrame(duration=2, mold_id=12),
-                    ]
-                ),
             ]
         )
     ),

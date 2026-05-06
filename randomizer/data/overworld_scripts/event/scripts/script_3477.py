@@ -36,8 +36,6 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	CopyVarToVar(from_var=ITEM_ID, to_var=PRIMARY_TEMP_7000),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 240, ["EVENT_3477_jmp_if_bit_set_4"]),
-	DisableObjectTriggerInSpecificLevel(NPC_2, R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL),
-	DisableObjectTriggerInSpecificLevel(NPC_6, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL),
 	JmpIfBitSet(TEMP_7042_0, ["EVENT_3477_jmp_to_event_9"], identifier="EVENT_3477_jmp_if_bit_set_4"),
 	SetBit(TEMP_7042_0),
 	FreezeCamera(),

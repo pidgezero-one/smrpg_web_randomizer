@@ -40,7 +40,7 @@ script = EventScript([
 	Return(),
 	StoreItemAmountTo7000(CastleKey2Item, identifier="EVENT_607_store_item_amount_7000_4"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_607_play_sound_8"]),
-	RunDialog(dialog_id=DI2811_ITS_LOCKED, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI3070_NEED_THE_CASTLE_KEY_2, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	Return(),
 	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6, identifier="EVENT_607_play_sound_8"),
 	Pause(8),

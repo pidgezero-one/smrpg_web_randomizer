@@ -88,6 +88,7 @@ script = AnimationScriptBlock(expected_size=4971, expected_beginning=0x35C992, s
 	RunSubroutine(["geno_flash_subroutine_1"], identifier="geno_flash_spell_begins"),
 	RunSubroutine(["ally_spell_common_subroutine_2"]),
 	RunSubroutine(["geno_flash_subroutine_3"]),
+    PlaySound(sound=S0000_SILENCE, identifier="geno_flash_sfx"),
 	JmpIfAMEM8BitEqualsConst(0x6D, 64, ["genoblast_skip_scrow"]),
     RunSubroutine(["fix_sprite_after_attack"]),
 	ReturnSubroutine(identifier="genoblast_skip_scrow"),

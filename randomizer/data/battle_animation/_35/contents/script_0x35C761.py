@@ -95,7 +95,8 @@ script = AnimationScriptBlock(expected_size=561, expected_beginning=0x35C761, sc
 		"noanimation_item_10", 
 		"noanimation_item_10", 
 		"mushroom2_item", 
-		"staregg_item"
+		"staregg_item",
+        "rockcandy_item"
     ], 
     identifier="command_0x35C761"),
 	SetAbsolute7EToAMEM16Bit(0x7EE022, 0x60, identifier="mushroom_item"),

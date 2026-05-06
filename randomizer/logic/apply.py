@@ -6,8 +6,10 @@ from uuid import uuid4
 import random
 import statistics
 
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import NORMAL
+
 from randomizer.types.gameworld import DI2730_FROGFUCIUS_OFFER_HINT
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import MARIO_PALETTE, NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_2, NPC_PALETTE_ROW_3 ,NPC_PALETTE_ROW_4,NPC_PALETTE_ROW_5,NPC_PALETTE_ROW_6, NPC_PALETTE_ROW_7
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST, MARIO_PALETTE, NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_2, NPC_PALETTE_ROW_3 ,NPC_PALETTE_ROW_4,NPC_PALETTE_ROW_5,NPC_PALETTE_ROW_6, NPC_PALETTE_ROW_7
 
 from ..data.variables.event_palette_names import * # holy shit i cannot deal with how slow pylance is, fuck it just import everything
 from randomizer.logic.partition_calculator import snapshot_vanilla_room_states, update_changed_room_partitions
@@ -35,6 +37,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.
     UsableEventScriptCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    ActionQueueSync,
     JmpIfBitClear,
     PaletteSet,
     PaletteSetMorphs,
@@ -51,6 +54,9 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
     A_SetSpriteSequence,
+    A_SetWalkingSpeed,
+    A_TransferXYZFPixels,
+    A_WalkNortheastSteps,
 )
 from ..types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
@@ -946,6 +952,14 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         )
         cmd.set_index(challenge_final_mold)
         cmd.set_sprite_offset(challenge_offset)
+    if ally.index != 0:
+        # nimbus cutscene
+        world.event_scripts.get_command_by_identifier("EVENT_738_action_queue_63_SUBSCRIPT", ActionQueueSync).set_subscript([
+            A_SetWalkingSpeed(NORMAL),
+            A_WalkNortheastSteps(3),
+            A_TransferXYZFPixels(x=252, y=254, z=0, direction=EAST),
+            A_SetSpriteSequence(index=challenge[1], sprite_offset=challenge[0], is_sequence=True, looping=False),
+        ])
 
     # masher animation
     if ally.index != 0:

@@ -37,7 +37,9 @@ script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 523),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
-	RemoveObjectFromCurrentLevel(NPC_5),
+	RemoveObjectFromCurrentLevel(NPC_1),
+	JmpIfBitSet(RUN_AWAY, ["EVENT_1750_set_temp_action_script_18"]),
+	JmpIfBitSet(GAME_OVER, ["EVENT_1750_reset_and_choose_game_17"]),
 	RestoreAllHP(),
 	RestoreAllFP(),
 	FadeInFromBlack(sync=False),
@@ -45,5 +47,8 @@ script = EventScript([
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	RunEventAsSubroutine(E1212_POSTGAME_TEMPLE_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 523),
-	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
+	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
+	FadeInFromBlack(sync=False, identifier="EVENT_1750_set_temp_action_script_18"),
+    Return(),
+	ResetAndChooseGame(identifier="EVENT_1750_reset_and_choose_game_17"),
 ])

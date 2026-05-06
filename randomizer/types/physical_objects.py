@@ -30,8 +30,12 @@ from ..data.variables.event_script_names import *
 from ..data.variables.packet_names import *
 import re
 from typing import TYPE_CHECKING
-from smrpgpatchbuilder.datatypes.graphics.classes import Tile
-
+from smrpgpatchbuilder.datatypes.graphics.classes import (
+    AnimationSequence,
+    Tile,
+    CompleteSprite,
+)
+from ..data.sprites.sprites import sprites
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -43,9 +47,14 @@ class SpriteAnimation:
 
     _sequence_id: int
     _contact_frame: int | None
-    _total_duration: int | None
-    _new_sprite_id: int | None
+    _total_duration: int
     _speed: SequenceSpeed
+    _model: NPCBase
+
+    @property
+    def model(self) -> NPCBase:
+        """The underlying NPC model whose sprite this animation is based on."""
+        return self._model
 
     @property
     def sequence_id(self) -> int:
@@ -76,24 +85,13 @@ class SpriteAnimation:
         self._contact_frame = contact_frame
 
     @property
-    def total_duration(self) -> int | None:
+    def total_duration(self) -> int:
         """The total duration of the sequence."""
         return self._total_duration
 
-    def set_total_duration(self, total_duration: int | None) -> None:
+    def set_total_duration(self, total_duration: int) -> None:
         """Set the total duration of the sequence."""
         self._total_duration = total_duration
-
-    @property
-    def new_sprite_id(self) -> int | None:
-        """If the desired animation doesn't belong to the sprite that would normally
-        be used for this NPC, this specifies a different sprite ID to draw."""
-        return self._new_sprite_id
-
-    def set_new_sprite_id(self, new_sprite_id: int | None) -> None:
-        """If the desired animation doesn't belong to the sprite that would normally
-        be used for this NPC, this specifies a different sprite ID to draw."""
-        self._new_sprite_id = None
 
     @property
     def speed(self) -> SequenceSpeed:
@@ -106,17 +104,71 @@ class SpriteAnimation:
 
     def __init__(
         self,
-        sequence_id=0,
-        contact_frame=None,
-        total_duration=None,
-        new_sprite_id=None,
-        speed=NORMAL,
+        model: NPCBase,
+        sequence_id: int,
+        max_contact_frame: int | None = None,
+        max_duration: int | None = None,
     ):
+        self._model = model
+        speed: SequenceSpeed = NORMAL
+        sprite = sprites.sprites[model.sprite_id]
+        assert sequence_id < len(sprite.animation.properties.sequences)
+        sequence = sprite.animation.properties.sequences[sequence_id]
+        if max_duration is not None and max_contact_frame is not None:
+            speed_candidate_1 = sequence.target_speed_by_duration_limit(max_duration)
+            speed_candidate_2 = sequence.target_speed_by_contact_frame_limit(
+                max_contact_frame
+            )
+            if speed_candidate_1 == speed_candidate_2:
+                speed = speed_candidate_1
+            else:
+                # solve conflict by seeing which of the two is valid for both
+                candidate_1_valid = (
+                    sequence.contact_duration(speed_candidate_1) <= max_contact_frame
+                )
+                candidate_2_valid = (
+                    sequence.total_duration(speed_candidate_2) <= max_duration
+                )
+                if candidate_1_valid and candidate_2_valid:
+                    speed = min(speed_candidate_1, speed_candidate_2)
+                elif candidate_1_valid:
+                    speed = speed_candidate_1
+                elif candidate_2_valid:
+                    speed = speed_candidate_2
+                else:
+                    raise ValueError(
+                        f"Cannot set speed for sequence {sequence_id} with given max_contact_frame and max_duration, because neither speed_candidate_1 nor speed_candidate_2 is valid for both limits. "
+                        f"(candidate_1_valid={candidate_1_valid}, candidate_2_valid={candidate_2_valid}, "
+                        f"speed_candidate_1={speed_candidate_1}, speed_candidate_2={speed_candidate_2}, "
+                        f"contact_duration at speed_candidate_1={sequence.contact_duration(speed_candidate_1)}, "
+                        f"total_duration at speed_candidate_2={sequence.total_duration(speed_candidate_2)})"
+                    )
+        elif max_duration is not None:
+            speed = sequence.target_speed_by_duration_limit(max_duration)
+        elif max_contact_frame is not None:
+            speed = sequence.target_speed_by_contact_frame_limit(max_contact_frame)
         self.set_sequence_id(sequence_id)
-        self.set_contact_frame(contact_frame)
-        self.set_total_duration(total_duration)
-        self.set_new_sprite_id(new_sprite_id)
+        self.set_contact_frame(sequence.contact_duration(speed))
+        self.set_total_duration(sequence.total_duration(speed))
         self.set_speed(speed)
+
+
+def statue_peck_animation(a: SpriteAnimation | None) -> SpriteAnimation | None:
+    if a is None:
+        return None
+    return SpriteAnimation(a.model, a.sequence_id, max_contact_frame=20)
+
+
+def factory_piece_animation(a: SpriteAnimation | None) -> SpriteAnimation | None:
+    if a is None:
+        return None
+    return SpriteAnimation(a.model, a.sequence_id, max_duration=32)
+
+
+def tower_bullet_animation(a: SpriteAnimation | None) -> SpriteAnimation | None:
+    if a is None:
+        return None
+    return SpriteAnimation(a.model, a.sequence_id, max_contact_frame=56)
 
 
 class SpriteAnimationCollection:
@@ -151,12 +203,14 @@ class SpriteAnimationCollection:
     @property
     def tower_crying(self) -> SpriteAnimation | None:
         """Boss animation.
-        A crying animation for this NPC to use in the tower henchman room where they cry."""
+        A crying animation for this NPC to use in the tower henchman room where they cry.
+        """
         return self._tower_crying
-    
+
     def set_tower_crying(self, tower_crying: SpriteAnimation | None = None) -> None:
         """Boss animation.
-        Set a crying animation for this NPC to use in the tower henchman room where they cry."""
+        Set a crying animation for this NPC to use in the tower henchman room where they cry.
+        """
         self._tower_crying = tower_crying
 
     @property
@@ -209,7 +263,7 @@ class SpriteAnimationCollection:
         """Henchman animation.
         Set the animation to use when spawning Bullet Bills in the third tower henchman room.
         """
-        self._tower_bullet = tower_bullet
+        self._tower_bullet = tower_bullet_animation(tower_bullet)
 
     @property
     def chapel_laugh(self) -> SpriteAnimation | None:
@@ -299,7 +353,7 @@ class SpriteAnimationCollection:
         """Boss animation.
         Set the animation performed by the NPC, when it is the statue polisher, for it to hit
         the statue."""
-        self._statue_peck = statue_peck
+        self._statue_peck = statue_peck_animation(statue_peck)
 
     @property
     def statue_flustered(self) -> SpriteAnimation | None:
@@ -368,7 +422,7 @@ class SpriteAnimationCollection:
         """Henchman animation.
         Set the animation performed by the NPC when it is working on the production line
         in the third boss rush room in the factory."""
-        self._factory_pierce = factory_pierce
+        self._factory_pierce = factory_piece_animation(factory_pierce)
 
     @property
     def endgame_challenge(self) -> SpriteAnimation | None:
@@ -389,11 +443,12 @@ class SpriteAnimationCollection:
     def animation_prop_names(self) -> list[str]:
         """Returns the property names of all animations as strings"""
         return [prop for prop in dir(self) if re.search("^_+", prop) is None]
-    
+
     @property
     def look_at_ceiling_mold_id(self) -> int | None:
         """The mold ID to use when the NPC is looking at the ceiling."""
         return self._look_at_ceiling_mold_id
+
     def set_look_at_ceiling_mold_id(self, mold_id: int | None = None) -> None:
         """Set the mold ID to use when the NPC is looking at the ceiling."""
         self._look_at_ceiling_mold_id = mold_id
@@ -402,6 +457,7 @@ class SpriteAnimationCollection:
     def tpose_mold_id(self) -> int | None:
         """The mold ID to use when the NPC is in a T-pose."""
         return self._tpose_mold_id
+
     def set_tpose_mold_id(self, mold_id: int | None = None) -> None:
         """Set the mold ID to use when the NPC is in a T-pose."""
         self._tpose_mold_id = mold_id
@@ -412,16 +468,18 @@ class SpriteAnimationCollection:
         The animation to use when tossing objects in the second tower henchman room.
         """
         return self._tower_toss
+
     def set_tower_toss(self, tower_toss: SpriteAnimation | None = None) -> None:
         """Henchman animation.
         Set the animation to use when tossing objects in the second tower henchman room.
         """
         self._tower_toss = tower_toss
-    
+
     @property
     def tpose(self) -> SpriteAnimation | None:
         """The animation to use when the NPC is in a T-pose."""
         return self._tpose
+
     def set_tpose(self, tpose: SpriteAnimation | None = None) -> None:
         """Set the animation to use when the NPC is in a T-pose."""
         self._tpose = tpose
@@ -430,7 +488,10 @@ class SpriteAnimationCollection:
     def look_at_ceiling(self) -> SpriteAnimation | None:
         """The animation to use when the NPC is looking at the ceiling."""
         return self._look_at_ceiling
-    def set_look_at_ceiling(self, look_at_ceiling: SpriteAnimation | None = None) -> None:
+
+    def set_look_at_ceiling(
+        self, look_at_ceiling: SpriteAnimation | None = None
+    ) -> None:
         """Set the animation to use when the NPC is looking at the ceiling."""
         self._look_at_ceiling = look_at_ceiling
 
@@ -438,6 +499,7 @@ class SpriteAnimationCollection:
     def look_at_camera(self) -> SpriteAnimation | None:
         """The animation to use when the NPC is looking at the camera."""
         return self._look_at_camera
+
     def set_look_at_camera(self, look_at_camera: SpriteAnimation | None = None) -> None:
         """Set the animation to use when the NPC is looking at the camera."""
         self._look_at_camera = look_at_camera
@@ -493,6 +555,7 @@ class SpriteAnimationCollection:
         self.set_tpose(tpose)
         self.set_look_at_ceiling(look_at_ceiling)
         self.set_look_at_camera(look_at_camera)
+
 
 class NPC:
     _base: NPCBase
@@ -556,15 +619,13 @@ class NPC:
     ) -> int:
         """Get min vram size from a certain sprite sequence ID"""
         sprite = world.get_sprite(self.base.sprite_id + offset)
-        assert sequence_id < len(sprite.animation.properties.sequences), (
-            f"Sequence {sequence_id} not found in sprite {self.base.sprite_id + offset} "
-            f"(base={self.base.sprite_id}, offset={offset}, "
-            f"num_sequences={len(sprite.animation.properties.sequences)})"
-        )
+        assert sequence_id < len(sprite.animation.properties.sequences)
         min_vram = 0
         frames = sprite.animation.properties.sequences[sequence_id].frames
         for frame in frames:
-            min_vram = max(min_vram, self.min_vram_from_mold(world, frame.mold_id, offset))
+            min_vram = max(
+                min_vram, self.min_vram_from_mold(world, frame.mold_id, offset)
+            )
         return min_vram
 
     def _min_vram_size_from_script(
@@ -638,52 +699,148 @@ class PixelShift:
     down: int
 
 
-class BossNPC(NPC):
-
-    _animations: SpriteAnimationCollection = SpriteAnimationCollection()
-
-    # Per-direction statue pixel shifts. Missing keys (or None) mean no shift
-    # is applied for that direction. Keys: SOUTHWEST, SOUTHEAST, NORTHWEST, NORTHEAST.
-    _facing_shifts: dict[Direction, PixelShift] = {}
-
-    # Palette data (15 24-bit RGB colors) to use as this boss's "evil"
-    # palette variant (e.g. for the Keep boss 1 pre-reformation scene).
-    # None means no dedicated evil palette is defined; callers should
-    # fall back to the sprite's default palette.
-    _evil_palette: list[int] | None = None
-
-    @property
-    def animations(self) -> SpriteAnimationCollection:
-        """The collection of specially flagged sprite animations for this NPC."""
-        return self._animations
-
-    @property
-    def evil_palette(self) -> list[int] | None:
-        """The 15-color palette (as 24-bit hex RGB ints) to use as this
-        boss's 'evil' palette variant. Returns None if this boss has no
-        dedicated evil palette, in which case callers should fall back
-        to the sprite's default palette (palette_id + palette_offset)."""
-        return self._evil_palette
-
-    @property
-    def southwest_facing_shift(self) -> PixelShift | None:
-        """Pixel shift applied when this statue is spawned facing southwest."""
-        return self._facing_shifts.get(SOUTHWEST)
+class SupplantableNPC(NPC):
+    _recoil: int | None = None
+    _tower_crying: int | None = None
+    _bandits_way_distracted: int | None = None
+    _mines_punch: int | None = None
+    _tower_bullet: int | None = None
+    _tower_toss: int | None = None
+    _chapel_laugh: int | None = None
+    _kitchen_prep: int | None = None
+    _ship_beckon: int | None = None
+    _ship_chair: int | None = None
+    _dojo_challenge: int | None = None
+    _statue_intro: int | None = None
+    _statue_peck: int | None = None
+    _statue_flustered: int | None = None
+    _keep_challenge: int | None = None
+    _keep_summon: int | None = None
+    _chandelier_challenge: int | None = None
+    _factory_pierce: int | None = None
+    _endgame_challenge: int | None = None
+    _look_at_ceiling_mold_id: int | None = None
+    _tpose_mold_id: int | None = None
+    _tpose: int | None = None
+    _look_at_ceiling: int | None = None
+    _look_at_camera: int | None = None
 
     @property
-    def southeast_facing_shift(self) -> PixelShift | None:
-        """Pixel shift applied when this statue is spawned facing southeast."""
-        return self._facing_shifts.get(SOUTHEAST)
-
-    @property
-    def northwest_facing_shift(self) -> PixelShift | None:
-        """Pixel shift applied when this statue is spawned facing northwest."""
-        return self._facing_shifts.get(NORTHWEST)
-
-    @property
-    def northeast_facing_shift(self) -> PixelShift | None:
-        """Pixel shift applied when this statue is spawned facing northeast."""
-        return self._facing_shifts.get(NORTHEAST)
+    def animations(self):
+        return SpriteAnimationCollection(
+            recoil=(
+                SpriteAnimation(self.base, self._recoil)
+                if self._recoil is not None
+                else None
+            ),
+            tower_crying=(
+                SpriteAnimation(self.base, self._tower_crying)
+                if self._tower_crying is not None
+                else None
+            ),
+            bandits_way_distracted=(
+                SpriteAnimation(self.base, self._bandits_way_distracted)
+                if self._bandits_way_distracted is not None
+                else None
+            ),
+            mines_punch=(
+                SpriteAnimation(self.base, self._mines_punch)
+                if self._mines_punch is not None
+                else None
+            ),
+            tower_bullet=(
+                SpriteAnimation(self.base, self._tower_bullet)
+                if self._tower_bullet is not None
+                else None
+            ),
+            tower_toss=(
+                SpriteAnimation(self.base, self._tower_toss)
+                if self._tower_toss is not None
+                else None
+            ),
+            chapel_laugh=(
+                SpriteAnimation(self.base, self._chapel_laugh)
+                if self._chapel_laugh is not None
+                else None
+            ),
+            kitchen_prep=(
+                SpriteAnimation(self.base, self._kitchen_prep)
+                if self._kitchen_prep is not None
+                else None
+            ),
+            ship_beckon=(
+                SpriteAnimation(self.base, self._ship_beckon)
+                if self._ship_beckon is not None
+                else None
+            ),
+            ship_chair=(
+                SpriteAnimation(self.base, self._ship_chair)
+                if self._ship_chair is not None
+                else None
+            ),
+            dojo_challenge=(
+                SpriteAnimation(self.base, self._dojo_challenge)
+                if self._dojo_challenge is not None
+                else None
+            ),
+            statue_intro=(
+                SpriteAnimation(self.base, self._statue_intro)
+                if self._statue_intro is not None
+                else None
+            ),
+            statue_peck=(
+                SpriteAnimation(self.base, self._statue_peck)
+                if self._statue_peck is not None
+                else None
+            ),
+            statue_flustered=(
+                SpriteAnimation(self.base, self._statue_flustered)
+                if self._statue_flustered is not None
+                else None
+            ),
+            keep_challenge=(
+                SpriteAnimation(self.base, self._keep_challenge)
+                if self._keep_challenge is not None
+                else None
+            ),
+            keep_summon=(
+                SpriteAnimation(self.base, self._keep_summon)
+                if self._keep_summon is not None
+                else None
+            ),
+            chandelier_challenge=(
+                SpriteAnimation(self.base, self._chandelier_challenge)
+                if self._chandelier_challenge is not None
+                else None
+            ),
+            factory_pierce=(
+                SpriteAnimation(self.base, self._factory_pierce)
+                if self._factory_pierce is not None
+                else None
+            ),
+            endgame_challenge=(
+                SpriteAnimation(self.base, self._endgame_challenge)
+                if self._endgame_challenge is not None
+                else None
+            ),
+            look_at_ceiling_mold_id=self._look_at_ceiling_mold_id,
+            tpose_mold_id=self._tpose_mold_id,
+            tpose=(
+                SpriteAnimation(self.base, self._tpose)
+                if self._tpose is not None
+                else None
+            ),
+            look_at_ceiling=(
+                SpriteAnimation(self.base, self._look_at_ceiling)
+                if self._look_at_ceiling is not None
+                else None
+            ),
+            look_at_camera=(
+                SpriteAnimation(self.base, self._look_at_camera)
+                if self._look_at_camera is not None
+                else None
+            ),
+        )
 
     @classmethod
     def get_vram_size(cls, world: "GameWorld") -> int:
@@ -716,8 +873,52 @@ class BossNPC(NPC):
         return instance.min_vram_from_sequence(world, sequence_id)
 
 
-class HenchmanNPC(NPC):
-    _animations: SpriteAnimationCollection = SpriteAnimationCollection()
+class StatueNPC(SupplantableNPC):
+    _facing_shifts: dict[Direction, PixelShift] = {}
+
+    @property
+    def southwest_facing_shift(self) -> PixelShift | None:
+        """Pixel shift applied when this statue is spawned facing southwest."""
+        return self._facing_shifts.get(SOUTHWEST)
+
+    @property
+    def southeast_facing_shift(self) -> PixelShift | None:
+        """Pixel shift applied when this statue is spawned facing southeast."""
+        return self._facing_shifts.get(SOUTHEAST)
+
+    @property
+    def northwest_facing_shift(self) -> PixelShift | None:
+        """Pixel shift applied when this statue is spawned facing northwest."""
+        return self._facing_shifts.get(NORTHWEST)
+
+    @property
+    def northeast_facing_shift(self) -> PixelShift | None:
+        """Pixel shift applied when this statue is spawned facing northeast."""
+        return self._facing_shifts.get(NORTHEAST)
+
+
+class BossNPC(SupplantableNPC):
+
+    # Per-direction statue pixel shifts. Missing keys (or None) mean no shift
+    # is applied for that direction. Keys: SOUTHWEST, SOUTHEAST, NORTHWEST, NORTHEAST.
+
+    # Palette data (15 24-bit RGB colors) to use as this boss's "evil"
+    # palette variant (e.g. for the Keep boss 1 pre-reformation scene).
+    # None means no dedicated evil palette is defined; callers should
+    # fall back to the sprite's default palette.
+    _evil_palette: list[int] | None = None
+
+    @property
+    def evil_palette(self) -> list[int] | None:
+        """The 15-color palette (as 24-bit hex RGB ints) to use as this
+        boss's 'evil' palette variant. Returns None if this boss has no
+        dedicated evil palette, in which case callers should fall back
+        to the sprite's default palette (palette_id + palette_offset)."""
+        return self._evil_palette
+
+
+class HenchmanNPC(SupplantableNPC):
+    pass
 
 
 class ItemNPC(NPC):

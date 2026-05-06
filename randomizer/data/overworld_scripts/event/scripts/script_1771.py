@@ -35,14 +35,10 @@ from ....variables.event_palette_names import *
 
 script = EventScript([    
 	JmpIfObjectInSpecificLevel(NPC_4, R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM, ["EVENT_1771_jmp_if_bit_clear_2"]),
-    JmpIfBitSet(TEMPLE_POSTGAME_BOSS_DEFEATED, ["do_not_load_postgame_boss"]),
-	JmpIfBitClear(TEMPLE_BOSS_BUTTON_PRESSED, ["do_not_load_postgame_boss"]),
-    JmpIfBitClear(STAY_VOUCHER_USED, ["do_not_load_postgame_boss"]),
-    SummonObjectToCurrentLevel(NPC_5),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_VisibilityOn(),
 		A_SetSpriteSequence(index=0, is_sequence=True, looping=True)
-	], identifier="do_not_load_postgame_boss"),
+	]),
 	JmpIfBitClear(TEMPLE_BOSS_BUTTON_PRESSED, ["EVENT_1771_fade_in_from_black_async_80"], identifier="EVENT_1771_jmp_if_bit_clear_2"),
 	ApplySolidityModToLevel(permanent=True, room_id=R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM, mod_id=0),
 	ActionQueueSync(target=NPC_0, subscript=[

@@ -245,7 +245,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3, cannot_clone=True),
         RegularNPC( # 7
             npc=npcs.YARIDOVICH_OUT_OF_BATTLE_NPC,
             initiator=EventInitiator.NONE,
@@ -272,7 +272,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3, cannot_clone=True),
         RegularNPC( # 8
             npc=npcs.JONATHAN_JONES_NPC_2,
             initiator=EventInitiator.NONE,
@@ -299,6 +299,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3, cannot_clone=True),
     ]
 )

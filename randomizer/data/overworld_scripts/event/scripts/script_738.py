@@ -431,7 +431,7 @@ script = EventScript([
 		A_Pause(4),
 		A_EndLoop(),
 		A_SetSpriteSequence(index=10, sprite_offset=4, is_mold=True, is_sequence=True, looping=True)
-	]),
+	], identifier="EVENT_738_action_queue_63_SUBSCRIPT"),
 	ActionQueueSync(target=NPC_2, subscript=[
 		A_FaceSouthwest(),
 		A_Pause(30),
@@ -451,6 +451,7 @@ script = EventScript([
 		A_SequenceLoopingOff(),
 		A_SequencePlaybackOff()
 	]),
+	Pause(30),
 	ClearBit(NIMBUS_BOSS_IN_TOWN_SQUARE),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	SetVarToConst(TEMP_70A9, 29),

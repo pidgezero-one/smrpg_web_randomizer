@@ -1023,6 +1023,10 @@ def set_locations(world: GameWorld) -> None:
                 npc = location.npc
                 npc.set_visible(False)
                 room._objects[idx] = npc
+                #print(location, r, idx, location._x_coord, location._y_coord, location._z_coord)
+                world.action_scripts.replace_script(
+                    npc.action_script, location.shift
+                )
                 world.event_scripts.get_script_by_id(
                     E0091_INVISIBLE_ITEM_SUMMONER
                 ).insert_before_nth_command(0, SummonObjectToSpecificLevel(n_id, r))

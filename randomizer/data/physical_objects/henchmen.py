@@ -2,113 +2,69 @@ from ...types.physical_objects import HenchmanNPC, SpriteAnimation, SpriteAnimat
 from ..rooms.npcs import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import FAST, FASTEST, VERY_FAST
 
-# Animation definitions for henchmen (from data_old/npcs.py)
-shyster_taunt = SpriteAnimation(sequence_id=4, contact_frame=56, total_duration=56)
-shyster_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
-shyster_fast = SpriteAnimation(sequence_id=4, contact_frame=28, total_duration=28, speed=FAST)
-
-crook_scratch = SpriteAnimation(sequence_id=4, total_duration=20, contact_frame=10)
-
-bomb_tick = SpriteAnimation(sequence_id=4, total_duration=22, contact_frame=11)
-bomb_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
-
-snifit_shoot = SpriteAnimation(sequence_id=4, total_duration=60)
-snifit_shoot_fast = SpriteAnimation(sequence_id=4, total_duration=30, speed=FASTEST)
-snifit_taunt = SpriteAnimation(sequence_id=5, contact_frame=30, total_duration=46)
-snifit_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
-
-torte_taunt = SpriteAnimation(sequence_id=3, total_duration=40)
-torte_taunt_fast = SpriteAnimation(sequence_id=3, total_duration=20, speed=FAST)
-
-squid_hit = SpriteAnimation(sequence_id=3, contact_frame=36, total_duration=48)
-squid_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=18, total_duration=24, speed=FAST)
-squid_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
-
-goombette_hit = SpriteAnimation(sequence_id=3, contact_frame=42, total_duration=52)
-goombette_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=21, total_duration=26, speed=FAST)
-goombette_taunt = SpriteAnimation(sequence_id=2, total_duration=12)
-
-bandana_attack = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=50)
-bandana_attack_fast = SpriteAnimation(sequence_id=3, contact_frame=17, total_duration=32, speed=FAST)
-bandana_taunt = SpriteAnimation(sequence_id=4, total_duration=36)
-
-drillbit_hit = SpriteAnimation(sequence_id=3, contact_frame=54, total_duration=64)
-drillbit_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=27, total_duration=32, speed=FAST)
-drillbit_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
-
-fireball_spin = SpriteAnimation(sequence_id=3, contact_frame=40, total_duration=62)
-fireball_spin_fast = SpriteAnimation(sequence_id=3, contact_frame=20, total_duration=31, speed=FAST)
-fireball_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
-
-piranha_bite = SpriteAnimation(sequence_id=3, contact_frame=20, total_duration=52)
-piranha_taunt = SpriteAnimation(sequence_id=4, total_duration=16)
-piranha_recoil = SpriteAnimation(sequence_id=2, total_duration=20)
-
-bird_attack = SpriteAnimation(sequence_id=3, contact_frame=24, total_duration=36)
-
-eggbert_expand = SpriteAnimation(sequence_id=2, total_duration=32)
-
-axem_black_hit = SpriteAnimation(sequence_id=3, contact_frame=16, total_duration=64)
-axem_black_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=8, total_duration=32, speed=VERY_FAST)
-axem_pink_hit = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=58)
-axem_pink_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=13, total_duration=29, speed=VERY_FAST)
-axem_yellow_hit = SpriteAnimation(sequence_id=3, contact_frame=82, total_duration=108)
-axem_yellow_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=41, total_duration=54, speed=FAST)
-axem_yellow_hit_very_fast = SpriteAnimation(sequence_id=3, contact_frame=11, total_duration=27, speed=FASTEST)
-axem_green_hit = SpriteAnimation(sequence_id=3, contact_frame=56, total_duration=84)
-axem_green_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=28, total_duration=42, speed=VERY_FAST)
-axem_green_hit_fastest = SpriteAnimation(sequence_id=3, contact_frame=9, total_duration=28, speed=FASTEST)
-
-jinx_punch = SpriteAnimation(sequence_id=3, contact_frame=10, total_duration=18)
-jinx_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
-
-hammer_hit = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=36)
-
-mallowclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
-mallowclone_mad = SpriteAnimation(sequence_id=4, contact_frame=8, total_duration=16)
-
-genoclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
-genoclone_mad = SpriteAnimation(sequence_id=4, contact_frame=6, total_duration=12)
-
-bowserclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
-bowserclone_mad = SpriteAnimation(sequence_id=4, contact_frame=12, total_duration=24)
-
-peachclone_mad = SpriteAnimation(sequence_id=4, contact_frame=12, total_duration=24)
-
-
 class ShysterHenchman(HenchmanNPC):
     """Shyster henchman NPC for boss fights."""
 
     _base = SHYSTER_NPC
-    _animations = SpriteAnimationCollection(
-        recoil=shyster_recoil,
-        tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt,
-        factory_pierce=shyster_fast,
-    )
+    _recoil = 2
+    _tower_crying = 3
+    _bandits_way_distracted = 3
+    _mines_punch = 4
+    _tower_bullet = 4
+    _tower_toss = 4
+    _chapel_laugh = 3
+    _kitchen_prep = 4
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 3
+    _statue_peck = 4
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 4
+    _endgame_challenge = 4
 
 
 class CrookHenchman(HenchmanNPC):
     """Crook henchman NPC for boss fights."""
 
     _base = CROOK_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=crook_scratch,
-        kitchen_prep=crook_scratch,
-        factory_pierce=crook_scratch,
-    )
+    _recoil = 2
+    _mines_punch = 3
+    _tower_bullet = 3
+    _tower_toss = 3
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 3
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 
 class BobOmbHenchman(HenchmanNPC):
     """Bob-omb henchman NPC for boss fights."""
 
     _base = BOB_OMB_NPC
-    _animations = SpriteAnimationCollection(
-        recoil=bomb_recoil,
-        tower_bullet=bomb_tick,
-        kitchen_prep=bomb_tick,
-        factory_pierce=bomb_tick,
-    )
+    _recoil = 2
+    _tower_crying = 4
+    _bandits_way_distracted = 4
+    _mines_punch = 4
+    _tower_bullet = 4
+    _chapel_laugh = 4
+    _kitchen_prep = 4
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 4
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 4
+    _endgame_challenge = 4
 
 
 class MicrobombHenchman(HenchmanNPC):
@@ -121,48 +77,93 @@ class SpookumHenchman(HenchmanNPC):
     """Spookum henchman NPC for boss fights."""
 
     _base = SPOOKUM_NPC
-    _animations = SpriteAnimationCollection(
-        recoil=snifit_recoil,
-        tower_bullet=snifit_shoot,
-        kitchen_prep=snifit_taunt,
-        factory_pierce=snifit_shoot_fast,
-    )
+    _recoil = 2
+    _tower_crying = 4
+    _bandits_way_distracted = 4
+    _mines_punch = 3
+    _tower_bullet = 5
+    _tower_toss = 5
+    _chapel_laugh = 4
+    _kitchen_prep = 4
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 5
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 class SnifitHenchman(HenchmanNPC):
     """Snifit henchman NPC for boss fights."""
 
     _base = SNIFIT_NPC
-    _animations = SpriteAnimationCollection(
-        recoil=snifit_recoil,
-        tower_bullet=snifit_shoot,
-        kitchen_prep=snifit_taunt,
-        factory_pierce=snifit_shoot_fast,
-    )
+    _recoil = 2
+    _tower_crying = 4
+    _bandits_way_distracted = 4
+    _mines_punch = 3
+    _tower_bullet = 5
+    _tower_toss = 5
+    _chapel_laugh = 4
+    _kitchen_prep = 4
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 5
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 
 class TorteHenchman(HenchmanNPC):
     """Torte henchman NPC for boss fights."""
 
     _base = TORTE_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=torte_taunt,
-        kitchen_prep=torte_taunt,
-        factory_pierce=torte_taunt_fast,
-    )
+    _recoil = 2
+    _mines_punch = 3
+    _tower_bullet = 3
+    _tower_toss = 3
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_intro = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 3
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 
 class BlooberHenchman(HenchmanNPC):
     """Bloober henchman NPC for boss fights."""
 
     _base = BLOOBER_NPC
-    _animations = SpriteAnimationCollection(
-        recoil=squid_recoil,
-        tower_bullet=squid_hit,
-        mines_punch=squid_hit,
-        dojo_challenge=squid_hit,
-        statue_peck=squid_hit_fast,
-        statue_flustered=squid_recoil,
-    )
+    _recoil = 2
+    _tower_crying = 0
+    _bandits_way_distracted = 0
+    _mines_punch = 3
+    _tower_bullet = 3
+    _tower_toss = 3
+    _chapel_laugh = 0
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_intro = 5
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 3
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
+    _tpose_mold_id = 1
+    _tpose = 6
 
 
 class TinyBlooberHenchman(HenchmanNPC):
@@ -175,45 +176,89 @@ class GoombetteLowerHenchman(HenchmanNPC):
     """Goombette henchman NPC for boss fights."""
 
     _base = GOOMBETTE_LOWER_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=goombette_hit,
-        kitchen_prep=goombette_taunt,
-        factory_pierce=goombette_hit_fast,
-    )
+    _recoil = 2
+    _tower_crying = 2
+    _bandits_way_distracted = 2
+    _mines_punch = 3
+    _tower_bullet = 3
+    _tower_toss = 3
+    _chapel_laugh = 2
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_intro = 2
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 3
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 
 class BandanaBlueHenchman(HenchmanNPC):
     """Bandana Blue henchman NPC for boss fights."""
 
     _base = BANDANA_BLUE_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=bandana_taunt,
-        kitchen_prep=bandana_attack,
-        factory_pierce=bandana_attack_fast,
-    )
+    _recoil = 2
+    _mines_punch = 3
+    _tower_bullet = 4
+    _tower_toss = 4
+    _kitchen_prep = 3
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 3
+    _endgame_challenge = 4
 
 
 class BandanaRedHenchman(HenchmanNPC):
     """Bandana Red henchman NPC for boss fights."""
 
     _base = BANDANA_RED_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=bandana_taunt,
-        kitchen_prep=bandana_attack,
-        factory_pierce=bandana_attack_fast,
-    )
+    _recoil = 2
+    _mines_punch = 3
+    _tower_bullet = 4
+    _tower_toss = 4
+    _kitchen_prep = 3
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 3
+    _endgame_challenge = 4
 
 
 class DrillbitHenchman(HenchmanNPC):
     """Drillbit (Fake Seaside Town Toad) henchman NPC for boss fights."""
 
     _base = SEASIDE_TOWN_FAKE_GREEN_NPC
-    _animations = SpriteAnimationCollection(
-        recoil=drillbit_recoil,
-        tower_bullet=drillbit_hit,
-        kitchen_prep=drillbit_hit,
-        factory_pierce=drillbit_hit_fast,
-    )
+    _recoil = 2
+    _tower_crying = 4
+    _bandits_way_distracted = 4
+    _mines_punch = 3
+    _tower_bullet = 3
+    _tower_toss = 3
+    _chapel_laugh = 4
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _ship_chair = 4
+    _dojo_challenge = 3
+    _statue_intro = 4
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 3
+    _chandelier_challenge = 5
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 
 class MokuraHenchman(HenchmanNPC):
@@ -226,66 +271,138 @@ class MariocloneHenchman(HenchmanNPC):
     """Mario clone henchman NPC for boss fights."""
 
     _base = MARIO_CLONE_WALKING_DOWN_LEFT_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=SpriteAnimation(sequence_id=5, contact_frame=0, total_duration=16),
-        kitchen_prep=SpriteAnimation(sequence_id=14, contact_frame=0, total_duration=36),
-        factory_pierce=SpriteAnimation(sequence_id=14, contact_frame=0, total_duration=36),
-    )
+    _tower_crying = 14
+    _bandits_way_distracted = 5
+    _mines_punch = 14
+    _tower_bullet = 5
+    _tower_toss = 5
+    _chapel_laugh = 14
+    _kitchen_prep = 14
+    _ship_beckon = 14
+    _ship_chair = 14
+    _dojo_challenge = 14
+    _statue_intro = 14
+    _keep_challenge = 14
+    _keep_summon = 14
+    _chandelier_challenge = 14
+    _factory_pierce = 14
+    _endgame_challenge = 14
+    _look_at_camera = 13
 
 
 class MallowcloneHenchman(HenchmanNPC):
     """Mallow clone henchman NPC for boss fights."""
 
     _base = MALLOW_WALKING_DOWN_LEFT_NPC_2
-    _animations = SpriteAnimationCollection(
-        tower_bullet=mallowclone_laugh,
-        kitchen_prep=mallowclone_mad,
-        factory_pierce=mallowclone_mad,
-    )
+    _tower_crying = 4
+    _bandits_way_distracted = 8
+    _mines_punch = 4
+    _tower_bullet = 2
+    _tower_toss = 2
+    _chapel_laugh = 2
+    _kitchen_prep = 4
+    _ship_beckon = 2
+    _dojo_challenge = 4
+    _statue_intro = 2
+    _statue_flustered = 4
+    _keep_challenge = 4
+    _keep_summon = 2
+    _chandelier_challenge = 4
+    _factory_pierce = 4
+    _endgame_challenge = 4
+    _look_at_camera = 10
 
 
 class GenocloneHenchman(HenchmanNPC):
     """Geno clone henchman NPC for boss fights."""
 
     _base = GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE
-    _animations = SpriteAnimationCollection(
-        tower_bullet=genoclone_laugh,
-        kitchen_prep=genoclone_mad,
-        factory_pierce=genoclone_mad,
-    )
+    _tower_crying = 4
+    _bandits_way_distracted = 8
+    _mines_punch = 4
+    _tower_bullet = 2
+    _tower_toss = 2
+    _chapel_laugh = 2
+    _kitchen_prep = 4
+    _ship_beckon = 2
+    _dojo_challenge = 4
+    _statue_intro = 2
+    _statue_flustered = 4
+    _keep_challenge = 4
+    _keep_summon = 2
+    _chandelier_challenge = 4
+    _factory_pierce = 4
+    _endgame_challenge = 4
+    _look_at_camera = 10
 
 
 class BowsercloneHenchman(HenchmanNPC):
     """Bowser clone henchman NPC for boss fights."""
 
     _base = BOWSER_WALKING_DOWN_LEFT_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=bowserclone_laugh,
-        kitchen_prep=bowserclone_mad,
-        factory_pierce=bowserclone_mad,
-    )
+    _tower_crying = 4
+    _bandits_way_distracted = 8
+    _mines_punch = 4
+    _tower_bullet = 2
+    _tower_toss = 2
+    _chapel_laugh = 2
+    _kitchen_prep = 4
+    _ship_beckon = 2
+    _dojo_challenge = 4
+    _statue_intro = 2
+    _statue_flustered = 4
+    _keep_challenge = 4
+    _keep_summon = 2
+    _chandelier_challenge = 4
+    _factory_pierce = 4
+    _endgame_challenge = 4
+    _look_at_camera = 10
 
 
 class BowsercloneHenchman_2(HenchmanNPC):
     """Bowser clone henchman NPC variant 2 for boss fights."""
 
     _base = BOWSER_WALKING_DOWN_LEFT_NPC_2
-    _animations = SpriteAnimationCollection(
-        tower_bullet=bowserclone_laugh,
-        kitchen_prep=bowserclone_mad,
-        factory_pierce=bowserclone_mad,
-    )
+    _tower_crying = 4
+    _bandits_way_distracted = 8
+    _mines_punch = 4
+    _tower_bullet = 2
+    _tower_toss = 2
+    _chapel_laugh = 2
+    _kitchen_prep = 4
+    _ship_beckon = 2
+    _dojo_challenge = 4
+    _statue_intro = 2
+    _statue_flustered = 4
+    _keep_challenge = 4
+    _keep_summon = 2
+    _chandelier_challenge = 4
+    _factory_pierce = 4
+    _endgame_challenge = 4
+    _look_at_camera = 10
 
 
 class PeachcloneHenchman(HenchmanNPC):
     """Peach clone henchman NPC for boss fights."""
 
     _base = TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM
-    _animations = SpriteAnimationCollection(
-        tower_bullet=peachclone_mad,
-        kitchen_prep=peachclone_mad,
-        factory_pierce=peachclone_mad,
-    )
+    _tower_crying = 4
+    _bandits_way_distracted = 8
+    _mines_punch = 4
+    _tower_bullet = 2
+    _tower_toss = 2
+    _chapel_laugh = 2
+    _kitchen_prep = 4
+    _ship_beckon = 2
+    _dojo_challenge = 4
+    _statue_intro = 2
+    _statue_flustered = 4
+    _keep_challenge = 4
+    _keep_summon = 2
+    _chandelier_challenge = 4
+    _factory_pierce = 4
+    _endgame_challenge = 4
+    _look_at_camera = 10
 
 
 class FireCrystalHenchman(HenchmanNPC):
@@ -316,12 +433,27 @@ class PiranhaPlantHenchman(HenchmanNPC):
     """Piranha Plant henchman NPC for boss fights."""
 
     _base = PIRANHA_PLANT_NPC_3
-    _animations = SpriteAnimationCollection(
-        recoil=piranha_recoil,
-        tower_bullet=piranha_bite,
-        kitchen_prep=piranha_taunt,
-        factory_pierce=piranha_bite,
-    )
+    _recoil = 2
+    _tower_crying = 7
+    _bandits_way_distracted = 7
+    _mines_punch = 4
+    _tower_bullet = 8
+    _tower_toss = 8
+    _chapel_laugh = 7
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _ship_chair = 7
+    _dojo_challenge = 3
+    _statue_intro = 7
+    _statue_peck = 4
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 8
+    _chandelier_challenge = 3
+    _factory_pierce = 4
+    _endgame_challenge = 3
+    _tpose_mold_id = 3
+    _tpose = 5
 
 
 class FeatherHenchman(HenchmanNPC):
@@ -334,33 +466,65 @@ class EggbertHenchman(HenchmanNPC):
     """Eggbert henchman NPC for boss fights."""
 
     _base = EGGBERT_GRIDPLANE_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=eggbert_expand,
-        kitchen_prep=eggbert_expand,
-        factory_pierce=eggbert_expand,
-    )
+    _recoil = 2
+    _tower_crying = 2
+    _bandits_way_distracted = 2
+    _mines_punch = 2
+    _tower_bullet = 2
+    _tower_toss = 2
+    _chapel_laugh = 2
+    _kitchen_prep = 2
+    _ship_beckon = 2
+    _dojo_challenge = 2
+    _statue_intro = 2
+    _statue_flustered = 2
+    _keep_challenge = 2
+    _keep_summon = 2
+    _chandelier_challenge = 2
+    _factory_pierce = 2
+    _endgame_challenge = 2
 
 
 class BluebirdHenchman(HenchmanNPC):
     """Bluebird henchman NPC for boss fights."""
 
     _base = BLUEBIRD_NPC_STATIC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=bird_attack,
-        kitchen_prep=bird_attack,
-        factory_pierce=bird_attack,
-    )
+    _recoil = 2
+    _mines_punch = 3
+    _tower_bullet = 4
+    _tower_toss = 4
+    _kitchen_prep = 3
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 3
+    _endgame_challenge = 4
 
 
 class BirdyHenchman(HenchmanNPC):
     """Birdy henchman NPC for boss fights."""
 
     _base = BIRDY_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=bird_attack,
-        kitchen_prep=bird_attack,
-        factory_pierce=bird_attack,
-    )
+    _recoil = 2
+    _mines_punch = 3
+    _tower_bullet = 4
+    _tower_toss = 4
+    _kitchen_prep = 3
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 3
+    _endgame_challenge = 4
 
 
 class HelioHenchman(HenchmanNPC):
@@ -373,65 +537,136 @@ class SparkyHenchman(HenchmanNPC):
     """Sparky/Pyrosphere henchman NPC for boss fights."""
 
     _base = SPARKY_NPC
-    _animations = SpriteAnimationCollection(
-        recoil=fireball_recoil,
-        tower_bullet=fireball_spin,
-        kitchen_prep=fireball_spin,
-        factory_pierce=fireball_spin_fast,
-    )
+    _recoil = 2
+    _mines_punch = 3
+    _tower_bullet = 3
+    _tower_toss = 3
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_intro = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 3
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 
 class AxemBlackHenchman(HenchmanNPC):
     """Axem Black henchman NPC for boss fights."""
 
     _base = AXEM_BLACK_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=axem_black_hit,
-        kitchen_prep=axem_black_hit,
-        factory_pierce=axem_black_hit_fast,
-    )
+    _recoil = 2
+    _tower_crying = 7
+    _bandits_way_distracted = 7
+    _mines_punch = 7
+    _tower_bullet = 3
+    _tower_toss = 3
+    _chapel_laugh = 7
+    _kitchen_prep = 3
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 3
+    _endgame_challenge = 4
 
 
 class AxemPinkHenchman(HenchmanNPC):
     """Axem Pink henchman NPC for boss fights."""
 
     _base = AXEM_PINK_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=axem_pink_hit,
-        kitchen_prep=axem_pink_hit,
-        factory_pierce=axem_pink_hit_fast,
-    )
+    _recoil = 2
+    _tower_crying = 6
+    _bandits_way_distracted = 6
+    _mines_punch = 3
+    _tower_bullet = 4
+    _tower_toss = 4
+    _chapel_laugh = 6
+    _kitchen_prep = 3
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 3
+    _endgame_challenge = 4
 
 
 class AxemYellowHenchman(HenchmanNPC):
     """Axem Yellow henchman NPC for boss fights."""
 
     _base = AXEM_YELLOW_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=axem_yellow_hit_fast,
-        kitchen_prep=axem_yellow_hit,
-    )
+    _recoil = 2
+    _tower_crying = 6
+    _bandits_way_distracted = 6
+    _mines_punch = 3
+    _tower_bullet = 4
+    _tower_toss = 4
+    _chapel_laugh = 6
+    _kitchen_prep = 3
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 3
+    _endgame_challenge = 4
 
 
 class AxemGreenHenchman(HenchmanNPC):
     """Axem Green henchman NPC for boss fights."""
 
     _base = AXEM_GREEN_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=axem_green_hit,
-        kitchen_prep=axem_green_hit,
-        factory_pierce=axem_green_hit_fastest,
-    )
+    _recoil = 2
+    _tower_crying = 6
+    _bandits_way_distracted = 6
+    _mines_punch = 3
+    _tower_bullet = 4
+    _tower_toss = 4
+    _chapel_laugh = 6
+    _kitchen_prep = 3
+    _ship_beckon = 4
+    _dojo_challenge = 4
+    _statue_intro = 4
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 4
+    _keep_summon = 4
+    _chandelier_challenge = 4
+    _factory_pierce = 3
+    _endgame_challenge = 4
 
 
 class JinxCloneHenchman(HenchmanNPC):
     """Jinx clone henchman NPC for boss fights."""
 
     _base = JINX_1
-    _animations = SpriteAnimationCollection(
-        recoil=jinx_recoil,
-        dojo_challenge=jinx_punch,
-    )
+    _recoil = 2
+    _mines_punch = 3
+    _tower_bullet = 4
+    _tower_toss = 3
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_intro = 5
+    _statue_flustered = 2
+    _keep_challenge = 5
+    _keep_summon = 4
+    _chandelier_challenge = 5
+    _factory_pierce = 3
+    _endgame_challenge = 5
 
 
 class DingalingHenchman(HenchmanNPC):
@@ -444,36 +679,76 @@ class MadMalletHenchman(HenchmanNPC):
     """Mad Mallet henchman NPC for boss fights."""
 
     _base = MAD_MALLET_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=hammer_hit,
-        kitchen_prep=hammer_hit,
-        factory_pierce=hammer_hit,
-    )
+    _recoil = 2
+    _mines_punch = 5
+    _tower_bullet = 5
+    _tower_toss = 5
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 5
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 
 class PounderHenchman(HenchmanNPC):
     """Pounder henchman NPC for boss fights."""
 
     _base = POUNDER_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=hammer_hit,
-        kitchen_prep=hammer_hit,
-        factory_pierce=hammer_hit,
-    )
+    _recoil = 2
+    _mines_punch = 5
+    _tower_bullet = 5
+    _tower_toss = 5
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 5
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 
 class PoundetteHenchman(HenchmanNPC):
     """Poundette henchman NPC for boss fights."""
 
     _base = POUNDETTE_NPC
-    _animations = SpriteAnimationCollection(
-        tower_bullet=hammer_hit,
-        kitchen_prep=hammer_hit,
-        factory_pierce=hammer_hit,
-    )
+    _recoil = 2
+    _mines_punch = 5
+    _tower_bullet = 5
+    _tower_toss = 5
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_peck = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 5
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3
 
 
 class AeroHenchman(HenchmanNPC):
     """Aero henchman NPC for boss fights."""
 
     _base = AERO_NPC
+    _recoil = 2
+    _mines_punch = 3
+    _tower_bullet = 3
+    _tower_toss = 3
+    _kitchen_prep = 3
+    _ship_beckon = 3
+    _dojo_challenge = 3
+    _statue_flustered = 2
+    _keep_challenge = 3
+    _keep_summon = 3
+    _chandelier_challenge = 3
+    _factory_pierce = 3
+    _endgame_challenge = 3

@@ -144,7 +144,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3, cannot_clone=True),
         RegularNPC( # 4
             npc=npcs.VALENTINA_NPC,
             initiator=EventInitiator.NONE,
@@ -171,7 +171,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3, cannot_clone=True),
     ],
     npc_expected_animations={
         3: ["look_at_ceiling"]

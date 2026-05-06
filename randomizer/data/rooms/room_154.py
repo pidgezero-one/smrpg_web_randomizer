@@ -255,6 +255,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True
         ),
         RegularNPC(  # 10
             npc=npcs.TOAD_NPC,
@@ -299,7 +300,7 @@ room = Room(
             face_on_trigger=True,
             cant_enter_doors=False,
             byte2_bit5=False,
-            set_sequence_playback=True,
+            set_sequence_playback=False,
             cant_float=False,
             cant_walk_up_stairs=False,
             cant_walk_under=False,
@@ -313,7 +314,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
             directions=VramStore.DIR2_SWSE
-        ),
+        , cannot_clone=True),
         RegularNPC(  # 12
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.DO_ANYTHING,

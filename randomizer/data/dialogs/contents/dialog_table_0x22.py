@@ -37,7 +37,7 @@ dialog_data[21] = ''' Now that our kingdom isn't in peril
 dialog_data[22] = '''Whoa, you won [0x7000] time(s)!
  Here's a special prize for you![await]'''
 dialog_data[23] = '''
- BIRDETTA: Don't forget about me![await]'''
+[center]BIRDO: Don't forget about me![await]'''
 dialog_data[24] = ''' Don't spend it all in one place,
  now.[await]'''
 dialog_data[25] = '''[center]Got an “[0x70A7]”![end]'''
@@ -605,7 +605,7 @@ dialog_data[224] = '''[await]'''
 dialog_data[225] = '''[await]'''
 dialog_data[226] = '''      CLOSED FOR MAINTENANCE
         Please come back later.
-                                    ~ Luigi[await]'''
+                                   Luigi[await]'''
 dialog_data[227] = ''' Almost forgot!
  You wagered 30 coins, didn't ya?
  Here's 50, you lucky dog![await]'''

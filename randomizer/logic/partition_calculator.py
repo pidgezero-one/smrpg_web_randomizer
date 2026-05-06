@@ -362,25 +362,34 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         buffered_sprite_ids.add(sprite_id)
 
     # =========================================================================
-    # Step 4: Assign buffers, respecting NPC object-list order
+    # Step 4: Assign buffers, bottom-packing toward slot C
     # =========================================================================
     # Two invariants drive slot assignment:
     #
-    #   (A) NPC object order ⇒ slot order.  The game engine walks NPCs in
-    #       object-list order and binds each to the next-available buffer
-    #       slot.  If NPC_i appears before NPC_j and both get buffered,
-    #       NPC_i's slot index must be <= NPC_j's.
+    #   (A) NPC object order ⇒ slot order.  Within the slots claimed by
+    #       gridplane sprites (excluding chest/coin/pin overrides), if NPC_i
+    #       appears before NPC_j and both get buffered, NPC_i's slot index
+    #       must be <= NPC_j's.
     #
-    #   (B) Avoid changing slot 0's row format when possible.  An untraced
-    #       code path in the engine reads buffer A's format for cannot_clone
-    #       NPC tile layout and applies it globally; changing slot 0 from
-    #       EMPTY_3/3-per-row to a different type can corrupt cannot_clone
-    #       renders (see rooms 205/232 regression history).
+    #   (B) Keep slot 0 EMPTY whenever possible.  An untraced code path in
+    #       the engine reads buffer A's format for cannot_clone NPC tile
+    #       layout and applies it globally; placing a clone-buffer type
+    #       (FOUR_SPR / THREE_SPR) at slot 0 corrupts cannot_clone NPC
+    #       renders (see room 110 regression — Boomer peck animation
+    #       overwriting the statues — and rooms 205/232 history).
     #
-    # Greedy algorithm: iterate buffers in NPC-appearance order; for each,
-    # pick the lowest-index empty slot >= last-assigned slot, preferring
-    # one whose vanilla buffer_type matches, while leaving enough room for
-    # the remaining buffers behind it.
+    # Strategy: bottom-pack.  Reserve slot 0 for chests, slot 2 for coins,
+    # and pack the remaining gridplane sprites into the bottom-most free
+    # slots (high index first), assigning sprites to those slots in NPC
+    # object order with ascending slot index.  This guarantees:
+    #
+    #   - 1 sprite, no chest/coin → [EMPTY, EMPTY, sprite]
+    #   - 2 sprites, no chest/coin → [EMPTY, sprite_first, sprite_second]
+    #   - chest + 1 sprite → [CHEST, EMPTY, sprite]
+    #   - chest + coin + 1 sprite → [CHEST, sprite, COIN]
+    #
+    # Slot 0 stays EMPTY in every layout that doesn't have a chest, which
+    # is what the cannot_clone NPC tile-layout path expects.
     selected_buffers.sort(
         key=lambda sb: sprite_first_appearance.get(sb[0], 999),
     )
@@ -399,8 +408,8 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
 
     # Step 4a: Apply vanilla_sprite_buffer_pins — if an NPC's current sprite
     # matches its vanilla sprite, force that sprite into the pinned slot
-    # before the greedy loop runs.  These overrides bypass NPC-order sorting
-    # because the room explicitly declares the desired placement.
+    # before bottom-packing runs.  These overrides are explicit room author
+    # choices and take precedence over the bottom-packing default.
     from ..types.room import Room as ExtRoomForPins
     if isinstance(room, ExtRoomForPins) and room.vanilla_sprite_buffer_pins:
         assert world._vanilla_room_states is not None
@@ -425,54 +434,31 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                 buffered_sprite_ids.add(current_sprite)
                 pinned_slot_bufspace[slot_idx] = bufspace
 
-    # Step 4b: Greedy placement of the remaining unplaced buffers,
-    # tracking `next_slot` to enforce NPC-order → slot-order for non-pinned
-    # sprites.  The initial `next_slot` starts past any pinned slot so we
-    # don't disturb pin placements; sprites whose first NPC appears before
-    # all pins still get to use earlier empty slots via their own iteration.
+    # Step 4b: Bottom-pack remaining buffers.
+    #
+    # `free_slots` lists unreserved slots ranked bottom-first (slot 2 first).
+    # Take the bottom-most N of those free slots for the N unplaced sprites,
+    # then sort ascending and zip with sprites in NPC-object-appearance order.
+    # Result: earliest NPC's sprite gets the lowest chosen slot index,
+    # satisfying invariant (A); slot 0 stays EMPTY unless every higher slot
+    # is already reserved.
     unplaced_buffers = [
         (sid, bt) for sid, bt in selected_buffers
         if sid not in sprite_to_new_buffer
     ]
-    next_slot = 0
 
-    for idx, (sprite_id, btype) in enumerate(unplaced_buffers):
-        # Slots that are empty AND at or after next_slot
-        candidates = [
-            s for s in range(next_slot, 3)
-            if new_buffer_types[s] == BufferType.EMPTY_3
-        ]
-        if not candidates:
-            # Out of slots — this sprite cannot be buffered. Mark it as
-            # unbuffered so step 7 falls back to cannot_clone + min_vram_size.
-            buffered_sprite_ids.discard(sprite_id)
-            continue
+    free_slots = [s for s in (2, 1, 0) if new_buffer_types[s] == BufferType.EMPTY_3]
+    n_to_place = min(len(unplaced_buffers), len(free_slots))
+    chosen_slots = sorted(free_slots[:n_to_place])
 
-        # Reserve space for remaining buffers: each still-to-be-placed
-        # buffer needs its own slot strictly after `chosen`.
-        remaining_after_this = len(unplaced_buffers) - idx - 1
+    for (sprite_id, btype), slot in zip(unplaced_buffers[:n_to_place], chosen_slots):
+        new_buffer_types[slot] = btype
+        sprite_to_new_buffer[sprite_id] = slot
 
-        def free_after(s: int) -> int:
-            return sum(
-                1 for s2 in range(s + 1, 3)
-                if new_buffer_types[s2] == BufferType.EMPTY_3
-            )
-
-        safe_candidates = [s for s in candidates if free_after(s) >= remaining_after_this]
-        if not safe_candidates:
-            # Shouldn't happen (selected_buffers capped at available_slots),
-            # but degrade gracefully: take the lowest candidate.
-            safe_candidates = [candidates[0]]
-
-        # Prefer a slot whose VANILLA buffer_type matches the needed type
-        # (preserves slot 0's row format when the first buffer matches).
-        chosen = next(
-            (s for s in safe_candidates if existing.buffers[s].buffer_type == btype),
-            safe_candidates[0],
-        )
-        new_buffer_types[chosen] = btype
-        sprite_to_new_buffer[sprite_id] = chosen
-        next_slot = chosen + 1
+    # Overflow sprites (more distinct gridplane sprites than free slots) get
+    # demoted to cannot_clone via step 7's fallback.
+    for sprite_id, _ in unplaced_buffers[n_to_place:]:
+        buffered_sprite_ids.discard(sprite_id)
 
     # =========================================================================
     # Step 5: Carry over buffer space and index_in_main_buffer
@@ -606,7 +592,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                             sprites_dict = char_prize.ally._sprites_secondary
                         if anim_state not in sprites_dict:
                             continue
-                        prop_id, offset, is_mold = sprites_dict[anim_state]
+                        offset, prop_id, is_mold = sprites_dict[anim_state]
                         try:
                             npc_model = char_prize.character_model
                             if is_mold:
@@ -781,12 +767,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         for npc in npc_infos:
             if npc.force_cannot_clone:
                 continue  # Intentionally excluded from buffers
-            if npc.is_gridplane and npc.sprite_id not in buffered_sprite_ids and not npc.is_chest and not npc.is_coin:
-                print(
-                    f"[PARTITION WARN] Room {room_id}: NPC {npc.obj_index} "
-                    f"(sprite {npc.sprite_id}, format {npc.gridplane_format}) "
-                    f"has no matching buffer, set to cannot_clone=True"
-                )
 
 
 def _get_boss_henchman_rooms(world: GameWorld) -> set[int]:
@@ -898,13 +878,6 @@ def update_changed_room_partitions(world: GameWorld) -> None:
         | (all_changed & ending_rooms)
     )
     changed_rooms -= _NEVER_RECALCULATE_PARTITION_ROOMS
-
-    if world.settings.debug_mode:
-        print(f"[PARTITION] all_changed={len(all_changed)} boss_rooms={len(boss_rooms)} "
-              f"slot_rooms={len(slot_rooms)} ending_rooms={len(ending_rooms)} "
-              f"recalculating={len(changed_rooms)}")
-        if changed_rooms:
-            print(f"[PARTITION] rooms: {sorted(changed_rooms)}")
 
     # Pre-pass: animation VRAM overrides
     _apply_animation_vram_overrides(world, changed_rooms)
@@ -1729,7 +1702,7 @@ def _calculate_ally_buffer_size(
         sprites_dict = ally._sprites_primary
         if state not in sprites_dict:
             return
-        prop_id, offset, is_mold = sprites_dict[state]
+        offset, prop_id, is_mold = sprites_dict[state]
         # Skip offsets outside the protagonist sprite range (those reference
         # unrelated NPC sprites, not protagonist animations).
         if offset >= PROTAGONIST_SPRITE_RANGE:
@@ -2066,7 +2039,7 @@ def analyze_room_partition(
             for state in DEFAULT_ANIMATION_STATES:
                 sprites_dict = ally._sprites_primary
                 if state in sprites_dict:
-                    prop_id, offset, is_mold = sprites_dict[state]
+                    offset, prop_id, is_mold = sprites_dict[state]
                     if is_mold:
                         try:
                             v = npc.min_vram_from_mold(world, prop_id, offset)
@@ -2085,7 +2058,7 @@ def analyze_room_partition(
                 for state in anim_states:
                     sprites_dict = ally._sprites_primary
                     if state in sprites_dict:
-                        prop_id, offset, is_mold = sprites_dict[state]
+                        offset, prop_id, is_mold = sprites_dict[state]
                         if is_mold:
                             try:
                                 v = npc.min_vram_from_mold(world, prop_id, offset)

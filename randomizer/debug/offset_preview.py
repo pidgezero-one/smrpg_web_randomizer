@@ -58,6 +58,10 @@ from randomizer.progression.prizelocations import (
     FinalBossFight,
 )
 from randomizer.progression import prizelocations as _prizelocations_module
+from randomizer.progression.prizelocations import (
+    KeroSewersBeforeBelomeUpperBeforeFlipLocation,
+    KeroSewersBeforeBelomeUpperAfterFlipLocation,
+)
 from randomizer.progression.prizes import (
     SlotsPrize1,
     SlotsPrize2,
@@ -65,10 +69,18 @@ from randomizer.progression.prizes import (
     FirstMimicFightLauncher,
     SecondMimicFightLauncher,
     ThirdMimicFightLauncher,
+    StarPiece1,
+    StarPiece2,
+    StarPiece3,
+    StarPiece4,
+    StarPiece5,
+    StarPiece6,
+    StarPiece7,
 )
 from randomizer.types.prizelocation import (
     TreasureChestLocationRow,
     InvisibleFlagLocation,
+    StarPieceLocation,
 )
 from randomizer.types.prize import SlotsPrize
 
@@ -135,6 +147,25 @@ MIMIC_PRIZES: list[type] = [
     ThirdMimicFightLauncher,
 ]
 
+STAR_PIECE_PRIZES: list[type] = [
+    StarPiece1,
+    StarPiece2,
+    StarPiece3,
+    StarPiece4,
+    StarPiece5,
+    StarPiece6,
+    StarPiece7,
+]
+
+# Chests that are technically eligible for at least one mimic launcher but are
+# explicitly excluded from the mimic offset slider — e.g. they share a room
+# with a chest that already hosts a mimic, so dialing one in here makes for a
+# confusing preview.
+MIMIC_OFFSET_EXCLUDES: list[type] = [
+    KeroSewersBeforeBelomeUpperBeforeFlipLocation,
+    KeroSewersBeforeBelomeUpperAfterFlipLocation,
+]
+
 
 # --- Helper Functions ---
 
@@ -198,12 +229,33 @@ def _get_eligible_chest_rooms() -> list[type]:
 def _get_eligible_mimic_chests() -> list[type]:
     """Return TreasureChestLocationRow subclasses eligible for mimic placement.
 
-    All treasure chests are eligible (blacklists are ignored for debug offset mode).
+    Excludes chests whose blacklist rejects every MIMIC_PRIZES class — e.g.
+    Mimic1ReloadRewardLocation, which blacklists the parent MimicFightInitiatorPrize
+    so none of the three mimic launcher prizes can land there. Chests that block
+    only some of the three (e.g. block Second/Third but accept First) remain in
+    the list, since the offset slider can still validly land a mimic there.
+
     No room deduplication: chests that share a room with another testable chest
     are still included so the mimic offset slider can target them individually.
     Classes are returned in source definition order from prizelocations.py.
     """
-    return _get_classes_in_definition_order(TreasureChestLocationRow)
+    eligible: list[type] = []
+    excludes = set(MIMIC_OFFSET_EXCLUDES)
+    for cls in _get_classes_in_definition_order(TreasureChestLocationRow):
+        if cls in excludes:
+            continue
+        blacklist = getattr(cls, "_blacklist", None) or []
+        all_mimics_blocked = all(
+            any(
+                isinstance(b, type) and issubclass(m, b)
+                for b in blacklist
+            )
+            for m in MIMIC_PRIZES
+        )
+        if all_mimics_blocked:
+            continue
+        eligible.append(cls)
+    return eligible
 
 
 def _get_invisible_flag_locations() -> list[type]:
@@ -214,6 +266,64 @@ def _get_invisible_flag_locations() -> list[type]:
     return _get_classes_in_definition_order(InvisibleFlagLocation)
 
 
+def _get_boss_star_piece_locations() -> list[type]:
+    """Return one StarPieceLocation per BOSS_LOCATIONS entry (matched by ``_parent``).
+
+    The list is parallel to BOSS_LOCATIONS so star piece assignments can
+    rotate in lockstep with boss-prize assignments. Locations without a
+    ``_parent`` (e.g. StarHillStarPiece) are excluded. Bosses without a
+    matching star piece location are skipped (none in current data).
+    """
+    by_parent: dict[type, type] = {}
+    for cls in _get_classes_in_definition_order(StarPieceLocation):
+        parent = getattr(cls, "_parent", None)
+        if parent is None:
+            continue
+        if parent not in by_parent:
+            by_parent[parent] = cls
+    return [by_parent[boss] for boss in BOSS_LOCATIONS if boss in by_parent]
+
+
+def compute_star_piece_assignments(
+    offset: int, total_star_pieces: int
+) -> list[tuple[type, type]]:
+    """Pick ``total_star_pieces`` (location, prize) pairs for the given offset.
+
+    All picks within a single offset are in distinct WorldAreaEnums. Across
+    all 47 offsets every boss-fight star piece location is picked at least
+    once: with len(locs)==47 (prime), any non-zero stride is coprime, so each
+    of the N pickers cycles through every index as offset varies.
+
+    Returns: list of (star_piece_location_class, star_piece_prize_class) tuples
+    with length min(total_star_pieces, len(locs)).
+    """
+    locs = _get_boss_star_piece_locations()
+    n = len(locs)
+    if total_star_pieces <= 0 or n == 0:
+        return []
+    n_pick = min(total_star_pieces, n, len(STAR_PIECE_PRIZES))
+    stride = max(1, n // n_pick)
+    selected: list[tuple[type, type]] = []
+    used_areas: set = set()
+    used_indices: set[int] = set()
+    for k in range(n_pick):
+        base = (offset + k * stride) % n
+        for w in range(n):
+            idx = (base + w) % n
+            if idx in used_indices:
+                continue
+            loc = locs[idx]
+            area = getattr(loc, "_world_area", None)
+            if area is not None and area in used_areas:
+                continue
+            selected.append((loc, STAR_PIECE_PRIZES[k]))
+            if area is not None:
+                used_areas.add(area)
+            used_indices.add(idx)
+            break
+    return selected
+
+
 def get_ordered_lists() -> dict:
     """Return a dict with ordered lists of class name strings.
 
@@ -221,6 +331,7 @@ def get_ordered_lists() -> dict:
     mimic_prizes, invisible_flags, flag_rooms
     """
     invisible_flags = _get_invisible_flag_locations()
+    star_piece_locs = _get_boss_star_piece_locations()
     return {
         "boss_locations": [cls.__name__ for cls in BOSS_LOCATIONS],
         "boss_prizes": [cls.__name__ for cls in BOSS_PRIZES],
@@ -231,11 +342,23 @@ def get_ordered_lists() -> dict:
         "flag_rooms": [
             sorted(list(getattr(cls, "_rooms", None) or [])) for cls in invisible_flags
         ],
+        "star_piece_locations": [cls.__name__ for cls in star_piece_locs],
+        "star_piece_world_areas": [
+            getattr(cls, "_world_area", None).name
+            if getattr(cls, "_world_area", None) is not None
+            else None
+            for cls in star_piece_locs
+        ],
+        "star_piece_prizes": [cls.__name__ for cls in STAR_PIECE_PRIZES],
     }
 
 
-def compute_offset_assignments(offset: int, mimic_offset: int | None = None) -> dict:
-    """Compute offset-based assignments for bosses, slots, mimics, and flags.
+def compute_offset_assignments(
+    offset: int,
+    mimic_offset: int | None = None,
+    total_star_pieces: int = 0,
+) -> dict:
+    """Compute offset-based assignments for bosses, slots, mimics, flags, and star pieces.
 
     Args:
         offset: The offset value to apply for rotating boss/slot/flag assignments.
@@ -244,6 +367,9 @@ def compute_offset_assignments(offset: int, mimic_offset: int | None = None) -> 
             undeduplicated chest list, successive values of ``mimic_offset``
             slide each mimic fight through every individual chest (including
             chests that share a room with another testable chest).
+        total_star_pieces: Number of star pieces to pre-place at boss-fight
+            star piece locations (0..7, from the TotalStarPieces flag). 0
+            disables star piece overrides.
 
     Returns:
         A dict with:
@@ -251,10 +377,12 @@ def compute_offset_assignments(offset: int, mimic_offset: int | None = None) -> 
         - slots: list of 3 (chest_name, slots_prize_name) tuples
         - mimics: list of 3 (chest_name, mimic_prize_name) tuples
         - flags: list of 3 flag_name strings
+        - star_pieces: list of (star_piece_location_name, star_piece_prize_name) tuples
         - boss_overrides: dict of {location_name: prize_class} for backend
         - slot_overrides: list of (chest_class, slots_prize_class) for backend
         - mimic_overrides: list of (chest_class, mimic_prize_class) for backend
         - flag_classes: list of 3 flag location classes for backend
+        - star_piece_overrides: list of (star_piece_location_class, star_piece_prize_class) for backend
     """
     if mimic_offset is None:
         mimic_offset = offset
@@ -331,13 +459,20 @@ def compute_offset_assignments(offset: int, mimic_offset: int | None = None) -> 
                 picked_indices.add(idx)
                 break
 
+    star_piece_overrides = compute_star_piece_assignments(offset, total_star_pieces)
+    star_piece_assignments = [
+        (loc.__name__, prize.__name__) for loc, prize in star_piece_overrides
+    ]
+
     return {
         "bosses": boss_assignments,
         "slots": slot_assignments,
         "mimics": mimic_assignments,
         "flags": flag_assignments,
+        "star_pieces": star_piece_assignments,
         "boss_overrides": boss_overrides,
         "slot_overrides": slot_overrides,
         "mimic_overrides": mimic_overrides,
         "flag_classes": flag_classes,
+        "star_piece_overrides": star_piece_overrides,
     }

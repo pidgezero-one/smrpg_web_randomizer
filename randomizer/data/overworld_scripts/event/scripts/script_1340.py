@@ -36,7 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	StoreItemAmountTo7000(ElderKeyItem),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1340_apply_tile_mod_6"]),
-	RunDialog(dialog_id=DI2801_NEED_THE_KEY, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI3068_NEED_THE_ELDER_KEY, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	Return(),
 	Pause(5),
 	PlaySound(sound=SO016_OPEN_DOOR, channel=6),

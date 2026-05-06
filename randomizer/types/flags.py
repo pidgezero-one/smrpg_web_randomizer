@@ -655,16 +655,16 @@ class CharacterSpellElements(BooleanFlag):
 
 # ✅
 class UncapSuperJumps(BooleanFlag):
-    _name = "Uncap Super Jumps"
+    _name = "Allow more than 100 Super Jumps"
     _description = "If enabled, you can do more than 100 Super Jumps per turn."
     _id = "uncap"
 
 
 class UncapMaxFP(BooleanFlag):
-    _name = "Uncap maximum FP"
-    _description = """If enabled, allies' max FP threshold can exceed 99 (capped at 255).
+    _name = "Allow more than 99 FP"
+    _description = """If enabled, max FP will be 255 instead of 99.
 <br>
-<br>Note: HUD displays may visually overflow when FP exceeds 99."""
+<br>Note: This may cause some minor graphical glitches and artifacting in battle."""
     _id = "uncapfp"
 
 

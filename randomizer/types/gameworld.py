@@ -19,12 +19,7 @@ from randomizer.data.nmi_hook import (
     HOOK_ROM_OFFSET,
     NMITIMEN_PATCHES,
 )
-from randomizer.data.sprites.overworld_map import (
-    BOWSER_OVERWORLD,
-    GENO_OVERWORLD,
-    MALLOW_OVERWORLD,
-    TOADSTOOL_OVERWORLD,
-)
+from randomizer.patches import asm
 from randomizer.data.variables.sprite_palette_names import (
     SPAL293_ABXY_ACTION_BUTTON_SELECTION_IN_BATTLE,
     SPAL379_ABXY_BUTTONS_FROM_BOWYER_S_BUTTON_LOCK,
@@ -1225,9 +1220,13 @@ class GameWorld:
             except PlacementException as e:
                 # Restore rooms to pre-shuffle state before retrying
                 self.rooms = deepcopy(rooms_snapshot)
-                # Reset dummy indices so _pre_allocate_dummy_npcs reruns with fresh rooms
+                # Reset dummy indices so _pre_allocate_dummy_npcs reruns with fresh rooms.
+                # Also reset _invisible_item_locations so set_locations re-runs the
+                # flag-NPC swap loop — otherwise the freshly re-added dummies stay at
+                # (0, 0, 0) and the chosen flag NPCs never get written to room data.
                 self._slot_dummy_indices = None
                 self._flag_dummy_index = None
+                self._invisible_item_locations = None
                 if self.settings.debug_mode:
                     print(f"[DEBUG] Placement failed with {e.unplaced_count} unplaced items, retrying...")
 
@@ -1838,15 +1837,9 @@ class GameWorld:
             patch.add_data(p[0], p[1], source="sprites")
         progress += 3
 
-        # World map
-        if self.overworld_character.ally.index == 1:
-            patch.add_data(0x3E90AA, TOADSTOOL_OVERWORLD)
-        elif self.overworld_character.ally.index == 2:
-            patch.add_data(0x3E90AA, BOWSER_OVERWORLD)
-        elif self.overworld_character.ally.index == 3:
-            patch.add_data(0x3E90AA, GENO_OVERWORLD)
-        elif self.overworld_character.ally.index == 4:
-            patch.add_data(0x3E90AA, MALLOW_OVERWORLD)
+        # World map / file-select / overworld walker character overrides
+        # are applied below in the non_mario_character block once we've
+        # computed `starter` and `i`.
 
         # fuck you
         if random.randint(0, 100) < 10:
@@ -1901,181 +1894,29 @@ class GameWorld:
         credits_data = update_credits(self)
         patch.add_dict(credits_data)
 
-        # Misc
+        # Always-on byte patches.
+        patch.add_dict(asm.key_item_inventory.get_patch(), source="key_item_inventory")
 
-        # No EXP
-        if self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE) or self.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE) or self.settings.debug_mode:
-            patch.add_data(0x39BC44, [0x00] * 32)
-
-        # Expand key item inventory size
-        patch.add_data(0xC305, 0x1E)
-        patch.add_data(0xC37F, 0x1E)
-        patch.add_data(
-            0xC3B5, 0x1E
-        )  # TODO might need to be larger than 0x20, recount key items
-        patch.add_data(0xC302, [0xF0, 0xF8])
-        patch.add_data(0xC37C, [0xF0, 0xF8])
-        patch.add_data(0xC3B2, [0xF0, 0xF8])
-        patch.add_data(0x2BC80, [0xF0, 0xF8, 0x7F])
-        patch.add_data(0x2BC95, [0xF0, 0xF8, 0x7F])
-        patch.add_data(0x2BCA1, [0xF0, 0xF8, 0x7F])
-        patch.add_data(0x2BCB6, [0xF0, 0xF8, 0x7F])
-        patch.add_data(0x35308, [0xF0, 0xF8, 0x7F])
+        # Flag-gated byte patches.
+        if (self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE)
+                or self.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE)
+                or self.settings.debug_mode):
+            patch.add_dict(asm.no_exp.get_patch(), source="no_exp")
 
         if self.settings.isflag_enabled(ShowEquips):
-            patch.add_data(0x033B6D, bytes([0x29, 0x1F, 0xEA]))
+            patch.add_dict(asm.show_equips.get_patch(), source="show_equips")
 
         if self.settings.isflag_enabled(UncapMaxFP):
-            # Add7000ToMaxFP handler ($C0:C4CC): replace 99-cap with 255-cap.
-            # BCS catches 8-bit ADC overflow so a wrap cannot regress max FP.
-            patch.add_data(0xC4CC, [0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF])
-            # Battle bump-max-FP handler ($C2:C14F): same fix, identical bytes.
-            patch.add_data(0x2C14F, [0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF])
-            # X-menu per-character FP display ($C3:1621-$C3:163E -- the
-            # actual visible "Flowers" line in the X-menu): switch
-            # 2-digit print ($C3:78D2) -> 3-digit print ($C3:78EC) and
-            # shift the LDX dest pointer 2 tiles left ($4630 -> $462C)
-            # to absorb the leading-blank padding from the cur 3-digit
-            # converter while keeping max-ones at vanilla $4638 so it
-            # right-aligns with the "Coins" line below. New layout:
-            # cur h/t/o at $462C/$462E/$4630, slash at $4632, max
-            # h/t/o at $4634/$4636/$4638.
-            patch.add_data(0x31622, [0x2C])
-            patch.add_data(0x3162F, [0xEC])
-            patch.add_data(0x3163F, [0xEC])
-            # X-menu party-total "Flowers" line at $C3:35FF: cur and max
-            # also use the 2-digit converter at $C3:78D2 (call sites at
-            # $C3:3605 / $C3:3615), with the field starting at tilemap
-            # slot $44B2. The inner routine has no separate LDX for the
-            # slash or max -- both ride on $62, which each subroutine
-            # advances (2-digit converter += 4, slash writer += 2,
-            # 3-digit converter += 6). Switching both converters to
-            # 3-digit widens the field, so we shift the LDX start
-            # 4 tiles left ($44B2 -> $44AA) to bring the digits inside
-            # the menu box (the menu 3-digit converter at $C3:78EC may
-            # not suppress leading zeros the same way the battle
-            # converter does, and the box was sized for vanilla 5-tile
-            # "TT/TT" -- shifting the start past where vanilla
-            # "Flowers " ended is required to fit "TTT/TTT" in 7 tiles
-            # without overflowing the right edge). New layout: cur
-            # hundreds/tens/ones at $44AA/$44AC/$44AE, slash at $44B0,
-            # max hundreds/tens/ones at $44B2/$44B4/$44B6. Writes hit
-            # the BG2 tilemap mirror; the "Flowers" label sits on a
-            # different BG layer so left-shift past the visual label
-            # boundary does not corrupt it.
-            patch.add_data(0x335EB, [0xAA])
-            patch.add_data(0x33606, [0xEC])
-            patch.add_data(0x33616, [0xEC])
-            # X-menu item-submenu Flowers display ($C3:2CC0) -- third
-            # call site that targets the same shared inner subroutine
-            # ($C3:35FF), so the JSR target swaps above already make
-            # this site emit 3-digit. Shift the LDX dest pointer 2
-            # tiles left ($4694 -> $4690) so max-ones lands at vanilla
-            # $469C (touching the box's right border, with no gap).
-            # A 4-tile shift over-corrected (left a 16-px gap to the
-            # border AND clipped 'ers' off the 'Flowers' label); a
-            # 2-tile shift only clips the 's' when cur < 100 (leading
-            # blank lands on it) but keeps the digits flush right.
-            # New layout: cur h/t/o at $4690/$4692/$4694, slash at
-            # $4696, max h/t/o at $4698/$469A/$469C.
-            patch.add_data(0x32CC1, [0x90])
-            # Battle spell-menu FP header (bank $C1) -- widen to 3 digits.
-            # Vanilla renderer at $C1:62F6-$C1:630F (26 bytes) writes 2-digit
-            # cur/max via JSR $C1:6378 ("F P _ _ _ _ TT/TT"). The 11-tile
-            # window $7020-$7034 is shared with the spell list (which begins
-            # at $7040, only 6 bytes past $7034) and with the per-spell FP
-            # cost renderer (which writes $7024/$7026 each frame).
-            #
-            # This implementation reuses the battle HP 3-digit converter at
-            # $C1:5D6A (which writes 3 tiles via $7000+Y with leading-zero
-            # suppression and $2400 attribute prefix) via a 6-byte trampoline
-            # at $C1:9564 that masks A's high byte first ($FA0C/$FA0D are
-            # 1-byte values; m16 LDA reads the adjacent byte as garbage in
-            # the high half). The renderer is rewritten in-place at $C1:62F6
-            # in exactly 26 bytes, ending without RTS to preserve the
-            # fall-through to the F-tile animator at $C1:6310.
-            #
-            # New layout in the existing 11-tile $7020-$7034 window:
-            #   $7020 F | $7022 P | $7024-$7026 spell cost (untouched)
-            #   $7028-$702C cur FP (3 digits) | $702E '/' (static)
-            #   $7030-$7034 max FP (3 digits)
-            # Highest write is $7034 -- vanilla parity, no DMA changes.
-            # Per-spell FP cost renderer at $C1:635B is NOT modified
-            # because spell costs are capped at 99 in the spell stat
-            # table even under UncapMaxFP.
-            #
-            # KNOWN LIMITATIONS (accepted tradeoffs vs alternative
-            # implementations that produced worse artifacts):
-            # 1. STZ $8C clobbers the dialog-text tilemap cursor used by
-            #    $C1:25D2 / $C1:2610. The "Hold Y for ..." battle-start
-            #    dialog renders with truncated text and an unexpected
-            #    right-edge tile pattern.
-            # 2. A small fragment of the A-button HUD sprite occasionally
-            #    appears in the wrong place during action selection
-            #    (likely a downstream effect of $8C clobber on HUD
-            #    sprite-table state).
-            # Two earlier attempts to fix these (relocating the renderer
-            # with $8C save/restore, and writing a custom converter using
-            # only $80/$86 with save/restore) introduced more visible
-            # accumulating tile and sprite artifacts during menu
-            # transitions and spell casting. Without bsnes runtime
-            # tracing we cannot pinpoint the exact mechanism, so the
-            # in-place trampoline approach is the best static-analysis
-            # option for now. Followup: instrument with bsnes to trace
-            # what reads $8C / $86 / $80 at the moment of artifact
-            # appearance.
+            patch.add_dict(asm.uncap_max_fp.get_patch(), source="uncap_max_fp")
 
-            # Trampoline at $C1:9564 (free space, 2049 bytes available):
-            #   AND #$00FF                -- mask high byte from m16 LDA
-            #   JMP $5D6A                 -- tail-call HP 3-digit converter
-            patch.add_data(
-                0x19564,
-                [0x29, 0xFF, 0x00, 0x4C, 0x6A, 0x5D],
-            )
-            # Renderer at $C1:62F6 (in-place 26-byte replacement):
-            #   REP #$30                  -- m16/x16
-            #   STZ $8C                   -- partition offset = 0; $5D6A
-            #                                does STA $7000,X with X = Y+$8C,
-            #                                so $8C must be the offset from
-            #                                $7000 (not absolute address).
-            #   LDA $FA0C / LDY #$0028    -- cur FP value, dest offset
-            #   JSR $9564                 -- emit 3 cur digits at $7028+
-            #   LDA $FA0D / LDY #$0030    -- max FP value, dest offset
-            #   JSR $9564                 -- emit 3 max digits at $7030+
-            #   NOP x4                    -- pad to 26 bytes; falls through
-            #                                to $C1:6310 (F-tile animator).
-            patch.add_data(
-                0x162F6,
-                [0xC2, 0x30,
-                 0x64, 0x8C,
-                 0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, 0x64, 0x95,
-                 0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0x64, 0x95,
-                 0xEA, 0xEA, 0xEA, 0xEA],
-            )
-            # Static MVN tilemap source at $C1:639D (22 bytes, same length):
-            # Move '/' from byte 16 ($7030) to byte 14 ($702E) and zero the
-            # digit slots so they idle as blanks before the renderer runs.
-            #   $7020 F | $7022 P | $7024-$702C blanks | $702E '/'
-            #   $7030-$7034 blanks
-            patch.add_data(
-                0x1639D,
-                [0x14, 0x24, 0x15, 0x24, 0x00, 0x24, 0x00, 0x24,
-                 0x00, 0x24, 0x00, 0x24, 0x00, 0x24, 0x16, 0x24,
-                 0x00, 0x24, 0x00, 0x24, 0x00, 0x24],
-            )
-
-        # Battle music IDs - write 8 selected music IDs to the music pointer table
         if self.selected_music_ids:
-            patch.add_data(0x029F51, bytes(self.selected_music_ids))
+            patch.add_dict(
+                asm.selected_music.get_patch(self.selected_music_ids),
+                source="selected_music",
+            )
 
         if self.settings.isflag_enabled(HoldB):
-            # hold B to advance
-            patch.add_data(0x5D5E, [0x20, 0x54, 0xF1])
-            patch.add_data(0x15627, [0x22, 0x90, 0xFE, 0xC2, 0x89, 0x80, 0x00])
-            patch.add_data(0xF154, [0x22, 0x90, 0xFE, 0xC2, 0x60])
-            patch.add_data(
-                0x2FE90, [0xAF, 0x14, 0x30, 0x00, 0x0F, 0x11, 0x30, 0x00, 0x6B]
-            )
+            patch.add_dict(asm.hold_b.get_patch(), source="hold_b")
 
         if self.settings.isflag_enabled(JapaneseABXY):
             self.sprite_palettes.get_palette(
@@ -2122,141 +1963,25 @@ class GameWorld:
             )
 
         starter = cast(CharacterPrize, self.get_location(StartingCharacter1).prize).ally
-        i = self.overworld_character.ally.index
         self.file_select_character = starter.name
 
-        # Change file select character graphic, if not Mario.
-        # Always going to be your starting character, regardless of overworld presence
-        if starter.index != 0:
-            addresses = [0x34757, 0x3489A, 0x34EE7, 0x340AA, 0x3501E,
-                         0x34D9A, 0x3500E, 0x35016]
-            for addr, value in zip(addresses, [1, 2, 1, 0, 2,
-                                               2, 2, 3]):
-                patch.add_data(addr, SPR0031_ALT_PROTAGONIST_1 + value)
-        
-        # Change overworld character if not Mario.
-        if i != 0:
-            patch.add_data(0x9B86, SPR0031_ALT_PROTAGONIST_1)
-            # The engine has a whitelist of known sprite bases at $9BAA-$9BC2
-            # that controls creation of additional sprites (jump, poses, etc.).
-            # Repurpose the base-49 check to recognize base 31 with count 6.
-            patch.add_data(0x9BBF, bytes([SPR0031_ALT_PROTAGONIST_1]))  # CMP #$1F
-            patch.add_data(0x9BC1, bytes([0x02]))  # BEQ $9BC4 (count=6 handler)
-            # Fix clone protagonist handler at $94AF: set sprite base to
-            # protagonist's base instead of hardcoding 0 (Mario).
-            # Original: STZ $70; STZ $71; STZ $7F; STZ $1F (8 bytes)
-            # New:      LDA #base; STA $70; STZ $71; STZ $1F (8 bytes)
-            # $7F is unused by downstream subroutines; $1F is read at $94EE.
-            patch.add_data(0x94AF, bytes([
-                0xA9, SPR0031_ALT_PROTAGONIST_1,  # LDA #$1F
-                0x85, 0x70,                        # STA $70
-                0x64, 0x71,                        # STZ $71
-                0x64, 0x1F,                        # STZ $1F
-            ]))
-            # Note: $F5C0 is a SOUND dispatch routine (not sprite processing).
-            # $17BE and $1A56 pass sound command type $00 to play water SFX —
-            # do NOT patch those bytes.
+        # World map sprite + file-select graphic + overworld walker hooks
+        # + file-select name strings — all character-display patches in
+        # one place.
+        patch.add_dict(
+            asm.non_mario_character.get_patch(
+                starter_index=starter.index,
+                overworld_index=self.overworld_character.ally.index,
+                file_select_names=self.file_select_names,
+            ),
+            source="non_mario_character",
+        )
 
-            # Fix protagonist fade-in sprite corruption for tilemap-mold
-            # sprites. Bowser's BOWSER_969 uses gridplane=False molds and the
-            # protagonist's overworld sprite spans TWO sprite IDs (sprite 31
-            # for the top half, sprite 32 for the bottom half). The partition
-            # ally buffer is sized 2 to allocate VRAM rows for both sprites.
-            #
-            # Bug: the fade-in synchronous tile DMA at
-            #   $C0:8554 -> $C0:861E -> $C0:8659 -> $C0:A2B5
-            # uploads only sprite-table entry +0 (sprite 31, top half) into
-            # the first chunk of VRAM. Sprite 32's rows are left as garbage,
-            # so OAM tiles that read from those rows show whatever was there
-            # (the bottom half of sprite 31, since both halves share the same
-            # bank). Visible as "top of sprite overwritten by bottom" until
-            # the player takes one step.
-            #
-            # The per-step "$69" command consumer at $C0:1370-1390 runs the
-            # upload routine but with $74 = 1 (from $10,X & 7), causing
-            # $C0:A2B5 -> $C0:9CAA to compute sprite-table-entry pointer at
-            # +1 instead of +0. That uploads sprite 32 into the second VRAM
-            # chunk, restoring the bottom half. The only writer of $10,X =
-            # $69 in the entire ROM is at $C0:1979-197B inside the
-            # VramStore-7 movement handler $C0:18D7, called by the position
-            # update path $C0:1831 during walking. We synthesize that command
-            # at fade-in completion by hooking $C0:83CE (called by every
-            # fade-in dispatcher: $821F / $81F6 / $8222) and tail-calling
-            # $C0:1908 (the post-gate body of $18D7) for the protagonist.
-            #
-            # Side effect to neutralize: the $69 consumer at $C0:1370-1374
-            # writes $12,$6000 = $C9 = bits 7/6/3 all set. Those bits block
-            # the walk-cycle handler at $C0:1336 (bit 3 → BNE $139F skip
-            # animation), $C0:133A (bit 6 → BNE $1355 preset), and $C0:1344
-            # (bit 7 → BMI $1359 preset). Walking input continues to advance
-            # the entity's position (sliding) but no walk-cycle frame
-            # advances. Jumping clears the taint via the landing handler at
-            # $C0:186E writing $10,X = $80 → $C0:9EBF walk dispatch →
-            # $C0:9F60 ends with AND #$07; STA $12,X. We replicate that
-            # clear by hooking the consumer's $C0:1395: JSR $9F9A — the
-            # bit-3 path's mold loader entry — to a wrapper that calls
-            # $9F9A then masks $12,X &= $07 if X == $6000 (protagonist).
-            # NPCs sharing the bit-3 dispatch are unaffected by the gating
-            # CPX check.
-            #
-            # Wrapper byte map at $C0:8140 (28 bytes total, fits in the
-            # 39-byte tail reserved by the packet-allocation patch above):
-            #   $C0:8140-$C0:814C (13 bytes): $C0:83CE entry hook wrapper
-            #   $C0:814D-$C0:815B (15 bytes): $C0:1395 consumer hook wrapper
-            #
-            # Bowser-only (ally.index == 2). Mallow/Geno/Toadstool overworld
-            # sprites are all gridplane=True and load cleanly via the
-            # vanilla single-entry path — applying these hooks for them
-            # would unnecessarily redirect $C0:1395 (used by all bit-3
-            # consumers, gated to protagonist only by the CPX) and queue
-            # an extra $10,X=$69 at fade-in, both of which they don't need
-            # and could regress.
-            if i == 2:
-                patch.add_data(0x008140, bytes([
-                    # Entry hook for $C0:83CE — runs once per fade-in
-                    0x9C, 0x09, 0x01,   # STZ $0109     ; displaced from $C0:83CE
-                    0x20, 0xD1, 0x83,   # JSR $83D1     ; rest of original $83CE
-                    0xA2, 0x00, 0x60,   # LDX #$6000    ; protagonist slot (X16)
-                    0x20, 0x08, 0x19,   # JSR $1908     ; $18D7 post-gate → $10,X = $69
-                    0x60,               # RTS
-
-                    # Consumer hook for $C0:1395 — runs every frame the consumer
-                    # takes the bit-3 path. Calls original $9F9A then clears
-                    # $12,X upper bits ONLY for the protagonist.
-                    0x20, 0x9A, 0x9F,   # JSR $9F9A     ; original mold setup
-                    0xE0, 0x00, 0x60,   # CPX #$6000    ; protagonist? (X16 assumed)
-                    0xD0, 0x06,         # BNE +6        ; not protagonist → skip clear
-                    0xB5, 0x12,         # LDA $12,X
-                    0x29, 0x07,         # AND #$07      ; clear bits 7/6/5/4/3
-                    0x95, 0x12,         # STA $12,X     ; $12,X = low 3 bits only
-                    0x60,               # RTS
-                ]))
-                # Hook $C0:83CE entry → wrapper at $C0:8140
-                patch.add_data(0x0083CE, bytes([
-                    0x4C, 0x40, 0x81,   # JMP $8140     ; replaces STZ $0109
-                ]))
-                # Hook consumer's $C0:1395 → wrapper at $C0:814D (replaces
-                # JSR $9F9A; same 3-byte length, drop-in JSR target swap)
-                patch.add_data(0x001395, bytes([
-                    0x20, 0x4D, 0x81,   # JSR $814D     ; was JSR $9F9A
-                ]))
-
-        for i, name in enumerate(self.file_select_names):
-            addr = 0x3EF528 + (i * 7)
-            val = name.encode().ljust(7, b"\x00")
-            patch.add_data(addr, val)
-
-        # Fix invincibility dispel: prevent Group Hug/Therapy from clearing
-        # the Red Essence invincibility timer when dispelling status ailments
         if self.settings.isflag_enabled(FixInvincibility):
-            from ..patches.invincibility_fix import HOOK_OFFSET, HOOK_BYTES, PATCH_OFFSET, PATCH_BYTES
-            patch.add_data(HOOK_OFFSET, HOOK_BYTES)
-            patch.add_data(PATCH_OFFSET, PATCH_BYTES)
+            patch.add_dict(asm.invincibility_fix.get_patch(), source="invincibility_fix")
 
-        # Debug mode: Set starting FP and max FP to 99
         if self.settings.debug_mode:
-            patch.add_data(0x3A00DD, bytes([99]))  # Starting current FP
-            patch.add_data(0x3A00DE, bytes([99]))  # Starting maximum FP
+            patch.add_dict(asm.debug_fp.get_patch(), source="debug_fp")
 
         # Palettes
         patch.add_dict(self.sprite_palettes.render())
@@ -2265,237 +1990,37 @@ class GameWorld:
             if isinstance(s, CharacterSpell):
                 patch.add_dict(s.palette_patch)
 
-        # Make invaded mushroom kingdom's doorway chest accessible:
-        # Room 325 shares LevelMap 17 / solidity map 5 with room 17.
-        # Solidity mod pointer table starts at 0x1D8DB0 (not 0x1D8DA6).
-        # Room 325's mod 0 data is at 0x1D9823. Overwrite with room 17's
-        # doorframe mod (2×2 at (10,17) with tile 0xC2). Same 8-byte size.
-        patch.add_data(0x1D9823, bytearray([0x0A, 0x11, 0x11, 0xAA, 0xC2, 0xC2, 0xC2, 0xC2]))
+        patch.add_dict(asm.room_325_solidity.get_patch(), source="room_325_solidity")
+        patch.add_dict(asm.star_piece_sprite_fix.get_patch(), source="star_piece_sprite_fix")
+        patch.add_dict(asm.battle_init.get_patch(), source="battle_init")
 
-        # Ending credits star piece sequence #8 hardcodes sprite 388 at $C3/5516
-        # (LDX #$0184; STX $74), which in v9 now lives in the enemy-reserved range
-        # and renders Poundette. Redirect the load to sprite 725 (Geno Redemption).
-        patch.add_data(0x035517, bytes([
-            SPR0725_GENO_REDEMPTION & 0xFF,
-            (SPR0725_GENO_REDEMPTION >> 8) & 0xFF,
-        ]))
-
-        # Battle init: copy overworld party count ($00:303F) to battle party size ($00:0926).                                        
-        # Replaces the linear zero-fill at $C2:A2BD with a loop + party size copy.                                                   
-        # Original: 8 individual STA $7EE0xx instructions (39 bytes).                                                                
-        # New: loop to zero $7EE000-$7EE00E, then SEP/LDA $303F/STA $0926/REP/RTS (31 bytes + 8 NOP).                                
-        patch.add_data(0x02A2BD, bytes([                                                                                             
-            0xA9, 0x00, 0x00,        # LDA #$0000                                                                                    
-            0x8D, 0x24, 0x07,        # STA $0724                                                                                     
-            0xA2, 0x00, 0x00,        # LDX #$0000                                                                                    
-            0x9F, 0x00, 0xE0, 0x7E,  # STA $7EE000,x  (loop)       
-            0xE8,                    # INX                                                                                           
-            0xE8,                    # INX                         
-            0xE0, 0x10, 0x00,        # CPX #$0010                                                                                    
-            0x90, 0xF5,              # BCC loop                                                                                      
-            0xE2, 0x20,              # SEP #$20      
-            0xAD, 0x3F, 0x30,        # LDA $303F                                                                                     
-            0x8D, 0x26, 0x09,        # STA $0926                                                                                     
-            0xC2, 0x20,              # REP #$20      
-            0x60,                    # RTS                                                                                           
-            0xEA, 0xEA, 0xEA, 0xEA, # NOP padding                                                                                    
-            0xEA, 0xEA, 0xEA, 0xEA,                  
-        ]))       
-
-        # Packet allocation patch: allow low-VRAM packets to use the NPC slot
-        # allocation path instead of requiring the extra sprite buffer.
-        #
-        # Vanilla checks packet_id < 8 at SNES C1:9365. We replace with a
-        # JSR to a routine at C1:80C8 that does a range-check against an
-        # allowlist built from `Packet.goes_to_npc_slot_buffer`.
-        #
-        # Source of truth lives on the packet classes in
-        # randomizer/data/packets/packets.py: `ChestPacket` and
-        # `BoosterHillPacket` set the flag to True. To change which packets
-        # take the NPC slot path, edit those class flags or override per
-        # instance — don't maintain a parallel ID list here.
+        # Packet allocation patch — allow low-VRAM packets (those with
+        # ``goes_to_npc_slot_buffer = True``) to use the NPC slot path
+        # instead of the bitmap allocator.
         from ..data.packets.packets import Packet
         npc_slot_packet_ids: set[int] = {
             packet.packet_id
             for packet in self.packets.packets
             if isinstance(packet, Packet) and packet.goes_to_npc_slot_buffer
         }
-
-        # Patch at C1:9365 (6 bytes): replace vanilla
-        #   A5 1C  LDA $1C
-        #   C9 08  CMP #$08
-        #   B0 16  BCS $9381
-        # with
-        #   20 C8 80  JSR $80C8     ; sets carry based on allowlist
-        #   B0 17     BCS $9381     ; not in list → bitmap path ($9547)
-        #   EA        NOP
-        # BCS operand = $9381 - ($9368 + 2) = $17.
-        #
-        # Packets with carry clear continue to the NPC slot allocator at
-        # $95DD; packets with carry set fall through to the bitmap allocator
-        # at $9547. Our routine lives at $C1:80C8 in repurposed debug-string
-        # space — same bank, no cross-bank JSL needed.
-        patch.add_data(0x009365, bytes([
-            0x20, 0xC8, 0x80,              # JSR $80C8     ; lookup packet ID, set carry
-            0xB0, 0x17,                    # BCS $9381     ; not in list → bitmap path
-            0xEA,                          # NOP
-        ]))
-
-        # Routine at C1:80C8 (debug-string area). Inline range-check ASM,
-        # generated from `npc_slot_packet_ids` at patch time — consecutive
-        # IDs collapse into one CMP/BCC/CMP/BCC range test, isolated IDs
-        # become CMP/BEQ. The routine touches only A and flags (no PHP/PHX/
-        # SEP/REP) — same minimal register footprint as the original
-        # vram_size routine, so it can't disturb the surrounding packet
-        # allocator state.
-        #
-        # An earlier version of this patch saved/restored X around a
-        # SEP #$10 to allow indexing a packet-ID list. That extra register
-        # manipulation broke downstream allocation for some chest packets
-        # in some seeds. Inline checks avoid it entirely.
-        #
-        # Source of truth: the `goes_to_npc_slot_buffer` class flag on
-        # `Packet` subclasses (see randomizer/data/packets/packets.py). This
-        # ASM is regenerated each build from `npc_slot_packet_ids` above.
-        def _build_npc_slot_lookup_routine(packet_ids: set[int]) -> bytes:
-            sorted_ids = sorted(packet_ids)
-            assert all(0 <= pid <= 0xFE for pid in sorted_ids), (
-                "Packet IDs in npc_slot_packet_ids must be in [0, 254] "
-                "(255 cannot be in the list — range upper bound would overflow)"
-            )
-
-            # Group consecutive IDs into [lo, hi] runs.
-            runs: list[tuple[int, int]] = []
-            if sorted_ids:
-                start = prev = sorted_ids[0]
-                for x in sorted_ids[1:]:
-                    if x == prev + 1:
-                        prev = x
-                    else:
-                        runs.append((start, prev))
-                        start = prev = x
-                runs.append((start, prev))
-
-            # Sizes: singleton = 4 bytes (CMP/BEQ), range = 8 bytes (CMP/BCC/CMP/BCC).
-            check_sizes = [4 if lo == hi else 8 for lo, hi in runs]
-            prelude_size = 2  # LDA $1C
-            # Each tail does SEC/CLC + LDA $1C + RTS = 4 bytes. The trailing
-            # LDA $1C exists to normalize N/Z flags on exit so callers see the
-            # same flag state vanilla left after `LDA $1C; CMP #$08` (A loaded
-            # from $1C, N reflecting bit 7 of packet_id rather than whatever
-            # the last range-check CMP set). The OLD vram_size routine ended
-            # with LDA $1C for the same reason.
-            miss_pos = prelude_size + sum(check_sizes)
-            hit_pos = miss_pos + 4  # SEC; LDA $1C; RTS = 4 bytes
-
-            buf = bytearray()
-            # Prelude — load packet ID into A. CMPs below all reference $1C
-            # too so the preserved A on exit equals packet ID either way.
-            buf.append(0xA5)
-            buf.append(0x1C)
-
-            # Pre-compute where each check starts so range tests can branch
-            # over their own block to the next check.
-            check_starts = []
-            cur = prelude_size
-            for sz in check_sizes:
-                check_starts.append(cur)
-                cur += sz
-
-            def _signed_byte(off: int, what: str) -> int:
-                assert -128 <= off <= 127, f"{what} branch offset {off} out of 8-bit range"
-                return off & 0xFF
-
-            for i, (lo, hi) in enumerate(runs):
-                if lo == hi:
-                    # CMP #lo / BEQ .hit
-                    buf.append(0xC9)
-                    buf.append(lo)
-                    buf.append(0xF0)
-                    buf.append(_signed_byte(hit_pos - (len(buf) + 1), "BEQ .hit"))
-                else:
-                    # CMP #lo / BCC .next / CMP #(hi+1) / BCC .hit
-                    next_pos = check_starts[i] + 8  # byte after this 8-byte block
-                    buf.append(0xC9)
-                    buf.append(lo)
-                    buf.append(0x90)
-                    buf.append(_signed_byte(next_pos - (len(buf) + 1), "BCC .next"))
-                    buf.append(0xC9)
-                    buf.append(hi + 1)
-                    buf.append(0x90)
-                    buf.append(_signed_byte(hit_pos - (len(buf) + 1), "BCC .hit"))
-
-            assert len(buf) == miss_pos
-            buf.append(0x38)        # SEC          — not in list → bitmap path
-            buf.append(0xA5)        # LDA $1C      — normalize A and N/Z flags
-            buf.append(0x1C)
-            buf.append(0x60)        # RTS
-
-            assert len(buf) == hit_pos
-            buf.append(0x18)        # CLC          — in list → NPC slot path
-            buf.append(0xA5)        # LDA $1C      — normalize A and N/Z flags
-            buf.append(0x1C)
-            buf.append(0x60)        # RTS
-
-            return bytes(buf)
-
-        npc_slot_routine = _build_npc_slot_lookup_routine(npc_slot_packet_ids)
-        # Routine starts at $C1:80C8; the 39-byte tail $C1:8140-$C1:8166 is
-        # reserved for the protagonist fade-in $69-queue stub. Routine has
-        # ($8140 - $80C8) = 120 bytes available.
-        assert len(npc_slot_routine) <= 120, (
-            f"npc_slot lookup routine is {len(npc_slot_routine)} bytes; "
-            f"max 120 (rest of $C1:80C8-$C1:8166 reserved). Reduce "
-            f"npc_slot_packet_ids or split into a separate ROM region."
+        patch.add_dict(
+            asm.packet_allocation.get_patch(npc_slot_packet_ids),
+            source="packet_allocation",
         )
-        patch.add_data(0x0080C8, npc_slot_routine)
 
-        # Room area-layout rewrites (18-byte records at $1D0040 + room_id * 18).
-        # Byte layout matches LAZYSHELL-UPDATED LevelLayer.cs:
-        #   0  map ID  (MAPS panel)
-        #   1  message box (0xFE = {NONE}; non-zero uses ((msg-1)<<1))
-        #   2  mask left (bits 0-6) | lock-scrolling (bit 7)
-        #   3  mask top
-        #   4  mask right
-        #   5  mask bottom
-        #   6  L2 -X shift
-        #   7  L2 +Y shift
-        #   8  L3 -X shift
-        #   9  L3 +Y shift (bits 0-6) | infinite-scrolling (bit 7)
-        #   10 scroll-wrap bits (L1HZ,L1VT,culexA,L2HZ,L2VT,culexB,L3HZ,L3VT)
-        #   11 scroll-sync bits (2 bits per L2HZ/L2VT/L3HZ/L3VT)
-        #   12 L2 auto-scroll (dir bits 3-5, speed bits 0-2, bit 7)
-        #   13 L3 auto-scroll
-        #   14 priority set (bits 0-3) | rippling-water (bit 4)
-        #   15 L3 animation effect (byte-valued per doc_area-layout.txt)
-        #   16 effects-NPC (byte-valued; RoomCollection only writes when != 0,
-        #      so explicitly zeroing here is safe)
-        # RoomCollection.render() otherwise doesn't touch this record.
+        patch.add_dict(asm.room_layouts.get_patch(), source="room_layouts")
 
-        # Room 3 — map 107, priority set 10, mask L=40/T=48/R=63/B=63, rippling pond water on L3
-        patch.add_data(0x1D0076, bytes([
-            0x6B, 0xFE, 0x28, 0x30, 0x3F, 0x3F, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x05, 0x00,
-        ]))
-        # Room 4 — map 13, priority set 10, mask L=40/T=48/R=63/B=63, rippling pond water on L3
-        patch.add_data(0x1D0088, bytes([
-            0x0D, 0xFE, 0x28, 0x30, 0x3F, 0x3F, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x05, 0x00,
-        ]))
-        # Room 50 — map 79 (same as room 154), priority set 0, mask R=63/B=63, talking organ pipes on L3
-        patch.add_data(0x1D03C4, bytes([
-            0x4F, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00,
-        ]))
-        # Room 292 — clone of R496's layout (map 145, priority set 1, effects-NPC
-        # 0x1B = UNKNOWN_1B). R292 is the post-RunStarPieceSequence half of the
-        # R496 ending cutscene; map data is shared with R496. Bytes are R496's
-        # vanilla 18-byte record (read from $1D2320) written at R292's offset
-        # ($1D14C8 = 0x1D0040 + 292*18). 18 bytes, not 17 — final byte stays 0.
-        patch.add_data(0x1D14C8, bytes([
-            0x91, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1B, 0x00,
-        ]))
+        # Belome 3 spell-block + Enduring Brooch ASM hook (always-on).
+        # The blocked-spell list inside the apply-damage helper changes
+        # when InfuseSpellElements is on (those infused spells become
+        # elemental, and Belome 3's rule is to nullify only
+        # NON-elemental spells).
+        patch.add_dict(
+            asm.belome3_brooch.get_patch(
+                infuse_spell_elements=self.settings.isflag_enabled(InfuseSpellElements)
+            ),
+            source="belome3_brooch",
+        )
 
         # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).
         # Enabling NMI ($4200 bit 7) during gameplay causes the vanilla NMI handler
@@ -2509,21 +2034,11 @@ class GameWorld:
         # for rom_offset, _old, new in NMITIMEN_PATCHES:
         #     patch.add_data(rom_offset, bytes([new]))
 
-        # Update ROM title and version.
-        title = "SMRPG-R {}".format(self.seed).ljust(20)
-        if len(title) > 20:
-            title = title[:19] + "?"
-
-        # Add version number on name entry screen.
-        version_text = ("v" + self.version).ljust(10)
-        if len(version_text) > 10:
-            raise ValueError("Version text is too long: {!r}".format(version_text))
-        patch.add_data(0x3EF140, version_text)
-
-        # Add title and major version number to SNES header data.
-        patch.add_data(0x7FC0, title)
-        v = self.version.split(".")
-        patch.add_data(0x7FDB, int(v[0]))
+        # ROM title + version metadata (SNES header + name-entry screen).
+        patch.add_dict(
+            asm.rom_metadata.get_patch(seed=self.seed, version=self.version),
+            source="rom_metadata",
+        )
 
         # Cache the patch for subsequent calls
         self._cached_patch = patch

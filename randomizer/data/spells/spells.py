@@ -1131,21 +1131,11 @@ class BowserCrushSpell(CharacterSpell):
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
-        # BG3 figure palette at ROM 0x3336B4 (relocated by move_spell_gfx).
-        # Vanilla c1-c3 are dark/med/bright gray; c15 is a small dark gray that
-        # may be load-bearing for the engine, so we ONLY rewrite c1-c3 (bytes
-        # 2..7 of the palette, leaving c0 transparent and c4-c15 untouched).
-        # Green tint comes from 0xDD color-math; equipment_setup.py neutralizes
-        # it to FF 05 EE 02 01 for non-JUMP.
-        if self.element == Element.FIRE:
-            shades = [0x600000, 0xA00000, 0xF80000]
-        elif self.element == Element.ICE:
-            shades = [0x000060, 0x0000A0, 0x0000F8]
-        elif self.element == Element.THUNDER:
-            shades = [0x606000, 0xA0A000, 0xF8F800]
-        else:
-            return {}
-        return {0x3336B4 + 2: palette_to_bytes(shades)}
+        # Bowser Crush is a hardware screen effect (HDMA color math against the
+        # BG), not a sprite-palette effect. The visible green tint is generated
+        # per-scanline by the color-math pipeline, so a CGRAM patch can't recolor
+        # it. Element variation is conveyed via sound only.
+        return {}
 
 
 class GenoBeamSpell(CharacterSpell):
@@ -1338,9 +1328,9 @@ class GenoFlashSpell(CharacterSpell):
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
-        # TODO: 0x3DFF10 was the dialogue-box palette, NOT the sun-rays palette.
-        # Real sun palette location still needs to be found via CGRAM diff or
-        # bsnes-plus CGRAM-write watchpoint.
+        # Geno Flash is a hardware screen effect (SEF0000_GENO_FLASH) — the sun
+        # gradient is generated procedurally by the SA-1 color-math HDMA pipeline,
+        # not from a CGRAM palette. Element variation is conveyed via sound only.
         return {}
 
 

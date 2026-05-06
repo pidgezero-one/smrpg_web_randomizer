@@ -34,5 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+    CopyVarToVar(from_var=ITEM_ID, to_var=PRIMARY_TEMP_7000),
+    CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ITEM_ID_SHADOW),
 	JmpToEvent(E3073_ITEM_CHEST)
 ])

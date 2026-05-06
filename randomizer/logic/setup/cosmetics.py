@@ -16,7 +16,7 @@ from ...data.packets import P094_FIRE_SPELL_CHEST, P095_BLUE_SPELL_CHEST, P096_G
 from ...progression.prizes import BowserRecruitmentPrize, GenoRecruitmentPrize, MallowRecruitmentPrize, MarioRecruitmentPrize, ToadstoolRecruitmentPrize
 from randomizer.data.variables.dialog_names import DI1055_SEWER_GATING_TEXT, DI1222_SHAMAN_SALESMAN_NOT_ENOUGH_COINS, DI1223_SHAMAN_SALESMAN_400_COINS, DI1224_SHAMAN_SALESMAN_2ND_PROMPT, DI1227_SHAMAN_SALESMAN_800_COINS, DI1947_LEARN_SPELL_1, DI2109_RAZ_OUTSIDE, DI2112_RAZ_OCCUPIED, DI2114_MARRYMORE_BOSS_NAMES, DI2115_MARRYMORE_SHITPOST, DI2117_MARRYMORE_SHITPOST, DI2119_MARRYMORE_SHITPOST, DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3
 from randomizer.progression.prizelocations import BoosterTowerIndoorBossFight, FinalBossFight, MarrymoreCharacter, SeasideBeachBossFight, VolcanoExitBossFight
-from randomizer.types.flags import BowsersKeepGate, BowsersKeepGating, EXPStarsAnywhere, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
+from randomizer.types.flags import BarrelVolcanoGate, BarrelVolcanoGating, BowsersKeepGate, BowsersKeepGating, EXPStarsAnywhere, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
 from randomizer.types.prize import BossFightPrize, CharacterPrize, SpellPrize
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import (
     ScreenFlashWithDuration,
@@ -446,13 +446,14 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     chapelchar = world.get_location(MarrymoreCharacter).prize
     if isinstance(chapelchar, CharacterPrize) and chapelchar._ally.index == 4:
         world.update_dialog(DI2112_RAZ_OCCUPIED, "RAZ: If there's one thing I know about `MARRYMORE_CHARACTER`, it's that he ALWAYS cries at weddings.[await] The kid can barely make it through a rehearsal without blubbering.")
-        world.update_dialog(DI2114_MARRYMORE_BOSS_NAMES, " `TOWER_BOSS_1`'s fiance had something come up last minute.[await] `TOWER_BOSS_1` almost had to cancel the rehearsal.[await][page]\n It's nice that `MARRYMORE_CHARACTER` is stepping in to help carry it out.[await]")
+        world.update_dialog(DI2114_MARRYMORE_BOSS_NAMES, " `TOWER_BOSS_1`'s fiance had something come up last minute. `TOWER_BOSS_1_GENDER_SUBJECTIVE` almost had to cancel the rehearsal.[await][page]\n It's nice that `MARRYMORE_CHARACTER` is stepping in to help carry it out.[await]")
         world.update_dialog(DI2115_MARRYMORE_SHITPOST, " Does anyone here even know who `TOWER_BOSS_1`'s fiance is?[await][page]\n I thought it was `RANDOM_BOSS_NAME_1`, but I saw `RANDOM_BOSS_GENDER_1_OBJECTIVE` visiting Yo'ster Isle with `RANDOM_BOSS_NAME_4`...[await]")
         world.update_dialog(DI2117_MARRYMORE_SHITPOST, " I'm not even invited to the wedding. I just needed to go for a walk.[await] My Discord has been full of drama since one guy posted ship art of `RANDOM_CHARACTER_NAME` and `RANDOM_BOSS_NAME_5`.[await]")
         world.update_dialog(DI2119_MARRYMORE_SHITPOST, " I heard that `TOWER_BOSS_1` proposed at a gas station. Who DOES that?![await]")
 
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1`", towerboss_name)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1_GENDER_POSSESSIVE`", towerboss_gender[2])
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`TOWER_BOSS_1_GENDER_SUBJECTIVE`", towerboss_gender[0].title())
     
     cc_name = world.allies._allies[chapelchar._ally.index].name if isinstance(chapelchar, CharacterPrize) else "Toad"
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MARRYMORE_CHARACTER`", cc_name)
@@ -494,6 +495,12 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSERS_KEEP_CONDITION`", "with six Star Pieces.")
     else:
         world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSERS_KEEP_CONDITION`", "through the volcano.")
+
+    volcano_cond = world.settings.get_flag(BarrelVolcanoGate).selected
+    if volcano_cond == BarrelVolcanoGating.NIMBUS:
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`VOLCANO_CONDITION`", "while the castle is occupied by\n invaders, we're under strict\n orders to forbid entry.")
+    elif volcano_cond == BarrelVolcanoGating.VALENTINA:
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`VOLCANO_CONDITION`", "you need Valentina's\n permission to enter.")
 
     # Seaside letter
     seasideboss = world.get_location(SeasideBeachBossFight).prize

@@ -41,6 +41,7 @@ script = EventScript([
 		A_SetVRAMPriority(NORMAL_PRIORITY)
 	]),
 	JmpIfBitClear(MAP_MONSTRO_TOWN, ["EVENT_1584_jmp_if_bit_set_6"]),
+	RemoveObjectFromCurrentLevel(NPC_0),
 	RemoveObjectFromCurrentLevel(NPC_3),
 	RemoveObjectFromCurrentLevel(NPC_4),
 	RemoveObjectFromSpecificLevel(NPC_3, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN),

@@ -159,29 +159,11 @@ def set_mines_punch_command(world: GameWorld, boss: BossNPC):
         world.event_scripts.delete_command_by_identifier("inner_mines_boss_shove_animation")
     else:
         collection = boss.animations.mines_punch
-        contact_frame = max(1, collection.contact_frame or 1)  # Ensure at least 1
-        sequence_id = collection.sequence_id
-        sprite_id = boss.base.sprite_id
-        sprite = world.sprites.sprites[sprite_id]
-        num_sequences = len(sprite.animation.properties.sequences)
-        assert sequence_id < num_sequences, (
-            f"Mines punch animation error: {boss.__class__.__name__} references "
-            f"sequence {sequence_id} but sprite {sprite_id} only has {num_sequences} sequences"
-        )
-        sequence = sprite.animation.properties.sequences[sequence_id]
-        boss_pause_length = sequence.total_duration
-        try:
-            
-            final_mold = sequence.frames[-1].mold_id
-        except IndexError:
-            raise Exception(
-                f"Mines punch animation error: {boss.__class__.__name__} references "
-                f"sequence {sequence_id} has {len(sequence.frames)} frames"
-            )
+        contact_frame = collection.contact_frame or 12  # Ensure at least 1
+        boss_pause_length = collection.total_duration
         boss_animation = ActionQueueSync(target=NPC_0, subscript=[
-            A_SetSpriteSequence(index=sequence_id, is_sequence=True, looping=False),
+            A_SetSpriteSequence(index=collection.sequence_id, is_sequence=True, looping=False),
             A_Pause(boss_pause_length),
-            A_SetSpriteSequence(index=final_mold, is_mold=True, is_sequence=True, looping=True)
         ])
         world.event_scripts.replace_command_by_identifier("inner_mines_boss_shove_animation", boss_animation)
     world.event_scripts.replace_subscript_command_by_identifier(

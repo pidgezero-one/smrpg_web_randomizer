@@ -1369,9 +1369,12 @@ def shuffle_prizes(world: GameWorld) -> None:
     # so the pool builder treats mimic/slot/etc. vanilla chests as shuffleable.)
     if world.settings.debug_mode and world.settings.prize_offset is not None:
         from randomizer.debug.offset_preview import compute_offset_assignments
+        from randomizer.types.flags import TotalStarPieces
+        total_sp = world.settings.get_flag(TotalStarPieces).value
         offset_result = compute_offset_assignments(
             world.settings.prize_offset,
             mimic_offset=world.settings.mimic_offset,
+            total_star_pieces=total_sp,
         )
 
         # Boss overrides: {location_class_name: prize_class}
@@ -1431,6 +1434,26 @@ def shuffle_prizes(world: GameWorld) -> None:
             for tier_list in pool.values():
                 for i, item in enumerate(tier_list):
                     if type(item) == mimic_prize_cls:
+                        tier_list.pop(i)
+                        pulled_count -= 1
+                        removed = True
+                        break
+                if removed:
+                    break
+
+        # Star piece overrides: [(star_piece_location_class, star_piece_prize_class), ...]
+        # Lock TotalStarPieces star pieces to specific boss-fight star piece locations
+        # so the offset slider also rotates star piece placements deterministically.
+        for sp_loc_cls, sp_prize_cls in offset_result["star_piece_overrides"]:
+            for loc in world.locations.values():
+                if isinstance(loc, sp_loc_cls):
+                    loc.set_prize(sp_prize_cls())
+                    break
+            # Remove one instance of this prize class from the pool
+            removed = False
+            for tier_list in pool.values():
+                for i, item in enumerate(tier_list):
+                    if type(item) == sp_prize_cls:
                         tier_list.pop(i)
                         pulled_count -= 1
                         removed = True

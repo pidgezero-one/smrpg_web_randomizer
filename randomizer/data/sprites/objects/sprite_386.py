@@ -630,7 +630,7 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=4, mold_id=9),
                         AnimationSequenceFrame(duration=2, mold_id=10),
                         AnimationSequenceFrame(duration=4, mold_id=11),
-                    ]
+                    ], contact_frame=6
                 ),
                 AnimationSequence(
                     frames=[
@@ -640,7 +640,7 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=4, mold_id=9),
                         AnimationSequenceFrame(duration=2, mold_id=10),
                         AnimationSequenceFrame(duration=4, mold_id=11),
-                    ]
+                    ], contact_frame=5
                 ),
                 AnimationSequence(
                     frames=[
@@ -659,6 +659,16 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=4, mold_id=16),
                         AnimationSequenceFrame(duration=4, mold_id=15),
                     ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=10),
+                        AnimationSequenceFrame(duration=4, mold_id=11),
+                        AnimationSequenceFrame(duration=2, mold_id=10),
+                        AnimationSequenceFrame(duration=4, mold_id=9),
+                        AnimationSequenceFrame(duration=2, mold_id=10),
+                        AnimationSequenceFrame(duration=4, mold_id=11),
+                    ], contact_frame=3
                 ),
             ]
         )

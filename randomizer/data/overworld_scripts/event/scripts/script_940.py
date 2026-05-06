@@ -38,7 +38,8 @@ script = EventScript([
 		A_Pause(20),
 		A_SetSequenceSpeed(NORMAL),
 		A_SetSpriteSequence(index=4, is_sequence=True, looping=False, identifier="statue_keeper_flustered_1"),
-		A_Pause(45)
+		A_Pause(45, identifier="statue_keeper_flustered_1_pause"),
+		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True),
 	], identifier="statue_keeper_flustered_aq"),
 	Return()
 ])

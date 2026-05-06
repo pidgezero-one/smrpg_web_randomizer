@@ -126,7 +126,7 @@ class Room(RoomBase):
         for state in self.extra_sprite_actions:
             if state not in ally._sprites_primary:
                 continue
-            prop_id, offset, is_mold = ally._sprites_primary[state]
+            offset, prop_id, is_mold = ally._sprites_primary[state]
             if offset >= PROTAGONIST_SPRITE_RANGE:
                 continue
             sprite = get_protagonist_sprite(world, ally.index, offset)

@@ -36,6 +36,18 @@ FLAME_HIT_SOUND_BY_ELEMENT = {
     Element.JUMP: S0095_BOWSERS_CRUSHER,
 }
 
+FLASH_HIT_SOUND_BY_ELEMENT = {
+    Element.ICE: S0103_CRYSTAL_HITS,
+    Element.THUNDER: S0078_TIMED_STAT_BOOST,
+    Element.JUMP: S0095_BOWSERS_CRUSHER,
+}
+
+CRUSH_HIT_SOUND_BY_ELEMENT = {
+    Element.FIRE: S0032_FIRE_BURN,
+    Element.ICE: S0103_CRYSTAL_HITS,
+    Element.THUNDER: S0100_ELECTROSHOCK_SPARKS,
+}
+
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
 
@@ -104,13 +116,11 @@ def apply_equipment_settings(world: GameWorld) -> None:
                     RED if spell.element == Element.FIRE else
                     WHITE if spell.element == Element.THUNDER else YELLOW
                 )
-                if spell.element != Element.JUMP:
-                    # Neutralize green color-math tint for non-JUMP elements;
-                    # BowserCrushSpell.palette_patch colors the figure directly.
-                    # world.battle_animations[0x35].get_command_by_name(
-                    #     "bowser_crush_color_math", UnknownCommand
-                    # ).set_contents(bytearray([0xDD, 0xFF, 0x05, 0xEE, 0x02, 0x01]))
-                    pass
+                new_sound = CRUSH_HIT_SOUND_BY_ELEMENT.get(spell.element)
+                if new_sound is not None:
+                    world.battle_animations[0x35].get_command_by_name(
+                        "bowser_crush_sfx", PlaySound
+                    ).set_sound(new_sound)
             elif isinstance(spell, JumpSpell):
                 new_sound = JUMP_HIT_SOUND_BY_ELEMENT.get(spell.element)
                 if new_sound is not None:
@@ -140,6 +150,12 @@ def apply_equipment_settings(world: GameWorld) -> None:
                         world.battle_animations[0x35].get_command_by_name(
                             f"{prefix}_hit_{i}_sound", PlaySound
                         ).set_sound(new_sound)
+            elif isinstance(spell, (GenoFlashSpell)):
+                new_sound = FLASH_HIT_SOUND_BY_ELEMENT.get(spell.element)
+                if new_sound is not None:
+                    world.battle_animations[0x35].get_command_by_name(
+                        "geno_flash_sfx", PlaySound
+                    ).set_sound(new_sound)
 
     # Equipment properties - SOME mode (specific enhancements)
     if world.settings.is_flag_value(

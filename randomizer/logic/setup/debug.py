@@ -59,6 +59,8 @@ def apply_debug_max_stats(world: GameWorld) -> None:
     if not world.settings.debug_mode:
         return
 
+    from randomizer.data.items.items import SafetyRingItem
+
     # Max out starting stats for all allies
     for ally in world.allies._allies:
         ally.starting_max_hp = 999
@@ -69,6 +71,7 @@ def apply_debug_max_stats(world: GameWorld) -> None:
         ally.starting_mg_defense = 255
         ally.starting_level = 30
         ally.starting_experience = 9999
+        ally.starting_accessory = SafetyRingItem
 
         # Learn all spells that were shuffled to this ally
         # Collect spells from level-ups and add to starting_magic

@@ -39,7 +39,7 @@ script = EventScript([
 	]),
 	SetBit(NOTE_DIRECTION),
 	SetSyncActionScript(NPC_0, A0977_NOTE_WITHOUT_KNIFE),
-	FadeInFromBlack(sync=False),
 	RunEventAsSubroutine(E0832_NIMBUS_LAND_HOT_SPRINGS_SHUFFLED_NPC_ANIMATION_LOADER),
+	FadeInFromBlack(sync=False),
 	Return()
 ])

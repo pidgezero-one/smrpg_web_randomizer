@@ -32,6 +32,7 @@ from randomizer.progression.prizes import (
     DirectorBossFight,
     DodoBossFight,
     GenoRecruitmentPrize,
+    KingCalamariBossFight,
     MallowRecruitmentPrize,
     ManagerBossFight,
     MarioRecruitmentPrize,
@@ -339,16 +340,17 @@ def render_booster_tower_indoor_boss(
         UsableActionScriptCommand,
     )
 
-    as_contents: list[UsableActionScriptCommand] = []
+    as_contents: list[UsableActionScriptCommand] = [
+        A_FixedFCoordOn(),
+    ]
     m = prize.smallest_npc()
     if m.tower_entrance_horizontal_shift:
         as_contents.append(A_ShiftXYPixels(m.tower_entrance_horizontal_shift, 0))
-    if m.eye_height:
-        shift = 17 - m.eye_height
-        if shift > 0:
-            as_contents.append(A_ShiftZUpPixels(shift))
-        elif shift < 0:
-            as_contents.append(A_ShiftZDownPixels(-shift))
+    shift = 17 - m.eye_height
+    if shift > 0:
+        as_contents.append(A_WalkNorthPixels(shift))
+    elif shift < 0:
+        as_contents.append(A_WalkSouthPixels(-shift))
     if len(as_contents) > 0:
         ev.set_contents(
             [
@@ -513,7 +515,7 @@ def render_booster_tower_indoor_boss(
         pause_length = (
             tower_toss.contact_frame
             if tower_toss.contact_frame is not None
-            else tower_toss.total_duration or 0
+            else tower_toss.total_duration
         )
         cast(
             Pause,
@@ -607,9 +609,9 @@ def render_booster_tower_henchman_scripts(
             third_henchman = prize.mook_henchmen[0]
 
         if third_henchman is not None:
-            third_henchman_animations = third_henchman.model()._animations
+            third_henchman_animations = third_henchman.model().animations
             b = third_henchman_animations.tower_bullet
-            if b is not None and b.total_duration is not None:
+            if b is not None:
                 pelim_pause = 0
                 contact_frame = b.contact_frame
                 if contact_frame is None:
@@ -627,6 +629,9 @@ def render_booster_tower_henchman_scripts(
                             A_Pause(18),
                             A_FaceSouthwest(),
                             A_Pause(18),
+                            A_SetSequenceSpeed(
+                                b.speed
+                            ),
                             *(
                                 [
                                     A_Pause(
@@ -703,7 +708,7 @@ def render_marrymore_boss_henchmen(
     """Apply henchman animation changes for Marrymore boss fight."""
     if len(henchmen) >= 1:
         first_henchman = henchmen[0]
-        henchman_animations = first_henchman.model()._animations
+        henchman_animations = first_henchman.model().animations
         if henchman_animations.kitchen_prep is not None:
             cmd = world.action_scripts.get_command_by_identifier(
                 "kitchen_chef_seq_1", A_SetSpriteSequence
@@ -714,7 +719,7 @@ def render_marrymore_boss_henchmen(
 
     if len(henchmen) >= 2:
         second_henchman = henchmen[1]
-        henchman_animations = second_henchman.model()._animations
+        henchman_animations = second_henchman.model().animations
         if henchman_animations.kitchen_prep is not None:
             for cmd_id in ["kitchen_chef_seq_2", "kitchen_chef_seq_3"]:
                 cmd = world.action_scripts.get_command_by_identifier(
@@ -2328,8 +2333,10 @@ def render_seaside_beach_boss(world: GameWorld, prize: BossFightPrize) -> None:
 
 def render_ship_password_boss(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply animation changes for Ship Password boss fight."""
-    world.action_scripts.delete_command_by_identifier("password_boss_vanilla_1")
-    world.action_scripts.delete_command_by_identifier("password_boss_vanilla_2")
+    if not isinstance(prize, KingCalamariBossFight):
+        world.action_scripts.delete_command_by_identifier("password_boss_vanilla_1")
+        world.action_scripts.delete_command_by_identifier("password_boss_vanilla_2")
+        world.action_scripts.delete_command_by_identifier("password_boss_vanilla_3")
     m = prize.smallest_npc()
     if m.animations.ship_beckon is not None:
         c = world.action_scripts.get_command_by_identifier(
@@ -2437,10 +2444,9 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
                 "dojo_boss_1_initiate",
                 A_SetSpriteSequence,
             ).set_index(m.animations.dojo_challenge.sequence_id)
-            if m.animations.dojo_challenge.contact_frame is not None:
-                world.event_scripts.get_subscript_command_by_identifier(
-                    "dojo_boss_1_initiate_aq", "dojo_boss_1_pause", A_Pause
-                ).set_length(m.animations.dojo_challenge.contact_frame)
+            world.event_scripts.get_subscript_command_by_identifier(
+                "dojo_boss_1_initiate_aq", "dojo_boss_1_pause", A_Pause
+            ).set_length(max(45, m.animations.dojo_challenge.total_duration + 12))
         else:
             world.event_scripts.get_subscript_command_by_identifier(
                 "dojo_boss_1_initiate_aq",
@@ -2451,6 +2457,9 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
         world.event_scripts.get_subscript_command_by_identifier(
             "dojo_boss_1_recoil_aq", "dojo_boss_1_recoil", A_SetSpriteSequence
         ).set_index(m.animations.recoil.sequence_id)
+        world.event_scripts.get_subscript_command_by_identifier(
+            "dojo_boss_1_recoil_aq", "dojo_boss_1_recoil_pause", A_Pause
+        ).set_length(m.animations.recoil.total_duration)
     else:
         world.event_scripts.delete_subscript_command_by_identifier(
             "dojo_boss_1_recoil_aq", "dojo_boss_1_recoil"
@@ -2492,10 +2501,9 @@ def render_dojo_fight(
                 initiate_id,
                 A_SetSpriteSequence,
             ).set_index(m.animations.dojo_challenge.sequence_id)
-            if m.animations.dojo_challenge.contact_frame is not None:
-                world.event_scripts.get_subscript_command_by_identifier(
-                    initiate_aq_id, pause_id, A_Pause
-                ).set_length(m.animations.dojo_challenge.contact_frame)
+            world.event_scripts.get_subscript_command_by_identifier(
+                initiate_aq_id, pause_id, A_Pause
+            ).set_length(max(45, m.animations.dojo_challenge.total_duration + 12))
             if deescalate_aq_id is not None and deescalate_id is not None:
                 world.event_scripts.get_subscript_command_by_identifier(
                     deescalate_aq_id,
@@ -2806,6 +2814,17 @@ def render_statue_room_boss(
         world.event_scripts.delete_subscript_command_by_identifier(
             "statue_keeper_introduced_aq", "statue_keeper_introduced_1"
         )
+    if m.animations.statue_intro is not None:
+        world.event_scripts.get_subscript_command_by_identifier(
+            "statue_keeper_introduced_aq", "statue_keeper_introduced_2",
+            A_SetSpriteSequence,
+        ).set_index(m.animations.statue_intro.sequence_id)
+    else:  
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "statue_keeper_introduced_aq", "statue_keeper_introduced_2"
+        )
+
+      
 
     if m.animations.statue_flustered is not None:
         world.event_scripts.get_subscript_command_by_identifier(
@@ -2813,6 +2832,11 @@ def render_statue_room_boss(
             "statue_keeper_flustered_1",
             A_SetSpriteSequence,
         ).set_index(m.animations.statue_flustered.sequence_id)
+        world.event_scripts.get_subscript_command_by_identifier(
+            "statue_keeper_flustered_aq",
+            "statue_keeper_flustered_1_pause",
+            A_Pause,
+        ).set_length(max(45, m.animations.statue_flustered.total_duration + 12))
     else:
         world.event_scripts.delete_subscript_command_by_identifier(
             "statue_keeper_flustered_aq", "statue_keeper_flustered_1"
@@ -2830,6 +2854,12 @@ def render_statue_room_boss(
         A_SetSpriteSequence,
     )
     dodo_replacement_faces_wrong_direction_3.set_mirror_sprite(False)
+    dodo_replacement_faces_wrong_direction_4 = world.event_scripts.get_subscript_command_by_identifier(
+        "final_statue_peck_aq",
+        "dodo_circle_around_3",
+        A_SetSpriteSequence,
+    )
+    dodo_replacement_faces_wrong_direction_4.set_mirror_sprite(False)
     if has_back_walking_sequence:
         dodo_replacement_faces_wrong_direction = (
             world.event_scripts.get_subscript_command_by_identifier(
@@ -2863,6 +2893,7 @@ def render_statue_room_boss(
         )
         dodo_replacement_faces_wrong_direction_2.set_index(0)
         dodo_replacement_faces_wrong_direction_3.set_index(0)
+        dodo_replacement_faces_wrong_direction_4.set_index(0)
         world.event_scripts.replace_subscript_command_by_identifier(
             "dodo_left_foot_backward_subroutine",
             "dodo_no_fixed_back_coord_face_nw_1",
@@ -2963,9 +2994,6 @@ def render_statue_room_boss(
     )
     world.event_scripts.delete_subscript_command_by_identifier(
         "dodo_possibly_unused_aq", "dodo_possibly_unused"
-    )
-    world.event_scripts.delete_subscript_command_by_identifier(
-        "statue_keeper_introduced_aq", "statue_keeper_introduced_2"
     )
 
 
@@ -3092,7 +3120,7 @@ def render_inner_factory_third_fight_slot(
     slot_index: int,
 ) -> None:
     """Apply factory pierce animation for a single henchman slot."""
-    anim = henchman.model()._animations.factory_pierce
+    anim = henchman.model().animations.factory_pierce
 
     slot_configs = [
         (
@@ -3119,7 +3147,6 @@ def render_inner_factory_third_fight_slot(
 
     if (
         anim is not None
-        and anim.total_duration is not None
         and anim.contact_frame is not None
     ):
         prepause = 32 - anim.total_duration
@@ -3166,7 +3193,7 @@ def render_final_boss_fight(
 
     anim = prize.largest_npc().animations.endgame_challenge
     if anim is not None:
-        if anim.total_duration is not None and anim.total_duration > 55:
+        if anim.total_duration > 55:
             cast(
                 Pause, world.event_scripts.get_command_by_identifier("final_boss_pause")
             ).set_length(anim.total_duration)

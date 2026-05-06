@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfBitClear(HOT_SPRING_GUARD_POSITION, ["EVENT_3751_ret_2"]),
+	JmpIfBitClear(MAP_BARREL_VOLCANO, ["EVENT_3751_ret_2"]),
 	EnterArea(room_id=R447_NIMBUS_LAND_HOT_SPRINGS, face_direction=NORTHEAST, x=11, y=113, z=5, run_entrance_event=True),
 	Return(identifier="EVENT_3751_ret_2")
 ])

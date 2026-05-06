@@ -138,6 +138,7 @@ from .items import (
     WalletItem,
     CricketPieItem,
     RockCandyItem,
+    DebugCandyItem,
     CastleKey1Item,
     MarioDollItem,
     CastleKey2Item,

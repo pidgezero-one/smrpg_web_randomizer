@@ -38,6 +38,7 @@ script = EventScript([
 	SetVarToConst(ITEM_ID, CastleKey1Item),
 	StoreItemAt70A7QuantityTo7000(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3708_play_sound_6"]),
+	RunDialog(dialog_id=DI3069_NEED_THE_CASTLE_KEY_1, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	UnfreezeAllNPCs(),
 	Return(),
 	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6, identifier="EVENT_3708_play_sound_6"),

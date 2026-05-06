@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfBitClear(HOT_SPRING_GUARD_POSITION, ["EVENT_3753_jmp_if_bit_set_4"]),
+	JmpIfBitClear(MAP_BARREL_VOLCANO, ["EVENT_3753_jmp_if_bit_set_4"]),
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_TransferToXYZF(x=19, y=56, z=0, direction=EAST),
 		A_FaceNortheast()

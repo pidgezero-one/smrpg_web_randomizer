@@ -20,7 +20,7 @@ script = ActionScript([
 	A_JmpIfVarEqualsConst(CURRENT_OVERWORLD_MARKER_ID, OW50_BARREL_VOLCANO, ["ACTION_203_set_animation_speed_18"]),
 	A_VisibilityOff(),
 	A_WalkEastPixels(6),
-	A_ShiftZUpPixels(5),
+	A_ShiftZUpPixels(5, identifier="password_boss_vanilla_3"),
 	A_ResetProperties(),
 	A_FaceSouthwest(),
 	A_Pause(60),

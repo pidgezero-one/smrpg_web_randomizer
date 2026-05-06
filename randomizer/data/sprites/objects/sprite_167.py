@@ -93,7 +93,7 @@ sprite = CompleteSprite(
                     frames=[
                         AnimationSequenceFrame(duration=8, mold_id=0),
                         AnimationSequenceFrame(duration=8, mold_id=1),
-                    ]
+                    ], contact_frame=1
                 ),
             ]
         )

@@ -110,7 +110,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
             directions=VramStore.DIR2_SWSE
-        ),
+        , cannot_clone=True),
         
         RegularNPC(  # 1
             npc=npcs.TORTE_NPC_2,

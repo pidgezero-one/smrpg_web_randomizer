@@ -3448,6 +3448,9 @@ class Croco2BossFight(BossFightPrize):
         BossFightHenchman(monster=CROOKEnemyHenchman, model=CrookHenchman),
         BossFightHenchman(monster=CROOKEnemyHenchman, model=CrookHenchman),
     ]
+    _mook_henchmen = [
+        BossFightHenchman(monster=CROOKEnemyHenchman, model=CrookHenchman),
+    ]
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """[center]\nCROCO: Get the heck outta here![await]""",
@@ -4085,7 +4088,7 @@ class JohnnyBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """PIRATE: Y'arr, don't ye think\n this cake here be lookin' just like\n Johnny?[await]""",
         DI2062_APPRENTICE_CHEF: """PIRATE: Us pirates are pretty\n good with food, arr harr![await]""",
         DI2180_CHAPEL_NPC: """ Reverend Jones must have gotten\n lost on his way here.""",
-        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """JOHNNY: Found [0x7000] item(s, eh? Arr,\n harr, harr...! You gotta find [0x7024]\n more, matey![await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """JOHNNY: Found [0x7000] item(s), eh?\n Arr, harr, harr...! Ya gotta find\n [0x7024] more, matey![await]""",
         DI4060_NEED_TO_DO_CHAPEL_CHECKS: """JOHNNY: Look alive, sea slug!!!\n How'd ye manage to find all this\n gear, but not the junk in here?[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Johnny is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Johnny.[await]""",
@@ -4985,6 +4988,7 @@ class BirdettaBossFight(BossFightPrize):
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Birdo.[await]""",
     }
     _dialog_replacements_canon = {
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n[center]BIRDETTA: Don't forget about me![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`. All right. I'll let you through to Birdetta's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n BIRDETTA!![await]""",
         DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """BIRDETTA: Tee hee! Let's play\n again sometime![await]""",
@@ -5583,8 +5587,8 @@ class KamekBossFight(BossFightPrize):
             ):
                 return MAGIKOOPA_NPC_2
 
-        if isinstance(location, StatueRoomBossFight) and chosen_model is MagikoopaLargeObject:
-            return MAGIKOOPA_NPC_3
+        #if isinstance(location, StatueRoomBossFight) and chosen_model is MagikoopaLargeObject:
+        #    return MAGIKOOPA_NPC_3
 
         return None
 
@@ -5957,7 +5961,7 @@ class ManagerBossFight(BossFightPrize):
     ]
 
     _dialog_replacements = {
-        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MANAGER: I'm going to sleep for 25\n years.[await]""",
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MANAGER: I'm going to sleep for 25 years.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Who gave you the password?!\n You're gonna pay for this![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`. All right. I'll let you through to the Manager's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n the MANAGER!![await]""",

@@ -41,7 +41,7 @@ script = EventScript([
 		A_Pause(30),
 		A_SetSequenceSpeed(NORMAL),
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=False, identifier="dojo_boss_1_recoil"),
-		A_Pause(15),
+		A_Pause(15, identifier="dojo_boss_1_recoil_pause"),
 		A_ResetProperties()
 	], identifier="dojo_boss_1_recoil_aq"),
 	ActionQueueAsync(target=NPC_1, subscript=[

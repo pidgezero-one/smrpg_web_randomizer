@@ -2297,7 +2297,7 @@ GENO_Ally = Ally(
         SpriteAnimationState.LAUGHING_BACKWARDS: (5, 5, False),
         SpriteAnimationState.DISTRACTED: (0, 10, True),
         SpriteAnimationState.DISPLEASED: (3, 3, False),
-        SpriteAnimationState.CHALLENGE: (5, 0, False),
+        SpriteAnimationState.CHALLENGE: (5, 1, False),
         SpriteAnimationState.LOOK_TO_SIDE: (0, 8, True),
         SpriteAnimationState.LOOK_TO_DOWN: (0, 9, True),
         SpriteAnimationState.LOOK_TO_SIDE_BEHIND: (0, 11, True),

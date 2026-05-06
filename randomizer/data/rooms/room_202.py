@@ -156,7 +156,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            show_shadow=False),
+            show_shadow=False, cannot_clone=True),
         RegularNPC( # 2
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,

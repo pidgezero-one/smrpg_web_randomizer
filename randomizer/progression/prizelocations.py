@@ -1801,7 +1801,7 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_1
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 44),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -1825,7 +1825,7 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_2
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, FrogCoinPrize, SlotsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SlotsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 45),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -2992,23 +2992,24 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
         return op
 
     def _apply_forest_maze_npc_overrides(self, world: GameWorld) -> None:
-        """Apply Mario's eight-directional protagonist NPC model for forest maze.
+        """Use the MARIO_ENDING_2 (sprite 0) NPC for Mario at every forest-maze fill.
 
-        Mario uses the protagonist sprite (0) instead of non-protagonist (990)
-        because animations use sprite_offset which shifts the sprite ID,
-        and the non-protagonist offset sprites cause crashes.
+        Forest-maze animations apply sprite_offset relative to sprite 0
+        (because render_forest_maze_character passes use_primary=True for
+        Mario). The default MarioCharacterNPC base is sprite 409, which makes
+        those offsets resolve to unrelated sprites and corrupts animation.
         """
         assert isinstance(self.prize, CharacterPrize)
         if not isinstance(self.prize, MarioRecruitmentPrize):
             return
-        from ..data.rooms.npcs import MARIO_WALKING_DOWN_LEFT_NPC
+        from ..data.rooms.npcs import MARIO_ENDING_2
         for npc_sub in self._npc_fills:
             room = world.rooms._rooms[npc_sub.room_id]
             if room is None:
                 continue
             obj = room.get_npc_by_target_id(npc_sub.npc_id)
             if obj is not None:
-                obj._npc = MARIO_WALKING_DOWN_LEFT_NPC
+                obj._npc = MARIO_ENDING_2
 
     # Flag as checked: FOREST_LIBERATED
 
@@ -6376,13 +6377,12 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
     def _apply_marrymore_npc_overrides(self, world: GameWorld) -> None:
         """Apply per-character NPC overrides for Marrymore chapel/Booster Hill.
 
-        Mario uses the protagonist sprite (0) instead of non-protagonist (990)
-        because chapel animations use sprite_offset which shifts the sprite ID,
-        and the non-protagonist offset sprites cause crashes.
-
-        Room 54 buffer 0 is set to FOUR_SPRITES_PER_ROW for characters whose
-        sprites use format 1 (Mario, Geno, Peach). Mallow (format 2) uses the
-        existing THREE_SPRITES_PER_ROW buffer 1.
+        Mario: every fill (chapel NPC_10 and Booster Hill NPC_8) gets the
+        MARIO_ENDING_2 (sprite 0) NPC. Chapel animations are driven by
+        update_ally_animation with use_primary=True, so the sprite_offsets
+        are relative to sprite 0; leaving any fill at the default sprite 409
+        Mario clone makes those offsets resolve to wrong sprites and corrupts
+        the chapel animation.
 
         Bowser is cannot_clone=True with vram_size=1 (dedicated VRAM).
         All others are cloneable (cannot_clone=False, vram_size=0).
@@ -6390,27 +6390,28 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
         from smrpgpatchbuilder.datatypes.levels.classes import BufferType
         assert isinstance(self.prize, CharacterPrize)
 
+        if isinstance(self.prize, MarioRecruitmentPrize):
+            from ..data.rooms.npcs import MARIO_ENDING_2
+            for npc_sub in self._npc_fills:
+                room = world.rooms._rooms[npc_sub.room_id]
+                if room is None:
+                    continue
+                obj = room.get_npc_by_target_id(npc_sub.npc_id)
+                if obj is not None:
+                    obj._npc = MARIO_ENDING_2
+
         room_54 = world.rooms._rooms[R054_BOOSTER_HILL_DUMMY]
         if room_54 is None:
             return
 
-        # Set room 54 buffer 0 type based on character sprite format
-        # if isinstance(self.prize, (MarioRecruitmentPrize, GenoRecruitmentPrize, ToadstoolRecruitmentPrize)):
-        #    room_54.partition.buffers[0].set_buffer_type(BufferType.FOUR_SPRITES_PER_ROW)
-
-        # Apply NPC 8 overrides in room 54
+        # Apply NPC 8 vram/clone tuning in room 54 (Booster Hill).
         obj = room_54.get_npc_by_target_id(NPC_8)
         if obj is None:
             return
-        if isinstance(self.prize, MarioRecruitmentPrize):
-            from ..data.rooms.npcs import MARIO_WALKING_DOWN_LEFT_NPC
-            obj._npc = MARIO_WALKING_DOWN_LEFT_NPC
-            obj._cannot_clone = False
-            obj._min_vram_size = 0
-        elif isinstance(self.prize, BowserRecruitmentPrize):
+        if isinstance(self.prize, BowserRecruitmentPrize):
             obj._min_vram_size = 1
         else:
-            # Mallow, Geno, Peach — cloneable, use buffer system
+            # Mario, Mallow, Geno, Peach — cloneable, use buffer system
             obj._min_vram_size = 0
         obj._cannot_clone = True
 
@@ -9134,7 +9135,7 @@ class TempleBossFightStarPiece(StarPieceLocation):
 class TempleBossFightPostgame(BossFightLocation):
     _bias = True
     _originally_held = Belome3Fight
-    _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
+    _rooms = [R293_BELOME_3_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_FIGHT
     _world_area = WorldAreaEnum.TEMPLE
     _override_id = 523
@@ -9145,7 +9146,7 @@ class TempleBossFightPostgame(BossFightLocation):
     _npc_slots = [
         BossFightLocationNPC(
             R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
-            NPC_5,
+            NPC_1,
             sequence_setter_event_id=E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
@@ -13371,7 +13372,6 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
 
             elif (
                 m.animations.keep_challenge is not None
-                and m.animations.keep_challenge.total_duration is not None
             ):
                 world.event_scripts.get_subscript_command_by_identifier(
                     "keep_boss_1_animation_aq",
@@ -13383,7 +13383,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                     world.event_scripts.get_command_by_identifier(
                         "keep_boss_1_animation_pause",
                     ),
-                ).set_length(m.animations.keep_challenge.total_duration)
+                ).set_length(max(80, m.animations.keep_challenge.total_duration + 10))
             else:
                 world.event_scripts.delete_command_by_identifier(
                     "keep_boss_1_animation_aq"
@@ -13392,14 +13392,13 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
             # rise script not used for box summon or battle halls, so have a separate if block
             if (
                 m.animations.keep_summon is not None
-                and m.animations.keep_summon.total_duration is not None
             ):
                 world.action_scripts.get_command_by_identifier(
                     "keep_battle_room_summon", A_SetSpriteSequence
                 ).set_index(m.animations.keep_summon.sequence_id)
                 world.event_scripts.get_command_by_identifier(
                     "EVENT_941_pause_0", Pause
-                ).set_length(m.animations.keep_summon.total_duration)
+                ).set_length((m.animations.keep_summon.contact_frame or m.animations.keep_summon.total_duration) + 12)
                 world.event_scripts.get_script_by_id(
                     E0942_KEEP_FIRST_BOSS_SUMMON_CHEST
                 ).set_contents(
@@ -13408,13 +13407,14 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                             NPC_1,
                             [
                                 A_FaceSoutheast(),
+                        		A_Pause(60),
                                 A_SetSpriteSequence(
                                     index=m.animations.keep_summon.sequence_id,
                                     is_sequence=True,
                                     looping=False,
                                     mirror_sprite=True,
                                 ),
-                                A_Pause(m.animations.keep_summon.total_duration),
+                                A_Pause(m.animations.keep_summon.contact_frame or m.animations.keep_summon.total_duration),
                             ],
                         ),
                         Return(),
@@ -13575,7 +13575,6 @@ class KeepChandelierBossFight(BossFightLocation):
             m = npc_model()
             if (
                 m.animations.chandelier_challenge is not None
-                and m.animations.chandelier_challenge.total_duration is not None
             ):
                 world.event_scripts.get_subscript_command_by_identifier(
                     "chandelier_challenge_action_queue_0",
@@ -14625,7 +14624,7 @@ class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
     _y_coord = 34
     _world_area = WorldAreaEnum.MARIOS_PAD
     _z_coord = 1
-    _clue_text = "\n[center]Mine is underneath a steamwhistle.[await]"
+    _clue_text = "[center]Mine is underneath a steamwhistle.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 443),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14647,7 +14646,7 @@ class MariosPadLanternFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARIOS_PAD
     _x_shift = 8
     _y_shift = -8
-    _clue_text = "\n[center]Mine is under a white lantern.[await]"
+    _clue_text = "[center]Mine is under a white lantern.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 444),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14663,7 +14662,7 @@ class MariosPadLanternFlag(InvisibleFlagLocation):
 class MariosPadHatFlag(InvisibleFlagLocation):
     _bias = True
     _rooms = [R189_MARIOS_PIPEHOUSE]
-    _x_coord = 3
+    _x_coord = 5
     _y_coord = 13
     _world_area = WorldAreaEnum.MARIOS_PAD
     _z_coord = 1
@@ -14712,7 +14711,7 @@ class MushroomKingdomSignFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _z_coord = 2
     _y_shift = -8
-    _clue_text = "\n[center]Mine's behind a wooden mushroom.[await]"
+    _clue_text = "[center]Mine's behind a wooden mushroom.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 447),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14758,7 +14757,7 @@ class ChancellorThroneFlag(InvisibleFlagLocation):
     _y_coord = 24
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _z_coord = 3
-    _clue_text = "\n[center]Mine's under a blue chair.[await]"
+    _clue_text = "[center]Mine's under a blue chair.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 449),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14778,7 +14777,7 @@ class BanditsWayFlowerFlag(InvisibleFlagLocation):
     _y_coord = 89
     _world_area = WorldAreaEnum.BANDITS_WAY
     _x_shift = 16
-    _clue_text = "\n[center]Mine's on a landing flower.[await]"
+    _clue_text = "[center]Mine's on a landing flower.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 450),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14827,7 +14826,7 @@ class KeroGateFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.KERO_SEWERS
     _z_coord = 4
     _x_shift = -16
-    _clue_text = "\n[center]Mine is by a lone metal spike fence.[await]"
+    _clue_text = "[center]Mine is by a lone metal spike fence.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 452),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14873,7 +14872,7 @@ class TadpoleCabinetFlag(InvisibleFlagLocation):
     _z_coord = 2
     _x_shift = 8
     _y_shift = 8
-    _clue_text = "\n[center]Mine is in a frog cabinet.[await]"
+    _clue_text = "[center]Mine is in a frog cabinet.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 454),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14915,7 +14914,7 @@ class RoseTownHydrantFlag(InvisibleFlagLocation):
     _y_coord = 63
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = -8
-    _clue_text = "\n[center]Mine is under a low steel hydrant.[await]"
+    _clue_text = "[center]Mine is under a low steel hydrant.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 456),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14938,7 +14937,7 @@ class RoseTownSinkFlag(InvisibleFlagLocation):
     _y_coord = 10
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = 1
-    _clue_text = "\n[center]My item is in a kitchen sink under\n some green curtains.[await]"
+    _clue_text = "[center]My item is in a kitchen sink under\n[center] some green curtains.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 457),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14960,7 +14959,7 @@ class RoseTownBowserFlag(InvisibleFlagLocation):
     _x_coord = 7
     _y_coord = 21
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _clue_text = "\n[center]Mine's under a tiny turtle.[await]"
+    _clue_text = "[center]Mine's under a tiny turtle.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 458),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -14980,7 +14979,7 @@ class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
     _y_coord = 85
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = -8
-    _clue_text = "\n[center]Mine is under a private hydrant.[await]"
+    _clue_text = "[center]Mine is under a private hydrant.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 459),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15005,7 +15004,7 @@ class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
     _x_coord = 5
     _y_coord = 87
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _clue_text = "\n[center]Mine is under a private bucket.[await]"
+    _clue_text = "[center]Mine is under a private bucket.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 460),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15031,7 +15030,7 @@ class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
     _y_coord = 111
     _world_area = WorldAreaEnum.ROSE_TOWN
     _z_coord = 10
-    _clue_text = "\n[center]Mine's on a big leaf between\n two chests.[await]"
+    _clue_text = "[center]Mine's on a big leaf between\n[center] two chests.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 461),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15114,7 +15113,7 @@ class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
     _x_coord = 2
     _y_coord = 39
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _clue_text = "\n[center]Mine is on a sleepy bug.[await]"
+    _clue_text = "[center]Mine is on a sleepy bug.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 464),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15161,7 +15160,7 @@ class PipeVaultRedPipeFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _x_shift = -8
     _y_shift = -8
-    _clue_text = "\n[center]Mine is behind a low red pipe.[await]"
+    _clue_text = "[center]Mine is behind a low red pipe.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 466),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15183,7 +15182,7 @@ class YosterIsleHutFlag(InvisibleFlagLocation):
     _x_coord = 11
     _y_coord = 70
     _world_area = WorldAreaEnum.YOSTER_ISLE
-    _clue_text = "\n[center]Mine's under a fruity gazebo.[await]"
+    _clue_text = "[center]Mine's under a fruity gazebo.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 467),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15209,7 +15208,7 @@ class MolevilleHydrantFlag(InvisibleFlagLocation):
     _y_coord = 63
     _world_area = WorldAreaEnum.MOLEVILLE
     _y_shift = -8
-    _clue_text = "\n[center]Mine's under a gold hydrant.[await]"
+    _clue_text = "[center]Mine's under a gold hydrant.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 468),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15254,7 +15253,7 @@ class MolevilleBedFlag(InvisibleFlagLocation):
     _y_coord = 12
     _world_area = WorldAreaEnum.MOLEVILLE
     _x_shift = 16
-    _clue_text = "\n[center]Mine's under a middle bed.[await]"
+    _clue_text = "[center]Mine's under a middle bed.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 470),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15344,7 +15343,7 @@ class BoosterPassCornerBushFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _x_shift = -8
     _y_shift = 8
-    _clue_text = "\n[center]Mine's in a corner bush.[await]"
+    _clue_text = "[center]Mine's in a corner bush.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 474),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15408,7 +15407,7 @@ class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
     _y_coord = 122
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _y_shift = 8
-    _clue_text = "\n[center]Mine's on a lightly-loaded see-saw.[await]"
+    _clue_text = "[center]Mine's on a lightly-loaded see-saw.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 477),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15457,7 +15456,7 @@ class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
     _y_coord = 114
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _z_coord = 12
-    _clue_text = "\n[center]Mine is near a lonely thwomp.[await]"
+    _clue_text = "[center]Mine is near a lonely thwomp.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 479),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15482,7 +15481,7 @@ class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _x_shift = -8
     _y_shift = -9
-    _clue_text = "\n[center]Mine is in a broken frame.[await]"
+    _clue_text = "[center]Mine is in a broken frame.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 480),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15505,7 +15504,7 @@ class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
     _x_coord = 7
     _y_coord = 18
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _clue_text = "\n[center]Mine is on an insect cage.[await]"
+    _clue_text = "[center]Mine is on an insect cage.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 481),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15529,7 +15528,7 @@ class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
     _y_coord = 24
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _x_shift = 16
-    _clue_text = "\n[center]Mine is behind a toy box.[await]"
+    _clue_text = "[center]Mine is behind a toy box.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 482),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15558,7 +15557,7 @@ class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
     _z_coord = 6
     _x_shift = -8
     _y_shift = -8
-    _clue_text = "\n[center]Mine is under a lone backyard box.[await]"
+    _clue_text = "[center]Mine is under a lone backyard box.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 483),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15642,7 +15641,7 @@ class MarrymoreFireplaceFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _z_coord = 2
     _y_shift = -8
-    _clue_text = "\n[center]Mine is in an empty fireplace.[await]"
+    _clue_text = "[center]Mine is in an empty fireplace.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 487),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15693,7 +15692,7 @@ class MarrymoreAltarFlag(InvisibleFlagLocation):
     _y_coord = 70
     _world_area = WorldAreaEnum.MARRYMORE
     _z_coord = 1
-    _clue_text = "\n[center]Mine's behind a podium.[await]"
+    _clue_text = "[center]Mine's behind a podium.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 489),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15717,7 +15716,7 @@ class StarHillNorthStarFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.STAR_HILL
     _z_coord = 2
     _x_shift = -10
-    _clue_text = "\n[center]Mine is atop the North Star.[await]"
+    _clue_text = "[center]Mine is atop the North Star.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 490),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15737,7 +15736,7 @@ class SeasideTownAnchorFlag(InvisibleFlagLocation):
     _y_coord = 57
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _x_shift = 16
-    _clue_text = "\n[center]Mine is behind an anchor.[await]"
+    _clue_text = "[center]Mine is behind an anchor.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 491),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15759,7 +15758,7 @@ class SeasideTownHydrantFlag(InvisibleFlagLocation):
     _z_coord = 5
     _x_shift = 0
     _y_shift = -8
-    _clue_text = "\n[center]Mine is under a high steel hydrant.[await]"
+    _clue_text = "[center]Mine is under a high steel hydrant.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 492),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15779,7 +15778,7 @@ class SeasideTownBucketFlag(InvisibleFlagLocation):
     _y_coord = 31
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _z_coord = 3
-    _clue_text = "\n[center]Mine is in a bucket between two\n staircases.[await]"
+    _clue_text = "[center]Mine is in a bucket between two\n[center]staircases.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 493),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15853,7 +15852,7 @@ class SeaArrowFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SEA
     _x_shift = -8
     _y_shift = -8
-    _clue_text = "\n[center]Mine is beside a mossy up-arrow.[await]"
+    _clue_text = "[center]Mine is beside a mossy up-arrow.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 496),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15876,7 +15875,7 @@ class SeaBoxesFlag(InvisibleFlagLocation):
     _y_coord = 36
     _world_area = WorldAreaEnum.SEA
     _y_shift = -8
-    _clue_text = "\n[center]Mine's in some V-shaped boxes.[await]"
+    _clue_text = "[center]Mine's in some V-shaped boxes.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 497),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15923,7 +15922,7 @@ class SeaUnderwaterSailFlag(InvisibleFlagLocation):
     _x_coord = 4
     _y_coord = 41
     _world_area = WorldAreaEnum.SEA
-    _clue_text = "\n[center]Mine's behind a sail.[await]"
+    _clue_text = "[center]Mine's behind a sail.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 499),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15946,7 +15945,7 @@ class ShipBarrelPileFlag(InvisibleFlagLocation):
     _y_coord = 66
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _z_coord = 3
-    _clue_text = "\n[center]Mine is atop a big pile of barrels.[await]"
+    _clue_text = "[center]Mine is atop a big pile of barrels.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 500),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15970,7 +15969,7 @@ class ShipDoorMarkerFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _z_coord = 1
     _y_shift = 8
-    _clue_text = ' Mine is on a stack of boxes.[await][pause]\n[delay] Hm?[delay] Is that not specific enough?[await][page]\n Well,[delay] the boxes act as a door\n marker.[delay] They represent the\n number "4".[await]'
+    _clue_text = ' Mine is on a stack of boxes.[await][pause]\n[delay] Hm?[delay] Is that not specific enough?[await][page]\n Well,[delay] the boxes act as a door\n marker.[delay] They represent the\n number “4”.[await]'
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 501),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -15990,9 +15989,9 @@ class ShipButtonFlag(InvisibleFlagLocation):
     _bias = True
     _rooms = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
     _x_coord = 16
-    _y_coord = 133
+    _y_coord = 113
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _clue_text = "\n[center]Mine is under a floating button.[await]"
+    _clue_text = "[center]Mine is under a floating button.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 502),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16015,7 +16014,7 @@ class ShipSwitchFlag(InvisibleFlagLocation):
     _y_coord = 121
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _clue_text = (
-        '\n Mine is underneath a floating "J"\n[center]that is all on its lonesome.[await]'
+        'Mine is underneath a floating "J"\n[center]that is all on its lonesome.[await]'
     )
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 503),
@@ -16038,7 +16037,7 @@ class LandsEndPlatformFlag(InvisibleFlagLocation):
     _x_coord = 6
     _y_coord = 29
     _world_area = WorldAreaEnum.LANDS_END
-    _clue_text = "\n[center]Mine is under a rising platform.[await]"
+    _clue_text = "[center]Mine is under a rising platform.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 504),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16081,7 +16080,7 @@ class LandsEndArrowFlag(InvisibleFlagLocation):
     _y_coord = 29
     _world_area = WorldAreaEnum.LANDS_END
     _x_shift = 16
-    _clue_text = "\n[center]Mine is beside an orange up-arrow.[await]"
+    _clue_text = "[center]Mine is beside an orange up-arrow.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 506),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16147,7 +16146,8 @@ class LandsEndStalagmiteFlag(InvisibleFlagLocation):
     _bias = True
     _rooms = [R265_LANDS_END_UNDERGROUND_AREA_03]
     _x_coord = 22
-    _y_coord = 80
+    _y_coord = 88
+    _z_coord = 4
     _world_area = WorldAreaEnum.LANDS_END
     _x_shift = 8
     _y_shift = 8
@@ -16224,7 +16224,7 @@ class DojoBonsaiFlag(InvisibleFlagLocation):
     _y_coord = 9
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _y_shift = 8
-    _clue_text = "\n[center]Mine's underneath a bonsai tree.[await]"
+    _clue_text = "[center]Mine's underneath a bonsai tree.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 512),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16243,7 +16243,7 @@ class MonstroEntranceSignFlag(InvisibleFlagLocation):
     _x_coord = 9
     _y_coord = 102
     _world_area = WorldAreaEnum.MONSTRO_TOWN
-    _clue_text = "\n[center]Mine's in a lone flowery bush.[await]"
+    _clue_text = "[center]Mine's in a lone flowery bush.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 513),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16264,7 +16264,7 @@ class MonstroBatFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _z_coord = 4
     _y_shift = 8
-    _clue_text = "\n[center]Mine's behind a wooden bat.[await]"
+    _clue_text = "[center]Mine's behind a wooden bat.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 514),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16285,7 +16285,7 @@ class MonstroFanFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _z_coord = 1
     _x_shift = -16
-    _clue_text = "\n[center]Mine's beside a fan.[await]"
+    _clue_text = "[center]Mine's beside a fan.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 515),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16306,7 +16306,7 @@ class MonstroShellFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _z_coord = 1
     _y_shift = 8
-    _clue_text = "\n[center]Mine's beneath a spinning shell.[await]"
+    _clue_text = "[center]Mine's beneath a spinning shell.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 516),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16346,7 +16346,7 @@ class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
     _x_coord = 27
     _y_coord = 27
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _clue_text = "\n[center]Mine's underneath a big beanstalk.[await]"
+    _clue_text = "[center]Mine's underneath a big beanstalk.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 518),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16367,7 +16367,7 @@ class CasinoBellFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.CASINO
     _x_shift = 8
     _y_shift = 8
-    _clue_text = "\n[center]Mine is beside a tiny bell.[await][pause]\n I don't think it does anything.[await]"
+    _clue_text = "[center]Mine is beside a tiny bell.[await][pause]\n[center]I don't think it does anything.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 519),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16391,7 +16391,7 @@ class NimbusGoldGoombaFlag(InvisibleFlagLocation):
     _y_coord = 14
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _z_coord = 1
-    _clue_text = "\n[center]Mine is on a golden Goomba.[await]"
+    _clue_text = "[center]Mine is on a golden Goomba.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 520),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16505,17 +16505,7 @@ class NimbusHotSpringsFlag(InvisibleFlagLocation):
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 524),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
-        JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_12"]),
-        JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_12"]),
-        StoreItemAmountTo7000(GoldPaintItem),
-        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_12"], identifier="nimbus_ck_dummy_12"),
-        StoreItemAmountTo7000(CastleKey1Item),
-        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_ck_dummy3_12"], identifier="nimbus_ck_dummy2_12"),
-        StoreItemAmountTo7000(CastleKey2Item),
-        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy3_12"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"])
@@ -16534,7 +16524,7 @@ class VolcanoShipsFlag(InvisibleFlagLocation):
     _y_coord = 61
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _z_coord = 2
-    _clue_text = "\n[center]Mine is between two vehicles.[await]"
+    _clue_text = "[center]Mine is between two vehicles.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 525),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16558,7 +16548,7 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _x_shift = 8
     _y_shift = 8
-    _clue_text = "\n[center]Mine is between two red doors.[await]"
+    _clue_text = "[center]Mine is between two red doors.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 526),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
@@ -16582,7 +16572,7 @@ class KeepThwompFlag(InvisibleFlagLocation):
     _x_coord = 19
     _y_coord = 47
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _clue_text = "\n[center]Mine is under a big thwomp.[await]"
+    _clue_text = "[center]Mine is under a big thwomp.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 527),
         RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
