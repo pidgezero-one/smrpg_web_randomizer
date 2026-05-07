@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	SetVarToConst(TEMP_70AE, 3),
-	StartLoopNTimes(6),
+	StartLoopNTimes(1),
 	JmpIfRandom2of3(['EVENT_3511_set_action_script_5', 'EVENT_3511_set_action_script_7']),
 	SetSyncActionScript(NPC_0, A0708_BOOSTER_HILL_BARREL),
 	Jmp(["EVENT_3511_pause_8"]),
@@ -45,7 +45,7 @@ script = EventScript([
 	Pause(210, identifier="EVENT_3511_pause_8"),
 	EndLoop(),
 	Pause(30),
-	StartLoopNTimes(6),
+	StartLoopNTimes(1),
 	JmpIfRandom2of3(['EVENT_3511_set_action_script_16', 'EVENT_3511_set_action_script_19']),
 	SetSyncActionScript(NPC_0, A0708_BOOSTER_HILL_BARREL),
 	SetSyncActionScript(NPC_1, A0709_BOOSTER_HILL_BARREL),
@@ -58,7 +58,7 @@ script = EventScript([
 	Pause(210, identifier="EVENT_3511_pause_21"),
 	EndLoop(),
 	Pause(30),
-	StartLoopNTimes(6),
+	StartLoopNTimes(1),
 	SetSyncActionScript(NPC_0, A0708_BOOSTER_HILL_BARREL),
 	SetSyncActionScript(NPC_1, A0709_BOOSTER_HILL_BARREL),
 	SetSyncActionScript(NPC_2, A0710_BOOSTER_HILL_BARREL),

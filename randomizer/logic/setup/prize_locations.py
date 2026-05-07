@@ -43,7 +43,7 @@ from ...types.prizelocation import (
     InvisibleFlagLocation,
 )
 from ...types.prize import SlotsPrize
-from ...data.rooms.npcs import EMPTY_NPC_3
+from ...data.rooms.npcs import EMPTY_NPC_4
 from ...data.variables.event_script_names import E0091_INVISIBLE_ITEM_SUMMONER, E2304_BANK_1F_RETURN_EVENT_2
 from ...data.variables.action_script_names import A0015_DO_NOTHING
 
@@ -59,7 +59,7 @@ def _make_dummy_npc() -> RegularNPC:
     non-Clone to prevent grouping with incompatible preceding NPCs.
     """
     return RegularNPC(
-        npc=EMPTY_NPC_3,
+        npc=EMPTY_NPC_4,
         event_script=E2304_BANK_1F_RETURN_EVENT_2,
         action_script=A0015_DO_NOTHING,
         visible=False,
@@ -71,7 +71,7 @@ def _make_dummy_npc() -> RegularNPC:
 def _make_dummy_clone() -> RegularClone:
     """Create a minimal, inert dummy clone NPC for pre-allocating object presence table slots."""
     return RegularClone(
-        npc=EMPTY_NPC_3,
+        npc=EMPTY_NPC_4,
         event_script=E2304_BANK_1F_RETURN_EVENT_2,
         action_script=A0015_DO_NOTHING,
         visible=False,

@@ -75,6 +75,9 @@ class HammerBroStatueObject(StatueNPC):
     """Hammer Bro statue object in Mushroom Way Area 03."""
 
     _base = HAMMER_BRO_STATUE_NPC
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(-8, 1),
+    }
 
 
 class Croco1Object(BossNPC):
@@ -2556,8 +2559,7 @@ class SmithyStatueObject(StatueNPC):
 
     _base = SMITHY_STATUE_NPC
     _facing_shifts = {
-        SOUTHWEST: PixelShift(8, 0),
-        SOUTHEAST: PixelShift(-8, 0),
+        SOUTHWEST: PixelShift(-7, 2),
     }
 
 

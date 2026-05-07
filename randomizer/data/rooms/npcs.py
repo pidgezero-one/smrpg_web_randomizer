@@ -6722,6 +6722,30 @@ EMPTY_NPC_3 = NPC(
     byte6_bit2=False,
 )
 
+EMPTY_NPC_4 = NPC(
+    sprite_id=SPR1023_EMPTY,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=9,
+    obtuse_axis=9,
+    height=9,
+    y_shift=1,
+    show_shadow=False,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=False,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 TERRAPIN_NPC_3 = NPC(
     sprite_id=SPR0256_TERRAPIN,
     shadow_size=ShadowSize.OVAL_MED,
@@ -14460,7 +14484,7 @@ MOKURA_NPC = NPC(
     y_shift=2,
     show_shadow=False,
     directions=VramStore.DIR2_SWSE,
-    min_vram_size=5,
+    min_vram_size=3,
     priority_0=True,
     priority_1=True,
     priority_2=False,
