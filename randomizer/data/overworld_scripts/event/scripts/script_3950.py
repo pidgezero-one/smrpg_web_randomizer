@@ -83,10 +83,10 @@ def build_contents(
 			A_FaceNorthwest()
 		], identifier="ending_mmr_character_lean_far_aq"),
 		ActionQueueSync(target=MINES_CHARACTER, subscript=[
-			A_TransferToXYZF(x=3, y=56, z=0, direction=SOUTHWEST),
-			A_TransferXYZFPixels(x=240, y=0, z=0, direction=SOUTHWEST),
+			A_TransferToXYZF(x=3, y=56, z=0, direction=EAST),
+			A_TransferXYZFPixels(x=240, y=0, z=0, direction=EAST),
 			A_FaceNortheast(),
-			A_SetSpriteSequence(index=3, is_mold=True, looping=True, mirror_sprite=True),
+			A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		]),
 		ActionQueueSync(target=DOLL, subscript=[
 			A_TransferToXYZF(x=4, y=53, z=0, direction=EAST),

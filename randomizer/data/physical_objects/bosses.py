@@ -232,6 +232,9 @@ class MackStatueObject(StatueNPC):
     """Mack statue object in Mushroom Way Area 03."""
 
     _base = MACK_STATUE_NPC
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(-3, 0),
+    }
 
 
 class PandoriteSmallObject(BossNPC):

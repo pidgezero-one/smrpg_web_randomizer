@@ -433,11 +433,12 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                 for i, cmd in enumerate(execution):
                     patched.append(cmd)
                     if isinstance(cmd, StartBattleAtBattlefield) and i + 1 < len(execution) and isinstance(execution[i + 1], Return):
+                        disabled_label = f"smithy_boss_hunt_disabled_{uuid4()}"
                         patched.extend([
-                            JmpIfBitClear(SMITHY_BOSS_HUNT_WIN_CONDITION, ["smithy_boss_hunt_disabled"]),
-	                        EnterArea(room_id=R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, face_direction=NORTHWEST, x=4, y=48, z=0, run_entrance_event=False),
+                            JmpIfBitClear(SMITHY_BOSS_HUNT_WIN_CONDITION, [disabled_label]),
+                            EnterArea(room_id=R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, face_direction=NORTHWEST, x=4, y=48, z=0, run_entrance_event=False),
                             JmpToEvent(E3885_END_GAME),
-                            SetBit(TEMP_704A_2, identifier="smithy_boss_hunt_disabled"),
+                            SetBit(TEMP_704A_2, identifier=disabled_label),
                             JmpToEvent(E1011_POST_MINES_BOSS_CHECK_IF_WON)
                         ])
                     elif isinstance(cmd, Return) and i > 0 and isinstance(execution[i - 1], StartBattleAtBattlefield):
