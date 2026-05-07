@@ -1295,6 +1295,22 @@ def shuffle_prizes(world: GameWorld) -> None:
         # FirstMimicFightLauncher to the vanilla chest, and after our mimic
         # override steals it, the vanilla chest is left empty.
         world.settings._flags[MimicsAnywhere] = MimicsAnywhere(True)
+        # SlotsAnywhere/EXPStarsAnywhere/ShuffleMagikoopaChest were added in
+        # 3bbe42a6 and silently dropped by 0bda84c3 ("config fix") when the
+        # MimicsAnywhere force-enable was hoisted above the pool builder.
+        # Without them, vanilla slot/exp-star/magikoopa chests stay
+        # not-shuffleable, the pool builder pre-binds their originally_held
+        # prizes, and any duplicate of those classes ends up in LOW_PRIORITY
+        # — which is how slot/exp-star prizes silently leak into chests the
+        # offset preview never showed.
+        world.settings._flags[SlotsAnywhere] = SlotsAnywhere(True)
+        world.settings._flags[EXPStarsAnywhere] = EXPStarsAnywhere(True)
+        world.settings._flags[ShuffleMagikoopaChest] = ShuffleMagikoopaChest(True)
+        # ShuffleStarPieces gates whether the offset's star piece overrides
+        # actually flow through to placement and signal-ring patching. Without
+        # it, TotalStarPieces is treated as default (6) and the UI offset
+        # preview diverges from the seed's real star piece placements.
+        world.settings._flags[ShuffleStarPieces] = ShuffleStarPieces(True)
         world.settings._is_flag_value_cache.clear()
 
     pool: dict[int, list[Prize]] = {

@@ -330,6 +330,8 @@ def get_ordered_lists() -> dict:
     Keys: boss_locations, boss_prizes, eligible_chests, eligible_mimics,
     mimic_prizes, invisible_flags, flag_rooms
     """
+    from randomizer.types.flags import TotalStarPieces
+
     invisible_flags = _get_invisible_flag_locations()
     star_piece_locs = _get_boss_star_piece_locations()
     return {
@@ -350,6 +352,7 @@ def get_ordered_lists() -> dict:
             for cls in star_piece_locs
         ],
         "star_piece_prizes": [cls.__name__ for cls in STAR_PIECE_PRIZES],
+        "total_star_pieces_default": TotalStarPieces._default,
     }
 
 

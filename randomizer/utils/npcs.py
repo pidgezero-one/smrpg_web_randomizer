@@ -31,11 +31,19 @@ def min_vram_from_sequence_for_sprite(world: "GameWorld", sprite_id: int, sequen
         mold = sprite.animation.properties.molds[frame.mold_id]
         if mold.gridplane:
             continue
-        truthy_subtiles = 0
-        for t in mold.tiles:
-            if isinstance(t, Tile):
-                truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
-        min_vram = max(min_vram, ceil(max(0, truthy_subtiles - 16) / 16))
+        # VRAM allocates per-tile, not per-truthy-subtile: a sparsely-populated
+        # tile still consumes its full 4-subtile slot. Each VRAM row holds 4
+        # tiles (16 subtiles), with 1 row baseline + min_vram_size extra rows.
+        # OLD formula counted only truthy (non-None) subtiles, which under-
+        # allocated for sprites with sparse tiles (e.g. SPR0626 BOWYER_NPC_LARGE:
+        # 16 tiles but only 45 truthy subtiles → old gave 2, real need is 3).
+        # truthy_subtiles = 0
+        # for t in mold.tiles:
+        #     if isinstance(t, Tile):
+        #         truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
+        # min_vram = max(min_vram, ceil(max(0, truthy_subtiles - 16) / 16))
+        n_tiles = sum(1 for t in mold.tiles if isinstance(t, Tile))
+        min_vram = max(min_vram, ceil(max(0, n_tiles - 4) / 4))
     return min_vram
 
 
@@ -52,11 +60,16 @@ def min_vram_from_mold_for_sprite(world: "GameWorld", sprite_id: int, mold_id: i
     mold = sprite.animation.properties.molds[mold_id]
     if mold.gridplane:
         return 0
-    truthy_subtiles = 0
-    for t in mold.tiles:
-        if isinstance(t, Tile):
-            truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
-    return ceil(max(0, truthy_subtiles - 16) / 16)
+    # See note in min_vram_from_sequence_for_sprite — VRAM is per-tile, not
+    # per-truthy-subtile.
+    # OLD:
+    # truthy_subtiles = 0
+    # for t in mold.tiles:
+    #     if isinstance(t, Tile):
+    #         truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
+    # return ceil(max(0, truthy_subtiles - 16) / 16)
+    n_tiles = sum(1 for t in mold.tiles if isinstance(t, Tile))
+    return ceil(max(0, n_tiles - 4) / 4)
 
 
 # Per-character protagonist sprite base IDs.

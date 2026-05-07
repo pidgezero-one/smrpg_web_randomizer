@@ -85,7 +85,7 @@ script = AnimationScriptBlock(expected_size=374, expected_beginning=0x35058A, sc
 	MoveObject(speed=1, start_position=128, end_position=0, apply_to_y=True, should_set_speed=True),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=8),
 	ResetObjectMappingMemory(),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0012_TOADSTOOL_NONPROTAGONIST_6, sequence=0, store_to_vram=True, store_palette=True, overlap_all_sprites=True),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0013_BOWSER_NONPROTAGONIST_1, sequence=0, store_to_vram=True, store_palette=True, overlap_all_sprites=True),
 	ResetSpriteSequence(),
 	Jmp(["command_0x3506E2"]),
 	ResetTargetMappingMemory(identifier="command_0x3506A7"),

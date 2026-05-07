@@ -154,14 +154,19 @@
             var starPieceLocations = previewData.star_piece_locations || [];
             var starPieceWorldAreas = previewData.star_piece_world_areas || [];
             var starPiecePrizes = previewData.star_piece_prizes || [];
+            var totalStarPiecesDefault = (typeof previewData.total_star_pieces_default === 'number')
+                ? previewData.total_star_pieces_default : 0;
 
             function readTotalStarPieces() {
                 // The TotalStarPieces flag input is named "X.total_sp" via _show_flag_ui.html.
+                // When the input is disabled (ShuffleStarPieces requirement not met), the form
+                // submission skips it via buildFlagStringPart, so the backend falls back to the
+                // flag's default. Mirror that here so the offset preview matches reality.
                 var input = document.querySelector('input[name="X.total_sp"]');
                 if (!input) return 0;
-                var v = parseInt(input.value, 10);
-                if (isNaN(v) || v < 0) return 0;
-                return Math.min(v, starPiecePrizes.length, starPieceLocations.length);
+                var raw = input.disabled ? totalStarPiecesDefault : parseInt(input.value, 10);
+                if (isNaN(raw) || raw < 0) return 0;
+                return Math.min(raw, starPiecePrizes.length, starPieceLocations.length);
             }
 
             function updatePreview(offset, mimicOffset) {
@@ -305,8 +310,17 @@
             });
 
             // Re-render when the TotalStarPieces flag changes so the Star Piece
-            // table reflects the current N selection live.
+            // table reflects the current N selection live. Also re-render when
+            // ShuffleStarPieces toggles, since that flips total_sp's disabled
+            // state and readTotalStarPieces falls back to the default when the
+            // input is disabled (matching what buildFlagStringPart submits).
             $(document).on('input change', 'input[name="X.total_sp"]', refreshPreview);
+            $(document).on('change', 'input[name="X.rstars"]', function() {
+                // applyFlagRequirements runs synchronously on the same change
+                // event, so by the time this handler fires the disabled state
+                // is already updated.
+                setTimeout(refreshPreview, 0);
+            });
 
             // Number input handlers
             $('#prize-offset-number').on('input', function() {

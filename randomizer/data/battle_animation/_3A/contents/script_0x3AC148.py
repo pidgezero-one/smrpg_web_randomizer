@@ -19,7 +19,7 @@ script = AnimationScriptBlock(expected_size=168, expected_beginning=0x3AC148, sc
 	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=236, y=46, z=0, set_x=True, set_y=True, set_z=True),
 	NewSpriteAtCoords(sprite_id=SPR0331_BANDANA_BLUE, sequence=0, priority=2, vram_address=0x7A00, palette_row=12, overwrite_vram=True, overwrite_palette=True, behind_all_sprites=True, overlap_all_sprites=True),
 	SummonMonster(monster=WATERCRYSTALEnemy, position=6, bit_7=True),
-	SetAMEM40ToXYZCoords(origin=ABSOLUTE_POSITION, x=216, y=56, z=0, set_x=True, set_y=True, set_z=True),
+	SetAMEM40ToXYZCoords(origin=ABSOLUTE_POSITION, x=216, y=56, z=0, set_x=True, set_y=True, set_z=True, identifier="wc2_sub"),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=1024, arch_height=96),
 	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
 	ResetTargetMappingMemory(),

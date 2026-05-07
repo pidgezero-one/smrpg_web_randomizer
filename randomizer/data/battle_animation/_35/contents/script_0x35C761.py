@@ -96,7 +96,7 @@ script = AnimationScriptBlock(expected_size=561, expected_beginning=0x35C761, sc
 		"noanimation_item_10", 
 		"mushroom2_item", 
 		"staregg_item",
-        "rockcandy_item"
+        "debugcandy_item"
     ], 
     identifier="command_0x35C761"),
 	SetAbsolute7EToAMEM16Bit(0x7EE022, 0x60, identifier="mushroom_item"),
@@ -255,5 +255,5 @@ script = AnimationScriptBlock(expected_size=561, expected_beginning=0x35C761, sc
 	SetAMEM16BitToAbsolute7E(0x60, 0x7EE022),
 	IncAMEM16BitByConst(0x60, 96),
 	StoreOMEM60ToItemInventory(),
-	ReturnSubroutine()
+	ReturnSubroutine(),
 ])

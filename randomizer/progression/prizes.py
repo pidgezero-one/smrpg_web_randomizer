@@ -2993,7 +2993,7 @@ class ToadstoolRecruitmentPrize(CharacterPrize):
 
 
 class HammerBrosFight(BossFightPrize):
-    _text = "Hammer Bros."
+    _text = "Hammer Bros"
     _formation = FORM0293_TWO_HAMMERBRO
     _members = [
         FormationMember(HAMMERBROEnemy, 135, 127),
@@ -4632,7 +4632,7 @@ class CulexBossFight(BossFightPrize):
     ]
 
     _dialog_replacements = {
-        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It will not give you thousands of\n experience points.[await]""",
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It will not give you 34,000 experience points.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ You have passed the first test.\n But you're not finished yet!\n Please enter.[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`. All right. I'll let you through to Culex's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped CULEX!![await]""",
@@ -6389,6 +6389,8 @@ class Johnny2Fight(BossFightPrize):
     _formation = FORM0216_ONE_JOHNNYENEMY2
     _members = [
         FormationMember(JOHNNYEnemy2, 165, 121),
+        FormationMember(WATERCRYSTALEnemy, 0, 0, hidden_at_start=True),
+        FormationMember(WATERCRYSTALEnemy, 0, 0, hidden_at_start=True),
     ]
     _name = "Johnny"
     _seaside_letter_name_if_volcano_boss = "a shark prowling around"
@@ -6397,6 +6399,8 @@ class Johnny2Fight(BossFightPrize):
 
     _npc_models = [Johnny2LargeObject, Johnny2SmallObject]
     _statue_npc = JohnnyStatueObject
+    _scaling_excluded_enemies = [WATERCRYSTALEnemy, WATERCRYSTALEnemy]
+    _hp_slice_excluded_enemies = [WATERCRYSTALEnemy, WATERCRYSTALEnemy]
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JOHNNY: Matey, it'd be mighty fun\n to spar again, but I'm tryin' to\n sleep now.[await]""",
@@ -6552,7 +6556,7 @@ class Culex3DBossFight(BossFightPrize):
 
 
     _dialog_replacements = {
-        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It is not an effective way to\n grind experience points.[await]""",
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It will not give you 34,000 experience points.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ You have passed the first test.\n But you're not finished yet!\n Please enter.[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`. All right. I'll let you through to Culex's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped CULEX!![await]""",

@@ -545,7 +545,7 @@ class BossFightPrize(Prize):
     # Ordered list of NPC models (largest VRAM to smallest)
     # Must have at least one item
     _npc_models: list[type[BossNPC]]
-    _statue_npc: type[BossNPC] | None = None
+    _statue_npc: type[StatueNPC] | None = None
 
     _character_henchmen: list[BossFightHenchman] | None = None
     _mook_henchmen: list[BossFightHenchman] | None = None

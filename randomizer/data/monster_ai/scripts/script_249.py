@@ -16,7 +16,7 @@ script = MonsterScript([
 	IfVarBitsSet(BV7EE004, [0]),
 	IfVarBitsClear(BV7EE004, [1]),
 	IfLastMonsterStanding(),
-	IfTargetAlive(SLOT_3),
+	IfTargetAlive(SLOT_1),
 	SetVarBits(BV7EE004, [1]),
 	SetTarget(RANDOM_OPPONENT),
 	RunBattleEvent(BE0021_JOHNNY_CHALLENGES_MARIO_TO_A_ONE_ON_ONE),

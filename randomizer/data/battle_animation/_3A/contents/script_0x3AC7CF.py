@@ -14,6 +14,12 @@ from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=1249, expected_beginning=0x3AC7CF, script=[
+	RunSubroutine(["command_0x3A773F"], identifier="command_0x3AC148_"),
+	RemoveObject(),
+	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=236, y=46, z=0, set_x=True, set_y=True, set_z=True),
+	NewSpriteAtCoords(sprite_id=SPR0331_BANDANA_BLUE, sequence=0, priority=2, vram_address=0x7A00, palette_row=12, overwrite_vram=True, overwrite_palette=True, behind_all_sprites=True, overlap_all_sprites=True),
+	SummonMonster(monster=WATERCRYSTALEnemy, position=2, bit_7=True),
+    Jmp(["wc2_sub"]),
 	RunSubroutine(["command_0x3A7729"], identifier="command_0x3AC7CF"),
 	RemoveObject(),
 	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=179, y=162, z=0, set_x=True, set_y=True, set_z=True),

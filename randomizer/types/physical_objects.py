@@ -608,11 +608,16 @@ class NPC:
         if sprite.animation.properties.molds[mold_id].gridplane:
             return 0
         tiles = sprite.animation.properties.molds[mold_id].tiles
-        truthy_subtiles = 0
-        for t in tiles:
-            if isinstance(t, Tile):
-                truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
-        return ceil(max(0, truthy_subtiles - 16) / 16)
+        # VRAM allocates per-tile (each VRAM row holds 4 tiles), not per-truthy-
+        # subtile. Sparse tiles still consume their full slot.
+        # OLD:
+        # truthy_subtiles = 0
+        # for t in tiles:
+        #     if isinstance(t, Tile):
+        #         truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
+        # return ceil(max(0, truthy_subtiles - 16) / 16)
+        n_tiles = sum(1 for t in tiles if isinstance(t, Tile))
+        return ceil(max(0, n_tiles - 4) / 4)
 
     def min_vram_from_sequence(
         self, world: "GameWorld", sequence_id: int, offset: int = 0

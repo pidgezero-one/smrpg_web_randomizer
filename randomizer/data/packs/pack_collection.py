@@ -2421,6 +2421,8 @@ FORM0216_ONE_JOHNNYENEMY2 = Formation(
     id=216,
     members=[
         FormationMember(JOHNNYEnemy2, 165, 121),
+        FormationMember(WATERCRYSTALEnemy, 0, 0, hidden_at_start=True),
+        FormationMember(WATERCRYSTALEnemy, 0, 0, hidden_at_start=True),
     ],
     music=MidbossMusic(),
     unknown_bit=True,

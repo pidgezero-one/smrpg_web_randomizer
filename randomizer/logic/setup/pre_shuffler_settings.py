@@ -24,6 +24,7 @@ from ...data.variables.variable_names import (
     PRIMARY_TEMP_7000,
     RETURNED_MARIO_DOLL,
     YOSHI_ITEM_GRANTED,
+    BANDITS_WAY_LIBERATED
 )
 from ...data.variables.dialog_names import (
     DI1051_MOLEVILLE_CLOSED,

@@ -25,7 +25,6 @@ starting_frog_coins: 99
 items:
   start:
     - DebugCandyItem
-    - SignalRingItem
   override:
     # covnenience
     StartingItem1Location: StayVoucherPrize
@@ -38,5 +37,3 @@ items:
     BoosterPassBushLocation: RoomKeyPrize
     MarrymoreFirstSuitePrizeLocation: FertilizerPrize
     RoseTownInnToadPrizeLocation: SeedPrize
-    # bad sprite test
-    RoseTownTreasureHouseUpperChestLocation: SonicCymbalPrize

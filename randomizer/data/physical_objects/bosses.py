@@ -1323,7 +1323,7 @@ class ValentinaSmallObject(BossNPC):
 class ValentinaLargeObject(BossNPC):
     """Large Valentina object."""
 
-    _base = VALENTINA_NPC
+    _base = VALENTINA_NPC_5
     _recoil = 2
     _mines_punch = 4
     _tower_bullet = 4
@@ -2360,8 +2360,8 @@ class FactoryChiefStatueObject(StatueNPC):
 
     _base = FACTORY_CHIEF_STATUE_NPC
     _facing_shifts = {
-        SOUTHWEST: PixelShift(1, 0),
-        SOUTHEAST: PixelShift(-1, 0),
+        SOUTHEAST: PixelShift(-3, 0),
+        NORTHEAST: PixelShift(-9, 0),
     }
 
 
@@ -2602,7 +2602,8 @@ class YaridovichSmallObject(BossNPC):
     """Small Yaridovich object."""
 
     _base = SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC
-    _eye_height = 5
+    _eye_height = 9
+    _tower_entrance_horizontal_shift = 3
     _evil_palette = [
         0xFFFFFF,
         0xFFCEA5,
@@ -2776,7 +2777,7 @@ class Jinx1SmallObject(BossNPC):
     """Small Jinx 1 object."""
 
     _base = JINX_1
-    _eye_height = 4
+    _eye_height = 5
     _crown_height = 1
     _evil_palette = [
         0xFFFFFF,
@@ -2815,7 +2816,7 @@ class Jinx2SmallObject(BossNPC):
     """Small Jinx 2 object."""
 
     _base = JINX_2
-    _eye_height = 4
+    _eye_height = 5
     _crown_height = 1
     _evil_palette = [
         0xFFFFFF,
@@ -2854,7 +2855,7 @@ class Jinx3SmallObject(BossNPC):
     """Small Jinx 3 object."""
 
     _base = JINX_3
-    _eye_height = 4
+    _eye_height = 5
     _crown_height = 1
     _evil_palette = [
         0xFFFFFF,
@@ -2893,7 +2894,7 @@ class Jinx4SmallObject(BossNPC):
     """Small Jinx 4 object."""
 
     _base = JINX_4
-    _eye_height = 4
+    _eye_height = 5
     _crown_height = 1
     _evil_palette = [
         0xFFFFFF,

@@ -446,7 +446,14 @@ class PostgameVoucherLocation(NPCLocationRow6, KeyItemLocation):
 
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 0),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(VOUCHER_CHECK_DONE, ["next"]),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"]),
@@ -455,7 +462,7 @@ class PostgameVoucherLocation(NPCLocationRow6, KeyItemLocation):
         JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["next"]),
         JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["next"]),
-        Jmp(["marios_pad_hint_text"])
+        Jmp(["marios_pad_hint_text"]),
     ]
 
     # Flag as checked: VOUCHER_CHECK_DONE
@@ -478,9 +485,18 @@ class MushroomWay1LowerChest(TreasureChestLocationRow1):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 1),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R203_MUSHROOM_WAY_AREA_01, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R203_MUSHROOM_WAY_AREA_01, ["next"]
+        ),
+        Jmp(["mushroom_way_hint_text"]),
     ]
     # Flag as checked: npc 0 in room 203 has its object trigger disabled.
 
@@ -499,9 +515,18 @@ class MushroomWay1UpperChest(TreasureChestLocationRow2):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 2),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R203_MUSHROOM_WAY_AREA_01, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R203_MUSHROOM_WAY_AREA_01, ["next"]
+        ),
+        Jmp(["mushroom_way_hint_text"]),
     ]
     # Flag as checked: npc 1 in room 203 has its object trigger disabled.
 
@@ -513,9 +538,16 @@ class MushroomWay1ToadRescue(NPCLocationRow2):
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 3),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_1, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        Jmp(["mushroom_way_hint_text"]),
     ]
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_1
 
@@ -526,12 +558,27 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_WAY_3
     _world_area = WorldAreaEnum.MUSHROOM_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, EXPStarPrize, SlotsPrize]
+    _blacklist = [
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        FrogCoinPrize,
+        EXPStarPrize,
+        SlotsPrize,
+    ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 4),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R204_MUSHROOM_WAY_AREA_02, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R204_MUSHROOM_WAY_AREA_02, ["next"]
+        ),
+        Jmp(["mushroom_way_hint_text"]),
     ]
     # Flag as checked: npc 0 in room 204 has its object trigger disabled.
 
@@ -543,9 +590,16 @@ class MushroomWay2ToadRescue(NPCLocationRow3):
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 5),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_2, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        Jmp(["mushroom_way_hint_text"]),
     ]
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_2
 
@@ -560,13 +614,23 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
         EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        SlotsPrize, FrogCoinPrize
+        SlotsPrize,
+        FrogCoinPrize,
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 6),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R204_MUSHROOM_WAY_AREA_02, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R204_MUSHROOM_WAY_AREA_02, ["next"]
+        ),
+        Jmp(["mushroom_way_hint_text"]),
     ]
     # Flag as checked: npc 1 in room 204 has its object trigger disabled.
 
@@ -581,9 +645,16 @@ class MushroomWayLeftItemRemake(StandingLocationRow1):
     _remake_only = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 7),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfObjectNotInSpecificLevel(NPC_10, R204_MUSHROOM_WAY_AREA_02, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        Jmp(["mushroom_way_hint_text"]),
     ]
 
     # Flag as checked: npc 10 in room 204 has been removed from the room.
@@ -599,9 +670,16 @@ class MushroomWayRightItemRemake(StandingLocationRow2):
     _remake_only = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 8),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfObjectNotInSpecificLevel(NPC_11, R204_MUSHROOM_WAY_AREA_02, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        Jmp(["mushroom_way_hint_text"]),
     ]
 
     # Flag as checked: npc 11 in room 204 has been removed from the room.
@@ -652,9 +730,16 @@ class MushroomWayStarPiece(StarPieceLocation):
     _parent = MushrooomWayBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 9),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_3, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        Jmp(["mushroom_way_hint_text"]),
     ]
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
@@ -668,9 +753,16 @@ class MushroomWayBossFightRewardItem(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 10),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_3, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        Jmp(["mushroom_way_hint_text"]),
     ]
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
@@ -691,9 +783,16 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 11),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_3, ["next"]),
-        Jmp(["mushroom_way_hint_text"])
+        Jmp(["mushroom_way_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -704,7 +803,6 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
         if isinstance(prize, CharacterPrize):
             prize.set_starting_level(2)
         return super().set_prize(prize)
-
 
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
@@ -784,9 +882,18 @@ class MushroomKingdomMainHall(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 12),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
     # Flag as checked: either npc 2 in room 17 or npc 6 in room 325 has its object trigger disabled.
 
@@ -803,9 +910,18 @@ class MushroomKingdomLiberatedVaultLeft(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 13),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
     # Flag as checked: npc 0 in room 31 or 331 has its object trigger disabled.
 
@@ -822,9 +938,18 @@ class MushroomKingdomLiberatedVaultRight(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 14),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
     # Flag as checked: npc 1 in room 31 or 331 has its object trigger disabled.
 
@@ -841,9 +966,18 @@ class MushroomKingdomLiberatedVaultMiddle(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 15),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
     # Flag as checked: npc 2 in room 31 or 331 has its object trigger disabled.
 
@@ -859,9 +993,18 @@ class MushroomKingdomChair(NPCLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 16),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_0, R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_0, R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
     # flag as checked: npc 0 is missing/despawned from room 20 or npc 7 is missing/despawned from room 328
 
@@ -876,9 +1019,16 @@ class MushroomKingdomFreeShopItem(NPCLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 17),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
     # flag as checked: MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED
 
@@ -892,9 +1042,18 @@ class MushroomKingdomShopBasementLeft(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 18),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
     # Flag as checked: npc 0 in room 492 has its object trigger disabled.
 
@@ -908,9 +1067,18 @@ class MushroomKingdomShopBasementRight(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 19),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
     # Flag as checked: npc 1 in room 492 has its object trigger disabled.
 
@@ -925,11 +1093,18 @@ class MushroomKingdomWalletGuyFirstRewardLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 20),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(RETURNED_WALLET, ["next"]),
         StoreItemAmountTo7000(WalletItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -949,11 +1124,18 @@ class MushroomKingdomWalletGuySecondRewardLocation(NPCLocationRow3):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 21),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(SECOND_WALLET_PRIZE_RECEIVED, ["next"]),
         JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(RETURNED_WALLET, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -974,10 +1156,19 @@ class MushroomKingdomOccupiedOutdoorGuardLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 22),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_5, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_5, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -997,10 +1188,17 @@ class MushroomKingdomOccupiedCastleToadRescueLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 23),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_TOAD_RESCUED, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1021,11 +1219,21 @@ class MushroomKingdomOccupiedFamilyRescueLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 24),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
-        JmpIfBitClear(OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_1_DEFEATED, ["mushroom_kingdom_hint_text"]),
+        JmpIfBitClear(
+            OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_1_DEFEATED,
+            ["mushroom_kingdom_hint_text"],
+        ),
         JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_2_DEFEATED, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1042,10 +1250,17 @@ class MushroomKingdomOccupiedGuestRoomLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 25),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1208,11 +1423,13 @@ class MushroomKingdomBossFight(BossFightLocation):
     def post_unlocks(self, world: GameWorld) -> EventScript:
         content: list[UsableEventScriptCommand] = []
         if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.KINGDOM):
-            content.extend([
-                ClearBit(SEWERS_CLOSED), 
-                RemoveObjectFromSpecificLevel(NPC_0, R333_KERO_SEWERS_ENTRANCE), 
-                RemoveObjectFromSpecificLevel(NPC_1, R333_KERO_SEWERS_ENTRANCE)
-            ])
+            content.extend(
+                [
+                    ClearBit(SEWERS_CLOSED),
+                    RemoveObjectFromSpecificLevel(NPC_0, R333_KERO_SEWERS_ENTRANCE),
+                    RemoveObjectFromSpecificLevel(NPC_1, R333_KERO_SEWERS_ENTRANCE),
+                ]
+            )
         parent = super().post_unlocks(world)
         return EventScript(content + parent.contents + [Return()])
 
@@ -1228,10 +1445,17 @@ class MushroomKingdomStarPiece(StarPieceLocation):
     _parent = MushroomKingdomBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 26),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitSet(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1256,12 +1480,19 @@ class MushroomKingdomStoreExchangeLocation(NPCLocationRow2, KeyItemLocation):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 27),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(RARE_FROG_COIN_EXCHANGED, ["next"]),
         JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
         StoreItemAmountTo7000(RareFrogCoinItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1282,10 +1513,17 @@ class MushroomKingdomInnPurchaseLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 28),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(GAMEBOY_KID_PURCHASE_COMPLETE, ["next"]),
         JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
-        Jmp(["mushroom_kingdom_hint_text"])
+        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1304,13 +1542,27 @@ class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BANDITS_WAY_1
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize] # slots can work here graphically but this is a stupid place for it
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]  # slots can work here graphically but this is a stupid place for it
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 29),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R207_BANDITS_WAY_AREA_02, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_9, R207_BANDITS_WAY_AREA_02, ["next"]
+        ),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-        Jmp(["bandits_way_hint_text"])
+        Jmp(["bandits_way_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1328,10 +1580,17 @@ class BanditsWayCoin1Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 30),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-    #    JmpIfObjectNotInSpecificLevel(NPC_3, R207_BANDITS_WAY_AREA_02, ["next"]),
-    #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-    #    Jmp(["bandits_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        #    JmpIfObjectNotInSpecificLevel(NPC_3, R207_BANDITS_WAY_AREA_02, ["next"]),
+        #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        #    Jmp(["bandits_way_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1349,10 +1608,17 @@ class BanditsWayCoin2Location(StandingLocationRow2):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 31),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-    #    JmpIfObjectNotInSpecificLevel(NPC_4, R207_BANDITS_WAY_AREA_02, ["next"]),
-    #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-    #    Jmp(["bandits_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        #    JmpIfObjectNotInSpecificLevel(NPC_4, R207_BANDITS_WAY_AREA_02, ["next"]),
+        #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        #    Jmp(["bandits_way_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1370,10 +1636,17 @@ class BanditsWayCoin3Location(StandingLocationRow1):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 32),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-    #    JmpIfObjectNotInSpecificLevel(NPC_5, R207_BANDITS_WAY_AREA_02, ["next"]),
-    #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-    #    Jmp(["bandits_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        #    JmpIfObjectNotInSpecificLevel(NPC_5, R207_BANDITS_WAY_AREA_02, ["next"]),
+        #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
+        #    Jmp(["bandits_way_hint_text"])
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1392,10 +1665,19 @@ class BanditsWayDogChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 33),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R077_BANDITS_WAY_AREA_03, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R077_BANDITS_WAY_AREA_03, ["next"]
+        ),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-        Jmp(["bandits_way_hint_text"])
+        Jmp(["bandits_way_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1414,10 +1696,19 @@ class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 34),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R078_BANDITS_WAY_AREA_04, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R078_BANDITS_WAY_AREA_04, ["next"]
+        ),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-        Jmp(["bandits_way_hint_text"])
+        Jmp(["bandits_way_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1445,10 +1736,19 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 35),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R078_BANDITS_WAY_AREA_04, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R078_BANDITS_WAY_AREA_04, ["next"]
+        ),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-        Jmp(["bandits_way_hint_text"])
+        Jmp(["bandits_way_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1481,10 +1781,19 @@ class BanditsWayDeadEndChestLocation(TreasureChestLocationRow1):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 36),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R206_BANDITS_WAY_AREA_05, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R206_BANDITS_WAY_AREA_05, ["next"]
+        ),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-        Jmp(["bandits_way_hint_text"])
+        Jmp(["bandits_way_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1563,10 +1872,17 @@ class BanditsWayStarPiece(StarPieceLocation):
     _parent = BanditsWayBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 37),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-        Jmp(["bandits_way_hint_text"])
+        Jmp(["bandits_way_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1586,10 +1902,17 @@ class BanditsWayBossFirstItemDropLocation(NPCLocationRow1, KeyItemLocation):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 38),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-        Jmp(["bandits_way_hint_text"])
+        Jmp(["bandits_way_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1607,10 +1930,17 @@ class BanditsWayBossSecondItemDropLocation(NPCLocationRow2, KeyItemLocation):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 39),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
-        Jmp(["bandits_way_hint_text"])
+        Jmp(["bandits_way_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1632,11 +1962,23 @@ class KeroSewersStairRoomLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 40),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_1"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS, ["next"], identifier="sewers_closed_check_1"),
-        Jmp(["kero_sewers_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS,
+            ["next"],
+            identifier="sewers_closed_check_1",
+        ),
+        Jmp(["kero_sewers_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1655,11 +1997,23 @@ class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 41),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_2"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS, ["next"], identifier="sewers_closed_check_2"),
-        Jmp(["kero_sewers_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS,
+            ["next"],
+            identifier="sewers_closed_check_2",
+        ),
+        Jmp(["kero_sewers_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1758,11 +2112,23 @@ class KeroSewersFourRatRoomChestLocation(TreasureChestLocationRow1):
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 42),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_3"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS, ["next"], identifier="sewers_closed_check_3"),
-        Jmp(["kero_sewers_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS,
+            ["next"],
+            identifier="sewers_closed_check_3",
+        ),
+        Jmp(["kero_sewers_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1778,14 +2144,32 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_LOWER
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, FrogCoinPrize, SlotsPrize]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        FrogCoinPrize,
+        SlotsPrize,
+    ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 43),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_4"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS, ["next"], identifier="sewers_closed_check_4"),
-        Jmp(["kero_sewers_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS,
+            ["next"],
+            identifier="sewers_closed_check_4",
+        ),
+        Jmp(["kero_sewers_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1801,14 +2185,31 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_1
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [
+        EXPStarPrize,
+        FirstMimicFightLauncher,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 44),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_5"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfBitSet(SEWER_CHEST_FIRST_PRIZE_OBTAINED, ["next"], identifier="sewers_closed_check_5"),
-        Jmp(["kero_sewers_hint_text"])
+        JmpIfBitSet(
+            SEWER_CHEST_FIRST_PRIZE_OBTAINED,
+            ["next"],
+            identifier="sewers_closed_check_5",
+        ),
+        Jmp(["kero_sewers_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1825,14 +2226,27 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_2
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _blacklist = [EXPStarPrize, SlotsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [
+        EXPStarPrize,
+        SlotsPrize,
+        FirstMimicFightLauncher,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+    ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 45),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(SEWERS_FLIPPED_CHEST_OPENED, ["next"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(LANDS_END_GROTTO_BARREL_FLIPPED, ["lands_end_grotto_hint_text"]),
-        Jmp(["kero_sewers_hint_text"])
+        Jmp(["kero_sewers_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1889,11 +2303,18 @@ class KeroSewersStarPiece(StarPieceLocation):
     _parent = KeroSewersBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 46),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_6"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(SEWER_BOSS_DEFEATED, ["next"], identifier="sewers_closed_check_6"),
-        Jmp(["kero_sewers_hint_text"])
+        Jmp(["kero_sewers_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1914,9 +2335,16 @@ class MidasRiverFirstCompletionRewardLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 47),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MIDAS_RIVER_FIRST_VISIT_PRIZE_RECEIVED, ["next"]),
-        Jmp(["midas_river_hint_text"])
+        Jmp(["midas_river_hint_text"]),
     ]
     # Flag as checked: MIDAS_RIVER_FIRST_VISIT_PRIZE_RECEIVED
 
@@ -1929,9 +2357,16 @@ class MidasRiverLeftCaveLocation(RiverLocationRow2):
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 48),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MIDAS_RIVER_TUNNEL_2_BIT_1, ["next"]),
-        Jmp(["midas_river_hint_text"])
+        Jmp(["midas_river_hint_text"]),
     ]
     # Flag as checked: MIDAS_RIVER_TUNNEL_2_BIT_1
 
@@ -1944,9 +2379,16 @@ class MidasRiverBottomLeftCaveLocation(RiverLocationRow2):
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 49),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MIDAS_RIVER_TUNNEL_3_PRIZE, ["next"]),
-        Jmp(["midas_river_hint_text"])
+        Jmp(["midas_river_hint_text"]),
     ]
     # Flag as checked: MIDAS_RIVER_TUNNEL_3_PRIZE
 
@@ -1959,9 +2401,16 @@ class MidasRiverBottomRightCaveLocation(RiverLocationRow2):
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 50),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MIDAS_RIVER_TUNNEL_4_PRIZE, ["next"]),
-        Jmp(["midas_river_hint_text"])
+        Jmp(["midas_river_hint_text"]),
     ]
     # Flag as checked: MIDAS_RIVER_TUNNEL_4_PRIZE
 
@@ -1978,11 +2427,18 @@ class TadpolePondCricketPieExchangeLocation(NPCLocationRow1):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 51),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(CRICKET_PIE_EXCHANGED, ["next"]),
         StoreItemAmountTo7000(CricketPieItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["tadpole_pond_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -1999,12 +2455,19 @@ class TadpolePondCricketJamExchangeLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 52),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(CRICKET_PIE_EXCHANGED, ["next"]),
         JmpIfBitSet(CRICKET_JAM_EXCHANGED, ["next"]),
         StoreItemAmountTo7000(CricketJamItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["tadpole_pond_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2022,9 +2485,16 @@ class MelodyBayFirstRewardLocation(NPCLocationRow1, KeyItemLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 53),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MELODY_BAY_ITEM_1_GRANTED, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["tadpole_pond_hint_text"]),
     ]
     # Flag as checked: MELODY_BAY_ITEM_1_GRANTED
 
@@ -2037,11 +2507,18 @@ class MelodyBaySecondRewardLocation(NPCLocationRow2, KeyItemLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 54),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MELODY_BAY_ITEM_2_GRANTED, ["next"]),
         JmpIfBitClear(MELODY_BAY_ITEM_1_GRANTED, ["next"]),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["tadpole_pond_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2058,11 +2535,18 @@ class MelodyBayThirdRewardLocation(NPCLocationRow3, KeyItemLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 55),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MELODY_BAY_ITEM_3_GRANTED, ["next"]),
         JmpIfBitClear(MELODY_BAY_ITEM_2_GRANTED, ["next"]),
         JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["next"]),
-        Jmp(["tadpole_pond_hint_text"])
+        Jmp(["tadpole_pond_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2084,12 +2568,26 @@ class RoseWaySwingingPlatformRoomLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.ROSE_WAY_PLATFORM
     _world_area = WorldAreaEnum.ROSE_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize] # SlotsPrize can go here graphically, it's just too annoying to hit 4 times
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]  # SlotsPrize can go here graphically, it's just too annoying to hit 4 times
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 56),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS, ["next"]),
-        Jmp(["rose_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS, ["next"]
+        ),
+        Jmp(["rose_way_hint_text"]),
     ]
     # Flag as checked: npc 0 in room 80 has its object trigger disabled.
 
@@ -2102,9 +2600,16 @@ class RoseWayLeftIslandLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 57),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfObjectNotInSpecificLevel(NPC_7, R079_ROSE_WAY_MAIN_AREA, ["next"]),
-        Jmp(["rose_way_hint_text"])
+        Jmp(["rose_way_hint_text"]),
     ]
     # Flag as checked: npc 7 in room 79 has been removed from the room.
 
@@ -2117,9 +2622,16 @@ class RoseWayMiddleIslandLocation(StandingLocationRow2):
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 58),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfObjectNotInSpecificLevel(NPC_8, R079_ROSE_WAY_MAIN_AREA, ["next"]),
-        Jmp(["rose_way_hint_text"])
+        Jmp(["rose_way_hint_text"]),
     ]
     # Flag as checked: npc 8 in room 79 has been removed from the room.
 
@@ -2132,7 +2644,14 @@ class RoseWayCoin1Location(StandingLocationRow7):
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 59),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_18, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2147,7 +2666,14 @@ class RoseWayCoin2Location(StandingLocationRow6):
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 60),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_19, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2162,7 +2688,14 @@ class RoseWayCoin3Location(StandingLocationRow5):
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 61),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_20, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2177,7 +2710,14 @@ class RoseWayCoin4Location(StandingLocationRow4):
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 62),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_21, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2192,7 +2732,14 @@ class RoseWayCoin5Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 63),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_22, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2208,9 +2755,18 @@ class RoseWayFiveChestRoomTopLocation(TreasureChestLocationRow1):
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 64),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
-        Jmp(["rose_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
+        ),
+        Jmp(["rose_way_hint_text"]),
     ]
     # Flag as checked: npc 0 in room 81 has its object trigger disabled.
 
@@ -2224,9 +2780,18 @@ class RoseWayFiveChestRoomBottomLeftLocation(TreasureChestLocationRow2):
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 65),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
-        Jmp(["rose_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
+        ),
+        Jmp(["rose_way_hint_text"]),
     ]
     # Flag as checked: npc 1 in room 81 has its object trigger disabled.
 
@@ -2240,9 +2805,18 @@ class RoseWayFiveChestRoomRightLocation(TreasureChestLocationRow3):
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 66),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
-        Jmp(["rose_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
+        ),
+        Jmp(["rose_way_hint_text"]),
     ]
     # Flag as checked: npc 2 in room 81 has its object trigger disabled.
 
@@ -2256,9 +2830,18 @@ class RoseWayFiveChestRoomLeftLocation(TreasureChestLocationRow4):
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 67),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
-        Jmp(["rose_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
+        ),
+        Jmp(["rose_way_hint_text"]),
     ]
     # Flag as checked: npc 3 in room 81 has its object trigger disabled.
 
@@ -2272,9 +2855,18 @@ class RoseWayFiveChestRoomBottomRightLocation(TreasureChestLocationRow5):
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 68),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]),
-        Jmp(["rose_way_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
+        ),
+        Jmp(["rose_way_hint_text"]),
     ]
     # Flag as checked: npc 4 in room 81 has its object trigger disabled.
 
@@ -2285,15 +2877,24 @@ class RoseWayFiveChestRoomBottomRightLocation(TreasureChestLocationRow5):
 class RoseTownShopLeftChestLocation(TreasureChestLocationRow1):
     _originally_held = FPFlowerPrize
     _rooms = [R087_ROSE_TOWN_ITEM_SHOP]
-    _npc_ids = [NPC_4]
+    _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_2
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 69),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R087_ROSE_TOWN_ITEM_SHOP, ["next"]),
-        Jmp(["rose_town_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R087_ROSE_TOWN_ITEM_SHOP, ["next"]
+        ),
+        Jmp(["rose_town_hint_text"]),
     ]
     # Flag as checked: npc 4 in room 87 has its object trigger disabled.
 
@@ -2301,15 +2902,24 @@ class RoseTownShopLeftChestLocation(TreasureChestLocationRow1):
 class RoseTownShopRightChestLocation(TreasureChestLocationRow2):
     _originally_held = FrogCoin1Prize
     _rooms = [R087_ROSE_TOWN_ITEM_SHOP]
-    _npc_ids = [NPC_5]
+    _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_1
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 70),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R087_ROSE_TOWN_ITEM_SHOP, ["next"]),
-        Jmp(["rose_town_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_5, R087_ROSE_TOWN_ITEM_SHOP, ["next"]
+        ),
+        Jmp(["rose_town_hint_text"]),
     ]
     # Flag as checked: npc 5 in room 87 has its object trigger disabled.
 
@@ -2325,18 +2935,29 @@ class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 71),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R419_LAZY_SHELL_CLOUD, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R419_LAZY_SHELL_CLOUD, ["next"]
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_hint_text"]),
         JmpIfBitSet(GAVE_SEED, ["hint_check_fertilizer"]),
         StoreItemAmountTo7000(SeedItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitSet(GAVE_FERTILIZER, ["rose_town_hint_text"], identifier="hint_check_fertilizer"),
+        JmpIfBitSet(
+            GAVE_FERTILIZER, ["rose_town_hint_text"], identifier="hint_check_fertilizer"
+        ),
         StoreItemAmountTo7000(FertilizerItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["rose_town_hint_text"])
+        Jmp(["rose_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2361,18 +2982,31 @@ class RoseTownCloudLeftChestLocation(TreasureChestLocationRow2):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 72),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R419_LAZY_SHELL_CLOUD, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R419_LAZY_SHELL_CLOUD, ["next"]
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_hint_text"]),
         JmpIfBitSet(GAVE_SEED, ["hint_check_fertilizer2"]),
         StoreItemAmountTo7000(SeedItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitSet(GAVE_FERTILIZER, ["rose_town_hint_text"], identifier="hint_check_fertilizer2"),
+        JmpIfBitSet(
+            GAVE_FERTILIZER,
+            ["rose_town_hint_text"],
+            identifier="hint_check_fertilizer2",
+        ),
         StoreItemAmountTo7000(FertilizerItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["rose_town_hint_text"])
+        Jmp(["rose_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2397,9 +3031,16 @@ class RoseTownInnToadPrizeLocation(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 73),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(ROSE_TOWN_INN_TOAD_ITEM_RECEIVED, ["next"]),
-        Jmp(["rose_town_hint_text"])
+        Jmp(["rose_town_hint_text"]),
     ]
     # Flag as checked: ROSE_TOWN_INN_TOAD_ITEM_RECEIVED
 
@@ -2413,10 +3054,17 @@ class RoseTownInnGazPrizeLocation(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 74),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(ROSE_TOWN_GAZ_ITEM_GRANTED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
-        Jmp(["rose_town_hint_text"])
+        Jmp(["rose_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2441,9 +3089,18 @@ class RoseTownTreasureHouseLeftChestLocation(TreasureChestLocationRow1):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 75),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, ["next"]),
-        Jmp(["rose_town_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, ["next"]
+        ),
+        Jmp(["rose_town_hint_text"]),
     ]
     # Flag as checked: npc 0 in room 93 or 94 has its object trigger disabled.
 
@@ -2464,9 +3121,18 @@ class RoseTownTreasureHouseRightChestLocation(TreasureChestLocationRow2):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 76),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, ["next"]),
-        Jmp(["rose_town_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, ["next"]
+        ),
+        Jmp(["rose_town_hint_text"]),
     ]
     # Flag as checked: npc 1 in room 93 or 94 has its object trigger disabled.
 
@@ -2483,11 +3149,18 @@ class RoseTownTreasureHouseMazeRewardLocation(NPCLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 77),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TREASURE_HUNTER_HOUSE_PRIZE, ["next"]),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(FOREST_MAZE_SECRET_FOUND, ["forest_maze_hint_text"]),
-        Jmp(["rose_town_hint_text"])
+        Jmp(["rose_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2508,10 +3181,19 @@ class RoseTownTreasureHouseUpperChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 78),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F, ["next"]),
-        Jmp(["rose_town_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F, ["next"]
+        ),
+        Jmp(["rose_town_hint_text"]),
     ]
     # Flag as checked: npc 1 in room 97 or 98 has its object trigger disabled.
 
@@ -2529,10 +3211,19 @@ class ForestMazeFirstRoomLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 79),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R224_FOREST_MAZE_AREA_01, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R224_FOREST_MAZE_AREA_01, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2551,10 +3242,19 @@ class ForestMazeFirstUndergroundExitLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 80),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R228_FOREST_MAZE_AREA_04, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R228_FOREST_MAZE_AREA_04, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2580,10 +3280,19 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 81),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2608,10 +3317,19 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 82),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2637,10 +3355,19 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 83),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2659,10 +3386,19 @@ class ForestMazeInnerMazeEntranceLocation(TreasureChestLocationRow1):
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 84),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2681,10 +3417,19 @@ class ForestMazeSecretTopRightChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 85),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R234_FOREST_MAZE_SECRET, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R234_FOREST_MAZE_SECRET, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2703,10 +3448,19 @@ class ForestMazeSecretBottomRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 86),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R234_FOREST_MAZE_SECRET, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R234_FOREST_MAZE_SECRET, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2725,10 +3479,19 @@ class ForestMazeSecretTopMiddleChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 87),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R234_FOREST_MAZE_SECRET, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R234_FOREST_MAZE_SECRET, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2747,10 +3510,19 @@ class ForestMazeSecretBottomMiddleChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 88),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R234_FOREST_MAZE_SECRET, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R234_FOREST_MAZE_SECRET, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2769,10 +3541,19 @@ class ForestMazeSecretLeftChestLocation(TreasureChestLocationRow5):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 89),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R234_FOREST_MAZE_SECRET, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_5, R234_FOREST_MAZE_SECRET, ["next"]
+        ),
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2812,7 +3593,9 @@ class ForestMazeBossFight(BossFightLocation):
         BossFightLocationHenchmanNPC([R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE], [NPC_7]),
         BossFightLocationHenchmanNPC([R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE], [NPC_8]),
         BossFightLocationHenchmanNPC([R228_FOREST_MAZE_AREA_04], [NPC_1]),
-        BossFightLocationHenchmanNPC([R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09], [NPC_13]),
+        BossFightLocationHenchmanNPC(
+            [R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09], [NPC_13]
+        ),
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -2913,9 +3696,7 @@ class ForestMazeBossFight(BossFightLocation):
             )
             if mook_slots_assigned:
                 for i in range(1, 8):
-                    world.action_scripts.delete_command_by_identifier(
-                        f"aero_mold_{i}"
-                    )
+                    world.action_scripts.delete_command_by_identifier(f"aero_mold_{i}")
 
     # Flag as checked: FOREST_LIBERATED
 
@@ -2929,10 +3710,17 @@ class ForestMazeStarPiece(StarPieceLocation):
     _parent = ForestMazeBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 90),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(FOREST_LIBERATED, ["next"]),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -2964,10 +3752,17 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 91),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitSet(FOREST_LIBERATED, ["next"]),
-        Jmp(["forest_maze_hint_text"])
+        Jmp(["forest_maze_hint_text"]),
     ]
 
     def set_prize(self, prize: Prize | None):
@@ -3003,6 +3798,7 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
         if not isinstance(self.prize, MarioRecruitmentPrize):
             return
         from ..data.rooms.npcs import MARIO_ENDING_2
+
         for npc_sub in self._npc_fills:
             room = world.rooms._rooms[npc_sub.room_id]
             if room is None:
@@ -3087,10 +3883,19 @@ class PipeVaultSlidingCoinRoomBackChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 92),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
-        Jmp(["pipe_vault_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_8, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]
+        ),
+        Jmp(["pipe_vault_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3109,10 +3914,19 @@ class PipeVaultSlidingCoinRoomMiddleChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 93),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
-        Jmp(["pipe_vault_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_9, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]
+        ),
+        Jmp(["pipe_vault_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3131,10 +3945,19 @@ class PipeVaultSlidingCoinRoomFrontChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 94),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
-        Jmp(["pipe_vault_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_10, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]
+        ),
+        Jmp(["pipe_vault_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3152,7 +3975,14 @@ class PipeVaultSlidingCoinRoomCoin1Location(StandingLocationRow5):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 95),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_0, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -3172,7 +4002,14 @@ class PipeVaultSlidingCoinRoomCoin2Location(StandingLocationRow4):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 96),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_1, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -3192,7 +4029,14 @@ class PipeVaultSlidingCoinRoomCoin3Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 97),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_2, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -3212,7 +4056,14 @@ class PipeVaultSlidingCoinRoomCoin4Location(StandingLocationRow2):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 98),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_3, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -3232,7 +4083,14 @@ class PipeVaultSlidingCoinRoomCoin5Location(StandingLocationRow1):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 99),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_4, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -3252,10 +4110,19 @@ class PipeVaultSlidingCoinRoomCrouchItemLocation(StandingLocationRow6):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 100),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_5, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
-        Jmp(["pipe_vault_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_5, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]
+        ),
+        Jmp(["pipe_vault_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3272,10 +4139,17 @@ class PipeVaultGoombaThumpinFirstPrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 101),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitSet(GOOMBA_THUMPIN_PRIZE_1_GRANTED, ["next"]),
-        Jmp(["pipe_vault_hint_text"])
+        Jmp(["pipe_vault_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3292,10 +4166,17 @@ class PipeVaultGoombaThumpinSecondPrizeLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 102),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitSet(GOOMBA_THUMPIN_PRIZE_2_GRANTED, ["next"]),
-        Jmp(["pipe_vault_hint_text"])
+        Jmp(["pipe_vault_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3314,10 +4195,19 @@ class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 103),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]),
-        Jmp(["pipe_vault_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]
+        ),
+        Jmp(["pipe_vault_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3336,10 +4226,19 @@ class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 104),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]),
-        Jmp(["pipe_vault_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]
+        ),
+        Jmp(["pipe_vault_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3361,10 +4260,19 @@ class YosterEntranceChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 105),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT, ["next"]),
-        Jmp(["yoster_isle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT, ["next"]
+        ),
+        Jmp(["yoster_isle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3381,10 +4289,17 @@ class YosterRaceCookieYoshiLocation(KeyItemLocation, NPCLocationRow5):
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 106),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitSet(YOSHI_ITEM_GRANTED, ["next"]),
-        Jmp(["yoster_isle_hint_text"])
+        Jmp(["yoster_isle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3401,14 +4316,21 @@ class YosterRacePrize1Location(NPCLocationRow1):
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 107),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["next"]),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(COOKIES_SHUFFLED, ["yoster_isle_hint_text"]),
         JmpIfBitSet(GOT_FREE_COOKIES, ["yoster_isle_hint_text"]),
         StoreItemAmountTo7000(CookiesItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["yoster_isle_hint_text"])
+        Jmp(["yoster_isle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3425,14 +4347,21 @@ class YosterRacePrize2Location(NPCLocationRow3):
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 108),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["next"]),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(COOKIES_SHUFFLED, ["yoster_isle_hint_text"]),
         JmpIfBitSet(GOT_FREE_COOKIES, ["yoster_isle_hint_text"]),
         StoreItemAmountTo7000(CookiesItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["yoster_isle_hint_text"])
+        Jmp(["yoster_isle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3449,14 +4378,21 @@ class YosterRacePrize3Location(NPCLocationRow4):
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 109),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["next"]),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(COOKIES_SHUFFLED, ["yoster_isle_hint_text"]),
         JmpIfBitSet(GOT_FREE_COOKIES, ["yoster_isle_hint_text"]),
         StoreItemAmountTo7000(CookiesItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["yoster_isle_hint_text"])
+        Jmp(["yoster_isle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3476,10 +4412,17 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 110),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(TREASURE_SHOP_ITEM_1_PURCHASED, ["next"]),
-        Jmp(["moleville_hint_text"])
+        Jmp(["moleville_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3505,11 +4448,18 @@ class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 111),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(SEASIDE_LIBERATED, ["next"]),
         JmpIfBitSet(TREASURE_SHOP_ITEM_2_PURCHASED, ["next"]),
-        Jmp(["moleville_hint_text"])
+        Jmp(["moleville_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3537,11 +4487,18 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 112),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(VOLCANO_LIBERATED, ["next"]),
         JmpIfBitSet(TREASURE_SHOP_ITEM_3_PURCHASED, ["next"]),
-        Jmp(["moleville_hint_text"])
+        Jmp(["moleville_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3567,10 +4524,17 @@ class FireworksShopItemLocation(KeyItemLocation, NPCLocationRow1):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 113),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(FIREWORKS_HOUSE_ITEM_SOLD, ["next"]),
-        Jmp(["moleville_hint_text"])
+        Jmp(["moleville_hint_text"]),
     ]
 
     def key(self, world: GameWorld) -> bool:
@@ -3593,10 +4557,16 @@ class PurtendStoreLocation(KeyItemLocation, NPCLocationRow2):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 114),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(PURTEND_STORE_CHECK_DONE, ["next"]),
-
         JmpIfBitClear(PROGRESSIVE_FIREWORKS_ENABLED, ["next"]),
         StoreItemAmountTo7000(FireworksItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
@@ -3624,10 +4594,16 @@ class CookieTraderLocation(KeyItemLocation, NPCLocationRow4):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 115),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(COOKIE_TRADER_CHECKED, ["next"]),
-
         JmpIfBitClear(PROGRESSIVE_FIREWORKS_ENABLED, ["next"]),
         StoreItemAmountTo7000(ShinyStoneItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
@@ -3653,7 +4629,14 @@ class BucketGirlRewardLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 116),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(CARBO_COOKIE_GIVEN, ["next"]),
         StoreItemAmountTo7000(CarboCookieItem),
@@ -3691,10 +4674,19 @@ class OuterMinesTrampolineHenchmanLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 117),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, ["next"]),
-        Jmp(["mines_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, ["next"]
+        ),
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3712,10 +4704,19 @@ class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 118),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, ["next"]),
-        Jmp(["mines_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, ["next"]
+        ),
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3733,10 +4734,21 @@ class OuterMinesRightHenchmanLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 119),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, ["next"]),
-        Jmp(["mines_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
+            ["next"],
+        ),
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3841,10 +4853,17 @@ class OuterMinesStarPiece(StarPieceLocation):
     _parent = OuterMinesBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 120),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BOSS_1_DEFEATED, ["next"]),
-        Jmp(["mines_hint_text"])
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3871,10 +4890,17 @@ class OuterMinesBossPrizeLocation(KeyItemLocation, NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 121),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BOSS_1_DEFEATED, ["next"]),
-        Jmp(["mines_hint_text"])
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3893,13 +4919,22 @@ class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 122),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, ["next"]
+        ),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"])
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3919,13 +4954,20 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 123),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(RUNAWAY_MINECART_ITEM_OBTAINED, ["next"]),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"])
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3944,13 +4986,24 @@ class InnerMinesBoxesChestLocation(TreasureChestLocationRow1):
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 124),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC,
+            ["next"],
+        ),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"])
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3969,13 +5022,24 @@ class InnerMinesSaveBlockChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 125),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS,
+            ["next"],
+        ),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"])
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -3994,13 +5058,24 @@ class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 126),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS,
+            ["next"],
+        ),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"])
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4121,13 +5196,20 @@ class InnerMinesStarPiece(StarPieceLocation):
     _parent = InnerMinesBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 127),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"])
+        Jmp(["mines_hint_text"]),
     ]
     # Flag as checked: MINES_BOSS_2_DEFEATED
 
@@ -4154,13 +5236,20 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 128),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"])
+        Jmp(["mines_hint_text"]),
     ]
 
     def set_prize(self, prize: Prize | None):
@@ -4279,18 +5368,31 @@ class InnerMinesPostgameStarPiece(StarPieceLocation):
     _parent = InnerMinesPostgameBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 129),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BACK_OPENED, ["_mines_boss_2_defeated_check"]),
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"], identifier="_mines_boss_2_defeated_check"),
+        JmpIfBitClear(
+            MINES_BOSS_2_DEFEATED, ["next"], identifier="_mines_boss_2_defeated_check"
+        ),
         JmpIfBitSet(STAY_VOUCHER_USED, ["_mines_postgame_completed_check"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
-        JmpIfBitSet(MINES_POSTGAME_COMPLETED, ["next"], identifier="_mines_postgame_completed_check"),
-        Jmp(["mines_hint_text"])
+        JmpIfBitSet(
+            MINES_POSTGAME_COMPLETED,
+            ["next"],
+            identifier="_mines_postgame_completed_check",
+        ),
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4312,18 +5414,31 @@ class InnerMinesPostgameDrop(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 130),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BACK_OPENED, ["__mines_boss_2_defeated_check"]),
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"], identifier="__mines_boss_2_defeated_check"),
+        JmpIfBitClear(
+            MINES_BOSS_2_DEFEATED, ["next"], identifier="__mines_boss_2_defeated_check"
+        ),
         JmpIfBitSet(STAY_VOUCHER_USED, ["__mines_postgame_completed_check"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
-        JmpIfBitSet(MINES_POSTGAME_COMPLETED, ["next"], identifier="__mines_postgame_completed_check"),
-        Jmp(["mines_hint_text"])
+        JmpIfBitSet(
+            MINES_POSTGAME_COMPLETED,
+            ["next"],
+            identifier="__mines_postgame_completed_check",
+        ),
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4342,9 +5457,16 @@ class BoosterPassBushLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 131),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_PASS_BUSH_ITEM_FOUND, ["next"]),
-        Jmp(["booster_pass_hint_text"])
+        Jmp(["booster_pass_hint_text"]),
     ]
     # flag as checked: BOOSTER_PASS_BUSH_ITEM_FOUND
 
@@ -4355,12 +5477,26 @@ class BoosterPassFirstRoomLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOOSTER_PASS_1
     _world_area = WorldAreaEnum.BOOSTER_PASS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 132),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R100_BOOSTER_PASS_AREA_01, ["next"]),
-        Jmp(["booster_pass_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_8, R100_BOOSTER_PASS_AREA_01, ["next"]
+        ),
+        Jmp(["booster_pass_hint_text"]),
     ]
     # flag as checked: npc 8 in room 100 has its object trigger disabled.
 
@@ -4371,12 +5507,26 @@ class BoosterPassFirstRoomRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOOSTER_PASS_2
     _world_area = WorldAreaEnum.BOOSTER_PASS
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [
+        EXPStarPrize,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+        SlotsPrize,
+    ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 133),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R100_BOOSTER_PASS_AREA_01, ["next"]),
-        Jmp(["booster_pass_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_9, R100_BOOSTER_PASS_AREA_01, ["next"]
+        ),
+        Jmp(["booster_pass_hint_text"]),
     ]
     # flag as checked: npc 9 in room 100 has its object trigger disabled.
 
@@ -4389,9 +5539,16 @@ class BoosterPassSecondRoomFlowerLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 134),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfObjectNotInSpecificLevel(NPC_6, R101_BOOSTER_PASS_AREA_02, ["next"]),
-        Jmp(["booster_pass_hint_text"])
+        Jmp(["booster_pass_hint_text"]),
     ]
     # flag as checked: npc 6 in room 101 has been removed from the room.
 
@@ -4406,8 +5563,17 @@ class BoosterPassSecretMiddleChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 135),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R405_BOOSTER_PASS_SECRET, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_10, R405_BOOSTER_PASS_SECRET, ["next"]
+        ),
         JmpIfBitSet(BOOSTER_PASS_SECRET_OPEN, ["booster_pass_hint_text"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4429,8 +5595,17 @@ class BoosterPassSecretRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 136),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_11, R405_BOOSTER_PASS_SECRET, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_11, R405_BOOSTER_PASS_SECRET, ["next"]
+        ),
         JmpIfBitSet(BOOSTER_PASS_SECRET_OPEN, ["booster_pass_hint_text"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4452,8 +5627,17 @@ class BoosterPassSecretLeftChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 137),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_12, R405_BOOSTER_PASS_SECRET, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_12, R405_BOOSTER_PASS_SECRET, ["next"]
+        ),
         JmpIfBitSet(BOOSTER_PASS_SECRET_OPEN, ["booster_pass_hint_text"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4479,8 +5663,17 @@ class BoosterTowerSpookumStairsLocation(TreasureChestLocationRow1):
     _extra_sprite_buffer_rooms = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 138),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6, R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS, ["next"]
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4500,8 +5693,17 @@ class BoosterTowerTrainRoomCreviceLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 139),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_1, R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_1, R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM, ["next"]
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4522,7 +5724,14 @@ class BoosterTowerChestNearThwompLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 140),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_SEESAW_CHEST_OPENED, ["next"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4545,7 +5754,14 @@ class BoosterTowerFallingChestLocation(
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 141),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_SEESAW_CHEST_OPENED, ["next"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4565,11 +5781,22 @@ class BoosterTowerKnifeGuyPrizeLocation(KeyItemLocation, NPCLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 142),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check"]),
         Jmp(["next"]),
-        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check"], identifier="returned_mario_doll_check"),
+        JmpIfBitClear(
+            MARIO_DOLL_SHUFFLE_ENABLED,
+            ["tower_boss_2_check"],
+            identifier="returned_mario_doll_check",
+        ),
         JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
@@ -4592,22 +5819,35 @@ class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 143),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_"]),
         Jmp(["next"]),
-        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check_"], identifier="returned_mario_doll_check_"),
+        JmpIfBitClear(
+            MARIO_DOLL_SHUFFLE_ENABLED,
+            ["tower_boss_2_check_"],
+            identifier="returned_mario_doll_check_",
+        ),
         JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitSet(KNIFE_GUY_SECOND_PRIZE_AWARDED, ["next"], identifier="tower_boss_2_check_"),
+        JmpIfBitSet(
+            KNIFE_GUY_SECOND_PRIZE_AWARDED, ["next"], identifier="tower_boss_2_check_"
+        ),
         Jmp(["booster_tower_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_do_tower_curtain_game(world, inventory) and world.settings.isflag_enabled(
-            _get_flag("FixKnifeGuy")
-        )
+        return can_do_tower_curtain_game(
+            world, inventory
+        ) and world.settings.isflag_enabled(_get_flag("FixKnifeGuy"))
 
     # flag as checked: KNIFE_GUY_SECOND_PRIZE_AWARDED
 
@@ -4621,8 +5861,17 @@ class BoosterTowerPortraitPrizeLocation(KeyItemLocation, StandingLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 144),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_7, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_7, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, ["next"]
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4645,12 +5894,29 @@ class BoosterTowerElderKeyItemLocation(StandingLocationRow1):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 145),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_0, R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_14, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, ["elder_key_door_opened"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_0, R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP, ["next"]
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_14,
+            R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
+            ["elder_key_door_opened"],
+        ),
         StoreItemAmountTo7000(ElderKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"], identifier="elder_key_door_opened"),
+        JmpIfBitSet(
+            TOWER_OPENED,
+            ["booster_tower_hint_text"],
+            identifier="elder_key_door_opened",
+        ),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
@@ -4670,8 +5936,17 @@ class BoosterTowerParachuteRoomChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 146),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_9, R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, ["next"]
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4691,8 +5966,17 @@ class BoosterTowerParachuteRoomCreviceLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 147),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_8, R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_8, R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, ["next"]
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4715,8 +5999,19 @@ class BoosterTowerCheckerboardRightmostItemLocation(
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 148),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_5, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_5,
+            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
+            ["next"],
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4738,8 +6033,19 @@ class BoosterTowerCheckerboardTopItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 149),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_0, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_0,
+            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
+            ["next"],
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4761,8 +6067,19 @@ class BoosterTowerCheckerboardLeftmostItemLocation(StandingLocationRow2):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 150),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_1, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_1,
+            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
+            ["next"],
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4784,8 +6101,19 @@ class BoosterTowerCheckerboardUpperRightItemLocation(StandingLocationRow3):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 151),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_2, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_2,
+            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
+            ["next"],
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4807,8 +6135,19 @@ class BoosterTowerCheckerboardBottomItemLocation(StandingLocationRow4):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 152),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_3, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_3,
+            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
+            ["next"],
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -4830,7 +6169,14 @@ class BoosterTowerCheckerboardCoin1Location(StandingLocationRow5):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 153),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_7, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4853,7 +6199,14 @@ class BoosterTowerCheckerboardCoin2Location(StandingLocationRow6):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 154),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4876,7 +6229,14 @@ class BoosterTowerCheckerboardCoin3Location(StandingLocationRow7):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 155),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4899,7 +6259,14 @@ class BoosterTowerCheckerboardCoin4Location(StandingLocationRow8):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 156),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4922,7 +6289,14 @@ class BoosterTowerCheckerboardCoin5Location(StandingLocationRow9):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 157),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4945,7 +6319,14 @@ class BoosterTowerCheckerboardCoin6Location(StandingLocationRow10):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 158),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_12, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4968,7 +6349,14 @@ class BoosterTowerCheckerboardCoin7Location(StandingLocationRow11):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 159),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_13, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -4991,7 +6379,14 @@ class BoosterTowerCheckerboardCoin8Location(StandingLocationRow12):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 160),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_14, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -5014,7 +6409,14 @@ class BoosterTowerCheckerboardCoin9Location(StandingLocationRow13):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 161),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_15, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -5037,12 +6439,27 @@ class BoosterTowerRoomKeyChestLocation(TreasureChestLocationRow1):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 162),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_0, R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["room_key_door_opened"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_0, R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, ["next"]
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
+            ["room_key_door_opened"],
+        ),
         StoreItemAmountTo7000(RoomKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"], identifier="room_key_door_opened"),
+        JmpIfBitSet(
+            TOWER_OPENED, ["booster_tower_hint_text"], identifier="room_key_door_opened"
+        ),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
 
@@ -5062,8 +6479,19 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 163),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
+            ["next"],
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -5084,8 +6512,19 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 164),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
+            ["next"],
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -5106,8 +6545,19 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 165),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_9,
+            R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
+            ["next"],
+        ),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
     ]
@@ -5127,15 +6577,28 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 166),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check__"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check__"]),
         Jmp(["next"]),
-        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check__"], identifier="returned_mario_doll_check__"),
+        JmpIfBitClear(
+            MARIO_DOLL_SHUFFLE_ENABLED,
+            ["tower_boss_2_check__"],
+            identifier="returned_mario_doll_check__",
+        ),
         JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check__"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check__"),
+        JmpIfBitSet(
+            TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check__"
+        ),
         Jmp(["booster_tower_hint_text"]),
     ]
 
@@ -5155,15 +6618,31 @@ class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 167),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check___"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check___"]),
         Jmp(["next"]),
-        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check___"], identifier="returned_mario_doll_check___"),
+        JmpIfBitClear(
+            MARIO_DOLL_SHUFFLE_ENABLED,
+            ["tower_boss_2_check___"],
+            identifier="returned_mario_doll_check___",
+        ),
         JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check___"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, ["next"], identifier="tower_boss_2_check___"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_5,
+            R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+            ["next"],
+            identifier="tower_boss_2_check___",
+        ),
         Jmp(["booster_tower_hint_text"]),
     ]
 
@@ -5326,9 +6805,17 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             # Check if character henchman slots are assigned (KeepMinigameSpritesIntact not set)
             from ..types.flags import KeepMinigameSpritesIntact
 
-            character_henchmen_assigned = (
-                not world.settings.isflag_enabled(KeepMinigameSpritesIntact)
-                and ((self.prize.character_henchmen is not None and len(self.prize.character_henchmen) >= 3) or (self.prize.mook_henchmen is not None and len(self.prize.mook_henchmen) > 0))
+            character_henchmen_assigned = not world.settings.isflag_enabled(
+                KeepMinigameSpritesIntact
+            ) and (
+                (
+                    self.prize.character_henchmen is not None
+                    and len(self.prize.character_henchmen) >= 3
+                )
+                or (
+                    self.prize.mook_henchmen is not None
+                    and len(self.prize.mook_henchmen) > 0
+                )
             )
 
             render_booster_tower_indoor_boss(
@@ -5339,8 +6826,16 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
                 character_henchmen_assigned,
             )
             if character_henchmen_assigned:
-                char_count = len(self.prize.character_henchmen) if self.prize.character_henchmen else 0
-                has_mook_fallback = char_count < 3 and self.prize.mook_henchmen is not None and len(self.prize.mook_henchmen) > 0
+                char_count = (
+                    len(self.prize.character_henchmen)
+                    if self.prize.character_henchmen
+                    else 0
+                )
+                has_mook_fallback = (
+                    char_count < 3
+                    and self.prize.mook_henchmen is not None
+                    and len(self.prize.mook_henchmen) > 0
+                )
                 effective_count = 3 if has_mook_fallback else char_count
                 render_booster_tower_henchman_scripts(
                     world,
@@ -5369,15 +6864,28 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     _parent = BoosterTowerIndoorBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 168),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check____"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check____"]),
         Jmp(["next"]),
-        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check____"], identifier="returned_mario_doll_check____"),
+        JmpIfBitClear(
+            MARIO_DOLL_SHUFFLE_ENABLED,
+            ["tower_boss_2_check____"],
+            identifier="returned_mario_doll_check____",
+        ),
         JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check____"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check____"),
+        JmpIfBitSet(
+            TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check____"
+        ),
         Jmp(["booster_tower_hint_text"]),
     ]
 
@@ -5430,7 +6938,6 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower_postgame_boss(world, inventory)
 
-
     def render(self, world: GameWorld):
         op = super().render(world)
         if self.npc_slots and self.prize and self.prize.model:
@@ -5444,8 +6951,7 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
             self.prize.character_henchmen is not None
             and len(self.prize.character_henchmen) > 0
         ) or (
-            self.prize.mook_henchmen is not None
-            and len(self.prize.mook_henchmen) > 0
+            self.prize.mook_henchmen is not None and len(self.prize.mook_henchmen) > 0
         )
         if not is_vanilla and not has_henchmen_substitutions:
             room = world.rooms._rooms[R004_POSTGAME_TOWER]
@@ -5470,20 +6976,37 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _parent = BoosterTowerIndoorBossFightRemake
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 169),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_____"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_____"]),
         Jmp(["next"]),
-        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check_____"], identifier="returned_mario_doll_check_____"),
+        JmpIfBitClear(
+            MARIO_DOLL_SHUFFLE_ENABLED,
+            ["tower_boss_2_check_____"],
+            identifier="returned_mario_doll_check_____",
+        ),
         JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_____"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_____"),
+        JmpIfBitClear(
+            TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_____"
+        ),
         JmpIfBitSet(STAY_VOUCHER_USED, ["__tower_postgame_completed_check"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
-        JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["next"], identifier="__tower_postgame_completed_check"),
+        JmpIfBitSet(
+            POSTGAME_TOWER_COMPLETED,
+            ["next"],
+            identifier="__tower_postgame_completed_check",
+        ),
         Jmp(["booster_tower_hint_text"]),
     ]
 
@@ -5504,20 +7027,37 @@ class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 170),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_______"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_______"]),
         Jmp(["next"]),
-        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check_______"], identifier="returned_mario_doll_check_______"),
+        JmpIfBitClear(
+            MARIO_DOLL_SHUFFLE_ENABLED,
+            ["tower_boss_2_check_______"],
+            identifier="returned_mario_doll_check_______",
+        ),
         JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check_______"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_______"),
+        JmpIfBitClear(
+            TOWER_BOSS_1_STAR_PIECE, ["next"], identifier="tower_boss_2_check_______"
+        ),
         JmpIfBitSet(STAY_VOUCHER_USED, ["___tower_postgame_completed_check"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
-        JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["next"], identifier="___tower_postgame_completed_check"),
+        JmpIfBitSet(
+            POSTGAME_TOWER_COMPLETED,
+            ["next"],
+            identifier="___tower_postgame_completed_check",
+        ),
         Jmp(["booster_tower_hint_text"]),
     ]
 
@@ -5566,15 +7106,28 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
     _parent = BoosterTowerBalconyBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 171),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check______"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check______"]),
         Jmp(["next"]),
-        JmpIfBitClear(MARIO_DOLL_SHUFFLE_ENABLED, ["tower_boss_2_check______"], identifier="returned_mario_doll_check______"),
+        JmpIfBitClear(
+            MARIO_DOLL_SHUFFLE_ENABLED,
+            ["tower_boss_2_check______"],
+            identifier="returned_mario_doll_check______",
+        ),
         JmpIfBitSet(RETURNED_MARIO_DOLL, ["tower_boss_2_check______"]),
         StoreItemAmountTo7000(MarioDollItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitSet(TOWER_BOSS_2_DEFEATED, ["next"], identifier="tower_boss_2_check______"),
+        JmpIfBitSet(
+            TOWER_BOSS_2_DEFEATED, ["next"], identifier="tower_boss_2_check______"
+        ),
         Jmp(["booster_tower_hint_text"]),
     ]
 
@@ -5600,12 +7153,19 @@ class BoosterHillGuaranteedItem1(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 172),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 1),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5627,12 +7187,19 @@ class BoosterHillGuaranteedItem2(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 173),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 2),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5654,12 +7221,19 @@ class BoosterHillGuaranteedItem3(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 174),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 3),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5681,12 +7255,19 @@ class BoosterHillGuaranteedItem4(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 175),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 4),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5708,12 +7289,19 @@ class BoosterHillGuaranteedItem5(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 176),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 5),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5735,12 +7323,19 @@ class BoosterHillGuaranteedItem6(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 177),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 6),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5762,12 +7357,19 @@ class BoosterHillGuaranteedItem7(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 178),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 7),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5789,12 +7391,19 @@ class BoosterHillGuaranteedItem8(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 179),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 8),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5816,12 +7425,19 @@ class BoosterHillGuaranteedItem9(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 180),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 9),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5843,12 +7459,19 @@ class BoosterHillGuaranteedItem10(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 181),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 10),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5870,12 +7493,19 @@ class BoosterHillGuaranteedItem11(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 182),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 11),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5897,12 +7527,19 @@ class BoosterHillGuaranteedItem12(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 183),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 12),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5924,12 +7561,19 @@ class BoosterHillGuaranteedItem13(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 184),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 13),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5951,12 +7595,19 @@ class BoosterHillGuaranteedItem14(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 185),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 14),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5978,12 +7629,19 @@ class BoosterHillGuaranteedItem15(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 186),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 15),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6005,12 +7663,19 @@ class BoosterHillGuaranteedItem16(BoosterHillLocation, StandingLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 187),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 16),
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
-        Jmp(["booster_hill_hint_text"])
+        Jmp(["booster_hill_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6030,8 +7695,15 @@ class MarrymoreFirstSuitePrizeLocation(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 188),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        RunEventAsSubroutine(E0709_SUITE_1_HINT_SUBR)
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        RunEventAsSubroutine(E0709_SUITE_1_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize1Threshold setting
 
@@ -6044,8 +7716,15 @@ class MarrymoreSecondSuitePrizeLocation(NPCLocationRow2):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 189),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        RunEventAsSubroutine(E0710_SUITE_2_HINT_SUBR)
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        RunEventAsSubroutine(E0710_SUITE_2_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize2Threshold setting
 
@@ -6058,8 +7737,15 @@ class MarrymoreThirdSuitePrizeLocation(NPCLocationRow3):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 190),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        RunEventAsSubroutine(E0711_SUITE_3_HINT_SUBR)
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        RunEventAsSubroutine(E0711_SUITE_3_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize3Threshold setting
 
@@ -6072,8 +7758,15 @@ class MarrymoreFourthSuitePrizeLocation(NPCLocationRow4):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 191),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        RunEventAsSubroutine(E0712_SUITE_4_HINT_SUBR)
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        RunEventAsSubroutine(E0712_SUITE_4_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize4Threshold setting
 
@@ -6086,8 +7779,15 @@ class MarrymoreFifthSuitePrizeLocation(NPCLocationRow5):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 192),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        RunEventAsSubroutine(E0713_SUITE_5_HINT_SUBR)
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        RunEventAsSubroutine(E0713_SUITE_5_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize5Threshold setting
 
@@ -6100,8 +7800,15 @@ class MarrymoreSixthSuitePrizeLocation(NPCLocationRow6):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 193),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        RunEventAsSubroutine(E0714_SUITE_6_HINT_SUBR)
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        RunEventAsSubroutine(E0714_SUITE_6_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize6Threshold setting
     # LMK if these need dedicated bits or if AP is able to figure out the threshold on its own
@@ -6115,9 +7822,16 @@ class MarrymoreBigTipLocation(NPCLocationRow7):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 194),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MARRYMORE_MAJOR_TIP_GIVEN, ["next"]),
-        Jmp(["marrymore_hotel_hint_text"])
+        Jmp(["marrymore_hotel_hint_text"]),
     ]
     # flag as checked: MARRYMORE_MAJOR_TIP_GIVEN
 
@@ -6131,9 +7845,18 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 195),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R009_MARRYMORE_INN_REGULAR_ROOM, ["next"]),
-        Jmp(["marrymore_hotel_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R009_MARRYMORE_INN_REGULAR_ROOM, ["next"]
+        ),
+        Jmp(["marrymore_hotel_hint_text"]),
     ]
     # flag as checked: npc 0 in room 9 has its object trigger disabled.
 
@@ -6150,11 +7873,18 @@ class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1):
     _npc_ids = [NPC_8]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 196),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CHAPEL_ITEM_1_RETRIEVED, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        Jmp(["marrymore_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6173,11 +7903,18 @@ class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2):
     _npc_ids = [NPC_5]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 197),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CHAPEL_ITEM_2_RETRIEVED, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        Jmp(["marrymore_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6196,11 +7933,18 @@ class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3):
     _npc_ids = [NPC_6]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 198),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CHAPEL_ITEM_3_RETRIEVED, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        Jmp(["marrymore_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6218,11 +7962,20 @@ class MarrymoreAltarHeadLocation(KeyItemLocation, StandingLocationRow1):
     _world_area = WorldAreaEnum.MARRYMORE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 199),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_7, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_7, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["next"]
+        ),
+        Jmp(["marrymore_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6312,10 +8065,17 @@ class MarrymoreBossFightStarPiece(StarPieceLocation):
     _parent = MarrymoreBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 200),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        Jmp(["marrymore_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6345,10 +8105,17 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 201),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
-        Jmp(["marrymore_hint_text"])
+        Jmp(["marrymore_hint_text"]),
     ]
 
     def set_prize(self, prize: Prize | None):
@@ -6388,10 +8155,12 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
         All others are cloneable (cannot_clone=False, vram_size=0).
         """
         from smrpgpatchbuilder.datatypes.levels.classes import BufferType
+
         assert isinstance(self.prize, CharacterPrize)
 
         if isinstance(self.prize, MarioRecruitmentPrize):
             from ..data.rooms.npcs import MARIO_ENDING_2
+
             for npc_sub in self._npc_fills:
                 room = world.rooms._rooms[npc_sub.room_id]
                 if room is None:
@@ -6524,8 +8293,7 @@ class MarrymoreBossFightRemake(BossFightLocation):
             self.prize.character_henchmen is not None
             and len(self.prize.character_henchmen) > 0
         ) or (
-            self.prize.mook_henchmen is not None
-            and len(self.prize.mook_henchmen) > 0
+            self.prize.mook_henchmen is not None and len(self.prize.mook_henchmen) > 0
         )
         if not is_vanilla and not has_henchmen_substitutions:
             room = world.rooms._rooms[R050_POSTGAME_CHAPEL]
@@ -6548,7 +8316,14 @@ class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
     _parent = MarrymoreBossFightRemake
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 202),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(POSTGAME_CHAPEL_COMPLETE, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
@@ -6576,7 +8351,14 @@ class MarrymoreBossFightRemakeItemDrop(NPCLocationRow4):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 203),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(POSTGAME_CHAPEL_COMPLETE, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
@@ -6602,10 +8384,19 @@ class StarHillStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.STAR_HILL
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 204),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectInSpecificLevel(NPC_9, R159_STAR_HILL_AREA_04, ["star_hill_hint_text"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectInSpecificLevel(
+            NPC_9, R159_STAR_HILL_AREA_04, ["star_hill_hint_text"]
+        ),
         JmpIfBitSet(STAR_HILL_CHECKED, ["next"]),
-        Jmp(["star_hill_hint_text"])
+        Jmp(["star_hill_hint_text"]),
     ]
     # Flag as checked (send item, which i guess we can't do yet with SP checks):  NPC 9 removed from room and STAR_HILL_CHECKED
     # Flag as checked (tracker): STAR_HILL_CHECKED
@@ -6620,9 +8411,16 @@ class FrogDiscipleLocation1(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 205),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_1_PURCHASED, ["next"]),
-        Jmp(["frog_disciple_hint_text"])
+        Jmp(["frog_disciple_hint_text"]),
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_1_PURCHASED
 
@@ -6633,9 +8431,16 @@ class FrogDiscipleLocation2(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 206),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_2_PURCHASED, ["next"]),
-        Jmp(["frog_disciple_hint_text"])
+        Jmp(["frog_disciple_hint_text"]),
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_2_PURCHASED
     # FROG_DISCIPLE_ITEM_1_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
@@ -6647,9 +8452,16 @@ class FrogDiscipleLocation3(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 207),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_3_PURCHASED, ["next"]),
-        Jmp(["frog_disciple_hint_text"])
+        Jmp(["frog_disciple_hint_text"]),
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_3_PURCHASED
     # FROG_DISCIPLE_ITEM_2_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
@@ -6661,9 +8473,16 @@ class FrogDiscipleLocation4(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 208),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_4_PURCHASED, ["next"]),
-        Jmp(["frog_disciple_hint_text"])
+        Jmp(["frog_disciple_hint_text"]),
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_4_PURCHASED
     # FROG_DISCIPLE_ITEM_3_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
@@ -6675,9 +8494,16 @@ class FrogDiscipleLocation5(FrogDiscipleLocation):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 209),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_5_PURCHASED, ["next"]),
-        Jmp(["frog_disciple_hint_text"])
+        Jmp(["frog_disciple_hint_text"]),
     ]
     # flag as checked: FROG_DISCIPLE_ITEM_5_PURCHASED
     # FROG_DISCIPLE_ITEM_4_PURCHASED if SeeYa flag is enabled and shop shuffle is turned off, in which case this isn't really a check
@@ -6855,10 +8681,17 @@ class SeasideBeachStarPiece(StarPieceLocation):
     _parent = SeasideBeachBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 210),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(SEASIDE_LIBERATED, ["next"]),
         JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
-        Jmp(["seaside_town_hint_text"])
+        Jmp(["seaside_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6879,10 +8712,19 @@ class SeasideTownBossPrizeLocation(KeyItemLocation, StandingLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 211),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectInSpecificLevel(NPC_0, R316_SEASIDE_TOWN_BEACH, ["seaside_town_hint_text"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectInSpecificLevel(
+            NPC_0, R316_SEASIDE_TOWN_BEACH, ["seaside_town_hint_text"]
+        ),
         JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
-        Jmp(["seaside_town_hint_text"])
+        Jmp(["seaside_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6903,13 +8745,24 @@ class SeasideTownShedRescueLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 212),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(SEASIDE_SHED_EMPTIED, ["next"]),
         JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, ["seaside_town_hint_text"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
+            ["seaside_town_hint_text"],
+        ),
         StoreItemAmountTo7000(ShedKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["seaside_town_hint_text"])
+        Jmp(["seaside_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6933,10 +8786,19 @@ class SeaStarslapRoomChestLocation(TreasureChestLocationRow1):
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 213),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R134_SEA_AREA_03_SUPER_STAR_ROOM, ["next"]),
-        Jmp(["sea_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R134_SEA_AREA_03_SUPER_STAR_ROOM, ["next"]
+        ),
+        Jmp(["sea_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6955,10 +8817,19 @@ class SeaSaveRoomBackChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 214),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]),
-        Jmp(["sea_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]
+        ),
+        Jmp(["sea_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6977,10 +8848,19 @@ class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 215),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]),
-        Jmp(["sea_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]
+        ),
+        Jmp(["sea_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -6999,10 +8879,19 @@ class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 216),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]),
-        Jmp(["sea_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]
+        ),
+        Jmp(["sea_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7021,10 +8910,19 @@ class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 217),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS, ["next"]),
-        Jmp(["sea_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS, ["next"]
+        ),
+        Jmp(["sea_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7046,10 +8944,21 @@ class ShipRatStairsChestLocation(TreasureChestLocationRow1):
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 218),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS,
+            ["next"],
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7069,10 +8978,17 @@ class ShipRatStairsBoxesLocation(PacketLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS_FLOWER
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 219),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_STAIRWAY_FREESTANDING_ITEM_OBTAINED, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7092,10 +9008,17 @@ class ShipTroopaPuzzleLocation(PacketLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_TROOPA_PUZZLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 220),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_TROOPA_PRIZE, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7115,10 +9038,17 @@ class ShipTrampolinePuzzle(PacketLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_TRAMPOLINE_PUZZLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 221),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(UNKNOWN_707D_1, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7138,10 +9068,17 @@ class Ship3DMazePuzzle(PacketLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_3D_MAZE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 222),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_MAZE_PRIZE, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7160,14 +9097,27 @@ class ShipShopChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 223),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN,
+            ["next"],
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_sea(world, inventory) and can_damage_enemies_with_spells(world, inventory)
+        return can_access_sea(world, inventory) and can_damage_enemies_with_spells(
+            world, inventory
+        )
 
     # flag as checked: npc 0 in room 169 has its object trigger disabled.
 
@@ -7217,10 +9167,17 @@ class ShipCoinSnakePuzzleLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COIN_SNAKE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 224),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_COIN_PRIZE, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7240,10 +9197,17 @@ class ShipCannonballPuzzle(PacketLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_CANNONBALL_PUZZLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 225),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_CANNONBALL_PRIZE, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7263,10 +9227,17 @@ class ShipBarrelPuzzle(PacketLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BARREL_PUZZLE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 226),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(UNKNOWN_707D_5, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7324,10 +9295,17 @@ class ShipPasswordStarPiece(StarPieceLocation):
     _parent = ShipPasswordBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 227),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_MIDBOSS_COMPLETED, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7346,10 +9324,21 @@ class EarlyInnerShipLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 228),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM,
+            ["next"],
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7368,10 +9357,21 @@ class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 229),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM,
+            ["next"],
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7390,10 +9390,19 @@ class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
     _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 230),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, ["next"]
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7412,10 +9421,19 @@ class InnerShipBehindBoxesChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 231),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN, ["next"]
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7434,10 +9452,19 @@ class InnerShipSaveRoomLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 232),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, ["next"]
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7456,10 +9483,19 @@ class InnerShipSaveRoomRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 233),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, ["next"]
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7477,9 +9513,16 @@ class Mimic2DropRewardLocation(NPCLocationRow1):
     _override_id = 513
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 234),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MIMIC_2_CLEARED, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7520,9 +9563,16 @@ class Mimic2StarPiece(StarPieceLocation):
     _parent = Mimic2BossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 235),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MIMIC_2_CLEARED, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7541,9 +9591,16 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     _override_id = 513
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 236),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MIMIC_2_CLEARED, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
     # SecondMimicFightLauncher must be blacklisted to prevent circular dependency:
     # This location's can_access requires defeating second mimic, which requires
@@ -7586,10 +9643,19 @@ class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
     _model_allowlist = UNDERWATER_ALLOWED_MODELS
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 237),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_0, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_0, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7608,10 +9674,19 @@ class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
     _model_allowlist = UNDERWATER_ALLOWED_MODELS
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 238),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_1, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_1, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7630,10 +9705,19 @@ class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
     _model_allowlist = UNDERWATER_ALLOWED_MODELS
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 239),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_2, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_2, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7652,10 +9736,19 @@ class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
     _model_allowlist = UNDERWATER_ALLOWED_MODELS
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 240),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_3, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_3, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7674,10 +9767,19 @@ class InnerShipSecretRoomChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 241),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING, ["next"]
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7695,10 +9797,21 @@ class InnerShipPoolRoomLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 242),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_5, R027_SUNKEN_SHIP_POSTKC_AREA_13_LARGE_UNDERWATER_ROOM_WITH_A_BLOOBER, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_5,
+            R027_SUNKEN_SHIP_POSTKC_AREA_13_LARGE_UNDERWATER_ROOM_WITH_A_BLOOBER,
+            ["next"],
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7717,10 +9830,21 @@ class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 243),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4,
+            R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
+            ["next"],
+        ),
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7859,10 +9983,17 @@ class ShipFinalStarPiece(StarPieceLocation):
     _parent = ShipFinalBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 244),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_LIBERATED, ["next"]),
-        Jmp(["sunken_ship_hint_text"])
+        Jmp(["sunken_ship_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -7930,7 +10061,7 @@ class ShipPostgameBossFight(BossFightLocation):
         op = super().render(world)
         render_ship_postgame_boss(world, self.prize)
         return op
-    
+
     # Flag as checked: POSTGAME_SHIP_COMPLETED
 
 
@@ -7944,7 +10075,14 @@ class ShipPostgameFightItemDrop(KeyItemLocation, NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 245),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(POSTGAME_SHIP_COMPLETED, ["next"]),
         JmpIfBitClear(SHIP_LIBERATED, ["next"]),
@@ -7971,7 +10109,14 @@ class ShipPostgameStarPiece(StarPieceLocation):
     _parent = ShipPostgameBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 246),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(POSTGAME_SHIP_COMPLETED, ["next"]),
         JmpIfBitClear(SHIP_LIBERATED, ["next"]),
@@ -8000,10 +10145,19 @@ class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 247),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R137_LANDS_END_AREA_01, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R137_LANDS_END_AREA_01, ["next"]
+        ),
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8022,10 +10176,19 @@ class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
     _blacklist = []
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 248),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R138_LANDS_END_AREA_02, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6, R138_LANDS_END_AREA_02, ["next"]
+        ),
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8041,13 +10204,24 @@ class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_2
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [SlotsPrize] # SlotsPrize can go here graphically, it's just too annoying to hit 4 times
+    _blacklist = [
+        SlotsPrize
+    ]  # SlotsPrize can go here graphically, it's just too annoying to hit 4 times
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 249),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R138_LANDS_END_AREA_02, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_7, R138_LANDS_END_AREA_02, ["next"]
+        ),
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8065,10 +10239,19 @@ class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.LANDS_END
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 250),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R141_LANDS_END_AREA_04_ROTATING_FLOWERS, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6, R141_LANDS_END_AREA_04_ROTATING_FLOWERS, ["next"]
+        ),
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8087,10 +10270,19 @@ class LandsEndCaveSideRemake(StandingLocationRow1):
     _id = ShuffleLocationSelector.LANDS_END_CAVE_SIDE_REMAKE
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 251),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_19, R142_LANDS_END_AREA_05_SKY_BRIDGE, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_19, R142_LANDS_END_AREA_05_SKY_BRIDGE, ["next"]
+        ),
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8111,10 +10303,21 @@ class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
     _blacklist = [SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 252),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, ["next"]),
-        Jmp(["lands_end_grotto_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_7,
+            R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS,
+            ["next"],
+        ),
+        Jmp(["lands_end_grotto_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8133,10 +10336,21 @@ class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 253),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, ["next"]),
-        Jmp(["lands_end_grotto_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6,
+            R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS,
+            ["next"],
+        ),
+        Jmp(["lands_end_grotto_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8155,11 +10369,23 @@ class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 254),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(LANDS_END_GATED, ["lands_end_grotto_end_chest_sewers_closed"]),
         JmpIfBitSet(SEWERS_CLOSED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS, ["next"], identifier="lands_end_grotto_end_chest_sewers_closed"),
-        Jmp(["lands_end_grotto_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6,
+            R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS,
+            ["next"],
+            identifier="lands_end_grotto_end_chest_sewers_closed",
+        ),
+        Jmp(["lands_end_grotto_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8178,10 +10404,19 @@ class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
     _blacklist = [SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 255),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R263_LANDS_END_UNDERGROUND_AREA_01, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_5, R263_LANDS_END_UNDERGROUND_AREA_01, ["next"]
+        ),
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8200,10 +10435,19 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
     _blacklist = []
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 256),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_18, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_18, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]
+        ),
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8222,10 +10466,19 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
     _blacklist = []
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 257),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_19, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_19, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]
+        ),
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8242,10 +10495,17 @@ class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.LANDS_END
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 258),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(TROOPA_CLIMB_COMPLETED, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8301,10 +10561,17 @@ class LandsEndCloudStarPiece(StarPieceLocation):
     _parent = LandsEndCloudBoss
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 259),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # can appear in first room
         JmpIfBitSet(LANDS_END_CLOUD_STAR_PIECE, ["next"]),
-        Jmp(["lands_end_hint_text"])
+        Jmp(["lands_end_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8323,10 +10590,19 @@ class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 260),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_5, R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8345,10 +10621,19 @@ class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 261),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8367,10 +10652,19 @@ class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 262),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_7, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8389,10 +10683,19 @@ class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 263),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_8, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8411,10 +10714,19 @@ class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 264),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_9, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8433,10 +10745,19 @@ class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 265),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8455,10 +10776,19 @@ class BelomeBeforeBossLowerLeftChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 266),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8477,10 +10807,19 @@ class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 267),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8499,10 +10838,19 @@ class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 268),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8531,13 +10879,22 @@ class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 269),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_0, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_0, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8568,13 +10925,22 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 270),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_1, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_1, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8605,13 +10971,22 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 271),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_2, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_2, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8642,13 +11017,22 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 272),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_3, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_3, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8679,13 +11063,22 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 273),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_4, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_4, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8716,13 +11109,22 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 274),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_5, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_5, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8753,13 +11155,22 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 275),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8790,13 +11201,22 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 276),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_7, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_7, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8827,13 +11247,22 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 277),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_8, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_8, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8864,13 +11293,22 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 278),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_9, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_9, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8901,13 +11339,22 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 279),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8938,13 +11385,22 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 280),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_11, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_11, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -8975,13 +11431,22 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 281),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_13, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_13, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9012,13 +11477,22 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 282),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_14, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_14, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9049,13 +11523,22 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 283),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_15, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_15, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+        ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9081,6 +11564,7 @@ class TempleBossFight(BossFightLocation):
             sequence_setter_event_id=E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
+
     def post_unlocks(self, world: GameWorld) -> EventScript:
         content: list[UsableEventScriptCommand] = []
         if world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.LANDS_END):
@@ -9092,7 +11576,6 @@ class TempleBossFight(BossFightLocation):
             )
         parent = super().post_unlocks(world)
         return EventScript(content + parent.contents + [Return()])
-
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -9115,13 +11598,20 @@ class TempleBossFightStarPiece(StarPieceLocation):
     _parent = TempleBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 284),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(TEMPLE_BOSS_DEFEATED, ["next"]),
         JmpIfBitClear(TEMPLE_BOSS_GATED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["belome_temple_hint_text"])
+        Jmp(["belome_temple_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9174,14 +11664,25 @@ class TempleBossFightStarPiecePostgame(StarPieceLocation):
     _parent = TempleBossFightPostgame
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 285),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(TEMPLE_POSTGAME_BOSS_DEFEATED, ["next"]),
         JmpIfBitSet(STAY_VOUCHER_USED, ["belome3_voucher_used"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
-        JmpIfBitSet(TEMPLE_BOSS_DEFEATED, ["belome_temple_hint_text"], identifier="belome3_voucher_used"),
+        JmpIfBitSet(
+            TEMPLE_BOSS_DEFEATED,
+            ["belome_temple_hint_text"],
+            identifier="belome3_voucher_used",
+        ),
         JmpIfBitClear(TEMPLE_BOSS_GATED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
@@ -9206,14 +11707,25 @@ class TemplePostgameFightItemDrop(NPCLocationRow1):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 286),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(TEMPLE_POSTGAME_BOSS_DEFEATED, ["next"]),
         JmpIfBitSet(STAY_VOUCHER_USED, ["belome3_voucher_used2"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
-        JmpIfBitSet(TEMPLE_BOSS_DEFEATED, ["belome_temple_hint_text"], identifier="belome3_voucher_used2"),
+        JmpIfBitSet(
+            TEMPLE_BOSS_DEFEATED,
+            ["belome_temple_hint_text"],
+            identifier="belome3_voucher_used2",
+        ),
         JmpIfBitClear(TEMPLE_BOSS_GATED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
@@ -9239,8 +11751,17 @@ class MonstroEntranceLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 287),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R267_MONSTRO_TOWN_ENTRANCE, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R267_MONSTRO_TOWN_ENTRANCE, ["next"]
+        ),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
 
@@ -9259,7 +11780,14 @@ class MonstroThwompItemLocation(KeyItemLocation, StandingLocationRow1):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 288),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfObjectNotInSpecificLevel(NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -9293,9 +11821,16 @@ class DojoFirstFight(BossFightLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 289),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(DOJO_BOSS_1_DEFEATED, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["monstro_town_hint_text"]),
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -9330,7 +11865,14 @@ class DojoFirstFightStarPiece(StarPieceLocation):
     _parent = DojoFirstFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 290),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(DOJO_BOSS_1_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -9412,7 +11954,14 @@ class DojoSecondFightStarPiece(StarPieceLocation):
     _parent = DojoSecondFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 291),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(DOJO_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -9491,7 +12040,14 @@ class DojoThirdFightStarPiece(StarPieceLocation):
     _parent = DojoThirdFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 292),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(DOJO_BOSS_3_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -9569,7 +12125,14 @@ class DojoFourthFightStarPiece(StarPieceLocation):
     _parent = DojoFourthFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 293),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -9592,7 +12155,14 @@ class MonstroDojoClearRewardLocation(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 294),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -9669,14 +12239,21 @@ class DojoFifthFightStarPiece(StarPieceLocation):
     _parent = DojoFifthFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 295),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["monstro_town_hint_text"]),
         JmpIfBitSet(STAY_VOUCHER_USED, ["monstro_town_hint_text"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["marrymore_hotel_hint_text"])
+        Jmp(["marrymore_hotel_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9698,14 +12275,21 @@ class MonstroDojoPostgameClearRewardLocation(NPCLocationRow2):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 296),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["monstro_town_hint_text"]),
         JmpIfBitSet(STAY_VOUCHER_USED, ["monstro_town_hint_text"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["marrymore_hotel_hint_text"])
+        Jmp(["marrymore_hotel_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9762,22 +12346,35 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 297),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
         # door will be open if you have progressive fireworks or single fireworks enabled and have gotten to the carbo cookie
-        JmpIfObjectNotInSpecificLevel(NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["monstro_town_hint_text"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["monstro_town_hint_text"]
+        ),
         # door is always openable if you have a shiny stone
         StoreItemAmountTo7000(ShinyStoneItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["monstro_town_hint_text"]),
         # if none of the above are true, you need to turn in the fireworks if moleville is liberated and shuffle one is turned on
         # or just buy a fireworks if vanilla behaviour enabled
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
-        JmpIfBitClear(SHUFFLE_ONE_FIREWORKS_ENABLED, ["moleville_hint_text"]), # should tell you to go to moleville since thats where the shiny stone is
-        StoreItemAmountTo7000(FireworksItem), # final branch: shuffle 1 is turned on and moleville is cleared: if you have a fireworks you can exchange it now
+        JmpIfBitClear(
+            SHUFFLE_ONE_FIREWORKS_ENABLED, ["moleville_hint_text"]
+        ),  # should tell you to go to moleville since thats where the shiny stone is
+        StoreItemAmountTo7000(
+            FireworksItem
+        ),  # final branch: shuffle 1 is turned on and moleville is cleared: if you have a fireworks you can exchange it now
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["moleville_hint_text"])
+        Jmp(["moleville_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9798,22 +12395,35 @@ class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 298),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
         # door will be open if you have progressive fireworks or single fireworks enabled and have gotten to the carbo cookie
-        JmpIfObjectNotInSpecificLevel(NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["monstro_town_hint_text"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["monstro_town_hint_text"]
+        ),
         # door is always openable if you have a shiny stone
         StoreItemAmountTo7000(ShinyStoneItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["monstro_town_hint_text"]),
         # if none of the above are true, you need to turn in the fireworks if moleville is liberated and shuffle one is turned on
         # or just buy a fireworks if vanilla behaviour enabled
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
-        JmpIfBitClear(SHUFFLE_ONE_FIREWORKS_ENABLED, ["moleville_hint_text"]), # should tell you to go to moleville since thats where the shiny stone is
-        StoreItemAmountTo7000(FireworksItem), # final branch: shuffle 1 is turned on and moleville is cleared: if you have a fireworks you can exchange it now
+        JmpIfBitClear(
+            SHUFFLE_ONE_FIREWORKS_ENABLED, ["moleville_hint_text"]
+        ),  # should tell you to go to moleville since thats where the shiny stone is
+        StoreItemAmountTo7000(
+            FireworksItem
+        ),  # final branch: shuffle 1 is turned on and moleville is cleared: if you have a fireworks you can exchange it now
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["moleville_hint_text"])
+        Jmp(["moleville_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9867,7 +12477,14 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
     _parent = MonstroSealedDoorBossFightPostgame
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 299),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
@@ -9876,7 +12493,7 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         StoreItemAmountTo7000(ExtraShinyStoneItem, identifier="culex_pg_prereq"),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["monstro_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9897,7 +12514,14 @@ class MonstroSealedDoorClearRewardLocationPostgame(KeyItemLocation, NPCLocationR
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 300),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
@@ -9906,7 +12530,7 @@ class MonstroSealedDoorClearRewardLocationPostgame(KeyItemLocation, NPCLocationR
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         StoreItemAmountTo7000(ExtraShinyStoneItem, identifier="culex_pg_prereq2"),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["monstro_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9924,10 +12548,17 @@ class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 301),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(SUPER_JUMP_PRIZE_1_GRANTED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["super_jump_hint_text"])
+        Jmp(["super_jump_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9947,10 +12578,17 @@ class MonstroSecondSuperJumpRewardLocation(NPCLocationRow2):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 302),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(SUPER_JUMP_PRIZE_2_GRANTED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["super_jump_hint_text"])
+        Jmp(["super_jump_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9970,7 +12608,14 @@ class MonstroFlagExchangeLocation(NPCLocationRow1):
     _monstro_shuffle = True
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 303),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitSet(MUSTY_FEARS_QUEST_COMPLETE, ["next"]),
         StoreItemAmountTo7000(DryBonesFlagItem),
@@ -9979,7 +12624,7 @@ class MonstroFlagExchangeLocation(NPCLocationRow1):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         StoreItemAmountTo7000(GreaperFlagItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["monstro_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10005,9 +12650,18 @@ class BeanValleyFirstDeadEndLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 304),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R252_BEAN_VALLEY_MAIN_AREA, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R252_BEAN_VALLEY_MAIN_AREA, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 3 in room 252 has its object trigger disabled.
 
@@ -10021,9 +12675,18 @@ class BeanValleyFirstProgressChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 305),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R252_BEAN_VALLEY_MAIN_AREA, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R252_BEAN_VALLEY_MAIN_AREA, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 4 in room 252 has its object trigger disabled.
 
@@ -10037,9 +12700,18 @@ class BeanValleyLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 306),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 0 in room 334 has its object trigger disabled.
 
@@ -10053,9 +12725,18 @@ class BeanValleyBottomLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 307),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 0 in room 348 has its object trigger disabled.
 
@@ -10069,9 +12750,18 @@ class BeanValleyBottomRightPiranhaPipeUpperLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 308),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 0 in room 349 has its object trigger disabled.
 
@@ -10085,9 +12775,18 @@ class BeanValleyBottomRightPiranhaPipeLowerLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 309),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 2 in room 349 has its object trigger disabled.
 
@@ -10101,9 +12800,18 @@ class BeanValleyRightPipeLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 310),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_5, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 5 in room 335 has its object trigger disabled.
 
@@ -10161,9 +12869,18 @@ class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 311),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_7, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 7 in room 335 has its object trigger disabled.
 
@@ -10176,9 +12893,18 @@ class BeanValleyRightPipeUnderStairsLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 312),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_9, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_9, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 9 in room 335 is removed.
 
@@ -10192,9 +12918,18 @@ class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 313),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_13, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_13, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["next"]
+        ),
+        Jmp(["bean_valley_hint_text"]),
     ]
     # flag as checked: npc 13 in room 251 has its object trigger disabled.
 
@@ -10261,9 +12996,16 @@ class BeanValleyPlanterStarPiece(StarPieceLocation):
     _parent = BeanValleyPlanterBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 314),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BEAN_VALLEY_BOSS_DEFEATED, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        Jmp(["bean_valley_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10281,10 +13023,17 @@ class BeanValleyBossNoteLocation(KeyItemLocation, NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 315),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(BEAN_VALLEY_BOSS_DEFEATED, ["next"]),
         JmpIfBitSet(SEED_CHECKED, ["next"]),
-        Jmp(["bean_valley_hint_text"])
+        Jmp(["bean_valley_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10302,9 +13051,18 @@ class BeanstalkLowestChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 316),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
-        Jmp(["beanstalk_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]
+        ),
+        Jmp(["beanstalk_hint_text"]),
     ]
     # flag as checked: npc 9 in room 379 has its object trigger disabled.
 
@@ -10317,9 +13075,18 @@ class BeanValley1stRoomFloatingItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 317),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_3, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
-        Jmp(["beanstalk_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_3, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]
+        ),
+        Jmp(["beanstalk_hint_text"]),
     ]
     # flag as checked: npc 3 in room 378 has been removed from the room.
 
@@ -10332,7 +13099,14 @@ class BeanValley1stRoomMiddleCoinLocation(StandingLocationRow2):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 318),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_4, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10347,7 +13121,14 @@ class BeanValley1stRoomUpperCoinLocation(StandingLocationRow3):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 319),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_5, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10362,7 +13143,14 @@ class BeanValley1stRoomLowerCoinLocation(StandingLocationRow4):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 320),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectNotInSpecificLevel(NPC_6, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10377,9 +13165,18 @@ class Beanstalk2ndRoomFloatingItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 321),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
-        Jmp(["beanstalk_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]
+        ),
+        Jmp(["beanstalk_hint_text"]),
     ]
     # flag as checked: npc 6 in room 379 has been removed from the room.
 
@@ -10392,7 +13189,14 @@ class Beanstalk2ndRoomCoin1Location(StandingLocationRow2):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 322),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10407,7 +13211,14 @@ class Beanstalk2ndRoomCoin2Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 323),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10422,7 +13233,14 @@ class Beanstalk2ndRoomCoin3Location(StandingLocationRow4):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 324),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10437,7 +13255,14 @@ class BeanValleyEastBeanstalkCoin1Location(StandingLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 325),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10452,7 +13277,14 @@ class BeanValleyEastBeanstalkCoin2Location(StandingLocationRow2):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 326),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10467,7 +13299,14 @@ class BeanValleyEastBeanstalkCoin3Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 327),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10482,7 +13321,14 @@ class BeanValleyEastBeanstalkCoin4Location(StandingLocationRow4):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 328),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10497,7 +13343,14 @@ class BeanValleyEastBeanstalkCoin5Location(StandingLocationRow5):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 329),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10512,7 +13365,14 @@ class BeanValleyWestBeanstalkCoin1Location(StandingLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 330),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10527,7 +13387,14 @@ class BeanValleyWestBeanstalkCoin2Location(StandingLocationRow2):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 331),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10542,7 +13409,14 @@ class BeanValleyWestBeanstalkCoin3Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 332),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -10557,9 +13431,20 @@ class BeanValleyWestBeanstalkFloatingItemLocation(StandingLocationRow4):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 333),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_7, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
-        Jmp(["beanstalk_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_7,
+            R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02,
+            ["next"],
+        ),
+        Jmp(["beanstalk_hint_text"]),
     ]
     # flag as checked: npc 7 in room 381 has been removed from the room.
 
@@ -10573,9 +13458,18 @@ class BeanstalkUpperCloudLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 334),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, ["next"]),
-        Jmp(["beanstalk_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, ["next"]
+        ),
+        Jmp(["beanstalk_hint_text"]),
     ]
     # flag as checked: npc 1 in room 372 has its object trigger disabled.
 
@@ -10589,9 +13483,18 @@ class BeanstalkUpperCloudRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 335),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, ["next"]),
-        Jmp(["beanstalk_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, ["next"]
+        ),
+        Jmp(["beanstalk_hint_text"]),
     ]
     # flag as checked: npc 2 in room 372 has its object trigger disabled.
 
@@ -10605,9 +13508,18 @@ class BeanstalkLowerCloudLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 336),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, ["next"]),
-        Jmp(["beanstalk_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, ["next"]
+        ),
+        Jmp(["beanstalk_hint_text"]),
     ]
     # flag as checked: npc 1 in room 373 has its object trigger disabled.
 
@@ -10621,9 +13533,18 @@ class BeanstalkLowerCloudRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 337),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, ["next"]),
-        Jmp(["beanstalk_hint_text"])
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, ["next"]
+        ),
+        Jmp(["beanstalk_hint_text"]),
     ]
     # flag as checked: npc 2 in room 373 has its object trigger disabled.
 
@@ -10639,12 +13560,19 @@ class CasinoGrateGuyPrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.CASINO
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 338),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(CASINO_PRIZE_WON, ["next"]),
         StoreItemAmountTo7000(BrightCardItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         JmpIfBitClear(MAP_CASINO, ["bean_valley_hint_text"]),
-        Jmp(["casino_hint_text"])
+        Jmp(["casino_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10666,10 +13594,19 @@ class NimbusShopChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 339),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R344_NIMBUS_LAND_ITEM_SHOP, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R344_NIMBUS_LAND_ITEM_SHOP, ["next"]
+        ),
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10687,10 +13624,17 @@ class NimbusInnDreamPrize1Location(NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 340),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(NIMBUS_INN_PRIZE_GRANTED, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10708,10 +13652,17 @@ class NimbusInnDreamPrize2Location(NPCLocationRow2):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 341),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(NIMBUS_INN_PRIZE_GRANTED, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10729,10 +13680,17 @@ class GarroFreeItem(KeyItemLocation, NPCLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 342),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(GARRO_ITEM_GRANTED, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10744,20 +13702,30 @@ class GarroFreeItem(KeyItemLocation, NPCLocationRow1):
 class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
     _bias = True
     _originally_held = FeatherPrize
-    _rooms = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT]
+    _rooms = [
+        R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
+        R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
+    ]
     _override_id = 520
     _id = ShuffleLocationSelector.DODO_REWARD
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 343),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["next"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10828,8 +13796,7 @@ class StatueRoomBossFight(BossFightLocation):
             (
                 s
                 for s in self._npc_slots
-                if s.room_id
-                == R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM
+                if s.room_id == R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM
             ),
             None,
         )
@@ -10858,14 +13825,21 @@ class StatueRoomStarPiece(StarPieceLocation):
     _parent = StatueRoomBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 344),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10889,14 +13863,21 @@ class NimbusCastleOuterPrisonCellarRightNPCLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 345),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(BLUE_CELLAR_GUARD_ITEM_GRANTED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10913,14 +13894,21 @@ class NimbusCastleOuterPrisonCellarLeftNPCLocation(KeyItemLocation, NPCLocationR
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 346),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(RED_CELLAR_GUARD_ITEM_GRANTED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10939,14 +13927,21 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
     _blacklist = [SlotsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 347),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(NIMBUS_MISSABLE_CHECK_CLEARED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10969,14 +13964,25 @@ class NimbusCastleCornerBridgeChestLocation(TreasureChestLocationRow1):
     _blacklist = [SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 348),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2,
+            R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE,
+            ["next"],
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -10998,14 +14004,25 @@ class NimbusCastleOutOfBoundsChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 349),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
+            ["next"],
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11026,14 +14043,25 @@ class NimbusCastleAboveJawfulChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 350),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
+            ["next"],
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11054,14 +14082,25 @@ class NimbusCastleSingleGoldBirdChestLocation(TreasureChestLocationRow1):
     _blacklist = []
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 351),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15,
+            ["next"],
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11083,14 +14122,25 @@ class NimbusCastleTwoLevelLowerChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 352),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
+            ["next"],
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11135,15 +14185,28 @@ class GiantEggStarPiece(StarPieceLocation):
     _parent = GiantEggBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 353),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_1"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_1"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfBitSet(NIMBUS_MID_BOSS_COMPLETED, ["next"], identifier="nimbus_ck_dummy_1"),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_castle_hint_text"]),
+        JmpIfBitSet(
+            NIMBUS_MID_BOSS_COMPLETED, ["next"], identifier="nimbus_ck_dummy_1"
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_castle_hint_text"],
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_castle_hint_text"]),
@@ -11168,15 +14231,28 @@ class NimbusCastleGiantEggRewardLocation(KeyItemLocation, NPCLocationRow1):
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 354),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_2"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_2"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfBitSet(NIMBUS_MID_BOSS_COMPLETED, ["next"], identifier="nimbus_ck_dummy_2"),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_castle_hint_text"]),
+        JmpIfBitSet(
+            NIMBUS_MID_BOSS_COMPLETED, ["next"], identifier="nimbus_ck_dummy_2"
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_castle_hint_text"],
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_castle_hint_text"]),
@@ -11206,21 +14282,42 @@ class NimbusCastleTwoLevelUpperChestLocation(TreasureChestLocationRow2):
     _blacklist = [SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 355),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
+            ["next"],
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_3"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_3"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_3"], identifier="nimbus_ck_dummy_3"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_ck_dummy2_3"],
+            identifier="nimbus_ck_dummy_3",
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_3"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+            ["nimbus_castle_hint_text"],
+            identifier="nimbus_ck_dummy2_3",
+        ),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_castle_hint_text"])
+        Jmp(["nimbus_castle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11239,21 +14336,40 @@ class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
     _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 356),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_4"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_4"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_4"], identifier="nimbus_ck_dummy_4"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_ck_dummy2_4"],
+            identifier="nimbus_ck_dummy_4",
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_4"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+            ["nimbus_castle_hint_text"],
+            identifier="nimbus_ck_dummy2_4",
+        ),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_castle_hint_text"])
+        Jmp(["nimbus_castle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11540,7 +14656,14 @@ class NimbusFinalStarPiece(StarPieceLocation):
     _parent = NimbusFinalBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 357),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(NIMBUS_LAND_LIBERATED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_40"]),
@@ -11548,13 +14671,23 @@ class NimbusFinalStarPiece(StarPieceLocation):
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_40"], identifier="nimbus_ck_dummy_40"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_ck_dummy2_40"],
+            identifier="nimbus_ck_dummy_40",
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_40"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+            ["nimbus_castle_hint_text"],
+            identifier="nimbus_ck_dummy2_40",
+        ),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_castle_hint_text"])
+        Jmp(["nimbus_castle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11578,21 +14711,40 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 358),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_5"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_5"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_5"], identifier="nimbus_ck_dummy_5"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_ck_dummy2_5"],
+            identifier="nimbus_ck_dummy_5",
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_5"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+            ["nimbus_castle_hint_text"],
+            identifier="nimbus_ck_dummy2_5",
+        ),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_castle_hint_text"])
+        Jmp(["nimbus_castle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11611,21 +14763,40 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 359),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, ["next"]
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_6"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_6"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_6"], identifier="nimbus_ck_dummy_6"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_ck_dummy2_6"],
+            identifier="nimbus_ck_dummy_6",
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_6"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+            ["nimbus_castle_hint_text"],
+            identifier="nimbus_ck_dummy2_6",
+        ),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_castle_hint_text"])
+        Jmp(["nimbus_castle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11643,21 +14814,40 @@ class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 360),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_9, R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_9, R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, ["next"]
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_7"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_7"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_7"], identifier="nimbus_ck_dummy_7"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_ck_dummy2_7"],
+            identifier="nimbus_ck_dummy_7",
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_7"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+            ["nimbus_castle_hint_text"],
+            identifier="nimbus_ck_dummy2_7",
+        ),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11675,21 +14865,40 @@ class NimbusLandCrocoItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 361),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
-        JmpIfObjectNotInSpecificLevel(NPC_5, R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING, ["next"]),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_5, R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING, ["next"]
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_8"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_8"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_8"], identifier="nimbus_ck_dummy_8"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_ck_dummy2_8"],
+            identifier="nimbus_ck_dummy_8",
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_8"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+            ["nimbus_castle_hint_text"],
+            identifier="nimbus_ck_dummy2_8",
+        ),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_land_hint_text"])
+        Jmp(["nimbus_land_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11706,7 +14915,14 @@ class NimbusLandInnerCellarLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 362),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(NIMBUS_CASTLE_LIBERATED_GUARD_ITEM_GRANTED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_9"]),
@@ -11714,13 +14930,23 @@ class NimbusLandInnerCellarLocation(NPCLocationRow1):
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_9"], identifier="nimbus_ck_dummy_9"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_ck_dummy2_9"],
+            identifier="nimbus_ck_dummy_9",
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_castle_hint_text"], identifier="nimbus_ck_dummy2_9"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+            ["nimbus_castle_hint_text"],
+            identifier="nimbus_ck_dummy2_9",
+        ),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        Jmp(["nimbus_castle_hint_text"])
+        Jmp(["nimbus_castle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11742,10 +14968,19 @@ class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 363),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, ["next"]
+        ),
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11764,10 +14999,19 @@ class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 364),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, ["next"]
+        ),
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11786,10 +15030,19 @@ class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 365),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R384_VOLCANO_AREA_05, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R384_VOLCANO_AREA_05, ["next"]
+        ),
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11808,10 +15061,19 @@ class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 366),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R384_VOLCANO_AREA_05, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R384_VOLCANO_AREA_05, ["next"]
+        ),
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11829,10 +15091,19 @@ class VolcanoEarlyProgressThirdChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 367),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R385_VOLCANO_AREA_06, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R385_VOLCANO_AREA_06, ["next"]
+        ),
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11850,10 +15121,17 @@ class VolcanoLavaPoolLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 368),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_1, R361_VOLCANO_AREA_09, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11871,10 +15149,19 @@ class VolcanoReverseRecoilItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 369),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_4, R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        JmpIfObjectNotInSpecificLevel(
+            NPC_4, R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES, ["next"]
+        ),
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11892,10 +15179,17 @@ class VolcanoRightDonutItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 370),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_1, R358_VOLCANO_AREA_11, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11913,10 +15207,17 @@ class VolcanoLeftDonutItemLocation(StandingLocationRow2):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 371),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_2, R358_VOLCANO_AREA_11, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11935,10 +15236,19 @@ class VolcanoSaveRoomLowerChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 372),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R366_VOLCANO_AREA_13_WSAVE_POINT, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R366_VOLCANO_AREA_13_WSAVE_POINT, ["next"]
+        ),
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11957,10 +15267,19 @@ class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 373),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R366_VOLCANO_AREA_13_WSAVE_POINT, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R366_VOLCANO_AREA_13_WSAVE_POINT, ["next"]
+        ),
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11979,10 +15298,19 @@ class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 374),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP, ["next"]
+        ),
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12043,10 +15371,17 @@ class VolcanoBridgeStarPiece(StarPieceLocation):
     _parent = VolcanoBridgeBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 375),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitSet(VOLCANO_MIDBOSS_DEFEATED, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12160,7 +15495,9 @@ class VolcanoExitBossFight(BossFightLocation):
             first: list[list[UsableEventScriptCommand]] = [
                 [
                     JmpIfVarEqualsConst(
-                        PRIMARY_TEMP_7000, R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP, [identifier]
+                        PRIMARY_TEMP_7000,
+                        R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+                        [identifier],
                     )
                 ]
             ]
@@ -12187,10 +15524,17 @@ class VolcanoExitStarPiece(StarPieceLocation):
     _parent = VolcanoExitBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 376),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitSet(VOLCANO_LIBERATED, ["next"]),
-        Jmp(["barrel_volcano_hint_text"])
+        Jmp(["barrel_volcano_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12198,7 +15542,6 @@ class VolcanoExitStarPiece(StarPieceLocation):
             world, inventory
         )
 
-        
     def render(
         self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
@@ -12208,13 +15551,20 @@ class VolcanoExitStarPiece(StarPieceLocation):
                 [
                     [
                         JmpIfVarEqualsConst(
-                            PRIMARY_TEMP_7000, R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP, [identifier]
+                            PRIMARY_TEMP_7000,
+                            R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+                            [identifier],
                         )
                     ]
                 ],
                 [
-	                ExitToWorldMap(area=OW50_BARREL_VOLCANO, bit_6=True, bit_7=True, identifier=identifier),
-                    Return()
+                    ExitToWorldMap(
+                        area=OW50_BARREL_VOLCANO,
+                        bit_6=True,
+                        bit_7=True,
+                        identifier=identifier,
+                    ),
+                    Return(),
                 ],
             )
         else:
@@ -12236,10 +15586,19 @@ class KeepDarkRoomChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 377),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, ["next"]
+        ),
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12258,10 +15617,19 @@ class KeepFirstCrocoShopLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 378),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]
+        ),
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12280,10 +15648,19 @@ class KeepFirstCrocoShopRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 379),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]
+        ),
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12302,10 +15679,19 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 380),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12324,10 +15710,19 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 381),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_5, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12346,10 +15741,19 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 382),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12368,10 +15772,19 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 383),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_7, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12389,7 +15802,14 @@ class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 384),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12410,7 +15830,14 @@ class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 385),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12431,7 +15858,14 @@ class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 386),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12452,7 +15886,14 @@ class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 387),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12474,10 +15915,19 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 388),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_10, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_10, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12496,10 +15946,19 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 389),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_11, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_11, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12518,10 +15977,19 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 390),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_12, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_12, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12540,10 +16008,19 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 391),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_13, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_13, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12562,10 +16039,21 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 392),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_8,
+            R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS,
+            ["next"],
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12584,10 +16072,19 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 393),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12606,10 +16103,19 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 394),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12628,10 +16134,19 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 395),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_5, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12650,10 +16165,19 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 396),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12672,10 +16196,19 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 397),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_7, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12693,7 +16226,14 @@ class KeepCannonballCoin1Location(StandingLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 398),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12714,7 +16254,14 @@ class KeepCannonballCoin2Location(StandingLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 399),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12735,7 +16282,14 @@ class KeepCannonballCoin3Location(StandingLocationRow3):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 400),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12756,7 +16310,14 @@ class KeepCannonballCoin4Location(StandingLocationRow4):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 401),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12777,7 +16338,14 @@ class KeepCannonballCoin5Location(StandingLocationRow5):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 402),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_12, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12798,7 +16366,14 @@ class KeepCannonballCoin6Location(StandingLocationRow6):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 403),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_13, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12819,7 +16394,14 @@ class KeepCannonballCoin7Location(StandingLocationRow7):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 404),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_14, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12840,7 +16422,14 @@ class KeepCannonballCoin8Location(StandingLocationRow8):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 405),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_15, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -12864,10 +16453,21 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 406),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
+            ["next"],
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12888,10 +16488,21 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 407),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2,
+            R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
+            ["next"],
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12912,10 +16523,21 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 408),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3,
+            R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
+            ["next"],
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12936,10 +16558,21 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 409),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4,
+            R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
+            ["next"],
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12960,10 +16593,21 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 410),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_5,
+            R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
+            ["next"],
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -12984,10 +16628,21 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 411),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6,
+            R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
+            ["next"],
+        ),
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13081,17 +16736,24 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
     _parent = ObstacleCourseFinalFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 412),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BATTLE_DOOR_BOSS_BIT, ["next"]),
-        Jmp(["keep_obstacle_hint_text"])
+        Jmp(["keep_obstacle_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory) and not_earlygame(
             world, inventory
         )
-    
+
     # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
 
@@ -13108,10 +16770,17 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 413),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_1_PRIZE_RETRIEVED, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13138,10 +16807,17 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 414),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_2_PRIZE_RETRIEVED, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13168,10 +16844,17 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 415),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_3_PRIZE_RETRIEVED, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13198,10 +16881,17 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 416),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_4_PRIZE_RETRIEVED, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13224,10 +16914,17 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 417),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_5_PRIZE_RETRIEVED, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13254,10 +16951,17 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 418),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_6_PRIZE_RETRIEVED, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13353,8 +17057,12 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
             assert credits_obj is not None
             credits_obj._npc = MAGIKOOPA_NPC_2
         if not isinstance(self.prize, KamekBossFight):
-            world.event_scripts.get_command_by_identifier("kamek_palette", PaletteSetMorphs).set_palette_set(EPAL0025_KEEP_BOSS_1_REFORMED)
-            world.event_scripts.get_command_by_identifier("kamek_palette_2", PaletteSet).set_palette_set_starts_at(EPAL0025_KEEP_BOSS_1_REFORMED)
+            world.event_scripts.get_command_by_identifier(
+                "kamek_palette", PaletteSetMorphs
+            ).set_palette_set(EPAL0025_KEEP_BOSS_1_REFORMED)
+            world.event_scripts.get_command_by_identifier(
+                "kamek_palette_2", PaletteSet
+            ).set_palette_set_starts_at(EPAL0025_KEEP_BOSS_1_REFORMED)
             m = self.prize.smallest_npc()
             if isinstance(
                 self.prize,
@@ -13370,9 +17078,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                     "keep_boss_1_animation_pause"
                 )
 
-            elif (
-                m.animations.keep_challenge is not None
-            ):
+            elif m.animations.keep_challenge is not None:
                 world.event_scripts.get_subscript_command_by_identifier(
                     "keep_boss_1_animation_aq",
                     "keep_boss_1_animation",
@@ -13390,15 +17096,19 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                 )
 
             # rise script not used for box summon or battle halls, so have a separate if block
-            if (
-                m.animations.keep_summon is not None
-            ):
+            if m.animations.keep_summon is not None:
                 world.action_scripts.get_command_by_identifier(
                     "keep_battle_room_summon", A_SetSpriteSequence
                 ).set_index(m.animations.keep_summon.sequence_id)
                 world.event_scripts.get_command_by_identifier(
                     "EVENT_941_pause_0", Pause
-                ).set_length((m.animations.keep_summon.contact_frame or m.animations.keep_summon.total_duration) + 12)
+                ).set_length(
+                    (
+                        m.animations.keep_summon.contact_frame
+                        or m.animations.keep_summon.total_duration
+                    )
+                    + 12
+                )
                 world.event_scripts.get_script_by_id(
                     E0942_KEEP_FIRST_BOSS_SUMMON_CHEST
                 ).set_contents(
@@ -13407,14 +17117,17 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                             NPC_1,
                             [
                                 A_FaceSoutheast(),
-                        		A_Pause(60),
+                                A_Pause(60),
                                 A_SetSpriteSequence(
                                     index=m.animations.keep_summon.sequence_id,
                                     is_sequence=True,
                                     looping=False,
                                     mirror_sprite=True,
                                 ),
-                                A_Pause(m.animations.keep_summon.contact_frame or m.animations.keep_summon.total_duration),
+                                A_Pause(
+                                    m.animations.keep_summon.contact_frame
+                                    or m.animations.keep_summon.total_duration
+                                ),
                             ],
                         ),
                         Return(),
@@ -13433,9 +17146,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                     "keep_battle_room_summon"
                 )
         else:
-            world.event_scripts.delete_command_by_identifier(
-                "kamek_palette_3"
-            )
+            world.event_scripts.delete_command_by_identifier("kamek_palette_3")
 
         # Substitute event palettes 24 (evil) and 25 (reformed) with the
         # chosen boss's sprite palette so the pre/post-reformation scene
@@ -13448,18 +17159,18 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
         default_colors = list(
             world.sprite_palettes.get_palette(default_palette_index).colors
         )
-        world.event_palettes.get_palette(
-            EPAL0025_KEEP_BOSS_1_REFORMED
-        ).set_colors(default_colors)
+        world.event_palettes.get_palette(EPAL0025_KEEP_BOSS_1_REFORMED).set_colors(
+            default_colors
+        )
 
         evil_palette_colors = selected_npc.evil_palette
         if evil_palette_colors is None:
             evil_colors = default_colors
         else:
             evil_colors = list(evil_palette_colors)
-        world.event_palettes.get_palette(
-            EPAL0024_KEEP_BOSS_1_EVIL
-        ).set_colors(evil_colors)
+        world.event_palettes.get_palette(EPAL0024_KEEP_BOSS_1_EVIL).set_colors(
+            evil_colors
+        )
 
         return op
 
@@ -13475,10 +17186,17 @@ class KeepAfterObstaclesStarPiece(StarPieceLocation):
     _parent = KeepAfterObstaclesBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 419),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(KEEP_BOSS_1_DEFEATED, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13499,10 +17217,19 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 420),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, ["next"]
+        ),
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13573,9 +17300,7 @@ class KeepChandelierBossFight(BossFightLocation):
             # Read the NPC model placement chose (cached on the location).
             npc_model = self.resolve_npc_model_for_slot(world, self._npc_slots[0])
             m = npc_model()
-            if (
-                m.animations.chandelier_challenge is not None
-            ):
+            if m.animations.chandelier_challenge is not None:
                 world.event_scripts.get_subscript_command_by_identifier(
                     "chandelier_challenge_action_queue_0",
                     "chandelier_challenge",
@@ -13606,10 +17331,17 @@ class KeepChandelierStarPiece(StarPieceLocation):
     _parent = KeepChandelierBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 421),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(KEEP_BOSS_2_DEFEATED, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13624,19 +17356,18 @@ class KeepChandelierStarPiece(StarPieceLocation):
             identifier = str(uuid4())
             assert self.override_id is not None
             first: list[list[UsableEventScriptCommand]] = [
-                [
-                    JmpIfVarEqualsConst(
-                        PRIMARY_TEMP_7000, self.override_id, [identifier]
-                    )
-                ]
+                [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self.override_id, [identifier])]
             ]
             second: list[UsableEventScriptCommand] = [
-                ClearBit(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, identifier=identifier),
+                ClearBit(
+                    DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, identifier=identifier
+                ),
                 JmpToEvent(E2226_KEEP_3RD_BOSS),
             ]
             return (first, second)
         else:
             return super().render(world)
+
     # Flag as checked: KEEP_BOSS_2_DEFEATED
 
 
@@ -13687,10 +17418,17 @@ class KeepFinalStarPiece(StarPieceLocation):
     _parent = KeepFinalBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 422),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(KEEP_BOSS_3_DEFEATED, ["next"]),
-        Jmp(["bowsers_keep_hint_text"])
+        Jmp(["bowsers_keep_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13705,19 +17443,18 @@ class KeepFinalStarPiece(StarPieceLocation):
             identifier = str(uuid4())
             assert self.override_id is not None
             first: list[list[UsableEventScriptCommand]] = [
-                [
-                    JmpIfVarEqualsConst(
-                        PRIMARY_TEMP_7000, self.override_id, [identifier]
-                    )
-                ]
+                [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self.override_id, [identifier])]
             ]
             second: list[UsableEventScriptCommand] = [
-                ClearBit(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, identifier=identifier),
+                ClearBit(
+                    DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, identifier=identifier
+                ),
                 JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT),
             ]
             return (first, second)
         else:
             return super().render(world)
+
     # Flag as checked: KEEP_BOSS_3_DEFEATED
 
 
@@ -13734,10 +17471,19 @@ class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 423),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT, ["next"]),
-        Jmp(["factory_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1, R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT, ["next"]
+        ),
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13756,10 +17502,19 @@ class FactoryBoltPlatformsChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 424),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER, ["next"]),
-        Jmp(["factory_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_7, R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER, ["next"]
+        ),
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13817,10 +17572,17 @@ class FactoryEntranceStarPiece(StarPieceLocation):
     _parent = FactoryEntranceBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 425),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(ABYSS_BOSS_1_DEFEATED, ["next"]),
-        Jmp(["factory_hint_text"])
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13843,10 +17605,21 @@ class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 426),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS, ["next"]),
-        Jmp(["factory_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_6,
+            R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS,
+            ["next"],
+        ),
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13867,10 +17640,21 @@ class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 427),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
-        Jmp(["factory_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0,
+            R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM,
+            ["next"],
+        ),
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13891,10 +17675,21 @@ class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 428),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
-        Jmp(["factory_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_2,
+            R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM,
+            ["next"],
+        ),
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13915,10 +17710,21 @@ class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 429),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_8, R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS, ["next"]),
-        Jmp(["factory_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_8,
+            R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS,
+            ["next"],
+        ),
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13939,10 +17745,21 @@ class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 430),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_9, R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS, ["next"]),
-        Jmp(["factory_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_9,
+            R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS,
+            ["next"],
+        ),
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13963,10 +17780,21 @@ class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 431),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
-        Jmp(["factory_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM,
+            ["next"],
+        ),
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -13987,10 +17815,21 @@ class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
     _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 432),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, ["next"]),
-        Jmp(["factory_hint_text"])
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3,
+            R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM,
+            ["next"],
+        ),
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14029,10 +17868,17 @@ class FactoryTransitionStarPiece(StarPieceLocation):
     _parent = FactoryTransitionBossFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 433),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(ABYSS_BOSS_2_DEFEATED, ["next"]),
-        Jmp(["factory_hint_text"])
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14101,10 +17947,17 @@ class InnerFactoryFirstFightStarPiece(StarPieceLocation):
     _parent = InnerFactoryFirstFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 434),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(INNER_FACTORY_ROOM_1_COMPLETED, ["next"]),
-        Jmp(["factory_hint_text"])
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14125,10 +17978,17 @@ class InnerFactoryToadGiftLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 435),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(TOAD_SHOP_FREEBIE_RECEIVED, ["next"]),
-        Jmp(["factory_hint_text"])
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14203,10 +18063,17 @@ class InnerFactorySecondFightStarPiece(StarPieceLocation):
     _parent = InnerFactorySecondFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 436),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(INNER_FACTORY_ROOM_2_COMPLETED, ["next"]),
-        Jmp(["factory_hint_text"])
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14281,10 +18148,17 @@ class InnerFactoryThirdFightStarPiece(StarPieceLocation):
     _parent = InnerFactoryThirdFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 437),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_10, R472_FACTORY_GROUNDS_AREA_03, ["next"]),
-        Jmp(["factory_hint_text"])
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14359,10 +18233,17 @@ class InnerFactoryFourthFightStarPiece(StarPieceLocation):
     _parent = InnerFactoryFourthFight
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 438),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(INNER_FACTORY_ROOM_4_COMPLETED, ["next"]),
-        Jmp(["factory_hint_text"])
+        Jmp(["factory_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14509,9 +18390,18 @@ class FinalBossFightStarPiece(StarPieceLocation):
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 439),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(FACTORY_BOSS_DEFEATED, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_14, R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_14, R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, ["next"]
+        ),
         JmpIfBitSet(MAP_GATE, ["factory_hint_text"]),
         JmpIfBitClear(CASINO_WARP_ENABLED, ["check_bucket_warp"]),
         StoreItemAmountTo7000(BrightCardItem),
@@ -14557,10 +18447,17 @@ class MariosPadBedFlag(InvisibleFlagLocation):
     _clue_text = """\n[center]My item's underneath a green bed.[await]"""
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 440),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["monstro_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14581,10 +18478,17 @@ class RoseTownSignFlag(InvisibleFlagLocation):
     _clue_text = """\n[center]My item's behind a wooden flower.[await]"""
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 441),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["monstro_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14603,11 +18507,18 @@ class YosterIsleGoalFlag(InvisibleFlagLocation):
     _clue_text = """\n[center]My item's between "O" and "A".[await]"""
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 442),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["monstro_town_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14627,10 +18538,17 @@ class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is underneath a steamwhistle.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 443),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"])
+        Jmp(["monstro_town_hint_text"]),
     ]
 
     # All other flag locations are in logic only after you can talk to the musty fears because otherwise how tf would you know where to look?
@@ -14649,10 +18567,17 @@ class MariosPadLanternFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is under a white lantern.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 444),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14669,10 +18594,17 @@ class MariosPadHatFlag(InvisibleFlagLocation):
     _clue_text = """\n[center]My item's under a red hat.[await]"""
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 445),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14690,10 +18622,17 @@ class MushroomWayTreeFlag(InvisibleFlagLocation):
     _clue_text = " Mine's under a tree, up on a ledge\n by itself.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 446),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14714,10 +18653,17 @@ class MushroomKingdomSignFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's behind a wooden mushroom.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 447),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14737,10 +18683,17 @@ class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
     _clue_text = " Mine is under the bed in an empty\n house.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 448),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14760,10 +18713,17 @@ class ChancellorThroneFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's under a blue chair.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 449),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14780,11 +18740,18 @@ class BanditsWayFlowerFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's on a landing flower.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 450),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14804,12 +18771,21 @@ class KeroStairsFlag(InvisibleFlagLocation):
     _clue_text = " Mine's in a corner, nearby lots of\n dank stairs.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 451),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(SEWERS_CLOSED, ["ks_availability_check"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="ks_availability_check"),
+        JmpIfBitClear(
+            INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="ks_availability_check"
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14829,12 +18805,21 @@ class KeroGateFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is by a lone metal spike fence.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 452),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(SEWERS_CLOSED, ["ks_availability_check_2"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="ks_availability_check_2"),
+        JmpIfBitClear(
+            INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="ks_availability_check_2"
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14853,10 +18838,17 @@ class MidasTreesFlag(InvisibleFlagLocation):
     _clue_text = " Mine's between a lone pair of\n palm trees, near the water.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 453),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14875,10 +18867,17 @@ class TadpoleCabinetFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is in a frog cabinet.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 454),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14894,10 +18893,17 @@ class RoseWayDirtPatchFlag(InvisibleFlagLocation):
     _clue_text = " Mine is in the middle of a HUGE\n patch of dirt.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 455),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14917,10 +18923,17 @@ class RoseTownHydrantFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is under a low steel hydrant.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 456),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14940,10 +18953,17 @@ class RoseTownSinkFlag(InvisibleFlagLocation):
     _clue_text = "[center]My item is in a kitchen sink under\n[center] some green curtains.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 457),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14962,10 +18982,17 @@ class RoseTownBowserFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's under a tiny turtle.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 458),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -14982,12 +19009,19 @@ class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is under a private hydrant.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 459),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15007,12 +19041,19 @@ class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is under a private bucket.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 460),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15033,21 +19074,34 @@ class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's on a big leaf between\n[center] two chests.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 461),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
-        
         JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_cloud_invisible_hint_check"]),
         JmpIfBitSet(GAVE_SEED, ["hint_check_fertilizer3"]),
         StoreItemAmountTo7000(SeedItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        JmpIfBitSet(GAVE_FERTILIZER, ["rose_town_cloud_invisible_hint_check"], identifier="hint_check_fertilizer3"),
+        JmpIfBitSet(
+            GAVE_FERTILIZER,
+            ["rose_town_cloud_invisible_hint_check"],
+            identifier="hint_check_fertilizer3",
+        ),
         StoreItemAmountTo7000(FertilizerItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="rose_town_cloud_invisible_hint_check"),
+        JmpIfBitClear(
+            INVISIBLE_ITEMS_SUMMONED,
+            ["next"],
+            identifier="rose_town_cloud_invisible_hint_check",
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15070,11 +19124,18 @@ class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
     _clue_text = " Mine is behind a brightly\n illuminated tree stump.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 462),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15094,11 +19155,18 @@ class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
     _clue_text = " Mine is on an illuminated pack of\n 5 mushrooms.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 463),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15116,11 +19184,18 @@ class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is on a sleepy bug.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 464),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15140,10 +19215,17 @@ class PipeVaultExteriorFlag(InvisibleFlagLocation):
     _clue_text = " Mine is by a pipe in the middle of\n the road.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 465),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15163,11 +19245,18 @@ class PipeVaultRedPipeFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is behind a low red pipe.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 466),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15185,11 +19274,18 @@ class YosterIsleHutFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's under a fruity gazebo.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 467),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15211,10 +19307,17 @@ class MolevilleHydrantFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's under a gold hydrant.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 468),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15236,10 +19339,47 @@ class MolevilleMountainBushFlag(InvisibleFlagLocation):
     _y_shift = -8
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 469),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
+
+class MolevilleMountainGoFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [
+        R108_MOLEVILLE_OUTSIDE,
+    ]
+    _x_coord = 21
+    _y_coord = 39
+    _world_area = WorldAreaEnum.MOLEVILLE
+    _z_coord = 12
+    _clue_text = " Mine is on “GO”.[await]"
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1009),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15256,10 +19396,17 @@ class MolevilleBedFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's under a middle bed.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 470),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15275,11 +19422,18 @@ class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
     _clue_text = " Mine's between two arrows pointing away from each other.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 471),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15298,11 +19452,18 @@ class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
     _clue_text = " Mine's in a zig-zag room, up\n on the ceiling.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 472),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15319,14 +19480,21 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _z_coord = 3
     _x_shift = 16
-    _clue_text = '\n My item?[delay]\n ...[delay]It\'s on the word “IN”,\n [delay]above a big hole.[await]'
+    _clue_text = "\n My item?[delay]\n ...[delay]It's on the word “IN”,\n [delay]above a big hole.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 473),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15346,10 +19514,17 @@ class BoosterPassCornerBushFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's in a corner bush.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 474),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15366,10 +19541,17 @@ class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
     _clue_text = " Mine's behind a sign with Japanese\n letters.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 475),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15386,12 +19568,19 @@ class BoosterTowerDeskFlag(InvisibleFlagLocation):
     _clue_text = '\n      Mine\'s under "B" and "K".[await]'
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 476),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_1"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_1"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15410,12 +19599,19 @@ class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's on a lightly-loaded see-saw.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 477),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_2"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_2"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15435,12 +19631,19 @@ class BoosterTowerCurtainFlag(InvisibleFlagLocation):
     _clue_text = " Mine's in a corner, between a\n window and a red curtain.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 478),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_3"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_3"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15459,12 +19662,19 @@ class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is near a lonely thwomp.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 479),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_4"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_4"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15484,12 +19694,19 @@ class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is in a broken frame.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 480),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_5"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_5"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15507,12 +19724,19 @@ class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is on an insect cage.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 481),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_6"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_6"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15531,12 +19755,19 @@ class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is behind a toy box.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 482),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_7"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_7"),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15560,10 +19791,17 @@ class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is under a lone backyard box.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 483),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15580,10 +19818,44 @@ class MarrymoreHallwayFlag(InvisibleFlagLocation):
     _clue_text = " My item is in a flower pot in a\n hallway.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 484),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
+
+class MarrymoreCurtains(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [R012_MARRYMORE_INN_SUITE_ROOM]
+    _x_coord = 7
+    _y_coord = 52
+    _world_area = WorldAreaEnum.MARRYMORE
+    _z_coord = 0
+    _clue_text = " Mine's beneath a clock that's beside red curtains.[await]"
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1008),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15596,15 +19868,21 @@ class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
     _x_coord = 7
     _y_coord = 13
     _world_area = WorldAreaEnum.MARRYMORE
-    _z_coord = 6
     _x_shift = -16
     _clue_text = " Mine's beneath two adjoined\n red beds.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 485),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15622,11 +19900,18 @@ class MarrymoreKitchenFlag(InvisibleFlagLocation):
     _clue_text = " Mine is in a big cabinet full of\n dishes.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 486),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15644,15 +19929,54 @@ class MarrymoreFireplaceFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is in an empty fireplace.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 487),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory)
+
+
+class MarrymoreWindowFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [
+        R153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY,
+    ]
+    _x_coord = 17
+    _y_coord = 15
+    _world_area = WorldAreaEnum.MARRYMORE
+    _x_shift = 8
+    _clue_text = " Mine is under a single stained glass window.[await]"
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1007),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["invisible_item_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_chapel(
+            world, inventory
+        )
 
 
 class MarrymoreOrganFlag(InvisibleFlagLocation):
@@ -15669,11 +19993,18 @@ class MarrymoreOrganFlag(InvisibleFlagLocation):
     _clue_text = " Mine is behind a big musical\n instrument.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 488),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15695,11 +20026,18 @@ class MarrymoreAltarFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's behind a podium.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 489),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15719,10 +20057,17 @@ class StarHillNorthStarFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is atop the North Star.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 490),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15739,10 +20084,17 @@ class SeasideTownAnchorFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is behind an anchor.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 491),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15761,10 +20113,17 @@ class SeasideTownHydrantFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is under a high steel hydrant.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 492),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15781,10 +20140,17 @@ class SeasideTownBucketFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is in a bucket between two\n[center]staircases.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 493),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15804,10 +20170,17 @@ class SeasideTownFlowersFlag(InvisibleFlagLocation):
     _clue_text = " Mine's in the middle of three\n pink flowers.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 494),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15824,16 +20197,28 @@ class SeasideTownShedBoxFlag(InvisibleFlagLocation):
     _clue_text = " Mine's under a lone crate in an\n empty house.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 495),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(SEASIDE_SHED_EMPTIED, ["seaside_town_invis_check"]),
         JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, ["seaside_town_invis_check"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
+            ["seaside_town_invis_check"],
+        ),
         StoreItemAmountTo7000(ShedKeyItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="seaside_town_invis_check"),
+        JmpIfBitClear(
+            INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="seaside_town_invis_check"
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15855,11 +20240,18 @@ class SeaArrowFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is beside a mossy up-arrow.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 496),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15878,11 +20270,18 @@ class SeaBoxesFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's in some V-shaped boxes.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 497),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15903,11 +20302,18 @@ class SeaStalagnateFlag(InvisibleFlagLocation):
     _clue_text = " Mine is behind a big gray\n stalagnate.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 498),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15925,11 +20331,18 @@ class SeaUnderwaterSailFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's behind a sail.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 499),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15948,11 +20361,18 @@ class ShipBarrelPileFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is atop a big pile of barrels.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 500),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15969,14 +20389,21 @@ class ShipDoorMarkerFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _z_coord = 1
     _y_shift = 8
-    _clue_text = ' Mine is on a stack of boxes.[await][pause]\n[delay] Hm?[delay] Is that not specific enough?[await][page]\n Well,[delay] the boxes act as a door\n marker.[delay] They represent the\n number “4”.[await]'
+    _clue_text = " Mine is on a stack of boxes.[await][pause]\n[delay] Hm?[delay] Is that not specific enough?[await][page]\n Well,[delay] the boxes act as a door\n marker.[delay] They represent the\n number “4”.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 501),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -15994,11 +20421,18 @@ class ShipButtonFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is under a floating button.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 502),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16018,11 +20452,18 @@ class ShipSwitchFlag(InvisibleFlagLocation):
     )
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 503),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16040,10 +20481,17 @@ class LandsEndPlatformFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is under a rising platform.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 504),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16060,11 +20508,18 @@ class LandsEndCannonFlag(InvisibleFlagLocation):
     _clue_text = " Mine's under a big, quiet cannon.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 505),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16083,11 +20538,18 @@ class LandsEndArrowFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is beside an orange up-arrow.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 506),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16107,11 +20569,18 @@ class LandsEndHillFlag(InvisibleFlagLocation):
     _clue_text = " Mine is on a short, remote red hill.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 507),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16129,11 +20598,18 @@ class LandsEndTwoHillFlag(InvisibleFlagLocation):
     _clue_text = "   My item's between two red hills.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 508),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16156,11 +20632,18 @@ class LandsEndStalagmiteFlag(InvisibleFlagLocation):
     )
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 509),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16179,11 +20662,18 @@ class LandsEndCliffBushFlag(InvisibleFlagLocation):
     _clue_text = " Mine is on a bush, way up high on\n a cliff.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 510),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16201,20 +20691,121 @@ class LandsEndSignFlag(InvisibleFlagLocation):
     _z_coord = 0
     _y_shift = -4
     _x_shift = 8
-    _clue_text = "     My item's on a yellow arrow.[await]"
+    _clue_text = "[center]My item's on a yellow arrow.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 511),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_access_lands_end(
             world, inventory
         )
+
+
+class TempleShaftFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [R423_BELOME_TEMPLE_AREA_06_BELOMES_FORTUNE_ROOM_WELEVATING_PLATFORM]
+    _x_coord = 22
+    _y_coord = 56
+    _world_area = WorldAreaEnum.TEMPLE
+    _x_shift = 8
+    _clue_text = " My item's in an elevator shaft.[await]"
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1004),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_lands_end(
+            world, inventory
+        )
+
+
+class TempleShaftSwitchFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [R423_BELOME_TEMPLE_AREA_06_BELOMES_FORTUNE_ROOM_WELEVATING_PLATFORM]
+    _x_coord = 17
+    _y_coord = 18
+    _world_area = WorldAreaEnum.TEMPLE
+    _z_coord = 2
+    _x_shift = 8
+    _clue_text = " My item's below one golden wall ornament.[await]"
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1005),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_lands_end(
+            world, inventory
+        )
+
+
+class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
+    _bias = True
+    _originally_held = FrogCoin1Prize
+    _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
+    _npc_ids = [NPC_3]
+    _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_4
+    _world_area = WorldAreaEnum.TEMPLE
+    _blacklist = [EXPStarPrize]
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 268),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
+        ),
+        Jmp(["belome_temple_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_lands_end(world, inventory)
+
+    # flag as checked: npc 3 in room 425 has its object trigger disabled.
 
 
 class DojoBonsaiFlag(InvisibleFlagLocation):
@@ -16227,10 +20818,17 @@ class DojoBonsaiFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's underneath a bonsai tree.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 512),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16246,10 +20844,17 @@ class MonstroEntranceSignFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's in a lone flowery bush.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 513),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16267,10 +20872,17 @@ class MonstroBatFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's behind a wooden bat.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 514),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16288,10 +20900,17 @@ class MonstroFanFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's beside a fan.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 515),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16309,10 +20928,17 @@ class MonstroShellFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's beneath a spinning shell.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 516),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16330,10 +20956,17 @@ class BeanValleyPipeFlag(InvisibleFlagLocation):
     _clue_text = " Mine's on an isolated, dead-end\n pipe.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 517),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16349,10 +20982,44 @@ class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine's underneath a big beanstalk.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 518),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory)
+
+
+class BeanValleyCloudsFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02]
+    _x_coord = 18
+    _y_coord = 70
+    _z_coord = 1
+    _world_area = WorldAreaEnum.BEAN_VALLEY
+    _clue_text = "Mine is below a long red spiral.[await]"
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1010),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16370,12 +21037,19 @@ class CasinoBellFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is beside a tiny bell.[await][pause]\n[center]I don't think it does anything.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 519),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         StoreItemAmountTo7000(BrightCardItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16394,11 +21068,51 @@ class NimbusGoldGoombaFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is on a golden Goomba.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 520),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_outer_nimbus(
+            world, inventory
+        )
+
+
+class NimbusOutdoorFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [
+        R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA,
+        R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA,
+    ]
+    _x_coord = 5
+    _y_coord = 49
+    _world_area = WorldAreaEnum.NIMBUS_LAND
+    _z_coord = 2
+    _clue_text = "My item is under a tree star.[await]"
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1011),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16419,11 +21133,18 @@ class NimbusInnLobbyFlag(InvisibleFlagLocation):
     _clue_text = " Mine is under a stove with two\n pots.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 521),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16444,15 +21165,24 @@ class NimbusPlantFlag(InvisibleFlagLocation):
     _clue_text = " Mine is behind a big potted plant\n in a corner.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 522),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_10"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_10"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy_10"),
+        JmpIfBitClear(
+            INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy_10"
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16471,21 +21201,40 @@ class NimbusBirdFlag(InvisibleFlagLocation):
     _clue_text = " Mine is under a birdcage, in a\n restricted dead-end area.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 523),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_11"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_11"]),
         StoreItemAmountTo7000(GoldPaintItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["nimbus_ck_dummy2_11"], identifier="nimbus_ck_dummy_11"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_10,
+            R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
+            ["nimbus_ck_dummy2_11"],
+            identifier="nimbus_ck_dummy_11",
+        ),
         StoreItemAmountTo7000(CastleKey1Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfObjectNotInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["nimbus_ck_dummy3_11"], identifier="nimbus_ck_dummy2_11"),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_6,
+            R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+            ["nimbus_ck_dummy3_11"],
+            identifier="nimbus_ck_dummy2_11",
+        ),
         StoreItemAmountTo7000(CastleKey2Item),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy3_11"),
+        JmpIfBitClear(
+            INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy3_11"
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16504,15 +21253,88 @@ class NimbusHotSpringsFlag(InvisibleFlagLocation):
     _clue_text = " Mine's on the right side of a\n hot pool.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 524),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy3_12"),
+        JmpIfBitClear(
+            INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy3_12"
+        ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and can_clear_nimbus_boss(
+            world, inventory
+        )
+
+
+class BarrelVolcanoInnSignFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP]
+    _x_coord = 15
+    _y_coord = 106
+    _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _z_coord = 6
+    _clue_text = (
+        "\n My item?[await]\n It's on an “INN” that's missing its second “N”.[await]"
+    )
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1000),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["invisible_item_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_volcano(
+            world, inventory
+        )
+
+
+class BarrelVolcanoStumpetFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [R390_VOLCANO_AREA_16_ERUPTING_STUMPET]
+    _x_coord = 15
+    _y_coord = 8
+    _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _z_coord = 0
+    _clue_text = (
+        "\n Mine is behind a big tree. A BIIIIIG tree. It doesn't have leaves.[await]"
+    )
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1002),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["invisible_item_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_volcano(
             world, inventory
         )
 
@@ -16527,11 +21349,81 @@ class VolcanoShipsFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is between two vehicles.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 525),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_volcano(
+            world, inventory
+        )
+
+
+class VolcanoBedFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [R353_VOLCANO_AREA_18_HINO_MART]
+    _x_coord = 8
+    _y_coord = 56
+    _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _z_coord = 1
+    _x_shift = 8
+    _clue_text = "[center]Mine is on a firm mattress.[await]"
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1001),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["invisible_item_hint_text"]),
+    ]
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return can_access_monstro_town(world, inventory) and can_access_volcano(
+            world, inventory
+        )
+
+
+class VolcanoLampFlag(InvisibleFlagLocation):
+    _bias = True
+    _rooms = [R353_VOLCANO_AREA_18_HINO_MART]
+    _x_coord = 6
+    _y_coord = 56
+    _world_area = WorldAreaEnum.BARREL_VOLCANO
+    _z_coord = 0
+    _clue_text = (
+        " Mine is under the only artificial light source in the volcano.[await]"
+    )
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1003),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
+        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
+        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16551,11 +21443,18 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is between two red doors.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 526),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16575,11 +21474,18 @@ class KeepThwompFlag(InvisibleFlagLocation):
     _clue_text = "[center]Mine is under a big thwomp.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 527),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16601,11 +21507,18 @@ class FactoryCanopyFlag(InvisibleFlagLocation):
     _clue_text = "  My item's under a bolted canopy.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 528),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16624,11 +21537,18 @@ class FactoryLugnutFlag(InvisibleFlagLocation):
     _clue_text = "    My item's underneath a lugnut.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 529),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16647,11 +21567,18 @@ class FactoryTrampolineFlag(InvisibleFlagLocation):
     _clue_text = " My item is with the world's\n loneliest trampoline.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 530),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -16672,11 +21599,18 @@ class FactoryButtonFlag(InvisibleFlagLocation):
     _clue_text = " Mine is on a jammed machine\n button.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 531),
-        RunDialog(dialog_id=DI2010_DEBUG_7000, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"])
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:

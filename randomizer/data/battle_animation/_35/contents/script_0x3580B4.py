@@ -75,4 +75,7 @@ script = AnimationScriptBlock(expected_size=183, expected_beginning=0x3580B4, sc
 	UnknownCommand(bytearray([0x8C])),
 	ResetSpriteSequence(),
 	ReturnSubroutine(),
+	SetAbsolute7EToAMEM16Bit(0x7EE022, 0x60, identifier="debugcandy_item"),
+	RunSubroutine(["command_0x35CE2C"]),
+	ReturnSubroutine(),
 ])

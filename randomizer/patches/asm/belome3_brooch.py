@@ -499,15 +499,31 @@ def get_patch(
     perfect_addr = zero_addr + len(zero_bytes)
     timed_addr = perfect_addr + len(perfect_bytes)
 
-    payload = apply_bytes + zero_bytes + perfect_bytes + timed_bytes
-    if len(payload) > FREE_ROM_AVAILABLE_BYTES:
+    total = len(apply_bytes) + len(zero_bytes) + len(perfect_bytes) + len(timed_bytes)
+    if total > FREE_ROM_AVAILABLE_BYTES:
         raise RuntimeError(
-            f"belome3_brooch payload {len(payload)} bytes exceeds "
+            f"belome3_brooch payload {total} bytes exceeds "
             f"{FREE_ROM_AVAILABLE_BYTES} bytes available at "
             f"${FREE_ROM_SNES_ADDR:06X}"
         )
 
-    out: dict[int, bytes] = {FREE_ROM_ROM_OFFSET: payload}
+    # Write each routine as its own dict entry rather than one large
+    # concatenated blob. The single-blob form (~440 bytes) was observed
+    # truncating mid-payload during the SSE → browser → ROM transport
+    # for at least one user; smaller per-routine entries side-step it
+    # cleanly. ROM layout is unchanged (each routine still lives at the
+    # same SNES address; the JSL hooks below point at those addresses).
+    apply_rom_offset = FREE_ROM_ROM_OFFSET
+    zero_rom_offset = apply_rom_offset + len(apply_bytes)
+    perfect_rom_offset = zero_rom_offset + len(zero_bytes)
+    timed_rom_offset = perfect_rom_offset + len(perfect_bytes)
+
+    out: dict[int, bytes] = {
+        apply_rom_offset: apply_bytes,
+        zero_rom_offset: zero_bytes,
+        perfect_rom_offset: perfect_bytes,
+        timed_rom_offset: timed_bytes,
+    }
 
     # Hook 1: $C2:C55E — JSL apply_damage. Replaces the 4 displaced bytes
     # ``REP #$20`` + ``LDX $CA``; the helper restores them before RTL.
