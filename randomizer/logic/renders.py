@@ -214,6 +214,10 @@ def render_bandits_way_boss(world: GameWorld, prize: BossFightPrize) -> None:
             "bandits_way_ascript_recoil", A_SetSpriteSequence
         )
         a.set_index(recoil.sequence_id)
+    else:
+        a = world.action_scripts.delete_command_by_identifier(
+            "bandits_way_ascript_recoil"
+        )
 
 
 # =============================================================================

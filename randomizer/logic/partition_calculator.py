@@ -236,12 +236,16 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     from the original partition, tracked by NPC slot association.
 
     Algorithm:
-    1. Analyze all NPCs: sprite ID, gridplane format
+    1. Analyze all NPCs: sprite ID, gridplane format, room-level cannot_clone
     2. Map original buffers to the NPC indices they served
-    3. Group sprites by ID, count frequency, determine buffer needs
+    3. Group sprites by ID and count frequency — counting ONLY NPCs whose
+       room-level cannot_clone is None (the auto-decide bucket). NPCs with
+       explicit room-level cannot_clone=True/False are excluded so a single
+       override-NPC can't disqualify its sprite for other NPCs sharing it.
     4. Assign up to 3 buffer slots (CHEST→0, COINS→2, gridplane by frequency)
     5. Order gridplane buffers to match NPC object order
-    6. Set cannot_clone: False for buffered NPCs, True for all others
+    6. Set cannot_clone for auto-decide NPCs only: False if their sprite landed
+       in a buffer, True otherwise. Room-level overrides are preserved as-is.
     7. Carry over main_buffer_space and index_in_main_buffer from original
        buffers, tracked by NPC slot (not by buffer index or type)
     """
@@ -263,6 +267,11 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         is_chest: bool
         is_coin: bool
         force_cannot_clone: bool  # Room-level override — orchestrator must respect
+        # Raw room-level cannot_clone value (True/False/None) at recalc-entry.
+        # Drives frequency-analysis exclusion (Step 3) and override preservation
+        # in Step 7. force_cannot_clone may flip to True later via Step 5b's
+        # animation override; original_cannot_clone never changes.
+        original_cannot_clone: bool | None
 
     npc_infos: list[NPCInfo] = []
     for i, obj in enumerate(room.objects):
@@ -286,6 +295,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             is_chest=is_chest,
             is_coin=is_coin,
             force_cannot_clone=force_cc,
+            original_cannot_clone=obj.cannot_clone,
         ))
 
     # =========================================================================
@@ -298,21 +308,26 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     has_coin = any(n.is_coin for n in npc_infos)
 
     # Build sprite groups: sprite_id → (buffer_type, npc_count, first_obj_index)
-    # Count ALL objects (including clones) per sprite for frequency ranking,
-    # since clones with the same sprite ID share VRAM and benefit from buffers.
+    # Frequency analysis runs ONLY over NPCs whose room-level cannot_clone is
+    # None (the auto-decide bucket). NPCs with explicit room-level overrides
+    # (True or False) are excluded — they don't compete for slots and they
+    # don't disqualify their sprite from being buffered for other NPCs that
+    # share the sprite_id. (Pre-fix bug: a force_cannot_clone NPC sharing a
+    # sprite with cannot_clone=None NPCs caused the whole sprite group to be
+    # dropped from buffer eligibility, demoting every NPC sharing that sprite
+    # to cannot_clone=True even though only the override-NPC needed it.)
     from collections import Counter
     sprite_to_type: dict[int, BufferType] = {}  # sprite_id → needed buffer type
-    sprite_counts: Counter[int] = Counter()  # includes clones for ranking
+    sprite_counts: Counter[int] = Counter()  # only auto-decide NPCs counted
     sprite_first_appearance: dict[int, int] = {}  # sprite_id → first obj_index
 
-    # Count ALL objects (including clones) and register their sprite types.
-    # Clones can have different sprites than their parent after shuffling,
-    # and still need buffer consideration.
-    for i, obj in enumerate(room.objects):
-        sprite_id = obj._npc.sprite_id
-        is_gp, fmt = _get_npc_gridplane_info(world, sprite_id)
-        if not is_gp or fmt is None:
+    for npc_info in npc_infos:
+        if npc_info.original_cannot_clone is not None:
+            continue  # Explicit room-level override — excluded from frequency
+        if not npc_info.is_gridplane or npc_info.gridplane_format is None:
             continue
+        sprite_id = npc_info.sprite_id
+        fmt = npc_info.gridplane_format
         sprite_counts[sprite_id] += 1
         if sprite_id not in sprite_to_type:
             if fmt in (0, 1):
@@ -320,14 +335,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             elif fmt in (2, 3):
                 sprite_to_type[sprite_id] = BufferType.THREE_SPRITES_PER_ROW
         if sprite_id not in sprite_first_appearance:
-            sprite_first_appearance[sprite_id] = i
-
-    # Remove sprites whose parent NPC has force_cannot_clone
-    for npc in npc_infos:
-        if npc.force_cannot_clone and npc.sprite_id in sprite_to_type:
-            del sprite_to_type[npc.sprite_id]
-            sprite_counts.pop(npc.sprite_id, None)
-            sprite_first_appearance.pop(npc.sprite_id, None)
+            sprite_first_appearance[sprite_id] = npc_info.obj_index
 
     # Also remove chest/coin sprites from gridplane consideration
     for npc in npc_infos:
@@ -687,15 +695,17 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     # Step 6: Apply buffer changes to the existing partition
     # =========================================================================
-    if world.settings.debug_mode and room_id == 254:
-        print(f"[PARTITION DBG] Room 254:")
+    if world.settings.debug_mode and room_id in (154, 254):
+        print(f"[PARTITION DBG] Room {room_id}:")
         for i, obj in enumerate(room.objects):
             npc_info = next((n for n in npc_infos if n.obj_index == i), None)
             fc = npc_info.force_cannot_clone if npc_info else "?"
             gp = npc_info.is_gridplane if npc_info else "?"
             fmt = npc_info.gridplane_format if npc_info else "?"
             buffered = npc_info.sprite_id in buffered_sprite_ids if npc_info else "?"
-            print(f"  obj[{i}]: sprite={obj._npc.sprite_id} force_cc={fc} gridplane={gp} fmt={fmt} buffered={buffered}")
+            mvs = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
+            occ = obj.cannot_clone
+            print(f"  obj[{i}]: sprite={obj._npc.sprite_id} force_cc={fc} obj.cc={occ} gridplane={gp} fmt={fmt} buffered={buffered} min_vram={mvs}")
         print(f"  buffers: {[(bt.name, bs.name) for bt, bs in zip(new_buffer_types, new_buffer_space)]}")
         print(f"  buffered_sprite_ids: {buffered_sprite_ids}")
         print(f"  sprite_to_new_buffer: {sprite_to_new_buffer}")
@@ -726,6 +736,13 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         obj = room.objects[npc.obj_index]
         if npc.force_cannot_clone:
             # Room-level override — always dedicated VRAM, don't touch
+            pass
+        elif npc.original_cannot_clone is False:
+            # Room author explicitly opted this NPC INTO cloning. Honor it
+            # even if the sprite didn't end up in a frequency-selected buffer
+            # (responsibility falls on the room author to ensure a buffer
+            # exists for the sprite — typically via vanilla_sprite_buffer_pins
+            # or by relying on a same-sprite cannot_clone=None NPC alongside).
             pass
         elif npc.is_chest or npc.is_coin:
             obj.set_cannot_clone(False)

@@ -167,8 +167,9 @@ class CrocoStatueObject(StatueNPC):
 
     _base = CROCO_STATUE_NPC
     _facing_shifts = {
-        SOUTHWEST: PixelShift(3, 0),
-        SOUTHEAST: PixelShift(-3, 0),
+        NORTHWEST: PixelShift(-2, 3),
+        SOUTHEAST: PixelShift(-3, 3),
+        NORTHEAST: PixelShift(-8, 3)
     }
 
 
@@ -217,7 +218,7 @@ class MackBattleObject(BossNPC):
     _ship_beckon = 4
     _dojo_challenge = 4
     _statue_intro = 4
-    _statue_peck = 3
+    _statue_peck = 4
     _statue_flustered = 2
     _keep_challenge = 4
     _keep_summon = 4
@@ -496,8 +497,7 @@ class BelomeSmallStatueObject(StatueNPC):
     """Small Belome statue object in Mushroom Way Area 03."""
 
     _facing_shifts = {
-        SOUTHWEST: PixelShift(3, 2),
-        SOUTHEAST: PixelShift(-3, 2),
+        SOUTHWEST: PixelShift(-4, 0),
     }
 
     _base = BELOME_SMALL_STATUE
@@ -999,7 +999,7 @@ class CulexSmallObject(BossNPC):
     """Small Culex object."""
 
     _base = CULEX_SMALL_NPC
-    _eye_height = 11
+    _eye_height = 13
     _evil_palette = [
         0x180808,
         0x585858,
@@ -2026,7 +2026,7 @@ class MackLargeObject(BossNPC):
     _ship_beckon = 4
     _dojo_challenge = 4
     _statue_intro = 4
-    _statue_peck = 3
+    _statue_peck = 4
     _statue_flustered = 2
     _keep_challenge = 4
     _keep_summon = 4
@@ -2938,7 +2938,7 @@ class Culex3DSmallObject(BossNPC):
     """Small Culex 3D object."""
 
     _base = CULEX_2_SMALL_NPC
-    _eye_height = 11
+    _eye_height = 13
     _evil_palette = [
         0x180808,
         0x585858,

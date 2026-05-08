@@ -327,4 +327,7 @@ room = Room(
             direction=NORTHWEST),
     ],
     effects_npc=EffectsNpc.SAVE_POINT_NPC0,
+    extra_sprite_actions=[
+        SpriteAnimationState.VICTORY_STATIC
+    ]
 )

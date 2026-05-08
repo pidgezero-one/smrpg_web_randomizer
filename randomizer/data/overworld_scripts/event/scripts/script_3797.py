@@ -35,9 +35,9 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	FadeOutMusicToVolume(duration=0, volume=1),
-	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
-	JmpIfBitSet(RUN_AWAY, ["EVENT_3797_jmp_if_bit_set_9"]),
-	JmpIfBitSet(GAME_OVER, ["EVENT_3797_jmp_if_bit_set_9"]),
+	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER, identifier="EVENT_3797_boss_battle_container"),
+	JmpIfBitSet(RUN_AWAY, ["EVENT_3797_boss_battle_container"]), # no run-away logic here
+	JmpIfBitSet(GAME_OVER, ["game_over_Factory"]),
 	SetBit(FACTORY_BOSS_DEFEATED),
 	SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	JmpIfBitSet(WIN_CONDITION_STAR_PIECES, ["EVENT_3797_jmp_if_bit_set_9"]),
@@ -56,4 +56,5 @@ script = EventScript([
 	ClearBit(BUCKET_WARP_DIRECTIONAL_BIT, identifier="EVENT_3797_clear_bit_17"),
 	EnterArea(room_id=R092_GRATE_GUYS_CASINO_INSIDE_CASINO, face_direction=SOUTH, x=3, y=13, z=6, run_entrance_event=False),
 	JmpToEvent(E2633_CASINO_INTERIOR_LOADER),
+    ResetAndChooseGame(identifier="game_over_Factory")
 ])

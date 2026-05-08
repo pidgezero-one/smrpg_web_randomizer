@@ -42,7 +42,7 @@ script = ActionScript([
 	A_SetVarToConst(MINES_MIDBOSS_POSITION, 27),
 	A_Jmp(["ACTION_732_jmp_if_bit_set_2"]),
 	A_Pause(200, identifier="ACTION_732_pause_25"),
-	A_SetVarToConst(MINES_MIDBOSS_POSITION, 25),
+	A_SetVarToConst(MINES_MIDBOSS_POSITION, 23),
 	A_Jmp(["ACTION_732_jmp_if_bit_set_2"]),
 	A_TransferToXYZF(x=18, y=123, z=0, direction=EAST, identifier="ACTION_732_transfer_to_xyzf_28"),
 	A_JmpIfBitSet(TEMP_7044_6, ["ACTION_732_pause_36"]),
@@ -52,8 +52,7 @@ script = ActionScript([
 	A_SetBit(TEMP_7044_6),
 	A_VisibilityOn(),
 	A_Jmp(["ACTION_732_object_memory_clear_bit_40"]),
-	A_Pause(1, identifier="ACTION_732_pause_36"),
-	A_FaceNorthwest(),
+	A_FaceNorthwest(identifier="ACTION_732_pause_36"),
 	A_VisibilityOn(),
 	A_WalkNorthwestSteps(2),
 	A_ObjectMemoryClearBit(arg_1=0x30, bits=[4], identifier="ACTION_732_object_memory_clear_bit_40"),
@@ -65,7 +64,7 @@ script = ActionScript([
 	A_SequenceLoopingOff(),
 	A_WalkSouthwestSteps(3),
 	A_WalkNorthwestSteps(2),
-	A_WalkSouthwestSteps(4),
+	A_WalkSouthwestSteps(3),
 	A_SetVarToConst(MINES_MIDBOSS_POSITION, 25),
 	A_Jmp(["ACTION_732_jmp_if_bit_set_2"])
 ])

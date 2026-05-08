@@ -27,6 +27,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
     A_ObjectMemorySetBit,
+    A_UnknownCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_3
 from ..data.variables.variable_names import *
@@ -2059,6 +2060,7 @@ class RecoveryMushroomPrize(StandardPrize):
         return EventScript([
             ActionQueueSync(target=MEM_70A8, subscript=[
                 A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+                A_UnknownCommand(bytearray([0xFD, 0xF2])),
             ]),
             JmpToEvent(E2822_ASYNC_NO_ANIMATION_MUSHROOM),
         ])

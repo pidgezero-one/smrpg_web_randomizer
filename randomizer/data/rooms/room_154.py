@@ -168,7 +168,7 @@ room = Room(
         ),
 
         RegularNPC(  # 5
-            npc=npcs.RING_NPC,
+            npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.DO_ANYTHING,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
@@ -196,7 +196,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularClone(  # 6
-            npc=npcs.SHOES_NPC,
+            npc=npcs.RING_NPC,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
@@ -313,8 +313,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            directions=VramStore.DIR2_SWSE
-        , cannot_clone=True),
+            directions=VramStore.DIR2_SWSE),
         RegularNPC(  # 12
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.DO_ANYTHING,

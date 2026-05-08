@@ -7895,12 +7895,11 @@ class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1):
 
 class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2):
     _bias = True
-    _originally_held = RingPrize
+    _originally_held = ShoesPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E0252_NPC_QUEST_2_GRANT
-    _npc_ids = [NPC_5]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 197),
         RunDialog(
@@ -7925,12 +7924,12 @@ class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2):
 
 class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3):
     _bias = True
-    _originally_held = ShoesPrize
+    _originally_held = RingPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
     _world_area = WorldAreaEnum.MARRYMORE
+    _npc_ids = [NPC_5]
     _container_event = E0251_NPC_QUEST_3_GRANT
-    _npc_ids = [NPC_6]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 198),
         RunDialog(
@@ -18920,7 +18919,7 @@ class RoseTownHydrantFlag(InvisibleFlagLocation):
     _y_coord = 63
     _world_area = WorldAreaEnum.ROSE_TOWN
     _y_shift = -8
-    _clue_text = "[center]Mine is under a low steel hydrant.[await]"
+    _clue_text = "[center]Mine is under a depressed hydrant.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 456),
         RunDialog(
@@ -19955,7 +19954,6 @@ class MarrymoreWindowFlag(InvisibleFlagLocation):
     _x_coord = 17
     _y_coord = 15
     _world_area = WorldAreaEnum.MARRYMORE
-    _x_shift = 8
     _clue_text = " Mine is under a single stained glass window.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 1007),
@@ -21029,11 +21027,12 @@ class BeanValleyCloudsFlag(InvisibleFlagLocation):
 class CasinoBellFlag(InvisibleFlagLocation):
     _bias = True
     _rooms = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
-    _x_coord = 14
-    _y_coord = 19
+    _x_coord = 5
+    _y_coord = 20
+    _z_coord = 1
     _world_area = WorldAreaEnum.CASINO
-    _x_shift = 8
-    _y_shift = 8
+    _x_shift = -4
+    _y_shift = -4
     _clue_text = "[center]Mine is beside a tiny bell.[await][pause]\n[center]I don't think it does anything.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 519),

@@ -2658,15 +2658,16 @@ class StarPieceLocation(PrizeLocation):
         self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         identifier = str(uuid4())
-        grant = EventScript(
-            [
-                (
-                    JmpToEvent(E3092_STAR_PIECE_GRANT, identifier=identifier)
-                    if self.prize is not None
-                    else Return(identifier=identifier)
-                )
-            ]
-        )
+        if self.prize is not None:
+            postfight_grant = self.prize.postfight_star_piece_grant
+            assert postfight_grant is not None
+            postfight_grant.contents[0].rename(identifier)
+            grant = EventScript(
+                postfight_grant.contents
+                + [JmpToEvent(E3092_STAR_PIECE_GRANT)]
+            )
+        else:
+            grant = EventScript([Return(identifier=identifier)])
         if self.override_id is not None:
             return (
                 [

@@ -53,6 +53,7 @@ script = MonsterScript([
 	Attack(SpeedForceAttack),
 	RunObjectSequence(3),
 	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
 	IfHPBelow(0),
     IfTargetKOed(MONSTER_1_CALL),
 	RemoveTarget(ALL_ALLIES_EXCLUDING_SELF),
@@ -60,5 +61,6 @@ script = MonsterScript([
 	RemoveTarget(SELF),
 	IfHPBelow(0),
 	RunObjectSequence(3),
-	RemoveTarget(SELF)
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
 ])

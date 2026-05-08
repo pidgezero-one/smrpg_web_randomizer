@@ -230,6 +230,7 @@ script = EventScript([
 	SetBit(TEMP_7044_1),
     JmpIfBitSet(MARRYMORE_MAJOR_TIP_GIVEN, ["event_621_big_tip_claimed"]),
     SetBit(MARRYMORE_MAJOR_TIP_GIVEN),
+    RunDialog(dialog_id=DI4062_MARRYMORE_BELLHOP_TIP, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	RunEventAsSubroutine(E0626_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_FLOWERBOX),
 	Return(),
 	RunDialog(dialog_id=DI2048_HOTEL_GUEST_LEAVING, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_621_run_dialog_95"),

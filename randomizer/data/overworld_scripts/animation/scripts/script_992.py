@@ -48,7 +48,7 @@ script = ActionScript([
     A_JmpIfVarEqualsConst(ITEM_ID_SHADOW, CymbalsItem().item_id, ["A0992_r"]), # sequence 7 also used for music notes
     A_JmpIfVarEqualsConst(ITEM_ID_SHADOW, PickMeUpItem().item_id, ["A0992_star"]),
     A_JmpIfVarEqualsConst(ITEM_ID_SHADOW, YoshiCandyItem().item_id, ["A0992_candy"]),
-    A_JmpIfVarEqualsConst(ITEM_ID_SHADOW, RockCandyItem().item_id, ["A0992_r"]),
+    A_JmpIfVarEqualsConst(ITEM_ID_SHADOW, RockCandyItem().item_id, ["A0992_candy"]),
     A_JmpIfVarEqualsConst(ITEM_ID_SHADOW, SonicCymbalItem().item_id, ["A0992_r"]), 
     A_JmpIfVarEqualsConst(ITEM_ID_SHADOW, FrightBombItem().item_id, ["A0992_bomb"]),
     A_JmpIfVarEqualsConst(ITEM_ID_SHADOW, SleepyBombItem().item_id, ["A0992_bomb"]),

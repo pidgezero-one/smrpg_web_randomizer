@@ -1,6 +1,7 @@
 # R077_BANDITS_WAY_AREA_03
 # pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize, Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, EffectsNpc
+from smrpgpatchbuilder.datatypes.numbers.classes import UInt4, UInt8
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
@@ -254,7 +255,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3, cannot_clone=True),
+            byte7_upper2=3, cannot_clone=True,
+            acute_axis=UInt4(5),
+            obtuse_axis=UInt4(5),
+            height=UInt8(10),),
     ],
     npc_expected_animations={
         8: ["bandits_way_distracted"]

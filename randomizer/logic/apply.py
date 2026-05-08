@@ -9,7 +9,7 @@ import statistics
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import NORMAL
 
 from randomizer.types.gameworld import DI2730_FROGFUCIUS_OFFER_HINT
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST, MARIO_PALETTE, NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_2, NPC_PALETTE_ROW_3 ,NPC_PALETTE_ROW_4,NPC_PALETTE_ROW_5,NPC_PALETTE_ROW_6, NPC_PALETTE_ROW_7
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import EAST, MARIO_PALETTE, NPC_PALETTE_ROW_1, NPC_PALETTE_ROW_2, NPC_PALETTE_ROW_3 ,NPC_PALETTE_ROW_4,NPC_PALETTE_ROW_5,NPC_PALETTE_ROW_6, NPC_PALETTE_ROW_7, WHITE
 
 from ..data.variables.event_palette_names import * # holy shit i cannot deal with how slow pylance is, fuck it just import everything
 from randomizer.logic.partition_calculator import snapshot_vanilla_room_states, update_changed_room_partitions
@@ -38,11 +38,16 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     ActionQueueSync,
+    FadeInFromColour,
     JmpIfBitClear,
+    JmpIfBitSet,
     PaletteSet,
     PaletteSetMorphs,
+    Pause,
+    ResetAndChooseGame,
     Return,
     ClearBit,
+    Set0158Bit7Offset,
     SetBit,
     Inc,
     Set7000ToCurrentLevel,
@@ -65,6 +70,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object i
 from smrpgpatchbuilder.datatypes.levels.classes import BaseRoomObject, ChestNPC, ChestClone
 from ..data.variables.event_script_names import *
 from ..data.variables.variable_names import (
+    GAME_OVER,
     PRIMARY_TEMP_7000,
     SMITHY_BOSS_HUNT_WIN_CONDITION,
     STAR_PIECE_GRANT_DIRECTIONAL_BIT,
@@ -434,12 +440,17 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     patched.append(cmd)
                     if isinstance(cmd, StartBattleAtBattlefield) and i + 1 < len(execution) and isinstance(execution[i + 1], Return):
                         disabled_label = f"smithy_boss_hunt_disabled_{uuid4()}"
+                        disabled_label_ra = f"smithy_boss_hunt_disabled_{uuid4()}_ra"
                         patched.extend([
                             JmpIfBitClear(SMITHY_BOSS_HUNT_WIN_CONDITION, [disabled_label]),
                             EnterArea(room_id=R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, face_direction=NORTHWEST, x=4, y=48, z=0, run_entrance_event=False),
                             JmpToEvent(E3885_END_GAME),
-                            SetBit(TEMP_704A_2, identifier=disabled_label),
-                            JmpToEvent(E1011_POST_MINES_BOSS_CHECK_IF_WON)
+                            JmpIfBitSet(GAME_OVER, [disabled_label_ra], identifier=disabled_label),
+                            Set0158Bit7Offset(0x0158, True),
+                            FadeInFromColour(duration=16, colour=WHITE),
+                            Pause(16),
+                            Return(),
+                            ResetAndChooseGame(identifier=disabled_label_ra),
                         ])
                     elif isinstance(cmd, Return) and i > 0 and isinstance(execution[i - 1], StartBattleAtBattlefield):
                         continue  # Skip the Return that follows StartBattle
