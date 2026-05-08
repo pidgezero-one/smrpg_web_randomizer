@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Mapping
 from django.core.serializers.json import DjangoJSONEncoder
 from smrpgpatchbuilder.datatypes.allies.ally import Ally
 
@@ -65,8 +65,19 @@ class Patch:
 
         self._data[addr] = data
 
-    def add_dict(self, data: dict[int, bytearray], source: str = "") -> None:
-        """Add data to the patch in `{0x123456: bytearray([0x00])}` format."""
+    def add_dict(
+        self,
+        data: Mapping[int, bytearray | bytes | list[int] | int | str],
+        source: str = "",
+    ) -> None:
+        """Add data to the patch in ``{0x123456: bytearray([0x00])}`` format.
+
+        Accepts the same value types as :meth:`add_data` — patch generators
+        commonly return ``dict[int, bytes]``, and ``add_data`` already
+        normalizes ``bytes`` / ``list[int]`` / ``int`` / ``str`` internally.
+        ``Mapping`` (covariant) is used instead of ``dict`` (invariant) so
+        callers can pass any value subtype the union covers.
+        """
         for addr, b in data.items():
             self.add_data(addr, b, source)
 

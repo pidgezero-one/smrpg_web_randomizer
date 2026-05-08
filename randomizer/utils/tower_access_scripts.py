@@ -185,6 +185,10 @@ geno_script = EventScript([
     # Do have the right character
     EnableControlsUntilReturn([]),
     RemoveObjectFromCurrentLevel(NPC_1),
+    ActionQueueSync(target=NPC_3, subscript=[
+        A_WalkNorthPixels(7),
+        A_WalkWestPixels(6),
+    ]),
     ActionQueueAsync(target=MARIO, subscript=[
         A_ClearSolidityBits(cant_pass_walls=True),
         A_WalkToXYCoords(x=4, y=114),
@@ -198,12 +202,11 @@ geno_script = EventScript([
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
         A_SetSpriteSequence(index=2, sprite_offset=3, is_sequence=True, looping=False),
+        A_Pause(34)
     ]),
     ActionQueueAsync(target=NPC_3, subscript=[
-        A_WalkNorthPixels(7),
-        A_WalkWestPixels(6),
-        A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
         A_VisibilityOn(),
+        A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
         A_SequenceLoopingOn(),
         A_SetSequenceSpeed(VERY_FAST),
         A_SetWalkingSpeed(VERY_FAST),
@@ -249,17 +252,20 @@ geno_self_script = EventScript([
     EnableControlsUntilReturn([]),
 
     RemoveObjectFromCurrentLevel(NPC_1),
+    ActionQueueSync(target=NPC_3, subscript=[
+        A_WalkNorthPixels(7),
+        A_WalkWestPixels(6),
+    ]),
     ActionQueueAsync(target=MARIO, subscript=[
         A_SetWalkingSpeed(NORMAL),
         A_WalkToXYCoords(x=5, y=115),
         A_FaceNortheast(),
         A_SetSpriteSequence(index=2, sprite_offset=4, is_sequence=True, looping=False),
+        A_Pause(34)
     ]),
     ActionQueueAsync(target=NPC_3, subscript=[
-        A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
-        A_WalkNorthPixels(7),
-        A_WalkWestPixels(6),
         A_VisibilityOn(),
+        A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
         A_SequenceLoopingOn(),
         A_SetSequenceSpeed(VERY_FAST),
         A_SetWalkingSpeed(VERY_FAST),

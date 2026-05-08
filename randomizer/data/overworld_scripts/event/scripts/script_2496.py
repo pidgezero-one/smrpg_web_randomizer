@@ -51,6 +51,7 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN, mod_id=0),
 	ApplyTileModToLevel(use_alternate=True, room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN, mod_id=1),
 	ApplySolidityModToLevel(permanent=True, room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN, mod_id=0),
+	ApplyTileModToLevel(use_alternate=True, room_id=R131_SEA_AREA_04_BUNCH_OF_ZEOSTARS, mod_id=32),
 	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW08_MARIOS_PAD),
 	SetBit(MAP_DIRECTIONAL_BOWSERS_KEEP_MARIOS_PAD),
 	SetBit(MAP_DIRECTIONAL_MARIOS_PAD_MUSHROOM_WAY),

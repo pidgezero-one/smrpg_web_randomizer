@@ -438,7 +438,7 @@ class GameWorld:
             if self._invisible_item_locations is None:
                 return False
             location_instance = self._invisible_item_locations.get(location_type)
-            if location_instance is None:
+            if not isinstance(location_instance, InvisibleFlagLocation):
                 return False
             which = location_instance._which
             proxy_classes = {
@@ -2020,6 +2020,18 @@ class GameWorld:
                 infuse_spell_elements=self.settings.isflag_enabled(InfuseSpellElements)
             ),
             source="belome3_brooch",
+        )
+
+        # Battlefield underwater-palette whitelist (always-on). Without
+        # this, BF14/BF34/BF38 force every actor onto a "+4 palette"
+        # path (palette pointer +$78 = 4 × 30-byte monster palettes)
+        # and any monster without a real underwater variant reads
+        # garbage from a neighbor's palette. The hook gates the path
+        # to the curated whitelist in
+        # asm/battlefield_underwater_palette.py.
+        patch.add_dict(
+            asm.battlefield_underwater_palette.get_patch(),
+            source="battlefield_underwater_palette",
         )
 
         # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).

@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfBitSet(TEMP_7043_3, ["EVENT_3366_ret_8"]),
-	RunDialog(dialog_id=DI2011_EMPTY_AUTO_TERMINATE, above_object=MEM_70A8, closable=False, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI2024_BLANK_AUTO, above_object=MEM_70A8, closable=False, sync=False, multiline=True, use_background=True),
 	RunDialog(dialog_id=DI1922_GOO, above_object=MEM_70A8, closable=False, sync=False, multiline=True, use_background=True),
 	JmpIfVarEqualsConst(TEMP_70AF, 1, ["EVENT_3369_copy_var_to_var_32"]),
 	JmpIfVarEqualsConst(TEMP_7026, 1, ["EVENT_3369_run_dialog_12"]),

@@ -8806,7 +8806,7 @@ class SeaStarslapRoomChestLocation(TreasureChestLocationRow1):
     # flag as checked: npc 0 in room 134 has its object trigger disabled.
 
 
-class SeaSaveRoomBackChestLocation(TreasureChestLocationRow3):
+class SeaSaveRoomBackChestLocation(TreasureChestLocationRow1):
     _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
@@ -8868,7 +8868,7 @@ class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
     # flag as checked: npc 1 in room 132 has its object trigger disabled.
 
 
-class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow1):
+class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow3):
     _bias = True
     _originally_held = RecoveryMushroomPrize
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]

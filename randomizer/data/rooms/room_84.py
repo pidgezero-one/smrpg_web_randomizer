@@ -362,7 +362,7 @@ room = Room(
         RegularNPC( # 10
             npc=npcs.ROSE_TOWN_TREASURE_HOLDER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
-            event_script=E0522_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0098_WALK_RANDOM_DIRECTIONS_NO_SOLIDITY_CHANGE,
             visible=False,
             x=14,

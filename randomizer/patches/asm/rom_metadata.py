@@ -7,7 +7,7 @@
 """
 
 
-def _title_bytes(seed: int) -> bytes:
+def _title_bytes(seed: int | str) -> bytes:
     title = "SMRPG-R {}".format(seed).ljust(20)
     if len(title) > 20:
         title = title[:19] + "?"
@@ -21,7 +21,7 @@ def _version_text_bytes(version: str) -> bytes:
     return text.encode("latin1")
 
 
-def get_patch(seed: int, version: str) -> dict[int, bytes]:
+def get_patch(seed: int | str, version: str) -> dict[int, bytes]:
     """Return ROM-header / on-screen version writes."""
     major_version = int(version.split(".")[0])
     return {

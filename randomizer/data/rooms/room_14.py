@@ -161,7 +161,7 @@ room = Room(
         RegularNPC( # 7
             npc=npcs.EMPTY_ENEMY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E1665_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0160_SEQUENCE_LOOPING_ON,
             visible=True,
             x=11,

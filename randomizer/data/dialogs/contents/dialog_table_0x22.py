@@ -1,4 +1,4 @@
-dialog_data = [""]*635
+dialog_data = [""]*636
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -1712,3 +1712,4 @@ dialog_data[632] = '''Got the “[0x70A7]”![end]'''
 dialog_data[633] = '''[center]Need the “Mario Doll” to unlock[await]'''
 dialog_data[634] = ''' This is 100% currant juice.[await]
  It's mighty tasty stuff, mate![await]'''
+dialog_data[635] = '''[end]'''

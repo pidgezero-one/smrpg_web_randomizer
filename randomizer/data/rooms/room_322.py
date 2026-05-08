@@ -91,7 +91,7 @@ room = Room(
         RegularNPC( # 1
             npc=npcs.TERRAPIN_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E1821_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0160_SEQUENCE_LOOPING_ON,
             visible=True,
             x=9,
@@ -117,7 +117,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.TERRAPIN_NPC_3,
-            event_script=E1821_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0160_SEQUENCE_LOOPING_ON,
             visible=True,
             x=9,
@@ -127,7 +127,7 @@ room = Room(
             direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.TERRAPIN_NPC_3,
-            event_script=E1821_EMPTY,
+            event_script=E0256_RETURN,
             action_script=A0160_SEQUENCE_LOOPING_ON,
             visible=True,
             x=9,
