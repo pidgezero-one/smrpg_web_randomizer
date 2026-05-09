@@ -230,7 +230,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 5
             npc=npcs.STATIC_FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -257,7 +258,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True,),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.SWIM,
