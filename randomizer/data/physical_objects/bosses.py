@@ -738,7 +738,8 @@ class BirdettaSmallObject(BossNPC):
     """Small Birdetta object."""
 
     _base = BIRDETTA_SMALL_NPC
-    _eye_height = 6
+    _eye_height = 18
+    _tower_entrance_horizontal_shift = 3
     _evil_palette = [
         0xA85818,
         0xF87820,
@@ -2507,6 +2508,9 @@ class PunchinelloStatueObject(StatueNPC):
     """Punchinello statue object."""
 
     _base = PUNCHINELLO_STATUE_NPC
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(-1, 0),
+    }
 
 
 class DodoStatueObject(StatueNPC):

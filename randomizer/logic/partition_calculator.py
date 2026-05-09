@@ -308,22 +308,28 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     has_coin = any(n.is_coin for n in npc_infos)
 
     # Build sprite groups: sprite_id → (buffer_type, npc_count, first_obj_index)
-    # Frequency analysis runs ONLY over NPCs whose room-level cannot_clone is
-    # None (the auto-decide bucket). NPCs with explicit room-level overrides
-    # (True or False) are excluded — they don't compete for slots and they
-    # don't disqualify their sprite from being buffered for other NPCs that
-    # share the sprite_id. (Pre-fix bug: a force_cannot_clone NPC sharing a
-    # sprite with cannot_clone=None NPCs caused the whole sprite group to be
-    # dropped from buffer eligibility, demoting every NPC sharing that sprite
-    # to cannot_clone=True even though only the override-NPC needed it.)
+    # Frequency analysis includes NPCs with original_cannot_clone in {None, False};
+    # only `True` is excluded.
+    #   - None (auto-decide): standard candidate, demand for a buffer slot.
+    #   - False (explicit opt-in to cloning): the room author has declared this
+    #     NPC must ride a clone buffer, so its sprite_id MUST claim a slot —
+    #     otherwise step 7 honors the False override and the NPC ends up with
+    #     no buffer at all (room 341 GOLD_GOOMBA bug).
+    #   - True (explicit dedicated VRAM): goes to its own min_vram_size
+    #     allocation, doesn't need a clone-buffer slot, and shouldn't disqualify
+    #     its sprite for other NPCs that share the sprite_id. (Pre-fix bug: a
+    #     force_cannot_clone NPC sharing a sprite with cannot_clone=None NPCs
+    #     caused the whole sprite group to be dropped from buffer eligibility,
+    #     demoting every NPC sharing that sprite to cannot_clone=True even
+    #     though only the override-NPC needed it.)
     from collections import Counter
     sprite_to_type: dict[int, BufferType] = {}  # sprite_id → needed buffer type
-    sprite_counts: Counter[int] = Counter()  # only auto-decide NPCs counted
+    sprite_counts: Counter[int] = Counter()  # auto-decide + explicit-False NPCs counted
     sprite_first_appearance: dict[int, int] = {}  # sprite_id → first obj_index
 
     for npc_info in npc_infos:
-        if npc_info.original_cannot_clone is not None:
-            continue  # Explicit room-level override — excluded from frequency
+        if npc_info.original_cannot_clone is True:
+            continue  # Force-True override owns dedicated VRAM, doesn't claim a slot
         if not npc_info.is_gridplane or npc_info.gridplane_format is None:
             continue
         sprite_id = npc_info.sprite_id
@@ -612,9 +618,19 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                             pass
                         break
                 elif isinstance(anim_entry, str):
-                    # Boss animation attr — search locations for matching sprite.
-                    # Read placement-cached models so we see exactly the boss the
-                    # placement layer chose, not a different one re-derived here.
+                    # Boss / henchman animation attr — search locations for a
+                    # placed model whose sprite matches the post-shuffle sprite
+                    # in this slot. Both BossNPC and HenchmanNPC subclass
+                    # SupplantableNPC, so once we find any model with a matching
+                    # sprite_id, the named animation attr resolves uniformly.
+                    #
+                    # Bosses are recorded by room into `_chosen_npc_models_by_room`
+                    # by the npc_slots placement loop; henchmen are recorded by
+                    # (room_id, npc_id) into `_chosen_henchman_models_by_room_npc`
+                    # by the henchman placement loop. We pull both. No room /
+                    # NPC class is special-cased here — every location's chosen
+                    # models are eligible, and the sprite_id filter below picks
+                    # whichever one actually landed in this slot.
                     from ..types.prize import BossFightPrize
                     from ..types.prizelocation import BossFightLocation
                     matched = False
@@ -623,20 +639,25 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                             continue
                         if not isinstance(location.prize, BossFightPrize):
                             continue
-                        candidates = location.get_all_chosen_npc_models()
+                        candidates: list[type] = list(
+                            location.get_all_chosen_npc_models()
+                        )
+                        candidates.extend(location.get_all_chosen_henchman_models())
                         if not candidates:
                             try:
-                                candidates = [location.prize.get_npc_for_slot(world, 4096)]
+                                candidates = [
+                                    location.prize.get_npc_for_slot(world, 4096)
+                                ]
                             except Exception:
                                 continue
                         for npc_model in candidates:
                             try:
-                                boss = npc_model()
-                                if boss.base.sprite_id != sprite_id:
+                                placed = npc_model()
+                                if placed.base.sprite_id != sprite_id:
                                     continue
-                                if boss.animations is None:
+                                if placed.animations is None:
                                     continue
-                                animation = getattr(boss.animations, anim_entry, None)
+                                animation = getattr(placed.animations, anim_entry, None)
                                 if animation is None:
                                     continue
                                 seq_id = animation.sequence_id

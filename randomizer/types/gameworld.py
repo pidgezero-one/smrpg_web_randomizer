@@ -1990,6 +1990,7 @@ class GameWorld:
             if isinstance(s, CharacterSpell):
                 patch.add_dict(s.palette_patch)
 
+        patch.add_dict(asm.room_174_battlefield.get_patch(), source="room_174_battlefield")
         patch.add_dict(asm.room_325_solidity.get_patch(), source="room_325_solidity")
         patch.add_dict(asm.star_piece_sprite_fix.get_patch(), source="star_piece_sprite_fix")
         patch.add_dict(asm.battle_init.get_patch(), source="battle_init")

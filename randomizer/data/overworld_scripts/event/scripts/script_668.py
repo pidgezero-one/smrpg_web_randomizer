@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+    CloseDialog(),
 	JmpIfBitSet(UNKNOWN_7063_5, ["EVENT_256_ret_0"]),
 	JmpIfBitSet(TEMP_7044_5, ["EVENT_256_ret_0"]),
 	SetBit(TEMP_7044_5),
@@ -50,8 +51,8 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=NPC_11, subscript=[
 		A_TransferToXYZF(x=9, y=97, z=0, direction=EAST),
-		A_TransferXYZFPixels(x=16, y=8, z=0, direction=EAST)
-	]),
+		A_TransferXYZFPixels(x=16, y=8, z=0, direction=EAST, identifier="EVENT_668_cake_shift"),
+	], identifier="EVENT_668_cake_shift_aq"),
 	ActionQueueSync(target=NPC_4, subscript=[
 		A_TransferToXYZF(x=9, y=98, z=0, direction=EAST),
 		A_TransferXYZFPixels(x=8, y=4, z=0, direction=EAST),

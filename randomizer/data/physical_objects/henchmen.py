@@ -509,7 +509,7 @@ class BluebirdHenchman(HenchmanNPC):
 class BirdyHenchman(HenchmanNPC):
     """Birdy henchman NPC for boss fights."""
 
-    _base = BIRDY_NPC
+    _base = BIRDY_NPC_2
     _recoil = 2
     _mines_punch = 3
     _tower_bullet = 4

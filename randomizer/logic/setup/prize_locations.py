@@ -24,6 +24,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object i
 )
 from smrpgpatchbuilder.datatypes.levels.classes import RegularClone, RegularNPC
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHEAST
+from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 from typing import cast, TYPE_CHECKING
 from copy import copy
 
@@ -65,6 +66,12 @@ def _make_dummy_npc() -> RegularNPC:
         visible=False,
         x=0, y=0, z=0, z_half=False,
         direction=SOUTHEAST,
+        acute_axis=UInt4(11),
+        obtuse_axis=UInt4(11),
+        height=UInt8(11),
+        slidable_along_walls=True,
+        cant_move_if_in_air=True,
+        byte7_upper2=3,
     )
 
 
@@ -77,6 +84,9 @@ def _make_dummy_clone() -> RegularClone:
         visible=False,
         x=0, y=0, z=0, z_half=False,
         direction=SOUTHEAST,
+        acute_axis=UInt4(11),
+        obtuse_axis=UInt4(11),
+        height=UInt8(11),
     )
 
 

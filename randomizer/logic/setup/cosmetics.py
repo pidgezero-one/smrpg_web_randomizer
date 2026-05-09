@@ -432,6 +432,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_TITLE_SHORT`", nm.title_short)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_MOLE_GREETING`", nm.mole_greeting)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_MBOY_GREETING`", nm.mboy_greeting)
+    world.overworld_dialogs.search_and_replace_in_all_dialogs("`PLAYER_INSULT`", nm.insult)
 
     # Wedding courtyard dialogue
     towerboss = world.get_location(BoosterTowerIndoorBossFight).prize

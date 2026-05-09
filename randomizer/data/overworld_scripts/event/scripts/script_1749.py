@@ -41,8 +41,8 @@ script = EventScript([
 	RestoreAllFP(),
     SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
     EnterArea(room_id=R186_SUNKEN_SHIP_POSTKC_AREA_18_WARP_ROOM_FROM_JOHNNYS_ROOM, face_direction=NORTHEAST, 
-            x=30,
-            y=115,
+            x=29,
+            y=70,
             z=0, run_entrance_event=True),
     Return(),
 ])

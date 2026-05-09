@@ -384,6 +384,7 @@ class CharacterName:
     title_short: str = "Mr"
     mole_greeting: str = "mate"
     mboy_greeting: str = ", man"
+    insult: str = "jerk"
 
     def __init__(
         self,
@@ -395,6 +396,7 @@ class CharacterName:
         title_short: str = "Mr",
         mole_greeting: str = "mate",
         mboy_greeting: str = ", man",
+        insult: str = "jerk",
     ) -> None:
         self.placeholder = placeholder
         self.gender = gender
@@ -404,6 +406,7 @@ class CharacterName:
         self.title_short = title_short
         self.mole_greeting = mole_greeting
         self.mboy_greeting = mboy_greeting
+        self.insult = insult
 
 
 class CharacterPrize(Prize):

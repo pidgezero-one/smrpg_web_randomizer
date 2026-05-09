@@ -37,7 +37,7 @@ script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 528),
     SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
-	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+	JmpIfBitSet(GAME_OVER, ["EVENT_1925_set_temp_action_script_18"]),
 	RestoreAllHP(),
 	RestoreAllFP(),
 	SetBit(POSTGAME_TOWER_COMPLETED),
@@ -48,6 +48,8 @@ script = EventScript([
         y=91,
         z=0,
         run_entrance_event=True,
-	)
+	),
+    Return(),
+	ResetAndChooseGame(identifier="EVENT_1925_set_temp_action_script_18"),
 ])
 

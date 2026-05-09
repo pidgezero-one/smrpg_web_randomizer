@@ -285,11 +285,11 @@ room = Room(
             z_half=False,
             direction=NORTHEAST),
     ],
-    extra_sprite_actions=[
-        SpriteAnimationState.LEAN_BACK,
-        SpriteAnimationState.LEAN_BACK_2,
-        SpriteAnimationState.LEAN_FORWARD,
-        SpriteAnimationState.SURPRISE_FRAME_BACK,
-        SpriteAnimationState.FLOP,
-    ]
+    # extra_sprite_actions=[
+    #     SpriteAnimationState.LEAN_BACK,
+    #     SpriteAnimationState.LEAN_BACK_2,
+    #     SpriteAnimationState.LEAN_FORWARD,
+    #     SpriteAnimationState.SURPRISE_FRAME_BACK,
+    #     SpriteAnimationState.FLOP,
+    # ]
 )

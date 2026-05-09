@@ -4851,6 +4851,29 @@ BIRDY_NPC = NPC(
     byte5_bit7=False,
     byte6_bit2=False,
 )
+BIRDY_NPC_2 = NPC(
+    sprite_id=SPR0269_BIRDY,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=5,
+    obtuse_axis=5,
+    height=10,
+    y_shift=1,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
 
 SHYGUY_IN_BOWSER_S_HELICOPTER_NPC = NPC(
     sprite_id=SPR0149_SHYGUY_IN_BOWSER_S_HELICOPTER,
@@ -7539,7 +7562,7 @@ CRUSTY_NPC = NPC(
 )
 
 MAGIKOOPA_NPC_3 = NPC(
-    sprite_id=SPR0289_MAGIKOOPA,
+    sprite_id=SPR0761_MAGIKOOPA_LARGE_BLUE,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -11889,8 +11912,8 @@ AXEM_RED_NPC_2 = NPC(
 AXEM_RED_NPC_2_LOW_VRAM = NPC(
     sprite_id=SPR0466_AXEM_RED,
     shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=11,
-    obtuse_axis=11,
+    acute_axis=5,
+    obtuse_axis=5,
     height=13,
     y_shift=1,
     show_shadow=False,

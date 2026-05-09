@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	ActionQueueAsync(target=NPC_0, subscript=[
-		A_SetSpriteSequence(2, is_sequence=True, identifier="EVENT_704_set_sprite_sequence_0"),
+		A_SetSpriteSequence(2, is_sequence=True, looping=True, identifier="EVENT_704_set_sprite_sequence_0"),
         A_SequenceLoopingOn(),
         A_FixedFCoordOn(),
 		A_WalkNorthPixels(8),

@@ -128,7 +128,7 @@ if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
     from ..progression.prizes import SmithyBossFight
     from ..types.enemy import Enemy
-    from ..types.physical_objects import ItemNPC, BossNPC
+    from ..types.physical_objects import ItemNPC, BossNPC, HenchmanNPC
 
 # Module-level cache for lazy imports to avoid repeated import overhead in hot paths
 # These are populated on first access to avoid circular import issues
@@ -1824,6 +1824,13 @@ class BossFightLocation(PrizeLocation):
 
     _chosen_npc_models_by_room: dict[int, type["BossNPC"]] | None = None
 
+    # Parallel to `_chosen_npc_models_by_room` but keyed by (room_id, npc_id)
+    # because a single room can hold multiple henchman slots. Populated by
+    # the henchman placement loop the same moment `obj._npc` is overwritten.
+    _chosen_henchman_models_by_room_npc: dict[
+        tuple[int, int], type["HenchmanNPC"]
+    ] | None = None
+
     def get_chosen_npc_model_for_room(
         self, room_id: int
     ) -> type["BossNPC"] | None:
@@ -1842,6 +1849,24 @@ class BossFightLocation(PrizeLocation):
         if self._chosen_npc_models_by_room is None:
             return []
         return list(self._chosen_npc_models_by_room.values())
+
+    def get_chosen_henchman_model_for_slot(
+        self, room_id: int, npc_id: AreaObject
+    ) -> type["HenchmanNPC"] | None:
+        """Return the henchman model selected at placement for (room_id, npc_id).
+
+        Returns None if placement didn't run for this slot (prize matched
+        original, slot was skipped, or this slot isn't in any henchman list).
+        """
+        if self._chosen_henchman_models_by_room_npc is None:
+            return None
+        return self._chosen_henchman_models_by_room_npc.get((room_id, int(npc_id)))
+
+    def get_all_chosen_henchman_models(self) -> list[type["HenchmanNPC"]]:
+        """Return every henchman model selected at placement across all slots."""
+        if self._chosen_henchman_models_by_room_npc is None:
+            return []
+        return list(self._chosen_henchman_models_by_room_npc.values())
 
     def resolve_npc_model_for_slot(
         self,
@@ -2125,6 +2150,15 @@ class BossFightLocation(PrizeLocation):
                 assert obj is not None
                 new_npc = henchman.model().base
                 obj._npc = new_npc
+                # Record the chosen henchman model so downstream consumers
+                # (e.g. the partition orchestrator's npc_expected_animations
+                # sizing) can resolve animation attrs against the model that
+                # actually landed here, not just the original room source.
+                if self._chosen_henchman_models_by_room_npc is None:
+                    self._chosen_henchman_models_by_room_npc = {}
+                self._chosen_henchman_models_by_room_npc[
+                    (room_id, int(room_target))
+                ] = henchman.model
                 if slot.pack_id is not None:
                     if isinstance(obj, (BattlePackNPC, BattlePackClone)):
                         obj.set_battle_pack(slot.pack_id)

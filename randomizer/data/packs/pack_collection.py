@@ -1549,7 +1549,7 @@ FORM0137_ONE_BUNDT2_ONE_RASPBERRY2_TWO_TORTE2_ONE_CANDLE = Formation(
     ],
     music=MidbossMusic(),
     unknown_bit=True,
-    run_event_at_load=17,
+    run_event_at_load=BE0017_BEGIN_BUNDT_POSTGAME,
 )
 
 FORM0138_THREE_CROOK = Formation(
@@ -3040,7 +3040,7 @@ FORM0271_ONE_BOOSTER_THREE_SNIFITENEMYHENCHMAN = Formation(
     ],
     music=MidbossMusic(),
     unknown_bit=True,
-    run_event_at_load=12,
+    run_event_at_load=BE0012_DIALOGUE_FROM_BOOSTER_FIGHT,
 )
 
 FORM0272_ONE_BOOSTERENEMY2 = Formation(
@@ -3106,7 +3106,7 @@ FORM0277_ONE_KINGCALAMARI_TWO_TENTACLESENEMY2_THREE_TENTACLES = Formation(
     ],
     music=MidbossMusic(),
     unknown_bit=True,
-    run_event_at_load=26,
+    run_event_at_load=BE0026_INTRO_SCENE_TENTACLES_RISE_FROM_HOLES,
 )
 
 FORM0278_ONE_BELOME1 = Formation(
@@ -3174,7 +3174,7 @@ FORM0283_FIVE_SMILAX_ONE_MEGASMILAX = Formation(
     ],
     music=MidbossMusic(),
     unknown_bit=True,
-    run_event_at_load=58,
+    run_event_at_load=BE0058_THRAX_IS_THERE,
 )
 
 FORM0284_ONE_COUNTDOWN_TWO_DINGALING = Formation(
@@ -3230,7 +3230,7 @@ FORM0288_ONE_JINX1 = Formation(
         FormationMember(JINX1Enemy, 183, 127),
     ],
     music=MidbossMusic(),
-    run_event_at_load=71,
+    run_event_at_load=BE0071_JINX_USES_TRIPLE_KICK,
 )
 
 FORM0289_ONE_MACK_FOUR_BODYGUARD = Formation(
@@ -3263,7 +3263,7 @@ FORM0291_ONE_BOWYER = Formation(
     ],
     music=BossMusic(),
     unknown_bit=True,
-    run_event_at_load=14,
+    run_event_at_load=BE0014_SET_7EE001_TO_PARTY_SIZE_AT_START_OF_FIGHT,
 )
 
 FORM0292_ONE_AXEMRANGERS_ONE_AXEMRED_ONE_AXEMBLACK_ONE_AXEMPINK_ONE_AXEMGREEN_ONE_AXEMYELLOW = Formation(
@@ -3278,7 +3278,7 @@ FORM0292_ONE_AXEMRANGERS_ONE_AXEMRED_ONE_AXEMBLACK_ONE_AXEMPINK_ONE_AXEMGREEN_ON
     ],
     music=BossMusic(),
     unknown_bit=True,
-    run_event_at_load=61,
+    run_event_at_load=BE0061_ONLY_MARIO_IS_THERE,
 )
 
 FORM0293_TWO_HAMMERBRO = Formation(
@@ -3300,7 +3300,7 @@ FORM0294_ONE_CLOAKER_ONE_DOMINO_ONE_MADADDER = Formation(
     ],
     music=MidbossMusic(),
     unknown_bit=True,
-    run_event_at_load=52,
+    run_event_at_load=BE0052_INTRO_SCENE_DOMINO_CLOAKER_S_INTRODUCTION,
 )
 
 FORM0295_ONE_SMITHY1_ONE_SMELTER_TWO_MACHINEMADEBODYGUARD = Formation(
@@ -3325,7 +3325,7 @@ FORM0296_ONE_EXOR_ONE_NEOSQUID_ONE_RIGHTEYE_ONE_LEFTEYE = Formation(
     ],
     music=BossMusic(),
     unknown_bit=True,
-    run_event_at_load=80,
+    run_event_at_load=BE0080_EXOR_FIGHT_BEGINS,
 )
 
 FORM0297_ONE_JINX2 = Formation(
@@ -3334,7 +3334,7 @@ FORM0297_ONE_JINX2 = Formation(
         FormationMember(JINX2Enemy, 183, 127),
     ],
     music=MidbossMusic(),
-    run_event_at_load=72,
+    run_event_at_load=BE0072_JINX_USES_QUICKSILVER,
 )
 
 FORM0298_ONE_JINX3 = Formation(
@@ -3343,7 +3343,7 @@ FORM0298_ONE_JINX3 = Formation(
         FormationMember(JINX3Enemy, 183, 127),
     ],
     music=MidbossMusic(),
-    run_event_at_load=73,
+    run_event_at_load=BE0073_JINX_USES_BOMBS_AWAY,
 )
 
 FORM0299_ONE_JAGGER = Formation(
@@ -3525,7 +3525,6 @@ FORM0316_ONE_KAMEK_ONE_TERRAPIN = Formation(
     ],
     music=MidbossMusic(),
     unknown_bit=True,
-    run_event_at_load=101,
 )
 
 FORM0317_ONE_BOOMER_TWO_HANGINSHY = Formation(

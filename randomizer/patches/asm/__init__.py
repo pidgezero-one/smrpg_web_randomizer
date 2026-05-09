@@ -22,6 +22,7 @@ Always-on byte patches:
     * :mod:`battle_init` — Copy overworld party size to battle party size.
     * :mod:`star_piece_sprite_fix` — Credits ending sequence sprite ID.
     * :mod:`room_layouts` — Room area-layout records.
+    * :mod:`room_174_battlefield` — Force Sea Enclave for room 174 fights.
     * :mod:`room_325_solidity` — Mushroom Kingdom doorway chest fix.
     * :mod:`rom_metadata` — ROM title + version text.
 
@@ -48,6 +49,7 @@ from . import (
     non_mario_character,
     packet_allocation,
     rom_metadata,
+    room_174_battlefield,
     room_325_solidity,
     room_layouts,
     selected_music,
@@ -68,6 +70,7 @@ __all__ = [
     "non_mario_character",
     "packet_allocation",
     "rom_metadata",
+    "room_174_battlefield",
     "room_325_solidity",
     "room_layouts",
     "selected_music",

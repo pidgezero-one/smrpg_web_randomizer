@@ -1907,6 +1907,6 @@ sprite = CompleteSprite(
         )
     ),
     palette_id=SPAL227_MAGIKOOPA,
-    palette_offset=0,
+    palette_offset=1,
     unknown_num=8
 )

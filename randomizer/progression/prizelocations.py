@@ -133,6 +133,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
     A_Pause,
     A_VisibilityOn,
     A_PlaySound,
+    A_TransferXYZFPixels,
 )
 from typing import TYPE_CHECKING, cast
 
@@ -8050,6 +8051,12 @@ class MarrymoreBossFight(BossFightLocation):
             and len(self.prize.character_henchmen) >= 1
         ):
             render_marrymore_boss_henchmen(world, self.prize.character_henchmen)
+        if not isinstance(self.prize, (BundtBossFight, Bundt2BossFight)):
+            world.event_scripts.get_subscript_command_by_identifier(
+                "EVENT_668_cake_shift_aq",
+                "EVENT_668_cake_shift",
+                A_TransferXYZFPixels,
+            ).set_y(0)
         return op
 
     # Flag as checked: MARRYMORE_LIBERATED
@@ -9639,7 +9646,7 @@ class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_1
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _model_allowlist = UNDERWATER_ALLOWED_MODELS
+    _model_allowlist = [DefaultItem]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 237),
         RunDialog(
@@ -9670,7 +9677,7 @@ class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _model_allowlist = UNDERWATER_ALLOWED_MODELS
+    _model_allowlist = [DefaultItem]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 238),
         RunDialog(
@@ -9701,7 +9708,7 @@ class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_3
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _model_allowlist = UNDERWATER_ALLOWED_MODELS
+    _model_allowlist = [DefaultItem]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 239),
         RunDialog(
@@ -9732,7 +9739,7 @@ class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_4
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _model_allowlist = UNDERWATER_ALLOWED_MODELS
+    _model_allowlist = [DefaultItem]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 240),
         RunDialog(
@@ -19146,10 +19153,9 @@ class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
 class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
     _bias = True
     _rooms = [R235_FOREST_MAZE_AREA_08_UNDERGROUND]
-    _x_coord = 25
+    _x_coord = 24
     _y_coord = 93
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _x_shift = -8
     _y_shift = 8
     _clue_text = " Mine is on an illuminated pack of\n 5 mushrooms.[await]"
     _hint = [
@@ -20164,7 +20170,8 @@ class SeasideTownFlowersFlag(InvisibleFlagLocation):
     _x_coord = 26
     _y_coord = 60
     _world_area = WorldAreaEnum.SEASIDE_TOWN
-    _y_shift = 8
+    _y_shift = -8
+    _x_shift = -8
     _clue_text = " Mine's in the middle of three\n pink flowers.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 494),
