@@ -9646,7 +9646,7 @@ class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_1
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _model_allowlist = [DefaultItem]
+    _model_allowlist = [DefaultItem, FlowerObject, KeyObject, RecoveryMushroomObject, FrogCoinObject, SmallFrogCoinObjectNoMoney, SmallFrogCoinObject, SmallCoinObject, BigCoinObject]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 237),
         RunDialog(
@@ -9677,7 +9677,7 @@ class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _model_allowlist = [DefaultItem]
+    _model_allowlist = [DefaultItem, FlowerObject, KeyObject, RecoveryMushroomObject, FrogCoinObject, SmallFrogCoinObjectNoMoney, SmallFrogCoinObject, SmallCoinObject, BigCoinObject]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 238),
         RunDialog(
@@ -9708,7 +9708,7 @@ class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_3
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _model_allowlist = [DefaultItem]
+    _model_allowlist = [DefaultItem, FlowerObject, KeyObject, RecoveryMushroomObject, FrogCoinObject, SmallFrogCoinObjectNoMoney, SmallFrogCoinObject, SmallCoinObject, BigCoinObject]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 239),
         RunDialog(
@@ -9739,7 +9739,7 @@ class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_4
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _model_allowlist = [DefaultItem]
+    _model_allowlist = [DefaultItem, FlowerObject, KeyObject, RecoveryMushroomObject, FrogCoinObject, SmallFrogCoinObjectNoMoney, SmallFrogCoinObject, SmallCoinObject, BigCoinObject]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 240),
         RunDialog(

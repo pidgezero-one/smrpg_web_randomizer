@@ -186,6 +186,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True,
         ),
         RegularClone(  # 1
             npc=npcs.STATIC_FROG_COIN_NPC,
@@ -197,6 +198,7 @@ room = Room(
             z=1,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=True,
         ),
         RegularClone(  # 2
             npc=npcs.STATIC_FROG_COIN_NPC,
@@ -208,6 +210,7 @@ room = Room(
             z=1,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=True,
         ),
         RegularClone(  # 3
             npc=npcs.STATIC_FROG_COIN_NPC,
@@ -219,6 +222,7 @@ room = Room(
             z=1,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=True,
         ),
         BattlePackNPC(  # 4
             npc=npcs.MR_KIPPER_NPC,
@@ -287,6 +291,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True,
         ),
     ],
     extra_sprite_actions=[
