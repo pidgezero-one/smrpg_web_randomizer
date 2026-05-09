@@ -565,6 +565,7 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
         FrogCoinPrize,
         EXPStarPrize,
         SlotsPrize,
+        InfiniteCoinsPrize,
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 4),
@@ -617,6 +618,7 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
         ThirdMimicFightLauncher,
         SlotsPrize,
         FrogCoinPrize,
+        InfiniteCoinsPrize,
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 6),
@@ -2281,17 +2283,6 @@ class KeroSewersBossFight(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sewer(world, inventory)
 
-    def post_unlocks(self, world: GameWorld) -> EventScript:
-        content: list[UsableEventScriptCommand] = []
-        if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.FOREST):
-            content.extend(
-                [
-                    ClearBit(PIPE_VAULT_GATED),
-                ]
-            )
-        parent = super().post_unlocks(world)
-        return EventScript(content + parent.contents + [Return()])
-
     # Flag as checked: SEWER_BOSS_DEFEATED
 
 
@@ -3614,6 +3605,12 @@ class ForestMazeBossFight(BossFightLocation):
             content.extend(
                 [
                     ClearBit(MOLEVILLE_MINES_ENTRANCE_GATING),
+                ]
+            )
+        if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.FOREST):
+            content.extend(
+                [
+                    ClearBit(PIPE_VAULT_GATED),
                 ]
             )
         parent = super().post_unlocks(world)
@@ -6941,6 +6938,7 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
 
     def render(self, world: GameWorld):
         op = super().render(world)
+        assert isinstance(self.prize, BossFightPrize)
         if self.npc_slots and self.prize and self.prize.model:
             render_booster_tower_indoor_boss_postgame(
                 world,
@@ -10873,14 +10871,6 @@ class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_1
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -10919,14 +10909,6 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_2
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -10965,14 +10947,6 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_3
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11011,14 +10985,6 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_4
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11057,14 +11023,6 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_1
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11103,14 +11061,6 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_2
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11149,14 +11099,6 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_3
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11195,14 +11137,6 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_4
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11241,14 +11175,6 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_5
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11287,14 +11213,6 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_6
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11333,14 +11251,6 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_7
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11379,14 +11289,6 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_8
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11425,14 +11327,6 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_2
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11471,14 +11365,6 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_1
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11517,14 +11403,6 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_3
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
-        FlowerObject,
-        RecoveryMushroomObject,
-        FrogCoinObject,
-        BigCoinObject,
-        SmallCoinObject,
-        SmallFrogCoinObject,
-        SmallFrogCoinObjectNoMoney,
-        KeyObject,
         DefaultItem,
     ]
     _hint = [
@@ -11641,7 +11519,7 @@ class TempleBossFightPostgame(BossFightLocation):
     _post_unlocks_event_id = E1212_POSTGAME_TEMPLE_BOSS_UNLOCKS
     _npc_slots = [
         BossFightLocationNPC(
-            R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
+            R293_BELOME_3_ROOM,
             NPC_1,
             sequence_setter_event_id=E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),

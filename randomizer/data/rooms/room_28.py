@@ -175,7 +175,7 @@ room = Room(
         RegularNPC( # 5
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
-            event_script=E3388_SHIP_BOSS_ROOM_PERISCOPE,
+            event_script=E1746_PERISCOPE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=24,

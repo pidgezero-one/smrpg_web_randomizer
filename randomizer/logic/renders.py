@@ -141,7 +141,7 @@ from ..types.prizelocation import AllyNPCSub, BossFightLocationNPC
 from ..utils.npcs import is_swse_only
 from ..utils.snippets.es_castle_statue_room_bonk import script as bonk
 from ..utils.snippets.es_castle_statue_room_bonk_mario import script as bonk_mario
-from ..utils.snippets.es_mimic_rise import get_mimic_rise_dojo
+from ..utils.snippets.es_mimic_rise import get_mimic_rise_dojo, get_mimic_deescalate_dojo
 from ..utils.snippets.create_peck_subroutine import (
     gen_peck_left_subroutine,
     gen_peck_middle_subroutine,
@@ -443,6 +443,9 @@ def render_booster_tower_indoor_boss(
         ("tower_henchman_curtain_aqueue_33", "tower_henchman_curtain_33"),
         ("tower_henchman_curtain_aqueue_34", "tower_henchman_curtain_34"),
         ("tower_henchman_curtain_aqueue_35", "tower_henchman_curtain_35"),
+        ("tower_henchman_curtain_aqueue_33", "tower_henchman_curtain_33_"),
+        ("tower_henchman_curtain_aqueue_34", "tower_henchman_curtain_34_"),
+        ("tower_henchman_curtain_aqueue_35", "tower_henchman_curtain_35_"),
         ("tower_henchman_curtain_aqueue_36", "tower_henchman_curtain_36"),
         ("tower_henchman_curtain_aqueue_37", "tower_henchman_curtain_37"),
         ("tower_henchman_curtain_aqueue_38", "tower_henchman_curtain_38"),
@@ -2498,6 +2501,11 @@ def render_dojo_fight(
             ActionQueueAsync,
             world.event_scripts.get_command_by_identifier(initiate_aq_id),
         ).set_subscript(get_mimic_rise_dojo())
+        if deescalate_aq_id is not None and deescalate_id is not None:
+            cast(
+                ActionQueueAsync,
+                world.event_scripts.get_command_by_identifier(deescalate_aq_id),
+            ).set_subscript(get_mimic_deescalate_dojo())
     else:
         if m.animations.dojo_challenge is not None:
             world.event_scripts.get_subscript_command_by_identifier(
@@ -2519,12 +2527,11 @@ def render_dojo_fight(
                 initiate_aq_id,
                 initiate_id,
                 A_SetSpriteSequence,
-            ).set_index(0)
+            ).set_index(0)     
             if deescalate_aq_id is not None and deescalate_id is not None:
                 world.event_scripts.delete_subscript_command_by_identifier(
                     deescalate_aq_id, deescalate_id
-                )
-
+                )   
 
 # =============================================================================
 # Bean Valley

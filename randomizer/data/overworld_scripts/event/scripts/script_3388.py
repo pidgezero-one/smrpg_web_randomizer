@@ -35,50 +35,21 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfBitSet(JOHNNY_POSITION, ["EVENT_3388_ret_25"]),
-	EnterArea(room_id=R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, face_direction=SOUTH, x=7, y=82, z=0),
-	ActionQueueAsync(target=NPC_0, subscript=[
-		A_VisibilityOff()
-	]),
-	ActionQueueAsync(target=NPC_1, subscript=[
-		A_VisibilityOff()
-	]),
-	ActionQueueAsync(target=NPC_2, subscript=[
-		A_VisibilityOff()
-	]),
-	ActionQueueAsync(target=NPC_3, subscript=[
-		A_VisibilityOff()
-	]),
-	ActionQueueAsync(target=NPC_4, subscript=[
-		A_VisibilityOff()
-	]),
-	ActionQueueAsync(target=NPC_5, subscript=[
-		A_VisibilityOff()
-	]),
-	ActionQueueAsync(target=NPC_6, subscript=[
-		A_VisibilityOff()
-	]),
-	ActionQueueAsync(target=NPC_12, subscript=[
-		A_VisibilityOff()
-	]),
-	RunEventAsSubroutine(E1969_CHECK_IF_STAR_PIECES_FOR_FACTORY_BOSS_COLLECTED),
-	JmpIfComparisonResultIsLesser(["EVENT_3388_action_queue_14"]),
-	ActionQueueAsync(target=NPC_14, subscript=[
-		A_VisibilityOn()
-	]),
-	Jmp(["EVENT_3388_remove_from_current_level_15"]),
-	ActionQueueAsync(target=NPC_14, subscript=[
-		A_VisibilityOff()
-	], identifier="EVENT_3388_action_queue_14"),
+	EnterArea(room_id=R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, face_direction=SOUTH, x=7, y=82, z=0, run_entrance_event=True),
 	RemoveObjectFromCurrentLevel(MARIO, identifier="EVENT_3388_remove_from_current_level_15"),
 	CircleMaskShrinkToObject(target=MARIO, width=96, speed=8, static=True),
 	Pause(180),
 	Pause(180),
 	CircleMaskShrinkToObject(target=MARIO, width=0, speed=8, static=True),
+	JmpIfBitSet(TEMP_7043_7, ["EVENT_3388_enter_area_16"]),
 	EnterArea(room_id=R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM, face_direction=NORTHEAST, x=24, y=110, z=0),
-	RunEventAsSubroutine(E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
+	Jmp(["EVENT_3388_run_event_as_subroutine_17"]),
+	EnterArea(room_id=R003_POSTGAME_SHIP, face_direction=NORTHEAST, x=24, y=110, z=0, identifier="EVENT_3388_enter_area_16"),
+	RunEventAsSubroutine(E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_3388_run_event_as_subroutine_17"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_WalkNortheastPixels(4)
 	]),
 	FadeInFromBlack(sync=False),
+    ClearBit(TEMP_7043_7),
 	Return(identifier="EVENT_3388_ret_25")
 ])

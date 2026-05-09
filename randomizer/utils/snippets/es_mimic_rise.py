@@ -56,6 +56,27 @@ def get_mimic_rise_dojo() -> list[UsableActionScriptCommand]:
         A_ShiftZUpPixels(2),
         A_Pause(20),
 	]
+def get_mimic_deescalate_dojo() -> list[UsableActionScriptCommand]:
+    """Get the commands for the mimic rising animation in the dojo."""
+    return [
+        A_TransferToXYZF(5, 15, 0, EAST),
+        A_FaceSouthwest(),
+		A_FixedFCoordOn(),
+		A_SetWalkingSpeed(FAST),
+		A_JumpToHeight(height=53, silent=True),
+		A_WalkNortheastSteps(1), 
+		A_Pause(20),
+        A_SetWalkingSpeed(VERY_FAST),
+        A_ShiftZUpSteps(2),
+        A_SetWalkingSpeed(FAST),
+        A_ShiftZDownPixels(6),
+        A_ShiftZUpPixels(6),
+        A_ShiftZDownPixels(4),
+        A_ShiftZUpPixels(4),
+        A_ShiftZDownPixels(2),
+        A_ShiftZUpPixels(2),
+        A_Pause(20),
+	]
 
 def get_mimic_rise_kamek() -> list[UsableActionScriptCommand]:
     """Get the commands for the mimic rising animation in the dojo."""

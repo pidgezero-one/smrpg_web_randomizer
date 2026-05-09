@@ -1,4 +1,4 @@
-# SPR0567_RED_SYRUP
+# SPR0219_RED_ITEM_COLLECTION
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 from randomizer.data.variables.sprite_palette_names import SPAL384_YELLOW_JUICE

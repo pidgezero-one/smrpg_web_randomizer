@@ -90,7 +90,7 @@ room = Room(
     objects=[
         RegularNPC( # 7
             npc=npcs.JONATHAN_JONES_POSTGAME_NPC,
-            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            initiator=EventInitiator.PRESS_A_OR_TOUCH_ANY_SIDE,
             event_script=E1749_SHIP_POSTGAME_BOSS,
             action_script=A0348_SHIP_BOSS,
             visible=True,
@@ -117,7 +117,7 @@ room = Room(
             byte7_upper2=3, cannot_clone=True),
         RegularNPC( # 1
             npc=npcs.BANDANA_BLUE_NPC,
-            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            initiator=EventInitiator.PRESS_A_OR_TOUCH_ANY_SIDE,
             event_script=E1749_SHIP_POSTGAME_BOSS,
             action_script=A0015_DO_NOTHING,
             visible=True,
@@ -175,7 +175,7 @@ room = Room(
         RegularNPC( # 5
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
-            event_script=E3388_SHIP_BOSS_ROOM_PERISCOPE,
+            event_script=E1747_PERISCOPE_POSTGAME,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=24,

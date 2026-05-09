@@ -34,6 +34,9 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["EVENT_3202_enter_area_3"]),
 	EnterArea(room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, face_direction=SOUTHWEST, x=8, y=15, z=0, run_entrance_event=True),
+	Return(),
+	EnterArea(room_id=R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE, face_direction=SOUTHWEST, x=8, y=15, z=0, run_entrance_event=True, identifier="EVENT_3202_enter_area_3"),
 	Return()
 ])

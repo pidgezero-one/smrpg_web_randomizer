@@ -36,7 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 527),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
-	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+	JmpIfBitSet(GAME_OVER, ["E1748_gameover"]),
 	RestoreAllHP(),
 	RestoreAllFP(),
 	RemoveObjectFromCurrentLevel(NPC_0),
@@ -45,5 +45,6 @@ script = EventScript([
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	RunEventAsSubroutine(E1253_POSTGAME_MINES_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 527),
-	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
+	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
+    ResetAndChooseGame(identifier="E1748_gameover")
 ])

@@ -276,9 +276,11 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True
         ),
-        RegularClone(  # 13
+        RegularNPC(  # 13
             npc=npcs.ITEM_BAG_NPC,
+            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0229_FREESTANDING_13_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=True,
@@ -287,6 +289,22 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            face_on_trigger=False,
+            cant_enter_doors=False,
+            byte2_bit5=False,
+            set_sequence_playback=False,
+            cant_float=False,
+            cant_walk_up_stairs=False,
+            cant_walk_under=False,
+            cant_pass_walls=False,
+            cant_jump_through=True,
+            cant_pass_npcs=False,
+            byte3_bit5=False,
+            cant_walk_through=True,
+            byte3_bit7=False,
+            slidable_along_walls=True,
+            cant_move_if_in_air=True,
+            byte7_upper2=3,
         ),
         RegularClone(  # 14
             npc=npcs.ITEM_BAG_NPC,
@@ -337,6 +355,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=False,
             byte7_upper2=3,
+            cannot_clone=True
         ),
     ],
 )

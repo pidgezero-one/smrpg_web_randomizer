@@ -3,7 +3,7 @@
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 from randomizer.data.variables.sprite_palette_names import SPAL384_YELLOW_JUICE
 sprite = CompleteSprite(
-    animation=AnimationPack(166, length=91, unknown=0x0002,
+    animation=AnimationPack(164, length=106, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -22,7 +22,7 @@ sprite = CompleteSprite(
                     frames=[
                         AnimationSequenceFrame(duration=2, mold_id=0),
                     ]
-                ),
+                )
             ]
         )
     ),

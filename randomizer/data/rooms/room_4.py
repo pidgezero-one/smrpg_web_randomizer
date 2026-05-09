@@ -100,7 +100,7 @@ room = Room(
             cannot_clone=True),
         RegularNPC( # 1
             npc=npcs.SNIFIT_NPC_2,
-            initiator=EventInitiator.NONE,
+            initiator=EventInitiator.DO_ANYTHING,
             event_script=E1925_POSTGAME_TOWER_FIGHT,
             action_script=A0003_SEQUENCE_LOOPING_ON,
             visible=True,

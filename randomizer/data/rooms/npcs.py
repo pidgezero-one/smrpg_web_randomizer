@@ -6842,7 +6842,7 @@ SKY_TROOPA_NPC = NPC(
 )
 
 MAD_MALLET_NPC = NPC(
-    sprite_id=SPR0259_MAD_MALLET,
+    sprite_id=SPR0762_MAD_MALLET_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -8378,7 +8378,7 @@ MALAKOOPA_NPC = NPC(
 )
 
 POUNDER_NPC = NPC(
-    sprite_id=SPR0323_POUNDER,
+    sprite_id=SPR0763_POUNDER_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -8402,7 +8402,7 @@ POUNDER_NPC = NPC(
 )
 
 POUNDETTE_NPC = NPC(
-    sprite_id=SPR0324_POUNDETTE,
+    sprite_id=SPR0764_POUNDETTE_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -12174,7 +12174,7 @@ GENO_DOLL_ENDING = NPC(
 )
 
 POUNDETTE_NPC_2 = NPC(
-    sprite_id=SPR0324_POUNDETTE,
+    sprite_id=SPR0764_POUNDETTE_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -15079,7 +15079,7 @@ VALENTINA_NPC_2 = NPC(
     height=12,
     y_shift=1,
     show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
+    directions=VramStore.DIR0_SWSE_NWNE,
     min_vram_size=0,
     priority_0=False,
     priority_1=False,
@@ -15624,7 +15624,7 @@ CLOAKER_ST_TIME_NPC = NPC(
 )
 
 MAD_MALLET_NPC_2 = NPC(
-    sprite_id=SPR0259_MAD_MALLET,
+    sprite_id=SPR0762_MAD_MALLET_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -15648,7 +15648,7 @@ MAD_MALLET_NPC_2 = NPC(
 )
 
 MAD_MALLET_NPC_3 = NPC(
-    sprite_id=SPR0259_MAD_MALLET,
+    sprite_id=SPR0762_MAD_MALLET_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -15672,7 +15672,7 @@ MAD_MALLET_NPC_3 = NPC(
 )
 
 MAD_MALLET_NPC_4 = NPC(
-    sprite_id=SPR0259_MAD_MALLET,
+    sprite_id=SPR0762_MAD_MALLET_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -16200,7 +16200,7 @@ SMITHY_LOWER_NPC = NPC(
 )
 
 POUNDER_NPC_2 = NPC(
-    sprite_id=SPR0323_POUNDER,
+    sprite_id=SPR0763_POUNDER_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -16224,7 +16224,7 @@ POUNDER_NPC_2 = NPC(
 )
 
 POUNDER_NPC_3 = NPC(
-    sprite_id=SPR0323_POUNDER,
+    sprite_id=SPR0763_POUNDER_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -16248,7 +16248,7 @@ POUNDER_NPC_3 = NPC(
 )
 
 POUNDER_NPC_4 = NPC(
-    sprite_id=SPR0323_POUNDER,
+    sprite_id=SPR0763_POUNDER_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -16272,7 +16272,7 @@ POUNDER_NPC_4 = NPC(
 )
 
 POUNDETTE_NPC_3 = NPC(
-    sprite_id=SPR0324_POUNDETTE,
+    sprite_id=SPR0764_POUNDETTE_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -16296,7 +16296,7 @@ POUNDETTE_NPC_3 = NPC(
 )
 
 POUNDETTE_NPC_4 = NPC(
-    sprite_id=SPR0324_POUNDETTE,
+    sprite_id=SPR0764_POUNDETTE_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,

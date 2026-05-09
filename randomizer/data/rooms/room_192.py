@@ -152,7 +152,8 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            show_shadow=True),
+            show_shadow=True,
+            cannot_clone=True),
         RegularNPC( # 1
             npc=npcs.SNIFIT_NPC_2,
             initiator=EventInitiator.NONE,

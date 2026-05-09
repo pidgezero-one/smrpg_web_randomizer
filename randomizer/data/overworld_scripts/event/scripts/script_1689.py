@@ -46,7 +46,7 @@ script = EventScript([
 		A_JumpToHeight(height=0, silent=True)
 	]),
 	JmpToEvent(E1771_TEMPLE_BOSS_ROOM_LOADER),
-	EnterArea(room_id=R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM, face_direction=SOUTH, x=4, y=43, z=9, identifier="enter_boss_room_2"),
+	EnterArea(room_id=R293_BELOME_3_ROOM, face_direction=SOUTH, x=4, y=43, z=9, identifier="enter_boss_room_2"),
     	SetBit(DIRECTIONAL_7049_0),
 	EnableControls([]),
 	ActionQueueSync(target=MARIO, subscript=[

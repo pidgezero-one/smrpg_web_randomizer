@@ -64,7 +64,7 @@ room = Room(
         RegularNPC( # 0
             npc=npcs.PUNCHINELLO_POSTGAME_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E0598_MINES_INITIATE_FINAL_BOSS_FIGHT,
+            event_script=E1748_MINES_POSTGAME_FIGHT,
             action_script=A0000_DO_NOTHING,
             visible=False,
             x=7,

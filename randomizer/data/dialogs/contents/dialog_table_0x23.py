@@ -656,7 +656,7 @@ dialog_data[222] = '''                  No luck...[delay]
 dialog_data[223] = '''      Take a look at Booster's
    family portraits in order from
      the oldest to the youngest.[await]'''
-dialog_data[224] = '''  Remember to respect your elders.[await]'''
+dialog_data[224] = '''\n[center]Remember to respect your elders.[await]'''
 dialog_data[225] = '''YARIDOVICH: Finally![await]
  It took you long enough to get
  here![await]'''

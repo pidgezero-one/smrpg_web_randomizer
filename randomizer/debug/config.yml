@@ -38,4 +38,5 @@ items:
     MarrymoreFirstSuitePrizeLocation: FertilizerPrize
     RoseTownInnToadPrizeLocation: SeedPrize
     RoseWayMiddleIslandLocation: BrightCardPrize
-    BoosterTowerCheckerboardLeftmostItemLocation: RecoveryMushroomPrize
+    RoseWayLeftIslandLocation: ExtraShinyStonePrize
+    BoosterTowerPortraitPrizeLocation: MaxMushroomPrize

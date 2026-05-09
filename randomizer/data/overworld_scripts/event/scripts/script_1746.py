@@ -1,4 +1,4 @@
-# E1746_EMPTY
+# E1746_PERISCOPE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    ClearBit(TEMP_7043_7),
+    JmpToEvent(E3388_SHIP_BOSS_ROOM_PERISCOPE)
 ])

@@ -785,7 +785,7 @@ class CzarDragonSmallObject(BossNPC):
     """Small Czar Dragon object."""
 
     _base = CZAR_DRAGON_SMALL_NPC
-    _eye_height = 3
+    _eye_height = 20
     _evil_palette = [
         0xF0F8F8,
         0x00B0B8,
