@@ -35,16 +35,14 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	ActionQueueAsync(target=NPC_4, subscript=[
-		A_VisibilityOn(),
+        A_ResetProperties(),
+        A_FaceSouthwest(),
 		A_FixedFCoordOn(),
 		A_SetWalkingSpeed(FAST),
 		A_WalkNortheastSteps(1),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=3, is_sequence=True, looping=False, identifier="dojo_boss_5_deescalate"),
-		A_Pause(18)
+        A_FixedFCoordOff(),
+		A_VisibilityOn(),
 	], identifier="dojo_boss_5_deescalate_aq"),
-	ActionQueueAsync(target=MARIO, subscript=[
-		A_SetSpriteSequence(index=0, sprite_offset=0, is_mold=True, is_sequence=True, looping=False, identifier="dojo_fight_5_mario_challenge_mold")
-	], identifier="dojo_fight_5_mario_challenge_mold_aq"),
 	Return()
 ])

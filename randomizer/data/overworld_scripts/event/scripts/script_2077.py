@@ -59,7 +59,7 @@ script = EventScript([
 		A_Pause(15),
 		A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
 		A_Pause(30)
-	]),
+	], identifier="EVENT_2077_player_challenge_aq"),
 	RunEventAsSubroutine(E0866_DOJO_4TH_BOSS_CHALLENGE_SUBROUTINE),
 	SetVarToConst(PRIMARY_TEMP_7000, 517),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
@@ -70,6 +70,15 @@ script = EventScript([
 	FadeOutMusicToVolume(duration=0, volume=100),
 	PlayMusicAtDefaultVolume(M0051_MONSTROTOWN),
 	Pause(1),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_ResetProperties(),
+		A_FaceNortheast(),
+	]),
+	ActionQueueAsync(target=NPC_3, subscript=[
+        A_TransferToXYZF(6, 14, 0, EAST),
+		A_ResetProperties(),
+		A_FaceSouthwest(),
+	]),
 	FadeInFromBlack(sync=False),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_Pause(70),

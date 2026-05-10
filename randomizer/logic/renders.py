@@ -25,6 +25,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.palette_row import (
     PaletteRow,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
+    UsableEventScriptCommand,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 
 from randomizer.progression.prizes import (
     BowserRecruitmentPrize,
@@ -37,11 +41,6 @@ from randomizer.progression.prizes import (
     ManagerBossFight,
     MarioRecruitmentPrize,
     ToadstoolRecruitmentPrize,
-)
-from randomizer.utils.tower_access_scripts import (
-    A_EndLoop,
-    A_JmpIfRandom1of2,
-    A_VisibilityOn,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
     ActionScript,
@@ -65,9 +64,16 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
     A_StartLoopNTimes,
     A_WalkNorthPixels,
     A_WalkSouthPixels,
+    A_EndLoop,
+    A_JmpIfRandom1of2,
+    A_VisibilityOn,
+    A_SetWalkingSpeed,
+    A_JumpToHeight,
+    A_WalkSouthwestSteps,
+    A_PlaySound,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import (
-    NORMAL,
+    NORMAL, FAST
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import (
@@ -126,6 +132,7 @@ from ..data.variables.room_names import (
     R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
     R509_FACTORY_GROUNDS_SMITHYS_PAD,
 )
+from ..data.variables.overworld_sfx_names import *
 from ..data.variables.variable_names import TEMP_7043_3
 from smrpgpatchbuilder.datatypes.levels.classes import NPC as NPCBase
 from ..data.rooms.npcs import (
@@ -141,7 +148,7 @@ from ..types.prizelocation import AllyNPCSub, BossFightLocationNPC
 from ..utils.npcs import is_swse_only
 from ..utils.snippets.es_castle_statue_room_bonk import script as bonk
 from ..utils.snippets.es_castle_statue_room_bonk_mario import script as bonk_mario
-from ..utils.snippets.es_mimic_rise import get_mimic_rise_dojo, get_mimic_deescalate_dojo
+from ..utils.snippets.es_mimic_rise import get_mimic_rise_dojo
 from ..utils.snippets.create_peck_subroutine import (
     gen_peck_left_subroutine,
     gen_peck_middle_subroutine,
@@ -2426,6 +2433,126 @@ def render_ship_postgame_boss(world: GameWorld, prize: BossFightPrize) -> None:
 # =============================================================================
 
 
+
+def mario_dojo_challenge(total_duration) -> UsableEventScriptCommand:
+    if total_duration <= 45:
+        pre_pause = 1
+    else:
+        pre_pause = 1 + total_duration - 45
+    return ActionQueueSync(target=MARIO, subscript=[
+            A_FixedFCoordOn(),
+            A_SetWalkingSpeed(FAST),
+            A_JumpToHeight(height=53, silent=True),
+            A_WalkSouthwestSteps(1),
+            A_Pause(19),
+            A_Pause(pre_pause),
+            A_SetSequenceSpeed(NORMAL),
+            A_SetSpriteSequence(index=2, sprite_offset=4, is_sequence=True, looping=False),
+            A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
+            A_Pause(15),
+            A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
+            A_Pause(30)
+        ])
+
+def mallow_dojo_challenge(total_duration) -> UsableEventScriptCommand:
+    if total_duration <= 45:
+        pre_pause = 1
+    else:
+        pre_pause = 1 + total_duration - 45
+    return ActionQueueSync(target=MARIO, subscript=[
+            A_FixedFCoordOn(),
+            A_SetWalkingSpeed(FAST),
+            A_JumpToHeight(height=53, silent=True),
+            A_WalkSouthwestSteps(1),
+            A_Pause(19),
+            A_Pause(pre_pause),
+            A_Pause(5),
+            A_SetSequenceSpeed(NORMAL),
+            A_SetSpriteSequence(index=6, sprite_offset=4, is_sequence=True, looping=False),
+            A_Pause(7),
+            A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
+            A_Pause(15),
+            A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
+            A_Pause(18)
+        ])
+
+def geno_dojo_challenge(total_duration) -> UsableEventScriptCommand:
+    if total_duration <= 45:
+        pre_pause = 1
+    else:
+        pre_pause = 1 + total_duration - 45
+    return ActionQueueSync(target=MARIO, subscript=[
+            A_FixedFCoordOn(),
+            A_SetWalkingSpeed(FAST),
+            A_JumpToHeight(height=53, silent=True),
+            A_WalkSouthwestSteps(1),
+            A_Pause(19),
+            A_Pause(pre_pause),
+            A_Pause(19),
+            A_SetSequenceSpeed(NORMAL),
+            A_SetSpriteSequence(index=0, sprite_offset=5, is_sequence=True, looping=False),
+            A_Pause(20),
+            A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
+            A_Pause(6)
+        ])
+
+def bowser_dojo_challenge(total_duration) -> UsableEventScriptCommand:
+    if total_duration <= 45:
+        pre_pause = 1
+    else:
+        pre_pause = 1 + total_duration - 45
+    return ActionQueueSync(target=MARIO, subscript=[
+            A_FixedFCoordOn(),
+            A_SetWalkingSpeed(FAST),
+            A_JumpToHeight(height=53, silent=True),
+            A_WalkSouthwestSteps(1),
+            A_Pause(19),
+            A_Pause(pre_pause),
+            A_Pause(9),
+            A_SetSequenceSpeed(NORMAL),
+            A_SetSpriteSequence(index=0, sprite_offset=4, is_sequence=True, looping=False),
+            A_Pause(24),
+            A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
+            A_Pause(12)
+        ])
+        
+
+def peach_dojo_challenge(total_duration) -> UsableEventScriptCommand:
+    if total_duration <= 45:
+        pre_pause = 1
+    else:
+        pre_pause = 1 + total_duration - 45
+    return ActionQueueSync(target=MARIO, subscript=[
+            A_FixedFCoordOn(),
+            A_SetWalkingSpeed(FAST),
+            A_JumpToHeight(height=53, silent=True),
+            A_WalkSouthwestSteps(1),
+            A_Pause(19),
+            A_Pause(pre_pause),
+            A_Pause(9),
+            A_SetSequenceSpeed(NORMAL),
+            A_SetSpriteSequence(index=0, sprite_offset=4, is_sequence=True, looping=False),
+            A_Pause(8),
+            A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
+            A_Pause(14),
+            A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
+            A_Pause(14)
+        ])
+    
+def update_ally_challenge(world: GameWorld, duration: int, id: str):
+    if world.overworld_character.ally.index == 0:
+        world.event_scripts.replace_command_by_identifier(id, mario_dojo_challenge(duration))
+    elif world.overworld_character.ally.index == 1:
+        world.event_scripts.replace_command_by_identifier(id, peach_dojo_challenge(duration))
+    elif world.overworld_character.ally.index == 2:
+        world.event_scripts.replace_command_by_identifier(id, bowser_dojo_challenge(duration))
+    elif world.overworld_character.ally.index == 3:
+        world.event_scripts.replace_command_by_identifier(id, geno_dojo_challenge(duration))
+    elif world.overworld_character.ally.index == 4:
+        world.event_scripts.replace_command_by_identifier(id, mallow_dojo_challenge(duration))
+
+
+
 def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply animation changes for Dojo first fight."""
     m = prize.smallest_npc()
@@ -2436,6 +2563,8 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
         BoxBoyBossFight,
         ChesterBossFight,
     )
+    duration = 45
+    
 
     if isinstance(
         prize, (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight)
@@ -2446,6 +2575,7 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
         ).set_subscript(get_mimic_rise_dojo())
     else:
         if m.animations.dojo_challenge is not None:
+            duration = max(45, m.animations.dojo_challenge.total_duration + 12)
             world.event_scripts.get_subscript_command_by_identifier(
                 "dojo_boss_1_initiate_aq",
                 "dojo_boss_1_initiate",
@@ -2453,7 +2583,7 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
             ).set_index(m.animations.dojo_challenge.sequence_id)
             world.event_scripts.get_subscript_command_by_identifier(
                 "dojo_boss_1_initiate_aq", "dojo_boss_1_pause", A_Pause
-            ).set_length(max(45, m.animations.dojo_challenge.total_duration + 12))
+            ).set_length(duration)
         else:
             world.event_scripts.get_subscript_command_by_identifier(
                 "dojo_boss_1_initiate_aq",
@@ -2474,6 +2604,7 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
     world.event_scripts.replace_subscript_command_by_identifier(
         "EVENT_2067_action_queue_0", "jagger_looks_around", A_FaceNorthwest()
     )
+    update_ally_challenge(world, duration, "EVENT_2066_player_challenge_aq")
 
 
 def render_dojo_fight(
@@ -2482,8 +2613,7 @@ def render_dojo_fight(
     initiate_aq_id: str,
     initiate_id: str,
     pause_id: str,
-    deescalate_aq_id: str | None = None,
-    deescalate_id: str | None = None,
+    player_challenge_id: str,
 ) -> None:
     """Apply animation changes for a generic Dojo fight."""
     m = prize.smallest_npc()
@@ -2494,6 +2624,7 @@ def render_dojo_fight(
         ChesterBossFight,
     )
 
+    duration = 45
     if isinstance(
         prize, (PandoriteBossFight, HidonBossFight, BoxBoyBossFight, ChesterBossFight)
     ):
@@ -2501,13 +2632,9 @@ def render_dojo_fight(
             ActionQueueAsync,
             world.event_scripts.get_command_by_identifier(initiate_aq_id),
         ).set_subscript(get_mimic_rise_dojo())
-        if deescalate_aq_id is not None and deescalate_id is not None:
-            cast(
-                ActionQueueAsync,
-                world.event_scripts.get_command_by_identifier(deescalate_aq_id),
-            ).set_subscript(get_mimic_deescalate_dojo())
     else:
         if m.animations.dojo_challenge is not None:
+            duration = max(45, m.animations.dojo_challenge.total_duration + 12)
             world.event_scripts.get_subscript_command_by_identifier(
                 initiate_aq_id,
                 initiate_id,
@@ -2515,23 +2642,14 @@ def render_dojo_fight(
             ).set_index(m.animations.dojo_challenge.sequence_id)
             world.event_scripts.get_subscript_command_by_identifier(
                 initiate_aq_id, pause_id, A_Pause
-            ).set_length(max(45, m.animations.dojo_challenge.total_duration + 12))
-            if deescalate_aq_id is not None and deescalate_id is not None:
-                world.event_scripts.get_subscript_command_by_identifier(
-                    deescalate_aq_id,
-                    deescalate_id,
-                    A_SetSpriteSequence,
-                ).set_index(m.animations.dojo_challenge.sequence_id)
+            ).set_length(duration)
         else:
             world.event_scripts.get_subscript_command_by_identifier(
                 initiate_aq_id,
                 initiate_id,
                 A_SetSpriteSequence,
-            ).set_index(0)     
-            if deescalate_aq_id is not None and deescalate_id is not None:
-                world.event_scripts.delete_subscript_command_by_identifier(
-                    deescalate_aq_id, deescalate_id
-                )   
+            ).set_index(0)    
+    update_ally_challenge(world, duration, player_challenge_id) 
 
 # =============================================================================
 # Bean Valley

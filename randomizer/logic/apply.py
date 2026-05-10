@@ -442,13 +442,11 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                         disabled_label = f"smithy_boss_hunt_disabled_{uuid4()}"
                         disabled_label_ra = f"smithy_boss_hunt_disabled_{uuid4()}_ra"
                         patched.extend([
+                            JmpIfBitSet(GAME_OVER, [disabled_label_ra]),
                             JmpIfBitClear(SMITHY_BOSS_HUNT_WIN_CONDITION, [disabled_label]),
                             EnterArea(room_id=R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, face_direction=NORTHWEST, x=4, y=48, z=0, run_entrance_event=False),
                             JmpToEvent(E3885_END_GAME),
-                            JmpIfBitSet(GAME_OVER, [disabled_label_ra], identifier=disabled_label),
-                            Set0158Bit7Offset(0x0158, True),
-                            FadeInFromColour(duration=16, colour=WHITE),
-                            Pause(16),
+                            Set0158Bit7Offset(0x0158, True, identifier=disabled_label),
                             Return(),
                             ResetAndChooseGame(identifier=disabled_label_ra),
                         ])
@@ -954,16 +952,16 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     challenge_base_sprite = 0 if ally.index == 0 else SPR0031_ALT_PROTAGONIST_1
     challenge_sprite = world.get_sprite(challenge_base_sprite + challenge_offset)
     challenge_final_mold = challenge_sprite.animation.properties.sequences[challenge_seq].frames[-1].mold_id
-    for aq_id, cmd_id in (
-        ("dojo_fight_2_mario_challenge_mold_aq", "dojo_fight_2_mario_challenge_mold"),
-        ("dojo_fight_3_mario_challenge_mold_aq", "dojo_fight_3_mario_challenge_mold"),
-        ("dojo_fight_5_mario_challenge_mold_aq", "dojo_fight_5_mario_challenge_mold"),
-    ):
-        cmd = world.event_scripts.get_subscript_command_by_identifier(
-            aq_id, cmd_id, A_SetSpriteSequence
-        )
-        cmd.set_index(challenge_final_mold)
-        cmd.set_sprite_offset(challenge_offset)
+    # for aq_id, cmd_id in (
+    #     ("dojo_fight_2_mario_challenge_mold_aq", "dojo_fight_2_mario_challenge_mold"),
+    #     ("dojo_fight_3_mario_challenge_mold_aq", "dojo_fight_3_mario_challenge_mold"),
+    #     ("dojo_fight_5_mario_challenge_mold_aq", "dojo_fight_5_mario_challenge_mold"),
+    # ):
+    #     cmd = world.event_scripts.get_subscript_command_by_identifier(
+    #         aq_id, cmd_id, A_SetSpriteSequence
+    #     )
+    #     cmd.set_index(challenge_final_mold)
+    #     cmd.set_sprite_offset(challenge_offset)
     if ally.index != 0:
         # nimbus cutscene
         world.event_scripts.get_command_by_identifier("EVENT_738_action_queue_63_SUBSCRIPT", ActionQueueSync).set_subscript([

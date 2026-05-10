@@ -1,4 +1,4 @@
-# E0876_TEST_SCRIPT_10
+# E0876_DOJO_4TH_BOSS_CHALLENGE_DEESCALATE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,6 +34,15 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK164_MINES_FIRST_BOSS, BF05_MOLEVILLE_MINES),
+	ActionQueueAsync(target=NPC_3, subscript=[
+        A_ResetProperties(),
+        A_FaceSouthwest(),
+		A_FixedFCoordOn(),
+		A_SetWalkingSpeed(FAST),
+		A_WalkNortheastSteps(1),
+		A_SetSequenceSpeed(NORMAL),
+        A_FixedFCoordOff(),
+		A_VisibilityOn(),
+	], identifier="dojo_boss_4_deescalate_aq"),
 	Return()
 ])

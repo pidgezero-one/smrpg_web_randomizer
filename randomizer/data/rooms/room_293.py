@@ -35,7 +35,7 @@ room = Room(
         full_palette_buffer=True
     ),
     music=M0027_DUNGEONISFULLOFMONSTERS,
-    entrance_event=E1771_TEMPLE_BOSS_ROOM_LOADER,
+    entrance_event=E0015_STANDARD_ROOM_LOADER,
     exits=[
         RoomExit(
             x=9,
@@ -89,7 +89,7 @@ room = Room(
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E1750_TEMPLE_BOSS_POSTGAME,
             action_script=A0160_SEQUENCE_LOOPING_ON,
-            visible=False,
+            visible=True,
             x=6,
             y=39,
             z=1,

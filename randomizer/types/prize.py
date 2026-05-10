@@ -14,7 +14,7 @@ from ..data.variables.sprite_names import (
     SPR0236_COIN_STATIC_SMALL,
     SPR0238_STATIC_FROG_COIN_SMALL,
 )
-from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC
+from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC, StatueNPC
 from ..data.physical_objects.items import (
     DefaultItem,
     TinyStarObject,
@@ -60,6 +60,18 @@ if TYPE_CHECKING:
     from .gameworld import GameWorld
     from .prizelocation import PrizeLocation
 
+class FortuneEnum(StrEnum):
+    RARE = '''[center]You'll find some rare items.[await]'''
+    GREAT = '''[center]You'll pick up great items.[await]'''
+    SNACK = '''[center]Some tasty snacks are awaiting\nyou in the future.[await]'''
+    MEAL = '''[center]Looks like you'll have a great meal\nsometime in the future.[await]'''
+    DRINK = '''[center]You'll have a refreshing drink in the near future.[await]'''
+    WEAPON = '''[center]You'll achieve great power.[await]'''
+    COINS = '''[center]Vast riches will be yours in the future.[await]'''
+    ARMOR = '''[center]You will develop great constitution in your future.[await]'''
+    ACCESSORY = '''[center]You'll have amazing fashion sense in the future.[await]'''
+    YIKES = '''[center]Yikes, looks like you'll have\nhardships ahead of you.[await]'''
+    SPELL = '''[center]You'll acquire many skills in your future.[await]'''
 
 class TreasureHunterNickname:
     _nickname: str
@@ -118,6 +130,11 @@ class Prize:
     _model: type[ItemNPC] | None = DefaultItem
     _sound_effect: int = SO014_FLOWER
     _packet_data: tuple[int, int] | None = None  # list of (sprite id, sequence id)
+    _fortune_type: FortuneEnum = FortuneEnum.GREAT
+
+    @property
+    def fortune_type(self) -> FortuneEnum:
+        return self._fortune_type
 
     @property
     def packet_data(self) -> tuple[int, int]:
@@ -201,11 +218,13 @@ class SpecialItemPrizeType(StrEnum):
     SPECIAL_EQUIP_TIER_2 = "special_equip_tier_2"
 
 
+
 class ItemPrize(StandardPrize):
     item: type[Item]
     _importance: SpecialItemPrizeType | None = None
     _monstro_shuffle: bool = False
     _packet_data = (SPR0195_FLOWER, 5)
+
 
     @property
     def importance(self) -> SpecialItemPrizeType | None:
@@ -269,6 +288,7 @@ class StarPiecePrize(StandardPrize):
     _hint: Flag
     _model = TinyStarObject
     _packet_data = (SPR0226_TINY_STAR, 0)
+    _fortune_type: FortuneEnum = FortuneEnum.RARE
 
     @property
     def chest_grant(self) -> EventScript:
@@ -360,6 +380,7 @@ class EXPStarPrize(Prize):
 class SlotsPrize(Prize):
     _logic_event: int
     _override_id: int
+    _fortune_type: FortuneEnum = FortuneEnum.COINS
 
     @property
     def override_id(self) -> int:
@@ -458,6 +479,7 @@ class SpellPrize(Prize):
 
     character_replacement_ids: list[str]
     packet_replacement_ids: list[str]
+    _fortune_type: FortuneEnum = FortuneEnum.SPELL
 
     def set_model(self, model: type[ItemNPC]) -> None:
         self._model = model
@@ -942,7 +964,7 @@ class BossFightPrize(Prize):
 
 
 class MimicFightInitiatorPrize(Prize):
-    pass
+    _fortune_type: FortuneEnum = FortuneEnum.YIKES
 
 
 class EmptyPrize(Prize):
@@ -965,6 +987,7 @@ class CoinPrize(StandardPrize):
         nickname="Gold Coin",
         description=" It's nothing special, but a guy's\n gotta eat.",
     )
+    _fortune_type: FortuneEnum = FortuneEnum.COINS
 
     @property
     def packet_data(self) -> tuple[int, int]:
@@ -1014,6 +1037,7 @@ class FrogCoinPrize(StandardPrize):
         nickname="Green Coin",
         description="The exchange rate on this must be\n pretty high.",
     )
+    _fortune_type: FortuneEnum = FortuneEnum.COINS
 
     @property
     def packet_data(self) -> tuple[int, int]:

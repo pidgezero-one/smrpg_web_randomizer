@@ -58,7 +58,7 @@ script = EventScript([
 		A_Pause(15),
 		A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
 		A_Pause(30)
-	]),
+	], identifier="EVENT_2068_player_challenge_aq"),
 	RunEventAsSubroutine(E0862_DOJO_2ND_BOSS_CHALLENGE_SUBROUTINE),
 	SetVarToConst(PRIMARY_TEMP_7000, 515),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
@@ -69,6 +69,10 @@ script = EventScript([
 	FadeOutMusicToVolume(duration=0, volume=100),
 	PlayMusicAtDefaultVolume(M0051_MONSTROTOWN),
 	Pause(1),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_ResetProperties(),
+		A_FaceNortheast(),
+	]),
 	JmpIfBitSet(RUN_AWAY, ["EVENT_2068_fade_in_from_black_async_26"]),
 	JmpIfBitSet(GAME_OVER, ["EVENT_2068_fade_in_from_black_async_26"]),
 	SetBit(DOJO_BOSS_2_DEFEATED),
@@ -76,6 +80,11 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_0, R255_MONSTRO_TOWN_JINXS_DOJO),
 	SummonObjectToCurrentLevel(NPC_2),
 	SummonObjectToSpecificLevel(NPC_2, R255_MONSTRO_TOWN_JINXS_DOJO),
+	ActionQueueSync(target=NPC_2, subscript=[
+        A_TransferToXYZF(6, 14, 0, EAST),
+		A_ResetProperties(),
+		A_FaceSouthwest(),
+	]),
 	RunEventAsSubroutine(E0863_DOJO_2ND_BOSS_CHALLENGE_DEESCALATE),
 	FadeInFromBlack(sync=False),
 	ActionQueueSync(target=NPC_2, subscript=[
@@ -88,7 +97,13 @@ script = EventScript([
 		A_WalkSouthwestSteps(1)
 	]),
 	Jmp(["EVENT_2068_action_queue_28"]),
-	FadeInFromBlack(sync=False, identifier="EVENT_2068_fade_in_from_black_async_26"),
+	ActionQueueSync(target=NPC_0, subscript=[
+        A_TransferToXYZF(6, 14, 0, EAST),
+		A_ResetProperties(),
+		A_FaceSouthwest(),
+	], identifier="EVENT_2068_fade_in_from_black_async_26"),
+	RunEventAsSubroutine(E0877_DOJO_1ST_BOSS_CHALLENGE_DEESCALATE),
+	FadeInFromBlack(sync=False),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_Pause(70),
 		A_ResetProperties(),

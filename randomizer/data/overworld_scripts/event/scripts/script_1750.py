@@ -35,15 +35,14 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 523),
+	SetBit(TEMPLE_POSTGAME_BOSS_DEFEATED),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
-	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	RemoveObjectFromCurrentLevel(NPC_1),
 	JmpIfBitSet(RUN_AWAY, ["EVENT_1750_set_temp_action_script_18"]),
 	JmpIfBitSet(GAME_OVER, ["EVENT_1750_reset_and_choose_game_17"]),
 	RestoreAllHP(),
 	RestoreAllFP(),
 	FadeInFromBlack(sync=False),
-	SetBit(TEMPLE_POSTGAME_BOSS_DEFEATED),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	RunEventAsSubroutine(E1212_POSTGAME_TEMPLE_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 523),

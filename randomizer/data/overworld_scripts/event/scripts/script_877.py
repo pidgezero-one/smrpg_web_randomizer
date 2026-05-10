@@ -1,4 +1,4 @@
-# E0877_TEST_SCRIPT_11
+# E0877_DOJO_1ST_BOSS_CHALLENGE_DEESCALATE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,6 +34,15 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK171_NIMBUS_CASTLE_THIRD_BOSS, BF24_NIMBUS_LAND),
+	ActionQueueAsync(target=NPC_1, subscript=[
+        A_ResetProperties(),
+        A_FaceSouthwest(),
+		A_FixedFCoordOn(),
+		A_SetWalkingSpeed(FAST),
+		A_WalkNortheastSteps(1),
+		A_SetSequenceSpeed(NORMAL),
+        A_FixedFCoordOff(),
+		A_VisibilityOn(),
+	], identifier="dojo_boss_1_deescalate_aq"),
 	Return()
 ])

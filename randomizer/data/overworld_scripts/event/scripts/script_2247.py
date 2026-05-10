@@ -58,7 +58,7 @@ script = EventScript([
 		A_Pause(15),
 		A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
 		A_Pause(30)
-	]),
+	], identifier="EVENT_2247_player_challenge_aq"),
     RunEventAsSubroutine(E0867_DOJO_5TH_BOSS_CHALLENGE_SUBROUTINE),
 	SetVarToConst(PRIMARY_TEMP_7000, 525),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
@@ -99,7 +99,7 @@ script = EventScript([
 	FadeOutToBlack(sync=False, identifier="EVENT_167_ret_87_dojo_postgame"),
     RemoveObjectFromCurrentLevel(NPC_4),
     SummonObjectToCurrentLevel(NPC_3),
-    EnterArea(R255_MONSTRO_TOWN_JINXS_DOJO, face_direction=NORTHEAST, x=5, y=16, z=0, run_entrance_event=True),
+    EnterArea(R324_MONSTRO_TOWN_OUTSIDE, face_direction=SOUTHWEST, x=18, y=73, z=9, run_entrance_event=True),
 	RunEventAsSubroutine(E1217_DOJO_5_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 525),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),

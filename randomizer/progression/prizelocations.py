@@ -10643,6 +10643,13 @@ class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
 
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        world.overworld_dialogs.replace_dialog(
+            DI1243_FORTUNE_1, self.prize.fortune_type if self.prize is not None else FortuneEnum.YIKES
+        )
+        return op
+    
     # flag as checked: npc 6 in room 421 has its object trigger disabled.
 
 
@@ -10673,6 +10680,13 @@ class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
+        
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        world.overworld_dialogs.replace_dialog(
+            DI1244_FORTUNE_2, self.prize.fortune_type if self.prize is not None else FortuneEnum.YIKES
+        )
+        return op
 
     # flag as checked: npc 7 in room 421 has its object trigger disabled.
 
@@ -10704,6 +10718,13 @@ class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
+        
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        world.overworld_dialogs.replace_dialog(
+            DI1247_FORTUNE_5, self.prize.fortune_type if self.prize is not None else FortuneEnum.YIKES
+        )
+        return op
 
     # flag as checked: npc 8 in room 421 has its object trigger disabled.
 
@@ -10735,6 +10756,13 @@ class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
+    
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        world.overworld_dialogs.replace_dialog(
+            DI1248_FORTUNE_6, self.prize.fortune_type if self.prize is not None else FortuneEnum.YIKES
+        )
+        return op
 
     # flag as checked: npc 9 in room 421 has its object trigger disabled.
 
@@ -11814,6 +11842,7 @@ class DojoSecondFight(BossFightLocation):
                 "dojo_boss_2_initiate_aq",
                 "dojo_boss_2_initiate",
                 "dojo_boss_2_pause",
+                "EVENT_2068_player_challenge_aq"
             )
         # If the swapped-in NPC's sprite has a non-gridplane mold 0,
         # set cannot_clone on the room object to prevent VRAM conflicts.
@@ -11906,8 +11935,7 @@ class DojoThirdFight(BossFightLocation):
                 "dojo_boss_3_initiate_aq",
                 "dojo_boss_3_initiate",
                 "dojo_boss_3_pause",
-                "dojo_boss_3_deescalate_aq",
-                "dojo_boss_3_deescalate",
+                "EVENT_2076_player_challenge_aq"
             )
         return op
 
@@ -11991,8 +12019,7 @@ class DojoFourthFight(BossFightLocation):
                 "dojo_boss_4_initiate_aq",
                 "dojo_boss_4_initiate",
                 "dojo_boss_4_pause",
-                "dojo_boss_4_deescalate_aq",
-                "dojo_boss_4_deescalate",
+                "EVENT_2077_player_challenge_aq",
             )
         return op
 
@@ -12104,8 +12131,7 @@ class DojoFifthFight(BossFightLocation):
                 "dojo_boss_5_initiate_aq",
                 "dojo_boss_5_initiate",
                 "dojo_boss_5_pause",
-                "dojo_boss_5_deescalate_aq",
-                "dojo_boss_5_deescalate",
+                "EVENT_2247_player_challenge_aq"
             )
         return op
 
@@ -20658,37 +20684,6 @@ class TempleShaftSwitchFlag(InvisibleFlagLocation):
         return can_access_monstro_town(world, inventory) and can_access_lands_end(
             world, inventory
         )
-
-
-class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
-    _bias = True
-    _originally_held = FrogCoin1Prize
-    _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
-    _npc_ids = [NPC_3]
-    _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_4
-    _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize]
-    _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 268),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
-        JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
-        ),
-        Jmp(["belome_temple_hint_text"]),
-    ]
-
-    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_lands_end(world, inventory)
-
-    # flag as checked: npc 3 in room 425 has its object trigger disabled.
 
 
 class DojoBonsaiFlag(InvisibleFlagLocation):

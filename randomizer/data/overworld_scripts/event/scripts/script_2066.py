@@ -60,11 +60,20 @@ script = EventScript([
 		A_Pause(15),
 		A_PlaySound(sound=SO096_SWINGING_FIST, channel=6),
 		A_Pause(30)
-	]),
+	], identifier="EVENT_2066_player_challenge_aq"),
 	RunEventAsSubroutine(E0861_DOJO_1ST_BOSS_CHALLENGE_SUBROUTINE),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	RestoreAllHP(),
 	RestoreAllFP(),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_ResetProperties(),
+		A_FaceNortheast(),
+	]),
+	ActionQueueSync(target=NPC_1, subscript=[
+        A_TransferToXYZF(6, 14, 0, EAST),
+		A_ResetProperties(),
+		A_FaceSouthwest(),
+	]),
 	JmpIfBitSet(GAME_OVER, ["EVENT_2066_fade_in_from_black_async_14"]),
 	JmpIfBitSet(RUN_AWAY, ["EVENT_2066_fade_in_from_black_async_14"]),
 	ActionQueueAsync(target=NPC_0, subscript=[

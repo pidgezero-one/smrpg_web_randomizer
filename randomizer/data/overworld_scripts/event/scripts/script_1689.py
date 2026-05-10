@@ -39,18 +39,17 @@ script = EventScript([
     JmpIfBitSet(TEMPLE_POSTGAME_BOSS_DEFEATED, ["enter_boss_room"]),
     JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["enter_boss_room"]),
     JmpIfBitClear(STAY_VOUCHER_USED, ["enter_boss_room"]),
-	EnterArea(room_id=R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM, face_direction=SOUTH, x=4, y=43, z=9, identifier="enter_boss_room"),
+	EnterArea(room_id=R293_BELOME_3_ROOM, face_direction=SOUTH, x=4, y=43, z=9, identifier="enter_boss_room_2"),
 	SetBit(DIRECTIONAL_7049_0),
 	EnableControls([]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_JumpToHeight(height=0, silent=True)
 	]),
-	JmpToEvent(E1771_TEMPLE_BOSS_ROOM_LOADER),
-	EnterArea(room_id=R293_BELOME_3_ROOM, face_direction=SOUTH, x=4, y=43, z=9, identifier="enter_boss_room_2"),
-    	SetBit(DIRECTIONAL_7049_0),
-	EnableControls([]),
+	JmpToEvent(E0015_STANDARD_ROOM_LOADER),
+	EnterArea(room_id=R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM, face_direction=SOUTH, x=6, y=40, z=9, identifier="enter_boss_room"),
+    SetBit(DIRECTIONAL_7049_0),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_JumpToHeight(height=0, silent=True)
 	]),
-	JmpToEvent(E0015_STANDARD_ROOM_LOADER),
+	JmpToEvent(E1771_TEMPLE_BOSS_ROOM_LOADER),
 ])
