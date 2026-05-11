@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	SetVarToConst(UNKNOWN_70AD, 0),
 	ActionQueueAsync(target=NPC_4, subscript=[
 		A_WalkEastPixels(11),
 		A_WalkNortheastPixels(4),
@@ -73,7 +74,6 @@ script = EventScript([
 	SetVarToConst(TEMP_70AC, 0),
 	ClearBit(FLOWER_TOWER_ASCENDED),
 	ClearBit(SKY_BRIDGE_TUTORIAL_BIT),
-	SetVarToConst(UNKNOWN_70AD, 0),
 	RemoveObjectFromCurrentLevel(NPC_0),
 	SetBit(TEMPLE_ELEVATOR_DIRECTION),
 	SummonObjectToSpecificLevel(NPC_0, R263_LANDS_END_UNDERGROUND_AREA_01),

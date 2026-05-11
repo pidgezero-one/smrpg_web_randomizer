@@ -891,7 +891,16 @@ def _detect_ending_character_rooms() -> set[int]:
 # ending-cutscene rooms (88/375/496) where NPC slots, vram sizes, and buffer
 # layout are all hand-frozen — the role-swap path keeps each character at
 # their permanent NPC slot and only retargets script commands + swaps coords.
-_NEVER_RECALCULATE_PARTITION_ROOMS: set[int] = {88, 292, 375, 496}
+# Room 422 (Belome's treasure room) is also locked: empirically, the items
+# only render correctly with all three buffers set to EMPTY_3, and the
+# partition must stay that way regardless of NPC-shuffle changes.
+_NEVER_RECALCULATE_PARTITION_ROOMS: set[int] = {
+    R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
+    R292_UNMAPPED_HOUSE_ROOM,
+    R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
+    R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM,
+    R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
+}
 
 
 def update_changed_room_partitions(world: GameWorld) -> None:

@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	SetVarToConst(UNKNOWN_70AD, 0),
 	SetVarToConst(X_COORD_2, 7440),
 	RunEventAsSubroutine(E0066_PIPE_DOWN_SUBROUTINE),
     SetBit(DIRECTIONAL_7049_0),
