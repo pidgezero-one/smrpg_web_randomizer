@@ -3457,6 +3457,7 @@ class Belome1BossFight(BossFightPrize):
 
     _npc_models = [Belome1LargeObject, Belome1SmallObject]
     _statue_npc = BelomeSmallStatueObject
+    _force_start_event = BE0038_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n        BELOME: Good night~![await]""",
