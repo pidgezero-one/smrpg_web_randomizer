@@ -459,7 +459,7 @@ def _build_brooch_timed_block() -> bytes:
     a.sta_long_x(ALLY_DAMAGE_DISPLAY_BASE)
     a.lda_long(SCRATCH_HP_BEFORE)
     a.sec()
-    a.sbc_dp(0xC2)
+    a.sbc_long(SCRATCH_HALF_DAMAGE)
     a.sta_long_x(ALLY_HP_BASE)
 
     a.label("apply_half_damage_normal_case")

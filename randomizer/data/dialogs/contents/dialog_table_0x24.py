@@ -1,4 +1,4 @@
-dialog_data = [""]*184
+dialog_data = [""]*185
 dialog_data[0] = '''SNIFIT 3: Um...
  Nice weather we're having.[await]'''
 dialog_data[1] = '''SNIFIT 3: You wanna fight?[await]'''
@@ -272,8 +272,7 @@ dialog_data[99] = '''
 dialog_data[100] = '''
 
       May Mallow fix the Road![await]'''
-dialog_data[101] = '''
-    Need a “Shiny Stone” to get in[await]'''
+dialog_data[101] = '''\n[center]Need the “Shiny Stone” to get in[await]'''
 dialog_data[102] = ''' It's really weird.
  Sometimes I hear the guy next door.[await][page]
  He's always mumbling about a
@@ -533,3 +532,4 @@ dialog_data[183] = '''Man, did I sleep!
  Thanks for the service.
  Here's your tip.[await]
  Don't spend it all in one place![await]'''
+dialog_data[184] = '''[center]Need the “Extra Shine Stone”\nto get in[await]'''
