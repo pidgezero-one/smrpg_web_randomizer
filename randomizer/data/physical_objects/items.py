@@ -12,6 +12,7 @@ class DefaultItem(ItemNPC):
 
 class HammerObject(ItemNPC):
     _base = HAMMER_BASE
+    _chest_event_id: int = E2073_HAMMER_PACKET
 
 
 class StickObject(ItemNPC):
