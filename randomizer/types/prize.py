@@ -58,7 +58,7 @@ from ..data.variables.overworld_sfx_names import *
 
 if TYPE_CHECKING:
     from .gameworld import GameWorld
-    from .prizelocation import PrizeLocation
+    from .prizelocation import PrizeLocation, BossFightLocation
 
 class FortuneEnum(StrEnum):
     RARE = '''[center]You'll find some rare items.[await]'''
@@ -749,6 +749,18 @@ class BossFightPrize(Prize):
                 return model
         # Fallback to smallest (last in list)
         return models[-1]
+
+    def get_forced_npc_model_for_location(
+        self, location: "BossFightLocation"
+    ) -> type[BossNPC] | None:
+        """Override hook: force a specific NPC model when this boss is shuffled
+        into a particular location, bypassing VRAM-based selection in
+        `get_npc_for_slot`.
+
+        Default: None (use normal selection). Subclasses return a model class
+        (which must still be one of `_npc_models`) to pin it.
+        """
+        return None
 
     @property
     def statue_npc(self) -> type[BossNPC] | None:

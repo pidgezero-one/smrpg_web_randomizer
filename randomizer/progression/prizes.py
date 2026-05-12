@@ -4380,6 +4380,17 @@ class YaridovichBossFight(BossFightPrize):
         DI2560_TOWER_HENCHMAN_1: """TOWNSPERSON: I'm just... a\n secretary. Don't bother...\n Speardovich.[await]""",
     }
 
+    def get_forced_npc_model_for_location(
+        self, location: "BossFightLocation"
+    ) -> type[BossNPC] | None:
+        # In the Nimbus Land statue room the larger Yaridovich overworld model
+        # doesn't render correctly, so pin the smallest model there.
+        from .prizelocations import StatueRoomBossFight
+
+        if isinstance(location, StatueRoomBossFight):
+            return YaridovichSmallObject
+        return None
+
     def boss_hunt_unlocks(self, world: GameWorld) -> EventScript:
         output: list[UsableEventScriptCommand] = []
         if world.settings.is_flag_value(

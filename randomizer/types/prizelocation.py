@@ -1882,6 +1882,9 @@ class BossFightLocation(PrizeLocation):
             return cached
         from .prize import BossFightPrize
         assert isinstance(self.prize, BossFightPrize)
+        forced = self.prize.get_forced_npc_model_for_location(self)
+        if forced is not None:
+            return forced
         return self.prize.get_npc_for_slot(
             world,
             slot.get_max_vram_size(world),
@@ -2383,9 +2386,13 @@ class BossFightLocation(PrizeLocation):
                 max_vram = slot.get_max_vram_size(world)
                 max_min_vram = slot.get_original_min_vram_size(world)
                 max_min_vram_seq0 = slot.get_original_min_vram_from_sequence_0(world)
-                m = self.prize.get_npc_for_slot(
-                    world, max_vram, max_min_vram, max_min_vram_seq0
-                )
+                forced = self.prize.get_forced_npc_model_for_location(self)
+                if forced is not None:
+                    m = forced
+                else:
+                    m = self.prize.get_npc_for_slot(
+                        world, max_vram, max_min_vram, max_min_vram_seq0
+                    )
                 if self._chosen_npc_models_by_room is None:
                     self._chosen_npc_models_by_room = {}
                 self._chosen_npc_models_by_room[slot.room_id] = m
