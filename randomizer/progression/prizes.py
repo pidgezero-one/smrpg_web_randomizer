@@ -499,7 +499,7 @@ class ChompPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = ChompObject
+    _model = ChompObject
 
 
 class MasherPrize(ItemPrize):
@@ -518,7 +518,7 @@ class ChompShellPrize(ItemPrize):
         description="I didn't even know those things\n could shed their skin.",
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = ChompObject
+    _model = ChompObject
 
 
 class SuperHammerPrize(ItemPrize):
@@ -612,7 +612,7 @@ class SpikedLinkPrize(ItemPrize):
         nickname="Chain Chomp", description="This one's got thorns on it."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = ChompObject
+    _model = ChompObject
 
 
 class MegaGlovePrize(ItemPrize):
@@ -733,7 +733,7 @@ class WonderChompPrize(ItemPrize):
     remake_only = True
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = ChompObject
+    _model = ChompObject
 
 
 class Stella023Prize(ItemPrize):
@@ -3940,7 +3940,7 @@ class BundtBossFight(BossFightPrize):
     ]
 
     _dialog_replacements = {
-        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BUNDT: La la la la la la la la la~[await]""",
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n[center]BUNDT: La la la la la la la la la~[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ What a surprise! [delay_30]Welcome![await]\n Let me warm up for the feast![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`. All right. I'll let you through to Bundt's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped BUNDT!![await]""",
@@ -6508,7 +6508,7 @@ class Bundt2BossFight(BossFightPrize):
     _statue_npc = BundtStatueObject
 
     _dialog_replacements = {
-        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BUNDT: La la la la la la la la la~[await]""",
+        DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n[center]BUNDT: La la la la la la la la la~[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ What a surprise! [delay_30]Welcome![await]\n Let me warm up for the feast![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`. All right. I'll let you through to Bundt's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped BUNDT!![await]""",

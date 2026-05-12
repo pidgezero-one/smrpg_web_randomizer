@@ -19150,7 +19150,7 @@ class PipeVaultRedPipeFlag(InvisibleFlagLocation):
     _y_coord = 107
     _world_area = WorldAreaEnum.PIPE_VAULT
     _x_shift = -8
-    _y_shift = -8
+    _y_shift = 8
     _clue_text = "[center]Mine is behind a low red pipe.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 466),
@@ -20175,7 +20175,7 @@ class SeaBoxesFlag(InvisibleFlagLocation):
     _x_coord = 9
     _y_coord = 36
     _world_area = WorldAreaEnum.SEA
-    _y_shift = -8
+    _y_shift = 8
     _clue_text = "[center]Mine's in some V-shaped boxes.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 497),

@@ -36,7 +36,7 @@ GREEN_SHELL_BASE = _item_npc_base(
     SPR0250_GREEN_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
 MUSIC_BASE = _item_npc_base(SPR0640_MUSIC_NOTE_STANDALONE)
-CHOMP_BASE = _item_npc_base(SPR0056_CHOMP_PACKET, acute_axis=3, obtuse_axis=3, height=3)
+CHOMP_BASE = _item_npc_base(SPR0245_CHOMP_BALL, acute_axis=3, obtuse_axis=3, height=3)
 RED_SHELL_BASE = _item_npc_base(
     SPR0249_RED_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
@@ -69,7 +69,7 @@ YELLOW_BOMB_BASE = _item_npc_base(SPR0822_YELLOW_BOMB)
 RED_BOMB_BASE = _item_npc_base(SPR0819_RED_BOMB)
 BLUE_BOMB_BASE = _item_npc_base(SPR0823_BLUE_BOMB)
 GREEN_CANDY_BASE = _item_npc_base(SPR0817_GREEN_CANDY)
-YELLOW_MUSIC_DRINK_BASE = _item_npc_base(SPR0245_YELLOW_MUSIC_DRINK)
+YELLOW_MUSIC_DRINK_BASE = _item_npc_base(SPR0765_YELLOW_MUSIC_DRINK)
 BLUE_MUSIC_DRINK_BASE = _item_npc_base(SPR0246_BLUE_MUSIC_DRINK)
 RED_MUSIC_DRINK_BASE = _item_npc_base(SPR0247_RED_MUSIC_DRINK)
 KEY_BASE = _item_npc_base(SPR0638_KEY_STANDALONE, y_shift=1)
@@ -19427,7 +19427,7 @@ BOOSTER_2_SMALL_NPC = NPC(
     height=12,
     y_shift=0,
     show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
+    directions=VramStore.DIR0_SWSE_NWNE,
     min_vram_size=0,
     priority_0=False,
     priority_1=False,

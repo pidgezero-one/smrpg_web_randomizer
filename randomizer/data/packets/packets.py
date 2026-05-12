@@ -949,12 +949,16 @@ P111_BLUE_CLOUD_CHEST = ChestPacket(
     sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
 )
-P111_JINX_CHEST = ChestPacket(
+P112_JINX_CHEST = ChestPacket(
     packet_id=112,
     sprite_id=SPR0244_JINX_PACKET,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
 )
-P113_UNUSED = None
+P113_CHOMP_CHEST = ChestPacket(
+    packet_id=113,
+    sprite_id=SPR0245_CHOMP_BALL,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
 P114_UNUSED = None
 P115_UNUSED = None
 P116_UNUSED = None
@@ -1213,8 +1217,8 @@ ALL_PACKETS = PacketCollection(
         P109_BOWSER_DOLL,
         P110_MOKURA_CHEST,
         P111_BLUE_CLOUD_CHEST,
-        P111_JINX_CHEST,
-        P113_UNUSED,
+        P112_JINX_CHEST,
+        P113_CHOMP_CHEST,
         P114_UNUSED,
         P115_UNUSED,
         P116_UNUSED,

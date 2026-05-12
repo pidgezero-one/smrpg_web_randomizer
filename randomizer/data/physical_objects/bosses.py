@@ -2466,8 +2466,7 @@ class BundtStatueObject(StatueNPC):
 
     _base = BUNDT_STATUE_NPC
     _facing_shifts = {
-        SOUTHWEST: PixelShift(3, 0),
-        SOUTHEAST: PixelShift(-3, 0),
+        SOUTHWEST: PixelShift(-3, 0),
     }
 
 

@@ -29,6 +29,7 @@ class MusicObject(ItemNPC):
 
 class ChompObject(ItemNPC):
     _base = CHOMP_BASE
+    _chest_event_id: int = E2071_CHOMP_PACKET
 
 
 class RedShellObject(ItemNPC):
