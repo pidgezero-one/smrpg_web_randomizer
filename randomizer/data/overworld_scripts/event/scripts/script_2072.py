@@ -1,4 +1,4 @@
-# E2072_EMPTY
+# E2072_STICK_PACKET
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,8 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
+	CreatePacketAt7010(packet=P114_STICK_CHEST, destinations=["EVENT_2071_ret_3"]),
+	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_2071_ret_3"),
+	Return()
 ])

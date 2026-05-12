@@ -959,7 +959,11 @@ P113_CHOMP_CHEST = ChestPacket(
     sprite_id=SPR0245_CHOMP_BALL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
 )
-P114_UNUSED = None
+P114_STICK_CHEST = ChestPacket(
+    packet_id=114,
+    sprite_id=SPR0246_STICK_PACKET,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
 P115_UNUSED = None
 P116_UNUSED = None
 P117_UNUSED = None
@@ -1219,7 +1223,7 @@ ALL_PACKETS = PacketCollection(
         P111_BLUE_CLOUD_CHEST,
         P112_JINX_CHEST,
         P113_CHOMP_CHEST,
-        P114_UNUSED,
+        P114_STICK_CHEST,
         P115_UNUSED,
         P116_UNUSED,
         P117_UNUSED,

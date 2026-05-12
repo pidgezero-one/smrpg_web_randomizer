@@ -16,6 +16,7 @@ class HammerObject(ItemNPC):
 
 class StickObject(ItemNPC):
     _base = FROGGIE_STICK_BASE
+    _chest_event_id: int = E2072_STICK_PACKET
 
 
 class GreenShellObject(ItemNPC):

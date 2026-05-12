@@ -70,7 +70,7 @@ RED_BOMB_BASE = _item_npc_base(SPR0819_RED_BOMB)
 BLUE_BOMB_BASE = _item_npc_base(SPR0823_BLUE_BOMB)
 GREEN_CANDY_BASE = _item_npc_base(SPR0817_GREEN_CANDY)
 YELLOW_MUSIC_DRINK_BASE = _item_npc_base(SPR0765_YELLOW_MUSIC_DRINK)
-BLUE_MUSIC_DRINK_BASE = _item_npc_base(SPR0246_BLUE_MUSIC_DRINK)
+BLUE_MUSIC_DRINK_BASE = _item_npc_base(SPR0766_BLUE_MUSIC_DRINK)
 RED_MUSIC_DRINK_BASE = _item_npc_base(SPR0247_RED_MUSIC_DRINK)
 KEY_BASE = _item_npc_base(SPR0638_KEY_STANDALONE, y_shift=1)
 SMALL_COIN_BASE = _item_npc_base(
@@ -6602,7 +6602,7 @@ GREY_STONE_BLOCK_NPC = NPC(
 )
 
 STICK_PACKET_NPC = NPC(
-    sprite_id=SPR0735_STICK_PACKET,
+    sprite_id=SPR0246_STICK_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
