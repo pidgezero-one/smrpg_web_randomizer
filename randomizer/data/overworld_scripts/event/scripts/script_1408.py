@@ -47,6 +47,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0081_MARIO_LANDS_SUBROUTINE, identifier="EVENT_1408_run_event_as_subroutine_7"),
 	SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1408_ret_13"], identifier="EVENT_1408_jmp_if_bit_clear_9"),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1408_ret_13"]),
 	RunEventAsSubroutine(E3887_MARIOS_PAD_STAR_PIECE_SIGNAL),

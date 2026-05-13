@@ -2089,7 +2089,7 @@ class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
     # FirstMimicFightLauncher must be blacklisted to prevent circular dependency:
     # This location's can_access requires defeating first mimic, which requires
     # accessing the FirstMimicFightLauncher location - can't be the same location.
-    _blacklist = [EXPStarPrize, SlotsPrize, MimicFightInitiatorPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize, MimicFightInitiatorPrize, InfiniteCoinsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(FirstMimicFightLauncher)
@@ -9609,7 +9609,7 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     # SecondMimicFightLauncher must be blacklisted to prevent circular dependency:
     # This location's can_access requires defeating second mimic, which requires
     # accessing the SecondMimicFightLauncher location - can't be the same location.
-    _blacklist = [EXPStarPrize, SlotsPrize, MimicFightInitiatorPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize, MimicFightInitiatorPrize, InfiniteCoinsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)
@@ -10436,7 +10436,7 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_18]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_2
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = []
+    _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher] # this location doesn't allow refilling
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 256),
         RunDialog(
@@ -10467,7 +10467,7 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_19]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_3
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = []
+    _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher] # this location doesn't allow refilling
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 257),
         RunDialog(

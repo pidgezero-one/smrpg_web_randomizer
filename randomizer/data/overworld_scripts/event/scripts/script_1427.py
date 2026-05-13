@@ -46,6 +46,7 @@ script = EventScript([
 	RemoveObjectFromCurrentLevel(NPC_9),
 	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_1427_run_event_as_subroutine_8"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1427_ret_13"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1427_ret_13"]),
 	RunEventAsSubroutine(E3888_MUSHROOM_WAY_STAR_PIECE_SIGNAL),

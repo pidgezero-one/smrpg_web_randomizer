@@ -2435,6 +2435,7 @@ FORM0217_ONE_JINXENEMY4_ONE_TEAMGAUGE = Formation(
         FormationMember(TeamGaugeEnemy, 36, 200),
     ],
     music=MidbossMusic(),
+    unknown_bit=True,
 )
 
 FORM0218_ONE_NINJA = Formation(
@@ -3231,6 +3232,8 @@ FORM0288_ONE_JINX1 = Formation(
     ],
     music=MidbossMusic(),
     run_event_at_load=BE0071_JINX_USES_TRIPLE_KICK,
+    can_run_away=False,
+    unknown_bit=True,
 )
 
 FORM0289_ONE_MACK_FOUR_BODYGUARD = Formation(
@@ -3335,6 +3338,8 @@ FORM0297_ONE_JINX2 = Formation(
     ],
     music=MidbossMusic(),
     run_event_at_load=BE0072_JINX_USES_QUICKSILVER,
+    can_run_away=False,
+    unknown_bit=True,
 )
 
 FORM0298_ONE_JINX3 = Formation(
@@ -3344,6 +3349,8 @@ FORM0298_ONE_JINX3 = Formation(
     ],
     music=MidbossMusic(),
     run_event_at_load=BE0073_JINX_USES_BOMBS_AWAY,
+    can_run_away=False,
+    unknown_bit=True,
 )
 
 FORM0299_ONE_JAGGER = Formation(

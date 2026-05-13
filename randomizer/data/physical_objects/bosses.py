@@ -51,7 +51,7 @@ class HammerBroSmallObject(BossNPC):
     """Small Hammer Bro object in Mushroom Way Area 03."""
 
     _base = HAMMER_BRO_SMALL_NPC
-    _eye_height = 20
+    _eye_height = 16
     _evil_palette = [
         0x393939,
         0xA5A5AD,
@@ -177,7 +177,8 @@ class MackSmallObject(BossNPC):
     """Small Mack object in Mushroom Way Area 03."""
 
     _base = MACK_SMALL_NPC
-    _eye_height = 21
+    _eye_height = 20
+    _tower_entrance_horizontal_shift = -3
     _evil_palette = [
         0x383838,
         0x181818,
@@ -524,7 +525,7 @@ class BowyerSmallObject(BossNPC):
     """Small Bowyer object in Mushroom Way Area 03."""
 
     _base = BOWYER_SMALL_NPC
-    _eye_height = 16
+    _eye_height = 19
     _evil_palette = [
         0x303030,
         0x181818,
@@ -580,6 +581,7 @@ class PunchinelloSmallObject(BossNPC):
     """Small Punchinello object."""
 
     _base = PUNCHINELLO_SMALL_NPC
+    _eye_height = 16
     _evil_palette = [
         0x181818,
         0x101010,
@@ -902,6 +904,7 @@ class ExorSmallObject(BossNPC):
         0xB00000,
         0xD00000,
     ]
+    _eye_height = 8
 
 
 # Domino
@@ -956,8 +959,8 @@ class SmithySmallObject(BossNPC):
     """Small Smithy object."""
 
     _base = SMITHY_SMALL_NPC
-    _eye_height = 14
-    _tower_entrance_horizontal_shift = -4
+    _eye_height = 11
+    _tower_entrance_horizontal_shift = -2
     _evil_palette = [
         0x080000,
         0x7B848C,
@@ -1552,7 +1555,8 @@ class ClerkSmallObject(BossNPC):
     """Small Clerk object."""
 
     _base = FACTORY_CLERK_GREEN_NPC_2
-    _eye_height = 10
+    _eye_height = 11
+    _tower_entrance_horizontal_shift = 4
     _recoil = 3
     _tower_crying = 2
     _bandits_way_distracted = 2
@@ -1595,7 +1599,8 @@ class ManagerSmallObject(BossNPC):
     """Small Manager object."""
 
     _base = FACTORY_MANAGER_BLUE_NPC
-    _eye_height = 10
+    _eye_height = 11
+    _tower_entrance_horizontal_shift = 4
     _recoil = 3
     _tower_crying = 2
     _bandits_way_distracted = 2
@@ -1638,7 +1643,8 @@ class DirectorSmallObject(BossNPC):
     """Small Director object."""
 
     _base = FACTORY_DIRECTOR_RED_NPC
-    _eye_height = 10
+    _eye_height = 11
+    _tower_entrance_horizontal_shift = 4
     _recoil = 3
     _tower_crying = 2
     _bandits_way_distracted = 2
@@ -2132,6 +2138,10 @@ class JohnnyStatueObject(StatueNPC):
     """Johnny statue object."""
 
     _base = JOHNNY_STATUE_NPC
+    _facing_shifts = {
+        NORTHWEST: PixelShift(-6, 0),
+        NORTHEAST: PixelShift(-2, 0),
+    }
 
 
 class MagikoopaStatueObject(StatueNPC):
@@ -2188,6 +2198,9 @@ class MokuraStatueObject(StatueNPC):
     """Mokura statue object."""
 
     _base = MOKURA_STATUE_NPC
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(0, -1),
+    }
 
 
 class TerrapinObject(BossNPC):
@@ -2360,6 +2373,9 @@ class BlooberStatueObject(StatueNPC):
     """Bloober statue object."""
 
     _base = BLOOBER_STATUE_NPC
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(3, 0),
+    }
 
 
 class FactoryChiefStatueObject(StatueNPC):
@@ -2474,7 +2490,8 @@ class CountDownGridplaneObject(BossNPC):
     """Count Down gridplane object."""
 
     _base = COUNT_DOWN_GRIDPLANE_NPC
-    _eye_height = 6
+    _eye_height = 10
+    _tower_entrance_horizontal_shift = 3
     _evil_palette = [
         0x2858F8,
         0xD06870,
@@ -2516,6 +2533,9 @@ class DodoStatueObject(StatueNPC):
     """Dodo statue object."""
 
     _base = DODO_STATUE_NPC
+    _facing_shifts = {
+        SOUTHWEST: PixelShift(-3, 0),
+    }
 
 
 class BirdettaStatueObject(StatueNPC):
@@ -2648,6 +2668,7 @@ class Punchinello2SmallObject(BossNPC):
     """Small Punchinello 2 object."""
 
     _base = PUNCHINELLO_2_SMALL_NPC
+    _eye_height = 16
     _evil_palette = [
         0x181818,
         0x101010,

@@ -49,11 +49,11 @@ script = EventScript([
 		A_SetSolidityBits(cant_pass_walls=True),
 		A_SetSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_FaceSouthwest(),
-		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, identifier="tadpole_thinking"),
 		A_SetVRAMPriority(NORMAL_PRIORITY),
 		A_SequenceLoopingOn(),
 		A_ReturnQueue()
-	]),
+	], identifier="tadpole_thinking_aq"),
 	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
 		A_Pause(30),
 		A_SetWalkingSpeed(SLOW),

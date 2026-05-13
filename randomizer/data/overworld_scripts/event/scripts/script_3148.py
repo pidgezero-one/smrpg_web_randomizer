@@ -45,6 +45,7 @@ script = EventScript([
 	SetVarToConst(ROSE_WAY_703E, 0),
 	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3148_ret_14"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3148_ret_14"]),
 	RunEventAsSubroutine(E3894_ROSE_WAY_STAR_PIECE_SIGNAL),

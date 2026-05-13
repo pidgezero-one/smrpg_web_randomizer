@@ -67,6 +67,7 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	SetBit(TEMP_709F_5),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_556_ret_22"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_556_ret_22"]),
 	RunEventAsSubroutine(E3895_ROSE_TOWN_STAR_PIECE_SIGNAL),

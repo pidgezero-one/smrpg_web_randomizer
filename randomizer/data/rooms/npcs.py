@@ -14499,7 +14499,7 @@ MOKURA_S_CLOUD_BLUE_NPC_2 = NPC(
 )
 
 MOKURA_NPC = NPC(
-    sprite_id=SPR0573_MOKURA,
+    sprite_id=SPR0996_MOKURA_MIRRORED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=10,
     obtuse_axis=10,

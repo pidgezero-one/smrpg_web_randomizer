@@ -55,6 +55,7 @@ script = EventScript([
 	]),
 	FadeInFromBlack(sync=False, identifier="EVENT_1590_fade_in_from_black_async_4"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1590_ret_9"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1590_ret_9"]),
 	RunEventAsSubroutine(E3907_LANDS_END_STAR_PIECE_SIGNAL),

@@ -77,6 +77,7 @@ script = EventScript([
     JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS, ["EVENT_3135_jmp_if_bit_set_71"]),
 	Return(identifier="EVENT_3135_ret_22"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3135_ret_22"], identifier="EVENT_3135_jmp_if_bit_set_71"),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3135_ret_22"]),
 	RunEventAsSubroutine(E3891_SEWERS_STAR_PIECE_SIGNAL),

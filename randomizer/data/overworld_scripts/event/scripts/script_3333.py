@@ -58,6 +58,7 @@ script = EventScript([
 	Return(),
 	RunBackgroundEvent(event_id=E3329_JUMPING_FIREBALLS, return_on_level_exit=True, identifier="EVENT_3333_run_background_event_11"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3333_ret_16"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3333_ret_16"]),
 	RunEventAsSubroutine(E3913_VOLCANO_STAR_PIECE_SIGNAL),

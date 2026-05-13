@@ -49,6 +49,7 @@ script = EventScript([
 	SetBit(TEMP_7042_0),
 	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_3226_run_event_as_subroutine_13"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3226_ret_18"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3226_ret_18"]),
 	RunEventAsSubroutine(E3906_SHIP_STAR_PIECE_SIGNAL),

@@ -56,6 +56,7 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=32),
 	FadeInFromBlack(sync=False, identifier="EVENT_1328_fade_in_from_black_async_11"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1328_jmp_if_bit_clear_16"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1328_jmp_if_bit_clear_16"]),
 	RunEventAsSubroutine(E3899_BOOSTER_TOWER_STAR_PIECE_SIGNAL),

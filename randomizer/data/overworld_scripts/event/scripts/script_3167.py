@@ -40,6 +40,7 @@ script = EventScript([
 	StopSound(identifier="EVENT_3167_stop_sound_3"),
 	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3167_ret_9"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3167_ret_9"]),
 	RunEventAsSubroutine(E3897_MOLEVILLE_STAR_PIECE_SIGNAL),

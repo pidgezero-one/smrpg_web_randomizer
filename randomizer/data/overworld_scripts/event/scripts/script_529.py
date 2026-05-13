@@ -113,6 +113,7 @@ script = EventScript([
 	Jmp(["EVENT_529_copy_var_to_var_20"]),
 	FadeInFromBlack(sync=False, identifier="EVENT_529_fade_in_from_black_async_31"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_529_run_background_event_36"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_529_run_background_event_36"]),
 	RunEventAsSubroutine(E3895_ROSE_TOWN_STAR_PIECE_SIGNAL),

@@ -58,6 +58,7 @@ script = EventScript([
 	UnfreezeCamera(),
 	ClearBit(BUCKET_WARP_DIRECTIONAL_BIT),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1649_jmp_to_event_23"], identifier="EVENT_1649_fade_in_from_black_async_16"),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1649_jmp_to_event_23"]),
 	RunEventAsSubroutine(E3897_MOLEVILLE_STAR_PIECE_SIGNAL),

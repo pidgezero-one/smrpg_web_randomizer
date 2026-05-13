@@ -67,6 +67,7 @@ script = EventScript([
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	UnfreezeCamera(),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_2399_ret_20"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2399_ret_20"]),
 	RunEventAsSubroutine(E3915_FACTORY_STAR_PIECE_SIGNAL),

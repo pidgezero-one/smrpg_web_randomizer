@@ -86,6 +86,7 @@ script = EventScript([
 		A_SetWalkingSpeed(NORMAL)
 	]),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1714_ret_16"], identifier="EVENT_1714_jmp_if_bit_clear_12"),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1714_ret_16"]),
 	RunEventAsSubroutine(E3890_BANDITS_WAY_STAR_PIECE_SIGNAL),

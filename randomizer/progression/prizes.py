@@ -4539,8 +4539,8 @@ class Belome2BossFight(BossFightPrize):
         DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """MARIO CLONE:\n[center]••••••[await]""",
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """TOADSTOOL 2: Yuck, I don't want to play ANYTHING with you![await]""",
         DI2832_OCCUPIED_SEASIDE_INNKEEPER: """GENO CLONE: Need a nap? You can stay here for free.[await][pause] No dolls will wander around overnight, I swear.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
-        DI1120_NIMBUS_BIRD_GUARD: """MARIO CLONE:\n[center]••••••[await]""",
-        DI1945_NIMBUS_GUARD: """TOADSTOOL 2: There's nothing illegal going on here.[await][pause] But it should be a crime to be so beautiful.[await]""",
+        DI1945_NIMBUS_GUARD: """MARIO CLONE:\n[center]••••••[await]""",
+        DI1120_NIMBUS_BIRD_GUARD: """TOADSTOOL 2: There's nothing illegal going on here.[await][pause] But it should be a crime to be so beautiful.[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """[center]\n••••••[await]""",

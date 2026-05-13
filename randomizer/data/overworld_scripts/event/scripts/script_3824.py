@@ -81,6 +81,7 @@ script = EventScript([
 	JmpIfBitSet(MARRYMORE_LIBERATED, ["EVENT_3824_jmp_if_bit_set_32"]),
 	FadeInFromBlack(sync=False, identifier="EVENT_3824_fade_in_from_black_async_25"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3824_ret_30"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3824_ret_30"]),
 	RunEventAsSubroutine(E3901_YOSTER_ISLE_STAR_PIECE_SIGNAL),

@@ -255,5 +255,5 @@ room = Room(
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,
     ],
-    effects_npc=EffectsNpc.UNKNOWN_06,
+    effects_npc=EffectsNpc.SAVE_POINT_NPC1,
 )

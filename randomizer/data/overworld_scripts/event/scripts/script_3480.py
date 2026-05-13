@@ -59,6 +59,7 @@ script = EventScript([
     PaletteSet(EPAL0084_MARIO_ENDING, NPC_PALETTE_ROW_2, identifier="midas_palette_6"),
 	FadeInFromBlack(sync=True, duration=80),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3480_jmp_if_bit_set_23"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3480_jmp_if_bit_set_23"]),
 	RunEventAsSubroutine(E3892_MIDAS_RIVER_STAR_PIECE_SIGNAL),

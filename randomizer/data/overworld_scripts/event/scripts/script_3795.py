@@ -70,6 +70,7 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_0, R055_PIPE_VAULT_ENTRANCE),
 	FadeInFromBlack(sync=False, identifier="EVENT_455_fade_in_from_black_async_29"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_455_ret_34"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_455_ret_34"]),
 	RunEventAsSubroutine(E3900_PIPE_VAULT_STAR_PIECE_SIGNAL),

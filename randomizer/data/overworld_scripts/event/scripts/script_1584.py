@@ -104,6 +104,7 @@ script = EventScript([
 	FadeInFromBlack(sync=True),
 	SetAsyncActionScript(MARIO, A0010_FALL_ON_TRAMPOLINE),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1584_ret_63"], identifier="EVENT_1584_jmp_if_bit_clear_59"),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1584_ret_63"]),
 	RunEventAsSubroutine(E3908_TEMPLE_STAR_PIECE_SIGNAL),

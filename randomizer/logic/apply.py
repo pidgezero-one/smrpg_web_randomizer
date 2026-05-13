@@ -446,8 +446,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                             JmpIfBitClear(SMITHY_BOSS_HUNT_WIN_CONDITION, [disabled_label]),
                             EnterArea(room_id=R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, face_direction=NORTHWEST, x=4, y=48, z=0, run_entrance_event=False),
                             JmpToEvent(E3885_END_GAME),
-                            Set0158Bit7Offset(0x0158, True, identifier=disabled_label),
-                            Return(),
+                            Return(identifier=disabled_label),
                             ResetAndChooseGame(identifier=disabled_label_ra),
                         ])
                     elif isinstance(cmd, Return) and i > 0 and isinstance(execution[i - 1], StartBattleAtBattlefield):
@@ -985,6 +984,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_back_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_forward_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_FORWARD)[1])
+        world.event_scripts.get_subscript_command_by_identifier("tadpole_thinking_aq", "tadpole_thinking", A_SetSpriteSequence).set_sprite_offset(ally._sprites_primary.get(SpriteAnimationState.THINKING)[0])
+        world.event_scripts.get_subscript_command_by_identifier("tadpole_thinking_aq", "tadpole_thinking", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.THINKING)[1])
         # ending_protag_lean_back_1/2 target the Mario NPC (NPC_19) in R496, which
         # always uses sprite 0 (Mario) regardless of starter character. The script
         # source already hardcodes the correct mold (index=23, sprite_offset=2),

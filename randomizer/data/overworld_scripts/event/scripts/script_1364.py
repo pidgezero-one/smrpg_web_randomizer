@@ -49,7 +49,7 @@ script = EventScript([
 		A_ShiftToXYCoords(x=3, y=26),
 		A_SetWalkingSpeed(FASTEST),
 		A_WalkNorthwestPixels(8),
-		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True)
+		A_SetSpriteSequence(index=0, sprite_offset=3, is_sequence=True, looping=True)
 	]),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ResetProperties(),

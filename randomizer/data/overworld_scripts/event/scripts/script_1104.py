@@ -40,6 +40,7 @@ script = EventScript([
 	]),
 	FadeInFromBlack(sync=False),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1104_ret_7"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1104_ret_7"]),
 	RunEventAsSubroutine(E3893_TADPOLE_POND_STAR_PIECE_SIGNAL),

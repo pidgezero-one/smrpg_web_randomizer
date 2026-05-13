@@ -93,6 +93,7 @@ script = EventScript([
 	SetSyncActionScript(NPC_8, A0113_HENCHMAN_BOUNCING_IN_PLACE),
 	FadeInFromBlack(sync=False, identifier="EVENT_610_fade_in_from_black_async_38"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_610_ret_43"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_610_ret_43"]),
 	RunEventAsSubroutine(E3902_MARRYMORE_STAR_PIECE_SIGNAL),

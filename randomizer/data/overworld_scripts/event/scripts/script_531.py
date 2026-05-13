@@ -46,6 +46,7 @@ script = EventScript([
 	SetBit(SIGNAL_RING_DIRECTIONAL_BIT, identifier="EVENT_531_set_bit_7"),
 	RunEventAsSubroutine(E0265_OCCUPIED_MK_INN_LOADER, identifier="EVENT_531_run_event_as_subroutine_8"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_531_ret_13"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_531_ret_13"]),
 	RunEventAsSubroutine(E3895_ROSE_TOWN_STAR_PIECE_SIGNAL),

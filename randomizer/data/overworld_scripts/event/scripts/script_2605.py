@@ -40,6 +40,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_2605_run_event_as_subroutine_3"),
 	FadeInFromBlack(sync=False),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_2605_ret_9"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2605_ret_9"]),
 	RunEventAsSubroutine(E3916_INNER_FACTORY_STAR_PIECE_SIGNAL),

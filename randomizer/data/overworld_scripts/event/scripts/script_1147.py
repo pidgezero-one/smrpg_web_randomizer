@@ -232,7 +232,7 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_VisibilityOn(),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=1, is_sequence=True, looping=False, mirror_sprite=True, identifier="seaside_boss_reveal_sequence_1"),
+		A_SetSpriteSequence(index=2, is_sequence=True, looping=False, mirror_sprite=True, identifier="seaside_boss_reveal_sequence_1"),
 	], identifier="seaside_boss_reveal_sequence"),
 	PlaySound(sound=SO091_TUMBLING_BOULDERS, channel=6),
 	Pause(8),

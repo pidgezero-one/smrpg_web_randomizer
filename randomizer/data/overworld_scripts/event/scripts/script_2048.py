@@ -53,6 +53,7 @@ script = EventScript([
 	Jmp(["EVENT_2048_jmp_if_bit_clear_13"]),
 	FadeInFromBlack(sync=False, identifier="EVENT_2048_fade_in_from_black_async_12"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_2048_jmp_to_event_18"], identifier="EVENT_2048_jmp_if_bit_clear_13"),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2048_jmp_to_event_18"]),
 	RunEventAsSubroutine(E3909_MONSTRO_STAR_PIECE_SIGNAL),

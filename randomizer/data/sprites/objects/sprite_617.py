@@ -811,6 +811,10 @@ sprite = CompleteSprite(
                 ),
                 AnimationSequence(
                     frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
                         AnimationSequenceFrame(duration=4, mold_id=0),
                         AnimationSequenceFrame(duration=4, mold_id=1),
                         AnimationSequenceFrame(duration=4, mold_id=2),

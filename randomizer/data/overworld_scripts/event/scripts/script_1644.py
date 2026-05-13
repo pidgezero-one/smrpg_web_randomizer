@@ -49,6 +49,7 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R108_MOLEVILLE_OUTSIDE, mod_id=0),
 	FadeInFromBlack(sync=False, identifier="EVENT_1644_fade_in_from_black_async_10"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1644_ret_15"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1644_ret_15"]),
 	RunEventAsSubroutine(E3897_MOLEVILLE_STAR_PIECE_SIGNAL),

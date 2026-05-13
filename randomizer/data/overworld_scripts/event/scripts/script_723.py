@@ -51,6 +51,7 @@ script = EventScript([
     SetSyncActionScript(NPC_11, A0131_EAST_GUARD_OCCUPIED),
 	FadeInFromBlack(sync=False, identifier="EVENT_723_run_event_as_subroutine_20"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_723_ret_9"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_723_ret_9"]),
 	RunEventAsSubroutine(E3889_MUSHROOM_KINGDOM_STAR_PIECE_SIGNAL),

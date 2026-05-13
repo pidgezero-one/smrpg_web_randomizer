@@ -46,6 +46,7 @@ script = EventScript([
     RemoveObjectFromCurrentLevel(NPC_2, identifier="EVENT_3761_s"),
 	FadeInFromBlack(sync=False, identifier="EVENT_3761_fade_in"),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3761_ret_6"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3761_ret_6"]),
 	RunEventAsSubroutine(E3912_NIMBUS_STAR_PIECE_SIGNAL),

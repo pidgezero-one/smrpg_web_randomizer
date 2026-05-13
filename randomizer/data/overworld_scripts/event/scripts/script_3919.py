@@ -36,6 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
 	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_3919_ret_5"]),
+    ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3919_ret_5"]),
 	RunEventAsSubroutine(E3898_BOOSTER_PASS_STAR_PIECE_SIGNAL),

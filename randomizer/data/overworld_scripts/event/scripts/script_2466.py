@@ -114,5 +114,6 @@ script = EventScript([
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2466_ret_41"]),
 	RunEventAsSubroutine(E3911_BEAN_VALLEY_STAR_PIECE_SIGNAL),
+	ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	Return(identifier="EVENT_2466_ret_41")
 ])
