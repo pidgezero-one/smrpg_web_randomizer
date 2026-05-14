@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Generic, cast
+from typing import TYPE_CHECKING, Callable, Generic, cast
 from uuid import uuid4
 from enum import StrEnum
 import random
@@ -1727,10 +1727,18 @@ class BossFightLocationHenchmanNPC:
         )
 
 
+SlotCapOverride = int | Callable[["GameWorld"], int] | None
+"""Per-slot cap override: a fixed int, a callable taking the world (so the
+cap can vary with protagonist / recruit / etc.), or None to use the default
+derived from the original room NPC."""
+
+
 class BossFightLocationNPC:
     _room_id: int
     _npc_id: AreaObject
-    _vram_size_override: int | None = None
+    _vram_size_override: SlotCapOverride = None
+    _min_vram_size_override: SlotCapOverride = None
+    _min_vram_from_seq0_override: SlotCapOverride = None
     _sequence_setter_event_id: int | None = None
 
     @property
@@ -1742,22 +1750,41 @@ class BossFightLocationNPC:
         return self._npc_id
 
     @property
-    def vram_size_override(self) -> int | None:
-        """Manual VRAM size override, if specified."""
+    def vram_size_override(self) -> SlotCapOverride:
+        """Manual VRAM size override (int or world-aware callable), if specified."""
         return self._vram_size_override
+
+    @property
+    def min_vram_size_override(self) -> SlotCapOverride:
+        """Manual min_vram_size cap (int or world-aware callable)."""
+        return self._min_vram_size_override
+
+    @property
+    def min_vram_from_seq0_override(self) -> SlotCapOverride:
+        """Manual sequence-0 min_vram cap (int or world-aware callable)."""
+        return self._min_vram_from_seq0_override
 
     @property
     def sequence_setter_event_id(self) -> int | None:
         return self._sequence_setter_event_id
 
+    @staticmethod
+    def _resolve(override: SlotCapOverride, world: "GameWorld") -> int | None:
+        if override is None:
+            return None
+        if callable(override):
+            return override(world)
+        return override
+
     def get_max_vram_size(self, world: "GameWorld") -> int:
         """Compute the maximum VRAM size this slot can support.
 
-        If vram_size_override is set, returns that value.
+        If vram_size_override is set (int or callable returning int), uses that.
         Otherwise, retrieves the original room NPC's sprite vram_size.
         """
-        if self._vram_size_override is not None:
-            return self._vram_size_override
+        ov = self._resolve(self._vram_size_override, world)
+        if ov is not None:
+            return ov
 
         room = world.rooms._rooms[self._room_id]
         assert room is not None
@@ -1768,10 +1795,14 @@ class BossFightLocationNPC:
         return sprite.animation.properties.vram_size
 
     def get_original_min_vram_size(self, world: "GameWorld") -> int:
-        """Get the original room NPC's min_vram_size value.
+        """Get the min_vram_size cap for boss model selection.
 
-        Returns the NPC's min_vram_size property (0-7).
+        If min_vram_size_override is set (int or callable returning int), uses
+        that. Otherwise returns the original NPC's min_vram_size (0-7).
         """
+        ov = self._resolve(self._min_vram_size_override, world)
+        if ov is not None:
+            return ov
         room = world.rooms._rooms[self._room_id]
         assert room is not None
         obj = room.get_npc_by_target_id(self._npc_id)
@@ -1779,11 +1810,16 @@ class BossFightLocationNPC:
         return obj._npc.min_vram_size
 
     def get_original_min_vram_from_sequence_0(self, world: "GameWorld") -> int:
-        """Get the original room NPC's min_vram_from_sequence for sequence 0.
+        """Get the sequence-0 min_vram cap for boss model selection.
 
-        Computes the maximum VRAM needed across all frames in sequence 0
-        of the original NPC's sprite.
+        If min_vram_from_seq0_override is set (int or callable returning int),
+        uses that. Otherwise computes the maximum VRAM needed across all frames
+        in sequence 0 of the original NPC's sprite.
         """
+        ov = self._resolve(self._min_vram_from_seq0_override, world)
+        if ov is not None:
+            return ov
+
         from ..utils.npcs import min_vram_from_sequence_for_sprite
 
         room = world.rooms._rooms[self._room_id]
@@ -1796,12 +1832,16 @@ class BossFightLocationNPC:
         self,
         room_id: int,
         npc_id: AreaObject,
-        vram_size_override: int | None = None,
+        vram_size_override: SlotCapOverride = None,
         sequence_setter_event_id: int | None = None,
+        min_vram_size_override: SlotCapOverride = None,
+        min_vram_from_seq0_override: SlotCapOverride = None,
     ):
         self._room_id = room_id
         self._npc_id = npc_id
         self._vram_size_override = vram_size_override
+        self._min_vram_size_override = min_vram_size_override
+        self._min_vram_from_seq0_override = min_vram_from_seq0_override
         self._sequence_setter_event_id = sequence_setter_event_id
 
 

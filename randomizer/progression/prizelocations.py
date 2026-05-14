@@ -688,6 +688,85 @@ class MushroomWayRightItemRemake(StandingLocationRow2):
     # Flag as checked: npc 11 in room 204 has been removed from the room.
 
 
+def boss_slot_min_vram_cap_for_room(
+    world: GameWorld,
+    room_id: int,
+    *,
+    base_budget: int = 1,
+    recruit_location: type[CharacterRecruitmentLocation] | None = None,
+) -> int:
+    """Compute an adaptive min_vram cap for a boss model slot in `room_id`.
+
+    Starts from ``base_budget`` (the cap to use when nothing else is competing
+    for VRAM in the room) and subtracts 1 row per known competing factor:
+
+    * **Protagonist-driven ally buffer growth.** Calls
+      ``Room.project_ally_sprite_buffer_size`` to see what
+      ``ally_sprite_buffer_size`` will become for the current
+      ``world.overworld_character``. Bowser always pushes the ally buffer up;
+      Peach/Geno can also push it up depending on the room's
+      ``extra_sprite_actions``. Each unit of growth above the room's stored
+      value subtracts 1 from the cap.
+
+    * **Bowser at the recruit slot.** If ``recruit_location`` is given and
+      that location's prize is the Bowser ally, the recruit's room NPC
+      becomes a non-gridplane cannot_clone, eating an extra row.
+
+    Result is clamped to ``[0, base_budget]``. Callers pass this as a
+    ``min_vram_size_override`` / ``min_vram_from_seq0_override`` callable on
+    a ``BossFightLocationNPC`` so boss model selection downgrades to a
+    smaller variant when the room is tight.
+    """
+    cap = base_budget
+    room = world.rooms._rooms[room_id]
+    if room is not None and room.partition is not None and room.partition.ally_sprite_buffer_size > 0:
+        projection = room.project_ally_sprite_buffer_size(world)
+        if projection is not None:
+            new_buf, _ = projection
+            cap -= max(0, new_buf - room.partition.ally_sprite_buffer_size)
+    if recruit_location is not None and recruit_location in world.locations:
+        recruit_prize = world.get_location(recruit_location).prize
+        if isinstance(recruit_prize, CharacterPrize) and recruit_prize.ally.index == 2:
+            cap -= 1
+    return max(0, cap)
+
+
+def _mushroom_way_boss_min_vram_cap(world: GameWorld) -> int:
+    return boss_slot_min_vram_cap_for_room(
+        world,
+        R205_MUSHROOM_WAY_AREA_03,
+        base_budget=1,
+        recruit_location=MushroomWayCharacter,
+    )
+
+
+def _forest_maze_boss_min_vram_cap(world: GameWorld) -> int:
+    return boss_slot_min_vram_cap_for_room(
+        world,
+        R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
+        base_budget=1,
+        recruit_location=ForestMazeCharacter,
+    )
+
+
+def _marrymore_chapel_boss_min_vram_cap(world: GameWorld) -> int:
+    return boss_slot_min_vram_cap_for_room(
+        world,
+        R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+        base_budget=1,
+        recruit_location=MarrymoreCharacter,
+    )
+
+
+def _booster_hill_dummy_boss_min_vram_cap(world: GameWorld) -> int:
+    return boss_slot_min_vram_cap_for_room(
+        world,
+        R054_BOOSTER_HILL_DUMMY,
+        base_budget=1,
+        recruit_location=MarrymoreCharacter,
+    )
+
+
 class MushrooomWayBossFight(BossFightLocation):
     _originally_held = HammerBrosFight
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
@@ -700,6 +779,13 @@ class MushrooomWayBossFight(BossFightLocation):
             R205_MUSHROOM_WAY_AREA_03,
             NPC_7,
             sequence_setter_event_id=E0755_MUSHROOM_WAY_AREA_03_SHUFFLED_NPC_ANIMATION_LOADER,
+            # Cap shuffled bosses based on what else is in the room this seed.
+            # Room 205 has 3 cannot_clone NPCs (Toad/Lakitu/HammerBro) plus the
+            # Spikey buffer; ally_buffer and the recruit slot both grow when
+            # Bowser is involved, eating into NPC 7's safe budget.
+            vram_size_override=2048,
+            min_vram_size_override=_mushroom_way_boss_min_vram_cap,
+            min_vram_from_seq0_override=_mushroom_way_boss_min_vram_cap,
         ),
     ]
 
@@ -3567,6 +3653,10 @@ class ForestMazeBossFight(BossFightLocation):
             R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
             NPC_11,
             sequence_setter_event_id=E0775_FOREST_MAZE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
+            # Adaptive cap: tighten when protagonist pushes ally buffer up or
+            # when ForestMazeCharacter recruits Bowser.
+            min_vram_size_override=_forest_maze_boss_min_vram_cap,
+            min_vram_from_seq0_override=_forest_maze_boss_min_vram_cap,
         ),
     ]
     _character_henchman_slots = [
@@ -6669,6 +6759,10 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
             NPC_9,
             sequence_setter_event_id=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
+            # Adaptive cap: ally buffer + Marrymore recruit (NPC_10) compete
+            # for VRAM in this room.
+            min_vram_size_override=_marrymore_chapel_boss_min_vram_cap,
+            min_vram_from_seq0_override=_marrymore_chapel_boss_min_vram_cap,
         ),
         BossFightLocationNPC(
             R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
@@ -6683,6 +6777,10 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         BossFightLocationNPC(
             R054_BOOSTER_HILL_DUMMY,
             NPC_7,
+            # Adaptive cap: ally buffer + Marrymore recruit (NPC_8) compete
+            # for VRAM in this room.
+            min_vram_size_override=_booster_hill_dummy_boss_min_vram_cap,
+            min_vram_from_seq0_override=_booster_hill_dummy_boss_min_vram_cap,
         ),
         BossFightLocationNPC(
             R202_BOOSTER_TOWER_ENTRANCE,

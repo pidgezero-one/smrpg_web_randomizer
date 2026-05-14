@@ -66,11 +66,24 @@ class Room(RoomBase):
         self.role_expected_animations = role_expected_animations or {}
         self.vanilla_sprite_buffer_pins = vanilla_sprite_buffer_pins or {}
 
-    def update_partition_by_protagonist(self, world: GameWorld) -> None:
+    def project_ally_sprite_buffer_size(
+        self, world: GameWorld
+    ) -> tuple[int, str] | None:
+        """Compute what `ally_sprite_buffer_size` would become for this room
+        given `world.overworld_character`, without mutating anything.
+
+        Returns (new_buffer_size, worst_contributor_label), or None if the
+        room has no ally buffer or the protagonist's sprite set isn't known.
+
+        The result is `max(min_vram_needed_for_protagonist_animations + 1,
+        current ally_sprite_buffer_size)`. Callers that just want to know
+        whether the buffer grows can compare against
+        `partition.ally_sprite_buffer_size`.
+        """
         if self.partition is None:
-            return
+            return None
         if self.partition.ally_sprite_buffer_size == 0:
-            return
+            return None
 
         ally = world.overworld_character.ally
 
@@ -89,7 +102,7 @@ class Room(RoomBase):
             min_vram_from_mold_for_sprite,
         )
         if ally.index not in PROTAGONIST_BASE_SPRITE_ID:
-            return
+            return None
         protagonist_base = PROTAGONIST_BASE_SPRITE_ID[ally.index]
 
         # Base animation sequences to always check (offset, sequence_id, label).
@@ -144,14 +157,26 @@ class Room(RoomBase):
                     labelled_values.append((v, f"extra {state.name} seq {prop_id} sprite {sid}"))
 
         if not labelled_values:
-            return
+            return None
         max_v, max_label = max(labelled_values, key=lambda x: x[0])
         min_vram = max_v + 1
         new_buffer_size = max(min_vram, self.partition.ally_sprite_buffer_size)
+        return (new_buffer_size, max_label)
+
+    def update_partition_by_protagonist(self, world: GameWorld) -> None:
+        if self.partition is None:
+            return
+        projection = self.project_ally_sprite_buffer_size(world)
+        if projection is None:
+            return
+        new_buffer_size, max_label = projection
         if new_buffer_size > 3:
+            ally = world.overworld_character.ally
+            from ..utils.npcs import PROTAGONIST_BASE_SPRITE_ID
+            protagonist_base = PROTAGONIST_BASE_SPRITE_ID.get(ally.index)
             raise ValueError(
                 f"Room produced ally_sprite_buffer_size={new_buffer_size} (>3 — not representable in 2-bit partition field). "
-                f"Worst contributor: {max_label} with min_vram_from={max_v} subtile-rows. "
+                f"Worst contributor: {max_label}. "
                 f"Protagonist={ally.index} (rendered base sprite={protagonist_base}). "
                 f"This indicates either a sprite-data bug (mold has too many subtiles) or that this character "
                 f"genuinely cannot fit this room's animation set."

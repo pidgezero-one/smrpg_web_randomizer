@@ -1550,7 +1550,7 @@ class QuartzCharmItem(Accessory):
 
 class TeamworkBandItem(Accessory):
     """Teamwork Band item class"""
-    _item_name: str = "Teamwork Band"
+    _item_name: str = "TeamworkBand"
     _prefix = ItemPrefix.RING
 
     _item_id: int = 95

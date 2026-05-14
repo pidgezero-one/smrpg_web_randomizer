@@ -287,7 +287,7 @@ room = Room(
             byte7_upper2=3,
             cannot_clone=True),
         RegularNPC( # 7
-            npc=npcs.HAMMER_BRO_NPC,
+            npc=npcs.HAMMER_BRO_SMALL_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0492_MUSHROOM_WAY_BOSS,
@@ -312,6 +312,6 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3, cannot_clone=True),
+            byte7_upper2=3, cannot_clone=True, vram_size=1),
     ]
 )
