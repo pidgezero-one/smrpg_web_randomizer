@@ -1,5 +1,5 @@
 name: Bug report (gameplay or logic issues)
-description: Report something that is working incorrectly, except for cosmetic issues, there is a separate form for that. Do not use this form for issues unique to Crowd Control or for things that are not actually bugs.
+description: Report something that is working incorrectly (not just cosmetically). Do not use this form for issues unique to Crowd Control or for things that are not actually bugs.
 title: "[Bug - Gameplay/Logic]: "
 labels: [bug]
 
