@@ -1,4 +1,4 @@
-# E1055_EMPTY
+# E1055_VAULT_LOADER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,38 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    # Need to force-start action scripts for 3, 4, and 5
+    JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["pre_occupied"]),
+    JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["left_flipped"]),
+	SummonObjectToCurrentLevel(NPC_0),
+	RemoveObjectFromCurrentLevel(NPC_3),
+    Jmp(["is_right_flipped"]),
+	RemoveObjectFromCurrentLevel(NPC_0, identifier="left_flipped"),
+	SummonObjectToCurrentLevel(NPC_3),
+    JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["is_right_flipped"]),
+    ResumeActionScript(NPC_3),
+    JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["right_flipped"], identifier="is_right_flipped"),
+	SummonObjectToCurrentLevel(NPC_1),
+	RemoveObjectFromCurrentLevel(NPC_4),
+    Jmp(["is_middle_flipped"]),
+	RemoveObjectFromCurrentLevel(NPC_1, identifier="right_flipped"),
+	SummonObjectToCurrentLevel(NPC_4),
+    JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["is_middle_flipped"]),
+    ResumeActionScript(NPC_4),
+    JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["middle_flipped"], identifier="is_middle_flipped"),
+	SummonObjectToCurrentLevel(NPC_2),
+	RemoveObjectFromCurrentLevel(NPC_5),
+    JmpToEvent(E0015_STANDARD_ROOM_LOADER),
+	RemoveObjectFromCurrentLevel(NPC_2, identifier="middle_flipped"),
+    SummonObjectToCurrentLevel(NPC_5),
+    JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["1055_exit"]),
+    ResumeActionScript(NPC_5),
+    JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="1055_exit"),
+	SummonObjectToCurrentLevel(NPC_0, identifier="pre_occupied"),
+	SummonObjectToCurrentLevel(NPC_1),
+	SummonObjectToCurrentLevel(NPC_2),
+	RemoveObjectFromCurrentLevel(NPC_3),
+	RemoveObjectFromCurrentLevel(NPC_4),
+	RemoveObjectFromCurrentLevel(NPC_5),
+    JmpToEvent(E0015_STANDARD_ROOM_LOADER),
 ])

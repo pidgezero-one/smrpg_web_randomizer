@@ -18,5 +18,7 @@ from ....items import *
 script = ActionScript([
 	A_SetPriority(3),
 	A_SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
+	A_SequencePlaybackOn(),
+    A_SequenceLoopingOn(),
 	A_ReturnQueue()
 ])

@@ -5,6 +5,7 @@ from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
+
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *
@@ -84,7 +85,7 @@ room = Room(
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
             byte_2_bit_2=False,
-            destination=R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT,
+            destination=R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
             show_message=False,
             dst_x=6,
             dst_y=90,

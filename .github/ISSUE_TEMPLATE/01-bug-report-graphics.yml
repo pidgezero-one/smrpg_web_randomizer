@@ -1,6 +1,6 @@
-name: Bug report
-description: Report something that is working incorrectly. Not to be used for issues unique to Crowd Control or for things that are not actually bugs.
-title: "[Bug]: "
+name: Bug report (cosmetic only)
+description: Report cosmetic bugs that do not otherwise affect gameplay or logic progression.
+title: "[Bug - Cosmetic]: "
 labels: [bug]
 
 body:
@@ -73,11 +73,28 @@ body:
   - type: checkboxes
     id: confirmations
     attributes:
-      label: Required confirmations
+      label: Check each box to confirm this report is **NOT** about any of the following expected behaviours:
       options:
-        - label: This issue occurs WITHOUT Crowd Control, which is [not officially supported](https://forum.warp.world/t/super-mario-rpg-legend-of-the-seven-stars-snes/14219).
+        - label: Allies transforming into each other temporarily when using a weapon or spell that doesn't normally belong to them. 
           required: true
-        - label: This is NOT about a ship password, melody bay tune, or invisible flag hint being difficult to solve (unless the hints, solution, or positioning is incorrect).
+        - label: Some coins are not animated. 
           required: true
-        - label: If my seed has a spoiler log available, I have reviewed it thoroughly to make sure the issue I'm reporting is not simply a check I didn't know about, or forgot to do, or forgot to disable, or forgot to reduce the reward threshold for (i.e. marrymore suite, grate guy's game, etc).
+        - label: Some boss sprites don't have a walking animation or can't face northwest/northeast.
           required: true
+        - label: Non-critical dialogs missing in boss fights, cutscenes, etc. Many dialogs are removed intentionally to reduce repetitive player input.
+          required: true
+
+  - type: checkboxes
+    id: confirmations_2
+    attributes:
+      label: Check each box to confirm this report is **NOT** about any of the following known hardware limitations:
+      options:
+        - label: Temporary freezing (~16-30 frames) when activating EXP stars in certain rooms (forest, pipe vault, booster tower, sunken ship, etc). 
+          required: true
+        - label: Sprites partially disappearing or glitching out in battle when there are too many tiles on the same scanline (i.e. Yaridovich attacking Bowser in the middle slot). 
+          required: true
+        - label: Bad sprite palette in a room with 7 or more unique NPC sprites, especially if the player is Bowser or Toadstool.
+          required: true
+        - label: Some tickets about sprites overwriting each other (or overwriting shadows) will be closed due to hardware limitations, especially if the player is Bowser or Toadstool and it's a room with a lot of objects in it.
+          required: true
+

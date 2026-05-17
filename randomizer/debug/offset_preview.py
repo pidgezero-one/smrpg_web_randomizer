@@ -58,10 +58,6 @@ from randomizer.progression.prizelocations import (
     FinalBossFight,
 )
 from randomizer.progression import prizelocations as _prizelocations_module
-from randomizer.progression.prizelocations import (
-    KeroSewersBeforeBelomeUpperBeforeFlipLocation,
-    KeroSewersBeforeBelomeUpperAfterFlipLocation,
-)
 from randomizer.progression.prizes import (
     SlotsPrize1,
     SlotsPrize2,
@@ -161,10 +157,7 @@ STAR_PIECE_PRIZES: list[type] = [
 # explicitly excluded from the mimic offset slider — e.g. they share a room
 # with a chest that already hosts a mimic, so dialing one in here makes for a
 # confusing preview.
-MIMIC_OFFSET_EXCLUDES: list[type] = [
-    KeroSewersBeforeBelomeUpperBeforeFlipLocation,
-    KeroSewersBeforeBelomeUpperAfterFlipLocation,
-]
+MIMIC_OFFSET_EXCLUDES: list[type] = []
 
 
 # --- Helper Functions ---

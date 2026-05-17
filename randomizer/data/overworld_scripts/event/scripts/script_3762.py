@@ -34,8 +34,14 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-    JmpIfBitSet(NIMBUS_MISSABLE_CHECK_CLEARED, ["E3762_apply_tile_mod_to_level_0"]),
-    EnableObjectTrigger(NPC_0),                                    
+    JmpIfObjectTriggerEnabledInSpecificLevel(
+		NPC_0,
+		R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
+		["E3762_apply_tile_mod_to_level_0"],
+	),
+    RemoveObjectFromCurrentLevel(NPC_0),
+	SummonObjectToCurrentLevel(NPC_10),
+    ResumeActionScript(NPC_10),                              
 	ApplyTileModToLevel(use_alternate=True, room_id=R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, mod_id=0, identifier="E3762_apply_tile_mod_to_level_0"),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_TransferXYZFPixels(x=0, y=0, z=2, direction=EAST)

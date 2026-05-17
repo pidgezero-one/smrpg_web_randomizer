@@ -991,12 +991,11 @@ class MushroomKingdomLiberatedVaultLeft(TreasureChestLocationRow1):
     _originally_held = Coins10Prize
     _rooms = [
         R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
-        R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT,
     ]
-    _npc_ids = [NPC_0, NPC_2]
+    _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_1
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 13),
         RunDialog(
@@ -1007,24 +1006,21 @@ class MushroomKingdomLiberatedVaultLeft(TreasureChestLocationRow1):
             multiline=True,
             use_background=True,
         ),
-        JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_0, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
-        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
-    # Flag as checked: npc 0 in room 31 or 331 has its object trigger disabled.
+    # Flag as checked: MUSHROOM_KINGDOM_OCCUPIED and npc 0 in room 31 has its object trigger disabled.
 
 
 class MushroomKingdomLiberatedVaultRight(TreasureChestLocationRow2):
     _originally_held = RecoveryMushroomPrize
     _rooms = [
         R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
-        R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT,
     ]
-    _npc_ids = [NPC_1, NPC_0]
+    _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_2
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 14),
         RunDialog(
@@ -1035,24 +1031,21 @@ class MushroomKingdomLiberatedVaultRight(TreasureChestLocationRow2):
             multiline=True,
             use_background=True,
         ),
-        JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_1, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
-        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
-    # Flag as checked: npc 1 in room 31 or 331 has its object trigger disabled.
+    # Flag as checked: MUSHROOM_KINGDOM_OCCUPIED and npc 1 in room 31 has its object trigger disabled.
 
 
 class MushroomKingdomLiberatedVaultMiddle(TreasureChestLocationRow3):
     _originally_held = FPFlowerPrize
     _rooms = [
         R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
-        R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT,
     ]
-    _npc_ids = [NPC_2, NPC_1]
+    _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_3
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 15),
         RunDialog(
@@ -1063,12 +1056,13 @@ class MushroomKingdomLiberatedVaultMiddle(TreasureChestLocationRow3):
             multiline=True,
             use_background=True,
         ),
-        JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_2, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
-        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
-    # Flag as checked: npc 2 in room 31 or 331 has its object trigger disabled.
+    # Flag as checked: MUSHROOM_KINGDOM_OCCUPIED and npc 2 in room 31 has its object trigger disabled.
+
+
+
 
 
 class MushroomKingdomChair(NPCLocationRow1):
@@ -1356,6 +1350,90 @@ class MushroomKingdomOccupiedGuestRoomLocation(NPCLocationRow1):
         return can_access_bandits_way(world, inventory)
 
     # Flag as checked: OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED
+
+class MushroomKingdomOccupiedVaultLeft(TreasureChestLocationRow4):
+    _originally_held = Coins10Prize
+    _rooms = [
+        R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
+    ]
+    _npc_ids = [NPC_3]
+    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_4
+    _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1300),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_3, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
+    ]
+    # Flag as checked: MUSHROOM_KINGDOM_OCCUPIED and npc 3 in room 31 has its object trigger disabled.
+
+
+class MushroomKingdomOccupiedVaultRight(TreasureChestLocationRow5):
+    _originally_held = RecoveryMushroomPrize
+    _rooms = [
+        R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
+    ]
+    _npc_ids = [NPC_4]
+    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_5
+    _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1400),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
+    ]
+    # Flag as checked: MUSHROOM_KINGDOM_OCCUPIED and npc 4 in room 31 has its object trigger disabled.
+
+
+class MushroomKingdomOccupiedVaultMiddle(TreasureChestLocationRow6):
+    _originally_held = FPFlowerPrize
+    _rooms = [
+        R031_MUSHROOM_KINGDOM_CASTLE_VAULT,
+    ]
+    _npc_ids = [NPC_5]
+    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_6
+    _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 1500),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_5, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
+        ),
+        Jmp(["mushroom_kingdom_hint_text"]),
+    ]
+    # Flag as checked: MUSHROOM_KINGDOM_OCCUPIED and npc 5 in room 31 has its object trigger disabled.
+
 
 
 class MushroomKingdomBossFight(BossFightLocation):
@@ -2276,10 +2354,10 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [
         EXPStarPrize,
-        FirstMimicFightLauncher,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
         SlotsPrize,
+        InfiniteCoinsPrize,
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 44),
@@ -2293,8 +2371,9 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
         ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_5"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
-        JmpIfBitSet(
-            SEWER_CHEST_FIRST_PRIZE_OBTAINED,
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_1,
+            R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS,
             ["next"],
             identifier="sewers_closed_check_5",
         ),
@@ -2304,7 +2383,7 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sewer(world, inventory)
 
-    # flag as checked: SEWER_CHEST_FIRST_PRIZE_OBTAINED
+    # flag as checked: npc 1 in room 301 has its object trigger disabled.
 
 
 class KeroSewersBeforeBelomeUpperAfterFlipLocation(
@@ -2312,13 +2391,12 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
 ):
     _originally_held = CricketJamPrize
     _rooms = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
-    _npc_ids = [NPC_1]
+    _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_2
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [
         EXPStarPrize,
         SlotsPrize,
-        FirstMimicFightLauncher,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
     ]
@@ -2332,7 +2410,11 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
             multiline=True,
             use_background=True,
         ),
-        JmpIfBitSet(SEWERS_FLIPPED_CHEST_OPENED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_8,
+            R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS,
+            ["next"],
+        ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(LANDS_END_GROTTO_BARREL_FLIPPED, ["lands_end_grotto_hint_text"]),
         Jmp(["kero_sewers_hint_text"]),
@@ -2341,7 +2423,7 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
 
-    # flag as checked: SEWERS_FLIPPED_CHEST_OPENED
+    # flag as checked: npc 8 in room 301 has its object trigger disabled.
 
 
 class KeroSewersBossFight(BossFightLocation):
@@ -13926,13 +14008,14 @@ class NimbusCastleOuterPrisonCellarLeftNPCLocation(KeyItemLocation, NPCLocationR
 
 
 class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1):
+    _set_extra_bits_when_opened = [NIMBUS_MISSABLE_CHECK_OPENED]
     _bias = True
     _originally_held = FPFlowerPrize
-    _rooms = [R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA]
-    _npc_ids = [NPC_0]
+    _rooms = [R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]
+    _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_BUSINESS_CENTRE
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [SlotsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [SlotsPrize, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 347),
         RunDialog(
@@ -13943,7 +14026,9 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
             multiline=True,
             use_background=True,
         ),
-        JmpIfBitSet(NIMBUS_MISSABLE_CHECK_CLEARED, ["next"]),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_0, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, ["next"]
+        ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
@@ -13955,8 +14040,7 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_nimbus_castle(world, inventory)
 
-    # flag as checked: NIMBUS_MISSABLE_CHECK_CLEARED
-    # (not really missable anymore. the chest that replaces this in the liberated castle will simply give you its item first if you didn't already get it)
+    # flag as checked: [NPC_0 in room 118 has its object trigger disabled] or [NPC_0 in room 499 has its object trigger disabled]
 
 
 class NimbusCastleCornerBridgeChestLocation(TreasureChestLocationRow1):
@@ -14341,7 +14425,7 @@ class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_CHEST
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 356),
         RunDialog(
@@ -14716,7 +14800,7 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 358),
         RunDialog(
@@ -14761,14 +14845,14 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
     # flag as checked: npc 1 in room 121 has its object trigger disabled.
 
 
-class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1):
+class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow2):
     _bias = True
     _originally_held = FrogCoin1Prize
     _rooms = [R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]
-    _npc_ids = [NPC_0]
+    _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [EXPStarPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 359),
         RunDialog(
@@ -14779,8 +14863,11 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
             multiline=True,
             use_background=True,
         ),
-        JmpIfObjectTriggerDisabledInSpecificLevel(
+        JmpIfObjectTriggerEnabledInSpecificLevel(
             NPC_0, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, ["next"]
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_10, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, ["next"]
         ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_6"]),
@@ -14810,7 +14897,7 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_nimbus_boss(world, inventory)
 
-    # flag as checked: room 499 npc 0 deactivated
+    # flag as checked: room 499 npc 10 deactivated
 
 
 class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
@@ -16775,7 +16862,7 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 413),
         RunDialog(
@@ -16812,7 +16899,7 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 414),
         RunDialog(
@@ -16849,7 +16936,7 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 415),
         RunDialog(
@@ -16886,7 +16973,7 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 416),
         RunDialog(
@@ -16919,7 +17006,7 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 417),
         RunDialog(

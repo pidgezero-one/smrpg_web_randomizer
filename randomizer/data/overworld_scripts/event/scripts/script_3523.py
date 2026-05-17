@@ -1,4 +1,4 @@
-# E3523_SEWERS_SWITCH_ROOM_CHESTS
+# E3523_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,7 +34,4 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfVarEqualsConst(ACTIVE_NPC, NPC_1, ["EVENT_3523_jmp_to_event_2"]),
-	JmpToEvent(E0172_CHEST_1_CONTAINER),
-	JmpToEvent(E3145_SEWERS_FLIPPABLE_CHEST, identifier="EVENT_3523_jmp_to_event_2")
 ])

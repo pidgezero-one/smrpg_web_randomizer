@@ -34,7 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetBit(NIMBUS_MISSABLE_CHECK_OPENED),
     SetVarToConst(PRIMARY_TEMP_7000, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA),
 	JmpToEvent(E0247_CHEST_1_GRANT)
 ])

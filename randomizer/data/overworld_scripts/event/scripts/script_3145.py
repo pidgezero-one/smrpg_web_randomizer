@@ -1,4 +1,4 @@
-# E3145_SEWERS_FLIPPABLE_CHEST
+# E3145_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,11 +34,4 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfBitClear(SEWER_CHEST_FIRST_PRIZE_OBTAINED, ["get_lower_chest_item"]),
-	JmpIfBitSet(LANDS_END_GROTTO_BARREL_FLIPPED, ["EVENT_3145_set_bit_2"]),
-	SetBit(SEWER_CHEST_FIRST_PRIZE_OBTAINED, identifier="get_lower_chest_item"),
-	JmpToEvent(E0173_CHEST_2_CONTAINER),
-	SetBit(SEWERS_FLIPPED_CHEST_OPENED, identifier="EVENT_3145_set_bit_2"),
-	JmpToEvent(E0174_CHEST_3_CONTAINER),
-	Return()
 ])

@@ -36,6 +36,5 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	JmpIfBitSet(NIMBUS_MISSABLE_CHECK_OPENED, ["E0172_set_7000_to_current_level_0"]),
     JmpToEvent(E2082_NIMBUS_MISSABLE_CHEST_1),
-    SetBit(NIMBUS_MISSABLE_CHECK_CLEARED, identifier="E1322_jmp_to_event_2"),
-    JmpToEvent(E0172_CHEST_1_CONTAINER)
+    JmpToEvent(E0172_CHEST_1_CONTAINER, identifier="E1322_jmp_to_event_2")
 ])

@@ -35,6 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	MoveScriptToMainThread(),
+    StopMusic(),
 	PlaySound(sound=SO102_TIME_RUNNING_OUT, channel=6),
 	#StopMusicFDA1(),
 	SetBit(EXP_STAR_BIT_5),

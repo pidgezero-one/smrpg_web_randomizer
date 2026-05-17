@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING, Callable, Generic, cast
 from uuid import uuid4
 from enum import StrEnum
 import random
+from copy import deepcopy
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_12
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.controller_inputs import B
@@ -49,6 +50,7 @@ from ..data.variables.variable_names import (
     MIMIC_1_CLEARED,
     MIMIC_2_CLEARED,
     PRIMARY_TEMP_7000,
+    MUSHROOM_KINGDOM_OCCUPIED
 )
 from ..data.variables.battlefield_names import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
@@ -74,6 +76,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     JmpToEvent,
     ActionQueueAsync,
     Set7000ToCurrentLevel,
+    SetBit,
+    Jmp
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
@@ -420,9 +424,12 @@ class ShuffleLocationSelector(CategorizationOption):
     MUSHROOM_WAY_CHARACTER = "Mushroom Way character join"
     MUSHROOM_WAY_STAR_PIECE = "Mushroom Way boss Star Piece"
     MUSHROOM_KINGDOM_HALLWAY = "Mushroom Kingdom castle main hallway chest"
-    MUSHROOM_KINGDOM_VAULT_1 = "Mushroom Kingdom vault left chest"
-    MUSHROOM_KINGDOM_VAULT_2 = "Mushroom Kingdom vault right chest"
-    MUSHROOM_KINGDOM_VAULT_3 = "Mushroom Kingdom vault middle chest"
+    MUSHROOM_KINGDOM_VAULT_1 = "Mushroom Kingdom vault left chest (liberated)"
+    MUSHROOM_KINGDOM_VAULT_2 = "Mushroom Kingdom vault right chest (liberated)"
+    MUSHROOM_KINGDOM_VAULT_3 = "Mushroom Kingdom vault middle chest (liberated)"
+    MUSHROOM_KINGDOM_VAULT_4 = "Mushroom Kingdom vault left chest (occupied)"
+    MUSHROOM_KINGDOM_VAULT_5 = "Mushroom Kingdom vault right chest (occupied)"
+    MUSHROOM_KINGDOM_VAULT_6 = "Mushroom Kingdom vault middle chest (occupied)"
     INVASION_EASTERN_GUARD = "Mushroom Kingdom eastern guard rescue (invasion)"
     WALLET_GUY_1 = "Wallet reward 1"
     WALLET_GUY_2 = "Wallet reward 2"
@@ -1398,6 +1405,11 @@ class FrogDiscipleLocation(PrizeLocation):
 class TreasureChestLocation(StandardPrizeLocation):
     _npc_ids: list[AreaObject]
     _extra_sprite_buffer_rooms: list[int] = []
+    _set_extra_bits_when_opened: list[Flag] | None = None
+
+    @property
+    def set_extra_bits_when_opened(self) -> list[Flag]:
+        return self._set_extra_bits_when_opened if self._set_extra_bits_when_opened is not None else []
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return (
@@ -1407,6 +1419,10 @@ class TreasureChestLocation(StandardPrizeLocation):
         )
 
     def grant(self) -> EventScript:
+        from randomizer.progression.prizelocations import (
+            KeroSewersBeforeBelomeUpperBeforeFlipLocation,
+        )
+
         if self.prize is None:
             return EventScript([Return()])
         itemgrant = (
@@ -1426,36 +1442,21 @@ class TreasureChestLocation(StandardPrizeLocation):
                 )
                 for cmd in itemgrant
             ]
-        for npc, room in zip(self._npc_ids, self._rooms):
-            # If npc is already an AreaObject, use it directly; otherwise convert from raw index
-            ao = npc if isinstance(npc, AreaObject) else AreaObject(npc + 14)
-            if isinstance(self.prize, (FirstMimicFightLauncher)):
-                # Account for mimic chests needing to be opened twice
-                itemgrant = [
-                    JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]),
-                    DisableObjectTriggerInSpecificLevel(ao, room),
-                ] + itemgrant
-            if isinstance(self.prize, (SecondMimicFightLauncher)):
-                # Account for mimic chests needing to be opened twice
-                itemgrant = [
-                    JmpIfBitClear(MIMIC_2_CLEARED, [itemgrant[0].identifier.label]),
-                    DisableObjectTriggerInSpecificLevel(ao, room),
-                ] + itemgrant
-            else:
-                from randomizer.progression.prizelocations import (
-                    KeroSewersBeforeBelomeUpperBeforeFlipLocation,
-                )
+        extra_itemgrant = []
+        if not isinstance(self.prize, (InfiniteCoinsPrize)):
+            extra_itemgrant = extra_itemgrant + [
+                *[DisableObjectTriggerInSpecificLevel(ao, room) for ao, room in zip([npc if isinstance(npc, AreaObject) else AreaObject(npc + 14) for npc in self._npc_ids], self._rooms)],
+                *[SetBit(bit) for bit in (self.set_extra_bits_when_opened or [])]
+            ] 
+            
+        if isinstance(self.prize, (FirstMimicFightLauncher)):
+            # Account for mimic chests needing to be opened twice
+            extra_itemgrant.insert(0, JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]))
+        elif isinstance(self.prize, (SecondMimicFightLauncher)):
+            # Account for mimic chests needing to be opened twice
+            extra_itemgrant.insert(0, JmpIfBitClear(MIMIC_2_CLEARED, [itemgrant[0].identifier.label]))
 
-                if isinstance(self, KeroSewersBeforeBelomeUpperBeforeFlipLocation):
-                    itemgrant = [
-                        JmpIfBitSet(
-                            LANDS_END_GROTTO_BARREL_FLIPPED,
-                            [itemgrant[0].identifier.label],
-                        ),
-                        DisableObjectTriggerInSpecificLevel(ao, room),
-                    ] + itemgrant
-                elif not isinstance(self.prize, (InfiniteCoinsPrize, MimicFightInitiatorPrize)):
-                    itemgrant.insert(0, DisableObjectTriggerInSpecificLevel(ao, room))
+        itemgrant = extra_itemgrant + itemgrant
         return EventScript(itemgrant)
 
     def render(self, world: GameWorld) -> None:
@@ -3533,7 +3534,7 @@ ROOM_TO_BATTLEFIELD: dict[int, Battlefield] = {
     R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
     R329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
     R330_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_GUEST_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
-    R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT: BF13_MUSHROOM_KINGDOM_CASTLE,
+    R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT_UNUSED: BF13_MUSHROOM_KINGDOM_CASTLE,
     R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM: BF13_MUSHROOM_KINGDOM_CASTLE,
     R333_KERO_SEWERS_ENTRANCE: BF33_PLATEAUS,
     R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE: BF49_BEAN_VALLEY_PIPE_ROOM,

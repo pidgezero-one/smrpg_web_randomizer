@@ -113,6 +113,18 @@ def get_patch(
             0x64, 0x1F,                        # STZ $1F
         ])
 
+        # Clone-protagonist VRAM build-slot. Vanilla $C0:8B6F (`LDA #$04`,
+        # operand byte at ROM $8B70) hardcodes the clone-protagonist's slot
+        # to 4 — `$70 = $4000 + $19*$40`, so the clone builds at $40:4100.
+        # That fits a 4-slot sprite (Mario), but Bowser is a 6-slot sprite
+        # (slots 0-5 = $40:4000-$417F), so the clone at slot 4 builds on top
+        # of the real protagonist and corrupts every room-load fade-in
+        # (self-heals on first movement, which rebuilds only the real one).
+        # Move the clone to slot 6 ($40:4180, the free gap above Bowser).
+        # Bowser-only: a smaller protagonist genuinely wants slot 4.
+        if overworld_index == 2:  # Bowser
+            out[0x8B70] = bytes([0x06])
+
     # File-select names — always written.
     for i, name in enumerate(file_select_names):
         addr = 0x3EF528 + (i * 7)

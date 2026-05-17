@@ -37,9 +37,15 @@ script = EventScript([
 	Set7000ToCurrentLevel(),
     
     JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS, ["EVENT_3135_jmp_if_bit_set_711"]),
-	JmpIfBitSet(SEWERS_FLIPPED_CHEST_OPENED, ["EVENT_3135_fade"]),
     JmpIfBitClear(LANDS_END_GROTTO_BARREL_FLIPPED, ["EVENT_3135_fade"]),
-    EnableObjectTrigger(NPC_1),
+	JmpIfObjectTriggerEnabledInSpecificLevel(
+		NPC_1,
+		R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS,
+		["EVENT_3135_fade"],
+	),
+    RemoveObjectFromCurrentLevel(NPC_1),
+	SummonObjectToCurrentLevel(NPC_8),
+    ResumeActionScript(NPC_14),
     
     
 	
