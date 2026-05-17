@@ -17043,7 +17043,7 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_6
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 418),
         RunDialog(

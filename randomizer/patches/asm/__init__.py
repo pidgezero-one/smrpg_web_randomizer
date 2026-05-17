@@ -13,6 +13,8 @@ ASM hooks (multi-site / runtime-built):
     * :mod:`battlefield_underwater_palette` — Whitelist gate for the
       "+4 palette" path in BF14/BF34/BF38 so non-underwater monsters
       keep their normal colors.
+    * :mod:`battle_palette0_init` — JSL hook that zeros CGRAM palette 0
+      at battle start so the intro doesn't show stale leftover colors.
     * :mod:`belome3_brooch` — Belome 3 spell-block + Enduring Brooch.
     * :mod:`invincibility_fix` — Red Essence dispel guard.
     * :mod:`packet_allocation` — Packet allowlist routine for NPC slots.
@@ -39,6 +41,7 @@ Flag-gated byte patches:
 
 from . import (
     battle_init,
+    battle_palette0_init,
     battlefield_underwater_palette,
     belome3_brooch,
     debug_fp,
@@ -60,6 +63,7 @@ from . import (
 
 __all__ = [
     "battle_init",
+    "battle_palette0_init",
     "battlefield_underwater_palette",
     "belome3_brooch",
     "debug_fp",

@@ -73,7 +73,7 @@ body:
   - type: checkboxes
     id: confirmations
     attributes:
-      label: Check each box to confirm this report is **NOT** about any of the following expected behaviours:
+      label: Check each box to confirm this report is **NOT** about any of the following expected behaviours.
       options:
         - label: Allies transforming into each other temporarily when using a weapon or spell that doesn't normally belong to them. 
           required: true
@@ -87,7 +87,7 @@ body:
   - type: checkboxes
     id: confirmations_2
     attributes:
-      label: Check each box to confirm this report is **NOT** about any of the following known hardware limitations:
+      label: Check each box to confirm this report is **NOT** about any of the following known hardware limitations.
       options:
         - label: Temporary freezing (~16-30 frames) when activating EXP stars in certain rooms (forest, pipe vault, booster tower, sunken ship, etc). 
           required: true

@@ -45,7 +45,7 @@ script = EventScript([
 	),
     RemoveObjectFromCurrentLevel(NPC_1),
 	SummonObjectToCurrentLevel(NPC_8),
-    ResumeActionScript(NPC_14),
+    ResumeActionScript(NPC_8),
     
     
 	
