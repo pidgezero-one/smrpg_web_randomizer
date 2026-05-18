@@ -35,9 +35,9 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	StoreItemAmountTo7000(CricketPieItem),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1111_remove_one_from_inventory_6"]),
+	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1111_remove_one_from_inventory_6"]),
 	StoreItemAmountTo7000(CricketJamItem),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1111_jmp_if_bit_clear_12"]),
+	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1111_jmp_if_bit_clear_12"]),
 	JmpToEvent(E0947_HINT_SYSTEM, identifier="EVENT_1111_jmp_to_event_4"),
 	Return(),
 	RemoveOneOfItemFromInventory(CricketPieItem, identifier="EVENT_1111_remove_one_from_inventory_6"),
