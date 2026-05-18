@@ -13,11 +13,12 @@ Three independent sites:
   graphic to the alternate protagonist sprite.
 
 * **Overworld walker engine hooks** — when the *overworld walker* isn't
-  Mario, three sites:
+  Mario, two sites:
 
-    - ``$0:9B86`` sets the default sprite base.
-    - ``$0:9BBF`` / ``$0:9BC1`` repurpose a known whitelist entry to
-      recognize the alternate base (count = 6).
+    - ``$0:9B86`` sets the default sprite base. (Recognition of that
+      base by the engine sprite-group whitelist is handled by the
+      always-on :mod:`sprite_group_whitelist` patch — this module no
+      longer touches the whitelist.)
     - ``$0:94AF`` rewrites the clone-protagonist setup so it copies
       the alternate sprite base instead of zeroing the byte
       (which would force Mario).
@@ -91,12 +92,12 @@ def get_patch(
     if overworld_index != 0:
         out[0x9B86] = bytes([SPR0031_ALT_PROTAGONIST_1])
 
-        # The engine has a whitelist of known sprite bases at
-        # $9BAA-$9BC2 that controls creation of additional sprites
-        # (jump, poses, etc.). Repurpose the base-49 check to recognize
-        # base 31 with count 6.
-        out[0x9BBF] = bytes([SPR0031_ALT_PROTAGONIST_1])  # CMP #$1F
-        out[0x9BC1] = bytes([0x02])                       # BEQ $9BC4
+        # Sprite 31 (the alternate-protagonist base) is recognized by the
+        # engine sprite-group whitelist via the always-on
+        # `sprite_group_whitelist` patch, which fully owns $9BAA-$9BDF.
+        # This module must NOT write into that range — it previously
+        # cannibalized the Green Yoshi entry there ($9BBF/$9BC1), which
+        # broke room 34 Yoshi-riding on every non-Mario seed.
 
         # Fix clone-protagonist handler at $94AF: set sprite base to
         # protagonist's base instead of hardcoding 0 (Mario).

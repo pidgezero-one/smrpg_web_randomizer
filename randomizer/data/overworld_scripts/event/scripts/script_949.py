@@ -263,7 +263,7 @@ script = EventScript([
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_5, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["bean_valley_hint_text"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_7, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["bean_valley_hint_text"]),
 	JmpIfBitClear(BEAN_VALLEY_BIG_PIPE_ROOM_INVISIBLE_ITEM, ["bean_valley_hint_text"]),
-	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_13, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["bean_valley_hint_text"]),
+	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_14, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["bean_valley_hint_text"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["beanstalk_hint_text"]),
 	JmpIfObjectInSpecificLevel(NPC_6, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["beanstalk_hint_text"]),
 	JmpIfObjectInSpecificLevel(NPC_7, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["beanstalk_hint_text"]),

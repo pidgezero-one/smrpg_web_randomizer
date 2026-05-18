@@ -34,16 +34,16 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SummonObjectToSpecificLevel(NPC_0, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
 	SummonObjectToSpecificLevel(NPC_1, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_3, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_2, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
 	SummonObjectToSpecificLevel(NPC_4, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
 	SummonObjectToSpecificLevel(NPC_5, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
 	SummonObjectToSpecificLevel(NPC_6, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
 	SummonObjectToSpecificLevel(NPC_7, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
-	SummonObjectToSpecificLevel(NPC_9, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_8, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
 	SummonObjectToSpecificLevel(NPC_10, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
 	SummonObjectToSpecificLevel(NPC_11, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_12, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
 	ClearBit(DIRECTIONAL_7047_0),
 	Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_2466_set_7000_to_object_coord_19"]),

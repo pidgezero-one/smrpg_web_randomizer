@@ -35,15 +35,11 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	SummonObjectToSpecificLevel(NPC_2, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM),
-	ActionQueueSync(target=NPC_0, subscript=[
+	ActionQueueSync(target=NPC_1, subscript=[
 		A_WalkSouthPixels(1),
 		A_WalkSouthwestPixels(4)
 	]),
-	ActionQueueSync(target=NPC_1, subscript=[
-		A_ShiftZDownPixels(1),
-		A_WalkSouthwestPixels(4)
-	]),
-	ActionQueueSync(target=NPC_3, subscript=[
+	ActionQueueSync(target=NPC_2, subscript=[
 		A_ShiftZDownPixels(1),
 		A_WalkSouthwestPixels(4)
 	]),
@@ -56,16 +52,15 @@ script = EventScript([
 		A_WalkSouthwestPixels(4)
 	]),
 	ActionQueueSync(target=NPC_6, subscript=[
-		A_WalkSoutheastPixels(7),
-		A_WalkSouthwestPixels(1),
-		A_VisibilityOff()
+		A_ShiftZDownPixels(1),
+		A_WalkSouthwestPixels(4)
 	]),
 	ActionQueueSync(target=NPC_7, subscript=[
 		A_WalkSoutheastPixels(7),
 		A_WalkSouthwestPixels(1),
 		A_VisibilityOff()
 	]),
-	ActionQueueSync(target=NPC_9, subscript=[
+	ActionQueueSync(target=NPC_8, subscript=[
 		A_WalkSoutheastPixels(7),
 		A_WalkSouthwestPixels(1),
 		A_VisibilityOff()
@@ -75,7 +70,12 @@ script = EventScript([
 		A_WalkSouthwestPixels(1),
 		A_VisibilityOff()
 	]),
-	ActionQueueAsync(target=NPC_11, subscript=[
+	ActionQueueSync(target=NPC_11, subscript=[
+		A_WalkSoutheastPixels(7),
+		A_WalkSouthwestPixels(1),
+		A_VisibilityOff()
+	]),
+	ActionQueueAsync(target=NPC_12, subscript=[
 		A_WalkSoutheastPixels(7),
 		A_WalkSouthwestPixels(1),
 		A_VisibilityOff()

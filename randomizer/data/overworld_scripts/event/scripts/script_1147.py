@@ -34,6 +34,9 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	ActionQueueAsync(target=NPC_7, subscript=[
+		A_SetSpriteSequence(index=0, is_sequence=True, is_mold=True, looping=False, mirror_sprite=True, identifier="seaside_boss_reveal_sequence_0"),
+	], identifier="seaside_boss_reveal_sequence_0_aq"),
 	ActionQueueSync(target=NPC_6, subscript=[
 		A_SetSequenceSpeed(FAST)
 	]),

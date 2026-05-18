@@ -55,16 +55,8 @@ script = EventScript([
 		A_SetWalkingSpeed(NORMAL),
 		A_ShiftZUpPixels(2)
 	]),
-	ActionQueueAsync(target=NPC_16, subscript=[
-		A_SetSequenceSpeed(FAST),
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=True),
-		A_Pause(50),
-		A_ResetProperties(),
-		A_Pause(10),
-		A_SetSpriteSequence(index=3, looping=False)
-	]),
 	RemoveObjectFromCurrentLevel(NPC_12),
-	Pause(60),
+	Pause(16),
 	PlaySound(sound=SO021_RUMBLING, channel=6),
 	SetVarToConst(TEMP_7034, 1),
 	Set70107015ToObjectXYZ(target=NPC_16),

@@ -969,7 +969,11 @@ P115_HAMMER_CHEST = ChestPacket(
     sprite_id=SPR0247_HAMMER_PACKET,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
 )
-P116_UNUSED = None
+P116_AP_ITEM = ChestPacket(
+    packet_id=116,
+    sprite_id=SPR0799_ARCHIPELAGO,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
 P117_UNUSED = None
 P118_UNUSED = None
 P119_UNUSED = None
@@ -1229,7 +1233,7 @@ ALL_PACKETS = PacketCollection(
         P113_CHOMP_CHEST,
         P114_STICK_CHEST,
         P115_HAMMER_CHEST,
-        P116_UNUSED,
+        P116_AP_ITEM,
         P117_UNUSED,
         P118_UNUSED,
         P119_UNUSED,

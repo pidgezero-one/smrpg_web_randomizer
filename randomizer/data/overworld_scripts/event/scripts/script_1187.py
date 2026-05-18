@@ -41,7 +41,7 @@ script = EventScript([
 	Return(),
 	StartBattleAtBattlefield(PACK011_KINGDOM_HENCHMEN_2, BF28_MUSHROOM_KINGDOM, identifier="EVENT_1187_start_battle_5"),
 	Return(),
-	StartBattleAtBattlefield(PACK010_KINGDOM_HENCHMEN_1, BF15_MUSHROOM_KINGDOM_CASTLE, identifier="EVENT_1187_start_battle_7"),
+	StartBattleAtBattlefield(PACK010_KINGDOM_HENCHMEN_1, BF13_MUSHROOM_KINGDOM_CASTLE, identifier="EVENT_1187_start_battle_7"),
 	Return(),
 	StartBattleAtBattlefield(PACK010_KINGDOM_HENCHMEN_1, BF11_MUSHROOM_KINGDOM_HOUSE, identifier="EVENT_1187_start_battle_9"),
 	Return()

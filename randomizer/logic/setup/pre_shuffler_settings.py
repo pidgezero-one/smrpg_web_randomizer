@@ -21,6 +21,8 @@ from ...data.variables.variable_names import (
     ITEM_ID,
     MAP_CASINO,
     MAP_DIRECTIONAL_BEAN_VALLEY_CASINO,
+    MAP_DIRECTIONAL_PIPE_VAULT_YOSTER_ISLE,
+    MAP_YOSTER_ISLE,
     PRIMARY_TEMP_7000,
     RETURNED_MARIO_DOLL,
     YOSHI_ITEM_GRANTED,
@@ -183,6 +185,8 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
 
     world.event_2496_startup += [SetBit(MAP_CASINO)]
     world.event_2496_startup += [SetBit(MAP_DIRECTIONAL_BEAN_VALLEY_CASINO)]
+    world.event_2496_startup += [SetBit(MAP_YOSTER_ISLE)]
+    world.event_2496_startup += [SetBit(MAP_DIRECTIONAL_PIPE_VAULT_YOSTER_ISLE)]
 
     # Win conditions
     if world.settings.is_flag_value(WinCondition, WinConditions.SMITHY):

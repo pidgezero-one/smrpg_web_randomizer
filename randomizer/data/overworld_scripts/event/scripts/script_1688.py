@@ -31,6 +31,9 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+	ClearBit(TEMP_7043_0),
+	ClearBit(TEMP_7043_1),
+	ClearBit(TEMP_7043_2),
 	JmpIfBitClear(BELOME_FORTUNE_1, ["EVENT_1688_copy_var_to_var_2"]),
 	RemoveObjectFromCurrentLevel(NPC_3),
 	CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000, identifier="EVENT_1688_copy_var_to_var_2"),

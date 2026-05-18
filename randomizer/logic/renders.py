@@ -2343,6 +2343,10 @@ def render_seaside_beach_boss(world: GameWorld, prize: BossFightPrize) -> None:
     world.event_scripts.delete_subscript_command_by_identifier(
         "seaside_boss_reveal_sequence", "seaside_boss_reveal_sequence_1"
     )
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "seaside_boss_reveal_sequence_0_aq", "seaside_boss_reveal_sequence_0"
+    )
+    
 
 
 def render_ship_password_boss(world: GameWorld, prize: BossFightPrize) -> None:

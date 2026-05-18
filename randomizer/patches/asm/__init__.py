@@ -10,12 +10,16 @@ Modules
 -------
 
 ASM hooks (multi-site / runtime-built):
+    * :mod:`battle_intro_hdma_fix` — Order-gate the sprite-palette HDMA
+      enable so it cannot bleed during the battle intro (the neon-block
+      glitch).
     * :mod:`battlefield_underwater_palette` — Whitelist gate for the
       "+4 palette" path in BF14/BF34/BF38 so non-underwater monsters
       keep their normal colors.
-    * :mod:`battle_palette0_init` — JSL hook that zeros CGRAM palette 0
-      at battle start so the intro doesn't show stale leftover colors.
     * :mod:`belome3_brooch` — Belome 3 spell-block + Enduring Brooch.
+    * :mod:`exp_star_music_sticky` — Keep the EXP-star (Invincible Star)
+      music overriding room BGM across room transitions when it is
+      started via ``PlayMusicAtCurrentVolume``.
     * :mod:`invincibility_fix` — Red Essence dispel guard.
     * :mod:`packet_allocation` — Packet allowlist routine for NPC slots.
 
@@ -26,6 +30,9 @@ Always-on byte patches:
     * :mod:`room_layouts` — Room area-layout records.
     * :mod:`room_174_battlefield` — Force Sea Enclave for room 174 fights.
     * :mod:`room_325_solidity` — Mushroom Kingdom doorway chest fix.
+    * :mod:`sprite_group_whitelist` — Relocated engine sprite-group
+      whitelist; restores the Green Yoshi entry alongside the
+      alternate-protagonist entry (room 34 Yoshi-riding).
     * :mod:`rom_metadata` — ROM title + version text.
 
 Flag-gated byte patches:
@@ -41,10 +48,11 @@ Flag-gated byte patches:
 
 from . import (
     battle_init,
-    battle_palette0_init,
+    battle_intro_hdma_fix,
     battlefield_underwater_palette,
     belome3_brooch,
     debug_fp,
+    exp_star_music_sticky,
     hold_b,
     invincibility_fix,
     key_item_inventory,
@@ -57,16 +65,18 @@ from . import (
     room_layouts,
     selected_music,
     show_equips,
+    sprite_group_whitelist,
     star_piece_sprite_fix,
     uncap_max_fp,
 )
 
 __all__ = [
     "battle_init",
-    "battle_palette0_init",
+    "battle_intro_hdma_fix",
     "battlefield_underwater_palette",
     "belome3_brooch",
     "debug_fp",
+    "exp_star_music_sticky",
     "hold_b",
     "invincibility_fix",
     "key_item_inventory",
@@ -79,6 +89,7 @@ __all__ = [
     "room_layouts",
     "selected_music",
     "show_equips",
+    "sprite_group_whitelist",
     "star_piece_sprite_fix",
     "uncap_max_fp",
 ]

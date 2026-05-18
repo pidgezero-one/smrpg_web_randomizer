@@ -145,6 +145,34 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
+            npc=npcs.SAVE_POINT_NPC_3,
+            initiator=EventInitiator.JUMP_ON,
+            event_script=E0080_SAVE_BLOCK_SUBROUTINE,
+            action_script=A0120_EMBEDDED_ROUTINE,
+            visible=True,
+            x=7,
+            y=12,
+            z=0,
+            z_half=True,
+            direction=SOUTHWEST,
+            face_on_trigger=False,
+            cant_enter_doors=False,
+            byte2_bit5=False,
+            set_sequence_playback=True,
+            cant_float=False,
+            cant_walk_up_stairs=False,
+            cant_walk_under=False,
+            cant_pass_walls=False,
+            cant_jump_through=False,
+            cant_pass_npcs=False,
+            byte3_bit5=False,
+            cant_walk_through=True,
+            byte3_bit7=False,
+            slidable_along_walls=True,
+            cant_move_if_in_air=True,
+            byte7_upper2=3,
+            cannot_clone=True),
+        RegularNPC( # 1
             npc=npcs.THRAX_NPC_2,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -171,7 +199,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        RegularClone( # 1
+        RegularClone( # 2
             npc=npcs.THRAX_NPC_2,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
@@ -181,7 +209,7 @@ room = Room(
             z=1,
             z_half=False,
             direction=SOUTHWEST),
-        RegularClone( # 2
+        RegularClone( # 3
             npc=npcs.THRAX_NPC_2,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
@@ -191,7 +219,7 @@ room = Room(
             z=1,
             z_half=False,
             direction=SOUTHWEST),
-        RegularClone( # 3
+        RegularClone( # 4
             npc=npcs.THRAX_NPC_2,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
@@ -201,7 +229,7 @@ room = Room(
             z=1,
             z_half=False,
             direction=SOUTHWEST),
-        RegularClone( # 4
+        RegularClone( # 5
             npc=npcs.THRAX_NPC_2,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
@@ -211,7 +239,7 @@ room = Room(
             z=1,
             z_half=False,
             direction=SOUTHWEST),
-        RegularClone( # 5
+        RegularClone( # 6
             npc=npcs.THRAX_NPC_2,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
@@ -221,7 +249,7 @@ room = Room(
             z=1,
             z_half=False,
             direction=SOUTHWEST),
-        RegularNPC( # 6
+        RegularNPC( # 7
             npc=npcs.SMILAX_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E2479_BEAN_VALLEY_BOTTOM_LEFT_PIRANHA,
@@ -248,7 +276,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        RegularClone( # 7
+        RegularClone( # 8
             npc=npcs.SMILAX_NPC,
             event_script=E2480_BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA,
             action_script=A0015_DO_NOTHING,
@@ -258,7 +286,7 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHEAST),
-        RegularClone( # 8
+        RegularClone( # 9
             npc=npcs.SMILAX_NPC,
             event_script=E2481_BEAN_VALLEY_RIGHTMOST_PIRANHA,
             action_script=A0015_DO_NOTHING,
@@ -268,7 +296,7 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHEAST),
-        RegularClone( # 9
+        RegularClone( # 10
             npc=npcs.SMILAX_NPC,
             event_script=E2481_BEAN_VALLEY_RIGHTMOST_PIRANHA,
             action_script=A0015_DO_NOTHING,
@@ -278,7 +306,7 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHEAST),
-        RegularClone( # 10
+        RegularClone( # 11
             npc=npcs.SMILAX_NPC,
             event_script=E2482_BEAN_VALLEY_TOP_PIRANHA,
             action_script=A0015_DO_NOTHING,
@@ -288,7 +316,7 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHEAST),
-        RegularClone( # 11
+        RegularClone( # 12
             npc=npcs.SMILAX_NPC,
             event_script=E2483_BEAN_VALLEY_LEFTMOST_PIRANHA,
             action_script=A0015_DO_NOTHING,
@@ -298,7 +326,7 @@ room = Room(
             z=2,
             z_half=False,
             direction=SOUTHEAST),
-        BattlePackNPC( # 12
+        BattlePackNPC( # 13
             npc=npcs.SHY_AWAY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             after_battle=PostBattleBehaviour.REMOVE_UNTIL_RELOAD,
@@ -327,7 +355,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3,
             cannot_clone=True),
-        ChestNPC( # 13
+        ChestNPC( # 14
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
             event_script=E0172_CHEST_1_CONTAINER,
@@ -356,37 +384,9 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=True,
             byte7_upper2=3),
-        RegularNPC( # 14
-            npc=npcs.SAVE_POINT_NPC_3,
-            initiator=EventInitiator.JUMP_ON,
-            event_script=E0080_SAVE_BLOCK_SUBROUTINE,
-            action_script=A0120_EMBEDDED_ROUTINE,
-            visible=True,
-            x=7,
-            y=12,
-            z=0,
-            z_half=True,
-            direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=False,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True),
     ],
     extra_sprite_actions=[
         SpriteAnimationState.DOWN_PIPE,
     ],
-    effects_npc=EffectsNpc.UNKNOWN_17,
+    effects_npc=EffectsNpc.SAVE_POINT_NPC0 ,
 )

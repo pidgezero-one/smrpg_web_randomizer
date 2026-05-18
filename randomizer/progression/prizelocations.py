@@ -11941,8 +11941,7 @@ class DojoFirstFight(BossFightLocation):
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if not isinstance(self.prize, JaggerBossFight):
-            render_dojo_first_fight(world, self.prize)
+        render_dojo_first_fight(world, self.prize)
         return op
 
     # Flag as checked: DOJO_BOSS_1_DEFEATED
@@ -12013,17 +12012,14 @@ class DojoSecondFight(BossFightLocation):
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if not isinstance(
-            self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
-        ):
-            render_dojo_fight(
-                world,
-                self.prize,
-                "dojo_boss_2_initiate_aq",
-                "dojo_boss_2_initiate",
-                "dojo_boss_2_pause",
-                "EVENT_2068_player_challenge_aq"
-            )
+        render_dojo_fight(
+            world,
+            self.prize,
+            "dojo_boss_2_initiate_aq",
+            "dojo_boss_2_initiate",
+            "dojo_boss_2_pause",
+            "EVENT_2068_player_challenge_aq"
+        )
         # If the swapped-in NPC's sprite has a non-gridplane mold 0,
         # set cannot_clone on the room object to prevent VRAM conflicts.
         room = world.rooms._rooms[R255_MONSTRO_TOWN_JINXS_DOJO]
@@ -12106,17 +12102,14 @@ class DojoThirdFight(BossFightLocation):
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if not isinstance(
-            self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
-        ):
-            render_dojo_fight(
-                world,
-                self.prize,
-                "dojo_boss_3_initiate_aq",
-                "dojo_boss_3_initiate",
-                "dojo_boss_3_pause",
-                "EVENT_2076_player_challenge_aq"
-            )
+        render_dojo_fight(
+            world,
+            self.prize,
+            "dojo_boss_3_initiate_aq",
+            "dojo_boss_3_initiate",
+            "dojo_boss_3_pause",
+            "EVENT_2076_player_challenge_aq"
+        )
         return op
 
     # Flag as checked: DOJO_BOSS_3_DEFEATED
@@ -12190,17 +12183,14 @@ class DojoFourthFight(BossFightLocation):
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        if not isinstance(
-            self.prize, (Jinx1BossFight, Jinx2BossFight, Jinx3BossFight, Jinx4BossFight)
-        ):
-            render_dojo_fight(
-                world,
-                self.prize,
-                "dojo_boss_4_initiate_aq",
-                "dojo_boss_4_initiate",
-                "dojo_boss_4_pause",
-                "EVENT_2077_player_challenge_aq",
-            )
+        render_dojo_fight(
+            world,
+            self.prize,
+            "dojo_boss_4_initiate_aq",
+            "dojo_boss_4_initiate",
+            "dojo_boss_4_pause",
+            "EVENT_2077_player_challenge_aq",
+        )
         return op
 
     # Flag as checked: DOJO_BOSS_4_DEFEATED
@@ -13002,7 +12992,7 @@ class BeanValleyRightPipeUnderStairsLocation(NPCLocationRow1):
 class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
     _originally_held = FrogCoin1Prize
     _rooms = [R251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
-    _npc_ids = [NPC_13]
+    _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BEAN_VALLEY_PIRANHA_PLANTS
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
@@ -13017,7 +13007,7 @@ class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
             use_background=True,
         ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_13, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["next"]
+            NPC_14, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["next"]
         ),
         Jmp(["bean_valley_hint_text"]),
     ]

@@ -103,7 +103,7 @@ BLUE_ORB_BASE = _item_npc_base(SPR0215_BLUE_BALL)
 GREEN_ORB_BASE = _item_npc_base(SPR0217_GREEN_BALL)
 YELLOW_ORB_BASE = _item_npc_base(SPR0218_YELLOW_BALL)
 GRAY_ORB_BASE = _item_npc_base(SPR0224_GRAY_BALL)
-AP_BASE = _item_npc_base(SPR0639_ITEM_BAG_STANDALONE)
+AP_BASE = _item_npc_base(SPR0799_ARCHIPELAGO)
 AP_BASE._force_id = 0
 
 
@@ -922,6 +922,29 @@ SPARKLES_FROM_STAR_PIECE_NPC = NPC(
 
 GREEN_YOSHI_NPC = NPC(
     sprite_id=SPR0049_GREEN_YOSHI,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=3,
+    obtuse_axis=3,
+    height=12,
+    y_shift=3,
+    show_shadow=True,
+    directions=VramStore.DIR4_ALL_DIRECTIONS,
+    min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+GREEN_YOSHI_NPC_SUB = NPC(
+    sprite_id=SPR0051_GREEN_YOSHI_WALK,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -9552,6 +9575,7 @@ BELOME_ST_TIME_NPC = NPC(
     byte6_bit2=False,
 )
 
+
 PUPPOX_NPC = NPC(
     sprite_id=SPR0373_PUPPOX,
     shadow_size=ShadowSize.OVAL_MED,
@@ -11494,9 +11518,32 @@ BELOME_ST_TIME_NPC_2 = NPC(
     byte5_bit7=False,
     byte6_bit2=False,
 )
+BELOME_2ND_TIME_NPC = NPC(
+    sprite_id=SPR0672_BELOME_2_LARGE_OVERWORLD,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=10,
+    obtuse_axis=10,
+    height=18,
+    y_shift=2,
+    show_shadow=False,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=5,
+    priority_0=True,
+    priority_1=True,
+    priority_2=False,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
 
 BELOME_3_NPC = NPC(
-    sprite_id=SPR0457_BELOME_3RD_TIME,
+    sprite_id=SPR0755_BELOME_3_LARGE_2,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=10,
     obtuse_axis=10,

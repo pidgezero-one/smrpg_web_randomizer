@@ -1993,8 +1993,10 @@ class GameWorld:
         patch.add_dict(asm.room_174_battlefield.get_patch(), source="room_174_battlefield")
         patch.add_dict(asm.room_325_solidity.get_patch(), source="room_325_solidity")
         patch.add_dict(asm.star_piece_sprite_fix.get_patch(), source="star_piece_sprite_fix")
+        patch.add_dict(asm.sprite_group_whitelist.get_patch(), source="sprite_group_whitelist")
         patch.add_dict(asm.battle_init.get_patch(), source="battle_init")
-        patch.add_dict(asm.battle_palette0_init.get_patch(), source="battle_palette0_init")
+        patch.add_dict(asm.battle_intro_hdma_fix.get_patch(), source="battle_intro_hdma_fix")
+        patch.add_dict(asm.exp_star_music_sticky.get_patch(), source="exp_star_music_sticky")
 
         # Packet allocation patch — allow low-VRAM packets (those with
         # ``goes_to_npc_slot_buffer = True``) to use the NPC slot path

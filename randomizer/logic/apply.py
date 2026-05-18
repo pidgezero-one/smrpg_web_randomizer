@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
 
 from randomizer.data.variables.dialog_names import DI1163_BOOSTER_TOWER_DOOR_OPEN, DI2320_TOADSTOOL_ROOM_HINT, DI2908_TREASURE_SELLER_ITEM_2, DI2911_TREASURE_SELLER_ITEM_1, DI2914_TREASURE_SELLER_ITEM_3
-from randomizer.data.variables.sprite_names import SPR0031_ALT_PROTAGONIST_1, SPR0032_ALT_PROTAGONIST_2, SPR0033_ALT_PROTAGONIST_3, SPR0034_ALT_PROTAGONIST_4, SPR0035_ALT_PROTAGONIST_5, SPR0036_ALT_PROTAGONIST_6, SPR0037_ALT_PROTAGONIST_7, SPR0096_MARIO_DOLL_SURPRISED, SPR0132_MOLEVILLE_MINE_CART, SPR0135_MINE_CART_BAD_PALETTE, SPR0136_MARIO_IN_MINE_CART, SPR0621_OLD_CLASSIC_MARIO
+from randomizer.data.variables.sprite_names import *
 from ..types.prizelocation import (
     BossFightLocation,
     PrizeRow,
@@ -381,24 +381,25 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # palettes 24/25) read the unified palette IDs.
     if not world.settings.isflag_enabled(DifferentiateRepeatedBosses):
         sprite_palette_copies: list[tuple[int, int]] = [
-            (190, 189),
-            (607, 191),
-            (608, 191),
-            (727, 191),
-            (590, 589),
-            (736, 589),
-            (739, 55),
-            (737, 592),
-            (740, 721),
-            (742, 633),
-            (738, 50),
-            (583, 586),
-            (584, 586),
-            (585, 586),
-            (753, 392),
-            (755, 457),
-            (757, 470),
-            (759, 431),
+            (SPR0190_CROCO_OVERWORLD, SPR0189_CROCO_STILL),
+            (SPR0607_JINX_OVERWORLD_2, SPR0191_JINX_OVERWORLD_1),
+            (SPR0608_JINX_OVERWORLD_3, SPR0191_JINX_OVERWORLD_1),
+            (SPR0727_JINX_OVERWORLD_4, SPR0191_JINX_OVERWORLD_1),
+            (SPR0590_BELOME_SMALL, SPR0589_BELOME_SMALL),
+            (SPR0736_BELOME_3_SMALL, SPR0589_BELOME_SMALL),
+            (SPR0739_JOHNNY_2_SMALL, SPR0055_JONATHAN_JONES),
+            (SPR0737_PUNCHINELLO_2_SMALL, SPR0592_PUNCHINELLO_SMALL),
+            (SPR0740_BUNDT_2_SMALL, SPR0721_BUNDT_OBJECT_MAYBE),
+            (SPR0742_CULEX_2_SMALL, SPR0633_CULEX_SMALL),
+            (SPR0738_BOOSTER_2_SMALL, SPR0050_BOOSTER),
+            (SPR0583_PANDORITE_SMALL, SPR0586_BOX_BOY_SMALL),
+            (SPR0584_HIDON_SMALL, SPR0586_BOX_BOY_SMALL),
+            (SPR0585_CHESTER_SMALL, SPR0586_BOX_BOY_SMALL),
+            (SPR0753_PUNCHINELLO_POSTGAME_2, SPR0392_PUNCHINELLO_2),
+            (SPR0755_BELOME_3_LARGE_2, SPR0457_BELOME_3RD_TIME),
+            (SPR0672_BELOME_2_LARGE_OVERWORLD, SPR0457_BELOME_3RD_TIME),
+            (SPR0757_BUNDT_2_LARGE_2, SPR0470_FANCY_BUNDT),
+            (SPR0759_JOHNNY_2_LARGE_2, SPR0431_JOHNNY_2),
         ]
         for target_id, source_id in sprite_palette_copies:
             source_palette_id = world.get_sprite(source_id).palette_id

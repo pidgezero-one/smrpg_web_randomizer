@@ -120,7 +120,7 @@ from .packets import (
     P113_CHOMP_CHEST,
     P114_STICK_CHEST,
     P115_HAMMER_CHEST,
-    P116_UNUSED,
+    P116_AP_ITEM,
     P117_UNUSED,
     P118_UNUSED,
     P119_UNUSED,

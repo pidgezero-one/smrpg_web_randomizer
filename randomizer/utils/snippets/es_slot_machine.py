@@ -231,7 +231,6 @@ def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id:
 	    JmpIfBitSet(GAME_OVER, [f"{uniq}_reset_and_choose_game_3"]),
 	    JmpIfBitSet(RUN_AWAY, [f"gen_{uniq}_remove_from_current_level_107"]),
         JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, [f"gen_{uniq}_remove_from_current_level_107"]),
-        FadeInFromBlack(sync=False),
         SetVarToConst(PRIMARY_TEMP_7000, 514),
         RunEventAsSubroutine(E0171_MIMIC_3_GRANT_STAR_PIECE_CONTAINER),
         RemoveObjectFromCurrentLevel(npcs[0], identifier=f"gen_{uniq}_remove_from_current_level_107"),

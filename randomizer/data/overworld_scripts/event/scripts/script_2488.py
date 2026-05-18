@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfObjectInSpecificLevel(NPC_1, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["EVENT_2488_ret_5"]),
+	JmpIfObjectInSpecificLevel(NPC_2, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["EVENT_2488_ret_5"]),
 	SetVarToConst(X_COORD_2, 9),
 	SetVarToConst(Y_COORD_2, 35),
 	RunEventAsSubroutine(E0066_PIPE_DOWN_SUBROUTINE),

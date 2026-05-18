@@ -35,6 +35,9 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
+    StartAsyncEmbeddedActionScript(MEM_70A8, 0xF1, [
+        A_SetObjectMemoryBits(0x0B, [0, 1]),
+	]),
 	SetSyncActionScript(MEM_70A8, A1022_HIT_BY_EXP_STAR),
 	IncEXPByPacket(identifier="inc_exp_by_packet"),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_255_ret_13"]),

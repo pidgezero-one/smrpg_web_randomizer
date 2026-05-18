@@ -88,6 +88,18 @@ body:
       required: true
 
   # ─────────────────────────────────────────────
+  # Seed / permalink
+  # ─────────────────────────────────────────────
+  - type: textarea
+    id: ow
+    attributes:
+      label: Who is your OVERWORLD character?
+      description: |
+        This depends on your cosmetics settings which are not baked into the hash.
+    validations:
+      required: true
+
+  # ─────────────────────────────────────────────
   # Bug description
   # ─────────────────────────────────────────────
   - type: textarea

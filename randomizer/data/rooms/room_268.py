@@ -124,7 +124,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 4
-            npc=npcs.BELOME_ST_TIME_NPC_2,
+            npc=npcs.BELOME_2ND_TIME_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E1768_TEMPLE_BOSS,
             action_script=A0160_SEQUENCE_LOOPING_ON,

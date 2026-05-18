@@ -25,6 +25,7 @@ from randomizer.data.enemies.enemies import (
     CHOMPEnemy,
     CHOWEnemy,
     CROOKEnemyStatic,
+    DRYBONESEnemy,
     GECKITEnemy,
     GECKOEnemy,
     GLUMREAPEREnemy,
@@ -740,6 +741,12 @@ FORMATION_FORCED_ENEMIES: dict[Formation, list[type]] = {
     FORM0242_FOUR_LILBOO: [LILBOOEnemy],
     FORM0247_THREE_RATFUNK: [RATFUNKEnemy],
     FORM0248_FIVE_RATFUNK: [RATFUNKEnemy],
+    FORM0252_TWO_FIREBALL: [FIREBALLEnemy],
+    FORM0253_THREE_FIREBALL: [FIREBALLEnemy],
+    FORM0254_ONE_STUMPET_TWO_MAGMUS: [STUMPETEnemy],
+    FORM0255_ONE_STUMPET_THREE_MAGMUS: [STUMPETEnemy],
+    FORM0256_ONE_CORKPEDITE_ONE_BODY_ONE_OERLIKON: [CORKPEDITEEnemy, BODYEnemy], 
+    FORM0257_ONE_CORKPEDITE_ONE_BODY_TWO_OERLIKON: [CORKPEDITEEnemy, BODYEnemy],
     FORM0300_THREE_HEAVYTROOPA: [HEAVYTROOPAEnemy],
     FORM0310_ONE_MACHINEMADEAXEMPINK_ONE_MACHINEMADEAXEMRED_ONE_MACHINEMADEAXEMGREEN: [MACHINEMADEAxemRedEnemy],
     FORM0311_TWO_MACHINEMADEAXEMBLACK_TWO_MACHINEMADEAXEMYELLOW: [MACHINEMADEAxemRedEnemy],
@@ -826,6 +833,55 @@ def randomize_enemy_formations(world: GameWorld) -> None:
         if not e.ohko_immune and type(e) not in boss_enemy_types
     ]
 
+    # Undead enemies (Dry Bones, Vomer) have 0 HP and self-revive; dropping
+    # them into certain early-game / scripted encounters softlocks or unfairly
+    # stalls the fight. Collect the formation IDs reachable through the packs
+    # they must be kept out of. Formation instances are shared across packs,
+    # so a formation belonging to a restricted pack can still be mutated while
+    # shuffling a *different* pack — hence we restrict by formation_id rather
+    # than pack_id.
+    from randomizer.progression.prizelocations import (
+        MushroomKingdomBossFight,
+        BoosterTowerIndoorBossFight,
+        InnerFactoryFirstFight,
+        ShipFinalBossFight,
+    )
+    undead_restricted_pack_ids: set[int] = {
+        PACK139_ARTICHOKERS_ONLY,
+        PACK046_SPOOKUM_WITH_OTHER_MONSTERS,
+        PACK047_MULTIPLE_SPOOKUM_WITH_OTHER_MONSTERS,
+        PACK067_KIPPER_PACK_2,
+        PACK144_STUMPET_ENCOUNTER,
+        PACK143_TOWER_FIREBALLS,
+    }
+    # For the boss fights, the boss pack itself is never shuffled — it is the
+    # henchman packs (swapped in around the boss by the henchman shuffler)
+    # that can roll undead enemies, so restrict those instead.
+    for boss_fight_cls in (
+        MushroomKingdomBossFight,
+        BoosterTowerIndoorBossFight,
+        InnerFactoryFirstFight,
+        ShipFinalBossFight,
+    ):
+        for henchman_slots in (
+            boss_fight_cls._character_henchman_slots,
+            boss_fight_cls._mook_henchman_slots,
+            boss_fight_cls._tiny_henchman_slots,
+        ):
+            if henchman_slots is None:
+                continue
+            for henchman_slot in henchman_slots:
+                if henchman_slot.pack_id is not None:
+                    undead_restricted_pack_ids.add(henchman_slot.pack_id)
+    undead_restricted_formation_ids: set[int] = set()
+    for restricted_pack_id in undead_restricted_pack_ids:
+        if 0 <= restricted_pack_id < len(world.battle_packs.packs):
+            for restricted_formation in world.battle_packs.packs[restricted_pack_id].formations:
+                if restricted_formation.formation_id is not None:
+                    undead_restricted_formation_ids.add(restricted_formation.formation_id)
+
+    undead_enemy_types = (DRYBONESEnemy, VOMEREnemy)
+
     # Helper function to calculate stat sum for an enemy
     def get_stat_sum(enemy) -> int:
         return enemy.attack + enemy.defense + enemy.magic_attack + enemy.magic_defense
@@ -875,6 +931,19 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                         forced_enemies = list(enemies)
                         break
 
+            # Keep undead enemies (Dry Bones, Vomer) out of formations
+            # reachable through restricted packs. Vanilla members are left
+            # untouched; this only blocks undead from being forced in or
+            # added as random fill.
+            restrict_undead = (
+                formation.formation_id is not None
+                and formation.formation_id in undead_restricted_formation_ids
+            )
+            if restrict_undead:
+                forced_enemies = [
+                    e for e in forced_enemies if e not in undead_enemy_types
+                ]
+
             candidates = list(current_enemy_types)
             for fe in forced_enemies:
                 if fe not in candidates:
@@ -900,6 +969,11 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             # Only use similar enemies for candidate pool - don't fall back to all eligible enemies
             # If no similar enemies exist, we only use the original formation enemies
             candidate_pool = similar_enemies if similar_enemies else []
+
+            if restrict_undead:
+                candidate_pool = [
+                    e for e in candidate_pool if e not in undead_enemy_types
+                ]
 
             # Add unique candidates up to 3, but avoid infinite loop if not enough unique enemies exist
             while len(candidates) < 3 and candidate_pool:
