@@ -3033,34 +3033,8 @@ class RoseWayFiveChestRoomBottomRightLocation(TreasureChestLocationRow5):
 
 ########### rose town
 
-
-class RoseTownShopLeftChestLocation(TreasureChestLocationRow1):
+class RoseTownShopRightChestLocation(TreasureChestLocationRow1):
     _originally_held = FPFlowerPrize
-    _rooms = [R087_ROSE_TOWN_ITEM_SHOP]
-    _npc_ids = [NPC_5]
-    _id = ShuffleLocationSelector.ROSE_TOWN_STORE_2
-    _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
-    _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 69),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
-        JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_4, R087_ROSE_TOWN_ITEM_SHOP, ["next"]
-        ),
-        Jmp(["rose_town_hint_text"]),
-    ]
-    # Flag as checked: npc 4 in room 87 has its object trigger disabled.
-
-
-class RoseTownShopRightChestLocation(TreasureChestLocationRow2):
-    _originally_held = FrogCoin1Prize
     _rooms = [R087_ROSE_TOWN_ITEM_SHOP]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_1
@@ -3081,7 +3055,33 @@ class RoseTownShopRightChestLocation(TreasureChestLocationRow2):
         ),
         Jmp(["rose_town_hint_text"]),
     ]
+    # Flag as checked: npc 4 in room 87 has its object trigger disabled.
+
+
+class RoseTownShopLeftChestLocation(TreasureChestLocationRow2):
+    _originally_held = FrogCoin1Prize
+    _rooms = [R087_ROSE_TOWN_ITEM_SHOP]
+    _npc_ids = [NPC_5]
+    _id = ShuffleLocationSelector.ROSE_TOWN_STORE_2
+    _world_area = WorldAreaEnum.ROSE_TOWN
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _hint = [
+        SetVarToConst(PRIMARY_TEMP_7000, 69),
+        RunDialog(
+            dialog_id=DI2010_DEBUG_7000,
+            above_object=BOWSER,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        JmpIfObjectTriggerDisabledInSpecificLevel(
+            NPC_4, R087_ROSE_TOWN_ITEM_SHOP, ["next"]
+        ),
+        Jmp(["rose_town_hint_text"]),
+    ]
     # Flag as checked: npc 5 in room 87 has its object trigger disabled.
+
 
 
 class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):

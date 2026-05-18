@@ -39,7 +39,7 @@ body:
           required: true
         - label: Sprites partially disappearing or glitching out in battle when there are too many tiles on the same scanline (i.e. Yaridovich attacking Bowser in the middle slot). 
           required: true
-        - label: Bad sprite palette in a room with 7 or more unique NPC sprites, especially if the player is Bowser or Toadstool.
+        - label: Bad sprite palette in a room where at least 6-8 non-protagonist sprites use a different palette from each other
           required: true
         - label: Some tickets about sprites overwriting each other (or overwriting shadows) will be closed due to hardware limitations, especially if the player is Bowser or Toadstool and it's a room with a lot of objects in it.
           required: true
