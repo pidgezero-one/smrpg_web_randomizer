@@ -35,42 +35,131 @@ Multiple sites participate:
    cur < 100 (the leading blank lands on it) but keeps the digits flush
    right.
 
-Battle spell-menu FP display — DEFERRED
-----------------------------------------
+Battle spell-menu FP display — DEFERRED, bisect harness below
+--------------------------------------------------------------
 
 Widening the in-battle spell-menu FP header ($C1:62F6) from 2-digit to
-3-digit was attempted three different ways and each introduced its own
-class of artifacts that turned out to be a crash liability rather than a
-purely cosmetic issue:
+3-digit was attempted three different ways and each introduced visible
+artifacts that the user considers a crash liability. We're restarting
+the investigation by bisecting which patch contributes which artifact.
 
-* In-place trampoline using the HP 3-digit converter at $C1:5D6A —
-  truncates the "Hold Y for ..." battle-start dialog (STZ $8C clobbers
-  the dialog tilemap cursor) and displaces a fragment of the A-button
-  HUD sprite during action selection.
+Set ``_BATTLE_BISECT`` to one of:
 
-* Relocated renderer with $8C / $8E save/restore — introduced
-  accumulating tile artifacts during menu transitions and spell casting
-  (suspected timing/flag-mode interaction with the F-tile animator at
-  $C1:6310).
+* ``"OFF"`` — no battle FP patches (production state).
+* ``"A"`` — apply ONLY the static MVN template change at $C1:639D
+  (slash $7030 -> $702E, digit slots zeroed). Vanilla renderer
+  otherwise. Display: cur-ones overwrites my slash so visually the
+  slash is gone; this is fine for artifact isolation. Tests whether the
+  template byte change alone causes any artifacts.
+* ``"B"`` — apply ONLY the renderer rewrite at $C1:62F6 + trampoline at
+  $C1:9564 (STZ $8C + HP 3-digit converter path). Vanilla template
+  otherwise. Display: 3-digit cur/max but max-h overwrites the static
+  slash at $7030 so no slash visible. Tests whether the renderer
+  changes (combination of STZ $8C and the HP converter path) cause
+  artifacts.
+* ``"C"`` — apply ONLY a minimal ``STZ $8C`` injection (vanilla 2-digit
+  converter is still called, no template change, no HP converter
+  reuse). Patches the two JSR target operands in the renderer to point
+  at a trampoline that does ``STZ $8C`` then tail-calls vanilla
+  ``$6378``. Display: identical to vanilla. Tests whether STZ $8C alone
+  is the cause.
 
-* Custom 3-digit converter avoiding $8C entirely (only $80 and $86,
-  with save/restore) — different but still substantial artifacts
-  (sprite fragments on the battlefield, garbled tile rows below the
-  spell list).
+Comparison matrix:
 
-Static analysis cannot pinpoint the mechanism. A fresh attempt should
-start by instrumenting bsnes-plus with SA-1 read-watchpoints on the
-relevant zero-page bytes ($8C, $86, $80) and OAM mirror writes to
-identify exactly what gets corrupted at the moment of artifact
-appearance. Until then, the in-battle FP display stays vanilla 2-digit
-and clips values >99 — the underlying max-FP storage is still raised by
-the two cap-handler patches above, so gameplay (cast checks, FP
-deduction) operates on the real value.
+==========  =============================  ============================
+Result      Test A    Test B    Test C     Interpretation
+==========  =============================  ============================
+all clean   clean     clean     clean      Can't reproduce; investigate further
+A only      bad       clean     clean      Template change is the cause
+B only      clean     bad       clean      Renderer/HP-converter path is the cause
+B and C     clean     bad       bad        STZ $8C clobber is the cause
+A and B     bad       bad       clean      Both template AND renderer changes contribute (not STZ $8C)
+all bad     bad       bad       bad        All changes share root cause (likely $8C or timing)
+==========  =============================  ============================
+
+For each test, rebuild the ROM, enter battle, open the special menu,
+transition between menus, start casting a spell. Screenshot anything
+unusual. The known artifacts to look for:
+
+* Small tile fragments at the edges of the battlefield (especially
+  upper-left and right sides)
+* A fragmented A-button HUD sprite during action selection
+* Garbled tile row directly below the spell list
+* "Hold Y for ..." dialog text truncated mid-text
+* Unexpected pattern at the right edge of the dialog frame
 """
+
+# Edit this and rebuild between tests. Set back to "OFF" when done.
+_BATTLE_BISECT: str = "OFF"  # "OFF" | "A" | "B" | "C"
+
+
+def _battle_bisect_patches() -> dict[int, bytes]:
+    """Return the battle FP patches selected by ``_BATTLE_BISECT``."""
+    if _BATTLE_BISECT == "OFF":
+        return {}
+
+    if _BATTLE_BISECT == "A":
+        # Static MVN tilemap source at $C1:639D (22 bytes, same length).
+        # Slash moves byte 16 ($7030) -> byte 14 ($702E); digit slots
+        # zeroed so they idle as blanks. Vanilla renderer otherwise.
+        return {
+            0x1639D: bytes([
+                0x14, 0x24, 0x15, 0x24, 0x00, 0x24, 0x00, 0x24,
+                0x00, 0x24, 0x00, 0x24, 0x00, 0x24, 0x16, 0x24,
+                0x00, 0x24, 0x00, 0x24, 0x00, 0x24,
+            ]),
+        }
+
+    if _BATTLE_BISECT == "B":
+        # Renderer rewrite at $C1:62F6 + trampoline at $C1:9564.
+        # No template change (max-h will overwrite the static slash at
+        # $7030, so no slash will be visible — this is fine, we're only
+        # looking for artifacts).
+        return {
+            # Trampoline at $C1:9564: AND #$00FF / JMP $5D6A
+            0x19564: bytes([0x29, 0xFF, 0x00, 0x4C, 0x6A, 0x5D]),
+            # Renderer at $C1:62F6 (in-place 26-byte replacement):
+            #   REP #$30 / STZ $8C / LDA $FA0C / LDY #$0028 / JSR $9564
+            #   LDA $FA0D / LDY #$0030 / JSR $9564 / NOP x4
+            0x162F6: bytes([
+                0xC2, 0x30,
+                0x64, 0x8C,
+                0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, 0x64, 0x95,
+                0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0x64, 0x95,
+                0xEA, 0xEA, 0xEA, 0xEA,
+            ]),
+        }
+
+    if _BATTLE_BISECT == "C":
+        # Minimal STZ $8C injection: redirect the two JSR $6378 calls in
+        # the vanilla renderer to a trampoline at $C1:9564 that does
+        # STZ $8C then tail-calls vanilla $6378. Display is identical to
+        # vanilla (still 2-digit, still uses static slash at $7030).
+        # Tests whether STZ $8C alone is the cause of the artifacts.
+        return {
+            # Renderer JSR target patches (operands only):
+            #   $C1:62FB: JSR $6378 -> JSR $9564
+            #   $C1:6306: JSR $6378 -> JSR $9564
+            # Two-byte operand change per site.
+            0x162FC: bytes([0x64]),  # low byte of new target
+            0x162FD: bytes([0x95]),  # high byte of new target
+            0x16307: bytes([0x64]),
+            0x16308: bytes([0x95]),
+            # Trampoline at $C1:9564 (6 bytes):
+            #   STZ $8C       -- clobber $8C in m16 (same as Test B)
+            #   JSR $6378     -- vanilla 2-digit converter
+            #   RTS
+            0x19564: bytes([0x64, 0x8C, 0x20, 0x78, 0x63, 0x60]),
+        }
+
+    raise ValueError(
+        f"Unknown _BATTLE_BISECT value {_BATTLE_BISECT!r}; "
+        f"expected one of 'OFF', 'A', 'B', 'C'."
+    )
 
 
 def get_patch() -> dict[int, bytes]:
-    return {
+    patches: dict[int, bytes] = {
         # Add7000ToMaxFP handler ($C0:C4CC): replace 99-cap with 255-cap.
         # BCS catches 8-bit ADC overflow so a wrap cannot regress max FP.
         0xC4CC: bytes([0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF]),
@@ -92,3 +181,5 @@ def get_patch() -> dict[int, bytes]:
         # X-menu item-submenu Flowers display ($C3:2CC0).
         0x32CC1: bytes([0x90]),
     }
+    patches.update(_battle_bisect_patches())
+    return patches
