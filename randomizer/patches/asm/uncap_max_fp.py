@@ -35,56 +35,37 @@ Multiple sites participate:
    cur < 100 (the leading blank lands on it) but keeps the digits flush
    right.
 
-5. The battle spell-menu FP header (bank $C1) widens to 3 digits.
-   Vanilla renderer at $C1:62F6-$C1:630F (26 bytes) writes 2-digit
-   cur/max via JSR $C1:6378 ("F P _ _ _ _ TT/TT"). The 11-tile window
-   $7020-$7034 is shared with the spell list (which begins at $7040,
-   only 6 bytes past $7034) and with the per-spell FP cost renderer
-   (which writes $7024/$7026 each frame).
+Battle spell-menu FP display — DEFERRED
+----------------------------------------
 
-   This implementation reuses the battle HP 3-digit converter at
-   $C1:5D6A (which writes 3 tiles via $7000+Y with leading-zero
-   suppression and $2400 attribute prefix) via a 6-byte trampoline at
-   $C1:9564 that masks A's high byte first ($FA0C/$FA0D are 1-byte
-   values; m16 LDA reads the adjacent byte as garbage in the high
-   half). The renderer is rewritten in-place at $C1:62F6 in exactly 26
-   bytes, ending without RTS to preserve the fall-through to the F-tile
-   animator at $C1:6310.
+Widening the in-battle spell-menu FP header ($C1:62F6) from 2-digit to
+3-digit was attempted three different ways and each introduced its own
+class of artifacts that turned out to be a crash liability rather than a
+purely cosmetic issue:
 
-   New layout in the existing 11-tile $7020-$7034 window::
+* In-place trampoline using the HP 3-digit converter at $C1:5D6A —
+  truncates the "Hold Y for ..." battle-start dialog (STZ $8C clobbers
+  the dialog tilemap cursor) and displaces a fragment of the A-button
+  HUD sprite during action selection.
 
-       $7020 F | $7022 P | $7024-$7026 spell cost (untouched)
-       $7028-$702C cur FP (3 digits) | $702E '/' (static)
-       $7030-$7034 max FP (3 digits)
+* Relocated renderer with $8C / $8E save/restore — introduced
+  accumulating tile artifacts during menu transitions and spell casting
+  (suspected timing/flag-mode interaction with the F-tile animator at
+  $C1:6310).
 
-   Highest write is $7034 — vanilla parity, no DMA changes. The
-   per-spell FP cost renderer at $C1:635B is NOT modified because spell
-   costs are capped at 99 in the spell stat table even under
-   UncapMaxFP.
+* Custom 3-digit converter avoiding $8C entirely (only $80 and $86,
+  with save/restore) — different but still substantial artifacts
+  (sprite fragments on the battlefield, garbled tile rows below the
+  spell list).
 
-Known limitations
------------------
-
-(Accepted tradeoffs vs alternative implementations that produced worse
-artifacts.)
-
-1. ``STZ $8C`` clobbers the dialog-text tilemap cursor used by
-   ``$C1:25D2`` / ``$C1:2610``. The "Hold Y for ..." battle-start
-   dialog renders with truncated text and an unexpected right-edge
-   tile pattern.
-
-2. A small fragment of the A-button HUD sprite occasionally appears in
-   the wrong place during action selection (likely a downstream effect
-   of the $8C clobber on HUD sprite-table state).
-
-Two earlier attempts to fix these (relocating the renderer with
-``$8C`` save/restore, and writing a custom converter using only $80/$86
-with save/restore) introduced more visible accumulating tile and
-sprite artifacts during menu transitions and spell casting. Without
-bsnes runtime tracing we can't pinpoint the exact mechanism, so the
-in-place trampoline approach is the best static-analysis option for
-now. Followup: instrument with bsnes to trace what reads
-$8C / $86 / $80 at the moment of artifact appearance.
+Static analysis cannot pinpoint the mechanism. A fresh attempt should
+start by instrumenting bsnes-plus with SA-1 read-watchpoints on the
+relevant zero-page bytes ($8C, $86, $80) and OAM mirror writes to
+identify exactly what gets corrupted at the moment of artifact
+appearance. Until then, the in-battle FP display stays vanilla 2-digit
+and clips values >99 — the underlying max-FP storage is still raised by
+the two cap-handler patches above, so gameplay (cast checks, FP
+deduction) operates on the real value.
 """
 
 
@@ -110,40 +91,4 @@ def get_patch() -> dict[int, bytes]:
 
         # X-menu item-submenu Flowers display ($C3:2CC0).
         0x32CC1: bytes([0x90]),
-
-        # Trampoline at $C1:9564 (free space, 2049 bytes available):
-        #   AND #$00FF              -- mask high byte from m16 LDA
-        #   JMP $5D6A               -- tail-call HP 3-digit converter
-        0x19564: bytes([0x29, 0xFF, 0x00, 0x4C, 0x6A, 0x5D]),
-
-        # Renderer at $C1:62F6 (in-place 26-byte replacement):
-        #   REP #$30                -- m16/x16
-        #   STZ $8C                 -- partition offset = 0; $5D6A does
-        #                              STA $7000,X with X = Y+$8C, so
-        #                              $8C must be the offset from $7000
-        #                              (not absolute address).
-        #   LDA $FA0C / LDY #$0028  -- cur FP value, dest offset
-        #   JSR $9564               -- emit 3 cur digits at $7028+
-        #   LDA $FA0D / LDY #$0030  -- max FP value, dest offset
-        #   JSR $9564               -- emit 3 max digits at $7030+
-        #   NOP x4                  -- pad to 26 bytes; falls through to
-        #                              $C1:6310 (F-tile animator).
-        0x162F6: bytes([
-            0xC2, 0x30,
-            0x64, 0x8C,
-            0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, 0x64, 0x95,
-            0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0x64, 0x95,
-            0xEA, 0xEA, 0xEA, 0xEA,
-        ]),
-
-        # Static MVN tilemap source at $C1:639D (22 bytes, same length).
-        # Move '/' from byte 16 ($7030) to byte 14 ($702E) and zero the
-        # digit slots so they idle as blanks before the renderer runs:
-        #   $7020 F | $7022 P | $7024-$702C blanks | $702E '/'
-        #   $7030-$7034 blanks
-        0x1639D: bytes([
-            0x14, 0x24, 0x15, 0x24, 0x00, 0x24, 0x00, 0x24,
-            0x00, 0x24, 0x00, 0x24, 0x00, 0x24, 0x16, 0x24,
-            0x00, 0x24, 0x00, 0x24, 0x00, 0x24,
-        ]),
     }
