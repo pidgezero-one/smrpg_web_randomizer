@@ -110,7 +110,7 @@ unusual. The known artifacts to look for:
 """
 
 # Edit this and rebuild between tests. Set back to "OFF" when done.
-_BATTLE_BISECT: str = "F"  # "OFF" | "A" | "B" | "C" | "D" | "E" | "F" | "G"
+_BATTLE_BISECT: str = "H"  # "OFF" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H"
 
 
 def _battle_bisect_patches() -> dict[int, bytes]:
@@ -229,9 +229,70 @@ def _battle_bisect_patches() -> dict[int, bytes]:
             0x60,
         ])}
 
+    if _BATTLE_BISECT == "H":
+        # REAL 3-digit implementation. Rewrites the renderer at $C1:62F6
+        # to call a converter at $C1:C6C0 that reuses the proven HP
+        # 3-digit converter ($C1:5D6A) with stack save/restore of BOTH
+        # $8C (dialog cursor / partition base) and $8E (dialog scratch /
+        # converter value-stash). Moves the slash to $702E via the
+        # static template so the layout is:
+        #   $7020 F | $7022 P | $7024-$7026 spell cost (untouched)
+        #   $7028-$702C cur FP (3 digits) | $702E '/' | $7030-$7034 max FP
+        return {
+            # Static MVN template: slash $7030 -> $702E, digit slots blank.
+            0x1639D: bytes([
+                0x14, 0x24, 0x15, 0x24, 0x00, 0x24, 0x00, 0x24,
+                0x00, 0x24, 0x00, 0x24, 0x00, 0x24, 0x16, 0x24,
+                0x00, 0x24, 0x00, 0x24, 0x00, 0x24,
+            ]),
+            # Renderer rewrite at $C1:62F6 (26 bytes). The HP converter
+            # writes the 3 tiles itself, so no STX/STA here.
+            #   REP #$30
+            #   LDA $FA0C / LDY #$0028 / JSR $C6C0   ; cur -> $7028+
+            #   LDA $FA0D / LDY #$0030 / JSR $C6C0   ; max -> $7030+
+            #   NOP x6 (pad; falls through to $C1:6310 F-tile animator)
+            0x162F6: bytes([
+                0xC2, 0x30,
+                0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, tramp_lo, tramp_hi,
+                0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, tramp_lo, tramp_hi,
+                0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA,
+            ]),
+            # Converter trampoline at $C1:C6C0 (29 bytes). Stack diagram
+            # (m16 pushes 2 bytes; after the 3 saves $1,S=$8E, $3,S=$8C,
+            # $5,S=A_FP):
+            #   48        PHA          ; save A_FP
+            #   A5 8C 48  LDA $8C/PHA  ; save $8C:$8D
+            #   A5 8E 48  LDA $8E/PHA  ; save $8E:$8F
+            #   64 8C     STZ $8C      ; partition base = 0 for $5D6A
+            #   A3 05     LDA $5,S     ; peek A_FP
+            #   29 FF 00  AND #$00FF   ; mask high byte (Y still = offset)
+            #   20 6A 5D  JSR $5D6A    ; HP 3-digit conv writes 3 tiles
+            #   A3 01     LDA $1,S     ; peek $8E_old
+            #   85 8E     STA $8E      ; restore $8E:$8F
+            #   A3 03     LDA $3,S     ; peek $8C_old
+            #   85 8C     STA $8C      ; restore $8C:$8D
+            #   7A 7A 7A  PLY x3       ; drain $8E, $8C, A_FP
+            #   60        RTS
+            tramp_rom: bytes([
+                0x48,
+                0xA5, 0x8C, 0x48,
+                0xA5, 0x8E, 0x48,
+                0x64, 0x8C,
+                0xA3, 0x05,
+                0x29, 0xFF, 0x00,
+                0x20, 0x6A, 0x5D,
+                0xA3, 0x01,
+                0x85, 0x8E,
+                0xA3, 0x03,
+                0x85, 0x8C,
+                0x7A, 0x7A, 0x7A,
+                0x60,
+            ]),
+        }
+
     raise ValueError(
         f"Unknown _BATTLE_BISECT value {_BATTLE_BISECT!r}; "
-        f"expected one of 'OFF', 'A', 'B', 'C', 'D', 'E', 'F', 'G'."
+        f"expected one of 'OFF', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'."
     )
 
 
