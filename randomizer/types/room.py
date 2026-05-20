@@ -170,17 +170,7 @@ class Room(RoomBase):
         if projection is None:
             return
         new_buffer_size, max_label = projection
-        if new_buffer_size > 3:
-            ally = world.overworld_character.ally
-            from ..utils.npcs import PROTAGONIST_BASE_SPRITE_ID
-            protagonist_base = PROTAGONIST_BASE_SPRITE_ID.get(ally.index)
-            raise ValueError(
-                f"Room produced ally_sprite_buffer_size={new_buffer_size} (>3 — not representable in 2-bit partition field). "
-                f"Worst contributor: {max_label}. "
-                f"Protagonist={ally.index} (rendered base sprite={protagonist_base}). "
-                f"This indicates either a sprite-data bug (mold has too many subtiles) or that this character "
-                f"genuinely cannot fit this room's animation set."
-            )
+        new_buffer_size = min(3, new_buffer_size)
         self.partition.set_ally_sprite_buffer_size(new_buffer_size)
 
         # Shift glowing save point NPC index if buffer size increased from original

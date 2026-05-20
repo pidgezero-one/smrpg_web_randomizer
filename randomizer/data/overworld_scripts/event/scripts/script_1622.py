@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+    JmpIfObjectInSpecificLevel(NPC_7, R108_MOLEVILLE_OUTSIDE, ["EVENT_1622_ret_12"]),
 	Set7000ToTappedButton(),
 	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_1622_ret_12"]),
 	Set7000ToPressedButton(),

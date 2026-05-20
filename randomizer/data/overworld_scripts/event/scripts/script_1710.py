@@ -40,6 +40,19 @@ script = EventScript([
 	SetSyncActionScript(NPC_3, A0467_BANDITS_WAY_5_TROOPA_CHASE),
 	SetSyncActionScript(NPC_4, A0467_BANDITS_WAY_5_TROOPA_CHASE),
 	JmpToSubroutine(["EVENT_1709_action_queue_47"]),
+
+    JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_3, ["EVENT_1710_protagonist_id"]),
+    
+    SummonObjectToCurrentLevelAtMariosCoords(NPC_10),
+    ActionQueueAsync(target=NPC_10, subscript=[
+        A_SetSolidityBits(cant_pass_walls=True),
+        A_SetAllSpeeds(FAST),
+        A_Walk1StepSouthwest(),
+        A_WalkNorthwestSteps(2),
+        A_Walk1StepNortheast(),
+        A_FaceSoutheast()
+    ]),
+
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_FaceNorthwest(),
 		A_Pause(4),
@@ -48,7 +61,18 @@ script = EventScript([
 		A_AddZCoord1Step(),
 		A_DecZCoord1Step(),
 		A_EndLoop()
-	]),
+	], identifier="EVENT_1710_protagonist_id"),
+    
+    JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_3, ["1710_after_ally_selection_2"]),
+    ActionQueueAsync(target=NPC_10, subscript=[
+        A_PlaySound(SO020_LIGHTING_BOLT, channel=4),
+        A_JumpToHeight(64, silent=True),
+        A_SetSpriteSequence(index=4, is_sequence=True, looping=True, mirror_sprite=True, identifier="EVENT_1710_mario_mad_slot1"),
+        A_Pause(40, identifier="EVENT_1710_pause_slot1"),
+        A_ResetProperties(),
+        A_FaceSoutheast(),
+    ], identifier="EVENT_1710_mario_mad_slot1_aq"),
+
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_SetAllSpeeds(NORMAL),
 		A_StartLoopNTimes(3),
@@ -61,7 +85,7 @@ script = EventScript([
 		A_Pause(5),
 		A_FaceNorthwest(),
 		A_EndLoop()
-	]),
+	], identifier="1710_after_ally_selection_2"),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_Walk1StepSouthwest(),
 		A_WalkSouthwestPixels(8),
@@ -92,6 +116,7 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_8, R206_BANDITS_WAY_AREA_05),
 	RestoreAllHP(),
 	RestoreAllFP(),
+    RemoveObjectFromCurrentLevel(NPC_10),
 	FadeInFromBlack(sync=False),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),

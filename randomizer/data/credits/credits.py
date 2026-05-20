@@ -523,9 +523,14 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "SMBAI            SEANCASS")
-    credits.add_credit(0x80, 0x40, 0x81, "ALANIM            EGGTALK")
-    credits.add_credit(0x80, 0x00, 0xC2, "MINAMIYO           NIMBUS")
+    credits.add_credit(0x80, 0x80, 0xC0, "SMBAI")
+    credits.add_credit(0x80, 0x40, 0x81, "SEANCASS")
+    credits.add_credit(0x80, 0x00, 0xC2, "ALANIM")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+    
+    credits.begin_credits()
+    credits.add_credit(0x80, 0xC0, 0xC0, "MINAMIYO          EGGTALK")
+    credits.add_credit(0x80, 0x80, 0x81, "NIMBUS      PIDGEZERO_ONE")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # Show palette credits if any non-default palette is selected

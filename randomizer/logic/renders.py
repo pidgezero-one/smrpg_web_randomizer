@@ -232,6 +232,21 @@ def render_bandits_way_boss(world: GameWorld, prize: BossFightPrize) -> None:
 # =============================================================================
 
 
+def render_mushroom_way_character(world: GameWorld, prize: CharacterPrize | None) -> None:
+    if prize is None:
+        world.event_scripts.delete_subscript_command_by_identifier(
+            "EVENT_1710_mario_mad_slot1_aq", "EVENT_1710_mario_mad_slot1"
+        )
+    else:
+        ally_index = prize.ally.index
+        if ally_index == 0:
+            cmd = world.event_scripts.get_subscript_command_by_identifier(
+                "EVENT_1710_mario_mad_slot1_aq", "EVENT_1710_mario_mad_slot1", A_SetSpriteSequence
+            )
+            cmd.set_index(3)
+            cmd.set_sprite_offset(3)
+    
+
 def render_forest_maze_character_empty(world: GameWorld) -> None:
     """Remove character sprite animations when Toad substitute remains in place."""
     deletions = [

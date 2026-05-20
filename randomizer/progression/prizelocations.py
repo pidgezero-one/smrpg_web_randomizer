@@ -158,6 +158,7 @@ from ..logic.renders import (
     render_marrymore_boss_henchmen,
     render_marrymore_character_empty,
     render_marrymore_character,
+    render_mushroom_way_character,
     render_seaside_beach_boss,
     render_ship_password_boss,
     render_ship_final_boss,
@@ -869,6 +870,7 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
         AllyNPCSub(R203_MUSHROOM_WAY_AREA_01, NPC_8),
         AllyNPCSub(R204_MUSHROOM_WAY_AREA_02, NPC_7),
         AllyNPCSub(R205_MUSHROOM_WAY_AREA_03, NPC_5),
+        AllyNPCSub(R206_BANDITS_WAY_AREA_05, NPC_10),
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 11),
@@ -892,6 +894,11 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
         if isinstance(prize, CharacterPrize):
             prize.set_starting_level(2)
         return super().set_prize(prize)
+
+    def render(self, world: GameWorld):
+        op = super().render(world)
+        render_mushroom_way_character(world, self.prize)
+        return op
 
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 

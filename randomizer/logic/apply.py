@@ -987,6 +987,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_forward_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_FORWARD)[1])
         world.event_scripts.get_subscript_command_by_identifier("tadpole_thinking_aq", "tadpole_thinking", A_SetSpriteSequence).set_sprite_offset(ally._sprites_primary.get(SpriteAnimationState.THINKING)[0])
         world.event_scripts.get_subscript_command_by_identifier("tadpole_thinking_aq", "tadpole_thinking", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.THINKING)[1])
+        # bandits way anim — `ally.index` is sprite/area-object order
+        # (Geno = 3), but Set7000ToIDOfMemberInSlot reports the party roster
+        # in menu order (Geno = 2). Convert so the script's protagonist check
+        # matches; otherwise a non-Mario protagonist gets cloned.
         # ending_protag_lean_back_1/2 target the Mario NPC (NPC_19) in R496, which
         # always uses sprite 0 (Mario) regardless of starter character. The script
         # source already hardcodes the correct mold (index=23, sprite_offset=2),

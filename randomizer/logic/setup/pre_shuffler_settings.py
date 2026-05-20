@@ -552,8 +552,8 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         )
         bdoor_e = world.event_scripts.get_script_by_id(E1928_BALCONY_IS_LOCKED)
         bdoor_e.set_contents([
-            *bdoor_e.contents,
             RunEventAsSubroutine(E2191_MARIO_DOLL_ERROR_MSG),
+            *bdoor_e.contents,
         ])
         _curtain_npc = world.get_room(
             R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM

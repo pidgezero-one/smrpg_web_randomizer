@@ -971,7 +971,7 @@ P115_HAMMER_CHEST = ChestPacket(
 )
 P116_AP_ITEM = ChestPacket(
     packet_id=116,
-    sprite_id=SPR0799_ARCHIPELAGO,
+    sprite_id=SPR0248_ARCHIPELAGO,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
 )
 P117_UNUSED = None
