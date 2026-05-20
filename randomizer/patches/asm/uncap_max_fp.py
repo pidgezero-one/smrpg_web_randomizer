@@ -22,302 +22,133 @@ Multiple sites participate:
    ($44B2 -> $44AA) to bring the digits inside the menu box.
 
    New layout: cur h/t/o at $44AA/$44AC/$44AE, slash at $44B0, max
-   h/t/o at $44B2/$44B4/$44B6. Writes hit the BG2 tilemap mirror; the
-   "Flowers" label sits on a different BG layer so left-shifting past
-   the visual label boundary does not corrupt it.
+   h/t/o at $44B2/$44B4/$44B6.
 
 4. The X-menu item-submenu Flowers display ($C3:2CC0) — third call site
    that targets the same shared inner subroutine ($C3:35FF), so the JSR
    target swaps above already make this site emit 3-digit. Shift the
    LDX dest pointer 2 tiles left ($4694 -> $4690) so max-ones lands at
-   vanilla $469C (touching the box's right border, with no gap). A
-   4-tile shift over-corrected; a 2-tile shift only clips the 's' when
-   cur < 100 (the leading blank lands on it) but keeps the digits flush
-   right.
+   vanilla $469C (flush with the description box's right border).
 
-Battle spell-menu FP display — DEFERRED, bisect harness below
---------------------------------------------------------------
+5. The battle spell-menu FP header (bank $C1) widens to 3 digits.
 
-Widening the in-battle spell-menu FP header ($C1:62F6) from 2-digit to
-3-digit was attempted three different ways and each introduced visible
-artifacts that the user considers a crash liability. We're restarting
-the investigation by bisecting which patch contributes which artifact.
+   The vanilla renderer at $C1:62F6 (26 bytes) printed 2-digit cur/max
+   via two ``JSR $C1:6378`` calls, then ``STX``/``STA`` to the tilemap
+   mirror at $702C/$702E (cur) and $7032/$7034 (max), with a static
+   slash at $7030 supplied by the MVN template at $C1:639D. The 11-tile
+   window $7020-$7034 is shared with the spell list (which begins at
+   $7040) and the per-spell FP cost renderer (which writes $7024/$7026
+   each frame), so we cannot widen past $7034.
 
-Set ``_BATTLE_BISECT`` to one of:
+   We rewrite the renderer in place to call a small converter in free
+   ROM at $C1:C6C0, which reuses the proven battle HP 3-digit converter
+   at $C1:5D6A (it writes 3 tiles itself via ``STA $7000,X`` with X =
+   offset + $8C, applying leading-zero suppression and the $2400 tile
+   attribute). The converter:
 
-* ``"OFF"`` — no battle FP patches (production state).
-* ``"A"`` — apply ONLY the static MVN template change at $C1:639D
-  (slash $7030 -> $702E, digit slots zeroed). Vanilla renderer
-  otherwise. Display: cur-ones overwrites my slash so visually the
-  slash is gone; this is fine for artifact isolation. Tests whether the
-  template byte change alone causes any artifacts.
-* ``"B"`` — apply ONLY the renderer rewrite at $C1:62F6 + trampoline at
-  $C1:9564 (STZ $8C + HP 3-digit converter path). Vanilla template
-  otherwise. Display: 3-digit cur/max but max-h overwrites the static
-  slash at $7030 so no slash visible. Tests whether the renderer
-  changes (combination of STZ $8C and the HP converter path) cause
-  artifacts.
-* ``"C"`` — apply ONLY a minimal ``STZ $8C`` injection (vanilla 2-digit
-  converter is still called, no template change, no HP converter
-  reuse). Patches the two JSR target operands in the renderer to point
-  at a trampoline that does ``STZ $8C`` then tail-calls vanilla
-  ``$6378``. Display: identical to vanilla. Tests whether STZ $8C alone
-  is the cause.
-* ``"D"`` — apply the same trampoline redirection as Test C, but the
-  trampoline now SAVES and RESTORES ``$8C``/``$8D``. Display: identical
-  to vanilla. Tests whether properly preserving $8C eliminates the
-  artifacts that Test C exposed.
-* ``"E"`` — same as Test D but bracketed with ``PHP / SEI`` ...
-  ``PLP``. Blocks IRQs during the brief clobber window. Tests whether
-  an IRQ-driven reader of $8C (HBlank handler, SA-1 timer) is what
-  observes the zeroed value.
-* ``"F"`` — trampoline does NOTHING to $8C; it just tail-calls vanilla
-  ``$6378`` then returns. Sanity check that the JSR redirection
-  mechanism itself produces no artifacts. Should be visually clean (and
-  identical to vanilla); if it is dirty, the trampoline location or the
-  indirection has a side effect we haven't traced.
-* ``"G"`` — same as Test D (save/restore $8C across the converter
-  call), but uses the STACK as scratch instead of zp $4D. Earlier
-  searches found $4D is actually used heavily in banks $C0/$C4-$C9 —
-  not free at all from the whole-ROM perspective, so Test D's
-  save/restore was corrupting whatever lived there. Test G stores
-  $8C:$8D on the stack with PHA, peeks the saved FP via stack-relative
-  LDA $3,S, then restores $8C:$8D before returning.
+   * saves and restores BOTH $8C (the dialog-text tilemap cursor used
+     by $C1:25D2 / $C1:2610, which doubles as the partition base $5D6A
+     reads) and $8E (dialog scratch / $5D6A's value-stash) on the
+     STACK, so no zero-page state leaks past the call; and
+   * ``STZ $8C`` so the partition base is 0 and Y is treated as a plain
+     offset from $7000.
 
-Comparison matrix:
+   New tilemap layout in the existing 11-tile $7020-$7034 window::
 
-==========  =============================  ============================
-Result      Test A    Test B    Test C     Interpretation
-==========  =============================  ============================
-all clean   clean     clean     clean      Can't reproduce; investigate further
-A only      bad       clean     clean      Template change is the cause
-B only      clean     bad       clean      Renderer/HP-converter path is the cause
-B and C     clean     bad       bad        STZ $8C clobber is the cause
-A and B     bad       bad       clean      Both template AND renderer changes contribute (not STZ $8C)
-all bad     bad       bad       bad        All changes share root cause (likely $8C or timing)
-==========  =============================  ============================
+       $7020 F | $7022 P | $7024-$7026 spell cost (untouched)
+       $7028-$702C cur FP (3 digits) | $702E '/' (static) |
+       $7030-$7034 max FP (3 digits)
 
-For each test, rebuild the ROM, enter battle, open the special menu,
-transition between menus, start casting a spell. Screenshot anything
-unusual. The known artifacts to look for:
+   The static MVN template at $C1:639D moves the slash from $7030 to
+   $702E and blanks the digit slots. Highest write is $7034 (vanilla
+   parity, no DMA changes).
 
-* Small tile fragments at the edges of the battlefield (especially
-  upper-left and right sides)
-* A fragmented A-button HUD sprite during action selection
-* Garbled tile row directly below the spell list
-* "Hold Y for ..." dialog text truncated mid-text
-* Unexpected pattern at the right edge of the dialog frame
+   CRITICAL — trampoline location: the converter MUST live at $C1:C6C0
+   (or another genuinely-free region such as $C1:9570-$C1:9D50). The
+   region $C1:9564-$C1:956F is reserved in the patched ROM and the
+   chest-packet allocator patch can land in $C1:95xx on some seeds.
+   Placing the converter at $C1:9564 corrupted battle/HUD state and
+   produced sprite/tile/palette artifacts even when the converter body
+   was a functional no-op — bisecting that down (Test A clean with no
+   trampoline; Tests B-G all dirty sharing the $C1:9564 location; Test
+   F a no-op trampoline still dirty) is what pinned the location as the
+   root cause. The per-spell FP cost renderer at $C1:635B is NOT
+   modified — spell costs stay capped at 99.
 """
-
-# Edit this and rebuild between tests. Set back to "OFF" when done.
-_BATTLE_BISECT: str = "H"  # "OFF" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H"
-
-
-def _battle_bisect_patches() -> dict[int, bytes]:
-    """Return the battle FP patches selected by ``_BATTLE_BISECT``.
-
-    The trampoline lives in confirmed-free ROM at ``$C1:C6C0`` (ROM offset
-    0x1C6C0; ~2.3 KB of zeros in the patched ROM). Earlier tests used
-    ``$C1:9564``, but that region is NOT safe in the patched ROM (the user
-    flagged $C1:9564-$C1:956F as reserved; the free run only starts at
-    $C1:9570, and the chest-packet allocator patch can land in the $C1:95xx
-    region on some seeds). Every dirty bisect result (B/C/D/E/F/G) shared the
-    $C1:9564 trampoline location, while Test A (no trampoline) was clean --
-    strong evidence the location itself was the problem.
-    """
-    if _BATTLE_BISECT == "OFF":
-        return {}
-
-    if _BATTLE_BISECT == "A":
-        # Static MVN tilemap source at $C1:639D (22 bytes, same length).
-        # Slash moves byte 16 ($7030) -> byte 14 ($702E); digit slots
-        # zeroed so they idle as blanks. Vanilla renderer otherwise.
-        return {
-            0x1639D: bytes([
-                0x14, 0x24, 0x15, 0x24, 0x00, 0x24, 0x00, 0x24,
-                0x00, 0x24, 0x00, 0x24, 0x00, 0x24, 0x16, 0x24,
-                0x00, 0x24, 0x00, 0x24, 0x00, 0x24,
-            ]),
-        }
-
-    # Trampoline location (relocated from $C1:9564 to $C1:C6C0).
-    tramp_rom = 0x1C6C0
-    tramp_lo, tramp_hi = 0xC0, 0xC6  # JSR $C6C0 operand bytes
-
-    if _BATTLE_BISECT == "B":
-        # Renderer rewrite at $C1:62F6 + trampoline. No template change
-        # (max-h overwrites the static slash at $7030; fine for artifact
-        # hunting). Trampoline: AND #$00FF / JMP $5D6A (HP 3-digit conv).
-        return {
-            tramp_rom: bytes([0x29, 0xFF, 0x00, 0x4C, 0x6A, 0x5D]),
-            0x162F6: bytes([
-                0xC2, 0x30,
-                0x64, 0x8C,
-                0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, tramp_lo, tramp_hi,
-                0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, tramp_lo, tramp_hi,
-                0xEA, 0xEA, 0xEA, 0xEA,
-            ]),
-        }
-
-    if _BATTLE_BISECT in ("C", "D", "E", "F", "G"):
-        # All redirect the renderer's two JSR $6378 calls to the trampoline.
-        # Display identical to vanilla (2-digit, static slash at $7030); only
-        # the trampoline body differs.
-        #   $C1:62FB  20 78 63  JSR $6378   ROM 0x162FB/FC/FD
-        #   $C1:6307  20 78 63  JSR $6378   ROM 0x16307/08/09
-        jsr_redirect: dict[int, bytes] = {
-            0x162FC: bytes([tramp_lo]),
-            0x162FD: bytes([tramp_hi]),
-            0x16308: bytes([tramp_lo]),
-            0x16309: bytes([tramp_hi]),
-        }
-        if _BATTLE_BISECT == "C":
-            # STZ $8C clobber only, no save/restore.
-            return {**jsr_redirect, tramp_rom: bytes([
-                0x64, 0x8C, 0x20, 0x78, 0x63, 0x60,
-            ])}
-        if _BATTLE_BISECT == "D":
-            # Save $8C via zp $4D (WARNING: $4D is NOT free ROM-wide; kept
-            # only for completeness/comparison), STZ, JSR, restore.
-            return {**jsr_redirect, tramp_rom: bytes([
-                0x48, 0xA5, 0x8C, 0x85, 0x4D, 0x64, 0x8C, 0x68,
-                0x20, 0x78, 0x63,
-                0x48, 0xA5, 0x4D, 0x85, 0x8C, 0x68, 0x60,
-            ])}
-        if _BATTLE_BISECT == "E":
-            # Test D plus PHP/SEI ... PLP to block IRQs (known to break
-            # rendering -- kept for comparison only).
-            return {**jsr_redirect, tramp_rom: bytes([
-                0x08, 0x78,
-                0x48, 0xA5, 0x8C, 0x85, 0x4D, 0x64, 0x8C, 0x68,
-                0x20, 0x78, 0x63,
-                0x48, 0xA5, 0x4D, 0x85, 0x8C, 0x68,
-                0x28, 0x60,
-            ])}
-        if _BATTLE_BISECT == "F":
-            # No-op trampoline: just JSR $6378 / RTS. Functionally identical
-            # to vanilla. With the trampoline at the SAFE $C1:C6C0 location,
-            # this should now be CLEAN (it was dirty at $C1:9564).
-            return {**jsr_redirect, tramp_rom: bytes([
-                0x20, 0x78, 0x63, 0x60,
-            ])}
-        # Test G: stack-only $8C save/restore (no zp scratch).
-        #   48        PHA          ; save A_FP
-        #   A5 8C     LDA $8C      ; A = $8C:$8D
-        #   48        PHA          ; save $8C_old
-        #   64 8C     STZ $8C      ; clobber
-        #   A3 03     LDA $3,S     ; peek A_FP
-        #   20 78 63  JSR $6378    ; convert (A=ones, X=tens)
-        #   48        PHA          ; save A_conv
-        #   A3 03     LDA $3,S     ; peek $8C_old
-        #   85 8C     STA $8C      ; restore
-        #   68        PLA          ; A = A_conv
-        #   7A 7A     PLY PLY      ; drain saved bytes
-        #   60        RTS
-        return {**jsr_redirect, tramp_rom: bytes([
-            0x48,
-            0xA5, 0x8C,
-            0x48,
-            0x64, 0x8C,
-            0xA3, 0x03,
-            0x20, 0x78, 0x63,
-            0x48,
-            0xA3, 0x03,
-            0x85, 0x8C,
-            0x68,
-            0x7A, 0x7A,
-            0x60,
-        ])}
-
-    if _BATTLE_BISECT == "H":
-        # REAL 3-digit implementation. Rewrites the renderer at $C1:62F6
-        # to call a converter at $C1:C6C0 that reuses the proven HP
-        # 3-digit converter ($C1:5D6A) with stack save/restore of BOTH
-        # $8C (dialog cursor / partition base) and $8E (dialog scratch /
-        # converter value-stash). Moves the slash to $702E via the
-        # static template so the layout is:
-        #   $7020 F | $7022 P | $7024-$7026 spell cost (untouched)
-        #   $7028-$702C cur FP (3 digits) | $702E '/' | $7030-$7034 max FP
-        return {
-            # Static MVN template: slash $7030 -> $702E, digit slots blank.
-            0x1639D: bytes([
-                0x14, 0x24, 0x15, 0x24, 0x00, 0x24, 0x00, 0x24,
-                0x00, 0x24, 0x00, 0x24, 0x00, 0x24, 0x16, 0x24,
-                0x00, 0x24, 0x00, 0x24, 0x00, 0x24,
-            ]),
-            # Renderer rewrite at $C1:62F6 (26 bytes). The HP converter
-            # writes the 3 tiles itself, so no STX/STA here.
-            #   REP #$30
-            #   LDA $FA0C / LDY #$0028 / JSR $C6C0   ; cur -> $7028+
-            #   LDA $FA0D / LDY #$0030 / JSR $C6C0   ; max -> $7030+
-            #   NOP x6 (pad; falls through to $C1:6310 F-tile animator)
-            0x162F6: bytes([
-                0xC2, 0x30,
-                0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, tramp_lo, tramp_hi,
-                0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, tramp_lo, tramp_hi,
-                0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA,
-            ]),
-            # Converter trampoline at $C1:C6C0 (29 bytes). Stack diagram
-            # (m16 pushes 2 bytes; after the 3 saves $1,S=$8E, $3,S=$8C,
-            # $5,S=A_FP):
-            #   48        PHA          ; save A_FP
-            #   A5 8C 48  LDA $8C/PHA  ; save $8C:$8D
-            #   A5 8E 48  LDA $8E/PHA  ; save $8E:$8F
-            #   64 8C     STZ $8C      ; partition base = 0 for $5D6A
-            #   A3 05     LDA $5,S     ; peek A_FP
-            #   29 FF 00  AND #$00FF   ; mask high byte (Y still = offset)
-            #   20 6A 5D  JSR $5D6A    ; HP 3-digit conv writes 3 tiles
-            #   A3 01     LDA $1,S     ; peek $8E_old
-            #   85 8E     STA $8E      ; restore $8E:$8F
-            #   A3 03     LDA $3,S     ; peek $8C_old
-            #   85 8C     STA $8C      ; restore $8C:$8D
-            #   7A 7A 7A  PLY x3       ; drain $8E, $8C, A_FP
-            #   60        RTS
-            tramp_rom: bytes([
-                0x48,
-                0xA5, 0x8C, 0x48,
-                0xA5, 0x8E, 0x48,
-                0x64, 0x8C,
-                0xA3, 0x05,
-                0x29, 0xFF, 0x00,
-                0x20, 0x6A, 0x5D,
-                0xA3, 0x01,
-                0x85, 0x8E,
-                0xA3, 0x03,
-                0x85, 0x8C,
-                0x7A, 0x7A, 0x7A,
-                0x60,
-            ]),
-        }
-
-    raise ValueError(
-        f"Unknown _BATTLE_BISECT value {_BATTLE_BISECT!r}; "
-        f"expected one of 'OFF', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'."
-    )
 
 
 def get_patch() -> dict[int, bytes]:
-    patches: dict[int, bytes] = {
+    return {
+        # --- FP caps (storage) ---
         # Add7000ToMaxFP handler ($C0:C4CC): replace 99-cap with 255-cap.
         # BCS catches 8-bit ADC overflow so a wrap cannot regress max FP.
         0xC4CC: bytes([0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF]),
         # Battle bump-max-FP handler ($C2:C14F): same fix, identical bytes.
         0x2C14F: bytes([0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF]),
 
-        # X-menu per-character FP display ($C3:1621-$C3:163E):
-        # switch 2-digit print ($C3:78D2) -> 3-digit print ($C3:78EC)
-        # and shift the LDX dest pointer 2 tiles left ($4630 -> $462C).
+        # --- X-menu per-character FP display ($C3:1621-$C3:163E) ---
+        # 2-digit print ($C3:78D2) -> 3-digit ($C3:78EC); LDX $4630 -> $462C.
         0x31622: bytes([0x2C]),
         0x3162F: bytes([0xEC]),
         0x3163F: bytes([0xEC]),
 
-        # X-menu party-total Flowers line at $C3:35FF.
+        # --- X-menu party-total Flowers line ($C3:35FF) ---
         0x335EB: bytes([0xAA]),
         0x33606: bytes([0xEC]),
         0x33616: bytes([0xEC]),
 
-        # X-menu item-submenu Flowers display ($C3:2CC0).
+        # --- X-menu item-submenu Flowers display ($C3:2CC0) ---
         0x32CC1: bytes([0x90]),
+
+        # --- Battle spell-menu FP header: 3-digit cur/max ---
+        # Static MVN template ($C1:639D, 22 bytes): slash $7030 -> $702E,
+        # digit slots blank.
+        #   $7020 F | $7022 P | $7024-$702C blanks | $702E '/' |
+        #   $7030-$7034 blanks
+        0x1639D: bytes([
+            0x14, 0x24, 0x15, 0x24, 0x00, 0x24, 0x00, 0x24,
+            0x00, 0x24, 0x00, 0x24, 0x00, 0x24, 0x16, 0x24,
+            0x00, 0x24, 0x00, 0x24, 0x00, 0x24,
+        ]),
+        # Renderer rewrite ($C1:62F6, 26 bytes). The converter writes the
+        # 3 tiles itself, so no STX/STA here.
+        #   REP #$30
+        #   LDA $FA0C / LDY #$0028 / JSR $C6C0   ; cur FP -> $7028+
+        #   LDA $FA0D / LDY #$0030 / JSR $C6C0   ; max FP -> $7030+
+        #   NOP x6 (pad; falls through to $C1:6310 F-tile animator)
+        0x162F6: bytes([
+            0xC2, 0x30,
+            0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, 0xC0, 0xC6,
+            0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0xC0, 0xC6,
+            0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA,
+        ]),
+        # Converter at $C1:C6C0 (29 bytes; free ROM). Reuses HP 3-digit
+        # converter $C1:5D6A with stack save/restore of $8C and $8E.
+        # Stack after the 3 saves: $1,S=$8E, $3,S=$8C, $5,S=A_FP.
+        #   PHA                 ; save A_FP
+        #   LDA $8C / PHA       ; save $8C:$8D (dialog cursor / part. base)
+        #   LDA $8E / PHA       ; save $8E:$8F (dialog scratch / value-stash)
+        #   STZ $8C             ; partition base = 0 for $5D6A
+        #   LDA $5,S            ; peek A_FP
+        #   AND #$00FF          ; mask high byte (Y still = offset)
+        #   JSR $5D6A           ; HP 3-digit converter writes 3 tiles
+        #   LDA $1,S / STA $8E  ; restore $8E:$8F
+        #   LDA $3,S / STA $8C  ; restore $8C:$8D
+        #   PLY x3              ; drain $8E, $8C, A_FP
+        #   RTS
+        0x1C6C0: bytes([
+            0x48,
+            0xA5, 0x8C, 0x48,
+            0xA5, 0x8E, 0x48,
+            0x64, 0x8C,
+            0xA3, 0x05,
+            0x29, 0xFF, 0x00,
+            0x20, 0x6A, 0x5D,
+            0xA3, 0x01,
+            0x85, 0x8E,
+            0xA3, 0x03,
+            0x85, 0x8C,
+            0x7A, 0x7A, 0x7A,
+            0x60,
+        ]),
     }
-    patches.update(_battle_bisect_patches())
-    return patches
