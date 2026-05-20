@@ -76,6 +76,13 @@ Set ``_BATTLE_BISECT`` to one of:
   mechanism itself produces no artifacts. Should be visually clean (and
   identical to vanilla); if it is dirty, the trampoline location or the
   indirection has a side effect we haven't traced.
+* ``"G"`` — same as Test D (save/restore $8C across the converter
+  call), but uses the STACK as scratch instead of zp $4D. Earlier
+  searches found $4D is actually used heavily in banks $C0/$C4-$C9 —
+  not free at all from the whole-ROM perspective, so Test D's
+  save/restore was corrupting whatever lived there. Test G stores
+  $8C:$8D on the stack with PHA, peeks the saved FP via stack-relative
+  LDA $3,S, then restores $8C:$8D before returning.
 
 Comparison matrix:
 
@@ -103,7 +110,7 @@ unusual. The known artifacts to look for:
 """
 
 # Edit this and rebuild between tests. Set back to "OFF" when done.
-_BATTLE_BISECT: str = "E"  # "OFF" | "A" | "B" | "C" | "D" | "E" | "F"
+_BATTLE_BISECT: str = "G"  # "OFF" | "A" | "B" | "C" | "D" | "E" | "F" | "G"
 
 
 def _battle_bisect_patches() -> dict[int, bytes]:
@@ -143,7 +150,7 @@ def _battle_bisect_patches() -> dict[int, bytes]:
             ]),
         }
 
-    if _BATTLE_BISECT in ("C", "D", "E", "F"):
+    if _BATTLE_BISECT in ("C", "D", "E", "F", "G"):
         # All of C/D/E/F redirect the two JSR $6378 calls in the vanilla
         # renderer to a trampoline at $C1:9564. Display is identical to
         # vanilla (still 2-digit, still uses static slash at $7030). The
@@ -214,19 +221,69 @@ def _battle_bisect_patches() -> dict[int, bytes]:
                 0x28,
                 0x60,
             ])}
-        # Test F trampoline (4 bytes): no $8C manipulation; just JSR
-        # $6378 then RTS. Sanity check that the trampoline indirection
-        # itself produces no artifacts. Expected to be identical to
-        # vanilla.
-        #   $C1:9564: 20 78 63    JSR $6378
-        #   $C1:9567: 60          RTS
+        if _BATTLE_BISECT == "F":
+            # Test F trampoline (4 bytes): no $8C manipulation; just JSR
+            # $6378 then RTS. Sanity check that the trampoline indirection
+            # itself produces no artifacts. Expected to be identical to
+            # vanilla.
+            #   $C1:9564: 20 78 63    JSR $6378
+            #   $C1:9567: 60          RTS
+            return {**jsr_redirect, 0x19564: bytes([
+                0x20, 0x78, 0x63, 0x60,
+            ])}
+        # Test G trampoline (16 bytes): same as Test D but uses STACK
+        # for the $8C save/restore instead of zp $4D ($4D turns out to
+        # be heavily used in banks $C0/$C4-$C9, so Test D's save was
+        # corrupting other state).
+        #
+        # Stack diagram (m16 pushes are 2 bytes):
+        #   on entry: [..., RA_caller]
+        #   after PHA A_FP:           [..., RA, A_FP]
+        #   after PHA $8C_old:        [..., RA, A_FP, $8C_old]
+        #   after STZ $8C:            (no stack change)
+        #   after LDA $3,S:           A = A_FP (peek from stack)
+        #   after JSR $6378:          A = ones, X = tens (converter return)
+        #   after PHA A_conv:         [..., RA, A_FP, $8C_old, A_conv]
+        #   after LDA $3,S:           A = $8C_old
+        #   after STA $8C:            $8C:$8D restored
+        #   after PLA:                A = A_conv (converter ones tile)
+        #   after PLY x2:             stack drained back to [..., RA]
+        #   after RTS:                returns to renderer with X = tens,
+        #                              A = ones (the values renderer needs)
+        #
+        # 65816 byte sequence:
+        #   48          PHA            ; save A_FP onto stack
+        #   A5 8C       LDA $8C        ; A = $8C:$8D
+        #   48          PHA            ; save $8C_old onto stack
+        #   64 8C       STZ $8C        ; clobber $8C:$8D
+        #   A3 03       LDA $3,S       ; A = A_FP (peek)
+        #   20 78 63    JSR $6378      ; convert (A=ones, X=tens)
+        #   48          PHA            ; save A_conv
+        #   A3 03       LDA $3,S       ; A = $8C_old
+        #   85 8C       STA $8C        ; restore $8C:$8D
+        #   68          PLA            ; A = A_conv (restore converter)
+        #   7A          PLY            ; drain $8C_old (discard via Y)
+        #   7A          PLY            ; drain A_FP (discard via Y)
+        #   60          RTS
         return {**jsr_redirect, 0x19564: bytes([
-            0x20, 0x78, 0x63, 0x60,
+            0x48,
+            0xA5, 0x8C,
+            0x48,
+            0x64, 0x8C,
+            0xA3, 0x03,
+            0x20, 0x78, 0x63,
+            0x48,
+            0xA3, 0x03,
+            0x85, 0x8C,
+            0x68,
+            0x7A,
+            0x7A,
+            0x60,
         ])}
 
     raise ValueError(
         f"Unknown _BATTLE_BISECT value {_BATTLE_BISECT!r}; "
-        f"expected one of 'OFF', 'A', 'B', 'C', 'D', 'E', 'F'."
+        f"expected one of 'OFF', 'A', 'B', 'C', 'D', 'E', 'F', 'G'."
     )
 
 
