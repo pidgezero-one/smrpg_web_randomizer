@@ -6,26 +6,26 @@ Multiple sites participate:
    at ``$C2:C14F`` — replace the 99-cap with a 255-cap. ``BCS`` catches
    8-bit ADC overflow so a wrap cannot regress max FP.
 
-2. The X-menu Special-menu "Flowers" line ($C3:1621-$C3:163E) widens
+2. The X-menu MAIN-menu "Flowers" line ($C3:1621-$C3:163E) widens
    from 2-digit to 3-digit by switching its converter
-   ``$C3:78D2 -> $C3:78EC``. The LDX dest pointer stays at the vanilla
-   $4630 (no shift): with the 3-digit converter the field becomes cur
-   h/t/o at $4630/$4632/$4634, slash at $4636, max h/t/o at
-   $4638/$463A/$463C, which right-aligns the digits with the box border
-   to match the item-submenu display. (A 2-tile-left shift to $462C
-   pushed the field too far left and clipped "Flowers" down to "Flow".)
+   ``$C3:78D2 -> $C3:78EC`` and shifting its destination LDX 2 tiles
+   left ($4630 -> $462C). New layout: cur h/t/o at $462C/$462E/$4630,
+   slash at $4632, max h/t/o at $4634/$4636/$4638 (max-ones at vanilla
+   $4638). All three Flowers renderers use the same vanilla-minus-2-tile
+   shift so they align identically with their box borders.
 
-3. The X-menu party-total "Flowers" line at $C3:35FF: cur and max also
-   use the 2-digit converter at $C3:78D2 (call sites at $C3:3605 and
-   $C3:3615), with the field starting at tilemap slot $44B2. The inner
-   routine has no separate LDX for the slash or max — both ride on $62,
-   which each subroutine advances (2-digit converter += 4, slash writer
-   += 2, 3-digit converter += 6). Switching both converters to 3-digit
-   widens the field, so we shift the LDX start 4 tiles left
-   ($44B2 -> $44AA) to bring the digits inside the menu box.
+3. The X-menu Special-menu "Flowers" line at $C3:35EA: cur and max use
+   the converter via the shared inner routine $C3:35FF (call sites at
+   $C3:3605 and $C3:3615), with the field starting at tilemap slot
+   $44B2. The inner routine has no separate LDX for the slash or max —
+   both ride on $62, which each subroutine advances (2-digit converter
+   += 4, slash writer += 2, 3-digit converter += 6). Switching both
+   converters to 3-digit widens the field, so we shift the LDX start 2
+   tiles left ($44B2 -> $44AE) so max-ones lands at the vanilla position
+   $44BA (flush with the box border), matching the other Flowers lines.
 
-   New layout: cur h/t/o at $44AA/$44AC/$44AE, slash at $44B0, max
-   h/t/o at $44B2/$44B4/$44B6.
+   New layout: cur h/t/o at $44AE/$44B0/$44B2, slash at $44B4, max
+   h/t/o at $44B6/$44B8/$44BA.
 
 4. The X-menu item-submenu Flowers display ($C3:2CC0) — third call site
    that targets the same shared inner subroutine ($C3:35FF), so the JSR
@@ -89,16 +89,16 @@ def get_patch() -> dict[int, bytes]:
         # Battle bump-max-FP handler ($C2:C14F): same fix, identical bytes.
         0x2C14F: bytes([0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF]),
 
-        # --- X-menu Special-menu FP display ($C3:1621-$C3:163E) ---
-        # 2-digit print ($C3:78D2) -> 3-digit ($C3:78EC). LDX stays at the
-        # vanilla $4630 so the 3-digit field right-aligns with the box
-        # border (max-ones at $463C) and the "Flowers" label is not
-        # clipped, matching the item-submenu display.
+        # --- X-menu MAIN-menu FP display ($C3:1621-$C3:163E) ---
+        # 2-digit print ($C3:78D2) -> 3-digit ($C3:78EC); LDX $4630 -> $462C
+        # (vanilla - 2 tiles), max-ones at vanilla $4638.
+        0x31622: bytes([0x2C]),
         0x3162F: bytes([0xEC]),
         0x3163F: bytes([0xEC]),
 
-        # --- X-menu party-total Flowers line ($C3:35FF) ---
-        0x335EB: bytes([0xAA]),
+        # --- X-menu Special-menu Flowers line ($C3:35EA / shared $C3:35FF) ---
+        # LDX $44B2 -> $44AE (vanilla - 2 tiles), max-ones at vanilla $44BA.
+        0x335EB: bytes([0xAE]),
         0x33606: bytes([0xEC]),
         0x33616: bytes([0xEC]),
 
