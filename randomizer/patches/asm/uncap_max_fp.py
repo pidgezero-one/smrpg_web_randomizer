@@ -110,11 +110,21 @@ unusual. The known artifacts to look for:
 """
 
 # Edit this and rebuild between tests. Set back to "OFF" when done.
-_BATTLE_BISECT: str = "G"  # "OFF" | "A" | "B" | "C" | "D" | "E" | "F" | "G"
+_BATTLE_BISECT: str = "F"  # "OFF" | "A" | "B" | "C" | "D" | "E" | "F" | "G"
 
 
 def _battle_bisect_patches() -> dict[int, bytes]:
-    """Return the battle FP patches selected by ``_BATTLE_BISECT``."""
+    """Return the battle FP patches selected by ``_BATTLE_BISECT``.
+
+    The trampoline lives in confirmed-free ROM at ``$C1:C6C0`` (ROM offset
+    0x1C6C0; ~2.3 KB of zeros in the patched ROM). Earlier tests used
+    ``$C1:9564``, but that region is NOT safe in the patched ROM (the user
+    flagged $C1:9564-$C1:956F as reserved; the free run only starts at
+    $C1:9570, and the chest-packet allocator patch can land in the $C1:95xx
+    region on some seeds). Every dirty bisect result (B/C/D/E/F/G) shared the
+    $C1:9564 trampoline location, while Test A (no trampoline) was clean --
+    strong evidence the location itself was the problem.
+    """
     if _BATTLE_BISECT == "OFF":
         return {}
 
@@ -130,142 +140,81 @@ def _battle_bisect_patches() -> dict[int, bytes]:
             ]),
         }
 
+    # Trampoline location (relocated from $C1:9564 to $C1:C6C0).
+    tramp_rom = 0x1C6C0
+    tramp_lo, tramp_hi = 0xC0, 0xC6  # JSR $C6C0 operand bytes
+
     if _BATTLE_BISECT == "B":
-        # Renderer rewrite at $C1:62F6 + trampoline at $C1:9564.
-        # No template change (max-h will overwrite the static slash at
-        # $7030, so no slash will be visible — this is fine, we're only
-        # looking for artifacts).
+        # Renderer rewrite at $C1:62F6 + trampoline. No template change
+        # (max-h overwrites the static slash at $7030; fine for artifact
+        # hunting). Trampoline: AND #$00FF / JMP $5D6A (HP 3-digit conv).
         return {
-            # Trampoline at $C1:9564: AND #$00FF / JMP $5D6A
-            0x19564: bytes([0x29, 0xFF, 0x00, 0x4C, 0x6A, 0x5D]),
-            # Renderer at $C1:62F6 (in-place 26-byte replacement):
-            #   REP #$30 / STZ $8C / LDA $FA0C / LDY #$0028 / JSR $9564
-            #   LDA $FA0D / LDY #$0030 / JSR $9564 / NOP x4
+            tramp_rom: bytes([0x29, 0xFF, 0x00, 0x4C, 0x6A, 0x5D]),
             0x162F6: bytes([
                 0xC2, 0x30,
                 0x64, 0x8C,
-                0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, 0x64, 0x95,
-                0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0x64, 0x95,
+                0xAD, 0x0C, 0xFA, 0xA0, 0x28, 0x00, 0x20, tramp_lo, tramp_hi,
+                0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, tramp_lo, tramp_hi,
                 0xEA, 0xEA, 0xEA, 0xEA,
             ]),
         }
 
     if _BATTLE_BISECT in ("C", "D", "E", "F", "G"):
-        # All of C/D/E/F redirect the two JSR $6378 calls in the vanilla
-        # renderer to a trampoline at $C1:9564. Display is identical to
-        # vanilla (still 2-digit, still uses static slash at $7030). The
-        # only difference is what the trampoline does around the JSR.
-        #
-        # Renderer layout (vanilla bytes for reference):
+        # All redirect the renderer's two JSR $6378 calls to the trampoline.
+        # Display identical to vanilla (2-digit, static slash at $7030); only
+        # the trampoline body differs.
         #   $C1:62FB  20 78 63  JSR $6378   ROM 0x162FB/FC/FD
         #   $C1:6307  20 78 63  JSR $6378   ROM 0x16307/08/09
-        # Patch only the operand bytes (positions +1 and +2 after each
-        # JSR opcode), leaving the 0x20 opcode bytes intact.
         jsr_redirect: dict[int, bytes] = {
-            # First JSR operand ($C1:62FC / 62FD):
-            0x162FC: bytes([0x64]),  # low byte of new target $9564
-            0x162FD: bytes([0x95]),  # high byte
-            # Second JSR operand ($C1:6308 / 6309):
-            0x16308: bytes([0x64]),
-            0x16309: bytes([0x95]),
+            0x162FC: bytes([tramp_lo]),
+            0x162FD: bytes([tramp_hi]),
+            0x16308: bytes([tramp_lo]),
+            0x16309: bytes([tramp_hi]),
         }
         if _BATTLE_BISECT == "C":
-            # Test C trampoline (6 bytes): STZ $8C clobber only, no
-            # save/restore.
-            #   $C1:9564: 64 8C       STZ $8C  (m16: clears $8C:$8D)
-            #   $C1:9566: 20 78 63    JSR $6378
-            #   $C1:9569: 60          RTS
-            return {**jsr_redirect, 0x19564: bytes([
+            # STZ $8C clobber only, no save/restore.
+            return {**jsr_redirect, tramp_rom: bytes([
                 0x64, 0x8C, 0x20, 0x78, 0x63, 0x60,
             ])}
         if _BATTLE_BISECT == "D":
-            # Test D trampoline (18 bytes): save $8C:$8D via a scratch
-            # zp byte ($4D, verified free in bank C1), STZ $8C, JSR,
-            # restore. Preserves A across save/restore so the converter
-            # sees the correct FP value.
-            #   PHA / LDA $8C / STA $4D / STZ $8C / PLA / JSR $6378 /
-            #   PHA / LDA $4D / STA $8C / PLA / RTS
-            return {**jsr_redirect, 0x19564: bytes([
-                0x48,
-                0xA5, 0x8C,
-                0x85, 0x4D,
-                0x64, 0x8C,
-                0x68,
+            # Save $8C via zp $4D (WARNING: $4D is NOT free ROM-wide; kept
+            # only for completeness/comparison), STZ, JSR, restore.
+            return {**jsr_redirect, tramp_rom: bytes([
+                0x48, 0xA5, 0x8C, 0x85, 0x4D, 0x64, 0x8C, 0x68,
                 0x20, 0x78, 0x63,
-                0x48,
-                0xA5, 0x4D,
-                0x85, 0x8C,
-                0x68,
-                0x60,
+                0x48, 0xA5, 0x4D, 0x85, 0x8C, 0x68, 0x60,
             ])}
         if _BATTLE_BISECT == "E":
-            # Test E trampoline (21 bytes): same as Test D plus PHP/SEI
-            # at entry and PLP at exit. Blocks IRQs during the clobber
-            # window. Tests whether an IRQ-driven reader of $8C is
-            # observing the zero state.
-            #   PHP / SEI / PHA / LDA $8C / STA $4D / STZ $8C / PLA /
-            #   JSR $6378 / PHA / LDA $4D / STA $8C / PLA / PLP / RTS
-            return {**jsr_redirect, 0x19564: bytes([
-                0x08,
-                0x78,
-                0x48,
-                0xA5, 0x8C,
-                0x85, 0x4D,
-                0x64, 0x8C,
-                0x68,
+            # Test D plus PHP/SEI ... PLP to block IRQs (known to break
+            # rendering -- kept for comparison only).
+            return {**jsr_redirect, tramp_rom: bytes([
+                0x08, 0x78,
+                0x48, 0xA5, 0x8C, 0x85, 0x4D, 0x64, 0x8C, 0x68,
                 0x20, 0x78, 0x63,
-                0x48,
-                0xA5, 0x4D,
-                0x85, 0x8C,
-                0x68,
-                0x28,
-                0x60,
+                0x48, 0xA5, 0x4D, 0x85, 0x8C, 0x68,
+                0x28, 0x60,
             ])}
         if _BATTLE_BISECT == "F":
-            # Test F trampoline (4 bytes): no $8C manipulation; just JSR
-            # $6378 then RTS. Sanity check that the trampoline indirection
-            # itself produces no artifacts. Expected to be identical to
-            # vanilla.
-            #   $C1:9564: 20 78 63    JSR $6378
-            #   $C1:9567: 60          RTS
-            return {**jsr_redirect, 0x19564: bytes([
+            # No-op trampoline: just JSR $6378 / RTS. Functionally identical
+            # to vanilla. With the trampoline at the SAFE $C1:C6C0 location,
+            # this should now be CLEAN (it was dirty at $C1:9564).
+            return {**jsr_redirect, tramp_rom: bytes([
                 0x20, 0x78, 0x63, 0x60,
             ])}
-        # Test G trampoline (16 bytes): same as Test D but uses STACK
-        # for the $8C save/restore instead of zp $4D ($4D turns out to
-        # be heavily used in banks $C0/$C4-$C9, so Test D's save was
-        # corrupting other state).
-        #
-        # Stack diagram (m16 pushes are 2 bytes):
-        #   on entry: [..., RA_caller]
-        #   after PHA A_FP:           [..., RA, A_FP]
-        #   after PHA $8C_old:        [..., RA, A_FP, $8C_old]
-        #   after STZ $8C:            (no stack change)
-        #   after LDA $3,S:           A = A_FP (peek from stack)
-        #   after JSR $6378:          A = ones, X = tens (converter return)
-        #   after PHA A_conv:         [..., RA, A_FP, $8C_old, A_conv]
-        #   after LDA $3,S:           A = $8C_old
-        #   after STA $8C:            $8C:$8D restored
-        #   after PLA:                A = A_conv (converter ones tile)
-        #   after PLY x2:             stack drained back to [..., RA]
-        #   after RTS:                returns to renderer with X = tens,
-        #                              A = ones (the values renderer needs)
-        #
-        # 65816 byte sequence:
-        #   48          PHA            ; save A_FP onto stack
-        #   A5 8C       LDA $8C        ; A = $8C:$8D
-        #   48          PHA            ; save $8C_old onto stack
-        #   64 8C       STZ $8C        ; clobber $8C:$8D
-        #   A3 03       LDA $3,S       ; A = A_FP (peek)
-        #   20 78 63    JSR $6378      ; convert (A=ones, X=tens)
-        #   48          PHA            ; save A_conv
-        #   A3 03       LDA $3,S       ; A = $8C_old
-        #   85 8C       STA $8C        ; restore $8C:$8D
-        #   68          PLA            ; A = A_conv (restore converter)
-        #   7A          PLY            ; drain $8C_old (discard via Y)
-        #   7A          PLY            ; drain A_FP (discard via Y)
-        #   60          RTS
-        return {**jsr_redirect, 0x19564: bytes([
+        # Test G: stack-only $8C save/restore (no zp scratch).
+        #   48        PHA          ; save A_FP
+        #   A5 8C     LDA $8C      ; A = $8C:$8D
+        #   48        PHA          ; save $8C_old
+        #   64 8C     STZ $8C      ; clobber
+        #   A3 03     LDA $3,S     ; peek A_FP
+        #   20 78 63  JSR $6378    ; convert (A=ones, X=tens)
+        #   48        PHA          ; save A_conv
+        #   A3 03     LDA $3,S     ; peek $8C_old
+        #   85 8C     STA $8C      ; restore
+        #   68        PLA          ; A = A_conv
+        #   7A 7A     PLY PLY      ; drain saved bytes
+        #   60        RTS
+        return {**jsr_redirect, tramp_rom: bytes([
             0x48,
             0xA5, 0x8C,
             0x48,
@@ -276,8 +225,7 @@ def _battle_bisect_patches() -> dict[int, bytes]:
             0xA3, 0x03,
             0x85, 0x8C,
             0x68,
-            0x7A,
-            0x7A,
+            0x7A, 0x7A,
             0x60,
         ])}
 
