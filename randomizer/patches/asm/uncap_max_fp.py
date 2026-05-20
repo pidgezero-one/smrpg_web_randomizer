@@ -163,23 +163,39 @@ def _battle_bisect_patches() -> dict[int, bytes]:
             return {**jsr_redirect, 0x19564: bytes([
                 0x64, 0x8C, 0x20, 0x78, 0x63, 0x60,
             ])}
-        # Test D trampoline (12 bytes): save $8C:$8D, clobber, JSR,
-        # restore. Tests whether properly preserving $8C eliminates the
-        # artifacts that Test C exposed.
-        #   $C1:9564: A5 8C       LDA $8C  (m16: reads $8C:$8D)
-        #   $C1:9566: 48          PHA
-        #   $C1:9567: 64 8C       STZ $8C
-        #   $C1:9569: 20 78 63    JSR $6378
-        #   $C1:956C: 68          PLA
-        #   $C1:956D: 85 8C       STA $8C
-        #   $C1:956F: 60          RTS
+        # Test D trampoline (18 bytes): save $8C:$8D via a scratch zp
+        # byte ($4D, verified free in bank C1), STZ $8C, JSR, restore.
+        # Tests whether properly preserving $8C eliminates the artifacts
+        # that Test C exposed.
+        #
+        # The renderer loads the FP value into A immediately before
+        # calling our trampoline (LDA $FA0C / LDA $FA0D). We must
+        # preserve A across our save/restore work so the converter
+        # operates on the correct input. Using a zp scratch (not the
+        # accumulator) for the $8C value handles that cleanly.
+        #
+        #   $C1:9564: 48          PHA            ; save A (FP value)
+        #   $C1:9565: A5 8C       LDA $8C        ; A = $8C:$8D
+        #   $C1:9567: 85 4D       STA $4D        ; stash in scratch zp
+        #   $C1:9569: 64 8C       STZ $8C        ; clobber $8C:$8D
+        #   $C1:956B: 68          PLA            ; restore A = FP
+        #   $C1:956C: 20 78 63    JSR $6378      ; convert (A=ones, X=tens)
+        #   $C1:956F: 48          PHA            ; save converter A
+        #   $C1:9570: A5 4D       LDA $4D        ; reload saved $8C
+        #   $C1:9572: 85 8C       STA $8C        ; restore $8C:$8D
+        #   $C1:9574: 68          PLA            ; restore A
+        #   $C1:9575: 60          RTS
         return {**jsr_redirect, 0x19564: bytes([
-            0xA5, 0x8C,
             0x48,
+            0xA5, 0x8C,
+            0x85, 0x4D,
             0x64, 0x8C,
-            0x20, 0x78, 0x63,
             0x68,
+            0x20, 0x78, 0x63,
+            0x48,
+            0xA5, 0x4D,
             0x85, 0x8C,
+            0x68,
             0x60,
         ])}
 
