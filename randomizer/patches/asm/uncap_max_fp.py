@@ -90,7 +90,7 @@ unusual. The known artifacts to look for:
 """
 
 # Edit this and rebuild between tests. Set back to "OFF" when done.
-_BATTLE_BISECT: str = "OFF"  # "OFF" | "A" | "B" | "C"
+_BATTLE_BISECT: str = "C"  # "OFF" | "A" | "B" | "C"
 
 
 def _battle_bisect_patches() -> dict[int, bytes]:
@@ -136,15 +136,19 @@ def _battle_bisect_patches() -> dict[int, bytes]:
         # STZ $8C then tail-calls vanilla $6378. Display is identical to
         # vanilla (still 2-digit, still uses static slash at $7030).
         # Tests whether STZ $8C alone is the cause of the artifacts.
+        #
+        # Renderer layout (vanilla bytes for reference):
+        #   $C1:62FB  20 78 63  JSR $6378   ROM 0x162FB/FC/FD
+        #   $C1:6307  20 78 63  JSR $6378   ROM 0x16307/08/09
+        # Patch only the operand bytes (positions +1 and +2 after each
+        # JSR opcode), leaving the 0x20 opcode bytes intact.
         return {
-            # Renderer JSR target patches (operands only):
-            #   $C1:62FB: JSR $6378 -> JSR $9564
-            #   $C1:6306: JSR $6378 -> JSR $9564
-            # Two-byte operand change per site.
-            0x162FC: bytes([0x64]),  # low byte of new target
-            0x162FD: bytes([0x95]),  # high byte of new target
-            0x16307: bytes([0x64]),
-            0x16308: bytes([0x95]),
+            # First JSR operand ($C1:62FC / 62FD):
+            0x162FC: bytes([0x64]),  # low byte of new target $9564
+            0x162FD: bytes([0x95]),  # high byte
+            # Second JSR operand ($C1:6308 / 6309):
+            0x16308: bytes([0x64]),  # low byte
+            0x16309: bytes([0x95]),  # high byte
             # Trampoline at $C1:9564 (6 bytes):
             #   STZ $8C       -- clobber $8C in m16 (same as Test B)
             #   JSR $6378     -- vanilla 2-digit converter
