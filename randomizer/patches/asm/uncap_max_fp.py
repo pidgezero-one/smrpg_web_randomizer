@@ -63,6 +63,11 @@ Set ``_BATTLE_BISECT`` to one of:
   at a trampoline that does ``STZ $8C`` then tail-calls vanilla
   ``$6378``. Display: identical to vanilla. Tests whether STZ $8C alone
   is the cause.
+* ``"D"`` — apply the same trampoline redirection as Test C, but the
+  trampoline now SAVES and RESTORES ``$8C``/``$8D`` (m16 LDA / PHA /
+  STZ $8C / JSR $6378 / PLA / STA $8C / RTS). Display: identical to
+  vanilla. Tests whether properly preserving $8C eliminates the
+  artifacts that Test C exposed.
 
 Comparison matrix:
 
@@ -90,7 +95,7 @@ unusual. The known artifacts to look for:
 """
 
 # Edit this and rebuild between tests. Set back to "OFF" when done.
-_BATTLE_BISECT: str = "C"  # "OFF" | "A" | "B" | "C"
+_BATTLE_BISECT: str = "D"  # "OFF" | "A" | "B" | "C" | "D"
 
 
 def _battle_bisect_patches() -> dict[int, bytes]:
@@ -130,31 +135,53 @@ def _battle_bisect_patches() -> dict[int, bytes]:
             ]),
         }
 
-    if _BATTLE_BISECT == "C":
-        # Minimal STZ $8C injection: redirect the two JSR $6378 calls in
-        # the vanilla renderer to a trampoline at $C1:9564 that does
-        # STZ $8C then tail-calls vanilla $6378. Display is identical to
-        # vanilla (still 2-digit, still uses static slash at $7030).
-        # Tests whether STZ $8C alone is the cause of the artifacts.
+    if _BATTLE_BISECT in ("C", "D"):
+        # Both C and D redirect the two JSR $6378 calls in the vanilla
+        # renderer to a trampoline at $C1:9564. Display is identical to
+        # vanilla (still 2-digit, still uses static slash at $7030). The
+        # only difference is whether the trampoline saves/restores $8C.
         #
         # Renderer layout (vanilla bytes for reference):
         #   $C1:62FB  20 78 63  JSR $6378   ROM 0x162FB/FC/FD
         #   $C1:6307  20 78 63  JSR $6378   ROM 0x16307/08/09
         # Patch only the operand bytes (positions +1 and +2 after each
         # JSR opcode), leaving the 0x20 opcode bytes intact.
-        return {
+        jsr_redirect: dict[int, bytes] = {
             # First JSR operand ($C1:62FC / 62FD):
             0x162FC: bytes([0x64]),  # low byte of new target $9564
             0x162FD: bytes([0x95]),  # high byte
             # Second JSR operand ($C1:6308 / 6309):
-            0x16308: bytes([0x64]),  # low byte
-            0x16309: bytes([0x95]),  # high byte
-            # Trampoline at $C1:9564 (6 bytes):
-            #   STZ $8C       -- clobber $8C in m16 (same as Test B)
-            #   JSR $6378     -- vanilla 2-digit converter
-            #   RTS
-            0x19564: bytes([0x64, 0x8C, 0x20, 0x78, 0x63, 0x60]),
+            0x16308: bytes([0x64]),
+            0x16309: bytes([0x95]),
         }
+        if _BATTLE_BISECT == "C":
+            # Test C trampoline (6 bytes): STZ $8C clobber only, no
+            # save/restore. Tests whether STZ $8C alone causes artifacts.
+            #   $C1:9564: 64 8C       STZ $8C  (m16: clears $8C:$8D)
+            #   $C1:9566: 20 78 63    JSR $6378
+            #   $C1:9569: 60          RTS
+            return {**jsr_redirect, 0x19564: bytes([
+                0x64, 0x8C, 0x20, 0x78, 0x63, 0x60,
+            ])}
+        # Test D trampoline (12 bytes): save $8C:$8D, clobber, JSR,
+        # restore. Tests whether properly preserving $8C eliminates the
+        # artifacts that Test C exposed.
+        #   $C1:9564: A5 8C       LDA $8C  (m16: reads $8C:$8D)
+        #   $C1:9566: 48          PHA
+        #   $C1:9567: 64 8C       STZ $8C
+        #   $C1:9569: 20 78 63    JSR $6378
+        #   $C1:956C: 68          PLA
+        #   $C1:956D: 85 8C       STA $8C
+        #   $C1:956F: 60          RTS
+        return {**jsr_redirect, 0x19564: bytes([
+            0xA5, 0x8C,
+            0x48,
+            0x64, 0x8C,
+            0x20, 0x78, 0x63,
+            0x68,
+            0x85, 0x8C,
+            0x60,
+        ])}
 
     raise ValueError(
         f"Unknown _BATTLE_BISECT value {_BATTLE_BISECT!r}; "
