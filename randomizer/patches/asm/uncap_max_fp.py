@@ -185,7 +185,7 @@ def _battle_bisect_patches() -> dict[int, bytes]:
 
     raise ValueError(
         f"Unknown _BATTLE_BISECT value {_BATTLE_BISECT!r}; "
-        f"expected one of 'OFF', 'A', 'B', 'C'."
+        f"expected one of 'OFF', 'A', 'B', 'C', 'D'."
     )
 
 
