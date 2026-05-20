@@ -64,10 +64,18 @@ Set ``_BATTLE_BISECT`` to one of:
   ``$6378``. Display: identical to vanilla. Tests whether STZ $8C alone
   is the cause.
 * ``"D"`` — apply the same trampoline redirection as Test C, but the
-  trampoline now SAVES and RESTORES ``$8C``/``$8D`` (m16 LDA / PHA /
-  STZ $8C / JSR $6378 / PLA / STA $8C / RTS). Display: identical to
-  vanilla. Tests whether properly preserving $8C eliminates the
+  trampoline now SAVES and RESTORES ``$8C``/``$8D``. Display: identical
+  to vanilla. Tests whether properly preserving $8C eliminates the
   artifacts that Test C exposed.
+* ``"E"`` — same as Test D but bracketed with ``PHP / SEI`` ...
+  ``PLP``. Blocks IRQs during the brief clobber window. Tests whether
+  an IRQ-driven reader of $8C (HBlank handler, SA-1 timer) is what
+  observes the zeroed value.
+* ``"F"`` — trampoline does NOTHING to $8C; it just tail-calls vanilla
+  ``$6378`` then returns. Sanity check that the JSR redirection
+  mechanism itself produces no artifacts. Should be visually clean (and
+  identical to vanilla); if it is dirty, the trampoline location or the
+  indirection has a side effect we haven't traced.
 
 Comparison matrix:
 
@@ -95,7 +103,7 @@ unusual. The known artifacts to look for:
 """
 
 # Edit this and rebuild between tests. Set back to "OFF" when done.
-_BATTLE_BISECT: str = "D"  # "OFF" | "A" | "B" | "C" | "D"
+_BATTLE_BISECT: str = "E"  # "OFF" | "A" | "B" | "C" | "D" | "E" | "F"
 
 
 def _battle_bisect_patches() -> dict[int, bytes]:
@@ -135,11 +143,11 @@ def _battle_bisect_patches() -> dict[int, bytes]:
             ]),
         }
 
-    if _BATTLE_BISECT in ("C", "D"):
-        # Both C and D redirect the two JSR $6378 calls in the vanilla
+    if _BATTLE_BISECT in ("C", "D", "E", "F"):
+        # All of C/D/E/F redirect the two JSR $6378 calls in the vanilla
         # renderer to a trampoline at $C1:9564. Display is identical to
         # vanilla (still 2-digit, still uses static slash at $7030). The
-        # only difference is whether the trampoline saves/restores $8C.
+        # only difference is what the trampoline does around the JSR.
         #
         # Renderer layout (vanilla bytes for reference):
         #   $C1:62FB  20 78 63  JSR $6378   ROM 0x162FB/FC/FD
@@ -156,52 +164,69 @@ def _battle_bisect_patches() -> dict[int, bytes]:
         }
         if _BATTLE_BISECT == "C":
             # Test C trampoline (6 bytes): STZ $8C clobber only, no
-            # save/restore. Tests whether STZ $8C alone causes artifacts.
+            # save/restore.
             #   $C1:9564: 64 8C       STZ $8C  (m16: clears $8C:$8D)
             #   $C1:9566: 20 78 63    JSR $6378
             #   $C1:9569: 60          RTS
             return {**jsr_redirect, 0x19564: bytes([
                 0x64, 0x8C, 0x20, 0x78, 0x63, 0x60,
             ])}
-        # Test D trampoline (18 bytes): save $8C:$8D via a scratch zp
-        # byte ($4D, verified free in bank C1), STZ $8C, JSR, restore.
-        # Tests whether properly preserving $8C eliminates the artifacts
-        # that Test C exposed.
-        #
-        # The renderer loads the FP value into A immediately before
-        # calling our trampoline (LDA $FA0C / LDA $FA0D). We must
-        # preserve A across our save/restore work so the converter
-        # operates on the correct input. Using a zp scratch (not the
-        # accumulator) for the $8C value handles that cleanly.
-        #
-        #   $C1:9564: 48          PHA            ; save A (FP value)
-        #   $C1:9565: A5 8C       LDA $8C        ; A = $8C:$8D
-        #   $C1:9567: 85 4D       STA $4D        ; stash in scratch zp
-        #   $C1:9569: 64 8C       STZ $8C        ; clobber $8C:$8D
-        #   $C1:956B: 68          PLA            ; restore A = FP
-        #   $C1:956C: 20 78 63    JSR $6378      ; convert (A=ones, X=tens)
-        #   $C1:956F: 48          PHA            ; save converter A
-        #   $C1:9570: A5 4D       LDA $4D        ; reload saved $8C
-        #   $C1:9572: 85 8C       STA $8C        ; restore $8C:$8D
-        #   $C1:9574: 68          PLA            ; restore A
-        #   $C1:9575: 60          RTS
+        if _BATTLE_BISECT == "D":
+            # Test D trampoline (18 bytes): save $8C:$8D via a scratch
+            # zp byte ($4D, verified free in bank C1), STZ $8C, JSR,
+            # restore. Preserves A across save/restore so the converter
+            # sees the correct FP value.
+            #   PHA / LDA $8C / STA $4D / STZ $8C / PLA / JSR $6378 /
+            #   PHA / LDA $4D / STA $8C / PLA / RTS
+            return {**jsr_redirect, 0x19564: bytes([
+                0x48,
+                0xA5, 0x8C,
+                0x85, 0x4D,
+                0x64, 0x8C,
+                0x68,
+                0x20, 0x78, 0x63,
+                0x48,
+                0xA5, 0x4D,
+                0x85, 0x8C,
+                0x68,
+                0x60,
+            ])}
+        if _BATTLE_BISECT == "E":
+            # Test E trampoline (21 bytes): same as Test D plus PHP/SEI
+            # at entry and PLP at exit. Blocks IRQs during the clobber
+            # window. Tests whether an IRQ-driven reader of $8C is
+            # observing the zero state.
+            #   PHP / SEI / PHA / LDA $8C / STA $4D / STZ $8C / PLA /
+            #   JSR $6378 / PHA / LDA $4D / STA $8C / PLA / PLP / RTS
+            return {**jsr_redirect, 0x19564: bytes([
+                0x08,
+                0x78,
+                0x48,
+                0xA5, 0x8C,
+                0x85, 0x4D,
+                0x64, 0x8C,
+                0x68,
+                0x20, 0x78, 0x63,
+                0x48,
+                0xA5, 0x4D,
+                0x85, 0x8C,
+                0x68,
+                0x28,
+                0x60,
+            ])}
+        # Test F trampoline (4 bytes): no $8C manipulation; just JSR
+        # $6378 then RTS. Sanity check that the trampoline indirection
+        # itself produces no artifacts. Expected to be identical to
+        # vanilla.
+        #   $C1:9564: 20 78 63    JSR $6378
+        #   $C1:9567: 60          RTS
         return {**jsr_redirect, 0x19564: bytes([
-            0x48,
-            0xA5, 0x8C,
-            0x85, 0x4D,
-            0x64, 0x8C,
-            0x68,
-            0x20, 0x78, 0x63,
-            0x48,
-            0xA5, 0x4D,
-            0x85, 0x8C,
-            0x68,
-            0x60,
+            0x20, 0x78, 0x63, 0x60,
         ])}
 
     raise ValueError(
         f"Unknown _BATTLE_BISECT value {_BATTLE_BISECT!r}; "
-        f"expected one of 'OFF', 'A', 'B', 'C', 'D'."
+        f"expected one of 'OFF', 'A', 'B', 'C', 'D', 'E', 'F'."
     )
 
 
