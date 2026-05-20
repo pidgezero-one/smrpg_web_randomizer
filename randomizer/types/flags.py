@@ -662,9 +662,7 @@ class UncapSuperJumps(BooleanFlag):
 
 class UncapMaxFP(BooleanFlag):
     _name = "Allow more than 99 FP"
-    _description = """If enabled, max FP will be 255 instead of 99.
-<br>
-<br>Note: This may cause some minor graphical glitches and artifacting in battle."""
+    _description = """If enabled, max FP will cap at 255 instead of 99."""
     _id = "uncapfp"
 
 

@@ -1997,7 +1997,6 @@ class GameWorld:
         patch.add_dict(asm.battle_init.get_patch(), source="battle_init")
         patch.add_dict(asm.battle_intro_hdma_fix.get_patch(), source="battle_intro_hdma_fix")
         patch.add_dict(asm.exp_star_music_sticky.get_patch(), source="exp_star_music_sticky")
-        patch.add_dict(asm.overworld_ally_loader.get_patch(), source="overworld_ally_loader")
 
         # Packet allocation patch — allow low-VRAM packets (those with
         # ``goes_to_npc_slot_buffer = True``) to use the NPC slot path

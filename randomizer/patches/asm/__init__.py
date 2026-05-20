@@ -21,11 +21,6 @@ ASM hooks (multi-site / runtime-built):
       music overriding room BGM across room transitions when it is
       started via ``PlayMusicAtCurrentVolume``.
     * :mod:`invincibility_fix` — Red Essence dispel guard.
-    * :mod:`overworld_ally_loader` — Hybrid per-slot character-index
-      dispatch in the room-load ally loop: slot 0 keeps the protagonist
-      invariant (forced to char 0), slots 1+ use real roster char ids
-      so ``CHARACTER_IN_SLOT_2``/``_3`` cutscenes render the actual
-      character. Helper lives in repurposed NOP space at ``$E42C``.
     * :mod:`packet_allocation` — Packet allowlist routine for NPC slots.
 
 Always-on byte patches:
@@ -63,7 +58,6 @@ from . import (
     key_item_inventory,
     no_exp,
     non_mario_character,
-    overworld_ally_loader,
     packet_allocation,
     rom_metadata,
     room_174_battlefield,
@@ -88,7 +82,6 @@ __all__ = [
     "key_item_inventory",
     "no_exp",
     "non_mario_character",
-    "overworld_ally_loader",
     "packet_allocation",
     "rom_metadata",
     "room_174_battlefield",

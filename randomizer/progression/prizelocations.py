@@ -897,8 +897,30 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
 
     def render(self, world: GameWorld):
         op = super().render(world)
+        self._apply_room206_npc_override(world)
+        if self.prize is not None:
+            assert isinstance(self.prize, CharacterPrize)
         render_mushroom_way_character(world, self.prize)
         return op
+
+    def _apply_room206_npc_override(self, world: GameWorld) -> None:
+        """Use the MARIO_ENDING_2 (sprite 0) NPC for Mario at the room 206 fill.
+
+        The default MarioCharacterNPC base is sprite 409 (the Mario clone
+        monster sprite), which the base CharacterRecruitmentLocation.render
+        assigns to every fill. For the room 206 (Bandits Way area 5) NPC 10
+        slot we want the real protagonist sprite 0 instead.
+        """
+        if not isinstance(self.prize, MarioRecruitmentPrize):
+            return
+        from ..data.rooms.npcs import MARIO_ENDING_2
+
+        room = world.rooms._rooms[R206_BANDITS_WAY_AREA_05]
+        if room is None:
+            return
+        obj = room.get_npc_by_target_id(NPC_10)
+        if obj is not None:
+            obj._npc = MARIO_ENDING_2
 
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
