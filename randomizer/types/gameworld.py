@@ -1683,6 +1683,14 @@ class GameWorld:
         patch = Patch(debug_mode=self._debug_bps_patches)
         progress = 45
 
+        # Open-mode base ROM data the randomizer does not regenerate (effect
+        # animations/graphics/palettes, tilesets, and assorted gap data). This is
+        # the romhack BASE LAYER: applied first so every render, flag-gated patch,
+        # and palette cosmetic below overrides it where they write (e.g. no_exp
+        # zeroes the EXP table; cosmetics recolor effect palettes). Only the
+        # render-disjoint bytes are carried. See asm/static_data.py.
+        patch.add_dict(asm.static_data.get_patch(), source="static_data")
+
         # Battle animations patch
         self._report_progress("Assembling battle animations...", progress)
         for animation_bank in self.battle_animations.values():
@@ -1896,6 +1904,28 @@ class GameWorld:
 
         # Always-on byte patches.
         patch.add_dict(asm.key_item_inventory.get_patch(), source="key_item_inventory")
+        # Coin counter cap 999 -> 9999 (overworld add-coins, battle reward,
+        # X-menu). Reproduces the legacy open_mode.json clamp edits so the
+        # JSON entries can be retired.
+        patch.add_dict(asm.uncap_coins.get_patch(), source="uncap_coins")
+        # Always-on overworld engine substrate for the non-Mario-protagonist
+        # system: ally-loader char-0 collapse ($9009) + name-targeted resolver
+        # gutting ($3EB2/$E42C). Relocates the open_mode.json patched bytes
+        # verbatim (LOAD-BEARING — never restore vanilla). non_mario_character
+        # layers the per-seed sprite base ($9B86) on top of this.
+        patch.add_dict(asm.protagonist_static.get_patch(), source="protagonist_static")
+        # Skip the opening garden intro on new game + load game (the two
+        # LazyShell "Intro" editor checkboxes, both set in open_mode.json).
+        patch.add_dict(asm.disable_garden_intro.get_patch(), source="disable_garden_intro")
+        # Custom intro / title-screen GFX, streamed from the title_screen.bin
+        # asset (render() does not regenerate the title screen).
+        patch.add_dict(asm.title_screen.get_patch(), source="title_screen")
+        patch.add_dict(asm.learn_special_event.get_patch(), source="learn_special_event")
+        patch.add_dict(asm.dialogue_text_expansion.get_patch(), source="dialogue_text_expansion")
+        patch.add_dict(asm.battle_attribute_patches.get_patch(), source="battle_attribute_patches")
+        patch.add_dict(asm.menu_item_always_available.get_patch(), source="menu_item_always_available")
+        patch.add_dict(asm.grid_menu_navigation.get_patch(), source="grid_menu_navigation")
+        patch.add_dict(asm.title_loop.get_patch(), source="title_loop")
 
         # Flag-gated byte patches.
         if (self.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE)

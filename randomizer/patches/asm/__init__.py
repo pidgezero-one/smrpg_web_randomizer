@@ -25,6 +25,24 @@ ASM hooks (multi-site / runtime-built):
 
 Always-on byte patches:
     * :mod:`key_item_inventory` — Expand key-item inventory size.
+    * :mod:`uncap_coins` — Raise the current-coins cap from 999 to 9999
+      (overworld add-coins, battle reward, X-menu).
+    * :mod:`protagonist_static` — Always-on overworld engine substrate
+      (ally-loader char-0 collapse + name-targeted resolver gutting) for
+      the non-Mario-protagonist system.
+    * :mod:`disable_garden_intro` — Skip the opening garden intro on both
+      new game and load game.
+    * :mod:`title_screen` — Custom intro / title-screen GFX, streamed from
+      the ``title_screen.bin`` asset (render() does not regenerate it).
+    * :mod:`static_data` — Render-disjoint open-mode base data (effect
+      animations/palettes, tilesets, gap data) from ``static_data.bin``;
+      applied before the palette cosmetics.
+    * :mod:`learn_special_event` — Custom "learn special ability" event command.
+    * :mod:`dialogue_text_expansion` — Dialogue codes 0x18/0x19 -> bank $E4 text.
+    * :mod:`battle_attribute_patches` — Confuse-status mask + attribute table.
+    * :mod:`menu_item_always_available` — Force a $40:30E3 menu item available.
+    * :mod:`grid_menu_navigation` — 2-D grid-menu cursor rework.
+    * :mod:`title_loop` — Title screen loops forever (no attract-mode demo).
     * :mod:`battle_init` — Copy overworld party size to battle party size.
     * :mod:`star_piece_sprite_fix` — Credits ending sequence sprite ID.
     * :mod:`room_layouts` — Room area-layout records.
@@ -52,13 +70,20 @@ from . import (
     battlefield_underwater_palette,
     belome3_brooch,
     debug_fp,
+    disable_garden_intro,
     exp_star_music_sticky,
     hold_b,
     invincibility_fix,
     key_item_inventory,
     no_exp,
+    battle_attribute_patches,
+    dialogue_text_expansion,
+    grid_menu_navigation,
+    learn_special_event,
+    menu_item_always_available,
     non_mario_character,
     packet_allocation,
+    protagonist_static,
     rom_metadata,
     room_174_battlefield,
     room_325_solidity,
@@ -67,6 +92,10 @@ from . import (
     show_equips,
     sprite_group_whitelist,
     star_piece_sprite_fix,
+    static_data,
+    title_loop,
+    title_screen,
+    uncap_coins,
     uncap_max_fp,
 )
 
@@ -76,13 +105,21 @@ __all__ = [
     "battlefield_underwater_palette",
     "belome3_brooch",
     "debug_fp",
+    "disable_garden_intro",
     "exp_star_music_sticky",
     "hold_b",
     "invincibility_fix",
     "key_item_inventory",
     "no_exp",
+    "battle_attribute_patches",
+    "dialogue_text_expansion",
+    "grid_menu_navigation",
+    "learn_special_event",
+    "menu_item_always_available",
     "non_mario_character",
     "packet_allocation",
+    "title_loop",
+    "protagonist_static",
     "rom_metadata",
     "room_174_battlefield",
     "room_325_solidity",
@@ -91,5 +128,8 @@ __all__ = [
     "show_equips",
     "sprite_group_whitelist",
     "star_piece_sprite_fix",
+    "static_data",
+    "title_screen",
+    "uncap_coins",
     "uncap_max_fp",
 ]

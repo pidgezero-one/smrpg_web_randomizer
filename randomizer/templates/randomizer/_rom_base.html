@@ -163,10 +163,12 @@
                         resolve(this);
                     });
                 } else if (mode === "open") {
-                    $.getJSON("{% static 'randomizer/patches/open_mode.json' %}", {}, (patch) => {
-                        this.parsePatch(patch);
-                        resolve(this);
-                    });
+                    // open_mode.json is deprecated: the per-seed patch now
+                    // reproduces the entire open-mode base byte-for-byte (render +
+                    // asm modules + static_data/title_screen assets + the
+                    // smrpgpatchbuilder world-map-name render fix). No base-patch
+                    // fetch is needed for open mode.
+                    resolve(this);
                 } else {
                     // Mode not recognized, shouldn't happen but just resolve doing nothing if so.
                     console.warn(`Mode '${mode}' not recognized`);
