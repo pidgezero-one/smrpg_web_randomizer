@@ -94,6 +94,10 @@ class YellowMushroomObject(ItemNPC):
     _base = YELLOW_MUSHROOM_BASE
     _chest_event_id: int = E0899_CHEST_YELLOW_ITEM_COLLECTION
 
+class BlueMushroomObject(ItemNPC):
+    _base = BLUE_MUSHROOM_BASE
+    _chest_event_id: int = E0898_CHEST_BLUE_ITEM_COLLECTION
+
 
 class RedSyrupObject(ItemNPC):
     _base = RED_SYRUP_BASE

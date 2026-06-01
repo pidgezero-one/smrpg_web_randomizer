@@ -1450,10 +1450,10 @@ class SleepyBombPrize(ItemPrize):
 class BadMushroomPrize(ItemPrize):
     item = BadMushroomItem
     _nickname = TreasureHunterNickname(
-        nickname="Red Mushroom", description="It's just food, right?"
+        nickname="Blue Mushroom", description="It might be poisonous."
     )
-    _model = RedMushroomObject
-    _packet_data = (SPR0219_RED_ITEM_COLLECTION, 0)
+    _model = BlueMushroomObject
+    _packet_data = (SPR0223_BLUE_ITEM_COLLECTION, 0)
 
 
 class FireBombPrize(ItemPrize):
