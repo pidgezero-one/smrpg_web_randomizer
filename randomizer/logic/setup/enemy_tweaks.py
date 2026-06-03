@@ -216,10 +216,6 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
 
     # Enemy spell randomization
     if world.settings.isflag_enabled(EnemySpells):
-        # Note: These spells are excluded from the pool and won't be replaced:
-        # - EscapeSpell causes enemies to flee the battle
-        # - BigBangSpell requires RemoveTarget(self) afterward which complicates AI scripts
-        # - Engine023Spell is a special attack that should stay where it is
         spell_pool: list[type[EnemySpell]] = [
             DrainSpell, LightningOrbSpell, FlameSpell, BoltSpell, CrystalSpell,
             FlameStoneSpell, MegaDrainSpell, WillyWispSpell, DiamondSawSpell,
@@ -228,14 +224,14 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             StaticESpell, SandStormSpell, BlizzardSpell, DrainBeamSpell,
             MeteorBlastSpell, LightBeamSpell, WaterBlastSpell, SolidifySpell,
             PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
-            MeteorSwarmSpell, BreakerBeamSpell, ShredderSpell,
+            MeteorSwarmSpell, ShredderSpell,
             SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell,
         ]
         for script in world.monster_scripts.scripts:
             for cmd in script.contents:
                 if isinstance(cmd, CastSpell):
                     # Skip special spells - spell slots contain types, not instances
-                    excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell, RecoverSpell, MegaRecoverSpell, CakerBeamSpell, WeirdMushroomSpell)
+                    excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell, RecoverSpell, MegaRecoverSpell, CakerBeamSpell, WeirdMushroomSpell, BreakerBeamSpell)
                     if cmd.spell_1 is not None and cmd.spell_1 not in excluded_spells:
                         cmd.set_spell_1(random.choice(spell_pool))
                     if cmd.spell_2 is not None and cmd.spell_2 not in excluded_spells:

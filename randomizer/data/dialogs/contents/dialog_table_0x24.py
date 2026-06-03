@@ -532,4 +532,4 @@ dialog_data[183] = '''Man, did I sleep!
  Thanks for the service.
  Here's your tip.[await]
  Don't spend it all in one place![await]'''
-dialog_data[184] = '''[center]Need the “Extra Shine Stone”\nto get in[await]'''
+dialog_data[184] = '''[center]Need the “Extra Shiny Stone”\nto get in[await]'''

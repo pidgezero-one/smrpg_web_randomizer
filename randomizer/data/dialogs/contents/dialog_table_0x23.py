@@ -316,7 +316,7 @@ dialog_data[105] = ''' If you haven't played with the giant
 dialog_data[106] = ''' The castle's last invaders left
  their pet birds here in our
  hallways.[await]'''
-dialog_data[107] = ''' Please don't step on our citizen's
+dialog_data[107] = ''' Please don't step on our citizens'
  heads. [delay_60]...Although, I guess if you
  do, I won't stop you.[await]'''
 dialog_data[108] = ''' There's a weird guy hanging out

@@ -282,7 +282,7 @@ pool = [
         "%RANDOM_WRITER%\n\nIt has two vowels.[await]",
         "%RANDOM_WRITER%\n\nThe “M” comes before the “T”.[await]",
         "%RANDOM_WRITER%\n\nA “Y” is used as a vowel.[await]",
-        "%RANDOM_WRITER%\n\nThe “S” is between two consonants.[await]",
+        "%RANDOM_WRITER%\n\nThe “I” is between two consonants.[await]",
         "%RANDOM_WRITER%\n\nThere are two pairs of consonants.[await]",
         "%RANDOM_WRITER%\n\nThe “H” comes before the “Y”.[await]",
         "%RANDOM_WRITER%\n\nA strong boss.[await]",

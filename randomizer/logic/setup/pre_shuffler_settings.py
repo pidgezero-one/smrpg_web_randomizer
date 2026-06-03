@@ -562,9 +562,6 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         _curtain_npc.set_initiator(EventInitiator.ANYTHING_EXCEPT_PRESS_A)
 
     # For safety, delete Breaker Beam caster animations in case an enemy uses it that doesn't have a sequence 3
-    if world.settings.isflag_enabled(EnemySpells):
-        world.battle_animations[0x35].delete_command_by_name("breaker_beam_sequence_1")
-        world.battle_animations[0x35].delete_command_by_name("breaker_beam_sequence_2")
 
     # Apply debug starting items if debug mode is enabled
     from .debug import apply_debug_start_items

@@ -272,61 +272,63 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     apply_palette_selection(world, ToadstoolPaletteChoice, TOADSTOOL_PALETTES, "toadstool_palette")
 
     if world.settings.isflag_enabled(ChangeNames):
-        # Only rename characters if the palette allows it
+        # Only rename characters and their clones if the palette has a name change.
+        # Palettes with rename_character=False keep vanilla clone names (e.g. "MARIO CLONE")
+        # instead of producing blanks like " CLONE".
         if world.mario_palette.rename_character:
             world.allies._allies[0].name = world.mario_palette.name
-        world.enemies.get_by_type(MARIOCLONEEnemy).set_name(
-            world.mario_palette.clone_name
-        )
-        world.enemies.get_by_type(MARIOCLONESEnemy).set_name(
-            world.mario_palette.strong_clone_name
-        )
+            world.enemies.get_by_type(MARIOCLONEEnemy).set_name(
+                world.mario_palette.clone_name
+            )
+            world.enemies.get_by_type(MARIOCLONESEnemy).set_name(
+                world.mario_palette.strong_clone_name
+            )
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("MARIO CLONE", world.mario_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("MARIO CLONE S", world.mario_palette.strong_clone_name)
         if world.toadstool_palette.rename_character:
             world.allies._allies[1].name = world.toadstool_palette.name
-        world.enemies.get_by_type(TOADSTOOL2Enemy).set_name(
-            world.toadstool_palette.clone_name
-        )
-        world.enemies.get_by_type(TOADSTOOL3Enemy).set_name(
-            world.toadstool_palette.strong_clone_name
-        )
+            world.enemies.get_by_type(TOADSTOOL2Enemy).set_name(
+                world.toadstool_palette.clone_name
+            )
+            world.enemies.get_by_type(TOADSTOOL3Enemy).set_name(
+                world.toadstool_palette.strong_clone_name
+            )
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("TOADSTOOL 2", world.toadstool_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("PEACH CLONE", world.toadstool_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("TOADSTOOL 3", world.toadstool_palette.strong_clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("S PEACH CLONE", world.toadstool_palette.strong_clone_name)
         if world.bowser_palette.rename_character:
             world.allies._allies[2].name = world.bowser_palette.name
             world.battle_dialogs.battle_dialogs[129] = f' {world.bowser_palette.name}’s mood has affected[await]\n the monster![await]\n The monster’s confused!![await]'
             world.battle_dialogs.battle_dialogs[130] = f' {world.bowser_palette.name}’s scaring the monster![await]'
-        world.enemies.get_by_type(BOWSERCLONEEnemy).set_name(
-            world.bowser_palette.clone_name
-        )
-        world.enemies.get_by_type(BOWSERCOPYSEnemy).set_name(
-            world.bowser_palette.strong_clone_name
-        )
+            world.enemies.get_by_type(BOWSERCLONEEnemy).set_name(
+                world.bowser_palette.clone_name
+            )
+            world.enemies.get_by_type(BOWSERCOPYSEnemy).set_name(
+                world.bowser_palette.strong_clone_name
+            )
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("BOWSER CLONE", world.bowser_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("BOWSER COPY S", world.bowser_palette.strong_clone_name)
         if world.geno_palette.rename_character:
             world.allies._allies[3].name = world.geno_palette.name
-        world.enemies.get_by_type(GENOCLONEEnemy).set_name(
-            world.geno_palette.clone_name
-        )
-        world.enemies.get_by_type(GENOCLONESEnemy).set_name(
-            world.geno_palette.strong_clone_name
-        )
+            world.enemies.get_by_type(GENOCLONEEnemy).set_name(
+                world.geno_palette.clone_name
+            )
+            world.enemies.get_by_type(GENOCLONESEnemy).set_name(
+                world.geno_palette.strong_clone_name
+            )
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("GENO CLONE", world.geno_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("GENO CLONE S", world.geno_palette.strong_clone_name)
         if world.mallow_palette.rename_character:
             world.allies._allies[4].name = world.mallow_palette.name
-        world.enemies.get_by_type(MALLOWCLONEEnemy).set_name(
-            world.mallow_palette.clone_name
-        )
-        world.enemies.get_by_type(MALLOWCOPYSEnemy).set_name(
-            world.mallow_palette.strong_clone_name
-        )
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("TOADSTOOL 2", world.toadstool_palette.clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("PEACH CLONE", world.toadstool_palette.clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("MALLOW CLONE", world.mallow_palette.clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("MARIO CLONE", world.mario_palette.clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("GENO CLONE", world.geno_palette.clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("BOWSER CLONE", world.bowser_palette.clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("TOADSTOOL 3", world.toadstool_palette.strong_clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("S PEACH CLONE", world.toadstool_palette.strong_clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("MALLOW COPY S", world.mallow_palette.strong_clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("BOWSER COPY S", world.bowser_palette.strong_clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("GENO CLONE S", world.geno_palette.strong_clone_name)
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("MARIO CLONE S", world.mario_palette.strong_clone_name)
+            world.enemies.get_by_type(MALLOWCLONEEnemy).set_name(
+                world.mallow_palette.clone_name
+            )
+            world.enemies.get_by_type(MALLOWCOPYSEnemy).set_name(
+                world.mallow_palette.strong_clone_name
+            )
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("MALLOW CLONE", world.mallow_palette.clone_name)
+            world.overworld_dialogs.search_and_replace_in_all_dialogs("MALLOW COPY S", world.mallow_palette.strong_clone_name)
 
     # Initialize selected music IDs
     world.selected_music_ids = []
