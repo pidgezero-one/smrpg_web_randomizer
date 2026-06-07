@@ -447,10 +447,12 @@ class GameWorld:
             if not isinstance(location_instance, InvisibleFlagLocation):
                 return False
             which = location_instance._which
+            # Slot->fear must match the found-bit/item/hint order: i=0,1,2 set
+            # flag1,2,3, which script_2081 fixes as Greaper, Big Boo, Dry Bones.
             proxy_classes = {
-                0: ThreeMustyFearsBonesProxy,
-                1: ThreeMustyFearsGreaperProxy,
-                2: ThreeMustyFearsBooProxy,
+                0: ThreeMustyFearsGreaperProxy,
+                1: ThreeMustyFearsBooProxy,
+                2: ThreeMustyFearsBonesProxy,
             }
             proxy_class = proxy_classes.get(which)
             if proxy_class is None:

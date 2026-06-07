@@ -1048,20 +1048,23 @@ def set_locations(world: GameWorld) -> None:
                     E0091_INVISIBLE_ITEM_SUMMONER
                 ).insert_before_nth_command(0, SummonObjectToSpecificLevel(n_id, r))
             # set hint text
+            # Hint dialog must match the found-bit each slot sets (i=0,1,2 ->
+            # flag1,2,3), and in script_2081 flag1's NPC (Greaper) shows DI1109,
+            # flag2's (Big Boo) shows DI1107, flag3's (Dry Bones) shows DI1108.
             if i == 0:
-                world.update_dialog(
-                    DI1108_RESERVED_FOR_DRYBONESFLAG_HINT,
-                    "DRY BONES:\n" + location.clue_text,
-                )
-            elif i == 1:
                 world.update_dialog(
                     DI1109_RESERVED_FOR_GREAPERFLAG_HINT,
                     "GREAPER:\n" + location.clue_text,
                 )
-            elif i == 2:
+            elif i == 1:
                 world.update_dialog(
                     DI1107_RESERVED_FOR_BIGBOOFLAG_HINT,
                     "THE BIG BOO:\n" + location.clue_text,
+                )
+            elif i == 2:
+                world.update_dialog(
+                    DI1108_RESERVED_FOR_DRYBONESFLAG_HINT,
+                    "DRY BONES:\n" + location.clue_text,
                 )
             invisible_flag_locations[location_cls] = location
 

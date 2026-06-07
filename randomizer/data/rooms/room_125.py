@@ -188,7 +188,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 6
             npc=npcs.TRAMPOLINE_JUMP_NPC,
             initiator=EventInitiator.JUMP_ON,

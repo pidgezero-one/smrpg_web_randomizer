@@ -18559,7 +18559,7 @@ class MariosPadBedFlag(InvisibleFlagLocation):
     _x_coord = 3
     _y_coord = 11
     _world_area = WorldAreaEnum.MARIOS_PAD
-    _clue_text = """\n[center]My item's underneath a green bed.[await]"""
+    _clue_text = """[center]My item's underneath a green bed.[await]"""
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 440),
         RunDialog(
@@ -18590,7 +18590,7 @@ class RoseTownSignFlag(InvisibleFlagLocation):
     _x_coord = 10
     _y_coord = 47
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _clue_text = """\n[center]My item's behind a wooden flower.[await]"""
+    _clue_text = """[center]My item's behind a wooden flower.[await]"""
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 441),
         RunDialog(
@@ -18619,7 +18619,7 @@ class YosterIsleGoalFlag(InvisibleFlagLocation):
     _y_coord = 62
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _y_shift = -4
-    _clue_text = """\n[center]My item's between "O" and "A".[await]"""
+    _clue_text = """[center]My item's between "O" and "A".[await]"""
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 442),
         RunDialog(
@@ -18706,7 +18706,7 @@ class MariosPadHatFlag(InvisibleFlagLocation):
     _y_coord = 13
     _world_area = WorldAreaEnum.MARIOS_PAD
     _z_coord = 1
-    _clue_text = """\n[center]My item's under a red hat.[await]"""
+    _clue_text = """[center]My item's under a red hat.[await]"""
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 445),
         RunDialog(
@@ -19594,7 +19594,7 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _z_coord = 3
     _x_shift = 16
-    _clue_text = "\n My item?[delay]\n ...[delay]It's on the word “IN”,\n [delay]above a big hole.[await]"
+    _clue_text = " My item?[delay]\n ...[delay]It's on the word “IN”,\n [delay]above a big hole.[await]"
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 473),
         RunDialog(

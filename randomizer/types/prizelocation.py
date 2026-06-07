@@ -3247,12 +3247,15 @@ class InvisibleFlagLocation(NPCLocationRow1, KeyItemLocation):
             BigBooFlagPrize,
         )
 
+        # Slot order must match the found-bit order so each slot is internally
+        # coherent: bit (.bit / E1246-E1248) maps i=0,1,2 -> flag1,2,3, and
+        # script_2081 fixes flag1=Greaper, flag2=BigBoo, flag3=DryBones.
         if self._which == 0:
-            return DryBonesFlagPrize
-        elif self._which == 1:
             return GreaperFlagPrize
-        elif self._which == 2:
+        elif self._which == 1:
             return BigBooFlagPrize
+        elif self._which == 2:
+            return DryBonesFlagPrize
         raise ValueError("which must be 0, 1, or 2")
 
     def __init__(self, which: int):
