@@ -704,17 +704,10 @@ def set_locations(world: GameWorld) -> None:
             ToadstoolSpell6: ToadstoolSpell6(),
         }
 
-    # Only add Super Jump reward locations if Super Jump spell is enabled
-    available_spells = world.settings.get_flag(AvailableSpells)
-    super_jump_enabled = any(
-        spell_opt.value == SuperJumpSpell for spell_opt in available_spells.enabled
-    )
-    if super_jump_enabled:
-        world.locations = {
-            **world.locations,
-            MonstroFirstSuperJumpRewardLocation: MonstroFirstSuperJumpRewardLocation(),
-            MonstroSecondSuperJumpRewardLocation: MonstroSecondSuperJumpRewardLocation(),
-        }
+    # NOTE: The two Monstro Super Jump reward locations are added later, in
+    # shuffle_rules(), once the final character roster is known. In vanilla
+    # learned-spell mode the feature only exists if Super Jump's learner (Mario)
+    # is actually in the seed, which isn't decided until character selection.
 
     if world.settings.isflag_enabled(FixKnifeGuy):
         world.locations = {

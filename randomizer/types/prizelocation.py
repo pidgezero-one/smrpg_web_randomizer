@@ -1103,6 +1103,52 @@ class OverworldMapRegion(StrEnum):
     WORLD_7 = "World 7"
 
 
+_VANILLA_SPELL_OWNER_MAP: dict[type[SpellPrize], type[CharacterPrize]] | None = None
+
+
+def vanilla_spell_owner(spell_prize: type[SpellPrize]) -> type[CharacterPrize] | None:
+    """Return the character who learns ``spell_prize`` in the vanilla game.
+
+    Used by SpellsAnywhere placement when learned-spell randomization
+    (CharacterLearnedSpells) is disabled, so a spell found in the world is
+    granted to its original owner instead of a random character. The mapping is
+    derived from the spell-slot locations' ``_originally_held`` values, which are
+    the canonical definition of vanilla spell ownership.
+    """
+    global _VANILLA_SPELL_OWNER_MAP
+    if _VANILLA_SPELL_OWNER_MAP is None:
+        from ..progression.prizes import (
+            MarioRecruitmentPrize,
+            ToadstoolRecruitmentPrize,
+            BowserRecruitmentPrize,
+            GenoRecruitmentPrize,
+            MallowRecruitmentPrize,
+        )
+        from ..progression.prizelocations import (
+            MarioSpell1, MarioSpell2, MarioSpell3, MarioSpell4, MarioSpell5, MarioSpell6,
+            ToadstoolSpell1, ToadstoolSpell2, ToadstoolSpell3, ToadstoolSpell4, ToadstoolSpell5, ToadstoolSpell6,
+            BowserSpell1, BowserSpell2, BowserSpell3, BowserSpell4, BowserSpell5, BowserSpell6,
+            GenoSpell1, GenoSpell2, GenoSpell3, GenoSpell4, GenoSpell5, GenoSpell6,
+            MallowSpell1, MallowSpell2, MallowSpell3, MallowSpell4, MallowSpell5, MallowSpell6,
+        )
+
+        groups: list[tuple[type[CharacterPrize], list[type[SpellSlotLocation]]]] = [
+            (MarioRecruitmentPrize, [MarioSpell1, MarioSpell2, MarioSpell3, MarioSpell4, MarioSpell5, MarioSpell6]),
+            (ToadstoolRecruitmentPrize, [ToadstoolSpell1, ToadstoolSpell2, ToadstoolSpell3, ToadstoolSpell4, ToadstoolSpell5, ToadstoolSpell6]),
+            (BowserRecruitmentPrize, [BowserSpell1, BowserSpell2, BowserSpell3, BowserSpell4, BowserSpell5, BowserSpell6]),
+            (GenoRecruitmentPrize, [GenoSpell1, GenoSpell2, GenoSpell3, GenoSpell4, GenoSpell5, GenoSpell6]),
+            (MallowRecruitmentPrize, [MallowSpell1, MallowSpell2, MallowSpell3, MallowSpell4, MallowSpell5, MallowSpell6]),
+        ]
+        mapping: dict[type[SpellPrize], type[CharacterPrize]] = {}
+        for char_prize, slot_locations in groups:
+            for slot_location in slot_locations:
+                held = slot_location._originally_held
+                if held is not None:
+                    mapping[held] = char_prize
+        _VANILLA_SPELL_OWNER_MAP = mapping
+    return _VANILLA_SPELL_OWNER_MAP.get(spell_prize)
+
+
 class PrizeLocation(Generic[TOriginallyHeld]):
     _prize: Prize | None
     _originally_held: TOriginallyHeld
@@ -1321,14 +1367,27 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                 if not available_chars:
                     return False
 
-                # Assign a random available character to this spell if not already assigned
-                # Note: count is NOT incremented here - it's done in _on_item_placed when actually placed
-                # This is because can_accept is called multiple times (once per potential location)
+                # Assign a character to this spell if not already assigned.
+                # Note: count is NOT incremented here - it's done in _on_item_placed
+                # when actually placed, because can_accept is called multiple times
+                # (once per potential location).
                 if prize.character is None:
-                    import random as _random
+                    from randomizer.types.flags import CharacterLearnedSpells
 
-                    selected_char = _random.choice(available_chars)
-                    prize.set_character(selected_char)
+                    if world.settings.isflag_enabled(CharacterLearnedSpells):
+                        # Learned spells are randomized: distribute spells across
+                        # the recruited characters that still have room.
+                        import random as _random
+
+                        selected_char = _random.choice(available_chars)
+                        prize.set_character(selected_char)
+                    else:
+                        # Learned spells are vanilla: each spell is granted to the
+                        # character who learns it in the original game.
+                        owner = vanilla_spell_owner(type(prize))
+                        if owner not in available_chars:
+                            return False
+                        prize.set_character(owner)
                 return True
             else:
                 return isinstance(self, SpellSlotLocation)

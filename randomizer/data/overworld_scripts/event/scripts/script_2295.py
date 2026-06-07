@@ -212,7 +212,7 @@ script = EventScript([
 	]),
 	Pause(15),
 	ActionQueueSync(target=NPC_0, subscript=[
-		A_SetSpriteSequence(index=5, is_sequence=True, looping=True, identifier="wedding_ending_shift"),
+		A_SetSpriteSequence(index=1, is_sequence=True, looping=True, identifier="wedding_ending_shift"),
 		A_Pause(45)
 	], identifier="wedding_ending_aq"),
 	StarMaskShrinkToScreenCenter(),

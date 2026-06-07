@@ -157,6 +157,7 @@ from ...types.prizelocation import (
     FrogDiscipleLocation,
     TreasureChestLocation,
     StartingCharacterLocation,
+    vanilla_spell_owner,
 )
 from ...types.prize import (
     CharacterPrize,
@@ -510,7 +511,9 @@ def _dump_placement_failure(
     return filepath
 
 
-def select_spells(world: GameWorld) -> list[type[Prize]]:
+def select_spells(
+    world: GameWorld, selected_roster: set[type[CharacterPrize]]
+) -> list[type[Prize]]:
     # All 27 spell prize classes
     all_spell_prizes: list[type[Prize]] = [
         JumpSpellPrize,
@@ -592,14 +595,17 @@ def select_spells(world: GameWorld) -> list[type[Prize]]:
     ]
 
     if not world.settings.isflag_enabled(CharacterLearnedSpells):
-        # Characters learn their vanilla spells - return only those from
-        # included characters' spell slots that aren't disabled
+        # Characters learn their vanilla spells. Only include spells whose
+        # vanilla owner is actually in the seed's character roster: a spell
+        # learned by an available-but-unselected character can never be placed
+        # (its owner is never recruited) and would deadlock placement.
         return [
             loc.originally_held
             for loc in world.locations.values()
             if isinstance(loc, SpellSlotLocation)
             and loc.originally_held is not None
             and loc.originally_held not in excluded_spell_prizes
+            and vanilla_spell_owner(loc.originally_held) in selected_roster
         ]
 
     selected_spells = []
@@ -682,110 +688,31 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     excluded_char_names: set[str] = {
         m.value.name for m in available_chars_flag.disabled
     }
-    selected_spells = select_spells(world)
+    # --- Character roster first ---------------------------------------------
+    # Decide which characters are actually in the seed BEFORE selecting spells,
+    # so the spell pool can be derived from the final roster. In vanilla
+    # learned-spell mode a spell is only learnable by its owning character, so a
+    # spell whose owner isn't in the seed must never enter the pool (it could
+    # never be placed and would deadlock the fill).
 
-    non_elemental_spell_prizes: list[type[Prize]] = [
-        prize
-        for prize in [
-            StarRainSpellPrize,
-            GenoWhirlSpellPrize,
-            GenoBlastSpellPrize,
-            TerrorizeSpellPrize,
-            PoisonGasSpellPrize,
-        ]
-        if prize in selected_spells
-    ]
-    if not world.settings.isflag_enabled(InfuseSpellElements):
-        non_elemental_spell_prizes.extend(
-            [
-                prize
-                for prize in [
-                    GenoBeamSpellPrize,
-                    GenoFlashSpellPrize,
-                    CrusherSpellPrize,
-                    BowserCrushSpellPrize,
-                    PsychBombSpellPrize,
-                ]
-                if prize in selected_spells
-            ]
-        )
-    if len(non_elemental_spell_prizes) == 0:
-        raise ValueError(
-            "No non-elemental spells are available to assign to progress rules. At least one non-elemental spell must be included in the seed for progression purposes."
-        )
+    # Get MaxCharacters setting
+    max_characters = world.settings.get_flag(MaxCharacters).value
 
-    # Map non-elemental spells to their owning character. Used both to bias
-    # spell selection toward explicit starters and to compute the resulting
-    # spell_required_chars set after selection.
-    spell_to_character: dict[type[Prize], type[CharacterPrize]] = {
-        StarRainSpellPrize: MallowRecruitmentPrize,
-        GenoWhirlSpellPrize: GenoRecruitmentPrize,
-        GenoBlastSpellPrize: GenoRecruitmentPrize,
-        TerrorizeSpellPrize: BowserRecruitmentPrize,
-        PoisonGasSpellPrize: BowserRecruitmentPrize,
-        GenoBeamSpellPrize: GenoRecruitmentPrize,
-        GenoFlashSpellPrize: GenoRecruitmentPrize,
-        CrusherSpellPrize: BowserRecruitmentPrize,
-        BowserCrushSpellPrize: BowserRecruitmentPrize,
-        PsychBombSpellPrize: ToadstoolRecruitmentPrize,
-    }
-
-    # Compute the characters explicitly chosen as starters so the non-elemental
-    # spell selection can prefer spells those characters already own. Without
-    # this bias a small max_characters budget can pick spells whose owners
-    # collide with the explicit starter and silently drop the starter from the
-    # seed.
+    # Characters explicitly chosen as starters. They must be present in the
+    # pool, otherwise StartingCharacter1's placement falls back to a filler
+    # character and the user's chosen starter silently disappears. Also used to
+    # bias non-elemental progression-spell selection toward owners already in
+    # the seed.
     starting_chars_flag = world.settings.get_flag(StartingCharacters)
     explicit_starter_prizes: set[type[CharacterPrize]] = set()
     for option in starting_chars_flag.enabled:
         value = option.value
+        # Skip Random_X placeholders — those are meant to be resolved randomly
         if isinstance(value, str):
             continue
         prize_cls = all_character_prizes.get(value.name)
         if prize_cls is not None:
             explicit_starter_prizes.add(prize_cls)
-
-    # Place up to 2 non-elemental spells in progression tier to ensure
-    # MokuraBossFight (and similar) can be placed (they require a non-elemental
-    # spell to be accessible). Use fewer if not enough are available.
-    # Prefer spells owned by explicit starters so spell-progression doesn't
-    # force in additional characters and bust the max_characters budget.
-    preferred_spells = [
-        s for s in non_elemental_spell_prizes
-        if spell_to_character.get(s) in explicit_starter_prizes
-    ]
-    other_spells = [
-        s for s in non_elemental_spell_prizes if s not in preferred_spells
-    ]
-    random.shuffle(preferred_spells)
-    random.shuffle(other_spells)
-    ordered_non_elementals = preferred_spells + other_spells
-    progression_nonelementals = ordered_non_elementals[
-        : min(2, len(ordered_non_elementals))
-    ]
-
-    # Characters required for spell progression (when spells are vanilla)
-    spell_required_chars: set[type[CharacterPrize]] = set()
-    if not world.settings.isflag_enabled(
-        CharacterLearnedSpells
-    ) and not world.settings.isflag_enabled(SpellsAnywhere):
-        # Mario must be in progression (always has Jump for combat)
-        spell_required_chars.add(MarioRecruitmentPrize)
-        # Characters who learn the selected progression non-elemental spells
-        for spell in progression_nonelementals:
-            char = spell_to_character.get(spell)
-            if char is not None:
-                spell_required_chars.add(char)
-
-    # Assign selected spells to tiers
-    for spell in selected_spells:
-        if spell in progression_nonelementals or issubclass(spell, SuperJumpSpellPrize):
-            progress_rules.append(spell)
-        else:
-            should_otherwise_include_rules.append(spell)
-
-    # Get MaxCharacters setting
-    max_characters = world.settings.get_flag(MaxCharacters).value
 
     # Determine which characters are required for progression
     conditional_progress: dict[type[Prize], list[tuple[type, object]]] = {
@@ -821,21 +748,17 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
                 progression_required_chars.add(prize_cls)
                 break
 
-    # Add characters required by spell progression (vanilla spells)
-    progression_required_chars |= spell_required_chars
+    # When spells are vanilla and not shuffled into the world, Mario must be in
+    # the seed (he always has Jump for combat). Other vanilla spell-progression
+    # requirements are satisfied implicitly by deriving the spell pool from the
+    # roster below, so no other characters are force-added for spell reasons.
+    if not world.settings.isflag_enabled(
+        CharacterLearnedSpells
+    ) and not world.settings.isflag_enabled(SpellsAnywhere):
+        progression_required_chars.add(MarioRecruitmentPrize)
 
-    # Add characters explicitly selected as starters. They must be present in
-    # the pool, otherwise StartingCharacter1's placement falls back to a
-    # filler character and the user's chosen starter silently disappears.
-    starting_chars_flag = world.settings.get_flag(StartingCharacters)
-    for option in starting_chars_flag.enabled:
-        value = option.value
-        # Skip Random_X placeholders — those are meant to be resolved randomly
-        if isinstance(value, str):
-            continue
-        prize_cls = all_character_prizes.get(value.name)
-        if prize_cls is not None:
-            progression_required_chars.add(prize_cls)
+    # Add characters explicitly selected as starters.
+    progression_required_chars |= explicit_starter_prizes
 
     # Map prize class to character name for validation
     prize_to_name: dict[type[CharacterPrize], str] = {
@@ -886,15 +809,140 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         if prize_cls not in progression_required_chars
     ]
 
-    # Randomly select characters to fill remaining slots
-    if remaining_slots > 0 and non_progression_available:
+    # Randomly select characters to fill remaining slots. Cached for the duration
+    # of this shuffle attempt: shuffle_rules() runs many times per attempt (once
+    # per location in the pull loop), and the roster must stay identical across
+    # those calls so the spell pool and Super Jump reward locations agree.
+    if world._cached_char_fill is not None:
+        chars_to_include = world._cached_char_fill
+    elif remaining_slots > 0 and non_progression_available:
         # Select up to remaining_slots characters randomly
         chars_to_include = random.sample(
             non_progression_available,
             min(remaining_slots, len(non_progression_available)),
         )
+        world._cached_char_fill = chars_to_include
     else:
         chars_to_include = []
+        world._cached_char_fill = chars_to_include
+
+    # The final character roster present in the seed (required + randomly
+    # selected fill). Source of truth for deriving the spell pool and the
+    # Super Jump reward locations below.
+    selected_roster: set[type[CharacterPrize]] = (
+        progression_required_chars | set(chars_to_include)
+    )
+
+    # --- Spells, derived from the final roster ------------------------------
+    selected_spells = select_spells(world, selected_roster)
+
+    non_elemental_spell_prizes: list[type[Prize]] = [
+        prize
+        for prize in [
+            StarRainSpellPrize,
+            GenoWhirlSpellPrize,
+            GenoBlastSpellPrize,
+            TerrorizeSpellPrize,
+            PoisonGasSpellPrize,
+        ]
+        if prize in selected_spells
+    ]
+    if not world.settings.isflag_enabled(InfuseSpellElements):
+        non_elemental_spell_prizes.extend(
+            [
+                prize
+                for prize in [
+                    GenoBeamSpellPrize,
+                    GenoFlashSpellPrize,
+                    CrusherSpellPrize,
+                    BowserCrushSpellPrize,
+                    PsychBombSpellPrize,
+                ]
+                if prize in selected_spells
+            ]
+        )
+    if len(non_elemental_spell_prizes) == 0:
+        raise ValueError(
+            "No non-elemental spells are available to assign to progress rules. At least one non-elemental spell must be included in the seed for progression purposes."
+        )
+
+    # Map non-elemental spells to their owning character, used to bias the
+    # progression non-elemental selection toward explicit starters.
+    spell_to_character: dict[type[Prize], type[CharacterPrize]] = {
+        StarRainSpellPrize: MallowRecruitmentPrize,
+        GenoWhirlSpellPrize: GenoRecruitmentPrize,
+        GenoBlastSpellPrize: GenoRecruitmentPrize,
+        TerrorizeSpellPrize: BowserRecruitmentPrize,
+        PoisonGasSpellPrize: BowserRecruitmentPrize,
+        GenoBeamSpellPrize: GenoRecruitmentPrize,
+        GenoFlashSpellPrize: GenoRecruitmentPrize,
+        CrusherSpellPrize: BowserRecruitmentPrize,
+        BowserCrushSpellPrize: BowserRecruitmentPrize,
+        PsychBombSpellPrize: ToadstoolRecruitmentPrize,
+    }
+
+    # Place up to 2 non-elemental spells in the progression tier so
+    # MokuraBossFight (and similar) can be placed (they require a non-elemental
+    # spell to be accessible). These come from selected_spells, which is already
+    # roster-derived, so their owners are guaranteed to be in the seed. Prefer
+    # explicit-starter-owned spells.
+    preferred_spells = [
+        s for s in non_elemental_spell_prizes
+        if spell_to_character.get(s) in explicit_starter_prizes
+    ]
+    other_spells = [
+        s for s in non_elemental_spell_prizes if s not in preferred_spells
+    ]
+    random.shuffle(preferred_spells)
+    random.shuffle(other_spells)
+    ordered_non_elementals = preferred_spells + other_spells
+    progression_nonelementals = ordered_non_elementals[
+        : min(2, len(ordered_non_elementals))
+    ]
+
+    # Assign selected spells to tiers. Super Jump is intentionally NOT forced
+    # into the progression tier: it gates only its own two Monstro reward
+    # locations, and forcing it early deadlocks the fill when its owner (Mario)
+    # is a later, non-progression recruit. As a mandatory inclusion, place()'s
+    # character-first ordering guarantees Mario is recruited before it is placed.
+    for spell in selected_spells:
+        if spell in progression_nonelementals:
+            progress_rules.append(spell)
+        else:
+            should_otherwise_include_rules.append(spell)
+
+    # Super Jump reward locations are included only when the Super Jump spell
+    # actually exists in the seed: it is enabled in AvailableSpells, and in
+    # vanilla learned-spell mode its learner (Mario) is in the roster. The
+    # locations gate on has_item(SuperJumpSpellPrize), which already implies
+    # Mario is recruited, so no extra access check is required here.
+    super_jump_in_available_spells = any(
+        opt.value == SuperJumpSpell
+        for opt in world.settings.get_flag(AvailableSpells).enabled
+    )
+    super_jump_enabled = super_jump_in_available_spells and (
+        world.settings.isflag_enabled(CharacterLearnedSpells)
+        or MarioRecruitmentPrize in selected_roster
+    )
+    # Reconcile reward-location presence with the decision. world.locations is
+    # not rebuilt between shuffle retries, so a prior attempt may have left these
+    # behind; keep this symmetric (add when enabled, remove when not) so the
+    # reward locations never outlive the Super Jump spell that gates them.
+    monstro_locations = (
+        MonstroFirstSuperJumpRewardLocation,
+        MonstroSecondSuperJumpRewardLocation,
+    )
+    if super_jump_enabled:
+        if MonstroFirstSuperJumpRewardLocation not in world.locations:
+            world.locations = {
+                **world.locations,
+                MonstroFirstSuperJumpRewardLocation: MonstroFirstSuperJumpRewardLocation(),
+                MonstroSecondSuperJumpRewardLocation: MonstroSecondSuperJumpRewardLocation(),
+            }
+    elif any(loc in world.locations for loc in monstro_locations):
+        world.locations = {
+            k: v for k, v in world.locations.items() if k not in monstro_locations
+        }
 
     # These will be added to should_otherwise_include_rules later
 
@@ -1334,6 +1382,10 @@ def shuffle_prizes(world: GameWorld) -> None:
 
     # Reset spell assignments for SpellsAnywhere
     world._spell_assignments = None
+    # Reset the cached character roster so this attempt re-rolls the random fill
+    # (retries should get a fresh roster), but stays stable across the many
+    # shuffle_rules() calls within this attempt.
+    world._cached_char_fill = None
 
     rules = shuffle_rules(world)
 

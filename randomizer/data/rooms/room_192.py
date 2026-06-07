@@ -128,7 +128,7 @@ room = Room(
     objects=[
         RegularNPC( # 0
             npc=npcs.BOOSTER_NPC,
-            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            initiator=EventInitiator.DO_ANYTHING,
             event_script=E3820_FORCED_TOWER_BOSS_1_FIGHT,
             action_script=A0000_DO_NOTHING,
             visible=False,

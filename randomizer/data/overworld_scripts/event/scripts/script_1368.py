@@ -322,7 +322,7 @@ script = EventScript([
 		A_SetSequenceSpeed(VERY_FAST),
 		A_SetWalkingSpeed(NORMAL),
 		A_WalkSouthwestPixels(10),
-		A_VisibilityOff()
+		A_VisibilityOff(),
 	]),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_SetSequenceSpeed(VERY_FAST),
@@ -343,8 +343,16 @@ script = EventScript([
 		A_VisibilityOff(),
 		A_Pause(45)
 	]),
+	JmpIfBitSet(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_1368_summon_to_level_94_ss"]),
+	ActionQueueAsync(target=NPC_0, subscript=[
+		A_ShiftToXYCoords(x=5, y=29, ),
+		A_FaceNorthwest(),
+		A_VisibilityOn(),
+        A_SetSolidityBits(cant_walk_through=True, cant_walk_under=True, cant_jump_through=True, cant_pass_npcs=True, bit_4=True, bit_7=True),
+	]),
+	JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_1368_summon_to_level_94_"], identifier="EVENT_1368_summon_to_level_94_ss"),
 	RemoveObjectFromCurrentLevel(NPC_0),
-	RemoveObjectFromCurrentLevel(NPC_1),
+	RemoveObjectFromCurrentLevel(NPC_1, identifier="EVENT_1368_summon_to_level_94_"),
 	RemoveObjectFromCurrentLevel(NPC_2),
 	RemoveObjectFromCurrentLevel(NPC_3),
 	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=1),
@@ -355,12 +363,5 @@ script = EventScript([
     RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	RunEventAsSubroutine(E1201_TOWER_CURTAIN_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
-	Return(),
-	ActionQueueAsync(target=NPC_0, subscript=[
-		A_VisibilityOn(),
-		A_FaceNorthwest(),
-		A_ShiftToXYCoords(x=5, y=29)
-	], identifier="EVENT_1368_summon_to_level_94"),
-	SummonObjectToSpecificLevel(NPC_0, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM),
-	Return()
+	Return(identifier="EVENT_1368_summon_to_level_94"),
 ])

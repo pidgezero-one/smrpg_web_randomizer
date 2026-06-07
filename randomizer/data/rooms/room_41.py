@@ -53,7 +53,7 @@ room = Room(
                 index_in_main_buffer=True,
             ),
             Buffer(
-                buffer_type=BufferType.COINS,
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
@@ -505,7 +505,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularNPC(  # 5
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0228_FREESTANDING_14_GRANT,
             action_script=A0015_DO_NOTHING,

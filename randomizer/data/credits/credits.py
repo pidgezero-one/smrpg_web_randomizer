@@ -31,18 +31,36 @@ END_CREDITS_DELAY_2 = 40
 BEGIN_TITLES_DELAY = 50
 END_TITLES_DELAY = 40
 
-# Tune the dedication panel's fade-in time: raising each of these by 1 pushes
-# the dedication ~0.73 seconds later (FIXED_FILLER_BLOCKS * 2 frames / 60 fps).
-# Lower them to pull it earlier. Current values land the fade-in at ~4:37.60.
-FILLER_DELAY_1 = 23
-FILLER_DELAY_2 = 23
+# Blank pause before the dedication, in credits "delay units" (summed end_thing
+# delay bytes; ~1.5 real frames each), spread across the byte-fill blocks. The
+# memorial is tuned to fade in ~4:38 into the credits music; added panels
+# (tadpole/sunken) pushed it to ~5:04, so the pause is trimmed to pull it back.
+# Keep this >= 2x the filler block count (~48) so BOTH delay halves of every
+# block stay nonzero, matching the legacy (23,23) blocks — the earlier pause=0
+# attempt gave all-zero delays and the dedication vanished. If the memorial ever
+# fails to render, raise this (1012 = the legacy value, definitely in-window but
+# lands it late).
+PRE_MEMORIAL_PAUSE_UNITS = 60
 
-# Locked filler block count. finalize() auto-pads the remaining byte budget
-# with cheap 7-byte add(EMPTY_STRING) writes so this count is ALWAYS achieved
-# regardless of how many real panels sit above the dedication. That keeps the
-# dedication's wall-clock start time invariant to text/name additions — only
-# panel add/remove or FILLER_DELAY_* changes will shift it.
-FIXED_FILLER_BLOCKS = 22
+# Each filler block carries two single-byte frame delays; keep each half <= 127
+# to stay well inside the proven range, so one block holds up to 254 frames.
+MAX_FILLER_DELAY = 127
+
+# The dedication is tuned to fade in at a fixed point in the credits music
+# (~4:38). The number of real panels before it VARIES by seed (tadpole / sunken
+# / palette panels add content), so the filler count is COMPUTED to compensate:
+# more content => fewer filler panels, keeping the dedication's wall-clock time
+# constant. finalize() estimates the content's running time from its measured
+# transition count, then sizes the filler to reach the target. These are
+# stopwatch-calibrated approximations — change MEMORIAL_FADE_SECONDS to move the
+# target; nudge the two rates if the fit drifts. The credits engine spends a
+# large fixed time per panel TRANSITION, so only the filler COUNT matters for
+# timing (the byte-padding draws inside each panel are nearly free).
+MEMORIAL_FADE_SECONDS = 4 * 60 + 38   # 4:38 — when the dedication should fade in
+CREDITS_INTRO_SECONDS = 15            # run-up before the first credit panel
+SEC_PER_CONTENT_EVENT = 1.83          # avg seconds per real-content transition
+SEC_PER_FILLER_PANEL = 4.7            # seconds the engine spends per filler panel
+
 
 def to_str(string):
     return (
@@ -76,6 +94,32 @@ def allocate_string(string_length: int, free_list: dict[int, int]) -> int | None
     return None
 
 
+def _distribute_filler_frames(
+    num_blocks: int, total_frames: int
+) -> list[tuple[int, int]]:
+    """Split total_frames across num_blocks invisible filler blocks.
+
+    Each block gets one delay pair (d1, d2); the sum across all blocks equals
+    total_frames exactly, so the pre-dedication pause is independent of how many
+    blocks the byte budget happens to allow. Frames are spread as evenly as
+    possible and each half stays <= MAX_FILLER_DELAY (the single-byte delay cap).
+    """
+    if num_blocks <= 0:
+        return []
+    base, extra = divmod(total_frames, num_blocks)
+    blocks: list[tuple[int, int]] = []
+    for i in range(num_blocks):
+        frames = base + (1 if i < extra else 0)
+        d1 = (frames + 1) // 2
+        d2 = frames // 2
+        assert d1 <= MAX_FILLER_DELAY and d2 <= MAX_FILLER_DELAY, (
+            f"filler block delay {d1}/{d2} exceeds {MAX_FILLER_DELAY}; "
+            f"too few blocks ({num_blocks}) for {total_frames} frames"
+        )
+        blocks.append((d1, d2))
+    return blocks
+
+
 class Credits(object):
     def __init__(self, table_offset=0):
         self.strings = {}
@@ -86,6 +130,10 @@ class Credits(object):
         self.table_offset = table_offset
         self.current_credits = []
         self.current_titles = []
+        # Count of credit "transitions" (end_thing* calls). Snapshotted at
+        # begin_tail() into main_events to size the compensating filler.
+        self.content_events: int = 0
+        self.main_events: int | None = None
 
     def begin_tail(self):
         """Redirect subsequent builder calls into the tail buffer.
@@ -95,6 +143,7 @@ class Credits(object):
         """
         assert self._saved_acc is None, "begin_tail already active"
         assert not self.tail, "tail already populated"
+        self.main_events = self.content_events
         self._saved_acc = self.acc
         self.acc = self.tail
 
@@ -115,6 +164,7 @@ class Credits(object):
         self.acc += [0xE3, 0x12, dex, x, y, font, scroll]
 
     def end_thing(self, delay):
+        self.content_events += 1
         self.acc += [
             0xE3,
             0x00,
@@ -132,6 +182,7 @@ class Credits(object):
         ]
 
     def end_thing_2(self, delay):
+        self.content_events += 1
         self.acc += [
             0xE3,
             0x00,
@@ -149,6 +200,7 @@ class Credits(object):
         ]
 
     def end_thing_3(self, delay):
+        self.content_events += 1
         self.acc += [
             0xE3,
             0x00,
@@ -166,6 +218,7 @@ class Credits(object):
         ]
 
     def end_thing_4(self, delay):
+        self.content_events += 1
         self.acc += [
             0xE3,
             0x00,
@@ -222,38 +275,52 @@ class Credits(object):
         string_table_size = len(self.strings) * 2
 
         # Layout plan (deterministic):
-        #   [main content] [cheap pad] [fixed filler] [tail] [small zero tail]
-        # The cheap pad absorbs byte variation in main so the filler block
-        # count — and therefore the pre-dedication time — is always constant.
-        # Cheap pad = 7-byte add(EMPTY_STRING) no-op writes; they have
-        # negligible display time vs. filler blocks which carry the real delay.
-        filler_bytes = FIXED_FILLER_BLOCKS * 40
-        main_and_pad_budget = credit_len - filler_bytes - len(self.tail)
-        cheap_pad_bytes = main_and_pad_budget - len(self.acc)
-        assert cheap_pad_bytes >= 0, (
-            f"main ({len(self.acc)}) + tail ({len(self.tail)}) + "
-            f"{FIXED_FILLER_BLOCKS} filler blocks exceeds {credit_len} bytes; "
-            f"reduce FIXED_FILLER_BLOCKS or main content"
+        #   [main content] [pre-dedication filler panels] [dedication] [0x02 idle]
+        # The filler panels are invisible blank transitions whose COUNT positions
+        # the dedication at the target wall-clock time; the trailing 0x02 idle
+        # command freezes the engine on the blank post-dedication screen until the
+        # music ends and the fireworks take over (see below).
+        filler_budget = credit_len - len(self.acc) - len(self.tail)
+        assert filler_budget >= 1, (
+            f"main ({len(self.acc)}) + tail ({len(self.tail)}) leave no room in "
+            f"{credit_len} bytes for the idle terminator; reduce main content"
         )
-        cheap_writes = cheap_pad_bytes // 7
-        cheap_remainder = cheap_pad_bytes % 7
-        for _ in range(cheap_writes):
-            self.add(0x80, 0x40, 0x81, EMPTY_STRING)
-        # Residual <7 bytes — well under the ~200-byte zero-run crash threshold.
-        self.acc += cheap_remainder * [0]
+        # Size the filler so the dedication is reached at ~MEMORIAL_FADE_SECONDS:
+        # estimate the content's running time from its measured transition count,
+        # then add enough invisible blank filler panels (each ~SEC_PER_FILLER_PANEL
+        # of engine time) to reach the target. More seed content => fewer filler
+        # panels, so the dedication's wall-clock time stays constant. Clamp to the
+        # byte budget (26 B per empty panel: end_thing + end_thing_2).
+        main_events = (
+            self.content_events if self.main_events is None else self.main_events
+        )
+        content_seconds = CREDITS_INTRO_SECONDS + main_events * SEC_PER_CONTENT_EVENT
+        panels = round((MEMORIAL_FADE_SECONDS - content_seconds) / SEC_PER_FILLER_PANEL)
+        # Clamp to the byte budget, reserving >=1 byte for the trailing 0x02
+        # terminator; allow 0 panels if the content already runs past the target
+        # (then the dedication simply follows the content as early as possible).
+        panels = max(0, min(panels, (filler_budget - 1) // 26))
+        pause_units = min(PRE_MEMORIAL_PAUSE_UNITS, panels * 2 * MAX_FILLER_DELAY)
 
-        # Emit the fixed-count filler. Large runs of zero bytes (>~200) crash
-        # the SNES credits engine, so we use structured invisible credit blocks.
         self.current_credits.clear()
         self.current_titles.clear()
-        for _ in range(FIXED_FILLER_BLOCKS):
+        for delay_1, delay_2 in _distribute_filler_frames(panels, pause_units):
             self.begin_credits()
-            self.add_credit(0x80, 0x40, 0x81, EMPTY_STRING)
-            self.end_credits(FILLER_DELAY_1, FILLER_DELAY_2)
+            self.end_credits(delay_1, delay_2)
 
-        # Tail runs last (dedication panel).
+        # Dedication panel runs last (the final visible content)...
         self.acc += self.tail
-        self.acc += (credit_len - len(self.acc)) * [0]
+
+        # ...then a single IDLE terminator. Credits opcode 0x02's handler is just
+        # `JMP $0C5F` (at $C2:12AF): it re-runs every frame WITHOUT advancing the
+        # command pointer, so the engine freezes on the blank post-dedication
+        # screen until the music ends and the fireworks scene takes over — exactly
+        # how vanilla ends its stream (its final byte is 0x02). This replaces both
+        # the old zero pad (opcode 0x00 is a real command that marched off the
+        # buffer into the string table = a crash) and the cycling hold panels
+        # (which left the credits text-region window set, corrupting the
+        # fireworks). Only the first 0x02 is ever reached; the rest fill to 3380.
+        self.acc += (credit_len - len(self.acc)) * [0x02]
 
         free_list = {
             0x3f9c40: 952,
@@ -680,12 +747,12 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.add_credit(0x80, 0x00, 0xC2, "NONE OF THIS WOULD BE POSSIBLE.")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
-    # Redirect dedication into the tail buffer so the filler plays BEFORE
-    # it and the dedication panel is the final real content the engine
-    # processes. Timing is controlled by FILLER_DELAY_1 / FILLER_DELAY_2 at
-    # the top of the file — finalize() emits a fixed FIXED_FILLER_BLOCKS
-    # count regardless of main content size, so text/name edits don't shift
-    # the dedication's start time.
+    # Redirect dedication into the tail buffer so the filler plays BEFORE it
+    # and the dedication panel is the final real content the engine processes.
+    # finalize() fills the leftover bytes with invisible blocks; PRE_MEMORIAL_
+    # PAUSE_UNITS (top of file, default 0) controls how long they linger before
+    # the dedication. The dedication therefore follows the last real panel,
+    # shifted later only by that pause.
     credits.begin_tail()
 
     credits.begin_titles(BEGIN_TITLES_DELAY)

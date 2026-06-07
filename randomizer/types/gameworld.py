@@ -296,6 +296,12 @@ class GameWorld:
     # Maps character prize type -> count of spells assigned to that character
     _spell_assignments: dict[type, int] | None = None
 
+    # Cached random character-fill for the current shuffle attempt. shuffle_rules
+    # is called many times per attempt (once per location in the pull loop); the
+    # cache keeps the selected roster stable across those calls so spell-pool and
+    # reward-location decisions stay consistent. Reset per attempt in shuffle_prizes.
+    _cached_char_fill: list[type[CharacterPrize]] | None = None
+
     @property
     def overworld_character(self) -> CharacterPrize:
         if not self.settings.isflag_enabled(PlayAsStarter):

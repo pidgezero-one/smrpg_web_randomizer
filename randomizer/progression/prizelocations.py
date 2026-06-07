@@ -7044,11 +7044,12 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
                     and len(self.prize.mook_henchmen) > 0
                 )
                 effective_count = 3 if has_mook_fallback else char_count
-                render_booster_tower_henchman_scripts(
-                    world,
-                    self.prize,
-                    effective_count,
-                )
+                if not is_vanilla:
+                    render_booster_tower_henchman_scripts(
+                        world,
+                        self.prize,
+                        effective_count,
+                    )
 
             # Only if mook henchman slot is assigned
             mook_henchmen_assigned = (

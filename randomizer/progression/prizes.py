@@ -2902,8 +2902,8 @@ class MuteSpellPrize(SpellPrize):
         "npc_spell_24_character",
     ]
     packet_replacement_ids = ["spell_24_elemental_packet"]
-    _dialog_id = DI1993_LEARN_SPELL_24
-    _autoterm_dialog_id = DI1994_LEARN_SPELL_24_AUTOTERM
+    _dialog_id = DI1997_LEARN_SPELL_26
+    _autoterm_dialog_id = DI1998_LEARN_SPELL_26_AUTOTERM
     _placement_id = 24
 
 
@@ -2921,8 +2921,8 @@ class SleepyTimeSpellPrize(SpellPrize):
         "npc_spell_25_character",
     ]
     packet_replacement_ids = ["spell_25_elemental_packet"]
-    _dialog_id = DI1995_LEARN_SPELL_25
-    _autoterm_dialog_id = DI1996_LEARN_SPELL_25_AUTOTERM
+    _dialog_id = DI1993_LEARN_SPELL_24
+    _autoterm_dialog_id = DI1994_LEARN_SPELL_24_AUTOTERM
     _placement_id = 25
 
 
@@ -2940,8 +2940,8 @@ class ComeBackSpellPrize(SpellPrize):
         "npc_spell_26_character",
     ]
     packet_replacement_ids = ["spell_26_elemental_packet"]
-    _dialog_id = DI1997_LEARN_SPELL_26
-    _autoterm_dialog_id = DI1998_LEARN_SPELL_26_AUTOTERM
+    _dialog_id = DI1995_LEARN_SPELL_25
+    _autoterm_dialog_id = DI1996_LEARN_SPELL_25_AUTOTERM
     _placement_id = 26
 
 

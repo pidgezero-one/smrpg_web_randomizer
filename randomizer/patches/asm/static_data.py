@@ -28,8 +28,34 @@ file offsets ``>= 0x140000`` (banks ``$D4``+) — see the deconstruction notes.
 
 import os
 import struct
+from collections.abc import Iterator
 
 _ASSET = os.path.join(os.path.dirname(__file__), "static_data.bin")
+
+# ``credits.py`` (update_credits) regenerates the ending-credits command buffer,
+# the string-pointer table, and the strings into these ROM ranges on EVERY
+# build. static_data.bin must not carry stale base-ROM bytes here: a leftover
+# blob is applied in address order between two freshly written strings and
+# clobbers the tail of whichever string precedes it (seen as garbled credit
+# lines, e.g. "WITHOUT YOU..." -> "WITHOUER DSGN."). The render-disjoint
+# extraction predated the open_mode->credits.py move and wrongly captured the
+# old credits region; trim it out here. Ranges mirror credits.py finalize():
+# region-1 string pool, command+table+strings, and the underscore tile.
+_CREDITS_OWNED = ((0x3F9C40, 0x3F9FF8), (0x3FDBB0, 0x3FF104), (0x3FFDDA, 0x3FFDDE))
+
+
+def _excluding_credits(offset: int, data: bytes) -> Iterator[tuple[int, bytes]]:
+    """Yield the sub-records of ``[offset, offset+len(data))`` that remain after
+    removing every credits-owned range (so static_data never overwrites the
+    credits region that ``credits.py`` regenerates)."""
+    start, end = offset, offset + len(data)
+    pos = start
+    for lo, hi in sorted(r for r in _CREDITS_OWNED if r[0] < end and r[1] > start):
+        if lo > pos:
+            yield pos, data[pos - start : lo - start]
+        pos = max(pos, hi)
+    if pos < end:
+        yield pos, data[pos - start : end - start]
 
 
 def get_patch() -> dict[int, bytes]:
@@ -41,6 +67,8 @@ def get_patch() -> dict[int, bytes]:
     while pos < len(blob):
         offset, length = struct.unpack_from("<II", blob, pos)
         pos += 8
-        out[offset] = blob[pos : pos + length]
+        for sub_off, sub_data in _excluding_credits(offset, blob[pos : pos + length]):
+            if sub_data:
+                out[sub_off] = sub_data
         pos += length
     return out

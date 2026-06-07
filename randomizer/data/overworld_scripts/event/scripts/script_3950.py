@@ -103,6 +103,7 @@ def build_contents(
 		ActionQueueAsync(target=PROTAGONIST_CHARACTER, subscript=[
 			A_SetWalkingSpeed(SLOW),
 			A_SetSequenceSpeed(FAST),
+			A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
 			A_Walk1StepSouthwest(),
 			A_WalkSouthwestPixels(12),
 			A_SetSpriteSequence(index=12, sprite_offset=6, is_sequence=True, looping=True, identifier="ending_protag_look_at_doll")
@@ -111,6 +112,7 @@ def build_contents(
 		ActionQueueSync(target=MARRYMORE_CHARACTER, subscript=[
 			A_SetWalkingSpeed(NORMAL),
 			A_SetSequenceSpeed(FAST),
+			A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
 			A_Walk1StepNorthwest(),
 			A_SetWalkingSpeed(SLOW),
 			A_Walk1StepNorthwest(),
@@ -121,6 +123,7 @@ def build_contents(
 			A_Pause(16),
 			A_SetWalkingSpeed(SLOW),
 			A_SetSequenceSpeed(FAST),
+			A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True),
 			A_Walk1StepSoutheast(),
 			A_WalkSoutheastPixels(8),
 			A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="ending_mway_character_look_down_2")

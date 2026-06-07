@@ -2173,11 +2173,14 @@ def apply_ending_characters(
     "ending_mario_palette" pair).
 
     `mario_override`, when provided, replaces every MarioRecruitmentPrize among
-    the inputs (the four named-slot prizes and the substitute pool) with the
-    given prize. This is used when PlayAsStarter is disabled and Mario is not
-    the starter: the player visually plays as the starter character but Mario
-    is conceptually the protagonist, so any Mario placement in the ending
-    cutscene should display the starter instead.
+    the named-slot prizes and the substitute pool — but NOT the protagonist —
+    with the given prize. This is used when PlayAsStarter is disabled and Mario
+    is not the starter: the player plays as Mario in the overworld, so Mario is
+    the cutscene protagonist, but Mario is *also* recruited as a battle
+    character in one of the named slots. To avoid showing Mario twice, that
+    named slot displays the starter instead (the starter is recruited at the
+    start and so has no named slot of its own). The protagonist is the literal
+    overworld character and is never routed through this override.
 
     `protagonist_override`, when provided, locks the cutscene protagonist to
     that prize regardless of pool draw. Required because the cutscene script
@@ -2219,7 +2222,13 @@ def apply_ending_characters(
     # slot, leaving someone else stranded as protagonist.
     locked_protagonist: CharacterPrize | None = None
     if protagonist_override is not None:
-        locked_protagonist = _apply_mario_override(protagonist_override)
+        # The protagonist is the literal overworld character (Mario when
+        # PlayAsStarter is disabled) and must NOT be routed through
+        # `_apply_mario_override`. That override rewrites Mario's *named-slot*
+        # appearance into the starter; applying it here would rewrite the Mario
+        # protagonist into the starter too, animating the starter in the
+        # protagonist role and stranding Mario in his recruitment slot.
+        locked_protagonist = protagonist_override
         assert isinstance(locked_protagonist, CharacterPrize)
         for i, sp in enumerate(pool):
             if type(sp) is type(locked_protagonist):
