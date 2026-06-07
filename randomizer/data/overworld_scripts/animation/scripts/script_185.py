@@ -18,13 +18,13 @@ from ....items import *
 script = ActionScript([
 	A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
 	A_SetPriority(3),
-	A_SetVarToConst(FACTORY_FALL_2, 2, identifier="ACTION_185_set_var_to_const_2"),
+	A_SetVarToConst(UNKNOWN_70CC, 2, identifier="ACTION_185_set_var_to_const_2"),
 	A_SetSpriteSequence(index=3, is_sequence=True, looping=True),
 	A_Pause(7),
-	A_SetVarToConst(FACTORY_FALL_2, 1),
+	A_SetVarToConst(UNKNOWN_70CC, 1),
 	A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
 	A_Pause(7),
-	A_SetVarToConst(FACTORY_FALL_2, 0),
+	A_SetVarToConst(UNKNOWN_70CC, 0),
 	A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
 	A_Pause(7),
 	A_Jmp(["ACTION_185_set_var_to_const_2"])
