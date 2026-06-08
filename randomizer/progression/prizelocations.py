@@ -1340,11 +1340,15 @@ class MushroomKingdomOccupiedFamilyRescueLocation(NPCLocationRow1):
             use_background=True,
         ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
-        JmpIfBitClear(
-            OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_1_DEFEATED,
-            ["mushroom_kingdom_hint_text"],
+        JmpIfObjectInSpecificLevel(
+            NPC_3, R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, ["star_hill_hint_text"]
         ),
-        JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_2_DEFEATED, ["next"]),
+        JmpIfObjectInSpecificLevel(
+            NPC_4, R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, ["star_hill_hint_text"]
+        ),
+        JmpIfObjectInSpecificLevel(
+            NPC_1, R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, ["star_hill_hint_text"]
+        ),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
