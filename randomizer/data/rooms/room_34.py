@@ -430,8 +430,8 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            byte2_bit0=False,
-            byte2_bit4=False,),
+            extra_palette_source_offset=0,
+            extra_palette_row_count=0,),
         RegularNPC( # 13
             npc=npcs.GREEN_YOSHI_WALK_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,

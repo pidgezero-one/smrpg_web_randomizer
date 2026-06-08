@@ -118,6 +118,7 @@ from ..data.variables.shop_names import *
 from ..data.variables.sprite_names import *
 from ..data.spells.spells import *
 from ..data.credits.credits import update_credits
+from ..logic.shufflers.minigames import get_minecart_track_patch
 from ..logic.setup.pre_shuffler_settings import apply_shuffler_independent_settings
 from ..logic.setup.thresholds import apply_threshold_settings
 from ..logic.setup.enemy_tweaks import (
@@ -1955,6 +1956,11 @@ class GameWorld:
 
         if self.settings.isflag_enabled(HoldB):
             patch.add_dict(asm.hold_b.get_patch(), source="hold_b")
+
+        if self.settings.isflag_enabled(RandomMinecartTrack):
+            patch.add_dict(
+                get_minecart_track_patch(self), source="moleville_track"
+            )
 
         if self.settings.isflag_enabled(JapaneseABXY):
             self.sprite_palettes.get_palette(

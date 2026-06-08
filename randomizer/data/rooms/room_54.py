@@ -91,8 +91,8 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            byte2_bit0=True,
-            byte2_bit3=True
+            extra_palette_source_offset=1,
+            extra_palette_row_count=1
         ),
         RegularClone(  # 1
             npc=npcs.ROLLING_BARREL_NPC,
@@ -104,8 +104,8 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            byte2_bit0=True,
-            byte2_bit3=True
+            extra_palette_source_offset=1,
+            extra_palette_row_count=1
         ),
         RegularClone(  # 2
             npc=npcs.ROLLING_BARREL_NPC,
@@ -117,8 +117,8 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            byte2_bit0=True,
-            byte2_bit3=True
+            extra_palette_source_offset=1,
+            extra_palette_row_count=1
         ),
         RegularNPC(  # 3
             npc=npcs.SNIFIT_BLACK_BACK_NPC,

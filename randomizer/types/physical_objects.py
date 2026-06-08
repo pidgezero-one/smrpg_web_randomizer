@@ -681,11 +681,8 @@ class NPC:
             and self.base.height == npc.base.height
             and self.base.directions == npc.base.directions
             and self.base.min_vram_size == npc.base.min_vram_size
-            and self.base.byte2_bit0 == npc.base.byte2_bit0
-            and self.base.byte2_bit1 == npc.base.byte2_bit1
-            and self.base.byte2_bit2 == npc.base.byte2_bit2
-            and self.base.byte2_bit3 == npc.base.byte2_bit3
-            and self.base.byte2_bit4 == npc.base.byte2_bit4
+            and self.base.extra_palette_source_offset == npc.base.extra_palette_source_offset
+            and self.base.extra_palette_row_count == npc.base.extra_palette_row_count
             and self.base.byte5_bit6 == npc.base.byte5_bit6
             and self.base.byte5_bit7 == npc.base.byte5_bit7
             and self.base.byte6_bit2 == npc.base.byte6_bit2

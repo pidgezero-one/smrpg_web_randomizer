@@ -1821,6 +1821,12 @@ class SkipMinecart(BooleanFlag):
     _id = "skipcart"
 
 
+class RandomMinecartTrack(BooleanFlag):
+    _name = "Randomize minecart tracks (WIP)"
+    _description = """If enabled, both Moleville Mountain Mode7 minecart courses (stages 1 and 3) are replaced with procedurally generated tracks."""
+    _id = "rcart"
+
+
 # ✅
 class SkipAnts(BooleanFlag):
     _name = "Skip Shoguns"
@@ -2723,6 +2729,7 @@ class PuzzleCategory(FlagCategory):
         QuizIncludeNonSmrpg,
         RandomTadpolePondSong,
         RandomSunkenShipPassword,
+        RandomMinecartTrack,
         RedBarrels,
         BowserDoorShuffle,
         BetterTips,

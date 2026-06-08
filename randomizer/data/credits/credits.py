@@ -519,12 +519,13 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0xC0, 0xC0, "YAKIBOMB         FORALIAS")
-    credits.add_credit(0x80, 0x80, 0x81, "WEFFJEBSTER        SWINCH")
+    credits.add_credit(0x80, 0x80, 0xC0, "YAKIBOMB         FORALIAS")
+    credits.add_credit(0x80, 0x40, 0x81, "SWINCH              IKUYO")
+    credits.add_credit(0x80, 0x00, 0xC2, "ABYSSONYM")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "ABYSSONYM        CHAOSICX")
+    credits.add_credit(0x80, 0x80, 0xC0, "WEFFJEBSTER      CHAOSICX")
     credits.add_credit(0x80, 0x40, 0x81, "CODANTHEBARBARIAN")
     credits.add_credit(0x80, 0x00, 0xC2, "AMAZING AMPHAROS")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)

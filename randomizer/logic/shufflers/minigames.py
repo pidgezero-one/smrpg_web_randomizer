@@ -1,7 +1,7 @@
 """Minigame randomization logic."""
 from __future__ import annotations
 import random
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Optional, cast
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     RunDialog,
@@ -21,6 +21,12 @@ from ...data.variables.variable_names import (
     TEMP_70AC,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_14
+from smrpgpatchbuilder.datatypes.minecart import (
+    EAST, MAP_H, MAP_W, NORTH, SOUTH, WEST, MinecartTrack, TrackColor,
+    TrackType, build_minecart_patch, track_type_for,
+)
+from smrpgpatchbuilder.datatypes.minecart.constants import BLOCK_BASE, WINDOW_SIZE
+from ...data.minigames.moleville_track import Maze
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -375,3 +381,162 @@ def randomize_password(world: GameWorld) -> None:
         )
 
     world.password_author = password.submitter_credits
+
+
+_MC_DIR = {">": EAST, "<": WEST, "v": NORTH, "^": SOUTH}
+_MC_STEP = {NORTH: (0, -1), SOUTH: (0, 1), EAST: (1, 0), WEST: (-1, 0)}
+_MC_REV = {NORTH: SOUTH, SOUTH: NORTH, EAST: WEST, WEST: EAST}
+_MC_CORNERS = (TrackType.CORNER_SE, TrackType.CORNER_SW,
+               TrackType.CORNER_NE, TrackType.CORNER_NW)
+_MC_RED_LATE_CHANCE = 0.05    # sometimes redden the later corner instead of the earlier
+_MC_STUB_LEN = 3              # straight tiles at the start before any turn/fork may appear
+_MC_RUNOUT_LEAD = 1          # straight tile(s) between the last turn and the BLUE end
+_MC_RUNOUT_AFTER_BLUE = 48   # straight tiles the camera scrolls into past the BLUE end
+_MC_RUNOUT_LEN = _MC_RUNOUT_LEAD + 1 + _MC_RUNOUT_AFTER_BLUE
+_MC_MAX_ATTEMPTS = 50        # re-rolls
+
+
+def _mc_screen(x, y):
+    """Maze cell ``(x=row, y=col)`` -> Mode7 ``(col, row)``. Rows are flipped and
+    the bottom ``_MC_STUB_LEN`` rows are reserved for the fixed straight start
+    stub, so the maze origin lands just above the stub at the bottom-left."""
+    return (y, MAP_H - 1 - _MC_STUB_LEN - x)
+
+
+def _mc_runout_dirs(in_dir):
+    """Run-out directions to try from a cell entered going ``in_dir`` — straight
+    ahead first, then the two perpendicular turns (never a 180° reversal)."""
+    perpendicular = [d for d in (NORTH, SOUTH, EAST, WEST)
+                     if d not in (in_dir, _MC_REV[in_dir])]
+    return [in_dir, *perpendicular]
+
+
+def _mc_line_clear(col, row, direction, length, occupied):
+    """True if ``length`` cells straight in ``direction`` from ``(col, row)`` are
+    all in-bounds and not in ``occupied``."""
+    delta_col, delta_row = _MC_STEP[direction]
+    for step in range(1, length + 1):
+        cell = (col + delta_col * step, row + delta_row * step)
+        if not (0 <= cell[0] < MAP_W and 0 <= cell[1] < MAP_H) or cell in occupied:
+            return False
+    return True
+
+
+def _build_minecart_track(path) -> Optional[MinecartTrack]:
+    """Convert a solved maze path into a :class:`MinecartTrack`: a fixed
+    ``_MC_STUB_LEN``-tile straight start stub, the maze interior, and a straight
+    run-out (a lead tile, the BLUE stage-end marker, then
+    ``_MC_RUNOUT_AFTER_BLUE`` straight tiles) attached in clear space near the
+    end. Returns ``None`` on a 180° reversal the rails can't express, or if no
+    run-out fits."""
+    cells = [(*_mc_screen(x, y), _MC_DIR[d]) for (x, y, d) in path]  # (col, row, out_dir)
+    stub = [(0, MAP_H - 1 - k) for k in range(_MC_STUB_LEN)]         # start straight tiles
+
+    # Truncate at the latest cell from which the run-out fits in clear space,
+    # preferring to continue straight, else turning a corner into it.
+    chosen = None
+    for last in range(len(cells) - 1, -1, -1):
+        in_dir = cells[last - 1][2] if last else NORTH          # cell 0 enters from the stub
+        occupied = {(cells[i][0], cells[i][1]) for i in range(last + 1)}
+        occupied.update(stub)
+        col, row = cells[last][0], cells[last][1]
+        for direction in _mc_runout_dirs(in_dir):
+            if _mc_line_clear(col, row, direction, _MC_RUNOUT_LEN, occupied):
+                chosen = (last, direction)
+                break
+        if chosen is not None:
+            break
+    if chosen is None:
+        return None
+    last, runout_dir = chosen
+
+    placed = []                                                 # (col, row, type, is_corner)
+    for index in range(last + 1):
+        col, row, out_dir = cells[index]
+        in_dir = cells[index - 1][2] if index else NORTH
+        if index == last:
+            out_dir = runout_dir                                # leave the last cell into the run-out
+        try:
+            track_type = track_type_for(in_dir, out_dir)
+        except ValueError:
+            return None
+        placed.append((col, row, track_type, track_type in _MC_CORNERS))
+
+    colors = [TrackColor.GREEN] * len(placed)
+    for index, (_, _, _, is_corner) in enumerate(placed):
+        if not is_corner:
+            continue
+        for ahead in range(index + 1, min(index + 3, len(placed))):
+            if placed[ahead][3]:
+                late = random.random() < _MC_RED_LATE_CHANCE
+                colors[ahead if late else index] = TrackColor.RED
+                break
+
+    track = MinecartTrack()
+    for col, row in stub:
+        track.set_track(col, row, TrackType.STRAIGHT_NS, TrackColor.GREEN)
+    for (col, row, track_type, _), color in zip(placed, colors):
+        track.set_track(col, row, track_type, color)
+
+    # Run-out: lead straight tile(s), the BLUE stage-end marker, then the
+    # straight tiles the Mode7 camera scrolls into as the stage changes.
+    col, row = cells[last][0], cells[last][1]
+    delta_col, delta_row = _MC_STEP[runout_dir]
+    straight = (TrackType.STRAIGHT_NS if runout_dir in (NORTH, SOUTH)
+                else TrackType.STRAIGHT_EW)
+    for step in range(1, _MC_RUNOUT_LEN + 1):
+        color = TrackColor.BLUE if step == _MC_RUNOUT_LEAD + 1 else TrackColor.GREEN
+        track.set_track(col + delta_col * step, row + delta_row * step, straight, color)
+    return track
+
+
+def _generate_minecart_track() -> Optional[MinecartTrack]:
+    """One course: re-roll until a maze solves and yields a legal track. The
+    reduced grid (bottom rows reserved for the start stub) fails to ``solve()``
+    fairly often, hence the retries."""
+    for _ in range(_MC_MAX_ATTEMPTS):
+        maze = Maze(MAP_H - _MC_STUB_LEN, MAP_W)
+        path = maze.solve()
+        if path is None:
+            continue
+        track = _build_minecart_track(path)
+        if track is not None:
+            return track
+    return None
+
+
+def get_minecart_track_patch(world: GameWorld) -> dict[int, bytes]:
+    """Generate both Mode7 courses and return the minecart ROM patch.
+
+    Deterministic per seed (an independent RNG stream derived from
+    ``world.seed`` so it never perturbs the rest of randomization). Returns an
+    empty patch — leaving the vanilla courses intact — if no track compresses
+    within the minigame's fixed data window after several re-rolls.
+    """
+    saved_state = random.getstate()
+    try:
+        random.seed("moleville_minecart:%s" % world.seed)
+        for attempt in range(1, _MC_MAX_ATTEMPTS + 1):
+            track_a = _generate_minecart_track()
+            track_b = _generate_minecart_track()
+            if track_a is None or track_b is None:
+                continue
+            try:
+                patch = build_minecart_patch(track_a, track_b, 0, MAP_H - 1)
+            except ValueError:
+                continue  # too dense to compress in budget; re-roll both
+            block = len(patch[BLOCK_BASE])
+            print(
+                "[moleville_track] seed %s: SUCCESS — generated 2 Mode7 "
+                "courses, minigame window %d/%d bytes (%d free) on attempt "
+                "%d/%d" % (world.seed, block, WINDOW_SIZE, WINDOW_SIZE - block,
+                           attempt, _MC_MAX_ATTEMPTS)
+            )
+            return patch
+        print(
+            "[moleville_track] seed %s: FELL BACK to vanilla minecart — no "
+            "in-budget track after %d attempts" % (world.seed, _MC_MAX_ATTEMPTS)
+        )
+        return {}
+    finally:
+        random.setstate(saved_state)

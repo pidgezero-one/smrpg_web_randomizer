@@ -154,6 +154,7 @@ class Settings:
             RandomSunkenShipPassword: RandomSunkenShipPassword(),
             BowserDoorShuffle: BowserDoorShuffle(),
             SkipMinecart: SkipMinecart(),
+            RandomMinecartTrack: RandomMinecartTrack(),
             RedBarrels: RedBarrels(),
             SkipAnts: SkipAnts(),
             BetterTips: BetterTips(),
