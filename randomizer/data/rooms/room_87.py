@@ -28,7 +28,7 @@ room = Room(
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
+                buffer_type=BufferType.COINS,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             )
