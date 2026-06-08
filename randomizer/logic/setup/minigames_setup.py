@@ -6,6 +6,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     SetVarToConst,
     SetVarToRandom,
     JmpToEvent,
+    RunBackgroundEvent
 )
 
 if TYPE_CHECKING:
@@ -29,7 +30,7 @@ def apply_minigame_settings(world: GameWorld) -> None:
         QuizShuffle, QuizIncludeNonSmrpg,
         BallSolitaireShuffle, MagicButtonShuffle,
         SkipMinecart, RandomTadpolePondSong, RandomSunkenShipPassword,
-        BowserDoorShuffle, BetterTips,
+        BowserDoorShuffle, BetterTips, RedBarrels
     )
     from ...data.minigames.quiz_questions import (
         get_quiz_questions,
@@ -52,6 +53,7 @@ def apply_minigame_settings(world: GameWorld) -> None:
         E0622_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_1,
         E2649_CASINO_GRATE_GUY_RANDOM_PRIZE_GRANTER,
         E2670_TOWER_KNIFE_GUY_CONSOLATION_PRIZE,
+        E3509_BOOSTER_HILL_BARREL_SUMMONER_WITH_RED
     )
 
     # Quiz shuffle
@@ -95,6 +97,10 @@ def apply_minigame_settings(world: GameWorld) -> None:
     # Bowser door shuffle
     if world.settings.isflag_enabled(BowserDoorShuffle):
         randomize_bowser_doors(world)
+    
+    # Red barrels in Booster Hill minigame
+    if world.settings.isflag_enabled(RedBarrels):
+        world.event_scripts.get_command_by_identifier("replace_this_if_red_barrels_enabled", RunBackgroundEvent).set_event_id(E3509_BOOSTER_HILL_BARREL_SUMMONER_WITH_RED)
 
     # Better tips (improved random rewards)
     if world.settings.isflag_enabled(BetterTips):

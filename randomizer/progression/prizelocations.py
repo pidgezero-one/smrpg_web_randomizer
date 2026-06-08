@@ -5254,7 +5254,7 @@ class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_2
     _world_area = WorldAreaEnum.MOLEVILLE
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 126),
         RunDialog(
@@ -6646,7 +6646,7 @@ class BoosterTowerRoomKeyChestLocation(TreasureChestLocationRow1):
             multiline=True,
             use_background=True,
         ),
-        JmpIfObjectNotInSpecificLevel(
+        JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, ["next"]
         ),
         JmpIfObjectNotInSpecificLevel(

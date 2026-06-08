@@ -1,4 +1,4 @@
-#A0764_EMPTY
+#A0764_BOOSTER_HILL_RED_BARREL
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,26 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+	A_SetPriority(2),
+	A_FaceSouthwest(),
+	A_FixedFCoordOn(),
+	A_IncPaletteRowBy(1),
+	A_SetAllSpeeds(VERY_FAST),
+	A_TransferToXYZF(x=2, y=48, z=0, direction=EAST),
+	A_ObjectMemoryClearBit(arg_1=0x30, bits=[4]),
+	A_SetSolidityBits(bit_4=True, cant_walk_through=True),
+	A_SetVarToRandom(PRIMARY_TEMP_700C, 30),
+	A_Inc(PRIMARY_TEMP_700C),
+	A_LoadMemory(PRIMARY_TEMP_700C),
+	A_Pause(1),
+	A_EndLoop(),
+	A_PlaySound(sound=SO049_BIG_SHELL_HIT, channel=4),
+	A_WalkSouthwestPixels(8),
+	A_JmpIfObjectWithinRange(comparing_npc=NPC_4, usually=0, tiles=3, destinations=["ACTION_764_set_bit_18"], identifier="ACTION_764_jmp_if_object_within_range_14"),
+	A_JumpToHeight(24),
+	A_Walk1StepSoutheast(),
+	A_Jmp(["ACTION_764_jmp_if_object_within_range_14"]),
+	A_SetBit(TEMP_7043_1, identifier="ACTION_764_set_bit_18"),
+	A_Jmp(["ACTION_763_jump_to_height_20"])
+])

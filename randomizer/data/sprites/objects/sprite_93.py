@@ -1,7 +1,7 @@
 # SPR0093_BLUE_STEPPING_BLOCK
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-from randomizer.data.variables.sprite_palette_names import SPAL442_BLUE_STEPPING_BLOCK
+from randomizer.data.variables.sprite_palette_names import SPAL442_YELLOW_STEPPING_BLOCK
 sprite = CompleteSprite(
     animation=AnimationPack(332, length=36, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -34,7 +34,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=SPAL442_BLUE_STEPPING_BLOCK,
+    palette_id=SPAL442_YELLOW_STEPPING_BLOCK,
     palette_offset=1,
     unknown_num=0
 )

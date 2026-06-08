@@ -110,7 +110,7 @@ script = EventScript([
 	SetSyncActionScript(NPC_5, A0707_BOOSTER_HILL_HENCHMAN),
 	Pause(60),
 	RunBackgroundEvent(event_id=E3500_BOOSTER_HILL_1ST_PASS_SNIFIT_JUMPS, return_on_level_exit=True),
-	RunBackgroundEvent(event_id=E3503_BOOSTER_HILL_BARREL_SUMMONER, return_on_level_exit=True, bit_6=True),
+	RunBackgroundEvent(event_id=E3503_BOOSTER_HILL_BARREL_SUMMONER, return_on_level_exit=True, bit_6=True, identifier="replace_this_if_red_barrels_enabled"),
 	SetSyncActionScript(LAYER_1, A0704_BOOSTER_HILL_LAYER_1),
 	SetSyncActionScript(LAYER_2, A0655_BOOSTER_HILL_LAYER_2),
 	SetSyncActionScript(LAYER_3, A0705_BOOSTER_HILL_LAYER_3),

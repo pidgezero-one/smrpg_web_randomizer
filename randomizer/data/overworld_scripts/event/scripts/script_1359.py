@@ -48,7 +48,7 @@ script = EventScript([
         A_FixedFCoordOn(),
 		A_WalkNortheastPixels(5),
 		A_WalkNorthwestPixels(4),
-		A_FaceSoutheast(),
+		A_FaceSouthwest(),
 		A_SetPriority(3),
 		A_ShadowOn()
 	]),

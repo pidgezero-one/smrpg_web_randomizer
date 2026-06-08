@@ -1800,6 +1800,12 @@ class RandomSunkenShipPassword(BooleanFlag):
 <br/><b>Be warned that some of these are very difficult, or may be references to things you aren't familiar with, but they are all solvable.</b> The nearby shop shaman will tell you how many of your letters were correct when you submit an incorrect password."""
     _id = "pwd"
 
+    
+class RedBarrels(BooleanFlag):
+    _name = "Add red barrels to Booster Hill"
+    _description = """If enabled, some barrels on Booster hill will behave like the red barrels in the remake."""
+    _id = "redbarrels"
+
 
 # ✅
 class BowserDoorShuffle(BooleanFlag):
@@ -2717,6 +2723,7 @@ class PuzzleCategory(FlagCategory):
         QuizIncludeNonSmrpg,
         RandomTadpolePondSong,
         RandomSunkenShipPassword,
+        RedBarrels,
         BowserDoorShuffle,
         BetterTips,
     ]

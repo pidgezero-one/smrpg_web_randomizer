@@ -1,7 +1,7 @@
 # SPR0099_TRAMPOLINE_WARP
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-from randomizer.data.variables.sprite_palette_names import SPAL445_TRAMPOLINE_WARP
+from randomizer.data.variables.sprite_palette_names import SPAL446_TRAMPOLINE_WARP
 sprite = CompleteSprite(
     animation=AnimationPack(334, length=310, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -641,7 +641,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=SPAL445_TRAMPOLINE_WARP,
+    palette_id=SPAL446_TRAMPOLINE_WARP,
     palette_offset=0,
     unknown_num=0
 )
