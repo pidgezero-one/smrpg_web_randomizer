@@ -3138,7 +3138,7 @@ class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R419_LAZY_SHELL_CLOUD, ["next"]
         ),
-        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_hint_text"]),
         JmpIfBitSet(GAVE_SEED, ["hint_check_fertilizer"]),
@@ -3185,7 +3185,7 @@ class RoseTownCloudLeftChestLocation(TreasureChestLocationRow2):
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R419_LAZY_SHELL_CLOUD, ["next"]
         ),
-        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_hint_text"]),
         JmpIfBitSet(GAVE_SEED, ["hint_check_fertilizer2"]),
@@ -19214,7 +19214,7 @@ class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
             multiline=True,
             use_background=True,
         ),
-        JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
+        JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_cloud_invisible_hint_check"]),
         JmpIfBitSet(GAVE_SEED, ["hint_check_fertilizer3"]),
