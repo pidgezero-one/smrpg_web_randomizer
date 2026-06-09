@@ -22,7 +22,7 @@ class StickObject(ItemNPC):
 
 class GreenShellObject(ItemNPC):
     _base = GREEN_SHELL_BASE
-
+    _chest_event_id: int = E2087_GREEN_SHELL_PACKET
 
 class MusicObject(ItemNPC):
     _base = MUSIC_BASE
@@ -36,6 +36,7 @@ class ChompObject(ItemNPC):
 
 class RedShellObject(ItemNPC):
     _base = RED_SHELL_BASE
+    _chest_event_id: int = E2085_RED_SHELL_PACKET
 
 
 class ParasolObject(ItemNPC):

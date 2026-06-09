@@ -34,11 +34,10 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	ActionQueueAsync(target=MEM_70A8, subscript=[
+	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
-		A_PlaySound(sound=SO081_STAR, channel=6),
-		A_Pause(30),
 		A_VisibilityOff(),
+		A_PlaySound(sound=SO081_STAR, channel=6),
 		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	JmpToEvent(E3092_STAR_PIECE_GRANT)

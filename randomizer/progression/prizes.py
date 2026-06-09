@@ -440,7 +440,7 @@ class HammerPrize(ItemPrize):
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = HammerObject
+    _model = HammerObject
 
 
 class FroggiestickPrize(ItemPrize):
@@ -450,7 +450,7 @@ class FroggiestickPrize(ItemPrize):
         nickname="Caster's Staff", description="It looks pretty good at bonking."
     )
     _monstro_shuffle = True
-    #_model = StickObject
+    _model = StickObject
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
 
 
@@ -460,7 +460,7 @@ class NokNokShellPrize(ItemPrize):
         nickname="Green Shell", description="There's no turtle inside of it."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = GreenShellObject
+    _model = GreenShellObject
 
 
 class PunchGlovePrize(ItemPrize):
@@ -508,7 +508,7 @@ class MasherPrize(ItemPrize):
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = HammerObject
+    _model = HammerObject
 
 
 class ChompShellPrize(ItemPrize):
@@ -527,7 +527,7 @@ class SuperHammerPrize(ItemPrize):
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = HammerObject
+    _model = HammerObject
 
 
 class HandGunPrize(ItemPrize):
@@ -564,7 +564,7 @@ class TroopaShellPrize(ItemPrize):
         nickname="Red Shell", description="There's no turtle inside of it."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = RedShellObject
+    _model = RedShellObject
 
 
 class ParasolPrize(ItemPrize):
@@ -603,7 +603,7 @@ class RibbitStickPrize(ItemPrize):
         nickname="Caster's Staff", description="It looks pretty good at bonking."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = StickObject
+    _model = StickObject
 
 
 class SpikedLinkPrize(ItemPrize):
@@ -631,7 +631,6 @@ class WarFanPrize(ItemPrize):
         nickname="Spiked Fan", description="Pretty, but deadly!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = FanObject
 
 
 class HandCannonPrize(ItemPrize):
@@ -658,7 +657,7 @@ class UltraHammerPrize(ItemPrize):
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = HammerObject
+    _model = HammerObject
 
 
 class SuperSlapPrize(ItemPrize):
@@ -712,7 +711,7 @@ class LazyShellWeaponPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = RedShellObject
+    _model = RedShellObject
 
 
 class FryingPanPrize(ItemPrize):
@@ -721,7 +720,6 @@ class FryingPanPrize(ItemPrize):
         nickname="Metal Plate", description="Don't know what it’s used for."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = FryingPanObject
 
 
 class WonderChompPrize(ItemPrize):
@@ -756,7 +754,7 @@ class SageStickPrize(ItemPrize):
     remake_only = True
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = StickObject
+    _model = StickObject
 
 
 class LuckyHammerPrize(ItemPrize):
@@ -765,7 +763,7 @@ class LuckyHammerPrize(ItemPrize):
         nickname="Hammer", description="I'm not sure if it does anything\n else."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
-    #_model = HammerObject
+    _model = HammerObject
 
 
 class ShirtPrize(ItemPrize):
@@ -863,7 +861,7 @@ class HappyShellPrize(ItemPrize):
         nickname="Green Shell", description="There's no turtle inside of it."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
-    #_model = GreenShellObject
+    _model = GreenShellObject
 
 
 class PolkaDressPrize(ItemPrize):
@@ -912,7 +910,7 @@ class CourageShellPrize(ItemPrize):
         nickname="Green Shell", description="There's no turtle inside of it."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
-    #_model = GreenShellObject
+    _model = GreenShellObject
 
 
 class FuzzyShirtPrize(ItemPrize):
@@ -978,7 +976,7 @@ class FireShellPrize(ItemPrize):
         nickname="Red Shell", description="There's no turtle inside of it."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
-    #_model = RedShellObject
+    _model = RedShellObject
 
 
 class FireDressPrize(ItemPrize):
@@ -1021,7 +1019,7 @@ class HealShellPrize(ItemPrize):
         nickname="Green Shell", description="There's no turtle inside of it."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
-    #_model = GreenShellObject
+    _model = GreenShellObject
 
 
 class RoyalDressPrize(ItemPrize):
@@ -1051,7 +1049,7 @@ class LazyShellArmorPrize(ItemPrize):
         nickname="Red Shell", description="There's no turtle inside of it."
     )
     _monstro_shuffle = True
-    #_model = RedShellObject
+    _model = RedShellObject
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
 
 

@@ -39,9 +39,9 @@ script = EventScript([
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		#A_SetSpriteSequence(index=2, looping=False),
 		#A_SetWalkingSpeed(NORMAL),
+		A_VisibilityOff(),
 		A_PlaySound(sound=SO013_COIN, channel=6),
 		#A_ShiftZUpSteps(2),
-		A_VisibilityOff(),
 		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	Return()

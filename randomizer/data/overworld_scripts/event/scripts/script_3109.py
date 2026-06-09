@@ -35,14 +35,12 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
-	ActionQueueAsync(target=MEM_70A8, subscript=[
+	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
-		A_PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
-		A_Pause(30),
 		A_VisibilityOff(),
+		A_PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
 		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
-    PlaySound(sound=SO085_FLOWER, channel=6),
 	SetBit(BEETLEMANIA_UNLOCKED),
 	RunDialog(dialog_id=DI3077_GOT_BEETLEMANIA_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
 	Return()

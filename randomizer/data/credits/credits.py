@@ -515,7 +515,7 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
 
     # 26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "DEVELOPMENT")
+    credits.add_title(0x80, 0x00, 0x08, "FEATURE DEVELOPMENT")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()

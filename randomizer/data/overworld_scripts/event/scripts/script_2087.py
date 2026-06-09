@@ -1,4 +1,4 @@
-# E2087_EMPTY
+# E2087_GREEN_SHELL_PACKET
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript

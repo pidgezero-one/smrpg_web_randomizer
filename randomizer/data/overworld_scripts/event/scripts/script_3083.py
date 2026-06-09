@@ -37,7 +37,6 @@ script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
-		A_Pause(30),
 		A_VisibilityOff(),
 		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),

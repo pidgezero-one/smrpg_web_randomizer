@@ -974,8 +974,16 @@ P116_AP_ITEM = ChestPacket(
     sprite_id=SPR0248_ARCHIPELAGO,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
 )
-P117_UNUSED = None
-P118_UNUSED = None
+P117_RED_SHELL_CHEST = ChestPacket(
+    packet_id=117,
+    sprite_id=SPR0249_RED_SHELL,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P118_GREEN_SHELL_CHEST = ChestPacket(
+    packet_id=118,
+    sprite_id=SPR0250_GREEN_SHELL,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
 P119_UNUSED = None
 P120_UNUSED = None
 P121_UNUSED = None
@@ -1234,8 +1242,8 @@ ALL_PACKETS = PacketCollection(
         P114_STICK_CHEST,
         P115_HAMMER_CHEST,
         P116_AP_ITEM,
-        P117_UNUSED,
-        P118_UNUSED,
+        P117_RED_SHELL_CHEST,
+        P118_GREEN_SHELL_CHEST,
         P119_UNUSED,
         P120_UNUSED,
         P121_UNUSED,

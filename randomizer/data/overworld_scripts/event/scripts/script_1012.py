@@ -37,12 +37,12 @@ script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
-		A_PlaySound(sound=SO085_FLOWER, channel=4),
 		A_VisibilityOff(),
+		A_PlaySound(sound=SO085_FLOWER, channel=4),
 		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
+	RemoveObjectAt70A8FromCurrentLevel(),
 	LearnSpell(BOWSER, TerrorizeSpell, identifier="freestanding_spell_18_character"),
-	PlaySound(sound=SO085_FLOWER, channel=6),
 	RunDialog(dialog_id=DI1982_LEARN_SPELL_18_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
 	Return()
 ])

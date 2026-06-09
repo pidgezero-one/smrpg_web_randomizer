@@ -1341,15 +1341,14 @@ class MushroomKingdomOccupiedFamilyRescueLocation(NPCLocationRow1):
         ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfObjectInSpecificLevel(
-            NPC_3, R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, ["star_hill_hint_text"]
+            NPC_3, R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, ["mushroom_kingdom_hint_text"]
         ),
         JmpIfObjectInSpecificLevel(
-            NPC_4, R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, ["star_hill_hint_text"]
+            NPC_4, R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, ["mushroom_kingdom_hint_text"]
         ),
         JmpIfObjectInSpecificLevel(
-            NPC_1, R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, ["star_hill_hint_text"]
+            NPC_1, R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, ["mushroom_kingdom_hint_text"]
         ),
-        Jmp(["mushroom_kingdom_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
