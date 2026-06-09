@@ -5384,6 +5384,20 @@ class InnerMinesBossFight(BossFightLocation):
         # Read the NPC model placement chose (cached on the location).
         npc_model = self.resolve_npc_model_for_slot(world, self._npc_slots[0])
         set_mines_punch_command(world, npc_model())
+        # A1021_PUNCHINELLO_IN_MINES is a Punchinello-specific animation. If any
+        # other boss was shuffled in here, point event script 596's explosion-loop
+        # triggers at A0000_DO_NOTHING instead.
+        if not isinstance(
+            self.prize, (PunchinelloBossFight, Punchinello2BossFight)
+        ):
+            for identifier in (
+                "EVENT_596_set_action_script_4",
+                "EVENT_596_set_action_script_11",
+                "EVENT_596_set_action_script_18",
+            ):
+                world.event_scripts.get_command_by_identifier(
+                    identifier, SetSyncActionScript
+                ).set_action_script_id(A0000_DO_NOTHING)
         return op
 
     # Flag as checked: MINES_BOSS_2_DEFEATED

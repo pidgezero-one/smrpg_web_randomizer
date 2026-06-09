@@ -36,7 +36,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	RunEventAsSubroutine(E0033_OPEN_CHEST),
-	CreatePacketAt7010(packet=P117_RED_SHELL_CHEST, destinations=["EVENT_2073_ret_3"]),
-	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_2073_ret_3"),
+	CreatePacketAt7010(packet=P117_RED_SHELL_CHEST, destinations=["EVENT_2085_ret_3"]),
+	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_2085_ret_3"),
 	Return()
 ])

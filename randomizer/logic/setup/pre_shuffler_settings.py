@@ -168,6 +168,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         MAP_DIRECTIONAL_BOWSERS_KEEP_GATE,
         FACTORY_GATED_BY_STAR_PIECES,
         PAINT_GATING,
+        COOKIES_SHUFFLED
     )
     from ...data.variables.room_names import (
         R333_KERO_SEWERS_ENTRANCE,
@@ -506,6 +507,8 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
 
     # Settings that aren't dependent on shuffler contents
     if world.settings.isflag_enabled(ShuffleCookies):
+        world.event_2496_startup += [SetBit(COOKIES_SHUFFLED)]
+        
         world.event_scripts.get_script_by_id(
             E0464_YOSHI_RACE_COOKIE_GRANTER_SUBROUTINE
         ).set_contents(
