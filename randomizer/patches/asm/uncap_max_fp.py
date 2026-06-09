@@ -128,38 +128,18 @@ def get_patch() -> dict[int, bytes]:
             0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA,
         ]),
         # --- Battle spell-cast eligibility check (signed-comparison bug) ---
-        # Vanilla per-spell eligibility check at $C1:669B-$C1:66A6 (12 bytes):
+        # Per-spell eligibility check at $C1:669B-$C1:66A4 runs in m8 mode
+        # (entered via SEP #$20 at $C1:6686 and reached either by fall-through
+        # from $C1:6698 or by BEQ from $C1:668D):
         #   LDA $FA0C / SEC / SBC $7090,Y / BPL +3 / STA $70E0,Y
-        # The BPL is a SIGNED compare; vanilla works because max FP <= 99 so
-        # the cur:max packed 16-bit read stays positive ($00:cur or $63:cur).
-        # With UncapMaxFP allowing max >= 128, $FA0C/$FA0D becomes $XXcur
-        # with bit 15 set, which the BPL reads as negative -> every spell
-        # is flagged as a shortage and greyed out.
-        # Replace the 12-byte sequence with JSR $C6E0 + 9 NOPs (fall through
-        # to $C1:66A7), and put a fixed unsigned 8-bit compare at $C1:C6E0.
-        0x1669B: bytes([
-            0x20, 0xE0, 0xC6,
-            0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA,
-        ]),
-        # Eligibility wrapper at $C1:C6E0 (17 bytes, free ROM right after
-        # the FP converter at $C1:C6C0):
-        #   SEP #$20         ; m8
-        #   LDA $FA0C        ; 8-bit cur FP only (high byte ignored)
-        #   SEC / SBC $7090,Y; 8-bit subtract sets carry per unsigned rule
-        #   BCS +3           ; UNSIGNED: branch if cur >= cost (no borrow)
-        #   STA $70E0,Y      ; only when cur < cost; stores shortage
-        #   REP #$20         ; restore m16 for caller
-        #   RTS
-        0x1C6E0: bytes([
-            0xE2, 0x20,
-            0xAD, 0x0C, 0xFA,
-            0x38,
-            0xF9, 0x90, 0x70,
-            0xB0, 0x03,
-            0x99, 0xE0, 0x70,
-            0xC2, 0x20,
-            0x60,
-        ]),
+        # In m8, A holds the cur FP byte. For max FP >= 128 the cur FP byte
+        # for "full FP" is also >= 128, which has bit 7 set; BPL treats that
+        # as negative and never branches, so STA $70E0,Y always stores a
+        # shortage and every spell is greyed out.
+        # Fix: change BPL ($10) to BCS ($B0) -- the unsigned branch using
+        # the carry flag from SBC. Result is correct for all cur/cost in
+        # 0-255 unsigned. Single byte patch at $C1:66A2.
+        0x166A2: bytes([0xB0]),
 
         # Converter at $C1:C6C0 (29 bytes; free ROM). Reuses HP 3-digit
         # converter $C1:5D6A with stack save/restore of $8C and $8E.
