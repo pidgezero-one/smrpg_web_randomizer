@@ -127,6 +127,40 @@ def get_patch() -> dict[int, bytes]:
             0xAD, 0x0D, 0xFA, 0xA0, 0x30, 0x00, 0x20, 0xC0, 0xC6,
             0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA,
         ]),
+        # --- Battle spell-cast eligibility check (signed-comparison bug) ---
+        # Vanilla per-spell eligibility check at $C1:669B-$C1:66A6 (12 bytes):
+        #   LDA $FA0C / SEC / SBC $7090,Y / BPL +3 / STA $70E0,Y
+        # The BPL is a SIGNED compare; vanilla works because max FP <= 99 so
+        # the cur:max packed 16-bit read stays positive ($00:cur or $63:cur).
+        # With UncapMaxFP allowing max >= 128, $FA0C/$FA0D becomes $XXcur
+        # with bit 15 set, which the BPL reads as negative -> every spell
+        # is flagged as a shortage and greyed out.
+        # Replace the 12-byte sequence with JSR $C6E0 + 9 NOPs (fall through
+        # to $C1:66A7), and put a fixed unsigned 8-bit compare at $C1:C6E0.
+        0x1669B: bytes([
+            0x20, 0xE0, 0xC6,
+            0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA, 0xEA,
+        ]),
+        # Eligibility wrapper at $C1:C6E0 (17 bytes, free ROM right after
+        # the FP converter at $C1:C6C0):
+        #   SEP #$20         ; m8
+        #   LDA $FA0C        ; 8-bit cur FP only (high byte ignored)
+        #   SEC / SBC $7090,Y; 8-bit subtract sets carry per unsigned rule
+        #   BCS +3           ; UNSIGNED: branch if cur >= cost (no borrow)
+        #   STA $70E0,Y      ; only when cur < cost; stores shortage
+        #   REP #$20         ; restore m16 for caller
+        #   RTS
+        0x1C6E0: bytes([
+            0xE2, 0x20,
+            0xAD, 0x0C, 0xFA,
+            0x38,
+            0xF9, 0x90, 0x70,
+            0xB0, 0x03,
+            0x99, 0xE0, 0x70,
+            0xC2, 0x20,
+            0x60,
+        ]),
+
         # Converter at $C1:C6C0 (29 bytes; free ROM). Reuses HP 3-digit
         # converter $C1:5D6A with stack save/restore of $8C and $8E.
         # Stack after the 3 saves: $1,S=$8E, $3,S=$8C, $5,S=A_FP.
