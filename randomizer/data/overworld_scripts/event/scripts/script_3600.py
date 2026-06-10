@@ -507,8 +507,9 @@ script = EventScript([
 	SetSyncActionScript(NPC_3, A0676_MUSHROOM_DERBY_UNKNOWN),
 	SetSyncActionScript(NPC_9, A0119_SLOW_SEQUENCE_LOOP),
 	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
+	JmpIfBitSet(COOKIES_SHUFFLED, ["derby_ends"]),
 	ClearBit(GOT_FREE_COOKIES),
-	Return(),
+	Return(identifier="derby_ends"),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_ObjectMemoryClearBit(arg_1=0x30, bits=[4])

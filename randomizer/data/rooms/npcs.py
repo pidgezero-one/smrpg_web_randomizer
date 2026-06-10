@@ -41,15 +41,15 @@ RED_SHELL_BASE = _item_npc_base(
     SPR0249_RED_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
 PARASOL_BASE = _item_npc_base(SPR0821_PARASOL_PACKET)
-FAN_BASE = _item_npc_base(SPR0131_FAN_PACKET)
+FAN_BASE = _item_npc_base(SPR0225_FRYING_PAN_PACKET)
 TINY_STAR_BASE = _item_npc_base(SPR0226_TINY_STAR)
-PAN_BASE = _item_npc_base(SPR0081_FRYING_PAN_STATIC)
+PAN_BASE = _item_npc_base(SPR0227_FAN_PACKET)
 CROWN_BASE = _item_npc_base(SPR0216_CROWN)
 SHOES_BASE = _item_npc_base(SPR0202_SHOES)
 BROOCH_BASE = _item_npc_base(SPR0207_BROOCH)
 RING_BASE = _item_npc_base(SPR0196_RING)
 FEATHER_BASE = _item_npc_base(SPR0252_FEATHER)
-RED_MUSHROOM_BASE = _item_npc_base(SPR0212_RED_MUSHROOM_ITEM)
+RED_MUSHROOM_BASE = _item_npc_base(SPR0836_RED_MUSHROOM_ITEM)
 GREEN_MUSHROOM_BASE = _item_npc_base(SPR0815_GREEN_MUSHROOM_ITEM)
 YELLOW_MUSHROOM_BASE = _item_npc_base(SPR0816_YELLOW_MUSHROOM_ITEM)
 BLUE_MUSHROOM_BASE = _item_npc_base(SPR0828_BLUE_MUSHROOM_ITEM)
@@ -104,6 +104,12 @@ BLUE_ORB_BASE = _item_npc_base(SPR0215_BLUE_BALL)
 GREEN_ORB_BASE = _item_npc_base(SPR0217_GREEN_BALL)
 YELLOW_ORB_BASE = _item_npc_base(SPR0218_YELLOW_BALL)
 GRAY_ORB_BASE = _item_npc_base(SPR0224_GRAY_BALL)
+BAND_BASE = _item_npc_base(SPR0212_BAND_PACKET)
+GUN_BASE = _item_npc_base(SPR0228_GUN_PACKET)
+PANTS_BASE = _item_npc_base(SPR0229_PANTS)
+OVERALLS_BASE = _item_npc_base(SPR0230_OVERALLS)
+DRESS_BASE = _item_npc_base(SPR0231_DRESS)
+CAPE_BASE = _item_npc_base(SPR0232_CAPE)
 AP_BASE = _item_npc_base(SPR0248_ARCHIPELAGO)
 AP_BASE._force_id = 0
 
@@ -5264,7 +5270,7 @@ SNIFIT_BLACK_BACK_NPC_2 = NPC(
 )
 
 LEVEL_UP_BONUS_SELECTION_BOX_NPC = NPC(
-    sprite_id=SPR0225_LEVEL_UP_BONUS_SELECTION_BOX,
+    sprite_id=SPR0829_LEVEL_UP_BONUS_SELECTION_BOX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5306,7 +5312,7 @@ TINY_STAR_NPC = NPC(
 )
 
 LIGHT_GREEN_PIPE_TOP_EDGE_NPC = NPC(
-    sprite_id=SPR0227_LIGHT_GREEN_PIPE_TOP_EDGE,
+    sprite_id=SPR0830_LIGHT_GREEN_PIPE_TOP_EDGE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5327,7 +5333,7 @@ LIGHT_GREEN_PIPE_TOP_EDGE_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_TEXT_NPC = NPC(
-    sprite_id=SPR0228_LEVEL_UP_BONUS_TEXT,
+    sprite_id=SPR0831_LEVEL_UP_BONUS_TEXT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5348,7 +5354,7 @@ LEVEL_UP_BONUS_TEXT_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_FLOWER_NPC = NPC(
-    sprite_id=SPR0229_LEVEL_UP_BONUS_FLOWER,
+    sprite_id=SPR0832_LEVEL_UP_BONUS_FLOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5369,7 +5375,7 @@ LEVEL_UP_BONUS_FLOWER_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_POW_POWER_NPC = NPC(
-    sprite_id=SPR0230_LEVEL_UP_BONUS_POW_POWER,
+    sprite_id=SPR0833_LEVEL_UP_BONUS_POW_POWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5390,7 +5396,7 @@ LEVEL_UP_BONUS_POW_POWER_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_STAR_MAGIC_NPC = NPC(
-    sprite_id=SPR0231_LEVEL_UP_BONUS_STAR_MAGIC,
+    sprite_id=SPR0834_LEVEL_UP_BONUS_STAR_MAGIC,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5411,7 +5417,7 @@ LEVEL_UP_BONUS_STAR_MAGIC_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_HP_NPC = NPC(
-    sprite_id=SPR0232_LEVEL_UP_BONUS_HP,
+    sprite_id=SPR0835_LEVEL_UP_BONUS_HP,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,

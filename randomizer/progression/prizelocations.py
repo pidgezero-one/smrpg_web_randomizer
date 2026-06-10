@@ -3469,6 +3469,7 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
         FrogCoinPrize,
         CoinPrize,
         SlotsPrize,
+        InfiniteCoinsPrize
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 81),
@@ -3506,6 +3507,7 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
         FrogCoinPrize,
         CoinPrize,
         SlotsPrize,
+        InfiniteCoinsPrize
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 82),
@@ -3544,6 +3546,7 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
         FrogCoinPrize,
         CoinPrize,
         SlotsPrize,
+        InfiniteCoinsPrize
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 83),
@@ -6704,7 +6707,7 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
             use_background=True,
         ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_0,
+            NPC_1,
             R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
             ["next"],
         ),
@@ -6737,7 +6740,7 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
             use_background=True,
         ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_1,
+            NPC_2,
             R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
             ["next"],
         ),
@@ -6770,7 +6773,7 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
             use_background=True,
         ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_9,
+            NPC_3,
             R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
             ["next"],
         ),

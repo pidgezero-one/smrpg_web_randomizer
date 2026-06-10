@@ -24,6 +24,7 @@ class GreenShellObject(ItemNPC):
     _base = GREEN_SHELL_BASE
     _chest_event_id: int = E2087_GREEN_SHELL_PACKET
 
+
 class MusicObject(ItemNPC):
     _base = MUSIC_BASE
     _chest_event_id: int = E0882_CHEST_FLOWER_ITEM_COLLECTION
@@ -45,6 +46,7 @@ class ParasolObject(ItemNPC):
 
 class FanObject(ItemNPC):
     _base = FAN_BASE
+    _chest_event_id: int = E2825_FAN_CHEST_PACKET
 
 
 class TinyStarObject(ItemNPC):
@@ -54,6 +56,37 @@ class TinyStarObject(ItemNPC):
 
 class FryingPanObject(ItemNPC):
     _base = PAN_BASE
+    _chest_event_id: int = E2824_PAN_CHEST_PACKET
+
+
+class BandObject(ItemNPC):
+    _base = BAND_BASE
+    _chest_event_id: int = E2823_BAND_CHEST_PACKET
+
+
+class GunObject(ItemNPC):
+    _base = GUN_BASE
+    _chest_event_id: int = E2826_GUN_CHEST_PACKET
+
+
+class PantsObject(ItemNPC):
+    _base = PANTS_BASE
+    _chest_event_id: int = E2827_PANTS_CHEST_PACKET
+
+
+class OverallsObject(ItemNPC):
+    _base = OVERALLS_BASE
+    _chest_event_id: int = E2828_OVERALLS_CHEST_PACKET
+
+
+class DressObject(ItemNPC):
+    _base = DRESS_BASE
+    _chest_event_id: int = E2829_DRESS_CHEST_PACKET
+
+
+class CapeObject(ItemNPC):
+    _base = CAPE_BASE
+    _chest_event_id: int = E2830_CAPE_CHEST_PACKET
 
 
 class CrownObject(ItemNPC):
@@ -94,6 +127,7 @@ class GreenMushroomObject(ItemNPC):
 class YellowMushroomObject(ItemNPC):
     _base = YELLOW_MUSHROOM_BASE
     _chest_event_id: int = E0899_CHEST_YELLOW_ITEM_COLLECTION
+
 
 class BlueMushroomObject(ItemNPC):
     _base = BLUE_MUSHROOM_BASE
@@ -214,9 +248,14 @@ class SmallFrogCoinObject(ItemNPC):
     _base = SMALL_FROG_COIN_BASE
     _chest_event_id: int = E3084_FROG_COIN_CHEST_QUICK_HIT
 
+
 class SmallFrogCoinObjectNoMoney(ItemNPC):
-    _base = SMALL_FROG_COIN_BASE
+    _base = FROG_COIN_BASE
     _chest_event_id: int = E3095_ITEM_GRANT_CHEST_BUT_SHOW_FROG_COIN
+
+class SmallCoinItemObject(ItemNPC):
+    _base = SMALL_COIN_BASE
+    _chest_event_id: int = E2832_SMALL_COIN_AS_ITEM
 
 
 class BlueCandyObject(ItemNPC):
@@ -270,6 +309,16 @@ class FlowerObject(ItemNPC):
     _chest_event_id: int = E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST
 
 
+class FlowerItemObject(ItemNPC):
+    _base = FLOWER_BASE
+    _chest_event_id: int = E3069_FLOWER_AS_ITEM
+
+
+class FrogCoinItemObject(ItemNPC):
+    _base = SMALL_FROG_COIN_BASE
+    _chest_event_id: int = E2831_FROG_COIN_AS_ITEM
+
+
 class RecoveryMushroomObject(ItemNPC):
     _base = RECOVERY_MUSHROOM_BASE
     _chest_event_id: int = E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST
@@ -284,37 +333,51 @@ class GloveObject(ItemNPC):
     _base = GLOVE_BASE
     _chest_event_id: int = E0950_CHEST_GLOVE_PACKET
 
+
 class ProgressiveFireworksObject(ItemNPC):
     _base = ITEM_BAG_NPC
     _chest_event_id: int = E0934_PROGRESSIVE_FIREWORK_CHEST_PACKET
+
 
 class CrystalObject(ItemNPC):
     _base = CRYSTAL_BASE
     _chest_event_id: int = E0951_CRYSTAL_CHEST_PACKET
 
+
 class FireSpellObject(ItemNPC):
     _base = RED_ORB_BASE
     _chest_event_id: int = 0
+
+
 class BlueSpellObject(ItemNPC):
     _base = BLUE_ORB_BASE
     _chest_event_id: int = 0
+
+
 class GreenSpellObject(ItemNPC):
     _base = GREEN_ORB_BASE
     _chest_event_id: int = 0
+
+
 class YellowSpellObject(ItemNPC):
     _base = YELLOW_ORB_BASE
     _chest_event_id: int = 0
+
+
 class GraySpellObject(ItemNPC):
     _base = GRAY_ORB_BASE
     _chest_event_id: int = 0
+
 
 class MarioDollObject(ItemNPC):
     _base = MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC
     _chest_event_id: int = E0928_MARIO_DOLL_PACKET
 
+
 class ArchipelagoObject(ItemNPC):
     _base = AP_BASE
     _chest_event_id: int = E2365_AP_PACKET
+
 
 # possibilities for more models
 # urchin

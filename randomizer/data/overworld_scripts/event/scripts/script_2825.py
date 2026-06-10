@@ -1,4 +1,4 @@
-# E2825_EMPTY
+# E2825_FAN_CHEST_PACKET
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,4 +34,8 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
+	CreatePacketAt7010(packet=P121_FAN_PACKET, destinations=["EVENT_2825_ret_3"]),
+	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_2825_ret_3"),
+	Return()
 ])

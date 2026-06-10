@@ -617,8 +617,8 @@ dialog_data[205] = ''' Try double-checking whatever
 dialog_data[206] = '''FROGFUCIUS: Eh!?[await]
  That delicious smell!
  You have some Cricket Jam, yes?[await][page]
- Oh, but I have no pie to eat it
- with...[await]'''
+ Bring it back here if you find some
+ Cricket Pie to go with it.[await]'''
 dialog_data[207] = ''' You may find something new in
  Midas River.[await]'''
 dialog_data[208] = ''' Rose Way may be small, but it may

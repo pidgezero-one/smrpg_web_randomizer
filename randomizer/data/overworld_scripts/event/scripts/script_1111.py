@@ -43,11 +43,17 @@ script = EventScript([
 	RemoveOneOfItemFromInventory(CricketPieItem, identifier="EVENT_1111_remove_one_from_inventory_6"),
 	SetBit(CRICKET_PIE_EXCHANGED),
 	RunEventAsSubroutine(E1255_UNLOCK_FOREST_BY_PIE),
+    
+    RunDialog(dialog_id=DI2025_CRICKET_PIE, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+	
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	StoreItemAmountTo7000(CricketJamItem),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1111_ret_15"]),
 	JmpIfBitClear(CRICKET_PIE_EXCHANGED, ["EVENT_1111_run_dialog_16"], identifier="EVENT_1111_jmp_if_bit_clear_12"),
 	RemoveOneOfItemFromInventory(CricketJamItem),
+    
+	RunDialog(dialog_id=DI2026_CRICKET_JAM_YES, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True),
+	
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
     SetBit(CRICKET_JAM_EXCHANGED),
 	Return(identifier="EVENT_1111_ret_15"),

@@ -610,7 +610,7 @@ P053_CROWN_CHEST = ChestPacket(
 )
 P054_LEVELUP_BONUS_POW = Packet(
     packet_id=54,
-    sprite_id=SPR0230_LEVEL_UP_BONUS_POW_POWER,
+    sprite_id=SPR0833_LEVEL_UP_BONUS_POW_POWER,
     action_script_id=A0000_DO_NOTHING,
     show_shadow=False,
     b0=0,
@@ -625,7 +625,7 @@ P054_LEVELUP_BONUS_POW = Packet(
 )
 P055_LEVELUP_BONUS_S = Packet(
     packet_id=55,
-    sprite_id=SPR0231_LEVEL_UP_BONUS_STAR_MAGIC,
+    sprite_id=SPR0834_LEVEL_UP_BONUS_STAR_MAGIC,
     action_script_id=A0000_DO_NOTHING,
     show_shadow=False,
     b0=0,
@@ -640,7 +640,7 @@ P055_LEVELUP_BONUS_S = Packet(
 )
 P056_LEVELUP_BONUS_HP = Packet(
     packet_id=56,
-    sprite_id=SPR0232_LEVEL_UP_BONUS_HP,
+    sprite_id=SPR0835_LEVEL_UP_BONUS_HP,
     action_script_id=A0000_DO_NOTHING,
     show_shadow=False,
     b0=0,
@@ -984,14 +984,46 @@ P118_GREEN_SHELL_CHEST = ChestPacket(
     sprite_id=SPR0250_GREEN_SHELL,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
 )
-P119_UNUSED = None
-P120_UNUSED = None
-P121_UNUSED = None
-P122_UNUSED = None
-P123_UNUSED = None
-P124_UNUSED = None
-P125_UNUSED = None
-P126_UNUSED = None
+P119_BAND_CHEST = ChestPacket(
+    packet_id=119,
+    sprite_id=SPR0212_BAND_PACKET,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P120_PAN_PACKET = ChestPacket(
+    packet_id=120,
+    sprite_id=SPR0225_FRYING_PAN_PACKET,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P121_FAN_PACKET = ChestPacket(
+    packet_id=121,
+    sprite_id=SPR0227_FAN_PACKET,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P122_GUN_PACKET = ChestPacket(
+    packet_id=122,
+    sprite_id=SPR0228_GUN_PACKET,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P123_PANTS_PACKET = ChestPacket(
+    packet_id=123,
+    sprite_id=SPR0229_PANTS,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P124_OVERALLS_PACKET = ChestPacket(
+    packet_id=124,
+    sprite_id=SPR0230_OVERALLS,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P125_DRESS_PACKET = ChestPacket(
+    packet_id=125,
+    sprite_id=SPR0231_DRESS,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
+P126_CAPE_PACKET = ChestPacket(
+    packet_id=126,
+    sprite_id=SPR0232_CAPE,
+    action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
+)
 P127_UNUSED = None
 P128_UNUSED = None
 P129_UNUSED = None
@@ -1244,14 +1276,14 @@ ALL_PACKETS = PacketCollection(
         P116_AP_ITEM,
         P117_RED_SHELL_CHEST,
         P118_GREEN_SHELL_CHEST,
-        P119_UNUSED,
-        P120_UNUSED,
-        P121_UNUSED,
-        P122_UNUSED,
-        P123_UNUSED,
-        P124_UNUSED,
-        P125_UNUSED,
-        P126_UNUSED,
+        P119_BAND_CHEST,
+        P120_PAN_PACKET,
+        P121_FAN_PACKET,
+        P122_GUN_PACKET,
+        P123_PANTS_PACKET,
+        P124_OVERALLS_PACKET,
+        P125_DRESS_PACKET,
+        P126_CAPE_PACKET,
         P127_UNUSED,
         P128_UNUSED,
         P129_UNUSED,

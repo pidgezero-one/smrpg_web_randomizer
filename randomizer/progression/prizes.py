@@ -479,6 +479,7 @@ class FingerShotPrize(ItemPrize):
         nickname="Pellet Shooter", description="It was probably owned by a kid."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
+    _model = GunObject
 
 
 class CymbalsPrize(ItemPrize):
@@ -536,6 +537,7 @@ class HandGunPrize(ItemPrize):
         nickname="BB Gun", description="I'll throw in some ammo, too."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
+    _model = GunObject
 
 
 class WhompGlovePrize(ItemPrize):
@@ -631,6 +633,7 @@ class WarFanPrize(ItemPrize):
         nickname="Spiked Fan", description="Pretty, but deadly!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
+    _model = FanObject
 
 
 class HandCannonPrize(ItemPrize):
@@ -639,6 +642,7 @@ class HandCannonPrize(ItemPrize):
         nickname="Cannon Launcher", description="You need strong elbows for this!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
+    _model = GunObject
 
 
 class StickyGlovePrize(ItemPrize):
@@ -687,7 +691,7 @@ class StarGunPrize(ItemPrize):
         nickname="Celestial Launcher",
         description="I bet you could do some real damage\n with this.",
     )
-    _model = TinyStarObject
+    _model = GunObject
     _packet_data = (SPR0226_TINY_STAR, 0)
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
 
@@ -720,6 +724,7 @@ class FryingPanPrize(ItemPrize):
         nickname="Metal Plate", description="Don't know what it’s used for."
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
+    _model = FryingPanObject
 
 
 class WonderChompPrize(ItemPrize):
@@ -772,6 +777,7 @@ class ShirtPrize(ItemPrize):
         nickname="Blue Overalls", description="Don't go to work without 'em!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = OverallsObject
 
 
 class PantsPrize(ItemPrize):
@@ -780,6 +786,7 @@ class PantsPrize(ItemPrize):
         nickname="Blue Pants", description="They're comfy and easy to wear."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = PantsObject
 
 
 class ThickShirtPrize(ItemPrize):
@@ -788,6 +795,7 @@ class ThickShirtPrize(ItemPrize):
         nickname="Blue/Red Overalls", description="They look pretty sturdy."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = OverallsObject
 
 
 class ThickPantsPrize(ItemPrize):
@@ -796,6 +804,7 @@ class ThickPantsPrize(ItemPrize):
         nickname="Blue Pants", description="They're comfy and easy to wear."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = PantsObject
 
 
 class MegaShirtPrize(ItemPrize):
@@ -804,6 +813,7 @@ class MegaShirtPrize(ItemPrize):
         nickname="Orange Overalls", description="You're sure to stand out in these!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = OverallsObject
 
 
 class MegaPantsPrize(ItemPrize):
@@ -813,6 +823,7 @@ class MegaPantsPrize(ItemPrize):
         description="Made from only the finest threads\n in Mysidia.",
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = PantsObject
 
 
 class WorkPantsPrize(ItemPrize):
@@ -821,6 +832,7 @@ class WorkPantsPrize(ItemPrize):
         nickname="Stained Pants", description="They look a bit worn out."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = PantsObject
 
 
 class MegaCapePrize(ItemPrize):
@@ -829,6 +841,7 @@ class MegaCapePrize(ItemPrize):
         nickname="Blue Cape", description="It looks pretty cool, right?"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = CapeObject
 
 
 class HappyShirtPrize(ItemPrize):
@@ -837,6 +850,7 @@ class HappyShirtPrize(ItemPrize):
         nickname="Orange Overalls", description="You're sure to stand out in these!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = OverallsObject
 
 
 class HappyPantsPrize(ItemPrize):
@@ -845,6 +859,7 @@ class HappyPantsPrize(ItemPrize):
         nickname="Pink Pants", description="They're all the rage these days!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = PantsObject
 
 
 class HappyCapePrize(ItemPrize):
@@ -853,6 +868,7 @@ class HappyCapePrize(ItemPrize):
         nickname="Rainbow Cape", description="I'd be proud to wear this!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = CapeObject
 
 
 class HappyShellPrize(ItemPrize):
@@ -870,6 +886,7 @@ class PolkaDressPrize(ItemPrize):
         nickname="Pink Dress", description="For serious fashionistas."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = DressObject
 
 
 class SailorShirtPrize(ItemPrize):
@@ -878,6 +895,7 @@ class SailorShirtPrize(ItemPrize):
         nickname="White Overalls", description="Built for life on the sea."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = OverallsObject
 
 
 class SailorPantsPrize(ItemPrize):
@@ -886,6 +904,7 @@ class SailorPantsPrize(ItemPrize):
         nickname="Blue Pants", description="They're comfy and easy to wear."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = PantsObject
 
 
 class SailorCapePrize(ItemPrize):
@@ -894,6 +913,7 @@ class SailorCapePrize(ItemPrize):
         nickname="White Cape", description="Built for life on the sea."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = CapeObject
 
 
 class NauticaDressPrize(ItemPrize):
@@ -902,6 +922,7 @@ class NauticaDressPrize(ItemPrize):
         nickname="School Uniform", description="The neckerchief is included."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = DressObject
 
 
 class CourageShellPrize(ItemPrize):
@@ -919,6 +940,7 @@ class FuzzyShirtPrize(ItemPrize):
         nickname="Green Overalls", description="Made of the finest fleece."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = OverallsObject
 
 
 class FuzzyPantsPrize(ItemPrize):
@@ -928,6 +950,7 @@ class FuzzyPantsPrize(ItemPrize):
         description="Made from only the finest threads\n in Mysidia.",
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = PantsObject
 
 
 class FuzzyCapePrize(ItemPrize):
@@ -936,6 +959,7 @@ class FuzzyCapePrize(ItemPrize):
         nickname="Yellow Cape", description="Made of the finest fleece."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = CapeObject
 
 
 class FuzzyDressPrize(ItemPrize):
@@ -944,6 +968,7 @@ class FuzzyDressPrize(ItemPrize):
         nickname="Yellow Dress", description="Made of the finest fleece."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = DressObject
 
 
 class FireShirtPrize(ItemPrize):
@@ -952,6 +977,7 @@ class FireShirtPrize(ItemPrize):
         nickname="Orange Overalls", description="You're sure to stand out in these!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = OverallsObject
 
 
 class FirePantsPrize(ItemPrize):
@@ -960,6 +986,7 @@ class FirePantsPrize(ItemPrize):
         nickname="Red Pants", description="Stylish AND warm!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = PantsObject
 
 
 class FireCapePrize(ItemPrize):
@@ -968,6 +995,7 @@ class FireCapePrize(ItemPrize):
         nickname="Orange Cape", description="The pattern on it is pretty cool."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = CapeObject
 
 
 class FireShellPrize(ItemPrize):
@@ -985,6 +1013,7 @@ class FireDressPrize(ItemPrize):
         nickname="Red Dress", description="The pattern on it is pretty cool."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = DressObject
 
 
 class HeroShirtPrize(ItemPrize):
@@ -993,6 +1022,7 @@ class HeroShirtPrize(ItemPrize):
         nickname="Blue/Red Overalls", description="They look pretty sturdy."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = OverallsObject
 
 
 class PrincePantsPrize(ItemPrize):
@@ -1001,7 +1031,7 @@ class PrincePantsPrize(ItemPrize):
         nickname="Flash Pants", description="You'll look like a superhero in\n these!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
-    _model = CrownObject
+    _model = PantsObject
 
 
 class StarCapePrize(ItemPrize):
@@ -1010,7 +1040,7 @@ class StarCapePrize(ItemPrize):
         nickname="Freedom Cape", description="It's red, white, and blue."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
-    _model = TinyStarObject
+    _model = CapeObject
 
 
 class HealShellPrize(ItemPrize):
@@ -1027,7 +1057,7 @@ class RoyalDressPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Fancy Dress", description="Check out the gold trim!"
     )
-    _model = CrownObject
+    _model = DressObject
     _packet_data = (SPR0216_CROWN, 0)
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
 
@@ -1040,6 +1070,7 @@ class SuperSuitPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
+    _model = OverallsObject
 
 
 class LazyShellArmorPrize(ItemPrize):
@@ -1122,6 +1153,7 @@ class ExpBoosterPrize(ItemPrize):
         nickname="Training Device", description="This'll make you strong in no time!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
+    _model = FrogCoinItemObject
 
 
 class AttackScarfPrize(ItemPrize):
@@ -1132,6 +1164,7 @@ class AttackScarfPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
+    _model = BandObject
 
 
 class RareScarfPrize(ItemPrize):
@@ -1140,6 +1173,7 @@ class RareScarfPrize(ItemPrize):
         nickname="White Cloth", description="You don't see these around often."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
+    _model = BandObject
 
 
 class BtubRingPrize(ItemPrize):
@@ -1199,6 +1233,7 @@ class CoinTrickPrize(ItemPrize):
         nickname="Fortune Charm", description="It's sure to make you very rich."
     )
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
+    _model = FrogCoinItemObject
 
 
 class GhostMedalPrize(ItemPrize):
@@ -1209,6 +1244,7 @@ class GhostMedalPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
+    _model = SmallCoinItemObject
 
 
 class JinxBeltPrize(ItemPrize):
@@ -1219,6 +1255,7 @@ class JinxBeltPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
+    _model = BandObject
 
 
 class FeatherPrize(ItemPrize):
@@ -1236,7 +1273,7 @@ class TroopaPinPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Military Decoration", description="I wonder what powers it bestows?"
     )
-    _model = BroochObject
+    _model = SmallCoinItemObject
     _packet_data = (SPR0207_BROOCH, 0)
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
 
@@ -1273,6 +1310,7 @@ class TeamworkBandPrize(ItemPrize):
     remake_only = True
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
+    _model = BandObject
 
 
 class EnduringBroochPrize(ItemPrize):
@@ -1477,6 +1515,7 @@ class FlowerTabPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Flower Capsule", description="You collect these, right?"
     )
+    _model = FlowerItemObject
 
 
 class FlowerJarPrize(ItemPrize):
@@ -1484,6 +1523,7 @@ class FlowerJarPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Flower Set", description="You collect these, right?"
     )
+    _model = FlowerItemObject
 
 
 class FlowerBoxPrize(ItemPrize):
@@ -1491,6 +1531,7 @@ class FlowerBoxPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Flower Gift", description="You collect these, right?"
     )
+    _model = FlowerItemObject
 
 
 class YoshiCandyPrize(ItemPrize):
@@ -1548,6 +1589,7 @@ class SeeYaPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Eject Button", description="Seems useful in a pinch, doesn't\n it?"
     )
+    _model = FrogCoinItemObject
 
 
 class TempleKeyPrize(ItemPrize, KeyPrize):
@@ -1572,6 +1614,7 @@ class EarlierTimesPrize(ItemPrize):
     _nickname = TreasureHunterNickname(
         nickname="Reset Button", description="Sounds useful in a pinch, doesn't\n it?"
     )
+    _model = FrogCoinItemObject
 
 
 class FreshenUpPrize(ItemPrize):
@@ -1907,6 +1950,7 @@ class RegularFireworksPrize(ItemPrize):
         nickname="Explosive Device", description="Don't try this at home!"
     )
     _fortune_type: FortuneEnum = FortuneEnum.RARE
+    _model = TinyStarObject
 
 
 class ProgressiveFireworksPrize(ProgressiveItemPrize, KeyPrize):

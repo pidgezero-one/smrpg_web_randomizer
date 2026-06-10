@@ -40,7 +40,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3100_set_var_to_const_8"]),
 	SetVarToConst(FIREWORKS_COUNTER, 5),
 	SetVarToConst(ITEM_ID, FireworksItem),
-	JmpToEvent(E0883_CHEST_ITEM_BAG_PACKET),
+	JmpToEvent(E0885_CHEST_STAR_PIECE_PACKET),
 	Return(),
 	SetVarToConst(ITEM_ID, CarboCookieItem, identifier="EVENT_3100_set_var_to_const_8"),
 	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),

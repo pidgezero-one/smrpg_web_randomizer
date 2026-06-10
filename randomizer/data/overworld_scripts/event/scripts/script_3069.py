@@ -1,4 +1,4 @@
-# E3069_EMPTY
+# E3069_FLOWER_AS_ITEM
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,8 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
+	CreatePacketAt7010(packet=P000_FLASHING_POOF_FLOWER, destinations=["EVENT_3069_ret_3"]),
+	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_3069_ret_3"),
+	Return()
 ])

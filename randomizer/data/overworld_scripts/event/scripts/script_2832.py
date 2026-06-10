@@ -1,4 +1,4 @@
-# E2832_EMPTY
+# E2832_SMALL_COIN_AS_ITEM
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -33,5 +33,10 @@ from ....packets import *
 from ....spells.spells import *
 from ....variables.event_palette_names import *
 
+
 script = EventScript([
+	RunEventAsSubroutine(E0033_OPEN_CHEST),
+	CreatePacketAt7010(packet=P090_SMALL_COIN_STILL, destinations=["EVENT_2832_ret_3"]),
+	JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_2832_ret_3"),
+	Return()
 ])

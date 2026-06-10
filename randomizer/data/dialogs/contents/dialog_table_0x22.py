@@ -1,4 +1,4 @@
-dialog_data = [""]*636
+dialog_data = [""]*638
 dialog_data[0] = '''                     INN[end]'''
 dialog_data[1] = '''                ITEM SHOP[end]'''
 dialog_data[2] = '''             INN / ITEM SHOP[end]'''
@@ -1713,3 +1713,10 @@ dialog_data[633] = '''[center]Need the “Mario Doll” to unlock[await]'''
 dialog_data[634] = ''' This is 100% currant juice.[await]
  It's mighty tasty stuff, mate![await]'''
 dialog_data[635] = '''[end]'''
+dialog_data[636] = ''' That's right!
+ I had forgotten all about it.[await][page]
+ I will give you something for the
+ Cricket Pie you brought back.[await]'''
+dialog_data[637] = '''FROGFUCIUS: Eh!?[await]
+ That delicious smell!
+ You have some Cricket Jam, yes?[await]'''

@@ -1,44 +1,32 @@
-# SPR0227_LIGHT_GREEN_PIPE_TOP_EDGE
+# SPR0227_FAN_PACKET
 
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-from randomizer.data.variables.sprite_palette_names import SPAL486_LIGHT_GREEN_PIPE_TOP_EDGE
+from randomizer.data.variables.sprite_palette_names import SPAL544_WAR_FAN
 sprite = CompleteSprite(
-    animation=AnimationPack(366, length=40, unknown=0x0002,
+    animation=AnimationPack(0, length=31, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
-                            bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
-                            None,
-                            bytearray(b'\x04\x00<0\xfc\x00\xfc\x0c\xc4\xfc\x1c\xfc,\xfc\x9c|\x00\x00\x00\x00\x00\x00\x00\x00\xfc<\xfc\xfc\xfc\xfc\xfc\xfc'),
-                            None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=140, y=96),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
-                            bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\xff\x00\xfe\x7f\xd0/\xe0\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x81\x00\xff\x00\xff'),
-                            bytearray(b'\x00\x00\x00\x00\x00\x00\xff\x00\xff\x00}\xfa~\xf9\xff\xf8\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x07\xff\x07\xff\x07\xff'),
-                            None,
-                            None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=104),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
-                            bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00  \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
-                            None,
-                            bytearray(b'  8\x08?\x01?\x00!% & & $\x00\x00\x00\x00\x00\x00\x00\x00:\x00\x19\x009\x00;\x00'),
-                            bytearray(b'\x00\x00\x00\x00\x00\x00\xff\x00\xff\x00\xdf\xc0\xdf\xc0\xcf\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0?\xc0?\xc0?'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=108, y=96),
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
+                            bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00\x03'),
+                            bytearray(b'\x00\x04\x00\x0e\x00>(T\x06r*\xd6\x1e\xe2\x1c\xa0\x02\x06\x00\x0e\x01?*~\x08|$\xf8\x00\xfc`\xdc'),
+                            bytearray(b'\x00\x00\x00\x03\x00\x00\x01\x07\t\x08\x08\t\x0e\n\x0f\x01\x03\x03\x0c\x0f\x0f\x0f\x19\x1e\x14\x1f\x15\x1e693<'),
+                            bytearray(b'|\x84|\x04|\x04\xbcd\xbc\xe4\xfc\x84\xfcT|\xb4\x04\xf8\x04\xf8\x00\xfc`\x9c\xe0\x18\x80xP\xa8\xb0H'),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
                     ]
                 ),
             ],
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=0),
+                        AnimationSequenceFrame(duration=16, mold_id=0),
                     ]
                 ),
             ]
         )
     ),
-    palette_id=SPAL486_LIGHT_GREEN_PIPE_TOP_EDGE,
+    palette_id=SPAL544_WAR_FAN,
     palette_offset=0,
-    unknown_num=0
+    unknown_num=8
 )

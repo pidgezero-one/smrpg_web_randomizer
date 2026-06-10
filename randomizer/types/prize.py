@@ -997,7 +997,7 @@ class CoinPrize(StandardPrize):
     _amount: int
     _nickname = TreasureHunterNickname(
         nickname="Gold Coin",
-        description=" It's nothing special, but a guy's\n gotta eat.",
+        description="It's nothing special, but a guy's\n gotta eat.",
     )
     _fortune_type: FortuneEnum = FortuneEnum.COINS
 
